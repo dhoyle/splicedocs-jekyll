@@ -1,0 +1,37 @@
+---
+title: SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS built-in system procedure
+
+description: Built-in system procedure that invalidates all system prepared statements and forces the query optimizer to create new execution plans.&#xD;
+summary: Built-in system procedure that invalidates all system prepared statements and forces the query optimizer to create new execution plans.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_invalidatestoredstmts
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.InvalidateStoredStatements" id="BuiltInSysProcs.InvalidateStoredStatements"></a><a name="kanchor495"></a>SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</samp> system procedure invalidates all system prepared statements, and forces the query optimizer to create new execution plans. You can use this to speed up query execution by the data dictionary when performance has become sub-optimal.</p>
+            <p>If you notice that <span class="CodeFont">ij show </span>commands have slowed down, you can call  <span class="CodeFont">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS </span>to refresh the execution plans.</p>
+            <div class="noteNote">
+                    Splice Machine uses prepared statements known as system procedures to access data in the system tables. These procedures are cached, along with their execution plans, in the data dictionary. The cached execution plans can become sub-optimal after you issue a large number of schema-modifying DLL&#160;statements, such as defining and/or modifying a number of tables.
+                    </div>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS();
+Statement executed.</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="EmptyStatementCache.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</span></a>
+                </li>
+                <li value="2"><a href="EmptyStatementCache.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</span></a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

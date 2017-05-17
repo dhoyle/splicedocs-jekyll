@@ -1,0 +1,109 @@
+---
+summary: topic
+title: How to start your database.
+description: How to start your database.
+keywords: 
+sidebar:  onprem_sidebar
+permalink: onprem_admin_startingdb
+folder: OnPrem
+---
+	<section>
+		<div class="TopicContent">
+            <h1>Starting Your Database</h1>
+            <ul>
+                <li value="1"><a href="#StartDBCloudera">Starting Your Splice Machine Database on a Cloudera-Managed Cluster</a>
+                </li>
+                <li value="2"><a href="#StartDBHDP">Starting Your Splice Machine Database on a Hortonworks HDP-Managed Cluster</a>
+                </li>
+                <li value="3"><a href="#StartDBMapR">Starting Your Splice Machine Database on a MapR-Managed Cluster</a>
+                </li>
+                <li value="4"><a href="#StartDbStandalone">Starting Your&#160;Splice Machine Database on a Standalone installation</a>
+                </li>
+            </ul>
+            <h2><a name="StartDBCloudera"></a><a name="kanchor283"></a>Starting Your Splice Machine Database on a Cloudera-Managed Cluster</h2>
+            <p>Use the Cloudera Manager to start HBase:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Navigate to  the 	<span class="ItalicFont">Services-&gt;All Services</span> screen in <span class="ItalicFont">Cloudera Manager</span>, and select this action to start <span class="ItalicFont">HBase</span>:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><span class="ItalicFont">Actions</span> -&gt; Start</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="kanchor284"></a><a name="StartDBHDP"></a>Starting Your Splice Machine Database on a Hortonworks HDP--Managed Cluster</h2>
+            <p>Use the Ambari dashboard to start Splice Machine:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Log in to the Ambari Dashboard by pointing your browser to the publicly visible <span class="HighlightedCode">&lt;hostName&gt;</span>&#160;for your master node that is hosting Ambari Server:</p>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve"><span class="ShellCommand">http://<span class="HighlightedCode">&lt;hostName&gt;</span>:8080/</span></pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Start cluster services:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">Action -&gt;&#160;Start All</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="kanchor285"></a><a name="StartDBMapR"></a>Starting Your Splice Machine Database on a MapR-Managed Cluster</h2>
+            <p>To start Splice Machine, use the MapR&#160;Command System (MCS):</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">Navigate to the node that is running the <span class="CodeFont">mapr-webserver</span> service.</li>
+                    <li value="2">Log into <span class="CodeFont">https://<span class="HighlightedCode">&lt;hostIPAddr&gt;</span>:8443</span>, substituting the correct <span class="HighlightedCode">&lt;hostIPAddr&gt;</span>&#160;value. The login credentials are the ones you used when you added the <span class="CodeFont">mapr</span> user during installation.</li>
+                    <li value="3">
+Start your HBase master</li>
+                    <li value="4">Start all of your Region Servers</li>
+                </ol>
+            </div>
+            <h2><a name="StartDbStandalone"></a>Starting Your Database in the Standalone Version<a name="kanchor286"></a></h2>
+            <p>Follow these steps to start your database if you're using the Standalone version of Splice Machine:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Change directory to your install directory:</p>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">cd splicemachine</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Run the Splice Machine start-up script:</p>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ <span class="PlatformVariablesStandaloneStartScript">./bin/start-splice.sh</span></pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h3>Restarting Splice Machine</h3>
+            <p>If you're running the standalone version of Splice Machine on a personal computer that goes into sleep mode, you need to stop and then restart Splice Machine when you wake the computer back up. For example, if you're running Splice Machine on a laptop, and close your laptop, then you'll need to stop and restart Splice Machine when you reopen your laptop.
+
+</p>
+            <p>To stop and restart Splice Machine, follow these steps:
+</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Make sure that you have quit the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt; quit;</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Change directory to your install directory:</p>
+                        <div class="preWrapper"><pre class="ShellCommand">cd splicemachine</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Run the Splice Machine shut-down script:</p>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ <span class="PlatformVariablesStandaloneStopScript">./bin/stop-splice.sh</span></pre>
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Run the Splice Machine start-up</p>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ <span class="PlatformVariablesStandaloneStartScript">./bin/start-splice.sh</span></pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

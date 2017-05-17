@@ -1,0 +1,66 @@
+---
+title: WHERE clause
+description: An optional clause in a SelectExpression, DELETE statement, or UPDATE statement that lets you select rows based on a Boolean expression.
+summary: An optional clause in a SelectExpression, DELETE statement, or UPDATE statement that lets you select rows based on a Boolean expression.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_clauses_where
+folder: SQLReference/Clauses
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Clauses.Where" id="Clauses.Where"></a><a name="kanchor200"></a>WHERE</h1>
+            <p>The <span class="CodeFont">WHERE</span>&#160;clause is an optional part of a <span class="CodeFont"><a href="../Expressions/Select.html">SelectExpression</a></span>, a <span class="CodeFont"><a href="../Statements/Delete.html">DELETE</a></span>&#160;statement, or an <span class="CodeFont"><a href="../Statements/UpdateTable.html">UPDATE</a></span>&#160;statement.</p>
+            <p>The <span class="CodeFont">WHERE</span> clause lets you select rows based on a Boolean expression. Only
+			rows for which the expression evaluates to <span class="CodeFont">TRUE</span> are selected to return or operate upon (delete or update).</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">WHERE <span class="ItalicFont"><a href="../Expressions/BooleanExpressions.html">BooleanExpression</a></span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">BooleanExpression</p>
+                <p class="paramDefnFirst">A Boolean expression. For more information, see the <a href="../Expressions/BooleanExpressions.html">Boolean Expressions</a> topic.</p>
+            </div>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+   -- find the flights where no business-class seats have been booked     
+SELECT *
+  FROM FlightAvailability
+  WHERE business_seats_taken IS NULL
+     OR business_seats_taken = 0;
+
+   -- Join the EMP_ACT and EMPLOYEE tables
+   -- select all the columns from the EMP_ACT table and 
+   -- add the employee's surname (LASTNAME) from the EMPLOYEE table 
+   -- to each row of the result.
+SELECT SAMP.EMP_ACT.*, LASTNAME
+  FROM SAMP.EMP_ACT, SAMP.EMPLOYEE
+  WHERE EMP_ACT.EMPNO = EMPLOYEE.EMPNO;
+
+
+   -- Determine the employee number and salary of sales representatives 
+   -- along with the average salary and head count of their departments.
+   -- This query must first create a new-column-name specified in the AS clause 
+   -- which is outside the fullselect (DINFO) 
+   -- in order to get the AVGSALARY and EMPCOUNT columns, 
+   -- as well as the DEPTNO column that is used in the WHERE clause
+SELECT THIS_EMP.EMPNO, THIS_EMP.SALARY, DINFO.AVGSALARY, DINFO.EMPCOUNT
+  FROM EMPLOYEE THIS_EMP,
+     (SELECT OTHERS.WORKDEPT AS DEPTNO,
+           AVG(OTHERS.SALARY) AS AVGSALARY,
+           COUNT(*) AS EMPCOUNT
+        FROM EMPLOYEE OTHERS
+        GROUP BY OTHERS.WORKDEPT
+      )AS DINFO
+  WHERE THIS_EMP.JOB = 'SALESREP'
+    AND THIS_EMP.WORKDEPT = DINFO.DEPTNO;</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Expressions/Select.html"><span class="CodeFont">Select</span></a> expressions</li>
+                <li value="2"><a href="../Statements/Delete.html"><span class="CodeFont">DELETE</span></a>&#160;statement</li>
+                <li value="3"><a href="../Statements/Select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
+                <li value="4"><a href="../Statements/UpdateTable.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

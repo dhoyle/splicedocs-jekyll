@@ -1,0 +1,77 @@
+---
+title: SUBSTR built-in SQL function
+description: Built-in SQL function that extracts a portion of a character or bit string
+summary: Built-in SQL function that extracts a portion of a character or bit string
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_substr
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Substr" id="BuiltInFcns.Substr"></a><a name="kanchor150"></a>SUBSTR</h1>
+            <p>The <span class="CodeFont">SUBSTR</span> function extracts and returns a portion of a character string or bit string expression, starting at the specified character or bit position. You can specify the number of characters or bits you want returned, or use the default length, which is to extract from the specified starting position to the end of the string.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SUBSTR({ <span class="ItalicFont">CharacterExpression</span> },
+		<span class="ItalicFont">StartPosition</span> [, <span class="ItalicFont">LengthOfSubstring</span> ] )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">CharacterExpression
+            </p>
+                <p class="paramDefnFirst">A <span class="CodeFont">CHAR</span>, <span class="CodeFont">VARCHAR</span>, or <span class="CodeFont">LONG VARCHAR</span> data type or any built-in type that is implicitly converted to a string (except a bit expression).</p>
+                <p class="paramName">StartPosition</p>
+                <p class="paramDefnFirst">An integer expression; for character expressions, this is the starting character position of the returned substring. For bit expressions, this is the bit position of the returned substring.</p>
+                <p class="paramDefn"> The first character or bit has a <span class="ItalicFont">StartPosition</span> of 1. If you specify 0, Splice Machine assumes that you mean 1.</p>
+                <p class="paramDefn">If the <span class="ItalicFont">StartPosition</span> is positive, it refers to the position from the start of the source expression (counting the first character as 1) to the beginning of the substring you want extracted. The <span class="ItalicFont">StartPosition</span> value cannot be a negative number. </p>
+                <p class="paramName">LengthOfSubstring</p>
+                <p class="paramDefnFirst">An optional integer expression that specifies the length of the extracted substring; for character expressions, this is number of characters to return. For bit expressions, this is the number of bits to return.</p>
+                <p class="paramDefn">If this value is not specified, then <span class="CodeFont">SUBSTR</span> extracts a substring of the expression from the <span class="ItalicFont">StartPosition</span> to the end of the source expression.</p>
+                <p class="paramDefn"> If <span class="ItalicFont">LengthOfString</span> is specified, <span class="CodeFont">SUBSTR</span> returns a <span class="CodeFont">VARCHAR</span> or <span class="CodeFont">VARBIT</span> of length <span class="ItalicFont">LengthOfString</span> starting at the <span class="ItalicFont">StartPosition</span>. </p>
+                <p class="paramDefn">The <span class="CodeFont">SUBSTR</span> function returns an error if you specify a negative number for the parameter <span class="ItalicFont">LengthOfString</span>.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>For character string expressions, the result type is a <a href="../DataTypes/Varchar.html"><span class="CodeFont">VARCHAR</span></a> value.</p>
+            <p>The length of the result is the maximum length of the source type.</p>
+            <p class="heading2">Examples</p>
+            <p>The following query extracts the first four characters of each player's name, and then extracts the remaining characters:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName,
+   SUBSTR(DisplayName, 1, 4) "1to4",
+   SUBSTR(DisplayName, 4) "5ToEnd" 
+   FROM Players 
+   WHERE ID &lt; 11;
+DISPLAYNAME             |1To4|5ToEnd           
+------------------------------------------------------
+Buddy Painter           |Budd|dy Painter              
+Billy Bopper            |Bill|ly Bopper               
+John Purser             |John|n Purser                
+Bob Cranker             |Bob | Cranker                
+Mitch Duffer            |Mitc|ch Duffer               
+Norman Aikman           |Norm|man Aikman              
+Alex Paramour           |Alex|x Paramour              
+Harry Pennello          |Harr|ry Pennello             
+Greg Brown              |Greg|g Brown                 
+Jason Minman            |Jaso|on Minman               
+
+10 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="Concatenation.html">Concatenation</a> operator</li>
+                <li value="3"><a href="InitCap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
+                <li value="4"><a href="Instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
+                <li value="5"><a href="LCase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
+                <li value="6"><a href="Length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
+                <li value="7"><a href="Locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
+                <li value="8"><a href="LTrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
+                <li value="9"><span class="CodeFont"><a href="RegexpLike.html">REGEX_LIKE</a></span>&#160;operator</li>
+                <li value="10"><a href="Replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
+                <li value="11"><a href="RTrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
+                <li value="12"><a href="Trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
+                <li value="13"><a href="UCase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

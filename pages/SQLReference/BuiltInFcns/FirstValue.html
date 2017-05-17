@@ -1,0 +1,78 @@
+---
+title: FirstValue.html
+description: Built-in SQL aggregate or window function that evaluates the value of an expression from the first row of a window partition.
+summary: Built-in SQL aggregate or window function that evaluates the value of an expression from the first row of a window partition.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_firstvalue
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor254"></a>FIRST_VALUE</h1>
+            <p><span class="CodeFont">FIRST_VALUE</span> is a window function that returns the values of a specified expression that is evaluated at the first row of a window for the current row. This means that you can select a first value from a set of rows without having to use a self join.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">FIRST_VALUE ( <span class="ItalicFont">expression</span> [ {IGNORE | RESPECT}&#160;NULLS ] ) OVER ( <span class="ItalicFont">overClause</span> )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">expression<![CDATA[            ]]></p>
+                <p class="paramDefnFirst">The expression to evaluate; typically a column name or computation involving a column name.</p>
+                <p class="paramName">IGNORE&#160;NULLS
+            </p>
+                <p class="paramDefnFirst">If this optional qualifier is specified, <span class="CodeFont">NULL</span>&#160;values are ignored, and the first non-<span class="CodeFont">NULL</span>&#160;value is evaluated.</p>
+                <p class="paramDefn">If you specify this and all values are <span class="CodeFont">NULL</span>, <span class="CodeFont">FIRST_VALUE</span>&#160;returns <span class="CodeFont">NULL</span>.</p>
+                <p class="paramName">RESPECT&#160;NULLS
+            </p>
+                <p class="paramDefnFirst">This qualifier is the default behavior:&#160;it specifies that the first value is always returned, even if it is <span class="CodeFont">NULL</span>. </p>
+                <p class="paramName">overClause</p>
+                <p class="paramDefnFirst">See the <span class="CodeFont"><a href="../Clauses/Over.html">OVER</a></span>&#160;clause documentation.</p>
+            </div>
+            <p class="heading2">Usage Notes</p>
+            <p>Splice Machine recommends that you use the <span class="CodeFont">FIRST_VALUE</span>&#160;function with the <span class="CodeFont"><a href="../Clauses/OrderBy.html">ORDER&#160;BY</a></span>&#160;clause to produce deterministic results.</p>
+            <p class="heading2">Results</p>
+            <p>Returns value(s)&#160;resulting from the evaluation of the specified expression; the return type is of the same value type as the date stored in the column used in the expression..</p>
+            <ul>
+                <li value="1"><span class="CodeFont">FIRST_VALUE</span>&#160;returns the first value in the set, unless that value is <span class="CodeFont">NULL</span> and you have specified the <span class="CodeFont">IGNORE NULLS</span>&#160;qualifier; if you've specified <span class="CodeFont">IGNORE NULLS</span>, this function returns the first non-<span class="CodeFont">NULL</span>&#160;value in the set.</li>
+                <li value="2">If all values in the set are <span class="CodeFont">NULL</span>, <span class="CodeFont">FIRST_VALUE</span>&#160;always returns <span class="CodeFont">NULL</span>.</li>
+            </ul>
+            <div class="noteNote">Splice Machine always sorts <span class="CodeFont">NULL</span>&#160;values first in the results.</div>
+            <p class="heading2">Examples</p>
+            <p>The following query finds all players with 10 or more HomeRuns, and compares each player's home run count with the lowest total within that group on his team:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns, 
+   FIRST_VALUE(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns 
+        ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Least" 
+   FROM Players JOIN Batting ON Players.ID=Batting.ID
+   WHERE HomeRuns &gt; 10
+   ORDER BY Team, HomeRuns DESC;
+TEAM     |DISPLAYNAME             |HOMER&amp;|Least 
+-----------------------------------------------
+Cards    |Mitch Canepa            |28    |11    
+Cards    |Jonathan Pearlman       |17    |11    
+Cards    |Roger Green             |17    |11    
+Cards    |Michael Rastono         |13    |11    
+Cards    |Jack Hellman            |13    |11    
+Cards    |Kelly Wacherman         |11    |11    
+Giants   |Bob Cranker             |21    |12    
+Giants   |Buddy Painter           |19    |12    
+Giants   |Billy Bopper            |18    |12    
+Giants   |Mitch Duffer            |12    |12    
+
+10 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.WindowAggregrateFcns.html">Window and Aggregate </a>functions</li>
+                <li value="2"><a href="Avg.html"><span class="CodeFont">AVG</span></a> function</li>
+                <li value="3"><a href="Count.html"><span class="CodeFont">COUNT</span></a> function</li>
+                <li value="4"><a href="Lag.html"><span class="CodeFont">LAG</span></a>&#160;function</li>
+                <li value="5"><span class="CodeFont"><a href="LastValue.html">LAST_VALUE</a></span>&#160;function</li>
+                <li value="6"><span class="CodeFont"><a href="Lead.html">LEAD</a></span>&#160;function</li>
+                <li value="7"><a href="Min.html"><span class="CodeFont">MIN</span></a> function</li>
+                <li value="8"><a href="Sum.html"><span class="CodeFont">SUM</span></a> function</li>
+                <li value="9"><a href="../Clauses/Over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
+                <li value="10"><span class="ItalicFont"><a href="../../Developers/Fundamentals/UsingWindowFunctions.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

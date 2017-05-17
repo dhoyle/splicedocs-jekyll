@@ -1,0 +1,68 @@
+---
+title: SYSCHECKS system table
+description: System table that describes the check constraints within the current database.&#xD;&#xA;
+summary: System table that describes the check constraints within the current database.&#xD;&#xA;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_syschecks
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="SystemTables.SysChecks" id="SystemTables.SysChecks"></a><a name="kanchor4"></a>SYSCHECKS System Table</h1>
+            <p>The <span class="CodeFont">SYSCHECKS</span> table describes the check constraints within
+		the current database.</p>
+            <p>The following table shows the contents of the <span class="CodeFont">SYSCHECKS</span> system table.</p>
+            <table>
+                <caption>SYSCHECKS system table</caption>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Nullable</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">CONSTRAINTID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Unique identifier for the constraint</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CHECKDEFINITION</td>
+                        <td class="CodeFont">LONG VARCHAR</td>
+                        <td class="CodeFont">32,700</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Text of check constraint definition</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">REFERENCEDCOLUMNS</td>
+                        <td><span class="ItalicFont">com.splicemachine.
+							db.catalog.
+						ReferencedColumns</span>
+                            <p>This class
+						is not part of the public API.</p>
+                        </td>
+                        <td class="CodeFont">-1</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Description of the columns referenced by the check constraint</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.SystemTables.html">About System Tables</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,46 @@
+---
+title: DOUBLE PRECISION data type
+description: The DOUBLE PRECISION data type provides 8-byte storage for numbers using IEEE floating-point notation.DOUBLE can be used synonymously with DOUBLE PRECISION.
+summary: The DOUBLE PRECISION data type provides 8-byte storage for numbers using IEEE floating-point notation.DOUBLE can be used synonymously with DOUBLE PRECISION.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_datatypes_doubleprecision
+folder: SQLReference/DataTypes
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="DataTypes.DoublePrecision" id="DataTypes.DoublePrecision"></a><a name="kanchor429"></a>DOUBLE PRECISION</h1>
+            <p>The <span class="CodeFont">DOUBLE PRECISION</span> data type provides 8-byte storage for numbers
+using IEEE floating-point notation. <span class="CodeFont">DOUBLE</span> can be used synonymously with <span class="CodeFont">DOUBLE PRECISION</span>, and the documentation for this topic is identical to the documentation for the <span class="CodeFont"><a href="Double.html">DOUBLE</a></span>&#160;topic.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DOUBLE PRECISION</pre>
+            </div>
+            <p>or, alternately</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DOUBLE</pre>
+            </div>
+            <p class="heading2">Usage Notes</p>
+            <p>Here are several usage notes for the <span class="CodeFont">DOUBLE</span>/<span class="CodeFont">DOUBLE&#160;PRECISION</span>&#160;data type:</p>
+            <ul>
+                <li value="1">The following range limitations apply:
+        <table summary="Value limitations for the DOUBLE PRECISION data type"><col /><col /><thead><tr><th>Limit type</th><th>Limitation</th></tr></thead><tbody><tr><td>Smallest <span class="CodeFont">DOUBLE</span> value</td><td class="CodeFont">-1.79769E+308</td></tr><tr><td>Largest <span class="CodeFont">DOUBLE</span> value</td><td class="CodeFont"> 1.79769E+308</td></tr><tr><td>Smallest positive <span class="CodeFont">DOUBLE</span> value</td><td class="CodeFont"> 2.225E-307</td></tr><tr><td>Largest negative <span class="CodeFont">DOUBLE</span> value</td><td class="CodeFont">-2.225E-307</td></tr></tbody></table><div class="noteNote">These limits are different from the <samp>java.lang.Double</samp> Java type limits</div></li>
+                <li value="2">An exception is thrown when any double value is calculated or entered that is outside of these value ranges. Arithmetic operations <span class="BoldFont">do not</span> round their resulting values to zero. If the values are too small, you will receive an exception. </li>
+                <li value="3">Numeric floating point constants are limited to a length of 30 characters.
+        <div class="preWrapper"><pre class="Example">   -- this example will fail because the constant is too long:
+values 01234567890123456789012345678901e0;</pre></div></li>
+                <li value="4">When mixed with other data types in expressions, the resulting data type follows the rules shown in <a href="Intro.NumericTypes.html#NumericTypePromotion">Numeric type promotion in expressions</a>. See also <a href="Intro.NumericTypes.html#StoringValues">Storing values of one numeric data type in columns of another numeric data type</a>.</li>
+            </ul>
+            <p class="heading2">Corresponding Compile-time Java Type</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">java.lang.Double</pre>
+            </div>
+            <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DOUBLE</pre>
+            </div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="Example">3421E+09
+425.43E9
+9E-10
+4356267544.32333E+30</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

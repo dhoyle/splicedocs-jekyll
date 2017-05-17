@@ -1,0 +1,56 @@
+---
+title: SQLJ.REMOVE_JAR built-in system procedure
+
+description: Built-in system procedure that removes a jar file from a database.&#xD;
+summary: Built-in system procedure that removes a jar file from a database.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_removejar
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.SQLJRemoveJar" id="BuiltInSysProcs.SQLJRemoveJar"></a><a name="kanchor498"></a>SQLJ.REMOVE_JAR</h1>
+            <p>
+The <span class="ItalicFont">SQLJ.REMOVE_JAR</span> system procedure removes a jar file from a database. </p>
+            <div class="noteNote">For more information about using JAR&#160;files, see the <a href="../../Developers/FcnsAndProcs/Intro.FcnsAndProcs.html">Using Functions and Stored Procedures</a> section in our <span class="ItalicFont">Developer's Guide</span>.</div>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SQLJ.REMOVE_JAR(
+		IN <span class="ItalicFont">qualified_jar_name</span> VARCHAR(32672),
+ 		IN <span class="ItalicFont">undeploy</span> INTEGER
+		)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">qualified_jar_name</p>
+                <p class="paramDefnFirst">The Splice Machine name of the
+jar file, qualified by the schema name. Two examples:
+</p>
+                <div class="preWrapper"><pre class="Example">MYSCHEMA.Sample1
+   -- a delimited identifier.
+MYSCHEMA."Sample2"</pre>
+                </div>
+                <p class="paramName">undeploy</p>
+                <p class="paramDefnFirst">If set to <span class="CodeFont">1</span>, this indicates the existence of an SQLJ deployment descriptor file.
+Splice Machine ignores this
+argument, so it is normally set to <span class="CodeFont">0</span>.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Execute Privileges</p>
+            <p>If authentication and SQL authorization are both enabled, only the database owner has
+execute privileges on this function by default. The
+database owner can grant access to other users.</p>
+            <p class="heading2">SQL Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">-- SQL statement
+CALL SQLJ.REMOVE_JAR('SPLICE.Sample1', 0);</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="SQLJInstallJar.html"><span class="CodeFont">SQLJ_INSTALL_JAR</span></a>
+                </li>
+                <li value="2"><a href="SQLJReplaceJar.html"><span class="CodeFont">SQLJ_REPLACE_JAR</span></a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

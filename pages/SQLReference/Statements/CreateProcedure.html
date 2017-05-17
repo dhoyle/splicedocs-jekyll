@@ -1,0 +1,109 @@
+---
+title: CREATE PROCEDURE statement
+description: Creates Java stored procedures, which you can then call using the CallProcedure statement.
+summary: Creates Java stored procedures, which you can then call using the CallProcedure statement.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_createprocedure
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateFunction" id="Statements.CreateFunction"></a><a name="kanchor230"></a>CREATE PROCEDURE</h1>
+            <p>The <span class="CodeFont">CREATE PROCEDURE</span> statement allows you to create Java procedures, which you can then  call using the <span class="CodeFont">CALL PROCEDURE</span> statement.</p>
+            <p>For details on how Splice Machine matches procedures to Java methods,	see <a href="../ArgMatching/ArgumentMatching.html">Argument matching</a>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CREATE PROCEDURE <span class="ItalicFont">procedureName</span> (
+	[ <span class="ItalicFont">procedureParameter</span> 
+   	[, <span class="ItalicFont">procedureParameter</span>] ] * 
+	)
+     [ <span class="ItalicFont"><a href="#FunctionElements">ProcedureElement</a></span> ] *</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">procedureName</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">[ <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="../Identifiers/Intro.Identifiers.html">SQL Identifier</a></span></pre>
+                </div>
+                <p class="paramDefn">If <span class="CodeFont">schemaName</span> is not provided, then the current schema is the default schema. If a qualified procedure name is specified, the schema name cannot begin with <span class="CodeFont">SYS</span>.</p>
+                <p class="paramName">procedureParameter</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">[ { IN | OUT | INOUT } ] [ <span class="ItalicFont">parameterName</span> ] <span class="ItalicFont"><a href="../DataTypes/Intro.DataTypes.html">DataType</a></span></pre>
+                </div>
+                <p class="paramDefnFirst"><span class="CodeFont">parameterName</span> is an identifier that must be unique within the procedure's parameter names. </p>
+                <p class="paramDefn">By default, parameters are <span class="CodeFont">IN</span> parameters unless you specify otherwise.</p>
+                <div class="noteNote">Data-types such as <span class="CodeFont">BLOB, CLOB, LONG VARCHAR</span> are not allowed as parameters in a <span class="CodeFont">CREATE PROCEDURE</span> statement.<br /><br />Also:&#160;At this time, Splice Machine will return only  one <span class="CodeFont">ResultSet</span> from a stored procedure.<br /><br /></div>
+                <p class="paramName">procedureElement</p>
+                <p class="paramDefnFirst">See the description of <a href="#FunctionElements">procedure Elements</a> in the next section.</p>
+            </div>
+            <p class="heading2"><a name="FunctionElements"></a>Procedure Elements</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"> {
+    LANGUAGE { JAVA }
+  | <span class="ItalicFont">DeterministicCharacteristic</span>
+  | EXTERNAL NAME <span class="ItalicFont">javaMethodName</span>
+  | PARAMETER STYLE <span class="ItalicFont">parameterStyle</span>
+  | <span class="ItalicFont">sqlStatementType</span>
+}</pre>
+            </div>
+            <p>The procedure elements may appear in any order, but each type of element can only appear once. These procedure elements are required:</p>
+            <ul>
+                <li value="1">&#160;<span class="ItalicFont">LANGUAGE</span></li>
+                <li value="2"><span class="ItalicFont">EXTERNAL&#160;NAME</span>
+                </li>
+                <li value="3"><span class="ItalicFont">PARAMETER&#160;STYLE</span>
+                </li>
+            </ul>
+            <div class="paramList">
+                <p class="paramName">LANGUAGE</p>
+                <p class="paramDefnFirst">Only <span class="CodeFont">JAVA</span>&#160;is accepted at this time. Splice Machine will call the procedure as a public static method in a Java class.</p>
+                <p class="paramName">DeterministicCharacteristic</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">DETERMINISTIC | NOT DETERMINISTIC</pre>
+                </div>
+                <p class="paramDefnFirst">The default value is <span class="CodeFont">NOT&#160;DETERMINISTIC</span>.</p>
+                <p class="paramDefn">Specifying <span class="CodeFont">DETERMINISTIC</span>&#160;indicates that the procedure always returns the same result, given the same input values. This allows Splice Machine to call the procedure with greater efficiency; however, specifying this for a procedure that is actually non-deterministic will have the opposite effect -- efficiency of calls to the procedure will be reduced.</p>
+                <p class="paramName">javaMethodName</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">class_name.method_name</pre>
+                </div>
+                <p class="paramDefnFirst">This is the name of the Java method to call when this procedure executes. </p>
+                <p class="paramName">parameterStyle</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">JAVA</pre>
+                </div>
+                <p class="paramDefn">Stored procedures use a parameter-passing convention is used that conforms to the Java language and SQL Routines specification. <span class="CodeFont">INOUT</span> and <span class="CodeFont">OUT</span> parameters are passed as single entry arrays to facilitate returning values. Result sets can be returned through additional parameters to the Java method of type <span class="CodeFont">java.sql.ResultSet[]</span> that are passed single entry arrays.</p>
+                <p class="paramDefn">Splice Machine does not support long column types such as <span class="CodeFont">LONG&#160;VARCHAR</span>or <span class="CodeFont">BLOB</span>; an error will occur if you try to use one of these long column types. </p>
+                <p class="paramName">sqlStatementType</p>
+                <div class="paramList">
+                    <p class="paramName">CONTAINS SQL</p>
+                    <p class="paramDefnFirst">Indicates that SQL statements that neither read nor modify SQL data can be executed by the procedure. </p>
+                    <p class="paramName">NO SQL</p>
+                    <p class="paramDefnFirst">Indicates that the procedure cannot execute any SQL statements</p>
+                    <p class="paramName">READS SQL DATA </p>
+                    <p class="paramDefnFirst">Indicates that some SQL statements that do not modify SQL data can be included in the procedure.  This is the default value.</p>
+                    <p class="paramName">MODIFIES&#160;SQL DATA </p>
+                    <p class="paramDefnFirst">Indicates that the procedure can execute any SQL&#160;statement.</p>
+                </div>
+            </div>
+            <p class="heading2">Example</p>
+            <p>The following example depends on a fictionalized java class. For functional examples of using <span class="CodeFont">CREATE&#160;PROCEDURE</span>, please see the <a href="../../Developers/FcnsAndProcs/Intro.FcnsAndProcs.html">Using Functions and Stored Procedures</a> section of our <span class="ItalicFont">Developer's Guide</span>.</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE PROCEDURE SALES.TOTAL_REVENUE (
+    IN S_MONTH INTEGER,
+    IN S_YEAR INTEGER, OUT TOTAL DECIMAL(10,2))
+    PARAMETER STYLE JAVA 
+    READS SQL DATA LANGUAGE
+    JAVA EXTERNAL NAME 'com.example.sales.calculateRevenueByMonth';
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../ArgMatching/ArgumentMatching.html">Argument matching</a>
+                </li>
+                <li value="2"><a href="CreateFunction.html"><span class="CodeFont">CREATE_FUNCTION</span></a> statement</li>
+                <li value="3"><a href="../BuiltInFcns/CurrentUser.html"><span class="CodeFont">CURRENT_USER</span></a> function</li>
+                <li value="4"><a href="../DataTypes/Intro.NumericTypes.html">Data Types</a>
+                </li>
+                <li value="5"><a href="../Identifiers/IdentifierTypes.html#SchemaName">Schema Name</a>
+                </li>
+                <li value="6"><a href="../Identifiers/Intro.Identifiers.html">SQL Identifier</a>
+                </li>
+                <li value="7"><a href="../BuiltInFcns/SessionUser.html"><span class="CodeFont">SESSION_USER</span></a> function</li>
+                <li value="8"><a href="../BuiltInFcns/User.html"><span class="CodeFont">USER</span></a> function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

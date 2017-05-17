@@ -1,0 +1,94 @@
+---
+title: TIMESTAMP built-in SQL function
+description: Built-in SQL function that returns a timestamp from a pair of values
+summary: Built-in SQL function that returns a timestamp from a pair of values
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_timestamp
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1> <a name="BuiltInFcns.TimeStamp" id="BuiltInFcns.TimeStamp"></a><a name="kanchor106"></a>TIMESTAMP</h1>
+            <p>The <span class="CodeFont">TIMESTAMP</span> function returns a timestamp from a value or a pair of values.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">TIMESTAMP ( <span class="ItalicFont">expression1</span> [, <span class="ItalicFont">expression2</span> ] )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">expression1
+            </p>
+                <p class="paramDefnFirst">If <span class="ItalicFont">expression2</span> is also specified, <span class="ItalicFont">expression1</span> must be a date or a valid string representation of a date.
+            </p>
+                <p class="paramDefn">If only <span class="ItalicFont">expression1</span> is specified, it must be one of the following:
+            <ul><li value="1">A <a href="../DataTypes/TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;value</li><li value="2">A&#160;<span class="CodeFont"><a href="../DataTypes/Date.html">DATE</a></span>&#160;value</li><li value="3">A valid SQL&#160;string representation of a timestamp</li></ul></p>
+                <p class="paramName">expression2
+            </p>
+                <p class="paramDefnFirst">(Optional). A time or a valid string representation of a time.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The data type of the result depends on how the input expression(s) were specified:</p>
+            <ul>
+                <li value="1">If both <span class="ItalicFont">expression1</span> and <span class="ItalicFont">expression2</span> are specified, the result is a timestamp with the date specified by <span class="ItalicFont">expression1</span> and the time specified by <span class="ItalicFont">expression2</span>. The microsecond part of the timestamp is zero.</li>
+                <li value="2">If only <span class="ItalicFont">expression1</span> is specified and it is a timestamp, the result is that timestamp.</li>
+                <li value="3">If only <span class="ItalicFont">expression1</span> is specified and it is a string, the result is the timestamp represented by that string. If <span class="ItalicFont">expression1</span> is a string of length 14, the timestamp has a microsecond part of zero. </li>
+            </ul>
+            <p class="heading2">Examples</p>
+            <p>This example converts date and time strings into a timestamp value:</p>
+            <div class="preWrapper"><pre class="Example">splice&gt; VALUES TIMESTAMP('2015-11-12', '19:02:43');
+1                            
+-----------------------------
+2015-11-12 19:02:43.0        
+
+1 row selected</pre>
+            </div>
+            <p>This query shows the timestamp version of the birth date of each player born in the final quarter of the year:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT TIMESTAMP(BirthDate) 
+   FROM Players 
+   WHERE MONTH(BirthDate) &gt; 10 
+   ORDER BY BirthDate;
+1                            
+-----------------------------
+1980-12-19 00:00:00.0        
+1983-11-06 00:00:00.0        
+1983-11-28 00:00:00.0        
+1983-12-24 00:00:00.0        
+1984-11-22 00:00:00.0        
+1985-11-07 00:00:00.0        
+1985-11-26 00:00:00.0        
+1985-12-21 00:00:00.0        
+1986-11-13 00:00:00.0        
+1986-11-24 00:00:00.0        
+1986-12-16 00:00:00.0        
+1987-11-12 00:00:00.0        
+1987-11-16 00:00:00.0        
+1987-12-17 00:00:00.0        
+1988-12-21 00:00:00.0        
+1989-11-17 00:00:00.0        
+1991-11-15 00:00:00.0        
+
+17 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CurrentDate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
+                <li value="2"><a href="../DataTypes/Date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
+                <li value="3"><a href="Date.html"><span class="CodeFont">DATE</span></a>&#160;function</li>
+                <li value="4"><a href="Day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
+                <li value="5"><a href="Extract.html"><span class="CodeFont">EXTRACT</span></a>&#160;function</li>
+                <li value="6"><a href="LastDay.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
+                <li value="7"><a href="Month.html"><span class="CodeFont">MONTH</span></a> function</li>
+                <li value="8"><a href="MonthBetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
+                <li value="9"><a href="MonthName.html"><span class="CodeFont">MONTHNAME</span></a>&#160;function</li>
+                <li value="10"><a href="NextDay.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
+                <li value="11"><a href="Now.html"><span class="CodeFont">NOW</span></a> function</li>
+                <li value="12"><a href="Quarter.html"><span class="CodeFont">QUARTER</span></a> function</li>
+                <li value="13"><a href="../DataTypes/Time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
+                <li value="14"><a href="ToChar.html"><span class="CodeFont">TO_CHAR</span></a>&#160;function</li>
+                <li value="15"><a href="ToDate.html"><span class="CodeFont">TO_DATE</span></a>&#160;function</li>
+                <li value="16"><a href="Week.html"><span class="CodeFont">WEEK</span></a> function</li>
+                <li value="17"><span class="ItalicFont"><a href="../../Developers/Fundamentals/WorkingWithDates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

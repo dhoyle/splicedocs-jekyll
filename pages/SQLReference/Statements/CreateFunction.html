@@ -1,0 +1,157 @@
+---
+title: CREATE FUNCTION statement
+description: Creates Java functions that you can then use in expressions. 
+summary: Creates Java functions that you can then use in expressions. 
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_createfunction
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateFunction" id="Statements.CreateFunction"></a><a name="kanchor566"></a>CREATE FUNCTION</h1>
+            <p>The <span class="CodeFont">CREATE FUNCTION</span> statement allows you to create Java functions, which you can then use in expressions.</p>
+            <p>For details on how Splice Machine matches functions to Java methods,	see <a href="../ArgMatching/ArgumentMatching.html">Argument matching</a>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CREATE FUNCTION <span class="ItalicFont">functionName</span> (
+	[ <span class="ItalicFont">functionParameter</span> 
+   	[, <span class="ItalicFont">functionParameter</span>] ] * 
+	)
+    RETURNS <span class="ItalicFont">returnDataType</span> [ <span class="ItalicFont">functionElement</span> ] *</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">functionName</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">[ <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="../Identifiers/Intro.Identifiers.html">SQL Identifier</a></span></pre>
+                </div>
+                <p class="paramDefn">If <span class="CodeFont">schemaName</span> is not provided, then the current schema is the default schema. If a qualified procedure name is specified, the schema name cannot begin with <span class="CodeFont">SYS</span>.</p>
+                <p class="paramName">functionParameter</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">[ <span class="ItalicFont">parameterName</span> ] <span class="ItalicFont"><a href="../DataTypes/Intro.DataTypes.html">DataType</a></span></pre>
+                </div>
+                <p class="paramDefnFirst"><span class="CodeFont">parameterName</span> is an identifier that must be unique within the function's parameter names. </p>
+                <div class="noteNote">Data-types such as <span class="CodeFont">BLOB, CLOB, LONG VARCHAR</span> are not allowed as parameters in a <span class="CodeFont">CREATE FUNCTION</span> statement.</div>
+                <p class="paramName">returnDataType</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="../DataTypes/Intro.DataTypes.html">DataType</a></span> |
+<span class="ItalicFont"><a href="#TableType">TableType</a></span></pre>
+                </div>
+                <p class="paramName">functionElement</p>
+                <p class="paramDefnFirst">See the description of <a href="#FunctionElements">Function Elements</a> in the next section.</p>
+            </div>
+            <p class="heading2"><a name="TableType"></a>TableType</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">TABLE( <span class="ItalicFont">ColumnElement</span> [,<span class="ItalicFont">ColumnElement</span>]* )
+</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">ColumnElement</p>
+                <p class="paramDefnFirst">A <span class="ItalicFont"><a href="../DataTypes/Intro.DataTypes.html">DataType</a></span>or an <span class="ItalicFont"><a href="../Identifiers/Intro.Identifiers.html">SQL Identifier</a></span>.</p>
+            </div>
+            <p>Table functions return <span class="CodeFont">TableType</span> results. Currently, only Splice Machine-style table functions are supporte, which are functions that return JDBC <span class="ItalicFont">ResultSets.</span></p>
+            <p>When values are extracted from a <span class="ItalicFont">ResultSet</span>, the data types of the values are coerced to match the data types declared in the <span class="CodeFont">CREATE&#160;FUNCTION&#160;</span>statement. Here&#160;are a few coercion rules you should know about:</p>
+            <ul>
+                <li value="1">values that are too long are truncated to the maximum declared length</li>
+                <li value="2">if a string value is returned in the <span class="ItalicFont">ResultSet</span> for a column of type <span class="CodeFont">CHAR</span>, and the string is shorter than the column length, the string is padded with spaces</li>
+            </ul>
+            <p class="heading2"><a name="FunctionElements"></a>Function Elements</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"> {
+    LANGUAGE { JAVA }
+  | <span class="ItalicFont">DeterministicCharacteristic</span>
+  | EXTERNAL NAME <span class="ItalicFont">javaMethodName</span>
+  | PARAMETER STYLE <span class="ItalicFont">parameterStyle</span>
+  | <span class="ItalicFont">sqlStatementType</span>
+  | <span class="ItalicFont">nullInputAction</span>
+}</pre>
+            </div>
+            <p>The function elements may appear in any order, but each type of element can only appear once. </p>
+            <p>These function elements are required:</p>
+            <ul>
+                <li value="1">&#160;<span class="ItalicFont">LANGUAGE</span></li>
+                <li value="2"><span class="ItalicFont">EXTERNAL&#160;NAME</span>
+                </li>
+                <li value="3"> <span class="ItalicFont">PARAMETER&#160;STYLE</span></li>
+            </ul>
+            <div class="paramList">
+                <p class="paramName">LANGUAGE</p>
+                <p class="paramDefnFirst">Only <span class="CodeFont">JAVA</span>&#160;is accepted at this time. Splice Machine will call the function as a public static method in a Java class.</p>
+                <p class="paramName">DeterministicCharacteristic</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">DETERMINISTIC | NOT DETERMINISTIC</pre>
+                </div>
+                <p class="paramDefnFirst">The default value is <span class="CodeFont">NOT&#160;DETERMINISTIC</span>.</p>
+                <p class="paramDefn">Specifying <span class="CodeFont">DETERMINISTIC</span>&#160;indicates that the function always returns the same result, given the same input values. This allows Splice Machine to call the function with greater efficiency; however, specifying this for a function that is actually non-deterministic will have the opposite effect -- efficiency of calls to the function will be reduced.</p>
+                <p class="paramName">javaMethodName</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">class_name.method_name</pre>
+                </div>
+                <p class="paramDefnFirst">This is the name of the Java method to call when this function executes. </p>
+                <p class="paramName">parameterStyle</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">JAVA | DERBY_JDBC_RESULT_SET</pre>
+                </div>
+                <p class="paramDefnFirst">Only use <span class="CodeFont">DERBY_JDBC_RESULT_SET</span> if this is a Splice Machine-style table function that returns a <a href="#TableType">TableType</a> result, and is mapped to a Java method that returns a JDBC <span class="ItalicFont">ResultSet</span>. </p>
+                <p class="paramDefn">Otherwise, use <span class="CodeFont">JAVA</span>-style parameters, which means that a parameter-passing convention is used that conforms to the Java language and SQL Routines specification. <span class="CodeFont">INOUT</span> and <span class="CodeFont">OUT</span> parameters are passed as single entry arrays to facilitate returning values. Result sets can be returned through additional parameters to the Java method of type <span class="CodeFont">java.sql.ResultSet[]</span> that are passed single entry arrays.</p>
+                <p class="paramDefn">Splice Machine does not support long column types such as <span class="CodeFont">LONG&#160;VARCHAR</span>or <span class="CodeFont">BLOB</span>; an error will occur if you try to use one of these long column types. </p>
+                <p class="paramName">sqlStatementType</p>
+                <div class="paramListNested">
+                    <p class="paramName">CONTAINS SQL</p>
+                    <p class="paramDefnFirst">Indicates that SQL statements that neither read nor modify SQL data can be executed by the function. Statements that are not supported in any function return a different error.</p>
+                    <p class="paramName">NO SQL</p>
+                    <p class="paramDefnFirst">Indicates that the function cannot execute any SQL statements</p>
+                    <p class="paramName">READS SQL DATA </p>
+                    <p class="paramDefnFirst">Indicates that some SQL statements that do not modify SQL data can be included in the function. Statements that are not supported in any stored function return a different error. This is the default value.</p>
+                </div>
+                <p class="paramName">nullInputAction</p>
+                <div class="paramListNested">
+                    <p class="paramName">RETURNS NULL ON NULL INPUT</p>
+                    <p class="paramDefnFirst">If any input argument is null, the function is not invoked, and the result is null.</p>
+                    <p class="paramName">CALLED ON NULL INPUT</p>
+                    <p class="paramDefnFirst">This is the default value.</p>
+                    <p class="paramDefn">The function is invoked even if all input arguments are null, which means that the invoked function must test for null argument values.The result may be null or not null.</p>
+                </div>
+            </div>
+            <p class="heading2">Example of declaring a scalar function</p>
+            <p>For more complete examples of using <span class="CodeFont">CREATE&#160;FUNCTION</span>, please see the <a href="../../Developers/FcnsAndProcs/Intro.FcnsAndProcs.html">Using Functions and Stored Procedures</a> section of our <span class="ItalicFont">Developer's Guide</span>.</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE FUNCTION TO_DEGREES( RADIANS DOUBLE )
+  RETURNS DOUBLE
+  PARAMETER STYLE JAVA
+  NO SQL LANGUAGE JAVA
+  EXTERNAL NAME 'java.lang.Math.toDegrees';
+
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading2">Example of declaring a table function</p>
+            <p class="body">This example reads data from a mySql database and inserts it into a Splice&#160;Machine database.</p>
+            <p>We first implement a class that contains a public static method that connects to an external (foreign)&#160;database, uses a prepared statement to pull results from it, and returns those results as a JDBC&#160;<span class="CodeFont">ResultSet</span>:</p>
+            <div class="preWrapperWide"><pre class="Example">package splicemachine.example.vti;<br />import java.sql.*;<br />public class EmployeeTable<br />{<br />&#160;&#160;&#160;public static ResultSet read()<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;throws SQLException<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Connection conn DriverManager.getConnection( "jdbc:mysql://localhost/hr?user=myName&amp;password=myPswd" );<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;PreparedStatement ps = conn.prepareStatement( "SELECT&#160;* FROM&#160;hrSchema.EmployeeTable"&#160;);<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return ps.executeQuery();<br />&#160;&#160;&#160;&#160;}<br />}<br /></pre>
+            </div>
+            <p> Next we use the <span class="CodeFont"><a href="#">CREATE&#160;FUNCTION</a></span>&#160;.statement to declare a table function to read data from our external database and insert it into our Splice Machine database:</p>
+            <div class="preWrapperWide"><pre class="Example">CREATE FUNCTION externalEmployees()
+ &#160;&#160;RETURNS TABLE
+&#160;&#160;&#160;&#160;&#160;(
+&#160;&#160;&#160;&#160;  employeeId    INT,
+&#160;&#160;&#160;&#160;  lastName      VARCHAR( 50 ),
+&#160;&#160;&#160;&#160;  firstName     VARCHAR( 50 ),
+&#160;&#160;&#160;&#160;  birthday      DATE
+&#160;&#160;&#160;&#160;&#160;)
+&#160;&#160;&#160;LANGUAGE JAVA
+&#160;&#160;&#160;PARAMETER STYLE SPLICE_JDBC_RESULT_SET<br />&#160;&#160;&#160;READS SQL DATA<br />&#160;&#160;&#160;EXTERNAL NAME 'com.splicemachine.example.vti.readEmployees';</pre>
+            </div>
+            <p>Now we're ready to invoke our table function to read data from the external database and insert it into a table in our Splice&#160;Machine database.</p>
+            <p>To invoke a table function, you must wrap it in a <span class="CodeFont">TABLE</span> constructor in the <span class="CodeFont">FROM</span> list of a query. For example, we could insert employee data from that database into a table named <span class="CodeFont">employees</span> in our Splice Machine database:</p>
+            <div class="preWrapperWide"><pre class="Example">INSERT INTO employees
+  SELECT myExtTbl.*
+    FROM TABLE (externalEmployees() ) myExtTbl;</pre>
+            </div>
+            <div class="noteNote">You <span class="BoldFont">MUST</span>&#160;specify the table alias when using a virtual table; for example, <span class="CodeFont">myExtTbl</span> in the above example.</div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CreateProcedure.html"><span class="CodeFont">CREATE_PROCEDURE</span></a>&#160;statement</li>
+                <li value="2"><a href="../BuiltInFcns/CurrentUser.html"><span class="CodeFont">CURRENT_USER</span></a> function</li>
+                <li value="3"><a href="../DataTypes/Intro.NumericTypes.html">Data Types</a>
+                </li>
+                <li value="4"><a href="DropFunction.html"><span class="CodeFont">DROP&#160;FUNCTION</span></a>&#160;statement</li>
+                <li value="5"><a href="../Identifiers/IdentifierTypes.html#SchemaName">Schema Name</a>
+                </li>
+                <li value="6"><a href="../Identifiers/Intro.Identifiers.html">SQL Identifier</a>
+                </li>
+                <li value="7"><a href="../BuiltInFcns/SessionUser.html"><span class="CodeFont">SESSION_USER</span></a> function</li>
+                <li value="8"><a href="../BuiltInFcns/User.html"><span class="CodeFont">USER</span></a> function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

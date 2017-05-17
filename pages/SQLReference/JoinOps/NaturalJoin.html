@@ -1,0 +1,56 @@
+---
+title: NATURAL JOIN
+description: Join operation that creates an implicit join clause for you based on the common columns (those with the same name in both tables)&#160;in the two tables being joined. 
+summary: Join operation that creates an implicit join clause for you based on the common columns (those with the same name in both tables)&#160;in the two tables being joined. 
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_joinops_naturaljoin
+folder: SQLReference/JoinOps
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="JoinOps.NaturalJoin" id="JoinOps.NaturalJoin"></a><a name="kanchor502"></a>NATURAL JOIN</h1>
+            <p>A <span class="CodeFont">NATURAL JOIN</span> is a <a href="AboutJoins.html"> <span class="CodeFont">JOIN</span> operation</a> that creates an implicit join clause for you based on the common columns in the two tables being joined. Common columns are columns that have the same name in both tables. </p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="../Expressions/Table.html">TableExpression</a></span> NATURAL 
+   [ { LEFT | RIGHT } 
+     [ OUTER ] | INNER ] JOIN
+   { <a href="../Expressions/Table.html#TableViewExpression">TableViewOrFunctionExpression</a> | 
+     ( <span class="ItalicFont"><a href="../Expressions/Table.html">TableExpression</a></span> ) }</pre>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>A <span class="CodeFont">NATURAL JOIN</span> can be an <span class="CodeFont">INNER</span> join, a <span class="CodeFont">LEFT OUTER</span> join, or a <span class="CodeFont">RIGHT OUTER</span> join. The default is <span class="CodeFont">INNER</span> join. </p>
+            <p>If the <span class="CodeFont">SELECT</span> statement in which the <span class="CodeFont">NATURAL JOIN</span> operation appears has an asterisk (<span class="CodeFont">*</span>) in the select list, the asterisk will be expanded to the following list of columns (in the shown order): </p>
+            <ul>
+                <li value="1">All the common columns</li>
+                <li value="2">Every column in the first (left) table that is not a common column</li>
+                <li value="3">Every column in the second (right) table that is not a common column</li>
+            </ul>
+            <p>An asterisk qualified by a table name (for example, <span class="CodeFont">COUNTRIES.*</span>) will be expanded to every column of that table that is not a common column. </p>
+            <p>If a common column is referenced without being qualified by a table name, the column reference points to the column in the first (left) table if the join is an <span class="CodeFont">INNER JOIN</span> or a <span class="CodeFont">LEFT OUTER JOIN</span>. If it is a <span class="CodeFont">RIGHT OUTER JOIN</span>, unqualified references to a common column point to the column in the second (right) table. </p>
+            <div class="noteNote">Splice Machine does not currently support <span class="CodeFont">NATURAL SELF JOIN</span> operations.</div>
+            <p class="heading2">Examples</p>
+            <p>If the tables <span class="CodeFont">COUNTRIES</span> and <span class="CodeFont">CITIES</span> have two common columns named <span class="CodeFont">COUNTRY</span> and <span class="CodeFont">COUNTRY_ISO_CODE</span>, the following two <span class="CodeFont">SELECT</span> statements are equivalent:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * 
+  FROM COUNTRIES 
+  NATURAL JOIN CITIES;
+
+splice&gt;&#160;SELECT * 
+  FROM COUNTRIES 
+  JOIN CITIES
+  USING (COUNTRY, COUNTRY_ISO_CODE);</pre>
+            </div>
+            <p> The following example is similar to the one above, but it also preserves unmatched rows from the first (left) table: </p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * 
+  FROM COUNTRIES 
+  NATURAL LEFT JOIN CITIES;</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.JoinOps.html"><span class="CodeFont">JOIN</span></a>&#160;operations</li>
+                <li value="2"><a href="../Expressions/Table.html"><span class="CodeFont">TABLE</span></a> expression</li>
+                <li value="3"><a href="../Clauses/Using.html"><span class="CodeFont">USING</span></a>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

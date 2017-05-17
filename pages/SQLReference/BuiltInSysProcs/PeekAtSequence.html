@@ -1,0 +1,42 @@
+---
+title: SYSCS_PEEK_AT_SEQUENCE built-in system function
+description: Built-in system function that allows users to observe the current value of a sequence generator without querying a system table
+summary: Built-in system function that allows users to observe the current value of a sequence generator without querying a system table
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_peekatseq
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysFcns.PeekAtSequence" id="BuiltInSysFcns.PeekAtSequence"></a><a name="kanchor205"></a>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE Function</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</samp> function allows users to observe the instantaneous current value of a sequence generator without having to query the <a href="../SystemTables/SysSequences.html"><span class="CodeFont">SYSSEQUENCES</span> system table</a>. </p>
+            <p>Querying the <span class="CodeFont">SYSSEQUENCES</span> table does not actually return the current value; it only returns an upper bound on that value, which is the end of the chunk of sequence values that has been pre-allocated but not yet used. </p>
+            <p>The <samp>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</samp> function shows you the very next value that will be returned by a <span class="CodeFont">NEXT VALUE FOR</span> clause. Users should never directly query the <span class="CodeFont">SYSSEQUENCES</span> table, because that will cause sequence generator concurrency to slow drastically.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">BIGINT SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE(
+			IN <span class="ItalicFont">SchemaName</span> VARCHAR(128),
+			IN <span class="ItalicFont">SequenceName</span> VARCHAR(128)
+			)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">SchemaName</p>
+                <p class="paramDefnFirst">The name of the schema.</p>
+                <p class="paramName">SequenceName</p>
+                <p class="paramDefnFirst">The name of the sequence.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>Returns the next value that will be returned for the sequence.</p>
+            <p class="heading2">Execute Privileges</p>
+            <p>By default, all users have execute privileges on this function.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE('SPLICE', 'PlayerID_seq');
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../SystemTables/SysSequences.html"><span class="CodeFont">SYSSEQUENCES</span></a> system table</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

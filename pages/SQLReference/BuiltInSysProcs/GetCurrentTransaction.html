@@ -1,0 +1,52 @@
+---
+title: SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION built-in system procedure
+
+description: Built-in system procedure that displays summary information about the current transaction.&#xD;
+summary: Built-in system procedure that displays summary information about the current transaction.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getcurrenttransaction
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.DumpTransactions" id="BuiltInSysProcs.DumpTransactions"></a><a name="kanchor233"></a>SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION</samp> system procedure displays summary information about the current transaction. </p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The displayed results of calling <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION</span> include these values:</p>
+            <table summary=" summary=&quot;Columns in Get_Current_Transactions results display&quot;">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>&#160;</th>
+                        <th>&#160;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="BoldFont">Value</span>
+                        </td>
+                        <td><span class="BoldFont">Description</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">txnId</td>
+                        <td>The ID&#160;of the current transaction</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION();
+txnId
+---------------------
+2081
+
+1 row selected</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

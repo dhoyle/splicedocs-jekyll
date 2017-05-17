@@ -1,0 +1,63 @@
+---
+title: SQLJ.REPLACE_JAR built-in system procedure
+
+description: Built-in system procedure that replaces a jar file in a database.
+summary: Built-in system procedure that replaces a jar file in a database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_replacejar
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.SQLJReplaceJar" id="BuiltInSysProcs.SQLJReplaceJar"></a><a name="kanchor275"></a>SQLJ.REPLACE_JAR</h1>
+            <p>
+The <span class="CodeFont">SQLJ.REPLACE_JAR</span> system procedure replaces a jar file in a database. </p>
+            <div class="noteNote">For more information about using JAR&#160;files, see the <a href="../../Developers/FcnsAndProcs/Intro.FcnsAndProcs.html">Using Functions and Stored Procedures</a> section in our <span class="ItalicFont">Developer's Guide</span>.</div>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SQLJ.REPLACE_JAR(
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IN <span class="ItalicFont">jar_file_path_or-url</span> VARCHAR(32672),
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IN <span class="ItalicFont">qualified_jar_name</span> VARCHAR(32672)
+)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">jar_file_path_or-url</p>
+                <p class="paramDefnFirst">The path or URL of the jar file to use as a replacement. A path includes
+both the directory and the file name (unless the file is in the current
+directory, in which case the directory is optional). For example:
+</p>
+                <div class="preWrapper"><pre class="Example">d:/todays_build/tours.jar</pre>
+                </div>
+                <p class="paramName">qualified_jar_name</p>
+                <p class="paramDefnFirst">The Splice Machine name of the
+jar file, qualified by the schema name. Two examples:
+</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">MYSCHEMA.Sample1
+  -- a delimited identifier.
+MYSCHEMA."Sample2"</pre>
+                </div>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Execute Privileges</p>
+            <p>If authentication and SQL authorization are both enabled, only the database owner has
+execute privileges on this function by default. The
+database owner can grant access to other users.</p>
+            <p class="heading2">SQL Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- SQL statement
+CALL sqlj.replace_jar('c:\myjarfiles\newtours.jar', 'SPLICE.Sample1');
+   
+   -- SQL statement
+   -- replace jar from remote location
+CALL SQLJ.REPLACE_JAR('http://www.example.com/tours.jar', 'SPLICE.Sample2');</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="SQLJInstallJar.html"><span class="CodeFont">SQLJ_INSTALL_JAR</span></a>
+                </li>
+                <li value="2"><a href="ModifyPassword.html"><span class="CodeFont">SQLJ_REMOVE_JAR</span></a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

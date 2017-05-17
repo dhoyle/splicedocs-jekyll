@@ -1,0 +1,41 @@
+---
+title: Autocommit command
+description: Turns the connection's auto-commit mode on or off.
+summary: Turns the connection's auto-commit mode on or off.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_autocommit
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor92"></a>Autocommit Command</h1>
+            <p>The <span class="AppCommand">autocommit</span> command enables or disables auto-commit mode.</p>
+            <p>JDBC specifies that the default auto-commit mode is enabled; however, certain types of processing require that auto-commit mode be disabled.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">AUTOCOMMIT&#160;{ON&#160;|&#160;OFF}</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">ON</p>
+                <p class="paramDefnFirst">Enables auto-commit mode.</p>
+                <p class="paramDefn">If auto-commit mode is changed from disabled (<span class="CodeFont">off</span>)&#160;to enabled (<span class="CodeFont">on</span>)&#160;when there is a transaction outstanding, that work is committed when the current transaction commits, not at the time auto-commit is enabled. Thus, if you are enabling auto-commit when a transaction is outstanding, first use either the <a href="CmdCommit.html">Commit</a> command or the <a href="CmdRollback.html">Rollback</a> command to ensure that all prior work is completed before the return to auto-commit mode.</p>
+                <p name="paramName" class="paramName">OFF</p>
+                <p class="paramDefnFirst">Disables auto-commit mode. </p>
+            </div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand">splice&gt; autocommit off;
+splice&gt; DROP TABLE menu;
+0 rows inserted/updated/deleted 
+splice&gt; CREATE TABLE menu (course CHAR(10), item CHAR(20), price INT);
+0 rows inserted/updated/deleted
+splice&gt; INSERT INTO menu VALUES ('entree', 'lamb chop', 14),
+('dessert', 'creme brulee', 6), 
+('appetizer', 'baby greens', 7);
+3 rows inserted/updated/deleted
+splice&gt; commit;
+splice&gt; autocommit on;
+splice&gt;</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

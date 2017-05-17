@@ -1,0 +1,260 @@
+---
+title: Summary of SQL Data Types
+description: A summary of the data types available in Splice Machine SQL.
+summary: A summary of the data types available in Splice Machine SQL.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_datatypes_intro
+folder: SQLReference/DataTypes
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor182"></a>Data Types<a name="kanchor183"></a></h1>
+            <p>The SQL type system is used by the language compiler to determine the compile-time
+			type of an expression and by the language execution system to determine the
+			runtime type of an expression, which can be a subtype or implementation of
+		the compile-time type.</p>
+            <p>Each type has associated with it values of that type. In addition, values
+			in the database or resulting from expressions can be <span class="CodeFont">NULL</span>, which means the
+			value is missing or unknown. Although there are some places where the keyword
+			<span class="CodeFont">NULL</span> can be explicitly used, it is not in itself a value, because it needs
+		to have a type associated with it.</p>
+            <p>This section contains the reference documentation for the Splice Machine SQL&#160;Data Types, in the following subsections:</p>
+            <ul>
+                <li value="1"><a href="#Characte">Character String Data Types</a>
+                </li>
+                <li value="2"><a href="#Date">Date and&#160;Time Data Types</a>
+                </li>
+                <li value="3"><a href="#Large">Large Object Binary (LOB)&#160;Data Types</a>
+                </li>
+                <li value="4"><a href="#Numeric">Numeric Data Types</a>
+                </li>
+                <li value="5"><a href="#Other">Other Data Types</a>
+                </li>
+            </ul>
+            <p class="heading2"><a name="Characte"></a>Character String Data Types</p>
+            <p>These are the <a href="Intro.CharStringDataTypes.html">character string data types</a>:</p>
+            <table summary="Links to and descriptions of the available character string data types">
+                <col />
+                <col />
+                <tr>
+                    <th>
+                    Data Type                </th>
+                    <th>
+                    Description
+                </th>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Char.html">CHAR</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">CHAR</span> data type provides for fixed-length storage of strings.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="LongVarchar.html">LONG&#160;VARCHAR</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">LONG VARCHAR</span> type allows storage of character strings with a maximum length of 32,700 characters. It is identical to <span class="CodeFont">VARCHAR</span>, except that you cannot specify a maximum length when creating columns of
+					this type.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Varchar.html">VARCHAR</a>
+                    </td>
+                    <td>The <span class="CodeFont">VARCHAR</span>&#160;data type provides for variable-length storage of strings.</td>
+                </tr>
+            </table>
+            <p class="heading2"><a name="Date"></a>Date and&#160;Time Data Types</p>
+            <p>These are the <a href="Intro.DateTimeDataTypes.html">date and time data types</a>:</p>
+            <table summary="Links to and descriptions of the available date and time data types">
+                <col />
+                <col />
+                <tr>
+                    <th>
+                    Data Type                </th>
+                    <th>
+                    Description
+                </th>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Date.html">DATE</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">DATE</span> data type provides for storage of a year-month-day in the range supported by <span class="ItalicFont">java.sql.Date</span>. </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Time.html">TIME</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">TIME</span> data type provides for storage of a time-of-day value.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="TimeStamp.html">TIMESTAMP</a>
+                    </td>
+                    <td>The <span class="CodeFont">TIMESTAMP</span>&#160;data type stores a combined <span class="CodeFont">DATE</span> and <span class="CodeFont">TIME</span> value, and allows a fractional-seconds value of up to nine digits.</td>
+                </tr>
+            </table>
+            <p class="heading2"><a name="Large"></a>Large Object Binary (LOB)&#160;Data Types</p>
+            <p>These are the <a href="Intro.LOBDataTypes.html">LOB data types</a>:</p>
+            <table summary="Links to and descriptions of the available LOB data types">
+                <col />
+                <col />
+                <tr>
+                    <th>Data Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Blob.html">BLOB</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">BLOB</span> (binary large object) data type is used for varying-length binary strings that can be up to 2,147,483,647 characters long.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Clob.html">CLOB</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">CLOB</span> (character large object) data type is used for varying-length character strings that can be up to 2,147,483,647 characters long.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><span class="CodeFont"><a href="Text.html">TEXT</a></span>
+                    </td>
+                    <td>Exactly the same as <span class="CodeFont">CLOB</span>.</td>
+                </tr>
+            </table>
+            <p class="heading2"><a name="Numeric"></a>Numeric Data Types</p>
+            <p>These are the <a href="Intro.NumericTypes.html">numeric data types</a>:</p>
+            <table summary="Links to and descriptions of the available numeric data types">
+                <col />
+                <col />
+                <tr>
+                    <th>
+                    Data Type                </th>
+                    <th>
+                    Description
+                </th>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="BigInt.html">BIGINT</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">BIGINT</span> data type provides 8 bytes of storage for integer values.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Decimal.html">DECIMAL</a>
+                    </td>
+                    <td>
+                        <p>The  <span class="CodeFont">DECIMAL</span> data type provides an exact numeric in which the precision and scale can be arbitrarily sized. </p>
+                        <p>You can use <span class="CodeFont">DECIMAL</span>&#160;and <span class="CodeFont">NUMERIC</span>&#160;interchangeably.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Double.html">DOUBLE</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">DOUBLE</span> data type provides 8-byte storage for numbers
+					using IEEE floating-point notation. </p>
+                        <p><span class="CodeFont">DOUBLE PRECISION</span> can be used synonymously with <span class="CodeFont">DOUBLE</span>.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="DoublePrecision.html">DOUBLE PRECISION</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">DOUBLE PRECISION</span> data type provides 8-byte storage for numbers
+					using IEEE floating-point notation.</p>
+                        <p><span class="CodeFont">DOUBLE</span> can be used synonymously with <span class="CodeFont">DOUBLE PRECISION</span>.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Float.html">FLOAT</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">FLOAT</span> data type is an alias for either a <span class="CodeFont">REAL</span> or <span class="CodeFont">DOUBLE PRECISION</span>
+					data type, depending on the precision you specify.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Integer.html">INTEGER</a>
+                    </td>
+                    <td>
+                        <p><span class="CodeFont">INTEGER</span> provides 4 bytes of storage for integer values.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Numeric.html">NUMERIC</a>
+                    </td>
+                    <td>
+                        <p>The  <span class="CodeFont">NUMERIC</span>data type provides an exact numeric in which the precision and scale can be arbitrarily sized. </p>
+                        <p>You can use <span class="CodeFont">NUMERIC</span>&#160;and <span class="CodeFont">DECIMAL</span>&#160;interchangeably.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Real.html">REAL</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">REAL</span> data type provides 4 bytes of storage for numbers using
+					IEEE floating-point notation. </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="SmallInt.html">SMALLINT</a>
+                    </td>
+                    <td>
+                        <p>The <span class="CodeFont">SMALLINT</span> data type provides 2 bytes of storage.</p>
+                    </td>
+                </tr>
+            </table>
+            <p class="heading2"><a name="Other"></a>Other Data Types</p>
+            <p>These are the <a href="Intro.OtherDataTypes.html">other data types</a>:</p>
+            <table summary="Links to and descriptions of primitive data types">
+                <col />
+                <col />
+                <tr>
+                    <th>
+                    Data Type</th>
+                    <th>
+                    Description</th>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="Boolean.html">BOOLEAN</a>
+                    </td>
+                    <td>
+                        <p>Provides 1 byte of storage for logical values.</p>
+                    </td>
+                </tr>
+            </table>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../ArgMatching/ArgumentMatching.html">Argument Matching</a>
+                </li>
+                <li value="2"><a href="DataTypeCompatability.html">Assignments</a>
+                </li>
+                <li value="3"><a href="BigInt.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>
+                <li value="4"><a href="Blob.html"><span class="CodeFont">BLOB</span></a>&#160;data type</li>
+                <li value="5"><a href="Boolean.html"><span class="CodeFont">BOOLEAN</span></a>&#160;data type</li>
+                <li value="6"><a href="Char.html"><span class="CodeFont">CHAR</span></a>&#160;data type</li>
+                <li value="7"><a href="Clob.html"><span class="CodeFont">CLOB</span></a>&#160;data type</li>
+                <li value="8"><a href="Date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
+                <li value="9"><a href="Decimal.html"><span class="CodeFont">DECIMAL</span></a>&#160;data type</li>
+                <li value="10"><a href="Double.html"><span class="CodeFont">DOUBLE</span></a>&#160;data type</li>
+                <li value="11"><a href="DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a>&#160;data type</li>
+                <li value="12"><a href="Float.html"><span class="CodeFont">FLOAT</span></a>&#160;data type</li>
+                <li value="13"><a href="Integer.html"><span class="CodeFont">INTEGER</span></a>&#160;data type</li>
+                <li value="14"><a href="LongVarchar.html"><span class="CodeFont">LONG&#160;VARCHAR</span></a>&#160;data type</li>
+                <li value="15"><a href="Numeric.html"><span class="CodeFont">NUMERIC</span></a>&#160;data type</li>
+                <li value="16"><a href="Real.html"><span class="CodeFont">REAL</span></a>&#160;data type</li>
+                <li value="17"><a href="SmallInt.html"><span class="CodeFont">SMALLINT</span></a>&#160;data type</li>
+                <li value="18"><span class="CodeFont"><a href="Text.html">TEXT</a></span>&#160;data type</li>
+                <li value="19"><a href="Time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
+                <li value="20"><a href="TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;data type</li>
+                <li value="21"><a href="Varchar.html"><span class="CodeFont">VARCHAR</span></a>&#160;data type</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,60 @@
+---
+title: SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY built-in system procedure
+
+description: Built-in system procedure that sets or deletes the value of a property of the database on the current connection.&#xD;
+summary: Built-in system procedure that sets or deletes the value of a property of the database on the current connection.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_setdbprop
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.SetDatabaseProperty" id="BuiltInSysProcs.SetDatabaseProperty"></a><a name="kanchor515"></a>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</h1>
+            <p>Use the <samp>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</samp> system
+procedure to set or delete the value of a property of the database on the
+current connection.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IN <span class="ItalicFont">key</span> VARCHAR(128),
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IN <span class="ItalicFont">value</span> VARCHAR(32672)
+)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">key</p>
+                <p class="paramDefnFirst">The property name.</p>
+                <p class="paramName">value</p>
+                <p class="paramDefnFirst">The new property value. If this is <span class="CodeFont">null</span>, then the property with key value <span class="CodeFont">key</span>
+is deleted from the database property set. If this is not <span class="CodeFont">null</span>, then this <span class="CodeFont">value</span>&#160;becomes the new value of the property. If this value is not a valid value for the property, Splice Machine uses the default value
+of the property.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Execute Privileges</p>
+            <p>If authentication and SQL authorization are both enabled, only the database owner has
+execute privileges on this function by default. The
+database owner can grant access to other users.</p>
+            <p class="heading2">JDBC example</p>
+            <p>Set the
+<samp>splicemachine.locks.deadlockTimeout</samp> property
+to a value of 10:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
+  ("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(?, ?)");
+  cs.setString(1, "splicemachine.locks.deadlockTimeout");
+  cs.setString(2, "10");
+  cs.execute();
+  cs.close();</pre>
+            </div>
+            <p class="heading2">SQL Example</p>
+            <p>Set the <samp>splicemachine.locks.deadlockTimeout</samp> property
+to a value of 10:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout', '10' );
+Statement executed.</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="GetDatabaseProperty.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</span></a> built-in system function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

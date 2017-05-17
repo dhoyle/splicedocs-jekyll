@@ -1,0 +1,63 @@
+---
+title: RIGHT OUTER JOIN
+description: Join operation that returns all rows from the right table (table2), with the matching rows in the left table (table1). The result is NULL in the left side when there is no match.
+summary: Join operation that returns all rows from the right table (table2), with the matching rows in the left table (table1). The result is NULL in the left side when there is no match.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_joinops_rightouterjoin
+folder: SQLReference/JoinOps
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="JoinOps.RightOuterJoin" id="JoinOps.RightOuterJoin"></a><a name="kanchor459"></a>RIGHT OUTER JOIN</h1>
+            <p>A <span class="CodeFont">RIGHT OUTER JOIN</span> is one of the <a href="AboutJoins.html"><span class="CodeFont">JOIN</span> operations</a> that allow you to specify a <span class="CodeFont">JOIN</span> clause. It preserves the unmatched rows from the second (right) table, joining them with a <span class="CodeFont">NULL</span> in the shape of the first (left) table. A Right Outer <span class="CodeFont">JOIN B </span>is equivalent to <span class="CodeFont">B RIGHT OUTER JOIN A</span>, with the columns in a different order.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="../Expressions/Table.html">TableExpression</a></span> RIGHT [ OUTER ] JOIN <span class="ItalicFont"><a href="../Expressions/Table.html">TableExpression</a></span>
+{
+ ON <span class="ItalicFont">booleanExpression</span> | <span class="ItalicFont"><a href="../Clauses/Using.html">USING clause</a></span>
+}</pre>
+            </div>
+            <p>The scope of expressions in the <span class="CodeFont">ON</span> clause includes the current tables and any tables in query blocks outer to the current <span class="CodeFont">SELECT</span>. The <span class="CodeFont">ON</span> clause can reference tables not being joined and does not have to reference either of the tables being joined (though typically it does).</p>
+            <p class="heading2">Example 1</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- get all countries and corresponding cities, including
+   -- countries without any cities
+splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME 
+  FROM CITIES  RIGHT OUTER JOIN COUNTRIES 
+  ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE;
+
+   -- get all countries in Africa and corresponding cities,
+   -- including countries without any cities
+splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
+  FROM CITIES 
+  RIGHT OUTER JOIN COUNTRIES 
+  ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
+  WHERE Countries.region = 'Africa';
+
+  -- use the synonymous syntax, RIGHT JOIN, to achieve exactly
+  -- the same results as in the example above
+splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
+  FROM CITIES 
+  RIGHT JOIN COUNTRIES 
+  ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
+  WHERE Countries.region = 'Africa';</pre>
+            </div>
+            <p class="heading2">Example 2</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- a TableExpression can be a joinOperation. Therefore
+   -- you can have multiple join operations in a FROM clause
+   -- List every employee number and last name 
+   -- with the employee number and last name of their manager
+splice&gt;&#160;SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME	
+  FROM EMPLOYEE E RIGHT OUTER JOIN	
+  DEPARTMENT RIGHT OUTER JOIN EMPLOYEE M 
+  ON MGRNO = M.EMPNO
+  ON E.WORKDEPT = DEPTNO;</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.JoinOps.html"><span class="CodeFont">JOIN</span></a>&#160;operations</li>
+                <li value="2"><a href="../Expressions/Table.html"><span class="CodeFont">TABLE</span></a> expression</li>
+                <li value="3"><a href="../Clauses/Using.html"><span class="CodeFont">USING</span></a>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

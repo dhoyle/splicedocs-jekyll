@@ -1,0 +1,41 @@
+---
+title: RENAME TABLE statement
+description: Renames an existing table in a schema.
+summary: Renames an existing table in a schema.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_renametable
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.RenameTable" id="Statements.RenameTable"></a><a name="kanchor419"></a>RENAME TABLE</h1>
+            <p>The <span class="CodeFont">RENAME TABLE</span> statement allows you to rename an existing table in any schema (except the schema <span class="CodeFont">SYS</span>). </p>
+            <p>To rename a table, you must either be the database owner or the table owner.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">RENAME TABLE <span class="ItalicFont">table-Name</span> TO <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#NewTableName">new-Table-Name</a></span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">The name of the table to be renamed.</p>
+                <p class="paramName">new-Table-Name</p>
+                <p class="paramDefnFirst">The new name for the table.</p>
+            </div>
+            <p class="heading2">Usage Notes</p>
+            <p>Attempting to rename a table generates an error if:</p>
+            <ul>
+                <li value="1">there is a view or a foreign key that references the table</li>
+                <li value="2">there are any check constraints <span>or triggers </span>on the table</li>
+            </ul>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;RENAME TABLE MorePlayers to PlayersTest;
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p>See the <a href="AlterTable.html"><span class="CodeFont">ALTER TABLE</span> statement</a> for more information.</p>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="AlterTable.html"><span class="CodeFont">ALTER</span></a> statement</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,104 @@
+---
+title: SYSCONGLOMERATES system table
+description: System table that describes the conglomerates within the current database. A conglomerate is a unit of storage that is either a table or an index.&#xD;&#xA;
+summary: System table that describes the conglomerates within the current database. A conglomerate is a unit of storage that is either a table or an index.&#xD;&#xA;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_sysconglomerates
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="SystemTables.SysConglomerates" id="SystemTables.SysConglomerates"></a><a name="kanchor43"></a>SYSCONGLOMERATES System Table</h1>
+            <p>The <span class="CodeFont">SYSCONGLOMERATES</span> table describes the conglomerates
+			within the current database. A conglomerate is a unit of storage and
+		is either a table or an index.</p>
+            <p>The following table shows the contents of the <span class="CodeFont">SYSCONGLOMERATES</span> system
+		table.</p>
+            <table>
+                <caption>SYSCONGLOMERATES system table</caption>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Nullable</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">SCHEMAID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Schema ID for the conglomerate</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TABLEID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Identifier for table (join with SYSTABLES.TABLEID)</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CONGLOMERATENUMBER</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td class="CodeFont">19</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Conglomerate ID for the conglomerate (heap or index)</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CONGLOMERATENAME</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">128</td>
+                        <td class="CodeFont">YES</td>
+                        <td>Index name, if conglomerate is an index, otherwise the
+					table ID</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">ISINDEX</td>
+                        <td class="CodeFont">BOOLEAN</td>
+                        <td class="CodeFont">1</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Whether or not conglomerate is an index</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DESCRIPTOR</td>
+                        <td><span class="ItalicFont">org.apache.splicemachine.catalog.IndexDescriptor</span>
+                            <p>This class is not part of the public API.</p>
+                        </td>
+                        <td class="CodeFont">-1</td>
+                        <td class="CodeFont">YES</td>
+                        <td>System type describing the index</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">ISCONSTRAINT</td>
+                        <td class="CodeFont">BOOLEAN</td>
+                        <td class="CodeFont">1</td>
+                        <td class="CodeFont">YES</td>
+                        <td>Whether or not the conglomerate is a system-generated index
+					enforcing a constraint</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CONGLOMERATEID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Unique identifier for the conglomerate</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.SystemTables.html">About System Tables</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

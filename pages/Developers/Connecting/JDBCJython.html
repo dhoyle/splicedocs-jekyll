@@ -1,0 +1,90 @@
+---
+title: Connecting to Splice Machine with Jython and JDBC
+description: Walks you through compiling and running a Jython program that connects to your Splice Machine database via our JDBC driver.&#xA;
+summary: Walks you through compiling and running a Jython program that connects to your Splice Machine database via our JDBC driver.&#xA;
+keywords: 
+sidebar: developers_sidebar
+permalink: developers__connecting_jython
+folder: Developers/Connecting
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor321"></a>Connecting to Splice Machine with Jython and JDBC</h1>
+            <p>This topic shows you how to compile and run a sample Jython program that connects to Splice&#160;Machine using our JDBC&#160;driver. The <span class="CodeFont">print_tables</span>&#160;program does the following:</p>
+            <ul>
+                <li value="1"> connects to a standalone (<span class="CodeFont">localhost</span>)&#160;version of Splice Machine</li>
+                <li value="2">selects and displays records from one of the system tables</li>
+            </ul>
+            <h2><a name="Compile"></a>Compile and Run the Sample Program</h2>
+            <p>This section walks you through compiling and running the <span class="CodeFont">print_tables</span>&#160;example program, in the following steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Add the Splice client jar to your <span class="CodeFont">CLASSPATH</span>; for example:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
+export CLASSPATH=<span class="Highlighted">/splicemachine/jdbc-driver/<span class="PlatformVariablesJDBCDriverJar">db-client-2.0.1.18.jar</span></span></pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Copy the example program code:</p>
+                        <p class="indentLevel1">You can copy and paste the code below; note that this example uses our default connectivity parameters (database, user, URL, and password values):</p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="Example">from java.sql import DriverManager
+from java.lang import Class
+from java.util import Properties
+
+url    = 'jdbc:splice://localhost:1527/splicedb'
+driver = 'com.splicemachine.db.jdbc.ClientDriver'
+props  = Properties()
+props.setProperty('user', 'splice')
+props.setProperty('password', 'admin')
+jcc    = Class.forName(driver).newInstance()
+conn   = DriverManager.getConnection(url, props)
+stmt   = conn.createStatement()
+rs     = stmt.executeQuery("select * from sys.systables")
+
+rowCount = 0
+while (rs.next() and rowCount &lt; 10) :
+    rowCount += 1
+    print "Record=[" + str(rowCount) + \
+        id=[" + rs.getString('TABLEID') + \
+        "] name=[" + rs.getString('TABLENAME') + \
+        "] type=[" + rs.getString('TABLETYPE') + "]"
+
+rs.close()
+stmt.close()
+conn.close()</pre>
+                            </div>
+                        </p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Save the code to <span class="CodeFont">print_files.jy</span>.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Run the program:</p>
+                        <p class="indentLevel1">Run the <span class="CodeFont">print_tables.jy</span> program as follows:</p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">jython print_tables.jy</pre>
+                            </div>
+                        </p>
+                        <p class="indentLevel1">The command should display a result like the following:</p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+Record=[1] id=[f9f140e7-0144-fcd8-d703-00003cbfba48] name=[ASDAS] type=[T]
+Record=[2] id=[c934c123-0144-fcd8-d703-00003cbfba48] name=[DDC_NOTMAILABLE] type=[T]
+Record=[3] id=[dd5cc163-0144-fcd8-d703-00003cbfba48] name=[FRANK_EMCONT_20130430] type=[T]
+Record=[4] id=[f584c1a3-0144-fcd8-d703-00003cbfba48] name=[INACTIVE_QA] type=[T]
+Record=[5] id=[cfcc41df-0144-fcd8-d703-00003cbfba48] name=[NUM_GROOM4] type=[T]
+Record=[6] id=[6b7f4217-0144-fcd8-d703-00003cbfba48] name=[PP_LL_QA] type=[T]
+Record=[7] id=[ac154287-0144-fcd8-d703-00003cbfba48] name=[QUAL_BRANDS] type=[T]
+Record=[8] id=[d67d42c7-0144-fcd8-d703-00003cbfba48] name=[SCIENCE_CAT_QA] type=[T]
+Record=[9] id=[c1e0c303-0144-fcd8-d703-00003cbfba48] name=[TESTOUTPUT2] type=[T]
+Record=[10] id=[f408c343-0144-fcd8-d703-00003cbfba48] name=[UAC_1267_AVJ] type=[T]</pre>
+                            </div>
+                        </p>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

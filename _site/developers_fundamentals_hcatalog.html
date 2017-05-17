@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How to access Splice Machine as a data source using HCatalog.">
+<meta name="keywords" content=" ">
+<title>Using HCatalog with Splice Machine | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Using HCatalog with Splice Machine page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Using HCatalog with Splice Machine">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Fundamentals</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fundamentals_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_transactions.html">Running Transactions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_dates.html">Working with Date and Time Values</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_triggers.html">Using Database Triggers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_foreignkeys.html">Using Foreign Keys</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_auth.html">Roles and Authorization</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_vti.html">Using the Virtual Table Interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_externaltables.html">Using External Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hcatalog.html">Using HCatalog</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_mapreduce.html">Using the MapReduce API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hbase.html">Working with HBase</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Connecting with Your Database</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_connecting_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcdriver.html">Installing the ODBC Driver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_angular.html">Connecting with AngularJS/NodeJS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_java.html">Connecting with Java</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jruby.html">Connecting with JRuby</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jython.html">Connecting with Jython</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_scala.html">Connecting with Scala</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcc.html">Connecting with C and ODBC</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbeaver.html">Connecting DBeaver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbvisualizer.html">Connecting DBVisualizer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_cognos.html">Connecting Cognos</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_pentaho.html">Connecting Pentaho PDI</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_squirrel.html">Connecting SQuirreL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_tableau.html">Connecting Tableau</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Functions and Stored Procedures</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_writing.html">Writing Functions and Stored Procedures</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_storing.html">Storing/Updating Functions and Procs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_examples.html">Examples</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Ingesting and Streaming Data</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_ingestion_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_uploadtos3.html">Uploading Data to an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_configures3.html">Configuring an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_tpch1.html">Importing TPCH Datat</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_importing.html">Importing Your Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_hfiles.html">Importing Data as HFiles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkaproducer.html">Kafka - Creating a Producer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkafeed.html">Kafka - Configuring a Feed</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_mqttSpark.html">MQTT Spark Streaming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_storm.html">Apache Storm and Splice Machine</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Analytics and Machine Learning</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_analyticsandml_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_analyticsandml_zeppelin.html">Using Apache Zeppelin</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Tuning and Debugging</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_tuning_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_usingstats.html">Using Statistics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan.html">Using Explain Plan</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan_examples.html">Explain Plan Examples</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_logging.html">Logging</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_debugging.html">Debugging</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Using HCatalog with Splice Machine</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">How to access Splice Machine as a data source using HCatalog.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/Developers/developers_fundamentals_hcatalog.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor327"></a>Using Splice Machine with HCatalog</h1>
+            <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. Our database as a service does not include HCatalog support.</div>
+            <p>Apache HCatalog is a metadata and table management system for the broader Hadoop platform. HCatalog’s table abstraction presents users with a relational view of data in the Hadoop distributed file system (HDFS) and ensures that users need not worry about where or in what format their data is stored. HCatalog supports reading and writing files in any format for which a SerDe (serializer-deserializer) can be written.</p>
+            <p>Splice Machine integrates with HCatalog, allowing any HiveQL&#160;statements to read from (e.g. <span class="CodeFont">SELECT</span>)&#160;and write to (e.g. <span class="CodeFont">INSERT</span>)&#160;Splice Machine tables. You can also use joins and unions to combine native Hive tables with Splice Machine tables.</p>
+            <div class="noteTip">You can find extensive information about HCatalog on the <a href="https://hive.apache.org/" target="_blank">Apache Hive web site</a>.</div>
+            <p>Also note that you can also take advantage of our HCatalog integration to access your Splice Machine tables for reading and writing from any database that features HCatalog integration, such as <span class="ItalicFont">MongoDB</span>.</p>
+            <h2>Using HCatalog with a Splice Machine Table</h2>
+            <p>To use HCatalog with&#160;Splice Machine, you connect a Hive table with a Splice Machine table using the HiveQL <span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span>&#160;statement. In Hive, an external table can point to any HDFS&#160;location for its storage; in this case, the table is located in your Splice&#160;Machine database.</p>
+            <p> For example, here's a HiveQL&#160;statement that creates a table named <span class="CodeFont">extTest1</span> that is connected with the <span class="CodeFont">hcattest</span>&#160;table in a Splice Machine database:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">hive&gt; CREATE EXTERNAL TABLE extTest1(col1 int, col2 varchar(20))
+   STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
+   TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=<span class="Highlighted">splice</span>\;password=<span class="Highlighted">admin</span>", "splice.tableName"="TEST.hcattest");</pre>
+            </div>
+            <p>Your table definition must include:</p>
+            <ul>
+                <li value="1">The <span class="CodeFont">STORED&#160;BY</span>&#160;clause as shown, which allows the table to connect with Splice Machine.</li>
+                <li value="2">The <span class="CodeFont">TBLPROPERTIES</span>&#160;clause, which specifies:<ul class="SecondLevel"><li value="1"><p>The JDBC&#160;connection you are using. include your access <span class="HighlightedCode">user</span> ID and <span class="HighlightedCode">password</span>.</p><div class="noteNote">If you are running Splice Machine on a cluster, connect from a machine that is NOT&#160;running an HBase RegionServer and specify the IP&#160;address of a <span class="HighlightedCode">regionServer</span> node, e.g. <span class="AppCommand">10.1.1.110</span>. <br /><br />Use <span class="CodeFont">localhost</span> if you're running the standalone version of Splice Machine.</div></li><li value="2">The name of the table in your Splice Machine database with which you are connecting the Hive table. </li></ul></li>
+            </ul>
+            <h3><a name="How"></a>How Splice Machine Maps Columns</h3>
+            <p>If your Hive table contains a different number of columns than does your Splice Machine database table, Splice Machine maps the columns. </p>
+            <p>For example, if your Hive table has three columns defined, and your Splice Machine table has four columns defined, then Splice Machine maps the three Hive columns into the first three columns in the Splice Machine table, as shown here:</p>
+            <div>
+                <img src="images/HiveMap.png" class="indentedTightSpacing" alt="Diagram of how Splice Machine maps Hive tables" />
+            </div>
+            <h3><a name="Using"></a>Using HiveQL&#160;to Join Tables From Different Data Resources </h3>
+            <p>You can use HiveQL to join tables that point to different data resources. The Java class provided by Splice Machine allows you to include tables from your Splice Machine database in such joins, as illustrated here:        </p>
+            <div>
+                <img src="images/HiveJoin.png" class="indentedTightSpacing" alt="Diagram of using HiveQL for joining tables" />
+            </div>
+            <p>For more information about Hive joins, see the Apache Hive documentation. </p>
+            <h2>Examples</h2>
+            <p>This section contains several simple examples of using HCatalog.        </p>
+            <h3>Example 1:&#160;Simple Example</h3>
+            <p>This is a simple example of creating an external table in Hive that maps directly to a Splice Machine table.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Create the Splice Machine table</p>
+                        <p class="indentLevel1">This example uses a very simple Splice Machine database table, <span class="CodeFont">hcattest</span>, which we create with these statements:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+splice&gt;&#160;create table hcattest(col1 int, col2 varchar(20));
+splice&gt;&#160;insert into hcattest values(1, 'row1');
+splice&gt;&#160;insert into hcattest values(2, 'row2');
+splice&gt;&#160;insert into hcattest values(3, 'row3');
+splice&gt;&#160;insert into hcattest values(4, 'row4');
+</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Verify the table</p>
+                        <p class="indentLevel1">Verify that <span class="CodeFont">hcattest</span> is set up correctly:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+splice&gt;&#160;describe hcattest;
+COLUMN_NAME |&#160;TYPE_NAME&#160;|&#160;DES&amp;|NUM&amp;|COLUMN&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
+--------------------------------------------------------------------------
+COL1        |INTEGER    |0    |10  |10     |NULL      |NULL      |YES
+COL2        |VARCHAR    |NULL |NULL|20     |NULL      |40        |YES
+
+2 rows selected
+splice&gt;&#160;select * from hcattest;
+COL1        |COL2
+-------------------------------
+1            row1
+2            row2
+3            row3
+4            row4
+
+4 rows selected</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Create an external table in Hive</p>
+                        <p class="indentLevel1">You need to create an external table in Hive, and connect that table with the Splice Machine table you just created. Type the following command into the Hive shell, substituting your <span class="HighlightedCode">user</span> ID&#160;and <span class="HighlightedCode">password</span>. </p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt; CREATE EXTERNAL TABLE extTest1(col1 int, col2 varchar(20))
+   STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
+   TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=<span class="Highlighted">splice</span>\;password=<span class="Highlighted">admin</span>", "splice.tableName"="SPLICE.hcattest");</pre>
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Use HiveQL&#160;to select data in the Splice Machine table</p>
+                        <p class="indentLevel1">Once you've created your external table, you can use <span class="CodeFont">SELECT</span> statements in the Hive shell to retrieve data from Splice Machine table. For example:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt;&#160;select *&#160;from extTest1;
+OK
+1<span class="bodyFont">→</span>row 1
+2<span class="bodyFont">→</span>row 2
+3<span class="bodyFont">→</span>row 3
+4<span class="bodyFont">→</span>row 4</pre>
+                        </div>
+                        <p class="indentLevel1"> If the external&#160;table that you created does not have the same number of columns as are in your Splice Machine table, then the Hive table's columns are mapped to columns in the Splice&#160;Machine table, as described in <a href="#How">How Splice Machine Maps Columns</a>, above.</p>
+                    </li>
+                </ol>
+            </div>
+            <h3>Example 2:&#160;Table with Primary Key</h3>
+            <p>This example uses a Splice Machine table, <span class="CodeFont">tblA</span>, that has only string types and a primary key.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Create and verify the Splice Machine table</p>
+                        <p class="indentLevel1">This example uses a simple Splice Machine database table that we've created, <span class="CodeFont">tblA</span>, which we verify:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+splice&gt;&#160;describe tblA;
+COLUMN_NAME |&#160;TYPE_NAME&#160;|&#160;DES&amp;|NUM&amp;|COLUMN&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
+--------------------------------------------------------------------------
+COL1        |CHAR&#160;&#160;&#160;&#160;   |NULL |NULL|20     |NULL      |40        |YES
+COL2        |VARCHAR    |NULL |NULL|56     |NULL      |112       |YES
+
+2 rows selected
+splice&gt;&#160;select * from tblA;
+COL1        |COL2
+-------------------------------
+char         varchar 2
+char 1       varchar 1
+
+2 rows selected</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Create an external table in Hive</p>
+                        <p class="indentLevel1">You need to create an external table in Hive, and connect that table with the Splice Machine table you just created. Type the following command into the Hive shell, substituting your <span class="HighlightedCode">user</span> ID&#160;and <span class="HighlightedCode">password</span>. </p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt; CREATE EXTERNAL TABLE extTest2(col1 String, col2 varchar(56))
+   STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
+   TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=<span class="Highlighted">splice</span>\;password=<span class="Highlighted">admin</span>", "splice.tableName"="SPLICE.tblA");</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Use HiveQL&#160;to select data in the Splice Machine table</p>
+                        <p class="indentLevel1">Once you've created your external table, you can use <span class="CodeFont">SELECT</span> statements in the Hive shell to retrieve data from Splice Machine table. For example:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt;&#160;select *&#160;from extTest2;
+OK
+char  <span class="bodyFont">→</span>varchar 2
+char 1<span class="bodyFont">→</span>varchar 1</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h3>Example 3:&#160;Table with No Primary Key</h3>
+            <p>This example uses a Splice Machine table, <span class="CodeFont">tblB</span>, that has a primary key and uses integer columns.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Create and verify the Splice Machine table</p>
+                        <p class="indentLevel1">This example uses a simple Splice Machine database table that we've created, <span class="CodeFont">tblA</span>, which we verify:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+splice&gt;&#160;describe tblA;
+COLUMN_NAME |&#160;TYPE_NAME&#160;|&#160;DES&amp;|NUM&amp;|COLUMN&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
+--------------------------------------------------------------------------
+COL1        |INTEGER&#160;   |0    |10  |10     |NULL      |NULL      |NO
+COL2        |INTEGER&#160;   |0    |10  |10     |NULL      |NULL      |YES
+COL3        |INTEGER&#160;   |0    |10  |10     |NULL      |NULL      |NO
+
+3 rows selected
+splice&gt;&#160;select * from tblB;
+COL1        |COL2       |COL3
+-------------------------------
+1           |1          |1
+2           |2          |2
+
+2 rows selected</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Create an external table in Hive</p>
+                        <p class="indentLevel1">You need to create an external table in Hive, and connect that table with the Splice Machine table you just created. Type the following command into the Hive shell, substituting your <span class="HighlightedCode">user</span> ID&#160;and <span class="HighlightedCode">password</span>. </p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt; CREATE EXTERNAL TABLE extTest3(col1 String, col2 varchar(56))
+   STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
+   TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=<span class="Highlighted">splice</span>\;password=<span class="Highlighted">admin</span>", "splice.tableName"="SPLICE.tblB");</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Select data from the Splice Machine input table</p>
+                        <p class="indentLevel1">Once you've created your external table, you can use <span class="CodeFont">SELECT</span> statements in the Hive shell to retrieve data from Splice Machine input table. table. For example:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt;&#160;select *&#160;from extTest3;
+OK
+1<span class="bodyFont">→</span>1<span class="bodyFont">→</span>1
+1<span class="bodyFont">→</span>2<span class="bodyFont">→</span>2</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

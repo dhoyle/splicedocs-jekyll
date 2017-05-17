@@ -1,0 +1,112 @@
+---
+title: SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS built-in system procedure
+description: Built-in system procedure that collects statistics on a schema.
+summary: Built-in system procedure that collects statistics on a schema.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_collectschemastats
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor368"></a>SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</h1>
+            <p>The <span class="CodeFont">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</span>&#160;&#160;system procedure collects statistics on a specific schema in your database. </p>
+            <div class="noteNote">Once statistics have been collected for a schema, they are automatically used by the query optimizer.</div>
+            <p>This procedure collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema. For example, if you have :</p>
+            <ul>
+                <li value="1">a schema named <span class="CodeFont">mySchema</span></li>
+                <li value="2"><span class="CodeFont">mySchema</span> contains two tables:&#160;<span class="CodeFont">myTable1</span> and <span class="CodeFont">myTable2</span></li>
+                <li value="3"><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
+            </ul>
+            <p>Then <span class="CodeFont">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</span> will collect statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS(
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;schema,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;BOOLEAN&#160;staleOnly<br />)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">Specifies the schema for which you want to collect statistics. Passing a <span class="CodeFont">null</span> or non-existent schema name generates an error.</p>
+                <p class="paramName">staleOnly</p>
+                <p class="paramDefnFirst">A&#160;<span class="CodeFont">BOOLEAN</span> value that specifies:</p>
+                <ul class="nested">
+                    <li value="1">If this is <span class="CodeFont">true</span>, data is only re-collected for partitions that are known to have out of date statistics.</li>
+                    <li value="2">If this is <span class="CodeFont">false</span>, data is collected on all partitions. <span class="Highlighted">Note</span> that this can significantly increase the time required to collect statistics, and is typically used only when you are not sure about the current quality of statistics in the entire schema.</li>
+                </ul>
+                <div class="noteIcon">The <span class="CodeItalicFont">staleOnly</span> parameter value is currently ignored, but must be specified in your call to this procedure. Its value is always set to <span class="CodeFont">false</span> in the system code.</div>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure returns a results table that contains:</p>
+            <ul>
+                <li value="1"> one row for each table </li>
+                <li value="2">one row per index for every table and its associated index in the schema</li>
+            </ul>
+            <p> Each row contains the following columns:</p>
+            <table summary="Columns in Collect_Schema_Statistics results display">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">schemaName</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td>The name of the schema.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">tableName</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td>The name of the table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">partition</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td>The name of the region on which statistics were collected.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">rowsCollected</td>
+                        <td class="CodeFont">INTEGER</td>
+                        <td>The number of rows of statistics that were collected..</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">partitionSize</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td>The size of the partition in bytes.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Usage Notes</p>
+            <p>Collecting statistics on a schema can take some time. </p>
+            <p class="heading2">SQL Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CALL SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( 'SPLICE', false );
+schemaName |tableName  |partition &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|rowsCollec&amp;|partitionSize 
+------------------------------------------------------------------------------------------
+SPLICE     |PLAYERS    |splice:1440,,1467393447889.cbc33f4635ade|76         |3515      &#160;    
+SPLICE     |SALARIES   |splice:1456,,1467393749257.7724e0cb12af3|76 &#160;       |1420           
+SPLICE     |BATTING    |splice:1472,,1467393754889.b34f5da64c36e|44         |22571       &#160;  
+SPLICE     |PITCHING   |splice:1488,,1467393760434.35ee9880e5090|32         |21212          
+SPLICE     |FIELDING   |splice:1504,,1467393775949.674b34acdb182|44         |9876           
+
+5 rows selected</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/DataTypeCompatability.html">Data Assignments and Comparisons</a>
+                </li>
+                <li value="2"><a href="EnableColumnStats.html"><span class="CodeFont">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</span></a>
+                </li>
+                <li value="3"><a href="DisableColumnStats.html"><span class="CodeFont">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</span></a>
+                </li>
+                <li value="4"><a href="DropSchemaStats.html"><span class="CodeFont">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</span></a>
+                </li>
+                <li value="5"><a href="../../Developers/TuningAndDebugging/UsingStatistics.html">Using Statistics</a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

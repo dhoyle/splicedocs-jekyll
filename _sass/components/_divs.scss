@@ -1,0 +1,185 @@
+
+@mixin notes($color: $note-text-color,
+			 $weight: $note-text-weight,
+			 $margin: (20px 20px 20px 32px),
+			 $padding: (5px 10px 5px 10px),
+			 $radius: $border-note-radius,
+			 $maxWidth: 75%,
+			 $minHeight: 0,
+			 $beforeTxt: "",
+			 $bgImg: none )
+{
+	background-color: $bgcolor-note;
+	background-repeat: no-repeat;
+	background-image: $bgImg;
+	color:   $color;
+	margin:  $margin;
+	padding: $padding;
+	font-weight: $weight;
+	z-index: -1;
+	border: $border-note;
+	border-radius: $radius;
+	max-width: $maxWidth;
+	min-height: $minHeight;
+
+	&:before {
+		content: $beforeTxt;
+		color: $note-leader-color;
+		font-weight: $note-leader-weight;
+	}
+}
+
+
+
+div.centered
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.hiddenText
+{
+	visibility: hidden;
+}
+
+div.indented
+{
+	margin-left: 40px;
+}
+
+div.invisible
+{
+	display: none;
+}
+
+div.noteChange {
+	@include notes($beforeTxt: "CHANGE ALERT: ");
+}
+
+div.noteDBaaSOnly {
+	@include notes($beforeTxt: "DATABASE-AS-SERVICE VERSION ONLY!   ",
+	               $margin: (20px 22% 20px 22%) );
+}
+
+div.noteEnterprise {
+  @include notes($bgImg: url('/images/SpliceNoteIcon.png'),
+                 $minHeight: 48px,
+                 $radius: 0,
+                 $margin: (0 35px 15px 35px),
+                 $padding: (5px 10px 5px 40px) );
+}
+
+div.noteIcon {
+  @include notes($bgImg: url('/images/SpliceNoteIcon.png'),
+                 $minHeight: 48px,
+                 $margin: (20px 60px 20px 60px),
+                 $padding: (5px 10px 5px 48px) );
+}
+
+div.noteIndent {
+  @include notes($beforeTxt: "NOTE:  ",
+                 $margin:(20px 20px 20px 60px))
+}
+
+div.noteNote {
+	@include notes($beforeTxt: "NOTE: ");
+}
+
+div.noteOnPremiseOnly {
+	@include notes($beforeTxt: "ON-PREMISE VERSION ONLY!   ",
+	               $margin: (20px 22% 20px 22%) );
+}
+
+div.notePlain {
+	@include notes;
+}
+
+div.openSourceNote {
+  @include notes($bgImg: url('/images/SpliceNoteIcon.png'),
+                 $minHeight: 48px,
+                 $margin: (25px auto 20px auto),
+                 $padding: (5px 10px 5px 40px) );
+}
+
+div.opsStepsList {
+	width: auto;
+	max-width: 95%;
+	margin: 20px 20px 20px 20px;
+	padding: 2px 4px 16px 4px;
+	text-align: left;
+	border: $border-opsSteps;
+	border-radius: $border-opsSteps-radius;
+	word-wrap: break-word;
+	overflow: auto;
+
+	blockquote {
+		margin-top: 0;
+		margin-left: 12px;
+	}
+
+	img.nestedTightSpacing {
+		margin: 10px 20px 10px 40px;
+	}
+
+	li {
+		margin-top: 12px;
+	}
+
+	p.indentLevel1
+	{
+		margin-top: 0;
+		margin-left: 0;
+		margin-bottom: 6px;
+		font-weight: normal;
+		word-wrap: break-word;
+		overflow: auto;
+	}
+}
+
+div.paramList
+{
+	margin: 18px 0 18px 32px;
+	font-weight: normal;
+}
+
+div.paramListNested
+{
+	margin: 18px 0 18px 64px;
+	font-weight: normal;
+}
+
+%div.preWrap
+{
+	width: auto;
+	word-wrap: break-word;
+	overflow: auto;
+	font-family: $codefont-face;
+	font-weight: $codefont-weight;
+	font-style: normal;
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+
+div.fcnWrapper
+{
+	@extend %div.preWrap;
+	max-width: 55%;
+}
+
+div.preWrapper
+{
+        @extend %div.preWrap;
+        max-width: 95%;			/* Used to be 60% */
+}
+
+div.preWrapperWide,
+div.fcnWrapperWide
+{
+	@extend %div.preWrap;
+	max-width: 95%;
+}
+
+div.videoEnvelope
+{
+
+}

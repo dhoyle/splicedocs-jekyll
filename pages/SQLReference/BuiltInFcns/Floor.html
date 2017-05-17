@@ -1,0 +1,46 @@
+---
+title: FLOOR built-in SQL function
+description: Built-in SQL function that returns  the largest integer less than or equal to a specified numeric value
+summary: Built-in SQL function that returns  the largest integer less than or equal to a specified numeric value
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_floor
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Floor" id="BuiltInFcns.Floor"></a><a name="kanchor65"></a>FLOOR</h1>
+            <p>The <span class="CodeFont">FLOOR</span> function rounds the specified number down, and returns the largest number that is less than or equal to the specified number.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">FLOOR ( <var>number</var> )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">number
+            </p>
+                <p class="paramDefnFirst">A <a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a> number.</p>
+            </div>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES&#160;FLOOR(84.4);
+1
+----------
+84
+
+1 row selected</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The data type of the result is a <a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a> number. The returned value is equal to a mathematical integer.</p>
+            <ul>
+                <li value="1">If the specified number is <span class="CodeFont">NULL</span>, the result of this function is <span class="CodeFont">NULL</span>.</li>
+                <li value="2">If the specified number is equal to a mathematical integer, the result
+of this function is the same as the specified number.</li>
+                <li value="3">If the specified number is zero (<span class="CodeFont">0</span>), the result of this function is zero.</li>
+            </ul>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a>&#160;data type</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

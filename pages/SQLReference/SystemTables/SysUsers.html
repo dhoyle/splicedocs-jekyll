@@ -1,0 +1,73 @@
+---
+title: SYSUSERS system table
+description: System table that stores user credentials when NATIVE authentication is enabled.
+summary: System table that stores user credentials when NATIVE authentication is enabled.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_sysusers
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="SystemTables.SysUsers" id="SystemTables.SysUsers"></a><a name="kanchor344"></a>SYSUSERS System Table</h1>
+            <p>The <span class="CodeFont">SYSUSERS</span> table stores user credentials when <span class="CodeFont">NATIVE</span> authentication
+is enabled.</p>
+            <p>When SQL authorization is enabled (as it is, for instance, when <span class="CodeFont">NATIVE</span>
+authentication is on) only the database owner can <span class="CodeFont">SELECT</span> from this table, and
+no one, not even the database owner, can <span class="CodeFont">SELECT</span> the <span class="CodeFont">PASSWORD</span> column.</p>
+            <p>The following table shows the contents of the <span class="CodeFont">SYSUSERS</span> system table.</p>
+            <table>
+                <caption>SYSUSERS system table</caption>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Nullable</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"> USERNAME</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">128</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The user's name, the value of the <samp>user</samp> attribute on a connection URL.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">HASHINGSCHEME</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">32672</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Describes how the password is hashed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"> PASSWORD</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">32672</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The password after applying the <span class="CodeFont">HASHINGSCHEME</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"> LASTMODIFIED</td>
+                        <td class="CodeFont">TIMESTAMP</td>
+                        <td class="CodeFont">29</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The time when the password was last updated.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.SystemTables.html">About System Tables</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

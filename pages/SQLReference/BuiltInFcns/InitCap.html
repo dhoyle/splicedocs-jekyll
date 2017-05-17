@@ -1,0 +1,56 @@
+---
+title: INITCAP built-in SQL function
+description: Built-in SQL function that converts the first letter of every word to uppercase, and all remaining characters in the word to lowercase.
+summary: Built-in SQL function that converts the first letter of every word to uppercase, and all remaining characters in the word to lowercase.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_initcap
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor164"></a>INITCAP</h1>
+            <p>The <span class="CodeFont">INITCAP</span> function converts the first letter of each word in a string to uppercase, and converts any remaining characters in each word to lowercase. Words are delimited by white space characters, or by characters that are not alphanumeric.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">INITCAP( <span class="ItalicFont">charExpression</span> );</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">charExpression
+            </p>
+                <p class="paramDefnFirst">The string to be converted. This can be a <span class="CodeFont">CHAR</span>&#160;or <span class="CodeFont">VARCHAR</span>&#160;data type, or another type that gets implicitly converted.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The returned string has the same data type as the input <span class="CodeFont">charExpression</span>. </p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; VALUES( INITCAP('this is a test') );
+1 
+---------------------------------------------------------------------
+This Is A Test
+1 row selected
+
+splice&gt; VALUES( INITCAP('tHIS iS a test') );
+1 
+---------------------------------------------------------------------
+This Is A Test
+1 row selected</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="Concatenation.html">Concatenation</a> operator</li>
+                <li value="3"><a href="Instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
+                <li value="4"><a href="LCase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
+                <li value="5"><a href="Length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
+                <li value="6"><a href="Locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
+                <li value="7"><a href="LTrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
+                <li value="8"><span class="CodeFont"><a href="RegexpLike.html">REGEX_LIKE</a></span>&#160;operator</li>
+                <li value="9"><a href="Replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
+                <li value="10"><a href="RTrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
+                <li value="11"><a href="Substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
+                <li value="12"><a href="Trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
+                <li value="13"><a href="UCase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

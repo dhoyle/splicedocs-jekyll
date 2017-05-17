@@ -1,0 +1,307 @@
+---
+title: Statements summary
+description: Summarizes all of the SQL statements available in Splice Machine SQL.
+summary: Summarizes all of the SQL statements available in Splice Machine SQL.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_intro
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor543"></a>Statements</h1>
+            <p>This section contains the reference documentation for the Splice Machine SQL&#160;Statements, in the following subsections:</p>
+            <ul>
+                <li value="1"><a href="Intro.DDLStatements.html">Data Definition (DDL)&#160;- General Statements</a>
+                </li>
+                <li value="2"><a href="Intro.DDLCreateStatements.html">Data Definition (DDL) - Create Statements</a>
+                </li>
+                <li value="3"><a href="Intro.DDLDropStatements.html">Data Definition (DDL) - Drop Statements</a>
+                </li>
+                <li value="4"><a href="Intro.DMLStatements.html">Data Manipulation (DML)&#160;Statements</a>
+                </li>
+                <li value="5"><a href="#Session">Session Control Statements</a>
+                </li>
+            </ul>
+            <p class="heading2">Data Definition - General Statements</p>
+            <p>These are the <a href="Intro.DDLStatements.html">data definition statements</a>:</p>
+            <table summary="Summary table with links to and descriptions of general data definition statement topics">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Statement</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="AlterTable.html">ALTER&#160;TABLE</a>
+                        </td>
+                        <td>Add, deletes, or modifies columns in an existing table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="Grant.html">GRANT</a>
+                        </td>
+                        <td>Gives privileges to specific user(s) or role(s) to perform actions on database objects.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="PinTable.html">PIN&#160;TABLE</a>
+                        </td>
+                        <td>Caches a table in memory for improved performance.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="RenameColumn.html">RENAME&#160;COLUMN</a>
+                        </td>
+                        <td>Renames a column in a table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="RenameIndex.html">RENAME&#160;INDEX</a>
+                        </td>
+                        <td>Renames an index in the current schema.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="RenameTable.html">RENAME&#160;TABLE</a>
+                        </td>
+                        <td>Renames an existing table in a schema.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="Revoke.html">REVOKE</a>
+                        </td>
+                        <td>Revokes privileges for specific user(s) or role(s) to perform actions on database objects.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="TruncateTable.html">TRUNCATE&#160;TABLE</a>
+                        </td>
+                        <td>Resets a table to its initial empty state.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="UnpinTable.html">UNPIN&#160;TABLE</a>
+                        </td>
+                        <td>Unpins a pinned (cached)&#160;table.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Data Definition (DDL)&#160;- CREATE&#160;Statements</p>
+            <p>These are the <a href="Intro.DDLCreateStatements.html">create statements</a>:</p>
+            <table summary="Summary table with links to and descriptions of DDL CREATE statement topics">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Statement</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateExternalTable.html">CREATE&#160;EXTERNAL&#160;TABLE</a>
+                        </td>
+                        <td>Allows you to query data stored in a flat file as if that data were stored in a Splice Machine table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateFunction.html">CREATE&#160;FUNCTION</a>
+                        </td>
+                        <td>Creates Java functions that you can then use in expressions. </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateIndex.html">CREATE&#160;INDEX</a>
+                        </td>
+                        <td>Creates an index on a table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateProcedure.html">CREATE&#160;PROCEDURE</a>
+                        </td>
+                        <td>Creates Java stored
+		procedures, which you can then call using the <a href="CallProcedure.html"><span class="CodeFont">Call Procedure</span></a> statement.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateRole.html">CREATE&#160;ROLE</a>
+                        </td>
+                        <td>Creates SQL&#160;roles.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateSchema.html">CREATE&#160;SCHEMA</a>
+                        </td>
+                        <td>Creates a schema.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateSequence.html">CREATE&#160;SEQUENCE</a>
+                        </td>
+                        <td>Creates a sequence generator, which is
+		a mechanism for generating exact numeric values, one at a time.</td>
+                    </tr>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont" data-mc-conditions=""><a href="CreateSynonym.html">CREATE&#160;SYNONYM</a>
+                        </td>
+                        <td data-mc-conditions=""> Creates a synonym, which can provide an alternate name
+for a table or a view.
+</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateTable.html">CREATE&#160;TABLE</a>
+                        </td>
+                        <td>Creates a new table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateTempTable.html">CREATE&#160;TEMPORARY&#160;TABLE</a>
+                        </td>
+                        <td>Defines a temporary table for the current connection.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateTrigger.html">CREATE&#160;TRIGGER</a>
+                        </td>
+                        <td>Creates a trigger, which defines a set of actions that are executed when a database event occurs on a specified table</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateView.html">CREATE&#160;VIEW</a>
+                        </td>
+                        <td>Creates a view, which is a virtual table formed by a query.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DeclareGlobalTempTable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a>
+                        </td>
+                        <td>Defines a temporary table for the current connection.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Data Definition (DDL)&#160;- DROP&#160;Statements</p>
+            <p>These are the <a href="Intro.DDLDropStatements.html">drop statements</a>:</p>
+            <table summary="Summary table with links to and descriptions of DDL DROP statement topics">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Statement</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="DropFunction.html">DROP&#160;FUNCTION</a>
+                        </td>
+                        <td>Drops a function from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropIndex.html">DROP&#160;INDEX</a>
+                        </td>
+                        <td>Drops an index from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropProcedure.html">DROP&#160;PROCEDURE</a>
+                        </td>
+                        <td>Drops a procedure from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropRole.html">DROP&#160;ROLE</a>
+                        </td>
+                        <td>Drops a role from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropSchema.html">DROP&#160;SCHEMA</a>
+                        </td>
+                        <td>Drops a schema from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropSequence.html">DROP&#160;SEQUENCE</a>
+                        </td>
+                        <td>Drops a sequence from a database.</td>
+                    </tr>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont" data-mc-conditions=""><a href="DropSynonym.html">DROP&#160;SYNONYM</a>
+                        </td>
+                        <td data-mc-conditions="">Drops a synonym from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropTable.html">DROP&#160;TABLE</a>
+                        </td>
+                        <td>Drops a table from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropTrigger.html">DROP&#160;TRIGGER</a>
+                        </td>
+                        <td>Drops a trigger from a database.</td>
+                    </tr>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont" data-mc-conditions=""><a href="DropView.html">DROP&#160;VIEW</a>
+                        </td>
+                        <td data-mc-conditions="">Drops a view from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropFunction.html">DROP&#160;FUNCTION</a>
+                        </td>
+                        <td>Drops a function from a database.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Data Manipulation (DML)&#160;Statements</p>
+            <p>These are the <a href="Intro.DMLStatements.html">data manipulation statements</a>:</p>
+            <table summary="Summary table with links to and descriptions of DML statement topics">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Statement</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="CallProcedure.html">CALL&#160;PROCEDURE</a>
+                        </td>
+                        <td>Calls a stored procedure.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="Delete.html">DELETE</a>
+                        </td>
+                        <td>Deletes records from a table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="Insert.html">INSERT</a>
+                        </td>
+                        <td>Inserts records into a table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="Select.html">SELECT</a>
+                        </td>
+                        <td>Selects records.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="UpdateTable.html">UPDATE&#160;TABLE</a>
+                        </td>
+                        <td>Updates values in a table.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="Session"></a>Session Control Statements</p>
+            <p>These are the <a href="Intro.SessionControlStatements.html">session control statements</a>:</p>
+            <table summary="Summary table with links to and descriptions of session control statement topics">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Statement</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="SetRole.html">SET&#160;ROLE</a>
+                        </td>
+                        <td>Sets the current role for the current SQL context of a session.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="SetSchema.html">SET&#160;SCHEMA</a>
+                        </td>
+                        <td>Sets the default schema for a connection's session.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="openSourceNoteWrapper">
+                <div class="openSourceNote">
+                    <p>For access to the source code for the Community Edition of Splice Machine, visit <a href="https://github.com/splicemachine/spliceengine" target="_blank" title="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)" alt="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)">our open source GitHub repository.</a></p>
+                </div>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

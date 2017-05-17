@@ -1,0 +1,133 @@
+---
+title: NEXT_DAY built-in SQL function
+description: Built-in SQL function that returns the name of the month in a date expression
+summary: Built-in SQL function that returns the name of the month in a date expression
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_nextday
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor296"></a>NEXT_DAY</h1>
+            <p>The <span class="CodeFont">NEXT_DAY</span> function returns the date of the next specified day of the week after a specified date. </p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">NEXT_DAY( <span class="ItalicFont">source_date</span>, <span class="ItalicFont">day_of_week</span>);</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">source_date
+            </p>
+                <p class="paramDefnFirst">The source date. </p>
+                <p class="paramName">day_of_week
+            </p>
+                <p class="paramDefnFirst">The day of the week. This is the case-insensitive name of a day in the date language of your session. You can also specify day-name abbreviations, in which case any characters after the recognized abbreviation are ignored. For example, if you're using English, you can use the following values (again, the case of the characters is ignored):
+</p>
+                <table summary="Day of week abbreviations">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Day Name</th>
+                            <th>Abbreviation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="CodeFont">Sunday</td>
+                            <td class="CodeFont">Sun</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">Monday</td>
+                            <td class="CodeFont">Mon</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">Tuesday</td>
+                            <td class="CodeFont">Tue</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">Wednesday</td>
+                            <td class="CodeFont">Wed</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">Thursday</td>
+                            <td class="CodeFont">Thu</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">Friday</td>
+                            <td class="CodeFont">Fri</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">Saturday</td>
+                            <td class="CodeFont">Sat</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This function returns the date of the first weekday, as specified by <span class="CodeFont">day_of_week</span>, that is later than the specified date.</p>
+            <p>The return type is always <span class="CodeFont">DATE</span>, regardless of the data type of the <span class="CodeFont">source_date</span> parameter. </p>
+            <p>The return value has the same hours, minutes, and seconds components as does the <span class="CodeFont">source_date</span> parameter value.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; values (NEXT_DAY(CURRENT_DATE, 'tuesday'));
+1 
+----------
+2014-09-23
+1 row selected
+
+splice&gt; values (NEXT_DAY(CURRENT_DATE, 'monday'));
+1
+----------
+2014-09-29
+1 row selected
+
+SELECT&#160;DisplayName, BirthDate, NEXT_DAY(BirthDate, 'sunday') as "FirstSunday" 
+   FROM&#160;Players
+   WHERE&#160;ID&#160;&lt;&#160;20;
+DISPLAYNAME             |BIRTHDATE |FirstSund&amp;
+----------------------------------------------
+Buddy Painter           |1987-03-27|1987-03-29
+Billy Bopper            |1988-04-20|1988-04-24
+John Purser             |1990-10-30|1990-11-04
+Bob Cranker             |1987-01-21|1987-01-25
+Mitch Duffer            |1991-01-15|1991-01-20
+Norman Aikman           |1982-01-05|1982-01-10
+Alex Paramour           |1981-07-02|1981-07-05
+Harry Pennello          |1983-04-13|1983-04-17
+Greg Brown              |1983-12-24|1983-12-25
+Jason Minman            |1983-11-06|1983-11-06
+Kelly Tamlin            |1990-06-16|1990-06-17
+Mark Briste             |1977-08-30|1977-09-04
+Andy Sussman            |1990-03-22|1990-03-25
+Craig McGawn            |1982-10-12|1982-10-17
+Elliot Andrews          |1989-08-21|1989-08-27
+Alex Darba              |1984-04-11|1984-04-15
+Joseph Arkman           |1984-09-21|1984-09-23
+Henry Socomy            |1989-11-17|1989-11-19
+Jeremy Packman          |1989-01-01|1989-01-01
+
+19 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CurrentDate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
+                <li value="2"><a href="../DataTypes/Date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
+                <li value="3"><a href="Date.html"><span class="CodeFont">DATE</span></a>&#160;function</li>
+                <li value="4"><a href="Day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
+                <li value="5"><a href="Extract.html"><span class="CodeFont">EXTRACT</span></a>&#160;function</li>
+                <li value="6"><a href="LastDay.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
+                <li value="7"><a href="Month.html"><span class="CodeFont">MONTH</span></a> function</li>
+                <li value="8"><a href="MonthBetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
+                <li value="9"><a href="MonthName.html"><span class="CodeFont">MONTHNAME</span></a>&#160;function</li>
+                <li value="10"><a href="Now.html"><span class="CodeFont">NOW</span></a> function</li>
+                <li value="11"><a href="Quarter.html"><span class="CodeFont">QUARTER</span></a> function</li>
+                <li value="12"><a href="../DataTypes/Time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
+                <li value="13"><a href="TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
+                <li value="14"><a href="ToChar.html"><span class="CodeFont">TO_CHAR</span></a>&#160;function</li>
+                <li value="15"><a href="ToDate.html"><span class="CodeFont">TO_DATE</span></a>&#160;function</li>
+                <li value="16"><a href="Week.html"><span class="CodeFont">WEEK</span></a> function</li>
+                <li value="17"><span class="ItalicFont"><a href="../../Developers/Fundamentals/WorkingWithDates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

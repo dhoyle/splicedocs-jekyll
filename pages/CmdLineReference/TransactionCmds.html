@@ -1,0 +1,79 @@
+---
+title: Splice Machine Transaction Commands
+description: Introduction to the transaction-related commands available in the Splice Machine command line interpreter.
+summary: Introduction to the transaction-related commands available in the Splice Machine command line interpreter.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_transactioncmds
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor93"></a>Transaction Commands</h1>
+            <p>This section describes the <span class="AppCommand">splice&gt;</span>&#160;commands you use to work with transactions in your database:</p>
+            <table summary="Table summarizing transaction-related commands.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Description</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdAutocommit.html">Autocommit</a>
+                        </td>
+                        <td>Turns the connection's auto-commit mode on or off.</td>
+                        <td><span class="AppCommand">splice&gt; autocommit off;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdCommit.html">Commit</a>
+                        </td>
+                        <td>Commits the currently active transaction and initiates a new transaction.</td>
+                        <td><span class="AppCommand">splice&gt; commit;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdConnect.html">Connect</a>
+                        </td>
+                        <td>Connect to a database via its URL.</td>
+                        <td><span class="AppCommand">splice&gt; connect 'jdbc:splice://xyz:1527/splicedb';</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdReleaseSavepoint.html">Release Savepoint</a>
+                        </td>
+                        <td>Releases a savepoint.</td>
+                        <td><span class="AppCommand">splice&gt; release savepoint gSavePt1;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdRollback.html">Rollback</a>
+                        </td>
+                        <td>Rolls back the currently active transaction and initiates a new transaction.</td>
+                        <td><span class="AppCommand">splice&gt; rollback;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdRollbackToSavepoint.html">Rollback to Savepoint</a>
+                        </td>
+                        <td>Rolls the current transaction back to the specified savepoint.</td>
+                        <td><span class="AppCommand">splice&gt; rollback to savepoint gSavePt1;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdSavepoint.html">Savepoint</a>
+                        </td>
+                        <td>Creates a savepoint within the current transaction.</td>
+                        <td><span class="AppCommand">splice&gt; savepoint gSavePt1;</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

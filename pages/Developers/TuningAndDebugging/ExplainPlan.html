@@ -1,0 +1,166 @@
+---
+title: Introduction to using Splice Machine's Explain Plan feature
+description: Use the Splice Machine explain plan feature to view the execution plan for a query without actually executing the query.
+summary: Use the Splice Machine explain plan feature to view the execution plan for a query without actually executing the query.
+keywords: 
+sidebar: developers_sidebar
+permalink: developers_tuning_explainplan
+folder: Developers/TuningAndDebugging
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor138"></a>About Explain Plan</h1>
+            <p>You can use the <span class="CodeFont">explain</span> command to display what the execution plan will be for a statement without executing the statement. This topic presents and describes several examples.</p>
+            <h2>Using Explain Plan to See the Execution Plan for a Statement</h2>
+            <p>To display the execution plan for a statement without actually executing the statement, use the <span class="AppCommand">explain</span> command on the statement:</p>
+            <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain <span class="ItalicFont">Statement</span>;</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">Statement</p>
+                <p class="paramDefnFirst">An SQL&#160;statement.</p>
+            </div>
+            <h3>Explain Plan and DDL&#160;Statements</h3>
+            <p>SQL Data Definition Language (DDL) statements have no known cost, and thus do not require optimization. Because of this, the <span class="CodeFont">explain</span> command does not work with DDL statements; attempting to <span class="CodeFont">explain</span> a DDL statement such as <span class="CodeFont">CREATE TABLE</span> will generate a syntax error. You <span class="BoldFont">cannot</span> use <span class="CodeFont">explain</span> with any of the following SQL&#160;statements:</p>
+            <ul>
+                <li class="CodeFont" value="1">ALTER</li>
+                <li class="CodeFont" value="2">CREATE&#160;... <span class="bodyFont">(any statement that starts with <span class="CodeFont">CREATE</span>)</span></li>
+                <li class="CodeFont" value="3">DROP&#160;... <span class="bodyFont">(any statement that starts with <span class="CodeFont">DROP</span>)</span></li>
+                <li class="CodeFont" value="4">GRANT</li>
+                <li class="CodeFont" value="5">RENAME ... <span class="bodyFont">(any statement that starts with <span class="CodeFont">RENAME</span>)</span></li>
+                <li class="CodeFont" value="6">REVOKE</li>
+                <li class="CodeFont" value="7">TRUNCATE&#160;TABLE</li>
+            </ul>
+            <h2>Explain Plan Output</h2>
+            <p>When you run the <span class="CodeFont">explain</span> command, it displays output in a tree-structured format:</p>
+            <ul>
+                <li value="1">The first row in the output summarizes the plan</li>
+                <li value="2"> Each row in the output represents a node in the tree.</li>
+                <li value="3">For join nodes, the right side of the join is displayed first, followed by the left side.</li>
+                <li value="4">Child node rows are indented and prefixed with '<span class="CodeFont">-&gt;</span>'.</li>
+            </ul>
+            <p>The first node in the plan output contains these fields:</p>
+            <table summary="Description of the fields in the first node of the explain plan output.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">n=<span class="ItalicFont">number</span></td>
+                        <td>
+                            <p class="noSpaceAbove">The number of nodes.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">rows=<span class="ItalicFont">number</span></td>
+                        <td>
+                            <p class="noSpaceAbove">The number of output rows.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">updateMode=[mode]</td>
+                        <td>
+                            <p class="noSpaceAbove">The update mode of the statement.</p>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont" data-mc-conditions="">engine=[engineType]</td>
+                        <td data-mc-conditions="">
+                            <p data-mc-conditions="">engineType=<span class="CodeFont">Spark</span> means this query will be executed by our OLAP&#160;engine.</p>
+                            <p data-mc-conditions="">engineType=<span class="CodeFont">control</span> means this query will be executed by our OLTP&#160;engine.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Each node row in the output contains the following fields:</p>
+            <table summary="Description of the fields in each node row in the explain plan output.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">[<span class="ItalicFont">node label</span>]</td>
+                        <td>The name of the node</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">n=<span class="ItalicFont">number</span></td>
+                        <td>
+                            <p class="noSpaceAbove">The result set number.</p>
+                            <p>This is primarily used internally, and can also be used to determine the relative ordering of optimization.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">totalCost=<span class="ItalicFont">number</span></td>
+                        <td>
+                            <p class="noSpaceAbove">The total cost to perform this operation.</p>
+                            <p>This is computed <span class="ItalicFont">as if the operation is at the top of the operation tree</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">processingCost=<span class="ItalicFont">number</span></td>
+                        <td>
+                            <p class="noSpaceAbove">The cost to process all data in this node.</p>
+                            <p>Processing includes everything except for reading the final results over the network.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">transferCost=<span class="ItalicFont">number</span></td>
+                        <td>The cost to send the final results over the network to the control node.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">outputRows=<span class="ItalicFont">number</span></td>
+                        <td>The total number of rows that are output.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">outputHeapSize=<span class="ItalicFont">number unit</span></td>
+                        <td>
+                            <p class="noSpaceAbove">The total size of the output result set, and the unit in which that size is expressed, which is one of:</p>
+                            <ul class="SecondLevel">
+                                <li class="CodeFont" value="1">B</li>
+                                <li class="CodeFont" value="2">KB</li>
+                                <li class="CodeFont" value="3">MB</li>
+                                <li class="CodeFont" value="4">GB</li>
+                                <li class="CodeFont" value="5">TB</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">partitions==<span class="ItalicFont">number</span></td>
+                        <td>
+                            <p class="noSpaceAbove">The number of partitions involved.</p>
+                            <p><span class="ItalicFont">Partition</span> is currently equivalent to <span class="ItalicFont">Region</span>; however, this will not necessarily remain true in future releases.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>For example:</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select * from sys.systables t, sys.sysschemas s
+        where t.schemaid =s.schemaid;
+
+Plan
+-------------------------------------------------------------------------------------------------<br />Cursor(n=5,rows=20,updateMode=READ_ONLY (1),engine=control)
+  -&gt;  ScrollInsensitive(n=4,totalCost=21.728,outputRows=20,outputHeapSize=6.641 KB,partitions=1)
+    -&gt;  BroadcastJoin(n=3,totalCost=12.648,outputRows=20,outputHeapSize=6.641 KB,partitions=1,preds=[(T.SCHEMAID[4:4] = S.SCHEMAID[4:8])])
+      -&gt;  TableScan[SYSSCHEMAS(32)](n=2,totalCost=4.054,outputRows=20,outputHeapSize=6.641 KB,partitions=1)
+      -&gt;  TableScan[SYSTABLES(48)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
+
+5 rows selected</pre>
+            </div>
+            <p>The next topic, <a href="ExplainPlanExamples.html">Explain Plan Examples</a>, contains a number of examples, annotated with notes to help you understand the output of each.</p>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><a href="ExplainPlanExamples.html">Explain Plan Examples</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

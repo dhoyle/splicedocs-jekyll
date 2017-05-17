@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A quick overview of the Splice Machine in-memory engine, powered by Apache Spark.">
+<meta name="keywords" content=" ">
+<title>The Splice Machine In-Memory Engine | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the The Splice Machine In-Memory Engine page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="The Splice Machine In-Memory Engine">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">The Splice Machine In-Memory Engine</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">A quick overview of the Splice Machine in-memory engine, powered by Apache Spark.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/Notes/notes_sparkoverview.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor511"></a>The Splice Machine In-Memory Engine</h1>
+            <p>This topic provides an overview of the Splice Machine in-memory engine, which tremendously boosts OLAP&#160;(analytical) query performance. Splice Machine use Apache™ Spark as our in-memory engine and automatically detects and directs OLAP&#160;queries to that engine. </p>
+            <p>This topic presents a very brief overview of Spark terminology and concepts. </p>
+            <div class="noteNote">If you're not yet familiar with Spark, we recommend visiting the Apache Spark web site, <a href="http://spark.apache.org/" target="_blank">spark.apache.org</a>, to learn the basics, and for links to the official Spark documentation.</div>
+            <h2>Spark Overview</h2>
+            <p>Apache Spark is an open source computational engine that manages tasks in a computing cluster. Spark was originally developed at UC Berkeley in 2009, and then open sourced in 2010 as an Apache project. Spark has been engineered from the ground up for performance, exploiting in-memory computing and other optimizations to provide powerful analysis on very large data sets.</p>
+            <p>Spark provides numerous performance-oriented features, including:</p>
+            <ul>
+                <li value="1">ability to cache datasets in memory for interactive data analysis</li>
+                <li value="2">abstraction</li>
+                <li value="3">integration with a host of data sources</li>
+                <li value="4">very fast data analysis</li>
+                <li value="5">easy to use APIs for operating on large datasets, including numerous operators for transforming and manipulating data, in Java, Scala, Python, and other languages</li>
+                <li value="6">numerous high level libraries, including support for machine learning, streaming, and graph processing</li>
+                <li value="7">scalability to thousands of nodes</li>
+            </ul>
+            <p>Spark applications consist of a driver program and some number of worker programs running on cluster nodes. The data sets (RDDs)&#160;used by the application are distributed across the worker nodes.</p>
+            <h2>Spark Terminology</h2>
+            <p>Splice Machine launches Spark queries on your cluster as Spark <span class="ItalicFont">jobs</span>, each of which consists of some number of <span class="ItalicFont">stages</span>. Each stage then runs a number of <span class="ItalicFont">tasks</span>, each of which is a unit of work that is sent to an <span class="ItalicFont">executor</span>.</p>
+            <p>The table below contains a brief glossary of the terms you'll see when using the Splice Machine Management Console:</p>
+            <table summary="Glossary of Spark terms.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="BoldFont">Action</td>
+                        <td>A function that returns a value to the driver after running a computation on an <span class="ItalicFont">RDD</span>.
+Examples include <span class="CodeFont">save</span> and <span class="CodeFont">collect</span> functions.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Application</td>
+                        <td>
+                            <p class="noSpaceAbove">A user program built on Spark. Each application consists of a <span class="ItalicFont">driver program</span> and a number of <span class="ItalicFont">executors</span> running on your cluster.</p>
+                            <p>An application creates <span class="ItalicFont">RDDs</span>, transforms those RDDs, and runs <span class="ItalicFont">actions</span> on them. These result in a directed acyclic graph (DAG)&#160;of operations, which is compiled into a set of <span class="ItalicFont">stages</span>. Each stage consists of a number of <span class="ItalicFont">tasks</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">DAG</td>
+                        <td>A <span class="BoldFont">D</span>irected <span class="BoldFont">A</span>cyclic <span class="BoldFont">G</span>raph of the operations to run on an RDD. </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Driver program</td>
+                        <td>This is the process that's running the <span class="CodeFont">main()</span> function of the application and creating the <span class="CodeFont">SparkContext</span> object, which sends jobs to <span class="ItalicFont">executors</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Executor</td>
+                        <td>A process that is launched (by the driver program)&#160;for an <span class="ItalicFont">application</span> on a <span class="ItalicFont">worker node</span>. The executor launches <span class="ItalicFont">tasks</span> and maintains data for them.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Job</td>
+                        <td>A parallel computation consisting of multiple <span class="ItalicFont">tasks</span> that gets spawned in response to a Spark <span class="ItalicFont">action</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Partition</td>
+                        <td>A subset of the elements in an <span class="ItalicFont">RDD</span>. Partitions define the unit of parallelism; Spark processes elements within a partition in sequence and multiple partitions in parallel.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">RDD</td>
+                        <td>A <span class="BoldFont">R</span>esilient <span class="BoldFont">D</span>istributed <span class="BoldFont">D</span>ataset. This is the core programming abstraction in Spark, consisting of a fault-tolerant collection of elements that can be operated on in parallel.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Stage</td>
+                        <td>
+                            <p>A set of tasks that run in parallel. The stage creates a <span class="ItalicFont">task</span> for each partition in an <span class="ItalicFont">RDD</span>, serializes those tasks, and sends those tasks to <span class="ItalicFont">executors</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Task</td>
+                        <td>The fundamental unit of work in Spark; each task fetches input, executes operations, and generates output.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Transformation</td>
+                        <td>A function that creates a new <span class="ItalicFont">RDD</span> from an existing <span class="ItalicFont">RDD</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Worker node</td>
+                        <td>A cluster node that can run application code.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><a href="../ManagementConsole/Intro.ManagementConsole.html">About the Splice Machine Management Console</a>
+                </li>
+                <li value="2"><a href="../ManagementConsole/ConsoleFeatures.html">User Interface Features of the Splice&#160;Machine Management Console</a>
+                </li>
+                <li value="3"><a href="../ManagementConsole/ManagingQueries.html">Managing Queries with the Console</a>
+                </li>
+                <li value="4"><a href="../Developers/Fundamentals/SparkLibraries.html">Using Spark Libraries with Splice Machine</a>
+                </li>
+                <li value="5">The Apache Spark web site, <a href="http://spark.apache.org/" target="_blank">spark.apache.org</a></li>
+            </ul>
+            <p>&#160;</p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

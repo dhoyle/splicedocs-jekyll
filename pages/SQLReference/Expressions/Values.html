@@ -1,0 +1,105 @@
+---
+title: VALUES Expression
+description: Describes the VALUES expression, which constructs a row or table from other values.
+summary: Describes the VALUES expression, which constructs a row or table from other values.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_expressions_values
+folder: SQLReference/Expressions
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Expressions.Values" id="Expressions.Values"></a><a name="kanchor186"></a>VALUES Expression</h1>
+            <p>The <span class="CodeFont">VALUES</span> expression allows construction of a row or a table
+from other values. </p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">{
+    VALUES ( <span class="ItalicFont">Value</span> {, <span class="ItalicFont">Value</span> }* )
+        [ , ( <span class="ItalicFont">Value</span> {, <span class="ItalicFont">Value</span> }* ) ]* |
+    VALUES <span class="ItalicFont">Value</span> [ , <span class="ItalicFont">Value</span> ]*
+} [ <span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span> ]
+  [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">result offset clause</a></span> ]
+  [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">fetch first clause</a></span> ]
+</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">Value</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax"><span class="ItalicFont">Expression</span> | DEFAULT</pre>
+                </div>
+                <p class="paramDefnFirst">The first form constructs multi-column rows. The second
+form constructs single-column rows, each expression being the value of the
+column of the row.</p>
+                <p class="paramDefn">The <span class="CodeFont">DEFAULT</span> keyword is allowed only if the <span class="CodeFont">VALUES</span> expression is in an <span class="CodeFont">INSERT</span> statement. Specifying <span class="CodeFont">DEFAULT</span> for a column inserts the column's default value into the column. Another way to insert the default value into the column is to omit the column from the column list and only insert values into other columns in the table.</p>
+                <p class="paramName">ORDER&#160;BY&#160;clause</p>
+                <p class="paramDefnFirst">The <a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span> clause</a> allows you to specify the order in which rows appear in the result set. </p>
+                <p class="paramName">result offset and fetch first clauses</p>
+                <p class="paramDefnFirst">The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">result offset</span> clause</a>  provides a way to skip the N first rows in a result set before starting to return any rows. The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows returned in the result set.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>A <span class="CodeFont">VALUES</span> expression can be used in all the places where a
+query can, and thus can be used in any of the following ways:
+</p>
+            <ul>
+                <li value="1">As a statement that returns a <span class="ItalicFont">ResultSet</span></li>
+                <li value="2">Within expressions and statements wherever subqueries are permitted</li>
+                <li value="3">As the source of values for an <span class="CodeFont"><a href="../Statements/Insert.html">INSERT</a></span> statement (in an <span class="CodeFont">INSERT</span> statement, 
+you normally use a <span class="CodeFont">VALUES</span> expression when you do not use a <span class="ItalicFont"><a href="Select.html">SelectExpression</a></span>)</li>
+            </ul>
+            <p class="body">You can use a <span class="CodeFont">VALUES</span>&#160;expression to generate new data values with a query that selects from a <span class="CodeFont">VALUES</span>&#160;clause; for example:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+ SELECT R1,R2 
+   FROM (VALUES('GROUP 1','GROUP 2')) AS MYTBL(R1,R2);</pre>
+            </div>
+            <p>A <span class="CodeFont">VALUES</span> expression that is used in an <span class="CodeFont">INSERT</span> statement cannot use an <span class="CodeFont">ORDER BY</span> clause. However, if the <span class="CodeFont">VALUES</span> expression does not contain the <span class="CodeFont">DEFAULT</span> keyword, the <span class="CodeFont">VALUES</span> clause can be put in a subquery and ordered, as in the following statement:</p>
+            <div class="preWrapper"><pre class="Example">INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;</pre>
+            </div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- 3 rows of 1 column
+splice&gt;&#160;VALUES (1),(2),(3);
+
+   -- 3 rows of 1 column
+splice&gt;&#160;VALUES 1, 2, 3;
+
+   -- 1 row of 3 columns
+splice&gt;&#160;VALUES (1, 2, 3);
+
+   -- 3 rows of 2 columns
+splice&gt;&#160;VALUES (1,21),(2,22),(3,23);
+
+   -- using ORDER BY and FETCH FIRST
+splice&gt;&#160;VALUES (3,21),(1,22),(2,23) ORDER BY 1 FETCH FIRST 2 ROWS ONLY;
+
+   -- using ORDER BY and OFFSET
+splice&gt;&#160;VALUES (3,21),(1,22),(2,23) ORDER BY 1 OFFSET 1 ROW;
+
+   -- constructing a derived table
+splice&gt;&#160;VALUES ('orange', 'orange'), ('apple', 'red'), ('banana', 'yellow');
+
+   -- Insert two new departments using one statement into the DEPARTMENT table, 
+   -- but do not assign a manager to the new department.
+splice&gt;&#160;INSERT INTO DEPARTMENT (DEPTNO, DEPTNAME, ADMRDEPT)
+  VALUES ('B11', 'PURCHASING', 'B01'),
+    ('E41', 'DATABASE ADMINISTRATION', 'E01');
+
+   -- insert a row with a DEFAULT value for the MAJPROJ column
+splice&gt;&#160;INSERT INTO PROJECT (PROJNO, PROJNAME, DEPTNO, RESPEMP, PRSTDATE, MAJPROJ) 
+VALUES ('PL2101', 'ENSURE COMPAT PLAN', 'B01', '000020', CURRENT_DATE, DEFAULT);
+
+   -- using a built-in function
+splice&gt;&#160;VALUES CURRENT_DATE;
+
+   -- getting the value of an arbitrary expression
+splice&gt;&#160;VALUES (3*29, 26.0E0/3);
+
+   -- getting a value returned by a built-in function
+splice&gt;&#160;values char(1);</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Clauses/From.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
+                <li value="2"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
+                <li value="3"><a href="../Statements/Insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

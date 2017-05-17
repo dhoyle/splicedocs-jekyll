@@ -1,0 +1,74 @@
+---
+title: Table Subquery
+description: A subquery that returns &#xA;multiple rows.
+summary: A subquery that returns &#xA;multiple rows.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_queries_tablesubquery
+folder: SQLReference/Queries
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Queries.TableSubquery" id="Queries.TableSubquery"></a><a name="kanchor332"></a>Table Subquery</h1>
+            <p>A <span class="ItalicFont">TableSubquery</span> is a subquery that returns
+multiple rows.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">( <span class="ItalicFont"><a href="Query.html">Query</a></span>
+    [ <span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span> ]
+    [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">result offset clause</a></span> ]
+    [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">fetch first clause</a></span> ]
+)</pre>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>Unlike a <span class="ItalicFont"><a href="ScalarSubquery.html">ScalarSubquery</a>,</span> a <span class="ItalicFont">TableSubquery</span> is allowed only:</p>
+            <ul>
+                <li value="1">as a <span class="ItalicFont"><a href="../Expressions/Table.html">TableExpression</a></span> in
+a <a href="../Clauses/From.html"><span class="CodeFont">FROM</span> clause</a></li>
+                <li value="2">with <span class="CodeFont">EXISTS</span>, <span class="CodeFont">IN</span>, or quantified comparisons.</li>
+            </ul>
+            <p>When used as a
+<span class="ItalicFont"><a href="../Expressions/Table.html">TableExpression</a></span>
+in a <a href="../Clauses/From.html"><span class="CodeFont">FROM</span> clause</a>, or with
+<span class="CodeFont">EXISTS</span>, it can return multiple columns. </p>
+            <p>When used with <span class="CodeFont">IN</span> or quantified
+comparisons, it must return a single column.</p>
+            <p class="heading2">Example</p>
+            <p class="body">This example shows a subquery used as a table expression in a <span class="CodeFont">FROM</span>&#160;clause:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+SELECT VirtualFlightTable.flight_ID 
+  FROM
+     (SELECT flight_ID, orig_airport, dest_airport
+        FROM Flights
+        WHERE (orig_airport = 'SFO' OR dest_airport = 'SCL')
+      )
+  AS VirtualFlightTable;
+</pre>
+            </div>
+            <p class="body">This shows one subquery used with <span class="CodeFont">EXISTS</span> and another used with <span class="CodeFont">IN</span>:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+SELECT *
+  FROM Flights
+  WHERE EXISTS
+    (SELECT *
+       FROM Flights
+       WHERE dest_airport = 'SFO'
+       AND orig_airport = 'GRU');
+
+SELECT flight_id, segment_number
+  FROM Flights
+  WHERE flight_id IN
+    (SELECT flight_ID
+       FROM Flights
+       WHERE orig_airport = 'SFO'
+       OR dest_airport = 'SCL');</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Clauses/From.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
+                <li value="2"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
+                <li value="3"><a href="../Expressions/Select.html"><span class="CodeFont">SELECT</span></a>&#160;expression</li>
+                <li value="4"><a href="../Expressions/Table.html"><span class="CodeFont">TABLE</span></a>&#160;expression</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

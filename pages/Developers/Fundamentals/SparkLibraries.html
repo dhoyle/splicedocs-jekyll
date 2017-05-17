@@ -1,0 +1,309 @@
+---
+title: Using Spark Libraries with Splice Machine
+description: Provides an example of using a Spark library in Splice Machine.
+summary: Provides an example of using a Spark library in Splice Machine.
+keywords: 
+sidebar: developers_sidebar
+permalink: developers_fundamentals_sparklibs
+folder: Developers/Fundamentals
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor14"></a>Using Spark Libraries with Splice&#160;Machine</h1>
+            <p>One of the great features of Spark is that a large number of libraries have been and continue to be developed for use with Spark. This topic provides an example of interfacing to the Spark Machine Learning library (MLlib).</p>
+            <p>You can follow a similar path to interface with other Spark libraries, which involves these steps:</p>
+            <ol>
+                <li value="1">Create a class with an API that leverages functionality in the Spark library you want to use.</li>
+                <li value="2">Write a custom procedure in your Splice Machine database that converts a Splice&#160;Machine result set into a Spark Resilient Distributed Dataset (RDD).</li>
+                <li value="3">Use the Spark library with the RDD.</li>
+            </ol>
+            <div>
+                <h2>Example:&#160;Using Spark MLlib with Splice Machine Statistics</h2>
+                <p>This section presents the sample code for interfacing Splice Machine with the Spark Machine Learning Library (MLlib), in these subsections:</p>
+                <ul>
+                    <li value="1"><a href="#About">About the Splice Machine SparkMLibUtils Class API</a> describes the SparkMLibUtils class that Splice&#160;Machine provides for interfacing with this library.</li>
+                    <li value="2"><a href="#Create">Creating our SparkStatistics Example Class</a> summarizes the <span class="CodeFont">SparkStatistics</span> Java class that we created for this example.</li>
+                    <li value="3"><a href="#Run">Run a Sample Program to Use Our Class</a> shows you how to define a custom procedure in your database to interface to the <span class="CodeFont">SparkStatistics</span> class.</li>
+                </ul>
+                <h3><a name="About"></a>About the Splice Machine SparkMLibUtils Class API</h3>
+                <p>Our example makes use of the Splice Machine <span class="CodeFont">com.splicemachine.example.SparkMLibUtils</span> class, which you can use to interface between your Splice&#160;Machine database and the Spark Machine Learning library.</p>
+                <p>Here's are the public methods from the <span class="CodeFont">SparkMLibUtils</span> class:</p>
+                <div class="preWrapperWide"><pre class="Example">public static JavaRDD‹LocatedRow&gt; resultSetToRDD(ResultSet rs)
+   throws StandardException;
+
+public static JavaRDD‹Vector&gt; locatedRowRDDToVectorRDD(JavaRDD‹LocatedRow&gt; locatedRowJavaRDD, int[] fieldsToConvert)
+   throws StandardException;
+
+public static Vector convertExecRowToVector(ExecRow execRow,int[] fieldsToConvert)
+   throws StandardException;
+
+public static Vector convertExecRowToVector(ExecRow execRow)
+   throws StandardException;
+</pre>
+                </div>
+                <blockquote>
+                    <p class="paramName">resultSetToRDD</p>
+                    <p class="paramDefnFirst">Converts a Splice Machine result set into a  Spark Resilient Distributed Dataset (RDD) object.</p>
+                    <p class="paramName">locatedRowRDDToVectorRDD</p>
+                    <p class="paramDefnFirst">Transforms an RDD&#160;into a vector for use with the Machine Learning library. The <span class="CodeFont">fieldsToConvert</span> parameter specifies which column positions to include in the vector.</p>
+                    <p class="paramName">convertExecRowToVector</p>
+                    <p class="paramDefnFirst">Converts a Splice Machine <span class="CodeFont">execrow</span> into a vector. The <span class="CodeFont">fieldsToConvert</span> parameter specifies which column positions to include in the vector.</p>
+                </blockquote>
+                <h3><a name="Create"></a>Creating our SparkStatistics Example Class</h3>
+                <p>For this example, we define a Java class named SparkStatistics that can query a Splice Machine table, convert that results into a Spark JavaRDD, and then use the Spark MLlib to calculate statistics.</p>
+                <p> Our class, <span class="CodeFont">SparkStatistics</span>, defines one public interface:</p>
+                <div class="preWrapperWide"><pre class="Example">public class SparkStatistics {
+
+    public static void getStatementStatistics(String statement, ResultSet[] resultSets) throws SQLException {
+        try {
+            // Run sql statement
+            Connection con = DriverManager.getConnection("jdbc:default:connection");
+            PreparedStatement ps = con.prepareStatement(statement);
+            ResultSet rs = ps.executeQuery();
+
+            // Convert result set to Java RDD
+            JavaRDD‹LocatedRow&gt; resultSetRDD = ResultSetToRDD(rs);
+
+            // Collect column statistics
+            int[] fieldsToConvert = getFieldsToConvert(ps);
+            MultivariateStatisticalSummary summary = getColumnStatisticsSummary(resultSetRDD, fieldsToConvert);
+
+            IteratorNoPutResultSet resultsToWrap = wrapResults((EmbedConnection) con,  getColumnStatistics(ps, summary, fieldsToConvert));
+            resultSets[0] = new EmbedResultSet40((EmbedConnection)con, resultsToWrap, false, null, true);
+       } catch (StandardException e) {
+            throw new SQLException(Throwables.getRootCause(e));
+        }
+    }
+}</pre>
+                </div>
+                <p>We call the <span class="CodeFont">getStatementStatistics</span> from custom procedure in our database, passing it an SQL&#160;query . <span class="CodeFont">getStatementStatistics</span> performs the following operations:</p>
+                <div class="opsStepsList">
+                    <ol class="boldFont">
+                        <li value="1">
+                            <p class="topLevel">Query your database</p>
+                            <p class="indentLevel1">The first step is to use our JDBC&#160;driver to connect to your database and run the query:</p>
+                            <div class="preWrapperWide"><pre class="Example">Connection con = DriverManager.getConnection("jdbc:default:connection");<br />PreparedStatement ps = con.prepareStatement(statement);
+ResultSet rs = ps.executeQuery();</pre>
+                            </div>
+                        </li>
+                        <li value="2">
+                            <p class="topLevel">Convert the query results into a Spark RDD</p>
+                            <p class="indentLevel1">Next, we convert the query's result set into a Spark RDD:</p>
+                            <div class="preWrapperWide"><pre class="Example">JavaRDD&lt;LocatedRow&gt; resultSetRDD = ResultSetToRDD(rs);</pre>
+                            </div>
+                        </li>
+                        <li value="3">
+                            <p class="topLevel">Calculate statistics</p>
+                            <p class="indentLevel1">Next, we use Spark to collect statistics for the query, using private methods in our <span class="CodeFont">SparkStatistics</span> class:</p>
+                            <div class="preWrapperWide"><pre class="Example">int[] fieldsToConvert = getFieldsToConvert(ps);<br />MultivariateStatisticalSummary summary = getColumnStatisticsSummary(resultSetRDD, fieldsToConvert);</pre>
+                            </div>
+                            <p class="indentLevel1">You can view the implementations of the <span class="CodeFont">getFieldsToConvert</span> and <span class="CodeFont">getColumnStatisticsSummary</span> methods in the <span class="ItalicFont"><a href="#Appendix">Appendix</a></span> at the end of this topic.</p>
+                        </li>
+                        <li value="4">
+                            <p class="topLevel">Return the results</p>
+                            <p class="indentLevel1">Finally, we return the results:</p>
+                            <div class="preWrapperWide"><pre class="Example">IteratorNoPutResultSet resultsToWrap = wrapResults((EmbedConnection) con, getColumnStatistics(ps, summary, fieldsToConvert));
+resultSets[0] = new EmbedResultSet40((EmbedConnection)con, resultsToWrap, false, null, true);</pre>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <p>&#160;</p>
+                <h3><a name="Run"></a>Run a Sample Program to Use Our Class</h3>
+                <p>Follow these steps to run a simple example program to use the Spark MLlib library to calculate statistics for an SQL&#160;statement. </p>
+                <div class="opsStepsList">
+                    <ol class="boldFont">
+                        <li value="1">
+                            <p class="topLevel">Create Your API&#160;Class</p>
+                            <p class="indentLevel1">The first step is to create a Java class that uses Spark to generate and analyze statistics, as shown in the previous section, <a href="#Create">Creating our SparkStatistics Example Class</a></p>
+                        </li>
+                        <li value="2">
+                            <p class="topLevel">Create your custom procedure</p>
+                            <p class="indentLevel1">First we create a procedure in our database that references the <span class="CodeFont">getStatementStatistics</span> method in our API, which takes an SQL&#160;query as its input and uses Spark to calculate statistics for the query using MLlib:</p>
+                            <div class="preWrapperWide"><pre class="Example">CREATE PROCEDURE getStatementStatistics(statement varchar(1024)) 
+ &#160;&#160;PARAMETER STYLE JAVA
+&#160;&#160;&#160;LANGUAGE JAVA 
+&#160;&#160;&#160;READS SQL DATA 
+&#160;&#160;&#160;DYNAMIC RESULT SETS 1 
+&#160;&#160;&#160;EXTERNAL NAME 'com.splicemachine.example.SparkStatistics.getStatementStatistics';</pre>
+                            </div>
+                        </li>
+                        <li value="3">
+                            <p class="topLevel">Create a table to use</p>
+                            <p class="indentLevel1">Let's create a very simple table to illustrate use of our procedure:</p>
+                            <div class="preWrapperWide"><pre class="Example">create table t( col1 int, col2 double);
+insert into t values(1, 10);
+insert into t values(2, 20);
+insert into t values(3, 30);
+insert into t values(4, 40);</pre>
+                            </div>
+                        </li>
+                        <li value="4">
+                            <p class="topLevel">Call your custom procedure to get statistics</p>
+                            <p class="indentLevel1">Now call your custom procedure, which sends an SQL&#160;statement to the SparkStatistics class we created to generate a result set:</p>
+                            <div class="preWrapperWide"><pre class="Example">call splice.getStatementStatistics('select * from t');</pre>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <h2><a name="Appendix"></a>Appendix:&#160;The SparkStatistics Class</h2>
+            <p>Here's the full code for our SparkStatistics class:</p>
+            <div class="preWrapperWide"><pre class="Example">package com.splicemachine.example;
+
+import com.google.common.base.Throwables;
+import com.google.common.collect.Lists;
+import com.splicemachine.db.iapi.error.StandardException;
+import com.splicemachine.db.iapi.sql.Activation;
+import com.splicemachine.db.iapi.sql.ResultColumnDescriptor;
+import com.splicemachine.db.iapi.sql.execute.ExecRow;
+import com.splicemachine.db.iapi.types.DataTypeDescriptor;
+import com.splicemachine.db.iapi.types.SQLDouble;
+import com.splicemachine.db.iapi.types.SQLLongint;
+import com.splicemachine.db.iapi.types.SQLVarchar;
+import com.splicemachine.db.impl.jdbc.EmbedConnection;
+import com.splicemachine.db.impl.jdbc.EmbedResultSet40;
+import com.splicemachine.db.impl.sql.GenericColumnDescriptor;
+import com.splicemachine.db.impl.sql.execute.IteratorNoPutResultSet;
+import com.splicemachine.db.impl.sql.execute.ValueRow;
+import com.splicemachine.derby.impl.sql.execute.operations.LocatedRow;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.mllib.linalg.Vector;
+import org.apache.spark.mllib.stat.MultivariateStatisticalSummary;
+import org.apache.spark.mllib.stat.Statistics;
+import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Types;
+import java.util.List;
+
+public class SparkStatistics {
+
+    private static final ResultColumnDescriptor[] STATEMENT_STATS_OUTPUT_COLUMNS = new GenericColumnDescriptor[]{
+            new GenericColumnDescriptor("COLUMN_NAME", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.VARCHAR)),
+            new GenericColumnDescriptor("MIN", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.DOUBLE)),
+            new GenericColumnDescriptor("MAX", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.DOUBLE)),
+            new GenericColumnDescriptor("NUM_NONZEROS", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.DOUBLE)),
+            new GenericColumnDescriptor("VARIANCE", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.DOUBLE)),
+            new GenericColumnDescriptor("MEAN", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.DOUBLE)),
+            new GenericColumnDescriptor("NORML1", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.DOUBLE)),
+            new GenericColumnDescriptor("MORML2", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.DOUBLE)),
+            new GenericColumnDescriptor("COUNT", DataTypeDescriptor.getBuiltInDataTypeDescriptor(Types.BIGINT)),
+    };
+
+
+    public static void getStatementStatistics(String statement, ResultSet[] resultSets) throws SQLException {
+        try {
+            // Run sql statement
+            Connection con = DriverManager.getConnection("jdbc:default:connection");
+            PreparedStatement ps = con.prepareStatement(statement);
+            ResultSet rs = ps.executeQuery();
+
+            // Convert result set to Java RDD
+            JavaRDD‹LocatedRow&gt; resultSetRDD = ResultSetToRDD(rs);
+
+            // Collect column statistics
+            int[] fieldsToConvert = getFieldsToConvert(ps);
+            MultivariateStatisticalSummary summary = getColumnStatisticsSummary(resultSetRDD, fieldsToConvert);
+
+            IteratorNoPutResultSet resultsToWrap = wrapResults((EmbedConnection) con, getColumnStatistics(ps, summary, fieldsToConvert));
+            resultSets[0] = new EmbedResultSet40((EmbedConnection)con, resultsToWrap, false, null, true);
+       } catch (StandardException e) {
+            throw new SQLException(Throwables.getRootCause(e));
+        }
+    }
+
+    private static MultivariateStatisticalSummary getColumnStatisticsSummary(JavaRDD‹LocatedRow&gt; resultSetRDD,
+                                                                     int[] fieldsToConvert) throws StandardException{
+        JavaRDD‹Vector&gt; vectorJavaRDD = SparkMLibUtils.locatedRowRDDToVectorRDD(resultSetRDD, fieldsToConvert);
+        MultivariateStatisticalSummary summary = Statistics.colStats(vectorJavaRDD.rdd());
+        return summary;
+    }
+
+
+    /*
+     * Convert a ResultSet to JavaRDD
+     */
+    private static JavaRDD‹LocatedRow&gt; ResultSetToRDD (ResultSet resultSet) throws StandardException{
+        EmbedResultSet40 ers = (EmbedResultSet40)resultSet;
+
+        com.splicemachine.db.iapi.sql.ResultSet rs = ers.getUnderlyingResultSet();
+        JavaRDD‹LocatedRow&gt; resultSetRDD = SparkMLibUtils.resultSetToRDD(rs);
+
+        return resultSetRDD;
+    }
+
+
+    private static int[] getFieldsToConvert(PreparedStatement ps) throws SQLException{
+        ResultSetMetaData metaData = ps.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        int[] fieldsToConvert = new int[columnCount];
+        for (int i = 0; i ‹ columnCount; ++i) {
+            fieldsToConvert[i] = i+1;
+        }
+        return fieldsToConvert;
+    }
+
+    /*
+     * Convert column statistics to an iterable row source
+     */
+    private static Iterable‹ExecRow&gt; getColumnStatistics(PreparedStatement ps,
+                                                         MultivariateStatisticalSummary summary,
+                                                         int[] fieldsToConvert) throws StandardException {
+        try {
+
+            List‹ExecRow&gt; rows = Lists.newArrayList();
+            ResultSetMetaData metaData = ps.getMetaData();
+
+            double[] min = summary.min().toArray();
+            double[] max = summary.max().toArray();
+            double[] mean = summary.mean().toArray();
+            double[] nonZeros = summary.numNonzeros().toArray();
+            double[] variance = summary.variance().toArray();
+            double[] normL1 = summary.normL1().toArray();
+            double[] normL2 = summary.normL2().toArray();
+            long count = summary.count();
+
+            for (int i= 0; i ‹ fieldsToConvert.length; ++i) {
+                int columnPosition = fieldsToConvert[i];
+                String columnName = metaData.getColumnName(columnPosition);
+                ExecRow row = new ValueRow(9);
+                row.setColumn(1, new SQLVarchar(columnName));
+                row.setColumn(2, new SQLDouble(min[columnPosition-1]));
+                row.setColumn(3, new SQLDouble(max[columnPosition-1]));
+                row.setColumn(4, new SQLDouble(nonZeros[columnPosition-1]));
+                row.setColumn(5, new SQLDouble(variance[columnPosition-1]));
+                row.setColumn(6, new SQLDouble(mean[columnPosition-1]));
+                row.setColumn(7, new SQLDouble(normL1[columnPosition-1]));
+                row.setColumn(8, new SQLDouble(normL2[columnPosition-1]));
+                row.setColumn(9, new SQLLongint(count));
+                rows.add(row);
+            }
+            return rows;
+        }
+        catch (Exception e) {
+            throw StandardException.newException(e.getLocalizedMessage());
+        }
+    }
+
+    private static IteratorNoPutResultSet wrapResults(EmbedConnection conn, Iterable‹ExecRow&gt; rows) throws
+            StandardException {
+        Activation lastActivation = conn.getLanguageConnection().getLastActivation();
+        IteratorNoPutResultSet resultsToWrap = new IteratorNoPutResultSet(rows, STATEMENT_STATS_OUTPUT_COLUMNS,
+                lastActivation);
+        resultsToWrap.openCore();
+        return resultsToWrap;
+    }
+}</pre>
+            </div>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><a href="../../Notes/SparkOverview.html">Spark Overview</a>
+                </li>
+                <li value="2"><a href="../../ManagementConsole/Intro.ManagementConsole.html">Using the Splice Machine Management Console</a>
+                </li>
+                <li value="3">You can find the Spark MLlib guide in the Programming Guides section of the Spark documentation site:&#160;<a href="https://spark.apache.org/docs" target="_blank">https://spark.apache.org/docs</a></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

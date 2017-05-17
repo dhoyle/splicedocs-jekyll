@@ -1,0 +1,88 @@
+---
+title: INSERT statement
+description: Inserts records into a table.
+summary: Inserts records into a table.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_insert
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.Insert" id="Statements.Insert"></a><a name="kanchor385"></a>INSERT</h1>
+            <p>An
+			<span class="CodeFont">INSERT</span> statement creates rows or columns and stores them in the named table.
+			The number of values assigned in an <span class="CodeFont">INSERT</span> statement must be the same as the
+		number of specified or implied columns.</p>
+            <p>Whenever you insert into a table which has generated columns,
+			Splice Machine calculates the values
+		of those columns.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">INSERT INTO table-Name
+   [ (<span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> [ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>]* ) ]
+   Query [ <span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span> ]
+   [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">result offset clause</a></span> ]
+   [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">fetch first clause</a></span> ];</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">The table into which you are inserting data.</p>
+                <p class="paramName">Simple-column-Name*</p>
+                <p class="paramDefnFirst">An optional list of names of the columns to populate with data.</p>
+                <p class="paramName">Query [ORDER&#160;BY&#160;clause]</p>
+                <p class="paramDefnFirst">A <span class="CodeFont">SELECT</span> or <span class="CodeFont">VALUES</span> command that provides the columns and rows of data to insert. The query can also be a <span class="CodeFont">UNION</span> expression.</p>
+                <p class="paramDefn">See the <a href="#OrderBy">Using the <span class="CodeFont">ORDER BY</span> Clause</a> section below for information about using the <span class="CodeFont">ORDER&#160;BY</span>&#160;clause.</p>
+                <p class="paramDefn">Single-row and multiple-row <span class="CodeFont">VALUES</span> expressions can include the keyword <span class="CodeFont">DEFAULT</span>. Specifying <span class="CodeFont">DEFAULT</span> for a column inserts the column's default value into the column. Another way to insert the default value into the column is to omit the column from the column list and only insert values into other columns in the table. For more information, see <a href="../Expressions/Values.html"><span class="CodeFont">VALUES</span> expression</a></p>
+                <p class="paramName">result offset and fetch first clauses</p>
+                <p class="paramDefnFirst">The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">result offset</span> clause</a>  provides a way to skip the N first rows in a result set before starting to data to the table. The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows added to the table.</p>
+            </div>
+            <p class="heading2"><a name="OrderBy"></a>Using the ORDER&#160;BY&#160;Clause</p>
+            <p>When you want insertion to happen with a specific ordering (for example, in conjunction with auto-generated keys), it can be useful to specify an <span class="CodeFont">ORDER BY</span> clause on the result set to be inserted.</p>
+            <p>If the Query is a <span class="CodeFont">VALUES</span> expression, it cannot contain or be followed by an <span class="CodeFont">ORDER BY</span>, result offset, or fetch first clause. However, if the <span class="CodeFont">VALUES</span> expression does not contain the <span class="CodeFont">DEFAULT</span> keyword, the <span class="CodeFont">VALUES</span> clause can be put in a subquery and ordered, as in the following statement:</p>
+            <div class="preWrapperWide"><pre class="Example">INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;</pre>
+            </div>
+            <p>For more information about queries, see <a href="../Queries/Query.html">Query</a>.</p>
+            <p class="heading2">Examples</p>
+            <p class="body">These examples insert records with literal values:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;INSERT INTO Players
+&#160;  VALUES( 99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991');
+1 row inserted/updated/deleted
+
+splice&gt;&#160;INSERT&#160;INTO&#160;Players
+&#160;  VALUES( (99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991'),
+           (73, 'Giants', 'Lester Johns', 'P', 'Big John', '06/09/1984'),
+           (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982') );
+3 rows inserted/updated/deleted
+</pre>
+                <p class="body">This example creates a table name OldGuys that has the same columns as our Players table, and then loads that table with the data from Players for all players born before 1980:</p><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE OldGuys(
+    ID           SMALLINT NOT NULL PRIMARY KEY,
+    Team         VARCHAR(64) NOT NULL,
+    Name         VARCHAR(64) NOT NULL,
+    Position     CHAR(2),
+    DisplayName  VARCHAR(24),
+    BirthDate    DATE
+    );
+
+splice&gt;&#160;INSERT INTO OldGuys
+   SELECT&#160;*&#160;FROM&#160;Players 
+   WHERE&#160;BirthDate &lt;&#160;'01/01/1980';
+</pre>
+            </div>
+            <p class="heading2">Statement dependency system</p>
+            <p>The <span class="CodeFont">INSERT</span>
+statement depends on the table being inserted into, all of the conglomerates
+(units of storage such as heaps or indexes) for that table, and any other
+table named in the statement. Any statement that creates or drops an index or
+a constraint for the target table of a prepared <span class="CodeFont">INSERT</span> statement invalidates
+the prepared <span class="CodeFont">INSERT</span> statement.</p>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Clauses/ResultOffset.html"><span class="CodeFont">FETCH&#160;FIRST</span></a>&#160;clause</li>
+                <li value="2"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
+                <li value="3"><a href="../Queries/Query.html">Queries</a>
+                </li>
+                <li value="4"><a href="../Clauses/ResultOffset.html"><span class="CodeFont">RESULT&#160;OFFSET</span></a>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

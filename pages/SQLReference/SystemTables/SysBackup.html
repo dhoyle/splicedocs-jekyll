@@ -1,0 +1,110 @@
+---
+title: SYSBACKUP system table
+description: System table that stores information about each run of a backup job for the database.
+summary: System table that stores information about each run of a backup job for the database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_sysbackup
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor378"></a>SYSBACKUP System Table</h1>
+            <p>The <span class="CodeFont">SYSBACKUP</span>&#160;table maintains information about each database backup. You can query this table to find the ID&#160;of and details about a backup that was run at a specific time. </p>
+            <table>
+                <caption>SYSBACKUP&#160;system table</caption>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Nullable</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">BACKUP_ID </td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td class="CodeFont">19</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The backup ID</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">BEGIN_TIMESTAMP </td>
+                        <td class="CodeFont">TIMESTAMP</td>
+                        <td class="CodeFont">29</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The start time of the backup</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">END_TIMESTAMP </td>
+                        <td class="CodeFont">TIMESTAMP</td>
+                        <td class="CodeFont">29</td>
+                        <td class="CodeFont">YES</td>
+                        <td>The end time of the backup</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">STATUS</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">10</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The status of the backup</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FILESYSTEM </td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">32642</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The backup destination directory</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SCOPE </td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">10</td>
+                        <td class="CodeFont">NO</td>
+                        <td>
+                            <p class="noSpaceAbove">The scope of the backup: database, schemas, tables, etc. The current allowable values are:</p>
+                            <ul>
+                                <li value="1"><span class="CodeFont">D</span> for the entire database</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">INCREMENTAL_BACKUP</td>
+                        <td class="CodeFont">BOOLEAN</td>
+                        <td class="CodeFont">1</td>
+                        <td class="CodeFont">NO</td>
+                        <td>
+                            <p><span class="CodeFont">YES</span> for incremental backups, <span class="CodeFont">NO</span> for full backups</p>
+                            <p><span class="BoldFont">NOTE:</span>&#160;Incremental backups are not yet available.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">INCREMENTAL_PARENT_BACKUP_ID</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td class="CodeFont">19</td>
+                        <td class="CodeFont">YES</td>
+                        <td>
+                            <p class="noSpaceAbove">For an incremental backup, this is the  <span class="CodeFont">BACKUP_ID</span>&#160;of the previous backup on which this incremental backup is based.</p>
+                            <p>For full backups, this is <span class="CodeFont">-1</span>.</p>
+                            <p><span class="BoldFont">NOTE:</span>&#160;Incremental backups are not yet available.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">BACKUP_ITEM</td>
+                        <td class="CodeFont">INTEGER</td>
+                        <td class="CodeFont">10</td>
+                        <td class="CodeFont">YES</td>
+                        <td>The number of tables that were backed up.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

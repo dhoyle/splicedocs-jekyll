@@ -1,0 +1,45 @@
+---
+title: SIGN built-in SQL function
+description: Built-in SQL function that returns the sign of a number
+summary: Built-in SQL function that returns the sign of a number
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_sign
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Sign" id="BuiltInFcns.Sign"></a><a name="kanchor255"></a>SIGN</h1>
+            <p>The <span class="CodeFont">SIGN</span> function returns the sign of the specified number.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">SIGN ( <var>number</var> )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">number
+            </p>
+                <p class="paramDefnFirst">A <a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a> number that specifies the value whose sign you want.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The data type of the returned value is <a href="../DataTypes/Integer.html"><span class="CodeFont">INTEGER</span></a>:.</p>
+            <ul>
+                <li value="1">If the specified number is <span class="CodeFont">NULL</span>, the result of this function is <span class="CodeFont">NULL</span>.</li>
+                <li value="2">If the specified number is zero (<span class="CodeFont">0</span>), the result of this function is zero (<span class="CodeFont">0</span>).</li>
+                <li value="3">If the specified number is greater than zero (<span class="CodeFont">0</span>), the result of this function is plus one (<span class="CodeFont">+1</span>).</li>
+                <li value="4">If the specified number is less than zero (<span class="CodeFont">0</span>), the result of this function is minus one (<span class="CodeFont">-1</span>).</li>
+            </ul>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; VALUES( SIGN(84.4), SIGN(-85.5), SIGN(0), SIGN(NULL) );
+1          |2          |3          |4          
+-----------------------------------------------
+1          |-1         |0          |NULL       
+
+1 row selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a>&#160;data type</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

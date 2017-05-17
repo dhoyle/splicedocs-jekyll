@@ -1,0 +1,54 @@
+---
+title: ADD_MONTHS built-in SQL function
+description: Built-in SQL function that adds a number of months to a date
+summary: Built-in SQL function that adds a number of months to a date
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_addmonths
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor261"></a>ADD_MONTHS</h1>
+            <p>The <span class="CodeFont">ADD_MONTHS</span> function returns the date resulting from adding a number of months added to a specified date.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">ADD_MONTHS(Date <span class="ItalicFont">source</span>, int <span class="ItalicFont">numOfMonths</span>);</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">source</p>
+                <p class="paramDefnFirst">The source date. This can be a <span class="CodeFont">DATE</span> value, or any value that can be implicitly converted to <span class="CodeFont">DATE</span>.</p>
+                <p class="paramName">numOfMonths</p>
+                <p class="paramDefnFirst">An integer value that specifies the number of months to add to the source date.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The returned string always has data type <span class="CodeFont">DATE</span>. </p>
+            <p>If date is the last day of the month or if the resulting month has fewer days than the day component of date, then the result is the last day of the resulting month. Otherwise, the result has the same day component as date.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES(ADD_MONTHS(CURRENT_DATE,5));
+1 
+----------
+2015-02-22
+1 row selected
+
+splice&gt; VALUES(ADD_MONTHS(CURRENT_DATE,-5));
+1 
+----------
+2014-04-22
+1 row selected
+
+splice&gt; VALUES(ADD_MONTHS(DATE(CURRENT_TIMESTAMP),-5));
+1 
+----------
+2014-04-22
+1 row selected
+
+splice&gt; VALUES(ADD_MONTHS(DATE('2014-01-31'),1));
+1 
+----------
+2014-02-28
+1 row selected
+</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

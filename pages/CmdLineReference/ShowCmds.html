@@ -1,0 +1,118 @@
+---
+title: Splice Machine Show Commands
+description: Introduction to the Show commands available in the Splice Machine command line interpreter.
+summary: Introduction to the Show commands available in the Splice Machine command line interpreter.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_showcmds
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor107"></a>Show Command</h1>
+            <p>The <span class="AppCommand">show</span> command is used to display information about active connections and database objects. You can use a number of different forms of this command to show different types of information, as shown in the following syntax diagram:</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SHOW
+{
+   CONNECTIONS                                 | 
+   FUNCTIONS [ IN schemaName ]                 |
+   INDEXES [ IN schemaName | FROM table-Name ] |
+   PRIMARYKEYS FROM&#160;schemaName.FROM tableName  |
+   PROCEDURES [ IN schemaName ]                |
+   ROLES                                       |
+   SCHEMAS                                     |
+   SYNONYMS [ IN schemaName ]                  |
+   TABLES [ IN schemaName ]                    |
+   VIEWS [ IN schemaName ]                     |
+}
+</pre>
+            </div>
+            <p>&#160;</p>
+            <p>Each form of the <span class="CodeFont">SHOW</span>&#160;command has its own topic page:</p>
+            <table summary="Tables summarizing the available show commands.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Description</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowConnections.html">show connections</a>
+                        </td>
+                        <td>Displays a list of connection names and URLs.</td>
+                        <td><span class="AppCommand">splice&gt; show connections;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowFunctions.html">show functions</a>
+                        </td>
+                        <td>Displays the functions in a database or in a specific schema.</td>
+                        <td><span class="AppCommand">splice&gt; show functions;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowIndexes.html">show indexes</a>
+                        </td>
+                        <td>Displays the indexes in a database, a schema, or a table.</td>
+                        <td><span class="AppCommand">splice&gt; show indexes;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowPrimaryKeys.html">show primarykeys</a>
+                        </td>
+                        <td>Displays the primary keys in a table.</td>
+                        <td><span class="AppCommand">splice&gt; show primarykeys from myschema.myTbl;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowProcedures.html">show procedures</a>
+                        </td>
+                        <td>Displays the procedures that have been created in the database.</td>
+                        <td><span class="AppCommand">splice&gt; show procedures;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowRoles.html">show roles</a>
+                        </td>
+                        <td>Displays a sorted list of all of the roles defined in the database.</td>
+                        <td><span class="AppCommand">splice&gt; show roles;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowSchemas.html">show schemas</a>
+                        </td>
+                        <td>Displays all of the schemas in the current connection.</td>
+                        <td><span class="AppCommand">splice&gt; show schemas;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowSynonyms.html">show synonyms</a>
+                        </td>
+                        <td>Displays the synonyms that have been created in a database or schema.</td>
+                        <td><span class="AppCommand">splice&gt; show synonyms;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowTables.html">show tables</a>
+                        </td>
+                        <td>Displays all of the tables in a database or schema.</td>
+                        <td><span class="AppCommand">splice&gt; show tables;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowViews.html">show views</a>
+                        </td>
+                        <td>Displays all of the views in a schema.</td>
+                        <td><span class="AppCommand">splice&gt; show views;</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

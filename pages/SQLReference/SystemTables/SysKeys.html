@@ -1,0 +1,56 @@
+---
+title: SYSKEYS system table
+description: System table that describes the specific information for primary key and unique constraints within the current database.
+summary: System table that describes the specific information for primary key and unique constraints within the current database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_syskeys
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="SystemTables.SysKeys" id="SystemTables.SysKeys"></a><a name="kanchor452"></a>SYSKEYS System Table</h1>
+            <p>The <span class="CodeFont">SYSKEYS</span> table describes the specific information for primary key and unique constraints within the current database.</p>
+            <p>Splice Machine generates an index on the table to back up each such constraint. The index name is the same as <span class="CodeFont">SYSKEYS.CONGLOMERATEID</span>.</p>
+            <p>The following table shows the contents of the <span class="CodeFont">SYSKEYS</span> system table.</p>
+            <table>
+                <caption>SYSKEYS system table</caption>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Nullable</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">CONSTRAINTID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Unique identifier for constraint</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CONGLOMERATEID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Unique identifier for backing index</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.SystemTables.html">About System Tables</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

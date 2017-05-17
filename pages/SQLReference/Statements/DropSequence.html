@@ -1,0 +1,40 @@
+---
+title: DROP SEQUENCE statement
+description: Drops a sequence from a database.
+summary: Drops a sequence from a database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_dropsequence
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.DropSequence" id="Statements.DropSequence"></a><a name="kanchor10"></a>DROP SEQUENCE</h1>
+            <p>The <span class="CodeFont">DROP SEQUENCE</span> statement removes a sequence generator that was created using a <a href="CreateSequence.html"><span class="CodeFont">CREATE SEQUENCE</span> statement</a>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DROP SEQUENCE [ <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="../Identifiers/Intro.Identifiers.html">SQL Identifier</a></span> RESTRICT</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">The name of the schema to which this sequence belongs. If you do not specify a schema name, the current schema is assumed.</p>
+                <p class="paramDefn">You cannot use a schema name that begins with the <span class="CodeFont">SYS.</span> prefix.</p>
+                <p class="paramName">SQL Identifier</p>
+                <p class="paramDefnFirst">The name of the sequence.</p>
+                <p class="paramName">RESTRICT</p>
+                <p class="paramDefnFirst">This is <span class="BoldFont">required</span>. It specifies that if a trigger or view references the sequence generator, Splice Machine will throw an exception.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>Dropping a sequence generator implicitly drops all <span class="CodeFont">USAGE</span> privileges that reference it.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP SEQUENCE PLAYERID_SEQ&#160;RESTRICT;
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="CreateSequence.html">CREATE SEQUENCE</a></span>&#160;statement</li>
+                <li value="2"><a href="../Identifiers/IdentifierTypes.html#SchemaName">Schema Name</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

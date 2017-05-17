@@ -1,0 +1,49 @@
+
+@mixin preStyle ($bgColor: transparent,
+				 $fontWeight: $codefont-weight,
+				 $padding: 6px 6px 6px 6px,
+				 $leftMargin: 32px) {
+	font-family: $codefont-face;
+	white-space: pre-wrap;
+	background-color: $bgColor;
+	font-weight: $fontWeight;
+	padding: $padding;
+	margin-left: $leftMargin;
+}
+
+pre {
+	@include preStyle( $fontWeight: normal, $padding: 0, $leftMargin: 0 );
+}
+
+pre.AppCommand,
+pre.AppCommandCell {
+	@include preStyle( $bgColor: $bgcolor-app );
+}
+
+pre.Example,
+pre.ExampleCell {
+	@include preStyle( $bgColor: $bgcolor-example );
+}
+
+pre.FcnSyntax,
+pre.FcnSyntaxCell {
+	@include preStyle( $bgColor: $bgcolor-fcnSyntax );
+}
+
+pre.Plain,
+pre.PlainCell {
+	@include preStyle( $fontWeight: normal );
+}
+
+pre.ShellCommand,
+pre.ShellCommandCell {
+	@include preStyle( $bgColor: $bgcolor-shellcmd );
+}
+
+pre.AppCommandCell,
+pre.ExampleCell,
+pre.FcnSyntaxCell,
+pre.PlainCell,
+pre.ShellCommandCell { 
+	margin-left: 2px;
+}

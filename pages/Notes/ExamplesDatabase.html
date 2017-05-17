@@ -1,0 +1,648 @@
+---
+title: Splice Machine Documentation Examples Database
+description: Describes the simple database we use to provide examples throughout the documentation.
+summary: Describes the simple database we use to provide examples throughout the documentation.
+keywords: 
+sidebar:  notes_sidebar
+permalink: notes_examplesdb
+folder: Notes
+---
+	<section>
+		<div class="TopicContent">
+            <h1>About Our Documentation Examples Database</h1>
+            <p>This topic describes the database that we have created to provide code examples throughout our documentation suite. We've pulled in basic seasonal statistics for two Major League Baseball teams, though all names have been changed. We're calling this our <a name="kanchor274"></a><span class="AppCommand">DocsExamplesDb</span> database.</p>
+            <p>Our <span class="AppCommand">DocsExamplesDb</span> database features these tables:</p>
+            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../Resources/TableStyles/PatternedRows.css');" cellspacing="0" summary="Descriptions of the tables in the SpliceBBall examples database.">
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <thead>
+                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Table</th>
+                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Contains</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="BoldFont">Players</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">The player's name, ID, and other general information.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="BoldFont">Salaries</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">The salary for each player ID&#160;for each season.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="BoldFont">Batting</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">Batting statistics, per season, for each player ID.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="BoldFont">Fielding</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">Fielding statistics, per season, for each player ID.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows"><span class="BoldFont">Pitching</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">Pitching statistics, per season, for each pitcher's player ID.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The tables were populated with data found on the Internet, primarily from the <a href="http://www.baseball-reference.com/" target="_blank">baseball-reference.com</a> site.</p>
+            <p>If you want to import these tables into your Splice Machine database to try any examples yourself, follow the simple instructions in the <a href="#Importin" class="selected">Importing the Documentation Examples Database</a> at the end of this topic.</p>
+            <h2>Table Schemas</h2>
+            <p>Our example tables are all stored in a schema named <span class="CodeFont">SPLICEBBALL</span>. This section describes the fields in each of our <span class="AppCommand">DocsExamplesDb</span> tables.</p>
+            <h3>The Players Table</h3>
+            <p>The <span class="AppCommand">SPLICEBBALL.Players</span> table contains these columns:</p>
+            <table summary="Descriptions of the columns in the Players table.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">ID</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The unique player ID, assigned upon insertion.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Team</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td>The abbreviated name of the player's team.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DisplayName</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td>The name we use when displaying this player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Position</td>
+                        <td class="CodeFont">CHAR(2)</td>
+                        <td>The abbreviation for the player's main position, e.g. P, C, OF, 1B.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Birthdate</td>
+                        <td class="CodeFont">DATE</td>
+                        <td>The birth date of the player.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>The Salaries Table</h3>
+            <p>The <span class="AppCommand">SPLICEBBALL.Salaries</span> table contains these columns:</p>
+            <table summary="Descriptions of the columns in the Salaries table.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">ID</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The unique player ID.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Season</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The season (year).</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Salary</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td>The player's salary for the season.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>The Batting Table</h3>
+            <p>The <span class="AppCommand">SPLICEBBALL.Batting</span> contains these columns:</p>
+            <table summary="Descriptions of the columns in the Batting table.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">ID</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The unique player ID.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Season</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The season (year).</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Games</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of games in which the player batted.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">PlateAppearances</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of times the player made a plate appearance.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">AtBats</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of official at bats.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Runs</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of runs scores.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Hits</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many hits by the player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Singles</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>
+                            <p class="noSpaceAbove">How many singles hit by the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Doubles</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many doubles hit by the player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Triples</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many triples hit by the player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">HomeRuns</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many home runs hit by the player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">RBI</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many Runs Batted In by the player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">StolenBases</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many bases the player stole.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CaughtStealing</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many times the player was caught attempting to steal a base.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Walks</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of walks the player drew.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Strikeouts</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of times the player walked.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DoublePlays</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many times the player hit into a double play.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">HitByPitches</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of times the player was hit by a pitch.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SacrificeHits</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of sacrifice bunts the player hit.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SacrificeFlies</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of sacrifice flies the player hit.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">IntentionalWalks</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of intentional walks issued to the player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Average</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p class="noSpaceAbove">The player's batting average.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TotalBases</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>
+                            <p class="noSpaceAbove">The total number of bases for the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">OnBasePercentage</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p class="noSpaceAbove">The percentage of times the player reached base.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Slugging</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p class="noSpaceAbove">The slugging average of the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">OnBasePlusSlugging</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p class="noSpaceAbove">The OPS&#160;for the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>The Fielding Table</h3>
+            <p>The <span class="AppCommand">SPLICEBBALL.Fielding</span> table contains these columns:</p>
+            <table summary="Descriptions of the columns in the Fielding table.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">ID</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The unique player ID.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Season</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The season (year).</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FldGames</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many games the player was in the field for.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Chances</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of fielding chances the player had.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Putouts</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of putouts the player had.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Assists</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of assists the player had.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Errors</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of errors committed by the player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FldDoublePlays</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of doubles plays in which the player was involved in as a fielder.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Percentage</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>The percentage of opportunities for outs that the player successfully completed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TZAboveAverage</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>A fielding metric: total zone runs above average for his position.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TZAboveAveragePer1200</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>Total zone runs extrapolated for 1200 innings.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">RunsSaved</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of runs saved in the field by the player.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">RunsSavedAboveAvg</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of runs saved by the player over the average number saved for his position.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">RangeFactorPerNine</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>A&#160;fielding metric that evaluates the average number of putouts and assists per nine innings,</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">RangeFactorPerGame</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>A&#160;fielding metric that evaluates the average number of putouts and assists per game played,</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">PassedBalls</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of passed balls for catchers.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">WildPitches</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of wild pitches for pitchers.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FldStolenBases</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of stolen bases given up by a pitcher or catcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FldCaughtStealing</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of players caught stealing by a pitcher or catcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FldCaughtStealingPercent</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>For catchers and pitchers, the percentage of attempted stolen bases that were successful.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FldLeagueCaughtStealingPercent</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>For pitchers and catchers, the league average percentage of attempted stolen bases that were successful.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Pickoffs</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>For pitchers and catchers, the number of runners picked off.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FldInnings</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>The number of innings in which the player was in the field.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>The Pitching Table</h3>
+            <p>The <span class="AppCommand">SPLICEBBALL.Pitching</span> table contains these fields:</p>
+            <table summary="Descriptions of the columns in the Pitching table.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">ID</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The unique player ID.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Season</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The season (year).</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Wins</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many games the pitcher won.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Losses</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many games the pitcher lost.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Games</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of games in which the pitcher appeared.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">GamesStarted</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of games the pitcher started.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">GamesFinished</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of games the pitcher finished.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CompleteGames</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of complete games by the pitcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Shutouts</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of shutout games thrown by the pitcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Saves</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of games saved by the pitcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Innings</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>The number of innings pitched.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Hits</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of hits given up by the pitcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Runs</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of runs give up by the pitcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">EarnedRuns</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of earned runs give up by the pitcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">HomeRuns</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many homeruns the pitcher gave up.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Walks</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many walks the pitcher issued.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">IntentionalWalks</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many intentional walks the pitcher issued.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Strikeouts</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many batters the pitchers struck out.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">HitBatters</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many batters the pitcher hit with a pitch.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">Balks</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many balks the pitcher committed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">WildPitches</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>How many wild pitches were thrown by the pitcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">BattersFaced</td>
+                        <td class="CodeFont">SMALLINT</td>
+                        <td>The number of batters faced by the pitcher.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FieldingIndependent</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>A metric (FIP)&#160;for pitchers that determines the quality of a pitcher's performance by eliminating plate appearance outcomes that involve defensive play.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">ERA</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p>The pitcher's earned run average.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">WHIP</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p>The number of walks and hits per inning pitched by the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">HitsPerNine</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p>The number of hits per nine innings pitched by the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">HomeRunsPerNine</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p>The number of home runs per nine innings pitched by the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">WalksPerNine</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p>The number of walks per nine innings pitched by the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">StrikeoutsPerNine</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p>The number of strikeouts per nine innings pitched by the player.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">StrikeoutsToWalks</td>
+                        <td class="CodeFont">DECIMAL</td>
+                        <td>
+                            <p>The ratio of strikeouts to walks thrown by the pitcher.</p>
+                            <p>This value is computed by a triggered function.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2><a name="Importin"></a>Importing the Documentation Examples Database</h2>
+            <p>This topic describes how to import our documentation database tables into your database, if you want to try any of the examples. Follow these steps to import the tables into your database:</p>
+            <div class="opsStepsList">
+                <ol>
+                    <li value="1">Download the <a href="../Resources/DocExamplesDb/2.0/DocExamplesDb.tar.gz">Documentation Examples Database</a> tarball and copy it to your <span class="AppCommand">splicemachine</span> directory.</li>
+                    <li value="2">
+                        <p>Decompress the tarball with the following command:</p>
+                        <div class="preWrapper"><pre class="Example" xml:space="preserve">tar -xvf DocExamplesDb.tar.gz</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p>If Splice&#160;Machine is not yet started, start it; for example:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><span class="PlatformVariablesStandaloneStartScript">./bin/start-splice.sh</span>
+<span class="PlatformVariablesStandaloneStartCmdLine">splicemachine/bin/sqlshell.sh</span></pre>
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p>At the splice&gt;&#160;prompt, run the sql commands to create the SPLICEBBALL&#160;scheam, and to create and import data into the doc examples database:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;run 'DocExamplesDb/CreateDocExamplesDb.sql';</pre>
+                        </div>
+                    </li>
+                    <li value="5">
+                        <p>Verify that the examples tables have been created:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;show tables in SPLICEBBALL;</pre>
+                        </div>
+                        <p>The list of tables should include these tables:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">BATTING
+FIELDING
+PITCHING
+PLAYERS
+SALARIES</pre>
+                        </div>
+                    </li>
+                </ol>
+                <div class="noteIcon">You can use the <span class="CodeFont">SET&#160;SCHEMA</span>&#160;command to set the current schema to <span class="CodeFont">SPLICEBBALL</span>&#160;if you want to run SQL&#160;operations without explicitly specifying the schema:<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="AppCommand">splice&gt;&#160;SET&#160;SCHEMA&#160;SPLICEBBALL;</span></div>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,51 @@
+---
+title: CREATE ROLE statement
+description: Creates SQL roles
+summary: Creates SQL roles
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_createrole
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateRole" id="Statements.CreateRole"></a><a name="kanchor467"></a>CREATE ROLE</h1>
+            <p>The <span class="CodeFont">CREATE ROLE</span> statement allows you to create an SQL role. Only the database owner can create a role.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">CREATE ROLE <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#RoleName">roleName</a></span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">roleName</p>
+                <p class="paramDefnFirst">The name of an SQL&#160;role.</p>
+            </div>
+            <p class="heading2">Using</p>
+            <p>Before you issue a <span class="CodeFont">CREATE ROLE</span> statement, verify that the <span class="ItalicFont">derby.database.sqlAuthorization</span> property is set to <samp>TRUE</samp>. The <span class="ItalicFont">derby.database.sqlAuthorization</span> property enables SQL authorization mode.</p>
+            <p>You cannot create a role name if there is already a user by that name. An attempt to create a role name that conflicts with an existing user name raises the <span class="ItalicFont">SQLException</span> X0Y68. If user names are not controlled by the database owner (or administrator), it may be a good idea to use a naming convention for roles to reduce the possibility of collision with user names.</p>
+            <p>Splice Machine tries to avoid name collision between user names and role names, but this is not always possible, because Splice Machine has a pluggable authorization architecture. For example, an externally defined user may exist who has never yet connected to the database, created any schema objects, or been granted any privileges. If  Splice Machine knows about a user name, it will forbid creating a role with that name. Correspondingly, a user who has the same name as a role will not be allowed to connect. Splice Machine built-in users are checked for collision when a role is created.</p>
+            <p>A role name cannot start with the prefix <span class="CodeFont">SYS</span> (after case normalization). The purpose of this restriction is to reserve a name space for system-defined roles at a later point. Use of the prefix <span class="CodeFont">SYS</span> raises the <span class="ItalicFont">SQLException</span> 4293A.</p>
+            <p>You cannot create a role with the name <samp>PUBLIC</samp> (after case normalization). <samp>PUBLIC</samp> is a reserved authorization identifier. An attempt to create a role with the name <samp>PUBLIC</samp> raises <span class="ItalicFont">SQLException</span> 4251B.</p>
+            <p class="heading2">Examples</p>
+            <p class="heading3">Creating a Role</p>
+            <p class="body"> Here's a simple example of creating a role:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE ROLE statsEditor_role;
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading3">Examples of Invalid Role Names</p>
+            <p class="body">Here are several examples of attempts to create a role using names that are reserved and cannot be used as role names. Each of these generates an error:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE ROLE public;
+splice&gt;&#160;CREATE ROLE "PUBLIC";
+splice&gt;&#160;CREATE ROLE sysrole;</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="DropRole.html"><span class="CodeFont">DROP_ROLE</span></a> statement</li>
+                <li value="2"><a href="Grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
+                <li value="3"><a href="Revoke.html"><span class="CodeFont">REVOKE</span></a>&#160;statement</li>
+                <li value="4"><a href="../Identifiers/IdentifierTypes.html#RoleName">RoleName</a>
+                </li>
+                <li value="5"><a href="SetRole.html"><span class="CodeFont">SET&#160;ROLE</span></a> statement</li>
+                <li value="6"><a href="../SystemTables/SysRoles.html"><span class="CodeFont">SYSROLES</span></a>&#160;system table</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

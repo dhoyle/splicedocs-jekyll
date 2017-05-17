@@ -1,0 +1,47 @@
+---
+title: SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE built-in system procedure
+
+description: Built-in system procedure that removes as many compiled statements (plans) as possible from the database statement cache on the current region server.&#xD;
+summary: Built-in system procedure that removes as many compiled statements (plans) as possible from the database statement cache on the current region server.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_emptycache
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.EmptyStatementCache" id="BuiltInSysProcs.EmptyStatementCache"></a><a name="kanchor121"></a>SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</samp> stored
+			procedure removes as many compiled statements (plans) as possible from the database statement cache. on your current region server.This procedure does not remove statements related
+			to currently executing queries or to activations that are about to be garbage
+			collected, so the cache is not guaranteed to be completely empty after it completes.</p>
+            <div class="noteNote">The related procedure <span class="CodeFont"><a href="EmptyGlobalStatementCache.html">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</a></span>&#160;performs the same operation across the entire cluster.</div>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Execute Privileges</p>
+            <p>If authentication and SQL authorization are both enabled, only the database owner has
+			execute privileges on this function by default. The
+		database owner can grant access to other users.</p>
+            <p class="heading2">JDBC Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
+  ("CALL SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE()");
+  cs.execute();
+  cs.close();</pre>
+            </div>
+            <p class="heading2">SQL Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE();
+Statement executed.</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="EmptyGlobalStatementCache.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</span></a>
+                </li>
+                <li value="2"><a href="InvalidateStoredStatements.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</span></a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,34 @@
+---
+title: CURRENT SCHEMA built-in SQL function
+description: Built-in SQL function that returns the schema name that is used to qualify database references not already qualified
+summary: Built-in SQL function that returns the schema name that is used to qualify database references not already qualified
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_currentschema
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.CurrentSchema" id="BuiltInFcns.CurrentSchema"></a><a name="kanchor45"></a>CURRENT SCHEMA</h1>
+            <p><span class="CodeFont">CURRENT SCHEMA</span> returns the schema name used to qualify unqualified database object references.</p>
+            <div class="noteNote"><span class="CodeFont">CURRENT SCHEMA</span> and <span class="CodeFont">CURRENT SQLID</span> are synonyms.</div>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CURRENT SCHEMA</pre>
+            </div>
+            <p>-- or, alternatively:</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CURRENT SQLID</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The returned value is a string with a length of up to 128 characters.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   
+splice&gt;&#160;VALUES(CURRENT SCHEMA);
+1
+-------------------------------------------------------
+SPLICE
+
+1 row selected</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

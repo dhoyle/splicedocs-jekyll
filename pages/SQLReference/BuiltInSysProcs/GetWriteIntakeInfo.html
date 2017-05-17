@@ -1,0 +1,72 @@
+---
+title: SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO built-in system procedure
+
+description: Built-in system procedure that displays information about the number of writes coming into Splice Machine.&#xD;
+summary: Built-in system procedure that displays information about the number of writes coming into Splice Machine.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getwriteintakeinfo
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.GetWriteIntakeInfo" id="BuiltInSysProcs.GetWriteIntakeInfo"></a><a name="kanchor529"></a>SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO</samp> system procedure displays information about the number of writes coming into Splice Machine. </p>
+            <p>You can use this information to know the number of bulk writes currently active on a server. Each bulk write will contain up to 1000 rows; the compaction and flush queue size, plus the reserved ipc thread setting determine how many writes can execute concurrently.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The displayed results of calling <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO</span> include these values:</p>
+            <table summary=" summary=&quot;Columns in Get_Write_Intake_Info results display&quot;">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">HOSTNAME
+					</td>
+                        <td>The host name.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">ACTIVEWRITETHREADS
+					</td>
+                        <td>The number of active write threads.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">COMPACTIONQUEUESIZELIMIT
+					</td>
+                        <td>The compaction queue limit at which writes will be blocked.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FLUSHQUEUELIMIT
+					</td>
+                        <td>The flush queue limit at which writes will be blocked.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">IPCRESERVEDPOOL
+					</td>
+                        <td>
+                            <p class="noSpaceAbove">The number of IPC threads reserved for reads. </p>
+                            <p>The maximum number of bulk writes that are allowed currently is equal to the total number of IPC&#160;threads minus this value.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO();
+host               |depThreads |indThreads |depCount   |indCount   |avgThroughput         |oneMinAvgThroughput   |fiveMinAvgThroughput  |fifteenMinAvgThroughp&amp;|totalRejected 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+localhost:55709    |0          |0          |0          |0          |0.011451093322589732  |5.472367185912236E-4  |0.007057900046373111  |0.0053884511108858845 |0 
+
+1 row selected
+</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,131 @@
+---
+title: SYSSEQUENCES system table
+description: System table that describes the sequence generators in the database.
+summary: System table that describes the sequence generators in the database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_syssequences
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="SystemTables.SysSequences" id="SystemTables.SysSequences"></a><a name="kanchor133"></a>SYSSEQUENCES System Table</h1>
+            <p>The <span class="CodeFont">SYSSEQUENCES</span> table describes the sequence generators in the
+		database.</p>
+            <div class="noteNote">Users should not directly query the <span class="CodeFont">SYSSEQUENCES</span> table, because that will slow down the performance of sequence generators. Instead, users should call the <a href="../BuiltInSysProcs/PeekAtSequence.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</span> system function</a></div>
+            <p>The following table shows the contents of the <span class="CodeFont">SYSSEQUENCES</span> system table.</p>
+            <table>
+                <caption>SYSSEQUENCES system table</caption>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Nullable</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">SEQUENCEID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The ID of the sequence generator. This is the primary key.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SEQUENCENAME</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">128</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The name of the sequence generator. There is a unique index
+					on (<span class="CodeFont">SCHEMAID, SEQUENCENAME</span>).</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SCHEMAID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The ID of the schema that holds the sequence generator.
+					There is a foreign key linking this column to <span class="CodeFont">SYSSCHEMAS.SCHEMAID</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SEQUENCEDATATYPE</td>
+                        <td class="CodeFont"><span class="ItalicFont">com.splicemachine.db.catalog.TypeDescriptor</span>
+                        </td>
+                        <td class="CodeFont">-1</td>
+                        <td class="CodeFont">NO</td>
+                        <td>System type that describes the precision, length, scale,
+					nullability, type name, and storage type of the data</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CURRENTVALUE</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td class="CodeFont">19</td>
+                        <td class="CodeFont">YES</td>
+                        <td>
+                            <p class="noSpaceAbove">The current value of the sequence generator. This is not the
+						actual next value for the sequence generator. That value can be obtained by
+						calling the system function <span class="CodeFont">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</span>.</p>
+                            <p><![CDATA[
+						]]><span class="CodeFont">SYSSEQUENCES.CURRENTVALUE</span> holds the end of the range of values that have been
+						preallocated in order to boost concurrency. The initial
+						value of this column is <span class="CodeFont">STARTVALUE</span>. </p>
+                            <p>This column is <span class="CodeFont">NULL</span> only if the sequence
+					generator is exhausted and cannot issue any more numbers.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">STARTVALUE</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td class="CodeFont">19</td>
+                        <td>NO</td>
+                        <td>The initial value of the sequence generator</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">MINIMUMVALUE</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td class="CodeFont">19</td>
+                        <td>NO</td>
+                        <td>The minimum value of the sequence generator</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">MAXIMUMVALUE</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td class="CodeFont">19</td>
+                        <td>NO</td>
+                        <td>The maximum value of the sequence generator</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">INCREMENT</td>
+                        <td class="CodeFont">BIGINT</td>
+                        <td class="CodeFont">19</td>
+                        <td>NO</td>
+                        <td>The step size of the sequence generator</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CYCLEOPTION</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">1</td>
+                        <td>NO</td>
+                        <td>
+                            <p class="noSpaceAbove">If the sequence generator cycles, this value is <span class="CodeFont">'Y'</span>.</p>
+                            <p>
+					If the sequence generator does not cycle, this value is <span class="CodeFont">'N'</span>.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.SystemTables.html">About System Tables</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

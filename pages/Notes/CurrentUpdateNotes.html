@@ -1,0 +1,855 @@
+---
+title: Update Notes for the Current Release of Splice Machine
+description: Update notes for the current release of Splice Machine.
+summary: Update notes for the current release of Splice Machine.
+keywords: 
+sidebar:  notes_sidebar
+permalink: notes_updates
+folder: Notes
+---
+	<section>
+		<div class="TopicContent">
+            <div>
+                <h1><a name="kanchor100"></a>Update Notes for Splice Machine Version <span class="BasicVariablesSpliceReleaseVersion">2.5</span></h1>
+                <p>This topic describes significant updates in this release and recent, previous releases of Splice Machine.</p>
+                <ul>
+                    <li value="1"><a href="#General">General Notes</a> includes notes that apply to all Splice&#160;Machine releases.</li>
+                    <li value="2"><a href="#Updates">Updates in This Version</a> includes notes about new updates in this release.</li>
+                    <li value="3"><a href="#Updates2">Updates in Previous Versions</a> summarizes updates in all recent releases of Splice Machine prior to this release.</li>
+                </ul>
+                <div class="noteIcon">For information about workaround for problems that will be fixed in a future release, or notes about previously unstated limitations, see the <a href="CurrentReleaseNotes.html">Release Notes for Splice&#160;Machine Version 2.5</a>.<br /><br />The <span class="CodeFont">ReadMe</span> file included with the Splice Machine installers contains a list of specific bug fixes in this release.<br /></div>
+                <h2><a name="General"></a>General Notes</h2>
+                <p>This section contains general update notes.</p>
+                <h3>Updated Requirements</h3>
+                <p>You should review our latest requirements whenever installing a new version of Splice Machine:</p>
+                <table summary="A note about updated requirements.">
+                    <col />
+                    <col />
+                    <tbody>
+                        <tr>
+                            <td class="BoldFont">Latest Requirements</td>
+                            <td>
+                                <p>Requirements are frequently updated, as we add compatibility with new releases of Hadoop and related software.</p>
+                                <p>Please see the <a href="Requirements.html">Splice Machine Requirements</a> page in our Splice&#160;Machine Getting Started&#160;Guide for the latest platform compatibility and requirements information. The same information is also repeated in each of our <span class="ItalicFont">Installation Guides</span>.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2><a name="Updates"></a>Updates in This Version</h2>
+                <p>This section summarizes significant updates to the Splice Machine software and documentation since the previous release, which was version <span class="BasicVariablesSplicePreviousVersion">2.0</span>. This section includes the following sections:</p>
+                <ul>
+                    <li value="1"><a href="#Performa">Performance Enhancements</a>
+                    </li>
+                    <li value="2"><a href="#New">New and Updated Features</a>
+                    </li>
+                    <li value="3"><a href="#Deprecat">Deprecated Features</a>
+                    </li>
+                    <li value="4"><a href="#Document"><a href="#Document">Documentation Updates</a></a>
+                    </li>
+                </ul>
+                <h3><a name="Performa"></a>Performance Enhancements</h3>
+                <p>This release features a number of significant performance improvements:</p>
+                <table style="caption-side: top;" summary="Summary of performance enhancements in recent releases.">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th> Version</th>
+                            <th>Enhancement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="BoldFont">2.5</td>
+                            <td>
+                                <ul class="bulletCell">
+                                    <li value="1">New product offering:&#160;Splice Machine Database-as-a-Service (DBaaS)!</li>
+                                    <li value="2">Performance enhancements on TPCC&#160;and&#160;TPCH&#160;benchmarks.</li>
+                                    <li value="3">Greatly improved data importation performance.</li>
+                                    <li value="4">The ability to tell Splice Machine to pin (cache) a table in memory to allow rapid access for analytical tasks.</li>
+                                    <li value="5">Performance enhancements to our JDBC&#160;and ODBC&#160;drivers.</li>
+                                    <li value="6">Several of the window functions have been revised for better performance.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3><a name="New"></a>New and Updated Features</h3>
+                <p>This section summarizes important feature updates that have been made to the current release (Product Release Version <span class="BasicVariablesSpliceReleaseVersion">2.5</span>)&#160;of Splice Machine since release <span class="BasicVariablesSplicePreviousVersion">2.0</span>.</p>
+                <table summary="Summary of new and updated features in this release">
+                    <col style="width: 28px;" />
+                    <col />
+                    <col />
+                    <tbody>
+                        <tr>
+                            <th>Version Updated</th>
+                            <th>Change</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">BULK_IMPORT_HFILE</td>
+                            <td data-mc-conditions="">
+                                <p data-mc-conditions="">We have added a new system procedure for rapidly importing data:</p>
+                                <ul class="bullet">
+                                    <li value="1" data-mc-conditions=""><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>
+                                    </li>
+                                </ul>
+                                <p data-mc-conditions="">This procedure creates HFiles directly, rather than using HBase APIs; it is faster than our <a href="../SQLReference/BuiltInSysProcs/BulkImportHFile.html"><span class="CodeFont">IMPORT_DATA</span></a>&#160;procedure, but has some limitations:</p>
+                                <ul class="bullet">
+                                    <li value="1" data-mc-conditions="">To use it, you must already know how you want your data split across regions (your data's <span class="ItalicFont">split points</span>).</li>
+                                    <li value="2">
+                                        <p>HFile import does not enforce any constraints, including unique, foreign key, or primary key constraints.</p>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">DBaaS</td>
+                            <td data-mc-conditions="">Our new <span class="CalloutFont">Database-as-a-Service</span> offering is now available.</td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">Backup and Restore</td>
+                            <td data-mc-conditions="">
+                                <p data-mc-conditions="">The ability to incrementally back up and restore your database is now available to <span class="CalloutFont">Splice&#160;Machine Enterprise Edition</span> users.</p>
+                                <p data-mc-conditions="">For more information, see <a href="../OnPremiseOnly/Administrators/BackupAndRestore.html">Backing Up and Restoring Your Database</a> in our <span class="ItalicFont">Administrator's Guide</span>, and the following built-in system procedures and system tables in our <span class="ItalicFont">SQL&#160;Reference Manual</span>:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/BackupDatabase.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span>
+                                    </li>
+                                    <li value="2"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/CancelBackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span>
+                                    </li>
+                                    <li value="3"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/CancelDailyBackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>
+                                    </li>
+                                    <li value="4"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/DeleteBackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span>
+                                    </li>
+                                    <li value="5"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/DeleteOldBackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>
+                                    </li>
+                                    <li value="6"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/RestoreDatabase.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>
+                                    </li>
+                                    <li value="7"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/ScheduleDailyBackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>
+                                    </li>
+                                    <li value="8"><span class="CodeFont"><a href="../SQLReference/SystemTables/SysBackup.html">SYSBACKUP System Table</a></span>
+                                    </li>
+                                    <li value="9"><span class="CodeFont"><a href="../SQLReference/SystemTables/SysBackupItems.html">SYSBACKUPITEMS System Table</a></span>
+                                    </li>
+                                    <li value="10"><span class="CodeFont"><a href="../SQLReference/SystemTables/SysBackupJobs.html">SYSBACKUPJOBS System Table</a></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">External Tables</td>
+                            <td data-mc-conditions="">
+                                <p data-mc-conditions="">You can now access ORC&#160;and PARQUET&#160;files as external tables. See <a href="../Developers/Fundamentals/UsingExternalTables.html">Using External Tables</a> in our <span class="ItalicFont">Developer's Guide</span> for more information.</p>
+                                <p data-mc-conditions="">The <span class="CodeFont"><a href="../SQLReference/Statements/CreateExternalTable.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span> statement and the <span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/RefreshExternalTable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></span> built-in system procedure are now available for working with external tables.</p>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">Migration Assistant Tool</td>
+                            <td data-mc-conditions="">
+                                <p data-mc-conditions="">The <a href="../OnPremiseOnly/Administrators/MigratingData.html">Migration Assistant</a> tool was created by Splice Machine to help migrate your database to a new version of the Splice Machine software. You run it before upgrading your software to export your database to file, and then run it after upgrading your software to import an upgraded version of your database.</p>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">Pinned Tables<br />(RDD&#160;Caching)</td>
+                            <td data-mc-conditions="">
+                                <p data-mc-conditions="">You can now use the <span class="CodeFont"><a href="../SQLReference/Statements/PinTable.html">PIN&#160;TABLE</a></span>&#160;statement to cache a static version of a table in memory, and use the <span class="CodeFont"><a href="../SQLReference/Statements/UnpinTable.html">UNPIN&#160;TABLE</a></span> statement to delete the cached version of the table.</p>
+                                <p data-mc-conditions="">You also need to use the new <span class="CodeFont">pin</span> query optimization hint, which is described in our <a href="../Developers/TuningAndDebugging/QueryOptimization.html">Query Optimization</a> topic.</p>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">Schema-level Privileges</td>
+                            <td data-mc-conditions="">Updates to the <a href="../SQLReference/Statements/Grant.html">Grant</a> and <a href="../SQLReference/Statements/Revoke.html">Revoke</a> statements allow you to define privileges at the schema level.</td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">Updated Connectors</td>
+                            <td data-mc-conditions="">
+                                <p data-mc-conditions="">Splice Machine has added enhancements to our JDBC and ODBC&#160;drivers for improved performance and added features. </p>
+                                <p class="noteIcon" data-mc-conditions="">Due to these changes, you <span class="BoldFont">must use</span> the Splice Machine JDBC&#160;and ODBC&#160;drivers; other drivers will not work properly.</p>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">Updated Statistics</td>
+                            <td data-mc-conditions="">
+                                <p data-mc-conditions="">Splice Machine has enhanced our statistics collection methods, taking advantage of advanced features provided by the Yahoo DataSketches library. As a result, these procedures and tables have been deprecated:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont">SYSCS_UTIL.SYSCS_COLLECT_TABLE_STATISTICS</span>
+                                    </li>
+                                    <li value="2"><span class="CodeFont">SYSCS_UTIL.SYSCS_DROP_TABLE_STATISTICS</span>
+                                    </li>
+                                    <li value="3"><span class="CodeFont">SYSSTATISTICS</span>&#160;table</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3><a name="Deprecat"></a>Deprecated Features</h3>
+                <table summary="Summary of functions deprecated in recent releases.">
+                    <col />
+                    <col />
+                    <col />
+                    <tbody>
+                        <tr>
+                            <th>Version when deprecated</th>
+                            <th>Change</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.5</td>
+                            <td>Statistics Built-in Procedures</td>
+                            <td>
+                                <p>The following built-in system procedures are no longer available:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont">SYSCS_UTIL.SYSCS_COLLECT_TABLE_STATISTICS</span>
+                                    </li>
+                                    <li value="2"><span class="CodeFont">SYSCS_UTIL.SYSCS_DROP_TABLE_STATISTICS</span>
+                                    </li>
+                                </ul>
+                                <p>Note that:</p>
+                                <ul class="bullet">
+                                    <li value="1">You can continue to use the <span class="CodeFont"><a href="../CmdLineReference/CmdAnalyze.html">ANALYZE</a></span>&#160;command line command to collect statistics for a specific table.</li>
+                                    <li value="2">You can call the <span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/CollectSchemaStats.html">SYSCS_UTIL.SYSCS_COLLECT_SCHEMA_STATISTICS</a></span>&#160;built-in system procedure to collect statistics on a schema, including statistics for every table in the schema.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.5</td>
+                            <td>Statistics Tables</td>
+                            <td>
+                                <p>The following system tables are no longer available:</p>
+                                <ul class="codeList">
+                                    <li value="1">SYSSTATISTICS</li>
+                                    <li value="2">SYSOPERATIONHISTORY</li>
+                                    <li value="3">SYSSTATEMENTHISTORY</li>
+                                    <li value="4">SYSSTATISTICS</li>
+                                    <li value="5">SYSTASKHISTORY</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3><a name="Document"></a>Documentation Updates</h3>
+                <p>This section summarizes important documentation updates in this version:</p>
+                <table summary="Summary of documentation updates in this release.">
+                    <col />
+                    <col />
+                    <col />
+                    <tbody>
+                        <tr>
+                            <th>Version</th>
+                            <th>Change</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.6</td>
+                            <td class="ItalicFont">Error Codes Documented</td>
+                            <td>Our SQL&#160;Reference Manual now has a <a href="../SQLReference/ErrorCodes/Intro.ErrorCodes.html">section that contains descriptions of all error codes</a>.</td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont">Appearance</td>
+                            <td>The appearance of the documentation has been altered:&#160;we are now using a left-sided navigation pane, and some of our appearance styles have been altered to more closely match the appearance of the <a href="https://www.splicemachine.com/">splicemachine.com</a> web.</td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont">Content Organization</td>
+                            <td>
+                                <p>The organization of the docs has been altered:</p>
+                                <ul class="bullet">
+                                    <li value="1">The top-level contents has changed:<ul class="bullet"><li value="1">The <a href="../CmdLineReference/Intro.CmdLineReference.html">splice&gt;&#160;Command Line Reference</a> manual is now a top-level section, rather than being part of the <span class="ItalicFont">Developer's Guide</span>.</li><li value="2">The <span class="ItalicFont">Developer's Guide</span> has been reorganized.</li><li value="3">The user interface for our Database-as-a-Service is documented in the top-level <span class="ItalicFont">Database-as-a-Service Only</span> section.</li><li value="4">The <span class="ItalicFont">Administrator's Guide</span> and <span class="ItalicFont">Installation Guide</span> are now part of the top-level <span class="ItalicFont">On-Premise Only</span> section.</li></ul></li>
+                                    <li value="2">Content previously included in our <span class="ItalicFont">Getting Started Guide</span> has been moved to the <span class="ItalicFont">Notes</span> section.</li>
+                                </ul>
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont">Tutorials</td>
+                            <td>
+                                <p>We've added a number of tutorials to the documentation, a number of which have been migrated from our Community site.</p>
+                                <p>You can find a <a href="Tutorials.html">list of available tutorials</a> here. </p>
+                                <div class="noteTip">Our navigation menu prefaces the title of each tutorial with an asterisk (<span class="CodeFont">*</span>).</div>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont">Updates</td>
+                            <td>
+                                <p>All enhancements and bug fixes have been documented, as have all new features.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2><a name="Updates2"></a>Updates in Previous Versions</h2>
+                <p>This section summarizes significant updates to the Splice Machine software and documentation in previous releases. It includes the following sections:</p>
+                <ul>
+                    <li value="2"><a href="#Performa">Performance Enhancements</a>
+                    </li>
+                    <li value="4"><a href="#New">New and Updated Features</a>
+                    </li>
+                    <li value="5"><a href="#Deprecat">Deprecated Functions</a>
+                    </li>
+                    <li value="6"><a href="#Document">Documentation Updates</a>
+                    </li>
+                </ul>
+                <h3><a name="Performa"></a>Performance Enhancements</h3>
+                <p>The following table summarizes notable performance enhancement updates in recent releases:</p>
+                <table style="caption-side: top;" summary="Summary of performance enhancements in recent releases.">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>Enhancement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td>
+                                <ul class="bulletCell">
+                                    <li value="1">Added Spark engine for unprecedented performance enhancements.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td>
+                                <ul class="bulletCell">
+                                    <li value="1">Enhanced use of statistics to improve query plan generation.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td>
+                                <ul class="bulletCell">
+                                    <li value="1">Improved logic instituted for flattening subqueries.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="noteIcon">Note that every Splice Machine release includes numerous "under the covers"&#160;performance enhancements, in addition to those listed in the table above.</div>
+                <h3><a name="New"></a>New and Updated Features</h3>
+                <p>The following table summarizes important feature updates that have been completed in recent releases.</p>
+                <table summary="Summary of new and updated features in recent releases.">
+                    <col />
+                    <col />
+                    <col />
+                    <tbody>
+                        <tr>
+                            <th>Version Updated</th>
+                            <th>Change</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">2.0</td>
+                            <td class="ItalicFont" data-mc-conditions="">Added functions</td>
+                            <td data-mc-conditions="">The <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/IdentityValLocal.html">IDENTITY_VAL_LOCAL</a></span> function is now available in Splice&#160;Machine.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">2.0</td>
+                            <td class="ItalicFont" data-mc-conditions="">Common Table Expressions</td>
+                            <td data-mc-conditions="">Common table expressions, also known as the <span class="CodeFont"><a href="../SQLReference/Clauses/With.html">WITH</a></span>&#160;clause or the subquery factoring clause, are now available in Splice&#160;Machine.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">2.0</td>
+                            <td class="ItalicFont" data-mc-conditions="">Data Import changes</td>
+                            <td data-mc-conditions="">
+                                <p class="noSpaceAbove">Our data import technology was modified for improved performance and error handling. The number of parameters and the meaning of certain parameters changed for these built-in system procedures:</p>
+                                <ul class="bulletNested">
+                                    <li class="CodeFont" value="1"><a href="../SQLReference/BuiltInSysProcs/ImportData.html">SYSCS_UTIL.IMPORT_DATA</a>
+                                    </li>
+                                    <li class="CodeFont" value="2"><a href="../SQLReference/BuiltInSysProcs/UpsertDataFromFile.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">2.0</td>
+                            <td class="ItalicFont" data-mc-conditions="">Timestamps in imported data</td>
+                            <td data-mc-conditions="">
+                                <p>Previous versions of Splice&#160;Machine were "lenient"&#160;with regard to parsing timestamps when importing data:</p>
+                                <ul class="bullet">
+                                    <li value="1">Timestamp data in imported columns must now match the formatting pattern you specify in the <span class="CodeFont">IMPORT</span>&#160;or <span class="CodeFont">UPSERT</span>&#160;call. </li>
+                                    <li value="2">All timestamp values in a file being imported must now use the same timestamp format; multiple timestamp formats in a file are no longer supported.</li>
+                                    <li value="3">Splice Machine now uses only one default pattern:&#160;<span class="CodeFont">yyyy-MM-dd HH:mm:ss</span>, which specifies a 24-hour clock and no fractions of seconds. </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">2.0</td>
+                            <td class="ItalicFont" data-mc-conditions="">ODBC&#160;Driver</td>
+                            <td data-mc-conditions="">The new and improved Using the Splice Machine ODBC&#160;Driver&#160;driver is now available.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">2.0</td>
+                            <td class="ItalicFont" data-mc-conditions="">Schema owner</td>
+                            <td data-mc-conditions="">
+                                <p>The owner of a schema can now be changed by the current schema owner:</p>
+                                <ul><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/UpdateSchemaOwner.html">SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER</a></span>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">2.0</td>
+                            <td class="ItalicFont" data-mc-conditions="">Spark engine</td>
+                            <td data-mc-conditions="">
+                                <p class="noSpaceAbove">As described in the Performance Enhancements section above, we now use Spark for greatly improved query execution performance for analytical queries.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">2.0</td>
+                            <td class="ItalicFont" data-mc-conditions="">Temporary Tables</td>
+                            <td data-mc-conditions="">The previous restrictions on data types allowed in temporary tables have been removed: you can now use all data types in temporary tables.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont" data-mc-conditions="">1.5.5</td>
+                            <td class="ItalicFont" data-mc-conditions="">Cloudera release compatibility</td>
+                            <td data-mc-conditions="">Splice Machine now works with <span class="ItalicFont">Cloudera 5.4.10</span>, in addition to earlier versions of Cloudera, as noted in our <a href="Requirements.html"><span class="ItalicFont">Splice Machine Requirements</span></a> page.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.54</td>
+                            <td class="ItalicFont">Import Logging</td>
+                            <td>
+                                <p>When you enable import logging by setting the property <span class="CodeFont">splice.import.enableStatusLogging</span> to <span class="CodeFont">TRUE</span>, you can view the logged information in two ways:</p>
+                                <ul>
+                                    <li value="1">In the region server logs</li>
+                                    <li value="2">In the summary file (this is new) that is created in the <span class="CodeFont">/BAD</span>&#160;directory that you specified in your call to <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span>&#160;call.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.53</td>
+                            <td class="ItalicFont">Cloudera release compatibility</td>
+                            <td>
+                                <p>Splice Machine now works with <span class="ItalicFont">Cloudera 5.4.8</span>, in addition to earlier versions of Cloudera, as noted in our <a href="Requirements.html"><span class="ItalicFont">Splice Machine Requirements</span></a>page.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.51</td>
+                            <td class="ItalicFont">Synonyms</td>
+                            <td>
+                                <p>The following SQL&#160;statements are now available:</p>
+                                <ul class="codeList">
+                                    <li value="1"><a href="../SQLReference/Statements/CreateSynonym.html">CREATE SYNONYM</a>
+                                    </li>
+                                    <li value="2"><a href="../SQLReference/Statements/DropSynonym.html">DROP SYNONYM</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Auto Trace</td>
+                            <td>
+                                <p class="noSpaceAbove">The auto trace feature was previously on by default; it has been changed to be off by default. You can turn it on using the Auto Trace built-in system procedure.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Date Arithmetic </td>
+                            <td>
+                                <p class="noSpaceAbove">A number of new date functions have been added to enhance our compatibility with third party Business Intelligence tools. There's A new topic in the <span class="ItalicFont">Developer's Guide</span>:&#160;<a href="../Developers/Fundamentals/WorkingWithDates.html"><span class="ItalicFont">Working With Dates</span></a>.</p>
+                                <p>We have added these new built-in SQL&#160;date and date arithmetic functions:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Extract.html">EXTRACT</a></span>
+                                    </li>
+                                    <li value="2"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/MonthName.html">MONTHNAME</a></span>
+                                    </li>
+                                    <li value="3"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Now.html">NOW</a></span>
+                                    </li>
+                                    <li value="4"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Quarter.html">QUARTER</a></span>
+                                    </li>
+                                    <li value="5"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/RowId.html">ROWID</a></span>
+                                    </li>
+                                    <li value="6"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Week.html">WEEK</a></span>
+                                    </li>
+                                </ul>
+                                <p>The <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Second.html">SECOND</a></span>&#160;function has been updated to work properly with timestamp values. </p>
+                                <p>And there's a significantly updated version of the <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Truncate.html">TRUNC&#160;or TRUNCATE</a></span>&#160;function that now works with date values. As a result, the <span class="CodeFont">TRUNC_DATE</span>&#160;function has been deprecated.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">DBeaver SQL&#160;Client</td>
+                            <td>We have added instructions for installing and Using DBeaver with Splice Machine.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Foreign Keys</td>
+                            <td>
+                                <p class="noSpaceAbove">Foreign keys are now operational. There's a new topic in the <span class="ItalicFont">Developer's Guide</span>: <a href="../Developers/Fundamentals/ForeignKeys.html"><span class="ItalicFont">Foreign Keys and Referential Integrity</span></a>.</p>
+                                <p>And there are updates for foreign keys in these SQL&#160;statements:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../SQLReference/Statements/AlterTable.html">ALTER TABLE</a></span>
+                                    </li>
+                                    <li value="2"><span class="CodeFont"><a href="../SQLReference/Clauses/Constraint.html">CONSTRAINT</a></span>
+                                    </li>
+                                    <li value="3"><span class="CodeFont"><a href="../SQLReference/Statements/CreateTable.html">CREATE TABLE</a></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Incremental backup</td>
+                            <td>
+                                <p class="noSpaceAbove">Both full and incremental backups are now supported. There's a new topic <a href="../OnPremiseOnly/Administrators/BackupAndRestore.html">Backing Up and Restoring Databases</a> topic in the <span class="ItalicFont">Maintaining</span> section of this Guide.</p>
+                                <p>We've made major updates to these functions, including the ability to backup to and restore from cloud services such as AWS:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/BackupDatabase.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span>
+                                    </li>
+                                    <li value="2"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/RestoreDatabase.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>
+                                    </li>
+                                </ul>
+                                <p>And we've added these new system procedures:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/CancelDailyBackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>
+                                    </li>
+                                    <li value="2"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/DeleteBackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span>
+                                    </li>
+                                    <li value="3"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/DeleteOldBackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>
+                                    </li>
+                                    <li value="4"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/ScheduleDailyBackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>
+                                    </li>
+                                </ul>
+                                <p>Finally, there are now several system tables that store information about backups:</p>
+                                <ul class="codeList">
+                                    <li value="1"><a href="../SQLReference/SystemTables/SysBackup.html">SYSBACKUP System Table</a>
+                                    </li>
+                                    <li value="2"><a href="../SQLReference/SystemTables/SysBackupItems.html">SYSBACKUPITEMS System Table</a>
+                                    </li>
+                                    <li value="3"><a href="../SQLReference/SystemTables/SysBackupJobs.html">SYSBACKUPJOBS System Table</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Importing Data</td>
+                            <td>
+                                <p class="noSpaceAbove">There's now a how-to overview topic about <a href="../Developers/IngestionAndStreaming/ImportingData.html">Importing Data</a> in this Guide. There are a number of updates and improvements:</p>
+                                <ul class="bullet">
+                                    <li value="1">The <span class="CodeFont">SYSCS_UTIL.SYSCS_IMPORT_DATA</span>&#160;system procedure, which was available in earlier versions of Splice Machine, has been deprecated, and is replaced by the <span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/ImportData.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;system procedure.</li>
+                                    <li value="2"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/ImportData.html">SYSCS_UTIL.IMPORT_DATA</a></span> features new improvements, especially in error checking.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Limit clause</td>
+                            <td>Splice Machine now supports the <span class="CodeFont"><a href="../SQLReference/Clauses/Limit.html">LIMIT n </a></span> clause in Select expressions, which you can use to limit the results of a query to a specific range of results.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Regular expression matches</td>
+                            <td>We have added the <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/RegexpLike.html">REGEXP_LIKE Operator</a></span>, which is similar to the <span class="CodeFont">LIKE</span>&#160;operator, except that it allows you to specify a full regular expression pattern match.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Running splice&gt;&#160;from a file</td>
+                            <td>
+                                <p class="noSpaceAbove">You can invoke the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter to run a set of SQL&#160;commands from a file and then exit, using the new <span class="CodeFont">-f</span> argument. </p>
+                                <p>For more information, see the <a href="../CmdLineReference/Intro.CmdLineReference.html">Command Line (splice&gt;) Reference</a></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Savepoints</td>
+                            <td>
+                                <p class="noSpaceAbove">Transaction savepoints have been added. There's a brief description of savepoints in the <a href="../Developers/Fundamentals/Transactions.html">Running Transactions In Splice Machine</a> topic in the <span class="ItalicFont">Developer's Guide</span>.</p>
+                                <p>There are also three new statements that are documented in the <a href="../CmdLineReference/TransactionCmds.html">Transaction Commands</a> section of the <span class="ItalicFont">Developer's Guide</span></p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../CmdLineReference/CmdSavepoint.html">Savepoint Command</a></span>
+                                    </li>
+                                    <li value="2"><span class="CodeFont"><a href="../CmdLineReference/CmdReleaseSavepoint.html">Release Savepoint Command</a></span>
+                                    </li>
+                                    <li value="3"><span class="CodeFont"><a href="../CmdLineReference/CmdRollbackToSavepoint.html">Rollback to Savepoint Command</a></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Statistics</td>
+                            <td>
+                                <p class="noSpaceAbove">Statistics collection has been added to Splice Machine, for enhanced query optimization. The <a href="../Developers/TuningAndDebugging/UsingStatistics.html">Using Statistics with Splice Machine</a> topic in the <span class="ItalicFont">Performance Tuning</span> section introduces you to the functions and tables you can use to work with statistics for your database. And the SQL&#160;Reference Manual includes these reference topics:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/CollectSchemaStats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> built-in system procedure</li>
+                                    <li value="2"><span class="CodeFont">SYSCS_UTIL.COLLECT_TABLE_STATISTICS</span> built-in system procedure</li>
+                                    <li value="3"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/DisableColumnStats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span> built-in system procedure</li>
+                                    <li value="4"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/DropSchemaStats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a></span> built-in system procedure</li>
+                                    <li value="5"><span class="CodeFont">SYSCS_UTIL.DROP_TABLE_STATISTICS</span> built-in system procedure</li>
+                                    <li value="6"><span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/EnableColumnStats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a></span> built-in system procedure</li>
+                                    <li value="7"><span class="CodeFont"><a href="../SQLReference/SystemTables/SysColumnStatistics.html">SYSCOLUMNSTATISTICS System Table</a></span>
+                                    </li>
+                                    <li value="8"><span class="CodeFont"><a href="../SQLReference/SystemTables/SysTableStatistics.html">SYSTABLESTATISTICS System Table</a></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Temporary Tables</td>
+                            <td>
+                                <p class="noSpaceAbove">Temporary tables have been updated for compatibility with Business Intelligence tools, and there's a new how-to overview topic <a href="../Developers/Fundamentals/TemporaryTables.html">Using Temporary Database Tables</a> in the <span class="ItalicFont">Developer's Guide</span>:</p>
+                                <ul class="bullet">
+                                    <li value="1">The  <span class="CodeFont"><a href="../SQLReference/Statements/CreateTempTable.html">CREATE&#160;TEMPORARY TABLE</a></span>statement has been added.</li>
+                                    <li value="2">There are important updates to the <span class="CodeFont"><a href="../SQLReference/Statements/DeclareGlobalTempTable.html">DECLARE GLOBAL TEMPORARY TABLE</a></span> statement.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Top clause</td>
+                            <td>Splice Machine now supports the <span class="CodeFont"><a href="../SQLReference/Clauses/TopN.html">TOP&#160;n </a></span> clause in <span class="CodeFont">Select</span> expressions, which you can use to limit the results of a query.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Triggers</td>
+                            <td>
+                                <p class="noSpaceAbove">Triggers are now operational. There's a new topic in the <span class="ItalicFont">Developer's Guide</span>: <a href="../Developers/Fundamentals/DatabaseTriggers.html"><span class="ItalicFont">Using Database Triggers</span></a>.</p>
+                                <p>And there are updates for triggers in these <span class="ItalicFont">SQL&#160;Reference Manual</span> topics:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../SQLReference/Statements/CreateTrigger.html">CREATE TRIGGER</a></span> statement</li>
+                                    <li value="2"><span class="CodeFont"><a href="../SQLReference/Statements/DropTrigger.html">DROP TRIGGER</a></span>&#160;statement</li>
+                                    <li value="3"><span class="CodeFont"><a href="../SQLReference/Statements/UpdateTable.html">UPDATE</a></span> statement</li>
+                                    <li value="4"><span class="CodeFont"><a href="../SQLReference/Clauses/Where.html">WHERE</a></span> clause</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Window Functions</td>
+                            <td>
+                                <p class="noSpaceAbove">We've added four new window functions:&#160;</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/FirstValue.html">FIRST_VALUE</a></span> function</li>
+                                    <li value="2"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Lag.html">LAG</a></span> function</li>
+                                    <li value="3"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/LastValue.html">LAST_VALUE</a></span> function</li>
+                                    <li value="4"><span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Lead.html">LEAD</a></span> function</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3><a name="Deprecat"></a>Deprecated Functions</h3>
+                <p>This section summarizes any functions or features that have been deprecated in this release.</p>
+                <p>&#160;</p>
+                <table summary="Summary of functions deprecated in recent releases.">
+                    <col />
+                    <col />
+                    <col />
+                    <tbody>
+                        <tr>
+                            <th>Version when deprecated</th>
+                            <th>Change</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td>Bit Data Types</td>
+                            <td>Documentation has been removed for unsupported data types <span class="CodeFont">CHAR&#160;FOR&#160;BIT&#160;DATA</span>, <span class="CodeFont">VARCHAR&#160;FOR&#160;BIT&#160;DATA</span>, and <span class="CodeFont">LONG&#160;VARCHAR&#160;FOR&#160;BIT&#160;DATA</span>.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td>Explain Trace</td>
+                            <td>
+                                <p>The Splice&#160;Machine <span class="ItalicFont">Explain Trace</span> tool, the <span class="CodeFont">explaintrace</span> command line command, and the system procedures associated with Explain&#160;Trace have been deprecated and are no longer available. </p>
+                                <p>The <a href="../ManagementConsole/Intro.ManagementConsole.html"><span class="ItalicFont">Splice Machine Management Console Guide</span></a> provides an enhanced facility for tracing query execution.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td>Incremental backup</td>
+                            <td>Our backup and restore system is currently supporting only full backups. Incremental backups will become available in a future release.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td>Standalone Version on PCs</td>
+                            <td>
+                                <p class="noSpaceAbove">The standalone version of Splice Machine no longer works on Windows computers running Cygwin.</p>
+                                <p>You can use the standalone version on Linux and MacOS&#160;computers.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td>Built-in System Procedures</td>
+                            <td>
+                                <p class="noSpaceAbove">The following built-in system procedures have been deprecated and are no longer available:</p>
+                                <ul class="bullet">
+                                    <li class="CodeFont" value="1">SYSCS_UTIL.SYSCS_GET_GLOBAL_MAX_TASKS</li>
+                                    <li class="CodeFont" value="2">SYSCS_UTIL.SYSCS_GET_MAX_TASKS</li>
+                                    <li class="CodeFont" value="3">SYSCS_UTIL.SYSCS_GET_PAST_STATEMENT_SUMMARY</li>
+                                    <li class="CodeFont" value="4">SYSCS_UTIL.SYSCS_GET_REGION_SERVER_TASK_INFO</li>
+                                    <li class="CodeFont" value="5">SYSCS_UTIL.SYSCS_GET_STATEMENT_SUMMARY</li>
+                                    <li class="CodeFont" value="6">SYSCS_UTIL.SYSCS_GET_WRITE_PIPELINE_INFO</li>
+                                    <li class="CodeFont" value="7">SYSCS_UTIL.SYSCS_GET_WRITE_POOL</li>
+                                    <li class="CodeFont" value="8">SYSCS_UTIL.SYSCS_GET_XPLAIN_STATEMENTID</li>
+                                    <li class="CodeFont" value="9">SYSCS_UTIL.SYSCS_GET_XPLAIN_TRACE</li>
+                                    <li class="CodeFont" value="10">SYSCS_UTIL.SYSCS_GET_USER_ACCESS</li>
+                                    <li class="CodeFont" value="11">SYSCS_UTIL.SYSCS_KILL_STATEMENT</li>
+                                    <li class="CodeFont" value="12">SYSCS_UTIL.SYSCS_PURGE_XPLAIN_TRACE</li>
+                                    <li class="CodeFont" value="13">SYSCS_UTIL.SYSCS_RELOAD_SECURITY_POLICY</li>
+                                    <li class="CodeFont" value="14">SYSCS_UTIL.SYSCS_SET_AUTO_TRACE</li>
+                                    <li class="CodeFont" value="15">SYSCS_UTIL.SYSCS_SET_USER_ACCESS</li>
+                                    <li class="CodeFont" value="16">SYSCS_UTIL.SYSCS_SET_WRITE_POOL</li>
+                                    <li class="CodeFont" value="17">SYSCS_UTIL.SYSCS_SET_XPLAIN_TRACE</li>
+                                    <li class="CodeFont" value="18">SYSCS_UTIL.IMPORT_CHECK_DATA</li>
+                                    <li class="CodeFont" value="19">SYSCS_UTIL.UPSERT_CHECK_DATA_FROM_FILE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td><span class="CodeFont">SYSCS_UTIL.SYSCS_IMPORT_DATA</span> system procedure</td>
+                            <td>The <span class="CodeFont">SYSCS_UTIL.SYSCS_IMPORT_DATA</span>&#160;system procedure, which was available in earlier versions of Splice Machine, has been replaced by the <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span>&#160;system procedure</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td><span class="CodeFont">TRUNC_DATE</span>&#160;built-in function</td>
+                            <td>
+                                <p>Deprecated:&#160;use the <span class="CodeFont">TRUNCATE</span>&#160;function instead to truncate dates.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3><a name="Document"></a>Documentation Updates</h3>
+                <p>This section summarizes important documentation updates completed since version 1.0. Note that, in addition to the changes listed in this table, the documentation is always updated for the new and modified features described in earlier sections of this topic.</p>
+                <div class="noteIcon">Please visit our <a href="DocsSummary.html">Documentation Summary</a> page for more information about the organization of our documentation, and how to take advantage of its available navigation features.</div>
+                <table summary="Summary of documentation updates in recent releases.">
+                    <col />
+                    <col />
+                    <col />
+                    <tbody>
+                        <tr>
+                            <th>Version when updated</th>
+                            <th>Change</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td class="ItalicFont">Set Operators</td>
+                            <td>The Set operators <span class="CodeFont"><a href="../SQLReference/Clauses/Union.html">UNION</a></span>&#160;and <span class="CodeFont"><a href="../SQLReference/Clauses/Except.html">EXCEPT</a></span>&#160;have been documented in the <a href="../SQLReference/Clauses/Intro.Clauses.html">Clauses</a> section of the <span class="ItalicFont">SQL&#160;Reference Manual</span>.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td class="ItalicFont"><a href="../OnPremiseOnly/InstallingSpliceMachine/Intro.InstallationGuide.html">Splice Machine Installation Guide</a>
+                            </td>
+                            <td>The Installation Guide has been rewritten and simplified into a small number of pages. This is now a chapter in this book.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td class="ItalicFont">Spark</td>
+                            <td>
+                                <p class="noSpaceAbove">We've added documentation for our Spark engine:</p>
+                                <ul class="bullet">
+                                    <li value="1"><a href="../Developers/Fundamentals/SparkLibraries.html">Using Spark Libraries with Splice&#160;Machine</a> in our <span class="ItalicFont">Developer's Guide</span> provides an example, in Java, of using the Spark Machine Learning Library with Splice&#160;Machine.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.0</td>
+                            <td class="ItalicFont">Management Console</td>
+                            <td>The new <a href="../ManagementConsole/Intro.ManagementConsole.html">Splice Machine Management Console</a> book describes our real-time monitoring interface for Spark queries.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.55</td>
+                            <td class="ItalicFont">Updating System Procedures</td>
+                            <td>The <span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/UpdateAllSystemProcedures.html">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</a></span>&#160;built-in system procedure is now documented.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.5.2</td>
+                            <td class="ItalicFont">Added RLwrap Info</td>
+                            <td>Splice Machine recommends using the <span class="ItalicFont">RLwrap</span> command line wrapper, with our <span class="CodeFont">splice&gt;</span>&#160;command line interpreter. We've added a new topic that describes some of the <a href="../CmdLineReference/RLWrapSummary.html">rlWrap Commands Synopsis</a> that you might find useful.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.5.2</td>
+                            <td class="ItalicFont">Examples</td>
+                            <td>We've updated many of the examples used in our SQL&#160;Reference Manual to use a simple database of two fictionalized American Major League baseball teams, and have included the database in this documentation suite.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.5.2</td>
+                            <td class="ItalicFont">Reorganized table of contents</td>
+                            <td>
+                                <p class="noSpaceAbove">The tables of contents in our <span class="ItalicFont">Developer's Guide</span> and <span class="ItalicFont">SQL&#160;Reference Manual</span> each have been updated with an extra level of hierarchy, which simplifies finding topics by specific category, and greatly simplifies the context-sensitive menu tree in our web-based documentation system.</p>
+                                <p>In addition, to improve screen readability, we've shortened the names shown in the table of contents for the Built-in System Procedures section of the SQL&#160;Reference Manual by eliminating the schema name prefix in the table of contents. For example, the <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_LOGGERS</span> function is still documented with its full name, but its name is abbreviated in the table of contents (and context-sensitive side menu)&#160;to <span class="CodeFont">GET_LOGGERS</span>.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.5.2</td>
+                            <td class="ItalicFont">Stylistic changes</td>
+                            <td>We've made improvements to our stylesheet, including one update that improves the appearance and wrapping behavior of code snippets in our books.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.51</td>
+                            <td class="ItalicFont">Documentation Reorganization</td>
+                            <td>The organization of our documentation was overhauled for this release to simplify navigation.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Command Lines Reference</td>
+                            <td>
+                                <p class="noSpaceAbove">Usage information for the <a href="../CmdLineReference/CmdLineSummary.html">splice&gt; Commands Reference</a>, including reference information for using each command has been moved from the <span class="ItalicFont">Splice&#160;Machine Getting Started&#160;Guide</span> to our <span class="ItalicFont">Splice&#160;Machine Developer's Guide</span>. </p>
+                                <p>The<span class="ItalicFont">Splice&#160;Machine Getting Started&#160;Guide</span> now contains a brief overview and summary of the <span class="AppCommand">splice&gt;</span>&#160;commands.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Glossary</td>
+                            <td>We've added a <a href="Glossary.html"><span class="ItalicFont">Glossary</span></a>.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Explain Plan</td>
+                            <td>
+                                <p class="noSpaceAbove">The <a href="../Developers/TuningAndDebugging/ExplainPlan.html">About Explain Plan</a> topic has been greatly enhanced, and now includes a number of examples;this topic has also now been separated out from the Explain Trace topic.</p>
+                                <p>Use <span class="ItalicFont">Explain Plan</span> to view the execution plan for a query without actually running it, and use <span class="ItalicFont">Explain Trace</span> to analyze the execution of statement(s) that have already run.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Installation Guide</td>
+                            <td>
+                                <p class="noSpaceAbove">The <span class="ItalicFont">Splice Machine Installation Guide</span> was revamped to make it much simpler to follow: instead of combining the instructions for all platforms together, we have created separate installation guides for each platform on which Splice Machine is supported. </p>
+                                <p>We've clarified requirements, removed extraneous information, and simplified the installation flow.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Logging information</td>
+                            <td>All information about using logging in Splice Machine has been moved into the <a href="../Developers/TuningAndDebugging/UsingLogging.html">Splice Machine Logging</a> topic in the <span class="ItalicFont">Configuring</span> section, including new information about manually enabling SQL&#160;statement logging.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">New and updated features</td>
+                            <td>
+                                <p class="noSpaceAbove">Documentation has been added for all new and updated features noted in the sections above, including new topic pages in the <span class="ItalicFont">Getting Started Guide</span> and <span class="ItalicFont">Developer's Guide</span> to help you understand and use these features.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Overview section</td>
+                            <td>A Technical Introduction to Splice Machine in the <span class="ItalicFont">Getting Started Guide</span> has been rewritten to include more useful information to help new developers understand the scope of features available in Splice Machine.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">1.50</td>
+                            <td class="ItalicFont">Release Notes</td>
+                            <td>We've added a <span class="ItalicFont">Release Notes</span> section in this guide that documents any known workarounds or important notes about specific features.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

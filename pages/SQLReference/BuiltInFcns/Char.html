@@ -1,0 +1,134 @@
+---
+title: CHAR built-in SQL function
+description: Built-in SQL function that returns a fixed-length character string representation.
+summary: Built-in SQL function that returns a fixed-length character string representation.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_char
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Char" id="BuiltInFcns.Char"></a><a name="kanchor372"></a>CHAR</h1>
+            <p>The <span class="CodeFont">CHAR</span> function returns a fixed-length character string representation. The representations are:</p>
+            <ul>
+                <li value="1">A character string, if the first argument is any type of character string.</li>
+                <li value="2">A datetime value, if the first argument is a date, time, or timestamp.</li>
+                <li value="3">A decimal number, if the first argument is a decimal number.</li>
+                <li value="4">A double-precision floating-point number, if the first argument is a <span class="CodeFont">DOUBLE</span> or <span class="CodeFont">REAL</span>. </li>
+                <li value="5">An integer number, if the first argument is a <span class="CodeFont">SMALLINT</span>, <span class="CodeFont">INTEGER</span>, or <span class="CodeFont">BIGINT</span>.</li>
+            </ul>
+            <p>The first argument must be of a built-in data type.</p>
+            <p>The result of the
+			<span class="CodeFont">CHAR</span> function is a fixed-length character string. If the first argument can
+			be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>. If the first argument is <span class="CodeFont">NULL</span>, the result
+		is the <span class="CodeFont">NULL</span>value.</p>
+            <p class="heading2">Character to character syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">CharacterExpression</span> [, <span class="ItalicFont">integer</span>] ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">CharacterExpression</p>
+                <p class="paramDefnFirst">An expression that returns a value that is <span class="CodeFont">CHAR</span>, <span class="CodeFont">VARCHAR</span>, <span class="CodeFont">LONG VARCHAR</span>, or <span class="CodeFont">CLOB</span> data type.</p>
+                <p class="paramName">integer</p>
+                <p class="paramDefnFirst">The length attribute for the resulting fixed length character string. The value must be between 0 and 254.</p>
+            </div>
+            <blockquote>
+                <p class="heading3">Results</p>
+                <p>If the length of the character-expression is less than the length attribute of the result, the result is padded with blanks up to the length of the result.</p>
+                <p>If the length of the character-expression is greater than the length attribute of the result, truncation is performed. A warning is returned unless the truncated characters were all blanks and the character-expression was not a long string (<span class="CodeFont">LONG VARCHAR</span> or <span class="CodeFont">CLOB</span>).</p>
+            </blockquote>
+            <p class="heading2">Integer to character syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">IntegerExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">IntegerExpression</p>
+                <p class="paramDefnFirst">An expression that returns a value that is an integer data type (either SMALLINT, INTEGER or BIGINT).</p>
+            </div>
+            <blockquote>
+                <p class="heading3">Results</p>
+                <p>The result is the character string representation of the argument in the form of an SQL integer constant. The result consists of n characters that are the significant digits that represent the value of the argument with a preceding minus sign if the argument is negative. It is left justified.</p>
+                <ul>
+                    <li value="1">If the first argument is a small integer: The length of the result is 6. If the number of characters in the result is less than 6, then the result
+			is padded on the right with blanks to length 6.</li>
+                    <li value="2">If the first argument is a large integer: The length of the result is 11. If the number of characters in the result is less than 11, then the result
+			is padded on the right with blanks to length 11.</li>
+                    <li value="3">If the first argument is a big integer: The length of the result is 20. If the number of characters in the result is less than 20, then the result
+			is padded on the right with blanks to length 20.</li>
+                </ul>
+            </blockquote>
+            <p class="heading2">Datetime to character syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">DatetimeExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">DatetimeExpression</p>
+                <p class="paramDefnFirst">An expression that is one of the following three data types:
+</p>
+                <table summary="DateTime expression types">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="CodeFont">DATE</td>
+                            <td>The result is the character representation of the date. The length of the result is 10.</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">TIME</td>
+                            <td>The result is the character representation of the time. The	length of the result is 8.</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">TIMESTAMP</td>
+                            <td>The result is the character string representation of
+					the timestamp. The length of the result is 26.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="heading2">Decimal to character</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">DecimalExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">DecimalExpression</p>
+                <p class="paramDefnFirst">An expression that returns a value that is a decimal data type. </p>
+                <p class="paramDefn">If a different precision and scale is desired, you can use the <span class="CodeFont">DECIMAL</span> scalar function first 	to make the change.</p>
+            </div>
+            <p class="heading2">Floating point to character syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">FloatingPointExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">FloatingPointExpression</p>
+                <p class="paramDefnFirst">An expression that returns a value that is a floating-point data type (<span class="CodeFont">DOUBLE</span> or <span class="CodeFont">REAL</span>).</p>
+            </div>
+            <p class="heading2">Example</p>
+            <p>Use the <span class="CodeFont">CHAR</span> function to return the values for <span class="CodeFont">PlateAppearances</span> (defined as smallint) as a fixed length character string:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT CHAR(AtBats * 2) "DoubledAtBats"
+  FROM Batting WHERE ID &lt;= 10;
+DoubledAtBats
+--------------------
+1246
+1112
+864
+1122
+1224
+784
+1102
+446
+744
+548
+
+10 rows selected</pre>
+            </div>
+            <p>Since <span class="CodeFont">AtBats</span> is declared as <span class="CodeFont">SMALLINT</span>&#160;in our Examples database, each of the resulting values is padded with blank characters to make it 6 characters long.</p>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

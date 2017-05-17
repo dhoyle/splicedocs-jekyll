@@ -1,0 +1,69 @@
+---
+title: MONTH_BETWEEN built-in SQL function
+description: Built-in SQL function that returns the number of months between two dates
+summary: Built-in SQL function that returns the number of months between two dates
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_monthbetween
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor523"></a>MONTH_BETWEEN</h1>
+            <p>The <span class="CodeFont">MONTH_BETWEEN</span> function returns the number of months between two dates.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">MONTH_BETWEEN( <span class="ItalicFont">date1</span>, <span class="ItalicFont">date2</span> );</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">date1
+            </p>
+                <p class="paramDefnFirst">The first date. </p>
+                <p class="paramName">date2
+            </p>
+                <p class="paramDefnFirst">The second date</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>If <span class="CodeFont">date1</span> is later than <span class="CodeFont">date2</span>, then the result is positive.</p>
+            <p>If <span class="CodeFont">date1</span> is earlier than <span class="CodeFont">date2</span>, then the result is negative. </p>
+            <p>If <span class="CodeFont">date1</span> and <span class="CodeFont">date2</span> are either the same days of the month or both last days of months, then the result is always an integer. </p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt; VALUES(MONTH_BETWEEN(CURRENT_DATE, DATE('2015-8-15')));
+1 
+----------------------
+3.0
+
+splice&gt; SELECT MIN(BirthDate) "Oldest", 
+   MAX(Birthdate) "Youngest", 
+   MONTH_BETWEEN(MIN(Birthdate), MAX(BirthDate)) "Months Between" 
+   FROM Players; 
+Oldest     |Youngest   |Months Between 
+--------------------------------------------
+1975-07-14 |1992-10-19 |207.0
+
+1 row selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CurrentDate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
+                <li value="2"><a href="../DataTypes/Date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
+                <li value="3"><a href="Date.html"><span class="CodeFont">DATE</span></a>&#160;function</li>
+                <li value="4"><a href="Day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
+                <li value="5"><a href="Extract.html"><span class="CodeFont">EXTRACT</span></a>&#160;function</li>
+                <li value="6"><a href="LastDay.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
+                <li value="7"><a href="Month.html"><span class="CodeFont">MONTH</span></a> function</li>
+                <li value="8"><a href="MonthName.html"><span class="CodeFont">MONTHNAME</span></a>&#160;function</li>
+                <li value="9"><a href="NextDay.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
+                <li value="10"><a href="Now.html"><span class="CodeFont">NOW</span></a> function</li>
+                <li value="11"><a href="Quarter.html"><span class="CodeFont">QUARTER</span></a> function</li>
+                <li value="12"><a href="../DataTypes/Time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
+                <li value="13"><a href="TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
+                <li value="14"><a href="ToChar.html"><span class="CodeFont">TO_CHAR</span></a>&#160;function</li>
+                <li value="15"><a href="ToDate.html"><span class="CodeFont">TO_DATE</span></a>&#160;function</li>
+                <li value="16"><a href="Week.html"><span class="CodeFont">WEEK</span></a> function</li>
+                <li value="17"><span class="ItalicFont"><a href="../../Developers/Fundamentals/WorkingWithDates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,209 @@
+
+@mixin cellStyle ( $bgColor: transparent,
+				   $fontFace: $bodyfont-face,
+				   $fontWeight: normal,
+				   $fontStyle: normal,
+				   $fontColor: $bodyfont-color,
+				   $fontSize: 1em,
+				   $fontTransform: none ) {
+	background-color: $bgColor;
+	font-family: $fontFace;
+	font-weight: $fontWeight;
+	font-style: $fontStyle;
+	color: $fontColor;
+	font-size: $fontSize;
+	text-transform: $fontTransform;
+}
+
+
+table
+{
+	table-layout: auto;
+	border: $border-table;
+	border-collapse: collapse;
+	border-radius: $border-table-radius;
+	margin: 20px 40px 20px 40px;
+	word-wrap: break-word;
+	overflow: auto;
+	
+	caption {
+		text-align: center;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		font-weight: $bodyfont-bold;
+		font-size: 1.05em;
+	}
+	
+	td {
+		border: $border-table;
+		padding: 8px;
+		text-align: left;
+		vertical-align: top;
+		word-wrap: break-word;
+		overflow: auto;
+		
+	}
+	
+	td p:first-child {
+		margin-top: 0;
+	}
+	
+	th {
+		border: $border-table;
+		padding: 8px;
+		text-align: left;
+		vertical-align: top;
+		word-wrap: break-word;
+		overflow: auto;
+		font-family: $bodyfont-face;
+		font-style: normal;
+		font-weight: $bodyfont-bold;
+		background-color: $bgColor-table-th;
+
+		.center {
+			text-align: center;
+		}
+		
+		.smallText {
+			font-size: 0.9em;
+			line-height: 1em;
+		}
+	}
+	
+	div.preWrapper {
+		max-width: 65%;
+	}
+	
+	div.preWrapperWide {
+		max-width: 95%;
+	}
+
+}
+
+table td.AppFont { 
+	@include cellStyle ($fontFace: $codefont-face, 
+						$fontWeight: $codefont-weight,
+						$bgColor: $table-appFont-color)
+}
+
+table td.AppFont { 
+	@include cellStyle ($fontFace: $codefont-face, 
+						$bgColor: $table-appFont-color)
+}
+
+table td.BoldFont {
+	@include cellStyle ($fontWeight: bold) 
+}
+
+table td.BoldBlueBG {
+	@include cellStyle( $bgColor: $bgcolor-blue,
+						$fontWeight: $bodyfont-bold )
+}
+
+table td.BoldGreenBG {
+	@include cellStyle( $bgColor: $bgcolor-green,
+						$fontWeight: $bodyfont-bold )
+}
+
+table td.BoldDarkGreenBG {
+	@include cellStyle( $bgColor: $bgcolor-darkgreen,
+						$fontWeight: $bodyfont-bold )
+}
+
+table td.BoldRedBG {
+	@include cellStyle( $bgColor: $bgcolor-red,
+						$fontWeight: $bodyfont-bold )
+}
+
+table td.CodeFont {
+	@include cellStyle( $fontFace: $codefont-face )
+}
+
+table td.CodeFontUC {
+	@include cellStyle( $fontFace: $codefont-face,
+						$fontTransform: uppercase )
+}
+
+table td.CodeFontSmall {
+	@include cellStyle( $fontFace: $codefont-face,
+						$fontSize: 0.9em )
+}
+
+table td.ConsoleLink {
+	@include cellStyle( $fontColor: $consoleLink-color,
+						$fontWeight: 600 )
+}
+
+table td.ItalicFont {
+	@include cellStyle( $fontStyle: italic )
+}
+
+table td.PlainFont {
+	@include cellStyle( $fontWeight: normal )
+}
+
+table td.Separator {
+	@include cellStyle( $bgColor: $table-separator-color );
+	height: $table-separator-height;
+	line-height: $table-separator-height;
+}
+
+table td.smallText {
+	@include cellStyle( $fontSize: 0.9em );
+	line-height: 1em;
+}
+
+
+table.featureList
+{
+	table-layout: auto;
+	border: $border-table;
+	border-collapse: collapse;
+	border-radius: 0;
+	margin: 20px 50px 20px 50px;
+	word-wrap: break-word;
+	overflow: auto;
+	
+	td,
+	td.leftAlign{
+		border: $border-table;
+		padding: 5px;
+		word-wrap: break-word;
+		overflow: auto;
+		color: $featureTable-color;
+		font-weight: normal;
+		text-align: center;
+		vertical-align: middle;
+	}
+	td.leftAlign{
+		text-align: left;
+	}
+	td.featureName {
+		text-align: left;
+		padding: 4px 12px 4px 12px;
+		font-family: $featureTable-name-face;
+		font-weight: 600;
+		font-size: 13px;
+		color: $featureTable-color;
+		background-color: $bgColor-featureTable;
+	}
+	td.checkmark {
+		text-align: center;
+		font-family: $featureTable-checkmark-face;
+		font-size: 13px;
+		color: $featureTable-checkmark-color;
+	}
+	th,
+	td.subHeader {
+		background-color: $bgColor-featureTable-th;
+		border: $border-table;
+		padding: 5px;
+		vertical-align: middle;
+		text-align: center;
+		word-wrap: break-word;
+		overflow: auto;
+		color: $featureTable-th-color;
+		font-weight: $bodyfont-bold;
+	}
+}
+

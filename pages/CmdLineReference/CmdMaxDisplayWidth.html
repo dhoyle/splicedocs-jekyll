@@ -1,0 +1,37 @@
+---
+title: MaximumDisplayWidth command
+description: Sets the maximum displayed width for each column of results displayed by the command line interpreter.
+summary: Sets the maximum displayed width for each column of results displayed by the command line interpreter.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_maximumdisplaywidth
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor213"></a>MaximumDisplayWidth Command</h1>
+            <p>The <span class="AppCommand">maximumdisplaywidth</span> command sets the largest display width, in characters, for displayed columns in the command line interpreter.</p>
+            <p>This is generally used to increase the default value in order to display large blocks of text.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">MAXIMUMDISPLAYWIDTH integer_value</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">integer_value</p>
+                <p class="paramDefnFirst">The maximum width of each column that is displayed by the command line intepreter.</p>
+                <p class="paramDefn">Set this value to <span class="CodeFont">0</span> to display the entire content of each column.</p>
+            </div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt; maximumdisplaywidth 3;
+splice&gt; VALUES 'NOW IS THE TIME!';
+1
+---
+NOW
+splice&gt; maximumdisplaywidth 30;
+splice&gt; VALUES 'NOW IS THE TIME!';
+1
+----------------
+NOW IS THE TIME!</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

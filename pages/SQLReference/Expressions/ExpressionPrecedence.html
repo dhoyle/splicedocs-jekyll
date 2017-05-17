@@ -1,0 +1,36 @@
+---
+title: Expression Precedence
+        
+description: Specifies operator precedence in Splice Machine SQL expressions.
+summary: Specifies operator precedence in Splice Machine SQL expressions.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_expressions_precedence
+folder: SQLReference/Expressions
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Expressions.ExpressionPrecedence" id="Expressions.ExpressionPrecedence"></a>Expression <a name="kanchor425"></a>Precedence</h1>
+            <p>The precedence of operations from highest to lowest is:</p>
+            <ul>
+                <li value="1"><span class="CodeFont">(), ?,</span> Constant (including sign), <span class="CodeFont">NULL</span>, <span class="ItalicFont">ColumnReference</span>, <span class="ItalicFont">ScalarSubquery</span>, <span class="CodeFont">CAST</span></li>
+                <li value="2"><span class="CodeFont">LENGTH, CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP</span>, and other built-ins</li>
+                <li value="3">unary <span class="CodeFont">+</span> and <span class="CodeFont">-</span></li>
+                <li value="4"><span class="CodeFont">*, /, ||</span> (concatenation)</li>
+                <li value="5">binary <span class="CodeFont">+</span> and <span class="CodeFont">-</span></li>
+                <li value="6">comparisons, quantified comparisons, <span class="CodeFont">EXISTS, IN, IS NULL, LIKE, BETWEEN, IS</span></li>
+                <li value="7"><span class="CodeFont">NOT</span>
+                </li>
+                <li value="8"><span class="CodeFont">AND</span>
+                </li>
+                <li value="9"><span class="CodeFont">OR</span>
+                </li>
+            </ul>
+            <p>You can explicitly specify precedence by placing expressions within parentheses. An expression within parentheses is evaluated before any operations outside the parentheses are applied to it.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example">(3+4)*9
+(age &lt; 16 OR age &gt; 65) AND employed = TRUE</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

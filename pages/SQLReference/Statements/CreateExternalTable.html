@@ -1,0 +1,102 @@
+---
+title: CREATE EXTERNAL TABLE statement
+description: Allows you to query data stored in a flat file as if that data were stored in a Splice Machine table.
+summary: Allows you to query data stored in a flat file as if that data were stored in a Splice Machine table.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_createexternaltable
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateTable" id="Statements.CreateTable"></a><a name="kanchor390"></a>CREATE EXTERNAL TABLE</h1>
+            <p>A <span class="CodeFont">CREATE EXTERNAL&#160;TABLE</span> statement creates a table in Splice Machine that you can use to query data that is stored externally in a flat file, such as a file in Parquet, ORC, or plain text format. External tables are largely used as a convenient means of moving data into and out of your database.</p>
+            <p>You can query external tables just as you would a regular Splice&#160;Machine table; however, you cannot perform any DML&#160;operations on an external table, once it has been created. That also means that you cannot create an index on an external table.</p>
+            <div class="noteImportant">If the schema of the external file that you are querying is modified outside of Splice, you need to manually refresh the Splice&#160;Machine table by calling the <span class="CodeFont"><a href="../BuiltInSysProcs/RefreshExternalTable.html">REFRESH&#160;EXTERNAL&#160;TABLE</a></span>&#160;built-in system procedure.</div>
+            <p>If a qualified table name is specified, the schema name cannot
+begin with <span class="CodeFont">SYS</span>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CREATE EXTERNAL&#160;TABLE <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>
+  {
+    ( <span class="ItalicFont"><a href="ColumnDefinition.html">column-definition</a></span>[, <span class="ItalicFont"><a href="ColumnDefinition.html">column-definition</a></span>]* )<br /> &#160;&#160;&#160;[&#160;COMPRESSED&#160;WITH&#160;<span class="ItalicFont">compression-format</span> ]
+ &#160;&#160; [ PARTITIONED&#160;BY&#160;(<span class="ItalicFont">column-name</span> ) ]}
+&#160;&#160;&#160;&#160;[ ROW&#160;FORMAT&#160;DELIMITED<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;[ FIELDS&#160;TERMINATED&#160;BY&#160;<span class="ItalicFont">char</span> [ESCAPED&#160;BY&#160;<span class="ItalicFont">char</span>] ]<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;[ LINES&#160;TERMINATED&#160;BY&#160;<span class="ItalicFont">char</span> ]<br />&#160;&#160;&#160;&#160;]<br />&#160;&#160;&#160;&#160;STORED&#160;AS <span class="ItalicFont">file-format</span> LOCATION&#160;<span class="ItalicFont">location</span><br />&#160;&#160;}</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">The name to assign to the new table.</p>
+                <p class="paramName">compression-format</p>
+                <p class="paramDefnFirst">The compression algorithm used to compress the flat file source of this external table. You can specify one of the following values:</p>
+                <ul class="bulletNested">
+                    <li value="1"><span class="CodeFont">ZLIB</span>
+                    </li>
+                    <li value="2"><span class="CodeFont">SNAPPY</span>
+                    </li>
+                </ul>
+                <p class="paramDefnFirst">If you don't specify a compression format, the default is uncompressed. You cannot specify a <span class="CodeItalicFont">compression-format</span> when using the <span class="CodeFont">TEXTFILE&#160;</span><span class="CodeItalicFont">file-format</span>; doing so generates an error.</p>
+                <p class="paramName">column-definition</p>
+                <p class="paramDefnFirst">A column definition.</p>
+                <p class="paramDefn">The maximum number of columns allowed in a table is <span class="CodeFont"><span class="LimitationsMaxColumnsInTable">100000</span></span>.</p>
+                <p class="paramName">column-name</p>
+                <p class="paramDefnFirst">The name of a column.</p>
+                <p class="paramName">char</p>
+                <p class="paramDefnFirst">A single character used as a delimiter or escape character. Enclose this character in single quotes; for example, ','. </p>
+                <p class="paramDefn">To specify a special character that includes the backslash character, you must escape the backslash character itself. For example:</p>
+                <ul class="bulletNested">
+                    <li value="1"><span class="CodeFont">\\</span> to indicate a backslash character</li>
+                    <li value="2"><span class="CodeFont">\n</span> to indicate a newline character</li>
+                    <li value="3"><span class="CodeFont">\t</span> to indicate a tab character</li>
+                </ul>
+                <p class="paramName">file-format</p>
+                <p class="paramDefnFirst">The format of the flat file source of this external table. This is currently one of these values:</p>
+                <ul class="bulletNested">
+                    <li value="1"><span class="CodeFont">ORC</span> is a columnar storage format</li>
+                    <li value="2"><span class="CodeFont">PARQUET</span> is a columnar storage format</li>
+                    <li value="3"><span class="CodeFont">TEXTFILE</span> is a plain text file</li>
+                </ul>
+                <p class="paramName">location</p>
+                <p class="paramDefnFirst">The location at which the file is stored.</p>
+            </div>
+            <p class="heading2">Usage Notes</p>
+            <p class="body">Here are some notes about using external tables:</p>
+            <ul>
+                <li value="1">If the data types in the table schema you specify do not match the schema of the external file, an error occurs and the table is not created.</li>
+                <li value="2">You cannot define indexes or constraints on external tables</li>
+                <li value="3">The <span class="CodeFont">ROW&#160;FORMAT</span>&#160;parameter is not supported for columnar storage format files (<span class="CodeFont">ORC</span>&#160;or <span class="CodeFont">PARQUET</span>&#160;files).</li>
+                <li value="4">If you specify the location of a non-existent file when you create an external table, Splice&#160;Machine automatically creates an external file at that location.</li>
+                <li value="5">Splice Machine isn't able to know when the schema of the file represented by an external table is updated; when this occurs, you need to update the external table in Splice Machine by calling the <samp><a href="../BuiltInSysProcs/RefreshExternalTable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></samp> built-in system procedure. </li>
+                <li value="6">You cannot specify a <span class="CodeItalicFont">compression-format</span> when using the <span class="CodeFont">TEXTFILE&#160;</span><span class="CodeItalicFont">file-format</span>; doing so generates an error.</li>
+            </ul>
+            <p class="heading2">Examples</p>
+            <p>This section presents examples of the <span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span>&#160;statement.</p>
+            <p class="body">This example creates an external table for a <span class="CodeFont">PARQUET</span>&#160;file:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE EXTERNAL TABLE myParquetTable(<br /> &#160;&#160;&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;STORED AS PARQUET<br />&#160;&#160;&#160;LOCATION '/users/myName/myParquetFile';
+0 rows inserted/updated/deleted</pre>
+                <p class="body">This example creates an external table for an <span class="CodeFont">ORC</span>&#160;file and inserts data into it:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE EXTERNAL TABLE myOrcTable(<br />&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;STORED AS ORC<br />&#160;&#160;&#160;LOCATION '/users/myName/myOrcFile';<br />0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;INSERT&#160;INTO&#160;myOrcTable VALUES (1, 'One'), (2, 'Two'), (3, 'Three');<br />3 rows inserted/updated/deleted<br /><br />splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;myOrcTable;<br />COL1        |COL2<br />------------------------------------
+3           |Three
+2           |Two
+1           |One</pre>
+                </div>
+                <p class="body">This example creates an external table for a plain text file:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE EXTERNAL TABLE myTextTable(<br />&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'<br />&#160;&#160;&#160;LINES TERMINATED BY '\\n'<br />&#160;&#160;&#160;STORED AS TEXTFILE<br />&#160;&#160;&#160;LOCATION '/users/myName/myTextFile';<br />0 rows inserted/updated/deleted<br /></pre>
+                </div>
+                <p class="body">This example creates an external table for a <span class="CodeFont">PARQUET</span>&#160;file that was compressed with Snappy compression:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE EXTERNAL TABLE mySnappyParquetTable(<br /> &#160;&#160;&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;COMPRESSED&#160;WITH&#160;SNAPPY<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;STORED AS PARQUET<br />&#160;&#160;&#160;LOCATION '/users/myName/mySnappyParquetFile';<br />
+0 rows inserted/updated/deleted</pre>
+                </div>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="CreateTable.html">CREATE&#160;TABLE</a></span>&#160;statement</li>
+                <li value="2"><span class="CodeFont"><a href="PinTable.html">PIN&#160;TABLE</a></span>&#160;statement</li>
+                <li value="3"><span class="CodeFont"><a href="DropTable.html">DROP&#160;TABLE</a></span>&#160;statement</li>
+                <li value="4"><span class="CodeFont"><a href="../BuiltInSysProcs/RefreshExternalTable.html">REFRESH&#160;EXTERNAL&#160;TABLE</a></span>&#160;built-in system procedure</li>
+                <li value="5"><a href="../../Developers/Fundamentals/ForeignKeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li value="6"><a href="../../Developers/Fundamentals/DatabaseTriggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

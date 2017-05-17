@@ -1,0 +1,83 @@
+---
+title: CREATE SYNONYM statement
+description:  Creates a synonym, which can provide an alternate name&#xD;&#xA;for a table or a view.&#xD;&#xA;
+summary:  Creates a synonym, which can provide an alternate name&#xD;&#xA;for a table or a view.&#xD;&#xA;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_createsynonym
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateSynonym" id="Statements.CreateSynonym"></a><a name="kanchor319"></a>CREATE SYNONYM</h1>
+            <p>The <span class="CodeFont">CREATE SYNONYM</span> statement allows you to create an alternate name
+for a table or a view.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CREATE&#160;SYNONYM( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SynonymName">synonymName</a></span> FOR { <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ViewName">viewName</a></span> | <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">tableName</a></span> } );</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">synonymName</p>
+                <p class="paramDefnFirst">An <a href="../Identifiers/Intro.Identifiers.html">SQLIdentifier</a>, which can optionally include a schema name. This is the new name you want to create for the view or table.</p>
+                <p class="paramName">viewName</p>
+                <p class="paramDefnFirst">An <a href="../Identifiers/Intro.Identifiers.html">SQLIdentifier</a> that identifies the view for which you are creating a synonym.</p>
+                <p class="paramName">tableName</p>
+                <p class="paramDefnFirst">An <a href="../Identifiers/Intro.Identifiers.html">SQLIdentifier</a> that identifies the table for which you are creating a synonym.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <div class="noteNote">Currently, you can only use a synonym instead of the original qualified table or view name in these statements: <span class="CodeFont"><a href="Select.html">SELECT</a></span>, <span class="CodeFont"><a href="Insert.html">INSERT</a></span>, <span class="CodeFont"><a href="UpdateTable.html">UPDATE</a></span>,or <span class="CodeFont"><a href="Delete.html">DELETE</a></span>.</div>
+            <p>Here are a few other important notes about using synonyms:</p>
+            <ul>
+                <li value="1">Synonyms share
+the same name space as tables or views. You cannot create a synonym with the
+same name as a table that already exists in the same schema. Similarly, you
+cannot create a table or view with a name that matches a synonym already present.</li>
+                <li value="2">You can create a synonym for a table or view that does not yet exist; however, you can only use the synonym if the table or view is present in your database.</li>
+                <li value="3">You can create synonyms for other synonyms (nested synonyms); however, an error will occur if you attempt to create a synonym that results in a circular reference.</li>
+                <li value="4">You cannot create synonyms in system schemas. Any schema that starts with <span class="CodeFont">SYS</span> is a system schema.</li>
+                <li value="5">You cannot define a synonym for a temporary table.</li>
+            </ul>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE SYNONYM Hitting FOR Batting;
+0 rows inserted/updated/deleted
+
+splice&gt;&#160;SELECT&#160;ID, Games FROM&#160;Batting WHERE&#160;ID&#160;&lt;&#160;11;
+ID    |GAMES
+-------------
+1     |150
+2     |137
+3     |100
+4     |143
+5     |149
+6     |93
+7     |133
+8     |52
+9     |115
+10    |100
+
+0 rows inserted/updated/deleted
+
+splice&gt;&#160;SELECT&#160;ID, Games FROM&#160;Hitting&#160;WHERE&#160;ID&#160;&lt;&#160;11;
+ID    |GAMES
+-------------
+1     |150
+2     |137
+3     |100
+4     |143
+5     |149
+6     |93
+7     |133
+8     |52
+9     |115
+10    |100
+
+0 rows inserted/updated/deleted
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="DropSynonym.html"><span class="CodeFont">DROP_SYNONYM</span></a> statement</li>
+                <li value="2"><span class="CodeFont"><a href="../../CmdLineReference/CmdShowSynonyms.html">SHOW&#160;SYNONYMS</a></span>&#160;command in our <span class="ItalicFont">Developer's Guide</span>.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

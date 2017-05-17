@@ -1,0 +1,38 @@
+---
+title: Remove command
+description: Removes a previously prepared statement.
+summary: Removes a previously prepared statement.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_remove
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor500"></a>Remove Command</h1>
+            <p>The <span class="AppCommand">remove</span> command removes a previously prepared statement from the command line interpreter. </p>
+            <p>The statement is closed, releasing its database resources.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">REMOVE&#160;<span class="ItalicFont">Identifier</span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">Identifier</p>
+                <p class="paramDefnFirst">The name assigned to the prepared statement when it was prepared with the <a href="CmdPrepare.html">Prepare</a> statement.</p>
+            </div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; prepare seeMenu as 'SELECT * FROM menu';
+splice&gt; execute seeMenu;
+COURSE    |ITEM                |PRICE          
+-----------------------------------------------
+entree    |lamb chop           |14             
+dessert   |creme brulee        |6
+
+2 rows selected
+splice&gt; remove seeMenu;
+splice&gt; execute seeMenu;
+splice ERROR: Unable to establish prepared statement SEEMENU
+splice&gt;</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

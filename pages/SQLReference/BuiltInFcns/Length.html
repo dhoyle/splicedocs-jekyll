@@ -1,0 +1,105 @@
+---
+title: LENGTH built-in SQL function
+description: Built-in SQL function that computes the length of a character or bit string expression
+summary: Built-in SQL function that computes the length of a character or bit string expression
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_length
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Length" id="BuiltInFcns.Length"></a><a name="kanchor28"></a>LENGTH</h1>
+            <p>The <span class="CodeFont">LENGTH</span> function returns the number of characters in a character string expression or bit string expression.</p>
+            <div class="noteNote"> Since all built-in data types are implicitly converted to strings, this function can act on all built-in data types.</div>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">LENGTH ( { <span class="ItalicFont">CharacterExpression</span> | <span class="ItalicFont">BitExpression</span> } )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">CharacterExpression</p>
+                <p class="paramDefnFirst">A character string expression.</p>
+                <p class="paramName">BitExpression</p>
+                <p class="paramDefnFirst">A&#160;bit string expression.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The result data type is an integer value.</p>
+            <p class="heading2">Examples</p>
+            <p class="body">The following three examples show the values returned by the LENGTH&#160;function for string, integer, and bit string values.</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, LENGTH(DisplayName) "NameLen" 
+   FROM Players 
+   WHERE ID &lt; 11 
+   ORDER BY "NameLen";
+DISPLAYNAME             |NameLen    
+------------------------------------
+Greg Brown              |10         
+John Purser             |11         
+Bob Cranker             |11         
+Billy Bopper            |12         
+Mitch Duffer            |12         
+Jason Minman            |12         
+Buddy Painter           |13         
+Norman Aikman           |13         
+Alex Paramour           |13         
+Harry Pennello          |14         
+
+10 rows selected
+
+
+splice&gt; SELECT ID, 
+   LENGTH(CAST(ID AS SMALLINT)) "SMALLINT", 
+   LENGTH(CAST(ID AS INT)) "INT", 
+   LENGTH(CAST(ID AS BIGINT)) "BIGINT", 
+   LENGTH(CAST(ID AS DECIMAL)) "DECIMAL5", 
+   LENGTH(CAST(ID AS DECIMAL(15,10))) "DECIMAL15", 
+   LENGTH(CAST(ID AS DECIMAL(30,25))) "DECIMAL30" 
+   FROM Players 
+   WHERE ID&lt;11;
+ID    |SMALLINT   |INT        |BIGINT     |DECIMAL5   |DECIMAL15  |DECIMAL30
+------------------------------------------------------------------------------
+1     |2          |4          |8          |3          |8          |16         
+2     |2          |4          |8          |3          |8          |16         
+3     |2          |4          |8          |3          |8          |16         
+4     |2          |4          |8          |3          |8          |16         
+5     |2          |4          |8          |3          |8          |16         
+6     |2          |4          |8          |3          |8          |16         
+7     |2          |4          |8          |3          |8          |16         
+8     |2          |4          |8          |3          |8          |16         
+9     |2          |4          |8          |3          |8          |16         
+10    |2          |4          |8          |3          |8          |16         
+
+10 rows selected
+
+
+splice&gt; VALUES LENGTH(X'FF'),
+   LENGTH(X'FFFF'),
+   LENGTH(X'FFFFFFFF'),
+   LENGTH(X'FFFFFFFFFFFFFFFF');
+-----------
+1          
+2          
+4          
+8          
+
+4 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="Concatenation.html">Concatenation</a> operator</li>
+                <li value="3"><a href="InitCap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
+                <li value="4"><a href="Instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
+                <li value="5"><a href="LCase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
+                <li value="6"><a href="Locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
+                <li value="7"><a href="LTrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
+                <li value="8"><span class="CodeFont"><a href="RegexpLike.html">REGEX_LIKE</a></span>&#160;operator</li>
+                <li value="9"><a href="Replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
+                <li value="10"><a href="RTrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
+                <li value="11"><a href="Substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
+                <li value="12"><a href="Trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
+                <li value="13"><a href="UCase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

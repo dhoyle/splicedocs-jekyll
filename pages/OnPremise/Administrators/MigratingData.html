@@ -1,0 +1,473 @@
+---
+summary: topic
+title: How to migrate your Splice Machine database to a new version of Splice Machine.
+description: How to migrate your Splice Machine database to a new version of Splice Machine.
+keywords: 
+sidebar:  onprem_sidebar
+permalink: onprem_admin_migratingdb
+folder: OnPrem
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor407"></a>Migrating Your Splice Machine Database</h1>
+            <p>This topic describes how to migrate your Splice Machine database to the latest version of Splice&#160;Machine software using the <span class="ItalicFont">Splice Machine Migration Assistant</span>. </p>
+            <div class="openSourceNoteWrapper" data-mc-conditions="Default.OnlyEnterprise">
+                <div class="openSourceNote">
+                    <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: This feature is available only with a Splice Machine Enterprise license.</span>
+                    </p>
+                    <p>You cannot use this feature with the Community version of Splice Machine. For a list of the additional features available in the Enterprise edition, see our  <a href="../../Notes/SpliceEditions.html">Splice&#160;Machine Editions</a> page.</p>
+                    <p>To obtain a license for the Splice&#160;Machine <span class="ItalicFont">Enterprise Edition</span>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
+                </div>
+            </div>
+            <p>You can complete the migration process in these simple steps:</p>
+            <ol>
+                <li value="1"><a href="#Download" class="MCXref xref" xrefformat="{para}">Download and Install the Migration Assistant</a>
+                </li>
+                <li value="2"><a href="#Use" class="MCXref xref" xrefformat="{para}">Use the Migration Assistant to Export Your Database</a>
+                </li>
+                <li value="3"><a href="#Update" class="MCXref xref" xrefformat="{para}">Update to the Latest Version of Splice Machine</a>
+                </li>
+                <li value="4"><a href="#Use2" class="MCXref xref" xrefformat="{para}">Use the Migration Assistant to Import Your Database</a>
+                </li>
+            </ol>
+            <p>You use the same Migration Assistant tool to export your database before updating your Splice Machine installation, and to subsequently import your database after updating.</p>
+            <h2><a name="Download"></a>Download and Install the Migration Assistant</h2>
+            <p class="noSpaceBelow">To download and install the <span class="ItalicFont">Splice&#160;Machine Migration Assistant</span> tool, follow these steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Verify prerequisites:</p>
+                        <p>Make sure that you have version 1.8 (or later)&#160;of the JRE&#160;installed on the node. You can view the version of JRE&#160;installed on most computers by using the following command:</p>
+                        <div class="preWrapper"><pre class="ShellCommand">java -XshowSettings:properties -version</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Download the Migration Assistant:</p>
+                        <p>Download the tool in compressed archive format to the home directory of your standalone computer or to any node in your cluster. You'll find <span class="CodeFont">gz</span> and <span class="CodeFont">zip</span> versions of the the download package here:</p>
+                        <div class="preWrapperWide"><pre class="Plain"><a href="https://console.aws.amazon.com/s3/home?region=us-west-2#&amp;bucket=cetera-poc&amp;prefix=ddlutils/Migration%20Assistant/">https://console.aws.amazon.com/s3/home?region=us-west-2#&amp;bucket=cetera-poc&amp;prefix=ddlutils/Migration%20Assistant/</a></pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Unpackage the Tool:</p>
+                        <p>Unpackage the archive you downloaded on your node, which contains these files:</p>
+                        <table>
+                            <col />
+                            <col />
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="CodeFont">Migration.sh</td>
+                                    <td>The script you use to run the Migration Assistant once you have the configuration file set up.</td>
+                                </tr>
+                                <tr>
+                                    <td class="CodeFont">ddlutils-&lt;version&gt;.jar</td>
+                                    <td>The Migration Assistant code.</td>
+                                </tr>
+                                <tr>
+                                    <td class="CodeFont">README.md</td>
+                                    <td>The Read Me file for the Migration Assistant.</td>
+                                </tr>
+                                <tr>
+                                    <td class="CodeFont">prop.cfg</td>
+                                    <td>The configuration file used by the Migration Assistant. You need to modify this file before exporting or importing your database.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="Use"></a>Use the Migration Assistant to Export Your Database</h2>
+            <p>To export your database prior to upgrading your Splice Machine software, you need to:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1"> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. See the <a href="#Migratio" class="MCXref xref" xrefformat="{para}">Migration Assistant Configuration Settings</a> section below for details. Make sure that you have the <span class="CodeFont">operation</span> property set to <span class="CodeFont">backup</span>.</li>
+                    <li value="2">
+                        <p class="topLevel">Verify that permissions are set correctly for the directory you specify for bad record information is in HDFS (the value of the <span class="CodeFont">hdfsBadDir</span> configuration setting); substitute that directory name for <span class="HighlightedCode">&lt;hdfsBadDir&gt;</span>&#160;in the following command line:</p>
+                        <div class="preWrapper"><pre class="ShellCommand">chmod 777 <span class="Highlighted">&lt;hdfsBadDir&gt;</span></pre>
+                        </div>
+                    </li>
+                    <li value="3">Verify that the directory you specify for the work file (the value of the <span class="CodeFont">hdfsWorkDir</span> configuration property)&#160;is present on the computer you're using. </li>
+                    <li value="4">Run the <span class="CodeFont">Migration.sh</span> script to export your database.</li>
+                    <li value="5">
+                        <p class="topLevel">Examine the log file to verify that the export worked as you expect.</p>
+                        <p>See <a href="#The" class="MCXref xref" xrefformat="{para}">The Export Log File</a> section below for details on the generated log table.</p>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="Update"></a>Update to the Latest Version of Splice Machine</h2>
+            <p>Follow the update instructions in our <a href="../InstallingSpliceMachine/Intro.InstallationGuide.html">Installation Guide</a> to update to the latest version of Splice Machine.</p>
+            <h2><a name="Use2"></a>Use the Migration Assistant to Import Your Database</h2>
+            <p>After you've upgraded your database, you can use the Migration Assistant a second time to restore the database you previously exported. Follow these steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Verify that the Splice&#160;Machine region servers are running after the upgrade. You can easily verify this by issuing the following commands at the splice&gt;&#160;command prompt:</p>
+                        <div class="preWrapper"><pre class="Example">splice&gt; select * from SYS.SYSTABLES;<br />splice&gt; select *&#160;from SYS.SYSTABLES --splice-properties useSpark=true<br />&gt; ;</pre>
+                        </div>
+                    </li>
+                    <li value="2"> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. Make sure that you change the the <span class="CodeFont">operation</span> property set to <span class="CodeFont">restore</span>.</li>
+                    <li value="3">Update any settings that start with import, as required. See the <a href="#Migratio" class="MCXref xref" xrefformat="{para}">Migration Assistant Configuration Settings</a> section below for details. </li>
+                    <li value="4">Run the <span class="CodeFont">Migration.sh</span> script to import your upgraded database.</li>
+                    <li value="5">Examine the log file to verify that the export worked as you expect. See <a href="#The" class="MCXref xref" xrefformat="{para}">The Export Log File</a> section below for details on the generated log table.</li>
+                    <li value="6">You should also verify that your database has been restored.</li>
+                </ol>
+            </div>
+            <h2><a name="Migratio"></a>Migration Assistant Configuration Settings</h2>
+            <p>The following table describes the configuration properties you can specify in the Migration Assistant's <span class="CodeFont">prop.cfg</span> file.</p>
+            <table>
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Property Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">operation</td>
+                        <td>
+                            <p>The Migration Assistant offers two operation modes:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td class="CodeFont">backup</td>
+                                        <td>Prepare your database for upgrade by exporting it.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">restore</td>
+                                        <td>Restore your database after upgrading by importing a previously exported database.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">fileWorkDir</td>
+                        <td>
+                            <p>The path of the directory in the local file system of the node on which you are running the Migration Assistant the local file system </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">hdfsDataDir</td>
+                        <td>
+                            <p>The path to the working directory in HDFS&#160;in which the exported/imported data files are stored. Each table's data is stored in a separate file that is named as (with bracketed values replaced by your actual directory, schema, and table names)d:</p>
+                            <div class="preWrapper"><pre class="Plain">&lt;hdfsDataDir&gt;/&lt;schema-name&gt;/&lt;table-name&gt;/&lt;backedup data&gt;.csv</pre>
+                            </div>
+                            <p>Note that you can verify data that has been written with commands such as the following:</p>
+                            <div class="preWrapper"><pre class="ShellCommand">sudo su &lt;userId&gt;<br />hadoop fs -ls /&lt;hdfsDataDir&gt;/&lt;schema-name&gt;/&lt;table-name&gt;/*</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">hdfsBadDir</td>
+                        <td>
+                            <p>The path to the directory in which you want all bad record information recorded. </p>
+                            <p>If you do not specify a directory here, then all errors found in a specific table are stored in a subdirectory of the <span class="CodeFont">hdfsDataDir</span> directory:</p>
+                            <div class="preWrapper"><pre class="Plain">&lt;hdfsDataDir&gt;/&lt;schema-name&gt;/&lt;table-name&gt;/</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">tables</td>
+                        <td>
+                            <p>Specifies which tables and schemas you want to upgrade (export and then import). Leave this blank if you want all schemas and tables in your data upgraded.</p>
+                            <p>If you want to upgrade only a specific schema or set of schemas, use a list; for example:</p>
+                            <div class="preWrapperWide"><pre class="Example">SPLICE.*,MYSCHEMA.*</pre>
+                            </div>
+                            <p>If you want to upgrade only a specific table or set of tables, use a list; for example:</p>
+                            <div class="preWrapperWide"><pre class="Example">SPLICE.MyTable1,SPLICE.MyTable2</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">multilineImportTables</td>
+                        <td>
+                            <p>A Boolean value that specifies whether each line in the import file contains one complete record. Use one of the following values:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td class="CodeFont">null</td>
+                                        <td>Each record is stored in one line in the file.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">true</td>
+                                        <td>Each record can span multiple lines in the file.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">exportObject</td>
+                        <td>
+                            <p>Which object types to export from your database; specify one of the following values:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td class="CodeFont">ddl</td>
+                                        <td>Import only the data definitions, not the data.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">data</td>
+                                        <td>Import only the data, not the data definitions.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">all</td>
+                                        <td>Import all of the exported data definitions and data.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">exportServers</td>
+                        <td>
+                            <p>The name of the server(s)&#160;to use for exporting the data. You can use a comma-separated list to specify multiple servers; for example:</p>
+                            <div class="preWrapper"><pre class="Example">server-011, server-02, server-03</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">exportDbUser</td>
+                        <td>
+                            <p>The user ID&#160;to use for the upgraded database when you export it. </p>
+                            <p>The default user ID&#160;for Splice Machine databases is <span class="CodeFont">splice</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">exportDbPassword</td>
+                        <td>
+                            <p>The password to use for the upgraded database when you export it.</p>
+                            <p>The default password for Splice Machine databases is <span class="CodeFont">admin</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">exportThreadCount</td>
+                        <td>
+                            <p>The number of export threads to use. You can increase the default value (1 thread) to improve performance.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">importObject</td>
+                        <td>
+                            <p>Which object types to import from the previously exported file; specify one of the following values:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td class="CodeFont">ddl</td>
+                                        <td>Import only the data definitions, not the data.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">data</td>
+                                        <td>Import only the data, not the data definitions.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">all</td>
+                                        <td>Import all of the exported data definitions and data.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">importServers</td>
+                        <td>
+                            <p>The name of the server(s)&#160;to use for importing the data. You can use a comma-separated list to specify multiple servers; for example:</p>
+                            <div class="preWrapper"><pre class="Example">server-011, server-02, server-03</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">importDbUser</td>
+                        <td>
+                            <p>The user ID&#160;to use for the upgraded database when you import it.  This is typically the same user ID specified in the <span class="CodeFont">importDbPassword</span> property. </p>
+                            <p>The default user ID&#160;for Splice Machine databases is <span class="CodeFont">splice</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">importDbPassword</td>
+                        <td>
+                            <p>The password to use for the upgraded database when you import it. This is typically the same password specified in the <span class="CodeFont">exportDbPassword</span> property. </p>
+                            <p>The default password for Splice Machine databases is <span class="CodeFont">admin</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">importThreadCount</td>
+                        <td>
+                            <p>The number of import threads to use. You can increase the default value (1 thread) to improve performance.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2><a name="The"></a>The Export Log File</h2>
+            <p>The following table shows the contents of the <span class="CodeFont">EXPORT_IMPORT_LOG</span> file that the Migration Assistant generates..</p>
+            <table>
+                <caption>Database export logtable</caption>
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">S_NO</td>
+                        <td class="CodeFont">INTEGER</td>
+                        <td class="CodeFont">
+                            <p>GENERATED&#160;BY&#160;DEFAULT&#160;AS&#160;IDENTITY<br />(start with 0, increment by 1)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SCHEMA_NAME</td>
+                        <td class="CodeFont">VARCHAR(100)</td>
+                        <td>The name of the schema being processed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TABLE_NAME</td>
+                        <td class="CodeFont">VARCHAR(100)</td>
+                        <td>The name of the table being processed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DDL_EXPORT_FLAG</td>
+                        <td class="CodeFont">CHAR(1)</td>
+                        <td>
+                            <p>The status of the DDL&#160;export; this is one of the following values:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td class="CodeFont">S</td>
+                                        <td>The operation was successful.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">F</td>
+                                        <td>The operation failed.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">null</td>
+                                        <td>The operation was not performed.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DDL_EXPORT_TS</td>
+                        <td class="CodeFont">TIMESTAMP</td>
+                        <td>The time at which the DDL&#160;export was performed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DATA_EXPORT_FLAG</td>
+                        <td class="CodeFont">CHAR(1)</td>
+                        <td>
+                            <p>The status of the data export; this is one of the following values:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td class="CodeFont">S</td>
+                                        <td>The operation was successful.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">F</td>
+                                        <td>The operation failed.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">null</td>
+                                        <td>The operation was not performed.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DATA_EXPORT_TS</td>
+                        <td class="CodeFont">TIMESTAMP</td>
+                        <td>The time at which the data export was performed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DDL_IMPORT_FLAG</td>
+                        <td class="CodeFont">CHAR(1)</td>
+                        <td>
+                            <p>The status of the DDL&#160;import; this is one of the following values:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td class="CodeFont">S</td>
+                                        <td>The operation was successful.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">F</td>
+                                        <td>The operation failed.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">null</td>
+                                        <td>The operation was not performed.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DDL_IMPORT_TS</td>
+                        <td class="CodeFont">TIMESTAMP</td>
+                        <td>The time at which the DDL&#160;import was performed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DATA_IMPORT_FLAG</td>
+                        <td class="CodeFont">CHAR(1)</td>
+                        <td>
+                            <p>The status of the data import; this is one of the following values:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td class="CodeFont">S</td>
+                                        <td>The operation was successful.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">F</td>
+                                        <td>The operation failed.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="CodeFont">null</td>
+                                        <td>The operation was not performed.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DATA_IMPORT_TS</td>
+                        <td class="CodeFont">TIMESTAMP</td>
+                        <td>The time at which the data import was performed.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>&#160;</p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

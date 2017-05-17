@@ -1,0 +1,36 @@
+---
+title: Disconnect command
+description: Disconnects from a database.
+summary: Disconnects from a database.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_disconnect
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor541"></a>Disconnect Command</h1>
+            <p>The <span class="AppCommand">disconnect</span> command disconnects from a database. It issues a <span class="CodeFont">java.sql.Connection.close</span> request for the current connection, or for the connection(s)&#160;specified on the command line.</p>
+            <p>Note that disconnecting from a database does not stop the command line interface or shut down Splice&#160;Machine. You can use the <a href="CmdExit.html">exit</a> command to close out of the command line interface.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">DISCONNECT&#160;[ALL&#160;|&#160;CURRENT&#160;|&#160;connectionIdentifier]</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">ALL</p>
+                <p class="paramDefnFirst">All known connections are closed; as a result, there will not be a current connection.</p>
+                <p class="paramName">CURRENT</p>
+                <p class="paramDefnFirst">The current connection is closed. This is the default behavior. </p>
+                <p class="paramName">connectionIdentifier</p>
+                <p class="paramDefnFirst">The name of the connection to close; this must be same identifier assigned when the connection was opened with a <a href="CmdConnect.html">Connect</a> command.</p>
+            </div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://xyz:1527/splicedb';
+splice&gt; -- we create a new table in splicedb: 
+CREATE TABLE menu(course CHAR(10), ITEM char(20), PRICE integer);
+0 rows inserted/updated/deleted
+splice&gt; disconnect;
+splice&gt;</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

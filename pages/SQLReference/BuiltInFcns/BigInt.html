@@ -1,0 +1,54 @@
+---
+title: BIGINT built-in SQL function
+description: Built-in SQL function that converts input to a 64-bit integer representation
+summary: Built-in SQL function that converts input to a 64-bit integer representation
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_bigint
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.BigInt" id="BuiltInFcns.BigInt"></a><a name="kanchor386"></a>BIGINT</h1>
+            <p>The <span class="CodeFont">BIGINT</span> function returns a 64-bit integer representation of a number or character string in the form of an integer constant.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">BIGINT (<span class="ItalicFont">CharacterExpression</span> | <span class="ItalicFont">NumericExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">CharacterExpression</p>
+                <p class="paramDefnFirst">An expression that returns a character string value of length not greater than the maximum length of a character constant. Leading and trailing blanks are eliminated and the resulting string must conform to the rules for forming an SQL integer constant. The character string cannot be a long string. If the argument is a CharacterExpression, the result is the same number that would occur if the corresponding integer constant were assigned to a big integer column or variable.</p>
+                <p class="paramName">NumericExpression</p>
+                <p class="paramDefnFirst">An expression that returns a value of any built-in numeric data type. If the argument is a NumericExpression, the result is the same number that would occur if the argument were assigned to a big integer column or variable. If the whole part of the argument is not within the range of integers, an error occurs. The decimal part of the argument is truncated if present.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The result of the function is a big integer. </p>
+            <p>If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>; if the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span> value.</p>
+            <p class="heading2">Example</p>
+            <p>Using the <span class="CodeFont">Batting</span> table from our Doc Examples database, select the <span class="CodeFont">TotalBases</span> column in big integer form for further processing in the application:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT ID, BIGINT(TotalBases) "TotalBases" 
+   FROM Batting 
+   WHERE ID &lt; 11;
+ID    |TotalBases          
+---------------------------
+1     |262                 
+2     |235                 
+3     |174                 
+4     |234                 
+5     |245                 
+6     |135                 
+7     |170                 
+8     |99                  
+9     |135                 
+10    |85                  
+
+10 rows selected</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="../DataTypes/BigInt.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

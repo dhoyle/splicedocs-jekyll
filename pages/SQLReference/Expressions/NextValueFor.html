@@ -1,0 +1,86 @@
+---
+title: NEXT VALUE FOR Expression
+description: Describes the NEXT VALUE FOR expression, which retrieves the next value from a sequence generator.
+summary: Describes the NEXT VALUE FOR expression, which retrieves the next value from a sequence generator.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_expressions_nextvaluefor
+folder: SQLReference/Expressions
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Expressions.NextValueFor" id="Expressions.NextValueFor"></a><a name="kanchor497"></a>NEXT VALUE FOR Expression</h1>
+            <p>The <span class="CodeFont">NEXT VALUE FOR</span> expression retrieves the next value from a sequence generator that was created with a
+		<a href="../Statements/CreateSequence.html"><span class="CodeFont">CREATE SEQUENCE</span> statement</a>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">NEXT VALUE FOR <span class="ItalicFont">sequenceName</span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">sequenceName</p>
+                <p class="paramDefnFirst">A sequence name is an identifier that can optionally be qualified by a schema name:</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">[ <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="../Identifiers/Intro.Identifiers.html">SQLIdentifier</a></span></pre>
+                </div>
+                <p class="paramDefnFirst">If <span class="ItalicFont">schemaName</span> is not provided, the current schema is the default schema. If a qualified sequence name is specified, the schema name cannot begin with the <span class="CodeFont">SYS. </span>prefix.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>If this is the first use of the sequence generator, the generator returns its
+			<span class="CodeFont">START</span> value. Otherwise, the <span class="CodeFont">INCREMENT</span> value is added to the previous value
+			returned by the sequence generator. The data type of the value is the
+		<span class="ItalicFont">dataType</span> specified for the sequence generator.</p>
+            <p>If the sequence generator wraps around, then one of the following happens:</p>
+            <ul>
+                <li value="1">If the sequence generator was created using the <span class="CodeFont">CYCLE</span> keyword, the sequence generator is reset to its <span class="CodeFont">START</span> value.</li>
+                <li value="2">If the sequence generator was created with the default <span class="CodeFont">NO CYCLE</span> behavior, Splice Machine throws an exception. </li>
+            </ul>
+            <p>In order to retrieve the next value of a sequence generator, you or your session's current role must have <span class="CodeFont">USAGE</span> privilege on the generator.</p>
+            <p>A <span class="CodeFont">NEXT VALUE FOR</span> expression may occur in the following places:</p>
+            <ul>
+                <li value="1"><a href="../Statements/Select.html"><span class="CodeFont">SELECT</span> statement</a>:
+			As part of the expression defining a returned column in a <span class="CodeFont">SELECT</span> list</li>
+                <li value="2"><a href="Values.html"><span class="CodeFont">VALUES</span> expression</a>:
+				As part of the expression defining a column in a row constructor (<span class="CodeFont">VALUES</span>
+			expression)</li>
+                <li value="3"><a href="../Statements/UpdateTable.html"><span class="CodeFont">UPDATE</span> statement</a>;
+				As part of the expression defining the new value to which a column is being
+			set</li>
+            </ul>
+            <p>The next value of a sequence generator is not affected by whether the user
+		commits or rolls back a transaction which invoked the sequence generator.</p>
+            <p class="heading2">Restrictions</p>
+            <p>Only one <span class="CodeFont">NEXT VALUE FOR</span> expression is allowed per sequence per statement.</p>
+            <p>The <span class="CodeFont">NEXT VALUE FOR</span> expression is not allowed in any statement which has a
+		<span class="CodeFont">DISTINCT</span> or <span class="CodeFont">ORDER BY</span> expression.</p>
+            <p>A <span class="CodeFont">NEXT VALUE</span> expression <span class="BoldFont">may not appear</span> in any of these situations:</p>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="Case.html">CASE</a></span> expression</li>
+                <li value="2"><span class="CodeFont"><a href="../Clauses/Where.html">WHERE</a></span> clause</li>
+                <li value="3"><span class="CodeFont"><a href="../Clauses/OrderBy.html">ORDER BY</a></span> clause</li>
+                <li value="4"><a href="../BuiltInFcns/Intro.WindowAggregrateFcns.html">Aggregate expression</a>
+                </li>
+                <li value="5"><a href="../BuiltInFcns/Intro.WindowAggregrateFcns.html">Window functions</a>
+                </li>
+                <li value="6"><span class="CodeFont"><a href="../BuiltInFcns/RowNumber.html">ROW_NUMBER</a></span> function</li>
+                <li value="7"><span class="CodeFont">DISTINCT</span> select list</li>
+            </ul>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="Example">VALUES (NEXT VALUE FOR order_id);
+
+INSERT INTO re_order_table
+  SELECT NEXT VALUE FOR order_id, order_date, quantity
+  FROM orders
+  WHERE back_order = 1;
+			
+UPDATE orders
+  SET oid = NEXT VALUE FOR order_id
+  WHERE expired = 1;</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Statements/CreateSequence.html"><span class="CodeFont">CREATE&#160;SEQUENCE</span></a>&#160;function</li>
+                <li value="2"><a href="../Statements/Select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
+                <li value="3"><a href="Values.html"><span class="CodeFont">VALUES</span></a>&#160;expression</li>
+                <li value="4"><a href="../Statements/UpdateTable.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

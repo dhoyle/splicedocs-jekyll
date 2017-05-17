@@ -1,0 +1,153 @@
+---
+title: CREATE TRIGGER statement
+description: Creates a trigger, which defines a set of actions that are executed when a database event occurs on a specified table
+summary: Creates a trigger, which defines a set of actions that are executed when a database event occurs on a specified table
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_createtrigger
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateTrigger" id="Statements.CreateTrigger"></a><a name="kanchor337"></a>CREATE TRIGGER</h1>
+            <p>A <span class="CodeFont">CREATE TRIGGER</span> statement creates a trigger, which defines a set of actions that are executed when a database event known as the <span class="CodeFont">triggering event</span> occurs on a specified table. The event can be a <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, or <span class="CodeFont">DELETE</span>&#160;statement.  When a trigger fires, the set of SQL&#160;statements that constitute the action are executed.</p>
+            <p>You can define any number of triggers for a single table, including multiple triggers on the same table for the same event. To define a trigger on a table, you must be the owner of the of the database, the owner of the table's schema, or have <span class="CodeFont">TRIGGER</span>&#160;privileges on the table. You cannot define a trigger for any schema whose name begins with <span class="CodeFont">SYS</span>.</p>
+            <p>The <a href="../../Developers/Fundamentals/DatabaseTriggers.html">Database Triggers</a> topic in our <span class="ItalicFont">Developer's Guide</span> provides additional information about database triggers.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE TRIGGER <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TriggerName">TriggerName</a></span> 
+   { AFTER | BEFORE }  
+   { INSERT | DELETE | UPDATE [ OF <span class="ItalicFont">column-Name</span> [, <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-Name</a></span>]* ] }
+   ON <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>
+&#160;&#160;&#160;&#160;&#160;&#160;[ <span class="ItalicFont"><a href="#ReferencingClause">ReferencingClause</a></span> ]
+&#160;&#160;&#160;&#160;&#160;&#160;[ FOR EACH { ROW | STATEMENT } ]
+ <span class="ItalicFont">Triggered-SQL-statement</span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">TriggerName</p>
+                <p class="paramDefnFirst">The name to associate with the trigger.</p>
+                <p class="paramName">AFTER&#160;|&#160;BEFORE</p>
+                <p class="paramDefnFirst">Triggers are defined as either <span class="ItalicFont">Before</span> or <span class="ItalicFont">After</span> triggers. </p>
+                <p class="paramDefn"><span class="CodeFont">BEFORE</span> triggers fire before the statement's changes are applied and before any constraints have been applied. <span class="CodeFont">AFTER</span> triggers fire after all constraints have been satisfied and after the changes have been applied to the target table.</p>
+                <p class="paramDefn">When a database event occurs that fires a trigger, Splice Machine performs actions in this order:</p>
+                <p class="paramDefn">
+                    <ul>
+                        <li value="1">It fires <span class="CodeFont">BEFORE</span> triggers.</li>
+                        <li value="2">It performs constraint checking (primary key, unique key, foreign key, check).</li>
+                        <li value="3">It performs the <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, <span class="CodeFont">SELECT</span>, or <span class="CodeFont">DELETE</span> operations.</li>
+                        <li value="4">It fires <span class="CodeFont">AFTER</span> triggers.</li>
+                    </ul>
+                </p>
+                <p class="paramDefnFirst">When multiple triggers are defined for the same database event for the same table for the same trigger time (before or after), triggers are fired in the order in which they were created.</p>
+                <p class="paramName">INSERT | DELETE | SELECT | UPDATE</p>
+                <p class="paramDefnFirst">Defines which database event causes the trigger to fire. If you specify <span class="CodeFont">UPDATE</span>, you can specify which column(s)&#160;cause the triggering event.</p>
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">The name of the table for which the trigger is being defined.</p>
+                <p class="paramName">ReferencingClause</p>
+                <p class="paramDefnFirst">A means of referring to old/new data that is currently being changed by the database event that caused the trigger to fire. See the <a href="#ReferencingClause">Referencing Clause</a> section below.</p>
+                <p class="paramName">FOR&#160;EACH&#160;{ROW&#160;|&#160;STATEMENT}</p>
+                <p class="paramDefnFirst">A <span class="CodeFont">FOR EACH ROW</span> triggered action executes once for each row that the triggering statement affects. </p>
+                <p class="paramDefn">A <span class="CodeFont">FOR EACH STATEMENT</span> trigger fires once per triggering event and regardless of whether any rows are modified by the insert, update, or delete event.</p>
+                <p class="paramName">Triggered-SQL-Statement</p>
+                <p class="paramDefnFirst">The statement that is executed when the trigger fires. The statement has the following restrictions:</p>
+                <p class="paramDefn">
+                    <ul>
+                        <li value="1">It must not contain any dynamic (<span class="CodeFont">?</span>) parameters.</li>
+                        <li value="2">It cannot create, alter, or drop any table.</li>
+                        <li value="3">It cannot add an index to or remove an index from any table.</li>
+                        <li value="4">It cannot add a trigger to or drop a trigger from any table.</li>
+                        <li value="5">It must not commit or roll back the current transaction or change the isolation level.</li>
+                        <li value="6">Before triggers cannot have <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, <span class="CodeFont">SELECT</span>, or <span class="CodeFont">DELETE</span> statements as their action.</li>
+                        <li value="7">Before triggers cannot call procedures that modify SQL data as their action.</li>
+                        <li value="8">The <span class="CodeFont">NEW</span> variable of a <span class="CodeFont">BEFORE</span> trigger cannot reference a generated column. </li>
+                    </ul>
+                </p>
+                <p class="paramDefn">The statement can reference database objects other than the table upon which the trigger is declared. If any of these database objects is dropped, the trigger is invalidated. If the trigger cannot be successfully recompiled upon the next execution, the invocation throws an exception and the statement that caused it to fire will be rolled back.</p>
+            </div>
+            <p class="heading2"><a name="ReferencingClause" id="ReferencingClause"></a>The Referencing Clause</p>
+            <p>Many triggered-SQL-statements need to refer to data that is currently being changed by the database event that caused them to fire. The triggered-SQL-statement might need to refer to the old (pre-change or <span class="ItalicFont">before</span>)&#160;values or to the new (post-change or <span class="ItalicFont">after</span>) values. You can refer to the data that is currently being changed by the database event that caused the trigger to fire.</p>
+            <p>Note that the referencing clause can designate only one new correlation or identifier and only one old correlation or identifier. </p>
+            <p class="heading3">Transition Variables in Row Triggers</p>
+            <p>Use the transition variables <span class="CodeFont">OLD</span> and <span class="CodeFont">NEW</span> with row triggers to refer to a single row before (<span class="CodeFont">OLD</span>)&#160;or after (<span class="CodeFont">NEW</span>)&#160;modification. For example:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">REFERENCING OLD AS DELETEDROW;</pre>
+            </div>
+            <p>You can then refer to this correlation name in the triggered-SQL-statement:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;DELETE FROM HotelAvailability WHERE hotel_id = DELETEDROW.hotel_id;</pre>
+            </div>
+            <p>The <span class="CodeFont">OLD</span> and <span class="CodeFont">NEW</span> transition variables map to a <span class="ItalicFont">java.sql.ResultSet</span> with a single row.</p>
+            <div class="noteNote"><span class="CodeFont">INSERT</span> row triggers cannot reference an <span class="CodeFont">OLD</span> row. <br /><br /><span class="CodeFont">DELETE</span> row triggers cannot reference a <span class="CodeFont">NEW</span> row.</div>
+            <p class="heading2">Trigger Recursion</p>
+            <p>The maximum trigger recursion depth is 16.</p>
+            <p class="heading2">Examples</p>
+            <p>This section presents examples of creating triggers:</p>
+            <p class="heading4">A&#160;statement trigger:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TRIGGER triggerName
+   AFTER UPDATE
+   ON TARGET_TABLE
+   FOR EACH STATEMENT
+       INSERT INTO AUDIT_TABLE VALUES (CURRENT_TIMESTAMP, 'TARGET_TABLE was updated');
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading4">A&#160;statement trigger calling a custom stored procedure:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TRIGGER triggerName
+   AFTER UPDATE
+   ON TARGET_TABLE
+   FOR EACH STATEMENT
+      CALL my_custom_stored_procedure('arg1', 'arg2');
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading4">A&#160;simple row trigger:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TRIGGER triggerName
+   AFTER UPDATE
+   ON TARGET_TABLE
+   FOR EACH ROW
+      INSERT INTO AUDIT_TABLE VALUES (CURRENT_TIMESTAMP, 'TARGET_TABLE row was updated');
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading4">A&#160;row trigger defined on a subset of columns:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TRIGGER triggerName
+   AFTER UPDATE OF col1, col2
+   ON TARGET_TABLE
+   FOR EACH ROW
+      INSERT INTO AUDIT_TABLE VALUES (CURRENT_TIMESTAMP, 'TARGET_TABLE col1 or col2 of row was updated');
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE TRIGGER UpdateSingles
+   AFTER UPDATE OF Hits, Doubles, Triples, Homeruns
+   ON Batting
+   FOR EACH ROW
+   UPDATE Batting Set Singles=(Hits-(Doubles+Triples+Homeruns));
+0 rows insert/updated/deleted</pre>
+            </div>
+            <p class="heading4">A&#160;row trigger defined on a subset of columns, referencing new and old values:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TRIGGER triggerName
+   AFTER UPDATE OF col1, col2
+   ON T
+   REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
+   FOR EACH ROW
+      INSERT INTO AUDIT_TABLE VALUES (CURRENT_TIMESTAMP, 'TARGET_TABLE row was updated', OLD_ROW.col1, NEW_ROW.col1);
+0 rows insert/updated/deleted
+</pre>
+            </div>
+            <p class="heading4">A&#160;row trigger defined on a subset of columns, referencing new and old values, calling custom stored procedure:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TRIGGER triggerName
+   AFTER UPDATE OF col1, col2
+   ON T
+   REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
+   FOR EACH ROW
+      CALL my_custom_stored_procedure('arg1', 'arg2', OLD_ROW.col1, NEW_ROW.col1);
+0 rows insert/updated/deleted</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../../Developers/Fundamentals/DatabaseTriggers.html">Database Triggers</a> in the <span class="ItalicFont">Developer's Guide</span></li>
+                <li value="2"><span class="CodeFont"><a href="DropTrigger.html">DROP&#160;TRIGGER</a></span>&#160;statement</li>
+                <li value="3"><span class="CodeFont"><a href="../Clauses/Where.html">WHERE</a></span> clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,44 @@
+---
+title: DROP FUNCTION statement
+description: Drops a function from a database.
+summary: Drops a function from a database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_dropfunction
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.DropFunction" id="Statements.DropFunction"></a><a name="kanchor413"></a>DROP FUNCTION</h1>
+            <p>The <span class="CodeFont">DROP&#160;FUNCTION</span>&#160;statement drops a function from your database. Functions are added to the database with the <span class="CodeFont"><a href="CreateFunction.html">CREATE&#160;FUNCTION</a></span>&#160;statement.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DROP FUNCTION <span class="ItalicFont">function-name</span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">function-Name</p>
+                <p class="paramDefnFirst">The name of the function that you want to drop from your database.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>Use this statement to drop a function from your database. It is valid only if there is exactly one function instance with the <span class="ItalicFont">function-name</span> in the schema. The specified function can have any number of parameters defined for it.</p>
+            <p>An error will occur in any of the following circumstances:</p>
+            <ul>
+                <li value="1">If no function with the indicated name exists in the named or implied schema
+			(the error is SQLSTATE 42704)</li>
+                <li value="2">If there is more than one specific instance of the function in the named or
+			implied schema</li>
+                <li value="3">If you try to drop a user-defined function that is invoked in the
+			<span class="ItalicFont"><a href="GenerationClause.html">generation-clause</a></span> of a generated column</li>
+                <li value="4">If you try to drop a user-defined function that is invoked in a view</li>
+            </ul>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP FUNCTION TO_DEGREES;
+0 rows inserted/updated/deleted
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CreateProcedure.html"><span class="CodeFont">CREATE FUNCTION</span></a>&#160;statement</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,199 @@
+---
+title: Boolean Expressions
+description: Syntax for and examples of Boolean expressions in Splice Machine SQL.
+summary: Syntax for and examples of Boolean expressions in Splice Machine SQL.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_expressions_boolean
+folder: SQLReference/Expressions
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Expressions.BooleanExpressions" id="Expressions.BooleanExpressions"></a><a name="kanchor108"></a>Boolean Expressions</h1>
+            <p>Boolean expressions are allowed in <span class="CodeFont"><a href="../Clauses/Where.html">WHERE</a></span> clauses and in check constraints. Boolean expressions in check constraints have limitations not noted here; see <a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT clause</span></a> for more information. Boolean expressions in a <span class="CodeFont">WHERE</span> clause have a highly liberal syntax; see <span class="CodeFont">WHERE clause</span>, for example.</p>
+            <p>A Boolean expression can include zero or more Boolean operators. </p>
+            <p class="heading2">Syntax</p>
+            <p>The following table shows the syntax for the Boolean operators</p>
+            <table summary="Boolean operators">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Syntax</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">AND, OR, NOT</td>
+                        <td>
+                            <div class="fcnWrapper"><pre class="FcnSyntaxCell" xml:space="preserve">{
+   Expression AND Expression  
+ | Expression OR  Expression
+ | NOT Expression
+}</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Comparisons </td>
+                        <td>
+                            <div class="fcnWrapper"><pre class="FcnSyntaxCell" xml:space="preserve">Expression
+{
+   &lt;  
+ | = 
+ | &gt; 
+ | &lt;=
+ | &gt;=
+ | &lt;&gt; 
+}</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">IS NULL,<br />IS NOT NULL</td>
+                        <td>
+                            <div class="fcnWrapper"><pre class="FcnSyntaxCell">Expression IS [ NOT ] NULL</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">LIKE</td>
+                        <td>
+                            <div class="fcnWrapper"><pre class="FcnSyntaxCell" xml:space="preserve">CharacterExpression
+ [ NOT ] LIKE CharacterExpression
+   WithWildCard [ ESCAPE 'escapeCharacter']</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">BETWEEN</td>
+                        <td>
+                            <div class="fcnWrapper"><pre class="FcnSyntaxCell" xml:space="preserve">Expression [ NOT ] BETWEEN Expression AND Expression</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">IN</td>
+                        <td>
+                            <div class="fcnWrapper"><pre class="FcnSyntaxCell" xml:space="preserve">{
+  Expression [ NOT ] IN <a href="../Queries/TableSubquery.html">TableSubquery</a> |
+  Expression [ NOT ] IN
+ ( Expression [, Expression ]* )
+}</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">EXISTS</td>
+                        <td>
+                            <div class="fcnWrapper"><pre class="FcnSyntaxCell">[NOT] EXISTS <a href="../Queries/TableSubquery.html">TableSubquery</a></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Quantified comparison</td>
+                        <td>
+                            <div class="fcnWrapper"><pre class="FcnSyntaxCell" xml:space="preserve">Expression ComparisonOperator
+  {
+   ALL |   
+   ANY |
+   SOME
+  }
+  <a href="../Queries/TableSubquery.html">TableSubquery</a></pre>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Examples</p>
+            <p>The following example presents examples of the Boolean operators.</p>
+            <table style="" summary="Examples of Boolean expressions">
+                <col width="150px" />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Explanation and Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">AND, OR, NOT</td>
+                        <td>Evaluate any operand(s) that are boolean expressions:
+						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">(orig_airport = 'SFO') OR (dest_airport = 'GRU')
+	-- returns true</pre></div></td>
+                    </tr>
+                    <tr>
+                        <td>Comparisons </td>
+                        <td><span class="CodeFont">&lt;, =, &gt;, &lt;=, &gt;=, &lt;&gt;</span> are applicable to all of the built-in types.
+						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">DATE('1998-02-26') &lt; DATE('1998-03-01')
+	-- returns true</pre></div><div class="noteNote">Splice Machine also accepts the != operator, which is not included in the SQL standard.</div></td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">IS NULL,<br />IS NOT NULL</td>
+                        <td>Test whether the result of an expression is null or not.
+					<div class="preWrapper"><pre class="ExampleCell">WHERE MiddleName IS NULL</pre></div></td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">LIKE</td>
+                        <td>
+                            <p>Attempts to match a character expression to a character pattern, which is a character string that includes one or more wildcards. 
+					</p>
+                            <p><span class="CodeFont">%</span> matches any number (zero or more) of characters in the corresponding position in first character expression.</p>
+                            <p><span class="CodeFont">_</span> matches one character in the corresponding position in the character expression.</p>
+                            <p>Any other character matches only that character in the corresponding position in the character expression.</p>
+                            <div class="preWrapper"><pre class="ExampleCell">city LIKE 'Sant_'</pre>
+                            </div>
+                            <p>To treat % or _ as constant characters, escape the character with an optional escape character, which you specify with the ESCAPE clause.</p>
+                            <div class="preWrapper"><pre class="ExampleCell">SELECT a FROM tabA WHERE a LIKE '%=_' ESCAPE '='</pre>
+                            </div>
+                            <div class="noteNote">When <span class="CodeFont">LIKE</span> comparisons are used, Splice Machine compares one character at a time for non-metacharacters. This is different than the way Splice Machine processes <span class="CodeFont">=</span> comparisons. The comparisons with the <span class="CodeFont">=</span> operator compare the entire character string on left side of the <span class="CodeFont">=</span> operator with the entire character string on the right side of the <span class="CodeFont">=</span> operator.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">BETWEEN</td>
+                        <td>Tests whether the first operand is between the second and third operands. The second operand must be less than the third operand. Applicable only to types to which <span class="CodeFont">&lt;=</span> and <span class="CodeFont">&gt;=</span> can be applied.
+						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE booking_date
+  BETWEEN DATE('1998-02-26')
+  AND DATE('1998-03-01')</pre></div><div class="noteNote">Using the <span class="CodeFont">BETWEEN</span> operator is logically equivalent to specifying that you want to select values that are greater than or equal to the first operand and less than or equal to the second operand:&#160;<span class="CodeFont">col between X and Y</span> is equivalent to <span class="CodeFont">col &gt;= X&#160;and col &lt;= Y</span>. Which means that the result set will be empty if your second operand is less than your first.</div></td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">IN</td>
+                        <td>Operates on table subquery or list of values. Returns <span class="CodeFont">TRUE</span> if the left expression's value is in the result of the table subquery or in the list of values. Table subquery can return multiple rows but must return a single column.
+						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE booking_date NOT IN
+ (SELECT booking_date
+  FROM HotelBookings
+  WHERE rooms_available = 0)</pre></div></td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">EXISTS</td>
+                        <td>Operates on a table subquery. Returns <span class="CodeFont">TRUE</span> if the table subquery returns any rows, and <span class="CodeFont">FALSE</span> if it returns no rows. A table subquery can return multiple columns and rows.
+						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE EXISTS
+ (SELECT *
+  FROM Flights
+  WHERE dest_airport = 'SFO'
+  AND orig_airport = 'GRU')</pre></div></td>
+                    </tr>
+                    <tr>
+                        <td>Quantified comparison</td>
+                        <td>
+                            <p>A quantified comparison is a comparison operator (<span class="CodeFont">&lt;, =, &gt;, &lt;=, &gt;=, &lt;&gt;</span>) with <span class="CodeFont">ALL</span> or <span class="CodeFont">ANY</span> or <span class="CodeFont">SOME</span> applied.
+						</p>
+                            <p>Operates on table subqueries, which can return multiple rows but must return a single column. </p>
+                            <p>If <span class="CodeFont">ALL</span> is used, the comparison must be true for all values returned by the table subquery. If <span class="CodeFont">ANY</span> or <span class="CodeFont">SOME</span> is used, the comparison must be true for at least one value of the table subquery. <span class="CodeFont">ANY</span> and <span class="CodeFont">SOME</span> are equivalent.</p>
+                            <div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE normal_rate &lt; ALL
+  (SELECT budget/550 FROM Groups) </pre>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span></a>&#160;clause</li>
+                <li value="2"><a href="../Clauses/Where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

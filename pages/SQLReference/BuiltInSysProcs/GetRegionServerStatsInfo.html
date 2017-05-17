@@ -1,0 +1,68 @@
+---
+title: SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO built-in system procedure
+
+description: Built-in system procedure that displays input and output statistics about the cluster.&#xD;
+summary: Built-in system procedure that displays input and output statistics about the cluster.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getregionserverstats
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.GetRegionServerTaskIno" id="BuiltInSysProcs.GetRegionServerTaskIno"></a><a name="kanchor234"></a>SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO</samp> system procedure displays input and output statistics about the cluster.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The displayed results of calling <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO</span> include these values:</p>
+            <table summary=" summary=&quot;Columns in Get_Region_Server_Stats_Info results display&quot;">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">HOST					</td>
+                        <td>The host name (or IP&#160;address).</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">REGIONCOUNT					</td>
+                        <td>The number of regions.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">STOREFILECOUNT					</td>
+                        <td>The number of files stored.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">WRITEREQUESTCOUNT
+					</td>
+                        <td>The number of write requests.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">READREQUESTCOUNT
+					</td>
+                        <td>The number of read requests.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TOTALREQUESTCOUNT	</td>
+                        <td>The total number of requests.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO();<br />Host          |regionCount         |storeFileCount      |writeRequestCount   |readRequestCount    |totalRequestCount
+--------------------------------------------------------------------------------------------------------------------
+111.222.3.4   |58                  |0                   |5956                |99697               |20517            
+555.666.7.8   |59                  |0                   |1723                |57022               |6253 
+1 row selected
+</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

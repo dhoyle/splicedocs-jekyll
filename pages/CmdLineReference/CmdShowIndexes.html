@@ -1,0 +1,93 @@
+---
+title: Show Indexes command
+description: Displays information about the indexes defined on a table, a database, or a schema.
+summary: Displays information about the indexes defined on a table, a database, or a schema.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_showindexes
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor364"></a>Show Indexes</h1>
+            <p>The <span class="AppCommand">show indexes</span> command displays all of the indexes in the database, the indexes in the specified schema, or the indexes on the specified table.</p>
+            <p class="heading3">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SHOW&#160;INDEXES [ IN schemaName | FROM tableName ]</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">If you supply a schema name, only the indexes in that schema are displayed.</p>
+                <p class="paramName">tableName</p>
+                <p class="paramDefnFirst">If you supply a table name, only the indexes on that table are displayed.</p>
+            </div>
+            <p class="heading3">Results</p>
+            <p>The <span class="AppCommand">show indexes</span> command results contains the following columns:</p>
+            <table summary="Results of the show indexes command">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">TABLE_NAME</td>
+                        <td>The name of the table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">INDEX_NAME</td>
+                        <td>The name of the index.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">COLUMN_NAME</td>
+                        <td>The name of the column.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">ORDINAL</td>
+                        <td>The position of the column in the index.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">NON_UNIQUE</td>
+                        <td>Whether this is a unique or non-unique index.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TYPE</td>
+                        <td>The index type</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">ASC_</td>
+                        <td>Indicates if this is an ascending (A)&#160;or descending (D)&#160;index.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">CONGLOM_NO</td>
+                        <td>The conglomerate number, which points to the corresponding table in HBase.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading3">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show indexes from my_table;
+TABLE_NAME    |INDEX_NAME       |COLUMN_NAME   |ORDINAL&amp;|NON_UNIQUE|TYPE |ASC&amp;|CONGLOM_NO
+-----------------------------------------------------------------------------------------
+MY_TABLE      |I1               |ID            |1       |true      |BTREE|A&#160;&#160;&#160;|1937
+MY_TABLE      |I1               |STATE_CD      |2       |true      |BTREE|A&#160;&#160;&#160;|1937
+MY_TABLE      |I1               |CITY          |3       |true      |BTREE|A&#160;&#160;&#160;|1937
+MY_TABLE      |I2               |ID            |1       |true      |BTREE|D&#160;&#160;&#160;|1953
+MY_TABLE      |I2               |STATE_CD      |2       |true      |BTREE|D&#160;&#160;&#160;|1953
+MY_TABLE      |I2               |CITY          |3       |true      |BTREE|D&#160;&#160;&#160;|1953
+MY_TABLE      |I3               |ID            |1       |true      |BTREE|D&#160;&#160;&#160;|1969
+MY_TABLE      |I3               |STATE_CD      |2       |true      |BTREE|A&#160;&#160;&#160;|1969
+MY_TABLE      |I3               |CITY          |3       |true      |BTREE|D&#160;&#160;&#160;|1969
+MY_TABLE      |I4               |LATITUDE      |1       |true      |BTREE|D&#160;&#160;&#160;|1985
+MY_TABLE      |I4               |STATE_CD      |2       |true      |BTREE|A&#160;&#160;&#160;|1985
+MY_TABLE      |I4               |ID            |3       |true      |BTREE|A&#160;&#160;&#160;|1985
+MY_TABLE      |I5               |ID            |1       |true      |BTREE|A&#160;&#160;&#160;|2001
+MY_TABLE      |I5               |ID            |2       |true      |BTREE|D&#160;&#160;&#160;|2001
+
+14 rows selected
+splice&gt;</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

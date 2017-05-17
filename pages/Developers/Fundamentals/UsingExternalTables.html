@@ -1,0 +1,78 @@
+---
+title: Using External Tables
+description: How to use external tables with Splice Machine
+summary: How to use external tables with Splice Machine
+keywords: 
+sidebar: developers_sidebar
+permalink: developers_fundamentals_externaltables
+folder: Developers/Fundamentals
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor549"></a>Using the Splice Machine External Table Feature</h1>
+            <p>This topic covers the use of external tables in Splice Machine. An external table references a file stored in a flat file format. You can use flat files that are stored in one of these formats:</p>
+            <ul>
+                <li value="1"><span class="CodeFont">ORC</span> is a columnar storage format</li>
+                <li value="2"><span class="CodeFont">PARQUET</span> is a columnar storage format</li>
+                <li value="3"><span class="CodeFont">TEXTFILE</span> is a plain text file</li>
+            </ul>
+            <p>You can access <span class="CodeFont">ORC</span>&#160;and <span class="CodeFont">PARQUET</span>&#160;files that have been compressed with either Snappy or ZLIb compression; however, you cannot use a compressed plain text file.</p>
+            <h2>About External Tables</h2>
+            <p>You can use Splice Machine external tables to query the contents of flat files that are stored outside of your database. You query external tables pretty much the same way as you do the tables in your database.</p>
+            <p>External tables reference files that are stored in a flat file format such as Apache Parquet or Apache Orc, both of which are columnar storage formats that are available in Hadoop. You can use the <span class="CodeFont"><a href="../../SQLReference/Statements/CreateExternalTable.html">CREATE EXTERNAL TABLE</a></span> statement to create an external table that is connected to a specific flat file.</p>
+            <h2>Using External Tables</h2>
+            <p>This section presents several examples of using external tables with Splice Machine.</p>
+            <p class="heading3">Accessing a Parquet File</p>
+            <p>The following statement creates an external table for querying a <span class="CodeFont">PARQUET</span> file that is stored on your computer:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE EXTERNAL TABLE myExtTbl (<br /> &#160;&#160;&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;STORED AS PARQUET<br />&#160;&#160;&#160;LOCATION '/users/myname/myParquetFile';<br />0 rows inserted/updated/deleted</pre>
+            </div>
+            <p>The call to <span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span>&#160;associates a Splice Machine external table with the file named <span class="CodeFont">myparquetfile</span>, and tells Splice&#160;Machine that:</p>
+            <ul>
+                <li value="1">The table should be partitioned based on the values in <span class="CodeFont">col1</span>.</li>
+                <li value="2">The file is stored in PARQUET&#160;format.</li>
+                <li value="3">The file is located in <span class="CodeFont">/users/myname/myParquetFile</span>.</li>
+            </ul>
+            <p>After you create the external table, you can query <span class="CodeFont">myExtTbl</span> just as you would any other table in your database.</p>
+            <p class="heading3">Accessing and Updating an ORC File</p>
+            <p>The following statement creates an external table for creates an external table for an <span class="CodeFont">ORC</span>&#160;file and inserts data into it:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE EXTERNAL TABLE myExtTbl2(<br />&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;STORED AS ORC<br />&#160;&#160;&#160;LOCATION '/users/myname/myOrcFile';<br />0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;INSERT&#160;INTO&#160;myExtTbl2 VALUES (1, 'One'), (2, 'Two'), (3, 'Three');<br />3 rows inserted/updated/deleted<br /><br />splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;myExtTbl2;<br />COL1        |COL2<br />------------------------------------
+3           |Three
+2           |Two
+1           |One</pre>
+            </div>
+            <p>The call to <span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span>&#160;associates a Splice Machine external table with the file named <span class="CodeFont">myOrcFile</span>, and tells Splice&#160;Machine that:</p>
+            <ul>
+                <li value="1">The table should be partitioned based on the values in <span class="CodeFont">col1</span>.</li>
+                <li value="2">The file is stored in ORC format.</li>
+                <li value="3">The file is located in <span class="CodeFont">/users/myname/myOrcFile</span>.</li>
+            </ul>
+            <p>The call to <span class="CodeFont">INSERT&#160;INTO&#160;</span>&#160;demonstrates that you can insert values into the external table just as you would with an ordinary table.</p>
+            <p class="heading3">Accessing a Plain Text File</p>
+            <p class="body">You can specify a table constraint on an external table; for example:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE EXTERNAL TABLE myTextTable(<br />&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'<br />&#160;&#160;&#160;LINES TERMINATED BY '\\n'<br />&#160;&#160;&#160;STORED AS TEXTFILE<br />&#160;&#160;&#160;LOCATION '/users/myName/myTextFile';<br />0 rows inserted/updated/deleted<br /></pre>
+            </div>
+            <p>The call to <span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span>&#160;associates a Splice Machine external table with the file named <span class="CodeFont">myOrcFile</span>, and tells Splice&#160;Machine that:</p>
+            <ul>
+                <li value="1">The table should be partitioned based on the values in <span class="CodeFont">col1</span>.</li>
+                <li value="2">Each field in each row is terminated by a comma.</li>
+                <li value="3">Each line in the file is terminated by a line-end character.</li>
+                <li value="4">The file is stored in plain text format.</li>
+                <li value="5">The file is located in <span class="CodeFont">/users/myName/myTextFile</span>.</li>
+            </ul>
+            <p class="heading3">Accessing a Compressed File</p>
+            <p>This example is exactly the same as our first example, except that the source file has been compressed with Snappy compression:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE EXTERNAL TABLE myExtTbl (<br /> &#160;&#160;&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;COMPRESSED&#160;WITH&#160;SNAPPY<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;STORED AS PARQUET<br />&#160;&#160;&#160;LOCATION '/users/myname/myParquetFile';<br />0 rows inserted/updated/deleted</pre>
+            </div>
+            <h2>Manually Refreshing an External Tables</h2>
+            <p>If the schema of the file represented by an external table is updated, Splice&#160;Machine needs to refresh its representation. When you use the external table, Spark caches its schema in memory to improve performance; as long as you are using Spark to modify the table, it is smart enough to refresh the cached schema. However, if the table schema is modified outside of Spark, you need to call the <samp><a href="../../SQLReference/BuiltInSysProcs/RefreshExternalTable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></samp> built-in system procedure. For example:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE('APP', 'myExtTable');
+Statement executed.</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <p data-mc-conditions="">The <span class="CodeFont"><a href="../../SQLReference/Statements/CreateExternalTable.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span> statement.</p>
+            <p data-mc-conditions="">The <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/RefreshExternalTable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></span> built-in system procedure.</p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

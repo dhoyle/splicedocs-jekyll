@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A mini-tutorial on writing database functions and stored procedures for your Splice Machine database.">
+<meta name="keywords" content=" ">
+<title>Writing Functions and Stored Procedures | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Writing Functions and Stored Procedures page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Writing Functions and Stored Procedures">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Fundamentals</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fundamentals_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_transactions.html">Running Transactions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_dates.html">Working with Date and Time Values</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_triggers.html">Using Database Triggers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_foreignkeys.html">Using Foreign Keys</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_auth.html">Roles and Authorization</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_vti.html">Using the Virtual Table Interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_externaltables.html">Using External Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hcatalog.html">Using HCatalog</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_mapreduce.html">Using the MapReduce API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hbase.html">Working with HBase</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Connecting with Your Database</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_connecting_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcdriver.html">Installing the ODBC Driver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_angular.html">Connecting with AngularJS/NodeJS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_java.html">Connecting with Java</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jruby.html">Connecting with JRuby</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jython.html">Connecting with Jython</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_scala.html">Connecting with Scala</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcc.html">Connecting with C and ODBC</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbeaver.html">Connecting DBeaver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbvisualizer.html">Connecting DBVisualizer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_cognos.html">Connecting Cognos</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_pentaho.html">Connecting Pentaho PDI</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_squirrel.html">Connecting SQuirreL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_tableau.html">Connecting Tableau</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Functions and Stored Procedures</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_writing.html">Writing Functions and Stored Procedures</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_storing.html">Storing/Updating Functions and Procs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_examples.html">Examples</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Ingesting and Streaming Data</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_ingestion_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_uploadtos3.html">Uploading Data to an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_configures3.html">Configuring an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_tpch1.html">Importing TPCH Datat</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_importing.html">Importing Your Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_hfiles.html">Importing Data as HFiles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkaproducer.html">Kafka - Creating a Producer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkafeed.html">Kafka - Configuring a Feed</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_mqttSpark.html">MQTT Spark Streaming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_storm.html">Apache Storm and Splice Machine</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Analytics and Machine Learning</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_analyticsandml_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_analyticsandml_zeppelin.html">Using Apache Zeppelin</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Tuning and Debugging</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_tuning_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_usingstats.html">Using Statistics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan.html">Using Explain Plan</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan_examples.html">Explain Plan Examples</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_logging.html">Logging</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_debugging.html">Debugging</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Writing Functions and Stored Procedures</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">A mini-tutorial on writing database functions and stored procedures for your Splice Machine database.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/Developers/FcnsAndProcs/developers_fcnsandprocs_storingandupdating.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor314"></a><a name="kanchor315"></a>Writing Functions and Stored&#160;Procedures</h1>
+            <p>This topic shows you the steps required to write functions and stored procedures for use in your Splice&#160;Machine database.</p>
+            <ul>
+                <li value="1">Refer to the <a href="Intro.FcnsAndProcs.html">Introduction to Functions and Stored Procedures</a> topic in this section for an overview and comparison of functions and stored procedures.</li>
+                <li value="2">Refer to the <a href="StoringAndUpdatingFcnsAndProcs.html">Storing and Updating Functions and Stored Procedures</a> topic in this section for information about storing your compiled code and updating the <span class="CodeFont">CLASSPATH</span>&#160;to ensure that Splice Machine can find your code.</li>
+                <li value="3">Refer to the <a href="ProcAndFcnExamples.html">Functions and Stored Procedure Examples</a> topic in this section for complete sample code for both a function and a stored procedure.</li>
+            </ul>
+            <p>Note that the processes for adding  functions and stored procedures to your Splice Machine database are quite similar; however, there are some important differences, so we've separated them into their own sections below.</p>
+            <h2>Writing a Function in Splice Machine</h2>
+            <p>Follow the steps below to write a Splice Machine database function. </p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Create a Java method</p>
+                        <p class="indentLevel1">Each function maps to a Java method. For example:</p>
+                        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">package com.splicemachine.cs.function;  
+
+public class Functions {
+ &#160;&#160;public static int addNumbers(int val1, int val2) {
+ &#160;&#160;&#160;&#160;&#160;return val1 + val2;
+&#160;&#160;&#160;}
+}</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Create the function in the database</p>
+                        <p class="indentLevel1">You can find the complete syntax for <span class="CodeFont"><a href="../../SQLReference/Statements/CreateFunction.html">CREATE&#160;FUNCTION</a>&#160;</span>in the <span class="ItalicFont">Splice Machine SQL&#160;Reference</span> manual.</p>
+                        <p class="indentLevel1">Here's a quick example of creating a function. In this example, <span class="CodeFont">com.splicemachine.cs.function</span> is the package, <span class="CodeFont">Functions</span> is the class name, and <span class="CodeFont">addNumbers</span> is the method name:</p>
+                        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE FUNCTION add(val1 int, val2 int)
+&#160;&#160;&#160;&#160;RETURNS integer
+&#160;&#160;&#160;&#160;LANGUAGE JAVA
+&#160;&#160;&#160;&#160;PARAMETER STYLE JAVA
+&#160;&#160;&#160;&#160;NO SQL
+&#160;&#160;&#160;&#160;EXTERNAL NAME 'com.splicemachine.cs.function.Functions.addNumbers';</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Store your compiled Jar file and update your CLASSPATH</p>
+                        <p class="indentLevel1">Follow the instructions in the <a href="StoringAndUpdatingFcnsAndProcs.html">Storing and Updating Functions and Stored Procedures</a> topic in this section to:</p>
+                        <ul class="plainFont">
+                            <li value="1">store your Jar file</li>
+                            <li value="2">update the class path so that Splice Machine can find your code when the function is called.</li>
+                        </ul>
+                        <p class="topLevel">Invoke your function</p>
+                        <p class="indentLevel1">You can invoke functions just like you would call any built-in database function. For example, if you're using the Splice Machine command line interface (<span class="ItalicFont">CLI</span>), and have created a function named <span class="CodeFont">add</span>, you could use a statement like the following:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">SELECT&#160;add(1,2)&#160;FROM&#160;SYS.SYSTABLES;</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="CreatingStoredProc"></a>Writing a Stored Procedure in Splice&#160;Machine</h2>
+            <p>Follow the steps below to write a Splice Machine database stored procedure. </p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Write your custom stored procedure:</p>
+                        <p class="indentLevel1">Here is a very simple stored procedure that uses JDBC:</p>
+                        <div class="preWrapperWide"><pre class="Example">package org.splicetest.customprocs;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
+/**
+ * This class contains custom stored procedures that will be dynamically loaded into the Splice Machine
+ * database with the SQLJ jar file loading system procedures.
+ *
+ * @author Splice Machine
+ */
+
+
+public class CustomSpliceProcs {
+ /**
+  * Return the names for all tables in the database.
+  *
+  * @param rs    result set containing names of all the tables in teh database
+  */ 
+
+   public static void GET_TABLE_NAMES(ResultSet[] rs)
+	 throws SQLException
+   {
+	Connection conn = DriverManager.getConnection("jdbc:default:connection");
+	PreparedStatement pstmt = conn.prepareStatement("select * from sys.systables");
+	rs[0] = pstmt.executeQuery();
+	conn.close();
+   }
+}</pre>
+                        </div>
+                        <p class="indentLevel1">You can use any Java IDE&#160;or text edit to write your code.</p>
+                        <p class="indentLevel1">You can find additional examples in the <a href="ProcAndFcnExamples.html">Functions and Stored Procedure Examples</a> topic in this section.</p>
+                        <div class="noteNote">See the information about <a href="#ResultSet">working with ResultSets</a> in the next section.</div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Compile your code and build a Jar file</p>
+                        <p class="indentLevel1">You now need to compile your stored procedure and build a jar file for it. </p>
+                        <p class="indentLevel1">You can use any Java IDE&#160;or build tool, such as <span class="ItalicFont">Maven</span> or <span class="ItalicFont">Ant</span>, to accomplish this. Alternatively, you can use the <span class="ItalicFont">javac</span> Java compiler and the <span class="ItalicFont">Java Archive</span> tool packaged with the JDK. </p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Copy the Jar file to a cluster node</p>
+                        <p class="indentLevel1">Next, copy your custom Jar file to a region server (any node running an HBase region server)&#160;in your Splice Machine cluster. You can copy the file anywhere that allows the splice&gt;&#160;interface to access it. </p>
+                        <p class="indentLevel1">You can use any remote copying tool, such as scp or ftp. For example:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">scp custom-splice-procs-1.0.2-SNAPSHOT.jar splice@myServer:myDir</pre>
+                        </div>
+                        <p class="indentLevel1">See the <a href="StoringAndUpdatingFcnsAndProcs.html">Storing and Updating Functions and Stored Procedures</a> topic in this section for more information.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Deploy the Jar file to your cluster</p>
+                        <p class="indentLevel1">Deploying the Jar file requires you to install the file in your database, and to add it to your database's <span class="CodeFont">CLASSPATH</span>. You can accomplish both of these steps by calling built-in system procedures from the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter. For example:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-<span class="BasicVariablesSpliceReleaseVersion" data-mc-conditions="Default.OnlyDoc">2.5</span>-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
+
+CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
+                        </div>
+                        <p class="indentLevel1">The <a href="../../SQLReference/BuiltInSysProcs/SQLJInstallJar.html"><span class="CodeFont">SQLJ.INSTALL_JAR</span></a> system procedure uploads the jar file from the local file system where <span class="AppCommand">splice&gt;</span>&#160;is executing into the HDFS:</p>
+                        <ul class="plainFont">
+                            <li value="1">  If you are running a cluster, the Jar files are stored under the <span class="CodeFont">/hbase/splicedb/jar</span> directory in HDFS (or MapR-FS). </li>
+                            <li value="2"> If you are running in standalone mode, the Jar files are stored on the local file system under the <span class="CodeFont">splicedb/jar</span> directory in the Splice install directory.</li>
+                        </ul>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Register your stored procedure with Splice Machine</p>
+                        <p class="indentLevel1">Register your stored procedure with the database by calling the <span class="CodeFont"><a href="../../SQLReference/Statements/CreateProcedure.html">CREATE PROCEDURE</a></span> statement. For example:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">CREATE PROCEDURE SPLICE.GET_TABLE_NAMES()<br />&#160;&#160;&#160;PARAMETER STYLE JAVA<br />&#160;&#160;&#160;READS SQL DATA<br />&#160;&#160;&#160;LANGUAGE JAVA<br />&#160;&#160;&#160;DYNAMIC RESULT SETS 1<br />&#160;&#160;&#160;EXTERNAL NAME 'org.splicetest.customprocs.CustomSpliceProcs.GET_TABLE_NAMES';</pre>
+                        </div>
+                        <p class="indentLevel1">Note that after running the above <span class="CodeFont">CREATE&#160;PROCEDURE</span>&#160;statement, your procedure will show up in the list of available procedures when you run the Splice Machine <span class="AppCommand">show procedures</span> command. </p>
+                        <p class="indentLevel1">You can find the complete syntax for <a href="../../SQLReference/Statements/CreateProcedure.html"><span class="CodeFont">CREATE&#160;PROCEDURE</span></a>&#160;in the <span class="ItalicFont">Splice Machine SQL&#160;Reference</span> manual.</p>
+                    </li>
+                    <li value="6">
+                        <p class="topLevel">Run your stored procedure</p>
+                        <p class="indentLevel1">You can run your stored procedure by calling it from the <span class="AppCommand">splice&gt;</span> prompt. For example:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;call SPLICE.GET_TABLE_NAMES();</pre>
+                        </div>
+                    </li>
+                    <li value="7">
+                        <p class="topLevel">Updating/Reloading your stored procedure</p>
+                        <p class="indentLevel1">If you make changes to your procedure's code, you need to create a new Jar file and reload that into your databaseby calling the <span class="CodeFont">SQLJ.REPLACE_JAR</span>&#160;system procedure:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-<span class="BasicVariablesSpliceReleaseVersion" data-mc-conditions="Default.OnlyDoc">2.5</span>-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="ResultSet"></a>Working with ResultSets</h2>
+            <p>Splice Machine follows the SQL-J&#160;part 1 standard for returning <span class="CodeFont">ResultSets</span> through Java procedures. Each <span class="CodeFont">ResultSet</span> is returned through one of the parameters passed to the java method. For example, the <span class="CodeFont">resultSet</span> parameter in the <span class="CodeFont">MY_TEST_PROC</span>&#160;method in our <span class="CodeFont">ExampleStoredProcedure</span> class:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+public class ExampleStoredProcedure {
+   public static void MY_TEST_PROC(String myInput, ResultSet[] resultSet) throws SQLException {
+     ...
+   } 
+}</pre>
+            </div>
+            <p>Here are a set of things you should know about <span class="CodeFont">ResultSets[]</span> in stored procedures:</p>
+            <ul>
+                <li value="1">The <span class="CodeFont">ResultSets</span> are returned in the order in which they were created.</li>
+                <li value="2">The <span class="CodeFont">ResultSets</span> must be open and generated from the <span class="CodeFont">jdbc:default:connection</span> default connection. Any other <span class="CodeFont">ResultSets</span> are ignored.</li>
+                <li value="3">If you close the statement that created the <span class="CodeFont">ResultSet</span> within the procedure's method, that closes the <span class="CodeFont">ResultSet</span> you want. Instead, you can close the connection.</li>
+                <li value="4">The Splice Machine database engine itself creates the one element <span class="CodeFont">ResultSet</span> arrays that hold the returned <span class="CodeFont">ResultSets</span>.</li>
+                <li value="5">Although the <a href="../../SQLReference/Statements/CreateProcedure.html"><span class="CodeFont">CREATE PROCEDURE</span></a> call allows you to specify the number of <span class="CodeFont">DYNAMIC&#160;RESULT&#160;SETs</span>, we currently only support returning a single <span class="CodeFont">ResultSet</span>. </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

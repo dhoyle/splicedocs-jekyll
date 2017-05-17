@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Introduces you to the basics of running transactions with Splice Machine.">
+<meta name="keywords" content=" ">
+<title>Running Transactions | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Running Transactions page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Running Transactions">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Fundamentals</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fundamentals_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_transactions.html">Running Transactions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_dates.html">Working with Date and Time Values</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_triggers.html">Using Database Triggers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_foreignkeys.html">Using Foreign Keys</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_auth.html">Roles and Authorization</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_vti.html">Using the Virtual Table Interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_externaltables.html">Using External Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hcatalog.html">Using HCatalog</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_mapreduce.html">Using the MapReduce API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hbase.html">Working with HBase</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Connecting with Your Database</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_connecting_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcdriver.html">Installing the ODBC Driver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_angular.html">Connecting with AngularJS/NodeJS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_java.html">Connecting with Java</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jruby.html">Connecting with JRuby</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jython.html">Connecting with Jython</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_scala.html">Connecting with Scala</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcc.html">Connecting with C and ODBC</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbeaver.html">Connecting DBeaver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbvisualizer.html">Connecting DBVisualizer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_cognos.html">Connecting Cognos</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_pentaho.html">Connecting Pentaho PDI</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_squirrel.html">Connecting SQuirreL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_tableau.html">Connecting Tableau</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Functions and Stored Procedures</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_writing.html">Writing Functions and Stored Procedures</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_storing.html">Storing/Updating Functions and Procs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_examples.html">Examples</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Ingesting and Streaming Data</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_ingestion_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_uploadtos3.html">Uploading Data to an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_configures3.html">Configuring an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_tpch1.html">Importing TPCH Datat</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_importing.html">Importing Your Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_hfiles.html">Importing Data as HFiles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkaproducer.html">Kafka - Creating a Producer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkafeed.html">Kafka - Configuring a Feed</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_mqttSpark.html">MQTT Spark Streaming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_storm.html">Apache Storm and Splice Machine</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Analytics and Machine Learning</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_analyticsandml_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_analyticsandml_zeppelin.html">Using Apache Zeppelin</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Tuning and Debugging</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_tuning_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_usingstats.html">Using Statistics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan.html">Using Explain Plan</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan_examples.html">Explain Plan Examples</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_logging.html">Logging</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_debugging.html">Debugging</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Running Transactions</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Introduces you to the basics of running transactions with Splice Machine.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/Developers/Fundamentals/developers_fundamentals_transactions.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor552"></a>Running Transactions In Splice Machine</h1>
+            <p>Splice Machine is a fully transactional database that supports ACID&#160;transactions. This allows you to perform actions such as <span class="ItalicFont">commit</span> and <span class="ItalicFont">rollback</span>; in a transactional context, this means that the database does not make changes visible to others until a <span class="ItalicFont">commit</span> has been issued.</p>
+            <p>This topic includes brief overview information about transaction processing with Splice&#160;Machine, in these sections:</p>
+            <ul>
+                <li value="1"><a href="#Transact">Transactions Overview</a>
+                    <ul class="SecondLevel">
+                        <li value="1"><a href="#ACIDTra">ACID&#160;Transactions</a> describes what ACID transactions are and why they're important.</li>
+                        <li value="2"><a href="#Snapshot">MVCC&#160;and Snapshot Isolation</a> describes what snapshot isolation is and how it works in Splice&#160;Machine.</li>
+                    </ul>
+                </li>
+                <li value="2"><a href="#Using2">Using Transactions</a>
+                    <ul class="SecondLevel">
+                        <li value="1"><a href="#Committi">Committing and&#160;Rolling Back Transaction Changes</a> introduces autocommit, commit, and rollback of transactions.</li>
+                        <li value="2"><a href="#Simple">A Simple&#160;Transaction Example</a> presents an example of a transaction using the <span class="AppCommand">splice&gt;</span>&#160;command line interface.</li>
+                        <li value="3"><a href="#Using">Using Savepoints</a> describes how to use savepoints within transactions.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h2><a name="Transact"></a>Transactions Overview</h2>
+            <p>A&#160;transaction is a unit of work performed in a database; to maintain the integrity of the database, each transaction must:</p>
+            <ul>
+                <li value="1">complete in its entirety or have no effect on the database</li>
+                <li value="2">be isolated from other transactions that are running concurrently in the database</li>
+                <li value="3">produce results that are consistent with existing constraints in the database</li>
+                <li value="4">write its results to durable storage upon successful completion</li>
+            </ul>
+            <h3><a name="ACIDTra"></a>ACID&#160;Transactions</h3>
+            <p>The properties that describe how transactions must maintain integrity are <span class="ItalicFont">A</span>tomicity, <span class="ItalicFont">C</span>onsistency, <span class="ItalicFont">I</span>solation, and <span class="ItalicFont">D</span>urability. Transactions adhering to these properties are often referred to as <span class="ItalicFont">ACID</span>&#160;transactions. Here's a summary of ACID&#160;transaction properties:</p>
+            <table summary="Properties of ACID transactions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ItalicFont">Atomicity</td>
+                        <td>Requires that each transaction be atomic, i.e. all-or-nothing: if one part of the transaction fails, the entire transaction fails, and the database state is left unchanged. Splice Machine guarantees atomicity in each and every situation, including power failures, errors, and crashes.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">Consistency</td>
+                        <td>Ensures that any transaction will bring the database from one valid state to another. Splice Machine makes sure that any data written to the database must be valid according to all defined rules, including constraints, cascades, triggers, and any combination thereof.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">Isolation</td>
+                        <td>Ensures that the concurrent execution of transactions results in a system state that would be obtained if transactions were executed serially. Splice Machine implements snapshot isolation using MVCC&#160;to guarantee that this is true.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">Durability</td>
+                        <td>Ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors. Splice Machine stores changes in durable storage when they are committed.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3><a name="Snapshot"></a><a name="kanchor553"></a>MVCC and Snapshot Isolation</h3>
+            <p>Splice Machine employs a lockless <span class="ItalicFont">snapshot isolation design</span> that uses <span class="ItalicFont">Multiple Version Concurrency Control (MVCC)</span> to create a new version of the record every time it is updated and enforce consistency. Database systems use concurrency control systems to manage concurrent access. The simplest control method is to use locks that make sure that the writer is finished before any reader can proceed; however, this approach can be very slow. With snapshot isolation, each  transaction has its own virtual snapshot of the database, which means that multiple transactions can operate concurrently without creating deadlock conditions.</p>
+            <p>When Splice Machine needs to update an item in the database, it doesn't actually overwrite the old data value. Instead, it creates a new version with a new timestamp. Which means that readers have access to the data that was available when they began reading, even if that data has been updated by a writer in the meantime. This is referred to as <span class="ItalicFont">point-in-time consistency</span> and ensures that:</p>
+            <ul>
+                <li value="1">Every transaction runs in its own <span class="ItalicFont">transactional context</span>, which includes a snapshot of the database from when the transaction began.</li>
+                <li value="2">Every read made during a transaction will see a consistent snapshot of the database.</li>
+                <li value="3">A transaction can only commit its changes if they do not conflict with updates that have been committed while the transaction was running.</li>
+            </ul>
+            <h4>Reading and Writing Database Values During a Transaction</h4>
+            <p>When you begin a transaction, you start working within a <span class="ItalicFont">transactional context</span> that includes a snapshot of the database. The operations that read and write database values for your transaction modify your transactional context. When your transaction is complete, you can commit those modifications to the database. The commit of your transaction's changes succeeds unless a <span class="ItalicFont">write-write conflict</span> occurs, which happens when your transaction attempts to commit an update to a value, and another update to that value has already been committed by a transaction that started before your transaction.</p>
+            <p>This means that the following statements are true with regard to reading values from and writing values to the database during a transaction:</p>
+            <ul>
+                <li value="1">When you read a value during a transaction, you get the value that was most recently set within your transactional context. If you've not already set the value within your context, then this is the value that had been most recently committed in the database before your transaction began (and before your transactional context was established).</li>
+                <li value="2">When you write a value during a transaction, the value is set within your transactional context. It is only written to the database when you commit the transaction; that time is referred to as the <span class="ItalicFont">commit timestamp</span> for your transaction. The value changes that you commit then become visible to transactions that start after your transaction's commit timestamp (until another transaction modifies the value).</li>
+                <li value="3">If two parallel transactions attempt to change the same value, then a <span class="ItalicFont">write-write conflict</span> occurs, and the commit of the transaction that started later fails.</li>
+            </ul>
+            <h4>A Snapshot Isolation Example<a name="kanchor554"></a></h4>
+            <p>The following diagram shows an example of snapshot isolation for a set of transactions, some of which are running in parallel:</p>
+            <div>
+                <img src="images/GS.SnapshotIsolation.png" alt="Snapshot Isolation" class="indented" />
+            </div>
+            <p>Here's a tabular version of the same transactional timeline, showing the values committed in the database over time, with added commentary:</p>
+            <table summary="Snapshot isolation example transactional timeline">
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th colspan="3">Committed Values</th>
+                        <th colspan="4">Transactions<br /></th>
+                        <th>Comments</th>
+                    </tr>
+                    <tr>
+                        <th>&#160;</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>T1</th>
+                        <th>T2</th>
+                        <th>T3</th>
+                        <th>T3'</th>
+                        <th>&#160;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ItalicFont">t1</td>
+                        <td class="CodeFont">10</td>
+                        <td class="CodeFont">20</td>
+                        <td class="CodeFont">0</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>&#160;</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t2</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldBlueBG">T1 Start</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T1 starts. The starting values within its transactional context are:&#160;<span class="CodeFont">A=10, B=20, C=0</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t3</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldBlueBG">A=A+10<br />[A=20]</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T1 modifies the value of <span class="CodeFont">A</span> within its context.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t4</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldBlueBG">&#160;</td>
+                        <td class="BoldRedBG">T2 Start</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T2 starts. The starting values within its transactional context are&#160;the same as for T1:&#160;<span class="CodeFont">A=10, B=20, C=0</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t5</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldBlueBG">A=A+10<br />[A=30]</td>
+                        <td class="BoldRedBG">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T1 again modifies the value of <span class="CodeFont">A</span>&#160;within its context</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t6</td>
+                        <td class="CodeFont">30</td>
+                        <td class="CodeFont">20</td>
+                        <td class="CodeFont">0</td>
+                        <td class="BoldBlueBG">Commit</td>
+                        <td class="BoldRedBG">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T1 commits its modifications to the database.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t7</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldBlueBG">&#160;</td>
+                        <td class="BoldRedBG">&#160;</td>
+                        <td class="BoldGreenBG">T3 Start</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T3 starts. The starting values within its transactional context include the commits from T1:&#160;<span class="CodeFont">A=30, B=20, C=0</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t8</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldBlueBG">T1 End</td>
+                        <td class="BoldRedBG">&#160;</td>
+                        <td class="BoldGreenBG">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>&#160;</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t9</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldRedBG">B=B+10<br />[B=30]</td>
+                        <td class="BoldGreenBG">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T2 modifies the value of <span class="CodeFont">B</span> within its context.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t10</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldRedBG">C=A+10<br />[C=20]</td>
+                        <td class="BoldGreenBG">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T2 modifies the value of <span class="CodeFont">C</span>&#160;within its context; note that this computation correctly uses the value of <span class="CodeFont">A</span> (<span class="CodeFont">10</span>) that had been committed prior to the start of T2.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t11</td>
+                        <td class="CodeFont">30</td>
+                        <td class="CodeFont">30</td>
+                        <td class="CodeFont">20</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldRedBG">Commit</td>
+                        <td class="BoldGreenBG">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T2 commits its changes.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t12</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldRedBG">T2 End</td>
+                        <td class="BoldGreenBG">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>&#160;</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t13</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldGreenBG">B=B+10<br />[B=30]</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>T3 modifies <span class="CodeFont">B</span>; since its context includes the value of <span class="CodeFont">B</span>&#160;before T2 committed, it modifies the original value of B&#160;<span class="CodeFont">[B=20]</span> in its own context.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t14</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldGreenBG">Rollback</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>
+                            <p>T3 attempts to commit its changes, which causes a <span class="ItalicFont">write-write conflict</span>, since T2 already committed an update to value <span class="CodeFont">B</span> after T3 started. </p>
+                            <p>T3 rolls back and resets.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t15</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldGreenBG">T3 End </td>
+                        <td class="BoldFont">&#160;</td>
+                        <td>&#160;</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t16</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldDarkGreenBG">T3' Start</td>
+                        <td>T3 reset (T3')&#160;starts. The starting values within its transactional context include the commits from T1 and T2:&#160;<span class="CodeFont">A=30, B=30, C=20</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t17</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldDarkGreenBG">B=B+10<br />[B=40]</td>
+                        <td>T3 modifies the value of <span class="CodeFont">B</span>, which has been updated and committed by T2.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t18</td>
+                        <td class="CodeFont">40</td>
+                        <td class="CodeFont">40</td>
+                        <td class="CodeFont">20</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldDarkGreenBG">Commit</td>
+                        <td>T3 commits its changes.</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">t19</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="CodeFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldFont">&#160;</td>
+                        <td class="BoldDarkGreenBG">T3' End</td>
+                        <td>&#160;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2><a name="Using2"></a>Using Transactions</h2>
+            <p>This section describes using transactions in your database, in these subsections:</p>
+            <ul>
+                <li value="1"><a href="#Committi">Committing and&#160;Rolling Back Transaction Changes</a> introduces autocommit, commit, and rollback of transactions.</li>
+                <li value="2"><a href="#Simple">A&#160;Simple Transaction Example</a> presents an example of a transaction using the splice&gt;&#160;command line interface.</li>
+                <li value="3"><a href="#Using">Using Savepoints</a> describes how to use savepoints within transactions.</li>
+                <li value="4"><a href="#Rollbacks">Using Rollback versus Rollback to Savepoint</a> discusses the differences between rolling back a transaction, and rolling back to a savepoint.</li>
+            </ul>
+            <h3><a name="Committi"></a>Committing and&#160;Rolling Back Transaction Changes</h3>
+            <p>Within a transactional context, how the changes that you make are committed to the database depends on whether <span class="CodeFont">autocommit</span> is enabled or disabled:</p>
+            <table summary="Using autocommit">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th><span class="CodeBoldFont">autocommit</span> status</th>
+                        <th>How changes are committed and rolled back</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">enabled</td>
+                        <td>
+                            <p>Changes are automatically committed whenever the operation completes successfully.</p>
+                            <p>If an operation reports any error, the changes are automatically rolled back.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">disabled</td>
+                        <td>
+                            <p>Changes are only committed when you explicitly issue a <span class="CodeFont">commit</span> command.</p>
+                            <p>Changes are rolled back when you explicitly issue a <span class="CodeFont">rollback</span> command.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="noteIcon">Autocommit is enabled by default. You typically disable <span class="CodeFont">autocommit</span> when you want a block of operations to be committed atomically (all at once) instead of committing changes to the database after each operation.</div>
+            <p>You can turn <span class="CodeFont">autocommit</span> on and off by issuing the <span class="CodeFont">autocommit on</span> or <span class="CodeFont">autocommit off</span> commands at the <span class="CodeFont">splice&gt;</span>&#160;prompt. </p>
+            <p>For more information, see these topics in the <span class="ItalicFont"><a href="../../CmdLineReference/Intro.CmdLineReference.html">Command&#160;Line Reference</a></span> section of this book:</p>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="../../CmdLineReference/CmdAutocommit.html">autocommit</a></span> command</li>
+                <li value="2"><span class="CodeFont"><a href="../../CmdLineReference/CmdCommit.html">commit</a></span> command</li>
+                <li value="3"><span class="CodeFont"><a href="../../CmdLineReference/CmdRollback.html">rollback</a></span> command</li>
+            </ul>
+            <h3><a name="Simple"></a>A Simple Transaction Example</h3>
+            <p>Here is a simple example. Enter the following commands to see <span class="ItalicFont">commit</span> and <span class="ItalicFont">rollback</span> in action:</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; create table myTbl (i int);
+splice&gt; autocommit off;             &#160;&#160;&#160;&#160;&#160;- commits must be made explicitly
+splice&gt; insert into myTbl  values 1,2,3; - inserted but not visible to others
+splice&gt; commit;                   &#160;&#160;&#160;&#160;&#160;  - now committed to the database
+splice&gt; select * from myTbl;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;- verify table contents
+splice&gt; insert into myTbl  values 4,5;&#160;&#160;&#160;- insert more data<br />splice&gt; select * from myTbl;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;- verify table contents
+splice&gt; rollback;         &#160;&#160;&#160;&#160;&#160;          - roll back latest insertions
+splice&gt; select * from myTbl;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;- and verify again
+...	</pre>
+            </div>
+            <p>You can turn <span class="CodeFont">autocommit</span> back on by issuing the command: <span class="AppCommand">autocommit on;</span></p>
+            <h3><a name="Using"></a>Using Savepoints</h3>
+            <p>Splice Machine supports the JDBC 3.0 Savepoint API, which adds methods for setting, releasing, and rolling back to savepoints within a transaction. Savepoints give you additional control over transactions by allowing you to define logical rollback points within a transaction, which effectively allows you to specify sub-transactions (also known as nested transactions). </p>
+            <p>You can specify multiple savepoints within a transaction. Savepoints are very useful when processing large transactions:&#160;you can implement error recovery schemes that allow you to rollback part of a transaction without having to abort the entire transaction.</p>
+            <p>You can use these commands to work with Savepoints:</p>
+            <ul>
+                <li value="1">create a savepoint with the <span class="CodeFont">savepoint</span> command</li>
+                <li value="2">release a savepoint with the <span class="CodeFont">release savepoint</span> command</li>
+                <li value="3">roll a transaction back to an earlier savepoint with the <span class="CodeFont">rollback to savepoint</span> command</li>
+            </ul>
+            <h4>Example</h4>
+            <p>First we'll create a table, turn autocommit off, and insert some data into the table. We then create a savepoint, and verify the contents of our table:</p>
+            <div class="preWrapperWide"><pre class="AppCommand">splice&gt; CREATE TABLE myTbl(i int);
+0 rows inserted/updated/deleted
+splice&gt; AUTOCOMMIT OFF;
+splice&gt; INSERT INTO myTbl VALUES 1,2,3;
+3 rows inserted/updated/deleted
+splice&gt; SAVEPOINT savept1;
+0 rows inserted/updated/deleted
+splice&gt; SELECT * FROM myTbl;
+I          
+-----------
+1          
+2          
+3          
+
+3 rows selected</pre>
+            </div>
+            <p>Next we add new values to the table and again verify its contents:
+</p>
+            <div class="preWrapperWide"><pre class="AppCommand">splice&gt; INSERT INTO myTbl VALUES 4,5;
+2 rows inserted/updated/deleted
+splice&gt; SELECT * FROM myTbl;
+I          
+-----------
+1          
+2          
+3          
+4          
+5<br /><br />5 rows selected</pre>
+            </div>
+            <p>Now we roll back to our savepoint, and verify that the rollback worked:</p>
+            <div class="preWrapperWide"><pre class="AppCommand">splice&gt; ROLLBACK TO SAVEPOINT savept1;
+0 rows inserted/updated/deleted
+splice&gt; SELECT * FROM myTbl;
+I          
+-----------
+1          
+2          
+3          
+
+3 rows selected</pre>
+            </div>
+            <p>And finally, we commit the transaction:</p>
+            <div class="preWrapperWide"><pre class="AppCommand">COMMIT;</pre>
+            </div>
+            <h3><a name="Rollbacks"></a>Using Rollback Versus Rollback to Savepoint</h3>
+            <p>There's one important distinction you should be aware of between rolling back to a savepoint versus rolling back the entire transaction:</p>
+            <ul>
+                <li value="1">When you perform a <span class="CodeFont">rollback</span>, Splice Machine aborts the entire transaction and creates a new transaction, </li>
+                <li value="2">When you perform a <span class="CodeFont">rollback to savepoint</span>, Splice&#160;Machine rolls back part of the changes, but does not create a new transaction.</li>
+            </ul>
+            <div class="notePlain">
+                <p>Remember that this distinction also holds in a multi-tenant environment. In other words:</p>
+                <ul>
+                    <li value="1">If two users are making modifications to the same table in separate transactions, and one user does a <span class="CodeFont">rollback</span>, all changes made by that user prior to that rollback are no longer in the database.</li>
+                    <li value="2">Similarly, if two users are making modifications to the same table in separate transactions, and one user does a <span class="CodeFont">rollback to savepoint</span>, all changes made by that user since the savepoint was established are no longer in the database.</li>
+                </ul>
+            </div>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="../../CmdLineReference/CmdAutocommit.html">autocommit</a></span> command</li>
+                <li value="2"><span class="CodeFont"><a href="../../CmdLineReference/CmdCommit.html">commit</a></span> command</li>
+                <li value="3"><span class="CodeFont"><a href="../../CmdLineReference/CmdReleaseSavepoint.html">release savepoint</a></span> command</li>
+                <li value="4"><span class="CodeFont"><a href="../../CmdLineReference/CmdRollback.html">rollback</a></span> command</li>
+                <li value="5"><span class="CodeFont"><a href="../../CmdLineReference/CmdRollbackToSavepoint.html">rollback to savepoint</a></span> command</li>
+                <li value="6"><span class="CodeFont"><a href="../../CmdLineReference/CmdSavepoint.html">savepoint</a></span> command</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,3394 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Built-in system procedure that computes the split keys for a table or index, prior to using the BULK_IMPORT_HFILE procedure to import data from HFiles.">
+<meta name="keywords" content=" ">
+<title>SYSCS_UTIL.COMPUTE_SPLIT_KEY built-in system procedure | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the SYSCS_UTIL.COMPUTE_SPLIT_KEY built-in system procedure page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="SYSCS_UTIL.COMPUTE_SPLIT_KEY built-in system procedure">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Identifiers</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_identifiers_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_identifiers_types">Identifier Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_identifiers_syntax">Identifier Syntax</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Data Types</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_datatypes_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_bigint">BIGINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_blob">BLOB</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_boolean">BOOLEAN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_char">CHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_charforbitdata">CHAR FOR BIT DATA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_clob">CLOB</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_date">DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_decimal">DECIMAL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_double">DOUBLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_doubleprecision">DOUBLE PRECISION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_float">FLOAT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_integer">INTEGER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_longvarchar">LONG VARCHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_longvarcharforbitdata">LONG VARCHAR FOR BIT DATA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_numeric">NUMERIC</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_real">REAL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_smallint">SMALLINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_text">TEXT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_time">TIME</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_timestamp">TIMESTAMP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_varchar">VARCHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_varcharforbitdata">VARCHAR FOR BIT DATA</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Statements</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_statements_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_altertable">ALTER TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_callprocedure">CALL (Procedure)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_columndef">column-definition</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createexternaltable">CREATE EXTERNAL TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createfunction">CREATE FUNCTION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createindex">CREATE INDEX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createprocedure">CREATE PROCEDURE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createrole">CREATE ROLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createschema">CREATE SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createsequence">CREATE SEQUENCE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createsynonym">CREATE SYNONYM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createtable">CREATE TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createtemptable">CREATE TEMPORARY TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createtrigger">CREATE TRIGGER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createtype">CREATE TYPE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createview">CREATE VIEW</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_globaltemptable">DECLARE GLOBAL TEMPORARY TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_delete">DELETE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dependencies">Dependencies</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropfunction">DROP FUNCTION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropindex">DROP INDEX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropprocedure">DROP PROCEDURE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_droprole">DROP ROLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropschema">DROP SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropsequence">DROP SEQUENCE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropsynonym">DROP SYNONYM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_droptable">DROP TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_droptrigger">DROP TRIGGER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_droptype">DROP TYPE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropview">DROP VIEW</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_generatedcolspec">generated-column-spec</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_generationclause">generation-clause</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_grant">GRANT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_insert">INSERT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_pintable">PIN TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_renamecolumn">RENAME COLUMN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_renameindex">RENAME INDEX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_renametable">RENAME TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_revoke">REVOKE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_select">SELECT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_setisolation">SET ISOLATION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_setrole">SET ROLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_setschema">SET SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_truncatetable">TRUNCATE TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_unpintable">UNPIN TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_updatetable">UPDATE TABLE</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Clauses</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_clauses_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_constraint">CONSTRAINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_except">EXCEPT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_forupdate">FOR UPDATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_from">FROM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_groupby">GROUP BY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_having">HAVING</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_intersect">INTERSECT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_limitn">LIMIT n</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_orderby">ORDER BY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_over">OVER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_resultoffset">RESULT OFFSET and FETCH FIRST</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_topn">TOP n</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_union">UNION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_using">USING</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_where">WHERE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_wherecurrentof">WHERE CURRENT OF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_with">WITH</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Expressions</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_expressions_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_about">About Expressions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_boolean">Boolean Expressions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_case">CASE Expression</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_dynamicparams">Dynamic Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_precedence">Expression Precedence</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_nextvaluefor">NEXT VALUE FOR Expression</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_select">SELECT Expression</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_table">TABLE Expression</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_values">VALUES Expression</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Join Operations</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_joins_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_about">About Join Operations</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_crossjoin">CROSS JOIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_innerjoin">INNER JOIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_leftouterjoin">LEFT OUTER JOIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_naturaljoin">NATURAL JOIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_rightouterjoin">RIGHT OUTER JOIN</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Queries</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_queries_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_queries_query">Query</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_queries_scalarsubquery">Scalar Subquery</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_queries_tablesubquery">Table Subquery</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">SQL Built-in Functions</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_abs">ABS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_acos">ACOS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_addmonths">ADD_MONTHS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_asin">ASIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_atan">ATAN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_atan2">ATAN2</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_avg">AVG</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_bigint">BIGINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_cast">CAST</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_ceil">CEIL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_char">CHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_coalesce">COALESCE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_concat">Concatenation Operator</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_cos">COS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_cosh">COSH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_cot">COT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_count">COUNT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentschema">CURRENT SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentdate">CURRENT_DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentisolation">CURRENT_ISOLATION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentrole">CURRENT_ROLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currenttime">CURRENT_TIME</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currenttimestamp">CURRENT_TIMESTAMP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentuser">CURRENT_USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_date">DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_day">DAY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_degrees">DEGREES</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_denserank">DENSE_RANK</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_double">DOUBLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_exp">EXP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_extract">EXTRACT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_firstvalue">FIRST_VALUE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_floor">FLOOR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_hour">HOUR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_identityvallocal">IDENTITY_VAL_LOCAL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_initcap">INITCAP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_instr">INSTR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_integer">INTEGER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lag">LAG</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lastday">LAST_DAY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lastvalue">LAST_VALUE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lcase">LCASE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lead">LEAD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_length">LENGTH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_ln">LN (or LOG)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_locate">LOCATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_log10">LOG10</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_ltrim">LTRIM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_max">MAX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_min">MIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_minute">MINUTE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_mod">MOD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_month">MONTH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_monthname">MONTHNAME</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_monthbetween">MONTH_BETWEEN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_nextday">NEXT_DAY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_now">NOW</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_nullif">NULLIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_pi">PI</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_quarter">QUARTER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_radians">RADIANS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rand">RAND</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_random">RANDOM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rank">RANK</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_regexplike">REGEXP_LIKE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_replace">REPLACE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rowid">ROWID</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rownumber">ROW_NUMBER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rtrim">RTRIM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_second">SECOND</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sessionuser">SESSION_USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sign">SIGN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sin">SIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sinh">SINH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_smallint">SMALLINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sqrt">SQRT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_stddevpop">STDDEV_POP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_stddevsamp">STDDEV_SAMP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_substr">SUBSTR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sum">SUM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_tan">TAN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_tanh">TANH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_time">TIME</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_timestamp">TIMESTAMP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_timestampadd">TIMESTAMPADD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_timestampdiff">TIMESTAMPDIFF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_tochar">TO_CHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_todate">TO_DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_trim">TRIM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_truncate">TRUNCATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_truncdate">TRUNC_DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_ucase">UCASE or UPPER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_user">USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_varchar">VARCHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_week">WEEK</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_year">YEAR</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">System Procedures</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_sysprocs_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_backupdb">BACKUP_DATABASE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_importhfile">BULK_IMPORT_HFILE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_cancelbackup">CANCEL_BACKUP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_canceldailybackup">CANCEL_DAILY_BACKUP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_checktable">CHECK_TABLE Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_collectschemastats">COLLECT_SCHEMA_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_computesplitkey">COMPUTE_SPLIT_KEY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_createuser">CREATE_USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_deletebackup">DELETE_BACKUP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_deleteoldbackups">DELETE_OLD_BACKUPS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_disablecolumnstats">DISABLE_COLUMN_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_dropschemastats">DROP_SCHEMA_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_dropstats">DROP_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_dropuser">DROP_USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_dumptransactions">DUMP_TRANSACTIONS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_emptyglobalcache">EMPTY_GLOBAL_STATEMENT_CACHE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_emptycache">EMPTY_STATEMENT_CACHE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_enablecolumnstats">ENABLE_COLUMN_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_enableenterprise">ENABLE_ENTERPRISE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getactiveservers">GET_ACTIVE_SERVERS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getallprops">GET_ALL_PROPERTIES</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getcurrenttransaction">GET_CURRENT_TRANSACTION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getdbprop">GET_DATABASE_PROPERTY Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getloggers">GET_LOGGERS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getloggerlevel">GET_LOGGER_LEVEL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getregionserverstats">GET_REGIONS_SERVER_STATS_INFO</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getrequests">GET_REQUESTS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getruntimestats">GET_RUNTIME_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getschemainfo">GET_SCHEMA_INFO</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getstatstiming">GET_STATISTICS_TIMING</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_gettaskstatus">GET_TASK_STATUS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getversioninfo">GET_VERSION_INFO</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getwriteintakeinfo">GET_WRITE_INTAKE_INFO</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getxplainmode">GET_XPLAIN_MODE Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getxplainschema">GET_XPLAIN_SCHEMA Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_importdata">IMPORT_DATA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_installjar">INSTALL_JAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_invalidatestoredstmts">INVALIDATE_STORED_STATEMENTS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_killstaletransactions">KILL_STALE_TRANSACTIONS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_killtransaction">KILL_TRANSACTION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_modifypassword">MODIFY_PASSWORD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_peekatseq">PEEK_AT_SEQUENCE Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_compactschema">PERFORM_MAJOR_COMPACTION_ON_SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_compacttable">PERFORM_MAJOR_COMPACTION_ON_TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_refreshexttable">REFRESH_EXTERNAL_TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_removejar">REMOVE_JAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_replacejar">REPLACE_JAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_resetpassword">RESET_PASSWORD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_restoredb">RESTORE_DATABASE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_scheduledailybackup">SCHEDULE_DAILY_BACKUP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_setdbprop">SET_DATABASE_PROPERTY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_setloggerlevel">SET_LOGGER_LEVEL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_splittable">SPLIT_TABLE_OR_INDEX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_splittableatpoints">SPLIT_TABLE_OR_INDEX_AT_POINTS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_updateallsysprocs">UPDATE_ALL_SYSTEM_PROCEDURES</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_updatemetastmts">UPDATE_METADATA_STORED_STATEMENTS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_updateschemaowner">UPDATE_SCHEMA_OWNER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_updatesysproc">UPDATE_SYSTEM_PROCEDURE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_upsertdata">UPSERT_DATA_FROM_FILE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_vacuum">VACUUM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_vacuumtable">VACUUM_TABLE</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">System Tables</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_systables_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysaliases">SYSALIASES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysbackup">SYSBACKUP system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysbackupfileset">SYSBACKUPFILESET system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysbackupitems">SYSBACKUPITEMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysbackupjobs">SYSBACKUPJOBS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syschecks">SYSCHECKS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syscolperms">SYSCOLPERMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syscolumns">SYSCOLUMNS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syscolumnstats">SYSCOLUMNSTATISTICS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syscongloms">SYSCONGLOMERATES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysconstraints">SYSCONSTRAINTS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysdepends">SYSDEPENDS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysfiles">SYSFILES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysforeignkeys">SYSFOREIGNKEYS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syskeys">SYSKEYS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysperms">SYSPERMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysphysicalstats">SYSPHYSICALSTATS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysprimarykeys">SYSPRIMARYKEYS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysroles">SYSROLES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysroutineperms">SYSROUTINEPERMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysschemas">SYSSCHEMAS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syssequences">SYSSEQUENCES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysstatements">SYSSTATEMENTS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_systableperms">SYSTABLEPERMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_systables">SYSTABLES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_systablestats">SYSTABLESTATISTICS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_systriggers">SYSTRIGGERS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysusers">SYSUSERS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysviews">SYSVIEWS system table</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Error Codes</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_errcodes_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class01">Class 01 - Warning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class07">Class 07 - Dynamic SQL Error</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class08">Class 08 - Connection Exception</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class0a">Class 0A - Feature not supported</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class0p">Class 0P - Invalid role specification</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class21">Class 21 - Cardinality Violations</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class22">Class 22 - Data Exception</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class23">Class 23 - Constraint Violation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class24">Class 24 - Invalid Cursor State</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class25">Class 25 - Invalid Transaction State</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class28">Class 28 - Invalid Authorization Specification</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class2d">Class 2D - Invalid Transaction Termination</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class38">Class 38 - External Function Exception</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class39">Class 39 - External Routine Invocation Exception</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class3b">Class 3B - Invalid SAVEPOINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_40">Class 40 - Transaction Rollback</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_42">Class 42 - Syntax Error or Access Rule Violation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_57">Class 57 - DRDA Network Protocol Execution Failure</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_58">Class 58 - DRDA Network Protocol Protocol Error</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xbca">Class XBCA - CacheService</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xbcm">Class XBCM - ClassManager</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xbcx">Class XBCX - Cryptography</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xbm">Class XBM - Monitor</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcl">Class XCL - Execution exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcw">Class XCW - Upgrade unsupported</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcx">Class XCX - Internal Utility Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcy">Class XCY - Splice Property Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcz">Class XCZ - com.splicemachine.db.database.UserUtility</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xd00">Class XD00 - Dependency Manager</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xie">Class XIE - Import/Export Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xj">Class XJ - Connectivity Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xk">Class XK - Security Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xn">Class XN - Network Client Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xre">Class XRE - Replication Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsai">Class XSAI - Store access.protocol.interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsam">Class XSAM - Store AccessManager</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsas">Class XSAS - Store Sort</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsax">Class XSAX - Store access.protocol.XA statement</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xscb">Class XSCB - Store BTree</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xscg0">Class XSCG0 - Conglomerate</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsch">Class XSCH - Heap</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsda">Class XSDA - RawStore Data.Generic statement</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsdb">Class XSDB - RawStore Data.Generic transaction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsdf">Class XSDF - RawStore Data.Filesystem statement</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsdg">Class XSDG - RawStore Data.Filesystem database</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsla">Class XSLA - RawStore Log.Generic database exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xslb">Class XSLB - RawStore Log.Generic statement exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsrs">Class XSRS - RawStore protocol.Interface statement</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsta2">Class XSTA2 - XACT_TRANSACTION_ACTIVE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xstb">Class XSTB - RawStore Transactions.Basic system</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xxxxx">Class XXXXX - No SQLSTATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_x0">Class X0 - Execution exceptions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">SYSCS_UTIL.COMPUTE_SPLIT_KEY built-in system procedure</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Built-in system procedure that computes the split keys for a table or index, prior to using the BULK_IMPORT_HFILE procedure to import data from HFiles.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/SQLReference/BuiltInSysProcs/sqlref_sysprocs_computesplitkey.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor293"></a>SYSCS_UTIL.COMPUTE_SPLIT_KEY</h1>
+            <p>The <samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp> system procedure computes the split keys for a table or index, prior to importing that table in HFile format. </p>
+            <p>You must use this procedure in conjunction with two others:</p>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>
+                </li>
+                <li value="2"> <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span></li>
+            </ul>
+            <p>See the <span class="ItalicFont">Usage Notes</span> section for more information and the <span class="ItalicFont">Example</span> section to see an example of using these procedures together.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.COMPUTE_SPLIT_KEY (
+		<span class="ItalicFont">schemaName</span>,
+		<span class="ItalicFont">tableName</span>,
+		<span class="ItalicFont">indexName</span>,
+		<span class="ItalicFont">columnList</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">fileName</span>,
+		<span class="ItalicFont">columnDelimiter</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">characterDelimiter</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">timestampFormat</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">dateFormat</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">timeFormat</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">maxBadRecords</span>,
+		<span class="ItalicFont">badRecordDirectory</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">oneLineRecords</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">charset</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">outputDirectory</span>
+		);</pre>
+            </div>
+            <div class="noteNote">
+                <p>Almost all of the parameter values that you pass to this procedure should match the parameter values that you pass to the <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span> procedure. </p>
+                <p>Also note that these parameters are also used in exactly the same was as they are in the <span class="CodeFont"><a href="ImportData.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;and <span class="CodeFont"><a href="UpsertDataFromFile.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a></span>&#160;procedures.</p>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">The name of the schema of the table in which to compute the split key.</p>
+                <p class="paramName">tableName</p>
+                <p class="paramDefnFirst">The name of the table in which to compute the split key.</p>
+                <p class="paramName">indexName</p>
+                <p class="paramDefnFirst">The name of the index in which to compute the split key. If this is <span class="CodeFont">null</span>, the split key is computed for the named table.</p>
+                <p class="paramName">columnList</p>
+                <p class="paramDefnFirst">The names, in single quotes, of the columns that appear in the input CSV&#160;file (specified by fileName). If this is <span class="CodeFont">null</span>, all columns of the table appear in the input file.</p>
+                <p class="paramName">fileName</p>
+                <p class="paramDefnFirst">The name of the CSV&#160;file that contains the split key values for the table or index. <span class="CodeFont">NULL</span>&#160;values are allowed for a key column. Here's an example of three key values, each with a <span class="CodeFont">NULL</span>&#160;value in the second column:</p>
+                <div class="preWrapper"><pre class="Example">1500000|<br />3000000|<br />4500000|</pre>
+                </div>
+            </div>
+            <div class="paramList">
+                <p class="paramName">columnDelimiter</p>
+                <p class="paramDefnFirst">The character used to separate columns, Specify <span class="CodeFont">null</span> if using the comma (<span class="CodeFont">,</span>)&#160;character as your delimiter. </p>
+                <div>
+                    <p class="paramDefn">In addition to using single characters, you can specify the following special characters as delimiters:</p>
+                    <table summary="Special characters that can be used as character delimiters in imported files.">
+                        <col />
+                        <col />
+                        <thead>
+                            <tr>
+                                <th>Special character</th>
+                                <th>Display</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="CodeFont">\t</td>
+                                <td>Tab </td>
+                            </tr>
+                            <tr>
+                                <td class="CodeFont">\f</td>
+                                <td>Formfeed</td>
+                            </tr>
+                            <tr>
+                                <td class="CodeFont">\b</td>
+                                <td>Backspace</td>
+                            </tr>
+                            <tr>
+                                <td class="CodeFont">\\</td>
+                                <td>Backslash</td>
+                            </tr>
+                            <tr>
+                                <td class="CodeFont">^a (or ^A)</td>
+                                <td>
+                                    <p>Control-a</p>
+                                    <div class="noteIndent">If you are using a script file from the <span class="CodeFont">splice&gt;</span>&#160;command line, your script can contain the actual <span class="CodeFont">Control-a</span> character as the value of this parameter.</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="paramName">characterDelimiter</p>
+                <p class="paramDefnFirst">Specifies which character is used to delimit strings in the imported data. You can specify <span class="CodeFont">null</span> or the empty string to use the default string delimiter, which is the double-quote (<span class="CodeFont">"</span>).</p>
+                <div>
+                    <p class="paramDefn">In addition to using single characters, you can specify the following special characters as delimiters:</p>
+                    <table summary="Special characters that can be used as character delimiters in imported files.">
+                        <col />
+                        <col />
+                        <thead>
+                            <tr>
+                                <th>Special character</th>
+                                <th>Display</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="CodeFont">\t</td>
+                                <td>Tab </td>
+                            </tr>
+                            <tr>
+                                <td class="CodeFont">\f</td>
+                                <td>Formfeed</td>
+                            </tr>
+                            <tr>
+                                <td class="CodeFont">\b</td>
+                                <td>Backspace</td>
+                            </tr>
+                            <tr>
+                                <td class="CodeFont">\\</td>
+                                <td>Backslash</td>
+                            </tr>
+                            <tr>
+                                <td class="CodeFont">^a (or ^A)</td>
+                                <td>
+                                    <p>Control-a</p>
+                                    <div class="noteIndent">If you are using a script file from the <span class="CodeFont">splice&gt;</span>&#160;command line, your script can contain the actual <span class="CodeFont">Control-a</span> character as the value of this parameter.</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="paramDefnFirst">If your input contains control characters such as newline characters, make sure that those characters are embedded within delimited strings.</p>
+                <div class="noteNote">To use the single quote (<span class="CodeFont">'</span>) character as your string delimiter, you need to escape that character. This means that you specify four quotes (<span class="CodeFont">''''</span>)&#160;as the value of this parameter. This is standard SQL&#160;syntax.<br /><br />	The <a class="WithinBook MCXref xref xrefWithinBook" href="#Examples" xrefformat="{para}">Example 1</a> section below contains an example that uses the single quote as the string delimiter character.</div>
+                <p class="paramName">timestampFormat</p>
+                <p class="paramDefnFirst">
+			The format of timestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no time columns in the file, or if the format of any timestamps in the file match the <span class="CodeFont">Java.sql.Timestamp</span> default format, which is: "<span class="ItalicFont">yyyy-MM-dd HH:mm:ss</span>". See the <a class="WithinBook MCXref xref xrefWithinBook" href="#TimestampFormats" xrefformat="{para}">About Timestamp Formats</a> section below for more information about timestamps.</p>
+                <div class="noteNote">All of the timestamps in the file you are importing must use the same format.</div>
+                <p class="paramName">dateFormat</p>
+                <p class="paramDefnFirst">The format of datestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no date columns in the file, or if the format of any dates in the file match pattern: "<span class="ItalicFont">yyyy-MM-dd</span>".<br /></p>
+                <p class="paramName">timeFormat</p>
+                <p class="paramDefnFirst">The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "<span class="ItalicFont">HH:mm:ss</span>".</p>
+                <div>
+                    <p class="paramName">maxBadRecords</p>
+                    <p class="paramDefnFirst">The number of rejected (bad)&#160;records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back.
+			<ul><li value="1">If you specify <span class="CodeFont">-1</span> as the value of this parameter, all record import failures are tolerated and logged.</li><li value="2">If you specify <span class="CodeFont">0</span> as the value of this parameter, the import will fail if even one record is bad.</li></ul></p>
+                    <p class="paramName">badRecordDirectory</p>
+                    <p class="paramDefnFirst">The directory in which bad record information is logged. Splice Machine logs information to the <span class="CodeFont"><span class="CodeItalicFont">&lt;import_file_name&gt;</span>.bad</span> file in this directory; for example, bad records in an input file named <span class="CodeFont">foo.csv</span> would be logged to a file named <span class="ItalicFont">badRecordDirectory</span><span class="CodeFont">/foo.csv.bad</span>.</p>
+                    <p class="paramDefn">The default value is the directory in which the import files are found.</p>
+                    <p class="paramName">oneLineRecords</p>
+                    <p class="paramDefnFirst">A&#160;Boolean value that specifies whether each line in the import file contains one complete record:</p>
+                    <ul class="nested">
+                        <li value="1">If you specify <span class="CodeFont">true</span> or <span class="CodeFont">null</span>, then each record is expected to be found on a single line in the file.</li>
+                        <li value="2">If you specify <span class="CodeFont">false</span>, records can span multiple lines in the file.</li>
+                    </ul>
+                    <div class="noteNote">Multi-line record files are slower to load, because the file cannot be split and processed in parallel; if you import a directory of multiple line files, each file as a whole is processed in parallel, but no splitting takes place.</div>
+                    <p class="paramName">charset</p>
+                    <p class="paramDefnFirst">The character encoding of the import file. The default value is UTF-8. Currently, any other value is ignored and UTF-8 is used. 
+ </p>
+                    <p class="paramName">outputDirectory</p>
+                    <p class="paramDefnFirst">The directory into which the split keys are written:</p>
+                    <ul class="nested">
+                        <li class="nested" value="1">The keys are encoded in HBase escape string format. </li>
+                        <li class="nested" value="2">The keys are written to a file named <span class="CodeFont">keys</span> in a subdirectory of the specified <span class="CodeFont">outputDirectory</span>.</li>
+                        <li class="nested" value="3">The name of the subdirectory in which the keys are written is the conglomerate ID&#160;for the named table; the <span class="CodeFont"><a href="../../CmdLineReference/CmdShowTables.html">SHOW&#160;TABLES</a></span>&#160;command displays a table's conglomerate ID.&#160;</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="heading2">Results</p>
+            <p><samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp> generates a keys file, which you use in conjunction with the <span class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span> system procedure to establish splits for your table, prior to calling the <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;system procedure to import your data.</p>
+            <p class="heading2"><a name="TimestampFormats"></a>About Timestamp Formats</p>
+            <div>
+                <p>Splice Machine uses the following Java date and time pattern letters to construct timestamps:</p>
+                <table summary="Timestamp format pattern letter descriptions">
+                    <col />
+                    <col />
+                    <col style="width: 330px;" />
+                    <thead>
+                        <tr>
+                            <th>Pattern Letter</th>
+                            <th>Description</th>
+                            <th>Format(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="CodeFont">y</td>
+                            <td>year</td>
+                            <td class="CodeFont">yy or yyyy</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">M</td>
+                            <td>month</td>
+                            <td class="CodeFont">MM</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">d</td>
+                            <td>day in month</td>
+                            <td class="CodeFont">dd</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">h</td>
+                            <td>hour (0-12)</td>
+                            <td class="CodeFont">hh</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">H</td>
+                            <td>hour (0-23)</td>
+                            <td class="CodeFont">HH</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">m</td>
+                            <td>minute in hour</td>
+                            <td class="CodeFont">mm</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">s</td>
+                            <td>seconds</td>
+                            <td class="CodeFont">ss</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">S</td>
+                            <td>tenths of seconds</td>
+                            <td class="CodeFont">
+                                <p>S, SS, SSS, SSSS, SSSSS or SSSSSS<span class="important">*</span></p>
+                                <p><span class="important">*</span><span class="bodyFont">Specify </span>SSSSSS <span class="bodyFont">to allow a variable number (any number)&#160;of digits after the decimal point.</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">z</td>
+                            <td>time zone text</td>
+                            <td class="CodeFont">e.g. Pacific Standard time</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">Z</td>
+                            <td>time zone, time offset</td>
+                            <td class="CodeFont">e.g. -0800</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>The default timestamp format for Splice Machine imports is: <span class="CodeFont">yyyy-MM-dd HH:mm:ss</span>, which uses a 24-hour clock, does not allow for decimal digits of seconds, and does not allow for time zone specification. </p>
+                <p class="noteNote">The standard Java library does not support microsecond precision, so you <span class="BoldFont">cannot</span> specify millisecond (<span class="CodeFont">S</span>) values in a custom timestamp format and import such values with the desired precision. </p>
+                <h3>Timestamps and Importing Data at Different Locations</h3>
+                <p>Note that timestamp values are relative to the geographic location at which they are imported, or more specifically, relative to the timezone setting and daylight saving time status where the data is imported.</p>
+                <p>This means that timestamp values from the same data file may appear differently after being imported in different timezones.</p>
+                <h3>Examples</h3>
+                <p>The following tables shows valid examples of timestamps and their corresponding format (parsing)&#160;patterns:</p>
+                <table>
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Timestamp value</th>
+                            <th>Format Pattern</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="CodeFont">2013-03-23 09:45:00</td>
+                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss</td>
+                            <td>This is the default pattern.</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">2013-03-23 19:45:00.98-05</td>
+                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSZ</td>
+                            <td>This pattern allows up to 2 decimal digits of seconds, and requires a time zone specification.</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">2013-03-23 09:45:00-07</td>
+                            <td class="CodeFont">yyyy-MM-dd HH:mm:ssZ</td>
+                            <td>This patterns requires a time zone specification, but does not allow for decimal digits of seconds.</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">2013-03-23 19:45:00.98-0530</td>
+                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSZ</td>
+                            <td>This pattern allows up to 2 decimal digits of seconds, and requires a time zone specification.</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">
+                                <p>2013-03-23 19:45:00.123</p>
+                                <p>2013-03-23 19:45:00.12</p>
+                            </td>
+                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSS</td>
+                            <td>
+                                <p>This pattern allows up to 3 decimal digits of seconds, but does not allow a time zone specification.</p>
+                                <p>Note that if your data specifies more than 3 decimal digits of seconds, an error occurs.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">2013-03-23 19:45:00.1298</td>
+                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSSS</td>
+                            <td>This pattern allows up to 4 decimal digits of seconds, but does not allow a time zone specification.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Please see <span class="ItalicFont"><a href="../../Developers/Fundamentals/WorkingWithDates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
+            <p class="heading2"><a name="Usage"></a>Usage Notes</p>
+            <p class="body">As mentioned earlier, you need to use these three Splice&#160;Machine system procedures together:</p>
+            <ul>
+                <li value="1"><samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp> generates a keys file</li>
+                <li value="2"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span> sets up the splits in Splice&#160;Machine</li>
+                <li value="3"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>&#160;splits your input file into HFiles, imports your data, and then removes the HFiles</li>
+            </ul>
+            <p>Alternatively, you can use  <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> with <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>. The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
+            <p>The process is as follows (and is shown in more detail in <span class="ItalicFont">Example 1</span> and <span class="ItalicFont">Example 2</span> below):</p>
+            <div class="opsStepsList">
+                <ol>
+                    <li value="1">
+                        <p>Determine primary key values that can horizontally split the table into roughly equal sized partitions. </p>
+                        <div class="noteNote">
+                            <p>Note the value of your <span class="CodeFont">hbase.hregion.max.filesize</span> setting; each partition should ideally be about 1/2 of that value, so that the region can grow after data is loaded. </p>
+                            <p>The sizes must be less than the <span class="CodeFont">hbase.hregion.max.filesize value</span>.</p>
+                        </div>
+                    </li>
+                    <li value="2">Store those keys in a CSV&#160;file.</li>
+                    <li value="3"> If you're using the combination of <span class="CodeFont"><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span> and <span class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>:<ol class="LowerAlphaPlainFont"><li value="1">Pass that CSV&#160;file into the <span class="CodeFont"><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure to compute the split row keys.</li><li value="2"><p>Examine the computed (and encoded)&#160;row keys, which were written to a file named keys in a subdirectory of your <span class="CodeFont">OutputDirectory</span>. </p><p>The name of the subdirectory is the conglomerate ID&#160;for the named table. You can find a table's conglomerate ID&#160;with the <span class="CodeFont"><a href="../../CmdLineReference/CmdShowTables.html">SHOW&#160;TABLES</a></span>&#160;command.&#160;</p></li><li value="3">Copy the encoded keys to your clipboard.</li><li value="4">Call the <span class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>&#160;procedure, passing in the row key values from your clipboard. This splits your table inside the database.</li></ol><p>If you are using  the single procedure <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> instead:</p><ol class="LowerAlphaPlainFont"><li value="1">Pass that CSV&#160;file into the <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
+                    <li value="4">Repeat steps 1, 2, and 3 to split the indexes on your table.</li>
+                    <li value="5">Call the <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
+                </ol>
+            </div>
+            <p class="heading2"><a name="Examples"></a>Example 1</p>
+            <p>The example in this section details the steps used to import data in HFile format using the Splice Machine <samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp>,  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
+            <p>Follow these steps :</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Create table and index:</p>
+                        <div class="preWrapperWide"><pre class="Example">CREATE TABLE LINEITEM (
+		 L_ORDERKEY BIGINT NOT NULL,
+		 L_PARTKEY INTEGER NOT NULL,
+		 L_SUPPKEY INTEGER NOT NULL, 
+		 L_LINENUMBER INTEGER NOT NULL, 
+		 L_QUANTITY DECIMAL(15,2),
+		 L_EXTENDEDPRICE DECIMAL(15,2),
+		 L_DISCOUNT DECIMAL(15,2),
+		 L_TAX DECIMAL(15,2),
+		 L_RETURNFLAG VARCHAR(1), 
+		 L_LINESTATUS VARCHAR(1),
+		 L_SHIPDATE DATE,
+		 L_COMMITDATE DATE,
+		 L_RECEIPTDATE DATE,
+		 L_SHIPINSTRUCT VARCHAR(25),
+		 L_SHIPMODE VARCHAR(10),
+		 L_COMMENT VARCHAR(44),
+		 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+		 );
+
+CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on LINEITEM(
+		 L_SHIPDATE,
+		 L_PARTKEY,
+		 L_EXTENDEDPRICE,
+		 L_DISCOUNT
+		 );</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Compute the split row keys for the table:</p>
+                        <ol class="LowerAlphaPlainFont">
+                            <li value="1">
+                                <p>Find primary key values that can horizontally split the table into roughly equal sized partitions.</p>
+                                <p>For this example, we provide 3 keys in a file named <span class="CodeFont">lineitemKey.csv</span>. Note that each of our three keys includes a second column that is <span class="CodeFont">null</span>:</p>
+                                <div class="preWrapperWide"><pre class="Example">1500000|<br />3000000|<br />4500000|</pre>
+                                </div>
+                            </li>
+                            <li value="2">
+                                <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the primary key columns are:</p>
+                                <div class="preWrapperWide"><pre class="Example">'L_ORDERKEY,L_LINENUMBER'</pre>
+                                </div>
+                            </li>
+                            <li value="3">
+                                <p>Invoke <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> to compute hbase split row keys and write them to a file:</p><pre class="Example">call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', '/Users/myName/test/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null, '/Users/myName/test/');</pre>
+                            </li>
+                        </ol>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Set up the table splits in your database:</p>
+                        <ol class="LowerAlphaPlainFont">
+                            <li value="1">
+                                <p>Use <span class="CodeFont">SHOW&#160;TABLES</span>&#160;to discover the conglomerate ID&#160;for the <span class="CodeFont">TPCH.LINEITEM</span>&#160;table, which for this example is <span class="CodeFont">1536</span>. This means that the split keys file for this table is in the <span class="CodeFont">Users/myData/test/1536</span> directory. You'll see values like these:</p>
+                                <div class="preWrapperWide"><pre class="Example">\xE4\x16\xE3`<br />\xE4-\xC6\xC0<br />\xE4D\xAA</pre>
+                                </div>
+                            </li>
+                            <li value="2">
+                                <p>Now use those values in a call to our system procedure to split the table inside the database:</p>
+                                <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS('TPCH','LINEITEM',null,'\xE4\x16\xE3`,\xE4-\xC6\xC0,\xE4D\xAA');</pre>
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Compute the split keys for your index:</p>
+                        <ol class="LowerAlphaPlainFont">
+                            <li value="1">Find index values that can horizontally split the table into roughly equal sized partitions.</li>
+                            <li value="2">
+                                <p>For this example, we provide 2 index values in a file named <span class="CodeFont">shipDateIndex.csv</span>. Note that each of our keys includes <span class="CodeFont">null</span> column values:</p>
+                                <div class="preWrapperWide"><pre class="Example">1994-01-01|||
+1996-01-01|||</pre>
+                                </div>
+                            </li>
+                            <li value="3">
+                                <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the index columns are:</p>
+                                <div class="preWrapperWide"><pre class="Example">'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT'</pre>
+                                </div>
+                            </li>
+                            <li value="4">
+                                <p>Invoke <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> to compute hbase split row keys and write them to a file:</p><pre class="Example">call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', '/Users/myName/test/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null, '/Users/myName/test/');
+</pre>
+                            </li>
+                        </ol>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Set up the indexes in your database:</p>
+                        <ol class="LowerAlphaPlainFont">
+                            <li value="1">
+                                <p>Copy the row key values from the output file:</p>
+                                <div class="preWrapperWide"><pre class="Example">\xEC\xB0Y9\xBC\x00\x00\x00\x00\x00\x80
+\xEC\xBF\x08\x9C\x14\x00\x00\x00\x00\x00\x80</pre>
+                                </div>
+                            </li>
+                            <li value="2">
+                                <p>Now call our system procedure to split the index:</p>
+                                <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS('TPCH','LINEITEM','L_SHIPDATE_IDX','\xEC\xB0Y9\xBC\x00\x00\x00\x00\x00\x80,\xEC\xBF\x08\x9C\x14\x00\x00\x00\x00\x00\x80');
+</pre>
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+                    <li value="6">
+                        <p class="topLevel">Import the HFiles Into Your Database</p>
+                        <p class="indentLevel1">Once you have split your table and indexes, call this procedure to generate and import the HFiles into your Splice Machine database:</p>
+                        <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, '/Users/myName/test/', false);</pre>
+                        </div>
+                        <p class="indentLevel1">The generated HFiles are automatically deleted after being imported.</p>
+                    </li>
+                </ol>
+            </div>
+            <p class="heading2">Example 2</p>
+            <p>The example in this section details the steps used to import data in HFile format using the Splice Machine  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
+            <p>Follow these steps :</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Create table and index:</p>
+                        <div class="preWrapperWide"><pre class="Example">CREATE TABLE LINEITEM (
+		 L_ORDERKEY BIGINT NOT NULL,
+		 L_PARTKEY INTEGER NOT NULL,
+		 L_SUPPKEY INTEGER NOT NULL, 
+		 L_LINENUMBER INTEGER NOT NULL, 
+		 L_QUANTITY DECIMAL(15,2),
+		 L_EXTENDEDPRICE DECIMAL(15,2),
+		 L_DISCOUNT DECIMAL(15,2),
+		 L_TAX DECIMAL(15,2),
+		 L_RETURNFLAG VARCHAR(1), 
+		 L_LINESTATUS VARCHAR(1),
+		 L_SHIPDATE DATE,
+		 L_COMMITDATE DATE,
+		 L_RECEIPTDATE DATE,
+		 L_SHIPINSTRUCT VARCHAR(25),
+		 L_SHIPMODE VARCHAR(10),
+		 L_COMMENT VARCHAR(44),
+		 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+		 );
+
+CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on LINEITEM(
+		 L_SHIPDATE,
+		 L_PARTKEY,
+		 L_EXTENDEDPRICE,
+		 L_DISCOUNT
+		 );</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Compute the split row keys for your table and set up the split in your database:</p>
+                        <ol class="LowerAlphaPlainFont">
+                            <li value="1">
+                                <p>Find primary key values that can horizontally split the table into roughly equal sized partitions.</p>
+                                <p>For this example, we provide 3 keys in a file named <span class="CodeFont">lineitemKey.csv</span>. Note that each of our three keys includes a second column that is <span class="CodeFont">null</span>:</p>
+                                <div class="preWrapperWide"><pre class="Example">1500000|<br />3000000|<br />4500000|</pre>
+                                </div>
+                            </li>
+                            <li value="2">
+                                <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the primary key columns are:</p>
+                                <div class="preWrapperWide"><pre class="Example">'L_ORDERKEY,L_LINENUMBER'</pre>
+                                </div>
+                            </li>
+                            <li value="3">
+                                <p>Invoke <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> to compute hbase split row keys and set up the splits</p><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', '/Users/myName/test/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null);</pre>
+                            </li>
+                        </ol>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Compute the split keys for your index:</p>
+                        <ol class="LowerAlphaPlainFont">
+                            <li value="1">Find index values that can horizontally split the table into roughly equal sized partitions.</li>
+                            <li value="2">
+                                <p>For this example, we provide 2 index values in a file named <span class="CodeFont">shipDateIndex.csv</span>. Note that each of our keys includes <span class="CodeFont">null</span> column values:</p>
+                                <div class="preWrapperWide"><pre class="Example">1994-01-01|||
+1996-01-01|||</pre>
+                                </div>
+                            </li>
+                            <li value="3">
+                                <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the index columns are:</p>
+                                <div class="preWrapperWide"><pre class="Example">'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT'</pre>
+                                </div>
+                            </li>
+                            <li value="4">
+                                <p>Invoke <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> to compute hbase split row keys and set up the index splits</p><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', '/Users/myName/test/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null);
+</pre>
+                            </li>
+                        </ol>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Import the HFiles Into Your Database</p>
+                        <p class="indentLevel1">Once you have split your table and indexes, call this procedure to generate and import the HFiles into your Splice Machine database:</p>
+                        <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, '/Users/myName/test/', false);</pre>
+                        </div>
+                        <p class="indentLevel1">The generated HFiles are automatically deleted after being imported.</p>
+                    </li>
+                </ol>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="BulkImportHFile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
+                </li>
+                <li value="2"><a href="SplitTable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span></a>
+                </li>
+                <li value="3"><a href="SplitTableAtPoints.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span></a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

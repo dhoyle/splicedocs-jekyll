@@ -1,0 +1,49 @@
+---
+title: SYSCS_UTIL.DROP_SCHEMA_STATISTICS built-in system procedure
+description: Built-in system procedure that drops statistics for a schema.
+summary: Built-in system procedure that drops statistics for a schema.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_dropschemastats
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor328"></a>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</h1>
+            <p>The <span class="CodeFont">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</span>&#160;&#160;system procedure drops statistics for a specific schema in your database. </p>
+            <p>This procedure drops statistics for every table in the schema. It also drops statistics for the index associated with every table in the schema. For example, if you have :</p>
+            <ul>
+                <li value="1">a schema named <span class="CodeFont">mySchema</span></li>
+                <li value="2"><span class="CodeFont">mySchema</span> contains two tables:&#160;<span class="CodeFont">myTable1</span> and <span class="CodeFont">myTable2</span></li>
+                <li value="3"><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
+            </ul>
+            <p>Then <span class="CodeFont">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</span> will drop statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.DROP_SCHEMA_STATISTICS( VARCHAR(128)&#160;schema );</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">Specifies the schema for which you want to drop statistics. Passing a <span class="CodeFont">null</span> or non-existent schema name generates an error.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not produce a result.</p>
+            <p class="heading2">SQL Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CALL SYSCS_UTIL.DROP_SCHEMA_STATISTICS('MYSCHEMA');
+Statement executed.</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/DataTypeCompatability.html">Data Assignments and Comparisons</a>
+                </li>
+                <li value="2"><a href="EnableColumnStats.html"><span class="CodeFont">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</span></a>
+                </li>
+                <li value="3"><a href="DisableColumnStats.html"><span class="CodeFont">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</span></a>
+                </li>
+                <li value="4"><a href="CollectSchemaStats.html"><span class="CodeFont">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</span></a>
+                </li>
+                <li value="5"><a href="../../Developers/TuningAndDebugging/UsingStatistics.html">Using Statistics</a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

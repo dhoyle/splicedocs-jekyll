@@ -1,0 +1,75 @@
+---
+title: GROUP BY clause
+description: A clause that is part of a Select Expression that groups a result into subsets that have matching values for one or more columns.
+summary: A clause that is part of a Select Expression that groups a result into subsets that have matching values for one or more columns.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_clauses_groupby
+folder: SQLReference/Clauses
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Clauses.GroupBy" id="Clauses.GroupBy"></a><a name="kanchor62"></a>GROUP BY</h1>
+            <p>A <span class="CodeFont">GROUP BY</span> clause is part of a <span class="ItalicFont"><a href="../Expressions/Select.html">SelectExpression</a>,</span> that groups a result into subsets that have matching values for one or more columns. In each group, no two rows have the same value for the grouping column or columns. NULLs are considered equivalent for grouping purposes.</p>
+            <p>You typically use a <span class="CodeFont">GROUP BY</span> clause in conjunction with an aggregate expression.</p>
+            <p>Using the <span class="CodeFont">ROLLUP</span> syntax, you can specify that multiple levels of grouping  should be computed at once.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">
+GROUP BY 
+  {
+  <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-Name</a></span> [ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-Name</a></span> ]*  |
+  ROLLUP ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-Name</a></span> 
+	   [ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-Name</a></span> ]* )
+  }</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">column-Name</p>
+                <p class="paramDefnFirst">Must name a column from
+			the current scope of the query; there can be no columns from a query block
+			outside the current scope. For example, if a <span class="CodeFont">GROUP BY</span> clause is in a subquery,
+		it cannot refer to columns in the outer query.</p>
+            </div>
+            <p class="heading2">Usage Notes</p>
+            <p><span class="ItalicFont">SelectItems</span> in
+			the <span class="ItalicFont"><a href="../Expressions/Select.html">SelectExpression</a></span> with
+		a <span class="CodeFont">GROUP BY</span> clause must contain only aggregates or grouping columns.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+   -- find the average flying_times of flights grouped by airport
+SELECT AVG (flying_time), orig_airport
+  FROM Flights
+  GROUP BY orig_airport;
+
+
+SELECT MAX(city_name), region
+  FROM Cities, Countries
+  WHERE Cities.country_ISO_code = Countries.country_ISO_code
+  GROUP BY region;
+
+   -- group by an a smallint
+SELECT ID, AVG(SALARY)
+  FROM SAMP.STAFF
+  GROUP BY ID;
+
+   -- Get the AVGSALARY and EMPCOUNT columns, and the DEPTNO column using the AS clause
+   -- And group by the WORKDEPT column using the correlation name OTHERS
+SELECT OTHERS.WORKDEPT AS DEPTNO,
+     AVG(OTHERS.SALARY) AS AVGSALARY,
+     COUNT(*) AS EMPCOUNT
+  FROM SAMP.EMPLOYEE OTHERS
+  GROUP BY OTHERS.WORKDEPT;
+
+   -- Compute sub-totals of Sales_History data, grouping it by Region, by
+   -- (Region, State), and by (Region, State, Product), as well as computing
+   -- an overall total of the sales for all Regions, States, and Products:
+SELECT Region, State, Product, SUM(Sales) Total_Sales
+  FROM Sales_History 
+  GROUP BY ROLLUP(Region, State, Product);</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Expressions/Select.html"><span class="CodeFont">SELECT</span></a> expression</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

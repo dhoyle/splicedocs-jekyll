@@ -1,0 +1,49 @@
+---
+title: SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS built-in system procedure
+description: Built-in system procedure that deletes all backups that were created more than a certain number of days ago.&#xD;
+summary: Built-in system procedure that deletes all backups that were created more than a certain number of days ago.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_deleteoldbackups
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor409"></a>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</samp> system procedure
+deletes any backups that are older than a specified number of days (the <span class="ItalicFont">backup window</span>), retaining only those backups that fit into that window. </p>
+            <p>Backups can consume a lot of disk space, and thus, we recommend regularly scheduling both the creation of new backups and deletion of  outdated backups.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( INT&#160;<span class="ItalicFont">backupWindow</span> ); </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">backupWindow</p>
+                <p class="paramDefnFirst">Specifies the number of days of backups that you want retained. Any backups created more than <span class="CodeFont">backupWindow</span> days ago are deleted.</p>
+                <p class="paramDefn"> See the <a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Execute Privileges</p>
+            <p>If authentication and SQL authorization are both enabled, only the database owner has
+execute privileges on this function by default. The
+database owner can grant access to other users.</p>
+            <p class="heading2">SQL Example</p>
+            <p>The following example deletes all database backups that were created more than 30 days ago.</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS(30);
+Statement executed.</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+                <li value="2"><a href="BackupDatabase.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>
+                <li value="3"><a href="CancelDailyBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li value="4"><a href="DeleteBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a> built-in system procedure</li>
+                <li value="5"><a href="RestoreDatabase.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
+                <li value="6"><a href="ScheduleDailyBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li value="7"><span class="CodeFont"><a href="../SystemTables/SysBackup.html">SYSBACKUP</a></span> system table</li>
+                <li value="8"><span class="CodeFont"><a href="../SystemTables/SysBackupItems.html">SYSBACKUPITEMS</a></span> system table</li>
+                <li value="9"><span class="CodeFont"><a href="../SystemTables/SysBackupJobs.html">SYSBACKUPJOBS</a></span> system table</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

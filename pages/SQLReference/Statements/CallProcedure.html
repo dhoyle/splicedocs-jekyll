@@ -1,0 +1,42 @@
+---
+title: Call (Procedure) statement
+description: Calls a stored procedure.
+summary: Calls a stored procedure.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_callprocedure
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CallProcedure" id="Statements.CallProcedure"></a><a name="kanchor317"></a>CALL (Procedure)</h1>
+            <p>The <span class="CodeFont">CALL (PROCEDURE)</span> statement is used to call stored procedures. </p>
+            <p>When you call a stored procedure, the default schema and role are the same as were in effect when the procedure was created.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">
+CALL <span class="ItalicFont">procedure-Name</span> (
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[ <var>expression</var> [, <var>expression</var>]* ] 
+)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">procedure-Name</p>
+                <p class="paramDefnFirst">The name of the procedure that you are calling.</p>
+                <p class="paramName">expression(s)</p>
+                <p class="paramDefnFirst">Arguments passed to the procedure.</p>
+            </div>
+            <p class="heading2">Example</p>
+            <p>The following example depends on a fictionalized java class. For functional examples of using <span class="CodeFont">CREATE&#160;PROCEDURE</span>, please see the <a href="../../Developers/FcnsAndProcs/Intro.FcnsAndProcs.html">Using Functions and Stored Procedures</a> section in our <span class="ItalicFont">Developer's Guide</span>.</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE PROCEDURE SALES.TOTAL_REVENUE(IN S_MONTH INTEGER,
+    IN S_YEAR INTEGER, OUT TOTAL DECIMAL(10,2))
+    PARAMETER STYLE JAVA
+      READS SQL DATA LANGUAGE JAVA EXTERNAL NAME 
+       'com.example.sales.calculateRevenueByMonth';
+splice&gt;&#160;CALL SALES.TOTAL_REVENUE(?,?,?);</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CreateProcedure.html"><span class="CodeFont">CREATE&#160;PROCEDURE</span></a>&#160;statement</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

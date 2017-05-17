@@ -1,0 +1,83 @@
+---
+title: Splice Machine Error Codes - Class 40&#58; Transaction Rollback
+description: Summary of Splice Machine Class 40 Errors
+summary: Summary of Splice Machine Class 40 Errors
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_errcodes_class40
+folder: SQLReference/ErrorCodes
+---
+	<section>
+		<div class="TopicContent">
+            <h1>Error Class 40: Transaction Rollback</h1>
+            <table>
+                <caption><a name="kanchor291"></a>Error Class 40: Transaction Rollback</caption>
+                <thead>
+                    <tr>
+                        <th>SQLSTATE</th>
+                        <th>Message Text</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">40001</td>
+                        <td>A lock could not be obtained due to a deadlock, cycle of locks and waiters is:
+					<span class="VarName">&lt;lockCycle&gt;</span>. The selected victim is XID : <span class="VarName">&lt;transactionID&gt;</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XC0</td>
+                        <td>Dead statement. This may be caused by catching a transaction severity error inside this statement.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XD0</td>
+                        <td>Container has been closed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XD1</td>
+                        <td>Container was opened in read-only mode.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XD2</td>
+                        <td>Container <span class="VarName">&lt;containerName&gt;</span> cannot be opened; it either has been dropped or does not exist.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XL1</td>
+                        <td>A lock could not be obtained within the time requested</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XL1.T.1</td>
+                        <td>A lock could not be obtained within the time requested.  The lockTable dump is: <span class="VarName">&lt;tableDump&gt;</span></td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XT0</td>
+                        <td>An internal error was identified by RawStore module.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XT1</td>
+                        <td>An exception was thrown during transaction commit.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XT2</td>
+                        <td>An exception was thrown during rollback of a SAVEPOINT.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XT4</td>
+                        <td>An attempt was made to close a transaction that was still active. The transaction has been aborted.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XT5</td>
+                        <td>Exception thrown during an internal transaction.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XT6</td>
+                        <td>Database is in quiescent state, cannot activate transaction.  Please wait for a moment till it exits the quiescent state.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">40XT7</td>
+                        <td>Operation is not supported in an internal transaction.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

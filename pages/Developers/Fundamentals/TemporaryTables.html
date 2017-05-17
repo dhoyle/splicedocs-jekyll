@@ -1,0 +1,108 @@
+---
+title: Using Temporary Tables
+description: Describes how to use temporary tables with Splice Machine.
+summary: Describes how to use temporary tables with Splice Machine.
+keywords: 
+sidebar: developers_sidebar
+permalink: developers_fundamentals_temptables
+folder: Developers/Fundamentals
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor338"></a>Using Temporary Database Tables</h1>
+            <p>This topic describes how to use temporary tables with Splice Machine. </p>
+            <h2>About Temporary Tables</h2>
+            <p>You can use temporary tables when you want to temporarily save a result set for further processing. One common case for doing so is when you've constructed a result set by running multiple queries. You can also use temporary tables when performing complex queries that require extensive operations such as repeated multiple joins or sub-queries. Storing intermediate results in a temporary table can reduce overall processing time.</p>
+            <p>An example of using a temporary table to store intermediate results is a web-based application for travel reservations that allows customers to create several alternative itineraries, compare them, and then select one for purchase. Such an app could store each itinerary in a row in a temporary table, using table updates whenever the itinerary changes. When the customer decides upon a final itinerary, that temporary row is copied into a persistent table. And when the customer session ends, the temporary table is automatically dropped.</p>
+            <div class="noteNote">Creating and operating with temporary tables does consume resources, and can affect performance of your queries.</div>
+            <h2>Creating Temporary Tables</h2>
+            <p>Splice Machine provides two statements you can use to create a temporary table; we provide multiple ways to create temporary tables to maintain compatibility with third party Business Intelligence tools. </p>
+            <div class="noteRestriction">Splice Machine does not currently support creating temporary tables stored as external tables.</div>
+            <p>Each of these statements creates the same kind of temporary table, using different syntax</p>
+            <table summary="Statements for creating temporary tables">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Statement</th>
+                        <th>Syntax</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="CodeFont"><a href="../../SQLReference/Statements/CreateTempTable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span>
+                        </td>
+                        <td>
+                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <span class="ItalicFont"><a href="../../SQLReference/Identifiers/IdentifierTypes.html#TableName">table-Name</a></span> {
+      ( {<span class="ItalicFont">column-definition</span> | <span class="ItalicFont">Table-level constraint</span>}
+         [ , {<span class="ItalicFont">column-definition</span>} ] * )
+      ( <span class="ItalicFont">column-name</span> [ , <span class="ItalicFont">column-name</span> ] * ) 
+  }
+  [NOLOGGING | ON COMMIT PRESERVE ROWS];</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="CodeFont"><a href="../../SQLReference/Statements/DeclareGlobalTempTable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span>
+                        </td>
+                        <td>
+                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">DECLARE GLOBAL TEMPORARY TABLE <span class="ItalicFont"><a href="../../SQLReference/Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>
+   { <span class="ItalicFont">column-definition</span>[ , <span class="ItalicFont">column-definition</span>] * }  
+    [ON COMMIT PRESERVE ROWS ]
+    [NOT LOGGED];
+</pre>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="noteNote">Splice Machine generates a warning if you attempt to specify any other modifiers other than the <span class="CodeFont">NOLOGGING</span>,&#160;<span class="CodeFont">NOT&#160;LOGGED</span>, and <span class="CodeFont">ON&#160;COMMIT&#160;PRESERVE&#160;ROWS</span>&#160;modifiers shown above. </div>
+            <h2>Restrictions on Temporary Tables</h2>
+            <p>You can use temporary tables just like you do permanently defined database tables, with several important exceptions and restrictions that are noted in this section, including these:</p>
+            <ul>
+                <li value="1"><a href="#Operatio">Operational Limitations</a>
+                </li>
+                <li value="2"><a href="#Table">Table Persistence</a>
+                </li>
+            </ul>
+            <h3><a name="Operatio"></a>Operational Limitations</h3>
+            <p>Temporary tables have the following operational limitations; they:</p>
+            <ul>
+                <li value="1">exist only while a user session is alive</li>
+                <li value="2">are visible in system tables, but are otherwise not visible to other sessions or transactions</li>
+                <li value="3">cannot be altered using the <span class="CodeFont"><a href="../../SQLReference/Statements/AlterTable.html">ALTER&#160;TABLE</a></span>, <span class="CodeFont"><a href="../../SQLReference/Statements/RenameTable.html">RENAME&#160;TABLE</a></span>, or <span class="CodeFont"><a href="../../SQLReference/Statements/RenameColumn.html">RENAME&#160;COLUMN</a></span>&#160;statements</li>
+                <li value="4">do not get backed up</li>
+                <li value="5">cannot be used as data providers to views</li>
+                <li value="6">cannot be referenced by foreign keys in other tables</li>
+                <li value="7">are not displayed by the <a href="../../CmdLineReference/ShowCmds.html">show</a> command</li>
+            </ul>
+            <p>Also note that temporary tables persist across transactions in a session and are automatically dropped when a session terminates.</p>
+            <h3><a name="Table"></a>Table Persistence</h3>
+            <p>Here are two important notes about temporary table persistence. Temporary tables:</p>
+            <ul>
+                <li value="1">persist across transactions in a session</li>
+                <li value="2">are automatically dropped when a session terminates or expires</li>
+                <li value="3">can also be dropped with the <span class="CodeFont"><a href="../../SQLReference/Statements/DropTable.html">DROP&#160;TABLE</a></span>&#160;statement</li>
+            </ul>
+            <h2>Example</h2><pre class="Example" xml:space="preserve">create local temporary table temp_num_dt (
+   smallint_col smallint not null,   
+   int_col int,
+   primary key(smallint_col)) on commit preserve rows;
+insert into temp_num_dt values (1,1);
+insert into temp_num_dt values (3,2),(4,2),(5,null),(6,4),(7,8);
+insert into temp_num_dt values (13,2),(14,2),(15,null),(16,null),(17,8);
+select * from temp_num_dt;
+</pre>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="../../SQLReference/Statements/AlterTable.html">ALTER&#160;TABLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="2"><span class="CodeFont"><a href="../../SQLReference/Statements/CreateTempTable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="3"><span class="CodeFont"><a href="../../SQLReference/Statements/DeclareGlobalTempTable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="4"><span class="CodeFont"><a href="../../SQLReference/Statements/DropTable.html">DROP TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="5"><span class="CodeFont"><a href="../../SQLReference/Statements/RenameColumn.html">RENAME&#160;COLUMN</a></span>&#160;statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="6"><span class="CodeFont"><a href="../../SQLReference/Statements/RenameTable.html">RENAME&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="7"><span class="CodeFont"><a href="../../CmdLineReference/ShowCmds.html">SHOW</a></span>&#160;command </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

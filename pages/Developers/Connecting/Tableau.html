@@ -1,0 +1,64 @@
+---
+title: Connecting Tableau to Splice Machine
+description: How to configure a Tableau connection to Splice Machine
+summary: How to configure a Tableau connection to Splice Machine
+keywords:
+sidebar: developers_sidebar
+permalink: developers_connecting_tableau
+folder: Developers/Connecting
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor514"></a>Connecting Tableau with Splice Machine Using ODBC</h1>
+            <p>This topic shows you how to connect Tableau to Splice Machine using our ODBC&#160;driver. To complete this tutorial, you need to:</p>
+            <ul>
+                <li value="1">Have Tableau installed on your Windows or MacOS&#160;computer. You can find directions on the Tableau web site (<a href="http://www.tableau.com/" target="_blank">www.tableau.com</a>); you can also download a free trial version of Tableau from there.</li>
+                <li value="2">Have the Splice Machine ODBC&#160;driver installed on your computer. Follow the instructions in our Developer's Guide.</li>
+            </ul>
+            <h2><a name="Compile"></a>Connect Tableau with Splice&#160;Machine</h2>
+            <p>This section walks you through configuring Tableau on a Windows PC&#160;to connect with&#160;Splice Machine using our ODBC&#160;driver.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Install Tableau, if you've not already done so</p>
+                        <p class="indentLevel1"><a href="http://www.tableau.com/" target="_blank">Follow the instructions on the Tableau web site</a>.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Install the Splice&#160;Machine ODBC&#160;driver</p>
+                        <p class="indentLevel1"><a href="ODBCInstall.html">Follow our instructions</a> for installing the driver on Unix or Windows. This includes instructions for setting up your data source (DSN), which we'll use with Tableau.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Connect from Tableau:</p>
+                        <p class="indentLevel1">Follow these steps to connect to your data source in Tableau:</p>
+                        <ol class="plainFont" style="list-style-type: lower-alpha;">
+                            <li value="1">
+                                <p class="topLevel">Open the list of connections:</p>
+                                <p class="indentLevel1">Click <span class="AppCommand">Connect to Data</span> on Tableau's opening screen to reveal the list of possible data connections.</p>
+                            </li>
+                            <li value="2">
+                                <p class="topLevel">Select ODBC:</p>
+                                <p class="indentLevel1">Scroll to the bottom of the <span class="AppCommand">To a server</span> list, click More Servers, then click <span class="AppCommand">Other Databases (ODBC)</span>.</p>
+                            </li>
+                            <li value="3">
+                                <p class="topLevel">Select your DSN and connect:</p>
+                                <p class="indentLevel1">Select the DSN&#160;you just created (typically named Splice&#160;Machine) when installing our ODBC&#160;driver)&#160;from the drop-down list, and then click the <span class="AppCommand">Connect</span> button.</p>
+                            </li>
+                            <li value="4">
+                                <p class="topLevel">Select the schema:</p>
+                                <p class="indentLevel1">Select the schema you want to work with (<span class="CodeFont">splice</span>), and then select the <span class="AppCommand">Single Table</span> option.</p>
+                            </li>
+                            <li value="5">
+                                <p class="topLevel">Select the table to view:</p>
+                                <p class="indentLevel1">Click the search (magnifying glass) icon, and then select the table you want to view from the drop-down list. </p>
+                                <p class="indentLevel1">For example, we choose the <span class="AppCommand">CUSTOMERS</span>&#160;table and specify <span class="AppCommand">CUSTOMERS&#160;(SPLICE)</span>&#160;as the connection name for use in Tableau.</p>
+                            </li>
+                        </ol>
+                    </li>
+                    <li value="4">
+                        <p class="indentLevel1">After you click <span class="AppCommand">OK</span>, <span class="ItalicFont">Tableau</span> is ready to work with your data.</p>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

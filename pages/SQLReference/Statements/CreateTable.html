@@ -1,0 +1,176 @@
+---
+title: CREATE TABLE statement
+description: Creates a new table.
+summary: Creates a new table.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_createtable
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateTable" id="Statements.CreateTable"></a><a name="kanchor226"></a>CREATE TABLE</h1>
+            <p>A <span class="CodeFont">CREATE TABLE</span> statement creates a table. Tables contain columns
+and constraints, rules to which data must conform. Table-level constraints
+specify a column or columns. Columns have a data type and can specify column
+constraints (column-level constraints).</p>
+            <p>The table owner and the database owner automatically gain the following privileges on the table and are able to grant these privileges to other users:</p>
+            <ul>
+                <li class="CodeFont" value="1">INSERT</li>
+                <li class="CodeFont" value="2">SELECT</li>
+                <li class="CodeFont" value="3">TRIGGER</li>
+                <li class="CodeFont" value="4">UPDATE</li>
+            </ul>
+            <p>These privileges cannot be revoked from the table and database owners.</p>
+            <div class="noteIcon">
+                <p>Only database and schema owners can use the <span class="CodeFont">CREATE TABLE</span> statement, which means that table creation privileges cannot be granted to others.</p>
+            </div>
+            <p>For
+information about constraints, see <a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a>.</p>
+            <p>You
+can specify a default value for a column. A default value is the value to
+be inserted into a column if no other value is specified. If not explicitly
+specified, the default value of a column is <span class="CodeFont">NULL</span>. </p>
+            <p>If a qualified table name is specified, the schema name cannot
+begin with <span class="CodeFont">SYS</span>.</p>
+            <div class="noteNote">The <a href="CreateExternalTable.html">CREATE&#160;EXTERNAL&#160;TABLE</a>&#160;and <a href="PinTable.html">PIN&#160;TABLE</a>&#160;statements are documented separately in this section.</div>
+            <p class="heading2">Syntax</p>
+            <p>There are two different variants of the <span class="CodeFont">CREATE TABLE</span> statement,
+ depending on whether you are specifying the column definitions and
+ constraints, or whether you are modeling the columns after the
+ results of a query expression with the <span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;form:</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CREATE TABLE <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>
+  {
+      ( {<span class="ItalicFont"><a href="ColumnDefinition.html">column-definition</a></span> |
+         <span class="ItalicFont"><a href="../Clauses/Constraint.html#TableConstraint">Table-level constraint</a></span>}
+         [ , {<span class="ItalicFont"><a href="ColumnDefinition.html">column-definition</a></span>} ] * 
+      )
+  |
+      [ ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-name</a></span> [ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-name</a></span> ] * ) ]
+      AS <span class="ItalicFont">query-expression</span> [AS&#160;<span class="ItalicFont">&lt;name&gt;</span>]
+      WITH NO DATA
+   }
+</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">The name to assign to the new table.</p>
+                <p class="paramName">column-definition</p>
+                <p class="paramDefnFirst">A column definition.</p>
+                <p class="paramDefn">The maximum number of columns allowed in a table is <span class="CodeFont"><span class="LimitationsMaxColumnsInTable">100000</span></span>.</p>
+                <p class="paramName">Table-level constraint</p>
+                <p class="paramDefnFirst">A constraint that applies to the table.</p>
+                <p class="paramName">column-name</p>
+                <p class="paramDefnFirst">A column definition.</p>
+                <p class="paramName">AS query-expression</p>
+                <p class="paramDefnFirst">See the <span class="CodeFont"><a href="#createAs">CREATE&#160;TABLE&#160;AS</a></span> section below.</p>
+                <p class="paramDefn">If this select list contains an expression, you must name the result of the expression. Refer to the final example at the bottom of this topic page.</p>
+                <p class="paramName">WITH&#160;NO&#160;DATA</p>
+                <p class="paramDefnFirst">See the <span class="CodeFont"><a href="#createAs">CREATE&#160;TABLE&#160;AS</a></span> section below.</p>
+            </div>
+            <p class="heading2"><a name="createAs"></a>CREATE TABLE ... AS ... </p>
+            <p>With this alternate form of the <span class="CodeFont">CREATE TABLE</span> statement, the column
+        names and/or the column data types can be specified by providing
+        a query. The columns in the query result are used as a model for
+        creating the columns in the new table.</p>
+            <div class="noteNote"><span class="BoldFont">You cannot include</span> an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause in the query expression you use in the <span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;statement. <br /><br />If the select list contains an expression, <span class="BoldFont">you must name the result of the expression</span>. Refer to the final example at the bottom of this topic page.</div>
+            <p>If no column names are specified for the new table, then all the columns
+    in the result of the query expression are used to create same-named
+    columns in the new table, of the corresponding data type(s).
+    If one or more column names are specified
+    for the new table, then the same number of columns must be present in
+    the result of the query expression; the data types of those columns are
+    used for the corresponding columns of the new table.</p>
+            <p>The <span class="CodeFont">WITH NO DATA</span> clause specifies that the data rows which result
+    from evaluating the query expression are not used; only the names and
+    data types of the columns in the query result are used. </p>
+            <div class="notePlain">
+                <p>There is currently a known problem using the <span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;form of the <span class="CodeFont">CREATE&#160;TABLE</span>&#160;statement .when the data to be inserted into the new table results from a <span class="CodeFont">RIGHT&#160;OUTER&#160;JOIN</span> operation. For example, the following statement currently produces a table with all <span class="CodeFont">NULL</span>&#160;values:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE&#160;TABLE&#160;t3 AS
+   SELECT&#160;t1.a,t1.b,t2.c,t2.d
+   FROM&#160;t1 RIGHT&#160;OUTER&#160;JOIN&#160;t2 ON t1.b = t2.c
+   WITH&#160;DATA;
+0 rows inserted/updated/deleted</pre>
+                </div>
+                <p>There's a simple workaround for now:&#160;create the table without inserting the data, and then insert the data; for example:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE&#160;TABLE&#160;t3 AS
+   SELECT&#160;t1.a,t1.b,t2.c,t2.d
+   FROM&#160;t1 RIGHT&#160;OUTER&#160;JOIN&#160;t2 ON t1.b = t2.c
+   WITH&#160;NO DATA;
+0 rows inserted/updated/deleted
+
+splice&gt;&#160;INSERT&#160;INTO&#160;t3
+   SELECT&#160;t1.a,t1.b,t2.c,t2.d 
+   FROM t1 RIGHT&#160;OUTER&#160;JOIN&#160;t2 ON t1.b = t2.c;
+0 rows inserted/updated/deleted</pre>
+                </div>
+            </div>
+            <p class="heading2">Examples</p>
+            <p>This section presents examples of both forms of the <span class="CodeFont">CREATE&#160;TABLE</span>&#160;statement.</p>
+            <p class="heading3">CREATE&#160;TABLE</p>
+            <p class="body">This example creates our Players table:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TABLE Players(
+    ID           SMALLINT NOT NULL PRIMARY KEY,
+    Team         VARCHAR(64) NOT NULL,
+    Name         VARCHAR(64) NOT NULL,
+    Position     CHAR(2),
+    DisplayName  VARCHAR(24),
+    BirthDate    DATE
+    );
+0 rows inserted/updated/deleted</pre>
+                <p class="body">This example includes a table-level primary key definition that includes two columns:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TABLE HOTELAVAILABILITY&#160;(
+   Hotel_ID&#160;INT&#160;NOT&#160;NULL,
+   BookingDate DATE&#160;NOT&#160;NULL,
+   Rooms_Taken INT&#160;DEFAULT&#160;0,
+   PRIMARY&#160;KEY&#160;(Hotel_ID, Booking_Date );
+0 rows inserted/updated/deleted
+</pre>
+                </div>
+                <p class="body">This example assigns an identity column attribute with an initial value of 5 that increments by 5, and also includes a primary key constraint:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TABLE PEOPLE (
+   Person_ID&#160;INT&#160;NOT&#160;NULL&#160;GENERATED&#160;ALWAYS&#160;AS&#160;IDENTITY&#160;(START&#160;WITH&#160;5, INCREMENT&#160;BY&#160;5)
+      CONSTRAINT&#160;People_PK&#160;PRIMARY&#160;KEY,
+   Person VARCHAR(26) );
+0 rows inserted/updated/deleted</pre>
+                    <div class="noteNote">For more examples of <span class="CodeFont">CREATE TABLE</span> statements using the various constraints, see <a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a></div>
+                </div>
+            </div>
+            <p class="heading3">CREATE&#160;TABLE&#160;AS</p>
+            <p class="body">This example creates a new table that uses all of the columns (and their data types)&#160;from an existing table, but does not duplicate the data:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE&#160;TABLE&#160;NewPlayers
+   AS&#160;SELECT&#160;*&#160;
+         FROM&#160;Players WITH&#160;NO&#160;DATA;
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="body">This example creates a new table that includes the data and uses only some of the columns from an existing table, and assigns new names for the columns:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE&#160;TABLE&#160;MorePlayers (ID, PlayerName, Born)
+   AS&#160;SELECT ID, DisplayName, Birthdate
+         FROM&#160;Players WITH&#160;DATA;
+94 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="body">This example creates a new table using unnamed expressions in the query and shows that the data types are the same for the corresponding columns in the newly created table:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CREATE TABLE T3 (X,Y)
+   AS SELECT 2*I AS&#160;COL1, 2.0*F AS&#160;COL2
+         FROM T1 WITH NO DATA;
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="AlterTable.html"><span class="CodeFont">ALTER TABLE</span></a>&#160;statement</li>
+                <li value="2"><a href="CreateExternalTable.html"><span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span></a>&#160;statement</li>
+                <li value="3"><a href="PinTable.html"><span class="CodeFont">PIN&#160;TABLE</span></a>&#160;statement</li>
+                <li value="4"><a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span></a> clause</li>
+                <li value="5"><span class="CodeFont"><a href="DropTable.html">DROP&#160;TABLE</a></span>&#160;statement</li>
+                <li value="6"><a href="UnpinTable.html"><span class="CodeFont">UNPIN&#160;TABLE</span></a>&#160;statement</li>
+                <li value="7"><a href="../../Developers/Fundamentals/ForeignKeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li value="8"><a href="../../Developers/Fundamentals/DatabaseTriggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

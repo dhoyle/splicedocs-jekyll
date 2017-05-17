@@ -1,0 +1,2963 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Creates a view, which is a virtual table formed by a query.">
+<meta name="keywords" content=" ">
+<title>CREATE VIEW statement | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the CREATE VIEW statement page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="CREATE VIEW statement">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Identifiers</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_identifiers_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_identifiers_types">Identifier Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_identifiers_syntax">Identifier Syntax</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Data Types</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_datatypes_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_bigint">BIGINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_blob">BLOB</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_boolean">BOOLEAN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_char">CHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_charforbitdata">CHAR FOR BIT DATA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_clob">CLOB</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_date">DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_decimal">DECIMAL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_double">DOUBLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_doubleprecision">DOUBLE PRECISION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_float">FLOAT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_integer">INTEGER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_longvarchar">LONG VARCHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_longvarcharforbitdata">LONG VARCHAR FOR BIT DATA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_numeric">NUMERIC</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_real">REAL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_smallint">SMALLINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_text">TEXT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_time">TIME</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_timestamp">TIMESTAMP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_varchar">VARCHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_datatypes_varcharforbitdata">VARCHAR FOR BIT DATA</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Statements</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_statements_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_altertable">ALTER TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_callprocedure">CALL (Procedure)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_columndef">column-definition</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createexternaltable">CREATE EXTERNAL TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createfunction">CREATE FUNCTION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createindex">CREATE INDEX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createprocedure">CREATE PROCEDURE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createrole">CREATE ROLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createschema">CREATE SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createsequence">CREATE SEQUENCE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createsynonym">CREATE SYNONYM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createtable">CREATE TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createtemptable">CREATE TEMPORARY TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createtrigger">CREATE TRIGGER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createtype">CREATE TYPE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_createview">CREATE VIEW</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_globaltemptable">DECLARE GLOBAL TEMPORARY TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_delete">DELETE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dependencies">Dependencies</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropfunction">DROP FUNCTION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropindex">DROP INDEX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropprocedure">DROP PROCEDURE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_droprole">DROP ROLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropschema">DROP SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropsequence">DROP SEQUENCE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropsynonym">DROP SYNONYM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_droptable">DROP TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_droptrigger">DROP TRIGGER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_droptype">DROP TYPE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_dropview">DROP VIEW</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_generatedcolspec">generated-column-spec</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_generationclause">generation-clause</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_grant">GRANT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_insert">INSERT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_pintable">PIN TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_renamecolumn">RENAME COLUMN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_renameindex">RENAME INDEX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_renametable">RENAME TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_revoke">REVOKE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_select">SELECT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_setisolation">SET ISOLATION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_setrole">SET ROLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_setschema">SET SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_truncatetable">TRUNCATE TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_unpintable">UNPIN TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_statements_updatetable">UPDATE TABLE</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Clauses</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_clauses_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_constraint">CONSTRAINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_except">EXCEPT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_forupdate">FOR UPDATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_from">FROM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_groupby">GROUP BY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_having">HAVING</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_intersect">INTERSECT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_limitn">LIMIT n</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_orderby">ORDER BY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_over">OVER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_resultoffset">RESULT OFFSET and FETCH FIRST</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_topn">TOP n</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_union">UNION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_using">USING</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_where">WHERE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_wherecurrentof">WHERE CURRENT OF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_clauses_with">WITH</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Expressions</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_expressions_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_about">About Expressions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_boolean">Boolean Expressions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_case">CASE Expression</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_dynamicparams">Dynamic Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_precedence">Expression Precedence</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_nextvaluefor">NEXT VALUE FOR Expression</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_select">SELECT Expression</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_table">TABLE Expression</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_expressions_values">VALUES Expression</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Join Operations</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_joins_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_about">About Join Operations</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_crossjoin">CROSS JOIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_innerjoin">INNER JOIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_leftouterjoin">LEFT OUTER JOIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_naturaljoin">NATURAL JOIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_joinops_rightouterjoin">RIGHT OUTER JOIN</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Queries</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_queries_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_queries_query">Query</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_queries_scalarsubquery">Scalar Subquery</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_queries_tablesubquery">Table Subquery</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">SQL Built-in Functions</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_abs">ABS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_acos">ACOS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_addmonths">ADD_MONTHS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_asin">ASIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_atan">ATAN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_atan2">ATAN2</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_avg">AVG</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_bigint">BIGINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_cast">CAST</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_ceil">CEIL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_char">CHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_coalesce">COALESCE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_concat">Concatenation Operator</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_cos">COS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_cosh">COSH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_cot">COT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_count">COUNT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentschema">CURRENT SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentdate">CURRENT_DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentisolation">CURRENT_ISOLATION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentrole">CURRENT_ROLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currenttime">CURRENT_TIME</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currenttimestamp">CURRENT_TIMESTAMP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_currentuser">CURRENT_USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_date">DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_day">DAY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_degrees">DEGREES</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_denserank">DENSE_RANK</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_double">DOUBLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_exp">EXP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_extract">EXTRACT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_firstvalue">FIRST_VALUE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_floor">FLOOR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_hour">HOUR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_identityvallocal">IDENTITY_VAL_LOCAL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_initcap">INITCAP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_instr">INSTR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_integer">INTEGER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lag">LAG</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lastday">LAST_DAY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lastvalue">LAST_VALUE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lcase">LCASE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_lead">LEAD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_length">LENGTH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_ln">LN (or LOG)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_locate">LOCATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_log10">LOG10</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_ltrim">LTRIM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_max">MAX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_min">MIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_minute">MINUTE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_mod">MOD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_month">MONTH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_monthname">MONTHNAME</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_monthbetween">MONTH_BETWEEN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_nextday">NEXT_DAY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_now">NOW</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_nullif">NULLIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_pi">PI</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_quarter">QUARTER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_radians">RADIANS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rand">RAND</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_random">RANDOM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rank">RANK</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_regexplike">REGEXP_LIKE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_replace">REPLACE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rowid">ROWID</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rownumber">ROW_NUMBER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_rtrim">RTRIM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_second">SECOND</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sessionuser">SESSION_USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sign">SIGN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sin">SIN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sinh">SINH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_smallint">SMALLINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sqrt">SQRT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_stddevpop">STDDEV_POP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_stddevsamp">STDDEV_SAMP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_substr">SUBSTR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_sum">SUM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_tan">TAN</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_tanh">TANH</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_time">TIME</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_timestamp">TIMESTAMP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_timestampadd">TIMESTAMPADD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_timestampdiff">TIMESTAMPDIFF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_tochar">TO_CHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_todate">TO_DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_trim">TRIM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_truncate">TRUNCATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_truncdate">TRUNC_DATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_ucase">UCASE or UPPER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_user">USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_varchar">VARCHAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_week">WEEK</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_builtinfcns_year">YEAR</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">System Procedures</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_sysprocs_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_backupdb">BACKUP_DATABASE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_importhfile">BULK_IMPORT_HFILE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_cancelbackup">CANCEL_BACKUP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_canceldailybackup">CANCEL_DAILY_BACKUP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_checktable">CHECK_TABLE Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_collectschemastats">COLLECT_SCHEMA_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_computesplitkey">COMPUTE_SPLIT_KEY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_createuser">CREATE_USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_deletebackup">DELETE_BACKUP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_deleteoldbackups">DELETE_OLD_BACKUPS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_disablecolumnstats">DISABLE_COLUMN_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_dropschemastats">DROP_SCHEMA_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_dropstats">DROP_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_dropuser">DROP_USER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_dumptransactions">DUMP_TRANSACTIONS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_emptyglobalcache">EMPTY_GLOBAL_STATEMENT_CACHE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_emptycache">EMPTY_STATEMENT_CACHE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_enablecolumnstats">ENABLE_COLUMN_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_enableenterprise">ENABLE_ENTERPRISE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getactiveservers">GET_ACTIVE_SERVERS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getallprops">GET_ALL_PROPERTIES</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getcurrenttransaction">GET_CURRENT_TRANSACTION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getdbprop">GET_DATABASE_PROPERTY Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getloggers">GET_LOGGERS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getloggerlevel">GET_LOGGER_LEVEL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getregionserverstats">GET_REGIONS_SERVER_STATS_INFO</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getrequests">GET_REQUESTS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getruntimestats">GET_RUNTIME_STATISTICS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getschemainfo">GET_SCHEMA_INFO</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getstatstiming">GET_STATISTICS_TIMING</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_gettaskstatus">GET_TASK_STATUS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getversioninfo">GET_VERSION_INFO</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getwriteintakeinfo">GET_WRITE_INTAKE_INFO</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getxplainmode">GET_XPLAIN_MODE Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_getxplainschema">GET_XPLAIN_SCHEMA Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_importdata">IMPORT_DATA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_installjar">INSTALL_JAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_invalidatestoredstmts">INVALIDATE_STORED_STATEMENTS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_killstaletransactions">KILL_STALE_TRANSACTIONS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_killtransaction">KILL_TRANSACTION</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_modifypassword">MODIFY_PASSWORD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_peekatseq">PEEK_AT_SEQUENCE Function</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_compactschema">PERFORM_MAJOR_COMPACTION_ON_SCHEMA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_compacttable">PERFORM_MAJOR_COMPACTION_ON_TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_refreshexttable">REFRESH_EXTERNAL_TABLE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_removejar">REMOVE_JAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_replacejar">REPLACE_JAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_resetpassword">RESET_PASSWORD</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_restoredb">RESTORE_DATABASE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_scheduledailybackup">SCHEDULE_DAILY_BACKUP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_setdbprop">SET_DATABASE_PROPERTY</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_setloggerlevel">SET_LOGGER_LEVEL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_splittable">SPLIT_TABLE_OR_INDEX</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_splittableatpoints">SPLIT_TABLE_OR_INDEX_AT_POINTS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_updateallsysprocs">UPDATE_ALL_SYSTEM_PROCEDURES</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_updatemetastmts">UPDATE_METADATA_STORED_STATEMENTS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_updateschemaowner">UPDATE_SCHEMA_OWNER</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_updatesysproc">UPDATE_SYSTEM_PROCEDURE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_upsertdata">UPSERT_DATA_FROM_FILE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_vacuum">VACUUM</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_sysprocs_vacuumtable">VACUUM_TABLE</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">System Tables</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_systables_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysaliases">SYSALIASES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysbackup">SYSBACKUP system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysbackupfileset">SYSBACKUPFILESET system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysbackupitems">SYSBACKUPITEMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysbackupjobs">SYSBACKUPJOBS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syschecks">SYSCHECKS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syscolperms">SYSCOLPERMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syscolumns">SYSCOLUMNS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syscolumnstats">SYSCOLUMNSTATISTICS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syscongloms">SYSCONGLOMERATES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysconstraints">SYSCONSTRAINTS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysdepends">SYSDEPENDS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysfiles">SYSFILES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysforeignkeys">SYSFOREIGNKEYS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syskeys">SYSKEYS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysperms">SYSPERMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysphysicalstats">SYSPHYSICALSTATS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysprimarykeys">SYSPRIMARYKEYS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysroles">SYSROLES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysroutineperms">SYSROUTINEPERMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysschemas">SYSSCHEMAS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_syssequences">SYSSEQUENCES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysstatements">SYSSTATEMENTS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_systableperms">SYSTABLEPERMS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_systables">SYSTABLES system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_systablestats">SYSTABLESTATISTICS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_systriggers">SYSTRIGGERS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysusers">SYSUSERS system table</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_systables_sysviews">SYSVIEWS system table</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Error Codes</a>
+        <ul>
+            
+            
+            
+            <li><a href="sqlref_errcodes_intro">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class01">Class 01 - Warning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class07">Class 07 - Dynamic SQL Error</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class08">Class 08 - Connection Exception</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class0a">Class 0A - Feature not supported</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class0p">Class 0P - Invalid role specification</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class21">Class 21 - Cardinality Violations</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class22">Class 22 - Data Exception</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class23">Class 23 - Constraint Violation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class24">Class 24 - Invalid Cursor State</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class25">Class 25 - Invalid Transaction State</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class28">Class 28 - Invalid Authorization Specification</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class2d">Class 2D - Invalid Transaction Termination</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class38">Class 38 - External Function Exception</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class39">Class 39 - External Routine Invocation Exception</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_class3b">Class 3B - Invalid SAVEPOINT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_40">Class 40 - Transaction Rollback</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_42">Class 42 - Syntax Error or Access Rule Violation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_57">Class 57 - DRDA Network Protocol Execution Failure</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_58">Class 58 - DRDA Network Protocol Protocol Error</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xbca">Class XBCA - CacheService</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xbcm">Class XBCM - ClassManager</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xbcx">Class XBCX - Cryptography</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xbm">Class XBM - Monitor</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcl">Class XCL - Execution exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcw">Class XCW - Upgrade unsupported</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcx">Class XCX - Internal Utility Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcy">Class XCY - Splice Property Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xcz">Class XCZ - com.splicemachine.db.database.UserUtility</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xd00">Class XD00 - Dependency Manager</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xie">Class XIE - Import/Export Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xj">Class XJ - Connectivity Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xk">Class XK - Security Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xn">Class XN - Network Client Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xre">Class XRE - Replication Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsai">Class XSAI - Store access.protocol.interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsam">Class XSAM - Store AccessManager</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsas">Class XSAS - Store Sort</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsax">Class XSAX - Store access.protocol.XA statement</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xscb">Class XSCB - Store BTree</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xscg0">Class XSCG0 - Conglomerate</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsch">Class XSCH - Heap</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsda">Class XSDA - RawStore Data.Generic statement</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsdb">Class XSDB - RawStore Data.Generic transaction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsdf">Class XSDF - RawStore Data.Filesystem statement</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsdg">Class XSDG - RawStore Data.Filesystem database</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsla">Class XSLA - RawStore Log.Generic database exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xslb">Class XSLB - RawStore Log.Generic statement exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsrs">Class XSRS - RawStore protocol.Interface statement</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xsta2">Class XSTA2 - XACT_TRANSACTION_ACTIVE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xstb">Class XSTB - RawStore Transactions.Basic system</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_xxxxx">Class XXXXX - No SQLSTATE</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="sqlref_errcodes_x0">Class X0 - Execution exceptions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">CREATE VIEW statement</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Creates a view, which is a virtual table formed by a query.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/SQLReference/Statements/sqlref_statements_createview.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateView" id="Statements.CreateView"></a><a name="kanchor547"></a>CREATE VIEW</h1>
+            <p>Views are virtual tables formed by a query. A view is a dictionary object that you can use until you drop it. Views are not updatable.</p>
+            <p>If a qualified view name is specified, the schema name cannot begin with <span class="ItalicFont">SYS</span>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">
+CREATE VIEW <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ViewName">view-Name</a></span>
+   [ ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> [, <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>] * ) ]
+   AS <span class="ItalicFont"><a href="../Queries/Query.html">Query</a></span> [ <span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span> ]<span>
+     [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">RESULT&#160;OFFSET&#160;clause</a></span> ]
+     [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">FETCH&#160;FIRST clause</a></span> ] </span></pre>
+            </div>
+            <p>A view definition can contain an optional view column list to explicitly name the columns in the view. If there is no column list, the view inherits the column names from the underlying query. All columns in a view must be uniquely named.</p>
+            <div class="paramList">
+                <p class="paramName">view-Name</p>
+                <p class="paramDefnFirst">The name to assign to the view.</p>
+                <p class="paramName">Simple-column-Name*</p>
+                <p class="paramDefnFirst">An optional list of names to be used for columns of the view. If not given, the column names are deduced from the query.</p>
+                <p class="paramDefn">The maximum number of columns in a view is <span class="CodeFont"><span class="LimitationsMaxColumnsInView">5000</span></span>.</p>
+                <p class="paramName">AS&#160;Query [ORDER&#160;BY&#160;clause]</p>
+                <p class="paramDefnFirst">A <span class="CodeFont">SELECT</span> or <span class="CodeFont">VALUES</span> command that provides the columns and rows of the view.</p>
+                <p class="paramName">result offset and fetch first clauses</p>
+                <p class="paramDefnFirst">The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">RESULT&#160;OFFSET</span> clause</a>  provides a way to skip the N first rows in a result set before starting to add rows to the view. The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">FETCH&#160;FIRST</span> clause</a>, which can be combined with the <span class="CodeFont">RESULT&#160;OFFSET</span> clause, limits the number of rows added to the view.</p>
+            </div>
+            <p class="heading2">Examples</p>
+            <p class="body">This example creates a view that shows the age of each player in our database:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE VIEW PlayerAges (Player, Team, Age) 
+   AS SELECT DisplayName, Team, 
+      INT( (Now - Birthdate) / 365.25) AS Age 
+      FROM Players;
+0 rows inserted/updated/deleted
+
+splice&gt; SELECT * FROM PlayerAges WHERE Age &gt; 30 ORDER BY Team, Age DESC;
+PLAYER                  |TEAM     |AGE        
+-----------------------------------------
+Robert Cohen            |Cards    |40         
+Jason Larrimore         |Cards    |37         
+David Janssen           |Cards    |36         
+Mitch Hassleman         |Cards    |35         
+Mitch Brandon           |Cards    |35         
+Tam Croonster           |Cards    |34         
+Alex Wister             |Cards    |34         
+Yuri Milleton           |Cards    |33         
+Jonathan Pearlman       |Cards    |33         
+Michael Rastono         |Cards    |32         
+Barry Morse             |Cards    |32         
+Carl Vanamos            |Cards    |32         
+Jan Bromley             |Cards    |31         
+Thomas Hillman          |Giants   |40         
+Mark Briste             |Giants   |38         
+Randy Varner            |Giants   |38         
+Jason Lilliput          |Giants   |38         
+Jalen Ardson            |Giants   |36         
+Sam Castleman           |Giants   |35         
+Alex Paramour           |Giants   |34         
+Jack Peepers            |Giants   |34         
+Norman Aikman           |Giants   |33         
+Craig McGawn            |Giants   |33         
+Kameron Fannais         |Giants   |33         
+Jason Martell           |Giants   |33         
+Harry Pennello          |Giants   |32         
+Jason Minman            |Giants   |32         
+Trevor Imhof            |Giants   |32         
+Steve Raster            |Giants   |32         
+Greg Brown              |Giants   |31         
+Alex Darba              |Giants   |31         
+Joseph Arkman           |Giants   |31         
+Tam Lassiter            |Giants   |31         
+Martin Cassman          |Giants   |31         
+Yuri Piamam             |Giants   |31         
+
+35 rows selected
+</pre>
+            </div>
+            <p class="heading2">Statement Dependency System</p>
+            <p>View definitions are dependent on the tables and views referenced within the view definition. DML (data manipulation language) statements that contain view references depend on those views, as well as the objects in the view definitions that the views are dependent on. Statements that reference the view depend on indexes the view uses; which index a view uses can change from statement to statement based on how the query is optimized. For example, given:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE T1 (C1 DOUBLE PRECISION);
+0 rows inserted/updated/deleted
+
+splice&gt;CREATE FUNCTION SIN (DATA DOUBLE) 
+   RETURNS DOUBLE  
+   EXTERNAL NAME 'java.lang.Math.sin'
+   LANGUAGE JAVA PARAMETER STYLE JAVA;
+0 rows inserted/updated/deleted
+
+splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p>The following <span class="CodeFont">SELECT</span>:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM V1;</pre>
+            </div>
+            <p>Is dependent on view <span class="ItalicFont">V1</span>, table <span class="ItalicFont">T1,</span> and external scalar function  <span class="ItalicFont">SIN.</span></p>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="DropView.html"><span class="CodeFont">DROP&#160;VIEW</span></a>&#160;statement</li>
+                <li value="2"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a> clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+---
+title: INSTR built-in function
+description: Built-in SQL function that returns the index of the first occurrence of a substring within a string
+summary: Built-in SQL function that returns the index of the first occurrence of a substring within a string
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_instr
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor15"></a>INSTR</h1>
+            <p>The <span class="CodeFont">INSTR</span> function returns the index of the first occurrence of a substring in a string.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">INSTR(str, substring)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">str
+            </p>
+                <p class="paramDefnFirst">The string in which to search for the substring.</p>
+                <p class="paramName">substring
+            </p>
+                <p class="paramDefnFirst">The substring to search for.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>Returns the index in <span class="CodeFont">str</span> of the first occurrence of <span class="CodeFont">substring</span>.</p>
+            <p>The first index&#160;is <span class="CodeFont">1</span>.</p>
+            <p>If <span class="CodeFont">substring</span> is not found, <span class="CodeFont">INSTR</span>&#160;returns <span class="CodeFont">0</span>.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example">splice&gt; SELECT DisplayName, INSTR(DisplayName, 'Pa') "Position"  
+   FROM Players 
+   WHERE (INSTR(DisplayName, 'Pa') &gt; 0) 
+   ORDER BY DisplayName;
+DISPLAYNAME             |Position   
+------------------------------------
+Alex Paramour           |6          
+Buddy Painter           |7          
+Jeremy Packman          |8          
+Pablo Bonjourno         |1          
+Paul Kaster             |1          
+
+5 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="Concatenation.html">Concatenation</a> operator</li>
+                <li value="3"><a href="InitCap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
+                <li value="4"><a href="LCase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
+                <li value="5"><a href="Length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
+                <li value="6"><a href="Locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
+                <li value="7"><a href="LTrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
+                <li value="8"><span class="CodeFont"><a href="RegexpLike.html">REGEX_LIKE</a></span>&#160;operator</li>
+                <li value="9"><a href="Replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
+                <li value="10"><a href="RTrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
+                <li value="11"><a href="Substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
+                <li value="12"><a href="Trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
+                <li value="13"><a href="UCase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

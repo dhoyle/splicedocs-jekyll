@@ -1,0 +1,69 @@
+---
+title: LOCATE built-in SQL function
+description: Built-in SQL function that searches for a string within another string
+summary: Built-in SQL function that searches for a string within another string
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_locate
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Locate" id="BuiltInFcns.Locate"></a><a name="kanchor330"></a>LOCATE</h1>
+            <p>The <span class="CodeFont">LOCATE</span> function is used to search for a string (the <span class="ItalicFont">needle</span>)&#160;within  another string (the <span class="ItalicFont">haystack</span>). If the desired string is found, <span class="CodeFont">LOCATE</span> returns the index at which it is found.
+		If the desired string is not found, <span class="CodeFont">LOCATE</span> returns 0. </p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">LOCATE(<span class="ItalicFont">CharacterExpression1</span>, <span class="ItalicFont">CharacterExpression2</span>
+        [, <span class="ItalicFont">StartPosition</span>] )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">CharacterExpression1</p>
+                <p class="paramDefnFirst">A character expression that specifies the string to search <span class="BoldFont">for</span> in <span class="ItalicFont">CharacterExpression2</span>, sometimes called the needle.</p>
+                <p class="paramName">CharacterExpression2</p>
+                <p class="paramDefnFirst">A character expression that specifies the string in which to search, sometimes called the haystack.</p>
+                <p class="paramName">StartPosition</p>
+                <p class="paramDefnFirst">(Optional). Specifies the position in <span class="ItalicFont">CharacterExpression2</span> at which the search is to start. This defaults to the start of <span class="ItalicFont">CharacterExpression2</span>, which is the value <span class="CodeFont">1</span>.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The return type for <span class="CodeFont">LOCATE</span> is an integer that indicates the index position within the  second argument at which the first argument was first located. Index positions start with 1.</p>
+            <ul>
+                <li value="1">If the first argument is not found in the second argument, <span class="CodeFont">LOCATE</span> returns <span class="CodeFont">0</span>.</li>
+                <li value="2"> If the first argument is an empty string (<span class="CodeFont">''</span>), <span class="CodeFont">LOCATE</span> returns the value of the third argument (or <span class="CodeFont">1</span> if it was not provided), even if the second argument is also an empty string.</li>
+                <li value="3">If a <span class="CodeFont">NULL</span> value is passed for either of the CharacterExpression arguments, <span class="CodeFont">NULL</span> is returned</li>
+            </ul>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, LOCATE('Pa', DisplayName, 3) "Position" 
+   FROM Players 
+   WHERE (INSTR(DisplayName, 'Pa') &gt; 0) 
+   ORDER BY DisplayName;
+DISPLAYNAME             |Position   
+------------------------------------
+Alex Paramour           |6          
+Buddy Painter           |7          
+Jeremy Packman          |8          
+Pablo Bonjourno         |0          
+Paul Kaster             |0          
+
+5 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="Concatenation.html">Concatenation</a> operator</li>
+                <li value="3"><a href="InitCap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
+                <li value="4"><a href="Instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
+                <li value="5"><a href="LCase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
+                <li value="6"><a href="#"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
+                <li value="7"><a href="LTrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
+                <li value="8"><span class="CodeFont"><a href="RegexpLike.html">REGEX_LIKE</a></span>&#160;operator</li>
+                <li value="9"><a href="Replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
+                <li value="10"><a href="RTrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
+                <li value="11"><a href="Substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
+                <li value="12"><a href="Trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
+                <li value="13"><a href="UCase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

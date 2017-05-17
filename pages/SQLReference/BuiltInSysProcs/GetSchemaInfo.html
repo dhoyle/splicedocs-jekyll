@@ -1,0 +1,70 @@
+---
+title: SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO built-in system procedure
+
+description: Built-in system procedure that displays table information for all user schemas, including the HBase regions occupied and their store file size.&#xD;
+summary: Built-in system procedure that displays table information for all user schemas, including the HBase regions occupied and their store file size.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getschemainfo
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.GetSchemaInfo" id="BuiltInSysProcs.GetSchemaInfo"></a><a name="kanchor264"></a>SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</samp> system procedure displays table information,including the HBase&#160;regions occupied and their store file size, for all user schemas.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The displayed results of calling <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</span> include these values:</p>
+            <table summary=" summary=&quot;Columns in Get_Schema_Info results display&quot;">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">SCHEMANAME
+					</td>
+                        <td>The schema to which the table belongs.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TABLENAME
+					</td>
+                        <td>The name of the table. Note that may be more than one row containing a table name; for example, this happens if the table has an index.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">ISINDEX
+					</td>
+                        <td>A Boolean value that specifies whether the HBase table is an index table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">HBASEREGIONS
+					</td>
+                        <td>
+                            <p class="noSpaceAbove">The HBase regions on which the table resides. There can be multiple regions.</p>
+                            <p>Each region display shows (tableName, regionId.storeFileSize, memStoreSize, and storeIndexSize MB).</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO();
+SCHEMANAME |TABLENAME  |REGIONNAME                                             |IS_I&amp;|HBASEREGIONS_STORES&amp;|MEMSTORESIZE |STOREINDEXSIZE
+---------------------------------------------------------------------------------------------------------------------------------------
+SPLICE     |PLAYERS    |2176,,1446847689610.7211e284f7f767d7b142dbd639b4d9bf.  |false|0                   |0            |0
+SPLICE     |PITCHING   |1968,,1446260714743.01963d7260fc9d4dc01507eccdf67e40.  |false|0                   |0            |0
+SPLICE     |BATTING    |1984,,1446260731076.ca29785eb5b16a8752d9c4ceeaad2ce4.  |false|0                   |0            |0
+SPLICE     |FIELDING   |2192,,1447092732332.b4aae99023002bbac1a08432e6ffc2df.  |false|0                   |0            |0
+SPLICE     |SALARIES   |2256,,1447803176538.11ce38c9e470b4d209de4d32c96cb815.  |false|0                   |0            |0
+
+5 rows selected
+</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,60 @@
+---
+title: REGEXP_LIKE operator
+description: Built-in SQL function that determines if a source string matches a regular expression pattern
+summary: Built-in SQL function that determines if a source string matches a regular expression pattern
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_regexplike
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor95"></a>REGEXP_LIKE Operator</h1>
+            <p>The <span class="CodeFont">REGEXP_LIKE</span>&#160;operator returns <span class="CodeFont">true</span> if the string matches the regular expression. This function is similar to the <span class="CodeFont">LIKE</span> predicate, except that it uses regular expressions rather than simple wildcard character matching.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">REGEXP_LIKE(&#160;<span class="ItalicFont">sourceString</span>, <span class="ItalicFont">patternString</span> )
+}</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">sourceString</p>
+                <p class="paramDefnFirst">The character expression to match against the regular expression.</p>
+                <p class="paramName">patternString</p>
+                <p class="paramDefnFirst">The regular expression string used to search for a match in <span class="CodeItalicFont">sourceString</span>.</p>
+                <p class="paramDefn">The pattern is a <span class="CodeFont">java.util.regex</span> pattern. You can find documentation for the JDK&#160;8 version here:&#160;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/package-summary.html" target="_blank">http://docs.oracle.com/javase/8/docs/api/java/util/regex/package-summary.html</a>. </p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>Returns true if the <span class="CodeItalicFont">sourcestring</span> you are testing matches the specified regular expression in <span class="CodeItalicFont">patternString</span>.</p>
+            <p class="heading2">Examples</p>
+            <p class="body">The following query finds all players whose name begins with <span class="ItalicFont">Ste</span>:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName
+   FROM Players
+   WHERE REGEXP_LIKE(DisplayName, '^Ste.*');
+
+DISPLAYNAME             
+------------------------
+Steve Raster            
+Steve Mossely           
+Stephen Tuvesco         
+
+3 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><span class="CodeFont"><a href="Concatenation.html">CONCATENATION</a></span>&#160;operator</li>
+                <li value="3"><a href="InitCap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
+                <li value="4"><a href="Instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
+                <li value="5"><a href="LCase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
+                <li value="6"><a href="Length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
+                <li value="7"><a href="LTrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
+                <li value="8"><a href="Replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
+                <li value="9"><a href="RTrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
+                <li value="10"><a href="Substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
+                <li value="11"><a href="Trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
+                <li value="12"><a href="UCase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

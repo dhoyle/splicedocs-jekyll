@@ -1,0 +1,129 @@
+---
+title: Database Administration System Procedures and Functions in Splice Machine
+description: A table that summarizes the function of each available Splice Machine built-in system procedures for managing your database.
+summary: A table that summarizes the function of each available Splice Machine built-in system procedures for managing your database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_dbadminintro
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor417"></a>Administrative Procedures and Functions</h1>
+            <p class="body">These are the system procedures and functions for administering your database:</p>
+            <table summary="Summary of Splice Machine system  procedures and functions for database administration">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="BackupDatabase.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a>
+                        </td>
+                        <td>
+                            <p>Backs up the database to a specified backup directory.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont" data-mc-conditions=""><a href="CancelBackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a>
+                        </td>
+                        <td>
+                            <p>Cancels a backup.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="CancelDailyBackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a>
+                        </td>
+                        <td>
+                            <p>Cancels a scheduled daily backup.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateUser.html">SYSCS_UTIL.SYSCS_CREATE_USER</a>
+                        </td>
+                        <td>Adds a new user account to a database.</td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="DeleteBackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a>
+                        </td>
+                        <td>
+                            <p>Delete a specific backup.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="DeleteOldBackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a>
+                        </td>
+                        <td>
+                            <p>Deletes all backups that were created more than a certain number of days ago.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropUser.html">SYSCS_UTIL.SYSCS_DROP_USER</a>
+                        </td>
+                        <td>Removes a user account from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="ModifyPassword.html">SYSCS_UTIL.SYSCS_MODIFY_PASSWORD</a>
+                        </td>
+                        <td>Called by a user to change that user's own password.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="PerformMajorCompactionOnSchema.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</a>
+                        </td>
+                        <td>Performs a major compaction on a schema</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="PerformMajorCompactionOnTable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a>
+                        </td>
+                        <td>Performs a major compaction on a table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="RefreshExternalTable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a>
+                        </td>
+                        <td>Refreshes the schema of an external table in Splice Machine; use this when the schema of the table's source file has been modified outside of Splice&#160;Machine.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="ResetPassword.html">SYSCS_UTIL.SYSCS_RESET_PASSWORD</a>
+                        </td>
+                        <td>Resets a password that has expired or has been forgotten.</td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="RestoreDatabase.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a>
+                        </td>
+                        <td>
+                            <p>Restores a database from a previous backup.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="DeleteBackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a>
+                        </td>
+                        <td>
+                            <p>Schedules a full or incremental database backup to run at a specified time daily.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="UpdateSchemaOwner.html">SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER</a>
+                        </td>
+                        <td>Changes the owner of a schema.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="Vacuum.html">SYSCS_UTIL.VACUUM</a>
+                        </td>
+                        <td>Performs clean-up operations on the system.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

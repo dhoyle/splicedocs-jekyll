@@ -1,0 +1,90 @@
+---
+title: SYSCS_UTIL.SYSCS_BACKUP_DATABASE built-in system procedure
+description: Built-in system procedure that backs up the database to a specified backup directory.
+summary: Built-in system procedure that backs up the database to a specified backup directory.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_backupdb
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.BackupDatabase" id="BuiltInSysProcs.BackupDatabase"></a><a name="kanchor231"></a>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</samp> system procedure
+performs an immediate full or incremental backup of your database to a specified backup directory. </p>
+            <p>Splice Machine supports both full and incremental backups:&#160;</p>
+            <ul>
+                <li value="1">A <span class="ItalicFont">full backup</span> backs up all of the files/blocks that constitute your database.</li>
+                <li value="2">An <span class="ItalicFont">incremental backup</span> only stores database files/blocks that have changed since a previous backup.</li>
+            </ul>
+            <div class="noteNote">The first time that you run an incremental backup, a full backup is performed. Subsequent runs of the backup will only copy information that has changed since the previous backup.</div>
+            <p>For more information, see the <a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
+                                  VARCHAR(30)&#160;<span class="ItalicFont">backupType</span> );</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">backupDir</p>
+                <p class="paramDefnFirst">Specifies the path to the directory in which you want the backup stored. This can be a local directory if you're using the standalone version of Splice Machine, or a directory in your cluster's file system (HDFS or MapR-FS). </p>
+                <div class="noteNote">You must have permissions set properly to use cloud storage as a backup destination. See <a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html#Backing">Backing Up to Cloud Storage</a> in the <span class="ItalicFont">Administrator's Guide</span> for information about setting backup permissions properties.</div>
+                <p class="paramDefn">Relative paths are resolved
+based on the current user directory. To avoid confusion, we strongly recommend that you use an absolute path when specifying the backup destination.</p>
+                <p class="paramName">backupType</p>
+                <p class="paramDefnFirst">Specifies the type of backup that you want performed.This must be one of the following values: <span class="CodeFont">'full'</span> or <span class="CodeFont">'incremental'</span>; any other value produces an error and the backup is not run.</p>
+                <p class="paramDefn">Note that if you specify <span class="CodeFont">'incremental'</span>, Splice Machine checks the <a href="../SystemTables/SysBackup.html"><span class="CodeFont">SYS.SYSBACKUP</span></a> table to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Usage Notes</p>
+            <p>There's a subtle issue with performing a backup when you're using a temporary table in your session:&#160;although the temporary table is (correctly)&#160;not backed up, the temporary table's entry in the system tables will be backed up. When the backup is restored, the table entries will be restored, but the temporary table will be missing.</p>
+            <p>There's a simple workaround:</p>
+            <ol>
+                <li value="1">Exit your current session, which will automatically delete the temporary table and its system table entries.</li>
+                <li value="2">Start a new session (reconnect to your database).</li>
+                <li value="3">Start your backup job.</li>
+            </ol>
+            <p class="heading2">Execute Privileges</p>
+            <p>If authentication and SQL authorization are both enabled, only the database owner has
+execute privileges on this function by default. The
+database owner can grant access to other users.</p>
+            <p class="heading2">JDBC example</p>
+            <p>The following example performs an immediate full backup to a subdirectory of the <samp>hdfs:///home/backup</samp> directory: </p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
+  ("CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE(?,?)");
+  cs.setString(1, 'hdfs:///home/backup');
+  cs.setString(2, 'full'); 
+  cs.execute();
+  cs.close();</pre>
+            </div>
+            <p class="heading2">SQL Example</p>
+            <div class="noteRelease">Backing up a database may take several minutes, depending on the size of your database and how much of it you're backing up.</div>
+            <div>
+                <p>The following example runs an immediate incremental backup to the <samp>hdfs:///home/backup/</samp> directory:</p>
+                <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( 'hdfs:///home/backup', 'incremental' );
+Statement executed.
+</pre>
+                </div>
+                <p>The following example runs the same backup and stores it on AWS:</p>
+                <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( 's3://backup1234', 'incremental' );
+Statement executed.</pre>
+                </div>
+            </div>
+            <p>And this example does a full backup to a relative directory (relative to your <span class="CodeFont">splicemachine</span> directory)&#160;on a standalone version of Splice&#160;Machine:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( './dbBackups', 'full' );
+Statement executed.</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+                <li value="2"><a href="CancelDailyBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a>built-in system procedure</li>
+                <li value="3"><a href="DeleteBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
+                <li value="4"><a href="DeleteOldBackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
+                <li value="5"><a href="RestoreDatabase.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
+                <li value="6"><a href="ScheduleDailyBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li value="7"><span class="CodeFont"><a href="../SystemTables/SysBackup.html">SYSBACKUP</a></span> system table</li>
+                <li value="8"><span class="CodeFont"><a href="../SystemTables/SysBackupItems.html">SYSBACKUPITEMS</a></span> system table</li>
+                <li value="9"><span class="CodeFont"><a href="../SystemTables/SysBackupJobs.html">SYSBACKUPJOBS</a></span> system table</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

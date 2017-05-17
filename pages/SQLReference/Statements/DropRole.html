@@ -1,0 +1,38 @@
+---
+title: DROP ROLE statement
+description: Drops a role from a database.
+summary: Drops a role from a database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_droprole
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.DropRole" id="Statements.DropRole"></a><a name="kanchor371"></a>DROP ROLE</h1>
+            <p>The <span class="CodeFont">DROP&#160;ROLE</span>&#160;statement allows you to drop a role from your database.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DROP ROLE <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#RoleName">roleName</a></span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">roleName</p>
+                <p class="paramDefnFirst">The name of the role that you want to drop from your database.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>Dropping a role has the effect of removing the role from the database dictionary. This means that no session user can henceforth set that role (see <a href="SetRole.html"><span class="CodeFont">SET ROLE</span> statement</a>), and any existing sessions that have that role as the current role (see the <a href="../BuiltInFcns/CurrentRole.html"><span class="CodeFont">CURRENT_ROLE</span> function</a>) will now have a <span class="CodeFont">NULL CURRENT_ROLE</span>. </p>
+            <p>Dropping a role also has the effect of revoking that role from any user and role it has been granted to. See the <a href="Revoke.html"><span class="CodeFont">REVOKE</span> statement</a> for information on how revoking a role may impact any dependent objects.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP ROLE statsEditor_role;
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CreateRole.html"><span class="CodeFont">CREATE_ROLE</span></a> statement</li>
+                <li value="2"><a href="Grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
+                <li value="3"><a href="Revoke.html"><span class="CodeFont">REVOKE</span></a>&#160;statement</li>
+                <li value="4"><a href="SetRole.html"><span class="CodeFont">SET&#160;ROLE</span></a> statement</li>
+                <li value="5"><a href="../SystemTables/SysRoles.html"><span class="CodeFont">SYSROLES</span></a>&#160;system table</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

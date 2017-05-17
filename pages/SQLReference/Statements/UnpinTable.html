@@ -1,0 +1,50 @@
+---
+title: UNPIN TABLE statement
+description: Unpins a pinned table.
+summary: Unpins a pinned table.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_unpintable
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.UnpinTable" id="Statements.DropTable"></a><a name="kanchor46"></a>UNPIN&#160;TABLE</h1>
+            <p>The <span class="CodeFont">UNPIN&#160;TABLE</span> statement unpins a table, which means that the pinned (previously cached)&#160;version of the table no longer exists.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">UNPIN&#160;TABLE <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">The name of the pinned table that you want to unpin.</p>
+            </div>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE TABLE myTbl (col1 int, col2 varchar(10));
+0 rows inserted/updated/deleted
+splice&gt; INSERT INTO myTbl VALUES (1, 'One'), (2, 'Two');
+2 rows inserted/updated/deleted
+COL 1      |COL2
+---------------------
+1           One
+2           Two<br /><br />2 rows selected<br />splice&gt; PIN TABLE myTbl;
+0 rows inserted/updated/deleted
+splice&gt; SELECT * FROM myTbl --splice-properties pin=true
+&gt; ;
+COL 1      |COL2
+---------------------
+1           One
+2           Two<br /><br />2 rows selected<br />splice&gt; UNPIN&#160;TABLE&#160;myTbl;<br />splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;myTbl;<br />COL 1      |COL2
+---------------------
+1           One
+2           Two<br /><br />2 rows selected<br />splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;myTbl --splice-properties pin=true<br />&gt; ERROR:&#160;Pinned table read failed with exception 'Table or view not found in database'<br /></pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="CreateExternalTable.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span>&#160;statement</li>
+                <li value="2"><span class="CodeFont"><a href="CreateTable.html">CREATE&#160;TABLE</a></span>&#160;statement</li>
+                <li value="3"><span class="CodeFont"><a href="PinTable.html">PIN&#160;TABLE</a></span>&#160;statement</li>
+                <li value="4"><a href="../../Developers/TuningAndDebugging/QueryOptimization.html">Query Optimizations</a> in the <span class="ItalicFont">Splice Machine Developer's Guide</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

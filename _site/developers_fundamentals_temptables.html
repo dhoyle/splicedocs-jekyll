@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Describes how to use temporary tables with Splice Machine.">
+<meta name="keywords" content=" ">
+<title>Using Temporary Tables | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Using Temporary Tables page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Using Temporary Tables">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Fundamentals</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fundamentals_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_transactions.html">Running Transactions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_dates.html">Working with Date and Time Values</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_triggers.html">Using Database Triggers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_foreignkeys.html">Using Foreign Keys</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_auth.html">Roles and Authorization</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_vti.html">Using the Virtual Table Interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_externaltables.html">Using External Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hcatalog.html">Using HCatalog</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_mapreduce.html">Using the MapReduce API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hbase.html">Working with HBase</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Connecting with Your Database</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_connecting_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcdriver.html">Installing the ODBC Driver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_angular.html">Connecting with AngularJS/NodeJS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_java.html">Connecting with Java</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jruby.html">Connecting with JRuby</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jython.html">Connecting with Jython</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_scala.html">Connecting with Scala</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcc.html">Connecting with C and ODBC</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbeaver.html">Connecting DBeaver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbvisualizer.html">Connecting DBVisualizer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_cognos.html">Connecting Cognos</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_pentaho.html">Connecting Pentaho PDI</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_squirrel.html">Connecting SQuirreL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_tableau.html">Connecting Tableau</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Functions and Stored Procedures</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_writing.html">Writing Functions and Stored Procedures</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_storing.html">Storing/Updating Functions and Procs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_examples.html">Examples</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Ingesting and Streaming Data</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_ingestion_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_uploadtos3.html">Uploading Data to an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_configures3.html">Configuring an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_tpch1.html">Importing TPCH Datat</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_importing.html">Importing Your Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_hfiles.html">Importing Data as HFiles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkaproducer.html">Kafka - Creating a Producer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkafeed.html">Kafka - Configuring a Feed</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_mqttSpark.html">MQTT Spark Streaming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_storm.html">Apache Storm and Splice Machine</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Analytics and Machine Learning</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_analyticsandml_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_analyticsandml_zeppelin.html">Using Apache Zeppelin</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Tuning and Debugging</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_tuning_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_usingstats.html">Using Statistics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan.html">Using Explain Plan</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan_examples.html">Explain Plan Examples</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_logging.html">Logging</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_debugging.html">Debugging</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Using Temporary Tables</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Describes how to use temporary tables with Splice Machine.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/Developers/Fundamentals/developers_fundamentals_temptables.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor338"></a>Using Temporary Database Tables</h1>
+            <p>This topic describes how to use temporary tables with Splice Machine. </p>
+            <h2>About Temporary Tables</h2>
+            <p>You can use temporary tables when you want to temporarily save a result set for further processing. One common case for doing so is when you've constructed a result set by running multiple queries. You can also use temporary tables when performing complex queries that require extensive operations such as repeated multiple joins or sub-queries. Storing intermediate results in a temporary table can reduce overall processing time.</p>
+            <p>An example of using a temporary table to store intermediate results is a web-based application for travel reservations that allows customers to create several alternative itineraries, compare them, and then select one for purchase. Such an app could store each itinerary in a row in a temporary table, using table updates whenever the itinerary changes. When the customer decides upon a final itinerary, that temporary row is copied into a persistent table. And when the customer session ends, the temporary table is automatically dropped.</p>
+            <div class="noteNote">Creating and operating with temporary tables does consume resources, and can affect performance of your queries.</div>
+            <h2>Creating Temporary Tables</h2>
+            <p>Splice Machine provides two statements you can use to create a temporary table; we provide multiple ways to create temporary tables to maintain compatibility with third party Business Intelligence tools. </p>
+            <div class="noteRestriction">Splice Machine does not currently support creating temporary tables stored as external tables.</div>
+            <p>Each of these statements creates the same kind of temporary table, using different syntax</p>
+            <table summary="Statements for creating temporary tables">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Statement</th>
+                        <th>Syntax</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="CodeFont"><a href="../../SQLReference/Statements/CreateTempTable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span>
+                        </td>
+                        <td>
+                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <span class="ItalicFont"><a href="../../SQLReference/Identifiers/IdentifierTypes.html#TableName">table-Name</a></span> {
+      ( {<span class="ItalicFont">column-definition</span> | <span class="ItalicFont">Table-level constraint</span>}
+         [ , {<span class="ItalicFont">column-definition</span>} ] * )
+      ( <span class="ItalicFont">column-name</span> [ , <span class="ItalicFont">column-name</span> ] * ) 
+  }
+  [NOLOGGING | ON COMMIT PRESERVE ROWS];</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="CodeFont"><a href="../../SQLReference/Statements/DeclareGlobalTempTable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span>
+                        </td>
+                        <td>
+                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">DECLARE GLOBAL TEMPORARY TABLE <span class="ItalicFont"><a href="../../SQLReference/Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>
+   { <span class="ItalicFont">column-definition</span>[ , <span class="ItalicFont">column-definition</span>] * }  
+    [ON COMMIT PRESERVE ROWS ]
+    [NOT LOGGED];
+</pre>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="noteNote">Splice Machine generates a warning if you attempt to specify any other modifiers other than the <span class="CodeFont">NOLOGGING</span>,&#160;<span class="CodeFont">NOT&#160;LOGGED</span>, and <span class="CodeFont">ON&#160;COMMIT&#160;PRESERVE&#160;ROWS</span>&#160;modifiers shown above. </div>
+            <h2>Restrictions on Temporary Tables</h2>
+            <p>You can use temporary tables just like you do permanently defined database tables, with several important exceptions and restrictions that are noted in this section, including these:</p>
+            <ul>
+                <li value="1"><a href="#Operatio">Operational Limitations</a>
+                </li>
+                <li value="2"><a href="#Table">Table Persistence</a>
+                </li>
+            </ul>
+            <h3><a name="Operatio"></a>Operational Limitations</h3>
+            <p>Temporary tables have the following operational limitations; they:</p>
+            <ul>
+                <li value="1">exist only while a user session is alive</li>
+                <li value="2">are visible in system tables, but are otherwise not visible to other sessions or transactions</li>
+                <li value="3">cannot be altered using the <span class="CodeFont"><a href="../../SQLReference/Statements/AlterTable.html">ALTER&#160;TABLE</a></span>, <span class="CodeFont"><a href="../../SQLReference/Statements/RenameTable.html">RENAME&#160;TABLE</a></span>, or <span class="CodeFont"><a href="../../SQLReference/Statements/RenameColumn.html">RENAME&#160;COLUMN</a></span>&#160;statements</li>
+                <li value="4">do not get backed up</li>
+                <li value="5">cannot be used as data providers to views</li>
+                <li value="6">cannot be referenced by foreign keys in other tables</li>
+                <li value="7">are not displayed by the <a href="../../CmdLineReference/ShowCmds.html">show</a> command</li>
+            </ul>
+            <p>Also note that temporary tables persist across transactions in a session and are automatically dropped when a session terminates.</p>
+            <h3><a name="Table"></a>Table Persistence</h3>
+            <p>Here are two important notes about temporary table persistence. Temporary tables:</p>
+            <ul>
+                <li value="1">persist across transactions in a session</li>
+                <li value="2">are automatically dropped when a session terminates or expires</li>
+                <li value="3">can also be dropped with the <span class="CodeFont"><a href="../../SQLReference/Statements/DropTable.html">DROP&#160;TABLE</a></span>&#160;statement</li>
+            </ul>
+            <h2>Example</h2><pre class="Example" xml:space="preserve">create local temporary table temp_num_dt (
+   smallint_col smallint not null,   
+   int_col int,
+   primary key(smallint_col)) on commit preserve rows;
+insert into temp_num_dt values (1,1);
+insert into temp_num_dt values (3,2),(4,2),(5,null),(6,4),(7,8);
+insert into temp_num_dt values (13,2),(14,2),(15,null),(16,null),(17,8);
+select * from temp_num_dt;
+</pre>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="../../SQLReference/Statements/AlterTable.html">ALTER&#160;TABLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="2"><span class="CodeFont"><a href="../../SQLReference/Statements/CreateTempTable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="3"><span class="CodeFont"><a href="../../SQLReference/Statements/DeclareGlobalTempTable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="4"><span class="CodeFont"><a href="../../SQLReference/Statements/DropTable.html">DROP TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="5"><span class="CodeFont"><a href="../../SQLReference/Statements/RenameColumn.html">RENAME&#160;COLUMN</a></span>&#160;statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="6"><span class="CodeFont"><a href="../../SQLReference/Statements/RenameTable.html">RENAME&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="7"><span class="CodeFont"><a href="../../CmdLineReference/ShowCmds.html">SHOW</a></span>&#160;command </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+
+
+@mixin spanStyle ($bgColor: transparent,
+				  $fontFamily: $bodyfont-face,
+				  $fontWeight: inherit,
+				  $fontStyle: inherit,
+				  $color: inherit,
+				  $transform: none) {
+  background-color: $bgColor;
+  font-family: $fontFamily;
+  font-style: $fontStyle;
+  font-weight: $fontWeight;
+  color: $color;
+  text-transform: $transform;
+  
+  a:link {color: $link-color}
+  
+}
+
+span.AppFontCust {
+	@include spanStyle( $bgColor: $bgcolor-app )
+}
+
+span.AppFontCustCode {
+	@include spanStyle( $bgColor: $bgcolor-app, 
+						$fontFamily: $codefont-face ) 
+}
+
+span.AppCommand {
+	@include spanStyle ( $bgColor: $bgcolor-app,
+						 $fontFamily: $codefont-face,
+						 $fontWeight: $codefont-weight )
+}
+
+span.bodyFont {
+	@include spanStyle
+}
+
+span.BoldFont {
+	@include spanStyle( $fontWeight: $bodyfont-bold )
+}
+
+span.CalloutFont {
+	@include spanStyle( $color: $callout-color,
+						$fontWeight: $bodyfont-bold )
+}
+
+span.CodeFont{
+	@include spanStyle( $fontFamily: $codefont-face )
+}
+
+span.CodeBoldFont {
+	@include spanStyle( $fontFamily: $codefont-face,
+						$fontWeight: $codefont-weight )
+}
+
+span.CodeItalicFont {
+	@include spanStyle( $fontFamily: $codefont-face,
+						$fontWeight: $codefont-weight, 
+						$fontStyle: italic )
+}
+
+span.ConsoleLink {
+	@include spanStyle( $color: $consoleLink-color, 
+						$fontWeight: $bodyfont-bold )
+}
+
+span.noteEnterpriseNote {
+	@include spanStyle( $color: $note-enterprise-color, 
+						$fontWeight: $bodyfont-bold )
+}
+
+span.Example {
+	@include spanStyle( $bgColor: $bgcolor-example )
+}
+
+span.Footnote {
+	@include spanStyle( $color: $footnote-color);
+	font-size: 0.8em;
+	vertical-align: super;
+}
+
+span.Highlighted {
+	@include spanStyle( $bgColor: $highlight-color )
+}
+
+span.HighlightedCode {
+	@include spanStyle( $bgColor: $highlight-color,
+						$fontWeight: $codefont-weight,
+						$fontFamily: $codefont-face )
+}
+
+span.important {
+	@include spanStyle( $bgColor: $important-color,
+						$fontWeight: $bodyfont-bold )
+}
+
+span.ItalicFont {
+	@include spanStyle( $fontStyle: italic )
+}
+
+span.lowerCase
+{
+	text-transform: lowercase;
+}
+
+span.ShellCommand {
+	@include spanStyle( $bgColor: $bgcolor-shellcmd,
+						$fontWeight: $codefont-weight,
+						$fontFamily: $codefont-face )
+}
+
+span.upperCase
+{
+	text-transform: uppercase;
+}
+
+span.varName {
+	@include spanStyle( $bgColor: $varname-color,
+						$fontWeight: $codefont-weight,
+						$fontFamily: $codefont-face )
+}

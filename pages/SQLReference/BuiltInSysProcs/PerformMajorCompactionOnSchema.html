@@ -1,0 +1,39 @@
+---
+title: SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA built-in system procedure
+
+description: Built-in system procedure that performs a major compaction on a schema&#xD;.
+summary: Built-in system procedure that performs a major compaction on a schema&#xD;.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_compactschema
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.PerformMajorCompactionOnSchema" id="BuiltInSysProcs.PerformMajorCompactionOnSchema"></a><a name="kanchor88"></a>SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</samp> system procedure performs a major compaction on a schema. The compaction is performed on all of the tables in the schema, and on all of its index and constraint tables for each table in the schema.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA(<span class="ItalicFont">schemaName</span>)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">A string that specifies the Splice Machine schema name to which the table belongs.</p>
+            </div>
+            <div>
+                <p class="heading2">Usage</p>
+                <p class="body">Major compaction is synchronous, which means that when you invoke this procedure from the command line, your command line prompt won't be available again until the compaction completes, which can take a little time.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA('SPLICE');
+Statement executed.</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="PerformMajorCompactionOnTable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</span></a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

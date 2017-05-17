@@ -1,0 +1,123 @@
+---
+title: Release Notes for the Current Release of Splice Machine
+description: Release notes for the current release of Splice Machine.
+summary: Release notes for the current release of Splice Machine.
+keywords: 
+sidebar:  notes_sidebar
+permalink: notes_release
+folder: Notes
+---
+	<section>
+		<div class="TopicContent">
+            <div>
+                <h1>Release Notes for Splice Machine Version <span class="BasicVariablesSpliceReleaseVersion">2.5</span></h1>
+                <p>This topic lists any notes applicable to this release that may be of interest to developers. These can include previously unstated limitations or workarounds for problems that will be fixed in a future release.</p>
+                <div class="noteIcon">For information about important new features added in this and previous releases, see the <a href="CurrentUpdateNotes.html">Update Notes for Splice&#160;Machine Version 2.5</a>.<br /><br />The <span class="CodeFont">ReadMe</span> file included with the Splice Machine installers contains a list of specific bug fixes in this release.<br /></div>
+                <p>These are the notes and workarounds for known issues in our current release:</p>
+                <ul>
+                    <li value="1"><a href="#Spark" class="MCXref xref" xrefformat="{para}">Spark Restrictions on Cloudera</a>
+                    </li>
+                    <li value="2"><a href="#Changes" class="WithinBook">Changes to Bulk Import</a>
+                    </li>
+                    <li value="3"><a href="#Temporar">Temporary Tables and Backups</a>
+                    </li>
+                    <li value="4"><a href="#Natural">Natural Self Joins Not Supported</a>
+                    </li>
+                    <li value="5"><a href="#Columnar">Columnar screen output gets truncated</a>
+                    </li>
+                    <li value="6"><a href="#Timestam">TimeStamp date value limitations</a>
+                    </li>
+                    <li value="7"><a href="#ToDate()"><span class="CodeFont">ToDate</span>&#160;function problem with <span class="CodeFont">DD</span>&#160;designator</a>
+                    </li>
+                    <li value="8"><a href="#Dropping">Dropping Foreign Keys</a>
+                    </li>
+                    <li value="9"><a href="#Compacti">Compaction Queue Issue</a>
+                    </li>
+                    <li value="10"><a href="#AlterTbl">Alter Table Issues</a>
+                    </li>
+                    <li value="11"><a href="#LeadLag"><span class="CodeFont">Lead</span> and <span class="CodeFont">Lag</span> default value parameter</a>
+                    </li>
+                    <li value="12"><a href="#CREATET"><span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;with <span class="CodeFont">RIGHT&#160;OUTER&#160;JOIN</span></a>
+                    </li>
+                    <li value="13"><a href="#TooManyForeignKeyRefs">Import Performance Issues With&#160;Many Foreign Key References</a>
+                    </li>
+                </ul>
+                <div>
+                    <h2><a name="Spark"></a>Spark Restrictions on Cloudera</h2>
+                    <p>There is currently a significant restriction with respect to running independent (non-Splice)&#160;Spark jobs on a Cloudera cluster:</p>
+                    <div class="noteRestriction"> Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark:&#160;you cannot run independent Spark jobs on it.</div>
+                    <h2><a name="Changes"></a>Changes to Bulk Import</h2>
+                    <p class="noSpaceAbove">We've updated our data import technology for improved performance and better error handling. We <span class="BoldFont">strongly advise</span> that you visit the <a href="../Developers/IngestionAndStreaming/ImportingData.html">Importing Data</a> topic in this <span class="ItalicFont">Administrator's Guide</span> to review the changes. The same changes are noted in the reference pages for the two bulk import built-in system procedures:</p>
+                    <div class="noteChange">
+                        <p>The number of parameters and the meaning of certain parameters has changed in these built-in system procedures:</p>
+                        <ul class="bulletNested">
+                            <li class="CodeFont" value="1"><a href="../SQLReference/BuiltInSysProcs/ImportData.html">SYSCS_UTIL.IMPORT_DATA</a>
+                            </li>
+                            <li class="CodeFont" value="2"><a href="../SQLReference/BuiltInSysProcs/UpsertDataFromFile.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a>
+                            </li>
+                        </ul>
+                        <p>We <span class="BoldFont">strongly advise</span> that you visit the <a href="../Developers/IngestionAndStreaming/ImportingData.html">Importing Data</a> topic in this <span class="ItalicFont">Administrator's Guide</span> to review the changes. </p>
+                        <p>A few specifics that you should be aware of if you're upgrading from a previous version of Splice&#160;Machine:</p>
+                        <ul class="nested">
+                            <li value="1">The parameter previously named <span class="CodeFont">failedBadRecordCount</span> is now named <span class="CodeFont">badRecordsAllowed</span>. The meaning of this parameter value is now different:<ul class="bullet"><li value="1"><span class="BoldFont">Supply a value of <span class="CodeBoldFont">-1</span> for <span class="CodeBoldFont">badRecordsAllowed</span> to continue importing records no matter how many bad records are encountered.</span> (In previous versions of Splice&#160;Machine, a value of <span class="CodeFont">0</span> was used for this purpose).</li><li value="2"><span class="BoldFont">Supply a value of <span class="CodeBoldFont">0</span> for <span class="CodeBoldFont">badRecordsAllowed</span> to halt the import process as soon as a single bad record is encountered.</span></li></ul></li>
+                            <li value="2">How bulk imports handle generated column values and white space is now spelled out in detail in the documentation</li>
+                            <li value="3">We strongly recommend that you explicitly specify <span class="CodeFont">DATE</span> and <span class="CodeFont">TIMESTAMP</span>&#160;column formats when importing data; previous versions of Splice Machine could handle more formats by default.</li>
+                        </ul>
+                    </div>
+                </div>
+                <h2><a name="Natural"></a>Natural Self Joins Not Supported</h2>
+                <p>Splice Machine does not currently support <span class="CodeFont">NATURAL SELF JOIN</span> operations.</p>
+                <h2><a name="Temporar"></a>Temporary Tables and Backups</h2>
+                <p>There's a subtle issue with performing a backup when you're using a temporary table in your session:&#160;although the temporary table is (correctly)&#160;not backed up, the temporary table's entry in the system tables will be backed up. When the backup is restored, the table entries will be restored, but the temporary table will be missing.</p>
+                <p>There's a simple workaround:</p>
+                <ol>
+                    <li value="1">Exit your current session, which will automatically delete the temporary table and its system table entries.</li>
+                    <li value="2">Start a new session (reconnect to your database).</li>
+                    <li value="3">Start your backup job.</li>
+                </ol>
+                <h2><a name="Columnar"></a>Columnar screen output gets truncated</h2>
+                <p>When using <span class="CodeFont">Explain Plan</span> and other commands that generate lengthy output lines, you may see some output columns truncated on the screen.</p>
+                <div class="noteWorkaround">Use the <span class="AppCommand">maximumdisplaywidth=0</span>command to force all column contents to be displayed.</div>
+                <h2><a name="Timestam"></a>TimeStamp date value limitations</h2>
+                <p>Dates in <span class="CodeFont"><a href="../SQLReference/DataTypes/TimeStamp.html">TIMESTAMP Data Type</a></span> values only work correctly when limited to this range of date values:</p>
+                <div class="preWrapper"><pre>1678-01-01 to 2261-12-31</pre>
+                </div>
+                <h2><a name="ToDate()"></a><span class="CodeFont">ToDate</span>&#160;function problem with DD&#160;designator</h2>
+                <p>The <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/ToDate.html">TO_DATE</a></span>&#160;function currently returns the wrong date if you specify <span class="CodeFont">DD</span> for the day field; however, specifying <span class="CodeFont">dd</span> instead works properly.</p>
+                <div class="noteWorkaround">Use <span class="CodeFont">dd</span> instead of <span class="CodeFont">DD</span>.</div>
+                <h2><a name="Dropping"></a>Dropping Foreign Keys</h2>
+                <p>The <span class="CodeFont">DROP&#160;FOREIGN&#160;KEY</span>&#160;clause of the <span class="CodeFont"><a href="../SQLReference/Statements/AlterTable.html">ALTER TABLE</a></span>&#160;statement is currently unavailable in Splice Machine. </p>
+                <div class="noteWorkaround">Re-create the table without the foreign key constraint.</div>
+                <h2><a name="Compacti"></a>Compaction Queue Issue</h2>
+                <p>We have seen a problem in which the compaction queue grows quite large after importing large amounts of data, and are investigating a solution; for now, please use the following workaround.</p>
+                <div class="noteWorkaround">Run a full compaction on tables into which you have imported a large amount of data, using the <span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/PerformMajorCompactionOnTable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
+                <div>
+                    <h2><a name="AlterTbl"></a>Alter Table Issues</h2>
+                    <p>Using <span class="CodeFont">ALTER TABLE</span> against <span class="CodeFont">PRIMARY KEY</span> columns does not currently work properly.</p>
+                </div>
+                <h2><a name="LeadLag"></a>Default Value for Lead and Lag Functions</h2>
+                <p>This release of Splice Machine features several new window functions, including <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Lead.html">LEAD</a></span> and <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Lag.html">LAG</a></span>. Currently, our implementations of <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Lead.html">LEAD</a></span> and <span class="CodeFont"><a href="../SQLReference/BuiltInFcns/Lag.html">LAG</a></span> do not support the default value parameter that you can specify in some other implementations. We expect to add this parameter in future releases.</p>
+                <h2><a name="CREATET"></a>CREATE&#160;TABLE&#160;AS&#160;with RIGHT&#160;OUTER&#160;JOIN</h2>
+                <p>There is a known problem using the <span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;form of the <span class="CodeFont"><a href="../SQLReference/Statements/CreateTable.html">CREATE TABLE</a></span>&#160;statement .when the data to be inserted into the new table results from a <span class="CodeFont"><a href="../SQLReference/JoinOps/RightOuterJoin.html">RIGHT OUTER JOIN</a></span> operation. For example, the following statement currently produces a table with all <span class="CodeFont">NULL</span>&#160;values:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">CREATE&#160;TABLE&#160;t3 AS
+   SELECT&#160;t1.a,t1.b,t2.c,t2.d
+   FROM&#160;t1 RIGHT&#160;OUTER&#160;JOIN&#160;t2 ON t1.b = t2.c
+   WITH&#160;DATA;</pre>
+                </div>
+                <p>There's a simple workaround for now:&#160;create the table without inserting the data, and then insert the data; for example:</p>
+                <div class="preWrapper"><pre class="Example" xml:space="preserve">CREATE&#160;TABLE&#160;t3 AS
+   SELECT&#160;t1.a,t1.b,t2.c,t2.d
+   FROM&#160;t1 RIGHT&#160;OUTER&#160;JOIN&#160;t2 ON t1.b = t2.c
+   WITH&#160;NO DATA;
+
+INSERT&#160;INTO&#160;t3
+   SELECT&#160;t1.a,t1.b,t2.c,t2.d 
+   FROM t1 RIGHT&#160;OUTER&#160;JOIN&#160;t2 ON t1.b = t2.c;</pre>
+                </div>
+                <h2><a name="TooManyForeignKeyRefs"></a>Import Performance Issues With&#160;Many Foreign Key References</h2>
+                <p>The presence of many foreign key references on a table will slow down imports
+of data into that table.</p>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

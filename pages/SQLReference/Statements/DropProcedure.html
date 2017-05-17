@@ -1,0 +1,55 @@
+---
+title: DROP PROCEDURE statement
+description: Drops a procedure from a database.
+summary: Drops a procedure from a database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_dropprocedure
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.DropProcedure" id="Statements.DropProcedure"></a><a name="kanchor563"></a>DROP PROCEDURE</h1>
+            <p>The <span class="CodeFont">DROP&#160;PROCEDURE</span>&#160;statement drops a procedure from your database. Procedures are added to the database with the <span class="CodeFont"><a href="CreateProcedure.html">CREATE&#160;PROCEDURE</a></span>&#160;statement.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">DROP PROCEDURE&#160;<span class="ItalicFont">procedure-name</span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">procedure-Name</p>
+                <p class="paramDefnFirst">The name of the procedure that you want to drop from your database.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>Use this statement to drop a statement from your database. It is valid only if there is exactly one procedure instance with the <span class="ItalicFont">procedure-name</span> in the schema. The specified procedure can have any number of parameters defined for it.</p>
+            <p>An error will occur in any of the following circumstances:</p>
+            <ul>
+                <li value="1">If no procedure with the indicated name exists in the named or implied schema
+			(the error is SQLSTATE 42704)</li>
+                <li value="2">If there is more than one specific instance of the procedure in the named or
+			implied schema</li>
+                <li value="3">If you try to drop a user-defined procedure that is invoked in the
+			<span class="ItalicFont"><a href="GenerationClause.html">generation-clause</a></span> of a generated column</li>
+                <li value="4">If you try to drop a user-defined procedure that is invoked in a view</li>
+            </ul>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP PROCEDURE&#160;SALES.TOTAL_REVENUE;
+0 rows inserted/updated/deleted
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../ArgMatching/ArgumentMatching.html">Argument matching</a>
+                </li>
+                <li value="2"><a href="CreateProcedure.html"><span class="CodeFont">CREATE_PROCEDURE</span></a> statement</li>
+                <li value="3"><a href="../BuiltInFcns/CurrentUser.html"><span class="CodeFont">CURRENT_USER</span></a> function</li>
+                <li value="4"><a href="../DataTypes/Intro.NumericTypes.html">Data Types</a>
+                </li>
+                <li value="5"><a href="../Identifiers/IdentifierTypes.html#SchemaName">Schema Name</a>
+                </li>
+                <li value="6"><a href="../Identifiers/Intro.Identifiers.html">SQL Identifier</a>
+                </li>
+                <li value="7"><a href="../BuiltInFcns/SessionUser.html"><span class="CodeFont">SESSION_USER</span></a> function</li>
+                <li value="8"><a href="../BuiltInFcns/User.html"><span class="CodeFont">USER</span></a> function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

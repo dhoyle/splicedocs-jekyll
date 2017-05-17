@@ -1,0 +1,91 @@
+---
+title: RESULT OFFSET and FETCH FIRST clauses
+description: Clauses that provides a way to skip the N  first rows in a result set before starting to return any  rows and/or to limit the number of rows returned in the result set. 
+summary: Clauses that provides a way to skip the N  first rows in a result set before starting to return any  rows and/or to limit the number of rows returned in the result set. 
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_clauses_resultoffset
+folder: SQLReference/Clauses
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Clauses.ResultOffset" id="Clauses.ResultOffset"></a><a name="kanchor427"></a>RESULT OFFSET and <a name="kanchor428"></a>FETCH FIRST</h1>
+            <p> The <span class="ItalicFont">result offset clause</span> provides a way to skip the N
+ first rows in a result set before starting to return any
+ rows. </p>
+            <p>The <span class="ItalicFont">fetch first clause</span>, which can be combined with
+ the <span class="ItalicFont">result offset clause</span>, limits the number of rows
+ returned in the result set. The <span class="ItalicFont">fetch first clause</span> can
+ sometimes be useful for retrieving only a few rows from an
+ otherwise large result set, usually in combination with an <span class="CodeFont">ORDER BY</span>
+ clause. Use of this clause can increase efficienty and make programming simpler.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">OFFSET { <span class="ItalicFont">integer-literal</span> | ? }
+       {ROW | ROWS}
+</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">integer-literal</p>
+                <p class="paramDefnFirst">An integer value that specifies the number of rows to skip. The default value is <span class="CodeFont">0</span>. </p>
+                <p class="paramDefn">If non-zero, this must be a positive integer value. If you specify a value greater than the number of rows in the underlying result set, no rows are returned.</p>
+                <p class="paramDefnFirst">&#160;</p>
+            </div>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">FETCH { FIRST | NEXT } 
+   [<span class="ItalicFont">integer-literal</span> | ? ]
+   {ROW | ROWS} ONLY
+</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">integer-literal</p>
+                <p class="paramDefnFirst">An integer value that specifies the maximum number of rows to return in the result set. The default value is <span class="CodeFont">1</span>.</p>
+                <p class="paramDefn">This must be a positive integer value greater than or equal to <span class="CodeFont">1</span>. </p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>Note that:</p>
+            <ul>
+                <li value="1"><span class="CodeFont">ROW</span> and <span class="CodeFont">ROWS</span>&#160;are synonymous</li>
+                <li value="2"><span class="CodeFont">FIRST</span>&#160;and <span class="CodeFont">NEXT</span>&#160;are synonymous</li>
+            </ul>
+            <p>Be sure to specify the <span class="CodeFont">ORDER BY</span> clause if you expect to retrieve a sorted result set. </p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- Fetch the first row of T
+SELECT * FROM T FETCH FIRST ROW ONLY;
+
+   -- Sort T using column I, then fetch rows 11 through 20
+   --   of the sorted rows (inclusive)
+SELECT * FROM T ORDER BY I 
+         OFFSET 10 ROWS
+         FETCH NEXT 10 ROWS ONLY;
+
+   -- Skip the first 100 rows of T
+   -- If the table has fewer than 101 records, 
+   --   an empty result set is returned
+SELECT * FROM T OFFSET 100 ROWS;
+
+   -- Use of ORDER BY and FETCH FIRST in a subquery
+SELECT DISTINCT A.ORIG_AIRPORT, B.FLIGHT_ID FROM 
+   (SELECT FLIGHT_ID, ORIG_AIRPORT 
+       FROM FLIGHTS 
+       ORDER BY ORIG_AIRPORT DESC 
+       FETCH FIRST 40 ROWS ONLY) 
+    AS A, FLIGHTAVAILABILITY AS B 
+   WHERE A.FLIGHT_ID = B.FLIGHT_ID;
+
+   -- JDBC (using a dynamic parameter):
+PreparedStatement p = 
+   con.prepareStatement("SELECT * FROM T 
+                         ORDER BY I 
+                         OFFSET ? ROWS");
+   p.setInt(1, 100);
+ResultSet rs = p.executeQuery();
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="Limit.html">LIMIT n</a></span>&#160;clause</li>
+                <li value="2"><a href="../Statements/Select.html"><span class="CodeFont">SELECT</span></a> statement</li>
+                <li value="3"><span class="CodeFont"><a href="TopN.html">TOP n</a></span>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

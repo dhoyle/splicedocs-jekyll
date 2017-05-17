@@ -1,0 +1,161 @@
+
+
+@mixin listItems($margin: (1.1em 0 1.0em 0),
+                 $padding: (0, 0, 0, 0),
+                 $fontFamily: $bodyfont-face,
+                 $fontWeight: normal)
+{
+  orphans: 0;
+  widows: 0;
+  margin: $margin;
+  padding: $padding;
+  font-family: $fontFamily;
+  font-weight: $fontWeight;
+
+  p {
+    margin-top: 0;
+  }
+
+  p.topLevel {
+    margin: (18px 0 2px 0);
+    font-weight: $fontWeight;
+  }
+}
+
+
+@mixin lists($listImage: none,
+			 $listStyle: decimal,
+			 $fontFamily: $bodyfont-face,
+			 $fontWeight: normal,
+			 $margin: (1em 0 1em 0),
+			 $padding: (0 0 0 40px)
+)
+{
+	display: block;
+	list-style-image: $listImage;
+	list-style-type: $listStyle;
+	font-style: normal;
+	font-family: $fontFamily;
+	font-weight: $fontWeight;
+	margin: $margin;
+	padding: $padding;
+}
+
+
+
+li {
+  @include listItems;
+}
+
+li.CodeFont {
+  @include listItems($fontFamily: #codefont-face)
+ }
+
+li.codeList {
+  @include listItems($fontFamily: $codefont-face,
+                     $padding: (3px 0 3px 0))
+}
+
+li.nested {
+  @include listItems($margin: (0 0 1.0em 0))
+}
+
+li.topSpace {
+  @include listItems($padding: (1em 0 0 0) )
+}
+
+ol {
+	@include lists;
+}
+
+ol.boldFont {
+  @include lists($fontWeight: $bodyfont-bold );
+
+  li {  @include listItems($fontWeight: $bodyfont-bold)
+	}
+}
+
+ol.LowerAlpha,
+ol.LowerAlphaPlainFont {
+	@include lists($listStyle: lower-alpha);
+}
+
+ol.LowerRoman {
+	@include lists($listStyle: lower-roman);
+}
+
+ol.nested {
+	@include lists($listStyle: lower-alpha,
+				   $margin: (1em 0 1em 80px) )
+}
+
+ul,
+ul.bullet,
+ul.plainFont {
+	@include lists($listImage: url('/images/Bullet1.png'),
+				   $listStyle: disc,
+				   $margin: (1em 0 1em 0px) )
+}
+
+ul.boldFont {
+  @include lists($fontWeight: $bodyfont-bold )
+}
+
+ul.bulletCell {
+  @include lists($listStyle: disc,
+			   $margin: (0 0 1em 5px) );
+	padding-left: 10px;
+}
+
+ul.bulletCell li {
+	@include listItems( $margin: (1em 0 1em 2px) )
+}
+
+ul.bulletCellNoTopSpace {
+  @include lists($listStyle: disc,
+			   $margin: (0 0 1em 5px)
+			  );
+	padding-left: 10px;
+}
+
+ul.bulletCellNoTopSpace li {
+	@include listItems( $margin: (0 0 1em 2px) )
+}
+
+ul.codeList {
+	@include lists($listImage: none,
+				   $listStyle: disc,
+				   $fontFamily: $codefont-face
+				   )
+}
+
+ul.codeListNested {
+	@include lists($listImage: none,
+				   $listStyle: disc,
+				   $fontFamily: $codefont-face,
+				   $margin: (2px 0 1em 0),
+				   $padding: (3px 0 3px 0)
+				   )
+}
+
+ul.nested,
+ul.bulletNested {
+	@include lists($listImage: url('/images/Bullet1.png'),
+				   $listStyle: disc,
+				   $margin: (1em 0 1em 40px)
+				   )
+}
+
+ul.SecondLevel {
+	@include lists($listImage: url('/images/Bullet1.png'),
+				   $listStyle: disc,
+				   $margin: (2px 0 1em 0)
+				   )
+}
+
+ul.ThirdLevel {
+	@include lists($listImage: url('/images/Bullet1.png'),
+				   $listStyle: disc,
+				   $margin: (2px 0 1em 0)
+				   )
+}

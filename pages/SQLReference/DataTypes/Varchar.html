@@ -1,0 +1,41 @@
+---
+title: VARCHAR data type
+description: The VARCHAR&#160;data type provides for variable-length storage of strings.
+summary: The VARCHAR&#160;data type provides for variable-length storage of strings.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_datatypes_varchar
+folder: SQLReference/DataTypes
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="DataTypes.Varchar" id="DataTypes.Varchar"></a><a name="kanchor341"></a>VARCHAR</h1>
+            <p>The <span class="CodeFont">VARCHAR</span> data type provides for variable-length storage of strings.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">{ VARCHAR | CHAR VARYING | CHARACTER VARYING }(<span class="ItalicFont">length</span>)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">length</p>
+                <p class="paramDefnFirst">An unsigned integer constant. The maximum length for a <span class="CodeFont">VARCHAR</span> string is <span class="CodeFont">32,672</span> characters.</p>
+            </div>
+            <p class="heading2">Corresponding Compile-time Java Type</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">java.lang.String</pre>
+            </div>
+            <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">VARCHAR</pre>
+            </div>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">VARCHAR(2048);</pre>
+            </div>
+            <p class="heading2">Usage Notes</p>
+            <p>Here are several notes for the <span class="CodeFont">VARCHAR</span>&#160;data type:</p>
+            <ul>
+                <li value="1">Splice Machine does not pad a <span class="CodeFont">VARCHAR</span> value whose length is less than specified.</li>
+                <li value="2">Splice Machine truncates spaces from a string value when a length greater than the <span class="CodeFont">VARCHAR</span> expected is provided. Characters other than spaces are not truncated, and instead cause an exception to be raised. </li>
+                <li value="3">When <a href="../Expressions/BooleanExpressions.html">comparison boolean operators</a> are applied to <span class="CodeFont">VARCHARs</span>, the lengths of the operands are not altered, and spaces at the end of the values are ignored.</li>
+                <li value="4">When <span class="CodeFont">CHARs</span> and <span class="CodeFont">VARCHARs</span> are mixed in expressions, the shorter value is padded with spaces to the length of the longer value.</li>
+                <li value="5">The type of a string constant is <span class="CodeFont">CHAR</span>, not <span class="CodeFont">VARCHAR</span>.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,145 @@
+---
+title: BLOB data type
+description: The BLOB (binary large object) data type is used for varying-length binary strings that can be up to 2,147,483,647 characters long.
+summary: The BLOB (binary large object) data type is used for varying-length binary strings that can be up to 2,147,483,647 characters long.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_datatypes_blob
+folder: SQLReference/DataTypes
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="DataTypes.Blob" id="DataTypes.Blob"></a><a name="kanchor163"></a>BLOB</h1>
+            <p>A <span class="CodeFont">BLOB</span> (binary large object) value is a varying-length binary string that can be up to 2GB&#160;(<span class="CodeFont">2,147,483,647</span>) characters long. </p>
+            <div class="noteRestriction">If you're using a BLOB with the 32-bit version of our ODBC&#160;driver, the size of the BLOB&#160;is limited to 512 MB, due to address space limitations.</div>
+            <p>Like other binary types, <span class="CodeFont">BLOB</span>strings are not associated with a code page. In addition, <span class="CodeFont">BLOB</span>strings do not hold character data.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{BLOB | BINARY&#160;LARGE OBJECT} [ ( <span class="ItalicFont">length</span> [{K |M |G}] ) ]</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">length</p>
+                <p class="paramDefnFirst">An unsigned integer constant that specifies the number of characters in the <span class="CodeFont">BLOB</span> unless you specify one of the suffixes you see below, which change the meaning of the <span class="ItalicFont">length</span> value. If you do not specify a length value, it defaults to two gigabytes (2,147,483,647).</p>
+                <p class="paramName">K</p>
+                <p class="paramDefnFirst">If specified, indicates that the length value is in multiples of 1024 (kilobytes).</p>
+                <p class="paramName">M</p>
+                <p class="paramDefnFirst">If specified, indicates that the length value is in multiples of 1024*1024 (megabytes).</p>
+                <p class="paramName">G</p>
+                <p class="paramDefnFirst">If specified, indicates that the length value is in multiples of 1024*1024*1024&#160;(gigabytes).</p>
+            </div>
+            <p class="heading2">Corresponding Compile-time Java Type</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">java.sql.Blob</pre>
+            </div>
+            <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">BLOB</pre>
+            </div>
+            <p class="heading2">Usage Notes</p>
+            <p>Use the <span class="ItalicFont">getBlob</span> method on the <span class="ItalicFont">java.sql.ResultSet</span> to retrieve a <span class="CodeFont">BLOB</span> handle to the underlying data.</p>
+            <p>There are a number of restrictions on using <span class="CodeFont">BLOB</span> and <span class="CodeFont">CLOB</span> / <span class="CodeFont">TEXT</span> objects, which we refer to as LOB-types:</p>
+            <ul>
+                <li value="1">LOB-types cannot be compared for equality (<span class="CodeFont">=</span>) and non-equality (<span class="CodeFont">!=</span>, <span class="CodeFont">&lt;&gt;</span>).</li>
+                <li value="2">LOB-typed values cannot be ordered, so <span class="CodeFont">&lt;, &lt;=, &gt;, &gt;=</span> tests are not supported.</li>
+                <li value="3">LOB-types cannot be used in indexes or as primary key columns.
+</li>
+                <li value="4"><span class="CodeFont">DISTINCT</span>, <span class="CodeFont">GROUP BY</span>, and <span class="CodeFont">ORDER BY</span> clauses are also prohibited on LOB-types.
+</li>
+                <li value="5">LOB-types cannot be involved in implicit casting as other base-types.</li>
+            </ul>
+            <p class="heading2">Example</p>
+            <p>Using an <span class="CodeFont"><a href="../Statements/Insert.html">INSERT</a></span> statement to put <span class="CodeFont">BLOB</span> data into a table has some limitations  if you need to cast a long string constant to a <span class="CodeFont">BLOB</span>. You may be better off using a binary stream, as in the following code fragment.</p>
+            <div class="preWrapperWide"><pre class="Example">package com.splicemachine.tutorials.blob;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ExampleInsertBlob {
+    
+    /**
+     * Example of inserting a blob using JDBC
+     * 
+     * @param args[0] - Image file to insert
+     * @param args[1] - JDBC URL - optional - defaults to localhost
+     */
+    public static void main(String[] args) {
+        Connection conn = null;
+        Statement statement = null;
+        ResultSet rs = null;
+        
+        if(args.length == 0) {
+            System.out.println("You must pass in an file (like an image) to be loaded");
+        }
+        
+        try {
+            
+            String imageFileToLoad = args[0];
+            
+            //Default JDBC Connection String - connects to local database
+            String dbUrl = "jdbc:splice://localhost:1527/splicedb;user=splice;password=true";
+            
+            //Checks to see if a JDBC URL is passed in
+            if(args.length &gt; 1) {
+                dbUrl = args[1];
+            } 
+            
+            //For the JDBC Driver - Use the Splice Machine Client Driver
+            Class.forName("com.splicemachine.db.jdbc.ClientDriver");
+            
+            //Connect to the databae
+            conn = DriverManager.getConnection(dbUrl);
+            
+            //Create a statement
+            statement = conn.createStatement();
+            
+            //Create a table
+            statement.execute("CREATE TABLE IMAGES(a INT, test BLOB)");
+            
+
+            //Create an input stream
+            InputStream fin = new FileInputStream(imageFileToLoad);
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO IMAGES VALUES (?, ?)");
+            ps.setInt(1, 1477);
+            
+            // - set value of input parameter to the input stream
+            ps.setBinaryStream(2, fin);
+            ps.execute();
+            
+            ps.close();
+            
+            //Lets get the count of records
+            rs = statement.executeQuery("select count(1) from IMAGES");
+            if(rs.next()) { 
+                System.out.println("count=[" + rs.getInt(1) + "]"); 
+            }
+
+        } catch (ClassNotFoundException cne) {
+            cne.printStackTrace();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            if(rs != null) {
+                try { rs.close(); } catch (Exception ignore) { }
+            }
+            if(statement != null) {
+                try { statement.close(); } catch (Exception ignore) { }
+            }
+            if(conn != null) {
+                try { conn.close(); } catch (Exception ignore) { }
+            }
+            
+        }
+    }
+   
+}</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

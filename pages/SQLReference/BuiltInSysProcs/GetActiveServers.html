@@ -1,0 +1,58 @@
+---
+title: SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS built-in system procedure
+
+description: Built-in system procedure that displays the number of active servers in the Splice cluster.&#xD;
+summary: Built-in system procedure that displays the number of active servers in the Splice cluster.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getactiveservers
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.GetActiveServers" id="BuiltInSysProcs.GetActiveServers"></a><a name="kanchor402"></a>SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS</samp> system procedure displays the active servers in the Splice cluster. </p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The displayed results of calling <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS</span> include these values:</p>
+            <table summary=" summary=&quot;Columns in Get_Active_Servers results display&quot;">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">HOSTNAME
+                    </td>
+                        <td>The host on which the server is running.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">PORT
+                    </td>
+                        <td>
+                            <p>The port on which the server is listening for requests.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">STARTCODE</td>
+                        <td>The system identifier for the Region Server.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS();
+<span class="BoldFont">HOSTNAME&#160;|PORT&#160; |STARTCODE</span>
+-------------------------------------
+localhost |56412 |1447433590803
+
+1 row selected</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

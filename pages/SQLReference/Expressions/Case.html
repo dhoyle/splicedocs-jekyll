@@ -1,0 +1,40 @@
+---
+title: CASE Expression
+description: Syntax for and examples of CASE expressions in Splice Machine SQL.
+summary: Syntax for and examples of CASE expressions in Splice Machine SQL.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_expressions_case
+folder: SQLReference/Expressions
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Expressions.Case" id="Expressions.Case"></a><a name="kanchor415"></a>CASE Expression</h1>
+            <p>The <span class="CodeFont">CASE</span> expression can be used for conditional expressions in Splice Machine.</p>
+            <p class="heading2">Syntax</p>
+            <p>You can place a <span class="CodeFont">CASE</span> expression anywhere an expression is allowed. It chooses an expression to evaluate based on a boolean test.</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CASE 
+  WHEN <span class="ItalicFont">booleanExpression</span> THEN <span class="ItalicFont">thenExpression</span> 
+  [ WHEN <span class="ItalicFont">booleanExpression</span>
+    THEN <span class="ItalicFont">thenExpression</span> ]...  
+    ELSE <span class="ItalicFont">elseExpression</span> 
+END</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName"><span class="ItalicFont">thenExpression</span> and <span class="ItalicFont">elseExpression</span></p>
+                <p class="paramDefnFirst">Both are both that must be type-compatible. For built-in types, this means that the types must be the same or a built-in broadening conversion must exist between the types.</p>
+            </div>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- returns 3
+ CASE WHEN 1=1 THEN 3 ELSE 4 END;
+ 
+  -- returns 7
+ CASE
+   WHEN 1 = 2 THEN 3
+   WHEN 4 = 5 THEN 6
+   ELSE 7
+ END;</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

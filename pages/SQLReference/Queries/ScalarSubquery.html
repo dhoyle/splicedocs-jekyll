@@ -1,0 +1,45 @@
+---
+title: Scalar Subquery
+description: A subquery that returns a single row with a single column.
+summary: A subquery that returns a single row with a single column.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_queries_scalarsubquery
+folder: SQLReference/Queries
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Queries.ScalarSubquery" id="Queries.ScalarSubquery"></a><a name="kanchor99"></a>Scalar Subquery</h1>
+            <p>A <span class="ItalicFont">ScalarSubquery</span> turns a <span class="ItalicFont"><a href="../Expressions/Select.html">SelectExpression</a></span> result
+		into a scalar value because it returns only a single row and column value.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">( <span class="ItalicFont"><a href="Query.html">Query</a></span>
+  [ <span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span> ]
+  [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">result offset clause</a></span> ]
+  [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">fetch first clause</a></span> ]
+)</pre>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>You can place a <span class="ItalicFont">ScalarSubquery</span> anywhere an <span class="ItalicFont">Expression</span> is permitted. The query must evaluate to a single row with a single column.</p>
+            <p>Scalar subqueries are also called <span class="ItalicFont">expression subqueries</span>.</p>
+            <p class="heading2">Examples</p>
+            <p class="body">The <span class="CodeFont">AVG</span>&#160;function always returns a single value; thus, this is a scalar subquery:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+SELECT NAME, COMM
+  FROM STAFF
+  WHERE EXISTS
+    (SELECT AVG(BONUS + 800)
+       FROM EMPLOYEE
+       WHERE COMM &lt; 5000
+       AND EMPLOYEE.LASTNAME = UPPER(STAFF.NAME)
+    );
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
+                <li value="2"><a href="../Expressions/Select.html"><span class="CodeFont">SELECT</span></a>&#160;expression</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

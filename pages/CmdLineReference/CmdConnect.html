@@ -1,0 +1,43 @@
+---
+title: Connect command
+description: Connect to a database via its URL.
+summary: Connect to a database via its URL.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_connect
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor120"></a>Connect Command</h1>
+            <p>The <span class="AppCommand">connect</span> command connects to the database specified by <span class="CodeFont">ConnectionURLString</span>. It connects by issuing a <span class="CodeFont">getConnection</span> request with the specified URL, using <span class="CodeFont">java.sql.DriverManager </span>or <span class="CodeFont">javax.sql.DataSource </span>to set the current connection to that URL.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CONNECT ConnectionURLString
+   [ AS Identifier ]</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">ConnectionURLString</p>
+                <p class="paramDefnFirst">The URL&#160;of the database.</p>
+                <p class="paramName">Identifier</p>
+                <p class="paramDefnFirst">The optional name that you want to assign to the connection. </p>
+            </div>
+            <p>If the connection succeeds, the connection becomes the current one and all further commands are processed against the new, current connection.</p>
+            <p class="heading2">Example 1:&#160;Connecting on a Cluster</p>
+            <p> If you are running Splice Machine on a cluster, connect from a machine that is NOT&#160;running an HBase RegionServer and specify the IP&#160;address of a <span class="HighlightedCode">regionServer</span> node, e.g. <span class="AppCommand">10.1.1.110</span>. </p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://<span class="Highlighted">regionServer</span>:1527/splicedb';
+</pre>
+            </div>
+            <p>Here are two specific examples, one of which includes a user ID&#160;and password in the connect string:</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;connect 'jdbc:splice://10.1.1.110:1527/splicedb';<br /><br />splice&gt;&#160;connect 'jdbc:splice://10.1.1.110:1527/splicedb;user=splice;password=admin';</pre>
+            </div>
+            <p class="heading2">Example 2:&#160;Connecting to the Standalone Version</p>
+            <p>If you're using the standalone version of Splice Machine, specify <span class="HighlightedCode">localhost</span> instead.</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://localhost:1527/splicedb';
+</pre>
+            </div>
+            <p>Here is an example that includes a user ID&#160;and password in the connect string:</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;connect 'jdbc:splice://localhost:1527/splicedb;user=joey;password=bossman';</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

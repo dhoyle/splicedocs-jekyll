@@ -1,0 +1,110 @@
+---
+title: CREATE VIEW statement
+description: Creates a view, which is a virtual table formed by a query.
+summary: Creates a view, which is a virtual table formed by a query.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_createview
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateView" id="Statements.CreateView"></a><a name="kanchor547"></a>CREATE VIEW</h1>
+            <p>Views are virtual tables formed by a query. A view is a dictionary object that you can use until you drop it. Views are not updatable.</p>
+            <p>If a qualified view name is specified, the schema name cannot begin with <span class="ItalicFont">SYS</span>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">
+CREATE VIEW <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ViewName">view-Name</a></span>
+   [ ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> [, <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>] * ) ]
+   AS <span class="ItalicFont"><a href="../Queries/Query.html">Query</a></span> [ <span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span> ]<span>
+     [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">RESULT&#160;OFFSET&#160;clause</a></span> ]
+     [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">FETCH&#160;FIRST clause</a></span> ] </span></pre>
+            </div>
+            <p>A view definition can contain an optional view column list to explicitly name the columns in the view. If there is no column list, the view inherits the column names from the underlying query. All columns in a view must be uniquely named.</p>
+            <div class="paramList">
+                <p class="paramName">view-Name</p>
+                <p class="paramDefnFirst">The name to assign to the view.</p>
+                <p class="paramName">Simple-column-Name*</p>
+                <p class="paramDefnFirst">An optional list of names to be used for columns of the view. If not given, the column names are deduced from the query.</p>
+                <p class="paramDefn">The maximum number of columns in a view is <span class="CodeFont"><span class="LimitationsMaxColumnsInView">5000</span></span>.</p>
+                <p class="paramName">AS&#160;Query [ORDER&#160;BY&#160;clause]</p>
+                <p class="paramDefnFirst">A <span class="CodeFont">SELECT</span> or <span class="CodeFont">VALUES</span> command that provides the columns and rows of the view.</p>
+                <p class="paramName">result offset and fetch first clauses</p>
+                <p class="paramDefnFirst">The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">RESULT&#160;OFFSET</span> clause</a>  provides a way to skip the N first rows in a result set before starting to add rows to the view. The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">FETCH&#160;FIRST</span> clause</a>, which can be combined with the <span class="CodeFont">RESULT&#160;OFFSET</span> clause, limits the number of rows added to the view.</p>
+            </div>
+            <p class="heading2">Examples</p>
+            <p class="body">This example creates a view that shows the age of each player in our database:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE VIEW PlayerAges (Player, Team, Age) 
+   AS SELECT DisplayName, Team, 
+      INT( (Now - Birthdate) / 365.25) AS Age 
+      FROM Players;
+0 rows inserted/updated/deleted
+
+splice&gt; SELECT * FROM PlayerAges WHERE Age &gt; 30 ORDER BY Team, Age DESC;
+PLAYER                  |TEAM     |AGE        
+-----------------------------------------
+Robert Cohen            |Cards    |40         
+Jason Larrimore         |Cards    |37         
+David Janssen           |Cards    |36         
+Mitch Hassleman         |Cards    |35         
+Mitch Brandon           |Cards    |35         
+Tam Croonster           |Cards    |34         
+Alex Wister             |Cards    |34         
+Yuri Milleton           |Cards    |33         
+Jonathan Pearlman       |Cards    |33         
+Michael Rastono         |Cards    |32         
+Barry Morse             |Cards    |32         
+Carl Vanamos            |Cards    |32         
+Jan Bromley             |Cards    |31         
+Thomas Hillman          |Giants   |40         
+Mark Briste             |Giants   |38         
+Randy Varner            |Giants   |38         
+Jason Lilliput          |Giants   |38         
+Jalen Ardson            |Giants   |36         
+Sam Castleman           |Giants   |35         
+Alex Paramour           |Giants   |34         
+Jack Peepers            |Giants   |34         
+Norman Aikman           |Giants   |33         
+Craig McGawn            |Giants   |33         
+Kameron Fannais         |Giants   |33         
+Jason Martell           |Giants   |33         
+Harry Pennello          |Giants   |32         
+Jason Minman            |Giants   |32         
+Trevor Imhof            |Giants   |32         
+Steve Raster            |Giants   |32         
+Greg Brown              |Giants   |31         
+Alex Darba              |Giants   |31         
+Joseph Arkman           |Giants   |31         
+Tam Lassiter            |Giants   |31         
+Martin Cassman          |Giants   |31         
+Yuri Piamam             |Giants   |31         
+
+35 rows selected
+</pre>
+            </div>
+            <p class="heading2">Statement Dependency System</p>
+            <p>View definitions are dependent on the tables and views referenced within the view definition. DML (data manipulation language) statements that contain view references depend on those views, as well as the objects in the view definitions that the views are dependent on. Statements that reference the view depend on indexes the view uses; which index a view uses can change from statement to statement based on how the query is optimized. For example, given:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE T1 (C1 DOUBLE PRECISION);
+0 rows inserted/updated/deleted
+
+splice&gt;CREATE FUNCTION SIN (DATA DOUBLE) 
+   RETURNS DOUBLE  
+   EXTERNAL NAME 'java.lang.Math.sin'
+   LANGUAGE JAVA PARAMETER STYLE JAVA;
+0 rows inserted/updated/deleted
+
+splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p>The following <span class="CodeFont">SELECT</span>:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM V1;</pre>
+            </div>
+            <p>Is dependent on view <span class="ItalicFont">V1</span>, table <span class="ItalicFont">T1,</span> and external scalar function  <span class="ItalicFont">SIN.</span></p>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="DropView.html"><span class="CodeFont">DROP&#160;VIEW</span></a>&#160;statement</li>
+                <li value="2"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a> clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

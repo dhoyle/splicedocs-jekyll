@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="topic">
+<meta name="keywords" content=" ">
+<title>Information about how to access and modify Derby properties. | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Information about how to access and modify Derby properties. page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Information about how to access and modify Derby properties.">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">On-Premise Administration</a>
+        <ul>
+            
+            
+            
+            <li><a href="onprem_admin_startingdb">Starting Your Database</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_admin_backingup">Backing Up</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_admin_cleaningdb">Cleaning Your Database</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_admin_shuttingdowndb">Shutting Down Your Database</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_admin_migratingdb">Migrating to a New Version</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_admin_derbyprops">Derby Property Access</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_admin_enablingenterprise">Enabling Enterprise Edition</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">On-premise Installation</a>
+        <ul>
+            
+            
+            
+            <li><a href="onprem_install_intro">Installing Splice Machine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_install_awssandbox">Splice Machine AWS Sandbox</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_install_cloudera">Install for Cloudera</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_install_hortonworks">Install for Hortonworks HDP</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_install_mapr">Install for MapR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_install_standalone">Install Standalone Version</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_install_demodata">Install Standalone Demo Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_install_configureauth">Configure Authentication</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Information about how to access and modify Derby properties.</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">topic</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/OnPrem/onprem_admin_derbyprops.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor207"></a>Derby Property Access</h1>
+            <p>This topic describes how to enable and disable Derby features by setting Derby properties, which are divided into categories, as shown in the following table.</p>
+            <div class="noteNote">When a property value is used, the property is searched for in the order shown in the table; in other words, the property is searched for in the JVM&#160;properties; if not found there, it is searched for in the Service properties, then in the Database properties, and finally in the App properties.</div>
+            <table summary="Table of Splice Machine property categories.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Property Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ItalicFont">JVM&#160;(System)&#160;</td>
+                        <td>
+                            <p class="noSpaceAbove">These properties can be as command line arguments to JVM:</p>
+                            <ul>
+                                <li value="1">For Maven, include the command line arguments as an <span class="CodeFont">&lt;argument&gt;</span>&#160;element in the <span class="CodeFont">pom.xml</span> file. For example:</li>
+                            </ul>
+                            <div class="preWrapperWide"><pre class="AppCommand">&lt;argument&gt;-Dderby.language.logStatementText=true&lt;/argument&gt;</pre>
+                            </div>
+                            <ul>
+                                <li value="1">For shell scripts, you may need to manually add the argument to the java executable command line. For example:</li>
+                            </ul>
+                            <div class="preWrapperWide"><pre class="AppCommand">java -Dderby.language.logStatementText=true ... </pre>
+                            </div>
+                            <p>System properties can also be set manually using the <span class="CodeFont">System.setProperty(key, value)</span>&#160;function.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">Service</td>
+                        <td>
+                            <p class="noSpaceAbove">Service properties are a special type of database property that is required to boot the database; as such, these properties cannot be stored in the database. Instead, they are stored outside the database, as follows:</p>
+                            <ul>
+                                <li value="1">Derby stores service properties in the <span class="CodeFont">service.properties file</span></li>
+                                <li value="2">Splice Machine stores service properties in a Zookeeper element.</li>
+                            </ul>
+                            <p>You can temporarily change service properties with the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SetDatabaseProperty.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span> built-in system procedure. These changes will be lost when the server is next restarted.</p>
+                            <p>To make a permanent change in a Derby service property, modify the value in the <span class="CodeFont">service.properties</span> file and then restart the server to apply the changes.</p>
+                            <p>To make a permanent change in a Splice Machine service property, modify the value in ZooKeeper and then restart the server to apply the changes.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">Database</td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine database properties are saved in a hidden HBASE&#160;table with <span class="CodeFont">CONGLOMERATEID=16</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">App (Derby/Splice)</td>
+                        <td>
+                            <p class="noSpaceAbove">App properties for both Derby and Splice Machine are saved to the <span class="CodeFont">derby.properties</span> file in the Derby/Splice home directory. </p>
+                            <p>App properties can also be saved to these HBASE XML&#160;configuration files:</p>
+                            <ul>
+                                <li value="1"><span class="CodeFont">hbase-default.xml</span>
+                                </li>
+                                <li value="2"><span class="CodeFont">hbase-site.xml</span>
+                                </li>
+                                <li value="3"><span class="CodeFont">splice-site.xml</span>
+                                </li>
+                            </ul>
+                            <p>Note that the XML&#160;files must reside in the <span class="CodeFont">CLASSPATH</span>.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Site File Example</h2>
+            <p>The following is an example of a <span class="CodeFont">splice-site.xml</span> file:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">&lt;?xml version="1.0"?&gt; 
+&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;
+   &lt;configuration&gt; 
+       &lt;property&gt;
+           &lt;name&gt;splice.debug.logStatementContext&lt;/name&gt; 
+	    &lt;value&gt;true&lt;/value&gt; 
+	    &lt;description&gt;Property  to enable logging of all statements.&lt;/description&gt; 
+	&lt;/property&gt; 
+	&lt;property&gt; 
+	    &lt;name&gt;splice.debug.david&lt;/name&gt; 
+	    &lt;value&gt;true&lt;/value&gt; 
+	    &lt;description&gt;Property  to test something.&lt;/description&gt; 
+	&lt;/property&gt; 
+   &lt;/configuration&gt; </pre>
+            </div>
+            <h2>Displaying Derby/Splice Properties</h2>
+            <p>You can display the Derby/Splice properties with the <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES</span> system procedure, which displays information like this:</p>
+            <div class="preWrapperWide"><pre xml:space="preserve" class="Example">splice&gt; call SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES();
+
+KEY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|VALUE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|TYPE&#160;&#160;&#160;&#160;&#160; 
+----------------------------------------------------------------------
+derby.authentication.builtin.algorithm&#160;&#160;&#160;&#160;|SHA-256&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|DATABASE&#160; 
+derby.user.BROWSE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|Browse&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|APP&#160;&#160;&#160;&#160;&#160;&#160; 
+derby.engineType&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160; 
+derby.david.foo&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|WINTERS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|APP&#160;&#160;&#160;&#160;&#160;&#160; 
+derby.connection.requireAuthentication&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|JVM&#160;&#160;&#160;&#160;&#160;&#160; 
+derby.locks.escalationThreshold&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|500&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160; 
+derby.database.defaultConnectionMode&#160;&#160;&#160;&#160;&#160;&#160;|fullAccess&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160; 
+derby.database.propertiesOnly&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160; 
+derby.database.collation&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|UCS_BASIC&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|DATABASE&#160; 
+derby.language.logStatementText&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|JVM&#160;&#160;&#160;&#160;&#160;&#160; 
+derby.storage.propertiesId&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|16&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160; 
+derby.language.logQueryPlan&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|true&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|JVM&#160;&#160;&#160;&#160;&#160;&#160; 
+splice.updateSystemProcs&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|JVM&#160;&#160;&#160;&#160;&#160;&#160; 
+derby.storage.rowLocking&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160; </pre>
+            </div>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SetDatabaseProperty.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="2">The <span class="ItalicFont">Derby Properties Guide</span> on the <a href="https://db.apache.org/derby/manuals/index.html" target="_blank">Apache Derby documentation site</a>.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

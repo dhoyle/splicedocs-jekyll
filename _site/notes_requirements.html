@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Summary of requirements for installing and running Splice Machine on your cluster or computer.">
+<meta name="keywords" content=" ">
+<title>Splice Machine Requirements | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Splice Machine Requirements page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Splice Machine Requirements">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Splice Machine Requirements</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Summary of requirements for installing and running Splice Machine on your cluster or computer.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/Notes/notes_requirements.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor333"></a><a name="Splice"></a>Splice Machine Requirements</h1>
+            <p>This topic summarizes the hardware and software requirements for Splice Machine running on a cluster or on a standalone computer.</p>
+            <div>
+                <h2><a name="ClusterNodeRequirements"></a><a name="kanchor334"></a>Cluster Node Requirements</h2>
+                <p>The following table summarizes the minimum requirements for the nodes in your cluster:</p>
+                <table summary="Splice Machine cluster node hardware requirements">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="BoldFont">Cores</td>
+                            <td>Splice Machine recommends that each node in your cluster have 8-12 hyper-threaded cores (16-32 hyper-threads) for optimum throughput and concurrency.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Memory</td>
+                            <td>We recommend that each machine in your cluster have at least 64 GB&#160;of available memory.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Disk Space</td>
+                            <td>
+                                <p class="noSpaceAbove">Your root drive needs to have at least 100 GB&#160;of free space. </p>
+                                <p>Splice Machine recommends separate data drives on each cluster node to maintain a separation between the operating system and your database data. You need capacity for a minimum of three times the size of the data you intend to load; the typical recommended configuration is 2 TB or more of attached storage per node.</p>
+                                <p><span class="BoldFont">Your data disks should be set up with a single partition and formatted with an <span class="CodeFont">ext4</span> file system.</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Hadoop Ecosystem</td>
+                            <td>The table in the next section, Hadoop Ecosystem Requirements, summarizes the specific Hadoop component versions that we support in each of our product releases.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Software Tools and System Settings</td>
+                            <td>The <span class="ItalicFont">Linux Configuration</span> topic in each section of our <span class="ItalicFont">Installation Guide</span> that pertains to your installation summarizes the software tools and system settings required for your cluster machines.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Amazon Web Services&#160;(AWS) Requirements</h3>
+                <p>If you're running on AWS, your cluster must meet these minimum requirements:</p>
+                <table summary="Splice Machine cluster node hardware requirements">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="BoldFont">Minimum Cluster Size</td>
+                            <td>
+                                <p>The minimum cluster size on AWS&#160;is <span class="ItalicFont">5 nodes</span>:</p>
+                                <ul class="bullet">
+                                    <li value="1">1 master node</li>
+                                    <li value="2">4 worker nodes</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Minimum Node Size</td>
+                            <td>Minimum recommended size of each node is <span class="ItalicFont">m4.4xlarge</span>.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Disk Space</td>
+                            <td>
+                                <p class="noSpaceAbove">Minimum recommended storage space:</p>
+                                <ul class="bullet">
+                                    <li value="1"><span class="ItalicFont">100GB</span>&#160;EBS&#160;root drive</li>
+                                    <li value="2">4 EBS&#160;data drives per node</li>
+                                </ul>
+                                <p>Note that the required number of data drives per node depends on your use case.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3><a name="kanchor335"></a>Hadoop Ecosystem Requirements</h3>
+                <p>The following table summarizes the required Hadoop ecosystem components for your platform:</p>
+                <table summary="Splice Machine Hadoop ecosystem requirements">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Splice Machine </th>
+                            <th>Hadoop platform</th>
+                            <th>Linux</th>
+                            <th>Hadoop</th>
+                            <th>HBase</th>
+                            <th>ZooKeeper</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-mc-conditions="">
+                            <td rowspan="3" data-mc-conditions=""><span class="BoldFont">Release 2.5</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesCDH5Versions">CDH 5.7.2, 5.8.0, 5.8.3</span>
+                            </td>
+                            <td data-mc-conditions="">
+                                <p class="noSpaceAbove"><span class="PlatformVariablesCDH5OS">CentOS/RHEL 6</span>
+                                </p>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesCDH5Hadoop">2.6.0</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesCDH5HBase">1.0.0</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesCDH5Zookeeper">3.4.5</span>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td data-mc-conditions=""><span class="PlatformVariablesHDP2Versions">HDP 2.4.2 and 2.5</span>
+                            </td>
+                            <td data-mc-conditions="">
+                                <p class="noSpaceAbove"><span class="PlatformVariablesHDP2OS">CentOS/RHEL 6</span>
+                                </p>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesHDP2Hadoop">2.7.1</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesHDP2HBase">1.1.2</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesHDP2Zookeeper">3.4.5</span>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td data-mc-conditions=""><span class="PlatformVariablesMapR5Versions">MapR 5.1.0 and 5.2.0</span>
+                            </td>
+                            <td data-mc-conditions="">
+                                <p class="noSpaceAbove"><span class="PlatformVariablesMapr5OS">CentOS/RHEL 6</span>
+                                </p>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesMapr5Hadoop">2.7.0</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesMapr5HBase">1.1.1</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesMapr5Zookeeper">3.4.5</span>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td colspan="6" class="Separator" data-mc-conditions="">&#160;</td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td rowspan="3" data-mc-conditions=""><span class="BoldFont">Release 2.0</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesSplice20CDH5Versions">CDH 5.6 or CDH 5.5.2</span>
+                            </td>
+                            <td data-mc-conditions="">
+                                <p class="noSpaceAbove"><span class="PlatformVariablesCDH5OS">CentOS/RHEL 6</span>
+                                </p>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesCDH5Hadoop">2.6.0</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesCDH5HBase">1.0.0</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesCDH5Zookeeper">3.4.5</span>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td data-mc-conditions=""><span class="PlatformVariablesSplice20HDP2Versions">HDP 2.4.2</span>
+                            </td>
+                            <td data-mc-conditions="">
+                                <p class="noSpaceAbove"><span class="PlatformVariablesHDP2OS">CentOS/RHEL 6</span>
+                                </p>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesHDP2Hadoop">2.7.1</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesHDP2HBase">1.1.2</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesHDP2Zookeeper">3.4.5</span>
+                            </td>
+                        </tr>
+                        <tr data-mc-conditions="">
+                            <td data-mc-conditions=""><span class="PlatformVariablesSplice20MapR5Versions">MapR 5.1.0</span>
+                            </td>
+                            <td data-mc-conditions="">
+                                <p class="noSpaceAbove"><span class="PlatformVariablesMapr5OS">CentOS/RHEL 6</span>
+                                </p>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesMapr5Hadoop">2.7.0</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesMapr5HBase">1.1.1</span>
+                            </td>
+                            <td data-mc-conditions=""><span class="PlatformVariablesMapr5Zookeeper">3.4.5</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Java JDK&#160;Requirements</h3>
+                <p>Splice Machine supports the following versions of the Java JDK:</p>
+                <ul>
+                    <li value="1">
+                        <p>Oracle JDK&#160;1.8, update 60 or higher</p>
+                        <p class="noteNote">We recommend that you do not use JDK&#160;1.8.0_40</p>
+                    </li>
+                </ul>
+                <p>Splice Machine does not test our releases with OpenJDK, so we recommend against using it.</p>
+                <h2><a name="Standalo"></a><a name="kanchor336"></a>Standalone Version Prerequisites</h2>
+                <p>You can use the standalone version of Splice Machine on MacOS and Linux computers that meet these basic requirements:</p>
+                <table summary="Standalone version requirements for running Splice Machine">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="BoldFont">Operating System</span>
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">Mac OS X, version 10.8 or later,</p>
+                                <p>CentOS&#160;6.4 or equivalent.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="BoldFont">CPU</span>
+                            </td>
+                            <td>Splice Machine recommends 2 or more multiple-core CPUs.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="BoldFont">Memory</span>
+                            </td>
+                            <td>At least 16 GB&#160;RAM, of which at least 10 GB is available.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="BoldFont">Disk Space</span>
+                            </td>
+                            <td>At least 100 GB&#160;of disk space available for Splice Machine software, plus as much space as will be required for your data; for example, if you have a 1 TB dataset, you need at least 1 TB of available data space.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="BoldFont">Software</span>
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">You must have JDK&#160;installed on your computer.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

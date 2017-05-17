@@ -1,0 +1,133 @@
+---
+title: Analyze command
+description: Collects statistics for a table or schema.
+summary: Collects statistics for a table or schema.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_analyze
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor458"></a>Analyze Command</h1>
+            <p>The <span class="AppCommand">analyze</span> command collects statistics for a specific table, or for an entire schema.</p>
+            <div class="noteNote">Once statistics have been collected for a schema or table, they are automatically used by the query optimizer.</div>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">ANALYZE&#160;TABLE <span class="ItalicFont">[schemaName'.']table-Name</span>
+
+ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name</span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">The name of the table you want to analyze, which can optionally be qualified by its schema name. If you don't specify a <span class="ItalicFont">schemaName</span>, the current schema is assumed.</p>
+                <p class="paramDefn">You must have insert permission for the table to be able to run this command.</p>
+                <p name="paramName" class="paramName">schema-Name</p>
+                <p class="paramDefnFirst">The name of the schema you want to analyze.</p>
+                <p class="paramDefnFirst"> You must have insert permission for all tables in the schema to be able to run this command.</p>
+            </div>
+            <p class="heading3"><a name="Table"></a>Analyze Table</p>
+            <p>The <span class="CodeFont">ANALYZE&#160;TABLE</span>command collects statistics for a specific table in the current schema. It also collects statistics for the index associated with the table in the schema. For example, if you have the following in your database:</p>
+            <ul>
+                <li value="1">a table named <span class="CodeFont">myTable</span></li>
+                <li value="2"><span class="CodeFont">myTable</span> has two indices:&#160;<span class="CodeFont">myTableIndex1</span> and <span class="CodeFont">myTableIndex2</span></li>
+            </ul>
+            <p>Then <span class="CodeFont">ANALYZE&#160;TABLE</span> will collect statistics for <span class="CodeFont">myTable</span>, <span class="CodeFont">myTableIndex1</span>, and <span class="CodeFont">myTableIndex2</span>.</p>
+            <p>The <span class="CodeFont">ANALYZE&#160;TABLE</span>&#160;command displays the following information for each index in the table:</p>
+            <table summary="List of columns in the output of the analyze table command.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">schemaName</td>
+                        <td>The name of the schema.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">tableName</td>
+                        <td>The name of the table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">regionsCollected</td>
+                        <td>The number of regions for which a collection was performed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">taskExecuted</td>
+                        <td>The number of collection tasks submitted. Note that this includes any failed tasks.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">rowsCollected</td>
+                        <td>The total number of rows collected for the table.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading3"><a name="Schema"></a>Analyze Schema</p>
+            <p>The <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema. For example, if you have the following situation:</p>
+            <ul>
+                <li value="1">a schema named <span class="CodeFont">mySchema</span></li>
+                <li value="2"><span class="CodeFont">mySchema</span> contains two tables:&#160;<span class="CodeFont">myTable1</span> and <span class="CodeFont">myTable2</span></li>
+                <li value="3"><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
+            </ul>
+            <p>Then the <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command  will collect statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
+            <p>The <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command displays the following information for each table and for each index and its associated index in the schema:</p>
+            <table summary="List of columns in the output of the analyze schema command.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">schemaName</td>
+                        <td>The name of the schema.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">tableName</td>
+                        <td>The name of the table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">regionsCollected</td>
+                        <td>The number of regions for which a collection was performed.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">taskExecuted</td>
+                        <td>The number of collection tasks submitted. Note that this includes any failed tasks.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">rowsCollected</td>
+                        <td>The total number of rows collected for the table.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="noteNote">This command operates like the <span class="CodeFont"><a href="../SQLReference/BuiltInSysProcs/CollectSchemaStats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> built-in system procedure.</div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; analyze table myTable;
+schemaName       |regionsCol&amp;|tasksExecu&amp;|rowsCollected|tableName
+---------------------------------------------------------------------------
+MYSCHEMA         |1          |1          |0            |MYTABLE1
+MYSCHEMA         |1          |1          |0            |MYTABLE1_INDEX1
+MYSCHEMA         |1          |1          |0            |MYTABLE1_INDEX2
+3 rows selected
+
+splice&gt;&#160;analyze schema mySchema
+schemaName       |regionsCol&amp;|tasksExecu&amp;|rowsCollected|tableName
+---------------------------------------------------------------------------
+MYSCHEMA         |1          |1          |0            |MYTABLE1
+MYSCHEMA         |1          |1          |0            |MYTABLE1_INDEX1
+MYSCHEMA         |1          |1          |0            |MYTABLE1_INDEX2
+MYSCHEMA         |1          |1          |0            |MYTABLE2
+MYSCHEMA         |1          |1          |0            |MYTABLE2_INDEX1
+5 rows selected
+
+splice&gt;</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

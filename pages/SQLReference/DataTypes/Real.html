@@ -1,0 +1,69 @@
+---
+title: REAL data type
+description: The REAL data type provides 4 bytes of storage for numbers using &#xA;IEEE floating-point notation. 
+summary: The REAL data type provides 4 bytes of storage for numbers using &#xA;IEEE floating-point notation. 
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_datatypes_real
+folder: SQLReference/DataTypes
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="DataTypes.Real" id="DataTypes.Real"></a><a name="kanchor145"></a>REAL</h1>
+            <p>The <span class="CodeFont">REAL</span> data type provides 4 bytes of storage for numbers using
+		IEEE floating-point notation. </p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">REAL</pre>
+            </div>
+            <p class="heading2">Corresponding Compile-time Java Type</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">java.lang.Float</pre>
+            </div>
+            <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">REAL</pre>
+            </div>
+            <p class="heading2">Limitations</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">REAL value ranges:</pre>
+            </div>
+            <table summary="Limits of real values">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Limit type</th>
+                        <th>Limit value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ItalicFont">Smallest REAL value</td>
+                        <td class="CodeFont">-3.402E+38</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">Largest REAL value</td>
+                        <td class="CodeFont"> 3.402E+38</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">Smallest positive REAL value</td>
+                        <td class="CodeFont"> 1.175E-37</td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">Largest negative REAL value</td>
+                        <td class="CodeFont">-1.175E-37</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="noteNote">These limits are different from the <samp>java.lang.Float</samp> Java type limits.</div>
+            <p class="heading2">Usage Notes</p>
+            <p>Here are several usage notes for the <span class="CodeFont">REAL</span>&#160;data type:</p>
+            <ul>
+                <li value="1">An exception is thrown when any double value is calculated or entered that is outside of these value ranges. Arithmetic operations <span class="BoldFont">do not</span> round their resulting values to zero. If the values are too small, you will receive an exception. The arithmetic operations take place with double arithmetic in order to detect under flows.</li>
+                <li value="2">Numeric floating point constants are limited to a length of 30 characters.
+        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- this example will fail because the constant is too long:
+values 01234567890123456789012345678901e0;</pre></div></li>
+                <li value="3">When mixed with other data types in expressions, the resulting data type follows the rules shown in <a href="Intro.NumericTypes.html#NumericTypePromotion">Numeric type promotion in expressions</a>.</li>
+                <li value="4">See also <a href="Intro.NumericTypes.html#StoringValues">Storing values of one numeric data type in columns of another numeric data type</a>.</li>
+                <li value="5">Constants always map to <span class="CodeFont"><a href="DoublePrecision.html">DOUBLE PRECISION</a></span>; use a <span class="CodeFont">CAST</span> to convert a constant to a <span class="CodeFont">REAL</span>.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

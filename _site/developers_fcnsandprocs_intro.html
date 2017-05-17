@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Overview of writing and using functions and stored procedures in Splice Machine">
+<meta name="keywords" content=" ">
+<title>Introduction to Splice Machine Functions and Procedures | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Introduction to Splice Machine Functions and Procedures page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Introduction to Splice Machine Functions and Procedures">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Fundamentals</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fundamentals_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_transactions.html">Running Transactions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_dates.html">Working with Date and Time Values</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_triggers.html">Using Database Triggers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_foreignkeys.html">Using Foreign Keys</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_auth.html">Roles and Authorization</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_vti.html">Using the Virtual Table Interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_externaltables.html">Using External Tables</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hcatalog.html">Using HCatalog</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_mapreduce.html">Using the MapReduce API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_hbase.html">Working with HBase</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Connecting with Your Database</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_connecting_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcdriver.html">Installing the ODBC Driver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_angular.html">Connecting with AngularJS/NodeJS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_java.html">Connecting with Java</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jruby.html">Connecting with JRuby</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_jython.html">Connecting with Jython</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_scala.html">Connecting with Scala</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_odbcc.html">Connecting with C and ODBC</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbeaver.html">Connecting DBeaver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_dbvisualizer.html">Connecting DBVisualizer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_cognos.html">Connecting Cognos</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_pentaho.html">Connecting Pentaho PDI</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_squirrel.html">Connecting SQuirreL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_connecting_tableau.html">Connecting Tableau</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Functions and Stored Procedures</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_writing.html">Writing Functions and Stored Procedures</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_storing.html">Storing/Updating Functions and Procs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fcnsandprocs_examples.html">Examples</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Ingesting and Streaming Data</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_ingestion_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_uploadtos3.html">Uploading Data to an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_configures3.html">Configuring an S3 Bucket</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_tpch1.html">Importing TPCH Datat</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_importing.html">Importing Your Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_hfiles.html">Importing Data as HFiles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkaproducer.html">Kafka - Creating a Producer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_kafkafeed.html">Kafka - Configuring a Feed</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_mqttSpark.html">MQTT Spark Streaming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_ingestion_storm.html">Apache Storm and Splice Machine</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Analytics and Machine Learning</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_analyticsandml_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_analyticsandml_zeppelin.html">Using Apache Zeppelin</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Tuning and Debugging</a>
+        <ul>
+            
+            
+            
+            <li><a href="developers_tuning_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_usingstats.html">Using Statistics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan.html">Using Explain Plan</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_explainplan_examples.html">Explain Plan Examples</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_logging.html">Logging</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_tuning_debugging.html">Debugging</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Introduction to Splice Machine Functions and Procedures</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Overview of writing and using functions and stored procedures in Splice Machine</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/Developers/FcnsAndProcs/developers_fcnsandprocs_intro.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1>Using Functions and Stored Procedures</h1>
+            <p>This topic provides an overview of writing and using functions and stored procedures in Splice Machine.</p>
+            <h2>About User-Defined Functions</h2>
+            <p>You can create user-defined database functions that can be evaluated in SQL statements; these functions can be invoked where most other built-in functions are allowed, including within SQL expressions and <span class="CodeFont">SELECT</span> statement. Functions must be deterministic, and cannot be used to make changes to the database.</p>
+            <p>You can create two kinds of functions:</p>
+            <ul>
+                <li value="1">Scalar functions, which always return a single value (or <span class="CodeFont">NULL</span>),</li>
+                <li value="2">Table functions, which return a table.</li>
+            </ul>
+            <p>When you invoke a function within a <span class="CodeFont">SELECT</span>&#160;statement, it is applied to each retrieved row. For example:</p>
+            <div class="preWrapper"><pre class="Example">SELECT&#160;ID, Salary, MyAdjustSalaryFcn(Salary)&#160;<br />FROM&#160;SPLICEBBALL.Salaries;</pre>
+            </div>
+            <p>This <span class="CodeFont">SELECT</span>&#160;will execute the <span class="CodeFont">MyAdjustSalaryFcn</span> to the <span class="CodeFont">Salary</span> value for each player in the table.</p>
+            <h2>About Stored Procedures</h2>
+            <p>You can group a set of SQL&#160;commands together with variable and logic into a stored procedure, which is a subroutine that is stored in your database's data dictionary. Unlike user-defined functions, a stored procedure is not an expression and can only be invoked using the <span class="CodeFont">CALL</span> statement. Stored procedures allow you to modify the database and return <span class="CodeFont">Result Sets</span> or nothing at all.</p>
+            <p>Stored procedures can be used for situations where a complex set of SQL statements are required to process something, and that process is used by various applications; creating a stored procedure increases performance efficiency. They are typically used for:</p>
+            <ul>
+                <li value="1">checking business rules and validating data before performing actions</li>
+                <li value="2">performing significant processing of data with the inputs to the procedure</li>
+            </ul>
+            <h2><a name="kanchor253"></a>Comparison of Functions and Stored Procedures</h2>
+            <p>Here's a comparison of Splice Machine functions and stored procedures:</p>
+            <table summary="Tables comparing stored procedures and database functions.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Database Function</th>
+                        <th>Stored Procedure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="noSpaceAbove">A Splice&#160;Machine database function:</p>
+                            <ul>
+                                <li value="1">must be written as a public static method in a Java public class</li>
+                                <li value="2">is executed in exactly the same manner as are public static methods in Java</li>
+                                <li value="3">can have multiple input parameters</li>
+                                <li value="4">always returns a single value (which can be null)</li>
+                                <li value="5">cannot modify data in the database</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine stored procedures can:</p>
+                            <ul>
+                                <li value="1"> return result sets or return nothing at all</li>
+                                <li value="2">issue <span class="CodeFont">update</span>, <span class="CodeFont">insert</span>, and <span class="CodeFont">delete</span> statements</li>
+                                <li value="3">perform DDL&#160;statements such as <span class="CodeFont">create</span> and <span class="CodeFont">drop</span></li>
+                                <li value="4">consolidate and centralize code</li>
+                                <li value="5">reduce network traffic and increase execution speed</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Can be used in <span class="CodeFont">SELECT</span>&#160;statements.</td>
+                        <td>
+                            <p class="noSpaceAbove">Cannot be used in in <span class="CodeFont">SELECT</span>&#160;statements.</p>
+                            <p>Must be invoked using a <span class="CodeFont">CALL</span>&#160;statement.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Create with the <span class="CodeFont"><a href="../../SQLReference/Statements/CreateFunction.html">CREATE&#160;FUNCTION</a></span>&#160;statement, which is described in our SQL&#160;Reference book.</p>
+                            <p>You can find an example in the <a href="ProcAndFcnExamples.html">Function and Stored Procedure Examples</a> topic in this section.</p>
+                        </td>
+                        <td>
+                            <p>Create with the <span class="CodeFont"><a href="../../SQLReference/Statements/CreateProcedure.html">CREATE&#160;PROCEDURE</a></span>&#160;statement, which is described in our SQL&#160;Reference book.</p>
+                            <p>You can find an example in the <a href="ProcAndFcnExamples.html">Function and Stored Procedure Examples</a> topic in this section.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Operations in Which You Can Use Functions and Stored Procedures</h2>
+            <p>The following table provides a list of the differences between functions and stored procedures with regard to when and where they can be used:</p>
+            <table summary="Table comparing which operations can be used in functions and stored procedures.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Functions</th>
+                        <th>Stored Procedures</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="ItalicFont">Execute in an SQL&#160;Statement</span>
+                        </td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Execute in a Trigger</span>
+                        </td>
+                        <td>Yes</td>
+                        <td>Triggers that execute before an operation (<span class="ItalicFont">before triggers</span>)&#160;cannot modify SQL data.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Process <span class="CodeFont">OUT / INOUT</span>&#160;Parameters</span>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Return <span class="CodeFont">Resultset(s)</span></span>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Execute SQL&#160;<span class="CodeFont">Select</span></span>
+                        </td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Execute SQL&#160;<span class="CodeFont">Update/Insert/Delete</span></span>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Execute DDL&#160;(<span class="CodeFont">Create/Drop</span>)</span>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Viewing Functions and Stored Procedures</h2>
+            <p>You can use the <a href="../../CmdLineReference/ShowCmds.html">show command</a> in the <span class="AppCommand">splice&gt;</span>&#160;command line interface to display the functions and stored procedures available in your database:</p>
+            <table summary="Table showing the output of the show functions and show procedures commands.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="AppCommand">splice&gt;&#160;show functions;</span>
+                        </td>
+                        <td>All functions defined in your database</td>
+                    </tr>
+                    <tr>
+                        <td><span class="AppCommand">splice&gt;&#160;show functions in SYSCS_UTIL;</span>
+                        </td>
+                        <td>All functions in the <span class="CodeFont">SYSCS_UTIL</span>&#160;schema in your database</td>
+                    </tr>
+                    <tr>
+                        <td><span class="AppCommand">splice&gt;&#160;show procedures;</span>
+                        </td>
+                        <td>All stored procedures defined in your database</td>
+                    </tr>
+                    <tr>
+                        <td><span class="AppCommand">splice&gt;&#160;show procedures in SYSCS_UTIL;</span>
+                        </td>
+                        <td>All stored procedures in the <span class="CodeFont">SYSCS_UTIL</span>&#160;schema in your database</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Writing and Deploying Functions and Stored Procedures</h2>
+            <p>The remainder of this section presents information about and examples of writing functions and stored procedures for use with Splice Machine, in these topics:</p>
+            <ul>
+                <li value="1"><a href="WritingProcsAndFcns.html">Writing Functions and Stored Procedures</a> shows you the steps required to write functions stored procedures and add them to your Splice Machine database.</li>
+                <li value="2"><a href="StoringAndUpdatingFcnsAndProcs.html">Storing and Updating Functions and Stored Procedures</a> tells you how to store new JAR&#160;files, replace JAR&#160;files, and remove JAR&#160;files in your Splice Machine database.</li>
+                <li value="3"><a href="ProcAndFcnExamples.html">Examples of Splice Machine Functions and Stored Procedures</a> provides you with examples of functions and stored procedures.</li>
+            </ul>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="../../SQLReference/Statements/CreateFunction.html">CREATE&#160;FUNCTION</a></span>&#160;in the <span class="ItalicFont">SQL Reference Manual</span></li>
+                <li value="2"><span class="CodeFont"><a href="../../SQLReference/Statements/CreateProcedure.html">CREATE&#160;PROCEDURE</a></span>&#160;in the <span class="ItalicFont">SQL Reference Manual</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

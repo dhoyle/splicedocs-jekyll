@@ -1,0 +1,182 @@
+---
+title: Using Splice Machine's Logging
+description: Introduction to using logging in Splice Machine
+summary: Introduction to using logging in Splice Machine
+keywords: 
+sidebar: developers_sidebar
+permalink: developers_tuning_logging
+folder: Developers/TuningAndDebugging
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor165"></a>Splice Machine Logging</h1>
+            <p>This topic describes the logging facility used in Splice Machine. Splice Machine also allows you to exercise direct control over logging in your database. You can:
+</p>
+            <ul class="SecondLevel">
+                <li value="1"><a href="#Manually">Manually enable logging</a> of all SQL&#160;statements. </li>
+                <li value="2">Configure individual logger objects to log <a href="#Levels">specific message levels.</a></li>
+                <li value="3">Call the <span class="CodeFont">log</span> function for a specific logger object, passing it a logging level value and a message. If the logger is currently configured to record messages at the specified level, the message is added to the log; otherwise, the logger ignores the message. Logger levels are ordered hierarchically; any message with a level equal to or greater than the hierarchical level for which logging is enabled is recorded into the log. </li>
+            </ul>
+            <p>Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html" target="_blank">Apache log4j Logging API</a>, which allows you to associate a logger object with any java class, among other features. Loggers can be set to capture different levels of information. </p>
+            <p>Logging too much information can slow your system down, but not logging enough information makes it difficult to debug certain issues. The <a href="#SpliceLoggers">Splice Machine Loggers</a> section below summarizes the loggers used by Splice Machine and the system components that they use. You can use the SQL&#160;logging functions described in the <a href="#LoggerFunctions">SQL&#160;Logger Functions</a> section below to retrieve or modify the logging level of any logger used in Splice Machine.</p>
+            <h2><a name="Manually"></a>Manually Enabling Logging</h2>
+            <p>If you want to log all of your SQL&#160;statements, you can manually enable logging in these ways:</p>
+            <ul>
+                <li value="1">
+                    <p class="noSpaceBelow">You can pass an argument to your Splice Machine JVM&#160;startup script, as follows:</p>
+                    <div class="preWrapperWide"><pre class="Example" xml:space="preserve">-Dderby.language.logStatementText=true</pre>
+                    </div>
+                    <li value="3">
+                        <p>You can add the following property definition to your <span class="CodeFont">hbase-default.xml</span>, <span class="CodeFont">hbase-site.xml</span>, or <span class="CodeFont">splice-site.xml</span> file:</p>
+                        <div class="preWrapperWide"><pre class="Example">&lt;property&gt;
+&lt;name&gt;splice.debug.logStatementContext&lt;/name&gt;
+&lt;value&gt;true&lt;/value&gt;
+&lt;description&gt;Property to enable logging of all statements.&lt;/description&gt;
+&lt;/property&gt;</pre>
+                        </div>
+                    </li>
+                </li>
+            </ul>
+            <p>You can examine the logged data in the the <span class="CodeFont">splice-derby.log</span> file, which is found in the <span class="CodeFont">splicemachine</span> directory.</p>
+            <h3><a name="Levels"></a>Logger Levels</h3>
+            <p>The <span class="CodeFont">log4j</span> API&#160;defines six logger levels. The following table displays them from the lowest level to the highest:</p>
+            <table summary="Table of the available logging levels.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Logger Level</th>
+                        <th>What gets logged for a logger object set to this level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">TRACE</td>
+                        <td>Captures all messages.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">DEBUG</td>
+                        <td>Captures any message whose level is <span class="CodeFont">DEBUG</span>, <span class="CodeFont">INFO</span>, <span class="CodeFont">WARN</span>, <span class="CodeFont">ERROR</span>, or <span class="CodeFont">FATAL</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">INFO</td>
+                        <td>Captures any message whose level is <span class="CodeFont">INFO</span>, <span class="CodeFont">WARN</span>, <span class="CodeFont">ERROR</span>, or <span class="CodeFont">FATAL</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">WARN</td>
+                        <td>Captures any message whose level is <span class="CodeFont">WARN</span>, <span class="CodeFont">ERROR</span>, or <span class="CodeFont">FATAL</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">ERROR</td>
+                        <td>Captures any message whose level is <span class="CodeFont">ERROR</span> or <span class="CodeFont">FATAL</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FATAL</td>
+                        <td>Captures only messages whose level is <span class="CodeFont">FATAL</span>.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3><a name="SpliceLoggers"></a>Splice Machine Loggers</h3>
+            <p>The following table summarizes the loggers used in the Splice Machine environment that might interest you if you're trying to debug performance issues in your database:</p>
+            <table summary="Table of the loggers used in Splice Machine.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Logger Name</th>
+                        <th>Default Level</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">org.apache</td>
+                        <td class="CodeFont">ERROR</td>
+                        <td>Logs all Apache software messages</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">com.splicemachine.db</td>
+                        <td class="CodeFont">WARN</td>
+                        <td>Logs all Derby software messages</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">com.splicemachine.db.shared.common.sanity</td>
+                        <td class="CodeFont">ERROR</td>
+                        <td>Logs all Derby Sanity Manager messages</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">com.splicemachine.derby.impl.sql.catalog</td>
+                        <td class="CodeFont">WARN</td>
+                        <td>Logs Derby SQL&#160;catalog/dictionary messages</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">com.splicemachine.db.impl.sql.execute.operations</td>
+                        <td class="CodeFont">WARN</td>
+                        <td>Logs Derby SQL&#160;operation messages</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">org.apache.zookeeper.server.ZooKeeperServer</td>
+                        <td class="CodeFont">INFO</td>
+                        <td>Used to determine when Zookeeper is started</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">org.apache.zookeeper.server.persistence.FileTxnSnapLog</td>
+                        <td class="CodeFont">INFO</td>
+                        <td>Logs Zookeeper transactions</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">com.splicemachine</td>
+                        <td class="CodeFont">WARN</td>
+                        <td>By default, controls all Splice Machine logging</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">com.splicemachine.derby.hbase.SpliceDriver</td>
+                        <td class="CodeFont">INFO</td>
+                        <td>Prints start-up and shutdown messages to the log and to the console</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">com.splicemachine.derby.management.StatementManager</td>
+                        <td class="CodeFont">ERROR</td>
+                        <td>Set the level of this logger to <span class="CodeFont">TRACE</span>&#160;to record execution time for SQL&#160;statements</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3><a name="LoggerFunctions"></a>SQL&#160;Logger Functions</h3>
+            <p>Splice Machine SQL&#160;includes the following built-in system procedures, all documented in our <a href="../../SQLReference/Intro.SQLReference.html"><span class="ItalicFont">SQL&#160;Reference Manual</span></a>, for interacting with the Splice Machine logs:</p>
+            <table summary="Table of Splice Machine system procedures for interacting with logs.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>System Procedure</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/GetLoggers.html">SYSCS_UTIL.SYSCS_GET_LOGGERS</a>
+                        </td>
+                        <td>Displays a list of the active loggers.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/GetLoggerLevel.html">SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</a>
+                        </td>
+                        <td>Displays the current logging level of the specified logger.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SetLoggerLevel.html">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</a>
+                        </td>
+                        <td>Sets the current logging level of the specified logger.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><a href="../../SQLReference/BuiltInSysProcs/GetLoggers.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_LOGGERS</span></a> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="2"><a href="../../SQLReference/BuiltInSysProcs/GetLoggerLevel.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</span></a> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="3"><a href="../../SQLReference/BuiltInSysProcs/SetLoggerLevel.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</span></a> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

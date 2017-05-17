@@ -1,0 +1,145 @@
+---
+title: Connecting to Splice Machine with Scala and JDBC
+description: Walks you through compiling and running a Scala program that connects to your Splice Machine database via our JDBC driver.&#xA;
+summary: Walks you through compiling and running a Scala program that connects to your Splice Machine database via our JDBC driver.&#xA;
+keywords: 
+sidebar: developers_sidebar
+permalink: developers__connecting_scala
+folder: Developers/Connecting
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor562"></a>Connecting to Splice Machine with Scala and JDBC</h1>
+            <p>This topic shows you how to compile and run a sample Scala program that connects to Splice&#160;Machine using our JDBC&#160;driver. The <span class="CodeFont">SampleScalaJDBC</span>&#160;program does the following:</p>
+            <ul>
+                <li value="1"> connects to a standalone (<span class="CodeFont">localhost</span>)&#160;version of Splice Machine</li>
+                <li value="2">creates a table named <span class="CodeFont">MYTESTTABLE</span></li>
+                <li value="3">inserts several sample records</li>
+                <li value="4">selects and displays records from one of the system tables</li>
+            </ul>
+            <h2><a name="Compile"></a>Compile and Run the Sample Program</h2>
+            <p>This section walks you through compiling and running the <span class="CodeFont">SampleScalaJDBC</span>&#160;example program, in the following steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Add the Splice client jar to your <span class="CodeFont">CLASSPATH</span>; for example:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
+export CLASSPATH=<span class="Highlighted">/splicemachine/jdbc-driver/<span class="PlatformVariablesJDBCDriverJar">db-client-2.0.1.18.jar</span></span></pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Copy the example program code:</p>
+                        <p class="indentLevel1">You can copy and paste the code below; note that this example uses our default connectivity parameters (database, user, URL, and password values):</p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="Example">package com.splicemachine.tutorials.jdbc
+
+import java.sql.DriverManager
+import java.sql.Connection
+
+/**
+ *  Simple example of Establishes a connection with splice and executes statements
+ */
+object SampleScalaJDBC{
+
+	def main(args: Array[String]) {
+
+		// connect to the database named "splicedb" on the localhost
+		val driver = "com.splicemachine.db.jdbc.ClientDriver"
+		val dbUrl = "jdbc:splice://localhost:1527/splicedb;user=splice;password=admin"
+
+		var connection:Connection = null
+		
+		try {
+
+			// make the connection
+			Class.forName(driver)
+			connection = DriverManager.getConnection(dbUrl)
+
+			// create the statement 
+			var statement = connection.createStatement()
+					
+			//Create a table
+			statement.execute("CREATE TABLE MYTESTTABLE(a int, b varchar(30))");
+			statement.close
+
+			//Insert data into the table
+			var pst = connection.prepareStatement("insert into MYTESTTABLE (a,b)  values (?,?)")
+							
+			pst.setInt (1, 1)
+			pst.setString (2, "a")      
+			pst.executeUpdate()
+
+			pst.clearParameters()
+			pst.setInt (1, 2)
+			pst.setString (2, "b")      
+			pst.executeUpdate()
+
+			pst.clearParameters()
+			pst.setInt (1, 3)
+			pst.setString (2, "c")      
+			pst.executeUpdate()
+
+			pst.clearParameters()
+			pst.setInt (1, 4)
+			pst.setString (2, "c")      
+			pst.executeUpdate()
+
+			pst.clearParameters()
+			pst.setInt (1, 5)
+			pst.setString (2, "c")      
+			pst.executeUpdate()
+
+			pst.close
+
+			//Read the data 
+			statement = connection.createStatement()
+			val resultSet = statement.executeQuery("select a, b from MYTESTTABLE")
+			var counter =0
+
+			while ( resultSet.next() ) {
+				counter += 1 
+				val val_a = resultSet.getInt(1)
+				val val_b = resultSet.getString(2)
+				println("record=[" + counter + "] a=[" + val_a + "] b=[" +val_b + "]")
+			}
+			resultSet.close()
+			statement.close()
+		} catch {
+			case ex : java.sql.SQLException =&gt; println("SQLException: "+ex)
+		} finally {
+			connection.close()
+		}
+	}
+
+}</pre>
+                            </div>
+                        </p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Save the code to <span class="CodeFont">SampleScalaJDBC.scala</span>.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Compile the program:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">scalac SampleScalaJDBC.scala</pre>
+                        </div>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Run the program:</p>
+                        <p class="indentLevel1">Run the <span class="CodeFont">SampleScalaJDBC</span> program as follows:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">scala SampleScalaJDBC</pre>
+                        </div>
+                        <p class="indentLevel1">The command should display a result like the following:</p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">record=[1] a=[5] b=[c]
+record=[2] a=[1] b=[a]
+record=[3] a=[2] b=[b]
+record=[4] a=[3] b=[c]
+record=[5] a=[4] b=[c]</pre>
+                            </div>
+                        </p>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

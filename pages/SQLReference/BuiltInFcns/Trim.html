@@ -1,0 +1,95 @@
+---
+title: TRIM built-in SQL function
+description: Built-in SQL function that removes leading and/or trailing pad characters from a character expression
+summary: Built-in SQL function that removes leading and/or trailing pad characters from a character expression
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_trim
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Trim" id="BuiltInFcns.Trim"></a><a name="kanchor482"></a>TRIM</h1>
+            <p>The <span class="CodeFont">TRIM</span> function that takes a character expression and returns that expression with leading and/or trailing pad characters removed. Optional parameters indicate whether leading, or trailing, or both leading and trailing pad characters should be removed, and specify the pad character that is to be removed.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">TRIM( [ <span class="ItalicFont">trimOperands</span> ] <span class="ItalicFont">trimSource</span>)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">trimOperands</p>
+                <p class="paramDefnFirst">
+                    <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{  { <span class="ItalicFont">trimType</span> [<span class="ItalicFont">trimCharacter</span>]  FROM
+  |&#160; <span class="ItalicFont">trimCharacter</span> FROM
+}</pre>
+                    </div>
+                    <div class="paramList">
+                        <p class="paramName">trimCharacter</p>
+                        <p class="paramDefnFirst">A character expression that specifies which character to trim from the source. If this is specified, it must evaluate to either <span class="CodeFont">NULL</span>&#160;or to a character string whose length is exactly one. If left unspecified, it defaults to the space character (<span class="CodeFont">' '</span>). </p>
+                        <p class="paramName">trimType</p>
+                        <p class="paramDefnFirst">
+                            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{LEADING | TRAILING | BOTH}</pre>
+                            </div>
+                        </p>
+                        <p class="paramDefnFirst">If this value is not specified, the default value of <span class="CodeFont">BOTH</span>&#160;is used.</p>
+                    </div>
+                </p>
+                <p class="paramName">trimSource</p>
+                <p class="paramDefnFirst">The character expression to be trimmed</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>If either <span class="ItalicFont">trimCharacter</span> or <span class="ItalicFont">trimSource</span> evaluates to <span class="CodeFont">NULL</span>, the result of the <span class="CodeFont">TRIM</span> function is <span class="CodeFont">NULL</span>. Otherwise, the result of the <span class="CodeFont">TRIM</span> function is defined as follows:</p>
+            <ul>
+                <li value="1">If <span class="ItalicFont">trimType</span> is <span class="CodeFont">LEADING</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all leading occurrences of <span class="ItalicFont">trimCharacter</span> removed.</li>
+                <li value="2">If <span class="ItalicFont">trimType</span> is <span class="CodeFont">TRAILING</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all trailing occurrences of <span class="ItalicFont">trimCharacter</span>removed.</li>
+                <li value="3">If <span class="ItalicFont">trimType</span> is <span class="CodeFont">BOTH</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all leading AND&#160;trailing occurrences of <span class="ItalicFont">trimCharacter</span>removed.</li>
+            </ul>
+            <p>If <span class="ItalicFont">trimSource</span>'s data type is <a href="../DataTypes/Char.html"><span class="CodeFont">CHAR</span></a> or <a href="../DataTypes/Varchar.html"><span class="CodeFont">VARCHAR</span></a>, the return type of the <span class="CodeFont">TRIM</span> function will be <a href="../DataTypes/Varchar.html"><span class="CodeFont">VARCHAR</span></a>. Otherwise the return type of the <span class="CodeFont">TRIM</span> function will be <a href="../DataTypes/Clob.html"><span class="CodeFont">CLOB</span></a>. </p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;VALUES TRIM('      Space Case   ');
+1
+-----------
+Space Case	--- This is the string 'Space Case'
+
+splice&gt; VALUES TRIM(BOTH ' ' FROM '      Space Case   ');
+1
+-----------
+Space Case	--- This is the string 'Space Case'
+
+splice&gt;&#160;VALUES&#160;TRIM(TRAILING&#160;' ' FROM&#160;'     Space&#160;Case     ');
+1
+-----------
+     Space Case	--- This is the string '     Space Case'
+
+splice&gt;&#160;VALUES&#160;TRIM(CAST&#160;NULL&#160;AS&#160;CHAR(1)&#160;FROM&#160;'     Space Case     ');
+1
+-----------
+NULL
+
+splice&gt;&#160;VALUES&#160;TRIM('o' FROM&#160;'VooDoo');
+1
+----------
+VooD
+
+   -- results in an error because <span class="ItalicFont">trimCharacter</span> can only be 1 character
+splice&gt;&#160;VALUES TRIM('Do' FROM 'VooDoo');</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="Concatenation.html">Concatenation</a> operator</li>
+                <li value="3"><a href="InitCap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
+                <li value="4"><a href="Instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
+                <li value="5"><a href="LCase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
+                <li value="6"><a href="Length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
+                <li value="7"><a href="Locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
+                <li value="8"><a href="LTrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
+                <li value="9"><span class="CodeFont"><a href="RegexpLike.html">REGEX_LIKE</a></span>&#160;operator</li>
+                <li value="10"><a href="Replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
+                <li value="11"><a href="RTrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
+                <li value="12"><a href="Substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
+                <li value="13"><a href="UCase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

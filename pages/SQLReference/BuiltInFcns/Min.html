@@ -1,0 +1,97 @@
+---
+title: MIN built-in SQL function
+description: Built-in SQL aggregate or window function that evaluates the minimum of an expression over a set of rows
+summary: Built-in SQL aggregate or window function that evaluates the minimum of an expression over a set of rows
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_min
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Min" id="BuiltInFcns.Min"></a><a name="kanchor556"></a>MIN</h1>
+            <p><span class="CodeFont">MIN</span> evaluates the minimum of an expression over a set of rows. You can use it as an <a href="Intro.WindowAggregrateFcns.html">aggregate function</a> or as a <a href="Intro.WindowAggregrateFcns.html">window (analytic)&#160;function</a>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">MIN ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">DISTINCT
+            </p>
+                <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated. </p>
+                <p class="paramName"><span class="ItalicFont">ALL</span>
+                </p>
+                <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.  </p>
+                <p class="paramName">Expression
+            </p>
+                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="../DataTypes/Decimal.html"><span class="CodeFont">DECIMAL</span></a>, <a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a>, <a href="../DataTypes/Float.html"><span class="CodeFont">FLOAT</span></a>, <a href="../DataTypes/Integer.html"><span class="CodeFont">INTEGER</span></a>, <a href="../DataTypes/BigInt.html"><span class="CodeFont">BIGINT</span></a>, <a href="../DataTypes/Numeric.html"><span class="CodeFont">NUMERIC</span></a>, <a href="../DataTypes/Real.html"><span class="CodeFont">REAL</span></a>, or <a href="../DataTypes/SmallInt.html"><span class="CodeFont">SMALLINT</span></a>.</p>
+                <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL data types. </p>
+                <p class="paramDefn">If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont">Expression</span> is allowed. For example, the following query is not valid:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">   --- Not a valid query:
+SELECT COUNT (DISTINCT flying_time),
+              MIN (DISTINCT miles)
+ FROM Flights;</pre>
+            </div>
+            <div class="noteNote"> Since duplicate values do not change the computation of the minimum value, the <span class="CodeFont">DISTINCT</span>&#160;and <span class="CodeFont">ALL</span>&#160;qualifiers have no impact on this function.</div>
+            <p>The <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery. It must evaluate to a built-in data type. You can therefore call methods that evaluate to built-in data types. (For example, a method that returns a <span class="ItalicFont">java.lang.Integer</span> or <span class="ItalicFont">int</span> evaluates to an <span class="CodeFont">INTEGER</span>.) If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
+            <p class="heading2">Results</p>
+            <p>The resulting data type is the same as the expression on which it operates; it will never overflow. </p>
+            <p>The comparison rules for the <span class="ItalicFont">Expression's</span> type determine the resulting minimum value. For example, if you supply a <a href="../DataTypes/Char.html"><span class="CodeFont">CHAR</span></a>&#160;or <a href="../DataTypes/Varchar.html"><span class="CodeFont">VARCHAR</span></a> argument, the number of blank spaces at the end of the value can affect how the minimum value is evaluated:  if the values <span class="CodeFont">'z'</span> and <span class="CodeFont">'z '</span> are both stored in a column, you cannot control which one will be returned as the minimum, because blank spaces are ignored for character comparisons.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT MIN (BirthDate) FROM Players;
+1
+----------
+1975-07-13
+</pre>
+            </div>
+            <p>This example finds the minimum number of walks and strikeouts by any pitcher in the database:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT MIN(Walks) "Walks", Min(Strikeouts) "Strikeouts" 
+   FROM Pitching JOIN Players on Pitching.ID=Players.ID 
+   WHERE Position='P';
+Walks |Strik&amp;
+-------------
+1     |1     
+
+1 row selected
+</pre>
+            </div>
+            <p class="heading2">Analytic Example</p>
+            <p>The following shows the homeruns hit by all batters who hit more than 10, compared to the least number of Homeruns by a player who hit 10 or more on his team:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns, 
+   MIN(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns 
+   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Least" 
+   FROM Players JOIN Batting ON Players.ID=Batting.ID
+   WHERE HomeRuns &gt; 10
+   ORDER BY Team, HomeRuns DESC;
+TEAM      |DISPLAYNAME             |HOMER&amp;|Least 
+--------------------------------------------------
+Cards     |Mitch Canepa            |28    |11    
+Cards     |Jonathan Pearlman       |17    |11    
+Cards     |Roger Green             |17    |11    
+Cards     |Michael Rastono         |13    |11    
+Cards     |Jack Hellman            |13    |11    
+Cards     |Kelly Wacherman         |11    |11    
+Giants    |Bob Cranker             |21    |12    
+Giants    |Buddy Painter           |19    |12    
+Giants    |Billy Bopper            |18    |12    
+Giants    |Mitch Duffer            |12    |12    
+
+10 rows selected</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.WindowAggregrateFcns.html">Window and Aggregate functions</a>
+                </li>
+                <li value="2"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="3"><a href="Avg.html"><span class="CodeFont">AVG</span></a> function</li>
+                <li value="4"><a href="Count.html"><span class="CodeFont">COUNT</span></a> function</li>
+                <li value="5"><a href="Max.html"><span class="CodeFont">MAX</span></a> function</li>
+                <li value="6"><a href="Sum.html"><span class="CodeFont">SUM</span></a> function</li>
+                <li value="7"><a href="../Clauses/Over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

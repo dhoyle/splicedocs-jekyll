@@ -1,0 +1,57 @@
+---
+title: CROSS JOIN
+description: Join operation that roduces the Cartesian product of two tables:&#160;it produces rows that combine each row from the first table with each row from the second table.
+summary: Join operation that roduces the Cartesian product of two tables:&#160;it produces rows that combine each row from the first table with each row from the second table.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_joinops_crossjoin
+folder: SQLReference/JoinOps
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="SQL-JoinOps.CrossJoin" id="SQL-JoinOps.CrossJoin"></a><a name="kanchor268"></a>CROSS JOIN</h1>
+            <p>A <span class="CodeFont">CROSS JOIN</span> is a <a href="AboutJoins.html"><span class="CodeFont">JOIN</span> operation</a> that produces the Cartesian product of two tables. Unlike other <span class="CodeFont">JOIN</span> operators, it does not let you specify a join clause. You may, however, specify a <span class="CodeFont">WHERE</span> clause in the <span class="CodeFont">SELECT</span> statement.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"><a href="../Expressions/Table.html" style="font-style: italic;">TableExpression</a> CROSS JOIN {
+    <a href="../Expressions/Table.html" style="font-style: italic;">TableViewOrFunctionExpression</a> | ( <span class="ItalicFont"><a href="../Expressions/Table.html">TableExpression</a></span> )
+}</pre>
+            </div>
+            <p class="heading2">Examples</p>
+            <p>The following <span class="CodeFont">SELECT</span> statements are equivalent:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * FROM CITIES CROSS JOIN FLIGHTS;
+
+splice&gt;&#160;SELECT * FROM CITIES, FLIGHTS;</pre>
+            </div>
+            <p>The following <span class="CodeFont">SELECT</span> statements are equivalent:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * FROM CITIES CROSS JOIN FLIGHTS
+   WHERE CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT;
+
+splice&gt;&#160;SELECT * FROM CITIES INNER JOIN FLIGHTS
+    ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT;</pre>
+            </div>
+            <p>The following example is more complex. The <span class="CodeFont">ON</span> clause in this example is associated with the <span class="CodeFont">LEFT OUTER JOIN</span> operation. Note that you can use parentheses around a <span class="CodeFont">JOIN</span> operation.</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * FROM CITIES LEFT OUTER JOIN
+  (FLIGHTS CROSS JOIN COUNTRIES)
+  ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT
+  WHERE COUNTRIES.COUNTRY_ISO_CODE = 'US';</pre>
+            </div>
+            <p>A <span class="CodeFont">CROSS JOIN</span> operation can be replaced with an <span class="CodeFont">INNER JOIN</span> where the join clause always evaluates to true (for example, <span class="CodeFont">1=1</span>). It can also be replaced with a sub-query. So equivalent queries would be:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * FROM CITIES LEFT OUTER JOIN 
+  FLIGHTS INNER JOIN COUNTRIES ON 1=1
+  ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT
+  WHERE COUNTRIES.COUNTRY_ISO_CODE = 'US';
+
+splice&gt;&#160;SELECT * FROM CITIES LEFT OUTER JOIN
+  (SELECT * FROM FLIGHTS, COUNTRIES) S
+  ON CITIES.AIRPORT = S.ORIG_AIRPORT
+  WHERE S.COUNTRY_ISO_CODE = 'US';</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.JoinOps.html">JOIN operations</a>
+                </li>
+                <li value="2"><a href="../Clauses/Using.html"><span class="CodeFont">USING</span></a>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

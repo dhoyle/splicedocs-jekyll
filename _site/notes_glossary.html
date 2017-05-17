@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A brief glossary of terms included in the Splice Machine documentation">
+<meta name="keywords" content=" ">
+<title>Glossary of terms | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Glossary of terms page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Glossary of terms">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Glossary of terms</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">A brief glossary of terms included in the Splice Machine documentation</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll/pages/Notes/notes_glossary.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor63"></a>Glossary</h1>
+            <table style="mc-table-style: url('../Resources/TableStyles/PatternedRows.css');" class="TableStyle-PatternedRows" cellspacing="0" summary="Glossary of terms in the Splice Machine documentation">
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <thead>
+                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Term</th>
+                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">ACID Transactions</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						ACID (<span class="BoldFont">A</span>tomicity, <span class="BoldFont">C</span>onsistency, <span class="BoldFont">I</span>solation, <span class="BoldFont">D</span>urability) is a set of properties that guarantee that database transactions are processed reliably. In the context of databases, a single logical operation on the data is called a transaction.
+					<ul><li value="1"><span class="ItalicFont">Atomicity </span>means that if one part of the transaction fails, the entire transaction fails.</li><li value="2"><span class="ItalicFont">Consistency </span>ensures that any transaction will bring the database from one valid state to another, which means that any data written to the database must be valid according all rules defined in the database.</li><li value="3"><span class="ItalicFont">Isolation </span>ensures that the concurrent execution of transactions results in a system state that would be obtained if transactions were executed in serial order.</li><li value="4"><span class="ItalicFont">Durability </span>means that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors.</li></ul></td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Auto-sharding</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						The database is automatically and transparently partitioned (sharded) across low cost commodity nodes, allowing scale-out of read and write queries, without requiring changes to the application.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">BI Tools</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="BoldFont">B</span>usiness <span class="BoldFont">I</span>ntelligence Tools</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">CDH</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						Cloudera’s <span class="ItalicFont"><span class="BoldFont">C</span>loudera <span class="BoldFont">D</span>istribution Including Apache Hadoop</span>, a popular Hadoop platform.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Column-Oriented Data Model</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						A model for storing data in a database as sections of columns, rather than as rows of data. In a column-oriented database, all of the values in a column are serialized together.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Concurrency</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						The ability for multiple users to access data at the same time.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">CRM</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="BoldFont">C</span>ustomer <span class="BoldFont">R</span>elationship <span class="BoldFont">M</span>anagement</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Cross-table, cross-row transactions</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">A transaction (a group of SQL statements) can modify multiple rows (cross-row) in multiple tables (across tables). 
+						&#160;</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">CRUD</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="BoldFont">C</span>reate, <span class="BoldFont">R</span>ead, <span class="BoldFont">U</span>pdate, <span class="BoldFont">D</span>elete. The four basic functions of persistent storage.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">DAG</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows"><span class="BoldFont">D</span>irected <span class="BoldFont">A</span>cyclic <span class="BoldFont">G</span>raph. A directed graph with no directed cycles, meaning that no path through the graph loops back to its starting point. DAGs are used for various computational purposes, including query optimization in some databases.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Database Statistics</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						&#160;
+					A form of dynamic metadata that assists the query optimizer in making better decisions by tracking distribution of values in indexes and/or columns.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Database Transaction</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						A sequence of database operations performed as a single logical unit of work.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">ERP</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="BoldFont">E</span>nterprise <span class="BoldFont">R</span>esource <span class="BoldFont">P</span>lanning is business management software that a company can use to collect, store, manage and interpret data from many business activities.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Foreign Key</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						A column or columns in one table that references a column (typically the primary key column) of another table. Foreign keys are used to enture referential integrity.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Full join support</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						Databases use join operations to combine fields from multiple tables by using values common to each. Full join support means that the Database Management System support all five ANSI-standard types of join operations: Inner join, left outer join, right outer join, full outer join, and cross join.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Hadoop</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						An Apache open source software project that enables the distributed processing of large data sets across clusters of commodity servers. It is designed to scale up from a single server to thousands of machines, with a very high degree of fault tolerance.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">HBase</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						A column-oriented database management system that is part of the Apache Hadoop framework and runs on top of HDFS.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">HCatalog</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						Apache HCatalog is a table and storage management layer for Hadoop that enables users with different data processing tools to more easily read and write data on the grid.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">HDFS</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="BoldFont">H</span>adoop <span class="BoldFont">D</span>istributed <span class="BoldFont">F</span>ile <span class="BoldFont">S</span>ystem. A distributed file system that stores data on commodity hardware and is part of the Apache Hadoop framework. It links together the file systems on many local nodes to make them into one big file system.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">HDP</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows"><span class="ItalicFont"><span class="BoldFont">H</span>ortonworks <span class="BoldFont">D</span>ata <span class="BoldFont">P</span>latform </span>includes Apache Hadoop and is used for storing, processing, and analyzing large volumes of data. The platform is designed to deal with data from many sources and formats.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">HIVE</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						Apache Hive is a data warehouse infrastructure built on top of Hadoop for providing data summarization, query, and analysis.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">HR</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows"><span class="BoldFont">H</span>uman <span class="BoldFont">R</span>esources.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">JDBC</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="ItalicFont"><span class="BoldFont">J</span>ava <span class="BoldFont">D</span>ata<span class="BoldFont">B</span>ase <span class="BoldFont">C</span>onnection</span>. An API specification for connecting with databases using programs written in Java.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">JSON</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						An open standard format that uses human-readable text to transmit data objects consisting of attribute–value pairs. It is used primarily to transmit data between a server and web applications, as an alternative to XML.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">JVM</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="BoldFont">J</span>ava <span class="BoldFont">V</span>irtual <span class="BoldFont">M</span>achine. The code execution component of the Java platform.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Key-Value Data Model</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						A fundamental and open-ended data model that allows for extension without modifying existing data. Data is represented in pairs: name (or key) and a value that is associated with that name. Also known as key-value pair, name-value pair, field-value pair, and attribute-value pair.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Map Reduce</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						MapReduce is a programming model and an associated implementation for processing and generating large data sets with a parallel, distributed algorithm on a cluster. MapReduce programs typically include these steps:
+                    
+					<ol><li value="1">Each worker node applies the <span class="CodeFont">Map()</span> function to filter and sort local data.</li><li value="2">Worker nodes redistribute (shuffle) data based on output keys produced by the <span class="CodeFont">Map()</span> step, so that all data belonging to one key is located on the same node.</li><li value="3">Worker nodes process each group of output data in parallel to produce results.</li><li value="4">The MapReduce system collects the results and sorts them to produce the final outcome.							</li></ol></td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">MapR</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows"><span class="ItalicFont">MapR </span>is a complete distribution for Apache Hadoop that packages more than a dozen projects from the Hadoop ecosystem to provide a broad set of big data capabilities.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Multi-partition transactions</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">A database, like Splice Machine, that allows transactions for a table distributed as multiple partitions across multiple nodes in a cluster.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">MVCC</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows"><span class="BoldFont">M</span>ultiVersion <span class="BoldFont">C</span>oncurrency <span class="BoldFont">C</span>ontrol is a method used to control concurrent access to a database. Concurrency control is needed to bypass the potential problem of someone viewing (reading) a data value while another is writing to the same value.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">MySQL</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						An open source Relational Database Management System (RDBMS) that uses Structured Query Language (SQL).</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">NewSQL</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">NewSQL is a class of modern relational database management systems that seek to provide the same scalable performance of NoSQL systems for online transaction processing (OLTP) read-write workloads while still maintaining the ACID guarantees of a traditional database system.
+						&#160;</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">NoSQL</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">A NoSQL database provides a mechanism for storage and retrieval of data that is modeled in means other than the tabular relations used in relational databases.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">ODBC</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows"><span class="ItalicFont"><span class="BoldFont">O</span>pen <span class="BoldFont">D</span>ata<span class="BoldFont">B</span>ase <span class="BoldFont">C</span>onnectivity</span>. An open standard API for accessing database management systems, designed to be independent of any specific database or operating system.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">OLAP</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="BoldFont">O</span>n<span class="BoldFont">L</span>ine <span class="BoldFont">A</span>nalytical <span class="BoldFont">P</span>rocessing. An approach to quickly answering multi-dimensional analytical queries in the Business Intelligence world. OLAP tools allow users to analyze multidimensional data interactive from multiple perspectives.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">OLTP</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows"><span class="BoldFont">O</span>n<span class="BoldFont">L</span>ine <span class="BoldFont">T</span>ransaction <span class="BoldFont">P</span>rocessing. A class of information processing systems that facilitate and manage transaction-oriented applications.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Query Optimizer</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						A critical database management system (DBMS) component that analyzes SQL queries and determines efficient execution mechanisms, known as query plans. The optimizer typically generates several plans and then selects the most efficient plan to run the query.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Referential Integrity</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						A property of data that requires every value of one column in a table to exist as a value of another column in a different (or the same) table. This term is generally used to describe the function of foreign keys.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Relational Data Model</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						The model, developed by E.F. Codd, upon which relational database are based. Relational tables have these properties:
+					<ul><li value="1">Data is presented as a collection of relations</li><li value="2">Each relation is depicted as a table</li><li value="3">Columns are attributes that belong to the entity modeled by the table</li><li value="4">Each row represents a single entity (a record)</li><li value="5">Every table has a set of attributes, a key, that unique identifies each entity</li></ul></td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">REST</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows"><span class="BoldFont">RE</span>presentational <span class="BoldFont">S</span>tate <span class="BoldFont">T</span>ransfer. A simple, stateless, client-server protocol use for networked applications, which uses the HTTP requests to communicate among machines. RESTful applications use HTTP requests to post (create or update) data, to read data, and to delete data. Collectively, these are known as CRUD operations.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Rollback</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						An operation that returns the database to some previous state, typically used for recovering from database server crashes: by rolling back any transaction that was active at the time of the crash, the database is restored to a consistent state.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Scale Out</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						A database architecture that doesn’t rely on a single controller and scales by adding processing power coupled with additional storage.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Scale Up</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						An architecture that uses a fixed controller resource for all processing. Scaling capacity happens by adding processing power to the controller or (eventually) upgrading to a new (and expensive) controller.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Sharding</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						Horizontal partitioning in a database: that the data is split among multiple machines while ensuring that the data is always accessed from the correct place. See Auto-sharding.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">Spark</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+						Apache Spark is an open-source cluster computing framework that uses in-memory primitives to reduce storage access and boost database performance. Spark allows user applications to load data into a cluster's memory and repeatedly query that data.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows"><span class="ItalicFont">Trigger</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+						A database trigger is code that is run automatically in response to specific events on specific tables or views in your database. Triggers are typically configured to maintain data integrity, such as ensuring that an updated value is in range.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows"><span class="ItalicFont">YARN</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows"><span class="ItalicFont"><span class="BoldFont">Y</span>et <span class="BoldFont">A</span>nother <span class="BoldFont">R</span>esource <span class="BoldFont">N</span>egotiator</span>. YARN assigns CPU, memory, and storage to applications running on a Hadoop cluster, and&#160; enables application frameworks other than MapReduce (like Spark) to run on Hadoop.</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows"><span class="ItalicFont">ZooKeeper</span>
+                        </td>
+                        <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+						Part of the Apache Hadoop framework, ZooKeeper provides a centralized infrastructure and services that enable synchronization across a cluster. ZooKeeper maintains common objects needed in large cluster environments. Examples of these objects include configuration information, hierarchical naming space, and so on. Applications can leverage these services to coordinate distributed processing across large clusters.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 16, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

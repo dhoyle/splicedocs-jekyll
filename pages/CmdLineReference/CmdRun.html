@@ -1,0 +1,38 @@
+---
+title: Run command
+description: Runs commands from a file.
+summary: Runs commands from a file.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_run
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor423"></a>Run Command</h1>
+            <p>The <span class="AppCommand">run</span> command redirects the command line interpreter to read and process commands from the specified file. This continues until the end of the file is reached, or an <a href="CmdExit.html">exit</a> command is executed. Note that the file <span class="ItalicFont">can</span> contain <span class="CodeFont">run</span> commands.</p>
+            <div class="noteNote">You can specify a file that is in the directory where you are running the command, or you can include the full file path so that the <span class="CodeFont">run</span> command can find it.</div>
+            <p>The command line interpreter prints out the statements in the file as it executes them.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">RUN&#160;<span class="ItalicFont">String</span></pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">String</p>
+                <p class="paramDefnFirst">The name of the file containing commands to execute.</p>
+            </div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; run 'setupMenuConn.spl';
+splice&gt; -- this is setupMenuConn.spl
+-- splice displays its contents as it processes file
+splice&gt; connect 'jdbc:splice://xyz:1527/splicedb';
+splice&gt; autocommit off;
+splice&gt; -- this is the end of setupMenuConn.spl
+-- there is now a connection to splicedb on xyz and no autocommit.
+-- input will now resume from the previous source.
+;
+splice&gt;
+</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

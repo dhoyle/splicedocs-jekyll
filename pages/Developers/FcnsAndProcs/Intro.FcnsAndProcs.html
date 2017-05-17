@@ -1,0 +1,191 @@
+---
+title: Introduction to Splice Machine Functions and Procedures
+description: Overview of writing and using functions and stored procedures in Splice Machine
+summary: Overview of writing and using functions and stored procedures in Splice Machine
+keywords: 
+sidebar: developers_sidebar
+permalink: developers_fcnsandprocs_intro
+folder: Developers/FcnsAndProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1>Using Functions and Stored Procedures</h1>
+            <p>This topic provides an overview of writing and using functions and stored procedures in Splice Machine.</p>
+            <h2>About User-Defined Functions</h2>
+            <p>You can create user-defined database functions that can be evaluated in SQL statements; these functions can be invoked where most other built-in functions are allowed, including within SQL expressions and <span class="CodeFont">SELECT</span> statement. Functions must be deterministic, and cannot be used to make changes to the database.</p>
+            <p>You can create two kinds of functions:</p>
+            <ul>
+                <li value="1">Scalar functions, which always return a single value (or <span class="CodeFont">NULL</span>),</li>
+                <li value="2">Table functions, which return a table.</li>
+            </ul>
+            <p>When you invoke a function within a <span class="CodeFont">SELECT</span>&#160;statement, it is applied to each retrieved row. For example:</p>
+            <div class="preWrapper"><pre class="Example">SELECT&#160;ID, Salary, MyAdjustSalaryFcn(Salary)&#160;<br />FROM&#160;SPLICEBBALL.Salaries;</pre>
+            </div>
+            <p>This <span class="CodeFont">SELECT</span>&#160;will execute the <span class="CodeFont">MyAdjustSalaryFcn</span> to the <span class="CodeFont">Salary</span> value for each player in the table.</p>
+            <h2>About Stored Procedures</h2>
+            <p>You can group a set of SQL&#160;commands together with variable and logic into a stored procedure, which is a subroutine that is stored in your database's data dictionary. Unlike user-defined functions, a stored procedure is not an expression and can only be invoked using the <span class="CodeFont">CALL</span> statement. Stored procedures allow you to modify the database and return <span class="CodeFont">Result Sets</span> or nothing at all.</p>
+            <p>Stored procedures can be used for situations where a complex set of SQL statements are required to process something, and that process is used by various applications; creating a stored procedure increases performance efficiency. They are typically used for:</p>
+            <ul>
+                <li value="1">checking business rules and validating data before performing actions</li>
+                <li value="2">performing significant processing of data with the inputs to the procedure</li>
+            </ul>
+            <h2><a name="kanchor253"></a>Comparison of Functions and Stored Procedures</h2>
+            <p>Here's a comparison of Splice Machine functions and stored procedures:</p>
+            <table summary="Tables comparing stored procedures and database functions.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Database Function</th>
+                        <th>Stored Procedure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="noSpaceAbove">A Splice&#160;Machine database function:</p>
+                            <ul>
+                                <li value="1">must be written as a public static method in a Java public class</li>
+                                <li value="2">is executed in exactly the same manner as are public static methods in Java</li>
+                                <li value="3">can have multiple input parameters</li>
+                                <li value="4">always returns a single value (which can be null)</li>
+                                <li value="5">cannot modify data in the database</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine stored procedures can:</p>
+                            <ul>
+                                <li value="1"> return result sets or return nothing at all</li>
+                                <li value="2">issue <span class="CodeFont">update</span>, <span class="CodeFont">insert</span>, and <span class="CodeFont">delete</span> statements</li>
+                                <li value="3">perform DDL&#160;statements such as <span class="CodeFont">create</span> and <span class="CodeFont">drop</span></li>
+                                <li value="4">consolidate and centralize code</li>
+                                <li value="5">reduce network traffic and increase execution speed</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Can be used in <span class="CodeFont">SELECT</span>&#160;statements.</td>
+                        <td>
+                            <p class="noSpaceAbove">Cannot be used in in <span class="CodeFont">SELECT</span>&#160;statements.</p>
+                            <p>Must be invoked using a <span class="CodeFont">CALL</span>&#160;statement.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Create with the <span class="CodeFont"><a href="../../SQLReference/Statements/CreateFunction.html">CREATE&#160;FUNCTION</a></span>&#160;statement, which is described in our SQL&#160;Reference book.</p>
+                            <p>You can find an example in the <a href="ProcAndFcnExamples.html">Function and Stored Procedure Examples</a> topic in this section.</p>
+                        </td>
+                        <td>
+                            <p>Create with the <span class="CodeFont"><a href="../../SQLReference/Statements/CreateProcedure.html">CREATE&#160;PROCEDURE</a></span>&#160;statement, which is described in our SQL&#160;Reference book.</p>
+                            <p>You can find an example in the <a href="ProcAndFcnExamples.html">Function and Stored Procedure Examples</a> topic in this section.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Operations in Which You Can Use Functions and Stored Procedures</h2>
+            <p>The following table provides a list of the differences between functions and stored procedures with regard to when and where they can be used:</p>
+            <table summary="Table comparing which operations can be used in functions and stored procedures.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Functions</th>
+                        <th>Stored Procedures</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="ItalicFont">Execute in an SQL&#160;Statement</span>
+                        </td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Execute in a Trigger</span>
+                        </td>
+                        <td>Yes</td>
+                        <td>Triggers that execute before an operation (<span class="ItalicFont">before triggers</span>)&#160;cannot modify SQL data.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Process <span class="CodeFont">OUT / INOUT</span>&#160;Parameters</span>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Return <span class="CodeFont">Resultset(s)</span></span>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Execute SQL&#160;<span class="CodeFont">Select</span></span>
+                        </td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Execute SQL&#160;<span class="CodeFont">Update/Insert/Delete</span></span>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ItalicFont">Execute DDL&#160;(<span class="CodeFont">Create/Drop</span>)</span>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Viewing Functions and Stored Procedures</h2>
+            <p>You can use the <a href="../../CmdLineReference/ShowCmds.html">show command</a> in the <span class="AppCommand">splice&gt;</span>&#160;command line interface to display the functions and stored procedures available in your database:</p>
+            <table summary="Table showing the output of the show functions and show procedures commands.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="AppCommand">splice&gt;&#160;show functions;</span>
+                        </td>
+                        <td>All functions defined in your database</td>
+                    </tr>
+                    <tr>
+                        <td><span class="AppCommand">splice&gt;&#160;show functions in SYSCS_UTIL;</span>
+                        </td>
+                        <td>All functions in the <span class="CodeFont">SYSCS_UTIL</span>&#160;schema in your database</td>
+                    </tr>
+                    <tr>
+                        <td><span class="AppCommand">splice&gt;&#160;show procedures;</span>
+                        </td>
+                        <td>All stored procedures defined in your database</td>
+                    </tr>
+                    <tr>
+                        <td><span class="AppCommand">splice&gt;&#160;show procedures in SYSCS_UTIL;</span>
+                        </td>
+                        <td>All stored procedures in the <span class="CodeFont">SYSCS_UTIL</span>&#160;schema in your database</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Writing and Deploying Functions and Stored Procedures</h2>
+            <p>The remainder of this section presents information about and examples of writing functions and stored procedures for use with Splice Machine, in these topics:</p>
+            <ul>
+                <li value="1"><a href="WritingProcsAndFcns.html">Writing Functions and Stored Procedures</a> shows you the steps required to write functions stored procedures and add them to your Splice Machine database.</li>
+                <li value="2"><a href="StoringAndUpdatingFcnsAndProcs.html">Storing and Updating Functions and Stored Procedures</a> tells you how to store new JAR&#160;files, replace JAR&#160;files, and remove JAR&#160;files in your Splice Machine database.</li>
+                <li value="3"><a href="ProcAndFcnExamples.html">Examples of Splice Machine Functions and Stored Procedures</a> provides you with examples of functions and stored procedures.</li>
+            </ul>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="../../SQLReference/Statements/CreateFunction.html">CREATE&#160;FUNCTION</a></span>&#160;in the <span class="ItalicFont">SQL Reference Manual</span></li>
+                <li value="2"><span class="CodeFont"><a href="../../SQLReference/Statements/CreateProcedure.html">CREATE&#160;PROCEDURE</a></span>&#160;in the <span class="ItalicFont">SQL Reference Manual</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

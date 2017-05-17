@@ -1,0 +1,75 @@
+---
+title: DECLARE GLOBAL TEMPORARY TABLE statement
+description: Defines a temporary table for the current connection.
+summary: Defines a temporary table for the current connection.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_globaltemptable
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.CreateGlobalTempTable" id="Statements.CreateGlobalTempTable"></a><a name="kanchor170"></a>DECLARE GLOBAL TEMPORARY TABLE</h1>
+            <p>The <span class="CodeFont">DECLARE GLOBAL&#160;TEMPORARY TABLE</span> statement defines a temporary table for the current connection. </p>
+            <p>This statement is similar to the <span class="CodeFont"><a href="#">CREATE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span>&#160;and  <span class="CodeFont">CREATE&#160;LOCAL&#160;TEMPORARY&#160;TABLE</span> statements, but uses different syntax to provide compatibility with external business intelligence tools.</p>
+            <p>For general information and notes about using temporary tables, see the <a href="../../Developers/Fundamentals/TemporaryTables.html">Using Temporary Tables</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">DECLARE GLOBAL TEMPORARY TABLE <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>
+   { <span class="ItalicFont">column-definition</span>[ , <span class="ItalicFont">column-definition</span>] * }  
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;[ON COMMIT PRESERVE ROWS ]
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;[NOT LOGGED]
+</pre>
+            </div>
+            <div class="noteNote">Splice Machine generates a warning if you attempt to specify any other modifiers other than the&#160;<span class="CodeFont">NOT&#160;LOGGED</span> and <span class="CodeFont">ON&#160;COMMIT&#160;PRESERVE&#160;ROWS</span>&#160;modifiers shown above. </div>
+            <div class="paramList">
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">Names the temporary table.
+</p>
+                <p class="paramName">column-definition</p>
+                <p class="paramDefnFirst">Specifies a column definition. See <a href="ColumnDefinition.html">column-definition</a> for more information.</p>
+                <div class="noteNote">You cannot use <samp>generated-column-spec</samp> in <samp>column-definitions</samp> for temporary tables.</div>
+                <p class="paramName">ON COMMIT PRESERVE&#160;ROWS</p>
+                <p class="paramDefnFirst">
+				
+				Specifies that the data in the temporary table is to be preserved until the session terminates.			</p>
+                <p class="paramName">NOT LOGGED</p>
+                <p class="paramDefnFirst">If you specify this, operations against the temporary table will not be logged; otherwise, logging will take place as usual.</p>
+            </div>
+            <p class="heading2">Restrictions on Temporary Tables</p>
+            <p>You can use temporary tables just like you do permanently defined database tables, with several important exceptions and restrictions that are noted in this section. </p>
+            <p class="heading3">Operational Limitations</p>
+            <p>Temporary tables have the following operational limitations:</p>
+            <ul>
+                <li value="1">exist only while a user session is alive</li>
+                <li value="2">are not visible to other sessions or transactions</li>
+                <li value="3">cannot be altered using the <span class="CodeFont"><a href="AlterTable.html">ALTER&#160;TABLE</a></span>, <span class="CodeFont"><a href="RenameTable.html">RENAME&#160;TABLE</a></span>, or <span class="CodeFont"><a href="RenameColumn.html">RENAME&#160;COLUMN</a></span>&#160;statements</li>
+                <li value="4">do not get backed up</li>
+                <li value="5">cannot be used as data providers to views</li>
+                <li value="6">cannot be referenced by foreign keys in other tables</li>
+                <li value="7">are not displayed by the <span class="CodeFont"><a href="../../CmdLineReference/ShowCmds.html">SHOW</a></span>&#160;command</li>
+            </ul>
+            <p>Also note that temporary tables persist across transactions in a session and are automatically dropped when a session terminates.</p>
+            <p class="heading3">Table Persistence</p>
+            <p>Here are two important notes about temporary table persistence. Temporary tables:</p>
+            <ul>
+                <li value="1">persist across transactions in a session</li>
+                <li value="2">are automatically dropped when a session terminates or expires</li>
+            </ul>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DECLARE&#160;GLOBAL TEMPORARY TABLE FirstAndLast(
+      id INT&#160;NOT&#160;NULL&#160;PRIMARY&#160;KEY, 
+      firstName VARCHAR(8)&#160;NOT&#160;NULL, 
+      lastName VARCHAR(10) NOT&#160;NULL&#160;) 
+   ON COMMIT PRESERVE ROWS
+   NOT&#160;LOGGED;
+0 rows inserted/updated/deleted
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CreateTempTable.html"><span class="CodeFont">CREATE&#160;TEMPORARY&#160;TABLE</span></a> statement</li>
+                <li value="2"><a href="../../Developers/Fundamentals/TemporaryTables.html">Using Temporary Tables</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,90 @@
+---
+title: ORDER BY clause
+description: A clause that allows you to specify the order in which rows appear in the result set.
+summary: A clause that allows you to specify the order in which rows appear in the result set.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_clauses_orderby
+folder: SQLReference/Clauses
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Clauses.OrderBy" id="Clauses.OrderBy"></a><a name="kanchor40"></a>ORDER BY</h1>
+            <p>The <span class="CodeFont">ORDER BY</span> clause is an optional element of the following:</p>
+            <ul>
+                <li value="1">A <a href="../Statements/Select.html"><span class="CodeFont">SELECT</span> statement</a></li>
+                <li value="2">A <span class="ItalicFont"><a href="../Expressions/Select.html">SelectExpression</a></span></li>
+                <li value="3">A <a href="../Expressions/Values.html"><span class="CodeFont">VALUES</span> expression</a></li>
+                <li value="4">A <span class="ItalicFont"><a href="../Queries/ScalarSubquery.html">ScalarSubquery</a></span></li>
+                <li value="5">A <span class="ItalicFont"><a href="../Queries/TableSubquery.html">TableSubquery</a></span></li>
+            </ul>
+            <p>It can also be used in an <span class="CodeFont"><a href="../Statements/Insert.html">INSERT</a></span> statement or a <span class="CodeFont"><a href="../Statements/CreateView.html">CREATE VIEW</a></span> statement.</p>
+            <p>An <span class="CodeFont">ORDER BY</span> clause allows you to specify the order in which rows appear in the result set. In subqueries, the <span class="CodeFont">ORDER BY</span> clause is meaningless unless it is accompanied by one or both of the <span class="CodeFont">result offset</span> and <span class="CodeFont">fetch first</span> clauses or in conjunction with the <span class="CodeFont">ROW_NUMBER</span> function, since there is no guarantee that the order is retained in the outer result set. It is permissible to combine <span class="CodeFont">ORDER BY</span> on the outer query with <span class="CodeFont">ORDER BY</span> in subqueries.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ORDER BY { <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-Name</a></span> |
+  &#160;&#160;&#160;&#160;&#160;&#160;&#160;  <span class="ItalicFont">ColumnPosition</span> | 
+   &#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="ItalicFont">Expression</span> }
+    [ ASC | DESC ]
+    [ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-Name</a></span> | <span class="ItalicFont">ColumnPosition</span> | <span class="ItalicFont">Expression</span> 
+      [ ASC | DESC ]
+&#160;&#160;&#160;&#160;  [ NULLS FIRST |&#160;NULLS&#160;LAST ]
+  &#160; ]* </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">column-Name</p>
+                <p class="paramDefnFirst">A column name, as described in the <span class="CodeFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">Column Name</a></span> topic. This refers to the names visible from the <var>SelectItems</var> in the underlying query of the <span class="CodeFont"><a href="../Statements/Select.html">SELECT</a></span> statement. The column name(s) that you specify in the <span class="CodeFont">ORDER BY</span> clause do not need to be the <span class="CodeFont">SELECT</span> list.</p>
+                <p class="paramName">ColumnPosition</p>
+                <p class="paramDefnFirst">An integer that identifies the number of the column in the <var>SelectItems</var> in the underlying query of the <span class="CodeFont">SELECT</span> statement. <span class="CodeFont">ColumnPosition</span> must be greater than 0 and not greater than the number of columns in the result table. In other words, if you want to order by a column, that column must be specified in the <span class="CodeFont">SELECT</span> list.</p>
+                <p class="paramName">Expression</p>
+                <p class="paramDefnFirst">A sort key expression, such as numeric, string, and datetime expressions. <span class="ItalicFont">Expression</span> can also be a row value expression such as a scalar subquery or case expression. </p>
+                <p class="paramName">ASC</p>
+                <p class="paramDefnFirst">Specifies that the results should be returned in ascending order. If the order is not specified, <span class="CodeFont">ASC</span> is the default.</p>
+                <p class="paramName">DESC</p>
+                <p class="paramDefnFirst">Specifies that the results should be returned in descending order.</p>
+                <div>
+                    <p class="paramName">NULLS&#160;FIRST</p>
+                    <p class="paramDefnFirst">Specifies that <span class="CodeFont">NULL</span>&#160;values should be returned before non-<span class="CodeFont">NULL</span>&#160;values. This is the default value for descending (<span class="CodeFont">DESC</span>)&#160;order.</p>
+                    <p class="paramName">NULLS&#160;LAST</p>
+                    <p class="paramDefnFirst">Specifies that <span class="CodeFont">NULL</span>&#160;values should be returned after non-<span class="CodeFont">NULL</span>&#160;values. This is the default value for ascending (<span class="CodeFont">ASC</span>)&#160;order.</p>
+                </div>
+            </div>
+            <p class="heading2">Using</p>
+            <p>If <span class="CodeFont">SELECT DISTINCT</span> is specified or if the <span class="CodeFont">SELECT</span> statement contains a <span class="CodeFont">GROUP BY</span> clause, the <span class="CodeFont">ORDER BY</span> columns must be in the <span class="CodeFont">SELECT</span> list. </p>
+            <p class="heading2">Example using a correlation name</p>
+            <p>You can sort the result set by a correlation name, if the correlation name is specified in
+			the select list. For example, to return from the <span class="CodeFont">CITIES</span> database all of the
+			entries in the <span class="CodeFont">CITY_NAME</span> and <span class="CodeFont">COUNTRY</span> columns, where the <span class="CodeFont">COUNTRY</span> column has
+		the correlation name <span class="CodeFont">NATION</span>, you specify this <span class="CodeFont">SELECT</span> statement:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT CITY_NAME, COUNTRY AS NATION 
+  FROM CITIES 
+  ORDER BY NATION;</pre>
+            </div>
+            <p class="heading2">Example using a numeric expression</p>
+            <p>You can sort the result set by a numeric expression, for example:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT name, salary, bonus FROM employee 
+  ORDER BY salary+bonus;</pre>
+            </div>
+            <p>In this example, the salary and bonus columns are <span class="CodeFont">DECIMAL</span> data types.</p>
+            <p class="heading2">Example using a function</p>
+            <p>You can sort the result set by invoking a function, for example:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT i, len FROM measures 
+  ORDER BY sin(i);</pre>
+            </div>
+            <p class="heading2">Example of specifying a NULL&#160;ordering</p>
+            <p>You can sort the result set by invoking a function, for example:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM Players
+  ORDER BY BirthDate DESC&#160;NULLS&#160;LAST;</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="GroupBy.html"><span class="CodeFont">GROUP&#160;BY</span></a>&#160;clause</li>
+                <li value="2"><a href="Where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
+                <li value="3"><a href="../Expressions/Select.html"><span class="CodeFont">SELECT</span></a> expression</li>
+                <li value="4"><a href="../Expressions/Values.html"><span class="CodeFont">VALUES</span></a>&#160;expression</li>
+                <li value="5"><a href="../Statements/CreateView.html"><span class="CodeFont">CREATE&#160;VIEW</span></a>&#160;statement</li>
+                <li value="6"><a href="../Statements/Insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
+                <li value="7"><a href="../Statements/Select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,122 @@
+---
+title: Connecting to Splice Machine with Python and ODBC
+description: Walks you through compiling and running a Python program that connects to your Splice Machine database via our ODBC driver.
+summary: Walks you through compiling and running a Python program that connects to your Splice Machine database via our ODBC driver.
+keywords: 
+sidebar: developers_sidebar
+permalink: developers__connecting_python
+folder: Developers/Connecting
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor382"></a>Connecting to Splice Machine with Python and ODBC</h1>
+            <p>This topic shows you how to compile and run a sample Python program that connects to Splice&#160;Machine using our ODBC&#160;driver. The <span class="CodeFont">SpliceODBCConnect.py</span>&#160;program does the following:</p>
+            <ul>
+                <li value="1"> connects to a standalone (<span class="CodeFont">localhost</span>)&#160;version of Splice Machine</li>
+                <li value="2">retrieves and displays records from several system tables</li>
+                <li value="3">creates a tables inserts several sample records into it</li>
+                <li value="4">selects and aggregates records from the new table</li>
+            </ul>
+            <h2><a name="Compile"></a>Compile and Run the Sample Program</h2>
+            <p>This section walks you through compiling and running the <span class="CodeFont">SpliceODBCConnect.py</span>&#160;example program, in the following steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Install the Splice&#160;Machine ODBC&#160;driver</p>
+                        <p class="indentLevel1"><a href="ODBCInstall.html">Follow our instructions</a> for installing the driver on Unix or Windows.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Install the pyodbc module</p>
+                        <p class="indentLevel1">You need to install the <span class="CodeFont">pyodbc</span> open source Python module, which implements the DB&#160;API&#160;2.0 specification and can be used with Python 2.4 or higher. See <a href="https://github.com/mkleehammer/pyodbc" target="_blank">https://github.com/mkleehammer/pyodbc</a> for more information about this module.</p>
+                        <p class="indentLevel1">To install pyodbc on the server on which you'll be running your job:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">yum install gcc-c++<br />pip install pyodbc</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Confirm that you can connect</p>
+                        <p class="indentLevel1">To confirm that you're ready to use the ODBC driver, launch the python shell and enter the following commands, replacing <span class="HighlightedCode">SpliceODBC64</span> with the name of your data source (which is found in the <span class="CodeFont">odbc.ini</span> file that you edited when installing our ODBC&#160;driver):</p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="Example">import pyodbc
+cnxn = pyodbc.connect("DSN=SpliceODBC64")
+cursor = cnxn.cursor()
+cursor.execute("select * from SYS.SYSTABLES")
+row = cursor.fetchone()
+print('row:',row)
+</pre>
+                            </div>
+                        </p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Copy the example program code:</p>
+                        <p class="indentLevel1">You can copy and paste the code below:</p>
+                        <div class="preWrapperWide"><pre class="Example">#!/usr/bin/python
+
+# This program is used to demonstrate connecting to Splice Machine using ODBC
+
+import pyodbc
+
+#Connect to Splice Machine using an Datasource
+cnxn = pyodbc.connect("DSN=SpliceODBC64")
+
+#Open a cursor
+cursor = cnxn.cursor()
+
+#Build a select statement
+cursor.execute("select * from SYS.SYSTABLES")
+
+#Fetch one record from the select
+row = cursor.fetchone()
+
+#If there is a record, print it
+if row:
+        print(row)
+
+#The following will continue to retrieve one record at a time from the resultset
+while 1:
+        row = cursor.fetchone()
+        if not row:
+                break
+        print('table name:', row.TABLENAME)
+
+#The following is an example of using the fetchall option, instead of retrieving one record at time
+cursor.execute("select * from SYS.SYSSCHEMAS")
+rows = cursor.fetchall()
+for row in rows:
+        print(row.SCHEMAID, row.SCHEMANAME)
+
+
+#Create a table
+cursor.execute("CREATE TABLE MYPYTHONTABLE(a int, b varchar(30))")
+
+#Insert data into the table
+cursor.execute("insert into MYPYTHONTABLE values (1,'a')");
+cursor.execute("insert into MYPYTHONTABLE values (2,'b')");
+cursor.execute("insert into MYPYTHONTABLE values (3,'c')");
+cursor.execute("insert into MYPYTHONTABLE values (4,'c')");
+cursor.execute("insert into MYPYTHONTABLE values (5,'c')");
+
+#Commit the creation of the table
+cnxn.commit();
+
+#Confirm the records are in the table
+row = cursor.execute("select count(1) as TOTAL from SPLICE.MYPYTHONTABLE").fetchone()
+print(row.TOTAL)</pre>
+                        </div>
+                        <p class="indentLevel1">
+                            <p>&#160;</p>
+                        </p>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Save the code to <span class="CodeFont">SpliceODBCConnect.py</span>.</p>
+                    </li>
+                    <li value="6">
+                        <p class="topLevel">Run the program:</p>
+                        <p class="indentLevel1">Run the <span class="CodeFont">SpliceODBCConnect.py</span> program as follows:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">python ./SpliceODBCConnect.py</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

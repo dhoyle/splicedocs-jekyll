@@ -1,0 +1,73 @@
+---
+title: INTEGER built-in SQL function
+description: Built-in SQL function that returns an integer representation of a value
+summary: Built-in SQL function that returns an integer representation of a value
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_integer
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Integer" id="BuiltInFcns.Integer"></a><a name="kanchor318"></a>INTEGER</h1>
+            <p>The <span class="CodeFont">INTEGER</span> function returns an integer representation of a number or character string in the form of an integer constant.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">INT[EGER] (<span class="ItalicFont">NumericExpression</span> | <span class="ItalicFont">CharacterExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">NumericExpression</p>
+                <p class="paramDefnFirst">An expression that returns a value of any built-in numeric data type.</p>
+                <p class="paramName">CharacterExpression</p>
+                <p class="paramDefnFirst">An expression that returns a character string value of length not greater than the maximum length of a character constant. Leading and trailing blanks are eliminated and the resulting string must conform to the rules for forming an SQL integer constant. The character string cannot be a long string. </p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The result of the function is a large integer. </p>
+            <ul>
+                <li value="1">If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>; if the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span>value.</li>
+                <li value="2"> If the argument is a numeric-expression, the result is the same number that would occur if the argument were assigned to a large integer column or variable. If the whole part of the argument is not within the range of integers, an error occurs. The decimal part of the argument is truncated if present.</li>
+                <li value="3">If the argument is a character-expression, the result is the same number that would occur if the corresponding integer constant were assigned to a large integer column or variable.</li>
+            </ul>
+            <p class="heading2">Example</p>
+            <p>The following query truncates the number of innings pitches by using the <span class="CodeFont">INTEGER</span>&#160;function:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">
+splice&gt; SELECT DisplayName, INTEGER(Innings) "Innings" 
+   FROM Pitching JOIN Players ON Pitching.ID=Players.ID 
+   WHERE Innings &gt; 50 
+   ORDER BY Innings DESC;
+DISPLAYNAME             |Innings    
+------------------------------------
+Marcus Bamburger        |218        
+Jason Larrimore         |218        
+Milt Warrimore          |181        
+Carl Marin              |179        
+Charles Heillman        |177        
+Larry Lintos            |175        
+Randy Varner            |135        
+James Grasser           |129        
+Thomas Hillman          |123        
+Jack Peepers            |110        
+Tam Lassiter            |76         
+Yuri Piamam             |76         
+Ken Straiter            |74         
+Gary Kosovo             |73         
+Tom Rather              |68         
+Steve Mossely           |63         
+Carl Vanamos            |61         
+Martin Cassman          |60         
+Tim Lentleson           |60         
+Sam Castleman           |58         
+Steve Raster            |57         
+Mitch Lovell            |55         
+Harold Sermer           |51         
+
+23 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -1,0 +1,55 @@
+---
+title: DOUBLE built-in SQL function
+description: Built-in SQL function that returns a floating point number
+summary: Built-in SQL function that returns a floating point number
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_double
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Double" id="BuiltInFcns.Double"></a><a name="kanchor520"></a>DOUBLE</h1>
+            <p>The <span class="CodeFont">DOUBLE</span> function returns a floating-point number corresponding to a:</p>
+            <ul>
+                <li value="1">number if the argument is a numeric expression</li>
+                <li value="2">character string representation of a number if the argument is a string expression</li>
+            </ul>
+            <p class="heading2">Numeric to Double</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DOUBLE [PRECISION] (<span class="ItalicFont">NumericExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">NumericExpression</p>
+                <p class="paramDefnFirst">The argument is an expression that returns a value of any built-in numeric data type.</p>
+            </div>
+            <p class="heading3">Results</p>
+            <p>The data type of the returned value is a <a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a> number.</p>
+            <p>If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>; if the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span>value. </p>
+            <p>The result is the same value that would result if the argument were assigned to a double-precision floating-point column or variable. </p>
+            <p class="heading2">Character String to Double</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DOUBLE (<span class="ItalicFont">StringExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">StringExpression</p>
+                <p class="paramDefnFirst">The argument can be of type <a href="../DataTypes/Char.html"><span class="CodeFont">CHAR</span></a> or <a href="../DataTypes/Varchar.html"><span class="CodeFont">VARCHAR</span></a> in the form of a numeric constant. Leading and trailing blanks in argument are ignored.</p>
+            </div>
+            <p class="heading3">Results</p>
+            <p>The data type of the returned value is a <a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a> number.</p>
+            <p>If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>; if the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span>value. </p>
+            <p>The result is the same value that would result if the string was considered a constant and assigned to a double-precision floating-point column or variable. </p>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES&#160;DOUBLE(84.4);
+1
+----------
+84.4
+
+1 row selected</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

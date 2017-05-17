@@ -1,0 +1,30 @@
+---
+title: SYSCS_UTIL.SYSCS_GET_VERSION_INFO built-in system procedure
+
+description: Built-in system procedure that returns information about the version of Splice Machine that you're using.&#xD;
+summary: Built-in system procedure that returns information about the version of Splice Machine that you're using.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getversioninfo
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.GetVersionInfo" id="BuiltInSysProcs.SetUserAccess"></a><a name="kanchor544"></a>SYSCS_UTIL.SYSCS_GET_VERSION_INFO</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_GET_VERSION_INFO</samp> system procedure displays the version of Splice Machine installed on each node in your cluster.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_VERSION_INFO()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; call SYSCS_UTIL.SYSCS_GET_VERSION_INFO();
+HOSTNAME       |RELEASE            |IMPLEMENT&amp;|BUILDTIME              |URL
+--------------------------------------------------------------------------------------------------
+localhost:52897|2.5.0.1708-SNAPSHOT|85caa07187|2017-02-25 04:56 +0000 |http://www.splicemachine.com
+
+1 row selected</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

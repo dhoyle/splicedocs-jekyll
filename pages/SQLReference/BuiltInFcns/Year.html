@@ -1,0 +1,76 @@
+---
+title: YEAR built-in SQL function
+description: Built-in SQL function that returns the year part of a value
+summary: Built-in SQL function that returns the year part of a value
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_year
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Year" id="BuiltInFcns.Year"></a><a name="kanchor238"></a>YEAR</h1>
+            <p>The <span class="CodeFont">YEAR</span> function returns the year part of a value. The argument must be a date, timestamp, or a valid character string representation of a date or timestamp. The result of the function is an integer between <span class="CodeFont">1</span> and <span class="CodeFont">9999</span>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">YEAR ( <span class="ItalicFont">expression</span> )</pre>
+            </div>
+            <p class="heading2">Usage</p>
+            <p> If the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span> value.</p>
+            <p class="heading2">Examples</p>
+            <p>Get the current date:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;value(current_date);
+1
+--------
+2014-02-25</pre>
+            </div>
+            <p>Now get the current year only:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;value(year(current_date));
+1
+--------
+2015</pre>
+            </div>
+            <p>Now get the year value from 60 days ago:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;value(year(current_date-60));
+1
+--------
+2014</pre>
+            </div>
+            <p>Select all players born in 1985 or 1989:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, Team, BirthDate 
+   FROM Players 
+   WHERE YEAR(BirthDate) IN (1985, 1989) 
+   ORDER BY BirthDate;
+DISPLAYNAME             |TEAM     |BIRTHDATE 
+-----------------------------------------------
+Jeremy Johnson          |Cards    |1985-03-15
+Gary Kosovo             |Giants   |1985-06-12
+Michael Hillson         |Cards    |1985-11-07
+Mitch Canepa            |Cards    |1985-11-26
+Edward Erdman           |Cards    |1985-12-21
+Jeremy Packman          |Giants   |1989-01-01
+Nathan Nickels          |Giants   |1989-05-04
+Ken Straiter            |Cards    |1989-07-20
+Marcus Bamburger        |Giants   |1989-08-01
+George Goomba           |Cards    |1989-08-08
+Jack Hellman            |Cards    |1989-08-09
+Elliot Andrews          |Giants   |1989-08-21
+Henry Socomy            |Giants   |1989-11-17
+
+13 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CurrentDate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
+                <li value="2"><a href="Date.html"><span class="CodeFont">DATE</span></a>&#160;function</li>
+                <li value="3"><a href="Day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
+                <li value="4"><a href="LastDay.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
+                <li value="5"><span class="CodeFont"><a href="Month.html">MONTH</a></span>&#160;function</li>
+                <li value="6"><a href="MonthBetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
+                <li value="7"><a href="NextDay.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
+                <li value="8"><a href="TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
+                <li value="9"><span class="ItalicFont"><a href="../../Developers/Fundamentals/WorkingWithDates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

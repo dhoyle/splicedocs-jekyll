@@ -1,0 +1,48 @@
+---
+title: HOUR built-in SQL function
+description: Built-in SQL function that returns the hour part of a date/time value.
+summary: Built-in SQL function that returns the hour part of a date/time value.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_hour
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Hour" id="BuiltInFcns.Hour"></a><a name="kanchor370"></a>HOUR</h1>
+            <p>The <span class="CodeFont">HOUR</span> function returns the hour part of a value.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">HOUR ( <span class="ItalicFont">expression</span> )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">expression
+            </p>
+                <p class="paramDefnFirst">An expression that can be any of the following:
+            <ul class="bullet"><li value="1">A <a href="../DataTypes/Time.html"><span class="CodeFont">TIME</span></a>&#160;value</li><li value="2">A <a href="../DataTypes/TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;value</li><li value="3">A valid string representation of a date or timestamp that is not a <a href="../DataTypes/Clob.html"><span class="CodeFont">CLOB</span></a> or <a href="../DataTypes/LongVarchar.html"><span class="CodeFont">LONG VARCHAR</span></a> value.</li></ul></p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The returned result is an integer value in the range <span class="CodeFont">0</span> to <span class="CodeFont">24</span>.</p>
+            <p>If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>; if the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span>value.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; values ( NOW, HOUR(NOW), MINUTE(NOW), SECOND(NOW) );
+1                            |2          |3          |4                     
+----------------------------------------------------------------------------
+2015-11-12 17:48:55.217      |17         |48         |55.217                
+
+1 row selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="../DataTypes/Time.html"><span class="CodeFont">TIME</span></a>&#160;data value</li>
+                <li value="3"><a href="../DataTypes/TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;data value</li>
+                <li value="4"><a href="Minute.html"><span class="CodeFont">MINUTE</span></a>&#160;function</li>
+                <li value="5"><a href="TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
+                <li value="6"><a href="TimeStampAdd.html"><span class="CodeFont">TIMESTAMPADD</span></a>&#160;function</li>
+                <li value="7"><a href="TimeStampDiff.html"><span class="CodeFont">TIMESTAMPDIFF</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

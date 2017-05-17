@@ -1,0 +1,43 @@
+---
+title: Rollback command
+description: Rolls back the currently active transaction and initiates a new transaction.
+summary: Rolls back the currently active transaction and initiates a new transaction.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_rollback
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor265"></a>Rollback Command</h1>
+            <p>The <span class="AppCommand">rollback</span> command issues a <span class="CodeFont">java.sql.Connection.rollback</span> request, which rolls back (undoes) the currently active transaction and initiates a new transaction.</p>
+            <div class="noteNote">You should only use this command when auto-commit mode is disabled.</div>
+            <p class="heading2">Usage Notes</p>
+            <p class="body">In contrast to the <span class="CodeFont"><a href="CmdRollbackToSavepoint.html">Rollback to Savepoint</a></span> command, the <span class="CodeFont">Rollback</span> command aborts the current transaction and starts a new one.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; autocommit off;
+splice&gt; INSERT INTO menu VALUES ('dessert', 'rhubarb pie', 4);
+1 row inserted/updated/deleted
+splice&gt; SELECT * from menu;
+COURSE    |ITEM                |PRICE
+-----------------------------------------------
+entree    |lamb chop           |14
+dessert   |creme brulee        |7
+appetizer |baby greens         |7
+dessert   |rhubarb pie         |4
+
+4 rows selected
+splice&gt; rollback;
+splice&gt; SELECT * FROM menu;
+COURSE    |ITEM                |PRICE
+-----------------------------------------------
+entree    |lamb chop           |14
+dessert   |creme brulee        |7
+appetizer |baby greens         |7
+
+3 rows selected
+splice&gt;</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

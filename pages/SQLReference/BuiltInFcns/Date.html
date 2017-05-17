@@ -1,0 +1,87 @@
+---
+title: DATE built-in SQL function
+description: Built-in SQL function that returns a date value from an expression
+summary: Built-in SQL function that returns a date value from an expression
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_date
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Date" id="BuiltInFcns.Date"></a><a name="kanchor18"></a>DATE</h1>
+            <p>The <span class="CodeFont">DATE</span> function returns a date from a value.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax">DATE ( <span class="ItalicFont">expression</span> )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">expression
+            </p>
+                <p class="paramDefnFirst">An expression that can be any of the following:
+            <ul class="nested"><li class="nested" value="1">A <a href="../DataTypes/Date.html"><span class="CodeFont">DATE</span></a>&#160;value</li><li class="nested" value="2">A <a href="../DataTypes/TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;value</li><li class="nested" value="3">A positive number less than or equal to 2,932,897</li><li class="nested" value="4">A valid SQL&#160;string representation of a date or timestamp</li><li class="nested" value="5">A string of length 7 that is not a <a href="../DataTypes/Clob.html"><span class="CodeFont">CLOB</span></a> or <a href="../DataTypes/LongVarchar.html"><span class="CodeFont">LONG VARCHAR</span></a> value, which must represent a valid date in the form <span class="CodeFont">yyyynnn</span>, where <span class="CodeFont">yyyy</span> is a four-digit year value, and <span class="CodeFont">nnn</span> is a three-digit day value in the range 001 to 366.</li></ul></p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The returned result is governed by the following rules:</p>
+            <ul>
+                <li value="1">If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>; if the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span> value.</li>
+                <li value="2">If the argument is a date, timestamp, or valid string representation of a date or timestamp, the result is the date part of the value.</li>
+                <li value="3">If the argument is a number, the result is the date that is <span class="CodeFont">n-1</span> days after January 1, 1970, where <span class="CodeFont">n</span> is the integral part of the number.</li>
+                <li value="4">If the argument is a string with a length of 7, the result is a string representation of the date.</li>
+            </ul>
+            <p class="heading2">Examples</p>
+            <p>This example results in an internal representation of '1988-12-25'.</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES DATE('1988-12-25');</pre>
+            </div>
+            <p>This example results in an internal representation of '1972-02-28'.</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES DATE(789);</pre>
+            </div>
+            <p>This example illustrates using date arithmetic with the <span class="CodeFont">DATE</span>&#160;function:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select Birthdate - DATE('11/22/1963') AS "DaysSinceJFK" FROM Players WHERE ID &lt; 20;
+DaysSinceJ&amp;
+-----------
+8526       
+8916       
+9839       
+8461       
+9916       
+6619       
+6432       
+7082       
+7337       
+7289       
+9703       
+5030       
+9617       
+6899       
+9404       
+7446       
+7609       
+9492       
+9172       
+
+19 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CurrentDate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
+                <li value="2"><a href="../DataTypes/Date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
+                <li value="3"><a href="Day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
+                <li value="4"><a href="Extract.html"><span class="CodeFont">EXTRACT</span></a>&#160;function</li>
+                <li value="5"><a href="LastDay.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
+                <li value="6"><a href="Month.html"><span class="CodeFont">MONTH</span></a> function</li>
+                <li value="7"><a href="MonthBetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
+                <li value="8"><a href="MonthName.html"><span class="CodeFont">MONTHNAME</span></a>&#160;function</li>
+                <li value="9"><a href="NextDay.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
+                <li value="10"><a href="Now.html"><span class="CodeFont">NOW</span></a> function</li>
+                <li value="11"><a href="Quarter.html"><span class="CodeFont">QUARTER</span></a> function</li>
+                <li value="12"><a href="../DataTypes/Time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
+                <li value="13"><a href="TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
+                <li value="14"><a href="ToChar.html"><span class="CodeFont">TO_CHAR</span></a>&#160;function</li>
+                <li value="15"><a href="ToDate.html"><span class="CodeFont">TO_DATE</span></a>&#160;function</li>
+                <li value="16"><a href="Week.html"><span class="CodeFont">WEEK</span></a> function</li>
+                <li value="17"><span class="ItalicFont"><a href="../../Developers/Fundamentals/WorkingWithDates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

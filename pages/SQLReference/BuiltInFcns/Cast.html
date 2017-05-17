@@ -1,0 +1,466 @@
+---
+title: CAST built-in SQL function
+description: Built-in SQL function that converts values (expressions) from one data type to another
+summary: Built-in SQL function that converts values (expressions) from one data type to another
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_cast
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInFcns.Cast" id="BuiltInFcns.Cast"></a><a name="kanchor329"></a>CAST</h1>
+            <p>The <span class="CodeFont">CAST</span> function converts a value from one data type to another
+		and provides a data type to a dynamic parameter or a <span class="CodeFont">NULL</span> value.</p>
+            <p><span class="CodeFont">CAST</span> expressions are permitted anywhere expressions are permitted.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CAST ( [ <span class="ItalicFont">Expression</span> | NULL | ? ]
+  AS <span class="ItalicFont">Datatype</span>)</pre>
+            </div>
+            <p>The data type to which you are casting an expression is the <span class="ItalicFont">target type</span>. The data type of the expression
+		from which you are casting is the <span class="ItalicFont">source type</span>.</p>
+            <p class="heading2">CAST conversions among ANSI&#160;SQL data types</p>
+            <p>The following table shows valid explicit conversions between source types and target types
+		for SQL data types. This table shows which explicit conversions between data types are valid. The first column on the table lists the source data types. The first row lists the target data types. A "Y" indicates that a conversion from the source to the target is valid. For example, the first cell in the second row lists the source data type SMALLINT. The remaining cells on the second row indicate the whether or not you can convert SMALLINT to the target data types that are listed in the first row of the table.</p>
+            <table style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" class="TableStyle-PatternedRows" cellspacing="0" summary="ANSI SQL data type CAST conversions matrix">
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <thead>
+                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">TYPES</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">B<br />I<br />G<br />I<br />N<br />T</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">D<br />E<br />C<br />I<br />M<br />A<br />L</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">R<br />E<br />A<br />L</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">D<br />O<br />U<br />B<br />L<br />E</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">F<br />L<br />O<br />A<br />T</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">C<br />H<br />A<br />R</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">V<br />A<br />R<br />C<br />H<br />A<br />R</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">L<br />O<br />N<br />G<br /><br />V<br />A<br />R<br />C<br />H<br />A<br />R</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">C<br />L<br />O<br />B</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">B<br />L<br />O<br />B<br /></th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">D<br />A<br />T<br />E</th>
+                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom;">T<br />I<br />M<br />E</th>
+                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1" style="vertical-align:bottom;">T<br />I<br />M<br />E<br />S<br />T<br />A<br />M<br />P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">BOOLEAN</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">SMALLINT</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">INTEGER</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">BIGINT</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">DECIMAL</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">REAL</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">DOUBLE</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">FLOAT</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">CHAR</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">Y</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">VARCHAR</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">Y</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">LONG VARCHAR</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">CLOB</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">BLOB</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">DATE</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">TIME</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    </tr>
+                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">TIMESTAMP</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">-</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">Y</td>
+                        <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">Y</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>If a conversion is valid, CASTs are allowed. Size incompatibilities between the source and target types might cause runtime errors.</p>
+            <p class="heading2">Type Categories</p>
+            <p class="body">This section lists information about converting specific data types. The Splice Machine ANSI&#160;SQL data types are categorized as follows:</p>
+            <table summary="SQL data type categories">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Data Types</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ItalicFont">logical</td>
+                        <td><span class="CodeFont">BOOLEAN</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">numeric</td>
+                        <td>
+                            <p>Exact numeric:&#160;<span class="CodeFont">SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC</span></p>
+                            <p>Approximate numeric:&#160;<span class="CodeFont">FLOAT, REAL, DOUBLE&#160;PRECISION</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">string</td>
+                        <td>
+                            <p>Character string: <span class="CodeFont">CLOB, CHAR, VARCHAR, LONG&#160;VARCHAR</span></p>
+                            <p>Bit string: <span class="CodeFont">BLOB</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ItalicFont">date and time</td>
+                        <td><span class="CodeFont">DATE, TIME, TIMESTAMP</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Conversion Notes</p>
+            <p class="body">This section lists additional information about casting of certain data types.</p>
+            <p class="heading3">Applying Multiple Conversions</p>
+            <p>As shown in the above table, you cannot convert freely among all types. For example, you cannot <span class="CodeFont">CAST</span>an <span class="CodeFont">INTEGER</span> value to a <span class="CodeFont">VARCHAR</span> value. However, you may be able to achieve your conversion by using multiple <span class="CodeFont">CAST</span>&#160;operations. </p>
+            <p>For example, since you can convert an <span class="CodeFont">INTEGER</span> value to a <span class="CodeFont">CHAR</span>&#160;value, and you can convert a <span class="CodeFont">CHAR</span> value to a <span class="CodeFont">VARCHAR</span> value, you can use multiple <span class="CodeFont">CAST</span> operations, as shown here:</p>
+            <div class="preWrapper"><pre class="Example">CAST(CAST(123 AS&#160;CHAR(10))&#160;AS&#160;VARCHAR(10));<br /><br />SELECT&#160;CAST(CAST(myId as CHAR(20)) as VARCHAR(20));</pre>
+            </div>
+            <p class="heading3">Conversions to and from logical types</p>
+            <p class="body">These notes apply to converting logical values to strings and vice-versa:</p>
+            <ul>
+                <li value="1">A <span class="CodeFont">BOOLEAN</span> value can be cast explicitly to any of the string types. The result is <span class="CodeFont">'true'</span>, <span class="CodeFont">'false'</span>, or <span class="CodeFont">null</span>. </li>
+                <li value="2">Conversely, string types can be cast to <span class="CodeFont">BOOLEAN</span>; however, an error is raised if the string value is not <span class="CodeFont">'true'</span>, <span class="CodeFont">'false'</span>, <span class="CodeFont">'unknown'</span>, or <span class="CodeFont">null</span>. </li>
+                <li value="3">Casting <span class="CodeFont">'false'</span> to <span class="CodeFont">BOOLEAN</span> results in a <span class="CodeFont">null</span> value.</li>
+            </ul>
+            <p class="heading3">Conversions from numeric types</p>
+            <p class="body">A numeric type can be converted to any other numeric type. These notes apply:</p>
+            <ul>
+                <li value="1">If the target type cannot represent the non-fractional component without truncation, an exception is raised.</li>
+                <li value="2">If  the target numeric cannot represent the fractional component (scale) of the source numeric, then the source is silently truncated to fit into the target. For example, casting <span class="CodeFont">763.1234</span> as <span class="CodeFont">INTEGER</span> yields <span class="CodeFont">763</span>.</li>
+            </ul>
+            <p class="heading3">Conversions from and to bit strings</p>
+            <p>Bit strings 	can be converted to other bit strings, but not to character strings. Strings that are converted to bit strings are padded with trailing zeros to fit the size of the target bit string. The <span class="CodeFont">BLOB</span> type is more limited and requires explicit casting. In most cases the <span class="CodeFont">BLOB</span> type cannot be cast to and from other types: you can cast a <span class="CodeFont">BLOB</span> only to another <span class="CodeFont">BLOB</span>, but you can cast other bit string types to a <span class="CodeFont">BLOB</span>.</p>
+            <p class="heading3">Conversions of date/time values</p>
+            <p>A 	date/time value can always be converted to and from a <span class="CodeFont">TIMESTAMP</span>. </p>
+            <p>If a <span class="CodeFont">DATE</span> is converted to a <span class="CodeFont">TIMESTAMP</span>, the <span class="CodeFont">TIME</span> component of the resulting <span class="CodeFont">TIMESTAMP</span> is always <span class="CodeFont">00:00:00</span>.</p>
+            <p>If a <span class="CodeFont">TIME</span> data value is converted to a <span class="CodeFont">TIMESTAMP</span>, the <span class="CodeFont">DATE</span> component is set to the value of <span class="CodeFont">CURRENT_DATE</span> at the time the <span class="CodeFont">CAST</span> is executed. </p>
+            <p>If a <span class="CodeFont">TIMESTAMP</span> is converted to a <span class="CodeFont">DATE</span>, the <span class="CodeFont">TIME</span> component is silently truncated. </p>
+            <p>If a <span class="CodeFont">TIMESTAMP</span> is converted to a <span class="CodeFont">TIME</span>, the <span class="CodeFont">DATE</span> component is silently truncated.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT CAST (TotalBases AS BIGINT) 
+  FROM Batting;
+
+   -- convert timestamps to text  
+splice&gt;&#160;INSERT INTO mytable (text_column) 
+  VALUES (CAST (CURRENT_TIMESTAMP AS VARCHAR(100)));
+
+   -- you must cast NULL as a data type to use it
+splice&gt;&#160;SELECT airline
+  FROM Airlines
+  UNION ALL
+  VALUES (CAST (NULL AS CHAR(2)));
+
+   -- cast a double as a decimal
+splice&gt;&#160;SELECT CAST (FLYING_TIME AS DECIMAL(5,2))
+  FROM FLIGHTS;
+
+   -- cast a SMALLINT to a BIGINT
+splice&gt;&#160;VALUES CAST (CAST (12 as SMALLINT) as BIGINT);</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

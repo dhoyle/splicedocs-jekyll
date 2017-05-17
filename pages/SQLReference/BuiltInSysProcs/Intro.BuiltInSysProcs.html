@@ -1,0 +1,433 @@
+---
+title: Summary of Splice Machine built-in system procedures
+description: A table that summarizes the function of each available Splice Machine system system procedure.
+summary: A table that summarizes the function of each available Splice Machine system system procedure.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_intro
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor310"></a>Built-in System Procedures and Functions</h1>
+            <p>This section contains the reference documentation for the Splice Machine Built-in SQL&#160;System Procedures and Functions, in the following subsections:</p>
+            <ul>
+                <li value="1"><a href="#DatabaseAdmin">Database Admin Procedures and Functions</a>
+                </li>
+                <li value="2"><a href="#DatabaseProps">Database Property Procedures and Functions</a>
+                </li>
+                <li value="3"><a href="#Importing">Importing Data Procedures and Functions</a>
+                </li>
+                <li value="4"><a href="#Jar">Jar File Procedures and Functions</a>
+                </li>
+                <li value="5"><a href="#Logging">Logging Procedures and Functions</a>
+                </li>
+                <li value="6"><a href="#Statement">Statements and Stored Procedures System Procedures</a>
+                </li>
+                <li value="7"><a href="#Statistics">Statistics Procedures and Functions</a>
+                </li>
+                <li value="8"><a href="#SystemStatus">System Status Procedures and Functions</a>
+                </li>
+                <li value="9"><a href="#Transaction">Transaction Procedures and Functions</a>
+                </li>
+            </ul>
+            <p class="heading2"><a name="DatabaseAdmin"></a>Database Admin Procedures and Functions</p>
+            <p class="body">These are the system procedures and functions for administering your database:</p>
+            <table summary="Summary of Splice Machine system database administration procedures and functions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="BackupDatabase.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a>
+                        </td>
+                        <td>
+                            <p>Backs up the database to a specified backup directory.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont" data-mc-conditions=""><a href="CancelBackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a>
+                        </td>
+                        <td data-mc-conditions="">
+                            <p data-mc-conditions="">Cancels a backup.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="CancelDailyBackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a>
+                        </td>
+                        <td>
+                            <p>Cancels a scheduled daily backup.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CreateUser.html">SYSCS_UTIL.SYSCS_CREATE_USER</a>
+                        </td>
+                        <td>Adds a new user account to a database.</td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="DeleteBackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a>
+                        </td>
+                        <td>
+                            <p>Delete a specific backup.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="DeleteOldBackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a>
+                        </td>
+                        <td>
+                            <p>Deletes all backups that were created more than a certain number of days ago.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropUser.html">SYSCS_UTIL.SYSCS_DROP_USER</a>
+                        </td>
+                        <td>Removes a user account from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="ModifyPassword.html">SYSCS_UTIL.SYSCS_MODIFY_PASSWORD</a>
+                        </td>
+                        <td>Called by a user to change that user's own password.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="PerformMajorCompactionOnSchema.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</a>
+                        </td>
+                        <td>Performs a major compaction on a schema</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="PerformMajorCompactionOnTable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a>
+                        </td>
+                        <td>Performs a major compaction on a table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="RefreshExternalTable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a>
+                        </td>
+                        <td>Refreshes the schema of an external table in Splice Machine; use this when the schema of the table's source file has been modified outside of Splice&#160;Machine.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="ResetPassword.html">SYSCS_UTIL.SYSCS_RESET_PASSWORD</a>
+                        </td>
+                        <td>Resets a password that has expired or has been forgotten.</td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="RestoreDatabase.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a>
+                        </td>
+                        <td>
+                            <p>Restores a database from a previous backup.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr data-mc-conditions="Default.NotDBaaS">
+                        <td class="CodeFont"><a href="DeleteBackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a>
+                        </td>
+                        <td>
+                            <p>Schedules a full or incremental database backup to run at a specified time daily.</p>
+                            <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="UpdateSchemaOwner.html">SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER</a>
+                        </td>
+                        <td>Changes the owner of a schema.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="Vacuum.html">SYSCS_UTIL.VACUUM</a>
+                        </td>
+                        <td>Performs clean-up operations on the system.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="DatabaseProps"></a>Database Properties Procedures and Functions</p>
+            <p class="body">These are the system procedures and functions for working with your database properties:</p>
+            <table summary="Summary of Splice Machine system database properties procedures and functions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="GetAllProperties.html">SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES</a>
+                        </td>
+                        <td>Displays all of the Splice Machine Derby properties.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="GetDatabaseProperty.html">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY function</a>
+                        </td>
+                        <td>Fetches the value of the specified property of the database on the current connection.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="GetSchemaInfo.html">SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</a>
+                        </td>
+                        <td>Displays table information for all user schemas, including the HBase regions occupied and their store file size.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="PeekAtSequence.html">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE function</a>
+                        </td>
+                        <td>
+                            <p>Allows users to observe the instantaneous current value of a sequence generator without having to query the <a href="../SystemTables/SysSequences.html"><span class="CodeFont">SYSSEQUENCES</span> system table</a>. </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="SetDatabaseProperty.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a>
+                        </td>
+                        <td>Sets or deletes the value of a property of the database on the current connection.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="Importing"></a>Importing Data Procedures and Functions</p>
+            <p class="body">These are the system procedures and functions for importing data into your database:</p>
+            <table summary="Summary of Splice Machine system procedures and functions for importing data">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a>
+                        </td>
+                        <td>Imports data from an HFile.</td>
+                    </tr>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont"><a href="ComputeSplitKey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a>
+                        </td>
+                        <td>Computes split keys for a table or index.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="ImportData.html">SYSCS_UTIL.IMPORT_DATA</a>
+                        </td>
+                        <td>Imports data to a subset of columns in a table.</td>
+                    </tr>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</a>
+                        </td>
+                        <td>Sets up a table or index in your database with split keys computed by the <span class="CodeFont">COMPUTE_SPLIT_KEY</span>&#160;procedure.</td>
+                    </tr>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX</a>
+                        </td>
+                        <td>
+                            <p>Computes split keys for a table or index and then sets up the table or index.</p>
+                            <p>This combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="UpsertDataFromFile.html">SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE</a>
+                        </td>
+                        <td>Checks upsert data without actually performing the insertions or updates.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="Jar"></a>Jar File Procedures and&#160;Functions</p>
+            <p class="body">These are the system procedures and functions for working with JAR&#160;files:</p>
+            <table summary="Summary of Splice Machine system JAR file procedures and functions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="SQLJInstallJar.html">SQLJ.INSTALL_JAR</a>
+                        </td>
+                        <td>Stores a jar file in a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="SQLJRemoveJar.html">SQLJ.REMOVE_JAR</a>
+                        </td>
+                        <td>Removes a jar file from a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="SQLJReplaceJar.html">SQLJ.REPLACE_JAR</a>
+                        </td>
+                        <td>Replaces a jar file in a database.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="Logging"></a>Logging Procedures and Functions</p>
+            <p class="body">These are the system procedures and functions for working with system logs:</p>
+            <table summary="Summary of Splice Machine system logging and tracing procedures and functions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="GetLoggerLevel.html">SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</a>
+                        </td>
+                        <td>Displays the log level of the specified logger.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="GetLoggers.html">SYSCS_UTIL.SYSCS_GET_LOGGERS</a>
+                        </td>
+                        <td>Displays the names of all Splice Machine loggers in the system.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="SetLoggerLevel.html">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</a>
+                        </td>
+                        <td>Changes the log level of the specified logger.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="Statement"></a>Statement and Stored Procedures System Procedures</p>
+            <p class="body">These are the system procedures and functions for working with executing statements and stored procedures:</p>
+            <table summary="Summary of Splice Machine system procedures and functions for working with statements and stored procedures">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="EmptyGlobalStatementCache.html">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</a>
+                        </td>
+                        <td>Removes as many compiled statements (plans) as possible from the database-wide statement cache (across all region servers).</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="EmptyStatementCache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</a>
+                        </td>
+                        <td>Removes as many compiled statements (plans) as possible from the database statement cache on your current region server.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="InvalidateStoredStatements.html">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</a>
+                        </td>
+                        <td>Invalidates all system prepared statements and forces the query optimizer to create new execution plans.</td>
+                    </tr>
+                    <tr data-mc-conditions="">
+                        <td class="CodeFont" data-mc-conditions=""><a href="UpdateAllSystemProcedures.html">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</a>
+                        </td>
+                        <td data-mc-conditions="">Updates the signatures of all of the system procedures in a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="UpdateSystemProcedure.html">SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE</a>
+                        </td>
+                        <td>Updates the stored declaration of a specific system procedure in the data dictionary.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="Statistics"></a>Statistics Procedures and Functions</p>
+            <p class="body">These are the system procedures and functions for managing database statistics:</p>
+            <table summary="Summary of Splice Machine built-in statistics procedures and functions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="CollectSchemaStats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a>
+                        </td>
+                        <td>Collects statistics on a specific schema in your database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DisableColumnStats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a>
+                        </td>
+                        <td>Disables collection of statistics on a specific column in a table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="DropSchemaStats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a>
+                        </td>
+                        <td>Drops statistics for a specific schema in your database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="EnableColumnStats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a>
+                        </td>
+                        <td>Enables collection of statistics on a specific column in a table.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="SystemStatus"></a>System Status Procedures and Functions</p>
+            <p class="body">These are the system procedures and functions for monitoring and adjusting system status:</p>
+            <table summary="Summary of Splice Machine built-in system status procedures and functions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="GetActiveServers.html">SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS</a>
+                        </td>
+                        <td>Displays the number of active servers in the Splice cluster.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="GetRegionServerStatsInfo.html">SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO</a>
+                        </td>
+                        <td>Displays input and output statistics about the cluster.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="GetRequests.html">SYSCS_UTIL.SYSCS_GET_REQUESTS</a>
+                        </td>
+                        <td>Displays information about the number of RPC requests that are coming into Splice Machine.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="GetVersionInfo.html">SYSCS_UTIL.SYSCS_GET_VERSION_INFO</a>
+                        </td>
+                        <td>Displays the version of Splice Machine installed on each node in your cluster.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="GetWriteIntakeInfo.html">SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO</a>
+                        </td>
+                        <td>Displays information about the number of writes coming into Splice Machine.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2"><a name="Transaction"></a>Transaction Procedures and Functions</p>
+            <p class="body">These are the system procedures and functions for working with transactions in your database</p>
+            <table summary="Summary of Splice Machine built-in procedures and functions for working with transactions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="GetCurrentTransaction.html">SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION</a>
+                        </td>
+                        <td>Displays summary information about the current transaction.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="openSourceNoteWrapper">
+                <div class="openSourceNote">
+                    <p>For access to the source code for the Community Edition of Splice Machine, visit <a href="https://github.com/splicemachine/spliceengine" target="_blank" title="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)" alt="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)">our open source GitHub repository.</a></p>
+                </div>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

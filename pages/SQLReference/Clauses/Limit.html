@@ -1,0 +1,76 @@
+---
+title: LIMIT clause
+description: A clause that  limits the number of results returned by a query and supports an offset to retrieve a specific range of records.
+summary: A clause that  limits the number of results returned by a query and supports an offset to retrieve a specific range of records.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_clauses_limitn
+folder: SQLReference/Clauses
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor473"></a>LIMIT n </h1>
+            <p>A <span class="CodeFont">LIMIT n</span> clause, limits the results of a query to a specified number of records.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">'{'&#160;LIMIT&#160;{<span class="ItalicFont">count</span>} '}'</pre>
+            </div>
+            <div class="noteNote">You must surround the <span class="CodeFont">LIMIT</span>&#160;clause with&#160;left &#160;and right curly brackets (<span class="CodeFont">{</span> and <span class="CodeFont">}</span>).</div>
+            <div class="paramList">
+                <p class="paramName">count</p>
+                <p class="paramDefnFirst">An integer value specifying the maximum number of rows to return from the query. </p>
+            </div>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select * from limittest order by a;
+A |B |C |D
+--------------------------------------------------------------------------------
+a1 |b1 |c1 |d1
+a2 |b2 |c2 |d2
+a3 |b3 |c3 |d3
+a4 |b4 |c4 |d4
+a5 |b5 |c5 |d5
+a6 |b6 |c6 |d6
+a7 |b7 |c7 |d7
+a8 |b8 |c8 |d8
+8 rows selected
+
+splice&gt; select * from limittest order by a {LIMIT&#160;1};
+A |B |C |D
+--------------------------------------------------------------------------------
+a1 |b1 |c1 |d1
+1 row selected
+
+
+splice&gt; select * from limittest order by a {LIMIT&#160;3};
+A |B |C |D
+--------------------------------------------------------------------------------
+a1 |b1 |c1 |d1
+a2 |b2 |c2 |d2
+a3 |b3 |c3 |d3
+3 rows selected
+
+
+splice&gt; select * from limittest order by a {LIMIT 10};
+A |B |C |D
+--------------------------------------------------------------------------------
+a1 |b1 |c1 |d1
+a2 |b2 |c2 |d2
+a3 |b3 |c3 |d3
+a4 |b4 |c4 |d4
+a5 |b5 |c5 |d5
+a6 |b6 |c6 |d6
+a7 |b7 |c7 |d7
+a8 |b8 |c8 |d8
+8 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><span class="CodeFont"><a href="ResultOffset.html">RESULT&#160;OFFSET</a></span>&#160;clause</li>
+                <li value="2"><a href="../Expressions/Select.html"><span class="CodeFont">SELECT</span></a> expression</li>
+                <li value="3">
+                    <p><span class="CodeFont"><a href="TopN.html">TOP&#160;n</a></span>&#160;clause</p>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

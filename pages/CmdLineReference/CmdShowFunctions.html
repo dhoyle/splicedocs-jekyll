@@ -1,0 +1,64 @@
+---
+title: Show Functions command
+description: Displays information about functions defined in the database or in a schema.
+summary: Displays information about functions defined in the database or in a schema.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_showfunctions
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor143"></a>Show Functions</h1>
+            <p>The <span class="AppCommand">show functions</span> command displays all of the functions in the database, or the names of the functions in the specified schema.</p>
+            <p class="heading3">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SHOW FUNCTIONS [ IN schemaName ]</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">If you supply a schema name, only the functions in that schema are displayed; otherwise, all functions in the database are displayed.</p>
+            </div>
+            <p class="heading3">Results</p>
+            <p>The <span class="AppCommand">show functions</span> command results contains the following columns:</p>
+            <table summary="List of columns in the output of the show functions command.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">FUNCTION_SCHEMA</td>
+                        <td>The name of the function's schema</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FUNCTION_NAME</td>
+                        <td>The name of the function</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">REMARKS</td>
+                        <td>Any remarks that have been stored for the function</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading3">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; CREATE FUNCTION TO_DEGREES ( RADIANS DOUBLE )
+&gt; RETURNS DOUBLE
+&gt; PARAMETER STYLE JAVA
+&gt; NO SQL LANGUAGE JAVA
+&gt; EXTERNAL NAME 'java.lang.Math.toDegrees';
+0 rows inserted/updated/deleted
+splice&gt; show functions in splice;
+FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
+-------------------------------------------------------------------------
+SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees           
+
+1 row selected
+</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

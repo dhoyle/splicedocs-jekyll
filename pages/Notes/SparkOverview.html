@@ -1,0 +1,113 @@
+---
+title: The Splice Machine In-Memory Engine
+description: A quick overview of the Splice Machine in-memory engine, powered by Apache Spark.
+summary: A quick overview of the Splice Machine in-memory engine, powered by Apache Spark.
+keywords: 
+sidebar:  notes_sidebar
+permalink: notes_sparkoverview
+folder: Notes
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor511"></a>The Splice Machine In-Memory Engine</h1>
+            <p>This topic provides an overview of the Splice Machine in-memory engine, which tremendously boosts OLAP&#160;(analytical) query performance. Splice Machine use Apache™ Spark as our in-memory engine and automatically detects and directs OLAP&#160;queries to that engine. </p>
+            <p>This topic presents a very brief overview of Spark terminology and concepts. </p>
+            <div class="noteNote">If you're not yet familiar with Spark, we recommend visiting the Apache Spark web site, <a href="http://spark.apache.org/" target="_blank">spark.apache.org</a>, to learn the basics, and for links to the official Spark documentation.</div>
+            <h2>Spark Overview</h2>
+            <p>Apache Spark is an open source computational engine that manages tasks in a computing cluster. Spark was originally developed at UC Berkeley in 2009, and then open sourced in 2010 as an Apache project. Spark has been engineered from the ground up for performance, exploiting in-memory computing and other optimizations to provide powerful analysis on very large data sets.</p>
+            <p>Spark provides numerous performance-oriented features, including:</p>
+            <ul>
+                <li value="1">ability to cache datasets in memory for interactive data analysis</li>
+                <li value="2">abstraction</li>
+                <li value="3">integration with a host of data sources</li>
+                <li value="4">very fast data analysis</li>
+                <li value="5">easy to use APIs for operating on large datasets, including numerous operators for transforming and manipulating data, in Java, Scala, Python, and other languages</li>
+                <li value="6">numerous high level libraries, including support for machine learning, streaming, and graph processing</li>
+                <li value="7">scalability to thousands of nodes</li>
+            </ul>
+            <p>Spark applications consist of a driver program and some number of worker programs running on cluster nodes. The data sets (RDDs)&#160;used by the application are distributed across the worker nodes.</p>
+            <h2>Spark Terminology</h2>
+            <p>Splice Machine launches Spark queries on your cluster as Spark <span class="ItalicFont">jobs</span>, each of which consists of some number of <span class="ItalicFont">stages</span>. Each stage then runs a number of <span class="ItalicFont">tasks</span>, each of which is a unit of work that is sent to an <span class="ItalicFont">executor</span>.</p>
+            <p>The table below contains a brief glossary of the terms you'll see when using the Splice Machine Management Console:</p>
+            <table summary="Glossary of Spark terms.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="BoldFont">Action</td>
+                        <td>A function that returns a value to the driver after running a computation on an <span class="ItalicFont">RDD</span>.
+Examples include <span class="CodeFont">save</span> and <span class="CodeFont">collect</span> functions.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Application</td>
+                        <td>
+                            <p class="noSpaceAbove">A user program built on Spark. Each application consists of a <span class="ItalicFont">driver program</span> and a number of <span class="ItalicFont">executors</span> running on your cluster.</p>
+                            <p>An application creates <span class="ItalicFont">RDDs</span>, transforms those RDDs, and runs <span class="ItalicFont">actions</span> on them. These result in a directed acyclic graph (DAG)&#160;of operations, which is compiled into a set of <span class="ItalicFont">stages</span>. Each stage consists of a number of <span class="ItalicFont">tasks</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">DAG</td>
+                        <td>A <span class="BoldFont">D</span>irected <span class="BoldFont">A</span>cyclic <span class="BoldFont">G</span>raph of the operations to run on an RDD. </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Driver program</td>
+                        <td>This is the process that's running the <span class="CodeFont">main()</span> function of the application and creating the <span class="CodeFont">SparkContext</span> object, which sends jobs to <span class="ItalicFont">executors</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Executor</td>
+                        <td>A process that is launched (by the driver program)&#160;for an <span class="ItalicFont">application</span> on a <span class="ItalicFont">worker node</span>. The executor launches <span class="ItalicFont">tasks</span> and maintains data for them.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Job</td>
+                        <td>A parallel computation consisting of multiple <span class="ItalicFont">tasks</span> that gets spawned in response to a Spark <span class="ItalicFont">action</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Partition</td>
+                        <td>A subset of the elements in an <span class="ItalicFont">RDD</span>. Partitions define the unit of parallelism; Spark processes elements within a partition in sequence and multiple partitions in parallel.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">RDD</td>
+                        <td>A <span class="BoldFont">R</span>esilient <span class="BoldFont">D</span>istributed <span class="BoldFont">D</span>ataset. This is the core programming abstraction in Spark, consisting of a fault-tolerant collection of elements that can be operated on in parallel.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Stage</td>
+                        <td>
+                            <p>A set of tasks that run in parallel. The stage creates a <span class="ItalicFont">task</span> for each partition in an <span class="ItalicFont">RDD</span>, serializes those tasks, and sends those tasks to <span class="ItalicFont">executors</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Task</td>
+                        <td>The fundamental unit of work in Spark; each task fetches input, executes operations, and generates output.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Transformation</td>
+                        <td>A function that creates a new <span class="ItalicFont">RDD</span> from an existing <span class="ItalicFont">RDD</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">Worker node</td>
+                        <td>A cluster node that can run application code.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>See Also</h2>
+            <ul>
+                <li value="1"><a href="../ManagementConsole/Intro.ManagementConsole.html">About the Splice Machine Management Console</a>
+                </li>
+                <li value="2"><a href="../ManagementConsole/ConsoleFeatures.html">User Interface Features of the Splice&#160;Machine Management Console</a>
+                </li>
+                <li value="3"><a href="../ManagementConsole/ManagingQueries.html">Managing Queries with the Console</a>
+                </li>
+                <li value="4"><a href="../Developers/Fundamentals/SparkLibraries.html">Using Spark Libraries with Splice Machine</a>
+                </li>
+                <li value="5">The Apache Spark web site, <a href="http://spark.apache.org/" target="_blank">spark.apache.org</a></li>
+            </ul>
+            <p>&#160;</p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

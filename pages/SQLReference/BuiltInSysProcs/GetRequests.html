@@ -1,0 +1,59 @@
+---
+title: SYSCS_UTIL.SYSCS_GET_REQUESTS built-in system procedure
+
+description: Built-in system procedure that displays information about the number of RPC requests that are coming into Splice Machine.&#xD;
+summary: Built-in system procedure that displays information about the number of RPC requests that are coming into Splice Machine.&#xD;
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getrequests
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="BuiltInSysProcs.GetRequests" id="BuiltInSysProcs.GetRequests"></a><a name="kanchor525"></a>SYSCS_UTIL.SYSCS_GET_REQUESTS</h1>
+            <p>The <samp>SYSCS_UTIL.SYSCS_GET_REQUESTS</samp> system procedure displays information about the number of RPC&#160;requests that are coming into Splice Machine.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_REQUESTS()</pre>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The displayed results of calling <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_REQUESTS</span> include these values:</p>
+            <table summary=" summary=&quot;Columns in Get_Requests results display&quot;">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">HOSTNAME
+					</td>
+                        <td>The host name.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">PORT
+					</td>
+                        <td>
+                            <p>The port receiving requests.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TOTALREQUESTS
+					</td>
+                        <td>The total number of RPC&#160;requests on that port.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">Example</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_GET_REQUESTS();
+<span>HOSTNAME  |PORT  |TOTALREQUE&amp;</span>
+-----------------------------------
+localhost  |55709 |7296
+
+1 row selected</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

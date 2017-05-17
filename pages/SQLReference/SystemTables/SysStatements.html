@@ -1,0 +1,106 @@
+---
+title: SYSSTATEMENTS system table
+description: System table that describes the prepared statements in the database.
+summary: System table that describes the prepared statements in the database.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_sysstatements
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="SystemTables.SysStatements" id="SystemTables.SysStatements"></a><a name="kanchor449"></a>SYSSTATEMENTS System Table</h1>
+            <p>The <span class="CodeFont">SYSSTATEMENTS</span> table describes the prepared statements in
+		the database.</p>
+            <p>The table contains one row per stored prepared statement.</p>
+            <p>The following table shows the contents of the <span class="CodeFont">SYSSTATEMENTS</span> system table.</p>
+            <table>
+                <caption>SYSSTATEMENTS system table</caption>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Nullable</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">STMTID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Unique identifier for the statement</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">STMTNAME</td>
+                        <td class="CodeFont">VARCHAR</td>
+                        <td class="CodeFont">128</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Name of the statement</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SCHEMAID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>The schema in which the statement resides</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TYPE</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">1</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Always <span class="CodeFont">'S'</span></td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">VALID</td>
+                        <td class="CodeFont">BOOLEAN</td>
+                        <td class="CodeFont">1</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Whether or not the statement is valid</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">TEXT</td>
+                        <td class="CodeFont">LONG VARCHAR</td>
+                        <td class="CodeFont">32,700</td>
+                        <td class="CodeFont">NO</td>
+                        <td>Text of the statement</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">LASTCOMPILED</td>
+                        <td class="CodeFont">TIMESTAMP</td>
+                        <td class="CodeFont">29</td>
+                        <td class="CodeFont">YES</td>
+                        <td>Time that the statement was compiled</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">COMPILATIONSCHEMAID</td>
+                        <td class="CodeFont">CHAR</td>
+                        <td class="CodeFont">36</td>
+                        <td class="CodeFont">NO</td>
+                        <td>ID of the schema containing the statement</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">USINGTEXT</td>
+                        <td class="CodeFont">LONG VARCHAR</td>
+                        <td class="CodeFont">32,700</td>
+                        <td class="CodeFont">YES</td>
+                        <td>Text of the <span class="CodeFont">USING</span> clause of the <span class="CodeFont">CREATE STATEMENT</span> and <span class="CodeFont">ALTER STATEMENT</span> statements</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="Intro.SystemTables.html">About System Tables</a>
+                </li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

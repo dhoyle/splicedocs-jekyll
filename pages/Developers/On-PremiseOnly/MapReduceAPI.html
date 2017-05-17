@@ -1,0 +1,161 @@
+---
+title: Splice Machine MapReduce API
+description: The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.
+summary: The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.
+keywords: 
+sidebar: developers_sidebar
+permalink: developers_fundamentals_mapreduce
+folder: Developers
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor204"></a>Splice Machine Map Reduce API</h1>
+            <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. Our database as a service does include our MapReduce API.</div>
+            <p>The Splice Machine MapReduce API&#160;provides a simple programming interface to the Map Reduce Framework that is integrated into Splice Machine. You can use MapReduce to import data, export data, or for purposes such as implementing machine learning algorithms. One likely scenario for using the Splice Machine MapReduce API is for customers who already have a Hadoop cluster, want to use Splice Machine as their transactional database, and need to continue using their batch MapReduce jobs.</p>
+            <p>This topic includes a summary of the Java classes included in the API,&#160;and <a href="#Example">presents an example</a> of using the MapReduce API.</p>
+            <h2>Splice Machine MapReduce API&#160;Classes</h2>
+            <p>The Splice Machine MapReduce API&#160;includes the following key classes:</p>
+            <table summary="Descriptions of the key classes in the Splie Machine MapReduce API.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">SpliceJob</td>
+                        <td>Creates a transaction for the MapReduce job.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SMInputFormat</td>
+                        <td>
+                            <p class="noSpaceAbove">Creates an object that:</p>
+                            <ul>
+                                <li value="1"> uses Splice Machine to scan the table and decode the data</li>
+                                <li value="2">returns an <span class="CodeFont">ExecRow</span> (typed data) object</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SMOutputFormat</td>
+                        <td>
+                            <p class="noSpaceAbove">Creates an object that:</p>
+                            <ul>
+                                <li value="1"> writes to a buffered cache</li>
+                                <li value="2">dumps the cache into Splice Machine </li>
+                                <li value="3">returns an <span class="CodeFont">ExecRow</span> (typed data)&#160;object.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SpliceMapReduceUtil</td>
+                        <td>A Helper class for writing MapReduce jobs in java; this class is used to initiate a mapper job or a reducer job, to set the number of reducers, and to add dependency jars.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="noteNote">Each transaction must manage its own commit and rollback operations.</div>
+            <p>For information about and examples of using Splice Machine with HCatalog, see the Using Splice Machine with HCatalog topic in this book.</p>
+            <h2><a name="Example"></a>Example of Using the Splice Machine MapReduce API</h2>
+            <p>This topic describes using the Splice Machine MapReduce API, <span class="CodeFont">com.splicemachine.mrio.api</span>, a simple word count program that retrieves data from an input table, summarizes the count of initial character of each word, and writes the result to an output table.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Define your input and output tables:</p>
+                        <p class="indentLevel1">First, assign the name of the Splice Machine database table from which you want to retrieve data to a variable, and then assign a name for your output table to another variable:</p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+String inputTableName  = "WIKIDATA";
+String outputTableName = "USERTEST";</pre>
+                            </div>
+                        </p>
+                        <p class="indentLevel1">You can specify table names using the <span class="ItalicFont">&lt;schemaName&gt;.&lt;tableName&gt;</span> format; if you don't specify a schema name, the default schema is assumed.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Create a new job instance:</p>
+                        <p class="indentLevel1">You need to create a new job instance and assign a name to it:</p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+Configuration config = HBaseConfiguration.create();
+Job job = new Job(config, "WordCount");</pre>
+                            </div>
+                        </p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Initialize your mapper job:</p>
+                        <p class="indentLevel1">We initialize our sample job using the <span class="CodeFont">initTableMapperJob</span> utility method:</p>
+                        <div class="preWrapperWide"><pre class="Example">TableMapReduceUtil.initTableMapperJob(
+    tableName,			// input Splice Machine database table
+    scan,			// a scan instance to control CF&#160;and attribute selection
+    MyMapper.class,		// the mapper
+    Text.class,			// the mapper output key
+    InitWritable.class,		// the mapper output value
+    job,
+    true,
+    SpliceInputFormat.class);</pre>
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Retrieve values within your map function:</p>
+                        <p class="indentLevel1">Our sample <span class="CodeFont">map</span> function retrieves and parses a single row with specified columns. </p>
+                        <div class="preWrapperWide"><pre class="Example">public void map(ImmutableBytesWritable row, ExecRow value, Context context)
+                throws InterruptedException, IOException {
+    if(value != null) {
+        try {
+            DataValueDescriptor dataValDesc[]  = value.getRowArray();
+            if(dataValDesc[0] != null) {}
+            word = dataValDesc[0].getString();
+            }
+        catch (StandardException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if(word != null) {
+            Text key = new Text(word.charAt(0)+"");
+            IntWritable val = new IntWritable(1);
+            context.write(key, val);
+        }
+    }
+}</pre>
+                        </div>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Manipulate and save the value with reduce function:</p>
+                        <p class="indentLevel1">Our sample <span class="CodeFont">reduce</span> function manipulates and saves the value by creating an <span class="CodeFont">ExecRow</span> and filling in the row with the <span class="CodeFont">execRow.setRowArray</span> method. </p>
+                        <div class="preWrapperWide"><pre class="Example">public void reduce(Text key, Iterable‹IntWritable&gt; values, Context context)
+                    throws IOException, InterruptedException {
+
+    Iterator‹IntWritable&gt; it=values.iterator();
+    ExecRow execRow = new ValueRow(2);
+    int sum = 0;
+    String word = key.toString();
+    while (it.hasNext()) {		  
+        sum += it.next().get();
+    }
+    try{
+        DataValueDescriptor []dataValDescs= {new SQLVarchar(word), new SQLInteger(sum)};
+        execRow.setRowArray(dataValDescs);
+        context.write(new ImmutableBytesWritable(Bytes.toBytes(word)), execRow);		  
+    } 
+    catch(Exception E) {
+        E.printStackTrace();
+    }	  
+}</pre>
+                        </div>
+                    </li>
+                    <li value="6">
+                        <p class="topLevel">Commit or rollback the job:</p>
+                        <p class="indentLevel1">If the job is successful, commit the transaction. </p>
+                        <div class="preWrapper"><pre class="Example" xml:space="preserve">job.commit();</pre>
+                        </div>
+                        <p class="indentLevel1">If the job fails, roll back the transaction. </p>
+                        <div class="preWrapper"><pre class="Example" xml:space="preserve">job.rollback();</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

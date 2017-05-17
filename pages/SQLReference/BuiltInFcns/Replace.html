@@ -1,0 +1,77 @@
+---
+title: REPLACE built-in SQL function
+description: Built-in SQL function that replaces all occurrences of a substring in a string
+summary: Built-in SQL function that replaces all occurrences of a substring in a string
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_replace
+folder: SQLReference/BuiltInFcns
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor524"></a>REPLACE </h1>
+            <p>The <span class="CodeFont">REPLACE</span> function replaces all occurrences of a substring within a string and returns the new string.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">REPLACE(<span class="ItalicFont">subjectStr</span>, <span class="ItalicFont">searchStr</span>, <span class="ItalicFont">replaceStr</span>)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">subjectStr
+            </p>
+                <p class="paramDefnFirst">The string you want modified. This can be a literal string or a reference to a <span class="CodeFont">char</span> or <span class="CodeFont">varchar</span> value.</p>
+                <p class="paramName">searchStr
+            </p>
+                <p class="paramDefnFirst">The substring to replace within <span class="ItalicFont">subjectStr</span>.
+ This can be a literal string or a reference to a <span class="CodeFont">char</span> or <span class="CodeFont">varchar</span> value.</p>
+                <p class="paramName">replaceStr
+            </p>
+                <p class="paramDefnFirst">The replacement substring.  This can be a literal string or a reference to a <span class="CodeFont">char</span> or <span class="CodeFont">varchar</span> value.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>A&#160;string value.</p>
+            <p class="heading2">Examples</p>
+            <p>The first examples shows the players on each team with averages greater than .300. The second example shows the result of replacing the team of those players with averages greater than 0.300 who play on one team (the Cards):</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, Average, Team
+   FROM Players JOIN Batting on Players.ID=Batting.ID
+   WHERE Average &gt; 0.300 AND Games&gt;50;
+   
+DISPLAYNAME             |AVERAGE  |TEAM 
+------------------------------------------
+Buddy Painter           |0.31777  |Giants
+John Purser             |0.31151  |Giants
+Kelly Tamlin            |0.30337  |Giants
+Stan Post               |0.30472  |Cards
+
+4 rows selected
+
+splice&gt; SELECT DisplayName, Average, 
+    REPLACE(Team, 'Cards', 'Giants') "TRADED"
+    FROM PLAYERS JOIN Batting ON Players.ID=Batting.ID 
+    WHERE Team='Cards' AND Average &gt; 0.300 AND Games &gt; 50;
+	
+DISPLAYNAME             |AVERAGE  |TRADED
+------------------------------------------
+Stan Post               |0.30472  |Giants
+
+1 row selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="Concatenation.html">Concatenation</a> operator</li>
+                <li value="3"><a href="InitCap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
+                <li value="4"><a href="Instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
+                <li value="5"><a href="LCase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
+                <li value="6"><a href="Length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
+                <li value="7"><a href="Locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
+                <li value="8"><a href="LTrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
+                <li value="9"><span class="CodeFont"><a href="RegexpLike.html">REGEX_LIKE</a></span>&#160;operator</li>
+                <li value="10"><a href="RTrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
+                <li value="11"><a href="Substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
+                <li value="12"><a href="Trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
+                <li value="13"><a href="UCase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

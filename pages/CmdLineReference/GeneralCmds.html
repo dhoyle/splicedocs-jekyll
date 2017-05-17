@@ -1,0 +1,102 @@
+---
+title: Introduction to Splice Machine General Commands
+description: Introduction to the general commands available in the Splice Machine command line interpreter.
+summary: Introduction to the general commands available in the Splice Machine command line interpreter.
+keywords: 
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_generalcmds
+folder: CmdLineReference
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor557"></a>General Commands</h1>
+            <p>This section describes the general-purpose  <span class="AppCommand">splice&gt;</span>&#160;commands:</p>
+            <table summary="Summary of the general-purpose splice&gt; commands">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Description</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdDescribe.html">Describe</a>
+                        </td>
+                        <td>Displays a description of a table or view.</td>
+                        <td><span class="AppCommand">splice&gt; describe myTable;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdElapsedTime.html">Elapsedtime</a>
+                        </td>
+                        <td>Enables or disables display of elapsed time for command execution.</td>
+                        <td><span class="AppCommand">splice&gt; elapsedtime on;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdExecute.html">Execute</a>
+                        </td>
+                        <td>Executes an SQL&#160;prepared statement or SQL&#160;command string.</td>
+                        <td><span class="AppCommand">splice&gt; execute 'insert into myTable(id, val) 
+    values(?,?)' ;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdExit.html">Exit</a>
+                        </td>
+                        <td>Causes the command line interface to exit.</td>
+                        <td><span class="AppCommand">splice&gt; exit;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdExport.html">Export</a>
+                        </td>
+                        <td>Exports query results to CSV&#160;files.</td>
+                        <td><span class="AppCommand">splice&gt; EXPORT('/my/export/dir', null, null, null, null, null)
+          SELECT&#160;a,b,sqrt(c) FROM&#160;join t2 on t1.a=t2.a;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdHelp.html">Help</a>
+                        </td>
+                        <td>Displays a list of the available commands.</td>
+                        <td><span class="AppCommand">splice&gt; help;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdMaxDisplayWidth.html">MaximumDisplayWidth</a>
+                        </td>
+                        <td>Sets the maximum displayed width for each column of results displayed by the command line interpreter.</td>
+                        <td><span class="AppCommand">splice&gt; maximumdisplaywidth 30;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdPrepare.html">Prepare</a>
+                        </td>
+                        <td>Creates a prepared statement for use by other commands.</td>
+                        <td><span class="AppCommand">splice&gt; prepare seeMenu as 'SELECT * FROM menu';</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdRemove.html">Remove</a>
+                        </td>
+                        <td>Removes a previously prepared statement.</td>
+                        <td><span class="AppCommand">splice&gt; remove seeMenu;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdRun.html">Run</a>
+                        </td>
+                        <td>Runs commands from a file.</td>
+                        <td><span class="AppCommand">splice&gt; run myCmdFile;</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

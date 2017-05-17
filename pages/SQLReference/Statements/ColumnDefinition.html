@@ -1,0 +1,57 @@
+---
+title: Simple-column-Name
+description: Used in statements to specify the definition of a column.
+summary: Used in statements to specify the definition of a column.
+keywords: 
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_columndef
+folder: SQLReference/Statements
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="Statements.ColumnDefinition" id="Statements.ColumnDefinition"></a><a name="kanchor68"></a>column-definition</h1>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>
+   [ <span class="ItalicFont">DataType</span> ]
+   [ <span class="ItalicFont"><a href="../Clauses/Constraint.html#ColumnConstraint">Column-level-constraint</a></span> ]*
+   [ [ WITH ] DEFAULT <var>DefaultConstantExpression</var>
+     | <span class="ItalicFont"><a href="GeneratedColumnSpec.html">generated-column-spec</a></span> 
+     | <span class="ItalicFont"><a href="GenerationClause.html">generation-clause</a></span> 
+   ] 
+   [ <span class="ItalicFont"><a href="../Clauses/Constraint.html#ColumnConstraint">Column-level-constraint</a></span> ]*</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">DataType</p>
+                <p class="paramDefnFirst">Must be specified unless you specify a generation-clause, in which case the type of the generated column is that of the generation-clause.</p>
+                <p class="paramDefn">If you specify both a <span class="ItalicFont">DataType</span> and a <span class="ItalicFont">generation-clause</span>, the type of the <span class="ItalicFont">generation-clause</span> must be assignable to <span class="ItalicFont">DataType</span></p>
+                <p class="paramName">Column-level-constraint</p>
+                <p class="paramDefnFirst">See the <a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a> documentation.</p>
+                <p class="paramName">DefaultConstantExpression<a name="ColumnDefault" id="ColumnDefault"></a></p>
+                <p class="paramDefnFirst">For the definition of a default value, a <var>DefaultConstantExpression</var> is an  expression that does not refer to any table. It can include constants,  date-time special registers, current schemas, and null:
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"><var>DefaultConstantExpression</var>:
+   NULL
+ | CURRENT { SCHEMA | SQLID }
+ | DATE
+ | TIME
+ | TIMESTAMP
+ | CURRENT DATE | CURRENT_DATE
+ | CURRENT TIME | CURRENT_TIME
+ | CURRENT TIMESTAMP | CURRENT_TIMESTAMP
+ | <var>literal</var></pre></div></p>
+                <p class="paramDefn">The values in a <var>DefaultConstantExpression</var> must be compatible in type with the column, but a  <var>DefaultConstantExpression</var> has the following additional type  restrictions:
+        <ul><li value="1">If you specify <span class="CodeFont">CURRENT SCHEMA</span> or <span class="CodeFont">CURRENT SQLID</span>, the column must be a 
+			character column whose length is at least 128.</li><li value="2">If the column is an integer type, the default value must be an
+			integer literal.</li><li value="3">If the column is a decimal type, the scale and precision of the default 
+			value must be within those of the column.</li></ul></p>
+            </div>
+            <p class="heading2">Example</p>
+            <p class="body">This example creates a table and uses two column definitions.</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE&#160;myTable (ID&#160;INT&#160;NOT&#160;NULL, NAME&#160;VARCHAR(32) );
+0 rows inserted/updated/deleted</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span></a>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
