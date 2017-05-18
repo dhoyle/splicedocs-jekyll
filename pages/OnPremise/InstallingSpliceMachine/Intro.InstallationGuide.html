@@ -1,10 +1,10 @@
 ---
-summary: topic
-title: Walks you through installing Splice Machine on your cluster, or on computer if you're using the standalone version. 
-description: Walks you through installing Splice Machine on your cluster, or on computer if you're using the standalone version. 
+summary: Walks you through installing Splice Machine on your cluster, or on computer if you're using the standalone version.
+title: Splice Machine Installation Guide
 keywords: 
+toc: false
 sidebar:  onprem_sidebar
-permalink: onprem_install_intro
+permalink: onprem_install_intro.html
 folder: OnPrem
 ---
 	<section>
@@ -314,11 +314,10 @@ rm /bin/sh ; ln -sf /bin/bash /bin/sh</pre>
                                 <p class="noSpaceAbove">Verify that the following set of software (or packages) is available on each node in your cluster:</p>
                                 <ul>
                                     <li class="CodeFont" value="1">curl</li>
-                                    <li class="CodeFont" value="2">
-                                        <p>jdk-1.7.0_XX&#160;(Oracle JDK v1.7.0)</p>
-                                        <div class="noteNote">You may your platform management software (re-install)&#160;JDK 1.7 during its own installation process.</div>
-                                    </li>
-                                    <li class="CodeFont" value="3">nscd</li>
+									<li class="CodeFont">
+                                    <p>Oracle JDK&#160;1.8, update 60 or higher. We recommend against using JDK 1.8.0_40 or OpenJDK.</p>
+                                    <div class="noteNote">Your platform management software may re-install&#160;JDK during its own installation process.</div>
+                                </li>                                    <li class="CodeFont" value="3">nscd</li>
                                     <li class="CodeFont" value="4">ntp</li>
                                     <li class="CodeFont" value="5">openssh, openssh-clients<span class="bodyFont">, and</span> openssh-server</li>
                                     <li class="CodeFont" value="6">patch</li>

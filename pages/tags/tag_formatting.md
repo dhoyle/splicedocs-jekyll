@@ -2,7 +2,7 @@
 title: "Formatting pages"
 tagName: formatting
 search: exclude
-permalink: tag_formatting.html
+permalink: tag_formatting.html.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

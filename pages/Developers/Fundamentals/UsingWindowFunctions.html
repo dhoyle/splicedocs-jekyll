@@ -1,10 +1,10 @@
 ---
 title: Splice Machine Window Functions
-description: A quick summary of window functions, as implemented in Splice Machine SQL.
 summary: A quick summary of window functions, as implemented in Splice Machine SQL.
 keywords: 
+toc: false
 sidebar: developers_sidebar
-permalink: developers_fundamentals_windowfcns
+permalink: developers_fundamentals_windowfcns.html
 folder: Developers/Fundamentals
 ---
 	<section>
@@ -14,85 +14,85 @@ folder: Developers/Fundamentals
             <p>This topic provides a very quick summary of window functions, as implemented in Splice Machine. For more general information about SQL&#160;window functions, we recommending visiting some of the sources listed in the <a href="#ForMoreInfo" class="selected">Additional Information</a> section at the end of this topic. </p>
             <p>Here's a quick example of using a window function to operate on the following table:</p>
             <div class="indented">
-                <table class="TableStyle-SmallPatternedRows" style="mc-table-style: url('../../Resources/TableStyles/SmallPatternedRows.css');" cellspacing="0" summary="Sample table for window function examples.">
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
+                <table>
+                    <col />
+                    <col />
+                    <col />
                     <thead>
-                        <tr class="TableStyle-SmallPatternedRows-Head-Header1">
-                            <th class="TableStyle-SmallPatternedRows-HeadE-Regular-Header1">OrderID</th>
-                            <th class="TableStyle-SmallPatternedRows-HeadE-Regular-Header1">CustomerID</th>
-                            <th class="TableStyle-SmallPatternedRows-HeadD-Regular-Header1">Amount</th>
+                        <tr>
+                            <th>OrderID</th>
+                            <th>CustomerID</th>
+                            <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">123</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">100</td>
+                        <tr>
+                            <td>123</td>
+                            <td>1</td>
+                            <td>100</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">
+                        <tr>
+                            <td>
                             144
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">1                        </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">250</td>
+                            <td>1</td>
+                            <td>250</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">167</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">150</td>
+                        <tr>
+                            <td>167</td>
+                            <td>1</td>
+                            <td>150</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">
+                        <tr>
+                            <td>
                             202
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">
+                            <td>
                             1
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">250</td>
+                            <td>250</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">209</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">325</td>
+                        <tr>
+                            <td>209</td>
+                            <td>1</td>
+                            <td>325</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">
+                        <tr>
+                            <td>
                             224
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">
+                            <td>
                             1
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">125</td>
+                            <td>125</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">66</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">100</td>
+                        <tr>
+                            <td>66</td>
+                            <td>2</td>
+                            <td>100</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">
+                        <tr>
+                            <td>
                             94
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">
+                            <td>
                             2
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">200</td>
+                            <td>200</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">127</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">300</td>
+                        <tr>
+                            <td>127</td>
+                            <td>2</td>
+                            <td>300</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyB-Regular-DarkerRows">
+                        <tr>
+                            <td>
                             444
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyB-Regular-DarkerRows">
+                            <td>
                             2
                         </td>
-                            <td class="TableStyle-SmallPatternedRows-BodyA-Regular-DarkerRows">400</td>
+                            <td>400</td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,67 +107,67 @@ FROM&#160;ORDERS
 WHERE&#160;CustomerID IN&#160;(1,2);</pre>
             <p>This works by partitioning (grouping)&#160;the selected rows by CustomerID, ordering them for purposes of applying the function to the rows in the partition, and then using the <span class="CodeFont">FIRST_VALUE</span>&#160;window function to evaluate the OrderID&#160;values in each partition and find the first value in each. The results for our sample table are:</p>
             <div class="indented">
-                <table class="TableStyle-SmallPatternedRows" style="mc-table-style: url('../../Resources/TableStyles/SmallPatternedRows.css');" cellspacing="0" summary="Sample table results from a FIRST_VALUE operation.">
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
+                <table summary="Sample table results from a FIRST_VALUE operation.">
+                    <col />
+                    <col />
+                    <col />
                     <thead>
-                        <tr class="TableStyle-SmallPatternedRows-Head-Header1">
-                            <th class="TableStyle-SmallPatternedRows-HeadE-Regular-Header1">OrderID</th>
-                            <th class="TableStyle-SmallPatternedRows-HeadE-Regular-Header1">CustomerID</th>
-                            <th class="TableStyle-SmallPatternedRows-HeadD-Regular-Header1">FirstOrderID</th>
+                        <tr">
+                            <th>OrderID</th>
+                            <th>CustomerID</th>
+                            <th>FirstOrderID</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">123</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">123</td>
+                        <tr>
+                            <td>123</td>
+                            <td>1</td>
+                            <td>123</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">144</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">123</td>
+                        <tr>
+                            <td>144</td>
+                            <td>1</td>
+                            <td>123</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">167</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">123</td>
+                        <tr>
+                            <td>167</td>
+                            <td>1</td>
+                            <td>123</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">202</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">123</td>
+                        <tr>
+                            <td>202</td>
+                            <td>1</td>
+                            <td>123</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">209</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">123</td>
+                        <tr>
+                            <td>209</td>
+                            <td>1</td>
+                            <td>123</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">224</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">123</td>
+                        <tr>
+                            <td>224</td>
+                            <td>1</td>
+                            <td>123</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">66</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">66</td>
+                        <tr>
+                            <td>66</td>
+                            <td>2</td>
+                            <td>66</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">94</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">66</td>
+                        <tr>
+                            <td>94</td>
+                            <td>2</td>
+                            <td>66</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">127</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">66</td>
+                        <tr>
+                            <td>127</td>
+                            <td>2</td>
+                            <td>66</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyB-Regular-DarkerRows">444</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyB-Regular-DarkerRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyA-Regular-DarkerRows">66</td>
+                        <tr>
+                            <td>444</td>
+                            <td>2</td>
+                            <td>66</td>
                         </tr>
                     </tbody>
                 </table>
@@ -286,79 +286,79 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
 AS&#160;AverageOrderAmt FROM&#160;ORDERS
 WHERE&#160;CustomerID IN&#160;(1,2);</pre>
             <div class="indented">
-                <table class="TableStyle-SmallPatternedRows" style="mc-table-style: url('../../Resources/TableStyles/SmallPatternedRows.css');" cellspacing="0" summary="Results table from an AVG operation.">
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
-                    <col class="TableStyle-SmallPatternedRows-Column-Regular" />
+                <table summary="Results table from an AVG operation.">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
                     <thead>
-                        <tr class="TableStyle-SmallPatternedRows-Head-Header1">
-                            <th class="TableStyle-SmallPatternedRows-HeadE-Regular-Header1">OrderID</th>
-                            <th class="TableStyle-SmallPatternedRows-HeadE-Regular-Header1">CustomerID</th>
-                            <th class="TableStyle-SmallPatternedRows-HeadE-Regular-Header1">Amount</th>
-                            <th class="TableStyle-SmallPatternedRows-HeadD-Regular-Header1">AverageOrderAmt</th>
+                        <tr">
+                            <th>OrderID</th>
+                            <th>CustomerID</th>
+                            <th>Amount</th>
+                            <th>AverageOrderAmt</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">123</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">100</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">200</td>
+                        <tr>
+                            <td>123</td>
+                            <td>1</td>
+                            <td>100</td>
+                            <td>200</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">144</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">250</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">200</td>
+                        <tr>
+                            <td>144</td>
+                            <td>1</td>
+                            <td>250</td>
+                            <td>200</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">167</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">150</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">200</td>
+                        <tr>
+                            <td>167</td>
+                            <td>1</td>
+                            <td>150</td>
+                            <td>200</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">202</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">250</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">200</td>
+                        <tr>
+                            <td>202</td>
+                            <td>1</td>
+                            <td>250</td>
+                            <td>200</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">209</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">325</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">200</td>
+                        <tr>
+                            <td>209</td>
+                            <td>1</td>
+                            <td>325</td>
+                            <td>200</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">224</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">1</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">125</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">200</td>
+                        <tr>
+                            <td>224</td>
+                            <td>1</td>
+                            <td>125</td>
+                            <td>200</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">66</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">100</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">250</td>
+                        <tr>
+                            <td>66</td>
+                            <td>2</td>
+                            <td>100</td>
+                            <td>250</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">94</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-DarkerRows">200</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-DarkerRows">250</td>
+                        <tr>
+                            <td>94</td>
+                            <td>2</td>
+                            <td>200</td>
+                            <td>250</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-LightRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">127</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyE-Regular-LightRows">300</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyD-Regular-LightRows">250</td>
+                        <tr>
+                            <td>127</td>
+                            <td>2</td>
+                            <td>300</td>
+                            <td>250</td>
                         </tr>
-                        <tr class="TableStyle-SmallPatternedRows-Body-DarkerRows">
-                            <td class="TableStyle-SmallPatternedRows-BodyB-Regular-DarkerRows">444</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyB-Regular-DarkerRows">2</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyB-Regular-DarkerRows">400</td>
-                            <td class="TableStyle-SmallPatternedRows-BodyA-Regular-DarkerRows">250</td>
+                        <tr>
+                            <td>444</td>
+                            <td>2</td>
+                            <td>400</td>
+                            <td>250</td>
                         </tr>
                     </tbody>
                 </table>

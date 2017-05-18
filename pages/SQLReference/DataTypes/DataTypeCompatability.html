@@ -1,783 +1,783 @@
 ---
 title: Data Assignments and Comparisons
-description: Summarizes how assignment and comparison compatibility among the different SQL data types.
 summary: Summarizes how assignment and comparison compatibility among the different SQL data types.
 keywords: 
+toc: false
 sidebar:  sqlref_sidebar
-permalink: sqlref_datatypes_compatability
+permalink: sqlref_datatypes_compatability.html
 folder: SQLReference/DataTypes
 ---
 	<section>
 		<div class="TopicContent">
             <h1><a name="DataTypes.Assignments" id="DataTypes.Assignments"></a>Splice Machine <a name="kanchor362"></a>Data Assignments and Comparisons</h1>
             <p>The following table displays valid assignments between data types in Splice Machine. A <span class="ItalicFont">Y</span> indicates that the assignment is valid.</p>
-            <table style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" class="TableStyle-PatternedRows" cellspacing="0" summary="Summary of allowed data assignments and comparisons">
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" style="width: 25px;" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
+            <table  summary="Summary of allowed data assignments and comparisons">
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  style="width: 25px;" />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
                 <thead>
-                    <tr class="TableStyle-PatternedRows-Head-Header1">
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">TYPES</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">B<br />I<br />G<br />I<br />N<br />T</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">D<br />E<br />C<br />I<br />M<br />A<br />L</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">R<br />E<br />A<br />L</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">D<br />O<br />U<br />B<br />L<br />E</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">F<br />L<br />O<br />A<br />T</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">C<br />H<br />A<br />R</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">V<br />A<br />R<br />C<br />H<br />A<br />R</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">L<br />O<br />N<br />G<br /><br />V<br />A<br />R<br />C<br />H<br />A<br />R</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">C<br />L<br />O<br />B<br /><br />/ <br /><br />T<br />E<br />X<br />T</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">B<br />L<br />O<br />B<br /></th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">D<br />A<br />T<br />E</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">T<br />I<br />M<br />E</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">T<br />I<br />M<br />E<br />S<br />T<br />A<br />M<br />P</th>
-                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1" style="vertical-align:bottom">U<br />s<br />e<br />r<br />-<br />d<br />e<br />f<br />i<br />n<br />e<br />d<br />&#160;<br />t<br />y<br />p<br />e</th>
+                    <tr >
+                        <th >TYPES</th>
+                        <th  style="vertical-align:bottom">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
+                        <th  style="vertical-align:bottom">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
+                        <th  style="vertical-align:bottom">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
+                        <th  style="vertical-align:bottom">B<br />I<br />G<br />I<br />N<br />T</th>
+                        <th  style="vertical-align:bottom">D<br />E<br />C<br />I<br />M<br />A<br />L</th>
+                        <th  style="vertical-align:bottom">R<br />E<br />A<br />L</th>
+                        <th  style="vertical-align:bottom">D<br />O<br />U<br />B<br />L<br />E</th>
+                        <th  style="vertical-align:bottom">F<br />L<br />O<br />A<br />T</th>
+                        <th  style="vertical-align:bottom">C<br />H<br />A<br />R</th>
+                        <th  style="vertical-align:bottom">V<br />A<br />R<br />C<br />H<br />A<br />R</th>
+                        <th  style="vertical-align:bottom">L<br />O<br />N<br />G<br /><br />V<br />A<br />R<br />C<br />H<br />A<br />R</th>
+                        <th  style="vertical-align:bottom">C<br />L<br />O<br />B<br /><br />/ <br /><br />T<br />E<br />X<br />T</th>
+                        <th  style="vertical-align:bottom">B<br />L<br />O<br />B<br /></th>
+                        <th  style="vertical-align:bottom">D<br />A<br />T<br />E</th>
+                        <th  style="vertical-align:bottom">T<br />I<br />M<br />E</th>
+                        <th  style="vertical-align:bottom">T<br />I<br />M<br />E<br />S<br />T<br />A<br />M<br />P</th>
+                        <th  style="vertical-align:bottom">U<br />s<br />e<br />r<br />-<br />d<br />e<br />f<br />i<br />n<br />e<br />d<br />&#160;<br />t<br />y<br />p<br />e</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">BOOLEAN</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >BOOLEAN</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">SMALLINT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >SMALLINT</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">INTEGER</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >INTEGER</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">BIGINT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >BIGINT</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">DECIMAL</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >DECIMAL</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">REAL</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >REAL</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">DOUBLE</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >DOUBLE</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">FLOAT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >FLOAT</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">CHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >CHAR</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">VARCHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >VARCHAR</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">LONG VARCHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >LONG VARCHAR</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">CLOB / TEXT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >CLOB / TEXT</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">BLOB</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >BLOB</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">DATE</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >DATE</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">TIME</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >TIME</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">TIMESTAMP</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >TIMESTAMP</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">User-defined type</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">Y</td>
+                    <tr >
+                        <td >User-defined type</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
                     </tr>
                 </tbody>
             </table>
             <p>A value of a user-defined type can be assigned to a value of any supertype of that user-defined type. However, no explicit casts of user-defined types are allowed.</p>
             <p>The following table displays valid comparisons between data types in Splice Machine. A <span class="ItalicFont">Y</span> indicates that the comparison is allowed.</p>
-            <table class="TableStyle-PatternedRows" style="text-align: center;mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0" summary="Summary of valid data type comparisons in Splice Machine">
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" style="width: 25px;" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
+            <table summary="Summary of valid data type comparisons in Splice Machine">
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  style="width: 25px;" />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
+                <col  />
                 <thead>
-                    <tr class="TableStyle-PatternedRows-Head-Header1">
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">TYPES</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">B<br />I<br />G<br />I<br />N<br />T</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">D<br />E<br />C<br />I<br />M<br />A<br />L</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">R<br />E<br />A<br />L</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">D<br />O<br />U<br />B<br />L<br />E</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">F<br />L<br />O<br />A<br />T</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">C<br />H<br />A<br />R</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">V<br />A<br />R<br />C<br />H<br />A<br />R</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">L<br />O<br />N<br />G<br /><br />V<br />A<br />R<br />C<br />H<br />A<br />R</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">C<br />L<br />O<br />B<br /><br />/ <br /><br />T<br />E<br />X<br />T</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">B<br />L<br />O<br />B<br /></th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">D<br />A<br />T<br />E</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">T<br />I<br />M<br />E</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1" style="vertical-align:bottom">T<br />I<br />M<br />E<br />S<br />T<br />A<br />M<br />P</th>
-                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1" style="vertical-align:bottom">U<br />s<br />e<br />r<br />-<br />d<br />e<br />f<br />i<br />n<br />e<br />d<br />&#160;<br />t<br />y<br />p<br />e</th>
+                    <tr >
+                        <th  style="vertical-align:bottom">TYPES</th>
+                        <th  style="vertical-align:bottom">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
+                        <th  style="vertical-align:bottom">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
+                        <th  style="vertical-align:bottom">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
+                        <th  style="vertical-align:bottom">B<br />I<br />G<br />I<br />N<br />T</th>
+                        <th  style="vertical-align:bottom">D<br />E<br />C<br />I<br />M<br />A<br />L</th>
+                        <th  style="vertical-align:bottom">R<br />E<br />A<br />L</th>
+                        <th  style="vertical-align:bottom">D<br />O<br />U<br />B<br />L<br />E</th>
+                        <th  style="vertical-align:bottom">F<br />L<br />O<br />A<br />T</th>
+                        <th  style="vertical-align:bottom">C<br />H<br />A<br />R</th>
+                        <th  style="vertical-align:bottom">V<br />A<br />R<br />C<br />H<br />A<br />R</th>
+                        <th  style="vertical-align:bottom">L<br />O<br />N<br />G<br /><br />V<br />A<br />R<br />C<br />H<br />A<br />R</th>
+                        <th  style="vertical-align:bottom">C<br />L<br />O<br />B<br /><br />/ <br /><br />T<br />E<br />X<br />T</th>
+                        <th  style="vertical-align:bottom">B<br />L<br />O<br />B<br /></th>
+                        <th  style="vertical-align:bottom">D<br />A<br />T<br />E</th>
+                        <th  style="vertical-align:bottom">T<br />I<br />M<br />E</th>
+                        <th  style="vertical-align:bottom">T<br />I<br />M<br />E<br />S<br />T<br />A<br />M<br />P</th>
+                        <th  style="vertical-align:bottom">U<br />s<br />e<br />r<br />-<br />d<br />e<br />f<br />i<br />n<br />e<br />d<br />&#160;<br />t<br />y<br />p<br />e</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">BOOLEAN</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >BOOLEAN</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">SMALLINT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >SMALLINT</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">INTEGER</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >INTEGER</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">BIGINT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >BIGINT</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">DECIMAL</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >DECIMAL</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">REAL</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >REAL</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">DOUBLE</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >DOUBLE</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">FLOAT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >FLOAT</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">CHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >CHAR</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">VARCHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >VARCHAR</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">LONG VARCHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >LONG VARCHAR</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">CLOB / TEXT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >CLOB / TEXT</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">BLOB</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >BLOB</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">DATE</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >DATE</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">TIME</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">-</td>
+                    <tr >
+                        <td >TIME</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">TIMESTAMP</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">Y</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">-</td>
+                    <tr >
+                        <td >TIMESTAMP</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >Y</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >Y</td>
+                        <td >-</td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">User-defined type</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">-</td>
-                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">-</td>
+                    <tr >
+                        <td >User-defined type</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
+                        <td >-</td>
                     </tr>
                 </tbody>
             </table>

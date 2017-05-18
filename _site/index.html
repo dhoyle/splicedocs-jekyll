@@ -4,9 +4,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="These brief instructions will help you get started quickly with the theme. The other topics in this help provide additional information and detail about work...">
-<meta name="keywords" content="getting_started,  sample homepage">
-<title>Getting started with the Documentation Theme for Jekyll | Splice Machine Documentation</title>
+<meta name="description" content="A step-wise list for installing Splice Machine, importing your data, running queries, and learning about the features available to Splice Machine developers ...">
+<meta name="keywords" content=" ">
+<title>Splice Machine Quick Start | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
 
@@ -111,7 +111,11 @@
                 
                 
                 
-                <li><a href="cmdlineref_intro.html">Command Line</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">splice></a></li>
                 
                 
                 
@@ -123,7 +127,7 @@
                 
                 
                 
-                <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+                <li><a href="sparkconsole_intro.html">Spark Console</a></li>
                 
                 
                 
@@ -143,7 +147,7 @@
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Getting started with the Documentation Theme for Jekyll page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Splice Machine Quick Start page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
 
 </li>
 
@@ -161,7 +165,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Getting started with the Documentation Theme for Jekyll">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Splice Machine Quick Start">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -188,7 +192,7 @@
 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle"> </li>
+    <li class="sidebarTitle">Splice Machine 2.6</li>
     
     
     
@@ -198,14 +202,14 @@
             
             
             
-            <li><a href="cmdlineref_intro.html">splice> Command Line</a></li>
+            <li><a href="cmdlineref_intro.html">splice></a></li>
             
             
             
             
             
             
-            <li><a href="sqlreference_intro.html">SQL Reference</a></li>
+            <li><a href="sqlref_intro.html">SQL Reference</a></li>
             
             
             
@@ -219,7 +223,7 @@
             
             
             
-            <li><a href="mgmtconsole_intro.html">Management Console</a></li>
+            <li><a href="sparkconsole_intro.html">Spark Console</a></li>
             
             
             
@@ -227,6 +231,13 @@
             
             
             <li><a href="notes_intro.html">Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_intro.html">On-premise Ops</a></li>
             
             
             
@@ -253,379 +264,253 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <div class="post-header">
-   <h1 class="post-title-main">Getting started with the Documentation Theme for Jekyll</h1>
+ <h2>&#160;</h2><!--  <h1 class="post-title-main">Splice Machine Quick Start</h1>  -->
 </div>
 
 
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017 --
    
-    <div class="summary">These brief instructions will help you get started quickly with the theme. The other topics in this help provide additional information and detail about working with other aspects of this theme and Jekyll.</div>
+    <div class="summary">A step-wise list for installing Splice Machine, importing your data, running queries, and learning about the features available to Splice Machine developers and administrators.</div>
    
-
-    
-    
-<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
-<script>
-$( document ).ready(function() {
-  // Handler for .ready() called.
-
-$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
-
-/* this offset helps account for the space taken up by the floating toolbar. */
-$('#toc').on('click', 'a', function() {
-  var target = $(this.getAttribute('href'))
-    , scroll_target = target.offset().top
-
-  $(window).scrollTop(scroll_target - 10);
-  return false
-})
-  
-});
-</script>
-
-<div id="toc"></div>
+-->
 
     
 
 
     
 
-    <a target="_blank" href="https://github.com/splicemachine/splicedocs-jekyll//index.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-
-    
-
-  <h2 id="build-the-theme">Build the Theme</h2>
-
-<p>Follow these instructions to build the theme.</p>
-
-<h3 id="download-the-theme">1. Download the theme</h3>
-
-<p>First download or clone the theme from the <a href="https://github.com/tomjohnson1492/documentation-theme-jekyll">Github repo</a>. Most likely you won’t be pulling in updates once you start customizing the theme, so downloading the theme (instead of cloning it) probably makes the most sense. In Github, click the <strong>Clone or download</strong> button, and then click <strong>Download ZIP</strong>.</p>
-
-<h3 id="install-jekyll">2. Install Jekyll</h3>
-
-<p>If you’ve never installed or run a Jekyll site locally on your computer, follow these instructions to install Jekyll:</p>
-
-<ul>
-  <li>[Install Jekyll on Mac][mydoc_install_jekyll_on_mac]</li>
-  <li>[Install Jekyll on Windows][mydoc_install_jekyll_on_windows]</li>
-</ul>
-
-<h3 id="install-bundler">3. Install Bundler</h3>
-
-<p>In case you haven’t installed Bundler, install it:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>gem install bundler
-</code></pre>
-</div>
-
-<p>You’ll want <a href="http://bundler.io/">Bundler</a> to make sure all the Ruby gems needed work well with your project. Bundler sorts out dependencies and installs missing gems or matches up gems with the right versions based on gem dependencies.</p>
-
-<h3 id="option1">4. Option 1: Build the Theme (<em>without</em> the github-pages gem)</h3>
-
-<p>Use this option if you’re not planning to publish your Jekyll site using <a href="https://pages.github.com/">Github Pages</a>.</p>
-
-<p>Bundler’s Gemfile is how it specifies and manages project dependencies are managed. Although this project includes a Gemfile, this theme doesn’t have any dependencies beyond core Jekyll. The Gemfile is used to specify gems needed for publishing on Github Pages. <strong>If you’re not planning to have Github Pages build your Jekyll project, delete these two files from the theme’s root directory:</strong></p>
-
-<ul>
-  <li>Gemfile</li>
-  <li>Gemfile.lock</li>
-</ul>
-
-<p>If you’ve never run Jekyll on your computer (you can check with <code class="highlighter-rouge">jekyll --version</code>), you may need to install the jekyll gem:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>gem install jekyll
-</code></pre>
-</div>
-
-<p>Now run jekyll serve (first change directories (<code class="highlighter-rouge">cd</code>) to where you downloaded the project):</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>jekyll serve
-</code></pre>
-</div>
-
-<h3 id="option2">4. Option 2: Build the Theme (<em>with</em> the github-pages gem)</h3>
-
-<p>If you <em>are</em> in fact publishing on Github Pages, leave the Gemfile and Gemfile.lock files in the theme.The Gemfile tells Jekyll to use the github-pages gem. <strong>However, note that you cannot use the normal <code class="highlighter-rouge">jekyll serve</code> command with this gem due to dependency conflicts between the latest version of Jekyll and Github Pages</strong> (which are noted <a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">briefly here</a>).</p>
-
-<p>You need Bundler to resolve these dependency conflicts. Use Bundler to install all the needed Ruby gems:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bundle update
-</code></pre>
-</div>
-
-<p>Then <em>always</em> use this command to build Jekyll:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bundle exec jekyll serve
-</code></pre>
-</div>
-
-<p>If you want to shorten this long command, you can put this code in a file such as jekyll.sh (on a Mac) and then simply type <code class="highlighter-rouge">. jekyll.sh</code> to build Jekyll.</p>
-
-<h2 id="running-the-site-in-docker">Running the site in Docker</h2>
-
-<p>You can also use Docker to directly build and run the site on your local machine. Just clone the repo and run the following from your working dir:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>docker build --no-cache -t mydocs .
-</code></pre>
-</div>
-
-<p>Once the build is complete, you can mount and run the whole site as follows:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>docker run -v "$PWD:/src" -p 4000:4000 mydocs serve -H 0.0.0.0
-</code></pre>
-</div>
-<p>This is perhaps the easiest way to see how your site would actually look.</p>
-
-<h2 id="configure-the-sidebar">Configure the sidebar</h2>
-
-<p>There are several products in this theme. Each product uses a different sidebar. This is the essence of what makes this theme unique – different sidebars for different product documentation. The idea is that when users are reading documentation for a specific product, the sidebar navigation should be specific to that product. (You can read more of my thoughts on why multiple sidebars are important in this <a href="http://idratherbewriting.com/2016/03/23/release-of-documentation-theme-for-jekyll-50/">blog post</a>.)</p>
-
-<p>The top navigation remains the same, because it allows users to navigate across products. But the sidebar navigation adapts to the product.</p>
-
-<p>Because each product uses a different sidebar, you’ll need to set up your sidebars. There’s a file inside _includes/custom called “sidebarconfigs.html.” This file controls which sidebar gets associated with which product. Open up this file to see its contents.</p>
-
-<p>The sidebarconfigs.html file uses simple <code class="highlighter-rouge">if elsif</code> logic to set a variable that the sidebar.html file uses to read the sidebar data file. The code in sidebarconfigs.html looks like this:</p>
-
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">sidebar</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"home_sidebar"</span><span class="w"> </span><span class="p">%}</span>
-<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">sidebar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">data</span><span class="p">.</span><span class="nv">sidebars</span><span class="p">.</span><span class="nv">home_sidebar</span><span class="p">.</span><span class="nv">entries</span><span class="w"> </span><span class="p">%}</span>
-
-<span class="p">{%</span><span class="w"> </span><span class="kr">elsif</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">sidebar</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"product1_sidebar"</span><span class="w"> </span><span class="p">%}</span>
-<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">sidebar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">data</span><span class="p">.</span><span class="nv">sidebars</span><span class="p">.</span><span class="nv">product1_sidebar</span><span class="p">.</span><span class="nv">entries</span><span class="w"> </span><span class="p">%}</span>
-
-<span class="p">{%</span><span class="w"> </span><span class="kr">elsif</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">sidebar</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"product2_sidebar"</span><span class="w"> </span><span class="p">%}</span>
-<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">sidebar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">data</span><span class="p">.</span><span class="nv">sidebars</span><span class="p">.</span><span class="nv">product2_sidebar</span><span class="p">.</span><span class="nv">entries</span><span class="w"> </span><span class="p">%}</span>
-
-<span class="p">{%</span><span class="w"> </span><span class="kr">elsif</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">sidebar</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"mydoc_sidebar"</span><span class="w"> </span><span class="p">%}</span>
-<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">sidebar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">data</span><span class="p">.</span><span class="nv">sidebars</span><span class="p">.</span><span class="nv">mydoc_sidebar</span><span class="p">.</span><span class="nv">entries</span><span class="w"> </span><span class="p">%}</span>
-
-<span class="p">{%</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">%}</span>
-<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">sidebar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">data</span><span class="p">.</span><span class="nv">sidebars</span><span class="p">.</span><span class="nv">home_sidebar</span><span class="p">.</span><span class="nv">entries</span><span class="w"> </span><span class="p">%}</span>
-<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
-</code></pre>
-</div>
-
-<p>In each page’s frontmatter, you must specify the sidebar you want that page to use. Here’s an example of the page frontmatter showing the sidebar property:</p>
-
-<pre>
----
-title: Alerts
-tags: [formatting]
-keywords: notes, tips, cautions, warnings, admonitions
-last_updated: July 3, 2016
-summary: "You can insert notes, tips, warnings, and important alerts in your content. These notes are stored as shortcodes made available through the linksrefs.hmtl include."
-<span class="red">sidebar: mydoc_sidebar</span>
-permalink: mydoc_alerts
----
-</pre>
-
-<p>The <code class="highlighter-rouge">sidebar: mydoc_sidebar</code> refers to the _data/sidebars/mydoc_sidebar.yml file (meaning, the mydoc_sidebar.yml file inside the sidebars subfolder inside the \data folder).</p>
-
-<p>If no sidebar assignment is found in the page frontmatter, the default sidebar (specified by the <code class="highlighter-rouge">else</code> statement) will be shown: <code class="highlighter-rouge">site.data.sidebars.home_sidebar.entries</code>.</p>
-
-<p>Note that your sidebar can only have 2 levels. Given that each product has its own sidebar, this depth should be sufficient (it’s really like 3 levels). Deeper nesting goes against usability recommendations.</p>
-
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Note that each level must have at least one topic before the next level starts. You can’t have a second level that contains multiple third levels without having at least one standalone topic in the second level.</div>
-
-<p>You can optionally turn off the sidebar on any page (e.g. landing pages). To turn off the sidebar for a page, you should set the page frontmatter tag as <code class="highlighter-rouge">hide_sidebar: true</code>.</p>
-
-<p>For more detail on the sidebar, see [Sidebar navigation][mydoc_sidebar_navigation].</p>
-
-<h2 id="sidebar-syntax">Sidebar syntax</h2>
-
-<p>The sidebar data file uses a specific YAML syntax that you must follow. Follow the sample pattern shown in the theme. For example:</p>
-
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">entries</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">sidebar</span>
-  <span class="s">product</span><span class="pi">:</span> <span class="s">Jekyll Doc Theme</span>
-  <span class="s">version</span><span class="pi">:</span> <span class="s">6.0</span>
-  <span class="s">folders</span><span class="pi">:</span>
-
-  <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">Overview</span>
-    <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-    <span class="s">folderitems</span><span class="pi">:</span>
-
-    <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">Get started</span>
-      <span class="s">url</span><span class="pi">:</span> <span class="s">/index.html</span>
-      <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-
-    <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">Introduction</span>
-      <span class="s">url</span><span class="pi">:</span> <span class="s">/mydoc_introduction.html</span>
-      <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-
-    <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">Supported features</span>
-      <span class="s">url</span><span class="pi">:</span> <span class="s">/mydoc_supported_features.html</span>
-      <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-
-    <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">About the theme author</span>
-      <span class="s">url</span><span class="pi">:</span> <span class="s">/mydoc_about.html</span>
-      <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-
-    <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">Support</span>
-      <span class="s">url</span><span class="pi">:</span> <span class="s">/mydoc_support.html</span>
-      <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-
-  <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">Release Notes</span>
-    <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-    <span class="s">folderitems</span><span class="pi">:</span>
-
-    <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">6.0 Release notes</span>
-      <span class="s">url</span><span class="pi">:</span> <span class="s">/mydoc_release_notes_60.html</span>
-      <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-
-    <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">5.0 Release notes</span>
-      <span class="s">url</span><span class="pi">:</span> <span class="s">/mydoc_release_notes_50.html</span>
-      <span class="s">output</span><span class="pi">:</span> <span class="s">web, pdf</span>
-
-</code></pre>
-</div>
-
-<p>Each <code class="highlighter-rouge">folder</code> or <code class="highlighter-rouge">subfolder</code> must contain a <code class="highlighter-rouge">title</code> and <code class="highlighter-rouge">output</code> property. Each <code class="highlighter-rouge">folderitem</code> or <code class="highlighter-rouge">subfolderitem</code> must contain a <code class="highlighter-rouge">title</code>, <code class="highlighter-rouge">url</code>, and <code class="highlighter-rouge">output</code> property.</p>
-
-<p>The two outputs available are <code class="highlighter-rouge">web</code> and <code class="highlighter-rouge">pdf</code>. (Even if you aren’t publishing PDF, you still need to specify <code class="highlighter-rouge">output: web</code>).</p>
-
-<p>The YAML syntax depends on exact spacing, so make sure you follow the pattern shown in the sample sidebars. See my <a href="mydoc_yaml_tutorial">YAML tutorial</a> for more details about how YAML works.</p>
-
-<p>To accommodate the title page and table of contents in PDF outputs, each product sidebar must list these pages before any other:</p>
-
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">title</span><span class="pi">:</span>
-  <span class="s">output</span><span class="pi">:</span> <span class="s">pdf</span>
-  <span class="s">type</span><span class="pi">:</span> <span class="s">frontmatter</span>
-  <span class="s">folderitems</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span>
-    <span class="s">url</span><span class="pi">:</span> <span class="s">/titlepage</span>
-    <span class="s">output</span><span class="pi">:</span> <span class="s">pdf</span>
-    <span class="s">type</span><span class="pi">:</span> <span class="s">frontmatter</span>
-  <span class="pi">-</span> <span class="s">title</span><span class="pi">:</span>
-    <span class="s">url</span><span class="pi">:</span> <span class="s">/tocpage</span>
-    <span class="s">output</span><span class="pi">:</span> <span class="s">pdf</span>
-    <span class="s">type</span><span class="pi">:</span> <span class="s">frontmatter</span>
-</code></pre>
-</div>
-
-<p>Leave the output as <code class="highlighter-rouge">output: pdf</code> for these frontmatter pages so that they don’t appear in the web output.</p>
-
-<p>For more detail on the sidebar, see [Sidebar navigation][mydoc_sidebar_navigation] and [YAML tutorial][mydoc_yaml_tutorial].</p>
-
-<h2 id="relative-links-and-offline-viewing">Relative links and offline viewing</h2>
-
-<p>This theme uses relative links throughout so that you can view the site offline and not worry about which server or directory you’re hosting it. It’s common with tech docs to push content to an internal server for review prior to pushing the content to an external server for publication. Because of the need for seamless transferrence from one host to another, the site has to use relative links.</p>
-
-<p>To view pages locally on your machine (without the Jekyll preview server), they need to have the <code class="highlighter-rouge">.html</code> extension. The <code class="highlighter-rouge">permalink</code> property in the page’s frontmatter (without surrounding slashes) is what pushes the files into the root directory when the site builds.</p>
-
-<h2 id="page-frontmatter">Page frontmatter</h2>
-
-<p>When you write pages, include these same frontmatter properties with each page:</p>
-
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="nn">---</span>
-<span class="s">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Some</span><span class="nv"> </span><span class="s">title"</span>
-<span class="s">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">sample1</span><span class="pi">,</span> <span class="nv">sample2</span><span class="pi">]</span>
-<span class="s">keywords</span><span class="pi">:</span> <span class="s">keyword1, keyword2, keyword3</span>
-<span class="s">last_updated</span><span class="pi">:</span> <span class="s">Month day, year</span>
-<span class="s">summary</span><span class="pi">:</span> <span class="s2">"</span><span class="s">optional</span><span class="nv"> </span><span class="s">summary</span><span class="nv"> </span><span class="s">here"</span>
-<span class="s">sidebar</span><span class="pi">:</span> <span class="s">sidebarname</span>
-<span class="s">permalink</span><span class="pi">:</span> <span class="s">filename.html</span>
-<span class="nn">---</span>
-</code></pre>
-</div>
-
-<p>(You will customize the values for each of these properties, of course.)</p>
-
-<p>For titles, surrounding the title in quotes is optional, but if you have a colon in the title, you must surround the title with quotation marks. If you have a quotation mark inside the title, escape it first with a backlash <code class="highlighter-rouge">\</code>.</p>
-
-<p>Values for <code class="highlighter-rouge">keywords</code> get populated into the metadata of the page for SEO.</p>
-
-<p>Values for <code class="highlighter-rouge">tags</code> must be defined in your _data/tags.yml list. You also need a corresponding tag file inside the tags folder that follows the same pattern as the other tag files shown in the tags folder. (Jekyll won’t auto-create these tag files.)</p>
-
-<p>If you don’t want the mini-TOC to show on a page (such as for the homepage or landing pages), add <code class="highlighter-rouge">toc: false</code> in the frontmatter.</p>
-
-<p>The <code class="highlighter-rouge">permalink</code> value should be the same as your filename and include the “.html” file extension.</p>
-
-<p>For more detail, see [Pages][mydoc_pages].</p>
-
-<h2 id="where-to-store-your-documentation-topics">Where to store your documentation topics</h2>
-
-<p>You can store your files for each product inside subfolders following the pattern shown in the theme. For example, product1, product2, etc, can be stored in their own subfolders inside the _pages directory. Inside _pages, you can store your topics inside sub-subfolders or sub-sub-folders to your heart’s content. When Jekyll builds your site, it will pull the topics into the root directory and use the permalink for the URL.</p>
-
-<p>Note that product1, product2, and mydoc are all just sample content to demonstrate how to add multiple products into the theme. You can freely delete that content.</p>
-
-<p>For more information, see [Pages][mydoc_pages] and [Posts][mydoc_posts].</p>
-
-<h2 id="configure-the-top-navigation">Configure the top navigation</h2>
-
-<p>The top navigation bar’s menu items are set through the _data/topnav.yml file. Use the top navigation bar to provide links for navigating from one product to another, or to navigate to external resources.</p>
-
-<p>For external URLs, use <code class="highlighter-rouge">external_url</code> in the item property, as shown in the example topnav.yml file. For internal links, use <code class="highlighter-rouge">url</code> the same was you do in the sidebar data files.</p>
-
-<p>Note that the topnav has two sections: <code class="highlighter-rouge">topnav</code> and <code class="highlighter-rouge">topnav_dropdowns</code>. The topnav section contains single links, while the <code class="highlighter-rouge">topnav_dropdowns</code> section contains dropdown menus. The two sections are independent of each other.</p>
-
-<h2 id="generating-pdf">Generating PDF</h2>
-
-<p>If you want to generate PDF, you’ll need a license for <a href="http://www.princexml.com/">Prince XML</a>. You will also need to <a href="http://www.princexml.com/doc/installing/">install Prince</a>.  You can generate PDFs by product (but not for every product on the site combined together into one massive PDF). Prince will work even without a license, but it will imprint a small Prince image on the first page, and you’re supposed to buy the license to use it.</p>
-
-<p>If you’re on Windows, install <a href="https://git-for-windows.github.io/">Git Bash client</a> rather than using the default Windows command prompt.</p>
-
-<p>Open up the css/printstyles.css file and customize the email address (<code class="highlighter-rouge">youremail@domain.com</code>) that is listed there. This email address appears in the bottom left footer of the PDF output. You’ll also need to create a PDF configuration file following the examples shown in the pdfconfigs folder, and also customize some build scripts following the same pattern shown in the root: pdf-product1.sh</p>
-
-<p>See the section on [Generating PDFs][mydoc_generating_pdfs] for more details about setting the theme up for this output.</p>
-
-<h2 id="blogs--news">Blogs / News</h2>
-
-<p>For blog posts, create your markdown files in the _posts folder following the sample formats. Post file names always begin with the date (YYYY-MM-DD-title).</p>
-
-<p>The news/news.html file displays the posts, and the news_archive.html file shows a yearly history of posts. In documentation, you might use the news to highlight product features outside of your documentation, or to provide release notes and other updates.</p>
-
-<p>See [Posts][mydoc_posts] for more information.</p>
-
-<h2 id="markdown">Markdown</h2>
-
-<p>This theme uses <a href="http://kramdown.gettalong.org/">kramdown markdown</a>. kramdown is similar to Github-flavored Markdown, except that when you have text that intercepts list items, the spacing of the intercepting text must align with the spacing of the first character after the space of a numbered list item. Basically, with your list item numbering, use two spaces after the dot in the number, like this:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>1.  First item
-2.  Second item
-3.  Third item
-</code></pre>
-</div>
-
-<p>When you want to insert paragraphs, notes, code snippets, or other matter in between the list items, use four spaces to indent. The four spaces will line up with the first letter of the list item (the <b>F</b>irst or <b>S</b>econd or <b>T</b>hird).</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>1.  First item
-
-    ```
-    alert("hello");
-    ```
-
-2.  Second item
-
-    Some pig!
-
-3.  Third item
-</code></pre>
-</div>
-
-<p>See the topics under “Formatting” in the sidebar for more information.</p>
-
-<h2 id="automated-links">Automated links</h2>
-
-<p>If you want to use an automated system for managing links, see [Automated Links][mydoc_hyperlinks.html#automatedlinks]. This approach automatically creates a list of Markdown references to simplify linking.</p>
-
-<h2 id="other-instructions">Other instructions</h2>
-
-<p>The content here is just a getting started guide only. For other details in working with the theme, see the various sections in the sidebar.</p>
-
+  	<section>
+		<div class="TopicContent">
+            <h1> <a name="kanchor191"></a>Splice&#160;Machine Quick Start</h1>
+            <p>This page helps you to quickly get started with Splice Machine:</p>
+            <ul>
+                <li value="1">Follow the <a href="#First" class="MCXref xref selected">First Steps</a> to get off to a good start.</li>
+                <li value="2">Review the list of <a href="#Splice" class="MCXref xref selected">Splice Machine Tutorials</a> to help you with specific tasks.</li>
+                <li value="3">You'll find links to <a href="#Getting" class="MCXref xref selected">Additional Help</a> resources <a href="#Getting" class="selected">here</a>.</li>
+            </ul>
+            <h2>Version Information</h2>
+            <p>This site contains the documentation for:</p>
+            <p class="indentLevel1"> Version <span class="CalloutFont"><span class="BasicVariablesSpliceReleaseVersion" data-mc-conditions="Default.OnlyDoc">2.5</span></span> of <span class="CalloutFont">Splice Machine</span>, released <span class="BasicVariablesCustDocReleaseDate" data-mc-conditions="Default.OnlyDoc">May 11, 2017</span></p>
+            <p>If you're using an earlier version, you'll find the documentation here:</p>
+            <table summary="Links to Splice Machine documentation for previous product versions.">
+                <col  />
+                <col  />
+                <tbody>
+                    <tr >
+                        <td >Version 2.0</td>
+                        <td ><a href="http://doc.splicemachine.com/2.0" target="_blank" title="Click to open the Splice Machine Version 2.0 documentation" alt="Click to open the Splice Machine Version 2.0 documentation">Release 2.0 Documentation</a> (Sep. 2016)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2><a name="First"></a>First Steps</h2>
+            <div class="opsStepsList">
+                <ol>
+                    <li value="1">
+                        <p>If you're using our database-as-a-service, <a href="DBaaSOnly/CloudManager/Intro.CloudManager.html">follow the steps in our initial setup tutorial</a> to create and provision your Splice&#160;Machine cluster.</p>
+                        <p>If you're using our on-premise database, <a href="OnPremiseOnly/InstallingSpliceMachine/Intro.InstallationGuide.html">follow the installation steps</a> for your platform.</p>
+                    </li>
+                    <li value="2">Once your database is up and running, you can use our <a href="Developers/IngestionAndStreaming/ImportTPCH1.html">Import TPCH Data</a> tutorial to quickly import the TPCH-1 data into your database and start running queries against it.</li>
+                    <li value="3">Review our <a href="SQLReference/Intro.SQLReference.html">SQL&#160;Reference Manual</a>, especially our <a href="SQLReference/BuiltInSysProcs/Intro.BuiltInSysProcs.html">Built-in System Procedures</a> section, which features database functions with which you might not be familiar.</li>
+                    <li value="4">
+                        <p>Check out the <a href="#Splice" class="selected">tutorials listed in the table below</a>, which walk you through working with many of the features of Splice&#160;Machine. Many of these tutorials step you through specific, downloadable code examples and configuration options.</p>
+                        <ul>
+                            <li value="1">If you're new to Splice Machine, we strongly recommend that you quickly become familiar with our <span class="AppCommand">splice&gt;</span>&#160;command line interface by spending a few minutes with <a href="CmdLineReference/UsingTheCLI.html">this tutorial</a>.</li>
+                            <li value="2">Importing data into your Splice Machine database can prove a bit tricky, so we encourage you to review our <a href="Developers/IngestionAndStreaming/ImportingData.html">importing data</a> tutorial before diving into that process.</li>
+                            <li value="3">We also have short tutorials that step you through connecting different Business Intelligence tools to Splice Machine, and writing code in various languages to work with Splice Machine.</li>
+                        </ul>
+                    </li>
+                    <li value="5">Once you've become comfortable with working with Splice&#160;Machine, explore some of our more <a href="#Splice" class="selected">advanced tutorials</a> for tasks such as streaming data, working with the Internet of Things, Machine Learning, and analytical workloads.</li>
+                </ol>
+            </div>
+            <div class="notePlain">
+                <p>We also encourage you to spend a few minutes reviewing our <a href="Notes/DocsSummary.html">documentation summary page</a>  to optimize your use of our documentation.</p>
+            </div>
+            <h2><a name="Splice"></a>Splice Machine Tutorials</h2>
+            <p>This table links to each available tutorial.</p>
+            <div>
+                <table>
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Product Category</th>
+                            <th>Tutorial Category</th>
+                            <th>Tutorials</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="5" class="ConsoleLink">All Products</td>
+                            <td class="ItalicFont">Using the splice&gt;&#160;CLI</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1"><a href="CmdLineReference/UsingTheCLI.html">Getting Started With the splice&gt; Command Line Interpreter</a>
+                                    </li>
+                                    <li value="2"><a href="CmdLineReference/ScriptingTheCLI.html">Scripting the splice&gt;&#160;Command Line Interpreter</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ItalicFont">Data Ingestion and Streaming</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1"><a href="Developers/IngestionAndStreaming/UploadToS3.html">Uploading Your Data to an S3 Bucket</a>
+                                    </li>
+                                    <li value="2"><a href="Developers/IngestionAndStreaming/ConfigureS3.html">Setting up Splice Machine Access to Your S3 Bucket</a>
+                                    </li>
+                                    <li value="3"><a href="Developers/IngestionAndStreaming/ImportTPCH1.html">Importing TPCH Data</a>
+                                    </li>
+                                    <li value="4"><a href="Developers/IngestionAndStreaming/ImportingData.html">Importing Your Data</a>
+                                    </li>
+                                    <li value="5"><a href="Developers/IngestionAndStreaming/ImportingHFiles.html">Importing Your Data as HFiles</a>
+                                    </li>
+                                    <li value="6"><a href="Developers/IngestionAndStreaming/KafkaCreateProducer.html">Streaming Data with Kafka - Creating a Producer</a>
+                                    </li>
+                                    <li value="7"><a href="Developers/IngestionAndStreaming/KafkaConfigureFeed.html">Streaming Data with Kafka - to Splice</a>
+                                    </li>
+                                    <li value="8"><a href="Developers/IngestionAndStreaming/Storm.html">Using Apache Storm with Splice Machine</a>
+                                    </li>
+                                    <li value="9"><a href="Developers/IngestionAndStreaming/MQTTSpark.html">MQTT&#160;Spark Streaming</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ItalicFont">Analytical Workloads &amp; Machine Learning</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1"><a href="Developers/AnalyticsAndML/Zeppelin.html">Using Zeppelin with Splice Machine</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ItalicFont">Connecting  Programmatically</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1"><a href="Developers/Connecting/JDBCJava.html">Connecting with Java and JDBC</a>
+                                    </li>
+                                    <li value="2"><a href="Developers/Connecting/JDBCJRuby.html">Connecting with JRuby and JDBC</a>
+                                    </li>
+                                    <li value="3"><a href="Developers/Connecting/JDBCJython.html">Connecting with Jython and JDBC</a>
+                                    </li>
+                                    <li value="4"><a href="Developers/Connecting/JDBCScala.html">Connecting with Scala and JDBC</a>
+                                    </li>
+                                    <li value="5"><a href="Developers/Connecting/JDBCAngular.html">Connecting with NodeJS&#160;/ AngularJS and JDBC</a>
+                                    </li>
+                                    <li value="6"><a href="Developers/Connecting/ODBCInstall.html">Installing our ODBC&#160;Driver</a>
+                                    </li>
+                                    <li value="7"><a href="Developers/Connecting/ODBCPython.html">Connecting with Python and ODBC</a>
+                                    </li>
+                                    <li value="8"><a href="Developers/Connecting/ODBCC.html">Connecting with C&#160;and ODBC</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ItalicFont">Connecting BI&#160;Tools</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1"><a href="Developers/Connecting/DBeaver.html">Connecting DBeaver to Splice Machine</a>
+                                    </li>
+                                    <li value="2"><a href="Developers/Connecting/DBVisualizer.html">Connecting DBVisualizer to Splice Machine</a>
+                                    </li>
+                                    <li value="3"><a href="Developers/Connecting/Cognos.html">Connecting Cognos to Splice Machine</a>
+                                    </li>
+                                    <li value="4"><a href="Developers/Connecting/Squirrel.html">Connecting SQuirreL&#160;to Splice Machine</a>
+                                    </li>
+                                    <li value="5"><a href="Developers/Connecting/Tableau.html">Connecting Tableau to Splice Machine</a>
+                                    </li>
+                                    <li value="6"><a href="Developers/Connecting/ODBCInstall.html">Installing our ODBC&#160;Driver</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ConsoleLink"> Database-as-Service</td>
+                            <td class="ItalicFont">Using the Splice Cloud Dashboard</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1"><a href="DBaaSOnly/CloudManager/InitialStartup.html">Initial Cluster Setup</a>
+                                    </li>
+                                    <li value="2"><a href="DBaaSOnly/CloudManager/TrialStartup.html">Free Trial Initial Cluster Setup</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ConsoleLink">On-premise Database</td>
+                            <td class="ItalicFont">Installation</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1"><a href="OnPremiseOnly/InstallingSpliceMachine/StandaloneInstall.html">Installing the Standalone Version of Splice Machine</a>
+                                    </li>
+                                    <li value="2"><a href="OnPremiseOnly/InstallingSpliceMachine/ImportSampleData.html">Loading and Querying our Standalone Version Sample Data </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="noteIcon">The title of each tutorial is preceded by an asterisk (*)&#160;in our navigation menu (table of contents), for easy identification. <br /></p>
+            </div>
+            <h2><a name="Getting"></a>Additional Help</h2>
+            <p>The following table contains links to various resources to help you with Splice Machine</p>
+            <table summary="Links to help information for learning about Splice Machine." style="mc-table-style: url('Resources/TableStyles/PatternedRows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+                <col  />
+                <col  />
+                <thead>
+                    <tr >
+                        <th >Resource</th>
+                        <th >Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td ><a href="https://community.splicemachine.com/" target="_blank" title="Splice Machine Community Site" alt="Splice Machine Community Site">Technical Support</a>
+                        </td>
+                        <td >Our <a href="https://community.splicemachine.com/">community site</a> has resources to help you find answers to your questions.</td>
+                    </tr>
+                    <tr >
+                        <td ><a href="http://doc.splicemachine.com/" target="_blank">Technical Documentation</a>
+                        </td>
+                        <td >
+                            <p class="noSpaceAbove">This documentation site contains our reference manuals and guides to help you take advantage of all of Splice Machine's many features.</p>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td ><a href="Notes/Tutorials.html">Tutorials</a>
+                        </td>
+                        <td >We've developed a number of tutorials to help you to quickly become productive with your Splice Machine database.</td>
+                    </tr>
+                    <tr  data-mc-conditions="Default.NotDBaaS">
+                        <td ><a href="Notes/SpliceEditions.html">Splice Machine Editions<br /></a>
+                        </td>
+                        <td >
+                            <p>If you're using our on-premise database product, compare the features available in the Splice Machine Community and Enterprise Editions.</p>
+                            <p>To obtain a license and activate the additional features in the Splice&#160;Machine <span class="ItalicFont">Enterprise Edition</span>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td ><a href="https://github.com/splicemachine/spliceengine">Source Code</a>
+                        </td>
+                        <td >For access to the source code for the Community Edition of Splice Machine, visit <a href="https://github.com/splicemachine/spliceengine" target="_blank" title="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)" alt="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)">our open source GitHub repository.</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="copyright"><span class="BasicVariablesCopyright">© 2017, Splice Machine, Inc.</span>
+            </p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
 
 
     <div class="tags">
-        
-        <b>Tags: </b>
-        
-        
-        
-        <a href="tag_getting_started.html" class="btn btn-default navbar-btn cursorNorm" role="button">getting_started</a>
-        
-        
         
     </div>
 
@@ -639,7 +524,7 @@ permalink: mydoc_alerts
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 16, 2017 <br />
+ Site last generated: May 18, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -653,5 +538,12 @@ permalink: mydoc_alerts
     </div>
 
 </body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
 
 </html>

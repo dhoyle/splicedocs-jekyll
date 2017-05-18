@@ -1,316 +1,1267 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-
-body { line-height: 1; }
-
-ol, ul { list-style: none; }
-
-blockquote, q { quotes: none; }
-
-blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
-
-table { border-collapse: collapse; border-spacing: 0; }
-
-*, *::before, *::after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-
-header { background: #4a4f54; padding: 0px 15px; text-align: center; margin: 50px 0 0; height: 95px; display: flex; justify-content: center; align-items: center; }
-
-main { padding: 0 15px; max-width: 96%; margin: 0 auto; }
-
-.container { max-width: 96%; margin: 0 auto; }
-
-footer { margin-top: 50px; background-color: #f6f6f8; padding: 1px 4px 2px 4px; font-family: "Open Sans", sans-serif; font-style: normal; font-size: 0.7em; color: #3390db; height: 28px; overflow: hidden; text-align: center; vertical-align: center; }
-
-body { margin: 0; color: #4a4f54; font-family: "Open Sans", sans-serif; font-size: 1.0em; line-height: 1.4; -webkit-font-smoothing: antialiased; }
-
-a, a:link, a:visited { color: #3390db; text-decoration: underline; }
-
-a:hover, a:active { color: #f7a800; text-decoration: underline; }
-
-div.centered { margin-left: auto; margin-right: auto; }
-
-div.hiddenText { visibility: hidden; }
-
-div.indented { margin-left: 40px; }
-
-div.invisible { display: none; }
-
-div.noteChange { background-color: #F6F6F8; background-repeat: no-repeat; background-image: none; color: #4a4f54; margin: 20px 20px 20px 32px; padding: 5px 10px 5px 10px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 12px; max-width: 75%; min-height: 0; }
-div.noteChange:before { content: "CHANGE ALERT: "; color: #F39939; font-weight: 600; }
-
-div.noteDBaaSOnly { background-color: #F6F6F8; background-repeat: no-repeat; background-image: none; color: #4a4f54; margin: 20px 22% 20px 22%; padding: 5px 10px 5px 10px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 12px; max-width: 75%; min-height: 0; }
-div.noteDBaaSOnly:before { content: "DATABASE-AS-SERVICE VERSION ONLY!   "; color: #F39939; font-weight: 600; }
-
-div.noteEnterprise { background-color: #F6F6F8; background-repeat: no-repeat; background-image: url("/images/SpliceNoteIcon.png"); color: #4a4f54; margin: 0 35px 15px 35px; padding: 5px 10px 5px 40px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 0; max-width: 75%; min-height: 48px; }
-div.noteEnterprise:before { content: ""; color: #F39939; font-weight: 600; }
-
-div.noteIcon { background-color: #F6F6F8; background-repeat: no-repeat; background-image: url("/images/SpliceNoteIcon.png"); color: #4a4f54; margin: 20px 60px 20px 60px; padding: 5px 10px 5px 48px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 12px; max-width: 75%; min-height: 48px; }
-div.noteIcon:before { content: ""; color: #F39939; font-weight: 600; }
-
-div.noteIndent { background-color: #F6F6F8; background-repeat: no-repeat; background-image: none; color: #4a4f54; margin: 20px 20px 20px 60px; padding: 5px 10px 5px 10px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 12px; max-width: 75%; min-height: 0; }
-div.noteIndent:before { content: "NOTE:  "; color: #F39939; font-weight: 600; }
-
-div.noteNote { background-color: #F6F6F8; background-repeat: no-repeat; background-image: none; color: #4a4f54; margin: 20px 20px 20px 32px; padding: 5px 10px 5px 10px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 12px; max-width: 75%; min-height: 0; }
-div.noteNote:before { content: "NOTE: "; color: #F39939; font-weight: 600; }
-
-div.noteOnPremiseOnly { background-color: #F6F6F8; background-repeat: no-repeat; background-image: none; color: #4a4f54; margin: 20px 22% 20px 22%; padding: 5px 10px 5px 10px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 12px; max-width: 75%; min-height: 0; }
-div.noteOnPremiseOnly:before { content: "ON-PREMISE VERSION ONLY!   "; color: #F39939; font-weight: 600; }
-
-div.notePlain { background-color: #F6F6F8; background-repeat: no-repeat; background-image: none; color: #4a4f54; margin: 20px 20px 20px 32px; padding: 5px 10px 5px 10px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 12px; max-width: 75%; min-height: 0; }
-div.notePlain:before { content: ""; color: #F39939; font-weight: 600; }
-
-div.openSourceNote { background-color: #F6F6F8; background-repeat: no-repeat; background-image: url("/images/SpliceNoteIcon.png"); color: #4a4f54; margin: 25px auto 20px auto; padding: 5px 10px 5px 40px; font-weight: normal; z-index: -1; border: 2px solid #d6dbe0; border-radius: 12px; max-width: 75%; min-height: 48px; }
-div.openSourceNote:before { content: ""; color: #F39939; font-weight: 600; }
-
-div.opsStepsList { width: auto; max-width: 95%; margin: 20px 20px 20px 20px; padding: 2px 4px 16px 4px; text-align: left; border: 2px solid #d6dbe0; border-radius: 14px; word-wrap: break-word; overflow: auto; }
-div.opsStepsList blockquote { margin-top: 0; margin-left: 12px; }
-div.opsStepsList img.nestedTightSpacing { margin: 10px 20px 10px 40px; }
-div.opsStepsList li { margin-top: 12px; }
-div.opsStepsList p.indentLevel1 { margin-top: 0; margin-left: 0; margin-bottom: 6px; font-weight: normal; word-wrap: break-word; overflow: auto; }
-
-div.paramList { margin: 18px 0 18px 32px; font-weight: normal; }
-
-div.paramListNested { margin: 18px 0 18px 64px; font-weight: normal; }
-
-div.fcnWrapper, div.preWrapper, div.preWrapperWide, div.fcnWrapperWide { width: auto; word-wrap: break-word; overflow: auto; font-family: "Courier"; font-weight: 500; font-style: normal; margin: 0 0 1em 0; padding: 0; }
-
-div.fcnWrapper { max-width: 55%; }
-
-div.preWrapper { max-width: 95%; /* Used to be 60% */ }
-
-div.preWrapperWide, div.fcnWrapperWide { max-width: 95%; }
-
-li { orphans: 0; widows: 0; margin: 1.1em 0 1em 0; padding: 0, 0, 0, 0; font-family: "Open Sans", sans-serif; font-weight: normal; }
-li p { margin-top: 0; }
-li p.topLevel { margin: 18px 0 2px 0; font-weight: normal; }
-
-li.CodeFont { orphans: 0; widows: 0; margin: 1.1em 0 1em 0; padding: 0, 0, 0, 0; font-family: #codefont-face; font-weight: normal; }
-li.CodeFont p { margin-top: 0; }
-li.CodeFont p.topLevel { margin: 18px 0 2px 0; font-weight: normal; }
-
-li.codeList { orphans: 0; widows: 0; margin: 1.1em 0 1em 0; padding: 3px 0 3px 0; font-family: "Courier"; font-weight: normal; }
-li.codeList p { margin-top: 0; }
-li.codeList p.topLevel { margin: 18px 0 2px 0; font-weight: normal; }
-
-li.nested { orphans: 0; widows: 0; margin: 0 0 1em 0; padding: 0, 0, 0, 0; font-family: "Open Sans", sans-serif; font-weight: normal; }
-li.nested p { margin-top: 0; }
-li.nested p.topLevel { margin: 18px 0 2px 0; font-weight: normal; }
-
-li.topSpace { orphans: 0; widows: 0; margin: 1.1em 0 1em 0; padding: 1em 0 0 0; font-family: "Open Sans", sans-serif; font-weight: normal; }
-li.topSpace p { margin-top: 0; }
-li.topSpace p.topLevel { margin: 18px 0 2px 0; font-weight: normal; }
-
-ol { display: block; list-style-image: none; list-style-type: decimal; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 1em 0 1em 0; padding: 0 0 0 40px; }
-
-ol.boldFont { display: block; list-style-image: none; list-style-type: decimal; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: 600; margin: 1em 0 1em 0; padding: 0 0 0 40px; }
-ol.boldFont li { orphans: 0; widows: 0; margin: 1.1em 0 1em 0; padding: 0, 0, 0, 0; font-family: "Open Sans", sans-serif; font-weight: 600; }
-ol.boldFont li p { margin-top: 0; }
-ol.boldFont li p.topLevel { margin: 18px 0 2px 0; font-weight: 600; }
-
-ol.LowerAlpha, ol.LowerAlphaPlainFont { display: block; list-style-image: none; list-style-type: lower-alpha; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 1em 0 1em 0; padding: 0 0 0 40px; }
-
-ol.LowerRoman { display: block; list-style-image: none; list-style-type: lower-roman; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 1em 0 1em 0; padding: 0 0 0 40px; }
-
-ol.nested { display: block; list-style-image: none; list-style-type: lower-alpha; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 1em 0 1em 80px; padding: 0 0 0 40px; }
-
-ul, ul.bullet, ul.plainFont { display: block; list-style-image: url("/images/Bullet1.png"); list-style-type: disc; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 1em 0 1em 0px; padding: 0 0 0 40px; }
-
-ul.boldFont { display: block; list-style-image: none; list-style-type: decimal; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: 600; margin: 1em 0 1em 0; padding: 0 0 0 40px; }
-
-ul.bulletCell { display: block; list-style-image: none; list-style-type: disc; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 0 0 1em 5px; padding: 0 0 0 40px; padding-left: 10px; }
-
-ul.bulletCell li { orphans: 0; widows: 0; margin: 1em 0 1em 2px; padding: 0, 0, 0, 0; font-family: "Open Sans", sans-serif; font-weight: normal; }
-ul.bulletCell li p { margin-top: 0; }
-ul.bulletCell li p.topLevel { margin: 18px 0 2px 0; font-weight: normal; }
-
-ul.bulletCellNoTopSpace { display: block; list-style-image: none; list-style-type: disc; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 0 0 1em 5px; padding: 0 0 0 40px; padding-left: 10px; }
-
-ul.bulletCellNoTopSpace li { orphans: 0; widows: 0; margin: 0 0 1em 2px; padding: 0, 0, 0, 0; font-family: "Open Sans", sans-serif; font-weight: normal; }
-ul.bulletCellNoTopSpace li p { margin-top: 0; }
-ul.bulletCellNoTopSpace li p.topLevel { margin: 18px 0 2px 0; font-weight: normal; }
-
-ul.codeList { display: block; list-style-image: none; list-style-type: disc; font-style: normal; font-family: "Courier"; font-weight: normal; margin: 1em 0 1em 0; padding: 0 0 0 40px; }
-
-ul.codeListNested { display: block; list-style-image: none; list-style-type: disc; font-style: normal; font-family: "Courier"; font-weight: normal; margin: 2px 0 1em 0; padding: 3px 0 3px 0; }
-
-ul.nested, ul.bulletNested { display: block; list-style-image: url("/images/Bullet1.png"); list-style-type: disc; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 1em 0 1em 40px; padding: 0 0 0 40px; }
-
-ul.SecondLevel { display: block; list-style-image: url("/images/Bullet1.png"); list-style-type: disc; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 2px 0 1em 0; padding: 0 0 0 40px; }
-
-ul.ThirdLevel { display: block; list-style-image: url("/images/Bullet1.png"); list-style-type: disc; font-style: normal; font-family: "Open Sans", sans-serif; font-weight: normal; margin: 2px 0 1em 0; padding: 0 0 0 40px; }
-
-h1, h2, h3, h4, h5, p.heading1, p.heading2, p.heading3, p.heading4, p.heading5 { line-height: 110%; font-weight: 600; font-style: normal; margin: 2px, 0, 4px, 0; padding: 0; }
-
-h1, p.heading1 { font-size: 1.8em; margin-bottom: 8px; padding-bottom: 10px; color: #f7a800; }
-
-h2, p.heading2 { font-size: 1.6em; margin-top: 48px; color: #3390db; }
-
-h3, p.heading3 { font-size: 1.3em; line-height: 110%; margin-top: 30px; color: #3390db; }
-
-h4, p.heading4 { font-size: 1.1em; font-style: italic; margin-top: 28px; color: #174e89; }
-
-h5, p.heading5 { font-size: 1.0em; line-height: 110%; margin-top: 24px; color: #606060; }
-
-img { border: none; width: auto; height: auto; margin: 20px 20px 20px 0; }
-
-img.indentedTightSpacing { width: auto; max-width: 98%; height: auto; margin: 0px 20px 0px 40px; }
-
-img.nestedTightSpacing { width: auto; max-width: 85%; height: auto; margin: 0px 20px 0px 20px; }
-
-img.tableCell450 { width: auto; max-width: 450px; height: auto; margin: 0px 20px 0px 40px; }
-
-body, p, p.body { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 16px 0; text-align: left; }
-
-p.centered { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 16px 0; text-align: center; }
-
-p.checkbox { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 16px 0; text-align: left; }
-
-p.copyright { font-size: 9pt; font-weight: normal; font-style: italic; color: #f6a81c; margin: 0 0 0 0; text-align: center; }
-
-p.favicon { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 16px 0; text-align: left; cursor: url("img/favicon.png"); }
-
-p.indentLevel1 { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 16px 32px; text-align: left; }
-
-p.indentLevel2 { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 16px 64px; text-align: left; }
-
-p.indentLevel3 { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 16px 96px; text-align: left; }
-
-p.invisible, p.invisible a:link, p.invisible a:visited, p.invisible a:focus, p.invisible a:hover, p.invisible a:active { font-size: 0.2em; font-weight: normal; font-style: normal; color: white; margin: 4px 0 16px 0; text-align: left; text-decoration: none; }
-
-p.noSpaceAbove { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 16px 0; text-align: left; }
-
-p.noSpaceBelow { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 4px 0 0 0; text-align: left; }
-
-p.noSpaceAboveOrBelow { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 0 0 0 0; text-align: left; }
-
-p.paramDefnFirst { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 2px 10px 4px 32px; text-align: left; }
-
-p.paramDefn { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 12px 10px 4px 32px; text-align: left; }
-
-p.paramName { font-size: 1em; font-weight: normal; font-style: italic; color: #4a4f54; margin: 12px 0 0 0; text-align: left; }
-
-p.spaceAbove { font-size: 1em; font-weight: normal; font-style: normal; color: #4a4f54; margin: 16px 0 16px 0; text-align: left; }
-
-pre { font-family: "Courier"; white-space: pre-wrap; background-color: transparent; font-weight: normal; padding: 0; margin-left: 0; }
-
-pre.AppCommand, pre.AppCommandCell { font-family: "Courier"; white-space: pre-wrap; background-color: #fffdf5; font-weight: 500; padding: 6px 6px 6px 6px; margin-left: 32px; }
-
-pre.Example, pre.ExampleCell { font-family: "Courier"; white-space: pre-wrap; background-color: #fcf8f0; font-weight: 500; padding: 6px 6px 6px 6px; margin-left: 32px; }
-
-pre.FcnSyntax, pre.FcnSyntaxCell { font-family: "Courier"; white-space: pre-wrap; background-color: #edf4fa; font-weight: 500; padding: 6px 6px 6px 6px; margin-left: 32px; }
-
-pre.Plain, pre.PlainCell { font-family: "Courier"; white-space: pre-wrap; background-color: transparent; font-weight: normal; padding: 6px 6px 6px 6px; margin-left: 32px; }
-
-pre.ShellCommand, pre.ShellCommandCell { font-family: "Courier"; white-space: pre-wrap; background-color: #f5fff5; font-weight: 500; padding: 6px 6px 6px 6px; margin-left: 32px; }
-
-pre.AppCommandCell, pre.ExampleCell, pre.FcnSyntaxCell, pre.PlainCell, pre.ShellCommandCell { margin-left: 2px; }
-
-span.AppFontCust { background-color: #fffdf5; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: inherit; color: inherit; text-transform: none; }
-span.AppFontCust a:link { color: #3390db; }
-
-span.AppFontCustCode { background-color: #fffdf5; font-family: "Courier"; font-style: inherit; font-weight: inherit; color: inherit; text-transform: none; }
-span.AppFontCustCode a:link { color: #3390db; }
-
-span.AppCommand { background-color: #fffdf5; font-family: "Courier"; font-style: inherit; font-weight: 500; color: inherit; text-transform: none; }
-span.AppCommand a:link { color: #3390db; }
-
-span.bodyFont { background-color: transparent; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: inherit; color: inherit; text-transform: none; }
-span.bodyFont a:link { color: #3390db; }
-
-span.BoldFont { background-color: transparent; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: 600; color: inherit; text-transform: none; }
-span.BoldFont a:link { color: #3390db; }
-
-span.CalloutFont { background-color: transparent; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: 600; color: #f39939; text-transform: none; }
-span.CalloutFont a:link { color: #3390db; }
-
-span.CodeFont { background-color: transparent; font-family: "Courier"; font-style: inherit; font-weight: inherit; color: inherit; text-transform: none; }
-span.CodeFont a:link { color: #3390db; }
-
-span.CodeBoldFont { background-color: transparent; font-family: "Courier"; font-style: inherit; font-weight: 500; color: inherit; text-transform: none; }
-span.CodeBoldFont a:link { color: #3390db; }
-
-span.CodeItalicFont { background-color: transparent; font-family: "Courier"; font-style: italic; font-weight: 500; color: inherit; text-transform: none; }
-span.CodeItalicFont a:link { color: #3390db; }
-
-span.ConsoleLink { background-color: transparent; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: 600; color: #3ba3d8; text-transform: none; }
-span.ConsoleLink a:link { color: #3390db; }
-
-span.noteEnterpriseNote { background-color: transparent; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: 600; color: #666666; text-transform: none; }
-span.noteEnterpriseNote a:link { color: #3390db; }
-
-span.Example { background-color: #fcf8f0; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: inherit; color: inherit; text-transform: none; }
-span.Example a:link { color: #3390db; }
-
-span.Footnote { background-color: transparent; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: inherit; color: #000000; text-transform: none; font-size: 0.8em; vertical-align: super; }
-span.Footnote a:link { color: #3390db; }
-
-span.Highlighted { background-color: #ffff00; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: inherit; color: inherit; text-transform: none; }
-span.Highlighted a:link { color: #3390db; }
-
-span.HighlightedCode { background-color: #ffff00; font-family: "Courier"; font-style: inherit; font-weight: 500; color: inherit; text-transform: none; }
-span.HighlightedCode a:link { color: #3390db; }
-
-span.important { background-color: #ff0000; font-family: "Open Sans", sans-serif; font-style: inherit; font-weight: 600; color: inherit; text-transform: none; }
-span.important a:link { color: #3390db; }
-
-span.ItalicFont { background-color: transparent; font-family: "Open Sans", sans-serif; font-style: italic; font-weight: inherit; color: inherit; text-transform: none; }
-span.ItalicFont a:link { color: #3390db; }
-
-span.lowerCase { text-transform: lowercase; }
-
-span.ShellCommand { background-color: #f5fff5; font-family: "Courier"; font-style: inherit; font-weight: 500; color: inherit; text-transform: none; }
-span.ShellCommand a:link { color: #3390db; }
-
-span.upperCase { text-transform: uppercase; }
-
-span.varName { background-color: #f5f5dc; font-family: "Courier"; font-style: inherit; font-weight: 500; color: inherit; text-transform: none; }
-span.varName a:link { color: #3390db; }
-
-table { table-layout: auto; border: 1px solid #8d9090; border-collapse: collapse; border-radius: 12px; margin: 20px 40px 20px 40px; word-wrap: break-word; overflow: auto; }
-table caption { text-align: center; padding-left: 10px; padding-bottom: 10px; font-weight: 600; font-size: 1.05em; }
-table td { border: 1px solid #8d9090; padding: 8px; text-align: left; vertical-align: top; word-wrap: break-word; overflow: auto; }
-table td p:first-child { margin-top: 0; }
-table th { border: 1px solid #8d9090; padding: 8px; text-align: left; vertical-align: top; word-wrap: break-word; overflow: auto; font-family: "Open Sans", sans-serif; font-style: normal; font-weight: 600; background-color: #dcdcdc; }
-table th .center { text-align: center; }
-table th .smallText { font-size: 0.9em; line-height: 1em; }
-table div.preWrapper { max-width: 65%; }
-table div.preWrapperWide { max-width: 95%; }
-
-table td.AppFont { background-color: #fffdf5; font-family: "Courier"; font-weight: 500; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.AppFont { background-color: #fffdf5; font-family: "Courier"; font-weight: normal; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.BoldFont { background-color: transparent; font-family: "Open Sans", sans-serif; font-weight: bold; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.BoldBlueBG { background-color: #d9e4f1; font-family: "Open Sans", sans-serif; font-weight: 600; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.BoldGreenBG { background-color: #a4ccb3; font-family: "Open Sans", sans-serif; font-weight: 600; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.BoldDarkGreenBG { background-color: #629e78; font-family: "Open Sans", sans-serif; font-weight: 600; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.BoldRedBG { background-color: #d39c9b; font-family: "Open Sans", sans-serif; font-weight: 600; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.CodeFont { background-color: transparent; font-family: "Courier"; font-weight: normal; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.CodeFontUC { background-color: transparent; font-family: "Courier"; font-weight: normal; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: uppercase; }
-
-table td.CodeFontSmall { background-color: transparent; font-family: "Courier"; font-weight: normal; font-style: normal; color: #4a4f54; font-size: 0.9em; text-transform: none; }
-
-table td.ConsoleLink { background-color: transparent; font-family: "Open Sans", sans-serif; font-weight: 600; font-style: normal; color: #3ba3d8; font-size: 1em; text-transform: none; }
-
-table td.ItalicFont { background-color: transparent; font-family: "Open Sans", sans-serif; font-weight: normal; font-style: italic; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.PlainFont { background-color: transparent; font-family: "Open Sans", sans-serif; font-weight: normal; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; }
-
-table td.Separator { background-color: #eee; font-family: "Open Sans", sans-serif; font-weight: normal; font-style: normal; color: #4a4f54; font-size: 1em; text-transform: none; height: 4px; line-height: 4px; }
-
-table td.smallText { background-color: transparent; font-family: "Open Sans", sans-serif; font-weight: normal; font-style: normal; color: #4a4f54; font-size: 0.9em; text-transform: none; line-height: 1em; }
-
-table.featureList { table-layout: auto; border: 1px solid #8d9090; border-collapse: collapse; border-radius: 0; margin: 20px 50px 20px 50px; word-wrap: break-word; overflow: auto; }
-table.featureList td, table.featureList td.leftAlign { border: 1px solid #8d9090; padding: 5px; word-wrap: break-word; overflow: auto; color: #4e4e62; font-weight: normal; text-align: center; vertical-align: middle; }
-table.featureList td.leftAlign { text-align: left; }
-table.featureList td.featureName { text-align: left; padding: 4px 12px 4px 12px; font-family: Tahoma; font-weight: 600; font-size: 13px; color: #4e4e62; background-color: #eeeeee; }
-table.featureList td.checkmark { text-align: center; font-family: "Letter Gothic Std"; font-size: 13px; color: #333333; }
-table.featureList th, table.featureList td.subHeader { background-color: #2c84d2; border: 1px solid #8d9090; padding: 5px; vertical-align: middle; text-align: center; word-wrap: break-word; overflow: auto; color: #FFFFFF; font-weight: 600; }
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+header {
+  background: #4a4f54;
+  padding: 0px 15px;
+  text-align: center;
+  margin: 50px 0 0;
+  height: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+main {
+  padding: 0 15px;
+  max-width: 96%;
+  margin: 0 auto; }
+
+.container {
+  max-width: 96%;
+  margin: 0 auto; }
+
+footer {
+  margin-top: 50px;
+  background-color: #f6f6f8;
+  padding: 1px 4px 2px 4px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-size: 0.7em;
+  color: #3390db;
+  height: 28px;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: center; }
+
+body {
+  margin: 0;
+  color: #4a4f54;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.0em;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased; }
+
+a,
+a:link,
+a:visited {
+  color: #3390db;
+  text-decoration: underline; }
+
+a:hover,
+a:active {
+  color: #f7a800;
+  text-decoration: underline; }
+
+div.centered {
+  margin-left: auto;
+  margin-right: auto; }
+
+div.hiddenText {
+  visibility: hidden; }
+
+div.indented {
+  margin-left: 40px; }
+
+div.invisible {
+  display: none; }
+
+div.noteChange {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: none;
+  color: #4a4f54;
+  margin: 20px 20px 20px 32px;
+  padding: 5px 10px 5px 10px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 12px;
+  max-width: 75%;
+  min-height: 0; }
+  div.noteChange:before {
+    content: "CHANGE ALERT: ";
+    color: #F39939;
+    font-weight: 600; }
+
+div.noteDBaaSOnly {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: none;
+  color: #4a4f54;
+  margin: 20px 22% 20px 22%;
+  padding: 5px 10px 5px 10px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 12px;
+  max-width: 75%;
+  min-height: 0; }
+  div.noteDBaaSOnly:before {
+    content: "DATABASE-AS-SERVICE VERSION ONLY!   ";
+    color: #F39939;
+    font-weight: 600; }
+
+div.noteEnterprise {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: url("/images/SpliceNoteIcon.png");
+  color: #4a4f54;
+  margin: 0 35px 15px 35px;
+  padding: 5px 10px 5px 40px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 0;
+  max-width: 75%;
+  min-height: 48px; }
+  div.noteEnterprise:before {
+    content: "";
+    color: #F39939;
+    font-weight: 600; }
+
+div.noteIcon {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: url("/images/SpliceNoteIcon.png");
+  color: #4a4f54;
+  margin: 20px 60px 20px 60px;
+  padding: 5px 10px 5px 48px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 12px;
+  max-width: 75%;
+  min-height: 48px; }
+  div.noteIcon:before {
+    content: "";
+    color: #F39939;
+    font-weight: 600; }
+
+div.noteIndent {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: none;
+  color: #4a4f54;
+  margin: 20px 20px 20px 60px;
+  padding: 5px 10px 5px 10px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 12px;
+  max-width: 75%;
+  min-height: 0; }
+  div.noteIndent:before {
+    content: "NOTE:  ";
+    color: #F39939;
+    font-weight: 600; }
+
+div.noteNote {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: none;
+  color: #4a4f54;
+  margin: 20px 20px 20px 32px;
+  padding: 5px 10px 5px 10px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 12px;
+  max-width: 75%;
+  min-height: 0; }
+  div.noteNote:before {
+    content: "NOTE: ";
+    color: #F39939;
+    font-weight: 600; }
+
+div.noteOnPremiseOnly {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: none;
+  color: #4a4f54;
+  margin: 20px 22% 20px 22%;
+  padding: 5px 10px 5px 10px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 12px;
+  max-width: 75%;
+  min-height: 0; }
+  div.noteOnPremiseOnly:before {
+    content: "ON-PREMISE VERSION ONLY!   ";
+    color: #F39939;
+    font-weight: 600; }
+
+div.notePlain {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: none;
+  color: #4a4f54;
+  margin: 20px 20px 20px 32px;
+  padding: 5px 10px 5px 10px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 12px;
+  max-width: 75%;
+  min-height: 0; }
+  div.notePlain:before {
+    content: "";
+    color: #F39939;
+    font-weight: 600; }
+
+div.openSourceNote {
+  background-color: #F6F6F8;
+  background-repeat: no-repeat;
+  background-image: url("/images/SpliceNoteIcon.png");
+  color: #4a4f54;
+  margin: 25px auto 20px auto;
+  padding: 5px 10px 5px 40px;
+  font-weight: normal;
+  z-index: -1;
+  border: 2px solid #d6dbe0;
+  border-radius: 12px;
+  max-width: 75%;
+  min-height: 48px; }
+  div.openSourceNote:before {
+    content: "";
+    color: #F39939;
+    font-weight: 600; }
+
+div.opsStepsList {
+  width: auto;
+  max-width: 95%;
+  margin: 20px 20px 20px 20px;
+  padding: 2px 4px 16px 4px;
+  text-align: left;
+  border: 2px solid #d6dbe0;
+  border-radius: 14px;
+  word-wrap: break-word;
+  overflow: auto; }
+  div.opsStepsList blockquote {
+    margin-top: 0;
+    margin-left: 12px; }
+  div.opsStepsList img.nestedTightSpacing {
+    margin: 10px 20px 10px 40px; }
+  div.opsStepsList li {
+    margin-top: 12px; }
+  div.opsStepsList p.indentLevel1 {
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 6px;
+    font-weight: normal;
+    word-wrap: break-word;
+    overflow: auto; }
+
+div.paramList {
+  margin: 18px 0 18px 32px;
+  font-weight: normal; }
+
+div.paramListNested {
+  margin: 18px 0 18px 64px;
+  font-weight: normal; }
+
+div.fcnWrapper, div.preWrapper, div.preWrapperWide,
+div.fcnWrapperWide {
+  width: auto;
+  word-wrap: break-word;
+  overflow: auto;
+  font-family: "Courier";
+  font-weight: 500;
+  font-style: normal;
+  margin: 0 0 1em 0;
+  padding: 0; }
+
+div.fcnWrapper {
+  max-width: 55%; }
+
+div.preWrapper {
+  max-width: 95%;
+  /* Used to be 60% */ }
+
+div.preWrapperWide,
+div.fcnWrapperWide {
+  max-width: 95%; }
+
+li {
+  orphans: 0;
+  widows: 0;
+  margin: 1.1em 0 1em 0;
+  padding: 0, 0, 0, 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal; }
+  li p {
+    margin-top: 0; }
+  li p.topLevel {
+    margin: 18px 0 2px 0;
+    font-weight: normal; }
+
+li.CodeFont {
+  orphans: 0;
+  widows: 0;
+  margin: 1.1em 0 1em 0;
+  padding: 0, 0, 0, 0;
+  font-family: #codefont-face;
+  font-weight: normal; }
+  li.CodeFont p {
+    margin-top: 0; }
+  li.CodeFont p.topLevel {
+    margin: 18px 0 2px 0;
+    font-weight: normal; }
+
+li.codeList {
+  orphans: 0;
+  widows: 0;
+  margin: 1.1em 0 1em 0;
+  padding: 3px 0 3px 0;
+  font-family: "Courier";
+  font-weight: normal; }
+  li.codeList p {
+    margin-top: 0; }
+  li.codeList p.topLevel {
+    margin: 18px 0 2px 0;
+    font-weight: normal; }
+
+li.nested {
+  orphans: 0;
+  widows: 0;
+  margin: 0 0 1em 0;
+  padding: 0, 0, 0, 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal; }
+  li.nested p {
+    margin-top: 0; }
+  li.nested p.topLevel {
+    margin: 18px 0 2px 0;
+    font-weight: normal; }
+
+li.topSpace {
+  orphans: 0;
+  widows: 0;
+  margin: 1.1em 0 1em 0;
+  padding: 1em 0 0 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal; }
+  li.topSpace p {
+    margin-top: 0; }
+  li.topSpace p.topLevel {
+    margin: 18px 0 2px 0;
+    font-weight: normal; }
+
+ol {
+  display: block;
+  list-style-image: none;
+  list-style-type: decimal;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 1em 0 1em 0;
+  padding: 0 0 0 40px; }
+
+ol.boldFont {
+  display: block;
+  list-style-image: none;
+  list-style-type: decimal;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  margin: 1em 0 1em 0;
+  padding: 0 0 0 40px; }
+  ol.boldFont li {
+    orphans: 0;
+    widows: 0;
+    margin: 1.1em 0 1em 0;
+    padding: 0, 0, 0, 0;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600; }
+    ol.boldFont li p {
+      margin-top: 0; }
+    ol.boldFont li p.topLevel {
+      margin: 18px 0 2px 0;
+      font-weight: 600; }
+
+ol.LowerAlpha,
+ol.LowerAlphaPlainFont {
+  display: block;
+  list-style-image: none;
+  list-style-type: lower-alpha;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 1em 0 1em 0;
+  padding: 0 0 0 40px; }
+
+ol.LowerRoman {
+  display: block;
+  list-style-image: none;
+  list-style-type: lower-roman;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 1em 0 1em 0;
+  padding: 0 0 0 40px; }
+
+ol.nested {
+  display: block;
+  list-style-image: none;
+  list-style-type: lower-alpha;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 1em 0 1em 80px;
+  padding: 0 0 0 40px; }
+
+ul,
+ul.bullet,
+ul.plainFont {
+  display: block;
+  list-style-image: url("/images/Bullet1.png");
+  list-style-type: disc;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 1em 0 1em 0px;
+  padding: 0 0 0 40px; }
+
+ul.boldFont {
+  display: block;
+  list-style-image: none;
+  list-style-type: decimal;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  margin: 1em 0 1em 0;
+  padding: 0 0 0 40px; }
+
+ul.bulletCell {
+  display: block;
+  list-style-image: none;
+  list-style-type: disc;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 0 0 1em 5px;
+  padding: 0 0 0 40px;
+  padding-left: 10px; }
+
+ul.bulletCell li {
+  orphans: 0;
+  widows: 0;
+  margin: 1em 0 1em 2px;
+  padding: 0, 0, 0, 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal; }
+  ul.bulletCell li p {
+    margin-top: 0; }
+  ul.bulletCell li p.topLevel {
+    margin: 18px 0 2px 0;
+    font-weight: normal; }
+
+ul.bulletCellNoTopSpace {
+  display: block;
+  list-style-image: none;
+  list-style-type: disc;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 0 0 1em 5px;
+  padding: 0 0 0 40px;
+  padding-left: 10px; }
+
+ul.bulletCellNoTopSpace li {
+  orphans: 0;
+  widows: 0;
+  margin: 0 0 1em 2px;
+  padding: 0, 0, 0, 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal; }
+  ul.bulletCellNoTopSpace li p {
+    margin-top: 0; }
+  ul.bulletCellNoTopSpace li p.topLevel {
+    margin: 18px 0 2px 0;
+    font-weight: normal; }
+
+ul.codeList {
+  display: block;
+  list-style-image: none;
+  list-style-type: disc;
+  font-style: normal;
+  font-family: "Courier";
+  font-weight: normal;
+  margin: 1em 0 1em 0;
+  padding: 0 0 0 40px; }
+
+ul.codeListNested {
+  display: block;
+  list-style-image: none;
+  list-style-type: disc;
+  font-style: normal;
+  font-family: "Courier";
+  font-weight: normal;
+  margin: 2px 0 1em 0;
+  padding: 3px 0 3px 0; }
+
+ul.nested,
+ul.bulletNested {
+  display: block;
+  list-style-image: url("/images/Bullet1.png");
+  list-style-type: disc;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 1em 0 1em 40px;
+  padding: 0 0 0 40px; }
+
+ul.SecondLevel {
+  display: block;
+  list-style-image: url("/images/Bullet1.png");
+  list-style-type: disc;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 2px 0 1em 0;
+  padding: 0 0 0 40px; }
+
+ul.ThirdLevel {
+  display: block;
+  list-style-image: url("/images/Bullet1.png");
+  list-style-type: disc;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  margin: 2px 0 1em 0;
+  padding: 0 0 0 40px; }
+
+h1, h2, h3, h4, h5,
+p.heading1, p.heading2, p.heading3, p.heading4, p.heading5 {
+  line-height: 110%;
+  font-weight: 600;
+  font-style: normal;
+  margin: 2px, 0, 4px, 0;
+  padding: 0; }
+
+h1,
+p.heading1 {
+  font-size: 1.8em;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  color: #f7a800; }
+
+h2,
+p.heading2 {
+  font-size: 1.6em;
+  margin-top: 48px;
+  color: #3390db; }
+
+h3,
+p.heading3 {
+  font-size: 1.3em;
+  line-height: 110%;
+  margin-top: 30px;
+  color: #3390db; }
+
+h4,
+p.heading4 {
+  font-size: 1.1em;
+  font-style: italic;
+  margin-top: 28px;
+  color: #174e89; }
+
+h5,
+p.heading5 {
+  font-size: 1.0em;
+  line-height: 110%;
+  margin-top: 24px;
+  color: #606060; }
+
+img {
+  border: none;
+  width: auto;
+  height: auto;
+  margin: 20px 20px 20px 0; }
+
+img.indentedTightSpacing {
+  width: auto;
+  max-width: 98%;
+  height: auto;
+  margin: 0px 20px 0px 40px; }
+
+img.nestedTightSpacing {
+  width: auto;
+  max-width: 85%;
+  height: auto;
+  margin: 0px 20px 0px 20px; }
+
+img.tableCell450 {
+  width: auto;
+  max-width: 450px;
+  height: auto;
+  margin: 0px 20px 0px 40px; }
+
+body,
+p,
+p.body {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 16px 0;
+  text-align: left; }
+
+p.centered {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 16px 0;
+  text-align: center; }
+
+p.checkbox {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 16px 0;
+  text-align: left; }
+
+p.copyright {
+  font-size: 9pt;
+  font-weight: normal;
+  font-style: italic;
+  color: #f6a81c;
+  margin: 0 0 0 0;
+  text-align: center; }
+
+p.favicon {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 16px 0;
+  text-align: left;
+  cursor: url("images/favicon.png"); }
+
+p.indentLevel1 {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 16px 32px;
+  text-align: left; }
+
+p.indentLevel2 {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 16px 64px;
+  text-align: left; }
+
+p.indentLevel3 {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 16px 96px;
+  text-align: left; }
+
+p.invisible,
+p.invisible a:link,
+p.invisible a:visited,
+p.invisible a:focus,
+p.invisible a:hover,
+p.invisible a:active {
+  font-size: 0.2em;
+  font-weight: normal;
+  font-style: normal;
+  color: white;
+  margin: 4px 0 16px 0;
+  text-align: left;
+  text-decoration: none; }
+
+p.noSpaceAbove {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 16px 0;
+  text-align: left; }
+
+p.noSpaceBelow {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 4px 0 0 0;
+  text-align: left; }
+
+p.noSpaceAboveOrBelow {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 0 0 0 0;
+  text-align: left; }
+
+p.paramDefnFirst {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 2px 10px 4px 32px;
+  text-align: left; }
+
+p.paramDefn {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 12px 10px 4px 32px;
+  text-align: left; }
+
+p.paramName {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: italic;
+  color: #4a4f54;
+  margin: 12px 0 0 0;
+  text-align: left; }
+
+p.spaceAbove {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  margin: 16px 0 16px 0;
+  text-align: left; }
+
+pre {
+  font-family: "Courier";
+  white-space: pre-wrap;
+  background-color: transparent;
+  font-weight: normal;
+  padding: 0;
+  margin-left: 0; }
+
+pre.AppCommand,
+pre.AppCommandCell {
+  font-family: "Courier";
+  white-space: pre-wrap;
+  background-color: #fffdf5;
+  font-weight: 500;
+  padding: 6px 6px 6px 6px;
+  margin-left: 32px; }
+
+pre.Example,
+pre.ExampleCell {
+  font-family: "Courier";
+  white-space: pre-wrap;
+  background-color: #fcf8f0;
+  font-weight: 500;
+  padding: 6px 6px 6px 6px;
+  margin-left: 32px; }
+
+pre.FcnSyntax,
+pre.FcnSyntaxCell {
+  font-family: "Courier";
+  white-space: pre-wrap;
+  background-color: #edf4fa;
+  font-weight: 500;
+  padding: 6px 6px 6px 6px;
+  margin-left: 32px; }
+
+pre.Plain,
+pre.PlainCell {
+  font-family: "Courier";
+  white-space: pre-wrap;
+  background-color: transparent;
+  font-weight: normal;
+  padding: 6px 6px 6px 6px;
+  margin-left: 32px; }
+
+pre.ShellCommand,
+pre.ShellCommandCell {
+  font-family: "Courier";
+  white-space: pre-wrap;
+  background-color: #f5fff5;
+  font-weight: 500;
+  padding: 6px 6px 6px 6px;
+  margin-left: 32px; }
+
+pre.AppCommandCell,
+pre.ExampleCell,
+pre.FcnSyntaxCell,
+pre.PlainCell,
+pre.ShellCommandCell {
+  margin-left: 2px; }
+
+span.AppFontCust {
+  background-color: #fffdf5;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: none; }
+  span.AppFontCust a:link {
+    color: #3390db; }
+
+span.AppFontCustCode {
+  background-color: #fffdf5;
+  font-family: "Courier";
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: none; }
+  span.AppFontCustCode a:link {
+    color: #3390db; }
+
+span.AppCommand {
+  background-color: #fffdf5;
+  font-family: "Courier";
+  font-style: inherit;
+  font-weight: 500;
+  color: inherit;
+  text-transform: none; }
+  span.AppCommand a:link {
+    color: #3390db; }
+
+span.bodyFont {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: none; }
+  span.bodyFont a:link {
+    color: #3390db; }
+
+span.BoldFont {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: 600;
+  color: inherit;
+  text-transform: none; }
+  span.BoldFont a:link {
+    color: #3390db; }
+
+span.CalloutFont {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: 600;
+  color: #f39939;
+  text-transform: none; }
+  span.CalloutFont a:link {
+    color: #3390db; }
+
+span.CodeFont {
+  background-color: transparent;
+  font-family: "Courier";
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: none; }
+  span.CodeFont a:link {
+    color: #3390db; }
+
+span.CodeBoldFont {
+  background-color: transparent;
+  font-family: "Courier";
+  font-style: inherit;
+  font-weight: 500;
+  color: inherit;
+  text-transform: none; }
+  span.CodeBoldFont a:link {
+    color: #3390db; }
+
+span.CodeItalicFont {
+  background-color: transparent;
+  font-family: "Courier";
+  font-style: italic;
+  font-weight: 500;
+  color: inherit;
+  text-transform: none; }
+  span.CodeItalicFont a:link {
+    color: #3390db; }
+
+span.ConsoleLink {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: 600;
+  color: #3ba3d8;
+  text-transform: none; }
+  span.ConsoleLink a:link {
+    color: #3390db; }
+
+span.noteEnterpriseNote {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: 600;
+  color: #666666;
+  text-transform: none; }
+  span.noteEnterpriseNote a:link {
+    color: #3390db; }
+
+span.Example {
+  background-color: #fcf8f0;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: none; }
+  span.Example a:link {
+    color: #3390db; }
+
+span.Footnote {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: inherit;
+  color: #000000;
+  text-transform: none;
+  font-size: 0.8em;
+  vertical-align: super; }
+  span.Footnote a:link {
+    color: #3390db; }
+
+span.Highlighted {
+  background-color: #ffff00;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: none; }
+  span.Highlighted a:link {
+    color: #3390db; }
+
+span.HighlightedCode {
+  background-color: #ffff00;
+  font-family: "Courier";
+  font-style: inherit;
+  font-weight: 500;
+  color: inherit;
+  text-transform: none; }
+  span.HighlightedCode a:link {
+    color: #3390db; }
+
+span.important {
+  background-color: #ff0000;
+  font-family: "Open Sans", sans-serif;
+  font-style: inherit;
+  font-weight: 600;
+  color: inherit;
+  text-transform: none; }
+  span.important a:link {
+    color: #3390db; }
+
+span.ItalicFont {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-style: italic;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: none; }
+  span.ItalicFont a:link {
+    color: #3390db; }
+
+span.lowerCase {
+  text-transform: lowercase; }
+
+span.ShellCommand {
+  background-color: #f5fff5;
+  font-family: "Courier";
+  font-style: inherit;
+  font-weight: 500;
+  color: inherit;
+  text-transform: none; }
+  span.ShellCommand a:link {
+    color: #3390db; }
+
+span.upperCase {
+  text-transform: uppercase; }
+
+span.varName {
+  background-color: #f5f5dc;
+  font-family: "Courier";
+  font-style: inherit;
+  font-weight: 500;
+  color: inherit;
+  text-transform: none; }
+  span.varName a:link {
+    color: #3390db; }
+
+table {
+  table-layout: auto;
+  border: 1px solid #8d9090;
+  border-collapse: collapse;
+  border-radius: 12px;
+  margin: 20px 40px 20px 40px;
+  word-wrap: break-word;
+  overflow: auto; }
+  table caption {
+    text-align: center;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    font-size: 1.05em; }
+  table td {
+    border: 1px solid #8d9090;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow: auto; }
+  table td p:first-child {
+    margin-top: 0; }
+  table th {
+    border: 1px solid #8d9090;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow: auto;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    background-color: #dcdcdc; }
+    table th .center {
+      text-align: center; }
+    table th .smallText {
+      font-size: 0.9em;
+      line-height: 1em; }
+  table div.preWrapper {
+    max-width: 65%; }
+  table div.preWrapperWide {
+    max-width: 95%; }
+
+table td.AppFont {
+  background-color: #fffdf5;
+  font-family: "Courier";
+  font-weight: 500;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.AppFont {
+  background-color: #fffdf5;
+  font-family: "Courier";
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.BoldFont {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.BoldBlueBG {
+  background-color: #d9e4f1;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.BoldGreenBG {
+  background-color: #a4ccb3;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.BoldDarkGreenBG {
+  background-color: #629e78;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.BoldRedBG {
+  background-color: #d39c9b;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.CodeFont {
+  background-color: transparent;
+  font-family: "Courier";
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.CodeFontUC {
+  background-color: transparent;
+  font-family: "Courier";
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: uppercase; }
+
+table td.CodeFontSmall {
+  background-color: transparent;
+  font-family: "Courier";
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 0.9em;
+  text-transform: none; }
+
+table td.ConsoleLink {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #3ba3d8;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.ItalicFont {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-style: italic;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.PlainFont {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.Separator {
+  background-color: #eee;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none;
+  height: 4px;
+  line-height: 4px; }
+
+table td.smallText {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 0.9em;
+  text-transform: none;
+  line-height: 1em; }
+
+table.featureList {
+  table-layout: auto;
+  border: 1px solid #8d9090;
+  border-collapse: collapse;
+  border-radius: 0;
+  margin: 20px 50px 20px 50px;
+  word-wrap: break-word;
+  overflow: auto; }
+  table.featureList td,
+  table.featureList td.leftAlign {
+    border: 1px solid #8d9090;
+    padding: 5px;
+    word-wrap: break-word;
+    overflow: auto;
+    color: #4e4e62;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle; }
+  table.featureList td.leftAlign {
+    text-align: left; }
+  table.featureList td.featureName {
+    text-align: left;
+    padding: 4px 12px 4px 12px;
+    font-family: Tahoma;
+    font-weight: 600;
+    font-size: 13px;
+    color: #4e4e62;
+    background-color: #eeeeee; }
+  table.featureList td.checkmark {
+    text-align: center;
+    font-family: "Letter Gothic Std";
+    font-size: 13px;
+    color: #333333; }
+  table.featureList th,
+  table.featureList td.subHeader {
+    background-color: #2c84d2;
+    border: 1px solid #8d9090;
+    padding: 5px;
+    vertical-align: middle;
+    text-align: center;
+    word-wrap: break-word;
+    overflow: auto;
+    color: #FFFFFF;
+    font-weight: 600; }

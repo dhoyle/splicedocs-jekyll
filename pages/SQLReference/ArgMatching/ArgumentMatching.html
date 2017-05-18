@@ -1,10 +1,10 @@
 ---
 title: Argument Matching
-description: How Splice Machine maps SQL data types to Java data types and matches arguments when using stored procedures.
 summary: How Splice Machine maps SQL data types to Java data types and matches arguments when using stored procedures.
 keywords: 
+toc: false
 sidebar:  sqlref_sidebar
-permalink: sqlref_sqlargmatching
+permalink: sqlref_sqlargmatching.html
 folder: SQLReference/ArgMatching
 ---
 	<section>
@@ -131,132 +131,132 @@ public static Double toDegrees( Double arg ) {...}
             <p>Note that Splice Machine raises an exception if it finds more than one matching method. </p>
             <h2>Mapping SQL data types to Java data types</h2>
             <p>The following table shows how Splice Machine maps specific SQL data types to Java data types.</p>
-            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <table >
                 <caption><a name="kanchor71"></a>SQL and Java type correspondence</caption>
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
-                <col class="TableStyle-PatternedRows-Column-Regular" />
+                <col  />
+                <col  />
+                <col  />
                 <thead>
-                    <tr class="TableStyle-PatternedRows-Head-Header1">
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">SQL Type</th>
-                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Primitive Match</th>
-                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Wrapper Match</th>
+                    <tr >
+                        <th >SQL Type</th>
+                        <th >Primitive Match</th>
+                        <th >Wrapper Match</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">BOOLEAN</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">boolean</span>
+                    <tr >
+                        <td  style="font-family: monospace;">BOOLEAN</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">boolean</span>
                         </td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.Boolean</span>
-                        </td>
-                    </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;">SMALLINT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">short</span>
-                        </td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.Integer</span>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Boolean</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">INTEGER</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">int</span>
+                    <tr >
+                        <td  style="font-family: monospace;">SMALLINT</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">short</span>
                         </td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.Integer</span>
-                        </td>
-                    </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;">BIGINT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">long</span>
-                        </td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.Long</span>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Integer</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">DECIMAL</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.math.BigDecimal</span>
+                    <tr >
+                        <td  style="font-family: monospace;">INTEGER</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">int</span>
+                        </td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Integer</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;">NUMERIC</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">java.math.BigDecimal</span>
+                    <tr >
+                        <td  style="font-family: monospace;">BIGINT</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">long</span>
+                        </td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Long</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">REAL</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">float</span>
-                        </td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.Float</span>
-                        </td>
-                    </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;">DOUBLE</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">double</span>
-                        </td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.Double</span>
+                    <tr >
+                        <td  style="font-family: monospace;">DECIMAL</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.math.BigDecimal</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">FLOAT</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">double</span>
-                        </td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.Double</span>
-                        </td>
-                    </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;">CHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
+                    <tr >
+                        <td  style="font-family: monospace;">NUMERIC</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.math.BigDecimal</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">VARCHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
+                    <tr >
+                        <td  style="font-family: monospace;">REAL</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">float</span>
+                        </td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Float</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;">LONG VARCHAR</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
+                    <tr >
+                        <td  style="font-family: monospace;">DOUBLE</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">double</span>
+                        </td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Double</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">CLOB</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.sql.Clob</span>
+                    <tr >
+                        <td  style="font-family: monospace;">FLOAT</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">double</span>
+                        </td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Double</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;">BLOB</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">java.sql.Blob</span>
+                    <tr >
+                        <td  style="font-family: monospace;">CHAR</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">DATE</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.sql.Date</span>
+                    <tr >
+                        <td  style="font-family: monospace;">VARCHAR</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows" style="font-family: monospace;">TIME</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows" style="font-family: monospace;"><span class="ItalicFont">java.sql.Time</span>
+                    <tr >
+                        <td  style="font-family: monospace;">LONG VARCHAR</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows" style="font-family: monospace;">TIMESTAMP</td>
-                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows" style="font-family: monospace;"><span class="ItalicFont">java.sql.Timestamp</span>
+                    <tr >
+                        <td  style="font-family: monospace;">CLOB</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Clob</span>
                         </td>
                     </tr>
-                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">User-defined type</td>
-                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">None</td>
-                        <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">Underlying Java class</td>
+                    <tr >
+                        <td  style="font-family: monospace;">BLOB</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Blob</span>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td  style="font-family: monospace;">DATE</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Date</span>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td  style="font-family: monospace;">TIME</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Time</span>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td  style="font-family: monospace;">TIMESTAMP</td>
+                        <td >None</td>
+                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Timestamp</span>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td >User-defined type</td>
+                        <td >None</td>
+                        <td >Underlying Java class</td>
                     </tr>
                 </tbody>
             </table>
