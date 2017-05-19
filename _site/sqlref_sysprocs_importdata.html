@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2709,7 +2709,7 @@
                 </div>
                 <p class="paramName">fileOrDirectoryName</p>
                 <p class="paramDefnFirst">Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. </p>
-                <p class="noteIcon">If you are importing data that is stored in an S3 bucket on AWS, you need to specify the data location in an <span class="CodeFont">s3a</span> URL that includes access key information. See <a href="#Importin" class="MCXref xref" xrefformat="{para}">Importing Data from AWS</a>, below.</p>
+                <p class="noteIcon">If you are importing data that is stored in an S3 bucket on AWS, you need to specify the data location in an <span class="CodeFont">s3a</span> URL that includes access key information. See <a href="#Importin">Importing Data from AWS</a>, below.</p>
                 <p class="paramDefn">Note that files can be compressed or uncompressed, including BZIP2 compressed files.</p>
                 <div class="notePlain">
                     <p>Note that importing multiple files at once improves parallelism, and thus speeds up the import process. Uncompressed files can be imported faster than compressed files. When using compressed files, the compression algorithm makes a difference; for example,</p>
@@ -2832,7 +2832,7 @@
             <h2><a name="Importin"></a>Importing Data from AWS</h2>
             <p>If you are importing data that is stored in an S3 bucket on Amazon Web Services (<span class="ItalicFont">AWS</span>), you need to specify the file location in an <span class="CodeFont">s3a</span> URL that includes the access key and secret access key for the bucket. </p>
             <div class="notePlain">
-                <p>Please review our <a href="../../Developers/IngestionAndStreaming/ConfigureS3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial to make sure you've set up access permissions that allow Splice Machine to access the bucket.</p>
+                <p>Please review our <a href="developers_ingestion_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial to make sure you've set up access permissions that allow Splice Machine to access the bucket.</p>
             </div>
             <p>You can include the access keys inline; for example:</p>
             <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(<span class="Highlighted">access key</span>):(<span class="Highlighted">secret key</span>)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, '/Users/hive', true, null);</pre>
@@ -2854,14 +2854,14 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
 94             |0            |1       |4720       |NONE<br /></pre>
             </div>
             <p class="spaceAbove">This procedure also logs rejected record activity into <span class="CodeFont">.bad</span> files in the <span class="CodeFont">badRecordDirectory</span> directory; one file for each imported file. </p>
-            <div class="noteNote">After importing a large amount of data into a table, it is useful to run a full compaction on table; see the <span class="CodeFont"><a href="PerformMajorCompactionOnTable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
+            <div class="noteNote">After importing a large amount of data into a table, it is useful to run a full compaction on table; see the <span class="CodeFont"><a href="sqlref_sysprocs_compacttable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
             <h3>Importing a Subset of Data From a File</h3>
             <p>When you import data from a file into a table, all of the data in the file is not necessarily imported. This can happen in either of these circumstances:</p>
             <ul>
                 <li value="1">If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
                 <li value="2">If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
             </ul>
-            <p>You can find examples in the <a href="../../Developers/IngestionAndStreaming/ImportingData.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+            <p>You can find examples in the <a href="developers_ingestion_importing.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
             <p>Note that you can take advantage of this by importing different subsets of data from one input file into multiple tables in your database.</p>
             <h2>Record Import Failure Reasons</h2>
             <p>When upserting data from a file, the input file you generate must contain:</p>
@@ -2876,7 +2876,7 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
                 <li value="3">A primary key violation:&#160;<span class="CodeFont"><a href="#">SYSCS_UTIL.IMPORT_DATA</a></span> will only work correctly if the table into which you are inserting/updating has primary keys. </li>
             </ul>
             <h2>Handling Generated Column Values in Imported Files</h2>
-            <p>If you're importing data into a table with generated columns (see <span class="CodeFont"><a href="../Statements/GeneratedColumnSpec.html" class="MCXref xref" xrefformat="{para}">generated-column-spec</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span>), you should know that imported records are handled in exactly the same manner as are records inserted using the <span class="CodeFont"><a href="../Statements/Insert.html" class="MCXref xref" xrefformat="{para}">INSERT</a></span>&#160;statement. </p>
+            <p>If you're importing data into a table with generated columns (see <span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span>&#160;statement. </p>
             <p>Here's a simple summary of what happens for generated columns, including <span class="CodeFont">DEFAULT</span>&#160;values, in imported records:</p>
             <ul>
                 <li value="1">If your <span class="CodeFont">importColumnList</span> includes the column name and the imported column value is empty, <span class="CodeFont">NULL</span>&#160;is inserted into the database table column.</li>
@@ -3096,10 +3096,10 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
                     </tbody>
                 </table>
             </div>
-            <p>Please see <span class="ItalicFont"><a href="../../Developers/Fundamentals/WorkingWithDates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
+            <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
             <p class="heading2">Usage Notes</p>
             <p>We have seen a problem in which the compaction queue grows quite large after importing large amounts of data, and are investigating a solution; for now, please use the following workaround:</p>
-            <div class="noteRelease">Run a full compaction on tables into which you have imported a large amount of data, using the <span class="CodeFont"><a href="PerformMajorCompactionOnTable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
+            <div class="noteRelease">Run a full compaction on tables into which you have imported a large amount of data, using the <span class="CodeFont"><a href="sqlref_sysprocs_compacttable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
             <p class="heading2"><a name="Examples"></a>Examples</p>
             <p>The examples in this section illustrate using different timestamp formats and different string delimiter characters.</p>
             <p class="heading3">Example 1:&#160;Importing our doc examples player data</p>
@@ -3171,12 +3171,13 @@ This is the second line of the field',Baker
             <p>&#160;</p>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="UpsertDataFromFile.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
+                <li value="1"><a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
                 </li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -3192,7 +3193,7 @@ This is the second line of the field',Baker
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

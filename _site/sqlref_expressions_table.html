@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2673,10 +2673,10 @@
   	<section>
 		<div class="TopicContent">
             <h1><a name="Expressions.Table" id="Expressions.Table"></a><a name="kanchor510"></a>TABLE Expression</h1>
-            <p>A <span class="ItalicFont">TableExpression</span> specifies a table, view, or function in a <a href="../Clauses/From.html"><span class="CodeFont">FROM</span> clause</a>. It is the source from which a <span class="ItalicFont"><a href="#">TableExpression</a></span> selects a result.</p>
+            <p>A <span class="ItalicFont">TableExpression</span> specifies a table, view, or function in a <a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span> clause</a>. It is the source from which a <span class="ItalicFont"><a href="#">TableExpression</a></span> selects a result.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapper"><pre class="FcnSyntax">{
-&#160;&#160;&#160;<span class="ItalicFont"><a href="#TableViewExpression">TableViewOrFunctionExpression</a></span> | <a href="../JoinOps/AboutJoins.html">JOIN operations</a>
+&#160;&#160;&#160;<span class="ItalicFont"><a href="sqlref_joinops_about.html">JOIN operations</a>
 }</pre>
             </div>
             <p class="heading2">Usage</p>
@@ -2689,10 +2689,10 @@
             </ul>
             <p>In addition, you can give the columns of the table new names in the <span class="CodeFont">AS</span> clause. Some situations in which this is useful:</p>
             <ul>
-                <li value="1">When a <a href="Values.html"><span class="CodeFont">VALUES</span> expression</a> is used as a <span class="ItalicFont"><a href="../Queries/TableSubquery.html">TableSubquery</a>,</span> since there is no other way to name the columns of a <span class="CodeFont">VALUES</span> expression.</li>
+                <li value="1">When a <a href="sqlref_queries_tablesubquery.html">TableSubquery</a>,</span> since there is no other way to name the columns of a <span class="CodeFont">VALUES</span> expression.</li>
                 <li value="2">When column names would otherwise be the same as those of columns in other tables; renaming them means you don't have to qualify them.</li>
             </ul>
-            <p>The Query in a <span class="ItalicFont"><a href="../Queries/TableSubquery.html">TableSubquery</a></span> appearing in a <span class="ItalicFont">FromItem</span> can contain multiple columns and return multiple rows. See <span class="ItalicFont"><a href="../Queries/TableSubquery.html">TableSubquery</a>.</span></p>
+            <p>The Query in a <span class="ItalicFont"><a href="sqlref_queries_tablesubquery.html">TableSubquery</a>.</span></p>
             <p class="heading2">Example</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- SELECT from a JOIN expression
 SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
@@ -2704,16 +2704,16 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
             </div>
             <p class="heading2"><a name="TableViewExpression" id="TableViewExpression"></a>TableViewOrFunctionExpression</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{
-   { <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span> | <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ViewName">view-Name</a></span> }
+   { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
  &#160;&#160;[ <span class="ItalicFont">CorrelationClause</span> ]  |
-   { <span class="ItalicFont"><a href="../Queries/TableSubquery.html">TableSubquery</a></span> | <span class="ItalicFont"><a href="#TableFunction">TableFunctionInvocation</a></span> }
+   { <span class="ItalicFont"><a href="sqlref_queries_tablesubquery.html">TableSubquery</a></span> | <span class="ItalicFont"><a href="#TableFunction">TableFunctionInvocation</a></span> }
 &#160;&#160;&#160;<span class="ItalicFont">CorrelationClause</span>
 }</pre>
             </div>
             <p>where <span class="ItalicFont">CorrelationClause</span> is</p>
             <div class="fcnWrapper"><pre class="FcnSyntax">[ AS ]
-<span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#CorrelationName">correlation-Name</a></span>
-[ ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> [ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) ] 
+<span class="ItalicFont"><a href="sqlref_identifiers_types.html#CorrelationName">correlation-Name</a></span>
+[ ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) ] 
 </pre>
             </div>
             <p class="heading2"><a name="TableFunction" id="TableFunction"></a>TableFunctionExpression</p>
@@ -2728,14 +2728,15 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../Clauses/From.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
-                <li value="2"><a href="../JoinOps/AboutJoins.html"><span class="CodeFont">JOIN</span></a>&#160;operations</li>
-                <li value="3"><a href="../Statements/Select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
-                <li value="4"><a href="Values.html"><span class="CodeFont">VALUES</span></a>&#160;expression</li>
+                <li value="1"><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
+                <li value="2"><a href="sqlref_joinops_about.html"><span class="CodeFont">JOIN</span></a>&#160;operations</li>
+                <li value="3"><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
+                <li value="4"><a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span></a>&#160;expression</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2751,7 +2752,7 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

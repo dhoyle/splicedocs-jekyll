@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 		<div class="TopicContent">
             <h1><a name="BuiltInSysProcs.UpdateAllSystemProcedures" id="BuiltInSysProcs.UpdateAllSystemProcedures"></a><a name="kanchor217"></a>SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</h1>
             <p>The <samp>SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</samp> system procedure updates the signatures  of all of the system procedures in a database. </p>
-            <div class="noteImportant">You need to call this procedure when you update to a new version of Splice Machine that includes new or updates system procedure signatures. <br /><br />The <a href="../../Notes/CurrentUpdateNotes.html">Update Notes</a> will note when a release includes such updates.</div>
+            <div class="noteImportant">You need to call this procedure when you update to a new version of Splice Machine that includes new or updates system procedure signatures. <br /><br />The <a href="notes_updates.html">Update Notes</a> will note when a release includes such updates.</div>
             <p class="heading2">About System Procedures</p>
             <p>Splice Machine uses prepared statements known as <span class="ItalicFont">system procedures</span> to access data in the system tables. Each system procedure has two parts:</p>
             <ul>
@@ -20,7 +20,7 @@ folder: SQLReference/BuiltInSysProcs
                 <li value="2">A <span class="ItalicFont">declaration</span> (or <span class="ItalicFont">signature</span>), which is a CREATE PROCEDURE statement that is stored in the Splice jar file and is synchronized with the data dictionary (in the SYSALIASES&#160;table).</li>
             </ul>
             <p>The <span class="CodeFont">SYSALIASES</span>&#160;table is synchronized with a database when the database is first created. Thereafter, when you make changes to the system procedures, you need to call a function to keep the <span class="CodeFont">SYSALIASES</span>&#160;table synchronized with the procedures in the Splice jar file.</p>
-            <p>If you've modified, deleted, or added a system procedure,  call the <span class="CodeFont"><a href="UpdateSystemProcedure.html">SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE</a></span> function, which drops the procedure from the data dictionary, and updates the dictionary with the new version in the Splice jar file.</p>
+            <p>If you've modified, deleted, or added a system procedure,  call the <span class="CodeFont"><a href="sqlref_sysprocs_updatesysproc.html">SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE</a></span> function, which drops the procedure from the data dictionary, and updates the dictionary with the new version in the Splice jar file.</p>
             <p>If you've made multiple modifications to the system procedures, you can call this function, <span class="CodeFont">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES </span>, to update all of the stored declarations for a database in the data dictionary. This function drops all of the system procedures from the data dictionary and then recreates the system procedures stored in the dictionary from the definitions in the Splice jar file.</p>
             <p class="heading2">Results</p>
             <p>This procedure does not return a result.</p>

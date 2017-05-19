@@ -15,19 +15,19 @@ folder: OnPrem
                 <div class="openSourceNote">
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: This feature is available only with a Splice Machine Enterprise license.</span>
                     </p>
-                    <p>You cannot use this feature with the Community version of Splice Machine. For a list of the additional features available in the Enterprise edition, see our  <a href="../../Notes/SpliceEditions.html">Splice&#160;Machine Editions</a> page.</p>
+                    <p>You cannot use this feature with the Community version of Splice Machine. For a list of the additional features available in the Enterprise edition, see our  <a href="notes_editions.html">Splice&#160;Machine Editions</a> page.</p>
                     <p>To obtain a license for the Splice&#160;Machine <span class="ItalicFont">Enterprise Edition</span>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
                 </div>
             </div>
             <p>You can complete the migration process in these simple steps:</p>
             <ol>
-                <li value="1"><a href="#Download" class="MCXref xref" xrefformat="{para}">Download and Install the Migration Assistant</a>
+                <li value="1"><a href="#Download">Download and Install the Migration Assistant</a>
                 </li>
-                <li value="2"><a href="#Use" class="MCXref xref" xrefformat="{para}">Use the Migration Assistant to Export Your Database</a>
+                <li value="2"><a href="#Use">Use the Migration Assistant to Export Your Database</a>
                 </li>
-                <li value="3"><a href="#Update" class="MCXref xref" xrefformat="{para}">Update to the Latest Version of Splice Machine</a>
+                <li value="3"><a href="#Update">Update to the Latest Version of Splice Machine</a>
                 </li>
-                <li value="4"><a href="#Use2" class="MCXref xref" xrefformat="{para}">Use the Migration Assistant to Import Your Database</a>
+                <li value="4"><a href="#Use2">Use the Migration Assistant to Import Your Database</a>
                 </li>
             </ol>
             <p>You use the same Migration Assistant tool to export your database before updating your Splice Machine installation, and to subsequently import your database after updating.</p>
@@ -85,7 +85,7 @@ folder: OnPrem
             <p>To export your database prior to upgrading your Splice Machine software, you need to:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1"> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. See the <a href="#Migratio" class="MCXref xref" xrefformat="{para}">Migration Assistant Configuration Settings</a> section below for details. Make sure that you have the <span class="CodeFont">operation</span> property set to <span class="CodeFont">backup</span>.</li>
+                    <li value="1"> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. See the <a href="#Migratio">Migration Assistant Configuration Settings</a> section below for details. Make sure that you have the <span class="CodeFont">operation</span> property set to <span class="CodeFont">backup</span>.</li>
                     <li value="2">
                         <p class="topLevel">Verify that permissions are set correctly for the directory you specify for bad record information is in HDFS (the value of the <span class="CodeFont">hdfsBadDir</span> configuration setting); substitute that directory name for <span class="HighlightedCode">&lt;hdfsBadDir&gt;</span>&#160;in the following command line:</p>
                         <div class="preWrapper"><pre class="ShellCommand">chmod 777 <span class="Highlighted">&lt;hdfsBadDir&gt;</span></pre>
@@ -95,12 +95,12 @@ folder: OnPrem
                     <li value="4">Run the <span class="CodeFont">Migration.sh</span> script to export your database.</li>
                     <li value="5">
                         <p class="topLevel">Examine the log file to verify that the export worked as you expect.</p>
-                        <p>See <a href="#The" class="MCXref xref" xrefformat="{para}">The Export Log File</a> section below for details on the generated log table.</p>
+                        <p>See <a href="#The">The Export Log File</a> section below for details on the generated log table.</p>
                     </li>
                 </ol>
             </div>
             <h2><a name="Update"></a>Update to the Latest Version of Splice Machine</h2>
-            <p>Follow the update instructions in our <a href="../InstallingSpliceMachine/Intro.InstallationGuide.html">Installation Guide</a> to update to the latest version of Splice Machine.</p>
+            <p>Follow the update instructions in our <a href="onprem_install_intro.html">Installation Guide</a> to update to the latest version of Splice Machine.</p>
             <h2><a name="Use2"></a>Use the Migration Assistant to Import Your Database</h2>
             <p>After you've upgraded your database, you can use the Migration Assistant a second time to restore the database you previously exported. Follow these steps:</p>
             <div class="opsStepsList">
@@ -111,9 +111,9 @@ folder: OnPrem
                         </div>
                     </li>
                     <li value="2"> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. Make sure that you change the the <span class="CodeFont">operation</span> property set to <span class="CodeFont">restore</span>.</li>
-                    <li value="3">Update any settings that start with import, as required. See the <a href="#Migratio" class="MCXref xref" xrefformat="{para}">Migration Assistant Configuration Settings</a> section below for details. </li>
+                    <li value="3">Update any settings that start with import, as required. See the <a href="#Migratio">Migration Assistant Configuration Settings</a> section below for details. </li>
                     <li value="4">Run the <span class="CodeFont">Migration.sh</span> script to import your upgraded database.</li>
-                    <li value="5">Examine the log file to verify that the export worked as you expect. See <a href="#The" class="MCXref xref" xrefformat="{para}">The Export Log File</a> section below for details on the generated log table.</li>
+                    <li value="5">Examine the log file to verify that the export worked as you expect. See <a href="#The">The Export Log File</a> section below for details on the generated log table.</li>
                     <li value="6">You should also verify that your database has been restored.</li>
                 </ol>
             </div>

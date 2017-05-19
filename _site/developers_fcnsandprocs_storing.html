@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -672,7 +672,7 @@
                         <p class="topLevel">Load your Jar&#160;file into the Splice Machine database </p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP', 0);</pre>
                         </div>
-                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJInstallJar.html">SQLJ.INSTALL_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
+                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="sqlref_sysprocs_installjar.html">SQLJ.INSTALL_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
                         <ul class="plainFont">
                             <li value="1">The first argument is the path on your computer to your Jar file.</li>
                             <li value="2">The second argument is the name for the stored procedure Jar file in your database, in <span class="CodeFont">schema.name</span> format.</li>
@@ -681,10 +681,10 @@
                     </li>
                     <li value="2">
                         <p class="topLevel">Update your CLASSPATH</p>
-                        <p class="indentLevel1">You need to update your <span class="CodeFont">CLASSPATH</span>&#160;so that Splice Machine can find your code. You can do this by using the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SetDatabaseProperty.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span>&#160;system procedure to update the <span class="CodeFont">derby.database.classpath</span> property:</p>
+                        <p class="indentLevel1">You need to update your <span class="CodeFont">CLASSPATH</span>&#160;so that Splice Machine can find your code. You can do this by using the <span class="CodeFont"><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span>&#160;system procedure to update the <span class="CodeFont">derby.database.classpath</span> property:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');</pre>
                         </div>
-                        <p class="indentLevel1">Note that if you've developed more than one Jar&#160;file, you can update the <span class="CodeFont">derby.database.classpath</span> property with multiple Jars by separating the Jar file names with colons when you call the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SetDatabaseProperty.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span>&#160;system procedure . For example: </p>
+                        <p class="indentLevel1">Note that if you've developed more than one Jar&#160;file, you can update the <span class="CodeFont">derby.database.classpath</span> property with multiple Jars by separating the Jar file names with colons when you call the <span class="CodeFont"><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span>&#160;system procedure . For example: </p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP:SPLICE.YOUR_EXAMPLE');</pre>
                         </div>
                     </li>
@@ -698,7 +698,7 @@
                         <p class="topLevel">Replace the stored Jar&#160;file</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.REPLACE_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP');</pre>
                         </div>
-                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJReplaceJar.html">SQLJ.REPLACE_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
+                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="sqlref_sysprocs_replacejar.html">SQLJ.REPLACE_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
                         <ul class="plainFont">
                             <li value="1">The first argument is the path on your computer to your Jar file.</li>
                             <li value="2">The second argument is the name for the stored procedure Jar file in your database, in <span class="CodeFont">schema.name</span> format.</li>
@@ -714,7 +714,7 @@
                         <p class="topLevel">Delete a stored Jar&#160;file</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.REMOVE_JAR('SPLICE.MY_EXAMPLE_APP', 0);</pre>
                         </div>
-                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJRemoveJar.html">SQLJ.REMOVE_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
+                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="sqlref_sysprocs_removejar.html">SQLJ.REMOVE_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
                         <ul class="plainFont">
                             <li value="1">The first argument is the name for the stored procedure Jar file in your database, in <span class="CodeFont">schema.name</span> format.</li>
                             <li value="2">The second argument is currently unused but required; use <span class="CodeFont">0</span> as its value.</li>
@@ -722,10 +722,11 @@
                     </li>
                 </ol>
             </div>
-            <div class="noteNote">The Jar&#160;file operations (the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJInstallJar.html">SQLJ.INSTALL_JAR</a></span>, <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJReplaceJar.html">SQLJ.REPLACE_JAR</a></span>, and <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJRemoveJar.html">SQLJ.REMOVE_JAR</a></span> system procedures) are not executed within transactions, which means that committing or rolling back a transaction will not have any impact on these operations.</div>
+            <div class="noteNote">The Jar&#160;file operations (the <span class="CodeFont"><a href="sqlref_sysprocs_removejar.html">SQLJ.REMOVE_JAR</a></span> system procedures) are not executed within transactions, which means that committing or rolling back a transaction will not have any impact on these operations.</div>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -741,7 +742,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

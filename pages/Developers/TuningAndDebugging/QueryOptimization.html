@@ -27,12 +27,12 @@ folder: Developers/TuningAndDebugging
                         <td>Use Explain Plan</td>
                         <td>
                             <p>You can use the Splice Machine Explain Plan facility to display the execution plan for a statement without actually executing the statement. You can use Explain Plan to help determine options such as which join strategy to use or which index to select.</p>
-                            <p>See the <a href="ExplainPlan.html">About Explain Plan</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+                            <p>See the <a href="developers_tuning_explainplan.html">About Explain Plan</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
                         </td>
                     </tr>
                     <tr>
                         <td>Use Statistics</td>
-                        <td>Your database administrator can refine which statistics are collected on your database, which in turn enhances the operation of the query optimizer. See the <a href="UsingStatistics.html">Using Statistics</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</td>
+                        <td>Your database administrator can refine which statistics are collected on your database, which in turn enhances the operation of the query optimizer. See the <a href="developers_tuning_usingstats.html">Using Statistics</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</td>
                     </tr>
                     <tr>
                         <td>Use <span class="CodeFont">WHERE</span>&#160;clauses</td>
@@ -281,7 +281,7 @@ hints to tell the query interface in which order to join two tables. You can spe
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>PIN&#160;TABLE&#160;myTable;<br /><span class="AppCommand">splice&gt; </span>SELECT&#160;COUNT(*) FROM my_table --splice-properties pin=true<br /><span class="AppCommand">&gt; </span>;</pre>
                 </div>
             </p>
-            <p class="indentLevel1">You can read more about pinning tables in the <span class="CodeFont"><a href="../../SQLReference/Statements/PinTable.html">PIN&#160;TABLE</a></span>&#160;statement topic in our <span class="ItalicFont">SQL&#160;Reference Guide</span>.</p>
+            <p class="indentLevel1">You can read more about pinning tables in the <span class="CodeFont"><a href="sqlref_expressions_table.html">PIN&#160;TABLE</a></span>&#160;statement topic in our <span class="ItalicFont">SQL&#160;Reference Guide</span>.</p>
             <h3><a name="Spark"></a>Spark Hints</h3>
             <p class="indentLevel1">You can use the <span class="CodeFont">useSpark</span> hint to specify to the optimizer that you want a query to run on (or not on)&#160;Spark. The Splice Machine query optimizer automatically determines whether to run a query through our Spark engine or our HBase engine, based on the type of query; you can override this by using a hint:</p>
             <div class="noteNote">The Splice&#160;Machine optimizer uses its estimated cost for a query to decide whether to use spark. If your statistics are out of date, the optimizer may end up choosing the wrong engine for the query.</div>

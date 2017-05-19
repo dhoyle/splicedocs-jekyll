@@ -30,9 +30,9 @@ folder: Developers/IngestionAndStreaming
             <h2><a name="Written"></a>Written Walk Through</h2>
             <p>This section walks you through the same sequence of steps as the video, in these sections:</p>
             <ul>
-                <li value="1"> <a href="#Deployin" class="MCXref xref" xrefformat="{para}">Deploying the Tutorial Code</a> walks you through downloading and deploying the sample code.</li>
-                <li value="2"><a href="#About" class="MCXref xref" xrefformat="{para}">About the Sample Code</a> describes the high-level methods in each class.</li>
-                <li value="3"><a href="#About2" class="MCXref xref" xrefformat="{para}">About the Sample Code Scripts</a> describes the scripts used to deploy and execute the sample code.</li>
+                <li value="1"> <a href="#Deployin">Deploying the Tutorial Code</a> walks you through downloading and deploying the sample code.</li>
+                <li value="2"><a href="#About">About the Sample Code</a> describes the high-level methods in each class.</li>
+                <li value="3"><a href="#About2">About the Sample Code Scripts</a> describes the scripts used to deploy and execute the sample code.</li>
             </ul>
             <h3><a name="Deployin"></a>Deploying the Tutorial Code</h3>
             <p>Follow these steps to deploy the tutorial code:</p>
@@ -101,27 +101,27 @@ folder: Developers/IngestionAndStreaming
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont"><a href="#MQTTPubl" class="MCXref xref" xrefformat="{para}">MQTTPublisher</a>
+                        <td class="CodeFont"><a href="#MQTTPubl">MQTTPublisher</a>
                         </td>
                         <td>Puts csv messages on an MQTT&#160;queue.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="#SparkStr" class="MCXref xref" xrefformat="{para}">SparkStreamingMQTT</a>
+                        <td class="CodeFont"><a href="#SparkStr">SparkStreamingMQTT</a>
                         </td>
                         <td>The Spark streaming job that reads messages from the MQTT&#160;queue.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="#SaveRDD" class="MCXref xref" xrefformat="{para}">SaveRDD</a>
+                        <td class="CodeFont"><a href="#SaveRDD">SaveRDD</a>
                         </td>
                         <td>Inserts the data into Splice&#160;Machine using the <span class="CodeFont">RFIDMessageVTI</span> class.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="#RFIDMess2" class="MCXref xref" xrefformat="{para}">RFIDMessageVTI</a>
+                        <td class="CodeFont"><a href="#RFIDMess2">RFIDMessageVTI</a>
                         </td>
                         <td>A virtual table interface for parsing an <span class="CodeFont">RFIDMessage</span>.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="#RFIDMess" class="MCXref xref" xrefformat="{para}">RFIDMessage</a>
+                        <td class="CodeFont"><a href="#RFIDMess">RFIDMessage</a>
                         </td>
                         <td>Java object (a POJO)&#160;for converting from a csv string to an object to a database entry.</td>
                     </tr>
@@ -274,7 +274,7 @@ PreparedStatement ps = con.prepareStatement(vtiStatement);</pre>
     }
 </pre>
             </div>
-            <div class="noteIcon">For more information about using our virtual table interface, see <a href="../Fundamentals/UsingVTI.html">Using the Splice Machine Virtual Table Interface.</a></div>
+            <div class="noteIcon">For more information about using our virtual table interface, see <a href="developers_fundamentals_vti.html">Using the Splice Machine Virtual Table Interface.</a></div>
             <h4><a name="RFIDMess"></a>RFIDMessage</h4>
             <p>The <span class="CodeFont">RFIDMessage</span> class creates a simple Java object (a POJO)&#160;that represents an RFID&#160;message; we use this to convert an incoming CSV-formatted message into an object. This class includes getters and setters for each of the object properties, plus the <span class="CodeFont">getTableDefinition</span> and <span class="CodeFont">getRow</span> methods:</p>
             <div class="preWrapperWide"><pre class="Example">    /**

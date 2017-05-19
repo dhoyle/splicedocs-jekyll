@@ -17,9 +17,9 @@ from other values. </p>
     VALUES ( <span class="ItalicFont">Value</span> {, <span class="ItalicFont">Value</span> }* )
         [ , ( <span class="ItalicFont">Value</span> {, <span class="ItalicFont">Value</span> }* ) ]* |
     VALUES <span class="ItalicFont">Value</span> [ , <span class="ItalicFont">Value</span> ]*
-} [ <span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span> ]
-  [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">result offset clause</a></span> ]
-  [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">fetch first clause</a></span> ]
+} [ <span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span> ]
+  [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">result offset clause</a></span> ]
+  [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></span> ]
 </pre>
             </div>
             <div class="paramList">
@@ -31,9 +31,9 @@ form constructs single-column rows, each expression being the value of the
 column of the row.</p>
                 <p class="paramDefn">The <span class="CodeFont">DEFAULT</span> keyword is allowed only if the <span class="CodeFont">VALUES</span> expression is in an <span class="CodeFont">INSERT</span> statement. Specifying <span class="CodeFont">DEFAULT</span> for a column inserts the column's default value into the column. Another way to insert the default value into the column is to omit the column from the column list and only insert values into other columns in the table.</p>
                 <p class="paramName">ORDER&#160;BY&#160;clause</p>
-                <p class="paramDefnFirst">The <a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span> clause</a> allows you to specify the order in which rows appear in the result set. </p>
+                <p class="paramDefnFirst">The <a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span> clause</a> allows you to specify the order in which rows appear in the result set. </p>
                 <p class="paramName">result offset and fetch first clauses</p>
-                <p class="paramDefnFirst">The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">result offset</span> clause</a>  provides a way to skip the N first rows in a result set before starting to return any rows. The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows returned in the result set.</p>
+                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows returned in the result set.</p>
             </div>
             <p class="heading2">Usage</p>
             <p>A <span class="CodeFont">VALUES</span> expression can be used in all the places where a
@@ -42,8 +42,8 @@ query can, and thus can be used in any of the following ways:
             <ul>
                 <li value="1">As a statement that returns a <span class="ItalicFont">ResultSet</span></li>
                 <li value="2">Within expressions and statements wherever subqueries are permitted</li>
-                <li value="3">As the source of values for an <span class="CodeFont"><a href="../Statements/Insert.html">INSERT</a></span> statement (in an <span class="CodeFont">INSERT</span> statement, 
-you normally use a <span class="CodeFont">VALUES</span> expression when you do not use a <span class="ItalicFont"><a href="Select.html">SelectExpression</a></span>)</li>
+                <li value="3">As the source of values for an <span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span> statement (in an <span class="CodeFont">INSERT</span> statement, 
+you normally use a <span class="CodeFont">VALUES</span> expression when you do not use a <span class="ItalicFont"><a href="sqlref_expressions_select.html">SelectExpression</a></span>)</li>
             </ul>
             <p class="body">You can use a <span class="CodeFont">VALUES</span>&#160;expression to generate new data values with a query that selects from a <span class="CodeFont">VALUES</span>&#160;clause; for example:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
@@ -96,9 +96,9 @@ splice&gt;&#160;values char(1);</pre>
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../Clauses/From.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
-                <li value="2"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
-                <li value="3"><a href="../Statements/Insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
+                <li value="1"><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
+                <li value="2"><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
+                <li value="3"><a href="sqlref_statements_insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>

@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -672,8 +672,8 @@
             </ul>
             <div class="noteImportant">Statistics are inexact; in fact, some statistics like table cardinality are estimated using advanced algorithms, due to the resources required to compute these values. It's important to keep this in mind when basing design decisions on values in database statistics tables.<br /><br />It's also important to note that the statistics for your database are not automatically refreshed when the data in your database changes, which means that when you query a statistical table or view, the results you see may not exactly match the data in the actual tables. </div>
             <h2><a name="Collecti"></a>Collecting Statistics</h2>
-            <p>You can collect statistics on a schema or table using the <a href="../../CmdLineReference/CmdAnalyze.html"><span class="AppFontCustCode">splice&gt;&#160;Analyze</span></a> command.</p>
-            <p>You can also use the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/CollectSchemaStats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> procedure to collect statistics on an entire schema, including every table in the schema. For example:</p>
+            <p>You can collect statistics on a schema or table using the <a href="cmdlineref_analyze.html"><span class="AppFontCustCode">splice&gt;&#160;Analyze</span></a> command.</p>
+            <p>You can also use the <span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> procedure to collect statistics on an entire schema, including every table in the schema. For example:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;CALL SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( 'SPLICEBBALL', false );</pre>
             </div>
@@ -692,25 +692,25 @@ splice&gt;&#160;CALL SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( 'SPLICEBBALL', false 
             <div class="noteIndent">A general rule-of-thumb is that you should collect statistics after modifying more than 10% of data.</div>
             <h3>On Which Columns Should You Collect Statistics?</h3>
             <p>By default, Splice Machine collects statistics on all columns in a table.</p>
-            <p>To reduce the operational cost of analyzing large tables (such as fact tables), you can tell Splice Machine to not collect statistics on certain columns by running the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/DisableColumnStats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span>&#160;built-in system procedure:</p>
+            <p>To reduce the operational cost of analyzing large tables (such as fact tables), you can tell Splice Machine to not collect statistics on certain columns by running the <span class="CodeFont"><a href="sqlref_sysprocs_disablecolumnstats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span>&#160;built-in system procedure:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" style="text-indent: 0.5in;">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS(&#160;<span class="ItalicFont">schema, table, column</span>);</pre>
             </div>
             <p>Splice Machine strongly recommends that you <span class="ItalicFont">always</span> collect statistics on small tables, such as a table that has hundreds of rows on each region server.</p>
             <h3>How to Determine if You Should Collect or Drop Statistics</h3>
-            <p>You can use <a href="ExplainPlan.html">Explain Plan</a> in your development or test environment to determine how dropping or collecting statistics changes the execution plan for a query.</p>
+            <p>You can use <a href="developers_tuning_explainplan.html">Explain Plan</a> in your development or test environment to determine how dropping or collecting statistics changes the execution plan for a query.</p>
             <h2><a name="Dropping"></a>Dropping Statistics</h2>
-            <p>If you subsequently wish to drop statistics for a schema, you can use the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/DropSchemaStats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a></span> procedure to drop statistics for an entire schema. For example:</p>
+            <p>If you subsequently wish to drop statistics for a schema, you can use the <span class="CodeFont"><a href="sqlref_sysprocs_dropschemastats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a></span> procedure to drop statistics for an entire schema. For example:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.DROP_SCHEMA_STATISTICS('SPLICEBBALL');</pre>
             </div>
             <h2><a name="Enabling"></a>Enabling and Disabling Statistics on Specific Columns</h2>
             <p>When you collect statistics, Splice Machine automatically collects statistics on keyed columns, which are columns in a primary key and columns that are indexed.</p>
             <div class="noteTip"> Please review the recommendations and restrictions regarding which columns should or should not have statistics collection enabled, as noted below in  the <a href="#Selectin">Selecting Columns for Statistics Collection</a> subsection.</div>
-            <p>You can also explicitly enable statistics collection on specific columns in tables using the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/EnableColumnStats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a></span> procedure. For example:</p>
+            <p>You can also explicitly enable statistics collection on specific columns in tables using the <span class="CodeFont"><a href="sqlref_sysprocs_enablecolumnstats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a></span> procedure. For example:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 CALL SYSCS_UTIL.ENABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Players', 'Birthdate');</pre>
             </div>
             <p class="heading4">Disabling Statistics Collection on a Column</p>
-            <p class="spaceAbove">If you subsequently wish to disable collection of statistics on a specific column in a table, use the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/DisableColumnStats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span> procedure:</p>
+            <p class="spaceAbove">If you subsequently wish to disable collection of statistics on a specific column in a table, use the <span class="CodeFont"><a href="sqlref_sysprocs_disablecolumnstats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span> procedure:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;CALL SYSCS_UTIL.DISABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Players', 'Birthdate');</pre>
             </div>
@@ -728,22 +728,23 @@ splice&gt;&#160;CALL SYSCS_UTIL.DISABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Player
             <h2><a name="Viewing"></a>Viewing Collected Statistics</h2>
             <p>Splice Machine provides two system tables you can query to view the statistics that have been collected for your database:</p>
             <ul>
-                <li value="1">Query the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysTableStatistics.html">SYSTABLESTATISTICS System Table</a></span> to view statistics for specific tables</li>
-                <li value="2">Query the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysColumnStatistics.html">SYSCOLUMNSTATISTICS System Table</a></span> to view statistics for specific table columns</li>
+                <li value="1">Query the <span class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSTABLESTATISTICS System Table</a></span> to view statistics for specific tables</li>
+                <li value="2">Query the <span class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSCOLUMNSTATISTICS System Table</a></span> to view statistics for specific table columns</li>
             </ul>
             <h2>See Also</h2>
             <ul>
-                <li value="1"><a href="../../SQLReference/DataTypes/DataTypeCompatability.html">Splice Machine Data Assignments and Comparisons</a> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="2"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/CollectSchemaStats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="3"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/DisableColumnStats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="4"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/DropSchemaStats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="5"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/EnableColumnStats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="6"><span class="CodeFont"><a href="../../SQLReference/SystemTables/SysColumnStatistics.html">SYSCOLUMNSTATISTICS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="7"><span class="CodeFont"><a href="../../SQLReference/SystemTables/SysTableStatistics.html">SYSTABLESTATISTICS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="1"><a href="sqlref_datatypes_compatability.html">Splice Machine Data Assignments and Comparisons</a> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="2"><span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="3"><span class="CodeFont"><a href="sqlref_sysprocs_disablecolumnstats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="4"><span class="CodeFont"><a href="sqlref_sysprocs_dropschemastats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="5"><span class="CodeFont"><a href="sqlref_sysprocs_enablecolumnstats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="6"><span class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSCOLUMNSTATISTICS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="7"><span class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSTABLESTATISTICS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -759,7 +760,7 @@ splice&gt;&#160;CALL SYSCS_UTIL.DISABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Player
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

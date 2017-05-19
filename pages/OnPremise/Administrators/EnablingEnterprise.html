@@ -12,7 +12,7 @@ folder: OnPrem
             <h1><a name="kanchor331"></a>Enabling Enterprise Features in Splice&#160;Machine</h1>
             <p>There are two mechanisms for enabling enterprise features in Splice Machine:</p>
             <ul>
-                <li value="1">To access enterprise features such as Backup and Restore, you can simply call the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/EnableEnterprise.html">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</a></span>&#160;built-in system procedure with the license key you obtain from Splice&#160;Machine, as described in the next section.</li>
+                <li value="1">To access enterprise features such as Backup and Restore, you can simply call the <span class="CodeFont"><a href="sqlref_sysprocs_enableenterprise.html">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</a></span>&#160;built-in system procedure with the license key you obtain from Splice&#160;Machine, as described in the next section.</li>
                 <li value="2">To unlock Splice Machine Enterprise features that require configuration changes in your HBase settings, such as Kerberos and LDAP, you need to add one or more properties to your configuration file, as described in <a href="#Using2">Using Configuration Properties to Upgrade to the Enterprise</a>, below.</li>
             </ul>
             <h2><a name="Using"></a>Using <span class="CodeFont">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</span> to Upgrade</h2>
@@ -44,8 +44,8 @@ ERROR XSRSE: Unable to enable the enterprise Manager. Enterprise services are di
                         <div class="preWrapperWide"><pre class="Example">&lt;property&gt;<br />&#160;&#160; &lt;name&gt;splicemachine.enterprise.key&lt;/name&gt;<br />&#160;&#160; &lt;value&gt;<span class="Highlighted">&lt;your-Splice-Machine-license-key&gt;</span>&lt;/value&gt;<br />&lt;/property&gt;</pre>
                         </div>
                     </li>
-                    <li value="3">If you're using or switching from another authentication mechanism to LDAP, also add the LDAP&#160;properties to your <span class="CodeFont">hbase-site.xml</span> file, as described in the <a href="../../Developers/Fundamentals/Authorization.html">Splice Machine Authentication and Authorization</a> topic.</li>
-                    <li value="4">Restart Splice Machine, by first <a href="ShuttingDownDatabase.html">Shutting DownYour Database</a>, and then <a href="StartingDatabase.html">Starting Your Database</a>.</li>
+                    <li value="3">If you're using or switching from another authentication mechanism to LDAP, also add the LDAP&#160;properties to your <span class="CodeFont">hbase-site.xml</span> file, as described in the <a href="developers_fundamentals_auth.html">Splice Machine Authentication and Authorization</a> topic.</li>
+                    <li value="4">Restart Splice Machine, by first <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
                 </ol>
             </div>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>

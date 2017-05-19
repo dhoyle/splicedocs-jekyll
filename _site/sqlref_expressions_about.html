@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2676,14 +2676,14 @@
             <p>Syntax for many statements and expressions includes the term <span class="ItalicFont">Expression</span>, or a term for a specific kind of expression such as <var>TableSubquery</var>. Expressions are allowed in these specified places within statements. </p>
             <p> Some locations allow only a specific type of expression or one with a specific property. If not otherwise specified, an expression is permitted anywhere the word <span class="ItalicFont">Expression</span> appears in the syntax. This includes:</p>
             <ul>
-                <li value="1"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER BY</span> clause</a>
+                <li value="1"><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER BY</span> clause</a>
                 </li>
-                <li value="2"><span class="CodeFont"><a href="Select.html">SelectExpression</a></span>
+                <li value="2"><span class="CodeFont"><a href="sqlref_expressions_select.html">SelectExpression</a></span>
                 </li>
-                <li value="3"><a href="../Statements/UpdateTable.html"><span class="CodeFont">UPDATE</span> statement</a> (SET portion)</li>
-                <li value="4"><a href="Values.html"><span class="CodeFont">VALUES</span> Expression</a>
+                <li value="3"><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span> statement</a> (SET portion)</li>
+                <li value="4"><a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span> Expression</a>
                 </li>
-                <li value="5"><a href="../Clauses/Where.html"><span class="CodeFont">WHERE</span> clause</a>
+                <li value="5"><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span> clause</a>
                 </li>
             </ul>
             <p>Of course, many other statements include these elements as building blocks, and so allow expressions as part of these elements. </p>
@@ -2704,8 +2704,8 @@
                 <tbody>
                     <tr>
                         <td style="vertical-align:top">Column reference</td>
-                        <td style="vertical-align:top">A <a href="../Identifiers/IdentifierTypes.html#ColumnName"><var>column-Name</var></a> that 					references the value of the column made visible to the expression containing the Column reference.
-					<p>You must qualify the <var>column-Name</var> by the table name or correlation name if it is ambiguous.</p><p>The qualifier of a <var>column-Name</var> must be the correlation name, if a correlation name is given to a table that is in a <a href="../Clauses/From.html"><span class="CodeFont">FROM</span> clause</a>. The table name is no longer visible as a <span class="ItalicFont">column-Name</span> qualifier once it has been aliased by a correlation name.</p><p>Allowed in <span class="ItalicFont"><a href="Select.html">SelectExpressions</a></span>, <span class="CodeFont">UPDATE</span> statements, and the <span class="CodeFont">WHERE</span> clauses of data manipulation statements.</p></td>
+                        <td style="vertical-align:top">A <a href="sqlref_identifiers_types.html#ColumnName"><var>column-Name</var></a> that 					references the value of the column made visible to the expression containing the Column reference.
+					<p>You must qualify the <var>column-Name</var> by the table name or correlation name if it is ambiguous.</p><p>The qualifier of a <var>column-Name</var> must be the correlation name, if a correlation name is given to a table that is in a <a href="sqlref_expressions_select.html">SelectExpressions</a></span>, <span class="CodeFont">UPDATE</span> statements, and the <span class="CodeFont">WHERE</span> clauses of data manipulation statements.</p></td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top">Constant</td>
@@ -2715,34 +2715,34 @@
                         <td style="vertical-align:top"><span class="CodeFont">NULL</span>
                         </td>
                         <td style="vertical-align:top"><span class="CodeFont">NULL</span> is an untyped constant representing the unknown value.
-					<p>Allowed in <span class="CodeFont"><a href="../BuiltInFcns/Cast.html">CAST</a></span> expressions or in <span class="CodeFont">INSERT VALUES</span> lists and <span class="CodeFont">UPDATE SET</span> clauses. Using it in a <span class="CodeFont">CAST</span> expression gives it a specific data type.</p></td>
+					<p>Allowed in <span class="CodeFont"><a href="sqlref_builtinfcns_cast.html">CAST</a></span> expressions or in <span class="CodeFont">INSERT VALUES</span> lists and <span class="CodeFont">UPDATE SET</span> clauses. Using it in a <span class="CodeFont">CAST</span> expression gives it a specific data type.</p></td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top">Dynamic parameter</td>
-                        <td style="vertical-align:top">A dynamic parameter is a parameter to an SQL statement for which the value is not specified when the statement is created. Instead, the statement has a question mark (?) as a placeholder for each dynamic parameter. 	See <a href="DynamicParameters.html">Dynamic parameters</a>.
-					<p>Dynamic parameters are permitted only in prepared statements. You must specify values for them before the prepared statement is executed. The values specified must match the types expected.</p><p>Allowed anywhere in an expression where the data type can be easily deduced. See <a href="DynamicParameters.html">Dynamic parameters</a>.</p></td>
+                        <td style="vertical-align:top">A dynamic parameter is a parameter to an SQL statement for which the value is not specified when the statement is created. Instead, the statement has a question mark (?) as a placeholder for each dynamic parameter. 	See <a href="sqlref_expressions_dynamicparams.html">Dynamic parameters</a>.
+					<p>Dynamic parameters are permitted only in prepared statements. You must specify values for them before the prepared statement is executed. The values specified must match the types expected.</p><p>Allowed anywhere in an expression where the data type can be easily deduced. See <a href="sqlref_expressions_dynamicparams.html">Dynamic parameters</a>.</p></td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top"><span class="CodeFont">CAST</span> expression</td>
-                        <td style="vertical-align:top">Allows you to specify the type of NULL or of a dynamic parameter or convert a value to another type. See <a href="../BuiltInFcns/Cast.html"><span class="CodeFont">CAST</span> function</a>.</td>
+                        <td style="vertical-align:top">Allows you to specify the type of NULL or of a dynamic parameter or convert a value to another type. See <a href="sqlref_builtinfcns_cast.html"><span class="CodeFont">CAST</span> function</a>.</td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top">Scalar subquery</td>
-                        <td style="vertical-align:top">Subquery that returns a single row with a single column. See <span class="ItalicFont"><a href="../Queries/ScalarSubquery.html">ScalarSubquery</a>.</span></td>
+                        <td style="vertical-align:top">Subquery that returns a single row with a single column. See <span class="ItalicFont"><a href="sqlref_queries_scalarsubquery.html">ScalarSubquery</a>.</span></td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top">Table subquerry</td>
-                        <td style="vertical-align:top">Subquery that returns more than one column and more than one row. See <span class="ItalicFont"><a href="../Queries/TableSubquery.html">TableSubquery</a>.</span><p>Allowed as a tableExpression in a FROM clause and with EXISTS, IN, and quantified comparisons.</p></td>
+                        <td style="vertical-align:top">Subquery that returns more than one column and more than one row. See <span class="ItalicFont"><a href="sqlref_queries_tablesubquery.html">TableSubquery</a>.</span><p>Allowed as a tableExpression in a FROM clause and with EXISTS, IN, and quantified comparisons.</p></td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top">Conditional expression</td>
-                        <td style="vertical-align:top">A conditional expression chooses an expression to evaluate based on a boolean test. Conditional expressions include the <a href="Case.html"><span class="CodeFont">CASE</span> expression</a>, the <a href="../BuiltInFcns/Nullif.html"><span class="CodeFont">NULLIF</span> function</a>, and the <a href="../BuiltInFcns/Coalesce.html"><span class="CodeFont">COALESCE</span> function</a>.</td>
+                        <td style="vertical-align:top">A conditional expression chooses an expression to evaluate based on a boolean test. Conditional expressions include the <a href="sqlref_builtinfcns_coalesce.html"><span class="CodeFont">COALESCE</span> function</a>.</td>
                     </tr>
                 </tbody>
             </table>
             <p class="heading2">
             Boolean Expressions</p>
-            <p><a href="BooleanExpressions.html">Boolean expressions</a> are expressions that result in boolean values. Most general expressions can result in boolean values. Boolean expressions commonly used in a WHERE clause are made of operands operated on by SQL operators.</p>
+            <p><a href="sqlref_expressions_boolean.html">Boolean expressions</a> are expressions that result in boolean values. Most general expressions can result in boolean values. Boolean expressions commonly used in a WHERE clause are made of operands operated on by SQL operators.</p>
             <p class="heading2"><a name="kanchor75"></a>Numeric Expressions</p>
             <p>Numeric expressions are expressions that result in numeric values. Most of the general expressions can result in numeric values. Numeric values have one of the following types:</p>
             <ul>
@@ -2777,23 +2777,23 @@
                     </tr>
                     <tr>
                         <td style="vertical-align:top" class="CodeFont">AVG</td>
-                        <td style="vertical-align:top"><a href="../BuiltInFcns/Avg.html"><span class="CodeFont">AVG</span></a> function</td>
+                        <td style="vertical-align:top"><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top" class="CodeFont">SUM</td>
-                        <td style="vertical-align:top"><a href="../BuiltInFcns/Sum.html"><span class="CodeFont">SUM</span></a> function</td>
+                        <td style="vertical-align:top"><a href="sqlref_builtinfcns_sum.html"><span class="CodeFont">SUM</span></a> function</td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top" class="CodeFont">LENGTH</td>
-                        <td style="vertical-align:top"><a href="../BuiltInFcns/Length.html"><span class="CodeFont">LENGTH</span></a> function.</td>
+                        <td style="vertical-align:top"><a href="sqlref_builtinfcns_length.html"><span class="CodeFont">LENGTH</span></a> function.</td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top" class="CodeFont">LOWER</td>
-                        <td style="vertical-align:top"><a href="../BuiltInFcns/LCase.html"><span class="CodeFont">LCASE</span></a> or <span class="CodeFont"><a href="../BuiltInFcns/LCase.html">LOWER</a></span> function.</td>
+                        <td style="vertical-align:top"><a href="sqlref_builtinfcns_lcase.html">LOWER</a></span> function.</td>
                     </tr>
                     <tr>
                         <td style="vertical-align:top" class="CodeFont">COUNT</td>
-                        <td style="vertical-align:top"><a href="../BuiltInFcns/Count.html"><span class="CodeFont">COUNT</span></a> function, including <span class="CodeFont">COUNT(*).</span></td>
+                        <td style="vertical-align:top"><a href="sqlref_builtinfcns_count.html"><span class="CodeFont">COUNT</span></a> function, including <span class="CodeFont">COUNT(*).</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -2817,11 +2817,11 @@
                     </tr>
                     <tr>
                         <td>Concatenation expression</td>
-                        <td>In a concatenation expression, the concatenation operator, <span class="CodeFont">||</span>, concatenates its right operand to the end of its left operand. Operates on character and bit strings. See <a href="../BuiltInFcns/Concatenation.html">Concatenation operator</a>.</td>
+                        <td>In a concatenation expression, the concatenation operator, <span class="CodeFont">||</span>, concatenates its right operand to the end of its left operand. Operates on character and bit strings. See <a href="sqlref_builtinfcns_concat.html">Concatenation operator</a>.</td>
                     </tr>
                     <tr>
                         <td>Built-in string functions</td>
-                        <td>The built-in string functions act on a String and return a string. See <a href="../BuiltInFcns/LTrim.html"><span class="CodeFont">LTRIM function</span></a>, <a href="../BuiltInFcns/LCase.html"><span class="CodeFont">LCASE or LOWER function</span></a>, <a href="../BuiltInFcns/RTrim.html"><span class="CodeFont">RTRIM function</span></a>, <a href="../BuiltInFcns/Trim.html"><span class="CodeFont">TRIM function</span></a>, <a href="../BuiltInFcns/Substr.html"><span class="CodeFont">SUBSTR function</span></a>, and <a href="../BuiltInFcns/UCase.html"><span class="CodeFont">UCASE or UPPER function</span></a>.</td>
+                        <td>The built-in string functions act on a String and return a string. See <a href="sqlref_builtinfcns_ucase.html"><span class="CodeFont">UCASE or UPPER function</span></a>.</td>
                     </tr>
                 </tbody>
             </table>
@@ -2841,43 +2841,44 @@
                 <tbody>
                     <tr>
                         <td class="CodeFont">CURRENT_DATE</td>
-                        <td>Returns the current date. See the <a href="../BuiltInFcns/CurrentDate.html"><span class="CodeFont">CURRENT_DATE</span></a> function.</td>
+                        <td>Returns the current date. See the <a href="sqlref_builtinfcns_currentdate.html"><span class="CodeFont">CURRENT_DATE</span></a> function.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">CURRENT_TIME</td>
-                        <td>Returns the current time. See the <a href="../BuiltInFcns/CurrentTime.html"><span class="CodeFont">CURRENT_TIME</span></a> function.</td>
+                        <td>Returns the current time. See the <a href="sqlref_builtinfcns_currenttime.html"><span class="CodeFont">CURRENT_TIME</span></a> function.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">CURRENT_TIMESTAMP</td>
-                        <td>Returns the current timestamp. See the <a href="../BuiltInFcns/CurrentTimestamp.html"><span class="CodeFont">CURRENT_TIMESTAMP</span></a> function.</td>
+                        <td>Returns the current timestamp. See the <a href="sqlref_builtinfcns_currenttimestamp.html"><span class="CodeFont">CURRENT_TIMESTAMP</span></a> function.</td>
                     </tr>
                 </tbody>
             </table>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../BuiltInFcns/Avg.html"><span class="CodeFont">AVG</span></a> function</li>
-                <li value="2"><a href="../BuiltInFcns/Cast.html"><span class="CodeFont">CAST</span></a> function</li>
-                <li value="3"><a href="../BuiltInFcns/Count.html"><span class="CodeFont">COUNT</span></a> function</li>
-                <li value="4"><a href="../BuiltInFcns/CurrentDate.html"><span class="CodeFont">CURRENT_DATE</span></a> function</li>
-                <li value="5"><a href="../BuiltInFcns/CurrentTime.html"><span class="CodeFont">CURRENT_TIME</span></a> function</li>
-                <li value="6"><a href="../BuiltInFcns/CurrentTimestamp.html"><span class="CodeFont">CURRENT_TIMESTAMP</span></a> function</li>
-                <li value="7"><a href="../BuiltInFcns/Concatenation.html"><span class="CodeFont">Concatenation</span></a> operator</li>
-                <li value="8"><a href="../BuiltInFcns/LCase.html"><span class="CodeFont">LCASE</span></a> function</li>
-                <li value="9"><a href="../BuiltInFcns/Length.html"><span class="CodeFont">LENGTH</span></a> function</li>
-                <li value="10"><a href="../BuiltInFcns/LTrim.html"><span class="CodeFont">LTRIM</span></a> function</li>
-                <li value="11"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER BY</span></a> clause</li>
-                <li value="12"><a href="../BuiltInFcns/RTrim.html"><span class="CodeFont">RTRIM</span></a> function</li>
-                <li value="13"><a href="../BuiltInFcns/Substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
-                <li value="14"><a href="../BuiltInFcns/Sum.html"><span class="CodeFont">SUM</span></a> function</li>
-                <li value="15"><a href="Select.html"><span class="CodeFont">Select</span></a> expression</li>
-                <li value="16"><a href="../BuiltInFcns/Trim.html"><span class="CodeFont">TRIM</span></a> function</li>
-                <li value="17"><a href="../Statements/UpdateTable.html"><span class="CodeFont">UPDATE</span></a> statement</li>
-                <li value="18"><a href="Values.html"><span class="CodeFont">VALUES</span></a> expression</li>
-                <li value="19"><a href="../Clauses/Where.html"><span class="CodeFont">WHERE</span></a> clause</li>
+                <li value="1"><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>
+                <li value="2"><a href="sqlref_builtinfcns_cast.html"><span class="CodeFont">CAST</span></a> function</li>
+                <li value="3"><a href="sqlref_builtinfcns_count.html"><span class="CodeFont">COUNT</span></a> function</li>
+                <li value="4"><a href="sqlref_builtinfcns_currentdate.html"><span class="CodeFont">CURRENT_DATE</span></a> function</li>
+                <li value="5"><a href="sqlref_builtinfcns_currenttime.html"><span class="CodeFont">CURRENT_TIME</span></a> function</li>
+                <li value="6"><a href="sqlref_builtinfcns_currenttimestamp.html"><span class="CodeFont">CURRENT_TIMESTAMP</span></a> function</li>
+                <li value="7"><a href="sqlref_builtinfcns_concat.html"><span class="CodeFont">Concatenation</span></a> operator</li>
+                <li value="8"><a href="sqlref_builtinfcns_lcase.html"><span class="CodeFont">LCASE</span></a> function</li>
+                <li value="9"><a href="sqlref_builtinfcns_length.html"><span class="CodeFont">LENGTH</span></a> function</li>
+                <li value="10"><a href="sqlref_builtinfcns_ltrim.html"><span class="CodeFont">LTRIM</span></a> function</li>
+                <li value="11"><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER BY</span></a> clause</li>
+                <li value="12"><a href="sqlref_builtinfcns_rtrim.html"><span class="CodeFont">RTRIM</span></a> function</li>
+                <li value="13"><a href="sqlref_builtinfcns_substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
+                <li value="14"><a href="sqlref_builtinfcns_sum.html"><span class="CodeFont">SUM</span></a> function</li>
+                <li value="15"><a href="sqlref_expressions_select.html"><span class="CodeFont">Select</span></a> expression</li>
+                <li value="16"><a href="sqlref_builtinfcns_trim.html"><span class="CodeFont">TRIM</span></a> function</li>
+                <li value="17"><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span></a> statement</li>
+                <li value="18"><a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span></a> expression</li>
+                <li value="19"><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a> clause</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2893,7 +2894,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

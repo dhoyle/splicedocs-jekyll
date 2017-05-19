@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInSysProcs
             <ul>
                 <li value="1"><span class="CodeFont"><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>
                 </li>
-                <li value="2"> <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span></li>
+                <li value="2"> <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span></li>
             </ul>
             <p>See the <span class="ItalicFont">Usage Notes</span> section for more information and the <span class="ItalicFont">Example</span> section to see an example of using these procedures together.</p>
             <p class="heading2">Syntax</p>
@@ -35,7 +35,7 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramDefnFirst">The name of the index that you are splitting. If this is null, the specified table is split; if this is non-null, the index is split instead.</p>
                 <p class="paramName">splitPoints</p>
                 <p class="paramDefnFirst">A&#160;comma-separated list of split points for the table or index. </p>
-                <p class="paramDefn">This is the list of split points computed by a previous call to the <span class="CodeFont"><a href="ComputeSplitKey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure.</p>
+                <p class="paramDefn">This is the list of split points computed by a previous call to the <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure.</p>
             </div>
             <p>&#160;</p>
             <p class="heading2">Results</p>
@@ -47,7 +47,7 @@ folder: SQLReference/BuiltInSysProcs
                 <li value="2"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span> sets up the splits in Splice&#160;Machine</li>
                 <li value="3"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>&#160;splits your input file into HFiles, imports your data, and then removes the HFiles</li>
             </ul>
-            <p>Alternatively, you can use  <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> with <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>. The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
+            <p>Alternatively, you can use  <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> with <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>. The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
             <p>The process is as follows (and is shown in more detail in <span class="ItalicFont">Example 1</span> and <span class="ItalicFont">Example 2</span> below):</p>
             <div class="opsStepsList">
                 <ol>
@@ -59,9 +59,9 @@ folder: SQLReference/BuiltInSysProcs
                         </div>
                     </li>
                     <li value="2">Store those keys in a CSV&#160;file.</li>
-                    <li value="3"> If you're using the combination of <span class="CodeFont"><a href="ComputeSplitKey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span> and <span class="CodeFont"><a href="#">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>:<ol class="LowerAlphaPlainFont"><li value="1">Pass that CSV&#160;file into the <span class="CodeFont"><a href="ComputeSplitKey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure to compute the split row keys.</li><li value="2"><p>Examine the computed (and encoded)&#160;row keys, which were written to a file named keys in a subdirectory of your <span class="CodeFont">OutputDirectory</span>. </p><p>The name of the subdirectory is the conglomerate ID&#160;for the named table. You can find a table's conglomerate ID&#160;with the <span class="CodeFont"><a href="../../CmdLineReference/CmdShowTables.html">SHOW&#160;TABLES</a></span>&#160;command.&#160;</p></li><li value="3">Copy the encoded keys to your clipboard.</li><li value="4">Call the <span class="CodeFont"><a href="#">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>&#160;procedure, passing in the row key values from your clipboard. This splits your table inside the database.</li></ol><p>If you are using  the single procedure <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> instead:</p><ol class="LowerAlphaPlainFont"><li value="1">Pass that CSV&#160;file into the <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
+                    <li value="3"> If you're using the combination of <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
                     <li value="4">Repeat steps 1, 2, and 3 to split the indexes on your table.</li>
-                    <li value="5">Call the <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
+                    <li value="5">Call the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
                 </ol>
             </div>
             <p class="heading2"><a name="Examples"></a>Example 1</p>
@@ -266,11 +266,11 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on LINEITEM(
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="BulkImportHFile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
+                <li value="1"><a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
                 </li>
-                <li value="2"><a href="ComputeSplitKey.html"><span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span></a>
+                <li value="2"><a href="sqlref_sysprocs_computesplitkey.html"><span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span></a>
                 </li>
-                <li value="3"><a href="SplitTable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span></a>
+                <li value="3"><a href="sqlref_sysprocs_splittable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span></a>
                 </li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>

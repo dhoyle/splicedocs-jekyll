@@ -13,8 +13,8 @@ folder: SQLReference/Statements
             <p>Use the <span class="CodeFont">RENAME COLUMN</span> statement to rename a column in a table.</p>
             <p>The <span class="CodeFont">RENAME COLUMN</span> sactatement allows you to rename an existing column in an existing table in any schema (except the schema <span class="CodeFont">SYS</span>). </p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">RENAME COLUMN <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>.<span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">simple-Column-Name</a></span>
-  TO <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">simple-Column-Name</a></span></pre>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">RENAME COLUMN <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">simple-Column-Name</a></span>
+  TO <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">simple-Column-Name</a></span></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">table-Name</p>
@@ -26,8 +26,8 @@ folder: SQLReference/Statements
             </div>
             <p class="heading2">Usage Notes</p>
             <p>To rename a column, you must either be the database owner or the table owner.</p>
-            <p>To perform other table alterations, see the <a href="AlterTable.html"><span class="CodeFont">ALTER TABLE</span> statement</a>.</p>
-            <div class="noteRestriction">If a view, <span>trigger, </span>check constraint, or <span class="ItalicFont"><a href="GenerationClause.html">generation-clause</a></span> of a generated column references the column, an attempt to rename it will generate an error.</div>
+            <p>To perform other table alterations, see the <a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER TABLE</span> statement</a>.</p>
+            <div class="noteRestriction">If a view, <span>trigger, </span>check constraint, or <span class="ItalicFont"><a href="sqlref_statements_generationclause.html">generation-clause</a></span> of a generated column references the column, an attempt to rename it will generate an error.</div>
             <div class="noteNote">The RENAME COLUMN statement is not allowed if there are any open cursors that reference the column that is being altered.</div>
             <div class="noteNote">If there is an index defined on the column, the column can still be renamed; the index is automatically updated to refer to the column by its new name.</div>
             <p class="heading2">Examples</p>
@@ -57,7 +57,7 @@ splice&gt;&#160;RENAME COLUMN Players.NewPosition TO Position;
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="AlterTable.html"><span class="CodeFont">ALTER</span></a> statement</li>
+                <li value="1"><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER</span></a> statement</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>

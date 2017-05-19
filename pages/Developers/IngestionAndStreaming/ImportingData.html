@@ -12,16 +12,16 @@ folder: Developers/IngestionAndStreaming
             <h1><a name="kanchor38"></a>Importing Data Into Splice Machine</h1>
             <p>This tutorial describes how to import data into your Splice Machine database, and includes a number of examples. It also contains specific tips to help you with the details of getting your data correctly imported. This tutorial contains these sections:</p>
             <ul>
-                <li value="1"><a href="#Syntax" class="MCXref xref" xrefformat="{para}">SYSCS_UTIL.IMPORT_DATA</a> presents the syntax for calling the import function, along with brief descriptions of the parameters.</li>
-                <li value="2"><a href="#Import" class="MCXref xref" xrefformat="{para}">Import Examples</a> contains several examples of importing data.</li>
-                <li value="3"><a href="#Tips" class="MCXref xref" xrefformat="{para}">Tips for Importing Data into Splice&#160;Machine</a> provides specific tips for specifying your import parameters.</li>
+                <li value="1"><a href="#Syntax">SYSCS_UTIL.IMPORT_DATA</a> presents the syntax for calling the import function, along with brief descriptions of the parameters.</li>
+                <li value="2"><a href="#Import">Import Examples</a> contains several examples of importing data.</li>
+                <li value="3"><a href="#Tips">Tips for Importing Data into Splice&#160;Machine</a> provides specific tips for specifying your import parameters.</li>
             </ul>
             <p>The Splice Machine data import procedures allow you to perform bulk imports that utilize the parallel processing power of Hadoop's scale-out architecture while distributing the data evenly into different region servers to prevent "hot spots." We utilize a custom-built, asynchronous write pipeline, which is an extension to the native HBase pipeline, to accomplish this effort.</p>
-            <p>If you're importing data from an S3 bucket on AWS, please review our <a href="ConfigureS3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
+            <p>If you're importing data from an S3 bucket on AWS, please review our <a href="developers_ingestion_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
             <div class="noteIcon">Our <a href="#">Importing HFile Data tutorial</a> walks you through using our HFile import procedure, which has improved performance but requires extra work on your part, and lacks constraint checking.</div>
             <h2><a name="Syntax"></a>SYSCS_UTIL.IMPORT_DATA</h2>
             <p>The principal means for importing data into your Splice Machine database is to use the <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> built-in system procedure. Another procedure, <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> uses identical syntax and performs almost exactly the same function; the difference is that the <span class="CodeFont">UPSERT</span>&#160;function inserts new records and updates existing records. For the purposes of this tutorial, we'll use the <span class="CodeFont">IMPORT</span>&#160;function.</p>
-            <div class="noteIcon">You'll find complete descriptions of the the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/ImportData.html">SYSCS_UTIL.IMPORT_DATA</a></span> and <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/UpsertDataFromFile.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a></span> built-in system procedures in the <span class="ItalicFont"><a href="../../SQLReference/BuiltInSysProcs/Intro.BuiltInSysProcs.html">SQL&#160;Reference Manual</a></span>.</div>
+            <div class="noteIcon">You'll find complete descriptions of the the <span class="CodeFont"><a href="sqlref_sysprocs_intro.html">SQL&#160;Reference Manual</a></span>.</div>
             <p>The syntax for calling the <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span>&#160;procedure includes a large number of parameters:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA (
 		<span class="ItalicFont">schemaName</span>,
@@ -39,7 +39,7 @@ folder: Developers/IngestionAndStreaming
 		<span class="ItalicFont">charset</span><span class="CodeFont"> |&#160;null</span>
 		);</pre>
             </div>
-            <p>These parameters are described in detail in the <a href="../../SQLReference/BuiltInSysProcs/ImportData.html">SQL&#160;Reference Manual</a>; here are brief descriptions:</p>
+            <p>These parameters are described in detail in the <a href="sqlref_sysprocs_importdata.html">SQL&#160;Reference Manual</a>; here are brief descriptions:</p>
             <table>
                 <col />
                 <col />
@@ -71,15 +71,15 @@ folder: Developers/IngestionAndStreaming
                         <td class="CodeFont">fileOrDirectoryName</td>
                         <td>
                             <p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
-                            <p>If you're importing data from an S3 bucket on AWS, please review our <a href="ConfigureS3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
+                            <p>If you're importing data from an S3 bucket on AWS, please review our <a href="developers_ingestion_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
                             <p>See these tips:</p>
                             <ul class="bullet">
-                                <li value="1"><a href="#Tip" class="MCXref xref" xrefformat="{para}">Tip #1: &#160;Specifying the File Location
+                                <li value="1"><a href="#Tip">Tip #1: &#160;Specifying the File Location
 </a>
                                 </li>
-                                <li value="2"><a href="#Tip2" class="MCXref xref" xrefformat="{para}">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</a>
+                                <li value="2"><a href="#Tip2">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</a>
                                 </li>
-                                <li value="3"><a href="#Tip3" class="MCXref xref" xrefformat="{para}">Tip #3:&#160;&#160;Don't Compress Your Files With&#160;GZIP</a>
+                                <li value="3"><a href="#Tip3">Tip #3:&#160;&#160;Don't Compress Your Files With&#160;GZIP</a>
                                 </li>
                             </ul>
                         </td>
@@ -92,7 +92,7 @@ folder: Developers/IngestionAndStreaming
                         <td class="CodeFont">columnDelimiter</td>
                         <td>
                             <p>The character used to separate columns, Specify <span class="CodeFont">null</span> if using the comma (<span class="CodeFont">,</span>)&#160;character as your delimiter. </p>
-                            <p>See <a href="#Tip4" class="MCXref xref" xrefformat="{para}">Tip #4:&#160;&#160;Use Special Characters for Delimiters</a>.</p>
+                            <p>See <a href="#Tip4">Tip #4:&#160;&#160;Use Special Characters for Delimiters</a>.</p>
                         </td>
                         <td class="CodeFont">
                             <p>'|'</p>
@@ -102,7 +102,7 @@ folder: Developers/IngestionAndStreaming
                         <td class="CodeFont">characterDelimiter</td>
                         <td>
                             <p>The character is used to delimit strings in the imported data. </p>
-                            <p>See <a href="#Tip4" class="MCXref xref" xrefformat="{para}">Tip #4:&#160;&#160;Use Special Characters for Delimiters</a>.</p>
+                            <p>See <a href="#Tip4">Tip #4:&#160;&#160;Use Special Characters for Delimiters</a>.</p>
                         </td>
                         <td class="CodeFont">''</td>
                     </tr>
@@ -110,7 +110,7 @@ folder: Developers/IngestionAndStreaming
                         <td class="CodeFont">timestampFormat</td>
                         <td>
                             <p>The format of timestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no time columns in the file, or if the format of any timestamps in the file match the <span class="CodeFont">Java.sql.Timestamp</span> default format, which is: "<span class="ItalicFont">yyyy-MM-dd HH:mm:ss</span>".</p>
-                            <p>See <a href="#Tip5" class="MCXref xref" xrefformat="{para}">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
+                            <p>See <a href="#Tip5">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
                         </td>
                         <td class="CodeFont">
                             <p>'yyyy-MM-dd HH:mm:ss.SSZ'</p>
@@ -120,7 +120,7 @@ folder: Developers/IngestionAndStreaming
                         <td class="CodeFont">dateFormat</td>
                         <td>
                             <p>The format of datestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no date columns in the file, or if the format of any dates in the file match pattern: "<span class="ItalicFont">yyyy-MM-dd</span>".</p>
-                            <p>See <a href="#Tip5" class="MCXref xref" xrefformat="{para}">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
+                            <p>See <a href="#Tip5">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
                         </td>
                         <td class="CodeFont">yyyy-MM-dd</td>
                     </tr>
@@ -128,7 +128,7 @@ folder: Developers/IngestionAndStreaming
                         <td class="CodeFont">timeFormat</td>
                         <td>
                             <p>The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "<span class="ItalicFont">HH:mm:ss</span>".</p>
-                            <p>See <a href="#Tip5" class="MCXref xref" xrefformat="{para}">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
+                            <p>See <a href="#Tip5">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
                         </td>
                         <td class="CodeFont">HH:mm:ss</td>
                     </tr>
@@ -146,7 +146,7 @@ folder: Developers/IngestionAndStreaming
                         <td class="CodeFont">badRecordDirectory</td>
                         <td>
                             <p>The directory in which bad record information is logged. Splice Machine logs information to the <span class="CodeFont"><span class="CodeItalicFont">&lt;import_file_name&gt;</span>.bad</span> file in this directory; for example, bad records in an input file named <span class="CodeFont">foo.csv</span> would be logged to a file named <span class="ItalicFont">badRecordDirectory</span><span class="CodeFont">/foo.csv.bad</span>.</p>
-                            <p>See <a href="#Tip6" class="MCXref xref" xrefformat="{para}">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a>.</p>
+                            <p>See <a href="#Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a>.</p>
                         </td>
                         <td class="CodeFont">'importErrsDir'</td>
                     </tr>
@@ -154,7 +154,7 @@ folder: Developers/IngestionAndStreaming
                         <td class="CodeFont">oneLineRecords</td>
                         <td>
                             <p>A&#160;Boolean value that specifies whether (<span class="CodeFont">true</span>) each record in the import file is contained in one input line, or (<span class="CodeFont">false</span>)&#160;if a record can span multiple lines. </p>
-                            <p>See <a href="#Tip7" class="MCXref xref" xrefformat="{para}">Tip #7:&#160;&#160;Importing Multi-line Records</a>.</p>
+                            <p>See <a href="#Tip7">Tip #7:&#160;&#160;Importing Multi-line Records</a>.</p>
                         </td>
                         <td class="CodeFont">true</td>
                     </tr>
@@ -171,15 +171,15 @@ folder: Developers/IngestionAndStreaming
             <h2><a name="Import"></a>Import Examples</h2>
             <p>This section provides several examples of importing data into Splice Machine:</p>
             <ul>
-                <li value="1"><a href="#Example1" class="MCXref xref" xrefformat="{para}">Example 1: Importing data into a table with fewer columns than in the file</a>
+                <li value="1"><a href="#Example1">Example 1: Importing data into a table with fewer columns than in the file</a>
                 </li>
-                <li value="2"><a href="#Example2" class="MCXref xref" xrefformat="{para}">Example 2: Importing a subset of data from a file into a table</a>
+                <li value="2"><a href="#Example2">Example 2: Importing a subset of data from a file into a table</a>
                 </li>
-                <li value="3"><a href="#Example" class="MCXref xref" xrefformat="{para}">Example 3: Specifying a timestamp format for an entire table</a>
+                <li value="3"><a href="#Example">Example 3: Specifying a timestamp format for an entire table</a>
                 </li>
-                <li value="4"><a href="#Example3" class="MCXref xref" xrefformat="{para}">Example 4:&#160;Importing strings with embedded special characters </a>
+                <li value="4"><a href="#Example3">Example 4:&#160;Importing strings with embedded special characters </a>
                 </li>
-                <li value="5"><a href="#Example4" class="MCXref xref" xrefformat="{para}">Example 5:&#160;Using single quotes to delimit strings</a>
+                <li value="5"><a href="#Example4">Example 5:&#160;Using single quotes to delimit strings</a>
                 </li>
             </ul>
             <h3><a name="Example1"></a>Example 1: Importing data into a table with fewer columns than in the file</h3>
@@ -250,24 +250,24 @@ This is the second line of the field',Baker
             <h2><a name="Tips"></a><a name="kanchor39"></a>Tips for Importing Data into Splice&#160;Machine</h2>
             <p>This tutorial contains a number of tips that our users have found very useful in determining the parameter settings to use when running an import:</p>
             <ol>
-                <li value="1"><a href="#Tip"><a href="#Tip" class="MCXref xref" xrefformat="{para}">Tip #1: &#160;Specifying the File Location
+                <li value="1"><a href="#Tip"><a href="#Tip">Tip #1: &#160;Specifying the File Location
 </a></a>
                 </li>
-                <li value="2"><a href="#Tip2"><a href="#Tip2" class="MCXref xref" xrefformat="{para}">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</a></a>
+                <li value="2"><a href="#Tip2"><a href="#Tip2">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</a></a>
                 </li>
-                <li value="3"><a href="#Tip3"><a href="#Tip3" class="MCXref xref" xrefformat="{para}">Tip #3:&#160;&#160;Don't Compress Your Files With&#160;GZIP</a></a>
+                <li value="3"><a href="#Tip3"><a href="#Tip3">Tip #3:&#160;&#160;Don't Compress Your Files With&#160;GZIP</a></a>
                 </li>
-                <li value="4"><a href="#Tip4"><a href="#Tip4" class="MCXref xref" xrefformat="{para}">Tip #4:&#160;&#160;Use Special Characters for Delimiters</a></a>
+                <li value="4"><a href="#Tip4"><a href="#Tip4">Tip #4:&#160;&#160;Use Special Characters for Delimiters</a></a>
                 </li>
-                <li value="5"><a href="#Tip5"><a href="#Tip5" class="MCXref xref" xrefformat="{para}">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a></a>
+                <li value="5"><a href="#Tip5"><a href="#Tip5">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a></a>
                 </li>
-                <li value="6"><a href="#Tip6"><a href="#Tip6" class="MCXref xref" xrefformat="{para}">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a></a>
+                <li value="6"><a href="#Tip6"><a href="#Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a></a>
                 </li>
-                <li value="7"><a href="#Tip7"><a href="#Tip7" class="MCXref xref" xrefformat="{para}">Tip #7:&#160;&#160;Importing Multi-line Records</a></a>
+                <li value="7"><a href="#Tip7"><a href="#Tip7">Tip #7:&#160;&#160;Importing Multi-line Records</a></a>
                 </li>
-                <li value="8"><a href="#Tip8"><a href="#Tip8" class="MCXref xref" xrefformat="{para}">Tip #8:&#160;&#160;Importing CLOBs and BLOBs</a></a>
+                <li value="8"><a href="#Tip8"><a href="#Tip8">Tip #8:&#160;&#160;Importing CLOBs and BLOBs</a></a>
                 </li>
-                <li value="9"><a href="#Tip9"><a href="#Tip9" class="MCXref xref" xrefformat="{para}">Tip #9:&#160;&#160;Scripting Your Imports</a></a>
+                <li value="9"><a href="#Tip9"><a href="#Tip9">Tip #9:&#160;&#160;Scripting Your Imports</a></a>
                 </li>
             </ol>
             <h3><a name="Tip"></a>Tip #1: &#160;Specifying the File Location

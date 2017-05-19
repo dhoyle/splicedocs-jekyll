@@ -39,7 +39,7 @@ folder: SQLReference/Statements
             </div>
             <p class="heading2">Syntax for Tables</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="#PrivilegeTypes">privilege-type</a></span> 
-   ON [ TABLE ] { <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span> | <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ViewName">view-Name</a></span> } 
+   ON [ TABLE ] { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> } 
    FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span></pre>
             </div>
             <div class="paramList">
@@ -80,7 +80,7 @@ folder: SQLReference/Statements
             </div>
             <p class="heading2">Syntax for User-defined types</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">REVOKE USAGE 
-   ON TYPE  [ <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="../Identifiers/Intro.Identifiers.html">SQL Identifier</a></span> 
+   ON TYPE  [ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span> 
    FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span> RESTRICT</pre>
             </div>
             <div class="paramList">
@@ -93,7 +93,7 @@ folder: SQLReference/Statements
                 <p class="paramDefn">The <span class="CodeFont">RESTRICT</span> clause specifies that the <span class="CodeFont">EXECUTE</span> privilege cannot be revoked if the specified UDT is used in a view, trigger, or constraint, and the privilege is being revoked from the owner of the view, trigger, or constraint.</p>
             </div>
             <p class="heading2">Syntax for Roles</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#RoleName">roleName</a></span> [ {, <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#RoleName">roleName</a></span> }* ] 
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> }* ] 
    FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span></pre>
             </div>
             <div class="paramList">
@@ -106,8 +106,8 @@ folder: SQLReference/Statements
             <p class="heading2"><a name="AboutGrantees"></a>About Grantees</p>
             <p>A grantee can be one or more specific users, one or more specific roles, or all users (<span class="CodeFont">PUBLIC</span>). Either the object owner or the database owner can grant privileges to a user or to a role. Only the database owner can grant a role to a user or to another role.</p>
             <p>Here's the syntax:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#AuthorizationIdentifier">AuthorizationIdentifier</a></span> | <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#RoleName">roleName</a></span> | PUBLIC } 
- [, { <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#AuthorizationIdentifier">AuthorizationIdentifier</a></span> | <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#RoleName">roleName</a></span> | PUBLIC } ] *</pre>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } 
+ [, { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } ] *</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">AuthorizationIdentifier</p>
@@ -150,7 +150,7 @@ folder: SQLReference/Statements
                     </tr>
                     <tr>
                         <td class="CodeFont">SELECT</td>
-                        <td>To revoke permission to perform <a href="Select.html"><span class="CodeFont">SELECT</span> statements</a> or <span class="ItalicFont"><a href="../Expressions/Select.html">SelectExpressions</a></span> on a table or view. If a column list is specified with the <span class="CodeFont">SELECT</span> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <span class="CodeFont">SELECT</span> statement or <span class="ItalicFont">SelectExpression</span> (for example, queries that use <samp>COUNT(*)</samp>), the user must have at least one column-level <span class="CodeFont">SELECT</span> privilege or table-level <span class="CodeFont">SELECT</span> privilege.</p></td>
+                        <td>To revoke permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a></span> on a table or view. If a column list is specified with the <span class="CodeFont">SELECT</span> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <span class="CodeFont">SELECT</span> statement or <span class="ItalicFont">SelectExpression</span> (for example, queries that use <samp>COUNT(*)</samp>), the user must have at least one column-level <span class="CodeFont">SELECT</span> privilege or table-level <span class="CodeFont">SELECT</span> privilege.</p></td>
                     </tr>
                     <tr>
                         <td class="CodeFont">TRIGGER</td>
@@ -158,7 +158,7 @@ folder: SQLReference/Statements
                     </tr>
                     <tr>
                         <td class="CodeFont">UPDATE</td>
-                        <td>To revoke permission to use the <span class="CodeFont"><a href="UpdateTable.html">UPDATE</a></span> statement on the specified table. If a column list is specified, the permission applies only to the specified columns. To update a row using a statement that includes a <span class="CodeFont"><a href="../Clauses/Where.html">WHERE</a></span> clause, you must have the <span class="CodeFont">SELECT</span> privilege on the columns in the row that you want to update.</td>
+                        <td>To revoke permission to use the <span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause, you must have the <span class="CodeFont">SELECT</span> privilege on the columns in the row that you want to update.</td>
                     </tr>
                 </tbody>
             </table>
@@ -233,17 +233,17 @@ folder: SQLReference/Statements
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="CreateRole.html"><span class="CodeFont">CREATE&#160;ROLE</span></a>&#160;statement</li>
-                <li value="2"><a href="DropRole.html"><span class="CodeFont">DROP_ROLE</span></a> statement</li>
-                <li value="3"><a href="Grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
-                <li value="4"><a href="../Identifiers/IdentifierTypes.html#RoleName"><span class="CodeFont">RoleName</span></a>
+                <li value="1"><a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE&#160;ROLE</span></a>&#160;statement</li>
+                <li value="2"><a href="sqlref_statements_droprole.html"><span class="CodeFont">DROP_ROLE</span></a> statement</li>
+                <li value="3"><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
+                <li value="4"><a href="sqlref_identifiers_types.html#RoleName"><span class="CodeFont">RoleName</span></a>
                 </li>
-                <li value="5"><a href="SetRole.html"><span class="CodeFont">SET&#160;ROLE</span></a> statement</li>
-                <li value="6"><a href="../Expressions/Select.html"><span class="CodeFont">SELECT</span></a>&#160;expression</li>
-                <li value="7"><a href="Select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
-                <li value="8"><a href="../SystemTables/SysRoles.html"><span class="CodeFont">SYSROLES</span></a>&#160;system table</li>
-                <li value="9"><a href="UpdateTable.html"><span class="CodeFont">UPDATE</span></a> statement</li>
-                <li value="10"><a href="../Clauses/Where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
+                <li value="5"><a href="sqlref_statements_setrole.html"><span class="CodeFont">SET&#160;ROLE</span></a> statement</li>
+                <li value="6"><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;expression</li>
+                <li value="7"><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
+                <li value="8"><a href="sqlref_systables_sysroles.html"><span class="CodeFont">SYSROLES</span></a>&#160;system table</li>
+                <li value="9"><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span></a> statement</li>
+                <li value="10"><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>

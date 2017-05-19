@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2673,7 +2673,7 @@
   	<section>
 		<div class="TopicContent">
             <h1><a name="BuiltInFcns.Sum" id="BuiltInFcns.Sum"></a><a name="kanchor206"></a>SUM</h1>
-            <p><span class="CodeFont">SUM</span>returns the sum of values of an expression over a set of rows. You can use it as an <a href="Intro.WindowAggregrateFcns.html">aggregate function</a> or as a <a href="Intro.WindowAggregrateFcns.html">window (analytic)&#160;function</a>.</p>
+            <p><span class="CodeFont">SUM</span>returns the sum of values of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
             <p>The <span class="CodeFont">SUM</span>&#160;function function takes as an argument any numeric data type or any non-numeric data type that can be implicitly converted to a numeric data type. The function returns the same data type as the numeric data type of the argument.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SUM ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
@@ -2682,13 +2682,13 @@
                 <p class="paramName">DISTINCT
             </p>
                 <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated</p>
-                <p class="paramDefn">If you specify <span class="CodeFont">DISTINCT</span>&#160;in the analytic version of <span class="CodeFont">SUM</span>, the <span class="CodeFont"><a href="../Clauses/Over.html">OVER</a></span>&#160;clause for your window function cannot include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause or a <span class="ItalicFont">frame clause</span>.</p>
+                <p class="paramDefn">If you specify <span class="CodeFont">DISTINCT</span>&#160;in the analytic version of <span class="CodeFont">SUM</span>, the <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause for your window function cannot include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause or a <span class="ItalicFont">frame clause</span>.</p>
                 <p class="paramName"><span class="ItalicFont">ALL</span>
                 </p>
                 <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.</p>
                 <p class="paramName">Expression
             </p>
-                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="../DataTypes/Decimal.html"><span class="CodeFont">DECIMAL</span></a>, <a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a>, <a href="../DataTypes/Float.html"><span class="CodeFont">FLOAT</span></a>, <a href="../DataTypes/Integer.html"><span class="CodeFont">INTEGER</span></a>, <a href="../DataTypes/BigInt.html"><span class="CodeFont">BIGINT</span></a>, <a href="../DataTypes/Numeric.html"><span class="CodeFont">NUMERIC</span></a>, <a href="../DataTypes/Real.html"><span class="CodeFont">REAL</span></a>, or <a href="../DataTypes/SmallInt.html"><span class="CodeFont">SMALLINT</span></a>.</p>
+                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>.</p>
                 <p class="paramDefn">An <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery.</p>
                 <p class="paramDefn">If an <span class="ItalicFont">Expression</span>evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
             </div>
@@ -2759,19 +2759,20 @@ Giants   |Martin Cassman          |20833333            |132811110
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                <li value="1"><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>
-                <li value="2"><a href="Intro.WindowAggregrateFcns.html">Window and aggregate</a> functions</li>
-                <li value="3"><a href="Avg.html"><span class="CodeFont">AVG</span></a> function</li>
-                <li value="4"><a href="Count.html"><span class="CodeFont">COUNT</span></a> function</li>
-                <li value="5"><a href="Max.html"><span class="CodeFont">MAX</span></a> function</li>
-                <li value="6"><a href="Min.html"><span class="CodeFont">MIN</span></a> function</li>
-                <li value="7"><a href="../Clauses/Over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
-                <li value="8"><span class="ItalicFont"><a href="../../Developers/Fundamentals/UsingWindowFunctions.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
+                <li value="2"><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and aggregate</a> functions</li>
+                <li value="3"><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>
+                <li value="4"><a href="sqlref_builtinfcns_count.html"><span class="CodeFont">COUNT</span></a> function</li>
+                <li value="5"><a href="sqlref_builtinfcns_max.html"><span class="CodeFont">MAX</span></a> function</li>
+                <li value="6"><a href="sqlref_builtinfcns_min.html"><span class="CodeFont">MIN</span></a> function</li>
+                <li value="7"><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
+                <li value="8"><span class="ItalicFont"><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2787,7 +2788,7 @@ Giants   |Martin Cassman          |20833333            |132811110
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

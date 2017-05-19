@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2675,7 +2675,7 @@
             <h1><a name="kanchor455"></a>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</h1>
             <p>You can use the <span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span> to schedule a full or incremental backup job that runs at a specified time each day. </p>
             <div class="noteNote">You specify the scheduled start hour of the backup in Greenwich Mean Time (GMT).</div>
-            <p>Note that you can subsequently cancel a scheduled backup job with the <span class="CodeFont"><a href="CancelDailyBackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span> system procedure, which permanently unschedules the backup. For more information, see the <span class="ItalicFont"><a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html">Backing Up and Restoring</a></span> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+            <p>Note that you can subsequently cancel a scheduled backup job with the <span class="CodeFont"><a href="onprem_admin_backingup.html">Backing Up and Restoring</a></span> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_DATABASE( 
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
@@ -2686,12 +2686,12 @@
             <div class="paramList">
                 <p class="paramName">backupDir</p>
                 <p class="paramDefnFirst">Specifies the path to the directory in which you want the backup stored. This can be a local directory if you're using the standalone version of Splice Machine, or a directory in your cluster's file system (HDFS or MapR-FS).</p>
-                <div class="noteNote">You must have permissions set properly to use cloud storage as a backup destination. See <a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html#Backing">Backing Up to Cloud Storage</a> in the <span class="ItalicFont">Administrator's Guide</span> for information about setting backup permissions properties.</div>
+                <div class="noteNote">You must have permissions set properly to use cloud storage as a backup destination. See <a href="onprem_admin_backingup.html#Backing">Backing Up to Cloud Storage</a> in the <span class="ItalicFont">Administrator's Guide</span> for information about setting backup permissions properties.</div>
                 <p class="paramDefn">Relative paths are resolved
 based on the current user directory. To avoid confusion, we strongly recommend that you use an absolute path when specifying the backup destination.</p>
                 <p class="paramName">backupType</p>
                 <p class="paramDefnFirst">Specifies the type of backup that you want performed. This must be one of the following values: <span class="CodeFont">'full'</span> or "<span class="CodeFont">'incremental'</span>; any other value produces an error and the backup is not run.</p>
-                <p class="paramDefn">Note that if you specify <span class="CodeFont">'incremental'</span>, Splice Machine checks the <a href="../SystemTables/SysBackup.html"><span class="CodeFont">SYS.SYSBACKUP</span></a> table to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental.</p>
+                <p class="paramDefn">Note that if you specify <span class="CodeFont">'incremental'</span>, Splice Machine checks the <a href="sqlref_systables_sysbackup.html"><span class="CodeFont">SYS.SYSBACKUP</span></a> table to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental.</p>
                 <p class="paramName">startHour</p>
                 <p class="paramDefnFirst">Specifies the hour (<span class="CodeFont">0-23</span>)&#160;<span class="BoldFont">in GMT</span> at which you want the backup to run each day. A value less than <span class="CodeFont">0</span> or greater than <span class="CodeFont">23</span>  produces an error and the backup is not scheduled.</p>
             </div>
@@ -2712,19 +2712,20 @@ Statement executed.</pre>
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
-                <li value="2"><a href="BackupDatabase.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>
-                <li value="3"><a href="CancelDailyBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li value="4"><a href="DeleteBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a> built-in system procedure</li>
-                <li value="5"><a href="DeleteBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
-                <li value="6"><a href="RestoreDatabase.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
-                <li value="7"><span class="CodeFont"><a href="../SystemTables/SysBackup.html">SYSBACKUP</a></span> system table</li>
-                <li value="8"><span class="CodeFont"><a href="../SystemTables/SysBackupItems.html">SYSBACKUPITEMS</a></span> system table</li>
-                <li value="9"><span class="CodeFont"><a href="../SystemTables/SysBackupJobs.html">SYSBACKUPJOBS</a></span> system table</li>
+                <li value="1"><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+                <li value="2"><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>
+                <li value="3"><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li value="4"><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a> built-in system procedure</li>
+                <li value="5"><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
+                <li value="6"><a href="sqlref_sysprocs_restoredb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
+                <li value="7"><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
+                <li value="8"><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
+                <li value="9"><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2740,7 +2741,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

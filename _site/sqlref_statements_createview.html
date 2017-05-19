@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2677,11 +2677,11 @@
             <p>If a qualified view name is specified, the schema name cannot begin with <span class="ItalicFont">SYS</span>.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">
-CREATE VIEW <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ViewName">view-Name</a></span>
-   [ ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> [, <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>] * ) ]
-   AS <span class="ItalicFont"><a href="../Queries/Query.html">Query</a></span> [ <span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span> ]<span>
-     [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">RESULT&#160;OFFSET&#160;clause</a></span> ]
-     [ <span class="ItalicFont"><a href="../Clauses/ResultOffset.html">FETCH&#160;FIRST clause</a></span> ] </span></pre>
+CREATE VIEW <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span>
+   [ ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>] * ) ]
+   AS <span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span> ]<span>
+     [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">RESULT&#160;OFFSET&#160;clause</a></span> ]
+     [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">FETCH&#160;FIRST clause</a></span> ] </span></pre>
             </div>
             <p>A view definition can contain an optional view column list to explicitly name the columns in the view. If there is no column list, the view inherits the column names from the underlying query. All columns in a view must be uniquely named.</p>
             <div class="paramList">
@@ -2693,7 +2693,7 @@ CREATE VIEW <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.htm
                 <p class="paramName">AS&#160;Query [ORDER&#160;BY&#160;clause]</p>
                 <p class="paramDefnFirst">A <span class="CodeFont">SELECT</span> or <span class="CodeFont">VALUES</span> command that provides the columns and rows of the view.</p>
                 <p class="paramName">result offset and fetch first clauses</p>
-                <p class="paramDefnFirst">The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">RESULT&#160;OFFSET</span> clause</a>  provides a way to skip the N first rows in a result set before starting to add rows to the view. The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">FETCH&#160;FIRST</span> clause</a>, which can be combined with the <span class="CodeFont">RESULT&#160;OFFSET</span> clause, limits the number of rows added to the view.</p>
+                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">FETCH&#160;FIRST</span> clause</a>, which can be combined with the <span class="CodeFont">RESULT&#160;OFFSET</span> clause, limits the number of rows added to the view.</p>
             </div>
             <p class="heading2">Examples</p>
             <p class="body">This example creates a view that shows the age of each player in our database:</p>
@@ -2765,12 +2765,13 @@ splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
             <p>Is dependent on view <span class="ItalicFont">V1</span>, table <span class="ItalicFont">T1,</span> and external scalar function  <span class="ItalicFont">SIN.</span></p>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="DropView.html"><span class="CodeFont">DROP&#160;VIEW</span></a>&#160;statement</li>
-                <li value="2"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a> clause</li>
+                <li value="1"><a href="sqlref_statements_dropview.html"><span class="CodeFont">DROP&#160;VIEW</span></a>&#160;statement</li>
+                <li value="2"><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a> clause</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2786,7 +2787,7 @@ splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

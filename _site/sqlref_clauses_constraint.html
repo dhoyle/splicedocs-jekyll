@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2673,7 +2673,7 @@
   	<section>
 		<div class="TopicContent">
             <h1><a name="Clauses.Constraint" id="Clauses.Constraint"></a><a name="kanchor496"></a>CONSTRAINT</h1>
-            <p>A <span class="CodeFont">CONSTRAINT</span> clause is a rule to which data must conform, and is an optional part of <a href="../Statements/CreateTable.html"><span class="CodeFont">CREATE TABLE</span></a> and <a href="../Statements/AlterTable.html"><span class="CodeFont">ALTER TABLE</span></a> statements. Constraints can optionally be named.</p>
+            <p>A <span class="CodeFont">CONSTRAINT</span> clause is a rule to which data must conform, and is an optional part of <a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER TABLE</span></a> statements. Constraints can optionally be named.</p>
             <p>There are two types of constraints:</p>
             <div class="paramList">
                 <p class="paramName">column-level constraints</p>
@@ -2712,7 +2712,7 @@ REFERENCES clause
                 <p class="paramName">PRIMARY KEY</p>
                 <p class="paramDefnFirst">Specifies the column that uniquely identifies a row in the table. The identified columns must be defined as <span class="CodeFont">NOT NULL</span>.</p>
                 <div class="noteNote">At this time, you <span class="BoldFont">cannot</span> add a primary key using <span class="CodeFont">ALTER TABLE</span>. </div>
-                <div class="noteNote">If you attempt to add a primary key using <span class="CodeFont">ALTER TABLE</span> and any of the columns included in the primary key contain null values, an error will be generated and the primary key will not be added. See <a href="../Statements/AlterTable.html"><span class="CodeFont">ALTER TABLE</span> statement</a> for more information.</div>
+                <div class="noteNote">If you attempt to add a primary key using <span class="CodeFont">ALTER TABLE</span> and any of the columns included in the primary key contain null values, an error will be generated and the primary key will not be added. See <a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER TABLE</span> statement</a> for more information.</div>
                 <p class="paramName">UNIQUE</p>
                 <p class="paramDefnFirst">Specifies that values in the column must be unique.</p>
                 <p class="paramName">FOREIGN KEY</p>
@@ -2723,21 +2723,21 @@ REFERENCES clause
             <p class="heading2"><a name="TableConstraint" id="TableConstraint"></a>Table Constraints</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">[CONSTRAINT <span class="ItalicFont">constraint-Name</span>]
 {
-&#160;&#160;&#160;PRIMARY KEY ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>
-&#160;&#160;&#160;[ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> ]* )
+&#160;&#160;&#160;PRIMARY KEY ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>
+&#160;&#160;&#160;[ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* )
 }</pre>
             </div>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">[CONSTRAINT <span class="ItalicFont">constraint-Name</span>]
 {
 &#160;&#160;&#160;CHECK (<span class="ItalicFont">searchCondition</span>) |
 &#160;&#160;&#160;{
-&#160;&#160;&#160;PRIMARY KEY ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>
-&#160;&#160;&#160;[ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) |
-&#160;&#160;&#160;UNIQUE ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>
-&#160;&#160;&#160;[ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) |
+&#160;&#160;&#160;PRIMARY KEY ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>
+&#160;&#160;&#160;[ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) |
+&#160;&#160;&#160;UNIQUE ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>
+&#160;&#160;&#160;[ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) |
 &#160;&#160;&#160;FOREIGN KEY (
-&#160;&#160;&#160;<span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>
-&#160;&#160;&#160;[ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span> ]* )
+&#160;&#160;&#160;<span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>
+&#160;&#160;&#160;[ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* )
 &#160;&#160;&#160;<span class="ItalicFont">REFERENCES clause</span>
 &#160;&#160;&#160;}
 }</pre>
@@ -2790,17 +2790,17 @@ REFERENCES clause
             </div>
             <p>Any attempt to insert or update a record with a salary value out of that range would fail.</p>
             <p class="heading2"><a name="SearchCondition" id="SearchCondition"></a>Search Condition</p>
-            <p>A <span class="ItalicFont">searchCondition</span> is any <a href="../Expressions/BooleanExpressions.html">Boolean expression</a> that
+            <p>A <span class="ItalicFont">searchCondition</span> is any <a href="sqlref_expressions_boolean.html">Boolean expression</a> that
 	meets the requirements specified below. If a <span class="ItalicFont">constraint-Name</span> is not specified, Splice Machine generates
 	a unique constraint name (for either column or table constraints).</p>
             <p class="heading3">Requirements for search condition</p>
-            <p>If a check constraint is specified as part of a column-definition, a column reference can only be made to the same column. Check constraints specified as part of a table definition can have column references identifying columns previously defined in the <span class="CodeFont"><a href="../Statements/CreateTable.html">CREATE TABLE</a></span> statement.</p>
+            <p>If a check constraint is specified as part of a column-definition, a column reference can only be made to the same column. Check constraints specified as part of a table definition can have column references identifying columns previously defined in the <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE TABLE</a></span> statement.</p>
             <p> The search condition must always return the same value if applied to the same values. Thus, it cannot contain any of the following:</p>
             <ul>
                 <li value="1">Dynamic parameters</li>
-                <li value="2">Date/Time Functions (<span class="CodeFont"><a href="../BuiltInFcns/CurrentDate.html">CURRENT_DATE</a></span>, <span class="CodeFont"><a href="../BuiltInFcns/CurrentTime.html">CURRENT_TIME</a></span>, <span class="CodeFont"><a href="../BuiltInFcns/CurrentTimestamp.html">CURRENT_TIMESTAMP</a></span>)</li>
+                <li value="2">Date/Time Functions (<span class="CodeFont"><a href="sqlref_builtinfcns_currenttimestamp.html">CURRENT_TIMESTAMP</a></span>)</li>
                 <li value="3">Subqueries</li>
-                <li value="4">User Functions (such as <span class="CodeFont"><a href="../BuiltInFcns/User.html">USER</a></span>, <span class="CodeFont"><a href="../BuiltInFcns/SessionUser.html">SESSION_USER</a></span>, <span class="CodeFont"><a href="../BuiltInFcns/CurrentUser.html">CURRENT_USER</a></span>)</li>
+                <li value="4">User Functions (such as <span class="CodeFont"><a href="sqlref_builtinfcns_currentuser.html">CURRENT_USER</a></span>)</li>
             </ul>
             <p class="heading2">Examples</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- column-level primary key constraint named OUT_TRAY_PK:
@@ -2855,25 +2855,26 @@ PRIMARY KEY (FLIGHT_ID, SEGMENT_NUMBER)
 );</pre>
             </div>
             <p class="heading2">Statement dependency system</p>
-            <p><span class="CodeFont"><a href="../Statements/Insert.html">INSERT</a></span>
-	and <span class="CodeFont"><a href="../Statements/UpdateTable.html">UPDATE</a></span> statements depend on all constraints on the target table.</p>
-            <p><span class="CodeFont"><a href="../Statements/Delete.html">DELETE</a></span> statements
+            <p><span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span>
+	and <span class="CodeFont"><a href="sqlref_expressions_table.html">UPDATE</a></span> statements depend on all constraints on the target table.</p>
+            <p><span class="CodeFont"><a href="sqlref_statements_delete.html">DELETE</a></span> statements
 	depend on unique<span>, primary key, and foreign key constraints</span>. </p>
             <p>These statements
 	are invalidated if a constraint is added to or dropped from the target table.</p>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../Statements/AlterTable.html"><span class="CodeFont">ALTER&#160;TABLE</span></a>&#160;statement</li>
-                <li value="2"><a href="../Statements/CreateTable.html"><span class="CodeFont">CREATE&#160;TABLE</span></a>&#160;statement</li>
-                <li value="3"><a href="../Statements/Insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
-                <li value="4"><a href="../Statements/Delete.html"><span class="CodeFont">DELETE</span></a>&#160;statement</li>
-                <li value="5"><a href="../../Developers/Fundamentals/ForeignKeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
-                <li value="6"><a href="../../Developers/Fundamentals/DatabaseTriggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
-                <li value="7"><a href="../Statements/UpdateTable.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
+                <li value="1"><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER&#160;TABLE</span></a>&#160;statement</li>
+                <li value="2"><a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE&#160;TABLE</span></a>&#160;statement</li>
+                <li value="3"><a href="sqlref_statements_insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
+                <li value="4"><a href="sqlref_statements_delete.html"><span class="CodeFont">DELETE</span></a>&#160;statement</li>
+                <li value="5"><a href="developers_fundamentals_foreignkeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li value="6"><a href="developers_fundamentals_triggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li value="7"><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2889,7 +2890,7 @@ PRIMARY KEY (FLIGHT_ID, SEGMENT_NUMBER)
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

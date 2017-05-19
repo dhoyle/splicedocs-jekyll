@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -670,7 +670,7 @@
             <p>You can access <span class="CodeFont">ORC</span>&#160;and <span class="CodeFont">PARQUET</span>&#160;files that have been compressed with either Snappy or ZLIb compression; however, you cannot use a compressed plain text file.</p>
             <h2>About External Tables</h2>
             <p>You can use Splice Machine external tables to query the contents of flat files that are stored outside of your database. You query external tables pretty much the same way as you do the tables in your database.</p>
-            <p>External tables reference files that are stored in a flat file format such as Apache Parquet or Apache Orc, both of which are columnar storage formats that are available in Hadoop. You can use the <span class="CodeFont"><a href="../../SQLReference/Statements/CreateExternalTable.html">CREATE EXTERNAL TABLE</a></span> statement to create an external table that is connected to a specific flat file.</p>
+            <p>External tables reference files that are stored in a flat file format such as Apache Parquet or Apache Orc, both of which are columnar storage formats that are available in Hadoop. You can use the <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE EXTERNAL TABLE</a></span> statement to create an external table that is connected to a specific flat file.</p>
             <h2>Using External Tables</h2>
             <p>This section presents several examples of using external tables with Splice Machine.</p>
             <p class="heading3">Accessing a Parquet File</p>
@@ -717,16 +717,17 @@ splice&gt;&#160;CREATE EXTERNAL TABLE myTextTable(<br />&#160;&#160;&#160;col1 I
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE EXTERNAL TABLE myExtTbl (<br /> &#160;&#160;&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;COMPRESSED&#160;WITH&#160;SNAPPY<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;STORED AS PARQUET<br />&#160;&#160;&#160;LOCATION '/users/myname/myParquetFile';<br />0 rows inserted/updated/deleted</pre>
             </div>
             <h2>Manually Refreshing an External Tables</h2>
-            <p>If the schema of the file represented by an external table is updated, Splice&#160;Machine needs to refresh its representation. When you use the external table, Spark caches its schema in memory to improve performance; as long as you are using Spark to modify the table, it is smart enough to refresh the cached schema. However, if the table schema is modified outside of Spark, you need to call the <samp><a href="../../SQLReference/BuiltInSysProcs/RefreshExternalTable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></samp> built-in system procedure. For example:</p>
+            <p>If the schema of the file represented by an external table is updated, Splice&#160;Machine needs to refresh its representation. When you use the external table, Spark caches its schema in memory to improve performance; as long as you are using Spark to modify the table, it is smart enough to refresh the cached schema. However, if the table schema is modified outside of Spark, you need to call the <samp><a href="sqlref_sysprocs_refreshexttable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></samp> built-in system procedure. For example:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE('APP', 'myExtTable');
 Statement executed.</pre>
             </div>
             <p class="heading2">See Also</p>
-            <p data-mc-conditions="">The <span class="CodeFont"><a href="../../SQLReference/Statements/CreateExternalTable.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span> statement.</p>
-            <p data-mc-conditions="">The <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/RefreshExternalTable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></span> built-in system procedure.</p>
+            <p data-mc-conditions="">The <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span> statement.</p>
+            <p data-mc-conditions="">The <span class="CodeFont"><a href="sqlref_sysprocs_refreshexttable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></span> built-in system procedure.</p>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -742,7 +743,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

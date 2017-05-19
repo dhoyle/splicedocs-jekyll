@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2673,19 +2673,19 @@
   	<section>
 		<div class="TopicContent">
             <h1><a name="kanchor135"></a>DENSE_RANK()</h1>
-            <p><span class="CodeFont">DENSE_RANK()</span> is a <span class="ItalicFont">ranking function</span> that returns the rank of a value within the ordered partition of values defined by its <span class="CodeFont">OVER</span>&#160;clause. Ranking functions are a subset of <a href="Intro.WindowAggregrateFcns.html">window functions</a>.</p>
+            <p><span class="CodeFont">DENSE_RANK()</span> is a <span class="ItalicFont">ranking function</span> that returns the rank of a value within the ordered partition of values defined by its <span class="CodeFont">OVER</span>&#160;clause. Ranking functions are a subset of <a href="sqlref_builtinfcns_windowfcnsintro.html">window functions</a>.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">DENSE_RANK() OVER ( <span class="ItalicFont">overClause</span> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">overClause</p>
-                <p class="paramDefnFirst">See the <span class="CodeFont"><a href="../Clauses/Over.html">OVER</a></span>&#160;clause documentation.</p>
-                <div class="noteNote">Ranking functions such as <span class="CodeFont">DENSE_RANK</span>&#160;must include an <span class="CodeFont"><a href="../Clauses/OrderBy.html">ORDER&#160;BY</a></span>&#160;clause in the <span class="CodeFont">OVER</span>&#160;clause. This is because the ranking is calculated based on the ordering.</div>
+                <p class="paramDefnFirst">See the <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause documentation.</p>
+                <div class="noteNote">Ranking functions such as <span class="CodeFont">DENSE_RANK</span>&#160;must include an <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></span>&#160;clause in the <span class="CodeFont">OVER</span>&#160;clause. This is because the ranking is calculated based on the ordering.</div>
             </div>
             <p class="heading2">Results</p>
-            <p>The resulting data type is <span class="CodeFont"><a href="../DataTypes/BigInt.html">BIGINT</a></span>.</p>
+            <p>The resulting data type is <span class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a></span>.</p>
             <p class="heading2">Usage</p>
-            <p>The <span class="CodeFont">DENSE_RANK()</span> and <span class="CodeFont"><a href="Rank.html">RANK()</a></span> analytic functions are very similar. The difference shows up when there are multiple input rows that have the same ranking value. When that happens:</p>
+            <p>The <span class="CodeFont">DENSE_RANK()</span> and <span class="CodeFont"><a href="sqlref_builtinfcns_rank.html">RANK()</a></span> analytic functions are very similar. The difference shows up when there are multiple input rows that have the same ranking value. When that happens:</p>
             <ul>
                 <li value="1">The <span class="CodeFont">DENSE_RANK()</span>&#160;function always returns consecutive rankings:if values in the ranking column are the same, they receive the same rank, and the next number in the ranking sequence is then used to rank the row or rows that follow.</li>
                 <li value="2">The <span class="CodeFont">RANK()</span>&#160;function can generate non-consecutive ranking result values: if values in the ranking column are the same (tie values), they receive the same rank; however, the next number in the ranking sequence is then skipped, which means that <span class="CodeFont">RANK</span>&#160;can return non-consecutive numbers.</li>
@@ -2815,15 +2815,16 @@ Jason Minman            |Giants    |2015  |1000000             |24
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="Intro.WindowAggregrateFcns.html">Window and Aggregate </a>functions</li>
-                <li value="2"><a href="../DataTypes/BigInt.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>
-                <li value="3"><a href="Rank.html"><span class="CodeFont">RANK</span></a>&#160;function</li>
-                <li value="4"><a href="../Clauses/Over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
-                <li value="5"><span class="ItalicFont"><a href="../../Developers/Fundamentals/UsingWindowFunctions.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
+                <li value="1"><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
+                <li value="2"><a href="sqlref_builtinfcns_bigint.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>
+                <li value="3"><a href="sqlref_builtinfcns_rank.html"><span class="CodeFont">RANK</span></a>&#160;function</li>
+                <li value="4"><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
+                <li value="5"><span class="ItalicFont"><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2839,7 +2840,7 @@ Jason Minman            |Giants    |2015  |1000000             |24
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

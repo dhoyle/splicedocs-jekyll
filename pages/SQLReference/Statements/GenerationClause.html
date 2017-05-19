@@ -15,7 +15,7 @@ folder: SQLReference/Statements
             </div>
             <div class="paramList">
                 <p class="paramName">value-expression</p>
-                <p class="paramDefnFirst">An <span class="ItalicFont"><a href="../Expressions/AboutExpressions.html">Expression</a></span> that resolves to a single value, with some limitations:</p>
+                <p class="paramDefnFirst">An <span class="ItalicFont"><a href="sqlref_expressions_about.html">Expression</a></span> that resolves to a single value, with some limitations:</p>
                 <p class="paramDefn">
                     <ul>
                         <li value="1">The <span class="ItalicFont">generation-clause</span> may reference other non-generated columns in the table, but it must not reference any generated column. The <span class="ItalicFont">generation-clause</span> must not reference a column in another table.</li>
@@ -29,7 +29,7 @@ folder: SQLReference/Statements
             <ul>
                 <li value="1">The functions must not read or write SQL data.</li>
                 <li value="2">The functions must have been declared <span class="CodeFont">DETERMINISTIC</span>.</li>
-                <li value="3">The functions must not invoke any of the following possibly non-deterministic system functions:<br /><ul class="SecondLevel"><li class="CodeFont" value="1"><a href="../BuiltInFcns/CurrentDate.html">CURRENT_DATE</a></li><li class="CodeFont" value="2"><a href="../BuiltInFcns/CurrentTime.html">CURRENT_TIME</a></li><li class="CodeFont" value="3"><a href="../BuiltInFcns/CurrentTimestamp.html">CURRENT_TIMESTAMP</a></li><li class="CodeFont" value="4"><a href="../BuiltInFcns/CurrentUser.html">CURRENT_USER</a></li><li class="CodeFont" value="5"><a href="../BuiltInFcns/CurrentRole.html">CURRENT_ROLE</a></li><li class="CodeFont" value="6"><a href="../BuiltInFcns/CurrentSchema.html">CURRENT SCHEMA</a></li><li class="CodeFont" value="7"><a href="../BuiltInFcns/SessionUser.html">SESSION_USER</a></li></ul></li>
+                <li value="3">The functions must not invoke any of the following possibly non-deterministic system functions:<br /><ul class="SecondLevel"><li class="CodeFont" value="1"><a href="sqlref_builtinfcns_sessionuser.html">SESSION_USER</a></li></ul></li>
             </ul>
             <p class="heading2">Example</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE TABLE employee(

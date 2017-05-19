@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -681,10 +681,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="CodeFont"><a href="../../SQLReference/Statements/CreateTempTable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span>
+                        <td><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span>
                         </td>
                         <td>
-                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <span class="ItalicFont"><a href="../../SQLReference/Identifiers/IdentifierTypes.html#TableName">table-Name</a></span> {
+                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span> {
       ( {<span class="ItalicFont">column-definition</span> | <span class="ItalicFont">Table-level constraint</span>}
          [ , {<span class="ItalicFont">column-definition</span>} ] * )
       ( <span class="ItalicFont">column-name</span> [ , <span class="ItalicFont">column-name</span> ] * ) 
@@ -694,10 +694,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="CodeFont"><a href="../../SQLReference/Statements/DeclareGlobalTempTable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span>
+                        <td><span class="CodeFont"><a href="sqlref_expressions_table.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span>
                         </td>
                         <td>
-                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">DECLARE GLOBAL TEMPORARY TABLE <span class="ItalicFont"><a href="../../SQLReference/Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>
+                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">DECLARE GLOBAL TEMPORARY TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span>
    { <span class="ItalicFont">column-definition</span>[ , <span class="ItalicFont">column-definition</span>] * }  
     [ON COMMIT PRESERVE ROWS ]
     [NOT LOGGED];
@@ -721,11 +721,11 @@
             <ul>
                 <li value="1">exist only while a user session is alive</li>
                 <li value="2">are visible in system tables, but are otherwise not visible to other sessions or transactions</li>
-                <li value="3">cannot be altered using the <span class="CodeFont"><a href="../../SQLReference/Statements/AlterTable.html">ALTER&#160;TABLE</a></span>, <span class="CodeFont"><a href="../../SQLReference/Statements/RenameTable.html">RENAME&#160;TABLE</a></span>, or <span class="CodeFont"><a href="../../SQLReference/Statements/RenameColumn.html">RENAME&#160;COLUMN</a></span>&#160;statements</li>
+                <li value="3">cannot be altered using the <span class="CodeFont"><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></span>&#160;statements</li>
                 <li value="4">do not get backed up</li>
                 <li value="5">cannot be used as data providers to views</li>
                 <li value="6">cannot be referenced by foreign keys in other tables</li>
-                <li value="7">are not displayed by the <a href="../../CmdLineReference/ShowCmds.html">show</a> command</li>
+                <li value="7">are not displayed by the <a href="cmdlineref_showcmds.html">show</a> command</li>
             </ul>
             <p>Also note that temporary tables persist across transactions in a session and are automatically dropped when a session terminates.</p>
             <h3><a name="Table"></a>Table Persistence</h3>
@@ -733,7 +733,7 @@
             <ul>
                 <li value="1">persist across transactions in a session</li>
                 <li value="2">are automatically dropped when a session terminates or expires</li>
-                <li value="3">can also be dropped with the <span class="CodeFont"><a href="../../SQLReference/Statements/DropTable.html">DROP&#160;TABLE</a></span>&#160;statement</li>
+                <li value="3">can also be dropped with the <span class="CodeFont"><a href="sqlref_expressions_table.html">DROP&#160;TABLE</a></span>&#160;statement</li>
             </ul>
             <h2>Example</h2><pre class="Example" xml:space="preserve">create local temporary table temp_num_dt (
    smallint_col smallint not null,   
@@ -746,17 +746,18 @@ select * from temp_num_dt;
 </pre>
             <h2>See Also</h2>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="../../SQLReference/Statements/AlterTable.html">ALTER&#160;TABLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="2"><span class="CodeFont"><a href="../../SQLReference/Statements/CreateTempTable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="3"><span class="CodeFont"><a href="../../SQLReference/Statements/DeclareGlobalTempTable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="4"><span class="CodeFont"><a href="../../SQLReference/Statements/DropTable.html">DROP TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="5"><span class="CodeFont"><a href="../../SQLReference/Statements/RenameColumn.html">RENAME&#160;COLUMN</a></span>&#160;statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="6"><span class="CodeFont"><a href="../../SQLReference/Statements/RenameTable.html">RENAME&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="7"><span class="CodeFont"><a href="../../CmdLineReference/ShowCmds.html">SHOW</a></span>&#160;command </li>
+                <li value="1"><span class="CodeFont"><a href="sqlref_expressions_table.html">ALTER&#160;TABLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="2"><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="3"><span class="CodeFont"><a href="sqlref_expressions_table.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="4"><span class="CodeFont"><a href="sqlref_expressions_table.html">DROP TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="5"><span class="CodeFont"><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></span>&#160;statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="6"><span class="CodeFont"><a href="sqlref_expressions_table.html">RENAME&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="7"><span class="CodeFont"><a href="cmdlineref_showcmds.html">SHOW</a></span>&#160;command </li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -772,7 +773,7 @@ select * from temp_num_dt;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -13,9 +13,9 @@ folder: SQLReference/BuiltInSysProcs
             <p>The <samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp> system procedure computes the split keys for a table or index, prior to importing that table in HFile format. </p>
             <p>You must use this procedure in conjunction with two others:</p>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>
+                <li value="1"><span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>
                 </li>
-                <li value="2"> <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span></li>
+                <li value="2"> <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span></li>
             </ul>
             <p>See the <span class="ItalicFont">Usage Notes</span> section for more information and the <span class="ItalicFont">Example</span> section to see an example of using these procedures together.</p>
             <p class="heading2">Syntax</p>
@@ -38,8 +38,8 @@ folder: SQLReference/BuiltInSysProcs
 		);</pre>
             </div>
             <div class="noteNote">
-                <p>Almost all of the parameter values that you pass to this procedure should match the parameter values that you pass to the <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span> procedure. </p>
-                <p>Also note that these parameters are also used in exactly the same was as they are in the <span class="CodeFont"><a href="ImportData.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;and <span class="CodeFont"><a href="UpsertDataFromFile.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a></span>&#160;procedures.</p>
+                <p>Almost all of the parameter values that you pass to this procedure should match the parameter values that you pass to the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span> procedure. </p>
+                <p>Also note that these parameters are also used in exactly the same was as they are in the <span class="CodeFont"><a href="sqlref_sysprocs_upsertdata.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a></span>&#160;procedures.</p>
             </div>
             <div class="paramList">
                 <p class="paramName">schemaName</p>
@@ -168,12 +168,12 @@ folder: SQLReference/BuiltInSysProcs
                     <ul class="nested">
                         <li class="nested" value="1">The keys are encoded in HBase escape string format. </li>
                         <li class="nested" value="2">The keys are written to a file named <span class="CodeFont">keys</span> in a subdirectory of the specified <span class="CodeFont">outputDirectory</span>.</li>
-                        <li class="nested" value="3">The name of the subdirectory in which the keys are written is the conglomerate ID&#160;for the named table; the <span class="CodeFont"><a href="../../CmdLineReference/CmdShowTables.html">SHOW&#160;TABLES</a></span>&#160;command displays a table's conglomerate ID.&#160;</li>
+                        <li class="nested" value="3">The name of the subdirectory in which the keys are written is the conglomerate ID&#160;for the named table; the <span class="CodeFont"><a href="cmdlineref_showtables.html">SHOW&#160;TABLES</a></span>&#160;command displays a table's conglomerate ID.&#160;</li>
                     </ul>
                 </div>
             </div>
             <p class="heading2">Results</p>
-            <p><samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp> generates a keys file, which you use in conjunction with the <span class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span> system procedure to establish splits for your table, prior to calling the <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;system procedure to import your data.</p>
+            <p><samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp> generates a keys file, which you use in conjunction with the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;system procedure to import your data.</p>
             <p class="heading2"><a name="TimestampFormats"></a>About Timestamp Formats</p>
             <div>
                 <p>Splice Machine uses the following Java date and time pattern letters to construct timestamps:</p>
@@ -302,7 +302,7 @@ folder: SQLReference/BuiltInSysProcs
                     </tbody>
                 </table>
             </div>
-            <p>Please see <span class="ItalicFont"><a href="../../Developers/Fundamentals/WorkingWithDates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
+            <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
             <p class="heading2"><a name="Usage"></a>Usage Notes</p>
             <p class="body">As mentioned earlier, you need to use these three Splice&#160;Machine system procedures together:</p>
             <ul>
@@ -310,7 +310,7 @@ folder: SQLReference/BuiltInSysProcs
                 <li value="2"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span> sets up the splits in Splice&#160;Machine</li>
                 <li value="3"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>&#160;splits your input file into HFiles, imports your data, and then removes the HFiles</li>
             </ul>
-            <p>Alternatively, you can use  <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> with <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>. The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
+            <p>Alternatively, you can use  <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> with <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>. The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
             <p>The process is as follows (and is shown in more detail in <span class="ItalicFont">Example 1</span> and <span class="ItalicFont">Example 2</span> below):</p>
             <div class="opsStepsList">
                 <ol>
@@ -322,9 +322,9 @@ folder: SQLReference/BuiltInSysProcs
                         </div>
                     </li>
                     <li value="2">Store those keys in a CSV&#160;file.</li>
-                    <li value="3"> If you're using the combination of <span class="CodeFont"><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span> and <span class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>:<ol class="LowerAlphaPlainFont"><li value="1">Pass that CSV&#160;file into the <span class="CodeFont"><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure to compute the split row keys.</li><li value="2"><p>Examine the computed (and encoded)&#160;row keys, which were written to a file named keys in a subdirectory of your <span class="CodeFont">OutputDirectory</span>. </p><p>The name of the subdirectory is the conglomerate ID&#160;for the named table. You can find a table's conglomerate ID&#160;with the <span class="CodeFont"><a href="../../CmdLineReference/CmdShowTables.html">SHOW&#160;TABLES</a></span>&#160;command.&#160;</p></li><li value="3">Copy the encoded keys to your clipboard.</li><li value="4">Call the <span class="CodeFont"><a href="SplitTableAtPoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>&#160;procedure, passing in the row key values from your clipboard. This splits your table inside the database.</li></ol><p>If you are using  the single procedure <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> instead:</p><ol class="LowerAlphaPlainFont"><li value="1">Pass that CSV&#160;file into the <span class="CodeFont"><a href="SplitTable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
+                    <li value="3"> If you're using the combination of <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
                     <li value="4">Repeat steps 1, 2, and 3 to split the indexes on your table.</li>
-                    <li value="5">Call the <span class="CodeFont"><a href="BulkImportHFile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
+                    <li value="5">Call the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
                 </ol>
             </div>
             <p class="heading2"><a name="Examples"></a>Example 1</p>
@@ -529,11 +529,11 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on LINEITEM(
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="BulkImportHFile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
+                <li value="1"><a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
                 </li>
-                <li value="2"><a href="SplitTable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span></a>
+                <li value="2"><a href="sqlref_sysprocs_splittable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span></a>
                 </li>
-                <li value="3"><a href="SplitTableAtPoints.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span></a>
+                <li value="3"><a href="sqlref_sysprocs_splittableatpoints.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span></a>
                 </li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>

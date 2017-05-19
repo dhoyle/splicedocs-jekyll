@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2674,14 +2674,14 @@
 		<div class="TopicContent">
             <h1><a name="Expressions.NextValueFor" id="Expressions.NextValueFor"></a><a name="kanchor497"></a>NEXT VALUE FOR Expression</h1>
             <p>The <span class="CodeFont">NEXT VALUE FOR</span> expression retrieves the next value from a sequence generator that was created with a
-		<a href="../Statements/CreateSequence.html"><span class="CodeFont">CREATE SEQUENCE</span> statement</a>.</p>
+		<a href="sqlref_statements_createsequence.html"><span class="CodeFont">CREATE SEQUENCE</span> statement</a>.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapper"><pre class="FcnSyntax">NEXT VALUE FOR <span class="ItalicFont">sequenceName</span></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">sequenceName</p>
                 <p class="paramDefnFirst">A sequence name is an identifier that can optionally be qualified by a schema name:</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax">[ <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="../Identifiers/Intro.Identifiers.html">SQLIdentifier</a></span></pre>
+                <div class="fcnWrapper"><pre class="FcnSyntax">[ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQLIdentifier</a></span></pre>
                 </div>
                 <p class="paramDefnFirst">If <span class="ItalicFont">schemaName</span> is not provided, the current schema is the default schema. If a qualified sequence name is specified, the schema name cannot begin with the <span class="CodeFont">SYS. </span>prefix.</p>
             </div>
@@ -2698,12 +2698,12 @@
             <p>In order to retrieve the next value of a sequence generator, you or your session's current role must have <span class="CodeFont">USAGE</span> privilege on the generator.</p>
             <p>A <span class="CodeFont">NEXT VALUE FOR</span> expression may occur in the following places:</p>
             <ul>
-                <li value="1"><a href="../Statements/Select.html"><span class="CodeFont">SELECT</span> statement</a>:
+                <li value="1"><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span> statement</a>:
 			As part of the expression defining a returned column in a <span class="CodeFont">SELECT</span> list</li>
-                <li value="2"><a href="Values.html"><span class="CodeFont">VALUES</span> expression</a>:
+                <li value="2"><a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span> expression</a>:
 				As part of the expression defining a column in a row constructor (<span class="CodeFont">VALUES</span>
 			expression)</li>
-                <li value="3"><a href="../Statements/UpdateTable.html"><span class="CodeFont">UPDATE</span> statement</a>;
+                <li value="3"><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span> statement</a>;
 				As part of the expression defining the new value to which a column is being
 			set</li>
             </ul>
@@ -2715,14 +2715,14 @@
 		<span class="CodeFont">DISTINCT</span> or <span class="CodeFont">ORDER BY</span> expression.</p>
             <p>A <span class="CodeFont">NEXT VALUE</span> expression <span class="BoldFont">may not appear</span> in any of these situations:</p>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="Case.html">CASE</a></span> expression</li>
-                <li value="2"><span class="CodeFont"><a href="../Clauses/Where.html">WHERE</a></span> clause</li>
-                <li value="3"><span class="CodeFont"><a href="../Clauses/OrderBy.html">ORDER BY</a></span> clause</li>
-                <li value="4"><a href="../BuiltInFcns/Intro.WindowAggregrateFcns.html">Aggregate expression</a>
+                <li value="1"><span class="CodeFont"><a href="sqlref_expressions_case.html">CASE</a></span> expression</li>
+                <li value="2"><span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause</li>
+                <li value="3"><span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER BY</a></span> clause</li>
+                <li value="4"><a href="sqlref_builtinfcns_windowfcnsintro.html">Aggregate expression</a>
                 </li>
-                <li value="5"><a href="../BuiltInFcns/Intro.WindowAggregrateFcns.html">Window functions</a>
+                <li value="5"><a href="sqlref_builtinfcns_windowfcnsintro.html">Window functions</a>
                 </li>
-                <li value="6"><span class="CodeFont"><a href="../BuiltInFcns/RowNumber.html">ROW_NUMBER</a></span> function</li>
+                <li value="6"><span class="CodeFont"><a href="sqlref_builtinfcns_rownumber.html">ROW_NUMBER</a></span> function</li>
                 <li value="7"><span class="CodeFont">DISTINCT</span> select list</li>
             </ul>
             <p class="heading2">Examples</p>
@@ -2739,14 +2739,15 @@ UPDATE orders
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../Statements/CreateSequence.html"><span class="CodeFont">CREATE&#160;SEQUENCE</span></a>&#160;function</li>
-                <li value="2"><a href="../Statements/Select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
-                <li value="3"><a href="Values.html"><span class="CodeFont">VALUES</span></a>&#160;expression</li>
-                <li value="4"><a href="../Statements/UpdateTable.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
+                <li value="1"><a href="sqlref_statements_createsequence.html"><span class="CodeFont">CREATE&#160;SEQUENCE</span></a>&#160;function</li>
+                <li value="2"><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
+                <li value="3"><a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span></a>&#160;expression</li>
+                <li value="4"><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2762,7 +2763,7 @@ UPDATE orders
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2689,27 +2689,27 @@ constraints (column-level constraints).</p>
                 <p>Only database and schema owners can use the <span class="CodeFont">CREATE TABLE</span> statement, which means that table creation privileges cannot be granted to others.</p>
             </div>
             <p>For
-information about constraints, see <a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a>.</p>
+information about constraints, see <a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a>.</p>
             <p>You
 can specify a default value for a column. A default value is the value to
 be inserted into a column if no other value is specified. If not explicitly
 specified, the default value of a column is <span class="CodeFont">NULL</span>. </p>
             <p>If a qualified table name is specified, the schema name cannot
 begin with <span class="CodeFont">SYS</span>.</p>
-            <div class="noteNote">The <a href="CreateExternalTable.html">CREATE&#160;EXTERNAL&#160;TABLE</a>&#160;and <a href="PinTable.html">PIN&#160;TABLE</a>&#160;statements are documented separately in this section.</div>
+            <div class="noteNote">The <a href="sqlref_expressions_table.html">PIN&#160;TABLE</a>&#160;statements are documented separately in this section.</div>
             <p class="heading2">Syntax</p>
             <p>There are two different variants of the <span class="CodeFont">CREATE TABLE</span> statement,
  depending on whether you are specifying the column definitions and
  constraints, or whether you are modeling the columns after the
  results of a query expression with the <span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;form:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CREATE TABLE <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CREATE TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span>
   {
-      ( {<span class="ItalicFont"><a href="ColumnDefinition.html">column-definition</a></span> |
-         <span class="ItalicFont"><a href="../Clauses/Constraint.html#TableConstraint">Table-level constraint</a></span>}
-         [ , {<span class="ItalicFont"><a href="ColumnDefinition.html">column-definition</a></span>} ] * 
+      ( {<span class="ItalicFont"><a href="sqlref_statements_columndef.html">column-definition</a></span> |
+         <span class="ItalicFont"><a href="sqlref_clauses_constraint.html#TableConstraint">Table-level constraint</a></span>}
+         [ , {<span class="ItalicFont"><a href="sqlref_statements_columndef.html">column-definition</a></span>} ] * 
       )
   |
-      [ ( <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-name</a></span> [ , <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#ColumnName">column-name</a></span> ] * ) ]
+      [ ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnName">column-name</a></span> ] * ) ]
       AS <span class="ItalicFont">query-expression</span> [AS&#160;<span class="ItalicFont">&lt;name&gt;</span>]
       WITH NO DATA
    }
@@ -2799,7 +2799,7 @@ splice&gt;&#160;CREATE TABLE PEOPLE (
       CONSTRAINT&#160;People_PK&#160;PRIMARY&#160;KEY,
    Person VARCHAR(26) );
 0 rows inserted/updated/deleted</pre>
-                    <div class="noteNote">For more examples of <span class="CodeFont">CREATE TABLE</span> statements using the various constraints, see <a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a></div>
+                    <div class="noteNote">For more examples of <span class="CodeFont">CREATE TABLE</span> statements using the various constraints, see <a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a></div>
                 </div>
             </div>
             <p class="heading3">CREATE&#160;TABLE&#160;AS</p>
@@ -2825,18 +2825,19 @@ splice&gt;&#160;CREATE TABLE T3 (X,Y)
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="AlterTable.html"><span class="CodeFont">ALTER TABLE</span></a>&#160;statement</li>
-                <li value="2"><a href="CreateExternalTable.html"><span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span></a>&#160;statement</li>
-                <li value="3"><a href="PinTable.html"><span class="CodeFont">PIN&#160;TABLE</span></a>&#160;statement</li>
-                <li value="4"><a href="../Clauses/Constraint.html"><span class="CodeFont">CONSTRAINT</span></a> clause</li>
-                <li value="5"><span class="CodeFont"><a href="DropTable.html">DROP&#160;TABLE</a></span>&#160;statement</li>
-                <li value="6"><a href="UnpinTable.html"><span class="CodeFont">UNPIN&#160;TABLE</span></a>&#160;statement</li>
-                <li value="7"><a href="../../Developers/Fundamentals/ForeignKeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
-                <li value="8"><a href="../../Developers/Fundamentals/DatabaseTriggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li value="1"><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER TABLE</span></a>&#160;statement</li>
+                <li value="2"><a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span></a>&#160;statement</li>
+                <li value="3"><a href="sqlref_expressions_table.html"><span class="CodeFont">PIN&#160;TABLE</span></a>&#160;statement</li>
+                <li value="4"><a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span></a> clause</li>
+                <li value="5"><span class="CodeFont"><a href="sqlref_expressions_table.html">DROP&#160;TABLE</a></span>&#160;statement</li>
+                <li value="6"><a href="sqlref_expressions_table.html"><span class="CodeFont">UNPIN&#160;TABLE</span></a>&#160;statement</li>
+                <li value="7"><a href="developers_fundamentals_foreignkeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li value="8"><a href="developers_fundamentals_triggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2852,7 +2853,7 @@ splice&gt;&#160;CREATE TABLE T3 (X,Y)
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

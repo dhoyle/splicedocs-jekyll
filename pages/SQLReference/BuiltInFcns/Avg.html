@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 	<section>
 		<div class="TopicContent">
             <h1><a name="kanchor84"></a>AVG</h1>
-            <p><span class="CodeFont">AVG</span> evaluates the average of an expression over a set of rows. You can use it as an <a href="Intro.WindowAggregrateFcns.html">aggregate function</a> or as a <a href="Intro.WindowAggregrateFcns.html">window (analytic)&#160;function</a>.</p>
+            <p><span class="CodeFont">AVG</span> evaluates the average of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapper"><pre class="FcnSyntax">AVG ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
             </div>
@@ -23,12 +23,12 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.</p>
                 <p class="paramName">Expression
             </p>
-                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="../DataTypes/Decimal.html"><span class="CodeFont">DECIMAL</span></a>, <a href="../DataTypes/DoublePrecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a>, <a href="../DataTypes/Float.html"><span class="CodeFont">FLOAT</span></a>, <a href="../DataTypes/Integer.html"><span class="CodeFont">INTEGER</span></a>, <a href="../DataTypes/BigInt.html"><span class="CodeFont">BIGINT</span></a>, <a href="../DataTypes/Numeric.html"><span class="CodeFont">NUMERIC</span></a>, <a href="../DataTypes/Real.html"><span class="CodeFont">REAL</span></a>, or <a href="../DataTypes/SmallInt.html"><span class="CodeFont">SMALLINT</span></a>.</p>
+                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>.</p>
                 <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL data types. </p>
                 <p class="paramDefn">If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
             </div>
             <p class="heading2">Usage</p>
-            <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont"><a href="../Expressions/Select.html">Expression</a></span> is allowed. For example, the following query is not valid:</p>
+            <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont"><a href="sqlref_expressions_select.html">Expression</a></span> is allowed. For example, the following query is not valid:</p>
             <div class="preWrapperWide"><pre xml:space="preserve" class="Example">   --- query not valid 
 SELECT AVG (DISTINCT AtBats), SUM (DISTINCT Hits)
   FROM Batting;</pre>
@@ -41,7 +41,7 @@ SELECT AVG (DISTINCT AtBats), SUM (DISTINCT Hits)
   FROM (VALUES (1), (1), (1), (1), (2))
   AS myTable (c1);</pre>
             </div>
-            <p><a href="Cast.html"><span class="CodeFont">CAST</span></a> the expression to another data type if you want more precision:</p>
+            <p><a href="sqlref_builtinfcns_cast.html"><span class="CodeFont">CAST</span></a> the expression to another data type if you want more precision:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SELECT AVG(CAST (c1 AS DOUBLE PRECISION))
   FROM (VALUES (1), (1), (1), (1), (2)) AS myTable (c1);</pre>
             </div>
@@ -116,16 +116,16 @@ OF  |25    |8319                |962397.2500
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                <li value="1"><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>
-                <li value="2"><a href="Intro.WindowAggregrateFcns.html">Window and aggregate functions</a>
+                <li value="2"><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and aggregate functions</a>
                 </li>
-                <li value="3"><a href="Count.html"><span class="CodeFont">COUNT</span></a> function</li>
-                <li value="4"><a href="Max.html"><span class="CodeFont">MAX</span></a> function</li>
-                <li value="5"><a href="Min.html"><span class="CodeFont">MIN</span></a> function</li>
-                <li value="6"><a href="Sum.html"><span class="CodeFont">SUM</span></a> function</li>
-                <li value="7"><a href="../Clauses/Over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
-                <li value="8"><span class="ItalicFont"><a href="../../Developers/Fundamentals/UsingWindowFunctions.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
+                <li value="3"><a href="sqlref_builtinfcns_count.html"><span class="CodeFont">COUNT</span></a> function</li>
+                <li value="4"><a href="sqlref_builtinfcns_max.html"><span class="CodeFont">MAX</span></a> function</li>
+                <li value="5"><a href="sqlref_builtinfcns_min.html"><span class="CodeFont">MIN</span></a> function</li>
+                <li value="6"><a href="sqlref_builtinfcns_sum.html"><span class="CodeFont">SUM</span></a> function</li>
+                <li value="7"><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
+                <li value="8"><span class="ItalicFont"><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>

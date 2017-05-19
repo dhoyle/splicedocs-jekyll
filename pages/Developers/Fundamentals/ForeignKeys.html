@@ -11,7 +11,7 @@ folder: Developers/Fundamentals
 		<div class="TopicContent">
             <h1><a name="kanchor146"></a>Foreign Keys and Referential Integrity</h1>
             <p>This topic describes the Splice Machine implementation of <span class="ItalicFont">foreign keys</span> and how our implementation ensures referential integrity.</p>
-            <p>See our <span class="ItalicFont">SQL&#160;Reference Manual</span> for full reference information about defining foreign keys using <a href="../../SQLReference/Clauses/Constraint.html">constraint clauses</a> when <a href="../../SQLReference/Statements/CreateTable.html">creating </a>a database table.</p>
+            <p>See our <span class="ItalicFont">SQL&#160;Reference Manual</span> for full reference information about defining foreign keys using <a href="sqlref_expressions_table.html">creating </a>a database table.</p>
             <h2>About Foreign Keys</h2>
             <p>A foreign key is a column or group of columns in a relational database table that provides a link between data in two tables. A foreign key acts as a cross-reference between tables in that it references the primary key or unique key columns of another table, and thus establishes a link between them.</p>
             <p>The purpose of a foreign key is to identify a particular row of the referenced table; as such, the foreign key must be equal to the key in some row of the primary table, or else be <span class="CodeFont">null</span>. This rule is called a <span class="ItalicFont">referential integrity constraint between the two tables</span>, and is usually abbreviated as just <span class="ItalicFont">referential integrity</span>. </p>
@@ -27,7 +27,7 @@ folder: Developers/Fundamentals
             <p>The <span class="CodeFont">player_id</span> column in the <span class="ItalicFont">referencing</span> table is the foreign key that references the primary key <span class="CodeFont">player_id</span> in the <span class="ItalicFont">referenced</span> table. </p>
             <p>When you insert a new record into the referencing <span class="CodeFont">PlayerStats</span> table, the insertion must satisfy the foreign key constraint, which means that it must include a <span class="CodeFont">player_id</span> value that is present in the referenced <span class="CodeFont">Players</span> table. If this is not so, the insert operation fails in order to maintain the table's referential integrity.</p>
             <h3>About Foreign Key Constraints</h3>
-            <p>You can define a foreign key constraint on a table when you create the table with the <span class="CodeFont"><a href="../../SQLReference/Statements/CreateTable.html">CREATE&#160;TABLE</a></span>&#160;statement. Foreign key constraints are always immediate:&#160;a violation of a constraint immediately throws an exception.</p>
+            <p>You can define a foreign key constraint on a table when you create the table with the <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TABLE</a></span>&#160;statement. Foreign key constraints are always immediate:&#160;a violation of a constraint immediately throws an exception.</p>
             <p>Here's an example of defining a foreign key, in which we use the <span class="CodeFont">REFERENCES</span>&#160;clause of a column definition in a <span class="CodeFont">CREATE&#160;TABLE</span>&#160;statement:</p>
             <div class="preWrapper"><pre class="Example">CREATE TABLE t1 (c1 NUMERIC PRIMARY KEY);
 
@@ -35,7 +35,7 @@ CREATE TABLE t2 (
    c1 NUMERIC PRIMARY KEY,
    c2 NUMERIC REFERENCES t1(c1) );</pre>
             </div>
-            <p>And here's an example that uses the <span class="CodeFont"><a href="../../SQLReference/Clauses/Constraint.html">CONSTRAINT</a></span>&#160;clause to name the foreign key constraint:</p><pre class="Example" xml:space="preserve">CREATE TABLE t3 (
+            <p>And here's an example that uses the <span class="CodeFont"><a href="sqlref_clauses_constraint.html">CONSTRAINT</a></span>&#160;clause to name the foreign key constraint:</p><pre class="Example" xml:space="preserve">CREATE TABLE t3 (
    c1 NUMERIC, 
    c2 NUMERIC,
    CONSTRAINT t1_fkey FOREIGN KEY (c1) REFERENCES t1);</pre>
@@ -46,10 +46,10 @@ CREATE TABLE t2 (
    REFERENCES dept_21(employee_id, start_date));</pre>
             <h2>See Also</h2>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="../../SQLReference/Statements/AlterTable.html">ALTER&#160;TABLE</a></span>&#160;statement  in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="2"> <span class="CodeFont"><a href="../../SQLReference/Clauses/Constraint.html">CONSTRAINT</a></span> clause  in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="3"><span class="CodeFont"><a href="../../SQLReference/Statements/CreateTable.html">CREATE&#160;TABLE</a></span>&#160;statement  in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="4"><a href="DatabaseTriggers.html">Using Database Triggers</a>
+                <li value="1"><span class="CodeFont"><a href="sqlref_expressions_table.html">ALTER&#160;TABLE</a></span>&#160;statement  in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="2"> <span class="CodeFont"><a href="sqlref_clauses_constraint.html">CONSTRAINT</a></span> clause  in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="3"><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TABLE</a></span>&#160;statement  in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="4"><a href="developers_fundamentals_triggers.html">Using Database Triggers</a>
                 </li>
             </ul>
             <p>&#160;</p>

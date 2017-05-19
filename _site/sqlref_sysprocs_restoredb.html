@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2674,13 +2674,13 @@
 		<div class="TopicContent">
             <h1><a name="BuiltInSysProcs.DeleteBackup" id="BuiltInSysProcs.BackupDatabase"></a><a name="kanchor57"></a>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</h1>
             <p>The <samp>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</samp> system procedure
-restores your database to the state it was in when a specific backup was performed, using a backup that you previously created using either the <span class="CodeFont"><a href="BackupDatabase.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span>&#160;system procedure or the <span class="CodeFont"><a href="ScheduleDailyBackup.html">SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP</a></span>&#160;system procedure. </p>
+restores your database to the state it was in when a specific backup was performed, using a backup that you previously created using either the <span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP</a></span>&#160;system procedure. </p>
             <p>You can restore your database from any previous full or incremental backup.</p>
             <p>There are several important things to know about restoring your database from a previous backup:</p>
             <ul>
                 <li value="1">Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
                 <li value="2">You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
-                <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete. See the <a href="../../OnPremiseOnly/Administrators/ShuttingDownDatabase.html">Shutting Down Your Database</a> and <a href="../../OnPremiseOnly/Administrators/StartingDatabase.html">Starting Your Database</a> topics in this book for instructions on restarting your database.</li>
+                <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete. See the <a href="onprem_admin_startingdb.html">Starting Your Database</a> topics in this book for instructions on restarting your database.</li>
             </ul>
             <div class="noteIcon">If you are restoring from an incremental backup, you must first restore from the most recent full backup, and then incrementally restore from each subsequent incremental backup. See <a href="#Example">Example 2 below.</a></div>
             <p class="heading2">Syntax</p>
@@ -2695,7 +2695,7 @@ based on the current user directory. To avoid confusion, we strongly recommend t
                 <div class="noteNote">You must specify the backup's directory when you call this procedure because, if your database has become corrupted and needs to be restored, the data in the <span class="CodeFont">BACKUP.BACKUP</span> table (which includes the location of each backup) may also be corrupted.</div>
                 <p class="paramName">backupId</p>
                 <p class="paramDefnFirst">The ID&#160;of the backup job from which you want to restore your database. </p>
-                <p class="paramDefn">The system <a href="../SystemTables/SysBackup.html">Backups table</a> stores information about your backup jobs, including the <span class="CodeFont">backupId</span> assigned to each. See the <a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
+                <p class="paramDefn">The system <a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
             </div>
             <p class="heading2">Usage</p>
             <p class="body">Restoring you database can take a while, and has several major implications:</p>
@@ -2704,7 +2704,7 @@ based on the current user directory. To avoid confusion, we strongly recommend t
                 <ul>
                     <li value="1">Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
                     <li value="2">You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
-                    <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete by first  <a href="../../OnPremiseOnly/Administrators/ShuttingDownDatabase.html">Shutting Down Your Database</a> and then <a href="../../OnPremiseOnly/Administrators/StartingDatabase.html">Starting Your Database</a>.</li>
+                    <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete by first  <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
                 </ul>
             </div>
             <p>As noted at the top of this topic:&#160;if you are restoring from an incremental backup, you must first restore from the most recent full backup, and then incrementally restore from each subsequent incremental backup. See <a href="#Example">Example 2 below.</a></p>
@@ -2727,7 +2727,7 @@ BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESY
 
 splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 74101);
 Statement executed.</pre>
-            <p>Once the restoration is complete, reboot your database by the <a href="../../OnPremiseOnly/Administrators/ShuttingDownDatabase.html">Shutting Down Your Database</a> and then <a href="../../OnPremiseOnly/Administrators/StartingDatabase.html">Starting Your Database.</a></p>
+            <p>Once the restoration is complete, reboot your database by the <a href="onprem_admin_startingdb.html">Starting Your Database.</a></p>
             <h3><a name="Example"></a>Example 2 : Restore the Database from a Series of Incremental Backups</h3>
             <p>In this example, you have been running a daily incremental backup and want to restore it to the most recent version. Let's call the backups B1, B2, B3, and B4:</p>
             <ul>
@@ -2767,19 +2767,20 @@ Statement executed.</pre>
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="../../OnPremiseOnly/Administrators/BackupAndRestore.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
-                <li value="2"><a href="BackupDatabase.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>
-                <li value="3"><a href="CancelDailyBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li value="4"><a href="DeleteBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
-                <li value="5"><a href="DeleteOldBackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
-                <li value="6"><a href="ScheduleDailyBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li value="7"><span class="CodeFont"><a href="../SystemTables/SysBackup.html">SYSBACKUP</a></span> system table</li>
-                <li value="8"><span class="CodeFont"><a href="../SystemTables/SysBackupItems.html">SYSBACKUPITEMS</a></span> system table</li>
-                <li value="9"><span class="CodeFont"><a href="../SystemTables/SysBackupJobs.html">SYSBACKUPJOBS</a></span> system table</li>
+                <li value="1"><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+                <li value="2"><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>
+                <li value="3"><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li value="4"><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
+                <li value="5"><a href="sqlref_sysprocs_deleteoldbackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
+                <li value="6"><a href="sqlref_sysprocs_scheduledailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li value="7"><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
+                <li value="8"><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
+                <li value="9"><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2795,7 +2796,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

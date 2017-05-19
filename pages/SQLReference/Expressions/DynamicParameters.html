@@ -47,7 +47,7 @@ to be the type of the left operand.
    -- type assumed to be a TIMESTAMP</pre></div></li>
                 <li value="6">Use in a <span class="CodeFont">CAST</span> is always permitted. This gives the dynamic parameter a type.
 				<div class="preWrapper"><pre class="Example">CALL valueOf(CAST (? AS VARCHAR(10)))</pre></div></li>
-                <li value="7">Use on either or both sides of <span class="CodeFont">LIKE</span> operator is permitted. When used on the left, the type of the dynamic parameter is set to the type of the right operand, but with the maximum allowed length for the type. When used on the right, the type is assumed to be of the same length and type as the left operand. (<span class="CodeFont">LIKE</span> is permitted on <span class="CodeFont">CHAR</span> and <span class="CodeFont">VARCHAR</span> types; see <a href="../BuiltInFcns/Concatenation.html">Concatenation operator</a> for more information.)
+                <li value="7">Use on either or both sides of <span class="CodeFont">LIKE</span> operator is permitted. When used on the left, the type of the dynamic parameter is set to the type of the right operand, but with the maximum allowed length for the type. When used on the right, the type is assumed to be of the same length and type as the left operand. (<span class="CodeFont">LIKE</span> is permitted on <span class="CodeFont">CHAR</span> and <span class="CodeFont">VARCHAR</span> types; see <a href="sqlref_builtinfcns_concat.html">Concatenation operator</a> for more information.)
 				<div class="preWrapper"><pre class="Example">WHERE ? LIKE 'Santi%'
    -- type assumed to be CHAR with a length of
    -- java.lang.Integer.MAX_VALUE</pre></div></li>

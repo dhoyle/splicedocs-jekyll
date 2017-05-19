@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -2675,18 +2675,18 @@
             <h1><a name="Statements.Select" id="Statements.Select"></a><a name="kanchor434"></a>SELECT</h1>
             <p>Use the <span class="CodeFont">SELECT</span>&#160;statement to query a database and receive back results.</p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SELECT&#160;<span class="ItalicFont"><a href="../Queries/Query.html">Query</a></span>  
-   [<span class="ItalicFont"><a href="../Clauses/OrderBy.html">ORDER BY clause</a></span>]
-   [<span class="ItalicFont"><a href="../Clauses/ResultOffset.html">result offset clause</a></span>]
-   [<span class="ItalicFont"><a href="../Clauses/ResultOffset.html">fetch first clause</a></span>]</pre>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SELECT&#160;<span class="ItalicFont"><a href="sqlref_queries_query.html">Query</a></span>  
+   [<span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span>]
+   [<span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">result offset clause</a></span>]
+   [<span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></span>]</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">Query</p>
-                <p class="paramDefnFirst">The <span class="CodeFont">SELECT</span> statement is so named because the typical first word of the query construct is <span class="CodeFont">SELECT</span>. (<span class="ItalicFont">Query</span> includes the <span class="CodeFont"><a href="../Expressions/Values.html">VALUES</a></span> and <span class="CodeFont">UNION</span> expressions as well as <span class="CodeFont"><a href="../Expressions/Select.html">SELECT</a></span> expressions).</p>
+                <p class="paramDefnFirst">The <span class="CodeFont">SELECT</span> statement is so named because the typical first word of the query construct is <span class="CodeFont">SELECT</span>. (<span class="ItalicFont">Query</span> includes the <span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT</a></span> expressions).</p>
                 <p class="paramName">ORDER&#160;BY&#160;clause</p>
-                <p class="paramDefnFirst">The <span class="CodeFont"><a href="../Clauses/OrderBy.html">ORDER BY</a></span> clause allows you to order the results of the <span class="CodeFont">SELECT</span>. Without the <span class="CodeFont">ORDER BY</span> clause, the results are returned in random order.</p>
+                <p class="paramDefnFirst">The <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER BY</a></span> clause allows you to order the results of the <span class="CodeFont">SELECT</span>. Without the <span class="CodeFont">ORDER BY</span> clause, the results are returned in random order.</p>
                 <p class="paramName">result offset and fetch first clauses</p>
-                <p class="paramDefnFirst">The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">result offset</span> clause</a>  provides a way to skip the N first rows in a result set before starting to fetch results. The <a href="../Clauses/ResultOffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows fetched.</p>
+                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows fetched.</p>
             </div>
             <p class="heading2">Example</p>
             <p class="body">This examples selects all records in the Players table:</p>
@@ -2759,22 +2759,23 @@ Henry Socomy            |Giants    |1989-11-17
 13 rows selected</pre>
             </div>
             <p class="heading2">Statement dependency system</p>
-            <p>The <span class="CodeFont">SELECT</span> statement depends on all the tables and views named in the query and the conglomerates (units of storage such as heaps and indexes) chosen for access paths on those tables. <span class="CodeFont"><a href="CreateIndex.html">CREATE INDEX</a></span> does not invalidate a prepared <span class="CodeFont">SELECT</span> statement. A <span class="CodeFont"><a href="DropIndex.html">DROP INDEX</a></span> statement invalidates a prepared <span class="CodeFont">SELECT</span> statement if the index is an access path in the statement. If the <span class="CodeFont">SELECT</span> includes views, it also depends on the dictionary objects on which the view itself depends (see <a href="CreateView.html"><span class="CodeFont">CREATE VIEW</span> statement</a>).</p>
+            <p>The <span class="CodeFont">SELECT</span> statement depends on all the tables and views named in the query and the conglomerates (units of storage such as heaps and indexes) chosen for access paths on those tables. <span class="CodeFont"><a href="sqlref_statements_createview.html"><span class="CodeFont">CREATE VIEW</span> statement</a>).</p>
             <p>The <span class="CodeFont">SELECT</span> statements depends on all aliases used in the query. Dropping an alias invalidates any prepared <span class="CodeFont">SELECT</span> statement that uses the alias.</p>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="CreateIndex.html"><span class="CodeFont">CREATE&#160;INDEX</span></a>statement</li>
-                <li value="2"><a href="CreateView.html"><span class="CodeFont">CREATE&#160;VIEW</span></a>statement</li>
-                <li value="3"><a href="DropIndex.html"><span class="CodeFont">DROP&#160;INDEX</span></a>statement</li>
-                <li value="4"><a href="DropView.html"><span class="CodeFont">DROP&#160;VIEW</span></a>statement</li>
-                <li value="5"><a href="Grant.html"><span class="CodeFont">GRANT</span></a>statement</li>
-                <li value="6"><a href="../Clauses/OrderBy.html"><span class="CodeFont">ORDER&#160;BY</span></a>clause</li>
-                <li value="7"><a href="../Clauses/ResultOffset.html"><span class="CodeFont">FETCH&#160;FIRST</span></a>clause</li>
-                <li value="8"><a href="../Clauses/ResultOffset.html"><span class="CodeFont">RESULT&#160;OFFSET</span></a>clause</li>
+                <li value="1"><a href="sqlref_statements_createindex.html"><span class="CodeFont">CREATE&#160;INDEX</span></a>statement</li>
+                <li value="2"><a href="sqlref_statements_createview.html"><span class="CodeFont">CREATE&#160;VIEW</span></a>statement</li>
+                <li value="3"><a href="sqlref_statements_dropindex.html"><span class="CodeFont">DROP&#160;INDEX</span></a>statement</li>
+                <li value="4"><a href="sqlref_statements_dropview.html"><span class="CodeFont">DROP&#160;VIEW</span></a>statement</li>
+                <li value="5"><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>statement</li>
+                <li value="6"><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>clause</li>
+                <li value="7"><a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">FETCH&#160;FIRST</span></a>clause</li>
+                <li value="8"><a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">RESULT&#160;OFFSET</span></a>clause</li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -2790,7 +2791,7 @@ Henry Socomy            |Giants    |1989-11-17
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

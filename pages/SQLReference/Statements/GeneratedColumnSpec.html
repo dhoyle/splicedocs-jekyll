@@ -59,11 +59,11 @@ insert into greetings(ch) values ('bonjour'); </pre>
             <p>For <span class="CodeFont">SMALLINT</span>, <span class="CodeFont">INT</span>, and <span class="CodeFont">BIGINT</span> columns with identity attributes, Splice Machine automatically assigns increasing integer values to the column. Identity column attributes behave like other defaults in that when an insert statement does not specify a value for the column, Splice Machine automatically provides the value. However, the value is not a constant; Splice Machine automatically increments the default value at insertion time.</p>
             <p>The <span class="CodeFont">IDENTITY</span> keyword can only be specified if the data type associated with the column is one of the following exact integer types.</p>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="../DataTypes/SmallInt.html">SMALLINT</a></span>
+                <li value="1"><span class="CodeFont"><a href="sqlref_builtinfcns_smallint.html">SMALLINT</a></span>
                 </li>
-                <li value="2"><span class="CodeFont"><a href="../DataTypes/Integer.html">INT</a></span>
+                <li value="2"><span class="CodeFont"><a href="sqlref_builtinfcns_integer.html">INT</a></span>
                 </li>
-                <li value="3"><span class="CodeFont"><a href="../DataTypes/BigInt.html">BIGINT</a></span>
+                <li value="3"><span class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a></span>
                 </li>
             </ul>
             <p>By default, the initial value of an identity column is 1, and the amount of the increment is 1. You can specify any positive integer value for both the initial value and the interval amount when you define the column with the key words START WITH and INCREMENT BY. Splice Machine increments the value with each insert. A value of 0 raises a statement exception. </p>
@@ -101,7 +101,7 @@ insert into greetings(ch) values ('bonjour'); </pre>
                 </tbody>
             </table>
             <p>Automatically generated values in an identity column are unique. Use a primary key or unique constraint on a column to guarantee uniqueness. Creating an identity column <span class="ItalicFont">does not</span> create an index on the column.</p>
-            <p>The <samp><a href="../BuiltInFcns/IdentityValLocal.html">IDENTITY_VAL_LOCAL</a></samp> function is a non-deterministic function that returns the most recently assigned value for an identity column. </p>
+            <p>The <samp><a href="sqlref_builtinfcns_identityvallocal.html">IDENTITY_VAL_LOCAL</a></samp> function is a non-deterministic function that returns the most recently assigned value for an identity column. </p>
             <div class="noteNote">Specify the schema, table, and column name using the same case as those names are stored in the system tables--that is, all upper case unless you used delimited identifiers when creating those database objects.</div>
             <p class="heading2">Using Generated Columns</p>
             <p>Splice Machine keeps track of the last increment value for a column in a cache. It also stores the value of what the next increment value will be for the column on disk in the <span class="CodeFont">AUTOINCREMENTVALUE</span> column of the <span class="CodeFont">SYS.SYSCOLUMNS</span> system table. Rolling back a transaction does not undo this value, and thus rolled-back transactions can leave "gaps" in the values automatically inserted into an identity column. Splice Machine behaves this way to avoid locking a row in <span class="CodeFont">SYS.SYSCOLUMNS</span> for the duration of a transaction and keeping concurrency high. </p>

@@ -111,7 +111,7 @@
                 
                 
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home_starthere.html">Home</a></li>
                 
                 
                 
@@ -377,7 +377,7 @@
                 <div class="openSourceNote">
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: This feature is available only with a Splice Machine Enterprise license.</span>
                     </p>
-                    <p>You cannot use this feature with the Community version of Splice Machine. For a list of the additional features available in the Enterprise edition, see our  <a href="../../Notes/SpliceEditions.html">Splice&#160;Machine Editions</a> page.</p>
+                    <p>You cannot use this feature with the Community version of Splice Machine. For a list of the additional features available in the Enterprise edition, see our  <a href="notes_editions.html">Splice&#160;Machine Editions</a> page.</p>
                     <p>To obtain a license for the Splice&#160;Machine <span class="ItalicFont">Enterprise Edition</span>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
                 </div>
             </div>
@@ -465,7 +465,7 @@
             </ul>
             <div class="noteNote">You must make sure that the directory to which you are backing up or from which data is being restored is accessible to the HBase user who is initiating the restore. Make sure the directory permissions are set correctly on the backup directory.<br /><br />Note that you can store your backups in a cloud-based storage service such as AWS; for more information, see the <a href="#Backing">Backing Up to Cloud Storage</a> section below.</div>
             <h3><a name="Scheduling"></a>Scheduling a Daily Backup Job</h3>
-            <p>Use the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/ScheduleDailyBackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>&#160;system procedure to schedule a job that performs a daily incremental or full backup of your database:</p>
+            <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>&#160;system procedure to schedule a job that performs a daily incremental or full backup of your database:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP( <span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupType</span>, <span class="ItalicFont">startHour</span> );
 </pre>
             </div>
@@ -489,7 +489,7 @@
                 </div>
             </div>
             <h3><a name="Running"></a>Running an Immediate Backup</h3>
-            <p>Use the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/BackupDatabase.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span> system procedure to immediately run a full or incremental backup.</p>
+            <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span> system procedure to immediately run a full or incremental backup.</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( <span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupType</span> );
 </pre>
             </div>
@@ -505,20 +505,20 @@
                 </div>
                 <div>
                     <h4>Example 2:&#160;Execute an incremental backup now:</h4>
-                    <p>This call will run an incremental backup right now. Splice Machine checks the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackup.html">SYSBACKUP System Table</a></span> to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental. The backup data is stored in the specified directory.</p>
+                    <p>This call will run an incremental backup right now. Splice Machine checks the <span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span> to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental. The backup data is stored in the specified directory.</p>
                     <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'incremental');</pre>
                     </div>
                 </div>
             </div>
             <h3><a name="Restorin"></a>Restoring Your Database From a Previous Backup</h3>
-            <p>You can restore your database from a previous backup, use the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/RestoreDatabase.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure. Note that if you've been using incremental backups, you will need to first restore from the initial full backup, and then successively restore from each incremental backup. See the examples section below.</p>
-            <p>To restore your database from a previous backup, use the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/RestoreDatabase.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure:</p>
+            <p>You can restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure. Note that if you've been using incremental backups, you will need to first restore from the initial full backup, and then successively restore from each incremental backup. See the examples section below.</p>
+            <p>To restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE(<span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupId</span>); </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">backupDir</p>
                 <p class="paramDefnFirst">A <span class="CodeFont">VARCHAR</span> value that specifies the path to the directory in which the backup isstored. </p>
-                <p class="paramDefn">You can find the <span class="ItalicFont">backupId</span> you want to use by querying the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackup.html">SYSBACKUP System Table</a></span>. See the <a href="#Reviewing">Reviewing Backup Information</a> section below for more information.</p>
+                <p class="paramDefn">You can find the <span class="ItalicFont">backupId</span> you want to use by querying the <span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span>. See the <a href="#Reviewing">Reviewing Backup Information</a> section below for more information.</p>
                 <p class="paramName">backupId</p>
                 <p class="paramDefnFirst">A&#160;<span class="CodeFont">BIGINT</span>&#160;value  that specifies which backup you want to use to restore your database.</p>
             </div>
@@ -527,7 +527,7 @@
                 <ul>
                     <li value="1">Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
                     <li value="2">You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
-                    <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete by first  <a href="ShuttingDownDatabase.html">Shutting Down Your Database</a> and then <a href="StartingDatabase.html">Starting Your Database</a>.</li>
+                    <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete by first  <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
                 </ul>
             </div>
             <blockquote>
@@ -578,7 +578,7 @@
             <h3><a name="Reviewing"></a>Reviewing Backups</h3>
             <p>Splice Machine stores information about your backups and scheduled backup jobs in system tables that you can query, and stores a backup log file in the directory to which a backup is written when it runs.</p>
             <h4>Backup Job Information</h4>
-            <p>Information about your scheduled backup jobs is stored in the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackupJobs.html">SYSBACKUPJOBS System Table</a></span>:</p>
+            <p>Information about your scheduled backup jobs is stored in the <span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span>:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select * from SYS.SYSBACKUPJOBS;
 JOB_ID         |FILESYSTEM&#160;&#160;&#160;   &#160;&#160;|TYPE           |HOUR_OF_DAY|BEGIN_TIMESTAMP
 --------------------------------------------------------------------------------------
@@ -586,7 +586,7 @@ JOB_ID         |FILESYSTEM&#160;&#160;&#160;   &#160;&#160;|TYPE           |HOUR
             </div>
             <p>You can query this table to find a job ID, if you need to cancel a scheduled backup.</p>
             <h4>Backup Information</h4>
-            <p>Information about each backup of your database is stored in the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackup.html">SYSBACKUP System Table</a></span>, including the ID&#160;assigned to the backup and its location. You can query this table to find the ID&#160;of a specific backup, which you need if you want to restore your database from it, or to delete it:</p>
+            <p>Information about each backup of your database is stored in the <span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span>, including the ID&#160;assigned to the backup and its location. You can query this table to find the ID&#160;of a specific backup, which you need if you want to restore your database from it, or to delete it:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select * from SYS.SYSBACKUP;
 BACKUP_ID |BEGIN_TIMESTAMP         |END_TIMESTAMP           |STATUS |FILESYSTEM        |SCOPE |INCR&amp;|INCREMENTAL_PARENT_&amp;|BACKUP_ITEM
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -604,13 +604,13 @@ Expected time for backup ~12 hours, expected finish at 15:30 on April 8, 2015
 Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre>
             </div>
             <h3><a name="Cancelin"></a>Canceling a Scheduled Backup</h3>
-            <p>You can cancel a daily backup with the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/CancelDailyBackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>&#160;system procedure:</p>
+            <p>You can cancel a daily backup with the <span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>&#160;system procedure:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( <span class="ItalicFont">jobId</span> ); </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">jobId</p>
                 <p class="paramDefnFirst">A&#160;<span class="CodeFont">BIGINT</span>&#160;value  that specifies which scheduled backup job you want to cancel. </p>
-                <p class="paramDefn">You can find the <span class="ItalicFont">jobId</span> you want to cancel by querying the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackupJobs.html">SYSBACKUPJOBS System Table</a></span>. See the <a href="#Reviewing">Reviewing Backup Information</a> section below for information about using the the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackupJobs.html">SYSBACKUPJOBS System Table</a></span>. </p>
+                <p class="paramDefn">You can find the <span class="ItalicFont">jobId</span> you want to cancel by querying the <span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span>. </p>
                 <div class="noteNote">Once you cancel a daily backup, it will no longer be scheduled to run. </div>
                 <h4>Example:&#160;Cancel a daily backup</h4>
                 <p>This example cancels the backup that has <span class="CodeFont">jobId=1273</span>:</p>
@@ -618,7 +618,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
                 </div>
             </div>
             <h3><a name="CancelB"></a>Canceling a Backup That's In Progress</h3>
-            <p>You can call the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/CancelBackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span>&#160;system procedure to cancel a backup that is currently running:</p>
+            <p>You can call the <span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span>&#160;system procedure to cancel a backup that is currently running:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_BACKUP(  ); </pre>
             </div>
             <div class="paramList">
@@ -628,20 +628,20 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
                 </div>
             </div>
             <h3><a name="Deleting"></a>Deleting a Backup</h3>
-            <p>Use the <a href="../../SQLReference/BuiltInSysProcs/DeleteBackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>&#160;system procedure to delete a single backup:</p>
+            <p>Use the <a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>&#160;system procedure to delete a single backup:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_BACKUP( <span class="ItalicFont">backupId</span> ); </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">backupId</p>
                 <p class="paramDefnFirst">A&#160;<span class="CodeFont">BIGINT</span>&#160;value  that specifies which backup you want to delete. </p>
-                <p class="paramDefn">You can find the <span class="ItalicFont">backupId</span> you want to delete by querying the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackup.html">SYSBACKUP System Table</a></span>, See the <a href="#Reviewing">Reviewing Backup Information</a> section below for information about using the <span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackup.html">SYSBACKUP System Table</a></span>, </p>
+                <p class="paramDefn">You can find the <span class="ItalicFont">backupId</span> you want to delete by querying the <span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span>, </p>
                 <h4>Example:&#160;Delete a backup</h4>
                 <p>This example deletes the backup that has <span class="CodeFont">backupId=1273</span>:</p>
                 <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_DELETE_BACKUP(1273);</pre>
                 </div>
             </div>
             <h3><a name="DeleteOld"></a>Deleting Outdated Backups</h3>
-            <p>Use the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/DeleteOldBackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>&#160;system procedure to delete all backups that are older than a certain number of days.</p>
+            <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>&#160;system procedure to delete all backups that are older than a certain number of days.</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( <span class="ItalicFont">backupWindow</span> ); </pre>
             </div>
             <div class="paramList">
@@ -796,20 +796,21 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
             </div>
             <h2>See Also</h2>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/BackupDatabase.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="2"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/CancelBackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="3"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/CancelDailyBackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="4"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/DeleteBackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="5"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/DeleteOldBackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="6"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/RestoreDatabase.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="7"><span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/ScheduleDailyBackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="8"><span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackup.html">SYSBACKUP System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="9"><span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackupItems.html">SYSBACKUPITEMS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="10"><span class="CodeFont"><a href="../../SQLReference/SystemTables/SysBackupJobs.html">SYSBACKUPJOBS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="1"><span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="2"><span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="3"><span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="4"><span class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="5"><span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="6"><span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="7"><span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="8"><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="9"><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li value="10"><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
+
 
     <div class="tags">
         
@@ -825,7 +826,7 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 18, 2017 <br />
+ Site last generated: May 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

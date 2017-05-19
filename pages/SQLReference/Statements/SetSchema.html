@@ -11,10 +11,10 @@ folder: SQLReference/Statements
 		<div class="TopicContent">
             <h1><a name="Statements.SetSchema" id="Statements.SetSchema"></a><a name="kanchor383"></a>SET SCHEMA</h1>
             <p>The <span class="CodeFont">SET SCHEMA</span> statement sets the default schema for a connection's session to the designated schema. The default schema is used as the  target schema for all statements issued from the connection that do not explicitly specify a schema name. </p>
-            <p>The target schema must exist for the <span class="CodeFont">SET SCHEMA</span> statement to succeed. If the schema doesn't exist an error is returned. See the <a href="CreateSchema.html"><span class="CodeFont">CREATE SCHEMA</span> statement</a></p>
+            <p>The target schema must exist for the <span class="CodeFont">SET SCHEMA</span> statement to succeed. If the schema doesn't exist an error is returned. See the <a href="sqlref_statements_createschema.html"><span class="CodeFont">CREATE SCHEMA</span> statement</a></p>
             <div class="noteNote">The <span class="CodeFont">SET SCHEMA</span> statement is not transactional: if the <span class="CodeFont">SET SCHEMA</span> statement is part of a transaction that is rolled back, the schema change remains in effect.</div>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SET [CURRENT] SCHEMA [=] <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SchemaName">schemaName</a></span>
+            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SET [CURRENT] SCHEMA [=] <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SchemaName">schemaName</a></span>
 </pre>
             </div>
             <div class="paramList">
@@ -63,9 +63,9 @@ ps.setString(1,"splice");       //error - string is case sensitive
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="CreateSchema.html">CREATE SCHEMA</a></span>&#160;statement</li>
-                <li value="2"><span class="CodeFont"><a href="DropSchema.html">DROP SCHEMA</a></span>&#160;statement</li>
-                <li value="3"><a href="../Identifiers/IdentifierTypes.html#SchemaName">Schema Name</a>
+                <li value="1"><span class="CodeFont"><a href="sqlref_statements_createschema.html">CREATE SCHEMA</a></span>&#160;statement</li>
+                <li value="2"><span class="CodeFont"><a href="sqlref_statements_dropschema.html">DROP SCHEMA</a></span>&#160;statement</li>
+                <li value="3"><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a>
                 </li>
             </ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
