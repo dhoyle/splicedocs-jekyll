@@ -1,0 +1,73 @@
+---
+summary: Walks you through getting started with the free trial version of Splice Machine.
+title: Trial Version Initial Startup
+keywords: 
+sidebar:  dbaas_sidebar
+toc: false
+permalink: dbaas_cm_trialstartup.html
+folder: DBaaS/CloudManager
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor269"></a>User Interface:&#160;Free Trial Start-up</h1>
+            <div class="noteNote">
+                <p>Creating a free trial cluster to experiment with Splice&#160;Machine is a simplified and limited version of creating a cluster for the full version.</p>
+                <p>This page describes the simplified trial process; if you're not creating a free trial cluster, refer to the <a href="dbaas_cm_initialstartup.html">full startup page</a> instead of this one for  instructions for creating your Splice Machine cluster.</p>
+            </div>
+            <p>When you first visit your new Splice&#160;Machine Cloud Manager dashboard, you'll see the initial dashboard view, which prompts you to create a new cluster:</p>
+            <p>
+                <img src="/images/InitialDashboard.png" class="indentedTightSpacing" title="Splice Machine Dashboard upon initial startup" />
+            </p>
+            <p>Click  <span class="ConsoleLink">Create New Cluster</span> and then select the <span class="CodeFont">Apply Trial Parameters</span> option to start the process of provisioning your Splice Machine cluster. You'll then need to:</p>
+            <ol>
+                <li value="1"><a href="#Configure">Configure Cluster Parameters</a> by specifying a name and selecting an AWS&#160;region.</li>
+                <li value="2"><a href="#Configur">Configure Cluster Access</a> for your users.</li>
+                <li value="3">Start Using Splice Machine!</li>
+            </ol>
+            <h2><a name="Configure"></a>Configure Cluster Parameters</h2>
+            <p>You use the <span class="ConsoleLink">Create New Cluster</span> screen to provision your cluster:</p>
+            <p>
+                <img src="/images/NewTrialCluster.png" title="Initial settings for new Splice Machine cluster" class="indentedTightSpacing" />
+            </p>
+            <h3>Cluster Parameters</h3>
+            <p>Most of the cluster parameters cannot be modified in the free trial version of Splice&#160;Machine. Here are explanations of the adjustments you can make to your trial cluster provisioning:</p>
+            <table>
+                <col />
+                <col />
+                <col />
+                <tbody>
+                    <tr>
+                        <td>&#160;</td>
+                        <td class="CodeFont">Cluster Name</td>
+                        <td>Supply whatever name you want for your Splice Machine cluster.</td>
+                    </tr>
+                    <tr>
+                        <td>&#160;</td>
+                        <td class="CodeFont">Region</td>
+                        <td>You can select in which AWS&#160;region your cluster will reside by clicking the previously selected region name, which drops down a list of choices.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="noteIcon">For an explanation of the other cluster configuration parameters, see the <a href="dbaas_cm_initialstartup.html">Initial Startup walk-through</a>.</div>
+            <h2><a name="Configur"></a>Configure Cluster Access</h2>
+            <p>Once you've configured your cluster, click the <span class="CalloutFont">Next</span> button to display the <span class="ConsoleLink">Cluster Access</span> screen:</p>
+            <p>
+                <img src="/images/ClusterAccess1.png" title="Setting up VPC and/or IAM for a new cluster" class="indentedTightSpacing" />
+            </p>
+            <p>You can set your cluster up for access to your Amazon Virtual Private Cloud (VPC)&#160;access by selecting the <span class="CodeFont">Client&#160;VPC&#160;connectivity required</span> option and providing your VPC&#160;account ID. </p>
+            <p>You need to configure AWS&#160;Identity and Access Management (IAM) for your cluster to allow Splice&#160;Machine to access selected S3 folders </p>
+            <div class="notePlain">
+                <p>For more information about Amazon VPC, see <a href="https://aws.amazon.com/vpc/" target="_blank">https://aws.amazon.com/vpc/</a>.</p>
+                <p>For more information about Amazon IAM, see <a href="https://aws.amazon.com/iam/" target="_blank">https://aws.amazon.com/iam/</a>.</p>
+            </div>
+            <p>After setting up any access methods, please confirm that you <span class="CodeFont">accept our terms and conditions</span>, then click the <span class="CalloutFont">Launch</span> button, which will launch your Splice Machine cluster.</p>
+            <h2>Load Your Data!</h2>
+            <p>After your cluster spins up, which typically requires about 10 minutes, you can load your data into your&#160;Splice Machine database from an S3 bucket:</p>
+            <ul>
+                <li value="1">If you don't yet know how to create an S3 bucket or upload data to a bucket, please check our <a href="developers_ingestion_uploadtos3.html">Uploading Data to an S3 Bucket</a> tutorial.</li>
+                <li value="2">You may need to configure IAM&#160;permissions to allow Splice Machine to access your bucket; see our <a href="developers_ingestion_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial.</li>
+                <li value="3">Once you've got your data in a bucket, you can follow our <a href="developers_ingestion_importing.html">Importing Data</a> tutorial to load that data into Splice&#160;Machine.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

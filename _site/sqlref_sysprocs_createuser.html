@@ -127,11 +127,11 @@
                 
                 
                 
-                <li><a href="sparkconsole_intro.html">Spark Console</a></li>
-                
-                
-                
                 <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="dbaas_intro.html">DB-Service Ops</a></li>
                 
                 
                 
@@ -2696,8 +2696,11 @@
                 <p class="paramName">password</p>
                 <p class="paramDefnFirst">A case-sensitive password.</p>
             </div>
-            <p class="heading2">Results</p>
-            <p>This procedure does not return a result.</p>
+        <p class="heading2">Results</p>
+        <p>When you add a new user, a new schema is automatically created with exactly the same name as the user. For example, here's a sequence of an administrator adding a new user named <span class="CodeFont">fred</span> and then verifying that the schema named <span class="CodeFont">fred</span> is now active:</p>
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');<br />Statement executed.<br />splice&gt;&#160;VALUES(CURRENT&#160;SCHEMA);<br />1<br />------------------------------------------------------------------<br />SPLICE<br /><br />1 row selected<br />splice&gt;&#160;SET&#160;SCHEMA&#160;fred;<br />0 rows inserted/updated/deleted<br />splice&gt;&#160;VALUES(CURRENT&#160;SCHEMA);<br />1<br />------------------------------------------------------------------<br />FRED<br /><br />1 row selected</pre>
+        </div>
+        <p>When the new user's credentials are used to connect to the database, his/her default schema will be that new schema. If you want the new user to have access to data in other schemas, such as the <span class="CodeFont">SPLICE</span>&#160;schema, an administrator will need to explicitly <a href="sqlref_statements_grant.html">grant</a> those access privileges. </p>
             <p class="heading2">Execute Privileges</p>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
 			execute privileges on this function by default. The
@@ -2751,7 +2754,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 19, 2017 <br />
+ Site last generated: May 23, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

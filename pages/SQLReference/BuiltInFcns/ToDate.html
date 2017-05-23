@@ -419,7 +419,7 @@ splice&gt; VALUES (TO_DATE('2015-26', 'MM-DD'));
             </div>
             <p>And here is an example that shows two interesting aspects of using <span class="CodeFont">TO_DATE</span>. In this example,  the input includes the literal <span class="CodeFont">T</span>), which means that the format pattern must delimit that letter with single quotes. Since we're delimiting the entire pattern in single quotes, we then have to escape those marks and specify <span class="CodeFont">''T''</span> in our parsing pattern.</p>
             <p>And because this example specifies a time zone (Z) in the parsing pattern but not in the input string, the timezone information is not preserved. In this case, that means that the parsed date is actually a day earlier than intended:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES TO_DATE('2013-06-18T01:03:30.000Z','yyyy-MM-dd''T''HH:mm:ss.SSSZ');
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES TO_DATE('2013-06-18T01:03:30.000-0800','yyyy-MM-dd''T''HH:mm:ss.SSSZ');
 1
 ----------
 2013-06-17

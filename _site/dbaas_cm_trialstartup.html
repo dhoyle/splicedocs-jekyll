@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Walks you through getting started with the free trial version of Splice Machine.">
+<meta name="keywords" content=" ">
+<title>Trial Version Initial Startup | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="index.html">Home</a></li>
+                
+                
+                
+                <li><a href="cmdlineref_intro.html">splice></a></li>
+                
+                
+                
+                <li><a href="sqlref_intro.html">SQL Reference</a></li>
+                
+                
+                
+                <li><a href="developers_intro.html">Developers</a></li>
+                
+                
+                
+                <li><a href="notes_intro.html">Notes</a></li>
+                
+                
+                
+                <li><a href="dbaas_intro.html">DB-Service Ops</a></li>
+                
+                
+                
+                <li><a href="onprem_intro.html">On-Premise Ops</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Trial Version Initial Startup page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Trial Version Initial Startup">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Database-As-Service Ops</a>
+        <ul>
+            
+            
+            
+            <li><a href="dbaas_intro.html">Introduction</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Splice Machine Cloud Manager</a>
+        <ul>
+            
+            
+            
+            <li><a href="dbaas_cm_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="dbaas_cm_registration.html">Registering with Cloud Manager</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="dbaas_cm_login.html">Logging into the Cloud Manager</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="dbaas_cm_initialstartup.html">Initial Startup</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="dbaas_cm_trialstartup.html">Trial Version Startup</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+ <h2>&#160;</h2><!--  <h1 class="post-title-main">Trial Version Initial Startup</h1>  -->
+</div>
+
+
+
+<div class="post-content">
+
+<!--- Don't automatically put page summary at top - GRH 05/2017 --
+   
+    <div class="summary">Walks you through getting started with the free trial version of Splice Machine.</div>
+   
+-->
+
+    
+
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor269"></a>User Interface:&#160;Free Trial Start-up</h1>
+            <div class="noteNote">
+                <p>Creating a free trial cluster to experiment with Splice&#160;Machine is a simplified and limited version of creating a cluster for the full version.</p>
+                <p>This page describes the simplified trial process; if you're not creating a free trial cluster, refer to the <a href="dbaas_cm_initialstartup.html">full startup page</a> instead of this one for  instructions for creating your Splice Machine cluster.</p>
+            </div>
+            <p>When you first visit your new Splice&#160;Machine Cloud Manager dashboard, you'll see the initial dashboard view, which prompts you to create a new cluster:</p>
+            <p>
+                <img src="/images/InitialDashboard.png" class="indentedTightSpacing" title="Splice Machine Dashboard upon initial startup" />
+            </p>
+            <p>Click  <span class="ConsoleLink">Create New Cluster</span> and then select the <span class="CodeFont">Apply Trial Parameters</span> option to start the process of provisioning your Splice Machine cluster. You'll then need to:</p>
+            <ol>
+                <li value="1"><a href="#Configure">Configure Cluster Parameters</a> by specifying a name and selecting an AWS&#160;region.</li>
+                <li value="2"><a href="#Configur">Configure Cluster Access</a> for your users.</li>
+                <li value="3">Start Using Splice Machine!</li>
+            </ol>
+            <h2><a name="Configure"></a>Configure Cluster Parameters</h2>
+            <p>You use the <span class="ConsoleLink">Create New Cluster</span> screen to provision your cluster:</p>
+            <p>
+                <img src="/images/NewTrialCluster.png" title="Initial settings for new Splice Machine cluster" class="indentedTightSpacing" />
+            </p>
+            <h3>Cluster Parameters</h3>
+            <p>Most of the cluster parameters cannot be modified in the free trial version of Splice&#160;Machine. Here are explanations of the adjustments you can make to your trial cluster provisioning:</p>
+            <table>
+                <col />
+                <col />
+                <col />
+                <tbody>
+                    <tr>
+                        <td>&#160;</td>
+                        <td class="CodeFont">Cluster Name</td>
+                        <td>Supply whatever name you want for your Splice Machine cluster.</td>
+                    </tr>
+                    <tr>
+                        <td>&#160;</td>
+                        <td class="CodeFont">Region</td>
+                        <td>You can select in which AWS&#160;region your cluster will reside by clicking the previously selected region name, which drops down a list of choices.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="noteIcon">For an explanation of the other cluster configuration parameters, see the <a href="dbaas_cm_initialstartup.html">Initial Startup walk-through</a>.</div>
+            <h2><a name="Configur"></a>Configure Cluster Access</h2>
+            <p>Once you've configured your cluster, click the <span class="CalloutFont">Next</span> button to display the <span class="ConsoleLink">Cluster Access</span> screen:</p>
+            <p>
+                <img src="/images/ClusterAccess1.png" title="Setting up VPC and/or IAM for a new cluster" class="indentedTightSpacing" />
+            </p>
+            <p>You can set your cluster up for access to your Amazon Virtual Private Cloud (VPC)&#160;access by selecting the <span class="CodeFont">Client&#160;VPC&#160;connectivity required</span> option and providing your VPC&#160;account ID. </p>
+            <p>You need to configure AWS&#160;Identity and Access Management (IAM) for your cluster to allow Splice&#160;Machine to access selected S3 folders </p>
+            <div class="notePlain">
+                <p>For more information about Amazon VPC, see <a href="https://aws.amazon.com/vpc/" target="_blank">https://aws.amazon.com/vpc/</a>.</p>
+                <p>For more information about Amazon IAM, see <a href="https://aws.amazon.com/iam/" target="_blank">https://aws.amazon.com/iam/</a>.</p>
+            </div>
+            <p>After setting up any access methods, please confirm that you <span class="CodeFont">accept our terms and conditions</span>, then click the <span class="CalloutFont">Launch</span> button, which will launch your Splice Machine cluster.</p>
+            <h2>Load Your Data!</h2>
+            <p>After your cluster spins up, which typically requires about 10 minutes, you can load your data into your&#160;Splice Machine database from an S3 bucket:</p>
+            <ul>
+                <li value="1">If you don't yet know how to create an S3 bucket or upload data to a bucket, please check our <a href="developers_ingestion_uploadtos3.html">Uploading Data to an S3 Bucket</a> tutorial.</li>
+                <li value="2">You may need to configure IAM&#160;permissions to allow Splice Machine to access your bucket; see our <a href="developers_ingestion_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial.</li>
+                <li value="3">Once you've got your data in a bucket, you can follow our <a href="developers_ingestion_importing.html">Importing Data</a> tutorial to load that data into Splice&#160;Machine.</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 23, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

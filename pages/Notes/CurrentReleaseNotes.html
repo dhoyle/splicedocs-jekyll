@@ -15,34 +15,38 @@ folder: Notes
                 <div class="noteIcon">For information about important new features added in this and previous releases, see the <a href="notes_updates.html">Update Notes for Splice&#160;Machine Version 2.5</a>.<br /><br />The <span class="CodeFont">ReadMe</span> file included with the Splice Machine installers contains a list of specific bug fixes in this release.<br /></div>
                 <p>These are the notes and workarounds for known issues in our current release:</p>
                 <ul>
-                    <li value="1"><a href="#Spark">Spark Restrictions on Cloudera</a>
+                    <li><a href="#With">With Clauses and Temporary Tables</a>
                     </li>
-                    <li value="2"><a href="#Changes" class="WithinBook">Changes to Bulk Import</a>
+                    <li><a href="#Spark">Spark Restrictions on Cloudera</a>
                     </li>
-                    <li value="3"><a href="#Temporar">Temporary Tables and Backups</a>
+                    <li><a href="#Changes" class="WithinBook">Changes to Bulk Import</a>
                     </li>
-                    <li value="4"><a href="#Natural">Natural Self Joins Not Supported</a>
+                    <li><a href="#Temporar">Temporary Tables and Backups</a>
                     </li>
-                    <li value="5"><a href="#Columnar">Columnar screen output gets truncated</a>
+                    <li><a href="#Natural">Natural Self Joins Not Supported</a>
                     </li>
-                    <li value="6"><a href="#Timestam">TimeStamp date value limitations</a>
+                    <li><a href="#Columnar">Columnar screen output gets truncated</a>
                     </li>
-                    <li value="7"><a href="#ToDate()"><span class="CodeFont">ToDate</span>&#160;function problem with <span class="CodeFont">DD</span>&#160;designator</a>
+                    <li><a href="#Timestam">TimeStamp date value limitations</a>
                     </li>
-                    <li value="8"><a href="#Dropping">Dropping Foreign Keys</a>
+                    <li><a href="#ToDate()"><span class="CodeFont">ToDate</span>&#160;function problem with <span class="CodeFont">DD</span>&#160;designator</a>
                     </li>
-                    <li value="9"><a href="#Compacti">Compaction Queue Issue</a>
+                    <li><a href="#Dropping">Dropping Foreign Keys</a>
                     </li>
-                    <li value="10"><a href="#AlterTbl">Alter Table Issues</a>
+                    <li><a href="#Compacti">Compaction Queue Issue</a>
                     </li>
-                    <li value="11"><a href="#LeadLag"><span class="CodeFont">Lead</span> and <span class="CodeFont">Lag</span> default value parameter</a>
+                    <li><a href="#AlterTbl">Alter Table Issues</a>
                     </li>
-                    <li value="12"><a href="#CREATET"><span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;with <span class="CodeFont">RIGHT&#160;OUTER&#160;JOIN</span></a>
+                    <li><a href="#LeadLag"><span class="CodeFont">Lead</span> and <span class="CodeFont">Lag</span> default value parameter</a>
                     </li>
-                    <li value="13"><a href="#TooManyForeignKeyRefs">Import Performance Issues With&#160;Many Foreign Key References</a>
+                    <li><a href="#CREATET"><span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;with <span class="CodeFont">RIGHT&#160;OUTER&#160;JOIN</span></a>
+                    </li>
+                    <li><a href="#TooManyForeignKeyRefs">Import Performance Issues With&#160;Many Foreign Key References</a>
                     </li>
                 </ul>
                 <div>
+	                <h2><a name="With"></a>With Clauses and Temporary Tables</h2>
+    	            <p>You cannot currently use temporary tables in <span class="CodeFont">WITH</span>&#160;clauses.</p>
                     <h2><a name="Spark"></a>Spark Restrictions on Cloudera</h2>
                     <p>There is currently a significant restriction with respect to running independent (non-Splice)&#160;Spark jobs on a Cloudera cluster:</p>
                     <div class="noteRestriction"> Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark:&#160;you cannot run independent Spark jobs on it.</div>
