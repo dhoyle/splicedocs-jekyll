@@ -8,6 +8,7 @@ sidebar:  admin_sidebar
 permalink: onprem_admin_startingdb.html
 folder: OnPrem
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1>Starting Your Database</h1>
@@ -70,7 +71,7 @@ Start your HBase master</li>
                     </li>
                     <li value="2">
                         <p class="topLevel">Run the Splice Machine start-up script:</p>
-                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ <span class="PlatformVariablesStandaloneStartScript">./bin/start-splice.sh</span></pre>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ {{spvar_platform_StandaloneStartScript}}</pre>
                         </div>
                     </li>
                 </ol>
@@ -95,12 +96,12 @@ Start your HBase master</li>
                     </li>
                     <li value="3">
                         <p class="topLevel">Run the Splice Machine shut-down script:</p>
-                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ <span class="PlatformVariablesStandaloneStopScript">./bin/stop-splice.sh</span></pre>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ {{spvar_platform_StandaloneStopScript}}</pre>
                         </div>
                     </li>
                     <li value="4">
                         <p class="topLevel">Run the Splice Machine start-up</p>
-                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ <span class="PlatformVariablesStandaloneStartScript">./bin/start-splice.sh</span></pre>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ {{spvar_platform_StandaloneStartScript}}</pre>
                         </div>
                     </li>
                 </ol>

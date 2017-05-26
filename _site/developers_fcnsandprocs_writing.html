@@ -128,6 +128,10 @@
                         
                         
                         
+                        <li><a href="tutorials_intro.html">Tutorials</a></li>
+                        
+                        
+                        
                         <li><a href="sqlref_intro.html">SQL Reference Manual</a></li>
                         
                         
@@ -136,7 +140,11 @@
                         
                         
                         
-                        <li><a href="notes_intro.html">Notes</a></li>
+                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
+                        
+                        
+                        
+                        <li><a href="notes_intro.html">Other Notes</a></li>
                         
                         
                     </ul>
@@ -148,6 +156,14 @@
                         
                         
                         <li><a href="onprem_intro.html">Welcome!</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_install_intro.html">Installation</a></li>
+                        
+                        
+                        
+                        <li><a href="tutorials_intro.html">Tutorials</a></li>
                         
                         
                         
@@ -163,7 +179,15 @@
                         
                         
                         
-                        <li><a href="notes_intro.html">Notes</a></li>
+                        <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
+                        
+                        
+                        
+                        <li><a href="notes_intro.html">Other Notes</a></li>
                         
                         
                     </ul>
@@ -303,6 +327,13 @@
             
             
             <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developers_fundamentals_plsql.html">Using SplicePlus - PL/SQL</a></li>
             
             
             
@@ -497,70 +528,70 @@
             
             
             
-            <li><a href="developers_ingestion_intro.html">Introduction</a></li>
+            <li><a href="tutorials_ingest_intro.html">Introduction</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_uploadtos3.html">Uploading Data to an S3 Bucket</a></li>
+            <li><a href="tutorials_ingest_uploadtos3.html">Uploading Data to an S3 Bucket</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_configures3.html">Configuring an S3 Bucket</a></li>
+            <li><a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_tpch1.html">Importing TPCH Data</a></li>
+            <li><a href="tutorials_ingest_tpch1.html">Importing TPCH Data</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_importing.html">Importing Your Data</a></li>
+            <li><a href="tutorials_ingest_importing.html">Importing Your Data</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_hfiles.html">Importing Data as HFiles</a></li>
+            <li><a href="tutorials_ingest_hfiles.html">Importing Data as HFiles</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_kafkaproducer.html">Kafka - Creating a Producer</a></li>
+            <li><a href="tutorials_ingest_kafkaproducer.html">Kafka - Creating a Producer</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_kafkafeed.html">Kafka - Configuring a Feed</a></li>
+            <li><a href="tutorials_ingest_kafkafeed.html">Kafka - Configuring a Feed</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_mqttSpark.html">MQTT Spark Streaming</a></li>
+            <li><a href="tutorials_ingest_mqttSpark.html">MQTT Spark Streaming</a></li>
             
             
             
             
             
             
-            <li><a href="developers_ingestion_storm.html">Apache Storm and Splice Machine</a></li>
+            <li><a href="tutorials_ingest_storm.html">Apache Storm and Splice Machine</a></li>
             
             
             
@@ -576,14 +607,14 @@
             
             
             
-            <li><a href="developers_analyticsandml_intro.html">Introduction</a></li>
+            <li><a href="tutorials_ml_intro.html">Introduction</a></li>
             
             
             
             
             
             
-            <li><a href="developers_analyticsandml_zeppelin.html">Using Apache Zeppelin</a></li>
+            <li><a href="tutorials_ml_zeppelin.html">Using Apache Zeppelin</a></li>
             
             
             
@@ -716,7 +747,99 @@
 
     
 
-  	<section>
+  ﻿
+
+
+
+
+
+
+
+
+
+
+
+
+﻿
+
+
+
+
+
+
+
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+﻿
+
+
+
+
+
+
+
+
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section>
 		<div class="TopicContent">
             <h1><a name="kanchor314"></a><a name="kanchor315"></a>Writing Functions and Stored&#160;Procedures</h1>
             <p>This topic shows you the steps required to write functions and stored procedures for use in your Splice&#160;Machine database.</p>
@@ -828,7 +951,7 @@ public class CustomSpliceProcs {
                     <li value="4">
                         <p class="topLevel">Deploy the Jar file to your cluster</p>
                         <p class="indentLevel1">Deploying the Jar file requires you to install the file in your database, and to add it to your database's <span class="CodeFont">CLASSPATH</span>. You can accomplish both of these steps by calling built-in system procedures from the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter. For example:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-<span class="BasicVariablesSpliceReleaseVersion" data-mc-conditions="Default.OnlyDoc">2.5</span>-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-<span  data-mc-conditions="Default.OnlyDoc">2.5</span><span  data-mc-conditions="Default.NotDoc">2.6</span>-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
 
 CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
                         </div>
@@ -855,7 +978,7 @@ CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', '
                     <li value="7">
                         <p class="topLevel">Updating/Reloading your stored procedure</p>
                         <p class="indentLevel1">If you make changes to your procedure's code, you need to create a new Jar file and reload that into your databaseby calling the <span class="CodeFont">SQLJ.REPLACE_JAR</span>&#160;system procedure:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-<span class="BasicVariablesSpliceReleaseVersion" data-mc-conditions="Default.OnlyDoc">2.5</span>-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-<span  data-mc-conditions="Default.OnlyDoc">2.5</span><span  data-mc-conditions="Default.NotDoc">2.6</span>-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
                         </div>
                     </li>
                 </ol>
@@ -896,7 +1019,7 @@ public class ExampleStoredProcedure {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 24, 2017 <br />
+ Site last generated: May 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

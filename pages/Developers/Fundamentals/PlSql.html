@@ -1,0 +1,319 @@
+---
+title: PLSQL
+toc: false
+product: all
+sidebar: developers_sidebar
+permalink: developers_fundamentals_plsql.html
+folder: Developers/Fundamentals
+---
+
+	<section>
+		<div class="TopicContent">
+        <h1>Splice*Plus - PL/SQL for Splice&#160;Machine</h1>
+        <p>This topic describes Splice Machine's implementation of the PL/SQL&#160;language and <span class="ItalicFont">Splice*Plus</span>, the PL/SQL&#160;interpreter for Splice&#160;Machine.</p>
+{% include splice_snippets/enterpriseonly_note.html %}
+        <p>This topic contains these subtopics:</p>
+        <ul>
+            <li><a href="#About">About Splice Machine PL/SQL&#160;and Splice*Plus</a> provide a top-level overview and shows you how to invoke <span class="AppCommand">splice*plus</span>.</li>
+            <li><a href="#About2">About PL/SQL</a> gives a very brief introduction to the PL/SQL&#160;language</li>
+            <li><a href="#SplicePl">Splice Machine PL/SQL Compared to Oracle PL/SQL</a> describes differences between the Splice&#160;Machine and Oracle implementations of PL/SQL.</li>
+        </ul>
+        <h2><a name="About"></a>About Splice Machine PL/SQL&#160;and Splice*Plus</h2>
+        <p>Splice Machine PL/SQL&#160;extends Splice&#160;Machine SQL&#160;with a procedural language you can use to perform operations that you would otherwise write as SQL&#160;queries. Splice Machine PL/SQL&#160;provides the same functionality as Oracle PL/SQL, with a few notable exceptions, which are detailed in the <a href="#SplicePl">Splice Machine PL/SQL Compared to Oracle PL/SQL</a> section below.</p>
+        <p><span class="AppCommand">Splice*Plus</span> is an interactive, command line utility program that provides an interpreter for running PL/SQL&#160;programs interactively. You can run PL/SQL&#160;programs stored in text files, or you can use your keyboard to enter PL/SQL&#160;statements and blocks, similarly to the way you use the <span class="AppCommand">splice&gt;</span>&#160;prompt to run SQL&#160;commands.</p>
+        <div class="noteImportant">If you are already familiar with PL/SQL&#160;from using it with Oracle or another database, Splice Machine PL/SQL is almost exactly the same. You can skip reading this other than taking note of the differences noted in the <a href="#SplicePl">Splice&#160;Machine PL/SQL&#160;Compared to Oracle PL/SQL</a> section near the bottom of this page.</div>
+        <h3>Hello World in PL/SQL</h3>
+        <p>Here's a basic PL/SQL&#160;version of "Hello World:"</p>
+        <div class="preWrapperWide"><pre class="Example">
+DECLARE 
+   message  varchar2(20):= 'Hello, World!';
+BEGIN
+   dbms_output.put_line(message);<br />EXCEPTION<br /> &#160;&#160;dbms_output.put_line('Uh-oh; something went wrong');
+END;<br />/</pre>
+        </div>
+        <div class="noteNote">The single <span class="CodeFont">/</span> at the end of the program block is required to tell the PL/SQL&#160;interpreter that it should run the code block; if you leave the <span class="CodeFont">/</span> out, the interpreter will simply wait for more input after loading the block.</div>
+        <h3>Invoking Splice*Plus</h3>
+        <p><span class="ItalicFont">Splice*Plus</span> is automatically installed for you when you install Splice&#160;Machine. To run a PL/SQL&#160;program that you have stored in a text file, invoke <span class="AppCommand">spliceplus</span> and include the name of that file on the command line:</p><pre class="ShellCommand">%&#160;spliceplus helloworld.sql</pre>
+        <p>You'll see your code loaded in and executed, and any results will display on your screen. For example:</p>
+        <div class="preWrapper"><pre class="ShellCommand">%&#160;spliceplus helloworld.sql<br />Source file is hellowworld.sql<br />Executing:<br />DECLARE 
+   message  varchar2(20):= 'Hello, World!';
+BEGIN
+   dbms_output.put_line(message);<br />EXCEPTION<br /> &#160;&#160;dbms_output.put_line('Uh-oh; something went wrong');
+END;<br /><br />Hello, World!<br />%<br /></pre>
+        </div>
+        <p>To invoke Splice*Plus, open a terminal window and enter the following command line:</p><pre class="ShellCommand">%&#160;spliceplus</pre>
+        <p>You'll see </p>
+        <div class="preWrapper"><pre class="ShellCommand">%&#160;spliceplus<br />splice*plus&gt;<br /></pre>
+        </div>
+        <p>You can enter SQL&#160;statements to execute, or you can enter a block of PL/SQL&#160;code. When you want to run PL/SQL&#160;code, simply enter a <span class="CodeFont">/</span> on a line by itself. <span class="AppCommand">splice*plus</span> will execute the block and display the results.</p>
+        <h2><a name="About2"></a>About PL/SQL</h2>
+        <p>This section provides only the briefest summary of the PL/SQL&#160;language; instead, we recommend that you check the <a href="http://docs.oracle.com/" target="_blank" title="Click to open the top-level Oracle documentation site in another tab or window" alt="Click to open the top-level Oracle documentation site in another tab or window">Oracle documentation site</a> for their documentation on PL/SQL, or use one of the many third party books that are available. One excellent starting point, if you're new to PL/SQL, is this online tutorial:&#160;<a href="http://www.tutorialspoint.com/plsql" target="_blank" title="Click to open a new/tab window on the TutorialsPoint PL/SQL tutorial " alt="Click to open a new/tab window on the TutorialsPoint PL/SQL tutorial ">www.tutorialspoint.com/plsql</a>.</p>
+        <h3>PL/SQL&#160;Basics</h3>
+        <p>PL/SQL&#160;is a procedural programming language that is tightly integrated with SQL. Which means that you can use PL/SQL&#160;to create programs that perform SQL&#160;operations. The syntax of PL/SQL&#160;is based on the programming languages ADA and Pascal, </p>
+        <p>The basic unit of a PL/SQL&#160;operation is the block, which groups together related declarations and statements. Blocks can be procedures, functions, or anonymous blocks, which are typically used for the main body of your programs. The <span class="ItalicFont">Hello World</span> example we showed above is an example of an anonymous block.</p>
+        <p>You define a PL/SQL&#160;block with a declaration section, a procedural section, and an exception section.The following is an example of an anonymous block:</p>
+        <div class="preWrapperWide"><pre class="Example">&lt;&lt;Main&gt;&gt;
+DECLARE<br />&#160;  myNum &#160;&#160;number(2);&#160;
+ &#160; myText  varchar2(12) := 'Hello world';
+&#160;  myDate  date := SYSDATE;
+BEGIN<br />&#160;  SELECT name<br /> &#160;&#160;   INTO myText<br /> &#160;&#160;   FROM playerNames<br />  &#160;&#160;  WHERE ID= 27;
+EXCEPTION
+   WHEN&#160;others THEN<br />&#160;&#160;&#160;&#160;&#160;&#160;dbms_output.put_line('Error Message is ' || sqlerrm   );<br />END;<br />/</pre>
+        </div>
+        <p>Some notes of interest about the basic constructs of PL/SQL:</p>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Construct</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ItalicFont">Labels</td>
+                    <td>
+                        <p>Labels are specified surrounded by double chevrons (<span class="CodeFont">&lt;&lt;</span> and <span class="CodeFont">&gt;&gt;</span>).</p>
+                        <p>Labels are optional for anonymous blocks such as the main body of your program.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ItalicFont">Declarations</td>
+                    <td>
+                        <p>The declare section of a block is optional; however, you must declare a variable prior to using it.</p>
+                        <p>The declaration section of an anonymous block begins with the keyword <span class="CodeFont">DECLARE</span>.</p>
+                        <p>Variable declarations can include initial values, which you assign with the PL/SQL&#160;assignment operator (<span class="CodeFont">:=</span>). If you don't specify an initial value, the variable is initially <span class="CodeFont">NULL</span>.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ItalicFont">Terminators</td>
+                    <td>You must terminate each declaration and statement with a semicolon (<span class="CodeFont">;</span>).</td>
+                </tr>
+                <tr>
+                    <td class="ItalicFont">Executable part</td>
+                    <td>The executable part of the block begins with the <span class="CodeFont">BEGIN</span> keyword and is required.</td>
+                </tr>
+                <tr>
+                    <td class="ItalicFont">Exceptions</td>
+                    <td>The <span class="CodeFont">exception</span> keyword begins the optional section of the block in which you handle exceptions generated in the executable part.</td>
+                </tr>
+                <tr>
+                    <td class="ItalicFont">Nested blocks and variable scope</td>
+                    <td>
+                        <p>You can nest a block within another block.</p>
+                        <p>Variable scoping works as you expect: variables declared in outer blocks are accessible to all blocks nested within them (inner blocks), while variables declared in inner blocks are not accessible to the outer blocks. </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ItalicFont">Comments</td>
+                    <td>
+                        <p>You can add comments in two ways:</p>
+                        <ul>
+                            <li>single-line comments start with the delimiter <span class="CodeFont">--</span> (double hyphen)</li>
+                            <li>multi-line comments are enclosed by <span class="CodeFont">/*</span> and <span class="CodeFont">*/</span>.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ItalicFont">/ at end</td>
+                    <td>
+                        <p>You include a single <span class="CodeFont">/</span> on a blank line at the end of a PL/SQL&#160;block to tell the PL/SQL&#160;interpreter to run the block after loading it. If you leave this out, the interpreter will simply wait after loading your code block.</p>
+                        <div class="noteNote">If you're creating a program that includes one or more function or procedure definitions (see below), you must include the <span class="CodeFont">/</span> after each function or procedure block to have them loaded when you run your program.</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>PL/SQL&#160;Procedures and Functions</h3>
+        <p>Your PL/SQL&#160;programs can include procedures and functions, which are types of blocks. Procedures do not return values; each function returns a single value. </p>
+        <p>Like anonymous blocks, functions and procedures include:</p>
+        <ul>
+            <li>An optional declaration section, which does not begin with the <span class="CodeFont">DECLARE</span>&#160;keyword</li>
+            <li>An executable section</li>
+            <li>An optional exception section</li>
+        </ul>
+        <p>The syntax for specifying functions and procedures is:</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax">CREATE [OR REPLACE] FUNCTION function_name
+ &#160;&#160;[(parameter_name [IN | OUT | IN OUT] type [, ...])]
+&#160;&#160;&#160;RETURN return_datatype&#160;
+&#160;&#160;&#160;{IS | AS}
+BEGIN
+   &lt; function_body &gt;
+END [function_name];</pre>
+        </div>
+        <div class="fcnWrapper"><pre class="FcnSyntax">CREATE [OR REPLACE] PROCEDURE&#160;procedure_name
+ &#160;&#160;[(parameter_name [IN | OUT | IN OUT] type [, ...])]
+&#160;&#160;&#160;{IS | AS}
+BEGIN
+   &lt; procedure body &gt;
+END [procedure_name];</pre>
+        </div>
+        <p>As mentioned, you can define your local variables in a procedure or function just as you do for anonymous blocks; however, the <span class="CodeFont">DECLARE</span>&#160;keyword is not used. For example:</p><pre class="Example">CREATE OR REPLACE FUNCTION
+&#160;&#160;&#160;GetDisplayString( prefixStr IN VARCHAR(50), numVal IN number)<br />&#160;&#160;&#160;RETURN varchar2(60)
+IS
+&#160;&#160;&#160;defaultPrefix varchar2(30) := "The number is: ";
+BEGIN<br />&#160;&#160;&#160;IF (prefixStr = '') THEN<br />&#160;&#160;&#160;&#160;&#160;&#160;prefixStr := defaultPrefix;<br />&#160;&#160;&#160;END IF;
+&#160;&#160;&#160;RETURN( prefixStr || numVal );
+END;<br />/
+</pre>
+        <h4>Nested Functions and Procedures</h4>
+        <p>You can nest blocks, including function and procedure blocks inside other blocks. Standard scoping rules for variables and named blocks:&#160;any nested (inner)&#160;block has access to the definitions available in its containing block, but outer blocks cannot access definitions in inner blocks.</p>
+        <p>For example, here's an anonymous block that declares a function definition and then uses that function:</p><pre class="Example">&lt;&lt;&lt;Main&gt;&gt;<br />DECLARE<br /> &#160;&#160;prefix&#160;VARCHAR(50);<br /><br />&#160;&#160;&#160;FUNCTION&#160;GetDisplayString( prefixStr IN VARCHAR(50), numVal IN NUMBER)<br />&#160;&#160;&#160;&#160;&#160;&#160;RETURN VARCHAR2(60)
+&#160;&#160;&#160;IS
+&#160;&#160;&#160;&#160;&#160;&#160;defaultPrefix VARCHAR2(30) := "The number is: ";<br />&#160;&#160;&#160;&#160;&#160;&#160;negNumException EXCEPTION;
+&#160;&#160;&#160;BEGIN<br />&#160;&#160;&#160;&#160;&#160;&#160;IF (prefixStr = '') THEN<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;prefixStr := defaultPrefix;<br />&#160;&#160;&#160;&#160;&#160;&#160;END IF;<br />&#160;&#160;&#160;&#160;&#160;&#160;IF&#160;(numVal &lt;&#160;0)&#160;THEN<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;RAISE&#160;'negativeNum'
+&#160;&#160;&#160;&#160;&#160;&#160;RETURN( prefixStr || numVal );<br />&#160;&#160;&#160;EXCEPTION<br />&#160;&#160;&#160;&#160;&#160;&#160;WHEN&#160;negativeNum THEN<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;dbms_output.put_line('Got a negative number!');
+&#160;&#160;&#160;END;<br /><br />BEGIN<br />&#160;&#160;&#160;prefix := "The number you want is:&#160;";<br />&#160;&#160;&#160;dbms_output.put_line(GetDisplayString(prefix, 13));<br />EXCEPTION<br /> &#160;&#160;WHEN&#160;others THEN<br />&#160;&#160;&#160;&#160;&#160;&#160;dbms_output.put_line('Uh-oh; something went wrong');<br />END;<br />/</pre>
+        <h4>Handling Exceptions in PL/SQL</h4>
+        <p>PL/SQL&#160;makes exception handling easy. Each block can optionally contain an exception handling block that can contain any number of <span class="CodeFont">WHEN</span>&#160;statements. In summary:</p>
+        <ul>
+            <li>
+                <p>You can raise exceptions by name in your code:</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">RAISE&#160;&lt;exception_name&gt;;</pre>
+                </div>
+            </li>
+            <li>Each block can contain an optional exception section that begins with the <span class="CodeFont">exception</span> keyword.</li>
+            <li>The exception section can contain any number of exception handlers, each of which is defined in a <span class="CodeFont">WHEN</span>&#160;statement.</li>
+            <li>
+                <p>Each <span class="CodeFont">WHEN</span> statement handles a specific <span class="CodeFont">exception_name</span>:</p>
+                <div class="fcnWrapper"><pre class="FcnSyntax">WHEN&#160;&lt;exception_name&gt;;</pre>
+                </div>
+            </li>
+            <li>The exception name <span class="CodeFont">others</span> is used to define an exception handler that handles any exceptions not specifically handled by another <span class="CodeFont">WHEN</span>&#160;statement.</li>
+        </ul>
+        <h2><a name="SplicePl"></a>Splice&#160;Machine PL/SQL&#160;Compared to Oracle PL/SQL</h2>
+        <p>This section details the differences between XXXXXXXXXXXXXXX</p>
+        <h3>Splice*Plus Coverage</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>&#160;</th>
+                    <th>&#160;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Types</td>
+                    <td>
+                        <ul class="bulletCell">
+                            <li>Numeric, string, date and time</li>
+                            <li>Large object types</li>
+                            <li>User-defined types:&#160;scalar, structure, table</li>
+                            <li>Collections:&#160;Varrays, Nested Tables, Records</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Conversions</td>
+                    <td>
+                        <ul class="bulletCell">
+                            <li>Type casts</li>
+                            <li>Value set conversions</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Variables</td>
+                    <td>Declaration, initialization, assignment</td>
+                </tr>
+                <tr>
+                    <td>Flow control</td>
+                    <td><span class="CodeFont">IF, FOR, WHILE, RETURN, EXIT, GOTO</span>, and so on</td>
+                </tr>
+                <tr>
+                    <td>Functions,<br />Procedures</td>
+                    <td>
+                        <ul class="bulletCell">
+                            <li>Named parameters with default values</li>
+                            <li>Closures</li>
+                            <li>Nesting </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Arithmetic </td>
+                    <td>
+                        <p>On 7 different numeric forms.</p>
+                        <p>On date and time types</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SQL</td>
+                    <td><span class="CodeFont">SELECT, INSERT, UPDATE, DELETE, CREATE, DROP</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Exceptions</td>
+                    <td><span class="CodeFont">RAISE</span>, Catch, custom definitions</td>
+                </tr>
+                <tr>
+                    <td>Cursors</td>
+                    <td><span class="CodeFont">OPEN, FETCH, BULK&#160;COLLECTION, %ROWCOUNT</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Execution</td>
+                    <td><span class="CodeFont">EXECUTE&#160;IMMEDIATE</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Transactions</td>
+                    <td>Transaction stack</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Data Type Conversions</h3>
+        <p>Some of the data types in PL/SQL&#160;are not part of Splice&#160;Machine SQL; however, our PL/SQL&#160;compiler automatically converts such data types into native, Splice&#160;Machine SQL&#160;data types, including these conversions:</p>
+        <table>
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>PL/SQL&#160;data type</th>
+                    <th>Splice Machine data type</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><a name="Splice*P"></a>Splice*Plus:&#160;Features Not Yet Available</h3>
+        <p>&#160;</p>
+        <h2>See Also</h2>
+        <p>To learn more about PL/SQL, consider these resources:</p>
+        <ul>
+            <li>The <a href="http://docs.oracle.com/" target="_blank" title="Click to open the top-level Oracle documentation site in another tab or window" alt="Click to open the top-level Oracle documentation site in another tab or window">Oracle documentation site.</a></li>
+            <li>For PL/SQL&#160;beginners, <a href="http://www.tutorialspoint.com/plsql" target="_blank" title="Click to open a new/tab window on the TutorialsPoint PL/SQL tutorial " alt="Click to open a new/tab window on the TutorialsPoint PL/SQL tutorial ">www.tutorialspoint.com/plsql.</a></li>
+            <li>Third party PL/SQL&#160;books available at your favorite bookstore or online.</li>
+        </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

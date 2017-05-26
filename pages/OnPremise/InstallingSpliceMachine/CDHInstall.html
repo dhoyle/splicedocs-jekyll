@@ -8,6 +8,7 @@ sidebar:  install_sidebar
 permalink: onprem_install_cloudera.html
 folder: OnPrem
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1><a name="kanchor30"></a>Installing and Configuring Splice Machine for Cloudera Manager</h1>
@@ -52,7 +53,7 @@ folder: OnPrem
                     <ol class="boldFont">
                         <li value="1">
                             <p class="topLevel">Contact Splice Machine for your installer</p>
-                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release <span class="BasicVariablesSpliceReleaseVersion">2.5</span>:</p>
+                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}}:</p>
                             <table>
                                 <col style="width: 92px;" />
                                 <col />
@@ -66,17 +67,17 @@ folder: OnPrem
                                     <tr>
                                         <td><span class="InstallerVersionsCDH-R1Name">CDH&#160;5.7.2</span>
                                         </td>
-                                        <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSParcelPart">cluster/parcel</span>/<span class="InstallerVersionsCDH-R1">cdh5.7.2</span></td>
+                                        <td class="CodeFont">{{splvar_install_VersionsAWSS3Bucket}}/{{splvar_install_VersionsCurrentRelease}}/{{splvar_install_VersionsAWSParcelPart}}/{{splvar_install_VersionsCDH-R1}}</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="InstallerVersionsCDH-R2Name">CDH&#160;5.8.0</span>
+                                        <td>{{splvar_install_VersionsCDH-R2Name}}
                                         </td>
-                                        <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSParcelPart">cluster/parcel</span>/<span class="InstallerVersionsCDH-R2">cdh5.8.0</span></td>
+                                        <td class="CodeFont">{{splvar_install_VersionsAWSS3Bucket}}/{{splvar_install_VersionsCurrentRelease}}/{{splvar_install_VersionsAWSParcelPart}}/{{splvar_install_VersionsCDH-R2}}</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="InstallerVersionsCDH-R3Name">CDH 5.8.3</span>
+                                        <td>{{splvar_install_VersionsCDH-R3Name}}
                                         </td>
-                                        <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSParcelPart">cluster/parcel</span>/<span class="InstallerVersionsCDH-R3">cdh5.8.3</span></td>
+                                        <td class="CodeFont">{{splvar_install_VersionsAWSS3Bucket}}/{{splvar_install_VersionsCurrentRelease}}/{{splvar_install_VersionsAWSParcelPart}}/{{splvar_install_VersionsCDH-R3}}</td>
                                     </tr>
                                 </tbody>
                             </table>

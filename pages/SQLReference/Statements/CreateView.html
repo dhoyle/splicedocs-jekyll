@@ -8,6 +8,7 @@ sidebar:  sqlref_sidebar
 permalink: sqlref_statements_createview.html
 folder: SQLReference/Statements
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1><a name="Statements.CreateView" id="Statements.CreateView"></a><a name="kanchor547"></a>CREATE VIEW</h1>
@@ -27,7 +28,7 @@ CREATE VIEW <span class="ItalicFont"><a href="sqlref_identifiers_types.html#View
                 <p class="paramDefnFirst">The name to assign to the view.</p>
                 <p class="paramName">Simple-column-Name*</p>
                 <p class="paramDefnFirst">An optional list of names to be used for columns of the view. If not given, the column names are deduced from the query.</p>
-                <p class="paramDefn">The maximum number of columns in a view is <span class="CodeFont"><span class="LimitationsMaxColumnsInView">5000</span></span>.</p>
+                <p class="paramDefn">The maximum number of columns in a view is <span class="CodeFont">{{splvar_limit_MaxColumnsInView}}</span>.</p>
                 <p class="paramName">AS&#160;Query [ORDER&#160;BY&#160;clause]</p>
                 <p class="paramDefnFirst">A <span class="CodeFont">SELECT</span> or <span class="CodeFont">VALUES</span> command that provides the columns and rows of the view.</p>
                 <p class="paramName">result offset and fetch first clauses</p>

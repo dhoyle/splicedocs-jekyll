@@ -8,6 +8,7 @@ sidebar:  install_sidebar
 permalink: onprem_install_hortonworks.html
 folder: OnPrem
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1><a name="kanchor506"></a>Installing and Configuring Splice Machine for Hortonworks HDP</h1>
@@ -47,7 +48,7 @@ folder: OnPrem
                 <ol class="boldFont">
                     <li value="1">
                         <p class="topLevel">Contact Splice Machine for your installer</p>
-                        <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release <span class="BasicVariablesSpliceReleaseVersion">2.5</span>:</p>
+                        <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}}:</p>
                         <table>
                             <col />
                             <col />
@@ -59,14 +60,14 @@ folder: OnPrem
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><span class="InstallerVersionsHDP-R1Name">HDP&#160;2.4.2</span>
+                                    <td>{{splvar_install_HDP-R1Name}}
                                     </td>
-                                    <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsHDP-R1">hdp2.4.2</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R1">hdp2.4.2</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span></td>
+                                    <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_HDP-R1}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R1}}.{{splvar_install_SpliceReleaseGZ}}</td>
                                 </tr>
                                 <tr>
-                                    <td><span class="InstallerVersionsHDP-R2Name">HDP&#160;2.5.0</span>
+                                    <td>{{splvar_install_HDP-R2Name}}
                                     </td>
-                                    <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span></td>
+                                    <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_HDP-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -79,12 +80,12 @@ folder: OnPrem
                     </li>
                     <li value="3">
                         <p class="topLevel">Download the Splice Machine package into the <span class="CodeFont">splice</span> directory on the node. For example:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo curl '<span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span>' -o /opt/splice/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span><br /></pre>
+                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo curl '{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_HDP-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}}' -o /opt/splice/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}}<br /></pre>
                         </div>
                     </li>
                     <li value="4">
                         <p class="topLevel">Extract the Splice Machine package:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo tar -xf SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span> --directory /opt/splice</pre>
+                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo tar -xf SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}} --directory /opt/splice</pre>
                         </div>
                     </li>
                     <li value="5">

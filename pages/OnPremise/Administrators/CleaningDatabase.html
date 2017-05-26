@@ -8,6 +8,7 @@ sidebar:  admin_sidebar
 permalink: onprem_admin_cleaningdb.html
 folder: OnPrem
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1>Cleaning Your Database</h1>
@@ -236,9 +237,9 @@ quit</pre>
                     <li value="3">
                         <p class="topLevel">Run the following scripts:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">
-$ <span class="PlatformVariablesStandaloneStopScript">./bin/stop-splice.sh</span>
-$ <span class="PlatformVariablesStandaloneCleanScript">./bin/clean.sh</span>
-$ <span class="PlatformVariablesStandaloneStartScript">./bin/start-splice.sh</span></pre>
+$ {{splvar_platform_StandaloneStopScript}}
+$ {{splvar_platform_StandaloneCleanScript}}
+$ {{splvar_platform_StandaloneStartScript}}</pre>
                         </div>
                     </li>
                 </ol>

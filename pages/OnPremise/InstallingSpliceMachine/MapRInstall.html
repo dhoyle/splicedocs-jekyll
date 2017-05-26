@@ -79,7 +79,7 @@ folder: OnPrem
                     <ol class="boldFont">
                         <li value="1">
                             <p class="topLevel">Contact Splice Machine for your installer</p>
-                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release <span class="BasicVariablesSpliceReleaseVersion">2.5</span>:</p>
+                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}}:</p>
                             <table>
                                 <col />
                                 <col />
@@ -91,14 +91,14 @@ folder: OnPrem
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><span class="InstallerVersionsMAPR-R1Name">MapR 5.1.0</span>
+                                        <td>{{splvar_install_AWSS3Bucket}}
                                         </td>
-                                        <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsMAPR-R1">mapr5.1.0</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsMAPR-R1">mapr5.1.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span></td>
+                                        <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_MAPR-R1}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R1}}.{{splvar_install_SpliceReleaseGZ}}</td>
                                     </tr>
                                     <tr>
-                                        <td><span class="InstallerVersionsMAPR-R2Name">MapR 5.2.0</span>
+                                        <td>{{splvar_install_MAPR-R2Name}}
                                         </td>
-                                        <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsMAPR-R2">mapr5.2.0</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span></td>
+                                        <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_MAPR-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -111,17 +111,17 @@ folder: OnPrem
                         </li>
                         <li value="3">
                             <p class="topLevel">Download the Splice Machine package into the <span class="CodeFont">splice</span> directory on the node. For example:</p>
-                            <div class="preWrapperWide"><pre class="ShellCommand">cd /opt/splice<br />curl -O '<span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsMAPR-R2">mapr5.2.0</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsMAPR-R2">mapr5.2.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span>'</pre>
+                            <div class="preWrapperWide"><pre class="ShellCommand">cd /opt/splice<br />curl -O '{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_MAPR-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R2}}.{{splvar_install_SpliceReleaseGZ}}'</pre>
                             </div>
                         </li>
                         <li value="4">
                             <p class="topLevel">Extract the Splice Machine package:</p>
-                            <div class="preWrapperWide"><pre class="ShellCommand">tar -xf SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsMAPR-R2">mapr5.2.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span></pre>
+                            <div class="preWrapperWide"><pre class="ShellCommand">tar -xf SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R2}}.{{splvar_install_SpliceReleaseGZ}}</pre>
                             </div>
                         </li>
                         <li value="5">
                             <p class="topLevel">Create a symbolic link. For example:</p>
-                            <div class="preWrapperWide"><pre class="ShellCommand">ln -sf SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsMAPR-R2">mapr5.2.0</span>.<span class="InstallerVersionsSpliceReleasePart">p0.226</span> default</pre>
+                            <div class="preWrapperWide"><pre class="ShellCommand">ln -sf SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R2}}.{{splvar_install_SpliceReleasePart}} default</pre>
                             </div>
                         </li>
                         <li value="6">

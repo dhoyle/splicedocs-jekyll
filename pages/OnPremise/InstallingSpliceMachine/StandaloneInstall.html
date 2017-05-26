@@ -8,6 +8,7 @@ sidebar:  install_sidebar
 permalink: onprem_install_standalone.html
 folder: OnPrem
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1><a name="DeployingStandalone"></a>Installing the Standalone Version of Splice&#160;Machine<a name="kanchor149"></a></h1>
@@ -319,7 +320,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                     <li value="3">
                         <p class="topLevel">Install Splice&#160;Machine:</p>
                         <p class="indentLevel1">Unpack the tarball <span class="CodeFont">gz</span> file that you downloaded:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">tar -xzf <span class="PlatformVariablesStandaloneInstallerTarball">splice-releases/2.5.0.1707/standalone</span></pre>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">tar -xzf {{splvar_platform_StandaloneInstallerTarball}}</pre>
                         </div>
                         <p class="indentLevel1">This creates a <span class="CodeFont">splicemachine</span> subdirectory and installs Splice&#160;Machine software in it.</p>
                     </li>
@@ -336,7 +337,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                     </li>
                     <li value="2">
                         <p class="topLevel">Run the Splice Machine start-up script</p>
-                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve"><span class="PlatformVariablesStandaloneStartScript">./bin/start-splice.sh</span></pre>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">{{splvar_platform_StandaloneStartScript}}</pre>
                         </div>
                         <p class="indentLevel1">Initialization of the database may take a couple minutes. It is ready for use when you see this message:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">Splice Server is ready</pre>

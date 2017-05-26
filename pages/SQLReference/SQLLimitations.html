@@ -8,6 +8,7 @@ sidebar:  sqlref_sidebar
 permalink: sqlref_sqllimitations.html
 folder: SQLReference
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1><a name="SQLReference.SQLLimitations" id="SQLReference.SQLReservedWords"></a><a name="kanchor472"></a>SQL&#160;Limitations</h1>
@@ -40,22 +41,22 @@ folder: SQLReference
                 <tbody>
                     <tr>
                         <td>Maximum columns in a table</td>
-                        <td class="CodeFont"><span class="LimitationsMaxColumnsInTable">100000</span>
+                        <td class="CodeFont">{{splvar_limit_MaxColumnsInTable}}
                         </td>
                     </tr>
                     <tr>
                         <td>Maximum columns in a view</td>
-                        <td class="CodeFont"><span class="LimitationsMaxColumnsInView">5000</span>
+                        <td class="CodeFont">{{splvar_limit_MaxColumnsInView}}
                         </td>
                     </tr>
                     <tr>
                         <td>Maximum number of parameters in a stored procedure</td>
-                        <td class="CodeFont"><span class="LimitationsMaxParamsInStoredProc">90</span>
+                        <td class="CodeFont">{{splvar_limit_MaxParamsInStoredProc}}
                         </td>
                     </tr>
                     <tr>
                         <td>Maximum indexes on a table</td>
-                        <td class="CodeFont"><span class="LimitationsMaxIndexesOnTable">32767</span><span class="bodyFont"> or storage capacity</span>
+                        <td class="CodeFont">{{splvar_limit_MaxIndexesOnTable}}<span class="bodyFont"> or storage capacity</span>
                         </td>
                     </tr>
                     <tr>
@@ -64,7 +65,7 @@ folder: SQLReference
                     </tr>
                     <tr>
                         <td>Maximum elements in a select list</td>
-                        <td class="CodeFont"><span class="LimitationsMaxElementsSelect">1012</span>
+                        <td class="CodeFont">{{splvar_limit_MaxElementsSelect}}
                         </td>
                     </tr>
                     <tr>
@@ -73,12 +74,12 @@ folder: SQLReference
                     </tr>
                     <tr>
                         <td>Maximum number of columns in a <span class="CodeFont">GROUP BY</span> clause</td>
-                        <td class="CodeFont"><span class="LimitationsMaxElementsGroupBy">32677</span>
+                        <td class="CodeFont">{{splvar_limit_MaxElementsGroupBy}}
                         </td>
                     </tr>
                     <tr>
                         <td>Maximum number of columns in an <span class="CodeFont">ORDER BY</span> clause</td>
-                        <td class="CodeFont"><span class="LimitationsMaxElementsOrderBy">1012</span>
+                        <td class="CodeFont">{{splvar_limit_MaxElementsOrderBy}}
                         </td>
                     </tr>
                     <tr>
@@ -115,7 +116,7 @@ folder: SQLReference
                     </tr>
                     <tr>
                         <td>Maximum depth of cascaded triggers</td>
-                        <td class="CodeFont"><span class="LimitationsMaxTriggerRecursion">16</span>
+                        <td class="CodeFont">{{splvar_limit_MaxTriggerRecursion}}
                         </td>
                     </tr>
                 </tbody>

@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A tutorial showing you how to put messages on an MQTT queue, how to consume those messages using Spark Streaming, and how to save those messages to Splice Ma...">
+<meta name="keywords" content=" ">
+<title>MQTT Spark Streaming with Splice Machine | Splice Machine Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+<link rel="stylesheet" href="css/splicemain.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Database-as-Service<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="dbaas_intro.html">Welcome!</a></li>
+                        
+                        
+                        
+                        <li><a href="dbaas_cm_intro.html">Cloud Manager Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="tutorials_intro.html">Tutorials</a></li>
+                        
+                        
+                        
+                        <li><a href="sqlref_intro.html">SQL Reference Manual</a></li>
+                        
+                        
+                        
+                        <li><a href="developers_intro.html">Developer's Manual</a></li>
+                        
+                        
+                        
+                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
+                        
+                        
+                        
+                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">On-Premise DB<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="onprem_intro.html">Welcome!</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_install_intro.html">Installation</a></li>
+                        
+                        
+                        
+                        <li><a href="tutorials_intro.html">Tutorials</a></li>
+                        
+                        
+                        
+                        <li><a href="cmdlineref_intro.html">splice> Command Line Reference</a></li>
+                        
+                        
+                        
+                        <li><a href="sqlref_intro.html">SQL Reference Manual</a></li>
+                        
+                        
+                        
+                        <li><a href="developers_intro.html">Developer's Manual</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
+                        
+                        
+                        
+                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the MQTT Spark Streaming with Splice Machine page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="MQTT Spark Streaming with Splice Machine">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Splice Machine 2.6</li>
+    
+    
+    
+    <li>
+        <a href="#">Splice Machine Tutorials</a>
+        <ul>
+            
+            
+            
+            <li><a href="tutorials_intro.html">Introduction</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">splice> Command Line</a>
+        <ul>
+            
+            
+            
+            <li><a href="tutorials_cli_usingcli.html">Getting Started With splice></a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_cli_scripting`.html">Scripting splice></a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_cli_rlwrap.html">RlWrap Summary</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Ingestion and Streaming</a>
+        <ul>
+            
+            
+            
+            <li><a href="tutorials_ingest_uploadtos3.html">Uploading Data to S3</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_ingest_configures3.html">Setting up S3 Access</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_ingest_tpch1.html">Importing TPCH Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_ingest_importing.html">Importing Your Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_ingest_hfiles.html">Importing Your Data as HFiles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_ingest_kafkaproducer.html">Creating a Kafka Producer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_ingest_kafkafeed.html">Configuring a Kafka Feed</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_ingest_storm.html">Using Apache Storm</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_ingest_mqttspark.html">MQTT&#160;Spark Streaming</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Analytics and Machine Learning</a>
+        <ul>
+            
+            
+            
+            <li><a href="tutorials_ml_zeppelin.html">Using Zeppelin</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Connecting Programmatically</a>
+        <ul>
+            
+            
+            
+            <li><a href="tutorials_connect_java.html">Connecting with Java</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_jruby.html">Connecting with JRuby</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_jython.html">Connecting with Jython</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_scala.html">Connecting with Scala</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_angular.html">Connecting with NodeJS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_odbcinstall.html">Installing our ODBC&#160;Driver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_python.html">Connecting with Python</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_odbcc.html">Connecting with C&#160;and ODBC</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Connecting BI Tools</a>
+        <ul>
+            
+            
+            
+            <li><a href="tutorials_connect_dbeaver.html">Connecting DBeaver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_dbvisualizer.html">Connecting DBVisualizer</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_cognos.html">Connecting Cognos</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_squirrel.html">Connecting SQuirreL</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="tutorials_connect_tableau.html">Connecting Tableau</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+ <h2>&#160;</h2><!--  <h1 class="post-title-main">MQTT Spark Streaming with Splice Machine</h1>  -->
+</div>
+
+
+
+<div class="post-content">
+
+<!--- Don't automatically put page summary at top - GRH 05/2017 --
+   
+    <div class="summary">A tutorial showing you how to put messages on an MQTT queue, how to consume those messages using Spark Streaming, and how to save those messages to Splice Machine using a VTI.&#xD;&#xA;</div>
+   
+-->
+
+    
+
+
+    
+
+  	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor453"></a>Streaming MQTT&#160;Spark Data</h1>
+            <p>This topic walks you through using MQTT Spark streaming with Splice&#160;Machine. MQTT&#160;is a lightweight, publish-subscribe messaging protocol designed for connecting remotely when a small footprint is required. MQTT&#160;is frequently used for data collection with the Internet of Things (IoT).</p>
+            <p>The example code in this tutorial uses <a href="https://mosquitto.org/" target="_blank">Mosquitto</a>, which is an open source message broker that implements the MQTT. This tutorial uses a cluster managed by MapR; if you're using different platform management software, you'll need to make a few adjustments in how the code is deployed on your cluster.</p>
+            <div class="noteNote">All of the code used in this tutorial is available in our <a href="https://github.com/splicemachine/splice-community-sample-code" target="_blank">GitHub community repository</a>. <br /></div>
+            <div data-mc-conditions="Default.NotPDF">
+                <p>You can complete this tutorial by <a href="#Watch">watching a short video</a> or by <a href="#Written">following the written directions</a> below.</p>
+                <h2><a name="Watch"></a>Watch the Video</h2>
+                <p>The following video shows you how to:</p>
+                <ul>
+                    <li value="1"> put messages on an MQTT&#160;queue</li>
+                    <li value="2">consume those messages using Spark streaming</li>
+                    <li value="3">save those messages to Splice Machine with a virtual table (VTI)</li>
+                </ul>
+                <div class="centered">
+                    <p><iframe class="youtube-player_0" src="https://www.youtube.com/embed/Nt2J2khM0Xw?" frameborder="0" allowfullscreen="1" width="560px" height="315px"></iframe>
+                    </p>
+                </div>
+            </div>
+            <h2><a name="Written"></a>Written Walk Through</h2>
+            <p>This section walks you through the same sequence of steps as the video, in these sections:</p>
+            <ul>
+                <li value="1"> <a href="#Deployin">Deploying the Tutorial Code</a> walks you through downloading and deploying the sample code.</li>
+                <li value="2"><a href="#About">About the Sample Code</a> describes the high-level methods in each class.</li>
+                <li value="3"><a href="#About2">About the Sample Code Scripts</a> describes the scripts used to deploy and execute the sample code.</li>
+            </ul>
+            <h3><a name="Deployin"></a>Deploying the Tutorial Code</h3>
+            <p>Follow these steps to deploy the tutorial code:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Download the code from  our <a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-mqtt-spark-streaming" target="_blank">GitHub community repository.</a></p>
+                        <p class="indentLevel1">Pull the code from our git repository:</p>
+                        <div class="preWrapperWide"><pre class="Plain"><a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm" target="_blank">https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-mqtt-spark-streaming</a></pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Compile and package the code:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand">mvn clean compile package<br /></pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Copy three JAR&#160;files to each server:</p>
+                        <p class="indentLevel1">Copy these three files:</p>
+                        <div class="preWrapperWide"><pre class="Plain">./target/splice-tutorial-mqtt-2.0.jar<br />spark-streaming-mqtt_2.10-1.6.1.jar<br />org.eclipse.paho.client.mqttv3-1.1.0.jar<br /></pre>
+                        </div>
+                        <p class="indentLevel1">to this directory on each server:</p>
+                        <div class="preWrapperWide"><pre class="Plain"> /opt/splice/default/lib</pre>
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Restart Hbase</p>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Create the target table in splice machine:</p>
+                        <p class="indentLevel1">Run this script to create the table:</p>
+                        <div class="preWrapperWide"><pre class="Plain"> create-tables.sql</pre>
+                        </div>
+                    </li>
+                    <li value="6">
+                        <p class="topLevel">Start Mosquitto:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand">sudo su /usr/sbin/mosquitto -d -c /etc/mosquitto/mosquitto.conf &gt; /var/log/mosquitto.log 2&gt;&amp;1</pre>
+                        </div>
+                    </li>
+                    <li value="7">
+                        <p class="topLevel">Start the Spark streaming script:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand">sudo -su mapr ./run-mqtt-spark-streaming.sh tcp://srv61:1883 /testing 10</pre>
+                        </div>
+                        <p class="indentLevel1">The first parameter (<span class="CodeFont">tcp://srv61:1883</span>)&#160;is the MQTT broker, the second (<span class="CodeFont">/testing</span>) is the topic name, and the third (<span class="CodeFont">10</span>)&#160;is the number of seconds each stream should run.</p>
+                    </li>
+                    <li value="8">
+                        <p class="topLevel">Start putting messages on the queue:</p>
+                        <p class="indentLevel1">Here's a java program that is set up to put messages on the queue:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand">java -cp /opt/splice/default/lib/splice-tutorial-mqtt-2.0-SNAPSHOT.jar:/opt/splice/default/lib/org.eclipse.paho.client.mqttv3-1.1.0.jar com.splicemachine.tutorials.sparkstreaming.mqtt.MQTTPublisher tcp://localhost:1883 /testing 1000 R1</pre>
+                        </div>
+                        <p class="indentLevel1">The first parameter (<span class="CodeFont">tcp://localhost:1883</span>)&#160;is the MQTT broker, the second (<span class="CodeFont">/testing</span>) is the topic name, the third (<span class="CodeFont">1000</span>)&#160;is the number of iterations to execute, and the fourth parameter (<span class="CodeFont">R1</span>)&#160;is a prefix for this run.</p>
+                        <div class="noteNote">The source code for this utility program is in a different GitHub project than the rest of this code. You'll find it in the <span class="CodeFont"><a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-kafka-producer" target="_blank">tutorial-kafka-producer</a></span> Github project. </div>
+                    </li>
+                </ol>
+            </div>
+            <h3><a name="About"></a>About the Sample Code</h3>
+            <p>This section describes the main class methods used in this MQTT&#160;example code; here's a summary of the classes:</p>
+            <table>
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Java Class</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="#MQTTPubl">MQTTPublisher</a>
+                        </td>
+                        <td>Puts csv messages on an MQTT&#160;queue.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="#SparkStr">SparkStreamingMQTT</a>
+                        </td>
+                        <td>The Spark streaming job that reads messages from the MQTT&#160;queue.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="#SaveRDD">SaveRDD</a>
+                        </td>
+                        <td>Inserts the data into Splice&#160;Machine using the <span class="CodeFont">RFIDMessageVTI</span> class.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="#RFIDMess2">RFIDMessageVTI</a>
+                        </td>
+                        <td>A virtual table interface for parsing an <span class="CodeFont">RFIDMessage</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="#RFIDMess">RFIDMessage</a>
+                        </td>
+                        <td>Java object (a POJO)&#160;for converting from a csv string to an object to a database entry.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4><a name="MQTTPubl"></a>MQTTPublisher</h4>
+            <p>This class puts CSV messages on an MQTT queue. The function of most interest in MQTTPublisher.java is <span class="CodeFont">DoDemo</span>, which controls our sample program:</p>
+            <div class="preWrapperWide"><pre class="Example">public void doDemo() {
+   try {
+		long startTime = System.currentTimeMillis();
+		client = new MqttClient(broker, clientId);
+		client.connect();
+		MqttMessage message = new MqttMessage();
+		for (int i=0; i‹numMessages; i++) {
+			// Build a csv string
+			message.setPayload( prefix + "Asset" + i ", Location" + i + "," + new Timestamp((new Date()).getTime())).getBytes());
+			client.publish(topicName, message);
+			if (i % 1000 == 0) {
+				System.out.println("records:" + i + " duration=" + (System.currentTimeMillis() - startTime));
+				startTime = System.currentTimeMillis();
+			}
+		client.disconnect();
+	} catch (MqttException e) {
+		e.printStackTrace();
+	}
+}</pre>
+            </div>
+            <p><span class="CodeFont">DoDemo</span> does a little initialization, then starts putting messages out on the queue. Our sample program is set up to loop until it creates <span class="CodeFont">numMessages</span> messages; after every 1000 messages, it displays a status message that helps us determine how much time is going to put messages on the queue, and how much to take them off the queue.</p>
+            <p><span class="CodeFont">DoDemo</span> builds a csv record (line) for each message, setting an asset&#160;ID, a location ID, and a timestamp in the <span class="CodeFont">payload</span> of the message. It them publishes that message to the topic <span class="CodeFont">topicName</span>. </p>
+            <h4><a name="SparkStr"></a>SparkStreamingMQTT</h4>
+            <p>Once the messages are on the queue, our <span class="CodeFont">SparkStreamingMQTT</span> class object reads them from the queue and inserts them into our database. The main method in this class is <span class="CodeFont">processMQTT</span>:</p>
+            <div class="preWrapperWide"><pre class="Example">public void processMQTT(final String broker, final String topic, final int numSeconds) {
+
+        LOG.info("************ SparkStreamingMQTTOutside.processMQTT start");
+
+        // Create the spark application and set the name to MQTT
+        SparkConf sparkConf = new SparkConf().setAppName("MQTT");
+
+        // Create the spark streaming context with a 'numSeconds' second batch size
+        jssc = new JavaStreamingContext(sparkConf, Durations.seconds(numSeconds));
+        jssc.checkpoint(checkpointDirectory);
+
+        LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to read the MQTTUtils.createStream");
+        //2. MQTTUtils to collect MQTT messages
+        JavaReceiverInputDStream‹String&gt; messages = MQTTUtils.createStream(jssc, broker, topic);
+
+        LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to do foreachRDD");
+        //process the messages on the queue and save them to the database
+        messages.foreachRDD(new SaveRDD());
+
+        LOG.info("************ SparkStreamingMQTTOutside.processMQTT prior to context.strt");
+        // Start the context
+        jssc.start();
+        jssc.awaitTermination();
+    }</pre>
+            </div>
+            <p class="spaceAbove">The <span class="CodeFont">processMQTT</span>&#160;method takes three parameters:</p>
+            <div class="paramList">
+                <p class="paramName">broker</p>
+                <p class="paramDefnFirst">The URL&#160;of the MQTT&#160;broker.</p>
+                <p class="paramName">topic</p>
+                <p class="paramDefnFirst">The MQTT&#160;topic name.</p>
+                <p class="paramName">numSeconds</p>
+                <p class="paramDefnFirst">The number of seconds at which streaming data will be divided into batches.</p>
+            </div>
+            <p class="spaceAbove">The <span class="CodeFont">processMQTT</span>&#160;method processes the messages on the queue and saves them by calling the <span class="CodeFont">SaveMDD</span> class.</p>
+            <h4><a name="SaveRDD"></a>SaveRDD</h4>
+            <p>The <span class="CodeFont">SaveRDD</span>&#160;class is an example of a Spark streaming function that uses our virtual table interface (VTI) to insert data into your Splice Machine database. This function checks for messages in the stream, and if there any, it creates a connection your database and uses a prepared statement to insert the messages into the database.</p>
+            <div class="preWrapperWide"><pre class="Example">/**
+ * This is an example of spark streaming function that
+ * inserts data into Splice Machine using a VTI.
+ *
+ * @author Erin Driggers
+ */
+
+public class SaveRDD implements Function‹JavaRDD‹String&gt;, Void&gt;, Externalizable {
+
+    private static final Logger LOG = Logger.getLogger(SaveRDD.class);
+
+    @Override
+    public Void call(JavaRDD‹String&gt; rddRFIDMessages) throws Exception {
+        LOG.debug("About to read results:");
+        if (rddRFIDMessages != null '&amp; rddRFIDMessages.count() &gt; 0) {
+            LOG.debug("Data to process:");
+            //Convert to list 
+            List‹String&gt; rfidMessages = rddRFIDMessages.collect();
+            int numRcds = rfidMessages.size();
+
+            if (numRcds &gt; 0) {
+                try {
+                    Connection con = DriverManager.getConnection("jdbc:splice://localhost:1527/splicedb;user=splice;password=admin");
+
+                    //Syntax for using a class instance in a VTI, this could also be a table function
+                    String vtiStatement = "INSERT INTO IOT.RFID "
+                            + "select s.* from new com.splicemachine.tutorials.sparkstreaming.mqtt.RFIDMessageVTI(?) s ("
+                            + RFIDMessage.getTableDefinition() + ")";
+                    PreparedStatement ps = con.prepareStatement(vtiStatement);
+                    ps.setObject(1, rfidMessages);
+                    ps.execute();
+                } catch (Exception e) {
+                    //It is important to catch the exceptions as log messages because it is difficult
+                    //to trace what is happening otherwise
+                    LOG.error("Exception saving MQTT records to the database" + e.getMessage(), e);
+                } finally {
+                    LOG.info("Complete insert into IOT.RFID");
+                }
+            }
+        }
+        return null;
+    }
+</pre>
+            </div>
+            <p class="spaceAbove">The heart of this function is the statement that creates the prepared statement, using a VTI&#160;class instance:</p>
+            <div class="preWrapperWide"><pre class="Plain">String vtiStatement = "INSERT INTO IOT.RFID " <br />&#160;&#160;&#160;&#160;+ "select s.* from new <br />&#160;&#160;&#160;&#160;com.splicemachine.tutorials.sparkstreaming.mqtt.RFIDMessageVTI(?) s ("
+&#160;&#160;&#160;&#160;+ RFIDMessage.getTableDefinition() + ")";
+PreparedStatement ps = con.prepareStatement(vtiStatement);</pre>
+            </div>
+            <p>Note that the statement references both our <span class="CodeFont">RFIDMessage</span> and <span class="CodeFont">RFIDMessageVTI</span>&#160;classes, which are described below.</p>
+            <h4><a name="RFIDMess2"></a>RFIDMessageVTI</h4>
+            <p>The <span class="CodeFont">RFIDMessageVTI</span>&#160;class implements an example of a virtual table interface that reads in a list of strings that are in CSV&#160;format, converts that into an <span class="CodeFont">RFIDMessage</span> object, and returns the resultant list in a format that is compatible with Splice&#160;Machine.</p>
+            <p>This class features an override of the <span class="CodeFont">getDataSet</span> method, which loops through each CSV&#160;record from the input stream and converts it into an <span class="CodeFont">RFIDMessage</span> object that is added onto a list of message items:</p>
+            <div class="preWrapperWide"><pre class="Example">    @Override
+    public DataSet‹LocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
+        operationContext = dsp.createOperationContext(op);
+
+        //Create an arraylist to store the key / value pairs
+        ArrayList‹LocatedRow&gt; items = new ArrayList‹LocatedRow&gt;();
+
+        try {
+
+            int numRcds = this.records == null ? 0 : this.records.size();
+
+            if (numRcds &gt; 0) {
+
+                LOG.info("Records to process:" + numRcds);
+                //Loop through each record convert to a SensorObject
+                //and then set the values
+                for (String csvString : records) {
+                    CsvBeanReader beanReader = new CsvBeanReader(new StringReader(csvString), CsvPreference.STANDARD_PREFERENCE);
+                    RFIDMessage msg = beanReader.read(RFIDMessage.class, header, processors);
+                    items.add(new LocatedRow(msg.getRow()));
+                }
+            }
+        } catch (Exception e) {
+            LOG.error("Exception processing RFIDMessageVTI", e);
+        } finally {
+            operationContext.popScope();
+        }
+        return new ControlDataSet‹&gt;(items);
+    }
+</pre>
+            </div>
+            <div class="noteIcon">For more information about using our virtual table interface, see <a href="developers_fundamentals_vti.html">Using the Splice Machine Virtual Table Interface.</a></div>
+            <h4><a name="RFIDMess"></a>RFIDMessage</h4>
+            <p>The <span class="CodeFont">RFIDMessage</span> class creates a simple Java object (a POJO)&#160;that represents an RFID&#160;message; we use this to convert an incoming CSV-formatted message into an object. This class includes getters and setters for each of the object properties, plus the <span class="CodeFont">getTableDefinition</span> and <span class="CodeFont">getRow</span> methods:</p>
+            <div class="preWrapperWide"><pre class="Example">    /**
+     * Used by the VTI to build a Splice Machine compatible resultset
+     *
+     * @return
+     * @throws SQLException
+     * @throws StandardException
+     */
+    public ValueRow getRow() throws SQLException, StandardException {
+        ValueRow valueRow = new ValueRow(5);
+        valueRow.setColumn(1, new SQLVarchar(this.getAssetNumber()));
+        valueRow.setColumn(2, new SQLVarchar(this.getAssetDescription()));
+        valueRow.setColumn(3, new SQLTimestamp(this.getRecordedTime()));
+        valueRow.setColumn(4, new SQLVarchar(this.getAssetType()));
+        valueRow.setColumn(5, new SQLVarchar(this.getAssetLocation()));
+        return valueRow;
+    }
+
+    /**
+     * Table definition to use when using a VTI that is an instance of a class
+     *
+     * @return
+     */
+    public static String getTableDefinition() {
+        return "ASSET_NUMBER varchar(50), "
+        + "ASSET_DESCRIPTION varchar(100), "
+        + "RECORDED_TIME TIMESTAMP, "
+        + "ASSET_TYPE VARCHAR(50), "
+        + "ASSET_LOCATION VARCHAR(50) ";
+    }</pre>
+            </div>
+            <p>The <span class="CodeFont">getTableDefinition</span> method is a string description of the table into which you're inserting records; this pretty much replicates the specification you would use in an SQL&#160;<span class="CodeFont">CREATE_TABLE</span>&#160;statement.</p>
+            <p>The <span class="CodeFont">getRow</span> method creates a data row with the appropriate number of columns, uses property getters to set the value of each column, and returns the row as a <span class="CodeFont">resultset</span> that is compatible with Splice&#160;Machine.</p>
+            <h3><a name="About2"></a>About the Sample Code Scripts</h3>
+            <p>These are also two scripts that we use with this tutorial:</p>
+            <table>
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">/ddl/create-tables.sql</td>
+                        <td>A simple SQL&#160;script that you can use to have Splice&#160;Machine create the table into which RFID&#160;messages are stored.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">/scripts/run-mqtt-spark-streaming.sh</td>
+                        <td>Starts the Spark streaming job.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
+ Site last generated: May 26, 2017 <br />
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

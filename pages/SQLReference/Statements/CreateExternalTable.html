@@ -8,6 +8,7 @@ sidebar:  sqlref_sidebar
 permalink: sqlref_statements_createexternaltable.html
 folder: SQLReference/Statements
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1><a name="Statements.CreateTable" id="Statements.CreateTable"></a><a name="kanchor390"></a>CREATE EXTERNAL TABLE</h1>
@@ -37,7 +38,7 @@ begin with <span class="CodeFont">SYS</span>.</p>
                 <p class="paramDefnFirst">If you don't specify a compression format, the default is uncompressed. You cannot specify a <span class="CodeItalicFont">compression-format</span> when using the <span class="CodeFont">TEXTFILE&#160;</span><span class="CodeItalicFont">file-format</span>; doing so generates an error.</p>
                 <p class="paramName">column-definition</p>
                 <p class="paramDefnFirst">A column definition.</p>
-                <p class="paramDefn">The maximum number of columns allowed in a table is <span class="CodeFont"><span class="LimitationsMaxColumnsInTable">100000</span></span>.</p>
+                <p class="paramDefn">The maximum number of columns allowed in a table is <span class="CodeFont">{{splvar_limit_MaxColumnsInTable}}</span>.</p>
                 <p class="paramName">column-name</p>
                 <p class="paramDefnFirst">The name of a column.</p>
                 <p class="paramName">char</p>

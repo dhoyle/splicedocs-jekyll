@@ -8,6 +8,7 @@ sidebar:  sparkconsole_sidebar
 permalink: sparkconsole_intro.html
 folder: SparkConsole
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
             <h1><a name="kanchor509"></a>Splice Machine Management Console Guide</h1>
@@ -29,7 +30,7 @@ folder: SparkConsole
                 <li value="5">Monitor persisted and cached storage in realtime</li>
             </ul>
             <p>You can access the Splice&#160;Machine Management Console by pointing your browser at this URL:</p>
-            <div class="preWrapper"><pre class="AppCommand"><span class="PlatformVariablesSpliceMgmtConsoleUrl">http://localhost:4040</span></pre>
+            <div class="preWrapper"><pre class="AppCommand">{{splvar_platform_SpliceMgmtConsoleUrl}}</pre>
             </div>
             <div class="noteNote">The management console URL&#160;will only be active after you've run at least one query on our Spark engine; prior to using the Spark engine, your browser will report an error such as <span class="ItalicFont">Connection Refused</span>.</div>
             <p>Here are some of the terms you'll encounter while using the management console:</p>

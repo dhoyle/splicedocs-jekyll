@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInSysProcs
             <h1><a name="kanchor110"></a>SYSCS_UTIL.BULK_IMPORT_HFILE</h1>
             <p>The <samp>SYSCS_UTIL.BULK_IMPORT_HFILE</samp> system procedure
 imports data into your Splice Machine database by first generating HFiles and then importing those HFiles. </p>
-            <div class="noteImportant">Our HFile data import procedure leverages HBase bulk loading, which allows it to import your data at a faster rate; however, using this procedure instead of our standard <span class="CodeFont"><a href="developers_ingestion_importing.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;procedure means that <span class="CalloutFont">constraint checks are not performed during data importation</span>.</div>
+            <div class="noteImportant">Our HFile data import procedure leverages HBase bulk loading, which allows it to import your data at a faster rate; however, using this procedure instead of our standard <span class="CodeFont"><a href="tutorials_ingest_importing.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;procedure means that <span class="CalloutFont">constraint checks are not performed during data importation</span>.</div>
             <p>You must use this procedure in conjunction with either:</p>
             <ul>
                 <li value="1">The <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>&#160;system procedure.</li>
@@ -56,7 +56,7 @@ imports data into your Splice Machine database by first generating HFiles and th
                 </div>
                 <p class="paramName">fileName</p>
                 <p class="paramDefnFirst">The name of the data file that you are importing into your database.</p>
-                <div class="noteIcon"> If you're importing data from an S3 bucket on AWS, please review our <a href="developers_ingestion_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</div>
+                <div class="noteIcon"> If you're importing data from an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</div>
             </div>
             <div class="paramList">
                 <p class="paramName">columnDelimiter</p>

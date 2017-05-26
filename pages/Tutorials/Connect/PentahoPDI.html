@@ -1,0 +1,127 @@
+---
+title: Connecting Pentaho PDI with Splice Machine
+summary: Provides an example of using the Pentaho Data Integration ETL&#160;tool with Splice&#160;Machine.
+keywords: 
+toc: false
+product: all
+sidebar: tutorials_sidebar
+permalink: tutorials_connect_pentaho.html
+folder: Tutorials/Connect
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor287"></a>Using Pentaho PDI&#160;with Splice Machine</h1>
+            <p>This topic describes using the Pentaho Data Integration ETL&#160;tool with Splice&#160;Machine. It is intended as an example of how Pentaho&#160;PDI&#160;can work with Splice Machine and data inputs and outputs in files and other databases.</p>
+            <h2>About Pentaho PDI</h2>
+            <p>Pentaho Data Integration (<span class="ItalicFont">PDI</span>) is an ETL tool that is written in Java and is extensible and very powerful. It can be run as a standalone single instance ETL engine or run in a cluster. PDI&#160;uses the Kettle ETL&#160;engine.</p>
+            <div class="noteNote"><span class="ItalicFont">ETL</span>&#160;stands for <span class="ItalicFont">E</span>xtraction, <span class="ItalicFont">T</span>ransformation, and <span class="ItalicFont">L</span>oading of data.</div>
+            <p>Much of the power of PDI is due to the number and scope of built-in transformations that it includes, which you can drag, drop, and connect together using graphical tools. You can also define your own transformations in the language of your choice. </p>
+            <p>Pentaho PDI also supports Hadoop, HBase, MapReduce, and many other big data platforms, tools, and features, whihc means that you can use it to bridge the gap between SQL&#160;and NoSQL&#160;data stores.
+The Community edition of PDI&#160;is free and full featured; it is multi-threaded, distributed, and scales out, just like Splice Machine. </p>
+            <h2>Downloading and Installing PDI</h2>
+            <p>You can download&#160;and read the official documentation here for PDI&#160;in SourceForge or on the Pentaho community web site:</p>
+            <p class="indentLevel1"><a href="http://community.pentaho.com/projects/data-integration/" target="_blank">http://community.pentaho.com/projects/data-integration/</a>
+            </p>
+            <h2>Example:&#160;Loading and Migrating Data into Splice Machine with Pentaho</h2>
+            <p>PDI features a graphical user interface tool named Spoon that offers a full development and test environment. You use Spoon to define job steps (or modules) known as Kettle routines. </p>
+            <p>
+
+The sample PDI job shown below shows how you can use PDI to load data from legacy databases such as Oracle and MySQL into Splice Machine and vice-versa. This job includes three Kettle routines:</p>
+            <ul>
+                <li value="1"><span class="CodeFont">ky6r_adi_csv</span> loads an XML formatted file of data into Splice Machine
+</li>
+                <li value="2"><span class="CodeFont">Splice to MySQL</span> extracts data from Splice Machine and inserts into MySQL</li>
+                <li value="3"><span class="CodeFont">MySQL to Splice</span> extracts data from SQL and inserts back into Splice Machine
+
+
+            </li>
+                <li value="4">
+                    <div>
+                        <img class="nestedTightSpacing" src="images/Using.Pentaho1.png" alt="Screen shot of using PDI to load data from a legacy database." />
+                    </div>
+                </li>
+            </ul>
+            <h3>Details of the Example</h3>
+            <p>This section describes the Kettle routines in the example.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Configuring the Splice Machine database connection:</p>
+                        <p class="indentLevel1">For our example, we have configured the Splice Machine database connection using these values:
+</p>
+                        <table summary="Splice database connection parameters.">
+                            <col />
+                            <col />
+                            <thead>
+                                <tr>
+                                    <th>Field</th>
+                                    <th>Values</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ItalicFont">Host Name</td>
+                                    <td>
+                                        <p>If you are running Splice Machine on a cluster, use the IP&#160;address of an HBase Region Server node. <br /><br />Use <span class="AppCommand">localhost</span> if you are using a standalone version of Splice Machine.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ItalicFont">Database Name</td>
+                                    <td class="CodeFont"><span class="AppCommand">splicedb</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ItalicFont">Port Number</td>
+                                    <td class="CodeFont"><span class="AppCommand">1527</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ItalicFont">User Name</td>
+                                    <td class="CodeFont"><span class="AppCommand">splice</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ItalicFont">Password</td>
+                                    <td class="CodeFont"><span class="AppCommand">admin</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Mapping the csv input:</p>
+                        <p class="indentLevel1">You map the fields in the csv file as input that is piped to the next step in a multi-threaded manner. Note that the csv input transformation is built into PDI; you simply specify the behavior of the data by setting parameters:</p>
+                        <div>
+                            <img src="images/Using.Pentaho3.png" class="nestedTightSpacing" alt="Screen shot of mapping csv fields in PDI." />
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Load CSV&#160;into Splice Machine:</p>
+                        <p class="indentLevel1">Loading the transformed data into Splice Machine requires another simple input step:</p>
+                        <div>
+                            <img src="images/Using.Pentaho4.png" class="nestedTightSpacing" alt="Screen shot of loading transformed data in PDI." />
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Copy data from Splice Machine to MySQL:</p>
+                        <p class="indentLevel1">Copying the data from Splice Machine to MySQL is simply an insert with a nested select. You perform an extraction (<span class="CodeFont">SELECT&#160;*</span>)&#160;from Splice Machine and then an insertion into MySQL.</p>
+                        <div>
+                            <img src="images/Using.Pentaho5.png" class="nestedTightSpacing" alt="Screen shot of copying data from Splice Machine to MySQL with PDI" />
+                        </div>
+                        <p class="indentLevel1">Note that copied data is either inserted (if it doesn't exist already)&#160;or updated (it it already exists). Here is the configuration for the MySQL&#160;connection:</p>
+                        <div>
+                            <img src="images/Using.Pentaho6.png" class="nestedTightSpacing" alt="Screen shot of MySQL connection configuration" />
+                        </div>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Perform an extract from MySQL and copy it to Splice Machine:</p>
+                        <p class="indentLevel1">The final step is to perform an extraction from MySQL&#160;and copy (replace or insert)&#160;the extracted data into Splice Machine:</p>
+                        <div>
+                            <img src="images/Using.Pentaho7.png" class="nestedTightSpacing" alt="Screen shot of performing an extract from MySQL and copying it into Splice Machine" />
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

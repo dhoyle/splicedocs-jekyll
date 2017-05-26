@@ -8,6 +8,7 @@ sidebar:  onprem_sidebar
 permalink: onprem_intro.html
 folder: OnPremise
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
 			<h1>Welcome to the Splice Machine On-Premise Database!</h1>
@@ -17,7 +18,7 @@ folder: OnPremise
 			<p>Splice Machine delivers an open-source data platform that incorporates the proven scalability of HBase™ and the in-memory performance of Apache Spark™. The cost-based optimizer uses advanced statistics to choose the best compute engine, storage engine, index access, join order and join algorithm for each task. In this way, Splice Machine can concurrently process transactional and analytical workloads at scale.</p>
 			<h2>Version Information</h2>
 			<p>This site contains the documentation for:</p>
-			<p class="indentLevel1"> Version <span class="CalloutFont"><MadCap:variable name="BasicVariables.SpliceReleaseVersion" MadCap:conditions="Default.OnlyDoc"></MadCap:variable><MadCap:variable name="BasicVariables.InternalReleaseVersion" MadCap:conditions="Default.NotDoc"></MadCap:variable></span> of <span class="CalloutFont">Splice Machine</span><MadCap:conditionalText MadCap:conditions="Default.NotDoc"><span class="CalloutFont"> (internal)</span></MadCap:conditionalText>, released <MadCap:variable name="BasicVariables.SpliceReleaseDate" MadCap:conditions="Default.OnlyDoc"></MadCap:variable><MadCap:variable name="BasicVariables.InternalDocReleaseDate" MadCap:conditions="Default.NotDoc"></MadCap:variable></p>
+            <p class="indentLevel1"> Version <span class="CalloutFont"  MadCap:conditions="Default.OnlyDoc">{{splvar_basic_SpliceReleaseVersion}}</span><span class="CalloutFont"  MadCap:conditions="Default.NotDoc">{{splvar_basic_InternalReleaseVersion}}</span> of <span class="CalloutFont">Splice Machine</span><span MadCap:conditions="Default.NotDoc"><span class="CalloutFont"> (internal)</span>, released <span MadCap:conditions="Default.OnlyDoc"> {{splvar_basic_SpliceReleaseDate}}</span><span MadCap:conditions="Default.NotDoc"> {{splvar_basic_InternalDocReleaseDate}}</span></p>
 			<p>If you're using an earlier version, you'll find the documentation here:</p>
 			<table>
 				<col>
@@ -49,8 +50,8 @@ folder: OnPremise
 				<li>
 					<p>Our <span class="ItalicFont"><a href="developers_intro.html">Developer's Guide</a></span> contains numerous topics for developers working with our platform, in sections including <span class="ItalicFont">Fundamentals, Connecting Programmatically, Connecting to BI&#160;Tools, Ingesting and Streaming Data, Analytics and Machine Learning</span>, and <span class="ItalicFont">Tuning Your Queries</span>.&#160;</p>
 				</li>
-				<li>Our <span class="ItalicFont">Tutorials Collection</span> contains a number of task-based tutorials to help you quickly take advantage of many Splice&#160;Machine features.</li>
-				<li>The <span class="ItalicFont"><a href="notes_intro.html">Notes</a></span> section contains a collection of notes, including release and update notes, documentation guidelines, trademarks, and license information.</li>
+				<li>Our <span class="ItalicFont"><a href="tutorials_intro.html">Tutorials Collection</span> contains a number of task-based tutorials to help you quickly take advantage of many Splice&#160;Machine features.</li>
+				<li>Our <span class="ItalicFont"><a href="releasenotes_intro.html">Release Notes</a></span> section contains a release and update notes, requirements, and edition and license information.</li>
 			</ul>
             <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>

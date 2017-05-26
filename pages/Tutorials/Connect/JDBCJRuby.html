@@ -1,0 +1,124 @@
+---
+title: Connecting to Splice Machine with JRuby and JDBC
+summary: Walks you through compiling and running a JRuby program that connects to your Splice Machine database via our JDBC driver.&#xA;
+keywords: 
+toc: false
+product: all
+sidebar: tutorials_sidebar
+permalink: tutorials_connect_jruby.html
+folder: Tutorials/Connect
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor60"></a>Connecting to Splice Machine with JRuby and JDBC</h1>
+            <p>This topic shows you how to compile and run a sample JRuby program that connects to Splice&#160;Machine using our JDBC&#160;driver. The <span class="CodeFont">JRubyJDBC</span>&#160;program does the following:</p>
+            <ul>
+                <li value="1"> connects to a standalone (<span class="CodeFont">localhost</span>)&#160;version of Splice Machine</li>
+                <li value="2">selects and displays the records in a table </li>
+            </ul>
+            <h2><a name="Compile"></a>Compile and Run the Sample Program</h2>
+            <p>This section walks you through compiling and running the <span class="CodeFont">JRubyJDBC</span> example program, in the following steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Install the JDBC&#160;Adapter gem</p>
+                        <p class="indentLevel1">Use the following command to install the <span class="CodeFont">activerecord-jdbcderby-adapter</span> gem:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">gem install activerecord-jdbcderby-adapter</pre>
+                        </div>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Configure the connection</p>
+                        <p>You must assign the database connectivity parameters in the <span class="CodeFont">config/database.yml</span> file for your JRuby application. Your connectivity parameters should look like the following, which use our default database, user, URL, and password values:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve"># Configure Using Gemfile
+# gem 'activerecord-jdbcsqlite3-adapter'
+# gem 'activerecord-jdbcderby-adapter'
+#
+development:
+    adapter: jdbcderby
+    database: splicedb
+    username: splice
+    password: admin
+    driver: com.splicemachine.db.jdbc.ClientDriver
+    url: jdbc:splice://localhost:1527/splicedb</pre>
+                        </div>
+                        <div class="noteIcon">Use <span class="CodeBoldFont">localhost:1527</span> with the standalone (local computer)&#160;version of splicemachine. If you're running Splice&#160;Machine on a cluster, substitute the address of your server for <span class="CodeFont">localhost</span>; for example:<br />&#160;&#160;&#160;<span class="CodeBoldFont">jdbc:splice://mySrv123cba:1527/splicedb</span>.</div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Create the sample data table</p>
+                        <p class="indentLevel1">Create the <span class="CodeFont">MYTESTTABLE</span>&#160;table in your database and add a little test data. Your table should look something like the following: </p>
+                        <p class="indentLevel1">
+                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;describe SPLICE.MYTESTTABLE;
+COLUMN_NAME         |TYPE_NAME|DEC |NUM |COLUMN|COLUMN_DEF|CHAR_OCTE |IS_NULL
+------------------------------------------------------------------------------
+A                   |INTEGER  |0   |10  |10    |NULL      |NULL      |YES     
+B                   |VARCHAR  |NULL|NULL|30    |NULL      |60        |YES     
+ 
+2 rows selected
+
+splice&gt;&#160;select *&#160;from MYTESTTABLE&#160;order by A;
+A     |B
+---------------------------
+1     |a
+2     |b
+3     |c
+4     |c
+5     |c
+
+5 rows selected</pre>
+                            </div>
+                        </p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Copy the code</p>
+                        <p class="indentLevel1">You can copy the example program code and paste it into your editor:</p>
+                        <div class="preWrapperWide"><pre class="Example">require 'java'
+
+module JavaLang
+include_package "java.lang"
+end
+
+module JavaSql
+include_package 'java.sql'
+end
+
+import 'com.splicemachine.db.jdbc.ClientDriver'
+
+begin
+    conn = JavaSql::DriverManager.getConnection("jdbc:splice://localhost:1527/splicedb;user=splice;password=admin");
+    stmt = conn.createStatement
+    rs = stmt.executeQuery("select a, b from MYTESTTABLE")
+    counter = 0
+    while (rs.next) do
+        counter+=1
+        puts "Record=[" + counter.to_s + "] a=[" + rs.getInt("a").to_s + "] b=[" + rs.getString("b") + "]"
+    end
+    rs.close
+    stmt.close
+    conn.close()
+    rescue JavaLang::ClassNotFoundException =&gt; e
+        stderr.print "Java told me: #{e}n"
+    rescue JavaSql::SQLException =&gt; e
+        stderr.print "Java told me: #{e}n"
+end
+                        </pre>
+                        </div>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Run the program</p>
+                        <p class="indentLevel1">Run the <span class="CodeFont">JRubyConnect</span> program as follows</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">jruby jrubyjdbc.rb   </pre>
+                        </div>
+                        <p class="indentLevel1">The command should display a result like the following:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+Record=[1] a=[3] b=[c]
+Record=[2] a=[4] b=[c]
+Record=[3] a=[5] b=[c]
+Record=[4] a=[1] b=[a]
+Record=[5] a=[2] b=[b]</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>

@@ -128,6 +128,10 @@
                         
                         
                         
+                        <li><a href="tutorials_intro.html">Tutorials</a></li>
+                        
+                        
+                        
                         <li><a href="sqlref_intro.html">SQL Reference Manual</a></li>
                         
                         
@@ -136,7 +140,11 @@
                         
                         
                         
-                        <li><a href="notes_intro.html">Notes</a></li>
+                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
+                        
+                        
+                        
+                        <li><a href="notes_intro.html">Other Notes</a></li>
                         
                         
                     </ul>
@@ -148,6 +156,14 @@
                         
                         
                         <li><a href="onprem_intro.html">Welcome!</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_install_intro.html">Installation</a></li>
+                        
+                        
+                        
+                        <li><a href="tutorials_intro.html">Tutorials</a></li>
                         
                         
                         
@@ -163,7 +179,15 @@
                         
                         
                         
-                        <li><a href="notes_intro.html">Notes</a></li>
+                        <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
+                        
+                        
+                        
+                        <li><a href="notes_intro.html">Other Notes</a></li>
                         
                         
                     </ul>
@@ -2864,7 +2888,7 @@
             <h2><a name="Importin"></a>Importing Data from AWS</h2>
             <p>If you are importing data that is stored in an S3 bucket on Amazon Web Services (<span class="ItalicFont">AWS</span>), you need to specify the file location in an <span class="CodeFont">s3a</span> URL that includes the access key and secret access key for the bucket. </p>
             <div class="notePlain">
-                <p>Please review our <a href="developers_ingestion_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial to make sure you've set up access permissions that allow Splice Machine to access the bucket.</p>
+                <p>Please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial to make sure you've set up access permissions that allow Splice Machine to access the bucket.</p>
             </div>
             <p>You can include the access keys inline; for example:</p>
             <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(<span class="Highlighted">access key</span>):(<span class="Highlighted">secret key</span>)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, '/Users/hive', true, null);</pre>
@@ -2893,7 +2917,7 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
                 <li value="1">If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
                 <li value="2">If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
             </ul>
-            <p>You can find examples in the <a href="developers_ingestion_importing.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+            <p>You can find examples in the <a href="tutorials_ingest_importing.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
             <p>Note that you can take advantage of this by importing different subsets of data from one input file into multiple tables in your database.</p>
             <p class="heading2">Usage</p>
             <p>This procedure will only work correctly if the table into which you are inserting/updating data has primary keys.</p>
@@ -3205,7 +3229,7 @@ This is the second line of the field',Baker
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 24, 2017 <br />
+ Site last generated: May 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

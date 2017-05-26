@@ -1,0 +1,113 @@
+---
+title: Connecting Squirrel to Splice Machine
+summary: How to configure a Squirrel connection to Splice Machine
+keywords: 
+toc: false
+product: all
+sidebar: tutorials_sidebar
+permalink: tutorials_connect_squirrel.html
+folder: Tutorials/Connect
+---
+	<section>
+		<div class="TopicContent">
+            <h1><a name="kanchor347"></a>Connecting SQuirreL with Splice Machine Using JDBC</h1>
+            <p>This topic shows you how to connect SQuirreL to Splice Machine using our JDBC&#160;driver. To complete this tutorial, you need to:</p>
+            <ul>
+                <li value="1">Have Splice&#160;Machine installed and running on your computer.</li>
+                <li value="2">Have SQuirreL installed on your computer. You can find directions on the SQuirreL web site (<a href="http://squirrel-sql.sourceforge.net/" target="_blank">http://squirrel-sql.sourceforge.net/</a>); you can also download a free trial version of SQuirreL from there. You must also install the Derby plug-in for SQuirreL.</li>
+            </ul>
+            <h2><a name="Compile"></a>Connect SQuirreL with Splice&#160;Machine</h2>
+            <p>This section walks you through configuring SQuirreL to connect with&#160;Splice Machine</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Install SQuirreL, if you've not already done so:</p>
+                        <p class="indentLevel1"><a href="http://squirrel-sql.sourceforge.net/" target="_blank">Follow the instructions on the SQuirreL web site</a>.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Install the Derby plug-in for Squirrrel</p>
+                        <p class="indentLevel1">This plug-in is required to operate with Splice Machine. If you didn't select the Derby plug-in when you installed SQuirreL, you can download </p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Start a Splice Machine session on the computer on which you have installed SQuirreL</p>
+                        <p class="indentLevel1">Splice Machine must be running to create and use it with SQuirreL.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Configure a Splice Machine connection in SQuirreL</p>
+                        <p class="indentLevel1">Follow the instructions in the next section, <a href="#ConfiguringSquirrel" class="MCXref xref selected">Configure a SQuirreL&#160;Connection for Splice Machine</a>, to create and test a new connection in SQuirreL.</p>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Connect SQuirreL&#160;to Splice&#160;Machine</p>
+                        <p class="indentLevel1">In SQuirreL, open the connection alias you created, enter your credentials, and click the <span class="AppCommand">Connect</span> button. Your database will display in SQuirreL, and you can inspect objects or enter SQL&#160;to interact with your data.</p>
+                        <p class="indentLevel1">
+                            <img src="images/SquirrelWin.png" class="nestedTightSpacing" />
+                        </p>
+                    </li>
+                </ol>
+            </div>
+            <h3><a name="ConfiguringSquirrel"></a>Configure a SQuirreL&#160;Connection for Splice Machine</h3>
+            <p>Follow these steps to configure and test a new driver and connection alias in SQuirreL.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">Start a Splice Machine session on the computer on which you have installed SQuirreL</li>
+                    <li value="2">Open the SQuirreL application.</li>
+                    <li value="3">
+                        <p class="topLevel">Click the SQuirreL <span class="AppCommand">Drivers</span> tab, which is near the upper left of the window:</p>
+                        <p>
+                            <img src="images/SquirrelTabs_158x177.png" class="nestedTightSpacing" style="width: 158;height: 177;" />
+                        </p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">In the <span class="ItalicFont">Drivers</span> tab, click the blue +&#160;sign <span class="AppCommand">Create a New Driver</span> icon to display the <span class="ItalicFont">Add Driver</span> window.</p>
+                        <ol class="LowerAlphaPlainFont">
+                            <li value="1">
+                                <p> Name the driver and enter <span class="CodeFont">jdbc:splice://localhost:1527/splicedb</span> in the <span class="AppCommand">Example URL</span>&#160;field:</p>
+                                <p>
+                                    <img src="images/SquirrelDriver3.png" class="nestedTightSpacing" />
+                                </p>
+                                <div class="noteIcon">Use <span class="CodeBoldFont">localhost:1527</span> with the standalone (local computer)&#160;version of splicemachine. If you're running Splice&#160;Machine on a cluster, substitute the address of your server for <span class="CodeFont">localhost</span>; for example:<br />&#160;&#160;&#160;<span class="CodeBoldFont">jdbc:splice://mySrv123cba:1527/splicedb</span>.</div>
+                            </li>
+                            <li value="2">Click the <span class="AppFontCust">Extra Class Path</span> button, and click the <span class="AppCommand">Add</span> button.</li>
+                            <li value="3">
+                                <p>Navigate to and select the Splice JDBC&#160;Driver jar file. which you'll find it in the <span class="CodeFont">jdbc-driver</span> folder under the <span class="CodeFont">splicemachine</span> directory on your computer.</p>
+                                <p>
+                                    <img src="images/SquirrelFindDriver.png" />
+                                </p>
+                            </li>
+                            <li value="4">
+                                <p>Now, back in the <span class="AppCommand">Add Driver</span> screen, click  the <span class="AppCommand">List Drivers</span> button verify that you see the Splice Machine driver:</p>
+                                <div class="preWrapperWide"><pre class="PlainCell">com.splicemachine.db.jdbc.ClientDriver</pre>
+                                </div>
+                            </li>
+                            <li value="5">Click the <span class="AppFontCust">OK</span> button to add the driver entry in SQuirreL.</li>
+                        </ol>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Create a connection alias in SQuirreL</p>
+                        <ol class="LowerAlphaPlainFont">
+                            <li value="1">Click the <span class="ItalicFont">Aliases</span> tab in the SQuirreL&#160;window, and then click the <span class="AppCommand">Create new Alias</span> (blue +&#160;sign)&#160;button. </li>
+                            <li value="2">
+                                <p>Enter a name for your alias and select the driver you just created from the drop-down list</p>
+                                <p>
+                                    <img src="images/SquirrelAlias2.png" class="nestedTightSpacing" />
+                                </p>
+                            </li>
+                            <li value="3">
+                                <p>Click the <span class="AppCommand">Test</span> button to verify your connection.In the Connect screen, enter <span class="CodeFont">splice</span> as the <span class="AppCommand">User:</span> value and <span class="CodeFont">admin</span> for the <span class="AppCommand">Password:</span> value.</p>
+                                <p>
+                                    <img src="images/SquirrelConnect.png" class="nestedTightSpacing" />
+                                </p>
+                            </li>
+                            <li value="4">
+                                <p>Click the <span class="AppCommand">Connect</span> button to verify your connection. You should see the success message:</p>
+                                <p>
+                                    <img src="images/SquirrelSuccess.png" class="nestedTightSpacing" />
+                                </p>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+	</section>
