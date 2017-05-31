@@ -10,7 +10,7 @@ folder: CmdLineReference
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor436"></a>Release Savepoint Command</h1>
+            <h1 id="kanchor436"></a>Release Savepoint Command</h1>
             <p>The <span class="AppCommand">release savepoint</span> command issues a <span class="CodeFont">java.sql.Connection.releaseSavepoint</span> request, which releases a savepoint within the current transaction. Once a savepoint has been released, attempting to reference it in a rollback operation will cause an <span class="CodeFont">SQLException</span> to be thrown.</p>
             <div class="noteNote">When you commit a transaction, any savepoints created in that transaction are automatically released and invalidated when the transaction is committed or the entire transaction is rolled back.<br /><br />When you rollback a transaction to a savepoint, that savepoint and any others created after it within the transaction are automatically released.</div>
             <p class="heading2">Syntax</p>
@@ -110,6 +110,5 @@ I
                 <li value="2"><a href="cmdlineref_rollbacktosavepoint.html">rollback to savepoint</a> command</li>
                 <li value="3">The <span class="ItalicFont"><a href="developers_fundamentals_transactions.html">Running Transactions</a></span> topic contains includes a discussion of using savepoints.</li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

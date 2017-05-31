@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor147"></a>STDDEV_POP</h1>
+            <h1 id="kanchor147"></a>STDDEV_POP</h1>
             <p>The <span class="CodeFont">STDDEV_POP()</span> function returns the population standard deviation of a set of numeric values.</p>
             <p>It returns <span class="CodeFont">NULL</span> if no matching row is found.</p>
             <p class="heading2">Syntax</p>
@@ -30,7 +30,7 @@ folder: SQLReference/BuiltInFcns
             <p>This function returns a double-precision number.</p>
             <p>If the input expression consists of a single value, the result of the function is <span class="CodeFont">NULL</span>, not <span class="CodeFont">0</span>.</p>
             <p class="heading2">Execute Privileges</p>
-            <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default.The database owner can grant access to other users.</p>
+            <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
             <p class="heading2">Example</p>
             <p class="body">The following example shows computing the average, population standard deviation, and sample standard deviation from our Salaries table:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT AVG(Salary) as AvgSalary, STDDEV_POP(Salary) AS PopStdDev, STDDEV_SAMP(Salary) As SampStdDev FROM Salaries;
@@ -40,6 +40,5 @@ AVGSALARY           |POPSTDDEV             |SAMPSTDDEV
 
 1 row selected</pre>
             </div>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

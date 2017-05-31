@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor417"></a>Administrative Procedures and Functions</h1>
+            <h1 id="kanchor417"></a>Administrative Procedures and Functions</h1>
             <p class="body">These are the system procedures and functions for administering your database:</p>
             <table summary="Summary of Splice Machine system  procedures and functions for database administration">
                 <col />
@@ -22,7 +22,8 @@ folder: SQLReference/BuiltInSysProcs
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-mc-conditions="Default.NotDBaaS">
+{% if site.incl_notdbaas %}
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a>
                         </td>
                         <td>
@@ -30,7 +31,7 @@ folder: SQLReference/BuiltInSysProcs
                             <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
                         </td>
                     </tr>
-                    <tr data-mc-conditions="Default.NotDBaaS">
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a>
                         </td>
                         <td>
@@ -38,7 +39,7 @@ folder: SQLReference/BuiltInSysProcs
                             <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
                         </td>
                     </tr>
-                    <tr data-mc-conditions="Default.NotDBaaS">
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a>
                         </td>
                         <td>
@@ -46,12 +47,14 @@ folder: SQLReference/BuiltInSysProcs
                             <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
                         </td>
                     </tr>
+ {% endif %}
                     <tr>
                         <td class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_CREATE_USER</a>
                         </td>
                         <td>Adds a new user account to a database.</td>
                     </tr>
-                    <tr data-mc-conditions="Default.NotDBaaS">
+{% if site.incl_notdbaas %}
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a>
                         </td>
                         <td>
@@ -59,7 +62,7 @@ folder: SQLReference/BuiltInSysProcs
                             <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
                         </td>
                     </tr>
-                    <tr data-mc-conditions="Default.NotDBaaS">
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a>
                         </td>
                         <td>
@@ -67,6 +70,7 @@ folder: SQLReference/BuiltInSysProcs
                             <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
                         </td>
                     </tr>
+{% endif %}
                     <tr>
                         <td class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_DROP_USER</a>
                         </td>
@@ -97,7 +101,8 @@ folder: SQLReference/BuiltInSysProcs
                         </td>
                         <td>Resets a password that has expired or has been forgotten.</td>
                     </tr>
-                    <tr data-mc-conditions="Default.NotDBaaS">
+{% if site.incl_notdbaas %}
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a>
                         </td>
                         <td>
@@ -105,7 +110,7 @@ folder: SQLReference/BuiltInSysProcs
                             <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
                         </td>
                     </tr>
-                    <tr data-mc-conditions="Default.NotDBaaS">
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a>
                         </td>
                         <td>
@@ -113,6 +118,7 @@ folder: SQLReference/BuiltInSysProcs
                             <div class="noteOnPremiseOnly">Only available in our on-premise product.</div>
                         </td>
                     </tr>
+{% endif %}
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_updateschemaowner.html">SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER</a>
                         </td>
@@ -123,8 +129,19 @@ folder: SQLReference/BuiltInSysProcs
                         </td>
                         <td>Performs clean-up operations on the system.</td>
                     </tr>
+{% if site.incl_notyet %}
+                <tr>
+                    <td class="CodeFont" MadCap:conditions=""><a href="VacuumSchema.html">SYSCS_UTIL.VACUUM_SCHEMA</a>
+                    </td>
+                    <td MadCap:conditions="">Improves the performance of your database by cleaning no longer needed historical update data from a schema.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont" MadCap:conditions=""><a href="VacuumTable.html">SYSCS_UTIL.VACUUM_TABLE</a>
+                    </td>
+                    <td MadCap:conditions="">Improves the performance of your database by cleaning no longer needed historical update data from a table.</td>
+                </tr>
+{% endif %}
                 </tbody>
             </table>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

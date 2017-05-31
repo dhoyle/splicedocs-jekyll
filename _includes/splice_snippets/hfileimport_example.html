@@ -1,0 +1,242 @@
+﻿        <p class="heading2"><a name="Usage"></a>Usage Notes</p>
+        <p class="body">As mentioned earlier, you need to use these three Splice&#160;Machine system procedures together:</p>
+        <ul>
+            <li><samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp> generates a keys file</li>
+            <li><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span> sets up the splits in Splice&#160;Machine</li>
+            <li><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>&#160;splits your input file into HFiles, imports your data, and then removes the HFiles</li>
+        </ul>
+        <p>Alternatively, you can use  <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> with <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>. The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
+        <p>The process is as follows (and is shown in more detail in <span class="ItalicFont">Example 1</span> and <span class="ItalicFont">Example 2</span> below):</p>
+        <div class="opsStepsList">
+            <ol>
+                <li>
+                    <p>Create a directory on HDFS; for example:</p>
+                    <div class="preWrapperWide"><pre class="ShellCommand">sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import</pre>
+                    </div>
+                    <p>Make sure that the directory you create has permissions set to allow Splice&#160;Machine to write your csv and Hfiles there.</p>
+                </li>
+                <li>
+                    <p>Determine primary key values that can horizontally split the table into roughly equal sized partitions. </p>
+                    <div class="noteNote">
+                        <p>Note the value of your <span class="CodeFont">hbase.hregion.max.filesize</span> setting; each partition should ideally be about 1/2 of that value, so that the region can grow after data is loaded. </p>
+                        <p>The sizes must be less than the <span class="CodeFont">hbase.hregion.max.filesize value</span>.</p>
+                    </div>
+                </li>
+                <li>Store those keys in a CSV&#160;file.</li>
+                <li> If you're using the combination of <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span> and <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>:<ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure to compute the split row keys.</li><li><p>Examine the computed (and encoded)&#160;row keys, which were written to a file named keys in a subdirectory of your <span class="CodeFont">OutputDirectory</span>. </p><p>The name of the subdirectory is the conglomerate ID&#160;for the named table. You can find a table's conglomerate ID&#160;with the <span class="CodeFont"><a href="cmdlineref_cmdshowtables.html">SHOW&#160;TABLES</a></span>&#160;command.&#160;</p></li><li>Copy the encoded keys to your clipboard.</li><li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>&#160;procedure, passing in the row key values from your clipboard. This splits your table inside the database.</li></ol><p>If you are using  the single procedure <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> instead:</p><ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <span class="CodeFont"><a href=".sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
+                <li>Repeat steps 1, 2, and 3 to split the indexes on your table.</li>
+                <li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
+            </ol>
+        </div>
+        <p class="heading2"><a name="Examples"></a>Example 1</p>
+        <p>The example in this section details the steps used to import data in HFile format using the Splice Machine <samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp>,  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
+        <p>Follow these steps :</p>
+        <div class="opsStepsList">
+            <ol class="boldFont">
+                <li>
+                    <p class="topLevel">Create a directory on HDFS for the import; for example:</p>
+                    <div class="preWrapperWide"><pre class="ShellCommand">sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import</pre>
+                    </div>
+                    <p>Make sure that the directory you create has permissions set to allow Splice&#160;Machine to write your csv and Hfiles there.</p>
+                </li>
+                <li>
+                    <p class="topLevel">Create table and index:</p>
+                    <div class="preWrapperWide"><pre class="Example">CREATE TABLE TPCH.LINEITEM (
+		 L_ORDERKEY BIGINT NOT NULL,
+		 L_PARTKEY INTEGER NOT NULL,
+		 L_SUPPKEY INTEGER NOT NULL, 
+		 L_LINENUMBER INTEGER NOT NULL, 
+		 L_QUANTITY DECIMAL(15,2),
+		 L_EXTENDEDPRICE DECIMAL(15,2),
+		 L_DISCOUNT DECIMAL(15,2),
+		 L_TAX DECIMAL(15,2),
+		 L_RETURNFLAG VARCHAR(1), 
+		 L_LINESTATUS VARCHAR(1),
+		 L_SHIPDATE DATE,
+		 L_COMMITDATE DATE,
+		 L_RECEIPTDATE DATE,
+		 L_SHIPINSTRUCT VARCHAR(25),
+		 L_SHIPMODE VARCHAR(10),
+		 L_COMMENT VARCHAR(44),
+		 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+		 );
+
+CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
+		 L_SHIPDATE,
+		 L_PARTKEY,
+		 L_EXTENDEDPRICE,
+		 L_DISCOUNT
+		 );</pre>
+                    </div>
+                </li>
+                <li>
+                    <p class="topLevel">Compute the split row keys for the table:</p>
+                    <ol class="LowerAlphaPlainFont">
+                        <li>
+                            <p>Find primary key values that can horizontally split the table into roughly equal sized partitions.</p>
+                            <p>For this example, we provide 3 keys in a file named <span class="CodeFont">lineitemKey.csv</span>. Note that each of our three keys includes a second column that is <span class="CodeFont">null</span>:</p>
+                            <div class="preWrapperWide"><pre class="Example">1500000|<br />3000000|<br />4500000|</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the primary key columns are:</p>
+                            <div class="preWrapperWide"><pre class="Example">'L_ORDERKEY,L_LINENUMBER'</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Invoke <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> to compute hbase split row keys and write them to a file:</p><pre class="Example">call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', 'hdfs:///tmp/test_hfile_import/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');</pre>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="topLevel">Set up the table splits in your database:</p>
+                    <ol class="LowerAlphaPlainFont">
+                        <li>
+                            <p>Use <span class="CodeFont">SHOW&#160;TABLES</span>&#160;to discover the conglomerate ID&#160;for the <span class="CodeFont">TPCH.LINEITEM</span>&#160;table, which for this example is <span class="CodeFont">1536</span>. This means that the split keys file for this table is in the <span class="CodeFont">hdfs:///tmp/test_hfile_import/1536</span> directory. You'll see values like these:</p>
+                            <div class="preWrapperWide"><pre class="Example">\xE4\x16\xE3`<br />\xE4-\xC6\xC0<br />\xE4D\xAA</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Now use those values in a call to our system procedure to split the table inside the database:</p>
+                            <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS('TPCH','LINEITEM',null,'\xE4\x16\xE3`,\xE4-\xC6\xC0,\xE4D\xAA');</pre>
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="topLevel">Compute the split keys for your index:</p>
+                    <ol class="LowerAlphaPlainFont">
+                        <li>Find index values that can horizontally split the table into roughly equal sized partitions.</li>
+                        <li>
+                            <p>For this example, we provide 2 index values in a file named <span class="CodeFont">shipDateIndex.csv</span>. Note that each of our keys includes <span class="CodeFont">null</span> column values:</p>
+                            <div class="preWrapperWide"><pre class="Example">1994-01-01|||
+1996-01-01|||</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the index columns are:</p>
+                            <div class="preWrapperWide"><pre class="Example">'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT'</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Invoke <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> to compute hbase split row keys and write them to a file:</p><pre class="Example">call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', 'hdfs:///tmp/test_hfile_import/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');
+</pre>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="topLevel">Set up the indexes in your database:</p>
+                    <ol class="LowerAlphaPlainFont">
+                        <li>
+                            <p>Copy the row key values from the output file:</p>
+                            <div class="preWrapperWide"><pre class="Example">\xEC\xB0Y9\xBC\x00\x00\x00\x00\x00\x80
+\xEC\xBF\x08\x9C\x14\x00\x00\x00\x00\x00\x80</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Now call our system procedure to split the index:</p>
+                            <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS('TPCH','LINEITEM','L_SHIPDATE_IDX','\xEC\xB0Y9\xBC\x00\x00\x00\x00\x00\x80,\xEC\xBF\x08\x9C\x14\x00\x00\x00\x00\x00\x80');
+</pre>
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="topLevel">Import the HFiles Into Your Database</p>
+                    <p class="indentLevel1">Once you have split your table and indexes, call this procedure to generate and import the HFiles into your Splice Machine database:</p>
+                    <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);</pre>
+                    </div>
+                    <p class="indentLevel1">The generated HFiles are automatically deleted after being imported.</p>
+                </li>
+            </ol>
+        </div>
+        <p class="heading2">Example 2</p>
+        <p>The example in this section details the steps used to import data in HFile format using the Splice Machine  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
+        <p>Follow these steps :</p>
+        <div class="opsStepsList">
+            <ol class="boldFont">
+                <li>
+                    <p class="topLevel">Create a directory on HDFS for the import; for example:</p>
+                    <div class="preWrapperWide"><pre class="ShellCommand">sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import</pre>
+                    </div>
+                    <p>Make sure that the directory you create has permissions set to allow Splice&#160;Machine to write your csv and Hfiles there.</p>
+                </li>
+                <li>
+                    <p class="topLevel">Create table and index:</p>
+                    <div class="preWrapperWide"><pre class="Example">CREATE TABLE TPCH.LINEITEM (
+		 L_ORDERKEY BIGINT NOT NULL,
+		 L_PARTKEY INTEGER NOT NULL,
+		 L_SUPPKEY INTEGER NOT NULL, 
+		 L_LINENUMBER INTEGER NOT NULL, 
+		 L_QUANTITY DECIMAL(15,2),
+		 L_EXTENDEDPRICE DECIMAL(15,2),
+		 L_DISCOUNT DECIMAL(15,2),
+		 L_TAX DECIMAL(15,2),
+		 L_RETURNFLAG VARCHAR(1), 
+		 L_LINESTATUS VARCHAR(1),
+		 L_SHIPDATE DATE,
+		 L_COMMITDATE DATE,
+		 L_RECEIPTDATE DATE,
+		 L_SHIPINSTRUCT VARCHAR(25),
+		 L_SHIPMODE VARCHAR(10),
+		 L_COMMENT VARCHAR(44),
+		 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+		 );
+
+CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
+		 L_SHIPDATE,
+		 L_PARTKEY,
+		 L_EXTENDEDPRICE,
+		 L_DISCOUNT
+		 );</pre>
+                    </div>
+                </li>
+                <li>
+                    <p class="topLevel">Compute the split row keys for your table and set up the split in your database:</p>
+                    <ol class="LowerAlphaPlainFont">
+                        <li>
+                            <p>Find primary key values that can horizontally split the table into roughly equal sized partitions.</p>
+                            <p>For this example, we provide 3 keys in a file named <span class="CodeFont">lineitemKey.csv</span>. Note that each of our three keys includes a second column that is <span class="CodeFont">null</span>:</p>
+                            <div class="preWrapperWide"><pre class="Example">1500000|<br></br>3000000|<br></br>4500000|</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the primary key columns are:</p>
+                            <div class="preWrapperWide"><pre class="Example">'L_ORDERKEY,L_LINENUMBER'</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Invoke <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> to compute hbase split row keys and set up the splits</p><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', 'hdfs:///tmp/test_hfile_import/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null);</pre>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="topLevel">Compute the split keys for your index:</p>
+                    <ol class="LowerAlphaPlainFont">
+                        <li>Find index values that can horizontally split the table into roughly equal sized partitions.</li>
+                        <li>
+                            <p>For this example, we provide 2 index values in a file named <span class="CodeFont">shipDateIndex.csv</span>. Note that each of our keys includes <span class="CodeFont">null</span> column values:</p>
+                            <div class="preWrapperWide"><pre class="Example">1994-01-01|||
+1996-01-01|||</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the index columns are:</p>
+                            <div class="preWrapperWide"><pre class="Example">'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT'</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Invoke <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> to compute hbase split row keys and set up the index splits</p><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', 'hdfs:///tmp/test_hfile_import/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null);
+</pre>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="topLevel">Import the HFiles Into Your Database</p>
+                    <p class="indentLevel1">Once you have split your table and indexes, call this procedure to generate and import the HFiles into your Splice Machine database:</p>
+                    <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);</pre>
+                    </div>
+                    <p class="indentLevel1">The generated HFiles are automatically deleted after being imported.</p>
+                </li>
+            </ol>
+        </div>

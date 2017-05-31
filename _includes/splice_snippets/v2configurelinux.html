@@ -1,0 +1,97 @@
+﻿        <div>
+            <p>The following table summarizes Linux configuration requirements for running Splice&#160;Machine on your cluster:</p>
+            <table summary="Summary of Linux configuration requirements">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Configuration Step</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Configure SSH&#160;access:</td>
+                        <td>Configure the user account that you're using for cluster administration for password-free access, to simplify installation.</td>
+                    </tr>
+                    <tr>
+                        <td>Configure swappiness:</td>
+                        <td>
+                            <div class="preWrapperWide">
+                                <pre class="ShellCommandCell" xml:space="preserve">echo 'vm.swappiness = 0' &gt;&gt; /etc/sysctl.conf</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>If your using Ubuntu:</td>
+                        <td>
+                            <div class="preWrapperWide">
+                                <pre class="ShellCommandCell" xml:space="preserve">
+rm /bin/sh ; ln -sf /bin/bash /bin/sh</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>If your using CentOS or RHEL:</td>
+                        <td>
+                            <div class="preWrapperWide">
+                                <pre class="ShellCommandCell" xml:space="preserve">
+                                    <span class="ShellCommand">sed -i '/requiretty/ s/^/#/' /etc/sudoers</span>  </pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Required software:</td>
+                        <td>
+                            <p class="noSpaceAbove">Verify that the following set of software (or packages) is available on each node in your cluster:</p>
+                            <ul>
+                                <li class="CodeFont">curl</li>
+                                <li class="CodeFont">
+                                    <p>jdk-1.7.0_XX&#160;(Oracle JDK v1.7.0)</p>
+                                    <p class="noteNote" MadCap:autonum="NOTE: &#160;">You may see Cloudera(re-)install JDK 1.7 during its own installation process.</p>
+                                </li>
+                                <li class="CodeFont">nscd</li>
+                                <li class="CodeFont">ntp</li>
+                                <li class="CodeFont">openssh, openssh-clients<span class="bodyFont">, and</span> openssh-server</li>
+                                <li class="CodeFont">patch</li>
+                                <li class="CodeFont">rlwrap</li>
+                                <li class="CodeFont">wget</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Additional required software on CentOS&#160;or RHEL</td>
+                        <td>
+                            <div class="preWrapperWide">
+                                <p class="noSpaceAbove">If you're running on CENTOS&#160;or RHEL, you also need to have this software available on each node:</p>
+                                <ul>
+                                    <li class="CodeFont">ftp</li>
+                                    <li class="CodeFont">EPEL&#160;<span class="bodyFont">repository</span></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Services that must be started</td>
+                        <td>
+                            <p class="noSpaceAbove">You need to make sure that the following services are enabled and started:</p>
+                            <ul>
+                                <li>
+                                    <span class="CodeFont">nscd</span>
+                                </li>
+                                <li>
+                                    <span class="CodeFont">ntpd</span> (<span class="CodeFont">ntp</span> package)</li>
+                                <li>
+                                    <span class="CodeFont">sshd</span> (<span class="CodeFont">openssh</span>-server package)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Time zone setting</td>
+                        <td>
+                            <span class="Highlighted">Make sure all nodes in your cluster are set to the same time zone.</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>

@@ -11,7 +11,7 @@ folder: OnPrem
 {% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor506"></a>Installing and Configuring Splice Machine for Hortonworks HDP</h1>
+            <h1 id="kanchor506"></a>Installing and Configuring Splice Machine for Hortonworks HDP</h1>
             <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. Our database as a service does not require installation.</div>
             <p>This topic describes installing and configuring Splice Machine on a Hortonworks Ambari-managed cluster. Follow these steps:</p>
             <ol>
@@ -29,7 +29,7 @@ folder: OnPrem
                 <li value="7"><a href="#Run">Verify your Splice Machine Installation</a>
                 </li>
             </ol>
-            <h2><a name="Verify"></a>Verify Prerequisites</h2>
+            <h2 id="Verify"></a>Verify Prerequisites</h2>
             <p>Before starting your Splice Machine installation, please make sure that your cluster contains the prerequisite software components:</p>
             <ul>
                 <li value="1">A cluster running HDP </li>
@@ -42,7 +42,7 @@ folder: OnPrem
                 <li value="8">Ensure that Phoenix services are <span class="BoldFont">NOT</span>&#160;installed on your cluster, as they interfere with Splice Machine HBase settings.</li>
             </ul>
             <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="notes_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
-            <h2><a name="Install"></a>Download and Install Splice&#160;Machine</h2>
+            <h2 id="Install"></a>Download and Install Splice&#160;Machine</h2>
             <p>Perform the following steps <span class="important">on each node</span> in your cluster:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -97,7 +97,7 @@ sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                     </li>
                 </ol>
             </div>
-            <h2><a name="Stop"></a>Stop Hadoop Services</h2>
+            <h2 id="Stop"></a>Stop Hadoop Services</h2>
             <p>As a first step, we stop cluster services to allow our installer to make changes that require the cluster to be temporarily inactive. </p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -109,7 +109,7 @@ sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                     </li>
                 </ol>
             </div>
-            <h2><a name="Configur8"></a>Configure Hadoop Services</h2>
+            <h2 id="Configur8"></a>Configure Hadoop Services</h2>
             <p>Now it's time to make a few modifications in the Hadoop services configurations:</p>
             <ul>
                 <li value="1"><a href="#Configur4">Configure and Restart ZooKeeper</a>
@@ -123,7 +123,7 @@ sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                 <li value="5"><a href="#Configur3">Configure and Restart HBASE</a>
                 </li>
             </ul>
-            <h3><a name="kanchor507"></a><a name="Configur4"></a>Configure and Restart ZooKeeper</h3>
+            <h3 id="kanchor507"></a id="Configur4"></a>Configure and Restart ZooKeeper</h3>
             <p>To edit the ZooKeeper configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">ZooKeeper</span> in the Ambari in the left pane of the screen. </p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -149,7 +149,7 @@ maxSessionTimeout=<span class="AppFontCustCode">120000</span></pre>
                     </li>
                 </ol>
             </div>
-            <h3><a name="Configur5"></a><a name="kanchor508"></a>Configure and Restart HDFS</h3>
+            <h3 id="Configur5"></a id="kanchor508"></a>Configure and Restart HDFS</h3>
             <p>To edit the HDFS&#160;configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">HDFS</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -206,7 +206,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                     </li>
                 </ol>
             </div>
-            <h3><a name="Configur2"></a>Configure and Restart YARN</h3>
+            <h3 id="Configur2"></a>Configure and Restart YARN</h3>
             <p>To edit the YARN configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">YARN</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -271,7 +271,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                     </li>
                 </ol>
             </div>
-            <h3><a name="Configur"></a>Configure MapReduce2</h3>
+            <h3 id="Configur"></a>Configure MapReduce2</h3>
             <p>Ambari automatically sets these values for you:</p>
             <ul class="codeListNested">
                 <li value="1">Map Memory</li>
@@ -314,7 +314,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                     </li>
                 </ol>
             </div>
-            <h3><a name="Configur3"></a>Configure and Restart HBASE</h3>
+            <h3 id="Configur3"></a>Configure and Restart HBASE</h3>
             <p>To edit the HBASE configuration, click <span class="AppCommand">HBASE</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -540,19 +540,19 @@ splice.txn.concurrencyLevel=4096</pre>
                     </li>
                 </ol>
             </div>
-            <h2><a name="Start"></a>Start any Additional Services</h2>
+            <h2 id="Start"></a>Start any Additional Services</h2>
             <p>We started this installation by shutting down your cluster services, and then configured and restarted each individual service used by Splice&#160;Machine.</p>
             <p>If you had any additional services running, such as Ambari Metrics, you need to restart each of those services.</p>
-            <h2><a name="Optional"></a>Optional Configuration Modifications</h2>
+            <h2 id="Optional"></a>Optional Configuration Modifications</h2>
             <p>There are a few configuration modifications you might want to make:</p>
             <ul>
                 <li value="1"><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
                 <li value="2">Adjust the replication factor if you have a small cluster and need to improve resource usage or performance.</li>
             </ul>
-            <h3><a name="Modify"></a>Modify the Authentication Mechanism</h3>
+            <h3 id="Modify"></a>Modify the Authentication Mechanism</h3>
             <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
             <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP&#160;by following the simple instructions in <a href="onprem_install_configureauth.html" class="WithinBook">Configuring Splice Machine Authentication</a></p>
-            <h2><a name="Run"></a>Verify your Splice Machine Installation</h2>
+            <h2 id="Run"></a>Verify your Splice Machine Installation</h2>
             <p>Now start using the Splice Machine command line interpreter, which is referred to as <span class="AppCommand">the splice prompt</span> or simply <span class="AppCommand">splice&gt;</span> by launching the <span class="CodeFont">sqlshell.sh</span> script on any node in your cluster that is running an HBase region server. </p>
             <div class="noteNote">The command line interpreter defaults to connecting on port <span class="CodeFont">1527</span> on <span class="CodeFont">localhost</span>, with username <span class="CodeFont">splice</span>, and password <span class="CodeFont">admin</span>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</div>
             <p>Now try entering a few sample commands you can run to verify that everything is working with your Splice Machine installation.</p>
@@ -614,6 +614,5 @@ splice.txn.concurrencyLevel=4096</pre>
                 </tbody>
             </table>
             <p>See the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> section of our <span class="ItalicFont">Developer's Guide</span> for information about our commands and command syntax. </p>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

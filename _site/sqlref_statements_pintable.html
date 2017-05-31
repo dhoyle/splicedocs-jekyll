@@ -2724,7 +2724,7 @@
 
   	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor47"></a>PIN&#160;TABLE</h1>
+            <h1 id="kanchor47">PIN&#160;TABLE</h1>
             <p>The <span class="CodeFont">PIN&#160;TABLE</span> statement allows you to pin (cache)&#160;a table in memory, which can improve performance for tables that are being used frequently in analytic operations. </p>
             <div class="noteImportant">The pinned version of a table is a static version of that table; updates to the underlying table are not automatically reflected in the pinned version. To refresh the pinned version, you need to unpin and then repin the table, as described in the <a href="#Usage">Usage Notes</a> section below.</div>
             <p class="heading2">Syntax</p>
@@ -2735,7 +2735,7 @@
                 <p class="paramDefnFirst">A string that specifies the name of the table that you want to pin in memory. </p>
                 <p class="paramDefn">An error occurs if the named table does not exist.</p>
             </div>
-            <p class="heading2"><a name="Usage"></a>Usage Notes</p>
+            <p class="heading2" id="Usage"></a>Usage Notes</p>
             <p>Here are a few important notes about using pinned tables:</p>
             <ul>
                 <li value="1"><a href="#Pinned">Pinned and Unpinned Table Versions</a>
@@ -2745,7 +2745,7 @@
                 <li value="3"><a href="#Unpinnin">Unpinning and Dropping Pinned Tables</a>
                 </li>
             </ul>
-            <p class="heading3"><a name="Pinned"></a>Pinned and Unpinned Table Versions</p>
+            <p class="heading3" id="Pinned">Pinned and Unpinned Table Versions</p>
             <p>Once you pin a table, you effectively have two versions of it to work with:</p>
             <ul>
                 <li value="1">The original table continues to work just as usual</li>
@@ -2781,12 +2781,12 @@ COL1      |COL2
 1           One
 2           Two<br /><br />2 rows selected<br />splice&gt;&#160;UPDATE&#160;myTbl SET&#160;col1=11 WHERE&#160;col1=1;<br />1 row inserted/updated/deleted<br />splice&gt;&#160;UPDATE&#160;myTbl --splice-properties pin=true<br />SET&#160;col1=21 WHERE&#160;col1=2;<br />ERROR:&#160;Pinned Table read failed with exception Table or view not found in database.</pre>
             </div>
-            <p class="heading3"><a name="Refreshi"></a>Refreshing the Pinned Version of a Table</p>
+            <p class="heading3" id="Refreshi">Refreshing the Pinned Version of a Table</p>
             <p class="body">If you update the table and want the pinned version to reflect those updates, you need to refresh your pinned table version. You can simply unpin the table from memory, and then repin it into memory:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;UNPIN&#160;TABLE&#160;Players;<br />0 rows inserted/updated/deleted<br />splice&gt; PIN&#160;TABLE&#160;Players;<br />0 rows inserted/updated/deleted</pre>
             </div>
             <p class="body">Now the pinned version of the table matches the original version.</p>
-            <p class="heading3"><a name="Unpinnin"></a>Unpinning and Dropping Pinned Tables</p>
+            <p class="heading3" id="Unpinnin">Unpinning and Dropping Pinned Tables</p>
             <p>When you drop a table (with the <span class="CodeFont"><a href="sqlref_expressions_table.html">DROP&#160;TABLE</a></span>&#160;statement), the pinned version is automatically deleted and can no longer be used.</p>
             <p>To delete just the pinned version of a table, use the <span class="CodeFont"><a href="sqlref_expressions_table.html">UNPIN&#160;TABLE</a></span> statement.</p>
             <p class="heading2">See Also</p>
@@ -2796,7 +2796,6 @@ COL1      |COL2
                 <li value="3"><span class="CodeFont"><a href="sqlref_expressions_table.html">UNPIN&#160;TABLE</a></span> statement</li>
                 <li value="4"><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the <span class="ItalicFont">Splice Machine Developer's Guide</span></li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
 
@@ -2815,7 +2814,7 @@ COL1      |COL2
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 26, 2017 <br />
+ Site last generated: May 30, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

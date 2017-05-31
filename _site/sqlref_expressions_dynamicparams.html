@@ -2724,7 +2724,7 @@
 
   	<section>
 		<div class="TopicContent">
-            <h1><a name="Expressions.DynamicParameters" id="Expressions.DynamicParameters"></a><a name="kanchor366"></a>Dynamic Parameters</h1>
+            <h1 id="Expressions.DynamicParameters">Dynamic Parameters</h1>
             <p>You can prepare statements that are allowed to have parameters for which the value is not specified when the statement is  repared using <span class="ItalicFont">PreparedStatement</span> methods in the JDBC API. These parameters are called dynamic parameters and are represented by a ?.</p>
             <p>The JDBC API documents refer to dynamic parameters as <span class="CodeFont">IN</span>, <span class="CodeFont">INOUT</span>, or <span class="CodeFont">OUT</span> parameters. In SQL, they are always <span class="CodeFont">IN</span> parameters.</p>
             <p>You must specify values for dynamic parameters before executing the statement, and the types of the specified values must match the expected types.</p>
@@ -2742,7 +2742,7 @@ ps2.setDate(3, arrival);
 ps2.setDate(4, departure);
 updateCount = ps2.executeUpdate();</pre>
             </div>
-            <p class="heading2"><a name="DynamicParametersAllowed" id="DynamicParametersAllowed"></a><a name="kanchor367"></a>Where Dynamic Parameters are Allowed</p>
+            <p class="heading2" id="DynamicParametersAllowed">Where Dynamic Parameters are Allowed</p>
             <p>You can use dynamic parameters anywhere in an expression where their data type can be easily deduced. </p>
             <ul>
                 <li value="1">Use as the first operand of <span class="CodeFont">BETWEEN</span> is allowed if one of the second and third operands is not also a dynamic parameter. The type of the first operand is assumed to be the type of the non-dynamic parameter, or the union result of their types if both are not dynamic parameters.   <div class="preWrapper"><pre class="Example">WHERE ? BETWEEN DATE('1996-01-01') AND ?
@@ -2809,7 +2809,6 @@ SELECT * FROM t1 WHERE c11 BETWEEN -? AND +?
                 <li value="15">A dynamic parameter is allowed as the left operand of an <span class="CodeFont">IS</span> expression
 and is assumed to be a <span class="CodeFont">Boolean</span>.</li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
 
@@ -2828,7 +2827,7 @@ and is assumed to be a <span class="CodeFont">Boolean</span>.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 26, 2017 <br />
+ Site last generated: May 30, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

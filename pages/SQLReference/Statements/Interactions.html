@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="Statements.Interaction" id="Statements.Interaction"></a><a name="kanchor20"></a>Interaction with the Dependency System</h1>
+            <h1 id="Statements.Interaction">Interaction with the Dependency System</h1>
             <p>Splice Machine internally tracks the dependencies of prepared statements, which are SQL statements that are precompiled before being executed. Typically they are prepared (precompiled) once and executed multiple times.</p>
             <p>Prepared statements depend on the dictionary objects and statements they reference. (Dictionary objects include tables, columns, constraints, indexes, and views, and triggers. Removing or modifying the dictionary objects or statements on which they depend invalidates them internally, which means that Splice Machine will automatically try to recompile the statement when you execute it. If the statement fails to recompile, the execution request fails. However, if you take some action to restore the broken dependency (such as restoring the missing table), you can execute the same prepared statement, because Splice Machine will recompile it automatically at the next execute request.</p>
             <p>Statements depend on one another-an <span class="CodeFont">UPDATE WHERE CURRENT</span> statement depends on the statement it references. Removing the statement on which it depends invalidates the <span class="CodeFont">UPDATE WHERE CURRENT</span> statement.</p>
@@ -65,6 +65,5 @@ splice&gt; <span class="BoldFont">execute p1;</span>
                 <li value="5"><a href="cmdlineref_cmdlinesyntax.html">Using the <span class="CodeFont">splice&gt;</span>&#160;prompt</a>
                 </li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

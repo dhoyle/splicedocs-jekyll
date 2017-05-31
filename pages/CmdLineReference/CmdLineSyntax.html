@@ -10,7 +10,7 @@ folder: CmdLineReference
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor152"></a>Using the splice&gt;&#160;Command Line Interface</h1>
+            <h1 id="kanchor152"></a>Using the splice&gt;&#160;Command Line Interface</h1>
             <p>This topic presents information that will help you in using the Splice Machine <span class="AppCommand">splice&gt;</span> command line interpreter, in the following sections:</p>
             <ul>
                 <li value="1">The <a href="#splice%3E" class="selected">splice&gt;&#160;Command Line Interpreter</a> section shows you how to invoke the splice&gt;&#160;command line.</li>
@@ -20,7 +20,7 @@ folder: CmdLineReference
                 <li value="5">The <a href="cmdlineref_cmdlinesummary.html">Scripting Splice Commands</a> section describes how to create a script of <span class="AppCommand">splice&gt;</span>&#160;commands to run a series of operations like loading a number of files into your database</li>
             </ul>
             <p>The remainder of this section contains a reference page for each of the command line commands.</p>
-            <h2><a name="splice&gt;"></a>splice&gt;&#160;Command Line Interpreter</h2>
+            <h2 id="splice&gt;"></a>splice&gt;&#160;Command Line Interpreter</h2>
             <p>To run the Splice Machine command line interpreter, run the <span class="ShellCommand">sqlshell.sh</span> script in your terminal window. </p>
             <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">% ./sqlshell.sh
 splice&gt; </pre>
@@ -71,10 +71,10 @@ $ </pre>
 select count(*) from CUST_EMAIL;</pre>
                 </div>
             </div>
-            <h2><a name="Command"></a><a name="kanchor153"></a>Command Line Output</h2>
+            <h2 id="Command"></a id="kanchor153"></a>Command Line Output</h2>
             <p>Output from <span class="AppCommand">splice&gt;</span>&#160;commands is displayed in your terminal window. The <span class="CodeFont"><a href="cmdlineref_maximumdisplaywidth.html">maximumdisplaywidth</a></span> setting affects how the output is displayed; specifically, it determines if the content of each column is truncated to fit within the width that you specify.</p>
             <p>When you set <span class="CodeFont"><a href="cmdlineref_maximumdisplaywidth.html">maximumdisplaywidth</a></span> to <span class="CodeFont">0</span>, all output is displayed, without truncation.</p>
-            <h2><a name="kanchor154"></a>Command Line Syntax<a name="Syntax"></a></h2>
+            <h2 id="kanchor154"></a>Command Line Syntax<a name="Syntax"></a></h2>
             <p>This section briefly summarizes the syntax of command lines you can enter in response to the <span class="AppCommand">splice&gt;</span>&#160;prompt, including&#160;these subsections:</p>
             <ul>
                 <li value="1"><a href="#Finish" class="selected">Finishing and submitting command lines</a>
@@ -92,10 +92,10 @@ select count(*) from CUST_EMAIL;</pre>
                 <li value="7"><a href="#Using" class="selected">Using rlWrap on the command line</a>
                 </li>
             </ul>
-            <h3><a name="Finish"></a>Finish Commands with a Semicolon</h3>
+            <h3 id="Finish"></a>Finish Commands with a Semicolon</h3>
             <p>The command line interface allows you to enter multi-line commands, and waits for a non-escaped semicolon (<span class="CodeFont">;</span>) character to signal the end of the command.</p>
             <p>A command is not executed until you enter the semicolon character and press the <span class="CodeFont">Return</span> or <span class="CodeFont">Enter</span> key.</p>
-            <h3><a name="kanchor155"></a><a name="Capitali"></a>Capitalization and Case Sensitivity Rules</h3>
+            <h3 id="kanchor155"></a id="Capitali"></a>Capitalization and Case Sensitivity Rules</h3>
             <p>Certain identifiers and keywords are case sensitive:</p>
             <table summary="Summary of case sensitivity in the splice&gt; command line syntax.">
                 <col />
@@ -130,7 +130,7 @@ select count(*) from CUST_EMAIL;</pre>
                     </tr>
                 </tbody>
             </table>
-            <h3><a name="kanchor156"></a><a name="Special"></a>Special Characters You Can Use</h3>
+            <h3 id="kanchor156"></a id="Special"></a>Special Characters You Can Use</h3>
             <p>The following table describes the special characters you can use in commands:</p>
             <table summary="Summary of special character usage in splice&gt; command line syntax.">
                 <col />
@@ -207,7 +207,7 @@ SELECT&#160;*&#160;FROM&#160;MyTable;</pre>
                     </tr>
                 </tbody>
             </table>
-            <h3><a name="kanchor157"></a>Entering Multi-line Commands<a name="Multiline"></a></h3>
+            <h3 id="kanchor157"></a>Entering Multi-line Commands<a name="Multiline"></a></h3>
             <p>When using the command line (the <span class="AppCommand">splice&gt;</span> prompt), you must end each SQL statement with a semicolon (<span class="CodeFont">;</span>). For example:</p>
             <div class="preWrapper"><pre class="AppCommand">
 splice&gt; select * from myTable;	</pre>
@@ -216,19 +216,19 @@ splice&gt; select * from myTable;	</pre>
             <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">
 splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
             </div>
-            <h3><a name="kanchor158"></a>Running SQL Statements From a File<a name="RunFromFile"></a></h3>
+            <h3 id="kanchor158"></a>Running SQL Statements From a File<a name="RunFromFile"></a></h3>
             <p>You can also create a file that contains a collection of SQL statements, and then use the <span class="CodeFont">run </span>command to run those statements. For example:</p>
             <div class="preWrapper"><pre class="AppCommand">splice&gt; run 'path/to/file.sql';</pre>
             </div>
-            <h3><a name="kanchor159"></a>Including Comments<a name="Comments"></a></h3>
+            <h3 id="kanchor159"></a>Including Comments<a name="Comments"></a></h3>
             <p>You can include comments on the command line or in a SQL statement file by prefacing the command with two dashes (<span class="CodeFont">--</span>). Any text following the dashes is ignored by the SQL parser. For example:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; select * from myTable   -- This selects everything in myTable;</pre>
             </div>
             <h3>Misaligned Quotes</h3>
             <p>If you mistakenly enter a command line that has misaligned quotation symbols, the interpreter can seem unresponsive. The solution is to add the missing quotation mark(s), followed by a semicolon, and resubmit the line. It won't work as expected, but it will enable you to keep working.</p>
-            <h3><a name="Using"></a>Using rlWrap on the Command Line&gt;</h3>
+            <h3 id="Using"></a>Using rlWrap on the Command Line&gt;</h3>
             <p>rlWrap is a Unix utility that Splice&#160;Machine encourages you to use:&#160;it allows you to scroll through your command line history, reuse and alter lines, and more. We've included a <a href="tutorials_cli_rlwrap.html">synopsis of it here.</a></p>
-            <h2><a name="kanchor160"></a>Example Command Lines<a name="ExampleCommands"></a></h2>
+            <h2 id="kanchor160"></a>Example Command Lines<a name="ExampleCommands"></a></h2>
             <p>Here are several example command lines:</p>
             <table summary="Example command lines">
                 <col />
@@ -267,7 +267,7 @@ splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
                     </tr>
                 </tbody>
             </table>
-            <h2><a name="kanchor161"></a>Scripting <span class="AppCommand">splice&gt;</span> Commands</h2>
+            <h2 id="kanchor161"></a>Scripting <span class="AppCommand">splice&gt;</span> Commands</h2>
             <p>You can use the Splice Machine Command Line Interface (<span class="AppCommand">splice&gt;</span>) to interactively run database commands. This topic describes how to create a script of <span class="AppCommand">splice&gt;</span> commands to run a series of operations, such as loading a number of files into your database. To script a series of <span class="AppCommand">splice&gt;</span> commands, you need to create:</p>
             <ul>
                 <li value="1">an SQL commands file containing the SQL statements you want executed</li>
@@ -346,6 +346,5 @@ nohup ./command-name.sh &gt; ./command-name.out 2&gt;&amp;1 &amp;
                     </li>
                 </ol>
             </div>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

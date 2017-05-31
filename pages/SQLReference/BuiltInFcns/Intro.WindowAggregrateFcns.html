@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor137"></a>Window and Aggregate Functions</h1>
+            <h1 id="kanchor137"></a>Window and Aggregate Functions</h1>
             <p>This section contains the Aggregate and Window (analytic)&#160;functions built into Splice Machine SQL.</p>
             <ul>
                 <li value="1"><a href="#Aggregat">Aggregate functions</a>, which are sometimes referred to as set functions, provide a means of evaluating an expression over a set of rows. Each aggregate function outputs one value for the set of rows on which it operates. All aggregate functions can also be used as window functions.</li>
@@ -137,9 +137,9 @@ folder: SQLReference/BuiltInFcns
                     </tr>
                 </tbody>
             </table>
-            <h3><a name="numeric_built-in_data_types_"></a>The Numeric Built-in Data Types</h3>
+            <h3 id="numeric_built-in_data_types_"></a>The Numeric Built-in Data Types</h3>
             <p class="indentLevel1">The numeric built-in data types are:&#160;<a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>.</p>
-            <h2><a name="Aggregat"></a>Using Aggregate Functions</h2>
+            <h2 id="Aggregat"></a>Using Aggregate Functions</h2>
             <p>Aggregate functions (also described as <span class="ItalicFont">set functions</span> in ANSI SQL and as <span class="ItalicFont">column functions</span> in some database literature). They provide a means of evaluating an expression over a set of rows. </p>
             <p>Whereas the other built-in functions operate on a single expression, aggregates operate on a set of values and reduce them to a single scalar value. Built-in aggregates can calculate the minimum, maximum, sum, count, and average of an expression over a set of values as well as count rows. The following table shows the data types on which each built-in aggregate function can operate.</p>
             <p>Aggregates are permitted only in the following:</p>
@@ -166,7 +166,7 @@ SELECT MIN(flying_time), flight_id
   FROM t2
   WHERE t2.y = SUM(t1.c3));</pre>
             </div>
-            <h2><a name="Window"></a>Using Window Functions</h2>
+            <h2 id="Window"></a>Using Window Functions</h2>
             <p>Window functions, sometimes referred to as <span class="ItalicFont">analytic</span> functions, perform calculations across a set of table rows that are related to the current row. They are similar to aggregate functions, with several significant differences; a window function:</p>
             <ul>
                 <li value="1">Always includes an <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause</li>
@@ -204,6 +204,5 @@ SELECT MIN(flying_time), flight_id
                 <li value="17"><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
                 <li value="18"><span class="ItalicFont"><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

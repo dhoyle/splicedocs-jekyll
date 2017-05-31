@@ -2724,7 +2724,7 @@
 
   	<section>
 		<div class="TopicContent">
-            <h1><a name="Statements.GeneratedColumnSpec" id="Statements.GeneratedColumnSpec"></a><a name="kanchor351"></a>generated-column-spec</h1>
+            <h1 id="Statements.GeneratedColumnSpec">generated-column-spec</h1>
             <p>A&#160;generated column is one whose value is defined by an expression, typically involving values from other columns in the same table. The value of a generated column is automatically updated whenever there's a change in the value of any column upon which the expression depends.</p>
             <div class="fcnWrapper"><pre class="FcnSyntax">[ GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY 
 [ ( START WITH IntegerConstant 
@@ -2769,7 +2769,7 @@ insert into greetings(ch) values ('bonjour'); </pre>
                 <p class="paramName">INCREMENT&#160;BY&#160;IntegerConstant</p>
                 <p class="paramDefnFirst">The amount by which to increment the identity value each time one is assigned.</p>
             </div>
-            <p class="heading2"><a name="IdentityAttributes" id="IdentityAttributes"></a>Identity Column Attributes</p>
+            <p class="heading2" id="IdentityAttributes">Identity Column Attributes</p>
             <p>A table can have at most one identity column.</p>
             <p>For <span class="CodeFont">SMALLINT</span>, <span class="CodeFont">INT</span>, and <span class="CodeFont">BIGINT</span> columns with identity attributes, Splice Machine automatically assigns increasing integer values to the column. Identity column attributes behave like other defaults in that when an insert statement does not specify a value for the column, Splice Machine automatically provides the value. However, the value is not a constant; Splice Machine automatically increments the default value at insertion time.</p>
             <p>The <span class="CodeFont">IDENTITY</span> keyword can only be specified if the data type associated with the column is one of the following exact integer types.</p>
@@ -2885,7 +2885,6 @@ COL1       |COL2       |COL3
 
 3 rows selected</pre>
             </div>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
 
@@ -2904,7 +2903,7 @@ COL1       |COL2       |COL3
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 26, 2017 <br />
+ Site last generated: May 30, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -17,7 +17,7 @@ folder: Developers
                 <li value="1">The <a href="#MappingTables">Mapping Splice Machine Tables to HBase</a> section shows you how to view your Splice Machine tables and how map the table names that we see in HBase to the more descriptive table names that we see in Splice Machine.</li>
                 <li value="2">The <a href="#AccessingHbaseMaster">Accessing HBase Master</a> section shows you how to access HBase Master so that you can peek under the surface a bit.</li>
             </ul>
-            <h2><a name="MappingTables"></a><a name="kanchor210"></a>Mapping Splice Machine Tables to HBase</h2>
+            <h2 id="MappingTables"></a id="kanchor210"></a>Mapping Splice Machine Tables to HBase</h2>
             <p>If you are looking at tables in the Splice Machine database that do not appear to match what you see in the HBase Master Web user interface, they may not match up. To view your Splice Machine tables in HBase, follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -69,12 +69,11 @@ SYSIBM          |SYSDUMMY1          |1296      |      </pre>
                     </li>
                 </ol>
             </div>
-            <h2><a name="AccessingHbaseMaster"></a><a name="kanchor211"></a>Accessing HBase Master</h2>
+            <h2 id="AccessingHbaseMaster"></a id="kanchor211"></a>Accessing HBase Master</h2>
             <p>If you are an HBase veteran or someone interested in seeing a little of what goes on under the surface, you can access HBase Master with the default HBase URL:</p>
             <div class="preWrapper"><pre class="ShellCommand">http://localhost:60010</pre>
             </div>
             <p>Because Splice Machine encodes and compresses the data for space efficiency, the actual data in your tables is virtually unreadable.</p>
             <div class="noteNote">In this version, Splice Machine has purposely left ports 60010 and 60030 open for people to see the HBase tables. If security is an issue in your deployment, you can easily block this access.</div>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

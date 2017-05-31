@@ -10,7 +10,7 @@ folder: Developers/Fundamentals
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor552"></a>Running Transactions In Splice Machine</h1>
+            <h1 id="kanchor552"></a>Running Transactions In Splice Machine</h1>
             <p>Splice Machine is a fully transactional database that supports ACID&#160;transactions. This allows you to perform actions such as <span class="ItalicFont">commit</span> and <span class="ItalicFont">rollback</span>; in a transactional context, this means that the database does not make changes visible to others until a <span class="ItalicFont">commit</span> has been issued.</p>
             <p>This topic includes brief overview information about transaction processing with Splice&#160;Machine, in these sections:</p>
             <ul>
@@ -28,7 +28,7 @@ folder: Developers/Fundamentals
                     </ul>
                 </li>
             </ul>
-            <h2><a name="Transact"></a>Transactions Overview</h2>
+            <h2 id="Transact"></a>Transactions Overview</h2>
             <p>A&#160;transaction is a unit of work performed in a database; to maintain the integrity of the database, each transaction must:</p>
             <ul>
                 <li value="1">complete in its entirety or have no effect on the database</li>
@@ -36,7 +36,7 @@ folder: Developers/Fundamentals
                 <li value="3">produce results that are consistent with existing constraints in the database</li>
                 <li value="4">write its results to durable storage upon successful completion</li>
             </ul>
-            <h3><a name="ACIDTra"></a>ACID&#160;Transactions</h3>
+            <h3 id="ACIDTra"></a>ACID&#160;Transactions</h3>
             <p>The properties that describe how transactions must maintain integrity are <span class="ItalicFont">A</span>tomicity, <span class="ItalicFont">C</span>onsistency, <span class="ItalicFont">I</span>solation, and <span class="ItalicFont">D</span>urability. Transactions adhering to these properties are often referred to as <span class="ItalicFont">ACID</span>&#160;transactions. Here's a summary of ACID&#160;transaction properties:</p>
             <table summary="Properties of ACID transactions">
                 <col />
@@ -66,7 +66,7 @@ folder: Developers/Fundamentals
                     </tr>
                 </tbody>
             </table>
-            <h3><a name="Snapshot"></a><a name="kanchor553"></a>MVCC and Snapshot Isolation</h3>
+            <h3 id="Snapshot"></a id="kanchor553"></a>MVCC and Snapshot Isolation</h3>
             <p>Splice Machine employs a lockless <span class="ItalicFont">snapshot isolation design</span> that uses <span class="ItalicFont">Multiple Version Concurrency Control (MVCC)</span> to create a new version of the record every time it is updated and enforce consistency. Database systems use concurrency control systems to manage concurrent access. The simplest control method is to use locks that make sure that the writer is finished before any reader can proceed; however, this approach can be very slow. With snapshot isolation, each  transaction has its own virtual snapshot of the database, which means that multiple transactions can operate concurrently without creating deadlock conditions.</p>
             <p>When Splice Machine needs to update an item in the database, it doesn't actually overwrite the old data value. Instead, it creates a new version with a new timestamp. Which means that readers have access to the data that was available when they began reading, even if that data has been updated by a writer in the meantime. This is referred to as <span class="ItalicFont">point-in-time consistency</span> and ensures that:</p>
             <ul>
@@ -332,7 +332,7 @@ folder: Developers/Fundamentals
                     </tr>
                 </tbody>
             </table>
-            <h2><a name="Using2"></a>Using Transactions</h2>
+            <h2 id="Using2"></a>Using Transactions</h2>
             <p>This section describes using transactions in your database, in these subsections:</p>
             <ul>
                 <li value="1"><a href="#Committi">Committing and&#160;Rolling Back Transaction Changes</a> introduces autocommit, commit, and rollback of transactions.</li>
@@ -340,7 +340,7 @@ folder: Developers/Fundamentals
                 <li value="3"><a href="#Using">Using Savepoints</a> describes how to use savepoints within transactions.</li>
                 <li value="4"><a href="#Rollbacks">Using Rollback versus Rollback to Savepoint</a> discusses the differences between rolling back a transaction, and rolling back to a savepoint.</li>
             </ul>
-            <h3><a name="Committi"></a>Committing and&#160;Rolling Back Transaction Changes</h3>
+            <h3 id="Committi"></a>Committing and&#160;Rolling Back Transaction Changes</h3>
             <p>Within a transactional context, how the changes that you make are committed to the database depends on whether <span class="CodeFont">autocommit</span> is enabled or disabled:</p>
             <table summary="Using autocommit">
                 <col />
@@ -376,7 +376,7 @@ folder: Developers/Fundamentals
                 <li value="2"><span class="CodeFont"><a href="cmdlineref_commit.html">commit</a></span> command</li>
                 <li value="3"><span class="CodeFont"><a href="cmdlineref_rollback.html">rollback</a></span> command</li>
             </ul>
-            <h3><a name="Simple"></a>A Simple Transaction Example</h3>
+            <h3 id="Simple"></a>A Simple Transaction Example</h3>
             <p>Here is a simple example. Enter the following commands to see <span class="ItalicFont">commit</span> and <span class="ItalicFont">rollback</span> in action:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; create table myTbl (i int);
 splice&gt; autocommit off;             &#160;&#160;&#160;&#160;&#160;- commits must be made explicitly
@@ -389,7 +389,7 @@ splice&gt; select * from myTbl;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&
 ...	</pre>
             </div>
             <p>You can turn <span class="CodeFont">autocommit</span> back on by issuing the command: <span class="AppCommand">autocommit on;</span></p>
-            <h3><a name="Using"></a>Using Savepoints</h3>
+            <h3 id="Using"></a>Using Savepoints</h3>
             <p>Splice Machine supports the JDBC 3.0 Savepoint API, which adds methods for setting, releasing, and rolling back to savepoints within a transaction. Savepoints give you additional control over transactions by allowing you to define logical rollback points within a transaction, which effectively allows you to specify sub-transactions (also known as nested transactions). </p>
             <p>You can specify multiple savepoints within a transaction. Savepoints are very useful when processing large transactions:&#160;you can implement error recovery schemes that allow you to rollback part of a transaction without having to abort the entire transaction.</p>
             <p>You can use these commands to work with Savepoints:</p>
@@ -444,7 +444,7 @@ I
             <p>And finally, we commit the transaction:</p>
             <div class="preWrapperWide"><pre class="AppCommand">COMMIT;</pre>
             </div>
-            <h3><a name="Rollbacks"></a>Using Rollback Versus Rollback to Savepoint</h3>
+            <h3 id="Rollbacks"></a>Using Rollback Versus Rollback to Savepoint</h3>
             <p>There's one important distinction you should be aware of between rolling back to a savepoint versus rolling back the entire transaction:</p>
             <ul>
                 <li value="1">When you perform a <span class="CodeFont">rollback</span>, Splice Machine aborts the entire transaction and creates a new transaction, </li>
@@ -466,6 +466,5 @@ I
                 <li value="5"><span class="CodeFont"><a href="cmdlineref_rollbacktosavepoint.html">rollback to savepoint</a></span> command</li>
                 <li value="6"><span class="CodeFont"><a href="cmdlineref_savepoint.html">savepoint</a></span> command</li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

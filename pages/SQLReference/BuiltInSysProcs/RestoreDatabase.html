@@ -11,7 +11,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="BuiltInSysProcs.DeleteBackup" id="BuiltInSysProcs.BackupDatabase"></a><a name="kanchor57"></a>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</h1>
+            <h1 id="BuiltInSysProcs.DeleteBackup">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</h1>
             <p>The <samp>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</samp> system procedure
 restores your database to the state it was in when a specific backup was performed, using a backup that you previously created using either the <span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP</a></span>&#160;system procedure. </p>
             <p>You can restore your database from any previous full or incremental backup.</p>
@@ -67,7 +67,7 @@ BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESY
 splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 74101);
 Statement executed.</pre>
             <p>Once the restoration is complete, reboot your database by the <a href="onprem_admin_startingdb.html">Starting Your Database.</a></p>
-            <h3><a name="Example"></a>Example 2 : Restore the Database from a Series of Incremental Backups</h3>
+            <h3 id="Example">Example 2 : Restore the Database from a Series of Incremental Backups</h3>
             <p>In this example, you have been running a daily incremental backup and want to restore it to the most recent version. Let's call the backups B1, B2, B3, and B4:</p>
             <ul>
                 <li value="1">Full backup <span class="CodeFont">B1,(ID=1274)</span></li>
@@ -116,6 +116,5 @@ Statement executed.</pre>
                 <li value="8"><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
                 <li value="9"><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

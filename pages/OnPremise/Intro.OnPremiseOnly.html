@@ -18,7 +18,7 @@ folder: OnPremise
 			<p>Splice Machine delivers an open-source data platform that incorporates the proven scalability of HBase™ and the in-memory performance of Apache Spark™. The cost-based optimizer uses advanced statistics to choose the best compute engine, storage engine, index access, join order and join algorithm for each task. In this way, Splice Machine can concurrently process transactional and analytical workloads at scale.</p>
 			<h2>Version Information</h2>
 			<p>This site contains the documentation for:</p>
-            <p class="indentLevel1"> Version <span class="CalloutFont"  MadCap:conditions="Default.OnlyDoc">{{splvar_basic_SpliceReleaseVersion}}</span><span class="CalloutFont"  MadCap:conditions="Default.NotDoc">{{splvar_basic_InternalReleaseVersion}}</span> of <span class="CalloutFont">Splice Machine</span><span MadCap:conditions="Default.NotDoc"><span class="CalloutFont"> (internal)</span>, released <span MadCap:conditions="Default.OnlyDoc"> {{splvar_basic_SpliceReleaseDate}}</span><span MadCap:conditions="Default.NotDoc"> {{splvar_basic_InternalDocReleaseDate}}</span></p>
+            <p class="indentLevel1"> Version <span class="CalloutFont">{% if site.incl_onlydoc %}{{splvar_basic_SpliceReleaseVersion}}{% elsif site.incl_notdoc %}{{splvar_basic_InternalReleaseVersion}}{% endif %}</span> of <span class="CalloutFont">Splice Machine</span>{% if site.incl_notdoc %}<span class="CalloutFont"> (internal)</span>{% endif %}, released {%if site.incl_onlydoc %} {{splvar_basic_SpliceReleaseDate}}{% elsif site.incl_notdoc %}{{splvar_basic_InternalDocReleaseDate}}{% endif %}</p>
 			<p>If you're using an earlier version, you'll find the documentation here:</p>
 			<table>
 				<col>
@@ -53,6 +53,5 @@ folder: OnPremise
 				<li>Our <span class="ItalicFont"><a href="tutorials_intro.html">Tutorials Collection</span> contains a number of task-based tutorials to help you quickly take advantage of many Splice&#160;Machine features.</li>
 				<li>Our <span class="ItalicFont"><a href="releasenotes_intro.html">Release Notes</a></span> section contains a release and update notes, requirements, and edition and license information.</li>
 			</ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="Statements.Insert" id="Statements.Insert"></a><a name="kanchor385"></a>INSERT</h1>
+            <h1 id="Statements.Insert">INSERT</h1>
             <p>An
 			<span class="CodeFont">INSERT</span> statement creates rows or columns and stores them in the named table.
 			The number of values assigned in an <span class="CodeFont">INSERT</span> statement must be the same as the
@@ -37,7 +37,7 @@ folder: SQLReference/Statements
                 <p class="paramName">result offset and fetch first clauses</p>
                 <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows added to the table.</p>
             </div>
-            <p class="heading2"><a name="OrderBy"></a>Using the ORDER&#160;BY&#160;Clause</p>
+            <p class="heading2" id="OrderBy">Using the ORDER&#160;BY&#160;Clause</p>
             <p>When you want insertion to happen with a specific ordering (for example, in conjunction with auto-generated keys), it can be useful to specify an <span class="CodeFont">ORDER BY</span> clause on the result set to be inserted.</p>
             <p>If the Query is a <span class="CodeFont">VALUES</span> expression, it cannot contain or be followed by an <span class="CodeFont">ORDER BY</span>, result offset, or fetch first clause. However, if the <span class="CodeFont">VALUES</span> expression does not contain the <span class="CodeFont">DEFAULT</span> keyword, the <span class="CodeFont">VALUES</span> clause can be put in a subquery and ordered, as in the following statement:</p>
             <div class="preWrapperWide"><pre class="Example">INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;</pre>
@@ -84,6 +84,5 @@ the prepared <span class="CodeFont">INSERT</span> statement.</p>
                 </li>
                 <li value="4"><a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">RESULT&#160;OFFSET</span></a>&#160;clause</li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

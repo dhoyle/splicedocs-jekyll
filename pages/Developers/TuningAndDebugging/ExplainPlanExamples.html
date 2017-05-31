@@ -10,7 +10,7 @@ folder: Developers/TuningAndDebugging
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor561"></a>Explain Plan Examples</h1>
+            <h1 id="kanchor561"></a>Explain Plan Examples</h1>
             <p>This topic contains the following examples of using the <span class="CodeFont">explain</span> command to display the execution plan for a statement, including the following examples:</p>
             <ul>
                 <li value="1"><a href="#TableSca">TableScan Examples</a>
@@ -33,7 +33,7 @@ folder: Developers/TuningAndDebugging
                 </li>
             </ul>
             <div class="noteIcon">The format and meaning of the common fields in the output plans shown here is found in the previous topic, <a href="developers_tuning_explainplan.html">About Explain Plan</a>.</div>
-            <h2><a name="TableSca"></a>TableScan Examples</h2>
+            <h2 id="TableSca"></a>TableScan Examples</h2>
             <p>This example show a plan for a <span class="CodeFont">TableScan</span> operation that has no qualifiers, known as a <span class="ItalicFont">raw scan</span>:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; explain select * from sys.systables;<br /><br />Plan
 -------------------------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
                 </li>
                 <li value="2">The <span class="CodeFont">preds</span> field includes qualifiers that were pushed down to the base table.</li>
             </ul>
-            <h2><a name="IndexSca"></a>IndexScan Examples</h2>
+            <h2 id="IndexSca"></a>IndexScan Examples</h2>
             <p>This example show a plan for an <span class="CodeFont">IndexScan</span> operation that has no predicates:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables; --covering index
 
@@ -95,7 +95,7 @@ Plan
                 </li>
                 <li value="2">The <span class="CodeFont">preds</span> field includes qualifiers that were pushed down to the base table.</li>
             </ul>
-            <h2><a name="Projecti"></a>Projection and Restriction Examples</h2>
+            <h2 id="Projecti"></a>Projection and Restriction Examples</h2>
             <p>This example show a plan for a <span class="CodeFont">Projection</span> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename || 'hello' from sys.systables;
 
@@ -123,7 +123,7 @@ Plan
             <ul>
                 <li value="1">The plan labels both projection and restriction operations as <span class="CodeFont">ProjectRestrict</span>. which can contain both <span class="ItalicFont">projections</span> and <span class="ItalicFont">non-qualifier restrictions</span>. A <span class="ItalicFont">non-qualifier restriction</span> is a predicate that cannot be pushed to the underlying table scan.</li>
             </ul>
-            <h2><a name="Index"></a>Index Lookup</h2>
+            <h2 id="Index"></a>Index Lookup</h2>
             <p>This example shows a plan for an <span class="CodeFont">IndexLookup</span> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select * from SYS.SYSTABLES --SPLICE-PROPERTIES index=SYSTABLES_INDEX1
 where tablename = 'SYSTABLES';;
@@ -139,7 +139,7 @@ Plan
                 <li value="1">The plan labels the operation as <span class="CodeFont">IndexLookup</span>; you may see this labeled as an <span class="CodeFont">IndexToBaseRow</span> operation elsewhere.</li>
                 <li value="2">Plans for <span class="CodeFont">IndexLookup</span> operations do not contain any special fields.</li>
             </ul>
-            <h2><a name="Join"></a>Join Example</h2>
+            <h2 id="Join"></a>Join Example</h2>
             <p>This example shows a plan for a <span class="CodeFont">Join</span> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select * from sys.systables t, sys.sysschemas s
         where t.schemaid =s.schemaid;
@@ -184,7 +184,7 @@ Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
         -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=2,totalCost=7.017,outputRows=20,outputHeapSize=2 MB,partitions=1,baseTable=SYSTABLES(48))
         -&gt;  TableScan[SYSSCHEMAS(32)](n=1,totalCost=7.516,outputRows=20,outputHeapSize=1023.984 KB,partitions=1)</pre>
             </div>
-            <h2><a name="Union"></a>Union Example</h2>
+            <h2 id="Union"></a>Union Example</h2>
             <p>This example shows a plan for a <span class="CodeFont">Union</span> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables t union all select schemaname from sys.sysschemas;
 
@@ -202,7 +202,7 @@ Cursor(n=5,rows=40,updateMode=READ_ONLY (1),engine=control)
             <ul>
                 <li value="1">The right side of the <span class="CodeFont">Union</span> is listed first, followed by the left side of the union,</li>
             </ul>
-            <h2><a name="Order"></a>Order By Example</h2>
+            <h2 id="Order"></a>Order By Example</h2>
             <p>This example shows a plan for an order by operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables order by tablename desc;
 
@@ -218,7 +218,7 @@ Plan
             <ul>
                 <li value="1">The plan labels this operation as <span class="CodeFont">OrderBy</span>.</li>
             </ul>
-            <h2><a name="Aggregat"></a>Aggregation Operation Examples</h2>
+            <h2 id="Aggregat"></a>Aggregation Operation Examples</h2>
             <p>This example show a plan for a grouped aggregate operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename, count(*) from sys.systables group by tablename;
 
@@ -250,7 +250,7 @@ Plan
             <ul>
                 <li value="1">The plan labels both grouped and scaled aggregate operations as <span class="CodeFont">GroupBy</span>.</li>
             </ul>
-            <h2><a name="Subquery"></a>Subquery Example</h2>
+            <h2 id="Subquery"></a>Subquery Example</h2>
             <p>This example shows a plan for a <span class="CodeFont">SubQuery</span> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename, (select tablename from sys.systables t2 where t2.tablename = t.tablename)from sys.systables t;
 
@@ -276,6 +276,5 @@ Plan
                 <li value="1"><a href="developers_tuning_explainplan.html">About Explain Plan</a>
                 </li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

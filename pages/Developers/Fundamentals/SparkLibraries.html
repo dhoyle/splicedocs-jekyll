@@ -10,7 +10,7 @@ folder: Developers/Fundamentals
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor14"></a>Using Spark Libraries with Splice&#160;Machine</h1>
+            <h1 id="kanchor14"></a>Using Spark Libraries with Splice&#160;Machine</h1>
             <p>One of the great features of Spark is that a large number of libraries have been and continue to be developed for use with Spark. This topic provides an example of interfacing to the Spark Machine Learning library (MLlib).</p>
             <p>You can follow a similar path to interface with other Spark libraries, which involves these steps:</p>
             <ol>
@@ -26,7 +26,7 @@ folder: Developers/Fundamentals
                     <li value="2"><a href="#Create">Creating our SparkStatistics Example Class</a> summarizes the <span class="CodeFont">SparkStatistics</span> Java class that we created for this example.</li>
                     <li value="3"><a href="#Run">Run a Sample Program to Use Our Class</a> shows you how to define a custom procedure in your database to interface to the <span class="CodeFont">SparkStatistics</span> class.</li>
                 </ul>
-                <h3><a name="About"></a>About the Splice Machine SparkMLibUtils Class API</h3>
+                <h3 id="About"></a>About the Splice Machine SparkMLibUtils Class API</h3>
                 <p>Our example makes use of the Splice Machine <span class="CodeFont">com.splicemachine.example.SparkMLibUtils</span> class, which you can use to interface between your Splice&#160;Machine database and the Spark Machine Learning library.</p>
                 <p>Here's are the public methods from the <span class="CodeFont">SparkMLibUtils</span> class:</p>
                 <div class="preWrapperWide"><pre class="Example">public static JavaRDD‹LocatedRow&gt; resultSetToRDD(ResultSet rs)
@@ -50,7 +50,7 @@ public static Vector convertExecRowToVector(ExecRow execRow)
                     <p class="paramName">convertExecRowToVector</p>
                     <p class="paramDefnFirst">Converts a Splice Machine <span class="CodeFont">execrow</span> into a vector. The <span class="CodeFont">fieldsToConvert</span> parameter specifies which column positions to include in the vector.</p>
                 </blockquote>
-                <h3><a name="Create"></a>Creating our SparkStatistics Example Class</h3>
+                <h3 id="Create"></a>Creating our SparkStatistics Example Class</h3>
                 <p>For this example, we define a Java class named SparkStatistics that can query a Splice Machine table, convert that results into a Spark JavaRDD, and then use the Spark MLlib to calculate statistics.</p>
                 <p> Our class, <span class="CodeFont">SparkStatistics</span>, defines one public interface:</p>
                 <div class="preWrapperWide"><pre class="Example">public class SparkStatistics {
@@ -110,7 +110,7 @@ resultSets[0] = new EmbedResultSet40((EmbedConnection)con, resultsToWrap, false,
                     </ol>
                 </div>
                 <p>&#160;</p>
-                <h3><a name="Run"></a>Run a Sample Program to Use Our Class</h3>
+                <h3 id="Run"></a>Run a Sample Program to Use Our Class</h3>
                 <p>Follow these steps to run a simple example program to use the Spark MLlib library to calculate statistics for an SQL&#160;statement. </p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
@@ -148,7 +148,7 @@ insert into t values(4, 40);</pre>
                     </ol>
                 </div>
             </div>
-            <h2><a name="Appendix"></a>Appendix:&#160;The SparkStatistics Class</h2>
+            <h2 id="Appendix"></a>Appendix:&#160;The SparkStatistics Class</h2>
             <p>Here's the full code for our SparkStatistics class:</p>
             <div class="preWrapperWide"><pre class="Example">package com.splicemachine.example;
 
@@ -305,6 +305,5 @@ public class SparkStatistics {
                 </li>
                 <li value="3">You can find the Spark MLlib guide in the Programming Guides section of the Spark documentation site:&#160;<a href="https://spark.apache.org/docs" target="_blank">https://spark.apache.org/docs</a></li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

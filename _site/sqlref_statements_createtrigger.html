@@ -2724,7 +2724,7 @@
 
   	<section>
 		<div class="TopicContent">
-            <h1><a name="Statements.CreateTrigger" id="Statements.CreateTrigger"></a><a name="kanchor337"></a>CREATE TRIGGER</h1>
+            <h1 id="Statements.CreateTrigger">CREATE TRIGGER</h1>
             <p>A <span class="CodeFont">CREATE TRIGGER</span> statement creates a trigger, which defines a set of actions that are executed when a database event known as the <span class="CodeFont">triggering event</span> occurs on a specified table. The event can be a <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, or <span class="CodeFont">DELETE</span>&#160;statement.  When a trigger fires, the set of SQL&#160;statements that constitute the action are executed.</p>
             <p>You can define any number of triggers for a single table, including multiple triggers on the same table for the same event. To define a trigger on a table, you must be the owner of the of the database, the owner of the table's schema, or have <span class="CodeFont">TRIGGER</span>&#160;privileges on the table. You cannot define a trigger for any schema whose name begins with <span class="CodeFont">SYS</span>.</p>
             <p>The <a href="developers_fundamentals_triggers.html">Database Triggers</a> topic in our <span class="ItalicFont">Developer's Guide</span> provides additional information about database triggers.</p>
@@ -2778,7 +2778,7 @@
                 </p>
                 <p class="paramDefn">The statement can reference database objects other than the table upon which the trigger is declared. If any of these database objects is dropped, the trigger is invalidated. If the trigger cannot be successfully recompiled upon the next execution, the invocation throws an exception and the statement that caused it to fire will be rolled back.</p>
             </div>
-            <p class="heading2"><a name="ReferencingClause" id="ReferencingClause"></a>The Referencing Clause</p>
+            <p class="heading2" id="ReferencingClause" id="ReferencingClause"></a>The Referencing Clause</p>
             <p>Many triggered-SQL-statements need to refer to data that is currently being changed by the database event that caused them to fire. The triggered-SQL-statement might need to refer to the old (pre-change or <span class="ItalicFont">before</span>)&#160;values or to the new (post-change or <span class="ItalicFont">after</span>) values. You can refer to the data that is currently being changed by the database event that caused the trigger to fire.</p>
             <p>Note that the referencing clause can designate only one new correlation or identifier and only one old correlation or identifier. </p>
             <p class="heading3">Transition Variables in Row Triggers</p>
@@ -2863,7 +2863,6 @@ splice&gt;&#160;CREATE TRIGGER triggerName
                 <li value="2"><span class="CodeFont"><a href="sqlref_statements_droptrigger.html">DROP&#160;TRIGGER</a></span>&#160;statement</li>
                 <li value="3"><span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause</li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
 
@@ -2882,7 +2881,7 @@ splice&gt;&#160;CREATE TRIGGER triggerName
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 26, 2017 <br />
+ Site last generated: May 30, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

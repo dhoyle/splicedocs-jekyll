@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="Statements.Grant" id="Statements.Grant"></a><a name="kanchor237"></a>GRANT</h1>
+            <h1 id="Statements.Grant">GRANT</h1>
             <p>Use the <span class="CodeFont">GRANT</span> statement to give privileges to a specific user or role, or to all users, to perform actions on database objects. You can also use the <span class="CodeFont">GRANT</span> statement to grant a role to a user, to <span class="CodeFont">PUBLIC</span>, or to another role.</p>
             <p>The syntax that you use for the <span class="CodeFont">GRANT</span> statement depends on whether you are granting privileges to a schema object or granting a role. </p>
             <div class="noteIcon">
@@ -28,12 +28,10 @@ folder: SQLReference/Statements
 				|</span><span class="CodeFont">TRIGGER
 			|</span><span class="CodeFont"><br />UPDATE [( column-identifier {, column-identifier}* )]</span></p>
                 <p class="paramDefn">See the <a href="#PrivilegeTypes">Privilege Types</a> section below for more information.</p>
-                <div class="noteEnterprise" data-mc-conditions="Default.OnlyEnterprise">
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: Column-level privileges are available only with a Splice Machine Enterprise license.</span>
                     </p>
                     <p>You cannot grant or revoke privileges at the <span class="CodeFont">column-identifier</span> level with the Community version of Splice Machine.</p>
                     <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
-                </div>
                 <p class="paramName">schema-Name</p>
                 <p class="paramDefnFirst">The name of the schema to which you are granting access.</p>
                 <p class="paramName">grantees</p>
@@ -57,12 +55,10 @@ folder: SQLReference/Statements
 				|</span><span class="CodeFont">TRIGGER
 			|</span><span class="CodeFont"><br />UPDATE [( column-identifier {, column-identifier}* )]</span></p>
                 <p class="paramDefn">See the <a href="#PrivilegeTypes">Privilege Types</a> section below for more information.</p>
-                <div class="noteEnterprise" data-mc-conditions="Default.OnlyEnterprise">
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: Column-level privileges are available only with a Splice Machine Enterprise license.</span>
                     </p>
                     <p>You cannot grant or revoke privileges at the <span class="CodeFont">column-identifier</span> level with the Community version of Splice Machine.</p>
                     <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
-                </div>
                 <p class="paramName">table-Name</p>
                 <p class="paramDefnFirst">The name of the table to which you are granting access.</p>
                 <p class="paramName">view-Name</p>
@@ -111,7 +107,7 @@ folder: SQLReference/Statements
             </div>
             <p>Before you can grant a role to a user or to another role, you must create the role using the <a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE ROLE</span> statement</a>. Only the database owner can grant a role.</p>
             <p>A role A <span class="ItalicFont">contains</span> another role B if role B is granted to role A, or is contained in a role C granted to role A. Privileges granted to a contained role are inherited by the containing roles. So the set of privileges identified by role A is the union of the privileges granted to role A and the privileges granted to any contained roles of role A.</p>
-            <p class="heading2"><a name="AboutGrantees"></a>About Grantees</p>
+            <p class="heading2" id="AboutGrantees">About Grantees</p>
             <p>A grantee can be one or more specific users, one or more specific roles, or all users (<span class="CodeFont">PUBLIC</span>). Either the object owner or the database owner can grant privileges to a user or to a role. Only the database owner can grant a role to a user or to another role.</p>
             <p>Here's the syntax:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } 
@@ -129,7 +125,7 @@ folder: SQLReference/Statements
                 <p class="paramDefn">When <span class="CodeFont">PUBLIC</span> is specified, the privileges or roles affect all current and future users. </p>
                 <p class="paramDefn">The privileges granted to <span class="CodeFont">PUBLIC</span> and to individual users or roles are independent privileges. For example, a <span class="CodeFont">SELECT</span> privilege on table <samp>t</samp> is granted to both <span class="CodeFont">PUBLIC</span> and to the authorization ID <samp>harry</samp>. If the <span class="CodeFont">SELECT</span> privilege is later revoked from the authorization ID <samp>harry</samp>, Harry will still be able to access the table <samp>t</samp> through the <span class="CodeFont">PUBLIC</span> privilege.</p>
             </div>
-            <p class="heading2"><a name="PrivilegeTypes"></a>Privilege Types</p>
+            <p class="heading2" id="PrivilegeTypes">Privilege Types</p>
             <table summary="Privilege types">
                 <col />
                 <col />
@@ -240,6 +236,5 @@ folder: SQLReference/Statements
                 <li value="10"><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span></a> statement</li>
                 <li value="11"><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

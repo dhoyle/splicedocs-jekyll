@@ -10,7 +10,7 @@ folder: Tutorials/CLI
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor435"></a>Scripting the splice&gt;&#160;Command Line Interface</h1>
+            <h1 id="kanchor435">Scripting the splice&gt;&#160;Command Line Interface</h1>
             <p>You can use two simple and different methods to script the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter; both of described here:</p>
             <ul>
                 <li value="1"><a href="#Running">Running a File of splice&gt;&#160;Commands</a>
@@ -18,7 +18,7 @@ folder: Tutorials/CLI
                 <li value="2"><a href="#Running2">Running Splice Machine From a Shell Script</a>
                 </li>
             </ul>
-            <h2><a name="Running"></a>Running a File of splice&gt;&#160;Commands</h2>
+            <h2 id="Running">Running a File of splice&gt;&#160;Commands</h2>
             <p>You can create a simple text file of command lines and use the splice&gt;&#160;run command to run the commands in that file. Follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -81,7 +81,7 @@ ID    |TEAM      |NAME                   |POS&amp;|DISPLAYNAME             |BIRT
                     </li>
                 </ol>
             </div>
-            <h2><a name="Running2"></a>Running Splice Machine From a Shell Script</h2>
+            <h2 id="Running2">Running Splice Machine From a Shell Script</h2>
             <p>You can also use a shell script to start the splice&gt;&#160;command line interpreter and run command lines with Unix heredoc (<span class="CodeFont">&lt;&lt;</span>)&#160;input redirection. For example, we can easily rework the SQL&#160;script we used in the previous section into a shell script that starts <span class="AppCommand">splice&gt;</span>, runs several commands/statements, and then exits <span class="AppCommand">splice&gt;</span>.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -151,12 +151,11 @@ ID    |TEAM      |NAME                   |POS&amp;|DISPLAYNAME             |BIRT
                     </li>
                 </ol>
             </div>
-            <h3><a name="Nohup"></a>Using nohub for Long-Running Scripts</h3>
+            <h3 id="Nohup">Using nohub for Long-Running Scripts</h3>
             <p>If you want to run an unattended shell script that may take a long time, you can: use the Unix <span class="CodeFont">nohup</span> utility, which allows you to start a script in the background and redirect its output. This means that you can start the script, log out, and view the output at a later time. For example:</p>
             <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
 nohup ./myShellScript.sh &gt; ./myShellScript.out 2&gt;&amp;1 &amp;</pre>
             </div>
             <p class="topLevel">Once you've issued this command, you can log out, and subsequently view the output of your script in the <span class="CodeFont">myShellScript.out</span> file.</p>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>

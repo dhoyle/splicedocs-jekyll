@@ -350,7 +350,7 @@
 
   	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor279"></a>Backing Up and Restoring Your Database</h1>
+            <h1 id="kanchor279"></a>Backing Up and Restoring Your Database</h1>
 <div class="openSourceNoteWrapper">
     <div class="openSourceNote">
         <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: This feature is available only with a Splice Machine Enterprise license.</span>
@@ -377,7 +377,7 @@
                 <li value="3"><a href="#Backing">Backing Up to Cloud Storage</a>
                 </li>
             </ul>
-            <h2><a name="About"></a>About Splice Machine Backups</h2>
+            <h2 id="About"></a>About Splice Machine Backups</h2>
             <p>Splice Machine supports: both full and incremental backups:&#160;</p>
             <ul>
                 <li value="1">A <span class="ItalicFont">full backup</span> backs up all of the files/blocks that constitute your database.</li>
@@ -422,7 +422,7 @@
                 <li value="2">Start a new session (reconnect to your database).</li>
                 <li value="3">Start your backup job.</li>
             </ol>
-            <h2><a name="Using"></a>Using the Backup Operations</h2>
+            <h2 id="Using"></a>Using the Backup Operations</h2>
             <p>This section summarizes and provides examples of using the Splice Machine backup operations:</p>
             <ul>
                 <li value="1"><a href="#Scheduling">Scheduling a Daily Backup Job</a>
@@ -443,7 +443,7 @@
                 </li>
             </ul>
             <div class="noteNote">You must make sure that the directory to which you are backing up or from which data is being restored is accessible to the HBase user who is initiating the restore. Make sure the directory permissions are set correctly on the backup directory.<br /><br />Note that you can store your backups in a cloud-based storage service such as AWS; for more information, see the <a href="#Backing">Backing Up to Cloud Storage</a> section below.</div>
-            <h3><a name="Scheduling"></a>Scheduling a Daily Backup Job</h3>
+            <h3 id="Scheduling"></a>Scheduling a Daily Backup Job</h3>
             <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>&#160;system procedure to schedule a job that performs a daily incremental or full backup of your database:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP( <span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupType</span>, <span class="ItalicFont">startHour</span> );
 </pre>
@@ -467,7 +467,7 @@
                     </div>
                 </div>
             </div>
-            <h3><a name="Running"></a>Running an Immediate Backup</h3>
+            <h3 id="Running"></a>Running an Immediate Backup</h3>
             <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span> system procedure to immediately run a full or incremental backup.</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( <span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupType</span> );
 </pre>
@@ -489,7 +489,7 @@
                     </div>
                 </div>
             </div>
-            <h3><a name="Restorin"></a>Restoring Your Database From a Previous Backup</h3>
+            <h3 id="Restorin"></a>Restoring Your Database From a Previous Backup</h3>
             <p>You can restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure. Note that if you've been using incremental backups, you will need to first restore from the initial full backup, and then successively restore from each incremental backup. See the examples section below.</p>
             <p>To restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE(<span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupId</span>); </pre>
@@ -554,7 +554,7 @@
                     </ol>
                 </div>
             </blockquote>
-            <h3><a name="Reviewing"></a>Reviewing Backups</h3>
+            <h3 id="Reviewing"></a>Reviewing Backups</h3>
             <p>Splice Machine stores information about your backups and scheduled backup jobs in system tables that you can query, and stores a backup log file in the directory to which a backup is written when it runs.</p>
             <h4>Backup Job Information</h4>
             <p>Information about your scheduled backup jobs is stored in the <span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span>:</p>
@@ -582,7 +582,7 @@ Expected time for backup ~12 hours, expected finish at 15:30 on April 8, 2015
 …
 Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre>
             </div>
-            <h3><a name="Cancelin"></a>Canceling a Scheduled Backup</h3>
+            <h3 id="Cancelin"></a>Canceling a Scheduled Backup</h3>
             <p>You can cancel a daily backup with the <span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>&#160;system procedure:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( <span class="ItalicFont">jobId</span> ); </pre>
             </div>
@@ -596,7 +596,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
                 <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(1273);</pre>
                 </div>
             </div>
-            <h3><a name="CancelB"></a>Canceling a Backup That's In Progress</h3>
+            <h3 id="CancelB"></a>Canceling a Backup That's In Progress</h3>
             <p>You can call the <span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span>&#160;system procedure to cancel a backup that is currently running:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_BACKUP(  ); </pre>
             </div>
@@ -606,7 +606,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
                 <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_CANCEL_BACKUP();</pre>
                 </div>
             </div>
-            <h3><a name="Deleting"></a>Deleting a Backup</h3>
+            <h3 id="Deleting"></a>Deleting a Backup</h3>
             <p>Use the <a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>&#160;system procedure to delete a single backup:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_BACKUP( <span class="ItalicFont">backupId</span> ); </pre>
             </div>
@@ -619,7 +619,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
                 <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_DELETE_BACKUP(1273);</pre>
                 </div>
             </div>
-            <h3><a name="DeleteOld"></a>Deleting Outdated Backups</h3>
+            <h3 id="DeleteOld"></a>Deleting Outdated Backups</h3>
             <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>&#160;system procedure to delete all backups that are older than a certain number of days.</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( <span class="ItalicFont">backupWindow</span> ); </pre>
             </div>
@@ -631,7 +631,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
                 <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS(7);</pre>
                 </div>
             </div>
-            <h2><a name="Backing"></a>Backing Up to Cloud Storage - AWS</h2>
+            <h2 id="Backing"></a>Backing Up to Cloud Storage - AWS</h2>
             <p>You can specify cloud-based directories as destinations for your backups. This section describes how to set up credentials to allow Splice Machine to create and manage backups on AWS.</p>
             <p>You need to enable backups by storing your AWS Access Key ID and Secret Access Key values in your cluster's HDFS core-site.xml file: how you set up your credentials depends on the Hadoop platform you are using; see the section below for your platform:</p>
             <div class="notePlain">
@@ -651,7 +651,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
                 <li value="3"><a href="#Enabling3">Enabling backups on MapR</a>
                 </li>
             </ul>
-            <h3><a name="Enabling"></a>Enabling Splice Machine Backups on CDH</h3>
+            <h3 id="Enabling"></a>Enabling Splice Machine Backups on CDH</h3>
             <p>You can use Cloudera Manager to configure properties to enable Splice&#160;Machine backups; follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -675,7 +675,7 @@ fs.s3.awsSecretAccessKey   = <span class="Highlighted">&lt;Your AWS&#160;Access 
                     </li>
                 </ol>
             </div>
-            <h3><a name="Enabling2"></a>Enabling Splice Machine Backups on HDP</h3>
+            <h3 id="Enabling2"></a>Enabling Splice Machine Backups on HDP</h3>
             <p>You can use the Ambari dashboard to configure these properties. Follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -699,7 +699,7 @@ fs.s3.awsSecretAccessKey   = <span class="Highlighted">&lt;Your AWS&#160;Secret 
                     </li>
                 </ol>
             </div>
-            <h3><a name="Enabling3"></a>Enabling Splice Machine Backups on MapR</h3>
+            <h3 id="Enabling3"></a>Enabling Splice Machine Backups on MapR</h3>
             <p>To enable Amazon S3 access on a MapR&#160;cluster, you must stop services, change the configuration files on each node, and then restart services. Follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -786,7 +786,6 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
                 <li value="9"><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
                 <li value="10"><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
             </ul>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
 
@@ -805,7 +804,7 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc.. All rights reserved. <br />
- Site last generated: May 26, 2017 <br />
+ Site last generated: May 30, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

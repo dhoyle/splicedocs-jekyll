@@ -10,7 +10,7 @@ folder: Notes
 ---
 	<section>
 		<div class="TopicContent">
-            <h1><a name="kanchor493"></a>Documentation Summary</h1>
+            <h1 id="kanchor493"></a>Documentation Summary</h1>
             <p class="indentLevel1">The Splice Machine Documentation is separated into these books:</p>
             <table summary="Links to and descriptions of the books in the Splice Machine documentation suite.">
                 <col  />
@@ -22,7 +22,8 @@ folder: Notes
                     </tr>
                 </thead>
                 <tbody>
-                    <tr  data-mc-conditions="Default.NotDBaaS">
+{% if site.incl_notdbaas %}
+                    <tr>
                         <td ><a href="onprem_install_intro.html"><span class="ItalicFont">Installation Guide</span></a>
                         </td>
                         <td >
@@ -42,6 +43,7 @@ folder: Notes
                             <div class="noteOnPremiseOnly">Installation is only relevant for users of our on-premise database product; our database-as-a-service does not require installation, so only applies to our on-premise database product.</div>
                         </td>
                     </tr>
+{% endif %}
                     <tr >
                         <td ><span class="ItalicFont"><a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a></span>
                         </td>
@@ -66,7 +68,8 @@ folder: Notes
                             </ul>
                         </td>
                     </tr>
-                    <tr  data-mc-conditions="Default.NotDBaaS">
+{% if site.incl_notdbaas %}
+                    <tr>
                         <td ><span class="ItalicFont"><a href="onprem_admin_intro.html">Administrators</a></span>
                         </td>
                         <td >
@@ -83,6 +86,7 @@ folder: Notes
                             </ul>
                         </td>
                     </tr>
+{% endif %}
                     <tr >
                         <td ><a href="sparkconsole_intro.html"><span class="ItalicFont">The Splice Machine Management Console</span></a>
                         </td>
@@ -161,7 +165,7 @@ Maximum Session Timeout    = <span class="Highlighted">120000</span></pre>
                     </tr>
                 </tbody>
             </table>
-            <h2><a name="Tips"></a>Tips for Navigating the Documentation</h2>
+            <h2 id="Tips"></a>Tips for Navigating the Documentation</h2>
             <p>The Splice Machine documentation uses a navigation model that allows you to see more content at one time while still providing a full menu of the topics in the entire documentation suite. </p>
             <div class="noteIcon">Tutorial topics are prefaced with a <span class="CodeFont">*</span> in the table of contents.</div>
             <p>Here's the top-level view of our database-as-a-service product documentation:</p>
@@ -201,6 +205,5 @@ Maximum Session Timeout    = <span class="Highlighted">120000</span></pre>
                 <img src="images/SmallNav.png" class="nestedTightSpacing" />
             </p>
             <p>&#160;</p>
-            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
         </div>
 	</section>
