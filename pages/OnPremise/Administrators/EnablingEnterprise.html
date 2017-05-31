@@ -10,13 +10,13 @@ folder: OnPrem
 ---
 	<section>
 		<div class="TopicContent">
-            <h1 id="kanchor331"></a>Enabling Enterprise Features in Splice&#160;Machine</h1>
+            <h1 id="kanchor331">Enabling Enterprise Features in Splice&#160;Machine</h1>
             <p>There are two mechanisms for enabling enterprise features in Splice Machine:</p>
             <ul>
                 <li value="1">To access enterprise features such as Backup and Restore, you can simply call the <span class="CodeFont"><a href="sqlref_sysprocs_enableenterprise.html">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</a></span>&#160;built-in system procedure with the license key you obtain from Splice&#160;Machine, as described in the next section.</li>
                 <li value="2">To unlock Splice Machine Enterprise features that require configuration changes in your HBase settings, such as Kerberos and LDAP, you need to add one or more properties to your configuration file, as described in <a href="#Using2">Using Configuration Properties to Upgrade to the Enterprise</a>, below.</li>
             </ul>
-            <h2 id="Using"></a>Using <span class="CodeFont">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</span> to Upgrade</h2>
+            <h2 id="Using">Using <span class="CodeFont">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</span> to Upgrade</h2>
             <p>If you want to use Enterprise features, such as Backup and Restore, that do not need system properties updated, you can call the <span class="CodeFont">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</span>&#160;system procedure to unlock those features. You only need to do this once:</p>
             <div class="opsStepsList">
                 <ol>
@@ -35,7 +35,7 @@ ERROR XSRSE: Unable to enable the enterprise Manager. Enterprise services are di
                     </li>
                 </ol>
             </div>
-            <h2 id="Using2"></a>Using Configuration Properties to Upgrade to the Enterprise</h2>
+            <h2 id="Using2">Using Configuration Properties to Upgrade to the Enterprise</h2>
             <p>If your site uses Kerberos or LDAP, you need to update to the Enterprise version of Splice&#160;Machine by modifying your cluster's HBase configuration, and then restart Splice Machine. Follow these steps:</p>
             <div class="opsStepsList">
                 <ol>

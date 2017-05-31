@@ -11,7 +11,7 @@ folder: OnPrem
 {% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
-            <h1 id="kanchor174"></a>Configuring Splice Machine Authentication</h1>
+            <h1 id="kanchor174">Configuring Splice Machine Authentication</h1>
             <p>This topic describes the mechanisms you can use in Splice Machine to authenticate users and how to configure the mechanism you choose to use, in these sections:</p>
             <ul>
                 <li value="1"><a href="#Supporte">Supported Authentication Mechanisms</a>
@@ -20,7 +20,7 @@ folder: OnPrem
                 </li>
             </ul>
             <div>
-                <h2 id="Supporte"></a>Supported Authentication Mechanisms</h2>
+                <h2 id="Supporte">Supported Authentication Mechanisms</h2>
                 <p>You can use one of the following authentication mechanisms, each of which is described below the table:</p>
                 <table summary="Descriptions of available authentication mechanisms.">
                     <col style="width: 109px;" />
@@ -37,14 +37,14 @@ folder: OnPrem
                             <td>Any user&#160;ID&#160;and password combination is allowed to connect to database.</td>
                         </tr>
                         <tr>
-                            <td class="CodeFont" id="kanchor175"></a>Native</td>
+                            <td class="CodeFont" id="kanchor175">>Native</td>
                             <td>
                                 <p>User IDs in a database table are validating against the corresponding, encrypted password.</p>
                                 <p>This is the default authentication setting for Splice&#160;Machine installations.</p>
                             </td>
                         </tr>
                         <tr>
-                            <td class="CodeFont" id="kanchor176"></a>LDAP</td>
+                            <td class="CodeFont" id="kanchor176">LDAP</td>
                             <td>
                                 <p>User IDs are validating against an existing LDAP&#160;service.</p>
 {% include splice_snippets/enterpriseonly_note.html %}
@@ -52,7 +52,7 @@ folder: OnPrem
                         </tr>
                     </tbody>
                 </table>
-                <h2 id="Configur"></a>Configuring Authentication</h2>
+                <h2 id="Configur">Configuring Authentication</h2>
                 <p>You configure Splice&#160;Machine authentication by adding or updating properties in your HBase configuration file; this is typically done during installation of Splice Machine, but you can modify your settings whenever you want. This section contains the following subsections:</p>
                 <ul>
                     <li value="1"><a href="#Locating">Locating Your Configuration File</a>
@@ -64,8 +64,8 @@ folder: OnPrem
                     <li value="4"><a href="#Using2">Using LDAP&#160;Authentication</a>
                     </li>
                 </ul>
-                <h3 id="Locating"></a>Locating Your Configuration File</h3>
-                <p id="kanchor177"></a>The following table specifies the platform-specific location of the configuration you need to update when changing your Splice&#160;Machine authentication properties:</p>
+                <h3 id="Locating">Locating Your Configuration File</h3>
+                <p id="kanchor177">The following table specifies the platform-specific location of the configuration you need to update when changing your Splice&#160;Machine authentication properties:</p>
                 <table summary="Instructions for configuring Splice Machine authentication for your platform.">
                     <col />
                     <col />
@@ -101,14 +101,14 @@ folder: OnPrem
                     </tbody>
                 </table>
                 <p>Configure your authentication settings by adding or modifying properties in the configuration file.</p>
-                <h3 id="Disablin"></a id="kanchor178"></a>Disabling Authentication</h3>
+                <h3 id="Disablin"></a id="kanchor178">Disabling Authentication</h3>
                 <p>If you want to disable authentication for your Splice&#160;Machine database, you can set the authentication property to <span class="CodeFont">NONE</span>.</p>
                 <div class="noteNote">Splice Machine <span class="BoldFont">strongly encourages you to not use</span> an open database for production databases!</div>
                 <p class="noSpaceAbove">You can configure an open database that allows any user to authenticate against the database by setting your authentication properties as follows:
 </p>
                 <div class="preWrapperWide"><pre class="ExampleCell" xml:space="preserve">&lt;property&gt;<br /> &#160;&#160;&lt;name&gt;splice.authentication&lt;/name&gt;<br />&#160;&#160; &lt;value&gt;NONE&lt;/value&gt;<br />&lt;/property&gt;</pre>
                 </div>
-                <h3 id="Using"></a>Using Native Authentication</h3>
+                <h3 id="Using">Using Native Authentication</h3>
                 <p>Native authentication is the default mechanism for Splice&#160;Machine; you don't need to modify your configuration if you wish to use it. Native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
                 <p class="noSpaceAbove">The default native authentication property settings are:</p>
                 <div class="preWrapperWide"><pre class="ExampleCell" xml:space="preserve">&lt;property&gt;<br />&#160;&#160; &lt;name&gt;splice.authentication&lt;/name&gt;<br />&#160;&#160; &lt;value&gt;NATIVE&lt;/value&gt;<br />&lt;/property&gt;
@@ -120,7 +120,7 @@ folder: OnPrem
                 <p>If you are switching your authentication from to <span class="CodeFont">Native</span>&#160;authentication from another mechanism (including <span class="CodeFont">NONE</span>), there's one additional step you need to take:&#160;you must re-initialize the credentials database (<span class="CodeFont">SYSUSERS</span> table), by adding the following property setting to your configuration file:</p>
                 <div class="preWrapperWide"><pre class="Example">&lt;property&gt;<br />&lt;name&gt;splice.authentication.native.create.credentials.database&lt;/name&gt;<br />&lt;value&gt;true&lt;/value&gt;<br />&lt;/property&gt;</pre>
                 </div>
-                <h3 id="Using2"></a>Using LDAP&#160;Authentication</h3>
+                <h3 id="Using2">Using LDAP&#160;Authentication</h3>
                 <p>LDAP&#160;authentication in Splice Machine uses an external LDAP&#160;server. </p>
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: LDAP&#160;authentication is available only with a Splice Machine Enterprise license.</span>
                     </p>

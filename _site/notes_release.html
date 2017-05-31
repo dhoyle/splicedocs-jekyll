@@ -464,12 +464,12 @@
                     </li>
                 </ul>
                 <div>
-	                <h2 id="With"></a>With Clauses and Temporary Tables</h2>
+	                <h2 id="With">With Clauses and Temporary Tables</h2>
     	            <p>You cannot currently use temporary tables in <span class="CodeFont">WITH</span>&#160;clauses.</p>
-                    <h2 id="Spark"></a>Spark Restrictions on Cloudera</h2>
+                    <h2 id="Spark">Spark Restrictions on Cloudera</h2>
                     <p>There is currently a significant restriction with respect to running independent (non-Splice)&#160;Spark jobs on a Cloudera cluster:</p>
                     <div class="noteRestriction"> Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark:&#160;you cannot run independent Spark jobs on it.</div>
-                    <h2 id="Changes"></a>Changes to Bulk Import</h2>
+                    <h2 id="Changes">Changes to Bulk Import</h2>
                     <p class="noSpaceAbove">We've updated our data import technology for improved performance and better error handling. We <span class="BoldFont">strongly advise</span> that you visit the <a href="tutorials_ingest_importing.html">Importing Data</a> topic in this <span class="ItalicFont">Administrator's Guide</span> to review the changes. The same changes are noted in the reference pages for the two bulk import built-in system procedures:</p>
                     <div class="noteChange">
                         <p>The number of parameters and the meaning of certain parameters has changed in these built-in system procedures:</p>
@@ -488,9 +488,9 @@
                         </ul>
                     </div>
                 </div>
-                <h2 id="Natural"></a>Natural Self Joins Not Supported</h2>
+                <h2 id="Natural">Natural Self Joins Not Supported</h2>
                 <p>Splice Machine does not currently support <span class="CodeFont">NATURAL SELF JOIN</span> operations.</p>
-                <h2 id="Temporar"></a>Temporary Tables and Backups</h2>
+                <h2 id="Temporar">Temporary Tables and Backups</h2>
                 <p>There's a subtle issue with performing a backup when you're using a temporary table in your session:&#160;although the temporary table is (correctly)&#160;not backed up, the temporary table's entry in the system tables will be backed up. When the backup is restored, the table entries will be restored, but the temporary table will be missing.</p>
                 <p>There's a simple workaround:</p>
                 <ol>
@@ -498,29 +498,29 @@
                     <li value="2">Start a new session (reconnect to your database).</li>
                     <li value="3">Start your backup job.</li>
                 </ol>
-                <h2 id="Columnar"></a>Columnar screen output gets truncated</h2>
+                <h2 id="Columnar">Columnar screen output gets truncated</h2>
                 <p>When using <span class="CodeFont">Explain Plan</span> and other commands that generate lengthy output lines, you may see some output columns truncated on the screen.</p>
                 <div class="noteWorkaround">Use the <span class="AppCommand">maximumdisplaywidth=0</span>command to force all column contents to be displayed.</div>
-                <h2 id="Timestam"></a>TimeStamp date value limitations</h2>
+                <h2 id="Timestam">TimeStamp date value limitations</h2>
                 <p>Dates in <span class="CodeFont"><a href="sqlref_builtinfcns_timestamp.html">TIMESTAMP Data Type</a></span> values only work correctly when limited to this range of date values:</p>
                 <div class="preWrapper"><pre>1678-01-01 to 2261-12-31</pre>
                 </div>
-                <h2 id="ToDate()"></a><span class="CodeFont">ToDate</span>&#160;function problem with DD&#160;designator</h2>
+                <h2 id="ToDate()"><span class="CodeFont">ToDate</span>&#160;function problem with DD&#160;designator</h2>
                 <p>The <span class="CodeFont"><a href="sqlref_builtinfcns_date.html">TO_DATE</a></span>&#160;function currently returns the wrong date if you specify <span class="CodeFont">DD</span> for the day field; however, specifying <span class="CodeFont">dd</span> instead works properly.</p>
                 <div class="noteWorkaround">Use <span class="CodeFont">dd</span> instead of <span class="CodeFont">DD</span>.</div>
-                <h2 id="Dropping"></a>Dropping Foreign Keys</h2>
+                <h2 id="Dropping">Dropping Foreign Keys</h2>
                 <p>The <span class="CodeFont">DROP&#160;FOREIGN&#160;KEY</span>&#160;clause of the <span class="CodeFont"><a href="sqlref_expressions_table.html">ALTER TABLE</a></span>&#160;statement is currently unavailable in Splice Machine. </p>
                 <div class="noteWorkaround">Re-create the table without the foreign key constraint.</div>
-                <h2 id="Compacti"></a>Compaction Queue Issue</h2>
+                <h2 id="Compacti">Compaction Queue Issue</h2>
                 <p>We have seen a problem in which the compaction queue grows quite large after importing large amounts of data, and are investigating a solution; for now, please use the following workaround.</p>
                 <div class="noteWorkaround">Run a full compaction on tables into which you have imported a large amount of data, using the <span class="CodeFont"><a href="sqlref_sysprocs_compacttable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
                 <div>
-                    <h2 id="AlterTbl"></a>Alter Table Issues</h2>
+                    <h2 id="AlterTbl">Alter Table Issues</h2>
                     <p>Using <span class="CodeFont">ALTER TABLE</span> against <span class="CodeFont">PRIMARY KEY</span> columns does not currently work properly.</p>
                 </div>
-                <h2 id="LeadLag"></a>Default Value for Lead and Lag Functions</h2>
+                <h2 id="LeadLag">Default Value for Lead and Lag Functions</h2>
                 <p>This release of Splice Machine features several new window functions, including <span class="CodeFont"><a href="sqlref_builtinfcns_lag.html">LAG</a></span> do not support the default value parameter that you can specify in some other implementations. We expect to add this parameter in future releases.</p>
-                <h2 id="CREATET"></a>CREATE&#160;TABLE&#160;AS&#160;with RIGHT&#160;OUTER&#160;JOIN</h2>
+                <h2 id="CREATET">CREATE&#160;TABLE&#160;AS&#160;with RIGHT&#160;OUTER&#160;JOIN</h2>
                 <p>There is a known problem using the <span class="CodeFont">CREATE&#160;TABLE&#160;AS</span>&#160;form of the <span class="CodeFont"><a href="sqlref_joinops_rightouterjoin.html">RIGHT OUTER JOIN</a></span> operation. For example, the following statement currently produces a table with all <span class="CodeFont">NULL</span>&#160;values:</p>
                 <div class="preWrapper"><pre class="Example" xml:space="preserve">CREATE&#160;TABLE&#160;t3 AS
    SELECT&#160;t1.a,t1.b,t2.c,t2.d
@@ -537,7 +537,7 @@ INSERT&#160;INTO&#160;t3
    SELECT&#160;t1.a,t1.b,t2.c,t2.d 
    FROM t1 RIGHT&#160;OUTER&#160;JOIN&#160;t2 ON t1.b = t2.c;</pre>
                 </div>
-                <h2 id="TooManyForeignKeyRefs"></a>Import Performance Issues With&#160;Many Foreign Key References</h2>
+                <h2 id="TooManyForeignKeyRefs">Import Performance Issues With&#160;Many Foreign Key References</h2>
                 <p>The presence of many foreign key references on a table will slow down imports
 of data into that table.</p>
             </div>

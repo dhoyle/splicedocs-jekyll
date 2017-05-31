@@ -350,7 +350,7 @@
 
   	<section>
 		<div class="TopicContent">
-            <h1 id="kanchor446"></a>Installing and Configuring Splice Machine for MapR</h1>
+            <h1 id="kanchor446">Installing and Configuring Splice Machine for MapR</h1>
             <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. Our database as a service does not require installation.</div>
             <div>
                 <p>This topic describes installing and configuring Splice Machine on a MapR-managed cluster. Follow these steps:</p>
@@ -382,7 +382,7 @@
                     </ol>
                     <p>To read more about the additional features available in the Enterprise Edition, see our <a href="notes_editions.html">Splice Machine Editions</a> page. To obtain a license for the Splice&#160;Machine <span class="ItalicFont">Enterprise Edition</span>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
                 </div>
-                <h2 id="Verify"></a>Verify Prerequisites</h2>
+                <h2 id="Verify">Verify Prerequisites</h2>
                 <p>Before starting your Splice Machine installation, please make sure that your cluster contains the prerequisite software components:</p>
                 <ul>
                     <li value="1">A cluster running MapR with MapR-FS</li>
@@ -394,7 +394,7 @@
                     <li value="7">Ensure Spark services are <span class="BoldFont">NOT</span>&#160;installed; Splice Machine cannot currently coexist with Spark 1.x on a cluster:<ul class="bullet"><li value="1">If <span class="CodeFont">MEP&#160;version 1.x</span> is in use, you must remove the <span class="CodeFont">Spark 1.x</span> packages from your cluster, as described below, in <a href="#Removing">Removing Spark Packages from Your Cluster.</a></li><li value="2">MEP&#160;version 2.0 bundles Spark 2.0, and will not cause conflicts with Splice&#160;Machine.</li></ul></li>
                 </ul>
                 <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="notes_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
-                <h3 id="Removing"></a>Removing Spark Packages from Your Cluster</h3>
+                <h3 id="Removing">Removing Spark Packages from Your Cluster</h3>
                 <p>To remove Spark packages from your cluster and update your configuration, follow these steps</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
@@ -413,7 +413,7 @@
                         </li>
                     </ol>
                 </div>
-                <h2 id="Install"></a>Download and Install Splice&#160;Machine</h2>
+                <h2 id="Install">Download and Install Splice&#160;Machine</h2>
                 <p>Perform the following steps <span class="important">on each node</span> in your cluster:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
@@ -473,7 +473,7 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                         </li>
                     </ol>
                 </div>
-                <h2 id="Configur"></a>Configure Cluster Services</h2>
+                <h2 id="Configur">Configure Cluster Services</h2>
                 <p>The scripts used in this section all assume that password-less <span class="ShellCommand">ssh </span>and password-less <span class="ShellCommand">sudo </span>are enabled across all cluster nodes. These scripts are designed to be run on the CLDB&#160;node in a cluster with only one CLDB node. If your cluster has multiple CLDB&#160;nodes, do not run these script; you need to change configuration settings manually <span class="important">on each node</span> in the cluster. To do so, refer to the <span class="CodeFont">*.patch</span> files in the <span class="CodeFont">/opt/splice/default/conf</span> directory.</p>
                 <p>If you're running on a cluster with a single CLDB&#160;node, follow these steps:</p>
                 <div class="opsStepsList">
@@ -516,31 +516,31 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                         </li>
                     </ol>
                 </div>
-                <h2 id="Stop"></a>Stop Cluster Services</h2>
+                <h2 id="Stop">Stop Cluster Services</h2>
                 <p>You need to stop all cluster services to continue with installing Splice Machine. Run the following commands as <span class="CodeFont">root</span> user <span class="important">on each node</span> in your cluster</p>
                 <div class="preWrapperWide"><pre class="ShellCommand">sudo service mapr-warden stop<br />sudo service mapr-zookeeper stop</pre>
                 </div>
-                <h2 id="StartCluster"></a>Restart Cluster Services</h2>
+                <h2 id="StartCluster">Restart Cluster Services</h2>
                 <p>Once you've completed the configuration steps described above, start services on your cluster; run the following commands <span class="important">on each node</span> in your cluster:</p>
                 <div class="preWrapper"><pre class="ShellCommand">sudo service mapr-zookeeper start<br />sudo service mapr-warden start</pre>
                 </div>
-                <h2 id="CreateLogDir"></a>Create the Splice Machine Event Log Directory</h2>
+                <h2 id="CreateLogDir">Create the Splice Machine Event Log Directory</h2>
                 <p>Create the Splice&#160;Machine event log directory by executing the following commands on a single cluster node while MapR&#160;is up and running:</p>
                 <div class="preWrapper"><pre class="ShellCommand">sudo -su mapr hadoop fs -mkdir -p /user/splice/history<br />sudo -su mapr hadoop fs -chown -R mapr:mapr /user/splice<br />sudo -su mapr hadoop fs -chmod 1777 /user/splice/history</pre>
                 </div>
-                <h2 id="Optional"></a>Optional Configuration Modifications</h2>
+                <h2 id="Optional">Optional Configuration Modifications</h2>
                 <p>There are a few configuration modifications you might want to make:</p>
                 <ul>
                     <li value="1"><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
                     <li value="2"><a href="#Adjust">Adjust the Replication Factor</a> if you have a small cluster and need to improve resource usage or performance.</li>
                 </ul>
-                <h3 id="Modify"></a>Modify the Authentication Mechanism</h3>
+                <h3 id="Modify">Modify the Authentication Mechanism</h3>
                 <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
                 <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP&#160;by following the simple instructions in <a href="cmdlineref_intro.html" class="WithinBook">Command Line (splice&gt;) Reference</a></p>
-                <h3 id="Adjust"></a>Adjust the Replication Factor</h3>
+                <h3 id="Adjust">Adjust the Replication Factor</h3>
                 <p>The default namespace replication factor for Splice&#160;Machine is <span class="PlatformVariablesMapRDefaultReplication">3</span>. If you're running a small cluster you may want to adjust the replication down to improve resource and performance drag. To do so in MapR, use the following command:</p><pre class="ShellCommand">maprcli volume modify -nsreplication &lt;value&gt;</pre>
                 <p>For more information, see the MapR&#160;documentation site, <a href="http://doc.mapr.com/" target="_blank" title="MapR documentation site" alt="MapR documentation site">doc.mapr.com</a>.</p>
-                <h2 id="Run"></a>Verify your Splice Machine Installation</h2>
+                <h2 id="Run">Verify your Splice Machine Installation</h2>
                 <p>Now start using the Splice Machine command line interpreter, which is referred to as <span class="ItalicFont">the splice prompt</span> or simply <span class="AppCommand">splice&gt;</span> by launching the <span class="CodeFont">sqlshell.sh</span> script on any node in your cluster that is running an HBase region server. </p>
                 <div class="noteNote">The command line interpreter defaults to connecting on port <span class="CodeFont">1527</span> on <span class="CodeFont">localhost</span>, with username <span class="CodeFont">splice</span>, and password <span class="CodeFont">admin</span>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</div>
                 <p>Now try entering a few sample commands you can run to verify that everything is working with your Splice Machine installation.</p>

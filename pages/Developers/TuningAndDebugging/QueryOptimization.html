@@ -10,7 +10,7 @@ folder: Developers/TuningAndDebugging
 ---
 	<section>
 		<div class="TopicContent">
-            <h1 id="kanchor531"></a>Optimizing Splice Machine Queries</h1>
+            <h1 id="kanchor531">Optimizing Splice Machine Queries</h1>
             <p>This topic introduces you to Splice Machine query optimization techniques, including information about executing SQL&#160;expressions without a table context, and using optimization hints.</p>
             <h2>Introduction to Query Optimization</h2>
             <p>Here are a few mechanisms you can use to optimize your Splice Machine queries:</p>
@@ -52,7 +52,7 @@ folder: Developers/TuningAndDebugging
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Using"></a id="kanchor532"></a>Using Select Without a Table</h2>
+            <h2 id="Using"></a id="kanchor532">Using Select Without a Table</h2>
             <p>Sometimes you want to execute SQL scalar expressions without having a table context. For example, you might want to create a query that evaluates an expression and returns a table with a single row and one column. Or you might want to evaluate a list of comma-separated expressions and return a table with a single row and multiple columns — one for each expression. </p>
             <p>In Splice&#160;Machine, you can execute queries without a table by using the  <span class="CodeFont">sysibm.sysdummy1</span> dummy table. Here's the syntax:</p>
             <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">select expression FROM&#160;sysibm.dummy1</pre>
@@ -60,7 +60,7 @@ folder: Developers/TuningAndDebugging
             <p>And here's an example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>select 1+ 1 from sysibm.sysdummy1; </pre>
             </div>
-            <h2 id="kanchor533"></a>Using Splice Machine Query Hints</h2>
+            <h2 id="kanchor533">Using Splice Machine Query Hints</h2>
             <p>You can use <span class="ItalicFont">hints</span> to help the Splice Machine query interface optimize your database queries.</p>
             <div class="noteNote">The Splice Machine optimizer is constantly being improved, and new hint types sometimes get added. One recent addition is the ability to specify that a query should be run on (or not on)&#160;Spark, if possible.<br /></div>
             <h3>Types of Hints</h3>
@@ -155,7 +155,7 @@ WHERE...</span>
 WHERE my_table_1.id = my_table_2.parent_id;<br /></pre>
             </div>
             <div class="noteNote">In the above query, the first command line ends with the first index hint, because hints must always be the last thing on a command line. That's why the comma separating the table specifications appears at the beginning of the next line.</div>
-            <h3 id="Index"></a>Index Hints</h3>
+            <h3 id="Index">Index Hints</h3>
             <p>Use <span class="ItalicFont">index hints</span> to tell the query interface how to use certain indexes for an operation. </p>
             <p>To force the use of a particular index, you can specify the index name; for example:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>SELECT&#160;* FROM&#160;my_table --splice-properties index=my_index<br /><span class="AppCommand">&gt; </span>;</pre>
@@ -183,7 +183,7 @@ WHERE...</pre>
    points p    --SPLICE-PROPERTIES&#160;index=ie_rewards
 WHERE...</pre>
             </div>
-            <h3 id="JoinOrder"></a>JoinOrder Hints</h3>
+            <h3 id="JoinOrder">JoinOrder Hints</h3>
             <p>Use <span class="CodeFont">JoinOrder</span>
 
 hints to tell the query interface in which order to join two tables. You can specify these values for a <span class="CodeFont">JoinOrder</span> hint:</p>
@@ -217,7 +217,7 @@ hints to tell the query interface in which order to join two tables. You can spe
                     </tr>
                 </tbody>
             </table>
-            <h3 id="JoinStrategy"></a>JoinStrategy Hints</h3>
+            <h3 id="JoinStrategy">JoinStrategy Hints</h3>
             <p>You can use a <span class="CodeFont">JoinStrategy</span> hint in conjunction with a <span class="CodeFont">joinOrder</span> hint to tell the query interface how to process a join. For example, this query specifies that the <span class="CodeFont">SORTMERGE</span>&#160;join strategy should be used:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SELECT&#160;* FROM &#160;&#160;&#160;&#160;&#160;--SPLICE-PROPERTIES joinOrder=fixed
  &#160;&#160;mytable1 e, mytable2 t --SPLICE-PROPERTIES&#160;joinStrategy=SORTMERGE
@@ -276,14 +276,14 @@ hints to tell the query interface in which order to join two tables. You can spe
                     </tr>
                 </tbody>
             </table>
-            <h3 id="Pinned"></a>Pinned Table Hint</h3>
+            <h3 id="Pinned">Pinned Table Hint</h3>
             <p class="indentLevel1">You can use the <span class="CodeFont">pin</span> hint to specify to specify that you want a query to run against a pinned version of a table.</p>
             <p class="indentLevel1">
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>PIN&#160;TABLE&#160;myTable;<br /><span class="AppCommand">splice&gt; </span>SELECT&#160;COUNT(*) FROM my_table --splice-properties pin=true<br /><span class="AppCommand">&gt; </span>;</pre>
                 </div>
             </p>
             <p class="indentLevel1">You can read more about pinning tables in the <span class="CodeFont"><a href="sqlref_expressions_table.html">PIN&#160;TABLE</a></span>&#160;statement topic in our <span class="ItalicFont">SQL&#160;Reference Guide</span>.</p>
-            <h3 id="Spark"></a>Spark Hints</h3>
+            <h3 id="Spark">Spark Hints</h3>
             <p class="indentLevel1">You can use the <span class="CodeFont">useSpark</span> hint to specify to the optimizer that you want a query to run on (or not on)&#160;Spark. The Splice Machine query optimizer automatically determines whether to run a query through our Spark engine or our HBase engine, based on the type of query; you can override this by using a hint:</p>
             <div class="noteNote">The Splice&#160;Machine optimizer uses its estimated cost for a query to decide whether to use spark. If your statistics are out of date, the optimizer may end up choosing the wrong engine for the query.</div>
             <p class="indentLevel1">

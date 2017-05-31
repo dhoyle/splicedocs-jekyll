@@ -64,13 +64,13 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
                 <li value="3">A primary key violation:&#160;<span class="CodeFont"><a href="#">SYSCS_UTIL.IMPORT_DATA</a></span> will only work correctly if the table into which you are inserting/updating has primary keys. </li>
             </ul>
 {% include splice_snippets/importgeneratedcolvals.html %}
-            <h2 id="TimestampFormats"></a>About Timestamp Formats</h2>
+            <h2 id="TimestampFormats">About Timestamp Formats</h2>
 {% include splice_snippets/importtimestampformats.html %}
             <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
             <p class="heading2">Usage Notes</p>
             <p>We have seen a problem in which the compaction queue grows quite large after importing large amounts of data, and are investigating a solution; for now, please use the following workaround:</p>
             <div class="noteRelease">Run a full compaction on tables into which you have imported a large amount of data, using the <span class="CodeFont"><a href="sqlref_sysprocs_compacttable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
-            <p class="heading2" id="Examples"></a>Examples</p>
+            <p class="heading2" id="Examples">Examples</p>
             <p>The examples in this section illustrate using different timestamp formats and different string delimiter characters.</p>
             <p class="heading3">Example 1:&#160;Importing our doc examples player data</p>
             <p class="body">This example shows the <span class="CodeFont">IMPORT_DATA</span>&#160;call used to import the Players table into our documentation examples database:</p>

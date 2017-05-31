@@ -180,7 +180,7 @@ VALUES 1 + 1.0;
    -- returns an integer value
 VALUES CAST (1 AS INT) + CAST (1 AS INT);</pre>
             </div>
-            <h3 id="StoringValues" id="StoringValues"></a>Storing Numeric Values</h3>
+            <h3 id="StoringValues">Storing Numeric Values</h3>
             <p>An attempt to put a floating-point type of a larger storage size into a location of a smaller size fails only if the value cannot be stored in the smaller-size location. For example:</p>
             <div class="preWrapperWide"><pre class="Example">
 create table mytable (r REAL, d DOUBLE PRECISION);
@@ -214,7 +214,7 @@ INSERT INTO mytable (int_column) values 2147483648;
 </pre>
             </div>
             <div class="noteNote"> Splice Machine rounds down when truncating trailing digits from a <span class="CodeFont">NUMERIC</span> value.</div>
-            <h3 id="Scale" id="Scale"></a>Scale for Decimal Arithmetic</h3>
+            <h3 id="Scale" id="Scale">Scale for Decimal Arithmetic</h3>
             <p>SQL statements can involve arithmetic expressions that use decimal data types of different <span class="ItalicFont">precisions</span> (the total number of digits, both to the left and to the right of the decimal point) and <span class="ItalicFont">scales</span> (the number of digits of the fractional component).</p>
             <p>The precision and scale of the resulting decimal type depend on the precision and scale of the operands.</p>
             <p>Given an arithmetic expression that involves two decimal operands:</p>

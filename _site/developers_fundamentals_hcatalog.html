@@ -749,7 +749,7 @@
 
   	<section>
 		<div class="TopicContent">
-            <h1 id="kanchor327"></a>Using Splice Machine with HCatalog</h1>
+            <h1 id="kanchor327">Using Splice Machine with HCatalog</h1>
             <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. Our database as a service does not include HCatalog support.</div>
             <p>Apache HCatalog is a metadata and table management system for the broader Hadoop platform. HCatalog’s table abstraction presents users with a relational view of data in the Hadoop distributed file system (HDFS) and ensures that users need not worry about where or in what format their data is stored. HCatalog supports reading and writing files in any format for which a SerDe (serializer-deserializer) can be written.</p>
             <p>Splice Machine integrates with HCatalog, allowing any HiveQL&#160;statements to read from (e.g. <span class="CodeFont">SELECT</span>)&#160;and write to (e.g. <span class="CodeFont">INSERT</span>)&#160;Splice Machine tables. You can also use joins and unions to combine native Hive tables with Splice Machine tables.</p>
@@ -767,13 +767,13 @@
                 <li value="1">The <span class="CodeFont">STORED&#160;BY</span>&#160;clause as shown, which allows the table to connect with Splice Machine.</li>
                 <li value="2">The <span class="CodeFont">TBLPROPERTIES</span>&#160;clause, which specifies:<ul class="SecondLevel"><li value="1"><p>The JDBC&#160;connection you are using. include your access <span class="HighlightedCode">user</span> ID and <span class="HighlightedCode">password</span>.</p><div class="noteNote">If you are running Splice Machine on a cluster, connect from a machine that is NOT&#160;running an HBase RegionServer and specify the IP&#160;address of a <span class="HighlightedCode">regionServer</span> node, e.g. <span class="AppCommand">10.1.1.110</span>. <br /><br />Use <span class="CodeFont">localhost</span> if you're running the standalone version of Splice Machine.</div></li><li value="2">The name of the table in your Splice Machine database with which you are connecting the Hive table. </li></ul></li>
             </ul>
-            <h3 id="How"></a>How Splice Machine Maps Columns</h3>
+            <h3 id="How">How Splice Machine Maps Columns</h3>
             <p>If your Hive table contains a different number of columns than does your Splice Machine database table, Splice Machine maps the columns. </p>
             <p>For example, if your Hive table has three columns defined, and your Splice Machine table has four columns defined, then Splice Machine maps the three Hive columns into the first three columns in the Splice Machine table, as shown here:</p>
             <div>
                 <img src="images/HiveMap.png" class="indentedTightSpacing" alt="Diagram of how Splice Machine maps Hive tables" />
             </div>
-            <h3 id="Using"></a>Using HiveQL&#160;to Join Tables From Different Data Resources </h3>
+            <h3 id="Using">Using HiveQL&#160;to Join Tables From Different Data Resources </h3>
             <p>You can use HiveQL to join tables that point to different data resources. The Java class provided by Splice Machine allows you to include tables from your Splice Machine database in such joins, as illustrated here:        </p>
             <div>
                 <img src="images/HiveJoin.png" class="indentedTightSpacing" alt="Diagram of using HiveQL for joining tables" />
