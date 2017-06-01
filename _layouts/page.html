@@ -50,7 +50,7 @@ layout: default
   {{content}}
 
     <div class="tags">
-        {% if page.tags != null %}
+        {% if page.tags[0] %}
         <b>Tags: </b>
         {% assign projectTags = site.data.tags.allowed-tags %}
         {% for tag in page.tags %}
