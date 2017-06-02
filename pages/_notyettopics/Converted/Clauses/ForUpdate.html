@@ -1,0 +1,39 @@
+﻿---
+title: FOR UPDATE clause
+summary: An optional clause in a SELECT statement that indicates that the cursor should be updatable.. 
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_clauses_forupdate.html
+folder: SQLReference/Clauses
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="Clauses.ForUpdate">FOR UPDATE</h1>
+        <p> The <span class="CodeFont">FOR UPDATE</span> clause is an optional part of a <a href="../Statements/Select.html"><span class="CodeFont">SELECT</span> statement</a>. Cursors are read-only by default. The <span class="CodeFont">FOR UPDATE</span> clause specifies that the cursor should be updatable, and enforces a check during compilation that the <span class="CodeFont">SELECT</span> statement meets the requirements for an updatable <span class="ItalicFont">cursor</span>.</p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">FOR
+  {
+  READ ONLY | FETCH ONLY |
+  UPDATE [ OF <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; [ , <span class="ItalicFont"><a href="sqlref_identifiers_types#SimpleColumnName">Simple-column-Name</a></span>]* ]
+  }</pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">Simple-column-Name</p>
+            <p class="paramDefnFirst">The names visible
+		for the table specified in the FROM clause of the underlying query.</p>
+        </div>
+        <div class="noteNote">The use of the <span class="CodeFont">FOR UPDATE</span> clause is not mandatory to obtain an updatable 
+						JDBC <span class="ItalicFont">ResultSet</span>. If the statement used to generate the ResultSet meets the requirements for updatable cursors, then the JDBC&#160;statement needs to have  concurrency mode 
+					<samp>ResultSet.CONCUR_UPDATABLE</samp> for the ResultSet to be updatable.</div>
+        <p>The optimizer is able to use an index even if the column in the index is being updated.</p>
+        <p class="heading2">Example</p>
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT RECEIVED, SOURCE, SUBJECT, NOTE_TEXT
+  FROM SAMP.IN_TRAY
+  FOR UPDATE
+</pre>
+        </div>
+    </div>
+</section>

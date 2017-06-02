@@ -1,0 +1,32 @@
+﻿---
+title: SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS built-in system procedure
+summary: Built-in system procedure that updates the execution plan for stored procedures in a database.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_updatemetastoredstmts.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="BuiltInSysProcs.UpdateMetadataStoredStatements">SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS</h1>
+        <p>The <samp>SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS</samp> system procedure updates the execution plan for stored procedures in a database.</p>
+        <p class="heading2">About System Procedures and Metadata</p>
+        <p>Splice Machine uses prepared statements known as system procedures to access data in the system tables. These procedures are cached, along with their execution plans, in the data dictionary. The cached execution plans can become sub-optimal after you issue a large number of schema-modifying DLL&#160;statements, such as defining and/or modifying a number of tables.
+						</p>
+        <p>If you have called the <a href="sqlref_sysprocs_invalidatestoredstmts.html">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</a> system procedure to improve query speed, and performance is still sub-optimal, it is probably because the query optimizer needs some manual hints to generate an optimal execution plan.</p>
+        <p>The manual hints are  stored in the metadata.properties file, which is external to the database. Versions of this file are typically supplied by Splice Machine consultants or engineers.</p>
+        <p>Use this function to update the execution plans stored in the data dictionary.</p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS()</pre>
+        </div>
+        <p class="heading2">Results</p>
+        <p>This procedure does not return a result.</p>
+        <p class="heading2">Example</p>
+        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; call SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS();
+
+Statement executed.			</pre>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,103 @@
+﻿---
+title: SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS built-in system procedure
+summary: Built-in system procedure that displays summary information about the transactions that are in the transaction table.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_dumptransactions.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="BuiltInSysProcs.DumpTransactions">SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</h1>
+        <p>The <samp>SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</samp> system procedure displays summary information about the transactions that are in the transaction table. </p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS()</pre>
+        </div>
+        <p class="heading2">Results</p>
+        <p>The displayed results from calling <span class="CodeFont">SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</span> include these values:</p>
+        <table summary="Columns in Dump_Transactions results display">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CodeFont">txnId</td>
+                    <td>The transaction ID.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">parentTxnId</td>
+                    <td>The ID&#160;of this transaction's parent. This is NULL&#160;if this is a top-level transaction.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">modifiedConglomerate</td>
+                    <td>A comma-separated list of tables that this transaction has written to.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">status</td>
+                    <td>The current status of the transaction</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">isolationLevel</td>
+                    <td>The isolation level used by the transaction.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">beginTimestamp</td>
+                    <td>
+                        <p class="noSpaceAbove">The timestamp at which the transaction started.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">commitTimestamp</td>
+                    <td>
+                        <p class="noSpaceAbove">The timestamp at which this transaction was committed.</p>
+                        <p>This value is <span class="CodeFont">NULL</span>&#160;if the transaction is not committed.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">effectiveCommitTime</td>
+                    <td>
+                        <p class="noSpaceAbove">The timestamp at which this transaction should be considered committed. If this transaction is dependent, then this is the commit timestamp of its parent.</p>
+                        <p>This value is <span class="CodeFont">NULL</span>&#160;if the parent transaction has not yet committed.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">
+                        <p>isAd</p>
+                    </td>
+                    <td>
+                        <p class="noSpaceAbove">If <span class="CodeFont">true</span>, this transaction is considered committed, even if its parent transaction is still active.</p>
+                        <p>If <span class="CodeFont">false</span>, this transaction is not considered committed until its parent transaction is committed.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">lastKeepAlive</td>
+                    <td>The timestamp for when this transaction last performed an activity</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="heading2">Example</p>
+        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS();
+txnId |parentTxnId |modifiedConglomerate |status      |isolationLevel      |beginTimestamp |commitTimestamp |effectiveCommitTime&amp;|isAd&amp;|lastKeepAlive
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+1     |NULL        |boot                 |COMMITTED   |SNAPSHOT ISOLATION  |1              |2               |2                   |false|2014-11-23 15:21:15.55
+3     |NULL        |boot                 |COMMITTED   |SNAPSHOT ISOLATION  |3              |4               |4                   |false|2014-11-23 15:21:15.655
+5     |NULL        |boot                 |COMMITTED   |SNAPSHOT ISOLATION  |5              |22              |22                  |false|2014-11-23 15:21:39.761
+25    |NULL        |dictionary           |COMMITTED   |SNAPSHOT ISOLATION  |25             |26              |26                  |false|2014-11-23 15:21:43.853
+8206  |NULL        |dictionary           |COMMITTED   |SNAPSHOT ISOLATION  |8206           |8209            |8209                |false|2014-12-04 10:04:14.768
+
+5 rows selected</pre>
+        </div>
+        <p class="heading2">See Also</p>
+        <ul>
+            <li><a href="sqlref_sysprocs_getcurrenttransaction.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION</span></a>
+            </li>
+        </ul>
+    </div>
+</section>

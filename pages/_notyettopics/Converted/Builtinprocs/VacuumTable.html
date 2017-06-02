@@ -1,0 +1,75 @@
+﻿---
+title: SYSCS_UTIL.VACUUM_TABLE built-in system procedure
+summary: Built-in system procedure that cleans up unneeded historical data from a table.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_vacuumtable.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+	<div class="TopicContent">
+        <h1>SYSCS_UTIL.VACUUM_TABLE</h1>
+        <p>The <span class="CodeFont">SYSCS_UTIL.VACUUM_TABLE</span>&#160;system procedure improves the performance of your database by cleaning no longer needed historical update data from a table.</p>
+        <div class="noteIcon">Splice Machine recommends calling this system procedure regularly (or frequently)&#160;on tables in your database that are frequently updated with modifications or deletions. Insertions by themselves do not generate the kind of data that needs to be vacuumed from a table; however, if a row is frequently inserted, then deleted, then inserted again, and that row has a primary key or indexed fields, vacuuming will be required.<br /><br />Many customers use a scheduling utility such as <span class="ItalicFont">Cron</span> to call this procedure.<br /></div>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.VACUUM_TABLE(
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;schemaName,
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;table);</pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">schemaName</p>
+            <p class="paramDefnFirst">Specifies the schema of the
+			table. Passing a <span class="CodeFont">null</span> or non-existent schema name generates an error.</p>
+            <p class="paramName">tableName</p>
+            <p class="paramDefnFirst">Specifies the table name of
+				the table. The string must exactly match the case of the table name, and the
+				argument of <span class="CodeFont">"Fred"</span> will be passed to SQL as the delimited identifier <span class="CodeFont">'Fred'</span>.
+			Passing a <span class="CodeFont">null</span> or non-existent table name generates an error.</p>
+        </div>
+        <p class="heading2">Results</p>
+        <p>This procedure returns a table with the following columns:</p>
+        <table summary="Columns in the table returned by Vacuum_Table">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CodeFont">CONGLOMERATEID</td>
+                    <td>The number of the conglomerate that was vacuumed.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">NUMPARTITIONS</td>
+                    <td>The number of partitions (regions)&#160;that were vacuumed.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">TIMETAKEN_S</td>
+                    <td>The total time used to vacuum this conglomerate.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">ROWS_READ</td>
+                    <td>The total number of rows read during the vacuum.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">ROWS_VACUUMED</td>
+                    <td>The total number of rows that were vacuumed.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">ROWS_DELETED</td>
+                    <td>The number of vestigal rows that were deleted during the vacuuming.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="heading2">SQL Examples</p>
+        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
+splice&gt;&#160;CALL SYSCS_UTIL.VACUUM_TABLE('MySchema', 'MyTable');
+Statement executed.</pre>
+        </div>
+    </div>
+</section>

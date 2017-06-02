@@ -1,0 +1,38 @@
+﻿---
+title: VARCHAR FOR BIT DATA data type
+summary: The VARCHAR FOR BIT DATA allows you to store binary strings less than or equal to a specified length.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_datatypes_varcharbitdata.html
+folder: SQLReference/DataTypes
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="DataTypes.VarCharBitData">VARCHAR FOR BIT DATA</h1>
+        <p>The <span class="CodeFont">VARCHAR FOR BIT DATA</span> data type allows you to store binary strings
+less than or equal to a specified length. It is useful for unstructured data
+where character strings are not appropriate (e.g., images). </p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{ | CHAR VARYING | CHARACTER VARYING } (<span class="ItalicFont">length</span>) FOR BIT DATA </pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">length</p>
+            <p class="paramDefnFirst">An unsigned integer literal designating the length in bytes. There is no default <span class="ItalicFont">length</span> for this type. The maximum size of the <span class="ItalicFont">length</span> value is 32,670 bytes.</p>
+        </div>
+        <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax">VARBINARY</pre>
+        </div>
+        <p class="heading2">Example</p>
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">VARCHAR (2048) FOR&#160;BIT&#160;DATA;</pre>
+        </div>
+        <p class="heading2">Usage</p>
+        <p>Here are several usage notes for the <span class="CodeFont">VARCHAR&#160;FOR&#160;BIT&#160;DATA</span>&#160;type:</p>
+        <ul>
+            <li><span class="CodeFont">VARCHAR FOR BIT DATA</span> stores variable-length byte strings; values are not padded out to the target length.</li>
+            <li MadCap:conditions="Default.NotYet">An operation on a <span class="CodeFont">VARCHAR FOR BIT DATA</span> and a <span class="CodeFont">CHAR FOR BIT DATA</span> value (e.g., a concatenation) yields a <span class="CodeFont">VARCHAR FOR BIT DATA</span> value.</li>
+            <li>The type of a byte literal is always a <span class="CodeFont">VARCHAR FOR BIT DATA</span>, not a <span class="CodeFont">CHAR FOR BIT DATA</span>.</li>
+        </ul>
+    </div>
+</section>

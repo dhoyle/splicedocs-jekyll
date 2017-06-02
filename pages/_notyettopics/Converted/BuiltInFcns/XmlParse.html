@@ -1,0 +1,57 @@
+﻿---
+title: XMLPARSE built-in SQL function
+summary: Built-in SQL function that you use to parse a character string expression into a Splice Machine XML value.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_builtinfcns_xmlparse.html
+folder: SQLReference/BuiltInFcns
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="BuiltInFcns.XmlParse">XMLPARSE</h1>
+        <p><span class="CodeFont">XMLPARSE</span> is a SQL/XML operator that you use to parse a character string expression into a Splice Machine XML value.</p>
+        <p>You can use the result of this operator temporarily or you can store the result permanently in Splice Machine XML columns. Whether temporary or permanent, you can use the XML value as an input to the other Splice Machine XML operators, such as <a href="sqlref_builtinfcns_xmlexists.html">XMLEXISTS</a> and <a href="sqlref_builtinfcns_xmlquery.html">XMLQUERY</a>.</p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">XMLPARSE (DOCUMENT <var>string-value-expression</var>
+          PRESERVE WHITESPACE)</pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">DOCUMENT </p>
+            <p class="paramDefnFirst">Required keyword that describes the type of XML input that Splice Machine can parse. Splice Machine can only parse string expressions that constitute well-formed XML documents. This is because Splice Machine uses a JAXP parser to parse all string values. The JAXP parser expects the string-value-expression to constitute a well-formed XML document. If the string does not constitute a well-formed document, JAXP throws an error. Splice Machine catches the error and throws the error as a SQLException.</p>
+            <p class="paramName"><samp>string-value-expression</samp>
+            </p>
+            <p class="paramDefnFirst">Any expression that evaluates to a SQL character type, such as <span class="CodeFont">CHAR</span>, <span class="CodeFont">VARCHAR</span>, <span class="CodeFont">LONG VARCHAR</span>, or <span class="CodeFont">CLOB</span>. The <samp>string-value-expression</samp> argument can also be a parameter. You must use the CAST function when you specify the parameter to indicate the type of value that is bound into the parameter. Splice Machine must verify that the parameter is the correct data type before the value is parsed as an XML document.  If a parameter is specified without the <span class="CodeFont">CAST</span> function, or if the <span class="CodeFont">CAST</span> is to a non-character datatype, Splice Machine throws an error.</p>
+            <p class="paramName">PRESERVE WHITESPACE</p>
+            <p class="paramDefnFirst">Required keywords that describe how Splice Machine handles whitespace between consecutive XML nodes. When the <span class="CodeFont">PRESERVE WHITESPACE</span> keywords are used, Splice Machine preserves whitespace as dictated by the SQL/XML rules for preserving whitespace.</p>
+        </div>
+        <p>For more information on what constitutes a well-formed XML document, see the following specification: <a href="http://www.w3.org/TR/REC-xml#sec-well-formed" target="_blank">http://www.w3.org/TR/REC-xml/#sec-well-formed </a>.</p>
+        <div class="noteNote">Restriction: The SQL/XML standard dictates that the argument to the <span class="CodeFont">XMLPARSE</span> operator can also be a binary string. However, Splice Machine only supports character string input for the <span class="CodeFont">XMLPARSE</span> operator.</div>
+        <p class="heading2">Examples</p>
+        <p>To insert a simple XML document into the <samp>xcol</samp> XML column in the <samp>x_table</samp> table, use the following statement:</p>
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">INSERT INTO <var>x_table</var> VALUES  
+ (<var>1</var>,   
+   XMLPARSE(DOCUMENT '
+   &lt;roster&gt;
+   &lt;student age="18"&gt;AB&lt;/student&gt;
+   &lt;student age="23"&gt;BC&lt;/student&gt;
+   &lt;student&gt;NOAGE&lt;/student&gt;
+   &lt;/roster&gt;'
+   PRESERVE WHITESPACE)
+ );
+</pre>
+        </div>
+        <p>To insert a large XML document into the <samp>xcol</samp> XML column in the <samp>x_table</samp> table, from JDBC use the following statement:</p>
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">INSERT INTO <var>x_table</var> 
+  VALUES (<var>2</var>, 
+           XMLPARSE (DOCUMENT CAST (? AS CLOB)
+             PRESERVE WHITESPACE)
+         );
+</pre>
+        </div>
+        <p>You should bind into the statement using the <span class="CodeFont">setCharacterStream()</span> method, or any other JDBC setXXX method that works for the CAST target type.</p>
+        <p class="heading2">Usage note</p>
+        <p>Splice Machine requires that a JAXP parser (such as Apache Xerces) and Apache Xalan are listed in the Java classpath for the XML functions to work. If either the JAXP parser or Xalan is missing from the classpath, attempts to use the <span class="CodeFont">XMLPARSE</span> operator will result in an error. In some situations, you may need to take steps to place the parser and Xalan in your classpath.</p>
+    </div>
+</section>

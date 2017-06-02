@@ -1,0 +1,37 @@
+﻿---
+title: SYSCS_UTIL.SYSCS_KILL_TRANSACTION built-in system procedure
+summary: Built-in system procedure that kills an active transaction.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_killtransaction.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="BuiltInSysProcs.KillTransaction">SYSCS_UTIL.SYSCS_KILL_TRANSACTION</h1>
+        <p>The <samp>SYSCS_UTIL.SYSCS_KILL_TRANSACTION</samp> system procedure kills an active transaction. You can use this to kill stale transaction or to kill long-running queries.</p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_KILL_TRANSACTION(<span class="ItalicFont">id</span>)</pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">id</p>
+            <p class="paramDefnFirst">A long integer that specifies the transaction ID.</p>
+        </div>
+        <p class="heading2">Results</p>
+        <p>This procedure does not return a result.</p>
+        <p class="heading2">Example</p>
+        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; create index aidx on a(i);
+ERROR&#160;SE001:&#160;Splice Engine exception: unexpected exception
+ERROR&#160;XJ001:&#160;Java exceptions;&#160;'There are active transactions [51, 52]:
+&#160;  java.lang.RuntimeException'.
+
+splice&gt;&#160;call SYSCS_UTIL.SYSCS_KILL_TRANSACTION(51);
+Statement executed.
+
+splice&gt;&#160;call SYSCS_UTIL_SYSCS_KILL_TRANSACTION(52);
+Statement executed.</pre>
+        </div>
+    </div>
+</section>

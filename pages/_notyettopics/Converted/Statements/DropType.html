@@ -1,0 +1,39 @@
+﻿---
+title: DROP TYPE statement
+summary: Drops a user-defined type from a database.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_statements_droptype.html
+folder: SQLReference/Statements
+---
+<section>
+	<div class="TopicContent">
+	<h1 id="Statements.DropType">>DROP TYPE</h1>
+        <p>The <span class="CodeFont">DROP TYPE</span> statement removes a user-defined type (UDT) that was created using a <a href="CreateType.html"><span class="CodeFont">CREATE TYPE</span> statement</a>.</p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax">DROP TYPE [ <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="sqlref_identifiers_intro.html>SQL Identifier</a></span> RESTRICT</pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">[schemaName] SQLIdentifier</p>
+            <p class="paramDefnFirst">The type name consists of an optional <span class="ItalicFont">schemaName</span> and a <span class="ItalicFont">SQL Identifier</span>. If a <span class="ItalicFont">schemaName</span> is not provided, the current schema is the default schema. If a qualified type name is specified, the schema name cannot begin with <span class="CodeFont">SYS</span>.</p>
+            <p class="paramName">RESTRICT</p>
+            <p class="paramDefnFirst">This is <span class="BoldFont">required</span>.</p>
+        </div>
+        <p class="heading2">Usage Notes</p>
+        <p>Notes about dropping a type (a UDT):</p>
+        <ul>
+            <li>Dropping a UDT implicitly drops all <span class="CodeFont">USAGE</span> privileges that reference it.</li>
+            <li> <span class="CodeFont">CASCADE</span> semantics are not supported, which means that Splice Machine does not track down and drop orphaned objects.</li>
+            <li>You cannot drop a type if it would make another SQL object unusable. This includes the following restrictions:
+                <ul class="SecondLevel"><li>Table columns: No table columns have this UDT.</li><li>Views: No view definition involves expressions which have this UDT.</li><li>Constraints: No constraints reference expressions of this UDT.</li><li>Generated columns: No generated columns reference expressions of this
+			UDT.</li><li>Routines: No functions or procedures have arguments or return values of this
+			UDT.</li><li>Table Functions: No table functions return tables with columns of this
+			UDT.</li></ul></li>
+        </ul>
+        <p class="heading2">Example</p>
+        <div class="preWrapper"><pre class="Example">DROP TYPE price RESTRICT;</pre>
+        </div>
+	</div>
+</section>

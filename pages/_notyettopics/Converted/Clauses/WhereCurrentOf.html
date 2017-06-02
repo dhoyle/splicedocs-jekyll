@@ -1,0 +1,41 @@
+﻿---
+title: WHERE CURRENT OF clause
+summary: A clause you use in UPDATE and DELETE statements to perform positioned updates and deletes on updatable cursors. 
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_clauses_wherecurrentof.html
+folder: SQLReference/Clauses
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="Clauses.WhereCurrentOf">WHERE CURRENT OF</h1>
+        <p>The <span class="CodeFont">WHERE CURRENT OF</span> clause is a clause used in some <span class="CodeFont"><a href="sqlref_statements_updatetable.html">UPDATE</a></span> and <span class="CodeFont"><a href="sqlref_statements_delete.html">DELETE</a></span>
+			statements.</p>
+        <p>It allows you to perform positioned updates and deletes on updatable
+		cursors. For more information about updatable cursors, see the <span class="CodeFont"><a href="sqlref_statements_select.html">SELECT</a></span> statement documentation.</p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax">WHERE CURRENT OF <span class="ItalicFont"><a href="sqlref_identifiers_types.html#CursorName">cursor-Name</a></span></pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">cursor-Name</p>
+            <p class="paramDefnFirst">The name of the updatable cursor.</p>
+            <p class="paramName">NULLS FIRST</p>
+            <p class="paramDefnFirst">Specifies that NULL values should be returned before non-NULL values.</p>
+            <p class="paramName">NULLS LAST</p>
+            <p class="paramDefnFirst">Specifies that NULL values should be returned after non-NULL values.</p>
+        </div>
+        <p class="heading2">Example</p>
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">Statement s = conn.createStatement();
+  s.setCursorName("AirlinesResults");
+  ResultSet rs = conn.executeQuery(
+      "SELECT Airline, basic_rate " +
+      "FROM Airlines FOR UPDATE OF basic_rate");
+Statement s2 = conn.createStatement();
+  s2.executeUpdate(
+      "UPDATE Airlines SET basic_rate = basic_rate " + "+ .25"
+       WHERE CURRENT OF AirlinesResults");</pre>
+        </div>
+    </div>
+</section>

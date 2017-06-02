@@ -1,0 +1,68 @@
+﻿---
+title: SYSCOLUMNSTATS system table
+summary: System table that describes the statistics gathered for a specific column in the database.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_syscolumnstats.html
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+        <h1 id="syscolumnstats">SYSCOLUMNSTATS System Table </h1>
+        <p>The <span class="CodeFont">SYSCOLUMNSTATS</span> table contains data collected for a specific column in a specific partition on a specific conglomerate (ID&#160;used internally).</p>
+        <p>The following table shows the contents of the <span class="CodeFont">SYSCOLUMNSTATS</span> system table.</p>
+        <table>
+            <caption>SYSCOLUMNSTATS system table</caption>
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Column Name</th>
+                    <th>Type</th>
+                    <th>Length</th>
+                    <th>Nullable</th>
+                    <th>Contents</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CodeFont">CONGLOM_ID</td>
+                    <td class="CodeFont">BIGINT</td>
+                    <td class="CodeFont">19</td>
+                    <td class="CodeFont">NO</td>
+                    <td>The conglomerate ID.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">PARTITION_ID</td>
+                    <td class="CodeFont">VARCHAR</td>
+                    <td class="CodeFont">32672</td>
+                    <td class="CodeFont">NO</td>
+                    <td>
+                        <p>The partition ID.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">COLUMN_ID</td>
+                    <td class="CodeFont">INTEGER</td>
+                    <td class="CodeFont">10</td>
+                    <td class="CodeFont">NO</td>
+                    <td>
+                        <p>The column ID.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">DATA</td>
+                    <td class="CodeFont">CHAR</td>
+                    <td class="CodeFont">-1</td>
+                    <td class="CodeFont">NO</td>
+                    <td>An object that contains the statistics objects.</td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+	</section>

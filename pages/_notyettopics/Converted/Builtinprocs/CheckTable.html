@@ -1,0 +1,45 @@
+﻿---
+title: SYSCS_UTIL.SYSCS_CHECK_TABLE built-in system procedure
+summary: Built-in system procedure that Built-in system function that ensures that all of a table's indexes are consistent with the base table, and throws an exception if the table and indexes are not consistent.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_checktable.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="BuiltInSysFcns.CheckTable">SYSCS_CHECK_TABLE</h1>
+        <p>The <samp>SYSCS_UTIL.SYSCS_CHECK_TABLE</samp> function ensures that all of a table's indexes are consistent with the base table, and throws an exception if the table and indexes are not consistent.</p>
+        <p>A common use for this function is to run it on offline database tables following a backup operation; we recommend not discarding the previous backup until you have verified the consistency of the current version. </p>
+        <div class="noteNote">A consistency check can take a long time on a large database.</div>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SMALLINT SYSCS_UTIL.SYSCS_CHECK_TABLE(
+  IN <span class="ItalicFont">SchemaName</span> VARCHAR(128),
+  IN <span class="ItalicFont">TableName</span> VARCHAR(128)
+  ) </pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">SchemaName</p>
+            <p class="paramDefnFirst">The name of the table's schema.</p>
+            <p class="paramName">TableName</p>
+            <p class="paramDefnFirst">The name of the table to check.</p>
+        </div>
+        <p class="heading2">Results</p>
+        <p>An error occurs if either <span class="ItalicFont">SchemaName</span>or <span class="ItalicFont">TableName</span> is null.</p>
+        <p>Returns a <span class="CodeFont">1</span> if the table and indexes are consistent; if they are not consistent, this function throws an exception.</p>
+        <p class="heading2">Execute Privileges</p>
+        <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
+        <p class="heading2">Examples</p>
+        <p>Check a single table:</p>
+        <div class="preWrapper"><pre class="Example">VALUES SYSCS_UTIL.SYSCS_CHECK_TABLE('SALES', 'ORDERS');</pre>
+        </div>
+        <p>Check all tables:</p>
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT schemaname, tablename, 
+  SYSCS_UTIL.SYSCS_CHECK_TABLE(schemaname, tablename)  
+  FROM sys.sysschemas s, sys.systables t 
+  WHERE s.schemaid = t.schemaid;</pre>
+        </div>
+    </div>
+</section>

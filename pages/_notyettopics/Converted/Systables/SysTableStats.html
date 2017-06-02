@@ -1,0 +1,95 @@
+﻿---
+title: SYSTABLESTATS system table
+summary: System table that contains statistics gathered for a specific table in the database. 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_systablestats.html
+folder: SQLReference/SystemTables
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="systablestats">SYSTABLESTATS System Table </h1>
+        <p>The <span class="CodeFont">SYSTABLESTATS</span> table contains data collected for a specific table in a specific partition on a specific conglomerate (ID&#160;used internally).</p>
+        <p>The following table shows the contents of the <span class="CodeFont">SYSTABLESTATS</span> system table.</p>
+        <table>
+            <caption>SYSTABLESTATS system table</caption>
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Column Name</th>
+                    <th>Type</th>
+                    <th>Length</th>
+                    <th>Nullable</th>
+                    <th>Contents</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CodeFont">CONGLOMERATEID</td>
+                    <td class="CodeFont">BIGINT</td>
+                    <td class="CodeFont">19</td>
+                    <td class="CodeFont">NO</td>
+                    <td>The conglomerate ID.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">PARTITION_ID</td>
+                    <td class="CodeFont">VARCHAR</td>
+                    <td class="CodeFont">32672</td>
+                    <td class="CodeFont">NO</td>
+                    <td>
+                        <p>The partition ID.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">LAST_UPDATED</td>
+                    <td class="CodeFont">TIMESTAMP</td>
+                    <td class="CodeFont">29</td>
+                    <td class="CodeFont">NO</td>
+                    <td>
+                        <p>Timestamp of when this was last updated.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">IS_STALE</td>
+                    <td class="CodeFont">BOOLEAN</td>
+                    <td class="CodeFont">1</td>
+                    <td class="CodeFont">NO</td>
+                    <td>Whether this data is stale.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">IN_PROGRESS</td>
+                    <td class="CodeFont">BOOLEAN</td>
+                    <td class="CodeFont">1</td>
+                    <td class="CodeFont">NO</td>
+                    <td>Whether statistics are currently being gathered for this table.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">ROWCOUNT</td>
+                    <td class="CodeFont">BIGINT</td>
+                    <td class="CodeFont">19</td>
+                    <td class="CodeFont">YES</td>
+                    <td>The number of rows in the table.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">PARTITION_SIZE</td>
+                    <td class="CodeFont">BIGINT</td>
+                    <td class="CodeFont">19</td>
+                    <td class="CodeFont">YES</td>
+                    <td>The size of the partition.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">MEANROWWIDTH</td>
+                    <td class="CodeFont">INTEGER</td>
+                    <td class="CodeFont">10</td>
+                    <td class="CodeFont">YES</td>
+                    <td>The mean width of a row in the table.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

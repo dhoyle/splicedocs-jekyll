@@ -1,0 +1,67 @@
+﻿---
+title: SYSPHYSICALSTATS system table
+summary: System table that describes physical characteristics of each node in the cluster. 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_sysphysstats.html
+folder: SQLReference/SystemTables
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="sysphysstats">SYSPHYSICALSTATS System Table </h1>
+        <p>The <span class="CodeFont">SYSPHYSICALSTATS</span> table describes the physical nodes in the cluster.</p>
+        <p>The following table shows the contents of the <span class="CodeFont">SYSPHYSICALSTATS</span> system table.</p>
+        <table>
+            <caption>SYSPHYSICALSTATS system table</caption>
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Column Name</th>
+                    <th>Type</th>
+                    <th>Length</th>
+                    <th>Nullable</th>
+                    <th>Contents</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CodeFont">HOSTNAME</td>
+                    <td class="CodeFont">VARCHAR</td>
+                    <td class="CodeFont">32682</td>
+                    <td class="CodeFont">NO</td>
+                    <td>The hostname of the machine.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">NUM_CPUS</td>
+                    <td class="CodeFont">INTEGER</td>
+                    <td class="CodeFont">10</td>
+                    <td class="CodeFont">YES</td>
+                    <td>
+                        <p>The number of CPUs in the machine.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">MAX_HEAP</td>
+                    <td class="CodeFont">BIGINT</td>
+                    <td class="CodeFont">19</td>
+                    <td class="CodeFont">YES</td>
+                    <td>
+                        <p>The maximum heap size for the machine.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">NETWORK_CONNS</td>
+                    <td class="CodeFont">INTEGER</td>
+                    <td class="CodeFont">10</td>
+                    <td class="CodeFont">YES</td>
+                    <td>The number of network connections on the machine.</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</section>

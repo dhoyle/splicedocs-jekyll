@@ -1,0 +1,28 @@
+﻿---
+title: SYSCS_UTIL.SYSCS_GET_XPLAIN_SCHEMA built-in system procedure
+summary: Built-in system procedure that returns the xplain schema for the connection.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getxplainschema.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="BuiltInSysFcns.GetXplainSchema">SYSCS_GET_XPLAIN_SCHEMA</h1>
+        <p>The <samp>SYSCS_UTIL.SYSCS_GET_XPLAIN_SCHEMA</samp> function returns the xplain schema for the connection.</p>
+        <p>The default xplain schema is empty, so if the xplain style hasn't been set, this function returns the  empty string. If the xplain schema has been set using  <samp>SYSCS_UTIL.SYSCS_SET_XPLAIN_SCHEMA</samp>, this function returns the xplain schema that was set. If xplain schema is set to a non-empty value, and runtime statistics are being captured, then the runtime statistics will be stored into the <span class="ItalicFont">SYSXPLAIN_*</span> database tables in that schema for later analysis.</p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_XPLAIN_SCHEMA ()
+   RETURNS VARCHAR</pre>
+        </div>
+        <p class="heading2">Execute Privileges</p>
+        <p>If authentication and SQL authorization are both enabled, only the database owner has execute  privileges on this function by default. The database owner can grant access to other users.</p>
+        <p class="heading2">Example</p>
+        <p>To determine the current value of the XPLAIN schema:</p>
+        <div class="preWrapper"><pre class="Example">
+values syscs_util.syscs_get_xplain_schema();</pre>
+        </div>
+    </div>
+</section>

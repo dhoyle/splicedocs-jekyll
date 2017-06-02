@@ -1,0 +1,37 @@
+﻿---
+title: SYSCS_UTIL.SYSCS_KILL_STALE_TRANSACTIONS built-in system procedure
+summary: Built-in system procedure that kills all active transactions up to the specified killable maximum transaction ID.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_killstaletransactions.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+	<div class="TopicContent">
+        <h1 id="BuiltInSysProcs.KillStaleTransactions">SYSCS_UTIL.SYSCS_KILL_STALE_TRANSACTIONS</h1>
+        <p>The <samp>SYSCS_UTIL.SYSCS_KILL_STALE_TRANSACTIONS</samp> system procedure kills all active transactions up to the specified killable maximum transaction ID.</p>
+        <p>This is used to kill stale transactions, usually to allow DDL&#160;operations to execute.</p>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_KILL_STALE_TRANSACTIONS(<span class="ItalicFont">maxTransactionId</span>)</pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">maxTransactionId</p>
+            <p class="paramDefnFirst">A long integer that specifies the transaction ID of the maximum transaction ID&#160;that can be killed.</p>
+        </div>
+        <p class="heading2">Results</p>
+        <p>This procedure does not return a result.</p>
+        <p class="heading2">Example</p>
+        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; create index aidx on a(i);
+ERROR&#160;SE001:&#160;Splice Engine exception: unexpected exception
+ERROR&#160;XJ001:&#160;Java exceptions;&#160;'There are active transactions [51, 52]:
+&#160;  java.lang.RuntimeException'.
+
+splice&gt;&#160;call SYSCS_UTIL.SYSCS_KILL_STALE_TRANSACTIONS(52);
+
+
+Statement executed.</pre>
+        </div>
+    </div>
+</section>

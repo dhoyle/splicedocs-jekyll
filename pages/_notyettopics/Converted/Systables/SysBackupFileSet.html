@@ -1,0 +1,51 @@
+﻿---
+title: SYSBACKUPFILESET system table
+summary: System table that stores file information for each table that is part of a backup job.
+keywords: 
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_sysbackupfileset.html
+folder: SQLReference/SystemTables
+---
+	<section>
+		<div class="TopicContent">
+        <h1 id="sysbackupfileset">SYSBACKUPFILESET System Table</h1>
+        <p>The <span class="CodeFont">SYSBACKUPFILESET</span>&#160;table maintains information about the files involved in each backup job. </p>
+        <table>
+            <caption>SYSBACKUPFILESET system table</caption>
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Column Name</th>
+                    <th>Type</th>
+                    <th>Contents</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CodeFont">BACKUP_ITEM</td>
+                    <td class="CodeFont">VARCHAR</td>
+                    <td>The conglomerate number of the table.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">REGION_NAME</td>
+                    <td class="CodeFont">VARCHAR</td>
+                    <td>The name of a table region.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">FILE_NAME</td>
+                    <td class="CodeFont">VARCHAR</td>
+                    <td>The name of the file in which data is stored.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">INCLUDE</td>
+                    <td class="CodeFont">BOOLEAN</td>
+                    <td>Whether of not this file will be included in the next incremental backup.</td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+	</section>
