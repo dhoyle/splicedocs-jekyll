@@ -22,3 +22,46 @@ a:active
 	color: $link-hover-color;
 	text-decoration: underline;
 }
+
+
+    /*** From CustomStyles ***/
+    
+footer {
+    font-size: smaller;
+}
+
+
+.footer {
+    text-align: right;
+    height: auto;
+}
+
+.footerMeta {
+    background-color: whitesmoke;
+    padding: 10px;
+    max-width: 250px;
+    border-radius: 5px;
+    margin-top: 25px;
+    font-style:italic;
+    font-size:0.9em;
+}
+
+
+/* this part adds an icon after external links, using FontAwesome*/
+a[href^="http://"]:after, a[href^="https://"]:after {
+    content: "\f08e";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: none;
+    padding-left: 3px;
+}
+
+/* Strip the outbound icon when this class is present */
+a[href].noCrossRef::after,
+a.no_icon:after
+ {
+    content:"" !important;
+    padding-left: 0;
+}

@@ -1,0 +1,73 @@
+
+    /*** From CustomStyles ***/
+
+img.screenshotSmall {
+    max-width: 300px;
+}
+
+figcaption {
+    padding-bottom:12px;
+    padding-top:6px;
+    max-width: 90%;
+    margin-bottom:20px;
+    font-style: italic;
+    color: gray;
+}
+
+.col-md-9 img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.post-content img {
+    margin: 12px 0px 3px 0px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.col-md-9 img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.post-content img {
+    margin: 12px 0px 3px 0px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.videoThumbs img {
+    float: left;
+    margin:15px 15px 15px 0px;
+    box-shadow: 2px 2px 1px #f0f0f0;
+    border: 1px solid #dedede;
+}
+
+@media only screen and (min-width: 900px), only screen and (min-device-width: 900px) {
+    .col-md-9 img {
+        max-width: 700px;
+        max-height: 700px;
+    }
+}
+
+/*
+ * Let's target IE to respect aspect ratios and sizes for img tags containing SVG files
+ *
+ * [1] IE9
+ * [2] IE10+
+ */
+/* 1 */
+.ie9 img[src$=".svg"] {
+    width: 100%;
+}
+/* 2 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    img[src$=".svg"] {
+        width: 100%;
+    }
+}
