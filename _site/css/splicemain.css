@@ -45,13 +45,29 @@ table {
 .clearfix {
   clear: both; }
 
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+/* These match the @screen-xx-min values in bootstrap/less/variables */
+/* Navigation Queries */
+@media (max-width: calc($media_sm_min-1)) {
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #444; } }
+@media (max-width: calc($media_md_min-1)) {
+  #mysidebar {
+    position: relative; }
 
+  ul#mysidebar {
+    max-width: 100%; } }
+@media (min-width: 992px) {
+  ul#mysidebar {
+    width: 225px; } }
+/* Image-specific queries */
+@media only screen and (min-width: 992px), only screen and (min-device-width: media_md_min) {
+  .col-md-9 img {
+    max-width: 700px;
+    max-height: 700px; } }
+/* Image-specific for Internet Explorer */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  img[src$=".svg"] {
+    width: 100%; } }
 /****  Styles brought in from customstyles ****/
 /* navgoco sidebar styles (customized) */
 .nav, .nav ul {
@@ -148,18 +164,6 @@ li.dropdownActive a {
   font-weight: bold; }
 
 /* end sidebar */
-@media (max-width: 767px) {
-  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
-    color: #444; } }
-@media (max-width: 990px) {
-  #mysidebar {
-    position: relative; } }
-@media (min-width: 1000px) {
-  ul#mysidebar {
-    width: 225px; } }
-@media (max-width: 900px) {
-  ul#mysidebar {
-    max-width: 100%; } }
 /* Buttons */
 .btn-primary {
   color: #ffffff;
@@ -310,9 +314,10 @@ ol.series li {
   position: absolute;
   top: 40px;
   /* if you change anything about the nav, you'll prob. need to reset the top and left values here.*/
-  left: 20px;
+  /*left: $search_results_offset;*/
+  right: 0;
   z-index: -1;
-  width: 223px;
+  width: 320px;
   border-left: 1px solid #dedede;
   box-shadow: 2px 3px 2px #dedede; }
 
@@ -328,7 +333,7 @@ ul#results-container a:hover {
 #search-input {
   padding: 5px;
   margin-left: 40px;
-  width: 18em;
+  width: 196px;
   font-size: 0.8em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -411,17 +416,24 @@ main {
   margin: 0 auto; }
 
 footer {
-  margin-top: 50px;
+  margin-top: 16px;
   background-color: #f6f6f8;
   padding: 1px 4px 2px 4px;
   font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-size: 0.7em;
   color: #3390db;
-  height: 28px;
+  height: 40px;
   overflow: hidden;
   text-align: center;
   vertical-align: center; }
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -610,10 +622,6 @@ figcaption {
   box-shadow: 2px 2px 1px #f0f0f0;
   border: 1px solid #dedede; }
 
-@media only screen and (min-width: 900px), only screen and (min-device-width: 900px) {
-  .col-md-9 img {
-    max-width: 700px;
-    max-height: 700px; } }
 /*
  * Let's target IE to respect aspect ratios and sizes for img tags containing SVG files
  *
@@ -625,9 +633,6 @@ figcaption {
   width: 100%; }
 
 /* 2 */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  img[src$=".svg"] {
-    width: 100%; } }
 /*** ************************************************************* ***/
 /*** Table styles brought in from customstyles; not sure if needed ***/
 /*** ************************************************************* ***/
@@ -2028,17 +2033,17 @@ table {
     padding-bottom: 10px;
     font-weight: 600;
     font-size: 1.05em; }
-  table tr {
-    hyphens: auto; }
   table td {
     border: 1px solid #8d9090;
     padding: 8px;
     text-align: left;
     vertical-align: top;
     word-wrap: break-word;
-    overflow: auto;
-    hyphens: auto; }
+    overflow: auto; }
   table td p:first-child {
+    margin-top: 0; }
+  table td > ul > li:first-of-type,
+  table td > ol > li:first-of-type {
     margin-top: 0; }
   table th {
     border: 1px solid #8d9090;

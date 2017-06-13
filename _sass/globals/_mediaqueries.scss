@@ -1,0 +1,52 @@
+
+    // *****   ---  MEDIA QUERIES  ---   *****  
+
+        /* These match the @screen-xx-min values in bootstrap/less/variables */
+$media_sm_min:  768px;
+$media_md_min:  992px;
+$media_lg_min: 1200px;
+
+$max_md_imgsize: 700px;
+
+
+
+    /* Navigation Queries */
+
+
+@media (max-width: calc($media_sm_min-1)) {
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+        color: #444;
+    }
+}
+
+@media (max-width: calc($media_md_min-1)) {
+    #mysidebar {
+        position: relative;
+    }
+
+    ul#mysidebar {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: $media_md_min) {
+
+    ul#mysidebar {
+        width: 225px;
+    }
+}
+
+
+    /* Image-specific queries */
+@media only screen and (min-width: $media_md_min), only screen and (min-device-width: media_md_min) {
+    .col-md-9 img {
+        max-width: $max_md_imgsize;
+        max-height: $max_md_imgsize;
+    }
+}
+    /* Image-specific for Internet Explorer */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    img[src$=".svg"] {
+        width: 100%;
+    }
+}

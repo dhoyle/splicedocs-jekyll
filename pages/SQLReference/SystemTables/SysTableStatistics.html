@@ -98,6 +98,20 @@ folder: SQLReference/SystemTables
                             <p>Each partition records the average width of a single row. This value is the maximum of those averages across all partitions.</p>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="CodeFont">STATS_TYPE</td>
+                        <td class="CodeFont">INTEGER</td>
+                        <td class="CodeFont">10</td>
+                        <td class="CodeFont">YES</td>
+                        <td>A value of <span class="CodeFont">0</span> indicates that the current statistics entry is full table statistics; a value of <span class="CodeFont">1</span> indicates that the current statistics entry is sample statistics based on the percentage indicated in the <span class="CodeFont">SAMPLE_FRACTION value</span>.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">SAMPLE_FRACTION</td>
+                        <td class="CodeFont">DOUBLE</td>
+                        <td class="CodeFont">8</td>
+                        <td class="CodeFont">YES</td>
+                        <td>The percentage of the table to be sampled for statistics collection.</td>
+                    </tr>
                 </tbody>
             </table>
             <blockquote>
