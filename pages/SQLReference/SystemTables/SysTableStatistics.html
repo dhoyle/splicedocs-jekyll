@@ -103,14 +103,24 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">INTEGER</td>
                         <td class="CodeFont">10</td>
                         <td class="CodeFont">YES</td>
-                        <td>A value of <span class="CodeFont">0</span> indicates that the current statistics entry is full table statistics; a value of <span class="CodeFont">1</span> indicates that the current statistics entry is sample statistics based on the percentage indicated in the <span class="CodeFont">SAMPLE_FRACTION value</span>.</td>
+                        <td>
+                            <p>A value of <span class="CodeFont">0</span> indicates that the current statistics entry is full table stats; a value of <span class="CodeFont">1</span> indicates that the statistics entry is sample statistics based on the <span class="CodeFont">SAMPLEFRACTION</span>&#160;value.</p>
+                            <p>If this value is <span class="CodeFont">NULL</span>, <span class="CodeFont">0</span> is used.</p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="CodeFont">SAMPLE_FRACTION</td>
                         <td class="CodeFont">DOUBLE</td>
-                        <td class="CodeFont">8</td>
+                        <td class="CodeFont">52</td>
                         <td class="CodeFont">YES</td>
-                        <td>The percentage of the table to be sampled for statistics collection.</td>
+                        <td>
+                            <p>The sampling percentage, expressed as <span class="CodeFont">0.0</span> to <span class="CodeFont">1.0</span>, </p>
+                        <ul>
+                            <li>If <span class="CodeFont">statsType=0</span> (full statistics), this value is not used, and is shown as <span class="CodeFont">0</span>.</li>
+                            <li>If <span class="CodeFont">statsType=1</span>, this value is the percentage or rows to be sampled. A value of <span class="CodeFont">0</span> means no rows, and a value of <span class="CodeFont">1</span> means all rows (full statistics).</li>
+                        </ul>
+
+                        </td>
                     </tr>
                 </tbody>
             </table>

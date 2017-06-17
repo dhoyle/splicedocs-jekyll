@@ -604,126 +604,122 @@
   	<section>
 		<div class="TopicContent">
             <h1 id="analyzecmd">Analyze Command</h1>
-            <p>The <span class="AppCommand">analyze</span> command collects statistics for a specific table, or for an entire schema.</p>
-            <div class="noteNote">Once statistics have been collected for a schema or table, they are automatically used by the query optimizer.</div>
-            <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">ANALYZE&#160;TABLE <span class="ItalicFont">[schemaName'.']table-Name</span>
-
-ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name</span></pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">table-Name</p>
-                <p class="paramDefnFirst">The name of the table you want to analyze, which can optionally be qualified by its schema name. If you don't specify a <span class="ItalicFont">schemaName</span>, the current schema is assumed.</p>
-                <p class="paramDefn">You must have insert permission for the table to be able to run this command.</p>
-                <p name="paramName" class="paramName">schema-Name</p>
-                <p class="paramDefnFirst">The name of the schema you want to analyze.</p>
-                <p class="paramDefnFirst"> You must have insert permission for all tables in the schema to be able to run this command.</p>
-            </div>
-            <p class="heading3" id="Table">Analyze Table</p>
-            <p>The <span class="CodeFont">ANALYZE&#160;TABLE</span>command collects statistics for a specific table in the current schema. It also collects statistics for the index associated with the table in the schema. For example, if you have the following in your database:</p>
-            <ul>
-                <li value="1">a table named <span class="CodeFont">myTable</span></li>
-                <li value="2"><span class="CodeFont">myTable</span> has two indices:&#160;<span class="CodeFont">myTableIndex1</span> and <span class="CodeFont">myTableIndex2</span></li>
-            </ul>
-            <p>Then <span class="CodeFont">ANALYZE&#160;TABLE</span> will collect statistics for <span class="CodeFont">myTable</span>, <span class="CodeFont">myTableIndex1</span>, and <span class="CodeFont">myTableIndex2</span>.</p>
-            <p>The <span class="CodeFont">ANALYZE&#160;TABLE</span>&#160;command displays the following information for each index in the table:</p>
-            <table summary="List of columns in the output of the analyze table command.">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Value</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="CodeFont">schemaName</td>
-                        <td>The name of the schema.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">tableName</td>
-                        <td>The name of the table.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">regionsCollected</td>
-                        <td>The number of regions for which a collection was performed.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">taskExecuted</td>
-                        <td>The number of collection tasks submitted. Note that this includes any failed tasks.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">rowsCollected</td>
-                        <td>The total number of rows collected for the table.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="heading3" id="Schema">Analyze Schema</p>
-            <p>The <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema. For example, if you have the following situation:</p>
-            <ul>
-                <li value="1">a schema named <span class="CodeFont">mySchema</span></li>
-                <li value="2"><span class="CodeFont">mySchema</span> contains two tables:&#160;<span class="CodeFont">myTable1</span> and <span class="CodeFont">myTable2</span></li>
-                <li value="3"><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
-            </ul>
-            <p>Then the <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command  will collect statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
-            <p>The <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command displays the following information for each table and for each index and its associated index in the schema:</p>
-            <table summary="List of columns in the output of the analyze schema command.">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Value</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="CodeFont">schemaName</td>
-                        <td>The name of the schema.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">tableName</td>
-                        <td>The name of the table.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">regionsCollected</td>
-                        <td>The number of regions for which a collection was performed.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">taskExecuted</td>
-                        <td>The number of collection tasks submitted. Note that this includes any failed tasks.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">rowsCollected</td>
-                        <td>The total number of rows collected for the table.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="noteNote">This command operates like the <span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> built-in system procedure.</div>
-            <p class="heading2">Examples</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; analyze table myTable;
-schemaName       |regionsCol&amp;|tasksExecu&amp;|rowsCollected|tableName
----------------------------------------------------------------------------
-MYSCHEMA         |1          |1          |0            |MYTABLE1
-MYSCHEMA         |1          |1          |0            |MYTABLE1_INDEX1
-MYSCHEMA         |1          |1          |0            |MYTABLE1_INDEX2
+        <p>The <span class="AppCommand">analyze</span> command collects statistics for a specific table, or for an entire schema.</p>
+        <div class="noteNote">Once statistics have been collected for a schema or table, they are automatically used by the query optimizer.</div>
+        <p class="heading2">Syntax</p>
+        <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ANALYZE&#160;TABLE <span class="ItalicFont">[schemaName'.']table-Name</span> [ESTIMATE STATISTICS SAMPLE <span class="ItalicFont">samplepercent</span> PERCENT];<br />
+ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name;</span></pre>
+        </div>
+        <div class="paramList">
+            <p class="paramName">table-Name</p>
+            <p class="paramDefnFirst">The name of the table you want to analyze, which can optionally be qualified by its schema name. If you don't specify a <span class="ItalicFont">schemaName</span>, the current schema is assumed.</p>
+            <p class="paramDefn">You must have insert permission for the table to be able to run this command.</p>
+            <p name="paramName" class="paramName">schema-Name</p>
+            <p class="paramDefnFirst">The name of the schema you want to analyze.</p>
+            <p class="paramDefnFirst"> You must have insert permission for all tables in the schema to be able to run this command.</p>
+            <p name="paramName" class="paramName">samplepercent</p>
+            <p class="paramDefnFirst">A value between <span class="CodeFont">0</span> and <span class="CodeFont">100</span> that specifies the sampling percentage to use when generating statistics for this table. </p>
+            <p class="paramDefnFirst">If you include this&#160;clause, statistics are generated by sampling the specified sampling percentage of the table. This can significantly reduce the overhead associated with generating statistics.</p>
+            <p class="paramDefn">If you do not include this clause, statistics are generated based on the full table.</p>
+            <p class="paramDefnFirst">.</p>
+        </div>
+        <p class="heading3" id="Table"></a>Analyze Table</p>
+        <p>The <span class="CodeFont">ANALYZE&#160;TABLE</span>command collects statistics for a specific table in the current schema. It also collects statistics for the index associated with the table in the schema. For example, if you have the following in your database:</p>
+        <ul>
+            <li>a table named <span class="CodeFont">myTable</span></li>
+            <li><span class="CodeFont">myTable</span> has two indices:&#160;<span class="CodeFont">myTableIndex1</span> and <span class="CodeFont">myTableIndex2</span></li>
+        </ul>
+        <p>Then <span class="CodeFont">ANALYZE&#160;TABLE</span> will collect statistics for <span class="CodeFont">myTable</span>, <span class="CodeFont">myTableIndex1</span>, and <span class="CodeFont">myTableIndex2</span>.</p>
+        <p>The <span class="CodeFont">ANALYZE&#160;TABLE</span>&#160;command displays the following information for each partition of the table:</p>
+        <table summary="List of columns in the output of the analyze table command.">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CodeFont">schemaName</td>
+                    <td>The name of the schema.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">tableName</td>
+                    <td>The name of the table.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">partition</td>
+                    <td>The Splice Machine partition</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">rowsCollected</td>
+                    <td>The total number of rows collected for the table.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">partitionSize</td>
+                    <td>The size of the partition</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">statsType</td>
+                    <td>The type of statistics:&#160;either <span class="CodeFont">0</span> for full table statistics, or <span class="CodeFont">1</span> for sampled statistics.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">sampleFraction</td>
+                    <td>
+                        <p>The sampling percentage, expressed as <span class="CodeFont">0.0</span> to <span class="CodeFont">1.0</span>, </p>
+                        <ul>
+                            <li>If <span class="CodeFont">statsType=0</span> (full statistics), this value is not used, and is shown as <span class="CodeFont">0</span>.</li>
+                            <li>If <span class="CodeFont">statsType=1</span>, this value is the percentage or rows to be sampled. A value of <span class="CodeFont">0</span> means no rows, and a value of <span class="CodeFont">1</span> means all rows (full statistics).</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="heading3" id="Schema"></a>Analyze Schema</p>
+        <p>The <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema. For example, if you have the following situation:</p>
+        <ul>
+            <li>a schema named <span class="CodeFont">mySchema</span></li>
+            <li><span class="CodeFont">mySchema</span> contains two tables:&#160;<span class="CodeFont">myTable1</span> and <span class="CodeFont">myTable2</span></li>
+            <li><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
+        </ul>
+        <p>Then the <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command  will collect statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
+        <p>The <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command displays the same information as shown for <span class="CodeFont">ANALYZE&#160;TABLE</span>, for each table in the in the schema.</p>
+        <div class="noteNote">This command operates like the <span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> built-in system procedure.</div>
+        <p class="heading2">Examples</p>
+        <div class="preWrapperWide"><pre class="AppCommand">splice&gt; analyze table test.t2;
+schemaName |tableName |partition         |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
+-----------------------------------------------------------------------------------------------------------------
+TEST       |T2        |splice:1632,,14...|496       &#160;|2976          |1               |0          |0
+TEST       |T2        |splice:1632,\xC...|1032       |6192          |1               |0          |0
+TEST       |T2        |splice:1632,\xC6..|39226      |235356        |1               |0          |0
+ 
 3 rows selected
-
-splice&gt;&#160;analyze schema mySchema
-schemaName       |regionsCol&amp;|tasksExecu&amp;|rowsCollected|tableName
----------------------------------------------------------------------------
-MYSCHEMA         |1          |1          |0            |MYTABLE1
-MYSCHEMA         |1          |1          |0            |MYTABLE1_INDEX1
-MYSCHEMA         |1          |1          |0            |MYTABLE1_INDEX2
-MYSCHEMA         |1          |1          |0            |MYTABLE2
-MYSCHEMA         |1          |1          |0            |MYTABLE2_INDEX1
-5 rows selected
-
+splice&gt;<br /><br />splice&gt; analyze table test.t2 estimate statistics sample 50 percent;
+schemaName |tableName |partition         |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
+-----------------------------------------------------------------------------------------------------------------
+TEST       |T2        |splice:1632,,14...|248        |2976          |1               |1          |0.5
+TEST       |T2        |splice:1632,\xC...|516        |6192          |1               |1          |0.5
+TEST       |T2        |splice:1632,\xC6  |19613      |235356        |1               |1          |0.5
+ 
+3 rows selected
+splice&gt;<br /><br />splice&gt; analyze schema test;
+schemaName |tableName |partition         |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
+-----------------------------------------------------------------------------------------------------------------
+TEST       |T2        |splice:1632,,14...|496       &#160;|2976          |1               |0          |0
+TEST       |T2        |splice:1632,\xC...|1032       |6192          |1               |0          |0
+TEST       |T2        |splice:1632,\xC6..|39226      |235356        |1               |0          |0
+TEST       |T5        |splice:1654,,32...|496       &#160;|2976          |1               |0          |0
+TEST       |T5        |splice:1654,\xD...|1032       |6192          |1               |0          |0
+TEST       |T5        |splice:1654,\xE6..|39226      |235356        |1               |0          |0
+6 rows selected
 splice&gt;</pre>
-            </div>
+        </div>
         </div>
 	</section>
+ 
+ 
 
 
     <div class="tags">
@@ -740,7 +736,7 @@ splice&gt;</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jun 12, 2017 <br />
+ Site last generated: Jun 16, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
