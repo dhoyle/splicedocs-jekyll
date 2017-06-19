@@ -115,15 +115,11 @@
                 
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Database-as-Service<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Splice Machine<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         
                         
-                        <li><a href="dbaas_intro.html">Welcome!</a></li>
-                        
-                        
-                        
-                        <li><a href="dbaas_cm_intro.html">Cloud Manager Guide</a></li>
+                        <li><a href="index.html">Welcome</a></li>
                         
                         
                         
@@ -150,7 +146,30 @@
                 </li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">On-Premise DB<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">DB-Service Only<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="dbaas_intro.html">Welcome!</a></li>
+                        
+                        
+                        
+                        <li><a href="dbaas_cm_intro.html">Cloud Manager Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="dbaas_zep_intro.html">Using Zeppelin</a></li>
+                        
+                        
+                        
+                        <li><a href="dbaas_dbconsole_intro.html">Using the DB Console</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">On-Premise-DB Only<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         
                         
@@ -162,31 +181,11 @@
                         
                         
                         
-                        <li><a href="tutorials_intro.html">Tutorials</a></li>
-                        
-                        
-                        
                         <li><a href="cmdlineref_intro.html">splice> Command Line Reference</a></li>
                         
                         
                         
-                        <li><a href="sqlref_intro.html">SQL Reference Manual</a></li>
-                        
-                        
-                        
-                        <li><a href="developers_intro.html">Developer's Manual</a></li>
-                        
-                        
-                        
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
-                        
-                        
-                        
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
                         
                         
                     </ul>
@@ -503,6 +502,26 @@
                             <th>Change</th>
                             <th>Description</th>
                         </tr>
+                    <tr>
+                        <td class="BoldFont">2.6.1</td>
+                        <td class="ItalicFont">DBaaS</td>
+                        <td MadCap:conditions="">Our new <span class="CalloutFont">Database-as-a-Service</span> offering is now available.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.6.1</td>
+                        <td class="ItalicFont">Estimated Statistics</td>
+                        <td MadCap:conditions="">You can now optionally reduce the time required to generate statistics for a table by specifying a sampling percentage in the <a href="cmdlineref_analyze.html">analyze</a> command; Splice Machine will then generate statistics by sampling that percentage of the table, instead of analyzing the entire table. </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.6</td>
+                        <td class="ItalicFont">HAProxy</td>
+                        <td>
+                            <p>HAProxy is an open source utility that is available on most Linux distributions and cloud platforms for load-balancing TCP and HTTP requests. Users can leverage this tool to distribute incoming client requests among the region server nodes on which Splice Machine instances are running.</p>
+                            <p>Our <a href="tutorials_connect_haproxy.html">Configuring HAProxy</a> topic walks you through configuring HAProxy on a non-Splice Machine cluster node, and how to use HAProxy with Splice Machine on a Kerberos-enabled cluster.</p>
+                        </td>
+                    </tr>
+ 
+ 
                         <tr>
                             <td class="BoldFont">2.5</td>
                             <td class="ItalicFont">BULK_IMPORT_HFILE</td>
@@ -985,7 +1004,7 @@
                             <td class="ItalicFont">Savepoints</td>
                             <td>
                                 <p class="noSpaceAbove">Transaction savepoints have been added. There's a brief description of savepoints in the <a href="developers_fundamentals_transactions.html">Running Transactions In Splice Machine</a> topic in the <span class="ItalicFont">Developer's Guide</span>.</p>
-                                <p>There are also three new statements that are documented in the <a href="cmdlineref_transactioncmds.html">Transaction Commands</a> section of the <span class="ItalicFont">Developer's Guide</span></p>
+                                <p>There are also three new statements that are documented in the <a href="cmdlineref_intro.html"> <span class="ItalicFont">splice&gt;Command Line Reference</span></p>
                                 <ul class="bullet">
                                     <li value="1"><span class="CodeFont"><a href="cmdlineref_savepoint.html">Savepoint Command</a></span>
                                     </li>
@@ -1217,7 +1236,7 @@
                             <td class="BoldFont">1.50</td>
                             <td class="ItalicFont">Command Lines Reference</td>
                             <td>
-                                <p class="noSpaceAbove">Usage information for the <a href="cmdlineref_cmdlinesummary.html">splice&gt; Commands Reference</a>, including reference information for using each command has been moved from the <span class="ItalicFont">Splice&#160;Machine Getting Started&#160;Guide</span> to our <span class="ItalicFont">Splice&#160;Machine Developer's Guide</span>. </p>
+                                <p class="noSpaceAbove">Usage information for the <a href="cmdlineref_intro.html">splice&gt; Commands Reference</a>, including reference information for using each command has been moved from the <span class="ItalicFont">Splice&#160;Machine Getting Started&#160;Guide</span> to our <span class="ItalicFont">Splice&#160;Machine Developer's Guide</span>. </p>
                                 <p>The<span class="ItalicFont">Splice&#160;Machine Getting Started&#160;Guide</span> now contains a brief overview and summary of the <span class="AppCommand">splice&gt;</span>&#160;commands.</p>
                             </td>
                         </tr>
@@ -1285,7 +1304,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jun 16, 2017 <br />
+ Site last generated: Jun 18, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
