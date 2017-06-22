@@ -46,12 +46,12 @@ stmt   = conn.createStatement()
 rs     = stmt.executeQuery("select * from sys.systables")
 
 rowCount = 0
-while (rs.next() and rowCount &lt; 10) :
+while (rs.next() and rowCount < 10) :
     rowCount += 1
-    print "Record=[" + str(rowCount) + \
-        id=[" + rs.getString('TABLEID') + \
-        "] name=[" + rs.getString('TABLENAME') + \
-        "] type=[" + rs.getString('TABLETYPE') + "]"
+    print "Record=[" + str(rowCount) + \"]
+        id   = [" + rs.getString('TABLEID') + \"] 
+        name = [" + rs.getString('TABLENAME') + \"] 
+        type = [" + rs.getString('TABLETYPE') + "]"
 
 rs.close()
 stmt.close()
