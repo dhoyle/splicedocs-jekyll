@@ -11,84 +11,72 @@ folder: DBaaS/Zeppelin
 	<section>
 		<div class="TopicContent">
         <h1>Getting Started with Zeppelin</h1>
-        <p>&#160;</p>
+        <p>This topic helps you to get started with using Zeppelin with your Splice Machine database.</p>
+        <div class="noteNote">We strongly encourage you to visit the <a href="https://zeppelin.apache.org/docs/">Zeppelin documentation site</a> to learn about creating, modifying, and running your own Zeppelin notebooks.</div>
+        <h2>The Zeppelin Dashboard</h2>
         <p>When you click the <span class="CalloutFont">Notebook</span> button in your Cluster Management dashboard, you land on the Zeppelin welcome page. To start using Zeppelin with your database service, you need to log in to your database by clicking the <span class="ConsoleLink">Login</span> button.</p>
         <p>
             <img src="images/Notebooks1.png" class="indentedTightSpacing" />
         </p>
-        <p>Once you're logged into Zeppelin for your database, you'll see the Zeppelin dashboard. From there, you can run already-created notebooks, modify existing notebooks, and create new notebooks.</p>
+        <p>When you log into Zeppelin for your database, you'll land on the Zeppelin dashboard. From there, you can run already-created notebooks, modify existing notebooks, and create new notebooks. Our next topic, <a href="dbaas_zep_simple.html">A Simple Tutorial</a>, uses the Zeppelin Basic tutorial:</p>
         <p>
-            <img src="images/Notebook2.png" class="indentedTightSpacing" />
+            <img src="images/ZepDashboard2.png" class="indentedTightSpacing" />
         </p>
-
-
         <h2 id="toolbar">The Zeppelin Note Toolbar</h2>
         <p>Zeppelin displays a toolbar at the top of each note that provides convenient access to a number of options:</p>
         <p><img src="images/ZepToolbar.png" class="indentedTightSpacing"></p>
         <p>The following table describes the toolbar buttons:</p>
         <table>
             <tr>
-                <td><img src="images/ZepToolbarIcon1.png"></td>
+                <td><img src="images/ZepToolbarIcon1.png" class="icon36"></td>
                 <td>Executes all of the paragraphs in the note, in display-order sequence.</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon2.png"></td>
+                <td><img src="images/ZepToolbarIcon2.png" class="icon36"></td>
                 <td>Shows or hides the code sections of the paragraphs in the note.</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon3.png"></td>
+                <td><img src="images/ZepToolbarIcon3.png" class="icon36"></td>
                 <td>Shows or hides the result sections of the paragraphs in the note.</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon4.png"></td>
+                <td><img src="images/ZepToolbarIcon4.png" class="icon36"></td>
                 <td>Clears the result sections of the paragraphs in the note.</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon5.png"></td>
+                <td><img src="images/ZepToolbarIcon5.png" class="icon36"></td>
                 <td>Clones the current note.</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon6.png"></td>
+                <td><img src="images/ZepToolbarIcon6.png" class="icon36"></td>
                 <td>Exports the current note in JSON format.
                 <div class="noteNote">The code and result sections of all paragraphs are exported; you might want to clear your results before exporting a note.</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon7.png"></td>
-                <td>???</td>
+                <td><img src="images/ZepToolbarIcon7.png" class="icon36"></td>
+                <td>Switches between personal and collaboration modes.</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon8.png"></td>
-                <td>Commits the content of the current node.</td>
+                <td><img src="images/ZepToolbarIcon8.png" class="icon36"></td>
+                <td>Commits changes that you've made to the content of the current note (and allows you to add a commit note).</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon12.png"></td>
+                <td><img src="images/ZepToolbarIcon9.png" class="icon72"></td>
+                <td>Displays the revision you're currently viewing, and lets you select from available revisions.</td>
+            </tr>
+            <tr>
+                <td><img src="images/ZepToolbarIcon12.png" class="icon36"></td>
                 <td>Deletes the note.</td>
             </tr>
             <tr>
-                <td><img src="images/ZepToolbarIcon13.png"></td>
+                <td><img src="images/ZepToolbarIcon13.png" class="icon36"></td>
                 <td>Schedules execution of the note, using CRON syntax.</td>
-            </tr>
-            <tr>
-                <td><img src="images/ZepToolbarIcon9.png"></td>
-                <td>Displays keyboard shortcuts.</td>
-            </tr>
-            <tr>
-                <td><img src="images/ZepToolbarIcon10.png"></td>
-                <td>Configures interpreter bindings for the current note.</td>
-            </tr>
-            <tr>
-                <td><img src="images/ZepToolbarIcon11.png"></td>
-                <td>Sets permissions for the note.</td>
-            </tr>
-            <tr>
-                <td><img src="images/ZepToolbarIcon13.png"></td>
-                <td>Cycles among the available display modes for the note: <span class="ItalicFont">default</span>, <span class="ItalicFont">simple</span>, and <span class="ItalicFont">report</span> modes.</td>
             </tr>
         </table>
         <h2 id="interpreter">Setting SpliceMachine as the Default Interpreter</h2>
-        <p>The first time you run a Zeppelin notebook, you need to make sure that the Zeppelin Splice Machine interpreter is configured as your default interpreter. This is a simple matter of moving our interpreter to the top of the list that displays when you first open </p>
+        <p>The first time you run a Zeppelin notebook, you need to make sure that the Splice Machine interpreter is configured as your default Zeppelin interpreter. This is a simple matter of moving our interpreter to the top of the list that displays when you first open </p>
         <p><img src="images/ZepInterpreters.png" class="indentedTightSpacing" /><p>
-        <p>To bind the splicemachine interpreter as the default interpreter for this Zeppelin notebook, drag it to the top of the list, then click the <span class="ConsoleLink">Save</span> button.</p>
+        <p>To bind the splicemachine interpreter as the default interpreter for this Zeppelin notebook, drag it to the top of the list, then click the <span class="ConsoleLink">Save</span> button:</p>
         <p><img src="images/ZepDefaultInterpreter.png" class="indentedTightSpacing" /><p>
         <p> </p>
 
