@@ -1,7 +1,7 @@
 ---
 title: SYSCS_UTIL.SYSCS_BACKUP_DATABASE built-in system procedure
 summary: Built-in system procedure that backs up the database to a specified backup directory.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -21,7 +21,7 @@ performs an immediate full or incremental backup of your database to a specified
             <div class="noteNote">The first time that you run an incremental backup, a full backup is performed. Subsequent runs of the backup will only copy information that has changed since the previous backup.</div>
             <p>For more information, see the <a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
                                   VARCHAR(30)&#160;<span class="ItalicFont">backupType</span> );</pre>
             </div>
             <div class="paramList">
@@ -53,7 +53,7 @@ database owner can grant access to other users.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE(?,?)");
   cs.setString(1, 'hdfs:///home/backup');
-  cs.setString(2, 'full'); 
+  cs.setString(2, 'full');
   cs.execute();
   cs.close();</pre>
             </div>

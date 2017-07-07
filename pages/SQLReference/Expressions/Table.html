@@ -13,7 +13,7 @@ folder: SQLReference/Expressions
             <h1 id="Expressions.Table">TABLE Expression</h1>
             <p>A <span class="ItalicFont">TableExpression</span> specifies a table, view, or function in a <a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span> clause</a>. It is the source from which a <span class="ItalicFont"><a href="#">TableExpression</a></span> selects a result.</p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax">{
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">{
 &#160;&#160;&#160;<span class="ItalicFont"><a href="sqlref_joinops_about.html">JOIN operations</a>
 }</pre>
             </div>
@@ -41,7 +41,7 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
 </pre>
             </div>
             <p class="heading2" id="TableViewExpression">TableViewOrFunctionExpression</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
    { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
  &#160;&#160;[ <span class="ItalicFont">CorrelationClause</span> ]  |
    { <span class="ItalicFont"><a href="sqlref_queries_tablesubquery.html">TableSubquery</a></span> | <span class="ItalicFont"><a href="#TableFunction">TableFunctionInvocation</a></span> }
@@ -49,13 +49,13 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
 }</pre>
             </div>
             <p>where <span class="ItalicFont">CorrelationClause</span> is</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax">[ AS ]
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">[ AS ]
 <span class="ItalicFont"><a href="sqlref_identifiers_types.html#CorrelationName">correlation-Name</a></span>
 [ ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) ] 
 </pre>
             </div>
             <p class="heading2" id="TableFunction">TableFunctionExpression</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
 {
   TABLE <span class="ItalicFont">function-name</span>( [ [ function-arg ] [, function-arg ]* ] )
 }

@@ -14,7 +14,7 @@ folder: SQLReference/Statements
             <p>The <span class="CodeFont">CREATE FUNCTION</span> statement allows you to create Java functions, which you can then use in expressions.</p>
             <p>For details on how Splice Machine matches functions to Java methods,	see <a href="sqlref_sqlargmatching.html">Argument matching</a>.</p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">CREATE FUNCTION <span class="ItalicFont">functionName</span> (
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE FUNCTION <span class="ItalicFont">functionName</span> (
 	[ <span class="ItalicFont">functionParameter</span> 
    	[, <span class="ItalicFont">functionParameter</span>] ] * 
 	)
@@ -22,23 +22,23 @@ folder: SQLReference/Statements
             </div>
             <div class="paramList">
                 <p class="paramName">functionName</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax">[ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span></pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax">[ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span></pre>
                 </div>
                 <p class="paramDefn">If <span class="CodeFont">schemaName</span> is not provided, then the current schema is the default schema. If a qualified procedure name is specified, the schema name cannot begin with <span class="CodeFont">SYS</span>.</p>
                 <p class="paramName">functionParameter</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax">[ <span class="ItalicFont">parameterName</span> ] <span class="ItalicFont"><a href="sqlref_datatypes_intro.html">DataType</a></span></pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax">[ <span class="ItalicFont">parameterName</span> ] <span class="ItalicFont"><a href="sqlref_datatypes_intro.html">DataType</a></span></pre>
                 </div>
                 <p class="paramDefnFirst"><span class="CodeFont">parameterName</span> is an identifier that must be unique within the function's parameter names. </p>
                 <div class="noteNote">Data-types such as <span class="CodeFont">BLOB, CLOB, LONG VARCHAR</span> are not allowed as parameters in a <span class="CodeFont">CREATE FUNCTION</span> statement.</div>
                 <p class="paramName">returnDataType</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="sqlref_datatypes_intro.html">DataType</a></span> |
+                <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="sqlref_datatypes_intro.html">DataType</a></span> |
 <span class="ItalicFont"><a href="#TableType">TableType</a></span></pre>
                 </div>
                 <p class="paramName">functionElement</p>
                 <p class="paramDefnFirst">See the description of <a href="#FunctionElements">Function Elements</a> in the next section.</p>
             </div>
             <p class="heading2" id="TableType">TableType</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">TABLE( <span class="ItalicFont">ColumnElement</span> [,<span class="ItalicFont">ColumnElement</span>]* )
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TABLE( <span class="ItalicFont">ColumnElement</span> [,<span class="ItalicFont">ColumnElement</span>]* )
 </pre>
             </div>
             <div class="paramList">
@@ -52,7 +52,7 @@ folder: SQLReference/Statements
                 <li value="2">if a string value is returned in the <span class="ItalicFont">ResultSet</span> for a column of type <span class="CodeFont">CHAR</span>, and the string is shorter than the column length, the string is padded with spaces</li>
             </ul>
             <p class="heading2" id="FunctionElements">Function Elements</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve"> {
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"> {
     LANGUAGE { JAVA }
   | <span class="ItalicFont">DeterministicCharacteristic</span>
   | EXTERNAL NAME <span class="ItalicFont">javaMethodName</span>
@@ -73,16 +73,16 @@ folder: SQLReference/Statements
                 <p class="paramName">LANGUAGE</p>
                 <p class="paramDefnFirst">Only <span class="CodeFont">JAVA</span>&#160;is accepted at this time. Splice Machine will call the function as a public static method in a Java class.</p>
                 <p class="paramName">DeterministicCharacteristic</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax">DETERMINISTIC | NOT DETERMINISTIC</pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax">DETERMINISTIC | NOT DETERMINISTIC</pre>
                 </div>
                 <p class="paramDefnFirst">The default value is <span class="CodeFont">NOT&#160;DETERMINISTIC</span>.</p>
                 <p class="paramDefn">Specifying <span class="CodeFont">DETERMINISTIC</span>&#160;indicates that the function always returns the same result, given the same input values. This allows Splice Machine to call the function with greater efficiency; however, specifying this for a function that is actually non-deterministic will have the opposite effect -- efficiency of calls to the function will be reduced.</p>
                 <p class="paramName">javaMethodName</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax">class_name.method_name</pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax">class_name.method_name</pre>
                 </div>
                 <p class="paramDefnFirst">This is the name of the Java method to call when this function executes. </p>
                 <p class="paramName">parameterStyle</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax">JAVA | DERBY_JDBC_RESULT_SET</pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax">JAVA | DERBY_JDBC_RESULT_SET</pre>
                 </div>
                 <p class="paramDefnFirst">Only use <span class="CodeFont">DERBY_JDBC_RESULT_SET</span> if this is a Splice Machine-style table function that returns a <a href="#TableType">TableType</a> result, and is mapped to a Java method that returns a JDBC <span class="ItalicFont">ResultSet</span>. </p>
                 <p class="paramDefn">Otherwise, use <span class="CodeFont">JAVA</span>-style parameters, which means that a parameter-passing convention is used that conforms to the Java language and SQL Routines specification. <span class="CodeFont">INOUT</span> and <span class="CodeFont">OUT</span> parameters are passed as single entry arrays to facilitate returning values. Result sets can be returned through additional parameters to the Java method of type <span class="CodeFont">java.sql.ResultSet[]</span> that are passed single entry arrays.</p>

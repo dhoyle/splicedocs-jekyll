@@ -1,7 +1,7 @@
 ---
 title: Update Notes for the Current Release of Splice Machine
 summary: Update notes for the current release of Splice Machine.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  releasenotes_sidebar
@@ -106,8 +106,8 @@ folder: Notes
                             <p>Our <a href="tutorials_connect_haproxy.html">Configuring HAProxy</a> topic walks you through configuring HAProxy on a non-Splice Machine cluster node, and how to use HAProxy with Splice Machine on a Kerberos-enabled cluster.</p>
                         </td>
                     </tr>
- 
- 
+
+
                         <tr>
                             <td class="BoldFont">2.5</td>
                             <td class="ItalicFont">BULK_IMPORT_HFILE</td>
@@ -128,8 +128,19 @@ folder: Notes
                         </tr>
                         <tr>
                             <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">DBaaS</td>
-                            <td>Our new <span class="CalloutFont">Database-as-a-Service</span> offering is now available.</td>
+                            <td class="ItalicFont">Bulk HFile Delete</td>
+                            <td>
+                                <p>Our new <span class="CalloutFont">Bulk HFile Delete</span> features generates HFiles for deleting large amounts of data, which significantly speeds up bulk deletion by bypassing the Splice Machine write pipeline and HBase write path.</p>
+                                <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete"><span class="CodeFont">DELETE</span></a> statement</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont">Snapshot</td>
+                            <td>
+                                <p>Our new <span class="CalloutFont">Bulk HFile Delete</span> features generates HFiles for deleting large amounts of data, which significantly speeds up bulk deletion by bypassing the Splice Machine write pipeline and HBase write path.</p>
+                                <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete"><span class="CodeFont">DELETE</span></a> statement</p>
+                            </td>
                         </tr>
                         <tr>
                             <td class="BoldFont">2.5</td>

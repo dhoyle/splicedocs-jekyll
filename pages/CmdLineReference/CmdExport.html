@@ -13,7 +13,7 @@ folder: CmdLineReference
             <h1 id="kanchor69">Export Command</h1>
             <p>The <span class="AppCommand">export</span> command exports the results of an SQL&#160;query to a CSV (comma separated value)&#160;file.</p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">EXPORT ( <span class="ItalicFont">exportPath</span>,
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">EXPORT ( <span class="ItalicFont">exportPath</span>,
          <span class="ItalicFont">compression</span>,
          <span class="ItalicFont">replicationCount</span>,
          <span class="ItalicFont">fileEncoding</span>,
@@ -56,7 +56,7 @@ folder: CmdLineReference
             <p>The value of <span class="AppCommand">&lt;N&gt;</span>&#160;is a random integer value.</p>
             <p class="heading3">Merging the Exported Files</p>
             <p>You can copy all of the exported files into a single file on your local file system using the Hadoop FS&#160;command <span class="CodeFont">getmerge</span>. The syntax for <span class="CodeFont">getmerge</span> is:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">hadoop fs -getmerge <span class="ItalicFont">sourceDir localPath</span></pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">hadoop fs -getmerge <span class="ItalicFont">sourceDir localPath</span></pre>
             </div>
             <p>Use the <span class="ItalicFont">exportPath</span> directory as the value of sourceDir to copy all of the exported CSV&#160;files to your <span class="ItalicFont">localPath</span>.</p>
             <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge" target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>

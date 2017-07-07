@@ -17,7 +17,7 @@ folder: SQLReference/Statements
                 <p>Only database and schema owners can use the <span class="CodeFont">CREATE TABLE</span> statement, which means that table creation privileges cannot be granted to others, even with  <span class="CodeFont">GRANT ALL PRIVILEGES</span>.</p>
             </div>
             <p class="heading2">Syntax for Schemas</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege&#160;}*<br />&#160;&#160;&#160;ON [SCHEMA] <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SchemaName">schema-Name</a></span> <br />&#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege&#160;}*<br />&#160;&#160;&#160;ON [SCHEMA] <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SchemaName">schema-Name</a></span> <br />&#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">schema-privilege</p>
@@ -43,7 +43,7 @@ folder: SQLReference/Statements
                 <li value="2">Table-level privileges override schema-level privileges.</li>
             </ul>
             <p class="heading2">Syntax for Tables</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">GRANT ALL PRIVILEGES | table-privilege {, table-privilege&#160;}*<br />&#160;&#160;&#160;ON [TABLE] { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT ALL PRIVILEGES | table-privilege {, table-privilege&#160;}*<br />&#160;&#160;&#160;ON [TABLE] { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
 &#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
             </div>
             <div class="paramList">
@@ -74,7 +74,7 @@ folder: SQLReference/Statements
                 <li value="2">Table-level privileges override schema-level privileges.</li>
             </ul>
             <p class="heading2">Syntax for Routines</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">GRANT EXECUTE
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT EXECUTE
 &#160;&#160;&#160;ON { FUNCTION | PROCEDURE } {<span class="ItalicFont">function-name</span> | <span class="ItalicFont">procedure-name</span>}
 &#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
             </div>
@@ -85,7 +85,7 @@ folder: SQLReference/Statements
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;to whom you are granting access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
             <p class="heading2">Syntax for User-defined Types</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">GRANT USAGE
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT USAGE
 &#160;&#160;&#160;ON TYPE [ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span>
 &#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
             </div>
@@ -96,7 +96,7 @@ folder: SQLReference/Statements
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;to whom you are granting access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
             <p class="heading2">Syntax for Roles</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">GRANT <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> }* ]
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> }* ]
 &#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
             </div>
             <div class="paramList">
@@ -110,7 +110,7 @@ folder: SQLReference/Statements
             <p class="heading2" id="AboutGrantees">About Grantees</p>
             <p>A grantee can be one or more specific users, one or more specific roles, or all users (<span class="CodeFont">PUBLIC</span>). Either the object owner or the database owner can grant privileges to a user or to a role. Only the database owner can grant a role to a user or to another role.</p>
             <p>Here's the syntax:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } 
 &#160;&#160;&#160;[, { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } ] *</pre>
             </div>
             <div class="paramList">

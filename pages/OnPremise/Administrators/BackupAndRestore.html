@@ -97,7 +97,7 @@ folder: OnPrem
             <div class="noteNote">You must make sure that the directory to which you are backing up or from which data is being restored is accessible to the HBase user who is initiating the restore. Make sure the directory permissions are set correctly on the backup directory.<br /><br />Note that you can store your backups in a cloud-based storage service such as AWS; for more information, see the <a href="#Backing">Backing Up to Cloud Storage</a> section below.</div>
             <h3 id="Scheduling">Scheduling a Daily Backup Job</h3>
             <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>&#160;system procedure to schedule a job that performs a daily incremental or full backup of your database:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP( <span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupType</span>, <span class="ItalicFont">startHour</span> );
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP( <span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupType</span>, <span class="ItalicFont">startHour</span> );
 </pre>
             </div>
             <div class="paramList">
@@ -121,7 +121,7 @@ folder: OnPrem
             </div>
             <h3 id="Running">Running an Immediate Backup</h3>
             <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span> system procedure to immediately run a full or incremental backup.</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( <span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupType</span> );
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( <span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupType</span> );
 </pre>
             </div>
             <div class="paramList">
@@ -144,7 +144,7 @@ folder: OnPrem
             <h3 id="Restorin">Restoring Your Database From a Previous Backup</h3>
             <p>You can restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure. Note that if you've been using incremental backups, you will need to first restore from the initial full backup, and then successively restore from each incremental backup. See the examples section below.</p>
             <p>To restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE(<span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupId</span>); </pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE(<span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupId</span>); </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">backupDir</p>
@@ -236,7 +236,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
             </div>
             <h3 id="Cancelin">Canceling a Scheduled Backup</h3>
             <p>You can cancel a daily backup with the <span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>&#160;system procedure:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( <span class="ItalicFont">jobId</span> ); </pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( <span class="ItalicFont">jobId</span> ); </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">jobId</p>
@@ -250,7 +250,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
             </div>
             <h3 id="CancelB">Canceling a Backup That's In Progress</h3>
             <p>You can call the <span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span>&#160;system procedure to cancel a backup that is currently running:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_BACKUP(  ); </pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_BACKUP(  ); </pre>
             </div>
             <div class="paramList">
                 <h4>Example:&#160;Cancel a running backup</h4>
@@ -260,7 +260,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
             </div>
             <h3 id="Deleting">Deleting a Backup</h3>
             <p>Use the <a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>&#160;system procedure to delete a single backup:</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_BACKUP( <span class="ItalicFont">backupId</span> ); </pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_BACKUP( <span class="ItalicFont">backupId</span> ); </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">backupId</p>
@@ -273,7 +273,7 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
             </div>
             <h3 id="DeleteOld">Deleting Outdated Backups</h3>
             <p>Use the <span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>&#160;system procedure to delete all backups that are older than a certain number of days.</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( <span class="ItalicFont">backupWindow</span> ); </pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( <span class="ItalicFont">backupWindow</span> ); </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">backupWindow</p>

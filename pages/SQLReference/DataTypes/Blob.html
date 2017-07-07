@@ -1,7 +1,7 @@
 ---
 title: BLOB data type
 summary: The BLOB (binary large object) data type is used for varying-length binary strings that can be up to 2,147,483,647 characters long.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -15,7 +15,7 @@ folder: SQLReference/DataTypes
             <div class="noteRestriction">If you're using a BLOB with the 32-bit version of our ODBC&#160;driver, the size of the BLOB&#160;is limited to 512 MB, due to address space limitations.</div>
             <p>Like other binary types, <span class="CodeFont">BLOB</span>strings are not associated with a code page. In addition, <span class="CodeFont">BLOB</span>strings do not hold character data.</p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax" xml:space="preserve">{BLOB | BINARY&#160;LARGE OBJECT} [ ( <span class="ItalicFont">length</span> [{K |M |G}] ) ]</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{BLOB | BINARY&#160;LARGE OBJECT} [ ( <span class="ItalicFont">length</span> [{K |M |G}] ) ]</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">length</p>
@@ -28,10 +28,10 @@ folder: SQLReference/DataTypes
                 <p class="paramDefnFirst">If specified, indicates that the length value is in multiples of 1024*1024*1024&#160;(gigabytes).</p>
             </div>
             <p class="heading2">Corresponding Compile-time Java Type</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax">java.sql.Blob</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">java.sql.Blob</pre>
             </div>
             <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
-            <div class="fcnWrapper"><pre class="FcnSyntax">BLOB</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">BLOB</pre>
             </div>
             <p class="heading2">Usage Notes</p>
             <p>Use the <span class="ItalicFont">getBlob</span> method on the <span class="ItalicFont">java.sql.ResultSet</span> to retrieve a <span class="CodeFont">BLOB</span> handle to the underlying data.</p>
@@ -60,10 +60,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ExampleInsertBlob {
-    
+
     /**
      * Example of inserting a blob using JDBC
-     * 
+     *
      * @param args[0] - Image file to insert
      * @param args[1] - JDBC URL - optional - defaults to localhost
      */
@@ -71,51 +71,51 @@ public class ExampleInsertBlob {
         Connection conn = null;
         Statement statement = null;
         ResultSet rs = null;
-        
+
         if(args.length == 0) {
             System.out.println("You must pass in an file (like an image) to be loaded");
         }
-        
+
         try {
-            
+
             String imageFileToLoad = args[0];
-            
+
             //Default JDBC Connection String - connects to local database
             String dbUrl = "jdbc:splice://localhost:1527/splicedb;user=splice;password=true";
-            
+
             //Checks to see if a JDBC URL is passed in
             if(args.length &gt; 1) {
                 dbUrl = args[1];
-            } 
-            
+            }
+
             //For the JDBC Driver - Use the Splice Machine Client Driver
             Class.forName("com.splicemachine.db.jdbc.ClientDriver");
-            
+
             //Connect to the databae
             conn = DriverManager.getConnection(dbUrl);
-            
+
             //Create a statement
             statement = conn.createStatement();
-            
+
             //Create a table
             statement.execute("CREATE TABLE IMAGES(a INT, test BLOB)");
-            
+
 
             //Create an input stream
             InputStream fin = new FileInputStream(imageFileToLoad);
             PreparedStatement ps = conn.prepareStatement("INSERT INTO IMAGES VALUES (?, ?)");
             ps.setInt(1, 1477);
-            
+
             // - set value of input parameter to the input stream
             ps.setBinaryStream(2, fin);
             ps.execute();
-            
+
             ps.close();
-            
+
             //Lets get the count of records
             rs = statement.executeQuery("select count(1) from IMAGES");
-            if(rs.next()) { 
-                System.out.println("count=[" + rs.getInt(1) + "]"); 
+            if(rs.next()) {
+                System.out.println("count=[" + rs.getInt(1) + "]");
             }
 
         } catch (ClassNotFoundException cne) {
@@ -135,10 +135,10 @@ public class ExampleInsertBlob {
             if(conn != null) {
                 try { conn.close(); } catch (Exception ignore) { }
             }
-            
+
         }
     }
-   
+
 }</pre>
             </div>
         </div>

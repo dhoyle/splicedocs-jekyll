@@ -344,6 +344,7 @@
 
 
 
+
 ﻿
 
 
@@ -426,7 +427,7 @@
 	<section>
 		<div class="TopicContent">
             <div>
-                <h1 id="kanchor100">Update Notes for Splice Machine Version 2.6</h1>
+                <h1 id="kanchor100">Update Notes for Splice Machine Version 2.6.1</h1>
                 <p>This topic describes significant updates in this release and recent, previous releases of Splice Machine.</p>
                 <ul>
                     <li value="1"><a href="#General">General Notes</a> includes notes that apply to all Splice&#160;Machine releases.</li>
@@ -452,7 +453,7 @@
                     </tbody>
                 </table>
                 <h2 id="Updates">Updates in This Version</h2>
-                <p>This section summarizes significant updates to the Splice Machine software and documentation since the previous release, which was version 2.5. This section includes the following sections:</p>
+                <p>This section summarizes significant updates to the Splice Machine software and documentation since the previous release, which was version 2.6. This section includes the following sections:</p>
                 <ul>
                     <li value="1"><a href="#Performa">Performance Enhancements</a>
                     </li>
@@ -491,7 +492,7 @@
                     </tbody>
                 </table>
                 <h3 id="New">New and Updated Features</h3>
-                <p>This section summarizes important feature updates that have been made to the current release (Product Release Version 2.6)&#160;of Splice Machine since release 2.5.</p>
+                <p>This section summarizes important feature updates that have been made to the current release (Product Release Version 2.6.1)&#160;of Splice Machine since release 2.6.</p>
                 <table summary="Summary of new and updated features in this release">
                     <col style="width: 28px;" />
                     <col />
@@ -520,8 +521,8 @@
                             <p>Our <a href="tutorials_connect_haproxy.html">Configuring HAProxy</a> topic walks you through configuring HAProxy on a non-Splice Machine cluster node, and how to use HAProxy with Splice Machine on a Kerberos-enabled cluster.</p>
                         </td>
                     </tr>
- 
- 
+
+
                         <tr>
                             <td class="BoldFont">2.5</td>
                             <td class="ItalicFont">BULK_IMPORT_HFILE</td>
@@ -542,8 +543,19 @@
                         </tr>
                         <tr>
                             <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">DBaaS</td>
-                            <td>Our new <span class="CalloutFont">Database-as-a-Service</span> offering is now available.</td>
+                            <td class="ItalicFont">Bulk HFile Delete</td>
+                            <td>
+                                <p>Our new <span class="CalloutFont">Bulk HFile Delete</span> features generates HFiles for deleting large amounts of data, which significantly speeds up bulk deletion by bypassing the Splice Machine write pipeline and HBase write path.</p>
+                                <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete"><span class="CodeFont">DELETE</span></a> statement</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">2.5</td>
+                            <td class="ItalicFont">Snapshot</td>
+                            <td>
+                                <p>Our new <span class="CalloutFont">Bulk HFile Delete</span> features generates HFiles for deleting large amounts of data, which significantly speeds up bulk deletion by bypassing the Splice Machine write pipeline and HBase write path.</p>
+                                <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete"><span class="CodeFont">DELETE</span></a> statement</p>
+                            </td>
                         </tr>
                         <tr>
                             <td class="BoldFont">2.5</td>
@@ -1304,7 +1316,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jun 26, 2017 <br />
+ Site last generated: Jul 6, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

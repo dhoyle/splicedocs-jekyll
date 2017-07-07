@@ -1,7 +1,7 @@
 ---
 summary: How to download, install, configure and verify your installation of Splice Machine on CDH.
 title: Installing and Configuring Splice Machine for Cloudera Manager
-keywords: 
+keywords:
 toc: false
 product: onprem
 sidebar:  onprem_sidebar
@@ -505,48 +505,48 @@ $MR2_CLASSPATH
                         </li>
                         <li value="2">
                             <p id="HBaseAdvConfigStep">Set the value of <span class="CodeFont">HBase Service Advanced&#160;Configuration Snippet (Safety Valve)</span>&#160;for <span class="CodeFont">hbase-site.xml</span>:</p>
-                            <div class="preWrapperWide"><pre class="Example">‹property&gt;‹name&gt;dfs.client.read.shortcircuit.buffer.size‹/name&gt;‹value&gt;131072‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.balancer.period‹/name&gt;‹value&gt;60000‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.client.ipc.pool.size‹/name&gt;‹value&gt;10‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.client.max.perregion.tasks‹/name&gt;‹value&gt;100‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.coprocessor.regionserver.classes‹/name&gt;‹value&gt;com.splicemachine.hbase.RegionServerLifecycleObserver‹/value&gt;‹/property&gt;‹property&gt;‹name&gt;hbase.hstore.defaultengine.compactionpolicy.class‹/name&gt;‹value&gt;com.splicemachine.compactions.SpliceDefaultCompactionPolicy‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.hstore.defaultengine.compactor.class‹/name&gt;‹value&gt;com.splicemachine.compactions.SpliceDefaultCompactor‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.htable.threads.max‹/name&gt;‹value&gt;96‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.ipc.warn.response.size‹/name&gt;‹value&gt;-1‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.ipc.warn.response.time‹/name&gt;‹value&gt;-1‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.master.loadbalance.bytable‹/name&gt;‹value&gt;true‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.mvcc.impl‹/name&gt;‹value&gt;org.apache.hadoop.hbase.regionserver.SIMultiVersionConsistencyControl‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.regions.slop‹/name&gt;‹value&gt;0.01‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.regionserver.global.memstore.size.lower.limit‹/name&gt;‹value&gt;0.9‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.regionserver.global.memstore.size‹/name&gt;‹value&gt;0.25‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.regionserver.maxlogs‹/name&gt;‹value&gt;48‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.regionserver.wal.enablecompression‹/name&gt;‹value&gt;true‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.rowlock.wait.duration‹/name&gt;‹value&gt;0‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.status.multicast.port‹/name&gt;‹value&gt;16100‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.wal.disruptor.batch‹/name&gt;‹value&gt;true‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.wal.provider‹/name&gt;‹value&gt;multiwal‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.wal.regiongrouping.numgroups‹/name&gt;‹value&gt;16‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.zookeeper.property.tickTime‹/name&gt;‹value&gt;6000‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hfile.block.bloom.cacheonwrite‹/name&gt;‹value&gt;true‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;io.storefile.bloom.error.rate‹/name&gt;‹value&gt;0.005‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.client.numConnections‹/name&gt;‹value&gt;1‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.client.write.maxDependentWrites‹/name&gt;‹value&gt;60000‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.client.write.maxIndependentWrites‹/name&gt;‹value&gt;60000‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.compression‹/name&gt;‹value&gt;snappy‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.marshal.kryoPoolSize‹/name&gt;‹value&gt;1100‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.olap_server.clientWaitTime‹/name&gt;‹value&gt;900000‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.ring.bufferSize‹/name&gt;‹value&gt;131072‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.splitBlockSize‹/name&gt;‹value&gt;67108864‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.timestamp_server.clientWaitTime‹/name&gt;‹value&gt;120000‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.txn.activeTxns.cacheSize‹/name&gt;‹value&gt;10240‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.txn.completedTxns.concurrency‹/name&gt;‹value&gt;128‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.txn.concurrencyLevel‹/name&gt;‹value&gt;4096‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.hstore.compaction.max.size‹/name&gt;‹value&gt;260046848‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.hstore.compaction.min.size‹/name&gt;‹value&gt;16777216‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.hstore.compaction.min‹/name&gt;‹value&gt;5‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;hbase.regionserver.thread.compaction.large‹/name&gt;‹value&gt;1‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.authentication.native.algorithm‹/name&gt;‹value&gt;SHA-512‹/value&gt;‹/property&gt;
-‹property&gt;‹name&gt;splice.authentication‹/name&gt;‹value&gt;NATIVE‹/value&gt;‹/property&gt;</pre>
+                            <div class="preWrapperWide"><pre class="Example">&lt;property&gt;&lt;name&gt;dfs.client.read.shortcircuit.buffer.size&lt;/name&gt;&lt;value&gt;131072&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.balancer.period&lt;/name&gt;&lt;value&gt;60000&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.client.ipc.pool.size&lt;/name&gt;&lt;value&gt;10&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.client.max.perregion.tasks&lt;/name&gt;&lt;value&gt;100&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.coprocessor.regionserver.classes&lt;/name&gt;&lt;value&gt;com.splicemachine.hbase.RegionServerLifecycleObserver&lt;/value&gt;&lt;/property&gt;&lt;property&gt;&lt;name&gt;hbase.hstore.defaultengine.compactionpolicy.class&lt;/name&gt;&lt;value&gt;com.splicemachine.compactions.SpliceDefaultCompactionPolicy&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.hstore.defaultengine.compactor.class&lt;/name&gt;&lt;value&gt;com.splicemachine.compactions.SpliceDefaultCompactor&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.htable.threads.max&lt;/name&gt;&lt;value&gt;96&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.ipc.warn.response.size&lt;/name&gt;&lt;value&gt;-1&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.ipc.warn.response.time&lt;/name&gt;&lt;value&gt;-1&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.master.loadbalance.bytable&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.mvcc.impl&lt;/name&gt;&lt;value&gt;org.apache.hadoop.hbase.regionserver.SIMultiVersionConsistencyControl&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.regions.slop&lt;/name&gt;&lt;value&gt;0.01&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.regionserver.global.memstore.size.lower.limit&lt;/name&gt;&lt;value&gt;0.9&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.regionserver.global.memstore.size&lt;/name&gt;&lt;value&gt;0.25&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.regionserver.maxlogs&lt;/name&gt;&lt;value&gt;48&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.regionserver.wal.enablecompression&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.rowlock.wait.duration&lt;/name&gt;&lt;value&gt;0&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.status.multicast.port&lt;/name&gt;&lt;value&gt;16100&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.wal.disruptor.batch&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.wal.provider&lt;/name&gt;&lt;value&gt;multiwal&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.wal.regiongrouping.numgroups&lt;/name&gt;&lt;value&gt;16&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.zookeeper.property.tickTime&lt;/name&gt;&lt;value&gt;6000&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hfile.block.bloom.cacheonwrite&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;io.storefile.bloom.error.rate&lt;/name&gt;&lt;value&gt;0.005&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.client.numConnections&lt;/name&gt;&lt;value&gt;1&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.client.write.maxDependentWrites&lt;/name&gt;&lt;value&gt;60000&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.client.write.maxIndependentWrites&lt;/name&gt;&lt;value&gt;60000&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.compression&lt;/name&gt;&lt;value&gt;snappy&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.marshal.kryoPoolSize&lt;/name&gt;&lt;value&gt;1100&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.olap_server.clientWaitTime&lt;/name&gt;&lt;value&gt;900000&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.ring.bufferSize&lt;/name&gt;&lt;value&gt;131072&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.splitBlockSize&lt;/name&gt;&lt;value&gt;67108864&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.timestamp_server.clientWaitTime&lt;/name&gt;&lt;value&gt;120000&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.txn.activeTxns.cacheSize&lt;/name&gt;&lt;value&gt;10240&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.txn.completedTxns.concurrency&lt;/name&gt;&lt;value&gt;128&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.txn.concurrencyLevel&lt;/name&gt;&lt;value&gt;4096&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.hstore.compaction.max.size&lt;/name&gt;&lt;value&gt;260046848&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.hstore.compaction.min.size&lt;/name&gt;&lt;value&gt;16777216&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.hstore.compaction.min&lt;/name&gt;&lt;value&gt;5&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;hbase.regionserver.thread.compaction.large&lt;/name&gt;&lt;value&gt;1&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.authentication.native.algorithm&lt;/name&gt;&lt;value&gt;SHA-512&lt;/value&gt;&lt;/property&gt;
+&lt;property&gt;&lt;name&gt;splice.authentication&lt;/name&gt;&lt;value&gt;NATIVE&lt;/value&gt;&lt;/property&gt;</pre>
                             </div>
                         </li>
                         <li value="3">

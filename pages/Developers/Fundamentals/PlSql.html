@@ -134,7 +134,7 @@ EXCEPTION
             <li>An optional exception section</li>
         </ul>
         <p>The syntax for specifying functions and procedures is:</p>
-        <div class="fcnWrapper"><pre class="FcnSyntax">CREATE [OR REPLACE] FUNCTION function_name
+        <div class="fcnWrapperWide"><pre class="FcnSyntax">CREATE [OR REPLACE] FUNCTION function_name
  &#160;&#160;[(parameter_name [IN | OUT | IN OUT] type [, ...])]
 &#160;&#160;&#160;RETURN return_datatype&#160;
 &#160;&#160;&#160;{IS | AS}
@@ -142,7 +142,7 @@ BEGIN
    &lt; function_body &gt;
 END [function_name];</pre>
         </div>
-        <div class="fcnWrapper"><pre class="FcnSyntax">CREATE [OR REPLACE] PROCEDURE&#160;procedure_name
+        <div class="fcnWrapperWide"><pre class="FcnSyntax">CREATE [OR REPLACE] PROCEDURE&#160;procedure_name
  &#160;&#160;[(parameter_name [IN | OUT | IN OUT] type [, ...])]
 &#160;&#160;&#160;{IS | AS}
 BEGIN
@@ -170,14 +170,14 @@ END;<br />/
         <ul>
             <li>
                 <p>You can raise exceptions by name in your code:</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax">RAISE&#160;&lt;exception_name&gt;;</pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax">RAISE&#160;&lt;exception_name&gt;;</pre>
                 </div>
             </li>
             <li>Each block can contain an optional exception section that begins with the <span class="CodeFont">exception</span> keyword.</li>
             <li>The exception section can contain any number of exception handlers, each of which is defined in a <span class="CodeFont">WHEN</span>&#160;statement.</li>
             <li>
                 <p>Each <span class="CodeFont">WHEN</span> statement handles a specific <span class="CodeFont">exception_name</span>:</p>
-                <div class="fcnWrapper"><pre class="FcnSyntax">WHEN&#160;&lt;exception_name&gt;;</pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax">WHEN&#160;&lt;exception_name&gt;;</pre>
                 </div>
             </li>
             <li>The exception name <span class="CodeFont">others</span> is used to define an exception handler that handles any exceptions not specifically handled by another <span class="CodeFont">WHEN</span>&#160;statement.</li>

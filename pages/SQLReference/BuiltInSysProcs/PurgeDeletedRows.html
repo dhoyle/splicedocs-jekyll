@@ -1,0 +1,37 @@
+---
+title: SYSCS_UTIL.SET_PURGE_DELETED_ROWS built-in system procedure
+summary: Built-in system procedure that tells Splice Machine to physically purge deleted rows when a major compaction is next run.
+keywords:
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_purgedeletedrows.html
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1 id="kanchor262a">SYSCS_UTIL.SET_PURGE_DELETED_ROWS</h1>
+            <p>The <samp>SYSCS_UTIL.SET_PURGE_DELETED_ROWS</samp> system procedure enables (or disables) physical deletion of logically deleted rows from a specific table.</p>
+            <p class="heading2">Syntax</p>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SET_PURGE_DELETED_ROWS( VARCHAR&#160;<span class="ItalicFont">schema</span>,
+                                  VARCHAR&#160;<span class="ItalicFont">table</span>,
+                                  VARCHAR&#160;<span class="ItalicFont">enable</span> );</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schema</p>
+                <p class="paramDefnFirst">The name of the schema.</p>
+                <p class="paramName">table</p>
+                <p class="paramDefnFirst">The name of the table</p>
+                <p class="paramName">enable</p>
+                <p class="paramDefnFirst">A Boolean specifying whether or not to physically delete rows that have been logically deleted during major compaction.</p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>This procedure does not return a result.</p>
+            <p class="heading2">Execute Privileges</p>
+            <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
+            <p class="heading2">Example</p>
+            <p>This specifies that deleted rows from <span class="CodeFont">my_table</span> will be physically deleted when the next major compaction is run:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CALL SYSCS_UTIL.SET_PURGE_DELETED_ROWS('SPLICE', 'my_table', true); </pre>
+            </div>
+        </div>
+	</section>
