@@ -193,15 +193,6 @@
                 
                 
                 
-			<li>
-
-
-
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Importing Data into Your Splice Machine Database page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
-
-</li>
-
-		
                 <!--comment out this block if you want to hide search-->
                 <li>
                     <!--start search-->
@@ -595,6 +586,7 @@
                         <td>
                             <p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
                             <p>If you're importing data from an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
+                            <div class="noteIcon">You must specify a directory in an S3 bucket when importing data into your Splice Machine Database-as-Service database, and you must possess the access key/secret key pair for that S3 bucket.</div>
                             <p>See these tips:</p>
                             <ul class="bullet">
                                 <li value="1"><a href="#Tip">Tip #1: &#160;Specifying the File Location
@@ -669,7 +661,13 @@
                         <td class="CodeFont">badRecordDirectory</td>
                         <td>
                             <p>The directory in which bad record information is logged. Splice Machine logs information to the <span class="CodeFont"><span class="CodeItalicFont">&lt;import_file_name&gt;</span>.bad</span> file in this directory; for example, bad records in an input file named <span class="CodeFont">foo.csv</span> would be logged to a file named <span class="ItalicFont">badRecordDirectory</span><span class="CodeFont">/foo.csv.bad</span>.</p>
-                            <p>See <a href="#Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a>.</p>
+                            <p>If you're logging bad record information to an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
+                            <div class="noteIcon">you must specify a directory in an S3 bucket when importing data into your Splice Machine Database-as-Service database, and you must possess the access key/secret key pair for that S3 bucket.</div>
+                            <p>See these tips:</p>
+                            <ul class="bullet">
+                                <li><a href="#Tip">Tip #1: &#160;Specifying the File Location</a></li>
+                                <li><a href="#Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a>.</p>
+                            </ul>
                         </td>
                         <td class="CodeFont">'importErrsDir'</td>
                     </tr>
@@ -714,7 +712,7 @@
             </div>
             <p>When you import the file into <span class="CodeFont">playerTeams</span>, only the first two columns are imported:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams',null, 'myData.csv',
-   null, null, null, null, null, 0, 'importErrsDir', true, null);<br /><br />SELECT&#160;*&#160;FROM&#160;playerTeams ORDER&#160;by ID;<br />ID   |TEAM &#160;  
+   null, null, null, null, null, 0, 'importErrsDir', true, null);<br /><br />SELECT&#160;*&#160;FROM&#160;playerTeams ORDER&#160;by ID;<br />ID   |TEAM &#160;
 --------------
 1    |Cards<br />2    |Giants
 3    |Royals<br /><br />3 rows selected
@@ -723,7 +721,7 @@
             <h3 id="Example2">Example 2: Importing a subset of data from a file into a table</h3>
             <p>This example uses the same table and import file as does the previous example, and it produces the same results, The difference between these two examples is that this one explicitly imports only the first two columns (which are named <span class="CodeFont">ID</span>&#160;and <span class="CodeFont">TEAM</span>)&#160;of the file:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams', 'ID, TEAM', 'myData.csv',
- null, null, null, null, null, 0, 'importErrsDir', true, null);<br /><br />SELECT&#160;*&#160;FROM&#160;playerTeams ORDER&#160;by ID;<br />ID   |TEAM&#160;   
+ null, null, null, null, null, 0, 'importErrsDir', true, null);<br /><br />SELECT&#160;*&#160;FROM&#160;playerTeams ORDER&#160;by ID;<br />ID   |TEAM&#160;
 --------------
 1    |Cards<br />2    |Giants
 3    |Royals<br /><br />3 rows selected
@@ -738,7 +736,7 @@ Mike,2013-03-23 09:45:00.68-05</pre>
             <p>You can then import the data with the following call:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA('app','tabx','c1,c2',
 	'/path/to/ts3.csv',
-	',', '''', 
+	',', '''',
 	<span class="BoldFont">'yyyy-MM-dd HH:mm:ss.SSZ'</span>,
 	null, null, 0, null, true, null);</pre>
             </div>
@@ -795,7 +793,7 @@ This is the second line of the field',Baker
             </ol>
             <h3 id="Tip">Tip #1: &#160;Specifying the File Location
 </h3>
-            <p>Some customers get confused by the the <span class="CodeFont">fileOrDirectoryName</span> parameter. How you use this depends on whether you are importing a single file or a directory of files. It also depends on whether you're running the standalone or cluster version of Splice&#160;Machine.</p>
+            <p>Some customers get confused by the the <span class="CodeFont">fileOrDirectoryName</span> parameter. How you use this depends on whether you are importing a single file or a directory of files. It also depends on which version of Splice Machine you are running: the cloud-managed Splice Machine Database-as-Service, on a managed cluster, or a standalone version.</p>
             <p>If you are running a stand alone environment, the name or path will be to a file or directory on the file system. For example:</p>
             <div class="preWrapperWide"><pre class="Example">/users/myname/mydata/mytable.csv<br />/users/myname/mydatadir</pre>
             </div>
@@ -804,8 +802,8 @@ For example:</p>
             <div class="preWrapperWide"><pre class="Example">/data/mydata/mytable.csv<br />/data/myname/mydatadir</pre>
             </div>
             <h4>Specifying an AWS&#160;S3 File Location</h4>
-            <p>Finally, if you're importing data from an S3 bucket, you need to supply your AWS access and secret key codes, and you need to specify an s3a URL. You can include the access keys inline; for example:</p>
-            <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(<span class="Highlighted">access key</span>):(<span class="Highlighted">secret key</span>)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, '/Users/hive', true, null);</pre>
+            <p>Finally, if you're importing data from an S3 bucket, you need to supply your AWS access and secret key codes, and you need to specify an s3a URL. Similarly for logging bad record information to an S3 bucket directory, as will be the case when using our Database-as-Service product. You can include the access keys inline; for example:</p>
+            <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(<span class="Highlighted">access key</span>):(<span class="Highlighted">secret key</span>)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, 's3a://(<span class="Highlighted">access key</span>):(<span class="Highlighted">secret key</span>)@splice-benchmark-data/flat/TPCH/100/importLog', true, null);</pre>
             </div>
             <p>Alternatively, you can define the keys once in the <span class="CodeFont">core-site.xml</span> file on your cluster, and then simply specify the <span class="CodeFont">s3a</span> URL; for example:</p>
             <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, 0, '/BAD', true, null);</pre>
@@ -932,7 +930,7 @@ For example:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 6, 2017 <br />
+ Site last generated: Jul 7, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
