@@ -651,10 +651,10 @@
                 <h3 id="About">About the Splice Machine SparkMLibUtils Class API</h3>
                 <p>Our example makes use of the Splice Machine <span class="CodeFont">com.splicemachine.example.SparkMLibUtils</span> class, which you can use to interface between your Splice&#160;Machine database and the Spark Machine Learning library.</p>
                 <p>Here's are the public methods from the <span class="CodeFont">SparkMLibUtils</span> class:</p>
-                <div class="preWrapperWide"><pre class="Example">public static JavaRDD‹LocatedRow&gt; resultSetToRDD(ResultSet rs)
+                <div class="preWrapperWide"><pre class="Example">public static JavaRDDLocatedRow&gt; resultSetToRDD(ResultSet rs)
    throws StandardException;
 
-public static JavaRDD‹Vector&gt; locatedRowRDDToVectorRDD(JavaRDD‹LocatedRow&gt; locatedRowJavaRDD, int[] fieldsToConvert)
+public static JavaRDDVector&gt; locatedRowRDDToVectorRDD(JavaRDDLocatedRow&gt; locatedRowJavaRDD, int[] fieldsToConvert)
    throws StandardException;
 
 public static Vector convertExecRowToVector(ExecRow execRow,int[] fieldsToConvert)
@@ -685,7 +685,7 @@ public static Vector convertExecRowToVector(ExecRow execRow)
             ResultSet rs = ps.executeQuery();
 
             // Convert result set to Java RDD
-            JavaRDD‹LocatedRow&gt; resultSetRDD = ResultSetToRDD(rs);
+            JavaRDDLocatedRow&gt; resultSetRDD = ResultSetToRDD(rs);
 
             // Collect column statistics
             int[] fieldsToConvert = getFieldsToConvert(ps);
@@ -743,11 +743,11 @@ resultSets[0] = new EmbedResultSet40((EmbedConnection)con, resultsToWrap, false,
                         <li value="2">
                             <p class="topLevel">Create your custom procedure</p>
                             <p class="indentLevel1">First we create a procedure in our database that references the <span class="CodeFont">getStatementStatistics</span> method in our API, which takes an SQL&#160;query as its input and uses Spark to calculate statistics for the query using MLlib:</p>
-                            <div class="preWrapperWide"><pre class="Example">CREATE PROCEDURE getStatementStatistics(statement varchar(1024)) 
+                            <div class="preWrapperWide"><pre class="Example">CREATE PROCEDURE getStatementStatistics(statement varchar(1024))
  &#160;&#160;PARAMETER STYLE JAVA
-&#160;&#160;&#160;LANGUAGE JAVA 
-&#160;&#160;&#160;READS SQL DATA 
-&#160;&#160;&#160;DYNAMIC RESULT SETS 1 
+&#160;&#160;&#160;LANGUAGE JAVA
+&#160;&#160;&#160;READS SQL DATA
+&#160;&#160;&#160;DYNAMIC RESULT SETS 1
 &#160;&#160;&#160;EXTERNAL NAME 'com.splicemachine.example.SparkStatistics.getStatementStatistics';</pre>
                             </div>
                         </li>
@@ -823,7 +823,7 @@ public class SparkStatistics {
             ResultSet rs = ps.executeQuery();
 
             // Convert result set to Java RDD
-            JavaRDD‹LocatedRow&gt; resultSetRDD = ResultSetToRDD(rs);
+            JavaRDDLocatedRow&gt; resultSetRDD = ResultSetToRDD(rs);
 
             // Collect column statistics
             int[] fieldsToConvert = getFieldsToConvert(ps);
@@ -836,9 +836,9 @@ public class SparkStatistics {
         }
     }
 
-    private static MultivariateStatisticalSummary getColumnStatisticsSummary(JavaRDD‹LocatedRow&gt; resultSetRDD,
+    private static MultivariateStatisticalSummary getColumnStatisticsSummary(JavaRDDLocatedRow&gt; resultSetRDD,
                                                                      int[] fieldsToConvert) throws StandardException{
-        JavaRDD‹Vector&gt; vectorJavaRDD = SparkMLibUtils.locatedRowRDDToVectorRDD(resultSetRDD, fieldsToConvert);
+        JavaRDDVector&gt; vectorJavaRDD = SparkMLibUtils.locatedRowRDDToVectorRDD(resultSetRDD, fieldsToConvert);
         MultivariateStatisticalSummary summary = Statistics.colStats(vectorJavaRDD.rdd());
         return summary;
     }
@@ -847,11 +847,11 @@ public class SparkStatistics {
     /*
      * Convert a ResultSet to JavaRDD
      */
-    private static JavaRDD‹LocatedRow&gt; ResultSetToRDD (ResultSet resultSet) throws StandardException{
+    private static JavaRDDLocatedRow&gt; ResultSetToRDD (ResultSet resultSet) throws StandardException{
         EmbedResultSet40 ers = (EmbedResultSet40)resultSet;
 
         com.splicemachine.db.iapi.sql.ResultSet rs = ers.getUnderlyingResultSet();
-        JavaRDD‹LocatedRow&gt; resultSetRDD = SparkMLibUtils.resultSetToRDD(rs);
+        JavaRDDLocatedRow&gt; resultSetRDD = SparkMLibUtils.resultSetToRDD(rs);
 
         return resultSetRDD;
     }
@@ -861,7 +861,7 @@ public class SparkStatistics {
         ResultSetMetaData metaData = ps.getMetaData();
         int columnCount = metaData.getColumnCount();
         int[] fieldsToConvert = new int[columnCount];
-        for (int i = 0; i ‹ columnCount; ++i) {
+        for (int i = 0; i  columnCount; ++i) {
             fieldsToConvert[i] = i+1;
         }
         return fieldsToConvert;
@@ -870,12 +870,12 @@ public class SparkStatistics {
     /*
      * Convert column statistics to an iterable row source
      */
-    private static Iterable‹ExecRow&gt; getColumnStatistics(PreparedStatement ps,
+    private static IterableExecRow&gt; getColumnStatistics(PreparedStatement ps,
                                                          MultivariateStatisticalSummary summary,
                                                          int[] fieldsToConvert) throws StandardException {
         try {
 
-            List‹ExecRow&gt; rows = Lists.newArrayList();
+            ListExecRow&gt; rows = Lists.newArrayList();
             ResultSetMetaData metaData = ps.getMetaData();
 
             double[] min = summary.min().toArray();
@@ -887,7 +887,7 @@ public class SparkStatistics {
             double[] normL2 = summary.normL2().toArray();
             long count = summary.count();
 
-            for (int i= 0; i ‹ fieldsToConvert.length; ++i) {
+            for (int i= 0; i  fieldsToConvert.length; ++i) {
                 int columnPosition = fieldsToConvert[i];
                 String columnName = metaData.getColumnName(columnPosition);
                 ExecRow row = new ValueRow(9);
@@ -909,7 +909,7 @@ public class SparkStatistics {
         }
     }
 
-    private static IteratorNoPutResultSet wrapResults(EmbedConnection conn, Iterable‹ExecRow&gt; rows) throws
+    private static IteratorNoPutResultSet wrapResults(EmbedConnection conn, IterableExecRow&gt; rows) throws
             StandardException {
         Activation lastActivation = conn.getLanguageConnection().getLastActivation();
         IteratorNoPutResultSet resultsToWrap = new IteratorNoPutResultSet(rows, STATEMENT_STATS_OUTPUT_COLUMNS,

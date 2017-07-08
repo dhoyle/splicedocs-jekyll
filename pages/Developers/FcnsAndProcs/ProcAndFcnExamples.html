@@ -1,7 +1,7 @@
 ---
 title: Examples of Splice Machine Functions and Procedures
 summary: Examples of creating and using database functions and stored procedures.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -61,7 +61,7 @@ public class ExampleStringFunctions {
 	 * Truncates a string to the number of words specified.  An input of
 	 * "Today is a wonderful day and I am looking forward to going to the beach.", 5
 	 * will return "Today is a wonderful day".
-	 * 
+	 *
 	 * @param inboundSentence
 	 * @param numberOfWords
 	 * @return
@@ -70,11 +70,11 @@ public class ExampleStringFunctions {
 		String truncatedString = "";
 		if(inboundSentence != null) {
 			String[] splitBySpace = inboundSentence.split("\\s+");
-			if(splitBySpace.length ‹= numberOfWords) {
+			if(splitBySpace.length = numberOfWords) {
 				truncatedString = inboundSentence;
 			} else {
 				StringBuilder sb = new StringBuilder();
-				for(int i=0; i‹numberOfWords; i++) {
+				for(int i=0; inumberOfWords; i++) {
 					if(i &gt; 0) sb.append(" ");
 					sb.append(splitBySpace[i]);
 				}
@@ -165,7 +165,7 @@ public class ExampleStoredProcedure {
       } catch (SQLException e) {
            throw e;
       }
-   } 
+   }
 }</pre>
                         </div>
                     </li>

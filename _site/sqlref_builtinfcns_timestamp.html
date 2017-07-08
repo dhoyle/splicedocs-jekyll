@@ -2775,36 +2775,36 @@
             <p class="heading2">Examples</p>
             <p>This example converts date and time strings into a timestamp value:</p>
             <div class="preWrapper"><pre class="Example">splice&gt; VALUES TIMESTAMP('2015-11-12', '19:02:43');
-1                            
+1
 -----------------------------
-2015-11-12 19:02:43.0        
+2015-11-12 19:02:43.0
 
 1 row selected</pre>
             </div>
             <p>This query shows the timestamp version of the birth date of each player born in the final quarter of the year:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT TIMESTAMP(BirthDate) 
-   FROM Players 
-   WHERE MONTH(BirthDate) &gt; 10 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT TIMESTAMP(BirthDate)
+   FROM Players
+   WHERE MONTH(BirthDate) &gt; 10
    ORDER BY BirthDate;
-1                            
+1
 -----------------------------
-1980-12-19 00:00:00.0        
-1983-11-06 00:00:00.0        
-1983-11-28 00:00:00.0        
-1983-12-24 00:00:00.0        
-1984-11-22 00:00:00.0        
-1985-11-07 00:00:00.0        
-1985-11-26 00:00:00.0        
-1985-12-21 00:00:00.0        
-1986-11-13 00:00:00.0        
-1986-11-24 00:00:00.0        
-1986-12-16 00:00:00.0        
-1987-11-12 00:00:00.0        
-1987-11-16 00:00:00.0        
-1987-12-17 00:00:00.0        
-1988-12-21 00:00:00.0        
-1989-11-17 00:00:00.0        
-1991-11-15 00:00:00.0        
+1980-12-19 00:00:00.0
+1983-11-06 00:00:00.0
+1983-11-28 00:00:00.0
+1983-12-24 00:00:00.0
+1984-11-22 00:00:00.0
+1985-11-07 00:00:00.0
+1985-11-26 00:00:00.0
+1985-12-21 00:00:00.0
+1986-11-13 00:00:00.0
+1986-11-24 00:00:00.0
+1986-12-16 00:00:00.0
+1987-11-12 00:00:00.0
+1987-11-16 00:00:00.0
+1987-12-17 00:00:00.0
+1988-12-21 00:00:00.0
+1989-11-17 00:00:00.0
+1991-11-15 00:00:00.0
 
 17 rows selected
 </pre>

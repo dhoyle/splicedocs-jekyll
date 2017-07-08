@@ -26,7 +26,7 @@ folder: Developers/Fundamentals
         <h3>Hello World in PL/SQL</h3>
         <p>Here's a basic PL/SQL&#160;version of "Hello World:"</p>
         <div class="preWrapperWide"><pre class="Example">
-DECLARE 
+DECLARE
    message  varchar2(20):= 'Hello, World!';
 BEGIN
    dbms_output.put_line(message);<br />EXCEPTION<br /> &#160;&#160;dbms_output.put_line('Uh-oh; something went wrong');
@@ -36,7 +36,7 @@ END;<br />/</pre>
         <h3>Invoking Splice*Plus</h3>
         <p><span class="ItalicFont">Splice*Plus</span> is automatically installed for you when you install Splice&#160;Machine. To run a PL/SQL&#160;program that you have stored in a text file, invoke <span class="AppCommand">spliceplus</span> and include the name of that file on the command line:</p><pre class="ShellCommand">%&#160;spliceplus helloworld.sql</pre>
         <p>You'll see your code loaded in and executed, and any results will display on your screen. For example:</p>
-        <div class="preWrapper"><pre class="ShellCommand">%&#160;spliceplus helloworld.sql<br />Source file is hellowworld.sql<br />Executing:<br />DECLARE 
+        <div class="preWrapper"><pre class="ShellCommand">%&#160;spliceplus helloworld.sql<br />Source file is hellowworld.sql<br />Executing:<br />DECLARE
    message  varchar2(20):= 'Hello, World!';
 BEGIN
    dbms_output.put_line(message);<br />EXCEPTION<br /> &#160;&#160;dbms_output.put_line('Uh-oh; something went wrong');

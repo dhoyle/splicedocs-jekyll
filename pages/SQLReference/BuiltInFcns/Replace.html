@@ -1,7 +1,7 @@
 ---
 title: REPLACE built-in SQL function
 summary: Built-in SQL function that replaces all occurrences of a substring in a string
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -34,8 +34,8 @@ folder: SQLReference/BuiltInFcns
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, Average, Team
    FROM Players JOIN Batting on Players.ID=Batting.ID
    WHERE Average &gt; 0.300 AND Games&gt;50;
-   
-DISPLAYNAME             |AVERAGE  |TEAM 
+
+DISPLAYNAME             |AVERAGE  |TEAM
 ------------------------------------------
 Buddy Painter           |0.31777  |Giants
 John Purser             |0.31151  |Giants
@@ -44,11 +44,11 @@ Stan Post               |0.30472  |Cards
 
 4 rows selected
 
-splice&gt; SELECT DisplayName, Average, 
+splice&gt; SELECT DisplayName, Average,
     REPLACE(Team, 'Cards', 'Giants') "TRADED"
-    FROM PLAYERS JOIN Batting ON Players.ID=Batting.ID 
+    FROM PLAYERS JOIN Batting ON Players.ID=Batting.ID
     WHERE Team='Cards' AND Average &gt; 0.300 AND Games &gt; 50;
-	
+
 DISPLAYNAME             |AVERAGE  |TRADED
 ------------------------------------------
 Stan Post               |0.30472  |Giants

@@ -646,7 +646,7 @@
 		client = new MqttClient(broker, clientId);
 		client.connect();
 		MqttMessage message = new MqttMessage();
-		for (int i=0; i‹numMessages; i++) {
+		for (int i=0; inumMessages; i++) {
 			// Build a csv string
 			message.setPayload( prefix + "Asset" + i ", Location" + i + "," + new Timestamp((new Date()).getTime())).getBytes());
 			client.publish(topicName, message);
@@ -677,7 +677,7 @@
 
         LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to read the MQTTUtils.createStream");
         //2. MQTTUtils to collect MQTT messages
-        JavaReceiverInputDStream‹String&gt; messages = MQTTUtils.createStream(jssc, broker, topic);
+        JavaReceiverInputDStreamString&gt; messages = MQTTUtils.createStream(jssc, broker, topic);
 
         LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to do foreachRDD");
         //process the messages on the queue and save them to the database
@@ -708,17 +708,17 @@
  * @author Erin Driggers
  */
 
-public class SaveRDD implements Function‹JavaRDD‹String&gt;, Void&gt;, Externalizable {
+public class SaveRDD implements FunctionJavaRDDString&gt;, Void&gt;, Externalizable {
 
     private static final Logger LOG = Logger.getLogger(SaveRDD.class);
 
     @Override
-    public Void call(JavaRDD‹String&gt; rddRFIDMessages) throws Exception {
+    public Void call(JavaRDDString&gt; rddRFIDMessages) throws Exception {
         LOG.debug("About to read results:");
         if (rddRFIDMessages != null '&amp; rddRFIDMessages.count() &gt; 0) {
             LOG.debug("Data to process:");
-            //Convert to list 
-            List‹String&gt; rfidMessages = rddRFIDMessages.collect();
+            //Convert to list
+            ListString&gt; rfidMessages = rddRFIDMessages.collect();
             int numRcds = rfidMessages.size();
 
             if (numRcds &gt; 0) {
@@ -755,11 +755,11 @@ PreparedStatement ps = con.prepareStatement(vtiStatement);</pre>
             <p>The <span class="CodeFont">RFIDMessageVTI</span>&#160;class implements an example of a virtual table interface that reads in a list of strings that are in CSV&#160;format, converts that into an <span class="CodeFont">RFIDMessage</span> object, and returns the resultant list in a format that is compatible with Splice&#160;Machine.</p>
             <p>This class features an override of the <span class="CodeFont">getDataSet</span> method, which loops through each CSV&#160;record from the input stream and converts it into an <span class="CodeFont">RFIDMessage</span> object that is added onto a list of message items:</p>
             <div class="preWrapperWide"><pre class="Example">    @Override
-    public DataSet‹LocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
+    public DataSetLocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
         operationContext = dsp.createOperationContext(op);
 
         //Create an arraylist to store the key / value pairs
-        ArrayList‹LocatedRow&gt; items = new ArrayList‹LocatedRow&gt;();
+        ArrayListLocatedRow&gt; items = new ArrayListLocatedRow&gt;();
 
         try {
 
@@ -781,7 +781,7 @@ PreparedStatement ps = con.prepareStatement(vtiStatement);</pre>
         } finally {
             operationContext.popScope();
         }
-        return new ControlDataSet‹&gt;(items);
+        return new ControlDataSet&gt;(items);
     }
 </pre>
             </div>

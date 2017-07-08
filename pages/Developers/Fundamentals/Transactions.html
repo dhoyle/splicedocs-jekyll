@@ -1,7 +1,7 @@
 ---
 title: Running Transactions
 summary: Introduces you to the basics of running transactions with Splice Machine.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -408,11 +408,11 @@ splice&gt; INSERT INTO myTbl VALUES 1,2,3;
 splice&gt; SAVEPOINT savept1;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
+1
+2
+3
 
 3 rows selected</pre>
             </div>
@@ -421,23 +421,23 @@ I
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; INSERT INTO myTbl VALUES 4,5;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
-4          
+1
+2
+3
+4
 5<br /><br />5 rows selected</pre>
             </div>
             <p>Now we roll back to our savepoint, and verify that the rollback worked:</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; ROLLBACK TO SAVEPOINT savept1;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
+1
+2
+3
 
 3 rows selected</pre>
             </div>

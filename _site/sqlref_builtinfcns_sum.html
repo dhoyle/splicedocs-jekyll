@@ -2784,52 +2784,52 @@ SELECT AVG (DISTINCT flying_time),
             <p class="heading2">Aggregate Examples</p>
             <p class="body">These queries compute the total of all salaries for all teams, and then the total for each individually.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT SUM(Salary) FROM Salaries;
-1                   
+1
 --------------------
-277275362           
+277275362
 
 1 row selected
 splice&gt; SELECT SUM(Salary) FROM Salaries JOIN Players ON Salaries.ID=Players.ID WHERE Team='Cards';
-1                   
+1
 --------------------
-97007230            
+97007230
 
 1 row selected
 splice&gt; SELECT SUM(Salary) FROM Salaries JOIN Players ON Salaries.ID=Players.ID WHERE Team='Giants';
-1                   
+1
 --------------------
-180268132           
+180268132
 
 1 row selected
 </pre>
             </div>
             <p class="heading2">Analytic Example</p>
             <p class="body">This example computes the running total of salaries, per team, counting only the players who make at least $5 million in salary.</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, Salary, 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, Salary,
    SUM(Salary) OVER(PARTITION BY Team ORDER BY Salary ASC
-               ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) "Running Total" 
-   FROM Players JOIN Salaries ON Players.ID=Salaries.ID 
-   WHERE Salary&gt;5000000 
+               ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) "Running Total"
+   FROM Players JOIN Salaries ON Players.ID=Salaries.ID
+   WHERE Salary&gt;5000000
    ORDER BY Team;
-   
-TEAM     |DISPLAYNAME             |SALARY              |RUNNING TOTAL        
+
+TEAM     |DISPLAYNAME             |SALARY              |RUNNING TOTAL
 ---------------------------------------------------------------------
-Cards    |Larry Lintos            |7000000             |7000000             
-Cards    |Jack Hellman            |8300000             |15300000            
-Cards    |James Grasser           |9375000             |24675000            
-Cards    |Yuri Milleton           |15200000            |39875000            
-Cards    |Mitch Hassleman         |17000000            |56875000            
-Giants   |Jalen Ardson            |6000000             |60000000            
-Giants   |Steve Raster            |6000000             |12000000            
-Giants   |Marcus Bamburger        |6950000             |18950000            
-Giants   |Mark Briste             |8000000             |26950000            
-Giants   |Jack Peepers            |9000000             |35950000            
-Giants   |Alex Paramour           |10250000            |46200000            
-Giants   |Thomas Hillman          |12000000            |58200000            
-Giants   |Buddy Painter           |17277777            |75477777            
-Giants   |Tam Lassiter            |18000000            |93477777            
-Giants   |Harry Pennello          |18500000            |111977777           
-Giants   |Martin Cassman          |20833333            |132811110           
+Cards    |Larry Lintos            |7000000             |7000000
+Cards    |Jack Hellman            |8300000             |15300000
+Cards    |James Grasser           |9375000             |24675000
+Cards    |Yuri Milleton           |15200000            |39875000
+Cards    |Mitch Hassleman         |17000000            |56875000
+Giants   |Jalen Ardson            |6000000             |60000000
+Giants   |Steve Raster            |6000000             |12000000
+Giants   |Marcus Bamburger        |6950000             |18950000
+Giants   |Mark Briste             |8000000             |26950000
+Giants   |Jack Peepers            |9000000             |35950000
+Giants   |Alex Paramour           |10250000            |46200000
+Giants   |Thomas Hillman          |12000000            |58200000
+Giants   |Buddy Painter           |17277777            |75477777
+Giants   |Tam Lassiter            |18000000            |93477777
+Giants   |Harry Pennello          |18500000            |111977777
+Giants   |Martin Cassman          |20833333            |132811110
 
 16 rows selected
 </pre>

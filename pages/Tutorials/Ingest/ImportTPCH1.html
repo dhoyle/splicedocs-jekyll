@@ -1,7 +1,7 @@
 ---
 title: Importing TPCH Data into Your Database
 summary: Walks you through importing TPCH data into your database.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar: tutorials_sidebar
@@ -29,13 +29,13 @@ folder: Tutorials/Ingest
 CREATE TABLE TPCH.LINEITEM (
  L_ORDERKEY BIGINT NOT NULL,
  L_PARTKEY INTEGER NOT NULL,
- L_SUPPKEY INTEGER NOT NULL, 
- L_LINENUMBER INTEGER NOT NULL, 
+ L_SUPPKEY INTEGER NOT NULL,
+ L_LINENUMBER INTEGER NOT NULL,
  L_QUANTITY DECIMAL(15,2),
  L_EXTENDEDPRICE DECIMAL(15,2),
  L_DISCOUNT DECIMAL(15,2),
  L_TAX DECIMAL(15,2),
- L_RETURNFLAG VARCHAR(1), 
+ L_RETURNFLAG VARCHAR(1),
  L_LINESTATUS VARCHAR(1),
  L_SHIPDATE DATE,
  L_COMMITDATE DATE,
@@ -71,11 +71,11 @@ CREATE TABLE TPCH.CUSTOMER (
 
 CREATE TABLE TPCH.PARTSUPP (
  PS_PARTKEY INTEGER NOT NULL ,
- PS_SUPPKEY INTEGER NOT NULL , 
+ PS_SUPPKEY INTEGER NOT NULL ,
  PS_AVAILQTY INTEGER,
  PS_SUPPLYCOST DECIMAL(15,2),
  PS_COMMENT VARCHAR(199),
- PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY) 
+ PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY)
  );
 
 CREATE TABLE TPCH.SUPPLIER (
@@ -153,7 +153,7 @@ select
 from
 	TPCH.lineitem
 where
-	l_shipdate ‹= date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))})
+	l_shipdate = date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))})
 group by
 	l_returnflag,
 	l_linestatus
@@ -192,7 +192,7 @@ select
 from
 	TPCH.lineitem
 where
-	l_shipdate ‹= date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))})
+	l_shipdate = date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))})
 group by
 	l_returnflag,
 	l_linestatus
@@ -268,18 +268,18 @@ from
 	TPCH.orders,
 	TPCH.lineitem
 where
-	c_mktsegment = 'BUILDING' 
+	c_mktsegment = 'BUILDING'
 	and c_custkey = o_custkey
 	and l_orderkey = o_orderkey
-	and o_orderdate ‹ date('1995-03-15') 
-	and l_shipdate ‹ date('1995-03-15') 
+	and o_orderdate  date('1995-03-15')
+	and l_shipdate  date('1995-03-15')
 group by
 	l_orderkey,
 	o_orderdate,
 	o_shippriority
 order by
 	revenue desc,
-	o_orderdate 
+	o_orderdate
 {limit 10}
 -- END OF QUERY</pre>
                             </div>
@@ -296,7 +296,7 @@ from
 	TPCH.orders
 where
 	o_orderdate &gt;= date('1993-07-01')
-	and o_orderdate ‹ add_months('1993-07-01',3)
+	and o_orderdate  add_months('1993-07-01',3)
 	and exists (
 		select
 			*
@@ -304,7 +304,7 @@ where
 			TPCH.lineitem
 		where
 			l_orderkey = o_orderkey
-			and l_commitdate ‹ l_receiptdate
+			and l_commitdate  l_receiptdate
 	)
 group by
 	o_orderpriority
@@ -337,7 +337,7 @@ where
 	and n_regionkey = r_regionkey
 	and r_name = 'ASIA'
 	and o_orderdate &gt;= date('1994-01-01')
-	and o_orderdate ‹ date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})
+	and o_orderdate  date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})
 group by
 	n_name
 order by
@@ -356,9 +356,9 @@ from
 	TPCH.lineitem
 where
 	l_shipdate &gt;= date('1994-01-01')
-	and l_shipdate ‹ date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})
+	and l_shipdate  date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})
 	and l_discount between .06 - 0.01 and .06 + 0.01
-	and l_quantity ‹ 24
+	and l_quantity  24
 -- END OF QUERY
 </pre>
                             </div>
@@ -518,7 +518,7 @@ where
 	c_custkey = o_custkey
 	and l_orderkey = o_orderkey
 	and o_orderdate &gt;= date('1993-10-01')
-	and o_orderdate ‹ ADD_MONTHS('1993-10-01',3) 
+	and o_orderdate  ADD_MONTHS('1993-10-01',3)
 	and l_returnflag = 'R'
 	and c_nationkey = n_nationkey
 group by
@@ -584,8 +584,8 @@ select
 		else 0
 	end) as high_line_count,
 	sum(case
-		when o_orderpriority ‹&gt; '1-URGENT'
-			and o_orderpriority ‹&gt; '2-HIGH'
+		when o_orderpriority &gt; '1-URGENT'
+			and o_orderpriority &gt; '2-HIGH'
 			then 1
 		else 0
 	end) as low_line_count
@@ -595,10 +595,10 @@ from
 where
 	o_orderkey = l_orderkey
 	and l_shipmode in ('MAIL', 'SHIP')
-	and l_commitdate ‹ l_receiptdate
-	and l_shipdate ‹ l_commitdate
+	and l_commitdate  l_receiptdate
+	and l_shipdate  l_commitdate
         and l_receiptdate &gt;= date('1994-01-01')
-        and l_receiptdate ‹ date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})
+        and l_receiptdate  date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})
 group by
 	l_shipmode
 order by
@@ -651,7 +651,7 @@ from
 where
 	l_partkey = p_partkey
 	and l_shipdate &gt;= date('1995-09-01')
-	and l_shipdate ‹ add_months('1995-09-01',1)
+	and l_shipdate  add_months('1995-09-01',1)
 -- END OF QUERY</pre>
                             </div>
                         </td>
@@ -697,7 +697,7 @@ from
 	TPCH.part
 where
 	p_partkey = ps_partkey
-	and p_brand ‹&gt; 'Brand#45'
+	and p_brand &gt; 'Brand#45'
 	and p_type not like 'MEDIUM POLISHED%'
 	and p_size in (49, 14, 23, 45, 19, 3, 36, 9)
 	and ps_suppkey not in (
@@ -734,7 +734,7 @@ where
 	p_partkey = l_partkey
 	and p_brand = 'Brand#23'
 	and p_container = 'MED BOX'
-	and l_quantity ‹ (
+	and l_quantity  (
 		select
 			0.2 * avg(l_quantity)
 		from
@@ -801,7 +801,7 @@ where
 		p_partkey = l_partkey
 		and p_brand = 'Brand#12'
 		and p_container in ('SM CASE', 'SM BOX', 'SM PACK', 'SM PKG')
-		and l_quantity &gt;= 1 and l_quantity ‹= 1 + 10
+		and l_quantity &gt;= 1 and l_quantity = 1 + 10
 		and p_size between 1 and 5
 		and l_shipmode in ('AIR', 'AIR REG')
 		and l_shipinstruct = 'DELIVER IN PERSON'
@@ -811,7 +811,7 @@ where
 		p_partkey = l_partkey
 		and p_brand = 'Brand#23'
 		and p_container in ('MED BAG', 'MED BOX', 'MED PKG', 'MED PACK')
-		and l_quantity &gt;= 10 and l_quantity ‹= 10 + 10
+		and l_quantity &gt;= 10 and l_quantity = 10 + 10
 		and p_size between 1 and 10
 		and l_shipmode in ('AIR', 'AIR REG')
 		and l_shipinstruct = 'DELIVER IN PERSON'
@@ -821,7 +821,7 @@ where
 		p_partkey = l_partkey
 		and p_brand = 'Brand#34'
 		and p_container in ('LG CASE', 'LG BOX', 'LG PACK', 'LG PKG')
-		and l_quantity &gt;= 20 and l_quantity ‹= 20 + 10
+		and l_quantity &gt;= 20 and l_quantity = 20 + 10
 		and p_size between 1 and 15
 		and l_shipmode in ('AIR', 'AIR REG')
 		and l_shipinstruct = 'DELIVER IN PERSON'
@@ -854,7 +854,7 @@ where
 			TPCH.lineitem l2
 		where
 			l2.l_orderkey = l1.l_orderkey
-			and l2.l_suppkey ‹&gt; l1.l_suppkey
+			and l2.l_suppkey &gt; l1.l_suppkey
 	)
 	and not exists (
 		select
@@ -863,7 +863,7 @@ where
 			TPCH.lineitem l3
 		where
 			l3.l_orderkey = l1.l_orderkey
-			and l3.l_suppkey ‹&gt; l1.l_suppkey
+			and l3.l_suppkey &gt; l1.l_suppkey
 			and l3.l_receiptdate &gt; l3.l_commitdate
 	)
 	and s_nationkey = n_nationkey

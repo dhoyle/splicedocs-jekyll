@@ -1,7 +1,7 @@
 ---
 title: Using HCatalog with Splice Machine
 summary: How to access Splice Machine as a data source using HCatalog.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -12,7 +12,7 @@ folder: Developers
 		<div class="TopicContent">
             <h1 id="kanchor327">Using Splice Machine with HCatalog</h1>
             <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. Our database as a service does not include HCatalog support.</div>
-            <p>Apache HCatalog is a metadata and table management system for the broader Hadoop platform. HCatalog’s table abstraction presents users with a relational view of data in the Hadoop distributed file system (HDFS) and ensures that users need not worry about where or in what format their data is stored. HCatalog supports reading and writing files in any format for which a SerDe (serializer-deserializer) can be written.</p>
+            <p>Apache HCatalog is a metadata and table management system for the broader Hadoop platform. HCatalogs table abstraction presents users with a relational view of data in the Hadoop distributed file system (HDFS) and ensures that users need not worry about where or in what format their data is stored. HCatalog supports reading and writing files in any format for which a SerDe (serializer-deserializer) can be written.</p>
             <p>Splice Machine integrates with HCatalog, allowing any HiveQL&#160;statements to read from (e.g. <span class="CodeFont">SELECT</span>)&#160;and write to (e.g. <span class="CodeFont">INSERT</span>)&#160;Splice Machine tables. You can also use joins and unions to combine native Hive tables with Splice Machine tables.</p>
             <div class="noteTip">You can find extensive information about HCatalog on the <a href="https://hive.apache.org/" target="_blank">Apache Hive web site</a>.</div>
             <p>Also note that you can also take advantage of our HCatalog integration to access your Splice Machine tables for reading and writing from any database that features HCatalog integration, such as <span class="ItalicFont">MongoDB</span>.</p>
@@ -93,10 +93,10 @@ COL1        |COL2
                         <p class="indentLevel1">Once you've created your external table, you can use <span class="CodeFont">SELECT</span> statements in the Hive shell to retrieve data from Splice Machine table. For example:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt;&#160;select *&#160;from extTest1;
 OK
-1<span class="bodyFont">→</span>row 1
-2<span class="bodyFont">→</span>row 2
-3<span class="bodyFont">→</span>row 3
-4<span class="bodyFont">→</span>row 4</pre>
+1<span class="bodyFont"></span>row 1
+2<span class="bodyFont"></span>row 2
+3<span class="bodyFont"></span>row 3
+4<span class="bodyFont"></span>row 4</pre>
                         </div>
                         <p class="indentLevel1"> If the external&#160;table that you created does not have the same number of columns as are in your Splice Machine table, then the Hive table's columns are mapped to columns in the Splice&#160;Machine table, as described in <a href="#How">How Splice Machine Maps Columns</a>, above.</p>
                     </li>
@@ -139,8 +139,8 @@ char 1       varchar 1
                         <p class="indentLevel1">Once you've created your external table, you can use <span class="CodeFont">SELECT</span> statements in the Hive shell to retrieve data from Splice Machine table. For example:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt;&#160;select *&#160;from extTest2;
 OK
-char  <span class="bodyFont">→</span>varchar 2
-char 1<span class="bodyFont">→</span>varchar 1</pre>
+char  <span class="bodyFont"></span>varchar 2
+char 1<span class="bodyFont"></span>varchar 1</pre>
                         </div>
                     </li>
                 </ol>
@@ -183,8 +183,8 @@ COL1        |COL2       |COL3
                         <p class="indentLevel1">Once you've created your external table, you can use <span class="CodeFont">SELECT</span> statements in the Hive shell to retrieve data from Splice Machine input table. table. For example:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">hive&gt;&#160;select *&#160;from extTest3;
 OK
-1<span class="bodyFont">→</span>1<span class="bodyFont">→</span>1
-1<span class="bodyFont">→</span>2<span class="bodyFont">→</span>2</pre>
+1<span class="bodyFont"></span>1<span class="bodyFont"></span>1
+1<span class="bodyFont"></span>2<span class="bodyFont"></span>2</pre>
                         </div>
                     </li>
                 </ol>

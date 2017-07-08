@@ -1,7 +1,7 @@
 ---
 title: Using the splice&gt; Command Line Interpreter
 summary: An introduction to using our command line interpreter to create and interact with your Splice Machine database.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar: tutorials_sidebar
@@ -12,6 +12,7 @@ folder: Tutorials/CLI
 		<div class="TopicContent">
             <h1 id="kanchor82">Getting Started With the splice&gt;&#160;Command Line Interface</h1>
             <p>The <span class="AppCommand">splice&gt;</span>&#160;command line interpreter is an easy way to interact with your Splice&#160;Machine database. This topic introduces <span class="AppCommand">splice&gt;</span> and some of the more common commands you'll use</p>
+            <div class="noteIcon">The command line interpreter, as documented here, is not available in our Cloud-Managed Database-as-Service product.</div>
 {% if site.incl_notpdf %}
             <div>
                 <p>You can complete this tutorial by <a href="#Watch">watching a short video</a> or by <a href="#Follow">following the written version</a>.</p>
@@ -209,7 +210,7 @@ SPLICE
             </div>
             <h4 id="Viewing3">Displaying Tables</h4>
             <p>The <span class="CodeFont"><a href="cmdlineref_showtables.html">show tables</a></span> command displays a list of all tables in all of the schemas in your database:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; SHOW&#160;TABLES;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS             
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; SHOW&#160;TABLES;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
 --------------------------------------------------------
 SYS          |SYSALIASES            |256       |
 SYS          |SYSBACKUP             |992       |
@@ -235,7 +236,7 @@ SYS          |SYSSCHEMAPERMS        |1328      |
 SYS          |SYSSCHEMAS            |32        |
 SYS          |SYSSEQUENCES          |864       |
 SYS          |SYSSTATEMENTS         |384       |
-SYS          |SYSTABLEPERMS         |592       | 
+SYS          |SYSTABLEPERMS         |592       |
 SYS          |SYSTABLES             |64        |
 SYS          |SYSTABLESTATS         |1296      |
 SYS          |SYSTRIGGERS           |576       |
@@ -247,7 +248,7 @@ SPLICE       |T_DETAIL              |1552      |
 SPLICE       |T_HEADER              |1536      |<br /><br />34 rows selected</pre>
             </div>
             <p>To display the tables in a specific schema (named <span class="CodeFont">SPLICE</span>):</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show tables in SPLICE;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS             
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show tables in SPLICE;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
 --------------------------------------------------------<br />SPLICE       |CUSTOMERS             |1568      |
 SPLICE       |T_DETAIL              |1552      |
 SPLICE       |T_HEADER              |1536      |<br /><br />3 rows selected</pre>
@@ -283,7 +284,7 @@ T_HEADER      |THIDX2        |TRANSACTION_DT      |2       |true      |BTREE|A  
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show indexes FROM&#160;T_DETAIL;
 TABLE_NAME    |INDEX_NAME    |COLUMN_NAME         |ORDINAL&amp;|NON_UNIQUE|TYPE |ASC&amp;|CONGLOM_NO
 ---------------------------------------------------------------------------------------------<br />T_DETAIL      |TDIDX1        |ORIGINAL_SKU_CATEGO&amp;|1       |true      |BTREE|A   |1585
-T_DETAIL      |TDIDX1        |TRANSACTION_DT      |2       |true      |BTREE|A   |1585  
+T_DETAIL      |TDIDX1        |TRANSACTION_DT      |2       |true      |BTREE|A   |1585
 T_DETAIL      |TDIDX1        |CUSTOMER_MASTER_ID  |3       |true      |BTREE|A   |1585
 
 3 rows selected
@@ -292,13 +293,13 @@ T_DETAIL      |TDIDX1        |CUSTOMER_MASTER_ID  |3       |true      |BTREE|A  
             <h4 id="Views">Displaying Views</h4>
             <p>Similarly to indexes, you can use the <span class="CodeFont"><a href="cmdlineref_showviews.html">show views</a></span> command to display all of the indexes in your database or in a schema:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show views;
-TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS             
+TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS
 -----------------------------------------------------------
 SYS            |SYSCOLUMNSTATISTICS   |NULL      |
-SYS            |SYSTABLESTATISTICS    |NULL      | 
+SYS            |SYSTABLESTATISTICS    |NULL      |
 
 2 rows selected
-<br />splice&gt;&#160;show views in sys;<br />TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS             
+<br />splice&gt;&#160;show views in sys;<br />TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS
 -----------------------------------------------------------
 SYS            |SYSCOLUMNSTATISTICS   |NULL      |
 SYS            |SYSTABLESTATISTICS    |NULL      |
@@ -312,16 +313,16 @@ SYS            |SYSTABLESTATISTICS    |NULL      |
 splice&gt; show functions in splice;
 FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
 -------------------------------------------------------------------------
-SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees 
+SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees
 1 row selected
 </pre>
             </div>
             <p>You can also group a set of SQL&#160;commands together with variable and logic into a <span class="ItalicFont">stored procedure</span>, which is a subroutine that is stored in your database's data dictionary. Unlike user-defined functions, a stored procedure is not an expression and can only be invoked using the <span class="CodeFont">CALL</span> statement. Stored procedures allow you to modify the database and return <span class="CodeFont">Result Sets</span> or nothing at all. You can use the <span class="CodeFont"><a href="cmdlineref_showprocedures.html">show procedures</a></span> command to display which functions are defined in your database or schema:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show procedures in SQLJ;
-PROCEDURE_SCHEM     |PROCEDURE_NAME    |REMARKS                                                                                             
+PROCEDURE_SCHEM     |PROCEDURE_NAME    |REMARKS
 -------------------------------------------------------------------------------------------------
 SQLJ                |INSTALL_JAR       |com.splicemachine.db.catalog.SystemProcedures.INSTALL_JAR
-SQLJ                |REMOVE_JAR        |com.splicemachine.db.catalog.SystemProcedures.REMOVE_JAR 
+SQLJ                |REMOVE_JAR        |com.splicemachine.db.catalog.SystemProcedures.REMOVE_JAR
 SQLJ                |REPLACE_JAR       |com.splicemachine.db.catalog.SystemProcedures.REPLACE_JAR
 
 3 rows selected
@@ -363,16 +364,16 @@ SYSSTAT
     DisplayName  VARCHAR(24),
     BirthDate    DATE
     );
-0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;SHOW&#160;TABLES&#160;IN&#160;MySchema1;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS             
+0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;SHOW&#160;TABLES&#160;IN&#160;MySchema1;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
 --------------------------------------------------------<br />MYSCHEMA1 &#160;  |MYTABLE            &#160;&#160;&#160;|1616 &#160;    |
 MYSCHEMA1    |PLAYERS             &#160; |1632      |<br /><br />2 rows selected<br /><br />splice&gt;&#160;describe Players;<br />COLUMN_NAME   |TYPE_NAME|DEC&amp;|NUM&amp;|COLUM&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
 -------------------------------------------------------------------
-ID            |SMALLINT |0   |10  |5     |NULL      |NULL      |NO      
-TEAM          |VARCHAR  |NULL|NULL|64    |NULL      |128       |NO      
-NAME          |VARCHAR  |NULL|NULL|64    |NULL      |128       |NO      
-POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES     
-DISPLAYNAME   |VARCHAR  |NULL|NULL|24    |NULL      |48        |YES     
-BIRTHDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES     
+ID            |SMALLINT |0   |10  |5     |NULL      |NULL      |NO
+TEAM          |VARCHAR  |NULL|NULL|64    |NULL      |128       |NO
+NAME          |VARCHAR  |NULL|NULL|64    |NULL      |128       |NO
+POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES
+DISPLAYNAME   |VARCHAR  |NULL|NULL|24    |NULL      |48        |YES
+BIRTHDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
 
 6 rows selected
 </pre>
@@ -394,7 +395,7 @@ SYSFUN
 SYSIBM
 SYSPROC
 SYSSTAT
-12 rows selected<br /><br />splice&gt;&#160;DROP&#160;TABLE&#160;myTable;<br />0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;SHOW&#160;TABLES&#160;IN&#160;MySchema1;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS             
+12 rows selected<br /><br />splice&gt;&#160;DROP&#160;TABLE&#160;myTable;<br />0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;SHOW&#160;TABLES&#160;IN&#160;MySchema1;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
 --------------------------------------------------------<br />MYSCHEMA1    |PLAYERS             &#160; |1632      |<br /><br />1 row selected<br /></pre>
             <p>See the <span class="ItalicFont"><a href="sqlref_statements_dropstatements.html">DROP&#160;Statements</a></span> section in our <span class="ItalicFont">SQL&#160;Reference Manual</span> for more information.</p>
             <h4 id="INSERTIN">Inserting Data</h4>
@@ -411,16 +412,16 @@ splice&gt;&#160;INSERT&#160;INTO&#160;Players
             <h4 id="SELETING">Selecting and Displaying Data</h4>
             <p>Now that you have a bit of data in your table, you can use <span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT</a></span>&#160;statements to select specific records or portions of records. This section contains several simple examples of selecting data from the <span class="CodeFont">Players</span> table we created in the previous section.</p>
             <p>You can select a single column from all of the records in a table; for example:</p><pre class="AppCommand">splice&gt; select NAME from Players;
-NAME                                                            
+NAME
 ----------------------------------------------------------------
-Earl Hastings                                                   
-Lester Johns                                                    
-Joe Bojangles                                                   
+Earl Hastings
+Lester Johns
+Joe Bojangles
 
 3 rows selected</pre>
             <p>You can select all columns from all of the records in a table; for example:</p><pre class="AppCommand">
 splice&gt; select * from Players;
-ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE 
+ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE
 ---------------------------------------------------------------
 27    |Cards  |Earl Hastings  |OF  |Speedy Earl    |1982-04-22
 73    |Giants |Lester Johns   |P   |Big John       |1984-06-09
@@ -429,7 +430,7 @@ ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE
 3 rows selected</pre>
             <p>You can also qualify which records to select with a <span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span>&#160;clause; for example:</p><pre class="AppCommand">
 splice&gt; select * from Players WHERE&#160;Team='Cards';
-ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE 
+ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE
 ---------------------------------------------------------------
 27    |Cards  |Earl Hastings  |OF  |Speedy Earl    |1982-04-22<br /><br />1 row selected</pre>
             <p>You can easily count the records in a table by using the <span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT</a></span>&#160;statement; for example:</p><pre class="AppCommand">

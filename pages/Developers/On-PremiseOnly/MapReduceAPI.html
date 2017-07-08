@@ -1,7 +1,7 @@
 ---
 title: Splice Machine MapReduce API
 summary: The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -125,24 +125,24 @@ Job job = new Job(config, "WordCount");</pre>
                     <li value="5">
                         <p class="topLevel">Manipulate and save the value with reduce function:</p>
                         <p class="indentLevel1">Our sample <span class="CodeFont">reduce</span> function manipulates and saves the value by creating an <span class="CodeFont">ExecRow</span> and filling in the row with the <span class="CodeFont">execRow.setRowArray</span> method. </p>
-                        <div class="preWrapperWide"><pre class="Example">public void reduce(Text key, Iterable‹IntWritable&gt; values, Context context)
+                        <div class="preWrapperWide"><pre class="Example">public void reduce(Text key, IterableIntWritable&gt; values, Context context)
                     throws IOException, InterruptedException {
 
-    Iterator‹IntWritable&gt; it=values.iterator();
+    IteratorIntWritable&gt; it=values.iterator();
     ExecRow execRow = new ValueRow(2);
     int sum = 0;
     String word = key.toString();
-    while (it.hasNext()) {		  
+    while (it.hasNext()) {
         sum += it.next().get();
     }
     try{
         DataValueDescriptor []dataValDescs= {new SQLVarchar(word), new SQLInteger(sum)};
         execRow.setRowArray(dataValDescs);
-        context.write(new ImmutableBytesWritable(Bytes.toBytes(word)), execRow);		  
-    } 
+        context.write(new ImmutableBytesWritable(Bytes.toBytes(word)), execRow);
+    }
     catch(Exception E) {
         E.printStackTrace();
-    }	  
+    }
 }</pre>
                         </div>
                     </li>
