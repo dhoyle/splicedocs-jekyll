@@ -2750,7 +2750,7 @@
   	<section>
 		<div class="TopicContent">
             <h1 id="kanchor373">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</h1>
-            <p>The <samp>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</samp> system procedure computes the split keys for a table or index, prior to importing that table in HFile format. You must use this procedure in conjunction with the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span> system procedure to import your data in HFile format.</p>
+            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure computes the split keys for a table or index, prior to importing that table in HFile format. You must use this procedure in conjunction with the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span> system procedure to import your data in HFile format.</p>
             <div class="noteNote">This procedure combines the actions of two other system procedures:&#160;<span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>.</div>
             <p>See the <span class="ItalicFont">Usage Notes</span> section for more information and the <span class="ItalicFont">Example</span> section to see an example of using these procedures together.</p>
             <p class="heading2">Syntax</p>
@@ -2895,12 +2895,12 @@
                     </ul>
                     <div class="noteNote">Multi-line record files are slower to load, because the file cannot be split and processed in parallel; if you import a directory of multiple line files, each file as a whole is processed in parallel, but no splitting takes place.</div>
                     <p class="paramName">charset</p>
-                    <p class="paramDefnFirst">The character encoding of the import file. The default value is UTF-8. Currently, any other value is ignored and UTF-8 is used. 
+                    <p class="paramDefnFirst">The character encoding of the import file. The default value is UTF-8. Currently, any other value is ignored and UTF-8 is used.
  </p>
                 </div>
             </div>
             <p class="heading2">Results</p>
-            <p><samp>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</samp> generates a keys file and then sets up the splits in your database. You then call  the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;system procedure to split your table into HFiles and import your data.</p>
+            <p><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> generates a keys file and then sets up the splits in your database. You then call  the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;system procedure to split your table into HFiles and import your data.</p>
 ﻿        <div>
             <p>Splice Machine uses the following Java date and time pattern letters to construct timestamps:</p>
             <table summary="Timestamp format pattern letter descriptions">
@@ -3031,9 +3031,12 @@
 
             <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
 ﻿        <p class="heading2"><a name="Usage"></a>Usage Notes</p>
-        <p class="body">As mentioned earlier, you need to use these three Splice&#160;Machine system procedures together:</p>
+        <p class="body">As mentioned earlier, you can have <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> automatically compute the splits for your table; it does so by sampling the data in the table, generating a histogram, and then using that histogram to compute the import splits. <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> automatically computes the splits when the <span class="CodeFont">skipSampling</span> parameter is set to <span class="CodeFont">false</span>.</p>
+        <p class="heading3">Computing Split Keys for HFile Import</p>
+        <div class="noteIcon">If you are using <span class="CodeFont">skipSampling=false</span> to allow automatic computation of splits, you can ignore the rest of this section, and skip to the <a href="#Examples">Examples</a> section below.</div>
+        <p>If you're computing splits for your import (and setting the <span class="CodeFont">skipSampling</span> parameter to <span class="CodeFont">true</span>), you need to use these three Splice&#160;Machine system procedures together:</p>
         <ul>
-            <li><samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp> generates a keys file</li>
+            <li><span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> generates a keys file</li>
             <li><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span> sets up the splits in Splice&#160;Machine</li>
             <li><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>&#160;splits your input file into HFiles, imports your data, and then removes the HFiles</li>
         </ul>
@@ -3060,8 +3063,8 @@
                 <li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
             </ol>
         </div>
-        <p class="heading2"><a name="Examples"></a>Example 1</p>
-        <p>The example in this section details the steps used to import data in HFile format using the Splice Machine <samp>SYSCS_UTIL.COMPUTE_SPLIT_KEY</samp>,  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
+        <p class="heading2" id="Examples"></a>Example 1</p>
+        <p>This example details the steps used to import data in HFile format using the Splice Machine <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedure with automatic splitting.</p>
         <p>Follow these steps :</p>
         <div class="opsStepsList">
             <ol class="boldFont">
@@ -3076,13 +3079,63 @@
                     <div class="preWrapperWide"><pre class="Example">CREATE TABLE TPCH.LINEITEM (
 		 L_ORDERKEY BIGINT NOT NULL,
 		 L_PARTKEY INTEGER NOT NULL,
-		 L_SUPPKEY INTEGER NOT NULL, 
-		 L_LINENUMBER INTEGER NOT NULL, 
+		 L_SUPPKEY INTEGER NOT NULL,
+		 L_LINENUMBER INTEGER NOT NULL,
 		 L_QUANTITY DECIMAL(15,2),
 		 L_EXTENDEDPRICE DECIMAL(15,2),
 		 L_DISCOUNT DECIMAL(15,2),
 		 L_TAX DECIMAL(15,2),
-		 L_RETURNFLAG VARCHAR(1), 
+		 L_RETURNFLAG VARCHAR(1),
+		 L_LINESTATUS VARCHAR(1),
+		 L_SHIPDATE DATE,
+		 L_COMMITDATE DATE,
+		 L_RECEIPTDATE DATE,
+		 L_SHIPINSTRUCT VARCHAR(25),
+		 L_SHIPMODE VARCHAR(10),
+		 L_COMMENT VARCHAR(44),
+		 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+		 );
+
+CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
+		 L_SHIPDATE,
+		 L_PARTKEY,
+		 L_EXTENDEDPRICE,
+		 L_DISCOUNT
+		 );</pre>
+                    </div>
+                </li>
+                <li>
+                    <p class="topLevel">Import the HFiles Into Your Database</p>
+                    <p class="indentLevel1">Once you have split your table and indexes, call this procedure to generate and import the HFiles into your Splice Machine database:</p>
+                    <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);</pre>
+                    </div>
+                    <p class="indentLevel1">The generated HFiles are automatically deleted after being imported.</p>
+                </li>
+            </ol>
+        </div>
+        <p class="heading2">Example 2</>
+        <p>The example in this section details the steps used to import data in HFile format using the Splice Machine <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span>,  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
+        <p>Follow these steps :</p>
+        <div class="opsStepsList">
+            <ol class="boldFont">
+                <li>
+                    <p class="topLevel">Create a directory on HDFS for the import; for example:</p>
+                    <div class="preWrapperWide"><pre class="ShellCommand">sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import</pre>
+                    </div>
+                    <p>Make sure that the directory you create has permissions set to allow Splice&#160;Machine to write your csv and Hfiles there.</p>
+                </li>
+                <li>
+                    <p class="topLevel">Create table and index:</p>
+                    <div class="preWrapperWide"><pre class="Example">CREATE TABLE TPCH.LINEITEM (
+		 L_ORDERKEY BIGINT NOT NULL,
+		 L_PARTKEY INTEGER NOT NULL,
+		 L_SUPPKEY INTEGER NOT NULL,
+		 L_LINENUMBER INTEGER NOT NULL,
+		 L_QUANTITY DECIMAL(15,2),
+		 L_EXTENDEDPRICE DECIMAL(15,2),
+		 L_DISCOUNT DECIMAL(15,2),
+		 L_TAX DECIMAL(15,2),
+		 L_RETURNFLAG VARCHAR(1),
 		 L_LINESTATUS VARCHAR(1),
 		 L_SHIPDATE DATE,
 		 L_COMMITDATE DATE,
@@ -3176,13 +3229,13 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                 <li>
                     <p class="topLevel">Import the HFiles Into Your Database</p>
                     <p class="indentLevel1">Once you have split your table and indexes, call this procedure to generate and import the HFiles into your Splice Machine database:</p>
-                    <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);</pre>
+                    <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', true);</pre>
                     </div>
                     <p class="indentLevel1">The generated HFiles are automatically deleted after being imported.</p>
                 </li>
             </ol>
         </div>
-        <p class="heading2">Example 2</p>
+        <p class="heading2">Example 3</p>
         <p>The example in this section details the steps used to import data in HFile format using the Splice Machine  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
         <p>Follow these steps :</p>
         <div class="opsStepsList">
@@ -3198,13 +3251,13 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                     <div class="preWrapperWide"><pre class="Example">CREATE TABLE TPCH.LINEITEM (
 		 L_ORDERKEY BIGINT NOT NULL,
 		 L_PARTKEY INTEGER NOT NULL,
-		 L_SUPPKEY INTEGER NOT NULL, 
-		 L_LINENUMBER INTEGER NOT NULL, 
+		 L_SUPPKEY INTEGER NOT NULL,
+		 L_LINENUMBER INTEGER NOT NULL,
 		 L_QUANTITY DECIMAL(15,2),
 		 L_EXTENDEDPRICE DECIMAL(15,2),
 		 L_DISCOUNT DECIMAL(15,2),
 		 L_TAX DECIMAL(15,2),
-		 L_RETURNFLAG VARCHAR(1), 
+		 L_RETURNFLAG VARCHAR(1),
 		 L_LINESTATUS VARCHAR(1),
 		 L_SHIPDATE DATE,
 		 L_COMMITDATE DATE,
@@ -3266,7 +3319,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                 <li>
                     <p class="topLevel">Import the HFiles Into Your Database</p>
                     <p class="indentLevel1">Once you have split your table and indexes, call this procedure to generate and import the HFiles into your Splice Machine database:</p>
-                    <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);</pre>
+                    <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', true);</pre>
                     </div>
                     <p class="indentLevel1">The generated HFiles are automatically deleted after being imported.</p>
                 </li>
@@ -3300,7 +3353,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

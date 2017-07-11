@@ -2767,8 +2767,8 @@
                 <p class="paramName" id="ColumnDefinition">column-definition</p>
                 <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="sqlref_datatypes_intro.html">DataType</a></span> ]
 [ <span class="ItalicFont"><a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a></span> ]*
-[ [ WITH ] DEFAULT DefaultConstantExpression 
- | <span class="ItalicFont"><a href="sqlref_statements_generationclause.html">generation-clause</a></span>  
+[ [ WITH ] DEFAULT DefaultConstantExpression
+ | <span class="ItalicFont"><a href="sqlref_statements_generationclause.html">generation-clause</a></span>
 ]</pre>
                 </div>
                 <p class="paramDefnFirst">The syntax for the <span class="ItalicFont">column-definition</span> for a new column is a subset of the syntax for a column in a <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE TABLE</a></span> statement.</p>
@@ -2868,10 +2868,10 @@ INSERT INTO tauto VALUES (5,5);</pre>
             <p class="heading3">Example 1:&#160;Adding Columns to a Table</p>
             <p class="body">In this example. we create a new table, and then use <span class="CodeFont">ALTER&#160;TABLE</span>&#160;statements to add three columns that we have decided to include:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE TABLE PlayerTrades (
-   ID INT NOT NULL, 
-   PlayerName VARCHAR(32), 
-   Position CHAR(2), 
-   OldTeam VARCHAR(32), 
+   ID INT NOT NULL,
+   PlayerName VARCHAR(32),
+   Position CHAR(2),
+   OldTeam VARCHAR(32),
    NewTeam VARCHAR(32) );
 0 rows inserted/updated/deleted
 
@@ -2890,14 +2890,14 @@ splice&gt;&#160;INSERT&#160;INTO&#160;PlayerTrades VALUES(&#160;1, 'Greinke', 'S
 splice&gt; DESCRIBE PlayerTrades;
 COLUMN_NAME   |TYPE_NAME|DEC&amp;|NUM&amp;|COLUM&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
 ---------------------------------------------------------------------------
-ID            |INTEGER  |0   |10  |10    |NULL      |NULL      |NO      
-PLAYERNAME    |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES     
-OLDTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-NEWTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |YES      
-TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES     
-YEARS         |INTEGER  |0   |10  |10    |NULL      |NULL      |YES     
+ID            |INTEGER  |0   |10  |10    |NULL      |NULL      |NO
+PLAYERNAME    |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES
+OLDTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+NEWTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |YES
+TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
+YEARS         |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
 
 8 rows selected
 </pre>
@@ -2921,13 +2921,13 @@ splice&gt;&#160;ALTER&#160;TABLE&#160;PlayerTrades ALTER&#160;COLUMN&#160;NewTea
 splice&gt; DESCRIBE PlayerTrades;
 COLUMN_NAME   |TYPE_NAME|DEC&amp;|NUM&amp;|COLUM&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
 ---------------------------------------------------------------------------
-ID            |INTEGER  |0   |10  |10    |NULL      |NULL      |NO      
-PLAYERNAME    |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES     
-OLDTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-NEWTEAM       |VARCHAR  |NULL|NULL|32    |'Giants'  |64        |YES     
-UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO      
-TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES     
+ID            |INTEGER  |0   |10  |10    |NULL      |NULL      |NO
+PLAYERNAME    |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES
+OLDTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+NEWTEAM       |VARCHAR  |NULL|NULL|32    |'Giants'  |64        |YES
+UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO
+TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
 YEARS         |INTEGER  |0   |10  |10    |3         |NULL      |YES
 
 7 rows selected
@@ -2945,13 +2945,13 @@ splice&gt; ALTER&#160;TABLE&#160;PlayerTrades ALTER&#160;COLUMN&#160;NewTeam DRO
 splice&gt; DESCRIBE PlayerTrades;
 COLUMN_NAME   |TYPE_NAME|DEC&amp;|NUM&amp;|COLUM&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
 ---------------------------------------------------------------------------
-ID            |INTEGER  |0   |10  |10    |NULL      |NULL      |NO      
-PLAYERNAME    |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES     
-OLDTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-NEWTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO     
-TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES     
+ID            |INTEGER  |0   |10  |10    |NULL      |NULL      |NO
+PLAYERNAME    |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES
+OLDTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+NEWTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO
+TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
 
 7 rows selected</pre>
             </div>
@@ -2964,13 +2964,13 @@ splice&gt; ALTER&#160;TABLE&#160;PlayerTrades ALTER&#160;COLUMN&#160;PlayerName 
 splice&gt; DESCRIBE PlayerTrades;
 COLUMN_NAME   |TYPE_NAME|DEC&amp;|NUM&amp;|COLUM&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
 ---------------------------------------------------------------------------
-ID            |INTEGER  |0   |10  |10    |NULL      |NULL      |NO      
-PLAYERNAME    |VARCHAR  |NULL|NULL|40    |NULL      |80        |YES     
-POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES     
-OLDTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-NEWTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES     
-UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO      
-TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES     
+ID            |INTEGER  |0   |10  |10    |NULL      |NULL      |NO
+PLAYERNAME    |VARCHAR  |NULL|NULL|40    |NULL      |80        |YES
+POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES
+OLDTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+NEWTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
+UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO
+TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
 
 7 rows selected</pre>
             </div>
@@ -2978,7 +2978,7 @@ TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
             <p class="body">This example shows creating a table with an identity column, and then changing the increment for that column:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt; CREATE&#160;TABLE&#160;NewPlayers(&#160;
-   newID INT&#160;NOT&#160;NULL&#160;GENERATED&#160;ALWAYS&#160;AS&#160;IDENTITY&#160;PRIMARY&#160;KEY, 
+   newID INT&#160;NOT&#160;NULL&#160;GENERATED&#160;ALWAYS&#160;AS&#160;IDENTITY&#160;PRIMARY&#160;KEY,
    PlayerName);
 0 rows inserted/updated/deleted
 
@@ -2991,8 +2991,8 @@ splice&gt; INSERT&#160;INTO&#160;NewPlayers(PlayerName)&#160;('Greinke'),('Cespe
 splice&gt; SELECT&#160;*&#160;FROM&#160;NewPlayers;
 NEWID&#160;&#160;&#160;&#160;&#160;&#160;|PLAYERNAME
 -----------------------
-1          |Greinke 
-11         |Cespedes 
+1          |Greinke
+11         |Cespedes
 
 2 rows selected	</pre>
             </div>
@@ -3021,7 +3021,7 @@ NEWID&#160;&#160;&#160;&#160;&#160;&#160;|PLAYERNAME
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2777,7 +2777,7 @@
                         </div>
                     </p>
                     <p class="paramDefn">A<span class="ItalicFont"> SelectItem</span> projects one or more result column values for a table result being constructed in a <span class="ItalicFont">SelectExpression</span>.</p>
-                    <p class="paramDefn">For queries that do not select a specific column from the tables involved in the <span class="ItalicFont">SelectExpression</span> (for example, queries that use <samp>COUNT(*)</samp>), the user must have at least one column-level SELECT privilege or table-level SELECT privilege. See <a href="sqlref_statements_grant.html">GRANT statement</a> for more information.</p>
+                    <p class="paramDefn">For queries that do not select a specific column from the tables involved in the <span class="ItalicFont">SelectExpression</span> (for example, queries that use <span class="CodeFont">COUNT(*)</span>), the user must have at least one column-level SELECT privilege or table-level SELECT privilege. See <a href="sqlref_statements_grant.html">GRANT statement</a> for more information.</p>
                 </div>
                 <p class="paramName">FROM clause</p>
                 <p class="paramDefnFirst">The result of the <a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span> clause</a> is the cross product of the <span class="CodeFont">FROM</span> items.</p>
@@ -2787,8 +2787,8 @@
                 <p class="paramDefnFirst">The <a href="sqlref_clauses_where.html"><span class="CodeFont">GROUP BY</span> clause</a> groups rows in the result into subsets that have matching values for one or more columns. </p>
                 <p class="paramDefn"><span class="CodeFont">GROUP BY</span> clauses are typically used with aggregates. If there is a <span class="CodeFont">GROUP BY</span> clause, the <span class="CodeFont">SELECT</span> clause must contain <span class="ItalicFont">only</span> aggregates or grouping columns. If you want to include a non-grouped column in the <span class="CodeFont">SELECT</span> clause, include the column in an aggregate expression. For example, this query computes the average salary of each team in a baseball league:</p>
                 <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT COUNT(*) AS PlayerCount, Team, AVG(Salary) AS AverageSalary
-   FROM Players JOIN Salaries ON Players.ID=Salaries.ID 
-   GROUP BY Team 
+   FROM Players JOIN Salaries ON Players.ID=Salaries.ID
+   GROUP BY Team
    ORDER BY AverageSalary;</pre>
                 </div>
                 <p class="paramDefnFirst">If there is no <span class="CodeFont">GROUP BY</span> clause, but a <span class="ItalicFont">SelectItem</span> contains an aggregate not in a subquery, the query is implicitly grouped. The entire table is the single group. </p>
@@ -2830,11 +2830,11 @@
             </ul>
             <p class="heading2">Examples</p>
             <p class="body">This example shows using a <span class="CodeFont">SELECT</span>&#160;with <span class="CodeFont">WHERE</span>&#160;and <span class="CodeFont">ORDER&#160;BY</span>&#160;clauses; it selects the name, team, and birth date of all players born in 1985 and 1989:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT DisplayName, Team, BirthDate 
-   FROM Players 
-   WHERE YEAR(BirthDate) IN (1985, 1989) 
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT DisplayName, Team, BirthDate
+   FROM Players
+   WHERE YEAR(BirthDate) IN (1985, 1989)
    ORDER BY BirthDate;
-DISPLAYNAME             |TEAM      |BIRTHDATE 
+DISPLAYNAME             |TEAM      |BIRTHDATE
 -----------------------------------------------
 Jeremy Johnson          |Cards     |1985-03-15
 Gary Kosovo             |Giants    |1985-06-12
@@ -2854,23 +2854,23 @@ Henry Socomy            |Giants    |1989-11-17
             </div>
             <p class="body">This example shows using correlation names for the tables:</p>
             <div class="preWrapperWide"><pre class="Example">
-splice&gt;&#160;SELECT CONSTRAINTNAME, COLUMNNAME 
+splice&gt;&#160;SELECT CONSTRAINTNAME, COLUMNNAME
   FROM SYS.SYSTABLES t, SYS.SYSCOLUMNS col,
-  SYS.SYSCONSTRAINTS cons, SYS.SYSCHECKS checks 
-  WHERE t.TABLENAME = 'FLIGHTS' 
-    AND t.TABLEID = col.REFERENCEID 
-    AND t.TABLEID = cons.TABLEID 
-    AND cons.CONSTRAINTID = checks.CONSTRAINTID 
+  SYS.SYSCONSTRAINTS cons, SYS.SYSCHECKS checks
+  WHERE t.TABLENAME = 'FLIGHTS'
+    AND t.TABLEID = col.REFERENCEID
+    AND t.TABLEID = cons.TABLEID
+    AND cons.CONSTRAINTID = checks.CONSTRAINTID
   ORDER BY CONSTRAINTNAME;</pre>
                 <p class="body">This example shows using the <span class="CodeFont">DISTINCT</span>&#160;clause:</p><pre class="Example">
  SELECT DISTINCT SALARY<br />   FROM Salaries;</pre>
                 <p class="body">This example shows how to rename an expression. We use the name BOSS&#160;as the maximum department salary for all departments whose maximum salary is less than the average salary i all other departments:</p><pre class="Example">
- SELECT WORKDEPT AS DPT, MAX(SALARY) AS BOSS 
-   FROM EMPLOYEE EMP_COR 
-   GROUP BY WORKDEPT 
+ SELECT WORKDEPT AS DPT, MAX(SALARY) AS BOSS
+   FROM EMPLOYEE EMP_COR
+   GROUP BY WORKDEPT
    HAVING MAX(SALARY) &lt;<br /> &#160;&#160;&#160;&#160;(SELECT AVG(SALARY)
    &#160;&#160; FROM EMPLOYEE
-   &#160;&#160; WHERE NOT WORKDEPT = EMP_COR.WORKDEPT) 
+   &#160;&#160; WHERE NOT WORKDEPT = EMP_COR.WORKDEPT)
    ORDER BY BOSS;</pre>
             </div>
             <p class="heading2">See Also</p>
@@ -2899,7 +2899,7 @@ splice&gt;&#160;SELECT CONSTRAINTNAME, COLUMNNAME
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

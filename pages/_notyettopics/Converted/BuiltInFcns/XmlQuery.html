@@ -22,9 +22,9 @@ folder: SQLReference/BuiltInFcns
         </div>
         <div class="paramList">
             <p class="paramName">xquery-string-literal</p>
-            <p class="paramDefnFirst">Must be specified as a string literal. If this argument is specified as a parameter, an expression that is not a literal, or a literal that is not a string (for example an integer),Splice Machine throws an error. The <samp>xquery-string-literal</samp> argument must also be an XPath expression that is supported by Apache Xalan. Splice Machine uses Apache Xalan to evaluate all XML query expressions. Because Xalan does not support full XQuery, neither does Splice Machine. If Xalan is unable to compile or execute the query argument, Splice Machine catches the error that is thrown by Xalan and throws the error as a SQLException. For more on XPath and XQuery expressions, see these Web sites: <a href="http://www.w3.org/TR/xpath" target="_blank">http://www.w3.org/TR/xpath</a> and <a href="http://www.w3.org/TR/xquery/" target="_blank">http://www.w3.org/TR/xquery/</a>.</p>
+            <p class="paramDefnFirst">Must be specified as a string literal. If this argument is specified as a parameter, an expression that is not a literal, or a literal that is not a string (for example an integer),Splice Machine throws an error. The <span class="CodeFont">xquery-string-literal</span> argument must also be an XPath expression that is supported by Apache Xalan. Splice Machine uses Apache Xalan to evaluate all XML query expressions. Because Xalan does not support full XQuery, neither does Splice Machine. If Xalan is unable to compile or execute the query argument, Splice Machine catches the error that is thrown by Xalan and throws the error as a SQLException. For more on XPath and XQuery expressions, see these Web sites: <a href="http://www.w3.org/TR/xpath" target="_blank">http://www.w3.org/TR/xpath</a> and <a href="http://www.w3.org/TR/xquery/" target="_blank">http://www.w3.org/TR/xquery/</a>.</p>
             <p class="paramName">xml-value-expression</p>
-            <p class="paramDefnFirst">Must be an XML data value and must constitute a well-formed SQL/XML document. The <samp>xml-value-expression</samp> argument cannot be a parameter.  Splice Machine does not perform implicit parsing nor casting of XML values, so use of strings or any other data type results in an error. If the argument is a sequence that is returned by a Splice Machine XMLQUERY operation, the argument is accepted if it is a sequence of exactly one node that is a document node. Otherwise Splice Machine throws an error. </p>
+            <p class="paramDefnFirst">Must be an XML data value and must constitute a well-formed SQL/XML document. The <span class="CodeFont">xml-value-expression</span> argument cannot be a parameter.  Splice Machine does not perform implicit parsing nor casting of XML values, so use of strings or any other data type results in an error. If the argument is a sequence that is returned by a Splice Machine XMLQUERY operation, the argument is accepted if it is a sequence of exactly one node that is a document node. Otherwise Splice Machine throws an error. </p>
             <p class="paramName">BY REF</p>
             <p class="paramDefnFirst">Optional keywords that describe the only value passing mechanism supported by Splice Machine. Since BY REF is also the default passing mechanism, the XMLQUERY operator behaves the same whether the keywords are present or not. For more information on passing mechanisms, see the SQL/XML specification.</p>
             <p class="paramName">RETURNING SEQUENCE</p>
@@ -34,7 +34,7 @@ folder: SQLReference/BuiltInFcns
         </div>
         <p>The result of the <span class="CodeFont">XMLQUERY</span> operator is a value of type XML. The result represents a sequence of XML nodes or values. Atomic values, such as strings, can be part of the result sequence. The result of an <span class="CodeFont">XMLQUERY</span> operator is not guaranteed to represent a well-formed XML document and it might not be possible to insert the result of an <span class="CodeFont">XMLQUERY</span> operator into an XML column. To store the result in an XML column, the result must be a sequence with exactly one item in the sequence and the item must be a well-formed document node. The result can be viewed only in serialized form by explicitly using the <a href="sqlref_builtinfcns_xmlserialize.html">XMLSERIALIZE operator</a>. </p>
         <p class="heading2">Examples</p>
-        <p>In the <samp>x_table</samp> table, to search the XML column <samp>xcol</samp> and return the students that
+        <p>In the <span class="CodeFont">x_table</span> table, to search the XML column <span class="CodeFont">xcol</span> and return the students that
 		have an age attribute that is greater than 20, use the following statement:</p>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT ID,
   XMLSERIALIZE(
@@ -43,7 +43,7 @@ folder: SQLReference/BuiltInFcns
     AS VARCHAR(50))
   FROM <var>x_table</var></pre>
         </div>
-        <p>The result set for this query contains a row for every row in <samp>x_table</samp>, regardless of whether or not the <span class="CodeFont">XMLQUERY</span> operator actually returns results. In the <samp>x_table</samp> table, to search the XML column <samp>xcol</samp> and return the ages for any students named BC, use the following statement:</p>
+        <p>The result set for this query contains a row for every row in <span class="CodeFont">x_table</span>, regardless of whether or not the <span class="CodeFont">XMLQUERY</span> operator actually returns results. In the <span class="CodeFont">x_table</span> table, to search the XML column <span class="CodeFont">xcol</span> and return the ages for any students named BC, use the following statement:</p>
         <div class="preWrapper"><pre xml:space="preserve" class="Example">SELECT ID,
   XMLSERIALIZE(
   XMLQUERY('<var>string(//student[text() = "BC"]/@age</var>)'
@@ -53,7 +53,7 @@ folder: SQLReference/BuiltInFcns
     WHERE XMLEXISTS('<var>//student[text() = "BC"]</var>'
     PASSING BY REF <var>xcol</var>)</pre>
         </div>
-        <p>The result set for this query contains a row for only the rows in <samp>x_table</samp> that have a student whose name is BC.</p>
+        <p>The result set for this query contains a row for only the rows in <span class="CodeFont">x_table</span> that have a student whose name is BC.</p>
         <p class="heading2">Usage note</p>
         <p>Splice Machine requires that a JAXP parser (such as Apache Xerces) and Apache Xalan are listed in the Java classpath for the XML functions to work. If either the JAXP parser or Xalan is missing from the classpath, attempts to use the <span class="CodeFont">XMLQUERY</span> operator will result in an error. In some situations, you may need to take steps to place the parser and Xalan in your classpath.</p>
     </div>

@@ -2765,47 +2765,47 @@
             <p>The result data type is an integer value.</p>
             <p class="heading2">Examples</p>
             <p class="body">The following three examples show the values returned by the LENGTH&#160;function for string, integer, and bit string values.</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, LENGTH(DisplayName) "NameLen" 
-   FROM Players 
-   WHERE ID &lt; 11 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, LENGTH(DisplayName) "NameLen"
+   FROM Players
+   WHERE ID &lt; 11
    ORDER BY "NameLen";
-DISPLAYNAME             |NameLen    
+DISPLAYNAME             |NameLen
 ------------------------------------
-Greg Brown              |10         
-John Purser             |11         
-Bob Cranker             |11         
-Billy Bopper            |12         
-Mitch Duffer            |12         
-Jason Minman            |12         
-Buddy Painter           |13         
-Norman Aikman           |13         
-Alex Paramour           |13         
-Harry Pennello          |14         
+Greg Brown              |10
+John Purser             |11
+Bob Cranker             |11
+Billy Bopper            |12
+Mitch Duffer            |12
+Jason Minman            |12
+Buddy Painter           |13
+Norman Aikman           |13
+Alex Paramour           |13
+Harry Pennello          |14
 
 10 rows selected
 
 
-splice&gt; SELECT ID, 
-   LENGTH(CAST(ID AS SMALLINT)) "SMALLINT", 
-   LENGTH(CAST(ID AS INT)) "INT", 
-   LENGTH(CAST(ID AS BIGINT)) "BIGINT", 
-   LENGTH(CAST(ID AS DECIMAL)) "DECIMAL5", 
-   LENGTH(CAST(ID AS DECIMAL(15,10))) "DECIMAL15", 
-   LENGTH(CAST(ID AS DECIMAL(30,25))) "DECIMAL30" 
-   FROM Players 
+splice&gt; SELECT ID,
+   LENGTH(CAST(ID AS SMALLINT)) "SMALLINT",
+   LENGTH(CAST(ID AS INT)) "INT",
+   LENGTH(CAST(ID AS BIGINT)) "BIGINT",
+   LENGTH(CAST(ID AS DECIMAL)) "DECIMAL5",
+   LENGTH(CAST(ID AS DECIMAL(15,10))) "DECIMAL15",
+   LENGTH(CAST(ID AS DECIMAL(30,25))) "DECIMAL30"
+   FROM Players
    WHERE ID&lt;11;
 ID    |SMALLINT   |INT        |BIGINT     |DECIMAL5   |DECIMAL15  |DECIMAL30
 ------------------------------------------------------------------------------
-1     |2          |4          |8          |3          |8          |16         
-2     |2          |4          |8          |3          |8          |16         
-3     |2          |4          |8          |3          |8          |16         
-4     |2          |4          |8          |3          |8          |16         
-5     |2          |4          |8          |3          |8          |16         
-6     |2          |4          |8          |3          |8          |16         
-7     |2          |4          |8          |3          |8          |16         
-8     |2          |4          |8          |3          |8          |16         
-9     |2          |4          |8          |3          |8          |16         
-10    |2          |4          |8          |3          |8          |16         
+1     |2          |4          |8          |3          |8          |16
+2     |2          |4          |8          |3          |8          |16
+3     |2          |4          |8          |3          |8          |16
+4     |2          |4          |8          |3          |8          |16
+5     |2          |4          |8          |3          |8          |16
+6     |2          |4          |8          |3          |8          |16
+7     |2          |4          |8          |3          |8          |16
+8     |2          |4          |8          |3          |8          |16
+9     |2          |4          |8          |3          |8          |16
+10    |2          |4          |8          |3          |8          |16
 
 10 rows selected
 
@@ -2815,10 +2815,10 @@ splice&gt; VALUES LENGTH(X'FF'),
    LENGTH(X'FFFFFFFF'),
    LENGTH(X'FFFFFFFFFFFFFFFF');
 -----------
-1          
-2          
-4          
-8          
+1
+2
+4
+8
 
 4 rows selected
 </pre>
@@ -2858,7 +2858,7 @@ splice&gt; VALUES LENGTH(X'FF'),
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

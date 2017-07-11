@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent">
             <h1 id="BuiltInSysProcs.InvalidateStoredStatements">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</h1>
-            <p>The <samp>SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</samp> system procedure invalidates all system prepared statements, and forces the query optimizer to create new execution plans. You can use this to speed up query execution by the data dictionary when performance has become sub-optimal.</p>
+            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</span> system procedure invalidates all system prepared statements, and forces the query optimizer to create new execution plans. You can use this to speed up query execution by the data dictionary when performance has become sub-optimal.</p>
             <p>If you notice that <span class="CodeFont">ij show </span>commands have slowed down, you can call  <span class="CodeFont">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS </span>to refresh the execution plans.</p>
             <div class="noteNote">
                     Splice Machine uses prepared statements known as system procedures to access data in the system tables. These procedures are cached, along with their execution plans, in the data dictionary. The cached execution plans can become sub-optimal after you issue a large number of schema-modifying DLL&#160;statements, such as defining and/or modifying a number of tables.

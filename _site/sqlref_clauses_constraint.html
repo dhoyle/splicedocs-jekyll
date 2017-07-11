@@ -2779,7 +2779,7 @@ CHECK (searchCondition) |
 PRIMARY KEY |
 UNIQUE |
 REFERENCES clause
-} 
+}
 }
 }</pre>
             </div>
@@ -2841,7 +2841,7 @@ REFERENCES clause
             </ul>
             <p class="heading2">Unique constraints</p>
             <p>A <span class="CodeFont">UNIQUE</span> constraint defines a set of columns that uniquely identify rows in a table only if all the key values are not <span class="CodeFont">NULL</span>. If one or more key parts are <span class="CodeFont">NULL</span>, duplicate keys are allowed. </p>
-            <p>For example, if there is a <span class="CodeFont">UNIQUE</span> constraint on <samp>col1</samp> and <samp>col2</samp> of a table, the combination of the values held by <samp>col1</samp> and <samp>col2</samp> will be unique as long as these values are not <span class="CodeFont">NULL</span>. If one of <samp>col1</samp> and <samp>col2</samp> holds a <span class="CodeFont">NULL</span> value, there can be another identical row in the table.</p>
+            <p>For example, if there is a <span class="CodeFont">UNIQUE</span> constraint on <span class="CodeFont">col1</span> and <span class="CodeFont">col2</span> of a table, the combination of the values held by <span class="CodeFont">col1</span> and <span class="CodeFont">col2</span> will be unique as long as these values are not <span class="CodeFont">NULL</span>. If one of <span class="CodeFont">col1</span> and <span class="CodeFont">col2</span> holds a <span class="CodeFont">NULL</span> value, there can be another identical row in the table.</p>
             <p>A table can have multiple <span class="CodeFont">UNIQUE</span> constraints.</p>
             <p class="heading2">Foreign key constraints</p>
             <p>Foreign keys providea way to enforce the referential integrity of a database. A foreign key is a column or group of columns within a table that references a key in some other table (or sometimes the same table). The foreign key must always include the columns of which the types exactly match those in the referenced primary key or unique constraint.</p>
@@ -2887,31 +2887,31 @@ SENT TIMESTAMP,
 DESTINATION CHAR(8),
 SUBJECT CHAR(64) NOT NULL CONSTRAINT
 OUT_TRAY_PK PRIMARY KEY,
-NOTE_TEXT VARCHAR(3000) 
+NOTE_TEXT VARCHAR(3000)
 );
 
 -- the table-level primary key definition allows you to
 -- include two columns in the primary key definition:
-CREATE TABLE SAMP.SCHED 
+CREATE TABLE SAMP.SCHED
 (
-CLASS_CODE CHAR(7) NOT NULL, 
-DAY SMALLINT NOT NULL, 
-STARTING TIME, 
+CLASS_CODE CHAR(7) NOT NULL,
+DAY SMALLINT NOT NULL,
+STARTING TIME,
 ENDING TIME,
 PRIMARY KEY (CLASS_CODE, DAY)
 );
 -- Use a column-level constraint for an arithmetic check
 -- Use a table-level constraint
--- to make sure that a employee's taxes does not 
+-- to make sure that a employee's taxes does not
 -- exceed the bonus
-CREATE TABLE SAMP.EMP   
+CREATE TABLE SAMP.EMP
 (
 EMPNO CHAR(6) NOT NULL CONSTRAINT EMP_PK PRIMARY KEY,
 FIRSTNME CHAR(12) NOT NULL,
 MIDINIT vARCHAR(12) NOT NULL,
 LASTNAME VARCHAR(15) NOT NULL,
 SALARY DECIMAL(9,2) CONSTRAINT SAL_CK CHECK (SALARY &gt;= 10000),
-BONUS DECIMAL(9,2), 
+BONUS DECIMAL(9,2),
 TAX DECIMAL(9,2),
 CONSTRAINT BONUS_CK CHECK (BONUS &gt; TAX)
 );
@@ -2926,7 +2926,7 @@ ORIG_AIRPORT CHAR(3),
 DEPART_TIME TIME,
 DEST_AIRPORT CHAR(3),
 ARRIVE_TIME TIME,
-MEAL CHAR(1) CONSTRAINT MEAL_CONSTRAINT 
+MEAL CHAR(1) CONSTRAINT MEAL_CONSTRAINT
 CHECK (MEAL IN ('B', 'L', 'D', 'S')),
 PRIMARY KEY (FLIGHT_ID, SEGMENT_NUMBER)
 );</pre>
@@ -2966,7 +2966,7 @@ PRIMARY KEY (FLIGHT_ID, SEGMENT_NUMBER)
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

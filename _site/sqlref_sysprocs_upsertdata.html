@@ -2750,7 +2750,7 @@
   	<section>
 		<div class="TopicContent">
             <h1 id="BuiltInSysProcs.UpsertDataFromFile">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</h1>
-            <p>The <samp>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</samp> system procedure
+            <p>The <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> system procedure
 			updates or inserts data from a file to a subset of columns in a table. You choose the subset of columns
 			by specifying insert columns. </p>
             <p>The syntax and usage of this procedure is almost identical to the syntax and usage of the <span class="CodeFont"><a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;system procedure, except that <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span>&#160;first determines if the database already contains a record that matches an incoming record:</p>
@@ -3209,7 +3209,7 @@ Mike,2013-03-23 09:45:00.68-05</pre>
             <p>You can then import the data with the following call:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">call SYSCS_UTIL.UPSERT_DATA_FROM_FILE('app','tabx','c1,c2',
 	'/path/to/ts3.csv',
-	',', '''', 
+	',', '''',
 	<span class="BoldFont">'yyyy-MM-dd HH:mm:ss.SSZ'</span>,
 	null, null, 0, null, true, null);</pre>
             </div>
@@ -3264,7 +3264,7 @@ This is the second line of the field',Baker
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

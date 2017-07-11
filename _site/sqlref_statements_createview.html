@@ -2867,50 +2867,50 @@ CREATE VIEW <span class="ItalicFont"><a href="sqlref_identifiers_types.html#View
             </div>
             <p class="heading2">Examples</p>
             <p class="body">This example creates a view that shows the age of each player in our database:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE VIEW PlayerAges (Player, Team, Age) 
-   AS SELECT DisplayName, Team, 
-      INT( (Now - Birthdate) / 365.25) AS Age 
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE VIEW PlayerAges (Player, Team, Age)
+   AS SELECT DisplayName, Team,
+      INT( (Now - Birthdate) / 365.25) AS Age
       FROM Players;
 0 rows inserted/updated/deleted
 
 splice&gt; SELECT * FROM PlayerAges WHERE Age &gt; 30 ORDER BY Team, Age DESC;
-PLAYER                  |TEAM     |AGE        
+PLAYER                  |TEAM     |AGE
 -----------------------------------------
-Robert Cohen            |Cards    |40         
-Jason Larrimore         |Cards    |37         
-David Janssen           |Cards    |36         
-Mitch Hassleman         |Cards    |35         
-Mitch Brandon           |Cards    |35         
-Tam Croonster           |Cards    |34         
-Alex Wister             |Cards    |34         
-Yuri Milleton           |Cards    |33         
-Jonathan Pearlman       |Cards    |33         
-Michael Rastono         |Cards    |32         
-Barry Morse             |Cards    |32         
-Carl Vanamos            |Cards    |32         
-Jan Bromley             |Cards    |31         
-Thomas Hillman          |Giants   |40         
-Mark Briste             |Giants   |38         
-Randy Varner            |Giants   |38         
-Jason Lilliput          |Giants   |38         
-Jalen Ardson            |Giants   |36         
-Sam Castleman           |Giants   |35         
-Alex Paramour           |Giants   |34         
-Jack Peepers            |Giants   |34         
-Norman Aikman           |Giants   |33         
-Craig McGawn            |Giants   |33         
-Kameron Fannais         |Giants   |33         
-Jason Martell           |Giants   |33         
-Harry Pennello          |Giants   |32         
-Jason Minman            |Giants   |32         
-Trevor Imhof            |Giants   |32         
-Steve Raster            |Giants   |32         
-Greg Brown              |Giants   |31         
-Alex Darba              |Giants   |31         
-Joseph Arkman           |Giants   |31         
-Tam Lassiter            |Giants   |31         
-Martin Cassman          |Giants   |31         
-Yuri Piamam             |Giants   |31         
+Robert Cohen            |Cards    |40
+Jason Larrimore         |Cards    |37
+David Janssen           |Cards    |36
+Mitch Hassleman         |Cards    |35
+Mitch Brandon           |Cards    |35
+Tam Croonster           |Cards    |34
+Alex Wister             |Cards    |34
+Yuri Milleton           |Cards    |33
+Jonathan Pearlman       |Cards    |33
+Michael Rastono         |Cards    |32
+Barry Morse             |Cards    |32
+Carl Vanamos            |Cards    |32
+Jan Bromley             |Cards    |31
+Thomas Hillman          |Giants   |40
+Mark Briste             |Giants   |38
+Randy Varner            |Giants   |38
+Jason Lilliput          |Giants   |38
+Jalen Ardson            |Giants   |36
+Sam Castleman           |Giants   |35
+Alex Paramour           |Giants   |34
+Jack Peepers            |Giants   |34
+Norman Aikman           |Giants   |33
+Craig McGawn            |Giants   |33
+Kameron Fannais         |Giants   |33
+Jason Martell           |Giants   |33
+Harry Pennello          |Giants   |32
+Jason Minman            |Giants   |32
+Trevor Imhof            |Giants   |32
+Steve Raster            |Giants   |32
+Greg Brown              |Giants   |31
+Alex Darba              |Giants   |31
+Joseph Arkman           |Giants   |31
+Tam Lassiter            |Giants   |31
+Martin Cassman          |Giants   |31
+Yuri Piamam             |Giants   |31
 
 35 rows selected
 </pre>
@@ -2920,8 +2920,8 @@ Yuri Piamam             |Giants   |31
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE T1 (C1 DOUBLE PRECISION);
 0 rows inserted/updated/deleted
 
-splice&gt;CREATE FUNCTION SIN (DATA DOUBLE) 
-   RETURNS DOUBLE  
+splice&gt;CREATE FUNCTION SIN (DATA DOUBLE)
+   RETURNS DOUBLE
    EXTERNAL NAME 'java.lang.Math.sin'
    LANGUAGE JAVA PARAMETER STYLE JAVA;
 0 rows inserted/updated/deleted
@@ -2956,7 +2956,7 @@ splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

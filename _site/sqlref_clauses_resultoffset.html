@@ -2770,7 +2770,7 @@
                 <p class="paramDefn">If non-zero, this must be a positive integer value. If you specify a value greater than the number of rows in the underlying result set, no rows are returned.</p>
                 <p class="paramDefnFirst">&#160;</p>
             </div>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">FETCH { FIRST | NEXT } 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">FETCH { FIRST | NEXT }
    [<span class="ItalicFont">integer-literal</span> | ? ]
    {ROW | ROWS} ONLY
 </pre>
@@ -2793,28 +2793,28 @@ SELECT * FROM T FETCH FIRST ROW ONLY;
 
    -- Sort T using column I, then fetch rows 11 through 20
    --   of the sorted rows (inclusive)
-SELECT * FROM T ORDER BY I 
+SELECT * FROM T ORDER BY I
          OFFSET 10 ROWS
          FETCH NEXT 10 ROWS ONLY;
 
    -- Skip the first 100 rows of T
-   -- If the table has fewer than 101 records, 
+   -- If the table has fewer than 101 records,
    --   an empty result set is returned
 SELECT * FROM T OFFSET 100 ROWS;
 
    -- Use of ORDER BY and FETCH FIRST in a subquery
-SELECT DISTINCT A.ORIG_AIRPORT, B.FLIGHT_ID FROM 
-   (SELECT FLIGHT_ID, ORIG_AIRPORT 
-       FROM FLIGHTS 
-       ORDER BY ORIG_AIRPORT DESC 
-       FETCH FIRST 40 ROWS ONLY) 
-    AS A, FLIGHTAVAILABILITY AS B 
+SELECT DISTINCT A.ORIG_AIRPORT, B.FLIGHT_ID FROM
+   (SELECT FLIGHT_ID, ORIG_AIRPORT
+       FROM FLIGHTS
+       ORDER BY ORIG_AIRPORT DESC
+       FETCH FIRST 40 ROWS ONLY)
+    AS A, FLIGHTAVAILABILITY AS B
    WHERE A.FLIGHT_ID = B.FLIGHT_ID;
 
    -- JDBC (using a dynamic parameter):
-PreparedStatement p = 
-   con.prepareStatement("SELECT * FROM T 
-                         ORDER BY I 
+PreparedStatement p =
+   con.prepareStatement("SELECT * FROM T
+                         ORDER BY I
                          OFFSET ? ROWS");
    p.setInt(1, 100);
 ResultSet rs = p.executeQuery();
@@ -2844,7 +2844,7 @@ ResultSet rs = p.executeQuery();
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

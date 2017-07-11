@@ -2783,39 +2783,39 @@ SELECT COUNT (DISTINCT flying_time), SUM (DISTINCT miles)
    FROM Players
    GROUP BY Team
    HAVING COUNT(Team) &gt; 1;
-Players             |TEAM                                                            
+Players             |TEAM
 -------------------------------------------------------------------------------------
-46                  |Cards                                                           
-48                  |Giants                                                          
+46                  |Cards
+48                  |Giants
 
 2 rows selected
 </pre>
             </div>
             <p class="heading2">Analytic Example</p>
             <p>The following example shows the product ID, quantity, and count of all rows from the beginning of the data window:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT displayName, homeruns, 
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT displayName, homeruns,
    COUNT(*) OVER (ORDER BY HomeRuns ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
-     as "Running Count" 
-   FROM Players JOIN Batting ON Players.ID=Batting.ID 
-   WHERE homeRuns &gt; 5 
+     as "Running Count"
+   FROM Players JOIN Batting ON Players.ID=Batting.ID
+   WHERE homeRuns &gt; 5
    ORDER BY "Running Count";
-DISPLAYNAME             |HOMER&amp;|Running Count      
+DISPLAYNAME             |HOMER&amp;|Running Count
 ----------------------------------------------------
-Jeremy Packman          |6     |1                   
-Jason Minman            |7     |2                   
-Stan Post               |7     |3                   
-John Purser             |8     |4                   
-Harry Pennello          |9     |5                   
-Kelly Wacherman         |11    |6                   
-Mitch Duffer            |12    |7                   
-Michael Rastono         |13    |8                   
-Jack Hellman            |13    |9                   
-Jonathan Pearlman       |17    |10                  
-Roger Green             |17    |11                  
-Billy Bopper            |18    |12                  
-Buddy Painter           |19    |13                  
-Bob Cranker             |21    |14                  
-Mitch Canepa            |28    |15                  
+Jeremy Packman          |6     |1
+Jason Minman            |7     |2
+Stan Post               |7     |3
+John Purser             |8     |4
+Harry Pennello          |9     |5
+Kelly Wacherman         |11    |6
+Mitch Duffer            |12    |7
+Michael Rastono         |13    |8
+Jack Hellman            |13    |9
+Jonathan Pearlman       |17    |10
+Roger Green             |17    |11
+Billy Bopper            |18    |12
+Buddy Painter           |19    |13
+Bob Cranker             |21    |14
+Mitch Canepa            |28    |15
 
 15 rows selected
 </pre>
@@ -2850,7 +2850,7 @@ Mitch Canepa            |28    |15
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

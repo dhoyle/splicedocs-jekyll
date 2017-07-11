@@ -11,7 +11,7 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent">
             <h1 id="BuiltInSysProcs.BackupDatabase">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</h1>
-            <p>The <samp>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</samp> system procedure
+            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span> system procedure
 performs an immediate full or incremental backup of your database to a specified backup directory. </p>
             <p>Splice Machine supports both full and incremental backups:&#160;</p>
             <ul>
@@ -49,7 +49,7 @@ based on the current user directory. To avoid confusion, we strongly recommend t
 execute privileges on this function by default. The
 database owner can grant access to other users.</p>
             <p class="heading2">JDBC example</p>
-            <p>The following example performs an immediate full backup to a subdirectory of the <samp>hdfs:///home/backup</samp> directory: </p>
+            <p>The following example performs an immediate full backup to a subdirectory of the <span class="CodeFont">hdfs:///home/backup</span> directory: </p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE(?,?)");
   cs.setString(1, 'hdfs:///home/backup');
@@ -60,7 +60,7 @@ database owner can grant access to other users.</p>
             <p class="heading2">SQL Example</p>
             <div class="noteRelease">Backing up a database may take several minutes, depending on the size of your database and how much of it you're backing up.</div>
             <div>
-                <p>The following example runs an immediate incremental backup to the <samp>hdfs:///home/backup/</samp> directory:</p>
+                <p>The following example runs an immediate incremental backup to the <span class="CodeFont">hdfs:///home/backup/</span> directory:</p>
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( 'hdfs:///home/backup', 'incremental' );
 Statement executed.
 </pre>

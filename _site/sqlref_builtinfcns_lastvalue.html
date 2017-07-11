@@ -2778,24 +2778,24 @@
             <div class="noteNote">Splice Machine always sorts <span class="CodeFont">NULL</span>&#160;values first in the results.</div>
             <p class="heading2">Examples</p>
             <p>The following query finds all players with 10 or more HomeRuns, and compares each player's home run count with the highest total on his team:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns, 
-   LAST_VALUE(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns 
-   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Most" 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns,
+   LAST_VALUE(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns
+   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Most"
    FROM Players JOIN Batting ON Players.ID=Batting.ID
    WHERE HomeRuns &gt; 10
    ORDER BY Team, HomeRuns DESC;
-TEAM     |DISPLAYNAME             |HOMER&amp;|Most  
+TEAM     |DISPLAYNAME             |HOMER&amp;|Most
 ----------------------------------------------
-Cards    |Mitch Canepa            |28    |28    
-Cards    |Jonathan Pearlman       |17    |28    
-Cards    |Roger Green             |17    |28    
-Cards    |Michael Rastono         |13    |28    
-Cards    |Jack Hellman            |13    |28    
-Cards    |Kelly Wacherman         |11    |28    
-Giants   |Bob Cranker             |21    |21    
-Giants   |Buddy Painter           |19    |21    
-Giants   |Billy Bopper            |18    |21    
-Giants   |Mitch Duffer            |12    |21    
+Cards    |Mitch Canepa            |28    |28
+Cards    |Jonathan Pearlman       |17    |28
+Cards    |Roger Green             |17    |28
+Cards    |Michael Rastono         |13    |28
+Cards    |Jack Hellman            |13    |28
+Cards    |Kelly Wacherman         |11    |28
+Giants   |Bob Cranker             |21    |21
+Giants   |Buddy Painter           |19    |21
+Giants   |Billy Bopper            |18    |21
+Giants   |Mitch Duffer            |12    |21
 
 10 rows selected</pre>
             </div>
@@ -2830,7 +2830,7 @@ Giants   |Mitch Duffer            |12    |21
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

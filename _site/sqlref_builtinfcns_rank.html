@@ -2785,20 +2785,20 @@
             <p class="body">The following query ranks the salaries of players, per team, whose salary is at least $1 million.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT DisplayName, Team, Season, Salary,
    RANK() OVER (PARTITION BY Team ORDER BY Salary Desc) "RANK"
-   FROM Players JOIN Salaries  ON Salaries.ID=Players.ID 
+   FROM Players JOIN Salaries  ON Salaries.ID=Players.ID
    WHERE Salary&gt;999999 AND Season=2015;
 
-DISPLAYNAME             |TEAM     |SEASON|SALARY              |RANK 
+DISPLAYNAME             |TEAM     |SEASON|SALARY              |RANK
 ---------------------------------------------------------------------
-Mitch Hassleman         |Cards     |2015  |17000000            |1 
-Yuri Milleton           |Cards     |2015  |15200000            |2 
-James Grasser           |Cards     |2015  |9375000             |3 
-Jack Hellman            |Cards     |2015  |8300000             |4 
-Larry Lintos            |Cards     |2015  |7000000             |5 
-Jeremy Johnson          |Cards     |2015  |4125000             |6 
-Mitch Canepa            |Cards     |2015  |3750000             |7 
-Mitch Brandon           |Cards     |2015  |3500000             |8 
-Robert Cohen            |Cards     |2015  |3000000             |9 
+Mitch Hassleman         |Cards     |2015  |17000000            |1
+Yuri Milleton           |Cards     |2015  |15200000            |2
+James Grasser           |Cards     |2015  |9375000             |3
+Jack Hellman            |Cards     |2015  |8300000             |4
+Larry Lintos            |Cards     |2015  |7000000             |5
+Jeremy Johnson          |Cards     |2015  |4125000             |6
+Mitch Canepa            |Cards     |2015  |3750000             |7
+Mitch Brandon           |Cards     |2015  |3500000             |8
+Robert Cohen            |Cards     |2015  |3000000             |9
 James Woegren           |Cards     |2015  |2675000             |10
 Sam Culligan            |Cards     |2015  |2652732             |11
 Barry Morse             |Cards     |2015  |2379781             |12
@@ -2808,15 +2808,15 @@ Alex Wister             |Cards     |2015  |1950000             |15
 Pablo Bonjourno         |Cards     |2015  |1650000             |16
 Jonathan Pearlman       |Cards     |2015  |1500000             |17
 Jan Bromley             |Cards     |2015  |1200000             |18
-Martin Cassman          |Giants    |2015  |20833333            |1 
-Harry Pennello          |Giants    |2015  |18500000            |2 
-Tam Lassiter            |Giants    |2015  |18000000            |3 
-Buddy Painter           |Giants    |2015  |17277777            |4 
-Thomas Hillman          |Giants    |2015  |12000000            |5 
-Alex Paramour           |Giants    |2015  |10250000            |6 
-Jack Peepers            |Giants    |2015  |9000000             |7 
-Mark Briste             |Giants    |2015  |8000000             |8 
-Marcus Bamburger        |Giants    |2015  |6950000             |9 
+Martin Cassman          |Giants    |2015  |20833333            |1
+Harry Pennello          |Giants    |2015  |18500000            |2
+Tam Lassiter            |Giants    |2015  |18000000            |3
+Buddy Painter           |Giants    |2015  |17277777            |4
+Thomas Hillman          |Giants    |2015  |12000000            |5
+Alex Paramour           |Giants    |2015  |10250000            |6
+Jack Peepers            |Giants    |2015  |9000000             |7
+Mark Briste             |Giants    |2015  |8000000             |8
+Marcus Bamburger        |Giants    |2015  |6950000             |9
 Jalen Ardson            |Giants    |2015  |6000000             |10
 Steve Raster            |Giants    |2015  |6000000             |10
 Sam Castleman           |Giants    |2015  |5000000             |12
@@ -2839,20 +2839,20 @@ Jason Minman            |Giants    |2015  |1000000             |24
             <p>Here's the same query using <span class="CodeFont">DENSE_RANK</span>&#160;instead of <span class="CodeFont">RANK</span>. Note how tied rankings are handled differently:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT DisplayName, Team, Season, Salary,
    DENSE_RANK() OVER (PARTITION BY Team ORDER BY Salary Desc) "RANK"
-   FROM Players JOIN Salaries  ON Salaries.ID=Players.ID 
+   FROM Players JOIN Salaries  ON Salaries.ID=Players.ID
    WHERE Salary&gt;999999 AND Season=2015;
 
-DISPLAYNAME             |TEAM     |SEASON|SALARY              |RANK 
+DISPLAYNAME             |TEAM     |SEASON|SALARY              |RANK
 ---------------------------------------------------------------------
-Mitch Hassleman         |Cards     |2015  |17000000            |1 
-Yuri Milleton           |Cards     |2015  |15200000            |2 
-James Grasser           |Cards     |2015  |9375000             |3 
-Jack Hellman            |Cards     |2015  |8300000             |4 
-Larry Lintos            |Cards     |2015  |7000000             |5 
-Jeremy Johnson          |Cards     |2015  |4125000             |6 
-Mitch Canepa            |Cards     |2015  |3750000             |7 
-Mitch Brandon           |Cards     |2015  |3500000             |8 
-Robert Cohen            |Cards     |2015  |3000000             |9 
+Mitch Hassleman         |Cards     |2015  |17000000            |1
+Yuri Milleton           |Cards     |2015  |15200000            |2
+James Grasser           |Cards     |2015  |9375000             |3
+Jack Hellman            |Cards     |2015  |8300000             |4
+Larry Lintos            |Cards     |2015  |7000000             |5
+Jeremy Johnson          |Cards     |2015  |4125000             |6
+Mitch Canepa            |Cards     |2015  |3750000             |7
+Mitch Brandon           |Cards     |2015  |3500000             |8
+Robert Cohen            |Cards     |2015  |3000000             |9
 James Woegren           |Cards     |2015  |2675000             |10
 Sam Culligan            |Cards     |2015  |2652732             |11
 Barry Morse             |Cards     |2015  |2379781             |12
@@ -2862,15 +2862,15 @@ Alex Wister             |Cards     |2015  |1950000             |14
 Pablo Bonjourno         |Cards     |2015  |1650000             |15
 Jonathan Pearlman       |Cards     |2015  |1500000             |16
 Jan Bromley             |Cards     |2015  |1200000             |17
-Martin Cassman          |Giants    |2015  |20833333            |1 
-Harry Pennello          |Giants    |2015  |18500000            |2 
-Tam Lassiter            |Giants    |2015  |18000000            |3 
-Buddy Painter           |Giants    |2015  |17277777            |4 
-Thomas Hillman          |Giants    |2015  |12000000            |5 
-Alex Paramour           |Giants    |2015  |10250000            |6 
-Jack Peepers            |Giants    |2015  |9000000             |7 
-Mark Briste             |Giants    |2015  |8000000             |8 
-Marcus Bamburger        |Giants    |2015  |6950000             |9 
+Martin Cassman          |Giants    |2015  |20833333            |1
+Harry Pennello          |Giants    |2015  |18500000            |2
+Tam Lassiter            |Giants    |2015  |18000000            |3
+Buddy Painter           |Giants    |2015  |17277777            |4
+Thomas Hillman          |Giants    |2015  |12000000            |5
+Alex Paramour           |Giants    |2015  |10250000            |6
+Jack Peepers            |Giants    |2015  |9000000             |7
+Mark Briste             |Giants    |2015  |8000000             |8
+Marcus Bamburger        |Giants    |2015  |6950000             |9
 Jalen Ardson            |Giants    |2015  |6000000             |10
 Steve Raster            |Giants    |2015  |6000000             |10
 Sam Castleman           |Giants    |2015  |5000000             |11
@@ -2916,7 +2916,7 @@ Jason Minman            |Giants    |2015  |1000000             |20
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 7, 2017 <br />
+ Site last generated: Jul 11, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

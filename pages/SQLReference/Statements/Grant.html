@@ -123,7 +123,7 @@ folder: SQLReference/Statements
                 </p>
                 <p class="paramDefnFirst">Use the keyword <span class="CodeFont">PUBLIC</span> to specify all users. </p>
                 <p class="paramDefn">When <span class="CodeFont">PUBLIC</span> is specified, the privileges or roles affect all current and future users. </p>
-                <p class="paramDefn">The privileges granted to <span class="CodeFont">PUBLIC</span> and to individual users or roles are independent privileges. For example, a <span class="CodeFont">SELECT</span> privilege on table <samp>t</samp> is granted to both <span class="CodeFont">PUBLIC</span> and to the authorization ID <samp>harry</samp>. If the <span class="CodeFont">SELECT</span> privilege is later revoked from the authorization ID <samp>harry</samp>, Harry will still be able to access the table <samp>t</samp> through the <span class="CodeFont">PUBLIC</span> privilege.</p>
+                <p class="paramDefn">The privileges granted to <span class="CodeFont">PUBLIC</span> and to individual users or roles are independent privileges. For example, a <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">t</span> is granted to both <span class="CodeFont">PUBLIC</span> and to the authorization ID <span class="CodeFont">harry</span>. If the <span class="CodeFont">SELECT</span> privilege is later revoked from the authorization ID <span class="CodeFont">harry</span>, Harry will still be able to access the table <span class="CodeFont">t</span> through the <span class="CodeFont">PUBLIC</span> privilege.</p>
             </div>
             <p class="heading2" id="PrivilegeTypes">Privilege Types</p>
             <table summary="Privilege types">
@@ -159,7 +159,7 @@ folder: SQLReference/Statements
                     </tr>
                     <tr>
                         <td class="CodeFont">SELECT</td>
-                        <td>To grant permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a></span> on a table or view. If a column list is specified with the <span class="CodeFont">SELECT</span> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <span class="CodeFont">SELECT</span> statement or <span class="ItalicFont">SelectExpression</span> (for example, queries that use <samp>COUNT(*)</samp>), the user must have at least one column-level <span class="CodeFont">SELECT</span> privilege or table-level <span class="CodeFont">SELECT</span> privilege.</p></td>
+                        <td>To grant permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a></span> on a table or view. If a column list is specified with the <span class="CodeFont">SELECT</span> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <span class="CodeFont">SELECT</span> statement or <span class="ItalicFont">SelectExpression</span> (for example, queries that use <span class="CodeFont">COUNT(*)</span>), the user must have at least one column-level <span class="CodeFont">SELECT</span> privilege or table-level <span class="CodeFont">SELECT</span> privilege.</p></td>
                     </tr>
                     <tr>
                         <td class="CodeFont">TRIGGER</td>
@@ -183,19 +183,19 @@ folder: SQLReference/Statements
                 <li value="7">Run a specified function or procedure.</li>
                 <li value="8">Use a user-defined type.</li>
             </ul>
-            <p>Before you issue a <span class="CodeFont">GRANT</span> statement, check that the <samp>derby.database.sqlAuthorization</samp> property is set to <samp>true</samp>. The <samp>derby.database.sqlAuthorization</samp> property enables the SQL Authorization mode.</p>
+            <p>Before you issue a <span class="CodeFont">GRANT</span> statement, check that the <span class="CodeFont">derby.database.sqlAuthorization</span> property is set to <span class="CodeFont">true</span>. The <span class="CodeFont">derby.database.sqlAuthorization</span> property enables the SQL Authorization mode.</p>
             <p>You can grant privileges on an object if you are the owner of the object or the database owner. See documentation for the <span class="CodeFont"><a href="sqlref_statements_createstatements.html">CREATE</a></span> statements for more information. </p>
             <p class="heading2">Examples</p>
             <p class="heading3">Granting Privileges to Users</p>
-            <p>To grant the <span class="CodeFont">SELECT</span> privilege on the schema <samp>SpliceBBall</samp> to the authorization IDs <samp>Bill</samp> and <samp>Joan</samp>, use the following syntax:</p>
+            <p>To grant the <span class="CodeFont">SELECT</span> privilege on the schema <span class="CodeFont">SpliceBBall</span> to the authorization IDs <span class="CodeFont">Bill</span> and <span class="CodeFont">Joan</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT SELECT ON SCHEMA&#160;SpliceBBall TO Bill, Joan;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To grant the <span class="CodeFont">SELECT</span> privilege on table <samp>Salaries</samp> to the authorization IDs <samp>Bill</samp> and <samp>Joan</samp>, use the following syntax:</p>
+            <p>To grant the <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">Salaries</span> to the authorization IDs <span class="CodeFont">Bill</span> and <span class="CodeFont">Joan</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT SELECT ON TABLE Salaries TO Bill, Joan;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To grant the <span class="CodeFont">UPDATE</span> and <span class="CodeFont">TRIGGER</span> privileges on table <samp>Salaries</samp> to the authorization IDs <samp>Joe</samp> and <samp>Anita</samp>, use the following syntax:</p>
+            <p>To grant the <span class="CodeFont">UPDATE</span> and <span class="CodeFont">TRIGGER</span> privileges on table <span class="CodeFont">Salaries</span> to the authorization IDs <span class="CodeFont">Joe</span> and <span class="CodeFont">Anita</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT UPDATE, TRIGGER ON TABLE Salaries TO&#160;Joe, Anita;
 0 rows inserted/updated/deleted</pre>
             </div>
@@ -203,21 +203,21 @@ folder: SQLReference/Statements
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT SELECT ON TABLE Baseball_Stats.Hitting to PUBLIC;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To grant the <span class="CodeFont">EXECUTE</span> privilege on procedure <samp>ComputeValue</samp> to the authorization ID <samp>george</samp>, use the following syntax:</p>
+            <p>To grant the <span class="CodeFont">EXECUTE</span> privilege on procedure <span class="CodeFont">ComputeValue</span> to the authorization ID <span class="CodeFont">george</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT EXECUTE ON PROCEDURE ComputeValue TO george;
 0 rows inserted/updated/deleted</pre>
             </div>
             <p class="heading3">Granting Roles to Users</p>
-            <p>To grant the role <samp> purchases_reader_role</samp> to the authorization  IDs <samp>george</samp> and <samp>maria</samp>, use the following  syntax:</p>
+            <p>To grant the role <span class="CodeFont"> purchases_reader_role</span> to the authorization  IDs <span class="CodeFont">george</span> and <span class="CodeFont">maria</span>, use the following  syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT purchases_reader_role TO george,maria;
 0 rows inserted/updated/deleted</pre>
             </div>
             <p class="heading3">Granting Privileges to Roles</p>
-            <p>To grant the <span class="CodeFont">SELECT</span> privilege on schema <samp>SpliceBBall</samp> to the role <samp>purchases_reader_role</samp>, use the following syntax:</p>
+            <p>To grant the <span class="CodeFont">SELECT</span> privilege on schema <span class="CodeFont">SpliceBBall</span> to the role <span class="CodeFont">purchases_reader_role</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT SELECT ON SCHEMA&#160;SpliceBBall TO purchases_reader_role;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To grant the <span class="CodeFont">SELECT</span> privilege on table <samp>t</samp> to the role <samp>purchases_reader_role</samp>, use the following syntax:</p>
+            <p>To grant the <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">t</span> to the role <span class="CodeFont">purchases_reader_role</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT SELECT ON TABLE t TO purchases_reader_role;
 0 rows inserted/updated/deleted</pre>
             </div>
