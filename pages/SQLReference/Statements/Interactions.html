@@ -1,7 +1,7 @@
 ---
 title: Interactions with Dependency System
 summary: Information about how Splice Machine internally tracks the dependencies of prepared statements.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -20,38 +20,38 @@ folder: SQLReference/Statements
 splice&gt; <span class="BoldFont">CREATE TABLE mytable (mycol INT);</span>
   0 rows inserted/updated/deleted
 splice&gt; <span class="BoldFont">INSERT INTO mytable VALUES (1), (2), (3);</span>
-  3 rows inserted/updated/deleted  -- this example uses the 
-ij command prepare, which prepares a statement  
+  3 rows inserted/updated/deleted  -- this example uses the
+ij command prepare, which prepares a statement
 splice&gt; <span class="BoldFont">prepare p1 AS 'INSERT INTO MyTable VALUES (4)';</span>
    -- p1 depends on mytable;
 splice&gt; <span class="BoldFont">execute p1;</span>
    1 row inserted/updated/deleted
-     -- Splice Machine  executes it without recompiling  
+     -- Splice Machine  executes it without recompiling
 splice&gt; <span class="BoldFont">CREATE INDEX i1 ON mytable(mycol);</span>
    0 rows inserted/updated/deleted
-     -- p1 is temporarily invalidated because of new index  
+     -- p1 is temporarily invalidated because of new index
 splice&gt; <span class="BoldFont">execute p1;</span>
-   1 row inserted/updated/deleted  
-     -- Splice Machine automatically recompiles and executes p1 
+   1 row inserted/updated/deleted
+     -- Splice Machine automatically recompiles and executes p1
 splice&gt; <span class="BoldFont">DROP TABLE mytable;</span>
    0 rows inserted/updated/deleted
      -- Splice Machine  permits you to drop table
      -- because result set of p1 is closed
-     -- however, the statement p1 is temporarily invalidated  
+     -- however, the statement p1 is temporarily invalidated
 splice&gt; <span class="BoldFont">CREATE TABLE mytable (mycol INT);</span>
    0 rows inserted/updated/deleted
 splice&gt; <span class="BoldFont">INSERT INTO mytable VALUES (1), (2), (3);</span>
-   3 rows inserted/updated/deleted  
+   3 rows inserted/updated/deleted
 splice&gt; <span class="BoldFont">execute p1;</span>
    1 row inserted/updated/deleted
      -- p1 is invalid, so Splice Machine tries to recompile it
      -- before executing.
-     -- It is successful and executes.  
+     -- It is successful and executes.
 splice&gt; <span class="BoldFont">DROP TABLE mytable;</span>
   0 rows inserted/updated/deleted
      -- statement p1 is now invalid
      -- and this time the attempt to recompile it
-     -- upon execution will fail  
+     -- upon execution will fail
 splice&gt; <span class="BoldFont">execute p1;</span>
   ERROR 42X05: Table/View 'MYTABLE' does not exist.
 </pre>

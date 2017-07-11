@@ -1,7 +1,7 @@
 ---
 title: LAST_DAY built-in SQL function
 summary: Built-in SQL function that returns the date of the last day of a month
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -25,19 +25,19 @@ folder: SQLReference/BuiltInFcns
             <p class="heading2">Examples</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">Examples:
 splice&gt; values (LAST_DAY(CURRENT_DATE));
-1 
+1
 ----------
 2015-11-30
 
 splice&gt; values (LAST_DAY(DATE(CURRENT_TIMESTAMP)));
-1 
+1
 ----------
 2015-11-30
 
-splice&gt; SELECT DISPLAYNAME, BirthDate, LAST_DAY(BirthDate) "MonthEnd" 
-   FROM Players  
+splice&gt; SELECT DISPLAYNAME, BirthDate, LAST_DAY(BirthDate) "MonthEnd"
+   FROM Players
    WHERE MONTH(BirthDate) IN (2, 5, 12);
-DISPLAYNAME             |BIRTHDATE |MonthEnd  
+DISPLAYNAME             |BIRTHDATE |MonthEnd
 ----------------------------------------------
 Tam Croonster           |1980-12-19|1980-12-31
 Jack Peepers            |1981-05-31|1981-05-31

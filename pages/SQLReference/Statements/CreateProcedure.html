@@ -1,7 +1,7 @@
 ---
 title: CREATE PROCEDURE statement
 summary: Creates Java stored procedures, which you can then call using the CallProcedure statement.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -15,8 +15,8 @@ folder: SQLReference/Statements
             <p>For details on how Splice Machine matches procedures to Java methods,	see <a href="sqlref_sqlargmatching.html">Argument matching</a>.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE PROCEDURE <span class="ItalicFont">procedureName</span> (
-	[ <span class="ItalicFont">procedureParameter</span> 
-   	[, <span class="ItalicFont">procedureParameter</span>] ] * 
+	[ <span class="ItalicFont">procedureParameter</span>
+   	[, <span class="ItalicFont">procedureParameter</span>] ] *
 	)
      [ <span class="ItalicFont"><a href="#FunctionElements">ProcedureElement</a></span> ] *</pre>
             </div>
@@ -85,7 +85,7 @@ folder: SQLReference/Statements
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE PROCEDURE SALES.TOTAL_REVENUE (
     IN S_MONTH INTEGER,
     IN S_YEAR INTEGER, OUT TOTAL DECIMAL(10,2))
-    PARAMETER STYLE JAVA 
+    PARAMETER STYLE JAVA
     READS SQL DATA LANGUAGE
     JAVA EXTERNAL NAME 'com.example.sales.calculateRevenueByMonth';
 0 rows inserted/updated/deleted</pre>

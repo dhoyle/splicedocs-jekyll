@@ -1,7 +1,7 @@
 ---
 title: CREATE SCHEMA statement
 summary: Creates a schema in your database
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -15,7 +15,7 @@ folder: SQLReference/Statements
             <p class="heading2">Syntax</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
 CREATE SCHEMA {
-     [ <span class="ItalicFont">schemaName</span> ] 
+     [ <span class="ItalicFont">schemaName</span> ]
      }</pre>
             </div>
             <p>The <span class="CodeFont">CREATE SCHEMA</span> statement is used to create a schema. A schema name cannot exceed <span class="CodeFont">128</span> characters. Schema names must be unique within the database.</p>
@@ -34,10 +34,10 @@ CREATE SCHEMA {
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE Flights.Availability(
    Flight_ID CHAR(6) NOT NULL,
    Segment_Number INT NOT NULL,
-   Flight_Date DATE NOT NULL, 
+   Flight_Date DATE NOT NULL,
    Economy_Seats_Taken INT,
-   Business_Seats_Taken INT, 
-   FirstClass_Seats_Taken INT, 
+   Business_Seats_Taken INT,
+   FirstClass_Seats_Taken INT,
    CONSTRAINT Flt_Avail_PK
    PRIMARY KEY (Flight_ID, Segment_Number, Flight_Date)
    );
@@ -48,7 +48,7 @@ splice&gt;&#160;CREATE TABLE EMP.AVAILABILITY(
    Booking_Date DATE NOT NULL,
    Rooms_Taken INT,
    CONSTRAINT HotelAvail_PK PRIMARY KEY (Hotel_ID, Booking_Date)
-   );	
+   );
 0 rows inserted/updated/deleted</pre>
             </div>
             <p class="heading2">See Also</p>

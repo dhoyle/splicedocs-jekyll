@@ -1,7 +1,7 @@
 ---
 title: WHERE clause
 summary: An optional clause in a SelectExpression, DELETE statement, or UPDATE statement that lets you select rows based on a Boolean expression.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -23,26 +23,26 @@ folder: SQLReference/Clauses
             </div>
             <p class="heading2">Example</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-   -- find the flights where no business-class seats have been booked     
+   -- find the flights where no business-class seats have been booked
 SELECT *
   FROM FlightAvailability
   WHERE business_seats_taken IS NULL
      OR business_seats_taken = 0;
 
    -- Join the EMP_ACT and EMPLOYEE tables
-   -- select all the columns from the EMP_ACT table and 
-   -- add the employee's surname (LASTNAME) from the EMPLOYEE table 
+   -- select all the columns from the EMP_ACT table and
+   -- add the employee's surname (LASTNAME) from the EMPLOYEE table
    -- to each row of the result.
 SELECT SAMP.EMP_ACT.*, LASTNAME
   FROM SAMP.EMP_ACT, SAMP.EMPLOYEE
   WHERE EMP_ACT.EMPNO = EMPLOYEE.EMPNO;
 
 
-   -- Determine the employee number and salary of sales representatives 
+   -- Determine the employee number and salary of sales representatives
    -- along with the average salary and head count of their departments.
-   -- This query must first create a new-column-name specified in the AS clause 
-   -- which is outside the fullselect (DINFO) 
-   -- in order to get the AVGSALARY and EMPCOUNT columns, 
+   -- This query must first create a new-column-name specified in the AS clause
+   -- which is outside the fullselect (DINFO)
+   -- in order to get the AVGSALARY and EMPCOUNT columns,
    -- as well as the DEPTNO column that is used in the WHERE clause
 SELECT THIS_EMP.EMPNO, THIS_EMP.SALARY, DINFO.AVGSALARY, DINFO.EMPCOUNT
   FROM EMPLOYEE THIS_EMP,

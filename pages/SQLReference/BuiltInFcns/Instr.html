@@ -1,7 +1,7 @@
 ---
 title: INSTR built-in function
 summary: Built-in SQL function that returns the index of the first occurrence of a substring within a string
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -28,17 +28,17 @@ folder: SQLReference/BuiltInFcns
             <p>The first index&#160;is <span class="CodeFont">1</span>.</p>
             <p>If <span class="CodeFont">substring</span> is not found, <span class="CodeFont">INSTR</span>&#160;returns <span class="CodeFont">0</span>.</p>
             <p class="heading2">Examples</p>
-            <div class="preWrapperWide"><pre class="Example">splice&gt; SELECT DisplayName, INSTR(DisplayName, 'Pa') "Position"  
-   FROM Players 
-   WHERE (INSTR(DisplayName, 'Pa') &gt; 0) 
+            <div class="preWrapperWide"><pre class="Example">splice&gt; SELECT DisplayName, INSTR(DisplayName, 'Pa') "Position"
+   FROM Players
+   WHERE (INSTR(DisplayName, 'Pa') &gt; 0)
    ORDER BY DisplayName;
-DISPLAYNAME             |Position   
+DISPLAYNAME             |Position
 ------------------------------------
-Alex Paramour           |6          
-Buddy Painter           |7          
-Jeremy Packman          |8          
-Pablo Bonjourno         |1          
-Paul Kaster             |1          
+Alex Paramour           |6
+Buddy Painter           |7
+Jeremy Packman          |8
+Pablo Bonjourno         |1
+Paul Kaster             |1
 
 5 rows selected
 </pre>

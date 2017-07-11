@@ -1,7 +1,7 @@
 ---
 title: RIGHT OUTER JOIN
 summary: Join operation that returns all rows from the right table (table2), with the matching rows in the left table (table1). The result is NULL in the left side when there is no match.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -22,34 +22,34 @@ folder: SQLReference/JoinOps
             <p class="heading2">Example 1</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- get all countries and corresponding cities, including
    -- countries without any cities
-splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME 
-  FROM CITIES  RIGHT OUTER JOIN COUNTRIES 
+splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
+  FROM CITIES  RIGHT OUTER JOIN COUNTRIES
   ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE;
 
    -- get all countries in Africa and corresponding cities,
    -- including countries without any cities
 splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
-  FROM CITIES 
-  RIGHT OUTER JOIN COUNTRIES 
+  FROM CITIES
+  RIGHT OUTER JOIN COUNTRIES
   ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
   WHERE Countries.region = 'Africa';
 
   -- use the synonymous syntax, RIGHT JOIN, to achieve exactly
   -- the same results as in the example above
 splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
-  FROM CITIES 
-  RIGHT JOIN COUNTRIES 
+  FROM CITIES
+  RIGHT JOIN COUNTRIES
   ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
   WHERE Countries.region = 'Africa';</pre>
             </div>
             <p class="heading2">Example 2</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- a TableExpression can be a joinOperation. Therefore
    -- you can have multiple join operations in a FROM clause
-   -- List every employee number and last name 
+   -- List every employee number and last name
    -- with the employee number and last name of their manager
-splice&gt;&#160;SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME	
-  FROM EMPLOYEE E RIGHT OUTER JOIN	
-  DEPARTMENT RIGHT OUTER JOIN EMPLOYEE M 
+splice&gt;&#160;SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
+  FROM EMPLOYEE E RIGHT OUTER JOIN
+  DEPARTMENT RIGHT OUTER JOIN EMPLOYEE M
   ON MGRNO = M.EMPNO
   ON E.WORKDEPT = DEPTNO;</pre>
             </div>

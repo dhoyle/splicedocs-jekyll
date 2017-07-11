@@ -1,7 +1,7 @@
 ---
 title: generated-column-spec
 summary: Describes the syntax for generated columns, the value of which is automatically incremented and assigned to each record that is created.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -12,8 +12,8 @@ folder: SQLReference/Statements
 		<div class="TopicContent">
             <h1 id="Statements.GeneratedColumnSpec">generated-column-spec</h1>
             <p>A&#160;generated column is one whose value is defined by an expression, typically involving values from other columns in the same table. The value of a generated column is automatically updated whenever there's a change in the value of any column upon which the expression depends.</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">[ GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY 
-[ ( START WITH IntegerConstant 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">[ GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY
+[ ( START WITH IntegerConstant
 [ ,INCREMENT BY IntegerConstant] ) ]  ]  ]
 </pre>
             </div>
@@ -118,7 +118,7 @@ insert into greetings values (1, 'hi');
  -- use generated default
 insert into greetings values (DEFAULT, 'salut');
  -- use generated default
-insert into greetings(ch) values ('bonjour’);
+insert into greetings(ch) values ('bonjour);
 drop table if exists words;
 
 splice&gt; CREATE TABLE WORDS(WORD VARCHAR(20), UWORD GENERATED ALWAYS AS (UPPER(WORD)));

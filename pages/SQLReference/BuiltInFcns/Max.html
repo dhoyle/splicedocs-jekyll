@@ -1,7 +1,7 @@
 ---
 title: MAX built-in SQL function
 summary: Built-in SQL aggregate or window function that evaluates the maximum of an expression over a set of rows
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -50,36 +50,36 @@ splice&gt;&#160;SELECT MAX (BirthDate) FROM Players;
 </pre>
             </div>
             <p>This example finds the maximum number of singles, doubles, triples and homeruns by any player in the database:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT MAX(Singles) "Singles", MAX(DOUBLES) "Doubles", 
-               MAX(Triples) "Triples", Max(HomeRuns) "HomeRuns" 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT MAX(Singles) "Singles", MAX(DOUBLES) "Doubles",
+               MAX(Triples) "Triples", Max(HomeRuns) "HomeRuns"
    FROM Batting;
 Singl&amp;|Doubl&amp;|Tripl&amp;|HomeR&amp;
 ---------------------------
-130   |44    |7     |28    
+130   |44    |7     |28
 
 1 row selected
 </pre>
             </div>
             <p class="heading2">Analytic Example</p>
             <p>The following shows the homeruns hit by all batters who hit more than 10, compared to the most Homeruns by a player who hit 10 or more on his team:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns, 
-   MAX(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns 
-   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Most" 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns,
+   MAX(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns
+   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Most"
    FROM Players JOIN Batting ON Players.ID=Batting.ID
    WHERE HomeRuns &gt; 10
    ORDER BY Team, HomeRuns DESC;
-TEAM      |DISPLAYNAME             |HOMER&amp;|Most  
+TEAM      |DISPLAYNAME             |HOMER&amp;|Most
 --------------------------------------------------
-Cards     |Mitch Canepa            |28    |28    
-Cards     |Jonathan Pearlman       |17    |28    
-Cards     |Roger Green             |17    |28    
-Cards     |Michael Rastono         |13    |28    
-Cards     |Jack Hellman            |13    |28    
-Cards     |Kelly Wacherman         |11    |28    
-Giants    |Bob Cranker             |21    |21    
-Giants    |Buddy Painter           |19    |21    
-Giants    |Billy Bopper            |18    |21    
-Giants    |Mitch Duffer            |12    |21    
+Cards     |Mitch Canepa            |28    |28
+Cards     |Jonathan Pearlman       |17    |28
+Cards     |Roger Green             |17    |28
+Cards     |Michael Rastono         |13    |28
+Cards     |Jack Hellman            |13    |28
+Cards     |Kelly Wacherman         |11    |28
+Giants    |Bob Cranker             |21    |21
+Giants    |Buddy Painter           |19    |21
+Giants    |Billy Bopper            |18    |21
+Giants    |Mitch Duffer            |12    |21
 
 10 rows selected</pre>
             </div>

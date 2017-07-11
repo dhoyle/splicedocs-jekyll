@@ -1,7 +1,7 @@
 ---
 title: CASE Expression
 summary: Syntax for and examples of CASE expressions in Splice Machine SQL.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -14,11 +14,11 @@ folder: SQLReference/Expressions
             <p>The <span class="CodeFont">CASE</span> expression can be used for conditional expressions in Splice Machine.</p>
             <p class="heading2">Syntax</p>
             <p>You can place a <span class="CodeFont">CASE</span> expression anywhere an expression is allowed. It chooses an expression to evaluate based on a boolean test.</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CASE 
-  WHEN <span class="ItalicFont">booleanExpression</span> THEN <span class="ItalicFont">thenExpression</span> 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CASE
+  WHEN <span class="ItalicFont">booleanExpression</span> THEN <span class="ItalicFont">thenExpression</span>
   [ WHEN <span class="ItalicFont">booleanExpression</span>
-    THEN <span class="ItalicFont">thenExpression</span> ]...  
-    ELSE <span class="ItalicFont">elseExpression</span> 
+    THEN <span class="ItalicFont">thenExpression</span> ]...
+    ELSE <span class="ItalicFont">elseExpression</span>
 END</pre>
             </div>
             <div class="paramList">
@@ -28,7 +28,7 @@ END</pre>
             <p class="heading2">Example</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- returns 3
  CASE WHEN 1=1 THEN 3 ELSE 4 END;
- 
+
   -- returns 7
  CASE
    WHEN 1 = 2 THEN 3

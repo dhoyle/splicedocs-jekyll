@@ -1,7 +1,7 @@
 ---
 title: OVER clause
 summary: A clause used in window functions to define the window on which the function operates. Window functions are permitted only in the SELECT list and the ORDER BY clause of queries.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -29,7 +29,7 @@ folder: SQLReference/Clauses
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">PARTITION&#160;BY&#160;<span class="ItalicFont">expression</span> [, ...]</pre></div><div class="paramList"><p class="paramName">expression [,...]</p><p class="paramDefnFirst">A list of expressions that define the partitioning.</p></div></p>
                 <p class="paramName">orderClause</p>
                 <p class="paramDefnFirst">Optional.  Controls the ordering. It is important for ranking functions, since it specifies by which variables ranking is performed. It is also needed for cumulative functions. The syntax for this clause is essentially the same as for the <span class="CodeFont"><a href="sqlref_clauses_orderby.html">SQL&#160;Reference</a>. To recap:
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ORDER&#160;BY expression 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ORDER&#160;BY expression
    [ ASC&#160;|&#160;DESC&#160;|&#160;USING&#160;<span class="ItalicFont">operator</span> ]<br />   [ NULLS&#160;FIRST |&#160;NULLS&#160;LAST ]
    [, ...]</pre></div><div class="noteNote">The default ordering is ascending (<span class="CodeFont">ASC</span>). For ascending order, <span class="CodeFont">NULL</span>&#160;values are returned last unless you specify <span class="CodeFont">NULLS&#160;FIRST</span>; for descending order, <span class="CodeFont">NULL</span>&#160;values are returned first unless you specify <span class="CodeFont">NULLS&#160;LAST</span>.</div></p>
                 <p class="paramName">frameClause</p>
@@ -68,10 +68,10 @@ WHERE&#160;rank&#160;= 1;</pre>
             <p class="heading2">Simple Window Function Examples</p>
             <p>The examples in this section are fairly simple because they don't use the frame clause.</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">--- Rank each year within a player by the number of home runs hit by that player
-RANK()&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;desc(H)); 
+RANK()&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;desc(H));
 
 --- Compute the change in number of games played from one year to the next:
-G&#160;- LAG(G)&#160;OVER&#160;(PARTITION&#160;G&#160;playerID&#160;ORDER&#160;BY&#160;yearID); 
+G&#160;- LAG(G)&#160;OVER&#160;(PARTITION&#160;G&#160;playerID&#160;ORDER&#160;BY&#160;yearID);
 </pre>
             </div>
             <p class="heading2">Examples with Frame Clauses</p>
@@ -107,7 +107,7 @@ G&#160;- LAG(G)&#160;OVER&#160;(PARTITION&#160;G&#160;playerID&#160;ORDER&#160;B
             <p>Here are some examples of window functions using frame clauses:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">--- Compute the running sum of G&#160;for each player:
 SUM(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;yearID
-  BETWEEN&#160;UNBOUNDED&#160;PRECEEDING&#160;AND&#160;CURRENT&#160;ROW); 
+  BETWEEN&#160;UNBOUNDED&#160;PRECEEDING&#160;AND&#160;CURRENT&#160;ROW);
 
 --- Compute the career year:
 YearID - min(YEARID)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID
@@ -115,7 +115,7 @@ YearID - min(YEARID)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID
 
 --- Compute a rolling average of games by player:
 MEAN(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;yearID
-   BETWEEN&#160;2 PRECEEDING&#160;AND&#160;2 FOLLOWING); 
+   BETWEEN&#160;2 PRECEEDING&#160;AND&#160;2 FOLLOWING);
 </pre>
             </div>
             <p class="heading2">See Also</p>

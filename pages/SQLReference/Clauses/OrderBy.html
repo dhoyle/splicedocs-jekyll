@@ -1,7 +1,7 @@
 ---
 title: ORDER BY clause
 summary: A clause that allows you to specify the order in which rows appear in the result set.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -23,10 +23,10 @@ folder: SQLReference/Clauses
             <p>An <span class="CodeFont">ORDER BY</span> clause allows you to specify the order in which rows appear in the result set. In subqueries, the <span class="CodeFont">ORDER BY</span> clause is meaningless unless it is accompanied by one or both of the <span class="CodeFont">result offset</span> and <span class="CodeFont">fetch first</span> clauses or in conjunction with the <span class="CodeFont">ROW_NUMBER</span> function, since there is no guarantee that the order is retained in the outer result set. It is permissible to combine <span class="CodeFont">ORDER BY</span> on the outer query with <span class="CodeFont">ORDER BY</span> in subqueries.</p>
             <p class="heading2">Syntax</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ORDER BY { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></span> |
-  &#160;&#160;&#160;&#160;&#160;&#160;&#160;  <span class="ItalicFont">ColumnPosition</span> | 
+  &#160;&#160;&#160;&#160;&#160;&#160;&#160;  <span class="ItalicFont">ColumnPosition</span> |
    &#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="ItalicFont">Expression</span> }
     [ ASC | DESC ]
-    [ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></span> | <span class="ItalicFont">ColumnPosition</span> | <span class="ItalicFont">Expression</span> 
+    [ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></span> | <span class="ItalicFont">ColumnPosition</span> | <span class="ItalicFont">Expression</span>
       [ ASC | DESC ]
 &#160;&#160;&#160;&#160;  [ NULLS FIRST |&#160;NULLS&#160;LAST ]
   &#160; ]* </pre>
@@ -56,19 +56,19 @@ folder: SQLReference/Clauses
 			the select list. For example, to return from the <span class="CodeFont">CITIES</span> database all of the
 			entries in the <span class="CodeFont">CITY_NAME</span> and <span class="CodeFont">COUNTRY</span> columns, where the <span class="CodeFont">COUNTRY</span> column has
 		the correlation name <span class="CodeFont">NATION</span>, you specify this <span class="CodeFont">SELECT</span> statement:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT CITY_NAME, COUNTRY AS NATION 
-  FROM CITIES 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT CITY_NAME, COUNTRY AS NATION
+  FROM CITIES
   ORDER BY NATION;</pre>
             </div>
             <p class="heading2">Example using a numeric expression</p>
             <p>You can sort the result set by a numeric expression, for example:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT name, salary, bonus FROM employee 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT name, salary, bonus FROM employee
   ORDER BY salary+bonus;</pre>
             </div>
             <p>In this example, the salary and bonus columns are <span class="CodeFont">DECIMAL</span> data types.</p>
             <p class="heading2">Example using a function</p>
             <p>You can sort the result set by invoking a function, for example:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT i, len FROM measures 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT i, len FROM measures
   ORDER BY sin(i);</pre>
             </div>
             <p class="heading2">Example of specifying a NULL&#160;ordering</p>

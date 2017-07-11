@@ -1,7 +1,7 @@
 ---
 title: CREATE TRIGGER statement
 summary: Creates a trigger, which defines a set of actions that are executed when a database event occurs on a specified table
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -15,8 +15,8 @@ folder: SQLReference/Statements
             <p>You can define any number of triggers for a single table, including multiple triggers on the same table for the same event. To define a trigger on a table, you must be the owner of the of the database, the owner of the table's schema, or have <span class="CodeFont">TRIGGER</span>&#160;privileges on the table. You cannot define a trigger for any schema whose name begins with <span class="CodeFont">SYS</span>.</p>
             <p>The <a href="developers_fundamentals_triggers.html">Database Triggers</a> topic in our <span class="ItalicFont">Developer's Guide</span> provides additional information about database triggers.</p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE TRIGGER <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TriggerName">TriggerName</a></span> 
-   { AFTER | BEFORE }  
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE TRIGGER <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TriggerName">TriggerName</a></span>
+   { AFTER | BEFORE }
    { INSERT | DELETE | UPDATE [ OF <span class="ItalicFont">column-Name</span> [, <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></span>]* ] }
    ON <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span>
 &#160;&#160;&#160;&#160;&#160;&#160;[ <span class="ItalicFont"><a href="#ReferencingClause">ReferencingClause</a></span> ]

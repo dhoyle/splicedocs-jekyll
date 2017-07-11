@@ -1,7 +1,7 @@
 ---
 title: NEXT VALUE FOR Expression
 summary: Describes the NEXT VALUE FOR expression, which retrieves the next value from a sequence generator.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -70,7 +70,7 @@ INSERT INTO re_order_table
   SELECT NEXT VALUE FOR order_id, order_date, quantity
   FROM orders
   WHERE back_order = 1;
-			
+
 UPDATE orders
   SET oid = NEXT VALUE FOR order_id
   WHERE expired = 1;</pre>

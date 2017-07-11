@@ -2,7 +2,7 @@
 title: SYSCS_UTIL.SYSCS_DELETE_BACKUP built-in system procedure
 
 summary: Built-in system procedure that delete a specific backup.&#xD;
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -33,11 +33,11 @@ database owner can grant access to other users.</p>
             <p>And then delete that job:</p><pre class="Example" xml:space="preserve">splice&gt; SELECT * FROM SYS.SYSBACKUP;
 BACKUP_ID  |BEGIN_TIMESTAMP           |END_TIMESTAMP            |STATUS  |FILESYSTEM                                     |SCOPE |INCR&amp;|INCREMENTAL_PARENT_&amp;|BACKUP_ITEM
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-40975      |2015-11-25 09:32:53.04    |2015-11-25 09:33:09.081  |S       |/Users/me/Documents/splicemachine/dbBackups    |D     |false|-1                  |93         
+40975      |2015-11-25 09:32:53.04    |2015-11-25 09:33:09.081  |S       |/Users/me/Documents/splicemachine/dbBackups    |D     |false|-1                  |93
 
 1 row selected
 
-splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_DELETE_BACKUP(40975); 
+splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_DELETE_BACKUP(40975);
 Statement executed.</pre>
             <p class="heading2">See Also</p>
             <ul>

@@ -1,7 +1,7 @@
 ---
 title: NATURAL JOIN
-summary: Join operation that creates an implicit join clause for you based on the common columns (those with the same name in both tables)&#160;in the two tables being joined. 
-keywords: 
+summary: Join operation that creates an implicit join clause for you based on the common columns (those with the same name in both tables)&#160;in the two tables being joined.
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -13,10 +13,10 @@ folder: SQLReference/JoinOps
             <h1 id="JoinOps.NaturalJoin">NATURAL JOIN</h1>
             <p>A <span class="CodeFont">NATURAL JOIN</span> is a <a href="sqlref_joinops_about.html"> <span class="CodeFont">JOIN</span> operation</a> that creates an implicit join clause for you based on the common columns in the two tables being joined. Common columns are columns that have the same name in both tables. </p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="sqlref_expressions_table.html">TableExpression</a></span> NATURAL 
-   [ { LEFT | RIGHT } 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="sqlref_expressions_table.html">TableExpression</a></span> NATURAL
+   [ { LEFT | RIGHT }
      [ OUTER ] | INNER ] JOIN
-   { <a href="sqlref_expressions_table.html#TableViewExpression">TableViewOrFunctionExpression</a> | 
+   { <a href="sqlref_expressions_table.html#TableViewExpression">TableViewOrFunctionExpression</a> |
      ( <span class="ItalicFont"><a href="sqlref_expressions_table.html">TableExpression</a></span> ) }</pre>
             </div>
             <p class="heading2">Usage</p>
@@ -32,18 +32,18 @@ folder: SQLReference/JoinOps
             <div class="noteNote">Splice Machine does not currently support <span class="CodeFont">NATURAL SELF JOIN</span> operations.</div>
             <p class="heading2">Examples</p>
             <p>If the tables <span class="CodeFont">COUNTRIES</span> and <span class="CodeFont">CITIES</span> have two common columns named <span class="CodeFont">COUNTRY</span> and <span class="CodeFont">COUNTRY_ISO_CODE</span>, the following two <span class="CodeFont">SELECT</span> statements are equivalent:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * 
-  FROM COUNTRIES 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT *
+  FROM COUNTRIES
   NATURAL JOIN CITIES;
 
-splice&gt;&#160;SELECT * 
-  FROM COUNTRIES 
+splice&gt;&#160;SELECT *
+  FROM COUNTRIES
   JOIN CITIES
   USING (COUNTRY, COUNTRY_ISO_CODE);</pre>
             </div>
             <p> The following example is similar to the one above, but it also preserves unmatched rows from the first (left) table: </p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * 
-  FROM COUNTRIES 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT *
+  FROM COUNTRIES
   NATURAL LEFT JOIN CITIES;</pre>
             </div>
             <p class="heading2">See Also</p>

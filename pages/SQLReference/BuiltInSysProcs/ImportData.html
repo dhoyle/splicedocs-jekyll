@@ -1,7 +1,7 @@
 ---
 title: SYSCS_UTIL.IMPORT_DATA built-in system procedure
 summary: Built-in system procedure that imports data to a subset of columns in a table.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -74,9 +74,9 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <p>The examples in this section illustrate using different timestamp formats and different string delimiter characters.</p>
             <p class="heading3">Example 1:&#160;Importing our doc examples player data</p>
             <p class="body">This example shows the <span class="CodeFont">IMPORT_DATA</span>&#160;call used to import the Players table into our documentation examples database:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.IMPORT_DATA('SPLICEBBALL', 'Players', 
-	'ID, Team, Name, Position, DisplayName, BirthDate', 
-	'/Data/DocExamplesDb/Players.csv', 
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.IMPORT_DATA('SPLICEBBALL', 'Players',
+	'ID, Team, Name, Position, DisplayName, BirthDate',
+	'/Data/DocExamplesDb/Players.csv',
 	null, null, null, null, null, 0, null, true, null);
 rowsImported        |failedRows          |files      |dataSize            |failedLog<br />--------------------------------------------------------------------------------------
 94                  |0                   |1          |4720                |NONE<br /><br />1 row selected
@@ -91,7 +91,7 @@ Mike,2013-03-23 09:45:00.68-05</pre>
             <p>You can then import the data with the following call:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.IMPORT_DATA('app','tabx','c1,c2',
    '/path/to/ts3.csv',
-   ',', '''', 
+   ',', '''',
    <span class="BoldFont">'yyyy-MM-dd HH:mm:ss.SSZ'</span>,
    null, null, 0, null, true, null);</pre>
             </div>

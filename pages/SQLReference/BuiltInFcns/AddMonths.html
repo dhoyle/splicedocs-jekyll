@@ -1,7 +1,7 @@
 ---
 title: ADD_MONTHS built-in SQL function
 summary: Built-in SQL function that adds a number of months to a date
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -26,25 +26,25 @@ folder: SQLReference/BuiltInFcns
             <p>If date is the last day of the month or if the resulting month has fewer days than the day component of date, then the result is the last day of the resulting month. Otherwise, the result has the same day component as date.</p>
             <p class="heading2">Examples</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES(ADD_MONTHS(CURRENT_DATE,5));
-1 
+1
 ----------
 2015-02-22
 1 row selected
 
 splice&gt; VALUES(ADD_MONTHS(CURRENT_DATE,-5));
-1 
+1
 ----------
 2014-04-22
 1 row selected
 
 splice&gt; VALUES(ADD_MONTHS(DATE(CURRENT_TIMESTAMP),-5));
-1 
+1
 ----------
 2014-04-22
 1 row selected
 
 splice&gt; VALUES(ADD_MONTHS(DATE('2014-01-31'),1));
-1 
+1
 ----------
 2014-02-28
 1 row selected

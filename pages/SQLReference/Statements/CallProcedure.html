@@ -1,7 +1,7 @@
 ---
 title: Call (Procedure) statement
 summary: Calls a stored procedure.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -16,7 +16,7 @@ folder: SQLReference/Statements
             <p class="heading2">Syntax</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
 CALL <span class="ItalicFont">procedure-Name</span> (
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[ <var>expression</var> [, <var>expression</var>]* ] 
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[ <var>expression</var> [, <var>expression</var>]* ]
 )</pre>
             </div>
             <div class="paramList">
@@ -30,7 +30,7 @@ CALL <span class="ItalicFont">procedure-Name</span> (
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE PROCEDURE SALES.TOTAL_REVENUE(IN S_MONTH INTEGER,
     IN S_YEAR INTEGER, OUT TOTAL DECIMAL(10,2))
     PARAMETER STYLE JAVA
-      READS SQL DATA LANGUAGE JAVA EXTERNAL NAME 
+      READS SQL DATA LANGUAGE JAVA EXTERNAL NAME
        'com.example.sales.calculateRevenueByMonth';
 splice&gt;&#160;CALL SALES.TOTAL_REVENUE(?,?,?);</pre>
             </div>

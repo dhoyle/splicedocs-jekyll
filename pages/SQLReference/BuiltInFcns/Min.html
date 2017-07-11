@@ -1,7 +1,7 @@
 ---
 title: MIN built-in SQL function
 summary: Built-in SQL aggregate or window function that evaluates the minimum of an expression over a set of rows
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -48,36 +48,36 @@ SELECT COUNT (DISTINCT flying_time),
 </pre>
             </div>
             <p>This example finds the minimum number of walks and strikeouts by any pitcher in the database:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT MIN(Walks) "Walks", Min(Strikeouts) "Strikeouts" 
-   FROM Pitching JOIN Players on Pitching.ID=Players.ID 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT MIN(Walks) "Walks", Min(Strikeouts) "Strikeouts"
+   FROM Pitching JOIN Players on Pitching.ID=Players.ID
    WHERE Position='P';
 Walks |Strik&amp;
 -------------
-1     |1     
+1     |1
 
 1 row selected
 </pre>
             </div>
             <p class="heading2">Analytic Example</p>
             <p>The following shows the homeruns hit by all batters who hit more than 10, compared to the least number of Homeruns by a player who hit 10 or more on his team:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns, 
-   MIN(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns 
-   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Least" 
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns,
+   MIN(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns
+   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Least"
    FROM Players JOIN Batting ON Players.ID=Batting.ID
    WHERE HomeRuns &gt; 10
    ORDER BY Team, HomeRuns DESC;
-TEAM      |DISPLAYNAME             |HOMER&amp;|Least 
+TEAM      |DISPLAYNAME             |HOMER&amp;|Least
 --------------------------------------------------
-Cards     |Mitch Canepa            |28    |11    
-Cards     |Jonathan Pearlman       |17    |11    
-Cards     |Roger Green             |17    |11    
-Cards     |Michael Rastono         |13    |11    
-Cards     |Jack Hellman            |13    |11    
-Cards     |Kelly Wacherman         |11    |11    
-Giants    |Bob Cranker             |21    |12    
-Giants    |Buddy Painter           |19    |12    
-Giants    |Billy Bopper            |18    |12    
-Giants    |Mitch Duffer            |12    |12    
+Cards     |Mitch Canepa            |28    |11
+Cards     |Jonathan Pearlman       |17    |11
+Cards     |Roger Green             |17    |11
+Cards     |Michael Rastono         |13    |11
+Cards     |Jack Hellman            |13    |11
+Cards     |Kelly Wacherman         |11    |11
+Giants    |Bob Cranker             |21    |12
+Giants    |Buddy Painter           |19    |12
+Giants    |Billy Bopper            |18    |12
+Giants    |Mitch Duffer            |12    |12
 
 10 rows selected</pre>
             </div>

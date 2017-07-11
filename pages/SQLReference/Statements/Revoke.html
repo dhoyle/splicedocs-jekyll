@@ -1,7 +1,7 @@
 ---
 title: REVOKE statement
 summary: Revokes privileges for specific user(s) or role(s) to perform actions on database objects.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -14,8 +14,8 @@ folder: SQLReference/Statements
             <p>Use the <span class="CodeFont">REVOKE</span> statement to remove privileges from a specific user or role, or from all users, to perform actions on database objects. You can also use the <span class="CodeFont">REVOKE</span> statement to revoke a role from a user, from <span class="CodeFont">PUBLIC</span>, or from another role.</p>
             <p>The syntax that you use for the <span class="CodeFont">REVOKE</span> statement depends on whether you are revoking privileges to a schema object or revoking a role. </p>
             <p class="heading2">Syntax for SCHEMA</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="#PrivilegeTypes">privilege-type</a></span> 
-   ON [ SCHEMA ] <span class="ItalicFont">S</span> 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="#PrivilegeTypes">privilege-type</a></span>
+   ON [ SCHEMA ] <span class="ItalicFont">S</span>
    FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span></pre>
             </div>
             <div class="paramList">
@@ -37,8 +37,8 @@ folder: SQLReference/Statements
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;for whom you are revoking access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
             <p class="heading2">Syntax for Tables</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="#PrivilegeTypes">privilege-type</a></span> 
-   ON [ TABLE ] { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> } 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="#PrivilegeTypes">privilege-type</a></span>
+   ON [ TABLE ] { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
    FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span></pre>
             </div>
             <div class="paramList">
@@ -62,7 +62,7 @@ folder: SQLReference/Statements
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;for whom you are revoking access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
             <p class="heading2">Syntax for Routines</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE EXECUTE ON { FUNCTION | PROCEDURE } 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE EXECUTE ON { FUNCTION | PROCEDURE }
     {<span class="ItalicFont">function-name</span> | <span class="ItalicFont">procedure-name</span>}
  TO <span class="ItalicFont">grantees</span> RESTRICT</pre>
             </div>
@@ -76,8 +76,8 @@ folder: SQLReference/Statements
                 <p class="paramDefn">The <span class="CodeFont">RESTRICT</span> clause specifies that the <span class="CodeFont">EXECUTE</span> privilege cannot be revoked if the specified routine is used in a view, trigger, or constraint, and the privilege is being revoked from the owner of the view, trigger, or constraint.</p>
             </div>
             <p class="heading2">Syntax for User-defined types</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE USAGE 
-   ON TYPE  [ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span> 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE USAGE
+   ON TYPE  [ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span>
    FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span> RESTRICT</pre>
             </div>
             <div class="paramList">
@@ -90,7 +90,7 @@ folder: SQLReference/Statements
                 <p class="paramDefn">The <span class="CodeFont">RESTRICT</span> clause specifies that the <span class="CodeFont">EXECUTE</span> privilege cannot be revoked if the specified UDT is used in a view, trigger, or constraint, and the privilege is being revoked from the owner of the view, trigger, or constraint.</p>
             </div>
             <p class="heading2">Syntax for Roles</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> }* ] 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> }* ]
    FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span></pre>
             </div>
             <div class="paramList">
@@ -103,7 +103,7 @@ folder: SQLReference/Statements
             <p class="heading2" id="AboutGrantees">About Grantees</p>
             <p>A grantee can be one or more specific users, one or more specific roles, or all users (<span class="CodeFont">PUBLIC</span>). Either the object owner or the database owner can grant privileges to a user or to a role. Only the database owner can grant a role to a user or to another role.</p>
             <p>Here's the syntax:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } 
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC }
  [, { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } ] *</pre>
             </div>
             <div class="paramList">

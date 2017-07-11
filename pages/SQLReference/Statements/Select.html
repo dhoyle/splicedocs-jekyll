@@ -1,7 +1,7 @@
 ---
 title: SELECT statement
 summary: Selects records from your database.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -13,7 +13,7 @@ folder: SQLReference/Statements
             <h1 id="Statements.Select">SELECT</h1>
             <p>Use the <span class="CodeFont">SELECT</span>&#160;statement to query a database and receive back results.</p>
             <p class="heading2">Syntax</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SELECT&#160;<span class="ItalicFont"><a href="sqlref_queries_query.html">Query</a></span>  
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SELECT&#160;<span class="ItalicFont"><a href="sqlref_queries_query.html">Query</a></span>
    [<span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span>]
    [<span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">result offset clause</a></span>]
    [<span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></span>]</pre>
@@ -29,7 +29,7 @@ folder: SQLReference/Statements
             <p class="heading2">Example</p>
             <p class="body">This examples selects all records in the Players table:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT * FROM Players WHERE ID &lt; 11;
-ID    |TEAM     |POS&amp;|DISPLAYNAME        |BIRTHDATE 
+ID    |TEAM     |POS&amp;|DISPLAYNAME        |BIRTHDATE
 ------------------------------------------------------
 1     |Giants   |C   |Buddy Painter      |1987-03-27
 2     |Giants   |1B  |Billy Bopper       |1988-04-20
@@ -46,11 +46,11 @@ ID    |TEAM     |POS&amp;|DISPLAYNAME        |BIRTHDATE
 </pre>
             </div>
             <p class="body">This examples select the Birthdate of all players born in November or December:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT BirthDate 
-   FROM Players 
-   WHERE MONTH(BirthDate) &gt; 10 
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT BirthDate
+   FROM Players
+   WHERE MONTH(BirthDate) &gt; 10
    ORDER BY BIRTHDATE;
-BIRTHDATE 
+BIRTHDATE
 ----------
 1980-12-19
 1983-11-06
@@ -74,11 +74,11 @@ BIRTHDATE
 </pre>
             </div>
             <p class="body">This example selects the name, team, and birth date of all players born in 1985 and 1989:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT DisplayName, Team, BirthDate 
-   FROM Players 
-   WHERE YEAR(BirthDate) IN (1985, 1989) 
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT DisplayName, Team, BirthDate
+   FROM Players
+   WHERE YEAR(BirthDate) IN (1985, 1989)
    ORDER BY BirthDate;
-DISPLAYNAME             |TEAM      |BIRTHDATE 
+DISPLAYNAME             |TEAM      |BIRTHDATE
 -----------------------------------------------
 Jeremy Johnson          |Cards     |1985-03-15
 Gary Kosovo             |Giants    |1985-06-12

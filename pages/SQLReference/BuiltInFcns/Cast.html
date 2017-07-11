@@ -1,7 +1,7 @@
 ---
 title: CAST built-in SQL function
 summary: Built-in SQL function that converts values (expressions) from one data type to another
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -437,11 +437,11 @@ folder: SQLReference/BuiltInFcns
             <p>If a <span class="CodeFont">TIMESTAMP</span> is converted to a <span class="CodeFont">DATE</span>, the <span class="CodeFont">TIME</span> component is silently truncated. </p>
             <p>If a <span class="CodeFont">TIMESTAMP</span> is converted to a <span class="CodeFont">TIME</span>, the <span class="CodeFont">DATE</span> component is silently truncated.</p>
             <p class="heading2">Examples</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT CAST (TotalBases AS BIGINT) 
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT CAST (TotalBases AS BIGINT)
   FROM Batting;
 
-   -- convert timestamps to text  
-splice&gt;&#160;INSERT INTO mytable (text_column) 
+   -- convert timestamps to text
+splice&gt;&#160;INSERT INTO mytable (text_column)
   VALUES (CAST (CURRENT_TIMESTAMP AS VARCHAR(100)));
 
    -- you must cast NULL as a data type to use it

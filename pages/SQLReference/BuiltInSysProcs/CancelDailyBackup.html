@@ -1,7 +1,7 @@
 ---
 title: SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP  built-in system procedure
 summary: Built-in system procedure that cancels a specific backup.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -32,13 +32,13 @@ database owner can grant access to other users.</p>
             <p>If necessary, you can first query the <span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table to find the <span class="CodeFont">jobId</span> of the job you want to cancel.</p>
             <p>And then cancel that job; for example:</p><pre class="Example" xml:space="preserve">
 splice&gt; SELECT * FROM SYS.SYSBACKUPJOBS;
-JOB_ID      |FILESYSTEM                               |TYPE          |HOUR_OF_DAY|BEGIN_TIMESTAMP 
+JOB_ID      |FILESYSTEM                               |TYPE          |HOUR_OF_DAY|BEGIN_TIMESTAMP
 -------------------------------------------------------------------------------------------------
 41069       |/~/Documents/splicemachine/dbBackups/    |full &#160;&#160;&#160;&#160;&#160;&#160;&#160;  |18         |09:41:05.455
 
 1 row selected
 
-splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(41069); 
+splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(41069);
 Statement executed.</pre>
             <p class="heading2">See Also</p>
             <ul>

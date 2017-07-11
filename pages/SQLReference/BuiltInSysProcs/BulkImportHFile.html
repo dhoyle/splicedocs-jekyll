@@ -169,7 +169,14 @@ imports data into your Splice Machine database by first generating HFiles and th
                     <p class="paramName">bulkImportDirectory</p>
                     <p class="paramDefnFirst">The directory into which the generated HFiles are written prior to being imported into your database. Note that the generated files are automatically removed after they've been imported.</p>
                     <p class="paramName">skipSampling</p>
-                    <p class="paramDefnFirst">This feature is not yet implemented.</p>
+                    <p class="paramDefnFirst">Set <span class="CodeFont">skipSampling</span> to <span class="CodeFont">false</span> to have <samp>SYSCS_UTIL.BULK_IMPORT_HFILE</samp> sample your data and compute the split key for you, in these steps:</p>
+                    <ul class="bulletNested">
+                       <li>scan (sample) the data</li>
+                       <li>collect a rowkey histogram</li>
+                       <li>use that histogram to calculate the split key for the table</li>
+                       <li>use the calculated split key to split the table</li>
+                    </ul>
+                    <p class="paramDefn">If <span class="CodeFont">skipSampling</span> is <span class="CodeFont">true</span>, <samp>SYSCS_UTIL.BULK_IMPORT_HFILE</samp> does not compute the split key for you.</p>
                 </div>
             </div>
             <p class="heading2">Results</p>
@@ -188,3 +195,4 @@ imports data into your Splice Machine database by first generating HFiles and th
             </ul>
         </div>
 	</section>
+

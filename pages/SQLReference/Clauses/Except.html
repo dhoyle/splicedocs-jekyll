@@ -1,7 +1,7 @@
 ---
 title: EXCEPT clause
 summary: Performs set intersection on results from multiple queries
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -25,21 +25,21 @@ folder: SQLReference/Clauses
                 <p class="paramDefnFirst">(Optional). Indicates that all rows from the queries are included, including duplicates. With <span class="CodeFont">ALL</span>, a row that has m duplicates in the left table and n duplicates in the right table will appear <span class="CodeFont">max(m-n,0)</span> times in the result set.</p>
             </div>
             <p class="heading2">Usage</p>
-            <p class="body">Each <span class="CodeFont">SELECT</span>&#160;statement in the operation must contain the same number of columns, with similar data types, in the same order. 
+            <p class="body">Each <span class="CodeFont">SELECT</span>&#160;statement in the operation must contain the same number of columns, with similar data types, in the same order.
 Although the number, data types, and order of the fields in the select queries that you combine in an <span class="CodeFont">EXCEPT</span>&#160;clause must correspond, you can use expressions, such as calculations or subqueries, to make them correspond. </p>
             <p class="body">When comparing column values for determining <span class="CodeFont">DISTINCT</span> rows, two <span class="CodeFont">NULL</span> values are considered equal.
 </p>
             <p class="heading2">Results</p>
             <p>A result set.</p>
             <p class="heading2">Examples</p>
-            <div class="preWrapper"><pre class="Example">CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY, 
+            <div class="preWrapper"><pre class="Example">CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY,
                  i1 INTEGER, i2 INTEGER,
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;c10 char(10), c30 char(30), tm time);
- 
+
 CREATE TABLE t2( id INTEGER NOT NULL PRIMARY KEY,
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;i1 INTEGER, i2 INTEGER,
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;vc20 varchar(20), d double, dt date);
- 
+
 INSERT INTO t1(id,i1,i2,c10,c30) VALUES
   (1,1,1,'a','123456789012345678901234567890'),
   (2,1,2,'a','bb'),
@@ -47,7 +47,7 @@ INSERT INTO t1(id,i1,i2,c10,c30) VALUES
   (4,1,3,'zz','5'),
   (5,NULL,NULL,NULL,'1.0'),
   (6,NULL,NULL,NULL,'a');
-  
+
 INSERT INTO t2(id,i1,i2,vc20,d) VALUES
   (1,1,1,'a',1.0),
   (2,1,2,'a',1.1),
@@ -57,22 +57,22 @@ INSERT INTO t2(id,i1,i2,vc20,d) VALUES
   (102,5,5,'',NULL),
   (103,1,3,' a',NULL),
   (104,1,3,'NULL',7.4);<br /></pre><pre class="Example">splice&gt; SELECT id,i1,i2 FROM t1 EXCEPT SELECT id,i1,i2 FROM t2 ORDER BY id,i1,i2;
-ID         |I1         |I2         
+ID         |I1         |I2
 -----------------------------------
-4          |1          |3          
-3          |1          |3          
-6          |NULL       |NULL       
+4          |1          |3
+3          |1          |3
+6          |NULL       |NULL
 
 3 rows selected</pre><pre class="Example">splice&gt; <br />SELECT i1,i2 FROM t1<br /> EXCEPT <br />SELECT i1,i2 FROM t2 where id = -1 ORDER BY 1,2;
-I1         |I2         
+I1         |I2
 -----------------------
-NULL       |NULL       
-1          |3          
-1          |2          
-1          |1          
+NULL       |NULL
+1          |3
+1          |2
+1          |1
 
 4 rows selected</pre><pre class="Example">splice&gt; <br />SELECT i1,i2 FROM t1 where id = -1<br /> EXCEPT <br />SELECT i1,i2 FROM t2 ORDER BY 1,2;
-I1         |I2         
+I1         |I2
 -----------------------
 
 0 rows selected
