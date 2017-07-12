@@ -13,7 +13,9 @@ folder: Developers/TuningAndDebugging
             <h1 id="kanchor72">Using Splice Machine Snapshots</h1>
             <p>This topic describes how to use the Splice Machine snapshot feature to create a restorable snapshot of a table or schema; this is commonly used when importing or deleting a significant amount of data from a database.</p>
             <h2>Overview</h2>
-            <p>Snapshots allow you to create point-in-time backups of tables (or an entire schema) without actually cloning the data. You use these system procedures and tables to work with snapshots:</p>
+            <p>Snapshots allow you to create point-in-time backups of tables (or an entire schema) without actually cloning the data.</p>
+						<div class="noteNote">Snapshots include both the data and indexes for tables.</div>
+						<p>You use these system procedures and tables to work with snapshots:</p>
             <ul>
                 <li>Use the <a href="sqlref_sysprocs_snapshottable.html"><span class="CodeFont">SYSCS_UTIL.SNAPSHOT_TABLE</span></a> system procedure to create a named snapshot for a table.</li>
                 <li>Use the <a href="sqlref_sysprocs_snapshotschema.html"><span class="CodeFont">SYSCS_UTIL.SNAPSHOT_SCHEMA</span></a> system procedure to create a named snapshot for a schema.</li>

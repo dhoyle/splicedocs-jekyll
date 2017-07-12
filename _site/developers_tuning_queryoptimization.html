@@ -165,6 +165,10 @@
                         <li><a href="dbaas_dbconsole_intro.html">Using the DB Console</a></li>
                         
                         
+                        
+                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        
+                        
                     </ul>
                 </li>
                 
@@ -231,7 +235,7 @@
                 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Splice Machine 2.6.1</li>
+    <li class="sidebarTitle">Splice Machine 2.6</li>
     
     
     
@@ -889,7 +893,8 @@ WHERE...</pre>
 <p class="indentLevel1">You need to specify the directory to which you want the temporary HFiles written; you must have write permissions on this directory to use this feature. If you're specifying an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
 </p>
 <div class="preWrapperWide">
-<pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>DELETE&nbsp;FROM my_table --splice-properties bulkDeleteDirectory='/bulkFilesPath';</pre>
+<pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>DELETE&nbsp;FROM my_table --splice-properties bulkDeleteDirectory='/bulkFilesPath'
+;</pre>
 </div>
 <div class="noteNote">We recommend performing a major compaction on your database after deleting a large amount of data; you should also be aware of our new <span class="CodeFont"><a href="sqlref_sysprocs_purgedeletedrows.html">SYSCS_UTIL.SET_PURGE_DELETED_ROWS</a></span> system procedure, which you can call before a compaction to specify that you want the data physically (not just logically) deleted during compaction.</div>
 </div>
@@ -910,7 +915,7 @@ WHERE...</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 11, 2017 <br />
+ Site last generated: Jul 12, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

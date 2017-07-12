@@ -1,0 +1,15 @@
+Cluster uptime is only being supported M-F 9am-5pm PDT.  Additionally, clusters may be brought down at the end of the week for updates.  If done so, your cluster may be lost and you will need to recreate it and repopulate your data.  Scheduled outages will be posted to your UI Console.
+At this time, cluster sizes should be kept below 1TB internal storage, 4 OLTP Splice Units, and 4 OLAP Splice Units.
+Your cluster will typically be up in less than half an hour, and you will be sent an email with the connection details.  If you do not receive an email in this time, ….?
+If, after receipt of your “Cluster Ready” email, your Notebook link is not working, try again in 5-10 minutes.
+Your administrative password is "splice", password is "admin" (without the quotes).  You will need this to log into your Notebook or to connect via JDBC
+A single query or SQL statement will time out if it takes more than 1 hour.  Upon the timeout you may see “SQLNonTransientConnectionException” as part of a message back to you
+Cluster names should be kept to 20 characters or less
+The graphs in the UI are still under development and may not accurately reflect cluster activity
+The cost of the cluster as exposed in the dashboard may be too high
+VPC setup information in their UI is currently being ignored
+Backups are not currently being performed
+LogDetails tab is not currently functional
+If your cluster has been idle for some time, your first query submission might give you a lost connection message.  Just resubmit the query and it should work correctly
+Cluster reconfiguration and resizing is not being performed.  Therefore if you need a larger or smaller cluster, you will need to create a new one.
+The DB Console will not show up until you perform at least one query/action that invokes Spark.  For example, the following will invoke Spark:
