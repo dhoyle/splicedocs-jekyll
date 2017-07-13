@@ -24,7 +24,7 @@ table
 	margin: 20px 40px 20px 40px;
 	word-wrap: break-word;
 	overflow: auto;
-	
+
 	caption {
 		text-align: center;
 		padding-left: 10px;
@@ -32,10 +32,10 @@ table
 		font-weight: $bodyfont-bold;
 		font-size: 1.05em;
 	}
-	
+
 	tr {
 	   }
-	    
+
 	td {
 		border: $border-table;
 		padding: 8px;
@@ -44,16 +44,16 @@ table
 		word-wrap: break-word;
 		overflow: auto;
 	}
-	
+
 	td p:first-child {
 		margin-top: 0;
 	}
-	
+
 	td > ul > li:first-of-type,
 	td > ol > li:first-of-type {
 	    margin-top: 0;
 	}
-	
+
 	th {
 		border: $border-table;
 		padding: 8px;
@@ -69,36 +69,42 @@ table
 		.center {
 			text-align: center;
 		}
-		
+
 		.smallText {
 			font-size: 0.9em;
 			line-height: 1em;
 		}
 	}
-	
+
 	div.preWrapper {
 		max-width: 65%;
 	}
-	
+
 	div.preWrapperWide {
 		max-width: 95%;
 	}
 
+  img {
+		border: none;
+		width: auto;
+		height: auto;
+		margin: 0;
+	}
 }
 
-table td.AppFont { 
-	@include cellStyle ($fontFace: $codefont-face, 
+table td.AppFont {
+	@include cellStyle ($fontFace: $codefont-face,
 						$fontWeight: $codefont-weight,
 						$bgColor: $table-appFont-color)
 }
 
-table td.AppFont { 
-	@include cellStyle ($fontFace: $codefont-face, 
+table td.AppFont {
+	@include cellStyle ($fontFace: $codefont-face,
 						$bgColor: $table-appFont-color)
 }
 
 table td.BoldFont {
-	@include cellStyle ($fontWeight: bold) 
+	@include cellStyle ($fontWeight: bold)
 }
 
 table td.BoldBlueBG {
@@ -169,7 +175,7 @@ table.featureList
 	margin: 20px 50px 20px 50px;
 	word-wrap: break-word;
 	overflow: auto;
-	
+
 	td,
 	td.leftAlign{
 		border: $border-table;
@@ -212,4 +218,3 @@ table.featureList
 		font-weight: $bodyfont-bold;
 	}
 }
-
