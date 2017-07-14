@@ -65,14 +65,14 @@ folder: SQLReference/Expressions
             <p>The result of a <span class="ItalicFont">SelectExpression</span> is always a table.</p>
             <p>Splice Machine processes the clauses in a <span class="CodeFont">Select</span> expression in the following order:</p>
             <ul>
-                <li value="1"><span class="CodeFont">FROM</span> clause</li>
-                <li value="2"><span class="CodeFont">WHERE</span> clause</li>
-                <li value="3"><span class="CodeFont">GROUP BY</span> (or implicit <span class="CodeFont">GROUP BY</span>)</li>
-                <li value="4"><span class="CodeFont">HAVING</span> clause</li>
-                <li value="5"><span class="CodeFont">ORDER BY</span> clause</li>
-                <li value="6"><span class="CodeFont">Result offset</span> clause</li>
-                <li value="7"><span class="CodeFont">Fetch first</span> clause</li>
-                <li value="8"><span class="CodeFont">SELECT</span> clause</li>
+                <li><span class="CodeFont">FROM</span> clause</li>
+                <li><span class="CodeFont">WHERE</span> clause</li>
+                <li><span class="CodeFont">GROUP BY</span> (or implicit <span class="CodeFont">GROUP BY</span>)</li>
+                <li><span class="CodeFont">HAVING</span> clause</li>
+                <li><span class="CodeFont">ORDER BY</span> clause</li>
+                <li><span class="CodeFont">Result offset</span> clause</li>
+                <li><span class="CodeFont">Fetch first</span> clause</li>
+                <li><span class="CodeFont">SELECT</span> clause</li>
             </ul>
             <p>When a query does not have a <span class="CodeFont">FROM</span> clause (when you are constructing a value, not getting data out of a table), use a <span class="CodeFont"><a href="sqlref_expressions_values.html">VALUES</a></span> expression, not a <span class="ItalicFont">SelectExpression</span>. For example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">VALUES CURRENT_TIMESTAMP;</pre>
@@ -85,9 +85,9 @@ folder: SQLReference/Expressions
             <p>If a column of a <span class="ItalicFont">SelectItem</span> is not a simple <span class="ItalicFont">ColumnReference</span> expression or named with an <span class="CodeFont">AS</span> clause, it is given a generated unique name.</p>
             <p>These column names are useful in several cases:</p>
             <ul>
-                <li value="1">They are made available on the JDBC <span class="ItalicFont">ResultSetMetaData</span>.</li>
-                <li value="2">They are used as the names of the columns in the resulting table when the <span class="ItalicFont">SelectExpression</span> is used as a table subquery in a <span class="CodeFont">FROM</span> clause.</li>
-                <li value="3">They are used in the <span class="CodeFont">ORDER BY</span> clause as the column names available for sorting.</li>
+                <li>They are made available on the JDBC <span class="ItalicFont">ResultSetMetaData</span>.</li>
+                <li>They are used as the names of the columns in the resulting table when the <span class="ItalicFont">SelectExpression</span> is used as a table subquery in a <span class="CodeFont">FROM</span> clause.</li>
+                <li>They are used in the <span class="CodeFont">ORDER BY</span> clause as the column names available for sorting.</li>
             </ul>
             <p class="heading2">Examples</p>
             <p class="body">This example shows using a <span class="CodeFont">SELECT</span>&#160;with <span class="CodeFont">WHERE</span>&#160;and <span class="CodeFont">ORDER&#160;BY</span>&#160;clauses; it selects the name, team, and birth date of all players born in 1985 and 1989:</p>
@@ -136,11 +136,11 @@ splice&gt;&#160;SELECT CONSTRAINTNAME, COLUMNNAME
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
-                <li value="2"><a href="sqlref_clauses_groupby.html"><span class="CodeFont">GROUP&#160;BY</span></a>&#160;clause</li>
-                <li value="3"><a href="sqlref_clauses_having.html"><span class="CodeFont">HAVING</span></a>&#160;clause</li>
-                <li value="4"><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
-                <li value="5"><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_groupby.html"><span class="CodeFont">GROUP&#160;BY</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_having.html"><span class="CodeFont">HAVING</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
             </ul>
         </div>
 	</section>

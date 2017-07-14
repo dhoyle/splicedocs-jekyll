@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -2755,12 +2755,12 @@
 		<div class="TopicContent">
             <h1 id="BuiltInSysProcs.UpdateAllSystemProcedures">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</h1>
             <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</span> system procedure updates the signatures  of all of the system procedures in a database. </p>
-            <div class="noteImportant">You need to call this procedure when you update to a new version of Splice Machine that includes new or updates system procedure signatures. <br /><br />The <a href="notes_updates.html">Update Notes</a> will note when a release includes such updates.</div>
+            <div class="noteImportant">You need to call this procedure when you update to a new version of Splice Machine that includes new or updates system procedure signatures.</div>
             <p class="heading2">About System Procedures</p>
             <p>Splice Machine uses prepared statements known as <span class="ItalicFont">system procedures</span> to access data in the system tables. Each system procedure has two parts:</p>
             <ul>
-                <li value="1">An <span class="ItalicFont">implementation</span>, which is compiled Java byte code that is stored in the Splice jar and is included in the CLASSPATH of the Splice server.</li>
-                <li value="2">A <span class="ItalicFont">declaration</span> (or <span class="ItalicFont">signature</span>), which is a CREATE PROCEDURE statement that is stored in the Splice jar file and is synchronized with the data dictionary (in the SYSALIASES&#160;table).</li>
+                <li>An <span class="ItalicFont">implementation</span>, which is compiled Java byte code that is stored in the Splice jar and is included in the CLASSPATH of the Splice server.</li>
+                <li>A <span class="ItalicFont">declaration</span> (or <span class="ItalicFont">signature</span>), which is a CREATE PROCEDURE statement that is stored in the Splice jar file and is synchronized with the data dictionary (in the SYSALIASES&#160;table).</li>
             </ul>
             <p>The <span class="CodeFont">SYSALIASES</span>&#160;table is synchronized with a database when the database is first created. Thereafter, when you make changes to the system procedures, you need to call a function to keep the <span class="CodeFont">SYSALIASES</span>&#160;table synchronized with the procedures in the Splice jar file.</p>
             <p>If you've modified, deleted, or added a system procedure,  call the <span class="CodeFont"><a href="sqlref_sysprocs_updatesysproc.html">SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE</a></span> function, which drops the procedure from the data dictionary, and updates the dictionary with the new version in the Splice jar file.</p>
@@ -2780,7 +2780,7 @@ Statement executed.</pre>
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="#"><span class="CodeFont">SYSCS_UTIL_SYSCS_UPDATE_SYSTEM_PROCEDURE</span></a>
+                <li><a href="#"><span class="CodeFont">SYSCS_UTIL_SYSCS_UPDATE_SYSTEM_PROCEDURE</span></a>
                 </li>
             </ul>
         </div>
@@ -2801,7 +2801,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

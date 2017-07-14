@@ -15,37 +15,37 @@ folder: OnPrem
             <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. Our database as a service does not require installation.</div>
             <p>This topic describes installing and configuring Splice Machine on a Hortonworks Ambari-managed cluster. Follow these steps:</p>
             <ol>
-                <li value="1"><a href="#Verify">Verify Prerequisites</a>
+                <li><a href="#Verify">Verify Prerequisites</a>
                 </li>
-                <li value="2"><a href="#Install">Download and Install Splice&#160;Machine</a>
+                <li><a href="#Install">Download and Install Splice&#160;Machine</a>
                 </li>
-                <li value="3"><a href="#Stop">Stop Hadoop Services</a>
+                <li><a href="#Stop">Stop Hadoop Services</a>
                 </li>
-                <li value="4"><a href="#Configur8">Configure Hadoop Services</a>
+                <li><a href="#Configur8">Configure Hadoop Services</a>
                 </li>
-                <li value="5"><a href="#Start">Start Any Additional Services</a>
+                <li><a href="#Start">Start Any Additional Services</a>
                 </li>
-                <li value="6">Make any needed <a href="#Optional">Optional Configuration Modifications</a></li>
-                <li value="7"><a href="#Run">Verify your Splice Machine Installation</a>
+                <li>Make any needed <a href="#Optional">Optional Configuration Modifications</a></li>
+                <li><a href="#Run">Verify your Splice Machine Installation</a>
                 </li>
             </ol>
             <h2 id="Verify">Verify Prerequisites</h2>
             <p>Before starting your Splice Machine installation, please make sure that your cluster contains the prerequisite software components:</p>
             <ul>
-                <li value="1">A cluster running HDP </li>
-                <li value="2">Ambari installed and configured for HDP</li>
-                <li value="3">HBase  installed</li>
-                <li value="4">HDFS installed</li>
-                <li value="5">YARN&#160;installed</li>
-                <li value="6">ZooKeeper installed</li>
-                <li value="7">Ensure that Phoenix services are <span class="BoldFont">NOT</span>&#160;installed on your cluster, as they interfere with Splice Machine HBase settings.</li>
+                <li>A cluster running HDP </li>
+                <li>Ambari installed and configured for HDP</li>
+                <li>HBase  installed</li>
+                <li>HDFS installed</li>
+                <li>YARN&#160;installed</li>
+                <li>ZooKeeper installed</li>
+                <li>Ensure that Phoenix services are <span class="BoldFont">NOT</span>&#160;installed on your cluster, as they interfere with Splice Machine HBase settings.</li>
             </ul>
-            <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="notes_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
+            <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
             <h2 id="Install">Download and Install Splice&#160;Machine</h2>
             <p>Perform the following steps <span class="important">on each node</span> in your cluster:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Contact Splice Machine for your installer</p>
                         <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}}:</p>
                         <table>
@@ -72,22 +72,22 @@ folder: OnPrem
                         </table>
                         <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/">the Splice&#160;Machine Community site</a> or contact your&#160;Splice&#160;Machine representative.</div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Create the <span class="CodeFont">splice</span> installation directory:</p>
                         <div class="preWrapperWide"><pre class="ShellCommandCell">sudo mkdir -p /opt/splice</pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Download the Splice Machine package into the <span class="CodeFont">splice</span> directory on the node. For example:</p>
                         <div class="preWrapperWide"><pre class="ShellCommandCell">sudo curl '{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_HDP-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}}' -o /opt/splice/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}}<br /></pre>
                         </div>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Extract the Splice Machine package:</p>
                         <div class="preWrapperWide"><pre class="ShellCommandCell">sudo tar -xf SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}} --directory /opt/splice</pre>
                         </div>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to set up Splice&#160;Machine jar script symbolic links</p>
                         <p class="indentLevel1">Issue this command <span class="important">on each node</span> in your cluster:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
@@ -100,10 +100,10 @@ sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
             <p>As a first step, we stop cluster services to allow our installer to make changes that require the cluster to be temporarily inactive. </p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Access the Ambari Home Screen</p>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Click the <span class="AppCommand">Actions</span> drop-down, and then click the <span class="AppCommand">Stop All</span> button.</p>
                     </li>
                 </ol>
@@ -111,25 +111,25 @@ sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
             <h2 id="Configur8">Configure Hadoop Services</h2>
             <p>Now it's time to make a few modifications in the Hadoop services configurations:</p>
             <ul>
-                <li value="1"><a href="#Configur4">Configure and Restart ZooKeeper</a>
+                <li><a href="#Configur4">Configure and Restart ZooKeeper</a>
                 </li>
-                <li value="2"><a href="#Configur5">Configure and Restart HDFS</a>
+                <li><a href="#Configur5">Configure and Restart HDFS</a>
                 </li>
-                <li value="3"><a href="#Configur2">Configure and Restart YARN</a>
+                <li><a href="#Configur2">Configure and Restart YARN</a>
                 </li>
-                <li value="4"><a href="#Configur">Configure MapReduce2</a>
+                <li><a href="#Configur">Configure MapReduce2</a>
                 </li>
-                <li value="5"><a href="#Configur3">Configure and Restart HBASE</a>
+                <li><a href="#Configur3">Configure and Restart HBASE</a>
                 </li>
             </ul>
             <h3 id="kanchor507"></a id="Configur4">Configure and Restart ZooKeeper</h3>
             <p>To edit the ZooKeeper configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">ZooKeeper</span> in the Ambari in the left pane of the screen. </p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Select the <span class="AppCommand">Configs</span> tab to configure ZooKeeper</p>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Make configuration changes:</p>
                         <p class="indentLevel1">Scroll down to where you see <span class="ItalicFont">Custom zoo.cfg</span> and click <span class="AppCommand">Add Property</span> to add the <span class="CodeFont">maxClientCnxns</span> property and then again to add the <span class="CodeFont">maxSessionTimeout</span> property, with these values:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
@@ -137,11 +137,11 @@ maxClientCnxns=<span class="AppFontCustCode">0</span>
 maxSessionTimeout=<span class="AppFontCustCode">120000</span></pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Save Changes</p>
                         <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated ZooKeeper configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Start ZooKeeper</p>
                         <p class="indentLevel1">After you save your changes, you'll land back on the ZooKeeper Service <span class="AppCommand">Configs</span> tab in Ambari. </p>
                         <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start ZooKeeper. Wait for the restart to complete.</p>
@@ -152,7 +152,7 @@ maxSessionTimeout=<span class="AppFontCustCode">120000</span></pre>
             <p>To edit the HDFS&#160;configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">HDFS</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Edit the HDFS&#160;configuration as follows:</p>
                         <table>
                             <col />
@@ -176,7 +176,7 @@ maxSessionTimeout=<span class="AppFontCustCode">120000</span></pre>
                             </tbody>
                         </table>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Add a new property:</p>
                         <p class="indentLevel1">Click <span class="AppCommand">Add Property</span>... under <span class="AppCommand">Custom hdfs-site</span>, and add the following property:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
@@ -184,16 +184,16 @@ dfs.datanode.handler.count=<span class="AppFontCustCode">20</span>
 </pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Save Changes</p>
                         <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS&#160;configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Start HDFS</p>
                         <p class="indentLevel1">After you save your changes, you'll land back on the <span class="AppCommand">HDFS&#160;Service Configs</span> tab in Ambari. </p>
                         <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start HDFS. Wait for the restart to complete.</p>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Create directories for hbase user and the Splice Machine YARN application:</p>
                         <p class="indentLevel1">Use your terminal window to create these directories:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
@@ -209,7 +209,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
             <p>To edit the YARN configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">YARN</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Update these other configuration values:</p>
                         <table>
                             <col />
@@ -259,11 +259,11 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                             </tbody>
                         </table>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Save Changes</p>
                         <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated YARN configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Start YARN</p>
                         <p class="indentLevel1">After you save your changes, you'll land back on the <span class="AppCommand">YARN Service Configs</span> tab in Ambari. </p>
                         <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start YARN. Wait for the restart to complete.</p>
@@ -273,40 +273,40 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
             <h3 id="Configur">Configure MapReduce2</h3>
             <p>Ambari automatically sets these values for you:</p>
             <ul class="codeListNested">
-                <li value="1">Map Memory</li>
-                <li value="2">Reduce Memory</li>
-                <li value="3">Sort Allocation Memory</li>
-                <li value="4">AppMaster Memory</li>
-                <li value="5">MR&#160;Map Java Heap Size</li>
-                <li value="6">MR&#160;Reduce Java Heap Size</li>
+                <li>Map Memory</li>
+                <li>Reduce Memory</li>
+                <li>Sort Allocation Memory</li>
+                <li>AppMaster Memory</li>
+                <li>MR&#160;Map Java Heap Size</li>
+                <li>MR&#160;Reduce Java Heap Size</li>
             </ul>
             <p>You do, however, need to make a few property changes for this service. To edit the MapReduce2 configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">MapReduce2</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Select the <span class="AppCommand">Configs</span> tab to configure MapReduce2.</p>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Update property values</p>
                         <p class="indentLevel1">You need to replace <span class="AppFontCustCode">${hdp.version}</span> with the actual HDP version number you are using in these property values:</p>
                         <ul class="codeListNested">
-                            <li value="1">mapreduce.admin.map.child.java.opts
+                            <li>mapreduce.admin.map.child.java.opts
 </li>
-                            <li value="2">mapreduce.admin.reduce.child.java.opts</li>
-                            <li value="3">mapreduce.admin.user.env</li>
-                            <li value="4">mapreduce.application.classpath</li>
-                            <li value="5">mapreduce.application.framework.path</li>
-                            <li value="6">yarn.app.mapreduce.am.admin-command-opts</li>
-                            <li value="7">MR AppMaster Java Heap Size
+                            <li>mapreduce.admin.reduce.child.java.opts</li>
+                            <li>mapreduce.admin.user.env</li>
+                            <li>mapreduce.application.classpath</li>
+                            <li>mapreduce.application.framework.path</li>
+                            <li>yarn.app.mapreduce.am.admin-command-opts</li>
+                            <li>MR AppMaster Java Heap Size
 </li>
                         </ul>
                         <div class="noteIndent">An example of an HDP&#160;version number that you would substitute for <span class="AppFontCustCode">${hdp.version}</span> is <span class="CodeFont">2.5.0.0-1245</span>.</div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Save Changes</p>
                         <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated MapReduce2 configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Start MapReduce2</p>
                         <p class="indentLevel1">After you save your changes, you'll land back on the MapReduce2 Service <span class="AppCommand">Configs</span> tab in Ambari. </p>
                         <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start MapReduce2. Wait for the restart to complete.</p>
@@ -317,7 +317,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
             <p>To edit the HBASE configuration, click <span class="AppCommand">HBASE</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Change the values of these settings</p>
                         <table>
                             <col />
@@ -397,12 +397,12 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                             </tbody>
                         </table>
                     </li>
-                    <li value="2">
+                    <li>
                         <p>Set the value of the <span class="CodeFont">hbase.coprocessor.region.classes</span> property to the following:</p>
                         <div class="preWrapperWide"><pre class="Example">com.splicemachine.hbase.MemstoreAwareObserver,com.splicemachine.derby.hbase.SpliceIndexObserver,com.splicemachine.derby.hbase.SpliceIndexEndpoint,com.splicemachine.hbase.RegionSizeEndpoint,com.splicemachine.si.data.hbase.coprocessor.TxnLifecycleEndpoint,com.splicemachine.si.data.hbase.coprocessor.SIObserver,com.splicemachine.hbase.BackupEndpointObserver</pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p>Under <span class="CodeFont">Advanced hbase-env</span>, set the value of <span class="CodeFont">hbase-env template</span> to the following:</p>
                         <div class="preWrapperWide"><pre class="Example"># Set environment variables here.
 
@@ -479,7 +479,7 @@ export HBASE_REGIONSERVER_OPTS="${HBASE_REGIONSERVER_OPTS} -Djava.security.auth.
 export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS {% if hbase_max_direct_memory_size %} -XX:MaxDirectMemorySize={{hbase_max_direct_memory_size}}m {% endif %}"</pre>
                         </div>
                     </li>
-                    <li value="4">
+                    <li>
                         <p>In <span class="CodeFont">Custom hbase-site</span> property, add the following properties:</p>
                         <div class="preWrapperWide"><pre class="Example">dfs.client.read.shortcircuit.buffer.size=131072
 hbase.balancer.period=60000
@@ -528,11 +528,11 @@ splice.txn.completedTxns.concurrency=128
 splice.txn.concurrencyLevel=4096</pre>
                         </div>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Save Changes</p>
                         <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS&#160;configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
-                    <li value="6">
+                    <li>
                         <p class="topLevel">Start HBase</p>
                         <p class="indentLevel1">After you save your changes, you'll land back on the HBase Service <span class="AppCommand">Configs</span> tab in Ambari. </p>
                         <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start HBase. Wait for the restart to complete.</p>
@@ -545,8 +545,8 @@ splice.txn.concurrencyLevel=4096</pre>
             <h2 id="Optional">Optional Configuration Modifications</h2>
             <p>There are a few configuration modifications you might want to make:</p>
             <ul>
-                <li value="1"><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
-                <li value="2">Adjust the replication factor if you have a small cluster and need to improve resource usage or performance.</li>
+                <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
+                <li>Adjust the replication factor if you have a small cluster and need to improve resource usage or performance.</li>
             </ul>
             <h3 id="Modify">Modify the Authentication Mechanism</h3>
             <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>

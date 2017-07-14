@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -610,17 +610,17 @@
             <p>One of the great features of Spark is that a large number of libraries have been and continue to be developed for use with Spark. This topic provides an example of interfacing to the Spark Machine Learning library (MLlib).</p>
             <p>You can follow a similar path to interface with other Spark libraries, which involves these steps:</p>
             <ol>
-                <li value="1">Create a class with an API that leverages functionality in the Spark library you want to use.</li>
-                <li value="2">Write a custom procedure in your Splice Machine database that converts a Splice&#160;Machine result set into a Spark Resilient Distributed Dataset (RDD).</li>
-                <li value="3">Use the Spark library with the RDD.</li>
+                <li>Create a class with an API that leverages functionality in the Spark library you want to use.</li>
+                <li>Write a custom procedure in your Splice Machine database that converts a Splice&#160;Machine result set into a Spark Resilient Distributed Dataset (RDD).</li>
+                <li>Use the Spark library with the RDD.</li>
             </ol>
             <div>
                 <h2>Example:&#160;Using Spark MLlib with Splice Machine Statistics</h2>
                 <p>This section presents the sample code for interfacing Splice Machine with the Spark Machine Learning Library (MLlib), in these subsections:</p>
                 <ul>
-                    <li value="1"><a href="#About">About the Splice Machine SparkMLibUtils Class API</a> describes the SparkMLibUtils class that Splice&#160;Machine provides for interfacing with this library.</li>
-                    <li value="2"><a href="#Create">Creating our SparkStatistics Example Class</a> summarizes the <span class="CodeFont">SparkStatistics</span> Java class that we created for this example.</li>
-                    <li value="3"><a href="#Run">Run a Sample Program to Use Our Class</a> shows you how to define a custom procedure in your database to interface to the <span class="CodeFont">SparkStatistics</span> class.</li>
+                    <li><a href="#About">About the Splice Machine SparkMLibUtils Class API</a> describes the SparkMLibUtils class that Splice&#160;Machine provides for interfacing with this library.</li>
+                    <li><a href="#Create">Creating our SparkStatistics Example Class</a> summarizes the <span class="CodeFont">SparkStatistics</span> Java class that we created for this example.</li>
+                    <li><a href="#Run">Run a Sample Program to Use Our Class</a> shows you how to define a custom procedure in your database to interface to the <span class="CodeFont">SparkStatistics</span> class.</li>
                 </ul>
                 <h3 id="About">About the Splice Machine SparkMLibUtils Class API</h3>
                 <p>Our example makes use of the Splice Machine <span class="CodeFont">com.splicemachine.example.SparkMLibUtils</span> class, which you can use to interface between your Splice&#160;Machine database and the Spark Machine Learning library.</p>
@@ -676,27 +676,27 @@ public static Vector convertExecRowToVector(ExecRow execRow)
                 <p>We call the <span class="CodeFont">getStatementStatistics</span> from custom procedure in our database, passing it an SQL&#160;query . <span class="CodeFont">getStatementStatistics</span> performs the following operations:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Query your database</p>
                             <p class="indentLevel1">The first step is to use our JDBC&#160;driver to connect to your database and run the query:</p>
                             <div class="preWrapperWide"><pre class="Example">Connection con = DriverManager.getConnection("jdbc:default:connection");<br />PreparedStatement ps = con.prepareStatement(statement);
 ResultSet rs = ps.executeQuery();</pre>
                             </div>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Convert the query results into a Spark RDD</p>
                             <p class="indentLevel1">Next, we convert the query's result set into a Spark RDD:</p>
                             <div class="preWrapperWide"><pre class="Example">JavaRDD&lt;LocatedRow&gt; resultSetRDD = ResultSetToRDD(rs);</pre>
                             </div>
                         </li>
-                        <li value="3">
+                        <li>
                             <p class="topLevel">Calculate statistics</p>
                             <p class="indentLevel1">Next, we use Spark to collect statistics for the query, using private methods in our <span class="CodeFont">SparkStatistics</span> class:</p>
                             <div class="preWrapperWide"><pre class="Example">int[] fieldsToConvert = getFieldsToConvert(ps);<br />MultivariateStatisticalSummary summary = getColumnStatisticsSummary(resultSetRDD, fieldsToConvert);</pre>
                             </div>
                             <p class="indentLevel1">You can view the implementations of the <span class="CodeFont">getFieldsToConvert</span> and <span class="CodeFont">getColumnStatisticsSummary</span> methods in the <span class="ItalicFont"><a href="#Appendix">Appendix</a></span> at the end of this topic.</p>
                         </li>
-                        <li value="4">
+                        <li>
                             <p class="topLevel">Return the results</p>
                             <p class="indentLevel1">Finally, we return the results:</p>
                             <div class="preWrapperWide"><pre class="Example">IteratorNoPutResultSet resultsToWrap = wrapResults((EmbedConnection) con, getColumnStatistics(ps, summary, fieldsToConvert));
@@ -710,11 +710,11 @@ resultSets[0] = new EmbedResultSet40((EmbedConnection)con, resultsToWrap, false,
                 <p>Follow these steps to run a simple example program to use the Spark MLlib library to calculate statistics for an SQL&#160;statement. </p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Create Your API&#160;Class</p>
                             <p class="indentLevel1">The first step is to create a Java class that uses Spark to generate and analyze statistics, as shown in the previous section, <a href="#Create">Creating our SparkStatistics Example Class</a></p>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Create your custom procedure</p>
                             <p class="indentLevel1">First we create a procedure in our database that references the <span class="CodeFont">getStatementStatistics</span> method in our API, which takes an SQL&#160;query as its input and uses Spark to calculate statistics for the query using MLlib:</p>
                             <div class="preWrapperWide"><pre class="Example">CREATE PROCEDURE getStatementStatistics(statement varchar(1024))
@@ -725,7 +725,7 @@ resultSets[0] = new EmbedResultSet40((EmbedConnection)con, resultsToWrap, false,
 &#160;&#160;&#160;EXTERNAL NAME 'com.splicemachine.example.SparkStatistics.getStatementStatistics';</pre>
                             </div>
                         </li>
-                        <li value="3">
+                        <li>
                             <p class="topLevel">Create a table to use</p>
                             <p class="indentLevel1">Let's create a very simple table to illustrate use of our procedure:</p>
                             <div class="preWrapperWide"><pre class="Example">create table t( col1 int, col2 double);
@@ -735,7 +735,7 @@ insert into t values(3, 30);
 insert into t values(4, 40);</pre>
                             </div>
                         </li>
-                        <li value="4">
+                        <li>
                             <p class="topLevel">Call your custom procedure to get statistics</p>
                             <p class="indentLevel1">Now call your custom procedure, which sends an SQL&#160;statement to the SparkStatistics class we created to generate a result set:</p>
                             <div class="preWrapperWide"><pre class="Example">call splice.getStatementStatistics('select * from t');</pre>
@@ -895,11 +895,11 @@ public class SparkStatistics {
             </div>
             <h2>See Also</h2>
             <ul>
-                <li value="1"><a href="notes_sparkoverview.html">Spark Overview</a>
+                <li><a href="notes_sparkoverview.html">Spark Overview</a>
                 </li>
-                <li value="2"><a href="dbconsole_intro.html">Using the Splice Machine Database Console</a>
+                <li><a href="dbconsole_intro.html">Using the Splice Machine Database Console</a>
                 </li>
-                <li value="3">You can find the Spark MLlib guide in the Programming Guides section of the Spark documentation site:&#160;<a href="https://spark.apache.org/docs" target="_blank">https://spark.apache.org/docs</a></li>
+                <li>You can find the Spark MLlib guide in the Programming Guides section of the Spark documentation site:&#160;<a href="https://spark.apache.org/docs">https://spark.apache.org/docs</a></li>
             </ul>
         </div>
 	</section>
@@ -919,7 +919,7 @@ public class SparkStatistics {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

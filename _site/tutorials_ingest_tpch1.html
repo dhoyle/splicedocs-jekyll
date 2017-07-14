@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -525,15 +525,15 @@
             <h1 id="kanchor462">Importing TPCH Data Into Your Database</h1>
             <p>This tutorial walks you through importing sample data into your Splice&#160;Machine database and then querying that data, in these sections:</p>
             <ul>
-                <li value="1"><a href="#Import">Import Sample Data</a> walks you through importing TPCH&#160;data from our AWS&#160;bucket into your Splice Machine database</li>
-                <li value="2"><a href="#Importin">Importing Your Own Data</a> links to our tutorial that helps you to import your own data</li>
-                <li value="3"><a href="#Addition">The TPCH Queries</a> includes the SQL&#160;source for each of the  TPCH&#160;queries, so you can quickly run any of them against your newly imported data.</li>
+                <li><a href="#Import">Import Sample Data</a> walks you through importing TPCH&#160;data from our AWS&#160;bucket into your Splice Machine database</li>
+                <li><a href="#Importin">Importing Your Own Data</a> links to our tutorial that helps you to import your own data</li>
+                <li><a href="#Addition">The TPCH Queries</a> includes the SQL&#160;source for each of the  TPCH&#160;queries, so you can quickly run any of them against your newly imported data.</li>
             </ul>
             <h2 id="Import">Import Sample Data</h2>
             <p>You can use the following steps to import TPCH data into your new Splice Machine database:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Create the schema and tables</p>
                         <p class="indentLevel1">You can copy/paste the following SQL&#160;statements to create the schema and tables for importing the sample data:</p>
                         <div class="preWrapperWide"><pre class="Example">CREATE SCHEMA TPCH;
@@ -627,7 +627,7 @@ CREATE TABLE TPCH.NATION (
  );</pre>
                         </div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Import data</p>
                         <p class="indentLevel1">We've put a copy of the TPCH data in an AWS&#160;S3 bucket, for convenient retrieval. You can copy/paste the following <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span>&#160;statements to quickly pull that data into your database:</p>
                         <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'LINEITEM', null, 's3a:/splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
@@ -647,7 +647,7 @@ call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION',   null, 's3a:/splice-benchmark-da
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'NATION',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);</pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Run a query</p>
                         <p class="indentLevel1">You can now copy/paste <span class="ItalicFont">TPCH Query 01</span> against the imported data to verify that all's well:</p>
                         <div class="preWrapperWide"><pre class="Example">-- QUERY 01
@@ -1455,7 +1455,7 @@ order by
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

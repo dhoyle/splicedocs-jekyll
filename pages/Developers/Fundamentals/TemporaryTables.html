@@ -61,29 +61,29 @@ folder: Developers/Fundamentals
             <h2>Restrictions on Temporary Tables</h2>
             <p>You can use temporary tables just like you do permanently defined database tables, with several important exceptions and restrictions that are noted in this section, including these:</p>
             <ul>
-                <li value="1"><a href="#Operatio">Operational Limitations</a>
+                <li><a href="#Operatio">Operational Limitations</a>
                 </li>
-                <li value="2"><a href="#Table">Table Persistence</a>
+                <li><a href="#Table">Table Persistence</a>
                 </li>
             </ul>
             <h3 id="Operatio">Operational Limitations</h3>
             <p>Temporary tables have the following operational limitations; they:</p>
             <ul>
-                <li value="1">exist only while a user session is alive</li>
-                <li value="2">are visible in system tables, but are otherwise not visible to other sessions or transactions</li>
-                <li value="3">cannot be altered using the <span class="CodeFont"><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></span>&#160;statements</li>
-                <li value="4">do not get backed up</li>
-                <li value="5">cannot be used as data providers to views</li>
-                <li value="6">cannot be referenced by foreign keys in other tables</li>
-                <li value="7">are not displayed by the <a href="cmdlineref_showtables.html"><span class="CodeFont">show tables</span></a> command</li>
+                <li>exist only while a user session is alive</li>
+                <li>are visible in system tables, but are otherwise not visible to other sessions or transactions</li>
+                <li>cannot be altered using the <span class="CodeFont"><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></span>&#160;statements</li>
+                <li>do not get backed up</li>
+                <li>cannot be used as data providers to views</li>
+                <li>cannot be referenced by foreign keys in other tables</li>
+                <li>are not displayed by the <a href="cmdlineref_showtables.html"><span class="CodeFont">show tables</span></a> command</li>
             </ul>
             <p>Also note that temporary tables persist across transactions in a session and are automatically dropped when a session terminates.</p>
             <h3 id="Table">Table Persistence</h3>
             <p>Here are two important notes about temporary table persistence. Temporary tables:</p>
             <ul>
-                <li value="1">persist across transactions in a session</li>
-                <li value="2">are automatically dropped when a session terminates or expires</li>
-                <li value="3">can also be dropped with the <span class="CodeFont"><a href="sqlref_expressions_table.html">DROP&#160;TABLE</a></span>&#160;statement</li>
+                <li>persist across transactions in a session</li>
+                <li>are automatically dropped when a session terminates or expires</li>
+                <li>can also be dropped with the <span class="CodeFont"><a href="sqlref_expressions_table.html">DROP&#160;TABLE</a></span>&#160;statement</li>
             </ul>
             <h2>Example</h2><pre class="Example" xml:space="preserve">create local temporary table temp_num_dt (
    smallint_col smallint not null,   
@@ -96,12 +96,12 @@ select * from temp_num_dt;
 </pre>
             <h2>See Also</h2>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="sqlref_expressions_table.html">ALTER&#160;TABLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="2"><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="3"><span class="CodeFont"><a href="sqlref_expressions_table.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="4"><span class="CodeFont"><a href="sqlref_expressions_table.html">DROP TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="5"><span class="CodeFont"><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></span>&#160;statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="6"><span class="CodeFont"><a href="sqlref_expressions_table.html">RENAME&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">ALTER&#160;TABLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">DROP TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></span>&#160;statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">RENAME&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
             </ul>
         </div>
 	</section>

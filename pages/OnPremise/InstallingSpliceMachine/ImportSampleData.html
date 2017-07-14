@@ -46,7 +46,7 @@ folder: OnPrem
             <p>Follow these steps to import the demo data into your Splice Machine database:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Start the command line interpreter</p>
                         <p class="indentLevel1">You can use the Splice Machine command line interpreter (CLI), or <span class="AppCommand">splice&gt;</span>&#160;prompt, to work directly with your database. If you're using the cluster version of Splice Machine, you can access the <span class="AppCommand">splice&gt;</span>&#160;prompt by entering this shell command on any node on which it is available:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">./sqlshell.sh</pre>
@@ -56,7 +56,7 @@ folder: OnPrem
 ./bin/sqlshell.sh</pre>
                         </div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Modify the script that loads the data to use your path:</p>
                         <p class="indentLevel1">Before running the <span class="AppCommand">loadall.sql</span> script, you must change the file path used in the script. </p>
                         <p class="indentLevel1">There are calls to <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> near the bottom of the script. Change the file path parameter in each of these calls to use the absolute path to your Splice&#160;Machine <span class="CodeFont">demodata</span> directory:</p>
@@ -66,13 +66,13 @@ folder: OnPrem
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER', &#160;null, '/Users/myName/mySplice/demodata/data/theader.csv.gz', ...;<br />call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL', &#160;null, '/Users/myName/mySplice/demodata/data/tdetail.csv.gz', ...;<br />call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '/Users/myName/mySplice/demodata/data/customers.csv.gz',...;</pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Run the modify script to loads the data:</p>
                         <p class="indentLevel1">From the <span class="AppCommand">splice&gt;</span> prompt, <span class="ItalicFont">run</span> the file that will load the data, using single quotes around the path/filename (and remember to include the semicolon at the end):</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">splice&gt; run 'demodata/sql/loadall.sql';</pre>
                         </div>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Wait for the script to finish</p>
                         <p class="indentLevel1">If your database is not currently running, start it up and launch the command line interpreter (<span class="AppCommand">splice&gt;</span> prompt) by issuing this command in your terminal window:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">./bin/sqlshell.sh</pre>

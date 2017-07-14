@@ -46,22 +46,22 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <h3>Importing a Subset of Data From a File</h3>
             <p>When you import data from a file into a table, all of the data in the file is not necessarily imported. This can happen in either of these circumstances:</p>
             <ul>
-                <li value="1">If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
-                <li value="2">If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
+                <li>If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
+                <li>If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
             </ul>
             <p>You can find examples in the <a href="tutorials_ingest_importing.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
             <p>Note that you can take advantage of this by importing different subsets of data from one input file into multiple tables in your database.</p>
             <h2>Record Import Failure Reasons</h2>
             <p>When upserting data from a file, the input file you generate must contain:</p>
             <ul>
-                <li value="1">the columns to be changed</li>
-                <li value="2">all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
+                <li>the columns to be changed</li>
+                <li>all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
             </ul>
             <p>Typical reasons for a row (record)&#160;import to fail include:</p>
             <ul>
-                <li value="1">Improper data expected for a column.</li>
-                <li value="2">Improper number of columns of data.</li>
-                <li value="3">A primary key violation:&#160;<span class="CodeFont"><a href="#">SYSCS_UTIL.IMPORT_DATA</a></span> will only work correctly if the table into which you are inserting/updating has primary keys. </li>
+                <li>Improper data expected for a column.</li>
+                <li>Improper number of columns of data.</li>
+                <li>A primary key violation:&#160;<span class="CodeFont"><a href="#">SYSCS_UTIL.IMPORT_DATA</a></span> will only work correctly if the table into which you are inserting/updating has primary keys. </li>
             </ul>
 {% include splice_snippets/importgeneratedcolvals.html %}
             <h2 id="TimestampFormats">About Timestamp Formats</h2>
@@ -141,7 +141,7 @@ This is the second line of the field',Baker
             <p>&#160;</p>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
+                <li><a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
                 </li>
             </ul>
         </div>

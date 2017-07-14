@@ -15,9 +15,9 @@ folder: SQLReference/BuiltInSysProcs
             <div class="noteNote">Once statistics have been collected for a schema, they are automatically used by the query optimizer.</div>
             <p>This procedure collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema. For example, if you have :</p>
             <ul>
-                <li value="1">a schema named <span class="CodeFont">mySchema</span></li>
-                <li value="2"><span class="CodeFont">mySchema</span> contains two tables:&#160;<span class="CodeFont">myTable1</span> and <span class="CodeFont">myTable2</span></li>
-                <li value="3"><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
+                <li>a schema named <span class="CodeFont">mySchema</span></li>
+                <li><span class="CodeFont">mySchema</span> contains two tables:&#160;<span class="CodeFont">myTable1</span> and <span class="CodeFont">myTable2</span></li>
+                <li><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
             </ul>
             <p>Then <span class="CodeFont">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</span> will collect statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
             <p class="heading2">Syntax</p>
@@ -30,16 +30,16 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramName">staleOnly</p>
                 <p class="paramDefnFirst">A&#160;<span class="CodeFont">BOOLEAN</span> value that specifies:</p>
                 <ul class="nested">
-                    <li value="1">If this is <span class="CodeFont">true</span>, data is only re-collected for partitions that are known to have out of date statistics.</li>
-                    <li value="2">If this is <span class="CodeFont">false</span>, data is collected on all partitions. <span class="Highlighted">Note</span> that this can significantly increase the time required to collect statistics, and is typically used only when you are not sure about the current quality of statistics in the entire schema.</li>
+                    <li>If this is <span class="CodeFont">true</span>, data is only re-collected for partitions that are known to have out of date statistics.</li>
+                    <li>If this is <span class="CodeFont">false</span>, data is collected on all partitions. <span class="Highlighted">Note</span> that this can significantly increase the time required to collect statistics, and is typically used only when you are not sure about the current quality of statistics in the entire schema.</li>
                 </ul>
                 <div class="noteIcon">The <span class="CodeItalicFont">staleOnly</span> parameter value is currently ignored, but must be specified in your call to this procedure. Its value is always set to <span class="CodeFont">false</span> in the system code.</div>
             </div>
             <p class="heading2">Results</p>
             <p>This procedure returns a results table that contains:</p>
             <ul>
-                <li value="1"> one row for each table </li>
-                <li value="2">one row per index for every table and its associated index in the schema</li>
+                <li> one row for each table </li>
+                <li>one row per index for every table and its associated index in the schema</li>
             </ul>
             <p> Each row contains the following columns:</p>
             <table summary="Columns in Collect_Schema_Statistics results display">
@@ -98,15 +98,15 @@ SPLICE     |FIELDING   |splice:1504,,1467393775949.674b34acdb182|44         |987
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="sqlref_datatypes_compatability.html">Data Assignments and Comparisons</a>
+                <li><a href="sqlref_datatypes_compatability.html">Data Assignments and Comparisons</a>
                 </li>
-                <li value="2"><a href="sqlref_sysprocs_enablecolumnstats.html"><span class="CodeFont">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</span></a>
+                <li><a href="sqlref_sysprocs_enablecolumnstats.html"><span class="CodeFont">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</span></a>
                 </li>
-                <li value="3"><a href="sqlref_sysprocs_disablecolumnstats.html"><span class="CodeFont">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</span></a>
+                <li><a href="sqlref_sysprocs_disablecolumnstats.html"><span class="CodeFont">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</span></a>
                 </li>
-                <li value="4"><a href="sqlref_sysprocs_dropschemastats.html"><span class="CodeFont">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</span></a>
+                <li><a href="sqlref_sysprocs_dropschemastats.html"><span class="CodeFont">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</span></a>
                 </li>
-                <li value="5"><a href="developers_tuning_usingstats.html">Using Statistics</a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+                <li><a href="developers_tuning_usingstats.html">Using Statistics</a> in the <span class="ItalicFont">Administrator's Guide</span></li>
             </ul>
         </div>
 	</section>

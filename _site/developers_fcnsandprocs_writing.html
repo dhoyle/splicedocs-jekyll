@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -702,16 +702,16 @@
             <h1 id="kanchor314"></a id="kanchor315">Writing Functions and Stored&#160;Procedures</h1>
             <p>This topic shows you the steps required to write functions and stored procedures for use in your Splice&#160;Machine database.</p>
             <ul>
-                <li value="1">Refer to the <a href="developers_fcnsandprocs_intro.html">Introduction to Functions and Stored Procedures</a> topic in this section for an overview and comparison of functions and stored procedures.</li>
-                <li value="2">Refer to the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Functions and Stored Procedures</a> topic in this section for information about storing your compiled code and updating the <span class="CodeFont">CLASSPATH</span>&#160;to ensure that Splice Machine can find your code.</li>
-                <li value="3">Refer to the <a href="developers_fcnsandprocs_examples.html">Functions and Stored Procedure Examples</a> topic in this section for complete sample code for both a function and a stored procedure.</li>
+                <li>Refer to the <a href="developers_fcnsandprocs_intro.html">Introduction to Functions and Stored Procedures</a> topic in this section for an overview and comparison of functions and stored procedures.</li>
+                <li>Refer to the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Functions and Stored Procedures</a> topic in this section for information about storing your compiled code and updating the <span class="CodeFont">CLASSPATH</span>&#160;to ensure that Splice Machine can find your code.</li>
+                <li>Refer to the <a href="developers_fcnsandprocs_examples.html">Functions and Stored Procedure Examples</a> topic in this section for complete sample code for both a function and a stored procedure.</li>
             </ul>
             <p>Note that the processes for adding  functions and stored procedures to your Splice Machine database are quite similar; however, there are some important differences, so we've separated them into their own sections below.</p>
             <h2>Writing a Function in Splice Machine</h2>
             <p>Follow the steps below to write a Splice Machine database function. </p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Create a Java method</p>
                         <p class="indentLevel1">Each function maps to a Java method. For example:</p>
                         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">package com.splicemachine.cs.function;
@@ -723,7 +723,7 @@ public class Functions {
 }</pre>
                         </div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Create the function in the database</p>
                         <p class="indentLevel1">You can find the complete syntax for <span class="CodeFont"><a href="sqlref_statements_createfunction.html">CREATE&#160;FUNCTION</a>&#160;</span>in the <span class="ItalicFont">Splice Machine SQL&#160;Reference</span> manual.</p>
                         <p class="indentLevel1">Here's a quick example of creating a function. In this example, <span class="CodeFont">com.splicemachine.cs.function</span> is the package, <span class="CodeFont">Functions</span> is the class name, and <span class="CodeFont">addNumbers</span> is the method name:</p>
@@ -735,12 +735,12 @@ public class Functions {
 &#160;&#160;&#160;&#160;EXTERNAL NAME 'com.splicemachine.cs.function.Functions.addNumbers';</pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Store your compiled Jar file and update your CLASSPATH</p>
                         <p class="indentLevel1">Follow the instructions in the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Functions and Stored Procedures</a> topic in this section to:</p>
                         <ul class="plainFont">
-                            <li value="1">store your Jar file</li>
-                            <li value="2">update the class path so that Splice Machine can find your code when the function is called.</li>
+                            <li>store your Jar file</li>
+                            <li>update the class path so that Splice Machine can find your code when the function is called.</li>
                         </ul>
                         <p class="topLevel">Invoke your function</p>
                         <p class="indentLevel1">You can invoke functions just like you would call any built-in database function. For example, if you're using the Splice Machine command line interface (<span class="ItalicFont">CLI</span>), and have created a function named <span class="CodeFont">add</span>, you could use a statement like the following:</p>
@@ -753,7 +753,7 @@ public class Functions {
             <p>Follow the steps below to write a Splice Machine database stored procedure. </p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Write your custom stored procedure:</p>
                         <p class="indentLevel1">Here is a very simple stored procedure that uses JDBC:</p>
                         <div class="preWrapperWide"><pre class="Example">package org.splicetest.customprocs;
@@ -793,12 +793,12 @@ public class CustomSpliceProcs {
                         <p class="indentLevel1">You can find additional examples in the <a href="developers_fcnsandprocs_examples.html">Functions and Stored Procedure Examples</a> topic in this section.</p>
                         <div class="noteNote">See the information about <a href="#ResultSet">working with ResultSets</a> in the next section.</div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Compile your code and build a Jar file</p>
                         <p class="indentLevel1">You now need to compile your stored procedure and build a jar file for it. </p>
                         <p class="indentLevel1">You can use any Java IDE&#160;or build tool, such as <span class="ItalicFont">Maven</span> or <span class="ItalicFont">Ant</span>, to accomplish this. Alternatively, you can use the <span class="ItalicFont">javac</span> Java compiler and the <span class="ItalicFont">Java Archive</span> tool packaged with the JDK. </p>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Copy the Jar file to a cluster node</p>
                         <p class="indentLevel1">Next, copy your custom Jar file to a region server (any node running an HBase region server)&#160;in your Splice Machine cluster. You can copy the file anywhere that allows the splice&gt;&#160;interface to access it. </p>
                         <p class="indentLevel1">You can use any remote copying tool, such as scp or ftp. For example:</p>
@@ -806,7 +806,7 @@ public class CustomSpliceProcs {
                         </div>
                         <p class="indentLevel1">See the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Functions and Stored Procedures</a> topic in this section for more information.</p>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Deploy the Jar file to your cluster</p>
                         <p class="indentLevel1">Deploying the Jar file requires you to install the file in your database, and to add it to your database's <span class="CodeFont">CLASSPATH</span>. You can accomplish both of these steps by calling built-in system procedures from the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter. For example:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-<span>2.6</span>-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
@@ -815,11 +815,11 @@ CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', '
                         </div>
                         <p class="indentLevel1">The <a href="sqlref_sysprocs_installjar.html"><span class="CodeFont">SQLJ.INSTALL_JAR</span></a> system procedure uploads the jar file from the local file system where <span class="AppCommand">splice&gt;</span>&#160;is executing into the HDFS:</p>
                         <ul class="plainFont">
-                            <li value="1">  If you are running a cluster, the Jar files are stored under the <span class="CodeFont">/hbase/splicedb/jar</span> directory in HDFS (or MapR-FS). </li>
-                            <li value="2"> If you are running in standalone mode, the Jar files are stored on the local file system under the <span class="CodeFont">splicedb/jar</span> directory in the Splice install directory.</li>
+                            <li>  If you are running a cluster, the Jar files are stored under the <span class="CodeFont">/hbase/splicedb/jar</span> directory in HDFS (or MapR-FS). </li>
+                            <li> If you are running in standalone mode, the Jar files are stored on the local file system under the <span class="CodeFont">splicedb/jar</span> directory in the Splice install directory.</li>
                         </ul>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Register your stored procedure with Splice Machine</p>
                         <p class="indentLevel1">Register your stored procedure with the database by calling the <span class="CodeFont"><a href="sqlref_statements_createprocedure.html">CREATE PROCEDURE</a></span> statement. For example:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">CREATE PROCEDURE SPLICE.GET_TABLE_NAMES()<br />&#160;&#160;&#160;PARAMETER STYLE JAVA<br />&#160;&#160;&#160;READS SQL DATA<br />&#160;&#160;&#160;LANGUAGE JAVA<br />&#160;&#160;&#160;DYNAMIC RESULT SETS 1<br />&#160;&#160;&#160;EXTERNAL NAME 'org.splicetest.customprocs.CustomSpliceProcs.GET_TABLE_NAMES';</pre>
@@ -827,13 +827,13 @@ CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', '
                         <p class="indentLevel1">Note that after running the above <span class="CodeFont">CREATE&#160;PROCEDURE</span>&#160;statement, your procedure will show up in the list of available procedures when you run the Splice Machine <span class="AppCommand">show procedures</span> command. </p>
                         <p class="indentLevel1">You can find the complete syntax for <a href="sqlref_statements_createprocedure.html"><span class="CodeFont">CREATE&#160;PROCEDURE</span></a>&#160;in the <span class="ItalicFont">Splice Machine SQL&#160;Reference</span> manual.</p>
                     </li>
-                    <li value="6">
+                    <li>
                         <p class="topLevel">Run your stored procedure</p>
                         <p class="indentLevel1">You can run your stored procedure by calling it from the <span class="AppCommand">splice&gt;</span> prompt. For example:</p>
                         <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;call SPLICE.GET_TABLE_NAMES();</pre>
                         </div>
                     </li>
-                    <li value="7">
+                    <li>
                         <p class="topLevel">Updating/Reloading your stored procedure</p>
                         <p class="indentLevel1">If you make changes to your procedure's code, you need to create a new Jar file and reload that into your databaseby calling the <span class="CodeFont">SQLJ.REPLACE_JAR</span>&#160;system procedure:</p>
                         <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-<span>2.6</span>-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
@@ -852,11 +852,11 @@ public class ExampleStoredProcedure {
             </div>
             <p>Here are a set of things you should know about <span class="CodeFont">ResultSets[]</span> in stored procedures:</p>
             <ul>
-                <li value="1">The <span class="CodeFont">ResultSets</span> are returned in the order in which they were created.</li>
-                <li value="2">The <span class="CodeFont">ResultSets</span> must be open and generated from the <span class="CodeFont">jdbc:default:connection</span> default connection. Any other <span class="CodeFont">ResultSets</span> are ignored.</li>
-                <li value="3">If you close the statement that created the <span class="CodeFont">ResultSet</span> within the procedure's method, that closes the <span class="CodeFont">ResultSet</span> you want. Instead, you can close the connection.</li>
-                <li value="4">The Splice Machine database engine itself creates the one element <span class="CodeFont">ResultSet</span> arrays that hold the returned <span class="CodeFont">ResultSets</span>.</li>
-                <li value="5">Although the <a href="sqlref_statements_createprocedure.html"><span class="CodeFont">CREATE PROCEDURE</span></a> call allows you to specify the number of <span class="CodeFont">DYNAMIC&#160;RESULT&#160;SETs</span>, we currently only support returning a single <span class="CodeFont">ResultSet</span>. </li>
+                <li>The <span class="CodeFont">ResultSets</span> are returned in the order in which they were created.</li>
+                <li>The <span class="CodeFont">ResultSets</span> must be open and generated from the <span class="CodeFont">jdbc:default:connection</span> default connection. Any other <span class="CodeFont">ResultSets</span> are ignored.</li>
+                <li>If you close the statement that created the <span class="CodeFont">ResultSet</span> within the procedure's method, that closes the <span class="CodeFont">ResultSet</span> you want. Instead, you can close the connection.</li>
+                <li>The Splice Machine database engine itself creates the one element <span class="CodeFont">ResultSet</span> arrays that hold the returned <span class="CodeFont">ResultSets</span>.</li>
+                <li>Although the <a href="sqlref_statements_createprocedure.html"><span class="CodeFont">CREATE PROCEDURE</span></a> call allows you to specify the number of <span class="CodeFont">DYNAMIC&#160;RESULT&#160;SETs</span>, we currently only support returning a single <span class="CodeFont">ResultSet</span>. </li>
             </ul>
         </div>
 	</section>
@@ -876,7 +876,7 @@ public class ExampleStoredProcedure {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

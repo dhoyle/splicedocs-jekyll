@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -529,53 +529,53 @@
             <h2>Configure S3 Bucket Access</h2>
             <p>You can follow these steps to configure to:</p>
             <ul>
-                <li value="1">create an IAM&#160;policy for an S3 bucket</li>
-                <li value="2">create an IAM&#160;user</li>
-                <li value="3">generate access credential for that user</li>
-                <li value="4">attach the security policy to that user</li>
+                <li>create an IAM&#160;policy for an S3 bucket</li>
+                <li>create an IAM&#160;user</li>
+                <li>generate access credential for that user</li>
+                <li>attach the security policy to that user</li>
             </ul>
             <p>access to your S3 bucket(s) for Splice&#160;Machine; when you're done, you will have:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Log in to the AWS&#160;Database Console</p>
                         <p class="indentLevel1">You must have administrative access to configure S3 bucket access.</p>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Select <span class="ConsoleLink">Services</span> at the top of the dashboard</p>
                         <p>
                             <img src="images/AWSServices.png" class="nestedTightSpacing" />
                         </p>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Access the IAM&#160;(Identify and Access Management) service:</p>
                         <p class="indentLevel1">Select <span class="ConsoleLink">IAM</span> in the <span class="ConsoleLink">Security, Identity &amp;&#160;Compliance</span> section:</p>
                         <p class="indentLevel1">
                             <img src="images/S3SelectIAM_820x1005.png" class="nestedTightSpacing" style="width: 820;height: 1005;" />
                         </p>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Create a new policy:</p>
                         <ol class="LowerAlphaPlainFont">
-                            <li value="1">
+                            <li>
                                 <p>Select <span class="ConsoleLink">Policies</span>from the IAM&#160;screen, then select <span class="ConsoleLink">Create Policy:</span></p>
                                 <p>
                                     <img src="images/AWSIAMPolicies.png" class="nestedTightSpacing" />
                                 </p>
                             </li>
-                            <li value="2">
+                            <li>
                                 <p>Select <span class="ConsoleLink">Create Your Own Policy</span> to enter your own policy:</p>
                                 <p>
                                     <img src="images/AWSIAMCreatePolicy.png" class="nestedTightSpacing" />
                                 </p>
                             </li>
-                            <li value="3">
+                            <li>
                                 <p>In the <span class="ConsoleLink">Review Policy</span> section, which should be pre-selected, specify a name for this policy (we call it <span class="CodeItalicFont">splice_access</span>):</p>
                                 <p>
                                     <img src="images/AWSIAMNamePolicy.png" class="nestedTightSpacing" />
                                 </p>
                             </li>
-                            <li value="4">
+                            <li>
                                 <p>Paste the following JSON&#160;object specification into the <span class="ConsoleLink">Policy Document</span> field and then modify the highlighted values to specify your bucket name and folder path.</p>
                                 <div class="preWrapperWide"><pre class="Plain">{
     "Version": "2017-04-17",
@@ -612,38 +612,38 @@
 }</pre>
                                 </div>
                             </li>
-                            <li value="5">
+                            <li>
                                 <p>Click <span class="ConsoleLink">Validate Policy</span> to verify that your policy settings are valid.</p>
                                 <p>
                                     <img src="images/AWSIAMDoCreate.png" class="nestedTightSpacing" />
                                 </p>
                             </li>
-                            <li value="6">Click <span class="ConsoleLink">Create Policy</span> to create and save the policy.</li>
+                            <li>Click <span class="ConsoleLink">Create Policy</span> to create and save the policy.</li>
                         </ol>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Add Splice Machine as a user:</p>
                         <p class="indentLevel1">After you create the policy:</p>
                         <ol class="LowerAlphaPlainFont">
-                            <li value="1">Select <span class="ConsoleLink">Users</span> from the left-hand navigation pane.</li>
-                            <li value="2">Click <span class="ConsoleLink">Add User</span>.</li>
-                            <li value="3">
+                            <li>Select <span class="ConsoleLink">Users</span> from the left-hand navigation pane.</li>
+                            <li>Click <span class="ConsoleLink">Add User</span>.</li>
+                            <li>
                                 <p>Enter a <span class="ConsoleLink">User name</span> (we've used <span class="ItalicFont">SpliceMachine</span>)&#160;and select <span class="ConsoleLink">Programmatic access</span> as the access type:</p>
                                 <p>
                                     <img src="images/AWSIAMAddUser1.png" class="nestedTightSpacing" />
                                 </p>
                             </li>
-                            <li value="4">Click <span class="ConsoleLink">Attach existing policies directly</span>.</li>
-                            <li value="5">
+                            <li>Click <span class="ConsoleLink">Attach existing policies directly</span>.</li>
+                            <li>
                                 <p>Select the policy you just created and click <span class="ConsoleLink">Next</span>:</p>
                                 <p>
                                     <img src="images/AWSIAMAddUser3.png" class="nestedTightSpacing" />
                                 </p>
                             </li>
-                            <li value="6">Review your settings, then click <span class="ConsoleLink">Create User</span>.</li>
+                            <li>Review your settings, then click <span class="ConsoleLink">Create User</span>.</li>
                         </ol>
                     </li>
-                    <li value="6">
+                    <li>
                         <p class="topLevel">Save your access credentials</p>
                         <p class="indentLevel1">You <span class="BoldFont">must</span> write down your Access key ID and secret access key; you will be unable to recover the secret access key.</p>
                         <p class="indentLevel1">
@@ -673,7 +673,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

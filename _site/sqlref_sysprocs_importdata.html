@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -2915,7 +2915,7 @@
                 <p class="noteNote" MadCap:autonum="NOTE: &#160;">Multi-line record files are slower to load, because the file cannot be split and processed in parallel; if you import a directory of multiple line files, each file as a whole is processed in parallel, but no splitting takes place.</p>
                 <p class="paramName">charset</p>
                 <p class="paramDefnFirst">The character encoding of the import file. The default value is UTF-8. Currently, any other value is ignored and UTF-8 is used. 
- <MadCap:conditionalText MadCap:conditions="Default.NotYet">You can specify any character encoding supporting by the <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html" target="_blank">Java <span class="CodeFont">Charset</span> class</a>.</MadCap:conditionalText></p>
+ <MadCap:conditionalText MadCap:conditions="Default.NotYet">You can specify any character encoding supporting by the <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html">Java <span class="CodeFont">Charset</span> class</a>.</MadCap:conditionalText></p>
             </div>
         </div>
         <h2><a name="Importin"></a>Importing Data from AWS</h2>
@@ -2948,22 +2948,22 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <h3>Importing a Subset of Data From a File</h3>
             <p>When you import data from a file into a table, all of the data in the file is not necessarily imported. This can happen in either of these circumstances:</p>
             <ul>
-                <li value="1">If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
-                <li value="2">If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
+                <li>If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
+                <li>If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
             </ul>
             <p>You can find examples in the <a href="tutorials_ingest_importing.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
             <p>Note that you can take advantage of this by importing different subsets of data from one input file into multiple tables in your database.</p>
             <h2>Record Import Failure Reasons</h2>
             <p>When upserting data from a file, the input file you generate must contain:</p>
             <ul>
-                <li value="1">the columns to be changed</li>
-                <li value="2">all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
+                <li>the columns to be changed</li>
+                <li>all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
             </ul>
             <p>Typical reasons for a row (record)&#160;import to fail include:</p>
             <ul>
-                <li value="1">Improper data expected for a column.</li>
-                <li value="2">Improper number of columns of data.</li>
-                <li value="3">A primary key violation:&#160;<span class="CodeFont"><a href="#">SYSCS_UTIL.IMPORT_DATA</a></span> will only work correctly if the table into which you are inserting/updating has primary keys. </li>
+                <li>Improper data expected for a column.</li>
+                <li>Improper number of columns of data.</li>
+                <li>A primary key violation:&#160;<span class="CodeFont"><a href="#">SYSCS_UTIL.IMPORT_DATA</a></span> will only work correctly if the table into which you are inserting/updating has primary keys. </li>
             </ul>
 ﻿        <h2>Handling Generated Column Values in Imported Files</h2>
         <p>If you're importing data into a table with generated columns (see <span class="CodeFont"><href="sqlref_statements_generatedcolspec.html">generated-column-spec</span></a> in the <span class="ItalicFont">SQL&#160;Reference Manual</span>), you should know that imported records are handled in exactly the same manner as are records inserted using the <span class="CodeFont"><href="sqlref_statements_insert.html">INSERT</span></a>&#160;statement. </p>
@@ -3263,7 +3263,7 @@ This is the second line of the field',Baker
             <p>&#160;</p>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
+                <li><a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
                 </li>
             </ul>
         </div>
@@ -3284,7 +3284,7 @@ This is the second line of the field',Baker
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

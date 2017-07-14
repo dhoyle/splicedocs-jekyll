@@ -24,23 +24,23 @@ folder: SQLReference/Statements
             <p class="heading2" id="Usage">Usage Notes</p>
             <p>Here are a few important notes about using pinned tables:</p>
             <ul>
-                <li value="1"><a href="#Pinned">Pinned and Unpinned Table Versions</a>
+                <li><a href="#Pinned">Pinned and Unpinned Table Versions</a>
                 </li>
-                <li value="2"><a href="#Refreshi">Refreshing the Pinned Version of a Table</a>
+                <li><a href="#Refreshi">Refreshing the Pinned Version of a Table</a>
                 </li>
-                <li value="3"><a href="#Unpinnin">Unpinning and Dropping Pinned Tables</a>
+                <li><a href="#Unpinnin">Unpinning and Dropping Pinned Tables</a>
                 </li>
             </ul>
             <p class="heading3" id="Pinned">Pinned and Unpinned Table Versions</p>
             <p>Once you pin a table, you effectively have two versions of it to work with:</p>
             <ul>
-                <li value="1">The original table continues to work just as usual</li>
-                <li value="2">The pinned version is a static version of the table at the time you pinned it. To access the pinned version of a table, you must specify the Splice <span class="CodeFont">pin=true</span> property. If you do not specify this property in your query, the query will operate on the unpinned version of the table. </li>
+                <li>The original table continues to work just as usual</li>
+                <li>The pinned version is a static version of the table at the time you pinned it. To access the pinned version of a table, you must specify the Splice <span class="CodeFont">pin=true</span> property. If you do not specify this property in your query, the query will operate on the unpinned version of the table. </li>
             </ul>
             <p>The pinned version (version)&#160;of a table is statically cached in memory; this means that:</p>
             <ul>
-                <li value="1">Updates to the table (unpinned version)&#160;are not automatically reflected in the pinned version of the table.</li>
-                <li value="2">Updates to the pinned version of the table are not permitted:&#160;you cannot insert into, delete from, or update the pinned version of a table.</li>
+                <li>Updates to the table (unpinned version)&#160;are not automatically reflected in the pinned version of the table.</li>
+                <li>Updates to the pinned version of the table are not permitted:&#160;you cannot insert into, delete from, or update the pinned version of a table.</li>
             </ul>
             <p>Here's a simple example that illustrates these qualities:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE TABLE myTbl (col1 int, col2 varchar(10));
@@ -77,10 +77,10 @@ COL1      |COL2
             <p>To delete just the pinned version of a table, use the <span class="CodeFont"><a href="sqlref_expressions_table.html">UNPIN&#160;TABLE</a></span> statement.</p>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span>&#160;statement</li>
-                <li value="2"><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TABLE</a></span>&#160;statement</li>
-                <li value="3"><span class="CodeFont"><a href="sqlref_expressions_table.html">UNPIN&#160;TABLE</a></span> statement</li>
-                <li value="4"><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the <span class="ItalicFont">Splice Machine Developer's Guide</span></li>
+                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span>&#160;statement</li>
+                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TABLE</a></span>&#160;statement</li>
+                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">UNPIN&#160;TABLE</a></span> statement</li>
+                <li><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the <span class="ItalicFont">Splice Machine Developer's Guide</span></li>
             </ul>
         </div>
 	</section>

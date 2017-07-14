@@ -22,9 +22,9 @@ folder: SQLReference/BuiltInFcns
 		most recent single row <span class="CodeFont">INSERT</span> statement. The <span class="CodeFont">INSERT</span> statement must contain a <span class="CodeFont">VALUES</span> clause on a table containing an identity column. This function returns a <span class="CodeFont">null</span> value when a single row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause has not been issued for a table containing an identity column.</p>
             <p>The result of the function is <span class="BoldFont">not</span> affected by the following:</p>
             <ul>
-                <li value="1">A single row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause for a table without an identity column</li>
-                <li value="2">A multiple row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause</li>
-                <li value="3">An <span class="CodeFont">INSERT</span> statement with a full <span class="CodeFont">SELECT</span></li>
+                <li>A single row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause for a table without an identity column</li>
+                <li>A multiple row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause</li>
+                <li>An <span class="CodeFont">INSERT</span> statement with a full <span class="CodeFont">SELECT</span></li>
             </ul>
             <div class="noteNote">If a table with an identity column has an <span class="CodeFont">INSERT</span> trigger defined that inserts into another table with another identity column, then the <span class="CodeFont">IDENTITY_VAL_LOCAL()</span> function will return the generated value for the statement table, and not for the table modified by the trigger.</div>
             <p class="heading2">Examples</p>

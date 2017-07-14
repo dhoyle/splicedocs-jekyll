@@ -15,8 +15,8 @@ folder: SQLReference/BuiltInSysProcs
 performs an immediate full or incremental backup of your database to a specified backup directory. </p>
             <p>Splice Machine supports both full and incremental backups:&#160;</p>
             <ul>
-                <li value="1">A <span class="ItalicFont">full backup</span> backs up all of the files/blocks that constitute your database.</li>
-                <li value="2">An <span class="ItalicFont">incremental backup</span> only stores database files/blocks that have changed since a previous backup.</li>
+                <li>A <span class="ItalicFont">full backup</span> backs up all of the files/blocks that constitute your database.</li>
+                <li>An <span class="ItalicFont">incremental backup</span> only stores database files/blocks that have changed since a previous backup.</li>
             </ul>
             <div class="noteNote">The first time that you run an incremental backup, a full backup is performed. Subsequent runs of the backup will only copy information that has changed since the previous backup.</div>
             <p>For more information, see the <a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
@@ -40,9 +40,9 @@ based on the current user directory. To avoid confusion, we strongly recommend t
             <p>There's a subtle issue with performing a backup when you're using a temporary table in your session:&#160;although the temporary table is (correctly)&#160;not backed up, the temporary table's entry in the system tables will be backed up. When the backup is restored, the table entries will be restored, but the temporary table will be missing.</p>
             <p>There's a simple workaround:</p>
             <ol>
-                <li value="1">Exit your current session, which will automatically delete the temporary table and its system table entries.</li>
-                <li value="2">Start a new session (reconnect to your database).</li>
-                <li value="3">Start your backup job.</li>
+                <li>Exit your current session, which will automatically delete the temporary table and its system table entries.</li>
+                <li>Start a new session (reconnect to your database).</li>
+                <li>Start your backup job.</li>
             </ol>
             <p class="heading2">Execute Privileges</p>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
@@ -76,15 +76,15 @@ Statement executed.</pre>
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
-                <li value="2"><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a>built-in system procedure</li>
-                <li value="3"><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
-                <li value="4"><a href="sqlref_sysprocs_deleteoldbackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
-                <li value="5"><a href="sqlref_sysprocs_restoredb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
-                <li value="6"><a href="sqlref_sysprocs_scheduledailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li value="7"><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
-                <li value="8"><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
-                <li value="9"><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
+                <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+                <li><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a>built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_deleteoldbackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_restoredb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
             </ul>
         </div>
 	</section>

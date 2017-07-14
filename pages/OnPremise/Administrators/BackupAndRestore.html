@@ -14,26 +14,26 @@ folder: OnPrem
 {% include splice_snippets/enterpriseonly_note.html %}
             <p>Splice Machine provides built-in system procedures that make it easy to back up and restore your entire database. You can:</p>
             <ul>
-                <li value="1">create full and incremental backups to run immediately</li>
-                <li value="2">schedule daily full or incremental backups</li>
-                <li value="3">restore your database from a backup</li>
-                <li value="4">manage your backups</li>
-                <li value="5">access logs of your backups</li>
+                <li>create full and incremental backups to run immediately</li>
+                <li>schedule daily full or incremental backups</li>
+                <li>restore your database from a backup</li>
+                <li>manage your backups</li>
+                <li>access logs of your backups</li>
             </ul>
             <p>The rest of this topic will help you with working with your backups, in these sections:</p>
             <ul>
-                <li value="1"><a href="#About">About Splice Machine Backups</a>
+                <li><a href="#About">About Splice Machine Backups</a>
                 </li>
-                <li value="2"><a href="#Using">Using the&#160;Backup Operations</a>
+                <li><a href="#Using">Using the&#160;Backup Operations</a>
                 </li>
-                <li value="3"><a href="#Backing">Backing Up to Cloud Storage</a>
+                <li><a href="#Backing">Backing Up to Cloud Storage</a>
                 </li>
             </ul>
             <h2 id="About">About Splice Machine Backups</h2>
             <p>Splice Machine supports: both full and incremental backups:&#160;</p>
             <ul>
-                <li value="1">A <span class="ItalicFont">full backup</span> backs up all of the files/blocks that constitute your database.</li>
-                <li value="2">An <span class="ItalicFont">incremental backup</span> only stores database files/blocks that have changed since a previous backup.</li>
+                <li>A <span class="ItalicFont">full backup</span> backs up all of the files/blocks that constitute your database.</li>
+                <li>An <span class="ItalicFont">incremental backup</span> only stores database files/blocks that have changed since a previous backup.</li>
             </ul>
             <p>Because backups can consume a lot of disk space, most customers define a backup strategy that blends their needs for security, recover-ability, and space restrictions. Since incremental backups require a lot less space than do full backups, and allow for faster recovery of data, many customers schedule daily, incremental backups.</p>
             <div class="noteNote">Splice Machine automatically detects when it is the first run of an incremental backup and performs a one-time full backup; subsequent runs will only back up changed files/blocks.</div>
@@ -70,28 +70,28 @@ folder: OnPrem
             <p>There's a subtle issue with performing a backup when you're using a temporary table in your session:&#160;although the temporary table is (correctly)&#160;not backed up, the temporary table's entry in the system tables will be backed up. When the backup is restored, the table entries will be restored, but the temporary table will be missing.</p>
             <p>There's a simple workaround:</p>
             <ol>
-                <li value="1">Exit your current session, which will automatically delete the temporary table and its system table entries.</li>
-                <li value="2">Start a new session (reconnect to your database).</li>
-                <li value="3">Start your backup job.</li>
+                <li>Exit your current session, which will automatically delete the temporary table and its system table entries.</li>
+                <li>Start a new session (reconnect to your database).</li>
+                <li>Start your backup job.</li>
             </ol>
             <h2 id="Using">Using the Backup Operations</h2>
             <p>This section summarizes and provides examples of using the Splice Machine backup operations:</p>
             <ul>
-                <li value="1"><a href="#Scheduling">Scheduling a Daily Backup Job</a>
+                <li><a href="#Scheduling">Scheduling a Daily Backup Job</a>
                 </li>
-                <li value="2"><a href="#Running">Running an Immediate Backup</a>
+                <li><a href="#Running">Running an Immediate Backup</a>
                 </li>
-                <li value="3"><a href="#Restorin">Restoring Your Database From a Previous Backup</a>
+                <li><a href="#Restorin">Restoring Your Database From a Previous Backup</a>
                 </li>
-                <li value="4"><a href="#Reviewing">Reviewing Backup Information</a>
+                <li><a href="#Reviewing">Reviewing Backup Information</a>
                 </li>
-                <li value="5"><a href="#Cancelin">Canceling a Scheduled Backup Job</a>
+                <li><a href="#Cancelin">Canceling a Scheduled Backup Job</a>
                 </li>
-                <li value="6"><a href="#CancelB" class="WithinBook">Canceling a Backup That's In Progress</a>
+                <li><a href="#CancelB" class="WithinBook">Canceling a Backup That's In Progress</a>
                 </li>
-                <li value="7"><a href="#Deleting">Deleting a Backup</a>
+                <li><a href="#Deleting">Deleting a Backup</a>
                 </li>
-                <li value="8"><a href="#DeleteOld">Deleting Outdated Backups</a>
+                <li><a href="#DeleteOld">Deleting Outdated Backups</a>
                 </li>
             </ul>
             <div class="noteNote">You must make sure that the directory to which you are backing up or from which data is being restored is accessible to the HBase user who is initiating the restore. Make sure the directory permissions are set correctly on the backup directory.<br /><br />Note that you can store your backups in a cloud-based storage service such as AWS; for more information, see the <a href="#Backing">Backing Up to Cloud Storage</a> section below.</div>
@@ -156,9 +156,9 @@ folder: OnPrem
             <div class="notePlain">
                 <p>There are several important things to know about restoring your database from a previous backup:</p>
                 <ul>
-                    <li value="1">Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
-                    <li value="2">You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
-                    <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete by first  <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
+                    <li>Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
+                    <li>You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
+                    <li>You <span class="BoldFont">must reboot your database</span> after the restore is complete by first  <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
                 </ul>
             </div>
             <blockquote>
@@ -171,38 +171,38 @@ folder: OnPrem
                 <h4>Example 2:&#160;Restore the database from a series of incremental backups</h4>
                 <p>In this example, you have been running a daily incremental backup and want to restore it to the most recent version. Let's call the backups B1, B2, B3, and B4:</p>
                 <ul>
-                    <li value="1">Full backup <span class="CodeFont">B1,(ID=1274)</span></li>
-                    <li value="2">First incremental backup <span class="CodeFont">B2 (ID=1275)</span></li>
-                    <li value="3">Second incremental backup <span class="CodeFont">B3 (ID=1276)</span></li>
-                    <li value="4">Third incremental backup <span class="CodeFont">B4 (ID=1277)</span></li>
+                    <li>Full backup <span class="CodeFont">B1,(ID=1274)</span></li>
+                    <li>First incremental backup <span class="CodeFont">B2 (ID=1275)</span></li>
+                    <li>Second incremental backup <span class="CodeFont">B3 (ID=1276)</span></li>
+                    <li>Third incremental backup <span class="CodeFont">B4 (ID=1277)</span></li>
                 </ul>
                 <div class="opsStepsList">
                     <p class="indentLevel1">To restore your database to the state it was in when the <span class="CodeFont">B4</span> backup was run; you'll need to follow these steps:</p>
                     <ol>
-                        <li value="1">
+                        <li>
                             <p>Restore your database from the full backup, <span class="CodeFont">B1</span>. </p>
                             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1274);</pre>
                             </div>
                         </li>
-                        <li value="2">Restart your database.</li>
-                        <li value="3">
+                        <li>Restart your database.</li>
+                        <li>
                             <p>Restore your database from incremental backup <span class="CodeFont">B2</span>:</p>
                             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1275);</pre>
                             </div>
                         </li>
-                        <li value="4">Restart your database.</li>
-                        <li value="5">
+                        <li>Restart your database.</li>
+                        <li>
                             <p>Restore your database from incremental backup <span class="CodeFont">B3</span>:</p>
                             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1276);</pre>
                             </div>
                         </li>
-                        <li value="6">Restart your database.</li>
-                        <li value="7">
+                        <li>Restart your database.</li>
+                        <li>
                             <p>Restore your database from  incremental backup <span class="CodeFont">B4</span>:</p>
                             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1277);</pre>
                             </div>
                         </li>
-                        <li value="8">Restart your database.</li>
+                        <li>Restart your database.</li>
                     </ol>
                 </div>
             </blockquote>
@@ -289,40 +289,40 @@ Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre
             <div class="notePlain">
                 <p><span class="BoldFont">IMPORTANT:</span>&#160;You must have access to the S3 bucket to which you are backing up your database. The instructions below give general guidelines; however, S3 access differs in every deployment. For more information, see these sites:</p>
                 <ul>
-                    <li value="1"><a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html" target="_blank">http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html</a>
+                    <li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html</a>
                     </li>
-                    <li value="2"><a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html" target="_blank">https://wiki.apache.org/hadoop/AmazonS3</a>
+                    <li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">https://wiki.apache.org/hadoop/AmazonS3</a>
                     </li>
                 </ul>
             </div>
             <ul>
-                <li value="1"><a href="#Enabling">Enabling backups on CDH</a>
+                <li><a href="#Enabling">Enabling backups on CDH</a>
                 </li>
-                <li value="2"><a href="#Enabling2">Enabling backups on HDP</a>
+                <li><a href="#Enabling2">Enabling backups on HDP</a>
                 </li>
-                <li value="3"><a href="#Enabling3">Enabling backups on MapR</a>
+                <li><a href="#Enabling3">Enabling backups on MapR</a>
                 </li>
             </ul>
             <h3 id="Enabling">Enabling Splice Machine Backups on CDH</h3>
             <p>You can use Cloudera Manager to configure properties to enable Splice&#160;Machine backups; follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">Navigate to the Cloudera Manager home screen.</li>
-                    <li value="2">
+                    <li>Navigate to the Cloudera Manager home screen.</li>
+                    <li>
                         <p class="topLevel">Stop both HBase and HDFS:&#160;</p>
                         <ul class="plainFont">
-                            <li value="1">Click the <span class="AppCommand">HBase Actions</span> drop-down arrow associated with (to the right of)&#160;<span class="CodeFont">HBase</span> in the cluster summary section of the home screen, and then click <span class="AppCommand">Stop</span> to stop HBase.</li>
-                            <li value="2">Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of)&#160;and then click <span class="AppCommand">Stop</span> to stop HDFS.</li>
+                            <li>Click the <span class="AppCommand">HBase Actions</span> drop-down arrow associated with (to the right of)&#160;<span class="CodeFont">HBase</span> in the cluster summary section of the home screen, and then click <span class="AppCommand">Stop</span> to stop HBase.</li>
+                            <li>Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of)&#160;and then click <span class="AppCommand">Stop</span> to stop HDFS.</li>
                         </ul>
                     </li>
-                    <li value="3">Click <span class="AppCommand">HDFS</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab, and in category, click <span class="AppCommand">Advanced</span>. Then set these property values in the <span class="CodeFont">Cluster-wide Advanced Configuration Snippet (Safety Valve) for core-site.xml</span> field:<div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+                    <li>Click <span class="AppCommand">HDFS</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab, and in category, click <span class="AppCommand">Advanced</span>. Then set these property values in the <span class="CodeFont">Cluster-wide Advanced Configuration Snippet (Safety Valve) for core-site.xml</span> field:<div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
 fs.s3.awsAccessKeyId       = <span class="Highlighted">&lt;Your AWS&#160;Access Key&gt;</span>
 fs.s3.awsSecretAccessKey   = <span class="Highlighted">&lt;Your AWS&#160;Access Secret Key&gt;</span></pre></div></li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Restart both services: </p>
                         <ul class="plainFont">
-                            <li value="1">Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of)&#160;HDFS&#160;in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HDFS.</li>
-                            <li value="2">Navigate to the <span class="ItalicFont">HBase Status</span> tab in Cloudera Manager. Then, using the <span class="AppCommand">Actions</span> drop-down in the upper-right corner, click <span class="AppCommand">Start</span> to create a start HBase.</li>
+                            <li>Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of)&#160;HDFS&#160;in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HDFS.</li>
+                            <li>Navigate to the <span class="ItalicFont">HBase Status</span> tab in Cloudera Manager. Then, using the <span class="AppCommand">Actions</span> drop-down in the upper-right corner, click <span class="AppCommand">Start</span> to create a start HBase.</li>
                         </ul>
                     </li>
                 </ol>
@@ -331,22 +331,22 @@ fs.s3.awsSecretAccessKey   = <span class="Highlighted">&lt;Your AWS&#160;Access 
             <p>You can use the Ambari dashboard to configure these properties. Follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">Navigate to the HDFS <span class="AppCommand">Configs</span> screen.</li>
-                    <li value="2">
+                    <li>Navigate to the HDFS <span class="AppCommand">Configs</span> screen.</li>
+                    <li>
                         <p class="topLevel">Select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then stop both HBase and HDFS:&#160;</p>
                         <ul class="plainFont">
-                            <li value="1">Click <span class="AppCommand">HBase</span> in the left pane of the screen, then click <span class="AppCommand">Service Actions-&gt;Stop</span> in the upper-right portion of the Ambari screen.</li>
-                            <li value="2">Click <span class="AppCommand">HDFS</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Stop</span>.</li>
+                            <li>Click <span class="AppCommand">HBase</span> in the left pane of the screen, then click <span class="AppCommand">Service Actions-&gt;Stop</span> in the upper-right portion of the Ambari screen.</li>
+                            <li>Click <span class="AppCommand">HDFS</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Stop</span>.</li>
                         </ul>
                     </li>
-                    <li value="3">Select <span class="AppCommand">Custom core-site</span> and add these properties:                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+                    <li>Select <span class="AppCommand">Custom core-site</span> and add these properties:                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
 fs.s3.awsAccessKeyId       = <span class="Highlighted">&lt;Your AWS&#160;Access Key&gt;</span>
 fs.s3.awsSecretAccessKey   = <span class="Highlighted">&lt;Your AWS&#160;Secret Access Key&gt;</span></pre></div></li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Restart both services: </p>
                         <ul class="plainFont">
-                            <li value="1">Click <span class="AppCommand">HDFS</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Restart All</span>.</li>
-                            <li value="2">Click <span class="AppCommand">HBase</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Restart All</span>.</li>
+                            <li>Click <span class="AppCommand">HDFS</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Restart All</span>.</li>
+                            <li>Click <span class="AppCommand">HBase</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Restart All</span>.</li>
                         </ul>
                     </li>
                 </ol>
@@ -355,16 +355,16 @@ fs.s3.awsSecretAccessKey   = <span class="Highlighted">&lt;Your AWS&#160;Secret 
             <p>To enable Amazon S3 access on a MapR&#160;cluster, you must stop services, change the configuration files on each node, and then restart services. Follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Stop all MapR services by stopping the warden service on each host:</p>
                         <div class="preWrapper"><pre class="ShellCommand">sudo service mapr-warden stop</pre>
                         </div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">You need to edit two files on each MapR-FS&#160;fileserver and HBase RegionServer in your cluster to allow hosts access to Amazon&#160;S3. You need to provide the fs.s3 access key ID&#160;and secret in each of these files:</p>
                         <ul class="plainFont">
-                            <li value="1"><span class="CodeFont">/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml</span> for <span class="ItalicFont">Hadoop/MapReduce/YARN 2.x</span> site configuration</li>
-                            <li value="2"><span class="CodeFont">/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml</span> for <span class="ItalicFont">Hadoop/MapReduce 0.x/1.x</span> site configuration</li>
+                            <li><span class="CodeFont">/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml</span> for <span class="ItalicFont">Hadoop/MapReduce/YARN 2.x</span> site configuration</li>
+                            <li><span class="CodeFont">/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml</span> for <span class="ItalicFont">Hadoop/MapReduce 0.x/1.x</span> site configuration</li>
                         </ul>
                         <p>If both <span class="ItalicFont">MapReduce v1</span> and <span class="ItalicFont">YARN/MapReduce 2</span> are installed on the MapR compute hosts, the newer <span class="ItalicFont">hadoop-2.x.x</span> version of the file will be canonical, and the older <span class="ItalicFont">hadoop-0.x.x</span> file symbolically linked to it. You can check this using the following <span class="CodeFont">ls</span> and <span class="CodeFont">file</span> commands:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">$ ls -al /opt/mapr/hadoop/hadoop-0*/conf/core-site.xml /opt/mapr/hadoop/hadoop-2*/etc/hadoop/core-site.xml
@@ -378,7 +378,7 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
 </pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Add your access key ID&#160;and secret key in each file by adding the following properties between the <span class="CodeFont">&lt;configuration&gt;</span>&#160;and <span class="CodeFont">&lt;/configuration&gt;</span>&#160;tags:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">&lt;!-- AWS s3://bucket/... block-based access --&gt;
 &lt;property&gt;
@@ -401,7 +401,7 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
 </pre>
                         </div>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Use the <span class="CodeFont">hadoop</span> command to view your configuration changes:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">$ hadoop conf | grep fs\\.s3 | grep -i access | sort -u
 &lt;property&gt;&lt;name&gt;fs.s3.awsAccessKeyId&lt;/name&gt;&lt;value&gt;_AWS_ACCESS_KEY_ID_&lt;/value&gt;&lt;source&gt;core-site.xml&lt;/source&gt;&lt;/property&gt;
@@ -411,13 +411,13 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
 </pre>
                         </div>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">You can also verify that access is correctly configured with the <span class="CodeFont">hadoop</span> command to list the contents of an existing bucket. For example:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">sudo -iu mapr hadoop fs -ls s3n://<span class="Highlighted">yourbucketname</span>/
 </pre>
                         </div>
                     </li>
-                    <li value="6">
+                    <li>
                         <p class="topLevel">Finally, restart MapR services on each node via MapR's warden::</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">sudo service mapr-warden start
 </pre>
@@ -427,16 +427,16 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
             </div>
             <h2>See Also</h2>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="2"><span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="3"><span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="4"><span class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="5"><span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="6"><span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="7"><span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="8"><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="9"><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="10"><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
             </ul>
         </div>
 	</section>

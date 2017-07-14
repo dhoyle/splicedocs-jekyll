@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -2775,10 +2775,10 @@
                 <p class="paramDefn">When a database event occurs that fires a trigger, Splice Machine performs actions in this order:</p>
                 <p class="paramDefn">
                     <ul>
-                        <li value="1">It fires <span class="CodeFont">BEFORE</span> triggers.</li>
-                        <li value="2">It performs constraint checking (primary key, unique key, foreign key, check).</li>
-                        <li value="3">It performs the <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, <span class="CodeFont">SELECT</span>, or <span class="CodeFont">DELETE</span> operations.</li>
-                        <li value="4">It fires <span class="CodeFont">AFTER</span> triggers.</li>
+                        <li>It fires <span class="CodeFont">BEFORE</span> triggers.</li>
+                        <li>It performs constraint checking (primary key, unique key, foreign key, check).</li>
+                        <li>It performs the <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, <span class="CodeFont">SELECT</span>, or <span class="CodeFont">DELETE</span> operations.</li>
+                        <li>It fires <span class="CodeFont">AFTER</span> triggers.</li>
                     </ul>
                 </p>
                 <p class="paramDefnFirst">When multiple triggers are defined for the same database event for the same table for the same trigger time (before or after), triggers are fired in the order in which they were created.</p>
@@ -2795,14 +2795,14 @@
                 <p class="paramDefnFirst">The statement that is executed when the trigger fires. The statement has the following restrictions:</p>
                 <p class="paramDefn">
                     <ul>
-                        <li value="1">It must not contain any dynamic (<span class="CodeFont">?</span>) parameters.</li>
-                        <li value="2">It cannot create, alter, or drop any table.</li>
-                        <li value="3">It cannot add an index to or remove an index from any table.</li>
-                        <li value="4">It cannot add a trigger to or drop a trigger from any table.</li>
-                        <li value="5">It must not commit or roll back the current transaction or change the isolation level.</li>
-                        <li value="6">Before triggers cannot have <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, <span class="CodeFont">SELECT</span>, or <span class="CodeFont">DELETE</span> statements as their action.</li>
-                        <li value="7">Before triggers cannot call procedures that modify SQL data as their action.</li>
-                        <li value="8">The <span class="CodeFont">NEW</span> variable of a <span class="CodeFont">BEFORE</span> trigger cannot reference a generated column. </li>
+                        <li>It must not contain any dynamic (<span class="CodeFont">?</span>) parameters.</li>
+                        <li>It cannot create, alter, or drop any table.</li>
+                        <li>It cannot add an index to or remove an index from any table.</li>
+                        <li>It cannot add a trigger to or drop a trigger from any table.</li>
+                        <li>It must not commit or roll back the current transaction or change the isolation level.</li>
+                        <li>Before triggers cannot have <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, <span class="CodeFont">SELECT</span>, or <span class="CodeFont">DELETE</span> statements as their action.</li>
+                        <li>Before triggers cannot call procedures that modify SQL data as their action.</li>
+                        <li>The <span class="CodeFont">NEW</span> variable of a <span class="CodeFont">BEFORE</span> trigger cannot reference a generated column. </li>
                     </ul>
                 </p>
                 <p class="paramDefn">The statement can reference database objects other than the table upon which the trigger is declared. If any of these database objects is dropped, the trigger is invalidated. If the trigger cannot be successfully recompiled upon the next execution, the invocation throws an exception and the statement that caused it to fire will be rolled back.</p>
@@ -2888,9 +2888,9 @@ splice&gt;&#160;CREATE TRIGGER triggerName
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="developers_fundamentals_triggers.html">Database Triggers</a> in the <span class="ItalicFont">Developer's Guide</span></li>
-                <li value="2"><span class="CodeFont"><a href="sqlref_statements_droptrigger.html">DROP&#160;TRIGGER</a></span>&#160;statement</li>
-                <li value="3"><span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause</li>
+                <li><a href="developers_fundamentals_triggers.html">Database Triggers</a> in the <span class="ItalicFont">Developer's Guide</span></li>
+                <li><span class="CodeFont"><a href="sqlref_statements_droptrigger.html">DROP&#160;TRIGGER</a></span>&#160;statement</li>
+                <li><span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause</li>
             </ul>
         </div>
 	</section>
@@ -2910,7 +2910,7 @@ splice&gt;&#160;CREATE TRIGGER triggerName
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -13,9 +13,9 @@ folder: Developers/FcnsAndProcs
             <h1 id="kanchor384">Examples of Splice Machine Functions and Stored Procedures </h1>
             <p>This topic walks you through creating, storing, and using a sample database function and a sample database stored procedure, in these sections:</p>
             <ul>
-                <li value="1"><a href="#CreatingSampleFunction">Creating and Using a Sample Function in Splice Machine</a>
+                <li><a href="#CreatingSampleFunction">Creating and Using a Sample Function in Splice Machine</a>
                 </li>
-                <li value="2"><a href="#CreatingSampleProc">Creating and Using a Sample Stored Procedure in Splice Machine</a>
+                <li><a href="#CreatingSampleProc">Creating and Using a Sample Stored Procedure in Splice Machine</a>
                 </li>
             </ul>
             <h2 id="CreatingSampleFunction">Creating and Using a Sample Function in Splice Machine</h2>
@@ -32,16 +32,16 @@ folder: Developers/FcnsAndProcs
             <p>Follow these steps to define and use the <span class="CodeFont">word_limiter</span> function:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Define inputs and outputs</p>
                         <p class="indentLevel1">We have two inputs:</p>
                         <ul class="plainFont">
-                            <li value="1">the sentence that we want to limit</li>
-                            <li value="2">the number of words we want to limit the output to</li>
+                            <li>the sentence that we want to limit</li>
+                            <li>the number of words we want to limit the output to</li>
                         </ul>
                         <p class="indentLevel1">The output is a string that contains the limited words.</p>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Create the shell of our Java class.</p>
                         <p class="indentLevel1">We create a class named <span class="CodeFont">ExampleStringFunctions</span> in the package <span class="CodeFont">com.splicemachine.examples</span>. </p>
                         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
@@ -51,7 +51,7 @@ public class ExampleStringFunctions {<br />...
 }</pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Create the <span class="CodeFont">wordLimiter</span> static method</p>
                         <p class="indentLevel1">This method contains the logic for returning the first n number of words:</p>
                         <div class="preWrapperWide"><pre class="Example">package com.splicemachine.example;
@@ -86,7 +86,7 @@ public class ExampleStringFunctions {
 }</pre>
                         </div>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Compile the class and store the jar file</p>
                         <p class="indentLevel1">After you compile your class, make sure that the jar file is in a directory in your <span class="CodeFont">classpath</span>, so that it can be found. You can find more information about this in the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Functions and Stored Procedures</a> topic in this section. </p>
                         <p class="indentLevel1">If you're using the standalone version of Splice Machine, you can use the following command line interface command:</p>
@@ -96,7 +96,7 @@ public class ExampleStringFunctions {
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');</pre>
                         </div>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Define the function in Splice Machine</p>
                         <p class="indentLevel1">You can find the complete syntax for <span class="CodeFont"><a href="sqlref_statements_createfunction.html">CREATE&#160;FUNCTION</a></span>&#160;in the <span class="ItalicFont">Splice Machine SQL&#160;Reference</span> manual. For our example function, we enter the following command at the <span class="CodeFont">splice&gt;</span>&#160;prompt:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
@@ -107,7 +107,7 @@ NO SQL
 EXTERNAL NAME 'com.splicemachine.example.ExampleStringFunctions.wordLimiter';</pre>
                         </div>
                     </li>
-                    <li value="6">
+                    <li>
                         <p class="topLevel">Run the function</p>
                         <p class="indentLevel1">You can run the function with this syntax:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;SELECT WORD_LIMITER('Today is a wonderful day and I am looking forward to going to the beach.', 5)
@@ -121,7 +121,7 @@ EXTERNAL NAME 'com.splicemachine.example.ExampleStringFunctions.wordLimiter';</p
             <p>Follow these steps to define and use the <span class="CodeFont">GET_INVENTORY_FOR_SKU</span> function:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Create and populate the inventory table</p>
                         <p class="indentLevel1">Connect to Splice Machine and create the following table from the command prompt or from an SQL&#160;client, using the following statements:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
@@ -134,7 +134,7 @@ CREATE&#160;TABLE&#160;INVENTORY (
 INSERT INTO INVENTORY VALUES ('ABC123',1,50),('ABC123',2,100),('ABC123',3,60),('XYZ987',1,20),('XYZ321',2,0); </pre>
                         </div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Create the shell of our Java class.</p>
                         <p class="indentLevel1">We create a class named <span class="CodeFont">ExampleStringFunctions</span> in the package <span class="CodeFont">com.splicemachine.examples</span>. </p>
                         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
@@ -144,7 +144,7 @@ public class ExampleStoredProcedure{<br />...
 }</pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Create the <span class="CodeFont">getSkuInventory</span> static method</p>
                         <p class="indentLevel1">This method contains the logic for retrieving inventory records for the specified sku.</p>
                         <div class="preWrapperWide"><pre class="Example">package com.splicemachine.example;
@@ -169,7 +169,7 @@ public class ExampleStoredProcedure {
 }</pre>
                         </div>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Compile the class and store the jar file</p>
                         <p class="indentLevel1">After you compile your class, make sure that the jar file is in a directory in your <span class="CodeFont">classpath</span>, so that it can be found. You can find more information about this in the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Functions and Stored Procedures</a> topic in this section. </p>
                         <p class="indentLevel1">If you're using the standalone version of Splice Machine, you can use the following command line interface command:</p>
@@ -177,7 +177,7 @@ public class ExampleStoredProcedure {
                         </div>
                         <p class="indentLevel1">You must also update the database class path:                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.GET_SKU_INVENTORY');</pre></div></p>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Define the procedure in Splice Machine</p>
                         <p class="indentLevel1">For our procedure, we enter the following command at the <span class="CodeFont">splice&gt;</span>&#160;prompt:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
@@ -188,7 +188,7 @@ READS&#160;SQL&#160;DATA
 EXTERNAL NAME 'com.splicemachine.example.ExampleStoredProcedure.getSkuInventory';</pre>
                         </div>
                     </li>
-                    <li value="6">
+                    <li>
                         <p class="topLevel">Run the stored procedure</p>
                         <p class="indentLevel1">You can run the procedure with this syntax:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;call GET_INVENTORY_FOR_SKU('ABC123');</pre>

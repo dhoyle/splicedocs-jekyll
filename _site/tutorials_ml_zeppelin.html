@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -526,7 +526,7 @@
             <p>This tutorial walks you through connecting your on-premise Splice Machine database with Apache Zeppelin, which is a web-based notebook project currently in incubation at Apache. In this tutorial, you'll learn how to use SQL&#160;to query your Splice Machine database from Zeppelin.</p>
             <div class="noteNote">
                 <p>Zeppelin is already integrated into the Splice Machine Database-as-Service product; please see our <a href="dbaas_zep_intro.html"><span class="italicFont">Using Zeppelin</span> documentation for more information.</p>
-                <p>See <a href="https://zeppelin.apache.org/" target="_blank" title="Link to the main Apache Zeppelin web site." alt="Link to the main Apache Zeppelin web site.">https://zeppelin.apache.org/</a> to learn more about Apache Zeppelin.</p>
+                <p>See <a href="https://zeppelin.apache.org/" title="Link to the main Apache Zeppelin web site." alt="Link to the main Apache Zeppelin web site.">https://zeppelin.apache.org/</a> to learn more about Apache Zeppelin.</p>
             </div>
 
             <div>
@@ -544,20 +544,20 @@
                 <p>This section walks you through using SQL&#160;to query a Splice Machine database with Apache Zeppelin..</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Install Zeppelin:</p>
-                            <p class="indentLevel1">If you're running on AWS, you can install the Zeppelin sandbox application; if you're using an on-premise database, we recommend following the <a href="http://www.mapr.com/blog/building-apache-zeppelin-mapr-using-spark-under-yarn" target="_blank" title="Link to instructions for installing Zeppelin on MapR" alt="Link to instructions for installing Zeppelin on MapR">instructions in this video.</a></p>
+                            <p class="indentLevel1">If you're running on AWS, you can install the Zeppelin sandbox application; if you're using an on-premise database, we recommend following the <a href="http://www.mapr.com/blog/building-apache-zeppelin-mapr-using-spark-under-yarn" title="Link to instructions for installing Zeppelin on MapR" alt="Link to instructions for installing Zeppelin on MapR">instructions in this video.</a></p>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Create a new interpreter to run with Splice:</p>
                             <ol class="LowerAlphaPlainFont">
-                                <li value="1">
+                                <li>
                                     <p>Select the <span class="ConsoleLink">Interpreter</span> tab in Zeppelin:</p>
                                     <p class="noSpaceBelow">
                                         <img src="images/2017-04-10 11_58_22-Splice Machine Tutorial Video  Connecting Splice Machine to Apache Zeppelin _.png" class="nestedTightSpacing" />
                                     </p>
                                 </li>
-                                <li value="2">
+                                <li>
                                     <p>Click the <span class="ConsoleLink">Create</span> button (in the upper right of the Zeppelin window) to create a new interpreter. Fill in the property fields as follows:</p>
                                     <table>
                                         <col />
@@ -606,32 +606,32 @@
                                         </tbody>
                                     </table>
                                 </li>
-                                <li value="3">Click the <span class="ConsoleLink">Save</span> button to save your interpreter definition.</li>
+                                <li>Click the <span class="ConsoleLink">Save</span> button to save your interpreter definition.</li>
                             </ol>
                             <p class="indentLevel1">&#160;</p>
                         </li>
-                        <li value="3">
+                        <li>
                             <p class="topLevel">Create a note:</p>
                             <p class="indentLevel1">Select the <span class="ConsoleLink">Notebook</span> tab in Zeppelin, and then click <span class="ConsoleLink">+&#160;Create new note</span>.</p>
                             <ol class="LowerAlphaPlainFont">
-                                <li value="1">Specify a name and click the <span class="ConsoleLink">Create Note</span> button.</li>
-                                <li value="2">
+                                <li>Specify a name and click the <span class="ConsoleLink">Create Note</span> button.</li>
+                                <li>
                                     <p>Enable interpreters for the note. In this case, we move the Splice&#160;Machine interpreter to the top of the list, then click the Save button to make it the default interpreter:</p>
                                     <p>
                                         <img src="images/ZepInterpreter1_412x213.png" style="width: 412;height: 213;" />
                                     </p>
                                 </li>
-                                <li value="3">
+                                <li>
                                     <p>Create a Zeppelin paragraph (a jdbc action) that calls a stored procedure. The procedure we're calling in this tutorial is named MOVIELENS; it is used to analyze data in a table. In this case, we're using this procedure to report statistics on the Age column in our movie watchers database. This Zeppelin paragraph looks like this:</p><pre class="Example">%jdbc<br />call MOVIELENS.ContinuousFeatureReport('movielens.user_demographics');</pre>
                                     <p>The <span class="Example">%jdbc</span> specifies that we're creating a paragraph that uses a JDBC&#160;interpreter; since we've made the SpliceMachine driver our default JDBC&#160;connector, it will be used.</p>
                                 </li>
-                                <li value="4">
+                                <li>
                                     <p>The results of this call look like this:</p>
                                     <p>
                                         <img src="images/ZepAge1.png" title="Initial results of running the movielens paragraph" class="nestedTightSpacing" />
                                     </p>
                                 </li>
-                                <li value="5">
+                                <li>
                                     <p>We can also create a new paragraph that performs additional analysis; you'll see that whenever you run a paragraph in Zeppelin, it automatically leaves room at the bottom to create another paragraph.</p><pre class="Example">%jdbc<br />select count(1)&#160;num_age, age from MOVIELENS.USER_DEMOGRAPHICS group by age;</pre>
                                     <p>The results of this paragraph:</p>
                                     <p>
@@ -639,19 +639,19 @@
                                     </p>
                                 </li>
                             </ol>
-                            <li value="4">
+                            <li>
                                 <p class="topLevel">Change how you view your data</p>
                                 <p class="indentLevel1">To get a better sense of what you can do with Zeppelin, we'll modify how we visualize this data:</p>
                                 <ol class="LowerAlphaPlainFont">
-                                    <li value="1">Click the rightmost settings <img src="images/ZepSettings.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> icon, then click <span class="ConsoleLink">settings</span>.</li>
-                                    <li value="2">Move age to the xAxis, and the number of people of that age to the yAxis.</li>
-                                    <li value="3">
+                                    <li>Click the rightmost settings <img src="images/ZepSettings.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> icon, then click <span class="ConsoleLink">settings</span>.</li>
+                                    <li>Move age to the xAxis, and the number of people of that age to the yAxis.</li>
+                                    <li>
                                         <p>You'll now see the distribution of ages:</p>
                                         <p>
                                             <img src="images/ZepScatter.png" class="nestedTightSpacing" />
                                         </p>
                                     </li>
-                                    <li value="4">Click the <img src="images/ZepGraphs.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> graphs button to select other data visualizations.</li>
+                                    <li>Click the <img src="images/ZepGraphs.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> graphs button to select other data visualizations.</li>
                                 </ol>
                             </li>
                         </li>
@@ -676,7 +676,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

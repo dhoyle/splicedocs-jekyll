@@ -37,13 +37,13 @@ folder: SQLReference/DataTypes
             <p>Use the <span class="ItalicFont">getBlob</span> method on the <span class="ItalicFont">java.sql.ResultSet</span> to retrieve a <span class="CodeFont">BLOB</span> handle to the underlying data.</p>
             <p>There are a number of restrictions on using <span class="CodeFont">BLOB</span> and <span class="CodeFont">CLOB</span> / <span class="CodeFont">TEXT</span> objects, which we refer to as LOB-types:</p>
             <ul>
-                <li value="1">LOB-types cannot be compared for equality (<span class="CodeFont">=</span>) and non-equality (<span class="CodeFont">!=</span>, <span class="CodeFont">&lt;&gt;</span>).</li>
-                <li value="2">LOB-typed values cannot be ordered, so <span class="CodeFont">&lt;, &lt;=, &gt;, &gt;=</span> tests are not supported.</li>
-                <li value="3">LOB-types cannot be used in indexes or as primary key columns.
+                <li>LOB-types cannot be compared for equality (<span class="CodeFont">=</span>) and non-equality (<span class="CodeFont">!=</span>, <span class="CodeFont">&lt;&gt;</span>).</li>
+                <li>LOB-typed values cannot be ordered, so <span class="CodeFont">&lt;, &lt;=, &gt;, &gt;=</span> tests are not supported.</li>
+                <li>LOB-types cannot be used in indexes or as primary key columns.
 </li>
-                <li value="4"><span class="CodeFont">DISTINCT</span>, <span class="CodeFont">GROUP BY</span>, and <span class="CodeFont">ORDER BY</span> clauses are also prohibited on LOB-types.
+                <li><span class="CodeFont">DISTINCT</span>, <span class="CodeFont">GROUP BY</span>, and <span class="CodeFont">ORDER BY</span> clauses are also prohibited on LOB-types.
 </li>
-                <li value="5">LOB-types cannot be involved in implicit casting as other base-types.</li>
+                <li>LOB-types cannot be involved in implicit casting as other base-types.</li>
             </ul>
             <p class="heading2">Example</p>
             <p>Using an <span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span> statement to put <span class="CodeFont">BLOB</span> data into a table has some limitations  if you need to cast a long string constant to a <span class="CodeFont">BLOB</span>. You may be better off using a binary stream, as in the following code fragment.</p>

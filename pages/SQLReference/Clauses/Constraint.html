@@ -21,8 +21,8 @@ folder: SQLReference/Clauses
             </div>
             <p>Column constraints and table constraints have the same function; the difference is in where you specify them.</p>
             <ul>
-                <li value="1">Table constraints allow you to specify more than one column in a <span class="CodeFont">PRIMARY KEY </span> or <span class="CodeFont">CHECK&#160;</span><span>, <span class="CodeFont">UNIQUE</span> or <span class="CodeFont">FOREIGN KEY</span></span> constraint definition.</li>
-                <li value="2">Column-level constraints (except for check constraints) refer to only one column.</li>
+                <li>Table constraints allow you to specify more than one column in a <span class="CodeFont">PRIMARY KEY </span> or <span class="CodeFont">CHECK&#160;</span><span>, <span class="CodeFont">UNIQUE</span> or <span class="CodeFont">FOREIGN KEY</span></span> constraint definition.</li>
+                <li>Column-level constraints (except for check constraints) refer to only one column.</li>
             </ul>
             <p class="heading2" id="ColumnConstraint">Column Constraints</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
@@ -96,9 +96,9 @@ REFERENCES clause
             <div class="noteNote">At this time, you <span class="BoldFont">cannot</span> alter primary keys using <span class="CodeFont">ALTER TABLE</span>.</div>
             <p>Primary keys are constrained as follows:</p>
             <ul>
-                <li value="1">A primary key defines the set of columns that uniquely identifies rows in a table.</li>
-                <li value="2">When you create a primary key constraint, none of the columns included in the primary key can have <span class="CodeFont">NULL</span> constraints; that is, they must not permit <span class="CodeFont">NULL</span> values.</li>
-                <li value="3">A table can have at most one <span class="CodeFont">PRIMARY KEY</span> constraint.</li>
+                <li>A primary key defines the set of columns that uniquely identifies rows in a table.</li>
+                <li>When you create a primary key constraint, none of the columns included in the primary key can have <span class="CodeFont">NULL</span> constraints; that is, they must not permit <span class="CodeFont">NULL</span> values.</li>
+                <li>A table can have at most one <span class="CodeFont">PRIMARY KEY</span> constraint.</li>
             </ul>
             <p class="heading2">Unique constraints</p>
             <p>A <span class="CodeFont">UNIQUE</span> constraint defines a set of columns that uniquely identify rows in a table only if all the key values are not <span class="CodeFont">NULL</span>. If one or more key parts are <span class="CodeFont">NULL</span>, duplicate keys are allowed. </p>
@@ -135,10 +135,10 @@ REFERENCES clause
             <p>If a check constraint is specified as part of a column-definition, a column reference can only be made to the same column. Check constraints specified as part of a table definition can have column references identifying columns previously defined in the <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE TABLE</a></span> statement.</p>
             <p> The search condition must always return the same value if applied to the same values. Thus, it cannot contain any of the following:</p>
             <ul>
-                <li value="1">Dynamic parameters</li>
-                <li value="2">Date/Time Functions (<span class="CodeFont"><a href="sqlref_builtinfcns_currenttimestamp.html">CURRENT_TIMESTAMP</a></span>)</li>
-                <li value="3">Subqueries</li>
-                <li value="4">User Functions (such as <span class="CodeFont"><a href="sqlref_builtinfcns_currentuser.html">CURRENT_USER</a></span>)</li>
+                <li>Dynamic parameters</li>
+                <li>Date/Time Functions (<span class="CodeFont"><a href="sqlref_builtinfcns_currenttimestamp.html">CURRENT_TIMESTAMP</a></span>)</li>
+                <li>Subqueries</li>
+                <li>User Functions (such as <span class="CodeFont"><a href="sqlref_builtinfcns_currentuser.html">CURRENT_USER</a></span>)</li>
             </ul>
             <p class="heading2">Examples</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- column-level primary key constraint named OUT_TRAY_PK:
@@ -201,13 +201,13 @@ PRIMARY KEY (FLIGHT_ID, SEGMENT_NUMBER)
 	are invalidated if a constraint is added to or dropped from the target table.</p>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER&#160;TABLE</span></a>&#160;statement</li>
-                <li value="2"><a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE&#160;TABLE</span></a>&#160;statement</li>
-                <li value="3"><a href="sqlref_statements_insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
-                <li value="4"><a href="sqlref_statements_delete.html"><span class="CodeFont">DELETE</span></a>&#160;statement</li>
-                <li value="5"><a href="developers_fundamentals_foreignkeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
-                <li value="6"><a href="developers_fundamentals_triggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
-                <li value="7"><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
+                <li><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER&#160;TABLE</span></a>&#160;statement</li>
+                <li><a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE&#160;TABLE</span></a>&#160;statement</li>
+                <li><a href="sqlref_statements_insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
+                <li><a href="sqlref_statements_delete.html"><span class="CodeFont">DELETE</span></a>&#160;statement</li>
+                <li><a href="developers_fundamentals_foreignkeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li><a href="developers_fundamentals_triggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
             </ul>
         </div>
 	</section>

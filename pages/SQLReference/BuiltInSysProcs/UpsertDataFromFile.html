@@ -17,8 +17,8 @@ folder: SQLReference/BuiltInSysProcs
 			by specifying insert columns. </p>
             <p>The syntax and usage of this procedure is almost identical to the syntax and usage of the <span class="CodeFont"><a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;system procedure, except that <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span>&#160;first determines if the database already contains a record that matches an incoming record:</p>
             <ul>
-                <li value="1">If a matching record is found in the database, that record is updated with column values from the incoming record.</li>
-                <li value="2">If no matching record is found in the database, the incoming record is added to the database as a new record, exactly as it would be if had you called <span class="CodeFont"><a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a></span>.</li>
+                <li>If a matching record is found in the database, that record is updated with column values from the incoming record.</li>
+                <li>If no matching record is found in the database, the incoming record is added to the database as a new record, exactly as it would be if had you called <span class="CodeFont"><a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a></span>.</li>
             </ul>
             <p>After a successful import completes, a simple report displays, showing how many files were imported, and how many record imports succeeded or failed. (Note that you can ignore the <span class="CodeFont">numtasks</span> value shown in this report).</p>
             <div class="noteNote">On a cluster, the files to be imported <span class="BoldFont">MUST be on HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory.<br /><br />	In addition, the files must be readable by the <span class="CodeFont">hbase</span> user, and the <span class="CodeFont">badRecordDirectory</span> directory must be writable by the hbase user, either by setting the user explicity, or by opening up the permissions; for example:<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ShellCommand">sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory</span><br /></div>
@@ -51,8 +51,8 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <h3>Importing a Subset of Data From a File</h3>
             <p>When you import data from a file into a table, all of the data in the file is not necessarily imported. This can happen in either of these circumstances:</p>
             <ul>
-                <li value="1">If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
-                <li value="2">If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
+                <li>If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
+                <li>If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
             </ul>
             <p>You can find examples in the <a href="tutorials_ingest_importing.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
             <p>Note that you can take advantage of this by importing different subsets of data from one input file into multiple tables in your database.</p>
@@ -60,20 +60,20 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <p>This procedure will only work correctly if the table into which you are inserting/updating data has primary keys.</p>
             <p>When you generate the input file, it must:</p>
             <ul>
-                <li value="1">contain the columns to be changed</li>
-                <li value="2">contain all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
+                <li>contain the columns to be changed</li>
+                <li>contain all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
             </ul>
             <h2>Record Import Failure Reasons</h2>
             <p>When upserting data from a file, the input file you generate must contain:</p>
             <ul>
-                <li value="1">the columns to be changed</li>
-                <li value="2">all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
+                <li>the columns to be changed</li>
+                <li>all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
             </ul>
             <p>Typical reasons for a row (record)&#160;import to fail include:</p>
             <ul>
-                <li value="1">Improper data expected for a column.</li>
-                <li value="2">Improper number of columns of data.</li>
-                <li value="3">
+                <li>Improper data expected for a column.</li>
+                <li>Improper number of columns of data.</li>
+                <li>
                     <p>A primary key violation: <a href="#"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>&#160;will only work correctly if the table into which you are inserting/updating has primary keys. </p>
                 </li>
             </ul>
@@ -126,7 +126,7 @@ This is the second line of the field',Baker
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a>
+                <li><a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a>
                 </li>
             </ul>
         </div>

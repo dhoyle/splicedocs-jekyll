@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -2864,17 +2864,17 @@
             </div>
             <p>In some circumstances, you must use a <span class="CodeFont">simple-column-Name</span> and cannot qualify the column name:</p>
             <ul>
-                <li value="1">When creating a table (<a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE TABLE</span> statement</a>).</li>
-                <li value="2">In a column's <span class="CodeFont">correlation-Name</span> in a <span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT&#160;expression</a></span></li>
-                <li value="3">In a column's<span class="CodeFont">correlation-Name</span> in a <span class="CodeFont"><a href="sqlref_expressions_table.html">TABLE&#160;expression</a></span></li>
+                <li>When creating a table (<a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE TABLE</span> statement</a>).</li>
+                <li>In a column's <span class="CodeFont">correlation-Name</span> in a <span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT&#160;expression</a></span></li>
+                <li>In a column's<span class="CodeFont">correlation-Name</span> in a <span class="CodeFont"><a href="sqlref_expressions_table.html">TABLE&#160;expression</a></span></li>
             </ul>
             <h2 id="Note.CorrelationName">Correlation Name Notes</h2>
             <p>You cannot use a correlation name for columns that are listed in the <span class="CodeFont">FOR&#160;UPDATE</span>&#160;list of a <span class="CodeFont">SELECT</span>. For example, in the following:</p>
             <div class="preWrapperWide"><pre class="Example">SELECT Average AS corrCol1, Homeruns AS corrCol2, Strikeouts<br /> &#160;&#160;FROM&#160;Batting <br /> &#160;&#160;FOR UPDATE of Average, Strikeouts;</pre>
             </div>
             <ul>
-                <li value="1">You cannot use <span class="CodeFont">corrColl1</span> as a correlation name for <span class="CodeFont">Average</span> because <span class="CodeFont">Average</span> is listed in the <span class="CodeFont">FOR&#160;UPDATE</span>&#160;list.</li>
-                <li value="2">You can use <span class="CodeFont">corrCol2</span> as a correlation name for <span class="CodeFont">HomeRuns</span> because the <span class="CodeFont">HomeRuns</span> column is not in the update list.</li>
+                <li>You cannot use <span class="CodeFont">corrColl1</span> as a correlation name for <span class="CodeFont">Average</span> because <span class="CodeFont">Average</span> is listed in the <span class="CodeFont">FOR&#160;UPDATE</span>&#160;list.</li>
+                <li>You can use <span class="CodeFont">corrCol2</span> as a correlation name for <span class="CodeFont">HomeRuns</span> because the <span class="CodeFont">HomeRuns</span> column is not in the update list.</li>
             </ul>
         </div>
 	</section>
@@ -2894,7 +2894,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

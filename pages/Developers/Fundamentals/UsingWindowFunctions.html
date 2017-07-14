@@ -177,16 +177,16 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
             <h2>About Window Functions</h2>
             <p>Window functions:</p>
             <ul>
-                <li value="1">Operate on a window, or set of rows. The rows considered by a window function are produced by the query's <span class="CodeFont">FROM</span> clause as filtered by its <span class="CodeFont">WHERE</span>, <span class="CodeFont">GROUP BY</span>, and <span class="CodeFont">HAVING</span> clauses, if any. This means that any row that doesn't meet the <span class="CodeFont">WHERE</span>&#160;condition is not seen by a window function.</li>
-                <li value="2"> Are similar to aggregate functions, except that a window function does not group rows into a single output row. Instead, a window function returns a value for every row in the window. This is sometimes referred to as tuple-based aggregation.</li>
-                <li value="3">The values are calculated from the set of rows in the window.</li>
-                <li value="4">Always contain an <span class="CodeFont">OVER</span> clause, which determines how the rows of the query are divided and sequenced for processing by the window function. </li>
-                <li value="5">The <span class="CodeFont">OVER</span>&#160;clause can contain a <span class="CodeFont">PARTITION</span>&#160;clause that specifies the set of rows in the table that form the window, relative to the current row.</li>
-                <li value="6">
+                <li>Operate on a window, or set of rows. The rows considered by a window function are produced by the query's <span class="CodeFont">FROM</span> clause as filtered by its <span class="CodeFont">WHERE</span>, <span class="CodeFont">GROUP BY</span>, and <span class="CodeFont">HAVING</span> clauses, if any. This means that any row that doesn't meet the <span class="CodeFont">WHERE</span>&#160;condition is not seen by a window function.</li>
+                <li> Are similar to aggregate functions, except that a window function does not group rows into a single output row. Instead, a window function returns a value for every row in the window. This is sometimes referred to as tuple-based aggregation.</li>
+                <li>The values are calculated from the set of rows in the window.</li>
+                <li>Always contain an <span class="CodeFont">OVER</span> clause, which determines how the rows of the query are divided and sequenced for processing by the window function. </li>
+                <li>The <span class="CodeFont">OVER</span>&#160;clause can contain a <span class="CodeFont">PARTITION</span>&#160;clause that specifies the set of rows in the table that form the window, relative to the current row.</li>
+                <li>
                     <p>The <span class="CodeFont">OVER</span>&#160;clause can contain an optional <span class="CodeFont">ORDER&#160;BY</span>&#160;clause that specifies in which order rows are processed by the window function. This <span class="CodeFont">ORDER&#160;BY</span>&#160;clause is independent of the <span class="CodeFont">ORDER&#160;BY</span>&#160;clause that specifies the order in which rows are output. </p>
                     <p>Note that the <a href="sqlref_builtinfcns_rownumber.html">ROW&#160;NUMBER</a>)</span>&#160;<span class="BoldFont">must contain</span> an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause.</p>
                 </li>
-                <li value="7">The <span class="CodeFont">OVER</span>&#160;clause can also contain an optional <span class="ItalicFont">frame clause</span> that further restricts which of the rows in the partition are sent to the function for evaluation.</li>
+                <li>The <span class="CodeFont">OVER</span>&#160;clause can also contain an optional <span class="ItalicFont">frame clause</span> that further restricts which of the rows in the partition are sent to the function for evaluation.</li>
             </ul>
             <h3>About Windows, Partitions, and Frames</h3>
             <p>Using window functions can seem complicated because they involve a number of overlapping terms, including <span class="ItalicFont">window</span>, <span class="ItalicFont">sliding window</span>, <span class="ItalicFont">partition</span>, <span class="ItalicFont">set</span>, and <span class="ItalicFont">window frame</span>. An additional complication is that window frames can be specified using either <span class="ItalicFont">rows</span> or <span class="ItalicFont">ranges</span>.</p>
@@ -266,9 +266,9 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
             <h3 id="Window">The Partition Clause</h3>
             <p>The partition clause, which is optional, specifies how the window function is broken down over groups, in the same way that <span class="CodeFont">GROUP&#160;BY</span>&#160;specifies groupings for regular aggregate functions. Some example partitions are:</p>
             <ul>
-                <li value="1">departments within an organization</li>
-                <li value="2">regions within a geographic area</li>
-                <li value="3">quarters within years for sales</li>
+                <li>departments within an organization</li>
+                <li>regions within a geographic area</li>
+                <li>quarters within years for sales</li>
             </ul>
             <div class="noteNote">If you omit the partition clause, the default partition, which contains all rows in the table, is used.However, since window functions are used to perform calculations over subsets (partitions) of rows in a table, you generally should specify a partition clause.</div>
             <p class="heading4">Syntax</p>
@@ -373,17 +373,17 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
             </div>
             <p class="spaceAbove">Some notes about the <span class="CodeFont">ORDER&#160;BY</span>&#160;clause in an <span class="CodeFont">OVER</span>&#160;clause:</p>
             <ul>
-                <li value="1">Ascending order (<span class="CodeFont">ASC</span>)&#160;is the default ordering.</li>
-                <li value="2">If you specify <span class="CodeFont">NULLS&#160;LAST</span>, then <span class="CodeFont">NULL</span>&#160;values are returned last; this is the default when you use <span class="CodeFont">ASC</span>&#160;order. </li>
-                <li value="3">If you specify <span class="CodeFont">NULLS&#160;FIRST</span>, then <span class="CodeFont">NULL</span>&#160;values are returned first; this is the default when you use <span class="CodeFont">DESC</span>&#160;order. </li>
-                <li value="4">The <span class="CodeFont">ORDER BY</span> clause in your <span class="CodeFont">OVER</span>&#160;clause <span class="ItalicFont">does not</span> have to match the order in which the rows are output.</li>
-                <li value="5">You can only specify a <span class="ItalicFont">frame clause</span> if you include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause in your <span class="CodeFont">OVER</span> clause.</li>
+                <li>Ascending order (<span class="CodeFont">ASC</span>)&#160;is the default ordering.</li>
+                <li>If you specify <span class="CodeFont">NULLS&#160;LAST</span>, then <span class="CodeFont">NULL</span>&#160;values are returned last; this is the default when you use <span class="CodeFont">ASC</span>&#160;order. </li>
+                <li>If you specify <span class="CodeFont">NULLS&#160;FIRST</span>, then <span class="CodeFont">NULL</span>&#160;values are returned first; this is the default when you use <span class="CodeFont">DESC</span>&#160;order. </li>
+                <li>The <span class="CodeFont">ORDER BY</span> clause in your <span class="CodeFont">OVER</span>&#160;clause <span class="ItalicFont">does not</span> have to match the order in which the rows are output.</li>
+                <li>You can only specify a <span class="ItalicFont">frame clause</span> if you include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause in your <span class="CodeFont">OVER</span> clause.</li>
             </ul>
             <h3 id="Window2">The Frame Clause</h3>
             <p>The optional frame clause defines which of the rows in the partition (the <span class="CodeFont">frame</span>)&#160;should be evaluated by the window function. You can limit which rows in the partition are passed to the function in two ways:</p>
             <ul>
-                <li value="1">Specify a <span class="CodeFont">ROWS</span> frame to limit the frame to a fixed number of rows from the partition that precede or follow the current row.</li>
-                <li value="2">Specify <span class="CodeFont">RANGE</span>&#160;to only include rows in the frame whose evaluated value falls within a certain range of the current row's value. This is the default, and the current default range is <span class="CodeFont">1</span>, which means that only rows whose value matches that of the current row are passed to the function.</li>
+                <li>Specify a <span class="CodeFont">ROWS</span> frame to limit the frame to a fixed number of rows from the partition that precede or follow the current row.</li>
+                <li>Specify <span class="CodeFont">RANGE</span>&#160;to only include rows in the frame whose evaluated value falls within a certain range of the current row's value. This is the default, and the current default range is <span class="CodeFont">1</span>, which means that only rows whose value matches that of the current row are passed to the function.</li>
             </ul>
             <p>Some sources refer to the frame clause as the <span class="ItalicFont">Rows or Ranges</span> clause. If you omit this clause, the default is to include all rows </p>
             <div class="noteNote">Window frames can only be used when you include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause within the <span class="CodeFont">OVER</span>&#160;clause.</div>
@@ -458,11 +458,11 @@ OVER&#160;(PARTITION&#160;BY&#160;customerID&#160;ORDER&#160;BY&#160;orderDate R
             <p class="heading4">FrameStart and FrameEnd</p>
             <p>Some important notes about the frame clause:</p>
             <ul>
-                <li value="1"><span class="CodeFont">UNBOUNDED&#160;PRECEDING</span>&#160;means that the frame starts with the first row of the partition.</li>
-                <li value="2"><span class="CodeFont">UNBOUNDED&#160;FOLLOWING</span>&#160;means that the frame ends with the last row of the partition.</li>
-                <li value="3">You must specify the <span class="CodeItalicFont">frameStart</span> first and the <span class="CodeItalicFont">frameEnd</span> last within the frame clause.</li>
-                <li value="4">In <span class="CodeFont">ROWS</span>&#160;mode, <span class="CodeFont">CURRENT ROW</span>&#160;means that the frame starts or ends with the current row; in <span class="CodeFont">RANGE</span>&#160;mode, <span class="CodeFont">CURRENT ROW</span>&#160;means that the frame starts or ends with the current row's first or last peer in the <span class="CodeFont">ORDER&#160;BY</span>&#160;ordering.</li>
-                <li value="5">
+                <li><span class="CodeFont">UNBOUNDED&#160;PRECEDING</span>&#160;means that the frame starts with the first row of the partition.</li>
+                <li><span class="CodeFont">UNBOUNDED&#160;FOLLOWING</span>&#160;means that the frame ends with the last row of the partition.</li>
+                <li>You must specify the <span class="CodeItalicFont">frameStart</span> first and the <span class="CodeItalicFont">frameEnd</span> last within the frame clause.</li>
+                <li>In <span class="CodeFont">ROWS</span>&#160;mode, <span class="CodeFont">CURRENT ROW</span>&#160;means that the frame starts or ends with the current row; in <span class="CodeFont">RANGE</span>&#160;mode, <span class="CodeFont">CURRENT ROW</span>&#160;means that the frame starts or ends with the current row's first or last peer in the <span class="CodeFont">ORDER&#160;BY</span>&#160;ordering.</li>
+                <li>
                     <p>The default <span class="ItalicFont">frameClause</span> is to include all values from the start of the partition through the current row:&#160;</p>
                     <div class="preWrapper"><pre class="Example" xml:space="preserve">RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</pre>
                     </div>
@@ -498,7 +498,7 @@ OVER&#160;(PARTITION&#160;BY&#160;customerID&#160;ORDER&#160;BY&#160;orderDate R
             <p>This is a simple example that doesn't use a frame clause:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Rank each year within a player by the number of home runs hit by that player:</p>
                         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 RANK()&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;H&#160;desc); </pre>
@@ -509,21 +509,21 @@ RANK()&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;H
             <p>Here are some examples of window functions using frame clauses:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Compute the running sum of G&#160;for each player:</p>
                         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 SUM(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;yearID
   RANGE&#160;BETWEEN&#160;UNBOUNDED&#160;PRECEDING&#160;AND&#160;CURRENT&#160;ROW); </pre>
                         </div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Compute the career year:</p>
                         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 YearID - min(YEARID)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID
    RANGE&#160;BETWEEN&#160;UNBOUNDED&#160;PRECEDING&#160;AND&#160;UNBOUNDED&#160;FOLLOWING)&#160;+ 1; </pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Compute a rolling average of games by player:</p>
                         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 AVG(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;yearID
@@ -596,11 +596,11 @@ WHERE&#160;"pos" = 1;</pre>
             <h2 id="ForMoreInfo">Additional Information</h2>
             <p>There are numerous articles about window functions that you can find online. Here are a few you might find valuable:</p>
             <ul>
-                <li value="1">The <a href="https://www.simple-talk.com/sql/learn-sql-server/window-functions-in-sql-server/" target="_blank">simple talk articles from Red Gate</a> about window functions are probably the most straightforward and comprehensive descriptions of window functions.</li>
-                <li value="2">This <a href="http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23sql-1906475.html" target="_blank">Oracle Technology Network article</a> provides an excellent technical introduction.</li>
-                <li value="3">This <a href="http://www.postgresql.org/docs/9.1/static/tutorial-window.html" target="_blank">PostgreSQL page</a> introduces their version of window functions and links to other pages.</li>
-                <li value="4">This <a href="https://wiki.postgresql.org/wiki/SQL2008_windowing_queries" target="_blank">PostgreSQL&#160;wiki page</a> about SQL&#160;windowing queries page provides a succinct explanation of why windowing functions are used, and includes several useful examples.</li>
-                <li value="5">The <a href="http://en.wikipedia.org/wiki/Select_(SQL)" target="_blank">Wikipedia SQL&#160;SELECT</a>&#160;page contains descriptions of specific window functions and links to other pages.</li>
+                <li>The <a href="https://www.simple-talk.com/sql/learn-sql-server/window-functions-in-sql-server/">simple talk articles from Red Gate</a> about window functions are probably the most straightforward and comprehensive descriptions of window functions.</li>
+                <li>This <a href="http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23sql-1906475.html">Oracle Technology Network article</a> provides an excellent technical introduction.</li>
+                <li>This <a href="http://www.postgresql.org/docs/9.1/static/tutorial-window.html">PostgreSQL page</a> introduces their version of window functions and links to other pages.</li>
+                <li>This <a href="https://wiki.postgresql.org/wiki/SQL2008_windowing_queries">PostgreSQL&#160;wiki page</a> about SQL&#160;windowing queries page provides a succinct explanation of why windowing functions are used, and includes several useful examples.</li>
+                <li>The <a href="http://en.wikipedia.org/wiki/Select_(SQL)">Wikipedia SQL&#160;SELECT</a>&#160;page contains descriptions of specific window functions and links to other pages.</li>
             </ul>
         </div>
 	</section>

@@ -60,11 +60,11 @@ insert into greetings(ch) values ('bonjour'); </pre>
             <p>For <span class="CodeFont">SMALLINT</span>, <span class="CodeFont">INT</span>, and <span class="CodeFont">BIGINT</span> columns with identity attributes, Splice Machine automatically assigns increasing integer values to the column. Identity column attributes behave like other defaults in that when an insert statement does not specify a value for the column, Splice Machine automatically provides the value. However, the value is not a constant; Splice Machine automatically increments the default value at insertion time.</p>
             <p>The <span class="CodeFont">IDENTITY</span> keyword can only be specified if the data type associated with the column is one of the following exact integer types.</p>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="sqlref_builtinfcns_smallint.html">SMALLINT</a></span>
+                <li><span class="CodeFont"><a href="sqlref_builtinfcns_smallint.html">SMALLINT</a></span>
                 </li>
-                <li value="2"><span class="CodeFont"><a href="sqlref_builtinfcns_integer.html">INT</a></span>
+                <li><span class="CodeFont"><a href="sqlref_builtinfcns_integer.html">INT</a></span>
                 </li>
-                <li value="3"><span class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a></span>
+                <li><span class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a></span>
                 </li>
             </ul>
             <p>By default, the initial value of an identity column is 1, and the amount of the increment is 1. You can specify any positive integer value for both the initial value and the interval amount when you define the column with the key words START WITH and INCREMENT BY. Splice Machine increments the value with each insert. A value of 0 raises a statement exception. </p>

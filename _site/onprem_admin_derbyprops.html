@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -617,6 +617,50 @@
      </li>
        
         
+    
+    <li>
+        <a href="#">Release Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="onprem_info_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_release.html">Release Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_updates.html">Update Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_requirements.html">Requirements</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_editions.html">Community and Enterprise Editions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
         
         <!-- if you aren't using the accordion, uncomment this block:
            <p class="external">
@@ -669,12 +713,12 @@
                         <td>
                             <p class="noSpaceAbove">These properties can be as command line arguments to JVM:</p>
                             <ul>
-                                <li value="1">For Maven, include the command line arguments as an <span class="CodeFont">&lt;argument&gt;</span>&#160;element in the <span class="CodeFont">pom.xml</span> file. For example:</li>
+                                <li>For Maven, include the command line arguments as an <span class="CodeFont">&lt;argument&gt;</span>&#160;element in the <span class="CodeFont">pom.xml</span> file. For example:</li>
                             </ul>
                             <div class="preWrapperWide"><pre class="AppCommand">&lt;argument&gt;-Dderby.language.logStatementText=true&lt;/argument&gt;</pre>
                             </div>
                             <ul>
-                                <li value="1">For shell scripts, you may need to manually add the argument to the java executable command line. For example:</li>
+                                <li>For shell scripts, you may need to manually add the argument to the java executable command line. For example:</li>
                             </ul>
                             <div class="preWrapperWide"><pre class="AppCommand">java -Dderby.language.logStatementText=true ... </pre>
                             </div>
@@ -686,8 +730,8 @@
                         <td>
                             <p class="noSpaceAbove">Service properties are a special type of database property that is required to boot the database; as such, these properties cannot be stored in the database. Instead, they are stored outside the database, as follows:</p>
                             <ul>
-                                <li value="1">Derby stores service properties in the <span class="CodeFont">service.properties file</span></li>
-                                <li value="2">Splice Machine stores service properties in a Zookeeper element.</li>
+                                <li>Derby stores service properties in the <span class="CodeFont">service.properties file</span></li>
+                                <li>Splice Machine stores service properties in a Zookeeper element.</li>
                             </ul>
                             <p>You can temporarily change service properties with the <span class="CodeFont"><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span> built-in system procedure. These changes will be lost when the server is next restarted.</p>
                             <p>To make a permanent change in a Derby service property, modify the value in the <span class="CodeFont">service.properties</span> file and then restart the server to apply the changes.</p>
@@ -706,11 +750,11 @@
                             <p class="noSpaceAbove">App properties for both Derby and Splice Machine are saved to the <span class="CodeFont">derby.properties</span> file in the Derby/Splice home directory. </p>
                             <p>App properties can also be saved to these HBASE XML&#160;configuration files:</p>
                             <ul>
-                                <li value="1"><span class="CodeFont">hbase-default.xml</span>
+                                <li><span class="CodeFont">hbase-default.xml</span>
                                 </li>
-                                <li value="2"><span class="CodeFont">hbase-site.xml</span>
+                                <li><span class="CodeFont">hbase-site.xml</span>
                                 </li>
-                                <li value="3"><span class="CodeFont">splice-site.xml</span>
+                                <li><span class="CodeFont">splice-site.xml</span>
                                 </li>
                             </ul>
                             <p>Note that the XML&#160;files must reside in the <span class="CodeFont">CLASSPATH</span>.</p>
@@ -758,8 +802,8 @@ derby.storage.rowLocking&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#
             </div>
             <h2>See Also</h2>
             <ul>
-                <li value="1"><span class="CodeFont"><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li value="2">The <span class="ItalicFont">Derby Properties Guide</span> on the <a href="https://db.apache.org/derby/manuals/index.html" target="_blank">Apache Derby documentation site</a>.</li>
+                <li><span class="CodeFont"><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li>The <span class="ItalicFont">Derby Properties Guide</span> on the <a href="https://db.apache.org/derby/manuals/index.html">Apache Derby documentation site</a>.</li>
             </ul>
         </div>
 	</section>
@@ -779,7 +823,7 @@ derby.storage.rowLocking&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

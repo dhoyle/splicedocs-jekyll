@@ -14,9 +14,9 @@ folder: OnPrem
             <h1 id="kanchor174">Configuring Splice Machine Authentication</h1>
             <p>This topic describes the mechanisms you can use in Splice Machine to authenticate users and how to configure the mechanism you choose to use, in these sections:</p>
             <ul>
-                <li value="1"><a href="#Supporte">Supported Authentication Mechanisms</a>
+                <li><a href="#Supporte">Supported Authentication Mechanisms</a>
                 </li>
-                <li value="2"><a href="#Configur">Configuring Authentication</a>
+                <li><a href="#Configur">Configuring Authentication</a>
                 </li>
             </ul>
             <div>
@@ -55,13 +55,13 @@ folder: OnPrem
                 <h2 id="Configur">Configuring Authentication</h2>
                 <p>You configure Splice&#160;Machine authentication by adding or updating properties in your HBase configuration file; this is typically done during installation of Splice Machine, but you can modify your settings whenever you want. This section contains the following subsections:</p>
                 <ul>
-                    <li value="1"><a href="#Locating">Locating Your Configuration File</a>
+                    <li><a href="#Locating">Locating Your Configuration File</a>
                     </li>
-                    <li value="2"><a href="#Disablin">Disabling Authentication</a>
+                    <li><a href="#Disablin">Disabling Authentication</a>
                     </li>
-                    <li value="3"><a href="#Using">Using Native Authentication</a>
+                    <li><a href="#Using">Using Native Authentication</a>
                     </li>
-                    <li value="4"><a href="#Using2">Using LDAP&#160;Authentication</a>
+                    <li><a href="#Using2">Using LDAP&#160;Authentication</a>
                     </li>
                 </ul>
                 <h3 id="Locating">Locating Your Configuration File</h3>
@@ -125,14 +125,14 @@ folder: OnPrem
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: LDAP&#160;authentication is available only with a Splice Machine Enterprise license.</span>
                     </p>
                     <p>You cannot use LDAP&#160;authentication with the Community version of Splice Machine.</p>
-                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="https://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="https://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
                 <p>To use LDAP&#160;with Splice Machine, you must:</p>
                 <ul>
-                    <li value="1"><a href="https://www.splicemachine.com/company/contact-us/">Contact us</a> to obtain a license key from Splice&#160;Machine. </li>
-                    <li value="2">Enable Enterprise features by adding your Splice Machine license key to your HBase configuration file as the value of the <span class="CodeFont">splicemachine.enterprise.key</span> property, as shown below.</li>
-                    <li value="3">Make sure that a user with name <span class="CodeFont">splice</span> has been created in the LDAP server.
+                    <li><a href="https://www.splicemachine.com/company/contact-us/">Contact us</a> to obtain a license key from Splice&#160;Machine. </li>
+                    <li>Enable Enterprise features by adding your Splice Machine license key to your HBase configuration file as the value of the <span class="CodeFont">splicemachine.enterprise.key</span> property, as shown below.</li>
+                    <li>Make sure that a user with name <span class="CodeFont">splice</span> has been created in the LDAP server.
  </li>
-                    <li value="4">Add the Splice&#160;Machine LDAP&#160;properties in your HBase configuration file, along with the license key property:</li>
+                    <li>Add the Splice&#160;Machine LDAP&#160;properties in your HBase configuration file, along with the license key property:</li>
                 </ul>
                 <h4>LDAP&#160;Property Settings</h4>
                 <p>These are the property settings you need to configure:</p>
@@ -145,19 +145,19 @@ folder: OnPrem
                 </div>
                 <p>Notes about the LDAP&#160;property values:</p>
                 <ul class="bullet">
-                    <li value="1">Specify the&#160;location of your external LDAP&#160;server host in the
+                    <li>Specify the&#160;location of your external LDAP&#160;server host in the
 <span class="Example">splice.authentication.ldap.server</span> property on port <span class="HighlightedCode">389</span>.</li>
-                    <li value="2">
+                    <li>
                         <p>The <span class="HighlightedCode">ldap.searchAuthDN</span>&#160;property is the security principal:</p>
                         <ul class="bullet">
-                            <li value="1">This is used to create the initial LDAP&#160;context (aka its connection to a specific DN).</li>
-                            <li value="2">It must have the authority to search the user space for user DNs.</li>
-                            <li value="3">The <span class="CodeFont">cn=</span> is the <span class="ItalicFont">common name</span> of the security principal.</li>
+                            <li>This is used to create the initial LDAP&#160;context (aka its connection to a specific DN).</li>
+                            <li>It must have the authority to search the user space for user DNs.</li>
+                            <li>The <span class="CodeFont">cn=</span> is the <span class="ItalicFont">common name</span> of the security principal.</li>
                         </ul>
                     </li>
-                    <li value="3">The <span class="HighlightedCode">ldap.searchAuthPW</span>&#160;property specifies password Splice Machine should use to perform the DN&#160;search.</li>
-                    <li value="4">The <span class="HighlightedCode">ldap.searchBase</span> property specifies the root DN of the point in your hierarchy from which to begin a guest or anonymous search for the user's DN.</li>
-                    <li value="5">The <span class="HighlightedCode">ldap.searchFilter</span> property specifies the search filter to use to determine what constitutes a user while searching for a user DN</li>
+                    <li>The <span class="HighlightedCode">ldap.searchAuthPW</span>&#160;property specifies password Splice Machine should use to perform the DN&#160;search.</li>
+                    <li>The <span class="HighlightedCode">ldap.searchBase</span> property specifies the root DN of the point in your hierarchy from which to begin a guest or anonymous search for the user's DN.</li>
+                    <li>The <span class="HighlightedCode">ldap.searchFilter</span> property specifies the search filter to use to determine what constitutes a user while searching for a user DN</li>
                 </ul>
                 <h4>Connecting with JDBC&#160;and LDAP</h4>
                 <p>You can then use our JDBC&#160;driver to connect to your database with LDAP&#160;authentication, using a connection string similar to this:</p>

@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -2759,9 +2759,9 @@ restores your database to the state it was in when a specific backup was perform
             <p>You can restore your database from any previous full or incremental backup.</p>
             <p>There are several important things to know about restoring your database from a previous backup:</p>
             <ul>
-                <li value="1">Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
-                <li value="2">You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
-                <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete. See the <a href="onprem_admin_startingdb.html">Starting Your Database</a> topics in this book for instructions on restarting your database.</li>
+                <li>Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
+                <li>You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
+                <li>You <span class="BoldFont">must reboot your database</span> after the restore is complete. See the <a href="onprem_admin_startingdb.html">Starting Your Database</a> topics in this book for instructions on restarting your database.</li>
             </ul>
             <div class="noteIcon">If you are restoring from an incremental backup, you must first restore from the most recent full backup, and then incrementally restore from each subsequent incremental backup. See <a href="#Example">Example 2 below.</a></div>
             <p class="heading2">Syntax</p>
@@ -2783,9 +2783,9 @@ based on the current user directory. To avoid confusion, we strongly recommend t
             <div class="notePlain">
                 <p>There are several important things to know about restoring your database from a previous backup:</p>
                 <ul>
-                    <li value="1">Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
-                    <li value="2">You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
-                    <li value="3">You <span class="BoldFont">must reboot your database</span> after the restore is complete by first  <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
+                    <li>Restoring a database <span class="BoldFont">wipes out your database</span> and replaces it with what had been previously backed up.</li>
+                    <li>You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
+                    <li>You <span class="BoldFont">must reboot your database</span> after the restore is complete by first  <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
                 </ul>
             </div>
             <p>As noted at the top of this topic:&#160;if you are restoring from an incremental backup, you must first restore from the most recent full backup, and then incrementally restore from each subsequent incremental backup. See <a href="#Example">Example 2 below.</a></p>
@@ -2812,51 +2812,51 @@ Statement executed.</pre>
             <h3 id="Example">Example 2 : Restore the Database from a Series of Incremental Backups</h3>
             <p>In this example, you have been running a daily incremental backup and want to restore it to the most recent version. Let's call the backups B1, B2, B3, and B4:</p>
             <ul>
-                <li value="1">Full backup <span class="CodeFont">B1,(ID=1274)</span></li>
-                <li value="2">First incremental backup <span class="CodeFont">B2 (ID=1275)</span></li>
-                <li value="3">Second incremental backup <span class="CodeFont">B3 (ID=1276)</span></li>
-                <li value="4">Third incremental backup <span class="CodeFont">B4 (ID=1277)</span></li>
+                <li>Full backup <span class="CodeFont">B1,(ID=1274)</span></li>
+                <li>First incremental backup <span class="CodeFont">B2 (ID=1275)</span></li>
+                <li>Second incremental backup <span class="CodeFont">B3 (ID=1276)</span></li>
+                <li>Third incremental backup <span class="CodeFont">B4 (ID=1277)</span></li>
             </ul>
             <div class="opsStepsList">
                 <p class="indentLevel1">To restore your database to the state it was in when the <span class="CodeFont">B4</span> backup was run; you'll need to follow these steps:</p>
                 <ol>
-                    <li value="1">
+                    <li>
                         <p>Restore your database from the full backup, <span class="CodeFont">B1</span>. </p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1274);</pre>
                         </div>
                     </li>
-                    <li value="2">Restart your database.</li>
-                    <li value="3">
+                    <li>Restart your database.</li>
+                    <li>
                         <p>Restore your database from incremental backup <span class="CodeFont">B2</span>:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1275);</pre>
                         </div>
                     </li>
-                    <li value="4">Restart your database.</li>
-                    <li value="5">
+                    <li>Restart your database.</li>
+                    <li>
                         <p>Restore your database from incremental backup <span class="CodeFont">B3</span>:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1276);</pre>
                         </div>
                     </li>
-                    <li value="6">Restart your database.</li>
-                    <li value="7">
+                    <li>Restart your database.</li>
+                    <li>
                         <p>Restore your database from  incremental backup <span class="CodeFont">B4</span>:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1277);</pre>
                         </div>
                     </li>
-                    <li value="8">Restart your database.</li>
+                    <li>Restart your database.</li>
                 </ol>
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
-                <li value="2"><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>
-                <li value="3"><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li value="4"><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
-                <li value="5"><a href="sqlref_sysprocs_deleteoldbackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
-                <li value="6"><a href="sqlref_sysprocs_scheduledailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li value="7"><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
-                <li value="8"><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
-                <li value="9"><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
+                <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
+                <li><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_deleteoldbackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
+                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
             </ul>
         </div>
 	</section>
@@ -2876,7 +2876,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -13,9 +13,9 @@ folder: Tutorials/Ingest
             <h1 id="kanchor38">Importing Data Into Splice Machine</h1>
             <p>This tutorial describes how to import data into your Splice Machine database, and includes a number of examples. It also contains specific tips to help you with the details of getting your data correctly imported. This tutorial contains these sections:</p>
             <ul>
-                <li value="1"><a href="#Syntax">SYSCS_UTIL.IMPORT_DATA</a> presents the syntax for calling the import function, along with brief descriptions of the parameters.</li>
-                <li value="2"><a href="#Import">Import Examples</a> contains several examples of importing data.</li>
-                <li value="3"><a href="#Tips">Tips for Importing Data into Splice&#160;Machine</a> provides specific tips for specifying your import parameters.</li>
+                <li><a href="#Syntax">SYSCS_UTIL.IMPORT_DATA</a> presents the syntax for calling the import function, along with brief descriptions of the parameters.</li>
+                <li><a href="#Import">Import Examples</a> contains several examples of importing data.</li>
+                <li><a href="#Tips">Tips for Importing Data into Splice&#160;Machine</a> provides specific tips for specifying your import parameters.</li>
             </ul>
             <p>The Splice Machine data import procedures allow you to perform bulk imports that utilize the parallel processing power of Hadoop's scale-out architecture while distributing the data evenly into different region servers to prevent "hot spots." We utilize a custom-built, asynchronous write pipeline, which is an extension to the native HBase pipeline, to accomplish this effort.</p>
             <p>If you're importing data from an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
@@ -76,12 +76,12 @@ folder: Tutorials/Ingest
                             <div class="noteIcon">You must specify a directory in an S3 bucket when importing data into your Splice Machine Database-as-Service database, and you must possess the access key/secret key pair for that S3 bucket.</div>
                             <p>See these tips:</p>
                             <ul class="bullet">
-                                <li value="1"><a href="#Tip">Tip #1: &#160;Specifying the File Location
+                                <li><a href="#Tip">Tip #1: &#160;Specifying the File Location
 </a>
                                 </li>
-                                <li value="2"><a href="#Tip2">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</a>
+                                <li><a href="#Tip2">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</a>
                                 </li>
-                                <li value="3"><a href="#Tip3">Tip #3:&#160;&#160;Don't Compress Your Files With&#160;GZIP</a>
+                                <li><a href="#Tip3">Tip #3:&#160;&#160;Don't Compress Your Files With&#160;GZIP</a>
                                 </li>
                             </ul>
                         </td>
@@ -179,15 +179,15 @@ folder: Tutorials/Ingest
             <h2 id="Import">Import Examples</h2>
             <p>This section provides several examples of importing data into Splice Machine:</p>
             <ul>
-                <li value="1"><a href="#Example1">Example 1: Importing data into a table with fewer columns than in the file</a>
+                <li><a href="#Example1">Example 1: Importing data into a table with fewer columns than in the file</a>
                 </li>
-                <li value="2"><a href="#Example2">Example 2: Importing a subset of data from a file into a table</a>
+                <li><a href="#Example2">Example 2: Importing a subset of data from a file into a table</a>
                 </li>
-                <li value="3"><a href="#Example">Example 3: Specifying a timestamp format for an entire table</a>
+                <li><a href="#Example">Example 3: Specifying a timestamp format for an entire table</a>
                 </li>
-                <li value="4"><a href="#Example3">Example 4:&#160;Importing strings with embedded special characters </a>
+                <li><a href="#Example3">Example 4:&#160;Importing strings with embedded special characters </a>
                 </li>
-                <li value="5"><a href="#Example4">Example 5:&#160;Using single quotes to delimit strings</a>
+                <li><a href="#Example4">Example 5:&#160;Using single quotes to delimit strings</a>
                 </li>
             </ul>
             <h3 id="Example1">Example 1: Importing data into a table with fewer columns than in the file</h3>
@@ -258,24 +258,24 @@ This is the second line of the field',Baker
             <h2 id="Tips">Tips for Importing Data into Splice&#160;Machine</h2>
             <p>This tutorial contains a number of tips that our users have found very useful in determining the parameter settings to use when running an import:</p>
             <ol>
-                <li value="1"><a href="#Tip"><a href="#Tip">Tip #1: &#160;Specifying the File Location
+                <li><a href="#Tip"><a href="#Tip">Tip #1: &#160;Specifying the File Location
 </a></a>
                 </li>
-                <li value="2"><a href="#Tip2"><a href="#Tip2">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</a></a>
+                <li><a href="#Tip2"><a href="#Tip2">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</a></a>
                 </li>
-                <li value="3"><a href="#Tip3"><a href="#Tip3">Tip #3:&#160;&#160;Don't Compress Your Files With&#160;GZIP</a></a>
+                <li><a href="#Tip3"><a href="#Tip3">Tip #3:&#160;&#160;Don't Compress Your Files With&#160;GZIP</a></a>
                 </li>
-                <li value="4"><a href="#Tip4"><a href="#Tip4">Tip #4:&#160;&#160;Use Special Characters for Delimiters</a></a>
+                <li><a href="#Tip4"><a href="#Tip4">Tip #4:&#160;&#160;Use Special Characters for Delimiters</a></a>
                 </li>
-                <li value="5"><a href="#Tip5"><a href="#Tip5">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a></a>
+                <li><a href="#Tip5"><a href="#Tip5">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</a></a>
                 </li>
-                <li value="6"><a href="#Tip6"><a href="#Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a></a>
+                <li><a href="#Tip6"><a href="#Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a></a>
                 </li>
-                <li value="7"><a href="#Tip7"><a href="#Tip7">Tip #7:&#160;&#160;Importing Multi-line Records</a></a>
+                <li><a href="#Tip7"><a href="#Tip7">Tip #7:&#160;&#160;Importing Multi-line Records</a></a>
                 </li>
-                <li value="8"><a href="#Tip8"><a href="#Tip8">Tip #8:&#160;&#160;Importing CLOBs and BLOBs</a></a>
+                <li><a href="#Tip8"><a href="#Tip8">Tip #8:&#160;&#160;Importing CLOBs and BLOBs</a></a>
                 </li>
-                <li value="9"><a href="#Tip9"><a href="#Tip9">Tip #9:&#160;&#160;Scripting Your Imports</a></a>
+                <li><a href="#Tip9"><a href="#Tip9">Tip #9:&#160;&#160;Scripting Your Imports</a></a>
                 </li>
             </ol>
             <h3 id="Tip">Tip #1: &#160;Specifying the File Location
@@ -301,15 +301,15 @@ For example:</p>
             <h3 id="Tip2">Tip #2: &#160;Import Large Datasets in Groups of&#160;Files</h3>
             <p>If you have a lot of data (100s of millions or billions of records), you may be tempted to create one massive file that contains all of your records and import that file; Splice Machine recommends against this; instead, we urge you to manage your data in smaller files. Specifically, we suggest that you split your data into files that are:</p>
             <ul>
-                <li value="1"> approximately 40 GB</li>
-                <li value="2">have approximately 50 million records, depending on how wide your table is</li>
+                <li> approximately 40 GB</li>
+                <li>have approximately 50 million records, depending on how wide your table is</li>
             </ul>
             <p>If you have a lot of files, group them into multiple directories, and import each directory individually. For example, here is a structure our Customer Success engineers like to use:</p>
             <ul class="codeList">
-                <li value="1">/data/mytable1/group1
+                <li>/data/mytable1/group1
 </li>
-                <li value="2">/data/mytable1/group2</li>
-                <li value="3">
+                <li>/data/mytable1/group2</li>
+                <li>
 /data/mytable1/group3
 </li>
             </ul>
@@ -322,17 +322,17 @@ For example:</p>
             <p>The  standard column delimiter is a comma (<span class="CodeFont">,</span>); however, we've all worked with string data that contains commas, and have figured out to use a different column delimiter. Some customers use the pipe (<span class="CodeFont">|</span>)&#160;character, but frequently discover that it is also used in some descriptive data in the table they're importing. </p>
             <p>We recommend using a control character like <span class="CodeFont">CTRL-A</span> for your column delimiter. This is known as the SOH&#160;character, and is represented by 0x01 in hexadecimal. Unfortunately, there's no way to enter this character from the keyboard in the Splice&#160;Machine command line interface; instead, you need to create a script file (see <a href="#Tip9">Tip #9</a>) and type the control character using a text editor like <span class="ItalicFont">vi</span> or <span class="ItalicFont">vim</span>:</p>
             <ul>
-                <li value="1">Open your script file in vi or vim.</li>
-                <li value="2">Enter into INSERT&#160;mode.</li>
-                <li value="3">Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-A</span> for the value of the column delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^A</span> when you type it in vi or vim.</li>
+                <li>Open your script file in vi or vim.</li>
+                <li>Enter into INSERT&#160;mode.</li>
+                <li>Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-A</span> for the value of the column delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^A</span> when you type it in vi or vim.</li>
             </ul>
             <p class="heading4">Character Delimiters</p>
             <p>By default, the character delimiter is a double quote. This can produce the same kind of problems that we see with using a comma for the column delimiter:&#160;columns values that include embedded quotes or use the double quote as the symbol for inches. You can use escape characters to include the embedded quotes, but it's easier to use a special character for your delimiter. </p>
             <p>We recommend using <span class="CodeFont">CTRL-G</span>, which you can add to a script file (see <a href="#Tip9">Tip #9</a>), again using a text editor like <span class="ItalicFont">vi</span> or <span class="ItalicFont">vim</span>:</p>
             <ul>
-                <li value="1">Open your script file in vi or vim.</li>
-                <li value="2">Enter into INSERT&#160;mode.</li>
-                <li value="3">Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-G</span> for the value of the character delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^G</span> when you type it in vi or vim.</li>
+                <li>Open your script file in vi or vim.</li>
+                <li>Enter into INSERT&#160;mode.</li>
+                <li>Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-G</span> for the value of the character delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^G</span> when you type it in vi or vim.</li>
             </ul>
             <h3 id="Tip5">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</h3>
             <p>Perhaps the most common difficulty that customers have with importing their data is with date, time, and timestamp values. </p>
@@ -348,8 +348,8 @@ For example:</p>
             </div>
             <p>A few additional notes:</p>
             <ul>
-                <li value="1">The <span class="CodeFont">Timestamp</span> data type has a range of <span class="CodeFont">1678-01-01</span> to <span class="CodeFont">2261-12-31</span>. Some customers have used dummy timestamp values like <span class="CodeFont">9999-01-01</span>, which will fail because the value is out of range for a timestamp. Note that this is not an issue with <span class="CodeFont">Date</span> values.</li>
-                <li value="2">Splice Machine suggests that, if your data contains any date or timestamp values that are not in the format <span class="CodeFont">yyyy-MM-dd HH:mm:ss</span>, you create a simple table that has just one or two columns and test importing the format. This is a simple way to confirm that the imported data is what you expect.</li>
+                <li>The <span class="CodeFont">Timestamp</span> data type has a range of <span class="CodeFont">1678-01-01</span> to <span class="CodeFont">2261-12-31</span>. Some customers have used dummy timestamp values like <span class="CodeFont">9999-01-01</span>, which will fail because the value is out of range for a timestamp. Note that this is not an issue with <span class="CodeFont">Date</span> values.</li>
+                <li>Splice Machine suggests that, if your data contains any date or timestamp values that are not in the format <span class="CodeFont">yyyy-MM-dd HH:mm:ss</span>, you create a simple table that has just one or two columns and test importing the format. This is a simple way to confirm that the imported data is what you expect.</li>
             </ul>
             <h3 id="Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</h3>
             <p>If you are importing a large amount of data and have divided the files you are importing into groups, then it's a good idea to change the location of the bad record directory for each group; this will make debugging bad records a lot easier for you.</p>

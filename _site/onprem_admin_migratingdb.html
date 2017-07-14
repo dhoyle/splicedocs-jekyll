@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -617,6 +617,50 @@
      </li>
        
         
+    
+    <li>
+        <a href="#">Release Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="onprem_info_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_release.html">Release Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_updates.html">Update Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_requirements.html">Requirements</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_editions.html">Community and Enterprise Editions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
         
         <!-- if you aren't using the accordion, uncomment this block:
            <p class="external">
@@ -664,13 +708,13 @@
 
             <p>You can complete the migration process in these simple steps:</p>
             <ol>
-                <li value="1"><a href="#Download">Download and Install the Migration Assistant</a>
+                <li><a href="#Download">Download and Install the Migration Assistant</a>
                 </li>
-                <li value="2"><a href="#Use">Use the Migration Assistant to Export Your Database</a>
+                <li><a href="#Use">Use the Migration Assistant to Export Your Database</a>
                 </li>
-                <li value="3"><a href="#Update">Update to the Latest Version of Splice Machine</a>
+                <li><a href="#Update">Update to the Latest Version of Splice Machine</a>
                 </li>
-                <li value="4"><a href="#Use2">Use the Migration Assistant to Import Your Database</a>
+                <li><a href="#Use2">Use the Migration Assistant to Import Your Database</a>
                 </li>
             </ol>
             <p>You use the same Migration Assistant tool to export your database before updating your Splice Machine installation, and to subsequently import your database after updating.</p>
@@ -678,19 +722,19 @@
             <p class="noSpaceBelow">To download and install the <span class="ItalicFont">Splice&#160;Machine Migration Assistant</span> tool, follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Verify prerequisites:</p>
                         <p>Make sure that you have version 1.8 (or later)&#160;of the JRE&#160;installed on the node. You can view the version of JRE&#160;installed on most computers by using the following command:</p>
                         <div class="preWrapper"><pre class="ShellCommand">java -XshowSettings:properties -version</pre>
                         </div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Download the Migration Assistant:</p>
                         <p>Download the tool in compressed archive format to the home directory of your standalone computer or to any node in your cluster. You'll find <span class="CodeFont">gz</span> and <span class="CodeFont">zip</span> versions of the the download package here:</p>
                         <div class="preWrapperWide"><pre class="Plain"><a href="https://console.aws.amazon.com/s3/home?region=us-west-2#&amp;bucket=cetera-poc&amp;prefix=ddlutils/Migration%20Assistant/">https://console.aws.amazon.com/s3/home?region=us-west-2#&amp;bucket=cetera-poc&amp;prefix=ddlutils/Migration%20Assistant/</a></pre>
                         </div>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Unpackage the Tool:</p>
                         <p>Unpackage the archive you downloaded on your node, which contains these files:</p>
                         <table>
@@ -728,15 +772,15 @@
             <p>To export your database prior to upgrading your Splice Machine software, you need to:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1"> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. See the <a href="#Migratio">Migration Assistant Configuration Settings</a> section below for details. Make sure that you have the <span class="CodeFont">operation</span> property set to <span class="CodeFont">backup</span>.</li>
-                    <li value="2">
+                    <li> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. See the <a href="#Migratio">Migration Assistant Configuration Settings</a> section below for details. Make sure that you have the <span class="CodeFont">operation</span> property set to <span class="CodeFont">backup</span>.</li>
+                    <li>
                         <p class="topLevel">Verify that permissions are set correctly for the directory you specify for bad record information is in HDFS (the value of the <span class="CodeFont">hdfsBadDir</span> configuration setting); substitute that directory name for <span class="HighlightedCode">&lt;hdfsBadDir&gt;</span>&#160;in the following command line:</p>
                         <div class="preWrapper"><pre class="ShellCommand">chmod 777 <span class="Highlighted">&lt;hdfsBadDir&gt;</span></pre>
                         </div>
                     </li>
-                    <li value="3">Verify that the directory you specify for the work file (the value of the <span class="CodeFont">hdfsWorkDir</span> configuration property)&#160;is present on the computer you're using. </li>
-                    <li value="4">Run the <span class="CodeFont">Migration.sh</span> script to export your database.</li>
-                    <li value="5">
+                    <li>Verify that the directory you specify for the work file (the value of the <span class="CodeFont">hdfsWorkDir</span> configuration property)&#160;is present on the computer you're using. </li>
+                    <li>Run the <span class="CodeFont">Migration.sh</span> script to export your database.</li>
+                    <li>
                         <p class="topLevel">Examine the log file to verify that the export worked as you expect.</p>
                         <p>See <a href="#The">The Export Log File</a> section below for details on the generated log table.</p>
                     </li>
@@ -748,16 +792,16 @@
             <p>After you've upgraded your database, you can use the Migration Assistant a second time to restore the database you previously exported. Follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Verify that the Splice&#160;Machine region servers are running after the upgrade. You can easily verify this by issuing the following commands at the splice&gt;&#160;command prompt:</p>
                         <div class="preWrapper"><pre class="Example">splice&gt; select * from SYS.SYSTABLES;<br />splice&gt; select *&#160;from SYS.SYSTABLES --splice-properties useSpark=true<br />&gt; ;</pre>
                         </div>
                     </li>
-                    <li value="2"> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. Make sure that you change the the <span class="CodeFont">operation</span> property set to <span class="CodeFont">restore</span>.</li>
-                    <li value="3">Update any settings that start with import, as required. See the <a href="#Migratio">Migration Assistant Configuration Settings</a> section below for details. </li>
-                    <li value="4">Run the <span class="CodeFont">Migration.sh</span> script to import your upgraded database.</li>
-                    <li value="5">Examine the log file to verify that the export worked as you expect. See <a href="#The">The Export Log File</a> section below for details on the generated log table.</li>
-                    <li value="6">You should also verify that your database has been restored.</li>
+                    <li> Edit the <span class="CodeFont">prop.cfg</span> file with your desired configuration settings. Make sure that you change the the <span class="CodeFont">operation</span> property set to <span class="CodeFont">restore</span>.</li>
+                    <li>Update any settings that start with import, as required. See the <a href="#Migratio">Migration Assistant Configuration Settings</a> section below for details. </li>
+                    <li>Run the <span class="CodeFont">Migration.sh</span> script to import your upgraded database.</li>
+                    <li>Examine the log file to verify that the export worked as you expect. See <a href="#The">The Export Log File</a> section below for details on the generated log table.</li>
+                    <li>You should also verify that your database has been restored.</li>
                 </ol>
             </div>
             <h2 id="Migratio">Migration Assistant Configuration Settings</h2>
@@ -1129,7 +1173,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

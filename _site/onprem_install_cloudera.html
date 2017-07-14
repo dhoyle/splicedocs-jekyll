@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -617,6 +617,50 @@
      </li>
        
         
+    
+    <li>
+        <a href="#">Release Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="onprem_info_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_release.html">Release Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_updates.html">Update Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_requirements.html">Requirements</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_editions.html">Community and Enterprise Editions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
         
         <!-- if you aren't using the accordion, uncomment this block:
            <p class="external">
@@ -749,42 +793,42 @@
             <div>
                 <p>This topic describes installing and configuring Splice Machine on a Cloudera-managed cluster. Follow these steps:</p>
                 <ol>
-                    <li value="1"><a href="#Verify">Verify Prerequisites</a>
+                    <li><a href="#Verify">Verify Prerequisites</a>
                     </li>
-                    <li value="2"><a href="#Install">Download and Install Splice&#160;Machine</a>
+                    <li><a href="#Install">Download and Install Splice&#160;Machine</a>
                     </li>
-                    <li value="3"><a href="#Stop" class="WithinBook">Stop Hadoop Services</a>
+                    <li><a href="#Stop" class="WithinBook">Stop Hadoop Services</a>
                     </li>
-                    <li value="4"><a href="#ClusterMod">Make Cluster Modifications for Splice Machine</a>
+                    <li><a href="#ClusterMod">Make Cluster Modifications for Splice Machine</a>
                     </li>
-                    <li value="5"><a href="#Configur8">Configure Hadoop Services</a>
+                    <li><a href="#Configur8">Configure Hadoop Services</a>
                     </li>
-                    <li value="6">Make any needed <a href="#Optional">Optional Configuration Modifications</a></li>
-                    <li value="7"><a href="#Deploy">Deploy the Client Configuration</a>
+                    <li>Make any needed <a href="#Optional">Optional Configuration Modifications</a></li>
+                    <li><a href="#Deploy">Deploy the Client Configuration</a>
                     </li>
-                    <li value="8"><a href="#Restart">Restart the Cluster</a>
+                    <li><a href="#Restart">Restart the Cluster</a>
                     </li>
-                    <li value="9"><a href="#Run">Verify your Splice Machine Installation</a>
+                    <li><a href="#Run">Verify your Splice Machine Installation</a>
                     </li>
                 </ol>
                 <div class="noteRestriction"> Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark:&#160;you cannot run independent Spark jobs on it.</div>
                 <h2 id="Verify">Verify Prerequisites</h2>
                 <p>Before starting your Splice Machine installation, please make sure that your cluster contains the prerequisite software components:</p>
                 <ul>
-                    <li value="1">A cluster running Cloudera Data Hub (CDH) with Cloudera Manager (CM)</li>
-                    <li value="2">HBase  installed</li>
-                    <li value="3">HDFS&#160;installed</li>
-                    <li value="4">YARN&#160;installed</li>
-                    <li value="5">ZooKeeper installed</li>
-                    <li value="6">Ensure that Spark services are <span class="BoldFont">NOT</span>&#160;installed on your cluster; Splice Machine cannot currently coexist with Spark 1.x on a cluster.</li>
+                    <li>A cluster running Cloudera Data Hub (CDH) with Cloudera Manager (CM)</li>
+                    <li>HBase  installed</li>
+                    <li>HDFS&#160;installed</li>
+                    <li>YARN&#160;installed</li>
+                    <li>ZooKeeper installed</li>
+                    <li>Ensure that Spark services are <span class="BoldFont">NOT</span>&#160;installed on your cluster; Splice Machine cannot currently coexist with Spark 1.x on a cluster.</li>
                 </ul>
-                <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="notes_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
+                <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
                 <h2 id="Install">Download and Install Splice&#160;Machine</h2>
                 <p>Use Cloudera Manager to download </p>
                 <p>Follow these steps to install CDH, Hadoop, Hadoop services, and Splice Machine on your cluster:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Contact Splice Machine for your installer</p>
                             <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release 2.6:</p>
                             <table>
@@ -816,23 +860,23 @@
                             </table>
                             <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/">the Splice&#160;Machine Community site</a> or contact your&#160;Splice&#160;Machine representative.</div>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Add the parcel repository:</p>
                             <p class="indentLevel1">Now select your repository in the Cloudera Manager <span class="ItalicFont">Select Repository</span> screen.</p>
                             <ol class="plainFont">
-                                <li value="1">Make sure the <span class="AppCommand">Use&#160;Parcels (Recommended)</span>&#160;option and the <span class="AppCommand">Matched release</span> option are both selected.</li>
-                                <li value="2">Click the <span class="AppCommand">Continue</span> button to land on the <span class="ItalicFont">More Options</span> screen.</li>
-                                <li value="3">Cick the <span class="AppCommand">+</span> button for the <span class="AppCommand">Remote Parcel Repository URLs</span> field. Paste your Splice Machine repository URL&#160;into this field.</li>
+                                <li>Make sure the <span class="AppCommand">Use&#160;Parcels (Recommended)</span>&#160;option and the <span class="AppCommand">Matched release</span> option are both selected.</li>
+                                <li>Click the <span class="AppCommand">Continue</span> button to land on the <span class="ItalicFont">More Options</span> screen.</li>
+                                <li>Cick the <span class="AppCommand">+</span> button for the <span class="AppCommand">Remote Parcel Repository URLs</span> field. Paste your Splice Machine repository URL&#160;into this field.</li>
                             </ol>
                         </li>
-                        <li value="3">
+                        <li>
                             <p class="topLevel">Use Cloudera Manager to install the parcel.</p>
                         </li>
-                        <li value="4">
+                        <li>
                             <p class="topLevel">Verify that the parcel has been distributed and activated.</p>
                             <p class="indentLevel1">The Splice&#160;Machine parcel is identified as <span class="CodeFont">SPLICEMACHINE</span>&#160;in the Cloudera Manager user interface. Make sure that this parcel has been downloaded, distributed, and activated on your cluster.</p>
                         </li>
-                        <li value="5">
+                        <li>
                             <p class="topLevel">Restart and redeploy any client changes when Cloudera Manager prompts you.</p>
                         </li>
                     </ol>
@@ -842,11 +886,11 @@
                 <p>From the Cloudera Manager home screen, click the drop-down arrow next to the cluster on </p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Select your cluster in Cloudera Manager</p>
                             <p class="indentLevel1">Click the  drop-down arrow next to the name of the cluster on which you are installing Splice Machine.</p>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Stop the cluster</p>
                             <p class="indentLevel1">Click the <span class="AppCommand">Stop</span> button.</p>
                         </li>
@@ -856,15 +900,15 @@
                 <p>Splice Machine requires a few modifications at the file system level to work properly on a CDH&#160;cluster:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Install updated Java Servlet library:</p>
                             <p class="indentLevel1">You need to install an updated <span class="AppFontCustCode">javax.servlet-api</span> library so that Splice Machine can use Spark 2.0.x functionality in YARN.</p>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Remove Spark 1.6.x libraries</p>
                             <p class="indentLevel1">To avoid Spark version mismatches, you must remove all Spark 1.6.x libraries from <span class="CodeFont">/opt/cloudera/parcels/CDH/jars/</span>.</p>
                         </li>
-                        <li value="3">
+                        <li>
                             <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to the Splice&#160;Machine uber jar and YARN&#160;proxy jar into the YARN&#160;directories</p>
                             <p class="indentLevel1">Issue this command <span class="important">on each node</span> in your cluster::</p>
                             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
@@ -876,35 +920,35 @@ sudo /opt/cloudera/parcels/SPLICEMACHINE/scripts/install-splice-symlinks.sh</pre
                 <h2 id="Configur8">Configure Hadoop Services</h2>
                 <p>Now it's time to make a few modifications in the Hadoop services configurations:</p>
                 <ul>
-                    <li value="1"><a href="#Configur">Configure and Restart the Management Service</a>
+                    <li><a href="#Configur">Configure and Restart the Management Service</a>
                     </li>
-                    <li value="2"><a href="#Configur4">Configure ZooKeeper</a>
+                    <li><a href="#Configur4">Configure ZooKeeper</a>
                     </li>
-                    <li value="3"><a href="#Configur5">Configure HDFS</a>
+                    <li><a href="#Configur5">Configure HDFS</a>
                     </li>
-                    <li value="4"><a href="#Configur2">Configure YARN</a>
+                    <li><a href="#Configur2">Configure YARN</a>
                     </li>
-                    <li value="5"><a href="#Configur3">Configure HBASE</a>
+                    <li><a href="#Configur3">Configure HBASE</a>
                     </li>
                 </ul>
                 <h3 id="Configur">Configure and Restart the Management Service</h3>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p>Select the <span class="AppCommand">Configuration</span> tab in CM:</p>
                             <div>
                                 <img src="images/CM.AlertListenPort.png" class="nestedTightSpacing" alt="Configuring the Cloudera Manager ports" />
                             </div>
                         </li>
-                        <li value="2">Change the value of the Alerts:&#160;Listen Port to  to <span class="AppFontCustCode">10110</span>.</li>
-                        <li value="3">Save changes and restart the Management Service.</li>
+                        <li>Change the value of the Alerts:&#160;Listen Port to  to <span class="AppFontCustCode">10110</span>.</li>
+                        <li>Save changes and restart the Management Service.</li>
                     </ol>
                 </div>
                 <h3 id="Configur4">Configure ZooKeeper</h3>
                 <p>To edit the ZooKeeper configuration, click <span class="AppCommand">ZooKeeper</span> in the Cloudera Manager (CM)&#160;home screen, then click the <span class="AppCommand">Configuration</span> tab and follow these steps:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Select the <span class="AppCommand">Service-Wide</span> category.</p>
                             <p class="indentLevel1">Make the following changes:</p>
                             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">Maximum Client Connections = <span class="AppFontCust">0</span>
@@ -918,10 +962,10 @@ Maximum Session Timeout    = <span class="AppFontCust">120000</span></pre>
                 <p>To edit the HDFS configuration, click <span class="AppCommand">HDFS</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Verify that the HDFS&#160;data directories for your cluster are set up to use your data disks.</p>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Change the values of these settings</p>
                             <table>
                                 <col />
@@ -960,14 +1004,14 @@ Maximum Session Timeout    = <span class="AppFontCust">120000</span></pre>
                                 </tbody>
                             </table>
                         </li>
-                        <li value="3">Click the <span class="AppCommand">Save Changes</span> button.</li>
+                        <li>Click the <span class="AppCommand">Save Changes</span> button.</li>
                     </ol>
                 </div>
                 <h3 id="Configur2">Configure YARN</h3>
                 <p>To edit the YARN configuration, click <span class="AppCommand">YARN</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Verify that the following directories are set up to use your data disks.</p>
                             <table>
                                 <col />
@@ -979,7 +1023,7 @@ NodeManager Local Directories<br />NameNode Data Directories<br />HDFS Checkpoin
                                 </tbody>
                             </table>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Change the values of these settings</p>
                             <table>
                                 <col />
@@ -1057,7 +1101,7 @@ $MR2_CLASSPATH
                                 </tbody>
                             </table>
                         </li>
-                        <li value="3">
+                        <li>
                             <p class="topLevel">Add property values </p>
                             <p class="indentLevel1">You need to add the same two property values to each of four YARN&#160;advanced configuration settings.</p>
                             <p class="indentLevel1">Add these properties:</p>
@@ -1083,20 +1127,20 @@ $MR2_CLASSPATH
                             </table>
                             <p class="indentLevel1">To each of these YARN&#160;settings:</p>
                             <ul class="codeList">
-                                <li value="1">Yarn Service Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
-                                <li value="2">Yarn Client Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
-                                <li value="3">NodeManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
-                                <li value="4">ResourceManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
+                                <li>Yarn Service Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
+                                <li>Yarn Client Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
+                                <li>NodeManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
+                                <li>ResourceManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
                             </ul>
                         </li>
-                        <li value="4">Click the <span class="AppCommand">Save Changes</span> button.</li>
+                        <li>Click the <span class="AppCommand">Save Changes</span> button.</li>
                     </ol>
                 </div>
                 <h3 id="Configur3">Configure HBASE</h3>
                 <p>To edit the HBASE configuration, click <span class="AppCommand">HBASE</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Change the values of these settings</p>
                             <table>
                                 <col />
@@ -1236,7 +1280,7 @@ $MR2_CLASSPATH
                                 </tbody>
                             </table>
                         </li>
-                        <li value="2">
+                        <li>
                             <p id="HBaseAdvConfigStep">Set the value of <span class="CodeFont">HBase Service Advanced&#160;Configuration Snippet (Safety Valve)</span>&#160;for <span class="CodeFont">hbase-site.xml</span>:</p>
                             <div class="preWrapperWide"><pre class="Example">&lt;property&gt;&lt;name&gt;dfs.client.read.shortcircuit.buffer.size&lt;/name&gt;&lt;value&gt;131072&lt;/value&gt;&lt;/property&gt;
 &lt;property&gt;&lt;name&gt;hbase.balancer.period&lt;/name&gt;&lt;value&gt;60000&lt;/value&gt;&lt;/property&gt;
@@ -1282,23 +1326,23 @@ $MR2_CLASSPATH
 &lt;property&gt;&lt;name&gt;splice.authentication&lt;/name&gt;&lt;value&gt;NATIVE&lt;/value&gt;&lt;/property&gt;</pre>
                             </div>
                         </li>
-                        <li value="3">
+                        <li>
                             <p>Set the value of Java Configuration Options for HBase Master:</p>
                             <div class="preWrapperWide"><pre class="Example">-XX:MaxPermSize=512M -XX:+HeapDumpOnOutOfMemoryError -XX:MaxDirectMemorySize=2g -XX:+AlwaysPreTouch -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=10101 -Dsplice.spark.enabled=true -Dsplice.spark.app.name=SpliceMachine -Dsplice.spark.master=yarn-client -Dsplice.spark.logConf=true -Dsplice.spark.yarn.maxAppAttempts=1 -Dsplice.spark.driver.maxResultSize=1g -Dsplice.spark.driver.cores=2 -Dsplice.spark.yarn.am.memory=1g -Dsplice.spark.dynamicAllocation.enabled=true -Dsplice.spark.dynamicAllocation.executorIdleTimeout=120 -Dsplice.spark.dynamicAllocation.cachedExecutorIdleTimeout=120 -Dsplice.spark.dynamicAllocation.minExecutors=0 -Dsplice.spark.dynamicAllocation.maxExecutors=12 -Dsplice.spark.io.compression.lz4.blockSize=32k -Dsplice.spark.kryo.referenceTracking=false -Dsplice.spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator -Dsplice.spark.kryoserializer.buffer.max=512m -Dsplice.spark.kryoserializer.buffer=4m -Dsplice.spark.locality.wait=100 -Dsplice.spark.memory.fraction=0.5 -Dsplice.spark.scheduler.mode=FAIR -Dsplice.spark.serializer=org.apache.spark.serializer.KryoSerializer -Dsplice.spark.shuffle.compress=false -Dsplice.spark.shuffle.file.buffer=128k -Dsplice.spark.shuffle.service.enabled=true -Dsplice.spark.yarn.am.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native -Dsplice.spark.yarn.am.waitTime=10s -Dsplice.spark.yarn.executor.memoryOverhead=2048 -Dsplice.spark.driver.extraJavaOptions=-Dlog4j.configuration=file:/etc/spark/conf/log4j.properties -Dsplice.spark.driver.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native -Dsplice.spark.driver.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/CDH/jars/htrace-core-3.1.0-incubating.jar -Dsplice.spark.executor.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native -Dsplice.spark.executor.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/CDH/jars/htrace-core-3.1.0-incubating.jar -Dsplice.spark.ui.retainedJobs=100 -Dsplice.spark.ui.retainedStages=100 -Dsplice.spark.worker.ui.retainedExecutors=100 -Dsplice.spark.worker.ui.retainedDrivers=100 -Dsplice.spark.streaming.ui.retainedBatches=100 -Dsplice.spark.executor.cores=4 -Dsplice.spark.executor.memory=8g -Dspark.compaction.reserved.slots=4 -Dsplice.spark.eventLog.enabled=true -Dsplice.spark.eventLog.dir=hdfs:///user/splice/history -Dsplice.spark.local.dir=/tmp -Dsplice.spark.yarn.jars=/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
                             </div>
                         </li>
-                        <li value="4">
+                        <li>
                             <p>Set the value of Java Configuration Options for Region Servers:</p>
                             <div class="preWrapperWide"><pre class="Example">-XX:+HeapDumpOnOutOfMemoryError -XX:MaxDirectMemorySize=2g -XX:MaxPermSize=512M -XX:+AlwaysPreTouch -XX:+UseG1GC -XX:MaxNewSize=4g -XX:InitiatingHeapOccupancyPercent=60 -XX:ParallelGCThreads=24 -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=5000 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=10102</pre>
                             </div>
                         </li>
-                        <li value="5">Click the <span class="AppCommand">Save Changes</span> button.</li>
+                        <li>Click the <span class="AppCommand">Save Changes</span> button.</li>
                     </ol>
                 </div>
                 <h2 id="Optional">Optional Configuration Modifications</h2>
                 <p>There are a few configuration modifications you might want to make:</p>
                 <ul>
-                    <li value="1"><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
+                    <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
                 </ul>
                 <h3 id="Modify">Modify the Authentication Mechanism</h3>
                 <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
@@ -1311,20 +1355,20 @@ $MR2_CLASSPATH
                 <p>To deploy your configuration:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">Click the notification.</li>
-                        <li value="2"> Click the <span class="AppCommand">Deploy Client Configuration</span> button. </li>
-                        <li value="3">When the deployment completes, click the <span class="AppCommand">Finish</span> button.</li>
+                        <li>Click the notification.</li>
+                        <li> Click the <span class="AppCommand">Deploy Client Configuration</span> button. </li>
+                        <li>When the deployment completes, click the <span class="AppCommand">Finish</span> button.</li>
                     </ol>
                 </div>
                 <h2 id="Restart">Restart the Cluster</h2>
                 <p>As a first step, we stop the services that we're about to configure from the Cloudera Manager home screen:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li value="1">
+                        <li>
                             <p class="topLevel">Restart ZooKeeper</p>
                             <p class="indentLevel1">Select <span class="AppCommand">Start</span> from the <span class="AppCommand">Actions</span> menu in the upper right corner of the ZooKeeper <span class="AppCommand">Configuration</span> tab to restart ZooKeeper.</p>
                         </li>
-                        <li value="2">
+                        <li>
                             <p class="topLevel">Restart HDFS</p>
                             <p class="indentLevel1">Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of)&#160;HDFS&#160;in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HDFS.</p>
                             <p class="indentLevel1">Use your terminal window to create these directories (if they are not already available in HDFS):</p>
@@ -1334,11 +1378,11 @@ sudo -iu hdfs hadoop fs -chown -R hbase:hbase hdfs:///user/hbase hdfs:///user/sp
 sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/history</pre>
                             </div>
                         </li>
-                        <li value="3">
+                        <li>
                             <p class="topLevel">Restart YARN</p>
                             <p class="indentLevel1">Click the <span class="AppCommand">YARN Actions</span> drop-down arrow associated with (to the right of)&#160;YARN in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart YARN.</p>
                         </li>
-                        <li value="4">
+                        <li>
                             <p class="topLevel">Restart HBase</p>
                             <p class="indentLevel1">Click the <span class="AppCommand">HBASE Actions</span> drop-down arrow associated with (to the right of)&#160;HBASE in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HBase.</p>
                         </li>
@@ -1432,7 +1476,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

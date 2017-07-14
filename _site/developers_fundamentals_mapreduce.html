@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -631,8 +631,8 @@
                         <td>
                             <p class="noSpaceAbove">Creates an object that:</p>
                             <ul>
-                                <li value="1"> uses Splice Machine to scan the table and decode the data</li>
-                                <li value="2">returns an <span class="CodeFont">ExecRow</span> (typed data) object</li>
+                                <li> uses Splice Machine to scan the table and decode the data</li>
+                                <li>returns an <span class="CodeFont">ExecRow</span> (typed data) object</li>
                             </ul>
                         </td>
                     </tr>
@@ -641,9 +641,9 @@
                         <td>
                             <p class="noSpaceAbove">Creates an object that:</p>
                             <ul>
-                                <li value="1"> writes to a buffered cache</li>
-                                <li value="2">dumps the cache into Splice Machine </li>
-                                <li value="3">returns an <span class="CodeFont">ExecRow</span> (typed data)&#160;object.</li>
+                                <li> writes to a buffered cache</li>
+                                <li>dumps the cache into Splice Machine </li>
+                                <li>returns an <span class="CodeFont">ExecRow</span> (typed data)&#160;object.</li>
                             </ul>
                         </td>
                     </tr>
@@ -659,7 +659,7 @@
             <p>This topic describes using the Splice Machine MapReduce API, <span class="CodeFont">com.splicemachine.mrio.api</span>, a simple word count program that retrieves data from an input table, summarizes the count of initial character of each word, and writes the result to an output table.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Define your input and output tables:</p>
                         <p class="indentLevel1">First, assign the name of the Splice Machine database table from which you want to retrieve data to a variable, and then assign a name for your output table to another variable:</p>
                         <p class="indentLevel1">
@@ -670,7 +670,7 @@ String outputTableName = "USERTEST";</pre>
                         </p>
                         <p class="indentLevel1">You can specify table names using the <span class="ItalicFont">&lt;schemaName&gt;.&lt;tableName&gt;</span> format; if you don't specify a schema name, the default schema is assumed.</p>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Create a new job instance:</p>
                         <p class="indentLevel1">You need to create a new job instance and assign a name to it:</p>
                         <p class="indentLevel1">
@@ -680,7 +680,7 @@ Job job = new Job(config, "WordCount");</pre>
                             </div>
                         </p>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Initialize your mapper job:</p>
                         <p class="indentLevel1">We initialize our sample job using the <span class="CodeFont">initTableMapperJob</span> utility method:</p>
                         <div class="preWrapperWide"><pre class="Example">TableMapReduceUtil.initTableMapperJob(
@@ -694,7 +694,7 @@ Job job = new Job(config, "WordCount");</pre>
     SpliceInputFormat.class);</pre>
                         </div>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Retrieve values within your map function:</p>
                         <p class="indentLevel1">Our sample <span class="CodeFont">map</span> function retrieves and parses a single row with specified columns. </p>
                         <div class="preWrapperWide"><pre class="Example">public void map(ImmutableBytesWritable row, ExecRow value, Context context)
@@ -718,7 +718,7 @@ Job job = new Job(config, "WordCount");</pre>
 }</pre>
                         </div>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Manipulate and save the value with reduce function:</p>
                         <p class="indentLevel1">Our sample <span class="CodeFont">reduce</span> function manipulates and saves the value by creating an <span class="CodeFont">ExecRow</span> and filling in the row with the <span class="CodeFont">execRow.setRowArray</span> method. </p>
                         <div class="preWrapperWide"><pre class="Example">public void reduce(Text key, IterableIntWritable&gt; values, Context context)
@@ -742,7 +742,7 @@ Job job = new Job(config, "WordCount");</pre>
 }</pre>
                         </div>
                     </li>
-                    <li value="6">
+                    <li>
                         <p class="topLevel">Commit or rollback the job:</p>
                         <p class="indentLevel1">If the job is successful, commit the transaction. </p>
                         <div class="preWrapper"><pre class="Example" xml:space="preserve">job.commit();</pre>
@@ -771,7 +771,7 @@ Job job = new Job(config, "WordCount");</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -4,8 +4,8 @@ summary: Current release notes for the Splice Machine Database-as-Service produc
 sidebar:  dbaas_sidebar
 toc: false
 product: all
-permalink: dbaas_notes_release.html
-folder: DBaaS/Notes
+permalink: dbaas_info_release.html
+folder: DBaaS/Info
 ---
 # Release Notes: Alpha Release of Splice Machine Database-as-Service
 

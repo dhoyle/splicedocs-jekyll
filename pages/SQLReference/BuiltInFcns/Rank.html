@@ -25,8 +25,8 @@ folder: SQLReference/BuiltInFcns
             <p class="heading2">Usage</p>
             <p>The <span class="CodeFont">RANK()</span> and <span class="CodeFont"><a href="sqlref_builtinfcns_denserank.html">DENSE_RANK()</a></span>&#160;analytic functions are very similar. The difference shows up when there are multiple input rows that have the same ranking value. When that happens:</p>
             <ul>
-                <li value="1">The <span class="CodeFont">RANK()</span>&#160;function can generate non-consecutive ranking result values: if values in the ranking column are the same, they receive the same rank; however, the next number in the ranking sequence is then skipped, which means that <span class="CodeFont">RANK</span>&#160;can return non-consecutive numbers.</li>
-                <li value="2">The <span class="CodeFont">DENSE_RANK()</span>&#160;function always returns consecutive rankings:if values in the ranking column are the same, they receive the same rank, and the next number in the ranking sequence is then used to rank the row or rows that follow.</li>
+                <li>The <span class="CodeFont">RANK()</span>&#160;function can generate non-consecutive ranking result values: if values in the ranking column are the same, they receive the same rank; however, the next number in the ranking sequence is then skipped, which means that <span class="CodeFont">RANK</span>&#160;can return non-consecutive numbers.</li>
+                <li>The <span class="CodeFont">DENSE_RANK()</span>&#160;function always returns consecutive rankings:if values in the ranking column are the same, they receive the same rank, and the next number in the ranking sequence is then used to rank the row or rows that follow.</li>
             </ul>
             <p>Here's a simple example that shows the ranking produced by the two functions for input with duplicate values to illustrate that difference:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">-----------------------------
@@ -153,11 +153,11 @@ Jason Minman            |Giants    |2015  |1000000             |20
             </div>
             <p class="heading2">See Also</p>
             <ul>
-                <li value="1"><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
-                <li value="2"><a href="sqlref_builtinfcns_bigint.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>
-                <li value="3"><a href="sqlref_builtinfcns_denserank.html"><span class="CodeFont">DENSE_RANK</span></a>&#160;function</li>
-                <li value="4"><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
-                <li value="5"><span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
+                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
+                <li><a href="sqlref_builtinfcns_bigint.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>
+                <li><a href="sqlref_builtinfcns_denserank.html"><span class="CodeFont">DENSE_RANK</span></a>&#160;function</li>
+                <li><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
+                <li><span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
             </ul>
         </div>
 	</section>

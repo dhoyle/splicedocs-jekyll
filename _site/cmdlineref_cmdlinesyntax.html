@@ -139,11 +139,7 @@
                         
                         
                         
-                        <li><a href="releasenotes_intro.html">Release Notes</a></li>
-                        
-                        
-                        
-                        <li><a href="notes_intro.html">Other Notes</a></li>
+                        <li><a href="notes_intro.html">General Information</a></li>
                         
                         
                     </ul>
@@ -166,7 +162,7 @@
                         
                         
                         
-                        <li><a href="dbaas_notes_release.html">Release Notes</a></li>
+                        <li><a href="dbaas_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -190,6 +186,10 @@
                         
                         
                         <li><a href="onprem_admin_intro.html">Administrator's Guide</a></li>
+                        
+                        
+                        
+                        <li><a href="onprem_info_intro.html">Release Information</a></li>
                         
                         
                     </ul>
@@ -617,6 +617,50 @@
      </li>
        
         
+    
+    <li>
+        <a href="#">Release Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="onprem_info_intro.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_release.html">Release Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_updates.html">Update Notes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_requirements.html">Requirements</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="onprem_info_editions.html">Community and Enterprise Editions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
         
         <!-- if you aren't using the accordion, uncomment this block:
            <p class="external">
@@ -654,11 +698,11 @@
             <h1 id="kanchor152">Using the splice&gt;&#160;Command Line Interface</h1>
             <p>This topic presents information that will help you in using the Splice Machine <span class="AppCommand">splice&gt;</span> command line interpreter, in the following sections:</p>
             <ul>
-                <li value="1">The <a href="#splice%3E" class="selected">splice&gt;&#160;Command Line Interpreter</a> section shows you how to invoke the splice&gt;&#160;command line.</li>
-                <li value="2">The <a href="#Command" class="selected">Command Line Output</a> section describes how you can adjust the appearance of output from the interepreter.</li>
-                <li value="3">The <a href="#Syntax" class="selected">Command Line Syntax</a> section summarizes the syntax of commands, including capitalization and case-sensitivity rules, as well as various special characters you can use in your commands. It also shows you how to include comments in your command lines and how to run a file of&#160;SQL&#160;commands.</li>
-                <li value="4">The <a href="#ExampleCommands" class="selected">Example Command Lines</a> section shows several examples of command lines.</li>
-                <li value="5">The <a href="tutorials_cli_scripting.html">Scripting Splice Commands</a> tutorial describes how to create a script of <span class="AppCommand">splice&gt;</span>&#160;commands to run a series of operations like loading a number of files into your database</li>
+                <li>The <a href="#splice%3E" class="selected">splice&gt;&#160;Command Line Interpreter</a> section shows you how to invoke the splice&gt;&#160;command line.</li>
+                <li>The <a href="#Command" class="selected">Command Line Output</a> section describes how you can adjust the appearance of output from the interepreter.</li>
+                <li>The <a href="#Syntax" class="selected">Command Line Syntax</a> section summarizes the syntax of commands, including capitalization and case-sensitivity rules, as well as various special characters you can use in your commands. It also shows you how to include comments in your command lines and how to run a file of&#160;SQL&#160;commands.</li>
+                <li>The <a href="#ExampleCommands" class="selected">Example Command Lines</a> section shows several examples of command lines.</li>
+                <li>The <a href="tutorials_cli_scripting.html">Scripting Splice Commands</a> tutorial describes how to create a script of <span class="AppCommand">splice&gt;</span>&#160;commands to run a series of operations like loading a number of files into your database</li>
             </ul>
             <p>The remainder of this section contains a reference page for each of the command line commands.</p>
             <h2 id="splice&gt;">splice&gt;&#160;Command Line Interpreter</h2>
@@ -718,19 +762,19 @@ select count(*) from CUST_EMAIL;</pre>
             <h2 id="Syntax">Command Line Syntax</h2>
             <p>This section briefly summarizes the syntax of command lines you can enter in response to the <span class="AppCommand">splice&gt;</span>&#160;prompt, including&#160;these subsections:</p>
             <ul>
-                <li value="1"><a href="#Finish" class="selected">Finishing and submitting command lines</a>
+                <li><a href="#Finish" class="selected">Finishing and submitting command lines</a>
                 </li>
-                <li value="2"><a href="#Capitali" class="selected">Capitalization and case sensitivity rules</a>
+                <li><a href="#Capitali" class="selected">Capitalization and case sensitivity rules</a>
                 </li>
-                <li value="3"><a href="#Special" class="selected">Special character usage</a>
+                <li><a href="#Special" class="selected">Special character usage</a>
                 </li>
-                <li value="4"><a href="#Multiline" class="selected">Running multi-line commands</a>
+                <li><a href="#Multiline" class="selected">Running multi-line commands</a>
                 </li>
-                <li value="5"><a href="#RunFromFile" class="selected">Running commands from a file</a>
+                <li><a href="#RunFromFile" class="selected">Running commands from a file</a>
                 </li>
-                <li value="6"><a href="#Comments" class="selected">Including comments in your command lines</a>
+                <li><a href="#Comments" class="selected">Including comments in your command lines</a>
                 </li>
-                <li value="7"><a href="#Using" class="selected">Using rlWrap on the command line</a>
+                <li><a href="#Using" class="selected">Using rlWrap on the command line</a>
                 </li>
             </ul>
             <h3 id="Finish">Finish Commands with a Semicolon</h3>
@@ -911,14 +955,14 @@ splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
             <h2 id="kanchor161">Scripting <span class="AppCommand">splice&gt;</span> Commands</h2>
             <p>You can use the Splice Machine Command Line Interface (<span class="AppCommand">splice&gt;</span>) to interactively run database commands. This topic describes how to create a script of <span class="AppCommand">splice&gt;</span> commands to run a series of operations, such as loading a number of files into your database. To script a series of <span class="AppCommand">splice&gt;</span> commands, you need to create:</p>
             <ul>
-                <li value="1">an SQL commands file containing the SQL statements you want executed</li>
-                <li value="2">an SQL file to connect to the database and invoke the SQL commands file</li>
-                <li value="3">a shell script using Bash (<span class="CodeFont">/bin/bash</span>)</li>
+                <li>an SQL commands file containing the SQL statements you want executed</li>
+                <li>an SQL file to connect to the database and invoke the SQL commands file</li>
+                <li>a shell script using Bash (<span class="CodeFont">/bin/bash</span>)</li>
             </ul>
             <p>Follow these steps to create your script:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li value="1">
+                    <li>
                         <p class="topLevel">Create a file of SQL&#160;commands:</p>
                         <p class="indentLevel1">First, create a file that contains the SQL&#160;commands you want to run against your Splice Machine database. For this example, we'll create a file named <span class="CodeFont">create-my-tables.sql</span> that creates a table in the database:</p>
                         <div class="preWrapper"><pre class="Example" xml:space="preserve">create table customers (
@@ -928,7 +972,7 @@ splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
 );</pre>
                         </div>
                     </li>
-                    <li value="2">
+                    <li>
                         <p class="topLevel">Create an SQL&#160;file to connect to the database and invoke the commands file</p>
                         <p class="indentLevel1">We need a separate SQL&#160;file named <span class="CodeFont">my_load_datascript.sql</span>that connects to your database and then invokes the file of SQL&#160;commands we just created. </p>
                         <div class="noteNote">The <span class="CodeFont">connect</span> command in this file must run before running the file of SQL&#160;statements.</div>
@@ -946,7 +990,7 @@ quit;</pre>
                         </p>
                         <p class="indentLevel1"> If you are running Splice Machine on a cluster, connect from a machine that is NOT&#160;running an HBase RegionServer and specify the IP&#160;address of a <span class="HighlightedCode">regionServer</span> node, e.g. <span class="AppCommand">10.1.1.110</span>. If you're using the standalone version of Splice Machine, specify <span class="HighlightedCode">localhost</span> instead.</p>
                     </li>
-                    <li value="3">
+                    <li>
                         <p class="topLevel">Create a shell script to run your SQL&#160;connect file</p>
                         <p class="indentLevel1">We now create a shell script named <span class="CodeFont">load_datascript.sh</span> to run the <span class="CodeFont">my_load_datascript.sql</span> file:</p>
                         <div class="preWrapperWide"><pre class="Example" xml:space="preserve" style="font-weight: normal;">#!/bin/bash
@@ -956,14 +1000,14 @@ java -Djdbc.drivers=com.splicemachine.db.jdbc.ClientDriver -Dij.outfile=my_load_
                         </div>
                         <p class="indentLevel1"> The first line of this script must set the <span class="CodeFont">CLASSPATH</span> to the location of your Splice Machine jar file. The second line runs the ij command, specifying its output file (<span class="CodeFont">my_load_datascript.out</span>) and its SQL commands input file, which is the <span class="CodeFont">my_load_datascript_sql</span> file that we created in the previous step.</p>
                     </li>
-                    <li value="4">
+                    <li>
                         <p class="topLevel">Make your shell script executable</p>
                         <p class="indentLevel1">We need to make the shell script executable with the chmod shell command:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">
 chmod +x load_datascript.sh</pre>
                         </div>
                     </li>
-                    <li value="5">
+                    <li>
                         <p class="topLevel">Use nohup to run the script</p>
                         <p class="indentLevel1">The <span class="ShellCommand">nohup</span> utility allows you to run a script file in the background, which means that it will continue running if you log out, disconnect from a remote machine, or lose your network connection.</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">
@@ -1005,7 +1049,7 @@ nohup ./command-name.sh &gt; ./command-name.out 2&gt;&amp;1 &amp;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 13, 2017 <br />
+ Site last generated: Jul 14, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
