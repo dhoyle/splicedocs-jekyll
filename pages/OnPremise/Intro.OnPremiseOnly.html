@@ -12,7 +12,7 @@ folder: OnPremise
 	<section>
 		<div class="TopicContent">
 			<h1>Welcome to the Splice Machine On-Premise Database!</h1>
-			<p>Welcome to Splice Machine, the  database platform for adaptive applications that manage operational processes. This site contains documentation for our <span class="ConsoleLink">Managed Database Service in the Cloud</span>.</p>
+			<p>Welcome to Splice Machine, the  database platform for adaptive applications that manage operational processes. This site contains documentation for our <span class="ConsoleLink">On-Premise Database</span>.</p>
 			<p>Splice Machine is a hybrid relational database platform that allows you to run transactional (OLTP) and analytical (OLAP)&#160;SQL workloads, concurrently, against shared data. To ensure that one does not interfere with the other, Splice Machine uses resource isolation and a ground-breaking MVCC technology for concurrent, non-locking, distributed ACID transactions. </p>
 			<p>With Splice Machine, you can manage operational processes, large-scale IoT infrastructures, and use analytical processing and machine learning to improve over time.</p>
 			<p>Splice Machine delivers an open-source data platform that incorporates the proven scalability of HBase and the in-memory performance of Apache Spark. The cost-based optimizer uses advanced statistics to choose the best compute engine, storage engine, index access, join order and join algorithm for each task. In this way, Splice Machine can concurrently process transactional and analytical workloads at scale.</p>
@@ -20,38 +20,11 @@ folder: OnPremise
 			<p>This site contains the documentation for:</p>
             <p class="indentLevel1"> Version <span class="CalloutFont">{% if site.incl_onlydoc %}{{splvar_basic_SpliceReleaseVersion}}{% elsif site.incl_notdoc %}{{splvar_basic_InternalReleaseVersion}}{% endif %}</span> of <span class="CalloutFont">Splice Machine</span>{% if site.incl_notdoc %}<span class="CalloutFont"> (internal)</span>{% endif %}, released {%if site.incl_onlydoc %} {{splvar_basic_SpliceReleaseDate}}{% elsif site.incl_notdoc %}{{splvar_basic_InternalDocReleaseDate}}{% endif %}</p>
 			<p>If you're using an earlier version, you'll find the documentation here:</p>
-			<table>
-				<col>
-				</col>
-				<col>
-				</col>
-				<tbody>
-					<tr>
-						<td>Version 2.5</td>
-						<td>Release 2.5 Documentation</a> (Feb 2017)</td>
-					</tr>
-					<tr>
-						<td>Version 2.0</td>
-						<td>Release 2.0 Documentation</a> (Sep. 2016)</td>
-					</tr>
-					<tr>
-						<td>Version 1.5</td>
-						<td>Release 1.5 Documentation</a> (Jun. 2016)</td>
-					</tr>
-				</tbody>
-			</table>
+{% include splice_snippets/docversions_table.html %}
 			<h2>On-Premise Database Documentation</h2>
-			<p>This sites includes documentation for our On-Premise Database, organized in the following books:</p>
-			<ul>
-				<li>The <span class="ItalicFont"><a href="onprem_admin_intro.html">Administration Guide</a></span> describes the administrative tasks associated with configuring and maintaining your Splice Machine software, including topics such as starting and stopping your database, cleaning your database, and backing up.</li>
-				<li>Our <i><a href="onprem_install_intro.html">Installation Guide</a></i> walks you through the steps to install Splice&#160;Machine on your MacOS or Linux computer.</li>
-				<li>The <span class="ItalicFont"><a href="sqlref_intro.html">SQL&#160;Reference Manual</a></span> is a complete reference for our implementation of ANSI SQL.</li>
-				<li>Our <a href="cmdlineref_intro.html">splice&gt;&#160;Command Line Reference Manual</a> is a complete reference for our command line interpreter, which allows you to run SQL from the command line as well as taking advantage of a number of other commands for viewing and interacting with your database.</li>
-				<li>
-					<p>Our <span class="ItalicFont"><a href="developers_intro.html">Developer's Guide</a></span> contains numerous topics for developers working with our platform, in sections including <span class="ItalicFont">Fundamentals, Connecting Programmatically, Connecting to BI&#160;Tools, Ingesting and Streaming Data, Analytics and Machine Learning</span>, and <span class="ItalicFont">Tuning Your Queries</span>.&#160;</p>
-				</li>
-				<li>Our <span class="ItalicFont"><a href="tutorials_intro.html">Tutorials Collection</span> contains a number of task-based tutorials to help you quickly take advantage of many Splice&#160;Machine features.</li>
-				<li>Our <span class="ItalicFont"><a href="releasenotes_intro.html">Release Notes</a></span> section contains a release and update notes, requirements, and edition and license information.</li>
-			</ul>
+			<p>The Splice Machine Documentation is divided into three main areas, each of which contains multiple sections, as shown in the following table. The Splice Machine topics apply to all products, and the On-Premise-DB topics are specific to this product.</p>
+{% include splice_snippets/docssummary_table.html %}
+			<h3>Using our Documentation</h3>
+			<p>Please visit our <a href="notes_usingdocs.html">Documentation Summary</a> page for a quick introduction to navigating and using the components of our documentation system.</p>
         </div>
 	</section>

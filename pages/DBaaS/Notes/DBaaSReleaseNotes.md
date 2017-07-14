@@ -31,11 +31,11 @@ Here are the limitations and considerations you should be aware of when creating
 * Reconfiguration and resizing of clusters is not currently available; if you need a larger or smaller cluster, you will need to create a new one from your Dashboard.
 
 * Your new cluster will typically become available in less than 30 minutes; you'll receive an email notification containing connection details from us when it is ready.
-<div class="noteIcon">If you don't receive an email within 1 hour of creating your cluster, please contact us.</div>
+<div class="noteIcon">If you don't receive an email within 1 hour of creating your cluster, it is likely due to the fact that we're working on resource allocation at the time, and your cluster will become available in 1-2 business hours (M-F 9am-5pm PDT).</div>
 
 * If your Notebook link is not working when you receive your *Cluster Ready* email, try again in 5-10 minutes.
 
-* We are currently only supported cluster uptime Monday-Friday 9am-5pm PDT.
+* We are currently only supporting cluster uptime Monday-Friday 9am-5pm PDT.
 
 * Splice Machine may bring down your clusters at the end of the week, in order to update the software. All scheduled outages will be posted to your Dashboard.
 
@@ -69,7 +69,7 @@ This section contains information about connecting to your database:
 
 * Your initial link from the DB Console will redirect you to an “HTTP" page that will fail.  Change the HTTP to HTTPS and resubmit that URL, and you will get to the Spark pages.  Other possible redirects on this page will also require this.
 
-* For external JDBC access, download the JDBC driver at …….
+* For external JDBC access, download the JDBC driver at https://s3.amazonaws.com/splicemachine/artifacts/. It will be of the form db-client-<span class="ItalicFont"><versioninfo></span>.jar.
 
 ## Functionality Limitations
 * A single query or SQL statement will time out if it takes more than 1 hour; upon timeout, you may see a <span class="CodeFont">SQLNonTransientConnectionException</span> message displayed.
