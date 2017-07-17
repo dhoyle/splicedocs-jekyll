@@ -23,6 +23,25 @@ $( document ).ready(function() {
 
 });
 
+        // This script forces all external links to open in a new tab
+$(document).ready(function() {
+
+  var website = window.location.hostname;
+
+  var internalLinkRegex = new RegExp('^((((http:\\/\\/|https:\\/\\/)(www\\.)?)?'
+                                     + website
+                                     + ')|(localhost:\\d{4})|(\\/.*))(\\/.*)?$', '');
+
+  $('a').filter(function() {
+    var href = $(this).attr('href');
+    return !internalLinkRegex.test(href);
+  })
+  .each(function() {
+    $(this).attr('target', '_blank');
+  });
+
+});
+
 // needed for nav tabs on pages. See Formatting > Nav tabs for more details.
 // script from http://stackoverflow.com/questions/10523433/how-do-i-keep-the-current-tab-active-with-twitter-bootstrap-after-a-page-reload
 $(function() {
