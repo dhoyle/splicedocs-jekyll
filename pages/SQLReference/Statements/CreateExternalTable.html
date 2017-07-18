@@ -16,7 +16,7 @@ folder: SQLReference/Statements
 <p>You can query external tables just as you would a regular Splice&nbsp;Machine table; however, you cannot perform any DML&nbsp;operations on an external table, once it has been created. That also means that you cannot create an index on an external table.</p>
 <div class="noteImportant">If the schema of the external file that you are querying is modified outside of Splice, you need to manually refresh the Splice&nbsp;Machine table by calling the <span class="CodeFont"><a href="sqlref_sysprocs_refreshexttable.html">REFRESH&nbsp;EXTERNAL&nbsp;TABLE</a></span>&nbsp;built-in system procedure.</div>
 <p>If a qualified table name is specified, the schema name cannot begin with <span class="CodeFont">SYS</span>.</p>
-<p class="heading2">Syntax</p>
+<h2>Syntax</h2>
 <div class="fcnWrapperWide">
 <pre class="FcnSyntax" xml:space="preserve">CREATE EXTERNAL&nbsp;TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span>
   {
@@ -58,7 +58,7 @@ folder: SQLReference/Statements
 <p class="paramName">location</p>
 <p class="paramDefnFirst">The location at which the file is stored.</p>
 </div>
-<p class="heading2">Usage Notes</p>
+<h2>Usage Notes</h2>
 <p class="body">Here are some notes about using external tables:</p>
 <ul>
 <li>If the data types in the table schema you specify do not match the schema of the external file, an error occurs and the table is not created.</li>
@@ -69,7 +69,7 @@ folder: SQLReference/Statements
 <li>Splice Machine isn't able to know when the schema of the file represented by an external table is updated; when this occurs, you need to update the external table in Splice Machine by calling the <span class="CodeFont"><a href="sqlref_sysprocs_refreshexttable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></span> built-in system procedure.</li>
 <li>You cannot specify a <span class="CodeItalicFont">compression-format</span> when using the <span class="CodeFont">TEXTFILE&nbsp;</span><span class="CodeItalicFont">file-format</span>; doing so generates an error.</li>
 </ul>
-<p class="heading2">Examples</p>
+<h2>Examples</h2>
 <p>This section presents examples of the <span class="CodeFont">CREATE&nbsp;EXTERNAL&nbsp;TABLE</span>&nbsp;statement.</p>
 <p class="body">This example creates an external table for a <span class="CodeFont">PARQUET</span>&nbsp;file:</p>
 <div class="preWrapperWide">
@@ -96,7 +96,7 @@ folder: SQLReference/Statements
 0 rows inserted/updated/deleted</pre>
 </div>
 </div>
-<p class="heading2">See Also</p>
+<h2>See Also</h2>
 <ul>
 <li><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&nbsp;TABLE</a></span>&nbsp;statement</li>
 <li><span class="CodeFont"><a href="sqlref_expressions_table.html">PIN&nbsp;TABLE</a></span>&nbsp;statement</li>

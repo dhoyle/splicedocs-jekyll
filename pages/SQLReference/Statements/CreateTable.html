@@ -36,7 +36,7 @@ specified, the default value of a column is <span class="CodeFont">NULL</span>. 
             <p>If a qualified table name is specified, the schema name cannot
 begin with <span class="CodeFont">SYS</span>.</p>
             <div class="noteNote">The <a href="sqlref_expressions_table.html">PIN&#160;TABLE</a>&#160;statements are documented separately in this section.</div>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <p>There are two different variants of the <span class="CodeFont">CREATE TABLE</span> statement,
  depending on whether you are specifying the column definitions and
  constraints, or whether you are modeling the columns after the
@@ -70,7 +70,7 @@ begin with <span class="CodeFont">SYS</span>.</p>
                 <p class="paramName">WITH&#160;NO&#160;DATA</p>
                 <p class="paramDefnFirst">See the <span class="CodeFont"><a href="#createAs">CREATE&#160;TABLE&#160;AS</a></span> section below.</p>
             </div>
-            <p class="heading2" id="createAs">CREATE TABLE ... AS ... </p>
+            <h2 id="createAs">CREATE TABLE ... AS ... </h2>
             <p>With this alternate form of the <span class="CodeFont">CREATE TABLE</span> statement, the column
         names and/or the column data types can be specified by providing
         a query. The columns in the query result are used as a model for
@@ -107,9 +107,9 @@ splice&gt;&#160;INSERT&#160;INTO&#160;t3
 0 rows inserted/updated/deleted</pre>
                 </div>
             </div>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p>This section presents examples of both forms of the <span class="CodeFont">CREATE&#160;TABLE</span>&#160;statement.</p>
-            <p class="heading3">CREATE&#160;TABLE</p>
+            <h3>CREATE&#160;TABLE</h3>
             <p class="body">This example creates our Players table:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;CREATE TABLE Players(
@@ -141,7 +141,7 @@ splice&gt;&#160;CREATE TABLE PEOPLE (
                     <div class="noteNote">For more examples of <span class="CodeFont">CREATE TABLE</span> statements using the various constraints, see <a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a></div>
                 </div>
             </div>
-            <p class="heading3">CREATE&#160;TABLE&#160;AS</p>
+            <h3>CREATE&#160;TABLE&#160;AS</h3>
             <p class="body">This example creates a new table that uses all of the columns (and their data types)&#160;from an existing table, but does not duplicate the data:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE&#160;TABLE&#160;NewPlayers
    AS&#160;SELECT&#160;*&#160;
@@ -162,7 +162,7 @@ splice&gt;&#160;CREATE TABLE T3 (X,Y)
          FROM T1 WITH NO DATA;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER TABLE</span></a>&#160;statement</li>
                 <li><a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE&#160;EXTERNAL&#160;TABLE</span></a>&#160;statement</li>

@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInFcns
             <h1 id="BuiltInFcns.Locate">LOCATE</h1>
             <p>The <span class="CodeFont">LOCATE</span> function is used to search for a string (the <span class="ItalicFont">needle</span>)&#160;within  another string (the <span class="ItalicFont">haystack</span>). If the desired string is found, <span class="CodeFont">LOCATE</span> returns the index at which it is found.
 		If the desired string is not found, <span class="CodeFont">LOCATE</span> returns 0. </p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">LOCATE(<span class="ItalicFont">CharacterExpression1</span>, <span class="ItalicFont">CharacterExpression2</span>
         [, <span class="ItalicFont">StartPosition</span>] )</pre>
             </div>
@@ -25,14 +25,14 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramName">StartPosition</p>
                 <p class="paramDefnFirst">(Optional). Specifies the position in <span class="ItalicFont">CharacterExpression2</span> at which the search is to start. This defaults to the start of <span class="ItalicFont">CharacterExpression2</span>, which is the value <span class="CodeFont">1</span>.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The return type for <span class="CodeFont">LOCATE</span> is an integer that indicates the index position within the  second argument at which the first argument was first located. Index positions start with 1.</p>
             <ul>
                 <li>If the first argument is not found in the second argument, <span class="CodeFont">LOCATE</span> returns <span class="CodeFont">0</span>.</li>
                 <li> If the first argument is an empty string (<span class="CodeFont">''</span>), <span class="CodeFont">LOCATE</span> returns the value of the third argument (or <span class="CodeFont">1</span> if it was not provided), even if the second argument is also an empty string.</li>
                 <li>If a <span class="CodeFont">NULL</span> value is passed for either of the CharacterExpression arguments, <span class="CodeFont">NULL</span> is returned</li>
             </ul>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, LOCATE('Pa', DisplayName, 3) "Position"
    FROM Players
    WHERE (INSTR(DisplayName, 'Pa') &gt; 0)
@@ -48,7 +48,7 @@ Paul Kaster             |0
 5 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

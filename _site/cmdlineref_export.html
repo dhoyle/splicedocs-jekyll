@@ -668,42 +668,42 @@
             
             
             
-            <li><a href="https://www.splicemachine.com">Splice Machine Home Page</a></li>
+            <li><a href="https://www.splicemachine.com" target="_blank">Splice Machine Home Page</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/product/">Splice Machine Product Page</a></li>
+            <li><a href="https://www.splicemachine.com/product/" target="_blank">Splice Machine Product Page</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/solutions/">Splice Machine Solutions</a></li>
+            <li><a href="https://www.splicemachine.com/solutions/" target="_blank">Splice Machine Solutions</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/services/support/">Splice Machine Support</a></li>
+            <li><a href="https://www.splicemachine.com/services/support/" target="_blank">Splice Machine Support</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/resources/">Splice Machine Resources</a></li>
+            <li><a href="https://www.splicemachine.com/resources/" target="_blank">Splice Machine Resources</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/community/">Splice Machine Community</a></li>
+            <li><a href="https://www.splicemachine.com/community/" target="_blank">Splice Machine Community</a></li>
             
             
             
@@ -748,7 +748,7 @@
 		<div class="TopicContent">
             <h1 id="kanchor69">Export Command</h1>
             <p>The <span class="AppCommand">export</span> command exports the results of an SQL&#160;query to a CSV (comma separated value)&#160;file.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">EXPORT ( <span class="ItalicFont">exportPath</span>,
          <span class="ItalicFont">compression</span>,
          <span class="ItalicFont">replicationCount</span>,
@@ -781,7 +781,7 @@
                 <p class="paramDefnFirst">The character to use for quoting output in the exported CSV&#160;files. </p>
                 <p class="paramDefn">The default quote character is the double quotation mark (<span class="CodeFont">"</span>).</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>The <span class="AppCommand">EXPORT</span> command generates one or more CSV&#160;files and stores them in the directory that you specified in the <span class="CodeFont">exportPath</span> parameter. More than one output file is generated to enhance the parallelism and performance of this operation.</p>
             <p>If <span class="CodeFont">compression=true</span>, then each of the generated files is named with this format:</p>
             <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">export_&lt;N&gt;.csv.gz</pre>
@@ -790,13 +790,13 @@
             <div class="preWrapper"><pre class="AppCommand">export_&lt;N&gt;.csv</pre>
             </div>
             <p>The value of <span class="AppCommand">&lt;N&gt;</span>&#160;is a random integer value.</p>
-            <p class="heading3">Merging the Exported Files</p>
+            <h3>Merging the Exported Files</h3>
             <p>You can copy all of the exported files into a single file on your local file system using the Hadoop FS&#160;command <span class="CodeFont">getmerge</span>. The syntax for <span class="CodeFont">getmerge</span> is:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">hadoop fs -getmerge <span class="ItalicFont">sourceDir localPath</span></pre>
             </div>
             <p>Use the <span class="ItalicFont">exportPath</span> directory as the value of sourceDir to copy all of the exported CSV&#160;files to your <span class="ItalicFont">localPath</span>.</p>
-            <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
-            <p class="heading2">Examples</p>
+            <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge  target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
+            <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">         -- This example uses all default options:
  splice&gt; EXPORT('/my/export/dir', false, null, null, null, null)
           SELECT&#160;a,b,sqrt(c) FROM&#160;t1 join t2 on t1.a=t2.a;

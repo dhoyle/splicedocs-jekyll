@@ -24,7 +24,7 @@ folder: SQLReference/BuiltInFcns
 			<span class="CodeFont">CHAR</span> function is a fixed-length character string. If the first argument can
 			be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>. If the first argument is <span class="CodeFont">NULL</span>, the result
 		is the <span class="CodeFont">NULL</span>value.</p>
-            <p class="heading2">Character to character syntax</p>
+            <h2>Character to character syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">CharacterExpression</span> [, <span class="ItalicFont">integer</span>] ) </pre>
             </div>
             <div class="paramList">
@@ -34,11 +34,11 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefnFirst">The length attribute for the resulting fixed length character string. The value must be between 0 and 254.</p>
             </div>
             <blockquote>
-                <p class="heading3">Results</p>
+                <h3>Results</h3>
                 <p>If the length of the character-expression is less than the length attribute of the result, the result is padded with blanks up to the length of the result.</p>
                 <p>If the length of the character-expression is greater than the length attribute of the result, truncation is performed. A warning is returned unless the truncated characters were all blanks and the character-expression was not a long string (<span class="CodeFont">LONG VARCHAR</span> or <span class="CodeFont">CLOB</span>).</p>
             </blockquote>
-            <p class="heading2">Integer to character syntax</p>
+            <h2>Integer to character syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">IntegerExpression</span> ) </pre>
             </div>
             <div class="paramList">
@@ -46,7 +46,7 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefnFirst">An expression that returns a value that is an integer data type (either SMALLINT, INTEGER or BIGINT).</p>
             </div>
             <blockquote>
-                <p class="heading3">Results</p>
+                <h3>Results</h3>
                 <p>The result is the character string representation of the argument in the form of an SQL integer constant. The result consists of n characters that are the significant digits that represent the value of the argument with a preceding minus sign if the argument is negative. It is left justified.</p>
                 <ul>
                     <li>If the first argument is a small integer: The length of the result is 6. If the number of characters in the result is less than 6, then the result
@@ -57,7 +57,7 @@ folder: SQLReference/BuiltInFcns
 			is padded on the right with blanks to length 20.</li>
                 </ul>
             </blockquote>
-            <p class="heading2">Datetime to character syntax</p>
+            <h2>Datetime to character syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">DatetimeExpression</span> ) </pre>
             </div>
             <div class="paramList">
@@ -90,7 +90,7 @@ folder: SQLReference/BuiltInFcns
                     </tbody>
                 </table>
             </div>
-            <p class="heading2">Decimal to character</p>
+            <h2>Decimal to character</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">DecimalExpression</span> ) </pre>
             </div>
             <div class="paramList">
@@ -98,14 +98,14 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefnFirst">An expression that returns a value that is a decimal data type. </p>
                 <p class="paramDefn">If a different precision and scale is desired, you can use the <span class="CodeFont">DECIMAL</span> scalar function first 	to make the change.</p>
             </div>
-            <p class="heading2">Floating point to character syntax</p>
+            <h2>Floating point to character syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<span class="ItalicFont">FloatingPointExpression</span> ) </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">FloatingPointExpression</p>
                 <p class="paramDefnFirst">An expression that returns a value that is a floating-point data type (<span class="CodeFont">DOUBLE</span> or <span class="CodeFont">REAL</span>).</p>
             </div>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <p>Use the <span class="CodeFont">CHAR</span> function to return the values for <span class="CodeFont">PlateAppearances</span> (defined as smallint) as a fixed length character string:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT CHAR(AtBats * 2) "DoubledAtBats"
   FROM Batting WHERE ID &lt;= 10;
@@ -125,7 +125,7 @@ DoubledAtBats
 10 rows selected</pre>
             </div>
             <p>Since <span class="CodeFont">AtBats</span> is declared as <span class="CodeFont">SMALLINT</span>&#160;in our Examples database, each of the resulting values is padded with blank characters to make it 6 characters long.</p>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

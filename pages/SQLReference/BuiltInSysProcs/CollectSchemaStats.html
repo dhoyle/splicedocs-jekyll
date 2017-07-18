@@ -20,7 +20,7 @@ folder: SQLReference/BuiltInSysProcs
                 <li><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
             </ul>
             <p>Then <span class="CodeFont">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</span> will collect statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS(
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;schema,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;BOOLEAN&#160;staleOnly<br />)</pre>
             </div>
@@ -35,7 +35,7 @@ folder: SQLReference/BuiltInSysProcs
                 </ul>
                 <div class="noteIcon">The <span class="CodeItalicFont">staleOnly</span> parameter value is currently ignored, but must be specified in your call to this procedure. Its value is always set to <span class="CodeFont">false</span> in the system code.</div>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure returns a results table that contains:</p>
             <ul>
                 <li> one row for each table </li>
@@ -81,9 +81,9 @@ folder: SQLReference/BuiltInSysProcs
                     </tr>
                 </tbody>
             </table>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>Collecting statistics on a schema can take some time. </p>
-            <p class="heading2">SQL Examples</p>
+            <h2>SQL Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;CALL SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( 'SPLICE', false );
 schemaName |tableName  |partition &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|rowsCollec&amp;|partitionSize
@@ -96,7 +96,7 @@ SPLICE     |FIELDING   |splice:1504,,1467393775949.674b34acdb182|44         |987
 
 5 rows selected</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_compatability.html">Data Assignments and Comparisons</a>
                 </li>

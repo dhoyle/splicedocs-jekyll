@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInFcns
             <h1 id="kanchor513">STDDEV_SAMP</h1>
             <p>The <span class="CodeFont">STDDEV_POP()</span> function returns the sample standard deviation of a set of numeric values.</p>
             <p>It returns <span class="CodeFont">NULL</span> if no matching row is found.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">STDDEV_SAMP ( [ DISTINCT | ALL ] expression )</pre>
             </div>
             <div class="paramList">
@@ -26,12 +26,12 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL data types. </p>
                 <p class="paramDefn">If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This function returns a double-precision number.</p>
             <p>If the input expression consists of a single value, the result of the function is <span class="CodeFont">NULL</span>, not <span class="CodeFont">0</span>.</p>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <p class="body">The following example shows computing the average, population standard deviation, and sample standard deviation from our Salaries table:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT AVG(Salary) as AvgSalary, STDDEV_POP(Salary) AS PopStdDev, STDDEV_SAMP(Salary) As SampStdDev FROM Salaries;
 AVGSALARY           |POPSTDDEV             |SAMPSTDDEV

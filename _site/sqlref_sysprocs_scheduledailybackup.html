@@ -2757,7 +2757,7 @@
             <p>You can use the <span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span> to schedule a full or incremental backup job that runs at a specified time each day. </p>
             <div class="noteNote">You specify the scheduled start hour of the backup in Greenwich Mean Time (GMT).</div>
             <p>Note that you can subsequently cancel a scheduled backup job with the <span class="CodeFont"><a href="onprem_admin_backingup.html">Backing Up and Restoring</a></span> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_DATABASE(
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
                VARCHAR(30)&#160;<span class="ItalicFont">backupType</span>,
@@ -2776,7 +2776,7 @@ based on the current user directory. To avoid confusion, we strongly recommend t
                 <p class="paramName">startHour</p>
                 <p class="paramDefnFirst">Specifies the hour (<span class="CodeFont">0-23</span>)&#160;<span class="BoldFont">in GMT</span> at which you want the backup to run each day. A value less than <span class="CodeFont">0</span> or greater than <span class="CodeFont">23</span>  produces an error and the backup is not scheduled.</p>
             </div>
-            <p class="heading2">SQL Examples</p>
+            <h2>SQL Examples</h2>
             <div>
                 <p>The following example schedules a daily incremental backup that runs at 3 am (GMT)&#160;and gets stored in the <span class="CodeFont">hdfs:///home/backup/</span> directory:</p>
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('hdfs:///home/backup', 'incremental', 3);
@@ -2791,7 +2791,7 @@ Statement executed.</pre>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('./dbBackups', 'full',18);
 Statement executed.</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
                 <li><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>

@@ -2757,7 +2757,7 @@
             <p><span class="CodeFont">COUNT</span> returns the number of rows returned by the query. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
             <p>The <span class="CodeFont">COUNT(<span class="ItalicFont">Expression</span>)</span>&#160;version returns the number of row where <span class="ItalicFont">Expression</span> is not null. You can count either all rows, or only distinct values of <span class="ItalicFont">Expression</span>.</p>
             <p>The  <span class="CodeFont">COUNT(*)</span> version returns all rows, including duplicates and nulls.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">COUNT( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
             </div>
             <div class="paramList">
@@ -2773,16 +2773,16 @@
                 <p class="paramDefn">An <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery.</p>
                 <p class="paramDefn">If an <span class="ItalicFont">Expression</span>evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont"><a href="sqlref_expressions_select.html">Expression</a></span> is allowed. For example, the following query is not valid:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- query not allowed
 SELECT COUNT (DISTINCT flying_time), SUM (DISTINCT miles)
   FROM Flights</pre>
             </div>
             <div class="noteNote">Note that specifying <span class="CodeFont">DISTINCT</span>&#160;can result in a different value, since a smaller number of values may be counted. For example, if a column contains the values 1, 1, 1, 1, and 2, <span class="CodeFont">COUNT(col)</span> returns a greater value than <span class="CodeFont">COUNT(DISTINCT col)</span>.</div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The resulting data type is <a href="sqlref_builtinfcns_bigint.html">BIGINT</a>.</p>
-            <p class="heading2">Aggregate Example</p>
+            <h2>Aggregate Example</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; Select COUNT (Name) "Players", Team
    FROM Players
    GROUP BY Team
@@ -2795,7 +2795,7 @@ Players             |TEAM
 2 rows selected
 </pre>
             </div>
-            <p class="heading2">Analytic Example</p>
+            <h2>Analytic Example</h2>
             <p>The following example shows the product ID, quantity, and count of all rows from the beginning of the data window:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT displayName, homeruns,
    COUNT(*) OVER (ORDER BY HomeRuns ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
@@ -2824,7 +2824,7 @@ Mitch Canepa            |28    |15
 15 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html"><span>About Data Types</span></a>
                 </li>

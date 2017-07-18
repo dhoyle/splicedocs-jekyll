@@ -2756,7 +2756,7 @@
             <h1 id="Expressions.Values">VALUES Expression</h1>
             <p>The <span class="CodeFont">VALUES</span> expression allows construction of a row or a table
 from other values. </p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">{
     VALUES ( <span class="ItalicFont">Value</span> {, <span class="ItalicFont">Value</span> }* )
         [ , ( <span class="ItalicFont">Value</span> {, <span class="ItalicFont">Value</span> }* ) ]* |
@@ -2779,7 +2779,7 @@ column of the row.</p>
                 <p class="paramName">result offset and fetch first clauses</p>
                 <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows returned in the result set.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>A <span class="CodeFont">VALUES</span> expression can be used in all the places where a
 query can, and thus can be used in any of the following ways:
 </p>
@@ -2797,7 +2797,7 @@ you normally use a <span class="CodeFont">VALUES</span> expression when you do n
             <p>A <span class="CodeFont">VALUES</span> expression that is used in an <span class="CodeFont">INSERT</span> statement cannot use an <span class="CodeFont">ORDER BY</span> clause. However, if the <span class="CodeFont">VALUES</span> expression does not contain the <span class="CodeFont">DEFAULT</span> keyword, the <span class="CodeFont">VALUES</span> clause can be put in a subquery and ordered, as in the following statement:</p>
             <div class="preWrapper"><pre class="Example">INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;</pre>
             </div>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- 3 rows of 1 column
 splice&gt;&#160;VALUES (1),(2),(3);
 
@@ -2838,7 +2838,7 @@ splice&gt;&#160;VALUES (3*29, 26.0E0/3);
    -- getting a value returned by a built-in function
 splice&gt;&#160;values char(1);</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
                 <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>

@@ -2757,13 +2757,13 @@
             <p>The <span class="CodeFont">CAST</span> function converts a value from one data type to another
 		and provides a data type to a dynamic parameter or a <span class="CodeFont">NULL</span> value.</p>
             <p><span class="CodeFont">CAST</span> expressions are permitted anywhere expressions are permitted.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CAST ( [ <span class="ItalicFont">Expression</span> | NULL | ? ]
   AS <span class="ItalicFont">Datatype</span>)</pre>
             </div>
             <p>The data type to which you are casting an expression is the <span class="ItalicFont">target type</span>. The data type of the expression
 		from which you are casting is the <span class="ItalicFont">source type</span>.</p>
-            <p class="heading2">CAST conversions among ANSI&#160;SQL data types</p>
+            <h2>CAST conversions among ANSI&#160;SQL data types</h2>
             <p>The following table shows valid explicit conversions between source types and target types
 		for SQL data types. This table shows which explicit conversions between data types are valid. The first column on the table lists the source data types. The first row lists the target data types. A "Y" indicates that a conversion from the source to the target is valid. For example, the first cell in the second row lists the source data type SMALLINT. The remaining cells on the second row indicate the whether or not you can convert SMALLINT to the target data types that are listed in the first row of the table.</p>
             <table summary="ANSI SQL data type CAST conversions matrix">
@@ -3113,7 +3113,7 @@
                 </tbody>
             </table>
             <p>If a conversion is valid, CASTs are allowed. Size incompatibilities between the source and target types might cause runtime errors.</p>
-            <p class="heading2">Type Categories</p>
+            <h2>Type Categories</h2>
             <p class="body">This section lists information about converting specific data types. The Splice Machine ANSI&#160;SQL data types are categorized as follows:</p>
             <table summary="SQL data type categories">
                 <col />
@@ -3151,35 +3151,35 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="heading2">Conversion Notes</p>
+            <h2>Conversion Notes</h2>
             <p class="body">This section lists additional information about casting of certain data types.</p>
-            <p class="heading3">Applying Multiple Conversions</p>
+            <h3>Applying Multiple Conversions</h3>
             <p>As shown in the above table, you cannot convert freely among all types. For example, you cannot <span class="CodeFont">CAST</span>an <span class="CodeFont">INTEGER</span> value to a <span class="CodeFont">VARCHAR</span> value. However, you may be able to achieve your conversion by using multiple <span class="CodeFont">CAST</span>&#160;operations. </p>
             <p>For example, since you can convert an <span class="CodeFont">INTEGER</span> value to a <span class="CodeFont">CHAR</span>&#160;value, and you can convert a <span class="CodeFont">CHAR</span> value to a <span class="CodeFont">VARCHAR</span> value, you can use multiple <span class="CodeFont">CAST</span> operations, as shown here:</p>
             <div class="preWrapper"><pre class="Example">CAST(CAST(123 AS&#160;CHAR(10))&#160;AS&#160;VARCHAR(10));<br /><br />SELECT&#160;CAST(CAST(myId as CHAR(20)) as VARCHAR(20));</pre>
             </div>
-            <p class="heading3">Conversions to and from logical types</p>
+            <h3>Conversions to and from logical types</h3>
             <p class="body">These notes apply to converting logical values to strings and vice-versa:</p>
             <ul>
                 <li>A <span class="CodeFont">BOOLEAN</span> value can be cast explicitly to any of the string types. The result is <span class="CodeFont">'true'</span>, <span class="CodeFont">'false'</span>, or <span class="CodeFont">null</span>. </li>
                 <li>Conversely, string types can be cast to <span class="CodeFont">BOOLEAN</span>; however, an error is raised if the string value is not <span class="CodeFont">'true'</span>, <span class="CodeFont">'false'</span>, <span class="CodeFont">'unknown'</span>, or <span class="CodeFont">null</span>. </li>
                 <li>Casting <span class="CodeFont">'false'</span> to <span class="CodeFont">BOOLEAN</span> results in a <span class="CodeFont">null</span> value.</li>
             </ul>
-            <p class="heading3">Conversions from numeric types</p>
+            <h3>Conversions from numeric types</h3>
             <p class="body">A numeric type can be converted to any other numeric type. These notes apply:</p>
             <ul>
                 <li>If the target type cannot represent the non-fractional component without truncation, an exception is raised.</li>
                 <li>If  the target numeric cannot represent the fractional component (scale) of the source numeric, then the source is silently truncated to fit into the target. For example, casting <span class="CodeFont">763.1234</span> as <span class="CodeFont">INTEGER</span> yields <span class="CodeFont">763</span>.</li>
             </ul>
-            <p class="heading3">Conversions from and to bit strings</p>
+            <h3>Conversions from and to bit strings</h3>
             <p>Bit strings 	can be converted to other bit strings, but not to character strings. Strings that are converted to bit strings are padded with trailing zeros to fit the size of the target bit string. The <span class="CodeFont">BLOB</span> type is more limited and requires explicit casting. In most cases the <span class="CodeFont">BLOB</span> type cannot be cast to and from other types: you can cast a <span class="CodeFont">BLOB</span> only to another <span class="CodeFont">BLOB</span>, but you can cast other bit string types to a <span class="CodeFont">BLOB</span>.</p>
-            <p class="heading3">Conversions of date/time values</p>
+            <h3>Conversions of date/time values</h3>
             <p>A 	date/time value can always be converted to and from a <span class="CodeFont">TIMESTAMP</span>. </p>
             <p>If a <span class="CodeFont">DATE</span> is converted to a <span class="CodeFont">TIMESTAMP</span>, the <span class="CodeFont">TIME</span> component of the resulting <span class="CodeFont">TIMESTAMP</span> is always <span class="CodeFont">00:00:00</span>.</p>
             <p>If a <span class="CodeFont">TIME</span> data value is converted to a <span class="CodeFont">TIMESTAMP</span>, the <span class="CodeFont">DATE</span> component is set to the value of <span class="CodeFont">CURRENT_DATE</span> at the time the <span class="CodeFont">CAST</span> is executed. </p>
             <p>If a <span class="CodeFont">TIMESTAMP</span> is converted to a <span class="CodeFont">DATE</span>, the <span class="CodeFont">TIME</span> component is silently truncated. </p>
             <p>If a <span class="CodeFont">TIMESTAMP</span> is converted to a <span class="CodeFont">TIME</span>, the <span class="CodeFont">DATE</span> component is silently truncated.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT CAST (TotalBases AS BIGINT)
   FROM Batting;
 
@@ -3200,7 +3200,7 @@ splice&gt;&#160;SELECT CAST (FLYING_TIME AS DECIMAL(5,2))
    -- cast a SMALLINT to a BIGINT
 splice&gt;&#160;VALUES CAST (CAST (12 as SMALLINT) as BIGINT);</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

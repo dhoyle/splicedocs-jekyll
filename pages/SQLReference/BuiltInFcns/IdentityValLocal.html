@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 		<div class="TopicContent">
             <h1 id="BuiltInFcns.IdentityValLocal">IDENTITY_VAL_LOCAL</h1>
             <p>Splice Machine supports the <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function. </p>
-            <p class="heading2">Syntax:</p>
+            <h2>Syntax:</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">IDENTITY_VAL_LOCAL ( )</pre>
             </div>
             <p>The <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function is a non-deterministic function that returns the most recently assigned value of an identity column for a connection, where the assignment occurred as a result of a single row <span class="CodeFont">INSERT</span> statement using a <span class="CodeFont">VALUES</span> clause. </p>
@@ -27,7 +27,7 @@ folder: SQLReference/BuiltInFcns
                 <li>An <span class="CodeFont">INSERT</span> statement with a full <span class="CodeFont">SELECT</span></li>
             </ul>
             <div class="noteNote">If a table with an identity column has an <span class="CodeFont">INSERT</span> trigger defined that inserts into another table with another identity column, then the <span class="CodeFont">IDENTITY_VAL_LOCAL()</span> function will return the generated value for the statement table, and not for the table modified by the trigger.</div>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example">splice&gt; CREATE&#160;TABLE t1(c1 INT&#160;GENERATED&#160;ALWAYS&#160;AS&#160;IDENTITY, c2 INT);
 0 rows inserted/updated/deleted<br /><br />splice&gt; INSERT&#160;INTO&#160;t1(c2) VALUES(8);
 1 row inserted/updated/deleted<br /><br />splice&gt; VALUES IDENTITY_VAL_LOCAL();

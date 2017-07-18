@@ -2756,7 +2756,7 @@
             <h1 id="Statements.CreateFunction">CREATE FUNCTION</h1>
             <p>The <span class="CodeFont">CREATE FUNCTION</span> statement allows you to create Java functions, which you can then use in expressions.</p>
             <p>For details on how Splice Machine matches functions to Java methods,	see <a href="sqlref_sqlargmatching.html">Argument matching</a>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE FUNCTION <span class="ItalicFont">functionName</span> (
 	[ <span class="ItalicFont">functionParameter</span>
    	[, <span class="ItalicFont">functionParameter</span>] ] *
@@ -2780,7 +2780,7 @@
                 <p class="paramName">functionElement</p>
                 <p class="paramDefnFirst">See the description of <a href="#FunctionElements">Function Elements</a> in the next section.</p>
             </div>
-            <p class="heading2" id="TableType">TableType</p>
+            <h2 id="TableType">TableType</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TABLE( <span class="ItalicFont">ColumnElement</span> [,<span class="ItalicFont">ColumnElement</span>]* )
 </pre>
             </div>
@@ -2794,7 +2794,7 @@
                 <li>values that are too long are truncated to the maximum declared length</li>
                 <li>if a string value is returned in the <span class="ItalicFont">ResultSet</span> for a column of type <span class="CodeFont">CHAR</span>, and the string is shorter than the column length, the string is padded with spaces</li>
             </ul>
-            <p class="heading2" id="FunctionElements">Function Elements</p>
+            <h2 id="FunctionElements">Function Elements</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"> {
     LANGUAGE { JAVA }
   | <span class="ItalicFont">DeterministicCharacteristic</span>
@@ -2848,7 +2848,7 @@
                     <p class="paramDefn">The function is invoked even if all input arguments are null, which means that the invoked function must test for null argument values.The result may be null or not null.</p>
                 </div>
             </div>
-            <p class="heading2">Example of declaring a scalar function</p>
+            <h2>Example of declaring a scalar function</h2>
             <p>For more complete examples of using <span class="CodeFont">CREATE&#160;FUNCTION</span>, please see the <a href="developers_fcnsandprocs_intro.html">Using Functions and Stored Procedures</a> section of our <span class="ItalicFont">Developer's Guide</span>.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE FUNCTION TO_DEGREES( RADIANS DOUBLE )
   RETURNS DOUBLE
@@ -2858,7 +2858,7 @@
 
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading2">Example of declaring a table function</p>
+            <h2>Example of declaring a table function</h2>
             <p class="body">This example reads data from a mySql database and inserts it into a Splice&#160;Machine database.</p>
             <p>We first implement a class that contains a public static method that connects to an external (foreign)&#160;database, uses a prepared statement to pull results from it, and returns those results as a JDBC&#160;<span class="CodeFont">ResultSet</span>:</p>
             <div class="preWrapperWide"><pre class="Example">package splicemachine.example.vti;<br />import java.sql.*;<br />public class EmployeeTable<br />{<br />&#160;&#160;&#160;public static ResultSet read()<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;throws SQLException<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Connection conn DriverManager.getConnection( "jdbc:mysql://localhost/hr?user=myName&amp;password=myPswd" );<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;PreparedStatement ps = conn.prepareStatement( "SELECT&#160;* FROM&#160;hrSchema.EmployeeTable"&#160;);<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return ps.executeQuery();<br />&#160;&#160;&#160;&#160;}<br />}<br /></pre>
@@ -2882,7 +2882,7 @@
     FROM TABLE (externalEmployees() ) myExtTbl;</pre>
             </div>
             <div class="noteNote">You <span class="BoldFont">MUST</span>&#160;specify the table alias when using a virtual table; for example, <span class="CodeFont">myExtTbl</span> in the above example.</div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_statements_createprocedure.html"><span class="CodeFont">CREATE_PROCEDURE</span></a>&#160;statement</li>
                 <li><a href="sqlref_builtinfcns_currentuser.html"><span class="CodeFont">CURRENT_USER</span></a> function</li>

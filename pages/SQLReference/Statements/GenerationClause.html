@@ -11,7 +11,7 @@ folder: SQLReference/Statements
 	<section>
 		<div class="TopicContent">
             <h1 id="Statements.GenerationClause">generation-clause</h1>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">GENERATED ALWAYS AS ( <span class="ItalicFont">value-expression</span> )</pre>
             </div>
             <div class="paramList">
@@ -25,14 +25,14 @@ folder: SQLReference/Statements
                     </ul>
                 </p>
             </div>
-            <p class="heading2" id="UserFunctions">User Function Restrictions</p>
+            <h2 id="UserFunctions">User Function Restrictions</h2>
             <p>The <span class="ItalicFont">generation-clause</span> may invoke user-coded functions, if the functions meet the following requirements:</p>
             <ul>
                 <li>The functions must not read or write SQL data.</li>
                 <li>The functions must have been declared <span class="CodeFont">DETERMINISTIC</span>.</li>
                 <li>The functions must not invoke any of the following possibly non-deterministic system functions:<br /><ul class="SecondLevel"><li class="CodeFont" value="1"><a href="sqlref_builtinfcns_sessionuser.html">SESSION_USER</a></li></ul></li>
             </ul>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE TABLE employee(
   employeeID           int,
   name                 varchar( 50 ),

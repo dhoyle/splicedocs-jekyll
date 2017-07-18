@@ -2767,7 +2767,7 @@
                 <li>Table constraints allow you to specify more than one column in a <span class="CodeFont">PRIMARY KEY </span> or <span class="CodeFont">CHECK&#160;</span><span>, <span class="CodeFont">UNIQUE</span> or <span class="CodeFont">FOREIGN KEY</span></span> constraint definition.</li>
                 <li>Column-level constraints (except for check constraints) refer to only one column.</li>
             </ul>
-            <p class="heading2" id="ColumnConstraint">Column Constraints</p>
+            <h2 id="ColumnConstraint">Column Constraints</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
 NOT NULL |
 [ [CONSTRAINT constraint-Name]
@@ -2801,7 +2801,7 @@ REFERENCES clause
                 <p class="paramName">CHECK</p>
                 <p class="paramDefnFirst">Specifies rules for values in the column.</p>
             </div>
-            <p class="heading2" id="TableConstraint">Table Constraints</p>
+            <h2 id="TableConstraint">Table Constraints</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">[CONSTRAINT <span class="ItalicFont">constraint-Name</span>]
 {
 &#160;&#160;&#160;PRIMARY KEY ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>
@@ -2835,7 +2835,7 @@ REFERENCES clause
                 <p class="paramName">CHECK</p>
                 <p class="paramDefnFirst">Specifies a wide range of rules for values in the table.</p>
             </div>
-            <p class="heading2">Primary Key Constraints</p>
+            <h2>Primary Key Constraints</h2>
             <div class="noteNote">At this time, you <span class="BoldFont">cannot</span> alter primary keys using <span class="CodeFont">ALTER TABLE</span>.</div>
             <p>Primary keys are constrained as follows:</p>
             <ul>
@@ -2843,18 +2843,18 @@ REFERENCES clause
                 <li>When you create a primary key constraint, none of the columns included in the primary key can have <span class="CodeFont">NULL</span> constraints; that is, they must not permit <span class="CodeFont">NULL</span> values.</li>
                 <li>A table can have at most one <span class="CodeFont">PRIMARY KEY</span> constraint.</li>
             </ul>
-            <p class="heading2">Unique constraints</p>
+            <h2>Unique constraints</h2>
             <p>A <span class="CodeFont">UNIQUE</span> constraint defines a set of columns that uniquely identify rows in a table only if all the key values are not <span class="CodeFont">NULL</span>. If one or more key parts are <span class="CodeFont">NULL</span>, duplicate keys are allowed. </p>
             <p>For example, if there is a <span class="CodeFont">UNIQUE</span> constraint on <span class="CodeFont">col1</span> and <span class="CodeFont">col2</span> of a table, the combination of the values held by <span class="CodeFont">col1</span> and <span class="CodeFont">col2</span> will be unique as long as these values are not <span class="CodeFont">NULL</span>. If one of <span class="CodeFont">col1</span> and <span class="CodeFont">col2</span> holds a <span class="CodeFont">NULL</span> value, there can be another identical row in the table.</p>
             <p>A table can have multiple <span class="CodeFont">UNIQUE</span> constraints.</p>
-            <p class="heading2">Foreign key constraints</p>
+            <h2>Foreign key constraints</h2>
             <p>Foreign keys providea way to enforce the referential integrity of a database. A foreign key is a column or group of columns within a table that references a key in some other table (or sometimes the same table). The foreign key must always include the columns of which the types exactly match those in the referenced primary key or unique constraint.</p>
             <p>For a table-level foreign key constraint in which you specify the columns in the table that make up the constraint, you cannot use the same column more than once.</p>
             <p>If there is a column list in the <span class="ItalicFont">ReferencesSpecification </span>(a list of columns in the referenced table), it must correspond either to a unique constraint or to a primary key constraint in the referenced table. The <span class="ItalicFont">ReferencesSpecification</span> can omit the column list for the referenced table if that table has a declared primary key.</p>
             <p>If there is no column list in the <span class="ItalicFont">ReferencesSpecification </span>and the referenced table has no primary key, a statement exception is thrown. (This means that if the referenced table has only unique keys, you must include a column list in the <span class="ItalicFont">ReferencesSpecification.</span>)</p>
             <p>A foreign key constraint is satisfied if there is a matching value in the referenced unique or primary key column. If the foreign key consists of multiple columns, the foreign key value is considered <span class="CodeFont">NULL</span> if any of its columns contains a <span class="CodeFont">NULL</span>.</p>
             <p>It is possible for a foreign key consisting of multiple columns to allow one of the columns to contain a value for which there is no matching value in the referenced columns, per the ANSI&#160;SQL standard. To avoid this situation, create <span class="CodeFont">NOT NULL</span> constraints on all of the foreign key's columns.</p>
-            <p class="heading3">Foreign key constraints and DML</p>
+            <h3>Foreign key constraints and DML</h3>
             <p>When you insert
 	into or update a table with an enabled foreign key constraint, Splice Machine checks that the row does not violate the foreign key constraint by looking up the corresponding referenced key in the referenced table. If the constraint is not satisfied, Splice Machine rejects the insert or update with a statement exception.</p>
             <p>When you update or delete a row in a table with a referenced key (a primary or unique constraint referenced by a foreign key), Splice Machine checks every foreign key constraint that references the key to make sure that the removal or modification of the row does not cause a constraint violation.</p>
@@ -2864,17 +2864,17 @@ REFERENCES clause
             <p><span class="CodeFont">PRIMARY KEY</span> constraints generate unique indexes. <span class="CodeFont">FOREIGN KEY</span> constraints generate non-unique indexes.</p>
             <p><span class="CodeFont">UNIQUE</span> constraints generate unique indexes if all the columns are non-nullable, and they generate non-unique indexes if one or more columns are nullable.</p>
             <p>Therefore, if a column or set of columns has a <span class="CodeFont">UNIQUE</span>, <span class="CodeFont">PRIMARY KEY</span>, or <span class="CodeFont">FOREIGN KEY</span> constraint on it, you do not need to create an index on those columns for performance. Splice Machine has already created it for you.</p>
-            <p class="heading2">Check constraints</p>
+            <h2>Check constraints</h2>
             <p>You can use check constraints to limit which values are accepted by one or more columns in a table. You specify the constraint with a Boolean expression; if the expression evaluates to <span class="CodeFont">true</span>, the value is allowed; if the expression evaluates to <span class="CodeFont">false</span>, the constraint prevents the value from being entered into the database.The search condition is applied to each row that is modified on an <span class="CodeFont">INSERT</span> or <span class="CodeFont">UPDATE</span> at the time of the row modification.  When a constraint is violated, the entire statement is aborted. You can apply check constraints at the column level or table level. </p>
             <p>For example, you could specify that values in the salary column for the players on your team must be between $250,000 and $30,000,000 with this expression:</p>
             <div class="preWrapper"><pre class="Example">salary &gt;= 250000 AND salary &lt;= 30000000.</pre>
             </div>
             <p>Any attempt to insert or update a record with a salary value out of that range would fail.</p>
-            <p class="heading2" id="SearchCondition">Search Condition</p>
+            <h2 id="SearchCondition">Search Condition</h2>
             <p>A <span class="ItalicFont">searchCondition</span> is any <a href="sqlref_expressions_boolean.html">Boolean expression</a> that
 	meets the requirements specified below. If a <span class="ItalicFont">constraint-Name</span> is not specified, Splice Machine generates
 	a unique constraint name (for either column or table constraints).</p>
-            <p class="heading3">Requirements for search condition</p>
+            <h3>Requirements for search condition</h3>
             <p>If a check constraint is specified as part of a column-definition, a column reference can only be made to the same column. Check constraints specified as part of a table definition can have column references identifying columns previously defined in the <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE TABLE</a></span> statement.</p>
             <p> The search condition must always return the same value if applied to the same values. Thus, it cannot contain any of the following:</p>
             <ul>
@@ -2883,7 +2883,7 @@ REFERENCES clause
                 <li>Subqueries</li>
                 <li>User Functions (such as <span class="CodeFont"><a href="sqlref_builtinfcns_currentuser.html">CURRENT_USER</a></span>)</li>
             </ul>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- column-level primary key constraint named OUT_TRAY_PK:
 CREATE TABLE SAMP.OUT_TRAY
 (
@@ -2935,14 +2935,14 @@ CHECK (MEAL IN ('B', 'L', 'D', 'S')),
 PRIMARY KEY (FLIGHT_ID, SEGMENT_NUMBER)
 );</pre>
             </div>
-            <p class="heading2">Statement dependency system</p>
+            <h2>Statement dependency system</h2>
             <p><span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span>
 	and <span class="CodeFont"><a href="sqlref_expressions_table.html">UPDATE</a></span> statements depend on all constraints on the target table.</p>
             <p><span class="CodeFont"><a href="sqlref_statements_delete.html">DELETE</a></span> statements
 	depend on unique<span>, primary key, and foreign key constraints</span>. </p>
             <p>These statements
 	are invalidated if a constraint is added to or dropped from the target table.</p>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER&#160;TABLE</span></a>&#160;statement</li>
                 <li><a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE&#160;TABLE</span></a>&#160;statement</li>

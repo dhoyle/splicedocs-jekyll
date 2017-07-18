@@ -12,7 +12,7 @@ folder: SQLReference/Statements
 	<div class="TopicContent">
         <h1 id="Statements.CreateType">CREATE TYPE</h1>
         <p>The <span class="CodeFont">CREATE TYPE</span> statement creates a user-defined type (UDT). A UDT is a serializable Java class whose instances are stored in columns. The class must implement the <span class="ItalicFont">java.io.Serializable</span> interface.</p>
-        <p class="heading2">Syntax</p>
+        <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE TYPE [ <span class="ItalicFont"><a href="sqlref_identifiers_types#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span>
    EXTERNAL NAME <span class="ItalicFont">singleQuotedJavaClassName</span>
    LANGUAGE JAVA</pre>
@@ -25,16 +25,16 @@ folder: SQLReference/Statements
             <p class="paramName">LANGUAGE</p>
             <p class="paramDefnFirst">Only <span class="CodeFont">JAVA</span>&#160;is accepted at this time. </p>
         </div>
-        <p class="heading2">About UDTs</p>
+        <h2>About UDTs</h2>
         <p>A UDT cannot be cast explicitly to any other type, and no other type can be cast to a UDT.</p>
         <p>A UDT has no ordering. This means that you cannot compare and sort UDTs. You cannot use them in expressions involving the <span class="CodeFont">&lt;</span>, <span class="CodeFont">=</span>, <span class="CodeFont">&gt;</span>, IN, BETWEEN, and LIKE operators. You cannot use UDTs in aggregates, DISTINCT expressions, and GROUP/ORDER BY clauses. You cannot build indexes on them.</p>
         <p>You can use subtypes in UDTs. That is, if you use the CREATE TYPE statement to bind a class named C to a UDT, you can populate that UDT value with an instance of any subclass of C.</p>
-        <p class="heading2">Example</p>
+        <h2>Example</h2>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">CREATE TYPE price
   EXTERNAL NAME 'com.example.types.Price'
   LANGUAGE JAVA;</pre>
         </div>
-        <p class="heading2">Using user-defined types</p>
+        <h2>Using user-defined types</h2>
         <p>You can create tables and views with columns that have UDTs. For example:</p>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">CREATE TABLE orders 
  (

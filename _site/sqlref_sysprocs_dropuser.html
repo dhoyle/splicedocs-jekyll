@@ -2758,7 +2758,7 @@
             <p>This procedure is used in conjunction with NATIVE authentication..</p>
             <p>You are not allowed to remove the user account of the database owner.</p>
             <p>If you use this procedure to remove a user account, the schemas and data objects owned by the user remain in the database and can be accessed only by the database owner or by other users who have been granted access to them. If the user is created again, then he or she regains access to the schemas and data objects.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DROP_USER( IN <span class="ItalicFont">userName</span> VARCHAR(128) )</pre>
             </div>
             <div class="paramList">
@@ -2767,25 +2767,25 @@
 				quotes. This user name is an authorization identifier. If the user name is that of the database owner,
 			an error is raised.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
 			execute privileges on this function by default. The
 		database owner can grant access to other users.</p>
-            <p class="heading2">JDBC example</p>
+            <h2>JDBC example</h2>
             <p>Drop a user named FRED:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
  ("CALL SYSCS_UTIL.SYSCS_DROP_USER('fred')");
  cs.execute();
  cs.close();</pre>
             </div>
-            <p class="heading2">SQL Example</p>
+            <h2>SQL Example</h2>
             <p>Drop a user named FreD:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_DROP_USER('fred');
 Statement executed;</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_user.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CREATE_USER</span></a> built-in system procedure</li>
             </ul>

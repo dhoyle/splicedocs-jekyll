@@ -2764,7 +2764,7 @@ restores your database to the state it was in when a specific backup was perform
                 <li>You <span class="BoldFont">must reboot your database</span> after the restore is complete. See the <a href="onprem_admin_startingdb.html">Starting Your Database</a> topics in this book for instructions on restarting your database.</li>
             </ul>
             <div class="noteIcon">If you are restoring from an incremental backup, you must first restore from the most recent full backup, and then incrementally restore from each subsequent incremental backup. See <a href="#Example">Example 2 below.</a></div>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE( VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
                                    BIGINT&#160;<span class="ItalicFont">backupId</span> ); </pre>
             </div>
@@ -2778,7 +2778,7 @@ based on the current user directory. To avoid confusion, we strongly recommend t
                 <p class="paramDefnFirst">The ID&#160;of the backup job from which you want to restore your database. </p>
                 <p class="paramDefn">The system <a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p class="body">Restoring you database can take a while, and has several major implications:</p>
             <div class="notePlain">
                 <p>There are several important things to know about restoring your database from a previous backup:</p>
@@ -2789,13 +2789,13 @@ based on the current user directory. To avoid confusion, we strongly recommend t
                 </ul>
             </div>
             <p>As noted at the top of this topic:&#160;if you are restoring from an incremental backup, you must first restore from the most recent full backup, and then incrementally restore from each subsequent incremental backup. See <a href="#Example">Example 2 below.</a></p>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
 execute privileges on this function by default. The
 database owner can grant access to other users.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p>The following example first queries the system backup table to find the ID&#160;of the backup from which we want to restore, and then initiates the restoration.</p>
             <div class="noteIcon">Stop using your database before backing up, and keep in mind that restoring a database may take several minutes, depending on the size of your database.</div><pre class="Example" xml:space="preserve">
 splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;SYS.SYSBACKUP;
@@ -2846,7 +2846,7 @@ Statement executed.</pre>
                     <li>Restart your database.</li>
                 </ol>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
                 <li><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>

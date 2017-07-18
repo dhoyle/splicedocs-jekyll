@@ -2849,7 +2849,7 @@
             <h1 id="Statements.CreateView" id="Statements.CreateView">CREATE VIEW</h1>
             <p>Views are virtual tables formed by a query. A view is a dictionary object that you can use until you drop it. Views are not updatable.</p>
             <p>If a qualified view name is specified, the schema name cannot begin with <span class="ItalicFont">SYS</span>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
 CREATE VIEW <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span>
    [ ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>] * ) ]
@@ -2869,7 +2869,7 @@ CREATE VIEW <span class="ItalicFont"><a href="sqlref_identifiers_types.html#View
                 <p class="paramName">result offset and fetch first clauses</p>
                 <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">FETCH&#160;FIRST</span> clause</a>, which can be combined with the <span class="CodeFont">RESULT&#160;OFFSET</span> clause, limits the number of rows added to the view.</p>
             </div>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p class="body">This example creates a view that shows the age of each player in our database:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE VIEW PlayerAges (Player, Team, Age)
    AS SELECT DisplayName, Team,
@@ -2919,7 +2919,7 @@ Yuri Piamam             |Giants   |31
 35 rows selected
 </pre>
             </div>
-            <p class="heading2">Statement Dependency System</p>
+            <h2>Statement Dependency System</h2>
             <p>View definitions are dependent on the tables and views referenced within the view definition. DML (data manipulation language) statements that contain view references depend on those views, as well as the objects in the view definitions that the views are dependent on. Statements that reference the view depend on indexes the view uses; which index a view uses can change from statement to statement based on how the query is optimized. For example, given:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE T1 (C1 DOUBLE PRECISION);
 0 rows inserted/updated/deleted
@@ -2937,7 +2937,7 @@ splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM V1;</pre>
             </div>
             <p>Is dependent on view <span class="ItalicFont">V1</span>, table <span class="ItalicFont">T1,</span> and external scalar function  <span class="ItalicFont">SIN.</span></p>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_statements_dropview.html"><span class="CodeFont">DROP&#160;VIEW</span></a>&#160;statement</li>
                 <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a> clause</li>

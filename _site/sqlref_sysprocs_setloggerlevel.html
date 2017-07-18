@@ -2756,7 +2756,7 @@
             <h1 id="BuiltInSysProcs.SetLoggerLevel">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</h1>
             <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</span> system procedure changes the logging level of the specified logger.</p>
             <div class="noteNote">You can read more about Splice &#160;Machine loggers and logging levels in the <a href="developers_tuning_logging.html">Logging</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</div>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL(<span class="ItalicFont">loggerName</span>, <span class="ItalicFont">logLevel</span>)</pre>
             </div>
             <div class="paramList">
@@ -2774,19 +2774,19 @@
                     <li class="CodeFont" value="6">'FATAL'</li>
                 </ul>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>You can use the <span class="CodeFont">TRACE</span>&#160;option of the Splice Machine <span class="CodeFont">StatementManager</span> log to record the execution time of each statement:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL ( 'com.splicemachine.utils.SpliceUtilities', 'TRACE');
 Statement executed</pre>
             </div>
             <p>You can find all of the available loggers by using the <span class="CodeFont"><a href="sqlref_sysprocs_getloggers.html">SYSCS_UTIL.SYSCS_GET_LOGGERS</a></span>&#160;system procedure.</p>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL( 'com.splicemachine.mrio.api', 'DEBUG' );
 Statement executed.</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_sysprocs_getloggers.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_LOGGERS</span></a>
                 </li>

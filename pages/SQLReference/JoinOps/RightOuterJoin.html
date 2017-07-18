@@ -12,14 +12,14 @@ folder: SQLReference/JoinOps
 		<div class="TopicContent">
             <h1 id="JoinOps.RightOuterJoin">RIGHT OUTER JOIN</h1>
             <p>A <span class="CodeFont">RIGHT OUTER JOIN</span> is one of the <a href="sqlref_joinops_about.html"><span class="CodeFont">JOIN</span> operations</a> that allow you to specify a <span class="CodeFont">JOIN</span> clause. It preserves the unmatched rows from the second (right) table, joining them with a <span class="CodeFont">NULL</span> in the shape of the first (left) table. A Right Outer <span class="CodeFont">JOIN B </span>is equivalent to <span class="CodeFont">B RIGHT OUTER JOIN A</span>, with the columns in a different order.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="sqlref_expressions_table.html">TableExpression</a></span>
 {
  ON <span class="ItalicFont">booleanExpression</span> | <span class="ItalicFont"><a href="sqlref_clauses_using.html">USING clause</a></span>
 }</pre>
             </div>
             <p>The scope of expressions in the <span class="CodeFont">ON</span> clause includes the current tables and any tables in query blocks outer to the current <span class="CodeFont">SELECT</span>. The <span class="CodeFont">ON</span> clause can reference tables not being joined and does not have to reference either of the tables being joined (though typically it does).</p>
-            <p class="heading2">Example 1</p>
+            <h2>Example 1</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- get all countries and corresponding cities, including
    -- countries without any cities
 splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
@@ -42,7 +42,7 @@ splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
   ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
   WHERE Countries.region = 'Africa';</pre>
             </div>
-            <p class="heading2">Example 2</p>
+            <h2>Example 2</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- a TableExpression can be a joinOperation. Therefore
    -- you can have multiple join operations in a FROM clause
    -- List every employee number and last name
@@ -53,7 +53,7 @@ splice&gt;&#160;SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
   ON MGRNO = M.EMPNO
   ON E.WORKDEPT = DEPTNO;</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_joinops_intro.html"><span class="CodeFont">JOIN</span></a>&#160;operations</li>
                 <li><a href="sqlref_expressions_table.html"><span class="CodeFont">TABLE</span></a> expression</li>

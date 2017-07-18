@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 		<div class="TopicContent">
             <h1 id="kanchor103">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</h1>
             <p>The <span class="CodeFont">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</span>&#160;&#160;system procedure disables collection of statistics on a specific table column in your database. </p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS(<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;schema,
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;table,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;columnName)</pre>
             </div>
@@ -28,16 +28,16 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramName">columnName</p>
                 <p class="paramDefnFirst">Specifies the name of the column for which you want statistics disabled. Passing a <span class="CodeFont">null</span> or non-existent column name generates an error.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>Statistics are automatically collected on all columns by default.  Attempting to disable statistics collection on a keyed column generates an error.</p>
-            <p class="heading2">SQL Examples</p>
+            <h2>SQL Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;CALL SYSCS_UTIL.DISABLE_COLUMN_STATISTICS('SPLICE', 'Salaries', 'Salary');
 Statement executed.</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_compatability.html">Data Assignments and Comparisons</a>
                 </li>

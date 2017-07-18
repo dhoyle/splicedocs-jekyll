@@ -12,7 +12,7 @@ folder: SQLReference/Statements
 		<div class="TopicContent">
             <h1 id="Statements.Select">SELECT</h1>
             <p>Use the <span class="CodeFont">SELECT</span>&#160;statement to query a database and receive back results.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SELECT&#160;<span class="ItalicFont"><a href="sqlref_queries_query.html">Query</a></span>
    [<span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span>]
    [<span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">result offset clause</a></span>]
@@ -26,7 +26,7 @@ folder: SQLReference/Statements
                 <p class="paramName">result offset and fetch first clauses</p>
                 <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows fetched.</p>
             </div>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <p class="body">This examples selects all records in the Players table:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT * FROM Players WHERE ID &lt; 11;
 ID    |TEAM     |POS&amp;|DISPLAYNAME        |BIRTHDATE
@@ -96,10 +96,10 @@ Henry Socomy            |Giants    |1989-11-17
 
 13 rows selected</pre>
             </div>
-            <p class="heading2">Statement dependency system</p>
+            <h2>Statement dependency system</h2>
             <p>The <span class="CodeFont">SELECT</span> statement depends on all the tables and views named in the query and the conglomerates (units of storage such as heaps and indexes) chosen for access paths on those tables. <span class="CodeFont"><a href="sqlref_statements_createview.html"><span class="CodeFont">CREATE VIEW</span> statement</a>).</p>
             <p>The <span class="CodeFont">SELECT</span> statements depends on all aliases used in the query. Dropping an alias invalidates any prepared <span class="CodeFont">SELECT</span> statement that uses the alias.</p>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_statements_createindex.html"><span class="CodeFont">CREATE&#160;INDEX</span></a>statement</li>
                 <li><a href="sqlref_statements_createview.html"><span class="CodeFont">CREATE&#160;VIEW</span></a>statement</li>

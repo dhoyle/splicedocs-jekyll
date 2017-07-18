@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInSysProcs
             <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</span> function allows users to observe the instantaneous current value of a sequence generator without having to query the <a href="sqlref_systables_syssequences.html"><span class="CodeFont">SYSSEQUENCES</span> system table</a>. </p>
             <p>Querying the <span class="CodeFont">SYSSEQUENCES</span> table does not actually return the current value; it only returns an upper bound on that value, which is the end of the chunk of sequence values that has been pre-allocated but not yet used. </p>
             <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</span> function shows you the very next value that will be returned by a <span class="CodeFont">NEXT VALUE FOR</span> clause. Users should never directly query the <span class="CodeFont">SYSSEQUENCES</span> table, because that will cause sequence generator concurrency to slow drastically.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">BIGINT SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE(
 			IN <span class="ItalicFont">SchemaName</span> VARCHAR(128),
 			IN <span class="ItalicFont">SequenceName</span> VARCHAR(128)
@@ -26,15 +26,15 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramName">SequenceName</p>
                 <p class="paramDefnFirst">The name of the sequence.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>Returns the next value that will be returned for the sequence.</p>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>By default, all users have execute privileges on this function.</p>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE('SPLICE', 'PlayerID_seq');
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_systables_syssequences.html"><span class="CodeFont">SYSSEQUENCES</span></a> system table</li>
             </ul>

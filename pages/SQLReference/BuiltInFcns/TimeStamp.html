@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 		<div class="TopicContent">
             <h1 id="BuiltInFcns.TimeStamp">TIMESTAMP</h1>
             <p>The <span class="CodeFont">TIMESTAMP</span> function returns a timestamp from a value or a pair of values.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TIMESTAMP ( <span class="ItalicFont">expression1</span> [, <span class="ItalicFont">expression2</span> ] )</pre>
             </div>
             <div class="paramList">
@@ -26,14 +26,14 @@ folder: SQLReference/BuiltInFcns
             </p>
                 <p class="paramDefnFirst">(Optional). A time or a valid string representation of a time.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The data type of the result depends on how the input expression(s) were specified:</p>
             <ul>
                 <li>If both <span class="ItalicFont">expression1</span> and <span class="ItalicFont">expression2</span> are specified, the result is a timestamp with the date specified by <span class="ItalicFont">expression1</span> and the time specified by <span class="ItalicFont">expression2</span>. The microsecond part of the timestamp is zero.</li>
                 <li>If only <span class="ItalicFont">expression1</span> is specified and it is a timestamp, the result is that timestamp.</li>
                 <li>If only <span class="ItalicFont">expression1</span> is specified and it is a string, the result is the timestamp represented by that string. If <span class="ItalicFont">expression1</span> is a string of length 14, the timestamp has a microsecond part of zero. </li>
             </ul>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p>This example converts date and time strings into a timestamp value:</p>
             <div class="preWrapper"><pre class="Example">splice&gt; VALUES TIMESTAMP('2015-11-12', '19:02:43');
 1
@@ -70,7 +70,7 @@ folder: SQLReference/BuiltInFcns
 17 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_currentdate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
                 <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>

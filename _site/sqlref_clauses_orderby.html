@@ -2764,7 +2764,7 @@
             </ul>
             <p>It can also be used in an <span class="CodeFont"><a href="sqlref_statements_createview.html">CREATE VIEW</a></span> statement.</p>
             <p>An <span class="CodeFont">ORDER BY</span> clause allows you to specify the order in which rows appear in the result set. In subqueries, the <span class="CodeFont">ORDER BY</span> clause is meaningless unless it is accompanied by one or both of the <span class="CodeFont">result offset</span> and <span class="CodeFont">fetch first</span> clauses or in conjunction with the <span class="CodeFont">ROW_NUMBER</span> function, since there is no guarantee that the order is retained in the outer result set. It is permissible to combine <span class="CodeFont">ORDER BY</span> on the outer query with <span class="CodeFont">ORDER BY</span> in subqueries.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ORDER BY { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></span> |
   &#160;&#160;&#160;&#160;&#160;&#160;&#160;  <span class="ItalicFont">ColumnPosition</span> |
    &#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="ItalicFont">Expression</span> }
@@ -2792,9 +2792,9 @@
                     <p class="paramDefnFirst">Specifies that <span class="CodeFont">NULL</span>&#160;values should be returned after non-<span class="CodeFont">NULL</span>&#160;values. This is the default value for ascending (<span class="CodeFont">ASC</span>)&#160;order.</p>
                 </div>
             </div>
-            <p class="heading2">Using</p>
+            <h2>Using</h2>
             <p>If <span class="CodeFont">SELECT DISTINCT</span> is specified or if the <span class="CodeFont">SELECT</span> statement contains a <span class="CodeFont">GROUP BY</span> clause, the <span class="CodeFont">ORDER BY</span> columns must be in the <span class="CodeFont">SELECT</span> list. </p>
-            <p class="heading2">Example using a correlation name</p>
+            <h2>Example using a correlation name</h2>
             <p>You can sort the result set by a correlation name, if the correlation name is specified in
 			the select list. For example, to return from the <span class="CodeFont">CITIES</span> database all of the
 			entries in the <span class="CodeFont">CITY_NAME</span> and <span class="CodeFont">COUNTRY</span> columns, where the <span class="CodeFont">COUNTRY</span> column has
@@ -2803,23 +2803,23 @@
   FROM CITIES
   ORDER BY NATION;</pre>
             </div>
-            <p class="heading2">Example using a numeric expression</p>
+            <h2>Example using a numeric expression</h2>
             <p>You can sort the result set by a numeric expression, for example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT name, salary, bonus FROM employee
   ORDER BY salary+bonus;</pre>
             </div>
             <p>In this example, the salary and bonus columns are <span class="CodeFont">DECIMAL</span> data types.</p>
-            <p class="heading2">Example using a function</p>
+            <h2>Example using a function</h2>
             <p>You can sort the result set by invoking a function, for example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT i, len FROM measures
   ORDER BY sin(i);</pre>
             </div>
-            <p class="heading2">Example of specifying a NULL&#160;ordering</p>
+            <h2>Example of specifying a NULL&#160;ordering</h2>
             <p>You can sort the result set by invoking a function, for example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM Players
   ORDER BY BirthDate DESC&#160;NULLS&#160;LAST;</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_clauses_groupby.html"><span class="CodeFont">GROUP&#160;BY</span></a>&#160;clause</li>
                 <li><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>

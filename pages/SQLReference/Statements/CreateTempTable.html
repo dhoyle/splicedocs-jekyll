@@ -15,7 +15,7 @@ folder: SQLReference/Statements
             <p>This statement is similar to the  <span class="CodeFont"><a href="sqlref_expressions_table.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span>&#160;statements, but uses different syntax to provide compatibility with external business intelligence tools.</p>
             <p>For general information and notes about using temporary tables, see the <a href="developers_fundamentals_temptables.html">Using Temporary Tables</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</p>
             <div class="noteRestriction">Splice Machine does not currently support creating temporary tables stored as external tables.</div>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span> {
       ( {<span class="ItalicFont">column-definition</span> | <span class="ItalicFont">Table-level constraint</span>}
          [ , {<span class="ItalicFont">column-definition</span>} ] * )
@@ -44,9 +44,9 @@ folder: SQLReference/Statements
 				
 				Specifies that the data in the temporary table is to be preserved until the session terminates.			</p>
             </div>
-            <p class="heading2">Restrictions on Temporary Tables</p>
+            <h2>Restrictions on Temporary Tables</h2>
             <p>You can use temporary tables just like you do permanently defined database tables, with several important exceptions and restrictions that are noted in this section. </p>
-            <p class="heading3">Operational Limitations</p>
+            <h3>Operational Limitations</h3>
             <p>Temporary tables have the following operational limitations:</p>
             <ul>
                 <li>exist only while a user session is alive</li>
@@ -58,13 +58,13 @@ folder: SQLReference/Statements
                 <li>are not displayed by the <span class="CodeFont"><a href="cmdlineref_showtables.html">SHOW TABLES</a></span>&#160;command</li>
             </ul>
             <p>Also note that temporary tables persist across transactions in a session and are automatically dropped when a session terminates.</p>
-            <p class="heading3">Table Persistence</p>
+            <h3>Table Persistence</h3>
             <p>Here are two important notes about temporary table persistence. Temporary tables:</p>
             <ul>
                 <li>persist across transactions in a session</li>
                 <li>are automatically dropped when a session terminates or expires</li>
             </ul>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE GLOBAL TEMPORARY TABLE FirstAndLast(
       id INT&#160;NOT&#160;NULL&#160;PRIMARY&#160;KEY, 
       firstName VARCHAR(8)&#160;NOT&#160;NULL, 
@@ -73,7 +73,7 @@ folder: SQLReference/Statements
 0 rows inserted/updated/deleted
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_expressions_table.html"><span class="CodeFont">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</span></a>&#160;statement</li>
                 <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>

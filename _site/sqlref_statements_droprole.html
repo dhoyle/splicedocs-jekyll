@@ -2755,21 +2755,21 @@
 		<div class="TopicContent">
             <h1 id="Statements.DropRole">DROP ROLE</h1>
             <p>The <span class="CodeFont">DROP&#160;ROLE</span>&#160;statement allows you to drop a role from your database.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">DROP ROLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">roleName</p>
                 <p class="paramDefnFirst">The name of the role that you want to drop from your database.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>Dropping a role has the effect of removing the role from the database dictionary. This means that no session user can henceforth set that role (see <a href="sqlref_builtinfcns_currentrole.html"><span class="CodeFont">CURRENT_ROLE</span> function</a>) will now have a <span class="CodeFont">NULL CURRENT_ROLE</span>. </p>
             <p>Dropping a role also has the effect of revoking that role from any user and role it has been granted to. See the <a href="sqlref_statements_revoke.html"><span class="CodeFont">REVOKE</span> statement</a> for information on how revoking a role may impact any dependent objects.</p>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP ROLE statsEditor_role;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE_ROLE</span></a> statement</li>
                 <li><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>

@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 		<div class="TopicContent">
             <h1 id="kanchor84">AVG</h1>
             <p><span class="CodeFont">AVG</span> evaluates the average of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">AVG ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
             </div>
             <div class="paramList">
@@ -28,14 +28,14 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL data types. </p>
                 <p class="paramDefn">If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont"><a href="sqlref_expressions_select.html">Expression</a></span> is allowed. For example, the following query is not valid:</p>
             <div class="preWrapperWide"><pre xml:space="preserve" class="Example">   --- query not valid
 SELECT AVG (DISTINCT AtBats), SUM (DISTINCT Hits)
   FROM Batting;</pre>
             </div>
             <div class="noteNote">Note that specifying <span class="CodeFont">DISTINCT</span>&#160;can result in a different value, since a smaller number of values may be averaged. For example, if a column contains the values 1.0, 1.0, 1.0, 1.0, and 2.0, <span class="CodeFont">AVG(col)</span> returns a smaller value than <span class="CodeFont">AVG(DISTINCT col)</span>.</div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The resulting data type is the same as the expression on which it operates; it will never overflow. </p>
             <p>The following query, for example, returns the INTEGER <span class="CodeFont">1</span>, which might not be what you would expect:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SELECT AVG(c1)
@@ -46,7 +46,7 @@ SELECT AVG (DISTINCT AtBats), SUM (DISTINCT Hits)
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SELECT AVG(CAST (c1 AS DOUBLE PRECISION))
   FROM (VALUES (1), (1), (1), (1), (2)) AS myTable (c1);</pre>
             </div>
-            <p class="heading2">Aggregate Example</p>
+            <h2>Aggregate Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT AVG(salary) "Average" FROM Salaries;
 Average
 --------
@@ -54,7 +54,7 @@ Average
 
 1 row selected</pre>
             </div>
-            <p class="heading2">Analytic Example</p>
+            <h2>Analytic Example</h2>
             <p>The following example shows the average salary paid, per position, for the San Francisco Giants in 2015:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT Position, Players.ID, Salary, AVG(Cast(Salary as DECIMAL(11,3)))
    OVER (PARTITION by Position) "Average for Position"
@@ -115,7 +115,7 @@ OF  |25    |8319                |962397.2500
 48 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

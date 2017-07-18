@@ -2755,7 +2755,7 @@
 		<div class="TopicContent">
             <h1 id="BuiltInFcns.Max">MAX</h1>
             <p><span class="CodeFont">MAX</span>evaluates the maximum of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">MAX ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
             </div>
             <div class="paramList">
@@ -2771,7 +2771,7 @@
                 <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL&#160; numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL&#160;data types. </p>
                 <p class="paramDefn">If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont">Expression</span> is allowed. For example, the following query is not valid:</p>
             <div class="preWrapper"><pre xml:space="preserve" class="Example">   --- Not a valid query:
 SELECT COUNT(DISTINCT flying_time),
@@ -2780,10 +2780,10 @@ SELECT COUNT(DISTINCT flying_time),
             </div>
             <div class="noteNote"> Since duplicate values do not change the computation of the maximum value, the <span class="CodeFont">DISTINCT</span>&#160;and <span class="CodeFont">ALL</span>&#160;qualifiers have no impact on this function.</div>
             <p>The <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery. It must evaluate to a built-in data type. You can therefore call methods that evaluate to built-in data types. (For example, a method that returns a <span class="ItalicFont">java.lang.Integer</span> or <span class="ItalicFont">int</span> evaluates to an INTEGER.) If an expression evaluates to NULL, the aggregate skips that value.</p>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The resulting data type is the same as the expression on which it operates; it will never overflow. </p>
             <p>The comparison rules for the <span class="ItalicFont">Expression's</span> type determine the resulting maximum value. For example, if you supply a <a href="sqlref_datatypes_varchar.html"><span class="CodeFont">VARCHAR</span></a> argument, the number of blank spaces at the end of the value can affect how the maximum value is evaluated:  if the values <span class="CodeFont">'z'</span> and <span class="CodeFont">'z '</span> are both stored in a column, you cannot control which one will be returned as the maximum, because blank spaces are ignored for character comparisons.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p class="body">This example finds the birthdate of the youngest player in our database:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;SELECT MAX (BirthDate) FROM Players;
@@ -2803,7 +2803,7 @@ Singl&amp;|Doubl&amp;|Tripl&amp;|HomeR&amp;
 1 row selected
 </pre>
             </div>
-            <p class="heading2">Analytic Example</p>
+            <h2>Analytic Example</h2>
             <p>The following shows the homeruns hit by all batters who hit more than 10, compared to the most Homeruns by a player who hit 10 or more on his team:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns,
    MAX(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns
@@ -2826,7 +2826,7 @@ Giants    |Mitch Duffer            |12    |21
 
 10 rows selected</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

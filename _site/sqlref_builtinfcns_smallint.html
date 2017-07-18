@@ -2755,7 +2755,7 @@
 		<div class="TopicContent">
             <h1 id="BuiltInFcns.SmallInt">SMALLINT</h1>
             <p>The <span class="CodeFont">SMALLINT</span> function returns a small integer representation of a number or character string, in the form of a small integer constant.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">SMALLINT ( <span class="ItalicFont">NumericExpression</span> | <span class="ItalicFont">CharacterExpression</span> )</pre>
             </div>
             <div class="paramList">
@@ -2764,11 +2764,11 @@
                 <p class="paramName">CharacterExpression</p>
                 <p class="paramDefnFirst">An expression that returns a character string value of length not greater than the maximum length of a character constant. Leading and trailing blanks are eliminated and the resulting string must conform to the rules for forming an SQL integer constant. The value of the constant must be in the range of small integers. The character string cannot be a long string. </p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The result of the function is a <a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>. If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>. If the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span>value.</p>
             <p>If the argument is a <span class="ItalicFont">NumericExpression</span>, the result is the same number that would occur if the argument were assigned to a small integer column or variable. If the whole part of the argument is not within the range of small integers, an error occurs. The decimal part of the argument is truncated if present.</p>
             <p>If the argument is a <span class="ItalicFont">CharacterExpression</span>, the result is the same number that would occur if the corresponding integer constant were assigned to a small integer column or variable.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p>Using the <span class="CodeFont">Pitching</span> table from our Doc Examples database, select the <span class="CodeFont">Era</span> column in big integer form for further processing in the application:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT ID, SMALLINT(Era) "ERA"
    FROM Pitching
@@ -2801,7 +2801,7 @@ ID    |ERA
 
 23 rows selected</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

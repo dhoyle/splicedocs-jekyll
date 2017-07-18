@@ -2757,7 +2757,7 @@
             <p>A <span class="CodeFont">CLOB</span> (character large object) value can be up to 2 GB&#160;(2,147,483,647 characters) long. A <span class="CodeFont">CLOB</span> is used to store unicode character-based data, such as large documents in any character set.</p>
             <div class="noteRestriction">If you're using a CLOB with the 32-bit version of our ODBC&#160;driver, the size of the CLOB&#160;is limited to 512 MB, due to address space limitations.</div>
             <p>Note that, in Splice Machine, <span class="CodeFont">TEXT</span>&#160;is a synonym for <span class="CodeFont">CLOB</span>, and that the documentation for the <span class="CodeFont"><a href="sqlref_datatypes_text.html">TEXT</a></span>&#160;data type functionally matches the documentation for this topic. Splice Machine simply translates <span class="CodeFont">TEXT</span>&#160;into <span class="CodeFont">CLOB</span>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{CLOB | CHARACTER LARGE OBJECT} [ ( <span class="ItalicFont">length</span> [{K |M |G}] ) ]</pre>
             </div>
             <div class="paramList">
@@ -2770,13 +2770,13 @@
                 <p class="paramName">G</p>
                 <p class="paramDefnFirst">If specified, indicates that the length value is in multiples of 1024*1024*1024&#160;(giga-characters).</p>
             </div>
-            <p class="heading2">Corresponding Compile-time Java Type</p>
+            <h2>Corresponding Compile-time Java Type</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">java.sql.Clob</pre>
             </div>
-            <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+            <h2>JDBC Metadata Type (java.sql.Types)</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">CLOB</pre>
             </div>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>Use the <span class="ItalicFont">getClob</span> method on the <span class="ItalicFont">java.sql.ResultSet</span> to retrieve a <span class="CodeFont">CLOB</span> handle to the underlying data.</p>
             <p>There are a number of restrictions on using using <span class="CodeFont">BLOB</span>and <span class="CodeFont">CLOB</span> / <span class="CodeFont">TEXT</span>&#160;objects, which we refer to as LOB-types:</p>
             <ul>
@@ -2788,7 +2788,7 @@
 </li>
                 <li>LOB-types cannot be involved in implicit casting as other base-types.</li>
             </ul>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE&#160;TABLE&#160;myTable(&#160;largeCol CLOB(65535));</pre>
             </div>
         </div>

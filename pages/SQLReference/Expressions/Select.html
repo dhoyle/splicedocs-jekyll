@@ -12,7 +12,7 @@ folder: SQLReference/Expressions
 		<div class="TopicContent">
             <h1 id="Expressions.Select">SELECT Expression</h1>
             <p>A <span class="ItalicFont">SelectExpression</span> is the basic <span class="CodeFont">SELECT-FROM-WHERE</span> construct used to build a table value based on filtering and projecting values from other tables.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SELECT [ DISTINCT | ALL ] <span class="ItalicFont">SelectItem</span> [ , <span class="ItalicFont">SelectItem </span>]*
    <span class="ItalicFont"><a href="sqlref_clauses_from.html">FROM clause</a></span>
    [ <span class="ItalicFont"><a href="sqlref_clauses_where.html">WHERE clause</a></span>]
@@ -61,7 +61,7 @@ folder: SQLReference/Expressions
                 <p class="paramName"><span class="CodeItalicFont">result offset</span> and <span class="CodeItalicFont">fetch first</span> clauses</p>
                 <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows returned in the result set.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>The result of a <span class="ItalicFont">SelectExpression</span> is always a table.</p>
             <p>Splice Machine processes the clauses in a <span class="CodeFont">Select</span> expression in the following order:</p>
             <ul>
@@ -77,10 +77,10 @@ folder: SQLReference/Expressions
             <p>When a query does not have a <span class="CodeFont">FROM</span> clause (when you are constructing a value, not getting data out of a table), use a <span class="CodeFont"><a href="sqlref_expressions_values.html">VALUES</a></span> expression, not a <span class="ItalicFont">SelectExpression</span>. For example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">VALUES CURRENT_TIMESTAMP;</pre>
             </div>
-            <p class="heading2"id="StarWildcard">The * wildcard</p>
+            <h2" id="StarWildcard">The * wildcard</h2>
             <p>The wildcard character (<span class="ItalicFont">*</span>) expands to all columns in the tables in the associated <span class="CodeFont">FROM</span> clause.</p>
             <p><span class="ItalicFont"><a href="sqlref_identifiers_types.html#CorrelationName">correlation-Name</a>.*</span> expand to all columns in the identified table. That table must be listed in the associated <span class="CodeFont">FROM</span> clause.</p>
-            <p class="heading2">Naming columns</p>
+            <h2>Naming columns</h2>
             <p>You can name a <span class="ItalicFont">SelectItem</span> column using the <span class="CodeFont">AS</span> clause. </p>
             <p>If a column of a <span class="ItalicFont">SelectItem</span> is not a simple <span class="ItalicFont">ColumnReference</span> expression or named with an <span class="CodeFont">AS</span> clause, it is given a generated unique name.</p>
             <p>These column names are useful in several cases:</p>
@@ -89,7 +89,7 @@ folder: SQLReference/Expressions
                 <li>They are used as the names of the columns in the resulting table when the <span class="ItalicFont">SelectExpression</span> is used as a table subquery in a <span class="CodeFont">FROM</span> clause.</li>
                 <li>They are used in the <span class="CodeFont">ORDER BY</span> clause as the column names available for sorting.</li>
             </ul>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p class="body">This example shows using a <span class="CodeFont">SELECT</span>&#160;with <span class="CodeFont">WHERE</span>&#160;and <span class="CodeFont">ORDER&#160;BY</span>&#160;clauses; it selects the name, team, and birth date of all players born in 1985 and 1989:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT DisplayName, Team, BirthDate
    FROM Players
@@ -134,7 +134,7 @@ splice&gt;&#160;SELECT CONSTRAINTNAME, COLUMNNAME
    &#160;&#160; WHERE NOT WORKDEPT = EMP_COR.WORKDEPT)
    ORDER BY BOSS;</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
                 <li><a href="sqlref_clauses_groupby.html"><span class="CodeFont">GROUP&#160;BY</span></a>&#160;clause</li>

@@ -700,7 +700,7 @@ jardson     |Left Fielder      |34    |08-23X-2015 |2015-08-22 08:12:08.0  |11:0
             <p>You can then use your custom VTI within SQL&#160;queries by using VTI&#160;syntax, as shown in the examples in the previous section. You can also create a table function for your custom VTI, and then call that function in your queries, which simplifies using your interface.</p>
             <p>This section walks you through creating a custom virtual table interface that reads and displays the property keys and values in a properties file. This interface can be executed using a table
  function or by specifying its full method name in SQL&#160;statements. </p>
-            <div class="noteIcon">The full code for this example is in the Splice <a href="https://github.com/splicemachine/splice-community-sample-code">Community Sample Code Repository on Github.</a></div>
+            <div class="noteIcon">The full code for this example is in the Splice <a href="https://github.com/splicemachine/splice-community-sample-code  target="_blank">Community Sample Code Repository on Github.</a></div>
             <p>The remainder of this section is divided into these subsections:</p>
             <ul>
                 <li><a href="#Declare">Declare Your Class</a>
@@ -716,7 +716,7 @@ jardson     |Left Fielder      |34    |08-23X-2015 |2015-08-22 08:12:08.0  |11:0
                 <li><a href="#Use">Use Your Custom Virtual Table Interface</a>
                 </li>
             </ul>
-            <p class="heading3" id="Declare">Declare Your Class</p>
+            <h3 id="Declare">Declare Your Class</h3>
             <p class="body">The first thing you need to do is to declare your public class; since we're creating an interface to read property files, we'll call our class <span class="CodeFont">PropertiesFileVTI</span>. To create a custom VTI&#160;interface, you need to implement the following classes:</p>
             <table>
                 <col />
@@ -752,7 +752,7 @@ public class PropertiesFileVTI implements DatasetProvider, VTICosting {
     protected OperationContext operationContext;
 </pre>
             </div>
-            <p class="heading3" id="Implemen">Implement the Constructors</p>
+            <h3 id="Implemen">Implement the Constructors</h3>
             <p class="body">This section describes the constructors that we implement for our custom class:</p>
             <ul>
                 <li>
@@ -786,7 +786,7 @@ public static DatasetProvider getPropertiesFileVTI(String fileName) {
 }
 </pre>
             </div>
-            <p class="heading3" id="Implemen2">Implement Your Method to Generate Results</p>
+            <h3 id="Implemen2">Implement Your Method to Generate Results</h3>
             <p class="body">The heart of your virtual table interface is the <span class="CodeFont">DatasetProvider</span> method <span class="CodeFont">getDataSet</span>, which you override to generate and return a <span class="CodeFont">DataSet</span>. It's declaration looks like this:</p>
             <div class="preWrapperWide"><pre class="Example">DataSet&lt;LocatedRow&gt; getDataSet(<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SpliceOperation op, &#160;&#160;&#160;&#160;&#160;&#160;// References the op at the top of the stack<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;DataSetProcessor dsp,&#160;&#160;&#160;&#160;&#160;// Mechanism for constructing the execution tree<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ExecRow execRow ) throws StandardException;
 </pre>
@@ -824,7 +824,7 @@ public DataSet&lt;LocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor
 }
 </pre>
             </div>
-            <p class="heading3" id="Implemen3">Implement Costing Methods</p>
+            <h3 id="Implemen3">Implement Costing Methods</h3>
             <p class="body">The Splice Machine optimizer uses costing estimates to determine the optimal execution plan for each query. You need to implement several costing methods in your VTI&#160;class:</p>
             <ul>
                 <li>
@@ -865,7 +865,7 @@ public boolean supportsMultipleInstantiations(VTIEnvironment arg0) throws SQLExc
 }
 </pre>
             </div>
-            <p class="heading3" id="Implemen4">Implement Other DatasetProvider Methods</p>
+            <h3 id="Implemen4">Implement Other DatasetProvider Methods</h3>
             <p class="body">You also need to implement two additional <span class="CodeFont">DatasetProvider</span> methods:</p>
             <ul>
                 <li>
@@ -897,7 +897,7 @@ private static final ResultColumnDescriptor[] columnInfo = {
 private static final ResultSetMetaData metadata = new EmbedResultSetMetaData(columnInfo);
 }</pre>
             </div>
-            <p class="heading3" id="Use">Use Your Custom Virtual Table Interface</p>
+            <h3 id="Use">Use Your Custom Virtual Table Interface</h3>
             <p class="body">You can create a table function in your Splice Machine database to simplify use of your custom VTI. Here's a table declaration for our custom interface:</p>
             <div class="preWrapperWide"><pre class="Example">CREATE&#160;FUNCTION&#160;propertiesFile(propertyFilename VARCHAR(200))<br />&#160;&#160;&#160;&#160;RETURNS&#160;TABLE<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;(<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;KEY_NAME&#160;varchar(100)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VALUE&#160;varchar(200)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;)<br />&#160;&#160;&#160;&#160;LANGUAGE&#160;JAVA<br />&#160;&#160;&#160;&#160;PARAMETER&#160;STYLE&#160;SPLICE_JDBC_RESULT_SET<br />&#160;&#160;&#160;&#160;READS&#160;SQL&#160;DATA<br />&#160;&#160;&#160;&#160;EXTERNAL&#160;NAME&#160;'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';</pre>
             </div>
@@ -963,8 +963,8 @@ public SpliceJDBCVTI(String connectionUrl,<br /> &#160;&#160;&#160;&#160;&#160;&
                 <p class="paramName">sql</p>
                 <p class="paramDefnFirst">The SQL&#160;string to execute in that database.</p>
             </div>
-            <p class="heading2">See Also</p>
-            <p class="body">We recommend visiting the <a href="http://db.apache.org/derby/docs/10.9/publishedapi/jdbc3/org/apache/derby/vti/package-summary.html">Derby VTI&#160;documentation</a>, which provides full reference documentation for the VTI&#160;class hierarchy.</p>
+            <h2>See Also</h2>
+            <p class="body">We recommend visiting the <a href="http://db.apache.org/derby/docs/10.9/publishedapi/jdbc3/org/apache/derby/vti/package-summary.html  target="_blank">Derby VTI&#160;documentation</a>, which provides full reference documentation for the VTI&#160;class hierarchy.</p>
         </div>
 	</section>
 

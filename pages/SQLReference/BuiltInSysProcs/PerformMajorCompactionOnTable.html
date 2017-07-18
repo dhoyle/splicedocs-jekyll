@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInSysProcs
 		<div class="TopicContent">
             <h1 id="BuiltInSysProcs.PerformMajorCompactionOnTable">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</h1>
             <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</span> system procedure performs a major compaction on a table. The compaction is performed on the table and on all of its index and constraint tables.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE(
              	<span class="ItalicFont">schemaName</span>, <span class="ItalicFont">tableName</span>)</pre>
             </div>
@@ -24,16 +24,16 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramDefnFirst">A string that specifies name of the Splice Machine table on which to perform the compaction.</p>
             </div>
             <div>
-                <p class="heading2">Usage</p>
+                <h2>Usage</h2>
                 <p class="body">Major compaction is synchronous, which means that when you invoke this procedure from the command line, your command line prompt won't be available again until the compaction completes, which can take a little time.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE('SPLICE','Pitching');
 Statement executed.</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_sysprocs_compactschema.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</span></a>
                 </li>

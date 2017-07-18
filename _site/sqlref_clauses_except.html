@@ -2755,7 +2755,7 @@
 		<div class="TopicContent">
             <h1 id="kanchor229">EXCEPT</h1>
             <p>The <span class="CodeFont">EXCEPT</span> operator combines  the result set of two or more similar <span class="CodeFont">SELECT</span>&#160;queries, returning the results from the first query that do not appear in the results of the second query.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax"><span class="ItalicFont"><a href="sqlref_expressions_select.html">SELECT&#160;expression</a></span> ]*</pre>
             </div>
             <div class="paramList">
@@ -2767,14 +2767,14 @@
                 <p class="paramName">ALL</p>
                 <p class="paramDefnFirst">(Optional). Indicates that all rows from the queries are included, including duplicates. With <span class="CodeFont">ALL</span>, a row that has m duplicates in the left table and n duplicates in the right table will appear <span class="CodeFont">max(m-n,0)</span> times in the result set.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p class="body">Each <span class="CodeFont">SELECT</span>&#160;statement in the operation must contain the same number of columns, with similar data types, in the same order.
 Although the number, data types, and order of the fields in the select queries that you combine in an <span class="CodeFont">EXCEPT</span>&#160;clause must correspond, you can use expressions, such as calculations or subqueries, to make them correspond. </p>
             <p class="body">When comparing column values for determining <span class="CodeFont">DISTINCT</span> rows, two <span class="CodeFont">NULL</span> values are considered equal.
 </p>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>A result set.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example">CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY,
                  i1 INTEGER, i2 INTEGER,
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;c10 char(10), c30 char(30), tm time);
@@ -2821,7 +2821,7 @@ I1         |I2
 0 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_clauses_union.html">Union clause</a>
                 </li>

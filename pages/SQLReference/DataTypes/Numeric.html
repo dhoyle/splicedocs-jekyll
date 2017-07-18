@@ -14,7 +14,7 @@ folder: SQLReference/DataTypes
             <p><span class="CodeFont">NUMERIC</span> is a synonym for the <span class="CodeFont"><a href="sqlref_datatypes_decimal.html">DECIMAL</a></span> data type and
 behaves the same way. The documentation below is a mirror of the documentation for the <span class="CodeFont">DECIMAL</span> data type.</p>
             <p><span class="CodeFont">NUMERIC</span> provides an exact numeric in which the precision and scale can be arbitrarily sized. You can specify the <span class="ItalicFont">precision</span> (the total number of digits, both to the left and the right of the decimal point) and the <span class="ItalicFont">scale</span> (the number of digits of the fractional component). The amount of storage required depends on the precision you specify.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">NUMERIC [(<span class="ItalicFont">precision</span> [, <span class="ItalicFont">scale</span> ])]</pre>
             </div>
             <div class="paramList">
@@ -23,7 +23,7 @@ behaves the same way. The documentation below is a mirror of the documentation f
                 <p class="paramName">scale</p>
                 <p class="paramDefnFirst">Must be less than or equal to the precision. If not specified, the default scale is <span class="CodeFont">0</span>.</p>
             </div>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>Here are several notes about using the <span class="CodeFont">NUMERIC</span>&#160;data type:</p>
             <ul>
                 <li>An attempt to put a numeric value into a <span class="CodeFont">NUMERIC</span> is allowed as long as any non-fractional precision is not lost. When truncating trailing digits from a <span class="CodeFont">NUMERIC</span> value, Splice Machine rounds down.  For example:
@@ -40,13 +40,13 @@ ERROR 22003: The resulting value is outside the range for the data type DECIMAL/
                 <li>When two numeric values are mixed in an expression, the scale and precision of the resulting value follow the rules shown in <a href="sqlref_datatypes_numerictypes.html#Scale">Scale for decimal arithmetic</a>.</li>
                 <li>Integer constants too big for <span class="CodeFont">BIGINT</span> are made <span class="CodeFont">NUMERIC</span> constants.</li>
             </ul>
-            <p class="heading2">Corresponding Compile-time Java Type</p>
+            <h2>Corresponding Compile-time Java Type</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">java.math.BigDecimal</pre>
             </div>
-            <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+            <h2>JDBC Metadata Type (java.sql.Types)</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">NUMERIC</pre>
             </div>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">
 VALUES 123.456;
 VALUES 0.001;</pre>

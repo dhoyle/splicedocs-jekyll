@@ -867,7 +867,7 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
                 <li>quarters within years for sales</li>
             </ul>
             <div class="noteNote">If you omit the partition clause, the default partition, which contains all rows in the table, is used.However, since window functions are used to perform calculations over subsets (partitions) of rows in a table, you generally should specify a partition clause.</div>
-            <p class="heading4">Syntax</p>
+            <h4>Syntax</h4>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">PARTITION&#160;BY&#160;<span class="ItalicFont">expression</span> [, ...]</pre>
             </div>
             <div class="paramListNested">
@@ -962,7 +962,7 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
             </div>
             <h3 id="The2">The Order Clause</h3>
             <p>You can also control the order in which rows are processed by window functions using <span class="CodeFont">ORDER BY</span> within your <span class="CodeFont">OVER</span> clause. This is optional, though it is important for any ranking or cumulative functions. </p>
-            <p class="heading4">Syntax</p>
+            <h4>Syntax</h4>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ORDER&#160;BY expression
    [ ASC&#160;|&#160;DESC&#160;|&#160;USING&#160;<span class="ItalicFont">operator</span> ]<br /> &#160;&#160;[ NULLS&#160;FIRST&#160;|&#160;NULLS&#160;LAST ]
    [, ...]</pre>
@@ -983,7 +983,7 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
             </ul>
             <p>Some sources refer to the frame clause as the <span class="ItalicFont">Rows or Ranges</span> clause. If you omit this clause, the default is to include all rows </p>
             <div class="noteNote">Window frames can only be used when you include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause within the <span class="CodeFont">OVER</span>&#160;clause.</div>
-            <p class="heading4">Syntax</p>
+            <h4>Syntax</h4>
             <p>This clause specifies two offsets: one determines the start of the window frame, and the other determines the end of the window frame.</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">[RANGE&#160;|&#160;ROWS] <span class="ItalicFont">frameStart</span> |
 [RANGE&#160;|&#160;ROWS] BETWEEN&#160;<span class="ItalicFont">frameStart</span> AND&#160;<span class="ItalicFont">frameEnd</span></pre>
@@ -1039,7 +1039,7 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
                     </div>
                 </blockquote>
             </div>
-            <p class="heading4">Ranges and Rows</p>
+            <h4>Ranges and Rows</h4>
             <p class="body">Probably the easiest way to understand how <span class="CodeFont">RANGE</span>&#160;and <span class="CodeFont">ROWS</span>&#160;work is by way of some simple <span class="CodeFont">OVER</span>&#160;clause examples:</p>
             <blockquote>
                 <h5 id="Example">Example 1:</h5>
@@ -1051,7 +1051,7 @@ OVER&#160;(PARTITION&#160;BY&#160;customerID&#160;ORDER&#160;BY&#160;orderDate R
                 <h5>Example 3:</h5>
                 <p class="body">This clause can be used to apply a window function to the current row and the 3 preceding row's values in the partition:</p><pre class="Example" xml:space="preserve">OVER&#160;(PARTITION&#160;BY&#160;customerID ORDER&#160;BY&#160;orderDate ROWS&#160;3 preceding)</pre>
             </blockquote>
-            <p class="heading4">FrameStart and FrameEnd</p>
+            <h4>FrameStart and FrameEnd</h4>
             <p>Some important notes about the frame clause:</p>
             <ul>
                 <li><span class="CodeFont">UNBOUNDED&#160;PRECEDING</span>&#160;means that the frame starts with the first row of the partition.</li>
@@ -1064,7 +1064,7 @@ OVER&#160;(PARTITION&#160;BY&#160;customerID&#160;ORDER&#160;BY&#160;orderDate R
                     </div>
                 </li>
             </ul>
-            <p class="heading4">Common Frame Clauses</p>
+            <h4>Common Frame Clauses</h4>
             <p>When learning about window functions, you may find references to these specific frame clause types:</p>
             <table summary="Some common frame clause examples">
                 <col />
@@ -1192,11 +1192,11 @@ WHERE&#160;"pos" = 1;</pre>
             <h2 id="ForMoreInfo">Additional Information</h2>
             <p>There are numerous articles about window functions that you can find online. Here are a few you might find valuable:</p>
             <ul>
-                <li>The <a href="https://www.simple-talk.com/sql/learn-sql-server/window-functions-in-sql-server/">simple talk articles from Red Gate</a> about window functions are probably the most straightforward and comprehensive descriptions of window functions.</li>
-                <li>This <a href="http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23sql-1906475.html">Oracle Technology Network article</a> provides an excellent technical introduction.</li>
-                <li>This <a href="http://www.postgresql.org/docs/9.1/static/tutorial-window.html">PostgreSQL page</a> introduces their version of window functions and links to other pages.</li>
-                <li>This <a href="https://wiki.postgresql.org/wiki/SQL2008_windowing_queries">PostgreSQL&#160;wiki page</a> about SQL&#160;windowing queries page provides a succinct explanation of why windowing functions are used, and includes several useful examples.</li>
-                <li>The <a href="http://en.wikipedia.org/wiki/Select_(SQL)">Wikipedia SQL&#160;SELECT</a>&#160;page contains descriptions of specific window functions and links to other pages.</li>
+                <li>The <a href="https://www.simple-talk.com/sql/learn-sql-server/window-functions-in-sql-server/  target="_blank">simple talk articles from Red Gate</a> about window functions are probably the most straightforward and comprehensive descriptions of window functions.</li>
+                <li>This <a href="http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23sql-1906475.html  target="_blank">Oracle Technology Network article</a> provides an excellent technical introduction.</li>
+                <li>This <a href="http://www.postgresql.org/docs/9.1/static/tutorial-window.html  target="_blank">PostgreSQL page</a> introduces their version of window functions and links to other pages.</li>
+                <li>This <a href="https://wiki.postgresql.org/wiki/SQL2008_windowing_queries  target="_blank">PostgreSQL&#160;wiki page</a> about SQL&#160;windowing queries page provides a succinct explanation of why windowing functions are used, and includes several useful examples.</li>
+                <li>The <a href="http://en.wikipedia.org/wiki/Select_(SQL)  target="_blank">Wikipedia SQL&#160;SELECT</a>&#160;page contains descriptions of specific window functions and links to other pages.</li>
             </ul>
         </div>
 	</section>

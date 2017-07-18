@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInSysProcs
             <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure computes the split keys for a table or index, prior to importing that table in HFile format. You must use this procedure in conjunction with the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span> system procedure to import your data in HFile format.</p>
             <div class="noteNote">This procedure combines the actions of two other system procedures:&#160;<span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>.</div>
             <p>See the <span class="ItalicFont">Usage Notes</span> section for more information and the <span class="ItalicFont">Example</span> section to see an example of using these procedures together.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.COMPUTE_SPLIT_KEY (
 		<span class="ItalicFont">schemaName</span>,
 		<span class="ItalicFont">tableName</span>,
@@ -160,12 +160,12 @@ folder: SQLReference/BuiltInSysProcs
  </p>
                 </div>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> generates a keys file and then sets up the splits in your database. You then call  the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;system procedure to split your table into HFiles and import your data.</p>
 {% include splice_snippets/importtimestampformats.html %}
             <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
 {% include splice_snippets/hfileimport_example.html %}
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
                 </li>

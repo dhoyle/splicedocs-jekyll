@@ -8,12 +8,12 @@ sidebar: onprem_sidebar
 permalink: cmdlineref_analyze.html
 folder: CmdLineReference
 ---
-	<section>
-		<div class="TopicContent">
+   <section>
+      <div class="TopicContent">
             <h1 id="analyzecmd">Analyze Command</h1>
         <p>The <span class="AppCommand">analyze</span> command collects statistics for a specific table, or for an entire schema.</p>
         <div class="noteNote">Once statistics have been collected for a schema or table, they are automatically used by the query optimizer.</div>
-        <p class="heading2">Syntax</p>
+        <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ANALYZE&#160;TABLE <span class="ItalicFont">[schemaName '.'] table-Name</span> [ESTIMATE STATISTICS SAMPLE <span class="ItalicFont">samplepercent</span> PERCENT];<br />
 ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name;</span></pre>
         </div>
@@ -30,7 +30,7 @@ ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name;</span></pre>
             <p class="paramDefn">If you do not include this clause, statistics are generated based on the full table.</p>
             <p class="paramDefnFirst">.</p>
         </div>
-        <p class="heading3" id="Table"></a>Analyze Table</p>
+        <h3 id="Table">Analyze Table</h3>
         <p>The <span class="CodeFont">ANALYZE&#160;TABLE</span> command collects statistics for a specific table in the current schema. It also collects statistics for the index associated with the table in the schema. For example, if you have the following in your database:</p>
         <ul>
             <li>a table named <span class="CodeFont">myTable</span></li>
@@ -84,7 +84,7 @@ ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name;</span></pre>
                 </tr>
             </tbody>
         </table>
-        <p class="heading3" id="Schema"></a>Analyze Schema</p>
+        <h3 id="Schema">Analyze Schema</h3>
         <p>The <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema. For example, if you have the following situation:</p>
         <ul>
             <li>a schema named <span class="CodeFont">mySchema</span></li>
@@ -94,7 +94,7 @@ ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name;</span></pre>
         <p>Then the <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command  will collect statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
         <p>The <span class="CodeFont">ANALYZE&#160;SCHEMA</span>&#160;command displays the same information as shown for <span class="CodeFont">ANALYZE&#160;TABLE</span>, for each table in the in the schema.</p>
         <div class="noteNote">This command operates like the <span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> built-in system procedure.</div>
-        <p class="heading2">Examples</p>
+        <h2>Examples</h2>
         <div class="preWrapperWide"><pre class="AppCommand">splice&gt; analyze table test.t2;
 schemaName |tableName |partition         |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
 -----------------------------------------------------------------------------------------------------------------
@@ -124,6 +124,4 @@ TEST       |T5        |splice:1654,\xE6..|39226      |235356        |1          
 splice&gt;</pre>
         </div>
         </div>
-	</section>
-
-
+   </section>

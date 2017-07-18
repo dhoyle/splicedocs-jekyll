@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInSysProcs
         <h1>SYSCS_UTIL.VACUUM_TABLE</h1>
         <p>The <span class="CodeFont">SYSCS_UTIL.VACUUM_TABLE</span>&#160;system procedure improves the performance of your database by cleaning no longer needed historical update data from a table.</p>
         <div class="noteIcon">Splice Machine recommends calling this system procedure regularly (or frequently)&#160;on tables in your database that are frequently updated with modifications or deletions. Insertions by themselves do not generate the kind of data that needs to be vacuumed from a table; however, if a row is frequently inserted, then deleted, then inserted again, and that row has a primary key or indexed fields, vacuuming will be required.<br /><br />Many customers use a scheduling utility such as <span class="ItalicFont">Cron</span> to call this procedure.<br /></div>
-        <p class="heading2">Syntax</p>
+        <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.VACUUM_TABLE(
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;schemaName,
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;table);</pre>
@@ -28,7 +28,7 @@ folder: SQLReference/BuiltInSysProcs
 				argument of <span class="CodeFont">"Fred"</span> will be passed to SQL as the delimited identifier <span class="CodeFont">'Fred'</span>.
 			Passing a <span class="CodeFont">null</span> or non-existent table name generates an error.</p>
         </div>
-        <p class="heading2">Results</p>
+        <h2>Results</h2>
         <p>This procedure returns a table with the following columns:</p>
         <table summary="Columns in the table returned by Vacuum_Table">
             <col />
@@ -66,7 +66,7 @@ folder: SQLReference/BuiltInSysProcs
                 </tr>
             </tbody>
         </table>
-        <p class="heading2">SQL Examples</p>
+        <h2>SQL Examples</h2>
         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;CALL SYSCS_UTIL.VACUUM_TABLE('MySchema', 'MyTable');
 Statement executed.</pre>

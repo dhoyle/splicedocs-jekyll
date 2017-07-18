@@ -12,7 +12,7 @@ folder: SQLReference/Clauses
 		<div class="TopicContent">
             <h1 id="kanchor126">UNION</h1>
             <p>The <span class="CodeFont">UNION</span> operator combines the result set of two or more similar <span class="CodeFont">SELECT</span>&#160;queries, and returns distinct rows.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax"><span class="ItalicFont"><a href="sqlref_expressions_select.html">SELECT&#160;expression</a></span> ]*</pre>
             </div>
             <div class="paramList">
@@ -24,14 +24,14 @@ folder: SQLReference/Clauses
                 <p class="paramName">ALL</p>
                 <p class="paramDefnFirst">(Optional). Indicates that all rows from the queries are included, including duplicates.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p class="body">Each <span class="CodeFont">SELECT</span>&#160;statement in the union must contain the same number of columns, with similar data types, in the same order.
 Although the number, data types, and order of the fields in the select queries that you combine in a <span class="CodeFont">UNION</span>&#160;clause must correspond, you can use expressions, such as calculations or subqueries, to make them correspond. </p>
             <p>Each <span class="CodeFont">UNION</span> keyword combines the <span class="CodeFont">SELECT</span> statements that immediately precede and follow it. If you use the <span class="CodeFont">ALL</span> keyword with some of the <span class="CodeFont">UNION</span> keywords in your query, but not with others, the results will include duplicate rows from the pairs of <span class="CodeFont">SELECT</span> statements that are combined by using <span class="CodeFont">UNION ALL</span>, but will not include duplicate rows from the <span class="CodeFont">SELECT</span> statements that are combined by using <span class="CodeFont">UNION</span> without the <span class="CodeFont">ALL</span> keyword.
 </p>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>A result set.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example">CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY,
                  i1 INTEGER, i2 INTEGER,
                  c10 char(10), c30 char(30), tm time);
@@ -90,7 +90,7 @@ ID         |I1         |I2
 
 14 rows selected</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_clauses_except.html">Except clause</a>
                 </li>

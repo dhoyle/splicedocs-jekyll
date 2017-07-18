@@ -19,17 +19,17 @@ folder: SQLReference/DataTypes
         </ul>
         <div class="noteNote">For an application to retrieve, update, query, or otherwise access an XML data value, the application must have classes for a JAXP parser and for Xalan in the classpath. Splice Machine issues an error if either the parser or Xalan is not found. In some situations, you may need to take steps to place the parser and Xalan in your classpath. See "XML data types and operators" in the <span class="ItalicFont">The Splice Machine Developer's Guide</span> for details.</div>
         <p>Because none of the JDBC-side support for SQL/XML is implemented in Splice Machine, it is not possible to bind directly into an <span class="CodeFont">XML</span> value or to retrieve an <span class="CodeFont">XML</span> value directly from a result set using JDBC. Instead, you must bind and retrieve the XML data as Java strings or character streams by explicitly specifying the appropriate XML operators, <span class="CodeFont">XMLPARSE</span> and <span class="CodeFont">XMLSERIALIZE</span>, as part of your SQL queries.</p>
-        <p class="heading2">Syntax</p>
+        <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax">XML</pre>
         </div>
-        <p class="heading2">Corresponding Compile-time Java Type</p>
+        <h2>Corresponding Compile-time Java Type</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax">None</pre>
         </div>
         <p>The Java type for XML values is java.sql.SQLXML. However, the java.sql.SQLXML type is not supported by Splice Machine. </p>
-        <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+        <h2>JDBC Metadata Type (java.sql.Types)</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax">None</pre>
         </div>
-        <p class="heading2">Notes</p>
+        <h2>Notes</h2>
         <p>The metadata type for <span class="CodeFont">XML</span> values is SQLXML. However, the SQLXML type is not supported by Splice Machine. </p>
         <p>To retrieve <span class="CodeFont">XML</span> values from a Splice Machine database using JDBC, use the <span class="CodeFont">XMLSERIALIZE</span> operator in the SQL query. For example:</p>
         <div class="fcnWrapperWide"><pre class="FcnSyntax">SELECT XMLSERIALIZE (xcol as CLOB) FROM myXmlTable </pre>

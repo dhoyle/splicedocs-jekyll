@@ -24,7 +24,7 @@ folder: SQLReference/BuiltInFcns
         </div>
         <p>There is no guarantee that the result of the <span class="CodeFont">XMLSERIALIZE</span> operator will be identical to the original <span class="CodeFont">[xString]</span> representation. Certain transformations can occur as part of <span class="CodeFont">XMLSERIALIZE</span> processing, and those transformations are defined in the SQL/XML specification. In some cases the result of <span class="CodeFont">XMLSERIALIZE</span> might actually be the same as the original textual representation, but that is not guaranteed. </p>
         <p>When an <span class="CodeFont">XMLSERIALIZE</span> operator is specified as part of the top-level result set for a query, the result can be accessed from JDBC by using whatever JDBC <span class="CodeFont">getXXX</span> methods are allowed on the <span class="CodeFont">string-data-type</span> argument that is included in the <span class="CodeFont">XMLSERIALIZE</span> syntax. If you attempt to select the contents of an XML value from a top-level result set without using the <span class="CodeFont">XMLSERIALIZE</span> operator, Splice Machine throws an error. Splice Machine does not implicitly serialize XML values.</p>
-        <p class="heading2">Syntax</p>
+        <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">XMLSERIALIZE ( <var>xml-value-expression</var>
                AS <var>string-data-type</var> )</pre>
         </div>
@@ -34,7 +34,7 @@ folder: SQLReference/BuiltInFcns
             <p class="paramName">string-data-type</p>
             <p class="paramDefnFirst">Must be a SQL character string type, such as <span class="CodeFont">CHAR</span>, <span class="CodeFont">VARCHAR</span>, <span class="CodeFont">LONG VARCHAR</span>, or <span class="CodeFont">CLOB</span>. If you specify a type that is not a valid character string type, Splice Machine throws an error.</p>
         </div>
-        <p class="heading2">Examples</p>
+        <h2>Examples</h2>
         <p>In the <span class="CodeFont">x_table</span> table, to display the contents of the <span class="CodeFont">xcol</span> XML column, use this statement:</p>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT ID, 
   XMLSERIALIZE(<var> xcol</var> AS CLOB)  
@@ -49,7 +49,7 @@ folder: SQLReference/BuiltInFcns
   AS VARCHAR(50))
   FROM <var>x_table</var>;</pre>
         </div>
-        <p class="heading2">Usage note</p>
+        <h2>Usage note</h2>
         <p>Splice Machine requires that a JAXP parser (such as Apache Xerces) and Apache Xalan are listed in the Java classpath for the XML functions to work. If either the JAXP parser or Xalan is missing from the classpath, attempts to use the <span class="CodeFont">XMLSERIALIZE</span> operator will result in an error. In some situations, you may need to take steps to place the parser and Xalan in your classpath.</p>
     </div>
 </section>

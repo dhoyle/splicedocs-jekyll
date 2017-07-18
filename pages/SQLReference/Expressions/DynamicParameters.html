@@ -14,7 +14,7 @@ folder: SQLReference/Expressions
             <p>You can prepare statements that are allowed to have parameters for which the value is not specified when the statement is  repared using <span class="ItalicFont">PreparedStatement</span> methods in the JDBC API. These parameters are called dynamic parameters and are represented by a ?.</p>
             <p>The JDBC API documents refer to dynamic parameters as <span class="CodeFont">IN</span>, <span class="CodeFont">INOUT</span>, or <span class="CodeFont">OUT</span> parameters. In SQL, they are always <span class="CodeFont">IN</span> parameters.</p>
             <p>You must specify values for dynamic parameters before executing the statement, and the types of the specified values must match the expected types.</p>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">PreparedStatement ps2 = conn.prepareStatement(
   "UPDATE HotelAvailability SET rooms_available = " +
   "(rooms_available - ?) WHERE hotel_id = ? " +
@@ -28,7 +28,7 @@ ps2.setDate(3, arrival);
 ps2.setDate(4, departure);
 updateCount = ps2.executeUpdate();</pre>
             </div>
-            <p class="heading2" id="DynamicParametersAllowed">Where Dynamic Parameters are Allowed</p>
+            <h2 id="DynamicParametersAllowed">Where Dynamic Parameters are Allowed</h2>
             <p>You can use dynamic parameters anywhere in an expression where their data type can be easily deduced. </p>
             <ul>
                 <li>Use as the first operand of <span class="CodeFont">BETWEEN</span> is allowed if one of the second and third operands is not also a dynamic parameter. The type of the first operand is assumed to be the type of the non-dynamic parameter, or the union result of their types if both are not dynamic parameters.   <div class="preWrapper"><pre class="Example">WHERE ? BETWEEN DATE('1996-01-01') AND ?

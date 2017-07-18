@@ -2757,7 +2757,7 @@
             <p>Use the <span class="CodeFont">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</span> system
 procedure to set or delete the value of a property of the database on the
 current connection.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IN <span class="ItalicFont">key</span> VARCHAR(128),
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IN <span class="ItalicFont">value</span> VARCHAR(32672)
@@ -2771,13 +2771,13 @@ current connection.</p>
 is deleted from the database property set. If this is not <span class="CodeFont">null</span>, then this <span class="CodeFont">value</span>&#160;becomes the new value of the property. If this value is not a valid value for the property, Splice Machine uses the default value
 of the property.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
 execute privileges on this function by default. The
 database owner can grant access to other users.</p>
-            <p class="heading2">JDBC example</p>
+            <h2>JDBC example</h2>
             <p>Set the
 <span class="CodeFont">splicemachine.locks.deadlockTimeout</span> property
 to a value of 10:</p>
@@ -2788,13 +2788,13 @@ to a value of 10:</p>
   cs.execute();
   cs.close();</pre>
             </div>
-            <p class="heading2">SQL Example</p>
+            <h2>SQL Example</h2>
             <p>Set the <span class="CodeFont">splicemachine.locks.deadlockTimeout</span> property
 to a value of 10:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout', '10' );
 Statement executed.</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_sysprocs_getdbprop.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</span></a> built-in system function</li>
             </ul>

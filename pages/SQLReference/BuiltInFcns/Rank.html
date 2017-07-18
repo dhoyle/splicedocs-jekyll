@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 		<div class="TopicContent">
             <h1 id="kanchor180">RANK()</h1>
             <p><span class="CodeFont">RANK()</span> is a <span class="ItalicFont">ranking function</span> that returns the rank of a value within the ordered partition of values defined by its <span class="CodeFont">OVER</span>&#160;clause. Ranking functions are a subset of <a href="sqlref_builtinfcns_windowfcnsintro.html">window functions</a>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">RANK() OVER ( <span class="ItalicFont">overClause</span> )</pre>
             </div>
             <div class="paramList">
@@ -20,9 +20,9 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefnFirst">See the <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause documentation.</p>
                 <div class="noteNote">Ranking functions such as <span class="CodeFont">RANK</span>&#160;must include an <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></span>&#160;clause in the <span class="CodeFont">OVER</span>&#160;clause. This is because the ranking is calculated based on the ordering.</div>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The resulting data type is <span class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a></span>.</p>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>The <span class="CodeFont">RANK()</span> and <span class="CodeFont"><a href="sqlref_builtinfcns_denserank.html">DENSE_RANK()</a></span>&#160;analytic functions are very similar. The difference shows up when there are multiple input rows that have the same ranking value. When that happens:</p>
             <ul>
                 <li>The <span class="CodeFont">RANK()</span>&#160;function can generate non-consecutive ranking result values: if values in the ranking column are the same, they receive the same rank; however, the next number in the ranking sequence is then skipped, which means that <span class="CodeFont">RANK</span>&#160;can return non-consecutive numbers.</li>
@@ -42,7 +42,7 @@ folder: SQLReference/BuiltInFcns
 | e     |    8 |          5 |
 -----------------------------</pre>
             </div>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <p class="body">The following query ranks the salaries of players, per team, whose salary is at least $1 million.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT DisplayName, Team, Season, Salary,
    RANK() OVER (PARTITION BY Team ORDER BY Salary Desc) "RANK"
@@ -151,7 +151,7 @@ Jason Minman            |Giants    |2015  |1000000             |20
 42 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
                 <li><a href="sqlref_builtinfcns_bigint.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>

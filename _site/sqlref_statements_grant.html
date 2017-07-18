@@ -2759,7 +2759,7 @@
             <div class="noteIcon">
                 <p>Only database and schema owners can use the <span class="CodeFont">CREATE TABLE</span> statement, which means that table creation privileges cannot be granted to others, even with  <span class="CodeFont">GRANT ALL PRIVILEGES</span>.</p>
             </div>
-            <p class="heading2">Syntax for Schemas</p>
+            <h2>Syntax for Schemas</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege&#160;}*<br />&#160;&#160;&#160;ON [SCHEMA] <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SchemaName">schema-Name</a></span> <br />&#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
             </div>
             <div class="paramList">
@@ -2774,18 +2774,18 @@
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: Column-level privileges are available only with a Splice Machine Enterprise license.</span>
                     </p>
                     <p>You cannot grant or revoke privileges at the <span class="CodeFont">column-identifier</span> level with the Community version of Splice Machine.</p>
-                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
+                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
                 <p class="paramName">schema-Name</p>
                 <p class="paramDefnFirst">The name of the schema to which you are granting access.</p>
                 <p class="paramName">grantees</p>
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;to whom you are granting access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
-            <p class="heading4">NOTES:</p>
+            <h4>NOTES:</h4>
             <ul>
                 <li>When you drop a schema from your database, all  privileges associated with the schema are removed.</li>
                 <li>Table-level privileges override schema-level privileges.</li>
             </ul>
-            <p class="heading2">Syntax for Tables</p>
+            <h2>Syntax for Tables</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT ALL PRIVILEGES | table-privilege {, table-privilege&#160;}*<br />&#160;&#160;&#160;ON [TABLE] { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
 &#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
             </div>
@@ -2801,7 +2801,7 @@
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: Column-level privileges are available only with a Splice Machine Enterprise license.</span>
                     </p>
                     <p>You cannot grant or revoke privileges at the <span class="CodeFont">column-identifier</span> level with the Community version of Splice Machine.</p>
-                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
+                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
                 <p class="paramName">table-Name</p>
                 <p class="paramDefnFirst">The name of the table to which you are granting access.</p>
                 <p class="paramName">view-Name</p>
@@ -2811,12 +2811,12 @@
                 <p class="paramName">grantees</p>
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;to whom you are granting access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
-            <p class="heading4">NOTES:</p>
+            <h4>NOTES:</h4>
             <ul>
                 <li>When you drop a table from your database, all  privileges associated with the table are removed.</li>
                 <li>Table-level privileges override schema-level privileges.</li>
             </ul>
-            <p class="heading2">Syntax for Routines</p>
+            <h2>Syntax for Routines</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT EXECUTE
 &#160;&#160;&#160;ON { FUNCTION | PROCEDURE } {<span class="ItalicFont">function-name</span> | <span class="ItalicFont">procedure-name</span>}
 &#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
@@ -2827,7 +2827,7 @@
                 <p class="paramName">grantees</p>
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;to whom you are granting access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
-            <p class="heading2">Syntax for User-defined Types</p>
+            <h2>Syntax for User-defined Types</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT USAGE
 &#160;&#160;&#160;ON TYPE [ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span>
 &#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
@@ -2838,7 +2838,7 @@
                 <p class="paramName">grantees</p>
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;to whom you are granting access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
-            <p class="heading2">Syntax for Roles</p>
+            <h2>Syntax for Roles</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">GRANT <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> }* ]
 &#160;&#160;&#160;TO <span class="ItalicFont">grantees</span></pre>
             </div>
@@ -2850,7 +2850,7 @@
             </div>
             <p>Before you can grant a role to a user or to another role, you must create the role using the <a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE ROLE</span> statement</a>. Only the database owner can grant a role.</p>
             <p>A role A <span class="ItalicFont">contains</span> another role B if role B is granted to role A, or is contained in a role C granted to role A. Privileges granted to a contained role are inherited by the containing roles. So the set of privileges identified by role A is the union of the privileges granted to role A and the privileges granted to any contained roles of role A.</p>
-            <p class="heading2" id="AboutGrantees">About Grantees</p>
+            <h2 id="AboutGrantees">About Grantees</h2>
             <p>A grantee can be one or more specific users, one or more specific roles, or all users (<span class="CodeFont">PUBLIC</span>). Either the object owner or the database owner can grant privileges to a user or to a role. Only the database owner can grant a role to a user or to another role.</p>
             <p>Here's the syntax:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC }
@@ -2868,7 +2868,7 @@
                 <p class="paramDefn">When <span class="CodeFont">PUBLIC</span> is specified, the privileges or roles affect all current and future users. </p>
                 <p class="paramDefn">The privileges granted to <span class="CodeFont">PUBLIC</span> and to individual users or roles are independent privileges. For example, a <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">t</span> is granted to both <span class="CodeFont">PUBLIC</span> and to the authorization ID <span class="CodeFont">harry</span>. If the <span class="CodeFont">SELECT</span> privilege is later revoked from the authorization ID <span class="CodeFont">harry</span>, Harry will still be able to access the table <span class="CodeFont">t</span> through the <span class="CodeFont">PUBLIC</span> privilege.</p>
             </div>
-            <p class="heading2" id="PrivilegeTypes">Privilege Types</p>
+            <h2 id="PrivilegeTypes">Privilege Types</h2>
             <table summary="Privilege types">
                 <col />
                 <col />
@@ -2914,7 +2914,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>The following types of privileges can be granted:</p>
             <ul>
                 <li>Delete data from a specific table.</li>
@@ -2928,8 +2928,8 @@
             </ul>
             <p>Before you issue a <span class="CodeFont">GRANT</span> statement, check that the <span class="CodeFont">derby.database.sqlAuthorization</span> property is set to <span class="CodeFont">true</span>. The <span class="CodeFont">derby.database.sqlAuthorization</span> property enables the SQL Authorization mode.</p>
             <p>You can grant privileges on an object if you are the owner of the object or the database owner. See documentation for the <span class="CodeFont"><a href="sqlref_statements_createstatements.html">CREATE</a></span> statements for more information. </p>
-            <p class="heading2">Examples</p>
-            <p class="heading3">Granting Privileges to Users</p>
+            <h2>Examples</h2>
+            <h3>Granting Privileges to Users</h3>
             <p>To grant the <span class="CodeFont">SELECT</span> privilege on the schema <span class="CodeFont">SpliceBBall</span> to the authorization IDs <span class="CodeFont">Bill</span> and <span class="CodeFont">Joan</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT SELECT ON SCHEMA&#160;SpliceBBall TO Bill, Joan;
 0 rows inserted/updated/deleted</pre>
@@ -2950,12 +2950,12 @@
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT EXECUTE ON PROCEDURE ComputeValue TO george;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading3">Granting Roles to Users</p>
+            <h3>Granting Roles to Users</h3>
             <p>To grant the role <span class="CodeFont"> purchases_reader_role</span> to the authorization  IDs <span class="CodeFont">george</span> and <span class="CodeFont">maria</span>, use the following  syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT purchases_reader_role TO george,maria;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading3">Granting Privileges to Roles</p>
+            <h3>Granting Privileges to Roles</h3>
             <p>To grant the <span class="CodeFont">SELECT</span> privilege on schema <span class="CodeFont">SpliceBBall</span> to the role <span class="CodeFont">purchases_reader_role</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT SELECT ON SCHEMA&#160;SpliceBBall TO purchases_reader_role;
 0 rows inserted/updated/deleted</pre>
@@ -2964,7 +2964,7 @@
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;GRANT SELECT ON TABLE t TO purchases_reader_role;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE&#160;ROLE</span></a>&#160;statement</li>
                 <li><a href="sqlref_statements_createtrigger.html"><span class="CodeFont">CREATE&#160;TRIGGER</span></a>&#160;statement</li>

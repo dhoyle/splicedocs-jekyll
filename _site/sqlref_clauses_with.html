@@ -2762,16 +2762,16 @@ CTEs are helpful in reducing query complexity and increasing readability.  They 
 
 </div>
             <p>The handling and syntax of <span class="CodeFont">WITH</span> queries are similar to the handling and syntax of views. The <span class="CodeFont">WITH</span> clause can be processed as an inline view and shares syntax with <span class="CodeFont">CREATE VIEW</span>. The <span class="CodeFont">WITH</span> clause can also resolve as a temporary table, which may enhance the efficiency of a query.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">WITH <span class="ItalicFont">queryName</span> <br /> &#160;&#160;AS SELECT&#160;<span class="ItalicFont"><a href="sqlref_queries_query.html">Query</a></span></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">queryName</p>
                 <p class="paramDefnFirst">An identifier that names the subquery clause.</p>
             </div>
-	        <p class="heading2">Restrictions</p>
+	        <h2>Restrictions</h2>
     	    <p class="body">You cannot currently use a temporary table in a <span class="CodeFont">WITH</span>&#160;clause. This is being addressed in a future release of Splice Machine.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p class="body">If we create the following table:</p>
             <div class="preWrapperWide"><pre class="Example">CREATE TABLE BANKS (
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;INSTITUTION_ID INTEGER NOT NULL,
@@ -2803,7 +2803,7 @@ WHERE STATE IN (SELECT STATE FROM top_states)
 GROUP BY STATE, CITY;
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>
                 <li><a href="sqlref_queries_query.html"><span class="CodeFont">Query</span></a>&#160;</li>

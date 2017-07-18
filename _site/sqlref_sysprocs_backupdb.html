@@ -2763,7 +2763,7 @@ performs an immediate full or incremental backup of your database to a specified
             </ul>
             <div class="noteNote">The first time that you run an incremental backup, a full backup is performed. Subsequent runs of the backup will only copy information that has changed since the previous backup.</div>
             <p>For more information, see the <a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
                                   VARCHAR(30)&#160;<span class="ItalicFont">backupType</span> );</pre>
             </div>
@@ -2777,9 +2777,9 @@ based on the current user directory. To avoid confusion, we strongly recommend t
                 <p class="paramDefnFirst">Specifies the type of backup that you want performed.This must be one of the following values: <span class="CodeFont">'full'</span> or <span class="CodeFont">'incremental'</span>; any other value produces an error and the backup is not run.</p>
                 <p class="paramDefn">Note that if you specify <span class="CodeFont">'incremental'</span>, Splice Machine checks the <a href="sqlref_systables_sysbackup.html"><span class="CodeFont">SYS.SYSBACKUP</span></a> table to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>There's a subtle issue with performing a backup when you're using a temporary table in your session:&#160;although the temporary table is (correctly)&#160;not backed up, the temporary table's entry in the system tables will be backed up. When the backup is restored, the table entries will be restored, but the temporary table will be missing.</p>
             <p>There's a simple workaround:</p>
             <ol>
@@ -2787,11 +2787,11 @@ based on the current user directory. To avoid confusion, we strongly recommend t
                 <li>Start a new session (reconnect to your database).</li>
                 <li>Start your backup job.</li>
             </ol>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
 execute privileges on this function by default. The
 database owner can grant access to other users.</p>
-            <p class="heading2">JDBC example</p>
+            <h2>JDBC example</h2>
             <p>The following example performs an immediate full backup to a subdirectory of the <span class="CodeFont">hdfs:///home/backup</span> directory: </p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE(?,?)");
@@ -2800,7 +2800,7 @@ database owner can grant access to other users.</p>
   cs.execute();
   cs.close();</pre>
             </div>
-            <p class="heading2">SQL Example</p>
+            <h2>SQL Example</h2>
             <div class="noteRelease">Backing up a database may take several minutes, depending on the size of your database and how much of it you're backing up.</div>
             <div>
                 <p>The following example runs an immediate incremental backup to the <span class="CodeFont">hdfs:///home/backup/</span> directory:</p>
@@ -2817,7 +2817,7 @@ Statement executed.</pre>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( './dbBackups', 'full' );
 Statement executed.</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
                 <li><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a>built-in system procedure</li>

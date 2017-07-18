@@ -2755,7 +2755,7 @@
 		<div class="TopicContent">
             <h1 id="BuiltInFcns.TimeStamp">TIMESTAMPDIFF</h1>
             <p>The <span class="CodeFont">TIMESTAMPDIFF</span> function finds the difference between two timestamps, in terms of the specfied interval.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TIMESTAMPDIFF ( <span class="ItalicFont">interval</span>, <span class="ItalicFont">timeStamp1</span>, <span class="ItalicFont">timeStamp2</span> )</pre>
             </div>
             <div class="paramList">
@@ -2771,9 +2771,9 @@
                 <p class="paramDefnFirst">The second <a href="sqlref_builtinfcns_timestamp.html">timestamp</a> value.</p>
                 <div class="noteNote">If you use a <span class="CodeFont">datetime</span> column inside the <span class="CodeFont">TIMESTAMPDIFF</span> function in a <span class="CodeFont">WHERE</span>&#160;clause, the optimizer cannot use indexes on that column. We strongly recommend not doing this!</div>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The <span class="CodeFont">TIMESTAMPDIFF</span> function returns an integer value representing the count of intervals between the two timestamp values.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p class="body">These examples shows the number of years a player was born after Nov 22, 1963:.</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT ID, BirthDate, TIMESTAMPDIFF(SQL_TSI_YEAR, Date('11/22/1963'), BirthDate) "YearsSinceJFK"
    FROM Players WHERE ID &lt; 11
@@ -2794,7 +2794,7 @@ ID    |BIRTHDATE |YearsSinceJFK
 10 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

@@ -12,12 +12,12 @@ folder: SQLReference/Expressions
 		<div class="TopicContent">
             <h1 id="Expressions.Table">TABLE Expression</h1>
             <p>A <span class="ItalicFont">TableExpression</span> specifies a table, view, or function in a <a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span> clause</a>. It is the source from which a <span class="ItalicFont"><a href="#">TableExpression</a></span> selects a result.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">{
 &#160;&#160;&#160;<span class="ItalicFont"><a href="sqlref_joinops_about.html">JOIN operations</a>
 }</pre>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>A correlation name can be applied to a table in a <span class="ItalicFont">TableExpression</span> so that its columns can be qualified with that name. </p>
             <ul>
                 <li>If you do not supply a correlation name, the table name qualifies the column name. </li>
@@ -31,7 +31,7 @@ folder: SQLReference/Expressions
                 <li>When column names would otherwise be the same as those of columns in other tables; renaming them means you don't have to qualify them.</li>
             </ul>
             <p>The Query in a <span class="ItalicFont"><a href="sqlref_queries_tablesubquery.html">TableSubquery</a>.</span></p>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- SELECT from a JOIN expression
 SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
   FROM EMPLOYEE E LEFT OUTER JOIN
@@ -40,7 +40,7 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
        ON E.WORKDEPT = DEPTNO;
 </pre>
             </div>
-            <p class="heading2" id="TableViewExpression">TableViewOrFunctionExpression</p>
+            <h2 id="TableViewExpression">TableViewOrFunctionExpression</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
    { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
  &#160;&#160;[ <span class="ItalicFont">CorrelationClause</span> ]  |
@@ -54,7 +54,7 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
 [ ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) ]
 </pre>
             </div>
-            <p class="heading2" id="TableFunction">TableFunctionExpression</p>
+            <h2 id="TableFunction">TableFunctionExpression</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
 {
   TABLE <span class="ItalicFont">function-name</span>( [ [ function-arg ] [, function-arg ]* ] )
@@ -64,7 +64,7 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
             <p>Note that when you invoke a table function, you must bind it to a correlation name. For example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT s.* FROM TABLE( externalEmployees( 42 ) ) s;</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
                 <li><a href="sqlref_joinops_about.html"><span class="CodeFont">JOIN</span></a>&#160;operations</li>

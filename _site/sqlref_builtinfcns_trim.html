@@ -2755,7 +2755,7 @@
 		<div class="TopicContent">
             <h1 id="BuiltInFcns.Trim">TRIM</h1>
             <p>The <span class="CodeFont">TRIM</span> function that takes a character expression and returns that expression with leading and/or trailing pad characters removed. Optional parameters indicate whether leading, or trailing, or both leading and trailing pad characters should be removed, and specify the pad character that is to be removed.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TRIM( [ <span class="ItalicFont">trimOperands</span> ] <span class="ItalicFont">trimSource</span>)</pre>
             </div>
             <div class="paramList">
@@ -2779,7 +2779,7 @@
                 <p class="paramName">trimSource</p>
                 <p class="paramDefnFirst">The character expression to be trimmed</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>If either <span class="ItalicFont">trimCharacter</span> or <span class="ItalicFont">trimSource</span> evaluates to <span class="CodeFont">NULL</span>, the result of the <span class="CodeFont">TRIM</span> function is <span class="CodeFont">NULL</span>. Otherwise, the result of the <span class="CodeFont">TRIM</span> function is defined as follows:</p>
             <ul>
                 <li>If <span class="ItalicFont">trimType</span> is <span class="CodeFont">LEADING</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all leading occurrences of <span class="ItalicFont">trimCharacter</span> removed.</li>
@@ -2787,7 +2787,7 @@
                 <li>If <span class="ItalicFont">trimType</span> is <span class="CodeFont">BOTH</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all leading AND&#160;trailing occurrences of <span class="ItalicFont">trimCharacter</span>removed.</li>
             </ul>
             <p>If <span class="ItalicFont">trimSource</span>'s data type is <a href="sqlref_datatypes_clob.html"><span class="CodeFont">CLOB</span></a>. </p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;VALUES TRIM('      Space Case   ');
 1
@@ -2817,7 +2817,7 @@ VooD
    -- results in an error because <span class="ItalicFont">trimCharacter</span> can only be 1 character
 splice&gt;&#160;VALUES TRIM('Do' FROM 'VooDoo');</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInSysProcs
             <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span> system procedure
 deletes any backups that are older than a specified number of days (the <span class="ItalicFont">backup window</span>), retaining only those backups that fit into that window. </p>
             <p>Backups can consume a lot of disk space, and thus, we recommend regularly scheduling both the creation of new backups and deletion of  outdated backups.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( INT&#160;<span class="ItalicFont">backupWindow</span> ); </pre>
             </div>
             <div class="paramList">
@@ -22,18 +22,18 @@ deletes any backups that are older than a specified number of days (the <span cl
                 <p class="paramDefnFirst">Specifies the number of days of backups that you want retained. Any backups created more than <span class="CodeFont">backupWindow</span> days ago are deleted.</p>
                 <p class="paramDefn"> See the <a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
 execute privileges on this function by default. The
 database owner can grant access to other users.</p>
-            <p class="heading2">SQL Example</p>
+            <h2>SQL Example</h2>
             <p>The following example deletes all database backups that were created more than 30 days ago.</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS(30);
 Statement executed.</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
                 <li><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>

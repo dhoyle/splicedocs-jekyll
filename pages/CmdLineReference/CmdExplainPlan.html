@@ -13,7 +13,7 @@ folder: CmdLineReference
             <h1 id="kanchor168">Explain Plan Command</h1>
             <p>The <span class="AppCommand">explain</span> command displays the execution plan for a statement without actually executing the statement; it parses and optimizes the SQL, then presents its execution plan.</p>
             <p>You can use this to tune a query for improved performance.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">explain <span class="ItalicFont">Statement</span></pre>
             </div>
             <div class="paramList">
@@ -21,10 +21,10 @@ folder: CmdLineReference
                 </p>
                 <p class="paramDefnFirst">An SQL&#160;statement. </p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>SQL Data Definition Language (DDL) statement have no known cost, and thus do not require optimization. Because of this, the <span class="CodeFont">explain</span> command does not work with DDL statements; attempting to <span class="CodeFont">explain</span> a DDL statement such as <span class="CodeFont">CREATE TABLE</span> will generate a syntax error. </p>
             <p>For more information about using the explain command, including a number of annotated examples, see the <a href="developers_tuning_explainplan.html">Explain Plan</a> topic in the <span class="ItalicFont">Performance Tuning</span> section of our <span class="ItalicFont">Administrator's Guide</span>.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; explain select *&#160;from t t1 where t1.i &lt;&#160;(select max(i)&#160;from t t1);</pre>
             </div>
             <p>The <a href="developers_tuning_explainplan.html">Explain Plan</a> topic in the <span class="ItalicFont">Performance Tuning</span> section of our <span class="ItalicFont">Administrator's Guide</span> contains a number of examples that are described in detail.</p>

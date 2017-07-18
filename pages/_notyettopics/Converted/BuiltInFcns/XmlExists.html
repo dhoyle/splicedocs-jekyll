@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInFcns
         <h1 id="BuiltInFcns.XmlExists">XMLEXISTS</h1>
         <p><span class="CodeFont">XMLEXISTS</span> is an SQL/XML operator that you can use to query XML values in SQL.</p>
         <p>The XMLEXISTS operator has two arguments, an XML query expression and a Splice Machine XML value.</p>
-        <p class="heading2">Syntax</p>
+        <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">XMLEXISTS ( <var>xquery-string-literal</var>
             PASSING BY REF <var>xml-value-expression</var> [ BY REF ] )
 		</pre>
@@ -23,14 +23,14 @@ folder: SQLReference/BuiltInFcns
             </p>
             <p class="paramDefnFirst">Must be specified as a string literal. If this argument is specified as a parameter, an expression that is not a literal, or a literal that is not a string (for example an integer), Splice Machine throws an error. The <span class="CodeFont">xquery-string-literal</span> argument must also be an XPath expression that is supported by Apache Xalan.</p>
             <p class="paramDefn">Splice Machine uses Apache Xalan to evaluate all XML query expressions. Because Xalan does not support full XQuery, neither does The Splice Machine. If Xalan is unable to compile or execute the query argument, Splice Machine catches the error that is thrown by Xalan and throws the error as a SQLException.</p>
-            <p class="paramDefn">For more on XPath and XQuery expressions, see these Web sites: <a href="http://www.w3.org/TR/xpath">http://www.w3.org/TR/xpath</a> and <a href="http://www.w3.org/TR/xquery/">http://www.w3.org/TR/xquery/</a>.</p>
+            <p class="paramDefn">For more on XPath and XQuery expressions, see these Web sites: <a href="http://www.w3.org/TR/xpath  target="_blank">http://www.w3.org/TR/xpath</a> and <a href="http://www.w3.org/TR/xquery/  target="_blank">http://www.w3.org/TR/xquery/</a>.</p>
             <p class="paramName"><span class="CodeFont">xml-value-expression</span>
             </p>
             <p class="paramDefnFirst">Must be an XML data value and must constitute a well-formed SQL/XML document. The <span class="CodeFont">xml-value-expression</span> argument cannot be a parameter. Splice Machine does not perform implicit parsing nor casting of XML values, so use of strings or any other data type results in an error. If the argument is a sequence that is returned by the Splice Machine <a href="sqlref_builtinfcns_xmlquery.html">XMLQUERY operator</a>, the argument is accepted if it is a sequence of exactly one node that is a document node. Otherwise, Splice Machine throws an error.</p>
             <p class="paramName">BY REF</p>
             <p class="paramDefnFirst">Optional keywords that describe the only value passing mechanism supported by Splice Machine. Since BY REF is also the default passing mechanism, the XMLEXISTS operator behaves the same whether the keywords are present or not. For more information on passing mechanisms, see the SQL/XML specification.</p>
         </div>
-        <p class="heading2">Operator results and combining with other operators</p>
+        <h2>Operator results and combining with other operators</h2>
         <p>The result of the XMLEXISTS operator is a SQL boolean value that is based on the results from evaluating the <span class="CodeFont">xquery-string-literal</span> against the <span class="CodeFont">xml-value-expression</span>. The XMLEXISTS operator returns:</p>
         <div class="paramList">
             <p class="paramName">UNKNOWN</p>
@@ -42,7 +42,7 @@ folder: SQLReference/BuiltInFcns
         </div>
         <p>The <span class="CodeFont">XMLEXISTS</span> operator does not return the actual results from the evaluation of the query. You must use the <span class="CodeFont">XMLQUERY</span> operator to retrieve the actual results.</p>
         <p>Since the result of the <span class="CodeFont">XMLEXISTS</span> operator is an SQL boolean data type, you can use the <span class="CodeFont">XMLEXISTS</span> operator wherever a boolean function is allowed. For example, you can use the <span class="CodeFont">XMLEXISTS</span> operator as a check constraint in a table declaration or as a predicate in a <span class="CodeFont">WHERE</span> clause.</p>
-        <p class="heading2">Examples</p>
+        <h2>Examples</h2>
         <p>In the <span class="CodeFont">x_table</span> table, to determine if the <span class="CodeFont">xcol</span> XML column for each row has an element called <span class="CodeFont">student</span> with an <span class="CodeFont">age</span> attribute equal to 20, use this statement:</p>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT id, XMLEXISTS('<var>//student[@age=20]</var>'
   PASSING BY REF <var>xcol</var>)  
@@ -63,7 +63,7 @@ folder: SQLReference/BuiltInFcns
              )
    );</pre>
         </div>
-        <p class="heading2">Usage note</p>
+        <h2>Usage note</h2>
         <p>Splice Machine requires that a JAXP parser (such as Apache Xerces) and Apache Xalan are listed in the Java classpath for the XML functions to work. If either the JAXP parser or Xalan is missing from the classpath, attempts to use the <span class="CodeFont">XMLEXISTS</span> operator will result in an error. In some situations, you may need to take steps to place the parser and Xalan in your classpath.</p>
     </div>
 </section>

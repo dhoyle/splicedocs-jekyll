@@ -13,7 +13,7 @@ folder: SQLReference/Statements
             <h1 id="Statements.RenameColumn">RENAME COLUMN</h1>
             <p>Use the <span class="CodeFont">RENAME COLUMN</span> statement to rename a column in a table.</p>
             <p>The <span class="CodeFont">RENAME COLUMN</span> sactatement allows you to rename an existing column in an existing table in any schema (except the schema <span class="CodeFont">SYS</span>). </p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">RENAME COLUMN <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">simple-Column-Name</a></span>
   TO <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">simple-Column-Name</a></span></pre>
             </div>
@@ -25,13 +25,13 @@ folder: SQLReference/Statements
                 <p class="paramName">simple-Column-Name</p>
                 <p class="paramDefnFirst">The new name for the column.</p>
             </div>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>To rename a column, you must either be the database owner or the table owner.</p>
             <p>To perform other table alterations, see the <a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER TABLE</span> statement</a>.</p>
             <div class="noteRestriction">If a view, <span>trigger, </span>check constraint, or <span class="ItalicFont"><a href="sqlref_statements_generationclause.html">generation-clause</a></span> of a generated column references the column, an attempt to rename it will generate an error.</div>
             <div class="noteNote">The RENAME COLUMN statement is not allowed if there are any open cursors that reference the column that is being altered.</div>
             <div class="noteNote">If there is an index defined on the column, the column can still be renamed; the index is automatically updated to refer to the column by its new name.</div>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p>To rename the <span class="CodeFont">Birthdate</span> column in table <span class="CodeFont">Players</span> to <span class="CodeFont">BornDate</span>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;RENAME COLUMN Players.Birthdate TO BornDate;
 0 rows inserted/updated/deleted</pre>
@@ -56,7 +56,7 @@ splice&gt;&#160;ALTER TABLE Players DROP COLUMN Position;
 splice&gt;&#160;RENAME COLUMN Players.NewPosition TO Position;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER</span></a> statement</li>
             </ul>

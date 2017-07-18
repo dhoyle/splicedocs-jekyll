@@ -13,7 +13,7 @@ folder: SQLReference/Expressions
             <h1 id="Expressions.NextValueFor">NEXT VALUE FOR Expression</h1>
             <p>The <span class="CodeFont">NEXT VALUE FOR</span> expression retrieves the next value from a sequence generator that was created with a
 		<a href="sqlref_statements_createsequence.html"><span class="CodeFont">CREATE SEQUENCE</span> statement</a>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">NEXT VALUE FOR <span class="ItalicFont">sequenceName</span></pre>
             </div>
             <div class="paramList">
@@ -23,7 +23,7 @@ folder: SQLReference/Expressions
                 </div>
                 <p class="paramDefnFirst">If <span class="ItalicFont">schemaName</span> is not provided, the current schema is the default schema. If a qualified sequence name is specified, the schema name cannot begin with the <span class="CodeFont">SYS. </span>prefix.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>If this is the first use of the sequence generator, the generator returns its
 			<span class="CodeFont">START</span> value. Otherwise, the <span class="CodeFont">INCREMENT</span> value is added to the previous value
 			returned by the sequence generator. The data type of the value is the
@@ -47,7 +47,7 @@ folder: SQLReference/Expressions
             </ul>
             <p>The next value of a sequence generator is not affected by whether the user
 		commits or rolls back a transaction which invoked the sequence generator.</p>
-            <p class="heading2">Restrictions</p>
+            <h2>Restrictions</h2>
             <p>Only one <span class="CodeFont">NEXT VALUE FOR</span> expression is allowed per sequence per statement.</p>
             <p>The <span class="CodeFont">NEXT VALUE FOR</span> expression is not allowed in any statement which has a
 		<span class="CodeFont">DISTINCT</span> or <span class="CodeFont">ORDER BY</span> expression.</p>
@@ -63,7 +63,7 @@ folder: SQLReference/Expressions
                 <li><span class="CodeFont"><a href="sqlref_builtinfcns_rownumber.html">ROW_NUMBER</a></span> function</li>
                 <li><span class="CodeFont">DISTINCT</span> select list</li>
             </ul>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example">VALUES (NEXT VALUE FOR order_id);
 
 INSERT INTO re_order_table
@@ -75,7 +75,7 @@ UPDATE orders
   SET oid = NEXT VALUE FOR order_id
   WHERE expired = 1;</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_statements_createsequence.html"><span class="CodeFont">CREATE&#160;SEQUENCE</span></a>&#160;function</li>
                 <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>

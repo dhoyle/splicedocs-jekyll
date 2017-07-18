@@ -2761,7 +2761,7 @@
             <p>Whenever you insert into a table which has generated columns,
 			Splice Machine calculates the values
 		of those columns.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">INSERT INTO table-Name
    [ (<span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>]* ) ]
    Query [ <span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span> ]
@@ -2780,13 +2780,13 @@
                 <p class="paramName">result offset and fetch first clauses</p>
                 <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows added to the table.</p>
             </div>
-            <p class="heading2" id="OrderBy">Using the ORDER&#160;BY&#160;Clause</p>
+            <h2 id="OrderBy">Using the ORDER&#160;BY&#160;Clause</h2>
             <p>When you want insertion to happen with a specific ordering (for example, in conjunction with auto-generated keys), it can be useful to specify an <span class="CodeFont">ORDER BY</span> clause on the result set to be inserted.</p>
             <p>If the Query is a <span class="CodeFont">VALUES</span> expression, it cannot contain or be followed by an <span class="CodeFont">ORDER BY</span>, result offset, or fetch first clause. However, if the <span class="CodeFont">VALUES</span> expression does not contain the <span class="CodeFont">DEFAULT</span> keyword, the <span class="CodeFont">VALUES</span> clause can be put in a subquery and ordered, as in the following statement:</p>
             <div class="preWrapperWide"><pre class="Example">INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;</pre>
             </div>
             <p>For more information about queries, see <a href="sqlref_queries_query.html">Query</a>.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p class="body">These examples insert records with literal values:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;INSERT INTO Players
 &#160;  VALUES( 99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991');
@@ -2812,14 +2812,14 @@ splice&gt;&#160;INSERT INTO OldGuys
    WHERE&#160;BirthDate &lt;&#160;'01/01/1980';
 </pre>
             </div>
-            <p class="heading2">Statement dependency system</p>
+            <h2>Statement dependency system</h2>
             <p>The <span class="CodeFont">INSERT</span>
 statement depends on the table being inserted into, all of the conglomerates
 (units of storage such as heaps or indexes) for that table, and any other
 table named in the statement. Any statement that creates or drops an index or
 a constraint for the target table of a prepared <span class="CodeFont">INSERT</span> statement invalidates
 the prepared <span class="CodeFont">INSERT</span> statement.</p>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">FETCH&#160;FIRST</span></a>&#160;clause</li>
                 <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>

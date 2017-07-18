@@ -2755,7 +2755,7 @@
 		<div class="TopicContent">
             <h1 id="kanchor257">LAG</h1>
             <p><span class="CodeFont">LAG</span> returns the values of a specified expression that is evaluated at the specified offset number of rows before the current row in a window.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">LAG ( <span class="ItalicFont">expression</span> [ , offset ] ) OVER ( <span class="ItalicFont">overClause</span> )</pre>
             </div>
             <div class="paramList">
@@ -2768,11 +2768,11 @@
                 <p class="paramDefnFirst">See the <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause documentation.</p>
             </div>
             <div class="noteRelease">Our current implementation of this function does not allow for specifying a default value, as is possible in some other database software.</div>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>Splice Machine recommends that you use the <span class="CodeFont">LAG</span>&#160;function with the <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></span>&#160;clause to produce deterministic results.</p>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>Returns value(s)&#160;resulting from the evaluation of the specified expression; the return type is of the same value type as the date stored in the column used in the expression.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p class="body">The following example shows the salaries per position for players in our baseball database, grouped by position, and ordered from highest salary to lowest for each position:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Position, Players.ID, Salary,
    LAG(Salary) OVER (PARTITION BY Position ORDER BY Salary DESC) "PrevHigherSalary"
@@ -2826,7 +2826,7 @@ UT  |17    |1450000             |NULL
 41 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
                 <li><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>

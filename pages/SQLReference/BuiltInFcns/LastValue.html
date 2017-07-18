@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 		<div class="TopicContent">
             <h1 id="kanchor79">LAST_VALUE</h1>
             <p><span class="CodeFont">LAST_VALUE</span> is a window function that returns the values of a specified expression that is evaluated at the last row of a window for the current row. This means that you can select a last value from a set of rows without having to use a self join.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">LAST_VALUE ( <span class="ItalicFont">expression</span> [ {IGNORE | RESPECT}&#160;NULLS ] ) OVER ( <span class="ItalicFont">overClause</span> )</pre>
             </div>
             <div class="paramList">
@@ -28,16 +28,16 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramName">overClause</p>
                 <p class="paramDefnFirst">See the <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause documentation.</p>
             </div>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>Splice Machine recommends that you use the <span class="CodeFont">LAST_VALUE</span>&#160;function with the <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></span>&#160;clause to produce deterministic results.</p>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>Returns value(s)&#160;resulting from the evaluation of the specified expression; the return type is of the same value type as the date stored in the column used in the expression..</p>
             <ul>
                 <li><span class="CodeFont">LAST_VALUE</span>&#160;returns the last value in the set, unless that value is NULL and you have specified the <span class="CodeFont">IGNORE NULLS</span>&#160;qualifier; if you've specified <span class="CodeFont">IGNORE NULLS</span>, this function returns the last non-<span class="CodeFont">NULL</span>&#160;value in the set.</li>
                 <li>If all values in the set are <span class="CodeFont">NULL</span>, <span class="CodeFont">LAST_VALUE</span>&#160;always returns <span class="CodeFont">NULL</span>.</li>
             </ul>
             <div class="noteNote">Splice Machine always sorts <span class="CodeFont">NULL</span>&#160;values first in the results.</div>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p>The following query finds all players with 10 or more HomeRuns, and compares each player's home run count with the highest total on his team:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns,
    LAST_VALUE(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns
@@ -60,7 +60,7 @@ Giants   |Mitch Duffer            |12    |21
 
 10 rows selected</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
                 <li><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>

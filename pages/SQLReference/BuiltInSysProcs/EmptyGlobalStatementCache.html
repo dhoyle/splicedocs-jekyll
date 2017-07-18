@@ -18,26 +18,26 @@ folder: SQLReference/BuiltInSysProcs
 			to currently executing queries or to activations that are about to be garbage
 			collected, so the cache is not guaranteed to be completely empty after it completes.</p>
             <div class="noteNote">The related procedure <span class="CodeFont"><a href="sqlref_sysprocs_emptycache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</a></span>&#160;performs the same operation on a single region server.</div>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE()</pre>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
 			execute privileges on this function by default. The
 		database owner can grant access to other users.</p>
-            <p class="heading2">JDBC Example</p>
+            <h2>JDBC Example</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE()");
   cs.execute();
   cs.close();</pre>
             </div>
-            <p class="heading2">SQL Example</p>
+            <h2>SQL Example</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE();
 Statement executed.</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_sysprocs_emptycache.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</span></a>
                 </li>

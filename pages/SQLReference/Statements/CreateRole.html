@@ -12,32 +12,32 @@ folder: SQLReference/Statements
 		<div class="TopicContent">
             <h1 id="Statements.CreateRole">CREATE ROLE</h1>
             <p>The <span class="CodeFont">CREATE ROLE</span> statement allows you to create an SQL role. Only the database owner can create a role.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">CREATE ROLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">roleName</p>
                 <p class="paramDefnFirst">The name of an SQL&#160;role.</p>
             </div>
-            <p class="heading2">Using</p>
+            <h2>Using</h2>
             <p>Before you issue a <span class="CodeFont">CREATE ROLE</span> statement, verify that the <span class="ItalicFont">derby.database.sqlAuthorization</span> property is set to <span class="CodeFont">TRUE</span>. The <span class="ItalicFont">derby.database.sqlAuthorization</span> property enables SQL authorization mode.</p>
             <p>You cannot create a role name if there is already a user by that name. An attempt to create a role name that conflicts with an existing user name raises the <span class="ItalicFont">SQLException</span> X0Y68. If user names are not controlled by the database owner (or administrator), it may be a good idea to use a naming convention for roles to reduce the possibility of collision with user names.</p>
             <p>Splice Machine tries to avoid name collision between user names and role names, but this is not always possible, because Splice Machine has a pluggable authorization architecture. For example, an externally defined user may exist who has never yet connected to the database, created any schema objects, or been granted any privileges. If  Splice Machine knows about a user name, it will forbid creating a role with that name. Correspondingly, a user who has the same name as a role will not be allowed to connect. Splice Machine built-in users are checked for collision when a role is created.</p>
             <p>A role name cannot start with the prefix <span class="CodeFont">SYS</span> (after case normalization). The purpose of this restriction is to reserve a name space for system-defined roles at a later point. Use of the prefix <span class="CodeFont">SYS</span> raises the <span class="ItalicFont">SQLException</span> 4293A.</p>
             <p>You cannot create a role with the name <span class="CodeFont">PUBLIC</span> (after case normalization). <span class="CodeFont">PUBLIC</span> is a reserved authorization identifier. An attempt to create a role with the name <span class="CodeFont">PUBLIC</span> raises <span class="ItalicFont">SQLException</span> 4251B.</p>
-            <p class="heading2">Examples</p>
-            <p class="heading3">Creating a Role</p>
+            <h2>Examples</h2>
+            <h3>Creating a Role</h3>
             <p class="body"> Here's a simple example of creating a role:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE ROLE statsEditor_role;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading3">Examples of Invalid Role Names</p>
+            <h3>Examples of Invalid Role Names</h3>
             <p class="body">Here are several examples of attempts to create a role using names that are reserved and cannot be used as role names. Each of these generates an error:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE ROLE public;
 splice&gt;&#160;CREATE ROLE "PUBLIC";
 splice&gt;&#160;CREATE ROLE sysrole;</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_statements_droprole.html"><span class="CodeFont">DROP_ROLE</span></a> statement</li>
                 <li><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>

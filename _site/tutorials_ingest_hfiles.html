@@ -858,7 +858,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             </ol>
             <h3 id="Tip4">Tip #1:&#160;&#160;Use Special Characters for Delimiters</h3>
             <p>One common gotcha we see with customer imports is when the data you're importing includes a special character that you've designated as a column or character delimiter. You'll end up with records in your bad record directory and can spend hours trying to determine the issue, only to discover that it's because the data includes a delimiter character. This can happen with columns that contain data such as product descriptions. </p>
-            <p class="heading4">Column Delimiters</p>
+            <h4>Column Delimiters</h4>
             <p>The  standard column delimiter is a comma (<span class="CodeFont">,</span>); however, we've all worked with string data that contains commas, and have figured out to use a different column delimiter. Some customers use the pipe (<span class="CodeFont">|</span>)&#160;character, but frequently discover that it is also used in some descriptive data in the table they're importing. </p>
             <p>We recommend using a control character like <span class="CodeFont">CTRL-A</span> for your column delimiter. This is known as the SOH&#160;character, and is represented by 0x01 in hexadecimal. Unfortunately, there's no way to enter this character from the keyboard in the Splice&#160;Machine command line interface; instead, you need to create a script file (see <a href="#Tip9">Tip #9</a>) and type the control character using a text editor like <span class="ItalicFont">vi</span> or <span class="ItalicFont">vim</span>:</p>
             <ul>
@@ -866,7 +866,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                 <li>Enter into INSERT&#160;mode.</li>
                 <li>Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-A</span> for the value of the column delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^A</span> when you type it in vi or vim.</li>
             </ul>
-            <p class="heading4">Character Delimiters</p>
+            <h4>Character Delimiters</h4>
             <p>By default, the character delimiter is a double quote. This can produce the same kind of problems that we see with using a comma for the column delimiter:&#160;columns values that include embedded quotes or use the double quote as the symbol for inches. You can use escape characters to include the embedded quotes, but it's easier to use a special character for your delimiter. </p>
             <p>We recommend using <span class="CodeFont">CTRL-G</span>, which you can add to a script file (see <a href="#Tip9">Tip #9</a>), again using a text editor like <span class="ItalicFont">vi</span> or <span class="ItalicFont">vim</span>:</p>
             <ul>
@@ -877,7 +877,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             <h3 id="Tip5">Tip #2:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</h3>
             <p>Perhaps the most common difficulty that customers have with importing their data is with date, time, and timestamp values. </p>
             <p>Splice Machine adheres to the Java <span class="CodeFont">SimpleDateFormat</span> syntax for all date, time, and timestamp values, <span class="CodeFont">SimpleDateFormat</span> is described here:</p>
-            <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
+            <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html  target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
             </p>
             <p>Splice Machine's implementation of <span class="CodeFont">SimpleDateFormat</span> is case-sensitive; this means, for example, that a lowercase <span class="CodeFont">h</span> is used to represent an hour value between 0 and 12, whereas an uppercase <span class="CodeFont">H</span> is used to represent an hour between 0 and 23.</p>
             <p>Splice Machine's Import procedures only allow you to specify one format each for the date, time, and timestamp columns in the table data you are importing. This means that, for example, every date in the table data must be in the same format.</p>

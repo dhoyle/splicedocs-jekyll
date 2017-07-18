@@ -2756,7 +2756,7 @@
             <h1 id="kanchor361">OVER</h1>
             <p>The <span class="CodeFont">OVER</span> clause is used in window functions to define the window on which the function operates. Window functions are permitted only in the <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER BY</a></span> clause of queries. </p>
             <p>For general information about and examples of Window functions in Splice Machine, see  the <a href="developers_fundamentals_windowfcns.html">Using Window Functions</a> topic in our <span class="ItalicFont">Splice Machine Developer's Guide</span>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">expression OVER(&#160;
      [<span class="ItalicFont">partitionClause</span>]
      [<span class="ItalicFont">orderClause</span>]
@@ -2787,7 +2787,7 @@ CURRENT&#160;ROW&#160;&#160;       |
 &lt;n&gt;&#160;FOLLOWING       |
 UNBOUNDED&#160;FOLLOWING </pre></div><div class="paramList"><p class="paramName">&lt;n&gt;</p><p class="paramDefnFirst">A a non-negative integer value.</p></div></p>
             </div>
-            <p class="heading2">Usage Restrictions</p>
+            <h2>Usage Restrictions</h2>
             <p>Because window functions are only allowed in <span class="CodeFont"><a href="sqlref_clauses_using.html">HAVING</a></span>clauses, you sometimes need to use subqueries with window functions to accomplish what seems like it could be done in a simpler query. </p>
             <p>For example, because you cannot use an <span class="CodeFont">OVER</span>&#160;clause in a <span class="CodeFont">WHERE</span>&#160;clause, a query like the following is not possible:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SELECT&#160;*
@@ -2808,7 +2808,7 @@ FROM&#160;(
 WHERE&#160;rank&#160;= 1;</pre>
             </div>
             <p>And note that the above subquery will add a rank column to the original columns,</p>
-            <p class="heading2">Simple Window Function Examples</p>
+            <h2>Simple Window Function Examples</h2>
             <p>The examples in this section are fairly simple because they don't use the frame clause.</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">--- Rank each year within a player by the number of home runs hit by that player
 RANK()&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;desc(H));
@@ -2817,7 +2817,7 @@ RANK()&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;d
 G&#160;- LAG(G)&#160;OVER&#160;(PARTITION&#160;G&#160;playerID&#160;ORDER&#160;BY&#160;yearID);
 </pre>
             </div>
-            <p class="heading2">Examples with Frame Clauses</p>
+            <h2>Examples with Frame Clauses</h2>
             <p>The frame clause can be confusing, given all of the options that it presents. There are three commonly used frame clauses:</p>
             <table summary="Frame clause types">
                 <col />
@@ -2861,7 +2861,7 @@ MEAN(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;
    BETWEEN&#160;2 PRECEEDING&#160;AND&#160;2 FOLLOWING);
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
                 <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>

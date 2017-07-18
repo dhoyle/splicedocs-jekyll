@@ -2757,7 +2757,7 @@
             <p>A <span class="CodeFont">GROUP BY</span> clause is part of a <span class="ItalicFont"><a href="sqlref_expressions_select.html">SelectExpression</a>,</span> that groups a result into subsets that have matching values for one or more columns. In each group, no two rows have the same value for the grouping column or columns. NULLs are considered equivalent for grouping purposes.</p>
             <p>You typically use a <span class="CodeFont">GROUP BY</span> clause in conjunction with an aggregate expression.</p>
             <p>Using the <span class="CodeFont">ROLLUP</span> syntax, you can specify that multiple levels of grouping  should be computed at once.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
 GROUP BY
   {
@@ -2773,11 +2773,11 @@ GROUP BY
 			outside the current scope. For example, if a <span class="CodeFont">GROUP BY</span> clause is in a subquery,
 		it cannot refer to columns in the outer query.</p>
             </div>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p><span class="ItalicFont">SelectItems</span> in
 			the <span class="ItalicFont"><a href="sqlref_expressions_select.html">SelectExpression</a></span> with
 		a <span class="CodeFont">GROUP BY</span> clause must contain only aggregates or grouping columns.</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
    -- find the average flying_times of flights grouped by airport
 SELECT AVG (flying_time), orig_airport
@@ -2810,7 +2810,7 @@ SELECT Region, State, Product, SUM(Sales) Total_Sales
   FROM Sales_History
   GROUP BY ROLLUP(Region, State, Product);</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>
             </ul>

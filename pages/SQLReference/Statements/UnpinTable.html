@@ -12,14 +12,14 @@ folder: SQLReference/Statements
 		<div class="TopicContent">
             <h1 id="Statements.UnpinTable">UNPIN&#160;TABLE</h1>
             <p>The <span class="CodeFont">UNPIN&#160;TABLE</span> statement unpins a table, which means that the pinned (previously cached)&#160;version of the table no longer exists.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">UNPIN&#160;TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">table-Name</p>
                 <p class="paramDefnFirst">The name of the pinned table that you want to unpin.</p>
             </div>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE TABLE myTbl (col1 int, col2 varchar(10));
 0 rows inserted/updated/deleted
 splice&gt; INSERT INTO myTbl VALUES (1, 'One'), (2, 'Two');
@@ -39,7 +39,7 @@ COL 1      |COL2
 1           One
 2           Two<br /><br />2 rows selected<br />splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;myTbl --splice-properties pin=true<br />&gt; ERROR:&#160;Pinned table read failed with exception 'Table or view not found in database'<br /></pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span>&#160;statement</li>
                 <li><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TABLE</a></span>&#160;statement</li>

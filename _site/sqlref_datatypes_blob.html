@@ -2757,7 +2757,7 @@
             <p>A <span class="CodeFont">BLOB</span> (binary large object) value is a varying-length binary string that can be up to 2GB&#160;(<span class="CodeFont">2,147,483,647</span>) characters long. </p>
             <div class="noteRestriction">If you're using a BLOB with the 32-bit version of our ODBC&#160;driver, the size of the BLOB&#160;is limited to 512 MB, due to address space limitations.</div>
             <p>Like other binary types, <span class="CodeFont">BLOB</span>strings are not associated with a code page. In addition, <span class="CodeFont">BLOB</span>strings do not hold character data.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{BLOB | BINARY&#160;LARGE OBJECT} [ ( <span class="ItalicFont">length</span> [{K |M |G}] ) ]</pre>
             </div>
             <div class="paramList">
@@ -2770,13 +2770,13 @@
                 <p class="paramName">G</p>
                 <p class="paramDefnFirst">If specified, indicates that the length value is in multiples of 1024*1024*1024&#160;(gigabytes).</p>
             </div>
-            <p class="heading2">Corresponding Compile-time Java Type</p>
+            <h2>Corresponding Compile-time Java Type</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">java.sql.Blob</pre>
             </div>
-            <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+            <h2>JDBC Metadata Type (java.sql.Types)</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">BLOB</pre>
             </div>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>Use the <span class="ItalicFont">getBlob</span> method on the <span class="ItalicFont">java.sql.ResultSet</span> to retrieve a <span class="CodeFont">BLOB</span> handle to the underlying data.</p>
             <p>There are a number of restrictions on using <span class="CodeFont">BLOB</span> and <span class="CodeFont">CLOB</span> / <span class="CodeFont">TEXT</span> objects, which we refer to as LOB-types:</p>
             <ul>
@@ -2788,7 +2788,7 @@
 </li>
                 <li>LOB-types cannot be involved in implicit casting as other base-types.</li>
             </ul>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <p>Using an <span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span> statement to put <span class="CodeFont">BLOB</span> data into a table has some limitations  if you need to cast a long string constant to a <span class="CodeFont">BLOB</span>. You may be better off using a binary stream, as in the following code fragment.</p>
             <div class="preWrapperWide"><pre class="Example">package com.splicemachine.tutorials.blob;
 

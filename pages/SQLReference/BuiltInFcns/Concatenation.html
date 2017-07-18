@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInFcns
             <h1 id="BuiltInFcns.Concatenation">Concatenation Operator</h1>
             <p>The concatenation operator, <span class="CodeFont">||</span>, concatenates its right operand onto the end of its left operand; it operates on  character string or bit string expressions.</p>
             <div class="noteNote">Since all built-in data types are implicitly converted to strings, this function can act on all built-in data types.</div>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
    { <span class="ItalicFont">CharacterExpression</span> || <span class="ItalicFont">CharacterExpression</span> } |
    { <span class="ItalicFont">BitExpression</span> || <span class="ItalicFont">BitExpression</span> }
@@ -27,7 +27,7 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramName">expressionN</p>
                 <p class="paramDefnFirst">You can specify more than two argument; you MUST&#160;specify at least two arguments.</p>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>For character strings:</p>
             <ul>
                 <li>If both the left and right operands are of type <span class="CodeFont"><a href="sqlref_datatypes_varchar.html">VARCHAR</a></span>.</li>
@@ -35,7 +35,7 @@ folder: SQLReference/BuiltInFcns
 normal blank padding/trimming rules for <span class="CodeFont">CHAR</span> and <span class="CodeFont">VARCHAR</span> apply to the result of this operator.</li>
                 <li>The length of the resulting string is the sum of the lengths of both operands. </li>
             </ul>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- returns 'San Francisco Giants'
 splice&gt;&#160;VALUES 'San' || ' ' || 'Francisco' || ' ' || 'Giants';
 
@@ -45,7 +45,7 @@ splice&gt;&#160;VALUES CAST (null AS VARCHAR(7))|| 'Something';
    -- returns 'Today it is:&#160;93'
 splice&gt;&#160;VALUES 'Today it is: ' || '93';</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

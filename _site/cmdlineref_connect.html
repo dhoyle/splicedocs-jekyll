@@ -668,42 +668,42 @@
             
             
             
-            <li><a href="https://www.splicemachine.com">Splice Machine Home Page</a></li>
+            <li><a href="https://www.splicemachine.com" target="_blank">Splice Machine Home Page</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/product/">Splice Machine Product Page</a></li>
+            <li><a href="https://www.splicemachine.com/product/" target="_blank">Splice Machine Product Page</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/solutions/">Splice Machine Solutions</a></li>
+            <li><a href="https://www.splicemachine.com/solutions/" target="_blank">Splice Machine Solutions</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/services/support/">Splice Machine Support</a></li>
+            <li><a href="https://www.splicemachine.com/services/support/" target="_blank">Splice Machine Support</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/resources/">Splice Machine Resources</a></li>
+            <li><a href="https://www.splicemachine.com/resources/" target="_blank">Splice Machine Resources</a></li>
             
             
             
             
             
             
-            <li><a href="https://www.splicemachine.com/community/">Splice Machine Community</a></li>
+            <li><a href="https://www.splicemachine.com/community/" target="_blank">Splice Machine Community</a></li>
             
             
             
@@ -748,7 +748,7 @@
 		<div class="TopicContent">
             <h1 id="kanchor120">Connect Command</h1>
             <p>The <span class="AppCommand">connect</span> command connects to the database specified by <span class="CodeFont">ConnectionURLString</span>. It connects by issuing a <span class="CodeFont">getConnection</span> request with the specified URL, using <span class="CodeFont">java.sql.DriverManager </span>or <span class="CodeFont">javax.sql.DataSource </span>to set the current connection to that URL.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CONNECT ConnectionURLString
    [ AS Identifier ]</pre>
             </div>
@@ -759,7 +759,7 @@
                 <p class="paramDefnFirst">The optional name that you want to assign to the connection. </p>
             </div>
             <p>If the connection succeeds, the connection becomes the current one and all further commands are processed against the new, current connection.</p>
-            <p class="heading2">Example 1:&#160;Connecting on a Cluster</p>
+            <h2>Example 1:&#160;Connecting on a Cluster</h2>
             <p> If you are running Splice Machine on a cluster, connect from a machine that is NOT&#160;running an HBase RegionServer and specify the IP&#160;address of a <span class="HighlightedCode">regionServer</span> node, e.g. <span class="AppCommand">10.1.1.110</span>. </p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://<span class="Highlighted">regionServer</span>:1527/splicedb';
 </pre>
@@ -767,7 +767,7 @@
             <p>Here are two specific examples, one of which includes a user ID&#160;and password in the connect string:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;connect 'jdbc:splice://10.1.1.110:1527/splicedb';<br /><br />splice&gt;&#160;connect 'jdbc:splice://10.1.1.110:1527/splicedb;user=splice;password=admin';</pre>
             </div>
-            <p class="heading2">Example 2:&#160;Connecting to the Standalone Version</p>
+            <h2>Example 2:&#160;Connecting to the Standalone Version</h2>
             <p>If you're using the standalone version of Splice Machine, specify <span class="HighlightedCode">localhost</span> instead.</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://localhost:1527/splicedb';
 </pre>

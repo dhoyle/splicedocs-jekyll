@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 		<div class="TopicContent">
             <h1 id="BuiltInFcns.RowNumber">ROW_NUMBER</h1>
             <p><span class="CodeFont">ROW_NUMBER()</span> is a <span class="ItalicFont">ranking function</span> that numbers the rows within the ordered partition of values defined by its <span class="CodeFont">OVER</span>&#160;clause. Ranking functions are a subset of <a href="sqlref_builtinfcns_windowfcnsintro.html">window functions</a>.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ROW_NUMBER() OVER ( <span class="ItalicFont">overClause</span> )</pre>
             </div>
             <div class="paramList">
@@ -22,9 +22,9 @@ folder: SQLReference/BuiltInFcns
                     <p>Ranking functions such as <span class="CodeFont">ROW_NUMBER</span>&#160;must include an <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></span>&#160;clause in the <span class="CodeFont">OVER</span>&#160;clause. This is because the ranking is calculated based on the ordering.</p>
                 </div>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The resulting data type is <span class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a></span>.</p>
-            <p class="heading2">Example</p>
+            <h2>Example</h2>
             <p>The following query ranks the salaries of players on the Cards whose salaries are at least $1 million:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, Salary,
    ROW_NUMBER() OVER (PARTITION BY Team ORDER BY Salary DESC) "RowNum"
@@ -54,7 +54,7 @@ Jan Bromley             |1200000             |18
 
 18 rows selected</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
                 <li><a href="sqlref_builtinfcns_bigint.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>

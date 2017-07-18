@@ -17,7 +17,7 @@ folder: SQLReference/BuiltInSysProcs
             <div class="noteIcon">The <span class="CodeFont">SYSCS_UTIL.SYSCS_IMPORT_DATA</span>&#160;system procedure, which operates similarly and was available in earlier versions of Splice Machine, has been deprecated.</div>
             <p>After a successful import completes, a simple report displays, showing how many files were imported, and how many record imports succeeded or failed. (Note that you can ignore the <span class="CodeFont">numtasks</span> value shown in this report).</p>
             <div class="noteNote">On a cluster, the files to be imported <span class="BoldFont">MUST be on HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory.<br /><br />	In addition, the files must be readable by the <span class="CodeFont">hbase</span> user, and the <span class="CodeFont">badRecordDirectory</span> directory must be writable by the hbase user, either by setting the user explicity, or by opening up the permissions; for example:<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ShellCommand">sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory</span><br /></div>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA (
 		<span class="ItalicFont">schemaName</span>,
 		<span class="ItalicFont">tableName</span>,
@@ -35,7 +35,7 @@ folder: SQLReference/BuiltInSysProcs
 		);</pre>
             </div>
 {% include splice_snippets/importparamlist.html %}
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> displays a summary of the import process results that looks like this:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 rowsImported   |failedRows   |files   |dataSize   |failedLog<br />-------------------------------------------------------------
@@ -67,12 +67,12 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <h2 id="TimestampFormats">About Timestamp Formats</h2>
 {% include splice_snippets/importtimestampformats.html %}
             <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>We have seen a problem in which the compaction queue grows quite large after importing large amounts of data, and are investigating a solution; for now, please use the following workaround:</p>
             <div class="noteRelease">Run a full compaction on tables into which you have imported a large amount of data, using the <span class="CodeFont"><a href="sqlref_sysprocs_compacttable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
-            <p class="heading2" id="Examples">Examples</p>
+            <h2 id="Examples">Examples</h2>
             <p>The examples in this section illustrate using different timestamp formats and different string delimiter characters.</p>
-            <p class="heading3">Example 1:&#160;Importing our doc examples player data</p>
+            <h3>Example 1:&#160;Importing our doc examples player data</h3>
             <p class="body">This example shows the <span class="CodeFont">IMPORT_DATA</span>&#160;call used to import the Players table into our documentation examples database:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.IMPORT_DATA('SPLICEBBALL', 'Players',
 	'ID, Team, Name, Position, DisplayName, BirthDate',
@@ -82,7 +82,7 @@ rowsImported        |failedRows          |files      |dataSize            |faile
 94                  |0                   |1          |4720                |NONE<br /><br />1 row selected
 </pre>
             </div>
-            <p class="heading3">Example 2: Specifying a timestamp format for an entire table</p>
+            <h3>Example 2: Specifying a timestamp format for an entire table</h3>
             <p>Use a single timestamp format for the entire table by explicitly specifying a single <span class="CodeFont">timeStampFormat</span>.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">Mike,2013-04-21 09:21:24.98-05
 Mike,2013-04-21 09:15:32.78-04
@@ -96,7 +96,7 @@ Mike,2013-03-23 09:45:00.68-05</pre>
    null, null, 0, null, true, null);</pre>
             </div>
             <p>Note that for any import use case shown above, the time shown in the imported table depends on the timezone setting where the data is imported. In other words, given the same csv file, if imported at locations with different time zones, the value in the table shown will be different. Additionally, daylight savings time may account for a 1-hour difference if timezone is specified.</p>
-            <p class="heading3">Example 3:&#160;Importing strings with embedded special characters </p>
+            <h3>Example 3:&#160;Importing strings with embedded special characters </h3>
             <p>This example imports a csv file that includes newline (<span class="CodeFont">Ctrl-M</span>)&#160;characters in some of the input strings. We use the default double-quote as our character delimiter to import data such as the following:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">1,This field is one line,Able
 2,"This field has two lines
@@ -121,7 +121,7 @@ This is the second line of the field",Baker
    '\t','"',null,null,null,0,
    'Status', true, null);</pre>
             </div>
-            <p class="heading3">Example 4:&#160;Using single quotes to delimit strings</p>
+            <h3>Example 4:&#160;Using single quotes to delimit strings</h3>
             <p>This example performs the same import as the previous example, simply substituting single quotes for double quotes as the character delimiter in the input:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">1,This field is one line,Able
 2,'This field has two lines
@@ -139,7 +139,7 @@ This is the second line of the field',Baker
 </pre>
             </div>
             <p>&#160;</p>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
                 </li>

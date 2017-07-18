@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 		<div class="TopicContent">
             <h1 id="BuiltInSysFcns.GetDatabaseProperty">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY Function</h1>
             <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</span> function fetches the value of the specified property of the database on the current connection.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">VARCHAR(32672) SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY(
   IN <span class="ItalicFont">Key</span> VARCHAR(128)
   ) </pre>
@@ -22,11 +22,11 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramDefnFirst">The key for the property whose value you want.</p>
                 <div class="noteNote">An error occurs if <span class="ItalicFont">Key</span> is null.</div>
             </div>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>Returns the value of the property. If the value that was set for the property is invalid, the <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</span> function returns the invalid value, but Splice Machine uses the default value.</p>
-            <p class="heading2">Execute Privileges</p>
+            <h2>Execute Privileges</h2>
             <p>If authentication and SQL&#160;authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
-            <p class="heading2">SQL Example</p>
+            <h2>SQL Example</h2>
             <p>Retrieve the value of the <span class="CodeFont">splicemachine.locks.deadlockTimeout</span> property:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout' );
 1
@@ -35,7 +35,7 @@ folder: SQLReference/BuiltInSysProcs
 
 1 row selected</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_sysprocs_setdbprop.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</span></a> built-in system procedure</li>
             </ul>

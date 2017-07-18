@@ -14,7 +14,7 @@ folder: SQLReference/Statements
             <p>The <span class="CodeFont">SET ROLE</span> statement allows you to set the current role for the current SQL context of a session.</p>
             <p>You can set a role only if the current user has been granted the role, or if the role has been granted to <span class="CodeFont">PUBLIC</span>.</p>
             <div class="noteNote">The <span class="CodeFont">SET ROLE</span> statement is not transactional; a rollback does not undo the effect of setting a role. If a transaction is in progress, an attempt to set a role results in an error.</div>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">SET ROLE { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | 'string-constant' | ? | NONE }
 </pre>
             </div>
@@ -24,7 +24,7 @@ folder: SQLReference/Statements
                 <p class="paramDefn">You can specify a <span class="ItalicFont">roleName</span> of <span class="CodeFont">NONE</span> to unset the current role.</p>
                 <p class="paramDefn">If you specify the role as a string constant or as a dynamic parameter specification (<span class="CodeFont">?</span>), any leading and trailing blanks are trimmed from the string before attempting to use the remaining (sub)string as a <span class="ItalicFont">roleName</span>. The dynamic parameter specification can be used in prepared statements, so the <span class="CodeFont">SET ROLE</span> statement can be prepared once and then executed with different role values. You cannot specify <span class="CodeFont">NONE</span> as a dynamic parameter.</p>
             </div>
-            <p class="heading2">Usage Notes</p>
+            <h2>Usage Notes</h2>
             <p>Setting a role identifies a set of privileges that is a union of the following:</p>
             <ul>
                 <li>The privileges granted to that role</li>
@@ -38,12 +38,12 @@ folder: SQLReference/Statements
             </ul>
             <div class="noteNote">
 You can find the available role names in the <span class="CodeFont"><a href="sqlref_systables_sysroles.html">SYS.SYSROLES</a></span>&#160;system table.</div>
-            <p class="heading2">SQL&#160;Example</p>
+            <h2>SQL&#160;Example</h2>
             <p class="body">This examples set the role of the current user to <span class="CodeFont">reader_role</span>:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SET ROLE reader_role;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading2">JDBC Example</p>
+            <h2>JDBC Example</h2>
             <p class="body">This examples set the role of the current user to <span class="CodeFont">reader_role</span>:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 stmt.execute("SET ROLE admin");      -- case normal form: ADMIN
@@ -56,7 +56,7 @@ ps.setString(1, "\"admin\"");        -- on execute: case normal form: admin
 ps.setString(1, "none");             -- on execute: syntax error
 ps.setString(1, "\"none\"");         -- on execute: case normal form: none</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE&#160;ROLE</span></a>&#160;statement</li>
                 <li><a href="sqlref_statements_droprole.html"><span class="CodeFont">DROP_ROLE</span></a> statement</li>

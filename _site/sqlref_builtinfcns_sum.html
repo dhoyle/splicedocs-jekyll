@@ -2756,7 +2756,7 @@
             <h1 id="BuiltInFcns.Sum">SUM</h1>
             <p><span class="CodeFont">SUM</span>returns the sum of values of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
             <p>The <span class="CodeFont">SUM</span>&#160;function function takes as an argument any numeric data type or any non-numeric data type that can be implicitly converted to a numeric data type. The function returns the same data type as the numeric data type of the argument.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SUM ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
             </div>
             <div class="paramList">
@@ -2773,7 +2773,7 @@
                 <p class="paramDefn">An <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery.</p>
                 <p class="paramDefn">If an <span class="ItalicFont">Expression</span>evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
             </div>
-            <p class="heading2">Usage</p>
+            <h2>Usage</h2>
             <p>The <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate
 		or subquery. It must evaluate to a built-in numeric data type. If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
             <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont">Expression</span> is allowed. For example, the following query is not valid:</p>
@@ -2783,9 +2783,9 @@ SELECT AVG (DISTINCT flying_time),
   FROM Flights;</pre>
             </div>
             <p>Note that specifying <span class="CodeFont">DISTINCT</span>&#160;can result in a different value, since a smaller number of values may be summed. For example, if a column contains the values 1, 1, 1, 1, and 2, <span class="CodeFont">SUM(col)</span> returns a greater value than <span class="CodeFont">SUM(DISTINCT col)</span>.</p>
-            <p class="heading2">Results</p>
+            <h2>Results</h2>
             <p>The resulting data type is the same as the expression on which it operates (it might overflow).</p>
-            <p class="heading2">Aggregate Examples</p>
+            <h2>Aggregate Examples</h2>
             <p class="body">These queries compute the total of all salaries for all teams, and then the total for each individually.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT SUM(Salary) FROM Salaries;
 1
@@ -2807,7 +2807,7 @@ splice&gt; SELECT SUM(Salary) FROM Salaries JOIN Players ON Salaries.ID=Players.
 1 row selected
 </pre>
             </div>
-            <p class="heading2">Analytic Example</p>
+            <h2>Analytic Example</h2>
             <p class="body">This example computes the running total of salaries, per team, counting only the players who make at least $5 million in salary.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, Salary,
    SUM(Salary) OVER(PARTITION BY Team ORDER BY Salary ASC
@@ -2838,7 +2838,7 @@ Giants   |Martin Cassman          |20833333            |132811110
 16 rows selected
 </pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>

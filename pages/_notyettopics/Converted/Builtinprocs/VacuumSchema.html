@@ -13,14 +13,14 @@ folder: SQLReference/BuiltInSysProcs
         <h1>SYSCS_UTIL.VACUUM_SCHEMA</h1>
         <p>The <span class="CodeFont">SYSCS_UTIL.VACUUM_SCHEMA</span>&#160;system procedure improves the performance of your database by cleaning no longer needed historical update data from a schema.</p>
         <div class="noteIcon">Splice Machine recommends calling this system procedure regularly (or frequently)&#160;on schemas in your database that are frequently updated with modifications or deletions. Insertions by themselves do not generate the kind of data that needs to be vacuumed from a schema; however, if a row is frequently inserted, then deleted, then inserted again, and that row has a primary key or indexed fields, vacuuming will be required.<br /><br />Many customers use a scheduling utility such as <span class="ItalicFont">Cron</span> to call this procedure.<br /></div>
-        <p class="heading2">Syntax</p>
+        <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.VACUUM_SCHEMA( VARCHAR(128)&#160;schemaName );</pre>
         </div>
         <div class="paramList">
             <p class="paramName">schemaName</p>
             <p class="paramDefnFirst">Specifies the schema to be vacuumed. Passing a <span class="CodeFont">null</span> or non-existent schema name generates an error.</p>
         </div>
-        <p class="heading2">Results</p>
+        <h2>Results</h2>
         <p>This procedure returns a table with the following columns:</p>
         <table summary="Columns in the table returned by Vacuum_Table">
             <col />
@@ -58,7 +58,7 @@ folder: SQLReference/BuiltInSysProcs
                 </tr>
             </tbody>
         </table>
-        <p class="heading2">SQL Examples</p>
+        <h2>SQL Examples</h2>
         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;CALL SYSCS_UTIL.VACUUM_SCHEMA( 'MySchema');
 Statement executed.</pre>

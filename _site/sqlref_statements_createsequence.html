@@ -2756,7 +2756,7 @@
             <h1 id="Statements.CreateSequence">CREATE SEQUENCE</h1>
             <p>The <span class="CodeFont">CREATE SEQUENCE</span> statement creates a sequence generator, which is
 		a mechanism for generating exact numeric values, one at a time.</p>
-            <p class="heading2">Syntax</p>
+            <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE SEQUENCE
    [ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span>
    [ <span class="ItalicFont">sequenceElement</span> ]*</pre>
@@ -2814,7 +2814,7 @@
                 </div>
             </div>
             <p>To retrieve the next value from a sequence generator, use a <a href="sqlref_expressions_nextvaluefor.html"><span class="CodeFont">NEXT VALUE FOR</span> expression</a>.</p>
-            <p class="heading2">Usage Privileges</p>
+            <h2>Usage Privileges</h2>
             <p>The owner of the schema where the sequence generator lives automatically
 			gains the <span class="CodeFont">USAGE</span> privilege on the sequence generator, and can grant this
 			privilege to other users and roles. Only the
@@ -2824,7 +2824,7 @@
 			<a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT statement</span></a> and
 			<a href="sqlref_statements_revoke.html"><span class="CodeFont">REVOKE statement</span></a> for more information.
 		</p>
-            <p class="heading2">Performance</p>
+            <h2>Performance</h2>
             <p>
 			To boost performance and concurrency,
 			Splice Machine
@@ -2833,7 +2833,7 @@
 			<span class="CodeFont">derby.language.sequence.preallocator</span>
 			property.
 		</p>
-            <p class="heading2">Examples</p>
+            <h2>Examples</h2>
             <p>The following statement creates a sequence generator of type <span class="CodeFont">INT</span>, with a
 			start value of <span class="CodeFont">-2147483648</span> (the smallest <span class="CodeFont">INT</span> value). The value increases by <span class="CodeFont">1</span>,
 			and the last legal value is the largest possible <span class="CodeFont">INT</span>. If <span class="CodeFont">NEXT VALUE FOR</span> is
@@ -2858,7 +2858,7 @@
    START WITH 3000000000;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p class="heading2">See Also</p>
+            <h2>See Also</h2>
             <ul>
                 <li><span class="CodeFont"><a href="sqlref_statements_dropsequence.html">DROP&#160;SEQUENCE</a></span>&#160;statement </li>
                 <li><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
