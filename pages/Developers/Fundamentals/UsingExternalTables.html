@@ -1,7 +1,7 @@
 ---
 title: Using External Tables
 summary: How to use external tables with Splice Machine
-keywords: external tables
+keywords: external tables, orc, parquet, textfile
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -15,14 +15,24 @@ folder: Developers/Fundamentals
             <ul>
                 <li><span class="CodeFont">ORC</span> is a columnar storage format</li>
                 <li><span class="CodeFont">PARQUET</span> is a columnar storage format</li>
+                <li><span class="CodeFont">Avro</span> is a data serialization system</li>
                 <li><span class="CodeFont">TEXTFILE</span> is a plain text file</li>
             </ul>
             <p>You can access <span class="CodeFont">ORC</span>&#160;and <span class="CodeFont">PARQUET</span>&#160;files that have been compressed with either Snappy or ZLIb compression; however, you cannot use a compressed plain text file.</p>
             <h2>About External Tables</h2>
             <p>You can use Splice Machine external tables to query the contents of flat files that are stored outside of your database. You query external tables pretty much the same way as you do the tables in your database.</p>
-            <p>External tables reference files that are stored in a flat file format such as Apache Parquet or Apache Orc, both of which are columnar storage formats that are available in Hadoop. You can use the <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE EXTERNAL TABLE</a></span> statement to create an external table that is connected to a specific flat file.</p>
+            <p>External tables reference files that are stored in a flat file format such as Apache Parquet or Apache Orc, both of which are columnar storage formats that are available in Hadoop. You can use the <span class="CodeFont"><a href="sqlref_statements_createexternaltable.html">CREATE EXTERNAL TABLE</a></span> statement to create an external table that is connected to a specific flat file.</p>
             <h2>Using External Tables</h2>
-            <p>This section presents several examples of using external tables with Splice Machine.</p>
+            <p>This section presents information about importing data into an external table, and includes several examples of using external tables with Splice Machine.</p>
+            <h3>Importing Data Into an External Table</h3>
+            <p>You cannot import data directly into an external table; if you already have an external table in a compatible format, you can use <span class="CodeFont"><a href="sqlref_statements_createexternaltable.html">CREATE EXTERNAL TABLE</a></span> statement to point at the external file and query against it.</p>
+            <p>If you want to create an external file from within Splice Machine, follow these steps:</p>
+            <ol>
+                <li>Create (or use) a table in your Splice Machine database (your internal table).</li>
+                <li>Use <span class="CodeFont"><a href="sqlref_statements_createexternaltable.html">CREATE EXTERNAL TABLE</a></span> to create your empty external table, specifying the location where you want that data stored externally.</li>
+                <li>Use <a href="sqlref_statements_insert.html"><span class="CodeFont">INSERT INTO</span></a> (your external table) <span class="CodeFont">SELECT</span> (from your internal table) to populate the external file with your data.</li>
+                <li>You can now query the external table.</li>
+            </ol>
             <h3>Accessing a Parquet File</h3>
             <p>The following statement creates an external table for querying a <span class="CodeFont">PARQUET</span> file that is stored on your computer:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE EXTERNAL TABLE myExtTbl (<br /> &#160;&#160;&#160;&#160;&#160;col1 INT, col2 VARCHAR(24))<br />&#160;&#160;&#160;PARTITIONED BY (col1)<br />&#160;&#160;&#160;STORED AS PARQUET<br />&#160;&#160;&#160;LOCATION '/users/myname/myParquetFile';<br />0 rows inserted/updated/deleted</pre>
