@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="How to install and configure the Splice Machine ODBC driver.">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" ODBC driver, install driver">
 <title>Using the Splice Machine ODBC Driver | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -621,10 +621,8 @@
 
             <p>This topic describes how to install and configure the Splice&#160;Machine ODBC&#160;driver for these operating systems:</p>
             <ul>
-                <li>Installing the Splice Machine ODBC&#160;Driver on Windows</a>
-                </li>
-                <li>Installing the Splice Machine ODBC&#160;Driver on Linux</a>
-                </li>
+                <li>Installing the Splice Machine ODBC&#160;Driver on Windows</li>
+                <li>Installing the Splice Machine ODBC&#160;Driver on Linux</li>
             </ul>
             <p>This topic also includes an <a href="#Using">example that illustrates using our ODBC&#160;driver</a> with the C&#160;language.</p>
             <h2 id="Installi">Installing and Configuring the Driver on Windows</h2>
@@ -633,7 +631,7 @@
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Download the installer:</p>
-                        <p class="indentLevel1">You can download the driver installer from <a href="https://www.splicemachine.com/get-started/odbc-driver-download/  target="_blank">our ODBC&#160;download</a> site:&#160;</p>
+                        <p class="indentLevel1">You can download the driver installer from <a href="https://www.splicemachine.com/get-started/odbc-driver-download/"  target="_blank">our ODBC&#160;download</a> site:&#160;</p>
                         <p class="indentLevel1">The file you download will have a name similar to these:</p>
                         <ul class="plainFont">
                             <li class="CodeFont" value="1">splice_odbc_setup_64bit_1.0.28.0.msi</li>
@@ -668,7 +666,7 @@
                     </li>
                     <li>
                         <p class="topLevel">Start the Windows ODBC&#160;Data Source Administrator tool</p>
-                        <p class="indentLevel1">You need to add our ODBC&#160;driver to the set of Windows ODBC&#160;data sources, using the Windows ODBC&#160;Data Source Administrator tool; You can read about this tool here: <a href="https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx  target="_blank">https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx</a>.</p>
+                        <p class="indentLevel1">You need to add our ODBC&#160;driver to the set of Windows ODBC&#160;data sources, using the Windows ODBC&#160;Data Source Administrator tool; You can read about this tool here: <a href="https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx"  target="_blank">https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx</a>.</p>
                         <p class="indentLevel1">You can find and start the Windows ODBC&#160;Administrator tool using a Windows search for ODBC&#160;on your computer; here's what it looks like on Windows 7:</p>
                         <div>
                             <img src="images/ODBCAdmin.png" alt="Image of using Windows search to find the ODBC Administrator tool" class="nestedTightSpacing" />
@@ -706,11 +704,11 @@
                     <li>
                         <p class="topLevel">Make sure you have unixODBC installed.</p>
                         <p class="indentLevel1">You must have version <span class="CodeFont">2.2.12</span> or later of the <span class="CodeFont">unixODBC</span>&#160;driver manager installed to run the Splice Machine ODBC&#160;driver.</p>
-                        <p class="indentLevel1">Some Linux distributions include <span class="CodeFont">unixODBC</span>, while others do not. Our driver will not work without it. For more information about unixODBC, see: <a href="http://www.unixodbc.org/  target="_blank">http://www.unixodbc.org</a>. </p>
+                        <p class="indentLevel1">Some Linux distributions include <span class="CodeFont">unixODBC</span>, while others do not. Our driver will not work without it. For more information about unixODBC, see: <a href="http://www.unixodbc.org/"  target="_blank">http://www.unixodbc.org</a>. </p>
                     </li>
                     <li>
                         <p class="topLevel">Download the installer:</p>
-                        <p class="indentLevel1">You can download the driver installer from our ODBC&#160;download site:&#160;<a href="https://www.splicemachine.com/get-started/odbc-driver-download/  target="_blank" title="Click to open the Splice Machine ODBC driver download page in a new tab or window" alt="Click to open the Splice Machine ODBC driver download page in a new tab or window">https://www.splicemachine.com/get-started/odbc-driver-download/</a></p>
+                        <p class="indentLevel1">You can download the driver installer from our ODBC&#160;download site:&#160;<a href="https://www.splicemachine.com/get-started/odbc-driver-download/"  target="_blank" title="Click to open the Splice Machine ODBC driver download page in a new tab or window" alt="Click to open the Splice Machine ODBC driver download page in a new tab or window">https://www.splicemachine.com/get-started/odbc-driver-download/</a></p>
                         <p class="indentLevel1">Download the installer to the Linux computer on which you want to install the driver. The file will have a name similar to this:</p>
                         <div class="preWrapper"><pre class="Plain">splice_odbc_64-1.0.28.0.x86_64.tar.gz</pre>
                         </div>
@@ -885,7 +883,6 @@ ODBCInstLib=/usr/lib64/libodbcinst.so</pre>
                     <li>
                         <p class="topLevel">Copy the code</p>
                         <p class="indentLevel1">You can copy and paste the code below:</p>
-                        <p class="indentLevel1">
                             <div class="preWrapperWide"><pre class="Example">#include &lt;stdio.h&gt;
 #include &lt;sql.h&gt;
 #include &lt;sqlext.h&gt;
@@ -913,30 +910,23 @@ main() {
 }
 </pre>
                             </div>
-                        </p>
                     </li>
                     <li>
                         <p class="topLevel">Compile it</p>
-                        <p class="indentLevel1">
                             <div class="preWrapperWide"><pre class="ShellCommand">
 #!/bin/bash
 # gcc -I /usr/local/splice/unixODBC/include listODBCdriver.c -o listODBCdriver -L/usr/local/splice/lib -lodbc -lodbcinst -lodbccr
 </pre>
                             </div>
-                        </p>
                     </li>
                     <li>
                         <p class="topLevel">Run the program</p>
                         <p class="indentLevel1">Run the compiled <span class="CodeFont">listODBCdriver</span>:</p>
-                        <p class="indentLevel1">
                             <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">prompt:~$ ./listODBCdriver</pre>
                             </div>
-                        </p>
                         <p class="indentLevel1">The command should display a result like the following:</p>
-                        <p class="indentLevel1">
                             <div class="preWrapper"><pre class="ShellCommand">Splice Machine - Description=Splice Machine ODBC Driver</pre>
                             </div>
-                        </p>
                     </li>
                 </ol>
             </div>
@@ -958,7 +948,7 @@ main() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

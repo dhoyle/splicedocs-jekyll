@@ -1,7 +1,7 @@
 ---
 title: SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX built-in system procedure
 summary: Built-in system procedure that computes split points for a table or index and splits it into HFiles.
-keywords:
+keywords: compute split points, splice_table_or_index
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -143,8 +143,8 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramDefnFirst">The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "<span class="ItalicFont">HH:mm:ss</span>".</p>
                 <div>
                     <p class="paramName">maxBadRecords</p>
-                    <p class="paramDefnFirst">The number of rejected (bad)&#160;records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back.
-			<ul><li>If you specify <span class="CodeFont">-1</span> as the value of this parameter, all record import failures are tolerated and logged.</li><li>If you specify <span class="CodeFont">0</span> as the value of this parameter, the import will fail if even one record is bad.</li></ul></p>
+                    <p class="paramDefnFirst">The number of rejected (bad)&#160;records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back.</p>
+			<ul><li>If you specify <span class="CodeFont">-1</span> as the value of this parameter, all record import failures are tolerated and logged.</li><li>If you specify <span class="CodeFont">0</span> as the value of this parameter, the import will fail if even one record is bad.</li></ul>
                     <p class="paramName">badRecordDirectory</p>
                     <p class="paramDefnFirst">The directory in which bad record information is logged. Splice Machine logs information to the <span class="CodeFont"><span class="CodeItalicFont">&lt;import_file_name&gt;</span>.bad</span> file in this directory; for example, bad records in an input file named <span class="CodeFont">foo.csv</span> would be logged to a file named <span class="ItalicFont">badRecordDirectory</span><span class="CodeFont">/foo.csv.bad</span>.</p>
                     <p class="paramDefn">The default value is the directory in which the import files are found.</p>

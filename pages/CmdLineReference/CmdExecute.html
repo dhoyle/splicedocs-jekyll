@@ -1,7 +1,7 @@
 ---
 title: Execute command
 summary: Executes an SQL&#160;prepared statement or SQL&#160;command string.
-keywords:
+keywords: prepared statement, command string
 toc: false
 product: all
 sidebar: onprem_sidebar
@@ -25,13 +25,11 @@ folder: CmdLineReference
                 <p class="paramDefnFirst">Use this or <span class="ItalicFont">Identifier</span> to supply values for dynamic parameters, if the command being executed contains them.</p>
                 <p class="paramName">Identifier</p>
                 <p class="paramDefnFirst">Use this or <span class="ItalicFont">String</span> to supply values for dynamic parameters, if the command being executed contains them. This identifier must have a result set as its result:</p>
-                <p class="paramDefnFirst">
                     <ul>
                         <li>Each row of the result set is applied to the input parameters of the command to be executed, so the number of columns in the <span class="CodeFont">Using</span> clause's result set must match the number of input parameters in the statement being executed.</li>
                         <li>The command line interpreter displays the results of each execution of the statement as they are created.</li>
                         <li>If the Using clause's result set contains zero rows, the statement is not executed.</li>
                     </ul>
-                </p>
             </div>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; autocommit off;

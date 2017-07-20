@@ -1,7 +1,7 @@
 ---
 title: Connecting to Splice Machine with Python and ODBC
 summary: Walks you through compiling and running a Python program that connects to your Splice Machine database via our ODBC driver.
-keywords:
+keywords: ODBC, Python, connect tutorial
 toc: false
 product: all
 sidebar: tutorials_sidebar
@@ -28,7 +28,7 @@ folder: Tutorials/Connect
                     </li>
                     <li>
                         <p class="topLevel">Install the pyodbc module</p>
-                        <p class="indentLevel1">You need to install the <span class="CodeFont">pyodbc</span> open source Python module, which implements the DB&#160;API&#160;2.0 specification and can be used with Python 2.4 or higher. See <a href="https://github.com/mkleehammer/pyodbc  target="_blank">https://github.com/mkleehammer/pyodbc</a> for more information about this module.</p>
+                        <p class="indentLevel1">You need to install the <span class="CodeFont">pyodbc</span> open source Python module, which implements the DB&#160;API&#160;2.0 specification and can be used with Python 2.4 or higher. See <a href="https://github.com/mkleehammer/pyodbc"  target="_blank">https://github.com/mkleehammer/pyodbc</a> for more information about this module.</p>
                         <p class="indentLevel1">To install pyodbc on the server on which you'll be running your job:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">yum install gcc-c++<br />pip install pyodbc</pre>
                         </div>
@@ -36,7 +36,6 @@ folder: Tutorials/Connect
                     <li>
                         <p class="topLevel">Confirm that you can connect</p>
                         <p class="indentLevel1">To confirm that you're ready to use the ODBC driver, launch the python shell and enter the following commands, replacing <span class="HighlightedCode">SpliceODBC64</span> with the name of your data source (which is found in the <span class="CodeFont">odbc.ini</span> file that you edited when installing our ODBC&#160;driver):</p>
-                        <p class="indentLevel1">
                             <div class="preWrapperWide"><pre class="Example">import pyodbc
 cnxn = pyodbc.connect("DSN=SpliceODBC64")
 cursor = cnxn.cursor()
@@ -45,7 +44,6 @@ row = cursor.fetchone()
 print('row:',row)
 </pre>
                             </div>
-                        </p>
                     </li>
                     <li>
                         <p class="topLevel">Copy the example program code:</p>
@@ -103,9 +101,6 @@ cnxn.commit();
 row = cursor.execute("select count(1) as TOTAL from SPLICE.MYPYTHONTABLE").fetchone()
 print(row.TOTAL)</pre>
                         </div>
-                        <p class="indentLevel1">
-                            <p>&#160;</p>
-                        </p>
                     </li>
                     <li>
                         <p class="topLevel">Save the code to <span class="CodeFont">SpliceODBCConnect.py</span>.</p>

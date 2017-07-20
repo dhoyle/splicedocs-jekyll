@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A tutorial showing you how to use Apache Zeppelin to analyze data in an on-premise Splice Machine database.">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" on-premise notebook, on-premise Zeppelin">
 <title>Using Apache Zeppelin with Splice Machine | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -523,10 +523,12 @@
   	<section>
 		<div class="TopicContent">
             <h1 id="kanchor290">Connecting with Apache Zeppelin</h1>
+<div class="noteOnPremiseOnly">This topic is only relevant to users of our On-Premise Database product.</div>
+
             <p>This tutorial walks you through connecting your on-premise Splice Machine database with Apache Zeppelin, which is a web-based notebook project currently in incubation at Apache. In this tutorial, you'll learn how to use SQL&#160;to query your Splice Machine database from Zeppelin.</p>
             <div class="noteNote">
-                <p>Zeppelin is already integrated into the Splice Machine Database-as-Service product; please see our <a href="dbaas_zep_intro.html"><span class="italicFont">Using Zeppelin</span> documentation for more information.</p>
-                <p>See <a href="https://zeppelin.apache.org/  target="_blank" title="Link to the main Apache Zeppelin web site." alt="Link to the main Apache Zeppelin web site.">https://zeppelin.apache.org/</a> to learn more about Apache Zeppelin.</p>
+                <p>Zeppelin is already integrated into the Splice Machine Database-as-Service product; please see our <a href="dbaas_zep_intro.html"><span class="italicFont">Using Zeppelin</span></a> documentation for more information.</p>
+                <p>See <a href="https://zeppelin.apache.org/"  target="_blank" title="Link to the main Apache Zeppelin web site." alt="Link to the main Apache Zeppelin web site.">https://zeppelin.apache.org/</a> to learn more about Apache Zeppelin.</p>
             </div>
 
             <div>
@@ -546,7 +548,7 @@
                     <ol class="boldFont">
                         <li>
                             <p class="topLevel">Install Zeppelin:</p>
-                            <p class="indentLevel1">If you're running on AWS, you can install the Zeppelin sandbox application; if you're using an on-premise database, we recommend following the <a href="http://www.mapr.com/blog/building-apache-zeppelin-mapr-using-spark-under-yarn  target="_blank" title="Link to instructions for installing Zeppelin on MapR" alt="Link to instructions for installing Zeppelin on MapR">instructions in this video.</a></p>
+                            <p class="indentLevel1">If you're running on AWS, you can install the Zeppelin sandbox application; if you're using an on-premise database, we recommend following the <a href="http://www.mapr.com/blog/building-apache-zeppelin-mapr-using-spark-under-yarn"  target="_blank" title="Link to instructions for installing Zeppelin on MapR" alt="Link to instructions for installing Zeppelin on MapR">instructions in this video.</a></p>
                         </li>
                         <li>
                             <p class="topLevel">Create a new interpreter to run with Splice:</p>
@@ -639,21 +641,20 @@
                                     </p>
                                 </li>
                             </ol>
-                            <li>
-                                <p class="topLevel">Change how you view your data</p>
-                                <p class="indentLevel1">To get a better sense of what you can do with Zeppelin, we'll modify how we visualize this data:</p>
-                                <ol class="LowerAlphaPlainFont">
-                                    <li>Click the rightmost settings <img src="images/ZepSettings.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> icon, then click <span class="ConsoleLink">settings</span>.</li>
-                                    <li>Move age to the xAxis, and the number of people of that age to the yAxis.</li>
-                                    <li>
-                                        <p>You'll now see the distribution of ages:</p>
-                                        <p>
-                                            <img src="images/ZepScatter.png" class="nestedTightSpacing" />
-                                        </p>
-                                    </li>
-                                    <li>Click the <img src="images/ZepGraphs.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> graphs button to select other data visualizations.</li>
-                                </ol>
-                            </li>
+                        <li>
+                            <p class="topLevel">Change how you view your data</p>
+                            <p class="indentLevel1">To get a better sense of what you can do with Zeppelin, we'll modify how we visualize this data:</p>
+                            <ol class="LowerAlphaPlainFont">
+                                <li>Click the rightmost settings <img src="images/ZepSettings.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> icon, then click <span class="ConsoleLink">settings</span>.</li>
+                                <li>Move age to the xAxis, and the number of people of that age to the yAxis.</li>
+                                <li>
+                                    <p>You'll now see the distribution of ages:</p>
+                                    <p>
+                                        <img src="images/ZepScatter.png" class="nestedTightSpacing" />
+                                    </p>
+                                </li>
+                                <li>Click the <img src="images/ZepGraphs.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> graphs button to select other data visualizations.</li>
+                            </ol>
                         </li>
                     </ol>
                 </div>
@@ -676,7 +677,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

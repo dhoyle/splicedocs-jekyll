@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Describes how to configure and manage Splice Machine, which offers several different authentication mechanisms, including LDAP.">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" authenticate, credentials, configuring">
 <title>Configuring Splice Machine Authentication | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -840,6 +840,8 @@
 	<section>
 		<div class="TopicContent">
             <h1 id="kanchor174">Configuring Splice Machine Authentication</h1>
+<div class="noteOnPremiseOnly">This topic is only relevant to users of our On-Premise Database product.</div>
+
             <p>This topic describes the mechanisms you can use in Splice Machine to authenticate users and how to configure the mechanism you choose to use, in these sections:</p>
             <ul>
                 <li><a href="#Supporte">Supported Authentication Mechanisms</a>
@@ -877,7 +879,7 @@
                                 <p>User IDs are validating against an existing LDAP&#160;service.</p>
 <div class="openSourceNoteWrapper">
     <div class="openSourceNote">
-        <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: This feature is available only with a Splice Machine Enterprise license.</span>
+        <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: This feature is available only for the Splice Machine Enterprise version of our On-Premise Database product.</span>
         </p>
         <p>You cannot use this feature with the Community version of Splice Machine. For a list of the additional features available in the Enterprise edition, see our  <a href="notes_editions.html">Splice&#160;Machine Editions</a> page.</p>
         <p>To obtain a license for the Splice&#160;Machine <span class="ItalicFont">Enterprise Edition</span>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
@@ -931,13 +933,13 @@
                         </tr>
                         <tr>
                             <td>Standalone version</td>
-                            <td><
+                            <td>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <p>Configure your authentication settings by adding or modifying properties in the configuration file.</p>
-                <h3 id="Disablin"></a id="kanchor178">Disabling Authentication</h3>
+                <h3 id="Disablin">Disabling Authentication</h3>
                 <p>If you want to disable authentication for your Splice&#160;Machine database, you can set the authentication property to <span class="CodeFont">NONE</span>.</p>
                 <div class="noteNote">Splice Machine <span class="BoldFont">strongly encourages you to not use</span> an open database for production databases!</div>
                 <p class="noSpaceAbove">You can configure an open database that allows any user to authenticate against the database by setting your authentication properties as follows:
@@ -961,10 +963,10 @@
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: LDAP&#160;authentication is available only with a Splice Machine Enterprise license.</span>
                     </p>
                     <p>You cannot use LDAP&#160;authentication with the Community version of Splice Machine.</p>
-                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="https://www.splicemachine.com/company/contact-us/  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="https://www.splicemachine.com/company/contact-us/"  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
                 <p>To use LDAP&#160;with Splice Machine, you must:</p>
                 <ul>
-                    <li><a href="https://www.splicemachine.com/company/contact-us/  target="_blank">Contact us</a> to obtain a license key from Splice&#160;Machine. </li>
+                    <li><a href="https://www.splicemachine.com/company/contact-us/"  target="_blank">Contact us</a> to obtain a license key from Splice&#160;Machine. </li>
                     <li>Enable Enterprise features by adding your Splice Machine license key to your HBase configuration file as the value of the <span class="CodeFont">splicemachine.enterprise.key</span> property, as shown below.</li>
                     <li>Make sure that a user with name <span class="CodeFont">splice</span> has been created in the LDAP server.
  </li>
@@ -999,7 +1001,7 @@
                 <p>You can then use our JDBC&#160;driver to connect to your database with LDAP&#160;authentication, using a connection string similar to this:</p>
                 <div class="preWrapperWide"><pre class="Example">jdbc:splice://localhost:1527/splicedb;user=yourName;password=yourPswd</pre>
                 </div>
-            </div>
+        </div>
         </div>
 	</section>
 
@@ -1018,7 +1020,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

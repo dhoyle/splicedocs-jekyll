@@ -1,7 +1,7 @@
 ---
 title: Export command
 summary: Exports query results to CSV&#160;files.
-keywords: 
+keywords: csv, export
 toc: false
 product: all
 sidebar: onprem_sidebar
@@ -27,7 +27,24 @@ folder: CmdLineReference
                 <p class="paramName"><span class="ItalicFont">compress</span>
                 </p>
                 <p class="paramDefnFirst">Whether or not to compress the exported files. You can specify one of the following values:
-            <table summary="Possible values for compression setting in the export command."><col /><col /><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td class="CodeFont">true</td><td><p>The exported files are compressed using <span class="CodeFont">deflate/gzip</span>. </p></td></tr><tr><td class="CodeFont">false</td><td><p>Exported files are not compressed.</p></td></tr></tbody></table></p>
+            <table summary="Possible values for compression setting in the export command.">
+                <col />
+                <col />
+                <thead>
+                    <tr><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">true</td>
+                        <td><p>The exported files are compressed using <span class="CodeFont">deflate/gzip</span>. </p></td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">false</td>
+                        <td><p>Exported files are not compressed.</p>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
                 <p class="paramName"><span class="ItalicFont">replicationCount</span>
                 </p>
                 <p class="paramDefnFirst">The file system block replication count to use for the exported CSV&#160;files. </p>
@@ -59,7 +76,7 @@ folder: CmdLineReference
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">hadoop fs -getmerge <span class="ItalicFont">sourceDir localPath</span></pre>
             </div>
             <p>Use the <span class="ItalicFont">exportPath</span> directory as the value of sourceDir to copy all of the exported CSV&#160;files to your <span class="ItalicFont">localPath</span>.</p>
-            <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge  target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
+            <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge"  target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">         -- This example uses all default options:
  splice&gt; EXPORT('/my/export/dir', false, null, null, null, null)

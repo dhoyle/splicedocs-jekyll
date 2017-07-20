@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabiliti...">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" Map Reduce, MR, framework">
 <title>Splice Machine MapReduce API | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -607,7 +607,8 @@
   	<section>
 		<div class="TopicContent">
             <h1 id="kanchor204">Splice Machine Map Reduce API</h1>
-            <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. Our database as a service does include our MapReduce API.</div>
+<div class="noteOnPremiseOnly">This topic is only relevant to users of our On-Premise Database product.</div>
+
             <p>The Splice Machine MapReduce API&#160;provides a simple programming interface to the Map Reduce Framework that is integrated into Splice Machine. You can use MapReduce to import data, export data, or for purposes such as implementing machine learning algorithms. One likely scenario for using the Splice Machine MapReduce API is for customers who already have a Hadoop cluster, want to use Splice Machine as their transactional database, and need to continue using their batch MapReduce jobs.</p>
             <p>This topic includes a summary of the Java classes included in the API,&#160;and <a href="#Example">presents an example</a> of using the MapReduce API.</p>
             <h2>Splice Machine MapReduce API&#160;Classes</h2>
@@ -662,23 +663,19 @@
                     <li>
                         <p class="topLevel">Define your input and output tables:</p>
                         <p class="indentLevel1">First, assign the name of the Splice Machine database table from which you want to retrieve data to a variable, and then assign a name for your output table to another variable:</p>
-                        <p class="indentLevel1">
                             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 String inputTableName  = "WIKIDATA";
 String outputTableName = "USERTEST";</pre>
                             </div>
-                        </p>
                         <p class="indentLevel1">You can specify table names using the <span class="ItalicFont">&lt;schemaName&gt;.&lt;tableName&gt;</span> format; if you don't specify a schema name, the default schema is assumed.</p>
                     </li>
                     <li>
                         <p class="topLevel">Create a new job instance:</p>
                         <p class="indentLevel1">You need to create a new job instance and assign a name to it:</p>
-                        <p class="indentLevel1">
                             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 Configuration config = HBaseConfiguration.create();
 Job job = new Job(config, "WordCount");</pre>
                             </div>
-                        </p>
                     </li>
                     <li>
                         <p class="topLevel">Initialize your mapper job:</p>
@@ -771,7 +768,7 @@ Job job = new Job(config, "WordCount");</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

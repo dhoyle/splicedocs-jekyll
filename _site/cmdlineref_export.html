@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Exports query results to CSV&#160;files.">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" csv, export">
 <title>Export command | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -763,7 +763,24 @@
                 <p class="paramName"><span class="ItalicFont">compress</span>
                 </p>
                 <p class="paramDefnFirst">Whether or not to compress the exported files. You can specify one of the following values:
-            <table summary="Possible values for compression setting in the export command."><col /><col /><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td class="CodeFont">true</td><td><p>The exported files are compressed using <span class="CodeFont">deflate/gzip</span>. </p></td></tr><tr><td class="CodeFont">false</td><td><p>Exported files are not compressed.</p></td></tr></tbody></table></p>
+            <table summary="Possible values for compression setting in the export command.">
+                <col />
+                <col />
+                <thead>
+                    <tr><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">true</td>
+                        <td><p>The exported files are compressed using <span class="CodeFont">deflate/gzip</span>. </p></td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">false</td>
+                        <td><p>Exported files are not compressed.</p>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
                 <p class="paramName"><span class="ItalicFont">replicationCount</span>
                 </p>
                 <p class="paramDefnFirst">The file system block replication count to use for the exported CSV&#160;files. </p>
@@ -795,7 +812,7 @@
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">hadoop fs -getmerge <span class="ItalicFont">sourceDir localPath</span></pre>
             </div>
             <p>Use the <span class="ItalicFont">exportPath</span> directory as the value of sourceDir to copy all of the exported CSV&#160;files to your <span class="ItalicFont">localPath</span>.</p>
-            <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge  target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
+            <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge"  target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">         -- This example uses all default options:
  splice&gt; EXPORT('/my/export/dir', false, null, null, null, null)
@@ -824,7 +841,7 @@ splice&gt; EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

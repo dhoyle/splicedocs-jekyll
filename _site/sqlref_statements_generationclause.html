@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Describes the syntax and restrictions that apply to the generation clauses used to create virtual column values.">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" generated always as">
 <title>generation-clause | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -2760,13 +2760,11 @@
             <div class="paramList">
                 <p class="paramName">value-expression</p>
                 <p class="paramDefnFirst">An <span class="ItalicFont"><a href="sqlref_expressions_about.html">Expression</a></span> that resolves to a single value, with some limitations:</p>
-                <p class="paramDefn">
                     <ul>
                         <li>The <span class="ItalicFont">generation-clause</span> may reference other non-generated columns in the table, but it must not reference any generated column. The <span class="ItalicFont">generation-clause</span> must not reference a column in another table.</li>
                         <li>The <span class="ItalicFont">generation-clause</span> must not include subqueries.</li>
                         <li>The <span class="ItalicFont">generation-clause</span> may invoke user-coded functions, if the functions meet the requirements in the <a href="#UserFunctions">User Function Restrictions</a> section below.</li>
                     </ul>
-                </p>
             </div>
             <h2 id="UserFunctions">User Function Restrictions</h2>
             <p>The <span class="ItalicFont">generation-clause</span> may invoke user-coded functions, if the functions meet the following requirements:</p>
@@ -2803,7 +2801,7 @@ CREATE INDEX caseInsensitiveEmployeeName
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

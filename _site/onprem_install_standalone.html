@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="How to download, install, and start using the standalone version of Splice Machine.">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" standalone version">
 <title>Installing the Standalone Version of Splice Machine. | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -840,13 +840,15 @@
 	<section>
 		<div class="TopicContent">
             <h1 id="DeployingStandalone">Installing the Standalone Version of Splice&#160;Machine</h1>
+<div class="noteOnPremiseOnly">This topic is only relevant to users of our On-Premise Database product.</div>
+
             <p>This topic walks you through downloading, installing, and getting started with using the standalone version of Splice Machine. </p>
             <h2>About the Standalone Version</h2>
             <p>The standalone version of Splice Machine runs on a single computer, rather than on a cluster; it is intended to allow you to get your feet wet with Splice Machine. The standalone version installs quickly on your MacOS, Linux, or CentOS computer, and enables rapid access to Splice Machine's capabilities. It's an excellent way to experiment with Splice Machine with a reasonably small amount of data.</p>
             <p>Note that many of our customers also use the standalone version of Splice Machine for ongoing development work. For example, if your engineers want to create stored procedures to optimize aspects of your database, they can develop and debug those procedures on the standalone version before deploying them to your cluster.</p>
             <p>This topic walks you through getting the standalone version of Splice Machine installed on your computer. Because Splice Machine is a Java application, youll have to meet some prerequisites for the way your computer supports Java. You may already have created these settings for other Java applications, but just to be sure, we list them in this tutorial for each of the supported operating systems.</p>
             <p>You can <a href="#Watch">watch the video version</a> of getting Splice&#160;Machine installed on your computer, or <a href="#Follow">follow the written instructions</a>.</p>
-            <div class="noteNote">Many other Big Data applications and services like <a href="https://hbase.apache.org/  target="_blank">HBase</a>, <a href="https://kafka.apache.org/  target="_blank">Kafka</a>, <a href="http://hadoop.apache.org/  target="_blank">Hadoop</a>, <a href="https://prometheus.io  target="_blank">Prometheus</a>, and <a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04  target="_blank">even parts of the ELK stack</a> are also written (at least partially) in Java, and so they require these extra Java setup steps as well.</div>
+            <div class="noteNote">Many other Big Data applications and services like <a href="https://hbase.apache.org/"  target="_blank">HBase</a>, <a href="https://kafka.apache.org/"  target="_blank">Kafka</a>, <a href="http://hadoop.apache.org/"  target="_blank">Hadoop</a>, <a href="https://prometheus.io"  target="_blank">Prometheus</a>, and <a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"  target="_blank">even parts of the ELK stack</a> are also written (at least partially) in Java, and so they require these extra Java setup steps as well.</div>
 
             <div class="videoEnvelope">
                 <h2 id="Watch">Watch the Video Version</h2>
@@ -881,7 +883,7 @@
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
-                        <p class="topLevel"> If you have <a href="http://brew.sh/  target="_blank">Homebrew</a> installed</p>
+                        <p class="topLevel"> If you have <a href="http://brew.sh/"  target="_blank">Homebrew</a> installed</p>
                         <p class="indentLevel1">Fire up the <span class="CodeFont">Terminal</span> app and enter the following commands:</p>
                         <div class="preWrapper"><pre class="ShellCommand">$ brew update
 $ brew cask install java
@@ -889,7 +891,7 @@ $ brew install rlwrap</pre>
                         </div>
                     </li>
                     <li>
-                        <p class="topLevel"> If you do not have <a href="http://brew.sh/  target="_blank">Homebrew</a> installed:</p>
+                        <p class="topLevel"> If you do not have <a href="http://brew.sh/"  target="_blank">Homebrew</a> installed:</p>
                         <ol class="LowerAlphaPlainFont">
                             <li>
                                 <p>Download the Java SE Development Kit (JDK 8) from this URL:</p>
@@ -1043,7 +1045,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                     <li>
                         <p class="topLevel">Set up sudo rights</p>
                         <p>Your User ID&#160;must be in the <span class="CodeFont">sudoers</span> file. To do so, please see the following web page:</p>
-                        <div class="preWrapperWide"><pre class="Plain"><a href="https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos  target="_blank">https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos</a></pre>
+                        <div class="preWrapperWide"><pre class="Plain"><a href="https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos"  target="_blank">https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos</a></pre>
                         </div>
                     </li>
                     <li>
@@ -1141,7 +1143,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Download the Splice&#160;Machine installer.</p>
-                        <p class="indentLevel1">Visit this page:&#160;<span class="CodeFont"><a href="https://www.splicemachine.com/get-started/download/  target="_blank">https://www.splicemachine.com/get-started/download/</a></span>.</p>
+                        <p class="indentLevel1">Visit this page:&#160;<span class="CodeFont"><a href="https://www.splicemachine.com/get-started/download/"  target="_blank">https://www.splicemachine.com/get-started/download/</a></span>.</p>
                     </li>
                     <li>
                         <p class="topLevel">Copy the downloaded tarball (.gz file)&#160;to the directory on your computer in which you want to install Splice&#160;Machine</p>
@@ -1202,12 +1204,12 @@ $ sudo apt install oracle-java8-set-default</pre>
 		</p>
             <ul>
                 <li>Note that we have also created a <a href="onprem_install_installdemodata.html">short tutorial that shows you how to import the demo data</a> included in our installation. We recommend that you follow the steps in this tutorial to import and then run a few test queries against the demo data to start experiencing the full power of Splice Machine.</li>
-                <li>Documentation - Start Here: <a href="index.html"</a></li>
-                <li>Tutorials - Getting Started: <a href="http://community.splicemachine.com/category/tutorials/getting-started-with-splice/  target="_blank">http://community.splicemachine.com/category/tutorials/getting-started-with-splice/</a></li>
+                <li>Documentation - Start Here: <a href="index.html">Documentation Home Page</a></li>
+                <li>Tutorials: <a href="https//doc.splicemachine.com/tutorials_intro.html">Tutorials Home Page</a></li>
             </ul>
             <p>
 
-		We welcome any of your questions or comments on our <a href="http://community.splicemachine.com/community/forum/  target="_blank">forum</a> or <a href="http://community.splicemachine.com/slack-channel-signup/  target="_blank">slack</a> channel within the Splice Machine <a href="http://community.splicemachine.com  target="_blank">community</a>. If you have more questions or would like to see a demo of our system, reach out to us at <a href="mailto:info@splicemachine.com">info@splicemachine.com</a> or by filling out this <a href="https://www.splicemachine.com/company/contact-us/  target="_blank">form</a>. </p>
+		We welcome any of your questions or comments on our <a href="http://community.splicemachine.com/community/forum/"  target="_blank">forum</a> or <a href="http://community.splicemachine.com/slack-channel-signup/"  target="_blank">slack</a> channel within the Splice Machine <a href="http://community.splicemachine.com"  target="_blank">community</a>. If you have more questions or would like to see a demo of our system, reach out to us at <a href="mailto:info@splicemachine.com">info@splicemachine.com</a> or by filling out this <a href="https://www.splicemachine.com/company/contact-us/"  target="_blank">form</a>. </p>
         </div>
 	</section>
 
@@ -1226,7 +1228,7 @@ $ sudo apt install oracle-java8-set-default</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

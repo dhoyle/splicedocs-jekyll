@@ -4,8 +4,8 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Walks you through compiling and running a Jython program that connects to your Splice Machine database via our JDBC driver.&#xA;">
-<meta name="keywords" content=" ">
+<meta name="description" content="Walks you through compiling and running a Jython program that connects to your Splice Machine database via our JDBC driver.">
+<meta name="keywords" content=" JDBC, Jython, connect tutorial">
 <title>Connecting to Splice Machine with Jython and JDBC | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -511,7 +511,7 @@
 
 <!--- Don't automatically put page summary at top - GRH 05/2017:
    
-    <div class="summary">Walks you through compiling and running a Jython program that connects to your Splice Machine database via our JDBC driver.&#xA;</div>
+    <div class="summary">Walks you through compiling and running a Jython program that connects to your Splice Machine database via our JDBC driver.</div>
    
 -->
 
@@ -634,7 +634,6 @@ export CLASSPATH=<span class="Highlighted">/splicemachine/jdbc-driver/db-client-
                     <li>
                         <p class="topLevel">Copy the example program code:</p>
                         <p class="indentLevel1">You can copy and paste the code below; note that this example uses our default connectivity parameters (database, user, URL, and password values):</p>
-                        <p class="indentLevel1">
                             <div class="preWrapperWide"><pre class="Example">from java.sql import DriverManager
 from java.lang import Class
 from java.util import Properties
@@ -650,7 +649,7 @@ stmt   = conn.createStatement()
 rs     = stmt.executeQuery("select * from sys.systables")
 
 rowCount = 0
-while (rs.next() and rowCount < 10) :
+while (rs.next() and rowCount &lt; 10) :
     rowCount += 1
     print "Record=[" + str(rowCount) + \"]
         id   = [" + rs.getString('TABLEID') + \"] 
@@ -661,7 +660,6 @@ rs.close()
 stmt.close()
 conn.close()</pre>
                             </div>
-                        </p>
                     </li>
                     <li>
                         <p class="topLevel">Save the code to <span class="CodeFont">print_files.jy</span>.</p>
@@ -669,12 +667,9 @@ conn.close()</pre>
                     <li>
                         <p class="topLevel">Run the program:</p>
                         <p class="indentLevel1">Run the <span class="CodeFont">print_tables.jy</span> program as follows:</p>
-                        <p class="indentLevel1">
                             <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">jython print_tables.jy</pre>
                             </div>
-                        </p>
                         <p class="indentLevel1">The command should display a result like the following:</p>
-                        <p class="indentLevel1">
                             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
 Record=[1] id=[f9f140e7-0144-fcd8-d703-00003cbfba48] name=[ASDAS] type=[T]
 Record=[2] id=[c934c123-0144-fcd8-d703-00003cbfba48] name=[DDC_NOTMAILABLE] type=[T]
@@ -687,7 +682,6 @@ Record=[8] id=[d67d42c7-0144-fcd8-d703-00003cbfba48] name=[SCIENCE_CAT_QA] type=
 Record=[9] id=[c1e0c303-0144-fcd8-d703-00003cbfba48] name=[TESTOUTPUT2] type=[T]
 Record=[10] id=[f408c343-0144-fcd8-d703-00003cbfba48] name=[UAC_1267_AVJ] type=[T]</pre>
                             </div>
-                        </p>
                     </li>
                 </ol>
             </div>
@@ -709,7 +703,7 @@ Record=[10] id=[f408c343-0144-fcd8-d703-00003cbfba48] name=[UAC_1267_AVJ] type=[
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

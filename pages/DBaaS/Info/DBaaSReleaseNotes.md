@@ -1,6 +1,7 @@
 ---
 title: Release Notes for our Database-as-Service Alpha Release
 summary: Current release notes for the Splice Machine Database-as-Service product
+keywords: release notes, dbaas, paas, service
 sidebar:  dbaas_sidebar
 toc: false
 product: all
@@ -8,6 +9,8 @@ permalink: dbaas_info_release.html
 folder: DBaaS/Info
 ---
 # Release Notes: Alpha Release of Splice Machine Database-as-Service
+
+{% include splice_snippets/dbaasonlytopic.html %}
 
 Our new Database-as-Service product is now in alpha release. Although this software is functional, there are still some significant issues being worked out, as with all Alpha software. This page summarizes the current limitations and workarounds, in the following sections:
 
@@ -69,7 +72,7 @@ This section contains information about connecting to your database:
 
 * Your initial link from the DB Console will redirect you to an “HTTP" page that will fail.  Change the HTTP to HTTPS and resubmit that URL, and you will get to the Spark pages.  Other possible redirects on this page will also require this.
 
-* For external JDBC access, download the JDBC driver at https://s3.amazonaws.com/splicemachine/artifacts/. It will be of the form db-client-<span class="ItalicFont"><versioninfo></span>.jar.
+* For external JDBC access, download the JDBC driver at https://s3.amazonaws.com/splicemachine/artifacts/. It will be of the form db-client-<span class="ItalicFont">&lt;versioninfo&gt;</span>.jar.
 
 ## Functionality Limitations
 * A single query or SQL statement will time out if it takes more than 1 hour; upon timeout, you may see a <span class="CodeFont">SQLNonTransientConnectionException</span> message displayed.

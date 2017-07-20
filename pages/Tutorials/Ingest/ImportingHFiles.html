@@ -1,7 +1,7 @@
 ---
 title: Importing Data into Your Splice Machine Database
 summary: How to use our Bulk HFile import feature to rapidly import large datasets into your Splice Machine database.
-keywords:
+keywords: bulk import, bulk data load, hfile import, hfile load, s3, aws
 toc: false
 product: all
 sidebar: tutorials_sidebar
@@ -33,7 +33,7 @@ folder: Tutorials/Ingest
                 <li>Call our <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILES</span> procedure, which temporarily converts the table file that you're importing into HFiles, imports those directly into your database, and then removes the temporary HFiles.</li>
             </ul>
 {% include splice_snippets/hfileimport_example.html %}
-            <h2 id="Tips"></a id="kanchor105">Tips for Importing Data into Splice&#160;Machine</h2>
+            <h2 id="Tips">Tips for Importing Data into Splice&#160;Machine</h2>
             <p>This tutorial contains a number of tips that our users have found very useful in determining the parameter settings to use when running an import:</p>
             <ol>
                 <li><a href="#Tip4"><a href="#Tip4">Tip #1:&#160;&#160;Use Special Characters for Delimiters</a></a>
@@ -70,7 +70,7 @@ folder: Tutorials/Ingest
             <h3 id="Tip5">Tip #2:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</h3>
             <p>Perhaps the most common difficulty that customers have with importing their data is with date, time, and timestamp values. </p>
             <p>Splice Machine adheres to the Java <span class="CodeFont">SimpleDateFormat</span> syntax for all date, time, and timestamp values, <span class="CodeFont">SimpleDateFormat</span> is described here:</p>
-            <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html  target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
+            <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html"  target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
             </p>
             <p>Splice Machine's implementation of <span class="CodeFont">SimpleDateFormat</span> is case-sensitive; this means, for example, that a lowercase <span class="CodeFont">h</span> is used to represent an hour value between 0 and 12, whereas an uppercase <span class="CodeFont">H</span> is used to represent an hour between 0 and 23.</p>
             <p>Splice Machine's Import procedures only allow you to specify one format each for the date, time, and timestamp columns in the table data you are importing. This means that, for example, every date in the table data must be in the same format.</p>

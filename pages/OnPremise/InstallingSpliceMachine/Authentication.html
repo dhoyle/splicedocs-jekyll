@@ -1,7 +1,7 @@
 ---
 summary: Describes how to configure and manage Splice Machine, which offers several different authentication mechanisms, including LDAP.
 title: Configuring Splice Machine Authentication
-keywords:
+keywords: authenticate, credentials, configuring
 toc: false
 product: onprem
 sidebar:  onprem_sidebar
@@ -12,6 +12,7 @@ folder: OnPrem
 	<section>
 		<div class="TopicContent">
             <h1 id="kanchor174">Configuring Splice Machine Authentication</h1>
+{% include splice_snippets/onpremonlytopic.html %}
             <p>This topic describes the mechanisms you can use in Splice Machine to authenticate users and how to configure the mechanism you choose to use, in these sections:</p>
             <ul>
                 <li><a href="#Supporte">Supported Authentication Mechanisms</a>
@@ -95,13 +96,13 @@ folder: OnPrem
                         </tr>
                         <tr>
                             <td>Standalone version</td>
-                            <td><{{spvar_platform_StandaloneAuthSettingsLoc}}
+                            <td>{{spvar_platform_StandaloneAuthSettingsLoc}}
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <p>Configure your authentication settings by adding or modifying properties in the configuration file.</p>
-                <h3 id="Disablin"></a id="kanchor178">Disabling Authentication</h3>
+                <h3 id="Disablin">Disabling Authentication</h3>
                 <p>If you want to disable authentication for your Splice&#160;Machine database, you can set the authentication property to <span class="CodeFont">NONE</span>.</p>
                 <div class="noteNote">Splice Machine <span class="BoldFont">strongly encourages you to not use</span> an open database for production databases!</div>
                 <p class="noSpaceAbove">You can configure an open database that allows any user to authenticate against the database by setting your authentication properties as follows:
@@ -125,10 +126,10 @@ folder: OnPrem
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: LDAP&#160;authentication is available only with a Splice Machine Enterprise license.</span>
                     </p>
                     <p>You cannot use LDAP&#160;authentication with the Community version of Splice Machine.</p>
-                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="https://www.splicemachine.com/company/contact-us/  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+                    <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="https://www.splicemachine.com/company/contact-us/"  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
                 <p>To use LDAP&#160;with Splice Machine, you must:</p>
                 <ul>
-                    <li><a href="https://www.splicemachine.com/company/contact-us/  target="_blank">Contact us</a> to obtain a license key from Splice&#160;Machine. </li>
+                    <li><a href="https://www.splicemachine.com/company/contact-us/"  target="_blank">Contact us</a> to obtain a license key from Splice&#160;Machine. </li>
                     <li>Enable Enterprise features by adding your Splice Machine license key to your HBase configuration file as the value of the <span class="CodeFont">splicemachine.enterprise.key</span> property, as shown below.</li>
                     <li>Make sure that a user with name <span class="CodeFont">splice</span> has been created in the LDAP server.
  </li>
@@ -163,6 +164,6 @@ folder: OnPrem
                 <p>You can then use our JDBC&#160;driver to connect to your database with LDAP&#160;authentication, using a connection string similar to this:</p>
                 <div class="preWrapperWide"><pre class="Example">jdbc:splice://localhost:1527/splicedb;user=yourName;password=yourPswd</pre>
                 </div>
-            </div>
+        </div>
         </div>
 	</section>

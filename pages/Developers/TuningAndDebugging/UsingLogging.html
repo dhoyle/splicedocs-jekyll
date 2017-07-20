@@ -1,7 +1,7 @@
 ---
 title: Using Splice Machine's Logging
 summary: Introduction to using logging in Splice Machine
-keywords:
+keywords: logging
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -18,7 +18,7 @@ folder: Developers/TuningAndDebugging
                 <li>Configure individual logger objects to log <a href="#Levels">specific message levels.</a></li>
                 <li>Call the <span class="CodeFont">log</span> function for a specific logger object, passing it a logging level value and a message. If the logger is currently configured to record messages at the specified level, the message is added to the log; otherwise, the logger ignores the message. Logger levels are ordered hierarchically; any message with a level equal to or greater than the hierarchical level for which logging is enabled is recorded into the log. </li>
             </ul>
-            <p>Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html  target="_blank">Apache log4j Logging API</a>, which allows you to associate a logger object with any java class, among other features. Loggers can be set to capture different levels of information. </p>
+            <p>Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html"  target="_blank">Apache log4j Logging API</a>, which allows you to associate a logger object with any java class, among other features. Loggers can be set to capture different levels of information. </p>
             <p>Logging too much information can slow your system down, but not logging enough information makes it difficult to debug certain issues. The <a href="#SpliceLoggers">Splice Machine Loggers</a> section below summarizes the loggers used by Splice Machine and the system components that they use. You can use the SQL&#160;logging functions described in the <a href="#LoggerFunctions">SQL&#160;Logger Functions</a> section below to retrieve or modify the logging level of any logger used in Splice Machine.</p>
             <h2 id="Manually">Manually Enabling Logging</h2>
             <p>If you want to log all of your SQL&#160;statements, you can manually enable logging in these ways:</p>
@@ -27,15 +27,15 @@ folder: Developers/TuningAndDebugging
                     <p class="noSpaceBelow">You can pass an argument to your Splice Machine JVM&#160;startup script, as follows:</p>
                     <div class="preWrapperWide"><pre class="Example" xml:space="preserve">-Dderby.language.logStatementText=true</pre>
                     </div>
-                    <li>
-                        <p>You can add the following property definition to your <span class="CodeFont">hbase-default.xml</span>, <span class="CodeFont">hbase-site.xml</span>, or <span class="CodeFont">splice-site.xml</span> file:</p>
-                        <div class="preWrapperWide"><pre class="Example">&lt;property&gt;
+                </li>
+                <li>
+                    <p>You can add the following property definition to your <span class="CodeFont">hbase-default.xml</span>, <span class="CodeFont">hbase-site.xml</span>, or <span class="CodeFont">splice-site.xml</span> file:</p>
+                    <div class="preWrapperWide"><pre class="Example">&lt;property&gt;
 &lt;name&gt;splice.debug.logStatementContext&lt;/name&gt;
 &lt;value&gt;true&lt;/value&gt;
 &lt;description&gt;Property to enable logging of all statements.&lt;/description&gt;
 &lt;/property&gt;</pre>
                         </div>
-                    </li>
                 </li>
             </ul>
             <p>You can examine the logged data in the the <span class="CodeFont">splice-derby.log</span> file, which is found in the <span class="CodeFont">splicemachine</span> directory.</p>

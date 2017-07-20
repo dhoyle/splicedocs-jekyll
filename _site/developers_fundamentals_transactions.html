@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Introduces you to the basics of running transactions with Splice Machine.">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" transactions, running transcations, ACID, MVCC, Snapshot isolation">
 <title>Running Transactions | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -662,7 +662,7 @@
                     </tr>
                 </tbody>
             </table>
-            <h3 id="Snapshot"></a id="kanchor553">MVCC and Snapshot Isolation</h3>
+            <h3 id="Snapshot">MVCC and Snapshot Isolation</h3>
             <p>Splice Machine employs a lockless <span class="ItalicFont">snapshot isolation design</span> that uses <span class="ItalicFont">Multiple Version Concurrency Control (MVCC)</span> to create a new version of the record every time it is updated and enforce consistency. Database systems use concurrency control systems to manage concurrent access. The simplest control method is to use locks that make sure that the writer is finished before any reader can proceed; however, this approach can be very slow. With snapshot isolation, each  transaction has its own virtual snapshot of the database, which means that multiple transactions can operate concurrently without creating deadlock conditions.</p>
             <p>When Splice Machine needs to update an item in the database, it doesn't actually overwrite the old data value. Instead, it creates a new version with a new timestamp. Which means that readers have access to the data that was available when they began reading, even if that data has been updated by a writer in the meantime. This is referred to as <span class="ItalicFont">point-in-time consistency</span> and ensures that:</p>
             <ul>
@@ -678,7 +678,7 @@
                 <li>When you write a value during a transaction, the value is set within your transactional context. It is only written to the database when you commit the transaction; that time is referred to as the <span class="ItalicFont">commit timestamp</span> for your transaction. The value changes that you commit then become visible to transactions that start after your transaction's commit timestamp (until another transaction modifies the value).</li>
                 <li>If two parallel transactions attempt to change the same value, then a <span class="ItalicFont">write-write conflict</span> occurs, and the commit of the transaction that started later fails.</li>
             </ul>
-            <h4 id=="kanchor554">A Snapshot Isolation Example</h4>
+            <h4 id="kanchor554">A Snapshot Isolation Example</h4>
             <p>The following diagram shows an example of snapshot isolation for a set of transactions, some of which are running in parallel:</p>
             <div>
                 <img src="images/GS.SnapshotIsolation.png" alt="Snapshot Isolation" class="indented" />
@@ -1080,7 +1080,7 @@ I
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

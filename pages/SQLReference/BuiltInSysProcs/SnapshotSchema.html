@@ -1,7 +1,7 @@
 ---
 title: SYSCS_UTIL.SNAPSHOT_SCHEMA built-in system procedure
 summary: Built-in system procedure that creates a snapshot of a schema.
-keywords:
+keywords: snapshots, snapshot_schema, create schema snapshot
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -24,6 +24,7 @@ creates a Splice Machine snapshot of the specified schema. These snapshots can s
                 <p class="paramDefnFirst">The name of the schema for which you are creating a snapshot.</p>
                 <p class="paramName">snapshotName</p>
                 <p class="paramDefnFirst">The name that you are assigning to this snapshot, which you can subsequently use to restore or delete the snapshot.</p>
+            </div>
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
             <h2>Example</h2>
@@ -31,8 +32,8 @@ creates a Splice Machine snapshot of the specified schema. These snapshots can s
             <div>
                 <p>The following example creates a snapshot of the schema named <span class="CodeFont">mySchema</span>:</p>
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SNAPSHOT_SCHEMA('mySchema', 'snap_myschema_070417a');
-Statement executed.
-</pre>
+Statement executed.</pre>
                 </div>
+            </div>
         </div>
 	</section>

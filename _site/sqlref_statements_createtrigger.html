@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Creates a trigger, which defines a set of actions that are executed when a database event occurs on a specified table">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" creating a trigger">
 <title>CREATE TRIGGER statement | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -2773,14 +2773,12 @@
                 <p class="paramDefnFirst">Triggers are defined as either <span class="ItalicFont">Before</span> or <span class="ItalicFont">After</span> triggers. </p>
                 <p class="paramDefn"><span class="CodeFont">BEFORE</span> triggers fire before the statement's changes are applied and before any constraints have been applied. <span class="CodeFont">AFTER</span> triggers fire after all constraints have been satisfied and after the changes have been applied to the target table.</p>
                 <p class="paramDefn">When a database event occurs that fires a trigger, Splice Machine performs actions in this order:</p>
-                <p class="paramDefn">
                     <ul>
                         <li>It fires <span class="CodeFont">BEFORE</span> triggers.</li>
                         <li>It performs constraint checking (primary key, unique key, foreign key, check).</li>
                         <li>It performs the <span class="CodeFont">INSERT</span>, <span class="CodeFont">UPDATE</span>, <span class="CodeFont">SELECT</span>, or <span class="CodeFont">DELETE</span> operations.</li>
                         <li>It fires <span class="CodeFont">AFTER</span> triggers.</li>
                     </ul>
-                </p>
                 <p class="paramDefnFirst">When multiple triggers are defined for the same database event for the same table for the same trigger time (before or after), triggers are fired in the order in which they were created.</p>
                 <p class="paramName">INSERT | DELETE | SELECT | UPDATE</p>
                 <p class="paramDefnFirst">Defines which database event causes the trigger to fire. If you specify <span class="CodeFont">UPDATE</span>, you can specify which column(s)&#160;cause the triggering event.</p>
@@ -2793,7 +2791,6 @@
                 <p class="paramDefn">A <span class="CodeFont">FOR EACH STATEMENT</span> trigger fires once per triggering event and regardless of whether any rows are modified by the insert, update, or delete event.</p>
                 <p class="paramName">Triggered-SQL-Statement</p>
                 <p class="paramDefnFirst">The statement that is executed when the trigger fires. The statement has the following restrictions:</p>
-                <p class="paramDefn">
                     <ul>
                         <li>It must not contain any dynamic (<span class="CodeFont">?</span>) parameters.</li>
                         <li>It cannot create, alter, or drop any table.</li>
@@ -2804,7 +2801,6 @@
                         <li>Before triggers cannot call procedures that modify SQL data as their action.</li>
                         <li>The <span class="CodeFont">NEW</span> variable of a <span class="CodeFont">BEFORE</span> trigger cannot reference a generated column. </li>
                     </ul>
-                </p>
                 <p class="paramDefn">The statement can reference database objects other than the table upon which the trigger is declared. If any of these database objects is dropped, the trigger is invalidated. If the trigger cannot be successfully recompiled upon the next execution, the invocation throws an exception and the statement that caused it to fire will be rolled back.</p>
             </div>
             <h2 id="ReferencingClause">The Referencing Clause</h2>
@@ -2910,7 +2906,7 @@ splice&gt;&#160;CREATE TRIGGER triggerName
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

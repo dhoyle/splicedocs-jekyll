@@ -2768,24 +2768,24 @@
                 <p class="paramDefnFirst">Any value expression that does not itself contain window function calls.</p>
                 <p class="paramName">partitionClause</p>
                 <p class="paramDefnFirst">Optional. Specifies how the window function is broken down over groups, in the same way that <span class="CodeFont">GROUP&#160;BY</span>&#160;specifies groupings for regular aggregate functions. If you omit this clause, there is one partition that contains all rows.</p>
-                <p class="paramDefn">The syntax for this clause is essentially the same as for the <span class="CodeFont"><a href="sqlref_clauses_groupby.html">GROUP&#160;BY</a></span>&#160;clause for queries; To recap:
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">PARTITION&#160;BY&#160;<span class="ItalicFont">expression</span> [, ...]</pre></div><div class="paramList"><p class="paramName">expression [,...]</p><p class="paramDefnFirst">A list of expressions that define the partitioning.</p></div></p>
+                <p class="paramDefn">The syntax for this clause is essentially the same as for the <span class="CodeFont"><a href="sqlref_clauses_groupby.html">GROUP&#160;BY</a></span>&#160;clause for queries; To recap:</p>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">PARTITION&#160;BY&#160;<span class="ItalicFont">expression</span> [, ...]</pre></div><div class="paramList"><p class="paramName">expression [,...]</p><p class="paramDefnFirst">A list of expressions that define the partitioning.</p></div>
                 <p class="paramName">orderClause</p>
-                <p class="paramDefnFirst">Optional.  Controls the ordering. It is important for ranking functions, since it specifies by which variables ranking is performed. It is also needed for cumulative functions. The syntax for this clause is essentially the same as for the <span class="CodeFont"><a href="sqlref_clauses_orderby.html">SQL&#160;Reference</a>. To recap:
+                <p class="paramDefnFirst">Optional.  Controls the ordering. It is important for ranking functions, since it specifies by which variables ranking is performed. It is also needed for cumulative functions. The syntax for this clause is essentially the same as for the <span class="CodeFont"><a href="sqlref_clauses_orderby.html">SQL&#160;Reference</a></span>. To recap:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ORDER&#160;BY expression
    [ ASC&#160;|&#160;DESC&#160;|&#160;USING&#160;<span class="ItalicFont">operator</span> ]<br />   [ NULLS&#160;FIRST |&#160;NULLS&#160;LAST ]
-   [, ...]</pre></div><div class="noteNote">The default ordering is ascending (<span class="CodeFont">ASC</span>). For ascending order, <span class="CodeFont">NULL</span>&#160;values are returned last unless you specify <span class="CodeFont">NULLS&#160;FIRST</span>; for descending order, <span class="CodeFont">NULL</span>&#160;values are returned first unless you specify <span class="CodeFont">NULLS&#160;LAST</span>.</div></p>
+   [, ...]</pre></div><div class="noteNote">The default ordering is ascending (<span class="CodeFont">ASC</span>). For ascending order, <span class="CodeFont">NULL</span>&#160;values are returned last unless you specify <span class="CodeFont">NULLS&#160;FIRST</span>; for descending order, <span class="CodeFont">NULL</span>&#160;values are returned first unless you specify <span class="CodeFont">NULLS&#160;LAST</span>.</div>
                 <p class="paramName">frameClause</p>
                 <p class="paramDefnFirst">Optional. Defines which of the rows (which <span class="ItalicFont">frame</span>) that are passed to the window function should be included in the computation. The <span class="ItalicFont">frameClause</span> provides two offsets that determine the start and end of the frame.</p>
-                <p class="paramDefn">The syntax for the frame clause is:
+                <p class="paramDefn">The syntax for the frame clause is:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">[RANGE&#160;|&#160;ROWS] <span class="ItalicFont">frameStart</span> |
-[RANGE&#160;|&#160;ROWS] BETWEEN&#160;<span class="ItalicFont">frameStart</span> AND&#160;<span class="ItalicFont">frameEnd</span></pre></div></p>
-                <p class="paramDefn">The syntax for both <span class="ItalicFont">frameStart</span> and <span class="ItalicFont">frameEnd</span> is:
+[RANGE&#160;|&#160;ROWS] BETWEEN&#160;<span class="ItalicFont">frameStart</span> AND&#160;<span class="ItalicFont">frameEnd</span></pre></div>
+                <p class="paramDefn">The syntax for both <span class="ItalicFont">frameStart</span> and <span class="ItalicFont">frameEnd</span> is:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">UNBOUNDED&#160;PRECEDING |
 &lt;n&gt;&#160;PRECEDING       |
 CURRENT&#160;ROW&#160;&#160;       |
 &lt;n&gt;&#160;FOLLOWING       |
-UNBOUNDED&#160;FOLLOWING </pre></div><div class="paramList"><p class="paramName">&lt;n&gt;</p><p class="paramDefnFirst">A a non-negative integer value.</p></div></p>
+UNBOUNDED&#160;FOLLOWING </pre></div><div class="paramList"><p class="paramName">&lt;n&gt;</p><p class="paramDefnFirst">A a non-negative integer value.</p></div>
             </div>
             <h2>Usage Restrictions</h2>
             <p>Because window functions are only allowed in <span class="CodeFont"><a href="sqlref_clauses_using.html">HAVING</a></span>clauses, you sometimes need to use subqueries with window functions to accomplish what seems like it could be done in a simpler query. </p>
@@ -2888,7 +2888,7 @@ MEAN(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

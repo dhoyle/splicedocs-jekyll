@@ -1,7 +1,7 @@
 ---
 title: Examples of Splice Machine Functions and Procedures
 summary: Examples of creating and using database functions and stored procedures.
-keywords:
+keywords: stored procedures, examples
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -175,7 +175,8 @@ public class ExampleStoredProcedure {
                         <p class="indentLevel1">If you're using the standalone version of Splice Machine, you can use the following command line interface command:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.GET_SKU_INVENTORY', 0);</pre>
                         </div>
-                        <p class="indentLevel1">You must also update the database class path:                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.GET_SKU_INVENTORY');</pre></div></p>
+                        <p class="indentLevel1">You must also update the database class path:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.GET_SKU_INVENTORY');</pre></div>
                     </li>
                     <li>
                         <p class="topLevel">Define the procedure in Splice Machine</p>

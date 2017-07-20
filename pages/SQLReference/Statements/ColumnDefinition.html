@@ -1,7 +1,7 @@
 ---
 title: Simple-column-Name
 summary: Used in statements to specify the definition of a column.
-keywords:
+keywords: column name, column definition
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -27,7 +27,7 @@ folder: SQLReference/Statements
                 <p class="paramName">Column-level-constraint</p>
                 <p class="paramDefnFirst">See the <a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span> clause</a> documentation.</p>
                 <p class="paramName" id="ColumnDefault">DefaultConstantExpression</p>
-                <p class="paramDefnFirst">For the definition of a default value, a <var>DefaultConstantExpression</var> is an  expression that does not refer to any table. It can include constants,  date-time special registers, current schemas, and null:
+                <p class="paramDefnFirst">For the definition of a default value, a <var>DefaultConstantExpression</var> is an  expression that does not refer to any table. It can include constants,  date-time special registers, current schemas, and null:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><var>DefaultConstantExpression</var>:
    NULL
  | CURRENT { SCHEMA | SQLID }
@@ -37,12 +37,12 @@ folder: SQLReference/Statements
  | CURRENT DATE | CURRENT_DATE
  | CURRENT TIME | CURRENT_TIME
  | CURRENT TIMESTAMP | CURRENT_TIMESTAMP
- | <var>literal</var></pre></div></p>
-                <p class="paramDefn">The values in a <var>DefaultConstantExpression</var> must be compatible in type with the column, but a  <var>DefaultConstantExpression</var> has the following additional type  restrictions:
+ | <var>literal</var></pre></div>
+                <p class="paramDefn">The values in a <var>DefaultConstantExpression</var> must be compatible in type with the column, but a  <var>DefaultConstantExpression</var> has the following additional type  restrictions:</p>
         <ul><li>If you specify <span class="CodeFont">CURRENT SCHEMA</span> or <span class="CodeFont">CURRENT SQLID</span>, the column must be a
 			character column whose length is at least 128.</li><li>If the column is an integer type, the default value must be an
 			integer literal.</li><li>If the column is a decimal type, the scale and precision of the default
-			value must be within those of the column.</li></ul></p>
+			value must be within those of the column.</li></ul>
             </div>
             <h2>Example</h2>
             <p class="body">This example creates a table and uses two column definitions.</p>

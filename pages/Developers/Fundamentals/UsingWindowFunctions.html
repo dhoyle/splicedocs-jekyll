@@ -1,7 +1,7 @@
 ---
 title: Splice Machine Window Functions
 summary: A quick summary of window functions, as implemented in Splice Machine SQL.
-keywords:
+keywords: window functions, grouping, partition
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -113,7 +113,7 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
                     <col />
                     <col />
                     <thead>
-                        <tr">
+                        <tr>
                             <th>OrderID</th>
                             <th>CustomerID</th>
                             <th>FirstOrderID</th>
@@ -184,7 +184,7 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
                 <li>The <span class="CodeFont">OVER</span>&#160;clause can contain a <span class="CodeFont">PARTITION</span>&#160;clause that specifies the set of rows in the table that form the window, relative to the current row.</li>
                 <li>
                     <p>The <span class="CodeFont">OVER</span>&#160;clause can contain an optional <span class="CodeFont">ORDER&#160;BY</span>&#160;clause that specifies in which order rows are processed by the window function. This <span class="CodeFont">ORDER&#160;BY</span>&#160;clause is independent of the <span class="CodeFont">ORDER&#160;BY</span>&#160;clause that specifies the order in which rows are output. </p>
-                    <p>Note that the <a href="sqlref_builtinfcns_rownumber.html">ROW&#160;NUMBER</a>)</span>&#160;<span class="BoldFont">must contain</span> an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause.</p>
+                    <p>Note that the <a href="sqlref_builtinfcns_rownumber.html">ROW&#160;NUMBER</a> <span class="BoldFont">must contain</span> an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause.</p>
                 </li>
                 <li>The <span class="CodeFont">OVER</span>&#160;clause can also contain an optional <span class="ItalicFont">frame clause</span> that further restricts which of the rows in the partition are sent to the function for evaluation.</li>
             </ul>
@@ -293,7 +293,7 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
                     <col />
                     <col />
                     <thead>
-                        <tr">
+                        <tr>
                             <th>OrderID</th>
                             <th>CustomerID</th>
                             <th>Amount</th>
@@ -596,11 +596,11 @@ WHERE&#160;"pos" = 1;</pre>
             <h2 id="ForMoreInfo">Additional Information</h2>
             <p>There are numerous articles about window functions that you can find online. Here are a few you might find valuable:</p>
             <ul>
-                <li>The <a href="https://www.simple-talk.com/sql/learn-sql-server/window-functions-in-sql-server/  target="_blank">simple talk articles from Red Gate</a> about window functions are probably the most straightforward and comprehensive descriptions of window functions.</li>
-                <li>This <a href="http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23sql-1906475.html  target="_blank">Oracle Technology Network article</a> provides an excellent technical introduction.</li>
-                <li>This <a href="http://www.postgresql.org/docs/9.1/static/tutorial-window.html  target="_blank">PostgreSQL page</a> introduces their version of window functions and links to other pages.</li>
-                <li>This <a href="https://wiki.postgresql.org/wiki/SQL2008_windowing_queries  target="_blank">PostgreSQL&#160;wiki page</a> about SQL&#160;windowing queries page provides a succinct explanation of why windowing functions are used, and includes several useful examples.</li>
-                <li>The <a href="http://en.wikipedia.org/wiki/Select_(SQL)  target="_blank">Wikipedia SQL&#160;SELECT</a>&#160;page contains descriptions of specific window functions and links to other pages.</li>
+                <li>The <a href="https://www.simple-talk.com/sql/learn-sql-server/window-functions-in-sql-server/"  target="_blank">simple talk articles from Red Gate</a> about window functions are probably the most straightforward and comprehensive descriptions of window functions.</li>
+                <li>This <a href="http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23sql-1906475.html"  target="_blank">Oracle Technology Network article</a> provides an excellent technical introduction.</li>
+                <li>This <a href="http://www.postgresql.org/docs/9.1/static/tutorial-window.html"  target="_blank">PostgreSQL page</a> introduces their version of window functions and links to other pages.</li>
+                <li>This <a href="https://wiki.postgresql.org/wiki/SQL2008_windowing_queries"  target="_blank">PostgreSQL&#160;wiki page</a> about SQL&#160;windowing queries page provides a succinct explanation of why windowing functions are used, and includes several useful examples.</li>
+                <li>The <a href="http://en.wikipedia.org/wiki/Select_(SQL)"  target="_blank">Wikipedia SQL&#160;SELECT</a>&#160;page contains descriptions of specific window functions and links to other pages.</li>
             </ul>
         </div>
 	</section>

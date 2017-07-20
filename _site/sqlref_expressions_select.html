@@ -2772,14 +2772,13 @@
                 <p class="paramDefn">If no quantifier, or <span class="CodeFont">ALL</span>, is specified, no rows are removed from the result in applying the <span class="CodeFont">SELECT</span> clause. This is the default behavior.</p>
                 <div class="paramListNested">
                     <p class="paramName">SelectItem:</p>
-                    <p class="paramDefnFirst">
                         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
 &#160;&#160;&#160; * |
 &#160;&#160;&#160; { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#CorrelationName">correlation-Name</a></span> } .* |
 &#160;&#160;&#160;   <span class="ItalicFont">Expression</span> [AS <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>] }
 }</pre>
                         </div>
-                    </p>
+                    
                     <p class="paramDefn">A<span class="ItalicFont"> SelectItem</span> projects one or more result column values for a table result being constructed in a <span class="ItalicFont">SelectExpression</span>.</p>
                     <p class="paramDefn">For queries that do not select a specific column from the tables involved in the <span class="ItalicFont">SelectExpression</span> (for example, queries that use <span class="CodeFont">COUNT(*)</span>), the user must have at least one column-level SELECT privilege or table-level SELECT privilege. See <a href="sqlref_statements_grant.html">GRANT statement</a> for more information.</p>
                 </div>
@@ -2820,7 +2819,7 @@
             <p>When a query does not have a <span class="CodeFont">FROM</span> clause (when you are constructing a value, not getting data out of a table), use a <span class="CodeFont"><a href="sqlref_expressions_values.html">VALUES</a></span> expression, not a <span class="ItalicFont">SelectExpression</span>. For example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">VALUES CURRENT_TIMESTAMP;</pre>
             </div>
-            <h2" id="StarWildcard">The * wildcard</h2>
+            <h2 id="StarWildcard">The * wildcard</h2>
             <p>The wildcard character (<span class="ItalicFont">*</span>) expands to all columns in the tables in the associated <span class="CodeFont">FROM</span> clause.</p>
             <p><span class="ItalicFont"><a href="sqlref_identifiers_types.html#CorrelationName">correlation-Name</a>.*</span> expand to all columns in the identified table. That table must be listed in the associated <span class="CodeFont">FROM</span> clause.</p>
             <h2>Naming columns</h2>
@@ -2903,7 +2902,7 @@ splice&gt;&#160;SELECT CONSTRAINTNAME, COLUMNNAME
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 17, 2017 <br />
+ Site last generated: Jul 19, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

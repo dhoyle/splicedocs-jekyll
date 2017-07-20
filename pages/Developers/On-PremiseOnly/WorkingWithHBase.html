@@ -1,7 +1,7 @@
 ---
 title: Working with HBase with Splice Machine
 summary: Presents information about working in HBase with Splice Machine.
-keywords:
+keywords: HBase tables
 toc: false
 product: all
 sidebar: developers_sidebar
@@ -11,13 +11,13 @@ folder: Developers
 	<section>
 		<div class="TopicContent">
             <h1>Working with HBase</h1>
-            <div class="noteOnPremiseOnly">This topic only applies to our on-premise database product. </div>
+{% include splice_snippets/onpremonlytopic.html %}
             <p>This topic presents information about working in HBase with Splice Machine, in these sections:</p>
             <ul>
                 <li>The <a href="#MappingTables">Mapping Splice Machine Tables to HBase</a> section shows you how to view your Splice Machine tables and how map the table names that we see in HBase to the more descriptive table names that we see in Splice Machine.</li>
                 <li>The <a href="#AccessingHbaseMaster">Accessing HBase Master</a> section shows you how to access HBase Master so that you can peek under the surface a bit.</li>
             </ul>
-            <h2 id="MappingTables"></a id="kanchor210">Mapping Splice Machine Tables to HBase</h2>
+            <h2 id="MappingTables">Mapping Splice Machine Tables to HBase</h2>
             <p>If you are looking at tables in the Splice Machine database that do not appear to match what you see in the HBase Master Web user interface, they may not match up. To view your Splice Machine tables in HBase, follow these steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
@@ -69,7 +69,7 @@ SYSIBM          |SYSDUMMY1          |1296      |      </pre>
                     </li>
                 </ol>
             </div>
-            <h2 id="AccessingHbaseMaster"></a id="kanchor211">Accessing HBase Master</h2>
+            <h2 id="AccessingHbaseMaster">Accessing HBase Master</h2>
             <p>If you are an HBase veteran or someone interested in seeing a little of what goes on under the surface, you can access HBase Master with the default HBase URL:</p>
             <div class="preWrapper"><pre class="ShellCommand">http://localhost:60010</pre>
             </div>

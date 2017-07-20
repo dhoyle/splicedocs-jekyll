@@ -1,7 +1,7 @@
 ---
 title: Importing Data into Your Splice Machine Database
 summary: How to import data into your Splice Machine database.
-keywords:
+keywords: import, load data, import data, 
 toc: false
 product: all
 sidebar: tutorials_sidebar
@@ -153,7 +153,7 @@ folder: Tutorials/Ingest
                             <p>See these tips:</p>
                             <ul class="bullet">
                                 <li><a href="#Tip">Tip #1: &#160;Specifying the File Location</a></li>
-                                <li><a href="#Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a>.</p>
+                                <li><a href="#Tip6">Tip #6:&#160;&#160;Change the Bad Directory for Each Table / Group</a>.</li>
                             </ul>
                         </td>
                         <td class="CodeFont">'importErrsDir'</td>
@@ -337,7 +337,7 @@ For example:</p>
             <h3 id="Tip5">Tip #5:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</h3>
             <p>Perhaps the most common difficulty that customers have with importing their data is with date, time, and timestamp values. </p>
             <p>Splice Machine adheres to the Java <span class="CodeFont">SimpleDateFormat</span> syntax for all date, time, and timestamp values, <span class="CodeFont">SimpleDateFormat</span> is described here:</p>
-            <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html  target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
+            <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html"  target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
             </p>
             <p>Splice Machine's implementation of <span class="CodeFont">SimpleDateFormat</span> is case-sensitive; this means, for example, that a lowercase <span class="CodeFont">h</span> is used to represent an hour value between 0 and 12, whereas an uppercase <span class="CodeFont">H</span> is used to represent an hour between 0 and 23.</p>
             <p>Splice Machine's Import procedures only allow you to specify one format each for the date, time, and timestamp columns in the table data you are importing. This means that, for example, every date in the table data must be in the same format.</p>
@@ -390,7 +390,7 @@ For example:</p>
             <h3 id="Tip9">Tip #9:&#160;&#160;Scripting Your Imports</h3>
             <p>You can make import tasks much easier and convenient by creating <span class="ItalicFont">import scripts</span>. An import script is simply a call to one of the import procedures; once you've verified that it works, you can use and clone the script and run unattended imports.</p>
             <p>An import script is simply a file in which you store <span class="CodeFont">splice&gt;</span>&#160;commands that you can execute with the <span class="CodeFont">run</span> command. For example, here's an example of a text file named <span class="CodeFont">myimports.sql</span> that we can use to import two csv files into our database:</p>
-            <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable1',null,'/data/mytable1/data.csv',null,null,null,null,null,0,'/BAD/mytable1',null,null);<br />call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable2',null,'/data/mytable2/data.csv',null,null,null,null,null,0,'/BAD/mytable2',null,null</pre>
+            <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable1',null,'/data/mytable1/data.csv',null,null,null,null,null,0,'/BAD/mytable1',null,null);<br />call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable2',null,'/data/mytable2/data.csv',null,null,null,null,null,0,'/BAD/mytable2',null,null);</pre>
             </div>
             <p>To run an import script, use the <span class="CodeFont">splice&gt;&#160;run</span> command; for example:</p>
             <div class="preWrapper"><pre class="Example">splice&gt;&#160;run 'myimports.sql';</pre>

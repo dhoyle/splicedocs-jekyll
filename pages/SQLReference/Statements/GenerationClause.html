@@ -1,7 +1,7 @@
 ---
 title: generation-clause
 summary: Describes the syntax and restrictions that apply to the generation clauses used to create virtual column values.
-keywords:
+keywords: generated always as
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -17,13 +17,11 @@ folder: SQLReference/Statements
             <div class="paramList">
                 <p class="paramName">value-expression</p>
                 <p class="paramDefnFirst">An <span class="ItalicFont"><a href="sqlref_expressions_about.html">Expression</a></span> that resolves to a single value, with some limitations:</p>
-                <p class="paramDefn">
                     <ul>
                         <li>The <span class="ItalicFont">generation-clause</span> may reference other non-generated columns in the table, but it must not reference any generated column. The <span class="ItalicFont">generation-clause</span> must not reference a column in another table.</li>
                         <li>The <span class="ItalicFont">generation-clause</span> must not include subqueries.</li>
                         <li>The <span class="ItalicFont">generation-clause</span> may invoke user-coded functions, if the functions meet the requirements in the <a href="#UserFunctions">User Function Restrictions</a> section below.</li>
                     </ul>
-                </p>
             </div>
             <h2 id="UserFunctions">User Function Restrictions</h2>
             <p>The <span class="ItalicFont">generation-clause</span> may invoke user-coded functions, if the functions meet the following requirements:</p>
