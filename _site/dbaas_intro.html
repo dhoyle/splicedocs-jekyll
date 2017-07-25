@@ -558,37 +558,131 @@
             <p>With Splice Machine, you can manage operational processes, large-scale IoT infrastructures, and use analytical processing and machine learning to improve over time.</p>
             <p>Splice Machine delivers an open-source data platform that incorporates the proven scalability of HBase™ and the in-memory performance of Apache Spark™. The cost-based optimizer uses advanced statistics to choose the best compute engine, storage engine, index access, join order and join algorithm for each task. In this way, Splice Machine can concurrently process transactional and analytical workloads at scale.</p>
             <h2>Service Overview</h2>
-            <p>Our Database Service is a subscription-based service, hosted in the Cloud. This section provides brief summaries of these aspects of your service:</p>
+            <p>Our Database Service is a subscription-based service, hosted in the Cloud. 
+            <p>The remainder of this section provides brief summaries of these aspects of your service:</p>
             <ul>
-                <li><a href="serviceconfig">Your Service Configuration</a></li>
-                <li><a href="serviceavail">Service Availability</a></li>
-                <li><a href="serviceavail">Support for Your Service</a></li>
-                <li><a href="serviceterms">Service Terms</a></li>
+                <li><a href="#serviceoverview">What Do I Get With The Service?</a></li>
+                <li><a href="#serviceconfig">Your Service Configuration</a></li>
+                <li><a href="#serviceavail">Service Availability</a></li>
+                <li><a href="#serviceavail">Support for Your Service</a></li>
+                <li><a href="#serviceterms">Service Terms</a></li>
             </ul>
+            <h3 id="serviceoverview">What is Included?</h3>
+            <p>Your Splice Machine Database Service includes all of the tools you need to create your cluster, load data into your database, query and manipulate your database, and create visual representations of your query results, as described here:</p>
+            <table>
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Dashboard</th>
+                        <th>The <a href="dbaas_cm_intro.html">Splice Machine Dashboard</a> or <span class="ConsoleLink">Cloud Manager</span> is your entry point to your Database Service. You can register and log into your account here, as well as accessing the other managers described in this table.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cluster Manager</td>
+                        <td>Use the <span class="ConsoleLink">Cluster Manager</span> to create new clusters and to monitor the health of your clusters.</td>
+                    </tr>
+                    <tr>
+                        <td>Notebooks Manager</td>
+                        <td><span class="ConsoleLink">Apache Zeppelin notebooks</span> make it easy to query your database and apply various visualizations to the results of your queries. We've created several notebooks that will help you to quickly become productive and to see how easy it is to create your own notebooks.</td>
+                    </tr>
+                    <tr>
+                        <td>Database Console</td>
+                        <td>The <span class="ConsoleLink">Database Console</span> is a browser-based tool that you can use to monitor database queries on your cluster in real time. The Console UI allows you to see the Spark queries that are currently running in Splice Machine on your cluster, and to then drill down into each job to see the current progress of the queries, and to identify any potential bottlenecks. If you see something amiss, you can also terminate a query.</td>
+                    </tr>
+                    <tr>
+                        <td>Our <span class="ConsoleLink">Events Manager</span> xxxxxxxxxxxxxxxxxxxxx .</td>
+                        <td>Our </td>
+                    </tr>
+                    <tr>
+                        <td>The <span class="ConsoleLink">Splice Machine Account Manager</span> XXXXXXXXXXXXX .</td>
+                        <td>YYYY</td>
+                    </tr>
+                </tbody>
+            </table>
             <h3 id="serviceconfig">Service Configuration</h3>
             <p>The Splice Machine Database Service is subscription-based, which means that you pay a monthly fee that is based on the configuration you've chosen. Factors that affect the cost of your service include:</p>
             <ul>
-                <li>The number of Splice Units</li>
-                <li>xxx</li>
+                <li>The number of <span class="ConsoleLink">Splice Units</span>. A Splice unit is a measure of processing work; one unit currently translates (approximately)&#160;to 2 virtual CPUs and 16 GB&#160;of memory. When you provision a new Splice Machine cluster, you can select the number of Splice Units you want to use for OLAP and OLTP workloads. The minimum number of Splice Units required for your cluster changes when the amount of </li>
+                <li>The space allocated for your <span class="ConsoleLink">Internal Dataset</span>, which is data that you're storing within your database. Note that as this size increases, the number of Splice Units required (especially OLTP Splice Units) can also increase.</li>
+                <li>The space allocated for your <span class="ConsoleLink">External Dataset</span>, which is data stored externally that you can access from your database using features such as external tables and VTI. Note that as this size increases, the number of OLAP Splice Units required can also increase.</li>
             </ul>
             <h3 id="serviceavail">Service Availability</h3>
-            <p>Splice Machine's target Service availability commitment is 99.9% per calendar month, excluding scheduled downtime.</p>
+            <p>Splice Machine's target Service availability commitment is 99.9% per calendar month, excluding scheduled downtime. You can expect the following:</p>
             <ul>
-                <li>xxx</li>
-                <li>xxx</li>
+                <li>Splice Machine will deliver product updates with minimal, scheduled downtime.</li>
+                <li>Splice Machine can recover your database from a stored backup after receiving your request to do so.</li>
+                <li>Splice Machine can resize your cluster with minimal downtime.</li>
             </ul>
-            <h3 id="servicesupport">Support for Your Service</h3>
-            <p>XXX></p>
-            <ul>
-                <li>xxx</li>
-                <li>xxx</li>
-            </ul>
+            <h3 id="servicesupport">Support for Your Service</h3> 
+            <p>Splice Machine provides two support options, as shown in the following table:</p>
+            <table>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Support Type</th>
+                        <th>Pricing</th>
+                        <th>Support Feature</th>
+                        <th>Description</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowSpan="3">Standard Support</td>
+                        <td rowSpan="3">Free</td>
+                        <td>Coverage Hours</td>
+                        <td>Monday-Friday<br />9am-6pm Pacific time</td>
+                        <td>(subject to local holidays)</td>
+                    </tr>
+                    <tr>
+                        <td>System Impaired</td>
+                        <td>Significant issues with speed, quality, or funtionality of Service.</td>
+                        <td>&lt;12 business hours</td>
+                    </tr>
+                    <tr>
+                        <td>Other Issues</td>
+                        <td>General queries and guidance requests</td>
+                        <td>&lt;24 business hours</td>
+                    </tr>
+                    <tr>
+                        <td rowSpan="5">Business Support</td>
+                        <td rowSpan="5">As per contract<br />Includes SLA</td>
+                        <td>Coverage Hours</td>
+                        <td>24 hours a day, 7 days a week, 365 days a year</td>
+                        <td>&#160;</td>
+                    </tr>
+                    <tr>
+                        <td>Production System Down</td>
+                        <td>Complete loss of Service on Production cluster.</td>
+                        <td>&lt;1 hour</td>
+                    </tr>
+                    <tr>
+                        <td>Production System Impaired</td>
+                        <td>Significant issues with speed, quality, or funtionality of Service on Production cluster.</td>
+                        <td>&lt;4 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Production System Down</td>
+                        <td>Significant issues with speed, quality, or funtionality of Service on non-production cluster.</td>
+                        <td>&lt;12 hours/td>
+                    </tr>
+                    <tr>
+                        <td>Other Issues</td>
+                        <td>General queries and guidance requests</td>
+                        <td>&lt;24 business hours</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Service Level Agreement (SLA)</h4>
+            <p>Our <span class="italicFont">business support agreement</span> includes a <span class="ItalicFont">Service Level Agreement (SLA)</span> that specifies our commitment to a target Service availability of 99.9% per calendar year, excluding scheduled downtimes.</p>
             <h3 id="serviceterms">Service Terms</h3>
-            <p>XXX></p>
-            <ul>
-                <li>Subscription fees are payable monthly in advance on the 1st of the month, pro-rated for any partial months. We'll charge your credit card or withdraw payment by ACH on the first of each month, until your service is cancelled. See your license agreement for more details.</li>
-                <li>xxx</li>
-            </ul>
+            <p>Subscription fees are payable monthly in advance on the 1st of the month, pro-rated for any partial months. We'll charge your credit card or withdraw payment by ACH on the first of each month, until your service is cancelled. See your license agreement for more details.</p>
             <h2>Database-Service Documentation</h2>
 			<p>The Splice Machine Documentation is divided into three main areas, each of which contains multiple sections, as shown in the following table. The Splice Machine topics apply to all products, and the DB-Service Only topics are specific to this product.</p>
             <table summary="Links to and descriptions of the section in the Splice Machine documentation suite.">
@@ -693,7 +787,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 21, 2017 <br />
+ Site last generated: Jul 24, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

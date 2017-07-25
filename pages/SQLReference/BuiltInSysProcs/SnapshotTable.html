@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInSysProcs
 						<div class="noteNote">Snapshots include both the data and indexes for tables.</div>
             <p>For more information, see the <a href="developers_tuning_snapshots.html"><span class="ItalicFont">Using Snapshots</span></a> topic in our <span class="ItalicFont">Developers's Guide</span>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA( VARCHAR(128)&#160;<span class="ItalicFont">schemaName</span>,
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SNAPSHOT_TABLE( VARCHAR(128)&#160;<span class="ItalicFont">schemaName</span>,
                                   VARCHAR(128)&#160;<span class="ItalicFont">tableName</span>,
                                   VARCHAR(128)&#160;<span class="ItalicFont">snapshotName</span> );</pre>
             </div>
@@ -29,8 +29,8 @@ folder: SQLReference/BuiltInSysProcs
             </div>
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
+            <div class="noteIcon">Creating a table snapshot can require several minutes of more to complete, depending on the size of the table.</div>
             <h2>Example</h2>
-            <div class="noteRelease">Creating a table snapshot can require several minutes of more to complete, depending on the size of the table.</div>
             <div>
                 <p>The following example creates a snapshot of the table named <span class="CodeFont">myTable</span>:</p>
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SNAPSHOT_SCHEMA('mySchema', 'myTable', 'snap_myschema_070417a');

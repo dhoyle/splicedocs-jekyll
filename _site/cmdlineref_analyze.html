@@ -801,7 +801,7 @@ ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name;</span></pre>
                 </tr>
                 <tr>
                     <td class="CodeFont">partition</td>
-                    <td>The Splice Machine partition</td>
+                    <td>The Splice Machine partition. We merge the statistics for all table partitions, so the partition will always show as <span class="CodeFont">-All-</span>.</td>
                 </tr>
                 <tr>
                     <td class="CodeFont">rowsCollected</td>
@@ -809,7 +809,7 @@ ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name;</span></pre>
                 </tr>
                 <tr>
                     <td class="CodeFont">partitionSize</td>
-                    <td>The size of the partition</td>
+                    <td>The combined size of the table's partitions.</td>
                 </tr>
                 <tr>
                     <td class="CodeFont">statsType</td>
@@ -839,31 +839,23 @@ ANALYZE&#160;SCHEMA <span class="ItalicFont">schema-Name;</span></pre>
         <div class="noteNote">This command operates like the <span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> built-in system procedure.</div>
         <h2>Examples</h2>
         <div class="preWrapperWide"><pre class="AppCommand">splice&gt; analyze table test.t2;
-schemaName |tableName |partition         |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
+schemaName |tableName |partition |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
 -----------------------------------------------------------------------------------------------------------------
-TEST       |T2        |splice:1632,,14...|496       &#160;|2976          |1               |0          |0
-TEST       |T2        |splice:1632,\xC...|1032       |6192          |1               |0          |0
-TEST       |T2        |splice:1632,\xC6..|39226      |235356        |1               |0          |0
+TEST       |T2        |-All-     |39226      |235356        |1               |0          |0
 
-3 rows selected
+1 rows selected
 splice&gt;<br /><br />splice&gt; analyze table test.t2 estimate statistics sample 50 percent;
-schemaName |tableName |partition         |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
+schemaName |tableName |partition |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
 -----------------------------------------------------------------------------------------------------------------
-TEST       |T2        |splice:1632,,14...|248        |2976          |1               |1          |0.5
-TEST       |T2        |splice:1632,\xC...|516        |6192          |1               |1          |0.5
-TEST       |T2        |splice:1632,\xC6  |19613      |235356        |1               |1          |0.5
+TEST       |T2        |-All-     |19613      |235356        |1               |1          |0.5
 
-3 rows selected
+1 rows selected
 splice&gt;<br /><br />splice&gt; analyze schema test;
-schemaName |tableName |partition         |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
+schemaName |tableName |partition |rowsCollec&amp;|partitionSize |partitionCount  |statsType  |sampleFraction
 -----------------------------------------------------------------------------------------------------------------
-TEST       |T2        |splice:1632,,14...|496       &#160;|2976          |1               |0          |0
-TEST       |T2        |splice:1632,\xC...|1032       |6192          |1               |0          |0
-TEST       |T2        |splice:1632,\xC6..|39226      |235356        |1               |0          |0
-TEST       |T5        |splice:1654,,32...|496       &#160;|2976          |1               |0          |0
-TEST       |T5        |splice:1654,\xD...|1032       |6192          |1               |0          |0
-TEST       |T5        |splice:1654,\xE6..|39226      |235356        |1               |0          |0
-6 rows selected
+TEST       |T2        |-All-     |39226      |235356        |1               |0          |0
+TEST       |T5        |-All-     |39226      |235356        |1               |0          |0
+2 rows selected
 splice&gt;</pre>
         </div>
         </div>
@@ -884,7 +876,7 @@ splice&gt;</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 21, 2017 <br />
+ Site last generated: Jul 24, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
