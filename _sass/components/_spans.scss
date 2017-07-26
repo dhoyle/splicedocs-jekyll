@@ -12,9 +12,9 @@
   font-weight: $fontWeight;
   color: $color;
   text-transform: $transform;
-  
+
   a:link {color: $link-color}
-  
+
 }
 
 span.AppFontCust {
@@ -22,8 +22,8 @@ span.AppFontCust {
 }
 
 span.AppFontCustCode {
-	@include spanStyle( $bgColor: $bgcolor-app, 
-						$fontFamily: $codefont-face ) 
+	@include spanStyle( $bgColor: $bgcolor-app,
+						$fontFamily: $codefont-face )
 }
 
 span.AppCommand {
@@ -56,17 +56,17 @@ span.CodeBoldFont {
 
 span.CodeItalicFont {
 	@include spanStyle( $fontFamily: $codefont-face,
-						$fontWeight: $codefont-weight, 
+						$fontWeight: $codefont-weight,
 						$fontStyle: italic )
 }
 
 span.ConsoleLink {
-	@include spanStyle( $color: $consoleLink-color, 
+	@include spanStyle( $color: $consoleLink-color,
 						$fontWeight: $bodyfont-bold )
 }
 
 span.noteEnterpriseNote {
-	@include spanStyle( $color: $note-enterprise-color, 
+	@include spanStyle( $color: $note-enterprise-color,
 						$fontWeight: $bodyfont-bold )
 }
 
@@ -91,7 +91,8 @@ span.HighlightedCode {
 }
 
 span.important {
-	@include spanStyle( $bgColor: $important-color,
+	@include spanStyle( $bgColor: $bgcolor-important,
+						$color: $important-color,
 						$fontWeight: $bodyfont-bold )
 }
 
@@ -120,4 +121,3 @@ span.varName {
 						$fontWeight: $codefont-weight,
 						$fontFamily: $codefont-face )
 }
-
