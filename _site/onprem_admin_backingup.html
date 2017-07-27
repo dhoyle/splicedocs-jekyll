@@ -893,7 +893,7 @@
                 </div>
             </div>
             <h3 id="Restorin">Restoring Your Database From a Previous Backup</h3>
-            <p>You can restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure. Note that if you've been using incremental backups, you will need to first restore from the initial full backup, and then successively restore from each incremental backup. See the examples section below.</p>
+            <p>You can restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure.</p>
             <p>To restore your database from a previous backup, use the <span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>&#160;system procedure:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE(<span class="ItalicFont">backupDir</span>, <span class="ItalicFont">backupId</span>); </pre>
             </div>
@@ -913,48 +913,9 @@
                 </ul>
             </div>
             <blockquote>
-                <h4>Example 1:&#160;Restore the database from a local, full backup</h4>
+                <h4>Example:&#160;Restore the database from a local, full backup</h4>
                 <p>This example restores your database from the backup stored in the <span class="CodeFont">/home/backup</span> directory that has <span class="CodeFont">backupId=1273</span>:</p>
                 <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1273);</pre>
-                </div>
-            </blockquote>
-            <blockquote>
-                <h4>Example 2:&#160;Restore the database from a series of incremental backups</h4>
-                <p>In this example, you have been running a daily incremental backup and want to restore it to the most recent version. Let's call the backups B1, B2, B3, and B4:</p>
-                <ul>
-                    <li>Full backup <span class="CodeFont">B1,(ID=1274)</span></li>
-                    <li>First incremental backup <span class="CodeFont">B2 (ID=1275)</span></li>
-                    <li>Second incremental backup <span class="CodeFont">B3 (ID=1276)</span></li>
-                    <li>Third incremental backup <span class="CodeFont">B4 (ID=1277)</span></li>
-                </ul>
-                <div class="opsStepsList">
-                    <p class="indentLevel1">To restore your database to the state it was in when the <span class="CodeFont">B4</span> backup was run; you'll need to follow these steps:</p>
-                    <ol>
-                        <li>
-                            <p>Restore your database from the full backup, <span class="CodeFont">B1</span>. </p>
-                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1274);</pre>
-                            </div>
-                        </li>
-                        <li>Restart your database.</li>
-                        <li>
-                            <p>Restore your database from incremental backup <span class="CodeFont">B2</span>:</p>
-                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1275);</pre>
-                            </div>
-                        </li>
-                        <li>Restart your database.</li>
-                        <li>
-                            <p>Restore your database from incremental backup <span class="CodeFont">B3</span>:</p>
-                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1276);</pre>
-                            </div>
-                        </li>
-                        <li>Restart your database.</li>
-                        <li>
-                            <p>Restore your database from  incremental backup <span class="CodeFont">B4</span>:</p>
-                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1277);</pre>
-                            </div>
-                        </li>
-                        <li>Restart your database.</li>
-                    </ol>
                 </div>
             </blockquote>
             <h3 id="Reviewing">Reviewing Backups</h3>
@@ -1207,7 +1168,7 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 25, 2017 <br />
+ Site last generated: Jul 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

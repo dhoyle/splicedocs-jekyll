@@ -2996,7 +2996,7 @@ imports data into your Splice Machine database by first generating HFiles and th
                 </tbody>
             </table>
             <p>The default timestamp format for Splice Machine imports is: <span class="CodeFont">yyyy-MM-dd HH:mm:ss</span>, which uses a 24-hour clock, does not allow for decimal digits of seconds, and does not allow for time zone specification. </p>
-            <p class="noteNote" MadCap:autonum="NOTE: &#160;">The standard Java library does not support microsecond precision, so you <span class="BoldFont">cannot</span> specify millisecond (<span class="CodeFont">S</span>) values in a custom timestamp format and import such values with the desired precision. </p>
+            <p class="noteNote">The standard Java library does not support microsecond precision, so you <span class="BoldFont">cannot</span> specify millisecond (<span class="CodeFont">S</span>) values in a custom timestamp format and import such values with the desired precision. </p>
             <h3>Timestamps and Importing Data at Different Locations</h3>
             <p>Note that timestamp values are relative to the geographic location at which they are imported, or more specifically, relative to the timezone setting and daylight saving time status where the data is imported.</p>
             <p>This means that timestamp values from the same data file may appear differently after being imported in different timezones.</p>
@@ -3088,7 +3088,7 @@ imports data into your Splice Machine database by first generating HFiles and th
                 <li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
             </ol>
         </div>
-        <p class="heading2" id="Examples"></a>Example 1</p>
+        <p class="heading2" id="Examples">Example 1</p>
         <p>This example details the steps used to import data in HFile format using the Splice Machine <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedure with automatic splitting.</p>
         <p>Follow these steps :</p>
         <div class="opsStepsList">
@@ -3307,7 +3307,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                         <li>
                             <p>Find primary key values that can horizontally split the table into roughly equal sized partitions.</p>
                             <p>For this example, we provide 3 keys in a file named <span class="CodeFont">lineitemKey.csv</span>. Note that each of our three keys includes a second column that is <span class="CodeFont">null</span>:</p>
-                            <div class="preWrapperWide"><pre class="Example">1500000|<br></br>3000000|<br></br>4500000|</pre>
+                            <div class="preWrapperWide"><pre class="Example">1500000|<br />3000000|<br />4500000|</pre>
                             </div>
                         </li>
                         <li>
@@ -3378,7 +3378,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 25, 2017 <br />
+ Site last generated: Jul 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

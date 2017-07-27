@@ -72,7 +72,7 @@ This section contains information about connecting to your database:
 
 * Your initial link from the DB Console will redirect you to an “HTTP" page that will fail.  Change the HTTP to HTTPS and resubmit that URL, and you will get to the Spark pages.  Other possible redirects on this page will also require this.
 
-* For external JDBC access, download the JDBC driver at https://s3.amazonaws.com/splicemachine/artifacts/. It will be of the form db-client-<span class="ItalicFont">&lt;versioninfo&gt;</span>.jar.
+* For external JDBC access, download the JDBC driver at  https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1729-SNAPSHOT.jar.
 
 ## Functionality Limitations
 * A single query or SQL statement will time out if it takes more than 1 hour; upon timeout, you may see a <span class="CodeFont">SQLNonTransientConnectionException</span> message displayed.

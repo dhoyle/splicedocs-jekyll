@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Built-in system procedure that imports or updates data from a file into a table.">
-<meta name="keywords" content=" upserting, upsert data, upsert_date_from_file">
+<meta name="keywords" content=" upserting, upsert data, upsert_data_from_file">
 <title>SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE built-in system procedure | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -2823,10 +2823,6 @@
                             <td class="CodeFont">\t</td>
                             <td>Tab </td>
                         </tr>
-                        <tr MadCap:conditions="Default.NotYet">
-                            <td class="CodeFont">\r</td>
-                            <td>Carriage return</td>
-                        </tr>
                         <tr>
                             <td class="CodeFont">\f</td>
                             <td>Formfeed</td>
@@ -2843,7 +2839,7 @@
                             <td class="CodeFont">^a (or ^A)</td>
                             <td>
                                 <p>Control-a</p>
-                                <p class="noteIndent" MadCap:autonum="NOTE: &#160;">If you are using a script file from the <span class="CodeFont">splice&gt;</span>&#160;command line, your script can contain the actual <span class="CodeFont">Control-a</span> character as the value of this parameter.</p>
+                                <p class="noteIndent">If you are using a script file from the <span class="CodeFont">splice&gt;</span>&#160;command line, your script can contain the actual <span class="CodeFont">Control-a</span> character as the value of this parameter.</p>
                             </td>
                         </tr>
                     </tbody>
@@ -2867,10 +2863,6 @@
                             <td class="CodeFont">\t</td>
                             <td>Tab </td>
                         </tr>
-                        <tr MadCap:conditions="Default.NotYet">
-                            <td class="CodeFont">\r</td>
-                            <td>Carriage return</td>
-                        </tr>
                         <tr>
                             <td class="CodeFont">\f</td>
                             <td>Formfeed</td>
@@ -2887,18 +2879,18 @@
                             <td class="CodeFont">^a (or ^A)</td>
                             <td>
                                 <p>Control-a</p>
-                                <p class="noteIndent" MadCap:autonum="NOTE: &#160;">If you are using a script file from the <span class="CodeFont">splice&gt;</span>&#160;command line, your script can contain the actual <span class="CodeFont">Control-a</span> character as the value of this parameter.</p>
+                                <p class="noteIndent">If you are using a script file from the <span class="CodeFont">splice&gt;</span>&#160;command line, your script can contain the actual <span class="CodeFont">Control-a</span> character as the value of this parameter.</p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <p class="paramDefnFirst">If your input contains control characters such as newline characters, make sure that those characters are embedded within delimited strings.</p>
-            <p class="noteNote" MadCap:autonum="NOTE: &#160;">To use the single quote (<span class="CodeFont">'</span>) character as your string delimiter, you need to escape that character. This means that you specify four quotes (<span class="CodeFont">''''</span>)&#160;as the value of this parameter. This is standard SQL&#160;syntax.<br /><br />	The <a href="#Examples">Examples</a> section below contains an example that uses the single quote as the string delimiter character.</p>
+            <p class="noteNote">To use the single quote (<span class="CodeFont">'</span>) character as your string delimiter, you need to escape that character. This means that you specify four quotes (<span class="CodeFont">''''</span>)&#160;as the value of this parameter. This is standard SQL&#160;syntax.<br /><br />	The <a href="#Examples">Examples</a> section below contains an example that uses the single quote as the string delimiter character.</p>
             <p class="paramName">timestampFormat</p>
             <p class="paramDefnFirst">
 			The format of timestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no time columns in the file, or if the format of any timestamps in the file match the <span class="CodeFont">Java.sql.Timestamp</span> default format, which is: "<span class="ItalicFont">yyyy-MM-dd HH:mm:ss</span>". See the <a href="#TimestampFormats">About Timestamp Formats</a> section below for more information about timestamps.</p>
-            <p class="noteNote" MadCap:autonum="NOTE: &#160;">All of the timestamps in the file you are importing must use the same format.</p>
+            <p class="noteNote">All of the timestamps in the file you are importing must use the same format.</p>
             <p class="paramName">dateFormat</p>
             <p class="paramDefnFirst">The format of datestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no date columns in the file, or if the format of any dates in the file match pattern: "<span class="ItalicFont">yyyy-MM-dd</span>".<br /></p>
             <p class="paramName">timeFormat</p>
@@ -2906,7 +2898,7 @@
             <div>
                 <p class="paramName">badRecordsAllowed</p>
                 <p class="paramDefnFirst">The number of rejected (bad)&#160;records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back.
-			<ul><li>If you specify <span class="CodeFont">-1</span> as the value of this parameter, all record import failures are tolerated and logged.</li><li>If you specify <span class="CodeFont">0</span> as the value of this parameter, the import will fail if even one record is bad.</li></ul><p class="noteIcon">In previous releases of Splice Machine, this parameter was named <span class="CodeFont">failBadRecordCount</span>, and a value of <span class="CodeFont">0</span> meant that all record import failures were tolerated. This has been changed, and you now must specify a value of <span class="CodeFont">-1</span> for <span class="CodeFont">badRecordsAllowed</span> to tolerate all bad records.</p></p>
+			<ul><li>If you specify <span class="CodeFont">-1</span> as the value of this parameter, all record import failures are tolerated and logged.</li><li>If you specify <span class="CodeFont">0</span> as the value of this parameter, the import will fail if even one record is bad.</li></ul><p class="noteIcon">In previous releases of Splice Machine, this parameter was named <span class="CodeFont">failBadRecordCount</span>, and a value of <span class="CodeFont">0</span> meant that all record import failures were tolerated. This has been changed, and you now must specify a value of <span class="CodeFont">-1</span> for <span class="CodeFont">badRecordsAllowed</span> to tolerate all bad records.</p>
                 <p class="paramName">badRecordDirectory</p>
                 <p class="paramDefnFirst">The directory in which bad record information is logged. Splice Machine logs information to the <span class="CodeFont"><span class="CodeItalicFont">&lt;import_file_name&gt;</span>.bad</span> file in this directory; for example, bad records in an input file named <span class="CodeFont">foo.csv</span> would be logged to a file named <span class="ItalicFont">badRecordDirectory</span><span class="CodeFont">/foo.csv.bad</span>.</p>
                 <p class="paramDefn">The default value is the directory in which the import files are found.</p>
@@ -2916,10 +2908,10 @@
                     <li>If you specify <span class="CodeFont">true</span> or <span class="CodeFont">null</span>, then each record is expected to be found on a single line in the file.</li>
                     <li>If you specify <span class="CodeFont">false</span>, records can span multiple lines in the file.</li>
                 </ul>
-                <p class="noteNote" MadCap:autonum="NOTE: &#160;">Multi-line record files are slower to load, because the file cannot be split and processed in parallel; if you import a directory of multiple line files, each file as a whole is processed in parallel, but no splitting takes place.</p>
+                <p class="noteNote">Multi-line record files are slower to load, because the file cannot be split and processed in parallel; if you import a directory of multiple line files, each file as a whole is processed in parallel, but no splitting takes place.</p>
                 <p class="paramName">charset</p>
                 <p class="paramDefnFirst">The character encoding of the import file. The default value is UTF-8. Currently, any other value is ignored and UTF-8 is used. 
- <MadCap:conditionalText MadCap:conditions="Default.NotYet">You can specify any character encoding supporting by the <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html">Java <span class="CodeFont">Charset</span> class</a>.</MadCap:conditionalText></p>
+                </p>
             </div>
         </div>
         <h2><a name="Importin"></a>Importing Data from AWS</h2>
@@ -2979,7 +2971,7 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
                 </li>
             </ul>
 ﻿        <h2>Handling Generated Column Values in Imported Files</h2>
-        <p>If you're importing data into a table with generated columns (see <span class="CodeFont"><href="sqlref_statements_generatedcolspec.html">generated-column-spec</span></a> in the <span class="ItalicFont">SQL&#160;Reference Manual</span>), you should know that imported records are handled in exactly the same manner as are records inserted using the <span class="CodeFont"><href="sqlref_statements_insert.html">INSERT</span></a>&#160;statement. </p>
+        <p>If you're importing data into a table with generated columns (see <span class="CodeFont"><a href="sqlref_statements_generatedcolspec.html">generated-column-spec</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span>), you should know that imported records are handled in exactly the same manner as are records inserted using the <span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span>&#160;statement. </p>
         <p>Here's a simple summary of what happens for generated columns, including <span class="CodeFont">DEFAULT</span>&#160;values, in imported records:</p>
         <ul>
             <li>If your <span class="CodeFont">importColumnList</span> includes the column name and the imported column value is empty, <span class="CodeFont">NULL</span>&#160;is inserted into the database table column.</li>
@@ -3143,7 +3135,7 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
                 </tbody>
             </table>
             <p>The default timestamp format for Splice Machine imports is: <span class="CodeFont">yyyy-MM-dd HH:mm:ss</span>, which uses a 24-hour clock, does not allow for decimal digits of seconds, and does not allow for time zone specification. </p>
-            <p class="noteNote" MadCap:autonum="NOTE: &#160;">The standard Java library does not support microsecond precision, so you <span class="BoldFont">cannot</span> specify millisecond (<span class="CodeFont">S</span>) values in a custom timestamp format and import such values with the desired precision. </p>
+            <p class="noteNote">The standard Java library does not support microsecond precision, so you <span class="BoldFont">cannot</span> specify millisecond (<span class="CodeFont">S</span>) values in a custom timestamp format and import such values with the desired precision. </p>
             <h3>Timestamps and Importing Data at Different Locations</h3>
             <p>Note that timestamp values are relative to the geographic location at which they are imported, or more specifically, relative to the timezone setting and daylight saving time status where the data is imported.</p>
             <p>This means that timestamp values from the same data file may appear differently after being imported in different timezones.</p>
@@ -3268,7 +3260,7 @@ This is the second line of the field',Baker
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 25, 2017 <br />
+ Site last generated: Jul 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

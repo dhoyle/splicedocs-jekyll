@@ -20,7 +20,7 @@ restores your database to the state it was in when a specific backup was perform
                 <li>You <span class="BoldFont">cannot use your cluster</span> while restoring your database.</li>
                 <li>You <span class="BoldFont">must reboot your database</span> after the restore is complete. See the <a href="onprem_admin_startingdb.html">Starting Your Database</a> topics in this book for instructions on restarting your database.</li>
             </ul>
-            <div class="noteIcon">If you are restoring from an incremental backup, you must first restore from the most recent full backup, and then incrementally restore from each subsequent incremental backup. See <a href="#Example">Example 2 below.</a></div>
+            <div class="noteIcon">When you restore from a backup, Splice Machine automatically determines and runs whatever sequence of restores may be required to accomplish the restoration of your database; this means that when you select an incremental backup from which to restore, Splice Machine will detect that it needs to first restore from the previous full backup and then apply any incremental restorations.</div>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE( VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
                                    BIGINT&#160;<span class="ItalicFont">backupId</span> ); </pre>
@@ -66,43 +66,6 @@ BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESY
 splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 74101);
 Statement executed.</pre>
             <p>Once the restoration is complete, reboot your database by the <a href="onprem_admin_startingdb.html">Starting Your Database.</a></p>
-            <h3 id="Example">Example 2 : Restore the Database from a Series of Incremental Backups</h3>
-            <p>In this example, you have been running a daily incremental backup and want to restore it to the most recent version. Let's call the backups B1, B2, B3, and B4:</p>
-            <ul>
-                <li>Full backup <span class="CodeFont">B1,(ID=1274)</span></li>
-                <li>First incremental backup <span class="CodeFont">B2 (ID=1275)</span></li>
-                <li>Second incremental backup <span class="CodeFont">B3 (ID=1276)</span></li>
-                <li>Third incremental backup <span class="CodeFont">B4 (ID=1277)</span></li>
-            </ul>
-            <div class="opsStepsList">
-                <p class="indentLevel1">To restore your database to the state it was in when the <span class="CodeFont">B4</span> backup was run; you'll need to follow these steps:</p>
-                <ol>
-                    <li>
-                        <p>Restore your database from the full backup, <span class="CodeFont">B1</span>. </p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1274);</pre>
-                        </div>
-                    </li>
-                    <li>Restart your database.</li>
-                    <li>
-                        <p>Restore your database from incremental backup <span class="CodeFont">B2</span>:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1275);</pre>
-                        </div>
-                    </li>
-                    <li>Restart your database.</li>
-                    <li>
-                        <p>Restore your database from incremental backup <span class="CodeFont">B3</span>:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1276);</pre>
-                        </div>
-                    </li>
-                    <li>Restart your database.</li>
-                    <li>
-                        <p>Restore your database from  incremental backup <span class="CodeFont">B4</span>:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1277);</pre>
-                        </div>
-                    </li>
-                    <li>Restart your database.</li>
-                </ol>
-            </div>
             <h2>See Also</h2>
             <ul>
                 <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
