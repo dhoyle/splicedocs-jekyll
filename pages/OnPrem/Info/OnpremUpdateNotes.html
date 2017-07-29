@@ -1,5 +1,5 @@
 ---
-title: Update Notes for the Current Release of Splice Machine's On-Premise Database Product.
+title: Update Notes - On-Premise Database Product.
 summary: Update notes for the current release of our on-premise database product.
 keywords: update notes, on-premise
 toc: false
@@ -63,6 +63,17 @@ folder: OnPrem/Info
                     </thead>
                     <tbody>
                         <tr>
+                            <td class="BoldFont">2.6</td>
+                            <td>
+                                <ul class="bulletCell">
+                                    <li><a href="sqlref_sysprocs_importhfile.html">Bulk Import HFile allows for much quicker data loading.</a></li>
+                                    <li>The <a href="cmdlineref_analyze.html"><span class="CodeFont">Analyze command</span></a> now allows you to specify a sampling percentage for statistics; using sampled statistics (optional) offers improved performance when collecting statistics.</li>
+                                    <li>Statistics for each partition of a table are now merged at collection time, which improves query performance.</li>
+                                    <li>You can now get improved performance when deleting a large amount of data by specifying our <a href="developers_tuning_queryoptimization.html#Delete">bulk delete flag.</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="BoldFont">2.5</td>
                             <td>
                                 <ul class="bulletCell">
@@ -92,7 +103,7 @@ folder: OnPrem/Info
                     <tr>
                         <td class="BoldFont">2.6</td>
                         <td class="ItalicFont">DBaaS</td>
-                        <td>Our new <span class="CalloutFont">Database-as-a-Service</span> offering is now available. Please </td>
+                        <td>Our new <span class="CalloutFont">Database-as-a-Service</span> offering is now available. Please see our <a href="dbaas_intro.html">Welcome to our Database Service page</a> for more information.</td>
                     </tr>
                     <tr>
                         <td class="BoldFont">2.6</td>
@@ -107,122 +118,152 @@ folder: OnPrem/Info
                             <p>Our <a href="tutorials_connect_haproxy.html">Configuring HAProxy</a> topic walks you through configuring HAProxy on a non-Splice Machine cluster node, and how to use HAProxy with Splice Machine on a Kerberos-enabled cluster.</p>
                         </td>
                     </tr>
-
-
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">BULK_IMPORT_HFILE</td>
-                            <td>
-                                <p>We have added a new system procedure for rapidly importing data:</p>
-                                <ul class="bullet">
-                                    <li><span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>
-                                    </li>
-                                </ul>
-                                <p>This procedure creates HFiles directly, rather than using HBase APIs; it is faster than our <a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">IMPORT_DATA</span></a>&#160;procedure, but has some limitations:</p>
-                                <ul class="bullet">
-                                    <li>To use it, you must already know how you want your data split across regions (your data's <span class="ItalicFont">split points</span>).</li>
-                                    <li>
-                                        <p>HFile import does not enforce any constraints, including unique, foreign key, or primary key constraints.</p>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">Bulk HFile Delete</td>
-                            <td>
-                                <p>Our new <span class="CalloutFont">Bulk HFile Delete</span> features generates HFiles for deleting large amounts of data, which significantly speeds up bulk deletion by bypassing the Splice Machine write pipeline and HBase write path.</p>
-                                <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete"><span class="CodeFont">DELETE</span></a> statement</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">Snapshot</td>
-                            <td>
-                                <p>Our new <span class="CalloutFont">Bulk HFile Delete</span> features generates HFiles for deleting large amounts of data, which significantly speeds up bulk deletion by bypassing the Splice Machine write pipeline and HBase write path.</p>
-                                <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete"><span class="CodeFont">DELETE</span></a> statement</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">Backup and Restore</td>
-                            <td>
-                                <p>The ability to incrementally back up and restore your database is now available to <span class="CalloutFont">Splice&#160;Machine Enterprise Edition</span> users.</p>
-                                <p>For more information, see <a href="onprem_admin_backingup.html">Backing Up and Restoring Your Database</a> in our <span class="ItalicFont">Administrator's Guide</span>, and the following built-in system procedures and system tables in our <span class="ItalicFont">SQL&#160;Reference Manual</span>:</p>
-                                <ul class="bullet">
-                                    <li><span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></span>
-                                    </li>
-                                    <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">External Tables</td>
-                            <td>
-                                <p>You can now access ORC&#160;and PARQUET&#160;files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <span class="ItalicFont">Developer's Guide</span> for more information.</p>
-                                <p>The <span class="CodeFont"><a href="sqlref_sysprocs_refreshexttable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></span> built-in system procedure are now available for working with external tables.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">Migration Assistant Tool</td>
-                            <td>
-                                <p>The <a href="onprem_admin_migratingdb.html">Migration Assistant</a> tool was created by Splice Machine to help migrate your database to a new version of the Splice Machine software. You run it before upgrading your software to export your database to file, and then run it after upgrading your software to import an upgraded version of your database.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">Pinned Tables<br />(RDD&#160;Caching)</td>
-                            <td>
-                                <p>You can now use the <span class="CodeFont"><a href="sqlref_expressions_table.html">UNPIN&#160;TABLE</a></span> statement to delete the cached version of the table.</p>
-                                <p>You also need to use the new <span class="CodeFont">pin</span> query optimization hint, which is described in our <a href="developers_tuning_queryoptimization.html">Query Optimization</a> topic.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">Schema-level Privileges</td>
-                            <td>Updates to the <a href="sqlref_statements_revoke.html">Revoke</a> statements allow you to define privileges at the schema level.</td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">Updated Connectors</td>
-                            <td>
-                                <p>Splice Machine has added enhancements to our JDBC and ODBC&#160;drivers for improved performance and added features. </p>
-                                <p class="noteIcon">Due to these changes, you <span class="BoldFont">must use</span> the Splice Machine JDBC&#160;and ODBC&#160;drivers; other drivers will not work properly.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="BoldFont">2.5</td>
-                            <td class="ItalicFont">Updated Statistics</td>
-                            <td>
-                                <p>Splice Machine has enhanced our statistics collection methods, taking advantage of advanced features provided by the Yahoo DataSketches library. As a result, these procedures and tables have been deprecated:</p>
-                                <ul class="bullet">
-                                    <li><span class="CodeFont">SYSCS_UTIL.SYSCS_COLLECT_TABLE_STATISTICS</span>
-                                    </li>
-                                    <li><span class="CodeFont">SYSCS_UTIL.SYSCS_DROP_TABLE_STATISTICS</span>
-                                    </li>
-                                    <li><span class="CodeFont">SYSSTATISTICS</span>&#160;table</li>
-                                </ul>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="BoldFont">2.6</td>
+                        <td class="ItalicFont">Incremental Restore Enhanced</td>
+                        <td>
+                            <p>When you decide to restore from an incremental backup, you no longer have to restore from a sequence of backups; Splice Machine now automatically determines what's required to perform the restore operation and takes care of it for you.</p>
+                            <div class="noteIcon">Backup and Restore functionality is only available to <span class="CalloutFont">Splice&#160;Machine Enterprise Edition</span> users.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.6</td>
+                        <td class="ItalicFont">BULK_IMPORT_HFILE</td>
+                        <td>
+                            <p>We have added a new system procedure for rapidly importing data:</p>
+                            <ul class="bullet">
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>
+                                </li>
+                            </ul>
+                            <p>This procedure creates HFiles directly, rather than using HBase APIs; it is faster than our <a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">IMPORT_DATA</span></a>&#160;procedure, but has some limitations:</p>
+                            <ul class="bullet">
+                                <li>To use it, you must already know how you want your data split across regions (your data's <span class="ItalicFont">split points</span>).</li>
+                                <li>
+                                    <p>HFile import does not enforce any constraints, including unique, foreign key, or primary key constraints.</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.6</td>
+                        <td class="ItalicFont">Bulk HFile Delete</td>
+                        <td>
+                            <p>Our new <span class="CalloutFont">Bulk HFile Delete</span> features generates HFiles for deleting large amounts of data, which significantly speeds up bulk deletion by bypassing the Splice Machine write pipeline and HBase write path.</p>
+                            <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete"><span class="CodeFont">DELETE</span></a> statement</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.6</td>
+                        <td class="ItalicFont">Snapshots</td>
+                        <td>
+                            <p>The Splice Machine <a href="developers_tuning_snapshots">snapshot feature</a> to create a restorable snapshot of a table or schema; this is commonly used when importing or deleting a significant amount of data from a database.</p>
+                            <p>We've introduced these new system procedures for working with snapshots:</p>
+                            <ul class="bullet">
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_snapshottable.html">SYSCS_UTIL.SNAPSHOT_TABLE</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_snapshotschema.html">SYSCS_UTIL.SNAPSHOT_SCHEMA</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_restoresnapshot.html">SYSCS_UTIL.RESTORE_SNAPSHOT</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_deletesnapshot.html">SYSCS_UTIL.DELETE_SNAPSHOT</a></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.6</td>
+                        <td class="ItalicFont">External AVRO files</td>
+                        <td>
+                            <p>We've added support for AVRO files files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <span class="ItalicFont">Developer's Guide</span> for more information.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.6</td>
+                        <td class="ItalicFont">Physical Delete</td>
+                        <td>
+                            <p>You can now tell Splice Machine that, when a major compaction next runs, you want logically deleted table rows to be physically deleted from your database. Use the <a href="sqlref_sysprocs_purgedeletedrows">SYSCS_UTIL.SET_PURGE_DELETED_ROWS</a> system procedure to enable or disable this setting.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.5</td>
+                        <td class="ItalicFont">Backup and Restore</td>
+                        <td>
+                            <p>The ability to incrementally back up and restore your database is now available to <span class="CalloutFont">Splice&#160;Machine Enterprise Edition</span> users.</p>
+                            <p>For more information, see <a href="onprem_admin_backingup.html">Backing Up and Restoring Your Database</a> in our <span class="ItalicFont">Administrator's Guide</span>, and the following built-in system procedures and system tables in our <span class="ItalicFont">SQL&#160;Reference Manual</span>:</p>
+                            <ul class="bullet">
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></span>
+                                </li>
+                                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.5</td>
+                        <td class="ItalicFont">External Tables</td>
+                        <td>
+                            <p>You can now access ORC&#160;and PARQUET&#160;files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <span class="ItalicFont">Developer's Guide</span> for more information.</p>
+                            <p>The <span class="CodeFont"><a href="sqlref_sysprocs_refreshexttable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></span> built-in system procedure are now available for working with external tables.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.5</td>
+                        <td class="ItalicFont">Migration Assistant Tool</td>
+                        <td>
+                            <p>The <a href="onprem_admin_migratingdb.html">Migration Assistant</a> tool was created by Splice Machine to help migrate your database to a new version of the Splice Machine software. You run it before upgrading your software to export your database to file, and then run it after upgrading your software to import an upgraded version of your database.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.5</td>
+                        <td class="ItalicFont">Pinned Tables<br />(RDD&#160;Caching)</td>
+                        <td>
+                            <p>You can now use the <span class="CodeFont"><a href="sqlref_expressions_table.html">UNPIN&#160;TABLE</a></span> statement to delete the cached version of the table.</p>
+                            <p>You also need to use the new <span class="CodeFont">pin</span> query optimization hint, which is described in our <a href="developers_tuning_queryoptimization.html">Query Optimization</a> topic.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.5</td>
+                        <td class="ItalicFont">Schema-level Privileges</td>
+                        <td>Updates to the <a href="sqlref_statements_revoke.html">Revoke</a> statements allow you to define privileges at the schema level.</td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.5</td>
+                        <td class="ItalicFont">Updated Connectors</td>
+                        <td>
+                            <p>Splice Machine has added enhancements to our JDBC and ODBC&#160;drivers for improved performance and added features. </p>
+                            <p class="noteIcon">Due to these changes, you <span class="BoldFont">must use</span> the Splice Machine JDBC&#160;and ODBC&#160;drivers; other drivers will not work properly.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="BoldFont">2.5</td>
+                        <td class="ItalicFont">Updated Statistics</td>
+                        <td>
+                            <p>Splice Machine has enhanced our statistics collection methods, taking advantage of advanced features provided by the Yahoo DataSketches library. As a result, these procedures and tables have been deprecated:</p>
+                            <ul class="bullet">
+                                <li><span class="CodeFont">SYSCS_UTIL.SYSCS_COLLECT_TABLE_STATISTICS</span>
+                                </li>
+                                <li><span class="CodeFont">SYSCS_UTIL.SYSCS_DROP_TABLE_STATISTICS</span>
+                                </li>
+                                <li><span class="CodeFont">SYSSTATISTICS</span>&#160;table</li>
+                            </ul>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <h3 id="Deprecat">Deprecated Features</h3>
@@ -772,9 +813,21 @@ folder: OnPrem/Info
                             <th>Description</th>
                         </tr>
                         <tr>
+                            <td class="BoldFont">2.6</td>
+                            <td class="ItalicFont">New Documentation System!</td>
+                            <td><p>In summer of 2017, we switched to building our documentation system with the open source Jekyll site generator tool. This has several significant implications:</p>
+                                <ul class="bullet">
+                                    <li>The URL of every page in our documentation has changed. This is a one time change. All URLs are now permalinks at the root level of the docs web. The <a href="notes_urlmap.html">URL Map page</a> maps each previous URL to its new equivalent URL. A set of server URL redirects (from the previous URLs) are also in place for the most commonly used pages.</li>
+                                    <li>Since we can now use either Markdown or HTML, non-tech-writers can now update the web.</li>
+                                    <li>We are configuring our docs for continuous deployment: changes will show up in the live customer docs as soon as they are committed.</li>
+                                    <li>Navigation is built on open source, industry-standard libraries, leading to a more familiar interface style.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="BoldFont">2.0</td>
                             <td class="ItalicFont">Set Operators</td>
-                            <td>The Set operators <span class="CodeFont"><a href="sqlref_clauses_intro.html">Clauses</a> section of the <span class="ItalicFont">SQL&#160;Reference Manual</span>.</td>
+                            <td>The Set operators <span class="CodeFont"><a href="sqlref_clauses_intro.html">Clauses</a></span> section of the <span class="ItalicFont">SQL&#160;Reference Manual</span>.</td>
                         </tr>
                         <tr>
                             <td class="BoldFont">2.0</td>

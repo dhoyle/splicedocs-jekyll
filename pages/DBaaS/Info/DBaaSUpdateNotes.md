@@ -1,7 +1,7 @@
 ---
-title: Update Notes for the Current Release of Splice Machine's Database Service product..
+title: Update Notes - Database Service product
 summary: Update notes for the current release of our cloud-managed database service product.
-keywords: update notes, dbaas, paas, service, updates
+keywords: update notes, dbaas, paas, service, updates, database-service
 toc: false
 product: all
 sidebar:  dbaas_sidebar
@@ -34,3 +34,4 @@ This is the alpha release of our *Splice Machine Cloud-Managed Database Service*
 ## Updates in Previous Versions
 
 This is the alpha release of our *Splice Machine Cloud-Managed Database Service* product. There are no previous versions that were updated.
+

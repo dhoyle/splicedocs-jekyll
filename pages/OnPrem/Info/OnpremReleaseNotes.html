@@ -22,8 +22,6 @@ folder: OnPrem/Info
                     </li>
                     <li><a href="#Spark">Spark Restrictions on Cloudera</a>
                     </li>
-                    <li><a href="#Changes" class="WithinBook">Changes to Bulk Import</a>
-                    </li>
                     <li><a href="#Temporar">Temporary Tables and Backups</a>
                     </li>
                     <li><a href="#Natural">Natural Self Joins Not Supported</a>
@@ -47,31 +45,11 @@ folder: OnPrem/Info
                     <li><a href="#TooManyForeignKeyRefs">Import Performance Issues With&#160;Many Foreign Key References</a>
                     </li>
                 </ul>
-                <div>
-	                <h2 id="With">With Clauses and Temporary Tables</h2>
-    	            <p>You cannot currently use temporary tables in <span class="CodeFont">WITH</span>&#160;clauses.</p>
-                    <h2 id="Spark">Spark Restrictions on Cloudera</h2>
-                    <p>There is currently a significant restriction with respect to running independent (non-Splice)&#160;Spark jobs on a Cloudera cluster:</p>
-                    <div class="noteRestriction"> Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark:&#160;you cannot run independent Spark jobs on it.</div>
-                    <h2 id="Changes">Changes to Bulk Import</h2>
-                    <p class="noSpaceAbove">We've updated our data import technology for improved performance and better error handling. We <span class="BoldFont">strongly advise</span> that you visit the <a href="tutorials_ingest_importing.html">Importing Data</a> topic in this <span class="ItalicFont">Administrator's Guide</span> to review the changes. The same changes are noted in the reference pages for the two bulk import built-in system procedures:</p>
-                    <div class="noteChange">
-                        <p>The number of parameters and the meaning of certain parameters has changed in these built-in system procedures:</p>
-                        <ul class="bulletNested">
-                            <li class="CodeFont" value="1"><a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a>
-                            </li>
-                            <li class="CodeFont" value="2"><a href="sqlref_sysprocs_upsertdata.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a>
-                            </li>
-                        </ul>
-                        <p>We <span class="BoldFont">strongly advise</span> that you visit the <a href="tutorials_ingest_importing.html">Importing Data</a> topic in this <span class="ItalicFont">Administrator's Guide</span> to review the changes. </p>
-                        <p>A few specifics that you should be aware of if you're upgrading from a previous version of Splice&#160;Machine:</p>
-                        <ul class="nested">
-                            <li>The parameter previously named <span class="CodeFont">failedBadRecordCount</span> is now named <span class="CodeFont">badRecordsAllowed</span>. The meaning of this parameter value is now different:<ul class="bullet"><li><span class="BoldFont">Supply a value of <span class="CodeBoldFont">-1</span> for <span class="CodeBoldFont">badRecordsAllowed</span> to continue importing records no matter how many bad records are encountered.</span> (In previous versions of Splice&#160;Machine, a value of <span class="CodeFont">0</span> was used for this purpose).</li><li><span class="BoldFont">Supply a value of <span class="CodeBoldFont">0</span> for <span class="CodeBoldFont">badRecordsAllowed</span> to halt the import process as soon as a single bad record is encountered.</span></li></ul></li>
-                            <li>How bulk imports handle generated column values and white space is now spelled out in detail in the documentation</li>
-                            <li>We strongly recommend that you explicitly specify <span class="CodeFont">DATE</span> and <span class="CodeFont">TIMESTAMP</span>&#160;column formats when importing data; previous versions of Splice Machine could handle more formats by default.</li>
-                        </ul>
-                    </div>
-                </div>
+                <h2 id="With">With Clauses and Temporary Tables</h2>
+                <p>You cannot currently use temporary tables in <span class="CodeFont">WITH</span>&#160;clauses.</p>
+                <h2 id="Spark">Spark Restrictions on Cloudera</h2>
+                <p>There is currently a significant restriction with respect to running independent (non-Splice)&#160;Spark jobs on a Cloudera cluster:</p>
+                <div class="noteRestriction"> Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark:&#160;you cannot run independent Spark jobs on it.</div>
                 <h2 id="Natural">Natural Self Joins Not Supported</h2>
                 <p>Splice Machine does not currently support <span class="CodeFont">NATURAL SELF JOIN</span> operations.</p>
                 <h2 id="Temporar">Temporary Tables and Backups</h2>
