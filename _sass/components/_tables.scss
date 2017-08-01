@@ -15,7 +15,8 @@
 	text-transform: $fontTransform;
 }
 
-table
+table,
+table.noBorder
 {
 	table-layout: auto;
 	border: $border-table;
@@ -92,6 +93,12 @@ table
 	}
 }
 
+table.noBorder {
+    border: none;
+    td { border: none;}
+    th { border: none;}
+}
+
 table td.AppFont {
 	@include cellStyle ($fontFace: $codefont-face,
 						$fontWeight: $codefont-weight,
@@ -164,6 +171,25 @@ table td.smallText {
 	@include cellStyle( $fontSize: 0.9em );
 	line-height: 1em;
 }
+
+table td.SpliceRelease {
+    @include cellStyle( $fontColor: $versTbl-release-color,
+                        $bgColor: $versTbl-release-bgcolor,
+                        $fontWeight: $versTbl-release-weight );
+}
+
+table td.SplicePlatform {
+    @include cellStyle( $fontColor: $versTbl-platform-color,
+                        $bgColor: $versTbl-platform-bgcolor,
+                        $fontWeight: $versTbl-platform-weight);
+}
+
+table td.SpliceParcel {
+    @include cellStyle( $fontColor: $versTbl-parcel-color,
+                        $bgColor: $versTbl-parcel-bgcolor,
+                        $fontWeight: $versTbl-parcel-weight);
+}
+
 
 
 table.featureList

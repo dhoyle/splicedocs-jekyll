@@ -765,13 +765,6 @@
 
 
 
-﻿
-
-
-
-
-
-
 
 ﻿
 
@@ -781,6 +774,7 @@
 
 
 
+﻿
 
 
 
@@ -794,6 +788,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 ﻿
 
 
@@ -897,26 +904,39 @@
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Contact Splice Machine for your installer</p>
-                        <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release 2.6:</p>
+                        <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release 2.6 and 2.5:</p>
                         <table>
+                            <col />
                             <col />
                             <col />
                             <thead>
                                 <tr>
-                                    <th>HDP&#160;Version</th>
-                                    <th>Installer Package</th>
+                                    <th>Splice Machine Release</th>
+                                    <th>HDP Version</th>
+                                    <th>Installer Package Link</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>HDP 2.4.2
-                                    </td>
-                                    <td class="CodeFont">https://s3.amazonaws.com/splice-releases/2.6.0.1729/cluster/installer/hdp2.4.2/SPLICEMACHINE-2.6.0.1729.hdp2.4.2.p0.226.tar.gz</td>
+                               <tr>
+                                   <td rowspan="2" class="SpliceRelease">2.6.0</td>
+                                   <td class="SplicePlatform">2.5.5</td>
+                                   <td><a href="https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/installer/hdp2.4.2/SPLICEMACHINE-2.6.0.1729.hdp2.5.5.p0.372.tar.gz">https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/installer/hdp2.4.2/SPLICEMACHINE-2.6.0.1729.hdp2.5.5.p0.372.tar.gz</a></td>
                                 </tr>
                                 <tr>
-                                    <td>HDP 2.5.0
-                                    </td>
-                                    <td class="CodeFont">https://s3.amazonaws.com/splice-releases/2.6.0.1729/cluster/installer/hdp2.5.0/SPLICEMACHINE-2.6.0.1729.hdp2.5.0.p0.226.tar.gz</td>
+                                   <td class="SplicePlatform">2.5.0</td>
+                                   <td><a href="https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/installer/hdp2.5.0/SPLICEMACHINE-2.6.0.1729.hdp2.5.0.p0.372.tar.gz">https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/installer/hdp2.5.0/SPLICEMACHINE-2.6.0.1729.hdp2.5.0.p0.372.tar.gz</a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="Separator"> </td>
+                                </tr>
+                               <tr>
+                                   <td rowspan="2" class="SpliceRelease">2.5.0</td>
+                                   <td class="SplicePlatform">2.5.0</td>
+                                   <td><a href="https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/installer/hdp2.5.0/SPLICEMACHINE-2.5.0.1727.hdp2.5.0.p0.372.tar.gz">https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/installer/hdp2.5.0/SPLICEMACHINE-2.5.0.1727.hdp2.5.0.p0.372.tar.gz</a></td>
+                                </tr>
+                                <tr>
+                                   <td class="SplicePlatform">2.4.3</td>
+                                   <td><a href="https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/installer/hdp2.4.2/SPLICEMACHINE-2.5.0.1727.hdp2.4.2.p0.372.tar.gz">https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/installer/hdp2.4.2/SPLICEMACHINE-2.5.0.1727.hdp2.4.2.p0.372.tar.gz</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -929,12 +949,12 @@
                     </li>
                     <li>
                         <p class="topLevel">Download the Splice Machine package into the <span class="CodeFont">splice</span> directory on the node. For example:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo curl 'https://s3.amazonaws.com/splice-releases/2.6.0.1729/cluster/installer/hdp2.5.0/SPLICEMACHINE-2.6.0.1729.hdp2.5.0.p0.226.tar.gz' -o /opt/splice/SPLICEMACHINE-2.6.0.1729.hdp2.5.0.p0.226.tar.gz<br /></pre>
+                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo curl '////SPLICEMACHINE-..' -o /opt/splice/SPLICEMACHINE-..<br /></pre>
                         </div>
                     </li>
                     <li>
                         <p class="topLevel">Extract the Splice Machine package:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo tar -xf SPLICEMACHINE-2.6.0.1729.hdp2.5.0.p0.226.tar.gz --directory /opt/splice</pre>
+                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo tar -xf SPLICEMACHINE-.. --directory /opt/splice</pre>
                         </div>
                     </li>
                     <li>
@@ -1477,7 +1497,7 @@ splice.txn.concurrencyLevel=4096</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 28, 2017 <br />
+ Site last generated: Jul 31, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -1,20 +1,27 @@
-﻿{% assign splvar_install_AWSS3Bucket = 'https://s3.amazonaws.com/splice-releases' %}
-{% assign splvar_install_AWSInstallerPart = 'cluster/installer' %}
-{% assign splvar_install_AWSParcelPart = 'cluster/parcel' %}
-{% assign splvar_install_CurrentRelease = '2.6.0.1729' %}
-{% assign splvar_install_HDP-R1 = 'hdp2.4.2' %}
-{% assign splvar_install_HDP-R2 = 'hdp2.5.0' %}
-{% assign splvar_install_MAPR-R1 = 'mapr5.1.0' %}
-{% assign splvar_install_MAPR-R2 = 'mapr5.2.0' %}
-{% assign splvar_install_CDH-R1 = 'cdh5.7.2' %}
-{% assign splvar_install_CDH-R2 = 'cdh5.8.0' %}
-{% assign splvar_install_CDH-R3 = 'cdh5.8.3' %}
-{% assign splvar_install_SpliceReleaseGZ = 'p0.226.tar.gz' %}
-{% assign splvar_install_CDH-R1Name = 'CDH 5.7.2' %}
-{% assign splvar_install_CDH-R2Name = 'CDH 5.8.0' %}
-{% assign splvar_install_CDH-R3Name = 'CDH 5.8.3' %}
-{% assign splvar_install_HDP-R1Name = 'HDP 2.4.2' %}
-{% assign splvar_install_HDP-R2Name = 'HDP 2.5.0' %}
-{% assign splvar_install_MAPR-R1Name = 'MapR 5.1.0' %}
-{% assign splvar_install_MAPR-R2Name = 'MapR 5.2.0' %}
-{% assign splvar_install_SpliceReleasePart = 'p0.226' %}
+﻿{% assign splvar_install_CDH583  = '5.8.3' %}
+{% assign splvar_install_CDH580  = '5.8.0' %}
+{% assign splvar_install_CDH572  = '5.7.2' %}
+{% assign splvar_install_HDP255  = '2.5.5' %}
+{% assign splvar_install_HDP250  = '2.5.0' %}
+{% assign splvar_install_HDP242  = '2.4.3' %}
+{% assign splvar_install_MAPR520 = '5.2.0' %}
+{% assign splvar_install_MAPR510 = '5.1.0' %}
+
+{% assign splvar_install_v26_CDH583-base = 'https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.0.1729.cdh5.8.3.p0.372' %}
+{% assign splvar_install_v26_CDH580-base = 'https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.0.1729.cdh5.8.0.p0.372' %}
+{% assign splvar_install_v26_MAPR520     = 'https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.6.0.1729.mapr5.2.0.p0.372.tar.gz' %}
+{% assign splvar_install_v26_MAPR510     = 'https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/installer/mapr5.1.0/SPLICEMACHINE-2.6.0.1729.mapr5.1.0.p0.372.tar.gz' %}
+{% assign splvar_install_v26_HDP255      = 'https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/installer/hdp2.4.2/SPLICEMACHINE-2.6.0.1729.hdp2.5.5.p0.372.tar.gz' %}
+{% assign splvar_install_v26_HDP250      = 'https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/cluster/installer/hdp2.5.0/SPLICEMACHINE-2.6.0.1729.hdp2.5.0.p0.372.tar.gz' %}
+{% assign splvar_install_v26_Standalone  = 'https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1729/standalone/splicemachine-2.6.0.1729_standalone.tar.gz' %}
+
+{% assign splvar_install_v25_CDH583-base = 'https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1727.cdh5.8.3.p0.372-' %}
+{% assign splvar_install_v25_CDH580-base = 'https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1727.cdh5.8.0.p0.372-' %}
+{% assign splvar_install_v25_CDH572-base = 'https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1727.cdh5.7.2.p0.372-' %}
+{% assign splvar_install_v25_MAPR520     = 'https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.5.0.1727.mapr5.2.0.p0.372.tar.gz' %}
+{% assign splvar_install_v25_MAPR510     = 'https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/installer/mapr5.1.0/SPLICEMACHINE-2.5.0.1727.mapr5.1.0.p0.372.tar.gz' %}
+{% assign splvar_install_v25_HDP250      = 'https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/installer/hdp2.5.0/SPLICEMACHINE-2.5.0.1727.hdp2.5.0.p0.372.tar.gz' %}
+{% assign splvar_install_v25_HDP242      = 'https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/cluster/installer/hdp2.4.2/SPLICEMACHINE-2.5.0.1727.hdp2.4.2.p0.372.tar.gz' %}
+{% assign splvar_install_v25_Standalone  = 'https://s3.amazonaws.com/splice-releases/Release-2.5/2.5.0.1727/standalone/splicemachine-2.5.0.1727_standalone.tar.gz' %}
+
+ 

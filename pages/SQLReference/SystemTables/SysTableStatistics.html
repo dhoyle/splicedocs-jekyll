@@ -104,7 +104,29 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">10</td>
                         <td class="CodeFont">YES</td>
                         <td>
-                            <p>A value of <span class="CodeFont">0</span> indicates that the current statistics entry is full table stats; a value of <span class="CodeFont">1</span> indicates that the statistics entry is sample statistics based on the <span class="CodeFont">SAMPLEFRACTION</span>&#160;value.</p>
+                            <p>The type of statistics, which is one of these values:</p>
+                            <table>
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>Full table (not sampled) statistics that reflect the unmerged partition values.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Sampled statistics that reflect the unmerged partition values.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Full table (not sampled) statistics that reflect the table values after all partitions have been merged.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sampled statistics that reflect the table values after all partitions have been merged.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <p>If this value is <span class="CodeFont">NULL</span>, <span class="CodeFont">0</span> is used.</p>
                         </td>
                     </tr>

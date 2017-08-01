@@ -80,26 +80,39 @@ folder: OnPrem/InstallingSpliceMachine
                     <ol class="boldFont">
                         <li>
                             <p class="topLevel">Contact Splice Machine for your installer</p>
-                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}}:</p>
+                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and {{splvar_basic_SplicePrevReleaseVersion}}:</p>
                             <table>
+                                <col />
                                 <col />
                                 <col />
                                 <thead>
                                     <tr>
-                                        <th>MapR&#160;Version</th>
-                                        <th>Installer Package</th>
+                                        <th>Splice Machine Release</th>
+                                        <th>MapR Version</th>
+                                        <th>Installer Package Link</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>{{splvar_install_MAPR-R1Name}}
-                                        </td>
-                                        <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_MAPR-R1}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R1}}.{{splvar_install_SpliceReleaseGZ}}</td>
+                                   <tr>
+                                       <td rowspan="2" class="SpliceRelease">2.6.0</td>
+                                       <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
+                                       <td><a href="{{splvar_install_v26_MAPR520}}">{{splvar_install_v26_MAPR520}}</a></td>
                                     </tr>
                                     <tr>
-                                        <td>{{splvar_install_MAPR-R2Name}}
-                                        </td>
-                                        <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_MAPR-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R2}}.{{splvar_install_SpliceReleaseGZ}}</td>
+                                       <td class="SplicePlatform">{{splvar_install_MAPR510}}</td>
+                                       <td><a href="{{splvar_install_v26_MAPR510}}">{{splvar_install_v26_MAPR510}}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="Separator"> </td>
+                                    </tr>
+                                   <tr>
+                                       <td rowspan="2" class="SpliceRelease">2.5.0</td>
+                                       <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
+                                       <td><a href="{{splvar_install_v25_MAPR520}}">{{splvar_install_v25_MAPR520}}</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SplicePlatform">{{splvar_install_MAPR510}}</td>
+                                       <td><a href="{{splvar_install_v25_MAPR510}}">{{splvar_install_v25_MAPR510}}</a></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -53,33 +53,162 @@ folder: OnPrem/InstallingSpliceMachine
                     <ol class="boldFont">
                         <li>
                             <p class="topLevel">Contact Splice Machine for your installer</p>
-                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}}:</p>
+                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are the URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and {{splvar_basic_SplicePrevReleaseVersion}}:</p>
                             <table>
-                                <col style="width: 92px;" />
+                                <col />
+                                <col />
                                 <col />
                                 <thead>
                                     <tr>
+                                        <th>Splice Machine Release</th>
                                         <th>CDH Version</th>
-                                        <th>Installer Package URL</th>
+                                        <th>Parcel Type</th>
+                                        <th>Installer Package Link</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>{{splvar_install_CDH-R1Name}}
-                                        </td>
-                                        <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSParcelPart}}/{{splvar_install_CDH-R1}}</td>
+                                   <tr>
+                                       <td rowspan="13" class="SpliceRelease">2.6.0</td>
+                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
+                                       <td class="SpliceParcel">EL6</td>
+                                       <td><a href="{{splvar_install_v26_CDH583-base}}-el6.parcel">{{splvar_install_v26_CDH583-base}}-el6.parcel</a></td>
                                     </tr>
                                     <tr>
-                                        <td>{{splvar_install_CDH-R2Name}}
-                                        </td>
-                                        <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSParcelPart}}/{{splvar_install_CDH-R2}}</td>
+                                       <td class="SpliceParcel">EL7</td>
+                                       <td><a href="{{splvar_install_v26_CDH583-base}}-el7.parcel">{{splvar_install_v26_CDH583-base}}-el7.parcel</a></td>
                                     </tr>
                                     <tr>
-                                        <td>{{splvar_install_CDH-R3Name}}
-                                        </td>
-                                        <td class="CodeFont">{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSParcelPart}}/{{splvar_install_CDH-R3}}</td>
+                                       <td class="SpliceParcel">Precise</td>
+                                       <td><a href="{{splvar_install_v26_CDH583-base}}-precise.parcel">{{splvar_install_v26_CDH583-base}}-precise.parcel</a></td>
                                     </tr>
-                                </tbody>
+                                    <tr>
+                                       <td class="SpliceParcel">SLES11</td>
+                                       <td><a href="{{splvar_install_v26_CDH583-base}}-sles11.parcel">{{splvar_install_v26_CDH583-base}}-sles11.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Trusty</td>
+                                       <td><a href="{{splvar_install_v26_CDH583-base}}-trusty.parcel">{{splvar_install_v26_CDH583-base}}-trusty.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Wheezy</td>
+                                       <td><a href="{{splvar_install_v26_CDH583-base}}-wheezy.parcel">{{splvar_install_v26_CDH583-base}}-wheezy.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="Separator"> </td>
+                                    </tr>
+                                   <tr>
+                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH580}}</td>
+                                       <td class="SpliceParcel">EL6</td>
+                                       <td><a href="{{splvar_install_v26_CDH580-base}}-el6.parcel">{{splvar_install_v26_CDH580-base}}-el6.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">EL7</td>
+                                       <td><a href="{{splvar_install_v26_CDH580-base}}-el7.parcel">{{splvar_install_v26_CDH580-base}}-el7.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Precise</td>
+                                       <td><a href="{{splvar_install_v26_CDH580-base}}-precise.parcel">{{splvar_install_v26_CDH580-base}}-precise.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">SLES11</td>
+                                       <td><a href="{{splvar_install_v26_CDH580-base}}-sles11.parcel">{{splvar_install_v26_CDH580-base}}-sles11.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Trusty</td>
+                                       <td><a href="{{splvar_install_v26_CDH580-base}}-trusty.parcel">{{splvar_install_v26_CDH580-base}}-trusty.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Wheezy</td>
+                                       <td><a href="{{splvar_install_v26_CDH580-base}}-wheezy.parcel">{{splvar_install_v26_CDH580-base}}-wheezy.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="Separator"> </td>
+                                    </tr>
+
+                                   <tr>
+                                       <td rowspan="20" class="SpliceRelease">2.5.0</td>
+                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
+                                       <td class="SpliceParcel">EL6</td>
+                                       <td><a href="{{splvar_install_v25_CDH583-base}}-el6.parcel">{{splvar_install_v25_CDH583-base}}-el6.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">EL7</td>
+                                       <td><a href="{{splvar_install_v25_CDH583-base}}-el7.parcel">{{splvar_install_v25_CDH583-base}}-el7.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Precise</td>
+                                       <td><a href="{{splvar_install_v25_CDH583-base}}-precise.parcel">{{splvar_install_v25_CDH583-base}}-precise.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">SLES11</td>
+                                       <td><a href="{{splvar_install_v25_CDH583-base}}-sles11.parcel">{{splvar_install_v25_CDH583-base}}-sles11.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Trusty</td>
+                                       <td><a href="{{splvar_install_v25_CDH583-base}}-trusty.parcel">{{splvar_install_v25_CDH583-base}}-trusty.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Wheezy</td>
+                                       <td><a href="{{splvar_install_v25_CDH583-base}}-wheezy.parcel">{{splvar_install_v25_CDH583-base}}-wheezy.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="Separator"> </td>
+                                    </tr>
+                                   <tr>
+                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH580}}</td>
+                                       <td class="SpliceParcel">EL6</td>
+                                       <td><a href="{{splvar_install_v25_CDH580-base}}-el6.parcel">{{splvar_install_v25_CDH580-base}}-el6.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">EL7</td>
+                                       <td><a href="{{splvar_install_v25_CDH580-base}}-el7.parcel">{{splvar_install_v25_CDH580-base}}-el7.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Precise</td>
+                                       <td><a href="{{splvar_install_v25_CDH580-base}}-precise.parcel">{{splvar_install_v25_CDH580-base}}-precise.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">SLES11</td>
+                                       <td><a href="{{splvar_install_v25_CDH580-base}}-sles11.parcel">{{splvar_install_v25_CDH580-base}}-sles11.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Trusty</td>
+                                       <td><a href="{{splvar_install_v25_CDH580-base}}-trusty.parcel">{{splvar_install_v25_CDH580-base}}-trusty.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Wheezy</td>
+                                       <td><a href="{{splvar_install_v25_CDH580-base}}-wheezy.parcel">{{splvar_install_v25_CDH580-base}}-wheezy.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="Separator"> </td>
+                                    </tr>
+                                   <tr>
+                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH572}}</td>
+                                       <td class="SpliceParcel">EL6</td>
+                                       <td><a href="{{splvar_install_v25_CDH572-base}}-el6.parcel">{{splvar_install_v25_CDH572-base}}-el6.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">EL7</td>
+                                       <td><a href="{{splvar_install_v25_CDH572-base}}-el7.parcel">{{splvar_install_v25_CDH572-base}}-el7.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Precise</td>
+                                       <td><a href="{{splvar_install_v25_CDH572-base}}-precise.parcel">{{splvar_install_v25_CDH572-base}}-precise.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">SLES11</td>
+                                       <td><a href="{{splvar_install_v25_CDH572-base}}-sles11.parcel">{{splvar_install_v25_CDH572-base}}-sles11.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Trusty</td>
+                                       <td><a href="{{splvar_install_v25_CDH572-base}}-trusty.parcel">{{splvar_install_v25_CDH572-base}}-trusty.parcel</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="SpliceParcel">Wheezy</td>
+                                       <td><a href="{{splvar_install_v25_CDH572-base}}-wheezy.parcel">{{splvar_install_v25_CDH572-base}}-wheezy.parcel</a></td>
+                                    </tr>
+                                    
+                                    
                             </table>
                             <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice&#160;Machine Community site</a> or contact your&#160;Splice&#160;Machine representative.</div>
                         </li>

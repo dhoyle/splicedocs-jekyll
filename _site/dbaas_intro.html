@@ -250,6 +250,27 @@
             
             
             
+            
+            
+            <li><a href="dbaas_serviceoverview.html">Service Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="dbaas_uioverview.html">User Interface Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="dbaas_docsoverview.html">About our Documentation</a></li>
+            
+            
+            
+            
         </ul>
      </li>
        
@@ -476,13 +497,6 @@
 
 
 
-﻿
-
-
-
-
-
-
 
 ﻿
 
@@ -492,6 +506,7 @@
 
 
 
+﻿
 
 
 
@@ -505,6 +520,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 ﻿
 
 
@@ -578,222 +606,26 @@
             <p>Splice Machine is a hybrid relational database platform that allows you to run transactional (OLTP) and analytical (OLAP)&#160;SQL workloads, concurrently, against shared data. To ensure that one does not interfere with the other, Splice Machine uses resource isolation and a ground-breaking MVCC technology for concurrent, non-locking, distributed ACID transactions. </p>
             <p>With Splice Machine, you can manage operational processes, large-scale IoT infrastructures, and use analytical processing and machine learning to improve over time.</p>
             <p>Splice Machine delivers an open-source data platform that incorporates the proven scalability of HBase™ and the in-memory performance of Apache Spark™. The cost-based optimizer uses advanced statistics to choose the best compute engine, storage engine, index access, join order and join algorithm for each task. In this way, Splice Machine can concurrently process transactional and analytical workloads at scale.</p>
-            <h2>Service Overview</h2>
-            <p>Our Database Service is a subscription-based service, hosted in the Cloud. 
-            <p>The remainder of this section provides brief summaries of these aspects of your service:</p>
-            <ul>
-                <li><a href="#serviceoverview">Database Service User Interface</a></li>
-                <li><a href="#serviceconfig">Your Service Configuration</a></li>
-                <li><a href="#serviceavail">Service Availability</a></li>
-                <li><a href="#serviceavail">Support for Your Service</a></li>
-                <li><a href="#serviceterms">Service Terms</a></li>
-            </ul>
-            <h3 id="serviceoverview">Database Service User Interface</h3>
-            <p>In addition to our our database, the Splice Machine Database Service includes all of the tools you need to create your cluster, load data into your database, query and manipulate your database, and create visual representations of your query results, as described here:</p>
-            <table>
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>UI Component</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Dashboard</td>
-                        <td>The <a href="dbaas_cm_intro.html">Splice Machine Dashboard</a> or <span class="ConsoleLink">Cloud Manager</span> is your entry point to your Database Service. You can register and log into your account here, as well as accessing the other managers described in this table.</td>
-                    </tr>
-                    <tr>
-                        <td>Cluster Manager</td>
-                        <td>Use the <a href="dbaas_cm_initialstartup.html">Cluster Manager</a> to create new clusters and to monitor the health of your clusters.</td>
-                    </tr>
-                    <tr>
-                        <td>Notebooks Manager</td>
-                        <td><a href="dbaas_zep_intro.html">Apache Zeppelin notebooks</a> make it easy to query your database and apply various visualizations to the results of your queries. We've created several notebooks that will help you to quickly become productive and to see how easy it is to create your own notebooks.</td>
-                    </tr>
-                    <tr>
-                        <td>Database Console</td>
-                        <td>The <a href="dbconsole_intro.html">Database Console</a> is a browser-based tool that you can use to monitor database queries on your cluster in real time. The Console UI allows you to see the Spark queries that are currently running in Splice Machine on your cluster, and to then drill down into each job to see the current progress of the queries, and to identify any potential bottlenecks. If you see something amiss, you can also terminate a query.</td>
-                    </tr>
-                    <tr>
-                        <td>Events Manager</td>
-                        <td>Our <span class="ConsoleLink">Events Manager</span> allows you to examine events that have occurred on your cluster.</td>
-                    </tr>
-                    <tr>
-                        <td>Account Manager</td>
-                        <td>The <a href="dbaas_cm_acctmanage.html">Splice Machine Account Manager</a>is where you manage your users, your profile, and your billing information.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 id="serviceconfig">Service Configuration</h3>
+            <h2>Getting Started With our Database Service</h2>
+            <p>Getting started with our database is as simple as can be:</p>
+            <ol>
+                <li>Create an account using our interface or with your Google or Amazon accounts.</li>
+                <li>Provision a database with our simple interface, featuring just 4 sliders to configure your cluster for your needs. Our <a href="dbaas_cm_initialstartup.html">cluster creation</a> page walks you through this simple process.</li>
+                <li>Wait 10-15 minutes for your database to be ready. You'll receive an email that includes links to your database dashboard, notebooks, and management console, as well as the link you can use to access your database via JDBC or ODBC.</li> 
+                <li>Use an existing notebook or create a new one to interact with your database. Load your data, write SQL queries, stream data to and from third-party applications, and use the power of Apache Zeppelin to visualize, share, and collaborate on your queries. Your Notebooks page is already populated with a number of tutorials, including one that shows you how to start using and creating Zeppelin notebooks.</li>
+            </ol>
+            <h2 id="serviceconfig">Service Configuration</h2>
             <p>The Splice Machine Database Service is subscription-based, which means that you pay a monthly fee that is based on the configuration you've chosen. Factors that affect the cost of your service include:</p>
             <ul>
                 <li>The number of <span class="ConsoleLink">Splice Units</span>. A Splice unit is a measure of processing work; one unit currently translates (approximately)&#160;to 2 virtual CPUs and 16 GB&#160;of memory. When you provision a new Splice Machine cluster, you can select the number of Splice Units you want to use for OLAP and OLTP workloads. The minimum number of Splice Units required for your cluster changes when the amount of </li>
                 <li>The space allocated for your <span class="ConsoleLink">Internal Dataset</span>, which is data that you're storing within your database. Note that as this size increases, the number of Splice Units required (especially OLTP Splice Units) can also increase.</li>
                 <li>The space allocated for your <span class="ConsoleLink">External Dataset</span>, which is data stored externally that you can access from your database using features such as external tables and VTI. Note that as this size increases, the number of OLAP Splice Units required can also increase.</li>
             </ul>
-            <h3 id="serviceavail">Service Availability</h3>
-            <p>Splice Machine's target Service availability commitment is 99.9% per calendar month, excluding scheduled downtime. You can expect the following:</p>
-            <ul>
-                <li>Splice Machine will deliver product updates with minimal, scheduled downtime.</li>
-                <li>Splice Machine can recover your database from a stored backup after receiving your request to do so.</li>
-                <li>Splice Machine can resize your cluster with minimal downtime.</li>
-            </ul>
-            <h3 id="servicesupport">Support for Your Service</h3> 
-            <p>Splice Machine provides two support options, as shown in the following table:</p>
-            <table>
-                <col />
-                <col />
-                <col />
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Support Type</th>
-                        <th>Pricing</th>
-                        <th>Support Feature</th>
-                        <th>Description</th>
-                        <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th rowSpan="3">Standard Support</th>
-                        <td rowSpan="3">Free</td>
-                        <td>Coverage Hours</td>
-                        <td>Monday-Friday<br />9am-6pm Pacific time</td>
-                        <td>(subject to local holidays)</td>
-                    </tr>
-                    <tr>
-                        <td>System Impaired</td>
-                        <td>Significant issues with speed, quality, or funtionality of Service.</td>
-                        <td>&lt; 12 business hours</td>
-                    </tr>
-                    <tr>
-                        <td>Other Issues</td>
-                        <td>General queries and guidance requests</td>
-                        <td>&lt; 24 business hours</td>
-                    </tr>
-                    <tr>
-                        <th rowSpan="5">Business Support</th>
-                        <td rowSpan="5"><p>As per contract</p><p>Includes SLA</p></td>
-                        <td>Coverage Hours</td>
-                        <td>24 hours a day, 7 days a week, 365 days a year</td>
-                        <td>&#160;</td>
-                    </tr>
-                    <tr>
-                        <td>Production System Down</td>
-                        <td>Complete loss of Service on Production cluster.</td>
-                        <td>&lt; 1 hour</td>
-                    </tr>
-                    <tr>
-                        <td>Production System Impaired</td>
-                        <td>Significant issues with speed, quality, or funtionality of Service on Production cluster.</td>
-                        <td>&lt; 4 hours</td>
-                    </tr>
-                    <tr>
-                        <td>Production System Down</td>
-                        <td>Significant issues with speed, quality, or funtionality of Service on non-production cluster.</td>
-                        <td>&lt; 12 hours</td>
-                    </tr>
-                    <tr>
-                        <td>Other Issues</td>
-                        <td>General queries and guidance requests</td>
-                        <td>&lt; 24 business hours</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h4>Service Level Agreement (SLA)</h4>
-            <p>Our <span class="italicFont">business support agreement</span> includes a <span class="ItalicFont">Service Level Agreement (SLA)</span> that specifies our commitment to a target Service availability of 99.9% per calendar year, excluding scheduled downtimes.</p>
-            <h3 id="serviceterms">Service Terms</h3>
-            <p>Subscription fees are payable monthly in advance on the 1st of the month, pro-rated for any partial months. We'll charge your credit card or withdraw payment by ACH on the first of each month, until your service is cancelled. See your license agreement for more details.</p>
-            <h2>Database-Service Documentation</h2>
-			<p>The Splice Machine Documentation is divided into three main areas, each of which contains multiple sections, as shown in the following table. The Splice Machine topics apply to all products, and the DB-Service Only topics are specific to this product.</p>
-            <table summary="Links to and descriptions of the section in the Splice Machine documentation suite.">
-                <col  />
-                <col  />
-				<col  />
-                <thead>
-                    <tr >
-						<th >Menu</th>
-                        <th >Section</th>
-                        <th >Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-					<tr>
-						<td rowspan=7>Splice Machine</td>
-						<td><a href="index.html">Welcome</a></td>
-						<td>Introduction to our main documentation, which contains the main sections that apply to all Splice Machine products.</td>
-					</tr>
-					<tr>
-						<td><a href="tutorials_intro.html">Tutorials</a></td>
-						<td>A collection of tutorials that walk you through numerous specific tasks to help you quickly learn how to use your Splice Machine database more productively.</td>
-					</tr>
-					<tr>
-						<td><a href="sqlref_intro.html">SQL Reference Manual</a></td>
-						<td>The reference manual for the Splice Machine implementation of SQL.</td>
-					</tr>
-					<tr>
-						<td><a href="developers_intro.html">Developer's Manual</a></td>
-						<td>Topics of interest to all developers working with Splice Machine.</td>
-					</tr>
-					<tr>
-						<td><a href="dbconsole_intro.html">Database Console Guide</a></td>
-						<td>An introduction to the Splice Machine Spark Database Console.</td>
-					</tr>
-					<tr>
-						<td><a href="releasenotes_intro.html">Release Notes</a></td>
-						<td>Release and update notes for Splice Machine products.</td>
-					</tr>
-					<tr>
-						<td><a href="notes_intro.html">Other Notes</a></td>
-						<td>A loose collection of useful topics, including our glossary and how to use this documentation.</td>
-					</tr>
-					<tr>
-						<td rowspan=4>DB-Service Only</td>
-						<td><a href="dbaas_intro.html">Welcome</a></td>
-						<td>Introduction to our documentation sections that apply only to our cloud-managed database service product.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_cm_intro.html">Cloud Manager Guide</a></td>
-						<td>A guide to our Cloud Manager, which is the Dashboard from which you create, manage, and use your clusters.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_zep_intro.html">Using Zeppelin</a></td>
-						<td>A guide to using Zeppelin notebooks to work with your Splice Machine databases.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_info_release.html">Release Notes</a></td>
-						<td>Release notes for our Database-as-Service product.</td>
-					</tr>
-					<tr>
-						<td rowspan=5>On-Premise-DB Only</td>
-						<td><a href="onprem_intro.html">Welcome</a></td>
-						<td>Introduction to our documentation sections that apply only to our on-premise database product.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_install_intro.html">Installation</a></td>
-						<td>Step-by-step instructions for installing the on-premise version of Splice Machine on compatible platforms.</td>
-					</tr>
-					<tr>
-						<td><a href="cmdlineref_intro.html">splice> Command Line Reference</a></td>
-						<td>The reference manual for our on-premise Splice Machine command line interface.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_admin_intro.html">Administrator's Guide</a></td>
-						<td>Topics that describe the administrative tasks associated with configuring and maintaining your on-premise Splice Machine database.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_info_release.html">Release Notes</a></td>
-						<td>Release notes for our On-Premise-Db product.</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<h3>Using our Documentation</h3>
-			<p>Please visit our <a href="notes_usingdocs.html">Documentation Summary</a> page for a quick introduction to navigating and using the components of our documentation system.</p>
+            <p>You can learn more about configuring your database in our <a href="dbaas_cm_initialstartup.html">cluster creation</a>. Or simply click <span class="ConsoleLink">Create Cluster</span> in your Splice Machine Database Service dashboard.
+            <h2>Learning More</h2>
+            <p>Our <a href="dbaas_serviceoverview">Service Overview</a> page describes our service availability and support offerings.</p>
+            <p>Our <a href="dbaas_uioverview">User Interface Overview</a> page introduces our service user interface.</p>
+            <p>Our <a href="dbaas_docsoverview">Documentation Summary</a> page summarizes the documentation for your database service.</p>
         </div>
 	</section>
 
@@ -812,7 +644,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 28, 2017 <br />
+ Site last generated: Jul 31, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

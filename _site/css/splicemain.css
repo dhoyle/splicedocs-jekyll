@@ -2078,7 +2078,8 @@ span.varName {
   span.varName a:link {
     color: #3390db; }
 
-table {
+table,
+table.noBorder {
   table-layout: auto;
   border: 1px solid #8d9090;
   border-collapse: collapse;
@@ -2086,25 +2087,31 @@ table {
   margin: 20px 40px 20px 40px;
   word-wrap: break-word;
   overflow: auto; }
-  table caption {
+  table caption,
+  table.noBorder caption {
     text-align: center;
     padding-left: 10px;
     padding-bottom: 10px;
     font-weight: 600;
     font-size: 1.05em; }
-  table td {
+  table td,
+  table.noBorder td {
     border: 1px solid #8d9090;
     padding: 8px;
     text-align: left;
     vertical-align: top;
     word-wrap: break-word;
     overflow: auto; }
-  table td p:first-child {
+  table td p:first-child,
+  table.noBorder td p:first-child {
     margin-top: 0; }
   table td > ul > li:first-of-type,
-  table td > ol > li:first-of-type {
+  table td > ol > li:first-of-type,
+  table.noBorder td > ul > li:first-of-type,
+  table.noBorder td > ol > li:first-of-type {
     margin-top: 0; }
-  table th {
+  table th,
+  table.noBorder th {
     border: 1px solid #8d9090;
     padding: 8px;
     text-align: left;
@@ -2115,20 +2122,32 @@ table {
     font-style: normal;
     font-weight: 600;
     background-color: #dcdcdc; }
-    table th .center {
+    table th .center,
+    table.noBorder th .center {
       text-align: center; }
-    table th .smallText {
+    table th .smallText,
+    table.noBorder th .smallText {
       font-size: 0.9em;
       line-height: 1em; }
-  table div.preWrapper {
+  table div.preWrapper,
+  table.noBorder div.preWrapper {
     max-width: 65%; }
-  table div.preWrapperWide {
+  table div.preWrapperWide,
+  table.noBorder div.preWrapperWide {
     max-width: 95%; }
-  table img {
+  table img,
+  table.noBorder img {
     border: none;
     width: auto;
     height: auto;
     margin: 0; }
+
+table.noBorder {
+  border: none; }
+  table.noBorder td {
+    border: none; }
+  table.noBorder th {
+    border: none; }
 
 table td.AppFont {
   background-color: #fffdf5;
@@ -2267,6 +2286,33 @@ table td.smallText {
   font-size: 0.9em;
   text-transform: none;
   line-height: 1em; }
+
+table td.SpliceRelease {
+  background-color: #fcf8f0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.SplicePlatform {
+  background-color: #fffdf5;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #4a4f54;
+  font-size: 1em;
+  text-transform: none; }
+
+table td.SpliceParcel {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #f39939;
+  font-size: 1em;
+  text-transform: none; }
 
 table.featureList {
   table-layout: auto;
