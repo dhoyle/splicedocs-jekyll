@@ -31,24 +31,24 @@ folder: Developers/Fundamentals
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span>
+                        <td><span class="CodeFont"><a href="sqlref_statements_createtemptable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span>
                         </td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span> {
       ( {<span class="ItalicFont">column-definition</span> | <span class="ItalicFont">Table-level constraint</span>}
          [ , {<span class="ItalicFont">column-definition</span>} ] * )
-      ( <span class="ItalicFont">column-name</span> [ , <span class="ItalicFont">column-name</span> ] * ) 
+      ( <span class="ItalicFont">column-name</span> [ , <span class="ItalicFont">column-name</span> ] * )
   }
   [NOLOGGING | ON COMMIT PRESERVE ROWS];</pre>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="CodeFont"><a href="sqlref_expressions_table.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span>
+                        <td><span class="CodeFont"><a href="sqlref_statements_globaltemptable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span>
                         </td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">DECLARE GLOBAL TEMPORARY TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span>
-   { <span class="ItalicFont">column-definition</span>[ , <span class="ItalicFont">column-definition</span>] * }  
+   { <span class="ItalicFont">column-definition</span>[ , <span class="ItalicFont">column-definition</span>] * }
     [ON COMMIT PRESERVE ROWS ]
     [NOT LOGGED];
 </pre>
@@ -83,10 +83,10 @@ folder: Developers/Fundamentals
             <ul>
                 <li>persist across transactions in a session</li>
                 <li>are automatically dropped when a session terminates or expires</li>
-                <li>can also be dropped with the <span class="CodeFont"><a href="sqlref_expressions_table.html">DROP&#160;TABLE</a></span>&#160;statement</li>
+                <li>can also be dropped with the <span class="CodeFont"><a href="sqlref_statements_droptable.html">DROP&#160;TABLE</a></span>&#160;statement</li>
             </ul>
             <h2>Example</h2><pre class="Example" xml:space="preserve">create local temporary table temp_num_dt (
-   smallint_col smallint not null,   
+   smallint_col smallint not null,
    int_col int,
    primary key(smallint_col)) on commit preserve rows;
 insert into temp_num_dt values (1,1);
@@ -96,12 +96,12 @@ select * from temp_num_dt;
 </pre>
             <h2>See Also</h2>
             <ul>
-                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">ALTER&#160;TABLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">DROP TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_statements_altertable.html">ALTER&#160;TABLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_statements_createtemptable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_statements_globaltemptable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_statements_droptable.html">DROP TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
                 <li><span class="CodeFont"><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></span>&#160;statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_expressions_table.html">RENAME&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><span class="CodeFont"><a href="sqlref_statements_renametable.html">RENAME&#160;TABLE</a></span> statement in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
             </ul>
         </div>
 	</section>

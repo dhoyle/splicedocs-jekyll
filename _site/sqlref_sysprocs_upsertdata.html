@@ -594,7 +594,7 @@
             
             
             
-            <li><a href="sqlref_statements_dependencies.html">Dependencies</a></li>
+            <li><a href="sqlref_statements_interactions.html">Dependencies</a></li>
             
             
             
@@ -769,7 +769,7 @@
             
             
             
-            <li><a href="sqlref_statements_updatetable.html">UPDATE TABLE</a></li>
+            <li><a href="sqlref_statements_update.html">UPDATE TABLE</a></li>
             
             
             
@@ -978,7 +978,7 @@
             
             
             
-            <li><a href="sqlref_joins_intro.html">Introduction</a></li>
+            <li><a href="sqlref_joinops_intro.html">Introduction</a></li>
             
             
             
@@ -2034,7 +2034,7 @@
             
             
             
-            <li><a href="sqlref_sysprocs_restorenapshot.html">RESTORE_SNAPSHOT</a></li>
+            <li><a href="sqlref_sysprocs_restoresnapshot.html">RESTORE_SNAPSHOT</a></li>
             
             
             
@@ -2125,7 +2125,7 @@
             
             
             
-            <li><a href="sqlref_sysprocs_vacuumtable.html">VACUUM_TABLE</a></li>
+            <li><a href="sqlref_sysprocs_vacuum.html">VACUUM</a></li>
             
             
             
@@ -2204,7 +2204,7 @@
             
             
             
-            <li><a href="sqlref_systables_syscongloms.html">SYSCONGLOMERATES system table</a></li>
+            <li><a href="sqlref_systables_sysconglomerates.html">SYSCONGLOMERATES system table</a></li>
             
             
             
@@ -2626,7 +2626,7 @@
             
             
             
-            <li><a href="sqlref_errcodes_classxscg0.html">Class XSCG0 - Conglomerate</a></li>
+            <li><a href="sqlref_errcodes_classxscgo.html">Class XSCG0 - Conglomerate</a></li>
             
             
             
@@ -2910,14 +2910,14 @@
                 </ul>
                 <p class="noteNote">Multi-line record files are slower to load, because the file cannot be split and processed in parallel; if you import a directory of multiple line files, each file as a whole is processed in parallel, but no splitting takes place.</p>
                 <p class="paramName">charset</p>
-                <p class="paramDefnFirst">The character encoding of the import file. The default value is UTF-8. Currently, any other value is ignored and UTF-8 is used. 
+                <p class="paramDefnFirst">The character encoding of the import file. The default value is UTF-8. Currently, any other value is ignored and UTF-8 is used.
                 </p>
             </div>
         </div>
         <h2><a name="Importin"></a>Importing Data from AWS</h2>
         <p>If you are importing data that is stored in an S3 bucket on Amazon Web Services (<span class="ItalicFont">AWS</span>), you need to specify the file location in an <span class="CodeFont">s3a</span> URL that includes the access key and secret access key for the bucket. </p>
         <div class="notePlain">
-            <p>Please review our <a href="developers_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial to make sure you've set up access permissions that allow Splice Machine to access the bucket.</p>
+            <p>Please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial to make sure you've set up access permissions that allow Splice Machine to access the bucket.</p>
         </div>
         <p>You can include the access keys inline; for example:</p>
         <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(<span class="Highlighted">access key</span>):(<span class="Highlighted">secret key</span>)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, '/Users/hive', true, null);</pre>
@@ -3260,7 +3260,7 @@ This is the second line of the field',Baker
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 31, 2017 <br />
+ Site last generated: Aug 1, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

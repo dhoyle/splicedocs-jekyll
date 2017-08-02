@@ -11,19 +11,19 @@ folder: OnPrem/InstallingSpliceMachine
 {% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
-            <h1 id="DeployingStandalone">Installing the Standalone Version of Splice&#160;Machine</h1>
+            <h1 id="DeployingStandalone">Installing the Standalone Version of Splice Machine</h1>
 {% include splice_snippets/onpremonlytopic.html %}
             <p>This topic walks you through downloading, installing, and getting started with using the standalone version of Splice Machine. </p>
             <h2>About the Standalone Version</h2>
             <p>The standalone version of Splice Machine runs on a single computer, rather than on a cluster; it is intended to allow you to get your feet wet with Splice Machine. The standalone version installs quickly on your MacOS, Linux, or CentOS computer, and enables rapid access to Splice Machine's capabilities. It's an excellent way to experiment with Splice Machine with a reasonably small amount of data.</p>
             <p>Note that many of our customers also use the standalone version of Splice Machine for ongoing development work. For example, if your engineers want to create stored procedures to optimize aspects of your database, they can develop and debug those procedures on the standalone version before deploying them to your cluster.</p>
             <p>This topic walks you through getting the standalone version of Splice Machine installed on your computer. Because Splice Machine is a Java application, youll have to meet some prerequisites for the way your computer supports Java. You may already have created these settings for other Java applications, but just to be sure, we list them in this tutorial for each of the supported operating systems.</p>
-            <p>You can <a href="#Watch">watch the video version</a> of getting Splice&#160;Machine installed on your computer, or <a href="#Follow">follow the written instructions</a>.</p>
+            <p>You can <a href="#Watch">watch the video version</a> of getting Splice Machine installed on your computer, or <a href="#Follow">follow the written instructions</a>.</p>
             <div class="noteNote">Many other Big Data applications and services like <a href="https://hbase.apache.org/"  target="_blank">HBase</a>, <a href="https://kafka.apache.org/"  target="_blank">Kafka</a>, <a href="http://hadoop.apache.org/"  target="_blank">Hadoop</a>, <a href="https://prometheus.io"  target="_blank">Prometheus</a>, and <a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"  target="_blank">even parts of the ELK stack</a> are also written (at least partially) in Java, and so they require these extra Java setup steps as well.</div>
 {% if site.incl_notpdf %}
             <div class="videoEnvelope">
                 <h2 id="Watch">Watch the Video Version</h2>
-                <p>This&#160;video walks you through setting up <span class="CodeFont">$JAVA_HOME</span> on MacOS, then configuring installation prerequisites for each of the operating systems below. We'll also do a quick install and sanity check on Splice Machine.</p>
+                <p>This video walks you through setting up <span class="CodeFont">$JAVA_HOME</span> on MacOS, then configuring installation prerequisites for each of the operating systems below. We'll also do a quick install and sanity check on Splice Machine.</p>
                 <p><iframe class="youtube-player_0" src="https://www.youtube.com/embed/Pb25HRnPAbs?" frameborder="0" allowfullscreen="1" width="560px" height="315px"></iframe>
                 </p>
             </div>
@@ -38,9 +38,9 @@ folder: OnPrem/InstallingSpliceMachine
                 <li><a href="#Start">Start Using Splice Machine</a>
                 </li>
             </ul>
-            <p>Note that we have also created a <a href="onprem_install_installdemodata.html">short tutorial that shows you how to import the demo data</a> included in our installation. We recommend that you follow the steps in this tutorial to import and then run a few test queries against the demo data to start experiencing the full power of Splice Machine.</p>
+            <p>Note that we have also created a <a href="onprem_install_demodata.html">short tutorial that shows you how to import the demo data</a> included in our installation. We recommend that you follow the steps in this tutorial to import and then run a few test queries against the demo data to start experiencing the full power of Splice Machine.</p>
             <h3 id="Prepare">Prepare for Installation on Your Computer</h3>
-            <p>This section walks you through preparing your computer for installation of Splice&#160;Machine; follow the instructions for your operating system:</p>
+            <p>This section walks you through preparing your computer for installation of Splice Machine; follow the instructions for your operating system:</p>
             <ul>
                 <li><a href="#Configur">Mac OSX</a>
                 </li>
@@ -101,13 +101,13 @@ $ brew install rlwrap</pre>
                     </li>
                 </ol>
             </div>
-            <h4 id="Configur2">Configure Ubuntu Linux for Splice&#160;Machine</h4>
+            <h4 id="Configur2">Configure Ubuntu Linux for Splice Machine</h4>
             <p>Follow these steps to prepare your Ubuntu computer to work with Splice Machine:</p>
             <div class="noteNote">		Installing on Linux can be a bit tricky, so please use the <span class="CodeFont">pwd</span> command to ensure that you are in the directory in which you need to be.</div>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
-                        <p class="topLevel">Install the Java SE&#160;Development Kit</p>
+                        <p class="topLevel">Install the Java SE Development Kit</p>
                         <p class="indentLevel1">Fire up the <span class="CodeFont">Terminal</span> app and enter the following commands:</p>
                         <div class="preWrapper"><pre class="ShellCommand">$ sudo add-apt-repository ppa:webupd8team/java<br />$ sudo apt-get update<br />$ sudo apt-get install oracle-java8-installer
 $ sudo apt install oracle-java8-set-default</pre>
@@ -190,18 +190,18 @@ $ sudo apt install oracle-java8-set-default</pre>
                         <div class="preWrapperWide"><pre class="ShellCommand">$ sudo service nscd start  &amp;&amp; service ntp start  &amp;&amp; service ssh start</pre>
                         </div>
                         <p>Finally, you can check that the services are running with the following command:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">$ service&#160;&lt;service_name&gt;&#160;status</pre>
+                        <div class="preWrapperWide"><pre class="ShellCommand">$ service &lt;service_name&gt; status</pre>
                         </div>
                     </li>
                 </ol>
             </div>
-            <h4 id="Configur3">Configure CentOS/Red Hat Enterprise Linux (RHEL) for Splice&#160;Machine</h4>
-            <p>Follow these steps to prepare your RHEL&#160;computer to work with Splice Machine:</p>
+            <h4 id="Configur3">Configure CentOS/Red Hat Enterprise Linux (RHEL) for Splice Machine</h4>
+            <p>Follow these steps to prepare your RHEL computer to work with Splice Machine:</p>
             <div class="noteNote">		Installing on Linux can be a bit tricky, so please use the <span class="CodeFont">pwd</span> command to ensure that you are in the directory in which you need to be.</div>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
-                        <p class="topLevel">Install the Java SE&#160;Development Kit</p>
+                        <p class="topLevel">Install the Java SE Development Kit</p>
                         <p class="indentLevel1">Fire up the <span class="CodeFont">Terminal</span> app and enter the following commands:</p>
                         <p>To install JDK 8, run one of the following sets of commands:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand">$ cd /opt/<br />$ wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz"<br />$ tar xzf jdk-8u121-linux-i586.tar.gz</pre>
@@ -215,7 +215,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                     </li>
                     <li>
                         <p class="topLevel">Set up sudo rights</p>
-                        <p>Your User ID&#160;must be in the <span class="CodeFont">sudoers</span> file. To do so, please see the following web page:</p>
+                        <p>Your User ID must be in the <span class="CodeFont">sudoers</span> file. To do so, please see the following web page:</p>
                         <div class="preWrapperWide"><pre class="Plain"><a href="https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos"  target="_blank">https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos</a></pre>
                         </div>
                     </li>
@@ -255,7 +255,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                         <p>curl, nscd, ntp, openssh, openssh-clients, openssh-server, patch, rlwrap, wget, ftp, nc, EPEL repository</p>
                         <ul class="plainFont">
                             <li>curl</li>
-                            <li>EPEL&#160;repository</li>
+                            <li>EPEL repository</li>
                             <li>ftp</li>
                             <li>nc</li>
                             <li>nscd</li>
@@ -280,7 +280,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                                 </div>
                             </li>
                             <li>
-                                <p>To install EPEL&#160;repository:</p>
+                                <p>To install EPEL repository:</p>
                                 <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ yum -y install epel-release</pre>
                                 </div>
                             </li>
@@ -309,23 +309,23 @@ $ sudo apt install oracle-java8-set-default</pre>
                 </ol>
             </div>
             <h3 id="Install">Install Splice Machine</h3>
-            <p>Now that you've got your system configured for Splice&#160;Machine, let's download and install the standalone version of Splice&#160;Machine, and start using it!</p>
+            <p>Now that you've got your system configured for Splice Machine, let's download and install the standalone version of Splice Machine, and start using it!</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
-                        <p class="topLevel">Download the Splice&#160;Machine installer.</p>
-                        <p class="indentLevel1">Visit this page:&#160;<span class="CodeFont"><a href="https://www.splicemachine.com/get-started/download/"  target="_blank">https://www.splicemachine.com/get-started/download/</a></span>.</p>
+                        <p class="topLevel">Download the Splice Machine installer.</p>
+                        <p class="indentLevel1">Visit this page: <span class="CodeFont"><a href="https://www.splicemachine.com/get-started/download/"  target="_blank">https://www.splicemachine.com/get-started/download/</a></span>.</p>
                     </li>
                     <li>
-                        <p class="topLevel">Copy the downloaded tarball (.gz file)&#160;to the directory on your computer in which you want to install Splice&#160;Machine</p>
+                        <p class="topLevel">Copy the downloaded tarball (.gz file) to the directory on your computer in which you want to install Splice Machine</p>
                         <p class="indentLevel1">You should only install in a directory whose name does not contain spaces, because some scripts will not operate correctly if the working directory has spaces in its name.</p>
                     </li>
                     <li>
-                        <p class="topLevel">Install Splice&#160;Machine:</p>
+                        <p class="topLevel">Install Splice Machine:</p>
                         <p class="indentLevel1">Unpack the tarball <span class="CodeFont">gz</span> file that you downloaded:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">tar -xzf {{splvar_platform_StandaloneInstallerTarball}}</pre>
                         </div>
-                        <p class="indentLevel1">This creates a <span class="CodeFont">splicemachine</span> subdirectory and installs Splice&#160;Machine software in it.</p>
+                        <p class="indentLevel1">This creates a <span class="CodeFont">splicemachine</span> subdirectory and installs Splice Machine software in it.</p>
                     </li>
                 </ol>
             </div>
@@ -351,14 +351,14 @@ $ sudo apt install oracle-java8-set-default</pre>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">
 ./bin/sqlshell.sh</pre>
                         </div>
-                        <p>Once you have launched the command line interpreter (the <span class="AppCommand">splice&gt;</span>&#160;prompt), we recommend verifying that all is well by running a few sample commands. First:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;show tables;</pre>
+                        <p>Once you have launched the command line interpreter (the <span class="AppCommand">splice&gt;</span> prompt), we recommend verifying that all is well by running a few sample commands. First:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt; show tables;</pre>
                         </div>
                         <p>You'll see the names of the tables that are already defined in the Splice Machine database; namely, the system tables. Once that works, you know Splice Machine is alive and well on your computer, and you can use help to list the available commands:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;help;</pre>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt; help;</pre>
                         </div>
-                        <p>When you're ready to exit Splice&#160;Machine:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;exit;</pre>
+                        <p>When you're ready to exit Splice Machine:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt; exit;</pre>
                         </div>
                         <div class="indented">
                             <div class="noteNote"><span class="BoldFont">Make sure you end each command with a semicolon</span> (<span class="CodeFont">;</span>), followed by the <span class="ItalicFont">Enter</span> key or <span class="ItalicFont">Return</span> key.</div>
@@ -376,7 +376,7 @@ $ sudo apt install oracle-java8-set-default</pre>
             <ul>
                 <li>Note that we have also created a <a href="onprem_install_installdemodata.html">short tutorial that shows you how to import the demo data</a> included in our installation. We recommend that you follow the steps in this tutorial to import and then run a few test queries against the demo data to start experiencing the full power of Splice Machine.</li>
                 <li>Documentation - Start Here: <a href="index.html">Documentation Home Page</a></li>
-                <li>Tutorials: <a href="https//doc.splicemachine.com/tutorials_intro.html">Tutorials Home Page</a></li>
+                <li>Tutorials: <a href="tutorials_intro.html">Tutorials Home Page</a></li>
             </ul>
             <p>
 

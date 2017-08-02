@@ -594,7 +594,7 @@
             
             
             
-            <li><a href="sqlref_statements_dependencies.html">Dependencies</a></li>
+            <li><a href="sqlref_statements_interactions.html">Dependencies</a></li>
             
             
             
@@ -769,7 +769,7 @@
             
             
             
-            <li><a href="sqlref_statements_updatetable.html">UPDATE TABLE</a></li>
+            <li><a href="sqlref_statements_update.html">UPDATE TABLE</a></li>
             
             
             
@@ -978,7 +978,7 @@
             
             
             
-            <li><a href="sqlref_joins_intro.html">Introduction</a></li>
+            <li><a href="sqlref_joinops_intro.html">Introduction</a></li>
             
             
             
@@ -2034,7 +2034,7 @@
             
             
             
-            <li><a href="sqlref_sysprocs_restorenapshot.html">RESTORE_SNAPSHOT</a></li>
+            <li><a href="sqlref_sysprocs_restoresnapshot.html">RESTORE_SNAPSHOT</a></li>
             
             
             
@@ -2125,7 +2125,7 @@
             
             
             
-            <li><a href="sqlref_sysprocs_vacuumtable.html">VACUUM_TABLE</a></li>
+            <li><a href="sqlref_sysprocs_vacuum.html">VACUUM</a></li>
             
             
             
@@ -2204,7 +2204,7 @@
             
             
             
-            <li><a href="sqlref_systables_syscongloms.html">SYSCONGLOMERATES system table</a></li>
+            <li><a href="sqlref_systables_sysconglomerates.html">SYSCONGLOMERATES system table</a></li>
             
             
             
@@ -2626,7 +2626,7 @@
             
             
             
-            <li><a href="sqlref_errcodes_classxscg0.html">Class XSCG0 - Conglomerate</a></li>
+            <li><a href="sqlref_errcodes_classxscgo.html">Class XSCG0 - Conglomerate</a></li>
             
             
             
@@ -2754,7 +2754,7 @@
   	<section>
 		<div class="TopicContent">
             <h1 id="Clauses.Constraint">CONSTRAINT</h1>
-            <p>A <span class="CodeFont">CONSTRAINT</span> clause is a rule to which data must conform, and is an optional part of <a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER TABLE</span></a> statements. Constraints can optionally be named.</p>
+            <p>A <span class="CodeFont">CONSTRAINT</span> clause is a rule to which data must conform, and is an optional part of <a href="sqlref_clauses_constraint.html"><span class="CodeFont">ALTER TABLE</span></a> statements. Constraints can optionally be named.</p>
             <p>There are two types of constraints:</p>
             <div class="paramList">
                 <p class="paramName">column-level constraints</p>
@@ -2793,7 +2793,7 @@ REFERENCES clause
                 <p class="paramName">PRIMARY KEY</p>
                 <p class="paramDefnFirst">Specifies the column that uniquely identifies a row in the table. The identified columns must be defined as <span class="CodeFont">NOT NULL</span>.</p>
                 <div class="noteNote">At this time, you <span class="BoldFont">cannot</span> add a primary key using <span class="CodeFont">ALTER TABLE</span>. </div>
-                <div class="noteNote">If you attempt to add a primary key using <span class="CodeFont">ALTER TABLE</span> and any of the columns included in the primary key contain null values, an error will be generated and the primary key will not be added. See <a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER TABLE</span> statement</a> for more information.</div>
+                <div class="noteNote">If you attempt to add a primary key using <span class="CodeFont">ALTER TABLE</span> and any of the columns included in the primary key contain null values, an error will be generated and the primary key will not be added. See <a href="sqlref_statements_altertable.html"><span class="CodeFont">ALTER TABLE</span> statement</a> for more information.</div>
                 <p class="paramName">UNIQUE</p>
                 <p class="paramDefnFirst">Specifies that values in the column must be unique.</p>
                 <p class="paramName">FOREIGN KEY</p>
@@ -2875,7 +2875,7 @@ REFERENCES clause
 	meets the requirements specified below. If a <span class="ItalicFont">constraint-Name</span> is not specified, Splice Machine generates
 	a unique constraint name (for either column or table constraints).</p>
             <h3>Requirements for search condition</h3>
-            <p>If a check constraint is specified as part of a column-definition, a column reference can only be made to the same column. Check constraints specified as part of a table definition can have column references identifying columns previously defined in the <span class="CodeFont"><a href="sqlref_expressions_table.html">CREATE TABLE</a></span> statement.</p>
+            <p>If a check constraint is specified as part of a column-definition, a column reference can only be made to the same column. Check constraints specified as part of a table definition can have column references identifying columns previously defined in the <span class="CodeFont"><a href="sqlref_statements_createtable.html">CREATE TABLE</a></span> statement.</p>
             <p> The search condition must always return the same value if applied to the same values. Thus, it cannot contain any of the following:</p>
             <ul>
                 <li>Dynamic parameters</li>
@@ -2937,20 +2937,20 @@ PRIMARY KEY (FLIGHT_ID, SEGMENT_NUMBER)
             </div>
             <h2>Statement dependency system</h2>
             <p><span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span>
-	and <span class="CodeFont"><a href="sqlref_expressions_table.html">UPDATE</a></span> statements depend on all constraints on the target table.</p>
+	and <span class="CodeFont"><a href="sqlref_statements_update.html">UPDATE</a></span> statements depend on all constraints on the target table.</p>
             <p><span class="CodeFont"><a href="sqlref_statements_delete.html">DELETE</a></span> statements
 	depend on unique<span>, primary key, and foreign key constraints</span>. </p>
             <p>These statements
 	are invalidated if a constraint is added to or dropped from the target table.</p>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_expressions_table.html"><span class="CodeFont">ALTER&#160;TABLE</span></a>&#160;statement</li>
-                <li><a href="sqlref_expressions_table.html"><span class="CodeFont">CREATE&#160;TABLE</span></a>&#160;statement</li>
+                <li><a href="sqlref_statements_altertable.html"><span class="CodeFont">ALTER&#160;TABLE</span></a>&#160;statement</li>
+                <li><a href="sqlref_statements_createtable.html"><span class="CodeFont">CREATE&#160;TABLE</span></a>&#160;statement</li>
                 <li><a href="sqlref_statements_insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
                 <li><a href="sqlref_statements_delete.html"><span class="CodeFont">DELETE</span></a>&#160;statement</li>
                 <li><a href="developers_fundamentals_foreignkeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
                 <li><a href="developers_fundamentals_triggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
-                <li><a href="sqlref_expressions_table.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
+                <li><a href="sqlref_statements_update.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
             </ul>
         </div>
 	</section>
@@ -2970,7 +2970,7 @@ PRIMARY KEY (FLIGHT_ID, SEGMENT_NUMBER)
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 31, 2017 <br />
+ Site last generated: Aug 1, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

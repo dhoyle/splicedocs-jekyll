@@ -479,7 +479,7 @@
                     <tr >
                         <td ><span class="BoldFont">Salaries</span>
                         </td>
-                        <td >The salary for each player ID&#160;for each season.</td>
+                        <td >The salary for each player ID for each season.</td>
                     </tr>
                     <tr >
                         <td ><span class="BoldFont">Batting</span>
@@ -499,7 +499,6 @@
                 </tbody>
             </table>
             <p>The tables were populated with data found on the Internet, primarily from the <a href="http://www.baseball-reference.com/"  target="_blank">baseball-reference.com</a> site.</p>
-            <p>If you want to import these tables into your Splice Machine database to try any examples yourself, follow the simple instructions in the <a href="#Importin" class="selected">Importing the Documentation Examples Database</a> at the end of this topic.</p>
             <h2>Table Schemas</h2>
             <p>Our example tables are all stored in a schema named <span class="CodeFont">SPLICEBBALL</span>. This section describes the fields in each of our <span class="AppCommand">DocsExamplesDb</span> tables.</p>
             <h3>The Players Table</h3>
@@ -732,7 +731,7 @@
                         <td class="CodeFont">OnBasePlusSlugging</td>
                         <td class="CodeFont">DECIMAL</td>
                         <td>
-                            <p class="noSpaceAbove">The OPS&#160;for the player.</p>
+                            <p class="noSpaceAbove">The OPS for the player.</p>
                             <p>This value is computed by a triggered function.</p>
                         </td>
                     </tr>
@@ -820,12 +819,12 @@
                     <tr>
                         <td class="CodeFont">RangeFactorPerNine</td>
                         <td class="CodeFont">DECIMAL</td>
-                        <td>A&#160;fielding metric that evaluates the average number of putouts and assists per nine innings,</td>
+                        <td>A fielding metric that evaluates the average number of putouts and assists per nine innings,</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">RangeFactorPerGame</td>
                         <td class="CodeFont">DECIMAL</td>
-                        <td>A&#160;fielding metric that evaluates the average number of putouts and assists per game played,</td>
+                        <td>A fielding metric that evaluates the average number of putouts and assists per game played,</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">PassedBalls</td>
@@ -996,7 +995,7 @@
                     <tr>
                         <td class="CodeFont">FieldingIndependent</td>
                         <td class="CodeFont">DECIMAL</td>
-                        <td>A metric (FIP)&#160;for pitchers that determines the quality of a pitcher's performance by eliminating plate appearance outcomes that involve defensive play.</td>
+                        <td>A metric (FIP) for pitchers that determines the quality of a pitcher's performance by eliminating plate appearance outcomes that involve defensive play.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">ERA</td>
@@ -1056,42 +1055,6 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Importin">Importing the Documentation Examples Database</h2>
-            <p>This topic describes how to import our documentation database tables into your database, if you want to try any of the examples. Follow these steps to import the tables into your database:</p>
-            <div class="opsStepsList">
-                <ol>
-                    <li>Download the <a href="../Resources/DocExamplesDb/2.0/DocExamplesDb.tar.gz">Documentation Examples Database</a> tarball and copy it to your <span class="AppCommand">splicemachine</span> directory.</li>
-                    <li>
-                        <p>Decompress the tarball with the following command:</p>
-                        <div class="preWrapper"><pre class="Example" xml:space="preserve">tar -xvf DocExamplesDb.tar.gz</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p>If Splice&#160;Machine is not yet started, start it; for example:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">./bin/start-splice.sh
-</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p>At the splice&gt;&#160;prompt, run the sql commands to create the SPLICEBBALL&#160;scheam, and to create and import data into the doc examples database:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;run 'DocExamplesDb/CreateDocExamplesDb.sql';</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p>Verify that the examples tables have been created:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;show tables in SPLICEBBALL;</pre>
-                        </div>
-                        <p>The list of tables should include these tables:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">BATTING
-FIELDING
-PITCHING
-PLAYERS
-SALARIES</pre>
-                        </div>
-                    </li>
-                </ol>
-                <div class="noteIcon">You can use the <span class="CodeFont">SET&#160;SCHEMA</span>&#160;command to set the current schema to <span class="CodeFont">SPLICEBBALL</span>&#160;if you want to run SQL&#160;operations without explicitly specifying the schema:<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="AppCommand">splice&gt;&#160;SET&#160;SCHEMA&#160;SPLICEBBALL;</span></div>
-            </div>
         </div>
 	</section>
 
@@ -1110,7 +1073,7 @@ SALARIES</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 31, 2017 <br />
+ Site last generated: Aug 1, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

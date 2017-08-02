@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Gets you started with using and optimizing your queries with Splice Machine.">
-<meta name="keywords" content=" ">
+<meta name="keywords" content=" optimizing, explain plan, statistics, indexes, hints, query hints, select without table, index hint, join order hint, join strategy hint, pinned table hint, spark hint, usespark, delete hint, bulk delete, hfile delete, delete hfile">
 <title>Query Optimization | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -847,7 +847,7 @@ WHERE...</pre>
 <div class="preWrapperWide">
 <pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>PIN&nbsp;TABLE&nbsp;myTable;<br /><span class="AppCommand">splice&gt; </span>SELECT&nbsp;COUNT(*) FROM my_table --splice-properties pin=true<br /><span class="AppCommand">&gt; </span>;</pre>
 </div>
-<p class="indentLevel1">You can read more about pinning tables in the <span class="CodeFont"><a href="sqlref_expressions_table.html">PIN&nbsp;TABLE</a></span>&nbsp;statement topic in our <span class="ItalicFont">SQL&nbsp;Reference Guide</span>.</p>
+<p class="indentLevel1">You can read more about pinning tables in the <span class="CodeFont"><a href="sqlref_statements_pintable.html">PIN&nbsp;TABLE</a></span>&nbsp;statement topic in our <span class="ItalicFont">SQL&nbsp;Reference Guide</span>.</p>
 <h3 id="Spark">Spark Hints</h3>
 <p class="indentLevel1">You can use the <span class="CodeFont">useSpark</span> hint to specify to the optimizer that you want a query to run on (or not on)&nbsp;Spark. The Splice Machine query optimizer automatically determines whether to run a query through our Spark engine or our HBase engine, based on the type of query; you can override this by using a hint:</p>
 <div class="noteNote">The Splice&nbsp;Machine optimizer uses its estimated cost for a query to decide whether to use spark. If your statistics are out of date, the optimizer may end up choosing the wrong engine for the query.</div>
@@ -885,7 +885,7 @@ WHERE...</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 31, 2017 <br />
+ Site last generated: Aug 1, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

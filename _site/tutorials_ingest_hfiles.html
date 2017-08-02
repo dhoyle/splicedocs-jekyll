@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="How to use our Bulk HFile import feature to rapidly import large datasets into your Splice Machine database.">
-<meta name="keywords" content=" bulk import, bulk data load, hfile import, hfile load, s3, aws">
+<meta name="keywords" content=" bulk import, bulk load, bulk data load, hfile import, hfile load, s3, aws">
 <title>Importing Data into Your Splice Machine Database | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -347,7 +347,7 @@
             
             
             
-            <li><a href="tutorials_ingest_mqttspark.html">MQTT&#160;Spark Streaming</a></li>
+            <li><a href="tutorials_ingest_mqttSpark.html">MQTT&#160;Spark Streaming</a></li>
             
             
             
@@ -572,7 +572,7 @@
                     </div>
                 </li>
                 <li>Store those keys in a CSV&#160;file.</li>
-                <li> If you're using the combination of <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span> and <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>:<ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure to compute the split row keys.</li><li><p>Examine the computed (and encoded)&#160;row keys, which were written to a file named keys in a subdirectory of your <span class="CodeFont">OutputDirectory</span>. </p><p>The name of the subdirectory is the conglomerate ID&#160;for the named table. You can find a table's conglomerate ID&#160;with the <span class="CodeFont"><a href="cmdlineref_cmdshowtables.html">SHOW&#160;TABLES</a></span>&#160;command.&#160;</p></li><li>Copy the encoded keys to your clipboard.</li><li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>&#160;procedure, passing in the row key values from your clipboard. This splits your table inside the database.</li></ol><p>If you are using  the single procedure <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> instead:</p><ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <span class="CodeFont"><a href=".sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
+                <li> If you're using the combination of <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span> and <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>:<ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure to compute the split row keys.</li><li><p>Examine the computed (and encoded)&#160;row keys, which were written to a file named keys in a subdirectory of your <span class="CodeFont">OutputDirectory</span>. </p><p>The name of the subdirectory is the conglomerate ID&#160;for the named table. You can find a table's conglomerate ID&#160;with the <span class="CodeFont"><a href="cmdlineref_showtables.html">SHOW&#160;TABLES</a></span>&#160;command.&#160;</p></li><li>Copy the encoded keys to your clipboard.</li><li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>&#160;procedure, passing in the row key values from your clipboard. This splits your table inside the database.</li></ol><p>If you are using  the single procedure <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> instead:</p><ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
                 <li>Repeat steps 1, 2, and 3 to split the indexes on your table.</li>
                 <li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
             </ol>
@@ -957,7 +957,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jul 31, 2017 <br />
+ Site last generated: Aug 1, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
