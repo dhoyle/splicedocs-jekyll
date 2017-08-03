@@ -18,7 +18,7 @@ folder: OnPrem/InstallingSpliceMachine
                 <ol>
                     <li><a href="#Verify">Verify Prerequisites</a>
                     </li>
-                    <li><a href="#Install">Download and Install Splice&#160;Machine</a>
+                    <li><a href="#Install">Install the Splice Machine Parcel</a>
                     </li>
                     <li><a href="#Stop" class="WithinBook">Stop Hadoop Services</a>
                     </li>
@@ -34,26 +34,24 @@ folder: OnPrem/InstallingSpliceMachine
                     <li><a href="#Run">Verify your Splice Machine Installation</a>
                     </li>
                 </ol>
-                <div class="noteRestriction"> Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark:&#160;you cannot run independent Spark jobs on it.</div>
+                <div class="noteRestriction"> Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark: you cannot run independent Spark jobs on it.</div>
                 <h2 id="Verify">Verify Prerequisites</h2>
                 <p>Before starting your Splice Machine installation, please make sure that your cluster contains the prerequisite software components:</p>
                 <ul>
                     <li>A cluster running Cloudera Data Hub (CDH) with Cloudera Manager (CM)</li>
                     <li>HBase  installed</li>
-                    <li>HDFS&#160;installed</li>
-                    <li>YARN&#160;installed</li>
+                    <li>HDFS installed</li>
+                    <li>YARN installed</li>
                     <li>ZooKeeper installed</li>
-                    <li>Ensure that Spark services are <span class="BoldFont">NOT</span>&#160;installed on your cluster; Splice Machine cannot currently coexist with Spark 1.x on a cluster.</li>
+                    <li>Ensure that Spark services are <span class="BoldFont">NOT</span> installed on your cluster; Splice Machine cannot currently coexist with Spark 1.x on a cluster.</li>
                 </ul>
                 <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
-                <h2 id="Install">Download and Install Splice&#160;Machine</h2>
-                <p>Use Cloudera Manager to download </p>
+                <h2 id="Install">Install the Splice Machine Parcel</h2>
                 <p>Follow these steps to install CDH, Hadoop, Hadoop services, and Splice Machine on your cluster:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
-                        <li>
-                            <p class="topLevel">Contact Splice Machine for your installer</p>
-                            <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are the URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and {{splvar_basic_SplicePrevReleaseVersion}}:</p>
+                        <li>Copy your parcel URL to the clipboard for use in the next step.
+                        <p class="indentLevel1">Which Splice Machine parcel URL you need depends upon which Splice Machine version you're installing and which version of CDH you are using. Here are the URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and {{splvar_basic_SplicePrevReleaseVersion}}:</p>
                             <table>
                                 <col />
                                 <col />
@@ -62,163 +60,42 @@ folder: OnPrem/InstallingSpliceMachine
                                     <tr>
                                         <th>Splice Machine Release</th>
                                         <th>CDH Version</th>
-                                        <th>Parcel Type</th>
                                         <th>Installer Package Link</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                    <tr>
-                                       <td rowspan="13" class="SpliceRelease">2.6.0</td>
-                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
-                                       <td class="SpliceParcel">EL6</td>
-                                       <td><a href="{{splvar_install_v26_CDH583-base}}-el6.parcel">{{splvar_install_v26_CDH583-base}}-el6.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">EL7</td>
-                                       <td><a href="{{splvar_install_v26_CDH583-base}}-el7.parcel">{{splvar_install_v26_CDH583-base}}-el7.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Precise</td>
-                                       <td><a href="{{splvar_install_v26_CDH583-base}}-precise.parcel">{{splvar_install_v26_CDH583-base}}-precise.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">SLES11</td>
-                                       <td><a href="{{splvar_install_v26_CDH583-base}}-sles11.parcel">{{splvar_install_v26_CDH583-base}}-sles11.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Trusty</td>
-                                       <td><a href="{{splvar_install_v26_CDH583-base}}-trusty.parcel">{{splvar_install_v26_CDH583-base}}-trusty.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Wheezy</td>
-                                       <td><a href="{{splvar_install_v26_CDH583-base}}-wheezy.parcel">{{splvar_install_v26_CDH583-base}}-wheezy.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4" class="Separator"> </td>
+                                       <td rowspan="2" class="SpliceRelease">2.6.0</td>
+                                       <td class="SplicePlatform">{{splvar_install_CDH583}}</td>
+                                       <td><a href="{{splvar_install_v26_CDH583}}">{{splvar_install_v26_CDH583}}</a></td>
                                     </tr>
                                    <tr>
-                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH580}}</td>
-                                       <td class="SpliceParcel">EL6</td>
-                                       <td><a href="{{splvar_install_v26_CDH580-base}}-el6.parcel">{{splvar_install_v26_CDH580-base}}-el6.parcel</a></td>
+                                       <td class="SplicePlatform">{{splvar_install_CDH580}}</td>
+                                       <td><a href="{{splvar_install_v26_CDH580}}">{{splvar_install_v26_CDH580}}</a></td>
                                     </tr>
                                     <tr>
-                                       <td class="SpliceParcel">EL7</td>
-                                       <td><a href="{{splvar_install_v26_CDH580-base}}-el7.parcel">{{splvar_install_v26_CDH580-base}}-el7.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Precise</td>
-                                       <td><a href="{{splvar_install_v26_CDH580-base}}-precise.parcel">{{splvar_install_v26_CDH580-base}}-precise.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">SLES11</td>
-                                       <td><a href="{{splvar_install_v26_CDH580-base}}-sles11.parcel">{{splvar_install_v26_CDH580-base}}-sles11.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Trusty</td>
-                                       <td><a href="{{splvar_install_v26_CDH580-base}}-trusty.parcel">{{splvar_install_v26_CDH580-base}}-trusty.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Wheezy</td>
-                                       <td><a href="{{splvar_install_v26_CDH580-base}}-wheezy.parcel">{{splvar_install_v26_CDH580-base}}-wheezy.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4" class="Separator"> </td>
-                                    </tr>
-
-                                   <tr>
-                                       <td rowspan="20" class="SpliceRelease">2.5.0</td>
-                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
-                                       <td class="SpliceParcel">EL6</td>
-                                       <td><a href="{{splvar_install_v25_CDH583-base}}-el6.parcel">{{splvar_install_v25_CDH583-base}}-el6.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">EL7</td>
-                                       <td><a href="{{splvar_install_v25_CDH583-base}}-el7.parcel">{{splvar_install_v25_CDH583-base}}-el7.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Precise</td>
-                                       <td><a href="{{splvar_install_v25_CDH583-base}}-precise.parcel">{{splvar_install_v25_CDH583-base}}-precise.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">SLES11</td>
-                                       <td><a href="{{splvar_install_v25_CDH583-base}}-sles11.parcel">{{splvar_install_v25_CDH583-base}}-sles11.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Trusty</td>
-                                       <td><a href="{{splvar_install_v25_CDH583-base}}-trusty.parcel">{{splvar_install_v25_CDH583-base}}-trusty.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Wheezy</td>
-                                       <td><a href="{{splvar_install_v25_CDH583-base}}-wheezy.parcel">{{splvar_install_v25_CDH583-base}}-wheezy.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4" class="Separator"> </td>
+                                        <td colspan="3" class="Separator"> </td>
                                     </tr>
                                    <tr>
-                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH580}}</td>
-                                       <td class="SpliceParcel">EL6</td>
-                                       <td><a href="{{splvar_install_v25_CDH580-base}}-el6.parcel">{{splvar_install_v25_CDH580-base}}-el6.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">EL7</td>
-                                       <td><a href="{{splvar_install_v25_CDH580-base}}-el7.parcel">{{splvar_install_v25_CDH580-base}}-el7.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Precise</td>
-                                       <td><a href="{{splvar_install_v25_CDH580-base}}-precise.parcel">{{splvar_install_v25_CDH580-base}}-precise.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">SLES11</td>
-                                       <td><a href="{{splvar_install_v25_CDH580-base}}-sles11.parcel">{{splvar_install_v25_CDH580-base}}-sles11.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Trusty</td>
-                                       <td><a href="{{splvar_install_v25_CDH580-base}}-trusty.parcel">{{splvar_install_v25_CDH580-base}}-trusty.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Wheezy</td>
-                                       <td><a href="{{splvar_install_v25_CDH580-base}}-wheezy.parcel">{{splvar_install_v25_CDH580-base}}-wheezy.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4" class="Separator"> </td>
+                                       <td rowspan="2" class="SpliceRelease">2.5.0</td>
+                                       <td class="SplicePlatform">{{splvar_install_CDH583}}</td>
+                                       <td><a href="{{splvar_install_v25_CDH583}}">{{splvar_install_v25_CDH583}}</a></td>
                                     </tr>
                                    <tr>
-                                       <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH572}}</td>
-                                       <td class="SpliceParcel">EL6</td>
-                                       <td><a href="{{splvar_install_v25_CDH572-base}}-el6.parcel">{{splvar_install_v25_CDH572-base}}-el6.parcel</a></td>
+                                       <td class="SplicePlatform">{{splvar_install_CDH580}}</td>
+                                       <td><a href="{{splvar_install_v25_CDH580}}">{{splvar_install_v25_CDH580}}</a></td>
                                     </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">EL7</td>
-                                       <td><a href="{{splvar_install_v25_CDH572-base}}-el7.parcel">{{splvar_install_v25_CDH572-base}}-el7.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Precise</td>
-                                       <td><a href="{{splvar_install_v25_CDH572-base}}-precise.parcel">{{splvar_install_v25_CDH572-base}}-precise.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">SLES11</td>
-                                       <td><a href="{{splvar_install_v25_CDH572-base}}-sles11.parcel">{{splvar_install_v25_CDH572-base}}-sles11.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Trusty</td>
-                                       <td><a href="{{splvar_install_v25_CDH572-base}}-trusty.parcel">{{splvar_install_v25_CDH572-base}}-trusty.parcel</a></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="SpliceParcel">Wheezy</td>
-                                       <td><a href="{{splvar_install_v25_CDH572-base}}-wheezy.parcel">{{splvar_install_v25_CDH572-base}}-wheezy.parcel</a></td>
-                                    </tr>
-                                    
-                                    
+                                </tbody>
                             </table>
-                            <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice&#160;Machine Community site</a> or contact your&#160;Splice&#160;Machine representative.</div>
+                            <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice Machine Community site</a> or contact your Splice Machine representative.</div>
                         </li>
                         <li>
                             <p class="topLevel">Add the parcel repository:</p>
                             <p class="indentLevel1">Now select your repository in the Cloudera Manager <span class="ItalicFont">Select Repository</span> screen.</p>
                             <ol class="plainFont">
-                                <li>Make sure the <span class="AppCommand">Use&#160;Parcels (Recommended)</span>&#160;option and the <span class="AppCommand">Matched release</span> option are both selected.</li>
+                                <li>Make sure the <span class="AppCommand">Use Parcels (Recommended)</span> option and the <span class="AppCommand">Matched release</span> option are both selected.</li>
                                 <li>Click the <span class="AppCommand">Continue</span> button to land on the <span class="ItalicFont">More Options</span> screen.</li>
-                                <li>Cick the <span class="AppCommand">+</span> button for the <span class="AppCommand">Remote Parcel Repository URLs</span> field. Paste your Splice Machine repository URL&#160;into this field.</li>
+                                <li>Cick the <span class="AppCommand">+</span> button for the <span class="AppCommand">Remote Parcel Repository URLs</span> field. Paste your Splice Machine repository URL into this field.</li>
                             </ol>
                         </li>
                         <li>
@@ -226,7 +103,7 @@ folder: OnPrem/InstallingSpliceMachine
                         </li>
                         <li>
                             <p class="topLevel">Verify that the parcel has been distributed and activated.</p>
-                            <p class="indentLevel1">The Splice&#160;Machine parcel is identified as <span class="CodeFont">SPLICEMACHINE</span>&#160;in the Cloudera Manager user interface. Make sure that this parcel has been downloaded, distributed, and activated on your cluster.</p>
+                            <p class="indentLevel1">The Splice Machine parcel is identified as <span class="CodeFont">SPLICEMACHINE</span> in the Cloudera Manager user interface. Make sure that this parcel has been downloaded, distributed, and activated on your cluster.</p>
                         </li>
                         <li>
                             <p class="topLevel">Restart and redeploy any client changes when Cloudera Manager prompts you.</p>
@@ -248,8 +125,8 @@ folder: OnPrem/InstallingSpliceMachine
                         </li>
                     </ol>
                 </div>
-                <h2 id="ClusterMod">Make Cluster Modifications for Splice&#160;Machine</h2>
-                <p>Splice Machine requires a few modifications at the file system level to work properly on a CDH&#160;cluster:</p>
+                <h2 id="ClusterMod">Make Cluster Modifications for Splice Machine</h2>
+                <p>Splice Machine requires a few modifications at the file system level to work properly on a CDH cluster:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
                         <li>
@@ -261,7 +138,7 @@ folder: OnPrem/InstallingSpliceMachine
                             <p class="indentLevel1">To avoid Spark version mismatches, you must remove all Spark 1.6.x libraries from <span class="CodeFont">/opt/cloudera/parcels/CDH/jars/</span>.</p>
                         </li>
                         <li>
-                            <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to the Splice&#160;Machine uber jar and YARN&#160;proxy jar into the YARN&#160;directories</p>
+                            <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to the Splice Machine uber jar and YARN proxy jar into the YARN directories</p>
                             <p class="indentLevel1">Issue this command <span class="important">on each node</span> in your cluster::</p>
                             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
 sudo /opt/cloudera/parcels/SPLICEMACHINE/scripts/install-splice-symlinks.sh</pre>
@@ -292,12 +169,12 @@ sudo /opt/cloudera/parcels/SPLICEMACHINE/scripts/install-splice-symlinks.sh</pre
                                 <img src="images/CM.AlertListenPort.png" class="nestedTightSpacing" alt="Configuring the Cloudera Manager ports" />
                             </div>
                         </li>
-                        <li>Change the value of the Alerts:&#160;Listen Port to  to <span class="AppFontCustCode">10110</span>.</li>
+                        <li>Change the value of the Alerts: Listen Port to  to <span class="AppFontCustCode">10110</span>.</li>
                         <li>Save changes and restart the Management Service.</li>
                     </ol>
                 </div>
                 <h3 id="Configur4">Configure ZooKeeper</h3>
-                <p>To edit the ZooKeeper configuration, click <span class="AppCommand">ZooKeeper</span> in the Cloudera Manager (CM)&#160;home screen, then click the <span class="AppCommand">Configuration</span> tab and follow these steps:</p>
+                <p>To edit the ZooKeeper configuration, click <span class="AppCommand">ZooKeeper</span> in the Cloudera Manager (CM) home screen, then click the <span class="AppCommand">Configuration</span> tab and follow these steps:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
                         <li>
@@ -315,7 +192,7 @@ Maximum Session Timeout    = <span class="AppFontCust">120000</span></pre>
                 <div class="opsStepsList">
                     <ol class="boldFont">
                         <li>
-                            <p class="topLevel">Verify that the HDFS&#160;data directories for your cluster are set up to use your data disks.</p>
+                            <p class="topLevel">Verify that the HDFS data directories for your cluster are set up to use your data disks.</p>
                         </li>
                         <li>
                             <p class="topLevel">Change the values of these settings</p>
@@ -351,7 +228,7 @@ Maximum Session Timeout    = <span class="AppFontCust">120000</span></pre>
                                     </tr>
                                     <tr>
                                         <td class="AppFont">Java Heap Size of DataNode in Bytes</td>
-                                        <td class="AppFontCust">2&#160;GB</td>
+                                        <td class="AppFontCust">2 GB</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -392,7 +269,7 @@ NodeManager Local Directories<br />NameNode Data Directories<br />HDFS Checkpoin
                                         <td class="AppFontCust">100 ms</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">MR&#160;Application Classpath</td>
+                                        <td class="AppFont">MR Application Classpath</td>
                                         <td class="AppFontCust">
                                             <div class="preWrapperWide"><pre class="Example">$HADOOP_MAPRED_HOME/*
 $HADOOP_MAPRED_HOME/lib/*
@@ -401,7 +278,7 @@ $MR2_CLASSPATH/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">YARN&#160;Application Classpath</td>
+                                        <td class="AppFont">YARN Application Classpath</td>
                                         <td class="AppFontCust">
                                             <div class="preWrapperWide"><pre class="Example">$HADOOP_CLIENT_CONF_DIR
 $HADOOP_CONF_DIR
@@ -436,18 +313,18 @@ $MR2_CLASSPATH
                                     </tr>
                                     <tr>
                                         <td class="AppFont">Container Memory</td>
-                                        <td class="AppFontCust">30 GB&#160;(based on node specs)</td>
+                                        <td class="AppFontCust">30 GB (based on node specs)</td>
                                     </tr>
                                     <tr>
                                         <td class="AppFont">Container Memory Maximum</td>
-                                        <td class="AppFontCust">30 GB&#160;(based on node specs)</td>
+                                        <td class="AppFontCust">30 GB (based on node specs)</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">Container Virtual CPU&#160;Cores</td>
+                                        <td class="AppFont">Container Virtual CPU Cores</td>
                                         <td class="AppFontCust">19 (based on node specs)</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">Container Virtual CPU&#160;Cores Maximum</td>
+                                        <td class="AppFont">Container Virtual CPU Cores Maximum</td>
                                         <td class="AppFontCust">19 (Based on node specs)</td>
                                     </tr>
                                 </tbody>
@@ -455,15 +332,15 @@ $MR2_CLASSPATH
                         </li>
                         <li>
                             <p class="topLevel">Add property values </p>
-                            <p class="indentLevel1">You need to add the same two property values to each of four YARN&#160;advanced configuration settings.</p>
+                            <p class="indentLevel1">You need to add the same two property values to each of four YARN advanced configuration settings.</p>
                             <p class="indentLevel1">Add these properties:</p>
                             <table>
                                 <col />
                                 <col />
                                 <thead>
                                     <tr>
-                                        <th>XML&#160;Property Name</th>
-                                        <th>XML&#160;Property Value</th>
+                                        <th>XML Property Name</th>
+                                        <th>XML Property Value</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -477,7 +354,7 @@ $MR2_CLASSPATH
                                     </tr>
                                 </tbody>
                             </table>
-                            <p class="indentLevel1">To each of these YARN&#160;settings:</p>
+                            <p class="indentLevel1">To each of these YARN settings:</p>
                             <ul class="codeList">
                                 <li>Yarn Service Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
                                 <li>Yarn Client Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
@@ -517,7 +394,7 @@ $MR2_CLASSPATH
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">HBase Service Advanced&#160;Configuration Snippet (Safety Valve)&#160;for hbase-site.xml</td>
+                                        <td class="AppFont">HBase Service Advanced Configuration Snippet (Safety Valve) for hbase-site.xml</td>
                                         <td class="AppFontCust"><span class="bodyFont">The property list for the Safety Valve snippet is shown below, in Step 2</span>
                                         </td>
                                     </tr>
@@ -530,7 +407,7 @@ $MR2_CLASSPATH
                                         <td class="AppFontCust">40</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">RPC&#160;Timeout</td>
+                                        <td class="AppFont">RPC Timeout</td>
                                         <td class="AppFontCust">20 minutes (or 1200000 milliseconds)</td>
                                     </tr>
                                     <tr>
@@ -538,11 +415,11 @@ $MR2_CLASSPATH
                                         <td class="AppFontCust">90</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">ZooKeeper Session&#160;Timeout</td>
+                                        <td class="AppFont">ZooKeeper Session Timeout</td>
                                         <td class="AppFontCust">120000</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">HBase Master Web UI&#160;Port</td>
+                                        <td class="AppFont">HBase Master Web UI Port</td>
                                         <td class="AppFontCust">16010</td>
                                     </tr>
                                     <tr>
@@ -569,7 +446,7 @@ $MR2_CLASSPATH
                                         <td class="AppFontCust">5</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">HBase RegionServer Web UI&#160;port</td>
+                                        <td class="AppFont">HBase RegionServer Web UI port</td>
                                         <td class="AppFontCust">16030</td>
                                     </tr>
                                     <tr>
@@ -614,7 +491,7 @@ $MR2_CLASSPATH
                                         <td class="AppFontCust">com.splicemachine.hbase.MemstoreAwareObserver<br />com.splicemachine.derby.hbase.SpliceIndexObserver<br />com.splicemachine.derby.hbase.SpliceIndexEndpoint<br />com.splicemachine.hbase.RegionSizeEndpoint<br />com.splicemachine.si.data.hbase.coprocessor.TxnLifecycleEndpoint<br />com.splicemachine.si.data.hbase.coprocessor.SIObserver<br />com.splicemachine.hbase.BackupEndpointObserver</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">Maximum number of Write-Ahead Log (WAL)&#160;files</td>
+                                        <td class="AppFont">Maximum number of Write-Ahead Log (WAL) files</td>
                                         <td class="AppFontCust">48</td>
                                     </tr>
                                     <tr>
@@ -626,14 +503,14 @@ $MR2_CLASSPATH
                                         <td class="AppFontCust">16020</td>
                                     </tr>
                                     <tr>
-                                        <td class="AppFont">Per-RegionServer Number of WAL&#160;Pipelines</td>
+                                        <td class="AppFont">Per-RegionServer Number of WAL Pipelines</td>
                                         <td class="AppFontCust">16</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </li>
                         <li>
-                            <p id="HBaseAdvConfigStep">Set the value of <span class="CodeFont">HBase Service Advanced&#160;Configuration Snippet (Safety Valve)</span>&#160;for <span class="CodeFont">hbase-site.xml</span>:</p>
+                            <p id="HBaseAdvConfigStep">Set the value of <span class="CodeFont">HBase Service Advanced Configuration Snippet (Safety Valve)</span> for <span class="CodeFont">hbase-site.xml</span>:</p>
                             <div class="preWrapperWide"><pre class="Example">&lt;property&gt;&lt;name&gt;dfs.client.read.shortcircuit.buffer.size&lt;/name&gt;&lt;value&gt;131072&lt;/value&gt;&lt;/property&gt;
 &lt;property&gt;&lt;name&gt;hbase.balancer.period&lt;/name&gt;&lt;value&gt;60000&lt;/value&gt;&lt;/property&gt;
 &lt;property&gt;&lt;name&gt;hbase.client.ipc.pool.size&lt;/name&gt;&lt;value&gt;10&lt;/value&gt;&lt;/property&gt;
@@ -698,7 +575,7 @@ $MR2_CLASSPATH
                 </ul>
                 <h3 id="Modify">Modify the Authentication Mechanism</h3>
                 <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
-                <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP&#160;by following the simple instructions in <a href="onprem_install_configureauth.html">Configuring Splice Machine Authentication</a></p>
+                <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP by following the simple instructions in <a href="onprem_install_configureauth.html">Configuring Splice Machine Authentication</a></p>
                 <h2 id="Deploy">Deploy the Client Configuration</h2>
                 <p>Now that you've updated your configuration information, you need to deploy it throughout your cluster. You should see a small notification in the upper right corner of your screen that looks like this:<br /></p>
                 <div>
@@ -722,7 +599,7 @@ $MR2_CLASSPATH
                         </li>
                         <li>
                             <p class="topLevel">Restart HDFS</p>
-                            <p class="indentLevel1">Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of)&#160;HDFS&#160;in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HDFS.</p>
+                            <p class="indentLevel1">Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of) HDFS in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HDFS.</p>
                             <p class="indentLevel1">Use your terminal window to create these directories (if they are not already available in HDFS):</p>
                             <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
 sudo -iu hdfs hadoop fs -mkdir -p hdfs:///user/hbase hdfs:///user/splice/history
@@ -732,11 +609,11 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                         </li>
                         <li>
                             <p class="topLevel">Restart YARN</p>
-                            <p class="indentLevel1">Click the <span class="AppCommand">YARN Actions</span> drop-down arrow associated with (to the right of)&#160;YARN in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart YARN.</p>
+                            <p class="indentLevel1">Click the <span class="AppCommand">YARN Actions</span> drop-down arrow associated with (to the right of) YARN in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart YARN.</p>
                         </li>
                         <li>
                             <p class="topLevel">Restart HBase</p>
-                            <p class="indentLevel1">Click the <span class="AppCommand">HBASE Actions</span> drop-down arrow associated with (to the right of)&#160;HBASE in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HBase.</p>
+                            <p class="indentLevel1">Click the <span class="AppCommand">HBASE Actions</span> drop-down arrow associated with (to the right of) HBASE in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HBase.</p>
                         </li>
                     </ol>
                 </div>

@@ -12,7 +12,7 @@ folder: OnPrem/Info
 
 {% include splice_snippets/onpremonlytopic.html %}
 
-Welcome to 2.5 patch release (2.5.0.1727) of Splice Machine! The product is available to build from open source (see <https:github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
+Welcome to 2.5 patch release (2.5.0.1727) of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 
 Version 2.5 (2.5.0.1707) was originally released in March, 2017. You'll find the original release notes at the bottom of this page.
 

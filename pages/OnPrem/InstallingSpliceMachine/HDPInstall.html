@@ -17,7 +17,7 @@ folder: OnPrem/InstallingSpliceMachine
             <ol>
                 <li><a href="#Verify">Verify Prerequisites</a>
                 </li>
-                <li><a href="#Install">Download and Install Splice&#160;Machine</a>
+                <li><a href="#Install">Download and Install Splice Machine</a>
                 </li>
                 <li><a href="#Stop">Stop Hadoop Services</a>
                 </li>
@@ -36,18 +36,17 @@ folder: OnPrem/InstallingSpliceMachine
                 <li>Ambari installed and configured for HDP</li>
                 <li>HBase  installed</li>
                 <li>HDFS installed</li>
-                <li>YARN&#160;installed</li>
+                <li>YARN installed</li>
                 <li>ZooKeeper installed</li>
-                <li>Ensure that Phoenix services are <span class="BoldFont">NOT</span>&#160;installed on your cluster, as they interfere with Splice Machine HBase settings.</li>
+                <li>Ensure that Phoenix services are <span class="BoldFont">NOT</span> installed on your cluster, as they interfere with Splice Machine HBase settings.</li>
             </ul>
             <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
-            <h2 id="Install">Download and Install Splice&#160;Machine</h2>
+            <h2 id="Install">Download and Install Splice Machine</h2>
             <p>Perform the following steps <span class="important">on each node</span> in your cluster:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Contact Splice Machine for your installer</p>
-                        <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and {{splvar_basic_SplicePrevReleaseVersion}}:</p>
+                        <li>Download the installer for your version.
+                        <p class="indentLevel1">Which Splice Machine installer (gzip) package you need depends upon which Splice Machine version you're installing and which version of HDP you are using. Here are the URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and {{splvar_basic_SplicePrevReleaseVersion}}:</p>
                         <table>
                             <col />
                             <col />
@@ -61,29 +60,21 @@ folder: OnPrem/InstallingSpliceMachine
                             </thead>
                             <tbody>
                                <tr>
-                                   <td rowspan="2" class="SpliceRelease">2.6.0</td>
+                                   <td class="SpliceRelease">2.6.0</td>
                                    <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
                                    <td><a href="{{splvar_install_v26_HDP255}}">{{splvar_install_v26_HDP255}}</a></td>
-                                </tr>
-                                <tr>
-                                   <td class="SplicePlatform">{{splvar_install_HDP250}}</td>
-                                   <td><a href="{{splvar_install_v26_HDP250}}">{{splvar_install_v26_HDP250}}</a></td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="Separator"> </td>
                                 </tr>
                                <tr>
-                                   <td rowspan="2" class="SpliceRelease">2.5.0</td>
-                                   <td class="SplicePlatform">{{splvar_install_HDP250}}</td>
-                                   <td><a href="{{splvar_install_v25_HDP250}}">{{splvar_install_v25_HDP250}}</a></td>
-                                </tr>
-                                <tr>
-                                   <td class="SplicePlatform">{{splvar_install_HDP242}}</td>
-                                   <td><a href="{{splvar_install_v25_HDP242}}">{{splvar_install_v25_HDP242}}</a></td>
+                                   <td class="SpliceRelease">2.5.0</td>
+                                   <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
+                                   <td><a href="{{splvar_install_v25_HDP255}}">{{splvar_install_v25_HDP255}}</a></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice&#160;Machine Community site</a> or contact your&#160;Splice&#160;Machine representative.</div>
+                        <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice Machine Community site</a> or contact your Splice Machine representative.</div>
                     </li>
                     <li>
                         <p class="topLevel">Create the <span class="CodeFont">splice</span> installation directory:</p>
@@ -101,7 +92,7 @@ folder: OnPrem/InstallingSpliceMachine
                         </div>
                     </li>
                     <li>
-                        <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to set up Splice&#160;Machine jar script symbolic links</p>
+                        <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to set up Splice Machine jar script symbolic links</p>
                         <p class="indentLevel1">Issue this command <span class="important">on each node</span> in your cluster:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
 sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
@@ -162,11 +153,11 @@ maxSessionTimeout=<span class="AppFontCustCode">120000</span></pre>
                 </ol>
             </div>
             <h3 id="Configur5">Configure and Restart HDFS</h3>
-            <p>To edit the HDFS&#160;configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">HDFS</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
+            <p>To edit the HDFS configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">HDFS</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
-                        <p class="topLevel">Edit the HDFS&#160;configuration as follows:</p>
+                        <p class="topLevel">Edit the HDFS configuration as follows:</p>
                         <table>
                             <col />
                             <col />
@@ -199,11 +190,11 @@ dfs.datanode.handler.count=<span class="AppFontCustCode">20</span>
                     </li>
                     <li>
                         <p class="topLevel">Save Changes</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS&#160;configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
                     <li>
                         <p class="topLevel">Start HDFS</p>
-                        <p class="indentLevel1">After you save your changes, you'll land back on the <span class="AppCommand">HDFS&#160;Service Configs</span> tab in Ambari. </p>
+                        <p class="indentLevel1">After you save your changes, you'll land back on the <span class="AppCommand">HDFS Service Configs</span> tab in Ambari. </p>
                         <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start HDFS. Wait for the restart to complete.</p>
                     </li>
                     <li>
@@ -258,16 +249,16 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                                     <td class="AppFontCust">86400</td>
                                 </tr>
                                 <tr>
-                                    <td class="AppFont">Memory allocated for all YARN&#160;containers on a node </td>
-                                    <td class="AppFontCust">30 GB&#160;(based on node specs)</td>
+                                    <td class="AppFont">Memory allocated for all YARN containers on a node </td>
+                                    <td class="AppFontCust">30 GB (based on node specs)</td>
                                 </tr>
                                 <tr>
                                     <td class="AppFont">Minimum Container Size (Memory)</td>
-                                    <td class="AppFontCust">1 GB&#160;(based on node specs)</td>
+                                    <td class="AppFontCust">1 GB (based on node specs)</td>
                                 </tr>
                                 <tr>
                                     <td class="AppFont">Minimum Container Size (Memory)</td>
-                                    <td class="AppFontCust">30 GB&#160;(based on node specs)</td>
+                                    <td class="AppFontCust">30 GB (based on node specs)</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -290,8 +281,8 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                 <li>Reduce Memory</li>
                 <li>Sort Allocation Memory</li>
                 <li>AppMaster Memory</li>
-                <li>MR&#160;Map Java Heap Size</li>
-                <li>MR&#160;Reduce Java Heap Size</li>
+                <li>MR Map Java Heap Size</li>
+                <li>MR Reduce Java Heap Size</li>
             </ul>
             <p>You do, however, need to make a few property changes for this service. To edit the MapReduce2 configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">MapReduce2</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
             <div class="opsStepsList">
@@ -313,7 +304,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                             <li>MR AppMaster Java Heap Size
 </li>
                         </ul>
-                        <div class="noteIndent">An example of an HDP&#160;version number that you would substitute for <span class="AppFontCustCode">${hdp.version}</span> is <span class="CodeFont">2.5.0.0-1245</span>.</div>
+                        <div class="noteIndent">An example of an HDP version number that you would substitute for <span class="AppFontCustCode">${hdp.version}</span> is <span class="CodeFont">2.5.0.0-1245</span>.</div>
                     </li>
                     <li>
                         <p class="topLevel">Save Changes</p>
@@ -343,23 +334,23 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="AppFont">%&#160;of RegionServer Allocated to Write Buffer<br />(hbase.regionserver.global.memstore.size)</td>
+                                    <td class="AppFont">% of RegionServer Allocated to Write Buffer<br />(hbase.regionserver.global.memstore.size)</td>
                                     <td class="AppFontCust">0.25</td>
                                 </tr>
                                 <tr>
-                                    <td class="AppFont">HBase RegionServer Maximum Memory<br />&#160;(hbase_regionserver_heapsize)</td>
+                                    <td class="AppFont">HBase RegionServer Maximum Memory<br /> (hbase_regionserver_heapsize)</td>
                                     <td class="AppFontCust">24 GB</td>
                                 </tr>
                                 <tr>
-                                    <td class="AppFont">% of RegionServer Allocated to Read Buffers<br />&#160;(hfile.block.cache.size)</td>
+                                    <td class="AppFont">% of RegionServer Allocated to Read Buffers<br /> (hfile.block.cache.size)</td>
                                     <td class="AppFontCust">0.25</td>
                                 </tr>
                                 <tr>
-                                    <td class="AppFont">HBase Master Maximum Memory<br />&#160;(hbase_master_heapsize)</td>
+                                    <td class="AppFont">HBase Master Maximum Memory<br /> (hbase_master_heapsize)</td>
                                     <td class="AppFontCust">5 GB</td>
                                 </tr>
                                 <tr>
-                                    <td class="AppFont">Number of Handlers per RegionServer<br />&#160;(hbase.regionserver.handler.count)</td>
+                                    <td class="AppFont">Number of Handlers per RegionServer<br /> (hbase.regionserver.handler.count)</td>
                                     <td class="AppFontCust">200</td>
                                 </tr>
                                 <tr>
@@ -368,7 +359,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                                 </tr>
                                 <tr>
                                     <td class="AppFont">HBase RPC Timeout</td>
-                                    <td class="AppFontCust">1200000&#160;(20 minutes)</td>
+                                    <td class="AppFontCust">1200000 (20 minutes)</td>
                                 </tr>
                                 <tr>
                                     <td class="AppFont">Zookeeper Session Timeout</td>
@@ -390,11 +381,11 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                                     <td class="AppFontCust">5</td>
                                 </tr>
                                 <tr>
-                                    <td class="AppFont">Number of Fetched Rows when Scanning from Disk<br />&#160;(hbase.client.scanner.caching)<br /></td>
+                                    <td class="AppFont">Number of Fetched Rows when Scanning from Disk<br /> (hbase.client.scanner.caching)<br /></td>
                                     <td class="AppFontCust">1000</td>
                                 </tr>
                                 <tr>
-                                    <td class="AppFont">hstore blocking storefiles<br />&#160;(hbase.hstore.blockingStoreFiles)</td>
+                                    <td class="AppFont">hstore blocking storefiles<br /> (hbase.hstore.blockingStoreFiles)</td>
                                     <td class="AppFontCust">20</td>
                                 </tr>
                                 <tr>
@@ -543,7 +534,7 @@ splice.txn.concurrencyLevel=4096</pre>
                     </li>
                     <li>
                         <p class="topLevel">Save Changes</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS&#160;configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
                     <li>
                         <p class="topLevel">Start HBase</p>
@@ -553,7 +544,7 @@ splice.txn.concurrencyLevel=4096</pre>
                 </ol>
             </div>
             <h2 id="Start">Start any Additional Services</h2>
-            <p>We started this installation by shutting down your cluster services, and then configured and restarted each individual service used by Splice&#160;Machine.</p>
+            <p>We started this installation by shutting down your cluster services, and then configured and restarted each individual service used by Splice Machine.</p>
             <p>If you had any additional services running, such as Ambari Metrics, you need to restart each of those services.</p>
             <h2 id="Optional">Optional Configuration Modifications</h2>
             <p>There are a few configuration modifications you might want to make:</p>
@@ -563,7 +554,7 @@ splice.txn.concurrencyLevel=4096</pre>
             </ul>
             <h3 id="Modify">Modify the Authentication Mechanism</h3>
             <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
-            <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP&#160;by following the simple instructions in <a href="onprem_install_configureauth.html" class="WithinBook">Configuring Splice Machine Authentication</a></p>
+            <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP by following the simple instructions in <a href="onprem_install_configureauth.html" class="WithinBook">Configuring Splice Machine Authentication</a></p>
             <h2 id="Run">Verify your Splice Machine Installation</h2>
             <p>Now start using the Splice Machine command line interpreter, which is referred to as <span class="AppCommand">the splice prompt</span> or simply <span class="AppCommand">splice&gt;</span> by launching the <span class="CodeFont">sqlshell.sh</span> script on any node in your cluster that is running an HBase region server. </p>
             <div class="noteNote">The command line interpreter defaults to connecting on port <span class="CodeFont">1527</span> on <span class="CodeFont">localhost</span>, with username <span class="CodeFont">splice</span>, and password <span class="CodeFont">admin</span>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</div>

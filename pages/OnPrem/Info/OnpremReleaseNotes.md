@@ -12,7 +12,7 @@ folder: OnPrem/Info
 
 {% include splice_snippets/onpremonlytopic.html %}
 
-Welcome to 2.6 release of Splice Machine! The product is available to build from open source (see <https:github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
+Welcome to 2.6 release of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 
 This topic contains the following sections:
 
