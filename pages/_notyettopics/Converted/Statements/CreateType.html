@@ -1,7 +1,7 @@
 ﻿---
 title: CREATE TYPE statement
 summary: Creates a user-defined type, which is a serializable Java class whose instances are stored in columns.
-keywords: 
+keywords: create type, add column, external name, language, generated, identity, generated always as identity, UDT, user-defined type, serializable
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -36,7 +36,7 @@ folder: SQLReference/Statements
         </div>
         <h2>Using user-defined types</h2>
         <p>You can create tables and views with columns that have UDTs. For example:</p>
-        <div class="preWrapper"><pre class="Example" xml:space="preserve">CREATE TABLE orders 
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">CREATE TABLE orders
  (
   orderID INT GENERATED ALWAYS AS IDENTITY,
   customerID INT REFERENCES customer( customer_ID ),
@@ -44,16 +44,16 @@ folder: SQLReference/Statements
  );</pre>
         </div>
         <p>Although UDTs have no natural order, you can use generated columns to provide useful sort orders:</p>
-        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">ALTER TABLE order 
+        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">ALTER TABLE order
   ADD COLUMN normalizedValue DECIMAL( 31, 5 )
-  GENERATED ALWAYS AS 
+  GENERATED ALWAYS AS
 	( convert( 'EUR', TIMESTAMP('2005-01-01 09:00:00'), totalPrice ) );
   CREATE INDEX normalizedOrderPrice ON order( normalizedValue );</pre>
         </div>
         <p>You can use factory functions to construct UDTs. For example:
 		</p>
         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">INSERT INTO order( customerID, totalPrice )
-  VALUES ( 12345, 
+  VALUES ( 12345,
 	    makePrice( 'USD', CAST( 9.99 AS DECIMAL( 31, 5 ) ),
 	    TIMESTAMP('2009-10-16 14:24:43') ) );</pre>
         </div>

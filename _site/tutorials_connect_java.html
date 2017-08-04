@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Walks you through compiling and running a Java program that connects to your Splice Machine database via our JDBC driver.&#xA;">
-<meta name="keywords" content=" Java, JDBC, connect tutorial">
+<meta name="keywords" content=" Java, JDBC, connect tutorial, java jdbc, jdbc java">
 <title>Connecting to Splice Machine with Java and JDBC | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -212,7 +212,7 @@
                                 dataSource: 'search.json',
                                 searchResultTemplate: '<li><a href="{url}" title="Connecting to Splice Machine with Java and JDBC">{title}</a></li>',
                     noResultsText: 'No results found.',
-                            limit: 10,
+                            limit: 18,
                             fuzzy: true,
                     })
                     </script>
@@ -573,7 +573,12 @@
 
 
 
-﻿
+
+
+
+
+
+
 
 
 
@@ -645,27 +650,11 @@
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Locate the Splice&#160;Machine JDBC&#160;Driver:</p>
-                        <p class="indentLevel1">Our JDBC&#160;driver is automatically installed on your computer(s) when you install Splice Machine. You'll find it in the <span class="CodeFont">jdbc-driver</span> folder under the <span class="CodeFont">splicemachine</span> directory. Typical locations are:</p>
-                        <table summary="Locations of the JDBC driver.">
-                            <col />
-                            <col />
-                            <thead>
-                                <tr>
-                                    <th>OS</th>
-                                    <th>Driver Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="BoldFont">Linux / MacOS</td>
-                                    <td class="CodeFont">/splicemachine/jdbc-driver/db-client-2.0.1.18.jar</td>
-                                </tr>
-                                <tr>
-                                    <td class="BoldFont">Windows</td>
-                                    <td class="CodeFont">C:\splicemachine\jdbc-db-client-2.0.1.18.jar</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <p class="indentLevel1">Our JDBC&#160;driver is automatically installed on your computer(s) when you install Splice Machine. You'll find it in the <span  class="CodeFont">jdbc-driver</span> folder under the <span class="CodeFont">splicemachine</span> directory; typically:</p>
+						<div class="PreWrapperWide"><pre class="Example">/splicemachine/jdbc-driver/db-client-2.6.0.1729-SNAPSHOT.jar</pre></div>
+						<p>- or -</p>
+						<div class="PreWrapperWide"><pre class="Example">/splicemachine/jdbc-driver/db-client-2.5.0.1729-SNAPSHOT.jar</pre></div>
+						<div class="noteNote">The build number, e.g. <span class="CodeFont">1729</span>, varies with each Splice Machine software update.</div>
                     </li>
                     <li>
                         <p class="topLevel">Copy the example program code:</p>
@@ -755,12 +744,11 @@ public static void main(String[] arg) {
                     </li>
                     <li>
                         <p class="topLevel">Run the program:</p>
-                        <p class="indentLevel1">When you run the program, your <span class="CodeFont">CLASSPATH</span> must include the path to the Splice Machine JDBC driver. If you did compile and package your code into <span class="CodeFont">splice-jdbc-test-2.6.0-SNAPSHOT.jar</span>, you can run the program with this command line:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">java -cp splice-installer-<span class="Highlighted">&lt;platformVersion&gt;</span>/resources/jdbc-driver/db-client-2.0.1.18.jar com.splicemachine.cs.tools.SampleJDBC   </pre>
+                        <p class="indentLevel1">When you run the program, your <span class="CodeFont">CLASSPATH</span> must include the path to the Splice Machine JDBC driver. If you did compile and package your code into <span class="CodeFont">splice-jdbc-test-0.1.0-SNAPSHOT.jar</span>, you can run the program with this command line:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">java -cp splice-installer-<span class="Highlighted">&lt;platformVersion&gt;</span>/resources/jdbc-driver/ com.splicemachine.cs.tools.SampleJDBC   </pre>
                         </div>
                         <p class="indentLevel1">The command should display a result like the following:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
-java -cp ./target/splice-cs-2.6.0-SNAPSHOT.jar-SNAPSHOT.jar com.splicemachine.cs.tools.SampleJDBC
 record=[1] a=[1] b=[a]
 record=[2] a=[2] b=[b]
 record=[3] a=[3] b=[c]
@@ -788,7 +776,7 @@ record=[5] a=[5] b=[c]</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Aug 2, 2017 <br />
+ Site last generated: Aug 4, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

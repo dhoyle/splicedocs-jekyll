@@ -1,7 +1,7 @@
 ---
 title: Connecting to Splice Machine with Java and JDBC
 summary: Walks you through compiling and running a Java program that connects to your Splice Machine database via our JDBC driver.&#xA;
-keywords: Java, JDBC, connect tutorial
+keywords: Java, JDBC, connect tutorial, java jdbc, jdbc java
 toc: false
 product: all
 sidebar: tutorials_sidebar
@@ -26,27 +26,11 @@ folder: Tutorials/Connect
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Locate the Splice&#160;Machine JDBC&#160;Driver:</p>
-                        <p class="indentLevel1">Our JDBC&#160;driver is automatically installed on your computer(s) when you install Splice Machine. You'll find it in the <span class="CodeFont">jdbc-driver</span> folder under the <span class="CodeFont">splicemachine</span> directory. Typical locations are:</p>
-                        <table summary="Locations of the JDBC driver.">
-                            <col />
-                            <col />
-                            <thead>
-                                <tr>
-                                    <th>OS</th>
-                                    <th>Driver Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="BoldFont">Linux / MacOS</td>
-                                    <td class="CodeFont">/splicemachine/jdbc-driver/{{splvar_platform_JDBCDriverJar}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="BoldFont">Windows</td>
-                                    <td class="CodeFont">C:\splicemachine\jdbc-{{splvar_platform_JDBCDriverJar}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <p class="indentLevel1">Our JDBC&#160;driver is automatically installed on your computer(s) when you install Splice Machine. You'll find it in the <span  class="CodeFont">jdbc-driver</span> folder under the <span class="CodeFont">splicemachine</span> directory; typically:</p>
+						<div class="PreWrapperWide"><pre class="Example">/splicemachine/jdbc-driver/{{splvar_location_JDBCDriverJar260}}</pre></div>
+						<p>- or -</p>
+						<div class="PreWrapperWide"><pre class="Example">/splicemachine/jdbc-driver/{{splvar_location_JDBCDriverJar250}}</pre></div>
+						<div class="noteNote">The build number, e.g. <span class="CodeFont">1729</span>, varies with each Splice Machine software update.</div>
                     </li>
                     <li>
                         <p class="topLevel">Copy the example program code:</p>
@@ -136,12 +120,11 @@ public static void main(String[] arg) {
                     </li>
                     <li>
                         <p class="topLevel">Run the program:</p>
-                        <p class="indentLevel1">When you run the program, your <span class="CodeFont">CLASSPATH</span> must include the path to the Splice Machine JDBC driver. If you did compile and package your code into <span class="CodeFont">splice-jdbc-test-{{splvar_platform_SpliceJarVersionNum}}</span>, you can run the program with this command line:</p>
+                        <p class="indentLevel1">When you run the program, your <span class="CodeFont">CLASSPATH</span> must include the path to the Splice Machine JDBC driver. If you did compile and package your code into <span class="CodeFont">splice-jdbc-test-0.1.0-SNAPSHOT.jar</span>, you can run the program with this command line:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">java -cp splice-installer-<span class="Highlighted">&lt;platformVersion&gt;</span>/resources/jdbc-driver/{{splvar_platform_JDBCDriverJar}} com.splicemachine.cs.tools.SampleJDBC   </pre>
                         </div>
                         <p class="indentLevel1">The command should display a result like the following:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
-java -cp ./target/splice-cs-{{splvar_platform_SpliceJarVersionNum}}-SNAPSHOT.jar com.splicemachine.cs.tools.SampleJDBC
 record=[1] a=[1] b=[a]
 record=[2] a=[2] b=[b]
 record=[3] a=[3] b=[c]

@@ -1,7 +1,7 @@
 ---
 title: Connecting to Splice Machine Through HAProxy
 summary: How to connect to Splice Machine through HAProxy
-keywords: haproxy, load balancing, high availability, TCP requests, http requests, client requests
+keywords: haproxy, load balancing, high availability, TCP requests, http requests, client requests, kerberos
 toc: false
 product: all
 sidebar: tutorials_sidebar
@@ -30,7 +30,7 @@ folder: Tutorials/Connect
             <ol class="boldFont">
                 <li>
                     <p class="topLevel">
-	
+
 Install HAProxy as superuser
 :</p>
                     <div class="preWrapper"><pre class="ShellCommand"># yum install haproxy
@@ -80,7 +80,7 @@ defaults
 
 #----------------------------------------------------------------------
 # This enables jdbc/odbc applications to connect to HAProxy_host:1527 port
-# so that HAProxy can balance between the splice engine cluster nodes 
+# so that HAProxy can balance between the splice engine cluster nodes
 # where each node's splice engine instance is listening on port 1527
 #----------------------------------------------------------------------
 listen splice-cluster
@@ -118,7 +118,7 @@ listen   stats :1936
                 </li>
                 <li>
                     <p class="topLevel">
-	
+
 Start the HAProxy service:</p>
                     <p>As superuser, follow these steps to enable the HAProxy service:</p>
                     <table>
@@ -161,7 +161,7 @@ Start the HAProxy service:</p>
                 </li>
                 <li>
                     <p class="topLevel">
-	
+
 Connect:</p>
                     <p>You can now connect  JDBC&#160;clients, including the Splice Machine command line interpreter,  sqlshell.sh. Use the following JDBC URL:</p>
                     <div class="preWrapperWide"><pre class="Plain">jdbc:splice://&lt;haproxy_host&gt;:1527/splicedb;user=splice;password=admin</pre>
@@ -170,13 +170,13 @@ Connect:</p>
                 </li>
                 <li>
                     <p class="topLevel">
-	
+
 Verify that inbound requests are being routed correctly:</p>
                     <p>You can check the logs at <span class="CodeFont">/var/log/haproxy.log</span> to make sure that inbound requests are being routed to Splice&#160;Machine region servers that are receiving inbound requests on port 1527.</p>
                 </li>
                 <li>
                     <p class="topLevel">
-	
+
 View traffic statistics:</p>
                     <p>If you have enabled HAProxy stats, as in our  example, you can view the  overall traffic statistics  in browser at: </p>
                     <div class="preWrapperWide"><pre class="Plain">http://&lt;haproxy_host&gt;:1936/haproxy?stats</pre>
@@ -204,13 +204,13 @@ View traffic statistics:</p>
             <ol class="boldFont">
                 <li>
                     <p class="topLevel">
-	
+
 Create the principal in Kerberos Key Distribution Center</p>
                     <p class="indentLevel1">Create the principal splice@kerberos_realm_name in Kerberos Key Distribution Center (KDC). This generates a keytab file named <span class="CodeFont">splice.keytab</span>. </p>
                 </li>
                 <li>
                     <p class="topLevel">
-	
+
 Copy the generated keytab file</p>
                     <p class="indentLevel1">Copy the <span class="CodeFont">splice.keytab</span> file that to all client systems.</p>
                 </li>
@@ -227,7 +227,7 @@ Copy the generated keytab file</p>
             <ol class="boldFont">
                 <li>
                     <p class="topLevel">
-	
+
 Create the user in your Splice Machine database:</p>
                     <div class="preWrapperWide"><pre class="Example">call syscs_util.syscs_create_user(&#160;'jdoe', 'jdoe'&#160;);</pre>
                     </div>

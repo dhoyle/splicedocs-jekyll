@@ -1,7 +1,7 @@
 ﻿---
 title: INTERSECT clause
 summary: The INTERSECT operator takes the distinct rows of one query and returns the rows that do not appear in a second result set.
-keywords: 
+keywords: DISTINCT, intersection
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -26,14 +26,14 @@ folder: SQLReference/Clauses
         <h2>Results</h2>
         <p>A result set.</p>
         <h2>Examples</h2>
-        <div class="preWrapper"><pre class="Example">CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY, 
+        <div class="preWrapper"><pre class="Example">CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY,
                  i1 INTEGER, i2 INTEGER,
                  c10 char(10), c30 char(30), tm time);
- 
+
 CREATE TABLE t2( id INTEGER NOT NULL PRIMARY KEY,
                  i1 INTEGER, i2 INTEGER,
                  vc20 varchar(20), d double, dt date);
- 
+
 INSERT INTO t1(id,i1,i2,c10,c30) VALUES
   (1,1,1,'a','123456789012345678901234567890'),
   (2,1,2,'a','bb'),
@@ -41,7 +41,7 @@ INSERT INTO t1(id,i1,i2,c10,c30) VALUES
   (4,1,3,'zz','5'),
   (5,NULL,NULL,NULL,'1.0'),
   (6,NULL,NULL,NULL,'a');
-  
+
 INSERT INTO t2(id,i1,i2,vc20,d) VALUES
   (1,1,1,'a',1.0),
   (2,1,2,'a',1.1),

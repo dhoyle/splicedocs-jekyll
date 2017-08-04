@@ -1,110 +1,37 @@
 ---
-summary: A step-wise list for installing Splice Machine, importing your data, running queries, and learning about the features available to Splice Machine developers and administrators.
-title: Splice Machine Quick Start
-keywords:
+summary: Introduces the Splice Machine Database-as-Service and On-Premise Database Product Documentation
+title: Splice Machine Documentation Home
+keywords: home page, documentation home, Splice Machine
 toc: false
 sidebar: home_sidebar
 permalink: index.html
 folder: /
 ---
+{% include splicevars.html %}
 	<section>
 		<div class="TopicContent">
 			<h1> Welcome to Splice&#160;Machine!</h1>
 			<p>Welcome to Splice Machine, the  database platform for adaptive applications that manage operational processes. This site contains documentation for our products and links to other useful resources.</p>
-			<div class="noteIcon">Our new <span class="ItalicFont">Managed Database Service in the Cloud</span> is now available: <a href="dbaas_intro.html">Start Here!</a></div>
+			<div class="noteIcon">
+				<p>The <a href="{{splvar_location_GetStartedLink}}" target="_blank">Getting Started Page</a> in our web site is your gateway to learning  about our different products and quickly getting started with Splice Machine. From there, you can:</p>
+				<ul>
+					<li><a href="{{splvar_location_DBaaSTryLink}}" target="_blank">Try our new <span class="ItalicFont">Cloud-Managed Database-as-Service</span></a> for free.</li>
+					<li class="topSpace"><a href="{{splvar_location_StandaloneLink}}" target="_blank">Download the free standalone version</a> of our <span class="ItalicFont">On-Premise Database</span> product.</li>
+					<li class="topSpace"><a href="{{splvar_location_CommunityLink}}" target="_blank">Download the open source, Community version</a> of our <span class="ItalicFont">On-Premise cluster database</span> to install on your Hadoop cluster.</li>
+				</ul>
+			</div>
+			<h2>About Splice Machine</h2>
 			<p>Splice Machine is a hybrid relational database platform that allows you to run transactional (OLTP) and analytical (OLAP)&#160;SQL workloads, concurrently, against shared data. To ensure that one does not interfere with the other, Splice Machine uses resource isolation and a ground-breaking MVCC technology for concurrent, non-locking, distributed ACID transactions. </p>
 			<p>With Splice Machine, you can manage operational processes, large-scale IoT infrastructures, and use analytical processing and machine learning to improve over time.</p>
 			<p>Splice Machine delivers an open-source data platform that incorporates the proven scalability of HBase™ and the in-memory performance of Apache Spark™. The cost-based optimizer uses advanced statistics to choose the best compute engine, storage engine, index access, join order and join algorithm for each task. In this way, Splice Machine can concurrently process transactional and analytical workloads at scale.</p>
-			<h2>Our Products</h2>
+			<h3>Our Products</h3>
 			<p>The Splice Machine platform offered in two product versions:</p>
 			<ul>
 				<li>You can configure and deploy our <a href="dbaas_intro.html">Managed Database Service in the Cloud</a> in a matter of minutes:&#160;simply register, adjust a configuration sliders for your anticipated data size, cluster power, and backup frequency, and you're up and running. A free trial version means that you can get going very quickly and see for yourself how well Splice&#160;Machine can work for your company's needs.</li>
 				<li>You can deploy our <a href="onprem_intro.html">On-Premise Database</a> on your own cluster that is managed by Cloudera, MapR, or Hortonworks. We also offer a standalone, trial version that allows you to experiment with Splice Machine on MacOS, Linux, and CentOS computers.</li>
 			</ul>
-			<h2>Product Documentation</h2>
-			<p>This site includes documentation for both Splice Machine products. The topic sections are organized into three main categories, each of which is represented by a menu at the top of each page.</p>
-            <table summary="Links to and descriptions of the section in the Splice Machine documentation suite.">
-                <col  />
-                <col  />
-				<col  />
-                <thead>
-                    <tr >
-						<th >Menu</th>
-                        <th >Section</th>
-                        <th >Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-					<tr>
-						<td rowspan=7>Splice Machine</td>
-						<td><a href="index.html">Welcome</a></td>
-						<td>Introduction to our main documentation, which contains the main sections that apply to all Splice Machine products.</td>
-					</tr>
-					<tr>
-						<td><a href="tutorials_intro.html">Tutorials</a></td>
-						<td>A collection of tutorials that walk you through numerous specific tasks to help you quickly learn how to use your Splice Machine database more productively.</td>
-					</tr>
-					<tr>
-						<td><a href="sqlref_intro.html">SQL Reference Manual</a></td>
-						<td>The reference manual for the Splice Machine implementation of SQL.</td>
-					</tr>
-					<tr>
-						<td><a href="developers_intro.html">Developer's Manual</a></td>
-						<td>Topics of interest to all developers working with Splice Machine.</td>
-					</tr>
-					<tr>
-						<td><a href="dbconsole_intro.html">Database Console Guide</a></td>
-						<td>An introduction to the Splice Machine Spark Database Console.</td>
-					</tr>
-					<tr>
-						<td><a href="notes_intro.html">General Information</a></td>
-						<td>General information about our database products and our documentation.</td>
-					</tr>
-					<tr>
-						<td rowspan=5>DB-Service Only</td>
-						<td><a href="dbaas_intro.html">Welcome</a></td>
-						<td>Introduction to our documentation sections that apply only to our cloud-managed database service product.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_cm_intro.html">Cloud Manager Guide</a></td>
-						<td>A guide to our Cloud Manager, which is the Dashboard from which you create, manage, and use your clusters.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_zep_intro.html">Using Zeppelin</a></td>
-						<td>A guide to using Zeppelin notebooks to work with your Splice Machine databases.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_info_release.html">Release Information</a></td>
-						<td>Release notes, workarounds, and other information about this release.</td>
-					</tr>
-					<tr>
-						<td rowspan=5>On-Premise-DB Only</td>
-						<td><a href="onprem_intro.html">Welcome</a></td>
-						<td>Introduction to our documentation sections that apply only to our on-premise database product.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_install_intro.html">Installation</a></td>
-						<td>Step-by-step instructions for installing the on-premise version of Splice Machine on compatible platforms.</td>
-					</tr>
-					<tr>
-						<td><a href="cmdlineref_intro.html">splice> Command Line Reference</a></td>
-						<td>The reference manual for our on-premise Splice Machine command line interface.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_admin_intro.html">Administrator's Guide</a></td>
-						<td>Topics that describe the administrative tasks associated with configuring and maintaining your on-premise Splice Machine database.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_info_release.html">Release Information (v2.6)</a></td>
-						<td>Release notes, workarounds, and other information about this release (v2.6).</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_info_release2.5.html">Release Information (v2.5)</a></td>
-						<td>Release notes, workarounds, and other information for the v2.5 release.</td>
-					</tr>
-				</tbody>
-			</table>
- 			<h3>Using our Documentation</h3>
- 			<p>Please visit our <a href="notes_usingdocs.html">Documentation Summary</a> page for a quick introduction to navigating and using the components of our documentation system.</p>
+			<h2>Navigating our Documentation</h2>
+			<p>This site includes documentation for both Splice Machine products. The topic sections are organized into three main categories, each of which has detailed sections and is represented by one of the menus at the top of each page (<span class="ItalicFont">Splice Machine, DB-Service Only, On-Premise-DB Only</span>). The sidebar navigation (on the left) automatically changes whenever you select a new section of the docs.</p>
+			<p>See the <a href="notes_usingdocs.html">Using our Documentation</a> page to learn more about the content available in our documentation and how to easily navigate among our sections and topics.</p>
        </div>
 	</section>

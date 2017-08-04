@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A list of the topics in this documentation that apply only to our on-premise product; these topics do not apply to our database-as-a-service product.">
 <meta name="keywords" content=" ">
-<title>Splice Machine Product-Specific Topics | Splice Machine Documentation</title>
+<title>Splice Machine On-Premise Database | Splice Machine Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 
 
@@ -210,9 +210,9 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Splice Machine Product-Specific Topics">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Splice Machine On-Premise Database">{title}</a></li>',
                     noResultsText: 'No results found.',
-                            limit: 10,
+                            limit: 18,
                             fuzzy: true,
                     })
                     </script>
@@ -673,6 +673,13 @@
             
             
             
+            <li><a href="notes_usingdocs.html">About our Documentation</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="onprem_info_editions.html">Community and Enterprise Editions</a></li>
             
             
@@ -818,7 +825,12 @@
 
 
 
-﻿
+
+
+
+
+
+
 
 
 
@@ -877,12 +889,19 @@
 		<div class="TopicContent">
 			<h1>Welcome to the Splice Machine On-Premise Database!</h1>
 			<p>Welcome to Splice Machine, the  database platform for adaptive applications that manage operational processes. This site contains documentation for our <span class="ConsoleLink">On-Premise Database</span>.</p>
+			<div class="noteIcon">
+				<p>If you're not yet familiar with our lineup of products, please visit the <a href="https://www.splicemachine.com/get-started/" target="_blank">Getting Started Page</a> in our web site to learn more about them.</p>
+				<p>You can <a href="https://www.splicemachine.com/get-started/download/" target="_blank">Download the free standalone version</a> of our <span class="ItalicFont">On-Premise Database</span> product.</li>
+				<p>You can also <a href="https://www.splicemachine.com/get-started/cluster-download/" target="_blank">Download the open source, Community version</a> of our <span class="ItalicFont">On-Premise cluster database</span> to install on your Hadoop cluster.</li>
+				</p>
+			</div>
 			<p>Splice Machine is a hybrid relational database platform that allows you to run transactional (OLTP) and analytical (OLAP)&#160;SQL workloads, concurrently, against shared data. To ensure that one does not interfere with the other, Splice Machine uses resource isolation and a ground-breaking MVCC technology for concurrent, non-locking, distributed ACID transactions. </p>
 			<p>With Splice Machine, you can manage operational processes, large-scale IoT infrastructures, and use analytical processing and machine learning to improve over time.</p>
 			<p>Splice Machine delivers an open-source data platform that incorporates the proven scalability of HBase and the in-memory performance of Apache Spark. The cost-based optimizer uses advanced statistics to choose the best compute engine, storage engine, index access, join order and join algorithm for each task. In this way, Splice Machine can concurrently process transactional and analytical workloads at scale.</p>
-			<h2>Version Information</h2>
-			<p>This site contains the documentation for:</p>
-            <p class="indentLevel1"> Version <span class="CalloutFont">2.6</span> of <span class="CalloutFont">Splice Machine</span>, released  August, 2017</p>
+			<h2>Using our Documentation</h2>
+			<p>Please visit our <a href="notes_usingdocs.html">Documentation Summary</a> page for a quick introduction to navigating and using the components of our documentation system.</p>
+			<h3>Version Information</h3>
+			<p>This site contains the documentation for version 2.6 of Splice Machine, and also applies to our August 2017 2.5 patch release (v2.5.0.1729 and above).</p>
 			<p>If you're using an earlier version, you'll find the documentation here:</p>
             <table>
                 <col />
@@ -896,111 +915,9 @@
                         <td>Version 2.0</td>
                         <td><a href="https://doc.splicemachine.com/2.0/home.html">Release 2.0 Documentation</a> (Sep. 2016)</td>
                     </tr>
-                    <tr>
-                        <td>Version 1.5</td>
-                        <td><a href="https://doc.splicemachine.com/1.5/home.html">Release 1.5 Documentation</a> (Jun. 2016)</td>
-                    </tr>
                 </tbody>
             </table>
 
-			<h2>Main Sections in the Documentation</h2>
-			<p>The Splice Machine Documentation is divided into three main areas, each of which contains multiple sections, as shown in the following table. The Splice Machine topics apply to all products, and the On-Premise-DB topics are specific to this product.</p>
-            <table summary="Links to and descriptions of the section in the Splice Machine documentation suite.">
-                <col  />
-                <col  />
-				<col  />
-                <thead>
-                    <tr >
-						<th >Menu</th>
-                        <th >Section</th>
-                        <th >Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-					<tr>
-						<td rowspan=7>Splice Machine</td>
-						<td><a href="index.html">Welcome</a></td>
-						<td>Introduction to our main documentation, which contains the main sections that apply to all Splice Machine products.</td>
-					</tr>
-					<tr>
-						<td><a href="tutorials_intro.html">Tutorials</a></td>
-						<td>A collection of tutorials that walk you through numerous specific tasks to help you quickly learn how to use your Splice Machine database more productively.</td>
-					</tr>
-					<tr>
-						<td><a href="sqlref_intro.html">SQL Reference Manual</a></td>
-						<td>The reference manual for the Splice Machine implementation of SQL.</td>
-					</tr>
-					<tr>
-						<td><a href="developers_intro.html">Developer's Manual</a></td>
-						<td>Topics of interest to all developers working with Splice Machine.</td>
-					</tr>
-					<tr>
-						<td><a href="dbconsole_intro.html">Database Console Guide</a></td>
-						<td>An introduction to the Splice Machine Spark Database Console.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_info_release.html">Release Notes</a></td>
-                        <td>Release and update notes for our Database Service product.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_info_release.html">Release Notes v2.6</a></td>
-                        <td>Release and update notes for the current version (2.6) of our On-Premise Database product.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_info_release2.5.html">Release Notes v2.5</a></td>
-                        <td>Release and update notes for version 2.5 of our On-Premise Database product.</td>
-					</tr>
-					<tr>
-						<td><a href="notes_intro.html">Other Notes</a></td>
-						<td>A loose collection of useful topics, including our glossary and how to use this documentation.</td>
-					</tr>
-					<tr>
-						<td rowspan=4>DB-Service Only</td>
-						<td><a href="dbaas_intro.html">Welcome</a></td>
-						<td>Introduction to our documentation sections that apply only to our cloud-managed database service product.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_cm_intro.html">Cloud Manager Guide</a></td>
-						<td>A guide to our Cloud Manager, which is the Dashboard from which you create, manage, and use your clusters.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_zep_intro.html">Using Zeppelin</a></td>
-						<td>A guide to using Zeppelin notebooks to work with your Splice Machine databases.</td>
-					</tr>
-					<tr>
-						<td><a href="dbaas_info_release.html">Release Notes</a></td>
-						<td>Release notes for our Database-as-Service product.</td>
-					</tr>
-					<tr>
-						<td rowspan=5>On-Premise-DB Only</td>
-						<td><a href="onprem_intro.html">Welcome</a></td>
-						<td>Introduction to our documentation sections that apply only to our on-premise database product.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_install_intro.html">Installation</a></td>
-						<td>Step-by-step instructions for installing the on-premise version of Splice Machine on compatible platforms.</td>
-					</tr>
-					<tr>
-						<td><a href="cmdlineref_intro.html">splice> Command Line Reference</a></td>
-						<td>The reference manual for our on-premise Splice Machine command line interface.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_admin_intro.html">Administrator's Guide</a></td>
-						<td>Topics that describe the administrative tasks associated with configuring and maintaining your on-premise Splice Machine database.</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_info_release.html">Release Information (v2.6)</a></td>
-						<td>Release notes, workarounds, and other information about this release (v2.6).</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_info_release2.5.html">Release Information (v2.5)</a></td>
-						<td>Release notes, workarounds, and other information for the v2.5 release.</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<h3>Using our Documentation</h3>
-			<p>Please visit our <a href="notes_usingdocs.html">Documentation Summary</a> page for a quick introduction to navigating and using the components of our documentation system.</p>
         </div>
 	</section>
 
@@ -1019,7 +936,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Aug 2, 2017 <br />
+ Site last generated: Aug 4, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

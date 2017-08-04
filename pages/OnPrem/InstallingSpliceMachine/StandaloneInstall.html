@@ -1,7 +1,7 @@
 ---
 summary: How to download, install, and start using the standalone version of Splice Machine.
 title: Installing the Standalone Version of Splice Machine.
-keywords: standalone version
+keywords: standalone version, hadoop, hbase, hdfs sqlshell.sh, sqlshell, download splice
 toc: false
 product: onprem
 sidebar:  onprem_sidebar
@@ -314,7 +314,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Download the Splice Machine installer.</p>
-                        <p class="indentLevel1">Visit this page: <span class="CodeFont"><a href="https://www.splicemachine.com/get-started/download/"  target="_blank">https://www.splicemachine.com/get-started/download/</a></span>.</p>
+                        <p class="indentLevel1">Visit this page: <span class="CodeFont"><a href="{{splvar_location_StandaloneLink}}"  target="_blank">{{splvar_location_StandaloneLink}}</a></span>.</p>
                     </li>
                     <li>
                         <p class="topLevel">Copy the downloaded tarball (.gz file) to the directory on your computer in which you want to install Splice Machine</p>
@@ -323,8 +323,29 @@ $ sudo apt install oracle-java8-set-default</pre>
                     <li>
                         <p class="topLevel">Install Splice Machine:</p>
                         <p class="indentLevel1">Unpack the tarball <span class="CodeFont">gz</span> file that you downloaded:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">tar -xzf {{splvar_platform_StandaloneInstallerTarball}}</pre>
-                        </div>
+                        <table>
+                            <col />
+                            <col />
+                            <thead>
+                                <tr>
+                                    <th>Splice Machine Release</th>
+                                    <th>Installer Package Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <tr>
+                                   <td class="SpliceRelease">2.6.0</td>
+                                   <td><a href="{{splvar_install_v26_Standalone}}">{{splvar_install_v26_Standalone}}</a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="Separator"> </td>
+                                </tr>
+                               <tr>
+                                   <td class="SpliceRelease">2.5.0</td>
+                                   <td><a href="{{splvar_install_v25_Standalone}}">{{splvar_install_v25_Standalone}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <p class="indentLevel1">This creates a <span class="CodeFont">splicemachine</span> subdirectory and installs Splice Machine software in it.</p>
                     </li>
                 </ol>
@@ -340,7 +361,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                     </li>
                     <li>
                         <p class="topLevel">Run the Splice Machine start-up script</p>
-                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">{{splvar_platform_StandaloneStartScript}}</pre>
+                        <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">{{splvar_location_StandaloneStartScript}}</pre>
                         </div>
                         <p class="indentLevel1">Initialization of the database may take a couple minutes. It is ready for use when you see this message:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">Splice Server is ready</pre>
