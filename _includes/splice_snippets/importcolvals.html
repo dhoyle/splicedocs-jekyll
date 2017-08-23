@@ -1,0 +1,193 @@
+        <h2 id="ImportColVals">Inserting and Updating Column Values When Importing Data</h2>
+        <p>This section summarizes what happens when you are importing, upserting, or merging records into a database table, based on:</p>
+        <ul>
+            <li>Whether you are importing a new record or updating an existing record.</li>
+            <li>If the column is specified in your <span class="CodeFont">insertColumnList</span> parameter.</li>
+            <li>If the table column is a generated value or has a default value.</li>
+        </ul>
+        <p>The important difference in actions taken when importing data occurs when you are updating an existing record with the UPSERT or MERGE and your column list does not contain the name of a table column:</p>
+        <ul>
+            <li>For newly inserted records, the default or auto-generated value is always inserted, as usual.</li>
+            <li>If you are updating an existing record in the table with <span class="CodeFont">UPSERT</span>, the default auto-generated value in that record is overwritten with a new value.</li>
+            <li>If you are updating an existing record in the table with <span class="CodeFont">MERGE</span>, the column value is not updated.</li>
+        </ul>
+        <h3>Importing a New Record Into a Database Table</h3>
+        <p>The following table shows the actions taken when you are importing new records into a table in your database. These actions are the same for all three importation procedures (IMPORTing, UPSERTing, or MERGEing):
+        <table>
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Column included in <span class="CodeFont">importColumnList</span>?</th>
+                    <th>Table column conditions</th>
+                    <th>Action Taken</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>YES</td>
+                    <td>N/A</td>
+                    <td>Import value inserted into table column if valid; if not valid, a bad record error is logged.</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">NO</td>
+                    <td>Has Default Value</td>
+                    <td>Default value is inserted into table column.</td>
+                </tr>
+                <tr>
+                    <td>Is Generated Value</td>
+                    <td>Generated value is inserted into table column.</td>
+                </tr>
+                <tr>
+                    <td>None</td>
+                    <td>NULL is inserted into table column.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The table below shows what happens with default and generated column values when adding new records to a table using one of our import procedures; we use an example database table created with this statement:</p><pre class="Example">CREATE TABLE myTable (<br />   colA INT,<br />   colB CHAR(12) DEFAULT 'myDefaultVal',<br />   colC INT);</pre>
+        <table summary="Detailed example of what gets imported for different input values in a new record">
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th><span class="CodeBoldFont">insertColumnList</span>
+                    </th>
+                    <th>Values in import record</th>
+                    <th>Values inserted into database</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CodeFont">"colA,colB,colC"</td>
+                    <td class="CodeFont">1,,2</td>
+                    <td class="CodeFont">[1,NULL,2]</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">"colA,colB,colC"</td>
+                    <td class="CodeFont">3,de,4</td>
+                    <td class="CodeFont">[3,de,4]</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">"colA,colB,colC"</td>
+                    <td class="CodeFont">1,2,</td>
+                    <td class="CodeFont">Error: column B wrong type</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">"colA,colB,colC"</td>
+                    <td class="CodeFont">1,DEFAULT,2</td>
+                    <td class="CodeFont">[1,"DEFAULT",2]</td>
+                    <td><span class="CodeFont">DEFAULT</span> is imported as a literal value</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">Empty</td>
+                    <td class="CodeFont">1,,2</td>
+                    <td class="CodeFont">[1,myDefaultVal,2]</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">Empty</td>
+                    <td class="CodeFont">3,de,4</td>
+                    <td class="CodeFont">[3,de,4]</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">Empty</td>
+                    <td class="CodeFont">1,2,</td>
+                    <td class="CodeFont">Error: column B wrong type</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">"colA,colC"</td>
+                    <td class="CodeFont">1,2</td>
+                    <td class="CodeFont">[1,myDefaultVal,2]</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont">"colA,colC"</td>
+                    <td class="CodeFont">3,4</td>
+                    <td class="CodeFont">[3,myDefaultVal,4]</td>
+                    <td> </td>
+                </tr>
+            </tbody>
+        </table>
+        <p> Note that the value <span class="CodeFont">DEFAULT</span> in the imported file <span class="BoldFont">is not interpreted</span> to mean that the default value should be applied to that column; instead:</p>
+        <ul>
+            <li>If the target column in your database has a string data type, such as <span class="CodeFont">CHAR</span> or <span class="CodeFont">VARCHAR</span>, the literal value <span class="CodeFont">"DEFAULT"</span> is inserted into your database..</li>
+            <li>If the target column is not a string data type, an error will occur.</li>
+        </ul>
+        <h4>Importing New Records That Contain Generated or Default Values</h3>
+        <p>When you export a table with generated columns to a file, the actual column values are exported, so importing that same file into a different database will accurately replicate the original table values.</p>
+        <p>If you are importing previously exported records into a table with a generated column, and you want to import some records with actual values and apply generated or default values to other records, you need to split your import file into two files and import each:</p>
+        <ul>
+            <li>Import the file containing records with non-default values with the column name included in the <span class="CodeFont">insertColumnList</span>.</li>
+            <li>Import the file containing records with default values with the column name excluded from the <span class="CodeFont">insertColumnList</span>.</li>
+        </ul>
+        <h3>Updating a Table Record with UPSERT</h3>
+        <p>The following table shows the action taken when you are using the <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> procedure to update an existing record in a database table:</p>
+        <table>
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Column included in <span class="CodeFont">importColumnList</span>?</th>
+                    <th>Table column conditions</th>
+                    <th>Action Taken</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>YES</td>
+                    <td>N/A</td>
+                    <td>Import value updated in table column if valid; if not valid, a bad record error is logged.</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">NO</td>
+                    <td>Has Default Value</td>
+                    <td>Table column is overwritten with default value.</td>
+                </tr>
+                <tr>
+                    <td>Is Generated Value</td>
+                    <td>Table column is overwritten with newly generated value.</td>
+                </tr>
+                <tr>
+                    <td>None</td>
+                    <td>Table column is overwritten with NULL value.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Updating a Table Record with MERGE</h3>
+        <p>The following table shows the action taken when you are using the <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span> procedure to update an existing record in a database table:</p>
+        <table>
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Column included in <span class="CodeFont">importColumnList</span>?</th>
+                    <th>Table column conditions</th>
+                    <th>Action Taken</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>YES</td>
+                    <td>N/A</td>
+                    <td>Import value updated in table column if valid; if not valid, a bad record error is logged.</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">NO</td>
+                    <td>N/A</td>
+                    <td>Table column is not updated.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Generated Column Import Examples</h4>
+        <p>Our <a href="tutorials_ingest_importing.html">Importing Data</a> tutorial includes an example that illustrates this difference. We recommend reviewing it before upserting or merging data into a table.</p>

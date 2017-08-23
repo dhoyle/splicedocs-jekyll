@@ -1,7 +1,7 @@
 ---
 title: SYSCS_UTIL.IMPORT_DATA built-in system procedure
 summary: Built-in system procedure that imports data to a subset of columns in a table.
-keywords: importing data, import_data, import data from
+keywords: import data, import_data, load data
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -14,24 +14,28 @@ folder: SQLReference/BuiltInSysProcs
             <p>The <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> system procedure
 			imports data to a subset of columns in a table. You choose the subset of columns
 			by specifying insert columns.</p>
-            <div class="noteIcon">The <span class="CodeFont">SYSCS_UTIL.SYSCS_IMPORT_DATA</span>&#160;system procedure, which operates similarly and was available in earlier versions of Splice Machine, has been deprecated.</div>
-            <p>After a successful import completes, a simple report displays, showing how many files were imported, and how many record imports succeeded or failed. (Note that you can ignore the <span class="CodeFont">numtasks</span> value shown in this report).</p>
-            <div class="noteNote">On a cluster, the files to be imported <span class="BoldFont">MUST be on HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory.<br /><br />	In addition, the files must be readable by the <span class="CodeFont">hbase</span> user, and the <span class="CodeFont">badRecordDirectory</span> directory must be writable by the hbase user, either by setting the user explicity, or by opening up the permissions; for example:<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ShellCommand">sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory</span><br /></div>
+            <div class="noteIcon">Splice Machine also provides two built-in system procedures that will import new records <span class="ItalicFont">and</span> update existing records in a table: <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> and <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span>; these operate similarly, but apply different semantics when updating existing records. For more information, see our <a href="tutorials_ingest_importing.html">Importing Data tutorial</a>.</div>
+            <p>After a successful import completes, a simple report displays, showing how many files were imported, and how many record imports succeeded or failed.</p>
+            <div class="noteNote">
+				<p>On a cluster, the files to be imported <span class="BoldFont">MUST be on HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory.</p>
+				<p>In addition, the files must be readable by the <span class="CodeFont">hbase</span> user, and the <span class="CodeFont">badRecordDirectory</span> directory must be writable by the hbase user, either by setting the user explicity, or by opening up the permissions; for example:</p>
+				<div class="preWrapper"><pre class="ShellCommand">sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory</pre></div>
+			</div>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA (
 		<span class="ItalicFont">schemaName</span>,
 		<span class="ItalicFont">tableName</span>,
-		<span class="ItalicFont">insertColumnList</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">insertColumnList</span><span class="CodeFont"> | null</span>,
 		<span class="ItalicFont">fileOrDirectoryName</span>,
-		<span class="ItalicFont">columnDelimiter</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">characterDelimiter</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">timestampFormat</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">dateFormat</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">timeFormat</span><span class="CodeFont"> |&#160;null</span>,
+		<span class="ItalicFont">columnDelimiter</span><span class="CodeFont"> | null</span>,
+		<span class="ItalicFont">characterDelimiter</span><span class="CodeFont"> | null</span>,
+		<span class="ItalicFont">timestampFormat</span><span class="CodeFont"> | null</span>,
+		<span class="ItalicFont">dateFormat</span><span class="CodeFont"> | null</span>,
+		<span class="ItalicFont">timeFormat</span><span class="CodeFont"> | null</span>,
 		<span class="ItalicFont">badRecordsAllowed</span>,
-		<span class="ItalicFont">badRecordDirectory</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">oneLineRecords</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">charset</span><span class="CodeFont"> |&#160;null</span>
+		<span class="ItalicFont">badRecordDirectory</span><span class="CodeFont"> | null</span>,
+		<span class="ItalicFont">oneLineRecords</span><span class="CodeFont"> | null</span>,
+		<span class="ItalicFont">charset</span><span class="CodeFont"> | null</span>
 		);</pre>
             </div>
 {% include splice_snippets/importparamlist.html %}
@@ -46,24 +50,23 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <h3>Importing a Subset of Data From a File</h3>
             <p>When you import data from a file into a table, all of the data in the file is not necessarily imported. This can happen in either of these circumstances:</p>
             <ul>
-                <li>If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
+                <li>If the table into which you're importing contains less columns than does the data file, the "extra" columns of data are ignored. </li>
                 <li>If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
             </ul>
-            <p>You can find examples in the <a href="tutorials_ingest_importing.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
-            <p>Note that you can take advantage of this by importing different subsets of data from one input file into multiple tables in your database.</p>
+            <p>Please see the <a href="#ImportColVals">Inserting and Updating Column Values When Importing Data</a>section below for detailed information about how table column values are updated when importing data with our different procedures.</p>
             <h2>Record Import Failure Reasons</h2>
             <p>When upserting data from a file, the input file you generate must contain:</p>
             <ul>
                 <li>the columns to be changed</li>
-                <li>all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
+                <li>all <span class="CodeFont">NON_NULL</span> columns</li>
             </ul>
-            <p>Typical reasons for a row (record)&#160;import to fail include:</p>
+            <p>Typical reasons for a row (record) import to fail include:</p>
             <ul>
                 <li>Improper data expected for a column.</li>
                 <li>Improper number of columns of data.</li>
-                <li>A primary key violation:&#160;<span class="CodeFont"><a href="#">SYSCS_UTIL.IMPORT_DATA</a></span> will only work correctly if the table into which you are inserting/updating has primary keys. </li>
+                <li>A primary key violation: <span class="CodeFont"><a href="#">SYSCS_UTIL.IMPORT_DATA</a></span> will only work correctly if the table into which you are inserting/updating has primary keys. </li>
             </ul>
-{% include splice_snippets/importgeneratedcolvals.html %}
+{% include splice_snippets/importcolvals.html %}
             <h2 id="TimestampFormats">About Timestamp Formats</h2>
 {% include splice_snippets/importtimestampformats.html %}
             <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
@@ -72,8 +75,8 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <div class="noteRelease">Run a full compaction on tables into which you have imported a large amount of data, using the <span class="CodeFont"><a href="sqlref_sysprocs_compacttable.html">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</a></span> system procedure.</div>
             <h2 id="Examples">Examples</h2>
             <p>The examples in this section illustrate using different timestamp formats and different string delimiter characters.</p>
-            <h3>Example 1:&#160;Importing our doc examples player data</h3>
-            <p class="body">This example shows the <span class="CodeFont">IMPORT_DATA</span>&#160;call used to import the Players table into our documentation examples database:</p>
+            <h3>Example 1: Importing our doc examples player data</h3>
+            <p class="body">This example shows the <span class="CodeFont">IMPORT_DATA</span> call used to import the Players table into our documentation examples database:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.IMPORT_DATA('SPLICEBBALL', 'Players',
 	'ID, Team, Name, Position, DisplayName, BirthDate',
 	'/Data/DocExamplesDb/Players.csv',
@@ -89,15 +92,15 @@ Mike,2013-04-21 09:15:32.78-04
 Mike,2013-03-23 09:45:00.68-05</pre>
             </div>
             <p>You can then import the data with the following call:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.IMPORT_DATA('app','tabx','c1,c2',
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.IMPORT_DATA('app','tabx','c1,c2',
    '/path/to/ts3.csv',
    ',', '''',
-   <span class="BoldFont">'yyyy-MM-dd HH:mm:ss.SSZ'</span>,
+   'yyyy-MM-dd HH:mm:ss.SSZ',
    null, null, 0, null, true, null);</pre>
             </div>
             <p>Note that for any import use case shown above, the time shown in the imported table depends on the timezone setting where the data is imported. In other words, given the same csv file, if imported at locations with different time zones, the value in the table shown will be different. Additionally, daylight savings time may account for a 1-hour difference if timezone is specified.</p>
-            <h3>Example 3:&#160;Importing strings with embedded special characters </h3>
-            <p>This example imports a csv file that includes newline (<span class="CodeFont">Ctrl-M</span>)&#160;characters in some of the input strings. We use the default double-quote as our character delimiter to import data such as the following:</p>
+            <h3>Example 3: Importing strings with embedded special characters </h3>
+            <p>This example imports a csv file that includes newline (<span class="CodeFont">Ctrl-M</span>) characters in some of the input strings. We use the default double-quote as our character delimiter to import data such as the following:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">1,This field is one line,Able
 2,"This field has two lines
 This is the second line of the field",Baker
@@ -105,7 +108,7 @@ This is the second line of the field",Baker
 </pre>
             </div>
             <p>We then use the following call to import the data:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splie&gt;&#160;CALL&#160;SYSCS_UTIL.IMPORT_DATA( 'SPLICE',
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splie&gt; CALL SYSCS_UTIL.IMPORT_DATA( 'SPLICE',
    'MYTABLE',
    null,
    'data.csv',
@@ -113,15 +116,15 @@ This is the second line of the field",Baker
    'Status', false, null);
 </pre>
             </div>
-            <p>We can also explicitly specify double quotes (or any other character)&#160;as our delimiter character for strings:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.IMPORT_DATA( 'SPLICE',
+            <p>We can also explicitly specify double quotes (or any other character) as our delimiter character for strings:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.IMPORT_DATA( 'SPLICE',
    'MYTABLE',
    null,
    'data.csv',
    '\t','"',null,null,null,0,
    'Status', true, null);</pre>
             </div>
-            <h3>Example 4:&#160;Using single quotes to delimit strings</h3>
+            <h3>Example 4: Using single quotes to delimit strings</h3>
             <p>This example performs the same import as the previous example, simply substituting single quotes for double quotes as the character delimiter in the input:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">1,This field is one line,Able
 2,'This field has two lines
@@ -130,7 +133,7 @@ This is the second line of the field',Baker
 </pre>
             </div>
             <p>Note that you must escape single quotes in SQL, which means that you actually define the character delimiter parameter with four single quotes, as follow</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.IMPORT_DATA('SPLICE',
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.IMPORT_DATA('SPLICE',
    'MYTABLE',
    null,
    'data.csv',
@@ -138,11 +141,13 @@ This is the second line of the field',Baker
    'Status', false, null);
 </pre>
             </div>
-            <p>&#160;</p>
+            <p> </p>
             <h2>See Also</h2>
             <ul>
+				<li><a href="tutorials_ingest_importing.html">Our Importing Data Tutorial</a></li>
                 <li><a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
                 </li>
+				<li><a href="sqlref_sysprocs_mergedata.html"><span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span></a></li>
             </ul>
         </div>
 	</section>

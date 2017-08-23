@@ -12,30 +12,35 @@ folder: SQLReference/BuiltInSysProcs
 		<div class="TopicContent">
             <h1 id="BuiltInSysProcs.UpsertDataFromFile">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</h1>
             <p>The <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> system procedure
-			updates or inserts data from a file to a subset of columns in a table. You choose the subset of columns
-			by specifying insert columns. </p>
-            <p>The syntax and usage of this procedure is almost identical to the syntax and usage of the <span class="CodeFont"><a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;system procedure, except that <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span>&#160;first determines if the database already contains a record that matches an incoming record:</p>
+			updates or inserts data from a file to a subset of columns in a table.  You choose the subset of columns
+			by specifying insert columns in your <span class="CodeFont">insertColumnList</span> parameter. </p>
+            <p>The syntax and usage of this procedure is almost identical to the syntax and usage of the <span class="CodeFont"><a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a></span> system procedure, except that <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> first determines if the database already contains a record that matches an incoming record:</p>
             <ul>
                 <li>If a matching record is found in the database, that record is updated with column values from the incoming record.</li>
                 <li>If no matching record is found in the database, the incoming record is added to the database as a new record, exactly as it would be if had you called <span class="CodeFont"><a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a></span>.</li>
             </ul>
-            <p>After a successful import completes, a simple report displays, showing how many files were imported, and how many record imports succeeded or failed. (Note that you can ignore the <span class="CodeFont">numtasks</span> value shown in this report).</p>
-            <div class="noteNote">On a cluster, the files to be imported <span class="BoldFont">MUST be on HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory.<br /><br />	In addition, the files must be readable by the <span class="CodeFont">hbase</span> user, and the <span class="CodeFont">badRecordDirectory</span> directory must be writable by the hbase user, either by setting the user explicity, or by opening up the permissions; for example:<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ShellCommand">sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory</span><br /></div>
+			<div class="noteIcon">Splice Machine also provides a variant of this procedure that also imports new records and updates existing records in a table: <span class="CodeFont"><a href="sqlref_sysprocs_mergedata.html">SYSCS_UTIL.MERGE_DATA_FROM_FILE</a></span> operates similarly, but applies different semantics when updating existing records with generated values. For more information, see the <a href="ImportColVals">Inserting and Updating Column Values When Importing</a> section below.</div>
+            <p>After a successful import completes, a simple report displays, showing how many files were imported, and how many record imports succeeded or failed.</p>
+            <div class="noteNote">
+				<p>On a cluster, the files to be imported <span class="BoldFont">MUST be on HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory.</p>
+				<p>In addition, the files must be readable by the <span class="CodeFont">hbase</span> user, and the <span class="CodeFont">badRecordDirectory</span> directory must be writable by the hbase user, either by setting the user explicity, or by opening up the permissions; for example:</p>
+				<div class="preWrapper"><pre class="ShellCommand">sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory</pre></div>
+			</div>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.UPSERT_DATA_FROM_FILE (
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">schemaName</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">tableName</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">insertColumnList</span><span class="CodeFont"> |&#160;null</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">fileOrDirectoryName</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">columnDelimiter</span><span class="CodeFont"> |&#160;null</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">characterDelimiter</span><span class="CodeFont"> |&#160;null</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">timestampFormat</span><span class="CodeFont"> |&#160;null</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">dateFormat</span><span class="CodeFont"> |&#160;null</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">timeFormat</span><span class="CodeFont"> |&#160;null</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">badRecordsAllowed</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">badRecordDirectory</span><span class="CodeFont"> |&#160;null</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">oneLineRecords</span><span class="CodeFont"> |&#160;null</span>,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ItalicFont">charset</span><span class="CodeFont"> |&#160;null</span>
+               <span class="ItalicFont">schemaName</span>,
+               <span class="ItalicFont">tableName</span>,
+               <span class="ItalicFont">insertColumnList</span><span class="CodeFont"> | null</span>,
+               <span class="ItalicFont">fileOrDirectoryName</span>,
+               <span class="ItalicFont">columnDelimiter</span><span class="CodeFont"> | null</span>,
+               <span class="ItalicFont">characterDelimiter</span><span class="CodeFont"> | null</span>,
+               <span class="ItalicFont">timestampFormat</span><span class="CodeFont"> | null</span>,
+               <span class="ItalicFont">dateFormat</span><span class="CodeFont"> | null</span>,
+               <span class="ItalicFont">timeFormat</span><span class="CodeFont"> | null</span>,
+               <span class="ItalicFont">badRecordsAllowed</span>,
+               <span class="ItalicFont">badRecordDirectory</span><span class="CodeFont"> | null</span>,
+               <span class="ItalicFont">oneLineRecords</span><span class="CodeFont"> | null</span>,
+               <span class="ItalicFont">charset</span><span class="CodeFont"> | null</span>
 );</pre>
             </div>
 {% include splice_snippets/importparamlist.html %}
@@ -50,33 +55,32 @@ rowsImported   |failedRows   |files   |dataSize   |failedLog<br />--------------
             <h3>Importing a Subset of Data From a File</h3>
             <p>When you import data from a file into a table, all of the data in the file is not necessarily imported. This can happen in either of these circumstances:</p>
             <ul>
-                <li>If the table into which you're importing contains less columns than does the data file, the "extra"&#160;columns of data are ignored. </li>
+                <li>If the table into which you're importing contains less columns than does the data file, the "extra" columns of data are ignored. </li>
                 <li>If the <span class="CodeFont">insertColumnList</span> in your import call specifies only a subset of the columns in the data file. </li>
             </ul>
-            <p>You can find examples in the <a href="tutorials_ingest_importing.html">Importing Data Into Splice Machine</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
-            <p>Note that you can take advantage of this by importing different subsets of data from one input file into multiple tables in your database.</p>
+            <p>Please see the <a href="#ImportColVals">Inserting and Updating Column Values When Importing Data</a>section below for detailed information about how table column values are updated when importing data with our different procedures.</p>
             <h2>Usage</h2>
             <p>This procedure will only work correctly if the table into which you are inserting/updating data has primary keys.</p>
             <p>When you generate the input file, it must:</p>
             <ul>
                 <li>contain the columns to be changed</li>
-                <li>contain all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
+                <li>contain all <span class="CodeFont">NON_NULL</span> columns</li>
             </ul>
             <h2>Record Import Failure Reasons</h2>
             <p>When upserting data from a file, the input file you generate must contain:</p>
             <ul>
                 <li>the columns to be changed</li>
-                <li>all <span class="CodeFont">NON_NULL</span>&#160;columns</li>
+                <li>all <span class="CodeFont">NON_NULL</span> columns</li>
             </ul>
-            <p>Typical reasons for a row (record)&#160;import to fail include:</p>
+            <p>Typical reasons for a row (record) import to fail include:</p>
             <ul>
                 <li>Improper data expected for a column.</li>
                 <li>Improper number of columns of data.</li>
                 <li>
-                    <p>A primary key violation: <a href="#"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>&#160;will only work correctly if the table into which you are inserting/updating has primary keys. </p>
+                    <p>A primary key violation: <a href="#"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a> will only work correctly if the table into which you are inserting/updating has primary keys. </p>
                 </li>
             </ul>
-{% include splice_snippets/importgeneratedcolvals.html %}
+{% include splice_snippets/importcolvals.html %}
             <h2 id="TimestampFormats">About Timestamp Formats</h2>
 {% include splice_snippets/importtimestampformats.html %}
             <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
@@ -92,12 +96,12 @@ Mike,2013-03-23 09:45:00.68-05</pre>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">call SYSCS_UTIL.UPSERT_DATA_FROM_FILE('app','tabx','c1,c2',
 	'/path/to/ts3.csv',
 	',', '''',
-	<span class="BoldFont">'yyyy-MM-dd HH:mm:ss.SSZ'</span>,
+	'yyyy-MM-dd HH:mm:ss.SSZ',
 	null, null, 0, null, true, null);</pre>
             </div>
             <p>Note that for any import use case shown above, the time shown in the imported table depends on the timezone setting where the data is imported. In other words, given the same csv file, if imported at locations with different time zones, the value in the table shown will be different. Additionally, daylight savings time may account for a 1-hour difference if timezone is specified.</p>
-            <h3>Example 2:&#160;Importing strings with embedded special characters </h3>
-            <p>This example imports a csv file that includes newline (<span class="CodeFont">Ctrl-M</span>)&#160;characters in some of the input strings. We use the default double-quote as our character delimiter to import data such as the following:</p>
+            <h3>Example 2: Importing strings with embedded special characters </h3>
+            <p>This example imports a csv file that includes newline (<span class="CodeFont">Ctrl-M</span>) characters in some of the input strings. We use the default double-quote as our character delimiter to import data such as the following:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">1,This field is one line,Able
 2,"This field has two lines
 This is the second line of the field",Baker
@@ -108,10 +112,10 @@ This is the second line of the field",Baker
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t',null,null,null,null,0,'BAD', false, null);
 </pre>
             </div>
-            <p>We can also explicitly specify double quotes (or any other character)&#160;as our delimiter character for strings:</p>
+            <p>We can also explicitly specify double quotes (or any other character) as our delimiter character for strings:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t','"',null,null,null,0,'BAD', false, null);</pre>
             </div>
-            <h3>Example 3:&#160;Using single quotes to delimit strings</h3>
+            <h3>Example 3: Using single quotes to delimit strings</h3>
             <p>This example performs the same import as the previous example, simply substituting single quotes for double quotes as the character delimiter in the input:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">1,This field is one line,Able
 2,'This field has two lines
@@ -125,8 +129,11 @@ This is the second line of the field',Baker
             </div>
             <h2>See Also</h2>
             <ul>
+				<li><a href="tutorials_ingest_importing.html">Our Importing Data Tutorial</a></li>
                 <li><a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a>
                 </li>
+                <li><a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span></a>
+				</li>
             </ul>
         </div>
 	</section>

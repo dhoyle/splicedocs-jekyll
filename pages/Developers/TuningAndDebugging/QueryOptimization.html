@@ -23,12 +23,12 @@ folder: Developers/TuningAndDebugging
 <td>Use Explain Plan</td>
 <td>
 <p>You can use the Splice Machine Explain Plan facility to display the execution plan for a statement without actually executing the statement. You can use Explain Plan to help determine options such as which join strategy to use or which index to select.</p>
-<p>See the <a href="developers_tuning_explainplan.html">About Explain Plan</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+<p>See the <a href="developers_tuning_explainplan.html">About Explain Plan</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</p>
 </td>
 </tr>
 <tr>
 <td>Use Statistics</td>
-<td>Your database administrator can refine which statistics are collected on your database, which in turn enhances the operation of the query optimizer. See the <a href="developers_tuning_usingstats.html">Using Statistics</a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</td>
+<td>Your database administrator can refine which statistics are collected on your database, which in turn enhances the operation of the query optimizer. See the <a href="developers_tuning_usingstats.html">Using Statistics</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</td>
 </tr>
 <tr>
 <td>Use <span class="CodeFont">WHERE</span>&nbsp;clauses</td>
@@ -85,7 +85,7 @@ folder: Developers/TuningAndDebugging
 <tr>
 <td><a href="#Pinned">Pinned Table</a></td>
 <td class="CodeFont">--splice-properties pin=true</td>
-<td>That you want the pinned (cached in memory)&nbsp;version of a table used in a query,</td>
+<td>That you want the pinned (cached in memory)&nbsp;version of a table used in a query</td>
 </tr>
 <tr>
 <td><a href="#Spark">Spark</a></td>
@@ -110,9 +110,11 @@ folder: Developers/TuningAndDebugging
 <tr>
 <td>Table identifier</td>
 <td class="CodeFont">
-<p>useSpark</p>
-<p>joinStrategy</p>
 <p>index</p>
+<p>joinStrategy</p>
+<p>pin</p>
+<p>useSpark</p>
+<p>bulkDeleteDirectory</p>
 </td>
 <td class="CodeFont"><span class="Example">SELECT&nbsp;*&nbsp;FROM<br /> &nbsp;&nbsp; member_info&nbsp;m, rewards r,<br />&nbsp;&nbsp;&nbsp;points p --SPLICE-PROPERTIES&nbsp;index=ie_point WHERE...</span></td>
 </tr>
