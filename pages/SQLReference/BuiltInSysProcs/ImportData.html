@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInSysProcs
             <p>The <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> system procedure
 			imports data to a subset of columns in a table. You choose the subset of columns
 			by specifying insert columns.</p>
-            <div class="noteIcon">Splice Machine also provides two built-in system procedures that will import new records <span class="ItalicFont">and</span> update existing records in a table: <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> and <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span>; these operate similarly, but apply different semantics when updating existing records. For more information, see our <a href="tutorials_ingest_importing.html">Importing Data tutorial</a>.</div>
+            <div class="noteIcon">Splice Machine also provides two built-in system procedures that will import new records <span class="ItalicFont">and</span> update existing records in a table: <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> and <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span>; these operate similarly, but apply different semantics when updating existing records. For more information, see the <a href="#ImportColVals">Inserting and Updating Column Values When Importing</a> section below..</div>
             <p>After a successful import completes, a simple report displays, showing how many files were imported, and how many record imports succeeded or failed.</p>
             <div class="noteNote">
 				<p>On a cluster, the files to be imported <span class="BoldFont">MUST be on HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory.</p>

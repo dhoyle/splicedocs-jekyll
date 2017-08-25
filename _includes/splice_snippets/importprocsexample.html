@@ -1,6 +1,6 @@
         <p1>In this example, we'll illustrate how the different data import procedures modify columns in your table when you've specified an <span class="CodeFont">insertColumnList</span> that is not 1-to-1 with the columns in your table. The <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> and <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> procedures handle this situation in the same way, assigning default values (or NULL if no default is defined) to any table column that is not being inserted or updated from the input data file. The <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span> does not overwrite generated values when updating records.</p>
         <div class="noteNote">This distinction is particularly important when loading record updates into a table with auto-generated column values that you do not want overwritten.</div>
-        <p>We'll create two sample tables, populate each with the same data, and load the same input file data into each to illustrate the differences between how the and <span class="CodeFont">Merge</span> procedures.</p>
+        <p>We'll create two sample tables, populate each with the same data, and load the same input file data into each to illustrate the differences between how the <span class="CodeFont">Upsert</span> and <span class="CodeFont">Merge</span> procedures.</p>
         <div class="preWrap"><pre class="Example">CREATE SCHEMA test;
 SET SCHEMA test;
 CREATE TABLE testUpsert (
