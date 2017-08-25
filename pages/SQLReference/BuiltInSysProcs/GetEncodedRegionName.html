@@ -1,0 +1,66 @@
+---
+title: SYSCS_UTIL.GET_ENCODED_REGION_NAME built-in system procedure
+summary: Built-in system procedure that returns the encoded name of the HBase region that contains the Splice Machine table primary key or index values specified in splitKey.
+search: exclude
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_getencodedregion.html
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1>SYSCS_UTIL.GET_ENCODED_REGION_NAME</h1>
+            <p>The <span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span> system procedure returns the encoded name of the HBase region that contains the Splice Machine table primary key or index values for the <span class="CodeFont">splitKey</span> value that you specify.</p>
+			<p>You can call this procedure to retrieve an encoded HBase region name prior to calling the <span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span> or <span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span> procedures.</p>
+            <h2>Syntax</h2>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.GET_ENCODED_REGION_NAME(<span class="ItalicFont">schemaName</span>)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">The name of the schema of the table.</p>
+                <p class="paramName">tableName</p>
+                <p class="paramDefnFirst">The name of the table.</p>
+                <p class="paramName">indexName</p>
+                <p class="paramDefnFirst"><span class="CodeFont">NULL</span> or the name of the index.</p>
+				<p class="paramDefn">Specify <span class="CodeFont">NULL</span> to indicate that the the <span class="CodeFont">splitKey</span> is the primary key of the base table; specify an index name to indicate that the <span class="CodeFont"> is an index value.</p>
+                <p class="paramName">splitKey</p>
+                <p class="paramDefnFirst">The <span class="CodeFont">value</span> of the split key used to split the table into regions.</p>
+	            <p class="paramName">columnDelimiter</p>
+	            <p class="paramDefnFirst">The character used to separate columns in <span class="CodeFont">splitKey</a>. Specify <span class="CodeFont">null</span> if using the comma (<span class="CodeFont">,</span>)&#160;character as your delimiter. </p>
+	            <p class="paramName">characterDelimiter</p>
+	            <p class="paramDefnFirst">Specifies which character is used to delimit strings in  <span class="CodeFont">splitKey</a>. You can specify <span class="CodeFont">null</span> or the empty string to use the default string delimiter, which is the double-quote (<span class="CodeFont">"</span>).</p>
+	            <p class="paramDefnFirst">If your input contains control characters such as newline characters, make sure that those characters are embedded within delimited strings.</p>
+	            <div class="noteNote">To use the single quote (<span class="CodeFont">'</span>) character as your string delimiter, you need to escape that character. This means that you specify four quotes (<span class="CodeFont">''''</span>)&#160;as the value of this parameter. This is standard SQL&#160;syntax.<br /><br />	The <a href="#Examples">Examples</a> section below contains an example that uses the single quote as the string delimiter character.</div>
+	            <p class="paramName">timestampFormat</p>
+	            <p class="paramDefnFirst">
+				The format of timestamps in <span class="CodeFont">splitKey</span>. You can set this to <span class="CodeFont">null</span> if there are no time columns in the split key, or if the format of any timestamps in the file match the <span class="CodeFont">Java.sql.Timestamp</span> default format, which is: "<span class="ItalicFont">yyyy-MM-dd HH:mm:ss</span>".</p>
+				<div class="notePlain">See the <a href="#TimestampFormats">About Timestamp Formats</a> section in the <a href="sqlref_sysprocs_importdata"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> topic for more information about timestamps.</div>
+	            <p class="paramName">dateFormat</p>
+	            <p class="paramDefnFirst">The format of datestamps in <span class="CodeFont">splitKey</span>. You can set this to <span class="CodeFont">null</span> if there are no date columns in the splitkey, or if the format of any dates in the split key match this pattern: "<span class="ItalicFont">yyyy-MM-dd</span>".<br /></p>
+	            <p class="paramName">timeFormat</p>
+	            <p class="paramDefnFirst">The format of time values stored in <span class="CodeFont">splitKey</span>. You can set this to <span class="CodeFont">null</span> if there are no time columns in the file, or if the format of any times in the split key match this pattern: "<span class="ItalicFont">HH:mm:ss</span>".</p>
+	            <div>
+            </div>
+            <div>
+            <h2>Usage</h2>
+			<p>You can compact a table region by specifying <span class="CodeFont">NULL</span> for the index name. To compact an index region, specify both the table name and the index name.</p>
+            <p>Region compaction is asynchronous, which means that when you invoke this procedure from the command line, Splice Machine issues a compaction request to HBase, and returns control to you immediately; HBase will determine when to subsequently run the compaction.</p>
+            </div>
+            <h2>Results</h2>
+            <p>This procedure does not return a result.</p>
+            <h2>Examples</h2>
+			<p>The following call will perform a major compaction on the region <span class="CodeFont">0bfb038d09c5200a1c063d586ec8e50c</span> for table <span class="CodeFont">testTable</p> in the <span class="CodeFont">SPLICE</span> schema:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.GET_ENCODED_REGION_NAME('SPLICE', 'LINEITEM', null, '1|2', '|', null, null, null, null););
+Statement executed.</pre>
+            </div>
+            <h2>See Also</h2>
+            <ul>
+				<li><a href="sqlref_sysprocs_majorcompactregion"><span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span></li>
+                <li><a href="sqlref_sysprocs_compacttable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</span></a>
+                </li>
+                <li><a href="sqlref_sysprocs_compactschema.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</span></a>
+                </li>
+            </ul>
+        </div>
+	</section>

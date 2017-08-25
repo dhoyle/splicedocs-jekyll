@@ -1,0 +1,56 @@
+---
+title: SYSCS_UTIL.MAJOR_COMPACT_REGION built-in system procedure
+summary: Built-in system procedure that performs a major compaction on a table or index region.
+keywords: region compaction, compact region, major compact, major_compact_region
+search: exclude
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_majorcompactregion.html
+folder: SQLReference/BuiltInSysProcs
+---
+	<section>
+		<div class="TopicContent">
+            <h1>SYSCS_UTIL.MAJOR_COMPACT_REGION</h1>
+            <p>The <span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span> system procedure performs a major compaction on a table region or an index region.</p>
+			<p>A common reason for calling this procedure is to improve compaction performance by only compacting recent updates in a table. For example, you might confine any updates to regions of the current month, so older regions need not be re-compacted.</p>
+            <h2>Syntax</h2>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.MAJOR_COMPACT_REGION(<span class="ItalicFont">schemaName</span>)</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">The name of the schema of the table.</p>
+                <p class="paramName">tableName</p>
+                <p class="paramDefnFirst">The name of the table to compact.</p>
+                <p class="paramName">indexName</p>
+                <p class="paramDefnFirst"><span class="CodeFont">NULL</span> or the name of the index.</p>
+				<p class="paramDefn">Specify the name of the index you want to compact; if you are compacting the table, specify <span class="CodeFont">NULL</span> for this parameter.</p>
+                <p class="paramName">regionName</p>
+                <p class="paramDefnFirst">The encoded HBase name of the region you want compacted. You can call the <a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for a Splice Machine split key.</p>
+            </div>
+            <div>
+            <h2>Usage</h2>
+			<p>You can compact a table region by specifying <span class="CodeFont">NULL</span> for the index name. To compact an index region, specify both the table name and the index name.</p>
+            <p>Region compaction is asynchronous, which means that when you invoke this procedure from the command line, Splice Machine issues a compaction request to HBase, and returns control to you immediately; HBase will determine when to subsequently run the compaction.</p>
+            </div>
+            <h2>Results</h2>
+            <p>This procedure does not return a result.</p>
+            <h2>Examples</h2>
+			<p>The following call will perform a major compaction on the region <span class="CodeFont">0bfb038d09c5200a1c063d586ec8e50c</span> for table <span class="CodeFont">testTable</p> in the <span class="CodeFont">SPLICE</span> schema:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.MAJOR_COMPACT_REGION('SPLICE', 'testTable', NULL, '0bfb038d09c5200a1c063d586ec8e50c');
+Statement executed.</pre>
+            </div>
+			<p>And this call will perform a major compaction on the region <span class="CodeFont">76f1bef21da0111fcc22c1abb326856d</span> for index <span class="CodeFont">testIndex</p> on table <span class="CodeFont">testTable</p> in the <span class="CodeFont">SPLICE</span> schema:</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.MAJOR_COMPACT_REGION('SPLICE', 'testTable', 'testIndex', '76f1bef21da0111fcc22c1abb326856d');
+Statement executed.</pre>
+            </div>
+            <h2>See Also</h2>
+            <ul>
+				<li><a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></li>
+                <li><a href="sqlref_sysprocs_compacttable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</span></a>
+                </li>
+                <li><a href="sqlref_sysprocs_compactschema.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</span></a>
+                </li>
+            </ul>
+        </div>
+	</section>
