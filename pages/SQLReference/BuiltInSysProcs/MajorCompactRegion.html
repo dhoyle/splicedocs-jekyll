@@ -13,6 +13,7 @@ folder: SQLReference/BuiltInSysProcs
 		<div class="TopicContent">
             <h1>SYSCS_UTIL.MAJOR_COMPACT_REGION</h1>
             <p>The <span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span> system procedure performs a major compaction on a table region or an index region.</p>
+			<p>Region names must be specified in HBase-encoded format; you can retrieve the encoded name for a region by calling the <a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> system procedure.</p>
 			<p>A common reason for calling this procedure is to improve compaction performance by only compacting recent updates in a table. For example, you might confine any updates to regions of the current month, so older regions need not be re-compacted.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.MAJOR_COMPACT_REGION(<span class="ItalicFont">schemaName</span>)</pre>
@@ -26,7 +27,7 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramDefnFirst"><span class="CodeFont">NULL</span> or the name of the index.</p>
 				<p class="paramDefn">Specify the name of the index you want to compact; if you are compacting the table, specify <span class="CodeFont">NULL</span> for this parameter.</p>
                 <p class="paramName">regionName</p>
-                <p class="paramDefnFirst">The encoded HBase name of the region you want compacted. You can call the <a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for a Splice Machine split key.</p>
+                <p class="paramDefnFirst">The <span class="BoldFont">encoded</span> HBase name of the region you want compacted. You can call the <a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
             </div>
             <div>
             <h2>Usage</h2>
@@ -40,17 +41,17 @@ folder: SQLReference/BuiltInSysProcs
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.MAJOR_COMPACT_REGION('SPLICE', 'testTable', NULL, '0bfb038d09c5200a1c063d586ec8e50c');
 Statement executed.</pre>
             </div>
-			<p>And this call will perform a major compaction on the region <span class="CodeFont">76f1bef21da0111fcc22c1abb326856d</span> for index <span class="CodeFont">testIndex</p> on table <span class="CodeFont">testTable</p> in the <span class="CodeFont">SPLICE</span> schema:</p>
+			<p>And this call will perform a major compaction on the region <span class="CodeFont">76f1bef21da0111fcc22c1abb326856d</span> for index <span class="CodeFont">testIndex</span> on table <span class="CodeFont">testTable</span> in the <span class="CodeFont">SPLICE</span> schema:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.MAJOR_COMPACT_REGION('SPLICE', 'testTable', 'testIndex', '76f1bef21da0111fcc22c1abb326856d');
 Statement executed.</pre>
             </div>
             <h2>See Also</h2>
             <ul>
-				<li><a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></li>
-                <li><a href="sqlref_sysprocs_compacttable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</span></a>
-                </li>
-                <li><a href="sqlref_sysprocs_compactschema.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</span></a>
-                </li>
+				<li><a href="sqlref_sysprocs_compactregion"><span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span></a></li>
+				<li><a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a></li>
+				<li><a href="sqlref_sysprocs_getregions"><span class="CodeFont">SYSCS_UTIL.GET_REGIONS</span></a></li>
+				<li><a href="sqlref_sysprocs_getstartkey"><span class="CodeFont">SYSCS_UTIL.GET_START_KEY</span></a></li>
+				<li><a href="sqlref_sysprocs_mergeregions"><span class="CodeFont">SYSCS_UTIL.MERGE_REGIONS</span></a></li>
             </ul>
         </div>
 	</section>

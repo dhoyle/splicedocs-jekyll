@@ -13,10 +13,8 @@ folder: SQLReference/SystemTables
             <h1 id="kanchor187">System Tables</h1>
             <p>This section contains the reference documentation for the Splice Machine SQL&#160;Statements, in the following subsections:</p>
             <ul>
-{% if site.incl_notdbaas %}
                 <li><a href="sqlref_systables_backupsintro.html">Database Backups Tables</a>
                 </li>
-{% endif %}
                 <li><a href="sqlref_systables_dbobjectsintro.html">Database Objects Information Tables</a>
                 </li>
                 <li><a href="sqlref_systables_permissionsintro.html">Database Permissions Tables</a>
@@ -27,7 +25,6 @@ folder: SQLReference/SystemTables
                 </li>
             </ul>
             <div class="noteNote">Since the system tables belong to the <span class="CodeFont">SYS</span>&#160;schema, you must preface any inquiries involving these tables with the <span class="CodeFont">SYS.</span> prefix.<br /><br />You can use the Java <span class="CodeFont">java.sql.DatabaseMetaData</span> class to learn more about these tables.</div>
-{% if site.incl_notdbaas %}
             <div>
                 <h2>Database Backups Tables</h2>
 {% include splice_snippets/onpremonlytopic.html %}
@@ -60,7 +57,6 @@ folder: SQLReference/SystemTables
                     </tbody>
                 </table>
             </div>
-{% endif %}
             <h2>Database Objects Tables</h2>
             <p>These are the System Tables with information about database objects:</p>
             <table summary="Summary table with links to and descriptions of system database object tables">

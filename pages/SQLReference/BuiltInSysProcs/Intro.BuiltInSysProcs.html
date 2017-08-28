@@ -44,7 +44,6 @@ folder: SQLReference/BuiltInSysProcs
                     </tr>
                 </thead>
                 <tbody>
-{% if site.incl_notdbaas %}
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a>
                         </td>
@@ -69,13 +68,11 @@ folder: SQLReference/BuiltInSysProcs
 {% include splice_snippets/onpremonlytopic.html %}
                         </td>
                     </tr>
-{% endif %}
                     <tr>
                         <td class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_CREATE_USER</a>
                         </td>
                         <td>Adds a new user account to a database.</td>
                     </tr>
-{% if site.incl_notdbaas %}
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a>
                         </td>
@@ -97,7 +94,11 @@ folder: SQLReference/BuiltInSysProcs
                         </td>
                         <td>Removes a user account from a database.</td>
                     </tr>
-{% endif %}
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_getloggers.html">SYSCS_UTIL.KILL_OPERATION</a>
+                        </td>
+                        <td>Terminates a Splice Machine operation running on the server to which you are connected.</td>
+                    </tr>
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_modifypassword.html">SYSCS_UTIL.SYSCS_MODIFY_PASSWORD</a>
                         </td>
@@ -123,7 +124,6 @@ folder: SQLReference/BuiltInSysProcs
                         </td>
                         <td>Resets a password that has expired or has been forgotten.</td>
                     </tr>
-{% if site.incl_notdbaas %}
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a>
                         </td>
@@ -140,7 +140,6 @@ folder: SQLReference/BuiltInSysProcs
 {% include splice_snippets/onpremonlytopic.html %}
                         </td>
                     </tr>
-{% endif %}
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_updateschemaowner.html">SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER</a>
                         </td>
@@ -227,6 +226,16 @@ folder: SQLReference/BuiltInSysProcs
                         <td>Imports data to a subset of columns in a table.</td>
                     </tr>
                     <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_mergedata.html">SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE</a>
+                        </td>
+                        <td>Imports data from external files, inserting new records and updating existing records.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_purgedeletedrows.html">SYSCS_UTIL.SET_PURGE_DELETED_ROWS</a>
+                        </td>
+                        <td>Enables (or disables) physical deletion of logically deleted rows from a specific table.</td>
+                    </tr>
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_restoresnapshot.html">SYSCS_UTIL.RESTORE_SNAPSHOT</a>
                         </td>
                         <td>Restores a table or schema from a stored snapshot.</td>
@@ -257,7 +266,7 @@ folder: SQLReference/BuiltInSysProcs
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_upsertdata.html">SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE</a>
                         </td>
-                        <td>Checks upsert data without actually performing the insertions or updates.</td>
+                        <td>Imports data from external files, inserting new records and updating existing records.</td>
                     </tr>
                 </tbody>
             </table>
@@ -420,6 +429,16 @@ folder: SQLReference/BuiltInSysProcs
                         <td>Displays information about the number of RPC requests that are coming into Splice Machine.</td>
                     </tr>
                     <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_getrunningops.html">SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS</a>
+                        </td>
+                        <td>Displays information about all Splice Machine operations running on the server to which you are connected.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_getsessioninfo.html">SYSCS_UTIL.SYSCS_GET_SESSION_INFO</a>
+                        </td>
+                        <td>Displays session information, including the hostname and session IDs.</td>
+                    </tr>
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_getversioninfo.html">SYSCS_UTIL.SYSCS_GET_VERSION_INFO</a>
                         </td>
                         <td>Displays the version of Splice Machine installed on each node in your cluster.</td>
@@ -428,6 +447,11 @@ folder: SQLReference/BuiltInSysProcs
                         <td class="CodeFont"><a href="sqlref_sysprocs_getwriteintakeinfo.html">SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO</a>
                         </td>
                         <td>Displays information about the number of writes coming into Splice Machine.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_killoperation.html">SYSCS_UTIL.KILL_OPERATION</a>
+                        </td>
+                        <td>Terminates a Splice Machine operation running on the server to which you are connected.</td>
                     </tr>
                 </tbody>
             </table>
