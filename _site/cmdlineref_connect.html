@@ -775,19 +775,21 @@
             </div>
             <div class="paramList">
                 <p class="paramName">ConnectionURLString</p>
-                <p class="paramDefnFirst">The URL&#160;of the database.</p>
+                <p class="paramDefnFirst">The URL&#160;of the database. Note that this URL typically includes connection parameters such as user name, password, or security options.</p>
                 <p class="paramName">Identifier</p>
                 <p class="paramDefnFirst">The optional name that you want to assign to the connection. </p>
             </div>
             <p>If the connection succeeds, the connection becomes the current one and all further commands are processed against the new, current connection.</p>
             <h2>Example 1:&#160;Connecting on a Cluster</h2>
             <p> If you are running Splice Machine on a cluster, connect from a machine that is NOT&#160;running an HBase RegionServer and specify the IP&#160;address of a <span class="HighlightedCode">regionServer</span> node, e.g. <span class="AppCommand">10.1.1.110</span>. </p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://<span class="Highlighted">regionServer</span>:1527/splicedb';
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://<span class="HighlightedCode">regionServer</span>:1527/splicedb';
 </pre>
             </div>
-            <p>Here are two specific examples, one of which includes a user ID&#160;and password in the connect string:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;connect 'jdbc:splice://10.1.1.110:1527/splicedb';<br /><br />splice&gt;&#160;connect 'jdbc:splice://10.1.1.110:1527/splicedb;user=splice;password=admin';</pre>
-            </div>
+            <p>This example includes a user ID&#160;and password in the connection URL string:</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;connect 'jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin';</pre></div>
+            <p>And this example includes specifies that SSL peer authentication will be enabled for the connection:</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;connect 'jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication';</pre></div>
+			<div class="noteNote">You can only connect with SSL/TLS if your administrator has configured this capability for you.</div>
             <h2>Example 2:&#160;Connecting to the Standalone Version</h2>
             <p>If you're using the standalone version of Splice Machine, specify <span class="HighlightedCode">localhost</span> instead.</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://localhost:1527/splicedb';
@@ -814,7 +816,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Aug 30, 2017 <br />
+ Site last generated: Aug 31, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
