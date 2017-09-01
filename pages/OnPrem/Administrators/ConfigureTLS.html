@@ -226,10 +226,9 @@ export CLIENT_SSL_TRUSTSTOREPASSWD=<span class="HighlightedCode">secretClientTru
 			<p>Here's a sample declaration for a peer authenticated connection to a Splice Machine database:</p>
 			<div class="preWrap"><pre class="Example">String dbUrl = "jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication";</pre></div>
 			<p>We can create a Java program that includes that declaration and then compile it into <span class="CodeFont">SampleJDBC.java</span> with a command like this:</p>
-			<div class="preWrap"><pre class="Example">+ javac -classpath ".:./db-client-2.6.0.1729-SNAPSHOT.jar" ./SampleJDBC.java<span class="HighlightedCode">splice</span></pre></div>
+			<div class="preWrap"><pre class="Example">+ javac -classpath ".:./db-client-2.6.0.1729-SNAPSHOT.jar" ./SampleJDBC.java</pre></div>
 			<p>We can then use a command like this to execute and JDBC app with the correct SSL keystore and truststore properties:</p>
-			<div class="preWrap"><pre class="Example">%
-			java -classpath .:./db-client-2.6.0.1729-SNAPSHOT.jar -Djavax.net.ssl.keyStore=/home/splice/vault/ClientKeyStore
+			<div class="preWrap"><pre class="Example">% java -classpath .:./db-client-2.6.0.1729-SNAPSHOT.jar -Djavax.net.ssl.keyStore=/home/splice/vault/ClientKeyStore
 			-Djavax.net.ssl.keyStorePassword=myPassword
 			-Djavax.net.ssl.trustStore=/home/splice/vault/ClientTrustStore -Djavax.netDjavax.net.ssl.trustStore.ssl.trustStorePassword=secretClientTrustStorePassword SampleJDBC</pre></div>
 			<h3 id="newnode">Adding New Client Nodes</h3>
@@ -238,7 +237,7 @@ export CLIENT_SSL_TRUSTSTOREPASSWD=<span class="HighlightedCode">secretClientTru
 				<li><a href="#gencerts">Generate a new client certificate.</a>/li>
 				<li><a href="#imports">Import the new client certificate into the server's keystore.</a></li>
 				<li><a href="#updates">Import the server certificate into the new client's keystore.</a></li>
-				<li>Restart Splice Machine</li>
+				<li>Restart the server.</li>
 			</ul>
 			<p>Finally, you need to set these env variables:</p>
 			<div class="preWrap"><pre class="ShellCommand">export CLIENT_SSL_KEYSTORE=<span class="HighlightedCode">/home/splice/vault/ClientKeyStore</span>
@@ -264,6 +263,18 @@ export CLIENT_SSL_TRUSTSTORE=<span class="HighlightedCode">/home/splice/vault/Cl
 export CLIENT_SSL_TRUSTSTOREPASSWD=<span class="HighlightedCode">secretClientTrustStorePassword</span></pre>
 					</div>
 				</li>
+				<li><p>Restart Zeppelin:</p>
+					<div class="preWrap"><pre class="ShellCommand">% zeppelin-daemon.sh start</pre></div>
+				</li>
+				<li><p>Create a new JDBC Interpreter</p>
+					<p>Navigate to the <a href="http://localhost:8080/#/">Zeppelin interface URL:</a>, then click <span class="ConsoleLink">Interpreter->+Create</span> to create a new interpreter. The image below shows sample settings for the new interpreter:</p>
+					<p>
+			            <img src="images/NewZepInterpreter.png" />
+					</p>
+					<div class="noteIcon">Be sure to provide the correct JDBC driver loaction in the artifact dependencies section.</div>
+				</li>
+				<li>Save the new interpreter.</li>
+				<li>Create a new Note with the new interpreter.</li>
             </ol>
         </div>
     </section>

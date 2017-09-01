@@ -8,11 +8,11 @@ sidebar:  onprem_sidebar
 permalink: onprem_info_release.html
 folder: OnPrem/Info
 ---
-# Release Notes for Splice Machine On-Premise Database v2.6 (August 1, 2017)
+# Release Notes for Splice Machine On-Premise Database v2.6.1 (September 19, 2017)
 
 {% include splice_snippets/onpremonlytopic.html %}
 
-Welcome to 2.6 release of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
+Welcome to 2.6.1 release of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 
 This topic contains the following sections:
 
@@ -26,7 +26,7 @@ This topic contains the following sections:
 
 
 ## Supported Platforms
-The supported platforms with 2.6 are:
+The supported platforms with 2.6.1 are:
 
 * Cloudera CDH 5.8.0, 5.8.3
 * MapR 5.1.0 and 5.2.0

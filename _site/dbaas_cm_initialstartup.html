@@ -100,7 +100,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -197,6 +197,15 @@
                 
                 
                 
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:docs@splicemachine.com?subject=Splice Machine documentation feedback&body=I have some feedback about the Getting Started with Splice Machine Cloud Manager page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
                 <!--comment out this block if you want to hide search-->
                 <li>
                     <!--start search-->
@@ -354,6 +363,13 @@
             
             
             
+            <li><a href="dbaas_zep_notes.html">Zeppelin Usage Notes</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="dbaas_zep_simple.html">A Simple Tutorial</a></li>
             
             
@@ -502,8 +518,7 @@
            </p>
 		   <p>Many of the components on this screen, like most of our Cloud Manager screens, include small information buttons <img src="images/infobutton.png" class="icon36"> that you can click to display a small pop-up that describes the components.</p>
            <h3>About the Cluster Parameters</h3>
-           <p>You'll notice several sliders that you can adjust to modify the configuration of your cluster. As you move these sliders, you'll see how the estimated monthly costs for your cluster change. For a fast start, you can select the <span class="CodeFont">Apply Free Trial Parameters</span> option. Splice Machine fixes the cluster parameters (other than name and regions) and automatically provisions a cluster that you can use to experiment with Splice&#160;Machine.</p>
-           <p>Here are explanations of the adjustments you can make to your cluster provisioning:</p>
+           <p>You'll notice several sliders that you can adjust to modify the configuration of your cluster. As you move these sliders, you'll see how the estimated monthly costs for your cluster change. Here are explanations of the adjustments you can make to your cluster provisioning:</p>
             <div class="noteNote">Note that you can come back and modify your cluster configuration in the future, so you're not stuck forever with your initial settings.</div>
           <table>
                <col />
@@ -519,14 +534,6 @@
                        <td>&#160;</td>
                        <td class="CodeFont">Region</td>
                        <td>You can select in which AWS&#160;region your cluster will reside by clicking the previously selected region name, which drops down a list of choices.</td>
-                   </tr>
-                   <tr>
-                       <td>&#160;</td>
-                       <td class="CodeFont">Apply Free Trial Parameters</td>
-                       <td>
-                           <p>Select this option if you are provisioning a free trial version of Splice&#160;Machine. </p>
-                           <p>With this option, the <span class="ConsoleLink">Data Sizing</span>, <span class="ConsoleLink">Cluster Power</span>, and <span class="ConsoleLink">Backup Frequency</span> settings are automatically configured, and cannot be modified.</p>
-                       </td>
                    </tr>
                    <tr>
                        <td rowspan="2" class="ConsoleLink">Data Sizing</td>
@@ -601,11 +608,14 @@
            <p>After setting up any access methods, please confirm that you <span class="CodeFont">accept our terms and conditions</span>, then click the <span class="CalloutFont">Launch</span> button, which will take you to the <span class="ConsoleLink">Payment</span> screen.</p>
 		   <div class="noteIcon">If you've already set up a payment method for your account, Splice Machine will use that method for your new cluster, and you'll land back on your dashboard.</div>
            <h2 id="Payment">Set Up Payment</h2>
-           <p>After clicking the Launch button, you'll land on the <span class="ConsoleLink">Payment</span> screen:</p>
-           <p>
+           <p>After clicking the Launch button:</p>
+		   <ul>
+			   <li>You'll land on the <span class="ConsoleLink">Payment</span> screen, which is explained in this section, unless you've selected Splice Machine from the Amazon Marketplace.</li>
+			   <li>If you've selected Splice Machine from the Amazon Marketplace, you can ignore this section: your billing information is already known. Please skip ahead the information in the <a href="#loadData">Load Your Data</a> section below.</li>
+		   </ul>
+           <p>You can elect to use one of three payment methods in the Payment screen:</p>
                <img src="images/PaymentScreen_436x219.png" title="Splice Machine Provisioning Payment Screen" class="nestedTightSpacing" style="width: 436;height: 219;" />
            </p>
-           <p>You can use one of three payment methods:</p>
            <table>
                <col />
                <col style="width: 52px;" />
@@ -637,11 +647,12 @@
                </tbody>
            </table>
            <h4>Modifying Payment Information</h4>
-           <p>If you ever need to change your payment information, you can update it in the <span class="ConsoleLink">Billing Activity</span> tab of the <span class="ConsoleLink">Account</span> screen; just click the <span class="CalloutFont">Update</span> button to revisit the <span class="ConsoleLink">Payment</span> screen:</p>
+           <p>If you ever need to change your Splice Machine payment information, you can update it in the <span class="ConsoleLink">Billing Activity</span> tab of the <span class="ConsoleLink">Account</span> screen; just click the <span class="CalloutFont">Update</span> button to revisit the <span class="ConsoleLink">Payment</span> screen:</p>
            <p>
                <img src="images/BillingActivity_729x348.png" title="Billing Activity tab of the Account screen" class="indentedTightSpacing" style="width: 729;height: 348;" />
            </p>
-           <h2>Load Your Data!</h2>
+		   <div class="noteNote">If you've purchased Splice Machine through Amazon Marketplace, change your billing credentials in the Marketplace instead.</div>
+           <h2 id="loadData">Load Your Data!</h2>
            <p>After your cluster spins up, which typically requires about 10 minutes, you can load your data into your&#160;Splice Machine database from an S3 bucket:</p>
            <ul>
                <li>If you don't yet know how to create an S3 bucket or upload data to a bucket, please check our <a href="tutorials_ingest_uploadtos3.html">Uploading Data to an S3 Bucket</a> tutorial.</li>
@@ -666,7 +677,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Aug 31, 2017 <br />
+ Site last generated: Sep 1, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -680,13 +691,6 @@
     </div>
 
 </body>
-
-<!-- the google_analytics_id gets auto inserted from the config file -->
-
-
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
 
 <script type="text/javascript">
 (function() {
