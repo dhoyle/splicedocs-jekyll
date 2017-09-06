@@ -9,7 +9,7 @@ permalink: sqlref_sysprocs_vacuumtable.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
-	<div class="TopicContent">
+	<div class="TopicContent" data-swiftype-index="true">
         <h1>SYSCS_UTIL.VACUUM_TABLE</h1>
         <p>The <span class="CodeFont">SYSCS_UTIL.VACUUM_TABLE</span>&#160;system procedure improves the performance of your database by cleaning no longer needed historical update data from a table.</p>
         <div class="noteIcon">Splice Machine recommends calling this system procedure regularly (or frequently)&#160;on tables in your database that are frequently updated with modifications or deletions. Insertions by themselves do not generate the kind of data that needs to be vacuumed from a table; however, if a row is frequently inserted, then deleted, then inserted again, and that row has a primary key or indexed fields, vacuuming will be required.<br /><br />Many customers use a scheduling utility such as <span class="ItalicFont">Cron</span> to call this procedure.<br /></div>

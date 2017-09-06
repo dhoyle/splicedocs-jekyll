@@ -9,7 +9,7 @@ permalink: sqlref_sysprocs_vacuumschema.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
-	<div class="TopicContent">
+	<div class="TopicContent" data-swiftype-index="true">
         <h1>SYSCS_UTIL.VACUUM_SCHEMA</h1>
         <p>The <span class="CodeFont">SYSCS_UTIL.VACUUM_SCHEMA</span>&#160;system procedure improves the performance of your database by cleaning no longer needed historical update data from a schema.</p>
         <div class="noteIcon">Splice Machine recommends calling this system procedure regularly (or frequently)&#160;on schemas in your database that are frequently updated with modifications or deletions. Insertions by themselves do not generate the kind of data that needs to be vacuumed from a schema; however, if a row is frequently inserted, then deleted, then inserted again, and that row has a primary key or indexed fields, vacuuming will be required.<br /><br />Many customers use a scheduling utility such as <span class="ItalicFont">Cron</span> to call this procedure.<br /></div>

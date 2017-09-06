@@ -10,10 +10,10 @@ permalink: sqlref_sysprocs_mergeregions.html
 folder: SQLReference/BuiltInSysProcs
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCS_UTIL.MERGE_REGIONS</h1>
             <p>The <span class="CodeFont">SYSCS_UTIL.MERGE_REGIONS</span> system procedure merges two adjacent Splice Machine table regions or two adjacent Splice Machine index regions.</p>
-			<p>Region names must be specified in HBase-encoded form. You can retrieve the encoded name for a region by calling the <a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> system procedure.</p>
+			<p>Region names must be specified in HBase-encoded form. You can retrieve the encoded name for a region by calling the <a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> system procedure.</p>
 			<p>You might use this procedure if you want to collect older data into a smaller set of regions to minimize the number of regions required.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.MERGE_REGIONS( VARCHAR <span class="ItalicFont">schemaName</span>)
@@ -31,9 +31,9 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramDefnFirst"><span class="CodeFont">NULL</span> or the name of the index.</p>
 				<p class="paramDefn">Specify the name of the index if you are merging index regions; if you are merging table regions, specify <span class="CodeFont">NULL</span> for this parameter.</p>
                 <p class="paramName">regionName1</p>
-                <p class="paramDefnFirst">The <span class="BoldFont">encoded</span> HBase name of the first of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
+                <p class="paramDefnFirst">The <span class="BoldFont">encoded</span> HBase name of the first of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
                 <p class="paramName">regionName2</p>
-                <p class="paramDefnFirst">The <span class="BoldFont">encoded</span> HBase name of the second of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
+                <p class="paramDefnFirst">The <span class="BoldFont">encoded</span> HBase name of the second of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
             </div>
             <div>
             <h2>Usage</h2>
@@ -55,11 +55,11 @@ Statement executed.
             </div>
             <h2>See Also</h2>
             <ul>
-				<li><a href="sqlref_sysprocs_compactregion"><span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span></a></li>
-				<li><a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a></li>
-				<li><a href="sqlref_sysprocs_getregions"><span class="CodeFont">SYSCS_UTIL.GET_REGIONS</span></a></li>
-				<li><a href="sqlref_sysprocs_getstartkey"><span class="CodeFont">SYSCS_UTIL.GET_START_KEY</span></a></li>
-				<li><a href="sqlref_sysprocs_majorcompactregion"><span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span></a></li>
+				<li><a href="sqlref_sysprocs_compactregion.html"><span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span></a></li>
+				<li><a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a></li>
+				<li><a href="sqlref_sysprocs_getregions.html"><span class="CodeFont">SYSCS_UTIL.GET_REGIONS</span></a></li>
+				<li><a href="sqlref_sysprocs_getstartkey.html"><span class="CodeFont">SYSCS_UTIL.GET_START_KEY</span></a></li>
+				<li><a href="sqlref_sysprocs_majorcompactregion.html"><span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span></a></li>
             </ul>
         </div>
 	</section>
