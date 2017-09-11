@@ -4,11 +4,13 @@
 				  $fontFamily: $bodyfont-face,
 				  $fontWeight: inherit,
 				  $fontStyle: inherit,
+				  $fontSize: $bodyfont-size,
 				  $color: inherit,
 				  $transform: none) {
   background-color: $bgColor;
   font-family: $fontFamily;
   font-style: $fontStyle;
+  font-size:  $fontSize;
   font-weight: $fontWeight;
   color: $color;
   text-transform: $transform;
@@ -30,6 +32,11 @@ span.AppCommand {
 	@include spanStyle ( $bgColor: $bgcolor-app,
 						 $fontFamily: $codefont-face,
 						 $fontWeight: $codefont-weight )
+}
+
+span.bigCallout {
+	@include spanStyle( $color: $callout-color,
+						$fontSize: $largefont-size )
 }
 
 span.bodyFont {
@@ -98,6 +105,10 @@ span.important {
 
 span.ItalicFont {
 	@include spanStyle( $fontStyle: italic )
+}
+
+span.largeFont {
+	@include spanStyle( $fontSize: $largefont-size )
 }
 
 span.lowerCase

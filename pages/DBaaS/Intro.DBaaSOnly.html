@@ -13,32 +13,49 @@ folder: DBaaS
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Welcome to the Splice Machine Database Service!</h1>
             <p>Welcome to Splice Machine, the  database platform for adaptive applications that manage operational processes. This site contains documentation for our <span class="ConsoleLink">Managed Database Service in the Cloud</span>.</p>
-			<div class="noteIcon">
-				<p>If you're not yet familiar with our lineup of products, please visit the <a href="{{splvar_location_GetStartedLink}}" target="_blank">Getting Started Page</a> in our web site to learn more about them.</p>
-				<p>You can <a href="{{splvar_location_DBaaSTryLink}}" target="_blank">register here to try our <span class="ItalicFont">Cloud-Managed Database-as-Service</span></a> for free.</p>
-			</div>
-            <p>Splice Machine is a hybrid relational database platform that allows you to run transactional (OLTP) and analytical (OLAP)&#160;SQL workloads, concurrently, against shared data. To ensure that one does not interfere with the other, Splice Machine uses resource isolation and a ground-breaking MVCC technology for concurrent, non-locking, distributed ACID transactions. </p>
-            <p>With Splice Machine, you can manage operational processes, large-scale IoT infrastructures, and use analytical processing and machine learning to improve over time.</p>
-            <p>Splice Machine delivers an open-source data platform that incorporates the proven scalability of HBase™ and the in-memory performance of Apache Spark™. The cost-based optimizer uses advanced statistics to choose the best compute engine, storage engine, index access, join order and join algorithm for each task. In this way, Splice Machine can concurrently process transactional and analytical workloads at scale.</p>
             <h2>Getting Started With our Database Service</h2>
             <p>Getting started with our database is as simple as can be:</p>
-            <ol>
-                <li>Create an account using our interface or with your Google or Amazon accounts.</li>
-                <li>Provision a database with our simple interface, featuring just 4 sliders to configure your cluster for your needs. Our <a href="dbaas_cm_initialstartup.html">cluster creation</a> page walks you through this simple process.</li>
-                <li>Wait 10-15 minutes for your database to be ready. You'll receive an email that includes links to your database dashboard, notebooks, and management console, as well as the link you can use to access your database via JDBC or ODBC.</li>
-                <li>Use an existing notebook or create a new one to interact with your database. Load your data, write SQL queries, stream data to and from third-party applications, and use the power of Apache Zeppelin to visualize, share, and collaborate on your queries. Your Notebooks page is already populated with a number of tutorials, including one that shows you how to start using and creating Zeppelin notebooks.</li>
-            </ol>
-            <h2 id="serviceconfig">Service Configuration</h2>
-            <p>The Splice Machine Database Service is subscription-based, which means that you pay a monthly fee that is based on the configuration you've chosen. Factors that affect the cost of your service include:</p>
+            <table>
+                <col />
+                <col />
+                <col />
+				<thead>
+					<tr>
+						<th>#</th>
+						<th style="text-align: center">Step</th>
+						<th>Time Required</th>
+					</tr>
+				</thead>
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:middle"><span class="bigCallout">1.</span></td>
+                        <td><a href="dbaas_cm_login.html"><img class="tableCell450" src="images/loginStep.png" /></a></td>
+                        <td style="vertical-align:middle"><span class="bigCallout">Less than a minute</span></td>
+                    </tr>
+					<tr>
+                        <td style="vertical-align:middle"><span class="bigCallout">2.</span></td>
+                        <td><a href="dbaas_cm_initialstartup.html"><img class="tableCell450" src="images/createStep.png" /></a></td>
+                        <td style="vertical-align:middle"><span class="bigCallout">About 15 minutes</span></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle"><span class="bigCallout">3.</span></td>
+                        <td><a href="dbaas_zep_tpch1.html"><img class="tableCell450" src="images/loadStep.png" /></a></td>
+                        <td style="vertical-align:middle"><span class="bigCallout">Fast; varies with dataset size</span></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle"><span class="bigCallout">4.</span></td>
+                        <td><a href="dbaas_zep_getstarted.html"><img class="tableCell450" src="images/queryStep.png" /></a></td>
+                        <td style="vertical-align:middle"><span class="bigCallout">A few minutes</span></td>
+                    </tr>
+                </tbody>
+            </table>
+			<div class="noteIcon">(Click an orange step box to learn more)</div>
+            <h2>Next Steps</h2>
+			<p>Easy next steps you can take to become more proficient with your new database system:</p>
             <ul>
-                <li>The number of <span class="ConsoleLink">Splice Units</span>. A Splice unit is a measure of processing work; one unit currently translates (approximately)&#160;to 2 virtual CPUs and 16 GB&#160;of memory. When you provision a new Splice Machine cluster, you can select the number of Splice Units you want to use for OLAP and OLTP workloads. The minimum number of Splice Units required for your cluster changes when the amount of </li>
-                <li>The space allocated for your <span class="ConsoleLink">Internal Dataset</span>, which is data that you're storing within your database. Note that as this size increases, the number of Splice Units required (especially OLTP Splice Units) can also increase.</li>
-                <li>The space allocated for your <span class="ConsoleLink">External Dataset</span>, which is data stored externally that you can access from your database using features such as external tables and VTI. Note that as this size increases, the number of OLAP Splice Units required can also increase.</li>
-            </ul>
-            <p>You can learn more about configuring your database in our <a href="dbaas_cm_initialstartup.html">cluster creation</a>. Or simply click <span class="ConsoleLink">Create Cluster</span> in your Splice Machine Database Service dashboard.
-            <h2>Learning More</h2>
-            <p>Our <a href="dbaas_serviceoverview.html">Service Overview</a> page describes our service availability and support offerings.</p>
-            <p>Our <a href="dbaas_uioverview.html">User Interface Overview</a> page introduces our service user interface.</p>
-            <p>Our <a href="notes_usingdocs.html">Documentation Summary</a> page summarizes the sections of our documentation and how to navigate among them.</p>
+				<li>Spend some time learning more about <a href="dbaas_zep_dbaas_zep_getstarted">creating and using Zeppelin notebooks</a>, which you can use to prepare and run SQL DDL and DML, stored procedures, Java, Scala, and Python and Spark-SQL programs with Splice Machine data, all without writing code.</li>
+	            <li>Spend a few minutes with our <a href="dbaas_cm_intro.html">Cloud Manager Interface</a>, which you can use to modify your cluster configuration, administer your account, set up events, and review database usage.</li>
+				<li>Check this documentation web for best practices, usage tips, developer guides, and reference material</li>
+			</ul>
         </div>
 	</section>

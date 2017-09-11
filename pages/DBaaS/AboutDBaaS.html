@@ -1,0 +1,33 @@
+---
+title: Introduction
+summary: A list of the topics in this documentation that apply only to our database-as-a-service; these topics do not apply to our on-premise product product.
+keywords: home, welcome, dbaas, Service, paas
+sidebar:  dbaas_sidebar
+toc: false
+product: all
+permalink: dbaas_about.html
+folder: DBaaS
+---
+{% include splicevars.html %}
+	<section>
+		<div class="TopicContent" data-swiftype-index="true">
+            <h1>About the Splice Machine Database Service!</h1>
+            <p>The Splice Machine Database Service is subscription-based, which means that you pay a monthly fee that is based on the configuration you've chosen. Factors that affect the cost of your service include:</p>
+			<div class="noteIcon">
+				If you're not yet familiar with our lineup of products, please visit the <a href="{{splvar_location_GetStartedLink}}" target="_blank">Getting Started Page</a> in our web site to learn more about them.
+			</div>
+            <ul>
+                <li>The number of <span class="ConsoleLink">Splice Units</span>. A Splice unit is a measure of processing work; one unit currently translates (approximately)&#160;to 2 virtual CPUs and 16 GB&#160;of memory. When you provision a new Splice Machine cluster, you can select the number of Splice Units you want to use for OLAP and OLTP workloads. The minimum number of Splice Units required for your cluster changes when the amount of </li>
+                <li>The space allocated for your <span class="ConsoleLink">Internal Dataset</span>, which is data that you're storing within your database. Note that as this size increases, the number of Splice Units required (especially OLTP Splice Units) can also increase.</li>
+                <li>The space allocated for your <span class="ConsoleLink">External Dataset</span>, which is data stored externally that you can access from your database using features such as external tables and VTI. Note that as this size increases, the number of OLAP Splice Units required can also increase.</li>
+            </ul>
+            <p>You can learn more about configuring your database in our <a href="dbaas_cm_initialstartup.html">cluster creation</a>. Or simply click <span class="ConsoleLink">Create Cluster</span> in your Splice Machine Database Service dashboard.
+            <h2>Available Tools</h2>
+			<ul>
+				<li>Splice Machine has an integrated Zeppelin Notebook interface. Zeppelin notebooks are like text documents, but with code that can be executed and of which the output can be rendered as tables, reports and beautiful graphs. This enables you to prepare and run SQL DDL and DML, stored procedures, Java, Scala, and Python and Spark-SQL programs with Splice Machine data. Splice Machine comes pre-configured with a set of notebooks to get started, load data and see examples of the work that can be done with the RDBMS.</li>
+				<li>Our JDBC and ODBC drivers allow you to connect third-party business intelligence tools to your database.</p>
+			</ul>
+
+
+        </div>
+	</section>
