@@ -1839,14 +1839,6 @@ p.invisible a:active {
   text-align: left;
   text-decoration: none; }
 
-p.largefont {
-  font-size: 1.4em;
-  font-weight: normal;
-  font-style: normal;
-  color: #4a4f54;
-  margin: 4px 0 16px 0;
-  text-align: left; }
-
 p.noSpaceAbove {
   font-size: 15px;
   font-weight: normal;
@@ -2001,17 +1993,6 @@ span.AppCommand {
   color: inherit;
   text-transform: none; }
   span.AppCommand a:link {
-    color: #3390db; }
-
-span.bigCallout {
-  background-color: transparent;
-  font-family: "Open Sans", sans-serif;
-  font-style: inherit;
-  font-size: 1.4em;
-  font-weight: inherit;
-  color: #f39939;
-  text-transform: none; }
-  span.bigCallout a:link {
     color: #3390db; }
 
 span.bodyFont {
@@ -2170,17 +2151,6 @@ span.ItalicFont {
   span.ItalicFont a:link {
     color: #3390db; }
 
-span.largeFont {
-  background-color: transparent;
-  font-family: "Open Sans", sans-serif;
-  font-style: inherit;
-  font-size: 1.4em;
-  font-weight: inherit;
-  color: inherit;
-  text-transform: none; }
-  span.largeFont a:link {
-    color: #3390db; }
-
 span.lowerCase {
   text-transform: lowercase; }
 
@@ -2234,13 +2204,18 @@ table.noBorder {
     word-wrap: break-word;
     overflow: auto; }
   table td p:first-child,
-  table.noBorder td p:first-child {
+  table td.middle p:first-child,
+  table.noBorder td p:first-child,
+  table.noBorder td.middle p:first-child {
     margin-top: 0; }
   table td > ul > li:first-of-type,
   table td > ol > li:first-of-type,
   table.noBorder td > ul > li:first-of-type,
   table.noBorder td > ol > li:first-of-type {
     margin-top: 0; }
+  table td.middle,
+  table.noBorder td.middle {
+    vertical-align: middle; }
   table th,
   table.noBorder th {
     border: 1px solid #8d9090;
@@ -2287,7 +2262,8 @@ table td.AppFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.AppFont {
   background-color: #fffdf5;
@@ -2296,7 +2272,48 @@ table td.AppFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
+
+table td.DbaasIntroNum {
+  background-color: transparent;
+  font-family: "Courier";
+  font-weight: normal;
+  font-style: normal;
+  color: #3ba3d8;
+  font-size: 2em;
+  text-transform: none;
+  vertical-align: middle; }
+
+table td.DbaasIntroStep {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #f39939;
+  font-size: 1.2em;
+  text-transform: none;
+  vertical-align: middle; }
+
+table td.DbaasIntroArrow {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #3ba3d8;
+  font-size: 2em;
+  text-transform: none;
+  vertical-align: middle; }
+
+table td.DbaasIntroDesc {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #3ba3d8;
+  font-size: 1.2em;
+  text-transform: none;
+  vertical-align: middle; }
 
 table td.BoldFont {
   background-color: transparent;
@@ -2305,7 +2322,8 @@ table td.BoldFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.BoldBlueBG {
   background-color: #d9e4f1;
@@ -2314,7 +2332,8 @@ table td.BoldBlueBG {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.BoldGreenBG {
   background-color: #a4ccb3;
@@ -2323,7 +2342,8 @@ table td.BoldGreenBG {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.BoldDarkGreenBG {
   background-color: #629e78;
@@ -2332,7 +2352,8 @@ table td.BoldDarkGreenBG {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.BoldRedBG {
   background-color: #d39c9b;
@@ -2341,7 +2362,8 @@ table td.BoldRedBG {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.CodeFont {
   background-color: transparent;
@@ -2350,7 +2372,8 @@ table td.CodeFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.CodeFontUC {
   background-color: transparent;
@@ -2359,7 +2382,8 @@ table td.CodeFontUC {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  vertical-align: top; }
 
 table td.CodeFontSmall {
   background-color: transparent;
@@ -2368,7 +2392,8 @@ table td.CodeFontSmall {
   font-style: normal;
   color: #4a4f54;
   font-size: 0.9em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.ConsoleLink {
   background-color: transparent;
@@ -2377,7 +2402,8 @@ table td.ConsoleLink {
   font-style: normal;
   color: #3ba3d8;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.ItalicFont {
   background-color: transparent;
@@ -2386,7 +2412,8 @@ table td.ItalicFont {
   font-style: italic;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.MenuName {
   background-color: #fffdf5;
@@ -2395,7 +2422,8 @@ table td.MenuName {
   font-style: italic;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.PlainFont {
   background-color: transparent;
@@ -2404,7 +2432,8 @@ table td.PlainFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.Separator {
   background-color: #eee;
@@ -2414,6 +2443,7 @@ table td.Separator {
   color: #4a4f54;
   font-size: 1em;
   text-transform: none;
+  vertical-align: top;
   height: 4px;
   line-height: 4px; }
 
@@ -2425,6 +2455,7 @@ table td.smallText {
   color: #4a4f54;
   font-size: 0.9em;
   text-transform: none;
+  vertical-align: top;
   line-height: 1em; }
 
 table td.SpliceRelease {
@@ -2434,7 +2465,8 @@ table td.SpliceRelease {
   font-style: normal;
   color: #000000;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.SplicePlatform {
   background-color: #fffdf5;
@@ -2443,7 +2475,8 @@ table td.SplicePlatform {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.SpliceParcel {
   background-color: transparent;
@@ -2452,7 +2485,8 @@ table td.SpliceParcel {
   font-style: normal;
   color: #f39939;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table.featureList {
   table-layout: auto;

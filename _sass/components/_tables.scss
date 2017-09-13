@@ -5,7 +5,8 @@
 				   $fontStyle: normal,
 				   $fontColor: $bodyfont-color,
 				   $fontSize: 1em,
-				   $fontTransform: none ) {
+				   $fontTransform: none,
+				   $vertAlign: top ) {
 	background-color: $bgColor;
 	font-family: $fontFace;
 	font-weight: $fontWeight;
@@ -13,6 +14,7 @@
 	color: $fontColor;
 	font-size: $fontSize;
 	text-transform: $fontTransform;
+	vertical-align: $vertAlign;
 }
 
 table,
@@ -46,13 +48,18 @@ table.noBorder
 		overflow: auto;
 	}
 
-	td p:first-child {
+	td p:first-child,
+	td.middle p:first-child {
 		margin-top: 0;
 	}
 
 	td > ul > li:first-of-type,
 	td > ol > li:first-of-type {
 	    margin-top: 0;
+	}
+
+	td.middle {
+		vertical-align: middle;
 	}
 
 	th {
@@ -108,6 +115,34 @@ table td.AppFont {
 table td.AppFont {
 	@include cellStyle ($fontFace: $codefont-face,
 						$bgColor: $table-appFont-color)
+}
+
+table td.DbaasIntroNum{
+	@include cellStyle ($fontFace: $codefont-face,
+						$fontSize:  $extralargefont-size,
+						$fontColor: $consoleLink-color,
+						$vertAlign: middle )
+}
+
+table td.DbaasIntroStep{
+	@include cellStyle ($fontSize:  $largefont-size,
+						$fontColor: $callout-color,
+						$vertAlign: middle,
+						$fontWeight: bold )
+}
+
+
+table td.DbaasIntroArrow{
+	@include cellStyle ($fontSize:  $extralargefont-size,
+						$fontColor: $consoleLink-color,
+						$fontWeight: bold,
+						$vertAlign: middle )
+}
+
+table td.DbaasIntroDesc{
+	@include cellStyle ($fontSize:  $largefont-size,
+						$fontColor: $consoleLink-color,
+						$vertAlign: middle )
 }
 
 table td.BoldFont {
