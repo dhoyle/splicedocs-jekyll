@@ -99,9 +99,10 @@
 {% include swiftype_install.html %}
 
 </body>
-{% if site.google_analytics %}
-{% include google_analytics.html %}
+    <!-- Only include analytics scripts if generating the customer docs -->
+{% if isbuild_doc == true %}
+    {% include google_analytics.html %}
+    {% include marketo_analytics.html %}
 {% endif %}
-{% include marketo_analytics.html %}
 
 </html>

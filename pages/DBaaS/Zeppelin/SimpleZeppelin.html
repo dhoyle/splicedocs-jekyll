@@ -17,32 +17,28 @@ folder: DBaaS/Zeppelin
         <h2>Running the Tutorial Notebook</h2>
         <p>You can access this Zeppelin notebook by clicking the Basics (Spark) link under Zeppelin Tutorials on the Zeppelin Dashboard page:</p>
         <p>
-            <img src="images/ZepDashboard2.png" class="indentedTightSpacing" />
+            <img src="images/Zeppelin2.png" class="indentedTightSpacing" />
         </p>
-        <p>Once you've opened the tutorial, you can execute these steps:</p>
+        <p>Once you've opened the tutorial, you can run each step (each Zeppelin <span class="ItalicFont">paragraph</span>)  by clicking the <span class="CalloutFont">Ready</span> button that you'll see on the right side of each paragraph. This example includes these steps:</p>
         <ul>
-            <li><a href="#load">Load the Demo Data</a></li>
-            <li><a href="#query">Query the Data</a></li>
-            <li><a href="#view">Apply Different Visualizations to Results</a></li>
-        </ul>
-        <h3 id="load">Load the Data</h3>
-        <p>To load the demo data for this tutorial, simply click the <img src="images/ZepPlayButton.png"> Zeppelin play button, which you'll find on the right side of the <span class="BoldFont">Load data into table</span> title line.</p>
-        <p><img src="images/ZepSimple1.png" class="indentedTightSpacing" /><p>
-        <p>When you click the <span class="ConsoleLink">Play</span> button, Zeppelin runs the paragraph that loads your data and displays the <i>Finished</i> message.</p>
-         <div class="noteNote">If you see an <span class="ItalicFont">Error</span> instead of <span class="ItalicFont">Finished</span>, it almost certainly means that you've forgotten to set SpliceMachine interpreter as the default.</div>
-        <h3 id="query">Query the Data</h2>
-        <p>Once you've loaded data into the tables, you can experience the value and flexibility of Zeppelin: it's quite simple to visualize your results in various ways, including:</p>
-        <ul>
-            <li>tabular format</li>
-            <li>bar chart</li>
-            <li>pie chart</li>
-            <li>scatter plot</li>
-        </ul>
-        <p>Here's an initial set of visualizations:</p>
-        <p><img src="images/ZepSimple2.png" class="indentedTightSpacing" /><p>
-        <h3 id="view">Apply Different Visualizations to Your Results</h3>
-        <p>You can easily modify the presentation of your query results to use different visualizations by clicking different visualization icons in the output pane. You can define and modify the values of variables that you use in your queries; for example, the <span class="CodeFont">maxAge</span> and <span class="CodeFont">marital</span> values in the examples below:</p>
-        <p><img src="images/ZepSimple3.png" class="indentedTightSpacing" /><p>
-        <p> </p>
+			<li><p>Click the first <span class="CalloutFont">READY</span> button to create the schema and a table:</p>
+				<p><img src="images/zepSimple1.png" class="indentedTightSpacing" /></p>
+			</li>
+			<li><p>Import data (in this case, TPCH1 benchmark data) into the table, then verify the data load by counting the number of records in the table:</p>
+				<p><img src="images/zepSimple2a.png" class="indentedTightSpacing" /></p>
+			</li>
+			<li><p>Create indexes on the table, and then run compaction on the data, which is always a good idea after updating a large number of records:</p>
+				<p><img src="images/zepSimple2b.png" class="indentedTightSpacing" /></p>
+			</li>
+			<li><p>Collect statistics, to improve query planning, and then run a query:</p></li>
+				<p><img src="images/zepSimple3.png" class="indentedTightSpacing" /></p>
+			</li>
+		</ul>
+		<p>After the query runs, you can take advantage of Zeppelin's built-in visualization tools to display the query results in various graphical and tabular formats.</p>
+        <p>When you click the <span class="CalloutFont">READY</span> button, Zeppelin runs the paragraph that loads your data and subsequently displays the <i>Finished</i> message.</p>
+        <div class="noteNote">If you see <span class="ItalicFont">Error</span> instead of <span class="ItalicFont">Finished</span>, it usually means that you've forgotten to set SpliceMachine interpreter as the default.</div>
+        <h2 id="view">Apply Different Visualizations to Your Results</h3>
+        <p>Zeppelin provides a wealth of data visualization tools you can use. In the example below, we have modified the presentation of query results to use different visualizations by clicking different visualization icons in the output pane. You can define and modify the values of variables that you use in your queries; for example, the <span class="CodeFont">maxAge</span> and <span class="CodeFont">marital</span> values in the examples below:</p>
+        <p><img src="images/ZepVis1.png" class="indentedTightSpacing" /><p>
     </div>
 </section>

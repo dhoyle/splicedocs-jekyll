@@ -98,7 +98,7 @@ Mike,2013-03-23 09:45:00.68-05</pre>
    'yyyy-MM-dd HH:mm:ss.SSZ',
    null, null, 0, null, true, null);</pre>
             </div>
-            <p>Note that for any import use case shown above, the time shown in the imported table depends on the timezone setting where the data is imported. In other words, given the same csv file, if imported at locations with different time zones, the value in the table shown will be different. Additionally, daylight savings time may account for a 1-hour difference if timezone is specified.</p>
+            <p>Note that for any import use case shown above, the time shown in the imported table depends on the timezone setting in the server timestamp. In other words, given the same csv file, if imported on different servers with timestamps set to different time zones, the value in the table shown will be different. Additionally, daylight savings time may account for a 1-hour difference if timezone is specified.</p>
             <h3>Example 3: Importing strings with embedded special characters </h3>
             <p>This example imports a csv file that includes newline (<span class="CodeFont">Ctrl-M</span>) characters in some of the input strings. We use the default double-quote as our character delimiter to import data such as the following:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">1,This field is one line,Able
