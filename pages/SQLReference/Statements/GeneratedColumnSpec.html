@@ -9,7 +9,7 @@ permalink: sqlref_statements_generatedcolspec.html
 folder: SQLReference/Statements
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Statements.GeneratedColumnSpec">generated-column-spec</h1>
             <p>A&#160;generated column is one whose value is defined by an expression, typically involving values from other columns in the same table. The value of a generated column is automatically updated whenever there's a change in the value of any column upon which the expression depends.</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">[ GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY
@@ -98,7 +98,6 @@ insert into greetings(ch) values ('bonjour'); </pre>
                 </tbody>
             </table>
             <p>Automatically generated values in an identity column are unique. Use a primary key or unique constraint on a column to guarantee uniqueness. Creating an identity column <span class="ItalicFont">does not</span> create an index on the column.</p>
-            <p>The <span class="CodeFont"><a href="sqlref_builtinfcns_identityvallocal.html">IDENTITY_VAL_LOCAL</a></span> function is a non-deterministic function that returns the most recently assigned value for an identity column. </p>
             <div class="noteNote">Specify the schema, table, and column name using the same case as those names are stored in the system tables--that is, all upper case unless you used delimited identifiers when creating those database objects.</div>
             <h2>Using Generated Columns</h2>
             <p>Splice Machine keeps track of the last increment value for a column in a cache. It also stores the value of what the next increment value will be for the column on disk in the <span class="CodeFont">AUTOINCREMENTVALUE</span> column of the <span class="CodeFont">SYS.SYSCOLUMNS</span> system table. Rolling back a transaction does not undo this value, and thus rolled-back transactions can leave "gaps" in the values automatically inserted into an identity column. Splice Machine behaves this way to avoid locking a row in <span class="CodeFont">SYS.SYSCOLUMNS</span> for the duration of a transaction and keeping concurrency high. </p>

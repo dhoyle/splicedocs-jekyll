@@ -4,6 +4,11 @@
 <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
 <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
 <title>{{ page.title }} | {{ site.site_title }}</title>
+<meta class="swiftype" name="title" data-type="string" content="{{ page.title }}">
+<meta class="swiftype" name="info" data-type="string" content="{{ page.summary }}">
+{% if page.search == "exclude" %}
+<meta name="st:robots" content="noindex, nofollow">
+{% endif %}
 <link rel="stylesheet" href="{{ "css/syntax.css" }}">
 
 

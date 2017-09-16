@@ -9,16 +9,16 @@ permalink: developers_tuning_logging.html
 folder: Developers/TuningAndDebugging
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="kanchor165">Splice Machine Logging</h1>
-            <p>This topic describes the logging facility used in Splice Machine. Splice Machine also allows you to exercise direct control over logging in your database. You can:
-</p>
+            <p>This topic describes the logging facility used in Splice Machine. Splice Machine also allows you to exercise direct control over logging in your database. You can:</p>
             <ul class="SecondLevel">
                 <li><a href="#Manually">Manually enable logging</a> of all SQL&#160;statements. </li>
                 <li>Configure individual logger objects to log <a href="#Levels">specific message levels.</a></li>
                 <li>Call the <span class="CodeFont">log</span> function for a specific logger object, passing it a logging level value and a message. If the logger is currently configured to record messages at the specified level, the message is added to the log; otherwise, the logger ignores the message. Logger levels are ordered hierarchically; any message with a level equal to or greater than the hierarchical level for which logging is enabled is recorded into the log. </li>
             </ul>
             <p>Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html"  target="_blank">Apache log4j Logging API</a>, which allows you to associate a logger object with any java class, among other features. Loggers can be set to capture different levels of information. </p>
+			<div class="noteIcon">Splice Machine enables statement logging by default.</div>
             <p>Logging too much information can slow your system down, but not logging enough information makes it difficult to debug certain issues. The <a href="#SpliceLoggers">Splice Machine Loggers</a> section below summarizes the loggers used by Splice Machine and the system components that they use. You can use the SQL&#160;logging functions described in the <a href="#LoggerFunctions">SQL&#160;Logger Functions</a> section below to retrieve or modify the logging level of any logger used in Splice Machine.</p>
             <h2 id="Manually">Manually Enabling Logging</h2>
             <p>If you want to log all of your SQL&#160;statements, you can manually enable logging in these ways:</p>

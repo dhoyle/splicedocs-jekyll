@@ -9,15 +9,12 @@ permalink: dbaas_cm_dashboard.html
 folder: DBaaS/CloudManager
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
         <h1>Exploring Your Cloud Manager Dashboard</h1>
-{% include splice_snippets/dbaasonlyguide.html %}
         <p>This topic describes the actions you can initiate from your Splice&#160;Machine dashboard, which include:</p>
         <ul>
-            <li><a href="#creating">Creating a New Cluster</a>></li>
-            <li><a href="#viewing">Managing Your&#160;Cluster</a></li>
-            <li><a href="#managing">Managing Your&#160;Cluster</a></li>
-            <li><a href="#modifying">Modifying Your Cluster</a></li>
+            <li><a href="#creating">Creating a New Cluster</a></li>
+            <li><a href="#viewing">Viewing and Managing Your&#160;Clusters</a></li>
         </ul>
         <h2 id="creating">Creating a New Cluster</h2>
         <p>Click the large <span class="ConsoleLink">Create New Cluster</span> button to start the process of creating a new cluster. This process, which requires just a few minutes, is described in detail in our <a href="dbaas_cm_initialstartup.html">Creating a New Cluster</a> topic.
@@ -25,50 +22,12 @@ folder: DBaaS/CloudManager
             <img src="images/InitialDashboard.png" class="indentedTightSpacing" />
         </p>
         <p>&#160;</p>
-        <h2 id="viewing">Viewing Your Clusters</h2>
+        <h2 id="viewing">Viewing and Managing Your Clusters</h2>
         <p>When you create a new cluster, you land back on this Dashboard screen, which shows you the status of your current clusters. In the following image, we've created our first Splice&#160;Machine cluster, which is currently <span class="ItalicFont">Initializing</span>.</p>
         <p>
             <img src="images/JustCreatedDashboard.png" class="indentedTightSpacing" />
         </p>
-        <p>Once your new cluster is initialized, its status changes to <span class="ItalicFont">Active</span>, and you receive an email message from&#160;Splice&#160;Machine notifying you that your cluster is ready. At that point, you can click the cluster name (e.g. <span class="ItalicFont">SpliceDocs1</span>)&#160;to reveal the Cluster Management screen.</p>
-        <h2 id="managing">Managing A Cluster</h2>
-        <p>The Cluster Management screen displays information about the cluster, and includes three panels that display a graph of resource usage over time. There are three similar resource usage graphs displayed:</p>
-        <ul>
-            <li>CPU&#160;Percentage Used (shown in the following image)</li>
-            <li>Disk Usage</li>
-            <li>Memory Usage</li>
-        </ul>
-        <p class="spaceAbove">
-            <img src="images/ActiveDashboard1.png" class="indentedTightSpacing" />
-        </p>
-        <p>At the very bottom of the Cluster Management screen, below the three graph panels, is the URL&#160;you can use for a JDBC&#160;connection with your database service:</p>
-        <p>
-            <img src="images/ActiveDashboard2.png" class="indentedTightSpacing" />
-        </p>
-        <h2 id="modifying">Modifying Your Cluster</h2>
-        <p>Your dashboard features three cluster modification choices; you can <span class="ConsoleLink">Reconfigure</span>, <span class="ConsoleLink">Resize</span>, or <span class="ConsoleLink">Delete</span> your cluster by clicking one of the buttons near the top-left of your Dashboard screen:</p>
-        <p>
-            <img src="images/DashboardButtons.png" class="indentedTightSpacing" />
-        </p>
-        <h3>Reconfiguring Your Cluster</h3>
-        <p>To reconfigure your cluster, click the <span class="ConsoleLink">Reconfigure</span> button; the cluster reconfiguration screen displays: </p>
-        <p>
-            <img src="images/Reconfigure1.png" class="indentedTightSpacing" />
-        </p>
-        <p>You can modify your VPC and/or IAM configuration information in this screen. Once you've entered your new information, click the <span class="CalloutFont">Reconfigure</span> button to update your configuration and return to your Cluster Management screen.</p>
-        <h3>Resizing Your Cluster</h3>
-        <p>To resize your cluster, click the <span class="CalloutFont">Resize</span> button. The Resize Cluster screen, which is pretty much identical to the Create New Cluster screen, displays:</p>
-        <p><img src="images/ResizeCluster.png" class="indentedTightSpacing" /></p>
-        <p>You can adjust your cluster parameters, then click the <span class="ConsoleLink">Resize</span> button, which will return you to your Cluster Management screen, where you'll see the status of your cluster set to <span class="ItalicFont">Updating</span>.</p>
-        <h3>Deleting Your Cluster</h3>
-        <p>To delete your cluster, click the <span class="ConsoleLink">Delete</span> button. </p>
-        <p>After confirming that you want to do so, your cluster will be deleted, and its status in your dashboard will show as <span class="ItalicFont">Deleted</span>.</p>
-        <h2>Working With Your Database</h2>
-        <p>Your dashboard includes buttons with which you can access two different means of working with your database; you can launch the <span class="CalloutFont">DB&#160;Console</span> or the Apache Zeppelin <span class="CalloutFont">Notebook</span> interface by clicking one of the buttons near the upper-right corner of the Dashboard screen:</p>
-        <p>
-            <img src="images/DashboardLinks.png" class="indentedTightSpacing" />
-        </p>
-        <p>Click the DB&#160;Console button to land on our <a href="dbconsole_intro.html">Database Console</a> interface.</p>
-        <p>Click the Notebook button to land on our <a href="dbaas_zep_intro.html">Zeppelin Notebook</a> interface.</p>
+        <p>Once your new cluster is initialized, its status changes to <span class="ItalicFont">Active</span>, and you receive an email message from&#160;Splice&#160;Machine notifying you that your cluster is ready. At that point, you can click the cluster name (e.g. <span class="ItalicFont">SpliceDocs1</span>)&#160;to use the <span class="ItalicFont">Cluster Management</span> screen for that cluster.</p>
+		<div class="noteNote">If you have multiple clusters associated with your account, each will be listed in your dashboard. Simply click or tap a cluster name to jump to its management screen.</div>
     </div>
 </section>

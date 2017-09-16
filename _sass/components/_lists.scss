@@ -3,7 +3,8 @@
 @mixin listItems($margin: (1.1em 0 1.0em 0),
                  $padding: (0, 0, 0, 0),
                  $fontFamily: $bodyfont-face,
-                 $fontWeight: normal)
+                 $fontWeight: normal,
+                 $color: $bodyfont-color)
 {
   orphans: 0;
   widows: 0;
@@ -11,6 +12,7 @@
   padding: $padding;
   font-family: $fontFamily;
   font-weight: $fontWeight;
+  color: $color;
 
   p {
     margin-top: 0;
@@ -25,11 +27,12 @@
 
 @mixin lists($listImage: none,
 			 $listStyle: decimal,
+             $listFontSize: $bodyfont-size,
 			 $fontFamily: $bodyfont-face,
 			 $fontWeight: normal,
 			 $margin: (1em 0 1em 0),
-			 $padding: (0 0 0 40px)
-)
+			 $padding: (0 0 0 40px),
+             $color: $bodyfont-color)
 {
 	display: block;
 	list-style-image: $listImage;
@@ -37,11 +40,11 @@
 	font-style: normal;
 	font-family: $fontFamily;
 	font-weight: $fontWeight;
+    font-size: $listFontSize;
 	margin: $margin;
 	padding: $padding;
+    color: $color;
 }
-
-
 
 li {
   @include listItems;

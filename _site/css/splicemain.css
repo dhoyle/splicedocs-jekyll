@@ -346,6 +346,41 @@ ol.series li {
   color: #777777; }
 
 /* search area */
+#swiftype-search-container {
+  margin-top: 8px;
+  margin-right: 0;
+  margin-left: 40px;
+  list-style: none;
+  font-face: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  color: #4a4f54;
+  background-color: transparent;
+  float: right;
+  z-index: -1;
+  width: 320px; }
+
+input.swiftype-search {
+  padding: 5px;
+  margin-top: 2px;
+  width: 100px;
+  font-size: 0.8em;
+  float: right;
+  margin-top: 18px;
+  border: none; }
+
+button.swiftype-submit {
+  margin: -5px 0 0 0;
+  font-size: 1.0em;
+  border: 2px solid #3ba3d8;
+  border-radius: 6px;
+  color: #3ba3d8;
+  background-color: #fcf8f0;
+  font-weight: bold;
+  height: 28px; }
+
+/* search area */
 #search-demo-container ul#results-container {
   list-style: none;
   font-size: 12px;
@@ -372,13 +407,13 @@ ul#results-container a:hover {
 #search-input {
   padding: 5px;
   margin-left: 40px;
-  width: 196px;
+  width: 100px;
   font-size: 0.8em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   float: right;
-  margin-top: 7px; }
+  margin-top: 18px; }
 
 /* algolia search */
 .search {
@@ -1135,16 +1170,16 @@ div.noteDBaaSOnly {
   background-repeat: no-repeat;
   background-image: none;
   color: #4a4f54;
-  margin: 20px 12% 20px 12%;
+  margin: 15px auto 20px auto;
   padding: 5px 10px 5px 10px;
   font-weight: normal;
   z-index: -1;
   border: 2px solid #d6dbe0;
   border-radius: 12px;
-  max-width: 75%;
+  max-width: 475px;
   min-height: 0; }
   div.noteDBaaSOnly:before {
-    content: "DATABASE-AS-SERVICE VERSION ONLY!";
+    content: "This is a DB-Service-Only topic!   ";
     color: #F39939;
     font-weight: 600; }
 
@@ -1225,16 +1260,16 @@ div.noteOnPremiseOnly {
   background-repeat: no-repeat;
   background-image: none;
   color: #4a4f54;
-  margin: 20px 12% 20px 12%;
+  margin: 15px auto 20px auto;
   padding: 5px 10px 5px 10px;
   font-weight: normal;
   z-index: -1;
   border: 2px solid #d6dbe0;
   border-radius: 12px;
-  max-width: 75%;
+  max-width: 475px;
   min-height: 0; }
   div.noteOnPremiseOnly:before {
-    content: "ON-PREMISE VERSION ONLY!   ";
+    content: "This is an On-Premise-Only topic!   ";
     color: #F39939;
     font-weight: 600; }
 
@@ -1335,7 +1370,8 @@ li {
   margin: 1.1em 0 1em 0;
   padding: 0, 0, 0, 0;
   font-family: "Open Sans", sans-serif;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #4a4f54; }
   li p {
     margin-top: 0; }
   li p.topLevel {
@@ -1348,7 +1384,8 @@ li.CodeFont {
   margin: 1.1em 0 1em 0;
   padding: 0, 0, 0, 0;
   font-family: #codefont-face;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #4a4f54; }
   li.CodeFont p {
     margin-top: 0; }
   li.CodeFont p.topLevel {
@@ -1361,7 +1398,8 @@ li.codeList {
   margin: 1.1em 0 1em 0;
   padding: 3px 0 3px 0;
   font-family: "Courier";
-  font-weight: normal; }
+  font-weight: normal;
+  color: #4a4f54; }
   li.codeList p {
     margin-top: 0; }
   li.codeList p.topLevel {
@@ -1374,7 +1412,8 @@ li.nested {
   margin: 0 0 1em 0;
   padding: 0, 0, 0, 0;
   font-family: "Open Sans", sans-serif;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #4a4f54; }
   li.nested p {
     margin-top: 0; }
   li.nested p.topLevel {
@@ -1387,7 +1426,8 @@ li.topSpace {
   margin: 1.1em 0 1em 0;
   padding: 1em 0 0 0;
   font-family: "Open Sans", sans-serif;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #4a4f54; }
   li.topSpace p {
     margin-top: 0; }
   li.topSpace p.topLevel {
@@ -1401,8 +1441,10 @@ ol {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 1em 0 1em 0;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ol.boldFont {
   display: block;
@@ -1411,15 +1453,18 @@ ol.boldFont {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
+  font-size: 15px;
   margin: 1em 0 1em 0;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
   ol.boldFont li {
     orphans: 0;
     widows: 0;
     margin: 1.1em 0 1em 0;
     padding: 0, 0, 0, 0;
     font-family: "Open Sans", sans-serif;
-    font-weight: 600; }
+    font-weight: 600;
+    color: #4a4f54; }
     ol.boldFont li p {
       margin-top: 0; }
     ol.boldFont li p.topLevel {
@@ -1434,8 +1479,10 @@ ol.LowerAlphaPlainFont {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 1em 0 1em 0;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ol.LowerRoman {
   display: block;
@@ -1444,8 +1491,10 @@ ol.LowerRoman {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 1em 0 1em 0;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ol.nested {
   display: block;
@@ -1454,8 +1503,10 @@ ol.nested {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 1em 0 1em 80px;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ul,
 ul.plainFont {
@@ -1465,8 +1516,10 @@ ul.plainFont {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 1em 0 1em 0px;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ul.bullet {
   display: block;
@@ -1475,8 +1528,10 @@ ul.bullet {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 1em 0 1em 0px;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ul.boldFont {
   display: block;
@@ -1485,8 +1540,10 @@ ul.boldFont {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
+  font-size: 15px;
   margin: 1em 0 1em 0;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ul.bulletCell {
   display: block;
@@ -1495,8 +1552,10 @@ ul.bulletCell {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 0 0 1em 5px;
   padding: 0 0 0 40px;
+  color: #4a4f54;
   padding-left: 10px; }
 
 ul.bulletCell li {
@@ -1505,7 +1564,8 @@ ul.bulletCell li {
   margin: 1em 0 1em 2px;
   padding: 0, 0, 0, 0;
   font-family: "Open Sans", sans-serif;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #4a4f54; }
   ul.bulletCell li p {
     margin-top: 0; }
   ul.bulletCell li p.topLevel {
@@ -1519,8 +1579,10 @@ ul.bulletCellNoTopSpace {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 0 0 1em 5px;
   padding: 0 0 0 40px;
+  color: #4a4f54;
   padding-left: 10px; }
 
 ul.bulletCellNoTopSpace li {
@@ -1529,7 +1591,8 @@ ul.bulletCellNoTopSpace li {
   margin: 0 0 1em 2px;
   padding: 0, 0, 0, 0;
   font-family: "Open Sans", sans-serif;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #4a4f54; }
   ul.bulletCellNoTopSpace li p {
     margin-top: 0; }
   ul.bulletCellNoTopSpace li p.topLevel {
@@ -1543,8 +1606,10 @@ ul.codeList {
   font-style: normal;
   font-family: "Courier";
   font-weight: normal;
+  font-size: 15px;
   margin: 1em 0 1em 0;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ul.codeListNested {
   display: block;
@@ -1553,8 +1618,10 @@ ul.codeListNested {
   font-style: normal;
   font-family: "Courier";
   font-weight: normal;
+  font-size: 15px;
   margin: 2px 0 1em 0;
-  padding: 3px 0 3px 0; }
+  padding: 3px 0 3px 0;
+  color: #4a4f54; }
 
 ul.nested,
 ul.bulletNested {
@@ -1564,8 +1631,10 @@ ul.bulletNested {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 1em 0 1em 40px;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ul.SecondLevel {
   display: block;
@@ -1574,8 +1643,10 @@ ul.SecondLevel {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 2px 0 1em 0;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 ul.ThirdLevel {
   display: block;
@@ -1584,8 +1655,10 @@ ul.ThirdLevel {
   font-style: normal;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
+  font-size: 15px;
   margin: 2px 0 1em 0;
-  padding: 0 0 0 40px; }
+  padding: 0 0 0 40px;
+  color: #4a4f54; }
 
 /* make room for the nav bar */
 h1[id] {
@@ -1893,6 +1966,7 @@ span.AppFontCust {
   background-color: #fffdf5;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: inherit;
   color: inherit;
   text-transform: none; }
@@ -1903,6 +1977,7 @@ span.AppFontCustCode {
   background-color: #fffdf5;
   font-family: "Courier";
   font-style: inherit;
+  font-size: 15px;
   font-weight: inherit;
   color: inherit;
   text-transform: none; }
@@ -1913,6 +1988,7 @@ span.AppCommand {
   background-color: #fffdf5;
   font-family: "Courier";
   font-style: inherit;
+  font-size: 15px;
   font-weight: 500;
   color: inherit;
   text-transform: none; }
@@ -1923,6 +1999,7 @@ span.bodyFont {
   background-color: transparent;
   font-family: "Open Sans", sans-serif;
   font-style: normal;
+  font-size: 15px;
   font-weight: inherit;
   color: inherit;
   text-transform: none; }
@@ -1933,6 +2010,7 @@ span.BoldFont {
   background-color: transparent;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: 600;
   color: inherit;
   text-transform: none; }
@@ -1943,6 +2021,7 @@ span.CalloutFont {
   background-color: transparent;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: 600;
   color: #f39939;
   text-transform: none; }
@@ -1953,6 +2032,7 @@ span.CodeFont {
   background-color: transparent;
   font-family: "Courier";
   font-style: inherit;
+  font-size: 15px;
   font-weight: inherit;
   color: inherit;
   text-transform: none; }
@@ -1963,6 +2043,7 @@ span.CodeBoldFont {
   background-color: transparent;
   font-family: "Courier";
   font-style: inherit;
+  font-size: 15px;
   font-weight: 500;
   color: inherit;
   text-transform: none; }
@@ -1973,6 +2054,7 @@ span.CodeItalicFont {
   background-color: transparent;
   font-family: "Courier";
   font-style: italic;
+  font-size: 15px;
   font-weight: 500;
   color: inherit;
   text-transform: none; }
@@ -1983,6 +2065,7 @@ span.ConsoleLink {
   background-color: transparent;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: 600;
   color: #3ba3d8;
   text-transform: none; }
@@ -1993,6 +2076,7 @@ span.noteEnterpriseNote {
   background-color: transparent;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: 600;
   color: #666666;
   text-transform: none; }
@@ -2003,6 +2087,7 @@ span.Example {
   background-color: #fcf8f0;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: inherit;
   color: inherit;
   text-transform: none; }
@@ -2013,6 +2098,7 @@ span.Footnote {
   background-color: transparent;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: inherit;
   color: #000000;
   text-transform: none;
@@ -2025,6 +2111,7 @@ span.Highlighted {
   background-color: #ffff00;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: inherit;
   color: inherit;
   text-transform: none; }
@@ -2035,6 +2122,7 @@ span.HighlightedCode {
   background-color: #ffff00;
   font-family: "Courier";
   font-style: inherit;
+  font-size: 15px;
   font-weight: 500;
   color: inherit;
   text-transform: none; }
@@ -2045,6 +2133,7 @@ span.important {
   background-color: #ffffff;
   font-family: "Open Sans", sans-serif;
   font-style: inherit;
+  font-size: 15px;
   font-weight: 600;
   color: #ff0000;
   text-transform: none; }
@@ -2055,6 +2144,7 @@ span.ItalicFont {
   background-color: transparent;
   font-family: "Open Sans", sans-serif;
   font-style: italic;
+  font-size: 15px;
   font-weight: inherit;
   color: inherit;
   text-transform: none; }
@@ -2068,6 +2158,7 @@ span.ShellCommand {
   background-color: #f5fff5;
   font-family: "Courier";
   font-style: inherit;
+  font-size: 15px;
   font-weight: 500;
   color: inherit;
   text-transform: none; }
@@ -2081,6 +2172,7 @@ span.varName {
   background-color: #f5f5dc;
   font-family: "Courier";
   font-style: inherit;
+  font-size: 15px;
   font-weight: 500;
   color: inherit;
   text-transform: none; }
@@ -2112,13 +2204,18 @@ table.noBorder {
     word-wrap: break-word;
     overflow: auto; }
   table td p:first-child,
-  table.noBorder td p:first-child {
+  table td.middle p:first-child,
+  table.noBorder td p:first-child,
+  table.noBorder td.middle p:first-child {
     margin-top: 0; }
   table td > ul > li:first-of-type,
   table td > ol > li:first-of-type,
   table.noBorder td > ul > li:first-of-type,
   table.noBorder td > ol > li:first-of-type {
     margin-top: 0; }
+  table td.middle,
+  table.noBorder td.middle {
+    vertical-align: middle; }
   table th,
   table.noBorder th {
     border: 1px solid #8d9090;
@@ -2165,7 +2262,8 @@ table td.AppFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.AppFont {
   background-color: #fffdf5;
@@ -2174,7 +2272,48 @@ table td.AppFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
+
+table td.DbaasIntroNum {
+  background-color: transparent;
+  font-family: "Courier";
+  font-weight: normal;
+  font-style: normal;
+  color: #3ba3d8;
+  font-size: 2em;
+  text-transform: none;
+  vertical-align: middle; }
+
+table td.DbaasIntroStep {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #f39939;
+  font-size: 1.1em;
+  text-transform: none;
+  vertical-align: middle; }
+
+table td.DbaasIntroArrow {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #3ba3d8;
+  font-size: 2em;
+  text-transform: none;
+  vertical-align: middle; }
+
+table td.DbaasIntroDesc {
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #3ba3d8;
+  font-size: 1em;
+  text-transform: none;
+  vertical-align: middle; }
 
 table td.BoldFont {
   background-color: transparent;
@@ -2183,7 +2322,8 @@ table td.BoldFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.BoldBlueBG {
   background-color: #d9e4f1;
@@ -2192,7 +2332,8 @@ table td.BoldBlueBG {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.BoldGreenBG {
   background-color: #a4ccb3;
@@ -2201,7 +2342,8 @@ table td.BoldGreenBG {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.BoldDarkGreenBG {
   background-color: #629e78;
@@ -2210,7 +2352,8 @@ table td.BoldDarkGreenBG {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.BoldRedBG {
   background-color: #d39c9b;
@@ -2219,7 +2362,8 @@ table td.BoldRedBG {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.CodeFont {
   background-color: transparent;
@@ -2228,7 +2372,8 @@ table td.CodeFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.CodeFontUC {
   background-color: transparent;
@@ -2237,7 +2382,8 @@ table td.CodeFontUC {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  vertical-align: top; }
 
 table td.CodeFontSmall {
   background-color: transparent;
@@ -2246,7 +2392,8 @@ table td.CodeFontSmall {
   font-style: normal;
   color: #4a4f54;
   font-size: 0.9em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.ConsoleLink {
   background-color: transparent;
@@ -2255,7 +2402,8 @@ table td.ConsoleLink {
   font-style: normal;
   color: #3ba3d8;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.ItalicFont {
   background-color: transparent;
@@ -2264,7 +2412,8 @@ table td.ItalicFont {
   font-style: italic;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.MenuName {
   background-color: #fffdf5;
@@ -2273,7 +2422,8 @@ table td.MenuName {
   font-style: italic;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.PlainFont {
   background-color: transparent;
@@ -2282,7 +2432,8 @@ table td.PlainFont {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.Separator {
   background-color: #eee;
@@ -2292,6 +2443,7 @@ table td.Separator {
   color: #4a4f54;
   font-size: 1em;
   text-transform: none;
+  vertical-align: top;
   height: 4px;
   line-height: 4px; }
 
@@ -2303,6 +2455,7 @@ table td.smallText {
   color: #4a4f54;
   font-size: 0.9em;
   text-transform: none;
+  vertical-align: top;
   line-height: 1em; }
 
 table td.SpliceRelease {
@@ -2312,7 +2465,8 @@ table td.SpliceRelease {
   font-style: normal;
   color: #000000;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.SplicePlatform {
   background-color: #fffdf5;
@@ -2321,7 +2475,8 @@ table td.SplicePlatform {
   font-style: normal;
   color: #4a4f54;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table td.SpliceParcel {
   background-color: transparent;
@@ -2330,7 +2485,8 @@ table td.SpliceParcel {
   font-style: normal;
   color: #f39939;
   font-size: 1em;
-  text-transform: none; }
+  text-transform: none;
+  vertical-align: top; }
 
 table.featureList {
   table-layout: auto;

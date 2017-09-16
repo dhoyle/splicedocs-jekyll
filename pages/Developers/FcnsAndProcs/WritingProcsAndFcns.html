@@ -10,7 +10,7 @@ folder: Developers/FcnsAndProcs
 ---
 {% include splicevars.html %}
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="kanchor314">Writing Functions and Stored&#160;Procedures</h1>
             <p>This topic shows you the steps required to write functions and stored procedures for use in your Splice&#160;Machine database.</p>
             <ul>
@@ -121,7 +121,7 @@ public class CustomSpliceProcs {
                     <li>
                         <p class="topLevel">Deploy the Jar file to your cluster</p>
                         <p class="indentLevel1">Deploying the Jar file requires you to install the file in your database, and to add it to your database's <span class="CodeFont">CLASSPATH</span>. You can accomplish both of these steps by calling built-in system procedures from the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter. For example:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.incl_onlydoc %}<span>{{splvar_basic_SpliceReleaseVersion}}</span>{% elsif site.incl_notdoc %}<span>{{splvar_basic_InternalReleaseVersion}}</span>{% endif %}-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.isbuild_doc == true %}<span>{{splvar_basic_SpliceReleaseVersion}}</span>{% else %}<span>{{splvar_basic_InternalReleaseVersion}}</span>{% endif %}-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
 
 CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
                         </div>
@@ -148,7 +148,7 @@ CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', '
                     <li>
                         <p class="topLevel">Updating/Reloading your stored procedure</p>
                         <p class="indentLevel1">If you make changes to your procedure's code, you need to create a new Jar file and reload that into your databaseby calling the <span class="CodeFont">SQLJ.REPLACE_JAR</span>&#160;system procedure:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.incl_onlydoc %}<span>{{splvar_basic_SpliceReleaseVersion}}</span>{% elsif site.incl_notdoc %}<span>{{splvar_basic_InternalReleaseVersion}}</span>{% endif %}-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.isbuild_doc == true %}<span>{{splvar_basic_SpliceReleaseVersion}}</span>{% else %}<span>{{splvar_basic_InternalReleaseVersion}}</span>{% endif %}-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');</pre>
                         </div>
                     </li>
                 </ol>

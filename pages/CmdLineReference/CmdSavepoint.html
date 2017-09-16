@@ -4,12 +4,12 @@ summary: Creates a savepoint within the current transaction.
 keywords: savepoints, transactions
 toc: false
 product: all
-sidebar: onprem_sidebar
+sidebar: cmdlineref_sidebar
 permalink: cmdlineref_savepoint.html
 folder: CmdLineReference
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="kanchor224">Savepoint Command</h1>
             <p>The <span class="AppCommand">savepoint</span> command issues a <span class="CodeFont">java.sql.Connection.setSavepoint</span> request, which sets a savepoint within the current transaction.</p>
             <div class="noteNote">Savepoints are only useful when autocommit is off.<br /><br />You can define multiple savepoints within a transaction.</div>
@@ -32,11 +32,11 @@ splice&gt; INSERT INTO myTbl VALUES 1,2,3;
 splice&gt; SAVEPOINT savept1;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
+1
+2
+3
 
 3 rows selected</pre>
             </div>
@@ -45,12 +45,12 @@ I
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; INSERT INTO myTbl VALUES 4,5;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
-4          
+1
+2
+3
+4
 5<br /><br />
 5 rows selected</pre>
             </div>
@@ -58,11 +58,11 @@ I
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; ROLLBACK TO SAVEPOINT savept1;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
+1
+2
+3
 
 3 rows selected</pre>
             </div>

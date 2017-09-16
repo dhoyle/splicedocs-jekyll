@@ -1,15 +1,15 @@
 ---
 title: Help command
 summary: Displays a list of the available commands.
-keywords: 
+keywords:
 toc: false
 product: all
-sidebar: onprem_sidebar
+sidebar: cmdlineref_sidebar
 permalink: cmdlineref_help.html
 folder: CmdLineReference
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="kanchor219">Help Command</h1>
             <p>The <span class="AppCommand">help</span> command displays a list of the available <span class="AppCommand">splice&gt;</span>&#160;commands.</p>
             <h2>Syntax</h2>
@@ -17,9 +17,9 @@ folder: CmdLineReference
             </div>
             <h2>Example</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; help;
- 
+
  Supported commands include:
- 
+
   CONNECT 'url for database' [ PROTOCOL namedProtocol ] [ AS connectionName ];
                                -- connects to database URL
                                -- and may assign identifier
@@ -34,26 +34,26 @@ folder: CmdLineReference
   SHOW SETTABLE_ROLES;         -- lists the roles which can be set for the
                                -- current connection, sorted
   DESCRIBE name;               -- lists columns in the named table
- 
+
   COMMIT;                      -- commits the current transaction
   ROLLBACK;                    -- rolls back the current transaction
- 
+
   PREPARE name AS 'SQL text'; -- prepares the SQL text
   EXECUTE { name | 'SQL text' } [ USING { name | 'SQL text' } ] ;
                                -- executes the statement with parameter
                                -- values from the USING result set row
   REMOVE name;                 -- removes the named previously prepared statement
- 
+
   RUN 'filename';              -- run commands from the named file
- 
+
   ELAPSEDTIME [ ON | OFF ];    -- sets elapsed time mode for splice
   MAXIMUMDISPLAYWIDTH integerValue;
                                -- sets the maximum display width for
                                -- each column to integerValue
- 
+
   EXIT;                        -- exits splice
   HELP;                        -- shows this message
- 
+
  Any unrecognized commands are treated as potential SQL commands and executed directly.
 
 splice&gt;

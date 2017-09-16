@@ -4,12 +4,12 @@ summary: Rolls the current transaction back to the specified savepoint.
 keywords: savepoints, rolling back, transactions
 toc: false
 product: all
-sidebar: onprem_sidebar
+sidebar: cmdlineref_sidebar
 permalink: cmdlineref_rollbacktosavepoint.html
 folder: CmdLineReference
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="kanchor113">Rollback to Savepoint Command</h1>
             <p>The <span class="AppCommand">rollback to savepoint</span> command issues a <span class="CodeFont">java.sql.Connection.rollback</span> request, which has been overloaded to work with a savepoint within the current transaction.</p>
             <div class="noteNote">When you rollback a transaction to a savepoint, that savepoint and any others created after it within the transaction are automatically released.</div>
@@ -33,11 +33,11 @@ splice&gt; INSERT INTO myTbl VALUES 1,2,3;
 splice&gt; SAVEPOINT savept1;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
+1
+2
+3
 
 3 rows selected</pre>
             </div>
@@ -46,12 +46,12 @@ I
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; INSERT INTO myTbl VALUES 4,5;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
-4          
+1
+2
+3
+4
 5<br /><br />
 5 rows selected</pre>
             </div>
@@ -59,11 +59,11 @@ I
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; ROLLBACK TO SAVEPOINT savept1;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
+1
+2
+3
 
 3 rows selected</pre>
             </div>

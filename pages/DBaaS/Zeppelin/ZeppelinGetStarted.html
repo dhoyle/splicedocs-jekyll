@@ -9,7 +9,7 @@ permalink: dbaas_zep_getstarted.html
 folder: DBaaS/Zeppelin
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
         <h1>Getting Started with Zeppelin</h1>
 {% include splice_snippets/dbaasonlytopic.html %}
         <p>This topic helps you to get started with using Zeppelin with your Splice Machine database.</p>
@@ -19,10 +19,16 @@ folder: DBaaS/Zeppelin
         <p>
             <img src="images/Notebooks1.png" class="indentedTightSpacing" />
         </p>
-        <p>When you log into Zeppelin for your database, you'll land on the Zeppelin dashboard. From there, you can run already-created notebooks, modify existing notebooks, and create new notebooks. Our next topic, <a href="dbaas_zep_simple.html">A Simple Tutorial</a>, uses the Zeppelin Basic tutorial:</p>
+		<p>Use the same user ID and password to log into Zeppelin as you use to log into your database.</p>
+        <p>When you log into Zeppelin for your database, you'll land on the Zeppelin dashboard, which displays the list of available notebooks. As you can see, notebooks can be organized in folders.</p>
         <p>
-            <img src="images/ZepDashboard2.png" class="indentedTightSpacing" />
+            <img src="images/Zeppelin1.png" class="indentedTightSpacing" />
         </p>
+		<p>Splice Machine has already created a number of useful notebooks; we suggest that you try running some of them to get a feel for what Zeppelin can do: click a notebook name, and you'll land on the notebook page in Zeppelin. From there, you can run all or portions of the notebook, modify its content, and create new notebooks. Our next topic,  <a href="dbaas_zep_simple.html">A Simple Tutorial</a>, uses the our <span class="CalloutFont">Simple Example</span> tutorial.</p>
+		<h3>First Notebook Run: Save Interpreter Bindings</h3>
+		<p>The first time that you run any Zeppelin notebook, you need to bind any interpreters needed by the notebook. For our tutorials, these are preconfigured for you; all you need to do is click the Save button:</p>
+		<p><img src="images/ZepInterpreters.png" class="indentedTightSpacing"/></p>
+		<div class="noteNote">If you neglect to save its bindings, the notebook will not run. And again: you only need to do this one time for each notebook that you run.</div>
         <h2 id="toolbar">The Zeppelin Note Toolbar</h2>
         <p>Zeppelin displays a toolbar at the top of each note that provides convenient access to a number of options:</p>
         <p><img src="images/ZepToolbar.png" class="indentedTightSpacing"></p>
@@ -74,6 +80,9 @@ folder: DBaaS/Zeppelin
                 <td>Schedules execution of the note, using CRON syntax.</td>
             </tr>
         </table>
+		<h2 id="Dropdown">The Zeppelin Drop-Down Menu</h2>
+		<p>When you're working in Zeppelin, you can quickly jump to another notebook or create a new note by clicking the <span class="ConsoleLink">Zeppelin</span> drop-down menu:</p>
+		<p><img src="images/zepdropdown.png" class="indentedTightSpacing"/></p>
         <h2 id="Job">Monitoring Job Status</h2>
         <p>You can monitor the status of any Zeppelin notebook job(s) running in your cluster by clicking the <span class="ConsoleLink">Job</span> button at the top of the Zeppelin screen. This displays a list of the notebook jobs that are running and have run on your cluster.</p>
         <p><img src="images/ZepJobs1.png" class="indentedTightSpacing" /></p>
@@ -85,12 +94,7 @@ folder: DBaaS/Zeppelin
             <li>Start, Pause, or Terminate a running job.</li>
             <li>Click a notebook job name to navigate to that notebook.</li>
         </ul>
-        <h2 id="interpreter">Saving Your Interpreter Configuration</h2>
-        <p>The first time you run a Zeppelin notebook, you need to save the interpreter configuration that is displayed at the top of the notebook screen. Simply click the <span class="ConsoleLink">Save</span> button; this configures the set of interpreters available to the notebook. You'll notice that our notebooks all include the <span class="CodeFont">splicemachine interpreter</span>. </p>
-        <p><img src="images/ZepInterpreters.png" class="indentedTightSpacing" /><p>
-        <p>To bind the splicemachine interpreter as the default interpreter for this Zeppelin notebook, drag it to the top of the list, then click the <span class="ConsoleLink">Save</span> button. For example, here we've moved the <span class="CodeFont">splicemachine</span> interpreter into the default position.</p>
-        <p><img src="images/ZepDefaultInterpreter.png" class="indentedTightSpacing" /><p>
         <h2 id="create">Creating Notebooks</h2>
-        <div class="noteIcon">Please see our <a href="dbaas_zep_notes.html">Usage Notes</a> page for important information about creating Zeppelin notebooks to use with Splice Machine.</div>
+        <p>Be sure to view our <a href="dbaas_zep_notes.html">Usage Notes</a> page for important information about creating Zeppelin notebooks to use with Splice Machine.</p>
     </div>
 </section>

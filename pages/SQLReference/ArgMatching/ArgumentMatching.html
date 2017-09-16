@@ -9,7 +9,7 @@ permalink: sqlref_sqlargmatching.html
 folder: SQLReference/ArgMatching
 ---
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="SQLArgumentMatching" id="SQLArgumentMatching">Argument Matching in Splice Machine</h1>
             <p>When you declare a function or procedure using <span class="CodeFont">CREATE FUNCTION/PROCEDURE</span>, Splice Machine does not verify whether a matching Java method exists. Instead, Splice Machine looks for a matching method only when you invoke the function or procedure in a later SQL statement. </p>
             <p>At that time, Splice Machine searches for a public, static method having the class and method name declared in the <span class="CodeFont">EXTERNAL NAME </span>clause of the earlier <span class="CodeFont">CREATE FUNCTION/PROCEDURE</span> statement. Furthermore, the Java types of the method's arguments and return value must match the SQL types declared in the <span class="CodeFont">CREATE FUNCTION/PROCEDURE </span>statement. </p>

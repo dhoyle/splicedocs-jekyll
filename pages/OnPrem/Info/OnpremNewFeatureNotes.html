@@ -10,7 +10,7 @@ folder: OnPrem/Info
 ---
 {% include splicevars.html %}
 	<section>
-		<div class="TopicContent">
+		<div class="TopicContent" data-swiftype-index="true">
         <h1>New Features in This Release</h1>
 {% include splice_snippets/onpremonlytopic.html %}
         <p>This topic describes significant new and deprecated features in the Splice Machine On-Premise Database product, in these sections:</p>
@@ -31,7 +31,6 @@ folder: OnPrem/Info
                     <th>Change</th>
                     <th>Description</th>
                 </tr>
-{% if site.incl_onlydev %}
             <tr>
                 <td class="BoldFont">2.6.1</td>
                 <td class="ItalicFont">SSL/TLS</td>
@@ -42,12 +41,12 @@ folder: OnPrem/Info
                 <td class="ItalicFont">Region Functions</td>
                 <td><p>We've added a number of built-in system procedures that allow you to work directly with table and index regions; some customers use these to optimize processing of recent data while optimizing storage of older data:</p>
 					<ul>
-						<li><a href="sqlref_sysprocs_compactregion"><span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span></a></li>
-						<li><a href="sqlref_sysprocs_getencodedregion"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a></li>
-						<li><a href="sqlref_sysprocs_getregions"><span class="CodeFont">SYSCS_UTIL.GET_REGIONS</span></a></li>
-						<li><a href="sqlref_sysprocs_getstartkey"><span class="CodeFont">SYSCS_UTIL.GET_START_KEY</span></a></li>
-						<li><a href="sqlref_sysprocs_majorcompactregion"><span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span></a></li>
-						<li><a href="sqlref_sysprocs_mergeregions"><span class="CodeFont">SYSCS_UTIL.MERGE_REGIONS</span></a></li>
+						<li><a href="sqlref_sysprocs_compactregion.html"><span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span></a></li>
+						<li><a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a></li>
+						<li><a href="sqlref_sysprocs_getregions.html"><span class="CodeFont">SYSCS_UTIL.GET_REGIONS</span></a></li>
+						<li><a href="sqlref_sysprocs_getstartkey.html"><span class="CodeFont">SYSCS_UTIL.GET_START_KEY</span></a></li>
+						<li><a href="sqlref_sysprocs_majorcompactregion.html"><span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span></a></li>
+						<li><a href="sqlref_sysprocs_mergeregions.html"><span class="CodeFont">SYSCS_UTIL.MERGE_REGIONS</span></a></li>
 				</td>
             </tr>
             <tr>
@@ -61,11 +60,10 @@ folder: OnPrem/Info
 				<td><p>We've added two new system procedures for working with database operations that are currently running on a server:<p>
 				<ul>
 					<li>The <a href="sqlref_sysprocs_getrunningops.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS</span></a> system procedure displays a list of the operations running on the server to which you are currently connected.</li>
-					<li>You can use this procedure to find the UUID for an operation, which you can then use for purposes such as terminating an operation with the <a href="sqlref_sysprocs_killoperation"><span class="CodeFont">SYSCS_UTIL.SYSCS_KILL_OPERATION</span></a> system procedure.</li>
+					<li>You can use this procedure to find the UUID for an operation, which you can then use for purposes such as terminating an operation with the <a href="sqlref_sysprocs_killoperation.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_KILL_OPERATION</span></a> system procedure.</li>
 				</ul>
 				</td>
            </tr>
-{% endif %}
             <tr>
                 <td class="BoldFont">2.6</td>
                 <td class="ItalicFont">DBaaS</td>

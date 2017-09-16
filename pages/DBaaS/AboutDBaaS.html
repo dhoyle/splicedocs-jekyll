@@ -1,0 +1,48 @@
+---
+title: Introduction
+summary: A list of the topics in this documentation that apply only to our database-as-a-service; these topics do not apply to our on-premise product product.
+keywords: home, welcome, dbaas, Service, paas
+sidebar:  dbaas_sidebar
+toc: false
+product: all
+permalink: dbaas_about.html
+folder: DBaaS
+---
+{% include splicevars.html %}
+	<section>
+		<div class="TopicContent" data-swiftype-index="true">
+            <h1>About the Splice Machine Database Service</h1>
+            <p>With the <span class="ItalicFont">Splice Machine Cloud Manager</span>, configuring a new cluster is as easy as using a few sliders to set compute units for OLTP and OLAP processing, allocate storage, and schedule backup frequency and retention. Splice Machine does the rest. You can seamlessly scale out from gigabytes to petabytes of data when needs or data volumes change, and the same configurator adds or subtracts resources dynamically. You pay only for what you use. You can then:</p>
+            <ul>
+                <li>Power your applications on a scale-out, ANSI SQL database</li>
+                <li>Power apps with simultaneous OLAP & OLTP workloads</li>
+                <li>Ingest millions of records and process thousands of transactions in nanoseconds</li>
+                <li>Elastically scale resources as needed</li>
+                <li>We’ve got you covered – availability, backups, monitoring and alerts</li>
+            </ul>
+			<h2>Service Configuration</h2>
+			<p>You only need to understand a few key concepts to configure your service:</p>
+            <ul>
+                <li>A <span class="ConsoleLink">Splice Unit</span> is a measure of processing work; one unit currently translates (approximately)&#160;to 2 virtual CPUs and 16 GB&#160;of memory. When you provision a new Splice Machine cluster, you can select the number of Splice Units you want to use for OLAP and OLTP workloads. The minimum number of Splice Units required for your cluster changes when you update the amount of data you want to access or the amount processing power you want to use.</li>
+                <li>The space allocated for your <span class="ConsoleLink">Internal Dataset</span>, which is data that you're storing within your database. Note that as this size increases, the number of Splice Units required (especially OLTP Splice Units) can also increase.</li>
+                <li>The space allocated for your <span class="ConsoleLink">External Dataset</span>, which is data stored externally that you can access from your database using features such as external tables and VTI. Note that as this size increases, the number of OLAP Splice Units required can also increase.</li>
+            </ul>
+			<p>Use our <a href="dbaas_intro.html">Database-Service documentation</a> to quickly walk through provisioning your database cluster, loading your data, and querying your data in notebooks, all in less than an hour. Once you're ready, our documentation offers:</p>
+            <h2>Available Tools</h2>
+			<p>In addition to easy connectivity with almost any Business Intelligence tool, Splice Machine includes:</p>
+			<ul>
+				<li>An integrated <span class="ItalicFont">Zeppelin Notebook</span> interface. Zeppelin notebooks are like text documents, but with code that can be executed and of which the output can be rendered as tables, reports and beautiful graphs. This enables you to prepare and run SQL DDL and DML, stored procedures, Java, Scala, and Python and Spark-SQL programs with Splice Machine data. Splice Machine comes pre-configured with a set of notebooks to get started, load data and see examples of the work that can be done with the RDBMS.</li>
+				<li>Our JDBC and ODBC drivers allow you to connect third-party business intelligence tools to your database.</p>
+				<li>You can also take advantage of machine learning, streaming, and other services that you can access from our predesigned notebooks, your own notebooks, or code written by your developers.</li>
+			</ul>
+			<h2>Learn More</h2>
+			<p>Our documentation provides:</p>
+			<ul>
+				<li>Complete descriptions of our <a href="dbaas_cm_intro.html">Cloud Manager dashboard</a></li>
+				<li>Numerous <a href="tutorials_intro.html">Tutorials</a> about connecting with other tools, using various programming languages with Splice Machine, ingesting data efficiently, and so on.</li>
+				<li>An introduction to <a href="dbaas_zep_intro.html">Using Zeppelin with Splice Machine</a></li>
+				<li>A wealth of <a href="developers_intro.html">Developer's Guide information</a> and our <a href="sqlref_intro.html">SQL Reference Manual</a></li>
+			</ul>
+			<p>You can visit our company web site to learn about what our <a href="{{splvar_location_DBaaSStartLink}}" target="_blank">Cloud-Managed Database-as-Service (DBaaS)</a> can do for your company.</p>
+        </div>
+	</section>
