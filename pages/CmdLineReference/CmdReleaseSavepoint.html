@@ -4,7 +4,7 @@ summary: Releases a savepoint.
 keywords: savepoints, release, transactions
 toc: false
 product: all
-sidebar: onprem_sidebar
+sidebar: cmdlineref_sidebar
 permalink: cmdlineref_releasesavepoint.html
 folder: CmdLineReference
 ---
@@ -32,11 +32,11 @@ splice&gt; INSERT INTO myTbl VALUES 1,2,3;
 splice&gt; SAVEPOINT savept1;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
+1
+2
+3
 
 3 rows selected</pre>
             </div>
@@ -45,12 +45,12 @@ I
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; INSERT INTO myTbl VALUES 4,5;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
-4          
+1
+2
+3
+4
 5<br /><br />
 5 rows selected</pre>
             </div>
@@ -59,28 +59,28 @@ I
 0 rows inserted/updated/deleted<br />splice&gt; INSERT INTO myTbl VALUES 6,7;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
+1
+2
+3
 4        <br />5        <br />6        <br />7<br /><br />7 rows selected<br />splice&gt;&#160;SAVEPOINT&#160;savept2;<br />0 rows inserted/updated/deleted</pre>
             </div>
             <p>We again insert data into the table, display its contents, and then do a rollback:</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; INSERT INTO myTbl VALUES 8,9;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
-4          
-5          
-6          
-7          
-8          
-9          
+1
+2
+3
+4
+5
+6
+7
+8
+9
 
 9 rows selected
 splice&gt; ROLLBACK TO SAVEPOINT savept1;
@@ -88,15 +88,15 @@ ERROR 3B001: Savepoint SAVEPT1 does not  exist or is not active in the current t
 splice&gt; ROLLBACK TO SAVEPOINT savept2;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
-I          
+I
 -----------
-1          
-2          
-3          
-4          
-5          
-6          
-7          
+1
+2
+3
+4
+5
+6
+7
 
 7 rows selected
 </pre>
