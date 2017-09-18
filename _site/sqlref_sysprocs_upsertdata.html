@@ -2010,13 +2010,9 @@
             
             
             
-<<<<<<< HEAD
-            <li><a href="sqlref_sysprocs_mergedata.html">MERGE_DATA_FROM_FILE</a></li>
-=======
             
             
             <li><a href="sqlref_sysprocs_mergeregions.html">MERGE_REGIONS</a></li>
->>>>>>> STSearch
             
             
             
@@ -2824,7 +2820,7 @@
 			<div class="noteIcon">Splice Machine also provides a variant of this procedure that also imports new records and updates existing records in a table: <span class="CodeFont"><a href="sqlref_sysprocs_mergedata.html">SYSCS_UTIL.MERGE_DATA_FROM_FILE</a></span> operates similarly, but applies different semantics when updating existing records with generated values. For more information, see the <a href="#ImportColVals">Inserting and Updating Column Values When Importing</a> section below.</div>
             <p>After a successful import completes, a simple report displays, showing how many files were imported, and how many record imports succeeded or failed.</p>
             <div class="noteNote">
-				<p>On a cluster, the files to be imported <span class="BoldFont">MUST be on HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory.</p>
+				<p>On a cluster, the files to be imported <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>, as must the <span class="CodeFont">badRecordDirectory</span> directory. If you're using our Database Service product, files can only be imported from S3.</p>
 				<p>In addition, the files must be readable by the <span class="CodeFont">hbase</span> user, and the <span class="CodeFont">badRecordDirectory</span> directory must be writable by the hbase user, either by setting the user explicity, or by opening up the permissions; for example:</p>
 				<div class="preWrapper"><pre class="ShellCommand">sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory</pre></div>
 			</div>
@@ -3432,7 +3428,7 @@ This is the second line of the field',Baker
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 15, 2017 <br />
+ Site last generated: Sep 17, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
