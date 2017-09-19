@@ -592,32 +592,32 @@
             <h1 id="kanchor165">Splice Machine Logging</h1>
             <p>This topic describes the logging facility used in Splice Machine. Splice Machine also allows you to exercise direct control over logging in your database. You can:</p>
             <ul class="SecondLevel">
-                <li><a href="#Manually">Manually enable logging</a> of all SQL&#160;statements. </li>
+                <li><a href="#Manually">Manually disable logging</a> of all SQL&#160;statements. </li>
                 <li>Configure individual logger objects to log <a href="#Levels">specific message levels.</a></li>
                 <li>Call the <span class="CodeFont">log</span> function for a specific logger object, passing it a logging level value and a message. If the logger is currently configured to record messages at the specified level, the message is added to the log; otherwise, the logger ignores the message. Logger levels are ordered hierarchically; any message with a level equal to or greater than the hierarchical level for which logging is enabled is recorded into the log. </li>
             </ul>
             <p>Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html"  target="_blank">Apache log4j Logging API</a>, which allows you to associate a logger object with any java class, among other features. Loggers can be set to capture different levels of information. </p>
 			<div class="noteIcon">Splice Machine enables statement logging by default.</div>
             <p>Logging too much information can slow your system down, but not logging enough information makes it difficult to debug certain issues. The <a href="#SpliceLoggers">Splice Machine Loggers</a> section below summarizes the loggers used by Splice Machine and the system components that they use. You can use the SQL&#160;logging functions described in the <a href="#LoggerFunctions">SQL&#160;Logger Functions</a> section below to retrieve or modify the logging level of any logger used in Splice Machine.</p>
-            <h2 id="Manually">Manually Enabling Logging</h2>
-            <p>If you want to log all of your SQL&#160;statements, you can manually enable logging in these ways:</p>
+            <h2 id="Manually">Manually Disabling Logging</h2>
+			<p>Logging of SQL statements is automatically enabled in Splice Machine; to disable logging of statements, you can do so in either of these ways:</p>
             <ul>
                 <li>
                     <p class="noSpaceBelow">You can pass an argument to your Splice Machine JVM&#160;startup script, as follows:</p>
-                    <div class="preWrapperWide"><pre class="Example" xml:space="preserve">-Dderby.language.logStatementText=true</pre>
+                    <div class="preWrapperWide"><pre class="Example" xml:space="preserve">-Dderby.language.logStatementText=false</pre>
                     </div>
                 </li>
                 <li>
                     <p>You can add the following property definition to your <span class="CodeFont">hbase-default.xml</span>, <span class="CodeFont">hbase-site.xml</span>, or <span class="CodeFont">splice-site.xml</span> file:</p>
                     <div class="preWrapperWide"><pre class="Example">&lt;property&gt;
 &lt;name&gt;splice.debug.logStatementContext&lt;/name&gt;
-&lt;value&gt;true&lt;/value&gt;
+&lt;value&gt;false&lt;/value&gt;
 &lt;description&gt;Property to enable logging of all statements.&lt;/description&gt;
 &lt;/property&gt;</pre>
                         </div>
                 </li>
             </ul>
-            <p>You can examine the logged data in the the <span class="CodeFont">splice-derby.log</span> file, which is found in the <span class="CodeFont">splicemachine</span> directory.</p>
+            <p>You can examine the logged data in your region server's logs; if you want to change the location where events are logged, see the instructions in the Installation Guide for your platform (Cloudera, Hortonworks, or MapR).</p>
             <h3 id="Levels">Logger Levels</h3>
             <p>The <span class="CodeFont">log4j</span> API&#160;defines six logger levels. The following table displays them from the lowest level to the highest:</p>
             <table summary="Table of the available logging levels.">
@@ -775,7 +775,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 17, 2017 <br />
+ Site last generated: Sep 18, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

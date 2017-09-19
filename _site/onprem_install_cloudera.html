@@ -708,11 +708,11 @@
                                    <tr>
                                        <td rowspan="2" class="SpliceRelease">2.6.0</td>
                                        <td class="SplicePlatform">5.8.3</td>
-                                       <td><a href="https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1736/cluster/parcel/cdh5.8.3/">https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1736/cluster/parcel/cdh5.8.3/</a></td>
+                                       <td><a href="https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.1.1736/cluster/parcel/cdh5.8.3/">https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.1.1736/cluster/parcel/cdh5.8.3/</a></td>
                                     </tr>
                                    <tr>
                                        <td class="SplicePlatform">5.8.0</td>
-                                       <td><a href="https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1736/cluster/parcel/cdh5.8.0/">https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.0.1736/cluster/parcel/cdh5.8.0/</a></td>
+                                       <td><a href="https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.1.1736/cluster/parcel/cdh5.8.0/">https://s3.amazonaws.com/splice-releases/Release-2.6/2.6.1.1736/cluster/parcel/cdh5.8.0/</a></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" class="Separator"> </td>
@@ -1213,10 +1213,32 @@ $MR2_CLASSPATH
                 <p>There are a few configuration modifications you might want to make:</p>
                 <ul>
                     <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
+					<li><a href="#Logging">Modify the Log Location</a> if you want your Splice Machine log entries stored somewhere other than in the logs for your region servers.</li>
                 </ul>
                 <h3 id="Modify">Modify the Authentication Mechanism</h3>
                 <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
                 <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP by following the simple instructions in <a href="onprem_install_configureauth.html">Configuring Splice Machine Authentication</a></p>
+				<h3 id="Logging">Modify the Log Location</h3>
+				<p>Splice Machine logs all SQL statements by default, storing the log entries in your region server's logs, as described in our <a href="developers_tuning_logging">Using Logging</a> topic. You can modify where Splice Machine by adding the following snippet to your <span class="ItalicFont">RegionServer Logging Advanced Configuration Snippet (Safety Valve)</span> section of your HBase Configuration:</p>
+                <div class="preWrapper">
+                <pre class="Plain">log4j.appender.spliceDerby=org.apache.log4j.FileAppender
+log4j.appender.spliceDerby.File=${hbase.log.dir}/splice-derby.log
+log4j.appender.spliceDerby.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.spliceDerby.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+log4j.appender.spliceStatement=org.apache.log4j.FileAppender
+log4j.appender.spliceStatement.File=${hbase.log.dir}/splice-statement.log
+log4j.appender.spliceStatement.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.spliceStatement.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+log4j.logger.splice-derby=INFO, spliceDerby
+log4j.additivity.splice-derby=false
+
+# Uncomment to log statements to a different file:
+#log4j.logger.splice-derby.statement=INFO, spliceStatement
+# Uncomment to not replicate statements to the spliceDerby file:
+#log4j.additivity.splice-derby.statement=false</pre>
+                </div>
                 <h2 id="Deploy">Deploy the Client Configuration</h2>
                 <p>Now that you've updated your configuration information, you need to deploy it throughout your cluster. You should see a small notification in the upper right corner of your screen that looks like this:<br /></p>
                 <div>
@@ -1346,7 +1368,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 17, 2017 <br />
+ Site last generated: Sep 18, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

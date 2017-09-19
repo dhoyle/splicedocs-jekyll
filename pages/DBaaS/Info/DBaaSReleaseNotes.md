@@ -8,79 +8,44 @@ product: all
 permalink: dbaas_info_release.html
 folder: DBaaS/Info
 ---
-# Release Notes: Alpha Release of Splice Machine Database-as-Service
+# Release Notes: Splice Machine Database-as-Service
 
 {% include splice_snippets/dbaasonlytopic.html %}
 
 Our new Database-as-Service product is now in alpha release. Although this software is functional, there are still some significant issues being worked out, as with all Alpha software. This page summarizes the current limitations and workarounds, in the following sections:
 
-* [Cluster Creation and Uptime](#cluster-creation-and-uptime)
+* [Features Not Yet Available](#features-not-yet-available)
 
-* [Connection Issues](#connection-issues)
+* [Current Limitations](#current-limitations)
 
-* [Functionality Limitations](#functionality-limitations)
+* [Important Notes](#important-notes)
 
-## Cluster Creation and Uptime
+## Features Not Yet Available
 
-Here are the limitations and considerations you should be aware of when creating a new cluster:
-*  When you create your cluster(s), use these size restrictions for now:
-   * Set the slider to 4 OLTP Splice Units
-   * Set the slider to 4 OLAP Splice Units
-   * Keep internal storage capacity to below 1TB
-   * Cluster names should be kept to 20 characters or less
+These features are not yet available, but will be very soon:
 
-* VPC setup information is currently being ignored.
+* TLS is not yet enabled for JDBC connections.
 
-* Reconfiguration and resizing of clusters is not currently available; if you need a larger or smaller cluster, you will need to create a new one from your Dashboard.
+* VPC Settings are not yet enabled but will be in a near future release.
 
-* Your new cluster will typically become available in less than 30 minutes; you'll receive an email notification containing connection details from us when it is ready.
-<div class="noteIcon">If you don't receive an email within 1 hour of creating your cluster, it is likely due to the fact that we're working on resource allocation at the time, and your cluster will become available in 1-2 business hours (M-F 9am-5pm PDT).</div>
+* You currently cannot cancel queries that are running through Zeppelin or JDBC tools; you can use the Spark User Interface to cancel Spark queries.
 
-* If your Notebook link is not working when you receive your *Cluster Ready* email, try again in 5-10 minutes.
 
-* We are currently only supporting cluster uptime Monday-Friday 9am-5pm PDT.
+## Current Limitations
 
-* Splice Machine may bring down your clusters at the end of the week, in order to update the software. All scheduled outages will be posted to your Dashboard.
+These limitations exist in the current release, and will be removed in the near future:
 
-  If this happens, your cluster may be lost and you'll need to recreate it and repopulate your data.
+* Currently, all clusters are being created in the us-east-1 region. We will add support for more regions in the near future.
 
-## Connection Issues
+* On a JDBC connection, individual queries or actions will time out after one hour; you can run long-running queries within a Zeppelin notebook.
 
-This section contains information about connecting to your database:
+* Updating of CPU, Memory, and Disk usage graphs for clusters is currently limited: the updates are happening only intermittently.
 
-* To log into your Notebook or to connect via JDBC, use these credentials:
 
-  <table><tbody>
-  <tr><td>Administrative user ID</td><td><span class="CodeFont">splice</span></td></tr>
-  <tr><td>Password</td><td><span class="CodeFont">admin</span></td></tr>
-  </tbody></table>
+## Important Notes
 
-* If your cluster has been idle for some time, your first query submission might result in a *lost connection* message. Just resubmit the query and it should work correctly
+These are important notes about issues you need to be aware of when using our Database Service:
 
-* The DB Console will not display until you perform at least one query/action that invokes Spark. You can invoke Spark by issuing a query that includes the <span class="CodeFont">useSpark</span> hint; for example:
+* The timestamps displayed in Zeppelin will be different than the timestamps you see in the Splice Machine Spark User Interface, depending upon your time zone.
 
-  <div class="preWrapperWide"><pre class="Example">
-  select count(\*) from sys.systables --splice-properties useSpark=true
-  </pre></div>
-
-* You must use the <span class="CodeFont">%splicemachine</span> interpreter in your notebook when running Splice Machine SQL queries in a paragraph. For example:
-
-  <div class="preWrapperWide"><pre class="Example">
-  %splicemachine
-  select count(\*) from sys.systables --splice-properties useSpark=true
-  </pre></div>
-
-* Your initial link from the DB Console will redirect you to an “HTTP" page that will fail.  Change the HTTP to HTTPS and resubmit that URL, and you will get to the Spark pages.  Other possible redirects on this page will also require this.
-
-* For external JDBC access, download the JDBC driver at  https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1729-SNAPSHOT.jar.
-
-## Functionality Limitations
-* A single query or SQL statement will time out if it takes more than 1 hour; upon timeout, you may see a <span class="CodeFont">SQLNonTransientConnectionException</span> message displayed.
-
-* The graphs in the UI are still under development and may not accurately reflect cluster activity.
-
-* Backups are not currently being performed.
-
-* The *LogDetails* tab is currently non-functional.
-
-* The cost of your cluster displayed in your dashboard may be too high.
+* Although Splice Machine backs up your database regularly, it does not back up your Zeppelin Notebook changes; please export your Notebooks regularly if you make changes.

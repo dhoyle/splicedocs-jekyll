@@ -571,10 +571,32 @@ $MR2_CLASSPATH
                 <p>There are a few configuration modifications you might want to make:</p>
                 <ul>
                     <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
+					<li><a href="#Logging">Modify the Log Location</a> if you want your Splice Machine log entries stored somewhere other than in the logs for your region servers.</li>
                 </ul>
                 <h3 id="Modify">Modify the Authentication Mechanism</h3>
                 <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
                 <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP by following the simple instructions in <a href="onprem_install_configureauth.html">Configuring Splice Machine Authentication</a></p>
+				<h3 id="Logging">Modify the Log Location</h3>
+				<p>Splice Machine logs all SQL statements by default, storing the log entries in your region server's logs, as described in our <a href="developers_tuning_logging">Using Logging</a> topic. You can modify where Splice Machine by adding the following snippet to your <span class="ItalicFont">RegionServer Logging Advanced Configuration Snippet (Safety Valve)</span> section of your HBase Configuration:</p>
+                <div class="preWrapper">
+                <pre class="Plain">log4j.appender.spliceDerby=org.apache.log4j.FileAppender
+log4j.appender.spliceDerby.File=${hbase.log.dir}/splice-derby.log
+log4j.appender.spliceDerby.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.spliceDerby.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+log4j.appender.spliceStatement=org.apache.log4j.FileAppender
+log4j.appender.spliceStatement.File=${hbase.log.dir}/splice-statement.log
+log4j.appender.spliceStatement.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.spliceStatement.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+log4j.logger.splice-derby=INFO, spliceDerby
+log4j.additivity.splice-derby=false
+
+# Uncomment to log statements to a different file:
+#log4j.logger.splice-derby.statement=INFO, spliceStatement
+# Uncomment to not replicate statements to the spliceDerby file:
+#log4j.additivity.splice-derby.statement=false</pre>
+                </div>
                 <h2 id="Deploy">Deploy the Client Configuration</h2>
                 <p>Now that you've updated your configuration information, you need to deploy it throughout your cluster. You should see a small notification in the upper right corner of your screen that looks like this:<br /></p>
                 <div>
