@@ -1,7 +1,7 @@
 ---
 title: Known Limitations and Workarounds
 summary: Limitations and workarounds for our on-premise database product.
-keywords: on-premise limitations, work arounds, limits, 
+keywords: on-premise limitations, work arounds, limits,
 toc: false
 product: all
 sidebar:  onprem_sidebar
@@ -84,7 +84,7 @@ When using ``Explain Plan`` and other commands that generate lengthy output line
 Dates in [TIMESTAMP Data Type](sqlref_builtinfcns_timestamp.html) values only work correctly when limited to this range of date values:
 ~~~~
     1678-01-01 to 2261-12-31
-~~~~ 
+~~~~
 
 
 ## ToDate Function Problem With DD Designator

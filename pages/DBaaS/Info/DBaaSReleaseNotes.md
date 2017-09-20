@@ -1,5 +1,5 @@
 ---
-title: Release Notes for our Database-as-Service Alpha Release
+title: Release Notes for our Database-as-Service
 summary: Current release notes for the Splice Machine Database-as-Service product
 keywords: release notes, dbaas, paas, service
 sidebar:  dbaas_sidebar
@@ -8,11 +8,15 @@ product: all
 permalink: dbaas_info_release.html
 folder: DBaaS/Info
 ---
+
 # Release Notes: Splice Machine Database-as-Service
 
 {% include splice_snippets/dbaasonlytopic.html %}
 
-Our new Database-as-Service product is now in alpha release. Although this software is functional, there are still some significant issues being worked out, as with all Alpha software. This page summarizes the current limitations and workarounds, in the following sections:
+{::options parse_block_html="true" /}
+<div data-swiftype-index="true">
+
+This page summarizes the current limitations and workarounds of our Database-as-Service  product, in the following sections:
 
 * [Features Not Yet Available](#features-not-yet-available)
 
@@ -49,3 +53,5 @@ These are important notes about issues you need to be aware of when using our Da
 * The timestamps displayed in Zeppelin will be different than the timestamps you see in the Splice Machine Spark User Interface, depending upon your time zone.
 
 * Although Splice Machine backs up your database regularly, it does not back up your Zeppelin Notebook changes; please export your Notebooks regularly if you make changes.
+
+</div>
