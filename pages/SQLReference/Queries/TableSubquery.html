@@ -11,30 +11,30 @@ folder: SQLReference/Queries
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Queries.TableSubquery">Table Subquery</h1>
-            <p>A <span class="ItalicFont">TableSubquery</span> is a subquery that returns
+            <p>A <em>TableSubquery</em> is a subquery that returns
 multiple rows.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">( <span class="ItalicFont"><a href="sqlref_queries_query.html">Query</a></span>
-    [ <span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span> ]
-    [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">result offset clause</a></span> ]
-    [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></span> ]
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">( <em><a href="sqlref_queries_query.html">Query</a></em>
+    [ <em><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></em> ]
+    [ <em><a href="sqlref_clauses_resultoffset.html">result offset clause</a></em> ]
+    [ <em><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></em> ]
 )</pre>
             </div>
             <h2>Usage</h2>
-            <p>Unlike a <span class="ItalicFont"><a href="sqlref_queries_scalarsubquery.html">ScalarSubquery</a>,</span> a <span class="ItalicFont">TableSubquery</span> is allowed only:</p>
+            <p>Unlike a <em><a href="sqlref_queries_scalarsubquery.html">ScalarSubquery</a>,</em> a <em>TableSubquery</em> is allowed only:</p>
             <ul>
-                <li>as a <span class="ItalicFont"><a href="sqlref_expressions_table.html">TableExpression</a></span> in
-a <a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span> clause</a></li>
-                <li>with <span class="CodeFont">EXISTS</span>, <span class="CodeFont">IN</span>, or quantified comparisons.</li>
+                <li>as a <em><a href="sqlref_expressions_table.html">TableExpression</a></em> in
+a <a href="sqlref_clauses_from.html"><code>FROM</code> clause</a></li>
+                <li>with <code>EXISTS</code>, <code>IN</code>, or quantified comparisons.</li>
             </ul>
             <p>When used as a
-<span class="ItalicFont"><a href="sqlref_expressions_table.html">TableExpression</a></span>
-in a <a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span> clause</a>, or with
-<span class="CodeFont">EXISTS</span>, it can return multiple columns. </p>
-            <p>When used with <span class="CodeFont">IN</span> or quantified
+<em><a href="sqlref_expressions_table.html">TableExpression</a></em>
+in a <a href="sqlref_clauses_from.html"><code>FROM</code> clause</a>, or with
+<code>EXISTS</code>, it can return multiple columns. </p>
+            <p>When used with <code>IN</code> or quantified
 comparisons, it must return a single column.</p>
             <h2>Example</h2>
-            <p class="body">This example shows a subquery used as a table expression in a <span class="CodeFont">FROM</span>&#160;clause:</p>
+            <p class="body">This example shows a subquery used as a table expression in a <code>FROM</code>&#160;clause:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 SELECT VirtualFlightTable.flight_ID
   FROM
@@ -45,7 +45,7 @@ SELECT VirtualFlightTable.flight_ID
   AS VirtualFlightTable;
 </pre>
             </div>
-            <p class="body">This shows one subquery used with <span class="CodeFont">EXISTS</span> and another used with <span class="CodeFont">IN</span>:</p>
+            <p class="body">This shows one subquery used with <code>EXISTS</code> and another used with <code>IN</code>:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 SELECT *
   FROM Flights
@@ -65,10 +65,10 @@ SELECT flight_id, segment_number
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;expression</li>
-                <li><a href="sqlref_expressions_table.html"><span class="CodeFont">TABLE</span></a>&#160;expression</li>
+                <li><a href="sqlref_clauses_from.html"><code>FROM</code></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_orderby.html"><code>ORDER&#160;BY</code></a>&#160;clause</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;expression</li>
+                <li><a href="sqlref_expressions_table.html"><code>TABLE</code></a>&#160;expression</li>
             </ul>
         </div>
 	</section>

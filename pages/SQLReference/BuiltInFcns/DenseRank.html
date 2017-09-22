@@ -11,22 +11,22 @@ folder: SQLReference/BuiltInFcns
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>DENSE_RANK()</h1>
-            <p><span class="CodeFont">DENSE_RANK()</span> is a <span class="ItalicFont">ranking function</span> that returns the rank of a value within the ordered partition of values defined by its <span class="CodeFont">OVER</span>&#160;clause. Ranking functions are a subset of <a href="sqlref_builtinfcns_windowfcnsintro.html">window functions</a>.</p>
+            <p><code>DENSE_RANK()</code> is a <em>ranking function</em> that returns the rank of a value within the ordered partition of values defined by its <code>OVER</code>&#160;clause. Ranking functions are a subset of <a href="sqlref_builtinfcns_windowfcnsintro.html">window functions</a>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">DENSE_RANK() OVER ( <span class="ItalicFont">overClause</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">DENSE_RANK() OVER ( <em>overClause</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">overClause</p>
-                <p class="paramDefnFirst">See the <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause documentation.</p>
-                <div class="noteNote">Ranking functions such as <span class="CodeFont">DENSE_RANK</span>&#160;must include an <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></span>&#160;clause in the <span class="CodeFont">OVER</span>&#160;clause. This is because the ranking is calculated based on the ordering.</div>
+                <p class="paramDefnFirst">See the <code><a href="sqlref_clauses_over.html">OVER</a></code>&#160;clause documentation.</p>
+                <p class="noteNote">Ranking functions such as <code>DENSE_RANK</code>&#160;must include an <code><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></code>&#160;clause in the <code>OVER</code>&#160;clause. This is because the ranking is calculated based on the ordering.</p>
             </div>
             <h2>Results</h2>
-            <p>The resulting data type is <span class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a></span>.</p>
+            <p>The resulting data type is <code><a href="sqlref_builtinfcns_bigint.html">BIGINT</a></code>.</p>
             <h2>Usage</h2>
-            <p>The <span class="CodeFont">DENSE_RANK()</span> and <span class="CodeFont"><a href="sqlref_builtinfcns_rank.html">RANK()</a></span> analytic functions are very similar. The difference shows up when there are multiple input rows that have the same ranking value. When that happens:</p>
+            <p>The <code>DENSE_RANK()</code> and <code><a href="sqlref_builtinfcns_rank.html">RANK()</a></code> analytic functions are very similar. The difference shows up when there are multiple input rows that have the same ranking value. When that happens:</p>
             <ul>
-                <li>The <span class="CodeFont">DENSE_RANK()</span>&#160;function always returns consecutive rankings:if values in the ranking column are the same, they receive the same rank, and the next number in the ranking sequence is then used to rank the row or rows that follow.</li>
-                <li>The <span class="CodeFont">RANK()</span>&#160;function can generate non-consecutive ranking result values: if values in the ranking column are the same (tie values), they receive the same rank; however, the next number in the ranking sequence is then skipped, which means that <span class="CodeFont">RANK</span>&#160;can return non-consecutive numbers.</li>
+                <li>The <code>DENSE_RANK()</code>&#160;function always returns consecutive rankings:if values in the ranking column are the same, they receive the same rank, and the next number in the ranking sequence is then used to rank the row or rows that follow.</li>
+                <li>The <code>RANK()</code>&#160;function can generate non-consecutive ranking result values: if values in the ranking column are the same (tie values), they receive the same rank; however, the next number in the ranking sequence is then skipped, which means that <code>RANK</code>&#160;can return non-consecutive numbers.</li>
             </ul>
             <p>Here's a simple example that shows the ranking produced by the two functions for input with duplicate values to illustrate that difference:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">-----------------------------
@@ -97,7 +97,7 @@ Jason Minman            |Giants    |2015  |1000000             |20
 42 rows selected
 </pre>
             </div>
-            <p>Here's the same query using <span class="CodeFont">RANK</span>&#160;instead of <span class="CodeFont">DENSE_RANK</span>. Note how tied rankings are handled differently:</p>
+            <p>Here's the same query using <code>RANK</code>&#160;instead of <code>DENSE_RANK</code>. Note how tied rankings are handled differently:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SELECT DisplayName, Team, Season, Salary,
    RANK() OVER (PARTITION BY Team ORDER BY Salary Desc) "RANK"
    FROM Players JOIN Salaries  ON Salaries.ID=Players.ID
@@ -154,10 +154,10 @@ Jason Minman            |Giants    |2015  |1000000             |24
             <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
-                <li><a href="sqlref_builtinfcns_bigint.html"><span class="CodeFont">BIGINT</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_rank.html"><span class="CodeFont">RANK</span></a>&#160;function</li>
-                <li><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
-                <li><span class="ItalicFont"><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
+                <li><a href="sqlref_builtinfcns_bigint.html"><code>BIGINT</code></a>&#160;data type</li>
+                <li><a href="sqlref_builtinfcns_rank.html"><code>RANK</code></a>&#160;function</li>
+                <li><a href="sqlref_clauses_over.html"><code>OVER</code></a>&#160;clause</li>
+                <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in the <em>Developer Guide</em>.</li>
             </ul>
         </div>
 	</section>

@@ -2809,12 +2809,12 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Statements.Revoke">REVOKE</h1>
-            <p>Use the <span class="CodeFont">REVOKE</span> statement to remove privileges from a specific user or role, or from all users, to perform actions on database objects. You can also use the <span class="CodeFont">REVOKE</span> statement to revoke a role from a user, from <span class="CodeFont">PUBLIC</span>, or from another role.</p>
-            <p>The syntax that you use for the <span class="CodeFont">REVOKE</span> statement depends on whether you are revoking privileges to a schema object or revoking a role. </p>
+            <p>Use the <code>REVOKE</code> statement to remove privileges from a specific user or role, or from all users, to perform actions on database objects. You can also use the <code>REVOKE</code> statement to revoke a role from a user, from <code>PUBLIC</code>, or from another role.</p>
+            <p>The syntax that you use for the <code>REVOKE</code> statement depends on whether you are revoking privileges to a schema object or revoking a role. </p>
             <h2>Syntax for SCHEMA</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="#PrivilegeTypes">privilege-type</a></span>
-   ON [ SCHEMA ] <span class="ItalicFont">S</span>
-   FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span></pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <em><a href="#PrivilegeTypes">privilege-type</a></em>
+   ON [ SCHEMA ] <em>S</em>
+   FROM <em><a href="#AboutGrantees">grantees</a></em></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">privilege-type</p>
@@ -2823,11 +2823,11 @@
  |<br />REFERENCES [( column-identifier {, column-identifier}* )]
  |<br />SELECT [( column-identifier {, column-identifier}* )]
  |<br /></span><span class="CodeFont">TRIGGER
- |<br /></span><span class="CodeFont">UPDATE [( column-identifier {, column-identifier}* )]</span></p>
+ |<br /></span><code>UPDATE [( column-identifier {, column-identifier}* )]</code></p>
                 <p class="paramDefn">See the <a href="#PrivilegeTypes">Privilege Types</a> section below for more information.</p>
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: Column-level privileges are available only with a Splice Machine Enterprise license.</span>
                     </p>
-                    <p>You cannot grant or revoke privileges at the <span class="CodeFont">column-identifier</span> level with the Community version of Splice Machine.</p>
+                    <p>You cannot grant or revoke privileges at the <code>column-identifier</code> level with the Community version of Splice Machine.</p>
                     <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/"  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
                 <p class="paramName">schema-Name</p>
                 <p class="paramDefnFirst">The name of the schemafor which you are revoking access.</p>
@@ -2835,9 +2835,9 @@
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;for whom you are revoking access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
             </div>
             <h2>Syntax for Tables</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="#PrivilegeTypes">privilege-type</a></span>
-   ON [ TABLE ] { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
-   FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span></pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <em><a href="#PrivilegeTypes">privilege-type</a></em>
+   ON [ TABLE ] { <em><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></em> }
+   FROM <em><a href="#AboutGrantees">grantees</a></em></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">privilege-type</p>
@@ -2846,11 +2846,11 @@
  |<br />REFERENCES [( column-identifier {, column-identifier}* )]
  |<br />SELECT [( column-identifier {, column-identifier}* )]
  |<br /></span><span class="CodeFont">TRIGGER
- |<br /></span><span class="CodeFont">UPDATE [( column-identifier {, column-identifier}* )]</span></p>
+ |<br /></span><code>UPDATE [( column-identifier {, column-identifier}* )]</code></p>
                 <p class="paramDefn">See the <a href="#PrivilegeTypes">Privilege Types</a> section below for more information.</p>
                     <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: Column-level privileges are available only with a Splice Machine Enterprise license.</span>
                     </p>
-                    <p>You cannot grant or revoke privileges at the <span class="CodeFont">column-identifier</span> level with the Community version of Splice Machine.</p>
+                    <p>You cannot grant or revoke privileges at the <code>column-identifier</code> level with the Community version of Splice Machine.</p>
                     <p>To obtain a license for the Splice&#160;Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/"  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
                 <p class="paramName">table-Name</p>
                 <p class="paramDefnFirst">The name of the table for which you are revoking access.</p>
@@ -2861,8 +2861,8 @@
             </div>
             <h2>Syntax for Routines</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE EXECUTE ON { FUNCTION | PROCEDURE }
-    {<span class="ItalicFont">function-name</span> | <span class="ItalicFont">procedure-name</span>}
- TO <span class="ItalicFont">grantees</span> RESTRICT</pre>
+    {<em>function-name</em> | <em>procedure-name</em>}
+ TO <em>grantees</em> RESTRICT</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">function-name |&#160;procedure-name</p>
@@ -2870,26 +2870,26 @@
                 <p class="paramName">grantees</p>
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;for whom you are revoking access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
                 <p class="paramName">RESTRICT</p>
-                <p class="paramDefnFirst">You <span class="BoldFont">must</span> use this clause when revoking access for routines. </p>
-                <p class="paramDefn">The <span class="CodeFont">RESTRICT</span> clause specifies that the <span class="CodeFont">EXECUTE</span> privilege cannot be revoked if the specified routine is used in a view, trigger, or constraint, and the privilege is being revoked from the owner of the view, trigger, or constraint.</p>
+                <p class="paramDefnFirst">You <strong>must</strong> use this clause when revoking access for routines. </p>
+                <p class="paramDefn">The <code>RESTRICT</code> clause specifies that the <code>EXECUTE</code> privilege cannot be revoked if the specified routine is used in a view, trigger, or constraint, and the privilege is being revoked from the owner of the view, trigger, or constraint.</p>
             </div>
             <h2>Syntax for User-defined types</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE USAGE
-   ON TYPE  [ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span>
-   FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span> RESTRICT</pre>
+   ON TYPE  [ <em><a href="sqlref_identifiers_intro.html">SQL Identifier</a></em>
+   FROM <em><a href="#AboutGrantees">grantees</a></em> RESTRICT</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">[schema-name.] SQL Identifier</p>
-                <p class="paramDefnFirst">The user-defined type (UDT) name is composed of an optional <span class="ItalicFont">schemaName</span> and a <span class="ItalicFont">SQL Identifier</span>. If a <span class="ItalicFont">schemaName</span> is not provided, the current schema is the default schema. If a qualified UDT name is specified, the schema name cannot begin with <span class="CodeFont">SYS</span>.</p>
+                <p class="paramDefnFirst">The user-defined type (UDT) name is composed of an optional <em>schemaName</em> and a <em>SQL Identifier</em>. If a <em>schemaName</em> is not provided, the current schema is the default schema. If a qualified UDT name is specified, the schema name cannot begin with <code>SYS</code>.</p>
                 <p class="paramName">grantees</p>
                 <p class="paramDefnFirst">The user(s)&#160;or role(s)&#160;for whom you are revoking access. See the <a href="#AboutGrantees">About Grantees</a> section below for more information.</p>
                 <p class="paramName">RESTRICT</p>
-                <p class="paramDefnFirst">You <span class="BoldFont">must</span> use this clause when revoking access for user-defined types. </p>
-                <p class="paramDefn">The <span class="CodeFont">RESTRICT</span> clause specifies that the <span class="CodeFont">EXECUTE</span> privilege cannot be revoked if the specified UDT is used in a view, trigger, or constraint, and the privilege is being revoked from the owner of the view, trigger, or constraint.</p>
+                <p class="paramDefnFirst">You <strong>must</strong> use this clause when revoking access for user-defined types. </p>
+                <p class="paramDefn">The <code>RESTRICT</code> clause specifies that the <code>EXECUTE</code> privilege cannot be revoked if the specified UDT is used in a view, trigger, or constraint, and the privilege is being revoked from the owner of the view, trigger, or constraint.</p>
             </div>
             <h2>Syntax for Roles</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> }* ]
-   FROM <span class="ItalicFont"><a href="#AboutGrantees">grantees</a></span></pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">REVOKE <em><a href="sqlref_identifiers_types.html#RoleName">roleName</a></em> }* ]
+   FROM <em><a href="#AboutGrantees">grantees</a></em></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">roleName</p>
@@ -2899,10 +2899,10 @@
             </div>
             <p>Only the database owner can revoke a role.</p>
             <h2 id="AboutGrantees">About Grantees</h2>
-            <p>A grantee can be one or more specific users, one or more specific roles, or all users (<span class="CodeFont">PUBLIC</span>). Either the object owner or the database owner can grant privileges to a user or to a role. Only the database owner can grant a role to a user or to another role.</p>
+            <p>A grantee can be one or more specific users, one or more specific roles, or all users (<code>PUBLIC</code>). Either the object owner or the database owner can grant privileges to a user or to a role. Only the database owner can grant a role to a user or to another role.</p>
             <p>Here's the syntax:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{     <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC }
- [, { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span> | PUBLIC } ] *</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{     <em><a href="sqlref_identifiers_types.html#RoleName">roleName</a></em> | PUBLIC }
+ [, { <em><a href="sqlref_identifiers_types.html#RoleName">roleName</a></em> | PUBLIC } ] *</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">AuthorizationIdentifier</p>
@@ -2910,11 +2910,11 @@
                 <p class="paramName">roleName</p>
                 <p class="paramDefnFirst">The name of the role.</p>
                 <p class="paramDefn">Either the object owner or the database owner can grant privileges to a user or to a role. Only the database owner can grant a role to a user or to another role.</p>
-                <p class="paramName"><span class="CodeFont">PUBLIC</span>
+                <p class="paramName"><code>PUBLIC</code>
                 </p>
-                <p class="paramDefnFirst">Use the keyword <span class="CodeFont">PUBLIC</span> to specify all users. </p>
-                <p class="paramDefn">When <span class="CodeFont">PUBLIC</span> is specified, the privileges or roles affect all current and future users. </p>
-                <p class="paramDefn">The privileges granted to <span class="CodeFont">PUBLIC</span> and to individual users or roles are independent privileges. For example, a <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">t</span> is granted to both <span class="CodeFont">PUBLIC</span> and to the authorization ID <span class="CodeFont">harry</span>. If the <span class="CodeFont">SELECT</span> privilege is later revoked from the authorization ID <span class="CodeFont">harry</span>, Harry will still be able to access the table <span class="CodeFont">t</span> through the <span class="CodeFont">PUBLIC</span> privilege..</p>
+                <p class="paramDefnFirst">Use the keyword <code>PUBLIC</code> to specify all users. </p>
+                <p class="paramDefn">When <code>PUBLIC</code> is specified, the privileges or roles affect all current and future users. </p>
+                <p class="paramDefn">The privileges granted to <code>PUBLIC</code> and to individual users or roles are independent privileges. For example, a <code>SELECT</code> privilege on table <code>t</code> is granted to both <code>PUBLIC</code> and to the authorization ID <code>harry</code>. If the <code>SELECT</code> privilege is later revoked from the authorization ID <code>harry</code>, Harry will still be able to access the table <code>t</code> through the <code>PUBLIC</code> privilege..</p>
             </div>
             <h2 id="PrivilegeTypes">Privilege Types</h2>
             <table summary="Privilege types">
@@ -2941,11 +2941,11 @@
                     </tr>
                     <tr>
                         <td class="CodeFont">REFERENCES</td>
-                        <td>To revoke permission to create a foreign key reference to the specified table. If a column list is  pecified with the <span class="CodeFont">REFERENCES</span> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
+                        <td>To revoke permission to create a foreign key reference to the specified table. If a column list is  pecified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">SELECT</td>
-                        <td>To revoke permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a> on a table or view. If a column list is specified with the <span class="CodeFont">SELECT</span> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <span class="CodeFont">SELECT</span> statement or <span class="ItalicFont">SelectExpression</span> (for example, queries that use <span class="CodeFont">COUNT(*)</span>), the user must have at least one column-level <span class="CodeFont">SELECT</span> privilege or table-level <span class="CodeFont">SELECT</span> privilege.</p></td>
+                        <td>To revoke permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a> on a table or view. If a column list is specified with the <code>SELECT</code> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <code>SELECT</code> statement or <em>SelectExpression</em> (for example, queries that use <code>COUNT(*)</code>), the user must have at least one column-level <code>SELECT</code> privilege or table-level <code>SELECT</code> privilege.</p></td>
                     </tr>
                     <tr>
                         <td class="CodeFont">TRIGGER</td>
@@ -2953,7 +2953,7 @@
                     </tr>
                     <tr>
                         <td class="CodeFont">UPDATE</td>
-                        <td>To revoke permission to use the <span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause, you must have the <span class="CodeFont">SELECT</span> privilege on the columns in the row that you want to update.</td>
+                        <td>To revoke permission to use the <code><a href="sqlref_clauses_where.html">WHERE</a></code> clause, you must have the <code>SELECT</code> privilege on the columns in the row that you want to update.</td>
                     </tr>
                 </tbody>
             </table>
@@ -2969,8 +2969,8 @@
                 <li>Run a specified routine (function or procedure).</li>
                 <li>Use a user-defined type.</li>
             </ul>
-            <p>Before you issue a <span class="CodeFont">REVOKE</span> statement, check that the <span class="CodeFont">derby.database.sqlAuthorization</span> property is set to <span class="CodeFont">true</span>. The <span class="CodeFont">derby.database.sqlAuthorization</span> property enables the SQL Authorization mode.</p>
-            <p>You can revoke privileges on an object if you are the owner of the object or the database owner. See the <span class="CodeFont">CREATE</span> statement for the database object that you want To revoke privileges on for more information.</p>
+            <p>Before you issue a <code>REVOKE</code> statement, check that the <code>derby.database.sqlAuthorization</code> property is set to <code>true</code>. The <code>derby.database.sqlAuthorization</code> property enables the SQL Authorization mode.</p>
+            <p>You can revoke privileges on an object if you are the owner of the object or the database owner. See the <code>CREATE</code> statement for the database object that you want To revoke privileges on for more information.</p>
             <p>You can revoke privileges for an object if you are the owner of the object or the database owner.</p>
             <h2>Prepared statements and open result sets</h2>
             <p>Checking for privileges happens at statement execution time, so  prepared statements are still usable after a revoke action. If sufficient privileges are still available for the session, prepared statements will be executed, and for queries, a result  set will be returned. </p>
@@ -2981,64 +2981,64 @@
             <p>The following limitations apply to the REVOKE statement:</p>
             <div class="paramList">
                 <p class="paramName">Table-level privileges</p>
-                <p class="paramDefnFirst">All of the table-level privilege types for a specified grantee and table ID are stored in one row in the <span class="CodeFont">SYSTABLEPERMS</span> system table. For example, when <span class="CodeFont">user2</span> is granted the <span class="CodeFont">SELECT</span> and <span class="CodeFont">DELETE</span> privileges on table <span class="CodeFont">user1.t1</span>, a row is added to the <span class="CodeFont">SYSTABLEPERMS</span> table. The <span class="CodeFont">GRANTEE</span> field contains <span class="CodeFont">user2</span> and the <span class="CodeFont">TABLEID</span> contains <span class="CodeFont">user1.t1</span>. The <span class="CodeFont">SELECTPRIV</span> and  <span class="CodeFont">DELETEPRIV</span> fields are set to Y. The remaining privilege type fields are set to N.
-				<p>When a grantee creates an object that relies on one of the privilege types, Splice Machine engine tracks the dependency of the object on the specific row in the <span class="CodeFont">SYSTABLEPERMS</span> table. For example, <span class="CodeFont">user2</span> creates the view <span class="CodeFont">v1</span> by using the statement <span class="CodeFont">SELECT * FROM user1.t1</span>, the dependency manager tracks the dependency of view <span class="CodeFont">v1</span> on the row in <span class="CodeFont">SYSTABLEPERMS</span> for <span class="CodeFont">GRANTEE</span>(<span class="CodeFont">user2</span>), <span class="CodeFont">TABLEID</span>(<span class="CodeFont">user1.t1</span>).</p><p>The dependency manager knows only that the view is dependent on a privilege type in that specific row, but does not track exactly which privilege type the view is dependent on.</p><p>When a <span class="CodeFont">REVOKE</span> statement for a table-level privilege is issued for a grantee and table ID, all of the objects that are dependent on the grantee and table ID are dropped. For example, if <span class="CodeFont">user1</span> revokes the <span class="CodeFont">DELETE</span> privilege on table <span class="CodeFont">t1</span> from <span class="CodeFont">user2</span>, the row in <span class="CodeFont">SYSTABLEPERMS</span> for <span class="CodeFont">GRANTEE</span>(<span class="CodeFont">user2</span>), <span class="CodeFont">TABLEID</span>(<span class="CodeFont">user1.t1</span>) is modified by the <span class="CodeFont">REVOKE</span> statement. The dependency manager sends a revoke invalidation message to the view <span class="CodeFont">user2.v1</span> and the view is dropped even though the view is not dependent on the <span class="CodeFont">DELETE</span> privilege for <span class="CodeFont">GRANTEE</span>(<span class="CodeFont">user2</span>), <span class="CodeFont">TABLEID</span>(<span class="CodeFont">user1.t1</span>).</p>
+                <p class="paramDefnFirst">All of the table-level privilege types for a specified grantee and table ID are stored in one row in the <code>SYSTABLEPERMS</code> system table. For example, when <code>user2</code> is granted the <code>SELECT</code> and <code>DELETE</code> privileges on table <code>user1.t1</code>, a row is added to the <code>SYSTABLEPERMS</code> table. The <code>GRANTEE</code> field contains <code>user2</code> and the <code>TABLEID</code> contains <code>user1.t1</code>. The <code>SELECTPRIV</code> and  <code>DELETEPRIV</code> fields are set to Y. The remaining privilege type fields are set to N.
+				<p>When a grantee creates an object that relies on one of the privilege types, Splice Machine engine tracks the dependency of the object on the specific row in the <code>SYSTABLEPERMS</code> table. For example, <code>user2</code> creates the view <code>v1</code> by using the statement <code>SELECT * FROM user1.t1</code>, the dependency manager tracks the dependency of view <code>v1</code> on the row in <code>SYSTABLEPERMS</code> for <code>GRANTEE</code>(<code>user2</code>), <code>TABLEID</code>(<code>user1.t1</code>).</p><p>The dependency manager knows only that the view is dependent on a privilege type in that specific row, but does not track exactly which privilege type the view is dependent on.</p><p>When a <code>REVOKE</code> statement for a table-level privilege is issued for a grantee and table ID, all of the objects that are dependent on the grantee and table ID are dropped. For example, if <code>user1</code> revokes the <code>DELETE</code> privilege on table <code>t1</code> from <code>user2</code>, the row in <code>SYSTABLEPERMS</code> for <code>GRANTEE</code>(<code>user2</code>), <code>TABLEID</code>(<code>user1.t1</code>) is modified by the <code>REVOKE</code> statement. The dependency manager sends a revoke invalidation message to the view <code>user2.v1</code> and the view is dropped even though the view is not dependent on the <code>DELETE</code> privilege for <code>GRANTEE</code>(<code>user2</code>), <code>TABLEID</code>(<code>user1.t1</code>).</p>
                 <p class="paramName">Column-level privileges</p>
-                <p class="paramDefnFirst">Only one type of privilege for a specified grantee and table ID are stored in one row in the <span class="CodeFont">SYSCOLPERMS</span> system table. For example, when <span class="CodeFont">user2</span> is granted the <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">user1.t1</span> for columns c12 and c13, a row is added to the <span class="CodeFont">SYSCOLPERMS</span>. The <span class="CodeFont">GRANTEE</span> field contains <span class="CodeFont">user2</span>, the <span class="CodeFont">TABLEID</span> contains <span class="CodeFont">user1.t1</span>, the <span class="CodeFont">TYPE</span> field contains <span class="CodeFont">S</span>, and the <span class="CodeFont">COLUMNS</span> field contains <span class="CodeFont">c12, c13</span>.
-				<p>When a grantee creates an object that relies on the privilege type and the subset of columns in a table ID, Splice Machine engine tracks the dependency of the object on the specific row in the <span class="CodeFont">SYSCOLPERMS</span> table. For example, <span class="CodeFont">user2</span> creates the view <span class="CodeFont">v1</span> by using the statement <span class="CodeFont">SELECT c11 FROM user1.t1</span>, the dependency manager tracks the dependency of view <span class="CodeFont">v1</span> on the row in <span class="CodeFont">SYSCOLPERMS</span> for <span class="CodeFont">GRANTEE</span>(<span class="CodeFont">user2</span>), <span class="CodeFont">TABLEID</span>(<span class="CodeFont">user1.t1</span>), <span class="CodeFont">TYPE</span>(s). The dependency manager knows that the view is dependent on the <span class="CodeFont">SELECT</span> privilege type, but does not track exactly which columns the view is dependent on.</p><p>When a <span class="CodeFont">REVOKE</span> statement for a column-level privilege is issued for a grantee, table ID, and type, all of the objects that are dependent on the grantee, table ID, and type are dropped. For example, if <span class="CodeFont">user1</span> revokes the <span class="CodeFont">SELECT</span> privilege on column <span class="CodeFont">c12</span> on table <span class="CodeFont">user1.t1</span> from <span class="CodeFont">user2</span>, the row in <span class="CodeFont">SYSCOLPERMS</span> for <span class="CodeFont">GRANTEE</span>(<span class="CodeFont">user2</span>), <span class="CodeFont">TABLEID</span>(<span class="CodeFont"> ser1.t1</span>), <span class="CodeFont">TYPE</span>(s) is modified by the <span class="CodeFont">REVOKE</span> statement. The dependency manager sends a revoke invalidation message to the view <span class="CodeFont">user2.v1</span> and the view is dropped even though the view is not dependent on the column <span class="CodeFont">c12</span> for <span class="CodeFont">GRANTEE</span>(<span class="CodeFont">user2</span>), <span class="CodeFont">TABLEID</span>(<span class="CodeFont">user1.t1</span>), <span class="CodeFont">TYPE</span>(s).</p>
+                <p class="paramDefnFirst">Only one type of privilege for a specified grantee and table ID are stored in one row in the <code>SYSCOLPERMS</code> system table. For example, when <code>user2</code> is granted the <code>SELECT</code> privilege on table <code>user1.t1</code> for columns c12 and c13, a row is added to the <code>SYSCOLPERMS</code>. The <code>GRANTEE</code> field contains <code>user2</code>, the <code>TABLEID</code> contains <code>user1.t1</code>, the <code>TYPE</code> field contains <code>S</code>, and the <code>COLUMNS</code> field contains <code>c12, c13</code>.
+				<p>When a grantee creates an object that relies on the privilege type and the subset of columns in a table ID, Splice Machine engine tracks the dependency of the object on the specific row in the <code>SYSCOLPERMS</code> table. For example, <code>user2</code> creates the view <code>v1</code> by using the statement <code>SELECT c11 FROM user1.t1</code>, the dependency manager tracks the dependency of view <code>v1</code> on the row in <code>SYSCOLPERMS</code> for <code>GRANTEE</code>(<code>user2</code>), <code>TABLEID</code>(<code>user1.t1</code>), <code>TYPE</code>(s). The dependency manager knows that the view is dependent on the <code>SELECT</code> privilege type, but does not track exactly which columns the view is dependent on.</p><p>When a <code>REVOKE</code> statement for a column-level privilege is issued for a grantee, table ID, and type, all of the objects that are dependent on the grantee, table ID, and type are dropped. For example, if <code>user1</code> revokes the <code>SELECT</code> privilege on column <code>c12</code> on table <code>user1.t1</code> from <code>user2</code>, the row in <code>SYSCOLPERMS</code> for <code>GRANTEE</code>(<code>user2</code>), <code>TABLEID</code>(<code> ser1.t1</code>), <code>TYPE</code>(s) is modified by the <code>REVOKE</code> statement. The dependency manager sends a revoke invalidation message to the view <code>user2.v1</code> and the view is dropped even though the view is not dependent on the column <code>c12</code> for <code>GRANTEE</code>(<code>user2</code>), <code>TABLEID</code>(<code>user1.t1</code>), <code>TYPE</code>(s).</p>
                 <p class="paramName">Roles</p>
-                <p class="paramDefnFirst">Splice Machine tracks any dependencies on the definer's current role for views and constraints, constraints, and triggers. If privileges were obtainable only via the current role when the object in question was defined, that object depends on the current role. The object will be dropped if the role is revoked from the defining user or from <span class="CodeFont">PUBLIC</span>, as the case may be.</p>
+                <p class="paramDefnFirst">Splice Machine tracks any dependencies on the definer's current role for views and constraints, constraints, and triggers. If privileges were obtainable only via the current role when the object in question was defined, that object depends on the current role. The object will be dropped if the role is revoked from the defining user or from <code>PUBLIC</code>, as the case may be.</p>
                 <p class="paramDefn">Also, if a contained role of the current role in such cases is revoked, dependent objects will be dropped. Note that dropping may be too pessimistic. This is because Splice Machine does not currently make an attempt to recheck if the necessary privileges are still available in such cases.</p>
             </div>
             <h2>Revoke Examples</h2>
             <h3>Revoking User Privileges</h3>
-            <p>To revoke the <span class="CodeFont">SELECT</span> privilege on schema <span class="CodeFont">SpliceBBall</span> from the authorization IDs <span class="CodeFont">Bill</span> and <span class="CodeFont">Joan</span>, use the following syntax:</p>
+            <p>To revoke the <code>SELECT</code> privilege on schema <code>SpliceBBall</code> from the authorization IDs <code>Bill</code> and <code>Joan</code>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;REVOKE SELECT ON SCHEMA&#160;SpliceBBall FROM Bill, Joan;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To revoke the <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">Salaries</span> from the authorization IDs <span class="CodeFont">Bill</span> and <span class="CodeFont">Joan</span>, use the following syntax:</p>
+            <p>To revoke the <code>SELECT</code> privilege on table <code>Salaries</code> from the authorization IDs <code>Bill</code> and <code>Joan</code>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;REVOKE SELECT ON TABLE Salaries FROM Bill, Joan;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To revoke the <span class="CodeFont">UPDATE</span> and <span class="CodeFont">TRIGGER</span> privileges on table <span class="CodeFont">Salaries</span> from the authorization IDs <span class="CodeFont">Joe</span> and <span class="CodeFont">Anita</span>, use the following syntax:</p>
+            <p>To revoke the <code>UPDATE</code> and <code>TRIGGER</code> privileges on table <code>Salaries</code> from the authorization IDs <code>Joe</code> and <code>Anita</code>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;REVOKE UPDATE, TRIGGER ON TABLE Salaries FROM Joe, Anita;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To revoke the <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">Hitting</span> in the <span class="CodeFont">Baseball_stats</span> schema from all users, use the following syntax: </p>
+            <p>To revoke the <code>SELECT</code> privilege on table <code>Hitting</code> in the <code>Baseball_stats</code> schema from all users, use the following syntax: </p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;REVOKE SELECT ON TABLE Baseball_Stats.Hitting FROM PUBLIC;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To revoke the <span class="CodeFont">EXECUTE</span> privilege on procedure <span class="CodeFont">ComputeValue</span> from the authorization ID <span class="CodeFont">george</span>, use the following syntax:</p>
+            <p>To revoke the <code>EXECUTE</code> privilege on procedure <code>ComputeValue</code> from the authorization ID <code>george</code>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;REVOKE EXECUTE ON PROCEDURE ComputeValue FROM george;
 0 rows inserted/updated/deleted</pre>
             </div>
             <h3>Revoking User Roles</h3>
-            <p>To revoke the role <span class="CodeFont"> purchases_reader_role</span> from the authorization  IDs <span class="CodeFont">george</span> and <span class="CodeFont">maria</span>, use the following  syntax:</p>
+            <p>To revoke the role <code> purchases_reader_role</code> from the authorization  IDs <code>george</code> and <code>maria</code>, use the following  syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;REVOKE purchases_reader_role FROM george,maria;
 0 rows inserted/updated/deleted</pre>
             </div>
             <h3>Revoking Role Privileges</h3>
-            <p>To revoke the <span class="CodeFont">SELECT</span> privilege on  schema <span class="CodeFont">SpliceBBall</span> from the role <span class="CodeFont">purchases_reader_role</span>, use the following syntax:</p>
+            <p>To revoke the <code>SELECT</code> privilege on  schema <code>SpliceBBall</code> from the role <code>purchases_reader_role</code>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; REVOKE SELECT ON SCHEMA&#160;SpliceBBall FROM purchases_reader_role;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>To revoke the <span class="CodeFont">SELECT</span> privilege on table <span class="CodeFont">t</span> to the role <span class="CodeFont">purchases_reader_role</span>, use the following syntax:</p>
+            <p>To revoke the <code>SELECT</code> privilege on table <code>t</code> to the role <code>purchases_reader_role</code>, use the following syntax:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; REVOKE SELECT ON TABLE t FROM purchases_reader_role;
 0 rows inserted/updated/deleted</pre>
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE&#160;ROLE</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_droprole.html"><span class="CodeFont">DROP_ROLE</span></a> statement</li>
-                <li><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
-                <li><a href="sqlref_identifiers_types.html#RoleName"><span class="CodeFont">RoleName</span></a>
+                <li><a href="sqlref_statements_createrole.html"><code>CREATE&#160;ROLE</code></a>&#160;statement</li>
+                <li><a href="sqlref_statements_droprole.html"><code>DROP_ROLE</code></a> statement</li>
+                <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a>&#160;statement</li>
+                <li><a href="sqlref_identifiers_types.html#RoleName"><code>RoleName</code></a>
                 </li>
-                <li><a href="sqlref_statements_setrole.html"><span class="CodeFont">SET&#160;ROLE</span></a> statement</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;expression</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
-                <li><a href="sqlref_systables_sysroles.html"><span class="CodeFont">SYSROLES</span></a>&#160;system table</li>
-                <li><a href="sqlref_statements_update.html"><span class="CodeFont">UPDATE</span></a> statement</li>
-                <li><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
+                <li><a href="sqlref_statements_setrole.html"><code>SET&#160;ROLE</code></a> statement</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;expression</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;statement</li>
+                <li><a href="sqlref_systables_sysroles.html"><code>SYSROLES</code></a>&#160;system table</li>
+                <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement</li>
+                <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a>&#160;clause</li>
             </ul>
         </div>
 	</section>
@@ -3058,7 +3058,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

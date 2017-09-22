@@ -9,15 +9,15 @@ permalink: sqlref_clauses_intersect.html
 folder: SQLReference/Clauses
 ---
         <h1>INTERSECT</h1>
-        <p>The <span class="CodeFont">INTERSECT</span> operator takes the distinct rows of one query and returns the rows that do not appear in a second result set.</p>
-        <div class="noteNote">The <span class="CodeFont">INTERSECT</span> operator has greater precedence than the other set operators (<span class="CodeFont"><a href="Union.html">UNION</a></span>&#160;and <span class="CodeFont"><a href="Except.html">EXCEPT</a></span>), which means that you may need to use additional parentheses when mixing set operators to ensure the operation ordering you want.</div>
+        <p>The <code>INTERSECT</code> operator takes the distinct rows of one query and returns the rows that do not appear in a second result set.</p>
+        <p class="noteNote">The <code>INTERSECT</code> operator has greater precedence than the other set operators (<code><a href="Union.html">UNION</a></code>&#160;and <code><a href="Except.html">EXCEPT</a></code>), which means that you may need to use additional parentheses when mixing set operators to ensure the operation ordering you want.</p>
         <h2>Syntax</h2>
-        <div class="fcnWrapperWide"><pre class="FcnSyntax"><span class="ItalicFont"><a href="sqlref_expressions_select">SELECT&#160;expression</a></span> INTERSECT&#160;[ DISTINCT | ALL ] <span class="ItalicFont"><a href="sqlref_expressions_select">SELECT&#160;expression</a></span></pre>
+        <div class="fcnWrapperWide"><pre class="FcnSyntax"><em><a href="sqlref_expressions_select">SELECT&#160;expression</a></em> INTERSECT&#160;[ DISTINCT | ALL ] <em><a href="sqlref_expressions_select">SELECT&#160;expression</a></em></pre>
         </div>
         <div class="paramList">
             <p class="paramName">SELECT&#160;expression</p>
-            <p class="paramDefnFirst">A&#160;<span class="CodeFont">SELECT</span>&#160;expression that does not include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause.</p>
-            <p class="paramDefn">If you include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause, that clause applies to the intersection operation.</p>
+            <p class="paramDefnFirst">A&#160;<code>SELECT</code>&#160;expression that does not include an <code>ORDER&#160;BY</code>&#160;clause.</p>
+            <p class="paramDefn">If you include an <code>ORDER&#160;BY</code>&#160;clause, that clause applies to the intersection operation.</p>
             <p class="paramName">DISTINCT</p>
             <p class="paramDefnFirst">(Optional). Indicates that only distinct (non-duplicate) rows from the queries are included. This is the default. </p>
             <p class="paramName">ALL</p>

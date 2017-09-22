@@ -11,7 +11,7 @@ folder: Developers/TuningAndDebugging
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Explain Plan Examples</h1>
-            <p>This topic contains the following examples of using the <span class="CodeFont">explain</span> command to display the execution plan for a statement, including the following examples:</p>
+            <p>This topic contains the following examples of using the <code>explain</code> command to display the execution plan for a statement, including the following examples:</p>
             <ul>
                 <li><a href="#TableSca">TableScan Examples</a>
                 </li>
@@ -32,9 +32,9 @@ folder: Developers/TuningAndDebugging
                 <li><a href="#Subquery">Subquery Example</a>
                 </li>
             </ul>
-            <div class="noteIcon">The format and meaning of the common fields in the output plans shown here is found in the previous topic, <a href="developers_tuning_explainplan.html">About Explain Plan</a>.</div>
+            <p class="noteIcon">The format and meaning of the common fields in the output plans shown here is found in the previous topic, <a href="developers_tuning_explainplan.html">About Explain Plan</a>.</p>
             <h2 id="TableSca">TableScan Examples</h2>
-            <p>This example show a plan for a <span class="CodeFont">TableScan</span> operation that has no qualifiers, known as a <span class="ItalicFont">raw scan</span>:</p>
+            <p>This example show a plan for a <code>TableScan</code> operation that has no qualifiers, known as a <em>raw scan</em>:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; explain select * from sys.systables;<br /><br />Plan
 -------------------------------------------------------------------------------------------------
 Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
@@ -43,7 +43,7 @@ Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
 
 3 rows selected</pre>
             </div>
-            <p>This example show a plan for a <span class="CodeFont">TableScan</span> operation that does have qualifiers::</p>
+            <p>This example show a plan for a <code>TableScan</code> operation that does have qualifiers::</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;explain select *&#160;from sys.systables --SPLICE-PROPERTIES index=NULL<br />&#160;&#160;&#160;where tablename='SYSTABLES';<br /><br />Plan
 -------------------------------------------------------------------------------------------------<br />Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=2,totalCost=8.54,outputRows=18,outputHeapSize=2.988 KB,partitions=1)
@@ -54,16 +54,16 @@ Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
             <h3>Nodes</h3>
             <ul>
                 <li>
-                    <p>The plan labels this operation as <span class="CodeFont">TableScan[</span><span class="ItalicFont">tableId</span>(<span class="ItalicFont">conglomerateId</span>)<span class="CodeFont">]</span>:</p>
+                    <p>The plan labels this operation as <code>TableScan[</code><em>tableId</em>(<em>conglomerateId</em>)<code>]</code>:</p>
                     <ul class="SecondLevel">
-                        <li><span class="ItalicFont">tableId</span> is the name of the table, in the form <span class="CodeFont">schemaName '.' tableName</span>.</li>
-                        <li><span class="ItalicFont">conglomerateId</span> is an ID&#160;that is unique to every HBase table; this value is used internally, and can be used for certain administrative tasks</li>
+                        <li><em>tableId</em> is the name of the table, in the form <code>schemaName '.' tableName</code>.</li>
+                        <li><em>conglomerateId</em> is an ID&#160;that is unique to every HBase table; this value is used internally, and can be used for certain administrative tasks</li>
                     </ul>
                 </li>
-                <li>The <span class="CodeFont">preds</span> field includes qualifiers that were pushed down to the base table.</li>
+                <li>The <code>preds</code> field includes qualifiers that were pushed down to the base table.</li>
             </ul>
             <h2 id="IndexSca">IndexScan Examples</h2>
-            <p>This example show a plan for an <span class="CodeFont">IndexScan</span> operation that has no predicates:</p>
+            <p>This example show a plan for an <code>IndexScan</code> operation that has no predicates:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables; --covering index
 
 Plan
@@ -73,7 +73,7 @@ Plan
 
 3 rows selected<br /></pre>
             </div>
-            <p>This example shows a plan for an <span class="CodeFont">IndexScan</span> operation that contains predicates:</p>
+            <p>This example shows a plan for an <code>IndexScan</code> operation that contains predicates:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables --SPLICE-PROPERTIES index=SYSTABLES_INDEX1
         where tablename = 'SYSTABLES';
 
@@ -87,16 +87,16 @@ Plan
             <h3>Nodes</h3>
             <ul>
                 <li>
-                    <p>The plan labels this operation as <span class="CodeFont">IndexScan[</span><span class="ItalicFont">indexId(conglomerateId)</span><span class="CodeFont">]</span>:</p>
+                    <p>The plan labels this operation as <code>IndexScan[</code><em>indexId(conglomerateId)</em><code>]</code>:</p>
                     <ul class="SecondLevel">
-                        <li><span class="ItalicFont">indexId</span> is the name of the index</li>
-                        <li><span class="ItalicFont">conglomerateId</span> is an ID&#160;that is unique to every HBase table; this value is used internally, and can be used for certain administrative tasks</li>
+                        <li><em>indexId</em> is the name of the index</li>
+                        <li><em>conglomerateId</em> is an ID&#160;that is unique to every HBase table; this value is used internally, and can be used for certain administrative tasks</li>
                     </ul>
                 </li>
-                <li>The <span class="CodeFont">preds</span> field includes qualifiers that were pushed down to the base table.</li>
+                <li>The <code>preds</code> field includes qualifiers that were pushed down to the base table.</li>
             </ul>
             <h2 id="Projecti">Projection and Restriction Examples</h2>
-            <p>This example show a plan for a <span class="CodeFont">Projection</span> operation:</p>
+            <p>This example show a plan for a <code>Projection</code> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename || 'hello' from sys.systables;
 
 Plan
@@ -107,7 +107,7 @@ Plan
 
 4 rows selected</pre>
             </div>
-            <p>This example shows a plan for a <span class="CodeFont">Restriction</span> operation:</p>
+            <p>This example shows a plan for a <code>Restriction</code> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables
 &#160;       where tablename like '%SYS%';
 
@@ -121,10 +121,10 @@ Plan
             </div>
             <h3>Nodes</h3>
             <ul>
-                <li>The plan labels both projection and restriction operations as <span class="CodeFont">ProjectRestrict</span>. which can contain both <span class="ItalicFont">projections</span> and <span class="ItalicFont">non-qualifier restrictions</span>. A <span class="ItalicFont">non-qualifier restriction</span> is a predicate that cannot be pushed to the underlying table scan.</li>
+                <li>The plan labels both projection and restriction operations as <code>ProjectRestrict</code>. which can contain both <em>projections</em> and <em>non-qualifier restrictions</em>. A <em>non-qualifier restriction</em> is a predicate that cannot be pushed to the underlying table scan.</li>
             </ul>
             <h2 id="Index">Index Lookup</h2>
-            <p>This example shows a plan for an <span class="CodeFont">IndexLookup</span> operation:</p>
+            <p>This example shows a plan for an <code>IndexLookup</code> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select * from SYS.SYSTABLES --SPLICE-PROPERTIES index=SYSTABLES_INDEX1
 where tablename = 'SYSTABLES';;
 
@@ -136,11 +136,11 @@ Plan
             </div>
             <h3>Nodes</h3>
             <ul>
-                <li>The plan labels the operation as <span class="CodeFont">IndexLookup</span>; you may see this labeled as an <span class="CodeFont">IndexToBaseRow</span> operation elsewhere.</li>
-                <li>Plans for <span class="CodeFont">IndexLookup</span> operations do not contain any special fields.</li>
+                <li>The plan labels the operation as <code>IndexLookup</code>; you may see this labeled as an <code>IndexToBaseRow</code> operation elsewhere.</li>
+                <li>Plans for <code>IndexLookup</code> operations do not contain any special fields.</li>
             </ul>
             <h2 id="Join">Join Example</h2>
-            <p>This example shows a plan for a <span class="CodeFont">Join</span> operation:</p>
+            <p>This example shows a plan for a <code>Join</code> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select * from sys.systables t, sys.sysschemas s
         where t.schemaid =s.schemaid;
 
@@ -156,7 +156,7 @@ Plan
             <h3>Nodes</h3>
             <ul>
                 <li>
-                    <p>The plan labels the operation using the <span class="ItalicFont">join type</span> followed by <span class="CodeFont">Join</span>; the possible values are:</p>
+                    <p>The plan labels the operation using the <em>join type</em> followed by <code>Join</code>; the possible values are:</p>
                     <ul class="SecondLevel">
                         <li class="CodeFont" value="1">BroadcastJoin</li>
                         <li class="CodeFont" value="2">MergeJoin</li>
@@ -165,14 +165,14 @@ Plan
                         <li class="CodeFont" value="5">OuterJoin</li>
                     </ul>
                 </li>
-                <li>The plan may include a <span class="CodeFont">preds</span> field, which lists the join predicates.</li>
-                <li><span class="CodeFont">NestedLoopJoin</span> operations do not include a <span class="CodeFont">preds</span> field; instead, the predicates are listed in either a <span class="CodeFont">ProjectRestrict</span> or in the underlying scan.</li>
+                <li>The plan may include a <code>preds</code> field, which lists the join predicates.</li>
+                <li><code>NestedLoopJoin</code> operations do not include a <code>preds</code> field; instead, the predicates are listed in either a <code>ProjectRestrict</code> or in the underlying scan.</li>
                 <li>
-                    <p>The right side of the <span class="ItalicFont">Join</span> operation is listed first, followed by the left side of the join.</p>
+                    <p>The right side of the <em>Join</em> operation is listed first, followed by the left side of the join.</p>
                 </li>
             </ul>
             <h3>Outer Joins</h3>
-            <p>An <span class="ItalicFont">outer join</span> does not display it as a separate strategy in the plan; instead, it is treated a <span class="ItalicFont">postfix</span> for the strategy that's used. For example, if you are using a Broadcast join, and it's a left outer join, then you'll see <span class="CodeFont">BroadcastLeftOuterJoin</span>. Here's an example:</p>
+            <p>An <em>outer join</em> does not display it as a separate strategy in the plan; instead, it is treated a <em>postfix</em> for the strategy that's used. For example, if you are using a Broadcast join, and it's a left outer join, then you'll see <code>BroadcastLeftOuterJoin</code>. Here's an example:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">explain select s.schemaname,t.tablename from sys.sysschemas s left outer join sys.systables t
 &gt; on s.schemaid = t.schemaid;
 Plan
@@ -185,7 +185,7 @@ Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
         -&gt;  TableScan[SYSSCHEMAS(32)](n=1,totalCost=7.516,outputRows=20,outputHeapSize=1023.984 KB,partitions=1)</pre>
             </div>
             <h2 id="Union">Union Example</h2>
-            <p>This example shows a plan for a <span class="CodeFont">Union</span> operation:</p>
+            <p>This example shows a plan for a <code>Union</code> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables t union all select schemaname from sys.sysschemas;
 
 Plan
@@ -200,7 +200,7 @@ Cursor(n=5,rows=40,updateMode=READ_ONLY (1),engine=control)
             </div>
             <h3>Nodes</h3>
             <ul>
-                <li>The right side of the <span class="CodeFont">Union</span> is listed first, followed by the left side of the union,</li>
+                <li>The right side of the <code>Union</code> is listed first, followed by the left side of the union,</li>
             </ul>
             <h2 id="Order">Order By Example</h2>
             <p>This example shows a plan for an order by operation:</p>
@@ -216,7 +216,7 @@ Plan
             </div>
             <h3>Nodes</h3>
             <ul>
-                <li>The plan labels this operation as <span class="CodeFont">OrderBy</span>.</li>
+                <li>The plan labels this operation as <code>OrderBy</code>.</li>
             </ul>
             <h2 id="Aggregat">Aggregation Operation Examples</h2>
             <p>This example show a plan for a grouped aggregate operation:</p>
@@ -248,10 +248,10 @@ Plan
             </div>
             <h3>Nodes</h3>
             <ul>
-                <li>The plan labels both grouped and scaled aggregate operations as <span class="CodeFont">GroupBy</span>.</li>
+                <li>The plan labels both grouped and scaled aggregate operations as <code>GroupBy</code>.</li>
             </ul>
             <h2 id="Subquery">Subquery Example</h2>
-            <p>This example shows a plan for a <span class="CodeFont">SubQuery</span> operation:</p>
+            <p>This example shows a plan for a <code>SubQuery</code> operation:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename, (select tablename from sys.systables t2 where t2.tablename = t.tablename)from sys.systables t;
 
 Plan
@@ -266,10 +266,10 @@ Plan
             </div>
             <h3>Nodes</h3>
             <ul>
-                <li>Subqueries are listed as a second query tree, whose starting indentation level is the same as the <span class="CodeFont">ProjectRestrict</span> operation that <span class="ItalicFont">owns</span> the subquery.</li>
-                <li>Includes a <span class="ItalicFont">correlated</span> field, which specifies whether or not the query is treated as correlated or uncorrelated.</li>
-                <li>Includes an <span class="ItalicFont">expression</span> field, which specifies whether or not the subquery is an expression.</li>
-                <li>Includes an <span class="ItalicFont">invariant</span> field, which indicates whether the subquery is invariant.</li>
+                <li>Subqueries are listed as a second query tree, whose starting indentation level is the same as the <code>ProjectRestrict</code> operation that <em>owns</em> the subquery.</li>
+                <li>Includes a <em>correlated</em> field, which specifies whether or not the query is treated as correlated or uncorrelated.</li>
+                <li>Includes an <em>expression</em> field, which specifies whether or not the subquery is an expression.</li>
+                <li>Includes an <em>invariant</em> field, which indicates whether the subquery is invariant.</li>
             </ul>
             <h2>See Also</h2>
             <ul>

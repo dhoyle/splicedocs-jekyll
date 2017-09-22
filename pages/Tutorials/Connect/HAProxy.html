@@ -38,12 +38,12 @@ Install HAProxy as superuser
                     </div>
                 </li>
                 <li>
-                    <p class="topLevel">Configure the <span class="CodeFont">/etc/haproxy/haproxy.cfg</span> file, following the comments in the sample file below:</p>
+                    <p class="topLevel">Configure the <code>/etc/haproxy/haproxy.cfg</code> file, following the comments in the sample file below:</p>
                     <p>
-In this example, we set the incoming requests to <span class="CodeFont">haproxy_host:1527</span>, which uses a balancing algorithm of least connections to distribute among the nodes <span class="CodeFont">srv127, srv128, srv129, </span>and <span class="CodeFont">srv130</span>. This means that the incoming connection is routed to the region server that has the least number of connections; thus, the client JDBC URL should point to <span class="CodeFont">&lt;haproxy_host&gt;:1527</span>.
+In this example, we set the incoming requests to <code>haproxy_host:1527</code>, which uses a balancing algorithm of least connections to distribute among the nodes <code>srv127, srv128, srv129, </code>and <code>srv130</code>. This means that the incoming connection is routed to the region server that has the least number of connections; thus, the client JDBC URL should point to <code>&lt;haproxy_host&gt;:1527</code>.
 </p>
-                    <div class="noteNote">The HAProxy manual describes other balancing algorithms that you can use.</div>
-                    <p>Here is the <span class="CodeFont">haproxy.cfg</span> file for this example:</p>
+                    <p class="noteNote">The HAProxy manual describes other balancing algorithms that you can use.</p>
+                    <p>Here is the <code>haproxy.cfg</code> file for this example:</p>
                     <div class="preWrapperWide"><pre class="Example">#---------------------------------------------------------------------
 # Global settings
 #---------------------------------------------------------------------
@@ -112,8 +112,8 @@ listen   stats :1936
                     </div>
                     <p>Note that some of the parameters may need tuning per the sizing and workload nature:</p>
                     <ul class="plainFont">
-                        <li>The <span class="CodeFont">maxconnections</span> parameter indicates how many concurrent connections are served at any given time; you may need to configure this, based on size of the cluster and expected inbound requests.</li>
-                        <li>Similarly, the <span class="CodeFont">timeout</span> values, which are by default in msecs, should be tuned so that the connection does not get terminated while a long-running query is executed.</li>
+                        <li>The <code>maxconnections</code> parameter indicates how many concurrent connections are served at any given time; you may need to configure this, based on size of the cluster and expected inbound requests.</li>
+                        <li>Similarly, the <code>timeout</code> values, which are by default in msecs, should be tuned so that the connection does not get terminated while a long-running query is executed.</li>
                     </ul>
                 </li>
                 <li>
@@ -155,9 +155,7 @@ Start the HAProxy service:</p>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="noteNote">
-                        <p>You can find the HAProxy process id in: <span class="CodeFont">/var/run/haproxy.pid</span>. If you encounter any issues starting the service, check if Selinux is enabled; you may want to disable it initially.</p>
-                    </div>
+                    <p class="noteNote">You can find the HAProxy process id in: <code>/var/run/haproxy.pid</code>. If you encounter any issues starting the service, check if Selinux is enabled; you may want to disable it initially.</p>
                 </li>
                 <li>
                     <p class="topLevel">
@@ -166,13 +164,13 @@ Connect:</p>
                     <p>You can now connect  JDBC&#160;clients, including the Splice Machine command line interpreter,  sqlshell.sh. Use the following JDBC URL:</p>
                     <div class="preWrapperWide"><pre class="Plain">jdbc:splice://&lt;haproxy_host&gt;:1527/splicedb;user=splice;password=admin</pre>
                     </div>
-                    <p>For ODBC clients to connect through HAProxy, ensure that the DSN entry in file <span class="CodeFont">.odbc.ini</span> is pointing to the HAProxy host.</p>
+                    <p>For ODBC clients to connect through HAProxy, ensure that the DSN entry in file <code>.odbc.ini</code> is pointing to the HAProxy host.</p>
                 </li>
                 <li>
                     <p class="topLevel">
 
 Verify that inbound requests are being routed correctly:</p>
-                    <p>You can check the logs at <span class="CodeFont">/var/log/haproxy.log</span> to make sure that inbound requests are being routed to Splice&#160;Machine region servers that are receiving inbound requests on port 1527.</p>
+                    <p>You can check the logs at <code>/var/log/haproxy.log</code> to make sure that inbound requests are being routed to Splice&#160;Machine region servers that are receiving inbound requests on port 1527.</p>
                 </li>
                 <li>
                     <p class="topLevel">
@@ -199,20 +197,20 @@ View traffic statistics:</p>
         </ul>
         <p>HAProxy will then transparently forward the connections to the back-end cluster in Kerberos setup.</p>
         <h3>Example</h3>
-        <p>This example assumes that you are using the default user name <span class="CodeFont">splice</span>. Follow these steps to connect through HAProxy:</p>
+        <p>This example assumes that you are using the default user name <code>splice</code>. Follow these steps to connect through HAProxy:</p>
         <div class="opsStepsList">
             <ol class="boldFont">
                 <li>
                     <p class="topLevel">
 
 Create the principal in Kerberos Key Distribution Center</p>
-                    <p class="indentLevel1">Create the principal splice@kerberos_realm_name in Kerberos Key Distribution Center (KDC). This generates a keytab file named <span class="CodeFont">splice.keytab</span>. </p>
+                    <p class="indentLevel1">Create the principal splice@kerberos_realm_name in Kerberos Key Distribution Center (KDC). This generates a keytab file named <code>splice.keytab</code>. </p>
                 </li>
                 <li>
                     <p class="topLevel">
 
 Copy the generated keytab file</p>
-                    <p class="indentLevel1">Copy the <span class="CodeFont">splice.keytab</span> file that to all client systems.</p>
+                    <p class="indentLevel1">Copy the <code>splice.keytab</code> file that to all client systems.</p>
                 </li>
                 <li>
                     <p class="topLevel">Connect:</p>
@@ -222,7 +220,7 @@ Copy the generated keytab file</p>
                 </li>
             </ol>
         </div>
-        <p>Use the same steps to allow other Splice Machine users to connect by adding them to the Kerberos realm and copying the keytab files to their client systems. This example sets up access for a new user name <span class="CodeFont">jdoe</span>. </p>
+        <p>Use the same steps to allow other Splice Machine users to connect by adding them to the Kerberos realm and copying the keytab files to their client systems. This example sets up access for a new user name <code>jdoe</code>. </p>
         <div class="opsStepsList">
             <ol class="boldFont">
                 <li>
@@ -234,7 +232,7 @@ Create the user in your Splice Machine database:</p>
                 </li>
                 <li>
                     <p class="topLevel">Grant privileges to the user</p>
-                    <p class="indentLevel1">For this example, we are granting all privileges on a table named <span class="CodeFont">myTable</span> to the new user:</p>
+                    <p class="indentLevel1">For this example, we are granting all privileges on a table named <code>myTable</code> to the new user:</p>
                     <div class="preWrapperWide"><pre class="Example">grant all privileges on splice.myTable to jdoe;</pre>
                     </div>
                 </li>

@@ -11,15 +11,15 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCS_UTIL.MERGE_REGIONS</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.MERGE_REGIONS</span> system procedure merges two adjacent Splice Machine table regions or two adjacent Splice Machine index regions.</p>
-			<p>Region names must be specified in HBase-encoded form. You can retrieve the encoded name for a region by calling the <a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> system procedure.</p>
+            <p>The <code>SYSCS_UTIL.MERGE_REGIONS</code> system procedure merges two adjacent Splice Machine table regions or two adjacent Splice Machine index regions.</p>
+			<p>Region names must be specified in HBase-encoded form. You can retrieve the encoded name for a region by calling the <a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a> system procedure.</p>
 			<p>You might use this procedure if you want to collect older data into a smaller set of regions to minimize the number of regions required.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.MERGE_REGIONS( VARCHAR <span class="ItalicFont">schemaName</span>)
-                          VARCHAR <span class="ItalicFont">tableName</span>,
-                          VARCHAR <span class="ItalicFont">indexName</span>,
-                          VARCHAR <span class="ItalicFont">regionName1</span>,
-                          VARCHAR <span class="ItalicFont">regionName2</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.MERGE_REGIONS( VARCHAR <em>schemaName</em>)
+                          VARCHAR <em>tableName</em>,
+                          VARCHAR <em>indexName</em>,
+                          VARCHAR <em>regionName1</em>,
+                          VARCHAR <em>regionName2</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">schemaName</p>
@@ -27,38 +27,38 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramName">tableName</p>
                 <p class="paramDefnFirst">The name of the table.</p>
                 <p class="paramName">indexName</p>
-                <p class="paramDefnFirst"><span class="CodeFont">NULL</span> or the name of the index.</p>
-				<p class="paramDefn">Specify the name of the index if you are merging index regions; if you are merging table regions, specify <span class="CodeFont">NULL</span> for this parameter.</p>
+                <p class="paramDefnFirst"><code>NULL</code> or the name of the index.</p>
+				<p class="paramDefn">Specify the name of the index if you are merging index regions; if you are merging table regions, specify <code>NULL</code> for this parameter.</p>
                 <p class="paramName">regionName1</p>
-                <p class="paramDefnFirst">The <span class="BoldFont">encoded</span> HBase name of the first of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
+                <p class="paramDefnFirst">The <strong>encoded</strong> HBase name of the first of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
                 <p class="paramName">regionName2</p>
-                <p class="paramDefnFirst">The <span class="BoldFont">encoded</span> HBase name of the second of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
+                <p class="paramDefnFirst">The <strong>encoded</strong> HBase name of the second of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
             </div>
             <div>
             <h2>Usage</h2>
-			<p>You can merge two adjacent table regions by specifying <span class="CodeFont">NULL</span> for the index name. To merge two adjacent index regions, specify both the table name and the index name.</p>
+			<p>You can merge two adjacent table regions by specifying <code>NULL</code> for the index name. To merge two adjacent index regions, specify both the table name and the index name.</p>
             </div>
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
 			<p>If the specified regions are not adjacent, you'll see an error message, and no merging will be performed.</p>
             <h2>Examples</h2>
-			<p>The following call will merge two adjacent regions of a table, after you have called <span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span> to retrieve the encoded key values for each region:</p>
+			<p>The following call will merge two adjacent regions of a table, after you have called <code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code> to retrieve the encoded key values for each region:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice> CALL SYSCS_UTIL.MERGE_REGIONS('SPLICE','TESTTABLE', NULL, 'cf0163796bba8666b1183788fc7bc31b', '4e11260fb5ae106a681574be90709449');
 Statement executed.
 </pre>
             </div>
-			<p>And this call will merge two adjacent regions of an index, after you have called <span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span> to retrieve the encoded key values for each region::</p>
+			<p>And this call will merge two adjacent regions of an index, after you have called <code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code> to retrieve the encoded key values for each region::</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice> CALL SYSCS_UTIL.MERGE_REGIONS('SPLICE','TESTTABLE', 'SHIP_INDEX', '5a59b4a46a8a0a7180a469dbe0b40fad', '039ba9b2ecdf458b3293bd9e74e88f65');
 Statement executed.
 </pre>
             </div>
             <h2>See Also</h2>
             <ul>
-				<li><a href="sqlref_sysprocs_compactregion.html"><span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span></a></li>
-				<li><a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a></li>
-				<li><a href="sqlref_sysprocs_getregions.html"><span class="CodeFont">SYSCS_UTIL.GET_REGIONS</span></a></li>
-				<li><a href="sqlref_sysprocs_getstartkey.html"><span class="CodeFont">SYSCS_UTIL.GET_START_KEY</span></a></li>
-				<li><a href="sqlref_sysprocs_majorcompactregion.html"><span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span></a></li>
+				<li><a href="sqlref_sysprocs_compactregion.html"><code>SYSCS_UTIL.COMPACT_REGION</code></a></li>
+				<li><a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a></li>
+				<li><a href="sqlref_sysprocs_getregions.html"><code>SYSCS_UTIL.GET_REGIONS</code></a></li>
+				<li><a href="sqlref_sysprocs_getstartkey.html"><code>SYSCS_UTIL.GET_START_KEY</code></a></li>
+				<li><a href="sqlref_sysprocs_majorcompactregion.html"><code>SYSCS_UTIL.MAJOR_COMPACT_REGION</code></a></li>
             </ul>
         </div>
 	</section>

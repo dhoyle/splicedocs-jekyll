@@ -11,11 +11,11 @@ folder: SQLReference/Statements
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Statements.SetSchema">SET SCHEMA</h1>
-            <p>The <span class="CodeFont">SET SCHEMA</span> statement sets the default schema for a connection's session to the designated schema. The default schema is used as the  target schema for all statements issued from the connection that do not explicitly specify a schema name. </p>
-            <p>The target schema must exist for the <span class="CodeFont">SET SCHEMA</span> statement to succeed. If the schema doesn't exist an error is returned. See the <a href="sqlref_statements_createschema.html"><span class="CodeFont">CREATE SCHEMA</span> statement</a></p>
-            <div class="noteNote">The <span class="CodeFont">SET SCHEMA</span> statement is not transactional: if the <span class="CodeFont">SET SCHEMA</span> statement is part of a transaction that is rolled back, the schema change remains in effect.</div>
+            <p>The <code>SET SCHEMA</code> statement sets the default schema for a connection's session to the designated schema. The default schema is used as the  target schema for all statements issued from the connection that do not explicitly specify a schema name. </p>
+            <p>The target schema must exist for the <code>SET SCHEMA</code> statement to succeed. If the schema doesn't exist an error is returned. See the <a href="sqlref_statements_createschema.html"><code>CREATE SCHEMA</code> statement</a></p>
+            <p class="noteNote">The <code>SET SCHEMA</code> statement is not transactional: if the <code>SET SCHEMA</code> statement is part of a transaction that is rolled back, the schema change remains in effect.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SET [CURRENT] SCHEMA [=] <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SchemaName">schemaName</a></span>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SET [CURRENT] SCHEMA [=] <em><a href="sqlref_identifiers_types.html#SchemaName">schemaName</a></em>
 </pre>
             </div>
             <div class="paramList">
@@ -64,8 +64,8 @@ ps.setString(1,"splice");       //error - string is case sensitive
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><span class="CodeFont"><a href="sqlref_statements_createschema.html">CREATE SCHEMA</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_dropschema.html">DROP SCHEMA</a></span>&#160;statement</li>
+                <li><code><a href="sqlref_statements_createschema.html">CREATE SCHEMA</a></code>&#160;statement</li>
+                <li><code><a href="sqlref_statements_dropschema.html">DROP SCHEMA</a></code>&#160;statement</li>
                 <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a>
                 </li>
             </ul>

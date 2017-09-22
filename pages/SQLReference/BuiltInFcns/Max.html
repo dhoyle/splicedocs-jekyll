@@ -11,35 +11,35 @@ folder: SQLReference/BuiltInFcns
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInFcns.Max">MAX</h1>
-            <p><span class="CodeFont">MAX</span>evaluates the maximum of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
+            <p><code>MAX</code>evaluates the maximum of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">MAX ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">MAX ( [ DISTINCT | ALL ] <em>Expression</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">DISTINCT
             </p>
                 <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated. </p>
-                <p><span class="ItalicFont">ALL</span>
+                <p><em>ALL</em>
                 </p>
                 <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.  </p>
                 <p class="paramName">Expression
             </p>
-                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>.</p>
+                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
                 <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL&#160; numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL&#160;data types. </p>
-                <p class="paramDefn">If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
+                <p class="paramDefn">If an expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
             </div>
             <h2>Usage</h2>
-            <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont">Expression</span> is allowed. For example, the following query is not valid:</p>
+            <p>Only one <code>DISTINCT</code> aggregate expression per <em>Expression</em> is allowed. For example, the following query is not valid:</p>
             <div class="preWrapper"><pre xml:space="preserve" class="Example">   --- Not a valid query:
 SELECT COUNT(DISTINCT flying_time),
   MAX  (DISTINCT miles)
   FROM Flights;</pre>
             </div>
-            <div class="noteNote"> Since duplicate values do not change the computation of the maximum value, the <span class="CodeFont">DISTINCT</span>&#160;and <span class="CodeFont">ALL</span>&#160;qualifiers have no impact on this function.</div>
-            <p>The <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery. It must evaluate to a built-in data type. You can therefore call methods that evaluate to built-in data types. (For example, a method that returns a <span class="ItalicFont">java.lang.Integer</span> or <span class="ItalicFont">int</span> evaluates to an INTEGER.) If an expression evaluates to NULL, the aggregate skips that value.</p>
+            <p class="noteNote"> Since duplicate values do not change the computation of the maximum value, the <code>DISTINCT</code>&#160;and <code>ALL</code>&#160;qualifiers have no impact on this function.</p>
+            <p>The <em>Expression</em> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery. It must evaluate to a built-in data type. You can therefore call methods that evaluate to built-in data types. (For example, a method that returns a <em>java.lang.Integer</em> or <em>int</em> evaluates to an INTEGER.) If an expression evaluates to NULL, the aggregate skips that value.</p>
             <h2>Results</h2>
             <p>The resulting data type is the same as the expression on which it operates; it will never overflow. </p>
-            <p>The comparison rules for the <span class="ItalicFont">Expression's</span> type determine the resulting maximum value. For example, if you supply a <a href="sqlref_datatypes_varchar.html"><span class="CodeFont">VARCHAR</span></a> argument, the number of blank spaces at the end of the value can affect how the maximum value is evaluated:  if the values <span class="CodeFont">'z'</span> and <span class="CodeFont">'z '</span> are both stored in a column, you cannot control which one will be returned as the maximum, because blank spaces are ignored for character comparisons.</p>
+            <p>The comparison rules for the <em>Expression's</em> type determine the resulting maximum value. For example, if you supply a <a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a> argument, the number of blank spaces at the end of the value can affect how the maximum value is evaluated:  if the values <code>'z'</code> and <code>'z '</code> are both stored in a column, you cannot control which one will be returned as the maximum, because blank spaces are ignored for character comparisons.</p>
             <h2>Examples</h2>
             <p class="body">This example finds the birthdate of the youngest player in our database:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">
@@ -89,11 +89,11 @@ Giants    |Mitch Duffer            |12    |21
                 </li>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate Functions</a>
                 </li>
-                <li><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_count.html"><span class="CodeFont">COUNT</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_min.html"><span class="CodeFont">MIN</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_sum.html"><span class="CodeFont">SUM</span></a> function</li>
-                <li><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
+                <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+                <li><a href="sqlref_clauses_over.html"><code>OVER</code></a>&#160;clause</li>
             </ul>
         </div>
 	</section>

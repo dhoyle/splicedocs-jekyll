@@ -589,68 +589,68 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor486">Splice Machine Authorization and Roles</h1>
-            <p>This topic describes Splice Machine <span class="ItalicFont">user authorization</span>, which is how Splice Machine authorizes which operations can be performed by which users.</p>
-            <div class="noteNote">The on-premise version of Splice Machine offers several different authentication mechanisms for your database, as described in the <a href="onprem_install_configureauth.html">Configuring Splice Machine Authentication</a> topic in this book. Native authentication is the default mechanism.</div>
+            <h1>Splice Machine Authorization and Roles</h1>
+            <p>This topic describes Splice Machine <em>user authorization</em>, which is how Splice Machine authorizes which operations can be performed by which users.</p>
+            <p class="noteNote">The on-premise version of Splice Machine offers several different authentication mechanisms for your database, as described in the <a href="onprem_install_configureauth.html">Configuring Splice Machine Authentication</a> topic in this book. Native authentication is the default mechanism.</p>
             <p>With our built-in native authentication mechanism, the user that requests a connection must provide a valid name and password, which Splice Machine verifies against the repository of users defined for the system. After Splice Machine authenticates the user as valid, user authorization determines what operations the user can perform on the database to which the user is requesting a connection.</p>
             <h2>Managing Users</h2>
             <p>Splice manages users with standard system procedures: </p>
             <ul>
-                <li>You can create a user with the <span class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_CREATE_USER</a></span> procedure:
+                <li>You can create a user with the <code><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_CREATE_USER</a></code> procedure:
         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; call syscs_util.syscs_create_user('username', 'password');</pre></div></li>
-                <li>You can drop a user with the <span class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_DROP_USER</a></span> procedure:
+                <li>You can drop a user with the <code><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_DROP_USER</a></code> procedure:
         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; call syscs_util.syscs_drop_user('username');</pre></div></li>
             </ul>
             <h2>Managing Roles</h2>
             <p>When  standard authorization mode is enabled, object owners can use roles to administer privileges. Roles are useful for administering privileges when a database has many users. Role-based authorization allows an administrator to grant privileges to anyone holding certain roles, which is less tedious and error-prone than administrating those privileges to a large set of users.</p>
             <h3>The Database Owner</h3>
-            <p>The <span class="ItalicFont">database owner</span> is <span class="CodeFont">splice</span>. Only the database owner can create, grant, revoke, and drop roles. However, object owners can grant and revoke privileges for those objects to and from roles, as well as to and from individual users and to <span class="CodeFont">PUBLIC</span> (all users).</p>
+            <p>The <em>database owner</em> is <code>splice</code>. Only the database owner can create, grant, revoke, and drop roles. However, object owners can grant and revoke privileges for those objects to and from roles, as well as to and from individual users and to <code>PUBLIC</code> (all users).</p>
             <p>If authentication and SQL authorization are both enabled, only the database owner can perform these actions on the database:</p>
             <ul>
                 <li>start it up</li>
                 <li>shut it down</li>
                 <li>perform a full upgrade</li>
             </ul>
-            <p> If authentication is not enabled, and no user is supplied, the database owner defaults to <span class="CodeFont">SPLICE</span>, which is also the name of the default schema. </p>
-            <p>The database owner log-in information for Splice&#160;Machine is configured when your database software is installed. If you're using our database as a service, there is no default userId or password; if you're using our on-premise database, the default userID is <span class="CodeFont">splice</span>, and the default password is <span class="CodeFont">admin</span>.</p>
+            <p> If authentication is not enabled, and no user is supplied, the database owner defaults to <code>SPLICE</code>, which is also the name of the default schema. </p>
+            <p>The database owner log-in information for Splice&#160;Machine is configured when your database software is installed. If you're using our database as a service, there is no default userId or password; if you're using our on-premise database, the default userID is <code>splice</code>, and the default password is <code>admin</code>.</p>
             <h3>Creating and Using Roles</h3>
-            <p>The database owner can use the <span class="CodeFont"><a href="sqlref_statements_grant.html">GRANT</a></span> statement to grant a role to one or more users, to <span class="CodeFont">PUBLIC</span>, or to another role. Roles can be contained within other roles and can inherit privileges from roles that they contain.</p>
+            <p>The database owner can use the <code><a href="sqlref_statements_grant.html">GRANT</a></code> statement to grant a role to one or more users, to <code>PUBLIC</code>, or to another role. Roles can be contained within other roles and can inherit privileges from roles that they contain.</p>
             <h3>Setting Roles</h3>
-            <p>When a user first connects to Splice Machine, no role is set, and the <span class="CodeFont"><a href="sqlref_statements_setrole.html">SET ROLE</a></span> statement to set the current role for that session. The role can be any role that has been granted to the session's current user or to <span class="CodeFont">PUBLIC</span>. </p>
-            <p>To unset the current role, you can call <span class="CodeFont">SET ROLE</span> with an argument of <span class="CodeFont">NONE</span>. At any time during a session, there is always a current user, but there is a current role only if <span class="CodeFont">SET ROLE</span> has been called with an argument other than <span class="CodeFont">NONE</span>. If a current role is not set, the session has only the privileges granted to the user directly or to <span class="CodeFont">PUBLIC</span>.</p>
+            <p>When a user first connects to Splice Machine, no role is set, and the <code><a href="sqlref_statements_setrole.html">SET ROLE</a></code> statement to set the current role for that session. The role can be any role that has been granted to the session's current user or to <code>PUBLIC</code>. </p>
+            <p>To unset the current role, you can call <code>SET ROLE</code> with an argument of <code>NONE</code>. At any time during a session, there is always a current user, but there is a current role only if <code>SET ROLE</code> has been called with an argument other than <code>NONE</code>. If a current role is not set, the session has only the privileges granted to the user directly or to <code>PUBLIC</code>.</p>
             <h3>Roles in Stored Procedures and Functions</h3>
-            <p>Within stored procedures and functions that contain SQL, the current role depends on whether the routine executes with invoker's rights or with definer's rights, as specified by the <span class="CodeFont">EXTERNAL SECURITY</span> clause in the <span class="CodeFont"><a href="sqlref_statements_createprocedure.html">CREATE PROCEDURE</a></span> statements. During execution, the current user and current role are kept on an authorization stack which is pushed during a stored routine call.</p>
+            <p>Within stored procedures and functions that contain SQL, the current role depends on whether the routine executes with invoker's rights or with definer's rights, as specified by the <code>EXTERNAL SECURITY</code> clause in the <code><a href="sqlref_statements_createprocedure.html">CREATE PROCEDURE</a></code> statements. During execution, the current user and current role are kept on an authorization stack which is pushed during a stored routine call.</p>
             <ul>
-                <li>Within routines that execute with invoker's rights, the following applies: initially, inside a nested connection, the current role is set to that of the calling context. So is the current user. Such routines may set any role granted to the invoker or to <span class="CodeFont">PUBLIC</span>.</li>
-                <li>Within routines that execute with definer's rights, the following applies: initially, inside a nested connection, the current role is <span class="CodeFont">NULL</span>, and the current user is that of the definer. Such routines may set any role granted to the definer or to <span class="CodeFont">PUBLIC</span>.</li>
+                <li>Within routines that execute with invoker's rights, the following applies: initially, inside a nested connection, the current role is set to that of the calling context. So is the current user. Such routines may set any role granted to the invoker or to <code>PUBLIC</code>.</li>
+                <li>Within routines that execute with definer's rights, the following applies: initially, inside a nested connection, the current role is <code>NULL</code>, and the current user is that of the definer. Such routines may set any role granted to the definer or to <code>PUBLIC</code>.</li>
             </ul>
             <p>Upon return from the stored procedure or function, the authorization stack is popped, so the current role of the calling context is not affected by any setting of the role inside the called procedure or function. If the stored procedure opens more than one nested connection, these all share the same (stacked) current role (and user) state. Any dynamic result set passed out of a stored procedure sees the current role (or user) of the nested context.</p>
             <h3>Dropping Roles</h3>
-            <p>Only the database owner can drop a role. To drop a role, use the <span class="CodeFont"><a href="sqlref_statements_droprole.html">DROP ROLE</a></span> statement. Dropping a role effectively revokes all grants of this role to users and other roles.</p>
+            <p>Only the database owner can drop a role. To drop a role, use the <code><a href="sqlref_statements_droprole.html">DROP ROLE</a></code> statement. Dropping a role effectively revokes all grants of this role to users and other roles.</p>
             <h2>Granting Privileges</h2>
-            <p>Use the <span class="CodeFont"><a href="sqlref_statements_grant.html">GRANT</a></span> statement to grant privileges on schemas, tables and routines to a role or to a user. </p>
+            <p>Use the <code><a href="sqlref_statements_grant.html">GRANT</a></code> statement to grant privileges on schemas, tables and routines to a role or to a user. </p>
             <p>Note that when you grant privileges to a role, you are implicitly granting those same privileges to all roles that contain that role.</p>
             <h2>Revoking Privileges </h2>
-            <p>Use the <span class="CodeFont"><a href="sqlref_statements_revoke.html">REVOKE</a></span> statement to revoke privileges on schemas, tables and routines.</p>
+            <p>Use the <code><a href="sqlref_statements_revoke.html">REVOKE</a></code> statement to revoke privileges on schemas, tables and routines.</p>
             <p>When a privilege is revoked from a user:</p>
             <ul>
-                <li>That session can no longer keep the role, not can it take on that role unless the role is also granted to <span class="CodeFont">PUBLIC</span>.</li>
+                <li>That session can no longer keep the role, not can it take on that role unless the role is also granted to <code>PUBLIC</code>.</li>
                 <li>If that role is the current role of an existing session, the current privileges of the session lose any extra privileges obtained through setting that role.</li>
             </ul>
-            <p>The default revoke behavior is <span class="CodeFont">CASCADE</span>, which means that all persistent objects (constraints and views, views and triggers) that rely on a dropped role are dropped. Although there may be other ways of fulfilling that privilege at the time of the revoke, any dependent objects are still dropped. Any prepared statement that is potentially affected will be checked again on the next execute. A result set that depends on a role will remain open even if that role is revoked from a user.</p>
+            <p>The default revoke behavior is <code>CASCADE</code>, which means that all persistent objects (constraints and views, views and triggers) that rely on a dropped role are dropped. Although there may be other ways of fulfilling that privilege at the time of the revoke, any dependent objects are still dropped. Any prepared statement that is potentially affected will be checked again on the next execute. A result set that depends on a role will remain open even if that role is revoked from a user.</p>
             <h2>See Also</h2>
             <ul>
                 <li><a href="onprem_install_configureauth.html">Configuring Splice Machine Authentication</a> in this Guide</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createfunction.html">CREATE FUNCTION</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createprocedure.html">CREATE PROCEDURE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createrole.html">CREATE ROLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_currentrole.html">CURRENT_ROLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_statements_droprole.html">DROP ROLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_statements_grant.html">GRANT</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_statements_revoke.html">REVOKE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_statements_setrole.html">SET ROLE</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_CREATE_USER</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_DROP_USER</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
+                <li><code><a href="sqlref_statements_createfunction.html">CREATE FUNCTION</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_statements_createprocedure.html">CREATE PROCEDURE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_statements_createrole.html">CREATE ROLE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_builtinfcns_currentrole.html">CURRENT_ROLE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_statements_droprole.html">DROP ROLE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_statements_grant.html">GRANT</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_statements_revoke.html">REVOKE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_statements_setrole.html">SET ROLE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_CREATE_USER</a></code> in the <em>SQL&#160;Reference Manual</em></li>
+                <li><code><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_DROP_USER</a></code> in the <em>SQL&#160;Reference Manual</em></li>
             </ul>
         </div>
 	</section>
@@ -670,7 +670,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

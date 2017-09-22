@@ -11,9 +11,9 @@ folder: SQLReference/SystemTables
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="SystemTables.SysPerms">SYSPERMS System Table </h1>
-            <p>The <span class="CodeFont">SYSPERMS</span> table describes the <span class="CodeFont">USAGE</span> permissions for
+            <p>The <code>SYSPERMS</code> table describes the <code>USAGE</code> permissions for
 		sequence generators and user-defined types.</p>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSPERMS</span> system table.</p>
+            <p>The following table shows the contents of the <code>SYSPERMS</code> system table.</p>
             <table>
                 <caption>SYSPERMS system table</caption>
                 <col />
@@ -46,8 +46,8 @@ folder: SQLReference/SystemTables
                         <td>
                             <p class="noSpaceAbove">The kind of object receiving the permission. The only valid values are:</p>
                             <ul>
-                                <li> <span class="CodeFont">'SEQUENCE'</span></li>
-                                <li> <span class="CodeFont">'TYPE'</span></li>
+                                <li> <code>'SEQUENCE'</code></li>
+                                <li> <code>'TYPE'</code></li>
                             </ul>
                         </td>
                     </tr>
@@ -57,9 +57,9 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">36</td>
                         <td class="CodeFont">NO</td>
                         <td>
-                            <p class="noSpaceAbove">The <span class="CodeFont">UUID</span> of the object receiving the permission.</p>
-                            <p>For sequence generators, the only valid values are <span class="CodeFont">SEQUENCEIDs</span> in the <span class="CodeFont">SYS.SYSSEQUENCES</span> table. </p>
-                            <p>For user-defined types, the only valid values are <span class="CodeFont">ALIASIDs</span> in the <span class="CodeFont">SYS.SYSALIASES</span> table if the <span class="CodeFont">SYSALIASES</span> ow describes a user-defined type.</p>
+                            <p class="noSpaceAbove">The <code>UUID</code> of the object receiving the permission.</p>
+                            <p>For sequence generators, the only valid values are <code>SEQUENCEIDs</code> in the <code>SYS.SYSSEQUENCES</code> table. </p>
+                            <p>For user-defined types, the only valid values are <code>ALIASIDs</code> in the <code>SYS.SYSALIASES</code> table if the <code>SYSALIASES</code> ow describes a user-defined type.</p>
                         </td>
                     </tr>
                     <tr>
@@ -67,7 +67,7 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">CHAR</td>
                         <td class="CodeFont">36</td>
                         <td class="CodeFont">NO</td>
-                        <td>The type of the permission. The only valid value is <span class="CodeFont">'USAGE'</span>.</td>
+                        <td>The type of the permission. The only valid value is <code>'USAGE'</code>.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">GRANTOR</td>
@@ -89,8 +89,8 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">1</td>
                         <td class="CodeFont">NO</td>
                         <td>
-                            <p class="noSpaceAbove">If the <span class="CodeFont">GRANTEE</span> is the owner of the sequence generator or user-defined type, this value is <span class="CodeFont">'Y'</span>.</p>
-                            <p> If the <span class="CodeFont">GRANTEE</span> is not the owner of the sequence generator or user-defined type, this value is  <span class="CodeFont">'N'</span>.</p>
+                            <p class="noSpaceAbove">If the <code>GRANTEE</code> is the owner of the sequence generator or user-defined type, this value is <code>'Y'</code>.</p>
+                            <p> If the <code>GRANTEE</code> is not the owner of the sequence generator or user-defined type, this value is  <code>'N'</code>.</p>
                         </td>
                     </tr>
                 </tbody>

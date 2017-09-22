@@ -2809,29 +2809,29 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Clauses.GroupBy">GROUP BY</h1>
-            <p>A <span class="CodeFont">GROUP BY</span> clause is part of a <span class="ItalicFont"><a href="sqlref_expressions_select.html">SelectExpression</a>,</span> that groups a result into subsets that have matching values for one or more columns. In each group, no two rows have the same value for the grouping column or columns. NULLs are considered equivalent for grouping purposes.</p>
-            <p>You typically use a <span class="CodeFont">GROUP BY</span> clause in conjunction with an aggregate expression.</p>
-            <p>Using the <span class="CodeFont">ROLLUP</span> syntax, you can specify that multiple levels of grouping  should be computed at once.</p>
+            <p>A <code>GROUP BY</code> clause is part of a <em><a href="sqlref_expressions_select.html">SelectExpression</a>,</em> that groups a result into subsets that have matching values for one or more columns. In each group, no two rows have the same value for the grouping column or columns. NULLs are considered equivalent for grouping purposes.</p>
+            <p>You typically use a <code>GROUP BY</code> clause in conjunction with an aggregate expression.</p>
+            <p>Using the <code>ROLLUP</code> syntax, you can specify that multiple levels of grouping  should be computed at once.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
 GROUP BY
   {
-  <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></span> ]*  |
-  ROLLUP ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></span>
-	   [ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></span> ]* )
+  <em><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></em> ]*  |
+  ROLLUP ( <em><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></em>
+	   [ , <em><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></em> ]* )
   }</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">column-Name-or-Position</p>
                 <p class="paramDefnFirst">Must be either the name or position of a column from
 			the current scope of the query; there can be no columns from a query block
-			outside the current scope. For example, if a <span class="CodeFont">GROUP BY</span> clause is in a subquery,
+			outside the current scope. For example, if a <code>GROUP BY</code> clause is in a subquery,
 		it cannot refer to columns in the outer query.</p>
             </div>
             <h2>Usage Notes</h2>
-            <p><span class="ItalicFont">SelectItems</span> in
-			the <span class="ItalicFont"><a href="sqlref_expressions_select.html">SelectExpression</a></span> with
-		a <span class="CodeFont">GROUP BY</span> clause must contain only aggregates or grouping columns.</p>
+            <p><em>SelectItems</em> in
+			the <em><a href="sqlref_expressions_select.html">SelectExpression</a></em> with
+		a <code>GROUP BY</code> clause must contain only aggregates or grouping columns.</p>
             <h2>Examples</h2>
         <h4>Create our Test Table:</h4>
         <div class="preWrapperWide"><pre class="Example">CREATE TABLE Test1
@@ -2884,7 +2884,7 @@ INDIV_ID |TRACK_SEQ |REC_SEQ_NBR |TRIAD_CB_&#38;|RANKING
 6 rows selected</pre></div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
             </ul>
         </div>
 	</section>
@@ -2904,7 +2904,7 @@ INDIV_ID |TRACK_SEQ |REC_SEQ_NBR |TRIAD_CB_&#38;|RANKING
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

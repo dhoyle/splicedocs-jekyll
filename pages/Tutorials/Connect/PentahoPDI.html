@@ -13,8 +13,8 @@ folder: Tutorials/Connect
             <h1>Using Pentaho PDI&#160;with Splice Machine</h1>
             <p>This topic describes using the Pentaho Data Integration ETL&#160;tool with Splice&#160;Machine. It is intended as an example of how Pentaho&#160;PDI&#160;can work with Splice Machine and data inputs and outputs in files and other databases.</p>
             <h2>About Pentaho PDI</h2>
-            <p>Pentaho Data Integration (<span class="ItalicFont">PDI</span>) is an ETL tool that is written in Java and is extensible and very powerful. It can be run as a standalone single instance ETL engine or run in a cluster. PDI&#160;uses the Kettle ETL&#160;engine.</p>
-            <div class="noteNote"><span class="ItalicFont">ETL</span>&#160;stands for <span class="ItalicFont">E</span>xtraction, <span class="ItalicFont">T</span>ransformation, and <span class="ItalicFont">L</span>oading of data.</div>
+            <p>Pentaho Data Integration (<em>PDI</em>) is an ETL tool that is written in Java and is extensible and very powerful. It can be run as a standalone single instance ETL engine or run in a cluster. PDI&#160;uses the Kettle ETL&#160;engine.</p>
+            <p class="noteNote"><em>ETL</em>&#160;stands for <em>E</em>xtraction, <em>T</em>ransformation, and <em>L</em>oading of data.</p>
             <p>Much of the power of PDI is due to the number and scope of built-in transformations that it includes, which you can drag, drop, and connect together using graphical tools. You can also define your own transformations in the language of your choice. </p>
             <p>Pentaho PDI also supports Hadoop, HBase, MapReduce, and many other big data platforms, tools, and features, whihc means that you can use it to bridge the gap between SQL&#160;and NoSQL&#160;data stores.
 The Community edition of PDI&#160;is free and full featured; it is multi-threaded, distributed, and scales out, just like Splice Machine. </p>
@@ -28,10 +28,10 @@ The Community edition of PDI&#160;is free and full featured; it is multi-threade
 
 The sample PDI job shown below shows how you can use PDI to load data from legacy databases such as Oracle and MySQL into Splice Machine and vice-versa. This job includes three Kettle routines:</p>
             <ul>
-                <li><span class="CodeFont">ky6r_adi_csv</span> loads an XML formatted file of data into Splice Machine
+                <li><code>ky6r_adi_csv</code> loads an XML formatted file of data into Splice Machine
 </li>
-                <li><span class="CodeFont">Splice to MySQL</span> extracts data from Splice Machine and inserts into MySQL</li>
-                <li><span class="CodeFont">MySQL to Splice</span> extracts data from SQL and inserts back into Splice Machine
+                <li><code>Splice to MySQL</code> extracts data from Splice Machine and inserts into MySQL</li>
+                <li><code>MySQL to Splice</code> extracts data from SQL and inserts back into Splice Machine
 
 
             </li>
@@ -104,7 +104,7 @@ The sample PDI job shown below shows how you can use PDI to load data from legac
                     </li>
                     <li>
                         <p class="topLevel">Copy data from Splice Machine to MySQL:</p>
-                        <p class="indentLevel1">Copying the data from Splice Machine to MySQL is simply an insert with a nested select. You perform an extraction (<span class="CodeFont">SELECT&#160;*</span>)&#160;from Splice Machine and then an insertion into MySQL.</p>
+                        <p class="indentLevel1">Copying the data from Splice Machine to MySQL is simply an insert with a nested select. You perform an extraction (<code>SELECT&#160;*</code>)&#160;from Splice Machine and then an insertion into MySQL.</p>
                         <div>
                             <img src="images/Using.Pentaho5.png" class="nestedTightSpacing" alt="Screen shot of copying data from Splice Machine to MySQL with PDI" />
                         </div>

@@ -14,7 +14,7 @@ folder: OnPrem/Info
 
 This topic describes workarounds for known limitations in this release of the *Splice Machine On-Premise Database* product. These can include previously unstated limitations or workarounds for problems that will be fixed in a future release.
 
-<div class="noteIcon">See the <a href="onprem_info_release.html">Release Notes</a> for a list of new features and improvements in this release.</div>
+<p class="noteIcon">See the <a href="onprem_info_release.html">Release Notes</a> for a list of new features and improvements in this release.</p>
 
 These are the notes and workarounds for known issues in our current release:
 

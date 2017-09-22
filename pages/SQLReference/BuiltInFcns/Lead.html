@@ -11,9 +11,9 @@ folder: SQLReference/BuiltInFcns
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>LEAD</h1>
-            <p><span class="CodeFont">LEAD</span> is a window function that returns the values of a specified expression that is evaluated at the specified offset number of rows after the current row in a window.</p>
+            <p><code>LEAD</code> is a window function that returns the values of a specified expression that is evaluated at the specified offset number of rows after the current row in a window.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">LEAD ( <span class="ItalicFont">expression</span> [ , <span class="ItalicFont">offset</span> ] ) OVER ( <span class="ItalicFont">overClause</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">LEAD ( <em>expression</em> [ , <em>offset</em> ] ) OVER ( <em>overClause</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">expression            </p>
@@ -22,11 +22,11 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefnFirst">An integer value that specifies the offset (number of rows)&#160;from the current row at which you want the expression evaluated.</p>
                 <p class="paramDefn">The default value is 1.</p>
                 <p class="paramName">overClause</p>
-                <p class="paramDefnFirst">See the <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause documentation.</p>
+                <p class="paramDefnFirst">See the <code><a href="sqlref_clauses_over.html">OVER</a></code>&#160;clause documentation.</p>
             </div>
-            <div class="noteRelease">Our current implementation of this function does not allow for specifying a default value, as is possible in some other database software.</div>
+            <p class="noteRelease">Our current implementation of this function does not allow for specifying a default value, as is possible in some other database software.</p>
             <h2>Usage Notes</h2>
-            <p>Splice Machine recommends that you use the <span class="CodeFont">LEAD</span>&#160;function with the <span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></span>&#160;clause to produce deterministic results.</p>
+            <p>Splice Machine recommends that you use the <code>LEAD</code>&#160;function with the <code><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></code>&#160;clause to produce deterministic results.</p>
             <h2>Results</h2>
             <p>Returns value(s)&#160;resulting from the evaluation of the specified expression; the return type is of the same value type as the date stored in the column used in the expression.</p>
             <h2>Examples</h2>
@@ -86,15 +86,15 @@ Joseph Arkman           |UT  |1450000             |NULL
             <h2>See Also</h2>
             <ul>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
-                <li><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_count.html"><span class="CodeFont">COUNT</span></a> function</li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_firstvalue.html">FIRST_VALUE</a></span>&#160;function</li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_lag.html">LAG</a></span>&#160;function</li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_lastvalue.html">LAST_VALUE</a></span>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_min.html"><span class="CodeFont">MIN</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_sum.html"><span class="CodeFont">SUM</span></a> function</li>
-                <li><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
-                <li><span class="ItalicFont"><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
+                <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+                <li><code><a href="sqlref_builtinfcns_firstvalue.html">FIRST_VALUE</a></code>&#160;function</li>
+                <li><code><a href="sqlref_builtinfcns_lag.html">LAG</a></code>&#160;function</li>
+                <li><code><a href="sqlref_builtinfcns_lastvalue.html">LAST_VALUE</a></code>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+                <li><a href="sqlref_clauses_over.html"><code>OVER</code></a>&#160;clause</li>
+                <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in the <em>Developer Guide</em>.</li>
             </ul>
         </div>
 	</section>

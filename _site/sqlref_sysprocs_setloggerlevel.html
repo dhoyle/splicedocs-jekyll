@@ -2809,16 +2809,16 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInSysProcs.SetLoggerLevel">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</span> system procedure changes the logging level of the specified logger.</p>
-            <div class="noteNote">You can read more about Splice &#160;Machine loggers and logging levels in the <a href="developers_tuning_logging.html">Logging</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</div>
+            <p>The <code>SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</code> system procedure changes the logging level of the specified logger.</p>
+            <p class="noteNote">You can read more about Splice &#160;Machine loggers and logging levels in the <a href="developers_tuning_logging.html">Logging</a> topic in our <em>Developer's Guide</em>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL(<span class="ItalicFont">loggerName</span>, <span class="ItalicFont">logLevel</span>)</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL(<em>loggerName</em>, <em>logLevel</em>)</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">loggerName</p>
                 <p class="paramDefnFirst">A&#160;string specifying the name of the logger whose log level you want to find.</p>
                 <p class="paramName">loggerLevel</p>
-                <p class="paramDefnFirst">A&#160;string specifying the new level to assign to the named logger. This must be one of the following level values, which are described in the <a href="developers_tuning_logging.html">Logging</a> topic in our <span class="ItalicFont">Developer's Guide</span>:</p>
+                <p class="paramDefnFirst">A&#160;string specifying the new level to assign to the named logger. This must be one of the following level values, which are described in the <a href="developers_tuning_logging.html">Logging</a> topic in our <em>Developer's Guide</em>:</p>
                 <ul class="bulletNested">
                     <li class="CodeFont" value="1">'TRACE'</li>
                     <li class="CodeFont" value="2">'DEBUG'</li>
@@ -2831,22 +2831,22 @@
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
             <h2>Usage Notes</h2>
-            <p>You can use the <span class="CodeFont">TRACE</span>&#160;option of the Splice Machine <span class="CodeFont">StatementManager</span> log to record the execution time of each statement:</p>
+            <p>You can use the <code>TRACE</code>&#160;option of the Splice Machine <code>StatementManager</code> log to record the execution time of each statement:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL ( 'com.splicemachine.utils.SpliceUtilities', 'TRACE');
 Statement executed</pre>
             </div>
-            <p>You can find all of the available loggers by using the <span class="CodeFont"><a href="sqlref_sysprocs_getloggers.html">SYSCS_UTIL.SYSCS_GET_LOGGERS</a></span>&#160;system procedure.</p>
+            <p>You can find all of the available loggers by using the <code><a href="sqlref_sysprocs_getloggers.html">SYSCS_UTIL.SYSCS_GET_LOGGERS</a></code>&#160;system procedure.</p>
             <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL( 'com.splicemachine.mrio.api', 'DEBUG' );
 Statement executed.</pre>
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_sysprocs_getloggers.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_LOGGERS</span></a>
+                <li><a href="sqlref_sysprocs_getloggers.html"><code>SYSCS_UTIL.SYSCS_GET_LOGGERS</code></a>
                 </li>
-                <li><a href="#"><span class="CodeFont">SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</span></a>
+                <li><a href="#"><code>SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</code></a>
                 </li>
-                <li><span class="ItalicFont"><a href="developers_tuning_logging.html">Splice Machine Logging</a></span> in our <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li><em><a href="developers_tuning_logging.html">Splice Machine Logging</a></em> in our <em>Developer's Guide</em>.</li>
             </ul>
         </div>
 	</section>
@@ -2866,7 +2866,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

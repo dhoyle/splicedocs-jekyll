@@ -11,7 +11,7 @@ folder: CmdLineReference
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Connect Command</h1>
-            <p>The <span class="AppCommand">connect</span> command connects to the database specified by <span class="CodeFont">ConnectionURLString</span>. It connects by issuing a <span class="CodeFont">getConnection</span> request with the specified URL, using <span class="CodeFont">java.sql.DriverManager </span>or <span class="CodeFont">javax.sql.DataSource </span>to set the current connection to that URL.</p>
+            <p>The <span class="AppCommand">connect</span> command connects to the database specified by <code>ConnectionURLString</code>. It connects by issuing a <code>getConnection</code> request with the specified URL, using <code>java.sql.DriverManager </code>or <code>javax.sql.DataSource </code>to set the current connection to that URL.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CONNECT ConnectionURLString
    [ AS Identifier ]</pre>
@@ -32,7 +32,7 @@ folder: CmdLineReference
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;connect 'jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin';</pre></div>
             <p>And this example includes specifies that SSL peer authentication will be enabled for the connection:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;connect 'jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication';</pre></div>
-			<div class="noteNote">You can only connect with SSL/TLS if your administrator has configured this capability for you.</div>
+			<p class="noteNote">You can only connect with SSL/TLS if your administrator has configured this capability for you.</p>
             <h2>Example 2:&#160;Connecting to the Standalone Version</h2>
             <p>If you're using the standalone version of Splice Machine, specify <span class="HighlightedCode">localhost</span> instead.</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://localhost:1527/splicedb';

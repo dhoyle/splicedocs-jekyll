@@ -589,34 +589,34 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor138">About Explain Plan</h1>
-            <p>You can use the <span class="CodeFont">explain</span> command to display what the execution plan will be for a statement without executing the statement. This topic presents and describes several examples.</p>
+            <h1>About Explain Plan</h1>
+            <p>You can use the <code>explain</code> command to display what the execution plan will be for a statement without executing the statement. This topic presents and describes several examples.</p>
             <h2>Using Explain Plan to See the Execution Plan for a Statement</h2>
             <p>To display the execution plan for a statement without actually executing the statement, use the <span class="AppCommand">explain</span> command on the statement:</p>
-            <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain <span class="ItalicFont">Statement</span>;</pre>
+            <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain <em>Statement</em>;</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">Statement</p>
                 <p class="paramDefnFirst">An SQL&#160;statement.</p>
             </div>
             <h3>Explain Plan and DDL&#160;Statements</h3>
-            <p>SQL Data Definition Language (DDL) statements have no known cost, and thus do not require optimization. Because of this, the <span class="CodeFont">explain</span> command does not work with DDL statements; attempting to <span class="CodeFont">explain</span> a DDL statement such as <span class="CodeFont">CREATE TABLE</span> will generate a syntax error. You <span class="BoldFont">cannot</span> use <span class="CodeFont">explain</span> with any of the following SQL&#160;statements:</p>
+            <p>SQL Data Definition Language (DDL) statements have no known cost, and thus do not require optimization. Because of this, the <code>explain</code> command does not work with DDL statements; attempting to <code>explain</code> a DDL statement such as <code>CREATE TABLE</code> will generate a syntax error. You <strong>cannot</strong> use <code>explain</code> with any of the following SQL&#160;statements:</p>
             <ul>
                 <li class="CodeFont" value="1">ALTER</li>
-                <li class="CodeFont" value="2">CREATE&#160;... <span class="bodyFont">(any statement that starts with <span class="CodeFont">CREATE</span>)</span></li>
-                <li class="CodeFont" value="3">DROP&#160;... <span class="bodyFont">(any statement that starts with <span class="CodeFont">DROP</span>)</span></li>
+                <li class="CodeFont" value="2">CREATE&#160;... <span class="bodyFont">(any statement that starts with <code>CREATE</code>)</span></li>
+                <li class="CodeFont" value="3">DROP&#160;... <span class="bodyFont">(any statement that starts with <code>DROP</code>)</span></li>
                 <li class="CodeFont" value="4">GRANT</li>
-                <li class="CodeFont" value="5">RENAME ... <span class="bodyFont">(any statement that starts with <span class="CodeFont">RENAME</span>)</span></li>
+                <li class="CodeFont" value="5">RENAME ... <span class="bodyFont">(any statement that starts with <code>RENAME</code>)</span></li>
                 <li class="CodeFont" value="6">REVOKE</li>
                 <li class="CodeFont" value="7">TRUNCATE&#160;TABLE</li>
             </ul>
             <h2>Explain Plan Output</h2>
-            <p>When you run the <span class="CodeFont">explain</span> command, it displays output in a tree-structured format:</p>
+            <p>When you run the <code>explain</code> command, it displays output in a tree-structured format:</p>
             <ul>
                 <li>The first row in the output summarizes the plan</li>
                 <li> Each row in the output represents a node in the tree.</li>
                 <li>For join nodes, the right side of the join is displayed first, followed by the left side.</li>
-                <li>Child node rows are indented and prefixed with '<span class="CodeFont">-&gt;</span>'.</li>
+                <li>Child node rows are indented and prefixed with '<code>-&gt;</code>'.</li>
             </ul>
             <p>The first node in the plan output contains these fields:</p>
             <table summary="Description of the fields in the first node of the explain plan output.">
@@ -630,13 +630,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">n=<span class="ItalicFont">number</span></td>
+                        <td class="CodeFont">n=<em>number</em></td>
                         <td>
                             <p class="noSpaceAbove">The number of nodes.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">rows=<span class="ItalicFont">number</span></td>
+                        <td class="CodeFont">rows=<em>number</em></td>
                         <td>
                             <p class="noSpaceAbove">The number of output rows.</p>
                         </td>
@@ -650,8 +650,8 @@
                     <tr>
                         <td class="CodeFont">engine=[engineType]</td>
                         <td>
-                            <p>engineType=<span class="CodeFont">Spark</span> means this query will be executed by our OLAP&#160;engine.</p>
-                            <p>engineType=<span class="CodeFont">control</span> means this query will be executed by our OLTP&#160;engine.</p>
+                            <p>engineType=<code>Spark</code> means this query will be executed by our OLAP&#160;engine.</p>
+                            <p>engineType=<code>control</code> means this query will be executed by our OLTP&#160;engine.</p>
                         </td>
                     </tr>
                 </tbody>
@@ -668,40 +668,40 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">[<span class="ItalicFont">node label</span>]</td>
+                        <td class="CodeFont">[<em>node label</em>]</td>
                         <td>The name of the node</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">n=<span class="ItalicFont">number</span></td>
+                        <td class="CodeFont">n=<em>number</em></td>
                         <td>
                             <p class="noSpaceAbove">The result set number.</p>
                             <p>This is primarily used internally, and can also be used to determine the relative ordering of optimization.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">totalCost=<span class="ItalicFont">number</span></td>
+                        <td class="CodeFont">totalCost=<em>number</em></td>
                         <td>
                             <p class="noSpaceAbove">The total cost to perform this operation.</p>
-                            <p>This is computed <span class="ItalicFont">as if the operation is at the top of the operation tree</span>.</p>
+                            <p>This is computed <em>as if the operation is at the top of the operation tree</em>.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">processingCost=<span class="ItalicFont">number</span></td>
+                        <td class="CodeFont">processingCost=<em>number</em></td>
                         <td>
                             <p class="noSpaceAbove">The cost to process all data in this node.</p>
                             <p>Processing includes everything except for reading the final results over the network.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">transferCost=<span class="ItalicFont">number</span></td>
+                        <td class="CodeFont">transferCost=<em>number</em></td>
                         <td>The cost to send the final results over the network to the control node.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">outputRows=<span class="ItalicFont">number</span></td>
+                        <td class="CodeFont">outputRows=<em>number</em></td>
                         <td>The total number of rows that are output.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">outputHeapSize=<span class="ItalicFont">number unit</span></td>
+                        <td class="CodeFont">outputHeapSize=<em>number unit</em></td>
                         <td>
                             <p class="noSpaceAbove">The total size of the output result set, and the unit in which that size is expressed, which is one of:</p>
                             <ul class="SecondLevel">
@@ -714,10 +714,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">partitions==<span class="ItalicFont">number</span></td>
+                        <td class="CodeFont">partitions==<em>number</em></td>
                         <td>
                             <p class="noSpaceAbove">The number of partitions involved.</p>
-                            <p><span class="ItalicFont">Partition</span> is currently equivalent to <span class="ItalicFont">Region</span>; however, this will not necessarily remain true in future releases.</p>
+                            <p><em>Partition</em> is currently equivalent to <em>Region</em>; however, this will not necessarily remain true in future releases.</p>
                         </td>
                     </tr>
                 </tbody>
@@ -759,7 +759,7 @@ Plan
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -512,16 +512,16 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor382">Connecting to Splice Machine with Python and ODBC</h1>
-            <p>This topic shows you how to compile and run a sample Python program that connects to Splice&#160;Machine using our ODBC&#160;driver. The <span class="CodeFont">SpliceODBCConnect.py</span>&#160;program does the following:</p>
+            <h1>Connecting to Splice Machine with Python and ODBC</h1>
+            <p>This topic shows you how to compile and run a sample Python program that connects to Splice&#160;Machine using our ODBC&#160;driver. The <code>SpliceODBCConnect.py</code>&#160;program does the following:</p>
             <ul>
-                <li> connects to a standalone (<span class="CodeFont">localhost</span>)&#160;version of Splice Machine</li>
+                <li> connects to a standalone (<code>localhost</code>)&#160;version of Splice Machine</li>
                 <li>retrieves and displays records from several system tables</li>
                 <li>creates a tables inserts several sample records into it</li>
                 <li>selects and aggregates records from the new table</li>
             </ul>
             <h2 id="Compile">Compile and Run the Sample Program</h2>
-            <p>This section walks you through compiling and running the <span class="CodeFont">SpliceODBCConnect.py</span>&#160;example program, in the following steps:</p>
+            <p>This section walks you through compiling and running the <code>SpliceODBCConnect.py</code>&#160;example program, in the following steps:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
@@ -530,14 +530,14 @@
                     </li>
                     <li>
                         <p class="topLevel">Install the pyodbc module</p>
-                        <p class="indentLevel1">You need to install the <span class="CodeFont">pyodbc</span> open source Python module, which implements the DB&#160;API&#160;2.0 specification and can be used with Python 2.4 or higher. See <a href="https://github.com/mkleehammer/pyodbc"  target="_blank">https://github.com/mkleehammer/pyodbc</a> for more information about this module.</p>
+                        <p class="indentLevel1">You need to install the <code>pyodbc</code> open source Python module, which implements the DB&#160;API&#160;2.0 specification and can be used with Python 2.4 or higher. See <a href="https://github.com/mkleehammer/pyodbc"  target="_blank">https://github.com/mkleehammer/pyodbc</a> for more information about this module.</p>
                         <p class="indentLevel1">To install pyodbc on the server on which you'll be running your job:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">yum install gcc-c++<br />pip install pyodbc</pre>
                         </div>
                     </li>
                     <li>
                         <p class="topLevel">Confirm that you can connect</p>
-                        <p class="indentLevel1">To confirm that you're ready to use the ODBC driver, launch the python shell and enter the following commands, replacing <span class="HighlightedCode">SpliceODBC64</span> with the name of your data source (which is found in the <span class="CodeFont">odbc.ini</span> file that you edited when installing our ODBC&#160;driver):</p>
+                        <p class="indentLevel1">To confirm that you're ready to use the ODBC driver, launch the python shell and enter the following commands, replacing <span class="HighlightedCode">SpliceODBC64</span> with the name of your data source (which is found in the <code>odbc.ini</code> file that you edited when installing our ODBC&#160;driver):</p>
                             <div class="preWrapperWide"><pre class="Example">import pyodbc
 cnxn = pyodbc.connect("DSN=SpliceODBC64")
 cursor = cnxn.cursor()
@@ -605,11 +605,11 @@ print(row.TOTAL)</pre>
                         </div>
                     </li>
                     <li>
-                        <p class="topLevel">Save the code to <span class="CodeFont">SpliceODBCConnect.py</span>.</p>
+                        <p class="topLevel">Save the code to <code>SpliceODBCConnect.py</code>.</p>
                     </li>
                     <li>
                         <p class="topLevel">Run the program:</p>
-                        <p class="indentLevel1">Run the <span class="CodeFont">SpliceODBCConnect.py</span> program as follows:</p>
+                        <p class="indentLevel1">Run the <code>SpliceODBCConnect.py</code> program as follows:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">python ./SpliceODBCConnect.py</pre>
                         </div>
                     </li>
@@ -633,7 +633,7 @@ print(row.TOTAL)</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2809,35 +2809,35 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInFcns.Trim">TRIM</h1>
-            <p>The <span class="CodeFont">TRIM</span> function that takes a character expression and returns that expression with leading and/or trailing pad characters removed. Optional parameters indicate whether leading, or trailing, or both leading and trailing pad characters should be removed, and specify the pad character that is to be removed.</p>
+            <p>The <code>TRIM</code> function that takes a character expression and returns that expression with leading and/or trailing pad characters removed. Optional parameters indicate whether leading, or trailing, or both leading and trailing pad characters should be removed, and specify the pad character that is to be removed.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TRIM( [ <span class="ItalicFont">trimOperands</span> ] <span class="ItalicFont">trimSource</span>)</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TRIM( [ <em>trimOperands</em> ] <em>trimSource</em>)</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">trimOperands</p>
-                    <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{  { <span class="ItalicFont">trimType</span> [<span class="ItalicFont">trimCharacter</span>]  FROM
-  |&#160; <span class="ItalicFont">trimCharacter</span> FROM
+                    <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{  { <em>trimType</em> [<em>trimCharacter</em>]  FROM
+  |&#160; <em>trimCharacter</em> FROM
 }</pre>
                     </div>
                     <div class="paramList">
                         <p class="paramName">trimCharacter</p>
-                        <p class="paramDefnFirst">A character expression that specifies which character to trim from the source. If this is specified, it must evaluate to either <span class="CodeFont">NULL</span>&#160;or to a character string whose length is exactly one. If left unspecified, it defaults to the space character (<span class="CodeFont">' '</span>). </p>
+                        <p class="paramDefnFirst">A character expression that specifies which character to trim from the source. If this is specified, it must evaluate to either <code>NULL</code>&#160;or to a character string whose length is exactly one. If left unspecified, it defaults to the space character (<code>' '</code>). </p>
                         <p class="paramName">trimType</p>
                             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{LEADING | TRAILING | BOTH}</pre>
                             </div>
-                        <p class="paramDefnFirst">If this value is not specified, the default value of <span class="CodeFont">BOTH</span>&#160;is used.</p>
+                        <p class="paramDefnFirst">If this value is not specified, the default value of <code>BOTH</code>&#160;is used.</p>
                     </div>
                 <p class="paramName">trimSource</p>
                 <p class="paramDefnFirst">The character expression to be trimmed</p>
             </div>
             <h2>Results</h2>
-            <p>If either <span class="ItalicFont">trimCharacter</span> or <span class="ItalicFont">trimSource</span> evaluates to <span class="CodeFont">NULL</span>, the result of the <span class="CodeFont">TRIM</span> function is <span class="CodeFont">NULL</span>. Otherwise, the result of the <span class="CodeFont">TRIM</span> function is defined as follows:</p>
+            <p>If either <em>trimCharacter</em> or <em>trimSource</em> evaluates to <code>NULL</code>, the result of the <code>TRIM</code> function is <code>NULL</code>. Otherwise, the result of the <code>TRIM</code> function is defined as follows:</p>
             <ul>
-                <li>If <span class="ItalicFont">trimType</span> is <span class="CodeFont">LEADING</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all leading occurrences of <span class="ItalicFont">trimCharacter</span> removed.</li>
-                <li>If <span class="ItalicFont">trimType</span> is <span class="CodeFont">TRAILING</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all trailing occurrences of <span class="ItalicFont">trimCharacter</span>removed.</li>
-                <li>If <span class="ItalicFont">trimType</span> is <span class="CodeFont">BOTH</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all leading AND&#160;trailing occurrences of <span class="ItalicFont">trimCharacter</span>removed.</li>
+                <li>If <em>trimType</em> is <code>LEADING</code>, the result will be the <em>trimSource</em> value with all leading occurrences of <em>trimCharacter</em> removed.</li>
+                <li>If <em>trimType</em> is <code>TRAILING</code>, the result will be the <em>trimSource</em> value with all trailing occurrences of <em>trimCharacter</em>removed.</li>
+                <li>If <em>trimType</em> is <code>BOTH</code>, the result will be the <em>trimSource</em> value with all leading AND&#160;trailing occurrences of <em>trimCharacter</em>removed.</li>
             </ul>
-            <p>If <span class="ItalicFont">trimSource</span>'s data type is <a href="sqlref_datatypes_clob.html"><span class="CodeFont">CLOB</span></a>. </p>
+            <p>If <em>trimSource</em>'s data type is <a href="sqlref_datatypes_clob.html"><code>CLOB</code></a>. </p>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt;&#160;VALUES TRIM('      Space Case   ');
@@ -2865,7 +2865,7 @@ splice&gt;&#160;VALUES&#160;TRIM('o' FROM&#160;'VooDoo');
 ----------
 VooD
 
-   -- results in an error because <span class="ItalicFont">trimCharacter</span> can only be 1 character
+   -- results in an error because <em>trimCharacter</em> can only be 1 character
 splice&gt;&#160;VALUES TRIM('Do' FROM 'VooDoo');</pre>
             </div>
             <h2>See Also</h2>
@@ -2873,17 +2873,17 @@ splice&gt;&#160;VALUES TRIM('Do' FROM 'VooDoo');</pre>
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>
                 <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
-                <li><a href="sqlref_builtinfcns_initcap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_lcase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ltrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_regexplike.html">REGEX_LIKE</a></span>&#160;operator</li>
-                <li><a href="sqlref_builtinfcns_replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_rtrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_ucase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_instr.html"><code>INSTR</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_length.html"><code>LENGTH</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_locate.html"><code>LOCATE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a>&#160;function</li>
+                <li><code><a href="sqlref_builtinfcns_regexplike.html">REGEX_LIKE</a></code>&#160;operator</li>
+                <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_ucase.html"><code>UCASE</code></a>&#160;function</li>
             </ul>
         </div>
 	</section>
@@ -2903,7 +2903,7 @@ splice&gt;&#160;VALUES TRIM('Do' FROM 'VooDoo');</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -578,15 +578,7 @@
 
 
 
-
-
 ﻿
-
-
-
-
-
-
 
 
 
@@ -653,7 +645,7 @@
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="DeployingStandalone">Installing the Standalone Version of Splice Machine</h1>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
+<p class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
             <p>This topic walks you through downloading, installing, and getting started with using the standalone version of Splice Machine. </p>
             <h2>About the Standalone Version</h2>
@@ -661,11 +653,11 @@
             <p>Note that many of our customers also use the standalone version of Splice Machine for ongoing development work. For example, if your engineers want to create stored procedures to optimize aspects of your database, they can develop and debug those procedures on the standalone version before deploying them to your cluster.</p>
             <p>This topic walks you through getting the standalone version of Splice Machine installed on your computer. Because Splice Machine is a Java application, youll have to meet some prerequisites for the way your computer supports Java. You may already have created these settings for other Java applications, but just to be sure, we list them in this tutorial for each of the supported operating systems.</p>
             <p>You can <a href="#Watch">watch the video version</a> of getting Splice Machine installed on your computer, or <a href="#Follow">follow the written instructions</a>.</p>
-            <div class="noteNote">Many other Big Data applications and services like <a href="https://hbase.apache.org/"  target="_blank">HBase</a>, <a href="https://kafka.apache.org/"  target="_blank">Kafka</a>, <a href="http://hadoop.apache.org/"  target="_blank">Hadoop</a>, <a href="https://prometheus.io"  target="_blank">Prometheus</a>, and <a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"  target="_blank">even parts of the ELK stack</a> are also written (at least partially) in Java, and so they require these extra Java setup steps as well.</div>
+            <p class="noteNote">Many other Big Data applications and services like <a href="https://hbase.apache.org/"  target="_blank">HBase</a>, <a href="https://kafka.apache.org/"  target="_blank">Kafka</a>, <a href="http://hadoop.apache.org/"  target="_blank">Hadoop</a>, <a href="https://prometheus.io"  target="_blank">Prometheus</a>, and <a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04"  target="_blank">even parts of the ELK stack</a> are also written (at least partially) in Java, and so they require these extra Java setup steps as well.</p>
 
             <div class="videoEnvelope">
                 <h2 id="Watch">Watch the Video Version</h2>
-                <p>This video walks you through setting up <span class="CodeFont">$JAVA_HOME</span> on MacOS, then configuring installation prerequisites for each of the operating systems below. We'll also do a quick install and sanity check on Splice Machine.</p>
+                <p>This video walks you through setting up <code>$JAVA_HOME</code> on MacOS, then configuring installation prerequisites for each of the operating systems below. We'll also do a quick install and sanity check on Splice Machine.</p>
                 <p><iframe class="youtube-player_0" src="https://www.youtube.com/embed/Pb25HRnPAbs?" frameborder="0" allowfullscreen="1" width="560px" height="315px"></iframe>
                 </p>
             </div>
@@ -697,7 +689,7 @@
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel"> If you have <a href="http://brew.sh/"  target="_blank">Homebrew</a> installed</p>
-                        <p class="indentLevel1">Fire up the <span class="CodeFont">Terminal</span> app and enter the following commands:</p>
+                        <p class="indentLevel1">Fire up the <code>Terminal</code> app and enter the following commands:</p>
                         <div class="preWrapper"><pre class="ShellCommand">$ brew update
 $ brew cask install java
 $ brew install rlwrap</pre>
@@ -712,19 +704,19 @@ $ brew install rlwrap</pre>
                                 </div>
                             </li>
                             <li>Open the downloaded installer and compete the installation wizard to install the JDK.</li>
-                            <li>Download and install <span class="CodeFont">rlWrap</span>. You can find rlWrap online, along with instructions for installing it using <span class="CodeFont">brew</span> or another installation method. Some experts advise using Homebrew instead of any other method.</li>
+                            <li>Download and install <code>rlWrap</code>. You can find rlWrap online, along with instructions for installing it using <code>brew</code> or another installation method. Some experts advise using Homebrew instead of any other method.</li>
                         </ol>
                     </li>
                     <li>
                         <p class="topLevel">Check that your $JAVA_HOME environment variable is set:</p>
                         <ol class="LowerAlphaPlainFont">
                             <li>
-                                <p>Edit your <span class="CodeFont">~/.bash_profile</span> file with your favorite text editor; for example:</p>
+                                <p>Edit your <code>~/.bash_profile</code> file with your favorite text editor; for example:</p>
                                 <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ sudo vi ~/.bash_profile</pre>
                                 </div>
                             </li>
                             <li>
-                                <p>Add the following <span class="CodeFont">export</span> command at the bottom of the <span class="CodeFont">.bash_profile</span> file.</p>
+                                <p>Add the following <code>export</code> command at the bottom of the <code>.bash_profile</code> file.</p>
                                 <div class="preWrapper"><pre class="Plain" xml:space="preserve">export JAVA_HOME=`/usr/libexec/java_home`</pre>
                                 </div>
                             </li>
@@ -745,12 +737,12 @@ $ brew install rlwrap</pre>
             </div>
             <h4 id="Configur2">Configure Ubuntu Linux for Splice Machine</h4>
             <p>Follow these steps to prepare your Ubuntu computer to work with Splice Machine:</p>
-            <div class="noteNote">		Installing on Linux can be a bit tricky, so please use the <span class="CodeFont">pwd</span> command to ensure that you are in the directory in which you need to be.</div>
+            <p class="noteNote">		Installing on Linux can be a bit tricky, so please use the <code>pwd</code> command to ensure that you are in the directory in which you need to be.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Install the Java SE Development Kit</p>
-                        <p class="indentLevel1">Fire up the <span class="CodeFont">Terminal</span> app and enter the following commands:</p>
+                        <p class="indentLevel1">Fire up the <code>Terminal</code> app and enter the following commands:</p>
                         <div class="preWrapper"><pre class="ShellCommand">$ sudo add-apt-repository ppa:webupd8team/java<br />$ sudo apt-get update<br />$ sudo apt-get install oracle-java8-installer
 $ sudo apt install oracle-java8-set-default</pre>
                         </div>
@@ -765,12 +757,12 @@ $ sudo apt install oracle-java8-set-default</pre>
                                 <p>Copy the resulting path to the clipboard.</p>
                             </li>
                             <li>
-                                <p>Use your favorite text editor to open <span class="CodeFont">/etc/environment</span>:</p>
+                                <p>Use your favorite text editor to open <code>/etc/environment</code>:</p>
                                 <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">sudo vi /etc/environment</pre>
                                 </div>
                             </li>
                             <li>
-                                <p>Add the following <span class="CodeFont">export</span> command at the bottom of the <span class="CodeFont">/etc/environment</span> file.</p>
+                                <p>Add the following <code>export</code> command at the bottom of the <code>/etc/environment</code> file.</p>
                                 <div class="preWrapper"><pre class="Plain" xml:space="preserve">JAVA_HOME="/usr/lib/jvm/java-8-oracle"</pre>
                                 </div>
                             </li>
@@ -800,7 +792,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                             <li>rlwrap</li>
                             <li>wget</li>
                         </ul>
-                        <p>You can use the <span class="CodeFont">apt-get</span> package manager to install each of these packages, using a command line like this:</p>
+                        <p>You can use the <code>apt-get</code> package manager to install each of these packages, using a command line like this:</p>
                         <div class="preWrapper"><pre class="ShellCommand">$ sudo apt-get install &lt;packagename&gt;<br /></pre>
                         </div>
                     </li>
@@ -839,12 +831,12 @@ $ sudo apt install oracle-java8-set-default</pre>
             </div>
             <h4 id="Configur3">Configure CentOS/Red Hat Enterprise Linux (RHEL) for Splice Machine</h4>
             <p>Follow these steps to prepare your RHEL computer to work with Splice Machine:</p>
-            <div class="noteNote">		Installing on Linux can be a bit tricky, so please use the <span class="CodeFont">pwd</span> command to ensure that you are in the directory in which you need to be.</div>
+            <p class="noteNote">		Installing on Linux can be a bit tricky, so please use the <code>pwd</code> command to ensure that you are in the directory in which you need to be.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Install the Java SE Development Kit</p>
-                        <p class="indentLevel1">Fire up the <span class="CodeFont">Terminal</span> app and enter the following commands:</p>
+                        <p class="indentLevel1">Fire up the <code>Terminal</code> app and enter the following commands:</p>
                         <p>To install JDK 8, run one of the following sets of commands:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand">$ cd /opt/<br />$ wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz"<br />$ tar xzf jdk-8u121-linux-i586.tar.gz</pre>
                         </div>
@@ -857,7 +849,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                     </li>
                     <li>
                         <p class="topLevel">Set up sudo rights</p>
-                        <p>Your User ID must be in the <span class="CodeFont">sudoers</span> file. To do so, please see the following web page:</p>
+                        <p>Your User ID must be in the <code>sudoers</code> file. To do so, please see the following web page:</p>
                         <div class="preWrapperWide"><pre class="Plain"><a href="https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos"  target="_blank">https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos</a></pre>
                         </div>
                     </li>
@@ -870,17 +862,17 @@ $ sudo apt install oracle-java8-set-default</pre>
                                 </div>
                             </li>
                             <li>
-                                <p>Configure your <span class="CodeFont">$JAVA_HOME</span> environment variable to the path you found in the previous step, as follows:</p>
+                                <p>Configure your <code>$JAVA_HOME</code> environment variable to the path you found in the previous step, as follows:</p>
                                 <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ echo export JAVA_HOME=/opt/jdk1.8.0_121 &gt;/etc/profile.d/javaenv.sh</pre>
                                 </div>
                             </li>
                             <li>
-                                <p>Make sure your <span class="CodeFont">$JRE_HOME</span> variable is set up:</p>
+                                <p>Make sure your <code>$JRE_HOME</code> variable is set up:</p>
                                 <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">$ echo export JRE_HOME=/opt/jdk1.8.0_121/jre &gt;/etc/profile.d/javaenv.sh</pre>
                                 </div>
                             </li>
                             <li>
-                                <p>Set up your <span class="CodeFont">$PATH</span> variable for your JVM:</p>
+                                <p>Set up your <code>$PATH</code> variable for your JVM:</p>
                                 <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">$ echo export PATH=$PATH:/opt/jdk1.8.0_121/bin:/opt/jdk1.8.0_121/jre/bin &gt;/etc/profile.d/javaenv.sh</pre>
                                 </div>
                             </li>
@@ -956,7 +948,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Download the Splice Machine installer.</p>
-                        <p class="indentLevel1">Visit this page: <span class="CodeFont"><a href=""  target="_blank"></a></span>.</p>
+                        <p class="indentLevel1">Visit this page: <code><a href=""  target="_blank"></a></code>.</p>
                     </li>
                     <li>
                         <p class="topLevel">Copy the downloaded tarball (.gz file) to the directory on your computer in which you want to install Splice Machine</p>
@@ -964,7 +956,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                     </li>
                     <li>
                         <p class="topLevel">Install Splice Machine:</p>
-                        <p class="indentLevel1">Unpack the tarball <span class="CodeFont">gz</span> file that you downloaded:</p>
+                        <p class="indentLevel1">Unpack the tarball <code>gz</code> file that you downloaded:</p>
                         <table>
                             <col />
                             <col />
@@ -988,7 +980,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="indentLevel1">This creates a <span class="CodeFont">splicemachine</span> subdirectory and installs Splice Machine software in it.</p>
+                        <p class="indentLevel1">This creates a <code>splicemachine</code> subdirectory and installs Splice Machine software in it.</p>
                     </li>
                 </ol>
             </div>
@@ -1010,7 +1002,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                         </div>
                     </li>
                     <li>
-                        <p class="topLevel">Start using the Splice Machine command line interpreter by launching the <span class="CodeFont">sqlshell.sh</span> script:</p>
+                        <p class="topLevel">Start using the Splice Machine command line interpreter by launching the <code>sqlshell.sh</code> script:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">
 ./bin/sqlshell.sh</pre>
                         </div>
@@ -1024,7 +1016,7 @@ $ sudo apt install oracle-java8-set-default</pre>
                         <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">splice&gt; exit;</pre>
                         </div>
                         <div class="indented">
-                            <div class="noteNote"><span class="BoldFont">Make sure you end each command with a semicolon</span> (<span class="CodeFont">;</span>), followed by the <span class="ItalicFont">Enter</span> key or <span class="ItalicFont">Return</span> key.</div>
+                            <p class="noteNote"><strong>Make sure you end each command with a semicolon</strong> (<code>;</code>), followed by the <em>Enter</em> key or <em>Return</em> key.</p>
                         </div>
                     </li>
                 </ol>
@@ -1062,7 +1054,7 @@ $ sudo apt install oracle-java8-set-default</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

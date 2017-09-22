@@ -23,33 +23,33 @@ folder: Developers/TuningAndDebugging
 <td>Use Explain Plan</td>
 <td>
 <p>You can use the Splice Machine Explain Plan facility to display the execution plan for a statement without actually executing the statement. You can use Explain Plan to help determine options such as which join strategy to use or which index to select.</p>
-<p>See the <a href="developers_tuning_explainplan.html">About Explain Plan</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</p>
+<p>See the <a href="developers_tuning_explainplan.html">About Explain Plan</a> topic in our <em>Developer's Guide</em>.</p>
 </td>
 </tr>
 <tr>
 <td>Use Statistics</td>
-<td>Your database administrator can refine which statistics are collected on your database, which in turn enhances the operation of the query optimizer. See the <a href="developers_tuning_usingstats.html">Using Statistics</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</td>
+<td>Your database administrator can refine which statistics are collected on your database, which in turn enhances the operation of the query optimizer. See the <a href="developers_tuning_usingstats.html">Using Statistics</a> topic in our <em>Developer's Guide</em>.</td>
 </tr>
 <tr>
-<td>Use <span class="CodeFont">WHERE</span>&nbsp;clauses</td>
-<td>Use a <span class="CodeFont">WHERE</span> clause in your queries to restrict how much data is scanned.</td>
+<td>Use <code>WHERE</code>&nbsp;clauses</td>
+<td>Use a <code>WHERE</code> clause in your queries to restrict how much data is scanned.</td>
 </tr>
 <tr>
 <td>Use indexes</td>
 <td>
-<p class="noSpaceAbove">You can speed up a query by having an index on the criteria used in the <span class="CodeFont">WHERE</span> clause, or if the <span class="CodeFont">WHERE</span> clause is using a primary key.</p>
+<p class="noSpaceAbove">You can speed up a query by having an index on the criteria used in the <code>WHERE</code> clause, or if the <code>WHERE</code> clause is using a primary key.</p>
 <p>Composite indexes work well for optimizing queries.</p>
 </td>
 </tr>
 <tr>
-<td>Use Splice Machine <span class="ItalicFont">query hints</span></td>
+<td>Use Splice Machine <em>query hints</em></td>
 <td>The Splice Machine query optimizer allows you to <a href="#Using">provide hints</a> to help in the optimization process.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="Using">Using Select Without a Table</h2>
 <p>Sometimes you want to execute SQL scalar expressions without having a table context. For example, you might want to create a query that evaluates an expression and returns a table with a single row and one column. Or you might want to evaluate a list of comma-separated expressions and return a table with a single row and multiple columns one for each expression.</p>
-<p>In Splice&nbsp;Machine, you can execute queries without a table by using the <span class="CodeFont">sysibm.sysdummy1</span> dummy table. Here's the syntax:</p>
+<p>In Splice&nbsp;Machine, you can execute queries without a table by using the <code>sysibm.sysdummy1</code> dummy table. Here's the syntax:</p>
 <div class="fcnWrapperWide">
 <pre class="FcnSyntax" xml:space="preserve">select expression FROM&nbsp;sysibm.dummy1</pre>
 </div>
@@ -58,8 +58,8 @@ folder: Developers/TuningAndDebugging
 <pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>select 1+ 1 from sysibm.sysdummy1; </pre>
 </div>
 <h2>Using Splice Machine Query Hints</h2>
-<p>You can use <span class="ItalicFont">hints</span> to help the Splice Machine query interface optimize your database queries.</p>
-<div class="noteNote">The Splice Machine optimizer is constantly being improved, and new hint types sometimes get added. One recent addition is the ability to specify that a query should be run on (or not on)&nbsp;Spark, if possible.</div>
+<p>You can use <em>hints</em> to help the Splice Machine query interface optimize your database queries.</p>
+<p class="noteNote">The Splice Machine optimizer is constantly being improved, and new hint types sometimes get added. One recent addition is the ability to specify that a query should be run on (or not on)&nbsp;Spark, if possible.</p>
 <h3>Types of Hints</h3>
 <p>There are different kinds of hints you can supply, each of which is described in a section below; here's a summary:</p>
 <table summary="Splice Machine hint types">
@@ -100,8 +100,8 @@ folder: Developers/TuningAndDebugging
 </tbody>
 </table>
 <h3>Including Hints in Your Queries</h3>
-<div class="noteIcon">Hints MUST&nbsp;ALWAYS&nbsp;be at the end of a line, meaning that you must always terminate hints with a newline character.<br /><br />You cannot add the semicolon that terminates the command immediately after a hint;&nbsp;the semicolon must go on the next line, as shown in the examples in this topic.<br /><br />Many of the examples in this section show usage of hints on the <span class="CodeFont">splice&gt;</span>&nbsp;command line. Follow the same rules when using hints programmatically.</div>
-<p>Hints can be used in two locations:&nbsp;after a table identifier or after a <span class="CodeFont">FROM</span>&nbsp;clause. Some hint types can be use after a table identifier, and some can be used after a <span class="CodeFont">FROM</span>&nbsp;clause:</p>
+<p class="noteIcon">Hints MUST&nbsp;ALWAYS&nbsp;be at the end of a line, meaning that you must always terminate hints with a newline character.<br /><br />You cannot add the semicolon that terminates the command immediately after a hint;&nbsp;the semicolon must go on the next line, as shown in the examples in this topic.<br /><br />Many of the examples in this section show usage of hints on the <code>splice&gt;</code>&nbsp;command line. Follow the same rules when using hints programmatically.</p>
+<p>Hints can be used in two locations:&nbsp;after a table identifier or after a <code>FROM</code>&nbsp;clause. Some hint types can be use after a table identifier, and some can be used after a <code>FROM</code>&nbsp;clause:</p>
 <table>
 <thead>
 <tr><th>Hint after a:</th><th>Hint types</th><th>Example</th></tr>
@@ -119,7 +119,7 @@ folder: Developers/TuningAndDebugging
 <td class="CodeFont"><span class="Example">SELECT&nbsp;*&nbsp;FROM<br /> &nbsp;&nbsp; member_info&nbsp;m, rewards r,<br />&nbsp;&nbsp;&nbsp;points p --SPLICE-PROPERTIES&nbsp;index=ie_point WHERE...</span></td>
 </tr>
 <tr>
-<td>A <span class="CodeFont">FROM</span>&nbsp;clause</td>
+<td>A <code>FROM</code>&nbsp;clause</td>
 <td class="CodeFont">
 <p>joinOrder</p>
 </td>
@@ -137,9 +137,9 @@ folder: Developers/TuningAndDebugging
 , my_table_2 --splice-properties index=my_index_2
 WHERE my_table_1.id = my_table_2.parent_id;</pre>
 </div>
-<div class="noteNote">In the above query, the first command line ends with the first index hint, because hints must always be the last thing on a command line. That's why the comma separating the table specifications appears at the beginning of the next line.</div>
+<p class="noteNote">In the above query, the first command line ends with the first index hint, because hints must always be the last thing on a command line. That's why the comma separating the table specifications appears at the beginning of the next line.</p>
 <h3 id="Index">Index Hints</h3>
-<p>Use <span class="ItalicFont">index hints</span> to tell the query interface how to use certain indexes for an operation.</p>
+<p>Use <em>index hints</em> to tell the query interface how to use certain indexes for an operation.</p>
 <p>To force the use of a particular index, you can specify the index name; for example:</p>
 <div class="preWrapperWide">
 <pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>SELECT&nbsp;* FROM&nbsp;my_table --splice-properties index=my_index<br /><span class="AppCommand">&gt; </span>;</pre>
@@ -155,15 +155,15 @@ WHERE my_table_1.id = my_table_2.parent_id;</pre>
 <span class="AppCommand">&gt; </span>WHERE my_table_1.id = my_table_2.parent_id;</pre>
 </div>
 <h4>Important Note About Placement of Index Hints</h4>
-<p>Each <span class="CodeFont">index</span> hint in a query <span class="BoldFont">MUST</span>&nbsp;be specified alongside the table containing the index, or an error will occur.</p>
-<p>For example, if we have a table named <span class="CodeFont">points</span> with an index named <span class="CodeFont">ie_point</span> and another table named <code>rewards</code> with an index named <code>ie_rewards</code>, then this hint works as expected:</p>
+<p>Each <code>index</code> hint in a query <strong>MUST</strong>&nbsp;be specified alongside the table containing the index, or an error will occur.</p>
+<p>For example, if we have a table named <code>points</code> with an index named <code>ie_point</code> and another table named <code>rewards</code> with an index named <code>ie_rewards</code>, then this hint works as expected:</p>
 <div class="preWrapper">
 <pre class="Example" xml:space="preserve">SELECT&nbsp;*&nbsp;FROM<br />   member_info&nbsp;m,
    rewards r,
    points p    --SPLICE-PROPERTIES&nbsp;index=ie_point
 WHERE...</pre>
 </div>
-<p>But the following hint will generate an error because <span class="CodeFont">ie_rewards</span> is not an index on the points table.</p>
+<p>But the following hint will generate an error because <code>ie_rewards</code> is not an index on the points table.</p>
 <div class="preWrapper">
 <pre class="Example" xml:space="preserve">SELECT&nbsp;*&nbsp;FROM
    member_info&nbsp;m,
@@ -172,12 +172,12 @@ WHERE...</pre>
 WHERE...</pre>
 </div>
 <h3 id="JoinOrder">JoinOrder Hints</h3>
-<p>Use <span class="CodeFont">JoinOrder</span> hints to tell the query interface in which order to join two tables. You can specify these values for a <span class="CodeFont">JoinOrder</span> hint:</p>
+<p>Use <code>JoinOrder</code> hints to tell the query interface in which order to join two tables. You can specify these values for a <code>JoinOrder</code> hint:</p>
 <ul>
-<li>Use <span class="CodeFont">joinOrder=FIXED</span> to tell the query optimizer to order the table join according to how where they are named in the <span class="CodeFont">FROM</span>&nbsp;clause.</li>
+<li>Use <code>joinOrder=FIXED</code> to tell the query optimizer to order the table join according to how where they are named in the <code>FROM</code>&nbsp;clause.</li>
 <li>
-<p>Use <span class="CodeFont">joinOrder=UNFIXED</span> to specify that the query optimizer can rearrange the table order.</p>
-<div class="noteNote"><span class="CodeFont">joinOrder=UNFIXED</span>&nbsp;is the default, which means that you don't need to specify this hint to allow the optimizer to rearrange the table order.</div>
+<p>Use <code>joinOrder=UNFIXED</code> to specify that the query optimizer can rearrange the table order.</p>
+<p class="noteNote"><code>joinOrder=UNFIXED</code>&nbsp;is the default, which means that you don't need to specify this hint to allow the optimizer to rearrange the table order.</p>
 </li>
 </ul>
 <p>Here are examples:</p>
@@ -197,13 +197,13 @@ WHERE...</pre>
 </tbody>
 </table>
 <h3 id="JoinStrategy">JoinStrategy Hints</h3>
-<p>You can use a <span class="CodeFont">JoinStrategy</span> hint in conjunction with a <span class="CodeFont">joinOrder</span> hint to tell the query interface how to process a join. For example, this query specifies that the <span class="CodeFont">SORTMERGE</span>&nbsp;join strategy should be used:</p>
+<p>You can use a <code>JoinStrategy</code> hint in conjunction with a <code>joinOrder</code> hint to tell the query interface how to process a join. For example, this query specifies that the <code>SORTMERGE</code>&nbsp;join strategy should be used:</p>
 <div class="preWrapperWide">
 <pre class="Example" xml:space="preserve">SELECT&nbsp;* FROM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--SPLICE-PROPERTIES joinOrder=fixed
  &nbsp;&nbsp;mytable1 e, mytable2 t --SPLICE-PROPERTIES&nbsp;joinStrategy=SORTMERGE
 &nbsp;&nbsp;&nbsp;WHERE e.id = t.parent_id;</pre>
 </div>
-<p>And this uses a <span class="CodeFont">joinOrder</span> hint along with two <span class="CodeFont">joinStrategy</span> hints:</p>
+<p>And this uses a <code>joinOrder</code> hint along with two <code>joinStrategy</code> hints:</p>
 <div class="preWrapperWide">
 <pre class="Example" xml:space="preserve">SELECT *
   FROM --SPLICE-PROPERTIES joinOrder=fixed
@@ -219,44 +219,44 @@ WHERE...</pre>
 <tbody>
 <tr><th>JoinStrategy Value</th><th>Strategy Description</th></tr>
 <tr>
-<td><span class="CodeFont">BROADCAST</span></td>
+<td><code>BROADCAST</code></td>
 <td>
-<p class="noSpaceAbove">Read the results of the Right Result Set (<span class="ItalicFont">RHS</span>) into memory, then for each row in the left result set (<span class="ItalicFont">LHS</span>), perform a local lookup to determine the right side of the join.</p>
-<p class="noSpaceAbove"><span class="CodeFont">BROADCAST</span> will only work on equijoin (<span class="CodeFont">=</span>) predicates that do not include a function call.</p>
+<p class="noSpaceAbove">Read the results of the Right Result Set (<em>RHS</em>) into memory, then for each row in the left result set (<em>LHS</em>), perform a local lookup to determine the right side of the join.</p>
+<p class="noSpaceAbove"><code>BROADCAST</code> will only work on equijoin (<code>=</code>) predicates that do not include a function call.</p>
 </td>
 </tr>
 <tr>
-<td><span class="CodeFont">MERGE</span></td>
+<td><code>MERGE</code></td>
 <td>
 <p class="noSpaceAbove">Read the Right and Left result sets simultaneously in order and join them together as they are read.</p>
-<p class="noSpaceAbove"><span class="CodeFont">MERGE</span> joins require that both the left and right result sets be sorted according to the join keys. <span class="CodeFont">MERGE</span> requires an equijoin predicate that does not include a function call.</p>
+<p class="noSpaceAbove"><code>MERGE</code> joins require that both the left and right result sets be sorted according to the join keys. <code>MERGE</code> requires an equijoin predicate that does not include a function call.</p>
 </td>
 </tr>
 <tr>
-<td><span class="CodeFont">NESTEDLOOP</span></td>
+<td><code>NESTEDLOOP</code></td>
 <td>
 <p>For each row on the left, fetch the values on the right that match the join.</p>
-<p><span class="CodeFont">NESTEDLOOP</span> is the only join that can work with any join predicate of any type; however this type of join is generally very slow.</p>
+<p><code>NESTEDLOOP</code> is the only join that can work with any join predicate of any type; however this type of join is generally very slow.</p>
 </td>
 </tr>
 <tr>
-<td><span class="CodeFont">SORTMERGE</span></td>
+<td><code>SORTMERGE</code></td>
 <td>
-<p class="noSpaceAbove">Re-sort both the left and right sides according to the join keys, then perform a <span class="CodeFont">MERGE</span> join on the results.</p>
-<p class="noSpaceAbove"><span class="CodeFont">SORTMERGE</span> requires an equijoin predicate with no function calls.</p>
+<p class="noSpaceAbove">Re-sort both the left and right sides according to the join keys, then perform a <code>MERGE</code> join on the results.</p>
+<p class="noSpaceAbove"><code>SORTMERGE</code> requires an equijoin predicate with no function calls.</p>
 </td>
 </tr>
 </tbody>
 </table>
 <h3 id="Pinned">Pinned Table Hint</h3>
-<p class="indentLevel1">You can use the <span class="CodeFont">pin</span> hint to specify to specify that you want a query to run against a pinned version of a table.</p>
+<p class="indentLevel1">You can use the <code>pin</code> hint to specify to specify that you want a query to run against a pinned version of a table.</p>
 <div class="preWrapperWide">
 <pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>PIN&nbsp;TABLE&nbsp;myTable;<br /><span class="AppCommand">splice&gt; </span>SELECT&nbsp;COUNT(*) FROM my_table --splice-properties pin=true<br /><span class="AppCommand">&gt; </span>;</pre>
 </div>
-<p class="indentLevel1">You can read more about pinning tables in the <span class="CodeFont"><a href="sqlref_statements_pintable.html">PIN&nbsp;TABLE</a></span>&nbsp;statement topic in our <span class="ItalicFont">SQL&nbsp;Reference Guide</span>.</p>
+<p class="indentLevel1">You can read more about pinning tables in the <code><a href="sqlref_statements_pintable.html">PIN&nbsp;TABLE</a></code>&nbsp;statement topic in our <em>SQL&nbsp;Reference Guide</em>.</p>
 <h3 id="Spark">Spark Hints</h3>
-<p class="indentLevel1">You can use the <span class="CodeFont">useSpark</span> hint to specify to the optimizer that you want a query to run on (or not on)&nbsp;Spark. The Splice Machine query optimizer automatically determines whether to run a query through our Spark engine or our HBase engine, based on the type of query; you can override this by using a hint:</p>
-<div class="noteNote">The Splice&nbsp;Machine optimizer uses its estimated cost for a query to decide whether to use spark. If your statistics are out of date, the optimizer may end up choosing the wrong engine for the query.</div>
+<p class="indentLevel1">You can use the <code>useSpark</code> hint to specify to the optimizer that you want a query to run on (or not on)&nbsp;Spark. The Splice Machine query optimizer automatically determines whether to run a query through our Spark engine or our HBase engine, based on the type of query; you can override this by using a hint:</p>
+<p class="noteNote">The Splice&nbsp;Machine optimizer uses its estimated cost for a query to decide whether to use spark. If your statistics are out of date, the optimizer may end up choosing the wrong engine for the query.</p>
 <div class="preWrapperWide">
 <pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>SELECT&nbsp;COUNT(*) FROM my_table --splice-properties useSpark=true<br /><span class="AppCommand">&gt; </span>;</pre>
 </div>
@@ -265,13 +265,13 @@ WHERE...</pre>
 <pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>SELECT&nbsp;COUNT(*) FROM your_table --splice-properties useSpark=false<br /><span class="AppCommand">&gt; </span>;</pre>
 </div>
 <h3 id="Delete">Delete Hints</h3>
-<p class="indentLevel1">You can use the <span class="CodeFont">bulkDeleteDirectory</span> hint to specify that you want to use our bulk delete feature to optimize the deletion of a large amount of data. Similar to our <a href="tutorials_ingest_hfiles.html">bulk import feature</a>, bulk delete generates HFiles, which allows us to bypass the Splice Machine write pipeline and HBase write path when performing the deletion. This can significantly speed up the deletion process.</p>
+<p class="indentLevel1">You can use the <code>bulkDeleteDirectory</code> hint to specify that you want to use our bulk delete feature to optimize the deletion of a large amount of data. Similar to our <a href="tutorials_ingest_hfiles.html">bulk import feature</a>, bulk delete generates HFiles, which allows us to bypass the Splice Machine write pipeline and HBase write path when performing the deletion. This can significantly speed up the deletion process.</p>
 <p class="indentLevel1">You need to specify the directory to which you want the temporary HFiles written; you must have write permissions on this directory to use this feature. If you're specifying an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
 </p>
 <div class="preWrapperWide">
 <pre class="Example" xml:space="preserve"><span class="AppCommand">splice&gt; </span>DELETE&nbsp;FROM my_table --splice-properties bulkDeleteDirectory='/bulkFilesPath'
 ;</pre>
 </div>
-<div class="noteNote">We recommend performing a major compaction on your database after deleting a large amount of data; you should also be aware of our new <span class="CodeFont"><a href="sqlref_sysprocs_purgedeletedrows.html">SYSCS_UTIL.SET_PURGE_DELETED_ROWS</a></span> system procedure, which you can call before a compaction to specify that you want the data physically (not just logically) deleted during compaction.</div>
+<p class="noteNote">We recommend performing a major compaction on your database after deleting a large amount of data; you should also be aware of our new <code><a href="sqlref_sysprocs_purgedeletedrows.html">SYSCS_UTIL.SET_PURGE_DELETED_ROWS</a></code> system procedure, which you can call before a compaction to specify that you want the data physically (not just logically) deleted during compaction.</p>
 </div>
 </section>

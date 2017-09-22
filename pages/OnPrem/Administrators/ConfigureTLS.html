@@ -16,8 +16,8 @@ folder: OnPrem/InstallingSpliceMachine
             <p>This topic describes how to configure SSL/TLS on your cluster to support secure JDBC connections to your Splice Machine database.</p>
 			<p>By default, JDBC connections to your database are not encrypted. You can configure SSL/TLS authentication for two different encryption modes:</p>
 			<ul class="bullet">
-				<li><span class="ItalicFont">Basic SSL/TLS Encryption</span> encrypts the data sent back and forth between a client and the server.</li>
-				<li><span class="ItalicFont"><p>SSL/TLS Encryption with Peer Authentication</span> encrypts the data sent between client and server, and adds a layer of authentication known as peer authentication, which uses trusted certificates to authenticate the sender and/or receiver. <p>The term <span class="ItalicFont">peer</span> is used in this context to refer to the other side of a server-client communication: the client is the server's peer, and the server is the client's peer.You can set up peer authentication on a server, a client, or both.</p>
+				<li><em>Basic SSL/TLS Encryption</em> encrypts the data sent back and forth between a client and the server.</li>
+				<li><em><p>SSL/TLS Encryption with Peer Authentication</em> encrypts the data sent between client and server, and adds a layer of authentication known as peer authentication, which uses trusted certificates to authenticate the sender and/or receiver. <p>The term <em>peer</em> is used in this context to refer to the other side of a server-client communication: the client is the server's peer, and the server is the client's peer.You can set up peer authentication on a server, a client, or both.</p>
 				</li>
 			</ul>
 			<p>The remainder of this topic shows you how to configure this authentication, in these sections:</p>
@@ -28,12 +28,12 @@ folder: OnPrem/InstallingSpliceMachine
 				<li><a href="#reboots">Restarting your Server</a> describes how to restart the server so that your updated security options take effect.</li>
 				<li><a href="#connects">Connecting Securely From a Client</a> walks you through connecting securely from various clients.</li>
 			</ul>
-			<div class="noteNote">We use <span class="HighlightedCode">highlighted text</span> in this section to display sample names that you should replace with your own names.</div>
+			<p class="noteNote">We use <span class="HighlightedCode">highlighted text</span> in this section to display sample names that you should replace with your own names.</p>
 			<h2 id="gencerts">Generating Certificates</h2>
 			<p>This section shows you how to generate the required, trusted certificates on your server and client(s).</p>
-			<div class="noteIcon">To configure your database for SSL/TLS authentication, you'll need to use the <span class="ItalicFont">keytool</span> application that is included with the JDK; this tool is documented here: <a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html">http://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html</a>.</div>
+			<p class="noteIcon">To configure your database for SSL/TLS authentication, you'll need to use the <em>keytool</em> application that is included with the JDK; this tool is documented here: <a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html">http://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html</a>.</p>
 			<h3>Generate a Server Certificate</h3>
-			<p>Use the <span class="ItalicFont">keytool</span> to generate a key-pair in the keystore. Here's an example of interacting with the keytool:</p>
+			<p>Use the <em>keytool</em> to generate a key-pair in the keystore. Here's an example of interacting with the keytool:</p>
 			<div class="preWrap">
 				<pre class="ShellCommand">% keytool -genkey -alias MyServerName -keystore ~/vault/ServerKeyStore
 Enter keystore password: <span class="HighlightedCode">myPassword</span>
@@ -57,7 +57,7 @@ Enter key password for &lt;MyServerName&gt;
 	    (RETURN if same as keystore password): <span class="HighlightedCode">myPassword</span>
 </pre>
 			</div>
-			<p>Now issue this <span class="ItalicFont">keytool</span> command to generate the certificate from the key you just created:</p>
+			<p>Now issue this <em>keytool</em> command to generate the certificate from the key you just created:</p>
 			<div class="preWrap">
 				<pre class="ShellCommand">% keytool -export -alias <span class="HighlightedCode">MyServerName</span> \
 > -keystore <span class="HighlightedCode">~/value/ServerKeyStore</span> -rfc -file <span class="HighlightedCode">ServerCertificate</span> \
@@ -70,7 +70,7 @@ total 8
 %</pre>
 			</div>
 			<h3>Generate Client Certificates</h3>
-			<p>Now use the <span class="ItalicFont">keytool</span> to generate a client key-pair in the keystore; for example:</p>
+			<p>Now use the <em>keytool</em> to generate a client key-pair in the keystore; for example:</p>
 			<div class="preWrap">
 				<pre class="ShellCommand">% keytool -genkey -alias MyClientName -keystore ~/vault/ClientKeyStore</pre>
 			</div>
@@ -95,7 +95,7 @@ total 8
 				<li><a href="#deploy">Secure and deploy the keystore and trust store.</a></li>
 			</ul>
 			<h3 id="importserver">Import Server Certificate to Client Keystore</h3>
-			<p>You need to copy (<span class="CodeFont">scp</span>) the server certificate to the client, and then use a <span class="ItalicFont">keytool</span> command like this to import the certificate:</p>
+			<p>You need to copy (<code>scp</code>) the server certificate to the client, and then use a <em>keytool</em> command like this to import the certificate:</p>
 			<div class="preWrap"><pre class="ShellCommand">
 % keytool -import -alias <span class="HighlightedCode">favoriteServerCertificate</span> \
  -file <span class="HighlightedCode">ServerCertificate</span> -keystore <span class="HighlightedCode">~/vault/ClientTrustStore</span> \
@@ -121,7 +121,7 @@ KeyIdentifier [
 ]
 ]</pre></div>
 			<h3 id="importclient">Import Client Certificates to Server Keystore</h3>
-			<p>Next, copy (<span class="CodeFont">scp</span>) the client certificate to the region server and use <span class="ItalicFont">keytool</span> to import the certificate:</p>
+			<p>Next, copy (<code>scp</code>) the client certificate to the region server and use <em>keytool</em> to import the certificate:</p>
 			<div class="preWrap"><pre class="ShellCommand">
 % keytool -import -alias <span class="HighlightedCode">Client_1_Certificate</span> \
  -file <span class="HighlightedCode">ClientCertificate</span> -keystore <span class="HighlightedCode">~/vault/ServerTrustStore</span> \
@@ -151,8 +151,8 @@ Trust this certificate? [no]:  yes
 Certificate was added to keystore
 %</pre></div>
 			<h3 id="deploy">Secure and Deploy the Keystore and Trust Store</h3>
-			<p>Once you've imported your certificates, you should copy the <span class="CodeFont">vault</span> directory to a location that is directly accessible from HBase. We recommend copying it to a directory such as <span class="CodeFont">/etc/vault</span> or <span class="CodeFont">/hbase/vault</span>.</p>
-			<div class="noteIcon">You <span class="BoldFont">MUST</span> deploy the vault directory to the same location on each region server, so that all region servers can access it during server startup.</div>
+			<p>Once you've imported your certificates, you should copy the <code>vault</code> directory to a location that is directly accessible from HBase. We recommend copying it to a directory such as <code>/etc/vault</code> or <code>/hbase/vault</code>.</p>
+			<p class="noteIcon">You <strong>MUST</strong> deploy the vault directory to the same location on each region server, so that all region servers can access it during server startup.</p>
 			<h2 id="updates">Updating Configuration Options</h2>
 			<p>Now that you've got your certificates all set up, you need to modify a few configuration options and restart the server to take your new security options live. On a CDH cluster, you need to update the region server Java options, which you'll find in the Admin console:</p>
 			<div class="preWrap"><pre class="Plain">CDH->HBase->Configuration->Java Configuration Options for HBase Region Server</pre></div>
@@ -180,7 +180,7 @@ Certificate was added to keystore
 				<li><a href="#zep">Connecting Securely From a Third Party Client</a></li>
 			</ul>
 			<h3 id="cmdline">Running the <span class="AppFont">splice&gt;</span> Command Line Securely</h3>
-			<p>To run the splice&gt; command line securely, you need to export several <span class="CodeFont">env</span> variables before starting <span class="CodeFont">sqlshell</span>. You can then issue a <span class="CodeFont">connect</span> command that specifies the type of security, as shown below.</p>
+			<p>To run the splice&gt; command line securely, you need to export several <code>env</code> variables before starting <code>sqlshell</code>. You can then issue a <code>connect</code> command that specifies the type of security, as shown below.</p>
 			<p>First export the environmental variables that specify your key stores:</p>
 			<div class="preWrap"><pre class="ShellCommand">export CLIENT_SSL_KEYSTORE=<span class="HighlightedCode">/home/splice/vault/ClientKeyStore</span>
 export CLIENT_SSL_KEYSTOREPASSWD=<span class="HighlightedCode">myPassword</span>
@@ -189,7 +189,7 @@ export CLIENT_SSL_TRUSTSTOREPASSWD=<span class="HighlightedCode">secretClientTru
 			</div>
 			<p>Then, start the <span class="AppCommand">splice&gt;</span> command line:</p>
 			<div class="preWrap"><pre class="ShellCommand">% ./sqlshell.sh</pre></div>
-			<p>The <span class="CodeFont">sqlshell</span> command issues a default (no security) connection command. To connect securely, add an <span class="CodeFont">ssl=</span> option to the connect command. You use different <span class="CodeFont">connect</span> commands for each of the three security modes:</p>
+			<p>The <code>sqlshell</code> command issues a default (no security) connection command. To connect securely, add an <code>ssl=</code> option to the connect command. You use different <code>connect</code> commands for each of the three security modes:</p>
 			<table>
 				<col />
 				<col />
@@ -220,10 +220,10 @@ export CLIENT_SSL_TRUSTSTOREPASSWD=<span class="HighlightedCode">secretClientTru
 				</tbody>
 			</table>
 			<h3 id="jdbcapp">Running a JDBC Client App Securely</h3>
-			<p>To use a secured connection with a JDBC client app, you need to specify a connection string that includes the <span class="CodeFont">ssl</span> option. If you don't specify this option, the default JDBC connection is unsecured, as shown in  the <span class="ItalicFont">Connect Command</span> table in the previous section.</p>
+			<p>To use a secured connection with a JDBC client app, you need to specify a connection string that includes the <code>ssl</code> option. If you don't specify this option, the default JDBC connection is unsecured, as shown in  the <em>Connect Command</em> table in the previous section.</p>
 			<p>Here's a sample declaration for a peer authenticated connection to a Splice Machine database:</p>
 			<div class="preWrap"><pre class="Example">String dbUrl = "jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication";</pre></div>
-			<p>We can create a Java program that includes that declaration and then compile it into <span class="CodeFont">SampleJDBC.java</span> with a command like this:</p>
+			<p>We can create a Java program that includes that declaration and then compile it into <code>SampleJDBC.java</code> with a command like this:</p>
 			<div class="preWrap"><pre class="Example">+ javac -classpath ".:./db-client-2.6.0.1729-SNAPSHOT.jar" ./SampleJDBC.java</pre></div>
 			<p>We can then use a command like this to execute and JDBC app with the correct SSL keystore and truststore properties:</p>
 			<div class="preWrap"><pre class="Example">% java -classpath .:./db-client-2.6.0.1729-SNAPSHOT.jar -Djavax.net.ssl.keyStore=/home/splice/vault/ClientKeyStore
@@ -245,7 +245,7 @@ export CLIENT_SSL_TRUSTSTOREPASSWD=<span class="HighlightedCode">secretClientTru
 			<h3 id="zep">Connecting Securely From a Third Party Client</h3>
 			<p>This section describes what you need to do to connect securely to your Splice Machine from a third party client. We use Zeppelin as an example; other clients will have similar requirements. For Zeppelin, follow these steps</p>
 			<ol>
-				<li>Navigate to and edit the <span class="CodeFont">bin/interpreter.sh</span> file in the <span class="CodeFont">Zeppelin</span>  installation directory.</li>
+				<li>Navigate to and edit the <code>bin/interpreter.sh</code> file in the <code>Zeppelin</code>  installation directory.</li>
 				<li>Find the <span class="CodeBoldFont">JAVA_INTP_OPTS</span> property definition.</li>
 				<li><p>Append the following SSL properties onto that definition:</p>
 					<div class="preWrap"><pre class="Plain">JAVA_INTP_OPTS+=" -Dzeppelin.log.file=${ZEPPELIN_LOGFILE} \
@@ -269,7 +269,7 @@ export CLIENT_SSL_TRUSTSTOREPASSWD=<span class="HighlightedCode">secretClientTru
 					<p>
 			            <img src="images/NewZepInterpreter.png" />
 					</p>
-					<div class="noteIcon">Be sure to provide the correct JDBC driver loaction in the artifact dependencies section.</div>
+					<p class="noteIcon">Be sure to provide the correct JDBC driver loaction in the artifact dependencies section.</p>
 				</li>
 				<li>Save the new interpreter.</li>
 				<li>Create a new Note with the new interpreter.</li>

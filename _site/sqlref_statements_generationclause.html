@@ -2810,22 +2810,22 @@
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Statements.GenerationClause">generation-clause</h1>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">GENERATED ALWAYS AS ( <span class="ItalicFont">value-expression</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">GENERATED ALWAYS AS ( <em>value-expression</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">value-expression</p>
-                <p class="paramDefnFirst">An <span class="ItalicFont"><a href="sqlref_expressions_about.html">Expression</a></span> that resolves to a single value, with some limitations:</p>
+                <p class="paramDefnFirst">An <em><a href="sqlref_expressions_about.html">Expression</a></em> that resolves to a single value, with some limitations:</p>
                     <ul>
-                        <li>The <span class="ItalicFont">generation-clause</span> may reference other non-generated columns in the table, but it must not reference any generated column. The <span class="ItalicFont">generation-clause</span> must not reference a column in another table.</li>
-                        <li>The <span class="ItalicFont">generation-clause</span> must not include subqueries.</li>
-                        <li>The <span class="ItalicFont">generation-clause</span> may invoke user-coded functions, if the functions meet the requirements in the <a href="#UserFunctions">User Function Restrictions</a> section below.</li>
+                        <li>The <em>generation-clause</em> may reference other non-generated columns in the table, but it must not reference any generated column. The <em>generation-clause</em> must not reference a column in another table.</li>
+                        <li>The <em>generation-clause</em> must not include subqueries.</li>
+                        <li>The <em>generation-clause</em> may invoke user-coded functions, if the functions meet the requirements in the <a href="#UserFunctions">User Function Restrictions</a> section below.</li>
                     </ul>
             </div>
             <h2 id="UserFunctions">User Function Restrictions</h2>
-            <p>The <span class="ItalicFont">generation-clause</span> may invoke user-coded functions, if the functions meet the following requirements:</p>
+            <p>The <em>generation-clause</em> may invoke user-coded functions, if the functions meet the following requirements:</p>
             <ul>
                 <li>The functions must not read or write SQL data.</li>
-                <li>The functions must have been declared <span class="CodeFont">DETERMINISTIC</span>.</li>
+                <li>The functions must have been declared <code>DETERMINISTIC</code>.</li>
                 <li>The functions must not invoke any of the following possibly non-deterministic system functions:<br /><ul class="SecondLevel"><li class="CodeFont" value="1"><a href="sqlref_builtinfcns_sessionuser.html">SESSION_USER</a></li></ul></li>
             </ul>
             <h2>Example</h2>
@@ -2856,7 +2856,7 @@ CREATE INDEX caseInsensitiveEmployeeName
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2809,22 +2809,22 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInFcns.Date">DATE</h1>
-            <p>The <span class="CodeFont">DATE</span> function returns a date from a value.</p>
+            <p>The <code>DATE</code> function returns a date from a value.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">DATE ( <span class="ItalicFont">expression</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">DATE ( <em>expression</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">expression
             </p>
                 <p class="paramDefnFirst">An expression that can be any of the following:</p>
-            <ul class="nested"><li class="nested" value="1">A <a href="sqlref_datatypes_longvarchar.html"><span class="CodeFont">LONG VARCHAR</span></a> value, which must represent a valid date in the form <span class="CodeFont">yyyynnn</span>, where <span class="CodeFont">yyyy</span> is a four-digit year value, and <span class="CodeFont">nnn</span> is a three-digit day value in the range 001 to 366.</li></ul>
+            <ul class="nested"><li class="nested" value="1">A <a href="sqlref_datatypes_longvarchar.html"><code>LONG VARCHAR</code></a> value, which must represent a valid date in the form <code>yyyynnn</code>, where <code>yyyy</code> is a four-digit year value, and <code>nnn</code> is a three-digit day value in the range 001 to 366.</li></ul>
             </div>
             <h2>Results</h2>
             <p>The returned result is governed by the following rules:</p>
             <ul>
-                <li>If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>; if the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span> value.</li>
+                <li>If the argument can be <code>NULL</code>, the result can be <code>NULL</code>; if the argument is <code>NULL</code>, the result is the <code>NULL</code> value.</li>
                 <li>If the argument is a date, timestamp, or valid string representation of a date or timestamp, the result is the date part of the value.</li>
-                <li>If the argument is a number, the result is the date that is <span class="CodeFont">n-1</span> days after January 1, 1970, where <span class="CodeFont">n</span> is the integral part of the number.</li>
+                <li>If the argument is a number, the result is the date that is <code>n-1</code> days after January 1, 1970, where <code>n</code> is the integral part of the number.</li>
                 <li>If the argument is a string with a length of 7, the result is a string representation of the date.</li>
             </ul>
             <h2>Examples</h2>
@@ -2834,7 +2834,7 @@
             <p>This example results in an internal representation of '1972-02-28'.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES DATE(789);</pre>
             </div>
-            <p>This example illustrates using date arithmetic with the <span class="CodeFont">DATE</span>&#160;function:</p>
+            <p>This example illustrates using date arithmetic with the <code>DATE</code>&#160;function:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select Birthdate - DATE('11/22/1963') AS "DaysSinceJFK" FROM Players WHERE ID &lt; 20;
 DaysSinceJ&amp;
 -----------
@@ -2863,23 +2863,23 @@ DaysSinceJ&amp;
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_builtinfcns_currentdate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_extract.html"><span class="CodeFont">EXTRACT</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_month.html"><span class="CodeFont">MONTH</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthname.html"><span class="CodeFont">MONTHNAME</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_now.html"><span class="CodeFont">NOW</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_quarter.html"><span class="CodeFont">QUARTER</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_char.html"><span class="CodeFont">TO_CHAR</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">TO_DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_week.html"><span class="CodeFont">WEEK</span></a> function</li>
-                <li><span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
+                <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;data type</li>
+                <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a>&#160;data type</li>
+                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
+                <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the <em>Developer's Guide</em></li>
             </ul>
         </div>
 	</section>
@@ -2899,7 +2899,7 @@ DaysSinceJ&amp;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

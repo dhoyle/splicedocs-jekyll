@@ -67,7 +67,7 @@ These are the significant new features in this release, along with their Splice 
 * Support BLOB/CLOB in ODBC
 * HAProxy and connection load balancing solution
 
-<div class="noteIcon">For additional information about new features in this release, see <a href="onprem_info_newfeatures.html">our new feature information page</a>.</div>
+<p class="noteIcon">For additional information about new features in this release, see <a href="onprem_info_newfeatures.html">our new feature information page</a>.</p>
 
 
 ## Improvements

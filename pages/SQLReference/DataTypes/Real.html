@@ -11,7 +11,7 @@ folder: SQLReference/DataTypes
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="DataTypes.Real">REAL</h1>
-            <p>The <span class="CodeFont">REAL</span> data type provides 4 bytes of storage for numbers using
+            <p>The <code>REAL</code> data type provides 4 bytes of storage for numbers using
 		IEEE floating-point notation. </p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">REAL</pre>
@@ -53,17 +53,17 @@ folder: SQLReference/DataTypes
                     </tr>
                 </tbody>
             </table>
-            <div class="noteNote">These limits are different from the <span class="CodeFont">java.lang.Float</span> Java type limits.</div>
+            <p class="noteNote">These limits are different from the <code>java.lang.Float</code> Java type limits.</p>
             <h2>Usage Notes</h2>
-            <p>Here are several usage notes for the <span class="CodeFont">REAL</span>&#160;data type:</p>
+            <p>Here are several usage notes for the <code>REAL</code>&#160;data type:</p>
             <ul>
-                <li>An exception is thrown when any double value is calculated or entered that is outside of these value ranges. Arithmetic operations <span class="BoldFont">do not</span> round their resulting values to zero. If the values are too small, you will receive an exception. The arithmetic operations take place with double arithmetic in order to detect under flows.</li>
+                <li>An exception is thrown when any double value is calculated or entered that is outside of these value ranges. Arithmetic operations <strong>do not</strong> round their resulting values to zero. If the values are too small, you will receive an exception. The arithmetic operations take place with double arithmetic in order to detect under flows.</li>
                 <li>Numeric floating point constants are limited to a length of 30 characters.
         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- this example will fail because the constant is too long:
 values 01234567890123456789012345678901e0;</pre></div></li>
                 <li>When mixed with other data types in expressions, the resulting data type follows the rules shown in <a href="sqlref_datatypes_numerictypes.html#NumericTypePromotion">Numeric type promotion in expressions</a>.</li>
                 <li>See also <a href="sqlref_datatypes_numerictypes.html#StoringValues">Storing values of one numeric data type in columns of another numeric data type</a>.</li>
-                <li>Constants always map to <span class="CodeFont"><a href="sqlref_datatypes_doubleprecision.html">DOUBLE PRECISION</a></span>; use a <span class="CodeFont">CAST</span> to convert a constant to a <span class="CodeFont">REAL</span>.</li>
+                <li>Constants always map to <code><a href="sqlref_datatypes_doubleprecision.html">DOUBLE PRECISION</a></code>; use a <code>CAST</code> to convert a constant to a <code>REAL</code>.</li>
             </ul>
         </div>
 	</section>

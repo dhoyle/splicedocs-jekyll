@@ -11,36 +11,36 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCS_UTIL.COMPUTE_SPLIT_KEY</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> system procedure computes the split keys for a table or index, prior to importing that table in HFile format. </p>
+            <p>The <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> system procedure computes the split keys for a table or index, prior to importing that table in HFile format. </p>
             <p>You must use this procedure in conjunction with two others:</p>
             <ul>
-                <li><span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>
+                <li><code><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></code>
                 </li>
-                <li> <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span></li>
+                <li> <code><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></code></li>
             </ul>
-            <p>See the <span class="ItalicFont">Usage Notes</span> section for more information and the <span class="ItalicFont">Example</span> section to see an example of using these procedures together.</p>
+            <p>See the <em>Usage Notes</em> section for more information and the <em>Example</em> section to see an example of using these procedures together.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.COMPUTE_SPLIT_KEY (
-		<span class="ItalicFont">schemaName</span>,
-		<span class="ItalicFont">tableName</span>,
-		<span class="ItalicFont">indexName</span>,
-		<span class="ItalicFont">columnList</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">fileName</span>,
-		<span class="ItalicFont">columnDelimiter</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">characterDelimiter</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">timestampFormat</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">dateFormat</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">timeFormat</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">maxBadRecords</span>,
-		<span class="ItalicFont">badRecordDirectory</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">oneLineRecords</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">charset</span><span class="CodeFont"> |&#160;null</span>,
-		<span class="ItalicFont">outputDirectory</span>
+		<em>schemaName</em>,
+		<em>tableName</em>,
+		<em>indexName</em>,
+		<em>columnList</em><code> |&#160;null</code>,
+		<em>fileName</em>,
+		<em>columnDelimiter</em><code> |&#160;null</code>,
+		<em>characterDelimiter</em><code> |&#160;null</code>,
+		<em>timestampFormat</em><code> |&#160;null</code>,
+		<em>dateFormat</em><code> |&#160;null</code>,
+		<em>timeFormat</em><code> |&#160;null</code>,
+		<em>maxBadRecords</em>,
+		<em>badRecordDirectory</em><code> |&#160;null</code>,
+		<em>oneLineRecords</em><code> |&#160;null</code>,
+		<em>charset</em><code> |&#160;null</code>,
+		<em>outputDirectory</em>
 		);</pre>
             </div>
             <div class="noteNote">
-                <p>Almost all of the parameter values that you pass to this procedure should match the parameter values that you pass to the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span> procedure. </p>
-                <p>Also note that these parameters are also used in exactly the same was as they are in the <span class="CodeFont"><a href="sqlref_sysprocs_upsertdata.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a></span>&#160;procedures.</p>
+                <p>Almost all of the parameter values that you pass to this procedure should match the parameter values that you pass to the <code><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></code> procedure. </p>
+                <p>Also note that these parameters are also used in exactly the same was as they are in the <code><a href="sqlref_sysprocs_upsertdata.html">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</a></code>&#160;procedures.</p>
             </div>
             <div class="paramList">
                 <p class="paramName">schemaName</p>
@@ -48,17 +48,17 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramName">tableName</p>
                 <p class="paramDefnFirst">The name of the table in which to compute the split key.</p>
                 <p class="paramName">indexName</p>
-                <p class="paramDefnFirst">The name of the index in which to compute the split key. If this is <span class="CodeFont">null</span>, the split key is computed for the named table.</p>
+                <p class="paramDefnFirst">The name of the index in which to compute the split key. If this is <code>null</code>, the split key is computed for the named table.</p>
                 <p class="paramName">columnList</p>
-                <p class="paramDefnFirst">The names, in single quotes, of the columns that appear in the input CSV&#160;file (specified by fileName). If this is <span class="CodeFont">null</span>, all columns of the table appear in the input file.</p>
+                <p class="paramDefnFirst">The names, in single quotes, of the columns that appear in the input CSV&#160;file (specified by fileName). If this is <code>null</code>, all columns of the table appear in the input file.</p>
                 <p class="paramName">fileName</p>
-                <p class="paramDefnFirst">The name of the CSV&#160;file that contains the split key values for the table or index. <span class="CodeFont">NULL</span>&#160;values are allowed for a key column. Here's an example of three key values, each with a <span class="CodeFont">NULL</span>&#160;value in the second column:</p>
+                <p class="paramDefnFirst">The name of the CSV&#160;file that contains the split key values for the table or index. <code>NULL</code>&#160;values are allowed for a key column. Here's an example of three key values, each with a <code>NULL</code>&#160;value in the second column:</p>
                 <div class="preWrapper"><pre class="Example">1500000|<br />3000000|<br />4500000|</pre>
                 </div>
             </div>
             <div class="paramList">
                 <p class="paramName">columnDelimiter</p>
-                <p class="paramDefnFirst">The character used to separate columns, Specify <span class="CodeFont">null</span> if using the comma (<span class="CodeFont">,</span>)&#160;character as your delimiter. </p>
+                <p class="paramDefnFirst">The character used to separate columns, Specify <code>null</code> if using the comma (<code>,</code>)&#160;character as your delimiter. </p>
                 <div>
                     <p class="paramDefn">In addition to using single characters, you can specify the following special characters as delimiters:</p>
                     <table summary="Special characters that can be used as character delimiters in imported files.">
@@ -91,14 +91,14 @@ folder: SQLReference/BuiltInSysProcs
                                 <td class="CodeFont">^a (or ^A)</td>
                                 <td>
                                     <p>Control-a</p>
-                                    <div class="noteIndent">If you are using a script file from the <span class="CodeFont">splice&gt;</span>&#160;command line, your script can contain the actual <span class="CodeFont">Control-a</span> character as the value of this parameter.</div>
+                                    <p class="noteIndent">If you are using a script file from the <code>splice&gt;</code>&#160;command line, your script can contain the actual <code>Control-a</code> character as the value of this parameter.</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <p class="paramName">characterDelimiter</p>
-                <p class="paramDefnFirst">Specifies which character is used to delimit strings in the imported data. You can specify <span class="CodeFont">null</span> or the empty string to use the default string delimiter, which is the double-quote (<span class="CodeFont">"</span>).</p>
+                <p class="paramDefnFirst">Specifies which character is used to delimit strings in the imported data. You can specify <code>null</code> or the empty string to use the default string delimiter, which is the double-quote (<code>"</code>).</p>
                 <div>
                     <p class="paramDefn">In addition to using single characters, you can specify the following special characters as delimiters:</p>
                     <table summary="Special characters that can be used as character delimiters in imported files.">
@@ -131,36 +131,36 @@ folder: SQLReference/BuiltInSysProcs
                                 <td class="CodeFont">^a (or ^A)</td>
                                 <td>
                                     <p>Control-a</p>
-                                    <div class="noteIndent">If you are using a script file from the <span class="CodeFont">splice&gt;</span>&#160;command line, your script can contain the actual <span class="CodeFont">Control-a</span> character as the value of this parameter.</div>
+                                    <p class="noteIndent">If you are using a script file from the <code>splice&gt;</code>&#160;command line, your script can contain the actual <code>Control-a</code> character as the value of this parameter.</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <p class="paramDefnFirst">If your input contains control characters such as newline characters, make sure that those characters are embedded within delimited strings.</p>
-                <div class="noteNote">To use the single quote (<span class="CodeFont">'</span>) character as your string delimiter, you need to escape that character. This means that you specify four quotes (<span class="CodeFont">''''</span>)&#160;as the value of this parameter. This is standard SQL&#160;syntax.<br /><br />	The <a class="WithinBook MCXref xref xrefWithinBook" href="#Examples" xrefformat="{para}">Example 1</a> section below contains an example that uses the single quote as the string delimiter character.</div>
+                <p class="noteNote">To use the single quote (<code>'</code>) character as your string delimiter, you need to escape that character. This means that you specify four quotes (<code>''''</code>)&#160;as the value of this parameter. This is standard SQL&#160;syntax.<br /><br />	The <a class="WithinBook MCXref xref xrefWithinBook" href="#Examples" xrefformat="{para}">Example 1</a> section below contains an example that uses the single quote as the string delimiter character.</p>
                 <p class="paramName">timestampFormat</p>
                 <p class="paramDefnFirst">
-			The format of timestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no time columns in the file, or if the format of any timestamps in the file match the <span class="CodeFont">Java.sql.Timestamp</span> default format, which is: "<span class="ItalicFont">yyyy-MM-dd HH:mm:ss</span>". See the <a class="WithinBook MCXref xref xrefWithinBook" href="#TimestampFormats" xrefformat="{para}">About Timestamp Formats</a> section below for more information about timestamps.</p>
-                <div class="noteNote">All of the timestamps in the file you are importing must use the same format.</div>
+			The format of timestamps stored in the file. You can set this to <code>null</code> if there are no time columns in the file, or if the format of any timestamps in the file match the <code>Java.sql.Timestamp</code> default format, which is: "<em>yyyy-MM-dd HH:mm:ss</em>". See the <a class="WithinBook MCXref xref xrefWithinBook" href="#TimestampFormats" xrefformat="{para}">About Timestamp Formats</a> section below for more information about timestamps.</p>
+                <p class="noteNote">All of the timestamps in the file you are importing must use the same format.</p>
                 <p class="paramName">dateFormat</p>
-                <p class="paramDefnFirst">The format of datestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no date columns in the file, or if the format of any dates in the file match pattern: "<span class="ItalicFont">yyyy-MM-dd</span>".<br /></p>
+                <p class="paramDefnFirst">The format of datestamps stored in the file. You can set this to <code>null</code> if there are no date columns in the file, or if the format of any dates in the file match pattern: "<em>yyyy-MM-dd</em>".<br /></p>
                 <p class="paramName">timeFormat</p>
-                <p class="paramDefnFirst">The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "<span class="ItalicFont">HH:mm:ss</span>".</p>
+                <p class="paramDefnFirst">The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "<em>HH:mm:ss</em>".</p>
                 <div>
                     <p class="paramName">maxBadRecords</p>
                     <p class="paramDefnFirst">The number of rejected (bad)&#160;records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back.</p>
-			<ul><li>If you specify <span class="CodeFont">-1</span> as the value of this parameter, all record import failures are tolerated and logged.</li><li>If you specify <span class="CodeFont">0</span> as the value of this parameter, the import will fail if even one record is bad.</li></ul>
+			<ul><li>If you specify <code>-1</code> as the value of this parameter, all record import failures are tolerated and logged.</li><li>If you specify <code>0</code> as the value of this parameter, the import will fail if even one record is bad.</li></ul>
                     <p class="paramName">badRecordDirectory</p>
-                    <p class="paramDefnFirst">The directory in which bad record information is logged. Splice Machine logs information to the <span class="CodeFont"><span class="CodeItalicFont">&lt;import_file_name&gt;</span>.bad</span> file in this directory; for example, bad records in an input file named <span class="CodeFont">foo.csv</span> would be logged to a file named <span class="ItalicFont">badRecordDirectory</span><span class="CodeFont">/foo.csv.bad</span>.</p>
+                    <p class="paramDefnFirst">The directory in which bad record information is logged. Splice Machine logs information to the <code><span class="CodeItalicFont">&lt;import_file_name&gt;</code>.bad</span> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <em>badRecordDirectory</em><code>/foo.csv.bad</code>.</p>
                     <p class="paramDefn">The default value is the directory in which the import files are found.</p>
                     <p class="paramName">oneLineRecords</p>
                     <p class="paramDefnFirst">A&#160;Boolean value that specifies whether each line in the import file contains one complete record:</p>
                     <ul class="nested">
-                        <li>If you specify <span class="CodeFont">true</span> or <span class="CodeFont">null</span>, then each record is expected to be found on a single line in the file.</li>
-                        <li>If you specify <span class="CodeFont">false</span>, records can span multiple lines in the file.</li>
+                        <li>If you specify <code>true</code> or <code>null</code>, then each record is expected to be found on a single line in the file.</li>
+                        <li>If you specify <code>false</code>, records can span multiple lines in the file.</li>
                     </ul>
-                    <div class="noteNote">Multi-line record files are slower to load, because the file cannot be split and processed in parallel; if you import a directory of multiple line files, each file as a whole is processed in parallel, but no splitting takes place.</div>
+                    <p class="noteNote">Multi-line record files are slower to load, because the file cannot be split and processed in parallel; if you import a directory of multiple line files, each file as a whole is processed in parallel, but no splitting takes place.</p>
                     <p class="paramName">charset</p>
                     <p class="paramDefnFirst">The character encoding of the import file. The default value is UTF-8. Currently, any other value is ignored and UTF-8 is used.
  </p>
@@ -168,23 +168,23 @@ folder: SQLReference/BuiltInSysProcs
                     <p class="paramDefnFirst">The directory into which the split keys are written:</p>
                     <ul class="nested">
                         <li class="nested" value="1">The keys are encoded in HBase escape string format. </li>
-                        <li class="nested" value="2">The keys are written to a file named <span class="CodeFont">keys</span> in a subdirectory of the specified <span class="CodeFont">outputDirectory</span>.</li>
-                        <li class="nested" value="3">The name of the subdirectory in which the keys are written is the conglomerate ID&#160;for the named table; the <span class="CodeFont"><a href="cmdlineref_showtables.html">SHOW&#160;TABLES</a></span>&#160;command displays a table's conglomerate ID.&#160;</li>
+                        <li class="nested" value="2">The keys are written to a file named <code>keys</code> in a subdirectory of the specified <code>outputDirectory</code>.</li>
+                        <li class="nested" value="3">The name of the subdirectory in which the keys are written is the conglomerate ID&#160;for the named table; the <code><a href="cmdlineref_showtables.html">SHOW&#160;TABLES</a></code>&#160;command displays a table's conglomerate ID.&#160;</li>
                     </ul>
                 </div>
             </div>
             <h2>Results</h2>
-            <p><span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> generates a keys file, which you use in conjunction with the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;system procedure to import your data.</p>
+            <p><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> generates a keys file, which you use in conjunction with the <code><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></code>&#160;system procedure to import your data.</p>
 {% include splice_snippets/importtimestampformats.html %}
-            <p>Please see <span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></span> in the <span class="ItalicFont">Developer's Guide</span> for information working with timestamps, dates, and times.</p>
+            <p>Please see <em><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></em> in the <em>Developer's Guide</em> for information working with timestamps, dates, and times.</p>
 {% include splice_snippets/hfileimport_example.html %}
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
+                <li><a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_splittable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span></a>
+                <li><a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_splittableatpoints.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span></a>
+                <li><a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a>
                 </li>
             </ul>
         </div>

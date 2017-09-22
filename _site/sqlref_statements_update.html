@@ -2809,14 +2809,14 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Statements.Update">UPDATE</h1>
-            <p>Use the <span class="CodeFont">UPDATE</span>&#160;statement to update existing records in a table.</p>
+            <p>Use the <code>UPDATE</code>&#160;statement to update existing records in a table.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
- UPDATE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span>
+ UPDATE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em>
    [[AS] correlation-Name]
-   SET <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></span> = <span class="ItalicFont">Value</span>
-       [ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></span> = <span class="ItalicFont">Value</span>} ]*
-   [<span class="ItalicFont"><a href="sqlref_clauses_where.html">WHERE clause</a></span>]
+   SET <em><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></em> = <em>Value</em>
+       [ , <em><a href="sqlref_identifiers_types.html#ColumnName">column-Name</a></em> = <em>Value</em>} ]*
+   [<em><a href="sqlref_clauses_where.html">WHERE clause</a></em>]
 } </pre>
             </div>
             <div class="paramList">
@@ -2826,10 +2826,10 @@
                 <p class="paramDefnFirst">An optional correlation name for the update.</p>
                 <p class="paramName">column-Name = Value</p>
                 <p class="paramDefnFirst">Sets the value of the named column to the named value in any records .</p>
-                <p class="paramDefn"><span class="ItalicFont">Value</span> is either an <span class="ItalicFont"><a href="sqlref_expressions_about.html">Expression</a></span> or the literal <span class="CodeFont">DEFAULT</span>. If you specify <span class="CodeFont">DEFAULT</span>&#160;for a column's value, the value is set to the default defined for the column in the table.</p>
-                <p class="paramDefn">The <span class="CodeFont">DEFAULT</span> literal is the only value that you can directly assign to a
+                <p class="paramDefn"><em>Value</em> is either an <em><a href="sqlref_expressions_about.html">Expression</a></em> or the literal <code>DEFAULT</code>. If you specify <code>DEFAULT</code>&#160;for a column's value, the value is set to the default defined for the column in the table.</p>
+                <p class="paramDefn">The <code>DEFAULT</code> literal is the only value that you can directly assign to a
 			generated column. Whenever you alter the value of a column referenced by the
-			<span class="ItalicFont"><a href="sqlref_statements_generationclause.html">generation-clause</a></span> of a generated column,
+			<em><a href="sqlref_statements_generationclause.html">generation-clause</a></em> of a generated column,
 			Splice Machine recalculates the value
 		of the generated column.</p>
                 <p class="paramName">WHERE&#160;clause</p>
@@ -2842,7 +2842,7 @@
    WHERE&#160;DisplayName='Buddy Painter';
 1 row inserted/updated/deleted</pre>
             </div>
-            <p class="body">This example updates the team name associated with all players on the <span class="CodeFont">Giants</span> team:</p>
+            <p class="body">This example updates the team name associated with all players on the <code>Giants</code> team:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;UPDATE&#160;Players
    SET&#160;Team='SFGiants'
    WHERE&#160;Team='Giants';
@@ -2854,10 +2854,10 @@
 			update statement depends on the table being updated, all of its conglomerates
 			(units of storage such as heaps or indexes), all of its constraints, and any
 			other table named in the <span class="CodeFont"><a href="sqlref_statements_dropindex.html">DROP
-			INDEX</a></span> statement or an <span class="CodeFont"><a href="sqlref_statements_altertable.html">ALTER TABLE</a></span> statement for the target table of a prepared
+			INDEX</a></span> statement or an <code><a href="sqlref_statements_altertable.html">ALTER TABLE</a></code> statement for the target table of a prepared
 		searched update statement invalidates the prepared searched update statement.</p>
-            <p>A <span class="CodeFont">CREATE</span> or <span class="CodeFont">DROP INDEX</span> statement
-			or an <span class="CodeFont">ALTER TABLE</span> statement for the target table of a prepared positioned
+            <p>A <code>CREATE</code> or <code>DROP INDEX</code> statement
+			or an <code>ALTER TABLE</code> statement for the target table of a prepared positioned
 		update invalidates the prepared positioned update statement.</p>
             <p>Dropping
 			an alias invalidates a prepared update statement if the latter statement uses
@@ -2866,15 +2866,15 @@
 		invalidates the update statement.</p>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_statements_altertable.html"><span class="CodeFont">ALTER TABLE</span></a>statement</li>
-                <li><a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span></a>clause</li>
-                <li><a href="sqlref_statements_createtable.html"><span class="CodeFont">CREATE TABLE</span></a>statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createtrigger.html">CREATE&#160;TRIGGER</a></span>
+                <li><a href="sqlref_statements_altertable.html"><code>ALTER TABLE</code></a>statement</li>
+                <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a>clause</li>
+                <li><a href="sqlref_statements_createtable.html"><code>CREATE TABLE</code></a>statement</li>
+                <li><code><a href="sqlref_statements_createtrigger.html">CREATE&#160;TRIGGER</a></code>
                 </li>
-                <li><a href="sqlref_statements_dropindex.html"><span class="CodeFont">DROP INDEX</span></a>statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_droptrigger.html">DROP&#160;TRIGGER</a></span>
+                <li><a href="sqlref_statements_dropindex.html"><code>DROP INDEX</code></a>statement</li>
+                <li><code><a href="sqlref_statements_droptrigger.html">DROP&#160;TRIGGER</a></code>
                 </li>
-                <li><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>clause</li>
+                <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a>clause</li>
             </ul>
         </div>
 	</section>
@@ -2894,7 +2894,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

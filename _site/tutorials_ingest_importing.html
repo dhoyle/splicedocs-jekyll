@@ -512,7 +512,7 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor38">How to Import Data Into Splice Machine</h1>
+            <h1>How to Import Data Into Splice Machine</h1>
             <p>This tutorial describes how to import data into your Splice Machine database, and includes a number of examples. It also contains specific tips to help you with the details of getting your data correctly imported. This tutorial contains these sections:</p>
             <ul>
                 <li><a href="#Syntax">Import Procedures Syntax</a> summarizes the syntax for calling the available Splice Machine import procedures, along with brief descriptions of the parameters. This syntax applies to all three of our data import procedures.</li>
@@ -522,34 +522,34 @@
             </ul>
             <p>The Splice Machine data import procedures allow you to perform bulk imports that utilize the parallel processing power of Hadoop's scale-out architecture while distributing the data evenly into different region servers to prevent "hot spots." We utilize a custom-built, asynchronous write pipeline, which is an extension to the native HBase pipeline, to accomplish this effort.</p>
             <p>If you're importing data from an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
-            <div class="noteIcon">Our <a href="#">Importing HFile Data tutorial</a> walks you through using our HFile import procedure, which uses similar syntax and has improved performance; however, the bulk HFile import requires extra work on your part and lacks constraint checking.</div>
+            <p class="noteIcon">Our <a href="#">Importing HFile Data tutorial</a> walks you through using our HFile import procedure, which uses similar syntax and has improved performance; however, the bulk HFile import requires extra work on your part and lacks constraint checking.</p>
 	        <h2>Three Different Procedures for Loading Data</h2>
-	        <p>Splice Machine provides three built-in system procedures that you can use for loading data into a database table, each of which uses identical syntax. You can specify which columns in the input data are to be imported in the <span class="CodeFont">insertColumnList</span> parameter; these procedures differ in how they handle updating records when you specify an input column list that isn't 1-to-1 with the columns in the table.</p>
+	        <p>Splice Machine provides three built-in system procedures that you can use for loading data into a database table, each of which uses identical syntax. You can specify which columns in the input data are to be imported in the <code>insertColumnList</code> parameter; these procedures differ in how they handle updating records when you specify an input column list that isn't 1-to-1 with the columns in the table.</p>
 	        <ul>
-	            <li>The <a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a> procedure imports data into your database, creating a new record in your table for each record in the imported data, and inserts the default value of each column that is not specified in the input.</li>
-	            <li>The <a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a> procedure inserts new records and <span class="ItalicFont">updates existing records</span> in the table. It also inserts or updates the value in the table of each column that is not specified in the input; inserting the default value (or NULL if there is no default) for that column.</li>
-	            <li><p>The <a href="sqlref_sysprocs_mergedata.html"><span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span></a> procedure also updates existing records; however, it does not replace values in the table for unspecified columns when updating an existing record in the table.</p>
+	            <li>The <a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a> procedure imports data into your database, creating a new record in your table for each record in the imported data, and inserts the default value of each column that is not specified in the input.</li>
+	            <li>The <a href="sqlref_sysprocs_upsertdata.html"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a> procedure inserts new records and <em>updates existing records</em> in the table. It also inserts or updates the value in the table of each column that is not specified in the input; inserting the default value (or NULL if there is no default) for that column.</li>
+	            <li><p>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> procedure also updates existing records; however, it does not replace values in the table for unspecified columns when updating an existing record in the table.</p>
 	            </li>
 	        </ul>
-			<p><a href="#Example2">Example 2</a> illustrates how the <span class="CodeFont">UPSERT</span> and <span class="CodeFont">MERGE</span> procedures differ in their handling of record updates.</p>
+			<p><a href="#Example2">Example 2</a> illustrates how the <code>UPSERT</code> and <code>MERGE</code> procedures differ in their handling of record updates.</p>
             <h2 id="Syntax">Import Procedures Syntax</h2>
-            <p>In this section, we'll go through the syntax used with our import procedures, using the <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> built-in system procedure for examples.</p>
-            <div class="noteIcon">You'll find complete descriptions of these parameters in the reference pages for the <a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a>,&nbsp;&nbsp;<a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>,&nbsp;&nbsp;and <a href="sqlref_sysprocs_mergedata.html"><span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span></a> procedures.</div>
+            <p>In this section, we'll go through the syntax used with our import procedures, using the <code>SYSCS_UTIL.IMPORT_DATA</code> built-in system procedure for examples.</p>
+            <p class="noteIcon">You'll find complete descriptions of these parameters in the reference pages for the <a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a>,&nbsp;&nbsp;<a href="sqlref_sysprocs_upsertdata.html"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a>,&nbsp;&nbsp;and <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> procedures.</p>
             <p>The syntax for calling these procedures includes a large number of parameters:</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA (
-		<span class="ItalicFont">schemaName</span>,
-		<span class="ItalicFont">tableName</span>,
-		<span class="ItalicFont">insertColumnList</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">fileOrDirectoryName</span>,
-		<span class="ItalicFont">columnDelimiter</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">characterDelimiter</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">timestampFormat</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">dateFormat</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">timeFormat</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">badRecordsAllowed</span>,
-		<span class="ItalicFont">badRecordDirectory</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">oneLineRecords</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">charset</span><span class="CodeFont"> | null</span>
+		<em>schemaName</em>,
+		<em>tableName</em>,
+		<em>insertColumnList</em><code> | null</code>,
+		<em>fileOrDirectoryName</em>,
+		<em>columnDelimiter</em><code> | null</code>,
+		<em>characterDelimiter</em><code> | null</code>,
+		<em>timestampFormat</em><code> | null</code>,
+		<em>dateFormat</em><code> | null</code>,
+		<em>timeFormat</em><code> | null</code>,
+		<em>badRecordsAllowed</em>,
+		<em>badRecordDirectory</em><code> | null</code>,
+		<em>oneLineRecords</em><code> | null</code>,
+		<em>charset</em><code> | null</code>
 		);</pre>
             </div>
             <p>These parameters are described in detail in the <a href="sqlref_sysprocs_importdata.html">SQL Reference Manual</a>; here are brief descriptions:</p>
@@ -577,16 +577,16 @@
                     </tr>
                     <tr>
                         <td class="CodeFont">insertColumnList</td>
-                        <td>The names, in single quotes, of the columns to import. If this is <span class="CodeFont">null</span>, all columns are imported.</td>
+                        <td>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</td>
                         <td class="CodeFont">'ID, TEAM'</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">fileOrDirectoryName</td>
                         <td>
                             <p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
-                            <div class="noteNote">You can specify a directory or a single file when using the <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> or <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> procedures; however, you can only specify a single file when using the <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span> procedure.</div>
+                            <p class="noteNote">You can specify a directory or a single file when using the <code>SYSCS_UTIL.IMPORT_DATA</code> or <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code> procedures; however, you can only specify a single file when using the <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> procedure.</p>
                             <p>If you're importing data from an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
-                            <div class="noteIcon">You must specify a directory in an S3 bucket when importing data into your Splice Machine Database-as-Service database, and you must possess the access key/secret key pair for that S3 bucket.</div>
+                            <p class="noteIcon">You must specify a directory in an S3 bucket when importing data into your Splice Machine Database-as-Service database, and you must possess the access key/secret key pair for that S3 bucket.</p>
                             <p>See these tips:</p>
                             <ul class="bullet">
                                 <li><a href="#Tip">Tip #1:  Specifying the File Location
@@ -606,7 +606,7 @@
                     <tr>
                         <td class="CodeFont">columnDelimiter</td>
                         <td>
-                            <p>The character used to separate columns, Specify <span class="CodeFont">null</span> if using the comma (<span class="CodeFont">,</span>) character as your delimiter. </p>
+                            <p>The character used to separate columns, Specify <code>null</code> if using the comma (<code>,</code>) character as your delimiter. </p>
                             <p>See <a href="#Tip4">Tip #4:  Use Special Characters for Delimiters</a>.</p>
                         </td>
                         <td class="CodeFont">
@@ -624,7 +624,7 @@
                     <tr>
                         <td class="CodeFont">timestampFormat</td>
                         <td>
-                            <p>The format of timestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no time columns in the file, or if the format of any timestamps in the file match the <span class="CodeFont">Java.sql.Timestamp</span> default format, which is: "<span class="ItalicFont">yyyy-MM-dd HH:mm:ss</span>".</p>
+                            <p>The format of timestamps stored in the file. You can set this to <code>null</code> if there are no time columns in the file, or if the format of any timestamps in the file match the <code>Java.sql.Timestamp</code> default format, which is: "<em>yyyy-MM-dd HH:mm:ss</em>".</p>
                             <p>See <a href="#Tip5">Tip #5:  Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
                         </td>
                         <td class="CodeFont">
@@ -634,7 +634,7 @@
                     <tr>
                         <td class="CodeFont">dateFormat</td>
                         <td>
-                            <p>The format of datestamps stored in the file. You can set this to <span class="CodeFont">null</span> if there are no date columns in the file, or if the format of any dates in the file match pattern: "<span class="ItalicFont">yyyy-MM-dd</span>".</p>
+                            <p>The format of datestamps stored in the file. You can set this to <code>null</code> if there are no date columns in the file, or if the format of any dates in the file match pattern: "<em>yyyy-MM-dd</em>".</p>
                             <p>See <a href="#Tip5">Tip #5:  Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
                         </td>
                         <td class="CodeFont">yyyy-MM-dd</td>
@@ -642,7 +642,7 @@
                     <tr>
                         <td class="CodeFont">timeFormat</td>
                         <td>
-                            <p>The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "<span class="ItalicFont">HH:mm:ss</span>".</p>
+                            <p>The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "<em>HH:mm:ss</em>".</p>
                             <p>See <a href="#Tip5">Tip #5:  Avoid Problems With Date, Time, and Timestamp Formats</a>.</p>
                         </td>
                         <td class="CodeFont">HH:mm:ss</td>
@@ -660,9 +660,9 @@
                     <tr>
                         <td class="CodeFont">badRecordDirectory</td>
                         <td>
-                            <p>The directory in which bad record information is logged. Splice Machine logs information to the <span class="CodeFont"><span class="CodeItalicFont">&lt;import_file_name&gt;</span>.bad</span> file in this directory; for example, bad records in an input file named <span class="CodeFont">foo.csv</span> would be logged to a file named <span class="ItalicFont">badRecordDirectory</span><span class="CodeFont">/foo.csv.bad</span>.</p>
+                            <p>The directory in which bad record information is logged. Splice Machine logs information to the <code><span class="CodeItalicFont">&lt;import_file_name&gt;</code>.bad</span> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <em>badRecordDirectory</em><code>/foo.csv.bad</code>.</p>
                             <p>If you're logging bad record information to an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
-                            <div class="noteIcon">you must specify a directory in an S3 bucket when importing data into your Splice Machine Database-as-Service database, and you must possess the access key/secret key pair for that S3 bucket.</div>
+                            <p class="noteIcon">you must specify a directory in an S3 bucket when importing data into your Splice Machine Database-as-Service database, and you must possess the access key/secret key pair for that S3 bucket.</p>
                             <p>See these tips:</p>
                             <ul class="bullet">
                                 <li><a href="#Tip">Tip #1:  Specifying the File Location</a></li>
@@ -674,7 +674,7 @@
                     <tr>
                         <td class="CodeFont">oneLineRecords</td>
                         <td>
-                            <p>A Boolean value that specifies whether (<span class="CodeFont">true</span>) each record in the import file is contained in one input line, or (<span class="CodeFont">false</span>) if a record can span multiple lines. </p>
+                            <p>A Boolean value that specifies whether (<code>true</code>) each record in the import file is contained in one input line, or (<code>false</code>) if a record can span multiple lines. </p>
                             <p>See <a href="#Tip7">Tip #7:  Importing Multi-line Records</a>.</p>
                         </td>
                         <td class="CodeFont">true</td>
@@ -683,7 +683,7 @@
                         <td class="CodeFont">charset</td>
                         <td>
                             <p>The character encoding of the import file. The default value is UTF-8. </p>
-                            <div class="noteIcon">Currently, any other value is ignored and UTF-8 is used.</div>
+                            <p class="noteIcon">Currently, any other value is ignored and UTF-8 is used.</p>
                         </td>
                         <td class="CodeFont">null</td>
                     </tr>
@@ -693,14 +693,14 @@
         <p>This section summarizes what happens when you are importing, upserting, or merging records into a database table, based on:</p>
         <ul>
             <li>Whether you are importing a new record or updating an existing record.</li>
-            <li>If the column is specified in your <span class="CodeFont">insertColumnList</span> parameter.</li>
+            <li>If the column is specified in your <code>insertColumnList</code> parameter.</li>
             <li>If the table column is a generated value or has a default value.</li>
         </ul>
         <p>The important difference in actions taken when importing data occurs when you are updating an existing record with the UPSERT or MERGE and your column list does not contain the name of a table column:</p>
         <ul>
             <li>For newly inserted records, the default or auto-generated value is always inserted, as usual.</li>
-            <li>If you are updating an existing record in the table with <span class="CodeFont">UPSERT</span>, the default auto-generated value in that record is overwritten with a new value.</li>
-            <li>If you are updating an existing record in the table with <span class="CodeFont">MERGE</span>, the column value is not updated.</li>
+            <li>If you are updating an existing record in the table with <code>UPSERT</code>, the default auto-generated value in that record is overwritten with a new value.</li>
+            <li>If you are updating an existing record in the table with <code>MERGE</code>, the column value is not updated.</li>
         </ul>
         <h3>Importing a New Record Into a Database Table</h3>
         <p>The following table shows the actions taken when you are importing new records into a table in your database. These actions are the same for all three importation procedures (IMPORTing, UPSERTing, or MERGEing):
@@ -710,7 +710,7 @@
             <col />
             <thead>
                 <tr>
-                    <th>Column included in <span class="CodeFont">importColumnList</span>?</th>
+                    <th>Column included in <code>importColumnList</code>?</th>
                     <th>Table column conditions</th>
                     <th>Action Taken</th>
                 </tr>
@@ -774,7 +774,7 @@
                     <td class="CodeFont">"colA,colB,colC"</td>
                     <td class="CodeFont">1,DEFAULT,2</td>
                     <td class="CodeFont">[1,"DEFAULT",2]</td>
-                    <td><span class="CodeFont">DEFAULT</span> is imported as a literal value</td>
+                    <td><code>DEFAULT</code> is imported as a literal value</td>
                 </tr>
                 <tr>
                     <td class="CodeFont">Empty</td>
@@ -808,27 +808,27 @@
                 </tr>
             </tbody>
         </table>
-        <p> Note that the value <span class="CodeFont">DEFAULT</span> in the imported file <span class="BoldFont">is not interpreted</span> to mean that the default value should be applied to that column; instead:</p>
+        <p> Note that the value `DEFAULT`</span>` in the imported file <strong>is not interpreted</strong> to mean that the default value should be applied to that column; instead:</p>
         <ul>
-            <li>If the target column in your database has a string data type, such as <span class="CodeFont">CHAR</span> or <span class="CodeFont">VARCHAR</span>, the literal value <span class="CodeFont">"DEFAULT"</span> is inserted into your database..</li>
+            <li>If the target column in your database has a string data type, such as <code>CHAR</code> or <code>VARCHAR</code>, the literal value <code>"DEFAULT"</code> is inserted into your database..</li>
             <li>If the target column is not a string data type, an error will occur.</li>
         </ul>
         <h4>Importing New Records That Contain Generated or Default Values</h3>
         <p>When you export a table with generated columns to a file, the actual column values are exported, so importing that same file into a different database will accurately replicate the original table values.</p>
         <p>If you are importing previously exported records into a table with a generated column, and you want to import some records with actual values and apply generated or default values to other records, you need to split your import file into two files and import each:</p>
         <ul>
-            <li>Import the file containing records with non-default values with the column name included in the <span class="CodeFont">insertColumnList</span>.</li>
-            <li>Import the file containing records with default values with the column name excluded from the <span class="CodeFont">insertColumnList</span>.</li>
+            <li>Import the file containing records with non-default values with the column name included in the <code>insertColumnList</code>.</li>
+            <li>Import the file containing records with default values with the column name excluded from the <code>insertColumnList</code>.</li>
         </ul>
         <h3>Updating a Table Record with UPSERT</h3>
-        <p>The following table shows the action taken when you are using the <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> procedure to update an existing record in a database table:</p>
+        <p>The following table shows the action taken when you are using the <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code> procedure to update an existing record in a database table:</p>
         <table>
             <col />
             <col />
             <col />
             <thead>
                 <tr>
-                    <th>Column included in <span class="CodeFont">importColumnList</span>?</th>
+                    <th>Column included in <code>importColumnList</code>?</th>
                     <th>Table column conditions</th>
                     <th>Action Taken</th>
                 </tr>
@@ -855,14 +855,14 @@
             </tbody>
         </table>
         <h3>Updating a Table Record with MERGE</h3>
-        <p>The following table shows the action taken when you are using the <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span> procedure to update an existing record in a database table:</p>
+        <p>The following table shows the action taken when you are using the <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> procedure to update an existing record in a database table:</p>
         <table>
             <col />
             <col />
             <col />
             <thead>
                 <tr>
-                    <th>Column included in <span class="CodeFont">importColumnList</span>?</th>
+                    <th>Column included in <code>importColumnList</code>?</th>
                     <th>Table column conditions</th>
                     <th>Action Taken</th>
                 </tr>
@@ -900,7 +900,7 @@
                 </li>
             </ul>
             <h3 id="Example1">Example 1: Importing data into a table with fewer columns than in the file</h3>
-            <p>If the table into which you're importing data has less columns than the data file that you're importing, how the "extra" data columns in the input data are handled depends on whether you specify an <span class="CodeFont">insertColumnList</span>:
+            <p>If the table into which you're importing data has less columns than the data file that you're importing, how the "extra" data columns in the input data are handled depends on whether you specify an <code>insertColumnList</code>:
 			<ul>
 				<li>If you don't specify a specify an insertColumnList and your input file contains more columns than are in the table, then the the extra columns at the end of each line in the input file are ignored. For example, if your table contains columns (a, b, c) and your file contains columns (a, b, c, d, e), then the data in your file's d and e columns will be ignored.</li>
 				<li>If you do specify an insertColumnList, and the number of columns doesn't match your table, then any other columns in your table will be replaced by the default value for the table column (or NULL if there is no default for the column). For example, if your table contains columns (a, b, c) and you only want to import columns (a, c), then the data in table's b column will be replaced with the default value for that column.</li>
@@ -911,7 +911,7 @@
             <p>And your data file looks like this:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">1,Cards,Molina,Catcher<br />2,Giants,Posey,Catcher<br />3,Royals,Perez,Catcher</pre>
             </div>
-            <p>When you import the file into <span class="CodeFont">playerTeams</span>, only the first two columns are imported:</p>
+            <p>When you import the file into <code>playerTeams</code>, only the first two columns are imported:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams',null, 'myData.csv',
    null, null, null, null, null, 0, 'importErrsDir', true, null);<br /><br />SELECT * FROM playerTeams ORDER by ID;<br />ID   |TEAM
 --------------
@@ -920,9 +920,9 @@
 </pre>
             </div>
 			<h3 id="Example2">How Missing Columns are Handled With an Insert Column List</h3>
-        <p1>In this example, we'll illustrate how the different data import procedures modify columns in your table when you've specified an <span class="CodeFont">insertColumnList</span> that is not 1-to-1 with the columns in your table. The <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> and <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> procedures handle this situation in the same way, assigning default values (or NULL if no default is defined) to any table column that is not being inserted or updated from the input data file. The <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span> does not overwrite generated values when updating records.</p>
-        <div class="noteNote">This distinction is particularly important when loading record updates into a table with auto-generated column values that you do not want overwritten.</div>
-        <p>We'll create two sample tables, populate each with the same data, and load the same input file data into each to illustrate the differences between how the <span class="CodeFont">Upsert</span> and <span class="CodeFont">Merge</span> procedures.</p>
+        <p1>In this example, we'll illustrate how the different data import procedures modify columns in your table when you've specified an <code>insertColumnList</code> that is not 1-to-1 with the columns in your table. The <code>SYSCS_UTIL.IMPORT_DATA</code> and <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code> procedures handle this situation in the same way, assigning default values (or NULL if no default is defined) to any table column that is not being inserted or updated from the input data file. The <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> does not overwrite generated values when updating records.</p>
+        <p class="noteNote">This distinction is particularly important when loading record updates into a table with auto-generated column values that you do not want overwritten.</p>
+        <p>We'll create two sample tables, populate each with the same data, and load the same input file data into each to illustrate the differences between how the <code>Upsert</code> and <code>Merge</code> procedures.</p>
         <div class="preWrap"><pre class="Example">CREATE SCHEMA test;
 SET SCHEMA test;
 CREATE TABLE testUpsert (
@@ -964,8 +964,8 @@ A1         |B1         |C1         |D1
 4 rows selected
 </pre>
 </div>
-        <p class="spaceAbove">Note that column <span class="CodeFont">c1</span> contains auto-generated values, and that column <span class="CodeFont"> d1</span>has the default value 999.
-        <p>Here's the data that we're going to import from file <span class="CodeFont">ttest.csv</span>:
+        <p class="spaceAbove">Note that column <code>c1</code> contains auto-generated values, and that column <code> d1</code>has the default value 999.
+        <p>Here's the data that we're going to import from file <code>ttest.csv</code>:
         <div class="preWrap"><pre class="Example">0|0
 1|2
 2|4
@@ -1013,13 +1013,13 @@ A1         |B1         |C1         |D1
 </div>
         <p class="spaceAbove">You'll notice that:</p>
         <ul>
-            <li>The generated column (<span class="CodeFont">c1</span>) is not included in the <span class="CodeFont">insertColumnList</span> parameter in these calls.</li>
+            <li>The generated column (<code>c1</code>) is not included in the <code>insertColumnList</code> parameter in these calls.</li>
             <li>The results are identical except for the values in the generated column.</li>
-            <li>The generated values in <span class="CodeFont">c1</span> are not updated in existing records when merging data, but are updated when upserting data.</li>
+            <li>The generated values in <code>c1</code> are not updated in existing records when merging data, but are updated when upserting data.</li>
         </ul>
 
             <h3 id="Example3">Example 3: Importing a subset of data from a file into a table</h3>
-            <p>This example uses the same table and import file as does the previous example, and it produces the same results, The difference between these two examples is that this one explicitly imports only the first two columns (which are named <span class="CodeFont">ID</span> and <span class="CodeFont">TEAM</span>) of the file:</p>
+            <p>This example uses the same table and import file as does the previous example, and it produces the same results, The difference between these two examples is that this one explicitly imports only the first two columns (which are named <code>ID</code> and <code>TEAM</code>) of the file:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams', 'ID, TEAM', 'myData.csv',
  null, null, null, null, null, 0, 'importErrsDir', true, null);<br /><br />SELECT * FROM playerTeams ORDER by ID;<br />ID   |TEAM
 --------------
@@ -1028,7 +1028,7 @@ A1         |B1         |C1         |D1
 </pre>
             </div>
             <h3 id="Example4">Example 4: Specifying a timestamp format for an entire table</h3>
-            <p>Use a single timestamp format for the entire table by explicitly specifying a single <span class="CodeFont">timeStampFormat</span>.</p>
+            <p>Use a single timestamp format for the entire table by explicitly specifying a single <code>timeStampFormat</code>.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">Mike,2013-04-21 09:21:24.98-05
 Mike,2013-04-21 09:15:32.78-04
 Mike,2013-03-23 09:45:00.68-05</pre>
@@ -1037,12 +1037,12 @@ Mike,2013-03-23 09:45:00.68-05</pre>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA('app','tabx','c1,c2',
 	'/path/to/ts3.csv',
 	',', '''',
-	<span class="BoldFont">'yyyy-MM-dd HH:mm:ss.SSZ'</span>,
+	<strong>'yyyy-MM-dd HH:mm:ss.SSZ'</strong>,
 	null, null, 0, null, true, null);</pre>
             </div>
             <p>Note that for any import use case shown above, the time shown in the imported table depends on the timezone setting in the server timestamp. In other words, given the same csv file, if imported on different servers with timestamps set to different time zones, the value in the table shown will be different. Additionally, daylight savings time may account for a 1-hour difference if timezone is specified.</p>
             <h3 id="Example5">Example 5: Importing strings with embedded special characters </h3>
-            <p>This example imports a csv file that includes newline (<span class="CodeFont">Ctrl-M</span>) characters in some of the input strings. We use the default double-quote as our character delimiter to import data such as the following:</p>
+            <p>This example imports a csv file that includes newline (<code>Ctrl-M</code>) characters in some of the input strings. We use the default double-quote as our character delimiter to import data such as the following:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">1,This field is one line,Able
 2,"This field has two lines
 This is the second line of the field",Baker
@@ -1093,7 +1093,7 @@ This is the second line of the field',Baker
             </ol>
             <h3 id="Tip">Tip #1:  Specifying the File Location
 </h3>
-            <p>Some customers get confused by the the <span class="CodeFont">fileOrDirectoryName</span> parameter. How you use this depends on whether you are importing a single file or a directory of files. It also depends on which version of Splice Machine you are running: the cloud-managed Splice Machine Database-as-Service, on a managed cluster, or a standalone version.</p>
+            <p>Some customers get confused by the the <code>fileOrDirectoryName</code> parameter. How you use this depends on whether you are importing a single file or a directory of files. It also depends on which version of Splice Machine you are running: the cloud-managed Splice Machine Database-as-Service, on a managed cluster, or a standalone version.</p>
             <p>If you are running a stand alone environment, the name or path will be to a file or directory on the file system. For example:</p>
             <div class="preWrapperWide"><pre class="Example">/users/myname/mydata/mytable.csv<br />/users/myname/mydatadir</pre>
             </div>
@@ -1105,10 +1105,10 @@ For example:</p>
             <p>Finally, if you're importing data from an S3 bucket, you need to supply your AWS access and secret key codes, and you need to specify an s3a URL. Similarly for logging bad record information to an S3 bucket directory, as will be the case when using our Database-as-Service product. You can include the access keys inline; for example:</p>
             <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(<span class="Highlighted">access key</span>):(<span class="Highlighted">secret key</span>)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, 's3a://(<span class="Highlighted">access key</span>):(<span class="Highlighted">secret key</span>)@splice-benchmark-data/flat/TPCH/100/importLog', true, null);</pre>
             </div>
-            <p>Alternatively, you can define the keys once in the <span class="CodeFont">core-site.xml</span> file on your cluster, and then simply specify the <span class="CodeFont">s3a</span> URL; for example:</p>
+            <p>Alternatively, you can define the keys once in the <code>core-site.xml</code> file on your cluster, and then simply specify the <code>s3a</code> URL; for example:</p>
             <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, 0, '/BAD', true, null);</pre>
             </div>
-            <p>To add your access and secret access keys to the <span class="CodeFont">core-site.xml</span> file, define the <span class="CodeFont">fs.s3a.awsAccessKeyId</span> and <span class="CodeFont">fs.s3a.awsSecretAccessKey</span> properties in that file:</p>
+            <p>To add your access and secret access keys to the <code>core-site.xml</code> file, define the <code>fs.s3a.awsAccessKeyId</code> and <code>fs.s3a.awsSecretAccessKey</code> properties in that file:</p>
             <div class="preWrapperWide"><pre class="Example">&lt;property&gt;<br />   &lt;name&gt;fs.s3a.awsAccessKeyId&lt;/name&gt;<br />   &lt;value&gt;<span class="Highlighted">access key</span>&lt;/value&gt;<br />&lt;/property&gt;<br />&lt;property&gt;<br />   &lt;name&gt;fs.s3a.awsSecretAccessKey&lt;/name&gt;<br />   value&gt;<span class="Highlighted">secret key</span>&lt;/value&gt;<br />&lt;/property&gt;</pre>
             </div>
             <h3 id="Tip2">Tip #2:  Import Large Datasets in Groups of Files</h3>
@@ -1128,45 +1128,45 @@ For example:</p>
             </ul>
             <h3 id="Tip3">Tip #3:  Don't Compress Your Files With GZIP</h3>
             <p>We recommend importing files that are either uncompressed, or have been compressed with <span class="CodeBoldFont">bz2</span> or <span class="CodeBoldFont">lz4</span> compression. </p>
-            <p>If you import files compressed with <span class="CodeFont">gzip</span>, Splice Machine cannot distribute the contents of your file across your cluster nodes to take advantage of parallel processing, which means that import performance will suffer significantly with <span class="CodeFont">gzip</span> files.</p>
+            <p>If you import files compressed with <code>gzip</code>, Splice Machine cannot distribute the contents of your file across your cluster nodes to take advantage of parallel processing, which means that import performance will suffer significantly with <code>gzip</code> files.</p>
             <h3 id="Tip4">Tip #4:  Use Special Characters for Delimiters</h3>
             <p>One common gotcha we see with customer imports is when the data you're importing includes a special character that you've designated as a column or character delimiter. You'll end up with records in your bad record directory and can spend hours trying to determine the issue, only to discover that it's because the data includes a delimiter character. This can happen with columns that contain data such as product descriptions. </p>
             <h4>Column Delimiters</h4>
-            <p>The  standard column delimiter is a comma (<span class="CodeFont">,</span>); however, we've all worked with string data that contains commas, and have figured out to use a different column delimiter. Some customers use the pipe (<span class="CodeFont">|</span>) character, but frequently discover that it is also used in some descriptive data in the table they're importing. </p>
-            <p>We recommend using a control character like <span class="CodeFont">CTRL-A</span> for your column delimiter. This is known as the SOH character, and is represented by 0x01 in hexadecimal. Unfortunately, there's no way to enter this character from the keyboard in the Splice Machine command line interface; instead, you need to create a script file (see <a href="#Tip9">Tip #9</a>) and type the control character using a text editor like <span class="ItalicFont">vi</span> or <span class="ItalicFont">vim</span>:</p>
+            <p>The  standard column delimiter is a comma (<code>,</code>); however, we've all worked with string data that contains commas, and have figured out to use a different column delimiter. Some customers use the pipe (<code>|</code>) character, but frequently discover that it is also used in some descriptive data in the table they're importing. </p>
+            <p>We recommend using a control character like <code>CTRL-A</code> for your column delimiter. This is known as the SOH character, and is represented by 0x01 in hexadecimal. Unfortunately, there's no way to enter this character from the keyboard in the Splice Machine command line interface; instead, you need to create a script file (see <a href="#Tip9">Tip #9</a>) and type the control character using a text editor like <em>vi</em> or <em>vim</em>:</p>
             <ul>
                 <li>Open your script file in vi or vim.</li>
                 <li>Enter into INSERT mode.</li>
-                <li>Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-A</span> for the value of the column delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^A</span> when you type it in vi or vim.</li>
+                <li>Type <code>CTRL-V</code> then <code>CTRL-A</code> for the value of the column delimiter parameter in your procedure call. Note that this typically echoes as <code>^A</code> when you type it in vi or vim.</li>
             </ul>
             <h4>Character Delimiters</h4>
             <p>By default, the character delimiter is a double quote. This can produce the same kind of problems that we see with using a comma for the column delimiter: columns values that include embedded quotes or use the double quote as the symbol for inches. You can use escape characters to include the embedded quotes, but it's easier to use a special character for your delimiter. </p>
-            <p>We recommend using <span class="CodeFont">CTRL-G</span>, which you can add to a script file (see <a href="#Tip9">Tip #9</a>), again using a text editor like <span class="ItalicFont">vi</span> or <span class="ItalicFont">vim</span>:</p>
+            <p>We recommend using <code>CTRL-G</code>, which you can add to a script file (see <a href="#Tip9">Tip #9</a>), again using a text editor like <em>vi</em> or <em>vim</em>:</p>
             <ul>
                 <li>Open your script file in vi or vim.</li>
                 <li>Enter into INSERT mode.</li>
-                <li>Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-G</span> for the value of the character delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^G</span> when you type it in vi or vim.</li>
+                <li>Type <code>CTRL-V</code> then <code>CTRL-G</code> for the value of the character delimiter parameter in your procedure call. Note that this typically echoes as <code>^G</code> when you type it in vi or vim.</li>
             </ul>
             <h3 id="Tip5">Tip #5:  Avoid Problems With Date, Time, and Timestamp Formats</h3>
             <p>Perhaps the most common difficulty that customers have with importing their data is with date, time, and timestamp values. </p>
-            <p>Splice Machine adheres to the Java <span class="CodeFont">SimpleDateFormat</span> syntax for all date, time, and timestamp values, <span class="CodeFont">SimpleDateFormat</span> is described here:</p>
+            <p>Splice Machine adheres to the Java <code>SimpleDateFormat</code> syntax for all date, time, and timestamp values, <code>SimpleDateFormat</code> is described here:</p>
             <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html"  target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
             </p>
-            <p>Splice Machine's implementation of <span class="CodeFont">SimpleDateFormat</span> is case-sensitive; this means, for example, that a lowercase <span class="CodeFont">h</span> is used to represent an hour value between 0 and 12, whereas an uppercase <span class="CodeFont">H</span> is used to represent an hour between 0 and 23.</p>
+            <p>Splice Machine's implementation of <code>SimpleDateFormat</code> is case-sensitive; this means, for example, that a lowercase <code>h</code> is used to represent an hour value between 0 and 12, whereas an uppercase <code>H</code> is used to represent an hour between 0 and 23.</p>
             <p>Splice Machine's Import procedures only allow you to specify one format each for the date, time, and timestamp columns in the table data you are importing. This means that, for example, every date in the table data must be in the same format.</p>
             <div class="notePlain">
-                <p>All of the <span class="CodeFont">Date</span> values in the file (or group of files) you are importing must use the same date format.</p>
-                <p>All of the <span class="CodeFont">Time</span> values in the file (or group of files) you are importing must use the same time format.</p>
-                <p>All of the <span class="CodeFont">Timestamp</span> values in the file (or group of files) you are importing must use the same timestamp format.</p>
+                <p>All of the <code>Date</code> values in the file (or group of files) you are importing must use the same date format.</p>
+                <p>All of the <code>Time</code> values in the file (or group of files) you are importing must use the same time format.</p>
+                <p>All of the <code>Timestamp</code> values in the file (or group of files) you are importing must use the same timestamp format.</p>
             </div>
             <p>A few additional notes:</p>
             <ul>
-                <li>The <span class="CodeFont">Timestamp</span> data type has a range of <span class="CodeFont">1678-01-01</span> to <span class="CodeFont">2261-12-31</span>. Some customers have used dummy timestamp values like <span class="CodeFont">9999-01-01</span>, which will fail because the value is out of range for a timestamp. Note that this is not an issue with <span class="CodeFont">Date</span> values.</li>
-                <li>Splice Machine suggests that, if your data contains any date or timestamp values that are not in the format <span class="CodeFont">yyyy-MM-dd HH:mm:ss</span>, you create a simple table that has just one or two columns and test importing the format. This is a simple way to confirm that the imported data is what you expect.</li>
+                <li>The <code>Timestamp</code> data type has a range of <code>1678-01-01</code> to <code>2261-12-31</code>. Some customers have used dummy timestamp values like <code>9999-01-01</code>, which will fail because the value is out of range for a timestamp. Note that this is not an issue with <code>Date</code> values.</li>
+                <li>Splice Machine suggests that, if your data contains any date or timestamp values that are not in the format <code>yyyy-MM-dd HH:mm:ss</code>, you create a simple table that has just one or two columns and test importing the format. This is a simple way to confirm that the imported data is what you expect.</li>
             </ul>
             <h3 id="Tip6">Tip #6:  Change the Bad Directory for Each Table / Group</h3>
             <p>If you are importing a large amount of data and have divided the files you are importing into groups, then it's a good idea to change the location of the bad record directory for each group; this will make debugging bad records a lot easier for you.</p>
-            <p>You can change the value of the <span class="CodeFont">badRecordDirectory</span> to include your group name; for example, we typically use a strategy like the following:</p>
+            <p>You can change the value of the <code>badRecordDirectory</code> to include your group name; for example, we typically use a strategy like the following:</p>
             <table style="width: 100%;">
                 <col />
                 <col />
@@ -1193,31 +1193,29 @@ For example:</p>
             </table>
             <p>You'll then be able to more easily discover where the problem record is located.</p>
             <h3 id="Tip7">Tip #7:  Importing Multi-line Records</h3>
-            <p>If your data contains line feed characters like <span class="CodeFont">CTRL-M</span>, you need to set the <span class="CodeFont">oneLineRecords</span> parameter to <span class="CodeFont">false</span>. Splice Machine will accommodate to the line feeds; however, the import will take longer because Splice Machine will not be able to break the file up and distribute it across the cluster.</p>
-            <div class="notePlain">
-                <p>To improve import performance, avoid including line feed characters in your data and set the <span class="CodeFont">oneLineRecords</span> parameter to <span class="CodeFont">true</span>. </p>
-            </div>
+            <p>If your data contains line feed characters like <code>CTRL-M</code>, you need to set the <code>oneLineRecords</code> parameter to <code>false</code>. Splice Machine will accommodate to the line feeds; however, the import will take longer because Splice Machine will not be able to break the file up and distribute it across the cluster.</p>
+            <p class="notePlain">To improve import performance, avoid including line feed characters in your data and set the <code>oneLineRecords</code> parameter to <code>true</code>. </p>
             <h3 id="Tip8">Tip #8:  Importing CLOBs and BLOBs</h3>
-            <p>If you are importing <span class="CodeFont">CLOB</span>s, pay careful attention to tips <a href="#Tip4">4</a> and <a href="#Tip7">7</a>. Be sure to use special characters for both your column and character delimiters. If your <span class="CodeFont">CLOB</span> data can span multiple lines, be sure to set the <span class="CodeFont">oneLineRecords</span> parameter to <span class="CodeFont">false</span>. </p>
-            <p>At this time, the Splice Machine import procedures do not import work with columns of type <span class="CodeFont">BLOB</span>. You can create a virtual table interface (VTI) that reads the <span class="CodeFont">BLOB</span>s and inserts them into your database.</p>
+            <p>If you are importing <code>CLOB</code>s, pay careful attention to tips <a href="#Tip4">4</a> and <a href="#Tip7">7</a>. Be sure to use special characters for both your column and character delimiters. If your <code>CLOB</code> data can span multiple lines, be sure to set the <code>oneLineRecords</code> parameter to <code>false</code>. </p>
+            <p>At this time, the Splice Machine import procedures do not import work with columns of type <code>BLOB</code>. You can create a virtual table interface (VTI) that reads the <code>BLOB</code>s and inserts them into your database.</p>
             <h3 id="Tip9">Tip #9:  Scripting Your Imports</h3>
-            <p>You can make import tasks much easier and convenient by creating <span class="ItalicFont">import scripts</span>. An import script is simply a call to one of the import procedures; once you've verified that it works, you can use and clone the script and run unattended imports.</p>
-            <p>An import script is simply a file in which you store <span class="CodeFont">splice&gt;</span> commands that you can execute with the <span class="CodeFont">run</span> command. For example, here's an example of a text file named <span class="CodeFont">myimports.sql</span> that we can use to import two csv files into our database:</p>
+            <p>You can make import tasks much easier and convenient by creating <em>import scripts</em>. An import script is simply a call to one of the import procedures; once you've verified that it works, you can use and clone the script and run unattended imports.</p>
+            <p>An import script is simply a file in which you store <code>splice&gt;</code> commands that you can execute with the <code>run</code> command. For example, here's an example of a text file named <code>myimports.sql</code> that we can use to import two csv files into our database:</p>
             <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable1',null,'/data/mytable1/data.csv',null,null,null,null,null,0,'/BAD/mytable1',null,null);<br />call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable2',null,'/data/mytable2/data.csv',null,null,null,null,null,0,'/BAD/mytable2',null,null);</pre>
             </div>
-            <p>To run an import script, use the <span class="CodeFont">splice&gt; run</span> command; for example:</p>
+            <p>To run an import script, use the <code>splice&gt; run</code> command; for example:</p>
             <div class="preWrapper"><pre class="Example">splice&gt; run 'myimports.sql';</pre>
             </div>
-            <p>You can also start up the <span class="CodeFont">splice&gt;</span> command line interpreter with the name of a file to run; for example:</p>
+            <p>You can also start up the <code>splice&gt;</code> command line interpreter with the name of a file to run; for example:</p>
             <div class="preWrapper"><pre class="Example">sqlshell.sh -f myimports.sql</pre>
             </div>
             <p>In fact, you can script almost any sequence of Splice Machine commands in a file and run that script within the command line interpreter or when you start the interpreter.</p>
             <h2>See Also</h2>
             <ul>
-				<li><a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a></li>
-                <li><a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>
+				<li><a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a></li>
+                <li><a href="sqlref_sysprocs_upsertdata.html"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a>
                 </li>
-				<li><a href="sqlref_sysprocs_mergedata.html"><span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span></a></li>
+				<li><a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a></li>
             </ul>
         </div>
 	</section>
@@ -1237,7 +1235,7 @@ For example:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

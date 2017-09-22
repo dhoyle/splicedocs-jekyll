@@ -1,6 +1,6 @@
-        <p1>In this example, we'll illustrate how the different data import procedures modify columns in your table when you've specified an <span class="CodeFont">insertColumnList</span> that is not 1-to-1 with the columns in your table. The <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> and <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> procedures handle this situation in the same way, assigning default values (or NULL if no default is defined) to any table column that is not being inserted or updated from the input data file. The <span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span> does not overwrite generated values when updating records.</p>
-        <div class="noteNote">This distinction is particularly important when loading record updates into a table with auto-generated column values that you do not want overwritten.</div>
-        <p>We'll create two sample tables, populate each with the same data, and load the same input file data into each to illustrate the differences between how the <span class="CodeFont">Upsert</span> and <span class="CodeFont">Merge</span> procedures.</p>
+        <p1>In this example, we'll illustrate how the different data import procedures modify columns in your table when you've specified an <code>insertColumnList</code> that is not 1-to-1 with the columns in your table. The <code>SYSCS_UTIL.IMPORT_DATA</code> and <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code> procedures handle this situation in the same way, assigning default values (or NULL if no default is defined) to any table column that is not being inserted or updated from the input data file. The <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> does not overwrite generated values when updating records.</p>
+        <p class="noteNote">This distinction is particularly important when loading record updates into a table with auto-generated column values that you do not want overwritten.</p>
+        <p>We'll create two sample tables, populate each with the same data, and load the same input file data into each to illustrate the differences between how the <code>Upsert</code> and <code>Merge</code> procedures.</p>
         <div class="preWrap"><pre class="Example">CREATE SCHEMA test;
 SET SCHEMA test;
 CREATE TABLE testUpsert (
@@ -42,8 +42,8 @@ A1         |B1         |C1         |D1
 4 rows selected
 </pre>
 </div>
-        <p class="spaceAbove">Note that column <span class="CodeFont">c1</span> contains auto-generated values, and that column <span class="CodeFont"> d1</span>has the default value 999.
-        <p>Here's the data that we're going to import from file <span class="CodeFont">ttest.csv</span>:
+        <p class="spaceAbove">Note that column <code>c1</code> contains auto-generated values, and that column <code> d1</code>has the default value 999.
+        <p>Here's the data that we're going to import from file <code>ttest.csv</code>:
         <div class="preWrap"><pre class="Example">0|0
 1|2
 2|4
@@ -91,7 +91,7 @@ A1         |B1         |C1         |D1
 </div>
         <p class="spaceAbove">You'll notice that:</p>
         <ul>
-            <li>The generated column (<span class="CodeFont">c1</span>) is not included in the <span class="CodeFont">insertColumnList</span> parameter in these calls.</li>
+            <li>The generated column (<code>c1</code>) is not included in the <code>insertColumnList</code> parameter in these calls.</li>
             <li>The results are identical except for the values in the generated column.</li>
-            <li>The generated values in <span class="CodeFont">c1</span> are not updated in existing records when merging data, but are updated when upserting data.</li>
+            <li>The generated values in <code>c1</code> are not updated in existing records when merging data, but are updated when upserting data.</li>
         </ul>

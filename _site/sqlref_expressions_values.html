@@ -2809,47 +2809,47 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Expressions.Values">VALUES Expression</h1>
-            <p>The <span class="CodeFont">VALUES</span> expression allows construction of a row or a table
+            <p>The <code>VALUES</code> expression allows construction of a row or a table
 from other values. </p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">{
-    VALUES ( <span class="ItalicFont">Value</span> {, <span class="ItalicFont">Value</span> }* )
-        [ , ( <span class="ItalicFont">Value</span> {, <span class="ItalicFont">Value</span> }* ) ]* |
-    VALUES <span class="ItalicFont">Value</span> [ , <span class="ItalicFont">Value</span> ]*
-} [ <span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span> ]
-  [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">result offset clause</a></span> ]
-  [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></span> ]
+    VALUES ( <em>Value</em> {, <em>Value</em> }* )
+        [ , ( <em>Value</em> {, <em>Value</em> }* ) ]* |
+    VALUES <em>Value</em> [ , <em>Value</em> ]*
+} [ <em><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></em> ]
+  [ <em><a href="sqlref_clauses_resultoffset.html">result offset clause</a></em> ]
+  [ <em><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></em> ]
 </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">Value</p>
-                <div class="fcnWrapperWide"><pre class="FcnSyntax"><span class="ItalicFont">Expression</span> | DEFAULT</pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax"><em>Expression</em> | DEFAULT</pre>
                 </div>
                 <p class="paramDefnFirst">The first form constructs multi-column rows. The second
 form constructs single-column rows, each expression being the value of the
 column of the row.</p>
-                <p class="paramDefn">The <span class="CodeFont">DEFAULT</span> keyword is allowed only if the <span class="CodeFont">VALUES</span> expression is in an <span class="CodeFont">INSERT</span> statement. Specifying <span class="CodeFont">DEFAULT</span> for a column inserts the column's default value into the column. Another way to insert the default value into the column is to omit the column from the column list and only insert values into other columns in the table.</p>
+                <p class="paramDefn">The <code>DEFAULT</code> keyword is allowed only if the <code>VALUES</code> expression is in an <code>INSERT</code> statement. Specifying <code>DEFAULT</code> for a column inserts the column's default value into the column. Another way to insert the default value into the column is to omit the column from the column list and only insert values into other columns in the table.</p>
                 <p class="paramName">ORDER&#160;BY&#160;clause</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span> clause</a> allows you to specify the order in which rows appear in the result set. </p>
+                <p class="paramDefnFirst">The <a href="sqlref_clauses_orderby.html"><code>ORDER&#160;BY</code> clause</a> allows you to specify the order in which rows appear in the result set. </p>
                 <p class="paramName">result offset and fetch first clauses</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows returned in the result set.</p>
+                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><code>fetch first</code> clause</a>, which can be combined with the <code>result offset</code> clause, limits the number of rows returned in the result set.</p>
             </div>
             <h2>Usage</h2>
-            <p>A <span class="CodeFont">VALUES</span> expression can be used in all the places where a
+            <p>A <code>VALUES</code> expression can be used in all the places where a
 query can, and thus can be used in any of the following ways:
 </p>
             <ul>
-                <li>As a statement that returns a <span class="ItalicFont">ResultSet</span></li>
+                <li>As a statement that returns a <em>ResultSet</em></li>
                 <li>Within expressions and statements wherever subqueries are permitted</li>
-                <li>As the source of values for an <span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span> statement (in an <span class="CodeFont">INSERT</span> statement,
-you normally use a <span class="CodeFont">VALUES</span> expression when you do not use a <span class="ItalicFont"><a href="sqlref_expressions_select.html">SelectExpression</a></span>)</li>
+                <li>As the source of values for an <code><a href="sqlref_statements_insert.html">INSERT</a></code> statement (in an <code>INSERT</code> statement,
+you normally use a <code>VALUES</code> expression when you do not use a <em><a href="sqlref_expressions_select.html">SelectExpression</a></em>)</li>
             </ul>
-            <p class="body">You can use a <span class="CodeFont">VALUES</span>&#160;expression to generate new data values with a query that selects from a <span class="CodeFont">VALUES</span>&#160;clause; for example:</p>
+            <p class="body">You can use a <code>VALUES</code>&#160;expression to generate new data values with a query that selects from a <code>VALUES</code>&#160;clause; for example:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
  SELECT R1,R2
    FROM (VALUES('GROUP 1','GROUP 2')) AS MYTBL(R1,R2);</pre>
             </div>
-            <p>A <span class="CodeFont">VALUES</span> expression that is used in an <span class="CodeFont">INSERT</span> statement cannot use an <span class="CodeFont">ORDER BY</span> clause. However, if the <span class="CodeFont">VALUES</span> expression does not contain the <span class="CodeFont">DEFAULT</span> keyword, the <span class="CodeFont">VALUES</span> clause can be put in a subquery and ordered, as in the following statement:</p>
+            <p>A <code>VALUES</code> expression that is used in an <code>INSERT</code> statement cannot use an <code>ORDER BY</code> clause. However, if the <code>VALUES</code> expression does not contain the <code>DEFAULT</code> keyword, the <code>VALUES</code> clause can be put in a subquery and ordered, as in the following statement:</p>
             <div class="preWrapper"><pre class="Example">INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;</pre>
             </div>
             <h2>Examples</h2>
@@ -2895,9 +2895,9 @@ splice&gt;&#160;values char(1);</pre>
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
-                <li><a href="sqlref_statements_insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
+                <li><a href="sqlref_clauses_from.html"><code>FROM</code></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_orderby.html"><code>ORDER&#160;BY</code></a>&#160;clause</li>
+                <li><a href="sqlref_statements_insert.html"><code>INSERT</code></a>&#160;statement</li>
             </ul>
         </div>
 	</section>
@@ -2917,7 +2917,7 @@ splice&gt;&#160;values char(1);</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

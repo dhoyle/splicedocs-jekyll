@@ -11,11 +11,11 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInSysProcs.DeleteSnapshot">SYSCS_UTIL.SYSCS_RESTORE_SNAPSHOT</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_SNAPSHOT</span> system procedure restores a table or schema to the state it was in at the time the snapshot was created.</p>
-						<div class="noteNote">Snapshots include both the data and indexes for tables.</div>
-            <p>For more information, see the <a href="developers_tuning_snapshots.html"><span class="ItalicFont">Using Snapshots</span></a> topic in our <span class="ItalicFont">Developers's Guide</span>.</p>
+            <p>The <code>SYSCS_UTIL.SYSCS_RESTORE_SNAPSHOT</code> system procedure restores a table or schema to the state it was in at the time the snapshot was created.</p>
+						<p class="noteNote">Snapshots include both the data and indexes for tables.</p>
+            <p>For more information, see the <a href="developers_tuning_snapshots.html"><em>Using Snapshots</em></a> topic in our <em>Developers's Guide</em>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_SNAPSHOT( VARCHAR(128)&#160;<span class="ItalicFont">snapshotName</span> );</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_SNAPSHOT( VARCHAR(128)&#160;<em>snapshotName</em> );</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">snapshotName</p>
@@ -24,7 +24,7 @@ folder: SQLReference/BuiltInSysProcs
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
             <h2>Example</h2>
-                <p>The following example restores the <span class="CodeFont">mySchema</span> schema to its state when the named snapshot was created:</p>
+                <p>The following example restores the <code>mySchema</code> schema to its state when the named snapshot was created:</p>
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.RESTORE_SNAPSHOT( 'snap_myschema_070417a' );
 Statement executed.
 </pre>

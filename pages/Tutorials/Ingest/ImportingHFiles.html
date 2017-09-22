@@ -13,24 +13,24 @@ folder: Tutorials/Ingest
             <h1>Importing Data in HFile Format Into Splice Machine</h1>
             <p>This tutorial describes how to import data using HFiles into your Splice Machine database, and includes a number of examples. It also contains specific tips to help you with the details of getting your data correctly imported. This tutorial contains these sections:</p>
             <ul>
-                <li><span class="ItalicFont">How&#160;Importing Your Data as HFiles Works</span> presents an overview of using the HFile import functions.</li>
-                <li> <span class="ItalicFont">Usage Notes</span> provides an overview of the steps you use to import your data as HFiles.</li>
-                <li><span class="ItalicFont">Examples</span> contains two example of importing data in HFile format.</li>
+                <li><em>How&#160;Importing Your Data as HFiles Works</em> presents an overview of using the HFile import functions.</li>
+                <li> <em>Usage Notes</em> provides an overview of the steps you use to import your data as HFiles.</li>
+                <li><em>Examples</em> contains two example of importing data in HFile format.</li>
                 <li><a href="#Tips">Tips for Importing Data into Splice&#160;Machine</a> provides specific tips for specifying your import parameters.</li>
             </ul>
             <p>If you're importing data from an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
-            <div class="noteIcon">Our <a href="tutorials_ingest_importing.html">Importing Your Data tutorial</a> walks you through using our standard import procedure, which is easier to use, though slightly slower than importing HFiles.</div>
+            <p class="noteIcon">Our <a href="tutorials_ingest_importing.html">Importing Your Data tutorial</a> walks you through using our standard import procedure, which is easier to use, though slightly slower than importing HFiles.</p>
             <h2 id="How">How Importing Your Data as HFiles Works</h2>
-            <p>Our HFile data import procedure leverages HBase bulk loading, which allows it to import your data at a faster rate; however, using this procedure instead of our standard <span class="CodeFont"><a href="tutorials_ingest_importing.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;procedure means that <span class="ItalicFont">constraint checks are not performing during data importation</span>.</p>
-            <p>You import a table as HFiles using our <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILES</span> procedure, which temporarily converts the table file that you're importing into HFiles, imports those directly into your database, and then removes the temporary HFiles. Before it generate HFiles, <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILES</span> must determine how to split the data into multiple regions by looking at the primary keys and figuring out which values will yield relatively evenly-sized splits; the objective is to compute splits such that roughly the same number of table rows will end up in each split.</p>
-            <p><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILES</span> can scan and analyze your table to determine the best splits; or you can exercise control over those splits.</p>
-            <p>To have <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILES</span> calculate the splits automatically, simply call this procedure with the <span class="CodeFont">skipSampling</span> parameter set to <span class="CodeFont">true</span>.</p>
-            <p>If you want to control the splits yourself, use these steps, which are detailed in the <span class="ItalicFont">Examples</span> section below:</p>
+            <p>Our HFile data import procedure leverages HBase bulk loading, which allows it to import your data at a faster rate; however, using this procedure instead of our standard <code><a href="tutorials_ingest_importing.html">SYSCS_UTIL.IMPORT_DATA</a></code>&#160;procedure means that <em>constraint checks are not performing during data importation</em>.</p>
+            <p>You import a table as HFiles using our <code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> procedure, which temporarily converts the table file that you're importing into HFiles, imports those directly into your database, and then removes the temporary HFiles. Before it generate HFiles, <code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> must determine how to split the data into multiple regions by looking at the primary keys and figuring out which values will yield relatively evenly-sized splits; the objective is to compute splits such that roughly the same number of table rows will end up in each split.</p>
+            <p><code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> can scan and analyze your table to determine the best splits; or you can exercise control over those splits.</p>
+            <p>To have <code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> calculate the splits automatically, simply call this procedure with the <code>skipSampling</code> parameter set to <code>true</code>.</p>
+            <p>If you want to control the splits yourself, use these steps, which are detailed in the <em>Examples</em> section below:</p>
             <ul>
                 <li>You must determine which values make sense for splitting your data into multiple regions. This means looking at the primary keys for the table and figuring out which values will yield relatively evenly-sized splits, which means that roughly the same number of table rows will end up in each split. </li>
                 <li>Calling one of our system procedures to compute the HBase-encoded keys to create those splits.</li>
                 <li>Calling one of our system procedures to set up the splits inside your&#160;Splice&#160;Machine database.</li>
-                <li>Call our <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILES</span> procedure, which temporarily converts the table file that you're importing into HFiles, imports those directly into your database, and then removes the temporary HFiles.</li>
+                <li>Call our <code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> procedure, which temporarily converts the table file that you're importing into HFiles, imports those directly into your database, and then removes the temporary HFiles.</li>
             </ul>
 {% include splice_snippets/hfileimport_example.html %}
             <h2 id="Tips">Tips for Importing Data into Splice&#160;Machine</h2>
@@ -52,41 +52,41 @@ folder: Tutorials/Ingest
             <h3 id="Tip4">Tip #1:&#160;&#160;Use Special Characters for Delimiters</h3>
             <p>One common gotcha we see with customer imports is when the data you're importing includes a special character that you've designated as a column or character delimiter. You'll end up with records in your bad record directory and can spend hours trying to determine the issue, only to discover that it's because the data includes a delimiter character. This can happen with columns that contain data such as product descriptions. </p>
             <h4>Column Delimiters</h4>
-            <p>The  standard column delimiter is a comma (<span class="CodeFont">,</span>); however, we've all worked with string data that contains commas, and have figured out to use a different column delimiter. Some customers use the pipe (<span class="CodeFont">|</span>)&#160;character, but frequently discover that it is also used in some descriptive data in the table they're importing. </p>
-            <p>We recommend using a control character like <span class="CodeFont">CTRL-A</span> for your column delimiter. This is known as the SOH&#160;character, and is represented by 0x01 in hexadecimal. Unfortunately, there's no way to enter this character from the keyboard in the Splice&#160;Machine command line interface; instead, you need to create a script file (see <a href="#Tip9">Tip #9</a>) and type the control character using a text editor like <span class="ItalicFont">vi</span> or <span class="ItalicFont">vim</span>:</p>
+            <p>The  standard column delimiter is a comma (<code>,</code>); however, we've all worked with string data that contains commas, and have figured out to use a different column delimiter. Some customers use the pipe (<code>|</code>)&#160;character, but frequently discover that it is also used in some descriptive data in the table they're importing. </p>
+            <p>We recommend using a control character like <code>CTRL-A</code> for your column delimiter. This is known as the SOH&#160;character, and is represented by 0x01 in hexadecimal. Unfortunately, there's no way to enter this character from the keyboard in the Splice&#160;Machine command line interface; instead, you need to create a script file (see <a href="#Tip9">Tip #9</a>) and type the control character using a text editor like <em>vi</em> or <em>vim</em>:</p>
             <ul>
                 <li>Open your script file in vi or vim.</li>
                 <li>Enter into INSERT&#160;mode.</li>
-                <li>Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-A</span> for the value of the column delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^A</span> when you type it in vi or vim.</li>
+                <li>Type <code>CTRL-V</code> then <code>CTRL-A</code> for the value of the column delimiter parameter in your procedure call. Note that this typically echoes as <code>^A</code> when you type it in vi or vim.</li>
             </ul>
             <h4>Character Delimiters</h4>
             <p>By default, the character delimiter is a double quote. This can produce the same kind of problems that we see with using a comma for the column delimiter:&#160;columns values that include embedded quotes or use the double quote as the symbol for inches. You can use escape characters to include the embedded quotes, but it's easier to use a special character for your delimiter. </p>
-            <p>We recommend using <span class="CodeFont">CTRL-G</span>, which you can add to a script file (see <a href="#Tip9">Tip #9</a>), again using a text editor like <span class="ItalicFont">vi</span> or <span class="ItalicFont">vim</span>:</p>
+            <p>We recommend using <code>CTRL-G</code>, which you can add to a script file (see <a href="#Tip9">Tip #9</a>), again using a text editor like <em>vi</em> or <em>vim</em>:</p>
             <ul>
                 <li>Open your script file in vi or vim.</li>
                 <li>Enter into INSERT&#160;mode.</li>
-                <li>Type <span class="CodeFont">CTRL-V</span> then <span class="CodeFont">CTRL-G</span> for the value of the character delimiter parameter in your procedure call. Note that this typically echoes as <span class="CodeFont">^G</span> when you type it in vi or vim.</li>
+                <li>Type <code>CTRL-V</code> then <code>CTRL-G</code> for the value of the character delimiter parameter in your procedure call. Note that this typically echoes as <code>^G</code> when you type it in vi or vim.</li>
             </ul>
             <h3 id="Tip5">Tip #2:&#160;&#160;Avoid Problems With Date, Time, and Timestamp Formats</h3>
             <p>Perhaps the most common difficulty that customers have with importing their data is with date, time, and timestamp values. </p>
-            <p>Splice Machine adheres to the Java <span class="CodeFont">SimpleDateFormat</span> syntax for all date, time, and timestamp values, <span class="CodeFont">SimpleDateFormat</span> is described here:</p>
+            <p>Splice Machine adheres to the Java <code>SimpleDateFormat</code> syntax for all date, time, and timestamp values, <code>SimpleDateFormat</code> is described here:</p>
             <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html"  target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
             </p>
-            <p>Splice Machine's implementation of <span class="CodeFont">SimpleDateFormat</span> is case-sensitive; this means, for example, that a lowercase <span class="CodeFont">h</span> is used to represent an hour value between 0 and 12, whereas an uppercase <span class="CodeFont">H</span> is used to represent an hour between 0 and 23.</p>
+            <p>Splice Machine's implementation of <code>SimpleDateFormat</code> is case-sensitive; this means, for example, that a lowercase <code>h</code> is used to represent an hour value between 0 and 12, whereas an uppercase <code>H</code> is used to represent an hour between 0 and 23.</p>
             <p>Splice Machine's Import procedures only allow you to specify one format each for the date, time, and timestamp columns in the table data you are importing. This means that, for example, every date in the table data must be in the same format.</p>
             <div class="notePlain">
-                <p>All of the <span class="CodeFont">Date</span> values in the file (or group of files) you are importing must use the same date format.</p>
-                <p>All of the <span class="CodeFont">Time</span> values in the file (or group of files) you are importing must use the same time format.</p>
-                <p>All of the <span class="CodeFont">Timestamp</span> values in the file (or group of files) you are importing must use the same timestamp format.</p>
+                <p>All of the <code>Date</code> values in the file (or group of files) you are importing must use the same date format.</p>
+                <p>All of the <code>Time</code> values in the file (or group of files) you are importing must use the same time format.</p>
+                <p>All of the <code>Timestamp</code> values in the file (or group of files) you are importing must use the same timestamp format.</p>
             </div>
             <p>A few additional notes:</p>
             <ul>
-                <li>The <span class="CodeFont">Timestamp</span> data type has a range of <span class="CodeFont">1678-01-01</span> to <span class="CodeFont">2261-12-31</span>. Some customers have used dummy timestamp values like <span class="CodeFont">9999-01-01</span>, which will fail because the value is out of range for a timestamp. Note that this is not an issue with <span class="CodeFont">Date</span> values.</li>
-                <li>Splice Machine suggests that, if your data contains any date or timestamp values that are not in the format <span class="CodeFont">yyyy-MM-dd HH:mm:ss</span>, you create a simple table that has just one or two columns and test importing the format. This is a simple way to confirm that the imported data is what you expect.</li>
+                <li>The <code>Timestamp</code> data type has a range of <code>1678-01-01</code> to <code>2261-12-31</code>. Some customers have used dummy timestamp values like <code>9999-01-01</code>, which will fail because the value is out of range for a timestamp. Note that this is not an issue with <code>Date</code> values.</li>
+                <li>Splice Machine suggests that, if your data contains any date or timestamp values that are not in the format <code>yyyy-MM-dd HH:mm:ss</code>, you create a simple table that has just one or two columns and test importing the format. This is a simple way to confirm that the imported data is what you expect.</li>
             </ul>
             <h3 id="Tip6">Tip #3:&#160;&#160;Change the Bad Directory for Each Table / Group</h3>
             <p>If you are importing a large amount of data and have divided the files you are importing into groups, then it's a good idea to change the location of the bad record directory for each group; this will make debugging bad records a lot easier for you.</p>
-            <p>You can change the value of the <span class="CodeFont">badRecordDirectory</span> to include your group name; for example, we typically use a strategy like the following:</p>
+            <p>You can change the value of the <code>badRecordDirectory</code> to include your group name; for example, we typically use a strategy like the following:</p>
             <table style="width: 100%;">
                 <col />
                 <col />
@@ -113,22 +113,20 @@ folder: Tutorials/Ingest
             </table>
             <p>You'll then be able to more easily discover where the problem record is located.</p>
             <h3 id="Tip7">Tip #4:&#160;&#160;Importing Multi-line Records</h3>
-            <p>If your data contains line feed characters like <span class="CodeFont">CTRL-M</span>, you need to set the <span class="CodeFont">oneLineRecords</span> parameter to <span class="CodeFont">false</span>. Splice Machine will accommodate to the line feeds; however, the import will take longer because Splice&#160;Machine will not be able to break the file up and distribute it across the cluster.</p>
-            <div class="notePlain">
-                <p>To improve import performance, avoid including line feed characters in your data and set the <span class="CodeFont">oneLineRecords</span> parameter to <span class="CodeFont">true</span>. </p>
-            </div>
+            <p>If your data contains line feed characters like <code>CTRL-M</code>, you need to set the <code>oneLineRecords</code> parameter to <code>false</code>. Splice Machine will accommodate to the line feeds; however, the import will take longer because Splice&#160;Machine will not be able to break the file up and distribute it across the cluster.</p>
+            <p class="notePlain">To improve import performance, avoid including line feed characters in your data and set the <code>oneLineRecords</code> parameter to <code>true</code>. </p>
             <h3 id="Tip8">Tip #5:&#160;&#160;Importing CLOBs and BLOBs</h3>
-            <p>If you are importing <span class="CodeFont">CLOB</span>s, pay careful attention to tips <a href="#Tip4">4</a> and <a href="#Tip7">7</a>. Be sure to use special characters for both your column and character delimiters. If your <span class="CodeFont">CLOB</span> data can span multiple lines, be sure to set the <span class="CodeFont">oneLineRecords</span> parameter to <span class="CodeFont">false</span>. </p>
-            <p>At this time, the Splice Machine import procedures do not import work with columns of type <span class="CodeFont">BLOB</span>. You can create a virtual table interface (VTI)&#160;that reads the <span class="CodeFont">BLOB</span>s and inserts them into your database.</p>
+            <p>If you are importing <code>CLOB</code>s, pay careful attention to tips <a href="#Tip4">4</a> and <a href="#Tip7">7</a>. Be sure to use special characters for both your column and character delimiters. If your <code>CLOB</code> data can span multiple lines, be sure to set the <code>oneLineRecords</code> parameter to <code>false</code>. </p>
+            <p>At this time, the Splice Machine import procedures do not import work with columns of type <code>BLOB</code>. You can create a virtual table interface (VTI)&#160;that reads the <code>BLOB</code>s and inserts them into your database.</p>
             <h3 id="Tip9">Tip #6:&#160;&#160;Scripting Your Imports</h3>
-            <p>You can make import tasks much easier and convenient by creating <span class="ItalicFont">import scripts</span>. An import script is simply a call to one of the import procedures; once you've verified that it works, you can use and clone the script and run unattended imports.</p>
-            <p>An import script is simply a file in which you store <span class="CodeFont">splice&gt;</span>&#160;commands that you can execute with the <span class="CodeFont">run</span> command. For example, here's an example of a text file named <span class="CodeFont">myimports.sql</span> that we can use to import two csv files into our database:</p>
+            <p>You can make import tasks much easier and convenient by creating <em>import scripts</em>. An import script is simply a call to one of the import procedures; once you've verified that it works, you can use and clone the script and run unattended imports.</p>
+            <p>An import script is simply a file in which you store <code>splice&gt;</code>&#160;commands that you can execute with the <code>run</code> command. For example, here's an example of a text file named <code>myimports.sql</code> that we can use to import two csv files into our database:</p>
             <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable1',null,'/data/mytable1/data.csv',null,null,null,null,null,0,'/BAD/mytable1',null,null);<br />call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable2',null,'/data/mytable2/data.csv',null,null,null,null,null,0,'/BAD/mytable2',null,null</pre>
             </div>
-            <p>To run an import script, use the <span class="CodeFont">splice&gt;&#160;run</span> command; for example:</p>
+            <p>To run an import script, use the <code>splice&gt;&#160;run</code> command; for example:</p>
             <div class="preWrapper"><pre class="Example">splice&gt;&#160;run 'myimports.sql';</pre>
             </div>
-            <p>You can also start up the <span class="CodeFont">splice&gt;</span>&#160;command line interpreter with the name of a file to run; for example:</p>
+            <p>You can also start up the <code>splice&gt;</code>&#160;command line interpreter with the name of a file to run; for example:</p>
             <div class="preWrapper"><pre class="Example">sqlshell.sh -f myimports.sql</pre>
             </div>
             <p>In fact, you can script almost any sequence of Splice Machine commands in a file and run that script within the command line interpreter or when you start the interpreter.</p>

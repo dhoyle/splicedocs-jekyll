@@ -11,11 +11,11 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCS_UTIL.SET_PURGE_DELETED_ROWS</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SET_PURGE_DELETED_ROWS</span> system procedure enables (or disables) physical deletion of logically deleted rows from a specific table.</p>
+            <p>The <code>SYSCS_UTIL.SET_PURGE_DELETED_ROWS</code> system procedure enables (or disables) physical deletion of logically deleted rows from a specific table.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SET_PURGE_DELETED_ROWS( VARCHAR&#160;<span class="ItalicFont">schema</span>,
-                                  VARCHAR&#160;<span class="ItalicFont">table</span>,
-                                  VARCHAR&#160;<span class="ItalicFont">enable</span> );</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SET_PURGE_DELETED_ROWS( VARCHAR&#160;<em>schema</em>,
+                                  VARCHAR&#160;<em>table</em>,
+                                  VARCHAR&#160;<em>enable</em> );</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">schema</p>
@@ -30,7 +30,7 @@ folder: SQLReference/BuiltInSysProcs
             <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
             <h2>Example</h2>
-            <p>This specifies that deleted rows from <span class="CodeFont">my_table</span> will be physically deleted when the next major compaction is run:</p>
+            <p>This specifies that deleted rows from <code>my_table</code> will be physically deleted when the next major compaction is run:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CALL SYSCS_UTIL.SET_PURGE_DELETED_ROWS('SPLICE', 'my_table', true); </pre>
             </div>
         </div>

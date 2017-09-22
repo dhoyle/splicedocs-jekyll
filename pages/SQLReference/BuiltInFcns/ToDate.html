@@ -11,23 +11,23 @@ folder: SQLReference/BuiltInFcns
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>TO_DATE</h1>
-            <p>The <span class="CodeFont">TO_DATE</span>&#160;function formats a date string according to a formatting specification, and returns a <span class="CodeFont"><a href="sqlref_builtinfcns_date.html">DATE</a></span> values do not store time components.</p>
+            <p>The <code>TO_DATE</code>&#160;function formats a date string according to a formatting specification, and returns a <code><a href="sqlref_builtinfcns_date.html">DATE</a></code> values do not store time components.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TO_DATE(&#160;<span class="ItalicFont">dateStrExpr</span>, <span class="ItalicFont">formatStr</span> );</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TO_DATE(&#160;<em>dateStrExpr</em>, <em>formatStr</em> );</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">dateStrExpr
             </p>
                 <p class="paramDefnFirst">A string expression that contains a date that is formatted according to the format string. </p>
-                <p><span class="ItalicFont">formatStr</span>
+                <p><em>formatStr</em>
                 </p>
-                <p class="paramDefnFirst">A string that specifies the format you want applied to the <span class="CodeFont">dateStr</span>. See the <a href="#Date">Date and&#160;Time Formats</a> section below for more information about format specification.			</p>
+                <p class="paramDefnFirst">A string that specifies the format you want applied to the <code>dateStr</code>. See the <a href="#Date">Date and&#160;Time Formats</a> section below for more information about format specification.			</p>
             </div>
             <h2>Results</h2>
-            <p>The result is always a <span class="CodeFont"><a href="sqlref_builtinfcns_date.html">DATE</a></span>&#160;value. </p>
+            <p>The result is always a <code><a href="sqlref_builtinfcns_date.html">DATE</a></code>&#160;value. </p>
             <h2 id="Date">Date and Time Formats</h2>
             <p>Splice Machine supports date and time format specifications based on the Java <a href="http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html#rfc822timezone"  target="_blank">SimpleDateFormat</a> class.</p>
-            <p>Date and time value formats are used for both parsing input values and for formatting output values. For example, the format specification <span class="CodeFont">yyyy-MM-dd HH:mm:ssZ</span> parses or formats values like <span class="CodeFont">2014-03-02 11:47:44-0800</span>. </p>
+            <p>Date and time value formats are used for both parsing input values and for formatting output values. For example, the format specification <code>yyyy-MM-dd HH:mm:ssZ</code> parses or formats values like <code>2014-03-02 11:47:44-0800</code>. </p>
             <p>The remainder of this topic describes format specifications in these sections:</p>
             <ul>
                 <li><a href="#Pattern">Pattern Specifications</a> contains a table showing details for all of the pattern letters you can use.</li>
@@ -35,7 +35,7 @@ folder: SQLReference/BuiltInFcns
                 <li><a href="#Presenta">Examples</a> contains a number of examples that will help you understand how to use formats.</li>
             </ul>
             <h3 id="Pattern">Pattern Specifications</h3>
-            <p>You can specify formatting or parsing patterns for date-time values using the pattern letters shown in the following table.&#160;Note that pattern letters are typically repeated in a format specification. For example, <span class="CodeFont">YYYY</span>&#160;or <span class="CodeFont">YY</span>. Refer to the next section for specific information about multiple pattern letters in the different <a href="#Presenta">presentation types</a>.</p>
+            <p>You can specify formatting or parsing patterns for date-time values using the pattern letters shown in the following table.&#160;Note that pattern letters are typically repeated in a format specification. For example, <code>YYYY</code>&#160;or <code>YY</code>. Refer to the next section for specific information about multiple pattern letters in the different <a href="#Presenta">presentation types</a>.</p>
             <table summary="Formatting and parsing patterns for date-time values">
                 <col />
                 <col />
@@ -92,10 +92,10 @@ folder: SQLReference/BuiltInFcns
                         <td class="ItalicFont">Number</td>
                         <td class="CodeFont">
                             <p>212</p>
-                            <p>A common usage error is to mistakenly specify <span class="CodeFont">DD</span> for the day field:</p>
+                            <p>A common usage error is to mistakenly specify <code>DD</code> for the day field:</p>
                             <ul>
-                                <li>use <span class="CodeFont">dd</span> to specify day of month</li>
-                                <li>use <span class="CodeFont">DD</span> to specify the day of the year</li>
+                                <li>use <code>dd</code> to specify day of month</li>
+                                <li>use <code>DD</code> to specify the day of the year</li>
                             </ul>
                         </td>
                     </tr>
@@ -121,7 +121,7 @@ folder: SQLReference/BuiltInFcns
                     </tr>
                     <tr>
                         <td class="CodeFont">u</td>
-                        <td>Day number of week<br />(<span class="CodeFont">1</span>=Monday, <span class="CodeFont">7</span>=Sunday)</td>
+                        <td>Day number of week<br />(<code>1</code>=Monday, <code>7</code>=Sunday)</td>
                         <td class="ItalicFont">Number</td>
                         <td class="CodeFont">4</td>
                     </tr>
@@ -133,25 +133,25 @@ folder: SQLReference/BuiltInFcns
                     </tr>
                     <tr>
                         <td class="CodeFont">H</td>
-                        <td>Hour in day <br />(<span class="CodeFont">0 - 23</span>)</td>
+                        <td>Hour in day <br />(<code>0 - 23</code>)</td>
                         <td class="ItalicFont">Number</td>
                         <td class="CodeFont">23</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">k</td>
-                        <td>Hour in day<br /><span class="CodeFont">(1 - 24)</span></td>
+                        <td>Hour in day<br /><code>(1 - 24)</code></td>
                         <td class="ItalicFont">Number</td>
                         <td class="CodeFont">24</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">K</td>
-                        <td>Hour in AM/PM<br />(<span class="CodeFont">0 - 11</span>)</td>
+                        <td>Hour in AM/PM<br />(<code>0 - 11</code>)</td>
                         <td class="ItalicFont">Number</td>
                         <td class="CodeFont">11</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">h</td>
-                        <td>Hour in AM/PM<br />(<span class="CodeFont">1 - 12</span>)</td>
+                        <td>Hour in AM/PM<br />(<code>1 - 12</code>)</td>
                         <td class="ItalicFont">Number</td>
                         <td class="CodeFont">12</td>
                     </tr>
@@ -237,10 +237,10 @@ folder: SQLReference/BuiltInFcns
                             <p>For formatting, if the number of pattern letters is 2, the year is truncated to 2 digits; otherwise it is interpreted as a number.</p>
                             <p>For parsing, if the number of pattern letters is more than 2, the year is interpreted literally, regardless of the number of digits; e.g.:</p>
                             <ul>
-                                <li> if you use the pattern <span class="CodeFont">MM/dd/yyyy</span>, the value <span class="CodeFont">01/11/12</span>&#160;parses to <span class="CodeFont">January 11, 12 A.D.</span></li>
-                                <li> if you use the pattern <span class="CodeFont">MM/dd/yy</span>, the value <span class="CodeFont">01/11/12</span>&#160;parses to <span class="CodeFont">January 11, 2012.</span></li>
+                                <li> if you use the pattern <code>MM/dd/yyyy</code>, the value <code>01/11/12</code>&#160;parses to <code>January 11, 12 A.D.</code></li>
+                                <li> if you use the pattern <code>MM/dd/yy</code>, the value <code>01/11/12</code>&#160;parses to <code>January 11, 2012.</code></li>
                             </ul>
-                            <p>If the number of pattern letters is one or two,  (<span class="CodeFont">y</span> or <span class="CodeFont">yy</span>), the abbreviated year is interpreted as relative to a century; this is done by adjusting dates to be within 80 years before and 20 years after the current date.  </p>
+                            <p>If the number of pattern letters is one or two,  (<code>y</code> or <code>yy</code>), the abbreviated year is interpreted as relative to a century; this is done by adjusting dates to be within 80 years before and 20 years after the current date.  </p>
                         </td>
                     </tr>
                     <tr>
@@ -265,9 +265,9 @@ folder: SQLReference/BuiltInFcns
                             </div>
                             <p>where:</p>
                             <div class="indented">
-                                <p><span class="CodeFont">Sign</span> is <span class="CodeFont">+</span>&#160;or <span class="CodeFont">-</span></p>
-                                <p><span class="CodeFont">Hours</span> is either <span class="CodeFont">Digit</span> or <span class="CodeFont">Digit Digit</span>, between <span class="CodeFont">0</span> and <span class="CodeFont">23</span>. </p>
-                                <p><span class="CodeFont">Minutes</span> is <span class="CodeFont">Digit Digit</span> and must be between <span class="CodeFont">00</span> and <span class="CodeFont">59</span>. </p>
+                                <p><code>Sign</code> is <code>+</code>&#160;or <code>-</code></p>
+                                <p><code>Hours</code> is either <code>Digit</code> or <code>Digit Digit</code>, between <code>0</code> and <code>23</code>. </p>
+                                <p><code>Minutes</code> is <code>Digit Digit</code> and must be between <code>00</code> and <code>59</code>. </p>
                             </div>
                             <p>For parsing, RFC&#160;822 time zones are also accepted.</p>
                         </td>
@@ -277,9 +277,9 @@ folder: SQLReference/BuiltInFcns
                         <td>
                             <p>For formatting, use the RFC&#160;822 4-digit time zone format is used:</p>
                             <div class="indented">
-                                <p><![CDATA[             ]]><span class="CodeFont">Sign TwoDigitHours Minutes</span></p>
+                                <p><![CDATA[             ]]><code>Sign TwoDigitHours Minutes</code></p>
                             </div>
-                            <p><span class="CodeFont">TwoDigitHours</span> must be between <span class="CodeFont">00</span> and <span class="CodeFont">23</span>.</p>
+                            <p><code>TwoDigitHours</code> must be between <code>00</code> and <code>23</code>.</p>
                             <p>For parsing General time zones are also accepted.</p>
                         </td>
                     </tr>
@@ -293,10 +293,10 @@ folder: SQLReference/BuiltInFcns
                             </div>
                             <p>For formatting:</p>
                             <ul>
-                                <li> if the offset value from GMT is 0, <span class="CodeFont">Z</span>&#160;value is produced</li>
+                                <li> if the offset value from GMT is 0, <code>Z</code>&#160;value is produced</li>
                                 <li>if the number of pattern letters is 1, any fraction of an hour is ignored</li>
                             </ul>
-                            <p>For parsing, Z&#160;is parsed as the UTC&#160;time zone designator. Note that General time zones <span class="ItalicFont">are not accepted</span>.</p>
+                            <p>For parsing, Z&#160;is parsed as the UTC&#160;time zone designator. Note that General time zones <em>are not accepted</em>.</p>
                         </td>
                     </tr>
                     <tr>
@@ -307,7 +307,7 @@ folder: SQLReference/BuiltInFcns
                         <td class="ItalicFont">Literal</td>
                         <td>
                             <p>You can include literals in your format specification by enclosing the character(s)&#160;in single quotes. </p>
-                            <p>Note that you must escape single quotes to include them as literals, e.g. use <span class="CodeFont">''T''</span> to include the literal string <span class="CodeFont">'T'</span>.</p>
+                            <p>Note that you must escape single quotes to include them as literals, e.g. use <code>''T''</code> to include the literal string <code>'T'</code>.</p>
                         </td>
                     </tr>
                 </tbody>
@@ -381,7 +381,7 @@ folder: SQLReference/BuiltInFcns
                     </tr>
                 </tbody>
             </table>
-            <h2>Examples of Using <span class="CodeFont">TO_DATE</span></h2>
+            <h2>Examples of Using <code>TO_DATE</code></h2>
             <p>Here are several simple examples:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES TO_DATE('2015-01-01', 'YYYY-MM-dd');
 1
@@ -418,7 +418,7 @@ splice&gt; VALUES (TO_DATE('2015-26', 'MM-DD'));
 2015-01-26
 1 row selected</pre>
             </div>
-            <p>And here is an example that shows two interesting aspects of using <span class="CodeFont">TO_DATE</span>. In this example,  the input includes the literal <span class="CodeFont">T</span>), which means that the format pattern must delimit that letter with single quotes. Since we're delimiting the entire pattern in single quotes, we then have to escape those marks and specify <span class="CodeFont">''T''</span> in our parsing pattern.</p>
+            <p>And here is an example that shows two interesting aspects of using <code>TO_DATE</code>. In this example,  the input includes the literal <code>T</code>), which means that the format pattern must delimit that letter with single quotes. Since we're delimiting the entire pattern in single quotes, we then have to escape those marks and specify <code>''T''</code> in our parsing pattern.</p>
             <p>And because this example specifies a time zone (Z) in the parsing pattern but not in the input string, the timezone information is not preserved. In this case, that means that the parsed date is actually a day earlier than intended:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES TO_DATE('2013-06-18T01:03:30.000-0800','yyyy-MM-dd''T''HH:mm:ss.SSSZ');
 1
@@ -435,23 +435,23 @@ splice&gt; VALUES (TO_DATE('2015-26', 'MM-DD'));
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_builtinfcns_currentdate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_extract.html"><span class="CodeFont">EXTRACT</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_month.html"><span class="CodeFont">MONTH</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthname.html"><span class="CodeFont">MONTHNAME</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_now.html"><span class="CodeFont">NOW</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_quarter.html"><span class="CodeFont">QUARTER</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_char.html"><span class="CodeFont">TO_CHAR</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_week.html"><span class="CodeFont">WEEK</span></a> function</li>
-                <li><span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
+                <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;data type</li>
+                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a>&#160;data type</li>
+                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
+                <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the <em>Developer's Guide</em></li>
             </ul>
         </div>
 	</section>

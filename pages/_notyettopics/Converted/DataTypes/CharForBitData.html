@@ -11,21 +11,21 @@ folder: SQLReference/DataTypes
 <section>
 	<div class="TopicContent" data-swiftype-index="true">
         <h1 id="DataTypes.CharForBitData">CHAR FOR BIT DATA</h1>
-        <p>A <span class="CodeFont">CHAR FOR BIT DATA</span> value allows you to store byte strings of a specified length. It is useful for unstructured data in which character strings are not appropriate. </p>
+        <p>A <code>CHAR FOR BIT DATA</code> value allows you to store byte strings of a specified length. It is useful for unstructured data in which character strings are not appropriate. </p>
         <h2>Syntax</h2>
-        <div class="fcnWrapperWide"><pre class="FcnSyntax">{ CHAR | CHARACTER }[(<span class="ItalicFont">length</span>)] FOR BIT DATA</pre>
+        <div class="fcnWrapperWide"><pre class="FcnSyntax">{ CHAR | CHARACTER }[(<em>length</em>)] FOR BIT DATA</pre>
         </div>
         <div class="paramList">
             <p class="paramName">length</p>
-            <p class="paramDefnFirst">An unsigned integer literal designating the length in bytes.The default <span class="ItalicFont">length</span> for a <span class="CodeFont">CHAR FOR&#160;BIT&#160;DATA</span> is 1; the maximum size of <span class="ItalicFont">length</span> is 254.</p>
+            <p class="paramDefnFirst">An unsigned integer literal designating the length in bytes.The default <em>length</em> for a <code>CHAR FOR&#160;BIT&#160;DATA</code> is 1; the maximum size of <em>length</em> is 254.</p>
         </div>
         <h2>JDBC Metadata Type (java.sql.Types)</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax">BINARY</pre>
         </div>
         <h2>Notes</h2>
-        <p><span class="CodeFont">CHAR FOR BIT DATA</span> stores fixed-length byte strings. If a <span class="CodeFont">CHAR FOR BIT DATA</span> value is smaller than the target <span class="CodeFont">CHAR FOR BIT DATA</span>, it is padded with a 0x20 byte value.</p>
-        <p>Comparisons of <span class="CodeFont">CHAR FOR BIT DATA</span> and <span class="CodeFont">VARCHAR FOR BIT DATA</span> values are precise. For two bit strings to be equal, they must be <span class="ItalicFont">exactly</span> the same length. (This differs from the way some other DBMSs handle <span class="CodeFont">BINARY</span> values but works as specified in the <span class="ItalicFont">ANSI&#160;SQL</span> standard.)</p>
-        <p>An operation on a <span class="CodeFont">VARCHAR FOR BIT DATA</span> and a <span class="CodeFont">CHAR FOR BIT DATA</span> value (e.g., a concatenation) yields a <span class="CodeFont">VARCHAR FOR BIT DATA</span> value.</p>
+        <p><code>CHAR FOR BIT DATA</code> stores fixed-length byte strings. If a <code>CHAR FOR BIT DATA</code> value is smaller than the target <code>CHAR FOR BIT DATA</code>, it is padded with a 0x20 byte value.</p>
+        <p>Comparisons of <code>CHAR FOR BIT DATA</code> and <code>VARCHAR FOR BIT DATA</code> values are precise. For two bit strings to be equal, they must be <em>exactly</em> the same length. (This differs from the way some other DBMSs handle <code>BINARY</code> values but works as specified in the <em>ANSI&#160;SQL</em> standard.)</p>
+        <p>An operation on a <code>VARCHAR FOR BIT DATA</code> and a <code>CHAR FOR BIT DATA</code> value (e.g., a concatenation) yields a <code>VARCHAR FOR BIT DATA</code> value.</p>
         <h2>Example</h2>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">
 CREATE TABLE t (b CHAR(2) FOR BIT DATA);

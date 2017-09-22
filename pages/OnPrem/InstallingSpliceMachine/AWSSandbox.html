@@ -13,7 +13,7 @@ folder: OnPrem/InstallingSpliceMachine
             <h1 id="DeployingCloudfront">Installing Splice Machine on Amazon Web Services</h1>
 {% include splice_snippets/onpremonlytopic.html %}
             <p>The fastest way to deploy Splice Machine is on the Amazon Web Services (AWS) platform on EC2 instances using cloud.splicemachine.com. </p>
-            <div class="noteIcon">You must have an existing AWS&#160;account before running this process.</div>
+            <p class="noteIcon">You must have an existing AWS&#160;account before running this process.</p>
             <h2>Getting Started with the SandBox Cluster Generator</h2>
             <p>To generate your Splice Machine sandbox cluster, point your browser to:</p>
             <div class="preWrapperWide"><pre class="ShellCommand">www.splicemachine.com/get-started/sandbox-start/</pre>
@@ -28,8 +28,8 @@ folder: OnPrem/InstallingSpliceMachine
             <p>
                 <img src="images/AWSCF.ClusterGen.jpg" title="Splice Machine Cluster Generator dialog" alt="Splice Machine Cluster Generator dialog" class="indentedTightSpacing" />
             </p>
-            <div class="noteIndent">The EC2 KeyPair Name of your pem file, which can be located anywhere on your computer. <br /><br />When specifying your EC2 KeyPair name, <span class="BoldFont">DO&#160;NOT</span>&#160;include any file name suffix. For example, enter <span class="CodeFont">splice-demo</span>, NOT&#160;<span class="CodeFont">splice-demo.pem</span>. </div>
-            <p>When you click the <span class="AppCommand">SUBMIT</span>&#160;button, Splice Machine generates an AWS&#160;cluster generator template file, which is a <span class="CodeFont">json</span> file that you can download for safekeeping.</p>
+            <p class="noteIndent">The EC2 KeyPair Name of your pem file, which can be located anywhere on your computer. <br /><br />When specifying your EC2 KeyPair name, <strong>DO&#160;NOT</strong>&#160;include any file name suffix. For example, enter <code>splice-demo</code>, NOT&#160;<code>splice-demo.pem</code>. </p>
+            <p>When you click the <span class="AppCommand">SUBMIT</span>&#160;button, Splice Machine generates an AWS&#160;cluster generator template file, which is a <code>json</code> file that you can download for safekeeping.</p>
             <p class="noSpaceAboveOrBelow">
                 <img src="images/AWSCF.Download.png" />
             </p>
@@ -44,25 +44,25 @@ folder: OnPrem/InstallingSpliceMachine
             <p>
                 <img src="images/AWSCF.SelectTemplate.png" title="Selecting the Splice Machine Template" alt="Selecting the Splice Machine Template" class="indentedTightSpacing" />
             </p>
-            <p> Click the <span class="AppCommand">Next</span> button to proceed to the <span class="ItalicFont">Specify Details</span> screen.</p>
+            <p> Click the <span class="AppCommand">Next</span> button to proceed to the <em>Specify Details</em> screen.</p>
             <h3>Rename Your Stack if Desired</h3>
-            <p>You set up a name for your stack at the beginning of this process; however, you can change that here if you want.  Then click <span class="AppCommand">Next</span> to continue on to the <span class="ItalicFont">Options</span> screen.</p>
+            <p>You set up a name for your stack at the beginning of this process; however, you can change that here if you want.  Then click <span class="AppCommand">Next</span> to continue on to the <em>Options</em> screen.</p>
             <p>
                 <img src="images/AWSCF.SpecifyDetails.png" title="Specifying Sandbox Stack details" alt="Specifying Sandbox Stack details" class="indentedTightSpacing" />
             </p>
             <h3>Specify Options for Your Stack</h3>
-            <p>In the <span class="ItalicFont">Options</span> screen, you can add tags and set advanced options for your sandbox stack. </p>
+            <p>In the <em>Options</em> screen, you can add tags and set advanced options for your sandbox stack. </p>
             <h4>Adding Resource Tags to the Stack, if Desired</h4>
             <p>You can optionally tag your sandbox stack with whatever key values you want. For example:</p>
             <p>
                 <img src="images/AWSCF.StackOptions1.png" title="Adding tags to your sandbox template" alt="Adding tags to your sandbox template" class="indentedTightSpacing" />
             </p>
             <h4>Setting Advanced Options for Your Stack</h4>
-            <p>You can also configure advanced options for your sandbox stack in the <span class="ItalicFont">Options</span> screen, including notification, failure rollback, and policy options. For more information about these options, click the <span class="AppCommand">Learn more</span> button.</p>
+            <p>You can also configure advanced options for your sandbox stack in the <em>Options</em> screen, including notification, failure rollback, and policy options. For more information about these options, click the <span class="AppCommand">Learn more</span> button.</p>
             <p>
                 <img src="images/AWSCF.StackOptions2.png" title="Configuring advanced stack options" alt="Configuring advanced stack options" class="indentedTightSpacing" />
             </p>
-            <p> Click the <span class="AppCommand">Next</span> button at the bottom of the <span class="ItalicFont">Options</span> screen to proceed to the <span class="ItalicFont">Review</span> screen.</p>
+            <p> Click the <span class="AppCommand">Next</span> button at the bottom of the <em>Options</em> screen to proceed to the <em>Review</em> screen.</p>
             <h3>Review Your Sandbox Stack Configuration</h3>
             <p>Finally, review your stack configuration, and then click the <span class="AppCommand">Create</span> button to start creating your sandbox cluster. </p>
             <p>
@@ -77,12 +77,12 @@ folder: OnPrem/InstallingSpliceMachine
             <p>
                 <img src="images/AWSCF.CreateComplete.png" title="Sandbox cluster creation complete" alt="Sandbox cluster creation complete" class="indentedTightSpacing" />
             </p>
-            <p>After the status changes to complete, you can display your nodes by clicking the stack name link, and then viewing <span class="ItalicFont">Outputs</span>, which will look something like this:</p>
+            <p>After the status changes to complete, you can display your nodes by clicking the stack name link, and then viewing <em>Outputs</em>, which will look something like this:</p>
             <p>
                 <img src="images/AWSCF.CreateOutputs.png" title="Sandbox cluster nodes" alt="Sandbox cluster nodes" class="indentedTightSpacing" />
             </p>
             <h2>Use Cloudera to Manage your Cluster</h2>
-            <p>You can now log into Cloudera Manager for your cluster by clicking the manager link shown in the <span class="ItalicFont">Outputs</span> screen, which lands you on the login screen:</p>
+            <p>You can now log into Cloudera Manager for your cluster by clicking the manager link shown in the <em>Outputs</em> screen, which lands you on the login screen:</p>
             <p>
                 <img src="images/AWSCF.ClouderaLogin.png" title="Cloudera Login screen" alt="Cloudera Login screen" class="indentedTightSpacing" />.</p>
             <p>After logging in, you can use Cloudera to manage your Splice Machine cluster.</p>
@@ -90,7 +90,7 @@ folder: OnPrem/InstallingSpliceMachine
                 <img src="images/12.png" title="Cloudera Manager screen" alt="Cloudera Manager screen" class="indentedTightSpacing" />
             </p>
             <h2>Using Splice Machine with Linux</h2>
-            <p>You can now log into one of your sandbox nodes and use Splice&#160;Machine from a terminal window on your computer. To do so, <span class="CodeFont">ssh</span> into the address of the node, which you can see in the Outputs screen from when you created the sandbox, or by viewing your cluster hosts in Cloudera Manager. </p>
+            <p>You can now log into one of your sandbox nodes and use Splice&#160;Machine from a terminal window on your computer. To do so, <code>ssh</code> into the address of the node, which you can see in the Outputs screen from when you created the sandbox, or by viewing your cluster hosts in Cloudera Manager. </p>
             <p>Make sure that you include the full name of your EC2 KeyPair when connecting. For example:</p>
             <div class="preWrapperWide"><pre class="ShellCommand">ssh -i ~/Downloads/splice-demo.pem.txt centos@ec2-54-164-248-229.compute-1.amazonaws.com</pre>
             </div>

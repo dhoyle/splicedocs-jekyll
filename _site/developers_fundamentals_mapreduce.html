@@ -589,8 +589,8 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor204">Splice Machine Map Reduce API</h1>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
+            <h1>Splice Machine Map Reduce API</h1>
+<p class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
             <p>The Splice Machine MapReduce API&#160;provides a simple programming interface to the Map Reduce Framework that is integrated into Splice Machine. You can use MapReduce to import data, export data, or for purposes such as implementing machine learning algorithms. One likely scenario for using the Splice Machine MapReduce API is for customers who already have a Hadoop cluster, want to use Splice Machine as their transactional database, and need to continue using their batch MapReduce jobs.</p>
             <p>This topic includes a summary of the Java classes included in the API,&#160;and <a href="#Example">presents an example</a> of using the MapReduce API.</p>
@@ -616,7 +616,7 @@
                             <p class="noSpaceAbove">Creates an object that:</p>
                             <ul>
                                 <li> uses Splice Machine to scan the table and decode the data</li>
-                                <li>returns an <span class="CodeFont">ExecRow</span> (typed data) object</li>
+                                <li>returns an <code>ExecRow</code> (typed data) object</li>
                             </ul>
                         </td>
                     </tr>
@@ -627,7 +627,7 @@
                             <ul>
                                 <li> writes to a buffered cache</li>
                                 <li>dumps the cache into Splice Machine </li>
-                                <li>returns an <span class="CodeFont">ExecRow</span> (typed data)&#160;object.</li>
+                                <li>returns an <code>ExecRow</code> (typed data)&#160;object.</li>
                             </ul>
                         </td>
                     </tr>
@@ -637,10 +637,10 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="noteNote">Each transaction must manage its own commit and rollback operations.</div>
+            <p class="noteNote">Each transaction must manage its own commit and rollback operations.</p>
             <p>For information about and examples of using Splice Machine with HCatalog, see the Using Splice Machine with HCatalog topic in this book.</p>
             <h2 id="Example">Example of Using the Splice Machine MapReduce API</h2>
-            <p>This topic describes using the Splice Machine MapReduce API, <span class="CodeFont">com.splicemachine.mrio.api</span>, a simple word count program that retrieves data from an input table, summarizes the count of initial character of each word, and writes the result to an output table.</p>
+            <p>This topic describes using the Splice Machine MapReduce API, <code>com.splicemachine.mrio.api</code>, a simple word count program that retrieves data from an input table, summarizes the count of initial character of each word, and writes the result to an output table.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
@@ -650,7 +650,7 @@
 String inputTableName  = "WIKIDATA";
 String outputTableName = "USERTEST";</pre>
                             </div>
-                        <p class="indentLevel1">You can specify table names using the <span class="ItalicFont">&lt;schemaName&gt;.&lt;tableName&gt;</span> format; if you don't specify a schema name, the default schema is assumed.</p>
+                        <p class="indentLevel1">You can specify table names using the <em>&lt;schemaName&gt;.&lt;tableName&gt;</em> format; if you don't specify a schema name, the default schema is assumed.</p>
                     </li>
                     <li>
                         <p class="topLevel">Create a new job instance:</p>
@@ -662,7 +662,7 @@ Job job = new Job(config, "WordCount");</pre>
                     </li>
                     <li>
                         <p class="topLevel">Initialize your mapper job:</p>
-                        <p class="indentLevel1">We initialize our sample job using the <span class="CodeFont">initTableMapperJob</span> utility method:</p>
+                        <p class="indentLevel1">We initialize our sample job using the <code>initTableMapperJob</code> utility method:</p>
                         <div class="preWrapperWide"><pre class="Example">TableMapReduceUtil.initTableMapperJob(
     tableName,			// input Splice Machine database table
     scan,			// a scan instance to control CF&#160;and attribute selection
@@ -676,7 +676,7 @@ Job job = new Job(config, "WordCount");</pre>
                     </li>
                     <li>
                         <p class="topLevel">Retrieve values within your map function:</p>
-                        <p class="indentLevel1">Our sample <span class="CodeFont">map</span> function retrieves and parses a single row with specified columns. </p>
+                        <p class="indentLevel1">Our sample <code>map</code> function retrieves and parses a single row with specified columns. </p>
                         <div class="preWrapperWide"><pre class="Example">public void map(ImmutableBytesWritable row, ExecRow value, Context context)
                 throws InterruptedException, IOException {
     if(value != null) {
@@ -700,7 +700,7 @@ Job job = new Job(config, "WordCount");</pre>
                     </li>
                     <li>
                         <p class="topLevel">Manipulate and save the value with reduce function:</p>
-                        <p class="indentLevel1">Our sample <span class="CodeFont">reduce</span> function manipulates and saves the value by creating an <span class="CodeFont">ExecRow</span> and filling in the row with the <span class="CodeFont">execRow.setRowArray</span> method. </p>
+                        <p class="indentLevel1">Our sample <code>reduce</code> function manipulates and saves the value by creating an <code>ExecRow</code> and filling in the row with the <code>execRow.setRowArray</code> method. </p>
                         <div class="preWrapperWide"><pre class="Example">public void reduce(Text key, IterableIntWritable&gt; values, Context context)
                     throws IOException, InterruptedException {
 
@@ -751,7 +751,7 @@ Job job = new Job(config, "WordCount");</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

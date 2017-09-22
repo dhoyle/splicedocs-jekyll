@@ -2809,28 +2809,28 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInSysProcs.BackupDatabase">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span> system procedure
+            <p>The <code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code> system procedure
 performs an immediate full or incremental backup of your database to a specified backup directory. </p>
             <p>Splice Machine supports both full and incremental backups:&#160;</p>
             <ul>
-                <li>A <span class="ItalicFont">full backup</span> backs up all of the files/blocks that constitute your database.</li>
-                <li>An <span class="ItalicFont">incremental backup</span> only stores database files/blocks that have changed since a previous backup.</li>
+                <li>A <em>full backup</em> backs up all of the files/blocks that constitute your database.</li>
+                <li>An <em>incremental backup</em> only stores database files/blocks that have changed since a previous backup.</li>
             </ul>
-            <div class="noteNote">The first time that you run an incremental backup, a full backup is performed. Subsequent runs of the backup will only copy information that has changed since the previous backup.</div>
-            <p>For more information, see the <a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+            <p class="noteNote">The first time that you run an incremental backup, a full backup is performed. Subsequent runs of the backup will only copy information that has changed since the previous backup.</p>
+            <p>For more information, see the <a href="onprem_admin_backingup.html"><em>Backing Up and Restoring</em></a> topic in our <em>Administrator's Guide</em>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( VARCHAR&#160;<span class="ItalicFont">backupDir</span>,
-                                  VARCHAR(30)&#160;<span class="ItalicFont">backupType</span> );</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( VARCHAR&#160;<em>backupDir</em>,
+                                  VARCHAR(30)&#160;<em>backupType</em> );</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">backupDir</p>
                 <p class="paramDefnFirst">Specifies the path to the directory in which you want the backup stored. This can be a local directory if you're using the standalone version of Splice Machine, or a directory in your cluster's file system (HDFS or MapR-FS). </p>
-                <div class="noteNote">You must have permissions set properly to use cloud storage as a backup destination. See <a href="onprem_admin_backingup.html#Backing">Backing Up to Cloud Storage</a> in the <span class="ItalicFont">Administrator's Guide</span> for information about setting backup permissions properties.</div>
+                <p class="noteNote">You must have permissions set properly to use cloud storage as a backup destination. See <a href="onprem_admin_backingup.html#Backing">Backing Up to Cloud Storage</a> in the <em>Administrator's Guide</em> for information about setting backup permissions properties.</p>
                 <p class="paramDefn">Relative paths are resolved
 based on the current user directory. To avoid confusion, we strongly recommend that you use an absolute path when specifying the backup destination.</p>
                 <p class="paramName">backupType</p>
-                <p class="paramDefnFirst">Specifies the type of backup that you want performed.This must be one of the following values: <span class="CodeFont">'full'</span> or <span class="CodeFont">'incremental'</span>; any other value produces an error and the backup is not run.</p>
-                <p class="paramDefn">Note that if you specify <span class="CodeFont">'incremental'</span>, Splice Machine checks the <a href="sqlref_systables_sysbackup.html"><span class="CodeFont">SYS.SYSBACKUP</span></a> table to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental.</p>
+                <p class="paramDefnFirst">Specifies the type of backup that you want performed.This must be one of the following values: <code>'full'</code> or <code>'incremental'</code>; any other value produces an error and the backup is not run.</p>
+                <p class="paramDefn">Note that if you specify <code>'incremental'</code>, Splice Machine checks the <a href="sqlref_systables_sysbackup.html"><code>SYS.SYSBACKUP</code></a> table to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental.</p>
             </div>
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
@@ -2847,7 +2847,7 @@ based on the current user directory. To avoid confusion, we strongly recommend t
 execute privileges on this function by default. The
 database owner can grant access to other users.</p>
             <h2>JDBC example</h2>
-            <p>The following example performs an immediate full backup to a subdirectory of the <span class="CodeFont">hdfs:///home/backup</span> directory: </p>
+            <p>The following example performs an immediate full backup to a subdirectory of the <code>hdfs:///home/backup</code> directory: </p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE(?,?)");
   cs.setString(1, 'hdfs:///home/backup');
@@ -2856,9 +2856,9 @@ database owner can grant access to other users.</p>
   cs.close();</pre>
             </div>
             <h2>SQL Example</h2>
-            <div class="noteRelease">Backing up a database may take several minutes, depending on the size of your database and how much of it you're backing up.</div>
+            <p class="noteRelease">Backing up a database may take several minutes, depending on the size of your database and how much of it you're backing up.</p>
             <div>
-                <p>The following example runs an immediate incremental backup to the <span class="CodeFont">hdfs:///home/backup/</span> directory:</p>
+                <p>The following example runs an immediate incremental backup to the <code>hdfs:///home/backup/</code> directory:</p>
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( 'hdfs:///home/backup', 'incremental' );
 Statement executed.
 </pre>
@@ -2868,21 +2868,21 @@ Statement executed.
 Statement executed.</pre>
                 </div>
             </div>
-            <p>And this example does a full backup to a relative directory (relative to your <span class="CodeFont">splicemachine</span> directory)&#160;on a standalone version of Splice&#160;Machine:</p>
+            <p>And this example does a full backup to a relative directory (relative to your <code>splicemachine</code> directory)&#160;on a standalone version of Splice&#160;Machine:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( './dbBackups', 'full' );
 Statement executed.</pre>
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
-                <li><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a>built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_deleteoldbackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_restoredb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
+                <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in the <em>Administrator's Guide</em></li>
+                <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a> built-in system procedure</li>
+                <li><code><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></code> system table</li>
+                <li><code><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></code> system table</li>
+                <li><code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></code> system table</li>
             </ul>
         </div>
 	</section>
@@ -2902,7 +2902,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

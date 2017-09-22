@@ -46,26 +46,26 @@ folder: OnPrem/Info
                 <td class="ItalicFont">Region Functions</td>
                 <td><p>We've added a number of built-in system procedures that allow you to work directly with table and index regions; some customers use these to optimize processing of recent data while optimizing storage of older data:</p>
 					<ul>
-						<li><a href="sqlref_sysprocs_compactregion.html"><span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span></a></li>
-						<li><a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a></li>
-						<li><a href="sqlref_sysprocs_getregions.html"><span class="CodeFont">SYSCS_UTIL.GET_REGIONS</span></a></li>
-						<li><a href="sqlref_sysprocs_getstartkey.html"><span class="CodeFont">SYSCS_UTIL.GET_START_KEY</span></a></li>
-						<li><a href="sqlref_sysprocs_majorcompactregion.html"><span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span></a></li>
-						<li><a href="sqlref_sysprocs_mergeregions.html"><span class="CodeFont">SYSCS_UTIL.MERGE_REGIONS</span></a></li>
+						<li><a href="sqlref_sysprocs_compactregion.html"><code>SYSCS_UTIL.COMPACT_REGION</code></a></li>
+						<li><a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a></li>
+						<li><a href="sqlref_sysprocs_getregions.html"><code>SYSCS_UTIL.GET_REGIONS</code></a></li>
+						<li><a href="sqlref_sysprocs_getstartkey.html"><code>SYSCS_UTIL.GET_START_KEY</code></a></li>
+						<li><a href="sqlref_sysprocs_majorcompactregion.html"><code>SYSCS_UTIL.MAJOR_COMPACT_REGION</code></a></li>
+						<li><a href="sqlref_sysprocs_mergeregions.html"><code>SYSCS_UTIL.MERGE_REGIONS</code></a></li>
 				</td>
             </tr>
             <tr>
                 <td class="BoldFont">2.6.1</td>
                 <td class="ItalicFont">Session Information</td>
-                <td>The new <a href="sqlref_sysprocs_getsessioninfo.html"><span class="SYSCS_UTIL.GET_SESSION_INFO"</span></a> system procedure reports information about your current session, including  the hostname and session ID for your current session. You can use this information to correlate your Splice Machine query with a Spark job: the same information is displayed in the <span class="CodeFont">Job Id (Job Group)</span> in the Spark console.</td>
+                <td>The new <a href="sqlref_sysprocs_getsessioninfo.html"><span class="SYSCS_UTIL.GET_SESSION_INFO"</span></a> system procedure reports information about your current session, including  the hostname and session ID for your current session. You can use this information to correlate your Splice Machine query with a Spark job: the same information is displayed in the <code>Job Id (Job Group)</code> in the Spark console.</td>
             </tr>
             <tr>
                 <td class="BoldFont">2.6.1</td>
                 <td class="ItalicFont">Working with Running Operations</td>
 				<td><p>We've added two new system procedures for working with database operations that are currently running on a server:<p>
 				<ul>
-					<li>The <a href="sqlref_sysprocs_getrunningops.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS</span></a> system procedure displays a list of the operations running on the server to which you are currently connected.</li>
-					<li>You can use this procedure to find the UUID for an operation, which you can then use for purposes such as terminating an operation with the <a href="sqlref_sysprocs_killoperation.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_KILL_OPERATION</span></a> system procedure.</li>
+					<li>The <a href="sqlref_sysprocs_getrunningops.html"><code>SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS</code></a> system procedure displays a list of the operations running on the server to which you are currently connected.</li>
+					<li>You can use this procedure to find the UUID for an operation, which you can then use for purposes such as terminating an operation with the <a href="sqlref_sysprocs_killoperation.html"><code>SYSCS_UTIL.SYSCS_KILL_OPERATION</code></a> system procedure.</li>
 				</ul>
 				</td>
             </tr>
@@ -92,14 +92,14 @@ folder: OnPrem/Info
                 <td class="ItalicFont">Incremental Restore Enhanced</td>
                 <td>
                     <p>When you decide to restore from an incremental backup, you no longer have to restore from a sequence of backups; Splice Machine now automatically determines what's required to perform the restore operation and takes care of it for you.</p>
-                    <div class="noteIcon">Backup and Restore functionality is only available to <span class="CalloutFont">Splice&#160;Machine Enterprise Edition</span> users.</div>
+                    <p class="noteIcon">Backup and Restore functionality is only available to <span class="CalloutFont">Splice&#160;Machine Enterprise Edition</span> users.</p>
                 </td>
             </tr>
             <tr>
                 <td class="BoldFont">2.6</td>
                 <td class="ItalicFont">External AVRO files</td>
                 <td>
-                    <p>We've added support for AVRO files files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <span class="ItalicFont">Developer's Guide</span> for more information.</p>
+                    <p>We've added support for AVRO files files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <em>Developer's Guide</em> for more information.</p>
                 </td>
             </tr>
             <tr>
@@ -107,7 +107,7 @@ folder: OnPrem/Info
                 <td class="ItalicFont">Bulk HFile Delete</td>
                 <td>
                     <p>Our new <span class="CalloutFont">Bulk HFile Delete</span> features generates HFiles for deleting large amounts of data, which significantly speeds up bulk deletion by bypassing the Splice Machine write pipeline and HBase write path.</p>
-                    <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete.html"><span class="CodeFont">DELETE</span></a> statement</p>
+                    <p>You can use this feature by specifying a <a href="developers_tuning_queryoptimization.html#Delete"> optimization hint</a> with the <a href="sqlref_statements_delete.html"><code>DELETE</code></a> statement</p>
                 </td>
             </tr>
             <tr>
@@ -121,12 +121,12 @@ folder: OnPrem/Info
                 <td>
                     <p>We have added a new system procedure for rapidly importing data:</p>
                     <ul class="bullet">
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>
+                        <li><code><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></code>
                         </li>
                     </ul>
-                    <p>This procedure creates HFiles directly, rather than using HBase APIs; it is faster than our <a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">IMPORT_DATA</span></a>&#160;procedure, but has some limitations:</p>
+                    <p>This procedure creates HFiles directly, rather than using HBase APIs; it is faster than our <a href="sqlref_sysprocs_importhfile.html"><code>IMPORT_DATA</code></a>&#160;procedure, but has some limitations:</p>
                     <ul class="bullet">
-                        <li>To use it, you must already know how you want your data split across regions (your data's <span class="ItalicFont">split points</span>).</li>
+                        <li>To use it, you must already know how you want your data split across regions (your data's <em>split points</em>).</li>
                         <li>
                             <p>HFile import does not enforce any constraints, including unique, foreign key, or primary key constraints.</p>
                         </li>
@@ -140,13 +140,13 @@ folder: OnPrem/Info
                     <p>The Splice Machine <a href="developers_tuning_snapshots.html">snapshot feature</a> to create a restorable snapshot of a table or schema; this is commonly used when importing or deleting a significant amount of data from a database.</p>
                     <p>We've introduced these new system procedures for working with snapshots:</p>
                     <ul class="bullet">
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_snapshottable.html">SYSCS_UTIL.SNAPSHOT_TABLE</a></span>
+                        <li><code><a href="sqlref_sysprocs_snapshottable.html">SYSCS_UTIL.SNAPSHOT_TABLE</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_snapshotschema.html">SYSCS_UTIL.SNAPSHOT_SCHEMA</a></span>
+                        <li><code><a href="sqlref_sysprocs_snapshotschema.html">SYSCS_UTIL.SNAPSHOT_SCHEMA</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_restoresnapshot.html">SYSCS_UTIL.RESTORE_SNAPSHOT</a></span>
+                        <li><code><a href="sqlref_sysprocs_restoresnapshot.html">SYSCS_UTIL.RESTORE_SNAPSHOT</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_deletesnapshot.html">SYSCS_UTIL.DELETE_SNAPSHOT</a></span>
+                        <li><code><a href="sqlref_sysprocs_deletesnapshot.html">SYSCS_UTIL.DELETE_SNAPSHOT</a></code>
                         </li>
                     </ul>
                 </td>
@@ -155,7 +155,7 @@ folder: OnPrem/Info
                 <td class="BoldFont">2.6, 2.5.0.1729</td>
                 <td class="ItalicFont">Physical Delete</td>
                 <td>
-                    <p>You can now tell Splice Machine that, when a major compaction next runs, you want logically deleted table rows to be physically deleted from your database. Use the <a href="sqlref_sysprocs_purgedeletedrows.html"><span class="CodeFont">SYSCS_UTIL.SET_PURGE_DELETED_ROWS</span></a> system procedure to enable or disable this setting.</p>
+                    <p>You can now tell Splice Machine that, when a major compaction next runs, you want logically deleted table rows to be physically deleted from your database. Use the <a href="sqlref_sysprocs_purgedeletedrows.html"><code>SYSCS_UTIL.SET_PURGE_DELETED_ROWS</code></a> system procedure to enable or disable this setting.</p>
                 </td>
             </tr>
             <tr>
@@ -163,27 +163,27 @@ folder: OnPrem/Info
                 <td class="ItalicFont">Backup and Restore</td>
                 <td>
                     <p>The ability to incrementally back up and restore your database is now available to <span class="CalloutFont">Splice&#160;Machine Enterprise Edition</span> users.</p>
-                    <p>For more information, see <a href="onprem_admin_backingup.html">Backing Up and Restoring Your Database</a> in our <span class="ItalicFont">Administrator's Guide</span>, and the following built-in system procedures and system tables in our <span class="ItalicFont">SQL&#160;Reference Manual</span>:</p>
+                    <p>For more information, see <a href="onprem_admin_backingup.html">Backing Up and Restoring Your Database</a> in our <em>Administrator's Guide</em>, and the following built-in system procedures and system tables in our <em>SQL&#160;Reference Manual</em>:</p>
                     <ul class="bullet">
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></span>
+                        <li><code><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></span>
+                        <li><code><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></span>
+                        <li><code><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></span>
+                        <li><code><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></span>
+                        <li><code><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></span>
+                        <li><code><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>
+                        <li><code><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></span>
+                        <li><code><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></span>
+                        <li><code><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></code>
                         </li>
-                        <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></span>
+                        <li><code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></code>
                         </li>
                     </ul>
                 </td>
@@ -192,16 +192,16 @@ folder: OnPrem/Info
                 <td class="BoldFont">2.5</td>
                 <td class="ItalicFont">External Tables</td>
                 <td>
-                    <p>You can now access ORC&#160;and PARQUET&#160;files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <span class="ItalicFont">Developer's Guide</span> for more information.</p>
-                    <p>The <span class="CodeFont"><a href="sqlref_sysprocs_refreshexttable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></span> built-in system procedure are now available for working with external tables.</p>
+                    <p>You can now access ORC&#160;and PARQUET&#160;files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <em>Developer's Guide</em> for more information.</p>
+                    <p>The <code><a href="sqlref_sysprocs_refreshexttable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a></code> built-in system procedure are now available for working with external tables.</p>
                 </td>
             </tr>
             <tr>
                 <td class="BoldFont">2.5</td>
                 <td class="ItalicFont">Pinned Tables<br />(RDD&#160;Caching)</td>
                 <td>
-                    <p>You can now use the <span class="CodeFont"><a href="sqlref_statements_unpintable.html">UNPIN&#160;TABLE</a></span> statement to delete the cached version of the table.</p>
-                    <p>You also need to use the new <span class="CodeFont">pin</span> query optimization hint, which is described in our <a href="developers_tuning_queryoptimization.html">Query Optimization</a> topic.</p>
+                    <p>You can now use the <code><a href="sqlref_statements_unpintable.html">UNPIN&#160;TABLE</a></code> statement to delete the cached version of the table.</p>
+                    <p>You also need to use the new <code>pin</code> query optimization hint, which is described in our <a href="developers_tuning_queryoptimization.html">Query Optimization</a> topic.</p>
                 </td>
             </tr>
             <tr>
@@ -214,7 +214,7 @@ folder: OnPrem/Info
                 <td class="ItalicFont">Updated Connectors</td>
                 <td>
                     <p>Splice Machine has added enhancements to our JDBC and ODBC&#160;drivers for improved performance and added features. </p>
-                    <p class="noteIcon">Due to these changes, you <span class="BoldFont">must use</span> the Splice Machine JDBC&#160;and ODBC&#160;drivers; other drivers will not work properly.</p>
+                    <p class="noteIcon">Due to these changes, you <strong>must use</strong> the Splice Machine JDBC&#160;and ODBC&#160;drivers; other drivers will not work properly.</p>
                 </td>
             </tr>
             <tr>
@@ -223,11 +223,11 @@ folder: OnPrem/Info
                 <td>
                     <p>Splice Machine has enhanced our statistics collection methods, taking advantage of advanced features provided by the Yahoo DataSketches library. As a result, these procedures and tables have been deprecated:</p>
                     <ul class="bullet">
-                        <li><span class="CodeFont">SYSCS_UTIL.SYSCS_COLLECT_TABLE_STATISTICS</span>
+                        <li><code>SYSCS_UTIL.SYSCS_COLLECT_TABLE_STATISTICS</code>
                         </li>
-                        <li><span class="CodeFont">SYSCS_UTIL.SYSCS_DROP_TABLE_STATISTICS</span>
+                        <li><code>SYSCS_UTIL.SYSCS_DROP_TABLE_STATISTICS</code>
                         </li>
-                        <li><span class="CodeFont">SYSSTATISTICS</span>&#160;table</li>
+                        <li><code>SYSSTATISTICS</code>&#160;table</li>
                     </ul>
                 </td>
             </tr>
@@ -250,15 +250,15 @@ folder: OnPrem/Info
                     <td>
                         <p>The following built-in system procedures are no longer available:</p>
                         <ul class="bullet">
-                            <li><span class="CodeFont">SYSCS_UTIL.SYSCS_COLLECT_TABLE_STATISTICS</span>
+                            <li><code>SYSCS_UTIL.SYSCS_COLLECT_TABLE_STATISTICS</code>
                             </li>
-                            <li><span class="CodeFont">SYSCS_UTIL.SYSCS_DROP_TABLE_STATISTICS</span>
+                            <li><code>SYSCS_UTIL.SYSCS_DROP_TABLE_STATISTICS</code>
                             </li>
                         </ul>
                         <p>Note that:</p>
                         <ul class="bullet">
-                            <li>You can continue to use the <span class="CodeFont"><a href="cmdlineref_analyze.html">ANALYZE</a></span>&#160;command line command to collect statistics for a specific table.</li>
-                            <li>You can call the <span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.SYSCS_COLLECT_SCHEMA_STATISTICS</a></span>&#160;built-in system procedure to collect statistics on a schema, including statistics for every table in the schema.</li>
+                            <li>You can continue to use the <code><a href="cmdlineref_analyze.html">ANALYZE</a></code>&#160;command line command to collect statistics for a specific table.</li>
+                            <li>You can call the <code><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.SYSCS_COLLECT_SCHEMA_STATISTICS</a></code>&#160;built-in system procedure to collect statistics on a schema, including statistics for every table in the schema.</li>
                         </ul>
                     </td>
                 </tr>
@@ -312,8 +312,8 @@ folder: OnPrem/Info
                     <td>
                         <p>The organization of the docs has been altered:</p>
                         <ul class="bullet">
-                            <li>The top-level contents has changed:<ul class="bullet"><li>The <a href="cmdlineref_intro.html">splice&gt;&#160;Command Line Reference</a> manual is now a top-level section, rather than being part of the <span class="ItalicFont">Developer's Guide</span>.</li><li>The <span class="ItalicFont">Developer's Guide</span> has been reorganized.</li><li>The user interface for our Database-as-a-Service is documented in the top-level <span class="ItalicFont">Database-as-a-Service Only</span> section.</li><li>The <span class="ItalicFont">Administrator's Guide</span> and <span class="ItalicFont">Installation Guide</span> are now part of the top-level <span class="ItalicFont">On-Premise Only</span> section.</li></ul></li>
-                            <li>Content previously included in our <span class="ItalicFont">Getting Started Guide</span> has been moved to the <span class="ItalicFont">Notes</span> section.</li>
+                            <li>The top-level contents has changed:<ul class="bullet"><li>The <a href="cmdlineref_intro.html">splice&gt;&#160;Command Line Reference</a> manual is now a top-level section, rather than being part of the <em>Developer's Guide</em>.</li><li>The <em>Developer's Guide</em> has been reorganized.</li><li>The user interface for our Database-as-a-Service is documented in the top-level <em>Database-as-a-Service Only</em> section.</li><li>The <em>Administrator's Guide</em> and <em>Installation Guide</em> are now part of the top-level <em>On-Premise Only</em> section.</li></ul></li>
+                            <li>Content previously included in our <em>Getting Started Guide</em> has been moved to the <em>Notes</em> section.</li>
                         </ul>
                         <p>&#160;</p>
                     </td>
@@ -324,7 +324,7 @@ folder: OnPrem/Info
                     <td>
                         <p>We've added a number of tutorials to the documentation, a number of which have been migrated from our Community site.</p>
                         <p>You can find a <a href="tutorials_intro.html">list of available tutorials</a> here. </p>
-                        <div class="noteTip">Our navigation menu prefaces the title of each tutorial with an asterisk (<span class="CodeFont">*</span>).</div>
+                        <p class="noteTip">Our navigation menu prefaces the title of each tutorial with an asterisk (<code>*</code>).</p>
                     </td>
                 </tr>
                 <tr>

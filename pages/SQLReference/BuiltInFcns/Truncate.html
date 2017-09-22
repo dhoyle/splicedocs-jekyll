@@ -11,11 +11,11 @@ folder: SQLReference/BuiltInFcns
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>TRUNC&#160;or TRUNCATE</h1>
-            <p>This topic describes the <span class="CodeFont">TRUNCATE</span> built-in function, which you can use to truncate numeric, date, and timestamp values. You can use the abbreviation <span class="CodeFont">TRUNC</span>&#160;interchangeably with the full name, <span class="CodeFont">TRUNCATE</span>.</p>
+            <p>This topic describes the <code>TRUNCATE</code> built-in function, which you can use to truncate numeric, date, and timestamp values. You can use the abbreviation <code>TRUNC</code>&#160;interchangeably with the full name, <code>TRUNCATE</code>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TRUNCATE( <span class="ItalicFont">number</span>    [, <span class="ItalicFont">numPlaces</span>]  |
-          <span class="ItalicFont">date</span>      [, <span class="ItalicFont">truncPoint</span>] |
-          <span class="ItalicFont">timestamp</span> [, <span class="ItalicFont">truncPoint</span>] );</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TRUNCATE( <em>number</em>    [, <em>numPlaces</em>]  |
+          <em>date</em>      [, <em>truncPoint</em>] |
+          <em>timestamp</em> [, <em>truncPoint</em>] );</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">number
@@ -23,35 +23,35 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramDefnFirst">An integer or decimal number 	to be truncated.		</p>
                 <p class="paramName">date
             </p>
-                <p class="paramDefnFirst"> A <a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;value to be truncated.	</p>
+                <p class="paramDefnFirst"> A <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;value to be truncated.	</p>
                 <p class="paramName">timestamp
             </p>
-                <p class="paramDefnFirst">A <a href="sqlref_builtinfcns_timestamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;value to be truncated.	</p>
+                <p class="paramDefnFirst">A <a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;value to be truncated.	</p>
                 <p class="paramName">numPlaces
             </p>
-                <p class="paramDefnFirst">An optional integer value that specifies the number of digits to truncate (made zero) when applying this function to a <span class="ItalicFont">number</span>.</p>
-			<ul><li>If this value is positive, that many of the least significant digits (to the right of the decimal point)&#160;are truncated: <span class="CodeFont">truncate(123.456,2)</span>&#160;returns <span class="CodeFont">123.450</span>.</li><li>If this value is negative, that many of the least significant digits to the left of the decimal point are truncated: <span class="CodeFont">truncate(123.456,-1)</span>&#160;returns <span class="CodeFont">120.000</span>.</li><li>If this value is zero, the decimal portion of the number is truncated: <span class="CodeFont">truncate(123.456,0)</span>&#160;returns <span class="CodeFont">123.000</span>.</li><li>If this value is not specified, the decimal portion of the number is zero'ed, which means that <span class="CodeFont">truncate(123.456)</span>&#160;returns <span class="CodeFont">123.000</span>.</li></ul><p>See the <a href="#Truncati">Truncating Numbers</a> examples below.</p>
+                <p class="paramDefnFirst">An optional integer value that specifies the number of digits to truncate (made zero) when applying this function to a <em>number</em>.</p>
+			<ul><li>If this value is positive, that many of the least significant digits (to the right of the decimal point)&#160;are truncated: <code>truncate(123.456,2)</code>&#160;returns <code>123.450</code>.</li><li>If this value is negative, that many of the least significant digits to the left of the decimal point are truncated: <code>truncate(123.456,-1)</code>&#160;returns <code>120.000</code>.</li><li>If this value is zero, the decimal portion of the number is truncated: <code>truncate(123.456,0)</code>&#160;returns <code>123.000</code>.</li><li>If this value is not specified, the decimal portion of the number is zero'ed, which means that <code>truncate(123.456)</code>&#160;returns <code>123.000</code>.</li></ul><p>See the <a href="#Truncati">Truncating Numbers</a> examples below.</p>
                 <p class="paramName">truncPoint
             </p>
                 <p class="paramDefnFirst">An optional string that specifies the point at which to truncate (zero)&#160;a date or timestamp value. This can be one of the following values:</p>
                 <div class="paramList">
-                    <p class="paramName"><span class="CodeFont">YEAR</span> or <span class="CodeFont">YR</span></p>
+                    <p class="paramName"><code>YEAR</code> or <code>YR</code></p>
                     <p class="paramDefnFirst">The year value is retained; other values are set to their minimum values.</p>
-                    <p class="paramName"><span class="CodeFont">MONTH</span>&#160;or <span class="CodeFont">MON</span>&#160;or <span class="CodeFont">MO</span></p>
+                    <p class="paramName"><code>MONTH</code>&#160;or <code>MON</code>&#160;or <code>MO</code></p>
                     <p class="paramDefnFirst">The year and month values are retained; other values are set  to their minimum values.</p>
-                    <p class="paramName"><span class="CodeFont">DAY</span>
+                    <p class="paramName"><code>DAY</code>
                     </p>
                     <p class="paramDefnFirst">The year, month, and day values are retained; other values are set to their minimum values.</p>
-                    <p class="paramName"><span class="CodeFont">HOUR </span>or <span class="CodeFont">HR</span></p>
+                    <p class="paramName"><code>HOUR </code>or <code>HR</code></p>
                     <p class="paramDefnFirst">The year, month, day, and hour values are retained; other values are set  to their minimum values.</p>
-                    <p class="paramName"><span class="CodeFont">MINUTE </span>or <span class="CodeFont">MIN</span></p>
+                    <p class="paramName"><code>MINUTE </code>or <code>MIN</code></p>
                     <p class="paramDefnFirst">The year, month, day, hour, and minute values are retained; other values are set  to their minimum values.</p>
-                    <p class="paramName"><span class="CodeFont">SECOND&#160;</span>or <span class="CodeFont">SEC</span></p>
-                    <p class="paramDefnFirst">The year, month, day, hour, minute, and second values are retained; the milliseconds value is set to <span class="CodeFont">0</span>.</p>
-                    <p class="paramName"><span class="CodeFont">MILLISECOND</span>&#160;or <span class="CodeFont">MILLI</span></p>
+                    <p class="paramName"><code>SECOND&#160;</code>or <code>SEC</code></p>
+                    <p class="paramDefnFirst">The year, month, day, hour, minute, and second values are retained; the milliseconds value is set to <code>0</code>.</p>
+                    <p class="paramName"><code>MILLISECOND</code>&#160;or <code>MILLI</code></p>
                     <p class="paramDefnFirst">All of the values, including year, month, day, hour, minute, second, and milliseconds are retained.</p>
                 </div>
-                <p class="paramDefn">The default value, if nothing is specified, is <span class="CodeFont">DAY</span>.</p>
+                <p class="paramDefn">The default value, if nothing is specified, is <code>DAY</code>.</p>
             </div>
             <h2>Examples</h2>
             <h3 id="Truncati">Truncating Numbers</h3>

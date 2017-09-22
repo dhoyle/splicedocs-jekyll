@@ -13,7 +13,7 @@ folder: Tutorials/CLI
             <h1>Getting Started With the splice&gt;&#160;Command Line Interface</h1>
 {% include splice_snippets/onpremonlytopic.html %}
             <p>The <span class="AppCommand">splice&gt;</span>&#160;command line interpreter is an easy way to interact with your Splice&#160;Machine database. This topic introduces <span class="AppCommand">splice&gt;</span> and some of the more common commands you'll use</p>
-            <div class="noteIcon">The command line interpreter, as documented here, is not available in our Cloud-Managed Database-as-Service product.</div>
+            <p class="noteIcon">The command line interpreter, as documented here, is not available in our Cloud-Managed Database-as-Service product.</p>
 {% if site.incl_notpdf %}
             <div>
                 <p>You can complete this tutorial by <a href="#Watch">watching a short video</a> or by <a href="#Follow">following the written version</a>.</p>
@@ -39,9 +39,7 @@ folder: Tutorials/CLI
                 <li><a href="#Basic2">Basic DDL&#160;and DML&#160;Statements</a>
                 </li>
             </ul>
-            <div class="notePlain">
-                <p><span class="BoldFont">NOTE:</span>&#160;Although we focus here on executing command lines with the splice&gt;,&#160;you can also use the command line interface to directly execute any SQL&#160;statement, including the DDL&#160;and DML&#160;statements that we introduce in the <a href="#Basic2">last section</a> of this topic.</p>
-            </div>
+            <p class="notePlain"><strong>NOTE:</strong>&#160;Although we focus here on executing command lines with the splice&gt;,&#160;you can also use the command line interface to directly execute any SQL&#160;statement, including the DDL&#160;and DML&#160;statements that we introduce in the <a href="#Basic2">last section</a> of this topic.</p>
             <h3 id="Starting">Starting splice&gt;</h3>
             <p>To launch the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter, follow these steps:</p>
             <div class="opsStepsList">
@@ -56,13 +54,13 @@ folder: Tutorials/CLI
                         <p class="topLevel">Start splice&gt;</p>
                         <div class="preWrapperWide"><pre class="ShellCommand">./bin/sqlshell.sh</pre>
                         </div>
-                        <p>The full path to this script on Splice&#160;Machine standalone installations is <span class="CodeFont">./splicemachine/bin/sqlshell.sh</span>.</p>
+                        <p>The full path to this script on Splice&#160;Machine standalone installations is <code>./splicemachine/bin/sqlshell.sh</code>.</p>
                     </li>
                     <li>
                         <p class="topLevel">The command line interpreter starts:</p>
                         <div class="preWrapperWide"><pre class="AppCommand">Running Splice&#160;Machine SQL&#160;Shell<br />For help:&#160;"Splice&gt;&#160;help;"<br />SPLICE*<br />* = current connection<br />splice&gt;</pre>
                         </div>
-                        <p><span class="CodeFont">SPLICE</span> is the name of the default connection, which becomes the current connection when you start the interpreter.</p>
+                        <p><code>SPLICE</code> is the name of the default connection, which becomes the current connection when you start the interpreter.</p>
                     </li>
                 </ol>
             </div>
@@ -98,20 +96,20 @@ folder: Tutorials/CLI
                 </tbody>
             </table>
             <h3 id="Basic">Basic Syntax Rules</h3>
-            <p>When using the command line (the <span class="AppCommand">splice&gt;</span> prompt), you must end each SQL statement with a semicolon (<span class="CodeFont">;</span>). For example:</p>
+            <p>When using the command line (the <span class="AppCommand">splice&gt;</span> prompt), you must end each SQL statement with a semicolon (<code>;</code>). For example:</p>
             <div class="preWrapper"><pre class="AppCommand">
 splice&gt; select * from myTable;	</pre>
             </div>
-            <p>You can extend SQL statements across multiple lines, as long as you end the last line with a semicolon. Note that the <span class="CodeFont">splice&gt;</span>&#160;command line interface prompts you with a fresh <span class="AppCommand">&gt;</span> at the beginning of each line. For example:</p>
+            <p>You can extend SQL statements across multiple lines, as long as you end the last line with a semicolon. Note that the <code>splice&gt;</code>&#160;command line interface prompts you with a fresh <span class="AppCommand">&gt;</span> at the beginning of each line. For example:</p>
             <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">
 splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
             </div>
             <p>In most cases, the commands you enter are not case sensitive; you can Certain identifiers and keywords are case sensitive: this means that these commands are all equivalent:</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;show connections;<br />splice&gt;&#160;SHOW&#160;CONNECTIONS;<br />splice&gt;&#160;Show Connections;</pre>
             </div>
-            <p>The <span class="ItalicFont"><a href="cmdlineref_cmdlinesyntax.html">Command Line Syntax</a></span> topic contains a complete syntax reference for <span class="AppCommand">splice&gt;</span>.</p>
+            <p>The <em><a href="cmdlineref_cmdlinesyntax.html">Command Line Syntax</a></em> topic contains a complete syntax reference for <span class="AppCommand">splice&gt;</span>.</p>
             <h3 id="Connecti">Connecting to a Database</h3>
-            <p>When you start splice&gt;, you are automatically connected to your default database. You can connect to other databases with the <span class="CodeFont"><a href="cmdlineref_connect.html">connect</a></span> command:</p>
+            <p>When you start splice&gt;, you are automatically connected to your default database. You can connect to other databases with the <code><a href="cmdlineref_connect.html">connect</a></code> command:</p>
             <div class="preWrapperWide"><pre class="AppCommand">connect 'jdbc:splice://srv55:1527/splicedb;user=splice;password=admin' AS&#160;DEMO;</pre>
             </div>
             <h4>Anatomy of a Connection String</h4>
@@ -139,7 +137,7 @@ splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
                             <p>localhost:1527</p>
                         </td>
                         <td>Server Name:Port</td>
-                        <td><span class="AppCommand">splice&gt;</span>&#160;listens on port <span class="CodeFont">1527</span></td>
+                        <td><span class="AppCommand">splice&gt;</span>&#160;listens on port <code>1527</code></td>
                     </tr>
                     <tr>
                         <td class="CodeFont">splicedb</td>
@@ -156,25 +154,25 @@ splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
                         <td>Optional connection identifier</td>
                         <td>
                             <p>The name that you want associated with this connection.</p>
-                            <p>If you don't supply a name, Splice&#160;Machine assigns one for your; for example: <span class="CodeFont">CONNECTION1</span>.</p>
+                            <p>If you don't supply a name, Splice&#160;Machine assigns one for your; for example: <code>CONNECTION1</code>.</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <h3 id="Viewing4">Displaying Database Objects</h3>
-            <p>We'll first explore the <span class="CodeFont">show</span> command, which is available to view numerous object types in your database, including: <a href="#Viewing">connections</a>, <a href="#Viewing2">schemas</a>, <a href="#Viewing3">tables</a>, <a href="#Indexes">indexes</a>, <a href="#Views">views</a>, <a href="#Stored">procedures</a>, and others.</p>
+            <p>We'll first explore the <code>show</code> command, which is available to view numerous object types in your database, including: <a href="#Viewing">connections</a>, <a href="#Viewing2">schemas</a>, <a href="#Viewing3">tables</a>, <a href="#Indexes">indexes</a>, <a href="#Views">views</a>, <a href="#Stored">procedures</a>, and others.</p>
             <h4 id="Viewing">Displaying and Changing Connections</h4>
             <p>You can connection to multiple database in Splice&#160;Machine; one connection is designated as the current database; this is the database with which you're currently working.</p>
-            <p>To view your current connections, use the <span class="CodeFont"><a href="cmdlineref_showconnections.html">show connections</a></span> command:</p>
+            <p>To view your current connections, use the <code><a href="cmdlineref_showconnections.html">show connections</a></code> command:</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;show connections;<br />DEMO&#160;&#160;&#160;&#160;&#160;- jdbc:splice://srv55:1527/splicedb<br />SPLICE*&#160;&#160;- jdbc:splice://localhost:1527/splicedb<br />* = current connection</pre>
             </div>
-            <p>You can use the <span class="CodeFont"><a href="cmdlineref_setconnection.html">set connection</a></span> command to modify the current connection:</p>
+            <p>You can use the <code><a href="cmdlineref_setconnection.html">set connection</a></code> command to modify the current connection:</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;SET&#160;CONNECTION DEMO;<br />splice&gt;&#160;show connections;<br />DEMO*&#160;&#160;&#160;&#160;- jdbc:splice://srv55:1527/splicedb<br />SPLICE&#160;&#160;&#160;- jdbc:splice://localhost:1527/splicedb<br />* = current connection</pre>
             </div>
-            <p>You can use the <span class="CodeFont"><a href="cmdlineref_disconnect.html">disconnect</a></span> command to close a connection:</p>
+            <p>You can use the <code><a href="cmdlineref_disconnect.html">disconnect</a></code> command to close a connection:</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;Disconnect DEMO;<br />splice&gt;&#160;show Connections;<br />SPLICE&#160;&#160;- jdbc:splice://localhost:1527/splicedb<br />No current connection</pre>
             </div>
-            <p>Notice that there's now no current connection because we've disconnected the connection named <span class="CodeFont">DEMO</span>, which had been the current connection. We can easily resolve this by connecting to a named connection:</p>
+            <p>Notice that there's now no current connection because we've disconnected the connection named <code>DEMO</code>, which had been the current connection. We can easily resolve this by connecting to a named connection:</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;connect splice;<br />splice&gt;&#160;show connections;<br />SPLICE*&#160;&#160;- jdbc:splice://localhost:1527/splicedb<br />* = current connection</pre>
             </div>
             <p>Finally, to disconnect from all connections:</p>
@@ -199,18 +197,18 @@ SYSSTAT
 11 rows selected</pre>
             </div>
             <p>The current schema is used as the default value when you issue commands that optionally take a schema name as a parameter. For example, you can optionally specify a schema name in the show tables command; if you don't include a schema name, Splice Machine assumes the current schema name. </p>
-            <p>To display the current schema name, use the built-in <span class="CodeFont"><a href="sqlref_builtinfcns_currentschema.html">current schema</a></span> function:</p>
+            <p>To display the current schema name, use the built-in <code><a href="sqlref_builtinfcns_currentschema.html">current schema</a></code> function:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; values(current schema);
 1
 ------------------------------
 SPLICE
 1 row selected</pre>
             </div>
-            <p>To change which schema is current, use the SQL&#160;<span class="CodeFont"><a href="sqlref_statements_setschema.html">set schema</a></span> statement:</p>
+            <p>To change which schema is current, use the SQL&#160;<code><a href="sqlref_statements_setschema.html">set schema</a></code> statement:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; set schema SYS;<br />0 rows inserted/updated/deleted<br />splice&gt;&#160;values(current schema);<br />1<br />------------------------------<br />SYS<br />1 row selected</pre>
             </div>
             <h4 id="Viewing3">Displaying Tables</h4>
-            <p>The <span class="CodeFont"><a href="cmdlineref_showtables.html">show tables</a></span> command displays a list of all tables in all of the schemas in your database:</p>
+            <p>The <code><a href="cmdlineref_showtables.html">show tables</a></code> command displays a list of all tables in all of the schemas in your database:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; SHOW&#160;TABLES;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
 --------------------------------------------------------
 SYS          |SYSALIASES            |256       |
@@ -248,13 +246,13 @@ SPLICE       |CUSTOMERS             |1568      |
 SPLICE       |T_DETAIL              |1552      |
 SPLICE       |T_HEADER              |1536      |<br /><br />34 rows selected</pre>
             </div>
-            <p>To display the tables in a specific schema (named <span class="CodeFont">SPLICE</span>):</p>
+            <p>To display the tables in a specific schema (named <code>SPLICE</code>):</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show tables in SPLICE;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
 --------------------------------------------------------<br />SPLICE       |CUSTOMERS             |1568      |
 SPLICE       |T_DETAIL              |1552      |
 SPLICE       |T_HEADER              |1536      |<br /><br />3 rows selected</pre>
             </div>
-            <p>To examine the structure of a specific table, use the <span class="CodeFont"><a href="cmdlineref_describe.html">DESCRIBE</a></span>&#160;command:</p>
+            <p>To examine the structure of a specific table, use the <code><a href="cmdlineref_describe.html">DESCRIBE</a></code>&#160;command:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; describe T_DETAIL;
 COLUMN_NAME                 |TYPE_NAME|DEC |NUM |COLUM |COLUMN_DEF|CHAR_OCTE |IS_NULL
 --------------------------------------------------------------------------------------------------
@@ -281,7 +279,7 @@ T_HEADER      |THIDX2        |TRANSACTION_DT      |2       |true      |BTREE|A  
 </pre>
             </div>
             <p>Or you can display the indexes defined for a specific table:</p>
-            <div class="noteIcon">Note that we use <span class="CodeFont">IN</span>&#160;to display the indexes in a schema, and <span class="CodeFont">FROM</span>&#160;to display the indexes in a table.</div>
+            <p class="noteIcon">Note that we use <code>IN</code>&#160;to display the indexes in a schema, and <code>FROM</code>&#160;to display the indexes in a table.</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show indexes FROM&#160;T_DETAIL;
 TABLE_NAME    |INDEX_NAME    |COLUMN_NAME         |ORDINAL&amp;|NON_UNIQUE|TYPE |ASC&amp;|CONGLOM_NO
 ---------------------------------------------------------------------------------------------<br />T_DETAIL      |TDIDX1        |ORIGINAL_SKU_CATEGO&amp;|1       |true      |BTREE|A   |1585
@@ -292,7 +290,7 @@ T_DETAIL      |TDIDX1        |CUSTOMER_MASTER_ID  |3       |true      |BTREE|A  
 </pre>
             </div>
             <h4 id="Views">Displaying Views</h4>
-            <p>Similarly to indexes, you can use the <span class="CodeFont"><a href="cmdlineref_showviews.html">show views</a></span> command to display all of the indexes in your database or in a schema:</p>
+            <p>Similarly to indexes, you can use the <code><a href="cmdlineref_showviews.html">show views</a></code> command to display all of the indexes in your database or in a schema:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show views;
 TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS
 -----------------------------------------------------------
@@ -309,7 +307,7 @@ SYS            |SYSTABLESTATISTICS    |NULL      |
 </pre>
             </div>
             <h4 id="Stored">Displaying Stored Procedures and Functions</h4>
-            <p>You can create <span class="ItalicFont">user-defined database functions</span> that can be evaluated in SQL statements; these functions can be invoked where most other built-in functions are allowed, including within SQL expressions and <span class="CodeFont">SELECT</span> statement. Functions must be deterministic, and cannot be used to make changes to the database. You can use the <span class="CodeFont"><a href="cmdlineref_showfunctions.html">show functions</a></span> command to display which functions are defined in your database or schema:</p>
+            <p>You can create <em>user-defined database functions</em> that can be evaluated in SQL statements; these functions can be invoked where most other built-in functions are allowed, including within SQL expressions and <code>SELECT</code> statement. Functions must be deterministic, and cannot be used to make changes to the database. You can use the <code><a href="cmdlineref_showfunctions.html">show functions</a></code> command to display which functions are defined in your database or schema:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
 splice&gt; show functions in splice;
 FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
@@ -318,7 +316,7 @@ SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees
 1 row selected
 </pre>
             </div>
-            <p>You can also group a set of SQL&#160;commands together with variable and logic into a <span class="ItalicFont">stored procedure</span>, which is a subroutine that is stored in your database's data dictionary. Unlike user-defined functions, a stored procedure is not an expression and can only be invoked using the <span class="CodeFont">CALL</span> statement. Stored procedures allow you to modify the database and return <span class="CodeFont">Result Sets</span> or nothing at all. You can use the <span class="CodeFont"><a href="cmdlineref_showprocedures.html">show procedures</a></span> command to display which functions are defined in your database or schema:</p>
+            <p>You can also group a set of SQL&#160;commands together with variable and logic into a <em>stored procedure</em>, which is a subroutine that is stored in your database's data dictionary. Unlike user-defined functions, a stored procedure is not an expression and can only be invoked using the <code>CALL</code> statement. Stored procedures allow you to modify the database and return <code>Result Sets</code> or nothing at all. You can use the <code><a href="cmdlineref_showprocedures.html">show procedures</a></code> command to display which functions are defined in your database or schema:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; show procedures in SQLJ;
 PROCEDURE_SCHEM     |PROCEDURE_NAME    |REMARKS
 -------------------------------------------------------------------------------------------------
@@ -330,7 +328,7 @@ SQLJ                |REPLACE_JAR       |com.splicemachine.db.catalog.SystemProce
 </pre>
             </div>
             <h3 id="Basic2">Basic DDL&#160;and DML&#160;Statements</h3>
-            <p>This section introduces the basics of running SQL&#160;Data Definition Language (<span class="ItalicFont">DDL</span>)&#160;and Data Manipulation Language (<span class="ItalicFont">DML</span>)&#160;statements from <span class="AppCommand">splice&gt;</span>.</p>
+            <p>This section introduces the basics of running SQL&#160;Data Definition Language (<em>DDL</em>)&#160;and Data Manipulation Language (<em>DML</em>)&#160;statements from <span class="AppCommand">splice&gt;</span>.</p>
             <ul>
                 <li><a href="#CREATE&#160;S">Getting Started With the splice&gt;&#160;Command Line Interface</a>
                 </li>
@@ -341,9 +339,9 @@ SQLJ                |REPLACE_JAR       |com.splicemachine.db.catalog.SystemProce
                 <li><a href="#SELETING">Selecting and Displaying Data</a>
                 </li>
             </ul>
-            <p class="spaceAbove">See the <span class="ItalicFont"><a href="sqlref_statements_dmlintro.html">DML&#160;Statements</a></span> sections in our <span class="ItalicFont">SQL&#160;Reference Manual</span> for more information.</p>
+            <p class="spaceAbove">See the <em><a href="sqlref_statements_dmlintro.html">DML&#160;Statements</a></em> sections in our <em>SQL&#160;Reference Manual</em> for more information.</p>
             <h4 id="CREATE&#160;S">CREATE&#160;Statements</h4>
-            <p>SQL&#160;uses <span class="CodeFont">CREATE</span>&#160;statements to create objects such as <a href="sqlref_statements_createtable.html">tables</a>. For example:</p><pre class="AppCommand">splice&gt;&#160;CREATE schema MySchema1;<br />0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;create Schema mySchema2;<br />0 rows inserted/updated/deleted<br /><br />splice&gt; show schemas;
+            <p>SQL&#160;uses <code>CREATE</code>&#160;statements to create objects such as <a href="sqlref_statements_createtable.html">tables</a>. For example:</p><pre class="AppCommand">splice&gt;&#160;CREATE schema MySchema1;<br />0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;create Schema mySchema2;<br />0 rows inserted/updated/deleted<br /><br />splice&gt; show schemas;
 TABLE_SCHEM
 ------------------------------
 MYSCHEMA1<br />MYSCHEMA2<br />NULLID
@@ -378,12 +376,11 @@ BIRTHDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
 
 6 rows selected
 </pre>
-            <p>See the <span class="ItalicFont"><a href="sqlref_statements_createstatements.html">CREATE Statements</a></span> section in our <span class="ItalicFont">SQL&#160;Reference Manual</span> for more information.</p>
+            <p>See the <em><a href="sqlref_statements_createstatements.html">CREATE Statements</a></em> section in our <em>SQL&#160;Reference Manual</em> for more information.</p>
             <h4 id="DROP&#160;Sta">DROP&#160;Statements</h4>
-            <p>SQL&#160;uses <span class="CodeFont">DROP</span>&#160;statements to  delete objects such as <a href="sqlref_statements_droptable.html">tables</a>. For example:</p><pre class="AppCommand">splice&gt;&#160;DROP schema MySchema2 restrict;<br />0 rows inserted/updated/deleted</pre>
-            <div class="notePlain">
-                <p>You <span class="BoldFont">must</span> include the keyword <span class="CodeFont">restrict</span> when dropping a schema; this enforces the rule that the schema cannot be deleted from the database if there are any objects defined in the schema.</p>
-            </div><pre class="AppCommand">splice&gt;&#160;show schemas;<br />TABLE_SCHEM
+            <p>SQL&#160;uses <code>DROP</code>&#160;statements to  delete objects such as <a href="sqlref_statements_droptable.html">tables</a>. For example:</p><pre class="AppCommand">splice&gt;&#160;DROP schema MySchema2 restrict;<br />0 rows inserted/updated/deleted</pre>
+            <p class="notePlain">You <strong>must</strong> include the keyword <code>restrict</code> when dropping a schema; this enforces the rule that the schema cannot be deleted from the database if there are any objects defined in the schema.</p>
+				<pre class="AppCommand">splice&gt;&#160;show schemas;<br />TABLE_SCHEM
 ------------------------------
 MYSCHEMA1<br />MYSCHEMA2<br />NULLID
 SPLICE
@@ -398,9 +395,9 @@ SYSPROC
 SYSSTAT
 12 rows selected<br /><br />splice&gt;&#160;DROP&#160;TABLE&#160;myTable;<br />0 rows inserted/updated/deleted<br /><br />splice&gt;&#160;SHOW&#160;TABLES&#160;IN&#160;MySchema1;<br />TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
 --------------------------------------------------------<br />MYSCHEMA1    |PLAYERS             &#160; |1632      |<br /><br />1 row selected<br /></pre>
-            <p>See the <span class="ItalicFont"><a href="sqlref_statements_dropstatements.html">DROP&#160;Statements</a></span> section in our <span class="ItalicFont">SQL&#160;Reference Manual</span> for more information.</p>
+            <p>See the <em><a href="sqlref_statements_dropstatements.html">DROP&#160;Statements</a></em> section in our <em>SQL&#160;Reference Manual</em> for more information.</p>
             <h4 id="INSERTIN">Inserting Data</h4>
-            <p>Once you've created a table, you can use <span class="CodeFont"><a href="sqlref_statements_insert.html">INSERT</a></span>&#160;statements to insert records into that table; for example:</p><pre class="AppCommand">
+            <p>Once you've created a table, you can use <code><a href="sqlref_statements_insert.html">INSERT</a></code>&#160;statements to insert records into that table; for example:</p><pre class="AppCommand">
 splice&gt;&#160;INSERT INTO Players
 &#160;  VALUES( 99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991');
 1 row inserted/updated/deleted
@@ -411,7 +408,7 @@ splice&gt;&#160;INSERT&#160;INTO&#160;Players
           (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982');
 3 rows inserted/updated/deleted</pre>
             <h4 id="SELETING">Selecting and Displaying Data</h4>
-            <p>Now that you have a bit of data in your table, you can use <span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT</a></span>&#160;statements to select specific records or portions of records. This section contains several simple examples of selecting data from the <span class="CodeFont">Players</span> table we created in the previous section.</p>
+            <p>Now that you have a bit of data in your table, you can use <code><a href="sqlref_expressions_select.html">SELECT</a></code>&#160;statements to select specific records or portions of records. This section contains several simple examples of selecting data from the <code>Players</code> table we created in the previous section.</p>
             <p>You can select a single column from all of the records in a table; for example:</p><pre class="AppCommand">splice&gt; select NAME from Players;
 NAME
 ----------------------------------------------------------------
@@ -429,12 +426,12 @@ ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE
 99    |Giants |Joe Bojangles  |C   |Little Joey    |1991-07-11
 
 3 rows selected</pre>
-            <p>You can also qualify which records to select with a <span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span>&#160;clause; for example:</p><pre class="AppCommand">
+            <p>You can also qualify which records to select with a <code><a href="sqlref_clauses_where.html">WHERE</a></code>&#160;clause; for example:</p><pre class="AppCommand">
 splice&gt; select * from Players WHERE&#160;Team='Cards';
 ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE
 ---------------------------------------------------------------
 27    |Cards  |Earl Hastings  |OF  |Speedy Earl    |1982-04-22<br /><br />1 row selected</pre>
-            <p>You can easily count the records in a table by using the <span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT</a></span>&#160;statement; for example:</p><pre class="AppCommand">
+            <p>You can easily count the records in a table by using the <code><a href="sqlref_expressions_select.html">SELECT</a></code>&#160;statement; for example:</p><pre class="AppCommand">
 splice&gt;&#160;select count(*)&#160;from Players;<br />1<br />-----------------------<br />3<br /><br />1 row selected</pre>
             <h2>See Also</h2>
             <ul>

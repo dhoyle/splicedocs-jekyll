@@ -63,7 +63,7 @@ These are the significant new features in this release, along with their Splice 
 * Add a system procedure MERGE_DATA_FROM_FILE to achieve a limited fashion of merge-into
 * Implement Kerberos JDBC support
 
-<div class="noteIcon">For additional information about new features in this release, see <a href="onprem_info_newfeatures.html">our new features information page</a>.</div>
+<p class="noteIcon">For additional information about new features in this release, see <a href="onprem_info_newfeatures.html">our new features information page</a>.</p>
 
 
 ## Improvements

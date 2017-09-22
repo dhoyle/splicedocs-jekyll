@@ -2808,21 +2808,21 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor439">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</span> system procedure sets up table or index splits in your database, prior to importing that table in HFile format. </p>
+            <h1>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</h1>
+            <p>The <code>SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</code> system procedure sets up table or index splits in your database, prior to importing that table in HFile format. </p>
             <p>You must use this procedure in conjunction with two others:</p>
             <ul>
-                <li><span class="CodeFont"><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>
+                <li><code><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></code>
                 </li>
-                <li> <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span></li>
+                <li> <code><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></code></li>
             </ul>
-            <p>See the <span class="ItalicFont">Usage Notes</span> section for more information and the <span class="ItalicFont">Example</span> section to see an example of using these procedures together.</p>
+            <p>See the <em>Usage Notes</em> section for more information and the <em>Example</em> section to see an example of using these procedures together.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS (
-		<span class="ItalicFont">schemaName</span>,
-		<span class="ItalicFont">tableName</span>,
-		<span class="ItalicFont">indexName</span>,
-		<span class="ItalicFont">splitPoints</span>
+		<em>schemaName</em>,
+		<em>tableName</em>,
+		<em>indexName</em>,
+		<em>splitPoints</em>
 		);</pre>
             </div>
             <div class="paramList">
@@ -2834,23 +2834,23 @@
                 <p class="paramDefnFirst">The name of the index that you are splitting. If this is null, the specified table is split; if this is non-null, the index is split instead.</p>
                 <p class="paramName">splitPoints</p>
                 <p class="paramDefnFirst">A&#160;comma-separated list of split points for the table or index. </p>
-                <p class="paramDefn">This is the list of split points computed by a previous call to the <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure.</p>
+                <p class="paramDefn">This is the list of split points computed by a previous call to the <code><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></code>&#160;procedure.</p>
             </div>
             <p>&#160;</p>
             <h2>Results</h2>
-            <p><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span> does not produce results.</p>
+            <p><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code> does not produce results.</p>
 ﻿        <p class="heading2"><a name="Usage"></a>Usage Notes</p>
-        <p class="body">As mentioned earlier, you can have <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> automatically compute the splits for your table; it does so by sampling the data in the table, generating a histogram, and then using that histogram to compute the import splits. <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> automatically computes the splits when the <span class="CodeFont">skipSampling</span> parameter is set to <span class="CodeFont">false</span>.</p>
+        <p class="body">As mentioned earlier, you can have <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> automatically compute the splits for your table; it does so by sampling the data in the table, generating a histogram, and then using that histogram to compute the import splits. <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> automatically computes the splits when the <code>skipSampling</code> parameter is set to <code>false</code>.</p>
         <p class="heading3">Computing Split Keys for HFile Import</p>
-        <div class="noteIcon">If you are using <span class="CodeFont">skipSampling=false</span> to allow automatic computation of splits, you can ignore the rest of this section, and skip to the <a href="#Examples">Examples</a> section below.</div>
-        <p>If you're computing splits for your import (and setting the <span class="CodeFont">skipSampling</span> parameter to <span class="CodeFont">true</span>), you need to use these three Splice&#160;Machine system procedures together:</p>
+        <p class="noteIcon">If you are using <code>skipSampling=false</code> to allow automatic computation of splits, you can ignore the rest of this section, and skip to the <a href="#Examples">Examples</a> section below.</p>
+        <p>If you're computing splits for your import (and setting the <code>skipSampling</code> parameter to <code>true</code>), you need to use these three Splice&#160;Machine system procedures together:</p>
         <ul>
-            <li><span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> generates a keys file</li>
-            <li><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span> sets up the splits in Splice&#160;Machine</li>
-            <li><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>&#160;splits your input file into HFiles, imports your data, and then removes the HFiles</li>
+            <li><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> generates a keys file</li>
+            <li><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code> sets up the splits in Splice&#160;Machine</li>
+            <li><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>&#160;splits your input file into HFiles, imports your data, and then removes the HFiles</li>
         </ul>
-        <p>Alternatively, you can use  <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> with <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span>. The <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> system procedure combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
-        <p>The process is as follows (and is shown in more detail in <span class="ItalicFont">Example 1</span> and <span class="ItalicFont">Example 2</span> below):</p>
+        <p>Alternatively, you can use  <code><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></code> with <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>. The <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> system procedure combines the functionality of <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> and <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code>.</p>
+        <p>The process is as follows (and is shown in more detail in <em>Example 1</em> and <em>Example 2</em> below):</p>
         <div class="opsStepsList">
             <ol>
                 <li>
@@ -2862,18 +2862,18 @@
                 <li>
                     <p>Determine primary key values that can horizontally split the table into roughly equal sized partitions. </p>
                     <div class="noteNote">
-                        <p>Note the value of your <span class="CodeFont">hbase.hregion.max.filesize</span> setting; each partition should ideally be about 1/2 of that value, so that the region can grow after data is loaded. </p>
-                        <p>The sizes must be less than the <span class="CodeFont">hbase.hregion.max.filesize value</span>.</p>
+                        <p>Note the value of your <code>hbase.hregion.max.filesize</code> setting; each partition should ideally be about 1/2 of that value, so that the region can grow after data is loaded. </p>
+                        <p>The sizes must be less than the <code>hbase.hregion.max.filesize value</code>.</p>
                     </div>
                 </li>
                 <li>Store those keys in a CSV&#160;file.</li>
-                <li> If you're using the combination of <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span> and <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>:<ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure to compute the split row keys.</li><li><p>Examine the computed (and encoded)&#160;row keys, which were written to a file named keys in a subdirectory of your <span class="CodeFont">OutputDirectory</span>. </p><p>The name of the subdirectory is the conglomerate ID&#160;for the named table. You can find a table's conglomerate ID&#160;with the <span class="CodeFont"><a href="cmdlineref_showtables.html">SHOW&#160;TABLES</a></span>&#160;command.&#160;</p></li><li>Copy the encoded keys to your clipboard.</li><li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></span>&#160;procedure, passing in the row key values from your clipboard. This splits your table inside the database.</li></ol><p>If you are using  the single procedure <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span> instead:</p><ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <span class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></span>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
+                <li> If you're using the combination of <code><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></code> and <code><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></code>:<ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <code><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></code>&#160;procedure to compute the split row keys.</li><li><p>Examine the computed (and encoded)&#160;row keys, which were written to a file named keys in a subdirectory of your <code>OutputDirectory</code>. </p><p>The name of the subdirectory is the conglomerate ID&#160;for the named table. You can find a table's conglomerate ID&#160;with the <code><a href="cmdlineref_showtables.html">SHOW&#160;TABLES</a></code>&#160;command.&#160;</p></li><li>Copy the encoded keys to your clipboard.</li><li>Call the <code><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></code>&#160;procedure, passing in the row key values from your clipboard. This splits your table inside the database.</li></ol><p>If you are using  the single procedure <code><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></code> instead:</p><ol class="LowerAlphaPlainFont"><li>Pass that CSV&#160;file into the <code><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</a></code>&#160;procedure to compute the split row keys and split your table inside the database.</li></ol></li>
                 <li>Repeat steps 1, 2, and 3 to split the indexes on your table.</li>
-                <li>Call the <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
+                <li>Call the <code><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></code>&#160;procedure to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are deleted after being imported.</li>
             </ol>
         </div>
         <p class="heading2" id="Examples">Example 1</p>
-        <p>This example details the steps used to import data in HFile format using the Splice Machine <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedure with automatic splitting.</p>
+        <p>This example details the steps used to import data in HFile format using the Splice Machine <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedure with automatic splitting.</p>
         <p>Follow these steps :</p>
         <div class="opsStepsList">
             <ol class="boldFont">
@@ -2923,7 +2923,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             </ol>
         </div>
         <p class="heading2">Example 2</>
-        <p>The example in this section details the steps used to import data in HFile format using the Splice Machine <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span>,  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
+        <p>The example in this section details the steps used to import data in HFile format using the Splice Machine <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code>,  <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code>, and <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedures.</p>
         <p>Follow these steps :</p>
         <div class="opsStepsList">
             <ol class="boldFont">
@@ -2968,17 +2968,17 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                     <ol class="LowerAlphaPlainFont">
                         <li>
                             <p>Find primary key values that can horizontally split the table into roughly equal sized partitions.</p>
-                            <p>For this example, we provide 3 keys in a file named <span class="CodeFont">lineitemKey.csv</span>. Note that each of our three keys includes a second column that is <span class="CodeFont">null</span>:</p>
+                            <p>For this example, we provide 3 keys in a file named <code>lineitemKey.csv</code>. Note that each of our three keys includes a second column that is <code>null</code>:</p>
                             <div class="preWrapperWide"><pre class="Example">1500000|<br />3000000|<br />4500000|</pre>
                             </div>
                         </li>
                         <li>
-                            <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the primary key columns are:</p>
+                            <p>Specify the column names in the csv file in the <code>columnList</code> parameter; in our example, the primary key columns are:</p>
                             <div class="preWrapperWide"><pre class="Example">'L_ORDERKEY,L_LINENUMBER'</pre>
                             </div>
                         </li>
                         <li>
-                            <p>Invoke <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> to compute hbase split row keys and write them to a file:</p><pre class="Example">call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', 'hdfs:///tmp/test_hfile_import/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');</pre>
+                            <p>Invoke <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> to compute hbase split row keys and write them to a file:</p><pre class="Example">call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', 'hdfs:///tmp/test_hfile_import/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');</pre>
                         </li>
                     </ol>
                 </li>
@@ -2986,7 +2986,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                     <p class="topLevel">Set up the table splits in your database:</p>
                     <ol class="LowerAlphaPlainFont">
                         <li>
-                            <p>Use <span class="CodeFont">SHOW&#160;TABLES</span>&#160;to discover the conglomerate ID&#160;for the <span class="CodeFont">TPCH.LINEITEM</span>&#160;table, which for this example is <span class="CodeFont">1536</span>. This means that the split keys file for this table is in the <span class="CodeFont">hdfs:///tmp/test_hfile_import/1536</span> directory. You'll see values like these:</p>
+                            <p>Use <code>SHOW&#160;TABLES</code>&#160;to discover the conglomerate ID&#160;for the <code>TPCH.LINEITEM</code>&#160;table, which for this example is <code>1536</code>. This means that the split keys file for this table is in the <code>hdfs:///tmp/test_hfile_import/1536</code> directory. You'll see values like these:</p>
                             <div class="preWrapperWide"><pre class="Example">\xE4\x16\xE3`<br />\xE4-\xC6\xC0<br />\xE4D\xAA</pre>
                             </div>
                         </li>
@@ -3002,18 +3002,18 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                     <ol class="LowerAlphaPlainFont">
                         <li>Find index values that can horizontally split the table into roughly equal sized partitions.</li>
                         <li>
-                            <p>For this example, we provide 2 index values in a file named <span class="CodeFont">shipDateIndex.csv</span>. Note that each of our keys includes <span class="CodeFont">null</span> column values:</p>
+                            <p>For this example, we provide 2 index values in a file named <code>shipDateIndex.csv</code>. Note that each of our keys includes <code>null</code> column values:</p>
                             <div class="preWrapperWide"><pre class="Example">1994-01-01|||
 1996-01-01|||</pre>
                             </div>
                         </li>
                         <li>
-                            <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the index columns are:</p>
+                            <p>Specify the column names in the csv file in the <code>columnList</code> parameter; in our example, the index columns are:</p>
                             <div class="preWrapperWide"><pre class="Example">'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT'</pre>
                             </div>
                         </li>
                         <li>
-                            <p>Invoke <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> to compute hbase split row keys and write them to a file:</p><pre class="Example">call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', 'hdfs:///tmp/test_hfile_import/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');
+                            <p>Invoke <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> to compute hbase split row keys and write them to a file:</p><pre class="Example">call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', 'hdfs:///tmp/test_hfile_import/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');
 </pre>
                         </li>
                     </ol>
@@ -3045,7 +3045,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             </ol>
         </div>
         <p class="heading2">Example 3</p>
-        <p>The example in this section details the steps used to import data in HFile format using the Splice Machine  <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span>, and <span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span> system procedures.</p>
+        <p>The example in this section details the steps used to import data in HFile format using the Splice Machine  <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code>, and <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedures.</p>
         <p>Follow these steps :</p>
         <div class="opsStepsList">
             <ol class="boldFont">
@@ -3090,17 +3090,17 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                     <ol class="LowerAlphaPlainFont">
                         <li>
                             <p>Find primary key values that can horizontally split the table into roughly equal sized partitions.</p>
-                            <p>For this example, we provide 3 keys in a file named <span class="CodeFont">lineitemKey.csv</span>. Note that each of our three keys includes a second column that is <span class="CodeFont">null</span>:</p>
+                            <p>For this example, we provide 3 keys in a file named <code>lineitemKey.csv</code>. Note that each of our three keys includes a second column that is <code>null</code>:</p>
                             <div class="preWrapperWide"><pre class="Example">1500000|<br />3000000|<br />4500000|</pre>
                             </div>
                         </li>
                         <li>
-                            <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the primary key columns are:</p>
+                            <p>Specify the column names in the csv file in the <code>columnList</code> parameter; in our example, the primary key columns are:</p>
                             <div class="preWrapperWide"><pre class="Example">'L_ORDERKEY,L_LINENUMBER'</pre>
                             </div>
                         </li>
                         <li>
-                            <p>Invoke <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> to compute hbase split row keys and set up the splits</p><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', 'hdfs:///tmp/test_hfile_import/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null);</pre>
+                            <p>Invoke <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> to compute hbase split row keys and set up the splits</p><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', 'hdfs:///tmp/test_hfile_import/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null);</pre>
                         </li>
                     </ol>
                 </li>
@@ -3109,18 +3109,18 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
                     <ol class="LowerAlphaPlainFont">
                         <li>Find index values that can horizontally split the table into roughly equal sized partitions.</li>
                         <li>
-                            <p>For this example, we provide 2 index values in a file named <span class="CodeFont">shipDateIndex.csv</span>. Note that each of our keys includes <span class="CodeFont">null</span> column values:</p>
+                            <p>For this example, we provide 2 index values in a file named <code>shipDateIndex.csv</code>. Note that each of our keys includes <code>null</code> column values:</p>
                             <div class="preWrapperWide"><pre class="Example">1994-01-01|||
 1996-01-01|||</pre>
                             </div>
                         </li>
                         <li>
-                            <p>Specify the column names in the csv file in the <span class="CodeFont">columnList</span> parameter; in our example, the index columns are:</p>
+                            <p>Specify the column names in the csv file in the <code>columnList</code> parameter; in our example, the index columns are:</p>
                             <div class="preWrapperWide"><pre class="Example">'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT'</pre>
                             </div>
                         </li>
                         <li>
-                            <p>Invoke <span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span> to compute hbase split row keys and set up the index splits</p><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', 'hdfs:///tmp/test_hfile_import/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null);
+                            <p>Invoke <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> to compute hbase split row keys and set up the index splits</p><pre class="Example">call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', 'hdfs:///tmp/test_hfile_import/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null);
 </pre>
                         </li>
                     </ol>
@@ -3137,11 +3137,11 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
 
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
+                <li><a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_computesplitkey.html"><span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span></a>
+                <li><a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_splittable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span></a>
+                <li><a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a>
                 </li>
             </ul>
         </div>
@@ -3162,7 +3162,7 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

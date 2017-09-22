@@ -12,8 +12,8 @@ folder: DBConsole
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Splice Machine Database Console Guide</h1>
-            <p>This topic introduces the  <span class="ItalicFont">Splice Machine Database Console</span>, a browser-based tool that you can use to monitor database queries on your cluster in real time. The Console UI&#160;allows you to see the Spark queries that are currently running in Splice Machine on your cluster, and to then drill down into each job to see the current progress of the queries, and to identify any potential bottlenecks. If you see something amiss, you can also terminate a query.</p>
-            <div class="noteIcon">The <span class="ItalicFont">Splice Machine Database Console</span> leverages the Spark cluster manager <span class="ItalicFont">Web UI</span>, which is described here:&#160;<a href="http://spark.apache.org/docs/latest/monitoring.html"  target="_blank">http://spark.apache.org/docs/latest/monitoring.html</a>.</div>
+            <p>This topic introduces the  <em>Splice Machine Database Console</em>, a browser-based tool that you can use to monitor database queries on your cluster in real time. The Console UI&#160;allows you to see the Spark queries that are currently running in Splice Machine on your cluster, and to then drill down into each job to see the current progress of the queries, and to identify any potential bottlenecks. If you see something amiss, you can also terminate a query.</p>
+            <p class="noteIcon">The <em>Splice Machine Database Console</em> leverages the Spark cluster manager <em>Web UI</em>, which is described here:&#160;<a href="http://spark.apache.org/docs/latest/monitoring.html"  target="_blank">http://spark.apache.org/docs/latest/monitoring.html</a>.</p>
             <p>This section is organized into the following topics:</p>
             <ul>
                 <li>The next section, <a href="#About">About the Splice Machine Database Console</a>, tells you about the Database Console, including how to access it in your browser.</li>
@@ -21,7 +21,7 @@ folder: DBConsole
                 <li>The <a href="dbconsole_queries.html">Managing Queries with the Console</a> topic shows you how to review and monitor the progress of your Spark jobs.</li>
             </ul>
             <h2 id="About">About the Splice Machine Database Console</h2>
-            <p>The  <span class="ItalicFont">Splice Machine Spark Database Console</span> is a browser-based tool that you can use to watch your active Spark queries execute and to review the execution of completed queries. You can use the console to:</p>
+            <p>The  <em>Splice Machine Spark Database Console</em> is a browser-based tool that you can use to watch your active Spark queries execute and to review the execution of completed queries. You can use the console to:</p>
             <ul>
                 <li>View any completed jobs</li>
                 <li>Monitor active jobs as they execute</li>
@@ -53,7 +53,7 @@ folder: DBConsole
             		</tr>
 				</tbody>
 			</table>
-            <div class="noteIcon">The Database Console URL&#160;will only be active after you've run at least one query on our Spark engine; prior to using the Spark engine, your browser will report an error such as <span class="ItalicFont">Connection Refused</span>.</div>
+            <p class="noteIcon">The Database Console URL&#160;will only be active after you've run at least one query on our Spark engine; prior to using the Spark engine, your browser will report an error such as <em>Connection Refused</em>.</p>
             <p>Here are some of the terms you'll encounter while using the Database Console:</p>
             <table summary="Spark Database Console terminology">
                 <col />
@@ -79,15 +79,15 @@ folder: DBConsole
                     </tr>
                     <tr>
                         <td class="ItalicFont">Enable Zooming</td>
-                        <td>For <span class="ItalicFont">event timeline</span> views, you can enable zooming to expand the view detail for a portion of the timeline. You can click the <span class="AppCommand">Event Timeline</span> arrow to switch to this view.</td>
+                        <td>For <em>event timeline</em> views, you can enable zooming to expand the view detail for a portion of the timeline. You can click the <span class="AppCommand">Event Timeline</span> arrow to switch to this view.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">Event Timeline</td>
-                        <td>A view that graphically displays the sequence of all <span class="ItalicFont">jobs</span>, a specific job, or a <span class="ItalicFont">stage</span> within a job. </td>
+                        <td>A view that graphically displays the sequence of all <em>jobs</em>, a specific job, or a <em>stage</em> within a job. </td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">Executor</td>
-                        <td>A process that runs <span class="ItalicFont">tasks</span> on a cluster node.</td>
+                        <td>A process that runs <em>tasks</em> on a cluster node.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">GC Time</td>
@@ -102,7 +102,7 @@ folder: DBConsole
                     </tr>
                     <tr>
                         <td class="ItalicFont">Locality Level</td>
-                        <td>To minimize data transfers, Spark tries to execute as close to the data as possible. The <span class="ItalicFont">Locality Level</span> value indicates whether a task was able to run on the local node.</td>
+                        <td>To minimize data transfers, Spark tries to execute as close to the data as possible. The <em>Locality Level</em> value indicates whether a task was able to run on the local node.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">Scheduling Mode</td>
@@ -124,19 +124,19 @@ folder: DBConsole
                         <td class="ItalicFont">Shuffling</td>
                         <td>
                             <p class="noSpaceAbove">Shuffling is the reallocation of data between multiple stages in a Spark job.</p>
-                            <p><span class="ItalicFont">Shuffle Write</span> is amount of data that is serialized and written at the end of a stage for transmission to the next stage. <span class="ItalicFont">Shuffle Read</span> is the amount of serialized data that is read at the beginning of a stage.</p>
+                            <p><em>Shuffle Write</em> is amount of data that is serialized and written at the end of a stage for transmission to the next stage. <em>Shuffle Read</em> is the amount of serialized data that is read at the beginning of a stage.</p>
                         </td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">Stage</td>
                         <td>
-                            <p class="noSpaceAbove">The Splice Machine Spark scheduler splits the execution of a <span class="ItalicFont">job</span> into stages, based on the RDD&#160;transformations required to complete the job.</p>
+                            <p class="noSpaceAbove">The Splice Machine Spark scheduler splits the execution of a <em>job</em> into stages, based on the RDD&#160;transformations required to complete the job.</p>
                             <p>Each stage contains a group of tasks that perform a computation in parallel. </p>
                         </td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">Task</td>
-                        <td>A computational command sent from the application driver to an <span class="ItalicFont">executor</span> as part of a <span class="ItalicFont">stage</span>.</td>
+                        <td>A computational command sent from the application driver to an <em>executor</em> as part of a <em>stage</em>.</td>
                     </tr>
                 </tbody>
             </table>

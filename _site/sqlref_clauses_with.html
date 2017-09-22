@@ -2808,24 +2808,22 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor222">WITH CLAUSE&#160;(Common Table Expression)</h1>
-            <p>You can use Common Table Expressions, also known as the <span class="CodeFont">WITH</span> clause, to break down complicated queries into simpler parts by naming and referring to subqueries within queries. </p>
+            <h1>WITH CLAUSE&#160;(Common Table Expression)</h1>
+            <p>You can use Common Table Expressions, also known as the <code>WITH</code> clause, to break down complicated queries into simpler parts by naming and referring to subqueries within queries. </p>
             <p>A Common Table Expression (CTE)&#160;provides a way of defining a temporary result set whose definition is available only to the query in which the CTE is defined.  The result of the CTE is not stored; it exists only for the duration of the query.
 CTEs are helpful in reducing query complexity and increasing readability.  They can be used as substitutions for views in cases where either you dont have permission to create a view or the query would be the only one using the view.  CTEs allow you to more easily enable grouping by a column that is derived from a scalar sub select or a function that is non deterministic.
 </p>
-            <div class="noteNote">The <span class="CodeFont">WITH</span> clause is also known as the <span class="ItalicFont">subquery factoring clause</span>.
-
-</div>
-            <p>The handling and syntax of <span class="CodeFont">WITH</span> queries are similar to the handling and syntax of views. The <span class="CodeFont">WITH</span> clause can be processed as an inline view and shares syntax with <span class="CodeFont">CREATE VIEW</span>. The <span class="CodeFont">WITH</span> clause can also resolve as a temporary table, which may enhance the efficiency of a query.</p>
+            <p class="noteNote">The <code>WITH</code> clause is also known as the <em>subquery factoring clause</em>.</p>
+            <p>The handling and syntax of <code>WITH</code> queries are similar to the handling and syntax of views. The <code>WITH</code> clause can be processed as an inline view and shares syntax with <code>CREATE VIEW</code>. The <code>WITH</code> clause can also resolve as a temporary table, which may enhance the efficiency of a query.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">WITH <span class="ItalicFont">queryName</span> <br /> &#160;&#160;AS SELECT&#160;<span class="ItalicFont"><a href="sqlref_queries_query.html">Query</a></span></pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">WITH <em>queryName</em> <br /> &#160;&#160;AS SELECT&#160;<em><a href="sqlref_queries_query.html">Query</a></em></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">queryName</p>
                 <p class="paramDefnFirst">An identifier that names the subquery clause.</p>
             </div>
 	        <h2>Restrictions</h2>
-    	    <p class="body">You cannot currently use a temporary table in a <span class="CodeFont">WITH</span>&#160;clause. This is being addressed in a future release of Splice Machine.</p>
+    	    <p class="body">You cannot currently use a temporary table in a <code>WITH</code>&#160;clause. This is being addressed in a future release of Splice Machine.</p>
             <h2>Examples</h2>
             <p class="body">If we create the following table:</p>
             <div class="preWrapperWide"><pre class="Example">CREATE TABLE BANKS (
@@ -2860,8 +2858,8 @@ GROUP BY STATE, CITY;
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>
-                <li><a href="sqlref_queries_query.html"><span class="CodeFont">Query</span></a>&#160;</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+                <li><a href="sqlref_queries_query.html"><code>Query</code></a>&#160;</li>
             </ul>
             <div class="hiddenText">WITH</div>
         </div>
@@ -2882,7 +2880,7 @@ GROUP BY STATE, CITY;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

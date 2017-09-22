@@ -2809,18 +2809,18 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="SystemTables.SysRoles">SYSROLES System Table </h1>
-            <p>The <span class="CodeFont">SYSROLES</span> table stores the roles in the database.</p>
-            <p>A row in the <span class="CodeFont">SYSROLES</span> table represents one of the following:</p>
+            <p>The <code>SYSROLES</code> table stores the roles in the database.</p>
+            <p>A row in the <code>SYSROLES</code> table represents one of the following:</p>
             <ul>
-                <li>A role definition (the result of a <a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE ROLE</span> statement</a>)</li>
+                <li>A role definition (the result of a <a href="sqlref_statements_createrole.html"><code>CREATE ROLE</code> statement</a>)</li>
                 <li>A role grant</li>
             </ul>
-            <p>The keys for the <span class="CodeFont">SYSROLES</span> table are:</p>
+            <p>The keys for the <code>SYSROLES</code> table are:</p>
             <ul>
-                <li>Primary key (<span class="CodeFont">GRANTEE, ROLEID, GRANTOR</span>)</li>
-                <li>Unique key (<span class="CodeFont">UUID</span>)</li>
+                <li>Primary key (<code>GRANTEE, ROLEID, GRANTOR</code>)</li>
+                <li>Unique key (<code>UUID</code>)</li>
             </ul>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSROLES</span> system table.</p>
+            <p>The following table shows the contents of the <code>SYSROLES</code> system table.</p>
             <table>
                 <caption>SYSROLES system table</caption>
                 <col />
@@ -2868,7 +2868,7 @@
                         <td class="CodeFont">NO</td>
                         <td>This is the authorization identifier of the user that granted
 						this role. If the row represents a role definition, this is the authorization
-						identifier <span class="CodeFont">_SYSTEM</span>. If the row represents a role grant, this is the database
+						identifier <code>_SYSTEM</code>. If the row represents a role grant, this is the database
 						owner's user name (since only the database owner can create and grant roles).
 					</td>
                     </tr>
@@ -2878,13 +2878,13 @@
                         <td class="CodeFont">1</td>
                         <td class="CodeFont">NO</td>
                         <td>
-                            <p class="noSpaceAbove">A role definition is modelled as a grant from <span class="CodeFont">_SYSTEM</span> to the
+                            <p class="noSpaceAbove">A role definition is modelled as a grant from <code>_SYSTEM</code> to the
 						database owner, so if the row represents a role definition, the value is always
-						<span class="CodeFont">'Y'</span>. </p>
+						<code>'Y'</code>. </p>
                             <p>This means that the creator (the database owner) is always allowed
 						to grant the newly created role. Currently roles cannot be granted <span class="CodeFont">WITH ADMIN
 						OPTION</span>, so if the row represents a role grant, the value is always
-					<span class="CodeFont">'N'</span>.</p>
+					<code>'N'</code>.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2893,7 +2893,7 @@
                         <td class="CodeFont">1</td>
                         <td class="CodeFont">NO</td>
                         <td>If the row represents a role definition, this value is
-					<span class="CodeFont">'Y'</span>. If the row represents a role grant, the value is <span class="CodeFont">'N'</span>.</td>
+					<code>'Y'</code>. If the row represents a role grant, the value is <code>'N'</code>.</td>
                     </tr>
                 </tbody>
             </table>
@@ -2901,12 +2901,12 @@
             <ul>
                 <li><a href="sqlref_systables_intro.html">About System Tables</a>
                 </li>
-                <li><a href="sqlref_builtinfcns_currentrole.html"><span class="CodeFont">CURRENT_ROLE</span></a>&#160;function</li>
-                <li><a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE_ROLE</span></a> statement</li>
-                <li><a href="sqlref_statements_droprole.html"><span class="CodeFont">DROP_ROLE</span></a> statement</li>
-                <li><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_revoke.html"><span class="CodeFont">REVOKE</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_setrole.html"><span class="CodeFont">SET&#160;ROLE</span></a> statement</li>
+                <li><a href="sqlref_builtinfcns_currentrole.html"><code>CURRENT_ROLE</code></a>&#160;function</li>
+                <li><a href="sqlref_statements_createrole.html"><code>CREATE_ROLE</code></a> statement</li>
+                <li><a href="sqlref_statements_droprole.html"><code>DROP_ROLE</code></a> statement</li>
+                <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a>&#160;statement</li>
+                <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a>&#160;statement</li>
+                <li><a href="sqlref_statements_setrole.html"><code>SET&#160;ROLE</code></a> statement</li>
             </ul>
         </div>
 	</section>
@@ -2926,7 +2926,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

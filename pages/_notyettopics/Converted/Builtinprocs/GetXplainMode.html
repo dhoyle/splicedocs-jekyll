@@ -11,15 +11,15 @@ folder: SQLReference/BuiltInSysProcs
 <section>
 	<div class="TopicContent" data-swiftype-index="true">
         <h1 id="BuiltInSysFcns.GetXplainMode">SYSCS_GET_XPLAIN_MODE</h1>
-        <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_XPLAIN_MODE</span> function returns the current xplain mode.</p>
-        <p>If the xplain mode is non-zero, then statements are not actually executed, but are just compiled, and their statistics recorded in the <span class="ItalicFont">SYSXPLAIN_*</span> database tables. If the xplain mode is zero (the default), then statements are executed normally.</p>
-        <p>See "Working with RunTimeStatistics" in the <span class="ItalicFont">Tuning Splice Machine</span> for additional information.</p>
+        <p>The <code>SYSCS_UTIL.SYSCS_GET_XPLAIN_MODE</code> function returns the current xplain mode.</p>
+        <p>If the xplain mode is non-zero, then statements are not actually executed, but are just compiled, and their statistics recorded in the <em>SYSXPLAIN_*</em> database tables. If the xplain mode is zero (the default), then statements are executed normally.</p>
+        <p>See "Working with RunTimeStatistics" in the <em>Tuning Splice Machine</em> for additional information.</p>
         <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_XPLAIN_MODE()
    RETURNS INTEGER</pre>
         </div>
         <h2>Execute Privileges</h2>
-        <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. See "Enabling user authentication" and "Setting the SQL standard authorization mode" in <span class="ItalicFont">The Splice Machine Developer's Guide</span> for more information. The database owner can grant access to other users.</p>
+        <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. See "Enabling user authentication" and "Setting the SQL standard authorization mode" in <em>The Splice Machine Developer's Guide</em> for more information. The database owner can grant access to other users.</p>
         <h2>Example</h2>
         <p>To determine the current value of the XPLAIN mode:</p>
         <div class="preWrapper"><pre class="Example">values syscs_util.syscs_get_xplain_mode();	</pre>

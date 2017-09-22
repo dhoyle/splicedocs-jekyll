@@ -11,7 +11,7 @@ folder: SQLReference/Statements
 <section>
 	<div class="TopicContent" data-swiftype-index="true">
 	<h1 id="Statements.SetIsolation">SET ISOLATION</h1>
-        <p>The <span class="CodeFont">SET ISOLATION</span> statement allows a user to change the isolation level for the user's connection. Isolation levels control the way locking works between transactions. Valid levels are:</p>
+        <p>The <code>SET ISOLATION</code> statement allows a user to change the isolation level for the user's connection. Isolation levels control the way locking works between transactions. Valid levels are:</p>
         <ul>
             <li class="CodeFont"> SERIALIZABLE</li>
             <li class="CodeFont">REPEATABLE READ</li>
@@ -30,8 +30,8 @@ folder: SQLReference/Statements
 }</pre>
         </div>
         <h2>Usage Notes</h2>
-        <p>Issuing this statement always commits the current transaction. The JDBC  <span class="ItalicFont">java.sql.Connection.setTransactionIsolation</span> method behaves almost identically to this command, with one exception: if you are using the embedded  driver, and if the call to <span class="ItalicFont"> java.sql.Connection.setTransactionIsolation</span> does not actually change the isolation level (that is, if it sets the isolation  level to its current value), the current transaction is not committed.</p>
-        <p>For information about isolation levels, see "Locking, concurrency, and isolation" in the <span class="ItalicFont">The Splice Machine Developer's Guide</span>. </p>
+        <p>Issuing this statement always commits the current transaction. The JDBC  <em>java.sql.Connection.setTransactionIsolation</em> method behaves almost identically to this command, with one exception: if you are using the embedded  driver, and if the call to <em> java.sql.Connection.setTransactionIsolation</em> does not actually change the isolation level (that is, if it sets the isolation  level to its current value), the current transaction is not committed.</p>
+        <p>For information about isolation levels, see "Locking, concurrency, and isolation" in the <em>The Splice Machine Developer's Guide</em>. </p>
         <h2>Example</h2>
         <div class="preWrapper"><pre class="Example">set isolation serializable;</pre>
         </div>

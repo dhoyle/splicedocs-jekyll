@@ -2808,30 +2808,30 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor368">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</span>&#160;&#160;system procedure collects statistics on a specific schema in your database. </p>
-            <div class="noteNote">Once statistics have been collected for a schema, they are automatically used by the query optimizer.</div>
+            <h1>SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</h1>
+            <p>The <code>SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</code>&#160;&#160;system procedure collects statistics on a specific schema in your database. </p>
+            <p class="noteNote">Once statistics have been collected for a schema, they are automatically used by the query optimizer.</p>
             <p>This procedure collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema. For example, if you have :</p>
             <ul>
-                <li>a schema named <span class="CodeFont">mySchema</span></li>
-                <li><span class="CodeFont">mySchema</span> contains two tables:&#160;<span class="CodeFont">myTable1</span> and <span class="CodeFont">myTable2</span></li>
-                <li><span class="CodeFont">myTable1</span> has two indices:&#160;<span class="CodeFont">myTable1Index1</span> and <span class="CodeFont">myTable1Index2</span></li>
+                <li>a schema named <code>mySchema</code></li>
+                <li><code>mySchema</code> contains two tables:&#160;<code>myTable1</code> and <code>myTable2</code></li>
+                <li><code>myTable1</code> has two indices:&#160;<code>myTable1Index1</code> and <code>myTable1Index2</code></li>
             </ul>
-            <p>Then <span class="CodeFont">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</span> will collect statistics for <span class="CodeFont">myTable1</span>, <span class="CodeFont">myTable2</span>, <span class="CodeFont">myTable1Index1</span>, and <span class="CodeFont">myTable1Index2</span>.</p>
+            <p>Then <code>SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</code> will collect statistics for <code>myTable1</code>, <code>myTable2</code>, <code>myTable1Index1</code>, and <code>myTable1Index2</code>.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS(
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;schema,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;BOOLEAN&#160;staleOnly<br />)</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">Specifies the schema for which you want to collect statistics. Passing a <span class="CodeFont">null</span> or non-existent schema name generates an error.</p>
+                <p class="paramDefnFirst">Specifies the schema for which you want to collect statistics. Passing a <code>null</code> or non-existent schema name generates an error.</p>
                 <p class="paramName">staleOnly</p>
-                <p class="paramDefnFirst">A&#160;<span class="CodeFont">BOOLEAN</span> value that specifies:</p>
+                <p class="paramDefnFirst">A&#160;<code>BOOLEAN</code> value that specifies:</p>
                 <ul class="nested">
-                    <li>If this is <span class="CodeFont">true</span>, data is only re-collected for partitions that are known to have out of date statistics.</li>
-                    <li>If this is <span class="CodeFont">false</span>, data is collected on all partitions. <span class="Highlighted">Note</span> that this can significantly increase the time required to collect statistics, and is typically used only when you are not sure about the current quality of statistics in the entire schema.</li>
+                    <li>If this is <code>true</code>, data is only re-collected for partitions that are known to have out of date statistics.</li>
+                    <li>If this is <code>false</code>, data is collected on all partitions. <span class="Highlighted">Note</span> that this can significantly increase the time required to collect statistics, and is typically used only when you are not sure about the current quality of statistics in the entire schema.</li>
                 </ul>
-                <div class="noteIcon">The <span class="CodeItalicFont">staleOnly</span> parameter value is currently ignored, but must be specified in your call to this procedure. Its value is always set to <span class="CodeFont">false</span> in the system code.</div>
+                <p class="noteIcon">The <span class="CodeItalicFont">staleOnly</span> parameter value is currently ignored, but must be specified in your call to this procedure. Its value is always set to <code>false</code> in the system code.</p>
             </div>
             <h2>Results</h2>
             <p>This procedure returns a results table that contains:</p>
@@ -2898,13 +2898,13 @@ SPLICE     |FIELDING   |splice:1504,,1467393775949.674b34acdb182|44         |987
             <ul>
                 <li><a href="sqlref_datatypes_compatability.html">Data Assignments and Comparisons</a>
                 </li>
-                <li><a href="sqlref_sysprocs_enablecolumnstats.html"><span class="CodeFont">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</span></a>
+                <li><a href="sqlref_sysprocs_enablecolumnstats.html"><code>SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_disablecolumnstats.html"><span class="CodeFont">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</span></a>
+                <li><a href="sqlref_sysprocs_disablecolumnstats.html"><code>SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_dropschemastats.html"><span class="CodeFont">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</span></a>
+                <li><a href="sqlref_sysprocs_dropschemastats.html"><code>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</code></a>
                 </li>
-                <li><a href="developers_tuning_usingstats.html">Using Statistics</a> in the <span class="ItalicFont">Developer's Guide</span></li>
+                <li><a href="developers_tuning_usingstats.html">Using Statistics</a> in the <em>Developer's Guide</em></li>
             </ul>
         </div>
 	</section>
@@ -2924,7 +2924,7 @@ SPLICE     |FIELDING   |splice:1504,,1467393775949.674b34acdb182|44         |987
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

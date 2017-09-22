@@ -578,15 +578,7 @@
 
 
 
-
-
 ﻿
-
-
-
-
-
-
 
 
 
@@ -653,7 +645,7 @@
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Cleaning Your Database</h1>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
+<p class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
             <p>Cleaning your database essentially wipes out any user-defined tables, indexes, and related items. You need to follow different steps, depending on which version of Splice Machine you are using:</p>
             <ul>
@@ -672,17 +664,17 @@
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Shut down HBase and HDFS</p>
-                        <p class="indentLevel1">Navigate to  the 	<span class="AppCommand">Services-&gt;All Services</span> screen in <span>Cloudera Manager</span>, and select these actions to stop <span class="ItalicFont">HBase</span> and <span class="ItalicFont">HDFS</span>:
+                        <p class="indentLevel1">Navigate to  the 	<span class="AppCommand">Services-&gt;All Services</span> screen in <span>Cloudera Manager</span>, and select these actions to stop <em>HBase</em> and <em>HDFS</em>:
 </p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><span class="ItalicFont">hbase</span> -&gt; <span class="ItalicFont">Actions</span> -&gt; Stop
-<span class="ItalicFont">hdfs1</span> -&gt; <span class="ItalicFont">Actions</span> -&gt; Stop
-<span class="ItalicFont">zookeeper1</span> -&gt;&#160;<span class="ItalicFont">Actions</span> -&gt;&#160;Stop</pre>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><em>hbase</em> -&gt; <em>Actions</em> -&gt; Stop
+<em>hdfs1</em> -&gt; <em>Actions</em> -&gt; Stop
+<em>zookeeper1</em> -&gt;&#160;<em>Actions</em> -&gt;&#160;Stop</pre>
                         </div>
                     </li>
                     <li>
                         <p class="topLevel"> Use the Zookeeper client to clean things:</p>
                         <p class="indentLevel1">Restart ZooKeeper in the <span class="AppCommand">Services-&gt;All&#160;Services</span> screen:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><span class="ItalicFont">zookeeper1</span> -&gt;&#160;<span class="ItalicFont">Actions</span> -&gt;&#160;Start</pre>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><em>zookeeper1</em> -&gt;&#160;<em>Actions</em> -&gt;&#160;Start</pre>
                         </div>
                         <p class="indentLevel1">Log in to the machine running Zookeeper on your cluster and start up a command-line (terminal) window.</p>
                         <p class="indentLevel1">Run the <span class="ShellCommand">zookeeper-client</span> command. At the prompt, run the following commands:</p>
@@ -698,38 +690,38 @@ rmr /ddl</pre>
                     </li>
                     <li>
                         <p class="topLevel">Start HDFS</p>
-                        <p class="indentLevel1">Navigate to the <span class="AppCommand">Services-&gt;All Services</span> screen in <span>Cloudera Manager</span>, and restart <span class="ItalicFont">HDFS</span>:</p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><span class="ItalicFont">hdfs1</span> -&gt; <span class="ItalicFont">Actions</span> -&gt; Start</pre>
+                        <p class="indentLevel1">Navigate to the <span class="AppCommand">Services-&gt;All Services</span> screen in <span>Cloudera Manager</span>, and restart <em>HDFS</em>:</p>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><em>hdfs1</em> -&gt; <em>Actions</em> -&gt; Start</pre>
                         </div>
                     </li>
                     <li>
                         <p class="topLevel"> Clean up HBase</p>
-                        <p class="indentLevel1">Use the following shell command to delete the existing <span class="CodeFont">/hbase</span> directory. You can run this command on any Data Node:</p>
+                        <p class="indentLevel1">Use the following shell command to delete the existing <code>/hbase</code> directory. You can run this command on any Data Node:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">sudo -su hdfs hadoop fs -rm -r /hbase</pre>
                         </div>
                         <p class="indentLevel1">If you are logged in as root, use this command instead:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">sudo -u hdfs hadoop fs -rm -r /hbase</pre>
                         </div>
-                        <div class="noteNote">If the machine running Cloudera Manager is not part of the cluster, <span class="BoldFont">do not</span> run the command on that machine</div>
+                        <p class="noteNote">If the machine running Cloudera Manager is not part of the cluster, <strong>do not</strong> run the command on that machine</p>
                     </li>
                     <li>
                         <p class="topLevel"> Create a new HBase directory:</p>
-                        <p class="indentLevel1">Navigate to  the 	<span class="AppCommand">HBase</span> screen in <span>Cloudera Manager</span>, and create a new <span class="CodeFont">/hbase</span> directory by selecting:
+                        <p class="indentLevel1">Navigate to  the 	<span class="AppCommand">HBase</span> screen in <span>Cloudera Manager</span>, and create a new <code>/hbase</code> directory by selecting:
 </p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><span class="ItalicFont">Actions</span> -&gt; Create Root Directory</pre>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><em>Actions</em> -&gt; Create Root Directory</pre>
                         </div>
                     </li>
                     <li>
                         <p class="topLevel">Restart HBase</p>
                         <p class="indentLevel1">Now restart HBase from the same <span class="AppCommand">Home-&gt;Services-&gt;hbase1</span> screen in Cloudera Manager, using this action:
 </p>
-                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><span class="ItalicFont">Actions</span> -&gt;&#160;Start</pre>
+                        <div class="preWrapper"><pre class="AppCommand" xml:space="preserve"><em>Actions</em> -&gt;&#160;Start</pre>
                         </div>
                     </li>
                 </ol>
             </div>
             <h2 id="CleaningDBHDP">Cleaning Your Splice Machine Database on a Hortonworks HDP-Managed Cluster</h2>
-            <p>Follow these steps to clean (or <span class="ItalicFont">flatten</span>)&#160;your database if you're using Splice Machine on an Ambari-managed Hortonworks Cluster:</p>
+            <p>Follow these steps to clean (or <em>flatten</em>)&#160;your database if you're using Splice Machine on an Ambari-managed Hortonworks Cluster:</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
@@ -791,12 +783,12 @@ sudo -su hdfs hadoop fs -chown hbase:hdfs /apps/hbase/data</pre>
                 </ol>
             </div>
             <h2 id="CleaningDBMapR">Cleaning Your Splice Machine Database on a MapR-Managed Cluster</h2>
-            <p>Follow the steps below to clean (flatten)&#160;your database on your MapR cluster. You must be logged in as the cluster administrator (typically <span class="CodeFont">clusteradmin</span> or <span class="CodeFont">ec2-user</span>) to run each step. Unless otherwise specified, run each of these steps <span class="BoldFont">on your cluster control node</span>; some steps, as indicated, must be run on each node in your cluster.</p>
+            <p>Follow the steps below to clean (flatten)&#160;your database on your MapR cluster. You must be logged in as the cluster administrator (typically <code>clusteradmin</code> or <code>ec2-user</code>) to run each step. Unless otherwise specified, run each of these steps <strong>on your cluster control node</strong>; some steps, as indicated, must be run on each node in your cluster.</p>
             <div class="opsStepsList">
                 <ol class="boldFont">
                     <li>
                         <p class="topLevel">Stop the HBase RegionServers and Master:</p>
-                        <p class="indentLevel1">Use the following command <span class="BoldFont">on your control node</span> to stop HBase on your cluster:</p>
+                        <p class="indentLevel1">Use the following command <strong>on your control node</strong> to stop HBase on your cluster:</p>
                         <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">~/splice-installer-mapr4.0/stop-hbase.sh</pre>
                         </div>
                     </li>
@@ -808,7 +800,7 @@ sudo -su hdfs hadoop fs -chown hbase:hdfs /apps/hbase/data</pre>
                     </li>
                     <li>
                         <p class="topLevel">Stop MapR&#160;warden services:</p>
-                        <p class="indentLevel1">Run the following command <span class="BoldFont">on each node</span> in your cluster:</p>
+                        <p class="indentLevel1">Run the following command <strong>on each node</strong> in your cluster:</p>
                         <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">sudo service mapr-warden stop</pre>
                         </div>
                     </li>
@@ -829,7 +821,7 @@ JLine support is enabled
                     </li>
                     <li>
                         <p class="topLevel">Complete the connection:</p>
-                        <p class="indentLevel1">Press <span class="CodeFont">Enter</span> again to display the connected prompt</p>
+                        <p class="indentLevel1">Press <code>Enter</code> again to display the connected prompt</p>
                         <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">[zk: localhost:5181(CONNECTED) 1]</pre>
                         </div>
                     </li>
@@ -849,7 +841,7 @@ quit</pre>
                     </li>
                     <li>
                         <p class="topLevel">Restart MapR&#160;warden services on all nodes:</p>
-                        <p class="indentLevel1">Run the following command <span class="BoldFont">on each node</span> in your cluster:</p>
+                        <p class="indentLevel1">Run the following command <strong>on each node</strong> in your cluster:</p>
                         <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">sudo service mapr-warden start</pre>
                         </div>
                         <p class="indentLevel1">Once you do so, your cluster will re-create the Splice Machine schema, and the command line interface will once again be available after a minute or so.</p>
@@ -904,7 +896,7 @@ $ ./bin/start-splice.sh</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

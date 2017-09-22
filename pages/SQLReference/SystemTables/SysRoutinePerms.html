@@ -11,16 +11,16 @@ folder: SQLReference/SystemTables
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="SystemTables.SysRoutinePerms">SYSROUTINEPERMS System Table </h1>
-            <p>The <span class="CodeFont">SYSROUTINEPERMS</span> table stores the permissions that have been
+            <p>The <code>SYSROUTINEPERMS</code> table stores the permissions that have been
 		granted to routines.</p>
-            <p>Each routine <span class="CodeFont">EXECUTE</span> permission is specified in a row in the
-		<span class="CodeFont">SYSROUTINEPERMS</span> table. The keys for the <span class="CodeFont">SYSROUTINEPERMS</span> table are:</p>
+            <p>Each routine <code>EXECUTE</code> permission is specified in a row in the
+		<code>SYSROUTINEPERMS</code> table. The keys for the <code>SYSROUTINEPERMS</code> table are:</p>
             <ul>
-                <li>Primary key (<span class="CodeFont">GRANTEE, ALIASID, GRANTOR</span>)</li>
-                <li>Unique key (<span class="CodeFont">ROUTINEPERMSID</span>)</li>
-                <li>Foreign key (<span class="CodeFont">ALIASID</span> references <span class="CodeFont">SYS.SYSALIASES</span>)</li>
+                <li>Primary key (<code>GRANTEE, ALIASID, GRANTOR</code>)</li>
+                <li>Unique key (<code>ROUTINEPERMSID</code>)</li>
+                <li>Foreign key (<code>ALIASID</code> references <code>SYS.SYSALIASES</code>)</li>
             </ul>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSROUTINEPERMS</span> system
+            <p>The following table shows the contents of the <code>SYSROUTINEPERMS</code> system
 		table.</p>
             <table>
                 <caption>SYSROUTINEPERMS system table</caption>
@@ -67,8 +67,8 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">NO</td>
                         <td>
                             <p class="noSpaceAbove">The ID of the object of the required permission.</p>
-                            <p> If <span class="CodeFont">PERMTYPE</span>=<span class="CodeFont">'E'</span>, the <span class="CodeFont">ALIASID</span> is a reference to the <span class="CodeFont">SYS.SYSALIASES</span> table.</p>
-                            <p> Otherwise, the <span class="CodeFont">ALIASID</span> is a reference to the <span class="CodeFont">SYS.SYSTABLES</span> table.</p>
+                            <p> If <code>PERMTYPE</code>=<code>'E'</code>, the <code>ALIASID</code> is a reference to the <code>SYS.SYSALIASES</code> table.</p>
+                            <p> Otherwise, the <code>ALIASID</code> is a reference to the <code>SYS.SYSTABLES</code> table.</p>
                         </td>
                     </tr>
                     <tr>
@@ -76,7 +76,7 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">CHAR</td>
                         <td class="CodeFont">1</td>
                         <td class="CodeFont">NO</td>
-                        <td>Specifies if the <span class="CodeFont">GRANTEE</span> is the owner of the routine. Valid values are <span class="CodeFont">'Y'</span> and <span class="CodeFont">'N'</span>.</td>
+                        <td>Specifies if the <code>GRANTEE</code> is the owner of the routine. Valid values are <code>'Y'</code> and <code>'N'</code>.</td>
                     </tr>
                 </tbody>
             </table>

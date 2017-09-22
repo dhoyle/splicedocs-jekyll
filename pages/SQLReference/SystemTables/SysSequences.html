@@ -11,10 +11,10 @@ folder: SQLReference/SystemTables
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="SystemTables.SysSequences">SYSSEQUENCES System Table</h1>
-            <p>The <span class="CodeFont">SYSSEQUENCES</span> table describes the sequence generators in the
+            <p>The <code>SYSSEQUENCES</code> table describes the sequence generators in the
 		database.</p>
-            <div class="noteNote">Users should not directly query the <span class="CodeFont">SYSSEQUENCES</span> table, because that will slow down the performance of sequence generators. Instead, users should call the <a href="sqlref_sysprocs_peekatseq.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</span> system function</a></div>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSSEQUENCES</span> system table.</p>
+            <p class="noteNote">Users should not directly query the <code>SYSSEQUENCES</code> table, because that will slow down the performance of sequence generators. Instead, users should call the <a href="sqlref_sysprocs_peekatseq.html"><code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code> system function</a></p>
+            <p>The following table shows the contents of the <code>SYSSEQUENCES</code> system table.</p>
             <table>
                 <caption>SYSSEQUENCES system table</caption>
                 <col />
@@ -45,7 +45,7 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">128</td>
                         <td class="CodeFont">NO</td>
                         <td>The name of the sequence generator. There is a unique index
-					on (<span class="CodeFont">SCHEMAID, SEQUENCENAME</span>).</td>
+					on (<code>SCHEMAID, SEQUENCENAME</code>).</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">SCHEMAID</td>
@@ -53,11 +53,11 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">36</td>
                         <td class="CodeFont">NO</td>
                         <td>The ID of the schema that holds the sequence generator.
-					There is a foreign key linking this column to <span class="CodeFont">SYSSCHEMAS.SCHEMAID</span>.</td>
+					There is a foreign key linking this column to <code>SYSSCHEMAS.SCHEMAID</code>.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">SEQUENCEDATATYPE</td>
-                        <td class="CodeFont"><span class="ItalicFont">com.splicemachine.db.catalog.TypeDescriptor</span>
+                        <td class="CodeFont"><em>com.splicemachine.db.catalog.TypeDescriptor</em>
                         </td>
                         <td class="CodeFont">-1</td>
                         <td class="CodeFont">NO</td>
@@ -72,12 +72,12 @@ folder: SQLReference/SystemTables
                         <td>
                             <p class="noSpaceAbove">The current value of the sequence generator. This is not the
 						actual next value for the sequence generator. That value can be obtained by
-						calling the system function <span class="CodeFont">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</span>.</p>
+						calling the system function <code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code>.</p>
                             <p><![CDATA[
-						]]><span class="CodeFont">SYSSEQUENCES.CURRENTVALUE</span> holds the end of the range of values that have been
+						]]><code>SYSSEQUENCES.CURRENTVALUE</code> holds the end of the range of values that have been
 						preallocated in order to boost concurrency. The initial
-						value of this column is <span class="CodeFont">STARTVALUE</span>. </p>
-                            <p>This column is <span class="CodeFont">NULL</span> only if the sequence
+						value of this column is <code>STARTVALUE</code>. </p>
+                            <p>This column is <code>NULL</code> only if the sequence
 					generator is exhausted and cannot issue any more numbers.</p>
                         </td>
                     </tr>
@@ -115,9 +115,9 @@ folder: SQLReference/SystemTables
                         <td class="CodeFont">1</td>
                         <td>NO</td>
                         <td>
-                            <p class="noSpaceAbove">If the sequence generator cycles, this value is <span class="CodeFont">'Y'</span>.</p>
+                            <p class="noSpaceAbove">If the sequence generator cycles, this value is <code>'Y'</code>.</p>
                             <p>
-					If the sequence generator does not cycle, this value is <span class="CodeFont">'N'</span>.</p>
+					If the sequence generator does not cycle, this value is <code>'N'</code>.</p>
                         </td>
                     </tr>
                 </tbody>

@@ -2810,10 +2810,10 @@
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Clauses.Using"> USING</h1>
             <p>
-			The <span class="CodeFont">USING</span> clause specifies which columns to test for equality when two tables are joined. It can be used instead of an <span class="CodeFont">ON</span> clause in <span class="CodeFont">JOIN</span> operations that have an explicit join clause.
+			The <code>USING</code> clause specifies which columns to test for equality when two tables are joined. It can be used instead of an <code>ON</code> clause in <code>JOIN</code> operations that have an explicit join clause.
 		</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">USING ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">USING ( <em><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></em> ]* )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">SimpleColumnName</p>
@@ -2821,48 +2821,48 @@
             </div>
             <h2>Using</h2>
             <p>
-			The columns listed in the <span class="CodeFont">USING</span> clause must be present in both of the
-			tables being joined. The <span class="CodeFont">USING</span> clause will be transformed to an <span class="CodeFont">ON</span>
+			The columns listed in the <code>USING</code> clause must be present in both of the
+			tables being joined. The <code>USING</code> clause will be transformed to an <code>ON</code>
 			clause that checks for equality between the named columns in the two
 			tables.
 		</p>
             <p>
-			When a <span class="CodeFont">USING</span> clause is specified, an asterisk (<span class="CodeFont">*</span>) in the select list
+			When a <code>USING</code> clause is specified, an asterisk (<code>*</code>) in the select list
 			of the query will be expanded to the following list of columns (in
 			this order):
 		</p>
             <ul>
-                <li>All the columns in the <span class="CodeFont">USING</span> clause</li>
+                <li>All the columns in the <code>USING</code> clause</li>
                 <li>All the columns of the first (left) table that are not specified
-			in the <span class="CodeFont">USING</span> clause</li>
+			in the <code>USING</code> clause</li>
                 <li>All the columns of the second (right) table that are not specified
-			in the <span class="CodeFont">USING</span> clause</li>
+			in the <code>USING</code> clause</li>
             </ul>
             <p>
 			An asterisk qualified by a table name (for example, <span class="Example">COUNTRIES.*</span>) will
 			be expanded to every column of that table that is not listed in the
-			<span class="CodeFont">USING</span> clause.
+			<code>USING</code> clause.
 		</p>
             <p>
-			If a column in the <span class="CodeFont">USING</span> clause is referenced without being qualified
+			If a column in the <code>USING</code> clause is referenced without being qualified
 			by a table name, the column reference points to the column in the
 			first (left) table if the join is an <span class="CodeFont"><a href="sqlref_joinops_leftouterjoin.html">LEFT OUTER
-			JOIN</a></span>. If it is a <span class="CodeFont"><a href="sqlref_joinops_rightouterjoin.html">RIGHT OUTER JOIN</a></span>, unqualified references to a column
-			in the <span class="CodeFont">USING</span> clause point to the column in the second (right) table.
+			JOIN</a></span>. If it is a <code><a href="sqlref_joinops_rightouterjoin.html">RIGHT OUTER JOIN</a></code>, unqualified references to a column
+			in the <code>USING</code> clause point to the column in the second (right) table.
 		</p>
             <h2>Examples</h2>
             <p>
-			The following query performs an inner join between the <span class="CodeFont">COUNTRIES</span> table
-			and the <span class="CodeFont">CITIES</span> table on the condition that <span class="CodeFont">COUNTRIES.COUNTRY</span> is equal
-			to <span class="CodeFont">CITIES.COUNTRY</span>:
+			The following query performs an inner join between the <code>COUNTRIES</code> table
+			and the <code>CITIES</code> table on the condition that <code>COUNTRIES.COUNTRY</code> is equal
+			to <code>CITIES.COUNTRY</code>:
 		</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM COUNTRIES JOIN CITIES
    USING (COUNTRY);</pre>
             </div>
             <p>
 			The next query is similar to the one above, but it has the additional
-			join condition that <span class="CodeFont">COUNTRIES.COUNTRY_ISO_CODE</span> is equal to
-			<span class="CodeFont">CITIES.COUNTRY_ISO_CODE</span>:
+			join condition that <code>COUNTRIES.COUNTRY_ISO_CODE</code> is equal to
+			<code>CITIES.COUNTRY_ISO_CODE</code>:
 		</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM COUNTRIES JOIN CITIES
    USING (COUNTRY, COUNTRY_ISO_CODE);</pre>
@@ -2871,7 +2871,7 @@
             <ul>
                 <li><a href="sqlref_joinops_intro.html">Join Operations</a>
                 </li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;statement</li>
             </ul>
         </div>
 	</section>
@@ -2891,7 +2891,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

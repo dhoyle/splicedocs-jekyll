@@ -2809,7 +2809,7 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Expressions.BooleanExpressions">Boolean Expressions</h1>
-            <p>Boolean expressions are allowed in <a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT clause</span></a> for more information. Boolean expressions in a <span class="CodeFont">WHERE</span> clause have a highly liberal syntax; see <span class="CodeFont">WHERE clause</span>, for example.</p>
+            <p>Boolean expressions are allowed in <a href="sqlref_clauses_constraint.html"><code>CONSTRAINT clause</code></a> for more information. Boolean expressions in a <code>WHERE</code> clause have a highly liberal syntax; see <code>WHERE clause</code>, for example.</p>
             <p>A Boolean expression can include zero or more Boolean operators. </p>
             <h2>Syntax</h2>
             <p>The following table shows the syntax for the Boolean operators</p>
@@ -2925,9 +2925,9 @@
                     </tr>
                     <tr>
                         <td>Comparisons </td>
-                        <td><span class="CodeFont">&lt;, =, &gt;, &lt;=, &gt;=, &lt;&gt;</span> are applicable to all of the built-in types.
+                        <td><code>&lt;, =, &gt;, &lt;=, &gt;=, &lt;&gt;</code> are applicable to all of the built-in types.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">DATE('1998-02-26') &lt; DATE('1998-03-01')
-	-- returns true</pre></div><div class="noteNote">Splice Machine also accepts the != operator, which is not included in the SQL standard.</div></td>
+	-- returns true</pre></div><p class="noteNote">Splice Machine also accepts the != operator, which is not included in the SQL standard.</p></td>
                     </tr>
                     <tr>
                         <td class="CodeFont">IS NULL,<br />IS NOT NULL</td>
@@ -2939,27 +2939,27 @@
                         <td>
                             <p>Attempts to match a character expression to a character pattern, which is a character string that includes one or more wildcards.
 					</p>
-                            <p><span class="CodeFont">%</span> matches any number (zero or more) of characters in the corresponding position in first character expression.</p>
-                            <p><span class="CodeFont">_</span> matches one character in the corresponding position in the character expression.</p>
+                            <p><code>%</code> matches any number (zero or more) of characters in the corresponding position in first character expression.</p>
+                            <p><code>_</code> matches one character in the corresponding position in the character expression.</p>
                             <p>Any other character matches only that character in the corresponding position in the character expression.</p>
                             <div class="preWrapper"><pre class="ExampleCell">city LIKE 'Sant_'</pre>
                             </div>
                             <p>To treat % or _ as constant characters, escape the character with an optional escape character, which you specify with the ESCAPE clause.</p>
                             <div class="preWrapper"><pre class="ExampleCell">SELECT a FROM tabA WHERE a LIKE '%=_' ESCAPE '='</pre>
                             </div>
-                            <div class="noteNote">When <span class="CodeFont">LIKE</span> comparisons are used, Splice Machine compares one character at a time for non-metacharacters. This is different than the way Splice Machine processes <span class="CodeFont">=</span> comparisons. The comparisons with the <span class="CodeFont">=</span> operator compare the entire character string on left side of the <span class="CodeFont">=</span> operator with the entire character string on the right side of the <span class="CodeFont">=</span> operator.</div>
+                            <p class="noteNote">When <code>LIKE</code> comparisons are used, Splice Machine compares one character at a time for non-metacharacters. This is different than the way Splice Machine processes <code>=</code> comparisons. The comparisons with the <code>=</code> operator compare the entire character string on left side of the <code>=</code> operator with the entire character string on the right side of the <code>=</code> operator.</p>
                         </td>
                     </tr>
                     <tr>
                         <td class="CodeFont">BETWEEN</td>
-                        <td>Tests whether the first operand is between the second and third operands. The second operand must be less than the third operand. Applicable only to types to which <span class="CodeFont">&lt;=</span> and <span class="CodeFont">&gt;=</span> can be applied.
+                        <td>Tests whether the first operand is between the second and third operands. The second operand must be less than the third operand. Applicable only to types to which <code>&lt;=</code> and <code>&gt;=</code> can be applied.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE booking_date
   BETWEEN DATE('1998-02-26')
-  AND DATE('1998-03-01')</pre></div><div class="noteNote">Using the <span class="CodeFont">BETWEEN</span> operator is logically equivalent to specifying that you want to select values that are greater than or equal to the first operand and less than or equal to the second operand:&#160;<span class="CodeFont">col between X and Y</span> is equivalent to <span class="CodeFont">col &gt;= X&#160;and col &lt;= Y</span>. Which means that the result set will be empty if your second operand is less than your first.</div></td>
+  AND DATE('1998-03-01')</pre></div><p class="noteNote">Using the <code>BETWEEN</code> operator is logically equivalent to specifying that you want to select values that are greater than or equal to the first operand and less than or equal to the second operand:&#160;<code>col between X and Y</code> is equivalent to <code>col &gt;= X&#160;and col &lt;= Y</code>. Which means that the result set will be empty if your second operand is less than your first.</p></td>
                     </tr>
                     <tr>
                         <td class="CodeFont">IN</td>
-                        <td>Operates on table subquery or list of values. Returns <span class="CodeFont">TRUE</span> if the left expression's value is in the result of the table subquery or in the list of values. Table subquery can return multiple rows but must return a single column.
+                        <td>Operates on table subquery or list of values. Returns <code>TRUE</code> if the left expression's value is in the result of the table subquery or in the list of values. Table subquery can return multiple rows but must return a single column.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE booking_date NOT IN
  (SELECT booking_date
   FROM HotelBookings
@@ -2967,7 +2967,7 @@
                     </tr>
                     <tr>
                         <td class="CodeFont">EXISTS</td>
-                        <td>Operates on a table subquery. Returns <span class="CodeFont">TRUE</span> if the table subquery returns any rows, and <span class="CodeFont">FALSE</span> if it returns no rows. A table subquery can return multiple columns and rows.
+                        <td>Operates on a table subquery. Returns <code>TRUE</code> if the table subquery returns any rows, and <code>FALSE</code> if it returns no rows. A table subquery can return multiple columns and rows.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE EXISTS
  (SELECT *
   FROM Flights
@@ -2977,10 +2977,10 @@
                     <tr>
                         <td>Quantified comparison</td>
                         <td>
-                            <p>A quantified comparison is a comparison operator (<span class="CodeFont">&lt;, =, &gt;, &lt;=, &gt;=, &lt;&gt;</span>) with <span class="CodeFont">ALL</span> or <span class="CodeFont">ANY</span> or <span class="CodeFont">SOME</span> applied.
+                            <p>A quantified comparison is a comparison operator (<code>&lt;, =, &gt;, &lt;=, &gt;=, &lt;&gt;</code>) with <code>ALL</code> or <code>ANY</code> or <code>SOME</code> applied.
 						</p>
                             <p>Operates on table subqueries, which can return multiple rows but must return a single column. </p>
-                            <p>If <span class="CodeFont">ALL</span> is used, the comparison must be true for all values returned by the table subquery. If <span class="CodeFont">ANY</span> or <span class="CodeFont">SOME</span> is used, the comparison must be true for at least one value of the table subquery. <span class="CodeFont">ANY</span> and <span class="CodeFont">SOME</span> are equivalent.</p>
+                            <p>If <code>ALL</code> is used, the comparison must be true for all values returned by the table subquery. If <code>ANY</code> or <code>SOME</code> is used, the comparison must be true for at least one value of the table subquery. <code>ANY</code> and <code>SOME</code> are equivalent.</p>
                             <div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE normal_rate &lt; ALL
   (SELECT budget/550 FROM Groups) </pre>
                             </div>
@@ -2990,8 +2990,8 @@
             </table>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a>&#160;clause</li>
             </ul>
         </div>
 	</section>
@@ -3011,7 +3011,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

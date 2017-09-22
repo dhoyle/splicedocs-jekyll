@@ -11,14 +11,14 @@ folder: SQLReference/DataTypes
 <section>
 	<div class="TopicContent" data-swiftype-index="true">
         <h1 id="DataTypes.Xml">XML</h1>
-        <p>The <span class="CodeFont">XML</span> data type is used for Extensible Markup Language (XML) documents.</p>
-        <p>The <span class="CodeFont">XML</span> data type is used:</p>
+        <p>The <code>XML</code> data type is used for Extensible Markup Language (XML) documents.</p>
+        <p>The <code>XML</code> data type is used:</p>
         <ul>
             <li>To store XML documents that conform to the SQL/XML definition of a well-formed XML(DOCUMENT(ANY)) value.</li>
             <li>Transiently for XML(SEQUENCE) values, that might not be well-formed XML(DOCUMENT(ANY)) values.</li>
         </ul>
-        <div class="noteNote">For an application to retrieve, update, query, or otherwise access an XML data value, the application must have classes for a JAXP parser and for Xalan in the classpath. Splice Machine issues an error if either the parser or Xalan is not found. In some situations, you may need to take steps to place the parser and Xalan in your classpath. See "XML data types and operators" in the <span class="ItalicFont">The Splice Machine Developer's Guide</span> for details.</div>
-        <p>Because none of the JDBC-side support for SQL/XML is implemented in Splice Machine, it is not possible to bind directly into an <span class="CodeFont">XML</span> value or to retrieve an <span class="CodeFont">XML</span> value directly from a result set using JDBC. Instead, you must bind and retrieve the XML data as Java strings or character streams by explicitly specifying the appropriate XML operators, <span class="CodeFont">XMLPARSE</span> and <span class="CodeFont">XMLSERIALIZE</span>, as part of your SQL queries.</p>
+        <p class="noteNote">For an application to retrieve, update, query, or otherwise access an XML data value, the application must have classes for a JAXP parser and for Xalan in the classpath. Splice Machine issues an error if either the parser or Xalan is not found. In some situations, you may need to take steps to place the parser and Xalan in your classpath. See "XML data types and operators" in the <em>The Splice Machine Developer's Guide</em> for details.</p>
+        <p>Because none of the JDBC-side support for SQL/XML is implemented in Splice Machine, it is not possible to bind directly into an <code>XML</code> value or to retrieve an <code>XML</code> value directly from a result set using JDBC. Instead, you must bind and retrieve the XML data as Java strings or character streams by explicitly specifying the appropriate XML operators, <code>XMLPARSE</code> and <code>XMLSERIALIZE</code>, as part of your SQL queries.</p>
         <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax">XML</pre>
         </div>
@@ -30,8 +30,8 @@ folder: SQLReference/DataTypes
         <div class="fcnWrapperWide"><pre class="FcnSyntax">None</pre>
         </div>
         <h2>Notes</h2>
-        <p>The metadata type for <span class="CodeFont">XML</span> values is SQLXML. However, the SQLXML type is not supported by Splice Machine. </p>
-        <p>To retrieve <span class="CodeFont">XML</span> values from a Splice Machine database using JDBC, use the <span class="CodeFont">XMLSERIALIZE</span> operator in the SQL query. For example:</p>
+        <p>The metadata type for <code>XML</code> values is SQLXML. However, the SQLXML type is not supported by Splice Machine. </p>
+        <p>To retrieve <code>XML</code> values from a Splice Machine database using JDBC, use the <code>XMLSERIALIZE</code> operator in the SQL query. For example:</p>
         <div class="fcnWrapperWide"><pre class="FcnSyntax">SELECT XMLSERIALIZE (xcol as CLOB) FROM myXmlTable </pre>
         </div>
         <p>Then retrieve the XML value by using the getXXX method that corresponds to the target serialization type, in this example CLOB data types. To store an XML value into a Splice Machine database using JDBC, use the XMLPARSE operator in the SQL statement. For example:</p>

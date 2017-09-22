@@ -11,17 +11,17 @@ folder: SQLReference/SystemTables
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="SystemTables.SysColPerms">SYSCOLPERMS System Table </h1>
-            <p>The <span class="CodeFont">SYSCOLPERMS</span> table stores the column permissions that have been
+            <p>The <code>SYSCOLPERMS</code> table stores the column permissions that have been
 		granted but not revoked.</p>
-            <p>All of the permissions for one (<span class="CodeFont">GRANTEE, TABLEID, TYPE, GRANTOR</span>)
-			combination are specified in a single row in the <span class="CodeFont">SYSCOLPERMS</span> table. The keys
-		for the <span class="CodeFont">SYSCOLPERMS</span> table are:</p>
+            <p>All of the permissions for one (<code>GRANTEE, TABLEID, TYPE, GRANTOR</code>)
+			combination are specified in a single row in the <code>SYSCOLPERMS</code> table. The keys
+		for the <code>SYSCOLPERMS</code> table are:</p>
             <ul>
-                <li>Primary key (<span class="CodeFont">GRANTEE, TABLEID, TYPE, GRANTOR</span>)</li>
-                <li>Unique key (<span class="CodeFont">COLPERMSID</span>)</li>
-                <li>Foreign key (<span class="CodeFont">TABLEID</span> references <span class="CodeFont">SYS.SYSTABLES</span>)</li>
+                <li>Primary key (<code>GRANTEE, TABLEID, TYPE, GRANTOR</code>)</li>
+                <li>Unique key (<code>COLPERMSID</code>)</li>
+                <li>Foreign key (<code>TABLEID</code> references <code>SYS.SYSTABLES</code>)</li>
             </ul>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSCOLPERMS</span> system table.</p>
+            <p>The following table shows the contents of the <code>SYSCOLPERMS</code> system table.</p>
             <table>
                 <caption>SYSCOLPERMS system table</caption>
                 <col />
@@ -77,9 +77,9 @@ have been granted</td>
                         <td class="CodeFont">1</td>
                         <td class="CodeFont">NO</td>
                         <td>If the privilege is non-grantable, the valid values are:
-<ul><li><span class="CodeFont">'s'</span> for <span class="CodeFont">SELECT</span></li><li><span class="CodeFont">'u'</span> for <span class="CodeFont">UPDATE</span></li><li><span class="CodeFont">'r'</span> for <span class="CodeFont">REFERENCES</span><br /></li></ul><p>
+<ul><li><code>'s'</code> for <code>SELECT</code></li><li><code>'u'</code> for <code>UPDATE</code></li><li><code>'r'</code> for <code>REFERENCES</code><br /></li></ul><p>
 If the privilege is grantable, the valid values are:
-</p><ul><li><span class="CodeFont">'S'</span> for <span class="CodeFont">SELECT</span></li><li><span class="CodeFont">'U'</span> for <span class="CodeFont">UPDATE</span></li><li><span class="CodeFont">'R'</span> for <span class="CodeFont">REFERENCES</span></li></ul></td>
+</p><ul><li><code>'S'</code> for <code>SELECT</code></li><li><code>'U'</code> for <code>UPDATE</code></li><li><code>'R'</code> for <code>REFERENCES</code></li></ul></td>
                     </tr>
                     <tr>
                         <td class="CodeFont">COLUMNS</td>

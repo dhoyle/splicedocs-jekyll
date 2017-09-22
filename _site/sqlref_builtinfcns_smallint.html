@@ -2809,9 +2809,9 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInFcns.SmallInt">SMALLINT</h1>
-            <p>The <span class="CodeFont">SMALLINT</span> function returns a small integer representation of a number or character string, in the form of a small integer constant.</p>
+            <p>The <code>SMALLINT</code> function returns a small integer representation of a number or character string, in the form of a small integer constant.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">SMALLINT ( <span class="ItalicFont">NumericExpression</span> | <span class="ItalicFont">CharacterExpression</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">SMALLINT ( <em>NumericExpression</em> | <em>CharacterExpression</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">NumericExpression</p>
@@ -2820,11 +2820,11 @@
                 <p class="paramDefnFirst">An expression that returns a character string value of length not greater than the maximum length of a character constant. Leading and trailing blanks are eliminated and the resulting string must conform to the rules for forming an SQL integer constant. The value of the constant must be in the range of small integers. The character string cannot be a long string. </p>
             </div>
             <h2>Results</h2>
-            <p>The result of the function is a <a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>. If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>. If the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span>value.</p>
-            <p>If the argument is a <span class="ItalicFont">NumericExpression</span>, the result is the same number that would occur if the argument were assigned to a small integer column or variable. If the whole part of the argument is not within the range of small integers, an error occurs. The decimal part of the argument is truncated if present.</p>
-            <p>If the argument is a <span class="ItalicFont">CharacterExpression</span>, the result is the same number that would occur if the corresponding integer constant were assigned to a small integer column or variable.</p>
+            <p>The result of the function is a <a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>. If the argument can be <code>NULL</code>, the result can be <code>NULL</code>. If the argument is <code>NULL</code>, the result is the <code>NULL</code>value.</p>
+            <p>If the argument is a <em>NumericExpression</em>, the result is the same number that would occur if the argument were assigned to a small integer column or variable. If the whole part of the argument is not within the range of small integers, an error occurs. The decimal part of the argument is truncated if present.</p>
+            <p>If the argument is a <em>CharacterExpression</em>, the result is the same number that would occur if the corresponding integer constant were assigned to a small integer column or variable.</p>
             <h2>Examples</h2>
-            <p>Using the <span class="CodeFont">Pitching</span> table from our Doc Examples database, select the <span class="CodeFont">Era</span> column in big integer form for further processing in the application:</p>
+            <p>Using the <code>Pitching</code> table from our Doc Examples database, select the <code>Era</code> column in big integer form for further processing in the application:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT ID, SMALLINT(Era) "ERA"
    FROM Pitching
    WHERE MOD(ID,2) = 0;
@@ -2879,7 +2879,7 @@ ID    |ERA
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

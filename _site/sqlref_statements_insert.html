@@ -2810,18 +2810,18 @@
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Statements.Insert">INSERT</h1>
             <p>An
-			<span class="CodeFont">INSERT</span> statement creates rows or columns and stores them in the named table.
-			The number of values assigned in an <span class="CodeFont">INSERT</span> statement must be the same as the
+			<code>INSERT</code> statement creates rows or columns and stores them in the named table.
+			The number of values assigned in an <code>INSERT</code> statement must be the same as the
 		number of specified or implied columns.</p>
             <p>Whenever you insert into a table which has generated columns,
 			Splice Machine calculates the values
 		of those columns.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">INSERT INTO table-Name
-   [ (<span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>]* ) ]
-   Query [ <span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span> ]
-   [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">result offset clause</a></span> ]
-   [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></span> ];</pre>
+   [ (<em><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></em>]* ) ]
+   Query [ <em><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></em> ]
+   [ <em><a href="sqlref_clauses_resultoffset.html">result offset clause</a></em> ]
+   [ <em><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></em> ];</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">table-Name</p>
@@ -2829,15 +2829,15 @@
                 <p class="paramName">Simple-column-Name*</p>
                 <p class="paramDefnFirst">An optional list of names of the columns to populate with data.</p>
                 <p class="paramName">Query [ORDER&#160;BY&#160;clause]</p>
-                <p class="paramDefnFirst">A <span class="CodeFont">SELECT</span> or <span class="CodeFont">VALUES</span> command that provides the columns and rows of data to insert. The query can also be a <span class="CodeFont">UNION</span> expression.</p>
-                <p class="paramDefn">See the <a href="#OrderBy">Using the <span class="CodeFont">ORDER BY</span> Clause</a> section below for information about using the <span class="CodeFont">ORDER&#160;BY</span>&#160;clause.</p>
-                <p class="paramDefn">Single-row and multiple-row <span class="CodeFont">VALUES</span> expressions can include the keyword <span class="CodeFont">DEFAULT</span>. Specifying <span class="CodeFont">DEFAULT</span> for a column inserts the column's default value into the column. Another way to insert the default value into the column is to omit the column from the column list and only insert values into other columns in the table. For more information, see <a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span> expression</a></p>
+                <p class="paramDefnFirst">A <code>SELECT</code> or <code>VALUES</code> command that provides the columns and rows of data to insert. The query can also be a <code>UNION</code> expression.</p>
+                <p class="paramDefn">See the <a href="#OrderBy">Using the <code>ORDER BY</code> Clause</a> section below for information about using the <code>ORDER&#160;BY</code>&#160;clause.</p>
+                <p class="paramDefn">Single-row and multiple-row <code>VALUES</code> expressions can include the keyword <code>DEFAULT</code>. Specifying <code>DEFAULT</code> for a column inserts the column's default value into the column. Another way to insert the default value into the column is to omit the column from the column list and only insert values into other columns in the table. For more information, see <a href="sqlref_expressions_values.html"><code>VALUES</code> expression</a></p>
                 <p class="paramName">result offset and fetch first clauses</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows added to the table.</p>
+                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><code>fetch first</code> clause</a>, which can be combined with the <code>result offset</code> clause, limits the number of rows added to the table.</p>
             </div>
             <h2 id="OrderBy">Using the ORDER&#160;BY&#160;Clause</h2>
-            <p>When you want insertion to happen with a specific ordering (for example, in conjunction with auto-generated keys), it can be useful to specify an <span class="CodeFont">ORDER BY</span> clause on the result set to be inserted.</p>
-            <p>If the Query is a <span class="CodeFont">VALUES</span> expression, it cannot contain or be followed by an <span class="CodeFont">ORDER BY</span>, result offset, or fetch first clause. However, if the <span class="CodeFont">VALUES</span> expression does not contain the <span class="CodeFont">DEFAULT</span> keyword, the <span class="CodeFont">VALUES</span> clause can be put in a subquery and ordered, as in the following statement:</p>
+            <p>When you want insertion to happen with a specific ordering (for example, in conjunction with auto-generated keys), it can be useful to specify an <code>ORDER BY</code> clause on the result set to be inserted.</p>
+            <p>If the Query is a <code>VALUES</code> expression, it cannot contain or be followed by an <code>ORDER BY</code>, result offset, or fetch first clause. However, if the <code>VALUES</code> expression does not contain the <code>DEFAULT</code> keyword, the <code>VALUES</code> clause can be put in a subquery and ordered, as in the following statement:</p>
             <div class="preWrapperWide"><pre class="Example">INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;</pre>
             </div>
             <p>For more information about queries, see <a href="sqlref_queries_query.html">Query</a>.</p>
@@ -2868,19 +2868,19 @@ splice&gt;&#160;INSERT INTO OldGuys
 </pre>
             </div>
             <h2>Statement dependency system</h2>
-            <p>The <span class="CodeFont">INSERT</span>
+            <p>The <code>INSERT</code>
 statement depends on the table being inserted into, all of the conglomerates
 (units of storage such as heaps or indexes) for that table, and any other
 table named in the statement. Any statement that creates or drops an index or
-a constraint for the target table of a prepared <span class="CodeFont">INSERT</span> statement invalidates
-the prepared <span class="CodeFont">INSERT</span> statement.</p>
+a constraint for the target table of a prepared <code>INSERT</code> statement invalidates
+the prepared <code>INSERT</code> statement.</p>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">FETCH&#160;FIRST</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_resultoffset.html"><code>FETCH&#160;FIRST</code></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_orderby.html"><code>ORDER&#160;BY</code></a>&#160;clause</li>
                 <li><a href="sqlref_queries_query.html">Queries</a>
                 </li>
-                <li><a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">RESULT&#160;OFFSET</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_resultoffset.html"><code>RESULT&#160;OFFSET</code></a>&#160;clause</li>
             </ul>
         </div>
 	</section>
@@ -2900,7 +2900,7 @@ the prepared <span class="CodeFont">INSERT</span> statement.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

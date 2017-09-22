@@ -11,18 +11,18 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCS_UTIL.GET_REGIONS</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.GET_REGIONS</span> system procedure that retrieves the list of regions containing a range of key values.</p>
+            <p>The <code>SYSCS_UTIL.GET_REGIONS</code> system procedure that retrieves the list of regions containing a range of key values.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.GET_REGIONS( VARCHAR <span class="ItalicFont">schemaName</span>,
-                        VARCHAR <span class="ItalicFont">tableName</span>,
-                        VARCHAR <span class="ItalicFont">indexName</span>,
-                        VARCHAR <span class="ItalicFont">startKey</span>,
-                        VARCHAR <span class="ItalicFont">endKey</span>,
-                        VARCHAR <span class="ItalicFont">columnDelimiter</span>,
-                        VARCHAR <span class="ItalicFont">characterDelimiter</span>,
-                        VARCHAR <span class="ItalicFont">timestampFormat</span>,
-                        VARCHAR <span class="ItalicFont">dateFormat</span>,
-                        VARCHAR <span class="ItalicFont">timeFormat</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.GET_REGIONS( VARCHAR <em>schemaName</em>,
+                        VARCHAR <em>tableName</em>,
+                        VARCHAR <em>indexName</em>,
+                        VARCHAR <em>startKey</em>,
+                        VARCHAR <em>endKey</em>,
+                        VARCHAR <em>columnDelimiter</em>,
+                        VARCHAR <em>characterDelimiter</em>,
+                        VARCHAR <em>timestampFormat</em>,
+                        VARCHAR <em>dateFormat</em>,
+                        VARCHAR <em>timeFormat</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">schemaName</p>
@@ -30,31 +30,31 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramName">tableName</p>
                 <p class="paramDefnFirst">The name of the table.</p>
                 <p class="paramName">indexName</p>
-                <p class="paramDefnFirst"><span class="CodeFont">NULL</span> or the name of the index.</p>
-				<p class="paramDefn">Specify <span class="CodeFont">NULL</span> to indicate that the <span class="CodeFont">startKey</span> is the primary key of the base table; specify an index name to indicate that the <span class="CodeFont">startKey</span> is an index value.</p>
+                <p class="paramDefnFirst"><code>NULL</code> or the name of the index.</p>
+				<p class="paramDefn">Specify <code>NULL</code> to indicate that the <code>startKey</code> is the primary key of the base table; specify an index name to indicate that the <code>startKey</code> is an index value.</p>
                 <p class="paramName">startKey</p>
                 <p class="paramDefnFirst">For a table, this is a comma-separated-value (CSV) representation of the primary key value for the start of the regions in which you are interested. For an index, this is the CSV representation of the index columns.</p>
                 <p class="paramName">endKey</p>
                 <p class="paramDefnFirst">For a table, this is a comma-separated-value (CSV) representation of the primary key value for the end of the regions in which you are interested. For an index, this is the CSV representation of the index columns.</p>
 	            <p class="paramName">columnDelimiter</p>
-	            <p class="paramDefnFirst">The character used to separate columns in <span class="CodeFont">startKey</span>. Specify <span class="CodeFont">null</span> if using the comma (<span class="CodeFont">,</span>)&#160;character as your delimiter. </p>
+	            <p class="paramDefnFirst">The character used to separate columns in <code>startKey</code>. Specify <code>null</code> if using the comma (<code>,</code>)&#160;character as your delimiter. </p>
 	            <p class="paramName">characterDelimiter</p>
-	            <p class="paramDefnFirst">Specifies which character is used to delimit strings in  <span class="CodeFont">startKey</span>. You can specify <span class="CodeFont">null</span> or the empty string to use the default string delimiter, which is the double-quote (<span class="CodeFont">"</span>).</p>
+	            <p class="paramDefnFirst">Specifies which character is used to delimit strings in  <code>startKey</code>. You can specify <code>null</code> or the empty string to use the default string delimiter, which is the double-quote (<code>"</code>).</p>
 	            <p class="paramDefnFirst">If your input contains control characters such as newline characters, make sure that those characters are embedded within delimited strings.</p>
-	            <div class="noteNote">To use the single quote (<span class="CodeFont">'</span>) character as your string delimiter, you need to escape that character. This means that you specify four quotes (<span class="CodeFont">''''</span>)&#160;as the value of this parameter. This is standard SQL&#160;syntax.<br /><br />	The <a href="#Examples">Examples</a> section below contains an example that uses the single quote as the string delimiter character.</div>
+	            <p class="noteNote">To use the single quote (<code>'</code>) character as your string delimiter, you need to escape that character. This means that you specify four quotes (<code>''''</code>)&#160;as the value of this parameter. This is standard SQL&#160;syntax.<br /><br />	The <a href="#Examples">Examples</a> section below contains an example that uses the single quote as the string delimiter character.</p>
 	            <p class="paramName">timestampFormat</p>
 	            <p class="paramDefnFirst">
-				The format of timestamps in <span class="CodeFont">startKey</span>. You can set this to <span class="CodeFont">null</span> if there are no time columns in the split key, or if the format of any timestamps in the file match the <span class="CodeFont">Java.sql.Timestamp</span> default format, which is: "<span class="ItalicFont">yyyy-MM-dd HH:mm:ss</span>".</p>
-				<div class="notePlain">See the <a href="#TimestampFormats">About Timestamp Formats</a> section in the <a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a> topic for more information about timestamps.</div>
+				The format of timestamps in <code>startKey</code>. You can set this to <code>null</code> if there are no time columns in the split key, or if the format of any timestamps in the file match the <code>Java.sql.Timestamp</code> default format, which is: "<em>yyyy-MM-dd HH:mm:ss</em>".</p>
+				<p class="notePlain">See the <a href="#TimestampFormats">About Timestamp Formats</a> section in the <a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a> topic for more information about timestamps.</p>
 	            <p class="paramName">dateFormat</p>
-	            <p class="paramDefnFirst">The format of datestamps in <span class="CodeFont">startKey</span>. You can set this to <span class="CodeFont">null</span> if there are no date columns in the startKey, or if the format of any dates in the split key match this pattern: "<span class="ItalicFont">yyyy-MM-dd</span>".<br /></p>
+	            <p class="paramDefnFirst">The format of datestamps in <code>startKey</code>. You can set this to <code>null</code> if there are no date columns in the startKey, or if the format of any dates in the split key match this pattern: "<em>yyyy-MM-dd</em>".<br /></p>
 	            <p class="paramName">timeFormat</p>
-	            <p class="paramDefnFirst">The format of time values stored in <span class="CodeFont">startKey</span>. You can set this to <span class="CodeFont">null</span> if there are no time columns in the file, or if the format of any times in the split key match this pattern: "<span class="ItalicFont">HH:mm:ss</span>".</p>
+	            <p class="paramDefnFirst">The format of time values stored in <code>startKey</code>. You can set this to <code>null</code> if there are no time columns in the file, or if the format of any times in the split key match this pattern: "<em>HH:mm:ss</em>".</p>
             </div>
             <h2>Usage</h2>
 			<p>Specify the starting and ending key values, this procedure returns information about all regions that span those key values.</p>
             <h2>Results</h2>
-            <p>The displayed results of calling <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_REGIONS</span> include these values:</p>
+            <p>The displayed results of calling <code>SYSCS_UTIL.SYSCS_GET_REGIONS</code> include these values:</p>
             <table summary=" summary=&quot;Columns in Get_Regions results display&quot;">
                 <col />
                 <col />
@@ -71,19 +71,19 @@ folder: SQLReference/BuiltInSysProcs
                     </tr>
                     <tr>
                         <td class="CodeFont">SPLICE_START_KEY</td>
-                        <td>The unencoded start key, in CSV format, for the list of regions in which you are interested. This is the value you supplied in the <span class="CodeFont">startKey</span> parameter. For example: <span class="CodeFont">{1,2}</span>.</td>
+                        <td>The unencoded start key, in CSV format, for the list of regions in which you are interested. This is the value you supplied in the <code>startKey</code> parameter. For example: <code>{1,2}</code>.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">SPLICE_END_KEY</td>
-                        <td>The unencoded end key for the region, in CSV format, for the list of regions in which you are interested.  This is the value you supplied in the <span class="CodeFont">endKey</span> parameter. For example: <span class="CodeFont">{1,6}</span>.</td>
+                        <td>The unencoded end key for the region, in CSV format, for the list of regions in which you are interested.  This is the value you supplied in the <code>endKey</code> parameter. For example: <code>{1,6}</code>.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">HBASE_START_KEY</td>
-                        <td>The start key for the region, formatted as shown in the HBase Web UI. For example: <span class="CodeFont">\x81\x00\x82</span>.</td>
+                        <td>The start key for the region, formatted as shown in the HBase Web UI. For example: <code>\x81\x00\x82</code>.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">HBASE_END_KEY</td>
-                        <td>The end key for the region, formatted as shown in the HBase Web UI. For example: <span class="CodeFont">\x81\x00\x86</span>.</td>
+                        <td>The end key for the region, formatted as shown in the HBase Web UI. For example: <code>\x81\x00\x86</code>.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont">NUM_HFILES</td>
@@ -104,7 +104,7 @@ folder: SQLReference/BuiltInSysProcs
                 </tbody>
             </table>
             <h2>Example</h2>
-			<p>The following call returns information about the regions that are in the key range <span class="CodeFont">{1,2}</span> to <span class="CodeFont">{1,8}</span>:</p>
+			<p>The following call returns information about the regions that are in the key range <code>{1,2}</code> to <code>{1,8}</code>:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice> CALL SYSCS_UTIL.GET_REGIONS('SPLICE','TestTable', null, '1|2', '1|8', '|',null,null,null,null);
 ENCODED_REGION_NAME              |SPLICE_START_KEY |SPLICE_END_KEY |HBASE_START_KEY |HBASE_END_KEY |NUM_HFILES |SIZE  |LAST_MODIFICATION_TIME |REGION_NAME
 -----------------------------------------------------------------
@@ -115,11 +115,11 @@ ENCODED_REGION_NAME              |SPLICE_START_KEY |SPLICE_END_KEY |HBASE_START_
             </div>
             <h2>See Also</h2>
             <ul>
-				<li><a href="sqlref_sysprocs_compactregion.html"><span class="CodeFont">SYSCS_UTIL.COMPACT_REGION</span></a></li>
-				<li><a href="sqlref_sysprocs_getencodedregion.html"><span class="CodeFont">SYSCS_UTIL.GET_ENCODED_REGION_NAME</span></a></li>
-				<li><a href="sqlref_sysprocs_getstartkey.html"><span class="CodeFont">SYSCS_UTIL.GET_START_KEY</span></a></li>
-				<li><a href="sqlref_sysprocs_majorcompactregion.html"><span class="CodeFont">SYSCS_UTIL.MAJOR_COMPACT_REGION</span></a></li>
-				<li><a href="sqlref_sysprocs_mergeregions.html"><span class="CodeFont">SYSCS_UTIL.MERGE_REGIONS</span></a></li>
+				<li><a href="sqlref_sysprocs_compactregion.html"><code>SYSCS_UTIL.COMPACT_REGION</code></a></li>
+				<li><a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a></li>
+				<li><a href="sqlref_sysprocs_getstartkey.html"><code>SYSCS_UTIL.GET_START_KEY</code></a></li>
+				<li><a href="sqlref_sysprocs_majorcompactregion.html"><code>SYSCS_UTIL.MAJOR_COMPACT_REGION</code></a></li>
+				<li><a href="sqlref_sysprocs_mergeregions.html"><code>SYSCS_UTIL.MERGE_REGIONS</code></a></li>
             </ul>
         </div>
 	</section>

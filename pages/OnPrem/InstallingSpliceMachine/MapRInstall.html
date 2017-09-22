@@ -38,10 +38,10 @@ folder: OnPrem/InstallingSpliceMachine
                     <p>MapR secure clusters do not support the Community Edition of Splice Machine. You can check this by:</p>
                     <ol>
                         <li>Open the HBase Configuration page</li>
-                        <li>Search the XML for the <span class="CodeFont">hbase.security.authentication</span> setting</li>
-                        <li>If the setting value is anything other than <span class="CodeFont">simple</span>, you need the <span class="ItalicFont">Enterprise</span> edition of Splice Machine.</li>
+                        <li>Search the XML for the <code>hbase.security.authentication</code> setting</li>
+                        <li>If the setting value is anything other than <code>simple</code>, you need the <em>Enterprise</em> edition of Splice Machine.</li>
                     </ol>
-                    <p>To read more about the additional features available in the Enterprise Edition, see our <a href="notes_editions.html">Splice Machine Editions</a> page. To obtain a license for the Splice Machine <span class="ItalicFont">Enterprise Edition</span>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/"  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+                    <p>To read more about the additional features available in the Enterprise Edition, see our <a href="notes_editions.html">Splice Machine Editions</a> page. To obtain a license for the Splice Machine <em>Enterprise Edition</em>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/"  target="_blank">Contact Splice Machine Sales</a> today.</span></p>
                 </div>
                 <h2 id="Verify">Verify Prerequisites</h2>
                 <p>Before starting your Splice Machine installation, please make sure that your cluster contains the prerequisite software components:</p>
@@ -50,11 +50,11 @@ folder: OnPrem/InstallingSpliceMachine
                     <li>HBase installed</li>
                     <li>YARN installed</li>
                     <li>ZooKeeper  installed</li>
-                    <li>The latest <span class="CodeFont">mapr-patch</span> should be installed to bring in all MapR-supplied platform patches, before proceeding with your Splice Machine installation.</li>
+                    <li>The latest <code>mapr-patch</code> should be installed to bring in all MapR-supplied platform patches, before proceeding with your Splice Machine installation.</li>
                     <li>The MapR Ecosystem Package (MEP) should be installed on all cluster nodes, before proceeding with your Splice Machine installation.</li>
-                    <li>Ensure Spark services are <span class="BoldFont">NOT</span> installed; Splice Machine cannot currently coexist with Spark 1.x on a cluster:<ul class="bullet"><li>If <span class="CodeFont">MEP version 1.x</span> is in use, you must remove the <span class="CodeFont">Spark 1.x</span> packages from your cluster, as described below, in <a href="#Removing">Removing Spark Packages from Your Cluster.</a></li><li>MEP version 2.0 bundles Spark 2.0, and will not cause conflicts with Splice Machine.</li></ul></li>
+                    <li>Ensure Spark services are <strong>NOT</strong> installed; Splice Machine cannot currently coexist with Spark 1.x on a cluster:<ul class="bullet"><li>If <code>MEP version 1.x</code> is in use, you must remove the <code>Spark 1.x</code> packages from your cluster, as described below, in <a href="#Removing">Removing Spark Packages from Your Cluster.</a></li><li>MEP version 2.0 bundles Spark 2.0, and will not cause conflicts with Splice Machine.</li></ul></li>
                 </ul>
-                <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
+                <p class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <em>Getting Started Guide</em>.</p>
                 <h3 id="Removing">Removing Spark Packages from Your Cluster</h3>
                 <p>To remove Spark packages from your cluster and update your configuration, follow these steps</p>
                 <div class="opsStepsList">
@@ -107,15 +107,15 @@ folder: OnPrem/InstallingSpliceMachine
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice Machine Community site</a> or contact your Splice Machine representative.</div>
+                            <p class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice Machine Community site</a> or contact your Splice Machine representative.</p>
                         </li>
                         <li>
-                            <p class="topLevel">Create the <span class="CodeFont">splice</span> installation directory:</p>
+                            <p class="topLevel">Create the <code>splice</code> installation directory:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand">mkdir -p /opt/splice</pre>
                             </div>
                         </li>
                         <li>
-                            <p class="topLevel">Download the Splice Machine package into the <span class="CodeFont">splice</span> directory on the node. For example:</p>
+                            <p class="topLevel">Download the Splice Machine package into the <code>splice</code> directory on the node. For example:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand">cd /opt/splice<br />curl -O '{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_MAPR-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R2}}.{{splvar_install_SpliceReleaseGZ}}'</pre>
                             </div>
                         </li>
@@ -130,7 +130,7 @@ folder: OnPrem/InstallingSpliceMachine
                             </div>
                         </li>
                         <li>
-                            <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to the set up the Splice Machine jar and to script symbolic links:</p>
+                            <p class="topLevel">Run our script as <em>root</em> user <span class="important">on each node</span> in your cluster to add symbolic links to the set up the Splice Machine jar and to script symbolic links:</p>
                             <p class="indentLevel1">Issue this command on each node in your cluster:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
 sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
@@ -139,7 +139,7 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                     </ol>
                 </div>
                 <h2 id="Configur">Configure Cluster Services</h2>
-                <p>The scripts used in this section all assume that password-less <span class="ShellCommand">ssh </span>and password-less <span class="ShellCommand">sudo </span>are enabled across all cluster nodes. These scripts are designed to be run on the CLDB node in a cluster with only one CLDB node. If your cluster has multiple CLDB nodes, do not run these script; you need to change configuration settings manually <span class="important">on each node</span> in the cluster. To do so, refer to the <span class="CodeFont">*.patch</span> files in the <span class="CodeFont">/opt/splice/default/conf</span> directory.</p>
+                <p>The scripts used in this section all assume that password-less <span class="ShellCommand">ssh </span>and password-less <span class="ShellCommand">sudo </span>are enabled across all cluster nodes. These scripts are designed to be run on the CLDB node in a cluster with only one CLDB node. If your cluster has multiple CLDB nodes, do not run these script; you need to change configuration settings manually <span class="important">on each node</span> in the cluster. To do so, refer to the <code>*.patch</code> files in the <code>/opt/splice/default/conf</code> directory.</p>
                 <p>If you're running on a cluster with a single CLDB node, follow these steps:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
@@ -150,31 +150,31 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                             </div>
                         </li>
                         <li>
-                            <p class="topLevel">Update <span class="CodeFont">hbase-site.xml</span>:</p>
+                            <p class="topLevel">Update <code>hbase-site.xml</code>:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand">cd /opt/splice/default/scripts
 ./install-hbase-site-xml.sh</pre>
                             </div>
                         </li>
                         <li>
-                            <p class="topLevel">Update <span class="CodeFont">hbase-env.sh</span>:</p>
+                            <p class="topLevel">Update <code>hbase-env.sh</code>:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand">cd /opt/splice/default/scripts
 ./install-hbase-env-sh.sh</pre>
                             </div>
                         </li>
                         <li>
-                            <p class="topLevel">Update <span class="CodeFont">yarn-site.xml</span>:</p>
+                            <p class="topLevel">Update <code>yarn-site.xml</code>:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand">cd /opt/splice/default/scripts
 ./install-yarn-site-xml.sh</pre>
                             </div>
                         </li>
                         <li>
-                            <p class="topLevel">Update <span class="CodeFont">warden.conf</span>:</p>
+                            <p class="topLevel">Update <code>warden.conf</code>:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand">cd /opt/splice/default/scripts
 ./install-warden-conf.sh</pre>
                             </div>
                         </li>
                         <li>
-                            <p class="topLevel">Update <span class="CodeFont">zoo.cfg</span>:</p>
+                            <p class="topLevel">Update <code>zoo.cfg</code>:</p>
                             <div class="preWrapperWide"><pre class="ShellCommand">cd /opt/splice/default/scripts
 ./install-zookeeper-conf.sh</pre>
                             </div>
@@ -182,7 +182,7 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                     </ol>
                 </div>
                 <h2 id="Stop">Stop Cluster Services</h2>
-                <p>You need to stop all cluster services to continue with installing Splice Machine. Run the following commands as <span class="CodeFont">root</span> user <span class="important">on each node</span> in your cluster</p>
+                <p>You need to stop all cluster services to continue with installing Splice Machine. Run the following commands as <code>root</code> user <span class="important">on each node</span> in your cluster</p>
                 <div class="preWrapperWide"><pre class="ShellCommand">sudo service mapr-warden stop<br />sudo service mapr-zookeeper stop</pre>
                 </div>
                 <h2 id="StartCluster">Restart Cluster Services</h2>
@@ -196,18 +196,18 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                 <h2 id="Optional">Optional Configuration Modifications</h2>
                 <p>There are a few configuration modifications you might want to make:</p>
                 <ul>
-                    <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
+                    <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <em>native authentication</em> mechanism.</li>
                     <li><a href="#Adjust">Adjust the Replication Factor</a> if you have a small cluster and need to improve resource usage or performance.</li>
                 </ul>
                 <h3 id="Modify">Modify the Authentication Mechanism</h3>
-                <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
+                <p>Splice Machine installs with Native authentication configured;  native authentication uses the <code>sys.sysusers</code> table in the <code>splice</code> schema for configuring user names and passwords. </p>
                 <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP by following the simple instructions in <a href="cmdlineref_intro.html" class="WithinBook">Command Line (splice&gt;) Reference</a></p>
                 <h3 id="Adjust">Adjust the Replication Factor</h3>
                 <p>The default namespace replication factor for Splice Machine is <span class="PlatformVariablesMapRDefaultReplication">3</span>. If you're running a small cluster you may want to adjust the replication down to improve resource and performance drag. To do so in MapR, use the following command:</p><pre class="ShellCommand">maprcli volume modify -nsreplication &lt;value&gt;</pre>
                 <p>For more information, see the MapR documentation site, <a href="http://doc.mapr.com/"  target="_blank" title="MapR documentation site" alt="MapR documentation site">doc.mapr.com</a>.</p>
                 <h2 id="Run">Verify your Splice Machine Installation</h2>
-                <p>Now start using the Splice Machine command line interpreter, which is referred to as <span class="ItalicFont">the splice prompt</span> or simply <span class="AppCommand">splice&gt;</span> by launching the <span class="CodeFont">sqlshell.sh</span> script on any node in your cluster that is running an HBase region server. </p>
-                <div class="noteNote">The command line interpreter defaults to connecting on port <span class="CodeFont">1527</span> on <span class="CodeFont">localhost</span>, with username <span class="CodeFont">splice</span>, and password <span class="CodeFont">admin</span>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</div>
+                <p>Now start using the Splice Machine command line interpreter, which is referred to as <em>the splice prompt</em> or simply <span class="AppCommand">splice&gt;</span> by launching the <code>sqlshell.sh</code> script on any node in your cluster that is running an HBase region server. </p>
+                <p class="noteNote">The command line interpreter defaults to connecting on port <code>1527</code> on <code>localhost</code>, with username <code>splice</code>, and password <code>admin</code>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <em>Developer's Guide</em>.</p>
                 <p>Now try entering a few sample commands you can run to verify that everything is working with your Splice Machine installation.</p>
                 <table summary="Sample commands to verify your installation">
                     <col />
@@ -269,11 +269,11 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><span class="BoldFont">Make sure you end each command with a semicolon</span> (<span class="CodeFont">;</span>), followed by the <span class="ItalicFont">Enter</span> key or <span class="ItalicFont">Return</span> key </td>
+                            <td colspan="2"><strong>Make sure you end each command with a semicolon</strong> (<code>;</code>), followed by the <em>Enter</em> key or <em>Return</em> key </td>
                         </tr>
                     </tbody>
                 </table>
-                <p>See the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> section of our <span class="ItalicFont">Developer's Guide</span> for information about our commands and command syntax.</p>
+                <p>See the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> section of our <em>Developer's Guide</em> for information about our commands and command syntax.</p>
             </div>
         </div>
 	</section>

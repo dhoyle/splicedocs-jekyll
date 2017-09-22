@@ -11,16 +11,16 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span> system procedure
+            <p>The <code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code> system procedure
 cancels a scheduled backup job.</p>
-            <div class="noteNote">Once you cancel a daily backup, it will no longer be scheduled to run. </div>
+            <p class="noteNote">Once you cancel a daily backup, it will no longer be scheduled to run. </p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(&#160;BIGINT&#160;jobId&#160;);</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">jobId</p>
-                <p class="paramDefnFirst">A&#160;<span class="CodeFont">BIGINT</span>&#160;value  that specifies which scheduled backup job you want to cancel. </p>
-                <p class="paramDefn">You can find the <span class="ItalicFont">jobId</span> you want to cancel by querying the <a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
+                <p class="paramDefnFirst">A&#160;<code>BIGINT</code>&#160;value  that specifies which scheduled backup job you want to cancel. </p>
+                <p class="paramDefn">You can find the <em>jobId</em> you want to cancel by querying the <a href="onprem_admin_backingup.html"><em>Backing Up and Restoring</em></a> topic in our <em>Administrator's Guide</em> for more information.</p>
             </div>
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
@@ -29,7 +29,7 @@ cancels a scheduled backup job.</p>
 execute privileges on this function by default. The
 database owner can grant access to other users.</p>
             <h2>Example</h2>
-            <p>If necessary, you can first query the <span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table to find the <span class="CodeFont">jobId</span> of the job you want to cancel.</p>
+            <p>If necessary, you can first query the <code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></code> system table to find the <code>jobId</code> of the job you want to cancel.</p>
             <p>And then cancel that job; for example:</p><pre class="Example" xml:space="preserve">
 splice&gt; SELECT * FROM SYS.SYSBACKUPJOBS;
 JOB_ID      |FILESYSTEM                               |TYPE          |HOUR_OF_DAY|BEGIN_TIMESTAMP
@@ -42,15 +42,15 @@ splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(41069);
 Statement executed.</pre>
             <h2>See Also</h2>
             <ul>
-                <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
-                <li><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a>built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_deletebackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span></a>built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_deleteoldbackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_restoredb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
+                <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in the <em>Administrator's Guide</em></li>
+                <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a>built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a> built-in system procedure</li>
+                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a> built-in system procedure</li>
+                <li><code><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></code> system table</li>
+                <li><code><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></code> system table</li>
+                <li><code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></code> system table</li>
             </ul>
         </div>
 	</section>

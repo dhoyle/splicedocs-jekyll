@@ -11,43 +11,43 @@ folder: SQLReference/Clauses
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Clauses.ResultOffset">RESULT OFFSET and FETCH FIRST</h1>
-            <p> The <span class="ItalicFont">result offset clause</span> provides a way to skip the N
+            <p> The <em>result offset clause</em> provides a way to skip the N
  first rows in a result set before starting to return any
  rows. </p>
-            <p>The <span class="ItalicFont">fetch first clause</span>, which can be combined with
- the <span class="ItalicFont">result offset clause</span>, limits the number of rows
- returned in the result set. The <span class="ItalicFont">fetch first clause</span> can
+            <p>The <em>fetch first clause</em>, which can be combined with
+ the <em>result offset clause</em>, limits the number of rows
+ returned in the result set. The <em>fetch first clause</em> can
  sometimes be useful for retrieving only a few rows from an
- otherwise large result set, usually in combination with an <span class="CodeFont">ORDER BY</span>
+ otherwise large result set, usually in combination with an <code>ORDER BY</code>
  clause. Use of this clause can increase efficienty and make programming simpler.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">OFFSET { <span class="ItalicFont">integer-literal</span> | ? }
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">OFFSET { <em>integer-literal</em> | ? }
        {ROW | ROWS}
 </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">integer-literal</p>
-                <p class="paramDefnFirst">An integer value that specifies the number of rows to skip. The default value is <span class="CodeFont">0</span>. </p>
+                <p class="paramDefnFirst">An integer value that specifies the number of rows to skip. The default value is <code>0</code>. </p>
                 <p class="paramDefn">If non-zero, this must be a positive integer value. If you specify a value greater than the number of rows in the underlying result set, no rows are returned.</p>
                 <p class="paramDefnFirst">&#160;</p>
             </div>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">FETCH { FIRST | NEXT }
-   [<span class="ItalicFont">integer-literal</span> | ? ]
+   [<em>integer-literal</em> | ? ]
    {ROW | ROWS} ONLY
 </pre>
             </div>
             <div class="paramList">
                 <p class="paramName">integer-literal</p>
-                <p class="paramDefnFirst">An integer value that specifies the maximum number of rows to return in the result set. The default value is <span class="CodeFont">1</span>.</p>
-                <p class="paramDefn">This must be a positive integer value greater than or equal to <span class="CodeFont">1</span>. </p>
+                <p class="paramDefnFirst">An integer value that specifies the maximum number of rows to return in the result set. The default value is <code>1</code>.</p>
+                <p class="paramDefn">This must be a positive integer value greater than or equal to <code>1</code>. </p>
             </div>
             <h2>Usage</h2>
             <p>Note that:</p>
             <ul>
-                <li><span class="CodeFont">ROW</span> and <span class="CodeFont">ROWS</span>&#160;are synonymous</li>
-                <li><span class="CodeFont">FIRST</span>&#160;and <span class="CodeFont">NEXT</span>&#160;are synonymous</li>
+                <li><code>ROW</code> and <code>ROWS</code>&#160;are synonymous</li>
+                <li><code>FIRST</code>&#160;and <code>NEXT</code>&#160;are synonymous</li>
             </ul>
-            <p>Be sure to specify the <span class="CodeFont">ORDER BY</span> clause if you expect to retrieve a sorted result set. </p>
+            <p>Be sure to specify the <code>ORDER BY</code> clause if you expect to retrieve a sorted result set. </p>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- Fetch the first row of T
 SELECT * FROM T FETCH FIRST ROW ONLY;
@@ -83,9 +83,9 @@ ResultSet rs = p.executeQuery();
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><span class="CodeFont"><a href="sqlref_clauses_limitn.html">LIMIT n</a></span>&#160;clause</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> statement</li>
-                <li><span class="CodeFont"><a href="sqlref_clauses_topn.html">TOP n</a></span>&#160;clause</li>
+                <li><code><a href="sqlref_clauses_limitn.html">LIMIT n</a></code>&#160;clause</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
+                <li><code><a href="sqlref_clauses_topn.html">TOP n</a></code>&#160;clause</li>
             </ul>
         </div>
 	</section>

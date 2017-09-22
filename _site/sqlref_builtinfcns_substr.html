@@ -2809,27 +2809,27 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInFcns.Substr">SUBSTR</h1>
-            <p>The <span class="CodeFont">SUBSTR</span> function extracts and returns a portion of a character string or bit string expression, starting at the specified character or bit position. You can specify the number of characters or bits you want returned, or use the default length, which is to extract from the specified starting position to the end of the string.</p>
+            <p>The <code>SUBSTR</code> function extracts and returns a portion of a character string or bit string expression, starting at the specified character or bit position. You can specify the number of characters or bits you want returned, or use the default length, which is to extract from the specified starting position to the end of the string.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SUBSTR({ <span class="ItalicFont">CharacterExpression</span> },
-		<span class="ItalicFont">StartPosition</span> [, <span class="ItalicFont">LengthOfSubstring</span> ] )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SUBSTR({ <em>CharacterExpression</em> },
+		<em>StartPosition</em> [, <em>LengthOfSubstring</em> ] )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">CharacterExpression
             </p>
-                <p class="paramDefnFirst">A <span class="CodeFont">CHAR</span>, <span class="CodeFont">VARCHAR</span>, or <span class="CodeFont">LONG VARCHAR</span> data type or any built-in type that is implicitly converted to a string (except a bit expression).</p>
+                <p class="paramDefnFirst">A <code>CHAR</code>, <code>VARCHAR</code>, or <code>LONG VARCHAR</code> data type or any built-in type that is implicitly converted to a string (except a bit expression).</p>
                 <p class="paramName">StartPosition</p>
                 <p class="paramDefnFirst">An integer expression; for character expressions, this is the starting character position of the returned substring. For bit expressions, this is the bit position of the returned substring.</p>
-                <p class="paramDefn"> The first character or bit has a <span class="ItalicFont">StartPosition</span> of 1. If you specify 0, Splice Machine assumes that you mean 1.</p>
-                <p class="paramDefn">If the <span class="ItalicFont">StartPosition</span> is positive, it refers to the position from the start of the source expression (counting the first character as 1) to the beginning of the substring you want extracted. The <span class="ItalicFont">StartPosition</span> value cannot be a negative number. </p>
+                <p class="paramDefn"> The first character or bit has a <em>StartPosition</em> of 1. If you specify 0, Splice Machine assumes that you mean 1.</p>
+                <p class="paramDefn">If the <em>StartPosition</em> is positive, it refers to the position from the start of the source expression (counting the first character as 1) to the beginning of the substring you want extracted. The <em>StartPosition</em> value cannot be a negative number. </p>
                 <p class="paramName">LengthOfSubstring</p>
                 <p class="paramDefnFirst">An optional integer expression that specifies the length of the extracted substring; for character expressions, this is number of characters to return. For bit expressions, this is the number of bits to return.</p>
-                <p class="paramDefn">If this value is not specified, then <span class="CodeFont">SUBSTR</span> extracts a substring of the expression from the <span class="ItalicFont">StartPosition</span> to the end of the source expression.</p>
-                <p class="paramDefn"> If <span class="ItalicFont">LengthOfString</span> is specified, <span class="CodeFont">SUBSTR</span> returns a <span class="CodeFont">VARCHAR</span> or <span class="CodeFont">VARBIT</span> of length <span class="ItalicFont">LengthOfString</span> starting at the <span class="ItalicFont">StartPosition</span>. </p>
-                <p class="paramDefn">The <span class="CodeFont">SUBSTR</span> function returns an error if you specify a negative number for the parameter <span class="ItalicFont">LengthOfString</span>.</p>
+                <p class="paramDefn">If this value is not specified, then <code>SUBSTR</code> extracts a substring of the expression from the <em>StartPosition</em> to the end of the source expression.</p>
+                <p class="paramDefn"> If <em>LengthOfString</em> is specified, <code>SUBSTR</code> returns a <code>VARCHAR</code> or <code>VARBIT</code> of length <em>LengthOfString</em> starting at the <em>StartPosition</em>. </p>
+                <p class="paramDefn">The <code>SUBSTR</code> function returns an error if you specify a negative number for the parameter <em>LengthOfString</em>.</p>
             </div>
             <h2>Results</h2>
-            <p>For character string expressions, the result type is a <a href="sqlref_datatypes_varchar.html"><span class="CodeFont">VARCHAR</span></a> value.</p>
+            <p>For character string expressions, the result type is a <a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a> value.</p>
             <p>The length of the result is the maximum length of the source type.</p>
             <h2>Examples</h2>
             <p>The following query extracts the first four characters of each player's name, and then extracts the remaining characters:</p>
@@ -2859,17 +2859,17 @@ Jason Minman            |Jaso|on Minman
                 <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
                 </li>
                 <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
-                <li><a href="sqlref_builtinfcns_initcap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_lcase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ltrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_regexplike.html">REGEX_LIKE</a></span>&#160;operator</li>
-                <li><a href="sqlref_builtinfcns_replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_rtrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ucase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_instr.html"><code>INSTR</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_length.html"><code>LENGTH</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_locate.html"><code>LOCATE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a>&#160;function</li>
+                <li><code><a href="sqlref_builtinfcns_regexplike.html">REGEX_LIKE</a></code>&#160;operator</li>
+                <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_trim.html"><code>TRIM</code></a>&#160;function</li>
+                <li><a href="sqlref_builtinfcns_ucase.html"><code>UCASE</code></a>&#160;function</li>
             </ul>
         </div>
 	</section>
@@ -2889,7 +2889,7 @@ Jason Minman            |Jaso|on Minman
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

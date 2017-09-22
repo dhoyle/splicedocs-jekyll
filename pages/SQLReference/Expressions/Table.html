@@ -11,26 +11,26 @@ folder: SQLReference/Expressions
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Expressions.Table">TABLE Expression</h1>
-            <p>A <span class="ItalicFont">TableExpression</span> specifies a table, view, or function in a <a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span> clause</a>. It is the source from which a <span class="ItalicFont"><a href="#">TableExpression</a></span> selects a result.</p>
+            <p>A <em>TableExpression</em> specifies a table, view, or function in a <a href="sqlref_clauses_from.html"><code>FROM</code> clause</a>. It is the source from which a <em><a href="#">TableExpression</a></em> selects a result.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">{
-&#160;&#160;&#160;<span class="ItalicFont"><a href="sqlref_joinops_about.html">JOIN operations</a></span>
+&#160;&#160;&#160;<em><a href="sqlref_joinops_about.html">JOIN operations</a></em>
 } </pre>
             </div>
             <h2>Usage</h2>
-            <p>A correlation name can be applied to a table in a <span class="ItalicFont">TableExpression</span> so that its columns can be qualified with that name. </p>
+            <p>A correlation name can be applied to a table in a <em>TableExpression</em> so that its columns can be qualified with that name. </p>
             <ul>
                 <li>If you do not supply a correlation name, the table name qualifies the column name. </li>
                 <li>When you give a table a correlation name, you cannot use the table name to qualify columns. </li>
                 <li>You must use the correlation name when qualifying column names.</li>
-                <li>No&#160;two items in the <span class="CodeFont">FROM</span> clause can have the same correlation name, and no correlation name can be the same as an unqualified table name specified in that <span class="CodeFont">FROM</span> clause.</li>
+                <li>No&#160;two items in the <code>FROM</code> clause can have the same correlation name, and no correlation name can be the same as an unqualified table name specified in that <code>FROM</code> clause.</li>
             </ul>
-            <p>In addition, you can give the columns of the table new names in the <span class="CodeFont">AS</span> clause. Some situations in which this is useful:</p>
+            <p>In addition, you can give the columns of the table new names in the <code>AS</code> clause. Some situations in which this is useful:</p>
             <ul>
-                <li>When a <span class="CodeFont"><a href="sqlref_queries_tablesubquery.html">TableSubquery</a>,</span> since there is no other way to name the columns of a <span class="CodeFont">VALUES</span> expression.</li>
+                <li>When a <code><a href="sqlref_queries_tablesubquery.html">TableSubquery</a>,</code> since there is no other way to name the columns of a <code>VALUES</code> expression.</li>
                 <li>When column names would otherwise be the same as those of columns in other tables; renaming them means you don't have to qualify them.</li>
             </ul>
-            <p>The Query in a <span class="ItalicFont"><a href="sqlref_queries_tablesubquery.html">TableSubquery</a>.</span></p>
+            <p>The Query in a <em><a href="sqlref_queries_tablesubquery.html">TableSubquery</a>.</em></p>
             <h2>Example</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- SELECT from a JOIN expression
 SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
@@ -42,22 +42,22 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
             </div>
             <h2 id="TableViewExpression">TableViewOrFunctionExpression</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
-   { <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span> }
- &#160;&#160;[ <span class="ItalicFont">CorrelationClause</span> ]  |
-   { <span class="ItalicFont"><a href="sqlref_queries_tablesubquery.html">TableSubquery</a></span> | <span class="ItalicFont"><a href="#TableFunction">TableFunctionInvocation</a></span> }
-&#160;&#160;&#160;<span class="ItalicFont">CorrelationClause</span>
+   { <em><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></em> }
+ &#160;&#160;[ <em>CorrelationClause</em> ]  |
+   { <em><a href="sqlref_queries_tablesubquery.html">TableSubquery</a></em> | <em><a href="#TableFunction">TableFunctionInvocation</a></em> }
+&#160;&#160;&#160;<em>CorrelationClause</em>
 }</pre>
             </div>
-            <p>where <span class="ItalicFont">CorrelationClause</span> is</p>
+            <p>where <em>CorrelationClause</em> is</p>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">[ AS ]
-<span class="ItalicFont"><a href="sqlref_identifiers_types.html#CorrelationName">correlation-Name</a></span>
-[ ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span> ]* ) ]
+<em><a href="sqlref_identifiers_types.html#CorrelationName">correlation-Name</a></em>
+[ ( <em><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></em> ]* ) ]
 </pre>
             </div>
             <h2 id="TableFunction">TableFunctionExpression</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
 {
-  TABLE <span class="ItalicFont">function-name</span>( [ [ function-arg ] [, function-arg ]* ] )
+  TABLE <em>function-name</em>( [ [ function-arg ] [, function-arg ]* ] )
 }
 </pre>
             </div>
@@ -66,10 +66,10 @@ SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
-                <li><a href="sqlref_joinops_about.html"><span class="CodeFont">JOIN</span></a>&#160;operations</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
-                <li><a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span></a>&#160;expression</li>
+                <li><a href="sqlref_clauses_from.html"><code>FROM</code></a>&#160;clause</li>
+                <li><a href="sqlref_joinops_about.html"><code>JOIN</code></a>&#160;operations</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;statement</li>
+                <li><a href="sqlref_expressions_values.html"><code>VALUES</code></a>&#160;expression</li>
             </ul>
         </div>
 	</section>

@@ -2809,41 +2809,41 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Statements.AlterTable">ALTER TABLE</h1>
-            <p>The <span class="CodeFont">ALTER TABLE</span> statement allows you to modify a table in a variety of ways, including adding and dropping columns and constraints from the table.</p>
+            <p>The <code>ALTER TABLE</code> statement allows you to modify a table in a variety of ways, including adding and dropping columns and constraints from the table.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ALTER TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ALTER TABLE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em>
    {
-   ADD COLUMN <span class="ItalicFont"><a href="#ColumnDefinition">column-definition</a></span> |
-   ADD <span class="ItalicFont"><a href="sqlref_clauses_constraint.html">CONSTRAINT clause</a></span> |
+   ADD COLUMN <em><a href="#ColumnDefinition">column-definition</a></em> |
+   ADD <em><a href="sqlref_clauses_constraint.html">CONSTRAINT clause</a></em> |
    DROP [ COLUMN ] column-name
    DROP { UNIQUE constraint-name |
      &#160;    CHECK constraint-name
 &#160;&#160; }
-   ALTER [ COLUMN ] <span class="ItalicFont"><a href="#ColumnAlteration">column-alteration</a></span>
+   ALTER [ COLUMN ] <em><a href="#ColumnAlteration">column-alteration</a></em>
    }</pre>
             </div>
             <div class="paramList">
                 <p class="paramName" id="ColumnDefinition">column-definition</p>
-                <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="sqlref_datatypes_intro.html">DataType</a></span> ]
-[ <span class="ItalicFont"><a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a></span> ]*
+                <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><em><a href="sqlref_datatypes_intro.html">DataType</a></em> ]
+[ <em><a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a></em> ]*
 [ [ WITH ] DEFAULT DefaultConstantExpression
- | <span class="ItalicFont"><a href="sqlref_statements_generationclause.html">generation-clause</a></span>
+ | <em><a href="sqlref_statements_generationclause.html">generation-clause</a></em>
 ]</pre>
                 </div>
-                <p class="paramDefnFirst">The syntax for the <span class="ItalicFont">column-definition</span> for a new column is a subset of the syntax for a column in a <span class="CodeFont"><a href="sqlref_statements_createtable.html">CREATE TABLE</a></span> statement.</p>
-                <p class="paramDefn">The <span class="ItalicFont">DataType</span> can be omitted only if you specify a <span class="ItalicFont">generation-clause</span>. If you omit the <span class="ItalicFont">DataType</span>, the type of the generated column is the type of the <span class="ItalicFont">generation-clause</span>. If you specify both a <span class="ItalicFont">DataType</span> and a <span class="ItalicFont">generation-clause</span>, the type of the <span class="ItalicFont">generation-clause</span> must be assignable to <span class="ItalicFont">DataType</span>.</p>
+                <p class="paramDefnFirst">The syntax for the <em>column-definition</em> for a new column is a subset of the syntax for a column in a <code><a href="sqlref_statements_createtable.html">CREATE TABLE</a></code> statement.</p>
+                <p class="paramDefn">The <em>DataType</em> can be omitted only if you specify a <em>generation-clause</em>. If you omit the <em>DataType</em>, the type of the generated column is the type of the <em>generation-clause</em>. If you specify both a <em>DataType</em> and a <em>generation-clause</em>, the type of the <em>generation-clause</em> must be assignable to <em>DataType</em>.</p>
                 <p class="paramName" id="ColumnAlteration">column-alteration</p>
-                <div class="fcnWrapperWide"><pre class="FcnSyntax"><span class="ItalicFont">column-Name</span> SET DATA TYPE VARCHAR(integer) |<![CDATA[
-]]><span class="ItalicFont">column-name</span> SET INCREMENT BY integer-constant |
-<span class="ItalicFont">column-name</span> RESTART WITH integer-constant |
-<span class="ItalicFont">column-name</span> [ NOT ] NULL |
-<span class="ItalicFont">column-name</span> [ WITH | SET ] DEFAULT default-value |
-<span class="ItalicFont">column-name</span> DROP DEFAULT</pre>
+                <div class="fcnWrapperWide"><pre class="FcnSyntax"><em>column-Name</em> SET DATA TYPE VARCHAR(integer) |<![CDATA[
+]]><em>column-name</em> SET INCREMENT BY integer-constant |
+<em>column-name</em> RESTART WITH integer-constant |
+<em>column-name</em> [ NOT ] NULL |
+<em>column-name</em> [ WITH | SET ] DEFAULT default-value |
+<em>column-name</em> DROP DEFAULT</pre>
                 </div>
                 <div class="paramListNested">
-                    <p class="paramDefnFirst">In the column-alteration, <span class="CodeFont">SET INCREMENT BY</span> integer-constant specifies the interval between consecutive values of the identity column. The next value to be generated for the identity column will be determined from the last assigned value with the increment applied. The column must already be defined with the <span class="CodeFont">IDENTITY</span> attribute.</p>
-                    <p class="paramDefn"><span class="CodeFont">RESTART WITH</span> integer-constant specifies the next value to be generated for the identity column. <span class="CodeFont">RESTART WITH</span> is useful for a table that has an identity column that was defined as <span class="CodeFont">GENERATED BY DEFAULT</span>and that has a unique key defined on that identity column.</p>
-                    <p class="paramDefn">Because <span class="CodeFont">GENERATED BY DEFAULT</span> allows both manual inserts and system generated values, it is possible that manually inserted values can conflict with system generated values. To work around such conflicts, use the <span class="CodeFont">RESTART WITH</span> syntax to specify the next value that will be generated for the identity column.</p>
+                    <p class="paramDefnFirst">In the column-alteration, <code>SET INCREMENT BY</code> integer-constant specifies the interval between consecutive values of the identity column. The next value to be generated for the identity column will be determined from the last assigned value with the increment applied. The column must already be defined with the <code>IDENTITY</code> attribute.</p>
+                    <p class="paramDefn"><code>RESTART WITH</code> integer-constant specifies the next value to be generated for the identity column. <code>RESTART WITH</code> is useful for a table that has an identity column that was defined as <code>GENERATED BY DEFAULT</code>and that has a unique key defined on that identity column.</p>
+                    <p class="paramDefn">Because <code>GENERATED BY DEFAULT</code> allows both manual inserts and system generated values, it is possible that manually inserted values can conflict with system generated values. To work around such conflicts, use the <code>RESTART WITH</code> syntax to specify the next value that will be generated for the identity column.</p>
                     <p class="paramDefn">Consider the following example, which involves a combination of automatically generated data and manually inserted data:</p>
                     <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE TABLE tauto(i INT GENERATED BY DEFAULT AS IDENTITY,
 	               k INT)
@@ -2855,77 +2855,77 @@
 INSERT INTO tauto VALUES (4,4);
 INSERT INTO tauto VALUES (5,5);</pre>
                     </div>
-                    <p class="paramDefnFirst">The identity column has used values 1 through 5 at this point. If you now want the system to generate a value, the system will generate a 3, which will result in a unique key exception because the value 3 has already been manually inserted. To compensate for the manual inserts, issue an <span class="CodeFont">ALTER TABLE</span> statement for the identity column with <span class="CodeFont">RESTART WITH 6</span>:</p>
+                    <p class="paramDefnFirst">The identity column has used values 1 through 5 at this point. If you now want the system to generate a value, the system will generate a 3, which will result in a unique key exception because the value 3 has already been manually inserted. To compensate for the manual inserts, issue an <code>ALTER TABLE</code> statement for the identity column with <code>RESTART WITH 6</code>:</p>
                     <div class="preWrapper"><pre class="Example" xml:space="preserve">ALTER TABLE tauto ALTER COLUMN i RESTART WITH 6;</pre>
                     </div>
-                    <p class="paramDefn"><span class="CodeFont">ALTER TABLE</span> does not affect any view that references the table being altered. This includes views that have a wildcard asterisk (<span class="CodeFont">*</span>) in their <span class="CodeFont">SELECT</span> list. You must drop and re-create those views if you wish them to return the new columns.</p>
-                    <p class="paramDefn">To change a column constraint to <span class="CodeFont">NOT NULL</span>, there has to be a valid value for the column. </p>
-                    <p class="paramDefn">Splice Machine raises an error if you try to change the <span class="ItalicFont">DataType</span> of a generated column to a type which is not assignable from the type of the <span class="ItalicFont">generation-clause</span>. Splice Machine also raises an error if you try to add a <span class="CodeFont">DEFAULT</span> clause to a generated column.</p>
+                    <p class="paramDefn"><code>ALTER TABLE</code> does not affect any view that references the table being altered. This includes views that have a wildcard asterisk (<code>*</code>) in their <code>SELECT</code> list. You must drop and re-create those views if you wish them to return the new columns.</p>
+                    <p class="paramDefn">To change a column constraint to <code>NOT NULL</code>, there has to be a valid value for the column. </p>
+                    <p class="paramDefn">Splice Machine raises an error if you try to change the <em>DataType</em> of a generated column to a type which is not assignable from the type of the <em>generation-clause</em>. Splice Machine also raises an error if you try to add a <code>DEFAULT</code> clause to a generated column.</p>
                 </div>
             </div>
             <h2>Usage</h2>
-            <p>The <span class="CodeFont">ALTER TABLE</span> statement allows you to:</p>
+            <p>The <code>ALTER TABLE</code> statement allows you to:</p>
             <ul>
                 <li>add a column to a table</li>
                 <li>add a constraint to a table</li>
                 <li>drop a column from a table</li>
                 <li>drop an existing constraint from a table<span class="important">*</span></li>
-                <li>increase the width of a <span class="CodeFont">VARCHAR</span> column</li>
+                <li>increase the width of a <code>VARCHAR</code> column</li>
                 <li>change the increment value and start value of the identity column</li>
                 <li>change the nullability constraint for a column</li>
                 <li>change the default value for a column</li>
             </ul>
-            <div class="noteRelease">You cannot currently use <span class="CodeFont">ALTER&#160;TABLE</span> to drop a foreign key constraint in Splice&#160;Machine. Until that capability is available, we recommend re-creating the table without the constraint.</div>
+            <p class="noteRelease">You cannot currently use <code>ALTER&#160;TABLE</code> to drop a foreign key constraint in Splice&#160;Machine. Until that capability is available, we recommend re-creating the table without the constraint.</p>
             <h3>Adding columns</h3>
-            <p>The syntax for the <span class="ItalicFont"><a href="#ColumnDefinition">column-definition</a></span> for a new column is almost the same as for a column in a <span class="CodeFont">CREATE TABLE</span> statement. This syntax allows a column constraint to be placed on the new column within the <span class="CodeFont">ALTER TABLE ADD COLUMN</span> statement. However, a column with a <span class="CodeFont">NOT NULL</span> constraint can be added to an existing table if you give a default value; otherwise, an exception is thrown when the <span class="CodeFont">ALTER TABLE</span> statement is executed. </p>
-            <div class="noteNote">If a table has an <span class="CodeFont">UPDATE</span> trigger without an explicit column list, adding a column to that table in effect adds that column to the implicit update column list upon which the trigger is defined, and all references to transition variables are invalidated so that they pick up the new column.</div>
+            <p>The syntax for the <em><a href="#ColumnDefinition">column-definition</a></em> for a new column is almost the same as for a column in a <code>CREATE TABLE</code> statement. This syntax allows a column constraint to be placed on the new column within the <code>ALTER TABLE ADD COLUMN</code> statement. However, a column with a <code>NOT NULL</code> constraint can be added to an existing table if you give a default value; otherwise, an exception is thrown when the <code>ALTER TABLE</code> statement is executed. </p>
+            <p class="noteNote">If a table has an <code>UPDATE</code> trigger without an explicit column list, adding a column to that table in effect adds that column to the implicit update column list upon which the trigger is defined, and all references to transition variables are invalidated so that they pick up the new column.</p>
             <h3>Adding constraints</h3>
-            <p><span class="CodeFont">ALTER TABLE ADD CONSTRAINT</span> adds a table-level constraint to an existing table. </p>
-            <div class="noteRelease">The <span class="CodeFont">ALTER TABLE ADD CONSTRAINT</span>statement is not currently taking currently running transactions into account, and thus can fail to add the constraint. This issue will be resolved in a future release.<br /><br />You can reliably add constraints when using the <span class="CodeFont">CREATE&#160;TABLE</span>&#160;statement.</div>
-            <p>Any supported table-level constraint type can be added via <span class="CodeFont">ALTER TABLE</span>. The following limitations exist on adding a constraint to an existing table: </p>
+            <p><code>ALTER TABLE ADD CONSTRAINT</code> adds a table-level constraint to an existing table. </p>
+            <p class="noteRelease">The <code>ALTER TABLE ADD CONSTRAINT</code>statement is not currently taking currently running transactions into account, and thus can fail to add the constraint. This issue will be resolved in a future release.<br /><br />You can reliably add constraints when using the <code>CREATE&#160;TABLE</code>&#160;statement.</p>
+            <p>Any supported table-level constraint type can be added via <code>ALTER TABLE</code>. The following limitations exist on adding a constraint to an existing table: </p>
             <ul>
                 <li>When adding a check constraint to an existing table, Splice Machine checks the table to make  sure existing rows satisfy the constraint. If any row is invalid, Splice Machine throws  a statement exception and the constraint is not added.
 			</li>
                 <li>
                     <p>All columns included in a primary key must contain non null data and be unique.</p>
-                    <p><span class="CodeFont">ALTER TABLE ADD UNIQUE</span> or <span class="CodeFont">PRIMARY KEY</span> provide a shorthand method  of defining a primary key composed of a single column. If <span class="CodeFont">PRIMARY KEY</span> is specified in the definition of column C, the effect is the same as if the <span class="CodeFont">PRIMARY KEY(C)</span> clause were specified as a separate clause. The column cannot contain null values, so the <span class="CodeFont">NOT NULL</span> attribute must also be specified.</p>
+                    <p><code>ALTER TABLE ADD UNIQUE</code> or <code>PRIMARY KEY</code> provide a shorthand method  of defining a primary key composed of a single column. If <code>PRIMARY KEY</code> is specified in the definition of column C, the effect is the same as if the <code>PRIMARY KEY(C)</code> clause were specified as a separate clause. The column cannot contain null values, so the <code>NOT NULL</code> attribute must also be specified.</p>
                 </li>
             </ul>
-            <p>For information on the syntax of constraints, see <span class="CodeFont"><a href="sqlref_clauses_constraint.html">CONSTRAINT</a></span> clause. Use the syntax for table-level constraint when adding a constraint with the <span class="CodeFont">ADD TABLE ADD CONSTRAINT</span> syntax.</p>
+            <p>For information on the syntax of constraints, see <code><a href="sqlref_clauses_constraint.html">CONSTRAINT</a></code> clause. Use the syntax for table-level constraint when adding a constraint with the <code>ADD TABLE ADD CONSTRAINT</code> syntax.</p>
             <h3>Dropping columns</h3>
-            <p><span class="CodeFont">ALTER TABLE DROP COLUMN</span> allows you to drop a column from a table.</p>
-            <p>The keyword <span class="CodeFont">COLUMN</span> is optional.</p>
+            <p><code>ALTER TABLE DROP COLUMN</code> allows you to drop a column from a table.</p>
+            <p>The keyword <code>COLUMN</code> is optional.</p>
             <p>You may not drop the last (only) column in a table.</p>
             <h3>Modifying columns</h3>
-            <p>The <span class="ItalicFont"><a href="#ColumnAlteration">column-alteration</a></span> allows you to alter the named column in the following ways: </p>
+            <p>The <em><a href="#ColumnAlteration">column-alteration</a></em> allows you to alter the named column in the following ways: </p>
             <ul>
                 <li>
-                    <p>Increasing the width of an existing <span class="CodeFont">VARCHAR</span> column. <span class="CodeFont">CHARACTER VARYING</span> or <span class="CodeFont">CHAR VARYING</span> can be used as synonyms for the <span class="CodeFont">VARCHAR</span> keyword.</p>
+                    <p>Increasing the width of an existing <code>VARCHAR</code> column. <code>CHARACTER VARYING</code> or <code>CHAR VARYING</code> can be used as synonyms for the <code>VARCHAR</code> keyword.</p>
                     <p>To increase the width of a column of these types, specify the data type and new size after the column name.</p>
                     <p>You are not allowed to decrease the width or to change the data type. You are not allowed to increase the width of a column that is part of a primary or unique key referenced by a foreign key constraint or that is part of a foreign key constraint.</p>
                 </li>
                 <li>
                     <p>Specifying the interval between consecutive values of the identity column.</p>
-                    <p>To set an interval between consecutive values of the identity column, specify the integer-constant. You must previously define the column with the <span class="CodeFont">IDENTITY</span> attribute (SQLSTATE 42837). If there are existing rows in the table, the values in the column for which the <span class="CodeFont">SET INCREMENT</span> default was added do not change.</p>
+                    <p>To set an interval between consecutive values of the identity column, specify the integer-constant. You must previously define the column with the <code>IDENTITY</code> attribute (SQLSTATE 42837). If there are existing rows in the table, the values in the column for which the <code>SET INCREMENT</code> default was added do not change.</p>
                 </li>
                 <li>
                     <p>Modifying the nullability constraint of a column.</p>
-                    <p>You can add the <span class="CodeFont">NOT NULL</span> constraint to an existing column; however, you cannot do so if there are <span class="CodeFont">NULL</span> values for the column in the table.</p>
-                    <p>You can remove the <span class="CodeFont">NOT NULL</span> constraint from an existing column; however, you cannot do  so if the column is used in a <span class="CodeFont">PRIMARY KEY</span> constraint.</p>
+                    <p>You can add the <code>NOT NULL</code> constraint to an existing column; however, you cannot do so if there are <code>NULL</code> values for the column in the table.</p>
+                    <p>You can remove the <code>NOT NULL</code> constraint from an existing column; however, you cannot do  so if the column is used in a <code>PRIMARY KEY</code> constraint.</p>
                 </li>
                 <li>
                     <p>Changing the default value for a column.</p>
-                    <p>You can use <span class="CodeFont">DEFAULT</span> default-value to change a column default. To disable a previously set default, use <span class="CodeFont">DROP DEFAULT</span> (alternatively, you can specify <span class="CodeFont">NULL</span> as the default-value).</p>
+                    <p>You can use <code>DEFAULT</code> default-value to change a column default. To disable a previously set default, use <code>DROP DEFAULT</code> (alternatively, you can specify <code>NULL</code> as the default-value).</p>
                 </li>
             </ul>
             <h3>Setting defaults</h3>
-            <p>You can specify a default value for a new column. A default value is the value that is inserted into a column if no other value is specified. If not explicitly specified, the default value of a column is <span class="CodeFont">NULL</span>. If you add a default to a new column, existing rows in the table gain the default value in the new column.</p>
-            <p>For more information about defaults, see <span class="CodeFont"><a href="sqlref_statements_createtable.html">CREATE TABLE</a></span> statement.</p>
-            <p>An <span class="CodeFont">ALTER TABLE</span> statement causes all statements that are dependent on the table being altered to be recompiled before their next execution. </p>
+            <p>You can specify a default value for a new column. A default value is the value that is inserted into a column if no other value is specified. If not explicitly specified, the default value of a column is <code>NULL</code>. If you add a default to a new column, existing rows in the table gain the default value in the new column.</p>
+            <p>For more information about defaults, see <code><a href="sqlref_statements_createtable.html">CREATE TABLE</a></code> statement.</p>
+            <p>An <code>ALTER TABLE</code> statement causes all statements that are dependent on the table being altered to be recompiled before their next execution. </p>
             <h2>Examples</h2>
-            <p>This section provides examples of using the <span class="CodeFont">ALTER&#160;TABLE</span>&#160;statement.</p>
+            <p>This section provides examples of using the <code>ALTER&#160;TABLE</code>&#160;statement.</p>
             <h3>Example 1:&#160;Adding Columns to a Table</h3>
-            <p class="body">In this example. we create a new table, and then use <span class="CodeFont">ALTER&#160;TABLE</span>&#160;statements to add three columns that we have decided to include:</p>
+            <p class="body">In this example. we create a new table, and then use <code>ALTER&#160;TABLE</code>&#160;statements to add three columns that we have decided to include:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE TABLE PlayerTrades (
    ID INT NOT NULL,
    PlayerName VARCHAR(32),
@@ -2962,11 +2962,11 @@ YEARS         |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
 </pre>
             </div>
             <h3>Example 2:&#160;Altering Columns</h3>
-            <p class="body">In this example, we use <span class="CodeFont">ALTER&#160;TABLE</span>&#160;to alter columns in various ways:</p>
+            <p class="body">In this example, we use <code>ALTER&#160;TABLE</code>&#160;to alter columns in various ways:</p>
             <ul class="bulletNested">
-                <li>specify that the <span class="CodeFont">Updated</span> column cannot be <span class="CodeFont">NULL</span></li>
-                <li>set the default value for <span class="CodeFont">Years</span> to <span class="CodeFont">3</span></li>
-                <li>set the default value for <span class="CodeFont">NewTeam</span> to <span class="CodeFont">'Giants'</span></li>
+                <li>specify that the <code>Updated</code> column cannot be <code>NULL</code></li>
+                <li>set the default value for <code>Years</code> to <code>3</code></li>
+                <li>set the default value for <code>NewTeam</code> to <code>'Giants'</code></li>
             </ul>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; ALTER TABLE PlayerTrades ALTER COLUMN Updated NOT NULL;
 0 rows inserted/updated/deleted
@@ -2993,7 +2993,7 @@ YEARS         |INTEGER  |0   |10  |10    |3         |NULL      |YES
 </pre>
             </div>
             <h3>Example 3:&#160;Dropping a column</h3>
-            <p class="body">This example drops the <span class="CodeFont">Years</span> column from our table, and then drops the default associated with <span class="CodeFont">NewTeam</span>:</p>
+            <p class="body">This example drops the <code>Years</code> column from our table, and then drops the default associated with <code>NewTeam</code>:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt; ALTER&#160;TABLE&#160;PlayerTrades DROP&#160;COLUMN&#160;Years;
 0 rows inserted/updated/deleted
@@ -3015,7 +3015,7 @@ TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
 7 rows selected</pre>
             </div>
             <h3>Example 4:&#160;Changing Varchar Column Width</h3>
-            <p class="body">This example changes the width of one of our <span class="CodeFont">VARCHAR</span>&#160;columns:</p>
+            <p class="body">This example changes the width of one of our <code>VARCHAR</code>&#160;columns:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 splice&gt; ALTER&#160;TABLE&#160;PlayerTrades ALTER&#160;COLUMN&#160;PlayerName SET&#160;DATA&#160;TYPE&#160;VARCHAR(40);
 0 rows inserted/updated/deleted
@@ -3057,10 +3057,10 @@ NEWID&#160;&#160;&#160;&#160;&#160;&#160;|PLAYERNAME
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span></a> clause</li>
-                <li><a href="sqlref_statements_createtable.html"><span class="CodeFont">CREATE&#160;TABLE</span></a>&#160;statement</li>
-                <li><a href="developers_fundamentals_foreignkeys.html">Foreign Keys</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
-                <li><a href="developers_fundamentals_triggers.html">Triggers</a> in the <span class="ItalicFont">Developer's Guide</span>.</li>
+                <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a> clause</li>
+                <li><a href="sqlref_statements_createtable.html"><code>CREATE&#160;TABLE</code></a>&#160;statement</li>
+                <li><a href="developers_fundamentals_foreignkeys.html">Foreign Keys</a> in the <em>Developer's Guide</em>.</li>
+                <li><a href="developers_fundamentals_triggers.html">Triggers</a> in the <em>Developer's Guide</em>.</li>
             </ul>
         </div>
 	</section>
@@ -3080,7 +3080,7 @@ NEWID&#160;&#160;&#160;&#160;&#160;&#160;|PLAYERNAME
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

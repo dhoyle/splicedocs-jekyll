@@ -117,7 +117,7 @@ CREATE TABLE TPCH.NATION (
                     </li>
                     <li>
                         <p class="topLevel">Import data</p>
-                        <p class="indentLevel1">We've put a copy of the TPCH data in an AWS&#160;S3 bucket, for convenient retrieval. You can copy/paste the following <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span>&#160;statements to quickly pull that data into your database:</p>
+                        <p class="indentLevel1">We've put a copy of the TPCH data in an AWS&#160;S3 bucket, for convenient retrieval. You can copy/paste the following <code>SYSCS_UTIL.IMPORT_DATA</code>&#160;statements to quickly pull that data into your database:</p>
                         <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'LINEITEM', null, 's3a:/splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
 
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'ORDERS',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/orders',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);
@@ -137,7 +137,7 @@ call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'NATION',   null, 's3a:/splice-benchmark-da
                     </li>
                     <li>
                         <p class="topLevel">Run a query</p>
-                        <p class="indentLevel1">You can now copy/paste <span class="ItalicFont">TPCH Query 01</span> against the imported data to verify that all's well:</p>
+                        <p class="indentLevel1">You can now copy/paste <em>TPCH Query 01</em> against the imported data to verify that all's well:</p>
                         <div class="preWrapperWide"><pre class="Example">-- QUERY 01
 select
 	l_returnflag,

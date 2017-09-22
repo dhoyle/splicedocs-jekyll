@@ -520,21 +520,21 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor69">Export Command</h1>
+            <h1>Export Command</h1>
             <p>The <span class="AppCommand">export</span> command exports the results of an SQL&#160;query to a CSV (comma separated value)&#160;file.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">EXPORT ( <span class="ItalicFont">exportPath</span>,
-         <span class="ItalicFont">compression</span>,
-         <span class="ItalicFont">replicationCount</span>,
-         <span class="ItalicFont">fileEncoding</span>,
-         <span class="ItalicFont">fieldSeparator</span>,
-         <span class="ItalicFont">quoteCharacter </span>)  &lt;SQL_QUERY&gt;;</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">EXPORT ( <em>exportPath</em>,
+         <em>compression</em>,
+         <em>replicationCount</em>,
+         <em>fileEncoding</em>,
+         <em>fieldSeparator</em>,
+         <em>quoteCharacter </em>)  &lt;SQL_QUERY&gt;;</pre>
             </div>
             <div class="paramList">
-                <p class="paramName"><span class="ItalicFont">exportPath</span>
+                <p class="paramName"><em>exportPath</em>
                 </p>
                 <p class="paramDefnFirst">The directory in which you want the export file(s) written.</p>
-                <p class="paramName"><span class="ItalicFont">compress</span>
+                <p class="paramName"><em>compress</em>
                 </p>
                 <p class="paramDefnFirst">Whether or not to compress the exported files. You can specify one of the following values:
             <table summary="Possible values for compression setting in the export command.">
@@ -546,7 +546,7 @@
                 <tbody>
                     <tr>
                         <td class="CodeFont">true</td>
-                        <td><p>The exported files are compressed using <span class="CodeFont">deflate/gzip</span>. </p></td>
+                        <td><p>The exported files are compressed using <code>deflate/gzip</code>. </p></td>
                     </tr>
                     <tr>
                         <td class="CodeFont">false</td>
@@ -555,38 +555,38 @@
                     </tr>
                 </tbody>
                 </table>
-                <p class="paramName"><span class="ItalicFont">replicationCount</span>
+                <p class="paramName"><em>replicationCount</em>
                 </p>
                 <p class="paramDefnFirst">The file system block replication count to use for the exported CSV&#160;files. </p>
-                <p class="paramDefn">You can specify any positive integer value. The default value is <span class="CodeFont">1</span>. </p>
-                <p class="paramName"><span class="ItalicFont">fileEncoding</span>
+                <p class="paramDefn">You can specify any positive integer value. The default value is <code>1</code>. </p>
+                <p class="paramName"><em>fileEncoding</em>
                 </p>
                 <p class="paramDefnFirst">The character set encoding to use for the exported CSV&#160;files. </p>
-                <p class="paramDefn">You can specify any character set encoding that is supported by the Java Virtual Machine (JVM). The default encoding is <span class="CodeFont">UTF-8</span>.</p>
-                <p class="paramName"><span class="ItalicFont">fieldSeparator</span>
+                <p class="paramDefn">You can specify any character set encoding that is supported by the Java Virtual Machine (JVM). The default encoding is <code>UTF-8</code>.</p>
+                <p class="paramName"><em>fieldSeparator</em>
                 </p>
                 <p class="paramDefnFirst">The character to use for separating fields in the exported CSV&#160;files.</p>
-                <p class="paramDefn">The default separator character is the comma (<span class="CodeFont">,</span>).</p>
-                <p class="paramName"><span class="ItalicFont">quoteCharacter</span>
+                <p class="paramDefn">The default separator character is the comma (<code>,</code>).</p>
+                <p class="paramName"><em>quoteCharacter</em>
                 </p>
                 <p class="paramDefnFirst">The character to use for quoting output in the exported CSV&#160;files. </p>
-                <p class="paramDefn">The default quote character is the double quotation mark (<span class="CodeFont">"</span>).</p>
+                <p class="paramDefn">The default quote character is the double quotation mark (<code>"</code>).</p>
             </div>
             <h2>Usage</h2>
-            <p>The <span class="AppCommand">EXPORT</span> command generates one or more CSV&#160;files and stores them in the directory that you specified in the <span class="CodeFont">exportPath</span> parameter. More than one output file is generated to enhance the parallelism and performance of this operation.</p>
-            <p>If <span class="CodeFont">compression=true</span>, then each of the generated files is named with this format:</p>
+            <p>The <span class="AppCommand">EXPORT</span> command generates one or more CSV&#160;files and stores them in the directory that you specified in the <code>exportPath</code> parameter. More than one output file is generated to enhance the parallelism and performance of this operation.</p>
+            <p>If <code>compression=true</code>, then each of the generated files is named with this format:</p>
             <div class="preWrapper"><pre class="AppCommand" xml:space="preserve">export_&lt;N&gt;.csv.gz</pre>
             </div>
-            <p>If <span class="CodeFont">compression=false</span>, then each of the generated files is named with this format:</p>
+            <p>If <code>compression=false</code>, then each of the generated files is named with this format:</p>
             <div class="preWrapper"><pre class="AppCommand">export_&lt;N&gt;.csv</pre>
             </div>
             <p>The value of <span class="AppCommand">&lt;N&gt;</span>&#160;is a random integer value.</p>
             <h3>Merging the Exported Files</h3>
-            <p>You can copy all of the exported files into a single file on your local file system using the Hadoop FS&#160;command <span class="CodeFont">getmerge</span>. The syntax for <span class="CodeFont">getmerge</span> is:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">hadoop fs -getmerge <span class="ItalicFont">sourceDir localPath</span></pre>
+            <p>You can copy all of the exported files into a single file on your local file system using the Hadoop FS&#160;command <code>getmerge</code>. The syntax for <code>getmerge</code> is:</p>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">hadoop fs -getmerge <em>sourceDir localPath</em></pre>
             </div>
-            <p>Use the <span class="ItalicFont">exportPath</span> directory as the value of sourceDir to copy all of the exported CSV&#160;files to your <span class="ItalicFont">localPath</span>.</p>
-            <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge"  target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
+            <p>Use the <em>exportPath</em> directory as the value of sourceDir to copy all of the exported CSV&#160;files to your <em>localPath</em>.</p>
+            <p>For more information about the <code>getmerge</code> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge"  target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">         -- This example uses all default options:
  splice&gt; EXPORT('/my/export/dir', false, null, null, null, null)
@@ -615,7 +615,7 @@ splice&gt; EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

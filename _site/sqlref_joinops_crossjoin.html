@@ -2809,32 +2809,32 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="SQL-JoinOps.CrossJoin">CROSS JOIN</h1>
-            <p>A <span class="CodeFont">CROSS JOIN</span> is a <a href="sqlref_joinops_about.html"><span class="CodeFont">JOIN</span> operation</a> that produces the Cartesian product of two tables. Unlike other <span class="CodeFont">JOIN</span> operators, it does not let you specify a join clause. You may, however, specify a <span class="CodeFont">WHERE</span> clause in the <span class="CodeFont">SELECT</span> statement.</p>
+            <p>A <code>CROSS JOIN</code> is a <a href="sqlref_joinops_about.html"><code>JOIN</code> operation</a> that produces the Cartesian product of two tables. Unlike other <code>JOIN</code> operators, it does not let you specify a join clause. You may, however, specify a <code>WHERE</code> clause in the <code>SELECT</code> statement.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><a href="sqlref_expressions_table.html" style="font-style: italic;">TableExpression</a> CROSS JOIN {
     <a href="sqlref_expressions_table.html">TableExpression</a> )
 }</pre>
             </div>
             <h2>Examples</h2>
-            <p>The following <span class="CodeFont">SELECT</span> statements are equivalent:</p>
+            <p>The following <code>SELECT</code> statements are equivalent:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * FROM CITIES CROSS JOIN FLIGHTS;
 
 splice&gt;&#160;SELECT * FROM CITIES, FLIGHTS;</pre>
             </div>
-            <p>The following <span class="CodeFont">SELECT</span> statements are equivalent:</p>
+            <p>The following <code>SELECT</code> statements are equivalent:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * FROM CITIES CROSS JOIN FLIGHTS
    WHERE CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT;
 
 splice&gt;&#160;SELECT * FROM CITIES INNER JOIN FLIGHTS
     ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT;</pre>
             </div>
-            <p>The following example is more complex. The <span class="CodeFont">ON</span> clause in this example is associated with the <span class="CodeFont">LEFT OUTER JOIN</span> operation. Note that you can use parentheses around a <span class="CodeFont">JOIN</span> operation.</p>
+            <p>The following example is more complex. The <code>ON</code> clause in this example is associated with the <code>LEFT OUTER JOIN</code> operation. Note that you can use parentheses around a <code>JOIN</code> operation.</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * FROM CITIES LEFT OUTER JOIN
   (FLIGHTS CROSS JOIN COUNTRIES)
   ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT
   WHERE COUNTRIES.COUNTRY_ISO_CODE = 'US';</pre>
             </div>
-            <p>A <span class="CodeFont">CROSS JOIN</span> operation can be replaced with an <span class="CodeFont">INNER JOIN</span> where the join clause always evaluates to true (for example, <span class="CodeFont">1=1</span>). It can also be replaced with a sub-query. So equivalent queries would be:</p>
+            <p>A <code>CROSS JOIN</code> operation can be replaced with an <code>INNER JOIN</code> where the join clause always evaluates to true (for example, <code>1=1</code>). It can also be replaced with a sub-query. So equivalent queries would be:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT * FROM CITIES LEFT OUTER JOIN
   FLIGHTS INNER JOIN COUNTRIES ON 1=1
   ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT
@@ -2849,7 +2849,7 @@ splice&gt;&#160;SELECT * FROM CITIES LEFT OUTER JOIN
             <ul>
                 <li><a href="sqlref_joinops_intro.html">JOIN operations</a>
                 </li>
-                <li><a href="sqlref_clauses_using.html"><span class="CodeFont">USING</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_using.html"><code>USING</code></a>&#160;clause</li>
             </ul>
         </div>
 	</section>
@@ -2869,7 +2869,7 @@ splice&gt;&#160;SELECT * FROM CITIES LEFT OUTER JOIN
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

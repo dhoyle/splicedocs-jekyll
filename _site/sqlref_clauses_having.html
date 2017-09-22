@@ -2809,37 +2809,37 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Clauses.Having">HAVING</h1>
-            <p>A <span class="CodeFont">HAVING</span> clause restricts the results of a <span class="CodeFont"><a href="sqlref_expressions_select.html">SelectExpression</a>.</span></p>
-            <p>The <span class="CodeFont">HAVING</span> clause is applied
-			to each group of the grouped table, similarly to how a <span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause is applied to a
+            <p>A <code>HAVING</code> clause restricts the results of a <code><a href="sqlref_expressions_select.html">SelectExpression</a>.</code></p>
+            <p>The <code>HAVING</code> clause is applied
+			to each group of the grouped table, similarly to how a <code><a href="sqlref_clauses_where.html">WHERE</a></code> clause is applied to a
 			select list. </p>
-            <p>If there is no <span class="CodeFont">GROUP BY</span> clause, the <span class="CodeFont">HAVING</span> clause is applied
-			to the entire result as a single group. The <span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT</a></span> expression cannot refer directly
-			to any column that does not have a <span class="CodeFont">GROUP BY</span> clause. It can, however, refer
+            <p>If there is no <code>GROUP BY</code> clause, the <code>HAVING</code> clause is applied
+			to the entire result as a single group. The <code><a href="sqlref_expressions_select.html">SELECT</a></code> expression cannot refer directly
+			to any column that does not have a <code>GROUP BY</code> clause. It can, however, refer
 		to constants, aggregates, and special registers.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">HAVING <span class="ItalicFont">searchCondition</span></pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">HAVING <em>searchCondition</em></pre>
             </div>
             <div class="paramList">
                 <p class="paramName">searchCondition</p>
                 <p class="paramDefnFirst">A specialized Boolean expression, as described in the next section.</p>
             </div>
             <h2>Using</h2>
-            <p>The <span class="ItalicFont">searchCondition</span>, is a specialized <span class="ItalicFont"><a href="sqlref_expressions_boolean.html">booleanExpression</a></span> that can contain only;</p>
+            <p>The <em>searchCondition</em>, is a specialized <em><a href="sqlref_expressions_boolean.html">booleanExpression</a></em> that can contain only;</p>
             <ul>
-                <li> grouping columns (see <a href="sqlref_clauses_groupby.html"><span class="CodeFont">GROUP BY</span></a> clause)</li>
+                <li> grouping columns (see <a href="sqlref_clauses_groupby.html"><code>GROUP BY</code></a> clause)</li>
                 <li>columns that are part of aggregate expressions</li>
                 <li> columns that are part of a subquery</li>
             </ul>
-            <p>For example, the following query is illegal, because the column <span class="CodeFont">SALARY</span> is not a grouping column, it does not appear within an aggregate, and it is not within a subquery:</p>
+            <p>For example, the following query is illegal, because the column <code>SALARY</code> is not a grouping column, it does not appear within an aggregate, and it is not within a subquery:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">
 SELECT COUNT(*)
   FROM SAMP.STAFF
   GROUP BY ID
   HAVING SALARY &gt; 15000;</pre>
             </div>
-            <p>Aggregates in the <span class="CodeFont">HAVING</span> clause do not need to appear in the <span class="CodeFont">SELECT</span> list.
-			If the <span class="CodeFont">HAVING</span> clause contains a subquery, the subquery can refer to the outer
+            <p>Aggregates in the <code>HAVING</code> clause do not need to appear in the <code>SELECT</code> list.
+			If the <code>HAVING</code> clause contains a subquery, the subquery can refer to the outer
 		query block if and only if it refers to a grouping column.</p>
             <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
@@ -2855,9 +2855,9 @@ SELECT SUM(ECONOMY_SEATS_TAKEN), AIRLINE_FULL
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>
-                <li><a href="sqlref_clauses_groupby.html"><span class="CodeFont">GROUP&#160;BY</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
+                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+                <li><a href="sqlref_clauses_groupby.html"><code>GROUP&#160;BY</code></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a>&#160;clause</li>
             </ul>
         </div>
 	</section>
@@ -2877,7 +2877,7 @@ SELECT SUM(ECONOMY_SEATS_TAKEN), AIRLINE_FULL
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

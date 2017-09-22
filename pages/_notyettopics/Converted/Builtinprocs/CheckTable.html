@@ -11,13 +11,13 @@ folder: SQLReference/BuiltInSysProcs
 <section>
 	<div class="TopicContent" data-swiftype-index="true">
         <h1 id="BuiltInSysFcns.CheckTable">SYSCS_CHECK_TABLE</h1>
-        <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_CHECK_TABLE</span> function ensures that all of a table's indexes are consistent with the base table, and throws an exception if the table and indexes are not consistent.</p>
+        <p>The <code>SYSCS_UTIL.SYSCS_CHECK_TABLE</code> function ensures that all of a table's indexes are consistent with the base table, and throws an exception if the table and indexes are not consistent.</p>
         <p>A common use for this function is to run it on offline database tables following a backup operation; we recommend not discarding the previous backup until you have verified the consistency of the current version. </p>
-        <div class="noteNote">A consistency check can take a long time on a large database.</div>
+        <p class="noteNote">A consistency check can take a long time on a large database.</p>
         <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SMALLINT SYSCS_UTIL.SYSCS_CHECK_TABLE(
-  IN <span class="ItalicFont">SchemaName</span> VARCHAR(128),
-  IN <span class="ItalicFont">TableName</span> VARCHAR(128)
+  IN <em>SchemaName</em> VARCHAR(128),
+  IN <em>TableName</em> VARCHAR(128)
   ) </pre>
         </div>
         <div class="paramList">
@@ -27,8 +27,8 @@ folder: SQLReference/BuiltInSysProcs
             <p class="paramDefnFirst">The name of the table to check.</p>
         </div>
         <h2>Results</h2>
-        <p>An error occurs if either <span class="ItalicFont">SchemaName</span>or <span class="ItalicFont">TableName</span> is null.</p>
-        <p>Returns a <span class="CodeFont">1</span> if the table and indexes are consistent; if they are not consistent, this function throws an exception.</p>
+        <p>An error occurs if either <em>SchemaName</em>or <em>TableName</em> is null.</p>
+        <p>Returns a <code>1</code> if the table and indexes are consistent; if they are not consistent, this function throws an exception.</p>
         <h2>Execute Privileges</h2>
         <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
         <h2>Examples</h2>

@@ -13,7 +13,7 @@ folder: OnPrem/InstallingSpliceMachine
             <h1>Importing and Querying Demo Data</h1>
 {% include splice_snippets/onpremonlytopic.html %}
             <p>This topic walks you through importing and querying the demo (sample)&#160;data that is packaged with the Splice&#160;Machine standalone installer.</p>
-            <div class="noteIcon">You must <a href="onprem_install_standalone.html">install the standalone version of Splice&#160;Machine</a> on your computer before following the steps in this tutorial. </div>
+            <p class="noteIcon">You must <a href="onprem_install_standalone.html">install the standalone version of Splice&#160;Machine</a> on your computer before following the steps in this tutorial. </p>
             <p> The Splice Machine installer package includes demo data that you can import into your database, so you can get used to working with your new database. We recommend that you follow the steps in this topic to import this demo data, and then run a few test queries against it to verify your installation.</p>
             <h2>About the Demo Data</h2>
             <p>The demo data included in your installer package requires about 30 MB in compressed format. Importing the demo data creates three tables, each of which contains one million records:</p>
@@ -26,19 +26,19 @@ folder: OnPrem/InstallingSpliceMachine
                         <th>Description</th>
                     </tr>
                     <tr>
-                        <td><span class="CodeFont">T_HEADER</span>
+                        <td><code>T_HEADER</code>
                         </td>
-                        <td>Standard <span class="ItalicFont">headers</span> from a transaction system</td>
+                        <td>Standard <em>headers</em> from a transaction system</td>
                     </tr>
                     <tr>
-                        <td><span class="CodeFont">T_DETAIL</span>
+                        <td><code>T_DETAIL</code>
                         </td>
-                        <td>Standard <span class="ItalicFont">detail</span> records from a transaction system</td>
+                        <td>Standard <em>detail</em> records from a transaction system</td>
                     </tr>
                     <tr>
-                        <td><span class="CodeFont">CUSTOMERS</span>
+                        <td><code>CUSTOMERS</code>
                         </td>
-                        <td>A list of target <span class="ItalicFont">customers</span></td>
+                        <td>A list of target <em>customers</em></td>
                     </tr>
                 </tbody>
             </table>
@@ -60,7 +60,7 @@ folder: OnPrem/InstallingSpliceMachine
                     <li>
                         <p class="topLevel">Modify the script that loads the data to use your path:</p>
                         <p class="indentLevel1">Before running the <span class="AppCommand">loadall.sql</span> script, you must change the file path used in the script. </p>
-                        <p class="indentLevel1">There are calls to <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> near the bottom of the script. Change the file path parameter in each of these calls to use the absolute path to your Splice&#160;Machine <span class="CodeFont">demodata</span> directory:</p>
+                        <p class="indentLevel1">There are calls to <code>SYSCS_UTIL.IMPORT_DATA</code> near the bottom of the script. Change the file path parameter in each of these calls to use the absolute path to your Splice&#160;Machine <code>demodata</code> directory:</p>
                         <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',&#160; null, '<span class="HighlightedCode">&lt;yourPath&gt;</span>/demodata/data/theader.csv.gz', ...;<br />call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',&#160; null, '<span class="HighlightedCode">&lt;yourPath&gt;</span>/demodata/data/tdetail.csv.gz', ...;<br />call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '<span class="HighlightedCode">&lt;yourPath&gt;</span>/demodata/data/customers.csv.gz', ...;</pre>
                         </div>
                         <p class="indentLevel1">Make sure you use the absolute (versus relative)&#160;path. For example:</p>
@@ -69,7 +69,7 @@ folder: OnPrem/InstallingSpliceMachine
                     </li>
                     <li>
                         <p class="topLevel">Run the modify script to loads the data:</p>
-                        <p class="indentLevel1">From the <span class="AppCommand">splice&gt;</span> prompt, <span class="ItalicFont">run</span> the file that will load the data, using single quotes around the path/filename (and remember to include the semicolon at the end):</p>
+                        <p class="indentLevel1">From the <span class="AppCommand">splice&gt;</span> prompt, <em>run</em> the file that will load the data, using single quotes around the path/filename (and remember to include the semicolon at the end):</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">splice&gt; run 'demodata/sql/loadall.sql';</pre>
                         </div>
                     </li>
@@ -78,17 +78,17 @@ folder: OnPrem/InstallingSpliceMachine
                         <p class="indentLevel1">If your database is not currently running, start it up and launch the command line interpreter (<span class="AppCommand">splice&gt;</span> prompt) by issuing this command in your terminal window:</p>
                         <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">./bin/sqlshell.sh</pre>
                         </div>
-                        <p class="indentLevel1">The loading process can take several minutes:&#160;the <span class="CodeFont">loadall.sql</span> file creates the schema, loads the data, and creates indexes for the tables.</p>
-                        <div class="noteNote">While the database is running, logging information is written to the <span class="CodeFont">splice.log</span> file, which is found in the <span class="CodeFont">splicemachine</span> directory.</div>
+                        <p class="indentLevel1">The loading process can take several minutes:&#160;the <code>loadall.sql</code> file creates the schema, loads the data, and creates indexes for the tables.</p>
+                        <p class="noteNote">While the database is running, logging information is written to the <code>splice.log</code> file, which is found in the <code>splicemachine</code> directory.</p>
                         <p class="indentLevel1">When you again see the <span class="AppCommand">splice&gt;</span> prompt, the demo data is ready to use. We recommend running the sample queries in the next section to get a feel for using Splice Machine and the demo data.</p>
                     </li>
                 </ol>
             </div>
             <h3>Run Sample Queries</h3>
             <p>After you have imported the demo data, you can use the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter to run the sample queries on this page to get some experience with using Splice Machine.</p>
-            <p>You can simply copy the select command from each of the samples below to your clipboard. Then paste from the clipboard at the <span class="AppCommand">splice&gt;</span> prompt and press the <span class="ItalicFont">Enter</span> key or <span class="ItalicFont">Return</span> key to submit the query.</p>
+            <p>You can simply copy the select command from each of the samples below to your clipboard. Then paste from the clipboard at the <span class="AppCommand">splice&gt;</span> prompt and press the <em>Enter</em> key or <em>Return</em> key to submit the query.</p>
             <h4>Example of Selecting a Subset</h4>
-            <p>You can use the following query to select the customer IDs from a subset of the transaction detail (<span class="CodeFont">T_DETAIL</span>)&#160;table, based on transaction date and category ID.</p>
+            <p>You can use the following query to select the customer IDs from a subset of the transaction detail (<code>T_DETAIL</code>)&#160;table, based on transaction date and category ID.</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">select customer_master_id
    from T_DETAIL d
    where TRANSACTION_DT &gt;= DATE('2010-01-01')
@@ -97,7 +97,7 @@ folder: OnPrem/InstallingSpliceMachine
       and original_sku_category_id &lt;= 44431;</pre>
             </div>
             <h4>Example of Selecting With a Join </h4>
-            <p>You can use the following to query a join of the <span class="CodeFont">T_HEADER</span>&#160;and <span class="CodeFont">CUSTOMERS</span>&#160;tables.</p>
+            <p>You can use the following to query a join of the <code>T_HEADER</code>&#160;and <code>CUSTOMERS</code>&#160;tables.</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
 select t.transaction_header_key, t.transaction_dt, t.store_nbr,
        t.geocapture_flg, t.exchange_rate_percent <br />   from T_HEADER t, CUSTOMERS c<br />   where c.customer_master_id=t.customer_master_id<br />   and t.customer_master_id &gt; 14000

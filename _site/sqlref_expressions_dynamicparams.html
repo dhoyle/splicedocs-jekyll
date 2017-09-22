@@ -2809,8 +2809,8 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Expressions.DynamicParameters">Dynamic Parameters</h1>
-            <p>You can prepare statements that are allowed to have parameters for which the value is not specified when the statement is  repared using <span class="ItalicFont">PreparedStatement</span> methods in the JDBC API. These parameters are called dynamic parameters and are represented by a ?.</p>
-            <p>The JDBC API documents refer to dynamic parameters as <span class="CodeFont">IN</span>, <span class="CodeFont">INOUT</span>, or <span class="CodeFont">OUT</span> parameters. In SQL, they are always <span class="CodeFont">IN</span> parameters.</p>
+            <p>You can prepare statements that are allowed to have parameters for which the value is not specified when the statement is  repared using <em>PreparedStatement</em> methods in the JDBC API. These parameters are called dynamic parameters and are represented by a ?.</p>
+            <p>The JDBC API documents refer to dynamic parameters as <code>IN</code>, <code>INOUT</code>, or <code>OUT</code> parameters. In SQL, they are always <code>IN</code> parameters.</p>
             <p>You must specify values for dynamic parameters before executing the statement, and the types of the specified values must match the expected types.</p>
             <h2>Example</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">PreparedStatement ps2 = conn.prepareStatement(
@@ -2829,41 +2829,41 @@ updateCount = ps2.executeUpdate();</pre>
             <h2 id="DynamicParametersAllowed">Where Dynamic Parameters are Allowed</h2>
             <p>You can use dynamic parameters anywhere in an expression where their data type can be easily deduced. </p>
             <ul>
-                <li>Use as the first operand of <span class="CodeFont">BETWEEN</span> is allowed if one of the second and third operands is not also a dynamic parameter. The type of the first operand is assumed to be the type of the non-dynamic parameter, or the union result of their types if both are not dynamic parameters.   <div class="preWrapper"><pre class="Example">WHERE ? BETWEEN DATE('1996-01-01') AND ?
+                <li>Use as the first operand of <code>BETWEEN</code> is allowed if one of the second and third operands is not also a dynamic parameter. The type of the first operand is assumed to be the type of the non-dynamic parameter, or the union result of their types if both are not dynamic parameters.   <div class="preWrapper"><pre class="Example">WHERE ? BETWEEN DATE('1996-01-01') AND ?
    -- types assumed to be DATE</pre></div></li>
-                <li>Use as the second or third operand of <span class="CodeFont">BETWEEN</span> is allowed. Type is assumed
+                <li>Use as the second or third operand of <code>BETWEEN</code> is allowed. Type is assumed
 to be the type of the left operand.
 				<div class="preWrapper"><pre class="Example">WHERE DATE('1996-01-01') BETWEEN ? AND ?
    -- types assumed to be DATE</pre></div></li>
-                <li>Use as the left operand of an <span class="CodeFont">IN</span> list is allowed if at least one item in the list is not itself a dynamic parameter. Type for the left operand is assumed to be the union result of the types of the non-dynamic parameters in the list.
+                <li>Use as the left operand of an <code>IN</code> list is allowed if at least one item in the list is not itself a dynamic parameter. Type for the left operand is assumed to be the union result of the types of the non-dynamic parameters in the list.
 				<div class="preWrapper"><pre class="Example">WHERE ? NOT IN (?, ?, 'Santiago')
    -- types assumed to be CHAR</pre></div></li>
-                <li>Use in the values list in an <span class="CodeFont">IN</span> predicate is allowed if the first operand is not a dynamic parameter or its type was determined in the previous rule. Type of the dynamic parameters appearing in the values list is assumed to be the type of the left operand.
-				<div class="preWrapper"><pre class="Example">WHERE <span class="BoldFont"><span class="ItalicFont">FloatColumn</span></span> IN (?, ?, ?)
+                <li>Use in the values list in an <code>IN</code> predicate is allowed if the first operand is not a dynamic parameter or its type was determined in the previous rule. Type of the dynamic parameters appearing in the values list is assumed to be the type of the left operand.
+				<div class="preWrapper"><pre class="Example">WHERE <strong><em>FloatColumn</strong></em> IN (?, ?, ?)
    -- types assumed to be FLOAT</pre></div></li>
-                <li>For the binary operators <span class="CodeFont">+, -, *, /, AND, OR, &lt;, &gt;, =, &lt;&gt;, &lt;=, and &gt;=,</span> use of a dynamic parameter as one operand but not both is permitted. Its type is taken from the other side.
+                <li>For the binary operators <code>+, -, *, /, AND, OR, &lt;, &gt;, =, &lt;&gt;, &lt;=, and &gt;=,</code> use of a dynamic parameter as one operand but not both is permitted. Its type is taken from the other side.
 				<div class="preWrapper"><pre class="Example">WHERE ? &lt; CURRENT_TIMESTAMP
    -- type assumed to be a TIMESTAMP</pre></div></li>
-                <li>Use in a <span class="CodeFont">CAST</span> is always permitted. This gives the dynamic parameter a type.
+                <li>Use in a <code>CAST</code> is always permitted. This gives the dynamic parameter a type.
 				<div class="preWrapper"><pre class="Example">CALL valueOf(CAST (? AS VARCHAR(10)))</pre></div></li>
-                <li>Use on either or both sides of <span class="CodeFont">LIKE</span> operator is permitted. When used on the left, the type of the dynamic parameter is set to the type of the right operand, but with the maximum allowed length for the type. When used on the right, the type is assumed to be of the same length and type as the left operand. (<span class="CodeFont">LIKE</span> is permitted on <span class="CodeFont">CHAR</span> and <span class="CodeFont">VARCHAR</span> types; see <a href="sqlref_builtinfcns_concat.html">Concatenation operator</a> for more information.)
+                <li>Use on either or both sides of <code>LIKE</code> operator is permitted. When used on the left, the type of the dynamic parameter is set to the type of the right operand, but with the maximum allowed length for the type. When used on the right, the type is assumed to be of the same length and type as the left operand. (<code>LIKE</code> is permitted on <code>CHAR</code> and <code>VARCHAR</code> types; see <a href="sqlref_builtinfcns_concat.html">Concatenation operator</a> for more information.)
 				<div class="preWrapper"><pre class="Example">WHERE ? LIKE 'Santi%'
    -- type assumed to be CHAR with a length of
    -- java.lang.Integer.MAX_VALUE</pre></div></li>
-                <li>In a conditional expression, which uses a <span class="CodeFont">?</span>, use of a dynamic parameter (which is also represented as a <span class="CodeFont">?</span>) is allowed. The type of a dynamic parameter as the first operand is assumed to be boolean. Only one of the second and third operands can be a dynamic parameter, and its type will be assumed to be the same as that of the other (that is, the third and second operand, respectively).
+                <li>In a conditional expression, which uses a <code>?</code>, use of a dynamic parameter (which is also represented as a <code>?</code>) is allowed. The type of a dynamic parameter as the first operand is assumed to be boolean. Only one of the second and third operands can be a dynamic parameter, and its type will be assumed to be the same as that of the other (that is, the third and second operand, respectively).
  				<div class="preWrapper"><pre class="Example">SELECT c1 IS NULL ? ? : c1
    -- allows you to specify a "default" value at execution time
    -- dynamic parameter assumed to be the type of c1
    -- you cannot have dynamic parameters on both sides
    -- of the :</pre></div></li>
-                <li>A dynamic parameter is allowed as an item in the values list or select list of an <span class="CodeFont">INSERT</span> statement. The type of the  dynamic parameter is assumed to be the type of the target column.
+                <li>A dynamic parameter is allowed as an item in the values list or select list of an <code>INSERT</code> statement. The type of the  dynamic parameter is assumed to be the type of the target column.
 			<div class="preWrapper"><pre class="Example">INSERT INTO t VALUES (?)
    -- dynamic parameter assumed to be the type
    -- of the only column in table t
 INSERT INTO t SELECT ?
 FROM t2
    -- not allowed</pre></div></li>
-                <li>A <span class="CodeFont">?</span> parameter in a comparison with a subquery takes its type from the expression being selected by the subquery. For example:
+                <li>A <code>?</code> parameter in a comparison with a subquery takes its type from the expression being selected by the subquery. For example:
 			<div class="preWrapper"><pre class="Example">SELECT *
 FROM tab1
 WHERE ? = (SELECT x FROM tab2)
@@ -2872,17 +2872,17 @@ FROM tab1
 WHERE ? = ANY (SELECT x FROM tab2)
    -- In both cases, the type of the dynamic parameter is
    -- assumed to be the same as the type of tab2.x.</pre></div></li>
-                <li>A dynamic parameter is allowed as the value in an <span class="CodeFont">UPDATE</span> statement. The type of the dynamic parameter is assumed to be the type of the column in the target table.
+                <li>A dynamic parameter is allowed as the value in an <code>UPDATE</code> statement. The type of the dynamic parameter is assumed to be the type of the column in the target table.
 			<div class="preWrapper"><pre class="Example">UPDATE t2 SET c2 =?
    -- type is assumed to be type of c2</pre></div></li>
-                <li>Dynamic parameters are allowed as the operand of the unary operators <span class="CodeFont">-</span> or <span class="CodeFont">+</span>. For example:
+                <li>Dynamic parameters are allowed as the operand of the unary operators <code>-</code> or <code>+</code>. For example:
    			<div class="preWrapper"><pre class="Example">CREATE TABLE t1 (c11 INT, c12 SMALLINT, c13 DOUBLE, c14 CHAR(3))
 SELECT * FROM t1 WHERE c11 BETWEEN -? AND +?
    -- The type of both of the unary operators is INT
    -- based on the context in which they are used (that is,
    -- because c11 is INT, the unary parameters also get the
    -- type INT.</pre></div></li>
-                <li><span class="CodeFont">LENGTH</span> allow a dynamic parameter. The type is assumed to be a maximum length <span class="CodeFont">VARCHAR</span> type.
+                <li><code>LENGTH</code> allow a dynamic parameter. The type is assumed to be a maximum length <code>VARCHAR</code> type.
 			<div class="preWrapper"><pre class="Example">SELECT LENGTH(?)</pre></div></li>
                 <li>Qualified comparisons.
 			<div class="preWrapper"><pre class="Example" xml:space="preserve">? = SOME (SELECT 1 FROM t)
@@ -2890,8 +2890,8 @@ SELECT * FROM t1 WHERE c11 BETWEEN -? AND +?
 
 1 = SOME (SELECT ? FROM t)
    -- is valid. Dynamic parameter assumed to be INTEGER type.</pre></div></li>
-                <li>A dynamic parameter is allowed as the left operand of an <span class="CodeFont">IS</span> expression
-and is assumed to be a <span class="CodeFont">Boolean</span>.</li>
+                <li>A dynamic parameter is allowed as the left operand of an <code>IS</code> expression
+and is assumed to be a <code>Boolean</code>.</li>
             </ul>
         </div>
 	</section>
@@ -2911,7 +2911,7 @@ and is assumed to be a <span class="CodeFont">Boolean</span>.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

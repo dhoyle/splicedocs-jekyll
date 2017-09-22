@@ -2809,32 +2809,32 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInFcns.Count">COUNT</h1>
-            <p><span class="CodeFont">COUNT</span> returns the number of rows returned by the query. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
-            <p>The <span class="CodeFont">COUNT(<span class="ItalicFont">Expression</span>)</span>&#160;version returns the number of row where <span class="ItalicFont">Expression</span> is not null. You can count either all rows, or only distinct values of <span class="ItalicFont">Expression</span>.</p>
-            <p>The  <span class="CodeFont">COUNT(*)</span> version returns all rows, including duplicates and nulls.</p>
+            <p><code>COUNT</code> returns the number of rows returned by the query. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
+            <p>The <code>COUNT(<em>Expression</code>)</em>&#160;version returns the number of row where <em>Expression</em> is not null. You can count either all rows, or only distinct values of <em>Expression</em>.</p>
+            <p>The  <code>COUNT(*)</code> version returns all rows, including duplicates and nulls.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">COUNT( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">COUNT( [ DISTINCT | ALL ] <em>Expression</em> )</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">DISTINCT
             </p>
                 <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated from the count.</p>
-                <p class="paramName"><span class="ItalicFont">ALL</span>
+                <p class="paramName"><em>ALL</em>
                 </p>
                 <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.</p>
                 <p class="paramName">Expression
             </p>
-                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>.</p>
-                <p class="paramDefn">An <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery.</p>
-                <p class="paramDefn">If an <span class="ItalicFont">Expression</span>evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
+                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
+                <p class="paramDefn">An <em>Expression</em> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery.</p>
+                <p class="paramDefn">If an <em>Expression</em>evaluates to <code>NULL</code>, the aggregate skips that value.</p>
             </div>
             <h2>Usage</h2>
-            <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont"><a href="sqlref_expressions_select.html">Expression</a></span> is allowed. For example, the following query is not valid:</p>
+            <p>Only one <code>DISTINCT</code> aggregate expression per <em><a href="sqlref_expressions_select.html">Expression</a></em> is allowed. For example, the following query is not valid:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- query not allowed
 SELECT COUNT (DISTINCT flying_time), SUM (DISTINCT miles)
   FROM Flights</pre>
             </div>
-            <div class="noteNote">Note that specifying <span class="CodeFont">DISTINCT</span>&#160;can result in a different value, since a smaller number of values may be counted. For example, if a column contains the values 1, 1, 1, 1, and 2, <span class="CodeFont">COUNT(col)</span> returns a greater value than <span class="CodeFont">COUNT(DISTINCT col)</span>.</div>
+            <p class="noteNote">Note that specifying <code>DISTINCT</code>&#160;can result in a different value, since a smaller number of values may be counted. For example, if a column contains the values 1, 1, 1, 1, and 2, <code>COUNT(col)</code> returns a greater value than <code>COUNT(DISTINCT col)</code>.</p>
             <h2>Results</h2>
             <p>The resulting data type is <a href="sqlref_builtinfcns_bigint.html">BIGINT</a>.</p>
             <h2>Aggregate Example</h2>
@@ -2885,11 +2885,11 @@ Mitch Canepa            |28    |15
                 </li>
                 <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate Functions</a>
                 </li>
-                <li><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_max.html"><span class="CodeFont">MAX</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_min.html"><span class="CodeFont">MIN</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_sum.html"><span class="CodeFont">SUM</span></a> function</li>
-                <li><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
+                <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_max.html"><code>MAX</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+                <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+                <li><a href="sqlref_clauses_over.html"><code>OVER</code></a>&#160;clause</li>
             </ul>
         </div>
 	</section>
@@ -2909,7 +2909,7 @@ Mitch Canepa            |28    |15
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

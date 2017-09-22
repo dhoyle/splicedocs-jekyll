@@ -2808,7 +2808,7 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor404">SQL&#160;Identifier Syntax</h1>
+            <h1>SQL&#160;Identifier Syntax</h1>
             <p>An SQLIdentifier is a dictionary object identifier that conforms to the rules of ANSI&#160;SQL; identifiers for dictionary objects:</p>
             <ul>
                 <li>are limited to 128 characters </li>
@@ -2821,19 +2821,19 @@
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE VIEW PitchingCoaches(RECEIVED) AS VALUES 1;
 </pre>
             </div>
-            <p>is stored in system catalogs as <span class="CodeFont">PITCHINGCOACHES</span>, since it is not quoted. </p>
+            <p>is stored in system catalogs as <code>PITCHINGCOACHES</code>, since it is not quoted. </p>
             <p>Whereas this view name:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE VIEW "PitchingCoaches"(RECEIVED) AS VALUES 1;
 </pre>
             </div>
-            <p>is quoted, and thus is stored as <span class="CodeFont">PitchingCoaches</span> in the system catalog</p>
+            <p>is quoted, and thus is stored as <code>PitchingCoaches</code> in the system catalog</p>
             <h2>Qualifying dictionary objects</h2>
-            <p>Since some dictionary objects can be contained within other objects, you can qualify those dictionary object names. Each component is separated from the next by a period (<span class="CodeFont">.</span>). You qualify a dictionary object name in order to avoid ambiguity.</p>
+            <p>Since some dictionary objects can be contained within other objects, you can qualify those dictionary object names. Each component is separated from the next by a period (<code>.</code>). You qualify a dictionary object name in order to avoid ambiguity.</p>
             <h3>Examples:</h3>
             <p>Here is an example of a simple, unqualified SQLIdentifier used to name a table:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE&#160;TABLE&#160;Coaches(&#160;ID&#160;INT&#160;NOT&#160;NULL );</pre>
             </div>
-            <p>And here's an example of a table name (<span class="CodeFont">Coaches</span>)&#160;qualified by a schema name (<span class="CodeFont">Baseball</span>):</p>
+            <p>And here's an example of a table name (<code>Coaches</code>)&#160;qualified by a schema name (<code>Baseball</code>):</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE&#160;TABLE&#160;Baseball.Coaches(&#160;ID&#160;INT&#160;NOT&#160;NULL );
 </pre>
             </div>
@@ -2843,7 +2843,7 @@
                 <li>
                     <p>Ordinary identifiers are identifiers not surrounded by double quotation marks:</p>
                     <ul class="bullet">
-                        <li>An ordinary identifier must begin with a letter and contain only letters, underscore characters (<span class="CodeFont">_</span>), and digits.</li>
+                        <li>An ordinary identifier must begin with a letter and contain only letters, underscore characters (<code>_</code>), and digits.</li>
                         <li>All Unicode letters and digits are permitted; however, Splice Machine does not attempt to ensure that the characters in identifiers are valid in the database's locale.</li>
                     </ul>
                 </li>
@@ -2857,33 +2857,33 @@
                     </ul>
                 </li>
             </ul>
-            <h2 id="kanchor405">Capitalization and Special Characters in SQL Statements</h2>
+            <h2>Capitalization and Special Characters in SQL Statements</h2>
             <p>You can submit SQL&#160;statements to Splice Machine as strings by using JDBC; these strings use the Unicode character set. Within these strings:</p>
             <ul>
-                <li>Double quotation marks delimit special identifiers referred to in ANSI&#160;SQL as <span class="ItalicFont">delimited identifiers</span>. </li>
+                <li>Double quotation marks delimit special identifiers referred to in ANSI&#160;SQL as <em>delimited identifiers</em>. </li>
                 <li>Single quotation marks delimit character strings.</li>
                 <li>Within a character string, to represent a single quotation mark or apostrophe, use two single quotation marks. (In other words, a single quotation mark is the escape character for a single quotation mark).
 				</li>
                 <li>SQL keywords are case-insensitive. For example, you can type the keyword
-<span class="CodeFont">SELECT</span> as <span class="CodeFont">SELECT</span>, <span class="CodeFont">Select</span>, <span class="CodeFont">select</span>, or <span class="CodeFont">sELECT</span>.</li>
+<code>SELECT</code> as <code>SELECT</code>, <code>Select</code>, <code>select</code>, or <code>sELECT</code>.</li>
                 <li>ANSI&#160;SQL -style identifiers are case-insensitive unless they are delimited.</li>
                 <li>Java-style identifiers are always case-sensitive.</li>
             </ul>
             <h3>Other Special Characters:</h3>
             <ul>
-                <li><span class="CodeFont">*</span> is a wildcard within a <span class="ItalicFont"><a href="sqlref_expressions_select.html#StarWildcard">Select Expression</a></span>. It
+                <li><code>*</code> is a wildcard within a <em><a href="sqlref_expressions_select.html#StarWildcard">Select Expression</a></em>. It
 can also be the multiplication operator. In all other cases, it is a syntactical
 metasymbol that flags items you can repeat 0 or more times.</li>
-                <li><span class="CodeFont">%</span> and <span class="CodeFont">_</span> are character wildcards when used within character strings following
-a <span class="CodeFont">LIKE</span> operator (except when escaped with an escape character). See <a href="sqlref_expressions_boolean.html">Boolean expressions</a>.</li>
+                <li><code>%</code> and <code>_</code> are character wildcards when used within character strings following
+a <code>LIKE</code> operator (except when escaped with an escape character). See <a href="sqlref_expressions_boolean.html">Boolean expressions</a>.</li>
                 <li>
                     <p>Comments can be either single-line or multi-line, as per the ANSI&#160;SQL standard:</p>
                     <ul style="list-style-type: square;">
                         <li>Single line
-comments start with two dashes (<span class="CodeFont">--</span>) and end with the newline character. </li>
+comments start with two dashes (<code>--</code>) and end with the newline character. </li>
                         <li>Multi-line
-comments are bracketed and start with forward slash star (<span class="CodeFont">/*</span>), and end with star
-forward slash (<span class="CodeFont">*/</span>). Note that bracketed comments may be nested. Any text between
+comments are bracketed and start with forward slash star (<code>/*</code>), and end with star
+forward slash (<code>*/</code>). Note that bracketed comments may be nested. Any text between
 the starting and ending comment character sequence is ignored.</li>
                     </ul>
                 </li>
@@ -2906,7 +2906,7 @@ the starting and ending comment character sequence is ignored.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

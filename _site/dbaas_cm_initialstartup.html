@@ -507,7 +507,7 @@
 		   <p>Many of the components of the <span class="ConsoleLink">Create Cluster</span> screen, like most of our Cloud Manager screens, include small information buttons <img src="images/infobutton.png" class="icon36"> that you can click to display a small pop-up that describes the components.</p>
            <h3>About the Cluster Parameters</h3>
            <p>You'll notice several sliders that you can adjust to modify the configuration of your cluster. As you move these sliders, you'll see how the estimated monthly costs for your cluster change. Here are explanations of the adjustments you can make to your cluster provisioning:</p>
-            <div class="noteNote">Note that you can come back and modify your cluster configuration in the future, so you're not stuck forever with your initial settings.</div>
+            <p class="noteNote">Note that you can come back and modify your cluster configuration in the future, so you're not stuck forever with your initial settings.</p>
           <table>
                <col />
                <col />
@@ -528,14 +528,14 @@
                        <td class="CodeFont">Internal Dataset (TB)</td>
                        <td>
                            <p>Move the slider to modify your estimate of how large your database will be.</p>
-                           <p><span class="CodeFont">Internal Dataset</span> is the amount of data that you will be storing within your Splice Machine database.</p>
+                           <p><code>Internal Dataset</code> is the amount of data that you will be storing within your Splice Machine database.</p>
                        </td>
                    </tr>
                    <tr>
                        <td class="CodeFont">External Dataset (TB)</td>
                        <td>
                            <p>Move the slider to modify your estimate of how large your external dataset will be.</p>
-                           <p><span class="CodeFont">External Dataset</span> is the amount of data the you will be accessing from external data sources, using features such as external tables and our virtual table interface.</p>
+                           <p><code>External Dataset</code> is the amount of data the you will be accessing from external data sources, using features such as external tables and our virtual table interface.</p>
                        </td>
                    </tr>
                    <tr>
@@ -555,7 +555,7 @@
                        <td class="ConsoleLink">Backup Frequency</td>
                        <td class="CodeFont">Frequency</td>
                        <td>
-                           <p>Select how frequently you want Splice Machine to back up your database. You can select <span class="CodeFont">Hourly</span>, <span class="CodeFont">Daily</span>, or <span class="CodeFont">Weekly</span>; each selection displays additional backup timing and retention options:</p>
+                           <p>Select how frequently you want Splice Machine to back up your database. You can select <code>Hourly</code>, <code>Daily</code>, or <code>Weekly</code>; each selection displays additional backup timing and retention options:</p>
                            <p>Hourly:</p>
                            <p>
                                <img src="images/HourlyBackupOptions_450x78.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 78;" />
@@ -572,7 +572,7 @@
                    </tr>
                </tbody>
            </table>
-           <div class="noteIcon">A <span class="ItalicFont">Splice Unit</span> is a measure of processing work; one unit currently translates (approximately)&#160;to 2 virtual CPUs and 16 GB&#160;of memory.</div>
+           <p class="noteIcon">A <em>Splice Unit</em> is a measure of processing work; one unit currently translates (approximately)&#160;to 2 virtual CPUs and 16 GB&#160;of memory.</p>
            <h3>Modifying Cluster Parameters</h3>
            <p>We recommend that you spend a few minutes experimenting with modifying the cluster parameters; you'll notice that as you increase various values, the estimated monthly cost of your cluster changes. </p>
            <p>When you're satisfied with your cluster configuration parameters, click the <span class="CalloutFont">Next</span> button to set up access to your cluster.</p>
@@ -581,19 +581,19 @@
                <img src="images/CreateNewCluster2.png" class="indentedTightSpacing" title="Modified cluster parameters" />
            </p>
 		   <p>Splice Machine will not allow you to create your cluster if any of your values clash. You can click the vertical bar at the end of the striping to instantly set the parameter to the required value.</p>
-           <div class="noteNote"> If you don't correct the required setting and attempt to advance to the <span class="CalloutFont">Next</span> screen, you'll see an error message and will be unable to advance until you do correct it.</div>
+           <p class="noteNote"> If you don't correct the required setting and attempt to advance to the <span class="CalloutFont">Next</span> screen, you'll see an error message and will be unable to advance until you do correct it.</p>
            <h2 id="Configur">Configure Cluster Access</h2>
            <p>Once you've configured your cluster, click the <span class="CalloutFont">Next</span> button to display the <span class="ConsoleLink">Cluster Access</span> screen. The following image includes displays of the pop-up help information displays for the different access methods:</p>
            <p>
                <img src="images/CreateNewCluster4.png" title="Setting up VPC and/or IAM for a new cluster" class="indentedTightSpacing" />
            </p>
-           <p>You can set your cluster up for access to your Amazon Virtual Private Cloud (VPC)&#160;access by selecting the <span class="CodeFont">Client&#160;VPC&#160;connectivity required</span> option and providing your VPC&#160;account ID. </p>
+           <p>You can set your cluster up for access to your Amazon Virtual Private Cloud (VPC)&#160;access by selecting the <code>Client&#160;VPC&#160;connectivity required</code> option and providing your VPC&#160;account ID. </p>
            <p>You need to configure AWS&#160;Identity and Access Management (IAM) for your cluster to allow Splice&#160;Machine to access selected S3 folders; this is described in our <a href="tutorials_ingest_configures3.html">Configuring an S3 bucket for Splice Machine Acces</a> tutorial.</p>
            <div class="notePlain">
                <p>For more information about Amazon VPC, see <a href="https://aws.amazon.com/vpc/"  target="_blank">https://aws.amazon.com/vpc/</a>.</p>
                <p>For more information about Amazon IAM, see <a href="https://aws.amazon.com/iam/"  target="_blank">https://aws.amazon.com/iam/</a>.</p>
            </div>
-           <p>After setting up any access methods, please confirm that you <span class="CodeFont">accept our terms and conditions</span>, then click the <span class="CalloutFont">Launch</span> button, which will take you to the <span class="ConsoleLink">Payment</span> screen, unless you've subscribed to Splice Machine from the Amazon Marketplace or have already set up a payment method for your account.</p>
+           <p>After setting up any access methods, please confirm that you <code>accept our terms and conditions</code>, then click the <span class="CalloutFont">Launch</span> button, which will take you to the <span class="ConsoleLink">Payment</span> screen, unless you've subscribed to Splice Machine from the Amazon Marketplace or have already set up a payment method for your account.</p>
            <h2 id="Payment">Set Up Payment</h2>
            <p>When you click the <span class="CalloutFont">Launch button</span>, then one of these actions happens:</p>
 		   <ul>
@@ -636,7 +636,7 @@
            <p>
                <img src="images/BillingActivity_729x348.png" title="Billing Activity tab of the Account screen" class="indentedTightSpacing" style="width: 729;height: 348;" />
            </p>
-		   <div class="noteNote">If you've purchased Splice Machine through Amazon Marketplace, change your billing credentials in the Marketplace instead.</div>
+		   <p class="noteNote">If you've purchased Splice Machine through Amazon Marketplace, change your billing credentials in the Marketplace instead.</p>
            <h2 id="loadData">Start Using Your Database!</h2>
            <p>After your cluster spins up, which typically requires about 10 minutes, you can load your data into your&#160;Splice Machine database and start running queries.</p>
 		   <p>The easiest way to get going with your new database is to use our <a href="dbaas_zep_intro.html">Zeppelin Notebook interface</a>, with which you can quickly run queries and generate different visualizations of your results, all without writing any code. We've provided a number of useful Zeppelin tutorials, including one that  walks you through setting up a schema, creating tables, loading data, and then running queries.</span>
@@ -664,7 +664,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -13,14 +13,14 @@ folder: SQLReference/Statements
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="Statements.CreateView" id="Statements.CreateView">CREATE VIEW</h1>
             <p>Views are virtual tables formed by a query. A view is a dictionary object that you can use until you drop it. Views are not updatable.</p>
-            <p>If a qualified view name is specified, the schema name cannot begin with <span class="ItalicFont">SYS</span>.</p>
+            <p>If a qualified view name is specified, the schema name cannot begin with <em>SYS</em>.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
-CREATE VIEW <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></span>
-   [ ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>] * ) ]
-   AS <span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span> ]<span>
-     [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">RESULT&#160;OFFSET&#160;clause</a></span> ]
-     [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">FETCH&#160;FIRST clause</a></span> ] </span></pre>
+CREATE VIEW <em><a href="sqlref_identifiers_types.html#ViewName">view-Name</a></em>
+   [ ( <em><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></em>] * ) ]
+   AS <em><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></em> ]<span>
+     [ <em><a href="sqlref_clauses_resultoffset.html">RESULT&#160;OFFSET&#160;clause</a></em> ]
+     [ <em><a href="sqlref_clauses_resultoffset.html">FETCH&#160;FIRST clause</a></em> ] </span></pre>
             </div>
             <p>A view definition can contain an optional view column list to explicitly name the columns in the view. If there is no column list, the view inherits the column names from the underlying query. All columns in a view must be uniquely named.</p>
             <div class="paramList">
@@ -28,11 +28,11 @@ CREATE VIEW <span class="ItalicFont"><a href="sqlref_identifiers_types.html#View
                 <p class="paramDefnFirst">The name to assign to the view.</p>
                 <p class="paramName">Simple-column-Name*</p>
                 <p class="paramDefnFirst">An optional list of names to be used for columns of the view. If not given, the column names are deduced from the query.</p>
-                <p class="paramDefn">The maximum number of columns in a view is <span class="CodeFont">{{splvar_limit_MaxColumnsInView}}</span>.</p>
+                <p class="paramDefn">The maximum number of columns in a view is <code>{{splvar_limit_MaxColumnsInView}}</code>.</p>
                 <p class="paramName">AS&#160;Query [ORDER&#160;BY&#160;clause]</p>
-                <p class="paramDefnFirst">A <span class="CodeFont">SELECT</span> or <span class="CodeFont">VALUES</span> command that provides the columns and rows of the view.</p>
+                <p class="paramDefnFirst">A <code>SELECT</code> or <code>VALUES</code> command that provides the columns and rows of the view.</p>
                 <p class="paramName">result offset and fetch first clauses</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">FETCH&#160;FIRST</span> clause</a>, which can be combined with the <span class="CodeFont">RESULT&#160;OFFSET</span> clause, limits the number of rows added to the view.</p>
+                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><code>FETCH&#160;FIRST</code> clause</a>, which can be combined with the <code>RESULT&#160;OFFSET</code> clause, limits the number of rows added to the view.</p>
             </div>
             <h2>Examples</h2>
             <p class="body">This example creates a view that shows the age of each player in our database:</p>
@@ -98,14 +98,14 @@ splice&gt;CREATE FUNCTION SIN (DATA DOUBLE)
 splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
 0 rows inserted/updated/deleted</pre>
             </div>
-            <p>The following <span class="CodeFont">SELECT</span>:</p>
+            <p>The following <code>SELECT</code>:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM V1;</pre>
             </div>
-            <p>Is dependent on view <span class="ItalicFont">V1</span>, table <span class="ItalicFont">T1,</span> and external scalar function  <span class="ItalicFont">SIN.</span></p>
+            <p>Is dependent on view <em>V1</em>, table <em>T1,</em> and external scalar function  <em>SIN.</em></p>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_statements_dropview.html"><span class="CodeFont">DROP&#160;VIEW</span></a>&#160;statement</li>
-                <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a> clause</li>
+                <li><a href="sqlref_statements_dropview.html"><code>DROP&#160;VIEW</code></a>&#160;statement</li>
+                <li><a href="sqlref_clauses_orderby.html"><code>ORDER&#160;BY</code></a> clause</li>
             </ul>
         </div>
 	</section>

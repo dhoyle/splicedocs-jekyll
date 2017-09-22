@@ -11,8 +11,8 @@ folder: SQLReference/BuiltInFcns
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>STDDEV_SAMP</h1>
-            <p>The <span class="CodeFont">STDDEV_POP()</span> function returns the sample standard deviation of a set of numeric values.</p>
-            <p>It returns <span class="CodeFont">NULL</span> if no matching row is found.</p>
+            <p>The <code>STDDEV_POP()</code> function returns the sample standard deviation of a set of numeric values.</p>
+            <p>It returns <code>NULL</code> if no matching row is found.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">STDDEV_SAMP ( [ DISTINCT | ALL ] expression )</pre>
             </div>
@@ -22,13 +22,13 @@ folder: SQLReference/BuiltInFcns
                 <p class="paramName">ALL</p>
                 <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.</p>
                 <p class="paramName">expression</p>
-                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>.</p>
+                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
                 <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL data types. </p>
-                <p class="paramDefn">If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
+                <p class="paramDefn">If an expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
             </div>
             <h2>Results</h2>
             <p>This function returns a double-precision number.</p>
-            <p>If the input expression consists of a single value, the result of the function is <span class="CodeFont">NULL</span>, not <span class="CodeFont">0</span>.</p>
+            <p>If the input expression consists of a single value, the result of the function is <code>NULL</code>, not <code>0</code>.</p>
             <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
             <h2>Example</h2>

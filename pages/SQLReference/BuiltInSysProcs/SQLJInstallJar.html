@@ -11,12 +11,12 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInSysProcs.SQLJInstallJar">SQLJ.INSTALL_JAR</h1>
-            <p>The <span class="CodeFont">SQLJ.INSTALL_JAR</span> system procedure stores a jar file in a database. </p>
-            <div class="noteNote">For more information about using JAR&#160;files, see the <a href="developers_fcnsandprocs_intro.html">Using Functions and Stored Procedures</a> section in our <span class="ItalicFont">Developer's Guide</span>.</div>
+            <p>The <code>SQLJ.INSTALL_JAR</code> system procedure stores a jar file in a database. </p>
+            <p class="noteNote">For more information about using JAR&#160;files, see the <a href="developers_fcnsandprocs_intro.html">Using Functions and Stored Procedures</a> section in our <em>Developer's Guide</em>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SQLJ.INSTALL_JAR(IN <span class="ItalicFont">jar_file_path_or-url</span> VARCHAR(32672),
-                 IN <span class="ItalicFont">qualified_jar_name</span> VARCHAR(32672),
-                 IN <span class="ItalicFont">deploy</span> INTEGER)</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SQLJ.INSTALL_JAR(IN <em>jar_file_path_or-url</em> VARCHAR(32672),
+                 IN <em>qualified_jar_name</em> VARCHAR(32672),
+                 IN <em>deploy</em> INTEGER)</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">jar_file_path_or-url</p>
@@ -35,13 +35,13 @@ jar file, qualified by the schema name. Two examples:
 MYSCHEMA."Sample2"</pre>
                 </div>
                 <p class="paramName">deploy</p>
-                <p class="paramDefnFirst">If this set to <span class="CodeFont">1</span>, it indicates the existence of an SQLJ deployment descriptor file.
+                <p class="paramDefnFirst">If this set to <code>1</code>, it indicates the existence of an SQLJ deployment descriptor file.
 Splice Machine ignores this
-argument, so it is normally set to <span class="CodeFont">0</span>.</p>
+argument, so it is normally set to <code>0</code>.</p>
             </div>
             <h2>Usage Notes</h2>
             <p class="body">This procedure will not work properly unless you have first added your procedure to the Derby CLASSPATH&#160;variable. For example:</p><pre class="Example">CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');</pre>
-            <p class="body">For information about storing and updating stored procedures, and the setting of the Derby classpath, see the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Splice Machine Functions and Stored Procedures</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</p>
+            <p class="body">For information about storing and updating stored procedures, and the setting of the Derby classpath, see the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Splice Machine Functions and Stored Procedures</a> topic in our <em>Developer's Guide</em>.</p>
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
             <h2>Execute Privileges</h2>
@@ -64,9 +64,9 @@ splice&gt;&#160;CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE."SAMPLE2"', 0);</pre>
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_sysprocs_removejar.html"><span class="CodeFont">SQLJ_REMOVE_JAR</span></a>
+                <li><a href="sqlref_sysprocs_removejar.html"><code>SQLJ_REMOVE_JAR</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_replacejar.html"><span class="CodeFont">SQLJ_REPLACE_JAR</span></a>
+                <li><a href="sqlref_sysprocs_replacejar.html"><code>SQLJ_REPLACE_JAR</code></a>
                 </li>
             </ul>
         </div>

@@ -12,18 +12,18 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInSysProcs.CreateUser">SYSCS_UTIL.SYSCS_CREATE_USER</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_CREATE_USER</span> system procedure adds a new user account to a database.</p>
+            <p>The <code>SYSCS_UTIL.SYSCS_CREATE_USER</code> system procedure adds a new user account to a database.</p>
             <p>This procedure creates users for use with NATIVE authentication.</p>
             <p>If NATIVE authentication is not already turned on when you call this procedure:</p>
             <ul>
                 <li style="margin-bottom:8px" value="1">The first user whose credentials are stored must be the database owner.</li>
                 <li style="margin-bottom:8px" value="2">Calling this procedure will turn on NATIVE authentication the next time the database is booted.</li>
             </ul>
-            <div class="noteIcon">Once you turn on NATIVE authentication with this procedure, it remains turned on permanently. There is no way to turn it off.</div>
+            <p class="noteIcon">Once you turn on NATIVE authentication with this procedure, it remains turned on permanently. There is no way to turn it off.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CREATE_USER(
-		IN <span class="ItalicFont">userName</span> VARCHAR(128),
-		IN <span class="ItalicFont">password</span> VARCHAR(32672)
+		IN <em>userName</em> VARCHAR(128),
+		IN <em>password</em> VARCHAR(32672)
 		)</pre>
             </div>
             <div class="paramList">
@@ -31,15 +31,15 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramDefnFirst">A user name that is case-sensitive if you place the name string in double
 				quotes. This user name is an authorization identifier.</p>
                 <p class="paramDefn">Case sensitivity is very specific with user names: if you specify the user name in single quotes, e.g. 'Fred', the system automatically converts it into all Uppercase.</p>
-                <div class="noteNote">The user name is only case sensitive if you double-quote it inside of the single quotes. For example, <span class="CodeFont">'"Fred"'</span> is a different user name than <span class="CodeFont">'Fred'</span>, because <span class="CodeFont">'Fred'</span> is assumed to be case-insensitive.</div>
+                <p class="noteNote">The user name is only case sensitive if you double-quote it inside of the single quotes. For example, <code>'"Fred"'</code> is a different user name than <code>'Fred'</code>, because <code>'Fred'</code> is assumed to be case-insensitive.</p>
                 <p class="paramName">password</p>
                 <p class="paramDefnFirst">A case-sensitive password.</p>
             </div>
         <h2>Results</h2>
-        <p>When you add a new user, a new schema is automatically created with exactly the same name as the user. For example, here's a sequence of an administrator adding a new user named <span class="CodeFont">fred</span> and then verifying that the schema named <span class="CodeFont">fred</span> is now active:</p>
+        <p>When you add a new user, a new schema is automatically created with exactly the same name as the user. For example, here's a sequence of an administrator adding a new user named <code>fred</code> and then verifying that the schema named <code>fred</code> is now active:</p>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');<br />Statement executed.<br />splice&gt;&#160;VALUES(CURRENT&#160;SCHEMA);<br />1<br />------------------------------------------------------------------<br />SPLICE<br /><br />1 row selected<br />splice&gt;&#160;SET&#160;SCHEMA&#160;fred;<br />0 rows inserted/updated/deleted<br />splice&gt;&#160;VALUES(CURRENT&#160;SCHEMA);<br />1<br />------------------------------------------------------------------<br />FRED<br /><br />1 row selected</pre>
         </div>
-        <p>When the new user's credentials are used to connect to the database, his/her default schema will be that new schema. If you want the new user to have access to data in other schemas, such as the <span class="CodeFont">SPLICE</span>&#160;schema, an administrator will need to explicitly <a href="sqlref_statements_grant.html">grant</a> those access privileges. </p>
+        <p>When the new user's credentials are used to connect to the database, his/her default schema will be that new schema. If you want the new user to have access to data in other schemas, such as the <code>SPLICE</code>&#160;schema, an administrator will need to explicitly <a href="sqlref_statements_grant.html">grant</a> those access privileges. </p>
             <h2>Execute Privileges</h2>
             <p>If authentication and SQL authorization are both enabled, only the database owner has
 			execute privileges on this function by default. The
@@ -66,13 +66,13 @@ folder: SQLReference/BuiltInSysProcs
             <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');
 Statement executed.</pre>
             </div>
-            <p>Create a (case sensitive)&#160;user named <span class="CodeFont">MrBaseball</span>:</p>
+            <p>Create a (case sensitive)&#160;user named <code>MrBaseball</code>:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">CALL SYSCS_UTIL.SYSCS_CREATE_USER('MrBaseball', 'pinchhitter')
 Statement executed.</pre>
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_builtinfcns_user.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DROP_USER</span></a> built-in system procedure</li>
+                <li><a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_DROP_USER</code></a> built-in system procedure</li>
             </ul>
         </div>
 	</section>

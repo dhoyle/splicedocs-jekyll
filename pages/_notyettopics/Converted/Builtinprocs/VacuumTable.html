@@ -11,8 +11,8 @@ folder: SQLReference/BuiltInSysProcs
 <section>
 	<div class="TopicContent" data-swiftype-index="true">
         <h1>SYSCS_UTIL.VACUUM_TABLE</h1>
-        <p>The <span class="CodeFont">SYSCS_UTIL.VACUUM_TABLE</span>&#160;system procedure improves the performance of your database by cleaning no longer needed historical update data from a table.</p>
-        <div class="noteIcon">Splice Machine recommends calling this system procedure regularly (or frequently)&#160;on tables in your database that are frequently updated with modifications or deletions. Insertions by themselves do not generate the kind of data that needs to be vacuumed from a table; however, if a row is frequently inserted, then deleted, then inserted again, and that row has a primary key or indexed fields, vacuuming will be required.<br /><br />Many customers use a scheduling utility such as <span class="ItalicFont">Cron</span> to call this procedure.<br /></div>
+        <p>The <code>SYSCS_UTIL.VACUUM_TABLE</code>&#160;system procedure improves the performance of your database by cleaning no longer needed historical update data from a table.</p>
+        <p class="noteIcon">Splice Machine recommends calling this system procedure regularly (or frequently)&#160;on tables in your database that are frequently updated with modifications or deletions. Insertions by themselves do not generate the kind of data that needs to be vacuumed from a table; however, if a row is frequently inserted, then deleted, then inserted again, and that row has a primary key or indexed fields, vacuuming will be required.<br /><br />Many customers use a scheduling utility such as <em>Cron</em> to call this procedure.<br /></p>
         <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.VACUUM_TABLE(
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;schemaName,
@@ -21,12 +21,12 @@ folder: SQLReference/BuiltInSysProcs
         <div class="paramList">
             <p class="paramName">schemaName</p>
             <p class="paramDefnFirst">Specifies the schema of the
-			table. Passing a <span class="CodeFont">null</span> or non-existent schema name generates an error.</p>
+			table. Passing a <code>null</code> or non-existent schema name generates an error.</p>
             <p class="paramName">tableName</p>
             <p class="paramDefnFirst">Specifies the table name of
 				the table. The string must exactly match the case of the table name, and the
-				argument of <span class="CodeFont">"Fred"</span> will be passed to SQL as the delimited identifier <span class="CodeFont">'Fred'</span>.
-			Passing a <span class="CodeFont">null</span> or non-existent table name generates an error.</p>
+				argument of <code>"Fred"</code> will be passed to SQL as the delimited identifier <code>'Fred'</code>.
+			Passing a <code>null</code> or non-existent table name generates an error.</p>
         </div>
         <h2>Results</h2>
         <p>This procedure returns a table with the following columns:</p>

@@ -11,12 +11,12 @@ folder: SQLReference/BuiltInSysProcs
 <section>
 	<div class="TopicContent" data-swiftype-index="true">
         <h1 id="BuiltInSysProcs.DumpTransactions">SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</h1>
-        <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</span> system procedure displays summary information about the transactions that are in the transaction table. </p>
+        <p>The <code>SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</code> system procedure displays summary information about the transactions that are in the transaction table. </p>
         <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS()</pre>
         </div>
         <h2>Results</h2>
-        <p>The displayed results from calling <span class="CodeFont">SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</span> include these values:</p>
+        <p>The displayed results from calling <code>SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</code> include these values:</p>
         <table summary="Columns in Dump_Transactions results display">
             <col />
             <col />
@@ -57,14 +57,14 @@ folder: SQLReference/BuiltInSysProcs
                     <td class="CodeFont">commitTimestamp</td>
                     <td>
                         <p class="noSpaceAbove">The timestamp at which this transaction was committed.</p>
-                        <p>This value is <span class="CodeFont">NULL</span>&#160;if the transaction is not committed.</p>
+                        <p>This value is <code>NULL</code>&#160;if the transaction is not committed.</p>
                     </td>
                 </tr>
                 <tr>
                     <td class="CodeFont">effectiveCommitTime</td>
                     <td>
                         <p class="noSpaceAbove">The timestamp at which this transaction should be considered committed. If this transaction is dependent, then this is the commit timestamp of its parent.</p>
-                        <p>This value is <span class="CodeFont">NULL</span>&#160;if the parent transaction has not yet committed.</p>
+                        <p>This value is <code>NULL</code>&#160;if the parent transaction has not yet committed.</p>
                     </td>
                 </tr>
                 <tr>
@@ -72,8 +72,8 @@ folder: SQLReference/BuiltInSysProcs
                         <p>isAd</p>
                     </td>
                     <td>
-                        <p class="noSpaceAbove">If <span class="CodeFont">true</span>, this transaction is considered committed, even if its parent transaction is still active.</p>
-                        <p>If <span class="CodeFont">false</span>, this transaction is not considered committed until its parent transaction is committed.</p>
+                        <p class="noSpaceAbove">If <code>true</code>, this transaction is considered committed, even if its parent transaction is still active.</p>
+                        <p>If <code>false</code>, this transaction is not considered committed until its parent transaction is committed.</p>
                     </td>
                 </tr>
                 <tr>
@@ -96,7 +96,7 @@ txnId |parentTxnId |modifiedConglomerate |status      |isolationLevel      |begi
         </div>
         <h2>See Also</h2>
         <ul>
-            <li><a href="sqlref_sysprocs_getcurrenttransaction.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION</span></a>
+            <li><a href="sqlref_sysprocs_getcurrenttransaction.html"><code>SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION</code></a>
             </li>
         </ul>
     </div>

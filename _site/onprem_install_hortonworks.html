@@ -578,15 +578,7 @@
 
 
 
-
-
 ﻿
-
-
-
-
-
-
 
 
 
@@ -652,8 +644,8 @@
 
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor506">Installing and Configuring Splice Machine for Hortonworks HDP</h1>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
+            <h1>Installing and Configuring Splice Machine for Hortonworks HDP</h1>
+<p class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
             <p>This topic describes installing and configuring Splice Machine on a Hortonworks Ambari-managed cluster. Follow these steps:</p>
             <ol>
@@ -680,9 +672,9 @@
                 <li>HDFS installed</li>
                 <li>YARN installed</li>
                 <li>ZooKeeper installed</li>
-                <li>Ensure that Phoenix services are <span class="BoldFont">NOT</span> installed on your cluster, as they interfere with Splice Machine HBase settings.</li>
+                <li>Ensure that Phoenix services are <strong>NOT</strong> installed on your cluster, as they interfere with Splice Machine HBase settings.</li>
             </ul>
-            <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
+            <p class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <em>Getting Started Guide</em>.</p>
             <h2 id="Install">Download and Install Splice Machine</h2>
             <p>Perform the following steps <span class="important">on each node</span> in your cluster:</p>
             <div class="opsStepsList">
@@ -716,15 +708,15 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice Machine Community site</a> or contact your Splice Machine representative.</div>
+                        <p class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice Machine Community site</a> or contact your Splice Machine representative.</p>
                     </li>
                     <li>
-                        <p class="topLevel">Create the <span class="CodeFont">splice</span> installation directory:</p>
+                        <p class="topLevel">Create the <code>splice</code> installation directory:</p>
                         <div class="preWrapperWide"><pre class="ShellCommandCell">sudo mkdir -p /opt/splice</pre>
                         </div>
                     </li>
                     <li>
-                        <p class="topLevel">Download the Splice Machine package into the <span class="CodeFont">splice</span> directory on the node. For example:</p>
+                        <p class="topLevel">Download the Splice Machine package into the <code>splice</code> directory on the node. For example:</p>
                         <div class="preWrapperWide"><pre class="ShellCommandCell">sudo curl '////SPLICEMACHINE-..' -o /opt/splice/SPLICEMACHINE-..<br /></pre>
                         </div>
                     </li>
@@ -734,7 +726,7 @@
                         </div>
                     </li>
                     <li>
-                        <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to set up Splice Machine jar script symbolic links</p>
+                        <p class="topLevel">Run our script as <em>root</em> user <span class="important">on each node</span> in your cluster to add symbolic links to set up Splice Machine jar script symbolic links</p>
                         <p class="indentLevel1">Issue this command <span class="important">on each node</span> in your cluster:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
 sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
@@ -777,7 +769,7 @@ sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                     </li>
                     <li>
                         <p class="topLevel">Make configuration changes:</p>
-                        <p class="indentLevel1">Scroll down to where you see <span class="ItalicFont">Custom zoo.cfg</span> and click <span class="AppCommand">Add Property</span> to add the <span class="CodeFont">maxClientCnxns</span> property and then again to add the <span class="CodeFont">maxSessionTimeout</span> property, with these values:</p>
+                        <p class="indentLevel1">Scroll down to where you see <em>Custom zoo.cfg</em> and click <span class="AppCommand">Add Property</span> to add the <code>maxClientCnxns</code> property and then again to add the <code>maxSessionTimeout</code> property, with these values:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
 maxClientCnxns=<span class="AppFontCustCode">0</span>
 maxSessionTimeout=<span class="AppFontCustCode">120000</span></pre>
@@ -785,7 +777,7 @@ maxSessionTimeout=<span class="AppFontCustCode">120000</span></pre>
                     </li>
                     <li>
                         <p class="topLevel">Save Changes</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated ZooKeeper configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <code>Updated ZooKeeper configuration for Splice Machine</code>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
                     <li>
                         <p class="topLevel">Start ZooKeeper</p>
@@ -832,7 +824,7 @@ dfs.datanode.handler.count=<span class="AppFontCustCode">20</span>
                     </li>
                     <li>
                         <p class="topLevel">Save Changes</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <code>Updated HDFS configuration for Splice Machine</code>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
                     <li>
                         <p class="topLevel">Start HDFS</p>
@@ -907,7 +899,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                     </li>
                     <li>
                         <p class="topLevel">Save Changes</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated YARN configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <code>Updated YARN configuration for Splice Machine</code>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
                     <li>
                         <p class="topLevel">Start YARN</p>
@@ -946,11 +938,11 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                             <li>MR AppMaster Java Heap Size
 </li>
                         </ul>
-                        <div class="noteIndent">An example of an HDP version number that you would substitute for <span class="AppFontCustCode">${hdp.version}</span> is <span class="CodeFont">2.5.0.0-1245</span>.</div>
+                        <p class="noteIndent">An example of an HDP version number that you would substitute for <span class="AppFontCustCode">${hdp.version}</span> is <code>2.5.0.0-1245</code>.</p>
                     </li>
                     <li>
                         <p class="topLevel">Save Changes</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated MapReduce2 configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <code>Updated MapReduce2 configuration for Splice Machine</code>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
                     <li>
                         <p class="topLevel">Start MapReduce2</p>
@@ -1044,12 +1036,12 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
                         </table>
                     </li>
                     <li>
-                        <p>Set the value of the <span class="CodeFont">hbase.coprocessor.region.classes</span> property to the following:</p>
+                        <p>Set the value of the <code>hbase.coprocessor.region.classes</code> property to the following:</p>
                         <div class="preWrapperWide"><pre class="Example">com.splicemachine.hbase.MemstoreAwareObserver,com.splicemachine.derby.hbase.SpliceIndexObserver,com.splicemachine.derby.hbase.SpliceIndexEndpoint,com.splicemachine.hbase.RegionSizeEndpoint,com.splicemachine.si.data.hbase.coprocessor.TxnLifecycleEndpoint,com.splicemachine.si.data.hbase.coprocessor.SIObserver,com.splicemachine.hbase.BackupEndpointObserver</pre>
                         </div>
                     </li>
                     <li>
-                        <p>Under <span class="CodeFont">Advanced hbase-env</span>, set the value of <span class="CodeFont">hbase-env template</span> to the following:</p>
+                        <p>Under <code>Advanced hbase-env</code>, set the value of <code>hbase-env template</code> to the following:</p>
                         <div class="preWrapperWide"><pre class="Example"># Set environment variables here.
 
 # The java implementation to use. Java 1.6 required.
@@ -1122,7 +1114,7 @@ export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS "</pre>
                         </div>
                     </li>
                     <li>
-                        <p>In <span class="CodeFont">Custom hbase-site</span> property, add the following properties:</p>
+                        <p>In <code>Custom hbase-site</code> property, add the following properties:</p>
                         <div class="preWrapperWide"><pre class="Example">dfs.client.read.shortcircuit.buffer.size=131072
 hbase.balancer.period=60000
 hbase.client.ipc.pool.size=10
@@ -1172,7 +1164,7 @@ splice.txn.concurrencyLevel=4096</pre>
                     </li>
                     <li>
                         <p class="topLevel">Save Changes</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <code>Updated HDFS configuration for Splice Machine</code>. Click <span class="AppCommand">Save</span> again.</p>
                     </li>
                     <li>
                         <p class="topLevel">Start HBase</p>
@@ -1187,15 +1179,37 @@ splice.txn.concurrencyLevel=4096</pre>
             <h2 id="Optional">Optional Configuration Modifications</h2>
             <p>There are a few configuration modifications you might want to make:</p>
             <ul>
-                <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
+                <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <em>native authentication</em> mechanism.</li>
+				<li><a href="#Logging">Modify the Log Location</a> if you want your Splice Machine log entries stored somewhere other than in the logs for your region servers.</li>
                 <li>Adjust the replication factor if you have a small cluster and need to improve resource usage or performance.</li>
             </ul>
             <h3 id="Modify">Modify the Authentication Mechanism</h3>
-            <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
+            <p>Splice Machine installs with Native authentication configured;  native authentication uses the <code>sys.sysusers</code> table in the <code>splice</code> schema for configuring user names and passwords. </p>
             <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP by following the simple instructions in <a href="onprem_install_configureauth.html" class="WithinBook">Configuring Splice Machine Authentication</a></p>
+			<h3 id="Logging">Modify the Log Location</h3>
+			<p>Splice Machine logs all SQL statements by default, storing the log entries in your region server's logs, as described in our <a href="developers_tuning_logging">Using Logging</a> topic. You can modify where Splice Machine by adding the following snippet to your <em>RegionServer Logging Advanced Configuration Snippet (Safety Valve)</em> section of your HBase Configuration:</p>
+            <div class="preWrapper">
+            <pre class="Plain">log4j.appender.spliceDerby=org.apache.log4j.FileAppender
+log4j.appender.spliceDerby.File=${hbase.log.dir}/splice-derby.log
+log4j.appender.spliceDerby.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.spliceDerby.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+log4j.appender.spliceStatement=org.apache.log4j.FileAppender
+log4j.appender.spliceStatement.File=${hbase.log.dir}/splice-statement.log
+log4j.appender.spliceStatement.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.spliceStatement.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+log4j.logger.splice-derby=INFO, spliceDerby
+log4j.additivity.splice-derby=false
+
+# Uncomment to log statements to a different file:
+#log4j.logger.splice-derby.statement=INFO, spliceStatement
+# Uncomment to not replicate statements to the spliceDerby file:
+#log4j.additivity.splice-derby.statement=false</pre>
+            </div>
             <h2 id="Run">Verify your Splice Machine Installation</h2>
-            <p>Now start using the Splice Machine command line interpreter, which is referred to as <span class="AppCommand">the splice prompt</span> or simply <span class="AppCommand">splice&gt;</span> by launching the <span class="CodeFont">sqlshell.sh</span> script on any node in your cluster that is running an HBase region server. </p>
-            <div class="noteNote">The command line interpreter defaults to connecting on port <span class="CodeFont">1527</span> on <span class="CodeFont">localhost</span>, with username <span class="CodeFont">splice</span>, and password <span class="CodeFont">admin</span>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</div>
+            <p>Now start using the Splice Machine command line interpreter, which is referred to as <span class="AppCommand">the splice prompt</span> or simply <span class="AppCommand">splice&gt;</span> by launching the <code>sqlshell.sh</code> script on any node in your cluster that is running an HBase region server. </p>
+            <p class="noteNote">The command line interpreter defaults to connecting on port <code>1527</code> on <code>localhost</code>, with username <code>splice</code>, and password <code>admin</code>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <em>Developer's Guide</em>.</p>
             <p>Now try entering a few sample commands you can run to verify that everything is working with your Splice Machine installation.</p>
             <table summary="Sample commands to verify your installation">
                 <col />
@@ -1250,11 +1264,11 @@ splice.txn.concurrencyLevel=4096</pre>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><span class="BoldFont">Make sure you end each command with a semicolon</span> (<span class="CodeFont">;</span>), followed by the <span class="ItalicFont">Enter</span> key or <span class="ItalicFont">Return</span> key </td>
+                        <td colspan="2"><strong>Make sure you end each command with a semicolon</strong> (<code>;</code>), followed by the <em>Enter</em> key or <em>Return</em> key </td>
                     </tr>
                 </tbody>
             </table>
-            <p>See the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> section of our <span class="ItalicFont">Developer's Guide</span> for information about our commands and command syntax. </p>
+            <p>See the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> section of our <em>Developer's Guide</em> for information about our commands and command syntax. </p>
         </div>
 	</section>
 
@@ -1273,7 +1287,7 @@ splice.txn.concurrencyLevel=4096</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

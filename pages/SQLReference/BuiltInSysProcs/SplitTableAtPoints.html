@@ -11,20 +11,20 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</span> system procedure sets up table or index splits in your database, prior to importing that table in HFile format. </p>
+            <p>The <code>SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</code> system procedure sets up table or index splits in your database, prior to importing that table in HFile format. </p>
             <p>You must use this procedure in conjunction with two others:</p>
             <ul>
-                <li><span class="CodeFont"><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>
+                <li><code><a href="#">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></code>
                 </li>
-                <li> <span class="CodeFont"><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></span></li>
+                <li> <code><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></code></li>
             </ul>
-            <p>See the <span class="ItalicFont">Usage Notes</span> section for more information and the <span class="ItalicFont">Example</span> section to see an example of using these procedures together.</p>
+            <p>See the <em>Usage Notes</em> section for more information and the <em>Example</em> section to see an example of using these procedures together.</p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS (
-		<span class="ItalicFont">schemaName</span>,
-		<span class="ItalicFont">tableName</span>,
-		<span class="ItalicFont">indexName</span>,
-		<span class="ItalicFont">splitPoints</span>
+		<em>schemaName</em>,
+		<em>tableName</em>,
+		<em>indexName</em>,
+		<em>splitPoints</em>
 		);</pre>
             </div>
             <div class="paramList">
@@ -36,19 +36,19 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramDefnFirst">The name of the index that you are splitting. If this is null, the specified table is split; if this is non-null, the index is split instead.</p>
                 <p class="paramName">splitPoints</p>
                 <p class="paramDefnFirst">A&#160;comma-separated list of split points for the table or index. </p>
-                <p class="paramDefn">This is the list of split points computed by a previous call to the <span class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></span>&#160;procedure.</p>
+                <p class="paramDefn">This is the list of split points computed by a previous call to the <code><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a></code>&#160;procedure.</p>
             </div>
             <p>&#160;</p>
             <h2>Results</h2>
-            <p><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</span> does not produce results.</p>
+            <p><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code> does not produce results.</p>
 {% include splice_snippets/hfileimport_example.html %}
             <h2>See Also</h2>
             <ul>
-                <li><a href="sqlref_sysprocs_importhfile.html"><span class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</span></a>
+                <li><a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_computesplitkey.html"><span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span></a>
+                <li><a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a>
                 </li>
-                <li><a href="sqlref_sysprocs_splittable.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</span></a>
+                <li><a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a>
                 </li>
             </ul>
         </div>

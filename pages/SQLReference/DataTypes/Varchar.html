@@ -11,13 +11,13 @@ folder: SQLReference/DataTypes
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="DataTypes.Varchar">VARCHAR</h1>
-            <p>The <span class="CodeFont">VARCHAR</span> data type provides for variable-length storage of strings.</p>
+            <p>The <code>VARCHAR</code> data type provides for variable-length storage of strings.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">{ VARCHAR | CHAR VARYING | CHARACTER VARYING }(<span class="ItalicFont">length</span>)</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax">{ VARCHAR | CHAR VARYING | CHARACTER VARYING }(<em>length</em>)</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">length</p>
-                <p class="paramDefnFirst">An unsigned integer constant. The maximum length for a <span class="CodeFont">VARCHAR</span> string is <span class="CodeFont">32,672</span> characters.</p>
+                <p class="paramDefnFirst">An unsigned integer constant. The maximum length for a <code>VARCHAR</code> string is <code>32,672</code> characters.</p>
             </div>
             <h2>Corresponding Compile-time Java Type</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">java.lang.String</pre>
@@ -29,13 +29,13 @@ folder: SQLReference/DataTypes
             <div class="preWrapper"><pre class="Example" xml:space="preserve">VARCHAR(2048);</pre>
             </div>
             <h2>Usage Notes</h2>
-            <p>Here are several notes for the <span class="CodeFont">VARCHAR</span>&#160;data type:</p>
+            <p>Here are several notes for the <code>VARCHAR</code>&#160;data type:</p>
             <ul>
-                <li>Splice Machine does not pad a <span class="CodeFont">VARCHAR</span> value whose length is less than specified.</li>
-                <li>Splice Machine truncates spaces from a string value when a length greater than the <span class="CodeFont">VARCHAR</span> expected is provided. Characters other than spaces are not truncated, and instead cause an exception to be raised. </li>
-                <li>When <a href="sqlref_expressions_boolean.html">comparison boolean operators</a> are applied to <span class="CodeFont">VARCHARs</span>, the lengths of the operands are not altered, and spaces at the end of the values are ignored.</li>
-                <li>When <span class="CodeFont">CHARs</span> and <span class="CodeFont">VARCHARs</span> are mixed in expressions, the shorter value is padded with spaces to the length of the longer value.</li>
-                <li>The type of a string constant is <span class="CodeFont">CHAR</span>, not <span class="CodeFont">VARCHAR</span>.</li>
+                <li>Splice Machine does not pad a <code>VARCHAR</code> value whose length is less than specified.</li>
+                <li>Splice Machine truncates spaces from a string value when a length greater than the <code>VARCHAR</code> expected is provided. Characters other than spaces are not truncated, and instead cause an exception to be raised. </li>
+                <li>When <a href="sqlref_expressions_boolean.html">comparison boolean operators</a> are applied to <code>VARCHARs</code>, the lengths of the operands are not altered, and spaces at the end of the values are ignored.</li>
+                <li>When <code>CHARs</code> and <code>VARCHARs</code> are mixed in expressions, the shorter value is padded with spaces to the length of the longer value.</li>
+                <li>The type of a string constant is <code>CHAR</code>, not <code>VARCHAR</code>.</li>
             </ul>
         </div>
 	</section>

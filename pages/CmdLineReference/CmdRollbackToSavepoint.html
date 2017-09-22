@@ -11,18 +11,18 @@ folder: CmdLineReference
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Rollback to Savepoint Command</h1>
-            <p>The <span class="AppCommand">rollback to savepoint</span> command issues a <span class="CodeFont">java.sql.Connection.rollback</span> request, which has been overloaded to work with a savepoint within the current transaction.</p>
-            <div class="noteNote">When you rollback a transaction to a savepoint, that savepoint and any others created after it within the transaction are automatically released.</div>
+            <p>The <span class="AppCommand">rollback to savepoint</span> command issues a <code>java.sql.Connection.rollback</code> request, which has been overloaded to work with a savepoint within the current transaction.</p>
+            <p class="noteNote">When you rollback a transaction to a savepoint, that savepoint and any others created after it within the transaction are automatically released.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">rollback to savepoint <span class="ItalicFont">identifier</span>;</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">rollback to savepoint <em>identifier</em>;</pre>
             </div>
             <div class="paramList">
-                <p class="paramName"><span class="ItalicFont">identifier</span>
+                <p class="paramName"><em>identifier</em>
                 </p>
                 <p class="paramDefnFirst">The name of the savepoint to which the transaction should be rolled back:&#160;all savepoints up to and including this one are rolled back.<br /></p>
             </div>
             <h2>Usage Notes</h2>
-            <p class="body">In contrast to the <span class="CodeFont"><a href="cmdlineref_rollback.html">Rollback</a></span> command, the <span class="CodeFont">Rollback to Savepoint</span> command rolls back but of your work, but does not start a new transaction.</p>
+            <p class="body">In contrast to the <code><a href="cmdlineref_rollback.html">Rollback</a></code> command, the <code>Rollback to Savepoint</code> command rolls back but of your work, but does not start a new transaction.</p>
             <h2>Examples</h2>
             <p>First we'll create a table, turn autocommit off, and insert some data into the table. We then create a savepoint, and verify the contents of our table:</p>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; CREATE TABLE myTbl(i int);
@@ -74,7 +74,7 @@ I
             <ul>
                 <li><a href="cmdlineref_savepoint.html">savepoint</a> command</li>
                 <li><a href="cmdlineref_releasesavepoint.html">release savepoint</a> command</li>
-                <li>The <span class="ItalicFont"><a href="developers_fundamentals_transactions.html">Running Transactions</a></span> topic contains includes a discussion of using savepoints.</li>
+                <li>The <em><a href="developers_fundamentals_transactions.html">Running Transactions</a></em> topic contains includes a discussion of using savepoints.</li>
             </ul>
         </div>
 	</section>

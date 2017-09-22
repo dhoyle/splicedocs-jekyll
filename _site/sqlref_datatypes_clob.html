@@ -2809,15 +2809,15 @@
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="DataTypes.Clob">CLOB</h1>
-            <p>A <span class="CodeFont">CLOB</span> (character large object) value can be up to 2 GB&#160;(2,147,483,647 characters) long. A <span class="CodeFont">CLOB</span> is used to store unicode character-based data, such as large documents in any character set.</p>
-            <div class="noteRestriction">If you're using a CLOB with the 32-bit version of our ODBC&#160;driver, the size of the CLOB&#160;is limited to 512 MB, due to address space limitations.</div>
-            <p>Note that, in Splice Machine, <span class="CodeFont">TEXT</span>&#160;is a synonym for <span class="CodeFont">CLOB</span>, and that the documentation for the <span class="CodeFont"><a href="sqlref_datatypes_text.html">TEXT</a></span>&#160;data type functionally matches the documentation for this topic. Splice Machine simply translates <span class="CodeFont">TEXT</span>&#160;into <span class="CodeFont">CLOB</span>.</p>
+            <p>A <code>CLOB</code> (character large object) value can be up to 2 GB&#160;(2,147,483,647 characters) long. A <code>CLOB</code> is used to store unicode character-based data, such as large documents in any character set.</p>
+            <p class="noteRestriction">If you're using a CLOB with the 32-bit version of our ODBC&#160;driver, the size of the CLOB&#160;is limited to 512 MB, due to address space limitations.</p>
+            <p>Note that, in Splice Machine, <code>TEXT</code>&#160;is a synonym for <code>CLOB</code>, and that the documentation for the <code><a href="sqlref_datatypes_text.html">TEXT</a></code>&#160;data type functionally matches the documentation for this topic. Splice Machine simply translates <code>TEXT</code>&#160;into <code>CLOB</code>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{CLOB | CHARACTER LARGE OBJECT} [ ( <span class="ItalicFont">length</span> [{K |M |G}] ) ]</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{CLOB | CHARACTER LARGE OBJECT} [ ( <em>length</em> [{K |M |G}] ) ]</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">length</p>
-                <p class="paramDefnFirst">An unsigned integer constant that specifies the number of characters in the <span class="CodeFont">CLOB</span> unless you specify one of the suffixes you see below, which change the meaning of the <span class="ItalicFont">length</span> value. If you do not specify a length value, it defaults to two giga-characters (2,147,483,647).</p>
+                <p class="paramDefnFirst">An unsigned integer constant that specifies the number of characters in the <code>CLOB</code> unless you specify one of the suffixes you see below, which change the meaning of the <em>length</em> value. If you do not specify a length value, it defaults to two giga-characters (2,147,483,647).</p>
                 <p class="paramName">K</p>
                 <p class="paramDefnFirst">If specified, indicates that the length value is in multiples of 1024 (kilo-characters).</p>
                 <p class="paramName">M</p>
@@ -2832,14 +2832,14 @@
             <div class="fcnWrapperWide"><pre class="FcnSyntax">CLOB</pre>
             </div>
             <h2>Usage Notes</h2>
-            <p>Use the <span class="ItalicFont">getClob</span> method on the <span class="ItalicFont">java.sql.ResultSet</span> to retrieve a <span class="CodeFont">CLOB</span> handle to the underlying data.</p>
-            <p>There are a number of restrictions on using using <span class="CodeFont">BLOB</span>and <span class="CodeFont">CLOB</span> / <span class="CodeFont">TEXT</span>&#160;objects, which we refer to as LOB-types:</p>
+            <p>Use the <em>getClob</em> method on the <em>java.sql.ResultSet</em> to retrieve a <code>CLOB</code> handle to the underlying data.</p>
+            <p>There are a number of restrictions on using using <code>BLOB</code>and <code>CLOB</code> / <code>TEXT</code>&#160;objects, which we refer to as LOB-types:</p>
             <ul>
-                <li>LOB-types cannot be compared for equality (<span class="CodeFont">=</span>) and non-equality (<span class="CodeFont">!=</span>, <span class="CodeFont">&lt;&gt;</span>).</li>
-                <li>LOB-typed values cannot be ordered, so <span class="CodeFont">&lt;, &lt;=, &gt;, &gt;=</span> tests are not supported.</li>
+                <li>LOB-types cannot be compared for equality (<code>=</code>) and non-equality (<code>!=</code>, <code>&lt;&gt;</code>).</li>
+                <li>LOB-typed values cannot be ordered, so <code>&lt;, &lt;=, &gt;, &gt;=</code> tests are not supported.</li>
                 <li>LOB-types cannot be used in indexes or as primary key columns.
 </li>
-                <li><span class="CodeFont">DISTINCT</span>, <span class="CodeFont">GROUP BY</span>, and <span class="CodeFont">ORDER BY</span> clauses are also prohibited on LOB-types.
+                <li><code>DISTINCT</code>, <code>GROUP BY</code>, and <code>ORDER BY</code> clauses are also prohibited on LOB-types.
 </li>
                 <li>LOB-types cannot be involved in implicit casting as other base-types.</li>
             </ul>
@@ -2864,7 +2864,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

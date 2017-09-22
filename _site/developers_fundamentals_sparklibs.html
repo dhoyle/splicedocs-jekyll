@@ -589,7 +589,7 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor14">Using Spark Libraries with Splice&#160;Machine</h1>
+            <h1>Using Spark Libraries with Splice&#160;Machine</h1>
             <p>One of the great features of Spark is that a large number of libraries have been and continue to be developed for use with Spark. This topic provides an example of interfacing to the Spark Machine Learning library (MLlib).</p>
             <p>You can follow a similar path to interface with other Spark libraries, which involves these steps:</p>
             <ol>
@@ -602,12 +602,12 @@
                 <p>This section presents the sample code for interfacing Splice Machine with the Spark Machine Learning Library (MLlib), in these subsections:</p>
                 <ul>
                     <li><a href="#About">About the Splice Machine SparkMLibUtils Class API</a> describes the SparkMLibUtils class that Splice&#160;Machine provides for interfacing with this library.</li>
-                    <li><a href="#Create">Creating our SparkStatistics Example Class</a> summarizes the <span class="CodeFont">SparkStatistics</span> Java class that we created for this example.</li>
-                    <li><a href="#Run">Run a Sample Program to Use Our Class</a> shows you how to define a custom procedure in your database to interface to the <span class="CodeFont">SparkStatistics</span> class.</li>
+                    <li><a href="#Create">Creating our SparkStatistics Example Class</a> summarizes the <code>SparkStatistics</code> Java class that we created for this example.</li>
+                    <li><a href="#Run">Run a Sample Program to Use Our Class</a> shows you how to define a custom procedure in your database to interface to the <code>SparkStatistics</code> class.</li>
                 </ul>
                 <h3 id="About">About the Splice Machine SparkMLibUtils Class API</h3>
-                <p>Our example makes use of the Splice Machine <span class="CodeFont">com.splicemachine.example.SparkMLibUtils</span> class, which you can use to interface between your Splice&#160;Machine database and the Spark Machine Learning library.</p>
-                <p>Here's are the public methods from the <span class="CodeFont">SparkMLibUtils</span> class:</p>
+                <p>Our example makes use of the Splice Machine <code>com.splicemachine.example.SparkMLibUtils</code> class, which you can use to interface between your Splice&#160;Machine database and the Spark Machine Learning library.</p>
+                <p>Here's are the public methods from the <code>SparkMLibUtils</code> class:</p>
                 <div class="preWrapperWide"><pre class="Example">public static JavaRDDLocatedRow&gt; resultSetToRDD(ResultSet rs)
    throws StandardException;
 
@@ -625,13 +625,13 @@ public static Vector convertExecRowToVector(ExecRow execRow)
                     <p class="paramName">resultSetToRDD</p>
                     <p class="paramDefnFirst">Converts a Splice Machine result set into a  Spark Resilient Distributed Dataset (RDD) object.</p>
                     <p class="paramName">locatedRowRDDToVectorRDD</p>
-                    <p class="paramDefnFirst">Transforms an RDD&#160;into a vector for use with the Machine Learning library. The <span class="CodeFont">fieldsToConvert</span> parameter specifies which column positions to include in the vector.</p>
+                    <p class="paramDefnFirst">Transforms an RDD&#160;into a vector for use with the Machine Learning library. The <code>fieldsToConvert</code> parameter specifies which column positions to include in the vector.</p>
                     <p class="paramName">convertExecRowToVector</p>
-                    <p class="paramDefnFirst">Converts a Splice Machine <span class="CodeFont">execrow</span> into a vector. The <span class="CodeFont">fieldsToConvert</span> parameter specifies which column positions to include in the vector.</p>
+                    <p class="paramDefnFirst">Converts a Splice Machine <code>execrow</code> into a vector. The <code>fieldsToConvert</code> parameter specifies which column positions to include in the vector.</p>
                 </blockquote>
                 <h3 id="Create">Creating our SparkStatistics Example Class</h3>
                 <p>For this example, we define a Java class named SparkStatistics that can query a Splice Machine table, convert that results into a Spark JavaRDD, and then use the Spark MLlib to calculate statistics.</p>
-                <p> Our class, <span class="CodeFont">SparkStatistics</span>, defines one public interface:</p>
+                <p> Our class, <code>SparkStatistics</code>, defines one public interface:</p>
                 <div class="preWrapperWide"><pre class="Example">public class SparkStatistics {
 
     public static void getStatementStatistics(String statement, ResultSet[] resultSets) throws SQLException {
@@ -656,7 +656,7 @@ public static Vector convertExecRowToVector(ExecRow execRow)
     }
 }</pre>
                 </div>
-                <p>We call the <span class="CodeFont">getStatementStatistics</span> from custom procedure in our database, passing it an SQL&#160;query . <span class="CodeFont">getStatementStatistics</span> performs the following operations:</p>
+                <p>We call the <code>getStatementStatistics</code> from custom procedure in our database, passing it an SQL&#160;query . <code>getStatementStatistics</code> performs the following operations:</p>
                 <div class="opsStepsList">
                     <ol class="boldFont">
                         <li>
@@ -674,10 +674,10 @@ ResultSet rs = ps.executeQuery();</pre>
                         </li>
                         <li>
                             <p class="topLevel">Calculate statistics</p>
-                            <p class="indentLevel1">Next, we use Spark to collect statistics for the query, using private methods in our <span class="CodeFont">SparkStatistics</span> class:</p>
+                            <p class="indentLevel1">Next, we use Spark to collect statistics for the query, using private methods in our <code>SparkStatistics</code> class:</p>
                             <div class="preWrapperWide"><pre class="Example">int[] fieldsToConvert = getFieldsToConvert(ps);<br />MultivariateStatisticalSummary summary = getColumnStatisticsSummary(resultSetRDD, fieldsToConvert);</pre>
                             </div>
-                            <p class="indentLevel1">You can view the implementations of the <span class="CodeFont">getFieldsToConvert</span> and <span class="CodeFont">getColumnStatisticsSummary</span> methods in the <span class="ItalicFont"><a href="#Appendix">Appendix</a></span> at the end of this topic.</p>
+                            <p class="indentLevel1">You can view the implementations of the <code>getFieldsToConvert</code> and <code>getColumnStatisticsSummary</code> methods in the <em><a href="#Appendix">Appendix</a></em> at the end of this topic.</p>
                         </li>
                         <li>
                             <p class="topLevel">Return the results</p>
@@ -699,7 +699,7 @@ resultSets[0] = new EmbedResultSet40((EmbedConnection)con, resultsToWrap, false,
                         </li>
                         <li>
                             <p class="topLevel">Create your custom procedure</p>
-                            <p class="indentLevel1">First we create a procedure in our database that references the <span class="CodeFont">getStatementStatistics</span> method in our API, which takes an SQL&#160;query as its input and uses Spark to calculate statistics for the query using MLlib:</p>
+                            <p class="indentLevel1">First we create a procedure in our database that references the <code>getStatementStatistics</code> method in our API, which takes an SQL&#160;query as its input and uses Spark to calculate statistics for the query using MLlib:</p>
                             <div class="preWrapperWide"><pre class="Example">CREATE PROCEDURE getStatementStatistics(statement varchar(1024))
  &#160;&#160;PARAMETER STYLE JAVA
 &#160;&#160;&#160;LANGUAGE JAVA
@@ -902,7 +902,7 @@ public class SparkStatistics {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

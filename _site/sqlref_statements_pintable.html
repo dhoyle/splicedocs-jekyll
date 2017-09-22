@@ -2808,11 +2808,11 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor47">PIN&#160;TABLE</h1>
-            <p>The <span class="CodeFont">PIN&#160;TABLE</span> statement allows you to pin (cache)&#160;a table in memory, which can improve performance for tables that are being used frequently in analytic operations. </p>
-            <div class="noteImportant">The pinned version of a table is a static version of that table; updates to the underlying table are not automatically reflected in the pinned version. To refresh the pinned version, you need to unpin and then repin the table, as described in the <a href="#Usage">Usage Notes</a> section below.</div>
+            <h1>PIN&#160;TABLE</h1>
+            <p>The <code>PIN&#160;TABLE</code> statement allows you to pin (cache)&#160;a table in memory, which can improve performance for tables that are being used frequently in analytic operations. </p>
+            <p class="noteImportant">The pinned version of a table is a static version of that table; updates to the underlying table are not automatically reflected in the pinned version. To refresh the pinned version, you need to unpin and then repin the table, as described in the <a href="#Usage">Usage Notes</a> section below.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">PIN&#160;TABLE&#160;<span class="ItalicFont">tableName</span>;</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">PIN&#160;TABLE&#160;<em>tableName</em>;</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">tableName</p>
@@ -2833,7 +2833,7 @@
             <p>Once you pin a table, you effectively have two versions of it to work with:</p>
             <ul>
                 <li>The original table continues to work just as usual</li>
-                <li>The pinned version is a static version of the table at the time you pinned it. To access the pinned version of a table, you must specify the Splice <span class="CodeFont">pin=true</span> property. If you do not specify this property in your query, the query will operate on the unpinned version of the table. </li>
+                <li>The pinned version is a static version of the table at the time you pinned it. To access the pinned version of a table, you must specify the Splice <code>pin=true</code> property. If you do not specify this property in your query, the query will operate on the unpinned version of the table. </li>
             </ul>
             <p>The pinned version (version)&#160;of a table is statically cached in memory; this means that:</p>
             <ul>
@@ -2871,14 +2871,14 @@ COL1      |COL2
             </div>
             <p class="body">Now the pinned version of the table matches the original version.</p>
             <h3 id="Unpinnin">Unpinning and Dropping Pinned Tables</h3>
-            <p>When you drop a table (with the <span class="CodeFont"><a href="sqlref_statements_droptable.html">DROP&#160;TABLE</a></span>&#160;statement), the pinned version is automatically deleted and can no longer be used.</p>
-            <p>To delete just the pinned version of a table, use the <span class="CodeFont"><a href="sqlref_statements_unpintable.html">UNPIN&#160;TABLE</a></span> statement.</p>
+            <p>When you drop a table (with the <code><a href="sqlref_statements_droptable.html">DROP&#160;TABLE</a></code>&#160;statement), the pinned version is automatically deleted and can no longer be used.</p>
+            <p>To delete just the pinned version of a table, use the <code><a href="sqlref_statements_unpintable.html">UNPIN&#160;TABLE</a></code> statement.</p>
             <h2>See Also</h2>
             <ul>
-                <li><span class="CodeFont"><a href="sqlref_statements_createexternaltable.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createtable.html">CREATE&#160;TABLE</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_unpintable.html">UNPIN&#160;TABLE</a></span> statement</li>
-                <li><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the <span class="ItalicFont">Splice Machine Developer's Guide</span></li>
+                <li><code><a href="sqlref_statements_createexternaltable.html">CREATE&#160;EXTERNAL&#160;TABLE</a></code>&#160;statement</li>
+                <li><code><a href="sqlref_statements_createtable.html">CREATE&#160;TABLE</a></code>&#160;statement</li>
+                <li><code><a href="sqlref_statements_unpintable.html">UNPIN&#160;TABLE</a></code> statement</li>
+                <li><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the <em>Splice Machine Developer's Guide</em></li>
             </ul>
         </div>
 	</section>
@@ -2898,7 +2898,7 @@ COL1      |COL2
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -103,22 +103,22 @@ folder: OnPrem/InstallingSpliceMachine
                 </table>
                 <p>Configure your authentication settings by adding or modifying properties in the configuration file.</p>
                 <h3 id="Disablin">Disabling Authentication</h3>
-                <p>If you want to disable authentication for your Splice&#160;Machine database, you can set the authentication property to <span class="CodeFont">NONE</span>.</p>
-                <div class="noteNote">Splice Machine <span class="BoldFont">strongly encourages you to not use</span> an open database for production databases!</div>
+                <p>If you want to disable authentication for your Splice&#160;Machine database, you can set the authentication property to <code>NONE</code>.</p>
+                <p class="noteNote">Splice Machine <strong>strongly encourages you to not use</strong> an open database for production databases!</p>
                 <p class="noSpaceAbove">You can configure an open database that allows any user to authenticate against the database by setting your authentication properties as follows:
 </p>
                 <div class="preWrapperWide"><pre class="ExampleCell" xml:space="preserve">&lt;property&gt;<br /> &#160;&#160;&lt;name&gt;splice.authentication&lt;/name&gt;<br />&#160;&#160; &lt;value&gt;NONE&lt;/value&gt;<br />&lt;/property&gt;</pre>
                 </div>
                 <h3 id="Using">Using Native Authentication</h3>
-                <p>Native authentication is the default mechanism for Splice&#160;Machine; you don't need to modify your configuration if you wish to use it. Native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
+                <p>Native authentication is the default mechanism for Splice&#160;Machine; you don't need to modify your configuration if you wish to use it. Native authentication uses the <code>sys.sysusers</code> table in the <code>splice</code> schema for configuring user names and passwords. </p>
                 <p class="noSpaceAbove">The default native authentication property settings are:</p>
                 <div class="preWrapperWide"><pre class="ExampleCell" xml:space="preserve">&lt;property&gt;<br />&#160;&#160; &lt;name&gt;splice.authentication&lt;/name&gt;<br />&#160;&#160; &lt;value&gt;NATIVE&lt;/value&gt;<br />&lt;/property&gt;
 &lt;property&gt;<br />&#160;&#160; &lt;name&gt;splice.authentication.native.algorithm&lt;/name&gt;<br /> &#160;&#160;&lt;value&gt;<span class="Highlighted">SHA-512</span>&lt;/value&gt;<br />&lt;/property&gt;
 </pre>
                 </div>
-                <p>You can use <span class="CodeFont">MD5</span>, <span class="CodeFont">SHA-256</span>, or <span class="CodeFont">SHA-512</span> for the value of the <span class="HighlightedCode">native.algorithm</span> property;  <span class="CodeFont">SHA-512</span> is the default value.</p>
+                <p>You can use <code>MD5</code>, <code>SHA-256</code>, or <code>SHA-512</code> for the value of the <span class="HighlightedCode">native.algorithm</span> property;  <code>SHA-512</code> is the default value.</p>
                 <h4>Switching to Native Authentication</h4>
-                <p>If you are switching your authentication from to <span class="CodeFont">Native</span>&#160;authentication from another mechanism (including <span class="CodeFont">NONE</span>), there's one additional step you need to take:&#160;you must re-initialize the credentials database (<span class="CodeFont">SYSUSERS</span> table), by adding the following property setting to your configuration file:</p>
+                <p>If you are switching your authentication from to <code>Native</code>&#160;authentication from another mechanism (including <code>NONE</code>), there's one additional step you need to take:&#160;you must re-initialize the credentials database (<code>SYSUSERS</code> table), by adding the following property setting to your configuration file:</p>
                 <div class="preWrapperWide"><pre class="Example">&lt;property&gt;<br />&lt;name&gt;splice.authentication.native.create.credentials.database&lt;/name&gt;<br />&lt;value&gt;true&lt;/value&gt;<br />&lt;/property&gt;</pre>
                 </div>
                 <h3 id="Using2">Using LDAP&#160;Authentication</h3>
@@ -130,8 +130,8 @@ folder: OnPrem/InstallingSpliceMachine
                 <p>To use LDAP&#160;with Splice Machine, you must:</p>
                 <ul>
                     <li><a href="https://www.splicemachine.com/company/contact-us/"  target="_blank">Contact us</a> to obtain a license key from Splice&#160;Machine. </li>
-                    <li>Enable Enterprise features by adding your Splice Machine license key to your HBase configuration file as the value of the <span class="CodeFont">splicemachine.enterprise.key</span> property, as shown below.</li>
-                    <li>Make sure that a user with name <span class="CodeFont">splice</span> has been created in the LDAP server.
+                    <li>Enable Enterprise features by adding your Splice Machine license key to your HBase configuration file as the value of the <code>splicemachine.enterprise.key</code> property, as shown below.</li>
+                    <li>Make sure that a user with name <code>splice</code> has been created in the LDAP server.
  </li>
                     <li>Add the Splice&#160;Machine LDAP&#160;properties in your HBase configuration file, along with the license key property:</li>
                 </ul>
@@ -153,7 +153,7 @@ folder: OnPrem/InstallingSpliceMachine
                         <ul class="bullet">
                             <li>This is used to create the initial LDAP&#160;context (aka its connection to a specific DN).</li>
                             <li>It must have the authority to search the user space for user DNs.</li>
-                            <li>The <span class="CodeFont">cn=</span> is the <span class="ItalicFont">common name</span> of the security principal.</li>
+                            <li>The <code>cn=</code> is the <em>common name</em> of the security principal.</li>
                         </ul>
                     </li>
                     <li>The <span class="HighlightedCode">ldap.searchAuthPW</span>&#160;property specifies password Splice Machine should use to perform the DN&#160;search.</li>

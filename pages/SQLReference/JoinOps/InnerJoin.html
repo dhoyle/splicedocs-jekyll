@@ -11,19 +11,19 @@ folder: SQLReference/JoinOps
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="SQL-JoinOps.InnerJoin">INNER JOIN</h1>
-            <p>An <span class="CodeFont">INNER JOIN</span> is a <a href="sqlref_joinops_about.html"><span class="CodeFont">JOIN</span> operation</a> that allows you to specify an explicit join clause. </p>
+            <p>An <code>INNER JOIN</code> is a <a href="sqlref_joinops_about.html"><code>JOIN</code> operation</a> that allows you to specify an explicit join clause. </p>
             <h2>Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><a href="sqlref_expressions_table.html">TableExpression</a>
-  {ON <span class="ItalicFont">booleanExpression</span> | <span class="ItalicFont"><a href="sqlref_clauses_using.html">USING clause</a></span>}</pre>
+  {ON <em>booleanExpression</em> | <em><a href="sqlref_clauses_using.html">USING clause</a></em>}</pre>
             </div>
-            <p>You can specify the join clause by specifying <span class="CodeFont">ON</span>
+            <p>You can specify the join clause by specifying <code>ON</code>
 with a boolean expression.  </p>
-            <p>The scope of expressions in the <span class="CodeFont">ON</span> clause includes the current tables and any tables in outer query blocks to the current <span class="CodeFont">SELECT</span>. In the following example, the <span class="CodeFont">ON</span> clause refers to the current tables:</p>
+            <p>The scope of expressions in the <code>ON</code> clause includes the current tables and any tables in outer query blocks to the current <code>SELECT</code>. In the following example, the <code>ON</code> clause refers to the current tables:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT *
   FROM SAMP.EMPLOYEE INNER JOIN SAMP.STAFF
   ON EMPLOYEE.SALARY &lt; STAFF.SALARY;</pre>
             </div>
-            <p>The <span class="CodeFont">ON</span> clause can reference tables not being joined
+            <p>The <code>ON</code> clause can reference tables not being joined
 and does not have to reference either of the tables being joined (though typically it does). </p>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- Join the EMP_ACT and EMPLOYEE tables
@@ -81,7 +81,7 @@ splice&gt;&#160;SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
             <ul>
                 <li><a href="sqlref_joinops_intro.html">JOIN operations</a>
                 </li>
-                <li><a href="sqlref_clauses_using.html"><span class="CodeFont">USING</span></a>&#160;clause</li>
+                <li><a href="sqlref_clauses_using.html"><code>USING</code></a>&#160;clause</li>
             </ul>
         </div>
 	</section>

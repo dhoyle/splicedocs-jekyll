@@ -589,8 +589,8 @@
 
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor552">Running Transactions In Splice Machine</h1>
-            <p>Splice Machine is a fully transactional database that supports ACID&#160;transactions. This allows you to perform actions such as <span class="ItalicFont">commit</span> and <span class="ItalicFont">rollback</span>; in a transactional context, this means that the database does not make changes visible to others until a <span class="ItalicFont">commit</span> has been issued.</p>
+            <h1>Running Transactions In Splice Machine</h1>
+            <p>Splice Machine is a fully transactional database that supports ACID&#160;transactions. This allows you to perform actions such as <em>commit</em> and <em>rollback</em>; in a transactional context, this means that the database does not make changes visible to others until a <em>commit</em> has been issued.</p>
             <p>This topic includes brief overview information about transaction processing with Splice&#160;Machine, in these sections:</p>
             <ul>
                 <li><a href="#Transact">Transactions Overview</a>
@@ -616,7 +616,7 @@
                 <li>write its results to durable storage upon successful completion</li>
             </ul>
             <h3 id="ACIDTra">ACID&#160;Transactions</h3>
-            <p>The properties that describe how transactions must maintain integrity are <span class="ItalicFont">A</span>tomicity, <span class="ItalicFont">C</span>onsistency, <span class="ItalicFont">I</span>solation, and <span class="ItalicFont">D</span>urability. Transactions adhering to these properties are often referred to as <span class="ItalicFont">ACID</span>&#160;transactions. Here's a summary of ACID&#160;transaction properties:</p>
+            <p>The properties that describe how transactions must maintain integrity are <em>A</em>tomicity, <em>C</em>onsistency, <em>I</em>solation, and <em>D</em>urability. Transactions adhering to these properties are often referred to as <em>ACID</em>&#160;transactions. Here's a summary of ACID&#160;transaction properties:</p>
             <table summary="Properties of ACID transactions">
                 <col />
                 <col />
@@ -646,22 +646,22 @@
                 </tbody>
             </table>
             <h3 id="Snapshot">MVCC and Snapshot Isolation</h3>
-            <p>Splice Machine employs a lockless <span class="ItalicFont">snapshot isolation design</span> that uses <span class="ItalicFont">Multiple Version Concurrency Control (MVCC)</span> to create a new version of the record every time it is updated and enforce consistency. Database systems use concurrency control systems to manage concurrent access. The simplest control method is to use locks that make sure that the writer is finished before any reader can proceed; however, this approach can be very slow. With snapshot isolation, each  transaction has its own virtual snapshot of the database, which means that multiple transactions can operate concurrently without creating deadlock conditions.</p>
-            <p>When Splice Machine needs to update an item in the database, it doesn't actually overwrite the old data value. Instead, it creates a new version with a new timestamp. Which means that readers have access to the data that was available when they began reading, even if that data has been updated by a writer in the meantime. This is referred to as <span class="ItalicFont">point-in-time consistency</span> and ensures that:</p>
+            <p>Splice Machine employs a lockless <em>snapshot isolation design</em> that uses <em>Multiple Version Concurrency Control (MVCC)</em> to create a new version of the record every time it is updated and enforce consistency. Database systems use concurrency control systems to manage concurrent access. The simplest control method is to use locks that make sure that the writer is finished before any reader can proceed; however, this approach can be very slow. With snapshot isolation, each  transaction has its own virtual snapshot of the database, which means that multiple transactions can operate concurrently without creating deadlock conditions.</p>
+            <p>When Splice Machine needs to update an item in the database, it doesn't actually overwrite the old data value. Instead, it creates a new version with a new timestamp. Which means that readers have access to the data that was available when they began reading, even if that data has been updated by a writer in the meantime. This is referred to as <em>point-in-time consistency</em> and ensures that:</p>
             <ul>
-                <li>Every transaction runs in its own <span class="ItalicFont">transactional context</span>, which includes a snapshot of the database from when the transaction began.</li>
+                <li>Every transaction runs in its own <em>transactional context</em>, which includes a snapshot of the database from when the transaction began.</li>
                 <li>Every read made during a transaction will see a consistent snapshot of the database.</li>
                 <li>A transaction can only commit its changes if they do not conflict with updates that have been committed while the transaction was running.</li>
             </ul>
             <h4>Reading and Writing Database Values During a Transaction</h4>
-            <p>When you begin a transaction, you start working within a <span class="ItalicFont">transactional context</span> that includes a snapshot of the database. The operations that read and write database values for your transaction modify your transactional context. When your transaction is complete, you can commit those modifications to the database. The commit of your transaction's changes succeeds unless a <span class="ItalicFont">write-write conflict</span> occurs, which happens when your transaction attempts to commit an update to a value, and another update to that value has already been committed by a transaction that started before your transaction.</p>
+            <p>When you begin a transaction, you start working within a <em>transactional context</em> that includes a snapshot of the database. The operations that read and write database values for your transaction modify your transactional context. When your transaction is complete, you can commit those modifications to the database. The commit of your transaction's changes succeeds unless a <em>write-write conflict</em> occurs, which happens when your transaction attempts to commit an update to a value, and another update to that value has already been committed by a transaction that started before your transaction.</p>
             <p>This means that the following statements are true with regard to reading values from and writing values to the database during a transaction:</p>
             <ul>
                 <li>When you read a value during a transaction, you get the value that was most recently set within your transactional context. If you've not already set the value within your context, then this is the value that had been most recently committed in the database before your transaction began (and before your transactional context was established).</li>
-                <li>When you write a value during a transaction, the value is set within your transactional context. It is only written to the database when you commit the transaction; that time is referred to as the <span class="ItalicFont">commit timestamp</span> for your transaction. The value changes that you commit then become visible to transactions that start after your transaction's commit timestamp (until another transaction modifies the value).</li>
-                <li>If two parallel transactions attempt to change the same value, then a <span class="ItalicFont">write-write conflict</span> occurs, and the commit of the transaction that started later fails.</li>
+                <li>When you write a value during a transaction, the value is set within your transactional context. It is only written to the database when you commit the transaction; that time is referred to as the <em>commit timestamp</em> for your transaction. The value changes that you commit then become visible to transactions that start after your transaction's commit timestamp (until another transaction modifies the value).</li>
+                <li>If two parallel transactions attempt to change the same value, then a <em>write-write conflict</em> occurs, and the commit of the transaction that started later fails.</li>
             </ul>
-            <h4 id="kanchor554">A Snapshot Isolation Example</h4>
+            <h4>A Snapshot Isolation Example</h4>
             <p>The following diagram shows an example of snapshot isolation for a set of transactions, some of which are running in parallel:</p>
             <div>
                 <img src="images/GS.SnapshotIsolation.png" alt="Snapshot Isolation" class="indented" />
@@ -717,7 +717,7 @@
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldFont">&#160;</td>
-                        <td>T1 starts. The starting values within its transactional context are:&#160;<span class="CodeFont">A=10, B=20, C=0</span>.</td>
+                        <td>T1 starts. The starting values within its transactional context are:&#160;<code>A=10, B=20, C=0</code>.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t3</td>
@@ -728,7 +728,7 @@
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldFont">&#160;</td>
-                        <td>T1 modifies the value of <span class="CodeFont">A</span> within its context.</td>
+                        <td>T1 modifies the value of <code>A</code> within its context.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t4</td>
@@ -739,7 +739,7 @@
                         <td class="BoldRedBG">T2 Start</td>
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldFont">&#160;</td>
-                        <td>T2 starts. The starting values within its transactional context are&#160;the same as for T1:&#160;<span class="CodeFont">A=10, B=20, C=0</span>.</td>
+                        <td>T2 starts. The starting values within its transactional context are&#160;the same as for T1:&#160;<code>A=10, B=20, C=0</code>.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t5</td>
@@ -750,7 +750,7 @@
                         <td class="BoldRedBG">&#160;</td>
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldFont">&#160;</td>
-                        <td>T1 again modifies the value of <span class="CodeFont">A</span>&#160;within its context</td>
+                        <td>T1 again modifies the value of <code>A</code>&#160;within its context</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t6</td>
@@ -772,7 +772,7 @@
                         <td class="BoldRedBG">&#160;</td>
                         <td class="BoldGreenBG">T3 Start</td>
                         <td class="BoldFont">&#160;</td>
-                        <td>T3 starts. The starting values within its transactional context include the commits from T1:&#160;<span class="CodeFont">A=30, B=20, C=0</span>.</td>
+                        <td>T3 starts. The starting values within its transactional context include the commits from T1:&#160;<code>A=30, B=20, C=0</code>.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t8</td>
@@ -794,7 +794,7 @@
                         <td class="BoldRedBG">B=B+10<br />[B=30]</td>
                         <td class="BoldGreenBG">&#160;</td>
                         <td class="BoldFont">&#160;</td>
-                        <td>T2 modifies the value of <span class="CodeFont">B</span> within its context.</td>
+                        <td>T2 modifies the value of <code>B</code> within its context.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t10</td>
@@ -805,7 +805,7 @@
                         <td class="BoldRedBG">C=A+10<br />[C=20]</td>
                         <td class="BoldGreenBG">&#160;</td>
                         <td class="BoldFont">&#160;</td>
-                        <td>T2 modifies the value of <span class="CodeFont">C</span>&#160;within its context; note that this computation correctly uses the value of <span class="CodeFont">A</span> (<span class="CodeFont">10</span>) that had been committed prior to the start of T2.</td>
+                        <td>T2 modifies the value of <code>C</code>&#160;within its context; note that this computation correctly uses the value of <code>A</code> (<code>10</code>) that had been committed prior to the start of T2.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t11</td>
@@ -838,7 +838,7 @@
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldGreenBG">B=B+10<br />[B=30]</td>
                         <td class="BoldFont">&#160;</td>
-                        <td>T3 modifies <span class="CodeFont">B</span>; since its context includes the value of <span class="CodeFont">B</span>&#160;before T2 committed, it modifies the original value of B&#160;<span class="CodeFont">[B=20]</span> in its own context.</td>
+                        <td>T3 modifies <code>B</code>; since its context includes the value of <code>B</code>&#160;before T2 committed, it modifies the original value of B&#160;<code>[B=20]</code> in its own context.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t14</td>
@@ -850,7 +850,7 @@
                         <td class="BoldGreenBG">Rollback</td>
                         <td class="BoldFont">&#160;</td>
                         <td>
-                            <p>T3 attempts to commit its changes, which causes a <span class="ItalicFont">write-write conflict</span>, since T2 already committed an update to value <span class="CodeFont">B</span> after T3 started. </p>
+                            <p>T3 attempts to commit its changes, which causes a <em>write-write conflict</em>, since T2 already committed an update to value <code>B</code> after T3 started. </p>
                             <p>T3 rolls back and resets.</p>
                         </td>
                     </tr>
@@ -874,7 +874,7 @@
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldDarkGreenBG">T3' Start</td>
-                        <td>T3 reset (T3')&#160;starts. The starting values within its transactional context include the commits from T1 and T2:&#160;<span class="CodeFont">A=30, B=30, C=20</span>.</td>
+                        <td>T3 reset (T3')&#160;starts. The starting values within its transactional context include the commits from T1 and T2:&#160;<code>A=30, B=30, C=20</code>.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t17</td>
@@ -885,7 +885,7 @@
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldFont">&#160;</td>
                         <td class="BoldDarkGreenBG">B=B+10<br />[B=40]</td>
-                        <td>T3 modifies the value of <span class="CodeFont">B</span>, which has been updated and committed by T2.</td>
+                        <td>T3 modifies the value of <code>B</code>, which has been updated and committed by T2.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">t18</td>
@@ -920,7 +920,7 @@
                 <li><a href="#Rollbacks">Using Rollback versus Rollback to Savepoint</a> discusses the differences between rolling back a transaction, and rolling back to a savepoint.</li>
             </ul>
             <h3 id="Committi">Committing and&#160;Rolling Back Transaction Changes</h3>
-            <p>Within a transactional context, how the changes that you make are committed to the database depends on whether <span class="CodeFont">autocommit</span> is enabled or disabled:</p>
+            <p>Within a transactional context, how the changes that you make are committed to the database depends on whether <code>autocommit</code> is enabled or disabled:</p>
             <table summary="Using autocommit">
                 <col />
                 <col />
@@ -941,22 +941,22 @@
                     <tr>
                         <td class="CodeFont">disabled</td>
                         <td>
-                            <p>Changes are only committed when you explicitly issue a <span class="CodeFont">commit</span> command.</p>
-                            <p>Changes are rolled back when you explicitly issue a <span class="CodeFont">rollback</span> command.</p>
+                            <p>Changes are only committed when you explicitly issue a <code>commit</code> command.</p>
+                            <p>Changes are rolled back when you explicitly issue a <code>rollback</code> command.</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="noteIcon">Autocommit is enabled by default. You typically disable <span class="CodeFont">autocommit</span> when you want a block of operations to be committed atomically (all at once) instead of committing changes to the database after each operation.</div>
-            <p>You can turn <span class="CodeFont">autocommit</span> on and off by issuing the <span class="CodeFont">autocommit on</span> or <span class="CodeFont">autocommit off</span> commands at the <span class="CodeFont">splice&gt;</span>&#160;prompt. </p>
-            <p>For more information, see these topics in the <span class="ItalicFont"><a href="cmdlineref_intro.html">Command&#160;Line Reference</a></span> section of this book:</p>
+            <p class="noteIcon">Autocommit is enabled by default. You typically disable <code>autocommit</code> when you want a block of operations to be committed atomically (all at once) instead of committing changes to the database after each operation.</p>
+            <p>You can turn <code>autocommit</code> on and off by issuing the <code>autocommit on</code> or <code>autocommit off</code> commands at the <code>splice&gt;</code>&#160;prompt. </p>
+            <p>For more information, see these topics in the <em><a href="cmdlineref_intro.html">Command&#160;Line Reference</a></em> section of this book:</p>
             <ul>
-                <li><span class="CodeFont"><a href="cmdlineref_autocommit.html">autocommit</a></span> command</li>
-                <li><span class="CodeFont"><a href="cmdlineref_commit.html">commit</a></span> command</li>
-                <li><span class="CodeFont"><a href="cmdlineref_rollback.html">rollback</a></span> command</li>
+                <li><code><a href="cmdlineref_autocommit.html">autocommit</a></code> command</li>
+                <li><code><a href="cmdlineref_commit.html">commit</a></code> command</li>
+                <li><code><a href="cmdlineref_rollback.html">rollback</a></code> command</li>
             </ul>
             <h3 id="Simple">A Simple Transaction Example</h3>
-            <p>Here is a simple example. Enter the following commands to see <span class="ItalicFont">commit</span> and <span class="ItalicFont">rollback</span> in action:</p>
+            <p>Here is a simple example. Enter the following commands to see <em>commit</em> and <em>rollback</em> in action:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; create table myTbl (i int);
 splice&gt; autocommit off;             &#160;&#160;&#160;&#160;&#160;- commits must be made explicitly
 splice&gt; insert into myTbl  values 1,2,3; - inserted but not visible to others
@@ -967,15 +967,15 @@ splice&gt; rollback;         &#160;&#160;&#160;&#160;&#160;          - roll back
 splice&gt; select * from myTbl;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;- and verify again
 ...	</pre>
             </div>
-            <p>You can turn <span class="CodeFont">autocommit</span> back on by issuing the command: <span class="AppCommand">autocommit on;</span></p>
+            <p>You can turn <code>autocommit</code> back on by issuing the command: <span class="AppCommand">autocommit on;</span></p>
             <h3 id="Using">Using Savepoints</h3>
             <p>Splice Machine supports the JDBC 3.0 Savepoint API, which adds methods for setting, releasing, and rolling back to savepoints within a transaction. Savepoints give you additional control over transactions by allowing you to define logical rollback points within a transaction, which effectively allows you to specify sub-transactions (also known as nested transactions). </p>
             <p>You can specify multiple savepoints within a transaction. Savepoints are very useful when processing large transactions:&#160;you can implement error recovery schemes that allow you to rollback part of a transaction without having to abort the entire transaction.</p>
             <p>You can use these commands to work with Savepoints:</p>
             <ul>
-                <li>create a savepoint with the <span class="CodeFont">savepoint</span> command</li>
-                <li>release a savepoint with the <span class="CodeFont">release savepoint</span> command</li>
-                <li>roll a transaction back to an earlier savepoint with the <span class="CodeFont">rollback to savepoint</span> command</li>
+                <li>create a savepoint with the <code>savepoint</code> command</li>
+                <li>release a savepoint with the <code>release savepoint</code> command</li>
+                <li>roll a transaction back to an earlier savepoint with the <code>rollback to savepoint</code> command</li>
             </ul>
             <h4>Example</h4>
             <p>First we'll create a table, turn autocommit off, and insert some data into the table. We then create a savepoint, and verify the contents of our table:</p>
@@ -1026,24 +1026,24 @@ I
             <h3 id="Rollbacks">Using Rollback Versus Rollback to Savepoint</h3>
             <p>There's one important distinction you should be aware of between rolling back to a savepoint versus rolling back the entire transaction:</p>
             <ul>
-                <li>When you perform a <span class="CodeFont">rollback</span>, Splice Machine aborts the entire transaction and creates a new transaction, </li>
-                <li>When you perform a <span class="CodeFont">rollback to savepoint</span>, Splice&#160;Machine rolls back part of the changes, but does not create a new transaction.</li>
+                <li>When you perform a <code>rollback</code>, Splice Machine aborts the entire transaction and creates a new transaction, </li>
+                <li>When you perform a <code>rollback to savepoint</code>, Splice&#160;Machine rolls back part of the changes, but does not create a new transaction.</li>
             </ul>
             <div class="notePlain">
                 <p>Remember that this distinction also holds in a multi-tenant environment. In other words:</p>
                 <ul>
-                    <li>If two users are making modifications to the same table in separate transactions, and one user does a <span class="CodeFont">rollback</span>, all changes made by that user prior to that rollback are no longer in the database.</li>
-                    <li>Similarly, if two users are making modifications to the same table in separate transactions, and one user does a <span class="CodeFont">rollback to savepoint</span>, all changes made by that user since the savepoint was established are no longer in the database.</li>
+                    <li>If two users are making modifications to the same table in separate transactions, and one user does a <code>rollback</code>, all changes made by that user prior to that rollback are no longer in the database.</li>
+                    <li>Similarly, if two users are making modifications to the same table in separate transactions, and one user does a <code>rollback to savepoint</code>, all changes made by that user since the savepoint was established are no longer in the database.</li>
                 </ul>
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><span class="CodeFont"><a href="cmdlineref_autocommit.html">autocommit</a></span> command</li>
-                <li><span class="CodeFont"><a href="cmdlineref_commit.html">commit</a></span> command</li>
-                <li><span class="CodeFont"><a href="cmdlineref_releasesavepoint.html">release savepoint</a></span> command</li>
-                <li><span class="CodeFont"><a href="cmdlineref_rollback.html">rollback</a></span> command</li>
-                <li><span class="CodeFont"><a href="cmdlineref_rollbacktosavepoint.html">rollback to savepoint</a></span> command</li>
-                <li><span class="CodeFont"><a href="cmdlineref_savepoint.html">savepoint</a></span> command</li>
+                <li><code><a href="cmdlineref_autocommit.html">autocommit</a></code> command</li>
+                <li><code><a href="cmdlineref_commit.html">commit</a></code> command</li>
+                <li><code><a href="cmdlineref_releasesavepoint.html">release savepoint</a></code> command</li>
+                <li><code><a href="cmdlineref_rollback.html">rollback</a></code> command</li>
+                <li><code><a href="cmdlineref_rollbacktosavepoint.html">rollback to savepoint</a></code> command</li>
+                <li><code><a href="cmdlineref_savepoint.html">savepoint</a></code> command</li>
             </ul>
         </div>
 	</section>
@@ -1063,7 +1063,7 @@ I
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

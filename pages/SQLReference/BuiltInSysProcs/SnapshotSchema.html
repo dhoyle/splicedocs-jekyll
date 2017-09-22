@@ -11,13 +11,13 @@ folder: SQLReference/BuiltInSysProcs
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1 id="BuiltInSysProcs.SnapshotSchema">SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA</span> system procedure
+            <p>The <code>SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA</code> system procedure
 creates a Splice Machine snapshot of the specified schema. These snapshots can subsequently be used to restore the schema to its state at the time that a snapshot was created. </p>
-						<div class="noteNote">Snapshots include both the data and indexes for tables.</div>
-            <p>For more information, see the <a href="developers_tuning_snapshots.html"><span class="ItalicFont">Using Snapshots</span></a> topic in our <span class="ItalicFont">Developers's Guide</span>.</p>
+						<p class="noteNote">Snapshots include both the data and indexes for tables.</p>
+            <p>For more information, see the <a href="developers_tuning_snapshots.html"><em>Using Snapshots</em></a> topic in our <em>Developers's Guide</em>.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA( VARCHAR(128)&#160;<span class="ItalicFont">schemaName</span>,
-                                  VARCHAR(128)&#160;<span class="ItalicFont">snapshotName</span> );</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA( VARCHAR(128)&#160;<em>schemaName</em>,
+                                  VARCHAR(128)&#160;<em>snapshotName</em> );</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">schemaName</p>
@@ -27,10 +27,10 @@ creates a Splice Machine snapshot of the specified schema. These snapshots can s
             </div>
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
-            <div class="noteIcon">Creating a schema snapshot can require several minutes of more to complete, depending on the size of the schema.</div>
+            <p class="noteIcon">Creating a schema snapshot can require several minutes of more to complete, depending on the size of the schema.</p>
             <h2>Example</h2>
             <div>
-                <p>The following example creates a snapshot of the schema named <span class="CodeFont">mySchema</span>:</p>
+                <p>The following example creates a snapshot of the schema named <code>mySchema</code>:</p>
                 <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SNAPSHOT_SCHEMA('mySchema', 'snap_myschema_070417a');
 Statement executed.</pre>
                 </div>

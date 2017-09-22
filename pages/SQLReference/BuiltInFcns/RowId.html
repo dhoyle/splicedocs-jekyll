@@ -11,33 +11,33 @@ folder: SQLReference/BuiltInFcns
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>ROWID</h1>
-            <p><span class="CodeFont">ROWID</span> is a <span class="ItalicFont">pseudocolumn</span> that uniquely defines a single row in a database table. </p>
-            <p>The term pseudocolumn is used because you can refer to <span class="CodeFont">ROWID</span> in the <span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span>&#160;clauses of a query as you would refer to a column stored in your database; the difference is you cannot insert, update, or delete <span class="CodeFont">ROWID</span> values.</p>
-            <p>The <span class="CodeFont">ROWID</span>&#160;value for a given row in a table remains the same for the life of the row, with one exception:&#160;the <span class="CodeFont">ROWID</span>&#160;may change if the table is an index organized table and you change its primary key.</p>
+            <p><code>ROWID</code> is a <em>pseudocolumn</em> that uniquely defines a single row in a database table. </p>
+            <p>The term pseudocolumn is used because you can refer to <code>ROWID</code> in the <code><a href="sqlref_clauses_where.html">WHERE</a></code>&#160;clauses of a query as you would refer to a column stored in your database; the difference is you cannot insert, update, or delete <code>ROWID</code> values.</p>
+            <p>The <code>ROWID</code>&#160;value for a given row in a table remains the same for the life of the row, with one exception:&#160;the <code>ROWID</code>&#160;may change if the table is an index organized table and you change its primary key.</p>
             <h2 id="Syntax">Syntax</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ROWID</pre>
             </div>
             <h2>Usage</h2>
-            <p>You can use a <span class="CodeFont">ROWID</span>&#160;value to refer to a row in a table in the <span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span>&#160;clauses of a query. These values have several valuable uses:</p>
+            <p>You can use a <code>ROWID</code>&#160;value to refer to a row in a table in the <code><a href="sqlref_clauses_where.html">WHERE</a></code>&#160;clauses of a query. These values have several valuable uses:</p>
             <ul>
                 <li>They are the fastest way to access a single row.</li>
                 <li>They are a built-in, unique identifier for every row in a table.</li>
                 <li>They provide information about how the rows in a table are stored.</li>
             </ul>
-            <p>Some important notes about <span class="CodeFont">ROWID</span> values:</p>
+            <p>Some important notes about <code>ROWID</code> values:</p>
             <ul>
-                <li>Do not use <span class="CodeFont">ROWID</span>&#160;as the primary key of a table.</li>
-                <li>The <span class="CodeFont">ROWID</span>&#160;of a deleted row can later be reassigned to a new row.</li>
-                <li>A <span class="CodeFont">ROWID</span> value is associated with a table row when the row is created.</li>
-                <li><span class="CodeFont">ROWID</span> values are unique within a table, but not necessarily unique within a database.</li>
-                <li>If you delete and re-import a row in a table, the <span class="CodeFont">ROWID</span>&#160;may change.</li>
-                <li>The <span class="CodeFont">ROWID</span>&#160;value for a row may change if the row is in an index organized table and you change the table's primary key.</li>
+                <li>Do not use <code>ROWID</code>&#160;as the primary key of a table.</li>
+                <li>The <code>ROWID</code>&#160;of a deleted row can later be reassigned to a new row.</li>
+                <li>A <code>ROWID</code> value is associated with a table row when the row is created.</li>
+                <li><code>ROWID</code> values are unique within a table, but not necessarily unique within a database.</li>
+                <li>If you delete and re-import a row in a table, the <code>ROWID</code>&#160;may change.</li>
+                <li>The <code>ROWID</code>&#160;value for a row may change if the row is in an index organized table and you change the table's primary key.</li>
             </ul>
             <h3>Using ROWID&#160;with JDBC</h3>
-            <p>You can access <span class="CodeFont">ROWID</span>&#160;with JDBC&#160;result sets; for example:</p>
+            <p>You can access <code>ROWID</code>&#160;with JDBC&#160;result sets; for example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">() ResultSet.getRowId(int);</pre>
             </div>
-            <p>You can also use <span class="CodeFont">ROWID</span>&#160;in JDBC&#160;queries; for example:</p>
+            <p>You can also use <code>ROWID</code>&#160;in JDBC&#160;queries; for example:</p>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">() CallableStatement.setRowId(int, RowId);
 () PreparedStatement.setRowId(int, RowId);</pre>
             </div>
@@ -57,15 +57,15 @@ ROWID                         |DISPLAYNAME             |POS&amp;
 4 rows selected
 </pre>
             </div>
-            <p>This statement updates column <span class="CodeFont">c</span> in all rows in which column <span class="CodeFont">b</span> equals <span class="CodeFont">10</span>:</p>
+            <p>This statement updates column <code>c</code> in all rows in which column <code>b</code> equals <code>10</code>:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">UPDATE mytable SET c=100 WHERE rowid=(SELECT rowid FROM mytable WHERE b=10);</pre>
             </div>
             <h2>See Also</h2>
             <ul>
-                <li><span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT</a></span> expression</li>
-                <li><span class="CodeFont"><a href="sqlref_expressions_select.html">SELECT</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_update.html">UPDATE</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause</li>
+                <li><code><a href="sqlref_expressions_select.html">SELECT</a></code> expression</li>
+                <li><code><a href="sqlref_expressions_select.html">SELECT</a></code>&#160;statement</li>
+                <li><code><a href="sqlref_statements_update.html">UPDATE</a></code>&#160;statement</li>
+                <li><code><a href="sqlref_clauses_where.html">WHERE</a></code> clause</li>
             </ul>
         </div>
 	</section>

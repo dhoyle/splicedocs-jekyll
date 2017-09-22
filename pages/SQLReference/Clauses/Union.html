@@ -11,23 +11,23 @@ folder: SQLReference/Clauses
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>UNION</h1>
-            <p>The <span class="CodeFont">UNION</span> operator combines the result set of two or more similar <span class="CodeFont">SELECT</span>&#160;queries, and returns distinct rows.</p>
+            <p>The <code>UNION</code> operator combines the result set of two or more similar <code>SELECT</code>&#160;queries, and returns distinct rows.</p>
             <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax"><span class="ItalicFont"><a href="sqlref_expressions_select.html">SELECT&#160;expression</a></span> ]*</pre>
+            <div class="fcnWrapperWide"><pre class="FcnSyntax"><em><a href="sqlref_expressions_select.html">SELECT&#160;expression</a></em> ]*</pre>
             </div>
             <div class="paramList">
                 <p class="paramName">SELECT&#160;expression</p>
-                <p class="paramDefnFirst">A&#160;<span class="CodeFont">SELECT</span>&#160;expression that does not include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause.</p>
-                <p class="paramDefn">If you include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause, that clause applies to the intersection operation.</p>
+                <p class="paramDefnFirst">A&#160;<code>SELECT</code>&#160;expression that does not include an <code>ORDER&#160;BY</code>&#160;clause.</p>
+                <p class="paramDefn">If you include an <code>ORDER&#160;BY</code>&#160;clause, that clause applies to the intersection operation.</p>
                 <p class="paramName">DISTINCT</p>
                 <p class="paramDefnFirst">(Optional). Indicates that only distinct (non-duplicate) rows from the queries are included. This is the default. </p>
                 <p class="paramName">ALL</p>
                 <p class="paramDefnFirst">(Optional). Indicates that all rows from the queries are included, including duplicates.</p>
             </div>
             <h2>Usage</h2>
-            <p class="body">Each <span class="CodeFont">SELECT</span>&#160;statement in the union must contain the same number of columns, with similar data types, in the same order.
-Although the number, data types, and order of the fields in the select queries that you combine in a <span class="CodeFont">UNION</span>&#160;clause must correspond, you can use expressions, such as calculations or subqueries, to make them correspond. </p>
-            <p>Each <span class="CodeFont">UNION</span> keyword combines the <span class="CodeFont">SELECT</span> statements that immediately precede and follow it. If you use the <span class="CodeFont">ALL</span> keyword with some of the <span class="CodeFont">UNION</span> keywords in your query, but not with others, the results will include duplicate rows from the pairs of <span class="CodeFont">SELECT</span> statements that are combined by using <span class="CodeFont">UNION ALL</span>, but will not include duplicate rows from the <span class="CodeFont">SELECT</span> statements that are combined by using <span class="CodeFont">UNION</span> without the <span class="CodeFont">ALL</span> keyword.
+            <p class="body">Each <code>SELECT</code>&#160;statement in the union must contain the same number of columns, with similar data types, in the same order.
+Although the number, data types, and order of the fields in the select queries that you combine in a <code>UNION</code>&#160;clause must correspond, you can use expressions, such as calculations or subqueries, to make them correspond. </p>
+            <p>Each <code>UNION</code> keyword combines the <code>SELECT</code> statements that immediately precede and follow it. If you use the <code>ALL</code> keyword with some of the <code>UNION</code> keywords in your query, but not with others, the results will include duplicate rows from the pairs of <code>SELECT</code> statements that are combined by using <code>UNION ALL</code>, but will not include duplicate rows from the <code>SELECT</code> statements that are combined by using <code>UNION</code> without the <code>ALL</code> keyword.
 </p>
             <h2>Results</h2>
             <p>A result set.</p>

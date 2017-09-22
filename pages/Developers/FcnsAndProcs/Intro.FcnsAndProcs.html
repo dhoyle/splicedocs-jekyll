@@ -13,18 +13,18 @@ folder: Developers/FcnsAndProcs
             <h1>Using Functions and Stored Procedures</h1>
             <p>This topic provides an overview of writing and using functions and stored procedures in Splice Machine.</p>
             <h2>About User-Defined Functions</h2>
-            <p>You can create user-defined database functions that can be evaluated in SQL statements; these functions can be invoked where most other built-in functions are allowed, including within SQL expressions and <span class="CodeFont">SELECT</span> statement. Functions must be deterministic, and cannot be used to make changes to the database.</p>
+            <p>You can create user-defined database functions that can be evaluated in SQL statements; these functions can be invoked where most other built-in functions are allowed, including within SQL expressions and <code>SELECT</code> statement. Functions must be deterministic, and cannot be used to make changes to the database.</p>
             <p>You can create two kinds of functions:</p>
             <ul>
-                <li>Scalar functions, which always return a single value (or <span class="CodeFont">NULL</span>),</li>
+                <li>Scalar functions, which always return a single value (or <code>NULL</code>),</li>
                 <li>Table functions, which return a table.</li>
             </ul>
-            <p>When you invoke a function within a <span class="CodeFont">SELECT</span>&#160;statement, it is applied to each retrieved row. For example:</p>
+            <p>When you invoke a function within a <code>SELECT</code>&#160;statement, it is applied to each retrieved row. For example:</p>
             <div class="preWrapper"><pre class="Example">SELECT&#160;ID, Salary, MyAdjustSalaryFcn(Salary)&#160;<br />FROM&#160;SPLICEBBALL.Salaries;</pre>
             </div>
-            <p>This <span class="CodeFont">SELECT</span>&#160;will execute the <span class="CodeFont">MyAdjustSalaryFcn</span> to the <span class="CodeFont">Salary</span> value for each player in the table.</p>
+            <p>This <code>SELECT</code>&#160;will execute the <code>MyAdjustSalaryFcn</code> to the <code>Salary</code> value for each player in the table.</p>
             <h2>About Stored Procedures</h2>
-            <p>You can group a set of SQL&#160;commands together with variable and logic into a stored procedure, which is a subroutine that is stored in your database's data dictionary. Unlike user-defined functions, a stored procedure is not an expression and can only be invoked using the <span class="CodeFont">CALL</span> statement. Stored procedures allow you to modify the database and return <span class="CodeFont">Result Sets</span> or nothing at all.</p>
+            <p>You can group a set of SQL&#160;commands together with variable and logic into a stored procedure, which is a subroutine that is stored in your database's data dictionary. Unlike user-defined functions, a stored procedure is not an expression and can only be invoked using the <code>CALL</code> statement. Stored procedures allow you to modify the database and return <code>Result Sets</code> or nothing at all.</p>
             <p>Stored procedures can be used for situations where a complex set of SQL statements are required to process something, and that process is used by various applications; creating a stored procedure increases performance efficiency. They are typically used for:</p>
             <ul>
                 <li>checking business rules and validating data before performing actions</li>
@@ -57,27 +57,27 @@ folder: Developers/FcnsAndProcs
                             <p class="noSpaceAbove">Splice Machine stored procedures can:</p>
                             <ul>
                                 <li> return result sets or return nothing at all</li>
-                                <li>issue <span class="CodeFont">update</span>, <span class="CodeFont">insert</span>, and <span class="CodeFont">delete</span> statements</li>
-                                <li>perform DDL&#160;statements such as <span class="CodeFont">create</span> and <span class="CodeFont">drop</span></li>
+                                <li>issue <code>update</code>, <code>insert</code>, and <code>delete</code> statements</li>
+                                <li>perform DDL&#160;statements such as <code>create</code> and <code>drop</code></li>
                                 <li>consolidate and centralize code</li>
                                 <li>reduce network traffic and increase execution speed</li>
                             </ul>
                         </td>
                     </tr>
                     <tr>
-                        <td>Can be used in <span class="CodeFont">SELECT</span>&#160;statements.</td>
+                        <td>Can be used in <code>SELECT</code>&#160;statements.</td>
                         <td>
-                            <p class="noSpaceAbove">Cannot be used in in <span class="CodeFont">SELECT</span>&#160;statements.</p>
-                            <p>Must be invoked using a <span class="CodeFont">CALL</span>&#160;statement.</p>
+                            <p class="noSpaceAbove">Cannot be used in in <code>SELECT</code>&#160;statements.</p>
+                            <p>Must be invoked using a <code>CALL</code>&#160;statement.</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p>Create with the <span class="CodeFont"><a href="sqlref_statements_createfunction.html">CREATE&#160;FUNCTION</a></span>&#160;statement, which is described in our SQL&#160;Reference book.</p>
+                            <p>Create with the <code><a href="sqlref_statements_createfunction.html">CREATE&#160;FUNCTION</a></code>&#160;statement, which is described in our SQL&#160;Reference book.</p>
                             <p>You can find an example in the <a href="developers_fcnsandprocs_examples.html">Function and Stored Procedure Examples</a> topic in this section.</p>
                         </td>
                         <td>
-                            <p>Create with the <span class="CodeFont"><a href="sqlref_statements_createprocedure.html">CREATE&#160;PROCEDURE</a></span>&#160;statement, which is described in our SQL&#160;Reference book.</p>
+                            <p>Create with the <code><a href="sqlref_statements_createprocedure.html">CREATE&#160;PROCEDURE</a></code>&#160;statement, which is described in our SQL&#160;Reference book.</p>
                             <p>You can find an example in the <a href="developers_fcnsandprocs_examples.html">Function and Stored Procedure Examples</a> topic in this section.</p>
                         </td>
                     </tr>
@@ -98,43 +98,43 @@ folder: Developers/FcnsAndProcs
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="ItalicFont">Execute in an SQL&#160;Statement</span>
+                        <td><em>Execute in an SQL&#160;Statement</em>
                         </td>
                         <td>Yes</td>
                         <td>No</td>
                     </tr>
                     <tr>
-                        <td><span class="ItalicFont">Execute in a Trigger</span>
+                        <td><em>Execute in a Trigger</em>
                         </td>
                         <td>Yes</td>
-                        <td>Triggers that execute before an operation (<span class="ItalicFont">before triggers</span>)&#160;cannot modify SQL data.</td>
+                        <td>Triggers that execute before an operation (<em>before triggers</em>)&#160;cannot modify SQL data.</td>
                     </tr>
                     <tr>
-                        <td><span class="ItalicFont">Process <span class="CodeFont">OUT / INOUT</span>&#160;Parameters</span>
-                        </td>
-                        <td>No</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td><span class="ItalicFont">Return <span class="CodeFont">Resultset(s)</span></span>
+                        <td><em>Process <code>OUT / INOUT</code>&#160;Parameters</em>
                         </td>
                         <td>No</td>
                         <td>Yes</td>
                     </tr>
                     <tr>
-                        <td><span class="ItalicFont">Execute SQL&#160;<span class="CodeFont">Select</span></span>
-                        </td>
-                        <td>Yes</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td><span class="ItalicFont">Execute SQL&#160;<span class="CodeFont">Update/Insert/Delete</span></span>
+                        <td><em>Return <code>Resultset(s)</code></em>
                         </td>
                         <td>No</td>
                         <td>Yes</td>
                     </tr>
                     <tr>
-                        <td><span class="ItalicFont">Execute DDL&#160;(<span class="CodeFont">Create/Drop</span>)</span>
+                        <td><em>Execute SQL&#160;<code>Select</code></em>
+                        </td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><em>Execute SQL&#160;<code>Update/Insert/Delete</code></em>
+                        </td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><em>Execute DDL&#160;(<code>Create/Drop</code>)</em>
                         </td>
                         <td>No</td>
                         <td>Yes</td>
@@ -142,7 +142,7 @@ folder: Developers/FcnsAndProcs
                 </tbody>
             </table>
             <h2>Viewing Functions and Stored Procedures</h2>
-            <p>You can use the <a href="cmdlineref_showfunctions.html"><span class="CodeFont">show functions</span></a> and <a href="cmdlineref_showprocedures.html"><span class="CodeFont">show procedures</span></a> commands in the <span class="AppCommand">splice&gt;</span>&#160;command line interface to display the functions and stored procedures available in your database:</p>
+            <p>You can use the <a href="cmdlineref_showfunctions.html"><code>show functions</code></a> and <a href="cmdlineref_showprocedures.html"><code>show procedures</code></a> commands in the <span class="AppCommand">splice&gt;</span>&#160;command line interface to display the functions and stored procedures available in your database:</p>
             <table summary="Table showing the output of the show functions and show procedures commands.">
                 <col />
                 <col />
@@ -161,7 +161,7 @@ folder: Developers/FcnsAndProcs
                     <tr>
                         <td><span class="AppCommand">splice&gt;&#160;show functions in SYSCS_UTIL;</span>
                         </td>
-                        <td>All functions in the <span class="CodeFont">SYSCS_UTIL</span>&#160;schema in your database</td>
+                        <td>All functions in the <code>SYSCS_UTIL</code>&#160;schema in your database</td>
                     </tr>
                     <tr>
                         <td><span class="AppCommand">splice&gt;&#160;show procedures;</span>
@@ -171,7 +171,7 @@ folder: Developers/FcnsAndProcs
                     <tr>
                         <td><span class="AppCommand">splice&gt;&#160;show procedures in SYSCS_UTIL;</span>
                         </td>
-                        <td>All stored procedures in the <span class="CodeFont">SYSCS_UTIL</span>&#160;schema in your database</td>
+                        <td>All stored procedures in the <code>SYSCS_UTIL</code>&#160;schema in your database</td>
                     </tr>
                 </tbody>
             </table>
@@ -184,8 +184,8 @@ folder: Developers/FcnsAndProcs
             </ul>
             <h2>See Also</h2>
             <ul>
-                <li><span class="CodeFont"><a href="sqlref_statements_createfunction.html">CREATE&#160;FUNCTION</a></span>&#160;in the <span class="ItalicFont">SQL Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createprocedure.html">CREATE&#160;PROCEDURE</a></span>&#160;in the <span class="ItalicFont">SQL Reference Manual</span></li>
+                <li><code><a href="sqlref_statements_createfunction.html">CREATE&#160;FUNCTION</a></code>&#160;in the <em>SQL Reference Manual</em></li>
+                <li><code><a href="sqlref_statements_createprocedure.html">CREATE&#160;PROCEDURE</a></code>&#160;in the <em>SQL Reference Manual</em></li>
             </ul>
         </div>
 	</section>
