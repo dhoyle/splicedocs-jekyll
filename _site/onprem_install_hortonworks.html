@@ -578,15 +578,7 @@
 
 
 
-
-
 ﻿
-
-
-
-
-
-
 
 
 
@@ -652,7 +644,7 @@
 
 	<section>
 		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="kanchor506">Installing and Configuring Splice Machine for Hortonworks HDP</h1>
+            <h1>Installing and Configuring Splice Machine for Hortonworks HDP</h1>
 <div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
 
             <p>This topic describes installing and configuring Splice Machine on a Hortonworks Ambari-managed cluster. Follow these steps:</p>
@@ -1188,11 +1180,33 @@ splice.txn.concurrencyLevel=4096</pre>
             <p>There are a few configuration modifications you might want to make:</p>
             <ul>
                 <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
+				<li><a href="#Logging">Modify the Log Location</a> if you want your Splice Machine log entries stored somewhere other than in the logs for your region servers.</li>
                 <li>Adjust the replication factor if you have a small cluster and need to improve resource usage or performance.</li>
             </ul>
             <h3 id="Modify">Modify the Authentication Mechanism</h3>
             <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
             <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP by following the simple instructions in <a href="onprem_install_configureauth.html" class="WithinBook">Configuring Splice Machine Authentication</a></p>
+			<h3 id="Logging">Modify the Log Location</h3>
+			<p>Splice Machine logs all SQL statements by default, storing the log entries in your region server's logs, as described in our <a href="developers_tuning_logging">Using Logging</a> topic. You can modify where Splice Machine by adding the following snippet to your <span class="ItalicFont">RegionServer Logging Advanced Configuration Snippet (Safety Valve)</span> section of your HBase Configuration:</p>
+            <div class="preWrapper">
+            <pre class="Plain">log4j.appender.spliceDerby=org.apache.log4j.FileAppender
+log4j.appender.spliceDerby.File=${hbase.log.dir}/splice-derby.log
+log4j.appender.spliceDerby.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.spliceDerby.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+log4j.appender.spliceStatement=org.apache.log4j.FileAppender
+log4j.appender.spliceStatement.File=${hbase.log.dir}/splice-statement.log
+log4j.appender.spliceStatement.layout=org.apache.log4j.EnhancedPatternLayout
+log4j.appender.spliceStatement.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+log4j.logger.splice-derby=INFO, spliceDerby
+log4j.additivity.splice-derby=false
+
+# Uncomment to log statements to a different file:
+#log4j.logger.splice-derby.statement=INFO, spliceStatement
+# Uncomment to not replicate statements to the spliceDerby file:
+#log4j.additivity.splice-derby.statement=false</pre>
+            </div>
             <h2 id="Run">Verify your Splice Machine Installation</h2>
             <p>Now start using the Splice Machine command line interpreter, which is referred to as <span class="AppCommand">the splice prompt</span> or simply <span class="AppCommand">splice&gt;</span> by launching the <span class="CodeFont">sqlshell.sh</span> script on any node in your cluster that is running an HBase region server. </p>
             <div class="noteNote">The command line interpreter defaults to connecting on port <span class="CodeFont">1527</span> on <span class="CodeFont">localhost</span>, with username <span class="CodeFont">splice</span>, and password <span class="CodeFont">admin</span>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</div>
@@ -1273,7 +1287,7 @@ splice.txn.concurrencyLevel=4096</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 19, 2017 <br />
+ Site last generated: Sep 22, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
