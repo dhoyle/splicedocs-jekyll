@@ -9,7 +9,7 @@ permalink: sqlref_systables_systablestats.html
 folder: SQLReference/SystemTables
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>SYSTABLESTATISTICS System Table</h1>
             <p>The <code>SYSTABLESTATISTICS</code> table view describes the statistics for tables within the current
 		database.</p>
@@ -33,76 +33,76 @@ folder: SQLReference/SystemTables
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">SCHEMANAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>SCHEMANAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the schema</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>TABLENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CONGLOMERATENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>CONGLOMERATENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TOTAL_ROW_COUNT</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>TOTAL_ROW_COUNT</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The total number of rows in the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">AVG_ROW_COUNT</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>AVG_ROW_COUNT</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The average number of rows in the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TOTAL_SIZE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>TOTAL_SIZE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The total size of the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">NUM_PARTITIONS</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>NUM_PARTITIONS</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The number of partitions<span class="Footnote">1</span> for which statistics were collected.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">AVG_PARTITION_SIZE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>AVG_PARTITION_SIZE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The average size of a single partition<span class="Footnote">1</span>, in bytes.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">ROW_WIDTH</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>ROW_WIDTH</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>
                             <p class="noSpaceAbove">The <em>maximum average</em> of the widths of rows in the table, across all partitions, in bytes.</p>
                             <p>Each partition records the average width of a single row. This value is the maximum of those averages across all partitions.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">STATS_TYPE</td>
-                        <td class="CodeFont">INTEGER</td>
-                        <td class="CodeFont">10</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>STATS_TYPE</code></td>
+                        <td><code>INTEGER</code></td>
+                        <td><code>10</code></td>
+                        <td><code>YES</code></td>
                         <td>
                             <p>The type of statistics, which is one of these values:</p>
                             <table>
@@ -131,10 +131,10 @@ folder: SQLReference/SystemTables
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SAMPLE_FRACTION</td>
-                        <td class="CodeFont">DOUBLE</td>
-                        <td class="CodeFont">52</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>SAMPLE_FRACTION</code></td>
+                        <td><code>DOUBLE</code></td>
+                        <td><code>52</code></td>
+                        <td><code>YES</code></td>
                         <td>
                             <p>The sampling percentage, expressed as <code>0.0</code> to <code>1.0</code>, </p>
                         <ul>

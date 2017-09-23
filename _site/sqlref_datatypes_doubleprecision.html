@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">The DOUBLE PRECISION data type provides 8-byte storage for numbers using IEEE floating-point notation.DOUBLE can be used synonymously with DOUBLE PRECISION.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="DataTypes.DoublePrecision">DOUBLE PRECISION</h1>
             <p>The <code>DOUBLE PRECISION</code> data type provides 8-byte storage for numbers
 using IEEE floating-point notation. <code>DOUBLE</code> can be used synonymously with <code>DOUBLE PRECISION</code>, and the documentation for this topic is identical to the documentation for the <code><a href="sqlref_builtinfcns_double.html">DOUBLE</a></code>&#160;topic.</p>
@@ -2810,7 +2821,7 @@ using IEEE floating-point notation. <code>DOUBLE</code> can be used synonymously
             <p>Here are several usage notes for the <code>DOUBLE</code>/<code>DOUBLE&#160;PRECISION</code>&#160;data type:</p>
             <ul>
                 <li>The following range limitations apply:
-        <table summary="Value limitations for the DOUBLE PRECISION data type"><col /><col /><thead><tr><th>Limit type</th><th>Limitation</th></tr></thead><tbody><tr><td>Smallest <code>DOUBLE</code> value</td><td class="CodeFont">-1.79769E+308</td></tr><tr><td>Largest <code>DOUBLE</code> value</td><td class="CodeFont"> 1.79769E+308</td></tr><tr><td>Smallest positive <code>DOUBLE</code> value</td><td class="CodeFont"> 2.225E-307</td></tr><tr><td>Largest negative <code>DOUBLE</code> value</td><td class="CodeFont">-2.225E-307</td></tr></tbody></table><p class="noteNote">These limits are different from the <code>java.lang.Double</code> Java type limits</p></li>
+        <table summary="Value limitations for the DOUBLE PRECISION data type"><col /><col /><thead><tr><th>Limit type</th><th>Limitation</th></tr></thead><tbody><tr><td>Smallest <code>DOUBLE</code> value</td><td><code>-1.79769E+308</code></td></tr><tr><td>Largest <code>DOUBLE</code> value</td><td><code> 1.79769E+308</code></td></tr><tr><td>Smallest positive <code>DOUBLE</code> value</td><td><code> 2.225E-307</code></td></tr><tr><td>Largest negative <code>DOUBLE</code> value</td><td><code>-2.225E-307</code></td></tr></tbody></table><p class="noteNote">These limits are different from the <code>java.lang.Double</code> Java type limits</p></li>
                 <li>An exception is thrown when any double value is calculated or entered that is outside of these value ranges. Arithmetic operations <strong>do not</strong> round their resulting values to zero. If the values are too small, you will receive an exception. </li>
                 <li>Numeric floating point constants are limited to a length of 30 characters.
         <div class="preWrapper"><pre class="Example">   -- this example will fail because the constant is too long:
@@ -2831,6 +2842,12 @@ values 01234567890123456789012345678901e0;</pre></div></li>
             </div>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

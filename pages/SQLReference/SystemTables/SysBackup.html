@@ -9,7 +9,7 @@ permalink: sqlref_systables_sysbackup.html
 folder: SQLReference/SystemTables
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>SYSBACKUP System Table</h1>
             <p>The <code>SYSBACKUP</code>&#160;table maintains information about each database backup. You can query this table to find the ID&#160;of and details about a backup that was run at a specific time. </p>
             <table>
@@ -30,45 +30,45 @@ folder: SQLReference/SystemTables
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">BACKUP_ID </td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>BACKUP_ID </code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>NO</code></td>
                         <td>The backup ID</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">BEGIN_TIMESTAMP </td>
-                        <td class="CodeFont">TIMESTAMP</td>
-                        <td class="CodeFont">29</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>BEGIN_TIMESTAMP </code></td>
+                        <td><code>TIMESTAMP</code></td>
+                        <td><code>29</code></td>
+                        <td><code>NO</code></td>
                         <td>The start time of the backup</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">END_TIMESTAMP </td>
-                        <td class="CodeFont">TIMESTAMP</td>
-                        <td class="CodeFont">29</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>END_TIMESTAMP </code></td>
+                        <td><code>TIMESTAMP</code></td>
+                        <td><code>29</code></td>
+                        <td><code>YES</code></td>
                         <td>The end time of the backup</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">STATUS</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">10</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>STATUS</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>10</code></td>
+                        <td><code>NO</code></td>
                         <td>The status of the backup</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">FILESYSTEM </td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32642</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>FILESYSTEM </code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32642</code></td>
+                        <td><code>NO</code></td>
                         <td>The backup destination directory</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SCOPE </td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">10</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SCOPE </code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>10</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">The scope of the backup: database, schemas, tables, etc. The current allowable values are:</p>
                             <ul>
@@ -77,20 +77,20 @@ folder: SQLReference/SystemTables
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">INCREMENTAL_BACKUP</td>
-                        <td class="CodeFont">BOOLEAN</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>INCREMENTAL_BACKUP</code></td>
+                        <td><code>BOOLEAN</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p><code>YES</code> for incremental backups, <code>NO</code> for full backups</p>
                             <p><strong>NOTE:</strong>&#160;Incremental backups are not yet available.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">INCREMENTAL_PARENT_BACKUP_ID</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>INCREMENTAL_PARENT_BACKUP_ID</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>
                             <p class="noSpaceAbove">For an incremental backup, this is the  <code>BACKUP_ID</code>&#160;of the previous backup on which this incremental backup is based.</p>
                             <p>For full backups, this is <code>-1</code>.</p>
@@ -98,10 +98,10 @@ folder: SQLReference/SystemTables
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">BACKUP_ITEM</td>
-                        <td class="CodeFont">INTEGER</td>
-                        <td class="CodeFont">10</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>BACKUP_ITEM</code></td>
+                        <td><code>INTEGER</code></td>
+                        <td><code>10</code></td>
+                        <td><code>YES</code></td>
                         <td>The number of tables that were backed up.</td>
                     </tr>
                 </tbody>

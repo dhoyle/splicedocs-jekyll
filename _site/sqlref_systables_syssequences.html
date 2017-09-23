@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">System table that describes the sequence generators in the database.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysSequences">SYSSEQUENCES System Table</h1>
             <p>The <code>SYSSEQUENCES</code> table describes the sequence generators in the
 		database.</p>
@@ -2820,42 +2831,42 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">SEQUENCEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SEQUENCEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The ID of the sequence generator. This is the primary key.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SEQUENCENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SEQUENCENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The name of the sequence generator. There is a unique index
 					on (<code>SCHEMAID, SEQUENCENAME</code>).</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SCHEMAID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SCHEMAID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The ID of the schema that holds the sequence generator.
 					There is a foreign key linking this column to <code>SYSSCHEMAS.SCHEMAID</code>.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SEQUENCEDATATYPE</td>
+                        <td><code>SEQUENCEDATATYPE</code></td>
                         <td class="CodeFont"><em>com.splicemachine.db.catalog.TypeDescriptor</em>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>-1</code></td>
+                        <td><code>NO</code></td>
                         <td>System type that describes the precision, length, scale,
 					nullability, type name, and storage type of the data</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CURRENTVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>CURRENTVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>
                             <p class="noSpaceAbove">The current value of the sequence generator. This is not the
 						actual next value for the sequence generator. That value can be obtained by
@@ -2869,37 +2880,37 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">STARTVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
+                        <td><code>STARTVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
                         <td>NO</td>
                         <td>The initial value of the sequence generator</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">MINIMUMVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
+                        <td><code>MINIMUMVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
                         <td>NO</td>
                         <td>The minimum value of the sequence generator</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">MAXIMUMVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
+                        <td><code>MAXIMUMVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
                         <td>NO</td>
                         <td>The maximum value of the sequence generator</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">INCREMENT</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
+                        <td><code>INCREMENT</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
                         <td>NO</td>
                         <td>The step size of the sequence generator</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CYCLEOPTION</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
+                        <td><code>CYCLEOPTION</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
                         <td>NO</td>
                         <td>
                             <p class="noSpaceAbove">If the sequence generator cycles, this value is <code>'Y'</code>.</p>
@@ -2916,6 +2927,12 @@
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

@@ -10,7 +10,7 @@ folder: Developers/SplicePlus
 ---
 
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
         <h1>Splice*Plus - PL/SQL for Splice&#160;Machine</h1>
         <p>This topic describes Splice Machine's implementation of the PL/SQL&#160;language and <em>Splice*Plus</em>, the PL/SQL&#160;interpreter for Splice&#160;Machine.</p>
 {% include splice_snippets/enterpriseonly_note.html %}
@@ -40,14 +40,14 @@ EXCEPTION
             </thead>
             <tbody>
                 <tr>
-                    <td class="ItalicFont">Labels</td>
+                    <td><em>Labels</em></td>
                     <td>
                         <p>Labels are specified surrounded by double chevrons (<code>&lt;&lt;</code> and <code>&gt;&gt;</code>).</p>
                         <p>Labels are optional for anonymous blocks such as the main body of your program.</p>
                     </td>
                 </tr>
                 <tr>
-                    <td class="ItalicFont">Declarations</td>
+                    <td><em>Declarations</em></td>
                     <td>
                         <p>The declare section of a block is optional; however, you must declare a variable prior to using it.</p>
                         <p>The declaration section of an anonymous block begins with the keyword <code>DECLARE</code>.</p>
@@ -55,26 +55,26 @@ EXCEPTION
                     </td>
                 </tr>
                 <tr>
-                    <td class="ItalicFont">Terminators</td>
+                    <td><em>Terminators</em></td>
                     <td>You must terminate each declaration and statement with a semicolon (<code>;</code>).</td>
                 </tr>
                 <tr>
-                    <td class="ItalicFont">Executable part</td>
+                    <td><em>Executable part</em></td>
                     <td>The executable part of the block begins with the <code>BEGIN</code> keyword and is required.</td>
                 </tr>
                 <tr>
-                    <td class="ItalicFont">Exceptions</td>
+                    <td><em>Exceptions</em></td>
                     <td>The <code>exception</code> keyword begins the optional section of the block in which you handle exceptions generated in the executable part.</td>
                 </tr>
                 <tr>
-                    <td class="ItalicFont">Nested blocks and variable scope</td>
+                    <td><em>Nested blocks and variable scope</em></td>
                     <td>
                         <p>You can nest a block within another block.</p>
                         <p>Variable scoping works as you expect: variables declared in outer blocks are accessible to all blocks nested within them (inner blocks), while variables declared in inner blocks are not accessible to the outer blocks. </p>
                     </td>
                 </tr>
                 <tr>
-                    <td class="ItalicFont">Comments</td>
+                    <td><em>Comments</em></td>
                     <td>
                         <p>You can add comments in two ways:</p>
                         <ul>
@@ -84,7 +84,7 @@ EXCEPTION
                     </td>
                 </tr>
                 <tr>
-                    <td class="ItalicFont">/ at end</td>
+                    <td><em>/ at end</em></td>
                     <td>
                         <p>You include a single <code>/</code> on a blank line at the end of a PL/SQL&#160;block to tell the PL/SQL&#160;interpreter to run the block after loading it. If you leave this out, the interpreter will simply wait after loading your code block.</p>
                         <p class="noteNote">If you're creating a program that includes one or more function or procedure definitions (see below), you must include the <code>/</code> after each function or procedure block to have them loaded when you run your program.</p>

@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">System table that describes the columns within all tables in the current database.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysColumns">SYSCOLUMNS System Table</h1>
             <p>The <code>SYSCOLUMNS</code> table describes the columns within all tables in the
 		current database.</p>
@@ -2819,86 +2830,86 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">REFERENCEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>REFERENCEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Identifier for table (join with
 					<code>SYSTABLES.TABLEID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMNNAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>COLUMNNAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>Column or parameter name</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMNNUMBER</td>
-                        <td class="CodeFont">INTEGER</td>
-                        <td class="CodeFont">10</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>COLUMNNUMBER</code></td>
+                        <td><code>INTEGER</code></td>
+                        <td><code>10</code></td>
+                        <td><code>NO</code></td>
                         <td>The position of the column within the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMNDATATYPE</td>
+                        <td><code>COLUMNDATATYPE</code></td>
                         <td><em>com.splicemachine.db.catalog.TypeDescriptor</em>
                             <p>This class is not part of the public API.</p>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>-1</code></td>
+                        <td><code>NO</code></td>
                         <td>System type that describes precision, length, scale, nullability,
 						type name, and storage type of data. For a user-defined type, this column can
 						hold a <em>TypeDescriptor</em> that refers to the appropriate type alias in
 					<code>SYS.SYSALIASES</code>.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMNDEFAULT</td>
+                        <td><code>COLUMNDEFAULT</code></td>
                         <td><em>java.io.Serializable</em>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>-1</code></td>
+                        <td><code>YES</code></td>
                         <td>For tables, describes default value of the column. The
 						<em>toString()</em> method on the object stored in the table returns the text of
 						the default value as specified in the <code>CREATE TABLE</code> or <code>ALTER TABLE</code>
 					statement.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMNDEFAULTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>COLUMNDEFAULTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>YES</code></td>
                         <td>Unique identifier for the default value</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">AUTOINCREMENTVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>AUTOINCREMENTVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>What the next value for column will be, if the column is
 					an identity column</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">AUTOINCREMENTSTART</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>AUTOINCREMENTSTART</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>Initial value of column (if specified), if it is an identity
 					column</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">AUTOINCREMENTINC</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>AUTOINCREMENTINC</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>Amount column value is automatically incremented (if
 					specified), if the column is an identity column</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLLECTSTATS</td>
-                        <td class="CodeFont">BOOLEAN</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>COLLECTSTATS</code></td>
+                        <td><code>BOOLEAN</code></td>
+                        <td><code>1</code></td>
+                        <td><code>YES</code></td>
                         <td>Whether or not to collect statistics on the table.</td>
                     </tr>
                 </tbody>
@@ -2910,6 +2921,12 @@
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

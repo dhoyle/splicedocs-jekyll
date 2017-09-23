@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">Built-in system procedure that computes split points for a table or index and splits it into HFiles.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</h1>
             <p>The <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> system procedure computes the split keys for a table or index, prior to importing that table in HFile format. You must use this procedure in conjunction with the <code><a href="sqlref_sysprocs_importhfile.html">SYSCS_UTIL.BULK_IMPORT_HFILE</a></code> system procedure to import your data in HFile format.</p>
             <p class="noteNote">This procedure combines the actions of two other system procedures:&#160;<code><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</a></code>.</p>
@@ -2853,23 +2864,23 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="CodeFont">\t</td>
+                                <td><code>\t</code></td>
                                 <td>Tab </td>
                             </tr>
                             <tr>
-                                <td class="CodeFont">\f</td>
+                                <td><code>\f</code></td>
                                 <td>Formfeed</td>
                             </tr>
                             <tr>
-                                <td class="CodeFont">\b</td>
+                                <td><code>\b</code></td>
                                 <td>Backspace</td>
                             </tr>
                             <tr>
-                                <td class="CodeFont">\\</td>
+                                <td><code>\\</code></td>
                                 <td>Backslash</td>
                             </tr>
                             <tr>
-                                <td class="CodeFont">^a (or ^A)</td>
+                                <td><code>^a (or ^A)</code></td>
                                 <td>
                                     <p>Control-a</p>
                                     <p class="noteIndent">If you are using a script file from the <code>splice&gt;</code>&#160;command line, your script can contain the actual <code>Control-a</code> character as the value of this parameter.</p>
@@ -2893,23 +2904,23 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="CodeFont">\t</td>
+                                <td><code>\t</code></td>
                                 <td>Tab </td>
                             </tr>
                             <tr>
-                                <td class="CodeFont">\f</td>
+                                <td><code>\f</code></td>
                                 <td>Formfeed</td>
                             </tr>
                             <tr>
-                                <td class="CodeFont">\b</td>
+                                <td><code>\b</code></td>
                                 <td>Backspace</td>
                             </tr>
                             <tr>
-                                <td class="CodeFont">\\</td>
+                                <td><code>\\</code></td>
                                 <td>Backslash</td>
                             </tr>
                             <tr>
-                                <td class="CodeFont">^a (or ^A)</td>
+                                <td><code>^a (or ^A)</code></td>
                                 <td>
                                     <p>Control-a</p>
                                     <p class="noteIndent">If you are using a script file from the <code>splice&gt;</code>&#160;command line, your script can contain the actual <code>Control-a</code> character as the value of this parameter.</p>
@@ -2964,42 +2975,42 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">y</td>
+                        <td><code>y</code></td>
                         <td>year</td>
-                        <td class="CodeFont">yy or yyyy</td>
+                        <td><code>yy or yyyy</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">M</td>
+                        <td><code>M</code></td>
                         <td>month</td>
-                        <td class="CodeFont">MM</td>
+                        <td><code>MM</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">d</td>
+                        <td><code>d</code></td>
                         <td>day in month</td>
-                        <td class="CodeFont">dd</td>
+                        <td><code>dd</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">h</td>
+                        <td><code>h</code></td>
                         <td>hour (0-12)</td>
-                        <td class="CodeFont">hh</td>
+                        <td><code>hh</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">H</td>
+                        <td><code>H</code></td>
                         <td>hour (0-23)</td>
-                        <td class="CodeFont">HH</td>
+                        <td><code>HH</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">m</td>
+                        <td><code>m</code></td>
                         <td>minute in hour</td>
-                        <td class="CodeFont">mm</td>
+                        <td><code>mm</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">s</td>
+                        <td><code>s</code></td>
                         <td>seconds</td>
-                        <td class="CodeFont">ss</td>
+                        <td><code>ss</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">S</td>
+                        <td><code>S</code></td>
                         <td>tenths of seconds</td>
                         <td class="CodeFont">
                             <p>S, SS, SSS, SSSS, SSSSS or SSSSSS<span class="important">*</span></p>
@@ -3007,14 +3018,14 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">z</td>
+                        <td><code>z</code></td>
                         <td>time zone text</td>
-                        <td class="CodeFont">e.g. Pacific Standard time</td>
+                        <td><code>e.g. Pacific Standard time</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">Z</td>
+                        <td><code>Z</code></td>
                         <td>time zone, time offset</td>
-                        <td class="CodeFont">e.g. -0800</td>
+                        <td><code>e.g. -0800</code></td>
                     </tr>
                 </tbody>
             </table>
@@ -3038,23 +3049,23 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">2013-03-23 09:45:00</td>
-                        <td class="CodeFont">yyyy-MM-dd HH:mm:ss</td>
+                        <td><code>2013-03-23 09:45:00</code></td>
+                        <td><code>yyyy-MM-dd HH:mm:ss</code></td>
                         <td>This is the default pattern.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">2013-03-23 19:45:00.98-05</td>
-                        <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSZ</td>
+                        <td><code>2013-03-23 19:45:00.98-05</code></td>
+                        <td><code>yyyy-MM-dd HH:mm:ss.SSZ</code></td>
                         <td>This pattern allows up to 2 decimal digits of seconds, and requires a time zone specification.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">2013-03-23 09:45:00-07</td>
-                        <td class="CodeFont">yyyy-MM-dd HH:mm:ssZ</td>
+                        <td><code>2013-03-23 09:45:00-07</code></td>
+                        <td><code>yyyy-MM-dd HH:mm:ssZ</code></td>
                         <td>This patterns requires a time zone specification, but does not allow for decimal digits of seconds.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">2013-03-23 19:45:00.98-0530</td>
-                        <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSZ</td>
+                        <td><code>2013-03-23 19:45:00.98-0530</code></td>
+                        <td><code>yyyy-MM-dd HH:mm:ss.SSZ</code></td>
                         <td>This pattern allows up to 2 decimal digits of seconds, and requires a time zone specification.</td>
                     </tr>
                     <tr>
@@ -3062,15 +3073,15 @@
                             <p>2013-03-23 19:45:00.123</p>
                             <p>2013-03-23 19:45:00.12</p>
                         </td>
-                        <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSS</td>
+                        <td><code>yyyy-MM-dd HH:mm:ss.SSS</code></td>
                         <td>
                             <p>This pattern allows up to 3 decimal digits of seconds, but does not allow a time zone specification.</p>
                             <p>Note that if your data specifies more than 3 decimal digits of seconds, an error occurs.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">2013-03-23 19:45:00.1298</td>
-                        <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSSS</td>
+                        <td><code>2013-03-23 19:45:00.1298</code></td>
+                        <td><code>yyyy-MM-dd HH:mm:ss.SSSS</code></td>
                         <td>This pattern allows up to 4 decimal digits of seconds, but does not allow a time zone specification.</td>
                     </tr>
                 </tbody>
@@ -3385,6 +3396,12 @@ CREATE&#160;INDEX&#160;L_SHIPDATE_IDX on TPCH.LINEITEM(
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

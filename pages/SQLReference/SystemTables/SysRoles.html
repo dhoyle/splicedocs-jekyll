@@ -9,7 +9,7 @@ permalink: sqlref_systables_sysroles.html
 folder: SQLReference/SystemTables
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysRoles">SYSROLES System Table </h1>
             <p>The <code>SYSROLES</code> table stores the roles in the database.</p>
             <p>A row in the <code>SYSROLES</code> table represents one of the following:</p>
@@ -41,33 +41,33 @@ folder: SQLReference/SystemTables
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont"> UUID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> UUID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>A unique identifier for this role</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> ROLEID</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> ROLEID</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The role name, after conversion to case normal form</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> GRANTEE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> GRANTEE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>If the row represents a role grant, this is the authorization
 						identifier of a user or role to which this role is granted. If the row
 					represents a role definition, this is the database owner's user name.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> GRANTOR</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> GRANTOR</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>This is the authorization identifier of the user that granted
 						this role. If the row represents a role definition, this is the authorization
 						identifier <code>_SYSTEM</code>. If the row represents a role grant, this is the database
@@ -75,25 +75,25 @@ folder: SQLReference/SystemTables
 					</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">WITHADMINOPTION</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>WITHADMINOPTION</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">A role definition is modelled as a grant from <code>_SYSTEM</code> to the
 						database owner, so if the row represents a role definition, the value is always
 						<code>'Y'</code>. </p>
                             <p>This means that the creator (the database owner) is always allowed
-						to grant the newly created role. Currently roles cannot be granted <span class="CodeFont">WITH ADMIN
-						OPTION</span>, so if the row represents a role grant, the value is always
+						to grant the newly created role. Currently roles cannot be granted <code>WITH ADMIN
+						OPTION</code>, so if the row represents a role grant, the value is always
 					<code>'N'</code>.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> ISDEF</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> ISDEF</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>If the row represents a role definition, this value is
 					<code>'Y'</code>. If the row represents a role grant, the value is <code>'N'</code>.</td>
                     </tr>

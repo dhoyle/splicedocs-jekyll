@@ -499,6 +499,17 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">How to install and configure the Splice Machine ODBC driver.</div>
+   
+-->
+
+    
+
+
+    
+
   ﻿
 
 
@@ -606,7 +617,7 @@
 
 
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>Using the Splice Machine ODBC&#160;Driver</h1>
             <p>This topic describes how to configure and use the Splice Machine ODBC&#160;driver, which you can use to connect with other databases and business tools that need to access your database.</p>
 ﻿        <p class="noteImportant">You <strong>must</strong> use the <em>Splice Machine</em> ODBC driver; other drivers will not work correctly.</p>
@@ -734,11 +745,11 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="CodeFont">lib64</td>
+                                    <td><code>lib64</code></td>
                                     <td>The driver binary.</td>
                                 </tr>
                                 <tr>
-                                    <td class="CodeFont">errormessages</td>
+                                    <td><code>errormessages</code></td>
                                     <td>The XML&#160;error message source for any error messages issued by the driver.</td>
                                 </tr>
                             </tbody>
@@ -758,17 +769,17 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="CodeFont">odbc.ini</td>
+                                    <td><code>odbc.ini</code></td>
                                     <td>
                                         <p>Specifies the ODBC&#160;data sources (DSNs).</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="CodeFont">odbcinst.ini</td>
+                                    <td><code>odbcinst.ini</code></td>
                                     <td>Specifies the ODBC&#160;drivers.</td>
                                 </tr>
                                 <tr>
-                                    <td class="CodeFont">splice.odbcdriver.ini</td>
+                                    <td><code>splice.odbcdriver.ini</code></td>
                                     <td>Configuration information specific to the Splice Machine ODBC&#160;driver.</td>
                                 </tr>
                             </tbody>
@@ -836,7 +847,7 @@ ODBCInstLib=/usr/lib64/libodbcinst.so</pre>
                                     <col />
                                     <tbody>
                                         <tr>
-                                            <td class="CodeFont">LogLevel</td>
+                                            <td><code>LogLevel</code></td>
                                             <td>
                                                 <p>You can specify one of the following values:</p>
                                                 <div class="preWrapperWide"><pre class="Plain">0 = OFF<br />1 = LOG_FATAL<br />2 = LOG_ERROR<br />3 = LOG_WARNING<br />4 = LOG_INFO<br />5 = LOG_DEBUG<br />6 = LOG_TRACE</pre>
@@ -846,7 +857,7 @@ ODBCInstLib=/usr/lib64/libodbcinst.so</pre>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="CodeFont">LogPath</td>
+                                            <td><code>LogPath</code></td>
                                             <td>
                                                 <p>The path to the directory in which you want the logging files stored. Two log files are written in this directory:</p>
                                                 <ul>
@@ -924,6 +935,12 @@ main() {
             </div>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

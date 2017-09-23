@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">System table that stores the dependency relationships between persistent objects in the database.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysDepends">SYSDEPENDS System Table </h1>
             <p>The <code>SYSDEPENDS</code> table stores the dependency relationships between
 		persistent objects in the database.</p>
@@ -2826,42 +2837,48 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">DEPENDENTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>DEPENDENTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>A unique identifier for the dependent</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">DEPENDENTFINDER</td>
+                        <td><code>DEPENDENTFINDER</code></td>
                         <td><em>com.splicemachine.db.catalog.TypeDescriptor</em> <p>This class is not part of the public API.</p></td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>-1</code></td>
+                        <td><code>NO</code></td>
                         <td>A system type that describes the view, constraint, or trigger that is the dependent</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">PROVIDERID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>PROVIDERID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>A unique identifier for the provider</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">PROVIDERFINDER</td>
+                        <td><code>PROVIDERFINDER</code></td>
                         <td>
                             <p><em>com.splicemachine.db.catalog.TypeDescriptor</em>
                             </p>
                             <p>This class is
 						not part of the public API.</p>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>-1</code></td>
+                        <td><code>NO</code></td>
                         <td>A system type that describes the table, conglomerate, constraint, and privilege that is the provider</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

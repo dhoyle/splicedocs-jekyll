@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">How Splice Machine maps SQL data types to Java data types and matches arguments when using stored procedures.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SQLArgumentMatching" id="SQLArgumentMatching">Argument Matching in Splice Machine</h1>
             <p>When you declare a function or procedure using <code>CREATE FUNCTION/PROCEDURE</code>, Splice Machine does not verify whether a matching Java method exists. Instead, Splice Machine looks for a matching method only when you invoke the function or procedure in a later SQL statement. </p>
             <p>At that time, Splice Machine searches for a public, static method having the class and method name declared in the <code>EXTERNAL NAME </code>clause of the earlier <code>CREATE FUNCTION/PROCEDURE</code> statement. Furthermore, the Java types of the method's arguments and return value must match the SQL types declared in the <code>CREATE FUNCTION/PROCEDURE </code>statement. </p>
@@ -2884,7 +2895,7 @@
                         <td>Splice Machine looks for a method whose argument and return types are <em>primitive match</em>es or <em>wrapper match</em>es for the function's SQL arguments and return value.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Procedure                    </td>
+                        <td><em>Procedure                    </em></td>
                         <td>
                             <p class="noSpaceAbove">Splice Machine looks for a method which returns void and whose argument types match as follows:
 						</p>
@@ -3055,6 +3066,12 @@ public static Double toDegrees( Double arg ) {...}
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

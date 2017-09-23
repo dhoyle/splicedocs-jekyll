@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">The TIMESTAMP&#160;data type stores a combined DATE and TIME value, and allows a fractional-seconds value of up to nine digits.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="DataTypes.TimeStamp">TIMESTAMP</h1>
             <p>The <code>TIMESTAMP</code> data type stores a combined <code><a href="sqlref_builtinfcns_time.html">TIME</a></code> value that permits fractional seconds values of up to nine digits.</p>
             <h2>Syntax</h2>
@@ -2824,54 +2835,54 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="CodeFont">y</td>
+                            <td><code>y</code></td>
                             <td>year</td>
-                            <td class="CodeFont">yy or yyyy</td>
+                            <td><code>yy or yyyy</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">M</td>
+                            <td><code>M</code></td>
                             <td>month</td>
-                            <td class="CodeFont">MM</td>
+                            <td><code>MM</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">d</td>
+                            <td><code>d</code></td>
                             <td>day in month</td>
-                            <td class="CodeFont">dd</td>
+                            <td><code>dd</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">h</td>
+                            <td><code>h</code></td>
                             <td>hour (0-12)</td>
-                            <td class="CodeFont">hh</td>
+                            <td><code>hh</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">H</td>
+                            <td><code>H</code></td>
                             <td>hour (0-23)</td>
-                            <td class="CodeFont">HH</td>
+                            <td><code>HH</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">m</td>
+                            <td><code>m</code></td>
                             <td>minute in hour</td>
-                            <td class="CodeFont">mm</td>
+                            <td><code>mm</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">s</td>
+                            <td><code>s</code></td>
                             <td>seconds</td>
-                            <td class="CodeFont">ss</td>
+                            <td><code>ss</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">S</td>
+                            <td><code>S</code></td>
                             <td>tenths of seconds</td>
-                            <td class="CodeFont">SSS (up to 6 decimal digits: SSSSSS)</td>
+                            <td><code>SSS (up to 6 decimal digits: SSSSSS)</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">z</td>
+                            <td><code>z</code></td>
                             <td>time zone text</td>
-                            <td class="CodeFont">e.g. Pacific Standard time</td>
+                            <td><code>e.g. Pacific Standard time</code></td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">Z</td>
+                            <td><code>Z</code></td>
                             <td>time zone, time offset</td>
-                            <td class="CodeFont">e.g. -0800</td>
+                            <td><code>e.g. -0800</code></td>
                         </tr>
                     </tbody>
                 </table>
@@ -2892,23 +2903,23 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="CodeFont">2013-03-23 09:45:00</td>
-                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss</td>
+                            <td><code>2013-03-23 09:45:00</code></td>
+                            <td><code>yyyy-MM-dd HH:mm:ss</code></td>
                             <td>This is the default pattern.</td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">2013-03-23 19:45:00.98-05</td>
-                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSZ</td>
+                            <td><code>2013-03-23 19:45:00.98-05</code></td>
+                            <td><code>yyyy-MM-dd HH:mm:ss.SSZ</code></td>
                             <td>This pattern allows up to 2 decimal digits of seconds, and requires a time zone specification.</td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">2013-03-23 09:45:00-07</td>
-                            <td class="CodeFont">yyyy-MM-dd HH:mm:ssZ</td>
+                            <td><code>2013-03-23 09:45:00-07</code></td>
+                            <td><code>yyyy-MM-dd HH:mm:ssZ</code></td>
                             <td>This patterns requires a time zone specification, but does not allow for decimal digits of seconds.</td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">2013-03-23 19:45:00.98-0530</td>
-                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSZ</td>
+                            <td><code>2013-03-23 19:45:00.98-0530</code></td>
+                            <td><code>yyyy-MM-dd HH:mm:ss.SSZ</code></td>
                             <td>This pattern allows up to 2 decimal digits of seconds, and requires a time zone specification.</td>
                         </tr>
                         <tr>
@@ -2916,15 +2927,15 @@
                                 <p>2013-03-23 19:45:00.123</p>
                                 <p>2013-03-23 19:45:00.12</p>
                             </td>
-                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSS</td>
+                            <td><code>yyyy-MM-dd HH:mm:ss.SSS</code></td>
                             <td>
                                 <p>This pattern allows up to 3 decimal digits of seconds, but does not allow a time zone specification.</p>
                                 <p>Note that if your data specifies more than 3 decimal digits of seconds, an error occurs.</p>
                             </td>
                         </tr>
                         <tr>
-                            <td class="CodeFont">2013-03-23 19:45:00.1298</td>
-                            <td class="CodeFont">yyyy-MM-dd HH:mm:ss.SSSS</td>
+                            <td><code>2013-03-23 19:45:00.1298</code></td>
+                            <td><code>yyyy-MM-dd HH:mm:ss.SSSS</code></td>
                             <td>This pattern allows up to 4 decimal digits of seconds, but does not allow a time zone specification.</td>
                         </tr>
                     </tbody>
@@ -2942,6 +2953,12 @@
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

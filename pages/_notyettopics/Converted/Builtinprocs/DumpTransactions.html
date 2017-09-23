@@ -9,7 +9,7 @@ permalink: sqlref_sysprocs_dumptransactions.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
-	<div class="TopicContent" data-swiftype-index="true">
+	<div class="TopicContent" data-swiftype-index="true" markdown="1">
         <h1 id="BuiltInSysProcs.DumpTransactions">SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</h1>
         <p>The <code>SYSCS_UTIL.SYSCS_DUMP_TRANSACTIONS</code> system procedure displays summary information about the transactions that are in the transaction table. </p>
         <h2>Syntax</h2>
@@ -28,40 +28,40 @@ folder: SQLReference/BuiltInSysProcs
             </thead>
             <tbody>
                 <tr>
-                    <td class="CodeFont">txnId</td>
+                    <td><code>txnId</code></td>
                     <td>The transaction ID.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">parentTxnId</td>
+                    <td><code>parentTxnId</code></td>
                     <td>The ID&#160;of this transaction's parent. This is NULL&#160;if this is a top-level transaction.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">modifiedConglomerate</td>
+                    <td><code>modifiedConglomerate</code></td>
                     <td>A comma-separated list of tables that this transaction has written to.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">status</td>
+                    <td><code>status</code></td>
                     <td>The current status of the transaction</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">isolationLevel</td>
+                    <td><code>isolationLevel</code></td>
                     <td>The isolation level used by the transaction.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">beginTimestamp</td>
+                    <td><code>beginTimestamp</code></td>
                     <td>
                         <p class="noSpaceAbove">The timestamp at which the transaction started.</p>
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">commitTimestamp</td>
+                    <td><code>commitTimestamp</code></td>
                     <td>
                         <p class="noSpaceAbove">The timestamp at which this transaction was committed.</p>
                         <p>This value is <code>NULL</code>&#160;if the transaction is not committed.</p>
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">effectiveCommitTime</td>
+                    <td><code>effectiveCommitTime</code></td>
                     <td>
                         <p class="noSpaceAbove">The timestamp at which this transaction should be considered committed. If this transaction is dependent, then this is the commit timestamp of its parent.</p>
                         <p>This value is <code>NULL</code>&#160;if the parent transaction has not yet committed.</p>
@@ -77,7 +77,7 @@ folder: SQLReference/BuiltInSysProcs
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">lastKeepAlive</td>
+                    <td><code>lastKeepAlive</code></td>
                     <td>The timestamp for when this transaction last performed an activity</td>
                 </tr>
             </tbody>

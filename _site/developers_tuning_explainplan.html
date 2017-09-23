@@ -576,8 +576,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">Use the Splice Machine explain plan feature to view the execution plan for a query without actually executing the query.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>About Explain Plan</h1>
             <p>You can use the <code>explain</code> command to display what the execution plan will be for a statement without executing the statement. This topic presents and describes several examples.</p>
             <h2>Using Explain Plan to See the Execution Plan for a Statement</h2>
@@ -619,25 +630,25 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">n=<em>number</em></td>
+                        <td><code>n=<em>number</em></code></td>
                         <td>
                             <p class="noSpaceAbove">The number of nodes.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">rows=<em>number</em></td>
+                        <td><code>rows=<em>number</em></code></td>
                         <td>
                             <p class="noSpaceAbove">The number of output rows.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">updateMode=[mode]</td>
+                        <td><code>updateMode=[mode]</code></td>
                         <td>
                             <p class="noSpaceAbove">The update mode of the statement.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">engine=[engineType]</td>
+                        <td><code>engine=[engineType]</code></td>
                         <td>
                             <p>engineType=<code>Spark</code> means this query will be executed by our OLAP&#160;engine.</p>
                             <p>engineType=<code>control</code> means this query will be executed by our OLTP&#160;engine.</p>
@@ -657,40 +668,40 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">[<em>node label</em>]</td>
+                        <td><code>[<em>node label</em>]</code></td>
                         <td>The name of the node</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">n=<em>number</em></td>
+                        <td><code>n=<em>number</em></code></td>
                         <td>
                             <p class="noSpaceAbove">The result set number.</p>
                             <p>This is primarily used internally, and can also be used to determine the relative ordering of optimization.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">totalCost=<em>number</em></td>
+                        <td><code>totalCost=<em>number</em></code></td>
                         <td>
                             <p class="noSpaceAbove">The total cost to perform this operation.</p>
                             <p>This is computed <em>as if the operation is at the top of the operation tree</em>.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">processingCost=<em>number</em></td>
+                        <td><code>processingCost=<em>number</em></code></td>
                         <td>
                             <p class="noSpaceAbove">The cost to process all data in this node.</p>
                             <p>Processing includes everything except for reading the final results over the network.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">transferCost=<em>number</em></td>
+                        <td><code>transferCost=<em>number</em></code></td>
                         <td>The cost to send the final results over the network to the control node.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">outputRows=<em>number</em></td>
+                        <td><code>outputRows=<em>number</em></code></td>
                         <td>The total number of rows that are output.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">outputHeapSize=<em>number unit</em></td>
+                        <td><code>outputHeapSize=<em>number unit</em></code></td>
                         <td>
                             <p class="noSpaceAbove">The total size of the output result set, and the unit in which that size is expressed, which is one of:</p>
                             <ul class="SecondLevel">
@@ -703,7 +714,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">partitions==<em>number</em></td>
+                        <td><code>partitions==<em>number</em></code></td>
                         <td>
                             <p class="noSpaceAbove">The number of partitions involved.</p>
                             <p><em>Partition</em> is currently equivalent to <em>Region</em>; however, this will not necessarily remain true in future releases.</p>
@@ -732,6 +743,12 @@ Plan
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">System table that describes jar files stored in the database.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysFiles">SYSFILES System Table</h1>
             <p>The <code>SYSFILES</code> table describes jar files stored in the
 		database.</p>
@@ -2819,31 +2830,31 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">FILEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>FILEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Unique identifier for the jar file</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SCHEMAID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SCHEMAID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>ID of the jar file's schema (join with <code>SYSSCHEMAS.SCHEMAID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">FILENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>FILENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>SQL name of the jar file</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">GENERATIONID</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>GENERATIONID</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>NO</code></td>
                         <td>Generation number for the file. When jar files are replaced, their generation identifiers are changed.</td>
                     </tr>
                 </tbody>
@@ -2855,6 +2866,12 @@
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

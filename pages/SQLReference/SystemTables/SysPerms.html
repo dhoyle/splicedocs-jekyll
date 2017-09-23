@@ -9,7 +9,7 @@ permalink: sqlref_systables_sysperms.html
 folder: SQLReference/SystemTables
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysPerms">SYSPERMS System Table </h1>
             <p>The <code>SYSPERMS</code> table describes the <code>USAGE</code> permissions for
 		sequence generators and user-defined types.</p>
@@ -32,17 +32,17 @@ folder: SQLReference/SystemTables
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">UUID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>UUID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The unique ID of the permission. This is the primary key.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">OBJECTTYPE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>OBJECTTYPE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">The kind of object receiving the permission. The only valid values are:</p>
                             <ul>
@@ -52,10 +52,10 @@ folder: SQLReference/SystemTables
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">OBJECTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>OBJECTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">The <code>UUID</code> of the object receiving the permission.</p>
                             <p>For sequence generators, the only valid values are <code>SEQUENCEIDs</code> in the <code>SYS.SYSSEQUENCES</code> table. </p>
@@ -63,31 +63,31 @@ folder: SQLReference/SystemTables
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">PERMISSION</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>PERMISSION</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The type of the permission. The only valid value is <code>'USAGE'</code>.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">GRANTOR</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>GRANTOR</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The authorization ID of the user who granted the privilege. Privileges can be granted only by the object owner.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">GRANTEE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>GRANTEE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The authorization ID of the user or role to which the privilege was granted</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">ISGRANTABLE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>ISGRANTABLE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">If the <code>GRANTEE</code> is the owner of the sequence generator or user-defined type, this value is <code>'Y'</code>.</p>
                             <p> If the <code>GRANTEE</code> is not the owner of the sequence generator or user-defined type, this value is  <code>'N'</code>.</p>

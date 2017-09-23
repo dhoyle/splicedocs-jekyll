@@ -9,7 +9,7 @@ permalink: cmdlineref_analyze.html
 folder: CmdLineReference
 ---
    <section>
-      <div class="TopicContent" data-swiftype-index="true">
+      <div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="analyzecmd">Analyze Command</h1>
         <p>The <span class="AppCommand">analyze</span> command collects statistics for a specific table, or for an entire schema.</p>
         <p class="noteNote">Once statistics have been collected for a schema or table, they are automatically used by the query optimizer.</p>
@@ -49,27 +49,27 @@ ANALYZE&#160;SCHEMA <em>schema-Name;</em></pre>
             </thead>
             <tbody>
                 <tr>
-                    <td class="CodeFont">schemaName</td>
+                    <td><code>schemaName</code></td>
                     <td>The name of the schema.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">tableName</td>
+                    <td><code>tableName</code></td>
                     <td>The name of the table.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">partition</td>
+                    <td><code>partition</code></td>
                     <td>The Splice Machine partition. We merge the statistics for all table partitions, so the partition will show as <code>-All-</code> when you specify one of the non-merged type values for the <code>statsType</code> parameter.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">rowsCollected</td>
+                    <td><code>rowsCollected</code></td>
                     <td>The total number of rows collected for the table.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">partitionSize</td>
+                    <td><code>partitionSize</code></td>
                     <td>The combined size of the table's partitions.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">statsType</td>
+                    <td><code>statsType</code></td>
                     <td><p>The type of statistics, which is one of these values:</p>
                         <table>
                             <col />
@@ -96,7 +96,7 @@ ANALYZE&#160;SCHEMA <em>schema-Name;</em></pre>
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">sampleFraction</td>
+                    <td><code>sampleFraction</code></td>
                     <td>
                         <p>The sampling percentage, expressed as <code>0.0</code> to <code>1.0</code>, </p>
                         <ul>

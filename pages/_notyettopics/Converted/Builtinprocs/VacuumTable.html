@@ -9,7 +9,7 @@ permalink: sqlref_sysprocs_vacuumtable.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
-	<div class="TopicContent" data-swiftype-index="true">
+	<div class="TopicContent" data-swiftype-index="true" markdown="1">
         <h1>SYSCS_UTIL.VACUUM_TABLE</h1>
         <p>The <code>SYSCS_UTIL.VACUUM_TABLE</code>&#160;system procedure improves the performance of your database by cleaning no longer needed historical update data from a table.</p>
         <p class="noteIcon">Splice Machine recommends calling this system procedure regularly (or frequently)&#160;on tables in your database that are frequently updated with modifications or deletions. Insertions by themselves do not generate the kind of data that needs to be vacuumed from a table; however, if a row is frequently inserted, then deleted, then inserted again, and that row has a primary key or indexed fields, vacuuming will be required.<br /><br />Many customers use a scheduling utility such as <em>Cron</em> to call this procedure.<br /></p>
@@ -41,27 +41,27 @@ folder: SQLReference/BuiltInSysProcs
             </thead>
             <tbody>
                 <tr>
-                    <td class="CodeFont">CONGLOMERATEID</td>
+                    <td><code>CONGLOMERATEID</code></td>
                     <td>The number of the conglomerate that was vacuumed.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">NUMPARTITIONS</td>
+                    <td><code>NUMPARTITIONS</code></td>
                     <td>The number of partitions (regions)&#160;that were vacuumed.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">TIMETAKEN_S</td>
+                    <td><code>TIMETAKEN_S</code></td>
                     <td>The total time used to vacuum this conglomerate.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">ROWS_READ</td>
+                    <td><code>ROWS_READ</code></td>
                     <td>The total number of rows read during the vacuum.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">ROWS_VACUUMED</td>
+                    <td><code>ROWS_VACUUMED</code></td>
                     <td>The total number of rows that were vacuumed.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">ROWS_DELETED</td>
+                    <td><code>ROWS_DELETED</code></td>
                     <td>The number of vestigal rows that were deleted during the vacuuming.</td>
                 </tr>
             </tbody>

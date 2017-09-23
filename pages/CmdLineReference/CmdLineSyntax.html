@@ -9,7 +9,7 @@ permalink: cmdlineref_cmdlinesyntax.html
 folder: CmdLineReference
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>Using the splice&gt; Command Line Interface</h1>
             <p>This topic presents information that will help you in using the Splice Machine <span class="AppCommand">splice&gt;</span> command line interpreter, in the following sections:</p>
             <ul>
@@ -117,12 +117,12 @@ select count(*) from CUST_EMAIL;</pre>
                         <td>These are all equivalent: <span class="Example">SELECT, Select, select, SeLeCt</span>.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">ANSI SQL identifiers</td>
+                        <td><em>ANSI SQL identifiers</em></td>
                         <td>Not case sensitive</td>
                         <td>These are not case sensitive unless they are delimited.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Java-style identifiers</td>
+                        <td><em>Java-style identifiers</em></td>
                         <td>Always case sensitive</td>
                         <td>
                             <p>These are NOT equivalent: <span class="Example">my_name, My_Name</span>.</p>
@@ -145,17 +145,17 @@ select count(*) from CUST_EMAIL;</pre>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">To delimit special identifiers</td>
+                        <td><em>To delimit special identifiers</em></td>
                         <td>Double quotation marks (<code>"</code>)</td>
                         <td>Special identifiers are  also known as <em>delimited identifiers</em>.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To delimit character strings</td>
+                        <td><em>To delimit character strings</em></td>
                         <td>Single quotation marks (<code>'</code>)</td>
                         <td> </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To escape a single quote or apostrophe within a character string</td>
+                        <td><em>To escape a single quote or apostrophe within a character string</em></td>
                         <td>Single quotation mark ( (<code>'</code>)</td>
                         <td>
                             <p class="noSpaceAbove">Since single quotation marks are used to delimit strings, you must escape any single quotation marks you want included in the string itself. </p>
@@ -164,13 +164,13 @@ select count(*) from CUST_EMAIL;</pre>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To escape a double quote</td>
+                        <td><em>To escape a double quote</em></td>
                         <td><em>Not needed </em>
                         </td>
                         <td>You can simply include a double quotation mark in your command lines.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To specify a wild card within a Select expression</td>
+                        <td><em>To specify a wild card within a Select expression</em></td>
                         <td>The asterisk (<code>*</code>) character</td>
                         <td>
                             <p class="noSpaceAbove">This is the SQL metasymbol for selecting all matching entries.</p>
@@ -178,17 +178,17 @@ select count(*) from CUST_EMAIL;</pre>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To specify a wild card sequence in a string with the <code>LIKE</code> operator</td>
+                        <td><em>To specify a wild card sequence in a string with the <code>LIKE</code> operator</em></td>
                         <td>The percentage (<code>%</code>) character</td>
                         <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE 'Ga%';</span></td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To specify a single wild card character in a string with the <code>LIKE</code> operator</td>
+                        <td><em>To specify a single wild card character in a string with the <code>LIKE</code> operator</em></td>
                         <td>The underline (<code>_</code>) character</td>
                         <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE '%Er_n%';</span></td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To begin a single-line comment</td>
+                        <td><em>To begin a single-line comment</em></td>
                         <td>Two dashes (<code>--</code>)</td>
                         <td>
                             <p class="noSpaceAbove"><span class="Example"> -- the following selects everything in my table:</span>
@@ -197,7 +197,7 @@ select count(*) from CUST_EMAIL;</pre>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To bracket a multi-line comment</td>
+                        <td><em>To bracket a multi-line comment</em></td>
                         <td><code>/*</code> and <code>*/</code></td>
                         <td>
                             <p class="noSpaceAbove">All text between the comment start <code>/*</code> and the comment end <code>*/</code> is ignored.</p><pre class="ExampleCell" xml:space="preserve">/* the following selects everything in my table,

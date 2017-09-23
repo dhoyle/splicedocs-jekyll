@@ -9,7 +9,7 @@ permalink: developers_tuning_queryoptimization.html
 folder: Developers/TuningAndDebugging
 ---
 <section>
-<div class="TopicContent" data-swiftype-index="true">
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
 <h1>Optimizing Splice Machine Queries</h1>
 <p>This topic introduces you to Splice Machine query optimization techniques, including information about executing SQL&nbsp;expressions without a table context, and using optimization hints.</p>
 <h2>Introduction to Query Optimization</h2>
@@ -69,32 +69,32 @@ folder: Developers/TuningAndDebugging
 <tbody>
 <tr>
 <td><a href="#Index">Index</a></td>
-<td class="CodeFont">--splice-properties index=my_index</td>
+<td><code>--splice-properties index=my_index</code></td>
 <td>Which index to use or not use</td>
 </tr>
 <tr>
 <td><a href="#JoinOrder">Join Order</a></td>
-<td class="CodeFont">--splice-properties joinOrder=fixed</td>
+<td><code>--splice-properties joinOrder=fixed</code></td>
 <td>Which join order to use for two tables</td>
 </tr>
 <tr>
 <td><a href="#JoinStrategy">Join Strategy</a></td>
-<td class="CodeFont">--splice-properties joinStrategy=sortmerge</td>
+<td><code>--splice-properties joinStrategy=sortmerge</code></td>
 <td>How a join is processed (in conjunction with the Join Order hint)</td>
 </tr>
 <tr>
 <td><a href="#Pinned">Pinned Table</a></td>
-<td class="CodeFont">--splice-properties pin=true</td>
+<td><code>--splice-properties pin=true</code></td>
 <td>That you want the pinned (cached in memory)&nbsp;version of a table used in a query</td>
 </tr>
 <tr>
 <td><a href="#Spark">Spark</a></td>
-<td class="CodeFont">--splice-properties useSpark=true</td>
+<td><code>--splice-properties useSpark=true</code></td>
 <td>That you want a query to run (or not run)&nbsp;on Spark</td>
 </tr>
 <tr>
 <td><a href="#Delete">Delete</a></td>
-<td class="CodeFont">--splice-properties bulkDeleteDirectory='/path'</td>
+<td><code>--splice-properties bulkDeleteDirectory='/path'</code></td>
 <td>That you are deleting a large amount of data and want to bypass the normal write pipeline to speed up the deletion.</td>
 </tr>
 </tbody>
@@ -116,14 +116,14 @@ folder: Developers/TuningAndDebugging
 <p>useSpark</p>
 <p>bulkDeleteDirectory</p>
 </td>
-<td class="CodeFont"><span class="Example">SELECT&nbsp;*&nbsp;FROM<br /> &nbsp;&nbsp; member_info&nbsp;m, rewards r,<br />&nbsp;&nbsp;&nbsp;points p --SPLICE-PROPERTIES&nbsp;index=ie_point WHERE...</span></td>
+<td><code><span class="Example">SELECT&nbsp;*&nbsp;FROM<br /> &nbsp;&nbsp; member_info&nbsp;m, rewards r,<br />&nbsp;&nbsp;&nbsp;points p --SPLICE-PROPERTIES&nbsp;index=ie_point WHERE...</span></code></td>
 </tr>
 <tr>
 <td>A <code>FROM</code>&nbsp;clause</td>
 <td class="CodeFont">
 <p>joinOrder</p>
 </td>
-<td class="CodeFont"><span class="Example">SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br />&nbsp;&nbsp;&nbsp;mytable1 e, mytable2 t<br /> &nbsp;&nbsp;WHERE e.id = t.parent_id;</span></td>
+<td><code><span class="Example">SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br />&nbsp;&nbsp;&nbsp;mytable1 e, mytable2 t<br /> &nbsp;&nbsp;WHERE e.id = t.parent_id;</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -187,12 +187,12 @@ WHERE...</pre>
 </thead>
 <tbody>
 <tr>
-<td class="CodeFont">joinOrder=FIXED</td>
-<td class="CodeFont"><span class="AppCommand">splice&gt; </span><span class="Example">SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br /><span class="AppCommand">&gt; </span> mytable1 e, mytable2 t<br /><span class="AppCommand">&gt; </span>WHERE e.id = t.parent_id;</span></td>
+<td><code>joinOrder=FIXED</code></td>
+<td><code><span class="AppCommand">splice&gt; </span><span class="Example">SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br /><span class="AppCommand">&gt; </span> mytable1 e, mytable2 t<br /><span class="AppCommand">&gt; </span>WHERE e.id = t.parent_id;</span></code></td>
 </tr>
 <tr>
-<td class="CodeFont">joinOrder=UNFIXED</td>
-<td class="CodeFont"><span class="AppCommand">splice&gt; </span><span class="Example">SELECT * from --SPLICE-PROPERTIES joinOrder=unfixed<br /><span class="AppCommand">&gt; </span>mytable1 e, mytable2 t WHERE e.id = t.parent_id;</span></td>
+<td><code>joinOrder=UNFIXED</code></td>
+<td><code><span class="AppCommand">splice&gt; </span><span class="Example">SELECT * from --SPLICE-PROPERTIES joinOrder=unfixed<br /><span class="AppCommand">&gt; </span>mytable1 e, mytable2 t WHERE e.id = t.parent_id;</span></code></td>
 </tr>
 </tbody>
 </table>

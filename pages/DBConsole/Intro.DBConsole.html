@@ -10,7 +10,7 @@ folder: DBConsole
 ---
 {% include splicevars.html %}
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>Splice Machine Database Console Guide</h1>
             <p>This topic introduces the  <em>Splice Machine Database Console</em>, a browser-based tool that you can use to monitor database queries on your cluster in real time. The Console UI&#160;allows you to see the Spark queries that are currently running in Splice Machine on your cluster, and to then drill down into each job to see the current progress of the queries, and to identify any potential bottlenecks. If you see something amiss, you can also terminate a query.</p>
             <p class="noteIcon">The <em>Splice Machine Database Console</em> leverages the Spark cluster manager <em>Web UI</em>, which is described here:&#160;<a href="http://spark.apache.org/docs/latest/monitoring.html"  target="_blank">http://spark.apache.org/docs/latest/monitoring.html</a>.</p>
@@ -66,46 +66,46 @@ folder: DBConsole
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">Accumulators</td>
+                        <td><em>Accumulators</em></td>
                         <td>Accumulators are variables programmers can declare in Spark applications that can be efficiently supported in parallel operations, and are typically used to implement counters and sums. </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Additional Metrics</td>
+                        <td><em>Additional Metrics</em></td>
                         <td>You can indicate that you want to display additional metrics for a stage or job by clicking the <span class="AppCommand">Show Additional Metrics</span> arrow and then selecting which metrics you want shown.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">DAG&#160;Visualization</td>
+                        <td><em>DAG&#160;Visualization</em></td>
                         <td>A visual depiction of the execution Directed Acyclic Graph (DAG)&#160;for a job or job stage, which shows the details and flow of data. You can click the <span class="AppCommand">DAG&#160;Visualization</span> arrow to switch to this view.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Enable Zooming</td>
+                        <td><em>Enable Zooming</em></td>
                         <td>For <em>event timeline</em> views, you can enable zooming to expand the view detail for a portion of the timeline. You can click the <span class="AppCommand">Event Timeline</span> arrow to switch to this view.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Event Timeline</td>
+                        <td><em>Event Timeline</em></td>
                         <td>A view that graphically displays the sequence of all <em>jobs</em>, a specific job, or a <em>stage</em> within a job. </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Executor</td>
+                        <td><em>Executor</em></td>
                         <td>A process that runs <em>tasks</em> on a cluster node.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">GC Time</td>
+                        <td><em>GC Time</em></td>
                         <td>The amount of time spent performing garbage collection in a stage.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Job</td>
+                        <td><em>Job</em></td>
                         <td>
                             <p class="noSpaceAbove">The basic unit of execution in the Spark engine, consisting of a set of stages. With some exceptions, each query submitted to the Spark engine is a single job.</p>
                             <p>Each job is assigned a unique Job Id and is part of a unique Job Group.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Locality Level</td>
+                        <td><em>Locality Level</em></td>
                         <td>To minimize data transfers, Spark tries to execute as close to the data as possible. The <em>Locality Level</em> value indicates whether a task was able to run on the local node.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Scheduling Mode</td>
+                        <td><em>Scheduling Mode</em></td>
                         <td>
                             <p class="noSpaceAbove">The scheduling mode used for a job.</p>
                             <p>In FIFO&#160;scheduling, the first job gets priority on all available resources while its stages have tasks to launch. Then the second job gets priority, and so on.</p>
@@ -113,29 +113,29 @@ folder: DBConsole
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Scheduling Pool</td>
+                        <td><em>Scheduling Pool</em></td>
                         <td>The FAIR&#160;schedule groups jobs into pools, each of which can have a different priority weighting value, which allows you to submit jobs with higher or lower priorities.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">ScrollInsensitive row</td>
+                        <td><em>ScrollInsensitive row</em></td>
                         <td>A&#160;row in a result set that is scrollable, and is not sensitive to changes committed by other transactions or by other statements in the same transaction.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Shuffling</td>
+                        <td><em>Shuffling</em></td>
                         <td>
                             <p class="noSpaceAbove">Shuffling is the reallocation of data between multiple stages in a Spark job.</p>
                             <p><em>Shuffle Write</em> is amount of data that is serialized and written at the end of a stage for transmission to the next stage. <em>Shuffle Read</em> is the amount of serialized data that is read at the beginning of a stage.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Stage</td>
+                        <td><em>Stage</em></td>
                         <td>
                             <p class="noSpaceAbove">The Splice Machine Spark scheduler splits the execution of a <em>job</em> into stages, based on the RDD&#160;transformations required to complete the job.</p>
                             <p>Each stage contains a group of tasks that perform a computation in parallel. </p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Task</td>
+                        <td><em>Task</em></td>
                         <td>A computational command sent from the application driver to an <em>executor</em> as part of a <em>stage</em>.</td>
                     </tr>
                 </tbody>

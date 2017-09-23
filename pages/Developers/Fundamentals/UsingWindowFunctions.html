@@ -9,7 +9,7 @@ permalink: developers_fundamentals_windowfcns.html
 folder: Developers/Fundamentals
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>Splice Machine Window Functions</h1>
             <p>An SQL&#160;<em>window function</em> performs a calculation across a set of table rows that are related to the current row, either by proximity in the table, or by the value of a specific column or set of columns; these columns are known as the <em>partition</em>.</p>
             <p>This topic provides a very quick summary of window functions, as implemented in Splice Machine. For more general information about SQL&#160;window functions, we recommending visiting some of the sources listed in the <a href="#ForMoreInfo" class="selected">Additional Information</a> section at the end of this topic. </p>
@@ -202,47 +202,47 @@ WHERE&#160;CustomerID IN&#160;(1,2);</pre>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">window function</td>
+                        <td><em>window function</em></td>
                         <td>A function that operates on a set of rows and produces output for each row.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">window partition</td>
+                        <td><em>window partition</em></td>
                         <td>
                             <p>The grouping of rows within a table.</p>
                             <p>Note that window partitions retains the rows, unlike aggregates, </p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">window ordering</td>
+                        <td><em>window ordering</em></td>
                         <td>The sequence of rows within each partition; this is the order in which the rows are passed to the window function for evaluation.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">window frame</td>
+                        <td><em>window frame</em></td>
                         <td>A frame of rows within a window partition, relative to the current row. The window frame is used to further restrict the set of rows operated on by a function, and is sometimes referred to as the <em>row or range</em> clause.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">OVER&#160;clause</td>
+                        <td><em>OVER&#160;clause</em></td>
                         <td>
                             <p>This is the clause used to define how the rows of the table are divided, or partitioned, for processing by the window function. It also orders the rows within the partition.</p>
                             <p>See the <a href="#The" class="selected">The OVER&#160;Clause</a> section below for more information.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">partitioning clause</td>
+                        <td><em>partitioning clause</em></td>
                         <td>
                             <p>An optional part of an <code>OVER</code>&#160;clause that divides the rows into partitions, similar to using the <code>GROUP&#160;BY</code>&#160;clause. The default partition is all rows in the table, though window functions are generally calculated over a partition.</p>
                             <p>See the <a href="#Window" class="selected">The Partition Clause</a> section below for more information.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">ordering clause</td>
+                        <td><em>ordering clause</em></td>
                         <td>
                             <p>Defines the ordering of rows within each partition. </p>
                             <p>See the <a href="#The2" class="selected">The Order Clause</a> section below for more information.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">frame clause</td>
+                        <td><em>frame clause</em></td>
                         <td>
                             <p>Further refines the set of rows when you include an <code>ORDER&#160;BY</code>&#160;clause in your window function specification, by allowing you to include or exclude rows or values within the ordering. </p>
                             <p>See the <a href="#Window2" class="selected">The Frame Clause</a> section below for examples and more information.</p>
@@ -481,16 +481,16 @@ OVER&#160;(PARTITION&#160;BY&#160;customerID&#160;ORDER&#160;BY&#160;orderDate R
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">Recycled</td>
-                        <td class="CodeFont">BETWEEN&#160;UNBOUNDED&#160;PRECEDING&#160;AND&#160;UNBOUNDED&#160;FOLLOWING</td>
+                        <td><em>Recycled</em></td>
+                        <td><code>BETWEEN&#160;UNBOUNDED&#160;PRECEDING&#160;AND&#160;UNBOUNDED&#160;FOLLOWING</code></td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Cumulative</td>
-                        <td class="CodeFont">BETWEEN&#160;UNBOUNDED&#160;PRECEDING&#160;AND&#160;CURRENT&#160;ROW</td>
+                        <td><em>Cumulative</em></td>
+                        <td><code>BETWEEN&#160;UNBOUNDED&#160;PRECEDING&#160;AND&#160;CURRENT&#160;ROW</code></td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Rolling</td>
-                        <td class="CodeFont">BETWEEN&#160;2 PRECEDING&#160;AND&#160;2 FOLLOWING</td>
+                        <td><em>Rolling</em></td>
+                        <td><code>BETWEEN&#160;2 PRECEDING&#160;AND&#160;2 FOLLOWING</code></td>
                     </tr>
                 </tbody>
             </table>

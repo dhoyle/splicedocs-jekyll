@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">System table that describes the prepared statements in the database.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysStatements">SYSSTATEMENTS System Table</h1>
             <p>The <code>SYSSTATEMENTS</code> table describes the prepared statements in
 		the database.</p>
@@ -2820,66 +2831,66 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">STMTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>STMTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Unique identifier for the statement</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">STMTNAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>STMTNAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>Name of the statement</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SCHEMAID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SCHEMAID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The schema in which the statement resides</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TYPE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TYPE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>Always <code>'S'</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">VALID</td>
-                        <td class="CodeFont">BOOLEAN</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>VALID</code></td>
+                        <td><code>BOOLEAN</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>Whether or not the statement is valid</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TEXT</td>
-                        <td class="CodeFont">LONG VARCHAR</td>
-                        <td class="CodeFont">32,700</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TEXT</code></td>
+                        <td><code>LONG VARCHAR</code></td>
+                        <td><code>32,700</code></td>
+                        <td><code>NO</code></td>
                         <td>Text of the statement</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">LASTCOMPILED</td>
-                        <td class="CodeFont">TIMESTAMP</td>
-                        <td class="CodeFont">29</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>LASTCOMPILED</code></td>
+                        <td><code>TIMESTAMP</code></td>
+                        <td><code>29</code></td>
+                        <td><code>YES</code></td>
                         <td>Time that the statement was compiled</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COMPILATIONSCHEMAID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>COMPILATIONSCHEMAID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>ID of the schema containing the statement</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">USINGTEXT</td>
-                        <td class="CodeFont">LONG VARCHAR</td>
-                        <td class="CodeFont">32,700</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>USINGTEXT</code></td>
+                        <td><code>LONG VARCHAR</code></td>
+                        <td><code>32,700</code></td>
+                        <td><code>YES</code></td>
                         <td>Text of the <code>USING</code> clause of the <code>CREATE STATEMENT</code> and <code>ALTER STATEMENT</code> statements</td>
                     </tr>
                 </tbody>
@@ -2891,6 +2902,12 @@
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

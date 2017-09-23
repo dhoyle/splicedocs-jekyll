@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">System table that stores the column permissions that have been granted but not revoked.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysColPerms">SYSCOLPERMS System Table </h1>
             <p>The <code>SYSCOLPERMS</code> table stores the column permissions that have been
 		granted but not revoked.</p>
@@ -2827,58 +2838,58 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">COLPERMSID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>COLPERMSID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Used by the dependency manager to track the dependency
 of a view, trigger, or constraint on the column level permissions</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">GRANTEE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>GRANTEE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The authorization ID of the user or role to which the
 privilege was granted</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">GRANTOR</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>GRANTOR</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The authorization ID of the user who granted the privilege.
 Privileges can be granted only by the object owner</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TABLEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The unique identifier for the table on which the permissions
 have been granted</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TYPE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TYPE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>If the privilege is non-grantable, the valid values are:
 <ul><li><code>'s'</code> for <code>SELECT</code></li><li><code>'u'</code> for <code>UPDATE</code></li><li><code>'r'</code> for <code>REFERENCES</code><br /></li></ul><p>
 If the privilege is grantable, the valid values are:
 </p><ul><li><code>'S'</code> for <code>SELECT</code></li><li><code>'U'</code> for <code>UPDATE</code></li><li><code>'R'</code> for <code>REFERENCES</code></li></ul></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMNS</td>
-                        <td><span class="ItalicFont">org.apache.Splice Machine.
+                        <td><code>COLUMNS</code></td>
+                        <td><em>org.apache.Splice Machine.
 iapi.services.io.
-FormatableBitSet</span>
+FormatableBitSet</em>
                             <br />
                             <br />
                             <p>This class is not part of the public API.</p>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>-1</code></td>
+                        <td><code>NO</code></td>
                         <td>A list of columns to which the privilege applies</td>
                     </tr>
                 </tbody>
@@ -2890,6 +2901,12 @@ FormatableBitSet</span>
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

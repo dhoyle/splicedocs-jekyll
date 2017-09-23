@@ -328,8 +328,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">A quick overview of the Splice Machine in-memory engine, powered by Apache Spark.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>The Splice Machine In-Memory Engine</h1>
             <p>This topic provides an overview of the Splice Machine in-memory engine, which tremendously boosts OLAP&#160;(analytical) query performance. Splice Machine use Apache Spark as our in-memory engine and automatically detects and directs OLAP&#160;queries to that engine. </p>
             <p>This topic presents a very brief overview of Spark terminology and concepts. </p>
@@ -361,57 +372,57 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="BoldFont">Action</td>
+                        <td><strong>Action</strong></td>
                         <td>A function that returns a value to the driver after running a computation on an <em>RDD</em>.
 Examples include <code>save</code> and <code>collect</code> functions.</td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Application</td>
+                        <td><strong>Application</strong></td>
                         <td>
                             <p class="noSpaceAbove">A user program built on Spark. Each application consists of a <em>driver program</em> and a number of <em>executors</em> running on your cluster.</p>
                             <p>An application creates <em>RDDs</em>, transforms those RDDs, and runs <em>actions</em> on them. These result in a directed acyclic graph (DAG)&#160;of operations, which is compiled into a set of <em>stages</em>. Each stage consists of a number of <em>tasks</em>.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">DAG</td>
+                        <td><strong>DAG</strong></td>
                         <td>A <strong>D</strong>irected <strong>A</strong>cyclic <strong>G</strong>raph of the operations to run on an RDD. </td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Driver program</td>
+                        <td><strong>Driver program</strong></td>
                         <td>This is the process that's running the <code>main()</code> function of the application and creating the <code>SparkContext</code> object, which sends jobs to <em>executors</em>.</td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Executor</td>
+                        <td><strong>Executor</strong></td>
                         <td>A process that is launched (by the driver program)&#160;for an <em>application</em> on a <em>worker node</em>. The executor launches <em>tasks</em> and maintains data for them.</td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Job</td>
+                        <td><strong>Job</strong></td>
                         <td>A parallel computation consisting of multiple <em>tasks</em> that gets spawned in response to a Spark <em>action</em>.</td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Partition</td>
+                        <td><strong>Partition</strong></td>
                         <td>A subset of the elements in an <em>RDD</em>. Partitions define the unit of parallelism; Spark processes elements within a partition in sequence and multiple partitions in parallel.</td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">RDD</td>
+                        <td><strong>RDD</strong></td>
                         <td>A <strong>R</strong>esilient <strong>D</strong>istributed <strong>D</strong>ataset. This is the core programming abstraction in Spark, consisting of a fault-tolerant collection of elements that can be operated on in parallel.</td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Stage</td>
+                        <td><strong>Stage</strong></td>
                         <td>
                             <p>A set of tasks that run in parallel. The stage creates a <em>task</em> for each partition in an <em>RDD</em>, serializes those tasks, and sends those tasks to <em>executors</em>.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Task</td>
+                        <td><strong>Task</strong></td>
                         <td>The fundamental unit of work in Spark; each task fetches input, executes operations, and generates output.</td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Transformation</td>
+                        <td><strong>Transformation</strong></td>
                         <td>A function that creates a new <em>RDD</em> from an existing <em>RDD</em>.</td>
                     </tr>
                     <tr>
-                        <td class="BoldFont">Worker node</td>
+                        <td><strong>Worker node</strong></td>
                         <td>A cluster node that can run application code.</td>
                     </tr>
                 </tbody>
@@ -431,6 +442,12 @@ Examples include <code>save</code> and <code>collect</code> functions.</td>
             <p>&#160;</p>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

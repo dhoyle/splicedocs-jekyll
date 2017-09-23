@@ -8,25 +8,48 @@ sidebar:  sqlref_sidebar
 permalink: sqlref_builtinfcns_abs.html
 folder: SQLReference/BuiltInFcns
 ---
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInFcns.Abs" id="BuiltInFcns.Abs">ABS or ABSVAL</h1>
-            <p><span class="CodeFont">ABS</span> or <span class="CodeFont">ABSVAL</span> returns the absolute value of a numeric expression. </p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">ABS(<span class="ItalicFont">NumericExpression</span>)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">NumericExpression</p>
-                <p class="paramDefnFirst">A numeric expression; all built-in numeric types are supported: <a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a></p>
-            </div>
-            <h2>Results</h2>
-            <p>The return type is the type of the input parameter. </p>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">
-splice&gt;&#160;VALUES ABS(-3);
-1
-----------
-3 1 row selected</pre> </div> ## See Also
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
+# ABS or ABSVAL   {#BuiltInFcns.Abs}
+
+`ABS` or `ABSVAL` returns the absolute value of a numeric expression.
+
+## Syntax
+
+<div class="fcnWrapperWide" markdown="1">
+    ABS(NumericExpression)
+{: .FcnSyntax}
+
+</div>
+<div class="paramList" markdown="1">
+NumericExpression
+{: .paramName}
+
+A numeric expression; all built-in numeric types are supported:
+[`SMALLINT`](sqlref_builtinfcns_smallint.html)
+{: .paramDefnFirst}
+
+</div>
+## Results
+
+The return type is the type of the input parameter.
+
+## Example
+
+<div class="preWrapper" markdown="1">
+
+    splice> VALUES ABS(-3);
+    1
+    ----------
+    3
+
+    1 row selected
+{: .Example xml:space="preserve"}
+
+</div>
+## See Also
 
 * [About Data Types](sqlref_datatypes_intro.html)
 
- </div> 
+</div>
+</section>

@@ -9,7 +9,7 @@ permalink: sqlref_datatypes_numerictypes.html
 folder: SQLReference/DataTypes
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="DataTypes.AboutNumericTypes">About Numeric Data Types</h1>
             <p>This section contains the reference documentation for the numeric data types built into Splice Machine SQL:</p>
             <table summary="Links to and descriptions of the available numeric data types">
@@ -106,7 +106,7 @@ folder: SQLReference/DataTypes
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">Integer numerics</td>
+                        <td><em>Integer numerics</em></td>
                         <td>
                             <p><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a> (2 bytes)</p>
                             <p><a href="sqlref_builtinfcns_integer.html"><code>INTEGER</code></a> (4 bytes)</p>
@@ -114,7 +114,7 @@ folder: SQLReference/DataTypes
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Floating-point (also called approximate) numerics</td>
+                        <td><em>Floating-point (also called approximate) numerics</em></td>
                         <td>
                             <p><a href="sqlref_datatypes_real.html"><code>REAL</code></a> (4 bytes)</p>
                             <p><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> (8 bytes)</p>
@@ -122,7 +122,7 @@ folder: SQLReference/DataTypes
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Exact numerics</td>
+                        <td><em>Exact numerics</em></td>
                         <td>
                             <p><a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a> (storage based on precision)</p>
                             <p><a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a>)</p>
@@ -145,28 +145,28 @@ folder: SQLReference/DataTypes
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">DOUBLE PRECISION</td>
-                        <td class="CodeFont">DOUBLE PRECISION</td>
+                        <td><code>DOUBLE PRECISION</code></td>
+                        <td><code>DOUBLE PRECISION</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">REAL</td>
-                        <td class="CodeFont">DOUBLE PRECISION</td>
+                        <td><code>REAL</code></td>
+                        <td><code>DOUBLE PRECISION</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">DECIMAL</td>
-                        <td class="CodeFont">DECIMAL</td>
+                        <td><code>DECIMAL</code></td>
+                        <td><code>DECIMAL</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">BIGINT</td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>BIGINT</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">INTEGER</td>
-                        <td class="CodeFont">INTEGER</td>
+                        <td><code>INTEGER</code></td>
+                        <td><code>INTEGER</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SMALLINT</td>
-                        <td class="CodeFont">INTEGER</td>
+                        <td><code>SMALLINT</code></td>
+                        <td><code>INTEGER</code></td>
                     </tr>
                 </tbody>
             </table>
@@ -243,17 +243,17 @@ INSERT INTO mytable (int_column) values 2147483648;
                     <tr>
                         <td>division
                 </td>
-                        <td class="ItalicFont">31 - lp + ls - rs</td>
+                        <td><em>31 - lp + ls - rs</em></td>
                     </tr>
                     <tr>
                         <td><code>AVG()</code><![CDATA[
                 ]]></td>
-                        <td class="ItalicFont">max(max(ls, rs), 4)</td>
+                        <td><em>max(max(ls, rs), 4)</em></td>
                     </tr>
                     <tr>
                         <td>all others
                 </td>
-                        <td class="ItalicFont">max(ls, rs)</td>
+                        <td><em>max(ls, rs)</em></td>
                     </tr>
                 </tbody>
             </table>
@@ -277,22 +277,22 @@ INSERT INTO mytable (int_column) values 2147483648;
                     <tr>
                         <td>multiplication
                 </td>
-                        <td class="ItalicFont">lp + rp</td>
+                        <td><em>lp + rp</em></td>
                     </tr>
                     <tr>
                         <td>addition
                 </td>
-                        <td class="ItalicFont">2 * (p - s) + s</td>
+                        <td><em>2 * (p - s) + s</em></td>
                     </tr>
                     <tr>
                         <td>division
                 </td>
-                        <td class="ItalicFont">lp - ls + rp + max(ls + rp - rs + 1, 4)</td>
+                        <td><em>lp - ls + rp + max(ls + rp - rs + 1, 4)</em></td>
                     </tr>
                     <tr>
                         <td>all others
                 </td>
-                        <td class="ItalicFont">max(lp - ls, rp - rs) + 1 + max(ls, rs)</td>
+                        <td><em>max(lp - ls, rp - rs) + 1 + max(ls, rs)</em></td>
                     </tr>
                 </tbody>
             </table>

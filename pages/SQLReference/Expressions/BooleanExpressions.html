@@ -9,7 +9,7 @@ permalink: sqlref_expressions_boolean.html
 folder: SQLReference/Expressions
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="Expressions.BooleanExpressions">Boolean Expressions</h1>
             <p>Boolean expressions are allowed in <a href="sqlref_clauses_constraint.html"><code>CONSTRAINT clause</code></a> for more information. Boolean expressions in a <code>WHERE</code> clause have a highly liberal syntax; see <code>WHERE clause</code>, for example.</p>
             <p>A Boolean expression can include zero or more Boolean operators. </p>
@@ -26,7 +26,7 @@ folder: SQLReference/Expressions
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">AND, OR, NOT</td>
+                        <td><code>AND, OR, NOT</code></td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">{
    Expression AND Expression
@@ -52,14 +52,14 @@ folder: SQLReference/Expressions
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">IS NULL,<br />IS NOT NULL</td>
+                        <td><code>IS NULL,<br />IS NOT NULL</code></td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell">Expression IS [ NOT ] NULL</pre>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">LIKE</td>
+                        <td><code>LIKE</code></td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CharacterExpression
  [ NOT ] LIKE CharacterExpression
@@ -68,14 +68,14 @@ folder: SQLReference/Expressions
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">BETWEEN</td>
+                        <td><code>BETWEEN</code></td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">Expression [ NOT ] BETWEEN Expression AND Expression</pre>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">IN</td>
+                        <td><code>IN</code></td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">{
   Expression [ NOT ] IN <a href="sqlref_queries_tablesubquery.html">TableSubquery</a> |
@@ -86,7 +86,7 @@ folder: SQLReference/Expressions
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">EXISTS</td>
+                        <td><code>EXISTS</code></td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell">[NOT] EXISTS <a href="sqlref_queries_tablesubquery.html">TableSubquery</a></pre>
                             </div>
@@ -120,7 +120,7 @@ folder: SQLReference/Expressions
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">AND, OR, NOT</td>
+                        <td><code>AND, OR, NOT</code></td>
                         <td>Evaluate any operand(s) that are boolean expressions:
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">(orig_airport = 'SFO') OR (dest_airport = 'GRU')
 	-- returns true</pre></div></td>
@@ -132,12 +132,12 @@ folder: SQLReference/Expressions
 	-- returns true</pre></div><p class="noteNote">Splice Machine also accepts the != operator, which is not included in the SQL standard.</p></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">IS NULL,<br />IS NOT NULL</td>
+                        <td><code>IS NULL,<br />IS NOT NULL</code></td>
                         <td>Test whether the result of an expression is null or not.
 					<div class="preWrapper"><pre class="ExampleCell">WHERE MiddleName IS NULL</pre></div></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">LIKE</td>
+                        <td><code>LIKE</code></td>
                         <td>
                             <p>Attempts to match a character expression to a character pattern, which is a character string that includes one or more wildcards.
 					</p>
@@ -153,14 +153,14 @@ folder: SQLReference/Expressions
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">BETWEEN</td>
+                        <td><code>BETWEEN</code></td>
                         <td>Tests whether the first operand is between the second and third operands. The second operand must be less than the third operand. Applicable only to types to which <code>&lt;=</code> and <code>&gt;=</code> can be applied.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE booking_date
   BETWEEN DATE('1998-02-26')
   AND DATE('1998-03-01')</pre></div><p class="noteNote">Using the <code>BETWEEN</code> operator is logically equivalent to specifying that you want to select values that are greater than or equal to the first operand and less than or equal to the second operand:&#160;<code>col between X and Y</code> is equivalent to <code>col &gt;= X&#160;and col &lt;= Y</code>. Which means that the result set will be empty if your second operand is less than your first.</p></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">IN</td>
+                        <td><code>IN</code></td>
                         <td>Operates on table subquery or list of values. Returns <code>TRUE</code> if the left expression's value is in the result of the table subquery or in the list of values. Table subquery can return multiple rows but must return a single column.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE booking_date NOT IN
  (SELECT booking_date
@@ -168,7 +168,7 @@ folder: SQLReference/Expressions
   WHERE rooms_available = 0)</pre></div></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">EXISTS</td>
+                        <td><code>EXISTS</code></td>
                         <td>Operates on a table subquery. Returns <code>TRUE</code> if the table subquery returns any rows, and <code>FALSE</code> if it returns no rows. A table subquery can return multiple columns and rows.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE EXISTS
  (SELECT *

@@ -469,8 +469,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">Walks you through creating your cluster and getting started.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
         <h1>Creating a New Splice Machine Cluster</h1>
         <p>When you first visit your new Splice&#160;Machine Cloud Manager dashboard, you'll see the initial dashboard view, which prompts you to create a new cluster:</p>
        <p>
@@ -504,24 +515,24 @@
                <tbody>
                    <tr>
                        <td>&#160;</td>
-                       <td class="CodeFont">Cluster Name</td>
+                       <td><code>Cluster Name</code></td>
                        <td>Supply whatever name you want for your Splice Machine cluster.</td>
                    </tr>
                    <tr>
                        <td>&#160;</td>
-                       <td class="CodeFont">Region</td>
+                       <td><code>Region</code></td>
                        <td>You can select in which AWS&#160;region your cluster will reside by clicking the previously selected region name, which drops down a list of choices.</td>
                    </tr>
                    <tr>
                        <td rowspan="2" class="ConsoleLink">Data Sizing</td>
-                       <td class="CodeFont">Internal Dataset (TB)</td>
+                       <td><code>Internal Dataset (TB)</code></td>
                        <td>
                            <p>Move the slider to modify your estimate of how large your database will be.</p>
                            <p><code>Internal Dataset</code> is the amount of data that you will be storing within your Splice Machine database.</p>
                        </td>
                    </tr>
                    <tr>
-                       <td class="CodeFont">External Dataset (TB)</td>
+                       <td><code>External Dataset (TB)</code></td>
                        <td>
                            <p>Move the slider to modify your estimate of how large your external dataset will be.</p>
                            <p><code>External Dataset</code> is the amount of data the you will be accessing from external data sources, using features such as external tables and our virtual table interface.</p>
@@ -529,20 +540,20 @@
                    </tr>
                    <tr>
                        <td rowspan="2" class="ConsoleLink">Cluster Power</td>
-                       <td class="CodeFont">OLTP&#160;Splice&#160;Units</td>
+                       <td><code>OLTP&#160;Splice&#160;Units</code></td>
                        <td>
                            <p>Move the slider to modify your estimate of how much processing power you need for transactional query processing. More OLTP&#160;units means more region servers in your cluster.</p>
                        </td>
                    </tr>
                    <tr>
-                       <td class="CodeFont">OLAP&#160;Splice&#160;Units</td>
+                       <td><code>OLAP&#160;Splice&#160;Units</code></td>
                        <td>
                            <p>Move the slider to modify your estimate of how much processing power you need for analytical query processing. More OLAP&#160;units means more Spark executors.</p>
                        </td>
                    </tr>
                    <tr>
                        <td class="ConsoleLink">Backup Frequency</td>
-                       <td class="CodeFont">Frequency</td>
+                       <td><code>Frequency</code></td>
                        <td>
                            <p>Select how frequently you want Splice Machine to back up your database. You can select <code>Hourly</code>, <code>Daily</code>, or <code>Weekly</code>; each selection displays additional backup timing and retention options:</p>
                            <p>Hourly:</p>
@@ -637,6 +648,12 @@
            </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

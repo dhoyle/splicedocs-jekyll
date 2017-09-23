@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">System table that describes the database's triggers.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysTriggers">SYSTRIGGERS System Table </h1>
             <p>The <code>SYSTRIGGERS</code> table describes the database's triggers.</p>
             <p>The following table shows the contents of the <code>SYSTRIGGERS</code> system table.</p>
@@ -2818,38 +2829,38 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">TRIGGERID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TRIGGERID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Unique identifier for the trigger</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TRIGGERNAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TRIGGERNAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>Name of the trigger</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SCHEMAID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SCHEMAID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>ID of the trigger's schema (join with <code>SYSSCHEMAS.SCHEMAID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CREATIONTIMESTAMP</td>
-                        <td class="CodeFont">TIMESTAMP</td>
-                        <td class="CodeFont">29</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>CREATIONTIMESTAMP</code></td>
+                        <td><code>TIMESTAMP</code></td>
+                        <td><code>29</code></td>
+                        <td><code>NO</code></td>
                         <td>Time the trigger was created</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">EVENT</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>EVENT</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">Possible values are:</p>
                             <ul>
@@ -2860,10 +2871,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">FIRINGTIME</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>FIRINGTIME</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">Possible values are:</p>
                             <ul>
@@ -2873,10 +2884,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TYPE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TYPE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">Possible values are:</p>
                             <ul>
@@ -2886,10 +2897,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">STATE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>STATE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">Possible values are:</p>
                             <ul>
@@ -2899,70 +2910,70 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TABLEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>ID of the table on which the trigger is defined</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">WHENSTMTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>WHENSTMTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>YES</code></td>
                         <td>Used only if there is a <code>WHEN</code> clause (not yet supported)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">ACTIONSTMTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>ACTIONSTMTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>YES</code></td>
                         <td>ID of the stored prepared statement for the triggered-SQL-statement (join with <code>SYSSTATEMENTS.STMTID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">REFERENCEDCOLUMNS</td>
+                        <td><code>REFERENCEDCOLUMNS</code></td>
                         <td class="CodeFont"><em>org.apache.Splice Machine<br /> .catalog.ReferencedColumns</em>
                             <p>This class is not part of the public API.</p>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>-1</code></td>
+                        <td><code>YES</code></td>
                         <td>Descriptor of the columns to be updated, if this trigger is an update trigger (that is, if the <code>EVENT</code> column contains <code>'U'</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TRIGGERDEFINITION</td>
-                        <td class="CodeFont">LONG VARCHAR</td>
-                        <td class="CodeFont">2,147,483,647</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>TRIGGERDEFINITION</code></td>
+                        <td><code>LONG VARCHAR</code></td>
+                        <td><code>2,147,483,647</code></td>
+                        <td><code>YES</code></td>
                         <td>Text of the action SQL statement</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">REFERENCINGOLD</td>
-                        <td class="CodeFont">BOOLEAN</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>REFERENCINGOLD</code></td>
+                        <td><code>BOOLEAN</code></td>
+                        <td><code>1</code></td>
+                        <td><code>YES</code></td>
                         <td>Whether or not the <code>OLDREFERENCINGNAME</code>, if non-null, refers
 					to the <code>OLD</code> row or table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">REFERENCINGNEW </td>
-                        <td class="CodeFont">BOOLEAN</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>REFERENCINGNEW </code></td>
+                        <td><code>BOOLEAN</code></td>
+                        <td><code>1</code></td>
+                        <td><code>YES</code></td>
                         <td>Whether or not the <code>NEWREFERENCINGNAME</code>, if non-null, refers
 					to the <code>NEW</code> row or table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">OLDREFERENCINGNAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>OLDREFERENCINGNAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>YES</code></td>
                         <td>Pseudoname as set using the <code>REFERENCING OLD AS</code> clause</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">NEWREFERENCINGNAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>NEWREFERENCINGNAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>YES</code></td>
                         <td>Pseudoname as set using the <code>REFERENCING NEW AS</code> clause </td>
                     </tr>
                 </tbody>
@@ -2970,6 +2981,12 @@
             <p>Any SQL text that is part of a triggered-SQL-statement is compiled  and stored in the <code>SYSSTATEMENTS</code> table. <code>ACTIONSTMTID</code> and <code>WHENSTMTID</code> are  foreign keys that reference <code>SYSSTATEMENTS.STMTID</code>. The statements for  a trigger are always in the same schema as the trigger.</p>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

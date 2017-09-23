@@ -499,8 +499,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">A tutorial showing you how to put messages on an MQTT queue, how to consume those messages using Spark Streaming, and how to save those messages to Splice Machine using a VTI.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>Streaming MQTT&#160;Spark Data</h1>
             <p>This topic walks you through using MQTT Spark streaming with Splice&#160;Machine. MQTT&#160;is a lightweight, publish-subscribe messaging protocol designed for connecting remotely when a small footprint is required. MQTT&#160;is frequently used for data collection with the Internet of Things (IoT).</p>
             <p>The example code in this tutorial uses <a href="https://mosquitto.org/"  target="_blank">Mosquitto</a>, which is an open source message broker that implements the MQTT. This tutorial uses a cluster managed by MapR; if you're using different platform management software, you'll need to make a few adjustments in how the code is deployed on your cluster.</p>
@@ -816,17 +827,23 @@ PreparedStatement ps = con.prepareStatement(vtiStatement);</pre>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">/ddl/create-tables.sql</td>
+                        <td><code>/ddl/create-tables.sql</code></td>
                         <td>A simple SQL&#160;script that you can use to have Splice&#160;Machine create the table into which RFID&#160;messages are stored.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">/scripts/run-mqtt-spark-streaming.sh</td>
+                        <td><code>/scripts/run-mqtt-spark-streaming.sh</code></td>
                         <td>Starts the Spark streaming job.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

@@ -9,7 +9,7 @@ permalink: sqlref_systables_sysconglomerates.html
 folder: SQLReference/SystemTables
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="SystemTables.SysConglomerates">SYSCONGLOMERATES System Table</h1>
             <p>The <code>SYSCONGLOMERATES</code> table describes the conglomerates
 			within the current database. A conglomerate is a unit of storage and
@@ -34,63 +34,63 @@ folder: SQLReference/SystemTables
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">SCHEMAID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SCHEMAID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Schema ID for the conglomerate</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TABLEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Identifier for table (join with SYSTABLES.TABLEID)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CONGLOMERATENUMBER</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>CONGLOMERATENUMBER</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>NO</code></td>
                         <td>Conglomerate ID for the conglomerate (heap or index)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CONGLOMERATENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>CONGLOMERATENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>YES</code></td>
                         <td>Index name, if conglomerate is an index, otherwise the
 					table ID</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">ISINDEX</td>
-                        <td class="CodeFont">BOOLEAN</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>ISINDEX</code></td>
+                        <td><code>BOOLEAN</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>Whether or not conglomerate is an index</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">DESCRIPTOR</td>
+                        <td><code>DESCRIPTOR</code></td>
                         <td><em>org.apache.splicemachine.catalog.IndexDescriptor</em>
                             <p>This class is not part of the public API.</p>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>-1</code></td>
+                        <td><code>YES</code></td>
                         <td>System type describing the index</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">ISCONSTRAINT</td>
-                        <td class="CodeFont">BOOLEAN</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>ISCONSTRAINT</code></td>
+                        <td><code>BOOLEAN</code></td>
+                        <td><code>1</code></td>
+                        <td><code>YES</code></td>
                         <td>Whether or not the conglomerate is a system-generated index
 					enforcing a constraint</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CONGLOMERATEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>CONGLOMERATEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Unique identifier for the conglomerate</td>
                     </tr>
                 </tbody>

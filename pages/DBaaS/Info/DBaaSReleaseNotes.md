@@ -9,6 +9,8 @@ permalink: dbaas_info_release.html
 folder: DBaaS/Info
 ---
 
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
+
 # Release Notes: Splice Machine Database-as-Service
 
 {% include splice_snippets/dbaasonlytopic.html %}

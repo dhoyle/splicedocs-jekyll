@@ -2795,8 +2795,19 @@
 
 <div class="post-content">
 
+<!--- Don't automatically put page summary at top - GRH 05/2017:
+   
+    <div class="summary">Built-in system procedure that refreshes the schema of an external table that has been modified outside of Splice Machine.</div>
+   
+-->
+
+    
+
+
+    
+
   	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1>SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</h1>
             <p>You call the <code>SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</code> system procedure to manually refresh the schema of an external table in Splice Machine that has been modified outside of Spark. When you use the external table, Spark caches its schema in memory to improve performance; as long as you are using Spark to modify the table, it is smart enough to refresh the cached schema. However, if the table schema is modified outside of Spark, you need to call <code>SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</code>.</p>
             <h2>Syntax</h2>
@@ -2823,6 +2834,12 @@ Statement executed.</pre>
             </ul>
         </div>
 	</section>
+
+
+    <div class="tags">
+        
+    </div>
+
 
 
 </div>

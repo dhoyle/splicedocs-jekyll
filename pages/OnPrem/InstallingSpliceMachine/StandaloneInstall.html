@@ -10,7 +10,7 @@ folder: OnPrem/InstallingSpliceMachine
 ---
 {% include splicevars.html %}
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="DeployingStandalone">Installing the Standalone Version of Splice Machine</h1>
 {% include splice_snippets/onpremonlytopic.html %}
             <p>This topic walks you through downloading, installing, and getting started with using the standalone version of Splice Machine. </p>
@@ -171,15 +171,15 @@ $ sudo apt install oracle-java8-set-default</pre>
                             <tbody>
                                 <tr>
                                     <td>Create symbolic link for YARN</td>
-                                    <td class="CodeFont">sudo ln -s /usr/bin/java /bin/java</td>
+                                    <td><code>sudo ln -s /usr/bin/java /bin/java</code></td>
                                 </tr>
                                 <tr>
                                     <td>Configure swappiness</td>
-                                    <td class="CodeFont">$ echo 'vm.swappiness = 0' &gt;&gt; /etc/sysctl.conf</td>
+                                    <td><code>$ echo 'vm.swappiness = 0' &gt;&gt; /etc/sysctl.conf</code></td>
                                 </tr>
                                 <tr>
                                     <td>Create an alias</td>
-                                    <td class="CodeFont">$ rm /bin/sh ; ln -sf /bin/bash /bin/sh</td>
+                                    <td><code>$ rm /bin/sh ; ln -sf /bin/bash /bin/sh</code></td>
                                 </tr>
                             </tbody>
                         </table>
