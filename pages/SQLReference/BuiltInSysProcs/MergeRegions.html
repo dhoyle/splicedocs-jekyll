@@ -34,10 +34,8 @@ folder: SQLReference/BuiltInSysProcs
                 <p class="paramName">regionName2</p>
                 <p class="paramDefnFirst">The <strong>encoded</strong> HBase name of the second of the two regions you want merged. You can call the <a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a> procedure to look up the region name for an unencoded Splice Machine table or index key.</p>
             </div>
-            <div>
             <h2>Usage</h2>
 			<p>You can merge two adjacent table regions by specifying <code>NULL</code> for the index name. To merge two adjacent index regions, specify both the table name and the index name.</p>
-            </div>
             <h2>Results</h2>
             <p>This procedure does not return a result.</p>
 			<p>If the specified regions are not adjacent, you'll see an error message, and no merging will be performed.</p>
