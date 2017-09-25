@@ -7,8 +7,8 @@ do
    base="${filename%.[^.]*}"
    echo "Converting file $base.html to $base.md"
 
-   count=<code>wc -l $base.html | awk '{print $1}'</code>
-   breakpoint=<code>grep -n [-][-][-] $base.html | tail -1 | cut -d: -f1</code>
+   count=`wc -l $base.html | awk '{print $1}'`
+   breakpoint=`grep -n [-][-][-] $base.html | tail -1 | cut -d: -f1`
    touch $base.head
    touch $base.tail
    head -$((breakpoint)) $base.html > $base.head
