@@ -2806,68 +2806,114 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="SQL-Queries.Query">Query</h1>
-            <p>A <em>Query</em> creates a virtual table based on existing tables or constants built into tables.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="query---sql-queriesquery">Query   {#SQL-Queries.Query}</h1>
+
+    <p>A <em>Query</em> creates a virtual table based on existing tables or constants
+built into tables.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>{
   ( Query
-       [ <em><a href="sqlref_clauses_orderby.html">ORDER BY</a> clause</em> ]<span>
-       [ <em><a href="sqlref_clauses_resultoffset.html">result offset clause</a></em> ]
-       [ <em><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></em> ] </span>
+       [ ORDER BY clause ]
+       [ result offset clause ]
+       [ fetch first clause ] 
   ) |
-   <em>Query</em> EXCEPT [ ALL | DISTINCT ] <em>Query</em> |
-   <em>Query</em> UNION [ ALL | DISTINCT ] <em>Query</em> |
-   <em><a href="sqlref_expressions_values.html">VALUES Expression</a></em>
-}</pre>
-            </div>
-            <p>You can arbitrarily put parentheses around queries, or use the parentheses to control the order of evaluation of the <code>UNION</code> operations. These operations are evaluated from left to right when  no parentheses are present.</p>
-            <h2>Duplicates in UNION  and EXCEPT ALL results</h2>
-            <p>The <code>ALL</code> and <code>DISTINCT</code> keywords determine whether duplicates are eliminated from the result of the operation. If you specify the <code>DISTINCT</code> keyword, then the
-		result will have no duplicate rows. If you specify the <code>ALL</code> keyword, then there may be duplicates in the result, depending on whether there were duplicates
-		in the input.  <code>DISTINCT</code> is the default, so if you don't specify <code>ALL</code> or <code>DISTINCT</code>, the duplicates will be eliminated.  For example, <code>UNION</code> builds an intermediate <em>ResultSet</em> with all of the rows from both queries and eliminates the duplicate rows before returning the remaining rows. <code>UNION ALL</code> returns all rows from both queries as the result.</p>
-            <p>Depending on which operation is specified, if the number of copies of a row in the left table is L and the number of copies of that row in the right table is R, then the number of duplicates of that particular row that the output table contains (assuming the <code>ALL</code> keyword is specified) is:</p>
-            <ul>
-                <li><code>UNION</code>: ( L + R ).</li>
-                <li><code>EXCEPT</code>: the maximum of ( L - R ) and 0 (zero).</li>
-            </ul>
-            <h2>Examples</h2>
-            <p class="body">Here's a simple <code>SELECT</code>&#160;expression:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-SELECT *
+   Query EXCEPT [ ALL | DISTINCT ] Query |
+   Query UNION [ ALL | DISTINCT ] Query |
+   VALUES Expression
+}
+</code></pre>
+
+    </div>
+    <p>You can arbitrarily put parentheses around queries, or use the
+parentheses to control the order of evaluation of the <code>UNION</code>
+operations. These operations are evaluated from left to right when no
+parentheses are present.</p>
+
+    <h2 id="duplicates-in-union-and-except-all-results">Duplicates in UNION and EXCEPT ALL results</h2>
+
+    <p>The <code>ALL</code> and <code>DISTINCT</code> keywords determine whether duplicates are
+eliminated from the result of the operation. If you specify the
+<code>DISTINCT</code> keyword, then the result will have no duplicate rows. If you
+specify the <code>ALL</code> keyword, then there may be duplicates in the result,
+depending on whether there were duplicates in the input. <code>DISTINCT</code> is
+the default, so if you don’t specify <code>ALL</code> or <code>DISTINCT</code>, the duplicates
+will be eliminated. For example, <code>UNION</code> builds an intermediate
+<em>ResultSet</em> with all of the rows from both queries and eliminates the
+duplicate rows before returning the remaining rows. <code>UNION ALL</code> returns
+all rows from both queries as the result.</p>
+
+    <p>Depending on which operation is specified, if the number of copies of a
+row in the left table is L and the number of copies of that row in the
+right table is R, then the number of duplicates of that particular row
+that the output table contains (assuming the <code>ALL</code> keyword is specified)
+is:</p>
+
+    <ul>
+      <li><code>UNION</code>: ( L + R ).</li>
+      <li><code>EXCEPT</code>: the maximum of ( L - R ) and 0 (zero).</li>
+    </ul>
+
+    <h2 id="examples">Examples</h2>
+
+    <p class="body">Here’s a simple <code>SELECT</code> expression:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>SELECT *
   FROM ORG;
-</pre>
-            </div>
-            <p class="body">Here's a <code>SELECT</code>&#160;with a subquery:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-SELECT *
-  FROM (SELECT CLASS_CODE FROM CL_SCHED) AS CS;</pre>
-            </div>
-            <p class="body">Here's a <code>SELECT</code>&#160;with a subquery:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-SELECT *
-  FROM (SELECT CLASS_CODE FROM CL_SCHED) AS CS;</pre>
-            </div>
-            <p class="body">Here's a <code>UNION</code> that lists all employee numbers from certain departments who are assigned to specified project numbers:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-SELECT EMPNO, 'emp'
+</code></pre>
+
+    </div>
+    <p class="body">Here’s a <code>SELECT</code> with a subquery:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>SELECT *
+  FROM (SELECT CLASS_CODE FROM CL_SCHED) AS CS;
+</code></pre>
+
+    </div>
+    <p class="body">Here’s a <code>SELECT</code> with a subquery:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>SELECT *
+  FROM (SELECT CLASS_CODE FROM CL_SCHED) AS CS;
+</code></pre>
+
+    </div>
+    <p class="body">Here’s a <code>UNION</code> that lists all employee numbers from certain
+departments who are assigned to specified project numbers:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>SELECT EMPNO, 'emp'
   FROM EMPLOYEE
   WHERE WORKDEPT LIKE 'E%'
   UNION
     SELECT EMPNO, 'emp_act'
        FROM EMP_ACT
-       WHERE PROJNO IN('MA2100', 'MA2110', 'MA2112');</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_clauses_orderby.html"><code>ORDER&#160;BY</code></a>&#160;clause</li>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;expression</li>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;statement</li>
-                <li><a href="sqlref_expressions_values.html"><code>VALUES</code></a>&#160;expression</li>
-            </ul>
-        </div>
-	</section>
+       WHERE PROJNO IN('MA2100', 'MA2110', 'MA2112');
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
+      <li><a href="sqlref_expressions_values.html"><code>VALUES</code></a> expression</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2884,7 +2930,7 @@ SELECT EMPNO, 'emp'
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

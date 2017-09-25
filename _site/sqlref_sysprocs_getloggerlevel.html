@@ -2806,28 +2806,47 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInSysProcs.GetLoggerLevel">SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</h1>
-            <p>The <code>SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</code> system procedure displays the logging level of the specified logger.</p>
-            <p class="noteNote">You can read more about Splice &#160;Machine loggers and logging levels in the <a href="developers_tuning_logging.html">Logging</a> topic of our <em>Developer's Guide</em>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL(<em>loggerName</em>)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">loggerName</p>
-                <p class="paramDefnFirst">A&#160;string specifying the name of the logger whose logging level you want to find.</p>
-                <p class="paramDefn">You can find all of the available loggers by using the <code><a href="sqlref_sysprocs_getloggers.html">SYSCS_UTIL.SYSCS_GET_LOGGERS</a></code>&#160;system procedure. </p>
-            </div>
-            <h2>Results</h2>
-            <p>The displayed results of calling <code>SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</code> include these values:</p>
-            <table summary=" summary=&quot;Columns in Get_Logger_Level results display&quot;">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsgetloggerlevel---builtinsysprocsgetloggerlevel">SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL   {#BuiltInSysProcs.GetLoggerLevel}</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</code> system procedure displays the
+logging level of the specified logger.</p>
+
+    <p class="noteNote">You can read more about Splice  Machine loggers and logging levels in
+the <a href="developers_tuning_logging.html">Logging</a> topic of our <em>Developer’s
+Guide</em>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL(loggerName)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">loggerName</p>
+
+      <p class="paramDefnFirst">A string specifying the name of the logger whose logging level you want
+to find.</p>
+
+      <p class="paramDefn">You can find all of the available loggers by using the
+<a href="sqlref_sysprocs_getloggers.html"><code>SYSCS_UTIL.SYSCS_GET_LOGGERS</code></a> system
+procedure.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The displayed results of calling <code>SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</code>
+include these values:</p>
+
+    <table summary=" summary=&quot;Columns in Get_Logger_Level results display&quot;">
                 <col />
                 <col />
                 <thead>
                     <tr>
-                        <th>&#160;</th>
-                        <th>&#160;</th>
+                        <th> </th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -2854,9 +2873,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2>Example</h2>
-            <p class="body">Here are two examples of using this procedure:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL('com.splicemachine.utils.SpliceUtilities');
+    <h2 id="example">Example</h2>
+
+    <p class="body">Here are two examples of using this procedure:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL('com.splicemachine.utils.SpliceUtilities');
 LOG&amp;
 ----
 WARN
@@ -2868,18 +2890,22 @@ LOGL&amp;
 -----
 DEBUG
 
-1 row selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sysprocs_getloggers.html"><code>SYSCS_UTIL.SYSCS_GET_LOGGERS</code></a>
-                </li>
-                <li><a href="sqlref_sysprocs_setloggerlevel.html"><code>SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</code></a>
-                </li>
-                <li><em><a href="developers_tuning_logging.html">Splice Machine Logging</a></em> in our <em>Developer's Guide</em>.</li>
-            </ul>
-        </div>
-	</section>
+1 row selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_getloggers.html"><code>SYSCS_UTIL.SYSCS_GET_LOGGERS</code></a></li>
+      <li><a href="sqlref_sysprocs_setloggerlevel.html"><code>SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</code></a></li>
+      <li><em><a href="developers_tuning_logging.html">Splice Machine Logging</a></em> in our
+<em>Developer’s Guide</em>.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2896,7 +2922,7 @@ DEBUG
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

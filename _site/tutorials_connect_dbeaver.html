@@ -510,51 +510,77 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Connecting DBeaver with Splice Machine Using JDBC</h1>
-            <p>This topic shows you how to connect DBeaver to Splice Machine using our JDBC&#160;driver. To complete this tutorial, you need to:</p>
-            <ul>
-                <li>Have Splice&#160;Machine installed and running on your computer.</li>
-                <li>Have DBeaver installed on your computer. You can download an installer and find directions on the DBeaver web site (<a href="http://dbeaver.jkiss.org/"  target="_blank">dbeaver.jkiss.org</a>).</li>
-            </ul>
-            <h2 id="Compile">Connect DBeaver with Splice&#160;Machine</h2>
-            <p>This section walks you through configuring DBeaver to connect with&#160;Splice Machine</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Install DBeaver , if you've not already done so</p>
-                        <p class="indentLevel1"><a href="http://dbeaver.jkiss.org/"  target="_blank">Follow the instructions on the DBeaver web site</a>.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start a Splice Machine session on the computer on which you have installed DBeaver </p>
-                        <p class="indentLevel1">Splice Machine must be running to create and use it with DBeaver .</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Configure a Splice Machine connection in DBeaver </p>
-                        <p class="indentLevel1">Follow the instructions in the next section, <a href="#ConfiguringSquirrel">Configure a DBeaver Connection for Splice Machine</a>, to create and test a new connection in DBeaver .</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Connect DBeaver to Splice&#160;Machine</p>
-                        <p class="indentLevel1">In DBeaver's <em>Database Navigator</em>, select the Splice&#160;Machine connection you configured. Your database will display, and you can inspect objects or enter SQL&#160;to interact with your data.</p>
-                        <p class="indentLevel1">
-                            <img src="images/DBeaverSplice.png" class="nestedTightSpacing" />
-                        </p>
-                    </li>
-                </ol>
-            </div>
-            <h3 id="ConfiguringSquirrel">Configure a DBeaver Connection for Splice Machine</h3>
-            <p>Follow these steps to configure and test a new driver and connection alias in DBeaver .</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>Start a Splice Machine session on the computer on which you have installed DBeaver </li>
-                    <li>Open the DBeaver application.</li>
-                    <li>
-                        <p class="topLevel">Select <span class="AppCommand">Driver Manager</span> in the DBeaver <em>Database</em> menu, then click the <span class="AppCommand">New</span> button to create a new driver:</p>
-                        <ol class="LowerAlphaPlainFont">
-                            <li>
-                                <p>Specify values in the <span class="AppCommand">Create New Driver</span> form; these are the default values:</p>
-                                <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="connecting-dbeaver-with-splice-machine-using-jdbc">Connecting DBeaver with Splice Machine Using JDBC</h1>
+
+    <p>This topic shows you how to connect DBeaver to Splice Machine using our
+JDBC driver. To complete this tutorial, you need to:</p>
+
+    <ul>
+      <li>Have Splice Machine installed and running on your computer.</li>
+      <li>Have DBeaver installed on your computer. You can download an installer
+and find directions on the DBeaver web site (<a href="http://dbeaver.jkiss.org/" target="_blank">dbeaver.jkiss.org</a>).</li>
+    </ul>
+
+    <h2 id="Compile">Connect DBeaver with Splice Machine</h2>
+
+    <p>This section walks you through configuring DBeaver to connect
+with Splice Machine</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Install DBeaver , if you’ve not already done so</p>
+
+          <p class="indentLevel1"><a href="http://dbeaver.jkiss.org/" target="_blank">Follow the instructions on the DBeaver web site</a>.</p>
+        </li>
+        <li>
+          <p class="topLevel">Start a Splice Machine session on the computer on which you have
+installed DBeaver</p>
+
+          <p class="indentLevel1">Splice Machine must be running to create and use it with DBeaver .</p>
+        </li>
+        <li>
+          <p class="topLevel">Configure a Splice Machine connection in DBeaver</p>
+
+          <p class="indentLevel1">Follow the instructions in the next section, <a href="#ConfiguringSquirrel">Configure a DBeaver
+Connection for Splice Machine</a>, to create and
+test a new connection in DBeaver .</p>
+        </li>
+        <li>
+          <p class="topLevel">Connect DBeaver to Splice Machine</p>
+
+          <p class="indentLevel1">In DBeaver’s <em>Database Navigator</em>, select the Splice Machine
+connection you configured. Your database will display, and you can
+inspect objects or enter SQL to interact with your data.</p>
+
+          <p class="indentLevel1"><img src="images/DBeaverSplice.png" alt="" class="nestedTightSpacing" /></p>
+        </li>
+      </ol>
+
+    </div>
+    <h3 id="ConfiguringSquirrel">Configure a DBeaver Connection for Splice Machine</h3>
+
+    <p>Follow these steps to configure and test a new driver and connection
+alias in DBeaver .</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>Start a Splice Machine session on the computer on which you have
+installed DBeaver</li>
+        <li>Open the DBeaver application.</li>
+        <li>
+          <p class="topLevel">Select <span class="AppCommand">Driver Manager</span> in the DBeaver
+<em>Database</em> menu, then click the <span class="AppCommand">New</span>
+button to create a new driver:</p>
+
+          <ol class="LowerAlphaPlainFont">
+            <li>
+              <p>Specify values in the <span class="AppCommand">Create New
+Driver</span> form; these are the default values:</p>
+
+              <table>
                                     <col />
                                     <col />
                                     <thead>
@@ -573,7 +599,7 @@
                                             <td><code>com.splicemachine.db.jdbc.ClientDriver</code></td>
                                         </tr>
                                         <tr>
-                                            <td class="AppFont">URL&#160;Template:</td>
+                                            <td class="AppFont">URL Template:</td>
                                             <td><code>jdbc:splice://{host}:{port}/splicedb;create=false</code></td>
                                         </tr>
                                         <tr>
@@ -586,54 +612,75 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </li>
-                            <li>
-                                <p>Click the <span class="AppCommand">Add File</span> button, then navigate to and select the Splice JDBC&#160;Driver jar file. which you'll find it in the <code>jdbc-driver</code> folder under the <code>splicemachine</code> directory on your computer.</p>
-                                <p>
-                                    <img src="images/DBeaverDriver.png" class="nestedTightSpacing" />
-                                </p>
-                                <p class="noteTip">Instead of manually entering the <span class="AppCommand">Class Name</span> for your driver, you can click the <span class="AppCommand">Find Class</span> button to discover the driver class name associated with the file you've located.</p>
-                            </li>
-                        </ol>
-                    </li>
-                    <li>Click <span class="AppCommand">OK</span>&#160;to save the driver entry and close the form.</li>
-                    <li>
-                        <p class="topLevel">Select <span class="AppCommand">New Connection</span> in the DBeaver <em>Database</em> menu, then follow these steps to create a new connection that uses our driver:</p>
-                        <ol class="LowerAlphaPlainFont">
-                            <li>
-                                <p>Scroll through the connection type list and select the Splice&#160;Machine JDBC&#160;driver that you just created, then click the <span class="AppCommand">Next</span> button:</p>
-                                <p>
-                                    <img src="images/DBeaverConnection1.png" class="nestedTightSpacing" />
-                                </p>
-                            </li>
-                            <li>
-                                <p>Several of the fields in the <em>Generic JDBC&#160;Connection Settings</em> screen were pre-populated for you when you selected the driver. You need to fill in the <span class="AppCommand">User name:</span>&#160;(default is <code>splice</code>)&#160;and <span class="AppCommand">Password:</span>&#160;(default is <code>admin</code>) field values:</p>
-                                <p>
-                                    <img src="images/DBeaverConnection2.png" class="nestedTightSpacing" />
-                                </p>
-                            </li>
-                            <li>
-                                <p>Click the <span class="AppCommand">Test Connection</span> button to verify your connection.</p>
-                                <p class="noteNote">Splice Machine must be running on your computer for the connection test to succeed.</p>
-                            </li>
-                            <li>
-                                <p>Click the <span class="AppCommand">Next</span> button to reveal the network configuration screen. If you have VPN&#160;requirements, enter the appropriate information in this screen; if not, simply click the <span class="AppCommand">Next</span> button again.</p>
-                                <p>
-                                    <img src="images/DBeaverConnection3.png" class="nestedTightSpacing" />
-                                </p>
-                            </li>
-                            <li>
-                                <p>You can optionally modify any settings in the <em>Finish connection creation</em> screen; then click the <span class="AppCommand">Finish</span> button to save your new connection.</p>
-                                <p>
-                                    <img src="images/DBeaverFinishConnection.png" class="nestedTightSpacing" />
-                                </p>
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
-        </div>
-	</section>
+            </li>
+            <li>
+              <p>Click the <span class="AppCommand">Add File</span> button, then
+navigate to and select the Splice JDBC Driver jar file. which
+you’ll find it in the <code>jdbc-driver</code> folder under the
+<code>splicemachine</code> directory on your computer.</p>
+
+              <p><img src="images/DBeaverDriver.png" alt="" class="nestedTightSpacing" /></p>
+
+              <p class="noteTip">Instead of manually entering the <span class="AppCommand">Class
+Name</span> for your driver, you can click the <span class="AppCommand">Find Class</span> button to discover the
+driver class name associated with the file you’ve located.</p>
+            </li>
+          </ol>
+        </li>
+        <li>Click <span class="AppCommand">OK</span> to save the driver entry
+and close the form.</li>
+        <li>
+          <p class="topLevel">Select <span class="AppCommand">New Connection</span> in the DBeaver
+<em>Database</em> menu, then follow these steps to create a new connection
+that uses our driver:</p>
+
+          <ol class="LowerAlphaPlainFont">
+            <li>
+              <p>Scroll through the connection type list and select the
+Splice Machine JDBC driver that you just created, then click the
+<span class="AppCommand">Next</span> button:</p>
+
+              <p><img src="images/DBeaverConnection1.png" alt="" class="nestedTightSpacing" /></p>
+            </li>
+            <li>
+              <p>Several of the fields in the <em>Generic JDBC Connection Settings</em>
+screen were pre-populated for you when you selected the driver.
+You need to fill in the <span class="AppCommand">User
+name:</span> (default is <code>splice</code>) and <span class="AppCommand">Password:</span> (default is <code>admin</code>) field
+values:</p>
+
+              <p><img src="images/DBeaverConnection2.png" alt="" class="nestedTightSpacing" /></p>
+            </li>
+            <li>
+              <p>Click the <span class="AppCommand">Test Connection</span> button
+to verify your connection.</p>
+
+              <p class="noteNote">Splice Machine must be running on your computer for the
+connection test to succeed.</p>
+            </li>
+            <li>
+              <p>Click the <span class="AppCommand">Next</span> button to reveal
+the network configuration screen. If you have VPN requirements,
+enter the appropriate information in this screen; if not, simply
+click the <span class="AppCommand">Next</span> button again.</p>
+
+              <p><img src="images/DBeaverConnection3.png" alt="" class="nestedTightSpacing" /></p>
+            </li>
+            <li>
+              <p>You can optionally modify any settings in the <em>Finish connection
+creation</em> screen; then click the <span class="AppCommand">Finish</span> button to save your new
+connection.</p>
+
+              <p><img src="images/DBeaverFinishConnection.png" alt="" class="nestedTightSpacing" /></p>
+            </li>
+          </ol>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -650,7 +697,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2806,32 +2806,61 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Locate">LOCATE</h1>
-            <p>The <code>LOCATE</code> function is used to search for a string (the <em>needle</em>)&#160;within  another string (the <em>haystack</em>). If the desired string is found, <code>LOCATE</code> returns the index at which it is found.
-		If the desired string is not found, <code>LOCATE</code> returns 0. </p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">LOCATE(<em>CharacterExpression1</em>, <em>CharacterExpression2</em>
-        [, <em>StartPosition</em>] )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">CharacterExpression1</p>
-                <p class="paramDefnFirst">A character expression that specifies the string to search <strong>for</strong> in <em>CharacterExpression2</em>, sometimes called the needle.</p>
-                <p class="paramName">CharacterExpression2</p>
-                <p class="paramDefnFirst">A character expression that specifies the string in which to search, sometimes called the haystack.</p>
-                <p class="paramName">StartPosition</p>
-                <p class="paramDefnFirst">(Optional). Specifies the position in <em>CharacterExpression2</em> at which the search is to start. This defaults to the start of <em>CharacterExpression2</em>, which is the value <code>1</code>.</p>
-            </div>
-            <h2>Results</h2>
-            <p>The return type for <code>LOCATE</code> is an integer that indicates the index position within the  second argument at which the first argument was first located. Index positions start with 1.</p>
-            <ul>
-                <li>If the first argument is not found in the second argument, <code>LOCATE</code> returns <code>0</code>.</li>
-                <li> If the first argument is an empty string (<code>''</code>), <code>LOCATE</code> returns the value of the third argument (or <code>1</code> if it was not provided), even if the second argument is also an empty string.</li>
-                <li>If a <code>NULL</code> value is passed for either of the CharacterExpression arguments, <code>NULL</code> is returned</li>
-            </ul>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, LOCATE('Pa', DisplayName, 3) "Position"
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="locate---builtinfcnslocate">LOCATE   {#BuiltInFcns.Locate}</h1>
+
+    <p>The <code>LOCATE</code> function is used to search for a string (the
+<em>needle</em>) within another string (the <em>haystack</em>). If the desired string
+is found, <code>LOCATE</code> returns the index at which it is found. If the
+desired string is not found, <code>LOCATE</code> returns 0.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>LOCATE(CharacterExpression1, CharacterExpression2
+        [, StartPosition] )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">CharacterExpression1</p>
+
+      <p class="paramDefnFirst">A character expression that specifies the string to search <strong>for</strong> in
+<em>CharacterExpression2</em>, sometimes called the needle.</p>
+
+      <p class="paramName">CharacterExpression2</p>
+
+      <p class="paramDefnFirst">A character expression that specifies the string in which to search,
+sometimes called the haystack.</p>
+
+      <p class="paramName">StartPosition</p>
+
+      <p class="paramDefnFirst">(Optional). Specifies the position in <em>CharacterExpression2</em> at which
+the search is to start. This defaults to the start of
+<em>CharacterExpression2</em>, which is the value <code>1</code>.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The return type for <code>LOCATE</code> is an integer that indicates the index
+position within the second argument at which the first argument was
+first located. Index positions start with 1.</p>
+
+    <ul>
+      <li>If the first argument is not found in the second argument, <code>LOCATE</code>
+returns <code>0</code>.</li>
+      <li>If the first argument is an empty string (<code>''</code>), <code>LOCATE</code> returns the
+value of the third argument (or <code>1</code> if it was not provided), even if
+the second argument is also an empty string.</li>
+      <li>If a <code>NULL</code> value is passed for either of the CharacterExpression
+arguments, <code>NULL</code> is returned</li>
+    </ul>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT DisplayName, LOCATE('Pa', DisplayName, 3) "Position"
    FROM Players
    WHERE (INSTR(DisplayName, 'Pa') &gt; 0)
    ORDER BY DisplayName;
@@ -2844,27 +2873,30 @@ Pablo Bonjourno         |0
 Paul Kaster             |0
 
 5 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
-                <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_instr.html"><code>INSTR</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a>&#160;function</li>
-                <li><a href="#"><code>LOCATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a>&#160;function</li>
-                <li><code><a href="sqlref_builtinfcns_regexplike.html">REGEX_LIKE</a></code>&#160;operator</li>
-                <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_trim.html"><code>TRIM</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ucase.html"><code>UCASE</code></a>&#160;function</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
+      <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_instr.html"><code>INSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a> function</li>
+      <li><a href="#"><code>LOCATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_regexplike.html"><code>REGEX_LIKE</code></a> operator</li>
+      <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_trim.html"><code>TRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ucase.html"><code>UCASE</code></a> function</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2881,7 +2913,7 @@ Paul Kaster             |0
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

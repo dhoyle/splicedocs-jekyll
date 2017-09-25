@@ -518,20 +518,34 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Set Connection Command</h1>
-            <p>The <span class="AppCommand">set connection</span> command allows you to specify which connection is the current connection, when you have more than one connection open. </p>
-            <p class="noteNote">If the specified connection does not exist, an error results, and the current connection is unchanged.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SET CONNECTION <em>Identifier</em></pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">Identifier</p>
-                <p class="paramDefnFirst">The name of the connection that you want to be the current connection.</p>
-            </div>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; connect 'jdbc:splice://abc:1527/splicedb;user=splice;password=admin' as sample1;
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="set-connection-command">Set Connection Command</h1>
+
+    <p>The <span class="AppCommand">set connection</span> command allows you to
+specify which connection is the current connection, when you have more
+than one connection open.</p>
+
+    <p class="noteNote">If the specified connection does not exist, an error results, and the
+current connection is unchanged.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SET CONNECTION Identifier
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">Identifier</p>
+
+      <p class="paramDefnFirst">The name of the connection that you want to be the current connection.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; connect 'jdbc:splice://abc:1527/splicedb;user=splice;password=admin' as sample1;
 splice&gt; connect 'jdbc:splice://xyz:1527/splicedb' as sample2;
 splice (NEWDB)&gt; show connections;
 SAMPLE1 -    jdbc:splice://abc:1527/splicedb
@@ -539,10 +553,13 @@ SAMPLE2* -   jdbc:splice://xyz:1527/splicedb
 * = current connection
 splice(SAMPLE2)&gt; set connection sample1;
 splice(SAMPLE1)&gt; disconnect all;
-splice&gt;</pre>
-            </div>
-        </div>
-	</section>
+splice&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -559,7 +576,7 @@ splice&gt;</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2806,40 +2806,82 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInSysProcs.UpdateAllSystemProcedures">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</h1>
-            <p>The <code>SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</code> system procedure updates the signatures  of all of the system procedures in a database. </p>
-            <p class="noteImportant">You need to call this procedure when you update to a new version of Splice Machine that includes new or updates system procedure signatures.</p>
-            <h2>About System Procedures</h2>
-            <p>Splice Machine uses prepared statements known as <em>system procedures</em> to access data in the system tables. Each system procedure has two parts:</p>
-            <ul>
-                <li>An <em>implementation</em>, which is compiled Java byte code that is stored in the Splice jar and is included in the CLASSPATH of the Splice server.</li>
-                <li>A <em>declaration</em> (or <em>signature</em>), which is a CREATE PROCEDURE statement that is stored in the Splice jar file and is synchronized with the data dictionary (in the SYSALIASES&#160;table).</li>
-            </ul>
-            <p>The <code>SYSALIASES</code>&#160;table is synchronized with a database when the database is first created. Thereafter, when you make changes to the system procedures, you need to call a function to keep the <code>SYSALIASES</code>&#160;table synchronized with the procedures in the Splice jar file.</p>
-            <p>If you've modified, deleted, or added a system procedure,  call the <code><a href="sqlref_sysprocs_updatesysproc.html">SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE</a></code> function, which drops the procedure from the data dictionary, and updates the dictionary with the new version in the Splice jar file.</p>
-            <p>If you've made multiple modifications to the system procedures, you can call this function, <code>SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES </code>, to update all of the stored declarations for a database in the data dictionary. This function drops all of the system procedures from the data dictionary and then recreates the system procedures stored in the dictionary from the definitions in the Splice jar file.</p>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES(<em>schemaName</em>)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">A&#160;string specifying the name of the schema that needs to be updated in the data dictionary.</p>
-            </div>
-            <h2>Example</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; call SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES('SYSCS_UTIL');
-Statement executed.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="#"><code>SYSCS_UTIL_SYSCS_UPDATE_SYSTEM_PROCEDURE</code></a>
-                </li>
-            </ul>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsupdateallsystemprocedures---builtinsysprocsupdateallsystemprocedures">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES   {#BuiltInSysProcs.UpdateAllSystemProcedures}</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</code> system procedure
+updates the signatures of all of the system procedures in a database.</p>
+
+    <p class="noteImportant">You need to call this procedure when you update to a new version of
+Splice Machine that includes new or updates system procedure signatures.</p>
+
+    <h2 id="about-system-procedures">About System Procedures</h2>
+
+    <p>Splice Machine uses prepared statements known as <em>system procedures</em> to
+access data in the system tables. Each system procedure has two parts:</p>
+
+    <ul>
+      <li>An <em>implementation</em>, which is compiled Java byte code that is stored
+in the Splice jar and is included in the CLASSPATH of the Splice
+server.</li>
+      <li>A <em>declaration</em> (or <em>signature</em>), which is a CREATE PROCEDURE
+statement that is stored in the Splice jar file and is synchronized
+with the data dictionary (in the SYSALIASES table).</li>
+    </ul>
+
+    <p>The <code>SYSALIASES</code> table is synchronized with a database when the database
+is first created. Thereafter, when you make changes to the system
+procedures, you need to call a function to keep the <code>SYSALIASES</code> table
+synchronized with the procedures in the Splice jar file.</p>
+
+    <p>If you’ve modified, deleted, or added a system procedure, call the
+<a href="sqlref_sysprocs_updatesysproc.html"><code>SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE</code></a>
+function, which drops the procedure from the data dictionary, and
+updates the dictionary with the new version in the Splice jar file.</p>
+
+    <p>If you’ve made multiple modifications to the system procedures, you can
+call this function, <code>SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES </code>, to
+update all of the stored declarations for a database in the data
+dictionary. This function drops all of the system procedures from the
+data dictionary and then recreates the system procedures stored in the
+dictionary from the definitions in the Splice jar file.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES(schemaName)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">A string specifying the name of the schema that needs to be updated in
+the data dictionary.</p>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; call SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES('SYSCS_UTIL');
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="#"><code>SYSCS_UTIL_SYSCS_UPDATE_SYSTEM_PROCEDURE</code></a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2856,7 +2898,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

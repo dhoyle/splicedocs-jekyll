@@ -2806,11 +2806,14 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="DataTypes.AboutNumericTypes">About Numeric Data Types</h1>
-            <p>This section contains the reference documentation for the numeric data types built into Splice Machine SQL:</p>
-            <table summary="Links to and descriptions of the available numeric data types">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="about-numeric-data-types---datatypesaboutnumerictypes">About Numeric Data Types   {#DataTypes.AboutNumericTypes}</h1>
+
+    <p>This section contains the reference documentation for the numeric data
+types built into Splice Machine SQL:</p>
+
+    <table summary="Links to and descriptions of the available numeric data types">
                 <col />
                 <col />
                 <tr>
@@ -2831,7 +2834,7 @@
                     </td>
                     <td>
                         <p>The  <code>DECIMAL</code> data type provides an exact numeric in which the precision and scale can be arbitrarily sized. </p>
-                        <p>You can use <code>DECIMAL</code>&#160;and <code>NUMERIC</code>&#160;interchangeably.</p>
+                        <p>You can use <code>DECIMAL</code> and <code>NUMERIC</code> interchangeably.</p>
                     </td>
                 </tr>
                 <tr>
@@ -2872,7 +2875,7 @@
                     </td>
                     <td>
                         <p>The  <code>NUMERIC</code>data type provides an exact numeric in which the precision and scale can be arbitrarily sized. </p>
-                        <p>You can use <code>NUMERIC</code>&#160;and <code>DECIMAL</code>&#160;interchangeably.</p>
+                        <p>You can use <code>NUMERIC</code> and <code>DECIMAL</code> interchangeably.</p>
                     </td>
                 </tr>
                 <tr>
@@ -2891,9 +2894,12 @@
                     </td>
                 </tr>
             </table>
-            <h2>Using Numeric Types</h2>
-            <p>Numeric types include the following types, which provide storage of varying sizes:</p>
-            <table summary="Storage required for numeric types">
+    <h2 id="using-numeric-types">Using Numeric Types</h2>
+
+    <p>Numeric types include the following types, which provide storage of
+varying sizes:</p>
+
+    <table summary="Storage required for numeric types">
                 <col />
                 <col />
                 <thead>
@@ -2928,9 +2934,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h3 id="NumericTypePromotion">Numeric Type Promotion in Expressions</h3>
-            <p> The following table shows the result type of numeric expressions based on the mix of numeric data types in the expressions.</p>
-            <table summary="Result types for mixed numeric operations">
+    <h3 id="NumericTypePromotion">Numeric Type Promotion in Expressions</h3>
+
+    <p>The following table shows the result type of numeric expressions based
+on the mix of numeric data types in the expressions.</p>
+
+    <table summary="Result types for mixed numeric operations">
                 <col />
                 <col />
                 <thead>
@@ -2968,61 +2977,100 @@
                     </tr>
                 </tbody>
             </table>
-            <p>For example:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">
-   -- returns a double precision value
+    <p>For example:</p>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>   -- returns a double precision value
 VALUES 1 + 1.0e0;
    -- returns a decimal value
 VALUES 1 + 1.0;
    -- returns an integer value
-VALUES CAST (1 AS INT) + CAST (1 AS INT);</pre>
-            </div>
-            <h3 id="StoringValues">Storing Numeric Values</h3>
-            <p>An attempt to put a floating-point type of a larger storage size into a location of a smaller size fails only if the value cannot be stored in the smaller-size location. For example:</p>
-            <div class="preWrapperWide"><pre class="Example">
-create table mytable (r REAL, d DOUBLE PRECISION);
+VALUES CAST (1 AS INT) + CAST (1 AS INT);
+</code></pre>
+
+    </div>
+    <h3 id="StoringValues">Storing Numeric Values</h3>
+
+    <p>An attempt to put a floating-point type of a larger storage size into a
+location of a smaller size fails only if the value cannot be stored in
+the smaller-size location. For example:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>create table mytable (r REAL, d DOUBLE PRECISION);
    0 rows inserted/updated/deleted
 INSERT INTO mytable (r, d) values (3.4028236E38, 3.4028235E38);
    ERROR X0X41: The number '3.4028236E38' is outside the range for the data type REAL.
-</pre>
-            </div>
-            <p>You can store a floating point type in an <code>INTEGER</code> column; the fractional part of the number is truncated. For example:</p>
-            <div class="preWrapperWide"><pre class="Example">
-INSERT INTO mytable(integer_column) values (1.09e0);
+</code></pre>
+
+    </div>
+    <p>You can store a floating point type in an <code>INTEGER</code> column; the
+fractional part of the number is truncated. For example:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>INSERT INTO mytable(integer_column) values (1.09e0);
    1 row inserted/updated/deleted
    SELECT integer_column
    FROM mytable;
 ---------------
    1
-</pre>
-            </div>
-            <p>Integer types can always be placed successfully in approximate numeric values, although with the possible loss of some precision.</p>
-            <p>Integers can be stored in decimals if the <code>DECIMAL</code> precision is large enough for the value. For example:</p>
-            <div class="preWrapperWide"><pre class="Example">
-ij&gt;
+</code></pre>
+
+    </div>
+    <p>Integer types can always be placed successfully in approximate numeric
+values, although with the possible loss of some precision.</p>
+
+    <p>Integers can be stored in decimals if the <code>DECIMAL</code> precision is large
+enough for the value. For example:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>ij&gt;
 insert into mytable (decimal_column) VALUES (55555555556666666666);
    ERROR X0Y21: The number '55555555556666666666' is outside the
-   range of the target DECIMAL/NUMERIC(5,2) datatype.	</pre>
-            </div>
-            <p>An attempt to put an integer value of a larger storage size into a location of a smaller size fails if the value cannot be stored in the smaller-size location. For example:</p>
-            <div class="preWrapperWide"><pre class="Example">
-INSERT INTO mytable (int_column) values 2147483648;
+   range of the target DECIMAL/NUMERIC(5,2) datatype.	
+</code></pre>
+
+    </div>
+    <p>An attempt to put an integer value of a larger storage size into a
+location of a smaller size fails if the value cannot be stored in the
+smaller-size location. For example:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>INSERT INTO mytable (int_column) values 2147483648;
    ERROR 22003: The resulting value is outside the range for the data type INTEGER.
-</pre>
-            </div>
-            <p class="noteNote"> Splice Machine rounds down when truncating trailing digits from a <code>NUMERIC</code> value.</p>
-            <h3 id="Scale" id="Scale">Scale for Decimal Arithmetic</h3>
-            <p>SQL statements can involve arithmetic expressions that use decimal data types of different <em>precisions</em> (the total number of digits, both to the left and to the right of the decimal point) and <em>scales</em> (the number of digits of the fractional component).</p>
-            <p>The precision and scale of the resulting decimal type depend on the precision and scale of the operands.</p>
-            <p>Given an arithmetic expression that involves two decimal operands:</p>
-            <ul>
-                <li><em>lp</em> stands for the precision of the left operand</li>
-                <li><em>rp</em> stands for the precision of the right operand</li>
-                <li><em>ls</em> stands for the scale of the left operand</li>
-                <li><em>rs</em> stands for the scale of the right operand</li>
-            </ul>
-            <p>Use the following formulas to determine the scale of the resulting data type for the following kinds of arithmetical expressions:</p>
-            <table summary="Scale of results from arithmetical expressions">
+</code></pre>
+
+    </div>
+    <p class="noteNote">Splice Machine rounds down when truncating trailing digits from a
+<code>NUMERIC</code> value.</p>
+
+    <h3 id="Scale">Scale for Decimal Arithmetic</h3>
+
+    <p>SQL statements can involve arithmetic expressions that use decimal data
+types of different <em>precisions</em> (the total number of digits, both to the
+left and to the right of the decimal point) and <em>scales</em> (the number of
+digits of the fractional component).</p>
+
+    <p>The precision and scale of the resulting decimal type depend on the
+precision and scale of the operands.</p>
+
+    <p>Given an arithmetic expression that involves two decimal operands:</p>
+
+    <ul>
+      <li><em>lp</em> stands for the precision of the left operand</li>
+      <li><em>rp</em> stands for the precision of the right operand</li>
+      <li><em>ls</em> stands for the scale of the left operand</li>
+      <li><em>rs</em> stands for the scale of the right operand</li>
+    </ul>
+
+    <p>Use the following formulas to determine the scale of the resulting data
+type for the following kinds of arithmetical expressions:</p>
+
+    <table summary="Scale of results from arithmetical expressions">
                 <col />
                 <col />
                 <thead>
@@ -3044,8 +3092,8 @@ INSERT INTO mytable (int_column) values 2147483648;
                         <td><em>31 - lp + ls - rs</em></td>
                     </tr>
                     <tr>
-                        <td><code>AVG()</code><![CDATA[
-                ]]></td>
+                        <td><code>AVG()</code>&lt;![CDATA[
+                ]]&gt;</td>
                         <td><em>max(max(ls, rs), 4)</em></td>
                     </tr>
                     <tr>
@@ -3055,14 +3103,20 @@ INSERT INTO mytable (int_column) values 2147483648;
                     </tr>
                 </tbody>
             </table>
-            <p>For example, the scale of the resulting data type of the following expression is <span class="Example">27</span>:</p>
-            <div class="preWrapper"><pre class="Example">
-11.0/1111.33
+    <p>For example, the scale of the resulting data type of the following
+expression is <span class="Example">27</span>:</p>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>11.0/1111.33
    // 31 - 3 + 1 - 2 = 2
-</pre>
-            </div>
-            <p>Use the following formulas to determine the precision of the resulting data type for the following kinds of arithmetical expressions:</p>
-            <table summary="Precision of numeric operations">
+</code></pre>
+
+    </div>
+    <p>Use the following formulas to determine the precision of the resulting
+data type for the following kinds of arithmetical expressions:</p>
+
+    <table summary="Precision of numeric operations">
                 <col />
                 <col />
                 <thead>
@@ -3094,32 +3148,34 @@ INSERT INTO mytable (int_column) values 2147483648;
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_compatability.html">Data Type Compatability</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_bigint.html"><code>BIGINT</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_blob.html"><code>BLOB</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_boolean.html"><code>BOOLEAN</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_char.html"><code>CHAR</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_clob.html"><code>CLOB</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_double.html"><code>DOUBLE</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_float.html"><code>FLOAT</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_integer.html"><code>INTEGER</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_longvarchar.html"><code>LONG&#160;VARCHAR</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_numeric.html"><code>NUMERIC</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_real.html"><code>REAL</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>&#160;data type</li>
-                <li><code><a href="sqlref_datatypes_text.html">TEXT</a></code>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a>&#160;data type</li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_compatability.html">Data Type Compatability</a></li>
+      <li><a href="sqlref_builtinfcns_bigint.html"><code>BIGINT</code></a> data type</li>
+      <li><a href="sqlref_datatypes_blob.html"><code>BLOB</code></a> data type</li>
+      <li><a href="sqlref_datatypes_boolean.html"><code>BOOLEAN</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_char.html"><code>CHAR</code></a> data type</li>
+      <li><a href="sqlref_datatypes_clob.html"><code>CLOB</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> data type</li>
+      <li><a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_double.html"><code>DOUBLE</code></a> data type</li>
+      <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> data type</li>
+      <li><a href="sqlref_datatypes_float.html"><code>FLOAT</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_integer.html"><code>INTEGER</code></a> data type</li>
+      <li><a href="sqlref_datatypes_longvarchar.html"><code>LONG VARCHAR</code></a> data type</li>
+      <li><a href="sqlref_datatypes_numeric.html"><code>NUMERIC</code></a> data type</li>
+      <li><a href="sqlref_datatypes_real.html"><code>REAL</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a> data type</li>
+      <li><a href="sqlref_datatypes_text.html"><code>TEXT</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> data type</li>
+      <li><a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a> data type</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -3136,7 +3192,7 @@ INSERT INTO mytable (int_column) values 2147483648;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

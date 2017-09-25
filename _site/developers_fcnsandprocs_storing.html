@@ -587,73 +587,151 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Storing and Updating Splice Machine Functions and Stored Procedures</h1>
-            <p>This topic describes how to store and update your compiled Java Jar&#160;(<code>.jar</code>)&#160;files when developing stored procedures and functions for Splice Machine.</p>
-            <p class="noteNote">Jar&#160;files are not versioned:&#160;the <code>GENERATIONID</code>&#160;is always zero. You can view the metadata for the Jar files in the Splice data dictionary by executing this query:&#160;<code>select * from sys.sysfiles;</code></p>
-            <h2>Adding a Jar&#160;File</h2>
-            <p>To add a new Jar&#160;file to your Splice Machine database, use the <span class="AppCommand">splice&gt;</span>&#160;command line interface to store the Jar and then update your <code>CLASSPATH</code>&#160;property so that your code can be found:</p>
-            <p class="noteNote">When Splice Machine is searching for a class to load, it first searches the system <code>CLASSPATH</code>. If the class is not found in the traditional system class path, Splice Machine then searches the class path set as the value of the <code>derby.database.classpath</code> property.</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Load your Jar&#160;file into the Splice Machine database </p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP', 0);</pre>
-                        </div>
-                        <p class="indentLevel1">Please refer to the <code><a href="sqlref_sysprocs_installjar.html">SQLJ.INSTALL_JAR</a></code>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
-                        <ul class="plainFont">
-                            <li>The first argument is the path on your computer to your Jar file.</li>
-                            <li>The second argument is the name for the stored procedure Jar file in your database, in <code>schema.name</code> format.</li>
-                            <li>The third argument is currently unused but required; use <code>0</code> as its value.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p class="topLevel">Update your CLASSPATH</p>
-                        <p class="indentLevel1">You need to update your <code>CLASSPATH</code>&#160;so that Splice Machine can find your code. You can do this by using the <code><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></code>&#160;system procedure to update the <code>derby.database.classpath</code> property:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');</pre>
-                        </div>
-                        <p class="indentLevel1">Note that if you've developed more than one Jar&#160;file, you can update the <code>derby.database.classpath</code> property with multiple Jars by separating the Jar file names with colons when you call the <code><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></code>&#160;system procedure . For example: </p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP:SPLICE.YOUR_EXAMPLE');</pre>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <h2>Updating a Jar&#160;File</h2>
-            <p>You can use the  <span class="AppCommand">splice&gt;</span>&#160;command line interface to replace a Jar file:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Replace the stored Jar&#160;file</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.REPLACE_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP');</pre>
-                        </div>
-                        <p class="indentLevel1">Please refer to the <code><a href="sqlref_sysprocs_replacejar.html">SQLJ.REPLACE_JAR</a></code>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
-                        <ul class="plainFont">
-                            <li>The first argument is the path on your computer to your Jar file.</li>
-                            <li>The second argument is the name for the stored procedure Jar file in your database, in <code>schema.name</code> format.</li>
-                        </ul>
-                    </li>
-                </ol>
-            </div>
-            <h2>Deleting a Jar&#160;File </h2>
-            <p>You can use the  <span class="AppCommand">splice&gt;</span>&#160;command line interface to delete a Jar file:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Delete a stored Jar&#160;file</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.REMOVE_JAR('SPLICE.MY_EXAMPLE_APP', 0);</pre>
-                        </div>
-                        <p class="indentLevel1">Please refer to the <code><a href="sqlref_sysprocs_removejar.html">SQLJ.REMOVE_JAR</a></code>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
-                        <ul class="plainFont">
-                            <li>The first argument is the name for the stored procedure Jar file in your database, in <code>schema.name</code> format.</li>
-                            <li>The second argument is currently unused but required; use <code>0</code> as its value.</li>
-                        </ul>
-                    </li>
-                </ol>
-            </div>
-            <p class="noteNote">The Jar&#160;file operations (the <code><a href="sqlref_sysprocs_removejar.html">SQLJ.REMOVE_JAR</a></code> system procedures) are not executed within transactions, which means that committing or rolling back a transaction will not have any impact on these operations.</p>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="storing-and-updating-splice-machine-functions-and-stored-procedures">Storing and Updating Splice Machine Functions and Stored Procedures</h1>
+
+    <p>This topic describes how to store and update your compiled Java
+Jar (<code>.jar</code>) files when developing stored procedures and functions for
+Splice Machine.</p>
+
+    <p class="noteNote">Jar files are not versioned: the <code>GENERATIONID</code> is always zero. You can
+view the metadata for the Jar files in the Splice data dictionary by
+executing this query: <code>select * from sys.sysfiles;</code></p>
+
+    <h2 id="adding-a-jarfile">Adding a Jar File</h2>
+
+    <p>To add a new Jar file to your Splice Machine database, use the <span class="AppCommand">splice&gt;</span> command line interface to store the
+Jar and then update your <code>CLASSPATH</code> property so that your code can be
+found:</p>
+
+    <p class="noteNote">When Splice Machine is searching for a class to load, it first searches
+the system <code>CLASSPATH</code>. If the class is not found in the traditional
+system class path, Splice Machine then searches the class path set as
+the value of the <code>derby.database.classpath</code> property.</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Load your Jar file into the Splice Machine database</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>splice&gt; CALL SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP', 0);
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">Please refer to the
+<a href="sqlref_sysprocs_installjar.html"><code>SQLJ.INSTALL_JAR</code></a> topic in the
+Splice Machine SQL Reference book for more information about
+using this system procedure. To summarize:</p>
+
+          <ul class="plainFont">
+            <li>The first argument is the path on your computer to your Jar file.</li>
+            <li>The second argument is the name for the stored procedure Jar file
+in your database, in <code>schema.name</code> format.</li>
+            <li>The third argument is currently unused but required; use <code>0</code> as
+its value.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="topLevel">Update your CLASSPATH</p>
+
+          <p class="indentLevel1">You need to update your <code>CLASSPATH</code> so that Splice Machine can find
+your code. You can do this by using the
+<a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> system
+procedure to update the <code>derby.database.classpath</code> property:</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">Note that if you’ve developed more than one Jar file, you can update
+the <code>derby.database.classpath</code> property with multiple Jars by
+separating the Jar file names with colons when you call the
+<a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> system
+procedure . For example:</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP:SPLICE.YOUR_EXAMPLE');
+</code></pre>
+
+          </div>
+        </li>
+      </ol>
+
+    </div>
+    <h2 id="updating-a-jarfile">Updating a Jar File</h2>
+
+    <p>You can use the <span class="AppCommand">splice&gt;</span> command line
+interface to replace a Jar file:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Replace the stored Jar file</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>splice&gt; CALL SQLJ.REPLACE_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP');
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">Please refer to the
+<a href="sqlref_sysprocs_replacejar.html"><code>SQLJ.REPLACE_JAR</code></a> topic in the
+Splice Machine SQL Reference book for more information about
+using this system procedure. To summarize:</p>
+
+          <ul class="plainFont">
+            <li>The first argument is the path on your computer to your Jar file.</li>
+            <li>The second argument is the name for the stored procedure Jar file
+in your database, in <code>schema.name</code> format.</li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+    <h2 id="deleting-a-jarfile">Deleting a Jar File</h2>
+
+    <p>You can use the <span class="AppCommand">splice&gt;</span> command line
+interface to delete a Jar file:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Delete a stored Jar file</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>splice&gt; CALL SQLJ.REMOVE_JAR('SPLICE.MY_EXAMPLE_APP', 0);
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">Please refer to the
+<a href="sqlref_sysprocs_removejar.html"><code>SQLJ.REMOVE_JAR</code></a> topic in the
+Splice Machine SQL Reference book for more information about
+using this system procedure. To summarize:</p>
+
+          <ul class="plainFont">
+            <li>The first argument is the name for the stored procedure Jar file
+in your database, in <code>schema.name</code> format.</li>
+            <li>The second argument is currently unused but required; use <code>0</code> as
+its value.</li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+    <p class="noteNote">The Jar file operations (the
+<a href="sqlref_sysprocs_removejar.html"><code>SQLJ.REMOVE_JAR</code></a> system procedures)
+are not executed within transactions, which means that committing or
+rolling back a transaction will not have any impact on these operations.</p>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -670,7 +748,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

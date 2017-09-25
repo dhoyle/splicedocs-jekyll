@@ -2806,26 +2806,51 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="DataTypes.Numeric">NUMERIC Data Type</h1>
-            <p><code>NUMERIC</code> is a synonym for the <code><a href="sqlref_datatypes_decimal.html">DECIMAL</a></code> data type and
-behaves the same way. The documentation below is a mirror of the documentation for the <code>DECIMAL</code> data type.</p>
-            <p><code>NUMERIC</code> provides an exact numeric in which the precision and scale can be arbitrarily sized. You can specify the <em>precision</em> (the total number of digits, both to the left and the right of the decimal point) and the <em>scale</em> (the number of digits of the fractional component). The amount of storage required depends on the precision you specify.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">NUMERIC [(<em>precision</em> [, <em>scale</em> ])]</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">precision</p>
-                <p class="paramDefnFirst">Must be between <code>1</code> and <code>31</code>. If not specified, the default precision is <code>5</code>.</p>
-                <p class="paramName">scale</p>
-                <p class="paramDefnFirst">Must be less than or equal to the precision. If not specified, the default scale is <code>0</code>.</p>
-            </div>
-            <h2>Usage Notes</h2>
-            <p>Here are several notes about using the <code>NUMERIC</code>&#160;data type:</p>
-            <ul>
-                <li>An attempt to put a numeric value into a <code>NUMERIC</code> is allowed as long as any non-fractional precision is not lost. When truncating trailing digits from a <code>NUMERIC</code> value, Splice Machine rounds down.  For example:
-        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">  -- this cast loses only fractional precision
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="numeric-data-type---datatypesnumeric">NUMERIC Data Type   {#DataTypes.Numeric}</h1>
+
+    <p><code>NUMERIC</code> is a synonym for the
+<a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a> data type and behaves the
+same way. The documentation below is a mirror of the documentation for
+the <code>DECIMAL</code> data type.</p>
+
+    <p><code>NUMERIC</code> provides an exact numeric in which the precision and scale can
+be arbitrarily sized. You can specify the <em>precision</em> (the total number
+of digits, both to the left and the right of the decimal point) and the
+<em>scale</em> (the number of digits of the fractional component). The amount
+of storage required depends on the precision you specify.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>NUMERIC [(precision [, scale ])]
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">precision</p>
+
+      <p class="paramDefnFirst">Must be between <code>1</code> and <code>31</code>. If not specified, the default precision is
+<code>5</code>.</p>
+
+      <p class="paramName">scale</p>
+
+      <p class="paramDefnFirst">Must be less than or equal to the precision. If not specified, the
+default scale is <code>0</code>.</p>
+
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Here are several notes about using the <code>NUMERIC</code> data type:</p>
+
+    <ul>
+      <li>An attempt to put a numeric value into a <code>NUMERIC</code> is allowed as long
+as any non-fractional precision is not lost. When truncating trailing
+digits from a <code>NUMERIC</code> value, Splice Machine rounds down. For
+example:
+        <div class="preWrapperWide">
+          <pre class="Example"><code>  -- this cast loses only fractional precision
 values cast (1.798765 AS numeric(5,2));
 1
 --------
@@ -2833,24 +2858,46 @@ values cast (1.798765 AS numeric(5,2));
 	-- this cast does not fit:
 values cast (1798765 AS numeric(5,2));
 ERROR 22003: The resulting value is outside the range for the data type DECIMAL/NUMERIC(5,2).
-</pre></div></li>
-                <li>When mixed with other data types in expressions, the resulting data type follows the rules shown in <a href="sqlref_datatypes_numerictypes.html#StoringValues">Storing values of one numeric data type in columns of another numeric data type</a>. </li>
-                <li>When two numeric values are mixed in an expression, the scale and precision of the resulting value follow the rules shown in <a href="sqlref_datatypes_numerictypes.html#Scale">Scale for decimal arithmetic</a>.</li>
-                <li>Integer constants too big for <code>BIGINT</code> are made <code>NUMERIC</code> constants.</li>
-            </ul>
-            <h2>Corresponding Compile-time Java Type</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">java.math.BigDecimal</pre>
-            </div>
-            <h2>JDBC Metadata Type (java.sql.Types)</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">NUMERIC</pre>
-            </div>
-            <h2>Examples</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">
-VALUES 123.456;
-VALUES 0.001;</pre>
-            </div>
+</code></pre>
+
         </div>
-	</section>
+      </li>
+      <li>When mixed with other data types in expressions, the resulting data
+type follows the rules shown in <a href="sqlref_datatypes_numerictypes.html#StoringValues">Storing values of one numeric data
+type in columns of another numeric data
+type</a>.</li>
+      <li>When two numeric values are mixed in an expression, the scale and
+precision of the resulting value follow the rules shown in <a href="sqlref_datatypes_numerictypes.html#Scale">Scale for
+decimal arithmetic</a>.</li>
+      <li>Integer constants too big for <code>BIGINT</code> are made <code>NUMERIC</code> constants.</li>
+    </ul>
+
+    <h2 id="corresponding-compile-time-java-type">Corresponding Compile-time Java Type</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>java.math.BigDecimal
+</code></pre>
+
+    </div>
+    <h2 id="jdbc-metadata-type-javasqltypes">JDBC Metadata Type (java.sql.Types)</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>NUMERIC
+</code></pre>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>VALUES 123.456;
+VALUES 0.001;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2867,7 +2914,7 @@ VALUES 0.001;</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

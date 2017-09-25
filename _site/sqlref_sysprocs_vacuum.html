@@ -2806,27 +2806,51 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInSysProcs.Vacuum">SYSCS_UTIL.VACUUM</h1>
-            <p>The <code>SYSCS_UTIL.VACUUM</code> system procedure performs the following clean-up operations:</p>
-            <ol>
-                <li>Waits for all previous transactions to complete; at this point, it must be all. If it waits past a certain point, the call terminates, and you will need to run it again.</li>
-                <li>Gets all the conglomerates that are seen in <code>sys.sysconglomerates</code> (e.g. <span class="AppCommand">select conglomeratenumber from sys.sysconglomerates</span>).</li>
-                <li>Gets a list of all of the HBase tables.</li>
-                <li>If an HBase table is not in the conglomerates list and is not a system table (<code>conglomeratenumber &lt; 1100 or 1168</code>), then it is deleted.<p>If this does not occur, check the <code>splice.log</code>.</p></li>
-            </ol>
-            <p>You are ready to go when you see the <span class="AppCommand">Ready to accept connections</span> message.</p>
-            <p>If you see an exception, but do not see the <span class="AppCommand">Ready to accept connections</span> message, please retry the command.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.VACUUM()</pre>
-            </div>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.VACUUM();
-Ready to accept connections.</pre>
-            </div>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilvacuum---builtinsysprocsvacuum">SYSCS_UTIL.VACUUM   {#BuiltInSysProcs.Vacuum}</h1>
+
+    <p>The <code>SYSCS_UTIL.VACUUM</code> system procedure performs the following clean-up
+operations:</p>
+
+    <ol>
+      <li>Waits for all previous transactions to complete; at this point, it
+must be all. If it waits past a certain point, the call terminates,
+and you will need to run it again.</li>
+      <li>Gets all the conglomerates that are seen in <code>sys.sysconglomerates</code>
+(e.g. <span class="AppCommand">select conglomeratenumber from
+sys.sysconglomerates</span>).</li>
+      <li>Gets a list of all of the HBase tables.</li>
+      <li>If an HBase table is not in the conglomerates list and is not a
+system table (<code>conglomeratenumber &lt; 1100 or 1168</code>), then it is
+deleted.
+If this does not occur, check the <code>splice.log</code>.</li>
+    </ol>
+
+    <p>You are ready to go when you see the <span class="AppCommand">Ready to
+accept connections</span> message.</p>
+
+    <p>If you see an exception, but do not see the <span class="AppCommand">Ready to accept connections</span> message, please
+retry the command.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.VACUUM()
+</code></pre>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.VACUUM();
+Ready to accept connections.
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2843,7 +2867,7 @@ Ready to accept connections.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2806,51 +2806,71 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Statements.DropProcedure">DROP PROCEDURE</h1>
-            <p>The <code>DROP&#160;PROCEDURE</code>&#160;statement drops a procedure from your database. Procedures are added to the database with the <code><a href="sqlref_statements_createprocedure.html">CREATE&#160;PROCEDURE</a></code>&#160;statement.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">DROP PROCEDURE&#160;<em>procedure-name</em></pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">procedure-Name</p>
-                <p class="paramDefnFirst">The name of the procedure that you want to drop from your database.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>Use this statement to drop a statement from your database. It is valid only if there is exactly one procedure instance with the <em>procedure-name</em> in the schema. The specified procedure can have any number of parameters defined for it.</p>
-            <p>An error will occur in any of the following circumstances:</p>
-            <ul>
-                <li>If no procedure with the indicated name exists in the named or implied schema
-			(the error is SQLSTATE 42704)</li>
-                <li>If there is more than one specific instance of the procedure in the named or
-			implied schema</li>
-                <li>If you try to drop a user-defined procedure that is invoked in the
-			<em><a href="sqlref_statements_generationclause.html">generation-clause</a></em> of a generated column</li>
-                <li>If you try to drop a user-defined procedure that is invoked in a view</li>
-            </ul>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP PROCEDURE&#160;SALES.TOTAL_REVENUE;
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="drop-procedure---statementsdropprocedure">DROP PROCEDURE   {#Statements.DropProcedure}</h1>
+
+    <p>The <code>DROP PROCEDURE</code> statement drops a procedure from your database.
+Procedures are added to the database with the
+<a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a> statement.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>DROP PROCEDURE procedure-name
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">procedure-Name</p>
+
+      <p class="paramDefnFirst">The name of the procedure that you want to drop from your database.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>Use this statement to drop a statement from your database. It is valid
+only if there is exactly one procedure instance with the
+<em>procedure-name</em> in the schema. The specified procedure can have any
+number of parameters defined for it.</p>
+
+    <p>An error will occur in any of the following circumstances:</p>
+
+    <ul>
+      <li>If no procedure with the indicated name exists in the named or implied
+schema (the error is SQLSTATE 42704)</li>
+      <li>If there is more than one specific instance of the procedure in the
+named or implied schema</li>
+      <li>If you try to drop a user-defined procedure that is invoked in the
+<em><a href="sqlref_statements_generationclause.html">generation-clause</a></em> of a
+generated column</li>
+      <li>If you try to drop a user-defined procedure that is invoked in a view</li>
+    </ul>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; DROP PROCEDURE SALES.TOTAL_REVENUE;
 0 rows inserted/updated/deleted
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sqlargmatching.html">Argument matching</a>
-                </li>
-                <li><a href="sqlref_statements_createprocedure.html"><code>CREATE_PROCEDURE</code></a> statement</li>
-                <li><a href="sqlref_builtinfcns_currentuser.html"><code>CURRENT_USER</code></a> function</li>
-                <li><a href="sqlref_datatypes_numerictypes.html">Data Types</a>
-                </li>
-                <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a>
-                </li>
-                <li><a href="sqlref_identifiers_intro.html">SQL Identifier</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_sessionuser.html"><code>SESSION_USER</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_user.html"><code>USER</code></a> function</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sqlargmatching.html">Argument matching</a></li>
+      <li><a href="sqlref_statements_createprocedure.html"><code>CREATE_PROCEDURE</code></a> statement</li>
+      <li><a href="sqlref_builtinfcns_currentuser.html"><code>CURRENT_USER</code></a> function</li>
+      <li><a href="sqlref_datatypes_numerictypes.html">Data Types</a></li>
+      <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a></li>
+      <li><a href="sqlref_identifiers_intro.html">SQL Identifier</a></li>
+      <li><a href="sqlref_builtinfcns_sessionuser.html"><code>SESSION_USER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_user.html"><code>USER</code></a> function</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2867,7 +2887,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

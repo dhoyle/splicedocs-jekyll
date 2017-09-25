@@ -2806,67 +2806,95 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.LnOrLog">LN or UPPER</h1>
-            <p><code>UCASE</code> or <code>UPPER</code> returns a string in which all alphabetic characters in the input character expression have been converted to uppercase.</p>
-            <p class="noteNote"><code>UPPER</code> and <code>UCASE</code> follow the database locale.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">UCASE or UPPER ( <em>CharacterExpression</em> ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">CharacterExpression</p>
-                <p class="paramDefnFirst">A <a href="sqlref_datatypes_longvarchar.html"><code>LONG&#160;VARCHAR</code></a> data type, or any built-in type that is implicitly converted to a string (but not a bit expression).</p>
-            </div>
-            <h2>Results</h2>
-            <p>The data type of the result is as follows:</p>
-            <ul>
-                <li>If the <em>CharacterExpression</em> evaluates to <code>NULL</code>, this function returns <code>NULL</code>. </li>
-                <li>If the <em>CharacterExpression</em> is of type <a href="sqlref_builtinfcns_char.html"><code>CHAR</code></a>.</li>
-                <li>If the <em>CharacterExpression</em> is of type <a href="sqlref_datatypes_longvarchar.html"><code>LONG&#160;VARCHAR</code></a>.</li>
-                <li>Otherwise, the return type is <a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a>.</li>
-            </ul>
-            <p>The length and maximum length of the returned value are the same as the length and maximum length of the parameter.</p>
-            <h2>Example</h2>
-            <p>To return the names of players, use the following clause:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">
-splice&gt; SELECT UCASE(DisplayName)
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="ln-or-upper---builtinfcnslnorlog">LN or UPPER   {#BuiltInFcns.LnOrLog}</h1>
+
+    <p><code>UCASE</code> or <code>UPPER</code> returns a string in which all alphabetic characters
+in the input character expression have been converted to uppercase.</p>
+
+    <p class="noteNote"><code>UPPER</code> and <code>UCASE</code> follow the database locale.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>UCASE or UPPER ( CharacterExpression ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">CharacterExpression</p>
+
+      <p class="paramDefnFirst">A <a href="sqlref_datatypes_longvarchar.html"><code>LONG VARCHAR</code></a> data type, or any
+built-in type that is implicitly converted to a string (but not a bit
+expression).</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The data type of the result is as follows:</p>
+
+    <ul>
+      <li>If the <em>CharacterExpression</em> evaluates to <code>NULL</code>, this function
+returns <code>NULL</code>.</li>
+      <li>If the <em>CharacterExpression</em> is of type
+<a href="sqlref_builtinfcns_char.html"><code>CHAR</code></a>.</li>
+      <li>If the <em>CharacterExpression</em> is of type
+<a href="sqlref_datatypes_longvarchar.html"><code>LONG VARCHAR</code></a>.</li>
+      <li>Otherwise, the return type is
+<a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a>.</li>
+    </ul>
+
+    <p>The length and maximum length of the returned value are the same as the
+length and maximum length of the parameter.</p>
+
+    <h2 id="example">Example</h2>
+
+    <p>To return the names of players, use the following clause:</p>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>splice&gt; SELECT UCASE(DisplayName)
    FROM Players
    WHERE ID &lt; 11;
 1
 ------------------------
-BUDDY&#160;PAINTER
-BILL&#160;BOPPER
-JOHN&#160;PURSER
-BOB&#160;CRANKER&#160;
-MITCH&#160;DUFFER&#160;
-NORMAN&#160;AIKMAN&#160;
-ALEX&#160;PARAMOUR&#160;
-HARRY&#160;PENNELLO
-GREG&#160;BROWN
-JASON&#160;MINMAN
+BUDDY PAINTER
+BILL BOPPER
+JOHN PURSER
+BOB CRANKER 
+MITCH DUFFER 
+NORMAN AIKMAN 
+ALEX PARAMOUR 
+HARRY PENNELLO
+GREG BROWN
+JASON MINMAN
 
-10 rows selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
-                <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_instr.html"><code>INSTR</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_length.html"><code>LENGTH</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_locate.html"><code>LOCATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a>&#160;function</li>
-                <li><code><a href="sqlref_builtinfcns_regexplike.html">REGEX_LIKE</a></code>&#160;operator</li>
-                <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_trim.html"><code>TRIM</code></a>&#160;function</li>
-            </ul>
-        </div>
-	</section>
+10 rows selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
+      <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_instr.html"><code>INSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_length.html"><code>LENGTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_locate.html"><code>LOCATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_regexplike.html"><code>REGEX_LIKE</code></a> operator</li>
+      <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_trim.html"><code>TRIM</code></a> function</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2883,7 +2911,7 @@ JASON&#160;MINMAN
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

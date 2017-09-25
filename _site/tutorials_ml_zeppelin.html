@@ -510,43 +510,69 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Connecting with Apache Zeppelin</h1>
-<p class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="connecting-with-apache-zeppelin">Connecting with Apache Zeppelin</h1>
 
-            <p>This tutorial walks you through connecting your on-premise Splice Machine database with Apache Zeppelin, which is a web-based notebook project currently in incubation at Apache. In this tutorial, you'll learn how to use SQL&#160;to query your Splice Machine database from Zeppelin.</p>
-            <div class="noteNote">
-                <p>Zeppelin is already integrated into the Splice Machine Database-as-Service product; please see our <a href="dbaas_zep_intro.html"><em>Using Zeppelin</em></a> documentation for more information.</p>
-                <p>See <a href="https://zeppelin.apache.org/"  target="_blank" title="Link to the main Apache Zeppelin web site." alt="Link to the main Apache Zeppelin web site.">https://zeppelin.apache.org/</a> to learn more about Apache Zeppelin.</p>
-            </div>
+    <p class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
-            <div>
-                <p>You can complete this tutorial by <a href="#Watch" class="selected">watching a short video</a>, or by <a href="#Written" class="selected">following the written directions</a> below.</p>
-                <h2 id="Watch">Watch the Video</h2>
-                <p>The following video shows you how to connect Splice Machine with Apache Zeppelin..</p>
-                <div class="centered">
-                    <p><iframe class="youtube-player_0" src="https://www.youtube.com/embed/h0KWRghLziI?" frameborder="0" allowfullscreen="1" width="560px" height="315px"></iframe>
-                    </p>
-                </div>
-            </div>
+    <p>This tutorial walks you through connecting your on-premise Splice
+Machine database with Apache Zeppelin, which is a web-based notebook
+project currently in incubation at Apache. In this tutorial, you’ll
+learn how to use SQL to query your Splice Machine database from
+Zeppelin.</p>
 
-            <div>
-                <h2 id="Written">Written Walk Through</h2>
-                <p>This section walks you through using SQL&#160;to query a Splice Machine database with Apache Zeppelin..</p>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>
-                            <p class="topLevel">Install Zeppelin:</p>
-                            <p class="indentLevel1">If you're running on AWS, you can install the Zeppelin sandbox application; if you're using an on-premise database, we recommend following the <a href="http://www.mapr.com/blog/building-apache-zeppelin-mapr-using-spark-under-yarn"  target="_blank" title="Link to instructions for installing Zeppelin on MapR" alt="Link to instructions for installing Zeppelin on MapR">instructions in this video.</a></p>
-                        </li>
-                        <li>
-                            <p class="topLevel">Create a new interpreter to run with Splice:</p>
-                            <ol class="LowerAlphaPlainFont">
-                                <li>Select the <span class="ConsoleLink">Interpreter</span> tab in Zeppelin.</li>
-                                <li>
-                                    <p>Click the <span class="ConsoleLink">Create</span> button (in the upper right of the Zeppelin window) to create a new interpreter. Fill in the property fields as follows:</p>
-                                    <table>
+    <div class="noteNote">
+      <p>Zeppelin is already integrated into the Splice Machine
+Database-as-Service product; please see our <a href="dbaas_zep_intro.html"><em>Using
+Zeppelin</em></a> documentation for more information.</p>
+
+      <p>See <a href="https://zeppelin.apache.org/" title="Link to the main Apache Zeppelin web site." target="_blank">https://zeppelin.apache.org/</a> to learn more
+about Apache Zeppelin.</p>
+
+    </div>
+
+    <div>
+      <p>You can complete this tutorial by <a href="#Watch" class="selected">watching a short video</a>, or by <a href="#Written" class="selected">following the written directions</a> below.</p>
+
+      <h2 id="Watch">Watch the Video</h2>
+
+      <p>The following video shows you how to connect Splice Machine with Apache
+Zeppelin..</p>
+
+      <div class="centered">
+        <iframe class="youtube-player_0" src="https://www.youtube.com/embed/h0KWRghLziI?" frameborder="0" allowfullscreen="1" width="560px" height="315px"></iframe>
+
+      </div>
+    </div>
+
+    <div>
+      <h2 id="Written">Written Walk Through</h2>
+
+      <p>This section walks you through using SQL to query a Splice Machine
+database with Apache Zeppelin..</p>
+
+      <div class="opsStepsList">
+        <ol class="boldFont">
+          <li>
+            <p class="topLevel">Install Zeppelin:</p>
+
+            <p class="indentLevel1">If you’re running on AWS, you can install the Zeppelin sandbox
+application; if you’re using an on-premise database, we recommend
+following the <a href="http://www.mapr.com/blog/building-apache-zeppelin-mapr-using-spark-under-yarn" title="Link to instructions for installing Zeppelin on MapR" target="_blank">instructions in this video.</a></p>
+          </li>
+          <li>
+            <p class="topLevel">Create a new interpreter to run with Splice:</p>
+
+            <ol class="LowerAlphaPlainFont">
+              <li>Select the <span class="ConsoleLink">Interpreter</span> tab in
+Zeppelin.</li>
+              <li>
+                <p>Click the <span class="ConsoleLink">Create</span> button (in the
+upper right of the Zeppelin window) to create a new interpreter.
+Fill in the property fields as follows:</p>
+
+                <table>
                                         <col />
                                         <col />
                                         <tbody>
@@ -561,7 +587,7 @@
                                             <tr>
                                                 <td><em>default.url</em></td>
                                                 <td>
-                                                    <p><code>jdbc:splice:/<span class="HighlightedCode">myServer</code>:1527/splicedb</span>
+                                                    <p><code>jdbc:splice:/<span class="HighlightedCode">myServer</span>:1527/splicedb</code>
                                                     </p>
                                                     <p>(replace <span class="HighlightedCode">myServer</span> with the name of the server that you're using)</p>
                                                 </td>
@@ -592,60 +618,103 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </li>
-                                <li>Click the <span class="ConsoleLink">Save</span> button to save your interpreter definition.</li>
-                            </ol>
-                            <p class="indentLevel1">&#160;</p>
-                        </li>
-                        <li>
-                            <p class="topLevel">Create a note:</p>
-                            <p class="indentLevel1">Select the <span class="ConsoleLink">Notebook</span> tab in Zeppelin, and then click <span class="ConsoleLink">+&#160;Create new note</span>.</p>
-                            <ol class="LowerAlphaPlainFont">
-                                <li>Specify a name and click the <span class="ConsoleLink">Create Note</span> button.</li>
-                                <li>
-                                    <p>Enable interpreters for the note. In this case, we move the Splice&#160;Machine interpreter to the top of the list, then click the Save button to make it the default interpreter:</p>
-                                    <p>
-                                        <img src="images/ZepInterpreter1_412x213.png" style="width: 412;height: 213;" />
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>Create a Zeppelin paragraph (a jdbc action) that calls a stored procedure. The procedure we're calling in this tutorial is named MOVIELENS; it is used to analyze data in a table. In this case, we're using this procedure to report statistics on the Age column in our movie watchers database. This Zeppelin paragraph looks like this:</p><pre class="Example">%jdbc<br />call MOVIELENS.ContinuousFeatureReport('movielens.user_demographics');</pre>
-                                    <p>The <span class="Example">%jdbc</span> specifies that we're creating a paragraph that uses a JDBC&#160;interpreter; since we've made the SpliceMachine driver our default JDBC&#160;connector, it will be used.</p>
-                                </li>
-                                <li>
-                                    <p>The results of this call look like this:</p>
-                                    <p>
-                                        <img src="images/ZepAge1.png" title="Initial results of running the movielens paragraph" class="nestedTightSpacing" />
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>We can also create a new paragraph that performs additional analysis; you'll see that whenever you run a paragraph in Zeppelin, it automatically leaves room at the bottom to create another paragraph.</p><pre class="Example">%jdbc<br />select count(1)&#160;num_age, age from MOVIELENS.USER_DEMOGRAPHICS group by age;</pre>
-                                    <p>The results of this paragraph:</p>
-                                    <p>
-                                        <img src="images/ZepPgf2.png" title="Age analysis results" class="nestedTightSpacing" />
-                                    </p>
-                                </li>
-                            </ol>
-                        <li>
-                            <p class="topLevel">Change how you view your data</p>
-                            <p class="indentLevel1">To get a better sense of what you can do with Zeppelin, we'll modify how we visualize this data:</p>
-                            <ol class="LowerAlphaPlainFont">
-                                <li>Click the rightmost settings <img src="images/ZepSettings.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> icon, then click <span class="ConsoleLink">settings</span>.</li>
-                                <li>Move age to the xAxis, and the number of people of that age to the yAxis.</li>
-                                <li>
-                                    <p>You'll now see the distribution of ages:</p>
-                                    <p>
-                                        <img src="images/ZepScatter.png" class="nestedTightSpacing" />
-                                    </p>
-                                </li>
-                                <li>Click the <img src="images/ZepGraphs.png" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top: 0px;margin-bottom: 0px;padding-top: 4px;" /> graphs button to select other data visualizations.</li>
-                            </ol>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-	</section>
+              </li>
+              <li>Click the <span class="ConsoleLink">Save</span> button to save
+your interpreter definition.</li>
+            </ol>
+
+            <p class="indentLevel1"> </p>
+          </li>
+          <li>
+            <p class="topLevel">Create a note:</p>
+
+            <p class="indentLevel1">Select the <span class="ConsoleLink">Notebook</span> tab in
+Zeppelin, and then click <span class="ConsoleLink">+ Create new
+note</span>.</p>
+
+            <ol class="LowerAlphaPlainFont">
+              <li>Specify a name and click the <span class="ConsoleLink">Create
+Note</span> button.</li>
+              <li>
+                <p>Enable interpreters for the note. In this case, we move the
+Splice Machine interpreter to the top of the list, then click
+the Save button to make it the default interpreter:</p>
+
+                <p><img src="images/ZepInterpreter1_412x213.png" alt="" style="width:
+412;height: 213;" /></p>
+              </li>
+              <li>
+                <p>Create a Zeppelin paragraph (a jdbc action) that calls a stored
+procedure. The procedure we’re calling in this tutorial is named
+MOVIELENS; it is used to analyze data in a table. In this case,
+we’re using this procedure to report statistics on the Age
+column in our movie watchers database. This Zeppelin paragraph
+looks like this:</p>
+
+                <pre class="Example"><code>%jdbccall MOVIELENS.ContinuousFeatureReport('movielens.user_demographics');
+</code></pre>
+
+                <p>The <span class="Example">%jdbc</span> specifies that we’re
+creating a paragraph that uses a JDBC interpreter; since we’ve
+made the SpliceMachine driver our default JDBC connector, it
+will be used.</p>
+              </li>
+              <li>
+                <p>The results of this call look like this:</p>
+
+                <p><img src="images/ZepAge1.png" alt="" title="Initial results of running the movielens
+paragraph" class="nestedTightSpacing" /></p>
+              </li>
+              <li>
+                <p>We can also create a new paragraph that performs additional
+analysis; you’ll see that whenever you run a paragraph in
+Zeppelin, it automatically leaves room at the bottom to create
+another paragraph.</p>
+
+                <pre class="Example"><code>%jdbcselect count(1) num_age, age from MOVIELENS.USER_DEMOGRAPHICS group by age;
+</code></pre>
+
+                <p>The results of this paragraph:</p>
+
+                <p><img src="images/ZepPgf2.png" alt="" title="Age analysis results" class="nestedTightSpacing" /></p>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p class="topLevel">Change how you view your data</p>
+
+            <p class="indentLevel1">To get a better sense of what you can do with Zeppelin, we’ll modify
+how we visualize this data:</p>
+
+            <ol class="LowerAlphaPlainFont">
+              <li>
+                <p>Click the rightmost settings icon, then click <span class="ConsoleLink">settings</span>.</p>
+
+                <p><img src="images/ZepSettings.png" alt="" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top:
+0px;margin-bottom: 0px;padding-top: 4px;" /></p>
+              </li>
+              <li>Move age to the xAxis, and the number of people of that age to
+the yAxis.</li>
+              <li>
+                <p>You’ll now see the distribution of ages:</p>
+
+                <p><img src="images/ZepScatter.png" alt="" class="nestedTightSpacing" /></p>
+              </li>
+              <li>
+                <p>Click the graphs button to select other data visualizations:</p>
+
+                <p><img src="images/ZepGraphs.png" alt="" class="nestedTightSpacing" style="margin-left: 0px;margin-right: 0px;margin-top:
+0px;margin-bottom: 0px;padding-top: 4px;" /></p>
+              </li>
+            </ol>
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -662,7 +731,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

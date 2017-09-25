@@ -2806,22 +2806,36 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Clauses.Where">WHERE</h1>
-            <p>The <code>WHERE</code>&#160;clause is an optional part of a <code><a href="sqlref_statements_update.html">UPDATE</a></code>&#160;statement.</p>
-            <p>The <code>WHERE</code> clause lets you select rows based on a Boolean expression. Only
-			rows for which the expression evaluates to <code>TRUE</code> are selected to return or operate upon (delete or update).</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">WHERE <em><a href="sqlref_expressions_boolean.html">BooleanExpression</a></em></pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">BooleanExpression</p>
-                <p class="paramDefnFirst">A Boolean expression. For more information, see the <a href="sqlref_expressions_boolean.html">Boolean Expressions</a> topic.</p>
-            </div>
-            <h2>Example</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-   -- find the flights where no business-class seats have been booked
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="where---clauseswhere">WHERE   {#Clauses.Where}</h1>
+
+    <p>The <code>WHERE</code> clause is an optional part of a
+<a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement.</p>
+
+    <p>The <code>WHERE</code> clause lets you select rows based on a Boolean expression.
+Only rows for which the expression evaluates to <code>TRUE</code> are selected to
+return or operate upon (delete or update).</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>WHERE BooleanExpression
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">BooleanExpression</p>
+
+      <p class="paramDefnFirst">A Boolean expression. For more information, see the <a href="sqlref_expressions_boolean.html">Boolean
+Expressions</a> topic.</p>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>   -- find the flights where no business-class seats have been booked
 SELECT *
   FROM FlightAvailability
   WHERE business_seats_taken IS NULL
@@ -2851,17 +2865,22 @@ SELECT THIS_EMP.EMPNO, THIS_EMP.SALARY, DINFO.AVGSALARY, DINFO.EMPCOUNT
         GROUP BY OTHERS.WORKDEPT
       )AS DINFO
   WHERE THIS_EMP.JOB = 'SALESREP'
-    AND THIS_EMP.WORKDEPT = DINFO.DEPTNO;</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_expressions_select.html"><code>Select</code></a> expressions</li>
-                <li><a href="sqlref_statements_delete.html"><code>DELETE</code></a>&#160;statement</li>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;statement</li>
-                <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a>&#160;statement</li>
-            </ul>
-        </div>
-	</section>
+    AND THIS_EMP.WORKDEPT = DINFO.DEPTNO;
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_expressions_select.html"><code>Select</code></a> expressions</li>
+      <li><a href="sqlref_statements_delete.html"><code>DELETE</code></a> statement</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
+      <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2878,7 +2897,7 @@ SELECT THIS_EMP.EMPNO, THIS_EMP.SALARY, DINFO.AVGSALARY, DINFO.EMPCOUNT
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2806,60 +2806,98 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="DataTypes.Time">TIME</h1>
-            <p>The <code>TIME</code> data type provides for storage of a time-of-day value.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">TIME</pre>
-            </div>
-            <h2>Corresponding Compile-time Java Type</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">java.sql.Time</pre>
-            </div>
-            <h2>JDBC Metadata Type (java.sql.Types)</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">TIME</pre>
-            </div>
-            <h2>Usage Notes</h2>
-            <p>Here are several usage notes for the <code>TIME</code>&#160;data type:</p>
-            <ul>
-                <li><a href="sqlref_builtinfcns_timestamp.html">timestamps</a> cannot be mixed with one another in expressions except with a <code>CAST</code>.</li>
-                <li>Any value that is recognized by the <em>java.sql.Time</em> method is permitted in a column of the corresponding SQL date/time data type. Splice Machine supports the following formats for <code>TIME</code>:
-        <div class="fcnWrapperWide"><pre class="FcnSyntax">hh:mm[:ss]
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="time---datatypestime">TIME   {#DataTypes.Time}</h1>
+
+    <p>The <code>TIME</code> data type provides for storage of a time-of-day value.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TIME
+</code></pre>
+
+    </div>
+    <h2 id="corresponding-compile-time-java-type">Corresponding Compile-time Java Type</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>java.sql.Time
+</code></pre>
+
+    </div>
+    <h2 id="jdbc-metadata-type-javasqltypes">JDBC Metadata Type (java.sql.Types)</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TIME
+</code></pre>
+
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Here are several usage notes for the <code>TIME</code> data type:</p>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_timestamp.html">timestamps</a> cannot be mixed with
+one another in expressions except with a <code>CAST</code>.</li>
+      <li>Any value that is recognized by the <em>java.sql.Time</em> method is
+permitted in a column of the corresponding SQL date/time data type.
+Splice Machine supports the following formats for <code>TIME</code>:
+        <div class="fcnWrapperWide">
+          <pre class="FcnSyntax"><code>hh:mm[:ss]
 hh.mm[.ss]
-hh[:mm] {AM | PM}</pre></div><p>The first of the three formats above is the <em>java.sql.Time</em> format.</p></li>
-                <li>Hours may have one or two digits. </li>
-                <li>Minutes and seconds, if present, must have two digits.</li>
-                <li>Splice Machine also accepts strings in the locale specific date-time format, using the locale of
-the database server. If there is an ambiguity, the built-in formats above
-take precedence.</li>
-            </ul>
-            <p>Please see <em><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></em> in the <em>Developer's Guide</em> for information about using simple arithmetic with <code>TIME</code>&#160;values.</p>
-            <h2>Examples</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">VALUES TIME('15:09:02');
-VALUES '15:09:02';</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
-                <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the <em>Developer's Guide</em></li>
-            </ul>
+hh[:mm] {AM | PM}
+</code></pre>
+
         </div>
-	</section>
+
+        <p>The first of the three formats above is the <em>java.sql.Time</em> format.</p>
+      </li>
+      <li>Hours may have one or two digits.</li>
+      <li>Minutes and seconds, if present, must have two digits.</li>
+      <li>Splice Machine also accepts strings in the locale specific date-time
+format, using the locale of the database server. If there is an
+ambiguity, the built-in formats above take precedence.</li>
+    </ul>
+
+    <p>Please see <em><a href="developers_fundamentals_dates.html">Working With Date and Time
+Values</a></em> in the <em>Developer’s Guide</em>
+for information about using simple arithmetic with <code>TIME</code> values.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>VALUES TIME('15:09:02');
+VALUES '15:09:02';
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
+      <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2876,7 +2914,7 @@ VALUES '15:09:02';</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

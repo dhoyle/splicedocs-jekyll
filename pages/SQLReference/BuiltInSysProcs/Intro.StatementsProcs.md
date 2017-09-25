@@ -1,0 +1,58 @@
+---
+title: Statements and Stored Proc System Procedures and Functions in Splice Machine
+summary: A table that summarizes the function of each available Splice Machine built-in system procedure for managing statements and stored procedures.
+keywords: stored procedures
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_statementsintro.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
+# Statement and Stored Procedure System Procedures and Functions
+
+These are the system procedures and functions for working with executing
+statements and stored procedures:
+{: .body}
+
+<table summary="Summary of Splice Machine system procedures and functions for working with stored procedures and functions">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_emptyglobalcache.html">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</a>
+                        </td>
+                        <td>Removes as many compiled statements (plans) as possible from the database-wide statement cache (across all region servers).</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_emptycache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</a>
+                        </td>
+                        <td>Removes as many compiled statements (plans) as possible from the database statement cache on your current region server.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_invalidatestoredstmts.html">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</a>
+                        </td>
+                        <td>Invalidates all system prepared statements and forces the query optimizer to create new execution plans.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_updateallsysprocs.html">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</a>
+                        </td>
+                        <td>Updates the signatures of all of the system procedures in a database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_updatesysproc.html">SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE</a>
+                        </td>
+                        <td>Updates the stored declaration of a specific system procedure in the data dictionary.</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+</section>
+

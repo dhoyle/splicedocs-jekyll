@@ -2806,24 +2806,39 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>MONTHNAME</h1>
-            <p>The <code>MONTHNAME</code>&#160;function returns a character string containing month name from a date expression. </p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">MONTHNAME( dateExpr );</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">dateExpr
-            </p>
-                <p class="paramDefnFirst">The date-time expression from which you wish to extract information.
-            </p>
-            </div>
-            <h2>Results</h2>
-            <p>The returned month name is specific to the data source location; for English, the returned name will be in the range <code>January</code> through <code>December</code>, or <code>Jan.</code> through <code>Dec.</code> For a data source that uses German, the returned name will be in the range <code>Januar</code> through <code>Dezember</code>.</p>
-            <h2>Examples</h2>
-            <p class="body">The following query displays the birth month of players:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, MONTHNAME(BirthDate) "Month"
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="monthname">MONTHNAME</h1>
+
+    <p>The <code>MONTHNAME</code> function returns a character string containing month
+name from a date expression.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>MONTHNAME( dateExpr );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">dateExpr</p>
+
+      <p class="paramDefnFirst">The date-time expression from which you wish to extract information.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The returned month name is specific to the data source location; for
+English, the returned name will be in the range <code>January</code> through
+<code>December</code>, or <code>Jan.</code> through <code>Dec.</code> For a data source that uses German,
+the returned name will be in the range <code>Januar</code> through <code>Dezember</code>.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p class="body">The following query displays the birth month of players:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT DisplayName, MONTHNAME(BirthDate) "Month"
    FROM Players
    WHERE ID&lt;20
    ORDER BY MONTH(BirthDate);
@@ -2850,30 +2865,35 @@ Henry Socomy            |November
 Greg Brown              |December
 
 19 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
-                <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the <em>Developer's Guide</em></li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
+      <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2890,7 +2910,7 @@ Greg Brown              |December
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

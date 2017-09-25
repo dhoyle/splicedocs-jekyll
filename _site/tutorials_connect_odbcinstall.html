@@ -510,231 +510,235 @@
 
     
 
-  ﻿
+  <p>\﻿</p>
 
+<p>﻿</p>
 
+<p>﻿</p>
 
+<p>﻿</p>
 
+<section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="using-the-splice-machine-odbcdriver">Using the Splice Machine ODBC Driver</h1>
 
+    <p>This topic describes how to configure and use the Splice Machine
+ODBC driver, which you can use to connect with other databases and
+business tools that need to access your database.</p>
 
+    <p>﻿        &lt;p class="noteImportant"&gt;You <strong>must</strong> use the <em>Splice Machine</em> ODBC driver; other drivers will not work correctly.&lt;/p&gt;</p>
+
+    <p>This topic describes how to install and configure the Splice Machine
+ODBC driver for these operating systems:</p>
 
+    <ul>
+      <li>Installing the Splice Machine ODBC Driver on Windows</li>
+      <li>Installing the Splice Machine ODBC Driver on Linux</li>
+    </ul>
+
+    <p>This topic also includes an <a href="#Using">example that illustrates using our
+ODBC driver</a> with the C language.</p>
 
+    <h2 id="Installi">Installing and Configuring the Driver on Windows</h2>
 
+    <p>You can install the Windows version of the Splice Machine ODBC driver
+using the provided Windows installer (<code>.msi</code> file); we provide both
+64-bit and 32-bit versions of the driver. Follow these steps to install
+the driver:</p>
 
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Download the installer:</p>
 
+          <p class="indentLevel1">You can download the driver installer from <a href="https://www.splicemachine.com/get-started/odbc-driver-download/" target="_blank">our ODBC download</a> site: </p>
+
+          <p class="indentLevel1">The file you download will have a name similar to these:</p>
+
+          <ul class="plainFont">
+            <li class="CodeFont" value="1">splice_odbc_setup_64bit_1.0.28.0.msi</li>
+            <li class="CodeFont" value="2">splice_odbc_setup_32bit_1.0.28.0.msi</li>
+          </ul>
+        </li>
+        <li>
+          <p class="topLevel">Start the installer</p>
+
+          <p class="indentLevel1">Double-click the installers <code>.msi</code> file to start installation.
+You’ll see the Welcome screen:</p>
+
+          <p><img src="images/ODBCInstall.Welcome.png" alt="Image of the welcome screen for the Splice Machine ODBC driver
+installer" class="nestedTightSpacing" /></p>
+
+          <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button to proceed.</p>
+        </li>
+        <li>Accept the license agreement.</li>
+        <li>
+          <p class="topLevel">Select the destination folder for the driver</p>
+
+          <p class="indentLevel1">The default destination is generally fine, but you can select a
+different location if you like:</p>
+
+          <p><img src="images/ODBCInstall.Dest.png" alt="Splice Machine ODBC Driver destination
+folder" class="nestedTightSpacing" /></p>
+
+          <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button to continue to
+the Ready to Install screen.</p>
+        </li>
+        <li>
+          <p class="topLevel">Click install</p>
+
+          <p class="indentLevel1">Click the <span class="AppCommand">Install</span> button on the
+Ready to install screen. Installation can take a minute or two to
+complete.</p>
+
+          <p class="noteNote">The installer may notify you that you either need to stop certain
+software before continuing, or that you can continue and then reboot
+your computer after the installation completes.</p>
+        </li>
+        <li>
+          <p class="topLevel">Finish the installation</p>
+
+          <p class="indentLevel1">Click the Finish button, and you’re ready to use the Splice Machine
+ODBC driver.</p>
+        </li>
+        <li>
+          <p class="topLevel">Start the Windows ODBC Data Source Administrator tool</p>
+
+          <p class="indentLevel1">You need to add our ODBC driver to the set of Windows ODBC data
+sources, using the Windows ODBC Data Source Administrator tool; You
+can read about this tool here:
+<a href="https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx" target="_blank">https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx</a>.</p>
+
+          <p class="indentLevel1">You can find and start the Windows ODBC Administrator tool using a
+Windows search for ODBC on your computer; here’s what it looks like
+on Windows 7:</p>
+
+          <p><img src="images/ODBCAdmin.png" alt="Image of using Windows search to find the ODBC Administrator
+tool" class="nestedTightSpacing" /></p>
+        </li>
+        <li>
+          <p class="topLevel">Add the Splice Machine driver as a data source</p>
+
+          <p class="indentLevel1">Click the <span class="AppCommand">Add button</span> the User
+DSN tab of the ODBC Data Source Administrator screen, and then
+select the Splice Machine driver you just installed:</p>
+
+          <p><img src="images/ODBCAddSource.png" alt="Adding the Splice Machine driver as an ODBC data source on
+Windows" class="nestedTightSpacing" /></p>
+        </li>
+        <li>
+          <p class="topLevel">Configure your new data source:</p>
+
+          <p class="indentLevel1">When you click the <span class="AppCommand">Finish</span> button in
+the <em>Create New Data Source</em> screen, the ODBC Administrator tool
+displays the data source configuration screen. Fill it in similarly
+to this:</p>
 
+          <p><img src="images/ODBCConfigure.png" alt="Configuring the Splice Machine ODBC data source on
+Windows" class="nestedTightSpacing" /></p>
 
+          <p>The default <span class="AppCommand">user</span> name is <code>splice</code>,
+and the default <span class="AppCommand">password</span> is <code>admin</code>.</p>
 
-﻿
+          <p class="noteNote">For <span class="AppCommand">Server</span>: on a cluster, specify
+the IP address of an HBase RegionServer. If you’re running the
+standalone version of Splice Machine, specify <code>localhost</code>.</p>
 
+          <p class="indentLevel1">If you have Splice Machine running, you can click the Test
+Connection button to verify that all is well.</p>
+        </li>
+        <li>
+          <p class="topLevel">Configure logging (optional):</p>
 
+          <p class="indentLevel1">You can optionally configure the ODBC driver to log activity. This
+can be handy for debugging connection issues; however, it adds
+overhead and will have a significant impact on performance. Click
+the <span class="AppCommand">Logging Options</span> button in the
+ODBC Administrator <em>Configuration</em> screen to enable or disable
+logging:</p>
 
+          <p><img src="images/ODBCLogging.png" alt="Configuring Splice Machine ODBC driver logging on
+Windows" class="nestedTightSpacing" /></p>
+        </li>
+      </ol>
 
+    </div>
+    <h2 id="Installi2">Installing the Driver on Linux</h2>
 
+    <p>Follow these steps to install the Splice Machine ODBC driver on a Linux
+computer:</p>
 
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Make sure you have unixODBC installed.</p>
 
-﻿
+          <p class="indentLevel1">You must have version <code>2.2.12</code> or later of the <code>unixODBC</code> driver
+manager installed to run the Splice Machine ODBC driver.</p>
 
+          <p class="indentLevel1">Some Linux distributions include <code>unixODBC</code>, while others do not.
+Our driver will not work without it. For more information about
+unixODBC, see: <a href="http://www.unixodbc.org/" target="_blank">http://www.unixodbc.org</a>.</p>
+        </li>
+        <li>
+          <p class="topLevel">Download the installer:</p>
 
+          <p class="indentLevel1">You can download the driver installer from our ODBC download
+site: <a href="https://www.splicemachine.com/get-started/odbc-driver-download/" target="_blank">https://www.splicemachine.com/get-started/odbc-driver-download/</a></p>
 
+          <p class="indentLevel1">Download the installer to the Linux computer on which you want to
+install the driver. The file will have a name similar to this:</p>
 
+          <div class="preWrapper">
+            <pre class="Plain"><code>splice_odbc_64-1.0.28.0.x86_64.tar.gz
+</code></pre>
 
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Unzip the installation package</p>
 
+          <p class="indentLevel1">Use the following command to unpack the tarball you installed,
+substituting in the actual version number from the download:</p>
 
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>tar xzf splice_odbc_64-&lt;version&gt;.x86_64.tar.gz
+</code></pre>
 
+          </div>
 
+          <p class="indentLevel1">This creates a directory named <code>splice_odbc_64-&lt;version&gt;</code>.</p>
+        </li>
+        <li>
+          <p class="topLevel">Install the driver:</p>
 
+          <p class="indentLevel1">Navigate to the directory that was created when you unzipped the
+tarball, and run the install script:</p>
 
+          <p class="indentLevel1">If you run the script as root, the default installation directory is
+<code>/usr/local/splice:</code></p>
 
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>sudo ./install.sh
+</code></pre>
 
+          </div>
 
+          <p class="indentLevel1">If you run the script as a different user, the driver is installed
+to <code>~/splice</code>.</p>
 
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>./install.sh
+</code></pre>
 
+          </div>
 
+          <p class="indentLevel1">The script prompts you for a location; in most cases, you can simply
+accept the default directory.</p>
 
-﻿
+          <p class="indentLevel1">The install directory will contain two subdirectories:</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Using the Splice Machine ODBC&#160;Driver</h1>
-            <p>This topic describes how to configure and use the Splice Machine ODBC&#160;driver, which you can use to connect with other databases and business tools that need to access your database.</p>
-﻿        <p class="noteImportant">You <strong>must</strong> use the <em>Splice Machine</em> ODBC driver; other drivers will not work correctly.</p>
-
-            <p>This topic describes how to install and configure the Splice&#160;Machine ODBC&#160;driver for these operating systems:</p>
-            <ul>
-                <li>Installing the Splice Machine ODBC&#160;Driver on Windows</li>
-                <li>Installing the Splice Machine ODBC&#160;Driver on Linux</li>
-            </ul>
-            <p>This topic also includes an <a href="#Using">example that illustrates using our ODBC&#160;driver</a> with the C&#160;language.</p>
-            <h2 id="Installi">Installing and Configuring the Driver on Windows</h2>
-            <p>You can install the Windows version of the Splice Machine ODBC&#160;driver using the provided Windows installer (<code>.msi</code> file); we provide both 64-bit and 32-bit versions of the driver. Follow these steps to install the driver:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Download the installer:</p>
-                        <p class="indentLevel1">You can download the driver installer from <a href="https://www.splicemachine.com/get-started/odbc-driver-download/"  target="_blank">our ODBC&#160;download</a> site:&#160;</p>
-                        <p class="indentLevel1">The file you download will have a name similar to these:</p>
-                        <ul class="plainFont">
-                            <li class="CodeFont" value="1">splice_odbc_setup_64bit_1.0.28.0.msi</li>
-                            <li class="CodeFont" value="2">splice_odbc_setup_32bit_1.0.28.0.msi</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start the installer</p>
-                        <p class="indentLevel1">Double-click the installers <code>.msi</code> file to start installation. You'll see the Welcome screen:</p>
-                        <p>
-                            <img src="images/ODBCInstall.Welcome.png" alt="Image of the welcome screen for the Splice Machine ODBC driver installer" class="nestedTightSpacing" />
-                        </p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button to proceed.</p>
-                    </li>
-                    <li>Accept the license agreement.</li>
-                    <li>
-                        <p class="topLevel">Select the destination folder for the driver</p>
-                        <p class="indentLevel1">The default destination is generally fine, but you can select a different location if you like:</p>
-                        <p>
-                            <img src="images/ODBCInstall.Dest.png" class="nestedTightSpacing" alt="Splice Machine ODBC Driver destination folder" />
-                        </p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button to continue to the Ready to Install screen.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Click install</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Install</span> button on the Ready to install screen. Installation can take a minute or two to complete.</p>
-                        <p class="noteNote">The installer may notify you that you either need to stop certain software before continuing, or that you can continue and then reboot your computer after the installation completes.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Finish the installation</p>
-                        <p class="indentLevel1">Click the Finish button, and you're ready to use the Splice Machine ODBC&#160;driver.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start the Windows ODBC&#160;Data Source Administrator tool</p>
-                        <p class="indentLevel1">You need to add our ODBC&#160;driver to the set of Windows ODBC&#160;data sources, using the Windows ODBC&#160;Data Source Administrator tool; You can read about this tool here: <a href="https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx"  target="_blank">https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx</a>.</p>
-                        <p class="indentLevel1">You can find and start the Windows ODBC&#160;Administrator tool using a Windows search for ODBC&#160;on your computer; here's what it looks like on Windows 7:</p>
-                        <p>
-                            <img src="images/ODBCAdmin.png" alt="Image of using Windows search to find the ODBC Administrator tool" class="nestedTightSpacing" />
-                        </p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Add the Splice Machine driver as a data source</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Add button</span> the User DSN&#160;tab of the ODBC&#160;Data Source Administrator screen, and then select the Splice Machine driver you just installed:</p>
-                        <p>
-                            <img src="images/ODBCAddSource.png" class="nestedTightSpacing" alt="Adding the Splice Machine driver as an ODBC data source on Windows" />
-                        </p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Configure your new data source:</p>
-                        <p class="indentLevel1">When you click the <span class="AppCommand">Finish</span> button in the <em>Create New Data Source</em> screen, the ODBC&#160;Administrator tool displays the data source configuration screen. Fill it in similarly to this:</p>
-                        <p>
-                            <img src="images/ODBCConfigure.png" class="nestedTightSpacing" alt="Configuring the Splice Machine ODBC data source on Windows" />
-                        </p>
-                        <p class="noteNote">The default <span class="AppCommand">user</span> name is <code>splice</code>, and the default <span class="AppCommand">password</span> is <code>admin</code>.<br /><br />For <span class="AppCommand">Server</span>:&#160;on a cluster, specify the IP&#160;address of an HBase RegionServer. If you're running the standalone version of Splice Machine, specify <code>localhost</code>.</p>
-                        <p class="indentLevel1">If you have Splice Machine running, you can click the Test Connection button to verify that all is well.<br /></p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Configure logging (optional):</p>
-                        <p class="indentLevel1">You can optionally configure the ODBC&#160;driver to log activity. This can be handy for debugging connection issues; however, it adds overhead and will have a significant impact on performance. Click the <span class="AppCommand">Logging Options</span> button in the ODBC&#160;Administrator <em>Configuration</em> screen to enable or disable logging:</p>
-                        <p>
-                            <img src="images/ODBCLogging.png" class="nestedTightSpacing" alt="Configuring Splice Machine ODBC driver logging on Windows" />
-                        </p>
-                    </li>
-                </ol>
-            </div>
-            <h2 id="Installi2">Installing the Driver on Linux</h2>
-            <p>Follow these steps to install the Splice&#160;Machine ODBC&#160;driver on a Linux computer:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Make sure you have unixODBC installed.</p>
-                        <p class="indentLevel1">You must have version <code>2.2.12</code> or later of the <code>unixODBC</code>&#160;driver manager installed to run the Splice Machine ODBC&#160;driver.</p>
-                        <p class="indentLevel1">Some Linux distributions include <code>unixODBC</code>, while others do not. Our driver will not work without it. For more information about unixODBC, see: <a href="http://www.unixodbc.org/"  target="_blank">http://www.unixodbc.org</a>. </p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Download the installer:</p>
-                        <p class="indentLevel1">You can download the driver installer from our ODBC&#160;download site:&#160;<a href="https://www.splicemachine.com/get-started/odbc-driver-download/"  target="_blank" title="Click to open the Splice Machine ODBC driver download page in a new tab or window" alt="Click to open the Splice Machine ODBC driver download page in a new tab or window">https://www.splicemachine.com/get-started/odbc-driver-download/</a></p>
-                        <p class="indentLevel1">Download the installer to the Linux computer on which you want to install the driver. The file will have a name similar to this:</p>
-                        <div class="preWrapper"><pre class="Plain">splice_odbc_64-1.0.28.0.x86_64.tar.gz</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Unzip the installation package</p>
-                        <p class="indentLevel1">Use the following command to unpack the tarball you installed, substituting in the actual version number from the download:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">tar xzf splice_odbc_64-<span class="Highlighted">&lt;version&gt;</span>.x86_64.tar.gz</pre>
-                        </div>
-                        <p class="indentLevel1">This creates a directory named <code>splice_odbc_64-<span class="Highlighted">&lt;version&gt;</code></span>.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Install the driver:</p>
-                        <p class="indentLevel1">Navigate to the directory that was created when you unzipped the tarball, and run the install script:</p>
-                        <p class="indentLevel1">If you run the script as root, the default installation directory is <code>/usr/local/splice:</code></p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">sudo ./install.sh</pre>
-                        </div>
-                        <p class="indentLevel1">If you run the script as a different user, the driver is installed to <code>~/splice</code>.</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">./install.sh</pre>
-                        </div>
-                        <p class="indentLevel1">The script prompts you for a location; in most cases, you can simply accept the default directory.</p>
-                        <p class="indentLevel1">The install directory will contain two subdirectories:</p>
-                        <table summary="ODBC Driver SubDirectories">
+          <table summary="ODBC Driver SubDirectories">
                             <col />
                             <col />
                             <thead>
@@ -750,15 +754,18 @@
                                 </tr>
                                 <tr>
                                     <td><code>errormessages</code></td>
-                                    <td>The XML&#160;error message source for any error messages issued by the driver.</td>
+                                    <td>The XML error message source for any error messages issued by the driver.</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </li>
-                    <li>
-                        <p class="topLevel">Configure the driver:</p>
-                        <p class="indentLevel1">The install directory will also contain 3 configuration files that you can edit:</p>
-                        <table>
+        </li>
+        <li>
+          <p class="topLevel">Configure the driver:</p>
+
+          <p class="indentLevel1">The install directory will also contain 3 configuration files that
+you can edit:</p>
+
+          <table>
                             <col />
                             <col />
                             <thead>
@@ -771,50 +778,84 @@
                                 <tr>
                                     <td><code>odbc.ini</code></td>
                                     <td>
-                                        <p>Specifies the ODBC&#160;data sources (DSNs).</p>
+                                        <p>Specifies the ODBC data sources (DSNs).</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><code>odbcinst.ini</code></td>
-                                    <td>Specifies the ODBC&#160;drivers.</td>
+                                    <td>Specifies the ODBC drivers.</td>
                                 </tr>
                                 <tr>
                                     <td><code>splice.odbcdriver.ini</code></td>
-                                    <td>Configuration information specific to the Splice Machine ODBC&#160;driver.</td>
+                                    <td>Configuration information specific to the Splice Machine ODBC driver.</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <ol class="LowerAlpha">
-                            <li>
-                                <p class="topLevel">Edit the <code>odbc.ini</code> file in the install directory to match your configuration by changing the <code>Driver</code> <code>URL</code>&#160;value to match your Splice Machine installation. </p>
-                                <blockquote>
-                                    <p class="noteNote">The <span class="AppCommand">URL</span>&#160;field in the <code>odbc.ini</code> file is actually the IP&#160;address of the Splice Machine server.</p>
-                                </blockquote>
-                                <p>Then copy the modified <code>odbc.ini</code> file into your home directory, making sure you make the file hidden by preceding its name with a dot:</p>
-                                <div class="preWrapperWide"><pre class="ShellCommand">cp odbc.ini ~/.odbc.ini</pre>
-                                </div>
-                                <p>If you want your settings to apply system-wide, copy the file to <code>/etc</code>:</p>
-                                <div class="preWrapperWide"><pre class="ShellCommand">cp odbc.ini /etc/</pre>
-                                </div>
-                                <p>The default version of the <code>odbc.ini</code> file looks like this:</p>
-                                <div class="preWrapperWide"><pre class="Plain">[ODBC Data Sources]
-SpliceODBC64        = SpliceODBCDriver
 
+          <ol class="LowerAlpha">
+            <li>
+              <p class="topLevel">Edit the <code>odbc.ini</code> file in the install directory to match your
+configuration by changing the <code>Driver</code> <code>URL</code> value to match your
+Splice Machine installation.</p>
+
+              <blockquote>
+                <p class="noteNote">The <span class="AppCommand">URL</span> field in the
+<code>odbc.ini</code> file is actually the IP address of the Splice
+Machine server.</p>
+              </blockquote>
+
+              <p>Then copy the modified <code>odbc.ini</code> file into your home directory,
+making sure you make the file hidden by preceding its name with
+a dot:</p>
+
+              <div class="preWrapperWide">
+                <pre class="ShellCommand"><code>cp odbc.ini ~/.odbc.ini
+</code></pre>
+
+              </div>
+
+              <p>If you want your settings to apply system-wide, copy the file to
+<code>/etc</code>:</p>
+
+              <div class="preWrapperWide">
+                <pre class="ShellCommand"><code>cp odbc.ini /etc/
+</code></pre>
+
+              </div>
+
+              <p>The default version of the <code>odbc.ini</code> file looks like this:</p>
+
+              <div class="preWrapperWide">
+                <pre class="Plain"><code>[ODBC Data Sources]
+SpliceODBC64        = SpliceODBCDriver
+        
 [SpliceODBC64]
 Description     = Splice Machine ODBC 64-bit
 Driver          = /usr/local/splice/lib64/libsplice_odbc.so
 UID             = splice
 PWD             = admin
-URL             = 0.0.0.0<br />PORT            = 1527</pre>
-                                </div>
-                            </li>
-                            <li>
-                                <p class="topLevel">Copy the <code>odbcinst.ini</code> configuration file:</p>
-                                <p>The <code>odbcinst.ini</code> file does not typically require any modification. You should copy it to your home directory, and if desired, make it system-wide by copying to <code>/etc</code>:</p>
-                                <div class="preWrapperWide"><pre class="ShellCommand">cp odbcinst.ini ~/.odbcinst.ini<br />cp odbcinst.ini /etc/</pre>
-                                </div>
-                                <p>The default version of the <code>odbcinst.ini</code> file looks like this:</p>
-                                <div class="preWrapperWide"><pre class="Plain">[ODBC Drivers]
+URL             = 0.0.0.0PORT            = 1527
+</code></pre>
+
+              </div>
+            </li>
+            <li>
+              <p class="topLevel">Copy the <code>odbcinst.ini</code> configuration file:</p>
+
+              <p>The <code>odbcinst.ini</code> file does not typically require any
+modification. You should copy it to your home directory, and if
+desired, make it system-wide by copying to <code>/etc</code>:</p>
+
+              <div class="preWrapperWide">
+                <pre class="ShellCommand"><code>cp odbcinst.ini ~/.odbcinst.inicp odbcinst.ini /etc/
+</code></pre>
+
+              </div>
+
+              <p>The default version of the <code>odbcinst.ini</code> file looks like this:</p>
+
+              <div class="preWrapperWide">
+                <pre class="Plain"><code>[ODBC Drivers]
 SpliceODBCDriver = Installed
 [SpliceODBCDriver]
 Description = Splice Machine 64-bit ODBC Driver
@@ -823,26 +864,43 @@ SQLLevel = 1
 APILevel = 1
 ConnectFunctions = YYY
 DriverIDBCVer = 03.80
-</pre>
-                                </div>
-                            </li>
-                            <li>
-                                <p class="topLevel">Edit (if desired)&#160;and copy the <code>splice.odbcdriver.ini</code> file:</p>
-                                <p>The <code>splice.odbcdriver.ini</code> file contains information specific to the driver. You can edit this file to configure driver logging, which is disabled by default: </p>
-                                <div class="preWrapperWide"><pre class="Plain">[Driver]
+</code></pre>
+
+              </div>
+            </li>
+            <li>
+              <p class="topLevel">Edit (if desired) and copy the <code>splice.odbcdriver.ini</code> file:</p>
+
+              <p>The <code>splice.odbcdriver.ini</code> file contains information specific
+to the driver. You can edit this file to configure driver
+logging, which is disabled by default:</p>
+
+              <div class="preWrapperWide">
+                <pre class="Plain"><code>[Driver]
 DriverManagerEncoding=UTF-16
 DriverLocale=en-US
 ErrorMessagesPath=/usr/local/splice/errormessages/
 LogLevel=0
 LogNamespace=
 LogPath=
-ODBCInstLib=/usr/lib64/libodbcinst.so</pre>
-                                </div>
-                                <p class="indentLevel1">Copy the <code>splice.odbcdriver.ini</code> file to your <code>$HOME</code>&#160;directory, renaming it to <code><span class="CodeBoldFont">.</code>splice.odbcdriver.ini</span>:</p>
-                                <div class="preWrapperWide"><pre class="ShellCommand">cp splice.odbcdriver.ini $HOME/.splice.odbcdriver.ini</pre>
-                                </div>
-                                <p>To configure logging, modify the <code>LogLevel</code> and <code>LogPath</code> values:</p>
-                                <table>
+ODBCInstLib=/usr/lib64/libodbcinst.so
+</code></pre>
+
+              </div>
+
+              <p class="indentLevel1">Copy the <code>splice.odbcdriver.ini</code> file to your <code>$HOME</code> directory,
+renaming it to <code>.splice.odbcdriver.ini</code>:</p>
+
+              <div class="preWrapperWide">
+                <pre class="ShellCommand"><code>cp splice.odbcdriver.ini $HOME/.splice.odbcdriver.ini
+</code></pre>
+
+              </div>
+
+              <p>To configure logging, modify the <code>LogLevel</code> and <code>LogPath</code>
+values:</p>
+
+              <table>
                                     <col />
                                     <col />
                                     <tbody>
@@ -868,28 +926,43 @@ ODBCInstLib=/usr/lib64/libodbcinst.so</pre>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </li>
-                        </ol>
-                    </li>
-                    <li>
-                        <p class="topLevel">Verify your installation</p>
-                        <p class="indentLevel1">You can test your installation by using the following command to run <code>isql</code>:</p>
-                        <div class="preWrapper"><pre class="ShellCommand">isql SpliceODBC64 splice admin<br /></pre>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <h2 id="Using">Using the ODBC&#160;Driver with C</h2>
-            <p>This section contains a simple example of using the Splice Machine ODBC&#160;driver with the C&#160;programming language. This program simply displays information about the installed driver. You can compile and run it by following these steps:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Copy the code</p>
-                        <p class="indentLevel1">You can copy and paste the code below:</p>
-                            <div class="preWrapperWide"><pre class="Example">#include &lt;stdio.h&gt;
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p class="topLevel">Verify your installation</p>
+
+          <p class="indentLevel1">You can test your installation by using the following command to run
+<code>isql</code>:</p>
+
+          <div class="preWrapper">
+            <pre class="ShellCommand"><code>isql SpliceODBC64 splice admin
+</code></pre>
+
+          </div>
+        </li>
+      </ol>
+
+    </div>
+    <h2 id="Using">Using the ODBC Driver with C</h2>
+
+    <p>This section contains a simple example of using the Splice Machine
+ODBC driver with the C programming language. This program simply
+displays information about the installed driver. You can compile and run
+it by following these steps:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Copy the code</p>
+
+          <p class="indentLevel1">You can copy and paste the code below:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>#include &lt;stdio.h&gt;
 #include &lt;sql.h&gt;
 #include &lt;sqlext.h&gt;
-
+    
 main() {
    SQLHENV env;
    char driver[256];
@@ -898,10 +971,10 @@ main() {
    SQLSMALLINT attr_ret;
    SQLUSMALLINT direction;
    SQLRETURN ret;
-
+    
    SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &amp;env);
    SQLSetEnvAttr(env, SQL_ATTR_ODBC_VERSION, (void *) SQL_OV_ODBC3, 0);
-
+    
    direction = SQL_FETCH_FIRST;
    while(SQL_SUCCEEDED(ret = SQLDrivers(env, direction,
          driver, sizeof(driver), &amp;driver_ret,
@@ -911,30 +984,46 @@ main() {
       if (ret == SQL_SUCCESS_WITH_INFO) printf("\tdata truncation\n");
       }
 }
-</pre>
-                            </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Compile it</p>
-                            <div class="preWrapperWide"><pre class="ShellCommand">
-#!/bin/bash
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Compile it</p>
+
+          <div class="preWrapperWide">
+
+            <pre class="ShellCommand"><code>#!/bin/bash
 # gcc -I /usr/local/splice/unixODBC/include listODBCdriver.c -o listODBCdriver -L/usr/local/splice/lib -lodbc -lodbcinst -lodbccr
-</pre>
-                            </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run the program</p>
-                        <p class="indentLevel1">Run the compiled <code>listODBCdriver</code>:</p>
-                            <div class="preWrapper"><pre class="ShellCommand" xml:space="preserve">prompt:~$ ./listODBCdriver</pre>
-                            </div>
-                        <p class="indentLevel1">The command should display a result like the following:</p>
-                            <div class="preWrapper"><pre class="ShellCommand">Splice Machine - Description=Splice Machine ODBC Driver</pre>
-                            </div>
-                    </li>
-                </ol>
-            </div>
-        </div>
-	</section>
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Run the program</p>
+
+          <p class="indentLevel1">Run the compiled <code>listODBCdriver</code>:</p>
+
+          <div class="preWrapper">
+            <pre class="ShellCommand"><code>prompt:~$ ./listODBCdriver
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">The command should display a result like the following:</p>
+
+          <div class="preWrapper">
+            <pre class="ShellCommand"><code>Splice Machine - Description=Splice Machine ODBC Driver
+</code></pre>
+
+          </div>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -951,7 +1040,7 @@ main() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

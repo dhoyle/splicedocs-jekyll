@@ -2806,28 +2806,48 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.VarChar">VARCHAR</h1>
-            <p>The <code>VARCHAR</code> function returns a varying-length character string representation of a character string.</p>
-            <h2>Character to varchar syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">VARCHAR (<em>CharacterStringExpression</em> ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">CharacterStringExpression
-            </p>
-                <p class="paramDefnFirst">An expression whose value must be of a character-string data type with a maximum length of <code>32,672</code> bytes.</p>
-            </div>
-            <h2>Datetime to varchar syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">VARCHAR (<em>DatetimeExpression</em> ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">DatetimeExpression</p>
-                <p class="paramDefnFirst">An expression whose value must be of a date, time, or timestamp data type.</p>
-            </div>
-            <h2>Example</h2>
-            <p>The <span class="AppCommand">Position</span> column in our <span class="AppCommand">Players</span> table is defined as <code>CHAR(2)</code>. The following query show hows to access positon values as <code>VARCHAR</code>s:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT VARCHAR(Position)
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="varchar---builtinfcnsvarchar">VARCHAR   {#BuiltInFcns.VarChar}</h1>
+
+    <p>The <code>VARCHAR</code> function returns a varying-length character string
+representation of a character string.</p>
+
+    <h2 id="character-to-varchar-syntax">Character to varchar syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>VARCHAR (CharacterStringExpression ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">CharacterStringExpression</p>
+
+      <p class="paramDefnFirst">An expression whose value must be of a character-string data type with a
+maximum length of <code>32,672</code> bytes.</p>
+
+    </div>
+    <h2 id="datetime-to-varchar-syntax">Datetime to varchar syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>VARCHAR (DatetimeExpression ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">DatetimeExpression</p>
+
+      <p class="paramDefnFirst">An expression whose value must be of a date, time, or timestamp data
+type.</p>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <p>The <span class="AppCommand">Position</span> column in our <span class="AppCommand">Players</span> table is defined as <code>CHAR(2)</code>. The
+following query show hows to access positon values as <code>VARCHAR</code>s:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT VARCHAR(Position)
    FROM Players
    WHERE ID &lt; 11;
 1
@@ -2844,16 +2864,19 @@ OF
 RF
 
 10 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a>&#160;data type</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a> data type</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2870,7 +2893,7 @@ RF
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

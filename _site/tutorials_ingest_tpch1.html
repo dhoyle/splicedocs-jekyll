@@ -510,24 +510,39 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Importing TPCH Data Into Your Database</h1>
-            <p>This tutorial walks you through importing sample data into your Splice&#160;Machine database and then querying that data, in these sections:</p>
-            <ul>
-                <li><a href="#Import">Import Sample Data</a> walks you through importing TPCH&#160;data from our AWS&#160;bucket into your Splice Machine database</li>
-                <li><a href="#Importin">Importing Your Own Data</a> links to our tutorial that helps you to import your own data</li>
-                <li><a href="#Addition">The TPCH Queries</a> includes the SQL&#160;source for each of the  TPCH&#160;queries, so you can quickly run any of them against your newly imported data.</li>
-            </ul>
-            <h2 id="Import">Import Sample Data</h2>
-            <p>You can use the following steps to import TPCH data into your new Splice Machine database:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Create the schema and tables</p>
-                        <p class="indentLevel1">You can copy/paste the following SQL&#160;statements to create the schema and tables for importing the sample data:</p>
-                        <div class="preWrapperWide"><pre class="Example">CREATE SCHEMA TPCH;
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="importing-tpch-data-into-your-database">Importing TPCH Data Into Your Database</h1>
 
+    <p>This tutorial walks you through importing sample data into your
+Splice Machine database and then querying that data, in these sections:</p>
+
+    <ul>
+      <li><a href="#Import">Import Sample Data</a> walks you through importing TPCH data
+from our AWS bucket into your Splice Machine database</li>
+      <li><a href="#Importin">Importing Your Own Data</a> links to our tutorial that helps
+you to import your own data</li>
+      <li><a href="#Addition">The TPCH Queries</a> includes the SQL source for each of the
+TPCH queries, so you can quickly run any of them against your newly
+imported data.</li>
+    </ul>
+
+    <h2 id="Import">Import Sample Data</h2>
+
+    <p>You can use the following steps to import TPCH data into your new Splice
+Machine database:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Create the schema and tables</p>
+
+          <p class="indentLevel1">You can copy/paste the following SQL statements to create the schema
+and tables for importing the sample data:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>CREATE SCHEMA TPCH;
+    
 CREATE TABLE TPCH.LINEITEM (
  L_ORDERKEY BIGINT NOT NULL,
  L_PARTKEY INTEGER NOT NULL,
@@ -547,7 +562,7 @@ CREATE TABLE TPCH.LINEITEM (
  L_COMMENT VARCHAR(44),
  PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
  );
-
+    
 CREATE TABLE TPCH.ORDERS (
  O_ORDERKEY BIGINT NOT NULL PRIMARY KEY,
  O_CUSTKEY INTEGER,
@@ -559,7 +574,7 @@ CREATE TABLE TPCH.ORDERS (
  O_SHIPPRIORITY INTEGER ,
  O_COMMENT VARCHAR(79)
  );
-
+    
 CREATE TABLE TPCH.CUSTOMER (
  C_CUSTKEY INTEGER NOT NULL PRIMARY KEY,
  C_NAME VARCHAR(25),
@@ -570,7 +585,7 @@ CREATE TABLE TPCH.CUSTOMER (
  C_MKTSEGMENT VARCHAR(10),
  C_COMMENT VARCHAR(117)
  );
-
+    
 CREATE TABLE TPCH.PARTSUPP (
  PS_PARTKEY INTEGER NOT NULL ,
  PS_SUPPKEY INTEGER NOT NULL ,
@@ -579,7 +594,7 @@ CREATE TABLE TPCH.PARTSUPP (
  PS_COMMENT VARCHAR(199),
  PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY)
  );
-
+    
 CREATE TABLE TPCH.SUPPLIER (
  S_SUPPKEY INTEGER NOT NULL PRIMARY KEY,
  S_NAME VARCHAR(25) ,
@@ -589,7 +604,7 @@ CREATE TABLE TPCH.SUPPLIER (
  S_ACCTBAL DECIMAL(15,2),
  S_COMMENT VARCHAR(101)
  );
-
+    
 CREATE TABLE TPCH.PART (
  P_PARTKEY INTEGER NOT NULL PRIMARY KEY,
  P_NAME VARCHAR(55) ,
@@ -601,46 +616,60 @@ CREATE TABLE TPCH.PART (
  P_RETAILPRICE DECIMAL(15,2),
  P_COMMENT VARCHAR(23)
  );
-
+    
 CREATE TABLE TPCH.REGION (
  R_REGIONKEY INTEGER NOT NULL PRIMARY KEY,
  R_NAME VARCHAR(25),
  R_COMMENT VARCHAR(152)
  );
-
+    
 CREATE TABLE TPCH.NATION (
  N_NATIONKEY INTEGER NOT NULL,
  N_NAME VARCHAR(25),
  N_REGIONKEY INTEGER NOT NULL,
  N_COMMENT VARCHAR(152),
  PRIMARY KEY (N_NATIONKEY)
- );</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Import data</p>
-                        <p class="indentLevel1">We've put a copy of the TPCH data in an AWS&#160;S3 bucket, for convenient retrieval. You can copy/paste the following <code>SYSCS_UTIL.IMPORT_DATA</code>&#160;statements to quickly pull that data into your database:</p>
-                        <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'LINEITEM', null, 's3a:/splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
+ );
+</code></pre>
 
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Import data</p>
+
+          <p class="indentLevel1">We’ve put a copy of the TPCH data in an AWS S3 bucket, for
+convenient retrieval. You can copy/paste the following
+<code>SYSCS_UTIL.IMPORT_DATA</code> statements to quickly pull that data into
+your database:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'LINEITEM', null, 's3a:/splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'ORDERS',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/orders',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'CUSTOMER', null, 's3a:/splice-benchmark-data/flat/TPCH/1/customer', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'PARTSUPP', null, 's3a:/splice-benchmark-data/flat/TPCH/1/partsupp', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'SUPPLIER', null, 's3a:/splice-benchmark-data/flat/TPCH/1/supplier', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'PART',     null, 's3a:/splice-benchmark-data/flat/TPCH/1/part',     '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/region',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);
+    
+call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'NATION',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);
+</code></pre>
 
-call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'NATION',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run a query</p>
-                        <p class="indentLevel1">You can now copy/paste <em>TPCH Query 01</em> against the imported data to verify that all's well:</p>
-                        <div class="preWrapperWide"><pre class="Example">-- QUERY 01
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Run a query</p>
+
+          <p class="indentLevel1">You can now copy/paste <em>TPCH Query 01</em> against the imported data to
+verify that all’s well:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>-- QUERY 01
 select
 	l_returnflag,
 	l_linestatus,
@@ -662,17 +691,30 @@ group by
 order by
 	l_returnflag,
 	l_linestatus
--- END OF QUERY</pre>
-                        </div>
-                        <p class="indentLevel1">We've also included the SQL&#160;for most of the other <a href="#Addition">TPCH queries</a> in this topic, should you want to try others.</p>
-                    </li>
-                </ol>
-            </div>
-            <h2 id="Importin">Importing Your Own Data</h2>
-            <p>You can follow similar steps to import your own data. Setting up your import requires some precision; we encourage you to look through our <a href="tutorials_ingest_importing.html">Importing Your Data</a> tutorial for guidance and tips to make that process go smoothly.</p>
-            <h2 id="Addition">The TPCH Queries</h2>
-            <p>Here are a number of additional queries you might want to run against the TPCH data:</p>
-            <table>
+-- END OF QUERY
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">We’ve also included the SQL for most of the other <a href="#Addition">TPCH
+queries</a> in this topic, should you want to try others.</p>
+        </li>
+      </ol>
+
+    </div>
+    <h2 id="Importin">Importing Your Own Data</h2>
+
+    <p>You can follow similar steps to import your own data. Setting up your
+import requires some precision; we encourage you to look through our
+<a href="tutorials_ingest_importing.html">Importing Your Data</a> tutorial for
+guidance and tips to make that process go smoothly.</p>
+
+    <h2 id="Addition">The TPCH Queries</h2>
+
+    <p>Here are a number of additional queries you might want to run against
+the TPCH data:</p>
+
+    <table>
                 <col />
                 <col />
                 <tbody>
@@ -1427,8 +1469,9 @@ order by
                     </tr>
                 </tbody>
             </table>
-        </div>
-	</section>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -1445,7 +1488,7 @@ order by
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

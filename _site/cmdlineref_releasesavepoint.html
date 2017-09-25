@@ -518,23 +518,47 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Release Savepoint Command</h1>
-            <p>The <span class="AppCommand">release savepoint</span> command issues a <code>java.sql.Connection.releaseSavepoint</code> request, which releases a savepoint within the current transaction. Once a savepoint has been released, attempting to reference it in a rollback operation will cause an <code>SQLException</code> to be thrown.</p>
-            <p class="noteNote">When you commit a transaction, any savepoints created in that transaction are automatically released and invalidated when the transaction is committed or the entire transaction is rolled back.<br /><br />When you rollback a transaction to a savepoint, that savepoint and any others created after it within the transaction are automatically released.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">release savepoint <em>identifier</em>;</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName"><em>identifier</em>
-                </p>
-                <p class="paramDefnFirst">The name of the savepoint to release. </p>
-            </div>
-            <h2>Examples</h2>
-            <h4>Example</h4>
-            <p>First we'll create a table, turn <code>autocommit</code> off, and insert some data into the table. We then create a savepoint, and verify the contents of our table:</p>
-            <div class="preWrapperWide"><pre class="AppCommand">splice&gt; CREATE TABLE myTbl(i int);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="release-savepoint-command">Release Savepoint Command</h1>
+
+    <p>The <span class="AppCommand">release savepoint</span> command issues a
+<code>java.sql.Connection.releaseSavepoint</code> request, which releases a
+savepoint within the current transaction. Once a savepoint has been
+released, attempting to reference it in a rollback operation will cause
+an <code>SQLException</code> to be thrown.</p>
+
+    <p>When you commit a transaction, any savepoints created in that
+transaction are automatically released and invalidated when the
+transaction is committed or the entire transaction is rolled back.</p>
+
+    <p class="noteNote">When you rollback a transaction to a savepoint, that savepoint and any
+others created after it within the transaction are automatically
+released.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>release savepoint identifier;
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName"><em>identifier</em></p>
+
+      <p class="paramDefnFirst">The name of the savepoint to release.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <h4 id="example">Example</h4>
+
+    <p>First we’ll create a table, turn <code>autocommit</code> off, and insert some data
+into the table. We then create a savepoint, and verify the contents of
+our table:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; CREATE TABLE myTbl(i int);
 0 rows inserted/updated/deleted
 splice&gt; AUTOCOMMIT OFF;
 splice&gt; INSERT INTO myTbl VALUES 1,2,3;
@@ -548,11 +572,14 @@ I
 2
 3
 
-3 rows selected</pre>
-            </div>
-            <p>Next we add new values to the table and again verify its contents:
-</p>
-            <div class="preWrapperWide"><pre class="AppCommand">splice&gt; INSERT INTO myTbl VALUES 4,5;
+3 rows selected
+</code></pre>
+
+    </div>
+    <p>Next we add new values to the table and again verify its contents:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; INSERT INTO myTbl VALUES 4,5;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
 I
@@ -561,12 +588,17 @@ I
 2
 3
 4
-5<br /><br />
-5 rows selected</pre>
-            </div>
-            <p>Now we release our original savepoint, insert a few more values, and create a new savepoint, <code>savept2</code>.</p>
-            <div class="preWrapperWide"><pre class="AppCommand">splice&gt; RELEASE&#160;SAVEPOINT&#160;savept1;
-0 rows inserted/updated/deleted<br />splice&gt; INSERT INTO myTbl VALUES 6,7;
+5
+5 rows selected
+</code></pre>
+
+    </div>
+    <p>Now we release our original savepoint, insert a few more values, and
+create a new savepoint, <code>savept2</code>.</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; RELEASE SAVEPOINT savept1;
+0 rows inserted/updated/deletedsplice&gt; INSERT INTO myTbl VALUES 6,7;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
 I
@@ -574,10 +606,15 @@ I
 1
 2
 3
-4        <br />5        <br />6        <br />7<br /><br />7 rows selected<br />splice&gt;&#160;SAVEPOINT&#160;savept2;<br />0 rows inserted/updated/deleted</pre>
-            </div>
-            <p>We again insert data into the table, display its contents, and then do a rollback:</p>
-            <div class="preWrapperWide"><pre class="AppCommand">splice&gt; INSERT INTO myTbl VALUES 8,9;
+4        5        6        77 rows selectedsplice&gt; SAVEPOINT savept2;0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <p>We again insert data into the table, display its contents, and then do a
+rollback:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; INSERT INTO myTbl VALUES 8,9;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
 I
@@ -609,19 +646,29 @@ I
 7
 
 7 rows selected
-</pre>
-            </div>
-            <p>And finally, we commit the transaction:</p>
-            <div class="preWrapperWide"><pre class="AppCommand">COMMIT;</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="cmdlineref_savepoint.html">savepoint</a> command</li>
-                <li><a href="cmdlineref_rollbacktosavepoint.html">rollback to savepoint</a> command</li>
-                <li>The <em><a href="developers_fundamentals_transactions.html">Running Transactions</a></em> topic contains includes a discussion of using savepoints.</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <p>And finally, we commit the transaction:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>COMMIT;
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="cmdlineref_savepoint.html">savepoint</a> command</li>
+      <li><a href="cmdlineref_rollbacktosavepoint.html">rollback to savepoint</a> command</li>
+      <li>The <em><a href="developers_fundamentals_transactions.html">Running
+Transactions</a></em> topic
+contains includes a discussion of using savepoints.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -638,7 +685,7 @@ I
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

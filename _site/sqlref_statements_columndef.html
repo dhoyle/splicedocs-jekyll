@@ -2806,27 +2806,45 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Statements.ColumnDefinition">column-definition</h1>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><em><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></em>
-   [ <em>DataType</em> ]
-   [ <em><a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a></em> ]*
-   [ [ WITH ] DEFAULT <var>DefaultConstantExpression</var>
-     | <em><a href="sqlref_statements_generatedcolspec.html">generated-column-spec</a></em>
-     | <em><a href="sqlref_statements_generationclause.html">generation-clause</a></em>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="column-definition---statementscolumndefinition">column-definition   {#Statements.ColumnDefinition}</h1>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>Simple-column-Name
+   [ DataType ]
+   [ Column-level-constraint ]*
+   [ [ WITH ] DEFAULT DefaultConstantExpression
+     | generated-column-spec
+     | generation-clause
    ]
-   [ <em><a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a></em> ]*</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">DataType</p>
-                <p class="paramDefnFirst">Must be specified unless you specify a generation-clause, in which case the type of the generated column is that of the generation-clause.</p>
-                <p class="paramDefn">If you specify both a <em>DataType</em> and a <em>generation-clause</em>, the type of the <em>generation-clause</em> must be assignable to <em>DataType</em></p>
-                <p class="paramName">Column-level-constraint</p>
-                <p class="paramDefnFirst">See the <a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code> clause</a> documentation.</p>
-                <p class="paramName" id="ColumnDefault">DefaultConstantExpression</p>
-                <p class="paramDefnFirst">For the definition of a default value, a <var>DefaultConstantExpression</var> is an  expression that does not refer to any table. It can include constants,  date-time special registers, current schemas, and null:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><var>DefaultConstantExpression</var>:
+   [ Column-level-constraint ]*
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">DataType</p>
+
+      <p class="paramDefnFirst">Must be specified unless you specify a generation-clause, in which case
+the type of the generated column is that of the generation-clause.</p>
+
+      <p class="paramDefn">If you specify both a <em>DataType</em> and a <em>generation-clause</em>, the type of
+the <em>generation-clause</em> must be assignable to <em>DataType</em></p>
+
+      <p class="paramName">Column-level-constraint</p>
+
+      <p class="paramDefnFirst">See the <a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code> clause</a>
+documentation.</p>
+
+      <p class="paramName" id="ColumnDefault">DefaultConstantExpression</p>
+
+      <p class="paramDefnFirst">For the definition of a default value, a
+<var>DefaultConstantExpression</var> is an expression that does not
+refer to any table. It can include constants, date-time special
+registers, current schemas, and null:</p>
+
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>DefaultConstantExpression:
    NULL
  | CURRENT { SCHEMA | SQLID }
  | DATE
@@ -2835,24 +2853,43 @@
  | CURRENT DATE | CURRENT_DATE
  | CURRENT TIME | CURRENT_TIME
  | CURRENT TIMESTAMP | CURRENT_TIMESTAMP
- | <var>literal</var></pre></div>
-                <p class="paramDefn">The values in a <var>DefaultConstantExpression</var> must be compatible in type with the column, but a  <var>DefaultConstantExpression</var> has the following additional type  restrictions:</p>
-        <ul><li>If you specify <code>CURRENT SCHEMA</code> or <code>CURRENT SQLID</code>, the column must be a
-			character column whose length is at least 128.</li><li>If the column is an integer type, the default value must be an
-			integer literal.</li><li>If the column is a decimal type, the scale and precision of the default
-			value must be within those of the column.</li></ul>
-            </div>
-            <h2>Example</h2>
-            <p class="body">This example creates a table and uses two column definitions.</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE&#160;myTable (ID&#160;INT&#160;NOT&#160;NULL, NAME&#160;VARCHAR(32) );
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a>&#160;clause</li>
-            </ul>
-        </div>
-	</section>
+ | literal
+</code></pre>
+
+      </div>
+      <p class="paramDefn">The values in a <var>DefaultConstantExpression</var> must be compatible
+in type with the column, but a <var>DefaultConstantExpression</var> has
+the following additional type restrictions:</p>
+
+      <ul>
+        <li>If you specify <code>CURRENT SCHEMA</code> or <code>CURRENT SQLID</code>, the column must be
+a character column whose length is at least 128.</li>
+        <li>If the column is an integer type, the default value must be an integer
+literal.</li>
+        <li>If the column is a decimal type, the scale and precision of the
+default value must be within those of the column.</li>
+      </ul>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <p class="body">This example creates a table and uses two column definitions.</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE TABLE myTable (ID INT NOT NULL, NAME VARCHAR(32) );
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2869,7 +2906,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

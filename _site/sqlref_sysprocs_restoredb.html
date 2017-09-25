@@ -2806,55 +2806,115 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInSysProcs.DeleteBackup">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</h1>
-            <p>The <code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code> system procedure
-restores your database to the state it was in when a specific backup was performed, using a backup that you previously created using either the <code><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP</a></code>&#160;system procedure. </p>
-            <p>You can restore your database from any previous full or incremental backup.</p>
-            <p>There are several important things to know about restoring your database from a previous backup:</p>
-            <ul>
-                <li>Restoring a database <strong>wipes out your database</strong> and replaces it with what had been previously backed up.</li>
-                <li>You <strong>cannot use your cluster</strong> while restoring your database.</li>
-                <li>You <strong>must reboot your database</strong> after the restore is complete. See the <a href="onprem_admin_startingdb.html">Starting Your Database</a> topics in this book for instructions on restarting your database.</li>
-            </ul>
-            <p class="noteIcon">When you restore from a backup, Splice Machine automatically determines and runs whatever sequence of restores may be required to accomplish the restoration of your database; this means that when you select an incremental backup from which to restore, Splice Machine will detect that it needs to first restore from the previous full backup and then apply any incremental restorations.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE( VARCHAR&#160;<em>backupDir</em>,
-                                   BIGINT&#160;<em>backupId</em> ); </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">backupDir</p>
-                <p class="paramDefnFirst">Specifies the path to the directory containing the backup from which you want to restore your database. This can be a local directory if you're using the standalone version of Splice Machine, or a directory in your cluster's file system (HDFS or MapR-FS).</p>
-                <p class="paramDefn">Relative paths are resolved
-based on the current user directory. To avoid confusion, we strongly recommend that you use an absolute path when specifying the backup location.</p>
-                <p class="noteNote">You must specify the backup's directory when you call this procedure because, if your database has become corrupted and needs to be restored, the data in the <code>BACKUP.BACKUP</code> table (which includes the location of each backup) may also be corrupted.</p>
-                <p class="paramName">backupId</p>
-                <p class="paramDefnFirst">The ID&#160;of the backup job from which you want to restore your database. </p>
-                <p class="paramDefn">The system <a href="onprem_admin_backingup.html"><em>Backing Up and Restoring</em></a> topic in our <em>Administrator's Guide</em> for more information.</p>
-            </div>
-            <h2>Usage</h2>
-            <p class="body">Restoring you database can take a while, and has several major implications:</p>
-            <div class="notePlain">
-                <p>There are several important things to know about restoring your database from a previous backup:</p>
-                <ul>
-                    <li>Restoring a database <strong>wipes out your database</strong> and replaces it with what had been previously backed up.</li>
-                    <li>You <strong>cannot use your cluster</strong> while restoring your database.</li>
-                    <li>You <strong>must reboot your database</strong> after the restore is complete by first  <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
-                </ul>
-            </div>
-            <p>As noted at the top of this topic:&#160;if you are restoring from an incremental backup, you must first restore from the most recent full backup, and then incrementally restore from each subsequent incremental backup. See <a href="#Example">Example 2 below.</a></p>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Execute Privileges</h2>
-            <p>If authentication and SQL authorization are both enabled, only the database owner has
-execute privileges on this function by default. The
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsrestoredatabase---builtinsysprocsdeletebackup">SYSCS_UTIL.SYSCS_RESTORE_DATABASE   {#BuiltInSysProcs.DeleteBackup}</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code> system procedure restores your
+database to the state it was in when a specific backup was performed,
+using a backup that you previously created using either the
+<a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP</code></a> system
+procedure.</p>
+
+    <p>You can restore your database from any previous full or incremental
+backup.</p>
+
+    <p>There are several important things to know about restoring your database
+from a previous backup:</p>
+
+    <ul>
+      <li>Restoring a database <strong>wipes out your database</strong> and replaces it with
+what had been previously backed up.</li>
+      <li>You <strong>cannot use your cluster</strong> while restoring your database.</li>
+      <li>You <strong>must reboot your database</strong> after the restore is complete. See
+the <a href="onprem_admin_startingdb.html">Starting Your Database</a> topics in
+this book for instructions on restarting your database.</li>
+    </ul>
+
+    <p class="noteIcon">When you restore from a backup, Splice Machine automatically determines
+and runs whatever sequence of restores may be required to accomplish the
+restoration of your database; this means that when you select an
+incremental backup from which to restore, Splice Machine will detect
+that it needs to first restore from the previous full backup and then
+apply any incremental restorations.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE( VARCHAR backupDir,
+                                   BIGINT backupId ); 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupDir</p>
+
+      <p class="paramDefnFirst">Specifies the path to the directory containing the backup from which you
+want to restore your database. This can be a local directory if you’re
+using the standalone version of Splice Machine, or a directory in your
+cluster’s file system (HDFS or MapR-FS).</p>
+
+      <p class="paramDefn">Relative paths are resolved based on the current user directory. To
+avoid confusion, we strongly recommend that you use an absolute path
+when specifying the backup location.</p>
+
+      <p class="noteNote">You must specify the backup’s directory when you call this procedure
+because, if your database has become corrupted and needs to be restored,
+the data in the <code>BACKUP.BACKUP</code> table (which includes the location of
+each backup) may also be corrupted.</p>
+
+      <p class="paramName">backupId</p>
+
+      <p class="paramDefnFirst">The ID of the backup job from which you want to restore your database.</p>
+
+      <p class="paramDefn">The system <a href="onprem_admin_backingup.html"><em>Backing Up and Restoring</em></a>
+topic in our <em>Administrator’s Guide</em> for more information.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p class="body">Restoring you database can take a while, and has several major
+implications:</p>
+
+    <div class="notePlain">
+      <p>There are several important things to know about restoring your database
+from a previous backup:</p>
+
+      <ul>
+        <li>Restoring a database <strong>wipes out your database</strong> and replaces it with
+what had been previously backed up.</li>
+        <li>You <strong>cannot use your cluster</strong> while restoring your database.</li>
+        <li>You <strong>must reboot your database</strong> after the restore is complete by
+first <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
+      </ul>
+
+    </div>
+    <p>As noted at the top of this topic: if you are restoring from an
+incremental backup, you must first restore from the most recent full
+backup, and then incrementally restore from each subsequent incremental
+backup. See <a href="#Example">Example 2 below.</a></p>
+
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="execute-privileges">Execute Privileges</h2>
+
+    <p>If authentication and SQL authorization are both enabled, only the
+database owner has execute privileges on this function by default. The
 database owner can grant access to other users.</p>
-            <h2>Examples</h2>
-            <p>The following example first queries the system backup table to find the ID&#160;of the backup from which we want to restore, and then initiates the restoration.</p>
-            <p class="noteIcon">Stop using your database before backing up, and keep in mind that restoring a database may take several minutes, depending on the size of your database.</p>
-			<pre class="Example" xml:space="preserve">
-splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;SYS.SYSBACKUP;
+
+    <h2 id="examples">Examples</h2>
+
+    <p>The following example first queries the system backup table to find the
+ID of the backup from which we want to restore, and then initiates the
+restoration.</p>
+
+    <p class="noteIcon">Stop using your database before backing up, and keep in mind that
+restoring a database may take several minutes, depending on the size of
+your database.</p>
+
+    <pre class="Example"><code>splice&gt; SELECT * FROM SYS.SYSBACKUP;
 BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESYSTEM      |SCOPE |INCR&amp;|INCREMENTAL_PARENT_&amp;|BACKUP_ITEM
 ----------------------------------------------------------------------------------------------------------------------------------------
 74101     |2015-11-30 17:46:41.431  |2015-11-30 17:46:56.664  |S         |./dbBackups/    |D     |true |40975               |30
@@ -2862,23 +2922,36 @@ BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESY
 
 2 rows selected
 
-splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 74101);
-Statement executed.</pre>
-            <p>Once the restoration is complete, reboot your database by the <a href="onprem_admin_startingdb.html">Starting Your Database.</a></p>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in the <em>Administrator's Guide</em></li>
-                <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a> built-in system procedure</li>
-                <li><code><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></code> system table</li>
-                <li><code><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></code> system table</li>
-                <li><code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></code> system table</li>
-            </ul>
-        </div>
-	</section>
+splice&gt; CALL SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 74101);
+Statement executed.
+</code></pre>
+
+    <p>Once the restoration is complete, reboot your database by the <a href="onprem_admin_startingdb.html">Starting
+Your Database.</a></p>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in
+the <em>Administrator’s Guide</em></li>
+      <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>built-in
+system procedure</li>
+      <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code></a> system table</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2895,7 +2968,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

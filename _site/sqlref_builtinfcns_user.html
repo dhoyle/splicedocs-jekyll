@@ -2806,31 +2806,55 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.User">USER</h1>
-            <p>When used outside stored routines, <code><a href="sqlref_builtinfcns_sessionuser.html">SESSION_USER</a></code> all return the authorization identifier of the user who created the SQL session.</p>
-            <p><code>SESSION_USER</code> also always returns this value when used within stored routines.</p>
-            <p>If used within a stored routine created with <code>EXTERNAL SECURITY DEFINER</code>, however, <code>CURRENT_USER</code> and <code>USER</code> return the authorization identifier of the user that owns the schema of the routine. This is usually the creating user, although the database owner could be the creator as well.</p>
-            <p>For information about definer's and invoker's rights, see <a href="sqlref_statements_createfunction.html"><code>CREATE FUNCTION</code> statement</a>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">USER</pre>
-            </div>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES USER;
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="user---builtinfcnsuser">USER   {#BuiltInFcns.User}</h1>
+
+    <p>When used outside stored routines,
+<a href="sqlref_builtinfcns_sessionuser.html"><code>SESSION_USER</code></a> all return the
+authorization identifier of the user who created the SQL session.</p>
+
+    <p><code>SESSION_USER</code> also always returns this value when used within stored
+routines.</p>
+
+    <p>If used within a stored routine created with <code>EXTERNAL SECURITY
+DEFINER</code>, however, <code>CURRENT_USER</code> and <code>USER</code> return the authorization
+identifier of the user that owns the schema of the routine. This is
+usually the creating user, although the database owner could be the
+creator as well.</p>
+
+    <p>For information about definer’s and invoker’s rights, see <a href="sqlref_statements_createfunction.html"><code>CREATE
+FUNCTION</code> statement</a>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>USER
+</code></pre>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES USER;
 1
 ---------------------------------
-SPLICE</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_currentuser.html"><code>CURRENT_USER</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_sessionuser.html"><code>SESSION_USER</code></a> function</li>
-                <li><a href="sqlref_statements_createfunction.html"><code>CREATE_FUNCTION</code></a> statement</li>
-                <li><a href="sqlref_statements_createprocedure.html"><code>CREATE_PROCEDURE</code></a>&#160;statement</li>
-            </ul>
-        </div>
-	</section>
+SPLICE
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_currentuser.html"><code>CURRENT_USER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sessionuser.html"><code>SESSION_USER</code></a> function</li>
+      <li><a href="sqlref_statements_createfunction.html"><code>CREATE_FUNCTION</code></a> statement</li>
+      <li><a href="sqlref_statements_createprocedure.html"><code>CREATE_PROCEDURE</code></a> statement</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2847,7 +2871,7 @@ SPLICE</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

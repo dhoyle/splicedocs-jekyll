@@ -2806,27 +2806,42 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>INSTR</h1>
-            <p>The <code>INSTR</code> function returns the index of the first occurrence of a substring in a string.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">INSTR(str, substring)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">str
-            </p>
-                <p class="paramDefnFirst">The string in which to search for the substring.</p>
-                <p class="paramName">substring
-            </p>
-                <p class="paramDefnFirst">The substring to search for.</p>
-            </div>
-            <h2>Results</h2>
-            <p>Returns the index in <code>str</code> of the first occurrence of <code>substring</code>.</p>
-            <p>The first index&#160;is <code>1</code>.</p>
-            <p>If <code>substring</code> is not found, <code>INSTR</code>&#160;returns <code>0</code>.</p>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example">splice&gt; SELECT DisplayName, INSTR(DisplayName, 'Pa') "Position"
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="instr">INSTR</h1>
+
+    <p>The <code>INSTR</code> function returns the index of the first occurrence of a
+substring in a string.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>INSTR(str, substring)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">str</p>
+
+      <p class="paramDefnFirst">The string in which to search for the substring.</p>
+
+      <p class="paramName">substring</p>
+
+      <p class="paramDefnFirst">The substring to search for.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>Returns the index in <code>str</code> of the first occurrence of <code>substring</code>.</p>
+
+    <p>The first index is <code>1</code>.</p>
+
+    <p>If <code>substring</code> is not found, <code>INSTR</code> returns <code>0</code>.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT DisplayName, INSTR(DisplayName, 'Pa') "Position"
    FROM Players
    WHERE (INSTR(DisplayName, 'Pa') &gt; 0)
    ORDER BY DisplayName;
@@ -2839,27 +2854,30 @@ Pablo Bonjourno         |1
 Paul Kaster             |1
 
 5 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
-                <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_length.html"><code>LENGTH</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_locate.html"><code>LOCATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a>&#160;function</li>
-                <li><code><a href="sqlref_builtinfcns_regexplike.html">REGEX_LIKE</a></code>&#160;operator</li>
-                <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_trim.html"><code>TRIM</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ucase.html"><code>UCASE</code></a>&#160;function</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
+      <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_length.html"><code>LENGTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_locate.html"><code>LOCATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_regexplike.html"><code>REGEX_LIKE</code></a> operator</li>
+      <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_trim.html"><code>TRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ucase.html"><code>UCASE</code></a> function</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2876,7 +2894,7 @@ Paul Kaster             |1
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

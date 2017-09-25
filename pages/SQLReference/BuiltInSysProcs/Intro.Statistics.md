@@ -1,0 +1,53 @@
+---
+title: Database Statistics System Procedures and Functions in Splice Machine
+summary: A table that summarizes the function of each available Splice Machine built-in system procedure for working with database statistics
+keywords: statistics procedures, managing database statistics
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_sysprocs_statisticsintro.html
+folder: SQLReference/BuiltInSysProcs
+---
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
+# Database Statistics System Procedures and Functions
+
+These are the system procedures and functions for managing database
+statistics:
+{: .body}
+
+<table summary="Summary of Splice Machine system procedures and functions for statistics">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Procedure / Function Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a>
+                        </td>
+                        <td>Collects statistics on a specific schema in your database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_disablecolumnstats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a>
+                        </td>
+                        <td>Disables collection of statistics on a specific column in a table.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_dropschemastats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a>
+                        </td>
+                        <td>Drops statistics for a specific schema in your database.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_enablecolumnstats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a>
+                        </td>
+                        <td>Enables collection of statistics on a specific column in a table.</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+</section>
+

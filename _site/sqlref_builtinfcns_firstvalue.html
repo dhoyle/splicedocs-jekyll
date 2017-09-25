@@ -2806,38 +2806,77 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>FIRST_VALUE</h1>
-            <p><code>FIRST_VALUE</code> is a window function that returns the values of a specified expression that is evaluated at the first row of a window for the current row. This means that you can select a first value from a set of rows without having to use a self join.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">FIRST_VALUE ( <em>expression</em> [ {IGNORE | RESPECT}&#160;NULLS ] ) OVER ( <em>overClause</em> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">expression<![CDATA[            ]]></p>
-                <p class="paramDefnFirst">The expression to evaluate; typically a column name or computation involving a column name.</p>
-                <p class="paramName">IGNORE&#160;NULLS
-            </p>
-                <p class="paramDefnFirst">If this optional qualifier is specified, <code>NULL</code>&#160;values are ignored, and the first non-<code>NULL</code>&#160;value is evaluated.</p>
-                <p class="paramDefn">If you specify this and all values are <code>NULL</code>, <code>FIRST_VALUE</code>&#160;returns <code>NULL</code>.</p>
-                <p class="paramName">RESPECT&#160;NULLS
-            </p>
-                <p class="paramDefnFirst">This qualifier is the default behavior:&#160;it specifies that the first value is always returned, even if it is <code>NULL</code>. </p>
-                <p class="paramName">overClause</p>
-                <p class="paramDefnFirst">See the <code><a href="sqlref_clauses_over.html">OVER</a></code>&#160;clause documentation.</p>
-            </div>
-            <h2>Usage Notes</h2>
-            <p>Splice Machine recommends that you use the <code>FIRST_VALUE</code>&#160;function with the <code><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></code>&#160;clause to produce deterministic results.</p>
-            <h2>Results</h2>
-            <p>Returns value(s)&#160;resulting from the evaluation of the specified expression; the return type is of the same value type as the date stored in the column used in the expression..</p>
-            <ul>
-                <li><code>FIRST_VALUE</code>&#160;returns the first value in the set, unless that value is <code>NULL</code> and you have specified the <code>IGNORE NULLS</code>&#160;qualifier; if you've specified <code>IGNORE NULLS</code>, this function returns the first non-<code>NULL</code>&#160;value in the set.</li>
-                <li>If all values in the set are <code>NULL</code>, <code>FIRST_VALUE</code>&#160;always returns <code>NULL</code>.</li>
-            </ul>
-            <p class="noteNote">Splice Machine always sorts <code>NULL</code>&#160;values first in the results.</p>
-            <h2>Examples</h2>
-            <p>The following query finds all players with 10 or more HomeRuns, and compares each player's home run count with the lowest total within that group on his team:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns,
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="firstvalue">FIRST_VALUE</h1>
+
+    <p><code>FIRST_VALUE</code> is a window function that returns the values of a
+specified expression that is evaluated at the first row of a window for
+the current row. This means that you can select a first value from a set
+of rows without having to use a self join.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>FIRST_VALUE ( expression [ {IGNORE | RESPECT} NULLS ] ) OVER ( overClause )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">expression&lt;![CDATA[ ]]&gt;</p>
+
+      <p class="paramDefnFirst">The expression to evaluate; typically a column name or computation
+involving a column name.</p>
+
+      <p class="paramName">IGNORE NULLS</p>
+
+      <p class="paramDefnFirst">If this optional qualifier is specified, <code>NULL</code> values are ignored, and
+the first non-<code>NULL</code> value is evaluated.</p>
+
+      <p class="paramDefn">If you specify this and all values are <code>NULL</code>, <code>FIRST_VALUE</code> returns
+<code>NULL</code>.</p>
+
+      <p class="paramName">RESPECT NULLS</p>
+
+      <p class="paramDefnFirst">This qualifier is the default behavior: it specifies that the first
+value is always returned, even if it is <code>NULL</code>.</p>
+
+      <p class="paramName">overClause</p>
+
+      <p class="paramDefnFirst">See the <a href="sqlref_clauses_over.html"><code>OVER</code></a> clause documentation.</p>
+
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Splice Machine recommends that you use the <code>FIRST_VALUE</code> function with
+the <a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause to produce
+deterministic results.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>Returns value(s) resulting from the evaluation of the specified
+expression; the return type is of the same value type as the date stored
+in the column used in the expression..</p>
+
+    <ul>
+      <li><code>FIRST_VALUE</code> returns the first value in the set, unless that value is
+<code>NULL</code> and you have specified the <code>IGNORE NULLS</code> qualifier; if you’ve
+specified <code>IGNORE NULLS</code>, this function returns the first
+non-<code>NULL</code> value in the set.</li>
+      <li>If all values in the set are <code>NULL</code>, <code>FIRST_VALUE</code> always returns
+<code>NULL</code>.</li>
+    </ul>
+
+    <p class="noteNote">Splice Machine always sorts <code>NULL</code> values first in the results.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p>The following query finds all players with 10 or more HomeRuns, and
+compares each player’s home run count with the lowest total within that
+group on his team:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT Team, DisplayName, HomeRuns,
    FIRST_VALUE(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns
         ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Least"
    FROM Players JOIN Batting ON Players.ID=Batting.ID
@@ -2857,23 +2896,29 @@ Giants   |Billy Bopper            |18    |12
 Giants   |Mitch Duffer            |12    |12
 
 10 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
-                <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_lag.html"><code>LAG</code></a>&#160;function</li>
-                <li><code><a href="sqlref_builtinfcns_lastvalue.html">LAST_VALUE</a></code>&#160;function</li>
-                <li><code><a href="sqlref_builtinfcns_lead.html">LEAD</a></code>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
-                <li><a href="sqlref_clauses_over.html"><code>OVER</code></a>&#160;clause</li>
-                <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in the <em>Developer Guide</em>.</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate
+</a>functions</li>
+      <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lag.html"><code>LAG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lastvalue.html"><code>LAST_VALUE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lead.html"><code>LEAD</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+      <li><a href="sqlref_clauses_over.html"><code>OVER</code></a> clause</li>
+      <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in
+the <em>Developer Guide</em>.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2890,7 +2935,7 @@ Giants   |Mitch Duffer            |12    |12
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

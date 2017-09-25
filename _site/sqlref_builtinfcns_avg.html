@@ -2806,55 +2806,105 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>AVG</h1>
-            <p><code>AVG</code> evaluates the average of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">AVG ( [ DISTINCT | ALL ] <em>Expression</em> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">DISTINCT
-            </p>
-                <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated</p>
-                <p class="paramName"><em>ALL</em>
-                </p>
-                <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.</p>
-                <p class="paramName">Expression
-            </p>
-                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
-                <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL data types. </p>
-                <p class="paramDefn">If an expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>Only one <code>DISTINCT</code> aggregate expression per <em><a href="sqlref_expressions_select.html">Expression</a></em> is allowed. For example, the following query is not valid:</p>
-            <div class="preWrapperWide"><pre xml:space="preserve" class="Example">   --- query not valid
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="avg">AVG</h1>
+
+    <p><code>AVG</code> evaluates the average of an expression over a set of rows. You can
+use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window
+(analytic) function</a>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>AVG ( [ DISTINCT | ALL ] Expression )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">DISTINCT</p>
+
+      <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated</p>
+
+      <p class="paramName"><em>ALL</em></p>
+
+      <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the
+default value.</p>
+
+      <p class="paramName">Expression</p>
+
+      <p class="paramDefnFirst">An expression that evaluates to a numeric data
+type: <a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
+
+      <p class="paramDefn">The expression can contain multiple column references or expressions,
+but it cannot contain another aggregate or subquery, and it must
+evaluate to an ANSI SQL numeric data type. This means that you can call
+methods that evaluate to ANSI SQL data types.</p>
+
+      <p class="paramDefn">If an expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>Only one <code>DISTINCT</code> aggregate expression per
+<em><a href="sqlref_expressions_select.html">Expression</a></em> is allowed. For example,
+the following query is not valid:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>   --- query not valid
 SELECT AVG (DISTINCT AtBats), SUM (DISTINCT Hits)
-  FROM Batting;</pre>
-            </div>
-            <p class="noteNote">Note that specifying <code>DISTINCT</code>&#160;can result in a different value, since a smaller number of values may be averaged. For example, if a column contains the values 1.0, 1.0, 1.0, 1.0, and 2.0, <code>AVG(col)</code> returns a smaller value than <code>AVG(DISTINCT col)</code>.</p>
-            <h2>Results</h2>
-            <p>The resulting data type is the same as the expression on which it operates; it will never overflow. </p>
-            <p>The following query, for example, returns the INTEGER <code>1</code>, which might not be what you would expect:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SELECT AVG(c1)
+  FROM Batting;
+</code></pre>
+
+    </div>
+    <p class="noteNote">Note that specifying <code>DISTINCT</code> can result in a different value, since a
+smaller number of values may be averaged. For example, if a column
+contains the values 1.0, 1.0, 1.0, 1.0, and 2.0, <code>AVG(col)</code> returns a
+smaller value than <code>AVG(DISTINCT col)</code>.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>The resulting data type is the same as the expression on which it
+operates; it will never overflow.</p>
+
+    <p>The following query, for example, returns the INTEGER <code>1</code>, which might
+not be what you would expect:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT AVG(c1)
   FROM (VALUES (1), (1), (1), (1), (2))
-  AS myTable (c1);</pre>
-            </div>
-            <p><a href="sqlref_builtinfcns_cast.html"><code>CAST</code></a> the expression to another data type if you want more precision:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">SELECT AVG(CAST (c1 AS DOUBLE PRECISION))
-  FROM (VALUES (1), (1), (1), (1), (2)) AS myTable (c1);</pre>
-            </div>
-            <h2>Aggregate Example</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT AVG(salary) "Average" FROM Salaries;
+  AS myTable (c1);
+</code></pre>
+
+    </div>
+    <p><a href="sqlref_builtinfcns_cast.html"><code>CAST</code></a> the expression to another data
+type if you want more precision:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT AVG(CAST (c1 AS DOUBLE PRECISION))
+  FROM (VALUES (1), (1), (1), (1), (2)) AS myTable (c1);
+</code></pre>
+
+    </div>
+    <h2 id="aggregate-example">Aggregate Example</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT AVG(salary) "Average" FROM Salaries;
 Average
 --------
 2949737
 
-1 row selected</pre>
-            </div>
-            <h2>Analytic Example</h2>
-            <p>The following example shows the average salary paid, per position, for the San Francisco Giants in 2015:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT Position, Players.ID, Salary, AVG(Cast(Salary as DECIMAL(11,3)))
+1 row selected
+</code></pre>
+
+    </div>
+    <h2 id="analytic-example">Analytic Example</h2>
+
+    <p>The following example shows the average salary paid, per position, for
+the San Francisco Giants in 2015:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT Position, Players.ID, Salary, AVG(Cast(Salary as DECIMAL(11,3)))
    OVER (PARTITION by Position) "Average for Position"
    FROM players join Salaries on players.ID=salaries.ID
    WHERE Team='Giants' and Season=2015;
@@ -2911,23 +2961,27 @@ OF  |21    |149754              |962397.2500
 OF  |25    |8319                |962397.2500
 
 48 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and aggregate functions</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_max.html"><code>MAX</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
-                <li><a href="sqlref_clauses_over.html"><code>OVER</code></a>&#160;clause</li>
-                <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in the <em>Developer Guide</em>.</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and aggregate
+functions</a></li>
+      <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_max.html"><code>MAX</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+      <li><a href="sqlref_clauses_over.html"><code>OVER</code></a> clause</li>
+      <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in
+the <em>Developer Guide</em>.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2944,7 +2998,7 @@ OF  |25    |8319                |962397.2500
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

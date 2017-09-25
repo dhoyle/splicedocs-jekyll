@@ -587,19 +587,47 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Using Temporary Database Tables</h1>
-            <p>This topic describes how to use temporary tables with Splice Machine. </p>
-            <h2>About Temporary Tables</h2>
-            <p>You can use temporary tables when you want to temporarily save a result set for further processing. One common case for doing so is when you've constructed a result set by running multiple queries. You can also use temporary tables when performing complex queries that require extensive operations such as repeated multiple joins or sub-queries. Storing intermediate results in a temporary table can reduce overall processing time.</p>
-            <p>An example of using a temporary table to store intermediate results is a web-based application for travel reservations that allows customers to create several alternative itineraries, compare them, and then select one for purchase. Such an app could store each itinerary in a row in a temporary table, using table updates whenever the itinerary changes. When the customer decides upon a final itinerary, that temporary row is copied into a persistent table. And when the customer session ends, the temporary table is automatically dropped.</p>
-            <p class="noteNote">Creating and operating with temporary tables does consume resources, and can affect performance of your queries.</p>
-            <h2>Creating Temporary Tables</h2>
-            <p>Splice Machine provides two statements you can use to create a temporary table; we provide multiple ways to create temporary tables to maintain compatibility with third party Business Intelligence tools. </p>
-            <p class="noteRestriction">Splice Machine does not currently support creating temporary tables stored as external tables.</p>
-            <p>Each of these statements creates the same kind of temporary table, using different syntax</p>
-            <table summary="Statements for creating temporary tables">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="using-temporary-database-tables">Using Temporary Database Tables</h1>
+
+    <p>This topic describes how to use temporary tables with Splice Machine.</p>
+
+    <h2 id="about-temporary-tables">About Temporary Tables</h2>
+
+    <p>You can use temporary tables when you want to temporarily save a result
+set for further processing. One common case for doing so is when you’ve
+constructed a result set by running multiple queries. You can also use
+temporary tables when performing complex queries that require extensive
+operations such as repeated multiple joins or sub-queries. Storing
+intermediate results in a temporary table can reduce overall processing
+time.</p>
+
+    <p>An example of using a temporary table to store intermediate results is a
+web-based application for travel reservations that allows customers to
+create several alternative itineraries, compare them, and then select
+one for purchase. Such an app could store each itinerary in a row in a
+temporary table, using table updates whenever the itinerary changes.
+When the customer decides upon a final itinerary, that temporary row is
+copied into a persistent table. And when the customer session ends, the
+temporary table is automatically dropped.</p>
+
+    <p class="noteNote">Creating and operating with temporary tables does consume resources, and
+can affect performance of your queries.</p>
+
+    <h2 id="creating-temporary-tables">Creating Temporary Tables</h2>
+
+    <p>Splice Machine provides two statements you can use to create a temporary
+table; we provide multiple ways to create temporary tables to maintain
+compatibility with third party Business Intelligence tools.</p>
+
+    <p class="noteRestriction">Splice Machine does not currently support creating temporary tables
+stored as external tables.</p>
+
+    <p>Each of these statements creates the same kind of temporary table, using
+different syntax</p>
+
+    <table summary="Statements for creating temporary tables">
                 <col />
                 <col />
                 <thead>
@@ -610,7 +638,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><code><a href="sqlref_statements_createtemptable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></code>
+                        <td><a href="sqlref_statements_createtemptable.html"><code>CREATE TEMPORARY TABLE</code></a>
                         </td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em> {
@@ -623,7 +651,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><code><a href="sqlref_statements_globaltemptable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></code>
+                        <td><a href="sqlref_statements_globaltemptable.html"><code>DECLARE GLOBAL TEMPORARY TABLE</code></a>
                         </td>
                         <td>
                             <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">DECLARE GLOBAL TEMPORARY TABLE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em>
@@ -636,35 +664,56 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="noteNote">Splice Machine generates a warning if you attempt to specify any other modifiers other than the <code>NOLOGGING</code>,&#160;<code>NOT&#160;LOGGED</code>, and <code>ON&#160;COMMIT&#160;PRESERVE&#160;ROWS</code>&#160;modifiers shown above. </p>
-            <h2>Restrictions on Temporary Tables</h2>
-            <p>You can use temporary tables just like you do permanently defined database tables, with several important exceptions and restrictions that are noted in this section, including these:</p>
-            <ul>
-                <li><a href="#Operatio">Operational Limitations</a>
-                </li>
-                <li><a href="#Table">Table Persistence</a>
-                </li>
-            </ul>
-            <h3 id="Operatio">Operational Limitations</h3>
-            <p>Temporary tables have the following operational limitations; they:</p>
-            <ul>
-                <li>exist only while a user session is alive</li>
-                <li>are visible in system tables, but are otherwise not visible to other sessions or transactions</li>
-                <li>cannot be altered using the <code><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></code>&#160;statements</li>
-                <li>do not get backed up</li>
-                <li>cannot be used as data providers to views</li>
-                <li>cannot be referenced by foreign keys in other tables</li>
-                <li>are not displayed by the <a href="cmdlineref_showtables.html"><code>show tables</code></a> command</li>
-            </ul>
-            <p>Also note that temporary tables persist across transactions in a session and are automatically dropped when a session terminates.</p>
-            <h3 id="Table">Table Persistence</h3>
-            <p>Here are two important notes about temporary table persistence. Temporary tables:</p>
-            <ul>
-                <li>persist across transactions in a session</li>
-                <li>are automatically dropped when a session terminates or expires</li>
-                <li>can also be dropped with the <code><a href="sqlref_statements_droptable.html">DROP&#160;TABLE</a></code>&#160;statement</li>
-            </ul>
-            <h2>Example</h2><pre class="Example" xml:space="preserve">create local temporary table temp_num_dt (
+    <p class="noteNote">Splice Machine generates a warning if you attempt to specify any other
+modifiers other than the <code>NOLOGGING</code>, <code>NOT LOGGED</code>, and
+<code>ON COMMIT PRESERVE ROWS</code> modifiers shown above.</p>
+
+    <h2 id="restrictions-on-temporary-tables">Restrictions on Temporary Tables</h2>
+
+    <p>You can use temporary tables just like you do permanently defined
+database tables, with several important exceptions and restrictions that
+are noted in this section, including these:</p>
+
+    <ul>
+      <li><a href="#Operatio">Operational Limitations</a></li>
+      <li><a href="#Table">Table Persistence</a></li>
+    </ul>
+
+    <h3 id="Operatio">Operational Limitations</h3>
+
+    <p>Temporary tables have the following operational limitations; they:</p>
+
+    <ul>
+      <li>exist only while a user session is alive</li>
+      <li>are visible in system tables, but are otherwise not visible to other
+sessions or transactions</li>
+      <li>cannot be altered using the
+<a href="sqlref_statements_renamecolumn.html"><code>RENAME COLUMN</code></a> statements</li>
+      <li>do not get backed up</li>
+      <li>cannot be used as data providers to views</li>
+      <li>cannot be referenced by foreign keys in other tables</li>
+      <li>are not displayed by the <a href="cmdlineref_showtables.html"><code>show tables</code></a>
+command</li>
+    </ul>
+
+    <p>Also note that temporary tables persist across transactions in a session
+and are automatically dropped when a session terminates.</p>
+
+    <h3 id="Table">Table Persistence</h3>
+
+    <p>Here are two important notes about temporary table persistence.
+Temporary tables:</p>
+
+    <ul>
+      <li>persist across transactions in a session</li>
+      <li>are automatically dropped when a session terminates or expires</li>
+      <li>can also be dropped with the
+<a href="sqlref_statements_droptable.html"><code>DROP TABLE</code></a> statement</li>
+    </ul>
+
+    <h2 id="example">Example</h2>
+
+    <pre class="Example"><code>create local temporary table temp_num_dt (
    smallint_col smallint not null,
    int_col int,
    primary key(smallint_col)) on commit preserve rows;
@@ -672,18 +721,28 @@ insert into temp_num_dt values (1,1);
 insert into temp_num_dt values (3,2),(4,2),(5,null),(6,4),(7,8);
 insert into temp_num_dt values (13,2),(14,2),(15,null),(16,null),(17,8);
 select * from temp_num_dt;
-</pre>
-            <h2>See Also</h2>
-            <ul>
-                <li><code><a href="sqlref_statements_altertable.html">ALTER&#160;TABLE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_statements_createtemptable.html">CREATE&#160;TEMPORARY&#160;TABLE</a></code> statement in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_statements_globaltemptable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></code> statement in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_statements_droptable.html">DROP TABLE</a></code> statement in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></code>&#160;statement in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_statements_renametable.html">RENAME&#160;TABLE</a></code> statement in the <em>SQL&#160;Reference Manual</em></li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_altertable.html"><code>ALTER TABLE</code></a> in the
+<em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_statements_createtemptable.html"><code>CREATE TEMPORARY TABLE</code></a>
+statement in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_statements_globaltemptable.html"><code>DECLARE GLOBAL TEMPORARY TABLE</code></a>
+statement in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_statements_droptable.html"><code>DROP TABLE</code></a> statement in the
+<em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_statements_renamecolumn.html"><code>RENAME COLUMN</code></a> statement in
+the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_statements_renametable.html"><code>RENAME TABLE</code></a> statement in the
+<em>SQL Reference Manual</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -700,7 +759,7 @@ select * from temp_num_dt;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -1,0 +1,45 @@
+---
+summary: Introduction to Using Zeppelin with Your Database Service
+title: Using Zeppelin
+keywords: zep, notebook, dbaas, paas
+sidebar: dbaas_sidebar
+toc: false
+product: dbaas
+permalink: dbaas_zep_intro.html
+folder: DBaaS/Zeppelin
+---
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
+# Using Zeppelin Notebooks
+
+{% include splice_snippets/dbaasonlytopic.html %}
+This guide helps you to get started with using Zeppelin notebooks to
+interact with your Splice Machine database.
+
+<table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><em><a href="dbaas_zep_getstarted.html">Getting Started with Zeppelin</a></em></td>
+                    <td>Introduces you to using Zeppelin with your Splice Machine database.</td>
+                </tr>
+                <tr>
+                    <td><em><a href="dbaas_zep_notes.html">Zeppelin Usage Notes</a></em></td>
+                    <td>Specific usage notes for creating Zeppelin notebooks to use with Splice Machine..</td>
+                </tr>
+                <tr>
+                    <td><em><a href="dbaas_zep_simple.html">A Simple Tutorial</a></em></td>
+                    <td>Walks you through a quick and simple tutorial that shows you how to use Zeppelin notebooks to load and query data, and apply different visualizations to the results.</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+</section>
+

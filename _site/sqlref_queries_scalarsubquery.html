@@ -2806,25 +2806,40 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Queries.ScalarSubquery">Scalar Subquery</h1>
-            <p>A <em>ScalarSubquery</em> turns a <em><a href="sqlref_expressions_select.html">SelectExpression</a></em> result
-		into a scalar value because it returns only a single row and column value.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">( <em><a href="sqlref_queries_query.html">Query</a></em>
-  [ <em><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></em> ]
-  [ <em><a href="sqlref_clauses_resultoffset.html">result offset clause</a></em> ]
-  [ <em><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></em> ]
-)</pre>
-            </div>
-            <h2>Usage</h2>
-            <p>You can place a <em>ScalarSubquery</em> anywhere an <em>Expression</em> is permitted. The query must evaluate to a single row with a single column.</p>
-            <p>Scalar subqueries are also called <em>expression subqueries</em>.</p>
-            <h2>Examples</h2>
-            <p class="body">The <code>AVG</code>&#160;function always returns a single value; thus, this is a scalar subquery:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-SELECT NAME, COMM
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="scalar-subquery---queriesscalarsubquery">Scalar Subquery   {#Queries.ScalarSubquery}</h1>
+
+    <p>A <em>ScalarSubquery</em> turns a
+<em><a href="sqlref_expressions_select.html">SelectExpression</a></em> result into a
+scalar value because it returns only a single row and column value.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>( Query
+  [ ORDER BY clause ]
+  [ result offset clause ]
+  [ fetch first clause ]
+)
+</code></pre>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>You can place a <em>ScalarSubquery</em> anywhere an <em>Expression</em> is permitted.
+The query must evaluate to a single row with a single column.</p>
+
+    <p>Scalar subqueries are also called <em>expression subqueries</em>.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p class="body">The <code>AVG</code> function always returns a single value; thus, this is a scalar
+subquery:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>SELECT NAME, COMM
   FROM STAFF
   WHERE EXISTS
     (SELECT AVG(BONUS + 800)
@@ -2832,15 +2847,19 @@ SELECT NAME, COMM
        WHERE COMM &lt; 5000
        AND EMPLOYEE.LASTNAME = UPPER(STAFF.NAME)
     );
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_clauses_orderby.html"><code>ORDER&#160;BY</code></a>&#160;clause</li>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;expression</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2857,7 +2876,7 @@ SELECT NAME, COMM
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

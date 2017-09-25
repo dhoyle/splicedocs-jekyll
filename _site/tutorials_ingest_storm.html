@@ -510,65 +510,111 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Integrating Apache Storm with&#160;Splice&#160;Machine</h1>
-            <p>This topic walks you through building and running two different examples of integrating Storm with Splice Machine:</p>
-            <ul>
-                <li><a href="#Insertin">Inserting Random Values in Splice&#160;Machine with Storm</a>
-                </li>
-                <li><a href="#Insertin2">Inserting Data into Splice Machine from MySQL</a>
-                </li>
-            </ul>
-            <h2 id="Insertin">Inserting Random Values in Splice&#160;Machine with Storm</h2>
-            <p>This example iterates through a list of random words and numbers, inserting the values into a Splice Machine database; follow along in these steps:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Download the Sample Code:</p>
-                        <p class="indentLevel1">Pull the code from our git repository:</p>
-                        <div class="preWrapperWide"><pre class="Plain"><a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm"  target="_blank">https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm</a></pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Check the prerequisites:</p>
-                        <p class="indentLevel1">You must be running Splice Machine 2.0 or later on the same machine on which you will run this example code. If Splice&#160;Machine is running on a different machine, you'll need to modify the <code>server</code> variable in the <code>SpliceDumperTopology.java</code> file; change it to the name of the server that is running Splice&#160;Machine.</p>
-                        <p class="indentLevel1">You also must have <span class="AppCommand">maven v.3.3.9</span> or later installed.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Create the test table in Splice Machine:</p>
-                        <p class="indentLevel1">This example inserts data into a Splice Machine table named <code>testTable</code>. You need to create that table by entering this command at the <span class="AppCommand">splice&gt;</span>&#160;prompt:</p>
-                        <div class="preWrapperWide"><pre class="Example">splice&gt; CREATE TABLE testTable( word VARCHAR(100), number INT );</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Compile the sample code:</p>
-                        <p class="indentLevel1">Compile the sample code with this command</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">%&#160;mvn clean compile dependency:copy-dependencies</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run the sample code:</p>
-                        <p class="indentLevel1">Follow these steps:</p>
-                        <ol class="LowerAlphaPlainFont">
-                            <li>Make sure that Splice Machine is running and that you have created the <code>testTable</code> table.</li>
-                            <li>
-                                <p>Execute this script to run the program:</p>
-                                <div class="preWrapperWide"><pre class="ShellCommand">%&#160;run-storm.sh</pre>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Query <code>testTable</code> in Splice Machine to verify that it has been populated with random words and numbers:</p>
-                                <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;select *&#160;from testTable;</pre>
-                                </div>
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
-            <h3>About the Sample Code Classes</h3>
-            <p>The random insertion example contains the following java classes, each of which is described below:</p>
-            <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="integrating-apache-storm-withsplicemachine">Integrating Apache Storm with Splice Machine</h1>
+
+    <p>This topic walks you through building and running two different examples
+of integrating Storm with Splice Machine:</p>
+
+    <ul>
+      <li><a href="#Insertin">Inserting Random Values in Splice Machine with Storm</a></li>
+      <li><a href="#Insertin2">Inserting Data into Splice Machine from MySQL</a></li>
+    </ul>
+
+    <h2 id="Insertin">Inserting Random Values in Splice Machine with Storm</h2>
+
+    <p>This example iterates through a list of random words and numbers,
+inserting the values into a Splice Machine database; follow along in
+these steps:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Download the Sample Code:</p>
+
+          <p class="indentLevel1">Pull the code from our git repository:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Plain"><code>https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Check the prerequisites:</p>
+
+          <p class="indentLevel1">You must be running Splice Machine 2.0 or later on the same machine
+on which you will run this example code. If Splice Machine is
+running on a different machine, you’ll need to modify the <code>server</code>
+variable in the <code>SpliceDumperTopology.java</code> file; change it to the
+name of the server that is running Splice Machine.</p>
+
+          <p class="indentLevel1">You also must have <span class="AppCommand">maven v.3.3.9</span> or
+later installed.</p>
+        </li>
+        <li>
+          <p class="topLevel">Create the test table in Splice Machine:</p>
+
+          <p class="indentLevel1">This example inserts data into a Splice Machine table named
+<code>testTable</code>. You need to create that table by entering this command
+at the <span class="AppCommand">splice&gt;</span> prompt:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>splice&gt; CREATE TABLE testTable( word VARCHAR(100), number INT );
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Compile the sample code:</p>
+
+          <p class="indentLevel1">Compile the sample code with this command</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>% mvn clean compile dependency:copy-dependencies
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Run the sample code:</p>
+
+          <p class="indentLevel1">Follow these steps:</p>
+
+          <ol class="LowerAlphaPlainFont">
+            <li>Make sure that Splice Machine is running and that you have
+created the <code>testTable</code> table.</li>
+            <li>
+              <p>Execute this script to run the program:</p>
+
+              <div class="preWrapperWide">
+                <pre class="ShellCommand"><code>% run-storm.sh
+</code></pre>
+
+              </div>
+            </li>
+            <li>
+              <p>Query <code>testTable</code> in Splice Machine to verify that it has been
+populated with random words and numbers:</p>
+
+              <div class="preWrapperWide">
+                <pre class="AppCommand"><code>splice&gt; select * from testTable;
+</code></pre>
+
+              </div>
+            </li>
+          </ol>
+        </li>
+      </ol>
+
+    </div>
+    <h3 id="about-the-sample-code-classes">About the Sample Code Classes</h3>
+
+    <p>The random insertion example contains the following java classes, each
+of which is described below:</p>
+
+    <table>
                 <col />
                 <col />
                 <thead>
@@ -584,7 +630,7 @@
                     </tr>
                     <tr>
                         <td><code>SpliceConnector.java</code></td>
-                        <td>Establishes a JDBC&#160;connection with Splice Machine.</td>
+                        <td>Establishes a JDBC connection with Splice Machine.</td>
                     </tr>
                     <tr>
                         <td><code>SpliceDumperBolt.java</code></td>
@@ -596,72 +642,136 @@
                     </tr>
                     <tr>
                         <td><code>SpliceIntegerSpout.java</code></td>
-                        <td>Emits tuples that are inserted into the Splice&#160;Machine table.</td>
+                        <td>Emits tuples that are inserted into the Splice Machine table.</td>
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Insertin2">Inserting Data into Splice Machine from MySQL</h2>
-            <p>This example uses Storm to read data from a MySQL&#160;database, and insert that data into a table in Splice Machine.</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Download the Sample Code:</p>
-                        <p class="indentLevel1">Pull the code from our git repository:</p>
-                        <div class="preWrapperWide"><pre class="Plain"><a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm"  target="_blank">https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm</a></pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Check the prerequisites:</p>
-                        <p class="indentLevel1">You must be running Splice Machine 2.0 or later on the same machine on which you will run this example code. If Splice&#160;Machine is running on a different machine, you'll need to modify the <code>server</code> variable in the <code>MySqlToSpliceTopology</code>.java file; change it to the name of the server that is running Splice&#160;Machine.</p>
-                        <p class="indentLevel1">You also must have <span class="AppCommand">maven v.3.3.9</span> or later installed.</p>
-                        <p class="indentLevel1">This example assumes that your MySQL&#160;database instance is running on the same machine on which you're running Splice&#160;Machine, and that the root user does not have a password. If either of these is not true, then you need to modify the call to the <code>seedBufferQueue</code> method in the <code>MySqlSpout.java</code> file. This method takes four parameters that you may need to change:</p>
-                        <div class="preWrapperWide"><pre class="Plain">seedBufferQueue( MySqlServer, MySqlDatabase, mySqlUserName, mySqlPassword );</pre>
-                        </div>
-                        <p class="indentLevel1">The default settings used in this example are:</p>
-                        <div class="preWrapperWide"><pre class="Plain">seedBufferQueue( "localhost", "test", "root", "" );</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Create the students table in Splice Machine:</p>
-                        <p class="indentLevel1">This example inserts data into a Splice Machine table named <code>students</code>. You need to create that table by entering this command at the <span class="AppCommand">splice&gt;</span>&#160;prompt:</p>
-                        <div class="preWrapperWide"><pre class="Example">splice&gt; CREATE TABLE students( name VARCHAR(100) );</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Create the students table in your MySQL&#160;database:</p>
-                        <p class="indentLevel1">This example read data from a MySQL&#160;table named <code>students</code>. You need to create that table in MySQL:</p>
-                        <div class="preWrapperWide"><pre class="Example">$$ CREATE TABLE students( id INTEGER, name VARCHAR(100) );</pre>
-                        </div>
-                        <p class="indentLevel1">If your MySQL&#160;instance is on a different machine</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Compile the sample code:</p>
-                        <p class="indentLevel1">Compile the sample code with this command</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">%&#160;mvn clean compile dependency:copy-dependencies</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run the sample code:</p>
-                        <p class="indentLevel1">Follow these steps:</p>
-                        <ol class="LowerAlphaPlainFont">
-                            <li>Make sure that Splice Machine is running and that you have created the <code>testTable</code> table.</li>
-                            <li>
-                                <p>Execute this script to run the program:</p>
-                                <div class="preWrapperWide"><pre class="ShellCommand">%&#160;run-mysql-storm.sh</pre>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Query the <code>students</code> table in Splice Machine to verify that it has been populated with data from the MySQL table:</p>
-                                <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;select *&#160;from students;</pre>
-                                </div>
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
-            <h3>About the Sample Code Classes</h3>
-            <p>This example contains the following java classes:</p>
-            <table>
+    <h2 id="Insertin2">Inserting Data into Splice Machine from MySQL</h2>
+
+    <p>This example uses Storm to read data from a MySQL database, and insert
+that data into a table in Splice Machine.</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Download the Sample Code:</p>
+
+          <p class="indentLevel1">Pull the code from our git repository:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Plain"><code>https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Check the prerequisites:</p>
+
+          <p class="indentLevel1">You must be running Splice Machine 2.0 or later on the same machine
+on which you will run this example code. If Splice Machine is
+running on a different machine, you’ll need to modify the <code>server</code>
+variable in the <code>MySqlToSpliceTopology</code>.java file; change it to the
+name of the server that is running Splice Machine.</p>
+
+          <p class="indentLevel1">You also must have <span class="AppCommand">maven v.3.3.9</span> or
+later installed.</p>
+
+          <p class="indentLevel1">This example assumes that your MySQL database instance is running on
+the same machine on which you’re running Splice Machine, and that
+the root user does not have a password. If either of these is not
+true, then you need to modify the call to the <code>seedBufferQueue</code>
+method in the <code>MySqlSpout.java</code> file. This method takes four
+parameters that you may need to change:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Plain"><code>seedBufferQueue( MySqlServer, MySqlDatabase, mySqlUserName, mySqlPassword );
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">The default settings used in this example are:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Plain"><code>seedBufferQueue( "localhost", "test", "root", "" );
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Create the students table in Splice Machine:</p>
+
+          <p class="indentLevel1">This example inserts data into a Splice Machine table named
+<code>students</code>. You need to create that table by entering this command
+at the <span class="AppCommand">splice&gt;</span> prompt:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>splice&gt; CREATE TABLE students( name VARCHAR(100) );
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Create the students table in your MySQL database:</p>
+
+          <p class="indentLevel1">This example read data from a MySQL table named <code>students</code>. You need
+to create that table in MySQL:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>$$ CREATE TABLE students( id INTEGER, name VARCHAR(100) );
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">If your MySQL instance is on a different machine</p>
+        </li>
+        <li>
+          <p class="topLevel">Compile the sample code:</p>
+
+          <p class="indentLevel1">Compile the sample code with this command</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>% mvn clean compile dependency:copy-dependencies
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Run the sample code:</p>
+
+          <p class="indentLevel1">Follow these steps:</p>
+
+          <ol class="LowerAlphaPlainFont">
+            <li>Make sure that Splice Machine is running and that you have
+created the <code>testTable</code> table.</li>
+            <li>
+              <p>Execute this script to run the program:</p>
+
+              <div class="preWrapperWide">
+                <pre class="ShellCommand"><code>% run-mysql-storm.sh
+</code></pre>
+
+              </div>
+            </li>
+            <li>
+              <p>Query the <code>students</code> table in Splice Machine to verify that it
+has been populated with data from the MySQL table:</p>
+
+              <div class="preWrapperWide">
+                <pre class="AppCommand"><code>splice&gt; select * from students;
+</code></pre>
+
+              </div>
+            </li>
+          </ol>
+        </li>
+      </ol>
+
+    </div>
+    <h3 id="about-the-sample-code-classes-1">About the Sample Code Classes</h3>
+
+    <p>This example contains the following java classes:</p>
+
+    <table>
                 <col />
                 <col />
                 <thead>
@@ -677,15 +787,15 @@
                     </tr>
                     <tr>
                         <td><code>MySqlConnector.java</code></td>
-                        <td>Establishes a JDBC&#160;connection with MySQL.</td>
+                        <td>Establishes a JDBC connection with MySQL.</td>
                     </tr>
                     <tr>
                         <td><code>MySqlSpliceBolt.java</code></td>
-                        <td>Dumps data from MySQL&#160;into Splice Machine.</td>
+                        <td>Dumps data from MySQL into Splice Machine.</td>
                     </tr>
                     <tr>
                         <td><code>MySqlSpout.java</code></td>
-                        <td>Emits tuples from MySQL&#160;that are inserted into the Splice&#160;Machine table.</td>
+                        <td>Emits tuples from MySQL that are inserted into the Splice Machine table.</td>
                     </tr>
                     <tr>
                         <td><code>MySqlToSpliceTopology.java</code></td>
@@ -697,12 +807,13 @@
                     </tr>
                     <tr>
                         <td><code>SpliceConnector.java</code></td>
-                        <td>Establishes a JDBC&#160;connection with Splice Machine.</td>
+                        <td>Establishes a JDBC connection with Splice Machine.</td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-	</section>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -719,7 +830,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

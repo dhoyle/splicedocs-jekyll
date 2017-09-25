@@ -2806,52 +2806,92 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="JoinOps.NaturalJoin">NATURAL JOIN</h1>
-            <p>A <code>NATURAL JOIN</code> is a <a href="sqlref_joinops_about.html"> <code>JOIN</code> operation</a> that creates an implicit join clause for you based on the common columns in the two tables being joined. Common columns are columns that have the same name in both tables. </p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><em><a href="sqlref_expressions_table.html">TableExpression</a></em> NATURAL
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="natural-join---joinopsnaturaljoin">NATURAL JOIN   {#JoinOps.NaturalJoin}</h1>
+
+    <p>A <code>NATURAL JOIN</code> is a <a href="sqlref_joinops_about.html"> <code>JOIN</code> operation</a>
+that creates an implicit join clause for you based on the common columns
+in the two tables being joined. Common columns are columns that have the
+same name in both tables.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TableExpression NATURAL
    [ { LEFT | RIGHT }
      [ OUTER ] | INNER ] JOIN
-   { <a href="sqlref_expressions_table.html#TableViewExpression">TableViewOrFunctionExpression</a> |
-     ( <em><a href="sqlref_expressions_table.html">TableExpression</a></em> ) }</pre>
-            </div>
-            <h2>Usage</h2>
-            <p>A <code>NATURAL JOIN</code> can be an <code>INNER</code> join, a <code>LEFT OUTER</code> join, or a <code>RIGHT OUTER</code> join. The default is <code>INNER</code> join. </p>
-            <p>If the <code>SELECT</code> statement in which the <code>NATURAL JOIN</code> operation appears has an asterisk (<code>*</code>) in the select list, the asterisk will be expanded to the following list of columns (in the shown order): </p>
-            <ul>
-                <li>All the common columns</li>
-                <li>Every column in the first (left) table that is not a common column</li>
-                <li>Every column in the second (right) table that is not a common column</li>
-            </ul>
-            <p>An asterisk qualified by a table name (for example, <code>COUNTRIES.*</code>) will be expanded to every column of that table that is not a common column. </p>
-            <p>If a common column is referenced without being qualified by a table name, the column reference points to the column in the first (left) table if the join is an <code>INNER JOIN</code> or a <code>LEFT OUTER JOIN</code>. If it is a <code>RIGHT OUTER JOIN</code>, unqualified references to a common column point to the column in the second (right) table. </p>
-            <p class="noteNote">Splice Machine does not currently support <code>NATURAL SELF JOIN</code> operations.</p>
-            <h2>Examples</h2>
-            <p>If the tables <code>COUNTRIES</code> and <code>CITIES</code> have two common columns named <code>COUNTRY</code> and <code>COUNTRY_ISO_CODE</code>, the following two <code>SELECT</code> statements are equivalent:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT *
+   { TableViewOrFunctionExpression |
+     ( TableExpression ) }
+</code></pre>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>A <code>NATURAL JOIN</code> can be an <code>INNER</code> join, a <code>LEFT OUTER</code> join, or a
+<code>RIGHT OUTER</code> join. The default is <code>INNER</code> join.</p>
+
+    <p>If the <code>SELECT</code> statement in which the <code>NATURAL JOIN</code> operation appears
+has an asterisk (<code>*</code>) in the select list, the asterisk will be expanded
+to the following list of columns (in the shown order):</p>
+
+    <ul>
+      <li>All the common columns</li>
+      <li>Every column in the first (left) table that is not a common column</li>
+      <li>Every column in the second (right) table that is not a common column</li>
+    </ul>
+
+    <p>An asterisk qualified by a table name (for example, <code>COUNTRIES.*</code>) will
+be expanded to every column of that table that is not a common column.</p>
+
+    <p>If a common column is referenced without being qualified by a table
+name, the column reference points to the column in the first (left)
+table if the join is an <code>INNER JOIN</code> or a <code>LEFT OUTER JOIN</code>. If it is a
+<code>RIGHT OUTER JOIN</code>, unqualified references to a common column point to
+the column in the second (right) table.</p>
+
+    <p class="noteNote">Splice Machine does not currently support <code>NATURAL SELF JOIN</code>
+operations.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p>If the tables <code>COUNTRIES</code> and <code>CITIES</code> have two common columns named
+<code>COUNTRY</code> and <code>COUNTRY_ISO_CODE</code>, the following two <code>SELECT</code> statements
+are equivalent:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT *
   FROM COUNTRIES
   NATURAL JOIN CITIES;
 
-splice&gt;&#160;SELECT *
+splice&gt; SELECT *
   FROM COUNTRIES
   JOIN CITIES
-  USING (COUNTRY, COUNTRY_ISO_CODE);</pre>
-            </div>
-            <p> The following example is similar to the one above, but it also preserves unmatched rows from the first (left) table: </p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT *
+  USING (COUNTRY, COUNTRY_ISO_CODE);
+</code></pre>
+
+    </div>
+    <p>The following example is similar to the one above, but it also preserves
+unmatched rows from the first (left) table:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT *
   FROM COUNTRIES
-  NATURAL LEFT JOIN CITIES;</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_joinops_intro.html"><code>JOIN</code></a>&#160;operations</li>
-                <li><a href="sqlref_expressions_table.html"><code>TABLE</code></a> expression</li>
-                <li><a href="sqlref_clauses_using.html"><code>USING</code></a>&#160;clause</li>
-            </ul>
-        </div>
-	</section>
+  NATURAL LEFT JOIN CITIES;
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_joinops_intro.html"><code>JOIN</code></a> operations</li>
+      <li><a href="sqlref_expressions_table.html"><code>TABLE</code></a> expression</li>
+      <li><a href="sqlref_clauses_using.html"><code>USING</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2868,7 +2908,7 @@ splice&gt;&#160;SELECT *
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

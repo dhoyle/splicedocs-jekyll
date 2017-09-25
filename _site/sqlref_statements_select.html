@@ -2806,27 +2806,48 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Statements.Select">SELECT</h1>
-            <p>Use the <code>SELECT</code>&#160;statement to query a database and receive back results.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SELECT&#160;<em><a href="sqlref_queries_query.html">Query</a></em>
-   [<em><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></em>]
-   [<em><a href="sqlref_clauses_resultoffset.html">result offset clause</a></em>]
-   [<em><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></em>]</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">Query</p>
-                <p class="paramDefnFirst">The <code>SELECT</code> statement is so named because the typical first word of the query construct is <code>SELECT</code>. (<em>Query</em> includes the <code><a href="sqlref_expressions_select.html">SELECT</a></code> expressions).</p>
-                <p class="paramName">ORDER&#160;BY&#160;clause</p>
-                <p class="paramDefnFirst">The <code><a href="sqlref_clauses_orderby.html">ORDER BY</a></code> clause allows you to order the results of the <code>SELECT</code>. Without the <code>ORDER BY</code> clause, the results are returned in random order.</p>
-                <p class="paramName">result offset and fetch first clauses</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><code>fetch first</code> clause</a>, which can be combined with the <code>result offset</code> clause, limits the number of rows fetched.</p>
-            </div>
-            <h2>Example</h2>
-            <p class="body">This examples selects all records in the Players table:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT * FROM Players WHERE ID &lt; 11;
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="select---statementsselect">SELECT   {#Statements.Select}</h1>
+
+    <p>Use the <code>SELECT</code> statement to query a database and receive back results.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SELECT Query
+   [ORDER BY clause]
+   [result offset clause]
+   [fetch first clause]
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">Query</p>
+
+      <p class="paramDefnFirst">The <code>SELECT</code> statement is so named because the typical first word of the
+query construct is <code>SELECT</code>. (<em>Query</em> includes the
+<a href="sqlref_expressions_select.html"><code>SELECT</code></a> expressions).</p>
+
+      <p class="paramName">ORDER BY clause</p>
+
+      <p class="paramDefnFirst">The <a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause allows you to order
+the results of the <code>SELECT</code>. Without the <code>ORDER BY</code> clause, the results
+are returned in random order.</p>
+
+      <p class="paramName">result offset and fetch first clauses</p>
+
+      <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><code>fetch first</code> clause</a>, which can
+be combined with the <code>result offset</code> clause, limits the number of rows
+fetched.</p>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <p class="body">This examples selects all records in the Players table:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT * FROM Players WHERE ID &lt; 11;
 ID    |TEAM     |POS&amp;|DISPLAYNAME        |BIRTHDATE
 ------------------------------------------------------
 1     |Giants   |C   |Buddy Painter      |1987-03-27
@@ -2841,10 +2862,14 @@ ID    |TEAM     |POS&amp;|DISPLAYNAME        |BIRTHDATE
 10    |Giants   |RF  |Jason Minman       |1983-11-06
 
 10 rows selected
-</pre>
-            </div>
-            <p class="body">This examples select the Birthdate of all players born in November or December:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT BirthDate
+</code></pre>
+
+    </div>
+    <p class="body">This examples select the Birthdate of all players born in November or
+December:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT BirthDate
    FROM Players
    WHERE MONTH(BirthDate) &gt; 10
    ORDER BY BIRTHDATE;
@@ -2869,10 +2894,14 @@ BIRTHDATE
 1991-11-15
 
 17 rows selected
-</pre>
-            </div>
-            <p class="body">This example selects the name, team, and birth date of all players born in 1985 and 1989:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT DisplayName, Team, BirthDate
+</code></pre>
+
+    </div>
+    <p class="body">This example selects the name, team, and birth date of all players born
+in 1985 and 1989:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT DisplayName, Team, BirthDate
    FROM Players
    WHERE YEAR(BirthDate) IN (1985, 1989)
    ORDER BY BirthDate;
@@ -2892,24 +2921,37 @@ Jack Hellman            |Cards     |1989-08-09
 Elliot Andrews          |Giants    |1989-08-21
 Henry Socomy            |Giants    |1989-11-17
 
-13 rows selected</pre>
-            </div>
-            <h2>Statement dependency system</h2>
-            <p>The <code>SELECT</code> statement depends on all the tables and views named in the query and the conglomerates (units of storage such as heaps and indexes) chosen for access paths on those tables. <code><a href="sqlref_statements_createview.html"><code>CREATE VIEW</code> statement</a>).</p>
-            <p>The <code>SELECT</code> statements depends on all aliases used in the query. Dropping an alias invalidates any prepared <code>SELECT</code> statement that uses the alias.</p>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_createindex.html"><code>CREATE&#160;INDEX</code></a>statement</li>
-                <li><a href="sqlref_statements_createview.html"><code>CREATE&#160;VIEW</code></a>statement</li>
-                <li><a href="sqlref_statements_dropindex.html"><code>DROP&#160;INDEX</code></a>statement</li>
-                <li><a href="sqlref_statements_dropview.html"><code>DROP&#160;VIEW</code></a>statement</li>
-                <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a>statement</li>
-                <li><a href="sqlref_clauses_orderby.html"><code>ORDER&#160;BY</code></a>clause</li>
-                <li><a href="sqlref_clauses_resultoffset.html"><code>FETCH&#160;FIRST</code></a>clause</li>
-                <li><a href="sqlref_clauses_resultoffset.html"><code>RESULT&#160;OFFSET</code></a>clause</li>
-            </ul>
-        </div>
-	</section>
+13 rows selected
+</code></pre>
+
+    </div>
+    <h2 id="statement-dependency-system">Statement dependency system</h2>
+
+    <p>The <code>SELECT</code> statement depends on all the tables and views named in the
+query and the conglomerates (units of storage such as heaps and indexes)
+chosen for access paths on those tables. <a href="sqlref_statements_createview.html"><code>CREATE VIEW</code>
+statement</a>).</p>
+
+    <p>The <code>SELECT</code> statements depends on all aliases used in the query.
+Dropping an alias invalidates any prepared <code>SELECT</code> statement that uses
+the alias.</p>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_createindex.html"><code>CREATE INDEX</code></a>statement</li>
+      <li><a href="sqlref_statements_createview.html"><code>CREATE VIEW</code></a>statement</li>
+      <li><a href="sqlref_statements_dropindex.html"><code>DROP INDEX</code></a>statement</li>
+      <li><a href="sqlref_statements_dropview.html"><code>DROP VIEW</code></a>statement</li>
+      <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a>statement</li>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a>clause</li>
+      <li><a href="sqlref_clauses_resultoffset.html"><code>FETCH FIRST</code></a>clause</li>
+      <li><a href="sqlref_clauses_resultoffset.html"><code>RESULT OFFSET</code></a>clause</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2926,7 +2968,7 @@ Henry Socomy            |Giants    |1989-11-17
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

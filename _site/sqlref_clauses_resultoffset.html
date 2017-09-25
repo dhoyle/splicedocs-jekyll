@@ -2806,48 +2806,73 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Clauses.ResultOffset">RESULT OFFSET and FETCH FIRST</h1>
-            <p> The <em>result offset clause</em> provides a way to skip the N
- first rows in a result set before starting to return any
- rows. </p>
-            <p>The <em>fetch first clause</em>, which can be combined with
- the <em>result offset clause</em>, limits the number of rows
- returned in the result set. The <em>fetch first clause</em> can
- sometimes be useful for retrieving only a few rows from an
- otherwise large result set, usually in combination with an <code>ORDER BY</code>
- clause. Use of this clause can increase efficienty and make programming simpler.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">OFFSET { <em>integer-literal</em> | ? }
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="result-offset-and-fetch-first---clausesresultoffset">RESULT OFFSET and FETCH FIRST   {#Clauses.ResultOffset}</h1>
+
+    <p>The <em>result offset clause</em> provides a way to skip the N first rows in a
+result set before starting to return any rows.</p>
+
+    <p>The <em>fetch first clause</em>, which can be combined with the <em>result offset
+clause</em>, limits the number of rows returned in the result set. The
+<em>fetch first clause</em> can sometimes be useful for retrieving only a few
+rows from an otherwise large result set, usually in combination with an
+<code>ORDER BY</code> clause. Use of this clause can increase efficienty and make
+programming simpler.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>OFFSET { integer-literal | ? }
        {ROW | ROWS}
-</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">integer-literal</p>
-                <p class="paramDefnFirst">An integer value that specifies the number of rows to skip. The default value is <code>0</code>. </p>
-                <p class="paramDefn">If non-zero, this must be a positive integer value. If you specify a value greater than the number of rows in the underlying result set, no rows are returned.</p>
-                <p class="paramDefnFirst">&#160;</p>
-            </div>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">FETCH { FIRST | NEXT }
-   [<em>integer-literal</em> | ? ]
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">integer-literal</p>
+
+      <p class="paramDefnFirst">An integer value that specifies the number of rows to skip. The default
+value is <code>0</code>.</p>
+
+      <p class="paramDefn">If non-zero, this must be a positive integer value. If you specify a
+value greater than the number of rows in the underlying result set, no
+rows are returned.</p>
+
+      <p class="paramDefnFirst"> </p>
+
+    </div>
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>FETCH { FIRST | NEXT }
+   [integer-literal | ? ]
    {ROW | ROWS} ONLY
-</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">integer-literal</p>
-                <p class="paramDefnFirst">An integer value that specifies the maximum number of rows to return in the result set. The default value is <code>1</code>.</p>
-                <p class="paramDefn">This must be a positive integer value greater than or equal to <code>1</code>. </p>
-            </div>
-            <h2>Usage</h2>
-            <p>Note that:</p>
-            <ul>
-                <li><code>ROW</code> and <code>ROWS</code>&#160;are synonymous</li>
-                <li><code>FIRST</code>&#160;and <code>NEXT</code>&#160;are synonymous</li>
-            </ul>
-            <p>Be sure to specify the <code>ORDER BY</code> clause if you expect to retrieve a sorted result set. </p>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- Fetch the first row of T
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">integer-literal</p>
+
+      <p class="paramDefnFirst">An integer value that specifies the maximum number of rows to return in
+the result set. The default value is <code>1</code>.</p>
+
+      <p class="paramDefn">This must be a positive integer value greater than or equal to <code>1</code>.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>Note that:</p>
+
+    <ul>
+      <li><code>ROW</code> and <code>ROWS</code> are synonymous</li>
+      <li><code>FIRST</code> and <code>NEXT</code> are synonymous</li>
+    </ul>
+
+    <p>Be sure to specify the <code>ORDER BY</code> clause if you expect to retrieve a
+sorted result set.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>   -- Fetch the first row of T
 SELECT * FROM T FETCH FIRST ROW ONLY;
 
    -- Sort T using column I, then fetch rows 11 through 20
@@ -2877,16 +2902,20 @@ PreparedStatement p =
                          OFFSET ? ROWS");
    p.setInt(1, 100);
 ResultSet rs = p.executeQuery();
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><code><a href="sqlref_clauses_limitn.html">LIMIT n</a></code>&#160;clause</li>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
-                <li><code><a href="sqlref_clauses_topn.html">TOP n</a></code>&#160;clause</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_limitn.html"><code>LIMIT n</code></a> clause</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
+      <li><a href="sqlref_clauses_topn.html"><code>TOP n</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2903,7 +2932,7 @@ ResultSet rs = p.executeQuery();
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2806,30 +2806,54 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Statements.CreateSchema">CREATE SCHEMA</h1>
-            <p>The <code>CREATE SCHEMA</code> statement allows you to create a database schema, which is a way to logically group objects in a single collection and provide a unique name-space for those objects. </p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
-CREATE SCHEMA {
-     [ <em>schemaName</em> ]
-     }</pre>
-            </div>
-            <p>The <code>CREATE SCHEMA</code> statement is used to create a schema. A schema name cannot exceed <code>128</code> characters. Schema names must be unique within the database.</p>
-            <p>A schema name cannot start with the prefix <code>SYS</code> (after case normalization). Use of the prefix <code>SYS</code> raises a <em>SQLException</em>.</p>
-            <h2>CREATE SCHEMA examples</h2>
-            <p>To create a schema for airline-related tables, use the following syntax:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE SCHEMA FLIGHTS;
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="create-schema---statementscreateschema">CREATE SCHEMA   {#Statements.CreateSchema}</h1>
+
+    <p>The <code>CREATE SCHEMA</code> statement allows you to create a database schema,
+which is a way to logically group objects in a single collection and
+provide a unique name-space for those objects.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+
+      <pre class="FcnSyntax"><code>CREATE SCHEMA {
+     [ schemaName ]
+     }
+</code></pre>
+
+    </div>
+    <p>The <code>CREATE SCHEMA</code> statement is used to create a schema. A schema name
+cannot exceed <code>128</code> characters. Schema names must be unique within the
+database.</p>
+
+    <p>A schema name cannot start with the prefix <code>SYS</code> (after case
+normalization). Use of the prefix <code>SYS</code> raises a <em>SQLException</em>.</p>
+
+    <h2 id="create-schema-examples">CREATE SCHEMA examples</h2>
+
+    <p>To create a schema for airline-related tables, use the following syntax:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE SCHEMA FLIGHTS;
 0 rows inserted/updated/deleted
-</pre>
-            </div>
-            <p>To create a schema employee-related tables, use the following syntax:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE SCHEMA EMP;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <p>To create a table called <code>availability</code> in the <code>EMP</code> and <code>FLIGHTS</code> schemas, use the following syntax:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE Flights.Availability(
+</code></pre>
+
+    </div>
+    <p>To create a schema employee-related tables, use the following syntax:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE SCHEMA EMP;
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <p>To create a table called <code>availability</code> in the <code>EMP</code> and <code>FLIGHTS</code>
+schemas, use the following syntax:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CREATE TABLE Flights.Availability(
    Flight_ID CHAR(6) NOT NULL,
    Segment_Number INT NOT NULL,
    Flight_Date DATE NOT NULL,
@@ -2841,23 +2865,27 @@ CREATE SCHEMA {
    );
 0 rows inserted/updated/deleted
 
-splice&gt;&#160;CREATE TABLE EMP.AVAILABILITY(
+splice&gt; CREATE TABLE EMP.AVAILABILITY(
    Hotel_ID INT NOT NULL,
    Booking_Date DATE NOT NULL,
    Rooms_Taken INT,
    CONSTRAINT HotelAvail_PK PRIMARY KEY (Hotel_ID, Booking_Date)
    );
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><code><a href="sqlref_statements_dropschema.html">DROP SCHEMA</a></code>&#160;statement</li>
-                <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a>
-                </li>
-                <li><code><a href="sqlref_statements_setschema.html">SET SCHEMA</a></code>&#160;statement</li>
-            </ul>
-        </div>
-	</section>
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_dropschema.html"><code>DROP SCHEMA</code></a> statement</li>
+      <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a></li>
+      <li><a href="sqlref_statements_setschema.html"><code>SET SCHEMA</code></a> statement</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2874,7 +2902,7 @@ splice&gt;&#160;CREATE TABLE EMP.AVAILABILITY(
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2806,30 +2806,62 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>LAG</h1>
-            <p><code>LAG</code> returns the values of a specified expression that is evaluated at the specified offset number of rows before the current row in a window.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">LAG ( <em>expression</em> [ , offset ] ) OVER ( <em>overClause</em> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">expression            </p>
-                <p class="paramDefnFirst">The expression to evaluate; typically a column name or computation involving a column name.</p>
-                <p class="paramName">offset</p>
-                <p class="paramDefnFirst">An integer value that specifies the offset (number of rows)&#160;from the current row at which you want the expression evaluated.</p>
-                <p class="paramDefn">The default value is 1.</p>
-                <p class="paramName">overClause</p>
-                <p class="paramDefnFirst">See the <code><a href="sqlref_clauses_over.html">OVER</a></code>&#160;clause documentation.</p>
-            </div>
-            <p class="noteRelease">Our current implementation of this function does not allow for specifying a default value, as is possible in some other database software.</p>
-            <h2>Usage Notes</h2>
-            <p>Splice Machine recommends that you use the <code>LAG</code>&#160;function with the <code><a href="sqlref_clauses_orderby.html">ORDER&#160;BY</a></code>&#160;clause to produce deterministic results.</p>
-            <h2>Results</h2>
-            <p>Returns value(s)&#160;resulting from the evaluation of the specified expression; the return type is of the same value type as the date stored in the column used in the expression.</p>
-            <h2>Examples</h2>
-            <p class="body">The following example shows the salaries per position for players in our baseball database, grouped by position, and ordered from highest salary to lowest for each position:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Position, Players.ID, Salary,
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="lag">LAG</h1>
+
+    <p><code>LAG</code> returns the values of a specified expression that is evaluated at
+the specified offset number of rows before the current row in a window.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>LAG ( expression [ , offset ] ) OVER ( overClause )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">expression</p>
+
+      <p class="paramDefnFirst">The expression to evaluate; typically a column name or computation
+involving a column name.</p>
+
+      <p class="paramName">offset</p>
+
+      <p class="paramDefnFirst">An integer value that specifies the offset (number of rows) from the
+current row at which you want the expression evaluated.</p>
+
+      <p class="paramDefn">The default value is 1.</p>
+
+      <p class="paramName">overClause</p>
+
+      <p class="paramDefnFirst">See the <a href="sqlref_clauses_over.html"><code>OVER</code></a> clause documentation.</p>
+
+    </div>
+    <p class="noteRelease">Our current implementation of this function does not allow for
+specifying a default value, as is possible in some other database
+software.</p>
+
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Splice Machine recommends that you use the <code>LAG</code> function with the
+<a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause to produce
+deterministic results.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>Returns value(s) resulting from the evaluation of the specified
+expression; the return type is of the same value type as the date stored
+in the column used in the expression.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p class="body">The following example shows the salaries per position for players in our
+baseball database, grouped by position, and ordered from highest salary
+to lowest for each position:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT Position, Players.ID, Salary,
    LAG(Salary) OVER (PARTITION BY Position ORDER BY Salary DESC) "PrevHigherSalary"
    FROM Players JOIN Salaries ON Players.ID=Salaries.ID
    WHERE Salary &gt; 999999
@@ -2879,23 +2911,29 @@ SS  |52    |1500000             |3175000
 UT  |17    |1450000             |NULL
 
 41 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
-                <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
-                <li><code><a href="sqlref_builtinfcns_firstvalue.html">FIRST_VALUE</a></code>&#160;function</li>
-                <li><code><a href="sqlref_builtinfcns_lastvalue.html">LAST_VALUE</a></code>&#160;function</li>
-                <li><code><a href="sqlref_builtinfcns_lead.html">LEAD</a></code>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
-                <li><a href="sqlref_clauses_over.html"><code>OVER</code></a>&#160;clause</li>
-                <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in the <em>Developer Guide</em>.</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate
+</a>functions</li>
+      <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_firstvalue.html"><code>FIRST_VALUE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lastvalue.html"><code>LAST_VALUE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lead.html"><code>LEAD</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+      <li><a href="sqlref_clauses_over.html"><code>OVER</code></a> clause</li>
+      <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in
+the <em>Developer Guide</em>.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2912,7 +2950,7 @@ UT  |17    |1450000             |NULL
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

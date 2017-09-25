@@ -2806,14 +2806,22 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Expressions.BooleanExpressions">Boolean Expressions</h1>
-            <p>Boolean expressions are allowed in <a href="sqlref_clauses_constraint.html"><code>CONSTRAINT clause</code></a> for more information. Boolean expressions in a <code>WHERE</code> clause have a highly liberal syntax; see <code>WHERE clause</code>, for example.</p>
-            <p>A Boolean expression can include zero or more Boolean operators. </p>
-            <h2>Syntax</h2>
-            <p>The following table shows the syntax for the Boolean operators</p>
-            <table summary="Boolean operators">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="boolean-expressions---expressionsbooleanexpressions">Boolean Expressions   {#Expressions.BooleanExpressions}</h1>
+
+    <p>Boolean expressions are allowed in <a href="sqlref_clauses_constraint.html"><code>CONSTRAINT
+clause</code></a> for more information. Boolean
+expressions in a <code>WHERE</code> clause have a highly liberal syntax; see <code>WHERE
+clause</code>, for example.</p>
+
+    <p>A Boolean expression can include zero or more Boolean operators.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <p>The following table shows the syntax for the Boolean operators</p>
+
+    <table summary="Boolean operators">
                 <col />
                 <col />
                 <thead>
@@ -2905,9 +2913,11 @@
                     </tr>
                 </tbody>
             </table>
-            <h2>Examples</h2>
-            <p>The following example presents examples of the Boolean operators.</p>
-            <table style="" summary="Examples of Boolean expressions">
+    <h2 id="examples">Examples</h2>
+
+    <p>The following example presents examples of the Boolean operators.</p>
+
+    <table style="" summary="Examples of Boolean expressions">
                 <col width="150px" />
                 <col />
                 <thead>
@@ -2955,7 +2965,7 @@
                         <td>Tests whether the first operand is between the second and third operands. The second operand must be less than the third operand. Applicable only to types to which <code>&lt;=</code> and <code>&gt;=</code> can be applied.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">WHERE booking_date
   BETWEEN DATE('1998-02-26')
-  AND DATE('1998-03-01')</pre></div><p class="noteNote">Using the <code>BETWEEN</code> operator is logically equivalent to specifying that you want to select values that are greater than or equal to the first operand and less than or equal to the second operand:&#160;<code>col between X and Y</code> is equivalent to <code>col &gt;= X&#160;and col &lt;= Y</code>. Which means that the result set will be empty if your second operand is less than your first.</p></td>
+  AND DATE('1998-03-01')</pre></div><p class="noteNote">Using the <code>BETWEEN</code> operator is logically equivalent to specifying that you want to select values that are greater than or equal to the first operand and less than or equal to the second operand: <code>col between X and Y</code> is equivalent to <code>col &gt;= X and col &lt;= Y</code>. Which means that the result set will be empty if your second operand is less than your first.</p></td>
                     </tr>
                     <tr>
                         <td><code>IN</code></td>
@@ -2988,13 +2998,16 @@
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a>&#160;clause</li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a> clause</li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -3011,7 +3024,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

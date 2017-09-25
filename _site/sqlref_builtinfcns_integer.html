@@ -2806,30 +2806,59 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Integer">INTEGER</h1>
-            <p>The <code>INTEGER</code> function returns an integer representation of a number or character string in the form of an integer constant.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">INT[EGER] (<em>NumericExpression</em> | <em>CharacterExpression</em> ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">NumericExpression</p>
-                <p class="paramDefnFirst">An expression that returns a value of any built-in numeric data type.</p>
-                <p class="paramName">CharacterExpression</p>
-                <p class="paramDefnFirst">An expression that returns a character string value of length not greater than the maximum length of a character constant. Leading and trailing blanks are eliminated and the resulting string must conform to the rules for forming an SQL integer constant. The character string cannot be a long string. </p>
-            </div>
-            <h2>Results</h2>
-            <p>The result of the function is a large integer. </p>
-            <ul>
-                <li>If the argument can be <code>NULL</code>, the result can be <code>NULL</code>; if the argument is <code>NULL</code>, the result is the <code>NULL</code>value.</li>
-                <li> If the argument is a numeric-expression, the result is the same number that would occur if the argument were assigned to a large integer column or variable. If the whole part of the argument is not within the range of integers, an error occurs. The decimal part of the argument is truncated if present.</li>
-                <li>If the argument is a character-expression, the result is the same number that would occur if the corresponding integer constant were assigned to a large integer column or variable.</li>
-            </ul>
-            <h2>Example</h2>
-            <p>The following query truncates the number of innings pitches by using the <code>INTEGER</code>&#160;function:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">
-splice&gt; SELECT DisplayName, INTEGER(Innings) "Innings"
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="integer---builtinfcnsinteger">INTEGER   {#BuiltInFcns.Integer}</h1>
+
+    <p>The <code>INTEGER</code> function returns an integer representation of a number or
+character string in the form of an integer constant.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>INT[EGER] (NumericExpression | CharacterExpression ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">NumericExpression</p>
+
+      <p class="paramDefnFirst">An expression that returns a value of any built-in numeric data type.</p>
+
+      <p class="paramName">CharacterExpression</p>
+
+      <p class="paramDefnFirst">An expression that returns a character string value of length not
+greater than the maximum length of a character constant. Leading and
+trailing blanks are eliminated and the resulting string must conform to
+the rules for forming an SQL integer constant. The character string
+cannot be a long string.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The result of the function is a large integer.</p>
+
+    <ul>
+      <li>If the argument can be <code>NULL</code>, the result can be <code>NULL</code>; if the
+argument is <code>NULL</code>, the result is the <code>NULL</code>value.</li>
+      <li>If the argument is a numeric-expression, the result is the same number
+that would occur if the argument were assigned to a large integer
+column or variable. If the whole part of the argument is not within
+the range of integers, an error occurs. The decimal part of the
+argument is truncated if present.</li>
+      <li>If the argument is a character-expression, the result is the same
+number that would occur if the corresponding integer constant were
+assigned to a large integer column or variable.</li>
+    </ul>
+
+    <h2 id="example">Example</h2>
+
+    <p>The following query truncates the number of innings pitches by using the
+<code>INTEGER</code> function:</p>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>splice&gt; SELECT DisplayName, INTEGER(Innings) "Innings"
    FROM Pitching JOIN Players ON Pitching.ID=Players.ID
    WHERE Innings &gt; 50
    ORDER BY Innings DESC;
@@ -2860,15 +2889,18 @@ Mitch Lovell            |55
 Harold Sermer           |51
 
 23 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2885,7 +2917,7 @@ Harold Sermer           |51
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

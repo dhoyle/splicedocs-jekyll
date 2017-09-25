@@ -2806,33 +2806,51 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Mod">MOD</h1>
-            <p><code>MOD</code> returns the remainder (modulus) of argument 1 divided by argument 2.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">mod(<em>number</em>, <em>divisor</em>) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">number
-            </p>
-                <p class="paramDefnFirst">The number for which you want to find the remainder after the division is performed.</p>
-                <p class="paramName">divisor
-            </p>
-                <p class="paramDefnFirst">The number by which you want to divide.</p>
-            </div>
-            <h2>Results</h2>
-            <p> The result is negative only if <em>number</em> is negative. </p>
-            <p>The result of the function is:</p>
-            <ul>
-                <li><code>NULL</code>&#160;if any argument is <code>NULL</code>.</li>
-                <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</li>
-                <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</li>
-                <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</li>
-            </ul>
-            <p>The result can be <code>NULL</code>; if any argument is <code>NULL</code>, the result is the <code>NULL</code>value.</p>
-            <h2>Examples</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES MOD(37, 3);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="mod---builtinfcnsmod">MOD   {#BuiltInFcns.Mod}</h1>
+
+    <p><code>MOD</code> returns the remainder (modulus) of argument 1 divided by argument
+2.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>mod(number, divisor) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">number</p>
+
+      <p class="paramDefnFirst">The number for which you want to find the remainder after the division
+is performed.</p>
+
+      <p class="paramName">divisor</p>
+
+      <p class="paramDefnFirst">The number by which you want to divide.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The result is negative only if <em>number</em> is negative.</p>
+
+    <p>The result of the function is:</p>
+
+    <ul>
+      <li><code>NULL</code> if any argument is <code>NULL</code>.</li>
+      <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</li>
+      <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</li>
+      <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</li>
+    </ul>
+
+    <p>The result can be <code>NULL</code>; if any argument is <code>NULL</code>, the result is the
+<code>NULL</code>value.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES MOD(37, 3);
 1
 ----------
 1
@@ -2840,10 +2858,10 @@
 1 row selected
 
       ---select players with odd-numbered IDs:
-splice&gt;&#160;SELECT ID, Team, DisplayName
-   FROM&#160;Players
-   WHERE&#160;MOD(ID, 2)&#160;= 1
-   ORDER&#160;BY&#160;ID;
+splice&gt; SELECT ID, Team, DisplayName
+   FROM Players
+   WHERE MOD(ID, 2) = 1
+   ORDER BY ID;
 ID    |TEAM        |DISPLAYNAME
 ----------------------------------------------
 1     |Giants      |Buddy Painter
@@ -2894,16 +2912,20 @@ ID    |TEAM        |DISPLAYNAME
 91    |Cards       |Mark Hasty
 93    |Cards       |Stephen Tuvesco
 
-47 rows selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a>&#160;data type</li>
-            </ul>
-        </div>
-	</section>
+47 rows selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> data type</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2920,7 +2942,7 @@ ID    |TEAM        |DISPLAYNAME
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

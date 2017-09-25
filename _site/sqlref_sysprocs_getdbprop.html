@@ -2806,39 +2806,68 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInSysFcns.GetDatabaseProperty">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY Function</h1>
-            <p>The <code>SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</code> function fetches the value of the specified property of the database on the current connection.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">VARCHAR(32672) SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY(
-  IN <em>Key</em> VARCHAR(128)
-  ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">Key</p>
-                <p class="paramDefnFirst">The key for the property whose value you want.</p>
-                <p class="noteNote">An error occurs if <em>Key</em> is null.</p>
-            </div>
-            <h2>Results</h2>
-            <p>Returns the value of the property. If the value that was set for the property is invalid, the <code>SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</code> function returns the invalid value, but Splice Machine uses the default value.</p>
-            <h2>Execute Privileges</h2>
-            <p>If authentication and SQL&#160;authorization are both enabled, only the database owner has execute privileges on this function by default. The database owner can grant access to other users.</p>
-            <h2>SQL Example</h2>
-            <p>Retrieve the value of the <code>splicemachine.locks.deadlockTimeout</code> property:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout' );
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsgetdatabaseproperty-function---builtinsysfcnsgetdatabaseproperty">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY Function   {#BuiltInSysFcns.GetDatabaseProperty}</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</code> function fetches the value
+of the specified property of the database on the current connection.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>VARCHAR(32672) SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY(
+  IN Key VARCHAR(128)
+  ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">Key</p>
+
+      <p class="paramDefnFirst">The key for the property whose value you want.</p>
+
+      <p class="noteNote">An error occurs if <em>Key</em> is null.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>Returns the value of the property. If the value that was set for the
+property is invalid, the <code>SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</code>
+function returns the invalid value, but Splice Machine uses the default
+value.</p>
+
+    <h2 id="execute-privileges">Execute Privileges</h2>
+
+    <p>If authentication and SQL authorization are both enabled, only the
+database owner has execute privileges on this function by default. The
+database owner can grant access to other users.</p>
+
+    <h2 id="sql-example">SQL Example</h2>
+
+    <p>Retrieve the value of the <code>splicemachine.locks.deadlockTimeout</code>
+property:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout' );
 1
 -------------------------------------------------------------
 10
 
-1 row selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> built-in system procedure</li>
-            </ul>
-        </div>
-	</section>
+1 row selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a>
+built-in system procedure</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2855,7 +2884,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

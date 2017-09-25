@@ -510,95 +510,133 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Uploading Your Data to an S3 Bucket</h1>
-            <p>You can easily load data into your Splice Machine database from an Amazon Web Services (AWS)&#160;S3 bucket. This tutorial walks you through creating an S3 bucket (if you need to)&#160;and uploading your data to that bucket for subsequent use with&#160;Splice&#160;Machine.</p>
-            <p class="noteNote">For more information about S3 buckets, see the <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html"  target="_blank">AWS&#160;documentation</a>.</p>
-            <p>After completing the configuration steps described here, you'll be able to load data into Splice&#160;Machine from an S3 bucket.</p>
-            <h2>Create and Upload Data to an AWS&#160;S3 Bucket</h2>
-            <p>Follow these steps to first create a new bucket (if necessary)&#160;and upload data to a folder in an AWS&#160;S3 bucket:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Log in to the AWS&#160;Database Console</p>
-                        <p class="indentLevel1">Your permissions must allow for you to create an S3 bucket.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Select <span class="ConsoleLink">Services</span> at the top of the dashboard</p>
-                        <p>
-                            <img src="images/AWSServices.png" class="nestedTightSpacing" />
-                        </p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Select <span class="ConsoleLink">S3</span> in the <span class="ConsoleLink">Storage</span> section:</p>
-                        <p class="indentLevel1">
-                            <img src="images/AWSSelectS3.png" class="nestedTightSpacing" title="Select the S3 service option" />
-                        </p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Create a new bucket</p>
-                        <ol class="LowerAlphaPlainFont">
-                            <li>
-                                <p>Select <span class="ConsoleLink">Create Bucket</span>from the S3screen</p>
-                                <p>
-                                    <img src="images/AWSCreateBucket1.png" class="nestedTightSpacing" title="Select the Create Bucket button" />
-                                </p>
-                            </li>
-                            <li>
-                                <p>Provide a name and select a region for your bucket</p>
-                                <p>The name you select must be unique; AWS&#160;will notify you if you attempt to use an already-used name. For optimal performance, choose a region that is close to the physical location of your data; for example:</p>
-                                <p>
-                                    <img src="images/AWSCreateBucket2.png" class="nestedTightSpacing" title="Selecting a name and region for an S3 bucket" />
-                                </p>
-                            </li>
-                            <li>
-                                <p>Click the <span class="ConsoleLink">Next</span> button to advance to the property settings for your new bucket:</p>
-                                <p>
-                                    <img src="images/AWSBucketProps1.png" class="nestedTightSpacing" title="Setting properties for a new bucket" />
-                                </p>
-                                <p>You can click one of the <span class="ConsoleLink">Learn more</span> buttons to view or modify details.</p>
-                            </li>
-                            <li>
-                                <p>Click the <span class="ConsoleLink">Next</span> button to advance to view or modify permissions settings for your new bucket:</p>
-                                <p>
-                                    <img src="images/AWSBucketPerms1.png" title="Setting permissions for a new S3 bucket" class="nestedTightSpacing" />
-                                </p>
-                            </li>
-                            <li>
-                                <p>Click <span class="ConsoleLink">Next</span> to review your settings for the new bucket, and then click the <span class="ConsoleLink">Create bucket</span> button to create your new S3 bucket. You'll then land on your S3 Management screen.</p>
-                            </li>
-                        </ol>
-                    </li>
-                    <li>
-                        <p class="topLevel">Upload data to your bucket</p>
-                        <p class="indentLevel1">After you create the bucket:</p>
-                        <ol class="LowerAlphaPlainFont">
-                            <li>
-                                <p>Select <span class="ConsoleLink">Create folder</span>, enter a name for the new folder, and click the <span class="ConsoleLink">Save</span> button.</p>
-                                <p>
-                                    <img src="images/AWSCreateFolder.png" title="Create a folder in an AWS S3 bucket" class="nestedTightSpacing" />
-                                </p>
-                            </li>
-                            <li>
-                                <p>Click the <span class="ConsoleLink">Upload</span> button to select file(s)&#160;to upload to your new bucket folder. You can then drag files into the upload screen, or click <span class="ConsoleLink">Add Files</span> and navigate to the files you want to upload to your folder.</p>
-                                <p>
-                                    <img src="images/AWSUploadFiles.png" title="Selecting files to upload to an S3 bucket folder" class="nestedTightSpacing" />
-                                </p>
-                            </li>
-                            <li>
-                                <p>You can then optionally set permissions and properties for the files you are uploading. Once you're done, click the Upload button, and AWS will copy the files into the folder in your S3 bucket.</p>
-                            </li>
-                        </ol>
-                    </li>
-                    <li>
-                        <p class="topLevel">Make sure Splice&#160;Machine can access your bucket:</p>
-                        <p class="indentLevel1">Review the IAM&#160;configuration options in our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice&#160;Machine Access</a> tutorial to allow Splice Machine to import your data. </p>
-                    </li>
-                </ol>
-            </div>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="uploading-your-data-to-an-s3-bucket">Uploading Your Data to an S3 Bucket</h1>
+
+    <p>You can easily load data into your Splice Machine database from an
+Amazon Web Services (AWS) S3 bucket. This tutorial walks you through
+creating an S3 bucket (if you need to) and uploading your data to that
+bucket for subsequent use with Splice Machine.</p>
+
+    <p class="noteNote">For more information about S3 buckets, see the <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html" target="_blank">AWS documentation</a>.</p>
+
+    <p>After completing the configuration steps described here, you’ll be able
+to load data into Splice Machine from an S3 bucket.</p>
+
+    <h2 id="create-and-upload-data-to-an-awss3-bucket">Create and Upload Data to an AWS S3 Bucket</h2>
+
+    <p>Follow these steps to first create a new bucket (if necessary) and
+upload data to a folder in an AWS S3 bucket:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Log in to the AWS Database Console</p>
+
+          <p class="indentLevel1">Your permissions must allow for you to create an S3 bucket.</p>
+        </li>
+        <li>
+          <p class="topLevel">Select <span class="ConsoleLink">Services</span> at the top of the
+dashboard</p>
+
+          <p><img src="images/AWSServices.png" alt="" class="nestedTightSpacing" /></p>
+        </li>
+        <li>
+          <p class="topLevel">Select <span class="ConsoleLink">S3</span> in the <span class="ConsoleLink">Storage</span> section:</p>
+
+          <p class="indentLevel1"><img src="images/AWSSelectS3.png" alt="" title="Select the S3 service option" class="nestedTightSpacing" /></p>
+        </li>
+        <li>
+          <p class="topLevel">Create a new bucket</p>
+
+          <ol class="LowerAlphaPlainFont">
+            <li>
+              <p>Select <span class="ConsoleLink">Create Bucket</span>from the
+S3screen</p>
+
+              <p><img src="images/AWSCreateBucket1.png" alt="" title="Select the Create Bucket
+button" class="nestedTightSpacing" /></p>
+            </li>
+            <li>
+              <p>Provide a name and select a region for your bucket</p>
+
+              <p>The name you select must be unique; AWS will notify you if you
+attempt to use an already-used name. For optimal performance,
+choose a region that is close to the physical location of your
+data; for example:</p>
+
+              <p><img src="images/AWSCreateBucket2.png" alt="" title="Selecting a name and region for
+an S3 bucket" class="nestedTightSpacing" /></p>
+            </li>
+            <li>
+              <p>Click the <span class="ConsoleLink">Next</span> button to
+advance to the property settings for your new bucket:</p>
+
+              <p><img src="images/AWSBucketProps1.png" alt="" title="Setting properties for a new
+bucket" class="nestedTightSpacing" /></p>
+
+              <p>You can click one of the <span class="ConsoleLink">Learn
+more</span> buttons to view or modify details.</p>
+            </li>
+            <li>
+              <p>Click the <span class="ConsoleLink">Next</span> button to
+advance to view or modify permissions settings for your new
+bucket:</p>
+
+              <p><img src="images/AWSBucketPerms1.png" alt="" title="Setting permissions for a new S3
+bucket" class="nestedTightSpacing" /></p>
+            </li>
+            <li>
+              <p>Click <span class="ConsoleLink">Next</span> to review your
+settings for the new bucket, and then click the <span class="ConsoleLink">Create bucket</span> button to create your
+new S3 bucket. You’ll then land on your S3 Management screen.</p>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p class="topLevel">Upload data to your bucket</p>
+
+          <p class="indentLevel1">After you create the bucket:</p>
+
+          <ol class="LowerAlphaPlainFont">
+            <li>
+              <p>Select <span class="ConsoleLink">Create folder</span>, enter a
+name for the new folder, and click the <span class="ConsoleLink">Save</span> button.</p>
+
+              <p><img src="images/AWSCreateFolder.png" alt="" title="Create a folder in an AWS S3
+bucket" class="nestedTightSpacing" /></p>
+            </li>
+            <li>
+              <p>Click the <span class="ConsoleLink">Upload</span> button to
+select file(s) to upload to your new bucket folder. You can then
+drag files into the upload screen, or click <span class="ConsoleLink">Add Files</span> and navigate to the files
+you want to upload to your folder.</p>
+
+              <p><img src="images/AWSUploadFiles.png" alt="" title="Selecting files to upload to an
+S3 bucket folder" class="nestedTightSpacing" /></p>
+            </li>
+            <li>
+              <p>You can then optionally set permissions and properties for the
+files you are uploading. Once you’re done, click the Upload
+button, and AWS will copy the files into the folder in your S3
+bucket.</p>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p class="topLevel">Make sure Splice Machine can access your bucket:</p>
+
+          <p class="indentLevel1">Review the IAM configuration options in our <a href="tutorials_ingest_configures3.html">Configuring an S3
+Bucket for Splice Machine Access</a>
+tutorial to allow Splice Machine to import your data.</p>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -615,7 +653,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

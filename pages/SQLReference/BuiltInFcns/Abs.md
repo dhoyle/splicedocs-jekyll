@@ -37,12 +37,12 @@ The return type is the type of the input parameter.
 ## Example
 
 <div class="preWrapper" markdown="1">
-
+    
     splice> VALUES ABS(-3);
     1
     ----------
     3
-
+    
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -53,3 +53,4 @@ The return type is the type of the input parameter.
 
 </div>
 </section>
+

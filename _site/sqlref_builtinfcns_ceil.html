@@ -2806,52 +2806,87 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Ceil">CEIL or CEILING</h1>
-            <p>The <code>CEIL</code> and <code>CEILING</code> functions round the specified number up, and return the smallest number that is greater than or equal to the specified number.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CEIL ( number )</pre>
-            </div>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CEILING ( number )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">number
-            </p>
-                <p class="paramDefnFirst">A <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> value.</p>
-                <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL data types. </p>
-                <p class="paramDefn">If an expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
-            </div>
-            <h2>Results</h2>
-            <p>The data type of the returned value is a <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> number.</p>
-            <p>The returned value is the smallest (closest to negative infinity) double floating point value that is greater than or equal to the specified number. The returned value is equal to a mathematical integer. </p>
-            <ul>
-                <li>If the specified number is <code>NULL</code>, the result of these functions is <code>NULL</code>.</li>
-                <li>If the specified number is equal to a mathematical integer, the result of these functions is the same as the specified number.</li>
-                <li>If the specified number is zero (0), the result of these functions is zero.</li>
-                <li>If the specified number is less than zero but greater than -1.0, then the result of these functions is zero.</li>
-            </ul>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; VALUES&#160;CEIL(3.33);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="ceil-or-ceiling---builtinfcnsceil">CEIL or CEILING   {#BuiltInFcns.Ceil}</h1>
+
+    <p>The <code>CEIL</code> and <code>CEILING</code> functions round the specified number up, and
+return the smallest number that is greater than or equal to the
+specified number.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CEIL ( number )
+</code></pre>
+
+    </div>
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CEILING ( number )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">number</p>
+
+      <p class="paramDefnFirst">A <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> value.</p>
+
+      <p class="paramDefn">The expression can contain multiple column references or expressions,
+but it cannot contain another aggregate or subquery, and it must
+evaluate to an ANSI SQL numeric data type. This means that you can call
+methods that evaluate to ANSI SQL data types.</p>
+
+      <p class="paramDefn">If an expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The data type of the returned value is a <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE
+PRECISION</code></a> number.</p>
+
+    <p>The returned value is the smallest (closest to negative infinity) double
+floating point value that is greater than or equal to the specified
+number. The returned value is equal to a mathematical integer.</p>
+
+    <ul>
+      <li>If the specified number is <code>NULL</code>, the result of these functions is
+<code>NULL</code>.</li>
+      <li>If the specified number is equal to a mathematical integer, the result
+of these functions is the same as the specified number.</li>
+      <li>If the specified number is zero (0), the result of these functions is
+zero.</li>
+      <li>If the specified number is less than zero but greater than -1.0, then
+the result of these functions is zero.</li>
+    </ul>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES CEIL(3.33);
 1
 ----------
 4
 
 1 row selected
 
-splice&gt;&#160;VALUES&#160;CEILING(3.67);
+splice&gt; VALUES CEILING(3.67);
 1
 ----------
 4
 
-1 row selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE&#160;PRECISION</code></a>&#160;data type</li>
-            </ul>
-        </div>
-	</section>
+1 row selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> data type</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2868,7 +2903,7 @@ splice&gt;&#160;VALUES&#160;CEILING(3.67);
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

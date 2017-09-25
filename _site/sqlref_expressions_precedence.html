@@ -2806,31 +2806,42 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Expressions.ExpressionPrecedence">Expression Precedence</h1>
-            <p>The precedence of operations from highest to lowest is:</p>
-            <ul>
-                <li><code>(), ?,</code> Constant (including sign), <code>NULL</code>, <em>ColumnReference</em>, <em>ScalarSubquery</em>, <code>CAST</code></li>
-                <li><code>LENGTH, CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP</code>, and other built-ins</li>
-                <li>unary <code>+</code> and <code>-</code></li>
-                <li><code>*, /, ||</code> (concatenation)</li>
-                <li>binary <code>+</code> and <code>-</code></li>
-                <li>comparisons, quantified comparisons, <code>EXISTS, IN, IS NULL, LIKE, BETWEEN, IS</code></li>
-                <li><code>NOT</code>
-                </li>
-                <li><code>AND</code>
-                </li>
-                <li><code>OR</code>
-                </li>
-            </ul>
-            <p>You can explicitly specify precedence by placing expressions within parentheses. An expression within parentheses is evaluated before any operations outside the parentheses are applied to it.</p>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example">(3+4)*9
-(age &lt; 16 OR age &gt; 65) AND employed = TRUE</pre>
-            </div>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="expression-precedence---expressionsexpressionprecedence">Expression Precedence   {#Expressions.ExpressionPrecedence}</h1>
+
+    <p>The precedence of operations from highest to lowest is:</p>
+
+    <ul>
+      <li><code>(), ?,</code> Constant (including sign), <code>NULL</code>, <em>ColumnReference</em>,
+<em>ScalarSubquery</em>, <code>CAST</code></li>
+      <li><code>LENGTH, CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP</code>, and other
+built-ins</li>
+      <li>unary <code>+</code> and <code>-</code></li>
+      <li><code>*, /, ||</code> (concatenation)</li>
+      <li>binary <code>+</code> and <code>-</code></li>
+      <li>comparisons, quantified comparisons, <code>EXISTS, IN, IS NULL, LIKE,
+BETWEEN, IS</code></li>
+      <li><code>NOT</code></li>
+      <li><code>AND</code></li>
+      <li><code>OR</code></li>
+    </ul>
+
+    <p>You can explicitly specify precedence by placing expressions within
+parentheses. An expression within parentheses is evaluated before any
+operations outside the parentheses are applied to it.</p>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>(3+4)*9
+(age &lt; 16 OR age &gt; 65) AND employed = TRUE
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2847,7 +2858,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

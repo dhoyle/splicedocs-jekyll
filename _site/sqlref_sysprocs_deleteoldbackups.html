@@ -2806,45 +2806,79 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</h1>
-            <p>The <code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code> system procedure
-deletes any backups that are older than a specified number of days (the <em>backup window</em>), retaining only those backups that fit into that window. </p>
-            <p>Backups can consume a lot of disk space, and thus, we recommend regularly scheduling both the creation of new backups and deletion of  outdated backups.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( INT&#160;<em>backupWindow</em> ); </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">backupWindow</p>
-                <p class="paramDefnFirst">Specifies the number of days of backups that you want retained. Any backups created more than <code>backupWindow</code> days ago are deleted.</p>
-                <p class="paramDefn"> See the <a href="onprem_admin_backingup.html"><em>Backing Up and Restoring</em></a> topic in our <em>Administrator's Guide</em> for more information.</p>
-            </div>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Execute Privileges</h2>
-            <p>If authentication and SQL authorization are both enabled, only the database owner has
-execute privileges on this function by default. The
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsdeleteoldbackups">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code> system procedure deletes any
+backups that are older than a specified number of days (the <em>backup
+window</em>), retaining only those backups that fit into that window.</p>
+
+    <p>Backups can consume a lot of disk space, and thus, we recommend
+regularly scheduling both the creation of new backups and deletion of
+outdated backups.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( INT backupWindow ); 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupWindow</p>
+
+      <p class="paramDefnFirst">Specifies the number of days of backups that you want retained. Any
+backups created more than <code>backupWindow</code> days ago are deleted.</p>
+
+      <p class="paramDefn">See the <a href="onprem_admin_backingup.html"><em>Backing Up and Restoring</em></a> topic
+in our <em>Administrator’s Guide</em> for more information.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="execute-privileges">Execute Privileges</h2>
+
+    <p>If authentication and SQL authorization are both enabled, only the
+database owner has execute privileges on this function by default. The
 database owner can grant access to other users.</p>
-            <h2>SQL Example</h2>
-            <p>The following example deletes all database backups that were created more than 30 days ago.</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS(30);
-Statement executed.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in the <em>Administrator's Guide</em></li>
-                <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a> built-in system procedure</li>
-                <li><code><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></code> system table</li>
-                <li><code><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></code> system table</li>
-                <li><code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></code> system table</li>
-            </ul>
-        </div>
-	</section>
+
+    <h2 id="sql-example">SQL Example</h2>
+
+    <p>The following example deletes all database backups that were created
+more than 30 days ago.</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS(30);
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in
+the <em>Administrator’s Guide</em></li>
+      <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code></a> system table</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2861,7 +2895,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

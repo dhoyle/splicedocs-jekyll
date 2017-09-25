@@ -510,142 +510,73 @@
 
     
 
-  ﻿
+  <p>\﻿</p>
 
+<p>﻿</p>
 
+<p>﻿</p>
 
+<p>﻿</p>
 
+<section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="connecting-to-splice-machine-with-java-and-jdbc">Connecting to Splice Machine with Java and JDBC</h1>
 
+    <p>This topic shows you how to compile and run a sample Java program that
+connects to Splice Machine using our JDBC driver. The
+<code>SampleJDBC</code> program does the following:</p>
 
+    <ul>
+      <li>connects to a standalone (<code>localhost</code>) version of Splice Machine</li>
+      <li>creates a table named <code>MYTESTTABLE</code></li>
+      <li>inserts several sample records</li>
+      <li>issues a query to retrieve those records</li>
+    </ul>
 
+    <p><a href="#Compile">Follow the written directions below</a>, which includes the raw
+code for the <code>SampleJDBC</code> example program.</p>
 
+    <h2 id="Compile">Compile and Run the Sample Program</h2>
 
+    <p>This section walks you through compiling and running the
+<code>SampleJDBC</code> example program, in the following steps:</p>
 
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Locate the Splice Machine JDBC Driver:</p>
 
+          <p class="indentLevel1">Our JDBC driver is automatically installed on your computer(s) when
+you install Splice Machine. You’ll find it in the <span class="CodeFont">jdbc-driver</span> folder under the <code>splicemachine</code>
+directory; typically:</p>
 
+          <div class="PreWrapperWide">
+            <pre class="Example"><code>/splicemachine/jdbc-driver/db-client-2.6.1.1736-SNAPSHOT.jar
+</code></pre>
 
+          </div>
 
-﻿
+          <p>- or -</p>
 
+          <div class="PreWrapperWide">
+            <pre class="Example"><code>/splicemachine/jdbc-driver/db-client-2.5.0.1729-SNAPSHOT.jar
+</code></pre>
 
+          </div>
 
+          <p class="noteNote">The build number, e.g. <code>1729</code>, varies with each Splice Machine
+software update.</p>
+        </li>
+        <li>
+          <p class="topLevel">Copy the example program code:</p>
 
+          <p class="indentLevel1">You can copy and paste the code below:</p>
 
-
-
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Connecting to Splice Machine with Java and JDBC</h1>
-            <p>This topic shows you how to compile and run a sample Java program that connects to Splice&#160;Machine using our JDBC&#160;driver. The <code>SampleJDBC</code>&#160;program does the following:</p>
-            <ul>
-                <li> connects to a standalone (<code>localhost</code>)&#160;version of Splice Machine</li>
-                <li>creates a table named <code>MYTESTTABLE</code></li>
-                <li>inserts several sample records</li>
-                <li>issues a query to retrieve those records</li>
-            </ul>
-            <p><a href="#Compile">Follow the written directions below</a>, which includes the raw code for the <code>SampleJDBC</code>&#160;example program.</p>
-            <h2 id="Compile">Compile and Run the Sample Program</h2>
-            <p>This section walks you through compiling and running the <code>SampleJDBC</code>&#160;example program, in the following steps:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Locate the Splice&#160;Machine JDBC&#160;Driver:</p>
-                        <p class="indentLevel1">Our JDBC&#160;driver is automatically installed on your computer(s) when you install Splice Machine. You'll find it in the <span  class="CodeFont">jdbc-driver</span> folder under the <code>splicemachine</code> directory; typically:</p>
-						<div class="PreWrapperWide"><pre class="Example">/splicemachine/jdbc-driver/db-client-2.6.1.1736-SNAPSHOT.jar</pre></div>
-						<p>- or -</p>
-						<div class="PreWrapperWide"><pre class="Example">/splicemachine/jdbc-driver/db-client-2.5.0.1729-SNAPSHOT.jar</pre></div>
-						<p class="noteNote">The build number, e.g. <code>1729</code>, varies with each Splice Machine software update.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Copy the example program code:</p>
-                        <p class="indentLevel1">You can copy and paste the code below:</p>
-                        <div class="preWrapperWide"><pre class="Example">package com.splicemachine.cs.tools
-
+          <div class="preWrapperWide">
+            <pre class="Example"><code>package com.splicemachine.cs.tools
+    
 import java.sql.*;
-
+    
 /**
 * Simple example that establishes a connection with splice and does a few basic JDBC operations
 */
@@ -660,21 +591,21 @@ public static void main(String[] arg) {
 		cne.printStackTrace();
 		return; //exit early if we can't find the driver
 	}
-
+    
 	try(Connection conn = DriverManager.getConnection(dbUrl)){
 		//Create a statement
 		try(Statement statement = conn.createStatement()){
-
+    
 			//Create a table
 			statement.execute("CREATE TABLE MYTESTTABLE(a int, b varchar(30))");
-
+    
 			//Insert data into the table
 			statement.execute("insert into MYTESTTABLE values (1,'a')");
 			statement.execute("insert into MYTESTTABLE values (2,'b')");
 			statement.execute("insert into MYTESTTABLE values (3,'c')");
 			statement.execute("insert into MYTESTTABLE values (4,'c')");
 			statement.execute("insert into MYTESTTABLE values (5,'c')");
-
+    
 			int counter=0;
 			//Execute a Query
 			try(ResultSet rs=statement.executeQuery("select a, b from MYTESTTABLE")){
@@ -686,14 +617,19 @@ public static void main(String[] arg) {
 				}
 			}
 		}
-
+    
 	}catch (SQLException se) {
 		se.printStackTrace();
 	}
-}</pre>
-                        </div>
-                        <p class="spaceAbove">Note that the code uses the default JDBC&#160;URL&#160;and driver class values:</p>
-                        <table summary="Table of default Splice Machine connection parameters.">
+}
+</code></pre>
+
+          </div>
+
+          <p class="spaceAbove">Note that the code uses the default JDBC URL and driver class
+values:</p>
+
+          <table summary="Table of default Splice Machine connection parameters.">
                             <col />
                             <col />
                             <col />
@@ -706,43 +642,59 @@ public static void main(String[] arg) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><em>JDBC&#160;URL</em></td>
+                                    <td><em>JDBC URL</em></td>
                                     <td><code>jdbc:splice://<span class="Highlighted">&lt;hostname&gt;</span>:1527/splicedb</code></td>
                                     <td>
-                                        <p class="noSpaceAbove">Use <code>localhost</code> as the <span class="HighlightedCode">&lt;hostname&gt;</span>&#160;value for the standalone version of Splice Machine.</p>
-                                        <p>On a cluster, specify the IP&#160;address of an HBase RegionServer.</p>
+                                        <p class="noSpaceAbove">Use <code>localhost</code> as the <span class="HighlightedCode">&lt;hostname&gt;</span> value for the standalone version of Splice Machine.</p>
+                                        <p>On a cluster, specify the IP address of an HBase RegionServer.</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><em>JDBC&#160;driver class</em></td>
+                                    <td><em>JDBC driver class</em></td>
                                     <td><code>com.splicemachine.db.jdbc.ClientDriver</code></td>
-                                    <td>&#160;</td>
+                                    <td> </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </li>
-                    <li>
-                        <p class="topLevel">Compile the code</p>
-                        <p class="indentLevel1">Compile and package the code into <span class="ShellCommand">splice-jdbc-test-0.1.0-SNAPSHOT.jar</span>.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run the program:</p>
-                        <p class="indentLevel1">When you run the program, your <code>CLASSPATH</code> must include the path to the Splice Machine JDBC driver. If you did compile and package your code into <code>splice-jdbc-test-0.1.0-SNAPSHOT.jar</code>, you can run the program with this command line:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">java -cp splice-installer-<span class="Highlighted">&lt;platformVersion&gt;</span>/resources/jdbc-driver/ com.splicemachine.cs.tools.SampleJDBC   </pre>
-                        </div>
-                        <p class="indentLevel1">The command should display a result like the following:</p>
-                            <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
-record=[1] a=[1] b=[a]
+        </li>
+        <li>
+          <p class="topLevel">Compile the code</p>
+
+          <p class="indentLevel1">Compile and package the code into <span class="ShellCommand">splice-jdbc-test-0.1.0-SNAPSHOT.jar</span>.</p>
+        </li>
+        <li>
+          <p class="topLevel">Run the program:</p>
+
+          <p class="indentLevel1">When you run the program, your <code>CLASSPATH</code> must include the path to
+the Splice Machine JDBC driver. If you did compile and package your
+code into <code>splice-jdbc-test-0.1.0-SNAPSHOT.jar</code>, you can run the
+program with this command line:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>java -cp splice-installer-&lt;platformVersion&gt;/resources/jdbc-driver/ com.splicemachine.cs.tools.SampleJDBC   
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">The command should display a result like the following:</p>
+
+          <div class="preWrapperWide">
+
+            <pre class="ShellCommand"><code>record=[1] a=[1] b=[a]
 record=[2] a=[2] b=[b]
 record=[3] a=[3] b=[c]
 record=[4] a=[4] b=[c]
-record=[5] a=[5] b=[c]</pre>
-                            </div>
-                    </li>
-                </ol>
-            </div>
-        </div>
-	</section>
+record=[5] a=[5] b=[c]
+</code></pre>
+
+          </div>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -759,7 +711,7 @@ record=[5] a=[5] b=[c]</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

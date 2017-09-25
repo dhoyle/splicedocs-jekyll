@@ -2806,126 +2806,184 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Statements.CreateSequence">CREATE SEQUENCE</h1>
-            <p>The <code>CREATE SEQUENCE</code> statement creates a sequence generator, which is
-		a mechanism for generating exact numeric values, one at a time.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE SEQUENCE
-   [ <em><a href="sqlref_identifiers_intro.html">SQL Identifier</a></em>
-   [ <em>sequenceElement</em> ]*</pre>
-            </div>
-            <p>The sequence name is composed of an optional <em>schemaName</em> and a
-			<em>SQL Identifier</em>. If a <em>schemaName</em> is not provided, the current
-			schema is the default schema. If a qualified sequence name is specified, the
-		schema name cannot begin with SYS.</p>
-            <div class="paramList">
-                <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">The name of the schema to which this sequence belongs. If you do not specify a schema name, the current schema is assumed.</p>
-                <p class="paramDefn">You cannot use a schema name that begins with the <code>SYS.</code> prefix.</p>
-                <p class="paramName">SQL Identifier</p>
-                <p class="paramDefnFirst">The name of the sequence</p>
-                <p class="paramName">sequenceElement</p>
-                <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
-  AS <em>dataType</em>
-   | START WITH <em>startValue</em>
-   | INCREMENT BY <em>incrementValue</em>
-   | MAXVALUE <em>maxValue</em> | NO MAXVALUE
-   | MINVALUE <em>minValue</em> | NO MINVALUE
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="create-sequence---statementscreatesequence">CREATE SEQUENCE   {#Statements.CreateSequence}</h1>
+
+    <p>The <code>CREATE SEQUENCE</code> statement creates a sequence generator, which is a
+mechanism for generating exact numeric values, one at a time.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CREATE SEQUENCE
+   [ SQL Identifier
+   [ sequenceElement ]*
+</code></pre>
+
+    </div>
+    <p>The sequence name is composed of an optional <em>schemaName</em> and a <em>SQL
+Identifier</em>. If a <em>schemaName</em> is not provided, the current schema is
+the default schema. If a qualified sequence name is specified, the
+schema name cannot begin with SYS.</p>
+
+    <div class="paramList">
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">The name of the schema to which this sequence belongs. If you do not
+specify a schema name, the current schema is assumed.</p>
+
+      <p class="paramDefn">You cannot use a schema name that begins with the <code>SYS.</code> prefix.</p>
+
+      <p class="paramName">SQL Identifier</p>
+
+      <p class="paramDefnFirst">The name of the sequence</p>
+
+      <p class="paramName">sequenceElement</p>
+
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>{
+  AS dataType
+   | START WITH startValue
+   | INCREMENT BY incrementValue
+   | MAXVALUE maxValue | NO MAXVALUE
+   | MINVALUE minValue | NO MINVALUE
    | CYCLE | NO CYCLE
-}</pre>
-                </div>
-                <div class="paramListNested">
-                    <p class="paramName">dataType</p>
-                    <p class="paramDefnFirst">
-						If specified, the <em>dataType</em> must be an integer type (<code>SMALLINT</code>, <code>INT</code>, or 	<code>BIGINT</code>). If not specified, the default data type is <code>INT</code>.
-					</p>
-                    <p class="paramName">startValue</p>
-                    <p class="paramDefnFirst">If specified, this is a signed integer representing the first value returned by the sequence object. The <code>START</code> value must be a value less than or equal to the maximum and greater than or equal to the minimum value of the sequence object.</p>
-                    <p class="paramDefn">The default start value for a new ascending sequence object is the minimum value. The default start value for a descending sequence objest is the maximum value.</p>
-                    <p class="paramName">incrementValue</p>
-                    <p class="paramDefnFirst">
-						If specifed, the <code>incrementValue</code> is a non-zero signed integer value that fits in a <em>DataType</em> value.</p>
-                    <p class="paramDefn">If this is not specified, the <code>INCREMENT</code> defaults to <code>1</code>. If <code>incrementValue</code> is positive, the sequence numbers get larger over time; if it is negative, the sequence numbers get smaller over time.
-					</p>
-                    <p class="paramName">minValue</p>
-                    <p class="paramDefnFirst">
-						If specified, <code>minValue</code> must be a signed integer that fits in a <em>DataType</em> value. </p>
-                    <p class="paramDefn">If <code>minValue</code>is not specified, or if <code>NO&#160;MINVALUE</code>is specified, then <code>minValue</code>defaults to the smallest negative number that fits in a <em>DataType</em> value.
-					</p>
-                    <p class="paramName">maxValue</p>
-                    <p class="paramDefnFirst">
-						If specified, <code>maxValue</code> must be a signed integer that fits in a <em>DataType</em> value. </p>
-                    <p class="paramDefn">If <code>maxValue</code>is not specified, or if <code>NO&#160;MAXVALUE</code>is specified, then <code>maxValue</code>defaults to the largest positive number that fits in a <em>DataType</em> value.
-</p>
-                    <p class="paramDefn">Note that the <code>maxValue</code> must be greater than the <code>minValue</code>.</p>
-                    <p class="paramName">CYCLE</p>
-                    <p class="paramDefnFirst">
-						The <code>CYCLE</code> clause controls what happens when the sequence generator exhausts its range and wraps around.</p>
-                    <p class="paramDefn">If <code>CYCLE</code> is specified, the wraparound behavior is to reinitialize the sequence generator to its <code>START</code> value.</p>
-                    <p class="paramDefn">If <code>NO CYCLE</code> is specified, Splice Machine throws an exception when the generator wraps around. The default behavior is <code>NO CYCLE</code>.
-					</p>
-                </div>
-            </div>
-            <p>To retrieve the next value from a sequence generator, use a <a href="sqlref_expressions_nextvaluefor.html"><code>NEXT VALUE FOR</code> expression</a>.</p>
-            <h2>Usage Privileges</h2>
-            <p>The owner of the schema where the sequence generator lives automatically
-			gains the <code>USAGE</code> privilege on the sequence generator, and can grant this
-			privilege to other users and roles. Only the
-			database owner and the
-			owner of the sequence generator can grant these <code>USAGE</code> privileges. The <code>USAGE</code>
-			privilege cannot be revoked from the schema owner. See
-			<a href="sqlref_statements_grant.html"><code>GRANT statement</code></a> and
-			<a href="sqlref_statements_revoke.html"><code>REVOKE statement</code></a> for more information.
-		</p>
-            <h2>Performance</h2>
-            <p>
-			To boost performance and concurrency,
-			Splice Machine
-			pre-allocates ranges of upcoming values for sequences. The lengths of these ranges
-			can be configured by adjusting the value of the
-			<code>derby.language.sequence.preallocator</code>
-			property.
-		</p>
-            <h2>Examples</h2>
-            <p>The following statement creates a sequence generator of type <code>INT</code>, with a
-			start value of <code>-2147483648</code> (the smallest <code>INT</code> value). The value increases by <code>1</code>,
-			and the last legal value is the largest possible <code>INT</code>. If <code>NEXT VALUE FOR</code> is
-			invoked on the generator after it reaches its maximum value,
-			Splice Machine throws an exception.
-		</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE SEQUENCE order_id;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <p>This example creates a player ID&#160;sequence that starts with the integer value <code>100</code>:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE SEQUENCE PlayerID_seq&#160;
-   START&#160;WITH 100;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <p>The following statement creates a sequence of type <code>BIGINT</code> with a start value
-			of <code>3,000,000,000</code>. The value increases by <code>1</code>, and the last legal value is the
-			largest possible <code>BIGINT</code>.  If <code>NEXT VALUE FOR</code> is
-			invoked on the generator after it reaches its maximum value,
-			Splice Machine throws an exception.		</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE SEQUENCE order_entry_id
+}
+</code></pre>
+
+      </div>
+      <div class="paramListNested">
+        <p class="paramName">dataType</p>
+
+        <p class="paramDefnFirst">If specified, the <em>dataType</em> must be an integer type (<code>SMALLINT</code>, <code>INT</code>,
+or <code>BIGINT</code>). If not specified, the default data type is <code>INT</code>.</p>
+
+        <p class="paramName">startValue</p>
+
+        <p class="paramDefnFirst">If specified, this is a signed integer representing the first value
+returned by the sequence object. The <code>START</code> value must be a value less
+than or equal to the maximum and greater than or equal to the minimum
+value of the sequence object.</p>
+
+        <p class="paramDefn">The default start value for a new ascending sequence object is the
+minimum value. The default start value for a descending sequence objest
+is the maximum value.</p>
+
+        <p class="paramName">incrementValue</p>
+
+        <p class="paramDefnFirst">If specifed, the <code>incrementValue</code> is a non-zero signed integer value
+that fits in a <em>DataType</em> value.</p>
+
+        <p class="paramDefn">If this is not specified, the <code>INCREMENT</code> defaults to <code>1</code>. If
+<code>incrementValue</code> is positive, the sequence numbers get larger over time;
+if it is negative, the sequence numbers get smaller over time.</p>
+
+        <p class="paramName">minValue</p>
+
+        <p class="paramDefnFirst">If specified, <code>minValue</code> must be a signed integer that fits in a
+<em>DataType</em> value.</p>
+
+        <p class="paramDefn">If <code>minValue</code>is not specified, or if <code>NO MINVALUE</code>is specified, then
+<code>minValue</code>defaults to the smallest negative number that fits in a
+<em>DataType</em> value.</p>
+
+        <p class="paramName">maxValue</p>
+
+        <p class="paramDefnFirst">If specified, <code>maxValue</code> must be a signed integer that fits in a
+<em>DataType</em> value.</p>
+
+        <p class="paramDefn">If <code>maxValue</code>is not specified, or if <code>NO MAXVALUE</code>is specified, then
+<code>maxValue</code>defaults to the largest positive number that fits in a
+<em>DataType</em> value.</p>
+
+        <p class="paramDefn">Note that the <code>maxValue</code> must be greater than the <code>minValue</code>.</p>
+
+        <p class="paramName">CYCLE</p>
+
+        <p class="paramDefnFirst">The <code>CYCLE</code> clause controls what happens when the sequence generator
+exhausts its range and wraps around.</p>
+
+        <p class="paramDefn">If <code>CYCLE</code> is specified, the wraparound behavior is to reinitialize the
+sequence generator to its <code>START</code> value.</p>
+
+        <p class="paramDefn">If <code>NO CYCLE</code> is specified, Splice Machine throws an exception when the
+generator wraps around. The default behavior is <code>NO CYCLE</code>.</p>
+
+      </div>
+    </div>
+    <p>To retrieve the next value from a sequence generator, use a <a href="sqlref_expressions_nextvaluefor.html"><code>NEXT VALUE
+FOR</code> expression</a>.</p>
+
+    <h2 id="usage-privileges">Usage Privileges</h2>
+
+    <p>The owner of the schema where the sequence generator lives automatically
+gains the <code>USAGE</code> privilege on the sequence generator, and can grant
+this privilege to other users and roles. Only the database owner and the
+owner of the sequence generator can grant these <code>USAGE</code> privileges. The
+<code>USAGE</code> privilege cannot be revoked from the schema owner. See <a href="sqlref_statements_grant.html"><code>GRANT
+statement</code></a> and <a href="sqlref_statements_revoke.html"><code>REVOKE
+statement</code></a> for more information.</p>
+
+    <h2 id="performance">Performance</h2>
+
+    <p>To boost performance and concurrency, Splice Machine pre-allocates
+ranges of upcoming values for sequences. The lengths of these ranges can
+be configured by adjusting the value of the
+<code>derby.language.sequence.preallocator</code> property.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p>The following statement creates a sequence generator of type <code>INT</code>, with
+a start value of <code>-2147483648</code> (the smallest <code>INT</code> value). The value
+increases by <code>1</code>, and the last legal value is the largest possible
+<code>INT</code>. If <code>NEXT VALUE FOR</code> is invoked on the generator after it reaches
+its maximum value, Splice Machine throws an exception.</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE SEQUENCE order_id;
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <p>This example creates a player ID sequence that starts with the integer
+value <code>100</code>:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE SEQUENCE PlayerID_seq 
+   START WITH 100;
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <p>The following statement creates a sequence of type <code>BIGINT</code> with a start
+value of <code>3,000,000,000</code>. The value increases by <code>1</code>, and the last legal
+value is the largest possible <code>BIGINT</code>. If <code>NEXT VALUE FOR</code> is invoked
+on the generator after it reaches its maximum value, Splice Machine
+throws an exception.</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE SEQUENCE order_entry_id
    AS BIGINT
    START WITH 3000000000;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><code><a href="sqlref_statements_dropsequence.html">DROP&#160;SEQUENCE</a></code>&#160;statement </li>
-                <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a>&#160;statement</li>
-                <li><a href="sqlref_expressions_nextvaluefor.html"><code>Next&#160;Value For</code></a> expression</li>
-                <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a>&#160;statement</li>
-                <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a>
-                </li>
-                <li><a href="sqlref_identifiers_intro.html">SQL Identifier</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_dropsequence.html"><code>DROP SEQUENCE</code></a> statement</li>
+      <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a> statement</li>
+      <li><a href="sqlref_expressions_nextvaluefor.html"><code>Next Value For</code></a> expression</li>
+      <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> statement</li>
+      <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a></li>
+      <li><a href="sqlref_identifiers_intro.html">SQL Identifier</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2942,7 +3000,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2806,58 +2806,92 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</h1>
-            <p>The <code>SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</code>&#160;system procedure enables collection of statistics on a specific table column in your database. </p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS(
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;schema,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;table,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VARCHAR(128)&#160;columnName)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">Specifies the schema of the
-			table. Passing a <code>null</code> or non-existent schema name generates an error.</p>
-                <p class="paramName">tableName</p>
-                <p class="paramDefnFirst">Specifies the table name of
-				the table. The string must exactly match the case of the table name, and the
-				argument of <code>"Fred"</code> will be passed to SQL as the delimited identifier <code>'Fred'</code>.
-			Passing a <code>null</code> or non-existent table name generates an error.</p>
-                <p class="paramName">columnName</p>
-                <p class="paramDefnFirst">Specifies the name of the column for which you want statistics enabled. Passing a <code>null</code> or non-existent column name generates an error.</p>
-            </div>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Usage Notes</h2>
-            <p>Here are some <span class="Highlighted">important notes</span> about collecting column statistics:</p>
-            <ul>
-                <li>
-                    <p>Statistics can only be collected on columns with data types that can be ordered; numeric types, some <code>CHAR</code>&#160;types, some <code>BIT</code>&#160;types, and date/time types can be ordered.</p>
-                    <p>You can determine if a data type can be ordered by examining the Comparisons table in the <a href="sqlref_datatypes_compatability.html">Data Assignments and Comparisons</a> topic: any data type with a <span class="CodeBoldFont">Y</span>&#160;in any column in that table can be ordered, and thus can have statistics collected on it.</p>
-                </li>
-                <li>Statistics are automatically collected on all columns by default.</li>
-            </ul>
-            <h2>SQL Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-splice&gt;&#160;CALL SYSCS_UTIL.ENABLE_COLUMN_STATISTICS('SPLICE', 'Salaries', 'Salary');
-Statement executed.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_compatability.html">Data Assignments and Comparisons</a>
-                </li>
-                <li><a href="sqlref_sysprocs_disablecolumnstats.html"><code>SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</code></a>
-                </li>
-                <li><a href="sqlref_sysprocs_collectschemastats.html"><code>SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</code></a>
-                </li>
-                <li><a href="sqlref_sysprocs_dropschemastats.html"><code>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</code></a>
-                </li>
-                <li><a href="developers_tuning_usingstats.html">Using Statistics</a> in the <em>Developer's Guide</em></li>
-            </ul>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilenablecolumnstatistics">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</h1>
+
+    <p>The <code>SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</code> system procedure enables
+collection of statistics on a specific table column in your database.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.ENABLE_COLUMN_STATISTICS(
+                       VARCHAR(128) schema,
+                       VARCHAR(128) table,
+                       VARCHAR(128) columnName)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">Specifies the schema of the table. Passing a <code>null</code> or non-existent
+schema name generates an error.</p>
+
+      <p class="paramName">tableName</p>
+
+      <p class="paramDefnFirst">Specifies the table name of the table. The string must exactly match the
+case of the table name, and the argument of <code>"Fred"</code> will be passed to
+SQL as the delimited identifier <code>'Fred'</code>. Passing a <code>null</code> or
+non-existent table name generates an error.</p>
+
+      <p class="paramName">columnName</p>
+
+      <p class="paramDefnFirst">Specifies the name of the column for which you want statistics enabled.
+Passing a <code>null</code> or non-existent column name generates an error.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Here are some <span class="Highlighted">important notes</span> about
+collecting column statistics:</p>
+
+    <ul>
+      <li>
+        <p>Statistics can only be collected on columns with data types that can
+be ordered; numeric types, some <code>CHAR</code> types, some <code>BIT</code> types, and
+date/time types can be ordered.</p>
+
+        <p>You can determine if a data type can be ordered by examining the
+Comparisons table in the <a href="sqlref_datatypes_compatability.html">Data Assignments and
+Comparisons</a> topic: any data type
+with a <span class="CodeBoldFont">Y</span> in any column in that table
+can be ordered, and thus can have statistics collected on it.</p>
+      </li>
+      <li>
+        <p>Statistics are automatically collected on all columns by default.</p>
+      </li>
+    </ul>
+
+    <h2 id="sql-examples">SQL Examples</h2>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.ENABLE_COLUMN_STATISTICS('SPLICE', 'Salaries', 'Salary');
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_compatability.html">Data Assignments and
+Comparisons</a></li>
+      <li><a href="sqlref_sysprocs_disablecolumnstats.html"><code>SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</code></a></li>
+      <li><a href="sqlref_sysprocs_collectschemastats.html"><code>SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</code></a></li>
+      <li><a href="sqlref_sysprocs_dropschemastats.html"><code>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</code></a></li>
+      <li><a href="developers_tuning_usingstats.html">Using Statistics</a> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2874,7 +2908,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

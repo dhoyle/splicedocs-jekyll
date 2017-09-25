@@ -2806,24 +2806,45 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>ADD_MONTHS</h1>
-            <p>The <code>ADD_MONTHS</code> function returns the date resulting from adding a number of months added to a specified date.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">ADD_MONTHS(Date <em>source</em>, int <em>numOfMonths</em>);</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">source</p>
-                <p class="paramDefnFirst">The source date. This can be a <code>DATE</code> value, or any value that can be implicitly converted to <code>DATE</code>.</p>
-                <p class="paramName">numOfMonths</p>
-                <p class="paramDefnFirst">An integer value that specifies the number of months to add to the source date.</p>
-            </div>
-            <h2>Results</h2>
-            <p>The returned string always has data type <code>DATE</code>. </p>
-            <p>If date is the last day of the month or if the resulting month has fewer days than the day component of date, then the result is the last day of the resulting month. Otherwise, the result has the same day component as date.</p>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES(ADD_MONTHS(CURRENT_DATE,5));
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="addmonths">ADD_MONTHS</h1>
+
+    <p>The <code>ADD_MONTHS</code> function returns the date resulting from adding a
+number of months added to a specified date.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>ADD_MONTHS(Date source, int numOfMonths);
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">source</p>
+
+      <p class="paramDefnFirst">The source date. This can be a <code>DATE</code> value, or any value that can be
+implicitly converted to <code>DATE</code>.</p>
+
+      <p class="paramName">numOfMonths</p>
+
+      <p class="paramDefnFirst">An integer value that specifies the number of months to add to the
+source date.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The returned string always has data type <code>DATE</code>.</p>
+
+    <p>If date is the last day of the month or if the resulting month has fewer
+days than the day component of date, then the result is the last day of
+the resulting month. Otherwise, the result has the same day component as
+date.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; VALUES(ADD_MONTHS(CURRENT_DATE,5));
 1
 ----------
 2015-02-22
@@ -2846,10 +2867,12 @@ splice&gt; VALUES(ADD_MONTHS(DATE('2014-01-31'),1));
 ----------
 2014-02-28
 1 row selected
-</pre>
-            </div>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2866,7 +2889,7 @@ splice&gt; VALUES(ADD_MONTHS(DATE('2014-01-31'),1));
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

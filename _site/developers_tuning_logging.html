@@ -587,40 +587,84 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Splice Machine Logging</h1>
-            <p>This topic describes the logging facility used in Splice Machine. Splice Machine also allows you to exercise direct control over logging in your database. You can:</p>
-            <ul class="SecondLevel">
-                <li><a href="#Manually">Manually disable logging</a> of all SQL&#160;statements. </li>
-                <li>Configure individual logger objects to log <a href="#Levels">specific message levels.</a></li>
-                <li>Call the <code>log</code> function for a specific logger object, passing it a logging level value and a message. If the logger is currently configured to record messages at the specified level, the message is added to the log; otherwise, the logger ignores the message. Logger levels are ordered hierarchically; any message with a level equal to or greater than the hierarchical level for which logging is enabled is recorded into the log. </li>
-            </ul>
-            <p>Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html"  target="_blank">Apache log4j Logging API</a>, which allows you to associate a logger object with any java class, among other features. Loggers can be set to capture different levels of information. </p>
-			<p class="noteIcon">Splice Machine enables statement logging by default.</p>
-            <p>Logging too much information can slow your system down, but not logging enough information makes it difficult to debug certain issues. The <a href="#SpliceLoggers">Splice Machine Loggers</a> section below summarizes the loggers used by Splice Machine and the system components that they use. You can use the SQL&#160;logging functions described in the <a href="#LoggerFunctions">SQL&#160;Logger Functions</a> section below to retrieve or modify the logging level of any logger used in Splice Machine.</p>
-            <h2 id="Manually">Manually Disabling Logging</h2>
-			<p>Logging of SQL statements is automatically enabled in Splice Machine; to disable logging of statements, you can do so in either of these ways:</p>
-            <ul>
-                <li>
-                    <p class="noSpaceBelow">You can pass an argument to your Splice Machine JVM&#160;startup script, as follows:</p>
-                    <div class="preWrapperWide"><pre class="Example" xml:space="preserve">-Dderby.language.logStatementText=false</pre>
-                    </div>
-                </li>
-                <li>
-                    <p>You can add the following property definition to your <code>hbase-default.xml</code>, <code>hbase-site.xml</code>, or <code>splice-site.xml</code> file:</p>
-                    <div class="preWrapperWide"><pre class="Example">&lt;property&gt;
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="splice-machine-logging">Splice Machine Logging</h1>
+
+    <p>This topic describes the logging facility used in Splice Machine. Splice
+Machine also allows you to exercise direct control over logging in your
+database. You can:</p>
+
+    <ul class="SecondLevel">
+      <li><a href="#Manually">Manually disable logging</a> of all SQL statements.</li>
+      <li>Configure individual logger objects to log <a href="#Levels">specific message
+levels.</a></li>
+      <li>Call the <code>log</code> function for a specific logger object, passing it a
+logging level value and a message. If the logger is currently
+configured to record messages at the specified level, the message is
+added to the log; otherwise, the logger ignores the message. Logger
+levels are ordered hierarchically; any message with a level equal to
+or greater than the hierarchical level for which logging is enabled is
+recorded into the log.</li>
+    </ul>
+
+    <p>Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html" target="_blank">Apache log4j Logging API</a>, which allows you to associate a logger object with any
+java class, among other features. Loggers can be set to capture
+different levels of information.</p>
+
+    <p class="noteIcon">Splice Machine enables statement logging by default.</p>
+
+    <p>Logging too much information can slow your system down, but not logging
+enough information makes it difficult to debug certain issues. The
+<a href="#SpliceLoggers">Splice Machine Loggers</a> section below summarizes the
+loggers used by Splice Machine and the system components that they use.
+You can use the SQL logging functions described in the <a href="#LoggerFunctions">SQL Logger
+Functions</a> section below to retrieve or modify the
+logging level of any logger used in Splice Machine.</p>
+
+    <h2 id="Manually">Manually Disabling Logging</h2>
+
+    <p>Logging of SQL statements is automatically enabled in Splice Machine; to
+disable logging of statements, you can do so in either of these ways:</p>
+
+    <ul>
+      <li>
+        <p class="noSpaceBelow">You can pass an argument to your Splice Machine JVM startup script, as
+follows:</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>-Dderby.language.logStatementText=false
+</code></pre>
+
+        </div>
+      </li>
+      <li>
+        <p>You can add the following property definition to your
+<code>hbase-default.xml</code>, <code>hbase-site.xml</code>, or <code>splice-site.xml</code> file:</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>&lt;property&gt;
 &lt;name&gt;splice.debug.logStatementContext&lt;/name&gt;
 &lt;value&gt;false&lt;/value&gt;
 &lt;description&gt;Property to enable logging of all statements.&lt;/description&gt;
-&lt;/property&gt;</pre>
-                        </div>
-                </li>
-            </ul>
-            <p>You can examine the logged data in your region server's logs; if you want to change the location where events are logged, see the instructions in the Installation Guide for your platform (Cloudera, Hortonworks, or MapR).</p>
-            <h3 id="Levels">Logger Levels</h3>
-            <p>The <code>log4j</code> API&#160;defines six logger levels. The following table displays them from the lowest level to the highest:</p>
-            <table summary="Table of the available logging levels.">
+&lt;/property&gt;
+</code></pre>
+
+        </div>
+      </li>
+    </ul>
+
+    <p>You can examine the logged data in your region server’s logs; if you
+want to change the location where events are logged, see the
+instructions in the Installation Guide for your platform (Cloudera,
+Hortonworks, or MapR).</p>
+
+    <h3 id="Levels">Logger Levels</h3>
+
+    <p>The <code>log4j</code> API defines six logger levels. The following table displays
+them from the lowest level to the highest:</p>
+
+    <table summary="Table of the available logging levels.">
                 <col />
                 <col />
                 <thead>
@@ -656,9 +700,13 @@
                     </tr>
                 </tbody>
             </table>
-            <h3 id="SpliceLoggers">Splice Machine Loggers</h3>
-            <p>The following table summarizes the loggers used in the Splice Machine environment that might interest you if you're trying to debug performance issues in your database:</p>
-            <table summary="Table of the loggers used in Splice Machine.">
+    <h3 id="SpliceLoggers">Splice Machine Loggers</h3>
+
+    <p>The following table summarizes the loggers used in the Splice Machine
+environment that might interest you if you’re trying to debug
+performance issues in your database:</p>
+
+    <table summary="Table of the loggers used in Splice Machine.">
                 <col />
                 <col />
                 <col />
@@ -688,12 +736,12 @@
                     <tr>
                         <td><code>com.splicemachine.derby.impl.sql.catalog</code></td>
                         <td><code>WARN</code></td>
-                        <td>Logs Derby SQL&#160;catalog/dictionary messages</td>
+                        <td>Logs Derby SQL catalog/dictionary messages</td>
                     </tr>
                     <tr>
                         <td><code>com.splicemachine.db.impl.sql.execute.operations</code></td>
                         <td><code>WARN</code></td>
-                        <td>Logs Derby SQL&#160;operation messages</td>
+                        <td>Logs Derby SQL operation messages</td>
                     </tr>
                     <tr>
                         <td><code>org.apache.zookeeper.server.ZooKeeperServer</code></td>
@@ -718,13 +766,17 @@
                     <tr>
                         <td><code>com.splicemachine.derby.management.StatementManager</code></td>
                         <td><code>ERROR</code></td>
-                        <td>Set the level of this logger to <code>TRACE</code>&#160;to record execution time for SQL&#160;statements</td>
+                        <td>Set the level of this logger to <code>TRACE</code> to record execution time for SQL statements</td>
                     </tr>
                 </tbody>
             </table>
-            <h3 id="LoggerFunctions">SQL&#160;Logger Functions</h3>
-            <p>Splice Machine SQL&#160;includes the following built-in system procedures, all documented in our <a href="sqlref_intro.html"><em>SQL&#160;Reference Manual</em></a>, for interacting with the Splice Machine logs:</p>
-            <table summary="Table of Splice Machine system procedures for interacting with logs.">
+    <h3 id="LoggerFunctions">SQL Logger Functions</h3>
+
+    <p>Splice Machine SQL includes the following built-in system procedures,
+all documented in our <a href="sqlref_intro.html"><em>SQL Reference Manual</em></a>, for
+interacting with the Splice Machine logs:</p>
+
+    <table summary="Table of Splice Machine system procedures for interacting with logs.">
                 <col />
                 <col />
                 <thead>
@@ -751,14 +803,20 @@
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sysprocs_getloggers.html"><code>SYSCS_UTIL.SYSCS_GET_LOGGERS</code></a> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><a href="sqlref_sysprocs_getloggerlevel.html"><code>SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</code></a> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><a href="sqlref_sysprocs_setloggerlevel.html"><code>SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</code></a> in the <em>SQL&#160;Reference Manual</em></li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_getloggers.html"><code>SYSCS_UTIL.SYSCS_GET_LOGGERS</code></a> in
+the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_getloggerlevel.html"><code>SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL</code></a>
+in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_setloggerlevel.html"><code>SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL</code></a>
+in the <em>SQL Reference Manual</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -775,7 +833,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

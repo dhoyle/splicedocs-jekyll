@@ -2806,23 +2806,42 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="DataTypes.TimeStamp">TIMESTAMP</h1>
-            <p>The <code>TIMESTAMP</code> data type stores a combined <code><a href="sqlref_builtinfcns_time.html">TIME</a></code> value that permits fractional seconds values of up to nine digits.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">TIMESTAMP</pre>
-            </div>
-            <h2>Corresponding Compile-time Java Type</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">java.sql.Timestamp</pre>
-            </div>
-            <h2>JDBC Metadata Type (java.sql.Types)</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">TIMESTAMP</pre>
-            </div>
-            <h2>About Timestamp Formats</h2>
-            <div>
-                <p>Splice Machine uses the following Java date and time pattern letters to construct timestamps:</p>
-                <table summary="Timestamp format pattern letter descriptions">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="timestamp---datatypestimestamp">TIMESTAMP   {#DataTypes.TimeStamp}</h1>
+
+    <p>The <code>TIMESTAMP</code> data type stores a combined
+<a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> value that permits fractional
+seconds values of up to nine digits.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TIMESTAMP
+</code></pre>
+
+    </div>
+    <h2 id="corresponding-compile-time-java-type">Corresponding Compile-time Java Type</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>java.sql.Timestamp
+</code></pre>
+
+    </div>
+    <h2 id="jdbc-metadata-type-javasqltypes">JDBC Metadata Type (java.sql.Types)</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TIMESTAMP
+</code></pre>
+
+    </div>
+    <h2 id="about-timestamp-formats">About Timestamp Formats</h2>
+
+    <div>
+      <p>Splice Machine uses the following Java date and time pattern letters to
+construct timestamps:</p>
+
+      <table summary="Timestamp format pattern letter descriptions">
                     <col />
                     <col />
                     <col />
@@ -2886,11 +2905,20 @@
                         </tr>
                     </tbody>
                 </table>
-                <p>The default timestamp format for Splice Machine imports is: <code>yyyy-MM-dd HH:mm:ss</code>, which uses a 24-hour clock, does not allow for decimal digits of seconds, and does not allow for time zone specification. </p>
-                <p>Please see <em><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a></em> in the <em>Developer's Guide</em> for information about using simple arithmetic with <code>TIMESTAMP</code>&#160;values.</p>
-                <h3>Examples</h3>
-                <p>The following tables shows valid examples of timestamps and their corresponding format (parsing)&#160;patterns:</p>
-                <table>
+      <p>The default timestamp format for Splice Machine imports is: <code>yyyy-MM-dd
+HH:mm:ss</code>, which uses a 24-hour clock, does not allow for decimal digits
+of seconds, and does not allow for time zone specification.</p>
+
+      <p>Please see <em><a href="developers_fundamentals_dates.html">Working With Date and Time
+Values</a></em> in the <em>Developer’s Guide</em>
+for information about using simple arithmetic with <code>TIMESTAMP</code> values.</p>
+
+      <h3 id="examples">Examples</h3>
+
+      <p>The following tables shows valid examples of timestamps and their
+corresponding format (parsing) patterns:</p>
+
+      <table>
                     <col />
                     <col />
                     <col />
@@ -2940,19 +2968,30 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <h2>Usage Notes</h2>
-            <p>Dates, times, and timestamps cannot be mixed with one another in expressions.</p>
-            <p>Splice Machine also accepts strings in the locale specific datetime format, using the locale of the database server. If there is an ambiguity, the built-in formats shown above take precedence.</p>
-            <p class="noteRelease">At this time,dates in <code><a href="#">TimeStamp</a></code> values only work correctly when limited to this range of date values: &#160;&#160;&#160;<code>1678-01-01 to 2261-12-31</code></p>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the <em>Developer's Guide</em></li>
-            </ul>
-        </div>
-	</section>
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Dates, times, and timestamps cannot be mixed with one another in
+expressions.</p>
+
+    <p>Splice Machine also accepts strings in the locale specific datetime
+format, using the locale of the database server. If there is an
+ambiguity, the built-in formats shown above take precedence.</p>
+
+    <p class="noteRelease">At this time,dates in <a href="#"><code>TimeStamp</code></a> values only work correctly when
+limited to this range of date values:    <code>1678-01-01 to 2261-12-31</code></p>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2969,7 +3008,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

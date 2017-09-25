@@ -2806,45 +2806,68 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</h1>
-            <p>The <code>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</code>&#160;&#160;system procedure drops statistics for a specific schema in your database. </p>
-            <p>This procedure drops statistics for every table in the schema. It also drops statistics for the index associated with every table in the schema. For example, if you have :</p>
-            <ul>
-                <li>a schema named <code>mySchema</code></li>
-                <li><code>mySchema</code> contains two tables:&#160;<code>myTable1</code> and <code>myTable2</code></li>
-                <li><code>myTable1</code> has two indices:&#160;<code>myTable1Index1</code> and <code>myTable1Index2</code></li>
-            </ul>
-            <p>Then <code>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</code> will drop statistics for <code>myTable1</code>, <code>myTable2</code>, <code>myTable1Index1</code>, and <code>myTable1Index2</code>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.DROP_SCHEMA_STATISTICS( VARCHAR(128)&#160;schema );</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">Specifies the schema for which you want to drop statistics. Passing a <code>null</code> or non-existent schema name generates an error.</p>
-            </div>
-            <h2>Results</h2>
-            <p>This procedure does not produce a result.</p>
-            <h2>SQL Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-splice&gt;&#160;CALL SYSCS_UTIL.DROP_SCHEMA_STATISTICS('MYSCHEMA');
-Statement executed.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_compatability.html">Data Assignments and Comparisons</a>
-                </li>
-                <li><a href="sqlref_sysprocs_enablecolumnstats.html"><code>SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</code></a>
-                </li>
-                <li><a href="sqlref_sysprocs_disablecolumnstats.html"><code>SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</code></a>
-                </li>
-                <li><a href="sqlref_sysprocs_collectschemastats.html"><code>SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</code></a>
-                </li>
-                <li><a href="developers_tuning_usingstats.html">Using Statistics</a> in the <em>Administrator's Guide</em></li>
-            </ul>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutildropschemastatistics">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</h1>
+
+    <p>The <code>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</code>  system procedure drops
+statistics for a specific schema in your database.</p>
+
+    <p>This procedure drops statistics for every table in the schema. It also
+drops statistics for the index associated with every table in the
+schema. For example, if you have :</p>
+
+    <ul>
+      <li>a schema named <code>mySchema</code></li>
+      <li><code>mySchema</code> contains two tables: <code>myTable1</code> and <code>myTable2</code></li>
+      <li><code>myTable1</code> has two indices: <code>myTable1Index1</code> and <code>myTable1Index2</code></li>
+    </ul>
+
+    <p>Then <code>SYSCS_UTIL.DROP_SCHEMA_STATISTICS</code> will drop statistics for
+<code>myTable1</code>, <code>myTable2</code>, <code>myTable1Index1</code>, and <code>myTable1Index2</code>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.DROP_SCHEMA_STATISTICS( VARCHAR(128) schema );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">Specifies the schema for which you want to drop statistics. Passing a
+<code>null</code> or non-existent schema name generates an error.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not produce a result.</p>
+
+    <h2 id="sql-examples">SQL Examples</h2>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.DROP_SCHEMA_STATISTICS('MYSCHEMA');
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_compatability.html">Data Assignments and
+Comparisons</a></li>
+      <li><a href="sqlref_sysprocs_enablecolumnstats.html"><code>SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</code></a></li>
+      <li><a href="sqlref_sysprocs_disablecolumnstats.html"><code>SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</code></a></li>
+      <li><a href="sqlref_sysprocs_collectschemastats.html"><code>SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</code></a></li>
+      <li><a href="developers_tuning_usingstats.html">Using Statistics</a> in the
+<em>Administrator’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2861,7 +2884,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

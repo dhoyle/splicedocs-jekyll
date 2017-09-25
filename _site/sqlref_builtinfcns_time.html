@@ -2806,45 +2806,73 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Time">TIME</h1>
-            <p>The <code>TIME</code> function returns a time from a value.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TIME ( <em>expression</em> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">expression
-            </p>
-                <p class="paramDefnFirst">An expression that can be any of the following:</p>
-            <ul class="bullet"><li>A <a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;value</li><li>A valid string representation of a time or timestamp</li></ul>
-            </div>
-            <h2>Results</h2>
-            <p>The returned result is governed by the following rules:</p>
-            <ul>
-                <li>If the argument can be <code>NULL</code>, the result can be <code>NULL</code>; if the argument is <code>NULL</code>, the result is the <code>NULL</code>value.</li>
-                <li>If the argument is a time, the result is that time value.</li>
-                <li>If the argument is a timestamp, the result is the time part of the timestamp.</li>
-                <li>If the argument is a string, the result is the time represented by the string.</li>
-            </ul>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">TIME ( <em>expression</em> )</pre>
-            </div>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES&#160;TIME( CURRENT_TIMESTAMP );
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="time---builtinfcnstime">TIME   {#BuiltInFcns.Time}</h1>
+
+    <p>The <code>TIME</code> function returns a time from a value.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TIME ( expression )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">expression</p>
+
+      <p class="paramDefnFirst">An expression that can be any of the following:</p>
+
+      <ul class="bullet">
+        <li>A <a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> value</li>
+        <li>A valid string representation of a time or timestamp</li>
+      </ul>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The returned result is governed by the following rules:</p>
+
+    <ul>
+      <li>If the argument can be <code>NULL</code>, the result can be <code>NULL</code>; if the
+argument is <code>NULL</code>, the result is the <code>NULL</code>value.</li>
+      <li>If the argument is a time, the result is that time value.</li>
+      <li>If the argument is a timestamp, the result is the time part of the
+timestamp.</li>
+      <li>If the argument is a string, the result is the time represented by the
+string.</li>
+    </ul>
+
+    <h2 id="syntax-1">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TIME ( expression )
+</code></pre>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES TIME( CURRENT_TIMESTAMP );
 1
 --------
 18:53:13
 
-1 row selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;data type</li>
-            </ul>
-        </div>
-	</section>
+1 row selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> data type</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2861,7 +2889,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -2806,20 +2806,34 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>LIMIT n </h1>
-            <p>A <code>LIMIT n</code> clause, limits the results of a query to a specified number of records.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">'{'&#160;LIMIT&#160;{<em>count</em>} '}'</pre>
-            </div>
-            <p class="noteNote">You must surround the <code>LIMIT</code>&#160;clause with&#160;left &#160;and right curly brackets (<code>{</code> and <code>}</code>).</p>
-            <div class="paramList">
-                <p class="paramName">count</p>
-                <p class="paramDefnFirst">An integer value specifying the maximum number of rows to return from the query. </p>
-            </div>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select * from limittest order by a;
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="limit-n">LIMIT n</h1>
+
+    <p>A <code>LIMIT n</code> clause, limits the results of a query to a specified number
+of records.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>'{' LIMIT {count} '}'
+</code></pre>
+
+    </div>
+    <p class="noteNote">You must surround the <code>LIMIT</code> clause with left  and right curly brackets
+(<code>{</code> and <code>}</code>).</p>
+
+    <div class="paramList">
+      <p class="paramName">count</p>
+
+      <p class="paramDefnFirst">An integer value specifying the maximum number of rows to return from
+the query.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; select * from limittest order by a;
 A |B |C |D
 --------------------------------------------------------------------------------
 a1 |b1 |c1 |d1
@@ -2832,14 +2846,14 @@ a7 |b7 |c7 |d7
 a8 |b8 |c8 |d8
 8 rows selected
 
-splice&gt; select * from limittest order by a {LIMIT&#160;1};
+splice&gt; select * from limittest order by a {LIMIT 1};
 A |B |C |D
 --------------------------------------------------------------------------------
 a1 |b1 |c1 |d1
 1 row selected
 
 
-splice&gt; select * from limittest order by a {LIMIT&#160;3};
+splice&gt; select * from limittest order by a {LIMIT 3};
 A |B |C |D
 --------------------------------------------------------------------------------
 a1 |b1 |c1 |d1
@@ -2860,18 +2874,20 @@ a6 |b6 |c6 |d6
 a7 |b7 |c7 |d7
 a8 |b8 |c8 |d8
 8 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><code><a href="sqlref_clauses_resultoffset.html">RESULT&#160;OFFSET</a></code>&#160;clause</li>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
-                <li>
-                    <p><code><a href="sqlref_clauses_topn.html">TOP&#160;n</a></code>&#160;clause</p>
-                </li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_resultoffset.html"><code>RESULT OFFSET</code></a> clause</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_clauses_topn.html"><code>TOP n</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2888,7 +2904,7 @@ a8 |b8 |c8 |d8
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

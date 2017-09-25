@@ -2806,51 +2806,75 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Asin">ASIN</h1>
-            <p>The <code>ASIN</code> function returns the arc sine of a specified number.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">ASIN ( <var>number</var> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">number
-            </p>
-                <p class="paramDefnFirst">A <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> number that specifies the sine, in radians, of the angle that you want.</p>
-            </div>
-            <h2>Results</h2>
-            <p>The data type of the returned value is a <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> number. The returned value, in radians, is in the range <code>pi/2</code> to <code>pi/2</code>. </p>
-            <ul>
-                <li>If the specified number is <code>NULL</code>, the result of this function is <code>NULL</code>.</li>
-                <li>If the specified number is zero (<code>0</code>), the result of this function is zero with the same sign as the specified number.</li>
-                <li>If the absolute value of the specified number is greater than 1, an exception is returned that indicates that the value is out of range (SQL state 22003).</li>
-            </ul>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES&#160;ASIN(0.5);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="asin---builtinfcnsasin">ASIN   {#BuiltInFcns.Asin}</h1>
+
+    <p>The <code>ASIN</code> function returns the arc sine of a specified number.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>ASIN ( number )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">number</p>
+
+      <p class="paramDefnFirst">A <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> number
+that specifies the sine, in radians, of the angle that you want.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The data type of the returned value is a <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE
+PRECISION</code></a> number. The returned
+value, in radians, is in the range <code>pi/2</code> to <code>pi/2</code>.</p>
+
+    <ul>
+      <li>If the specified number is <code>NULL</code>, the result of this function is
+<code>NULL</code>.</li>
+      <li>If the specified number is zero (<code>0</code>), the result of this function is
+zero with the same sign as the specified number.</li>
+      <li>If the absolute value of the specified number is greater than 1, an
+exception is returned that indicates that the value is out of range
+(SQL state 22003).</li>
+    </ul>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES ASIN(0.5);
 1
 ----------
 0.5235987755982989
 
-1 row selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE&#160;PRECISION</code></a> data type</li>
-                <li><a href="sqlref_builtinfcns_acos.html"><code>ACOS</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_atan.html"><code>ATAN</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_atan2.html"><code>ATAN2</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_cos.html"><code>COS</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_cosh.html"><code>COSH</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_cot.html"><code>COT</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_degrees.html"><code>DEGREES</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_radians.html"><code>RADIANS</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_sin.html"><code>SIN</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_sinh.html"><code>SINH</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_tan.html"><code>TAN</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_tanh.html"><code>TANH</code></a>&#160;function</li>
-            </ul>
-        </div>
-	</section>
+1 row selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_acos.html"><code>ACOS</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_atan.html"><code>ATAN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_atan2.html"><code>ATAN2</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_cos.html"><code>COS</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_cosh.html"><code>COSH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_cot.html"><code>COT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_degrees.html"><code>DEGREES</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_radians.html"><code>RADIANS</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sin.html"><code>SIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sinh.html"><code>SINH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_tan.html"><code>TAN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_tanh.html"><code>TANH</code></a> function</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2867,7 +2891,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

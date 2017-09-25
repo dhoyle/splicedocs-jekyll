@@ -2806,32 +2806,57 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInSysProcs.PerformMajorCompactionOnSchema">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</h1>
-            <p>The <code>SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</code> system procedure performs a major compaction on a schema. The compaction is performed on all of the tables in the schema, and on all of its index and constraint tables for each table in the schema.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA(<em>schemaName</em>)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">A string that specifies the Splice Machine schema name to which the table belongs.</p>
-            </div>
-                <h2>Usage</h2>
-                <p class="body">Major compaction is synchronous, which means that when you invoke this procedure from the command line, your command line prompt won't be available again until the compaction completes, which can take a little time.</p>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Example</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA('SPLICE');
-Statement executed.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sysprocs_compacttable.html"><code>SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</code></a>
-                </li>
-            </ul>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsperformmajorcompactiononschema---builtinsysprocsperformmajorcompactiononschema">SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA   {#BuiltInSysProcs.PerformMajorCompactionOnSchema}</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA</code> system
+procedure performs a major compaction on a schema. The compaction is
+performed on all of the tables in the schema, and on all of its index
+and constraint tables for each table in the schema.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA(schemaName)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">A string that specifies the Splice Machine schema name to which the
+table belongs.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p class="body">Major compaction is synchronous, which means that when you invoke this
+procedure from the command line, your command line prompt won’t be
+available again until the compaction completes, which can take a little
+time.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA('SPLICE');
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_compacttable.html"><code>SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE</code></a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2848,7 +2873,7 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

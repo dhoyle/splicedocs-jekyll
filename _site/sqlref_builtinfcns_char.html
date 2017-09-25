@@ -2806,63 +2806,114 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Char">CHAR</h1>
-            <p>The <code>CHAR</code> function returns a fixed-length character string representation. The representations are:</p>
-            <ul>
-                <li>A character string, if the first argument is any type of character string.</li>
-                <li>A datetime value, if the first argument is a date, time, or timestamp.</li>
-                <li>A decimal number, if the first argument is a decimal number.</li>
-                <li>A double-precision floating-point number, if the first argument is a <code>DOUBLE</code> or <code>REAL</code>. </li>
-                <li>An integer number, if the first argument is a <code>SMALLINT</code>, <code>INTEGER</code>, or <code>BIGINT</code>.</li>
-            </ul>
-            <p>The first argument must be of a built-in data type.</p>
-            <p>The result of the
-			<code>CHAR</code> function is a fixed-length character string. If the first argument can
-			be <code>NULL</code>, the result can be <code>NULL</code>. If the first argument is <code>NULL</code>, the result
-		is the <code>NULL</code>value.</p>
-            <h2>Character to character syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<em>CharacterExpression</em> [, <em>integer</em>] ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">CharacterExpression</p>
-                <p class="paramDefnFirst">An expression that returns a value that is <code>CHAR</code>, <code>VARCHAR</code>, <code>LONG VARCHAR</code>, or <code>CLOB</code> data type.</p>
-                <p class="paramName">integer</p>
-                <p class="paramDefnFirst">The length attribute for the resulting fixed length character string. The value must be between 0 and 254.</p>
-            </div>
-            <blockquote>
-                <h3>Results</h3>
-                <p>If the length of the character-expression is less than the length attribute of the result, the result is padded with blanks up to the length of the result.</p>
-                <p>If the length of the character-expression is greater than the length attribute of the result, truncation is performed. A warning is returned unless the truncated characters were all blanks and the character-expression was not a long string (<code>LONG VARCHAR</code> or <code>CLOB</code>).</p>
-            </blockquote>
-            <h2>Integer to character syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<em>IntegerExpression</em> ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">IntegerExpression</p>
-                <p class="paramDefnFirst">An expression that returns a value that is an integer data type (either SMALLINT, INTEGER or BIGINT).</p>
-            </div>
-            <blockquote>
-                <h3>Results</h3>
-                <p>The result is the character string representation of the argument in the form of an SQL integer constant. The result consists of n characters that are the significant digits that represent the value of the argument with a preceding minus sign if the argument is negative. It is left justified.</p>
-                <ul>
-                    <li>If the first argument is a small integer: The length of the result is 6. If the number of characters in the result is less than 6, then the result
-			is padded on the right with blanks to length 6.</li>
-                    <li>If the first argument is a large integer: The length of the result is 11. If the number of characters in the result is less than 11, then the result
-			is padded on the right with blanks to length 11.</li>
-                    <li>If the first argument is a big integer: The length of the result is 20. If the number of characters in the result is less than 20, then the result
-			is padded on the right with blanks to length 20.</li>
-                </ul>
-            </blockquote>
-            <h2>Datetime to character syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<em>DatetimeExpression</em> ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">DatetimeExpression</p>
-                <p class="paramDefnFirst">An expression that is one of the following three data types:
-</p>
-                <table summary="DateTime expression types">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="char---builtinfcnschar">CHAR   {#BuiltInFcns.Char}</h1>
+
+    <p>The <code>CHAR</code> function returns a fixed-length character string
+representation. The representations are:</p>
+
+    <ul>
+      <li>A character string, if the first argument is any type of character
+string.</li>
+      <li>A datetime value, if the first argument is a date, time, or timestamp.</li>
+      <li>A decimal number, if the first argument is a decimal number.</li>
+      <li>A double-precision floating-point number, if the first argument is a
+<code>DOUBLE</code> or <code>REAL</code>.</li>
+      <li>An integer number, if the first argument is a <code>SMALLINT</code>, <code>INTEGER</code>,
+or <code>BIGINT</code>.</li>
+    </ul>
+
+    <p>The first argument must be of a built-in data type.</p>
+
+    <p>The result of the <code>CHAR</code> function is a fixed-length character string. If
+the first argument can be <code>NULL</code>, the result can be <code>NULL</code>. If the first
+argument is <code>NULL</code>, the result is the <code>NULL</code>value.</p>
+
+    <h2 id="character-to-character-syntax">Character to character syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CHAR (CharacterExpression [, integer] ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">CharacterExpression</p>
+
+      <p class="paramDefnFirst">An expression that returns a value that is <code>CHAR</code>, <code>VARCHAR</code>, <code>LONG
+VARCHAR</code>, or <code>CLOB</code> data type.</p>
+
+      <p class="paramName">integer</p>
+
+      <p class="paramDefnFirst">The length attribute for the resulting fixed length character string.
+The value must be between 0 and 254.</p>
+
+    </div>
+    <blockquote>
+      <h3 id="results">Results</h3>
+
+      <p>If the length of the character-expression is less than the length
+attribute of the result, the result is padded with blanks up to the
+length of the result.</p>
+
+      <p>If the length of the character-expression is greater than the length
+attribute of the result, truncation is performed. A warning is
+returned unless the truncated characters were all blanks and the
+character-expression was not a long string (<code>LONG VARCHAR</code> or <code>CLOB</code>).</p>
+    </blockquote>
+
+    <h2 id="integer-to-character-syntax">Integer to character syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CHAR (IntegerExpression ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">IntegerExpression</p>
+
+      <p class="paramDefnFirst">An expression that returns a value that is an integer data type (either
+SMALLINT, INTEGER or BIGINT).</p>
+
+    </div>
+    <blockquote>
+      <h3 id="results-1">Results</h3>
+
+      <p>The result is the character string representation of the argument in
+the form of an SQL integer constant. The result consists of n
+characters that are the significant digits that represent the value of
+the argument with a preceding minus sign if the argument is negative.
+It is left justified.</p>
+
+      <ul>
+        <li>If the first argument is a small integer: The length of the result
+is 6. If the number of characters in the result is less than 6, then
+the result is padded on the right with blanks to length 6.</li>
+        <li>If the first argument is a large integer: The length of the result
+is 11. If the number of characters in the result is less than 11,
+then the result is padded on the right with blanks to length 11.</li>
+        <li>If the first argument is a big integer: The length of the result is
+          <ol>
+            <li>If the number of characters in the result is less than 20, then
+the result is padded on the right with blanks to length 20.</li>
+          </ol>
+        </li>
+      </ul>
+    </blockquote>
+
+    <h2 id="datetime-to-character-syntax">Datetime to character syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CHAR (DatetimeExpression ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">DatetimeExpression</p>
+
+      <p class="paramDefnFirst">An expression that is one of the following three data types:</p>
+
+      <table summary="DateTime expression types">
                     <col />
                     <col />
                     <thead>
@@ -2887,25 +2938,44 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <h2>Decimal to character</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<em>DecimalExpression</em> ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">DecimalExpression</p>
-                <p class="paramDefnFirst">An expression that returns a value that is a decimal data type. </p>
-                <p class="paramDefn">If a different precision and scale is desired, you can use the <code>DECIMAL</code> scalar function first 	to make the change.</p>
-            </div>
-            <h2>Floating point to character syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR (<em>FloatingPointExpression</em> ) </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">FloatingPointExpression</p>
-                <p class="paramDefnFirst">An expression that returns a value that is a floating-point data type (<code>DOUBLE</code> or <code>REAL</code>).</p>
-            </div>
-            <h2>Example</h2>
-            <p>Use the <code>CHAR</code> function to return the values for <code>PlateAppearances</code> (defined as smallint) as a fixed length character string:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT CHAR(AtBats * 2) "DoubledAtBats"
+    </div>
+    <h2 id="decimal-to-character">Decimal to character</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CHAR (DecimalExpression ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">DecimalExpression</p>
+
+      <p class="paramDefnFirst">An expression that returns a value that is a decimal data type.</p>
+
+      <p class="paramDefn">If a different precision and scale is desired, you can use the <code>DECIMAL</code>
+scalar function first to make the change.</p>
+
+    </div>
+    <h2 id="floating-point-to-character-syntax">Floating point to character syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CHAR (FloatingPointExpression ) 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">FloatingPointExpression</p>
+
+      <p class="paramDefnFirst">An expression that returns a value that is a floating-point data type
+(<code>DOUBLE</code> or <code>REAL</code>).</p>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <p>Use the <code>CHAR</code> function to return the values for <code>PlateAppearances</code>
+(defined as smallint) as a fixed length character string:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT CHAR(AtBats * 2) "DoubledAtBats"
   FROM Batting WHERE ID &lt;= 10;
 DoubledAtBats
 --------------------
@@ -2920,16 +2990,23 @@ DoubledAtBats
 744
 548
 
-10 rows selected</pre>
-            </div>
-            <p>Since <code>AtBats</code> is declared as <code>SMALLINT</code>&#160;in our Examples database, each of the resulting values is padded with blank characters to make it 6 characters long.</p>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+10 rows selected
+</code></pre>
+
+    </div>
+    <p>Since <code>AtBats</code> is declared as <code>SMALLINT</code> in our Examples database, each
+of the resulting values is padded with blank characters to make it 6
+characters long.</p>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2946,7 +3023,7 @@ DoubledAtBats
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

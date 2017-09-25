@@ -2806,29 +2806,48 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Nullif">NULLIF</h1>
-            <p>The <code>NULLIF</code>&#160;function compares the values of two expressions; if they are equal, it returns&#160;<code>NULL</code>; otherwise, it returns the value of the first expression.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">NULLIF (<em>expression1, expression2</em> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">expression1
-            </p>
-                <p class="paramDefnFirst">The first .expression whose value you want to compare.</p>
-                <p class="noteNote">You cannot specify the literal <code>NULL</code> for <span class="CodeItalicFont">expression1</span>.</p>
-                <p class="paramName">expression2
-            </p>
-                <p class="paramDefnFirst">The first .expression whose value you want to compare.</p>
-            </div>
-            <h2>Results</h2>
-            <p>The <code>NULLIF</code> function is logically similar to the following <a href="sqlref_expressions_case.html"><code>CASE</code></a> expression:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">CASE WHEN <em>expression1</em> = <em>expression2</em> THEN NULL ELSE <em>expression1</em> END;</pre>
-            </div>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">
-splice&gt; Select DisplayName "Position Player", NULLIF(Position,'P') "Position"
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="nullif---builtinfcnsnullif">NULLIF   {#BuiltInFcns.Nullif}</h1>
+
+    <p>The <code>NULLIF</code> function compares the values of two expressions; if they
+are equal, it returns <code>NULL</code>; otherwise, it returns the value of the
+first expression.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>NULLIF (expression1, expression2 )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">expression1</p>
+
+      <p class="paramDefnFirst">The first .expression whose value you want to compare.</p>
+
+      <p class="noteNote">You cannot specify the literal <code>NULL</code> for <span class="CodeItalicFont">expression1</span>.</p>
+
+      <p class="paramName">expression2</p>
+
+      <p class="paramDefnFirst">The first .expression whose value you want to compare.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The <code>NULLIF</code> function is logically similar to the following
+<a href="sqlref_expressions_case.html"><code>CASE</code></a> expression:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>CASE WHEN expression1 = expression2 THEN NULL ELSE expression1 END;
+</code></pre>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>splice&gt; Select DisplayName "Position Player", NULLIF(Position,'P') "Position"
    FROM Players
    WHERE MOD(ID, 2)=1
    ORDER BY Position;
@@ -2883,14 +2902,18 @@ Stephen Tuvesco         |NULL
 Joseph Arkman           |UT
 
 47 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_expressions_case.html"><code>CASE</code></a>&#160;expression</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_expressions_case.html"><code>CASE</code></a> expression</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2907,7 +2930,7 @@ Joseph Arkman           |UT
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

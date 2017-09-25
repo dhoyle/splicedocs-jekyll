@@ -2806,22 +2806,41 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.CurrentDate">CURRENT_DATE</h1>
-            <p><code>CURRENT_DATE</code> returns the current date.</p>
-            <p class="noteNote"> This function returns the same value if it is executed more than once in a single statement, which means that the value is fixed, even if there is a long delay between fetching rows in a cursor.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CURRENT_DATE</pre>
-            </div>
-            <p>or, alternately</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CURRENT DATE</pre>
-            </div>
-            <h2>Results</h2>
-            <p>A <code><a href="sqlref_builtinfcns_date.html">DATE</a></code> value.</p>
-            <h2>Examples</h2>
-            <p class="body">The following query finds all players older that 33 years (as of Nov. 9, 2015)&#160;on the Cards baseball team:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT displayName, birthDate
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="currentdate---builtinfcnscurrentdate">CURRENT_DATE   {#BuiltInFcns.CurrentDate}</h1>
+
+    <p><code>CURRENT_DATE</code> returns the current date.</p>
+
+    <p class="noteNote">This function returns the same value if it is executed more than once in
+a single statement, which means that the value is fixed, even if there
+is a long delay between fetching rows in a cursor.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CURRENT_DATE
+</code></pre>
+
+    </div>
+    <p>or, alternately</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CURRENT DATE
+</code></pre>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>A <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> value.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p class="body">The following query finds all players older that 33 years (as of Nov. 9,
+2015) on the Cards baseball team:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT displayName, birthDate
    FROM Players
    WHERE (BirthDate+(33 * 365.25)) &lt;= CURRENT_DATE AND Team='Cards';
 DISPLAYNAME             |BIRTHDATE
@@ -2836,30 +2855,35 @@ Robert Cohen            |1975-09-05
 Mitch Brandon           |1980-06-06
 
 8 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
-                <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the <em>Developer's Guide</em></li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
+      <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2876,7 +2900,7 @@ Mitch Brandon           |1980-06-06
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

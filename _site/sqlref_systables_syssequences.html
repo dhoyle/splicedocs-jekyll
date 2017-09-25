@@ -2806,14 +2806,22 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="SystemTables.SysSequences">SYSSEQUENCES System Table</h1>
-            <p>The <code>SYSSEQUENCES</code> table describes the sequence generators in the
-		database.</p>
-            <p class="noteNote">Users should not directly query the <code>SYSSEQUENCES</code> table, because that will slow down the performance of sequence generators. Instead, users should call the <a href="sqlref_sysprocs_peekatseq.html"><code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code> system function</a></p>
-            <p>The following table shows the contents of the <code>SYSSEQUENCES</code> system table.</p>
-            <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syssequences-system-table---systemtablessyssequences">SYSSEQUENCES System Table   {#SystemTables.SysSequences}</h1>
+
+    <p>The <code>SYSSEQUENCES</code> table describes the sequence generators in the
+database.</p>
+
+    <p class="noteNote">Users should not directly query the <code>SYSSEQUENCES</code> table, because that
+will slow down the performance of sequence generators. Instead, users
+should call the <a href="sqlref_sysprocs_peekatseq.html"><code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code> system
+function</a></p>
+
+    <p>The following table shows the contents of the <code>SYSSEQUENCES</code> system
+table.</p>
+
+    <table>
                 <caption>SYSSEQUENCES system table</caption>
                 <col />
                 <col />
@@ -2871,8 +2879,8 @@
                             <p class="noSpaceAbove">The current value of the sequence generator. This is not the
 						actual next value for the sequence generator. That value can be obtained by
 						calling the system function <code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code>.</p>
-                            <p><![CDATA[
-						]]><code>SYSSEQUENCES.CURRENTVALUE</code> holds the end of the range of values that have been
+                            <p>&lt;![CDATA[
+						]]&gt;<code>SYSSEQUENCES.CURRENTVALUE</code> holds the end of the range of values that have been
 						preallocated in order to boost concurrency. The initial
 						value of this column is <code>STARTVALUE</code>. </p>
                             <p>This column is <code>NULL</code> only if the sequence
@@ -2920,13 +2928,15 @@
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_systables_intro.html">About System Tables</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_systables_intro.html">About System Tables</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2943,7 +2953,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

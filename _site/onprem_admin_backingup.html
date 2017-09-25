@@ -536,44 +536,66 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Backing Up and Restoring Your Database</h1>
-<div class="openSourceNoteWrapper">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="backing-up-and-restoring-your-database">Backing Up and Restoring Your Database</h1>
+
+    <div class="openSourceNoteWrapper">
     <div class="openSourceNote">
         <p><span class="noteEnterpriseNote">ENTERPRISE&#160;ONLY: This feature is available only for the Splice Machine Enterprise version of our On-Premise Database product.</span> You cannot use this feature with the Community editions of Splice Machine. For a list of the additional features available in the Enterprise edition, see our  <a href="notes_editions.html">Splice&#160;Machine Editions</a> page.</p>
         <p>To obtain a license for the Splice&#160;Machine <em>Enterprise Edition</em>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a> today.</span></p>
     </div>
 </div>
 
-            <p>Splice Machine provides built-in system procedures that make it easy to back up and restore your entire database. You can:</p>
-            <ul>
-                <li>create full and incremental backups to run immediately</li>
-                <li>schedule daily full or incremental backups</li>
-                <li>restore your database from a backup</li>
-                <li>manage your backups</li>
-                <li>access logs of your backups</li>
-            </ul>
-            <p>The rest of this topic will help you with working with your backups, in these sections:</p>
-            <ul>
-                <li><a href="#About">About Splice Machine Backups</a>
-                </li>
-                <li><a href="#Using">Using the&#160;Backup Operations</a>
-                </li>
-                <li><a href="#Backing">Backing Up to Cloud Storage</a>
-                </li>
-            </ul>
-            <h2 id="About">About Splice Machine Backups</h2>
-            <p>Splice Machine supports: both full and incremental backups:&#160;</p>
-            <ul>
-                <li>A <em>full backup</em> backs up all of the files/blocks that constitute your database.</li>
-                <li>An <em>incremental backup</em> only stores database files/blocks that have changed since a previous backup.</li>
-            </ul>
-            <p>Because backups can consume a lot of disk space, most customers define a backup strategy that blends their needs for security, recover-ability, and space restrictions. Since incremental backups require a lot less space than do full backups, and allow for faster recovery of data, many customers schedule daily, incremental backups.</p>
-            <p class="noteNote">Splice Machine automatically detects when it is the first run of an incremental backup and performs a one-time full backup; subsequent runs will only back up changed files/blocks.</p>
-            <h3>Backup IDs, Backup&#160;Jobs, and Backup Tables</h3>
-            <p>Splice Machine uses <em>backup IDs</em> to identify a specific full or incremental <em>backup</em> that is stored on a file system, and <em>backup job IDs</em> to identify each scheduled <em>backup job</em>. Information about backups and backup jobs is stored in these system tables:</p>
-            <table summary="Table of Splice Machine system backup tables.">
+    <p>Splice Machine provides built-in system procedures that make it easy to
+back up and restore your entire database. You can:</p>
+
+    <ul>
+      <li>create full and incremental backups to run immediately</li>
+      <li>schedule daily full or incremental backups</li>
+      <li>restore your database from a backup</li>
+      <li>manage your backups</li>
+      <li>access logs of your backups</li>
+    </ul>
+
+    <p>The rest of this topic will help you with working with your backups, in
+these sections:</p>
+
+    <ul>
+      <li><a href="#About">About Splice Machine Backups</a></li>
+      <li><a href="#Using">Using the Backup Operations</a></li>
+      <li><a href="#Backing">Backing Up to Cloud Storage</a></li>
+    </ul>
+
+    <h2 id="About">About Splice Machine Backups</h2>
+
+    <p>Splice Machine supports: both full and incremental backups: </p>
+
+    <ul>
+      <li>A <em>full backup</em> backs up all of the files/blocks that constitute your
+database.</li>
+      <li>An <em>incremental backup</em> only stores database files/blocks that have
+changed since a previous backup.</li>
+    </ul>
+
+    <p>Because backups can consume a lot of disk space, most customers define a
+backup strategy that blends their needs for security, recover-ability,
+and space restrictions. Since incremental backups require a lot less
+space than do full backups, and allow for faster recovery of data, many
+customers schedule daily, incremental backups.</p>
+
+    <p class="noteNote">Splice Machine automatically detects when it is the first run of an
+incremental backup and performs a one-time full backup; subsequent runs
+will only back up changed files/blocks.</p>
+
+    <h3 id="backup-ids-backupjobs-and-backup-tables">Backup IDs, Backup Jobs, and Backup Tables</h3>
+
+    <p>Splice Machine uses <em>backup IDs</em> to identify a specific full or
+incremental <em>backup</em> that is stored on a file system, and <em>backup job
+IDs</em> to identify each scheduled <em>backup job</em>. Information about backups
+and backup jobs is stored in these system tables:</p>
+
+    <table summary="Table of Splice Machine system backup tables.">
                 <col />
                 <col />
                 <thead>
@@ -586,7 +608,7 @@
                     <tr>
                         <td><code>SYS.SYSBACKUP</code>
                         </td>
-                        <td>Each database backup; you can query this table to find the ID&#160;of and details about a backup that was run at a specific time.</td>
+                        <td>Each database backup; you can query this table to find the ID of and details about a backup that was run at a specific time.</td>
                     </tr>
                     <tr>
                         <td><code>SYS.SYSBACKUPITEMS</code>
@@ -600,282 +622,563 @@
                     </tr>
                 </tbody>
             </table>
-            <h3>Temporary Tables and Backups</h3>
-            <p>There's a subtle issue with performing a backup when you're using a temporary table in your session:&#160;although the temporary table is (correctly)&#160;not backed up, the temporary table's entry in the system tables will be backed up. When the backup is restored, the table entries will be restored, but the temporary table will be missing.</p>
-            <p>There's a simple workaround:</p>
-            <ol>
-                <li>Exit your current session, which will automatically delete the temporary table and its system table entries.</li>
-                <li>Start a new session (reconnect to your database).</li>
-                <li>Start your backup job.</li>
-            </ol>
-            <h2 id="Using">Using the Backup Operations</h2>
-            <p>This section summarizes and provides examples of using the Splice Machine backup operations:</p>
-            <ul>
-                <li><a href="#Scheduling">Scheduling a Daily Backup Job</a>
-                </li>
-                <li><a href="#Running">Running an Immediate Backup</a>
-                </li>
-                <li><a href="#Restorin">Restoring Your Database From a Previous Backup</a>
-                </li>
-                <li><a href="#Reviewing">Reviewing Backup Information</a>
-                </li>
-                <li><a href="#Cancelin">Canceling a Scheduled Backup Job</a>
-                </li>
-                <li><a href="#CancelB" class="WithinBook">Canceling a Backup That's In Progress</a>
-                </li>
-                <li><a href="#Deleting">Deleting a Backup</a>
-                </li>
-                <li><a href="#DeleteOld">Deleting Outdated Backups</a>
-                </li>
-            </ul>
-            <p class="noteNote">You must make sure that the directory to which you are backing up or from which data is being restored is accessible to the HBase user who is initiating the restore. Make sure the directory permissions are set correctly on the backup directory.<br /><br />Note that you can store your backups in a cloud-based storage service such as AWS; for more information, see the <a href="#Backing">Backing Up to Cloud Storage</a> section below.</p>
-            <h3 id="Scheduling">Scheduling a Daily Backup Job</h3>
-            <p>Use the <code><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></code>&#160;system procedure to schedule a job that performs a daily incremental or full backup of your database:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP( <em>backupDir</em>, <em>backupType</em>, <em>startHour</em> );
-</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">backupDir</p>
-                <p class="paramDefnFirst">A <code>VARCHAR</code> value that specifies the path to the directory in which you want the backup stored. </p>
-                <p class="paramDefn">Note that this directory can be cloud-based, as described in the <a href="#Backing">Backing Up to Cloud Services</a> section below.</p>
-                <p class="paramName">backupType</p>
-                <p class="paramDefnFirst">A <code>VARCHAR(30)</code> value that specifies the type of backup that you want performed; one of the following values: <code>full</code> or <code>incremental</code>. The first run of an incremental backup is always a full backup.</p>
-                <p class="paramName">startHour</p>
-                <p class="paramDefnFirst">Specifies the hour (<code>0-23</code>)&#160;in GMT&#160;at which you want the backup to run each day. A value less than <code>0</code> or greater than <code>23</code>  produces an error and the backup is not scheduled.</p>
-                <h4>Example 1:&#160;Set up a full backup to run every day at 3am:</h4>
-                <p>To run a full backup every night at 3am:</p>
-                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('/home/backup', 'full', 3);</pre>
-                </div>
-                <div>
-                    <h4>Example 2:&#160;Set up an incremental backup to run every day at noon:</h4>
-                    <p>To run an incremental backup every day at noon.</p>
-                    <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'incremental', 12);</pre>
-                    </div>
-                </div>
-            </div>
-            <h3 id="Running">Running an Immediate Backup</h3>
-            <p>Use the <code><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></code> system procedure to immediately run a full or incremental backup.</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_BACKUP_DATABASE( <em>backupDir</em>, <em>backupType</em> );
-</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">backupDir</p>
-                <p class="paramDefnFirst">A <code>VARCHAR</code> value that specifies the path to the directory in which you want the backup stored. </p>
-                <p class="paramDefn">Note that this directory can be cloud-based, as described in the <a href="#Backing">Backing Up to Cloud Services</a> section below.</p>
-                <p class="paramName">backupType</p>
-                <p class="paramDefnFirst">A <code>VARCHAR(30)</code> value that specifies the type of backup that you want performed; use.one of the following values: <code>full</code> or <code>incremental</code>.</p>
-                <h4>Example 1:&#160;Execute a full backup now</h4>
-                <p>To execute a backup right now:</p>
-                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'full');</pre>
-                </div>
-                <div>
-                    <h4>Example 2:&#160;Execute an incremental backup now:</h4>
-                    <p>This call will run an incremental backup right now. Splice Machine checks the <code><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></code> to determine if there already is a backup for the system; if not, Splice Machine will perform a full backup, and subsequent backups will be incremental. The backup data is stored in the specified directory.</p>
-                    <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'incremental');</pre>
-                    </div>
-                </div>
-            </div>
-            <h3 id="Restorin">Restoring Your Database From a Previous Backup</h3>
-            <p>You can restore your database from a previous backup, use the <code><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></code>&#160;system procedure.</p>
-            <p>To restore your database from a previous backup, use the <code><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></code>&#160;system procedure:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_RESTORE_DATABASE(<em>backupDir</em>, <em>backupId</em>); </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">backupDir</p>
-                <p class="paramDefnFirst">A <code>VARCHAR</code> value that specifies the path to the directory in which the backup isstored. </p>
-                <p class="paramDefn">You can find the <em>backupId</em> you want to use by querying the <code><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></code>. See the <a href="#Reviewing">Reviewing Backup Information</a> section below for more information.</p>
-                <p class="paramName">backupId</p>
-                <p class="paramDefnFirst">A&#160;<code>BIGINT</code>&#160;value  that specifies which backup you want to use to restore your database.</p>
-            </div>
-            <div class="notePlain">
-                <p>There are several important things to know about restoring your database from a previous backup:</p>
-                <ul>
-                    <li>Restoring a database <strong>wipes out your database</strong> and replaces it with what had been previously backed up.</li>
-                    <li>You <strong>cannot use your cluster</strong> while restoring your database.</li>
-                    <li>You <strong>must reboot your database</strong> after the restore is complete by first  <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
-                </ul>
-            </div>
-            <blockquote>
-                <h4>Example:&#160;Restore the database from a local, full backup</h4>
-                <p>This example restores your database from the backup stored in the <code>/home/backup</code> directory that has <code>backupId=1273</code>:</p>
-                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1273);</pre>
-                </div>
-            </blockquote>
-            <h3 id="Reviewing">Reviewing Backups</h3>
-            <p>Splice Machine stores information about your backups and scheduled backup jobs in system tables that you can query, and stores a backup log file in the directory to which a backup is written when it runs.</p>
-            <h4>Backup Job Information</h4>
-            <p>Information about your scheduled backup jobs is stored in the <code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></code>:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select * from SYS.SYSBACKUPJOBS;
-JOB_ID         |FILESYSTEM&#160;&#160;&#160;   &#160;&#160;|TYPE           |HOUR_OF_DAY|BEGIN_TIMESTAMP
+    <h3 id="temporary-tables-and-backups">Temporary Tables and Backups</h3>
+
+    <p>There’s a subtle issue with performing a backup when you’re using a
+temporary table in your session: although the temporary table is
+(correctly) not backed up, the temporary table’s entry in the system
+tables will be backed up. When the backup is restored, the table entries
+will be restored, but the temporary table will be missing.</p>
+
+    <p>There’s a simple workaround:</p>
+
+    <ol>
+      <li>Exit your current session, which will automatically delete the
+temporary table and its system table entries.</li>
+      <li>Start a new session (reconnect to your database).</li>
+      <li>Start your backup job.</li>
+    </ol>
+
+    <h2 id="Using">Using the Backup Operations</h2>
+
+    <p>This section summarizes and provides examples of using the Splice
+Machine backup operations:</p>
+
+    <ul>
+      <li><a href="#Scheduling">Scheduling a Daily Backup Job</a></li>
+      <li><a href="#Running">Running an Immediate Backup</a></li>
+      <li><a href="#Restorin">Restoring Your Database From a Previous Backup</a></li>
+      <li><a href="#Reviewing">Reviewing Backup Information</a></li>
+      <li><a href="#Cancelin">Canceling a Scheduled Backup Job</a></li>
+      <li><a href="#CancelB" class="WithinBook">Canceling a Backup That’s In Progress</a></li>
+      <li><a href="#Deleting">Deleting a Backup</a></li>
+      <li><a href="#DeleteOld">Deleting Outdated Backups</a></li>
+    </ul>
+
+    <p>You must make sure that the directory to which you are backing up or
+from which data is being restored is accessible to the HBase user who is
+initiating the restore. Make sure the directory permissions are set
+correctly on the backup directory.</p>
+
+    <p class="noteNote">Note that you can store your backups in a cloud-based storage service
+such as AWS; for more information, see the <a href="#Backing">Backing Up to Cloud
+Storage</a> section below.</p>
+
+    <h3 id="Scheduling">Scheduling a Daily Backup Job</h3>
+
+    <p>Use the
+<a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a> system
+procedure to schedule a job that performs a daily incremental or full
+backup of your database:</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP( backupDir, backupType, startHour );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupDir</p>
+
+      <p class="paramDefnFirst">A <code>VARCHAR</code> value that specifies the path to the directory in which you
+want the backup stored.</p>
+
+      <p class="paramDefn">Note that this directory can be cloud-based, as described in the
+<a href="#Backing">Backing Up to Cloud Services</a> section below.</p>
+
+      <p class="paramName">backupType</p>
+
+      <p class="paramDefnFirst">A <code>VARCHAR(30)</code> value that specifies the type of backup that you want
+performed; one of the following values: <code>full</code> or <code>incremental</code>. The
+first run of an incremental backup is always a full backup.</p>
+
+      <p class="paramName">startHour</p>
+
+      <p class="paramDefnFirst">Specifies the hour (<code>0-23</code>) in GMT at which you want the backup to run
+each day. A value less than <code>0</code> or greater than <code>23</code> produces an error
+and the backup is not scheduled.</p>
+
+      <h4 id="example-1set-up-a-full-backup-to-run-every-day-at-3am">Example 1: Set up a full backup to run every day at 3am:</h4>
+
+      <p>To run a full backup every night at 3am:</p>
+
+      <div class="preWrapperWide">
+        <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('/home/backup', 'full', 3);
+</code></pre>
+
+      </div>
+      <div>
+        <h4 id="example-2set-up-an-incremental-backup-to-run-every-day-at-noon">Example 2: Set up an incremental backup to run every day at noon:</h4>
+
+        <p>To run an incremental backup every day at noon.</p>
+
+        <div class="preWrapperWide">
+          <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'incremental', 12);
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+    <h3 id="Running">Running an Immediate Backup</h3>
+
+    <p>Use the
+<a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a>
+system procedure to immediately run a full or incremental backup.</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE( backupDir, backupType );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupDir</p>
+
+      <p class="paramDefnFirst">A <code>VARCHAR</code> value that specifies the path to the directory in which you
+want the backup stored.</p>
+
+      <p class="paramDefn">Note that this directory can be cloud-based, as described in the
+<a href="#Backing">Backing Up to Cloud Services</a> section below.</p>
+
+      <p class="paramName">backupType</p>
+
+      <p class="paramDefnFirst">A <code>VARCHAR(30)</code> value that specifies the type of backup that you want
+performed; use.one of the following values: <code>full</code> or <code>incremental</code>.</p>
+
+      <h4 id="example-1execute-a-full-backup-now">Example 1: Execute a full backup now</h4>
+
+      <p>To execute a backup right now:</p>
+
+      <div class="preWrapperWide">
+        <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'full');
+</code></pre>
+
+      </div>
+      <div>
+        <h4 id="example-2execute-an-incremental-backup-now">Example 2: Execute an incremental backup now:</h4>
+
+        <p>This call will run an incremental backup right now. Splice Machine
+checks the <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a>
+to determine if there already is a backup for the system; if not, Splice
+Machine will perform a full backup, and subsequent backups will be
+incremental. The backup data is stored in the specified directory.</p>
+
+        <div class="preWrapperWide">
+          <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'incremental');
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+    <h3 id="Restorin">Restoring Your Database From a Previous Backup</h3>
+
+    <p>You can restore your database from a previous backup, use the
+<a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a> system
+procedure.</p>
+
+    <p>To restore your database from a previous backup, use the
+<a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a> system
+procedure:</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE(backupDir, backupId); 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupDir</p>
+
+      <p class="paramDefnFirst">A <code>VARCHAR</code> value that specifies the path to the directory in which the
+backup isstored.</p>
+
+      <p class="paramDefn">You can find the <em>backupId</em> you want to use by querying the <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP
+System Table</code></a>. See the <a href="#Reviewing">Reviewing
+Backup Information</a> section below for more information.</p>
+
+      <p class="paramName">backupId</p>
+
+      <p class="paramDefnFirst">A <code>BIGINT</code> value that specifies which backup you want to use to restore
+your database.</p>
+
+    </div>
+    <div class="notePlain">
+      <p>There are several important things to know about restoring your database
+from a previous backup:</p>
+
+      <ul>
+        <li>Restoring a database <strong>wipes out your database</strong> and replaces it with
+what had been previously backed up.</li>
+        <li>You <strong>cannot use your cluster</strong> while restoring your database.</li>
+        <li>You <strong>must reboot your database</strong> after the restore is complete by
+first <a href="onprem_admin_startingdb.html">Starting Your Database</a>.</li>
+      </ul>
+
+    </div>
+    <blockquote>
+      <h4 id="examplerestore-the-database-from-a-local-full-backup">Example: Restore the database from a local, full backup</h4>
+
+      <p>This example restores your database from the backup stored in the
+<code>/home/backup</code> directory that has <code>backupId=1273</code>:</p>
+
+      <div class="preWrapperWide">
+        <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1273);
+</code></pre>
+
+      </div>
+    </blockquote>
+
+    <h3 id="Reviewing">Reviewing Backups</h3>
+
+    <p>Splice Machine stores information about your backups and scheduled
+backup jobs in system tables that you can query, and stores a backup log
+file in the directory to which a backup is written when it runs.</p>
+
+    <h4 id="backup-job-information">Backup Job Information</h4>
+
+    <p>Information about your scheduled backup jobs is stored in the
+<a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS System Table</code></a>:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; select * from SYS.SYSBACKUPJOBS;
+JOB_ID         |FILESYSTEM        |TYPE           |HOUR_OF_DAY|BEGIN_TIMESTAMP
 --------------------------------------------------------------------------------------
-22275          |/data/backup/0101 |FULL           |22         |2015-04-03 18:43:42.631</pre>
-            </div>
-            <p>You can query this table to find a job ID, if you need to cancel a scheduled backup.</p>
-            <h4>Backup Information</h4>
-            <p>Information about each backup of your database is stored in the <code><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></code>, including the ID&#160;assigned to the backup and its location. You can query this table to find the ID&#160;of a specific backup, which you need if you want to restore your database from it, or to delete it:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select * from SYS.SYSBACKUP;
+22275          |/data/backup/0101 |FULL           |22         |2015-04-03 18:43:42.631
+</code></pre>
+
+    </div>
+    <p>You can query this table to find a job ID, if you need to cancel a
+scheduled backup.</p>
+
+    <h4 id="backup-information">Backup Information</h4>
+
+    <p>Information about each backup of your database is stored in the
+<a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a>, including
+the ID assigned to the backup and its location. You can query this table
+to find the ID of a specific backup, which you need if you want to
+restore your database from it, or to delete it:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; select * from SYS.SYSBACKUP;
 BACKUP_ID |BEGIN_TIMESTAMP         |END_TIMESTAMP           |STATUS |FILESYSTEM        |SCOPE |INCR&amp;|INCREMENTAL_PARENT_&amp;|BACKUP_ITEM
 ------------------------------------------------------------------------------------------------------------------------------------------
 22275     |2015-04-03 18:40:56.877 |2015-04-03 18:43:42.631 |S      |/data/backup/0101 |D     |false|-1       |15
 21428     |2015-04-03 18:30:55.964 |2015-04-03 18:33:49.494 |S      |/data/backup/0101 |D     |false|-1       |15
-20793     |2015-04-03 18:23:53.574 |2015-04-03 18:27:07.07  |S      |/data/backup/0101 |D     |false|-1       |87</pre>
-            </div>
-            <h4>Backup Log Files</h4>
-            <p>When you run a backup, a log file is created or updated in the directory in which the backup is stored. This log file is named <code>backupStatus.log</code>, and is stored in plain text, human-readable format. Here's a sample snippet from a log file:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-Expected time for backup ~12 hours, expected finish at 15:30 on April 8, 2015
+20793     |2015-04-03 18:23:53.574 |2015-04-03 18:27:07.07  |S      |/data/backup/0101 |D     |false|-1       |87
+</code></pre>
+
+    </div>
+    <h4 id="backup-log-files">Backup Log Files</h4>
+
+    <p>When you run a backup, a log file is created or updated in the directory
+in which the backup is stored. This log file is named
+<code>backupStatus.log</code>, and is stored in plain text, human-readable format.
+Here’s a sample snippet from a log file:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>Expected time for backup ~12 hours, expected finish at 15:30 on April 8, 2015
 5 objects of 833 objects backed up..
 6 objects of 833 objects backed up
 
-Finished with Success. Total time taken for backup was 11 hours 32 minutes.</pre>
-            </div>
-            <h3 id="Cancelin">Canceling a Scheduled Backup</h3>
-            <p>You can cancel a daily backup with the <code><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></code>&#160;system procedure:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( <em>jobId</em> ); </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">jobId</p>
-                <p class="paramDefnFirst">A&#160;<code>BIGINT</code>&#160;value  that specifies which scheduled backup job you want to cancel. </p>
-                <p class="paramDefn">You can find the <em>jobId</em> you want to cancel by querying the <code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></code>. </p>
-                <p class="noteNote">Once you cancel a daily backup, it will no longer be scheduled to run. </p>
-                <h4>Example:&#160;Cancel a daily backup</h4>
-                <p>This example cancels the backup that has <code>jobId=1273</code>:</p>
-                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(1273);</pre>
-                </div>
-            </div>
-            <h3 id="CancelB">Canceling a Backup That's In Progress</h3>
-            <p>You can call the <code><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></code>&#160;system procedure to cancel a backup that is currently running:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_CANCEL_BACKUP(  ); </pre>
-            </div>
-            <div class="paramList">
-                <h4>Example:&#160;Cancel a running backup</h4>
-                <p>This example cancels the Splice Machine backup job that is currently running.</p>
-                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_CANCEL_BACKUP();</pre>
-                </div>
-            </div>
-            <h3 id="Deleting">Deleting a Backup</h3>
-            <p>Use the <a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>&#160;system procedure to delete a single backup:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_BACKUP( <em>backupId</em> ); </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">backupId</p>
-                <p class="paramDefnFirst">A&#160;<code>BIGINT</code>&#160;value  that specifies which backup you want to delete. </p>
-                <p class="paramDefn">You can find the <em>backupId</em> you want to delete by querying the <code><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></code>, </p>
-                <h4>Example:&#160;Delete a backup</h4>
-                <p>This example deletes the backup that has <code>backupId=1273</code>:</p>
-                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_DELETE_BACKUP(1273);</pre>
-                </div>
-            </div>
-            <h3 id="DeleteOld">Deleting Outdated Backups</h3>
-            <p>Use the <code><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></code>&#160;system procedure to delete all backups that are older than a certain number of days.</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( <em>backupWindow</em> ); </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">backupWindow</p>
-                <p class="paramDefnFirst">An&#160;<code>INT</code>&#160;value that specifies the number of days of backups that you want retained. Any backups created more than <code>backupWindow</code> days ago are deleted.</p>
-                <h4>Example:&#160;Delete all backups more than a week old</h4>
-                <p>This example deletes all backups that are more than a week old:</p>
-                <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">call SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS(7);</pre>
-                </div>
-            </div>
-            <h2 id="Backing">Backing Up to Cloud Storage - AWS</h2>
-            <p>You can specify cloud-based directories as destinations for your backups. This section describes how to set up credentials to allow Splice Machine to create and manage backups on AWS.</p>
-            <p>You need to enable backups by storing your AWS Access Key ID and Secret Access Key values in your cluster's HDFS core-site.xml file: how you set up your credentials depends on the Hadoop platform you are using; see the section below for your platform:</p>
-            <div class="notePlain">
-                <p><strong>IMPORTANT:</strong>&#160;You must have access to the S3 bucket to which you are backing up your database. The instructions below give general guidelines; however, S3 access differs in every deployment. For more information, see these sites:</p>
-                <ul>
-                    <li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html"  target="_blank">http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html</a>
-                    </li>
-                    <li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html"  target="_blank">https://wiki.apache.org/hadoop/AmazonS3</a>
-                    </li>
-                </ul>
-            </div>
-            <ul>
-                <li><a href="#Enabling">Enabling backups on CDH</a>
-                </li>
-                <li><a href="#Enabling2">Enabling backups on HDP</a>
-                </li>
-                <li><a href="#Enabling3">Enabling backups on MapR</a>
-                </li>
-            </ul>
-            <h3 id="Enabling">Enabling Splice Machine Backups on CDH</h3>
-            <p>You can use Cloudera Manager to configure properties to enable Splice&#160;Machine backups; follow these steps:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>Navigate to the Cloudera Manager home screen.</li>
-                    <li>
-                        <p class="topLevel">Stop both HBase and HDFS:&#160;</p>
-                        <ul class="plainFont">
-                            <li>Click the <span class="AppCommand">HBase Actions</span> drop-down arrow associated with (to the right of)&#160;<code>HBase</code> in the cluster summary section of the home screen, and then click <span class="AppCommand">Stop</span> to stop HBase.</li>
-                            <li>Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of)&#160;and then click <span class="AppCommand">Stop</span> to stop HDFS.</li>
-                        </ul>
-                    </li>
-                    <li>Click <span class="AppCommand">HDFS</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab, and in category, click <span class="AppCommand">Advanced</span>. Then set these property values in the <code>Cluster-wide Advanced Configuration Snippet (Safety Valve) for core-site.xml</code> field:<div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
-fs.s3.awsAccessKeyId       = <span class="Highlighted">&lt;Your AWS&#160;Access Key&gt;</span>
-fs.s3.awsSecretAccessKey   = <span class="Highlighted">&lt;Your AWS&#160;Access Secret Key&gt;</span></pre></div></li>
-                    <li>
-                        <p class="topLevel">Restart both services: </p>
-                        <ul class="plainFont">
-                            <li>Click the <span class="AppCommand">HDFS Actions</span> drop-down arrow associated with (to the right of)&#160;HDFS&#160;in the cluster summary section of the Cloudera Manager home screen, and then click <span class="AppCommand">Start</span> to restart HDFS.</li>
-                            <li>Navigate to the <em>HBase Status</em> tab in Cloudera Manager. Then, using the <span class="AppCommand">Actions</span> drop-down in the upper-right corner, click <span class="AppCommand">Start</span> to create a start HBase.</li>
-                        </ul>
-                    </li>
-                </ol>
-            </div>
-            <h3 id="Enabling2">Enabling Splice Machine Backups on HDP</h3>
-            <p>You can use the Ambari dashboard to configure these properties. Follow these steps:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>Navigate to the HDFS <span class="AppCommand">Configs</span> screen.</li>
-                    <li>
-                        <p class="topLevel">Select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then stop both HBase and HDFS:&#160;</p>
-                        <ul class="plainFont">
-                            <li>Click <span class="AppCommand">HBase</span> in the left pane of the screen, then click <span class="AppCommand">Service Actions-&gt;Stop</span> in the upper-right portion of the Ambari screen.</li>
-                            <li>Click <span class="AppCommand">HDFS</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Stop</span>.</li>
-                        </ul>
-                    </li>
-                    <li>Select <span class="AppCommand">Custom core-site</span> and add these properties:                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
-fs.s3.awsAccessKeyId       = <span class="Highlighted">&lt;Your AWS&#160;Access Key&gt;</span>
-fs.s3.awsSecretAccessKey   = <span class="Highlighted">&lt;Your AWS&#160;Secret Access Key&gt;</span></pre></div></li>
-                    <li>
-                        <p class="topLevel">Restart both services: </p>
-                        <ul class="plainFont">
-                            <li>Click <span class="AppCommand">HDFS</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Restart All</span>.</li>
-                            <li>Click <span class="AppCommand">HBase</span> in the left pane of the screen, the click <span class="AppCommand">Service Actions-&gt;Restart All</span>.</li>
-                        </ul>
-                    </li>
-                </ol>
-            </div>
-            <h3 id="Enabling3">Enabling Splice Machine Backups on MapR</h3>
-            <p>To enable Amazon S3 access on a MapR&#160;cluster, you must stop services, change the configuration files on each node, and then restart services. Follow these steps:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Stop all MapR services by stopping the warden service on each host:</p>
-                        <div class="preWrapper"><pre class="ShellCommand">sudo service mapr-warden stop</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">You need to edit two files on each MapR-FS&#160;fileserver and HBase RegionServer in your cluster to allow hosts access to Amazon&#160;S3. You need to provide the fs.s3 access key ID&#160;and secret in each of these files:</p>
-                        <ul class="plainFont">
-                            <li><code>/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml</code> for <em>Hadoop/MapReduce/YARN 2.x</em> site configuration</li>
-                            <li><code>/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml</code> for <em>Hadoop/MapReduce 0.x/1.x</em> site configuration</li>
-                        </ul>
-                        <p>If both <em>MapReduce v1</em> and <em>YARN/MapReduce 2</em> are installed on the MapR compute hosts, the newer <em>hadoop-2.x.x</em> version of the file will be canonical, and the older <em>hadoop-0.x.x</em> file symbolically linked to it. You can check this using the following <code>ls</code> and <code>file</code> commands:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">$ ls -al /opt/mapr/hadoop/hadoop-0*/conf/core-site.xml /opt/mapr/hadoop/hadoop-2*/etc/hadoop/core-site.xml
+Finished with Success. Total time taken for backup was 11 hours 32 minutes.
+</code></pre>
+
+    </div>
+    <h3 id="Cancelin">Canceling a Scheduled Backup</h3>
+
+    <p>You can cancel a daily backup with the
+<a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a> system
+procedure:</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( jobId ); 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">jobId</p>
+
+      <p class="paramDefnFirst">A <code>BIGINT</code> value that specifies which scheduled backup job you want to
+cancel.</p>
+
+      <p class="paramDefn">You can find the <em>jobId</em> you want to cancel by querying the
+<a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS System Table</code></a>.</p>
+
+      <p class="noteNote">Once you cancel a daily backup, it will no longer be scheduled to run.</p>
+
+      <h4 id="examplecancel-a-daily-backup">Example: Cancel a daily backup</h4>
+
+      <p>This example cancels the backup that has <code>jobId=1273</code>:</p>
+
+      <div class="preWrapperWide">
+        <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(1273);
+</code></pre>
+
+      </div>
+    </div>
+    <h3 id="CancelB">Canceling a Backup That’s In Progress</h3>
+
+    <p>You can call the
+<a href="sqlref_sysprocs_cancelbackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_BACKUP</code></a> system
+procedure to cancel a backup that is currently running:</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_CANCEL_BACKUP(  ); 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <h4 id="examplecancel-a-running-backup">Example: Cancel a running backup</h4>
+
+      <p>This example cancels the Splice Machine backup job that is currently
+running.</p>
+
+      <div class="preWrapperWide">
+        <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_CANCEL_BACKUP();
+</code></pre>
+
+      </div>
+    </div>
+    <h3 id="Deleting">Deleting a Backup</h3>
+
+    <p>Use the
+<a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a> system
+procedure to delete a single backup:</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP( backupId ); 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupId</p>
+
+      <p class="paramDefnFirst">A <code>BIGINT</code> value that specifies which backup you want to delete.</p>
+
+      <p class="paramDefn">You can find the <em>backupId</em> you want to delete by querying the
+<a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a>,</p>
+
+      <h4 id="exampledelete-a-backup">Example: Delete a backup</h4>
+
+      <p>This example deletes the backup that has <code>backupId=1273</code>:</p>
+
+      <div class="preWrapperWide">
+        <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_DELETE_BACKUP(1273);
+</code></pre>
+
+      </div>
+    </div>
+    <h3 id="DeleteOld">Deleting Outdated Backups</h3>
+
+    <p>Use the
+<a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a> system
+procedure to delete all backups that are older than a certain number of
+days.</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( backupWindow ); 
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupWindow</p>
+
+      <p class="paramDefnFirst">An <code>INT</code> value that specifies the number of days of backups that you
+want retained. Any backups created more than <code>backupWindow</code> days ago are
+deleted.</p>
+
+      <h4 id="exampledelete-all-backups-more-than-a-week-old">Example: Delete all backups more than a week old</h4>
+
+      <p>This example deletes all backups that are more than a week old:</p>
+
+      <div class="preWrapperWide">
+        <pre class="AppCommand"><code>call SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS(7);
+</code></pre>
+
+      </div>
+    </div>
+    <h2 id="Backing">Backing Up to Cloud Storage - AWS</h2>
+
+    <p>You can specify cloud-based directories as destinations for your
+backups. This section describes how to set up credentials to allow
+Splice Machine to create and manage backups on AWS.</p>
+
+    <p>You need to enable backups by storing your AWS Access Key ID and Secret
+Access Key values in your cluster’s HDFS core-site.xml file: how you set
+up your credentials depends on the Hadoop platform you are using; see
+the section below for your platform:</p>
+
+    <div class="notePlain">
+      <p><strong>IMPORTANT:</strong> You must have access to the S3 bucket to which you are
+backing up your database. The instructions below give general
+guidelines; however, S3 access differs in every deployment. For more
+information, see these sites:</p>
+
+      <ul>
+        <li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html" target="_blank">http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html</a></li>
+        <li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html" target="_blank">https://wiki.apache.org/hadoop/AmazonS3</a></li>
+      </ul>
+
+    </div>
+    <ul>
+      <li><a href="#Enabling">Enabling backups on CDH</a></li>
+      <li><a href="#Enabling2">Enabling backups on HDP</a></li>
+      <li><a href="#Enabling3">Enabling backups on MapR</a></li>
+    </ul>
+
+    <h3 id="Enabling">Enabling Splice Machine Backups on CDH</h3>
+
+    <p>You can use Cloudera Manager to configure properties to enable
+Splice Machine backups; follow these steps:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>Navigate to the Cloudera Manager home screen.</li>
+        <li>
+          <p class="topLevel">Stop both HBase and HDFS: </p>
+
+          <ul class="plainFont">
+            <li>Click the <span class="AppCommand">HBase Actions</span> drop-down
+arrow associated with (to the right of) <code>HBase</code> in the cluster
+summary section of the home screen, and then click <span class="AppCommand">Stop</span> to stop HBase.</li>
+            <li>Click the <span class="AppCommand">HDFS Actions</span> drop-down
+arrow associated with (to the right of) and then click <span class="AppCommand">Stop</span> to stop HDFS.</li>
+          </ul>
+        </li>
+        <li>Click <span class="AppCommand">HDFS</span> in the Cloudera Manager
+home screen, then click the <span class="AppCommand">Configuration</span> tab, and in category, click
+<span class="AppCommand">Advanced</span>. Then set these property
+values in the <code>Cluster-wide Advanced Configuration Snippet (Safety
+Valve) for core-site.xml</code> field:
+          <div class="preWrapperWide">
+
+            <pre class="AppCommand"><code>fs.s3.awsAccessKeyId       = &lt;Your AWS Access Key&gt;
+fs.s3.awsSecretAccessKey   = &lt;Your AWS Access Secret Key&gt;
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Restart both services:</p>
+
+          <ul class="plainFont">
+            <li>Click the <span class="AppCommand">HDFS Actions</span> drop-down
+arrow associated with (to the right of) HDFS in the cluster
+summary section of the Cloudera Manager home screen, and then
+click <span class="AppCommand">Start</span> to restart HDFS.</li>
+            <li>Navigate to the <em>HBase Status</em> tab in Cloudera Manager. Then,
+using the <span class="AppCommand">Actions</span> drop-down in the
+upper-right corner, click <span class="AppCommand">Start</span> to
+create a start HBase.</li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+    <h3 id="Enabling2">Enabling Splice Machine Backups on HDP</h3>
+
+    <p>You can use the Ambari dashboard to configure these properties. Follow
+these steps:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>Navigate to the HDFS <span class="AppCommand">Configs</span> screen.</li>
+        <li>
+          <p class="topLevel">Select the <span class="AppCommand">Services</span> tab at the top
+of the Ambari dashboard screen, then stop both HBase and HDFS: </p>
+
+          <ul class="plainFont">
+            <li>Click <span class="AppCommand">HBase</span> in the left pane of
+the screen, then click <span class="AppCommand">Service
+Actions-&gt;Stop</span> in the upper-right portion of the Ambari
+screen.</li>
+            <li>Click <span class="AppCommand">HDFS</span> in the left pane of the
+screen, the click <span class="AppCommand">Service
+Actions-&gt;Stop</span>.</li>
+          </ul>
+        </li>
+        <li>Select <span class="AppCommand">Custom core-site</span> and add
+these properties:
+          <div class="preWrapperWide">
+
+            <pre class="AppCommand"><code>fs.s3.awsAccessKeyId       = &lt;Your AWS Access Key&gt;
+fs.s3.awsSecretAccessKey   = &lt;Your AWS Secret Access Key&gt;
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Restart both services:</p>
+
+          <ul class="plainFont">
+            <li>Click <span class="AppCommand">HDFS</span> in the left pane of the
+screen, the click <span class="AppCommand">Service
+Actions-&gt;Restart All</span>.</li>
+            <li>Click <span class="AppCommand">HBase</span> in the left pane of
+the screen, the click <span class="AppCommand">Service
+Actions-&gt;Restart All</span>.</li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+    <h3 id="Enabling3">Enabling Splice Machine Backups on MapR</h3>
+
+    <p>To enable Amazon S3 access on a MapR cluster, you must stop services,
+change the configuration files on each node, and then restart services.
+Follow these steps:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Stop all MapR services by stopping the warden service on each host:</p>
+
+          <div class="preWrapper">
+            <pre class="ShellCommand"><code>sudo service mapr-warden stop
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">You need to edit two files on each MapR-FS fileserver and HBase
+RegionServer in your cluster to allow hosts access to Amazon S3. You
+need to provide the fs.s3 access key ID and secret in each of these
+files:</p>
+
+          <ul class="plainFont">
+            <li><code>/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml</code> for
+<em>Hadoop/MapReduce/YARN 2.x</em> site configuration</li>
+            <li><code>/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml</code> for
+<em>Hadoop/MapReduce 0.x/1.x</em> site configuration</li>
+          </ul>
+
+          <p>If both <em>MapReduce v1</em> and <em>YARN/MapReduce 2</em> are installed on the
+MapR compute hosts, the newer <em>hadoop-2.x.x</em> version of the file
+will be canonical, and the older <em>hadoop-0.x.x</em> file symbolically
+linked to it. You can check this using the following <code>ls</code> and <code>file</code>
+commands:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>$ ls -al /opt/mapr/hadoop/hadoop-0*/conf/core-site.xml /opt/mapr/hadoop/hadoop-2*/etc/hadoop/core-site.xml
 lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core-site.xml -&gt; /opt/mapr/hadoop/hadoop-2.5.1/etc/hadoop/core-site.xml
 -rw-r--r-- 1 mapr root 775 Apr 24 12:50 /opt/mapr/hadoop/hadoop-2.5.1/etc/hadoop/core-site.xml
-</pre>
-                        </div>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">$ file /opt/mapr/hadoop/hadoop-0*/conf/core-site.xml /opt/mapr/hadoop/hadoop-2*/etc/hadoop/core-site.xml
+</code></pre>
+
+          </div>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>$ file /opt/mapr/hadoop/hadoop-0*/conf/core-site.xml /opt/mapr/hadoop/hadoop-2*/etc/hadoop/core-site.xml
 /opt/mapr/hadoop/hadoop-0.20.2/conf/core-site.xml:      symbolic link to `/opt/mapr/hadoop/hadoop-2.5.1/etc/hadoop/core-site.xml'
 /opt/mapr/hadoop/hadoop-2.5.1/etc/hadoop/core-site.xml: XML  document text
-</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Add your access key ID&#160;and secret key in each file by adding the following properties between the <code>&lt;configuration&gt;</code>&#160;and <code>&lt;/configuration&gt;</code>&#160;tags:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">&lt;!-- AWS s3://bucket/... block-based access --&gt;
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Add your access key ID and secret key in each file by adding the
+following properties between the <code>&lt;configuration&gt;</code> and
+<code>&lt;/configuration&gt;</code> tags:</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>&lt;!-- AWS s3://bucket/... block-based access --&gt;
 &lt;property&gt;
 &lt;name&gt;fs.s3.awsAccessKeyId&lt;/name&gt;
 &lt;value&gt;_AWS_ACCESS_KEY_ID_&lt;/value&gt;
@@ -893,48 +1196,74 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
 &lt;name&gt;fs.s3n.awsSecretAccessKey&lt;/name&gt;
 &lt;value&gt;_AWS_SECRET_ACCESS_KEY_&lt;/value&gt;
 &lt;/property&gt;
-</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Use the <code>hadoop</code> command to view your configuration changes:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">$ hadoop conf | grep fs\\.s3 | grep -i access | sort -u
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Use the <code>hadoop</code> command to view your configuration changes:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>$ hadoop conf | grep fs\\.s3 | grep -i access | sort -u
 &lt;property&gt;&lt;name&gt;fs.s3.awsAccessKeyId&lt;/name&gt;&lt;value&gt;_AWS_ACCESS_KEY_ID_&lt;/value&gt;&lt;source&gt;core-site.xml&lt;/source&gt;&lt;/property&gt;
 &lt;property&gt;&lt;name&gt;fs.s3.awsSecretAccessKey&lt;/name&gt;&lt;value&gt;_AWS_SECRET_ACCESS_KEY_&lt;/value&gt;&lt;source&gt;core-site.xml&lt;/source&gt;&lt;/property&gt;
 &lt;property&gt;&lt;name&gt;fs.s3n.awsAccessKeyId&lt;/name&gt;&lt;value&gt;_AWS_ACCESS_KEY_ID_&lt;/value&gt;&lt;source&gt;core-site.xml&lt;/source&gt;&lt;/property&gt;
 &lt;property&gt;&lt;name&gt;fs.s3n.awsSecretAccessKey&lt;/name&gt;&lt;value&gt;_AWS_SECRET_ACCESS_KEY_&lt;/value&gt;&lt;source&gt;core-site.xml&lt;/source&gt;&lt;/property&gt;
-</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">You can also verify that access is correctly configured with the <code>hadoop</code> command to list the contents of an existing bucket. For example:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">sudo -iu mapr hadoop fs -ls s3n://<span class="Highlighted">yourbucketname</span>/
-</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Finally, restart MapR services on each node via MapR's warden::</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">sudo service mapr-warden start
-</pre>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><code><a href="sqlref_sysprocs_backupdb.html">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_sysprocs_cancelbackup.html">SYSCS_UTIL.SYSCS_CANCEL_BACKUP</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_sysprocs_deleteoldbackups.html">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_systables_sysbackup.html">SYSBACKUP System Table</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS System Table</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-                <li><code><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS System Table</a></code> in the <em>SQL&#160;Reference Manual</em></li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">You can also verify that access is correctly configured with the
+<code>hadoop</code> command to list the contents of an existing bucket. For
+example:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>sudo -iu mapr hadoop fs -ls s3n://yourbucketname/
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Finally, restart MapR services on each node via MapR’s warden::</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>sudo service mapr-warden start
+</code></pre>
+
+          </div>
+        </li>
+      </ol>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a> in
+the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_cancelbackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_BACKUP</code></a>
+in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>
+in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>
+in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a>
+in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a>
+in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a>
+in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a> in the
+<em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS System Table</code></a>
+in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS System Table</code></a> in
+the <em>SQL Reference Manual</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -951,7 +1280,7 @@ lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

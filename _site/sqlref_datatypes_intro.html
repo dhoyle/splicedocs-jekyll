@@ -2806,34 +2806,38 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Data Types</h1>
-            <p>The SQL type system is used by the language compiler to determine the compile-time
-			type of an expression and by the language execution system to determine the
-			runtime type of an expression, which can be a subtype or implementation of
-		the compile-time type.</p>
-            <p>Each type has associated with it values of that type. In addition, values
-			in the database or resulting from expressions can be <code>NULL</code>, which means the
-			value is missing or unknown. Although there are some places where the keyword
-			<code>NULL</code> can be explicitly used, it is not in itself a value, because it needs
-		to have a type associated with it.</p>
-            <p>This section contains the reference documentation for the Splice Machine SQL&#160;Data Types, in the following subsections:</p>
-            <ul>
-                <li><a href="#Characte">Character String Data Types</a>
-                </li>
-                <li><a href="#Date">Date and&#160;Time Data Types</a>
-                </li>
-                <li><a href="#Large">Large Object Binary (LOB)&#160;Data Types</a>
-                </li>
-                <li><a href="#Numeric">Numeric Data Types</a>
-                </li>
-                <li><a href="#Other">Other Data Types</a>
-                </li>
-            </ul>
-            <h2 id="Characte">Character String Data Types</h2>
-            <p>These are the <a href="sqlref_datatypes_charstringtypes.html">character string data types</a>:</p>
-            <table summary="Links to and descriptions of the available character string data types">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="data-types">Data Types</h1>
+
+    <p>The SQL type system is used by the language compiler to determine the
+compile-time type of an expression and by the language execution system
+to determine the runtime type of an expression, which can be a subtype
+or implementation of the compile-time type.</p>
+
+    <p>Each type has associated with it values of that type. In addition,
+values in the database or resulting from expressions can be <code>NULL</code>,
+which means the value is missing or unknown. Although there are some
+places where the keyword <code>NULL</code> can be explicitly used, it is not in
+itself a value, because it needs to have a type associated with it.</p>
+
+    <p>This section contains the reference documentation for the Splice Machine
+SQL Data Types, in the following subsections:</p>
+
+    <ul>
+      <li><a href="#Characte">Character String Data Types</a></li>
+      <li><a href="#Date">Date and Time Data Types</a></li>
+      <li><a href="#Large">Large Object Binary (LOB) Data Types</a></li>
+      <li><a href="#Numeric">Numeric Data Types</a></li>
+      <li><a href="#Other">Other Data Types</a></li>
+    </ul>
+
+    <h2 id="Characte">Character String Data Types</h2>
+
+    <p>These are the <a href="sqlref_datatypes_charstringtypes.html">character string data
+types</a>:</p>
+
+    <table summary="Links to and descriptions of the available character string data types">
                 <col />
                 <col />
                 <tr>
@@ -2851,7 +2855,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_datatypes_longvarchar.html">LONG&#160;VARCHAR</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_longvarchar.html">LONG VARCHAR</a>
                     </td>
                     <td>
                         <p>The <code>LONG VARCHAR</code> type allows storage of character strings with a maximum length of 32,700 characters. It is identical to <code>VARCHAR</code>, except that you cannot specify a maximum length when creating columns of
@@ -2861,12 +2865,15 @@
                 <tr>
                     <td class="CodeFont"><a href="sqlref_datatypes_varchar.html">VARCHAR</a>
                     </td>
-                    <td>The <code>VARCHAR</code>&#160;data type provides for variable-length storage of strings.</td>
+                    <td>The <code>VARCHAR</code> data type provides for variable-length storage of strings.</td>
                 </tr>
             </table>
-            <h2 id="Date">Date and&#160;Time Data Types</h2>
-            <p>These are the <a href="sqlref_datatypes_datetimetypes.html">date and time data types</a>:</p>
-            <table summary="Links to and descriptions of the available date and time data types">
+    <h2 id="Date">Date and Time Data Types</h2>
+
+    <p>These are the <a href="sqlref_datatypes_datetimetypes.html">date and time data
+types</a>:</p>
+
+    <table summary="Links to and descriptions of the available date and time data types">
                 <col />
                 <col />
                 <tr>
@@ -2893,12 +2900,14 @@
                 <tr>
                     <td class="CodeFont"><a href="sqlref_builtinfcns_timestamp.html">TIMESTAMP</a>
                     </td>
-                    <td>The <code>TIMESTAMP</code>&#160;data type stores a combined <code>DATE</code> and <code>TIME</code> value, and allows a fractional-seconds value of up to nine digits.</td>
+                    <td>The <code>TIMESTAMP</code> data type stores a combined <code>DATE</code> and <code>TIME</code> value, and allows a fractional-seconds value of up to nine digits.</td>
                 </tr>
             </table>
-            <h2 id="Large">Large Object Binary (LOB)&#160;Data Types</h2>
-            <p>These are the <a href="sqlref_datatypes_lobtypes.html">LOB data types</a>:</p>
-            <table summary="Links to and descriptions of the available LOB data types">
+    <h2 id="Large">Large Object Binary (LOB) Data Types</h2>
+
+    <p>These are the <a href="sqlref_datatypes_lobtypes.html">LOB data types</a>:</p>
+
+    <table summary="Links to and descriptions of the available LOB data types">
                 <col />
                 <col />
                 <tr>
@@ -2920,14 +2929,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><code><a href="sqlref_datatypes_text.html">TEXT</a></code>
+                    <td class="CodeFont"><a href="sqlref_datatypes_text.html"><code>TEXT</code></a>
                     </td>
                     <td>Exactly the same as <code>CLOB</code>.</td>
                 </tr>
             </table>
-            <h2 id="Numeric">Numeric Data Types</h2>
-            <p>These are the <a href="sqlref_datatypes_numerictypes.html">numeric data types</a>:</p>
-            <table summary="Links to and descriptions of the available numeric data types">
+    <h2 id="Numeric">Numeric Data Types</h2>
+
+    <p>These are the <a href="sqlref_datatypes_numerictypes.html">numeric data types</a>:</p>
+
+    <table summary="Links to and descriptions of the available numeric data types">
                 <col />
                 <col />
                 <tr>
@@ -2949,7 +2960,7 @@
                     </td>
                     <td>
                         <p>The  <code>DECIMAL</code> data type provides an exact numeric in which the precision and scale can be arbitrarily sized. </p>
-                        <p>You can use <code>DECIMAL</code>&#160;and <code>NUMERIC</code>&#160;interchangeably.</p>
+                        <p>You can use <code>DECIMAL</code> and <code>NUMERIC</code> interchangeably.</p>
                     </td>
                 </tr>
                 <tr>
@@ -2990,7 +3001,7 @@
                     </td>
                     <td>
                         <p>The  <code>NUMERIC</code>data type provides an exact numeric in which the precision and scale can be arbitrarily sized. </p>
-                        <p>You can use <code>NUMERIC</code>&#160;and <code>DECIMAL</code>&#160;interchangeably.</p>
+                        <p>You can use <code>NUMERIC</code> and <code>DECIMAL</code> interchangeably.</p>
                     </td>
                 </tr>
                 <tr>
@@ -3009,9 +3020,11 @@
                     </td>
                 </tr>
             </table>
-            <h2 id="Other">Other Data Types</h2>
-            <p>These are the <a href="sqlref_datatypes_othertypes.html">other data types</a>:</p>
-            <table summary="Links to and descriptions of primitive data types">
+    <h2 id="Other">Other Data Types</h2>
+
+    <p>These are the <a href="sqlref_datatypes_othertypes.html">other data types</a>:</p>
+
+    <table summary="Links to and descriptions of primitive data types">
                 <col />
                 <col />
                 <tr>
@@ -3028,34 +3041,35 @@
                     </td>
                 </tr>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sqlargmatching.html">Argument Matching</a>
-                </li>
-                <li><a href="sqlref_datatypes_compatability.html">Assignments</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_bigint.html"><code>BIGINT</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_blob.html"><code>BLOB</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_boolean.html"><code>BOOLEAN</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_char.html"><code>CHAR</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_clob.html"><code>CLOB</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_double.html"><code>DOUBLE</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_float.html"><code>FLOAT</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_integer.html"><code>INTEGER</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_longvarchar.html"><code>LONG&#160;VARCHAR</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_numeric.html"><code>NUMERIC</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_real.html"><code>REAL</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>&#160;data type</li>
-                <li><code><a href="sqlref_datatypes_text.html">TEXT</a></code>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;data type</li>
-                <li><a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a>&#160;data type</li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sqlargmatching.html">Argument Matching</a></li>
+      <li><a href="sqlref_datatypes_compatability.html">Assignments</a></li>
+      <li><a href="sqlref_builtinfcns_bigint.html"><code>BIGINT</code></a> data type</li>
+      <li><a href="sqlref_datatypes_blob.html"><code>BLOB</code></a> data type</li>
+      <li><a href="sqlref_datatypes_boolean.html"><code>BOOLEAN</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_char.html"><code>CHAR</code></a> data type</li>
+      <li><a href="sqlref_datatypes_clob.html"><code>CLOB</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> data type</li>
+      <li><a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_double.html"><code>DOUBLE</code></a> data type</li>
+      <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> data type</li>
+      <li><a href="sqlref_datatypes_float.html"><code>FLOAT</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_integer.html"><code>INTEGER</code></a> data type</li>
+      <li><a href="sqlref_datatypes_longvarchar.html"><code>LONG VARCHAR</code></a> data type</li>
+      <li><a href="sqlref_datatypes_numeric.html"><code>NUMERIC</code></a> data type</li>
+      <li><a href="sqlref_datatypes_real.html"><code>REAL</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a> data type</li>
+      <li><a href="sqlref_datatypes_text.html"><code>TEXT</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> data type</li>
+      <li><a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a> data type</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -3072,7 +3086,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

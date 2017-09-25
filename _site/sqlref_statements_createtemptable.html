@@ -2806,78 +2806,147 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>CREATE&#160;TEMPORARY TABLE</h1>
-            <p>The <code>CREATE TEMPORARY TABLE</code> statement defines a temporary table for the current connection. </p>
-            <p>This statement is similar to the  <code><a href="sqlref_statements_globaltemptable.html">DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</a></code>&#160;statements, but uses different syntax to provide compatibility with external business intelligence tools.</p>
-            <p>For general information and notes about using temporary tables, see the <a href="developers_fundamentals_temptables.html">Using Temporary Tables</a> topic in our <em>Developer's Guide</em>.</p>
-            <p class="noteRestriction">Splice Machine does not currently support creating temporary tables stored as external tables.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em> {
-      ( {<em>column-definition</em> | <em>Table-level constraint</em>}
-         [ , {<em>column-definition</em>} ] * )
-      ( <em>column-name</em> [ , <em>column-name</em> ] * ) 
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="createtemporary-table">CREATE TEMPORARY TABLE</h1>
+
+    <p>The <code>CREATE TEMPORARY TABLE</code> statement defines a temporary table for the
+current connection.</p>
+
+    <p>This statement is similar to the
+<a href="sqlref_statements_globaltemptable.html"><code>DECLARE GLOBAL TEMPORARY TABLE</code></a> statements,
+but uses different syntax to provide compatibility with external
+business intelligence tools.</p>
+
+    <p>For general information and notes about using temporary tables, see the
+<a href="developers_fundamentals_temptables.html">Using Temporary Tables</a> topic
+in our <em>Developer’s Guide</em>.</p>
+
+    <p class="noteRestriction">Splice Machine does not currently support creating temporary tables
+stored as external tables.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CREATE [LOCAL | GLOBAL] TEMPORARY TABLE table-Name {
+      ( {column-definition | Table-level constraint}
+         [ , {column-definition} ] * )
+      ( column-name [ , column-name ] * ) 
   }
-  [NOLOGGING | ON COMMIT PRESERVE ROWS];</pre>
-            </div>
-            <p class="noteNote">Splice Machine generates a warning if you attempt to specify any other modifiers other than the <code>NOLOGGING</code>and <code>ON&#160;COMMIT&#160;PRESERVE&#160;ROWS</code>&#160;modifiers shown above. </p>
-            <div class="paramList">
-                <p class="paramName">LOCAL&#160;|&#160;GLOBAL</p>
-                <p class="paramDefnFirst">These values are ignored by Splice Machine, and are in place simply to provide compatibility with external tools that use this syntax.</p>
-                <p class="paramName">table-Name</p>
-                <p class="paramDefnFirst">Names the temporary table.
-</p>
-                <p class="paramName">Table-level constraint	</p>
-                <p class="paramDefnFirst">A constraint that is applied to this table, as described in the <a href="sqlref_clauses_constraint.html#TableConstraint">Constraints</a> clause topic.			</p>
-                <p class="paramName">column-definition</p>
-                <p class="paramDefnFirst">Specifies a column definition. See <a href="sqlref_statements_columndef.html">column-definition</a> for more information.</p>
-                <p class="noteNote">You cannot use <code>generated-column-spec</code> in <code>column-definitions</code> for temporary tables.</p>
-                <p class="paramName">column-name</p>
-                <p class="paramDefnFirst">A <em><a href="sqlref_identifiers_intro.html">SQL Identifier</a></em> that names a column in the table.</p>
-                <p class="paramName">NOLOGGING</p>
-                <p class="paramDefnFirst">If you specify this, operations against the temporary table will not be logged; otherwise, logging will take place as usual.</p>
-                <p class="paramName">ON COMMIT PRESERVE&#160;ROWS</p>
-                <p class="paramDefnFirst">
-				
-				Specifies that the data in the temporary table is to be preserved until the session terminates.			</p>
-            </div>
-            <h2>Restrictions on Temporary Tables</h2>
-            <p>You can use temporary tables just like you do permanently defined database tables, with several important exceptions and restrictions that are noted in this section. </p>
-            <h3>Operational Limitations</h3>
-            <p>Temporary tables have the following operational limitations:</p>
-            <ul>
-                <li>exist only while a user session is alive</li>
-                <li>are not visible to other sessions or transactions</li>
-                <li>cannot be altered using the <code><a href="sqlref_statements_renamecolumn.html">RENAME&#160;COLUMN</a></code>&#160;statements</li>
-                <li>do not get backed up</li>
-                <li>cannot be used as data providers to views</li>
-                <li>cannot be referenced by foreign keys in other tables</li>
-                <li>are not displayed by the <code><a href="cmdlineref_showtables.html">SHOW TABLES</a></code>&#160;command</li>
-            </ul>
-            <p>Also note that temporary tables persist across transactions in a session and are automatically dropped when a session terminates.</p>
-            <h3>Table Persistence</h3>
-            <p>Here are two important notes about temporary table persistence. Temporary tables:</p>
-            <ul>
-                <li>persist across transactions in a session</li>
-                <li>are automatically dropped when a session terminates or expires</li>
-            </ul>
-            <h2>Examples</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE GLOBAL TEMPORARY TABLE FirstAndLast(
-      id INT&#160;NOT&#160;NULL&#160;PRIMARY&#160;KEY, 
-      firstName VARCHAR(8)&#160;NOT&#160;NULL, 
-      lastName VARCHAR(10) NOT&#160;NULL&#160;) 
+  [NOLOGGING | ON COMMIT PRESERVE ROWS];
+</code></pre>
+
+    </div>
+    <p class="noteNote">Splice Machine generates a warning if you attempt to specify any other
+modifiers other than the <code>NOLOGGING</code>and
+<code>ON COMMIT PRESERVE ROWS</code> modifiers shown above.</p>
+
+    <div class="paramList">
+      <table class="paramName">
+        <tbody>
+          <tr>
+            <td>LOCAL </td>
+            <td> GLOBAL</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="paramDefnFirst">These values are ignored by Splice Machine, and are in place simply to
+provide compatibility with external tools that use this syntax.</p>
+
+      <p class="paramName">table-Name</p>
+
+      <p class="paramDefnFirst">Names the temporary table.</p>
+
+      <p class="paramName">Table-level constraint</p>
+
+      <p class="paramDefnFirst">A constraint that is applied to this table, as described in the
+<a href="sqlref_clauses_constraint.html#TableConstraint">Constraints</a> clause
+topic.</p>
+
+      <p class="paramName">column-definition</p>
+
+      <p class="paramDefnFirst">Specifies a column definition. See
+<a href="sqlref_statements_columndef.html">column-definition</a> for more
+information.</p>
+
+      <p class="noteNote">You cannot use <code>generated-column-spec</code> in <code>column-definitions</code> for
+temporary tables.</p>
+
+      <p class="paramName">column-name</p>
+
+      <p class="paramDefnFirst">A <em><a href="sqlref_identifiers_intro.html">SQL Identifier</a></em> that names a column
+in the table.</p>
+
+      <p class="paramName">NOLOGGING</p>
+
+      <p class="paramDefnFirst">If you specify this, operations against the temporary table will not be
+logged; otherwise, logging will take place as usual.</p>
+
+      <p class="paramName">ON COMMIT PRESERVE ROWS</p>
+
+      <p class="paramDefnFirst">Specifies that the data in the temporary table is to be preserved until
+the session terminates.</p>
+
+    </div>
+    <h2 id="restrictions-on-temporary-tables">Restrictions on Temporary Tables</h2>
+
+    <p>You can use temporary tables just like you do permanently defined
+database tables, with several important exceptions and restrictions that
+are noted in this section.</p>
+
+    <h3 id="operational-limitations">Operational Limitations</h3>
+
+    <p>Temporary tables have the following operational limitations:</p>
+
+    <ul>
+      <li>exist only while a user session is alive</li>
+      <li>are not visible to other sessions or transactions</li>
+      <li>cannot be altered using the
+<a href="sqlref_statements_renamecolumn.html"><code>RENAME COLUMN</code></a> statements</li>
+      <li>do not get backed up</li>
+      <li>cannot be used as data providers to views</li>
+      <li>cannot be referenced by foreign keys in other tables</li>
+      <li>are not displayed by the <a href="cmdlineref_showtables.html"><code>SHOW
+TABLES</code></a> command</li>
+    </ul>
+
+    <p>Also note that temporary tables persist across transactions in a session
+and are automatically dropped when a session terminates.</p>
+
+    <h3 id="table-persistence">Table Persistence</h3>
+
+    <p>Here are two important notes about temporary table persistence.
+Temporary tables:</p>
+
+    <ul>
+      <li>persist across transactions in a session</li>
+      <li>are automatically dropped when a session terminates or expires</li>
+    </ul>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE GLOBAL TEMPORARY TABLE FirstAndLast(
+      id INT NOT NULL PRIMARY KEY, 
+      firstName VARCHAR(8) NOT NULL, 
+      lastName VARCHAR(10) NOT NULL ) 
    ON COMMIT PRESERVE ROWS;
 0 rows inserted/updated/deleted
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_globaltemptable.html"><code>DECLARE&#160;GLOBAL&#160;TEMPORARY&#160;TABLE</code></a>&#160;statement</li>
-                <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a> in the <em>Developer's Guide</em>.</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_globaltemptable.html"><code>DECLARE GLOBAL TEMPORARY TABLE</code></a> statement</li>
+      <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a> in
+the <em>Developer’s Guide</em>.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2894,7 +2963,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

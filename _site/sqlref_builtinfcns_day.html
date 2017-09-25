@@ -2806,41 +2806,66 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInFcns.Day">DAY</h1>
-            <p>The <code>DAY</code> function returns the day part of a value.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">DAY ( <em>expression</em> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">expression
-            </p>
-                <p class="paramDefnFirst">An expression that can be any of the following:</p>
-            <ul class="bulletNested"><li class="nested" value="1">A <a href="sqlref_datatypes_longvarchar.html"><code>LONG VARCHAR</code></a> value.</li></ul>
-            </div>
-            <h2>Results</h2>
-            <p>The returned result is an integer value in the range <code>1</code> to <code>31</code>.</p>
-            <p>If the argument can be <code>NULL</code>, the result can be <code>NULL</code>; if the argument is <code>NULL</code>, the result is the <code>NULL</code> value.</p>
-            <h2>Examples</h2>
-            <p>Get the current date:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES(CURRENT_DATE);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="day---builtinfcnsday">DAY   {#BuiltInFcns.Day}</h1>
+
+    <p>The <code>DAY</code> function returns the day part of a value.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>DAY ( expression )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">expression</p>
+
+      <p class="paramDefnFirst">An expression that can be any of the following:</p>
+
+      <ul class="bulletNested">
+        <li class="nested" value="1">A <a href="sqlref_datatypes_longvarchar.html"><code>LONG VARCHAR</code></a> value.</li>
+      </ul>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The returned result is an integer value in the range <code>1</code> to <code>31</code>.</p>
+
+    <p>If the argument can be <code>NULL</code>, the result can be <code>NULL</code>; if the argument
+is <code>NULL</code>, the result is the <code>NULL</code> value.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p>Get the current date:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES(CURRENT_DATE);
 1
 --------
 2015-10-25
 
-1 row selected</pre>
-            </div>
-            <p>Now get the current day only:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES(DAY(CURRENT_DATE));
+1 row selected
+</code></pre>
+
+    </div>
+    <p>Now get the current day only:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES(DAY(CURRENT_DATE));
 1
 --------
 25
 
-1 row selected</pre>
-            </div>
-            <p>Get the day number for each player's birthdate:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; select Day(Birthdate) AS "Day-of-Birth"
+1 row selected
+</code></pre>
+
+    </div>
+    <p>Get the day number for each player’s birthdate:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; select Day(Birthdate) AS "Day-of-Birth"
    FROM Players
    WHERE ID &lt; 20
    ORDER BY "Day-of-Birth";
@@ -2867,30 +2892,35 @@ Day-of-Bir&amp;
 30
 
 19 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
-                <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
-                <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the <em>Developer's Guide</em></li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
+      <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2907,7 +2937,7 @@ Day-of-Bir&amp;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

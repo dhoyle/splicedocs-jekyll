@@ -2806,22 +2806,35 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Clauses.From">FROM</h1>
-            <p>The <code>FROM</code> clause is a mandatory clause in a <em><a href="sqlref_expressions_select.html">SelectExpression</a>.</em> It
-specifies the tables (<em><a href="sqlref_expressions_table.html">TableExpression</a></em>)
-from which the other clauses of the query can access columns for use in expressions. </p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">FROM <em>TableExpression</em> [ , <em>TableExpression</em> ] *</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">TableExpression</p>
-                <p class="paramDefnFirst">Specifies a table, view, or function; it is the source from which a <em><a href="sqlref_expressions_table.html">TableExpression</a></em> selects a result.</p>
-            </div>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-SELECT Cities.city_id
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="from---clausesfrom">FROM   {#Clauses.From}</h1>
+
+    <p>The <code>FROM</code> clause is a mandatory clause in a
+<em><a href="sqlref_expressions_select.html">SelectExpression</a>.</em> It specifies the
+tables (<em><a href="sqlref_expressions_table.html">TableExpression</a></em>) from which
+the other clauses of the query can access columns for use in
+expressions.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>FROM TableExpression [ , TableExpression ] *
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">TableExpression</p>
+
+      <p class="paramDefnFirst">Specifies a table, view, or function; it is the source from which a
+<em><a href="sqlref_expressions_table.html">TableExpression</a></em> selects a result.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>SELECT Cities.city_id
   FROM Cities
   WHERE city_id &lt; 5;
 
@@ -2846,15 +2859,19 @@ SELECT Cities.city_id
   ON COUNTRIES.COUNTRY_ISO_CODE = CITIES.COUNTRY_ISO_CODE
   LEFT OUTER JOIN FLIGHTS
   ON Cities.AIRPORT = FLIGHTS.DEST_AIRPORT;
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
-                <li><a href="sqlref_expressions_table.html"><code>TABLE</code></a>&#160;expression</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_expressions_table.html"><code>TABLE</code></a> expression</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2871,7 +2888,7 @@ SELECT Cities.city_id
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

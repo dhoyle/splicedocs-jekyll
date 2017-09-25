@@ -8,7 +8,7 @@ do
    echo "Converting file $base.html to $base.md"
 
    count=`wc -l $base.html | awk '{print $1}'`
-   breakpoint=`grep -n [-][-][-] $base.html | tail -1 | cut -d: -f1`
+   breakpoint=`grep -n -m2 [-][-][-] $base.html | tail -1 | cut -d: -f1`
    touch $base.head
    touch $base.tail
    head -$((breakpoint)) $base.html > $base.head

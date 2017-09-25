@@ -2806,36 +2806,62 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Statements.DropSequence">DROP SEQUENCE</h1>
-            <p>The <code>DROP SEQUENCE</code> statement removes a sequence generator that was created using a <a href="sqlref_statements_createsequence.html"><code>CREATE SEQUENCE</code> statement</a>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">DROP SEQUENCE [ <em><a href="sqlref_identifiers_intro.html">SQL Identifier</a></em> RESTRICT</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">The name of the schema to which this sequence belongs. If you do not specify a schema name, the current schema is assumed.</p>
-                <p class="paramDefn">You cannot use a schema name that begins with the <code>SYS.</code> prefix.</p>
-                <p class="paramName">SQL Identifier</p>
-                <p class="paramDefnFirst">The name of the sequence.</p>
-                <p class="paramName">RESTRICT</p>
-                <p class="paramDefnFirst">This is <strong>required</strong>. It specifies that if a trigger or view references the sequence generator, Splice Machine will throw an exception.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>Dropping a sequence generator implicitly drops all <code>USAGE</code> privileges that reference it.</p>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP SEQUENCE PLAYERID_SEQ&#160;RESTRICT;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><code><a href="sqlref_statements_createsequence.html">CREATE SEQUENCE</a></code>&#160;statement</li>
-                <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="drop-sequence---statementsdropsequence">DROP SEQUENCE   {#Statements.DropSequence}</h1>
+
+    <p>The <code>DROP SEQUENCE</code> statement removes a sequence generator that was
+created using a <a href="sqlref_statements_createsequence.html"><code>CREATE SEQUENCE</code>
+statement</a>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>DROP SEQUENCE [ SQL Identifier RESTRICT
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">The name of the schema to which this sequence belongs. If you do not
+specify a schema name, the current schema is assumed.</p>
+
+      <p class="paramDefn">You cannot use a schema name that begins with the <code>SYS.</code> prefix.</p>
+
+      <p class="paramName">SQL Identifier</p>
+
+      <p class="paramDefnFirst">The name of the sequence.</p>
+
+      <p class="paramName">RESTRICT</p>
+
+      <p class="paramDefnFirst">This is <strong>required</strong>. It specifies that if a trigger or view references
+the sequence generator, Splice Machine will throw an exception.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>Dropping a sequence generator implicitly drops all <code>USAGE</code> privileges
+that reference it.</p>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; DROP SEQUENCE PLAYERID_SEQ RESTRICT;
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_createsequence.html"><code>CREATE SEQUENCE</code></a> statement</li>
+      <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2852,7 +2878,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

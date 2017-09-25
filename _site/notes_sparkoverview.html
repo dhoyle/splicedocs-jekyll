@@ -339,29 +339,61 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>The Splice Machine In-Memory Engine</h1>
-            <p>This topic provides an overview of the Splice Machine in-memory engine, which tremendously boosts OLAP&#160;(analytical) query performance. Splice Machine use Apache Spark as our in-memory engine and automatically detects and directs OLAP&#160;queries to that engine. </p>
-            <p>This topic presents a very brief overview of Spark terminology and concepts. </p>
-            <p class="noteNote">If you're not yet familiar with Spark, we recommend visiting the Apache Spark web site, <a href="http://spark.apache.org/"  target="_blank">spark.apache.org</a>, to learn the basics, and for links to the official Spark documentation.</p>
-            <h2>Spark Overview</h2>
-            <p>Apache Spark is an open source computational engine that manages tasks in a computing cluster. Spark was originally developed at UC Berkeley in 2009, and then open sourced in 2010 as an Apache project. Spark has been engineered from the ground up for performance, exploiting in-memory computing and other optimizations to provide powerful analysis on very large data sets.</p>
-            <p>Spark provides numerous performance-oriented features, including:</p>
-            <ul>
-                <li>ability to cache datasets in memory for interactive data analysis</li>
-                <li>abstraction</li>
-                <li>integration with a host of data sources</li>
-                <li>very fast data analysis</li>
-                <li>easy to use APIs for operating on large datasets, including numerous operators for transforming and manipulating data, in Java, Scala, Python, and other languages</li>
-                <li>numerous high level libraries, including support for machine learning, streaming, and graph processing</li>
-                <li>scalability to thousands of nodes</li>
-            </ul>
-            <p>Spark applications consist of a driver program and some number of worker programs running on cluster nodes. The data sets (RDDs)&#160;used by the application are distributed across the worker nodes.</p>
-            <h2>Spark Terminology</h2>
-            <p>Splice Machine launches Spark queries on your cluster as Spark <em>jobs</em>, each of which consists of some number of <em>stages</em>. Each stage then runs a number of <em>tasks</em>, each of which is a unit of work that is sent to an <em>executor</em>.</p>
-            <p>The table below contains a brief glossary of the terms you'll see when using the Splice Machine Database Console:</p>
-            <table summary="Glossary of Spark terms.">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="the-splice-machine-in-memory-engine">The Splice Machine In-Memory Engine</h1>
+
+    <p>This topic provides an overview of the Splice Machine in-memory engine,
+which tremendously boosts OLAP (analytical) query performance. Splice
+Machine use Apache Spark as our in-memory engine and automatically
+detects and directs OLAP queries to that engine.</p>
+
+    <p>This topic presents a very brief overview of Spark terminology and
+concepts.</p>
+
+    <p class="noteNote">If you’re not yet familiar with Spark, we recommend visiting the Apache
+Spark web site, <a href="http://spark.apache.org/" target="_blank">spark.apache.org</a>, to learn the
+basics, and for links to the official Spark documentation.</p>
+
+    <h2 id="spark-overview">Spark Overview</h2>
+
+    <p>Apache Spark is an open source computational engine that manages tasks
+in a computing cluster. Spark was originally developed at UC Berkeley in
+2009, and then open sourced in 2010 as an Apache project. Spark has been
+engineered from the ground up for performance, exploiting in-memory
+computing and other optimizations to provide powerful analysis on very
+large data sets.</p>
+
+    <p>Spark provides numerous performance-oriented features, including:</p>
+
+    <ul>
+      <li>ability to cache datasets in memory for interactive data analysis</li>
+      <li>abstraction</li>
+      <li>integration with a host of data sources</li>
+      <li>very fast data analysis</li>
+      <li>easy to use APIs for operating on large datasets, including numerous
+operators for transforming and manipulating data, in Java, Scala,
+Python, and other languages</li>
+      <li>numerous high level libraries, including support for machine learning,
+streaming, and graph processing</li>
+      <li>scalability to thousands of nodes</li>
+    </ul>
+
+    <p>Spark applications consist of a driver program and some number of worker
+programs running on cluster nodes. The data sets (RDDs) used by the
+application are distributed across the worker nodes.</p>
+
+    <h2 id="spark-terminology">Spark Terminology</h2>
+
+    <p>Splice Machine launches Spark queries on your cluster as Spark <em>jobs</em>,
+each of which consists of some number of <em>stages</em>. Each stage then runs
+a number of <em>tasks</em>, each of which is a unit of work that is sent to an
+<em>executor</em>.</p>
+
+    <p>The table below contains a brief glossary of the terms you’ll see when
+using the Splice Machine Database Console:</p>
+
+    <table summary="Glossary of Spark terms.">
                 <col />
                 <col />
                 <thead>
@@ -380,7 +412,7 @@ Examples include <code>save</code> and <code>collect</code> functions.</td>
                         <td><strong>Application</strong></td>
                         <td>
                             <p class="noSpaceAbove">A user program built on Spark. Each application consists of a <em>driver program</em> and a number of <em>executors</em> running on your cluster.</p>
-                            <p>An application creates <em>RDDs</em>, transforms those RDDs, and runs <em>actions</em> on them. These result in a directed acyclic graph (DAG)&#160;of operations, which is compiled into a set of <em>stages</em>. Each stage consists of a number of <em>tasks</em>.</p>
+                            <p>An application creates <em>RDDs</em>, transforms those RDDs, and runs <em>actions</em> on them. These result in a directed acyclic graph (DAG) of operations, which is compiled into a set of <em>stages</em>. Each stage consists of a number of <em>tasks</em>.</p>
                         </td>
                     </tr>
                     <tr>
@@ -393,7 +425,7 @@ Examples include <code>save</code> and <code>collect</code> functions.</td>
                     </tr>
                     <tr>
                         <td><strong>Executor</strong></td>
-                        <td>A process that is launched (by the driver program)&#160;for an <em>application</em> on a <em>worker node</em>. The executor launches <em>tasks</em> and maintains data for them.</td>
+                        <td>A process that is launched (by the driver program) for an <em>application</em> on a <em>worker node</em>. The executor launches <em>tasks</em> and maintains data for them.</td>
                     </tr>
                     <tr>
                         <td><strong>Job</strong></td>
@@ -427,21 +459,23 @@ Examples include <code>save</code> and <code>collect</code> functions.</td>
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="dbconsole_intro.html">About the Splice Machine Database Console</a>
-                </li>
-                <li><a href="dbconsole_features.html">User Interface Features of the Splice&#160;Machine Database Console</a>
-                </li>
-                <li><a href="dbconsole_queries.html">Managing Queries with the Console</a>
-                </li>
-                <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries with Splice Machine</a>
-                </li>
-                <li>The Apache Spark web site, <a href="http://spark.apache.org/"  target="_blank">spark.apache.org</a></li>
-            </ul>
-            <p>&#160;</p>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="dbconsole_intro.html">About the Splice Machine Database Console</a></li>
+      <li><a href="dbconsole_features.html">User Interface Features of the Splice Machine Database
+Console</a></li>
+      <li><a href="dbconsole_queries.html">Managing Queries with the Console</a></li>
+      <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries with Splice
+Machine</a></li>
+      <li>The Apache Spark web site, <a href="http://spark.apache.org/" target="_blank">spark.apache.org</a></li>
+    </ul>
+
+    <p> </p>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -458,7 +492,7 @@ Examples include <code>save</code> and <code>collect</code> functions.</td>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

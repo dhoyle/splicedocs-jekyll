@@ -2806,13 +2806,24 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>Identifier Types</h1>
-            <p>This topic describes the different types of SQLIdentifiers that are used in this manual. .</p>
-            <p class="noteIcon">Complete syntax, including information about case sensitivity and special character usage in SQL&#160;Identifier types, is found in the <a href="sqlref_identifiers_syntax.html">SQL&#160;Identifier Syntax</a> topic in this section.</p>
-            <p>We use a number of different identifier types in the SQL&#160;Reference Manual, all of which are <code>SQLIdentifiers</code>. Some can be qualified with schema, table, or correlation names, as described in the following table:</p>
-            <table summary="Splice Machine SQL Identifier types">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="identifier-types">Identifier Types</h1>
+
+    <p>This topic describes the different types of SQLIdentifiers that are used
+in this manual. .</p>
+
+    <p class="noteIcon">Complete syntax, including information about case sensitivity and
+special character usage in SQL Identifier types, is found in the
+<a href="sqlref_identifiers_syntax.html">SQL Identifier Syntax</a> topic in this
+section.</p>
+
+    <p>We use a number of different identifier types in the SQL Reference
+Manual, all of which are <code>SQLIdentifiers</code>. Some can be qualified with
+schema, table, or correlation names, as described in the following
+table:</p>
+
+    <table summary="Splice Machine SQL Identifier types">
                 <col />
                 <col />
                 <tbody>
@@ -2837,7 +2848,7 @@
                     <tr>
                         <td><code>column-Position</code></td>
                         <td>
-                            <p id="ColumnPosition">A <code>column-Position</code> is an integer value that specifies the ordinal position value of the column. The first column is column <code>1</code>.
+                            <p id="ColumnPosition">A <code>column-Position</code> is an integer value that specifies the ordinal position value of the column. The first column is column <code>1</code>.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2856,8 +2867,8 @@
                     <tr>
                         <td><code>correlation-Name</code></td>
                         <td>
-                            <p>A&#160;<code>correlation-Name</code> is a simple SQLIdentifier used in a <code>FROM</code>&#160;clause as a new name or alias for that table.</p>
-                            <p>You cannot qualify a <code>correlation-Name</code>, nor can you use it for a column named in the <code>FOR&#160;UPDATE</code>&#160;clause,  as described in the <a href="#Note.CorrelationName">Correlation Name Notes</a> section below</p>
+                            <p>A <code>correlation-Name</code> is a simple SQLIdentifier used in a <code>FROM</code> clause as a new name or alias for that table.</p>
+                            <p>You cannot qualify a <code>correlation-Name</code>, nor can you use it for a column named in the <code>FOR UPDATE</code> clause,  as described in the <a href="#Note.CorrelationName">Correlation Name Notes</a> section below</p>
                         </td>
                     </tr>
                     <tr>
@@ -2870,7 +2881,7 @@
                     <tr>
                         <td class="CodeFont" id="NewTableName">new-Table-Name</td>
                         <td>
-                            <p>A <code>new-Table-Name</code> is a simple SQLIdentifier that is used when renaming a table with the <code><a href="sqlref_statements_renametable.html">RENAME&#160;TABLE</a></code> statement.</p>
+                            <p>A <code>new-Table-Name</code> is a simple SQLIdentifier that is used when renaming a table with the <a href="sqlref_statements_renametable.html"><code>RENAME TABLE</code></a> statement.</p>
                             <p>You cannot qualify a new table name with a schema name, because the table already exists in a specific schema.</p>
                         </td>
                     </tr>
@@ -2885,7 +2896,7 @@
                         <td class="CodeFont" id="SchemaName">schemaName</td>
                         <td>
                             <p>A <code>schemaName</code> is used when qualifying the names of dictionary objects such as tables and indexes.</p>
-                            <p>The default user schema is named <code>SPLICE</code> if you do not specify a user name at connection time, <code>SPLICE</code>&#160;is assumed as the schema for any unqualified dictionary objects that you reference.</p>
+                            <p>The default user schema is named <code>SPLICE</code> if you do not specify a user name at connection time, <code>SPLICE</code> is assumed as the schema for any unqualified dictionary objects that you reference.</p>
                             <p>Note that you must always qualify references to system tables with the <code>SYS.</code> prefix, e.g. <code>SYS.SYSROLES</code>.</p>
                         </td>
                     </tr>
@@ -2898,7 +2909,7 @@
                     <tr>
                         <td class="CodeFont" id="SynonymName">synonym-Name</td>
                         <td>
-                            <p>A&#160;<code>synonym-Name</code> is an <code>SQLIdentifier</code> used for synonyms.</p>
+                            <p>A <code>synonym-Name</code> is an <code>SQLIdentifier</code> used for synonyms.</p>
                             <p>You can optionally be qualify a <code>synonym-Name</code> with a <code>schemaName</code>. If you do not use a qualifying schema name, the default schema is assumed. </p>
                         </td>
                     </tr>
@@ -2925,26 +2936,49 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Note.ColumnName">Column Name Notes</h2>
-            <p>Column names are either <code>simple-column-Name</code> identifiers, which cannot be qualified, or <code>column-Name</code> identifiers that can be qualified with a <code>table-Name</code> or <code>correlation-Name</code>. Here's the syntax:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">[ { <em>table-Name</em> | <em>correlation-Name</em> } . ] <em>SQLIdentifier</em></pre>
-            </div>
-            <p>In some circumstances, you must use a <code>simple-column-Name</code> and cannot qualify the column name:</p>
-            <ul>
-                <li>When creating a table (<a href="sqlref_statements_createtable.html"><code>CREATE TABLE</code> statement</a>).</li>
-                <li>In a column's <code>correlation-Name</code> in a <code><a href="sqlref_expressions_select.html">SELECT&#160;expression</a></code></li>
-                <li>In a column's<code>correlation-Name</code> in a <code><a href="sqlref_expressions_table.html">TABLE&#160;expression</a></code></li>
-            </ul>
-            <h2 id="Note.CorrelationName">Correlation Name Notes</h2>
-            <p>You cannot use a correlation name for columns that are listed in the <code>FOR&#160;UPDATE</code>&#160;list of a <code>SELECT</code>. For example, in the following:</p>
-            <div class="preWrapperWide"><pre class="Example">SELECT Average AS corrCol1, Homeruns AS corrCol2, Strikeouts<br /> &#160;&#160;FROM&#160;Batting <br /> &#160;&#160;FOR UPDATE of Average, Strikeouts;</pre>
-            </div>
-            <ul>
-                <li>You cannot use <code>corrColl1</code> as a correlation name for <code>Average</code> because <code>Average</code> is listed in the <code>FOR&#160;UPDATE</code>&#160;list.</li>
-                <li>You can use <code>corrCol2</code> as a correlation name for <code>HomeRuns</code> because the <code>HomeRuns</code> column is not in the update list.</li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="column-name-notes---notecolumnname">Column Name Notes   {#Note.ColumnName}</h2>
+
+    <p>Column names are either <code>simple-column-Name</code> identifiers, which cannot
+be qualified, or <code>column-Name</code> identifiers that can be qualified with a
+<code>table-Name</code> or <code>correlation-Name</code>. Here’s the syntax:</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>[ { table-Name | correlation-Name } . ] SQLIdentifier
+</code></pre>
+
+    </div>
+    <p>In some circumstances, you must use a <code>simple-column-Name</code> and cannot
+qualify the column name:</p>
+
+    <ul>
+      <li>When creating a table (<a href="sqlref_statements_createtable.html"><code>CREATE TABLE</code>
+statement</a>).</li>
+      <li>In a column’s <code>correlation-Name</code> in a
+<a href="sqlref_expressions_select.html"><code>SELECT expression</code></a></li>
+      <li>In a column’s<code>correlation-Name</code> in a
+<a href="sqlref_expressions_table.html"><code>TABLE expression</code></a></li>
+    </ul>
+
+    <h2 id="correlation-name-notes---notecorrelationname">Correlation Name Notes   {#Note.CorrelationName}</h2>
+
+    <p>You cannot use a correlation name for columns that are listed in the
+<code>FOR UPDATE</code> list of a <code>SELECT</code>. For example, in the following:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT Average AS corrCol1, Homeruns AS corrCol2, Strikeouts   FROM Batting    FOR UPDATE of Average, Strikeouts;
+</code></pre>
+
+    </div>
+    <ul>
+      <li>You cannot use <code>corrColl1</code> as a correlation name for <code>Average</code> because
+<code>Average</code> is listed in the <code>FOR UPDATE</code> list.</li>
+      <li>You can use <code>corrCol2</code> as a correlation name for <code>HomeRuns</code> because
+the <code>HomeRuns</code> column is not in the update list.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2961,7 +2995,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

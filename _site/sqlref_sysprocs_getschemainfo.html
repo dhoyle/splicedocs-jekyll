@@ -2806,16 +2806,27 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="BuiltInSysProcs.GetSchemaInfo">SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</h1>
-            <p>The <code>SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</code> system procedure displays table information,including the HBase&#160;regions occupied and their store file size, for all user schemas.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO()</pre>
-            </div>
-            <h2>Results</h2>
-            <p>The displayed results of calling <code>SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</code> include these values:</p>
-            <table summary=" summary=&quot;Columns in Get_Schema_Info results display&quot;">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsgetschemainfo---builtinsysprocsgetschemainfo">SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO   {#BuiltInSysProcs.GetSchemaInfo}</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</code> system procedure displays table
+information,including the HBase regions occupied and their store file
+size, for all user schemas.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO()
+</code></pre>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The displayed results of calling <code>SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</code>
+include these values:</p>
+
+    <table summary=" summary=&quot;Columns in Get_Schema_Info results display&quot;">
                 <col />
                 <col />
                 <thead>
@@ -2850,8 +2861,10 @@
                     </tr>
                 </tbody>
             </table>
-            <h2>Example</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO();
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO();
 SCHEMANAME |TABLENAME  |REGIONNAME                                             |IS_I&amp;|HBASEREGIONS_STORES&amp;|MEMSTORESIZE |STOREINDEXSIZE
 ---------------------------------------------------------------------------------------------------------------------------------------
 SPLICE     |PLAYERS    |2176,,1446847689610.7211e284f7f767d7b142dbd639b4d9bf.  |false|0                   |0            |0
@@ -2861,10 +2874,12 @@ SPLICE     |FIELDING   |2192,,1447092732332.b4aae99023002bbac1a08432e6ffc2df.  |
 SPLICE     |SALARIES   |2256,,1447803176538.11ce38c9e470b4d209de4d32c96cb815.  |false|0                   |0            |0
 
 5 rows selected
-</pre>
-            </div>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2881,7 +2896,7 @@ SPLICE     |SALARIES   |2256,,1447803176538.11ce38c9e470b4d209de4d32c96cb815.  |
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

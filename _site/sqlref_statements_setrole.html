@@ -2806,45 +2806,85 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1 id="Statements.SetRole">SET ROLE</h1>
-            <p>The <code>SET ROLE</code> statement allows you to set the current role for the current SQL context of a session.</p>
-            <p>You can set a role only if the current user has been granted the role, or if the role has been granted to <code>PUBLIC</code>.</p>
-            <p class="noteNote">The <code>SET ROLE</code> statement is not transactional; a rollback does not undo the effect of setting a role. If a transaction is in progress, an attempt to set a role results in an error.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">SET ROLE { <em><a href="sqlref_identifiers_types.html#RoleName">roleName</a></em> | 'string-constant' | ? | NONE }
-</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">roleName</p>
-                <p class="paramDefnFirst">The role you want set as the current role.</p>
-                <p class="paramDefn">You can specify a <em>roleName</em> of <code>NONE</code> to unset the current role.</p>
-                <p class="paramDefn">If you specify the role as a string constant or as a dynamic parameter specification (<code>?</code>), any leading and trailing blanks are trimmed from the string before attempting to use the remaining (sub)string as a <em>roleName</em>. The dynamic parameter specification can be used in prepared statements, so the <code>SET ROLE</code> statement can be prepared once and then executed with different role values. You cannot specify <code>NONE</code> as a dynamic parameter.</p>
-            </div>
-            <h2>Usage Notes</h2>
-            <p>Setting a role identifies a set of privileges that is a union of the following:</p>
-            <ul>
-                <li>The privileges granted to that role</li>
-                <li>The union of privileges of roles contained in that role (for a definition of role containment, see "Syntax for roles" in <a href="sqlref_statements_grant.html"><code>GRANT</code> statement</a>)</li>
-            </ul>
-            <p>In a session, the <em>current privileges</em> define what the session is allowed to access. The <em>current privileges</em> are the union of the following:</p>
-            <ul>
-                <li>The privileges granted to the current user</li>
-                <li>The privileges granted to <code>PUBLIC</code></li>
-                <li>The privileges identified by the current role, if set</li>
-            </ul>
-            <p class="noteNote">
-You can find the available role names in the <code><a href="sqlref_systables_sysroles.html">SYS.SYSROLES</a></code>&#160;system table.</p>
-            <h2>SQL&#160;Example</h2>
-            <p class="body">This examples set the role of the current user to <code>reader_role</code>:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SET ROLE reader_role;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <h2>JDBC Example</h2>
-            <p class="body">This examples set the role of the current user to <code>reader_role</code>:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-stmt.execute("SET ROLE admin");      -- case normal form: ADMIN
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="set-role---statementssetrole">SET ROLE   {#Statements.SetRole}</h1>
+
+    <p>The <code>SET ROLE</code> statement allows you to set the current role for the
+current SQL context of a session.</p>
+
+    <p>You can set a role only if the current user has been granted the role,
+or if the role has been granted to <code>PUBLIC</code>.</p>
+
+    <p class="noteNote">The <code>SET ROLE</code> statement is not transactional; a rollback does not undo
+the effect of setting a role. If a transaction is in progress, an
+attempt to set a role results in an error.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SET ROLE { roleName | 'string-constant' | ? | NONE }
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">roleName</p>
+
+      <p class="paramDefnFirst">The role you want set as the current role.</p>
+
+      <p class="paramDefn">You can specify a <em>roleName</em> of <code>NONE</code> to unset the current role.</p>
+
+      <p class="paramDefn">If you specify the role as a string constant or as a dynamic parameter
+specification (<code>?</code>), any leading and trailing blanks are trimmed from
+the string before attempting to use the remaining (sub)string as a
+<em>roleName</em>. The dynamic parameter specification can be used in prepared
+statements, so the <code>SET ROLE</code> statement can be prepared once and then
+executed with different role values. You cannot specify <code>NONE</code> as a
+dynamic parameter.</p>
+
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Setting a role identifies a set of privileges that is a union of the
+following:</p>
+
+    <ul>
+      <li>The privileges granted to that role</li>
+      <li>The union of privileges of roles contained in that role (for a
+definition of role containment, see “Syntax for roles” in <a href="sqlref_statements_grant.html"><code>GRANT</code>
+statement</a>)</li>
+    </ul>
+
+    <p>In a session, the <em>current privileges</em> define what the session is
+allowed to access. The <em>current privileges</em> are the union of the
+following:</p>
+
+    <ul>
+      <li>The privileges granted to the current user</li>
+      <li>The privileges granted to <code>PUBLIC</code></li>
+      <li>The privileges identified by the current role, if set</li>
+    </ul>
+
+    <p class="noteNote">You can find the available role names in the
+<a href="sqlref_systables_sysroles.html"><code>SYS.SYSROLES</code></a> system table.</p>
+
+    <h2 id="sqlexample">SQL Example</h2>
+
+    <p class="body">This examples set the role of the current user to <code>reader_role</code>:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SET ROLE reader_role;
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <h2 id="jdbc-example">JDBC Example</h2>
+
+    <p class="body">This examples set the role of the current user to <code>reader_role</code>:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>stmt.execute("SET ROLE admin");      -- case normal form: ADMIN
 stmt.execute("SET ROLE \"admin\"");  -- case normal form: admin
 stmt.execute("SET ROLE none");       -- special case
 
@@ -2852,25 +2892,29 @@ PreparedStatement ps = conn.prepareStatement("SET ROLE ?");
 ps.setString(1, "  admin ");         -- on execute: case normal form: ADMIN
 ps.setString(1, "\"admin\"");        -- on execute: case normal form: admin
 ps.setString(1, "none");             -- on execute: syntax error
-ps.setString(1, "\"none\"");         -- on execute: case normal form: none</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_createrole.html"><code>CREATE&#160;ROLE</code></a>&#160;statement</li>
-                <li><a href="sqlref_statements_droprole.html"><code>DROP_ROLE</code></a> statement</li>
-                <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a>&#160;statement</li>
-                <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a>&#160;statement</li>
-                <li><a href="sqlref_identifiers_types.html#RoleName">RoleName</a>
-                </li>
-                <li><a href="#"><code>SET&#160;ROLE</code></a> statement</li>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;expression</li>
-                <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a>&#160;statement</li>
-                <li><a href="sqlref_systables_sysroles.html"><code>SYSROLES</code></a>&#160;system table</li>
-                <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement</li>
-                <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a>&#160;clause</li>
-            </ul>
-        </div>
-	</section>
+ps.setString(1, "\"none\"");         -- on execute: case normal form: none
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_createrole.html"><code>CREATE ROLE</code></a> statement</li>
+      <li><a href="sqlref_statements_droprole.html"><code>DROP_ROLE</code></a> statement</li>
+      <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a> statement</li>
+      <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> statement</li>
+      <li><a href="sqlref_identifiers_types.html#RoleName">RoleName</a></li>
+      <li><a href="#"><code>SET ROLE</code></a> statement</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
+      <li><a href="sqlref_systables_sysroles.html"><code>SYSROLES</code></a> system table</li>
+      <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement</li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2887,7 +2931,7 @@ ps.setString(1, "\"none\"");         -- on execute: case normal form: none</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

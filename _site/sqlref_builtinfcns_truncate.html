@@ -2806,54 +2806,109 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true" markdown="1">
-            <h1>TRUNC&#160;or TRUNCATE</h1>
-            <p>This topic describes the <code>TRUNCATE</code> built-in function, which you can use to truncate numeric, date, and timestamp values. You can use the abbreviation <code>TRUNC</code>&#160;interchangeably with the full name, <code>TRUNCATE</code>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TRUNCATE( <em>number</em>    [, <em>numPlaces</em>]  |
-          <em>date</em>      [, <em>truncPoint</em>] |
-          <em>timestamp</em> [, <em>truncPoint</em>] );</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">number
-            </p>
-                <p class="paramDefnFirst">An integer or decimal number 	to be truncated.		</p>
-                <p class="paramName">date
-            </p>
-                <p class="paramDefnFirst"> A <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>&#160;value to be truncated.	</p>
-                <p class="paramName">timestamp
-            </p>
-                <p class="paramDefnFirst">A <a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a>&#160;value to be truncated.	</p>
-                <p class="paramName">numPlaces
-            </p>
-                <p class="paramDefnFirst">An optional integer value that specifies the number of digits to truncate (made zero) when applying this function to a <em>number</em>.</p>
-			<ul><li>If this value is positive, that many of the least significant digits (to the right of the decimal point)&#160;are truncated: <code>truncate(123.456,2)</code>&#160;returns <code>123.450</code>.</li><li>If this value is negative, that many of the least significant digits to the left of the decimal point are truncated: <code>truncate(123.456,-1)</code>&#160;returns <code>120.000</code>.</li><li>If this value is zero, the decimal portion of the number is truncated: <code>truncate(123.456,0)</code>&#160;returns <code>123.000</code>.</li><li>If this value is not specified, the decimal portion of the number is zero'ed, which means that <code>truncate(123.456)</code>&#160;returns <code>123.000</code>.</li></ul><p>See the <a href="#Truncati">Truncating Numbers</a> examples below.</p>
-                <p class="paramName">truncPoint
-            </p>
-                <p class="paramDefnFirst">An optional string that specifies the point at which to truncate (zero)&#160;a date or timestamp value. This can be one of the following values:</p>
-                <div class="paramList">
-                    <p class="paramName"><code>YEAR</code> or <code>YR</code></p>
-                    <p class="paramDefnFirst">The year value is retained; other values are set to their minimum values.</p>
-                    <p class="paramName"><code>MONTH</code>&#160;or <code>MON</code>&#160;or <code>MO</code></p>
-                    <p class="paramDefnFirst">The year and month values are retained; other values are set  to their minimum values.</p>
-                    <p class="paramName"><code>DAY</code>
-                    </p>
-                    <p class="paramDefnFirst">The year, month, and day values are retained; other values are set to their minimum values.</p>
-                    <p class="paramName"><code>HOUR </code>or <code>HR</code></p>
-                    <p class="paramDefnFirst">The year, month, day, and hour values are retained; other values are set  to their minimum values.</p>
-                    <p class="paramName"><code>MINUTE </code>or <code>MIN</code></p>
-                    <p class="paramDefnFirst">The year, month, day, hour, and minute values are retained; other values are set  to their minimum values.</p>
-                    <p class="paramName"><code>SECOND&#160;</code>or <code>SEC</code></p>
-                    <p class="paramDefnFirst">The year, month, day, hour, minute, and second values are retained; the milliseconds value is set to <code>0</code>.</p>
-                    <p class="paramName"><code>MILLISECOND</code>&#160;or <code>MILLI</code></p>
-                    <p class="paramDefnFirst">All of the values, including year, month, day, hour, minute, second, and milliseconds are retained.</p>
-                </div>
-                <p class="paramDefn">The default value, if nothing is specified, is <code>DAY</code>.</p>
-            </div>
-            <h2>Examples</h2>
-            <h3 id="Truncati">Truncating Numbers</h3>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; VALUES TRUNC(1234.456, 2);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="truncor-truncate">TRUNC or TRUNCATE</h1>
+
+    <p>This topic describes the <code>TRUNCATE</code> built-in function, which you can use
+to truncate numeric, date, and timestamp values. You can use the
+abbreviation <code>TRUNC</code> interchangeably with the full name, <code>TRUNCATE</code>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TRUNCATE( number    [, numPlaces]  |
+          date      [, truncPoint] |
+          timestamp [, truncPoint] );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">number</p>
+
+      <p class="paramDefnFirst">An integer or decimal number to be truncated.</p>
+
+      <p class="paramName">date</p>
+
+      <p class="paramDefnFirst">A <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> value to be truncated.</p>
+
+      <p class="paramName">timestamp</p>
+
+      <p class="paramDefnFirst">A <a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> value to be
+truncated.</p>
+
+      <p class="paramName">numPlaces</p>
+
+      <p class="paramDefnFirst">An optional integer value that specifies the number of digits to
+truncate (made zero) when applying this function to a <em>number</em>.</p>
+
+      <ul>
+        <li>If this value is positive, that many of the least significant digits
+(to the right of the decimal point) are truncated:
+<code>truncate(123.456,2)</code> returns <code>123.450</code>.</li>
+        <li>If this value is negative, that many of the least significant digits
+to the left of the decimal point are truncated:
+<code>truncate(123.456,-1)</code> returns <code>120.000</code>.</li>
+        <li>If this value is zero, the decimal portion of the number is truncated:
+<code>truncate(123.456,0)</code> returns <code>123.000</code>.</li>
+        <li>If this value is not specified, the decimal portion of the number is
+zero’ed, which means that <code>truncate(123.456)</code> returns <code>123.000</code>.</li>
+      </ul>
+
+      <p>See the <a href="#Truncati">Truncating Numbers</a> examples below.</p>
+
+      <p class="paramName">truncPoint</p>
+
+      <p class="paramDefnFirst">An optional string that specifies the point at which to truncate
+(zero) a date or timestamp value. This can be one of the following
+values:</p>
+
+      <div class="paramList">
+        <p class="paramName"><code>YEAR</code> or <code>YR</code></p>
+
+        <p class="paramDefnFirst">The year value is retained; other values are set to their minimum
+values.</p>
+
+        <p class="paramName"><code>MONTH</code> or <code>MON</code> or <code>MO</code></p>
+
+        <p class="paramDefnFirst">The year and month values are retained; other values are set to their
+minimum values.</p>
+
+        <p class="paramName"><code>DAY</code></p>
+
+        <p class="paramDefnFirst">The year, month, and day values are retained; other values are set to
+their minimum values.</p>
+
+        <p class="paramName"><code>HOUR </code>or <code>HR</code></p>
+
+        <p class="paramDefnFirst">The year, month, day, and hour values are retained; other values are set
+to their minimum values.</p>
+
+        <p class="paramName"><code>MINUTE </code>or <code>MIN</code></p>
+
+        <p class="paramDefnFirst">The year, month, day, hour, and minute values are retained; other values
+are set to their minimum values.</p>
+
+        <p class="paramName"><code>SECOND </code>or <code>SEC</code></p>
+
+        <p class="paramDefnFirst">The year, month, day, hour, minute, and second values are retained; the
+milliseconds value is set to <code>0</code>.</p>
+
+        <p class="paramName"><code>MILLISECOND</code> or <code>MILLI</code></p>
+
+        <p class="paramDefnFirst">All of the values, including year, month, day, hour, minute, second, and
+milliseconds are retained.</p>
+
+      </div>
+      <p class="paramDefn">The default value, if nothing is specified, is <code>DAY</code>.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <h3 id="Truncati">Truncating Numbers</h3>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES TRUNC(1234.456, 2);
 1
 ----------------------
 1234.450
@@ -2912,11 +2967,15 @@ VALUES TRUNCATE(12345.6789, 0);
 
 VALUES TRUNCATE(12345.6789);
 -----------------------
-12345.0000</pre>
-            </div>
-            <h3>Truncating Dates</h3>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">
-VALUES TRUNCATE(DATE('1988-12-26'), 'year');
+12345.0000
+</code></pre>
+
+    </div>
+    <h3 id="truncating-dates">Truncating Dates</h3>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>VALUES TRUNCATE(DATE('1988-12-26'), 'year');
 ----------------------
 1988-01-01
 
@@ -2934,11 +2993,15 @@ VALUES TRUNCATE(DATE('1988-12-26'));
 
 VALUES TRUNCATE(DATE('2011-12-26'), 'MONTH');
 ----------------------
-2011-12-01</pre>
-            </div>
-            <h3>Truncating Timestamps</h3>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">
-VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'year');
+2011-12-01
+</code></pre>
+
+    </div>
+    <h3 id="truncating-timestamps">Truncating Timestamps</h3>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'year');
 ----------------------
 2000-01-01 00:00:00.0
 
@@ -2968,10 +3031,13 @@ VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'MONTH');
 
 VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'));
 ----------------------
-2011-12-26 00:00:00.0</pre>
-            </div>
-        </div>
-	</section>
+2011-12-26 00:00:00.0
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2988,7 +3054,7 @@ VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'));
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 22, 2017 <br />
+ Site last generated: Sep 25, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
