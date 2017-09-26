@@ -8,11 +8,11 @@ sidebar:  onprem_sidebar
 permalink: onprem_info_release2.5.html
 folder: OnPrem/Info
 ---
-# Release Notes for Splice Machine On-Premise Database v2.5.0.1727 (Aug, 2017)
+# Release Notes for Splice Machine On-Premise Database v2.5.0.1735 (Sept, 2017)
 
 {% include splice_snippets/onpremonlytopic.html %}
 
-Welcome to 2.5 patch release (2.5.0.1727) of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
+Welcome to 2.5 update release (2.5.0.1735) of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 
 Version 2.5 (2.5.0.1707) was originally released in March, 2017. You'll find the original release notes at the bottom of this page.
 
@@ -30,9 +30,9 @@ This topic contains the following sections pertaining to the new patch release:
 ## Supported Platforms
 The supported platforms with 2.5 are:
 
-* Cloudera CDH 5.7.2, 5.8.0, 5.8.3
-* MapR 5.1.0 and 5.2.0
-* HortonWorks HDP 2.4.2 and 2.5
+* Cloudera 5.8.0, 5.8.3
+* MapR 5.2.0
+* HortonWorks HDP 2.5.5
 
 ## Enterprise-only Features
 The following features will NOT work on the Community Edition of Splice Machine.  You will need to upgrade to the Enterprise version:

@@ -20,8 +20,6 @@ These are the notes and workarounds for known issues in our current release:
 
 * [With Clauses and Temporary Tables](#with-clauses-and-temporary-tables)
 
-* [Spark Restrictions on Cloudera](#spark-restrictions-on-cloudera)
-
 * [Temporary Tables and Backups](#temporary-tables-and-backups)
 
 * [Natural Self Joins Not Supported](#natural-self-joins-not-supported)
@@ -48,13 +46,6 @@ These are the notes and workarounds for known issues in our current release:
 ## With Clauses and Temporary Tables
 
 You cannot currently use temporary tables in ``WITH`` clauses.
-
-
-## Spark Restrictions on Cloudera
-
-There is currently a significant restriction with respect to running independent (non-Splice) Spark jobs on a Cloudera cluster:
-
-Due to the way Cloudera installs Spark in its parcels and how Splice uses Spark, no other (non-Splice) Spark can run on a cluster with Splice Machine on it. This is true even with the Splice Spark: you cannot run independent Spark jobs on it.
 
 
 ## Natural Self Joins Not Supported
