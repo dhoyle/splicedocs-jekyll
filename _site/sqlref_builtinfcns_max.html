@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,15 +2810,16 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="max---builtinfcnsmax">MAX   {#BuiltInFcns.Max}</h1>
 
-    <p><code>MAX</code>evaluates the maximum of an expression over a set of rows. You can
+    <p><code class="highlighter-rouge">MAX</code>evaluates the maximum of an expression over a set of rows. You can
 use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window
 (analytic) function</a>.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>MAX ( [ DISTINCT | ALL ] Expression )
+      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>MAX ( [ DISTINCT | ALL ] Expression )
 </code></pre>
+      </div>
 
     </div>
     <div class="paramList">
@@ -2834,31 +2835,32 @@ default value.</p>
       <p class="paramName">Expression</p>
 
       <p class="paramDefnFirst">An expression that evaluates to a numeric data
-type: <a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
+type: <a href="sqlref_builtinfcns_smallint.html"><code class="highlighter-rouge">SMALLINT</code></a>.</p>
 
       <p class="paramDefn">The expression can contain multiple column references or expressions,
 but it cannot contain another aggregate or subquery, and it must
 evaluate to an ANSI SQL  numeric data type. This means that you can call
 methods that evaluate to ANSI SQL data types.</p>
 
-      <p class="paramDefn">If an expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
+      <p class="paramDefn">If an expression evaluates to <code class="highlighter-rouge">NULL</code>, the aggregate skips that value.</p>
 
     </div>
     <h2 id="usage">Usage</h2>
 
-    <p>Only one <code>DISTINCT</code> aggregate expression per <em>Expression</em> is allowed.
+    <p>Only one <code class="highlighter-rouge">DISTINCT</code> aggregate expression per <em>Expression</em> is allowed.
 For example, the following query is not valid:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>   --- Not a valid query:
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>   --- Not a valid query:
 SELECT COUNT(DISTINCT flying_time),
   MAX  (DISTINCT miles)
   FROM Flights;
 </code></pre>
+      </div>
 
     </div>
     <p class="noteNote">Since duplicate values do not change the computation of the maximum
-value, the <code>DISTINCT</code> and <code>ALL</code> qualifiers have no impact on this
+value, the <code class="highlighter-rouge">DISTINCT</code> and <code class="highlighter-rouge">ALL</code> qualifiers have no impact on this
 function.</p>
 
     <p>The <em>Expression</em> can contain multiple column references or expressions,
@@ -2875,9 +2877,9 @@ operates; it will never overflow.</p>
 
     <p>The comparison rules for the <em>Expression’s</em> type determine the resulting
 maximum value. For example, if you supply a
-<a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a> argument, the number of blank
+<a href="sqlref_datatypes_varchar.html"><code class="highlighter-rouge">VARCHAR</code></a> argument, the number of blank
 spaces at the end of the value can affect how the maximum value is
-evaluated: if the values <code>'z'</code> and <code>'z '</code> are both stored in a column,
+evaluated: if the values <code class="highlighter-rouge">'z'</code> and <code class="highlighter-rouge">'z '</code> are both stored in a column,
 you cannot control which one will be returned as the maximum, because
 blank spaces are ignored for character comparisons.</p>
 
@@ -2887,18 +2889,19 @@ blank spaces are ignored for character comparisons.</p>
 
     <div class="preWrapper">
 
-      <pre class="Example"><code>splice&gt; SELECT MAX (BirthDate) FROM Players;
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT MAX (BirthDate) FROM Players;
 1
 ----------
 1992-10-19
 </code></pre>
+      </div>
 
     </div>
     <p>This example finds the maximum number of singles, doubles, triples and
 homeruns by any player in the database:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>splice&gt; SELECT MAX(Singles) "Singles", MAX(DOUBLES) "Doubles",
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT MAX(Singles) "Singles", MAX(DOUBLES) "Doubles",
                MAX(Triples) "Triples", Max(HomeRuns) "HomeRuns"
    FROM Batting;
 Singl&amp;|Doubl&amp;|Tripl&amp;|HomeR&amp;
@@ -2907,6 +2910,7 @@ Singl&amp;|Doubl&amp;|Tripl&amp;|HomeR&amp;
 
 1 row selected
 </code></pre>
+      </div>
 
     </div>
     <h2 id="analytic-example">Analytic Example</h2>
@@ -2916,7 +2920,7 @@ Singl&amp;|Doubl&amp;|Tripl&amp;|HomeR&amp;
 team:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>splice&gt; SELECT Team, DisplayName, HomeRuns,
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT Team, DisplayName, HomeRuns,
    MAX(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns
    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Most"
    FROM Players JOIN Batting ON Players.ID=Batting.ID
@@ -2937,6 +2941,7 @@ Giants    |Mitch Duffer            |12    |21
 
 10 rows selected
 </code></pre>
+      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
@@ -2945,11 +2950,11 @@ Giants    |Mitch Duffer            |12    |21
       <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
       <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate
 Functions</a></li>
-      <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
-      <li><a href="sqlref_clauses_over.html"><code>OVER</code></a> clause</li>
+      <li><a href="sqlref_builtinfcns_avg.html"><code class="highlighter-rouge">AVG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_count.html"><code class="highlighter-rouge">COUNT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_min.html"><code class="highlighter-rouge">MIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sum.html"><code class="highlighter-rouge">SUM</code></a> function</li>
+      <li><a href="sqlref_clauses_over.html"><code class="highlighter-rouge">OVER</code></a> clause</li>
     </ul>
 
   </div>
@@ -2971,7 +2976,7 @@ Functions</a></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -2986,19 +2991,49 @@ Functions</a></li>
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

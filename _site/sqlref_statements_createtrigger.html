@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,17 +2810,17 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="create-trigger---statementscreatetrigger">CREATE TRIGGER   {#Statements.CreateTrigger}</h1>
 
-    <p>A <code>CREATE TRIGGER</code> statement creates a trigger, which defines a set of
-actions that are executed when a database event known as the <code>triggering
-event</code> occurs on a specified table. The event can be a <code>INSERT</code>,
-<code>UPDATE</code>, or <code>DELETE</code> statement. When a trigger fires, the set of
+    <p>A <code class="highlighter-rouge">CREATE TRIGGER</code> statement creates a trigger, which defines a set of
+actions that are executed when a database event known as the <code class="highlighter-rouge">triggering
+event</code> occurs on a specified table. The event can be a <code class="highlighter-rouge">INSERT</code>,
+<code class="highlighter-rouge">UPDATE</code>, or <code class="highlighter-rouge">DELETE</code> statement. When a trigger fires, the set of
 SQL statements that constitute the action are executed.</p>
 
     <p>You can define any number of triggers for a single table, including
 multiple triggers on the same table for the same event. To define a
 trigger on a table, you must be the owner of the of the database, the
-owner of the table’s schema, or have <code>TRIGGER</code> privileges on the table.
-You cannot define a trigger for any schema whose name begins with <code>SYS</code>.</p>
+owner of the table’s schema, or have <code class="highlighter-rouge">TRIGGER</code> privileges on the table.
+You cannot define a trigger for any schema whose name begins with <code class="highlighter-rouge">SYS</code>.</p>
 
     <p>The <a href="developers_fundamentals_triggers.html">Database Triggers</a> topic in
 our <em>Developer’s Guide</em> provides additional information about database
@@ -2829,7 +2829,7 @@ triggers.</p>
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>CREATE TRIGGER TriggerName
+      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>CREATE TRIGGER TriggerName
    { AFTER | BEFORE }
    { INSERT | DELETE | UPDATE [ OF column-Name [, column-Name]* ] }
    ON table-Name
@@ -2837,6 +2837,7 @@ triggers.</p>
       [ FOR EACH { ROW | STATEMENT } ]
  Triggered-SQL-statement
 </code></pre>
+      </div>
 
     </div>
     <div class="paramList">
@@ -2855,8 +2856,8 @@ triggers.</p>
 
       <p class="paramDefnFirst">Triggers are defined as either <em>Before</em> or <em>After</em> triggers.</p>
 
-      <p class="paramDefn"><code>BEFORE</code> triggers fire before the statement’s changes are applied and
-before any constraints have been applied. <code>AFTER</code> triggers fire after
+      <p class="paramDefn"><code class="highlighter-rouge">BEFORE</code> triggers fire before the statement’s changes are applied and
+before any constraints have been applied. <code class="highlighter-rouge">AFTER</code> triggers fire after
 all constraints have been satisfied and after the changes have been
 applied to the target table.</p>
 
@@ -2864,11 +2865,11 @@ applied to the target table.</p>
 performs actions in this order:</p>
 
       <ul>
-        <li>It fires <code>BEFORE</code> triggers.</li>
+        <li>It fires <code class="highlighter-rouge">BEFORE</code> triggers.</li>
         <li>It performs constraint checking (primary key, unique key, foreign key,
 check).</li>
-        <li>It performs the <code>INSERT</code>, <code>UPDATE</code>, <code>SELECT</code>, or <code>DELETE</code> operations.</li>
-        <li>It fires <code>AFTER</code> triggers.</li>
+        <li>It performs the <code class="highlighter-rouge">INSERT</code>, <code class="highlighter-rouge">UPDATE</code>, <code class="highlighter-rouge">SELECT</code>, or <code class="highlighter-rouge">DELETE</code> operations.</li>
+        <li>It fires <code class="highlighter-rouge">AFTER</code> triggers.</li>
       </ul>
 
       <p class="paramDefnFirst">When multiple triggers are defined for the same database event for the
@@ -2887,7 +2888,7 @@ fired in the order in which they were created.</p>
       </table>
 
       <p class="paramDefnFirst">Defines which database event causes the trigger to fire. If you specify
-<code>UPDATE</code>, you can specify which column(s) cause the triggering event.</p>
+<code class="highlighter-rouge">UPDATE</code>, you can specify which column(s) cause the triggering event.</p>
 
       <p class="paramName">table-Name</p>
 
@@ -2908,10 +2909,10 @@ Clause</a> section below.</p>
         </tbody>
       </table>
 
-      <p class="paramDefnFirst">A <code>FOR EACH ROW</code> triggered action executes once for each row that the
+      <p class="paramDefnFirst">A <code class="highlighter-rouge">FOR EACH ROW</code> triggered action executes once for each row that the
 triggering statement affects.</p>
 
-      <p class="paramDefn">A <code>FOR EACH STATEMENT</code> trigger fires once per triggering event and
+      <p class="paramDefn">A <code class="highlighter-rouge">FOR EACH STATEMENT</code> trigger fires once per triggering event and
 regardless of whether any rows are modified by the insert, update, or
 delete event.</p>
 
@@ -2921,17 +2922,17 @@ delete event.</p>
 the following restrictions:</p>
 
       <ul>
-        <li>It must not contain any dynamic (<code>?</code>) parameters.</li>
+        <li>It must not contain any dynamic (<code class="highlighter-rouge">?</code>) parameters.</li>
         <li>It cannot create, alter, or drop any table.</li>
         <li>It cannot add an index to or remove an index from any table.</li>
         <li>It cannot add a trigger to or drop a trigger from any table.</li>
         <li>It must not commit or roll back the current transaction or change the
 isolation level.</li>
-        <li>Before triggers cannot have <code>INSERT</code>, <code>UPDATE</code>, <code>SELECT</code>, or <code>DELETE</code>
+        <li>Before triggers cannot have <code class="highlighter-rouge">INSERT</code>, <code class="highlighter-rouge">UPDATE</code>, <code class="highlighter-rouge">SELECT</code>, or <code class="highlighter-rouge">DELETE</code>
 statements as their action.</li>
         <li>Before triggers cannot call procedures that modify SQL data as their
 action.</li>
-        <li>The <code>NEW</code> variable of a <code>BEFORE</code> trigger cannot reference a generated
+        <li>The <code class="highlighter-rouge">NEW</code> variable of a <code class="highlighter-rouge">BEFORE</code> trigger cannot reference a generated
 column.</li>
       </ul>
 
@@ -2957,29 +2958,31 @@ or identifier and only one old correlation or identifier.</p>
 
     <h3 id="transition-variables-in-row-triggers">Transition Variables in Row Triggers</h3>
 
-    <p>Use the transition variables <code>OLD</code> and <code>NEW</code> with row triggers to refer
-to a single row before (<code>OLD</code>) or after (<code>NEW</code>) modification. For
+    <p>Use the transition variables <code class="highlighter-rouge">OLD</code> and <code class="highlighter-rouge">NEW</code> with row triggers to refer
+to a single row before (<code class="highlighter-rouge">OLD</code>) or after (<code class="highlighter-rouge">NEW</code>) modification. For
 example:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>REFERENCING OLD AS DELETEDROW;
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>REFERENCING OLD AS DELETEDROW;
 </code></pre>
+      </div>
 
     </div>
     <p>You can then refer to this correlation name in the
 triggered-SQL-statement:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>splice&gt; DELETE FROM HotelAvailability WHERE hotel_id = DELETEDROW.hotel_id;
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; DELETE FROM HotelAvailability WHERE hotel_id = DELETEDROW.hotel_id;
 </code></pre>
+      </div>
 
     </div>
-    <p>The <code>OLD</code> and <code>NEW</code> transition variables map to a <em>java.sql.ResultSet</em>
+    <p>The <code class="highlighter-rouge">OLD</code> and <code class="highlighter-rouge">NEW</code> transition variables map to a <em>java.sql.ResultSet</em>
 with a single row.</p>
 
-    <p><code>INSERT</code> row triggers cannot reference an <code>OLD</code> row.</p>
+    <p><code class="highlighter-rouge">INSERT</code> row triggers cannot reference an <code class="highlighter-rouge">OLD</code> row.</p>
 
-    <p class="noteNote"><code>DELETE</code> row triggers cannot reference a <code>NEW</code> row.</p>
+    <p class="noteNote"><code class="highlighter-rouge">DELETE</code> row triggers cannot reference a <code class="highlighter-rouge">NEW</code> row.</p>
 
     <h2 id="trigger-recursion">Trigger Recursion</h2>
 
@@ -2992,69 +2995,74 @@ with a single row.</p>
     <h4 id="astatement-trigger">A statement trigger:</h4>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>splice&gt; CREATE TRIGGER triggerName
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TRIGGER triggerName
    AFTER UPDATE
    ON TARGET_TABLE
    FOR EACH STATEMENT
        INSERT INTO AUDIT_TABLE VALUES (CURRENT_TIMESTAMP, 'TARGET_TABLE was updated');
 0 rows inserted/updated/deleted
 </code></pre>
+      </div>
 
     </div>
     <h4 id="astatement-trigger-calling-a-custom-stored-procedure">A statement trigger calling a custom stored procedure:</h4>
 
     <div class="preWrapperWide">
 
-      <pre class="Example"><code>splice&gt; CREATE TRIGGER triggerName
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TRIGGER triggerName
    AFTER UPDATE
    ON TARGET_TABLE
    FOR EACH STATEMENT
       CALL my_custom_stored_procedure('arg1', 'arg2');
 0 rows inserted/updated/deleted
 </code></pre>
+      </div>
 
     </div>
     <h4 id="asimple-row-trigger">A simple row trigger:</h4>
 
     <div class="preWrapperWide">
 
-      <pre class="Example"><code>splice&gt; CREATE TRIGGER triggerName
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TRIGGER triggerName
    AFTER UPDATE
    ON TARGET_TABLE
    FOR EACH ROW
       INSERT INTO AUDIT_TABLE VALUES (CURRENT_TIMESTAMP, 'TARGET_TABLE row was updated');
 0 rows inserted/updated/deleted
 </code></pre>
+      </div>
 
     </div>
     <h4 id="arow-trigger-defined-on-a-subset-of-columns">A row trigger defined on a subset of columns:</h4>
 
     <div class="preWrapperWide">
 
-      <pre class="Example"><code>splice&gt; CREATE TRIGGER triggerName
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TRIGGER triggerName
    AFTER UPDATE OF col1, col2
    ON TARGET_TABLE
    FOR EACH ROW
       INSERT INTO AUDIT_TABLE VALUES (CURRENT_TIMESTAMP, 'TARGET_TABLE col1 or col2 of row was updated');
 0 rows inserted/updated/deleted
 </code></pre>
+      </div>
 
     </div>
     <div class="preWrapperWide">
-      <pre class="Example"><code>splice&gt; CREATE TRIGGER UpdateSingles
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TRIGGER UpdateSingles
    AFTER UPDATE OF Hits, Doubles, Triples, Homeruns
    ON Batting
    FOR EACH ROW
    UPDATE Batting Set Singles=(Hits-(Doubles+Triples+Homeruns));
 0 rows insert/updated/deleted
 </code></pre>
+      </div>
 
     </div>
     <h4 id="arow-trigger-defined-on-a-subset-of-columns-referencing-new-and-old-values">A row trigger defined on a subset of columns, referencing new and old values:</h4>
 
     <div class="preWrapperWide">
 
-      <pre class="Example"><code>splice&gt; CREATE TRIGGER triggerName
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TRIGGER triggerName
    AFTER UPDATE OF col1, col2
    ON T
    REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
@@ -3062,13 +3070,14 @@ with a single row.</p>
       INSERT INTO AUDIT_TABLE VALUES (CURRENT_TIMESTAMP, 'TARGET_TABLE row was updated', OLD_ROW.col1, NEW_ROW.col1);
 0 rows insert/updated/deleted
 </code></pre>
+      </div>
 
     </div>
     <h4 id="arow-trigger-defined-on-a-subset-of-columns-referencing-new-and-old-values-calling-custom-stored-procedure">A row trigger defined on a subset of columns, referencing new and old values, calling custom stored procedure:</h4>
 
     <div class="preWrapperWide">
 
-      <pre class="Example"><code>splice&gt; CREATE TRIGGER triggerName
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TRIGGER triggerName
    AFTER UPDATE OF col1, col2
    ON T
    REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
@@ -3076,6 +3085,7 @@ with a single row.</p>
       CALL my_custom_stored_procedure('arg1', 'arg2', OLD_ROW.col1, NEW_ROW.col1);
 0 rows insert/updated/deleted
 </code></pre>
+      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
@@ -3083,8 +3093,8 @@ with a single row.</p>
     <ul>
       <li><a href="developers_fundamentals_triggers.html">Database Triggers</a> in the
 <em>Developer’s Guide</em></li>
-      <li><a href="sqlref_statements_droptrigger.html"><code>DROP TRIGGER</code></a> statement</li>
-      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
+      <li><a href="sqlref_statements_droptrigger.html"><code class="highlighter-rouge">DROP TRIGGER</code></a> statement</li>
+      <li><a href="sqlref_clauses_where.html"><code class="highlighter-rouge">WHERE</code></a> clause</li>
     </ul>
 
   </div>
@@ -3106,7 +3116,7 @@ with a single row.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -3121,19 +3131,49 @@ with a single row.</p>
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

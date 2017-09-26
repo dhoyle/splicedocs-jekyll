@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,14 +2810,14 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="syscsutilsyscssplittableorindex">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</h1>
 
-    <p>The <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> system procedure computes
+    <p>The <code class="highlighter-rouge">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> system procedure computes
 the split keys for a table or index, prior to importing that table in
 HFile format. You must use this procedure in conjunction with the
-<a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a>
+<a href="sqlref_sysprocs_importhfile.html"><code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILE</code></a>
 system procedure to import your data in HFile format.</p>
 
     <p class="noteNote">This procedure combines the actions of two other system
-procedures: <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a>.</p>
+procedures: <a href="sqlref_sysprocs_splittableatpoints.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a>.</p>
 
     <p>See the <em>Usage Notes</em> section for more information and the <em>Example</em>
 section to see an example of using these procedures together.</p>
@@ -2825,7 +2825,7 @@ section to see an example of using these procedures together.</p>
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>call SYSCS_UTIL.COMPUTE_SPLIT_KEY (
+      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.COMPUTE_SPLIT_KEY (
 		schemaName,
 		tableName,
 		indexName,
@@ -2842,17 +2842,18 @@ section to see an example of using these procedures together.</p>
 		charset | null,
 		);
 </code></pre>
+      </div>
 
     </div>
     <div class="noteNote">
       <p>Almost all of the parameter values that you pass to this procedure
 should match the parameter values that you pass to the
-<a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a>
+<a href="sqlref_sysprocs_importhfile.html"><code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILE</code></a>
 procedures.</p>
 
       <p>Also note that these parameters are also used in exactly the same was as
 they are in the
-<a href="sqlref_sysprocs_upsertdata.html"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a> procedures.</p>
+<a href="sqlref_sysprocs_upsertdata.html"><code class="highlighter-rouge">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a> procedures.</p>
 
     </div>
     <div class="paramList">
@@ -2867,32 +2868,33 @@ they are in the
       <p class="paramName">indexName</p>
 
       <p class="paramDefnFirst">The name of the index in which to compute the split key. If this is
-<code>null</code>, the split key is computed for the named table.</p>
+<code class="highlighter-rouge">null</code>, the split key is computed for the named table.</p>
 
       <p class="paramName">columnList</p>
 
       <p class="paramDefnFirst">The names, in single quotes, of the columns that appear in the input
-CSV file (specified by fileName). If this is <code>null</code>, all columns of the
+CSV file (specified by fileName). If this is <code class="highlighter-rouge">null</code>, all columns of the
 table appear in the input file.</p>
 
       <p class="paramName">fileName</p>
 
       <p class="paramDefnFirst">The name of the CSV file that contains the split key values for the
-table or index. <code>NULL</code> values are allowed for a key column. Here’s an
-example of three key values, each with a <code>NULL</code> value in the second
+table or index. <code class="highlighter-rouge">NULL</code> values are allowed for a key column. Here’s an
+example of three key values, each with a <code class="highlighter-rouge">NULL</code> value in the second
 column:</p>
 
       <div class="preWrapper">
-        <pre class="Example"><code>1500000|3000000|4500000|
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>1500000|3000000|4500000|
 </code></pre>
+        </div>
 
       </div>
     </div>
     <div class="paramList">
       <p class="paramName">columnDelimiter</p>
 
-      <p class="paramDefnFirst">The character used to separate columns, Specify <code>null</code> if using the
-comma (<code>,</code>) character as your delimiter.</p>
+      <p class="paramDefnFirst">The character used to separate columns, Specify <code class="highlighter-rouge">null</code> if using the
+comma (<code class="highlighter-rouge">,</code>) character as your delimiter.</p>
 
       <div>
         <p class="paramDefn">In addition to using single characters, you can specify the following
@@ -2937,8 +2939,8 @@ special characters as delimiters:</p>
       <p class="paramName">characterDelimiter</p>
 
       <p class="paramDefnFirst">Specifies which character is used to delimit strings in the imported
-data. You can specify <code>null</code> or the empty string to use the default
-string delimiter, which is the double-quote (<code>"</code>).</p>
+data. You can specify <code class="highlighter-rouge">null</code> or the empty string to use the default
+string delimiter, which is the double-quote (<code class="highlighter-rouge">"</code>).</p>
 
       <div>
         <p class="paramDefn">In addition to using single characters, you can specify the following
@@ -2983,18 +2985,18 @@ special characters as delimiters:</p>
       <p class="paramDefnFirst">If your input contains control characters such as newline characters,
 make sure that those characters are embedded within delimited strings.</p>
 
-      <p>To use the single quote (<code>'</code>) character as your string delimiter, you
+      <p>To use the single quote (<code class="highlighter-rouge">'</code>) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
-(<code>''''</code>) as the value of this parameter. This is standard SQL syntax.</p>
+(<code class="highlighter-rouge">''''</code>) as the value of this parameter. This is standard SQL syntax.</p>
 
       <p class="noteNote">The <a href="#Examples" class="WithinBook MCXref xref xrefWithinBook">Example 1</a>”} section below contains an example that uses the
 single quote as the string delimiter character.</p>
 
       <p class="paramName">timestampFormat</p>
 
-      <p class="paramDefnFirst">The format of timestamps stored in the file. You can set this to <code>null</code>
+      <p class="paramDefnFirst">The format of timestamps stored in the file. You can set this to <code class="highlighter-rouge">null</code>
 if there are no time columns in the file, or if the format of any
-timestamps in the file match the <code>Java.sql.Timestamp</code> default format,
+timestamps in the file match the <code class="highlighter-rouge">Java.sql.Timestamp</code> default format,
 which is: “<em>yyyy-MM-dd HH:mm:ss</em>”. See the <a href="#TimestampFormats" class="WithinBook MCXref xref xrefWithinBook">About Timestamp
 Formats</a>”} section below for more information about
 timestamps.</p>
@@ -3004,7 +3006,7 @@ format.</p>
 
       <p class="paramName">dateFormat</p>
 
-      <p class="paramDefnFirst">The format of datestamps stored in the file. You can set this to <code>null</code>
+      <p class="paramDefnFirst">The format of datestamps stored in the file. You can set this to <code class="highlighter-rouge">null</code>
 if there are no date columns in the file, or if the format of any dates
 in the file match pattern: “<em>yyyy-MM-dd</em>”.</p>
 
@@ -3022,18 +3024,18 @@ import fails. If this count of rejected records is reached, the import
 fails, and any successful record imports are rolled back.</p>
 
         <ul>
-          <li>If you specify <code>-1</code> as the value of this parameter, all record import
+          <li>If you specify <code class="highlighter-rouge">-1</code> as the value of this parameter, all record import
 failures are tolerated and logged.</li>
-          <li>If you specify <code>0</code> as the value of this parameter, the import will
+          <li>If you specify <code class="highlighter-rouge">0</code> as the value of this parameter, the import will
 fail if even one record is bad.</li>
         </ul>
 
         <p class="paramName">badRecordDirectory</p>
 
         <p class="paramDefnFirst">The directory in which bad record information is logged. Splice Machine
-logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory;
-for example, bad records in an input file named <code>foo.csv</code> would be
-logged to a file named <em>badRecordDirectory</em><code>/foo.csv.bad</code>.</p>
+logs information to the <code class="highlighter-rouge">&lt;import_file_name&gt;.bad</code> file in this directory;
+for example, bad records in an input file named <code class="highlighter-rouge">foo.csv</code> would be
+logged to a file named <em>badRecordDirectory</em><code class="highlighter-rouge">/foo.csv.bad</code>.</p>
 
         <p class="paramDefn">The default value is the directory in which the import files are found.</p>
 
@@ -3043,9 +3045,9 @@ logged to a file named <em>badRecordDirectory</em><code>/foo.csv.bad</code>.</p>
 contains one complete record:</p>
 
         <ul class="nested">
-          <li>If you specify <code>true</code> or <code>null</code>, then each record is expected to be
+          <li>If you specify <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">null</code>, then each record is expected to be
 found on a single line in the file.</li>
-          <li>If you specify <code>false</code>, records can span multiple lines in the file.</li>
+          <li>If you specify <code class="highlighter-rouge">false</code>, records can span multiple lines in the file.</li>
         </ul>
 
         <p class="noteNote">Multi-line record files are slower to load, because the file cannot be
@@ -3062,9 +3064,9 @@ Currently, any other value is ignored and UTF-8 is used.</p>
     </div>
     <h2 id="results">Results</h2>
 
-    <p><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> generates a keys file and then
+    <p><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> generates a keys file and then
 sets up the splits in your database. You then call the
-<a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a> system
+<a href="sqlref_sysprocs_importhfile.html"><code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILE</code></a> system
 procedure to split your table into HFiles and import your data.</p>
 
     <p>﻿        &lt;div&gt;
@@ -3347,7 +3349,7 @@ for information working with timestamps, dates, and times.</p>
                     &lt;ol class="LowerAlphaPlainFont"&gt;
                         &lt;li&gt;
                             &lt;p&gt;Use <code>SHOW&#160;TABLES</code> to discover the conglomerate ID for the <code>TPCH.LINEITEM</code> table, which for this example is <code>1536</code>. This means that the split keys file for this table is in the <code>hdfs:///tmp/test_hfile_import/1536</code> directory. You’ll see values like these:&lt;/p&gt;
-                            &lt;div class="preWrapperWide"&gt;&lt;pre class="Example"&gt;\xE4\x16\xE3<code>&lt;br /&gt;\xE4-\xC6\xC0&lt;br /&gt;\xE4D\xAA&lt;/pre&gt;
+                            &lt;div class="preWrapperWide"&gt;&lt;pre class="Example"&gt;\xE4\x16\xE3<code class="highlighter-rouge">&lt;br /&gt;\xE4-\xC6\xC0&lt;br /&gt;\xE4D\xAA&lt;/pre&gt;
                             &lt;/div&gt;
                         &lt;/li&gt;
                         &lt;li&gt;
@@ -3498,9 +3500,9 @@ for information working with timestamps, dates, and times.</p>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a></li>
-      <li><a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a></li>
-      <li><a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a></li>
+      <li><a href="sqlref_sysprocs_importhfile.html"><code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILE</code></a></li>
+      <li><a href="sqlref_sysprocs_computesplitkey.html"><code class="highlighter-rouge">SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a></li>
+      <li><a href="sqlref_sysprocs_splittableatpoints.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a></li>
     </ul>
 
   </div>
@@ -3522,7 +3524,7 @@ for information working with timestamps, dates, and times.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -3537,19 +3539,49 @@ for information working with timestamps, dates, and times.</p>
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

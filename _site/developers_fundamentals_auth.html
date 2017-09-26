@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -614,20 +614,22 @@ database to which the user is requesting a connection.</p>
 
     <ul>
       <li>You can create a user with the
-<a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_CREATE_USER</code></a>
+<a href="sqlref_builtinfcns_user.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_CREATE_USER</code></a>
 procedure:
         <div class="preWrapperWide">
-          <pre class="AppCommand"><code>splice&gt; call syscs_util.syscs_create_user('username', 'password');
+          <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; call syscs_util.syscs_create_user('username', 'password');
 </code></pre>
+          </div>
 
         </div>
       </li>
       <li>You can drop a user with the
-<a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_DROP_USER</code></a>
+<a href="sqlref_builtinfcns_user.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_DROP_USER</code></a>
 procedure:
         <div class="preWrapperWide">
-          <pre class="AppCommand"><code>splice&gt; call syscs_util.syscs_drop_user('username');
+          <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; call syscs_util.syscs_drop_user('username');
 </code></pre>
+          </div>
 
         </div>
       </li>
@@ -644,10 +646,10 @@ a large set of users.</p>
 
     <h3 id="the-database-owner">The Database Owner</h3>
 
-    <p>The <em>database owner</em> is <code>splice</code>. Only the database owner can create,
+    <p>The <em>database owner</em> is <code class="highlighter-rouge">splice</code>. Only the database owner can create,
 grant, revoke, and drop roles. However, object owners can grant and
 revoke privileges for those objects to and from roles, as well as to and
-from individual users and to <code>PUBLIC</code> (all users).</p>
+from individual users and to <code class="highlighter-rouge">PUBLIC</code> (all users).</p>
 
     <p>If authentication and SQL authorization are both enabled, only the
 database owner can perform these actions on the database:</p>
@@ -659,41 +661,41 @@ database owner can perform these actions on the database:</p>
     </ul>
 
     <p>If authentication is not enabled, and no user is supplied, the database
-owner defaults to <code>SPLICE</code>, which is also the name of the default
+owner defaults to <code class="highlighter-rouge">SPLICE</code>, which is also the name of the default
 schema.</p>
 
     <p>The database owner log-in information for Splice Machine is configured
 when your database software is installed. If you’re using our database
 as a service, there is no default userId or password; if you’re using
-our on-premise database, the default userID is <code>splice</code>, and the default
-password is <code>admin</code>.</p>
+our on-premise database, the default userID is <code class="highlighter-rouge">splice</code>, and the default
+password is <code class="highlighter-rouge">admin</code>.</p>
 
     <h3 id="creating-and-using-roles">Creating and Using Roles</h3>
 
-    <p>The database owner can use the <a href="sqlref_statements_grant.html"><code>GRANT</code></a>
-statement to grant a role to one or more users, to <code>PUBLIC</code>, or to
+    <p>The database owner can use the <a href="sqlref_statements_grant.html"><code class="highlighter-rouge">GRANT</code></a>
+statement to grant a role to one or more users, to <code class="highlighter-rouge">PUBLIC</code>, or to
 another role. Roles can be contained within other roles and can inherit
 privileges from roles that they contain.</p>
 
     <h3 id="setting-roles">Setting Roles</h3>
 
     <p>When a user first connects to Splice Machine, no role is set, and the
-<a href="sqlref_statements_setrole.html"><code>SET ROLE</code></a> statement to set the
+<a href="sqlref_statements_setrole.html"><code class="highlighter-rouge">SET ROLE</code></a> statement to set the
 current role for that session. The role can be any role that has been
-granted to the session’s current user or to <code>PUBLIC</code>.</p>
+granted to the session’s current user or to <code class="highlighter-rouge">PUBLIC</code>.</p>
 
-    <p>To unset the current role, you can call <code>SET ROLE</code> with an argument of
-<code>NONE</code>. At any time during a session, there is always a current user,
-but there is a current role only if <code>SET ROLE</code> has been called with an
-argument other than <code>NONE</code>. If a current role is not set, the session
-has only the privileges granted to the user directly or to <code>PUBLIC</code>.</p>
+    <p>To unset the current role, you can call <code class="highlighter-rouge">SET ROLE</code> with an argument of
+<code class="highlighter-rouge">NONE</code>. At any time during a session, there is always a current user,
+but there is a current role only if <code class="highlighter-rouge">SET ROLE</code> has been called with an
+argument other than <code class="highlighter-rouge">NONE</code>. If a current role is not set, the session
+has only the privileges granted to the user directly or to <code class="highlighter-rouge">PUBLIC</code>.</p>
 
     <h3 id="roles-in-stored-procedures-and-functions">Roles in Stored Procedures and Functions</h3>
 
     <p>Within stored procedures and functions that contain SQL, the current
 role depends on whether the routine executes with invoker’s rights or
-with definer’s rights, as specified by the <code>EXTERNAL SECURITY</code> clause in
-the <a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a>
+with definer’s rights, as specified by the <code class="highlighter-rouge">EXTERNAL SECURITY</code> clause in
+the <a href="sqlref_statements_createprocedure.html"><code class="highlighter-rouge">CREATE PROCEDURE</code></a>
 statements. During execution, the current user and current role are kept
 on an authorization stack which is pushed during a stored routine call.</p>
 
@@ -701,11 +703,11 @@ on an authorization stack which is pushed during a stored routine call.</p>
       <li>Within routines that execute with invoker’s rights, the following
 applies: initially, inside a nested connection, the current role is
 set to that of the calling context. So is the current user. Such
-routines may set any role granted to the invoker or to <code>PUBLIC</code>.</li>
+routines may set any role granted to the invoker or to <code class="highlighter-rouge">PUBLIC</code>.</li>
       <li>Within routines that execute with definer’s rights, the following
 applies: initially, inside a nested connection, the current role is
-<code>NULL</code>, and the current user is that of the definer. Such routines may
-set any role granted to the definer or to <code>PUBLIC</code>.</li>
+<code class="highlighter-rouge">NULL</code>, and the current user is that of the definer. Such routines may
+set any role granted to the definer or to <code class="highlighter-rouge">PUBLIC</code>.</li>
     </ul>
 
     <p>Upon return from the stored procedure or function, the authorization
@@ -718,13 +720,13 @@ role (or user) of the nested context.</p>
 
     <h3 id="dropping-roles">Dropping Roles</h3>
 
-    <p>Only the database owner can drop a role. To drop a role, use the <a href="sqlref_statements_droprole.html"><code>DROP
+    <p>Only the database owner can drop a role. To drop a role, use the <a href="sqlref_statements_droprole.html"><code class="highlighter-rouge">DROP
 ROLE</code></a> statement. Dropping a role
 effectively revokes all grants of this role to users and other roles.</p>
 
     <h2 id="granting-privileges">Granting Privileges</h2>
 
-    <p>Use the <a href="sqlref_statements_grant.html"><code>GRANT</code></a> statement to grant
+    <p>Use the <a href="sqlref_statements_grant.html"><code class="highlighter-rouge">GRANT</code></a> statement to grant
 privileges on schemas, tables and routines to a role or to a user.</p>
 
     <p>Note that when you grant privileges to a role, you are implicitly
@@ -732,20 +734,20 @@ granting those same privileges to all roles that contain that role.</p>
 
     <h2 id="revoking-privileges">Revoking Privileges</h2>
 
-    <p>Use the <a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> statement to revoke
+    <p>Use the <a href="sqlref_statements_revoke.html"><code class="highlighter-rouge">REVOKE</code></a> statement to revoke
 privileges on schemas, tables and routines.</p>
 
     <p>When a privilege is revoked from a user:</p>
 
     <ul>
       <li>That session can no longer keep the role, not can it take on that role
-unless the role is also granted to <code>PUBLIC</code>.</li>
+unless the role is also granted to <code class="highlighter-rouge">PUBLIC</code>.</li>
       <li>If that role is the current role of an existing session, the current
 privileges of the session lose any extra privileges obtained through
 setting that role.</li>
     </ul>
 
-    <p>The default revoke behavior is <code>CASCADE</code>, which means that all
+    <p>The default revoke behavior is <code class="highlighter-rouge">CASCADE</code>, which means that all
 persistent objects (constraints and views, views and triggers) that rely
 on a dropped role are dropped. Although there may be other ways of
 fulfilling that privilege at the time of the revoke, any dependent
@@ -759,24 +761,24 @@ user.</p>
     <ul>
       <li><a href="onprem_install_configureauth.html">Configuring Splice Machine
 Authentication</a> in this Guide</li>
-      <li><a href="sqlref_statements_createfunction.html"><code>CREATE FUNCTION</code></a> in the
+      <li><a href="sqlref_statements_createfunction.html"><code class="highlighter-rouge">CREATE FUNCTION</code></a> in the
 <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a> in the
+      <li><a href="sqlref_statements_createprocedure.html"><code class="highlighter-rouge">CREATE PROCEDURE</code></a> in the
 <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_createrole.html"><code>CREATE ROLE</code></a> in the
+      <li><a href="sqlref_statements_createrole.html"><code class="highlighter-rouge">CREATE ROLE</code></a> in the
 <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_builtinfcns_currentrole.html"><code>CURRENT_ROLE</code></a> in the
+      <li><a href="sqlref_builtinfcns_currentrole.html"><code class="highlighter-rouge">CURRENT_ROLE</code></a> in the
 <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_droprole.html"><code>DROP ROLE</code></a> in the <em>SQL Reference
+      <li><a href="sqlref_statements_droprole.html"><code class="highlighter-rouge">DROP ROLE</code></a> in the <em>SQL Reference
 Manual</em></li>
-      <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a> in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> in the <em>SQL Reference
+      <li><a href="sqlref_statements_grant.html"><code class="highlighter-rouge">GRANT</code></a> in the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_statements_revoke.html"><code class="highlighter-rouge">REVOKE</code></a> in the <em>SQL Reference
 Manual</em></li>
-      <li><a href="sqlref_statements_setrole.html"><code>SET ROLE</code></a> in the <em>SQL Reference
+      <li><a href="sqlref_statements_setrole.html"><code class="highlighter-rouge">SET ROLE</code></a> in the <em>SQL Reference
 Manual</em></li>
-      <li><a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_CREATE_USER</code></a> in the
+      <li><a href="sqlref_builtinfcns_user.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_CREATE_USER</code></a> in the
 <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_DROP_USER</code></a> in the
+      <li><a href="sqlref_builtinfcns_user.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_DROP_USER</code></a> in the
 <em>SQL Reference Manual</em></li>
     </ul>
 
@@ -799,7 +801,7 @@ Manual</em></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -814,19 +816,49 @@ Manual</em></li>
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

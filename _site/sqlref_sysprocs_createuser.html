@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,7 +2810,7 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="syscsutilsyscscreateuser---builtinsysprocscreateuser">SYSCS_UTIL.SYSCS_CREATE_USER   {#BuiltInSysProcs.CreateUser}</h1>
 
-    <p>The <code>SYSCS_UTIL.SYSCS_CREATE_USER</code> system procedure adds a new user
+    <p>The <code class="highlighter-rouge">SYSCS_UTIL.SYSCS_CREATE_USER</code> system procedure adds a new user
 account to a database.</p>
 
     <p>This procedure creates users for use with NATIVE authentication.</p>
@@ -2831,11 +2831,12 @@ turned on permanently. There is no way to turn it off.</p>
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_CREATE_USER(
+      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>SYSCS_UTIL.SYSCS_CREATE_USER(
 		IN userName VARCHAR(128),
 		IN password VARCHAR(32672)
 		)
 </code></pre>
+      </div>
 
     </div>
     <div class="paramList">
@@ -2849,8 +2850,8 @@ user name in single quotes, e.g. ‘Fred’, the system automatically
 converts it into all Uppercase.</p>
 
       <p class="noteNote">The user name is only case sensitive if you double-quote it inside of
-the single quotes. For example, <code>'"Fred"'</code> is a different user name than
-<code>'Fred'</code>, because <code>'Fred'</code> is assumed to be case-insensitive.</p>
+the single quotes. For example, <code class="highlighter-rouge">'"Fred"'</code> is a different user name than
+<code class="highlighter-rouge">'Fred'</code>, because <code class="highlighter-rouge">'Fred'</code> is assumed to be case-insensitive.</p>
 
       <p class="paramName">password</p>
 
@@ -2861,17 +2862,18 @@ the single quotes. For example, <code>'"Fred"'</code> is a different user name t
 
     <p>When you add a new user, a new schema is automatically created with
 exactly the same name as the user. For example, here’s a sequence of an
-administrator adding a new user named <code>fred</code> and then verifying that the
-schema named <code>fred</code> is now active:</p>
+administrator adding a new user named <code class="highlighter-rouge">fred</code> and then verifying that the
+schema named <code class="highlighter-rouge">fred</code> is now active:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');Statement executed.splice&gt; VALUES(CURRENT SCHEMA);1------------------------------------------------------------------SPLICE1 row selectedsplice&gt; SET SCHEMA fred;0 rows inserted/updated/deletedsplice&gt; VALUES(CURRENT SCHEMA);1------------------------------------------------------------------FRED1 row selected
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');Statement executed.splice&gt; VALUES(CURRENT SCHEMA);1------------------------------------------------------------------SPLICE1 row selectedsplice&gt; SET SCHEMA fred;0 rows inserted/updated/deletedsplice&gt; VALUES(CURRENT SCHEMA);1------------------------------------------------------------------FRED1 row selected
 </code></pre>
+      </div>
 
     </div>
     <p>When the new user’s credentials are used to connect to the database,
 his/her default schema will be that new schema. If you want the new user
-to have access to data in other schemas, such as the <code>SPLICE</code> schema, an
+to have access to data in other schemas, such as the <code class="highlighter-rouge">SPLICE</code> schema, an
 administrator will need to explicitly
 <a href="sqlref_statements_grant.html">grant</a> those access privileges.</p>
 
@@ -2886,25 +2888,27 @@ database owner can grant access to other users.</p>
     <p>Create a user named FRED:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>CallableStatement cs = conn.prepareCall
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_CREATE_USER(?, ?)");
   cs.setString(1, "fred");
   cs.setString(2, "fredpassword");
   cs.execute();
   cs.close();
 </code></pre>
+      </div>
 
     </div>
     <p>Create a user named FreD:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>CallableStatement cs = conn.prepareCall
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_CREATE_USER(?, ?)");
   cs.setString(1, "\"FreD\"");
   cs.setString(2, "fredpassword");
   cs.execute();
   cs.close();
 </code></pre>
+      </div>
 
     </div>
     <h2 id="sql-example">SQL Example</h2>
@@ -2912,23 +2916,25 @@ database owner can grant access to other users.</p>
     <p>Create a user named FRED:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');
 Statement executed.
 </code></pre>
+      </div>
 
     </div>
-    <p>Create a (case sensitive) user named <code>MrBaseball</code>:</p>
+    <p>Create a (case sensitive) user named <code class="highlighter-rouge">MrBaseball</code>:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>CALL SYSCS_UTIL.SYSCS_CREATE_USER('MrBaseball', 'pinchhitter')
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>CALL SYSCS_UTIL.SYSCS_CREATE_USER('MrBaseball', 'pinchhitter')
 Statement executed.
 </code></pre>
+      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_DROP_USER</code></a> built-in
+      <li><a href="sqlref_builtinfcns_user.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_DROP_USER</code></a> built-in
 system procedure</li>
     </ul>
 
@@ -2951,7 +2957,7 @@ system procedure</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -2966,19 +2972,49 @@ system procedure</li>
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

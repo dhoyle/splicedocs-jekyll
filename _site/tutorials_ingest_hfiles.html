@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -542,27 +542,27 @@ to use, though slightly slower than importing HFiles.</p>
     <p>Our HFile data import procedure leverages HBase bulk loading, which
 allows it to import your data at a faster rate; however, using this
 procedure instead of our standard
-<a href="tutorials_ingest_importing.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a> procedure
+<a href="tutorials_ingest_importing.html"><code class="highlighter-rouge">SYSCS_UTIL.IMPORT_DATA</code></a> procedure
 means that <em>constraint checks are not performing during data
 importation</em>.</p>
 
-    <p>You import a table as HFiles using our <code>SYSCS_UTIL.BULK_IMPORT_HFILES</code>
+    <p>You import a table as HFiles using our <code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILES</code>
 procedure, which temporarily converts the table file that you’re
 importing into HFiles, imports those directly into your database, and
 then removes the temporary HFiles. Before it generate HFiles,
-<code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> must determine how to split the data
+<code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILES</code> must determine how to split the data
 into multiple regions by looking at the primary keys and figuring out
 which values will yield relatively evenly-sized splits; the objective is
 to compute splits such that roughly the same number of table rows will
 end up in each split.</p>
 
-    <p><code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> can scan and analyze your table to
+    <p><code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILES</code> can scan and analyze your table to
 determine the best splits; or you can exercise control over those
 splits.</p>
 
-    <p>To have <code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> calculate the splits
-automatically, simply call this procedure with the <code>skipSampling</code>
-parameter set to <code>true</code>.</p>
+    <p>To have <code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILES</code> calculate the splits
+automatically, simply call this procedure with the <code class="highlighter-rouge">skipSampling</code>
+parameter set to <code class="highlighter-rouge">true</code>.</p>
 
     <p>If you want to control the splits yourself, use these steps, which are
 detailed in the <em>Examples</em> section below:</p>
@@ -577,7 +577,7 @@ end up in each split.</li>
 to create those splits.</li>
       <li>Calling one of our system procedures to set up the splits inside
 your Splice Machine database.</li>
-      <li>Call our <code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> procedure, which temporarily
+      <li>Call our <code class="highlighter-rouge">SYSCS_UTIL.BULK_IMPORT_HFILES</code> procedure, which temporarily
 converts the table file that you’re importing into HFiles, imports
 those directly into your database, and then removes the temporary
 HFiles.</li>
@@ -731,7 +731,7 @@ HFiles.</li>
                     &lt;ol class="LowerAlphaPlainFont"&gt;
                         &lt;li&gt;
                             &lt;p&gt;Use <code>SHOW&#160;TABLES</code> to discover the conglomerate ID for the <code>TPCH.LINEITEM</code> table, which for this example is <code>1536</code>. This means that the split keys file for this table is in the <code>hdfs:///tmp/test_hfile_import/1536</code> directory. You’ll see values like these:&lt;/p&gt;
-                            &lt;div class="preWrapperWide"&gt;&lt;pre class="Example"&gt;\xE4\x16\xE3<code>&lt;br /&gt;\xE4-\xC6\xC0&lt;br /&gt;\xE4D\xAA&lt;/pre&gt;
+                            &lt;div class="preWrapperWide"&gt;&lt;pre class="Example"&gt;\xE4\x16\xE3<code class="highlighter-rouge">&lt;br /&gt;\xE4-\xC6\xC0&lt;br /&gt;\xE4D\xAA&lt;/pre&gt;
                             &lt;/div&gt;
                         &lt;/li&gt;
                         &lt;li&gt;
@@ -908,13 +908,13 @@ descriptions.</p>
 
     <h4 id="column-delimiters">Column Delimiters</h4>
 
-    <p>The standard column delimiter is a comma (<code>,</code>); however, we’ve all
+    <p>The standard column delimiter is a comma (<code class="highlighter-rouge">,</code>); however, we’ve all
 worked with string data that contains commas, and have figured out to
 use a different column delimiter. Some customers use the pipe
-(<code>|</code>) character, but frequently discover that it is also used in some
+(<code class="highlighter-rouge">|</code>) character, but frequently discover that it is also used in some
 descriptive data in the table they’re importing.</p>
 
-    <p>We recommend using a control character like <code>CTRL-A</code> for your column
+    <p>We recommend using a control character like <code class="highlighter-rouge">CTRL-A</code> for your column
 delimiter. This is known as the SOH character, and is represented by
 0x01 in hexadecimal. Unfortunately, there’s no way to enter this
 character from the keyboard in the Splice Machine command line
@@ -925,9 +925,9 @@ or <em>vim</em>:</p>
     <ul>
       <li>Open your script file in vi or vim.</li>
       <li>Enter into INSERT mode.</li>
-      <li>Type <code>CTRL-V</code> then <code>CTRL-A</code> for the value of the column delimiter
+      <li>Type <code class="highlighter-rouge">CTRL-V</code> then <code class="highlighter-rouge">CTRL-A</code> for the value of the column delimiter
 parameter in your procedure call. Note that this typically echoes as
-<code>^A</code> when you type it in vi or vim.</li>
+<code class="highlighter-rouge">^A</code> when you type it in vi or vim.</li>
     </ul>
 
     <h4 id="character-delimiters">Character Delimiters</h4>
@@ -939,15 +939,15 @@ quote as the symbol for inches. You can use escape characters to include
 the embedded quotes, but it’s easier to use a special character for your
 delimiter.</p>
 
-    <p>We recommend using <code>CTRL-G</code>, which you can add to a script file (see
+    <p>We recommend using <code class="highlighter-rouge">CTRL-G</code>, which you can add to a script file (see
 <a href="#Tip9">Tip #9</a>), again using a text editor like <em>vi</em> or <em>vim</em>:</p>
 
     <ul>
       <li>Open your script file in vi or vim.</li>
       <li>Enter into INSERT mode.</li>
-      <li>Type <code>CTRL-V</code> then <code>CTRL-G</code> for the value of the character delimiter
+      <li>Type <code class="highlighter-rouge">CTRL-V</code> then <code class="highlighter-rouge">CTRL-G</code> for the value of the character delimiter
 parameter in your procedure call. Note that this typically echoes as
-<code>^G</code> when you type it in vi or vim.</li>
+<code class="highlighter-rouge">^G</code> when you type it in vi or vim.</li>
     </ul>
 
     <h3 id="Tip5">Tip #2:  Avoid Problems With Date, Time, and Timestamp Formats</h3>
@@ -955,14 +955,14 @@ parameter in your procedure call. Note that this typically echoes as
     <p>Perhaps the most common difficulty that customers have with importing
 their data is with date, time, and timestamp values.</p>
 
-    <p>Splice Machine adheres to the Java <code>SimpleDateFormat</code> syntax for all
-date, time, and timestamp values, <code>SimpleDateFormat</code> is described here:</p>
+    <p>Splice Machine adheres to the Java <code class="highlighter-rouge">SimpleDateFormat</code> syntax for all
+date, time, and timestamp values, <code class="highlighter-rouge">SimpleDateFormat</code> is described here:</p>
 
     <p class="indentLevel1"><a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html" target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a></p>
 
-    <p>Splice Machine’s implementation of <code>SimpleDateFormat</code> is case-sensitive;
-this means, for example, that a lowercase <code>h</code> is used to represent an
-hour value between 0 and 12, whereas an uppercase <code>H</code> is used to
+    <p>Splice Machine’s implementation of <code class="highlighter-rouge">SimpleDateFormat</code> is case-sensitive;
+this means, for example, that a lowercase <code class="highlighter-rouge">h</code> is used to represent an
+hour value between 0 and 12, whereas an uppercase <code class="highlighter-rouge">H</code> is used to
 represent an hour between 0 and 23.</p>
 
     <p>Splice Machine’s Import procedures only allow you to specify one format
@@ -971,25 +971,25 @@ importing. This means that, for example, every date in the table data
 must be in the same format.</p>
 
     <div class="notePlain">
-      <p>All of the <code>Date</code> values in the file (or group of files) you are
+      <p>All of the <code class="highlighter-rouge">Date</code> values in the file (or group of files) you are
 importing must use the same date format.</p>
 
-      <p>All of the <code>Time</code> values in the file (or group of files) you are
+      <p>All of the <code class="highlighter-rouge">Time</code> values in the file (or group of files) you are
 importing must use the same time format.</p>
 
-      <p>All of the <code>Timestamp</code> values in the file (or group of files) you are
+      <p>All of the <code class="highlighter-rouge">Timestamp</code> values in the file (or group of files) you are
 importing must use the same timestamp format.</p>
 
     </div>
     <p>A few additional notes:</p>
 
     <ul>
-      <li>The <code>Timestamp</code> data type has a range of <code>1678-01-01</code> to <code>2261-12-31</code>.
-Some customers have used dummy timestamp values like <code>9999-01-01</code>,
+      <li>The <code class="highlighter-rouge">Timestamp</code> data type has a range of <code class="highlighter-rouge">1678-01-01</code> to <code class="highlighter-rouge">2261-12-31</code>.
+Some customers have used dummy timestamp values like <code class="highlighter-rouge">9999-01-01</code>,
 which will fail because the value is out of range for a timestamp.
-Note that this is not an issue with <code>Date</code> values.</li>
+Note that this is not an issue with <code class="highlighter-rouge">Date</code> values.</li>
       <li>Splice Machine suggests that, if your data contains any date or
-timestamp values that are not in the format <code>yyyy-MM-dd HH:mm:ss</code>, you
+timestamp values that are not in the format <code class="highlighter-rouge">yyyy-MM-dd HH:mm:ss</code>, you
 create a simple table that has just one or two columns and test
 importing the format. This is a simple way to confirm that the
 imported data is what you expect.</li>
@@ -1002,7 +1002,7 @@ you are importing into groups, then it’s a good idea to change the
 location of the bad record directory for each group; this will make
 debugging bad records a lot easier for you.</p>
 
-    <p>You can change the value of the <code>badRecordDirectory</code> to include your
+    <p>You can change the value of the <code class="highlighter-rouge">badRecordDirectory</code> to include your
 group name; for example, we typically use a strategy like the following:</p>
 
     <table style="width: 100%;">
@@ -1034,25 +1034,25 @@ located.</p>
 
     <h3 id="Tip7">Tip #4:  Importing Multi-line Records</h3>
 
-    <p>If your data contains line feed characters like <code>CTRL-M</code>, you need to
-set the <code>oneLineRecords</code> parameter to <code>false</code>. Splice Machine will
+    <p>If your data contains line feed characters like <code class="highlighter-rouge">CTRL-M</code>, you need to
+set the <code class="highlighter-rouge">oneLineRecords</code> parameter to <code class="highlighter-rouge">false</code>. Splice Machine will
 accommodate to the line feeds; however, the import will take longer
 because Splice Machine will not be able to break the file up and
 distribute it across the cluster.</p>
 
     <p class="notePlain">To improve import performance, avoid including line feed characters in
-your data and set the <code>oneLineRecords</code> parameter to <code>true</code>.</p>
+your data and set the <code class="highlighter-rouge">oneLineRecords</code> parameter to <code class="highlighter-rouge">true</code>.</p>
 
     <h3 id="Tip8">Tip #5:  Importing CLOBs and BLOBs</h3>
 
-    <p>If you are importing <code>CLOB</code>s, pay careful attention to tips <a href="#Tip4">4</a>
+    <p>If you are importing <code class="highlighter-rouge">CLOB</code>s, pay careful attention to tips <a href="#Tip4">4</a>
 and <a href="#Tip7">7</a>. Be sure to use special characters for both your column
-and character delimiters. If your <code>CLOB</code> data can span multiple lines,
-be sure to set the <code>oneLineRecords</code> parameter to <code>false</code>.</p>
+and character delimiters. If your <code class="highlighter-rouge">CLOB</code> data can span multiple lines,
+be sure to set the <code class="highlighter-rouge">oneLineRecords</code> parameter to <code class="highlighter-rouge">false</code>.</p>
 
     <p>At this time, the Splice Machine import procedures do not import work
-with columns of type <code>BLOB</code>. You can create a virtual table interface
-(VTI) that reads the <code>BLOB</code>s and inserts them into your database.</p>
+with columns of type <code class="highlighter-rouge">BLOB</code>. You can create a virtual table interface
+(VTI) that reads the <code class="highlighter-rouge">BLOB</code>s and inserts them into your database.</p>
 
     <h3 id="Tip9">Tip #6:  Scripting Your Imports</h3>
 
@@ -1061,29 +1061,32 @@ scripts</em>. An import script is simply a call to one of the import
 procedures; once you’ve verified that it works, you can use and clone
 the script and run unattended imports.</p>
 
-    <p>An import script is simply a file in which you store <code>splice&gt;</code> commands
-that you can execute with the <code>run</code> command. For example, here’s an
-example of a text file named <code>myimports.sql</code> that we can use to import
+    <p>An import script is simply a file in which you store <code class="highlighter-rouge">splice&gt;</code> commands
+that you can execute with the <code class="highlighter-rouge">run</code> command. For example, here’s an
+example of a text file named <code class="highlighter-rouge">myimports.sql</code> that we can use to import
 two csv files into our database:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable1',null,'/data/mytable1/data.csv',null,null,null,null,null,0,'/BAD/mytable1',null,null);call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable2',null,'/data/mytable2/data.csv',null,null,null,null,null,0,'/BAD/mytable2',null,null
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable1',null,'/data/mytable1/data.csv',null,null,null,null,null,0,'/BAD/mytable1',null,null);call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable2',null,'/data/mytable2/data.csv',null,null,null,null,null,0,'/BAD/mytable2',null,null
 </code></pre>
+      </div>
 
     </div>
-    <p>To run an import script, use the <code>splice&gt; run</code> command; for example:</p>
+    <p>To run an import script, use the <code class="highlighter-rouge">splice&gt; run</code> command; for example:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>splice&gt; run 'myimports.sql';
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; run 'myimports.sql';
 </code></pre>
+      </div>
 
     </div>
-    <p>You can also start up the <code>splice&gt;</code> command line interpreter with the
+    <p>You can also start up the <code class="highlighter-rouge">splice&gt;</code> command line interpreter with the
 name of a file to run; for example:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>sqlshell.sh -f myimports.sql
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>sqlshell.sh -f myimports.sql
 </code></pre>
+      </div>
 
     </div>
     <p>In fact, you can script almost any sequence of Splice Machine commands
@@ -1109,7 +1112,7 @@ when you start the interpreter.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -1124,19 +1127,49 @@ when you start the interpreter.</p>
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,25 +2810,26 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="syscsutilsyscsscheduledailybackup">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</h1>
 
-    <p>You can use the <code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code> to schedule a
+    <p>You can use the <code class="highlighter-rouge">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code> to schedule a
 full or incremental backup job that runs at a specified time each day.</p>
 
     <p class="noteNote">You specify the scheduled start hour of the backup in Greenwich Mean
 Time (GMT).</p>
 
     <p>Note that you can subsequently cancel a scheduled backup job with the
-<a href="onprem_admin_backingup.html"><code>Backing Up and Restoring</code></a> topic in our
+<a href="onprem_admin_backingup.html"><code class="highlighter-rouge">Backing Up and Restoring</code></a> topic in our
 <em>Administrator’s Guide</em>.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_DATABASE(
+      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_DATABASE(
                VARCHAR backupDir,
                VARCHAR(30) backupType,
                INT startHour
 );
 </code></pre>
+      </div>
 
     </div>
     <div class="paramList">
@@ -2851,18 +2852,18 @@ when specifying the backup destination.</p>
       <p class="paramName">backupType</p>
 
       <p class="paramDefnFirst">Specifies the type of backup that you want performed. This must be one
-of the following values: <code>'full'</code> or “<code>'incremental'</code>; any other value
+of the following values: <code class="highlighter-rouge">'full'</code> or “<code class="highlighter-rouge">'incremental'</code>; any other value
 produces an error and the backup is not run.</p>
 
-      <p class="paramDefn">Note that if you specify <code>'incremental'</code>, Splice Machine checks the
-<a href="sqlref_systables_sysbackup.html"><code>SYS.SYSBACKUP</code></a> table to determine if
+      <p class="paramDefn">Note that if you specify <code class="highlighter-rouge">'incremental'</code>, Splice Machine checks the
+<a href="sqlref_systables_sysbackup.html"><code class="highlighter-rouge">SYS.SYSBACKUP</code></a> table to determine if
 there already is a backup for the system; if not, Splice Machine will
 perform a full backup, and subsequent backups will be incremental.</p>
 
       <p class="paramName">startHour</p>
 
-      <p class="paramDefnFirst">Specifies the hour (<code>0-23</code>) <strong>in GMT</strong> at which you want the backup to
-run each day. A value less than <code>0</code> or greater than <code>23</code> produces an
+      <p class="paramDefnFirst">Specifies the hour (<code class="highlighter-rouge">0-23</code>) <strong>in GMT</strong> at which you want the backup to
+run each day. A value less than <code class="highlighter-rouge">0</code> or greater than <code class="highlighter-rouge">23</code> produces an
 error and the backup is not scheduled.</p>
 
     </div>
@@ -2870,20 +2871,22 @@ error and the backup is not scheduled.</p>
 
     <div>
       <p>The following example schedules a daily incremental backup that runs at
-3 am (GMT) and gets stored in the <code>hdfs:///home/backup/</code> directory:</p>
+3 am (GMT) and gets stored in the <code class="highlighter-rouge">hdfs:///home/backup/</code> directory:</p>
 
       <div class="preWrapperWide">
-        <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('hdfs:///home/backup', 'incremental', 3);
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('hdfs:///home/backup', 'incremental', 3);
 Statement executed;
 </code></pre>
+        </div>
 
       </div>
       <p>The following example schedules the same backup and stores it on AWS:</p>
 
       <div class="preWrapperWide">
-        <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('s3://backup1234', 'incremental', 3);
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('s3://backup1234', 'incremental', 3);
 Statement executed.
 </code></pre>
+        </div>
 
       </div>
     </div>
@@ -2891,9 +2894,10 @@ Statement executed.
 version of Splice Machine:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('./dbBackups', 'full',18);
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('./dbBackups', 'full',18);
 Statement executed.
 </code></pre>
+      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
@@ -2901,19 +2905,19 @@ Statement executed.
     <ul>
       <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in
 the <em>Administrator’s Guide</em></li>
-      <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a>
+      <li><a href="sqlref_sysprocs_backupdb.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a>
 built-in system procedure</li>
-      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>
+      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>
 built-in system procedure</li>
-      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>
 built-in system procedure</li>
-      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a>
 built-in system procedure</li>
-      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a>
+      <li><a href="sqlref_sysprocs_restoredb.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a>
 built-in system procedure</li>
-      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code></a> system table</li>
-      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS</code></a> system table</li>
-      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackup.html"><code class="highlighter-rouge">SYSBACKUP</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code class="highlighter-rouge">SYSBACKUPITEMS</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code class="highlighter-rouge">SYSBACKUPJOBS</code></a> system table</li>
     </ul>
 
   </div>
@@ -2935,7 +2939,7 @@ built-in system procedure</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -2950,19 +2954,49 @@ built-in system procedure</li>
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

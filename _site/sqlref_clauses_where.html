@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,18 +2810,19 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="where---clauseswhere">WHERE   {#Clauses.Where}</h1>
 
-    <p>The <code>WHERE</code> clause is an optional part of a
-<a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement.</p>
+    <p>The <code class="highlighter-rouge">WHERE</code> clause is an optional part of a
+<a href="sqlref_statements_update.html"><code class="highlighter-rouge">UPDATE</code></a> statement.</p>
 
-    <p>The <code>WHERE</code> clause lets you select rows based on a Boolean expression.
-Only rows for which the expression evaluates to <code>TRUE</code> are selected to
+    <p>The <code class="highlighter-rouge">WHERE</code> clause lets you select rows based on a Boolean expression.
+Only rows for which the expression evaluates to <code class="highlighter-rouge">TRUE</code> are selected to
 return or operate upon (delete or update).</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>WHERE BooleanExpression
+      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>WHERE BooleanExpression
 </code></pre>
+      </div>
 
     </div>
     <div class="paramList">
@@ -2835,7 +2836,7 @@ Expressions</a> topic.</p>
 
     <div class="preWrapperWide">
 
-      <pre class="Example"><code>   -- find the flights where no business-class seats have been booked
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>   -- find the flights where no business-class seats have been booked
 SELECT *
   FROM FlightAvailability
   WHERE business_seats_taken IS NULL
@@ -2867,15 +2868,16 @@ SELECT THIS_EMP.EMPNO, THIS_EMP.SALARY, DINFO.AVGSALARY, DINFO.EMPCOUNT
   WHERE THIS_EMP.JOB = 'SALESREP'
     AND THIS_EMP.WORKDEPT = DINFO.DEPTNO;
 </code></pre>
+      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_expressions_select.html"><code>Select</code></a> expressions</li>
-      <li><a href="sqlref_statements_delete.html"><code>DELETE</code></a> statement</li>
-      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
-      <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement</li>
+      <li><a href="sqlref_expressions_select.html"><code class="highlighter-rouge">Select</code></a> expressions</li>
+      <li><a href="sqlref_statements_delete.html"><code class="highlighter-rouge">DELETE</code></a> statement</li>
+      <li><a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code></a> statement</li>
+      <li><a href="sqlref_statements_update.html"><code class="highlighter-rouge">UPDATE</code></a> statement</li>
     </ul>
 
   </div>
@@ -2897,7 +2899,7 @@ SELECT THIS_EMP.EMPNO, THIS_EMP.SALARY, DINFO.AVGSALARY, DINFO.EMPCOUNT
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -2912,19 +2914,49 @@ SELECT THIS_EMP.EMPNO, THIS_EMP.SALARY, DINFO.AVGSALARY, DINFO.EMPCOUNT
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

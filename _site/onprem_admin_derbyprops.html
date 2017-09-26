@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -618,34 +618,35 @@ properties.</p>
             </table>
     <h2 id="site-file-example">Site File Example</h2>
 
-    <p>The following is an example of a <code>splice-site.xml</code> file:</p>
+    <p>The following is an example of a <code class="highlighter-rouge">splice-site.xml</code> file:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>&lt;?xml version="1.0"?&gt;
-&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;
-   &lt;configuration&gt;
-       &lt;property&gt;
-           &lt;name&gt;splice.debug.logStatementContext&lt;/name&gt;
-	    &lt;value&gt;true&lt;/value&gt;
-	    &lt;description&gt;Property  to enable logging of all statements.&lt;/description&gt;
-	&lt;/property&gt;
-	&lt;property&gt;
-	    &lt;name&gt;splice.debug.david&lt;/name&gt;
-	    &lt;value&gt;true&lt;/value&gt;
-	    &lt;description&gt;Property  to test something.&lt;/description&gt;
-	&lt;/property&gt;
-   &lt;/configuration&gt; 
+      <div class="Example highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="cp">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span>
+   <span class="nt">&lt;configuration&gt;</span>
+       <span class="nt">&lt;property&gt;</span>
+           <span class="nt">&lt;name&gt;</span>splice.debug.logStatementContext<span class="nt">&lt;/name&gt;</span>
+	    <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+	    <span class="nt">&lt;description&gt;</span>Property  to enable logging of all statements.<span class="nt">&lt;/description&gt;</span>
+	<span class="nt">&lt;/property&gt;</span>
+	<span class="nt">&lt;property&gt;</span>
+	    <span class="nt">&lt;name&gt;</span>splice.debug.david<span class="nt">&lt;/name&gt;</span>
+	    <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+	    <span class="nt">&lt;description&gt;</span>Property  to test something.<span class="nt">&lt;/description&gt;</span>
+	<span class="nt">&lt;/property&gt;</span>
+   <span class="nt">&lt;/configuration&gt;</span> 
 </code></pre>
+      </div>
 
     </div>
     <h2 id="displaying-derbysplice-properties">Displaying Derby/Splice Properties</h2>
 
     <p>You can display the Derby/Splice properties with the
-<code>SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES</code> system procedure, which displays
+<code class="highlighter-rouge">SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES</code> system procedure, which displays
 information like this:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>splice&gt; call SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES();
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; call SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES();
 
 KEY                                       |VALUE            |TYPE     
 ----------------------------------------------------------------------
@@ -664,12 +665,13 @@ derby.language.logQueryPlan               |true         
 splice.updateSystemProcs                  |false            |JVM      
 derby.storage.rowLocking                  |false            |SERVICE   
 </code></pre>
+      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a>
+      <li><a href="sqlref_sysprocs_setdbprop.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a>
 in the <em>SQL Reference Manual</em></li>
       <li>The <em>Derby Properties Guide</em> on the <a href="https://db.apache.org/derby/manuals/index.html" target="_blank">Apache Derby documentation
 site</a>.</li>
@@ -694,7 +696,7 @@ site</a>.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -709,19 +711,49 @@ site</a>.</li>
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>

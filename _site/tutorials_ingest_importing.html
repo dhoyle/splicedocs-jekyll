@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -554,48 +554,48 @@ part and lacks constraint checking.</p>
     <p>Splice Machine provides three built-in system procedures that you can
 use for loading data into a database table, each of which uses identical
 syntax. You can specify which columns in the input data are to be
-imported in the <code>insertColumnList</code> parameter; these procedures differ in
+imported in the <code class="highlighter-rouge">insertColumnList</code> parameter; these procedures differ in
 how they handle updating records when you specify an input column list
 that isn’t 1-to-1 with the columns in the table.</p>
 
     <ul>
-      <li>The <a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a>
+      <li>The <a href="sqlref_sysprocs_importdata.html"><code class="highlighter-rouge">SYSCS_UTIL.IMPORT_DATA</code></a>
 procedure imports data into your database, creating a new record in
 your table for each record in the imported data, and inserts the
 default value of each column that is not specified in the input.</li>
       <li>The
-<a href="sqlref_sysprocs_upsertdata.html"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a>
+<a href="sqlref_sysprocs_upsertdata.html"><code class="highlighter-rouge">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a>
 procedure inserts new records and <em>updates existing records</em> in the
 table. It also inserts or updates the value in the table of each
 column that is not specified in the input; inserting the default value
 (or NULL if there is no default) for that column.</li>
       <li>The
-<a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a>
+<a href="sqlref_sysprocs_mergedata.html"><code class="highlighter-rouge">SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a>
 procedure also updates existing records; however, it does not replace
 values in the table for unspecified columns when updating an existing
 record in the table.</li>
     </ul>
 
-    <p><a href="#Example2">Example 2</a> illustrates how the <code>UPSERT</code> and <code>MERGE</code>
+    <p><a href="#Example2">Example 2</a> illustrates how the <code class="highlighter-rouge">UPSERT</code> and <code class="highlighter-rouge">MERGE</code>
 procedures differ in their handling of record updates.</p>
 
     <h2 id="Syntax">Import Procedures Syntax</h2>
 
     <p>In this section, we’ll go through the syntax used with our import
-procedures, using the <code>SYSCS_UTIL.IMPORT_DATA</code> built-in system procedure
+procedures, using the <code class="highlighter-rouge">SYSCS_UTIL.IMPORT_DATA</code> built-in system procedure
 for examples.</p>
 
     <p class="noteIcon">You’ll find complete descriptions of these parameters in the reference
 pages for the
-<a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a>,  <a href="sqlref_sysprocs_upsertdata.html"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a>,  and
-<a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a>
+<a href="sqlref_sysprocs_importdata.html"><code class="highlighter-rouge">SYSCS_UTIL.IMPORT_DATA</code></a>,  <a href="sqlref_sysprocs_upsertdata.html"><code class="highlighter-rouge">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a>,  and
+<a href="sqlref_sysprocs_mergedata.html"><code class="highlighter-rouge">SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a>
 procedures.</p>
 
     <p>The syntax for calling these procedures includes a large number of
 parameters:</p>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>call SYSCS_UTIL.IMPORT_DATA (
+      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.IMPORT_DATA (
 		schemaName,
 		tableName,
 		insertColumnList | null,
@@ -611,6 +611,7 @@ parameters:</p>
 		charset | null
 		);
 </code></pre>
+      </div>
 
     </div>
     <p>These parameters are described in detail in the <a href="sqlref_sysprocs_importdata.html">SQL Reference
@@ -752,7 +753,7 @@ Manual</a>; here are brief descriptions:</p>
                     </tr>
                 </tbody>
             </table>
-    <pre><code>    &lt;h2 id="ImportColVals"&gt;Inserting and Updating Column Values When Importing Data&lt;/h2&gt;
+    <div class="highlighter-rouge"><pre class="highlight"><code>    &lt;h2 id="ImportColVals"&gt;Inserting and Updating Column Values When Importing Data&lt;/h2&gt;
     &lt;p&gt;This section summarizes what happens when you are importing, upserting, or merging records into a database table, based on:&lt;/p&gt;
     &lt;ul&gt;
         &lt;li&gt;Whether you are importing a new record or updating an existing record.&lt;/li&gt;
@@ -946,6 +947,7 @@ Manual</a>; here are brief descriptions:</p>
     &lt;h4&gt;Generated Column Import Examples&lt;/h4&gt;
     &lt;p&gt;Our &lt;a href="tutorials_ingest_importing.html"&gt;Importing Data&lt;/a&gt; tutorial includes an example that illustrates this difference. We recommend reviewing it before upserting or merging data into a table.&lt;/p&gt;
 </code></pre>
+    </div>
 
     <h2 id="Import">Import Examples</h2>
 
@@ -971,7 +973,7 @@ table</a></li>
     <p>If the table into which you’re importing data has less columns than the
 data file that you’re importing, how the “extra” data columns in the
 input data are handled depends on whether you specify an
-<code>insertColumnList</code>:</p>
+<code class="highlighter-rouge">insertColumnList</code>:</p>
 
     <ul>
       <li>If you don’t specify a specify an insertColumnList and your input file
@@ -993,32 +995,35 @@ that column.</li>
 table with this statement:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>CREATE TABLE playerTeams(ID int primary key, Team VARCHAR(32));
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>CREATE TABLE playerTeams(ID int primary key, Team VARCHAR(32));
 </code></pre>
+      </div>
 
     </div>
     <p>And your data file looks like this:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>1,Cards,Molina,Catcher2,Giants,Posey,Catcher3,Royals,Perez,Catcher
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>1,Cards,Molina,Catcher2,Giants,Posey,Catcher3,Royals,Perez,Catcher
 </code></pre>
+      </div>
 
     </div>
-    <p>When you import the file into <code>playerTeams</code>, only the first two columns
+    <p>When you import the file into <code class="highlighter-rouge">playerTeams</code>, only the first two columns
 are imported:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams',null, 'myData.csv',
+      <div class="Example highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams',null, 'myData.csv',
    null, null, null, null, null, 0, 'importErrsDir', true, null);SELECT * FROM playerTeams ORDER by ID;ID   |TEAM
 --------------
 1    |Cards2    |Giants
 3    |Royals3 rows selected
 </code></pre>
+      </div>
 
     </div>
     <h3 id="Example2">How Missing Columns are Handled With an Insert Column List</h3>
 
-    <pre><code>    &lt;p1&gt;In this example, we'll illustrate how the different data import procedures modify columns in your table when you've specified an &lt;code&gt;insertColumnList&lt;/code&gt; that is not 1-to-1 with the columns in your table. The &lt;code&gt;SYSCS_UTIL.IMPORT_DATA&lt;/code&gt; and &lt;code&gt;SYSCS_UTIL.UPSERT_DATA_FROM_FILE&lt;/code&gt; procedures handle this situation in the same way, assigning default values (or NULL if no default is defined) to any table column that is not being inserted or updated from the input data file. The &lt;code&gt;SYSCS_UTIL.MERGE_DATA_FROM_FILE&lt;/code&gt; does not overwrite generated values when updating records.&lt;/p&gt;
+    <div class="highlighter-rouge"><pre class="highlight"><code>    &lt;p1&gt;In this example, we'll illustrate how the different data import procedures modify columns in your table when you've specified an &lt;code&gt;insertColumnList&lt;/code&gt; that is not 1-to-1 with the columns in your table. The &lt;code&gt;SYSCS_UTIL.IMPORT_DATA&lt;/code&gt; and &lt;code&gt;SYSCS_UTIL.UPSERT_DATA_FROM_FILE&lt;/code&gt; procedures handle this situation in the same way, assigning default values (or NULL if no default is defined) to any table column that is not being inserted or updated from the input data file. The &lt;code&gt;SYSCS_UTIL.MERGE_DATA_FROM_FILE&lt;/code&gt; does not overwrite generated values when updating records.&lt;/p&gt;
     &lt;p class="noteNote"&gt;This distinction is particularly important when loading record updates into a table with auto-generated column values that you do not want overwritten.&lt;/p&gt;
     &lt;p&gt;We'll create two sample tables, populate each with the same data, and load the same input file data into each to illustrate the differences between how the &lt;code&gt;Upsert&lt;/code&gt; and &lt;code&gt;Merge&lt;/code&gt; procedures.&lt;/p&gt;
     &lt;div class="preWrap"&gt;&lt;pre class="Example"&gt;CREATE SCHEMA test; SET SCHEMA test; CREATE TABLE testUpsert (
@@ -1028,6 +1033,7 @@ are imported:</p>
      d1 INT DEFAULT 999,
      PRIMARY KEY (a1)  );
 </code></pre>
+    </div>
 
     <p>CREATE TABLE testMerge (
          a1 INT,
@@ -1122,12 +1128,13 @@ two examples is that this one explicitly imports only the first two
 columns (which are named `ID` and `TEAM`) of the file:
 
 <div class="preWrapper">
-        <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams', 'ID, TEAM', 'myData.csv',
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams', 'ID, TEAM', 'myData.csv',
  null, null, null, null, null, 0, 'importErrsDir', true, null);SELECT * FROM playerTeams ORDER by ID;ID   |TEAM
 --------------
 1    |Cards2    |Giants
 3    |Royals3 rows selected
 </code></pre>
+        </div>
 
       </div>
 ### Example 4: Specifying a timestamp format for an entire table   {#Example4}
@@ -1136,21 +1143,23 @@ Use a single timestamp format for the entire table by explicitly
 specifying a single `timeStampFormat`.
 
 <div class="preWrapper">
-        <pre class="Example"><code>Mike,2013-04-21 09:21:24.98-05
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>Mike,2013-04-21 09:21:24.98-05
 Mike,2013-04-21 09:15:32.78-04
 Mike,2013-03-23 09:45:00.68-05
 </code></pre>
+        </div>
 
       </div>
 You can then import the data with the following call:
 
 <div class="preWrapper">
-        <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA('app','tabx','c1,c2',
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.IMPORT_DATA('app','tabx','c1,c2',
 	'/path/to/ts3.csv',
 	',', '''',
 	'yyyy-MM-dd HH:mm:ss.SSZ',
 	null, null, 0, null, true, null);
 </code></pre>
+        </div>
 
       </div>
 Note that for any import use case shown above, the time shown in the
@@ -1167,26 +1176,29 @@ characters in some of the input strings. We use the default double-quote
 as our character delimiter to import data such as the following:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>1,This field is one line,Able
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>1,This field is one line,Able
 2,"This field has two lines
 This is the second line of the field",Baker
 3,This field is also just one line,Charlie
 </code></pre>
+        </div>
 
       </div>
 We then use the following call to import the data:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>SYSCS_UTIL.IMPORT_DATA('SPLICE', 'MYTABLE', null, 'data.csv' , '\t', null, null, null, null, 0, 'importErrsDir', false, null);
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>SYSCS_UTIL.IMPORT_DATA('SPLICE', 'MYTABLE', null, 'data.csv' , '\t', null, null, null, null, 0, 'importErrsDir', false, null);
 </code></pre>
+        </div>
 
       </div>
 We can also explicitly specify double quotes (or any other character) as
 our delimiter character for strings:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>SYSCS_UTIL.IMPORT_DATA('SPLICE', 'MYTABLE', null, 'data.csv', '\t', '"', null, null, null, 0, 'importErrsDir', false, null);
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>SYSCS_UTIL.IMPORT_DATA('SPLICE', 'MYTABLE', null, 'data.csv', '\t', '"', null, null, null, 0, 'importErrsDir', false, null);
 </code></pre>
+        </div>
 
       </div>
 ### Example 6: Using single quotes to delimit strings   {#Example6}
@@ -1196,11 +1208,12 @@ substituting single quotes for double quotes as the character delimiter
 in the input:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>1,This field is one line,Able
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>1,This field is one line,Able
 2,'This field has two lines
 This is the second line of the field',Baker
 3,This field is also just one line,Charlie
 </code></pre>
+        </div>
 
       </div>
 Note that you must escape single quotes in SQL, which means that you
@@ -1208,8 +1221,9 @@ actually define the character delimiter parameter with four single
 quotes, as follow
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>SYSCS_UTIL.IMPORT_DATA('SPLICE', 'MYTABLE', null, 'data.csv', '\t', '''', null, null, null, 0, 'importErrsDir', false, null);
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>SYSCS_UTIL.IMPORT_DATA('SPLICE', 'MYTABLE', null, 'data.csv', '\t', '''', null, null, null, 0, 'importErrsDir', false, null);
 </code></pre>
+        </div>
 
       </div>
 ## Tips for Importing Data into Splice Machine   {#Tips}
@@ -1242,16 +1256,18 @@ If you are running a stand alone environment, the name or path will be
 to a file or directory on the file system. For example:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>/users/myname/mydata/mytable.csv/users/myname/mydatadir
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>/users/myname/mydata/mytable.csv/users/myname/mydatadir
 </code></pre>
+        </div>
 
       </div>
 However, if you are running this on a cluster, the path is to a file on
 HDFS (or the MapR File system). For example:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>/data/mydata/mytable.csv/data/myname/mydatadir
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>/data/mydata/mytable.csv/data/myname/mydatadir
 </code></pre>
+        </div>
 
       </div>
 #### Specifying an AWS S3 File Location
@@ -1263,16 +1279,18 @@ directory, as will be the case when using our Database-as-Service
 product. You can include the access keys inline; for example:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/importLog', true, null);
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/importLog', true, null);
 </code></pre>
+        </div>
 
       </div>
 Alternatively, you can define the keys once in the `core-site.xml` file
 on your cluster, and then simply specify the `s3a` URL; for example:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, 0, '/BAD', true, null);
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, 0, '/BAD', true, null);
 </code></pre>
+        </div>
 
       </div>
 To add your access and secret access keys to the `core-site.xml` file,
@@ -1280,8 +1298,9 @@ define the `fs.s3a.awsAccessKeyId` and `fs.s3a.awsSecretAccessKey`
 properties in that file:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>&lt;property&gt;   &lt;name&gt;fs.s3a.awsAccessKeyId&lt;/name&gt;   &lt;value&gt;access key&lt;/value&gt;&lt;/property&gt;&lt;property&gt;   &lt;name&gt;fs.s3a.awsSecretAccessKey&lt;/name&gt;   value&gt;secret key&lt;/value&gt;&lt;/property&gt;
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>&lt;property&gt;   &lt;name&gt;fs.s3a.awsAccessKeyId&lt;/name&gt;   &lt;value&gt;access key&lt;/value&gt;&lt;/property&gt;&lt;property&gt;   &lt;name&gt;fs.s3a.awsSecretAccessKey&lt;/name&gt;   value&gt;secret key&lt;/value&gt;&lt;/property&gt;
 </code></pre>
+        </div>
 
       </div>
 ### Tip #2: Import Large Datasets in Groups of Files   {#Tip2}
@@ -1388,13 +1407,13 @@ importing. This means that, for example, every date in the table data
 must be in the same format.
 
 <div class="notePlain">
-        <p>All of the <code>Date</code> values in the file (or group of files) you are
+        <p>All of the <code class="highlighter-rouge">Date</code> values in the file (or group of files) you are
 importing must use the same date format.</p>
 
-        <p>All of the <code>Time</code> values in the file (or group of files) you are
+        <p>All of the <code class="highlighter-rouge">Time</code> values in the file (or group of files) you are
 importing must use the same time format.</p>
 
-        <p>All of the <code>Timestamp</code> values in the file (or group of files) you are
+        <p>All of the <code class="highlighter-rouge">Timestamp</code> values in the file (or group of files) you are
 importing must use the same timestamp format.</p>
 
       </div>
@@ -1483,23 +1502,26 @@ example of a text file named `myimports.sql` that we can use to import
 two csv files into our database:
 
 <div class="preWrapperWide">
-        <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable1',null,'/data/mytable1/data.csv',null,null,null,null,null,0,'/BAD/mytable1',null,null);call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable2',null,'/data/mytable2/data.csv',null,null,null,null,null,0,'/BAD/mytable2',null,null);
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable1',null,'/data/mytable1/data.csv',null,null,null,null,null,0,'/BAD/mytable1',null,null);call SYSCS_UTIL.IMPORT_DATA ('SPLICE','mytable2',null,'/data/mytable2/data.csv',null,null,null,null,null,0,'/BAD/mytable2',null,null);
 </code></pre>
+        </div>
 
       </div>
 To run an import script, use the `splice&gt; run` command; for example:
 
 <div class="preWrapper">
-        <pre class="Example"><code>splice&gt; run 'myimports.sql';
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; run 'myimports.sql';
 </code></pre>
+        </div>
 
       </div>
 You can also start up the `splice&gt;` command line interpreter with the
 name of a file to run; for example:
 
 <div class="preWrapper">
-        <pre class="Example"><code>sqlshell.sh -f myimports.sql
+        <div class="Example highlighter-rouge"><pre class="highlight"><code>sqlshell.sh -f myimports.sql
 </code></pre>
+        </div>
 
       </div>
 In fact, you can script almost any sequence of Splice Machine commands
@@ -1535,7 +1557,7 @@ when you start the interpreter.
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 25, 2017 <br />
+ Site last generated: Sep 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -1550,19 +1572,49 @@ when you start the interpreter.
 
         <!-- Swiftype script for docstest -->
 
+           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
+      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
     </script>
-
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
+
+        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+        <!-- Marketo Analytics Script -->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('331-FEU-348');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
 
 
 </html>
