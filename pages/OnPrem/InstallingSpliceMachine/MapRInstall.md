@@ -8,8 +8,9 @@ sidebar:  onprem_sidebar
 permalink: onprem_install_mapr.html
 folder: OnPrem/InstallingSpliceMachine
 ---
-\{% include splicevars.html %} <section>
+<section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+{% include splicevars.html %} 
 # Installing and Configuring Splice Machine for MapR
 
 {% include splice_snippets/onpremonlytopic.html %}
@@ -82,29 +83,29 @@ configuration, follow these steps
 <div class="opsStepsList" markdown="1">
 1.  If you're running a Debian/Ubuntu-based Linux distribution:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         dpkg -l | awk '/ii.*mapr-spark/{print $2}' | xargs sudo apt-get purge
     {: .ShellCommand}
-    
+
     </div>
-    
+
     If you're running on a RHEL/CentOS-based Linux distribution:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         rpm -qa \*mapr-spark\* | xargs sudo yum -y erase
     {: .ShellCommand}
-    
+
     </div>
 
 2.  Reconfigure node services in your cluster:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         sudo /opt/mapr/server/configure.sh -R
     {: .ShellCommand}
-    
+
     </div>
 {: .boldFont}
 
@@ -122,7 +123,7 @@ in your cluster:
     {{splvar_basic_SpliceReleaseVersion}} and
     {{splvar_basic_SplicePrevReleaseVersion}}:
     {: .indentLevel1}
-    
+
     <table>
                                     <col />
                                     <col />
@@ -136,9 +137,9 @@ in your cluster:
                                     </thead>
                                     <tbody>
                                        <tr>
-                                           <td class="SpliceRelease">2.6.0</td>
+                                           <td class="SpliceRelease">2.6.1</td>
                                            <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
-                                           <td><a href="{{splvar_install_v26_MAPR520}}">{{splvar_install_v26_MAPR520}}</a></td>
+                                           <td><a href="{{splvar_install_v261_MAPR520}}">{{splvar_install_v261_MAPR520}}</a></td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="Separator"> </td>
@@ -146,11 +147,11 @@ in your cluster:
                                        <tr>
                                            <td class="SpliceRelease">2.5.0</td>
                                            <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
-                                           <td><a href="{{splvar_install_v25_MAPR520}}">{{splvar_install_v25_MAPR520}}</a></td>
+                                           <td><a href="{{splvar_install_v250_MAPR520}}">{{splvar_install_v250_MAPR520}}</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
-    
+
     To be sure that you have the latest URL, please check [the Splice
     Machine Community site][2]{: target="_blank"} or contact your Splice
     Machine representative.
@@ -158,54 +159,54 @@ in your cluster:
 
 2.  Create the `splice` installation directory:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         mkdir -p /opt/splice
     {: .ShellCommand}
-    
+
     </div>
 
 3.  Download the Splice Machine package into the `splice` directory on
     the node. For example:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         cd /opt/splicecurl -O '{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_MAPR-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R2}}.{{splvar_install_SpliceReleaseGZ}}'
     {: .ShellCommand}
-    
+
     </div>
 
 4.  Extract the Splice Machine package:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         tar -xf SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R2}}.{{splvar_install_SpliceReleaseGZ}}
     {: .ShellCommand}
-    
+
     </div>
 
 5.  Create a symbolic link. For example:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         ln -sf SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_MAPR-R2}}.{{splvar_install_SpliceReleasePart}} default
     {: .ShellCommand}
-    
+
     </div>
 
 6.  Run our script as *root* user <span class="important">on each
     node</span> in your cluster to add symbolic links to the set up the
     Splice Machine jar and to script symbolic links:
     {: .topLevel}
-    
+
     Issue this command on each node in your cluster:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -227,62 +228,62 @@ steps:
 <div class="opsStepsList" markdown="1">
 1.  Tighten the ephemeral port range so HBase doesn't bump into it:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         cd /opt/splice/default/scripts
         ./install-sysctl-conf.sh
     {: .ShellCommand}
-    
+
     </div>
 
 2.  Update `hbase-site.xml`:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         cd /opt/splice/default/scripts
         ./install-hbase-site-xml.sh
     {: .ShellCommand}
-    
+
     </div>
 
 3.  Update `hbase-env.sh`:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         cd /opt/splice/default/scripts
         ./install-hbase-env-sh.sh
     {: .ShellCommand}
-    
+
     </div>
 
 4.  Update `yarn-site.xml`:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         cd /opt/splice/default/scripts
         ./install-yarn-site-xml.sh
     {: .ShellCommand}
-    
+
     </div>
 
 5.  Update `warden.conf`:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         cd /opt/splice/default/scripts
         ./install-warden-conf.sh
     {: .ShellCommand}
-    
+
     </div>
 
 6.  Update `zoo.cfg`:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         cd /opt/splice/default/scripts
         ./install-zookeeper-conf.sh
     {: .ShellCommand}
-    
+
     </div>
 {: .boldFont}
 

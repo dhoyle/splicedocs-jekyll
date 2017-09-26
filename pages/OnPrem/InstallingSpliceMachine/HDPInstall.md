@@ -8,8 +8,9 @@ sidebar:  onprem_sidebar
 permalink: onprem_install_hortonworks.html
 folder: OnPrem/InstallingSpliceMachine
 ---
-\{% include splicevars.html %} <section>
+<section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+{% include splicevars.html %}
 # Installing and Configuring Splice Machine for Hortonworks HDP
 
 {% include splice_snippets/onpremonlytopic.html %}
@@ -57,7 +58,7 @@ in your cluster:
     {{splvar_basic_SpliceReleaseVersion}} and
     {{splvar_basic_SplicePrevReleaseVersion}}:
     {: .indentLevel1}
-    
+
     <table>
                                 <col />
                                 <col />
@@ -70,22 +71,22 @@ in your cluster:
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   <tr>
-                                       <td class="SpliceRelease">2.6.0</td>
-                                       <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
-                                       <td><a href="{{splvar_install_v26_HDP255}}">{{splvar_install_v26_HDP255}}</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" class="Separator"> </td>
-                                    </tr>
-                                   <tr>
-                                       <td class="SpliceRelease">2.5.0</td>
-                                       <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
-                                       <td><a href="{{splvar_install_v25_HDP255}}">{{splvar_install_v25_HDP255}}</a></td>
-                                    </tr>
+                                       <tr>
+                                           <td class="SpliceRelease">2.6.1</td>
+                                           <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
+                                           <td><a href="{{splvar_install_v261_HDP255}}">{{splvar_install_v261_HDP255}}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="Separator"> </td>
+                                        </tr>
+                                       <tr>
+                                           <td class="SpliceRelease">2.5.0</td>
+                                           <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
+                                           <td><a href="{{splvar_install_v250_HDP255}}">{{splvar_install_v250_HDP255}}</a></td>
+                                        </tr>
                                 </tbody>
                             </table>
-    
+
     To be sure that you have the latest URL, please check [the Splice
     Machine Community site][1]{: target="_blank"} or contact your Splice
     Machine representative.
@@ -93,46 +94,46 @@ in your cluster:
 
 2.  Create the `splice` installation directory:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         sudo mkdir -p /opt/splice
     {: .ShellCommandCell}
-    
+
     </div>
 
 3.  Download the Splice Machine package into the `splice` directory on
     the node. For example:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         sudo curl '{{splvar_install_AWSS3Bucket}}/{{splvar_install_CurrentRelease}}/{{splvar_install_AWSInstallerPart}}/{{splvar_install_HDP-R2}}/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}}' -o /opt/splice/SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}}
     {: .ShellCommandCell}
-    
+
     </div>
 
 4.  Extract the Splice Machine package:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         sudo tar -xf SPLICEMACHINE-{{splvar_install_CurrentRelease}}.{{splvar_install_HDP-R2}}.{{splvar_install_SpliceReleaseGZ}} --directory /opt/splice
     {: .ShellCommandCell}
-    
+
     </div>
 
 5.  Run our script as *root* user <span class="important">on each
     node</span> in your cluster to add symbolic links to set up Splice
     Machine jar script symbolic links
     {: .topLevel}
-    
+
     Issue this command <span class="important">on each node</span> in
     your cluster:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         sudo /opt/splice/default/scripts/install-splice-symlinks.sh
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -177,24 +178,24 @@ in the Ambari in the left pane of the screen.
 
 2.  Make configuration changes:
     {: .topLevel}
-    
+
     Scroll down to where you see *Custom zoo.cfg* and click <span
     class="AppCommand">Add Property</span> to add the `maxClientCnxns`
     property and then again to add the `maxSessionTimeout` property,
     with these values:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         maxClientCnxns=0
         maxSessionTimeout=120000
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 3.  Save Changes
     {: .topLevel}
-    
+
     Click the <span class="AppCommand">Save</span> button to save your
     changes. You'll be prompted to optionally add a note such as
     `Updated ZooKeeper configuration for Splice Machine`. Click <span
@@ -203,11 +204,11 @@ in the Ambari in the left pane of the screen.
 
 4.  Start ZooKeeper
     {: .topLevel}
-    
+
     After you save your changes, you'll land back on the ZooKeeper
     Service <span class="AppCommand">Configs</span> tab in Ambari.
     {: .indentLevel1}
-    
+
     Open the <span class="AppCommand">Service Actions</span> drop-down
     in the upper-right corner and select the <span
     class="AppCommand">Start</span> action to start ZooKeeper. Wait for
@@ -227,7 +228,7 @@ class="AppCommand">Configs</span> tab.
 <div class="opsStepsList" markdown="1">
 1.  Edit the HDFS configuration as follows:
     {: .topLevel}
-    
+
     <table>
                                 <col />
                                 <col />
@@ -252,22 +253,22 @@ class="AppCommand">Configs</span> tab.
 
 2.  Add a new property:
     {: .topLevel}
-    
+
     Click <span class="AppCommand">Add Property</span>... under <span
     class="AppCommand">Custom hdfs-site</span>, and add the following
     property:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         dfs.datanode.handler.count=20
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 3.  Save Changes
     {: .topLevel}
-    
+
     Click the <span class="AppCommand">Save</span> button to save your
     changes. You'll be prompted to optionally add a note such as
     `Updated HDFS configuration for Splice Machine`. Click <span
@@ -276,11 +277,11 @@ class="AppCommand">Configs</span> tab.
 
 4.  Start HDFS
     {: .topLevel}
-    
+
     After you save your changes, you'll land back on the <span
     class="AppCommand">HDFS Service Configs</span> tab in Ambari.
     {: .indentLevel1}
-    
+
     Open the <span class="AppCommand">Service Actions</span> drop-down
     in the upper-right corner and select the <span
     class="AppCommand">Start</span> action to start HDFS. Wait for the
@@ -290,17 +291,17 @@ class="AppCommand">Configs</span> tab.
 5.  Create directories for hbase user and the Splice Machine YARN
     application:
     {: .topLevel}
-    
+
     Use your terminal window to create these directories:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         sudo -iu hdfs hadoop fs -mkdir -p hdfs:///user/hbase hdfs:///user/splice/history
         sudo -iu hdfs hadoop fs -chown -R hbase:hbase hdfs:///user/hbase hdfs:///user/splice
         sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/history
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -316,7 +317,7 @@ class="AppCommand">Configs</span> tab.
 <div class="opsStepsList" markdown="1">
 1.  Update these other configuration values:
     {: .topLevel}
-    
+
     <table>
                                 <col />
                                 <col />
@@ -367,7 +368,7 @@ class="AppCommand">Configs</span> tab.
 
 2.  Save Changes
     {: .topLevel}
-    
+
     Click the <span class="AppCommand">Save</span> button to save your
     changes. You'll be prompted to optionally add a note such as
     `Updated YARN configuration for Splice Machine`. Click <span
@@ -376,11 +377,11 @@ class="AppCommand">Configs</span> tab.
 
 3.  Start YARN
     {: .topLevel}
-    
+
     After you save your changes, you'll land back on the <span
     class="AppCommand">YARN Service Configs</span> tab in Ambari.
     {: .indentLevel1}
-    
+
     Open the <span class="AppCommand">Service Actions</span> drop-down
     in the upper-right corner and select the <span
     class="AppCommand">Start</span> action to start YARN. Wait for the
@@ -415,12 +416,12 @@ class="AppCommand">Configs</span> tab.
 
 2.  Update property values
     {: .topLevel}
-    
+
     You need to replace <span
     class="AppFontCustCode">${hdp.version}</span> with the actual HDP
     version number you are using in these property values:
     {: .indentLevel1}
-    
+
     * mapreduce.admin.map.child.java.opts
     * mapreduce.admin.reduce.child.java.opts
     * mapreduce.admin.user.env
@@ -429,7 +430,7 @@ class="AppCommand">Configs</span> tab.
     * yarn.app.mapreduce.am.admin-command-opts
     * MR AppMaster Java Heap Size
     {: .codeListNested}
-    
+
     An example of an HDP version number that you would substitute for
     <span class="AppFontCustCode">${hdp.version}</span> is
     `2.5.0.0-1245`.
@@ -437,7 +438,7 @@ class="AppCommand">Configs</span> tab.
 
 3.  Save Changes
     {: .topLevel}
-    
+
     Click the <span class="AppCommand">Save</span> button to save your
     changes. You'll be prompted to optionally add a note such as
     `Updated MapReduce2 configuration for Splice Machine`. Click <span
@@ -446,11 +447,11 @@ class="AppCommand">Configs</span> tab.
 
 4.  Start MapReduce2
     {: .topLevel}
-    
+
     After you save your changes, you'll land back on the MapReduce2
     Service <span class="AppCommand">Configs</span> tab in Ambari.
     {: .indentLevel1}
-    
+
     Open the <span class="AppCommand">Service Actions</span> drop-down
     in the upper-right corner and select the <span
     class="AppCommand">Start</span> action to start MapReduce2. Wait for
@@ -469,7 +470,7 @@ make these changes:
 <div class="opsStepsList" markdown="1">
 1.  Change the values of these settings
     {: .topLevel}
-    
+
     <table>
                                 <col />
                                 <col />
@@ -550,35 +551,35 @@ make these changes:
 
 2.  Set the value of the `hbase.coprocessor.region.classes` property to
     the following:
-    
+
     <div class="preWrapperWide" markdown="1">
         com.splicemachine.hbase.MemstoreAwareObserver,com.splicemachine.derby.hbase.SpliceIndexObserver,com.splicemachine.derby.hbase.SpliceIndexEndpoint,com.splicemachine.hbase.RegionSizeEndpoint,com.splicemachine.si.data.hbase.coprocessor.TxnLifecycleEndpoint,com.splicemachine.si.data.hbase.coprocessor.SIObserver,com.splicemachine.hbase.BackupEndpointObserver
     {: .Example}
-    
+
     </div>
 
 3.  Under `Advanced hbase-env`, set the value of `hbase-env template` to
     the following:
-    
+
     <div class="preWrapperWide" markdown="1">
         # Set environment variables here.
-        
+
         # The java implementation to use. Java 1.6 required.
         export JAVA_HOME={{java64_home}}
-        
+
         # HBase Configuration directory
         export HBASE_CONF_DIR=${HBASE_CONF_DIR:-{{hbase_conf_dir}}}
-        
+
         # Extra Java CLASSPATH elements. Optional.
         export HBASE_CLASSPATH=${HBASE_CLASSPATH}
         # add Splice Machine to the HBase classpath
         SPLICELIBDIR="/opt/splice/default/lib"
         APPENDSTRING=$(echo $(find ${SPLICELIBDIR} -maxdepth 1 -name \*.jar | sort) | sed 's/ /:/g')
         export HBASE_CLASSPATH="${HBASE_CLASSPATH}:${APPENDSTRING}"
-        
+
         # The maximum amount of heap to use, in MB. Default is 1000.
         # export HBASE_HEAPSIZE=1000
-        
+
         # Extra Java runtime options.
         # Below are what we set by default. May only work with SUN JVM.
         # For more on why as well as other possible settings,
@@ -586,7 +587,7 @@ make these changes:
         export SERVER_GC_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:{{log_dir}}/gc.log-`date +'%Y%m%d%H%M'`"
         # Uncomment below to enable java garbage collection logging.
         # export HBASE_OPTS="$HBASE_OPTS -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:$HBASE_HOME/logs/gc-hbase.log"
-        
+
         # Uncomment and adjust to enable JMX exporting
         # See jmxremote.password and jmxremote.access in $JRE_HOME/lib/management to configure remote password access.
         # More details at: http://java.sun.com/javase/6/docs/technotes/guides/management/agent.html
@@ -595,51 +596,51 @@ make these changes:
         # If you want to configure BucketCache, specify '-XX: MaxDirectMemorySize=' with proper direct memory size
         # export HBASE_THRIFT_OPTS="$HBASE_JMX_BASE -Dcom.sun.management.jmxremote.port=10103"
         # export HBASE_ZOOKEEPER_OPTS="$HBASE_JMX_BASE -Dcom.sun.management.jmxremote.port=10104"
-        
+
         # File naming hosts on which HRegionServers will run. $HBASE_HOME/conf/regionservers by default.
         export HBASE_REGIONSERVERS=${HBASE_CONF_DIR}/regionservers
-        
+
         # Extra ssh options. Empty by default.
         # export HBASE_SSH_OPTS="-o ConnectTimeout=1 -o SendEnv=HBASE_CONF_DIR"
-        
+
         # Where log files are stored. $HBASE_HOME/logs by default.
         export HBASE_LOG_DIR={{log_dir}}
-        
+
         # A string representing this instance of hbase. $USER by default.
         # export HBASE_IDENT_STRING=$USER
-        
+
         # The scheduling priority for daemon processes. See 'man nice'.
         # export HBASE_NICENESS=10
-        
+
         # The directory where pid files are stored. /tmp by default.
         export HBASE_PID_DIR={{pid_dir}}
-        
+
         # Seconds to sleep between slave commands. Unset by default. This
         # can be useful in large clusters, where, e.g., slave rsyncs can
         # otherwise arrive faster than the master can service them.
         # export HBASE_SLAVE_SLEEP=0.1
-        
+
         # Tell HBase whether it should manage it's own instance of Zookeeper or not.
         export HBASE_MANAGES_ZK=false
-        
+
         export HBASE_OPTS="${HBASE_OPTS} -XX:ErrorFile={{log_dir}}/hs_err_pid%p.log -Djava.io.tmpdir={{java_io_tmpdir}}"
         export HBASE_MASTER_OPTS="${HBASE_MASTER_OPTS} -Xms{{master_heapsize}} -Xmx{{master_heapsize}} ${JDK_DEPENDED_OPTS} -XX:+HeapDumpOnOutOfMemoryError -XX:MaxDirectMemorySize=2g -XX:+AlwaysPreTouch -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=10101 -Dsplice.spark.enabled=true -Dsplice.spark.app.name=SpliceMachine -Dsplice.spark.master=yarn-client -Dsplice.spark.logConf=true -Dsplice.spark.yarn.maxAppAttempts=1 -Dsplice.spark.driver.maxResultSize=1g -Dsplice.spark.driver.cores=2 -Dsplice.spark.yarn.am.memory=1g -Dsplice.spark.dynamicAllocation.enabled=true -Dsplice.spark.dynamicAllocation.executorIdleTimeout=120 -Dsplice.spark.dynamicAllocation.cachedExecutorIdleTimeout=120 -Dsplice.spark.dynamicAllocation.minExecutors=0 -Dsplice.spark.dynamicAllocation.maxExecutors=12 -Dsplice.spark.io.compression.lz4.blockSize=32k -Dsplice.spark.kryo.referenceTracking=false -Dsplice.spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator -Dsplice.spark.kryoserializer.buffer.max=512m -Dsplice.spark.kryoserializer.buffer=4m -Dsplice.spark.locality.wait=100 -Dsplice.spark.memory.fraction=0.5 -Dsplice.spark.scheduler.mode=FAIR -Dsplice.spark.serializer=org.apache.spark.serializer.KryoSerializer -Dsplice.spark.shuffle.compress=false -Dsplice.spark.shuffle.file.buffer=128k -Dsplice.spark.shuffle.service.enabled=true -Dsplice.spark.yarn.am.extraLibraryPath=/usr/hdp/current/hadoop-client/lib/native -Dsplice.spark.yarn.am.waitTime=10s -Dsplice.spark.yarn.executor.memoryOverhead=2048 -Dsplice.spark.driver.extraJavaOptions=-Dlog4j.configuration=file:/etc/spark/conf/log4j.properties -Dsplice.spark.driver.extraLibraryPath=/usr/hdp/current/hadoop-client/lib/native -Dsplice.spark.driver.extraClassPath=/usr/hdp/current/hbase-regionserver/conf:/usr/hdp/current/hbase-regionserver/lib/htrace-core-3.1.0-incubating.jar -Dsplice.spark.executor.extraLibraryPath=/usr/hdp/current/hadoop-client/lib/native -Dsplice.spark.executor.extraClassPath=/usr/hdp/current/hbase-regionserver/conf:/usr/hdp/current/hbase-regionserver/lib/htrace-core-3.1.0-incubating.jar -Dsplice.spark.ui.retainedJobs=100 -Dsplice.spark.ui.retainedStages=100 -Dsplice.spark.worker.ui.retainedExecutors=100 -Dsplice.spark.worker.ui.retainedDrivers=100 -Dsplice.spark.streaming.ui.retainedBatches=100 -Dsplice.spark.executor.cores=4 -Dsplice.spark.executor.memory=8g -Dspark.compaction.reserved.slots=4 -Dsplice.spark.eventLog.enabled=true -Dsplice.spark.eventLog.dir=hdfs:///user/splice/history -Dsplice.spark.local.dir=/tmp -Dsplice.spark.yarn.jars=/opt/splice/default/lib/*"
         export HBASE_REGIONSERVER_OPTS="${HBASE_REGIONSERVER_OPTS} -Xmn{{regionserver_xmn_size}} -Xms{{regionserver_heapsize}} -Xmx{{regionserver_heapsize}} ${JDK_DEPENDED_OPTS} -XX:+HeapDumpOnOutOfMemoryError -XX:MaxDirectMemorySize=2g -XX:+AlwaysPreTouch -XX:+UseG1GC -XX:MaxNewSize=4g -XX:InitiatingHeapOccupancyPercent=60 -XX:ParallelGCThreads=24 -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=5000 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=10102"
-        
+
         {% if security_enabled %}
         export HBASE_OPTS="${HBASE_OPTS} -Djava.security.auth.login.config={{client_jaas_config_file}}"
         export HBASE_MASTER_OPTS="${HBASE_MASTER_OPTS} -Djava.security.auth.login.config={{master_jaas_config_file}}"
         export HBASE_REGIONSERVER_OPTS="${HBASE_REGIONSERVER_OPTS} -Djava.security.auth.login.config={{regionserver_jaas_config_file}}"
         {% endif %}
-        
+
         # HBase off-heap MaxDirectMemorySize
         export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS {% if hbase_max_direct_memory_size %} -XX:MaxDirectMemorySize={{hbase_max_direct_memory_size}}m {% endif %}"
     {: .Example}
-    
+
     </div>
 
 4.  In `Custom hbase-site` property, add the following properties:
-    
+
     <div class="preWrapperWide" markdown="1">
         dfs.client.read.shortcircuit.buffer.size=131072
         hbase.balancer.period=60000
@@ -687,12 +688,12 @@ make these changes:
         splice.txn.completedTxns.concurrency=128
         splice.txn.concurrencyLevel=4096
     {: .Example}
-    
+
     </div>
 
 5.  Save Changes
     {: .topLevel}
-    
+
     Click the <span class="AppCommand">Save</span> button to save your
     changes. You'll be prompted to optionally add a note such as
     `Updated HDFS configuration for Splice Machine`. Click <span
@@ -701,11 +702,11 @@ make these changes:
 
 6.  Start HBase
     {: .topLevel}
-    
+
     After you save your changes, you'll land back on the HBase Service
     <span class="AppCommand">Configs</span> tab in Ambari.
     {: .indentLevel1}
-    
+
     Open the <span class="AppCommand">Service Actions</span> drop-down
     in the upper-right corner and select the <span
     class="AppCommand">Start</span> action to start HBase. Wait for the
@@ -761,15 +762,15 @@ Configuration:
     log4j.appender.spliceDerby.File=${hbase.log.dir}/splice-derby.log
     log4j.appender.spliceDerby.layout=org.apache.log4j.EnhancedPatternLayout
     log4j.appender.spliceDerby.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
-    
+
     log4j.appender.spliceStatement=org.apache.log4j.FileAppender
     log4j.appender.spliceStatement.File=${hbase.log.dir}/splice-statement.log
     log4j.appender.spliceStatement.layout=org.apache.log4j.EnhancedPatternLayout
     log4j.appender.spliceStatement.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
-    
+
     log4j.logger.splice-derby=INFO, spliceDerby
     log4j.additivity.splice-derby=false
-    
+
     # Uncomment to log statements to a different file:
     #log4j.logger.splice-derby.statement=INFO, spliceStatement
     # Uncomment to not replicate statements to the spliceDerby file:
