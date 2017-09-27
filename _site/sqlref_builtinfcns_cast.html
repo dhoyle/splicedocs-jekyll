@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,18 +2810,17 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="cast---builtinfcnscast">CAST   {#BuiltInFcns.Cast}</h1>
 
-    <p>The <code class="highlighter-rouge">CAST</code> function converts a value from one data type to another and
-provides a data type to a dynamic parameter or a <code class="highlighter-rouge">NULL</code> value.</p>
+    <p>The <code>CAST</code> function converts a value from one data type to another and
+provides a data type to a dynamic parameter or a <code>NULL</code> value.</p>
 
-    <p><code class="highlighter-rouge">CAST</code> expressions are permitted anywhere expressions are permitted.</p>
+    <p><code>CAST</code> expressions are permitted anywhere expressions are permitted.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>CAST ( [ Expression | NULL | ? ]
+      <pre class="FcnSyntax"><code>CAST ( [ Expression | NULL | ? ]
   AS Datatype)
 </code></pre>
-      </div>
 
     </div>
     <p>The data type to which you are casting an expression is the <em>target
@@ -3238,18 +3237,17 @@ types.</p>
     <h3 id="applying-multiple-conversions">Applying Multiple Conversions</h3>
 
     <p>As shown in the above table, you cannot convert freely among all types.
-For example, you cannot <code class="highlighter-rouge">CAST</code>an <code class="highlighter-rouge">INTEGER</code> value to a <code class="highlighter-rouge">VARCHAR</code> value.
+For example, you cannot <code>CAST</code>an <code>INTEGER</code> value to a <code>VARCHAR</code> value.
 However, you may be able to achieve your conversion by using multiple
-<code class="highlighter-rouge">CAST</code> operations.</p>
+<code>CAST</code> operations.</p>
 
-    <p>For example, since you can convert an <code class="highlighter-rouge">INTEGER</code> value to a <code class="highlighter-rouge">CHAR</code> value,
-and you can convert a <code class="highlighter-rouge">CHAR</code> value to a <code class="highlighter-rouge">VARCHAR</code> value, you can use
-multiple <code class="highlighter-rouge">CAST</code> operations, as shown here:</p>
+    <p>For example, since you can convert an <code>INTEGER</code> value to a <code>CHAR</code> value,
+and you can convert a <code>CHAR</code> value to a <code>VARCHAR</code> value, you can use
+multiple <code>CAST</code> operations, as shown here:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>CAST(CAST(123 AS CHAR(10)) AS VARCHAR(10));SELECT CAST(CAST(myId as CHAR(20)) as VARCHAR(20));
+      <pre class="Example"><code>CAST(CAST(123 AS CHAR(10)) AS VARCHAR(10));SELECT CAST(CAST(myId as CHAR(20)) as VARCHAR(20));
 </code></pre>
-      </div>
 
     </div>
     <h3 id="conversions-to-and-from-logical-types">Conversions to and from logical types</h3>
@@ -3258,12 +3256,12 @@ multiple <code class="highlighter-rouge">CAST</code> operations, as shown here:<
 vice-versa:</p>
 
     <ul>
-      <li>A <code class="highlighter-rouge">BOOLEAN</code> value can be cast explicitly to any of the string types.
-The result is <code class="highlighter-rouge">'true'</code>, <code class="highlighter-rouge">'false'</code>, or <code class="highlighter-rouge">null</code>.</li>
-      <li>Conversely, string types can be cast to <code class="highlighter-rouge">BOOLEAN</code>; however, an error
-is raised if the string value is not <code class="highlighter-rouge">'true'</code>, <code class="highlighter-rouge">'false'</code>, <code class="highlighter-rouge">'unknown'</code>,
-or <code class="highlighter-rouge">null</code>.</li>
-      <li>Casting <code class="highlighter-rouge">'false'</code> to <code class="highlighter-rouge">BOOLEAN</code> results in a <code class="highlighter-rouge">null</code> value.</li>
+      <li>A <code>BOOLEAN</code> value can be cast explicitly to any of the string types.
+The result is <code>'true'</code>, <code>'false'</code>, or <code>null</code>.</li>
+      <li>Conversely, string types can be cast to <code>BOOLEAN</code>; however, an error
+is raised if the string value is not <code>'true'</code>, <code>'false'</code>, <code>'unknown'</code>,
+or <code>null</code>.</li>
+      <li>Casting <code>'false'</code> to <code>BOOLEAN</code> results in a <code>null</code> value.</li>
     </ul>
 
     <h3 id="conversions-from-numeric-types">Conversions from numeric types</h3>
@@ -3276,40 +3274,40 @@ apply:</p>
 without truncation, an exception is raised.</li>
       <li>If the target numeric cannot represent the fractional component
 (scale) of the source numeric, then the source is silently truncated
-to fit into the target. For example, casting <code class="highlighter-rouge">763.1234</code> as <code class="highlighter-rouge">INTEGER</code>
-yields <code class="highlighter-rouge">763</code>.</li>
+to fit into the target. For example, casting <code>763.1234</code> as <code>INTEGER</code>
+yields <code>763</code>.</li>
     </ul>
 
     <h3 id="conversions-from-and-to-bit-strings">Conversions from and to bit strings</h3>
 
     <p>Bit strings can be converted to other bit strings, but not to character
 strings. Strings that are converted to bit strings are padded with
-trailing zeros to fit the size of the target bit string. The <code class="highlighter-rouge">BLOB</code> type
-is more limited and requires explicit casting. In most cases the <code class="highlighter-rouge">BLOB</code>
-type cannot be cast to and from other types: you can cast a <code class="highlighter-rouge">BLOB</code> only
-to another <code class="highlighter-rouge">BLOB</code>, but you can cast other bit string types to a <code class="highlighter-rouge">BLOB</code>.</p>
+trailing zeros to fit the size of the target bit string. The <code>BLOB</code> type
+is more limited and requires explicit casting. In most cases the <code>BLOB</code>
+type cannot be cast to and from other types: you can cast a <code>BLOB</code> only
+to another <code>BLOB</code>, but you can cast other bit string types to a <code>BLOB</code>.</p>
 
     <h3 id="conversions-of-datetime-values">Conversions of date/time values</h3>
 
-    <p>A date/time value can always be converted to and from a <code class="highlighter-rouge">TIMESTAMP</code>.</p>
+    <p>A date/time value can always be converted to and from a <code>TIMESTAMP</code>.</p>
 
-    <p>If a <code class="highlighter-rouge">DATE</code> is converted to a <code class="highlighter-rouge">TIMESTAMP</code>, the <code class="highlighter-rouge">TIME</code> component of the
-resulting <code class="highlighter-rouge">TIMESTAMP</code> is always <code class="highlighter-rouge">00:00:00</code>.</p>
+    <p>If a <code>DATE</code> is converted to a <code>TIMESTAMP</code>, the <code>TIME</code> component of the
+resulting <code>TIMESTAMP</code> is always <code>00:00:00</code>.</p>
 
-    <p>If a <code class="highlighter-rouge">TIME</code> data value is converted to a <code class="highlighter-rouge">TIMESTAMP</code>, the <code class="highlighter-rouge">DATE</code>
-component is set to the value of <code class="highlighter-rouge">CURRENT_DATE</code> at the time the <code class="highlighter-rouge">CAST</code>
+    <p>If a <code>TIME</code> data value is converted to a <code>TIMESTAMP</code>, the <code>DATE</code>
+component is set to the value of <code>CURRENT_DATE</code> at the time the <code>CAST</code>
 is executed.</p>
 
-    <p>If a <code class="highlighter-rouge">TIMESTAMP</code> is converted to a <code class="highlighter-rouge">DATE</code>, the <code class="highlighter-rouge">TIME</code> component is
+    <p>If a <code>TIMESTAMP</code> is converted to a <code>DATE</code>, the <code>TIME</code> component is
 silently truncated.</p>
 
-    <p>If a <code class="highlighter-rouge">TIMESTAMP</code> is converted to a <code class="highlighter-rouge">TIME</code>, the <code class="highlighter-rouge">DATE</code> component is
+    <p>If a <code>TIMESTAMP</code> is converted to a <code>TIME</code>, the <code>DATE</code> component is
 silently truncated.</p>
 
     <h2 id="examples">Examples</h2>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT CAST (TotalBases AS BIGINT)
+      <pre class="Example"><code>splice&gt; SELECT CAST (TotalBases AS BIGINT)
   FROM Batting;
 
    -- convert timestamps to text
@@ -3329,7 +3327,6 @@ splice&gt; SELECT CAST (FLYING_TIME AS DECIMAL(5,2))
    -- cast a SMALLINT to a BIGINT
 splice&gt; VALUES CAST (CAST (12 as SMALLINT) as BIGINT);
 </code></pre>
-      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
@@ -3372,49 +3369,19 @@ splice&gt; VALUES CAST (CAST (12 as SMALLINT) as BIGINT);
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

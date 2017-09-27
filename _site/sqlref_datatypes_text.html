@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,28 +2810,27 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="text">TEXT</h1>
 
-    <p>A <code class="highlighter-rouge">TEXT</code> (character large object) value can be up to 2,147,483,647
-characters long. A <code class="highlighter-rouge">TEXT</code> object is used to store unicode
+    <p>A <code>TEXT</code> (character large object) value can be up to 2,147,483,647
+characters long. A <code>TEXT</code> object is used to store unicode
 character-based data, such as large documents in any character set.</p>
 
-    <p>Note that, in Splice Machine, <code class="highlighter-rouge">TEXT</code> is a synonym for <code class="highlighter-rouge">CLOB</code>, and that
-the documentation for the <a href="sqlref_datatypes_clob.html"><code class="highlighter-rouge">CLOB</code></a> data type
+    <p>Note that, in Splice Machine, <code>TEXT</code> is a synonym for <code>CLOB</code>, and that
+the documentation for the <a href="sqlref_datatypes_clob.html"><code>CLOB</code></a> data type
 functionally matches the documentation for this topic. Splice Machine
-simply translates <code class="highlighter-rouge">TEXT</code> into <code class="highlighter-rouge">CLOB</code>.</p>
+simply translates <code>TEXT</code> into <code>CLOB</code>.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>TEXT [ ( length [{K |M |G}] ) ]
+      <pre class="FcnSyntax"><code>TEXT [ ( length [{K |M |G}] ) ]
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
       <p class="paramName">length</p>
 
       <p class="paramDefnFirst">An unsigned integer constant that specifies the number of characters in
-the <code class="highlighter-rouge">TEXT</code> unless you specify one of the suffixes you see below, which
+the <code>TEXT</code> unless you specify one of the suffixes you see below, which
 change the meaning of the <em>length</em> value. If you do not specify a length
 value, it defaults to two giga-characters (2,147,483,647).</p>
 
@@ -2854,34 +2853,32 @@ value, it defaults to two giga-characters (2,147,483,647).</p>
     <h2 id="corresponding-compile-time-java-type">Corresponding Compile-time Java Type</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>java.sql.Clob
+      <pre class="FcnSyntax"><code>java.sql.Clob
 </code></pre>
-      </div>
 
     </div>
     <h2 id="jdbc-metadata-type-javasqltypes">JDBC Metadata Type (java.sql.Types)</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>CLOB
+      <pre class="FcnSyntax"><code>CLOB
 </code></pre>
-      </div>
 
     </div>
     <h2 id="usage-notes">Usage Notes</h2>
 
     <p>Use the <em>getClob</em> method on the <em>java.sql.ResultSet</em> to retrieve a
-<code class="highlighter-rouge">CLOB</code> handle to the underlying data.</p>
+<code>CLOB</code> handle to the underlying data.</p>
 
-    <p>There are a number of restrictions on using <code class="highlighter-rouge">BLOB</code>and <code class="highlighter-rouge">CLOB</code> /
-<code class="highlighter-rouge">TEXT</code> objects, which we refer to as LOB-types:</p>
+    <p>There are a number of restrictions on using <code>BLOB</code>and <code>CLOB</code> /
+<code>TEXT</code> objects, which we refer to as LOB-types:</p>
 
     <ul>
-      <li>LOB-types cannot be compared for equality (<code class="highlighter-rouge">=</code>) and non-equality
-(<code class="highlighter-rouge">!=</code>, <code class="highlighter-rouge">&lt;&gt;</code>).</li>
-      <li>LOB-typed values cannot be ordered, so <code class="highlighter-rouge">&lt;, &lt;=, &gt;, &gt;=</code> tests are not
+      <li>LOB-types cannot be compared for equality (<code>=</code>) and non-equality
+(<code>!=</code>, <code>&lt;&gt;</code>).</li>
+      <li>LOB-typed values cannot be ordered, so <code>&lt;, &lt;=, &gt;, &gt;=</code> tests are not
 supported.</li>
       <li>LOB-types cannot be used in indexes or as primary key columns.</li>
-      <li><code class="highlighter-rouge">DISTINCT</code>, <code class="highlighter-rouge">GROUP BY</code>, and <code class="highlighter-rouge">ORDER BY</code> clauses are also prohibited on
+      <li><code>DISTINCT</code>, <code>GROUP BY</code>, and <code>ORDER BY</code> clauses are also prohibited on
 LOB-types.</li>
       <li>LOB-types cannot be involved in implicit casting as other base-types.</li>
     </ul>
@@ -2889,9 +2886,8 @@ LOB-types.</li>
     <h2 id="example">Example</h2>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>CREATE TABLE myTable( txtCol TEXT(65535));
+      <pre class="Example"><code>CREATE TABLE myTable( txtCol TEXT(65535));
 </code></pre>
-      </div>
 
     </div>
   </div>
@@ -2928,49 +2924,19 @@ LOB-types.</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

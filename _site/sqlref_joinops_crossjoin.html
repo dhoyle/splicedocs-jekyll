@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,64 +2810,60 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="cross-join---sql-joinopscrossjoin">CROSS JOIN   {#SQL-JoinOps.CrossJoin}</h1>
 
-    <p>A <code class="highlighter-rouge">CROSS JOIN</code> is a <a href="sqlref_joinops_about.html"><code class="highlighter-rouge">JOIN</code> operation</a> that
-produces the Cartesian product of two tables. Unlike other <code class="highlighter-rouge">JOIN</code>
+    <p>A <code>CROSS JOIN</code> is a <a href="sqlref_joinops_about.html"><code>JOIN</code> operation</a> that
+produces the Cartesian product of two tables. Unlike other <code>JOIN</code>
 operators, it does not let you specify a join clause. You may, however,
-specify a <code class="highlighter-rouge">WHERE</code> clause in the <code class="highlighter-rouge">SELECT</code> statement.</p>
+specify a <code>WHERE</code> clause in the <code>SELECT</code> statement.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>TableExpression CROSS JOIN {
+      <pre class="FcnSyntax"><code>TableExpression CROSS JOIN {
     TableExpression )
 }
 </code></pre>
-      </div>
 
     </div>
     <h2 id="examples">Examples</h2>
 
-    <p>The following <code class="highlighter-rouge">SELECT</code> statements are equivalent:</p>
+    <p>The following <code>SELECT</code> statements are equivalent:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT * FROM CITIES CROSS JOIN FLIGHTS;
+      <pre class="Example"><code>splice&gt; SELECT * FROM CITIES CROSS JOIN FLIGHTS;
 
 splice&gt; SELECT * FROM CITIES, FLIGHTS;
 </code></pre>
-      </div>
 
     </div>
-    <p>The following <code class="highlighter-rouge">SELECT</code> statements are equivalent:</p>
+    <p>The following <code>SELECT</code> statements are equivalent:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT * FROM CITIES CROSS JOIN FLIGHTS
+      <pre class="Example"><code>splice&gt; SELECT * FROM CITIES CROSS JOIN FLIGHTS
    WHERE CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT;
 
 splice&gt; SELECT * FROM CITIES INNER JOIN FLIGHTS
     ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT;
 </code></pre>
-      </div>
 
     </div>
-    <p>The following example is more complex. The <code class="highlighter-rouge">ON</code> clause in this example
-is associated with the <code class="highlighter-rouge">LEFT OUTER JOIN</code> operation. Note that you can
-use parentheses around a <code class="highlighter-rouge">JOIN</code> operation.</p>
+    <p>The following example is more complex. The <code>ON</code> clause in this example
+is associated with the <code>LEFT OUTER JOIN</code> operation. Note that you can
+use parentheses around a <code>JOIN</code> operation.</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT * FROM CITIES LEFT OUTER JOIN
+      <pre class="Example"><code>splice&gt; SELECT * FROM CITIES LEFT OUTER JOIN
   (FLIGHTS CROSS JOIN COUNTRIES)
   ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT
   WHERE COUNTRIES.COUNTRY_ISO_CODE = 'US';
 </code></pre>
-      </div>
 
     </div>
-    <p>A <code class="highlighter-rouge">CROSS JOIN</code> operation can be replaced with an <code class="highlighter-rouge">INNER JOIN</code> where the
-join clause always evaluates to true (for example, <code class="highlighter-rouge">1=1</code>). It can also
+    <p>A <code>CROSS JOIN</code> operation can be replaced with an <code>INNER JOIN</code> where the
+join clause always evaluates to true (for example, <code>1=1</code>). It can also
 be replaced with a sub-query. So equivalent queries would be:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT * FROM CITIES LEFT OUTER JOIN
+      <pre class="Example"><code>splice&gt; SELECT * FROM CITIES LEFT OUTER JOIN
   FLIGHTS INNER JOIN COUNTRIES ON 1=1
   ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT
   WHERE COUNTRIES.COUNTRY_ISO_CODE = 'US';
@@ -2877,14 +2873,13 @@ splice&gt; SELECT * FROM CITIES LEFT OUTER JOIN
   ON CITIES.AIRPORT = S.ORIG_AIRPORT
   WHERE S.COUNTRY_ISO_CODE = 'US';
 </code></pre>
-      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
       <li><a href="sqlref_joinops_intro.html">JOIN operations</a></li>
-      <li><a href="sqlref_clauses_using.html"><code class="highlighter-rouge">USING</code></a> clause</li>
+      <li><a href="sqlref_clauses_using.html"><code>USING</code></a> clause</li>
     </ul>
 
   </div>
@@ -2921,49 +2916,19 @@ splice&gt; SELECT * FROM CITIES LEFT OUTER JOIN
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

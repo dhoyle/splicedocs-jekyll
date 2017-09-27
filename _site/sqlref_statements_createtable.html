@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2806,13 +2806,12 @@
 
     
 
-  <p>\</p>
-
+  
 <section>
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="create-table---statementscreatetable">CREATE TABLE   {#Statements.CreateTable}</h1>
 
-    <p>A <code class="highlighter-rouge">CREATE TABLE</code> statement creates a table. Tables contain columns and
+    <p>A <code>CREATE TABLE</code> statement creates a table. Tables contain columns and
 constraints, rules to which data must conform. Table-level constraints
 specify a column or columns. Columns have a data type and can specify
 column constraints (column-level constraints).</p>
@@ -2830,31 +2829,31 @@ users:</p>
 
     <p>These privileges cannot be revoked from the table and database owners.</p>
 
-    <p class="noteIcon">Only database and schema owners can use the <code class="highlighter-rouge">CREATE TABLE</code> statement,
+    <p class="noteIcon">Only database and schema owners can use the <code>CREATE TABLE</code> statement,
 which means that table creation privileges cannot be granted to others.</p>
 
-    <p>For information about constraints, see <a href="sqlref_clauses_constraint.html"><code class="highlighter-rouge">CONSTRAINT</code>
+    <p>For information about constraints, see <a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code>
 clause</a>.</p>
 
     <p>You can specify a default value for a column. A default value is the
 value to be inserted into a column if no other value is specified. If
-not explicitly specified, the default value of a column is <code class="highlighter-rouge">NULL</code>.</p>
+not explicitly specified, the default value of a column is <code>NULL</code>.</p>
 
     <p>If a qualified table name is specified, the schema name cannot begin
-with <code class="highlighter-rouge">SYS</code>.</p>
+with <code>SYS</code>.</p>
 
     <p class="noteNote">The <a href="sqlref_statements_pintable.html">PIN TABLE</a> statements are
 documented separately in this section.</p>
 
     <h2 id="syntax">Syntax</h2>
 
-    <p>There are two different variants of the <code class="highlighter-rouge">CREATE TABLE</code> statement,
+    <p>There are two different variants of the <code>CREATE TABLE</code> statement,
 depending on whether you are specifying the column definitions and
 constraints, or whether you are modeling the columns after the results
-of a query expression with the <code class="highlighter-rouge">CREATE TABLE AS</code> form:</p>
+of a query expression with the <code>CREATE TABLE AS</code> form:</p>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>CREATE TABLE table-Name
+      <pre class="FcnSyntax"><code>CREATE TABLE table-Name
   {
       ( {column-definition |
          Table-level constraint}
@@ -2866,7 +2865,6 @@ of a query expression with the <code class="highlighter-rouge">CREATE TABLE AS
       WITH NO DATA
    }
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -2879,7 +2877,7 @@ of a query expression with the <code class="highlighter-rouge">CREATE TABLE AS
       <p class="paramDefnFirst">A column definition.</p>
 
       <p class="paramDefn">The maximum number of columns allowed in a table is
-<code class="highlighter-rouge">100000</code>.</p>
+<code>100000</code>.</p>
 
       <p class="paramName">Table-level constraint</p>
 
@@ -2891,7 +2889,7 @@ of a query expression with the <code class="highlighter-rouge">CREATE TABLE AS
 
       <p class="paramName">AS query-expression</p>
 
-      <p class="paramDefnFirst">See the <a href="#createAs"><code class="highlighter-rouge">CREATE TABLE AS</code></a> section below.</p>
+      <p class="paramDefnFirst">See the <a href="#createAs"><code>CREATE TABLE AS</code></a> section below.</p>
 
       <p class="paramDefn">If this select list contains an expression, you must name the result of
 the expression. Refer to the final example at the bottom of this topic
@@ -2899,18 +2897,18 @@ page.</p>
 
       <p class="paramName">WITH NO DATA</p>
 
-      <p class="paramDefnFirst">See the <a href="#createAs"><code class="highlighter-rouge">CREATE TABLE AS</code></a> section below.</p>
+      <p class="paramDefnFirst">See the <a href="#createAs"><code>CREATE TABLE AS</code></a> section below.</p>
 
     </div>
     <h2 id="createAs">CREATE TABLE … AS …</h2>
 
-    <p>With this alternate form of the <code class="highlighter-rouge">CREATE TABLE</code> statement, the column
+    <p>With this alternate form of the <code>CREATE TABLE</code> statement, the column
 names and/or the column data types can be specified by providing a
 query. The columns in the query result are used as a model for creating
 the columns in the new table.</p>
 
-    <p><strong>You cannot include</strong> an <code class="highlighter-rouge">ORDER BY</code> clause in the query expression you
-use in the <code class="highlighter-rouge">CREATE TABLE AS</code> statement.</p>
+    <p><strong>You cannot include</strong> an <code>ORDER BY</code> clause in the query expression you
+use in the <code>CREATE TABLE AS</code> statement.</p>
 
     <p class="noteNote">If the select list contains an expression, <strong>you must name the result of
 the expression</strong>. Refer to the final example at the bottom of this topic
@@ -2924,31 +2922,30 @@ of columns must be present in the result of the query expression; the
 data types of those columns are used for the corresponding columns of
 the new table.</p>
 
-    <p>The <code class="highlighter-rouge">WITH NO DATA</code> clause specifies that the data rows which result from
+    <p>The <code>WITH NO DATA</code> clause specifies that the data rows which result from
 evaluating the query expression are not used; only the names and data
 types of the columns in the query result are used.</p>
 
     <div class="notePlain">
-      <p>There is currently a known problem using the <code class="highlighter-rouge">CREATE TABLE AS</code> form of
-the <code class="highlighter-rouge">CREATE TABLE</code> statement .when the data to be inserted into the new
-table results from a <code class="highlighter-rouge">RIGHT OUTER JOIN</code> operation. For example, the
-following statement currently produces a table with all <code class="highlighter-rouge">NULL</code> values:</p>
+      <p>There is currently a known problem using the <code>CREATE TABLE AS</code> form of
+the <code>CREATE TABLE</code> statement .when the data to be inserted into the new
+table results from a <code>RIGHT OUTER JOIN</code> operation. For example, the
+following statement currently produces a table with all <code>NULL</code> values:</p>
 
       <div class="preWrapper">
-        <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE t3 AS
+        <pre class="Example"><code>splice&gt; CREATE TABLE t3 AS
    SELECT t1.a,t1.b,t2.c,t2.d
    FROM t1 RIGHT OUTER JOIN t2 ON t1.b = t2.c
    WITH DATA;
 0 rows inserted/updated/deleted
 </code></pre>
-        </div>
 
       </div>
       <p>There’s a simple workaround for now: create the table without inserting
 the data, and then insert the data; for example:</p>
 
       <div class="preWrapper">
-        <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE t3 AS
+        <pre class="Example"><code>splice&gt; CREATE TABLE t3 AS
    SELECT t1.a,t1.b,t2.c,t2.d
    FROM t1 RIGHT OUTER JOIN t2 ON t1.b = t2.c
    WITH NO DATA;
@@ -2959,14 +2956,13 @@ splice&gt; INSERT INTO t3
    FROM t1 RIGHT OUTER JOIN t2 ON t1.b = t2.c;
 0 rows inserted/updated/deleted
 </code></pre>
-        </div>
 
       </div>
     </div>
     <h2 id="examples">Examples</h2>
 
     <p>This section presents examples of both forms of the
-<code class="highlighter-rouge">CREATE TABLE</code> statement.</p>
+<code>CREATE TABLE</code> statement.</p>
 
     <h3 id="createtable">CREATE TABLE</h3>
 
@@ -2974,7 +2970,7 @@ splice&gt; INSERT INTO t3
 
     <div class="preWrapperWide">
 
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE Players(
+      <pre class="Example"><code>splice&gt; CREATE TABLE Players(
     ID           SMALLINT NOT NULL PRIMARY KEY,
     Team         VARCHAR(64) NOT NULL,
     Name         VARCHAR(64) NOT NULL,
@@ -2984,21 +2980,19 @@ splice&gt; INSERT INTO t3
     );
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
       <p class="body">This example includes a table-level primary key definition that includes
 two columns:</p>
 
       <div class="preWrapper">
 
-        <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE HOTELAVAILABILITY (
+        <pre class="Example"><code>splice&gt; CREATE TABLE HOTELAVAILABILITY (
    Hotel_ID INT NOT NULL,
    Booking_Date DATE NOT NULL,
    Rooms_Taken INT DEFAULT 0,
    PRIMARY KEY (Hotel_ID, Booking_Date ));
 0 rows inserted/updated/deleted
 </code></pre>
-        </div>
 
       </div>
       <p class="body">This example assigns an identity column attribute with an initial value
@@ -3006,16 +3000,15 @@ of 5 that increments by 5, and also includes a primary key constraint:</p>
 
       <div class="preWrapper">
 
-        <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE PEOPLE (
+        <pre class="Example"><code>splice&gt; CREATE TABLE PEOPLE (
    Person_ID INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 5, INCREMENT BY 5)
       CONSTRAINT People_PK PRIMARY KEY,
    Person VARCHAR(26) );
 0 rows inserted/updated/deleted
 </code></pre>
-        </div>
 
-        <p class="noteNote">For more examples of <code class="highlighter-rouge">CREATE TABLE</code> statements using the various
-constraints, see <a href="sqlref_clauses_constraint.html"><code class="highlighter-rouge">CONSTRAINT</code> clause</a></p>
+        <p class="noteNote">For more examples of <code>CREATE TABLE</code> statements using the various
+constraints, see <a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code> clause</a></p>
 
       </div>
     </div>
@@ -3025,12 +3018,11 @@ constraints, see <a href="sqlref_clauses_constraint.html"><code class="highlight
 data types) from an existing table, but does not duplicate the data:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE NewPlayers
+      <pre class="Example"><code>splice&gt; CREATE TABLE NewPlayers
    AS SELECT * 
          FROM Players WITH NO DATA;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
     <p class="body">This example creates a new table that includes the data and uses only
@@ -3039,12 +3031,11 @@ the columns:</p>
 
     <div class="preWrapperWide">
 
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE MorePlayers (ID, PlayerName, Born)
+      <pre class="Example"><code>splice&gt; CREATE TABLE MorePlayers (ID, PlayerName, Born)
    AS SELECT ID, DisplayName, Birthdate
          FROM Players WITH DATA;
 94 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
     <p class="body">This example creates a new table using unnamed expressions in the query
@@ -3053,23 +3044,22 @@ in the newly created table:</p>
 
     <div class="preWrapperWide">
 
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE T3 (X,Y)
+      <pre class="Example"><code>splice&gt; CREATE TABLE T3 (X,Y)
    AS SELECT 2*I AS COL1, 2.0*F AS COL2
          FROM T1 WITH NO DATA;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_statements_altertable.html"><code class="highlighter-rouge">ALTER TABLE</code></a> statement</li>
-      <li><a href="sqlref_statements_createexternaltable.html"><code class="highlighter-rouge">CREATE EXTERNAL TABLE</code></a> statement</li>
-      <li><a href="sqlref_statements_pintable.html"><code class="highlighter-rouge">PIN TABLE</code></a> statement</li>
-      <li><a href="sqlref_clauses_constraint.html"><code class="highlighter-rouge">CONSTRAINT</code></a> clause</li>
-      <li><a href="sqlref_statements_droptable.html"><code class="highlighter-rouge">DROP TABLE</code></a> statement</li>
-      <li><a href="sqlref_statements_unpintable.html"><code class="highlighter-rouge">UNPIN TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_altertable.html"><code>ALTER TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_createexternaltable.html"><code>CREATE EXTERNAL TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_pintable.html"><code>PIN TABLE</code></a> statement</li>
+      <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a> clause</li>
+      <li><a href="sqlref_statements_droptable.html"><code>DROP TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_unpintable.html"><code>UNPIN TABLE</code></a> statement</li>
       <li><a href="developers_fundamentals_foreignkeys.html">Foreign Keys</a> in the
 <em>Developer’s Guide</em>.</li>
       <li><a href="developers_fundamentals_triggers.html">Triggers</a> in the <em>Developer’s
@@ -3110,49 +3100,19 @@ Guide</em>.</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

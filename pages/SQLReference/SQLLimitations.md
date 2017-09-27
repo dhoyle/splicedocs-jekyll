@@ -8,7 +8,7 @@ sidebar:  sqlref_sidebar
 permalink: sqlref_sqllimitations.html
 folder: SQLReference
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SQL Limitations   {#SQLReference.SQLLimitations}
 

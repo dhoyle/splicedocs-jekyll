@@ -17,8 +17,7 @@ of all Splice Machine loggers in the system. Use this to find loggers of
 interest, if you want to determine or change their log levels.
 
 You can read more about Splice  Machine loggers in the
-[Logging](developers_tuning_logging.html) topic in our *Administrator's
-Guide*.
+[Logging](developers_tuning_logging.html) topic.
 {: .noteNote}
 
 ## Syntax
@@ -263,7 +262,7 @@ Splice Machine Release 1.5:
     com.splicemachine.utils.SpliceUtilities
     com.splicemachine.utils.SpliceZooKeeperManager
     com.splicemachine.utils.ZkUtils
-    
+
     203 rows selected
 {: .Example xml:space="preserve"}
 
@@ -275,4 +274,3 @@ Splice Machine Release 1.5:
 
 </div>
 </section>
-

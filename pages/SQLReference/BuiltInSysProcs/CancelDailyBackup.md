@@ -33,9 +33,8 @@ A `BIGINT` value that specifies which scheduled backup job you want to
 cancel.
 {: .paramDefnFirst}
 
-You can find the *jobId* you want to cancel by querying the [*Backing Up
-and Restoring*](onprem_admin_backingup.html) topic in our
-*Administrator's Guide* for more information.
+To find the *jobId* you want to cancel, see the [*Backing Up
+and Restoring*](onprem_admin_backingup.html) topic.
 {: .paramDefn}
 
 </div>
@@ -57,14 +56,14 @@ find the `jobId` of the job you want to cancel.
 
 And then cancel that job; for example:
 
-    
+
     splice> SELECT * FROM SYS.SYSBACKUPJOBS;
     JOB_ID      |FILESYSTEM                               |TYPE          |HOUR_OF_DAY|BEGIN_TIMESTAMP
     -------------------------------------------------------------------------------------------------
     41069       |/~/Documents/splicemachine/dbBackups/    |full          |18         |09:41:05.455
-    
+
     1 row selected
-    
+
     splice> CALL SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(41069);
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -89,4 +88,3 @@ And then cancel that job; for example:
 
 </div>
 </section>
-

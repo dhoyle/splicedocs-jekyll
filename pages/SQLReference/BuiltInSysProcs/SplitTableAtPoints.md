@@ -75,7 +75,7 @@ This is the list of split points computed by a previous call to the
 `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` does not produce
 results.
 
-{% include splice_snippets/hfileimport_example.html %}
+{% include splice_snippets/hfileimport_example.md %}
 ## See Also
 
 * [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
@@ -84,4 +84,3 @@ results.
 
 </div>
 </section>
-

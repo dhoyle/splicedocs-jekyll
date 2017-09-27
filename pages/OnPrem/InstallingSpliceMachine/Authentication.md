@@ -8,11 +8,11 @@ sidebar:  onprem_sidebar
 permalink: onprem_install_configureauth.html
 folder: OnPrem/InstallingSpliceMachine
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Configuring Splice Machine Authentication
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic describes the mechanisms you can use in Splice Machine to
 authenticate users and how to configure the mechanism you choose to use,
 in these sections:
@@ -51,7 +51,7 @@ which is described below the table:
                             <td><code>LDAP</code></td>
                             <td>
                                 <p>User IDs are validating against an existing LDAP service.</p>
-{% include splice_snippets/enterpriseonly_note.html %}
+{% include splice_snippets/enterpriseonly_note.md %}
                             </td>
                         </tr>
                     </tbody>
@@ -210,7 +210,7 @@ Notes about the LDAP property values:
   port <span class="HighlightedCode">389</span>.
 * The <span class="HighlightedCode">ldap.searchAuthDN</span> property is
   the security principal:
-  
+
   * This is used to create the initial LDAP context (aka its connection
     to a specific DN).
   * It must have the authority to search the user space for user DNs.

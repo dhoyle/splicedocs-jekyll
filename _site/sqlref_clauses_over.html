@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,24 +2810,22 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="over">OVER</h1>
 
-    <p>The <code class="highlighter-rouge">OVER</code> clause is used in window functions to define the window on
+    <p>The <code>OVER</code> clause is used in window functions to define the window on
 which the function operates. Window functions are permitted only in the
-<a href="sqlref_clauses_orderby.html"><code class="highlighter-rouge">ORDER BY</code></a> clause of queries.</p>
+<a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause of queries.</p>
 
     <p>For general information about and examples of Window functions in Splice
 Machine, see the <a href="developers_fundamentals_windowfcns.html">Using Window
-Functions</a> topic in our <em>Splice
-Machine Developer’s Guide</em>.</p>
+Functions</a> topic.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>expression OVER( 
+      <pre class="FcnSyntax"><code>expression OVER( 
      [partitionClause]
      [orderClause]
      [frameClause] );
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -2838,17 +2836,16 @@ Machine Developer’s Guide</em>.</p>
       <p class="paramName">partitionClause</p>
 
       <p class="paramDefnFirst">Optional. Specifies how the window function is broken down over groups,
-in the same way that <code class="highlighter-rouge">GROUP BY</code> specifies groupings for regular
+in the same way that <code>GROUP BY</code> specifies groupings for regular
 aggregate functions. If you omit this clause, there is one partition
 that contains all rows.</p>
 
       <p class="paramDefn">The syntax for this clause is essentially the same as for the
-<a href="sqlref_clauses_groupby.html"><code class="highlighter-rouge">GROUP BY</code></a> clause for queries; To recap:</p>
+<a href="sqlref_clauses_groupby.html"><code>GROUP BY</code></a> clause for queries; To recap:</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>PARTITION BY expression [, ...]
+        <pre class="FcnSyntax"><code>PARTITION BY expression [, ...]
 </code></pre>
-        </div>
 
       </div>
       <div class="paramList">
@@ -2863,20 +2860,19 @@ that contains all rows.</p>
 since it specifies by which variables ranking is performed. It is also
 needed for cumulative functions. The syntax for this clause is
 essentially the same as for the
-<a href="sqlref_clauses_orderby.html"><code class="highlighter-rouge">SQL Reference</code></a>. To recap:</p>
+<a href="sqlref_clauses_orderby.html"><code>SQL Reference</code></a>. To recap:</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>ORDER BY expression
+        <pre class="FcnSyntax"><code>ORDER BY expression
    [ ASC | DESC | USING operator ]   [ NULLS FIRST | NULLS LAST ]
    [, ...]
 </code></pre>
-        </div>
 
       </div>
-      <p class="noteNote">The default ordering is ascending (<code class="highlighter-rouge">ASC</code>). For ascending order,
-<code class="highlighter-rouge">NULL</code> values are returned last unless you specify <code class="highlighter-rouge">NULLS FIRST</code>; for
-descending order, <code class="highlighter-rouge">NULL</code> values are returned first unless you specify
-<code class="highlighter-rouge">NULLS LAST</code>.</p>
+      <p class="noteNote">The default ordering is ascending (<code>ASC</code>). For ascending order,
+<code>NULL</code> values are returned last unless you specify <code>NULLS FIRST</code>; for
+descending order, <code>NULL</code> values are returned first unless you specify
+<code>NULLS LAST</code>.</p>
 
       <p class="paramName">frameClause</p>
 
@@ -2888,22 +2884,20 @@ the frame.</p>
       <p class="paramDefn">The syntax for the frame clause is:</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>[RANGE | ROWS] frameStart |
+        <pre class="FcnSyntax"><code>[RANGE | ROWS] frameStart |
 [RANGE | ROWS] BETWEEN frameStart AND frameEnd
 </code></pre>
-        </div>
 
       </div>
       <p class="paramDefn">The syntax for both <em>frameStart</em> and <em>frameEnd</em> is:</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>UNBOUNDED PRECEDING |
+        <pre class="FcnSyntax"><code>UNBOUNDED PRECEDING |
 &lt;n&gt; PRECEDING       |
 CURRENT ROW         |
 &lt;n&gt; FOLLOWING       |
-UNBOUNDED FOLLOWING 
+UNBOUNDED FOLLOWING
 </code></pre>
-        </div>
 
       </div>
       <div class="paramList">
@@ -2916,43 +2910,40 @@ UNBOUNDED FOLLOWING
     <h2 id="usage-restrictions">Usage Restrictions</h2>
 
     <p>Because window functions are only allowed in
-<a href="sqlref_clauses_using.html"><code class="highlighter-rouge">HAVING</code></a>clauses, you sometimes need to use
+<a href="sqlref_clauses_using.html"><code>HAVING</code></a>clauses, you sometimes need to use
 subqueries with window functions to accomplish what seems like it could
 be done in a simpler query.</p>
 
-    <p>For example, because you cannot use an <code class="highlighter-rouge">OVER</code> clause in a
-<code class="highlighter-rouge">WHERE</code> clause, a query like the following is not possible:</p>
+    <p>For example, because you cannot use an <code>OVER</code> clause in a
+<code>WHERE</code> clause, a query like the following is not possible:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>SELECT *
+      <pre class="Example"><code>SELECT *
 FROM Batting
 WHERE rank() OVER (PARTITION BY "playerID" ORDER BY "G") = 1;
 </code></pre>
-      </div>
 
     </div>
-    <p>And because <code class="highlighter-rouge">WHERE</code> and <code class="highlighter-rouge">HAVING</code> are computed before the windowing
+    <p>And because <code>WHERE</code> and <code>HAVING</code> are computed before the windowing
 functions, this won’t work either:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>SELECT *, rank() OVER (PARTITION BY "playerID" ORDER BY "G") as rank
+      <pre class="Example"><code>SELECT *, rank() OVER (PARTITION BY "playerID" ORDER BY "G") as rank
 FROM Batting
 WHERE rank = 1;
 </code></pre>
-      </div>
 
     </div>
     <p>Instead, you need to use a subquery:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>SELECT *
+      <pre class="Example"><code>SELECT *
 FROM (
    SELECT *, rank() OVER (PARTITION BY "playerID" ORDER BY "G") as rank
    FROM Batting
 ) tmp
 WHERE rank = 1;
 </code></pre>
-      </div>
 
     </div>
     <p>And note that the above subquery will add a rank column to the original
@@ -2964,13 +2955,12 @@ columns,</p>
 the frame clause.</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code><span class="gd">--- Rank each year within a player by the number of home runs hit by that player
-</span>RANK() OVER (PARTITION BY playerID ORDER BY desc(H));
+      <pre class="Example"><code>--- Rank each year within a player by the number of home runs hit by that player
+RANK() OVER (PARTITION BY playerID ORDER BY desc(H));
 
-<span class="gd">--- Compute the change in number of games played from one year to the next:
-</span>G - LAG(G) OVER (PARTITION G playerID ORDER BY yearID);
+--- Compute the change in number of games played from one year to the next:
+G - LAG(G) OVER (PARTITION G playerID ORDER BY yearID);
 </code></pre>
-      </div>
 
     </div>
     <h2 id="examples-with-frame-clauses">Examples with Frame Clauses</h2>
@@ -3009,19 +2999,18 @@ presents. There are three commonly used frame clauses:</p>
     <p>Here are some examples of window functions using frame clauses:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code><span class="gd">--- Compute the running sum of G for each player:
-</span>SUM(G) OVER (PARTITION BY playerID ORDER BY yearID
+      <pre class="Example"><code>--- Compute the running sum of G for each player:
+SUM(G) OVER (PARTITION BY playerID ORDER BY yearID
   BETWEEN UNBOUNDED PRECEEDING AND CURRENT ROW);
 
-<span class="gd">--- Compute the career year:
-</span>YearID - min(YEARID) OVER (PARTITION BY playerID
+--- Compute the career year:
+YearID - min(YEARID) OVER (PARTITION BY playerID
    BETWEEN UNBOUNDED PRECEEDING AND UNBOUNDED FOLLOWING) + 1;
 
-<span class="gd">--- Compute a rolling average of games by player:
-</span>MEAN(G) OVER (PARTITION BY playerID ORDER BY yearID
+--- Compute a rolling average of games by player:
+MEAN(G) OVER (PARTITION BY playerID ORDER BY yearID
    BETWEEN 2 PRECEEDING AND 2 FOLLOWING);
 </code></pre>
-      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
@@ -3029,17 +3018,16 @@ presents. There are three commonly used frame clauses:</p>
     <ul>
       <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate
 </a>functions</li>
-      <li><a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code></a> expression</li>
-      <li><a href="sqlref_clauses_having.html"><code class="highlighter-rouge">HAVING</code></a> clause</li>
-      <li><a href="sqlref_clauses_orderby.html"><code class="highlighter-rouge">ORDER BY</code></a> clause</li>
-      <li><a href="sqlref_clauses_where.html"><code class="highlighter-rouge">WHERE</code></a> clause</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_clauses_having.html"><code>HAVING</code></a> clause</li>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
       <li>The <a href="developers_fundamentals_windowfcns.html">Using Window Functions</a>
 section in our <em>Splice Machine Developer’s Guide</em></li>
     </ul>
 
   </div>
 </section>
-
 
 
     <div class="tags">
@@ -3071,49 +3059,19 @@ section in our <em>Splice Machine Developer’s Guide</em></li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

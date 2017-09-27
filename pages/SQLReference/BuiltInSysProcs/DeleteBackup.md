@@ -20,7 +20,7 @@ procedures.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_DELETE_BACKUP( BIGINT backupId ); 
+    SYSCS_UTIL.SYSCS_DELETE_BACKUP( BIGINT backupId );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -31,8 +31,8 @@ backupId
 Specifies the ID of the backup job you want to delete.
 {: .paramDefnFirst}
 
-You can find the ID of a specific backup by querying the `Backing Up and
-Restoring` topic in our *Administrator's Guide* for more information.
+To find the *jobId* you want to cancel, see the [*Backing Up
+and Restoring*](onprem_admin_backingup.html) topic.
 {: .paramDefn}
 
 </div>
@@ -59,9 +59,9 @@ And then delete that job:
     BACKUP_ID  |BEGIN_TIMESTAMP           |END_TIMESTAMP            |STATUS  |FILESYSTEM                                     |SCOPE |INCR&|INCREMENTAL_PARENT_&|BACKUP_ITEM
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     40975      |2015-11-25 09:32:53.04    |2015-11-25 09:33:09.081  |S       |/Users/me/Documents/splicemachine/dbBackups    |D     |false|-1                  |93
-    
+
     1 row selected
-    
+
     splice> CALL SYSCS_UTIL.SYSCS_DELETE_BACKUP(40975);
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -86,4 +86,3 @@ And then delete that job:
 
 </div>
 </section>
-

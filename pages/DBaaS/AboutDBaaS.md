@@ -8,7 +8,7 @@ product: all
 permalink: dbaas_about.html
 folder: DBaaS
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # About the Splice Machine Database Service
 

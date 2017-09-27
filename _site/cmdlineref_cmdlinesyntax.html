@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -551,10 +551,9 @@ command line commands.</p>
     <p>To run the Splice Machine command line interpreter, run the <span class="ShellCommand">sqlshell.sh</span> script in your terminal window.</p>
 
     <div class="preWrapperWide">
-      <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>% ./sqlshell.sh
+      <pre class="ShellCommand"><code>% ./sqlshell.sh
 splice&gt; 
 </code></pre>
-      </div>
 
     </div>
     <p>When the interpreter prompts you with <span class="AppCommand">splice&gt;</span>, you can enter commands, ending
@@ -562,22 +561,20 @@ each with a semicolon. For a complete description of <span class="AppCommand">sp
 this topic, <a href="#Syntax" class="selected">Command Line Syntax</a>,</p>
 
     <p>Note that you can optionally specify a file of sql commands that the
-interpreter will run using the <code class="highlighter-rouge">-f</code> parameter; after running those
+interpreter will run using the <code>-f</code> parameter; after running those
 commands, the interpreter exits. For example:</p>
 
     <div class="preWrapper">
-      <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>./sqlshell.sh -f /home/mydir/sql/test.sql
+      <pre class="ShellCommand"><code>./sqlshell.sh -f /home/mydir/sql/test.sql
 </code></pre>
-      </div>
 
     </div>
     <p>You can optionally include parameter values when running <span class="ShellCommand">sqlshell.sh</span> script, to change default
 values. Here’s the syntax:</p>
 
     <div class="preWrapper">
-      <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>sqlshell.sh [-h host] [-p port ] [-u username] [-s password] [-f commandsFile
+      <pre class="ShellCommand"><code>sqlshell.sh [-h host] [-p port ] [-u username] [-s password] [-f commandsFile
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -585,34 +582,34 @@ values. Here’s the syntax:</p>
 
       <p class="paramDefnFirst">The hostname or IP address of your Splice Machine HBase RegionServer.</p>
 
-      <p class="paramDefn">The default value is <code class="highlighter-rouge">localhost</code>.</p>
+      <p class="paramDefn">The default value is <code>localhost</code>.</p>
 
       <p class="paramName">-port</p>
 
       <p class="paramDefnFirst">The port on which Splice Machine is listening for your connection.</p>
 
-      <p class="paramDefn">The default value is <code class="highlighter-rouge">1527</code>.</p>
+      <p class="paramDefn">The default value is <code>1527</code>.</p>
 
       <p class="paramName">-username</p>
 
       <p class="paramDefnFirst">The user name for your Splice Machine database.</p>
 
-      <p class="paramDefn">The default value is <code class="highlighter-rouge">splice</code>.</p>
+      <p class="paramDefn">The default value is <code>splice</code>.</p>
 
       <p class="paramName">-password</p>
 
       <p class="paramDefnFirst">The password for your Splice Machine database.</p>
 
-      <p class="paramDefn">The default value is <code class="highlighter-rouge">admin</code>.</p>
+      <p class="paramDefn">The default value is <code>admin</code>.</p>
 
       <p class="paramName">-f [fileName]</p>
 
-      <p class="paramDefnFirst">The name of a file with SQL commands in it: <code class="highlighter-rouge">sqlshell</code> starts up the
+      <p class="paramDefnFirst">The name of a file with SQL commands in it: <code>sqlshell</code> starts up the
 <span class="AppCommand">splice&gt;</span> command line interpreter,
 runs the commands in the file, and then exits. For example:</p>
 
       <div class="preWrapperWide">
-        <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>$ ./sqlshell.sh -f /home/mydir/sql/test.sql
+        <pre class="ShellCommand"><code>$ ./sqlshell.sh -f /home/mydir/sql/test.sql
 
  ========= rlwrap detected and enabled.  Use up and down arrow keys to scroll through command line history. ========
 
@@ -631,17 +628,15 @@ ELAPSED TIME = 6399 milliseconds
 splice&gt;
 $ 
 </code></pre>
-        </div>
 
       </div>
-      <p>The <code class="highlighter-rouge">test.sql</code> file used in the above example contains the following
+      <p>The <code>test.sql</code> file used in the above example contains the following
 commands:</p>
 
       <div class="preWrapperWide">
-        <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>elapsedtime on;
+        <pre class="ShellCommand"><code>elapsedtime on;
 select count(*) from CUST_EMAIL;
 </code></pre>
-        </div>
 
       </div>
     </div>
@@ -649,13 +644,13 @@ select count(*) from CUST_EMAIL;
 
     <p>Output from <span class="AppCommand">splice&gt;</span> commands is
 displayed in your terminal window. The
-<a href="cmdlineref_maximumdisplaywidth.html"><code class="highlighter-rouge">maximumdisplaywidth</code></a> setting
+<a href="cmdlineref_maximumdisplaywidth.html"><code>maximumdisplaywidth</code></a> setting
 affects how the output is displayed; specifically, it determines if the
 content of each column is truncated to fit within the width that you
 specify.</p>
 
     <p>When you set
-<a href="cmdlineref_maximumdisplaywidth.html"><code class="highlighter-rouge">maximumdisplaywidth</code></a> to <code class="highlighter-rouge">0</code>, all
+<a href="cmdlineref_maximumdisplaywidth.html"><code>maximumdisplaywidth</code></a> to <code>0</code>, all
 output is displayed, without truncation.</p>
 
     <h2 id="Syntax">Command Line Syntax</h2>
@@ -677,11 +672,11 @@ subsections:</p>
     <h3 id="Finish">Finish Commands with a Semicolon</h3>
 
     <p>The command line interface allows you to enter multi-line commands, and
-waits for a non-escaped semicolon (<code class="highlighter-rouge">;</code>) character to signal the end of
+waits for a non-escaped semicolon (<code>;</code>) character to signal the end of
 the command.</p>
 
     <p>A command is not executed until you enter the semicolon character and
-press the <code class="highlighter-rouge">Return</code> or <code class="highlighter-rouge">Enter</code> key.</p>
+press the <code>Return</code> or <code>Enter</code> key.</p>
 
     <h3 id="Capitali">Capitalization and Case Sensitivity Rules</h3>
 
@@ -803,48 +798,44 @@ SELECT * FROM MyTable;</pre>
     <h3 id="pages">Entering Multi-line Commands</h3>
 
     <p>When using the command line (the <span class="AppCommand">splice&gt;</span> prompt), you must end each SQL
-statement with a semicolon (<code class="highlighter-rouge">;</code>). For example:</p>
+statement with a semicolon (<code>;</code>). For example:</p>
 
     <div class="preWrapper">
 
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; select * from myTable;	
+      <pre class="AppCommand"><code>splice&gt; select * from myTable;	
 </code></pre>
-      </div>
 
     </div>
     <p>You can extend SQL statements across multiple lines, as long as you end
-the last line with a semicolon. Note that the <code class="highlighter-rouge">splice&gt;</code> command line
+the last line with a semicolon. Note that the <code>splice&gt;</code> command line
 interface prompts you with a fresh <span class="AppCommand">&gt;</span>
 at the beginning of each line. For example:</p>
 
     <div class="preWrapper">
 
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; select * from myTable&gt; where i &gt; 1;	
+      <pre class="AppCommand"><code>splice&gt; select * from myTable&gt; where i &gt; 1;	
 </code></pre>
-      </div>
 
     </div>
     <h3 id="RunFromFile">Running SQL Statements From a File</h3>
 
     <p>You can also create a file that contains a collection of SQL statements,
-and then use the <code class="highlighter-rouge">run </code>command to run those statements. For example:</p>
+and then use the <code>run </code>command to run those statements. For example:</p>
 
     <div class="preWrapper">
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; run 'path/to/file.sql';
+      <pre class="AppCommand"><code>splice&gt; run 'path/to/file.sql';
 </code></pre>
-      </div>
 
     </div>
     <h3 id="Comments">Including Comments</h3>
 
     <p>You can include comments on the command line or in a SQL statement file
-by prefacing the command with two dashes (<code class="highlighter-rouge">--</code>). Any text following the
+by prefacing the command with two dashes (<code>--</code>). Any text following the
 dashes is ignored by the SQL parser. For example:</p>
 
     <div class="preWrapperWide">
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; select * from myTable   -- This selects everything in myTable;
+      <pre class="AppCommand"><code>splice&gt; select * from myTable   -- This selects everything in myTable;
 </code></pre>
-      </div>
 
     </div>
     <h3 id="misaligned-quotes">Misaligned Quotes</h3>
@@ -914,7 +905,7 @@ you need to create:</p>
       <li>an SQL commands file containing the SQL statements you want executed</li>
       <li>an SQL file to connect to the database and invoke the SQL commands
 file</li>
-      <li>a shell script using Bash (<code class="highlighter-rouge">/bin/bash</code>)</li>
+      <li>a shell script using Bash (<code>/bin/bash</code>)</li>
     </ul>
 
     <p>Follow these steps to create your script:</p>
@@ -926,17 +917,16 @@ file</li>
 
           <p class="indentLevel1">First, create a file that contains the SQL commands you want to run
 against your Splice Machine database. For this example, we’ll create
-a file named <code class="highlighter-rouge">create-my-tables.sql</code> that creates a table in the
+a file named <code>create-my-tables.sql</code> that creates a table in the
 database:</p>
 
           <div class="preWrapper">
-            <div class="Example highlighter-rouge"><pre class="highlight"><code>create table customers (
+            <pre class="Example"><code>create table customers (
    CUSTOMER_ID BIGINT,
    FIRST_NAME VARCHAR(30),
    LAST_NAME VARCHAR(30)
 );
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -944,18 +934,18 @@ database:</p>
           <p class="topLevel">Create an SQL file to connect to the database and invoke the
 commands file</p>
 
-          <p class="indentLevel1">We need a separate SQL file named <code class="highlighter-rouge">my_load_datascript.sql</code>that
+          <p class="indentLevel1">We need a separate SQL file named <code>my_load_datascript.sql</code>that
 connects to your database and then invokes the file of SQL commands
 we just created.</p>
 
-          <p class="noteNote">The <code class="highlighter-rouge">connect</code> command in this file must run before running the file
+          <p class="noteNote">The <code>connect</code> command in this file must run before running the file
 of SQL statements.</p>
 
           <p class="indentLevel1">Here we name the first SQL file, and define it to run the SQL
-statements file named <code class="highlighter-rouge">create-my-tables.sql:</code></p>
+statements file named <code>create-my-tables.sql:</code></p>
 
           <div class="preWrapper indentLevel1">
-            <div class="Example highlighter-rouge" style="font-weight: normal;"><pre class="highlight"><code>   --First connect to the database
+            <pre class="Example" style="font-weight: normal;"><code>   --First connect to the database
 connect 'jdbc:splice://&lt;regionServer&gt;:1527/splicedb';
     
    --Next run your sql file
@@ -964,7 +954,6 @@ run '/users/yourname/create-my-tables.sql';
 show tables;
 quit;
 </code></pre>
-            </div>
 
           </div>
 
@@ -977,24 +966,23 @@ standalone version of Splice Machine, specify <span class="HighlightedCode">loca
         <li>
           <p class="topLevel">Create a shell script to run your SQL connect file</p>
 
-          <p class="indentLevel1">We now create a shell script named <code class="highlighter-rouge">load_datascript.sh</code> to run the
-<code class="highlighter-rouge">my_load_datascript.sql</code> file:</p>
+          <p class="indentLevel1">We now create a shell script named <code>load_datascript.sh</code> to run the
+<code>my_load_datascript.sql</code> file:</p>
 
           <div class="preWrapperWide">
-            <div class="Example highlighter-rouge" style="font-weight: normal;"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+            <pre class="Example" style="font-weight: normal;"><code>#!/bin/bash
     
-<span class="nb">export </span><span class="nv">CLASSPATH</span><span class="o">=</span>&lt;FULL_PATH_TO_SPLICEMACHINE_JAR_FILE&gt;
-java -Djdbc.drivers<span class="o">=</span>com.splicemachine.db.jdbc.ClientDriver -Dij.outfile<span class="o">=</span>my_load_datascript.out com.splicemachine.db.tools.ij &lt; my_load_datascript.sql
+export CLASSPATH=&lt;FULL_PATH_TO_SPLICEMACHINE_JAR_FILE&gt;
+java -Djdbc.drivers=com.splicemachine.db.jdbc.ClientDriver -Dij.outfile=my_load_datascript.out com.splicemachine.db.tools.ij &lt; my_load_datascript.sql
 </code></pre>
-            </div>
 
           </div>
 
-          <p class="indentLevel1">The first line of this script must set the <code class="highlighter-rouge">CLASSPATH</code> to the
+          <p class="indentLevel1">The first line of this script must set the <code>CLASSPATH</code> to the
 location of your Splice Machine jar file. The second line runs the
-ij command, specifying its output file (<code class="highlighter-rouge">my_load_datascript.out</code>)
+ij command, specifying its output file (<code>my_load_datascript.out</code>)
 and its SQL commands input file, which is the
-<code class="highlighter-rouge">my_load_datascript_sql</code> file that we created in the previous step.</p>
+<code>my_load_datascript_sql</code> file that we created in the previous step.</p>
         </li>
         <li>
           <p class="topLevel">Make your shell script executable</p>
@@ -1004,9 +992,8 @@ command:</p>
 
           <div class="preWrapper">
 
-            <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>chmod +x load_datascript.sh
+            <pre class="ShellCommand"><code>chmod +x load_datascript.sh
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -1020,19 +1007,17 @@ or lose your network connection.</p>
 
           <div class="preWrapper">
 
-            <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>nohup ./load_datascript.sh &gt; ./load_datascript.out 2&gt;&amp;1 &amp;
+            <pre class="ShellCommand"><code>nohup ./load_datascript.sh &gt; ./load_datascript.out 2&gt;&amp;1 &amp;
 </code></pre>
-            </div>
 
           </div>
 
-          <p class="indentLevel1">Here’s the syntax for the <code class="highlighter-rouge">nohup</code> utility:</p>
+          <p class="indentLevel1">Here’s the syntax for the <code>nohup</code> utility:</p>
 
           <div class="fcnWrapperWide">
 
-            <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>nohup ./command-name.sh &gt; ./command-name.out 2&gt;&amp;1 &amp;
+            <pre class="FcnSyntax"><code>nohup ./command-name.sh &gt; ./command-name.out 2&gt;&amp;1 &amp;
 </code></pre>
-            </div>
 
           </div>
 
@@ -1043,18 +1028,18 @@ or lose your network connection.</p>
 
             <p class="paramName">command-name.out</p>
 
-            <p class="paramDefnFirst">The name of the file to capture any output written to <code class="highlighter-rouge">stdout</code>.</p>
+            <p class="paramDefnFirst">The name of the file to capture any output written to <code>stdout</code>.</p>
 
             <p class="paramName">2&gt;&amp;1</p>
 
-            <p class="paramDefnFirst">This causes <code class="highlighter-rouge">stderr</code> (file descriptor <code class="highlighter-rouge">2</code>) to be written to <code class="highlighter-rouge">stdout</code>
-(file descriptor <code class="highlighter-rouge">1</code>); this means that all output will be captured
-in <code class="highlighter-rouge">command-name.out</code>.</p>
+            <p class="paramDefnFirst">This causes <code>stderr</code> (file descriptor <code>2</code>) to be written to <code>stdout</code>
+(file descriptor <code>1</code>); this means that all output will be captured
+in <code>command-name.out</code>.</p>
 
             <p class="paramName">&amp;</p>
 
             <p class="paramDefnFirst">The <span class="ShellCommand">nohup</span> utility does not
-automatically run its command in the background, so we add the <code class="highlighter-rouge">&amp;</code>
+automatically run its command in the background, so we add the <code>&amp;</code>
 to do</p>
 
           </div>
@@ -1096,49 +1081,19 @@ to do</p>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

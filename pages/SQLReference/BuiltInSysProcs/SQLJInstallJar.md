@@ -77,8 +77,7 @@ procedure to the Derby CLASSPATH variable. For example:
 For information about storing and updating stored procedures, and the
 setting of the Derby classpath, see the [Storing and Updating Splice
 Machine Functions and Stored
-Procedures](developers_fcnsandprocs_storing.html) topic in our
-*Developer's Guide*.
+Procedures](developers_fcnsandprocs_storing.html) topic.
 {: .body}
 
 ## Results
@@ -94,16 +93,16 @@ database owner can grant access to other users.
 ## SQL Examples
 
 <div class="preWrapperWide" markdown="1">
-    
+
        -- Make sure Derby classpath variable is correctly set for our examplesCALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.SAMPLE1_APP:SPLICE.SAMPLE2');   -- install jar from current directory
     splice> CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE.SAMPLE1_APP', 0);
-    
+
        -- install jar using full path
     splice> CALL SQLJ.INSTALL_JAR('c:\myjarfiles\tours.jar', 'SPLICE.SAMPLE1_APP', 0);
-    
+
        -- install jar from remote location
     splice> CALL SQLJ.INSTALL_JAR('http://www.example.com/tours.jar', 'SPLICE.SAMPLE2_APP', 0);
-    
+
        -- install jar using a quoted identifier for the
        -- Splice Machine jar name
     splice> CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE."SAMPLE2"', 0);
@@ -117,4 +116,3 @@ database owner can grant access to other users.
 
 </div>
 </section>
-

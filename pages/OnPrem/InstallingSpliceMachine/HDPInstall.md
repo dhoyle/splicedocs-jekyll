@@ -13,7 +13,7 @@ folder: OnPrem/InstallingSpliceMachine
 {% include splicevars.html %}
 # Installing and Configuring Splice Machine for Hortonworks HDP
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic describes installing and configuring Splice Machine on a
 Hortonworks Ambari-managed cluster. Follow these steps:
 

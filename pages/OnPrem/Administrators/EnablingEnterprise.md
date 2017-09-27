@@ -12,7 +12,7 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Enabling Enterprise Features in Splice Machine
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 There are two mechanisms for enabling enterprise features in Splice
 Machine:
 

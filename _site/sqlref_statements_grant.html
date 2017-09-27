@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,30 +2810,29 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="grant---statementsgrant">GRANT   {#Statements.Grant}</h1>
 
-    <p>Use the <code class="highlighter-rouge">GRANT</code> statement to give privileges to a specific user or role,
+    <p>Use the <code>GRANT</code> statement to give privileges to a specific user or role,
 or to all users, to perform actions on database objects. You can also
-use the <code class="highlighter-rouge">GRANT</code> statement to grant a role to a user, to <code class="highlighter-rouge">PUBLIC</code>, or to
+use the <code>GRANT</code> statement to grant a role to a user, to <code>PUBLIC</code>, or to
 another role.</p>
 
-    <p>The syntax that you use for the <code class="highlighter-rouge">GRANT</code> statement depends on whether you
+    <p>The syntax that you use for the <code>GRANT</code> statement depends on whether you
 are granting privileges to a schema object or granting a role.</p>
 
-    <p class="noteIcon">Only database and schema owners can use the <code class="highlighter-rouge">CREATE TABLE</code> statement,
+    <p class="noteIcon">Only database and schema owners can use the <code>CREATE TABLE</code> statement,
 which means that table creation privileges cannot be granted to others,
-even with <code class="highlighter-rouge">GRANT ALL PRIVILEGES</code>.</p>
+even with <code>GRANT ALL PRIVILEGES</code>.</p>
 
     <h2 id="syntax-for-schemas">Syntax for Schemas</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege }*   ON [SCHEMA] schema-Name    TO grantees
+      <pre class="FcnSyntax"><code>GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege }*   ON [SCHEMA] schema-Name    TO grantees
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
       <p class="paramName">schema-privilege</p>
 
-      <p class="paramDefnFirst"><code class="highlighter-rouge">DELETE
+      <p class="paramDefnFirst"><code>DELETE
 					|INSERT
 					|REFERENCES [( column-identifier {, column-identifier}* )]
 					|SELECT [( column-identifier {, column-identifier}* )]
@@ -2847,7 +2846,7 @@ information.</p>
 privileges are available only with a Splice Machine Enterprise
 license.</span></p>
 
-      <p>You cannot grant or revoke privileges at the <code class="highlighter-rouge">column-identifier</code> level
+      <p>You cannot grant or revoke privileges at the <code>column-identifier</code> level
 with the Community version of Splice Machine.</p>
 
       <p>To obtain a license for the Splice Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales</a> today.</span></p>
@@ -2873,16 +2872,15 @@ with the schema are removed.</li>
     <h2 id="syntax-for-tables">Syntax for Tables</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>GRANT ALL PRIVILEGES | table-privilege {, table-privilege }*   ON [TABLE] { view-Name }
+      <pre class="FcnSyntax"><code>GRANT ALL PRIVILEGES | table-privilege {, table-privilege }*   ON [TABLE] { view-Name }
    TO grantees
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
       <p class="paramName">table-privilege</p>
 
-      <p class="paramDefnFirst"><code class="highlighter-rouge">DELETE
+      <p class="paramDefnFirst"><code>DELETE
 					|INSERT
 					|REFERENCES [( column-identifier {, column-identifier}* )]
 					|SELECT [( column-identifier {, column-identifier}* )]
@@ -2896,7 +2894,7 @@ information.</p>
 privileges are available only with a Splice Machine Enterprise
 license.</span></p>
 
-      <p>You cannot grant or revoke privileges at the <code class="highlighter-rouge">column-identifier</code> level
+      <p>You cannot grant or revoke privileges at the <code>column-identifier</code> level
 with the Community version of Splice Machine.</p>
 
       <p>To obtain a license for the Splice Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales</a> today.</span></p>
@@ -2930,11 +2928,10 @@ with the table are removed.</li>
     <h2 id="syntax-for-routines">Syntax for Routines</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>GRANT EXECUTE
+      <pre class="FcnSyntax"><code>GRANT EXECUTE
    ON { FUNCTION | PROCEDURE } {function-name | procedure-name}
    TO grantees
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -2958,11 +2955,10 @@ Grantees</a> section below for more information.</p>
     <h2 id="syntax-for-user-defined-types">Syntax for User-defined Types</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>GRANT USAGE
+      <pre class="FcnSyntax"><code>GRANT USAGE
    ON TYPE [ SQL Identifier
    TO grantees
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -2971,7 +2967,7 @@ Grantees</a> section below for more information.</p>
       <p class="paramDefnFirst">The type name is composed of an optional <em>schemaName</em> and a <em>SQL
 Identifier</em>. If a <em>schemaName</em> is not provided, the current schema is
 the default schema. If a qualified UDT name is specified, the schema
-name cannot begin with <code class="highlighter-rouge">SYS</code>.</p>
+name cannot begin with <code>SYS</code>.</p>
 
       <p class="paramName">grantees</p>
 
@@ -2982,10 +2978,9 @@ Grantees</a> section below for more information.</p>
     <h2 id="syntax-for-roles">Syntax for Roles</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>GRANT roleName }* ]
+      <pre class="FcnSyntax"><code>GRANT roleName }* ]
    TO grantees
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -3000,7 +2995,7 @@ Grantees</a> section below for more information.</p>
 
     </div>
     <p>Before you can grant a role to a user or to another role, you must
-create the role using the <a href="sqlref_statements_createrole.html"><code class="highlighter-rouge">CREATE ROLE</code>
+create the role using the <a href="sqlref_statements_createrole.html"><code>CREATE ROLE</code>
 statement</a>. Only the database owner
 can grant a role.</p>
 
@@ -3013,17 +3008,16 @@ to role A and the privileges granted to any contained roles of role A.</p>
     <h2 id="AboutGrantees">About Grantees</h2>
 
     <p>A grantee can be one or more specific users, one or more specific roles,
-or all users (<code class="highlighter-rouge">PUBLIC</code>). Either the object owner or the database owner
+or all users (<code>PUBLIC</code>). Either the object owner or the database owner
 can grant privileges to a user or to a role. Only the database owner can
 grant a role to a user or to another role.</p>
 
     <p>Here’s the syntax:</p>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">     </span><span class="err">roleName</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">PUBLIC</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="err">   </span><span class="p">[,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">roleName</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">PUBLIC</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="err">*</span><span class="w">
-</span></code></pre>
-      </div>
+      <pre class="FcnSyntax"><code>{     roleName | PUBLIC }
+   [, { roleName | PUBLIC } ] *
+</code></pre>
 
     </div>
     <div class="paramList">
@@ -3039,18 +3033,18 @@ grant a role to a user or to another role.</p>
 user or to a role. Only the database owner can grant a role to a user or
 to another role.</p>
 
-      <p><code class="highlighter-rouge">PUBLIC</code></p>
+      <p><code>PUBLIC</code></p>
 
-      <p class="paramDefnFirst">Use the keyword <code class="highlighter-rouge">PUBLIC</code> to specify all users.</p>
+      <p class="paramDefnFirst">Use the keyword <code>PUBLIC</code> to specify all users.</p>
 
-      <p class="paramDefn">When <code class="highlighter-rouge">PUBLIC</code> is specified, the privileges or roles affect all current
+      <p class="paramDefn">When <code>PUBLIC</code> is specified, the privileges or roles affect all current
 and future users.</p>
 
-      <p class="paramDefn">The privileges granted to <code class="highlighter-rouge">PUBLIC</code> and to individual users or roles are
-independent privileges. For example, a <code class="highlighter-rouge">SELECT</code> privilege on table <code class="highlighter-rouge">t</code>
-is granted to both <code class="highlighter-rouge">PUBLIC</code> and to the authorization ID <code class="highlighter-rouge">harry</code>. If the
-<code class="highlighter-rouge">SELECT</code> privilege is later revoked from the authorization ID <code class="highlighter-rouge">harry</code>,
-Harry will still be able to access the table <code class="highlighter-rouge">t</code> through the <code class="highlighter-rouge">PUBLIC</code>
+      <p class="paramDefn">The privileges granted to <code>PUBLIC</code> and to individual users or roles are
+independent privileges. For example, a <code>SELECT</code> privilege on table <code>t</code>
+is granted to both <code>PUBLIC</code> and to the authorization ID <code>harry</code>. If the
+<code>SELECT</code> privilege is later revoked from the authorization ID <code>harry</code>,
+Harry will still be able to access the table <code>t</code> through the <code>PUBLIC</code>
 privilege.</p>
 
     </div>
@@ -3115,118 +3109,110 @@ columns from a table.</li>
       <li>Use a user-defined type.</li>
     </ul>
 
-    <p>Before you issue a <code class="highlighter-rouge">GRANT</code> statement, check that the
-<code class="highlighter-rouge">derby.database.sqlAuthorization</code> property is set to <code class="highlighter-rouge">true</code>. The
-<code class="highlighter-rouge">derby.database.sqlAuthorization</code> property enables the SQL Authorization
+    <p>Before you issue a <code>GRANT</code> statement, check that the
+<code>derby.database.sqlAuthorization</code> property is set to <code>true</code>. The
+<code>derby.database.sqlAuthorization</code> property enables the SQL Authorization
 mode.</p>
 
     <p>You can grant privileges on an object if you are the owner of the object
 or the database owner. See documentation for the
-<a href="sqlref_statements_createstatements.html"><code class="highlighter-rouge">CREATE</code></a> statements for more
+<a href="sqlref_statements_createstatements.html"><code>CREATE</code></a> statements for more
 information.</p>
 
     <h2 id="examples">Examples</h2>
 
     <h3 id="granting-privileges-to-users">Granting Privileges to Users</h3>
 
-    <p>To grant the <code class="highlighter-rouge">SELECT</code> privilege on the schema <code class="highlighter-rouge">SpliceBBall</code> to the
-authorization IDs <code class="highlighter-rouge">Bill</code> and <code class="highlighter-rouge">Joan</code>, use the following syntax:</p>
+    <p>To grant the <code>SELECT</code> privilege on the schema <code>SpliceBBall</code> to the
+authorization IDs <code>Bill</code> and <code>Joan</code>, use the following syntax:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; GRANT SELECT ON SCHEMA SpliceBBall TO Bill, Joan;
+      <pre class="Example"><code>splice&gt; GRANT SELECT ON SCHEMA SpliceBBall TO Bill, Joan;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
-    <p>To grant the <code class="highlighter-rouge">SELECT</code> privilege on table <code class="highlighter-rouge">Salaries</code> to the authorization
-IDs <code class="highlighter-rouge">Bill</code> and <code class="highlighter-rouge">Joan</code>, use the following syntax:</p>
+    <p>To grant the <code>SELECT</code> privilege on table <code>Salaries</code> to the authorization
+IDs <code>Bill</code> and <code>Joan</code>, use the following syntax:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; GRANT SELECT ON TABLE Salaries TO Bill, Joan;
+      <pre class="Example"><code>splice&gt; GRANT SELECT ON TABLE Salaries TO Bill, Joan;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
-    <p>To grant the <code class="highlighter-rouge">UPDATE</code> and <code class="highlighter-rouge">TRIGGER</code> privileges on table <code class="highlighter-rouge">Salaries</code> to
-the authorization IDs <code class="highlighter-rouge">Joe</code> and <code class="highlighter-rouge">Anita</code>, use the following syntax:</p>
+    <p>To grant the <code>UPDATE</code> and <code>TRIGGER</code> privileges on table <code>Salaries</code> to
+the authorization IDs <code>Joe</code> and <code>Anita</code>, use the following syntax:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; GRANT UPDATE, TRIGGER ON TABLE Salaries TO Joe, Anita;
+      <pre class="Example"><code>splice&gt; GRANT UPDATE, TRIGGER ON TABLE Salaries TO Joe, Anita;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
-    <p>To grant the <code class="highlighter-rouge">SELECT</code> privilege on table <code class="highlighter-rouge">Hitting</code> in the
-<code class="highlighter-rouge">Baseball_stats</code> schema to all users, use the following syntax:</p>
+    <p>To grant the <code>SELECT</code> privilege on table <code>Hitting</code> in the
+<code>Baseball_stats</code> schema to all users, use the following syntax:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; GRANT SELECT ON TABLE Baseball_Stats.Hitting to PUBLIC;
+      <pre class="Example"><code>splice&gt; GRANT SELECT ON TABLE Baseball_Stats.Hitting to PUBLIC;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
-    <p>To grant the <code class="highlighter-rouge">EXECUTE</code> privilege on procedure <code class="highlighter-rouge">ComputeValue</code> to the
-authorization ID <code class="highlighter-rouge">george</code>, use the following syntax:</p>
+    <p>To grant the <code>EXECUTE</code> privilege on procedure <code>ComputeValue</code> to the
+authorization ID <code>george</code>, use the following syntax:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; GRANT EXECUTE ON PROCEDURE ComputeValue TO george;
+      <pre class="Example"><code>splice&gt; GRANT EXECUTE ON PROCEDURE ComputeValue TO george;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
     <h3 id="granting-roles-to-users">Granting Roles to Users</h3>
 
-    <p>To grant the role ` purchases_reader_role<code class="highlighter-rouge"> to the authorization IDs
-</code>george<code class="highlighter-rouge"> and </code>maria`, use the following syntax:</p>
+    <p>To grant the role ` purchases_reader_role<code> to the authorization IDs
+</code>george<code> and </code>maria`, use the following syntax:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; GRANT purchases_reader_role TO george,maria;
+      <pre class="Example"><code>splice&gt; GRANT purchases_reader_role TO george,maria;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
     <h3 id="granting-privileges-to-roles">Granting Privileges to Roles</h3>
 
-    <p>To grant the <code class="highlighter-rouge">SELECT</code> privilege on schema <code class="highlighter-rouge">SpliceBBall</code> to the role
-<code class="highlighter-rouge">purchases_reader_role</code>, use the following syntax:</p>
+    <p>To grant the <code>SELECT</code> privilege on schema <code>SpliceBBall</code> to the role
+<code>purchases_reader_role</code>, use the following syntax:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; GRANT SELECT ON SCHEMA SpliceBBall TO purchases_reader_role;
+      <pre class="Example"><code>splice&gt; GRANT SELECT ON SCHEMA SpliceBBall TO purchases_reader_role;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
-    <p>To grant the <code class="highlighter-rouge">SELECT</code> privilege on table <code class="highlighter-rouge">t</code> to the role
-<code class="highlighter-rouge">purchases_reader_role</code>, use the following syntax:</p>
+    <p>To grant the <code>SELECT</code> privilege on table <code>t</code> to the role
+<code>purchases_reader_role</code>, use the following syntax:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; GRANT SELECT ON TABLE t TO purchases_reader_role;
+      <pre class="Example"><code>splice&gt; GRANT SELECT ON TABLE t TO purchases_reader_role;
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_statements_createrole.html"><code class="highlighter-rouge">CREATE ROLE</code></a> statement</li>
-      <li><a href="sqlref_statements_createtrigger.html"><code class="highlighter-rouge">CREATE TRIGGER</code></a> statement</li>
-      <li><a href="sqlref_statements_droprole.html"><code class="highlighter-rouge">DROP_ROLE</code></a> statement</li>
-      <li><a href="sqlref_statements_revoke.html"><code class="highlighter-rouge">REVOKE</code></a> statement</li>
-      <li><a href="sqlref_identifiers_types.html#RoleName"><code class="highlighter-rouge">RoleName</code></a></li>
-      <li><a href="sqlref_statements_setrole.html"><code class="highlighter-rouge">SET ROLE</code></a> statement</li>
-      <li><a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code></a> expression</li>
-      <li><a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code></a> statement</li>
-      <li><a href="sqlref_systables_sysroles.html"><code class="highlighter-rouge">SYSROLES</code></a> system table</li>
-      <li><a href="sqlref_statements_update.html"><code class="highlighter-rouge">UPDATE</code></a> statement</li>
-      <li><a href="sqlref_clauses_where.html"><code class="highlighter-rouge">WHERE</code></a> clause</li>
+      <li><a href="sqlref_statements_createrole.html"><code>CREATE ROLE</code></a> statement</li>
+      <li><a href="sqlref_statements_createtrigger.html"><code>CREATE TRIGGER</code></a> statement</li>
+      <li><a href="sqlref_statements_droprole.html"><code>DROP_ROLE</code></a> statement</li>
+      <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> statement</li>
+      <li><a href="sqlref_identifiers_types.html#RoleName"><code>RoleName</code></a></li>
+      <li><a href="sqlref_statements_setrole.html"><code>SET ROLE</code></a> statement</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
+      <li><a href="sqlref_systables_sysroles.html"><code>SYSROLES</code></a> system table</li>
+      <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement</li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
     </ul>
 
   </div>
@@ -3263,49 +3249,19 @@ authorization ID <code class="highlighter-rouge">george</code>, use the followin
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

@@ -21,8 +21,7 @@ Snapshots include both the data and indexes for tables.
 {: .noteNote}
 
 For more information, see the [*Using
-Snapshots*](developers_tuning_snapshots.html) topic in our *Developers's
-Guide*.
+Snapshots*](developers_tuning_snapshots.html) topic.
 
 ## Syntax
 
@@ -76,4 +75,3 @@ The following example creates a snapshot of the table named `myTable`:
 </div>
 </div>
 </section>
-

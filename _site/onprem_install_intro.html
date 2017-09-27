@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -402,7 +402,7 @@
             
             
             
-            <li><a href="onprem_info_release.html">Release Notes v2.6</a></li>
+            <li><a href="onprem_info_release.html">Release Notes v2.6.1</a></li>
             
             
             
@@ -536,23 +536,22 @@
 
     
 
-  <p>\</p>
-
+  
 <section>
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="splice-machine-installation-guide">Splice Machine Installation Guide</h1>
 
-    <p class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
+    <p class="noteOnPremiseOnly">    <a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
     <p>This <em>Installation Guide</em> walks you through installing Splice Machine on
 your cluster, or on computer if you’re using the standalone version.</p>
 
     <p>The fastest way to get started with Splice Machine is to set up our
 sandbox on the Amazon Web Services (AWS) platform on EC2 instances using
-<code class="highlighter-rouge">cloud.splicemachine.com</code>:</p>
+<code>cloud.splicemachine.com</code>:</p>
 
     <p class="noteIcon">See the <a href="onprem_install_awssandbox.html">Installing Splice Machine on Amazon Web
-Services</a> topic in this chapter for
+Services</a> topic for
 step-by-step instructions for setting up the Splice Machine sandbox.</p>
 
     <p>If you want to download and install Splice Machine on your cluster or
@@ -573,258 +572,276 @@ installation and upgrade pages for each version of Splice Machine.</li>
 
     <p>The fastest way to get started with Splice Machine is to set up our
 sandbox on the Amazon Web Services (AWS) platform on EC2 instances using
-<code class="highlighter-rouge">cloud.splicemachine.com</code>.</p>
+<code>cloud.splicemachine.com</code>.</p>
 
     <p class="noteIcon">See the <a href="onprem_install_awssandbox.html">Installing Splice Machine on Amazon Web
-Services</a> topic in this chapter for
+Services</a> topic for
 step-by-step instructions.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>            &lt;h2 id="ClusterNodeRequirements"&gt;&lt;/a&gt;Cluster Node Requirements&lt;/h2&gt;
-            &lt;p&gt;The following table summarizes the minimum requirements for the nodes in your cluster:&lt;/p&gt;
-            &lt;table summary="Splice Machine cluster node hardware requirements"&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;thead&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;Component&lt;/th&gt;
-                        &lt;th&gt;Requirements&lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Cores&lt;/strong&gt;&lt;/td&gt;
-                        &lt;td&gt;Splice Machine recommends that each node in your cluster have 8-12 hyper-threaded cores (16-32 hyper-threads) for optimum throughput and concurrency.&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Memory&lt;/strong&gt;&lt;/td&gt;
-                        &lt;td&gt;We recommend that each machine in your cluster have at least 64 GB&amp;#160;of available memory.&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Disk Space&lt;/strong&gt;&lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;Your root drive needs to have at least 100 GB&amp;#160;of free space. &lt;/p&gt;
-                            &lt;p&gt;Splice Machine recommends separate data drives on each cluster node to maintain a separation between the operating system and your database data. You need capacity for a minimum of three times the size of the data you intend to load; the typical recommended configuration is 2 TB or more of attached storage per node.&lt;/p&gt;
-                            &lt;p&gt;&lt;strong&gt;Your data disks should be set up with a single partition and formatted with an &lt;code&gt;ext4&lt;/code&gt; file system.&lt;/strong&gt;
-                            &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Hadoop Ecosystem&lt;/strong&gt;&lt;/td&gt;
-                        &lt;td&gt;The table in the next section, Hadoop Ecosystem Requirements, summarizes the specific Hadoop component versions that we support in each of our product releases.&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Software Tools and System Settings&lt;/strong&gt;&lt;/td&gt;
-                        &lt;td&gt;The &lt;em&gt;Linux Configuration&lt;/em&gt; topic in each section of our &lt;em&gt;Installation Guide&lt;/em&gt; that pertains to your installation summarizes the software tools and system settings required for your cluster machines.&lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;h3&gt;Amazon Web Services&amp;#160;(AWS) Requirements&lt;/h3&gt;
-            &lt;p&gt;If you're running on AWS, your cluster must meet these minimum requirements:&lt;/p&gt;
-            &lt;table summary="Splice Machine cluster node hardware requirements"&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;thead&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;Component&lt;/th&gt;
-                        &lt;th&gt;Requirements&lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Minimum Cluster Size&lt;/strong&gt;&lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;The minimum cluster size on AWS&amp;#160;is &lt;em&gt;5 nodes&lt;/em&gt;:&lt;/p&gt;
-                            &lt;ul class="bullet"&gt;
-                                &lt;li&gt;1 master node&lt;/li&gt;
-                                &lt;li&gt;4 worker nodes&lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Minimum Node Size&lt;/strong&gt;&lt;/td&gt;
-                        &lt;td&gt;Minimum recommended size of each node is &lt;em&gt;m4.4xlarge&lt;/em&gt;.&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Disk Space&lt;/strong&gt;&lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;Minimum recommended storage space:&lt;/p&gt;
-                            &lt;ul class="bullet"&gt;
-                                &lt;li&gt;&lt;em&gt;100GB&lt;/em&gt;&amp;#160;EBS&amp;#160;root drive&lt;/li&gt;
-                                &lt;li&gt;4 EBS&amp;#160;data drives per node&lt;/li&gt;
-                            &lt;/ul&gt;
-                            &lt;p&gt;Note that the required number of data drives per node depends on your use case.&lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;h3&gt;Hadoop Ecosystem Requirements&lt;/h3&gt;
-            &lt;p&gt;The following table summarizes the required Hadoop ecosystem components for your platform:&lt;/p&gt;
-            &lt;table summary="Splice Machine Hadoop ecosystem requirements"&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;thead&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;Splice Machine &lt;/th&gt;
-                        &lt;th&gt;Hadoop platform&lt;/th&gt;
-                        &lt;th&gt;Linux&lt;/th&gt;
-                        &lt;th&gt;Hadoop&lt;/th&gt;
-                        &lt;th&gt;HBase&lt;/th&gt;
-                        &lt;th&gt;ZooKeeper&lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td rowspan="3"&gt;&lt;strong&gt;Release 2.6.1&lt;/strong&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;CDH 5.12.0 and 5.8.3
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;CentOS/RHEL 6
-                            &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;2.6.1
-                        &lt;/td&gt;
-                        &lt;td&gt;1.0.0
-                        &lt;/td&gt;
-                        &lt;td&gt;3.4.5
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;HDP 2.5.5
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;CentOS/RHEL 6
-                            &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;2.7.1
-                        &lt;/td&gt;
-                        &lt;td&gt;1.1.2
-                        &lt;/td&gt;
-                        &lt;td&gt;3.4.5
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;MapR 5.2.0
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;CentOS/RHEL 6
-                            &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;2.7.0
-                        &lt;/td&gt;
-                        &lt;td&gt;1.1.1
-                        &lt;/td&gt;
-                        &lt;td&gt;3.4.5
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td colspan="6" class="Separator"&gt;&amp;#160;&lt;/td&gt;
-                    &lt;/tr&gt;
+    <div>
+      <h2 id="cluster-node-requirements"><a name="ClusterNodeRequirements"></a>Cluster Node Requirements</h2>
 
-                    &lt;tr&gt;
-                        &lt;td rowspan="3"&gt;&lt;strong&gt;Release 2.5&lt;/strong&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;CDH 5.8.3 and 5.8.0
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;CentOS/RHEL 6
-                            &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;2.6.0
-                        &lt;/td&gt;
-                        &lt;td&gt;1.0.0
-                        &lt;/td&gt;
-                        &lt;td&gt;3.4.5
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;HDP 2.5.5
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;CentOS/RHEL 6
-                            &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;2.7.1
-                        &lt;/td&gt;
-                        &lt;td&gt;1.1.2
-                        &lt;/td&gt;
-                        &lt;td&gt;3.4.5
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;MapR 5.2.0
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;CentOS/RHEL 6
-                            &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;2.7.0
-                        &lt;/td&gt;
-                        &lt;td&gt;1.1.1
-                        &lt;/td&gt;
-                        &lt;td&gt;3.4.5
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;h3&gt;Java JDK&amp;#160;Requirements&lt;/h3&gt;
-            &lt;p&gt;Splice Machine supports the following versions of the Java JDK:&lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;
-                    &lt;p&gt;Oracle JDK&amp;#160;1.8, update 60 or higher&lt;/p&gt;
-                    &lt;p class="noteNote"&gt;We recommend that you do not use JDK&amp;#160;1.8.0_40&lt;/p&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;Splice Machine does not test our releases with OpenJDK, so we recommend against using it.&lt;/p&gt;
-            &lt;h2 id="Standalo"&gt;Standalone Version Prerequisites&lt;/h2&gt;
-            &lt;p&gt;You can use the standalone version of Splice Machine on MacOS and Linux computers that meet these basic requirements:&lt;/p&gt;
-            &lt;table summary="Standalone version requirements for running Splice Machine"&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;thead&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;Component&lt;/th&gt;
-                        &lt;th&gt;Requirements&lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Operating System&lt;/strong&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;Mac OS X, version 10.8 or later.&lt;/p&gt;
-                            &lt;p&gt;CentOS&amp;#160;6.4 or equivalent.&lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;CPU&lt;/strong&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;Splice Machine recommends 2 or more multiple-core CPUs.&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Memory&lt;/strong&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;At least 16 GB&amp;#160;RAM, of which at least 10 GB is available.&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Disk Space&lt;/strong&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;At least 100 GB&amp;#160;of disk space available for Splice Machine software, plus as much space as will be required for your data; for example, if you have a 1 TB dataset, you need at least 1 TB of available data space.&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;&lt;strong&gt;Software&lt;/strong&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p class="noSpaceAbove"&gt;You must have JDK&amp;#160;installed on your computer.&lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-</code></pre>
+      <p>The following table summarizes the minimum requirements for the nodes in
+your cluster:</p>
+
+      <table summary="Splice Machine cluster node hardware requirements">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="BoldFont">Cores</td>
+                            <td>Splice Machine recommends that each node in your cluster have 8-12 hyper-threaded cores (16-32 hyper-threads) for optimum throughput and concurrency.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Memory</td>
+                            <td>We recommend that each machine in your cluster have at least 64 GB of available memory.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Disk Space</td>
+                            <td>
+                                <p class="noSpaceAbove">Your root drive needs to have at least 100 GB of free space. </p>
+                                <p>Splice Machine recommends separate data drives on each cluster node to maintain a separation between the operating system and your database data. You need capacity for a minimum of three times the size of the data you intend to load; the typical recommended configuration is 2 TB or more of attached storage per node.</p>
+                                <p><span class="BoldFont">Your data disks should be set up with a single partition and formatted with an <span class="CodeFont">ext4</span> file system.</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Hadoop Ecosystem</td>
+                            <td>The table in the next section, Hadoop Ecosystem Requirements, summarizes the specific Hadoop component versions that we support in each of our product releases.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Software Tools and System Settings</td>
+                            <td>The <span class="ItalicFont">Linux Configuration</span> topic in each section of our <span class="ItalicFont">Installation Guide</span> that pertains to your installation summarizes the software tools and system settings required for your cluster machines.</td>
+                        </tr>
+                    </tbody>
+                </table>
+      <h3 id="amazon-web-servicesaws-requirements">Amazon Web Services (AWS) Requirements</h3>
+
+      <p>If you’re running on AWS, your cluster must meet these minimum
+requirements:</p>
+
+      <table summary="Splice Machine cluster node hardware requirements">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="BoldFont">Minimum Cluster Size</td>
+                            <td>
+                                <p>The minimum cluster size on AWS is <span class="ItalicFont">5 nodes</span>:</p>
+                                <ul class="bullet">
+                                    <li>1 master node</li>
+                                    <li>4 worker nodes</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Minimum Node Size</td>
+                            <td>Minimum recommended size of each node is <span class="ItalicFont">m4.4xlarge</span>.</td>
+                        </tr>
+                        <tr>
+                            <td class="BoldFont">Disk Space</td>
+                            <td>
+                                <p class="noSpaceAbove">Minimum recommended storage space:</p>
+                                <ul class="bullet">
+                                    <li><span class="ItalicFont">100GB</span> EBS root drive</li>
+                                    <li>4 EBS data drives per node</li>
+                                </ul>
+                                <p>Note that the required number of data drives per node depends on your use case.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+      <h3 id="hadoop-ecosystem-requirements">Hadoop Ecosystem Requirements</h3>
+
+      <p>The following table summarizes the required Hadoop ecosystem components
+for your platform:</p>
+
+      <table summary="Splice Machine Hadoop ecosystem requirements">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Splice Machine </th>
+                            <th>Hadoop platform</th>
+                            <th>Linux</th>
+                            <th>Hadoop</th>
+                            <th>HBase</th>
+                            <th>ZooKeeper</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3"><span class="BoldFont">Release 2.6</span>
+                            </td>
+                            <td>CDH 5.12.0 and 5.8.3
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">CentOS/RHEL 6
+                                </p>
+                            </td>
+                            <td>2.6.1
+                            </td>
+                            <td>1.0.0
+                            </td>
+                            <td>3.4.5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>HDP 2.5.5
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">CentOS/RHEL 6
+                                </p>
+                            </td>
+                            <td>2.7.1
+                            </td>
+                            <td>1.1.2
+                            </td>
+                            <td>3.4.5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MapR 5.2.0
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">CentOS/RHEL 6
+                                </p>
+                            </td>
+                            <td>2.7.0
+                            </td>
+                            <td>1.1.1
+                            </td>
+                            <td>3.4.5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="Separator"> </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3"><span class="BoldFont">Release 2.5</span>
+                            </td>
+                            <td>CDH 5.8.3 and 5.8.0
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">CentOS/RHEL 6
+                                </p>
+                            </td>
+                            <td>2.6.0
+                            </td>
+                            <td>1.0.0
+                            </td>
+                            <td>3.4.5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>HDP 2.5.5
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">CentOS/RHEL 6
+                                </p>
+                            </td>
+                            <td>2.7.1
+                            </td>
+                            <td>1.1.2
+                            </td>
+                            <td>3.4.5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MapR 5.2.0
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">CentOS/RHEL 6
+                                </p>
+                            </td>
+                            <td>2.7.0
+                            </td>
+                            <td>1.1.1
+                            </td>
+                            <td>3.4.5
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+      <h3 id="java-jdkrequirements">Java JDK Requirements</h3>
+
+      <p>Splice Machine supports the following versions of the Java JDK:</p>
+
+      <ul>
+        <li>
+          <p>Oracle JDK 1.8, update 60 or higher</p>
+
+          <p class="noteNote">We recommend that you do not use JDK 1.8.0_40</p>
+        </li>
+      </ul>
+
+      <p>Splice Machine does not test our releases with OpenJDK, so we recommend
+against using it.</p>
+
+      <h2 id="Standalo">Standalone Version Prerequisites</h2>
+
+      <p>You can use the standalone version of Splice Machine on MacOS and Linux
+computers that meet these basic requirements:</p>
+
+      <table summary="Standalone version requirements for running Splice Machine">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="BoldFont">Operating System</span>
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">Mac OS X, version 10.8 or later.</p>
+                                <p>CentOS 6.4 or equivalent.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="BoldFont">CPU</span>
+                            </td>
+                            <td>Splice Machine recommends 2 or more multiple-core CPUs.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="BoldFont">Memory</span>
+                            </td>
+                            <td>At least 16 GB RAM, of which at least 10 GB is available.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="BoldFont">Disk Space</span>
+                            </td>
+                            <td>At least 100 GB of disk space available for Splice Machine software, plus as much space as will be required for your data; for example, if you have a 1 TB dataset, you need at least 1 TB of available data space.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="BoldFont">Software</span>
+                            </td>
+                            <td>
+                                <p class="noSpaceAbove">You must have JDK installed on your computer.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
     </div>
 
     <h2 id="Configur">Configure Linux for Splice Machine</h2>
@@ -923,8 +940,7 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
     <h2 id="Install">Install Splice Machine</h2>
 
     <p>If you’ve decided to try our sandbox, see the <a href="onprem_install_awssandbox.html">Installing Splice Machine
-on Amazon Web Services</a> topic in this
-chapter for step-by-step instructions for setting up the Splice Machine
+on Amazon Web Services</a> topic for step-by-step instructions for setting up the Splice Machine
 sandbox.     </p>
 
     <p>To install Splice Machine on your cluster or standalone computer, click
@@ -976,7 +992,6 @@ version of Splice Machine:</p>
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -1006,49 +1021,19 @@ version of Splice Machine:</p>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

@@ -29,8 +29,7 @@ has changed since the previous backup.
 {: .noteNote}
 
 For more information, see the [*Backing Up and
-Restoring*](onprem_admin_backingup.html) topic in our *Administrator's
-Guide*.
+Restoring*](onprem_admin_backingup.html) topic.
 
 ## Syntax
 
@@ -171,4 +170,3 @@ Splice Machine:
 
 </div>
 </section>
-

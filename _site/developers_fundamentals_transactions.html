@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -1006,7 +1006,7 @@ to a savepoint.</li>
     <h3 id="Committi">Committing and Rolling Back Transaction Changes</h3>
 
     <p>Within a transactional context, how the changes that you make are
-committed to the database depends on whether <code class="highlighter-rouge">autocommit</code> is enabled or
+committed to the database depends on whether <code>autocommit</code> is enabled or
 disabled:</p>
 
     <table summary="Using autocommit">
@@ -1035,21 +1035,21 @@ disabled:</p>
                     </tr>
                 </tbody>
             </table>
-    <p class="noteIcon">Autocommit is enabled by default. You typically disable <code class="highlighter-rouge">autocommit</code>
+    <p class="noteIcon">Autocommit is enabled by default. You typically disable <code>autocommit</code>
 when you want a block of operations to be committed atomically (all at
 once) instead of committing changes to the database after each
 operation.</p>
 
-    <p>You can turn <code class="highlighter-rouge">autocommit</code> on and off by issuing the <code class="highlighter-rouge">autocommit on</code> or
-<code class="highlighter-rouge">autocommit off</code> commands at the <code class="highlighter-rouge">splice&gt;</code> prompt.</p>
+    <p>You can turn <code>autocommit</code> on and off by issuing the <code>autocommit on</code> or
+<code>autocommit off</code> commands at the <code>splice&gt;</code> prompt.</p>
 
     <p>For more information, see these topics in the <em><a href="cmdlineref_intro.html">Command Line
 Reference</a></em> section of this book:</p>
 
     <ul>
-      <li><a href="cmdlineref_autocommit.html"><code class="highlighter-rouge">autocommit</code></a> command</li>
-      <li><a href="cmdlineref_commit.html"><code class="highlighter-rouge">commit</code></a> command</li>
-      <li><a href="cmdlineref_rollback.html"><code class="highlighter-rouge">rollback</code></a> command</li>
+      <li><a href="cmdlineref_autocommit.html"><code>autocommit</code></a> command</li>
+      <li><a href="cmdlineref_commit.html"><code>commit</code></a> command</li>
+      <li><a href="cmdlineref_rollback.html"><code>rollback</code></a> command</li>
     </ul>
 
     <h3 id="Simple">A Simple Transaction Example</h3>
@@ -1058,7 +1058,7 @@ Reference</a></em> section of this book:</p>
 and <em>rollback</em> in action:</p>
 
     <div class="preWrapperWide">
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; create table myTbl (i int);
+      <pre class="AppCommand"><code>splice&gt; create table myTbl (i int);
 splice&gt; autocommit off;                  - commits must be made explicitly
 splice&gt; insert into myTbl  values 1,2,3; - inserted but not visible to others
 splice&gt; commit;                          - now committed to the database
@@ -1068,10 +1068,9 @@ splice&gt; rollback;                        - roll back latest insertions
 splice&gt; select * from myTbl;             - and verify again
 ...	
 </code></pre>
-      </div>
 
     </div>
-    <p>You can turn <code class="highlighter-rouge">autocommit</code> back on by issuing the command: <span class="AppCommand">autocommit on;</span></p>
+    <p>You can turn <code>autocommit</code> back on by issuing the command: <span class="AppCommand">autocommit on;</span></p>
 
     <h3 id="Using">Using Savepoints</h3>
 
@@ -1090,9 +1089,9 @@ without having to abort the entire transaction.</p>
     <p>You can use these commands to work with Savepoints:</p>
 
     <ul>
-      <li>create a savepoint with the <code class="highlighter-rouge">savepoint</code> command</li>
-      <li>release a savepoint with the <code class="highlighter-rouge">release savepoint</code> command</li>
-      <li>roll a transaction back to an earlier savepoint with the <code class="highlighter-rouge">rollback to
+      <li>create a savepoint with the <code>savepoint</code> command</li>
+      <li>release a savepoint with the <code>release savepoint</code> command</li>
+      <li>roll a transaction back to an earlier savepoint with the <code>rollback to
 savepoint</code> command</li>
     </ul>
 
@@ -1103,7 +1102,7 @@ into the table. We then create a savepoint, and verify the contents of
 our table:</p>
 
     <div class="preWrapperWide">
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE myTbl(i int);
+      <pre class="AppCommand"><code>splice&gt; CREATE TABLE myTbl(i int);
 0 rows inserted/updated/deleted
 splice&gt; AUTOCOMMIT OFF;
 splice&gt; INSERT INTO myTbl VALUES 1,2,3;
@@ -1119,13 +1118,12 @@ I
 
 3 rows selected
 </code></pre>
-      </div>
 
     </div>
     <p>Next we add new values to the table and again verify its contents:</p>
 
     <div class="preWrapperWide">
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; INSERT INTO myTbl VALUES 4,5;
+      <pre class="AppCommand"><code>splice&gt; INSERT INTO myTbl VALUES 4,5;
 2 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
 I
@@ -1136,13 +1134,12 @@ I
 4
 55 rows selected
 </code></pre>
-      </div>
 
     </div>
     <p>Now we roll back to our savepoint, and verify that the rollback worked:</p>
 
     <div class="preWrapperWide">
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; ROLLBACK TO SAVEPOINT savept1;
+      <pre class="AppCommand"><code>splice&gt; ROLLBACK TO SAVEPOINT savept1;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl;
 I
@@ -1153,15 +1150,13 @@ I
 
 3 rows selected
 </code></pre>
-      </div>
 
     </div>
     <p>And finally, we commit the transaction:</p>
 
     <div class="preWrapperWide">
-      <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>COMMIT;
+      <pre class="AppCommand"><code>COMMIT;
 </code></pre>
-      </div>
 
     </div>
     <h3 id="Rollbacks">Using Rollback Versus Rollback to Savepoint</h3>
@@ -1170,9 +1165,9 @@ I
 back to a savepoint versus rolling back the entire transaction:</p>
 
     <ul>
-      <li>When you perform a <code class="highlighter-rouge">rollback</code>, Splice Machine aborts the entire
+      <li>When you perform a <code>rollback</code>, Splice Machine aborts the entire
 transaction and creates a new transaction,</li>
-      <li>When you perform a <code class="highlighter-rouge">rollback to savepoint</code>, Splice Machine rolls back
+      <li>When you perform a <code>rollback to savepoint</code>, Splice Machine rolls back
 part of the changes, but does not create a new transaction.</li>
     </ul>
 
@@ -1182,10 +1177,10 @@ In other words:</p>
 
       <ul>
         <li>If two users are making modifications to the same table in separate
-transactions, and one user does a <code class="highlighter-rouge">rollback</code>, all changes made by that
+transactions, and one user does a <code>rollback</code>, all changes made by that
 user prior to that rollback are no longer in the database.</li>
         <li>Similarly, if two users are making modifications to the same table in
-separate transactions, and one user does a <code class="highlighter-rouge">rollback to savepoint</code>,
+separate transactions, and one user does a <code>rollback to savepoint</code>,
 all changes made by that user since the savepoint was established are
 no longer in the database.</li>
       </ul>
@@ -1194,12 +1189,12 @@ no longer in the database.</li>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="cmdlineref_autocommit.html"><code class="highlighter-rouge">autocommit</code></a> command</li>
-      <li><a href="cmdlineref_commit.html"><code class="highlighter-rouge">commit</code></a> command</li>
-      <li><a href="cmdlineref_releasesavepoint.html"><code class="highlighter-rouge">release savepoint</code></a> command</li>
-      <li><a href="cmdlineref_rollback.html"><code class="highlighter-rouge">rollback</code></a> command</li>
-      <li><a href="cmdlineref_rollbacktosavepoint.html"><code class="highlighter-rouge">rollback to savepoint</code></a> command</li>
-      <li><a href="cmdlineref_savepoint.html"><code class="highlighter-rouge">savepoint</code></a> command</li>
+      <li><a href="cmdlineref_autocommit.html"><code>autocommit</code></a> command</li>
+      <li><a href="cmdlineref_commit.html"><code>commit</code></a> command</li>
+      <li><a href="cmdlineref_releasesavepoint.html"><code>release savepoint</code></a> command</li>
+      <li><a href="cmdlineref_rollback.html"><code>rollback</code></a> command</li>
+      <li><a href="cmdlineref_rollbacktosavepoint.html"><code>rollback to savepoint</code></a> command</li>
+      <li><a href="cmdlineref_savepoint.html"><code>savepoint</code></a> command</li>
     </ul>
 
   </div>
@@ -1236,49 +1231,19 @@ no longer in the database.</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

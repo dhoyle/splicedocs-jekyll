@@ -8,11 +8,11 @@ sidebar:  onprem_sidebar
 permalink: onprem_info_newfeatures.html
 folder: OnPrem/Info
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # New Features in This Release
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic describes significant new and deprecated features in the
 Splice Machine On-Premise Database product, in these sections:
 
@@ -81,7 +81,7 @@ back-ported into the v2.5 patch release (2.5.0.1729) in August, 2017.
 				<td><em>Logging Changes</em></td>
 				<td><p>We've made two significant changes in logging:</p>
 					<ul>
-						<li>Statement logging is now enabled by default. To modify this, see the <a href="developers_tuning_logging">Using Logging</a> topic in our <em>Developer's Guide</em>.</li>
+						<li>Statement logging is now enabled by default. To modify this, see the <a href="developers_tuning_logging">Using Logging</a> topic.</li>
 						<li>Logs are stored, by default, in your region server's log directory. You can modify the location of the logs with a code snippet that is described in the <a href="onprem_install_intro.html">Installation Guide</a> page for your platform (Cloudera, Hortonworks, or MapR).</li>
 					</ul>
 				</td>
@@ -106,7 +106,7 @@ back-ported into the v2.5 patch release (2.5.0.1729) in August, 2017.
                 <td><strong>2.6</strong></td>
                 <td><em>External AVRO files</em></td>
                 <td>
-                    <p>We've added support for AVRO files files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <em>Developer's Guide</em> for more information.</p>
+                    <p>We've added support for AVRO files files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> for more information.</p>
                 </td>
             </tr>
             <tr>
@@ -199,7 +199,7 @@ back-ported into the v2.5 patch release (2.5.0.1729) in August, 2017.
                 <td><strong>2.5</strong></td>
                 <td><em>External Tables</em></td>
                 <td>
-                    <p>You can now access ORC and PARQUET files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> in our <em>Developer's Guide</em> for more information.</p>
+                    <p>You can now access ORC and PARQUET files as external tables. See <a href="developers_fundamentals_externaltables.html">Using External Tables</a> for more information.</p>
                     <p>The <a href="sqlref_sysprocs_refreshexttable.html"><code>SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</code></a> built-in system procedure are now available for working with external tables.</p>
                 </td>
             </tr>
@@ -348,4 +348,3 @@ This section summarizes important documentation updates in this version:
         </table>
 </div>
 </section>
-

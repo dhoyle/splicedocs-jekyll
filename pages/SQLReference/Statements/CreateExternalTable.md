@@ -8,7 +8,7 @@ sidebar:  sqlref_sidebar
 permalink: sqlref_statements_createexternaltable.html
 folder: SQLReference/Statements
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # CREATE EXTERNAL TABLE   {#Statements.CreateTable}
 

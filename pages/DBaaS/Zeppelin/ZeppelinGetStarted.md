@@ -12,7 +12,7 @@ folder: DBaaS/Zeppelin
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Getting Started with Zeppelin
 
-{% include splice_snippets/dbaasonlytopic.html %}
+{% include splice_snippets/dbaasonlytopic.md %}
 This topic helps you to get started with using Zeppelin with your Splice
 Machine database.
 

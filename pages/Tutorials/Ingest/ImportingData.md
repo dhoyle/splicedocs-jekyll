@@ -248,7 +248,7 @@ Manual](sqlref_sysprocs_importdata.html); here are brief descriptions:
                     </tr>
                 </tbody>
             </table>
-{% include splice_snippets/importcolvals.html %}
+{% include splice_snippets/importcolvals.md %}
 ## Import Examples   {#Import}
 
 This section provides several examples of importing data into Splice
@@ -316,7 +316,8 @@ are imported:
 </div>
 ### How Missing Columns are Handled With an Insert Column List   {#Example2}
 
-{% include splice_snippets/importprocsexample.html %}
+{% include splice_snippets/importprocsexample.md %}
+
 ### Example 3: Importing a subset of data from a file into a table   {#Example3}
 
 This example uses the same table and import file as does the previous

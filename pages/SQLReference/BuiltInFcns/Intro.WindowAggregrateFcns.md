@@ -25,7 +25,7 @@ built into Splice Machine SQL.
   that are related to the current row. Each window function outputs one
   value for each row on which it operates. Some of the window functions
   *cannot* be used as aggregate functions.
-  
+
   A subset of the window functions are sometimes referred to as *ranking
   functions*, as noted below.
   {: .noteNote}
@@ -227,8 +227,7 @@ differences; a window function:
 
 Most developers who are new to window functions find that the easiest
 way to understand them is to view examples, such as the ones in the
-[Window Functions](developers_fundamentals_windowfcns.html) topic in our
-*Splice Machine Developer's Guide*.
+[Window Functions](developers_fundamentals_windowfcns.html) topic.
 {: .noteNote}
 
 Window functions can be used to handle complex analysis and reporting.
@@ -260,8 +259,7 @@ means of different `OVER` clauses, but they all act on the same
 collection of rows defined by this virtual table.
 
 For examples and further explanation of window functions, please see the
-[Window Functions](developers_fundamentals_windowfcns.html) topic in our
-*Splice Machine Developer's Guide*.
+[Window Functions](developers_fundamentals_windowfcns.html) topic.
 
 ## See Also
 
@@ -287,4 +285,3 @@ For examples and further explanation of window functions, please see the
 
 </div>
 </section>
-

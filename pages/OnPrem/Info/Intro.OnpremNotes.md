@@ -12,7 +12,7 @@ folder: OnPrem/Info
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Release Information
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This page includes links to the release notes, update notes, and a few
 other pages with specific information about this release of the Splice
 Machine On-Premise-Database product.

@@ -16,8 +16,7 @@ The `SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL` system procedure changes the
 logging level of the specified logger.
 
 You can read more about Splice  Machine loggers and logging levels in
-the [Logging](developers_tuning_logging.html) topic in our *Developer's
-Guide*.
+the [Logging](developers_tuning_logging.html) topic.
 {: .noteNote}
 
 ## Syntax
@@ -40,8 +39,7 @@ loggerLevel
 
 A string specifying the new level to assign to the named logger. This
 must be one of the following level values, which are described in the
-[Logging](developers_tuning_logging.html) topic in our *Developer's
-Guide*:
+[Logging](developers_tuning_logging.html) topic:
 {: .paramDefnFirst}
 
 * {: .CodeFont value="1"} 'TRACE'
@@ -89,4 +87,3 @@ procedure.
 
 </div>
 </section>
-

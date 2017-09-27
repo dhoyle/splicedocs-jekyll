@@ -19,7 +19,7 @@ users.
 The on-premise version of Splice Machine offers several different
 authentication mechanisms for your database, as described in the
 [Configuring Splice Machine
-Authentication](onprem_install_configureauth.html) topic in this book.
+Authentication](onprem_install_configureauth.html) topic.
 Native authentication is the default mechanism.
 {: .noteNote}
 
@@ -40,7 +40,7 @@ Splice manages users with standard system procedures:
   <div class="preWrapperWide" markdown="1">
       splice> call syscs_util.syscs_create_user('username', 'password');
   {: .AppCommand xml:space="preserve"}
-  
+
   </div>
 
 * You can drop a user with the
@@ -49,7 +49,7 @@ Splice manages users with standard system procedures:
   <div class="preWrapperWide" markdown="1">
       splice> call syscs_util.syscs_drop_user('username');
   {: .AppCommand xml:space="preserve"}
-  
+
   </div>
 
 ## Managing Roles
@@ -145,7 +145,7 @@ privileges on schemas, tables and routines to a role or to a user.
 Note that when you grant privileges to a role, you are implicitly
 granting those same privileges to all roles that contain that role.
 
-## Revoking Privileges 
+## Revoking Privileges
 
 Use the [`REVOKE`](sqlref_statements_revoke.html) statement to revoke
 privileges on schemas, tables and routines.
@@ -193,4 +193,3 @@ user.
 
 </div>
 </section>
-

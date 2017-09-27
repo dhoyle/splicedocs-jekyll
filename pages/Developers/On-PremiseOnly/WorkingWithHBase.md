@@ -12,7 +12,7 @@ folder: Developers
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Working with HBase
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic presents information about working in HBase with Splice
 Machine, in these sections:
 

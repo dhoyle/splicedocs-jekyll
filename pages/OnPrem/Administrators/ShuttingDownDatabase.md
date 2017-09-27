@@ -12,7 +12,7 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Shutting Down Your Database
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic describes how to shut down your Splice Machine database. You
 need to follow different steps, depending on which version of Splice
 Machine you are using:

@@ -12,7 +12,7 @@ folder: OnPrem/InstallingSpliceMachine
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Importing and Querying Demo Data
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic walks you through importing and querying the demo
 (sample) data that is packaged with the Splice Machine standalone
 installer.

@@ -23,8 +23,8 @@ SQL Statements, in the following subsections:
 * [System Information Tables](sqlref_systables_sysinfointro.html)
 
 Since the system tables belong to the `SYS` schema, you must preface any
-inquiries involving these tables with the `SYS.` prefix.  
-  
+inquiries involving these tables with the `SYS.` prefix.
+
 You can use the Java `java.sql.DatabaseMetaData` class to learn more
 about these tables.
 {: .noteNote}
@@ -32,7 +32,7 @@ about these tables.
 <div markdown="1">
 ## Database Backups Tables
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 These are the System Tables with backups information:
 
 <table summary="Summary table with links to and descriptions of system backup tables">
@@ -269,4 +269,3 @@ is enabled.</td>
             </table>
 </div>
 </section>
-

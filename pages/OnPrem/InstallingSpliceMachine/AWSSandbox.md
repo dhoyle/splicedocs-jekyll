@@ -12,7 +12,7 @@ folder: OnPrem/InstallingSpliceMachine
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Installing Splice Machine on Amazon Web Services   {#DeployingCloudfront}
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 The fastest way to deploy Splice Machine is on the Amazon Web Services
 (AWS) platform on EC2 instances using cloud.splicemachine.com.
 

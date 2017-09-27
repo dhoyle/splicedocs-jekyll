@@ -17,11 +17,11 @@ Machine database, and includes a number of examples. It also contains
 specific tips to help you with the details of getting your data
 correctly imported. This tutorial contains these sections:
 
-* *How Importing Your Data as HFiles Works* presents an overview of
+* _How Importing Your Data as HFiles Works_ presents an overview of
   using the HFile import functions.
-* *Usage Notes* provides an overview of the steps you use to import your
+* _Usage Notes_ provides an overview of the steps you use to import your
   data as HFiles.
-* *Examples* contains two example of importing data in HFile format.
+* _Examples_ contains two example of importing data in HFile format.
 * [Tips for Importing Data into Splice Machine](#Tips) provides specific
   tips for specifying your import parameters.
 
@@ -62,7 +62,7 @@ automatically, simply call this procedure with the `skipSampling`
 parameter set to `true`.
 
 If you want to control the splits yourself, use these steps, which are
-detailed in the *Examples* section below:
+detailed in the _Examples_ section below:
 
 * You must determine which values make sense for splitting your data
   into multiple regions. This means looking at the primary keys for the
@@ -78,20 +78,18 @@ detailed in the *Examples* section below:
   those directly into your database, and then removes the temporary
   HFiles.
 
-{% include splice_snippets/hfileimport_example.html %}
+{% include splice_snippets/hfileimport_example.md %}
 ## Tips for Importing Data into Splice Machine   {#Tips}
 
 This tutorial contains a number of tips that our users have found very
 useful in determining the parameter settings to use when running an
 import:
 
-1.  [[Tip #1:  Use Special Characters for Delimiters](#Tip4)](#Tip4)
-2.  [[Tip #2:  Avoid Problems With Date, Time, and Timestamp
-    Formats](#Tip5)](#Tip5)
-3.  [[Tip #3:  Change the Bad Directory for Each Table /
-    Group](#Tip6)](#Tip6)
-4.  [[Tip #4:  Importing Multi-line Records](#Tip7)](#Tip7)
-5.  [[Tip #5:  Importing CLOBs and BLOBs](#Tip8)](#Tip8)
+1.  [Tip #1:  Use Special Characters for Delimiters](#Tip4)
+2.  [Tip #2:  Avoid Problems With Date, Time, and Timestamp Formats](#Tip5)
+3.  [Tip #3:  Change the Bad Directory for Each Table Group](#Tip6)
+4.  [Tip #4:  Importing Multi-line Records](#Tip7)
+5.  [Tip #5:  Importing CLOBs and BLOBs](#Tip8)
 6.  [Tip #6:  Scripting Your Imports](#Tip9)
 
 ### Tip #1:  Use Special Characters for Delimiters   {#Tip4}

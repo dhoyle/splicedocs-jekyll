@@ -12,7 +12,7 @@ folder: Tutorials/CLI
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Getting Started With the splice&gt; Command Line Interface
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 The <span class="AppCommand">splice&gt;</span> command line interpreter
 is an easy way to interact with your Splice Machine database. This topic
 introduces <span class="AppCommand">splice&gt;</span> and some of the
@@ -68,34 +68,34 @@ interpreter, follow these steps:
 1.  Open a terminal window
 2.  Navigate to your splicemachine directory
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         cd ~/splicemachine    #Use the correct path for your Splice Machine installation
     {: .ShellCommand}
-    
+
     </div>
 
 3.  Start splice&gt;
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         ./bin/sqlshell.sh
     {: .ShellCommand}
-    
+
     </div>
-    
+
     The full path to this script on Splice Machine standalone
     installations is `./splicemachine/bin/sqlshell.sh`.
 
 4.  The command line interpreter starts:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         Running Splice Machine SQL ShellFor help: "Splice> help;"SPLICE** = current connectionsplice>
     {: .AppCommand}
-    
+
     </div>
-    
+
     `SPLICE` is the name of the default connection, which becomes the
     current connection when you start the interpreter.
 {: .boldFont}
@@ -143,8 +143,8 @@ class="AppCommand">splice&gt;</span> prompt), you must end each SQL
 statement with a semicolon (`;`). For example:
 
 <div class="preWrapper" markdown="1">
-    
-    splice> select * from myTable;	
+
+    splice> select * from myTable;
 {: .AppCommand}
 
 </div>
@@ -154,8 +154,8 @@ interface prompts you with a fresh <span class="AppCommand">&gt;</span>
 at the beginning of each line. For example:
 
 <div class="preWrapper" markdown="1">
-    
-    splice> select * from myTable> where i > 1;	
+
+    splice> select * from myTable> where i > 1;
 {: .AppCommand xml:space="preserve"}
 
 </div>
@@ -403,7 +403,7 @@ To examine the structure of a specific table, use the
     CUSTOMER_MASTER_ID          |BIGINT   |0   |10  |19    |NULL      |NULL      |YES
     TRANSACTION_DT              |DATE     |0   |10  |10    |NULL      |NULL      |NO
     ORIGINAL_SKU_CATEGORY_ID    |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
-    
+
     5 rows selected
 {: .AppCommand xml:space="preserve"}
 
@@ -421,7 +421,7 @@ You can display all of the indexes in a schema:
     T_DETAIL      |TDIDX1        |CUSTOMER_MASTER_ID  |3       |true      |BTREE|A   |1585
     T_HEADER      |THIDX2        |CUSTOMER_MASTER_ID  |1       |true      |BTREE|A   |1601
     T_HEADER      |THIDX2        |TRANSACTION_DT      |2       |true      |BTREE|A   |1601
-    
+
     5 rows selected
 {: .AppCommand xml:space="preserve"}
 
@@ -438,7 +438,7 @@ display the indexes in a table.
     ---------------------------------------------------------------------------------------------T_DETAIL      |TDIDX1        |ORIGINAL_SKU_CATEGO&|1       |true      |BTREE|A   |1585
     T_DETAIL      |TDIDX1        |TRANSACTION_DT      |2       |true      |BTREE|A   |1585
     T_DETAIL      |TDIDX1        |CUSTOMER_MASTER_ID  |3       |true      |BTREE|A   |1585
-    
+
     3 rows selected
 {: .AppCommand xml:space="preserve"}
 
@@ -455,13 +455,13 @@ in your database or in a schema:
     -----------------------------------------------------------
     SYS            |SYSCOLUMNSTATISTICS   |NULL      |
     SYS            |SYSTABLESTATISTICS    |NULL      |
-    
+
     2 rows selected
     splice> show views in sys;TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS
     -----------------------------------------------------------
     SYS            |SYSCOLUMNSTATISTICS   |NULL      |
     SYS            |SYSTABLESTATISTICS    |NULL      |
-    
+
     2 rows selected
 {: .AppCommand xml:space="preserve"}
 
@@ -477,7 +477,7 @@ functions`](cmdlineref_showfunctions.html) command to display which
 functions are defined in your database or schema:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> show functions in splice;
     FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
     -------------------------------------------------------------------------
@@ -502,7 +502,7 @@ functions are defined in your database or schema:
     SQLJ                |INSTALL_JAR       |com.splicemachine.db.catalog.SystemProcedures.INSTALL_JAR
     SQLJ                |REMOVE_JAR        |com.splicemachine.db.catalog.SystemProcedures.REMOVE_JAR
     SQLJ                |REPLACE_JAR       |com.splicemachine.db.catalog.SystemProcedures.REPLACE_JAR
-    
+
     3 rows selected
 {: .AppCommand xml:space="preserve"}
 
@@ -514,9 +514,9 @@ Language (*DDL*) and Data Manipulation Language (*DML*) statements from
 <span class="AppCommand">splice&gt;</span>.
 
 * [Getting Started With the splice&gt; Command Line
-  Interface](#CREATE&#160;S)
+  Interface](#CREATESta)
 * [Getting Started With the splice&gt; Command Line
-  Interface](#DROP&#160;Sta)
+  Interface](#DROPSta)
 * [Inserting Data](#INSERTIN)
 * [Selecting and Displaying Data](#SELETING)
 
@@ -524,7 +524,7 @@ See the *[DML Statements](sqlref_statements_dmlintro.html)* sections in
 our *SQL Reference Manual* for more information.
 {: .spaceAbove}
 
-#### CREATE Statements   {#CREATE&#160;S}
+#### CREATE Statements   {#CREATESta}
 
 SQL uses `CREATE` statements to create objects such as
 [tables](sqlref_statements_createtable.html). For example:
@@ -561,14 +561,14 @@ SQL uses `CREATE` statements to create objects such as
     POSITION      |CHAR     |NULL|NULL|2     |NULL      |4         |YES
     DISPLAYNAME   |VARCHAR  |NULL|NULL|24    |NULL      |48        |YES
     BIRTHDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
-    
+
     6 rows selected
 {: .AppCommand}
 
 See the *[CREATE Statements](sqlref_statements_createstatements.html)*
 section in our *SQL Reference Manual* for more information.
 
-#### DROP Statements   {#DROP&#160;Sta}
+#### DROP Statements   {#DROPSta}
 
 SQL uses `DROP` statements to delete objects such as
 [tables](sqlref_statements_droptable.html). For example:
@@ -607,11 +607,11 @@ Once you've created a table, you can use
 [`INSERT`](sqlref_statements_insert.html) statements to insert records
 into that table; for example:
 
-    
+
     splice> INSERT INTO Players
        VALUES( 99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991');
     1 row inserted/updated/deleted
-    
+
     splice> INSERT INTO Players
        VALUES (99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991'),
               (73, 'Giants', 'Lester Johns', 'P', 'Big John', '06/09/1984'),
@@ -636,28 +636,28 @@ example:
     Earl Hastings
     Lester Johns
     Joe Bojangles
-    
+
     3 rows selected
 {: .AppCommand}
 
 You can select all columns from all of the records in a table; for
 example:
 
-    
+
     splice> select * from Players;
     ID    |TEAM   |NAME           |POS&|DISPLAYNAME    |BIRTHDATE
     ---------------------------------------------------------------
     27    |Cards  |Earl Hastings  |OF  |Speedy Earl    |1982-04-22
     73    |Giants |Lester Johns   |P   |Big John       |1984-06-09
     99    |Giants |Joe Bojangles  |C   |Little Joey    |1991-07-11
-    
+
     3 rows selected
 {: .AppCommand}
 
 You can also qualify which records to select with a
 [`WHERE`](sqlref_clauses_where.html) clause; for example:
 
-    
+
     splice> select * from Players WHERE Team='Cards';
     ID    |TEAM   |NAME           |POS&|DISPLAYNAME    |BIRTHDATE
     ---------------------------------------------------------------
@@ -667,7 +667,7 @@ You can also qualify which records to select with a
 You can easily count the records in a table by using the
 [`SELECT`](sqlref_expressions_select.html) statement; for example:
 
-    
+
     splice> select count(*) from Players;1-----------------------31 row selected
 {: .AppCommand}
 
@@ -687,4 +687,3 @@ You can easily count the records in a table by using the
 
 </div>
 </section>
-

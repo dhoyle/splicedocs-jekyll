@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -402,7 +402,7 @@
             
             
             
-            <li><a href="onprem_info_release.html">Release Notes v2.6</a></li>
+            <li><a href="onprem_info_release.html">Release Notes v2.6.1</a></li>
             
             
             
@@ -541,7 +541,7 @@
 
     <h1 id="installing-and-configuring-splice-machine-for-mapr">Installing and Configuring Splice Machine for MapR</h1>
 
-    <p class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
+    <p class="noteOnPremiseOnly">    <a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
     <div>
       <p>This topic describes installing and configuring Splice Machine on a
@@ -567,8 +567,8 @@ Machine. You can check this by:</p>
 
         <ol>
           <li>Open the HBase Configuration page</li>
-          <li>Search the XML for the <code class="highlighter-rouge">hbase.security.authentication</code> setting</li>
-          <li>If the setting value is anything other than <code class="highlighter-rouge">simple</code>, you need the
+          <li>Search the XML for the <code>hbase.security.authentication</code> setting</li>
+          <li>If the setting value is anything other than <code>simple</code>, you need the
 <em>Enterprise</em> edition of Splice Machine.</li>
         </ol>
 
@@ -587,7 +587,7 @@ your cluster contains the prerequisite software components:</p>
         <li>HBase installed</li>
         <li>YARN installed</li>
         <li>ZooKeeper installed</li>
-        <li>The latest <code class="highlighter-rouge">mapr-patch</code> should be installed to bring in all
+        <li>The latest <code>mapr-patch</code> should be installed to bring in all
 MapR-supplied platform patches, before proceeding with your Splice
 Machine installation.</li>
         <li>The MapR Ecosystem Package (MEP) should be installed on all cluster
@@ -595,7 +595,7 @@ nodes, before proceeding with your Splice Machine installation.</li>
         <li>Ensure Spark services are <strong>NOT</strong> installed; Splice Machine cannot
 currently coexist with Spark 1.x on a cluster:
           <ul class="bullet">
-            <li>If <code class="highlighter-rouge">MEP version 1.x</code> is in use, you must remove the <code class="highlighter-rouge">Spark 1.x</code>
+            <li>If <code>MEP version 1.x</code> is in use, you must remove the <code>Spark 1.x</code>
 packages from your cluster, as described below, in <a href="#Removing">Removing Spark
 Packages from Your Cluster.</a></li>
             <li>MEP version 2.0 bundles Spark 2.0, and will not cause conflicts with
@@ -620,18 +620,16 @@ configuration, follow these steps</p>
             <p class="topLevel">If you’re running a Debian/Ubuntu-based Linux distribution:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>dpkg -l | awk '/ii.*mapr-spark/{print $2}' | xargs sudo apt-get purge
+              <pre class="ShellCommand"><code>dpkg -l | awk '/ii.*mapr-spark/{print $2}' | xargs sudo apt-get purge
 </code></pre>
-              </div>
 
             </div>
 
             <p class="indentLevel1">If you’re running on a RHEL/CentOS-based Linux distribution:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>rpm -qa \*mapr-spark\* | xargs sudo yum -y erase
+              <pre class="ShellCommand"><code>rpm -qa \*mapr-spark\* | xargs sudo yum -y erase
 </code></pre>
-              </div>
 
             </div>
           </li>
@@ -639,9 +637,8 @@ configuration, follow these steps</p>
             <p class="topLevel">Reconfigure node services in your cluster:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>sudo /opt/mapr/server/configure.sh -R
+              <pre class="ShellCommand"><code>sudo /opt/mapr/server/configure.sh -R
 </code></pre>
-              </div>
 
             </div>
           </li>
@@ -696,23 +693,21 @@ Machine Community site</a> or contact your Splice
 Machine representative.</p>
           </li>
           <li>
-            <p class="topLevel">Create the <code class="highlighter-rouge">splice</code> installation directory:</p>
+            <p class="topLevel">Create the <code>splice</code> installation directory:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>mkdir -p /opt/splice
+              <pre class="ShellCommand"><code>mkdir -p /opt/splice
 </code></pre>
-              </div>
 
             </div>
           </li>
           <li>
-            <p class="topLevel">Download the Splice Machine package into the <code class="highlighter-rouge">splice</code> directory on
+            <p class="topLevel">Download the Splice Machine package into the <code>splice</code> directory on
 the node. For example:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>cd /opt/splicecurl -O '////SPLICEMACHINE-..'
+              <pre class="ShellCommand"><code>cd /opt/splicecurl -O '////SPLICEMACHINE-..'
 </code></pre>
-              </div>
 
             </div>
           </li>
@@ -720,9 +715,8 @@ the node. For example:</p>
             <p class="topLevel">Extract the Splice Machine package:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>tar -xf SPLICEMACHINE-..
+              <pre class="ShellCommand"><code>tar -xf SPLICEMACHINE-..
 </code></pre>
-              </div>
 
             </div>
           </li>
@@ -730,9 +724,8 @@ the node. For example:</p>
             <p class="topLevel">Create a symbolic link. For example:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>ln -sf SPLICEMACHINE-.. default
+              <pre class="ShellCommand"><code>ln -sf SPLICEMACHINE-.. default
 </code></pre>
-              </div>
 
             </div>
           </li>
@@ -745,9 +738,8 @@ Splice Machine jar and to script symbolic links:</p>
 
             <div class="preWrapperWide">
 
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh
+              <pre class="ShellCommand"><code>sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh
 </code></pre>
-              </div>
 
             </div>
           </li>
@@ -760,7 +752,7 @@ Splice Machine jar and to script symbolic links:</p>
 These scripts are designed to be run on the CLDB node in a cluster with
 only one CLDB node. If your cluster has multiple CLDB nodes, do not run
 these script; you need to change configuration settings manually <span class="important">on each node</span> in the cluster. To do so, refer to
-the <code class="highlighter-rouge">*.patch</code> files in the <code class="highlighter-rouge">/opt/splice/default/conf</code> directory.</p>
+the <code>*.patch</code> files in the <code>/opt/splice/default/conf</code> directory.</p>
 
       <p>If you’re running on a cluster with a single CLDB node, follow these
 steps:</p>
@@ -771,65 +763,59 @@ steps:</p>
             <p class="topLevel">Tighten the ephemeral port range so HBase doesn’t bump into it:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>cd /opt/splice/default/scripts
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
 ./install-sysctl-conf.sh
 </code></pre>
-              </div>
 
             </div>
           </li>
           <li>
-            <p class="topLevel">Update <code class="highlighter-rouge">hbase-site.xml</code>:</p>
+            <p class="topLevel">Update <code>hbase-site.xml</code>:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>cd /opt/splice/default/scripts
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
 ./install-hbase-site-xml.sh
 </code></pre>
-              </div>
 
             </div>
           </li>
           <li>
-            <p class="topLevel">Update <code class="highlighter-rouge">hbase-env.sh</code>:</p>
+            <p class="topLevel">Update <code>hbase-env.sh</code>:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>cd /opt/splice/default/scripts
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
 ./install-hbase-env-sh.sh
 </code></pre>
-              </div>
 
             </div>
           </li>
           <li>
-            <p class="topLevel">Update <code class="highlighter-rouge">yarn-site.xml</code>:</p>
+            <p class="topLevel">Update <code>yarn-site.xml</code>:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>cd /opt/splice/default/scripts
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
 ./install-yarn-site-xml.sh
 </code></pre>
-              </div>
 
             </div>
           </li>
           <li>
-            <p class="topLevel">Update <code class="highlighter-rouge">warden.conf</code>:</p>
+            <p class="topLevel">Update <code>warden.conf</code>:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>cd /opt/splice/default/scripts
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
 ./install-warden-conf.sh
 </code></pre>
-              </div>
 
             </div>
           </li>
           <li>
-            <p class="topLevel">Update <code class="highlighter-rouge">zoo.cfg</code>:</p>
+            <p class="topLevel">Update <code>zoo.cfg</code>:</p>
 
             <div class="preWrapperWide">
-              <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>cd /opt/splice/default/scripts
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
 ./install-zookeeper-conf.sh
 </code></pre>
-              </div>
 
             </div>
           </li>
@@ -839,12 +825,11 @@ steps:</p>
       <h2 id="Stop">Stop Cluster Services</h2>
 
       <p>You need to stop all cluster services to continue with installing Splice
-Machine. Run the following commands as <code class="highlighter-rouge">root</code> user <span class="important">on each node</span> in your cluster</p>
+Machine. Run the following commands as <code>root</code> user <span class="important">on each node</span> in your cluster</p>
 
       <div class="preWrapperWide">
-        <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>sudo service mapr-warden stopsudo service mapr-zookeeper stop
+        <pre class="ShellCommand"><code>sudo service mapr-warden stopsudo service mapr-zookeeper stop
 </code></pre>
-        </div>
 
       </div>
       <h2 id="StartCluster">Restart Cluster Services</h2>
@@ -853,9 +838,8 @@ Machine. Run the following commands as <code class="highlighter-rouge">root</cod
 services on your cluster; run the following commands <span class="important">on each node</span> in your cluster:</p>
 
       <div class="preWrapper">
-        <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>sudo service mapr-zookeeper startsudo service mapr-warden start
+        <pre class="ShellCommand"><code>sudo service mapr-zookeeper startsudo service mapr-warden start
 </code></pre>
-        </div>
 
       </div>
       <h2 id="CreateLogDir">Create the Splice Machine Event Log Directory</h2>
@@ -864,9 +848,8 @@ services on your cluster; run the following commands <span class="important">on 
 commands on a single cluster node while MapR is up and running:</p>
 
       <div class="preWrapper">
-        <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>sudo -su mapr hadoop fs -mkdir -p /user/splice/historysudo -su mapr hadoop fs -chown -R mapr:mapr /user/splicesudo -su mapr hadoop fs -chmod 1777 /user/splice/history
+        <pre class="ShellCommand"><code>sudo -su mapr hadoop fs -mkdir -p /user/splice/historysudo -su mapr hadoop fs -chown -R mapr:mapr /user/splicesudo -su mapr hadoop fs -chmod 1777 /user/splice/history
 </code></pre>
-        </div>
 
       </div>
       <h2 id="Optional">Optional Configuration Modifications</h2>
@@ -884,7 +867,7 @@ and need to improve resource usage or performance.</li>
       <h3 id="Modify">Modify the Authentication Mechanism</h3>
 
       <p>Splice Machine installs with Native authentication configured; native
-authentication uses the <code class="highlighter-rouge">sys.sysusers</code> table in the <code class="highlighter-rouge">splice</code> schema for
+authentication uses the <code>sys.sysusers</code> table in the <code>splice</code> schema for
 configuring user names and passwords.</p>
 
       <p>You can disable authentication or change the authentication mechanism
@@ -898,9 +881,8 @@ running a small cluster you may want to adjust the replication down to
 improve resource and performance drag. To do so in MapR, use the
 following command:</p>
 
-      <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>maprcli volume modify -nsreplication &lt;value&gt;
+      <pre class="ShellCommand"><code>maprcli volume modify -nsreplication &lt;value&gt;
 </code></pre>
-      </div>
 
       <p>For more information, see the MapR documentation site,
 <a href="http://doc.mapr.com/" title="MapR documentation site" target="_blank">doc.mapr.com</a>.</p>
@@ -908,12 +890,12 @@ following command:</p>
       <h2 id="Run">Verify your Splice Machine Installation</h2>
 
       <p>Now start using the Splice Machine command line interpreter, which is
-referred to as <em>the splice prompt</em> or simply <span class="AppCommand">splice&gt;</span> by launching the <code class="highlighter-rouge">sqlshell.sh</code>
+referred to as <em>the splice prompt</em> or simply <span class="AppCommand">splice&gt;</span> by launching the <code>sqlshell.sh</code>
 script on any node in your cluster that is running an HBase region
 server.</p>
 
-      <p class="noteNote">The command line interpreter defaults to connecting on port <code class="highlighter-rouge">1527</code> on
-<code class="highlighter-rouge">localhost</code>, with username <code class="highlighter-rouge">splice</code>, and password <code class="highlighter-rouge">admin</code>. You can
+      <p class="noteNote">The command line interpreter defaults to connecting on port <code>1527</code> on
+<code>localhost</code>, with username <code>splice</code>, and password <code>admin</code>. You can
 override these defaults when starting the interpreter, as described in
 the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic
 in our <em>Developer’s Guide</em>.</p>
@@ -1024,49 +1006,19 @@ and command syntax.</p>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

@@ -12,7 +12,7 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Derby Property Access
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic describes how to enable and disable Derby features by setting
 Derby properties, which are divided into categories, as shown in the
 following table.

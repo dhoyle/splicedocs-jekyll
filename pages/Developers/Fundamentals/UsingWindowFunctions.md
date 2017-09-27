@@ -221,7 +221,7 @@ Window functions:
   specifies in which order rows are processed by the window function.
   This `ORDER BY` clause is independent of the `ORDER BY` clause that
   specifies the order in which rows are output.
-  
+
   Note that the [ROW NUMBER](sqlref_builtinfcns_rownumber.html) **must
   contain** an `ORDER BY` clause.
 
@@ -308,7 +308,7 @@ window function.
          [partitionClause]
          [orderClause]
          [frameClause] );
-     
+
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -544,16 +544,16 @@ For `ROWS` mode, you can specify:
 >     | CURRENT ROW
 >     | value FOLLOWING
 > {: .FcnSyntax xml:space="preserve"}
-> 
+>
 > </div>
-> 
+>
 > <div class="paramListNested" markdown="1">
 > <span class="CodeItalicFont">value</span>
 > {: .paramName}
-> 
+>
 > A non-negative integer value.
 > {: .paramDefnFirst}
-> 
+>
 > </div>
 
 For `RANGE` mode, you can only specify:
@@ -563,7 +563,7 @@ For `RANGE` mode, you can only specify:
 >     CURRENT ROW
 >     | UNBOUNDED FOLLOWING
 > {: .FcnSyntax xml:space="preserve"}
-> 
+>
 > </div>
 
 frameEnd
@@ -581,16 +581,16 @@ For `ROWS` mode, you can specify:
 >     | value FOLLOWING
 >     | UNBOUNDED FOLLOWING
 > {: .FcnSyntax xml:space="preserve"}
-> 
+>
 > </div>
-> 
+>
 > <div class="paramListNested" markdown="1">
 > <span class="CodeItalicFont">value</span>
 > {: .paramName}
-> 
+>
 > A non-negative integer value.
 > {: .paramDefnFirst}
-> 
+>
 > </div>
 
 For `RANGE` mode, you can only specify:
@@ -600,7 +600,7 @@ For `RANGE` mode, you can only specify:
 >     CURRENT ROW
 >     | UNBOUNDED FOLLOWING
 > {: .FcnSyntax xml:space="preserve"}
-> 
+>
 > </div>
 
 </div>
@@ -611,31 +611,31 @@ way of some simple `OVER` clause examples:
 {: .body}
 
 > ##### Example 1:   {#Example}
-> 
+>
 > This clause can be used to apply a window function to all rows in the
 > partition from the top of the partition to the current row:
 > {: .body}
-> 
+>
 >     OVER (PARTITION BY customerID ORDER BY orderDate)
 > {: .Example xml:space="preserve"}
-> 
+>
 > ##### Example 2:
-> 
+>
 > Both of these clauses specify the same set of rows as [Example
 > 1:](#Example){: .selected}
 > {: .body}
-> 
+>
 >     OVER (PARTITION BY customerID ORDER BY orderDate UNBOUNDED PRECEDING preceding)
->     
+>
 >     OVER (PARTITION BY customerID ORDER BY orderDate RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
 > {: .Example xml:space="preserve"}
-> 
+>
 > ##### Example 3:
-> 
+>
 > This clause can be used to apply a window function to the current row
 > and the 3 preceding row's values in the partition:
 > {: .body}
-> 
+>
 >     OVER (PARTITION BY customerID ORDER BY orderDate ROWS 3 preceding)
 > {: .Example xml:space="preserve"}
 
@@ -656,11 +656,11 @@ Some important notes about the frame clause:
   `ORDER BY` ordering.
 * The default *frameClause* is to include all values from the start of
   the partition through the current row: 
-  
+
   <div class="preWrapper" markdown="1">
       RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
   {: .Example xml:space="preserve"}
-  
+
   </div>
 
 #### Common Frame Clauses
@@ -700,12 +700,12 @@ This is a simple example that doesn't use a frame clause:
 1.  Rank each year within a player by the number of home runs hit by
     that player:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
-        RANK() OVER (PARTITION BY playerID ORDER BY H desc); 
+
+        RANK() OVER (PARTITION BY playerID ORDER BY H desc);
     {: .Example xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -715,35 +715,35 @@ Here are some examples of window functions using frame clauses:
 <div class="opsStepsList" markdown="1">
 1.  Compute the running sum of G for each player:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         SUM(G) OVER (PARTITION BY playerID ORDER BY yearID
-          RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW); 
+          RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW);
     {: .Example xml:space="preserve"}
-    
+
     </div>
 
 2.  Compute the career year:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         YearID - min(YEARID) OVER (PARTITION BY playerID
-           RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) + 1; 
+           RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) + 1;
     {: .Example xml:space="preserve"}
-    
+
     </div>
 
 3.  Compute a rolling average of games by player:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         AVG(G) OVER (PARTITION BY playerID ORDER BY yearID
-           ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING); 
+           ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING);
     {: .Example xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -815,8 +815,7 @@ columns,
 Splice Machine is currently expanding the set of SQL functions already
 able to take advantage of windowing functionality.
 
-The [`OVER`](sqlref_clauses_over.html) clause topic in our
-*SQL Reference* completes the complete reference information for `OVER`.
+The [`OVER`](sqlref_clauses_over.html) clause topic completes the complete reference information for `OVER`.
 
 Here is a list of the functions that currently support windowing:
 

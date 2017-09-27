@@ -85,7 +85,7 @@ Machine developers:
                         </td>
                         <td>
                             <p>How to use Splice Machine with HCatalog. </p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>
@@ -93,7 +93,7 @@ Machine developers:
                         </td>
                         <td>
                             <p>The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>
@@ -101,7 +101,7 @@ Machine developers:
                         </td>
                         <td>
                             <p>Working in HBase with Splice Machine.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                 </tbody>

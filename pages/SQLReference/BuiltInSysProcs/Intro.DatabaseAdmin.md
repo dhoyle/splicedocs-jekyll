@@ -31,7 +31,7 @@ database:
                         </td>
                         <td>
                             <p>Backs up the database to a specified backup directory.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>
@@ -39,7 +39,7 @@ database:
                         </td>
                         <td>
                             <p>Cancels a backup.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +47,7 @@ database:
                         </td>
                         <td>
                             <p>Cancels a scheduled daily backup.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>
@@ -60,7 +60,7 @@ database:
                         </td>
                         <td>
                             <p>Delete a specific backup.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>
@@ -68,7 +68,7 @@ database:
                         </td>
                         <td>
                             <p>Deletes all backups that were created more than a certain number of days ago.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>
@@ -106,7 +106,7 @@ database:
                         </td>
                         <td>
                             <p>Restores a database from a previous backup.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>
@@ -114,7 +114,7 @@ database:
                         </td>
                         <td>
                             <p>Schedules a full or incremental database backup to run at a specified time daily.</p>
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
                         </td>
                     </tr>
                     <tr>

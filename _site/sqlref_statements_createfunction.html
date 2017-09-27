@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,7 +2810,7 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="create-function---statementscreatefunction">CREATE FUNCTION   {#Statements.CreateFunction}</h1>
 
-    <p>The <code class="highlighter-rouge">CREATE FUNCTION</code> statement allows you to create Java functions,
+    <p>The <code>CREATE FUNCTION</code> statement allows you to create Java functions,
 which you can then use in expressions.</p>
 
     <p>For details on how Splice Machine matches functions to Java methods, see
@@ -2819,49 +2819,45 @@ which you can then use in expressions.</p>
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>CREATE FUNCTION functionName (
+      <pre class="FcnSyntax"><code>CREATE FUNCTION functionName (
 	[ functionParameter
    	[, functionParameter] ] *
 	)
     RETURNS returnDataType [ functionElement ] *
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
       <p class="paramName">functionName</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>[ SQL Identifier
+        <pre class="FcnSyntax"><code>[ SQL Identifier
 </code></pre>
-        </div>
 
       </div>
-      <p class="paramDefn">If <code class="highlighter-rouge">schemaName</code> is not provided, then the current schema is the default
+      <p class="paramDefn">If <code>schemaName</code> is not provided, then the current schema is the default
 schema. If a qualified procedure name is specified, the schema name
-cannot begin with <code class="highlighter-rouge">SYS</code>.</p>
+cannot begin with <code>SYS</code>.</p>
 
       <p class="paramName">functionParameter</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>[ parameterName ] DataType
+        <pre class="FcnSyntax"><code>[ parameterName ] DataType
 </code></pre>
-        </div>
 
       </div>
-      <p class="paramDefnFirst"><code class="highlighter-rouge">parameterName</code> is an identifier that must be unique within the
+      <p class="paramDefnFirst"><code>parameterName</code> is an identifier that must be unique within the
 function’s parameter names.</p>
 
-      <p class="noteNote">Data-types such as <code class="highlighter-rouge">BLOB, CLOB, LONG VARCHAR</code> are not allowed as
-parameters in a <code class="highlighter-rouge">CREATE FUNCTION</code> statement.</p>
+      <p class="noteNote">Data-types such as <code>BLOB, CLOB, LONG VARCHAR</code> are not allowed as
+parameters in a <code>CREATE FUNCTION</code> statement.</p>
 
       <p class="paramName">returnDataType</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>DataType |
+        <pre class="FcnSyntax"><code>DataType |
 TableType
 </code></pre>
-        </div>
 
       </div>
       <p class="paramName">functionElement</p>
@@ -2873,9 +2869,8 @@ next section.</p>
     <h2 id="TableType">TableType</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>TABLE( ColumnElement [,ColumnElement]* )
+      <pre class="FcnSyntax"><code>TABLE( ColumnElement [,ColumnElement]* )
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -2884,35 +2879,34 @@ next section.</p>
       <p class="paramDefnFirst">A <em><a href="sqlref_identifiers_intro.html">SQL Identifier</a></em>.</p>
 
     </div>
-    <p>Table functions return <code class="highlighter-rouge">TableType</code> results. Currently, only Splice
+    <p>Table functions return <code>TableType</code> results. Currently, only Splice
 Machine-style table functions are supporte, which are functions that
 return JDBC <em>ResultSets.</em></p>
 
     <p>When values are extracted from a <em>ResultSet</em>, the data types of the
 values are coerced to match the data types declared in the
-<code class="highlighter-rouge">CREATE FUNCTION </code>statement. Here are a few coercion rules you should
+<code>CREATE FUNCTION </code>statement. Here are a few coercion rules you should
 know about:</p>
 
     <ul>
       <li>values that are too long are truncated to the maximum declared length</li>
       <li>if a string value is returned in the <em>ResultSet</em> for a column of type
-<code class="highlighter-rouge">CHAR</code>, and the string is shorter than the column length, the string
+<code>CHAR</code>, and the string is shorter than the column length, the string
 is padded with spaces</li>
     </ul>
 
     <h2 id="FunctionElements">Function Elements</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">LANGUAGE</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">JAVA</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="err">|</span><span class="w"> </span><span class="err">DeterministicCharacteristic</span><span class="w">
-  </span><span class="err">|</span><span class="w"> </span><span class="err">EXTERNAL</span><span class="w"> </span><span class="err">NAME</span><span class="w"> </span><span class="err">javaMethodName</span><span class="w">
-  </span><span class="err">|</span><span class="w"> </span><span class="err">PARAMETER</span><span class="w"> </span><span class="err">STYLE</span><span class="w"> </span><span class="err">parameterStyle</span><span class="w">
-  </span><span class="err">|</span><span class="w"> </span><span class="err">sqlStatementType</span><span class="w">
-  </span><span class="err">|</span><span class="w"> </span><span class="err">nullInputAction</span><span class="w">
-</span><span class="err">}</span><span class="w">
-</span></code></pre>
-      </div>
+      <pre class="FcnSyntax"><code> {
+    LANGUAGE { JAVA }
+  | DeterministicCharacteristic
+  | EXTERNAL NAME javaMethodName
+  | PARAMETER STYLE parameterStyle
+  | sqlStatementType
+  | nullInputAction
+}
+</code></pre>
 
     </div>
     <p>The function elements may appear in any order, but each type of element
@@ -2929,20 +2923,19 @@ can only appear once.</p>
     <div class="paramList">
       <p class="paramName">LANGUAGE</p>
 
-      <p class="paramDefnFirst">Only <code class="highlighter-rouge">JAVA</code> is accepted at this time. Splice Machine will call the
+      <p class="paramDefnFirst">Only <code>JAVA</code> is accepted at this time. Splice Machine will call the
 function as a public static method in a Java class.</p>
 
       <p class="paramName">DeterministicCharacteristic</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>DETERMINISTIC | NOT DETERMINISTIC
+        <pre class="FcnSyntax"><code>DETERMINISTIC | NOT DETERMINISTIC
 </code></pre>
-        </div>
 
       </div>
-      <p class="paramDefnFirst">The default value is <code class="highlighter-rouge">NOT DETERMINISTIC</code>.</p>
+      <p class="paramDefnFirst">The default value is <code>NOT DETERMINISTIC</code>.</p>
 
-      <p class="paramDefn">Specifying <code class="highlighter-rouge">DETERMINISTIC</code> indicates that the function always returns
+      <p class="paramDefn">Specifying <code>DETERMINISTIC</code> indicates that the function always returns
 the same result, given the same input values. This allows Splice Machine
 to call the function with greater efficiency; however, specifying this
 for a function that is actually non-deterministic will have the opposite
@@ -2951,9 +2944,8 @@ effect – efficiency of calls to the function will be reduced.</p>
       <p class="paramName">javaMethodName</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>class_name.method_name
+        <pre class="FcnSyntax"><code>class_name.method_name
 </code></pre>
-        </div>
 
       </div>
       <p class="paramDefnFirst">This is the name of the Java method to call when this function executes.</p>
@@ -2961,24 +2953,23 @@ effect – efficiency of calls to the function will be reduced.</p>
       <p class="paramName">parameterStyle</p>
 
       <div class="fcnWrapperWide">
-        <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>JAVA | DERBY_JDBC_RESULT_SET
+        <pre class="FcnSyntax"><code>JAVA | DERBY_JDBC_RESULT_SET
 </code></pre>
-        </div>
 
       </div>
-      <p class="paramDefnFirst">Only use <code class="highlighter-rouge">DERBY_JDBC_RESULT_SET</code> if this is a Splice Machine-style table
+      <p class="paramDefnFirst">Only use <code>DERBY_JDBC_RESULT_SET</code> if this is a Splice Machine-style table
 function that returns a <a href="#TableType">TableType</a> result, and is mapped to
 a Java method that returns a JDBC <em>ResultSet</em>.</p>
 
-      <p class="paramDefn">Otherwise, use <code class="highlighter-rouge">JAVA</code>-style parameters, which means that a
+      <p class="paramDefn">Otherwise, use <code>JAVA</code>-style parameters, which means that a
 parameter-passing convention is used that conforms to the Java language
-and SQL Routines specification. <code class="highlighter-rouge">INOUT</code> and <code class="highlighter-rouge">OUT</code> parameters are passed
+and SQL Routines specification. <code>INOUT</code> and <code>OUT</code> parameters are passed
 as single entry arrays to facilitate returning values. Result sets can
 be returned through additional parameters to the Java method of type
-<code class="highlighter-rouge">java.sql.ResultSet[]</code> that are passed single entry arrays.</p>
+<code>java.sql.ResultSet[]</code> that are passed single entry arrays.</p>
 
       <p class="paramDefn">Splice Machine does not support long column types such as
-<code class="highlighter-rouge">LONG VARCHAR</code>or <code class="highlighter-rouge">BLOB</code>; an error will occur if you try to use one of
+<code>LONG VARCHAR</code>or <code>BLOB</code>; an error will occur if you try to use one of
 these long column types.</p>
 
       <p class="paramName">sqlStatementType</p>
@@ -3021,13 +3012,13 @@ result may be null or not null.</p>
     </div>
     <h2 id="example-of-declaring-a-scalar-function">Example of declaring a scalar function</h2>
 
-    <p>For more complete examples of using <code class="highlighter-rouge">CREATE FUNCTION</code>, please see the
+    <p>For more complete examples of using <code>CREATE FUNCTION</code>, please see the
 <a href="developers_fcnsandprocs_intro.html">Using Functions and Stored
 Procedures</a> section of our
 <em>Developer’s Guide</em>.</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE FUNCTION TO_DEGREES( RADIANS DOUBLE )
+      <pre class="Example"><code>splice&gt; CREATE FUNCTION TO_DEGREES( RADIANS DOUBLE )
   RETURNS DOUBLE
   PARAMETER STYLE JAVA
   NO SQL LANGUAGE JAVA
@@ -3035,7 +3026,6 @@ Procedures</a> section of our
 
 0 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
     </div>
     <h2 id="example-of-declaring-a-table-function">Example of declaring a table function</h2>
@@ -3045,20 +3035,19 @@ Splice Machine database.</p>
 
     <p>We first implement a class that contains a public static method that
 connects to an external (foreign) database, uses a prepared statement to
-pull results from it, and returns those results as a JDBC <code class="highlighter-rouge">ResultSet</code>:</p>
+pull results from it, and returns those results as a JDBC <code>ResultSet</code>:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>package splicemachine.example.vti;import java.sql.*;public class EmployeeTable{   public static ResultSet read()          throws SQLException    {        Connection conn DriverManager.getConnection( "jdbc:mysql://localhost/hr?user=myName&amp;password=myPswd" );        PreparedStatement ps = conn.prepareStatement( "SELECT * FROM hrSchema.EmployeeTable" );        return ps.executeQuery();    }}
+      <pre class="Example"><code>package splicemachine.example.vti;import java.sql.*;public class EmployeeTable{   public static ResultSet read()          throws SQLException    {        Connection conn DriverManager.getConnection( "jdbc:mysql://localhost/hr?user=myName&amp;password=myPswd" );        PreparedStatement ps = conn.prepareStatement( "SELECT * FROM hrSchema.EmployeeTable" );        return ps.executeQuery();    }}
 </code></pre>
-      </div>
 
     </div>
-    <p>Next we use the <a href="#"><code class="highlighter-rouge">CREATE FUNCTION</code></a> .statement to declare a table
+    <p>Next we use the <a href="#"><code>CREATE FUNCTION</code></a> .statement to declare a table
 function to read data from our external database and insert it into our
 Splice Machine database:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>CREATE FUNCTION externalEmployees()
+      <pre class="Example"><code>CREATE FUNCTION externalEmployees()
    RETURNS TABLE
      (
       employeeId    INT,
@@ -3069,40 +3058,38 @@ Splice Machine database:</p>
    LANGUAGE JAVA
    PARAMETER STYLE SPLICE_JDBC_RESULT_SET   READS SQL DATA   EXTERNAL NAME 'com.splicemachine.example.vti.readEmployees';
 </code></pre>
-      </div>
 
     </div>
     <p>Now we’re ready to invoke our table function to read data from the
 external database and insert it into a table in our Splice Machine
 database.</p>
 
-    <p>To invoke a table function, you must wrap it in a <code class="highlighter-rouge">TABLE</code> constructor in
-the <code class="highlighter-rouge">FROM</code> list of a query. For example, we could insert employee data
-from that database into a table named <code class="highlighter-rouge">employees</code> in our Splice Machine
+    <p>To invoke a table function, you must wrap it in a <code>TABLE</code> constructor in
+the <code>FROM</code> list of a query. For example, we could insert employee data
+from that database into a table named <code>employees</code> in our Splice Machine
 database:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>INSERT INTO employees
+      <pre class="Example"><code>INSERT INTO employees
   SELECT myExtTbl.*
     FROM TABLE (externalEmployees() ) myExtTbl;
 </code></pre>
-      </div>
 
     </div>
     <p class="noteNote">You <strong>MUST</strong> specify the table alias when using a virtual table; for
-example, <code class="highlighter-rouge">myExtTbl</code> in the above example.</p>
+example, <code>myExtTbl</code> in the above example.</p>
 
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_statements_createprocedure.html"><code class="highlighter-rouge">CREATE_PROCEDURE</code></a> statement</li>
-      <li><a href="sqlref_builtinfcns_currentuser.html"><code class="highlighter-rouge">CURRENT_USER</code></a> function</li>
+      <li><a href="sqlref_statements_createprocedure.html"><code>CREATE_PROCEDURE</code></a> statement</li>
+      <li><a href="sqlref_builtinfcns_currentuser.html"><code>CURRENT_USER</code></a> function</li>
       <li><a href="sqlref_datatypes_numerictypes.html">Data Types</a></li>
-      <li><a href="sqlref_statements_dropfunction.html"><code class="highlighter-rouge">DROP FUNCTION</code></a> statement</li>
+      <li><a href="sqlref_statements_dropfunction.html"><code>DROP FUNCTION</code></a> statement</li>
       <li><a href="sqlref_identifiers_types.html#SchemaName">Schema Name</a></li>
       <li><a href="sqlref_identifiers_intro.html">SQL Identifier</a></li>
-      <li><a href="sqlref_builtinfcns_sessionuser.html"><code class="highlighter-rouge">SESSION_USER</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_user.html"><code class="highlighter-rouge">USER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sessionuser.html"><code>SESSION_USER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_user.html"><code>USER</code></a> function</li>
     </ul>
 
   </div>
@@ -3139,49 +3126,19 @@ example, <code class="highlighter-rouge">myExtTbl</code> in the above example.</
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

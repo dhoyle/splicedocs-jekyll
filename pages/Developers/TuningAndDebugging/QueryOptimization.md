@@ -30,12 +30,12 @@ queries:
 <td>Use Explain Plan</td>
 <td>
 <p>You can use the Splice Machine Explain Plan facility to display the execution plan for a statement without actually executing the statement. You can use Explain Plan to help determine options such as which join strategy to use or which index to select.</p>
-<p>See the <a href="developers_tuning_explainplan.html">About Explain Plan</a> topic in our <em>Developer's Guide</em>.</p>
+<p>See the <a href="developers_tuning_explainplan.html">About Explain Plan</a> topic.</p>
 </td>
 </tr>
 <tr>
 <td>Use Statistics</td>
-<td>Your database administrator can refine which statistics are collected on your database, which in turn enhances the operation of the query optimizer. See the <a href="developers_tuning_usingstats.html">Using Statistics</a> topic in our <em>Developer's Guide</em>.</td>
+<td>Your database administrator can refine which statistics are collected on your database, which in turn enhances the operation of the query optimizer. See the <a href="developers_tuning_usingstats.html">Using Statistics</a> topic.</td>
 </tr>
 <tr>
 <td>Use <code>WHERE</code> clauses</td>
@@ -74,7 +74,7 @@ In Splice Machine, you can execute queries without a table by using the
 And here's an example:
 
 <div class="preWrapper" markdown="1">
-    splice> select 1+ 1 from sysibm.sysdummy1; 
+    splice> select 1+ 1 from sysibm.sysdummy1;
 {: .Example xml:space="preserve"}
 
 </div>
@@ -106,12 +106,12 @@ described in a section below; here's a summary:
 ### Including Hints in Your Queries
 
 Hints MUST ALWAYS be at the end of a line, meaning that you must always
-terminate hints with a newline character.  
-  
+terminate hints with a newline character.
+
 You cannot add the semicolon that terminates the command immediately
 after a hint; the semicolon must go on the next line, as shown in the
-examples in this topic.  
-  
+examples in this topic.
+
 Many of the examples in this section show usage of hints on the
 `splice>` command line. Follow the same rules when using hints
 programmatically.
@@ -240,7 +240,7 @@ two tables. You can specify these values for a `JoinOrder` hint:
   join according to how where they are named in the `FROM` clause.
 * Use `joinOrder=UNFIXED` to specify that the query optimizer can
   rearrange the table order.
-  
+
   `joinOrder=UNFIXED` is the default, which means that you don't need to
   specify this hint to allow the optimizer to rearrange the table order.
   {: .noteNote}
@@ -327,8 +327,7 @@ to run against a pinned version of a table.
 
 </div>
 You can read more about pinning tables in the
-[`PIN TABLE`](sqlref_statements_pintable.html) statement topic in our
-*SQL Reference Guide*.
+[`PIN TABLE`](sqlref_statements_pintable.html) statement topic.
 {: .indentLevel1}
 
 ### Spark Hints   {#Spark}
@@ -393,4 +392,3 @@ compaction.
 
 </div>
 </section>
-

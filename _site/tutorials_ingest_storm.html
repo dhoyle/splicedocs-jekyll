@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -536,9 +536,8 @@ these steps:</p>
           <p class="indentLevel1">Pull the code from our git repository:</p>
 
           <div class="preWrapperWide">
-            <div class="Plain highlighter-rouge"><pre class="highlight"><code>https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm
+            <pre class="Plain"><code>https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -547,8 +546,8 @@ these steps:</p>
 
           <p class="indentLevel1">You must be running Splice Machine 2.0 or later on the same machine
 on which you will run this example code. If Splice Machine is
-running on a different machine, you’ll need to modify the <code class="highlighter-rouge">server</code>
-variable in the <code class="highlighter-rouge">SpliceDumperTopology.java</code> file; change it to the
+running on a different machine, you’ll need to modify the <code>server</code>
+variable in the <code>SpliceDumperTopology.java</code> file; change it to the
 name of the server that is running Splice Machine.</p>
 
           <p class="indentLevel1">You also must have <span class="AppCommand">maven v.3.3.9</span> or
@@ -558,13 +557,12 @@ later installed.</p>
           <p class="topLevel">Create the test table in Splice Machine:</p>
 
           <p class="indentLevel1">This example inserts data into a Splice Machine table named
-<code class="highlighter-rouge">testTable</code>. You need to create that table by entering this command
+<code>testTable</code>. You need to create that table by entering this command
 at the <span class="AppCommand">splice&gt;</span> prompt:</p>
 
           <div class="preWrapperWide">
-            <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE testTable( word VARCHAR(100), number INT );
+            <pre class="Example"><code>splice&gt; CREATE TABLE testTable( word VARCHAR(100), number INT );
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -574,9 +572,8 @@ at the <span class="AppCommand">splice&gt;</span> prompt:</p>
           <p class="indentLevel1">Compile the sample code with this command</p>
 
           <div class="preWrapperWide">
-            <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>% mvn clean compile dependency:copy-dependencies
+            <pre class="ShellCommand"><code>% mvn clean compile dependency:copy-dependencies
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -587,25 +584,23 @@ at the <span class="AppCommand">splice&gt;</span> prompt:</p>
 
           <ol class="LowerAlphaPlainFont">
             <li>Make sure that Splice Machine is running and that you have
-created the <code class="highlighter-rouge">testTable</code> table.</li>
+created the <code>testTable</code> table.</li>
             <li>
               <p>Execute this script to run the program:</p>
 
               <div class="preWrapperWide">
-                <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>% run-storm.sh
+                <pre class="ShellCommand"><code>% run-storm.sh
 </code></pre>
-                </div>
 
               </div>
             </li>
             <li>
-              <p>Query <code class="highlighter-rouge">testTable</code> in Splice Machine to verify that it has been
+              <p>Query <code>testTable</code> in Splice Machine to verify that it has been
 populated with random words and numbers:</p>
 
               <div class="preWrapperWide">
-                <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; select * from testTable;
+                <pre class="AppCommand"><code>splice&gt; select * from testTable;
 </code></pre>
-                </div>
 
               </div>
             </li>
@@ -664,9 +659,8 @@ that data into a table in Splice Machine.</p>
           <p class="indentLevel1">Pull the code from our git repository:</p>
 
           <div class="preWrapperWide">
-            <div class="Plain highlighter-rouge"><pre class="highlight"><code>https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm
+            <pre class="Plain"><code>https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -675,8 +669,8 @@ that data into a table in Splice Machine.</p>
 
           <p class="indentLevel1">You must be running Splice Machine 2.0 or later on the same machine
 on which you will run this example code. If Splice Machine is
-running on a different machine, you’ll need to modify the <code class="highlighter-rouge">server</code>
-variable in the <code class="highlighter-rouge">MySqlToSpliceTopology</code>.java file; change it to the
+running on a different machine, you’ll need to modify the <code>server</code>
+variable in the <code>MySqlToSpliceTopology</code>.java file; change it to the
 name of the server that is running Splice Machine.</p>
 
           <p class="indentLevel1">You also must have <span class="AppCommand">maven v.3.3.9</span> or
@@ -685,23 +679,21 @@ later installed.</p>
           <p class="indentLevel1">This example assumes that your MySQL database instance is running on
 the same machine on which you’re running Splice Machine, and that
 the root user does not have a password. If either of these is not
-true, then you need to modify the call to the <code class="highlighter-rouge">seedBufferQueue</code>
-method in the <code class="highlighter-rouge">MySqlSpout.java</code> file. This method takes four
+true, then you need to modify the call to the <code>seedBufferQueue</code>
+method in the <code>MySqlSpout.java</code> file. This method takes four
 parameters that you may need to change:</p>
 
           <div class="preWrapperWide">
-            <div class="Plain highlighter-rouge"><pre class="highlight"><code>seedBufferQueue( MySqlServer, MySqlDatabase, mySqlUserName, mySqlPassword );
+            <pre class="Plain"><code>seedBufferQueue( MySqlServer, MySqlDatabase, mySqlUserName, mySqlPassword );
 </code></pre>
-            </div>
 
           </div>
 
           <p class="indentLevel1">The default settings used in this example are:</p>
 
           <div class="preWrapperWide">
-            <div class="Plain highlighter-rouge"><pre class="highlight"><code>seedBufferQueue( "localhost", "test", "root", "" );
+            <pre class="Plain"><code>seedBufferQueue( "localhost", "test", "root", "" );
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -709,26 +701,24 @@ parameters that you may need to change:</p>
           <p class="topLevel">Create the students table in Splice Machine:</p>
 
           <p class="indentLevel1">This example inserts data into a Splice Machine table named
-<code class="highlighter-rouge">students</code>. You need to create that table by entering this command
+<code>students</code>. You need to create that table by entering this command
 at the <span class="AppCommand">splice&gt;</span> prompt:</p>
 
           <div class="preWrapperWide">
-            <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE students( name VARCHAR(100) );
+            <pre class="Example"><code>splice&gt; CREATE TABLE students( name VARCHAR(100) );
 </code></pre>
-            </div>
 
           </div>
         </li>
         <li>
           <p class="topLevel">Create the students table in your MySQL database:</p>
 
-          <p class="indentLevel1">This example read data from a MySQL table named <code class="highlighter-rouge">students</code>. You need
+          <p class="indentLevel1">This example read data from a MySQL table named <code>students</code>. You need
 to create that table in MySQL:</p>
 
           <div class="preWrapperWide">
-            <div class="Example highlighter-rouge"><pre class="highlight"><code>$$ CREATE TABLE students( id INTEGER, name VARCHAR(100) );
+            <pre class="Example"><code>$$ CREATE TABLE students( id INTEGER, name VARCHAR(100) );
 </code></pre>
-            </div>
 
           </div>
 
@@ -740,9 +730,8 @@ to create that table in MySQL:</p>
           <p class="indentLevel1">Compile the sample code with this command</p>
 
           <div class="preWrapperWide">
-            <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>% mvn clean compile dependency:copy-dependencies
+            <pre class="ShellCommand"><code>% mvn clean compile dependency:copy-dependencies
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -753,25 +742,23 @@ to create that table in MySQL:</p>
 
           <ol class="LowerAlphaPlainFont">
             <li>Make sure that Splice Machine is running and that you have
-created the <code class="highlighter-rouge">testTable</code> table.</li>
+created the <code>testTable</code> table.</li>
             <li>
               <p>Execute this script to run the program:</p>
 
               <div class="preWrapperWide">
-                <div class="ShellCommand highlighter-rouge"><pre class="highlight"><code>% run-mysql-storm.sh
+                <pre class="ShellCommand"><code>% run-mysql-storm.sh
 </code></pre>
-                </div>
 
               </div>
             </li>
             <li>
-              <p>Query the <code class="highlighter-rouge">students</code> table in Splice Machine to verify that it
+              <p>Query the <code>students</code> table in Splice Machine to verify that it
 has been populated with data from the MySQL table:</p>
 
               <div class="preWrapperWide">
-                <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; select * from students;
+                <pre class="AppCommand"><code>splice&gt; select * from students;
 </code></pre>
-                </div>
 
               </div>
             </li>
@@ -858,49 +845,19 @@ has been populated with data from the MySQL table:</p>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

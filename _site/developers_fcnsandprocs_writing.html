@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -587,8 +587,7 @@
 
     
 
-  <p>\</p>
-
+  
 <section>
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="writing-functions-and-storedprocedures">Writing Functions and Stored Procedures</h1>
@@ -603,7 +602,7 @@ for an overview and comparison of functions and stored procedures.</li>
       <li>Refer to the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Functions and Stored
 Procedures</a> topic in this
 section for information about storing your compiled code and updating
-the <code class="highlighter-rouge">CLASSPATH</code> to ensure that Splice Machine can find your code.</li>
+the <code>CLASSPATH</code> to ensure that Splice Machine can find your code.</li>
       <li>Refer to the <a href="developers_fcnsandprocs_examples.html">Functions and Stored Procedure
 Examples</a> topic in this section
 for complete sample code for both a function and a stored procedure.</li>
@@ -626,7 +625,7 @@ below.</p>
           <p class="indentLevel1">Each function maps to a Java method. For example:</p>
 
           <div class="preWrapperWide">
-            <div class="Example highlighter-rouge"><pre class="highlight"><code>package com.splicemachine.cs.function;
+            <pre class="Example"><code>package com.splicemachine.cs.function;
     
 public class Functions {
    public static int addNumbers(int val1, int val2) {
@@ -634,29 +633,27 @@ public class Functions {
    }
 }
 </code></pre>
-            </div>
 
           </div>
         </li>
         <li>
           <p class="topLevel">Create the function in the database</p>
 
-          <p class="indentLevel1">You can find the complete syntax for <code class="highlighter-rouge">CREATE FUNCTION </code>in the
+          <p class="indentLevel1">You can find the complete syntax for <code>CREATE FUNCTION </code>in the
 <em>Splice Machine SQL Reference</em> manual.</p>
 
           <p class="indentLevel1">Here’s a quick example of creating a function. In this example,
-<code class="highlighter-rouge">com.splicemachine.cs.function</code> is the package, <code class="highlighter-rouge">Functions</code> is the
-class name, and <code class="highlighter-rouge">addNumbers</code> is the method name:</p>
+<code>com.splicemachine.cs.function</code> is the package, <code>Functions</code> is the
+class name, and <code>addNumbers</code> is the method name:</p>
 
           <div class="preWrapperWide">
-            <div class="Example highlighter-rouge"><pre class="highlight"><code>CREATE FUNCTION add(val1 int, val2 int)
+            <pre class="Example"><code>CREATE FUNCTION add(val1 int, val2 int)
     RETURNS integer
     LANGUAGE JAVA
     PARAMETER STYLE JAVA
     NO SQL
     EXTERNAL NAME 'com.splicemachine.cs.function.Functions.addNumbers';
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -678,12 +675,11 @@ when the function is called.</li>
           <p class="indentLevel1">You can invoke functions just like you would call any built-in
 database function. For example, if you’re using the Splice Machine
 command line interface (<em>CLI</em>), and have created a function named
-<code class="highlighter-rouge">add</code>, you could use a statement like the following:</p>
+<code>add</code>, you could use a statement like the following:</p>
 
           <div class="preWrapper">
-            <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>SELECT add(1,2) FROM SYS.SYSTABLES;
+            <pre class="AppCommand"><code>SELECT add(1,2) FROM SYS.SYSTABLES;
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -703,7 +699,7 @@ procedure.</p>
           <p class="indentLevel1">Here is a very simple stored procedure that uses JDBC:</p>
 
           <div class="preWrapperWide">
-            <div class="Example highlighter-rouge"><pre class="highlight"><code>package org.splicetest.customprocs;
+            <pre class="Example"><code>package org.splicetest.customprocs;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -736,7 +732,6 @@ public class CustomSpliceProcs {
    }
 }
 </code></pre>
-            </div>
 
           </div>
 
@@ -770,9 +765,8 @@ the file anywhere that allows the splice&gt; interface to access it.</p>
 example:</p>
 
           <div class="preWrapperWide">
-            <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>scp custom-splice-procs-1.0.2-SNAPSHOT.jar splice@myServer:myDir
+            <pre class="AppCommand"><code>scp custom-splice-procs-1.0.2-SNAPSHOT.jar splice@myServer:myDir
 </code></pre>
-            </div>
 
           </div>
 
@@ -784,30 +778,29 @@ section for more information.</p>
           <p class="topLevel">Deploy the Jar file to your cluster</p>
 
           <p class="indentLevel1">Deploying the Jar file requires you to install the file in your
-database, and to add it to your database’s <code class="highlighter-rouge">CLASSPATH</code>. You can
+database, and to add it to your database’s <code>CLASSPATH</code>. You can
 accomplish both of these steps by calling built-in system procedures
 from the <span class="AppCommand">splice&gt;</span> command line
 interpreter. For example:</p>
 
           <div class="preWrapperWide">
-            <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
+            <pre class="AppCommand"><code>CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
     
 CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
 </code></pre>
-            </div>
 
           </div>
 
-          <p class="indentLevel1">The <a href="sqlref_sysprocs_installjar.html"><code class="highlighter-rouge">SQLJ.INSTALL_JAR</code></a> system
+          <p class="indentLevel1">The <a href="sqlref_sysprocs_installjar.html"><code>SQLJ.INSTALL_JAR</code></a> system
 procedure uploads the jar file from the local file system where
 <span class="AppCommand">splice&gt;</span> is executing into the
 HDFS:</p>
 
           <ul class="plainFont">
             <li>If you are running a cluster, the Jar files are stored under the
-<code class="highlighter-rouge">/hbase/splicedb/jar</code> directory in HDFS (or MapR-FS).</li>
+<code>/hbase/splicedb/jar</code> directory in HDFS (or MapR-FS).</li>
             <li>If you are running in standalone mode, the Jar files are stored on
-the local file system under the <code class="highlighter-rouge">splicedb/jar</code> directory in the
+the local file system under the <code>splicedb/jar</code> directory in the
 Splice install directory.</li>
           </ul>
         </li>
@@ -815,23 +808,22 @@ Splice install directory.</li>
           <p class="topLevel">Register your stored procedure with Splice Machine</p>
 
           <p class="indentLevel1">Register your stored procedure with the database by calling the
-<a href="sqlref_statements_createprocedure.html"><code class="highlighter-rouge">CREATE PROCEDURE</code></a>
+<a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a>
 statement. For example:</p>
 
           <div class="preWrapperWide">
-            <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>CREATE PROCEDURE SPLICE.GET_TABLE_NAMES()   PARAMETER STYLE JAVA   READS SQL DATA   LANGUAGE JAVA   DYNAMIC RESULT SETS 1   EXTERNAL NAME 'org.splicetest.customprocs.CustomSpliceProcs.GET_TABLE_NAMES';
+            <pre class="AppCommand"><code>CREATE PROCEDURE SPLICE.GET_TABLE_NAMES()   PARAMETER STYLE JAVA   READS SQL DATA   LANGUAGE JAVA   DYNAMIC RESULT SETS 1   EXTERNAL NAME 'org.splicetest.customprocs.CustomSpliceProcs.GET_TABLE_NAMES';
 </code></pre>
-            </div>
 
           </div>
 
-          <p class="indentLevel1">Note that after running the above <code class="highlighter-rouge">CREATE PROCEDURE</code> statement, your
+          <p class="indentLevel1">Note that after running the above <code>CREATE PROCEDURE</code> statement, your
 procedure will show up in the list of available procedures when you
 run the Splice Machine <span class="AppCommand">show
 procedures</span> command.</p>
 
           <p class="indentLevel1">You can find the complete syntax for
-<a href="sqlref_statements_createprocedure.html"><code class="highlighter-rouge">CREATE PROCEDURE</code></a> in the
+<a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a> in the
 <em>Splice Machine SQL Reference</em> manual.</p>
         </li>
         <li>
@@ -840,9 +832,8 @@ procedures</span> command.</p>
           <p class="indentLevel1">You can run your stored procedure by calling it from the <span class="AppCommand">splice&gt;</span> prompt. For example:</p>
 
           <div class="preWrapper">
-            <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>splice&gt; call SPLICE.GET_TABLE_NAMES();
+            <pre class="AppCommand"><code>splice&gt; call SPLICE.GET_TABLE_NAMES();
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -851,12 +842,11 @@ procedures</span> command.</p>
 
           <p class="indentLevel1">If you make changes to your procedure’s code, you need to create a
 new Jar file and reload that into your databaseby calling the
-<code class="highlighter-rouge">SQLJ.REPLACE_JAR</code> system procedure:</p>
+<code>SQLJ.REPLACE_JAR</code> system procedure:</p>
 
           <div class="preWrapper">
-            <div class="AppCommand highlighter-rouge"><pre class="highlight"><code>CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
+            <pre class="AppCommand"><code>CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
 </code></pre>
-            </div>
 
           </div>
         </li>
@@ -866,39 +856,38 @@ new Jar file and reload that into your databaseby calling the
     <h2 id="ResultSet">Working with ResultSets</h2>
 
     <p>Splice Machine follows the SQL-J part 1 standard for returning
-<code class="highlighter-rouge">ResultSets</code> through Java procedures. Each <code class="highlighter-rouge">ResultSet</code> is returned
+<code>ResultSets</code> through Java procedures. Each <code>ResultSet</code> is returned
 through one of the parameters passed to the java method. For example,
-the <code class="highlighter-rouge">resultSet</code> parameter in the <code class="highlighter-rouge">MY_TEST_PROC</code> method in our
-<code class="highlighter-rouge">ExampleStoredProcedure</code> class:</p>
+the <code>resultSet</code> parameter in the <code>MY_TEST_PROC</code> method in our
+<code>ExampleStoredProcedure</code> class:</p>
 
     <div class="preWrapperWide">
 
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>public class ExampleStoredProcedure {
+      <pre class="Example"><code>public class ExampleStoredProcedure {
    public static void MY_TEST_PROC(String myInput, ResultSet[] resultSet) throws SQLException {
      ...
    }
 }
 </code></pre>
-      </div>
 
     </div>
-    <p>Here are a set of things you should know about <code class="highlighter-rouge">ResultSets[]</code> in stored
+    <p>Here are a set of things you should know about <code>ResultSets[]</code> in stored
 procedures:</p>
 
     <ul>
-      <li>The <code class="highlighter-rouge">ResultSets</code> are returned in the order in which they were created.</li>
-      <li>The <code class="highlighter-rouge">ResultSets</code> must be open and generated from the
-<code class="highlighter-rouge">jdbc:default:connection</code> default connection. Any other <code class="highlighter-rouge">ResultSets</code>
+      <li>The <code>ResultSets</code> are returned in the order in which they were created.</li>
+      <li>The <code>ResultSets</code> must be open and generated from the
+<code>jdbc:default:connection</code> default connection. Any other <code>ResultSets</code>
 are ignored.</li>
-      <li>If you close the statement that created the <code class="highlighter-rouge">ResultSet</code> within the
-procedure’s method, that closes the <code class="highlighter-rouge">ResultSet</code> you want. Instead, you
+      <li>If you close the statement that created the <code>ResultSet</code> within the
+procedure’s method, that closes the <code>ResultSet</code> you want. Instead, you
 can close the connection.</li>
       <li>The Splice Machine database engine itself creates the one element
-<code class="highlighter-rouge">ResultSet</code> arrays that hold the returned <code class="highlighter-rouge">ResultSets</code>.</li>
-      <li>Although the <a href="sqlref_statements_createprocedure.html"><code class="highlighter-rouge">CREATE
+<code>ResultSet</code> arrays that hold the returned <code>ResultSets</code>.</li>
+      <li>Although the <a href="sqlref_statements_createprocedure.html"><code>CREATE
 PROCEDURE</code></a> call allows you to
-specify the number of <code class="highlighter-rouge">DYNAMIC RESULT SETs</code>, we currently only support
-returning a single <code class="highlighter-rouge">ResultSet</code>.</li>
+specify the number of <code>DYNAMIC RESULT SETs</code>, we currently only support
+returning a single <code>ResultSet</code>.</li>
     </ul>
 
   </div>
@@ -935,49 +924,19 @@ returning a single <code class="highlighter-rouge">ResultSet</code>.</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

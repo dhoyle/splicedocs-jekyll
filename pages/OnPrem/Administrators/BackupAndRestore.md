@@ -12,7 +12,7 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Backing Up and Restoring Your Database
 
-{% include splice_snippets/enterpriseonly_note.html %}
+{% include splice_snippets/enterpriseonly_note.md %}
 Splice Machine provides built-in system procedures that make it easy to
 back up and restore your entire database. You can:
 
@@ -115,8 +115,8 @@ Machine backup operations:
 You must make sure that the directory to which you are backing up or
 from which data is being restored is accessible to the HBase user who is
 initiating the restore. Make sure the directory permissions are set
-correctly on the backup directory.  
-  
+correctly on the backup directory.
+
 Note that you can store your backups in a cloud-based storage service
 such as AWS; for more information, see the [Backing Up to Cloud
 Storage](#Backing) section below.
@@ -249,7 +249,7 @@ To restore your database from a previous backup, use the
 procedure:
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_RESTORE_DATABASE(backupDir, backupId); 
+    SYSCS_UTIL.SYSCS_RESTORE_DATABASE(backupDir, backupId);
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -286,14 +286,14 @@ from a previous backup:
 
 </div>
 > #### Example: Restore the database from a local, full backup
-> 
+>
 > This example restores your database from the backup stored in the
 > `/home/backup` directory that has `backupId=1273`:
-> 
+>
 > <div class="preWrapperWide" markdown="1">
 >     call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1273);
 > {: .AppCommand xml:space="preserve"}
-> 
+>
 > </div>
 
 ### Reviewing Backups   {#Reviewing}
@@ -344,11 +344,11 @@ in which the backup is stored. This log file is named
 Here's a sample snippet from a log file:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     Expected time for backup ~12 hours, expected finish at 15:30 on April 8, 2015
     5 objects of 833 objects backed up..
     6 objects of 833 objects backed up
-    
+
     Finished with Success. Total time taken for backup was 11 hours 32 minutes.
 {: .Example xml:space="preserve"}
 
@@ -360,7 +360,7 @@ You can cancel a daily backup with the
 procedure:
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( jobId ); 
+    SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( jobId );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -396,7 +396,7 @@ You can call the
 procedure to cancel a backup that is currently running:
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_CANCEL_BACKUP(  ); 
+    SYSCS_UTIL.SYSCS_CANCEL_BACKUP(  );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -419,7 +419,7 @@ Use the
 procedure to delete a single backup:
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_DELETE_BACKUP( backupId ); 
+    SYSCS_UTIL.SYSCS_DELETE_BACKUP( backupId );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -452,7 +452,7 @@ procedure to delete all backups that are older than a certain number of
 days.
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( backupWindow ); 
+    SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS( backupWindow );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -510,7 +510,7 @@ Splice Machine backups; follow these steps:
 1.  Navigate to the Cloudera Manager home screen.
 2.  Stop both HBase and HDFS: 
     {: .topLevel}
-    
+
     * Click the <span class="AppCommand">HBase Actions</span> drop-down
       arrow associated with (to the right of) `HBase` in the cluster
       summary section of the home screen, and then click <span
@@ -527,16 +527,16 @@ Splice Machine backups; follow these steps:
     values in the `Cluster-wide Advanced Configuration Snippet (Safety
     Valve) for core-site.xml` field:
     <div class="preWrapperWide" markdown="1">
-        
+
         fs.s3.awsAccessKeyId       = <Your AWS Access Key>
         fs.s3.awsSecretAccessKey   = <Your AWS Access Secret Key>
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 4.  Restart both services:
     {: .topLevel}
-    
+
     * Click the <span class="AppCommand">HDFS Actions</span> drop-down
       arrow associated with (to the right of) HDFS in the cluster
       summary section of the Cloudera Manager home screen, and then
@@ -559,7 +559,7 @@ these steps:
 2.  Select the <span class="AppCommand">Services</span> tab at the top
     of the Ambari dashboard screen, then stop both HBase and HDFS: 
     {: .topLevel}
-    
+
     * Click <span class="AppCommand">HBase</span> in the left pane of
       the screen, then click <span class="AppCommand">Service
       Actions-&gt;Stop</span> in the upper-right portion of the Ambari
@@ -572,16 +572,16 @@ these steps:
 3.  Select <span class="AppCommand">Custom core-site</span> and add
     these properties:
     <div class="preWrapperWide" markdown="1">
-        
+
         fs.s3.awsAccessKeyId       = <Your AWS Access Key>
         fs.s3.awsSecretAccessKey   = <Your AWS Secret Access Key>
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 4.  Restart both services:
     {: .topLevel}
-    
+
     * Click <span class="AppCommand">HDFS</span> in the left pane of the
       screen, the click <span class="AppCommand">Service
       Actions-&gt;Restart All</span>.
@@ -601,11 +601,11 @@ Follow these steps:
 <div class="opsStepsList" markdown="1">
 1.  Stop all MapR services by stopping the warden service on each host:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         sudo service mapr-warden stop
     {: .ShellCommand}
-    
+
     </div>
 
 2.  You need to edit two files on each MapR-FS fileserver and HBase
@@ -613,40 +613,40 @@ Follow these steps:
     need to provide the fs.s3 access key ID and secret in each of these
     files:
     {: .topLevel}
-    
+
     * `/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml` for
       *Hadoop/MapReduce/YARN 2.x* site configuration
     * `/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml` for
       *Hadoop/MapReduce 0.x/1.x* site configuration
     {: .plainFont}
-    
+
     If both *MapReduce v1* and *YARN/MapReduce 2* are installed on the
     MapR compute hosts, the newer *hadoop-2.x.x* version of the file
     will be canonical, and the older *hadoop-0.x.x* file symbolically
     linked to it. You can check this using the following `ls` and `file`
     commands:
-    
+
     <div class="preWrapperWide" markdown="1">
         $ ls -al /opt/mapr/hadoop/hadoop-0*/conf/core-site.xml /opt/mapr/hadoop/hadoop-2*/etc/hadoop/core-site.xml
         lrwxrwxrwx 1 mapr root  54 Apr 24 11:01 /opt/mapr/hadoop/hadoop-0.20.2/conf/core-site.xml -> /opt/mapr/hadoop/hadoop-2.5.1/etc/hadoop/core-site.xml
         -rw-r--r-- 1 mapr root 775 Apr 24 12:50 /opt/mapr/hadoop/hadoop-2.5.1/etc/hadoop/core-site.xml
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
-    
+
     <div class="preWrapperWide" markdown="1">
         $ file /opt/mapr/hadoop/hadoop-0*/conf/core-site.xml /opt/mapr/hadoop/hadoop-2*/etc/hadoop/core-site.xml
         /opt/mapr/hadoop/hadoop-0.20.2/conf/core-site.xml:      symbolic link to `/opt/mapr/hadoop/hadoop-2.5.1/etc/hadoop/core-site.xml'
         /opt/mapr/hadoop/hadoop-2.5.1/etc/hadoop/core-site.xml: XML  document text
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 3.  Add your access key ID and secret key in each file by adding the
     following properties between the `<configuration>` and
     `</configuration>` tags:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         <!-- AWS s3://bucket/... block-based access -->
         <property>
@@ -667,12 +667,12 @@ Follow these steps:
         <value>_AWS_SECRET_ACCESS_KEY_</value>
         </property>
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 4.  Use the `hadoop` command to view your configuration changes:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         $ hadoop conf | grep fs\\.s3 | grep -i access | sort -u
         <property><name>fs.s3.awsAccessKeyId</name><value>_AWS_ACCESS_KEY_ID_</value><source>core-site.xml</source></property>
@@ -680,27 +680,27 @@ Follow these steps:
         <property><name>fs.s3n.awsAccessKeyId</name><value>_AWS_ACCESS_KEY_ID_</value><source>core-site.xml</source></property>
         <property><name>fs.s3n.awsSecretAccessKey</name><value>_AWS_SECRET_ACCESS_KEY_</value><source>core-site.xml</source></property>
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 5.  You can also verify that access is correctly configured with the
     `hadoop` command to list the contents of an existing bucket. For
     example:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         sudo -iu mapr hadoop fs -ls s3n://yourbucketname/
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 6.  Finally, restart MapR services on each node via MapR's warden::
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         sudo service mapr-warden start
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 

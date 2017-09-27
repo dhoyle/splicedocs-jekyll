@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,16 +2810,15 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="lead">LEAD</h1>
 
-    <p><code class="highlighter-rouge">LEAD</code> is a window function that returns the values of a specified
+    <p><code>LEAD</code> is a window function that returns the values of a specified
 expression that is evaluated at the specified offset number of rows
 after the current row in a window.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>LEAD ( expression [ , offset ] ) OVER ( overClause )
+      <pre class="FcnSyntax"><code>LEAD ( expression [ , offset ] ) OVER ( overClause )
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -2837,7 +2836,7 @@ current row at which you want the expression evaluated.</p>
 
       <p class="paramName">overClause</p>
 
-      <p class="paramDefnFirst">See the <a href="sqlref_clauses_over.html"><code class="highlighter-rouge">OVER</code></a> clause documentation.</p>
+      <p class="paramDefnFirst">See the <a href="sqlref_clauses_over.html"><code>OVER</code></a> clause documentation.</p>
 
     </div>
     <p class="noteRelease">Our current implementation of this function does not allow for
@@ -2846,8 +2845,8 @@ software.</p>
 
     <h2 id="usage-notes">Usage Notes</h2>
 
-    <p>Splice Machine recommends that you use the <code class="highlighter-rouge">LEAD</code> function with the
-<a href="sqlref_clauses_orderby.html"><code class="highlighter-rouge">ORDER BY</code></a> clause to produce
+    <p>Splice Machine recommends that you use the <code>LEAD</code> function with the
+<a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause to produce
 deterministic results.</p>
 
     <h2 id="results">Results</h2>
@@ -2859,7 +2858,7 @@ in the column used in the expression.</p>
     <h2 id="examples">Examples</h2>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; SELECT DisplayName, Position, Salary,
+      <pre class="Example"><code>splice&gt; SELECT DisplayName, Position, Salary,
    LEAD(SALARY) OVER (PARTITION BY Position ORDER BY Salary DESC) "NextLowerSalary"
    FROM Players JOIN Salaries ON Players.ID=Salaries.ID
    WHERE Salary&gt;999999
@@ -2911,7 +2910,6 @@ Joseph Arkman           |UT  |1450000             |NULL
 
 42 rows selected
 </code></pre>
-      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
@@ -2919,14 +2917,14 @@ Joseph Arkman           |UT  |1450000             |NULL
     <ul>
       <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate
 </a>functions</li>
-      <li><a href="sqlref_builtinfcns_avg.html"><code class="highlighter-rouge">AVG</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_count.html"><code class="highlighter-rouge">COUNT</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_firstvalue.html"><code class="highlighter-rouge">FIRST_VALUE</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_lag.html"><code class="highlighter-rouge">LAG</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_lastvalue.html"><code class="highlighter-rouge">LAST_VALUE</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_min.html"><code class="highlighter-rouge">MIN</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_sum.html"><code class="highlighter-rouge">SUM</code></a> function</li>
-      <li><a href="sqlref_clauses_over.html"><code class="highlighter-rouge">OVER</code></a> clause</li>
+      <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_firstvalue.html"><code>FIRST_VALUE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lag.html"><code>LAG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lastvalue.html"><code>LAST_VALUE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+      <li><a href="sqlref_clauses_over.html"><code>OVER</code></a> clause</li>
       <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in
 the <em>Developer Guide</em>.</li>
     </ul>
@@ -2965,49 +2963,19 @@ the <em>Developer Guide</em>.</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

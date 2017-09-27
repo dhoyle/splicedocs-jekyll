@@ -81,14 +81,14 @@ for example:
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
-{% include splice_snippets/importparamlist.html %}
+{% include splice_snippets/importparamlist.md %}
 ## Results
 
 `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` displays a summary of the import
 process results that looks like this:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     rowsImported   |failedRows   |files   |dataSize   |failedLog-------------------------------------------------------------
     94             |0            |1       |4720       |NONE
 {: .Example xml:space="preserve"}
@@ -146,10 +146,10 @@ Typical reasons for a row (record) import to fail include:
   only work correctly if the table into which you are inserting/updating
   has primary keys.
 
-{% include splice_snippets/importcolvals.html %}
+{% include splice_snippets/importcolvals.md %}
 ## About Timestamp Formats   {#TimestampFormats}
 
-{% include splice_snippets/importtimestampformats.html %}
+{% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
 Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
 for information working with timestamps, dates, and times.
@@ -189,7 +189,7 @@ servers with timestamps set to different time zones, the value in the
 table shown will be different. Additionally, daylight savings time may
 account for a 1-hour difference if timezone is specified.
 
-### Example 2: Importing strings with embedded special characters 
+### Example 2: Importing strings with embedded special characters
 
 This example imports a csv file that includes newline (`Ctrl-M`)
 characters in some of the input strings. We use the default double-quote
@@ -249,4 +249,3 @@ quotes, as follow
 
 </div>
 </section>
-

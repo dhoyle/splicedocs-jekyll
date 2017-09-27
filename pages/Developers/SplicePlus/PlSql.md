@@ -16,7 +16,7 @@ This topic describes Splice Machine's implementation of the
 PL/SQL language and *Splice*Plus*, the PL/SQL interpreter for
 Splice Machine.
 
-{% include splice_snippets/enterpriseonly_note.html %}
+{% include splice_snippets/enterpriseonly_note.md %}
 ## About PL/SQL   {#About2}
 
 This section provides only the briefest summary of the PL/SQL language;

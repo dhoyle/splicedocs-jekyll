@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,63 +2810,59 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="varchar---datatypesvarchar">VARCHAR   {#DataTypes.Varchar}</h1>
 
-    <p>The <code class="highlighter-rouge">VARCHAR</code> data type provides for variable-length storage of strings.</p>
+    <p>The <code>VARCHAR</code> data type provides for variable-length storage of strings.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="err">VARCHAR</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">CHAR</span><span class="w"> </span><span class="err">VARYING</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">CHARACTER</span><span class="w"> </span><span class="err">VARYING</span><span class="w"> </span><span class="p">}</span><span class="err">(length)</span><span class="w">
-</span></code></pre>
-      </div>
+      <pre class="FcnSyntax"><code>{ VARCHAR | CHAR VARYING | CHARACTER VARYING }(length)
+</code></pre>
 
     </div>
     <div class="paramList">
       <p class="paramName">length</p>
 
-      <p class="paramDefnFirst">An unsigned integer constant. The maximum length for a <code class="highlighter-rouge">VARCHAR</code> string
-is <code class="highlighter-rouge">32,672</code> characters.</p>
+      <p class="paramDefnFirst">An unsigned integer constant. The maximum length for a <code>VARCHAR</code> string
+is <code>32,672</code> characters.</p>
 
     </div>
     <h2 id="corresponding-compile-time-java-type">Corresponding Compile-time Java Type</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>java.lang.String
+      <pre class="FcnSyntax"><code>java.lang.String
 </code></pre>
-      </div>
 
     </div>
     <h2 id="jdbc-metadata-type-javasqltypes">JDBC Metadata Type (java.sql.Types)</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>VARCHAR
+      <pre class="FcnSyntax"><code>VARCHAR
 </code></pre>
-      </div>
 
     </div>
     <h2 id="example">Example</h2>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>VARCHAR(2048);
+      <pre class="Example"><code>VARCHAR(2048);
 </code></pre>
-      </div>
 
     </div>
     <h2 id="usage-notes">Usage Notes</h2>
 
-    <p>Here are several notes for the <code class="highlighter-rouge">VARCHAR</code> data type:</p>
+    <p>Here are several notes for the <code>VARCHAR</code> data type:</p>
 
     <ul>
-      <li>Splice Machine does not pad a <code class="highlighter-rouge">VARCHAR</code> value whose length is less
+      <li>Splice Machine does not pad a <code>VARCHAR</code> value whose length is less
 than specified.</li>
       <li>Splice Machine truncates spaces from a string value when a length
-greater than the <code class="highlighter-rouge">VARCHAR</code> expected is provided. Characters other than
+greater than the <code>VARCHAR</code> expected is provided. Characters other than
 spaces are not truncated, and instead cause an exception to be raised.</li>
       <li>When <a href="sqlref_expressions_boolean.html">comparison boolean operators</a>
-are applied to <code class="highlighter-rouge">VARCHARs</code>, the lengths of the operands are not
+are applied to <code>VARCHARs</code>, the lengths of the operands are not
 altered, and spaces at the end of the values are ignored.</li>
-      <li>When <code class="highlighter-rouge">CHARs</code> and <code class="highlighter-rouge">VARCHARs</code> are mixed in expressions, the shorter
+      <li>When <code>CHARs</code> and <code>VARCHARs</code> are mixed in expressions, the shorter
 value is padded with spaces to the length of the longer value.</li>
-      <li>The type of a string constant is <code class="highlighter-rouge">CHAR</code>, not <code class="highlighter-rouge">VARCHAR</code>.</li>
+      <li>The type of a string constant is <code>CHAR</code>, not <code>VARCHAR</code>.</li>
     </ul>
 
   </div>
@@ -2903,49 +2899,19 @@ value is padded with spaces to the length of the longer value.</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

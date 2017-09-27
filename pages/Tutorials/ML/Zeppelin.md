@@ -12,7 +12,7 @@ folder: Tutorials/ML
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Connecting with Apache Zeppelin
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This tutorial walks you through connecting your on-premise Splice
 Machine database with Apache Zeppelin, which is a web-based notebook
 project currently in incubation at Apache. In this tutorial, you'll

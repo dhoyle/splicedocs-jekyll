@@ -12,7 +12,7 @@ folder: Developers
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using Splice Machine with HCatalog
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 Apache HCatalog is a metadata and table management system for the
 broader Hadoop platform. HCatalogs table abstraction presents users with
 a relational view of data in the Hadoop distributed file system (HDFS)
@@ -60,16 +60,16 @@ Your table definition must include:
   * The JDBC connection you are using. include your access <span
     class="HighlightedCode">user</span> ID and <span
     class="HighlightedCode">password</span>.
-    
+
     If you are running Splice Machine on a cluster, connect from a
     machine that is NOT running an HBase RegionServer and specify the
     IP address of a <span class="HighlightedCode">regionServer</span>
-    node, e.g. <span class="AppCommand">10.1.1.110</span>.   
-      
+    node, e.g. <span class="AppCommand">10.1.1.110</span>.
+
     Use `localhost` if you're running the standalone version of Splice
     Machine.
     {: .noteNote}
-  
+
   * The name of the table in your Splice Machine database with which you
     are connecting the Hive table.
   {: .SecondLevel}
@@ -112,36 +112,36 @@ directly to a Splice Machine table.
 <div class="opsStepsList" markdown="1">
 1.  Create the Splice Machine table
     {: .topLevel}
-    
+
     This example uses a very simple Splice Machine database table,
     `hcattest`, which we create with these statements:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         splice> create table hcattest(col1 int, col2 varchar(20));
         splice> insert into hcattest values(1, 'row1');
         splice> insert into hcattest values(2, 'row2');
         splice> insert into hcattest values(3, 'row3');
         splice> insert into hcattest values(4, 'row4');
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  Verify the table
     {: .topLevel}
-    
+
     Verify that `hcattest` is set up correctly:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         splice> describe hcattest;
         COLUMN_NAME | TYPE_NAME | DES&|NUM&|COLUMN&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
         --------------------------------------------------------------------------
         COL1        |INTEGER    |0    |10  |10     |NULL      |NULL      |YES
         COL2        |VARCHAR    |NULL |NULL|20     |NULL      |40        |YES
-        
+
         2 rows selected
         splice> select * from hcattest;
         COL1        |COL2
@@ -150,38 +150,38 @@ directly to a Splice Machine table.
         2            row2
         3            row3
         4            row4
-        
+
         4 rows selected
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 3.  Create an external table in Hive
     {: .topLevel}
-    
+
     You need to create an external table in Hive, and connect that table
     with the Splice Machine table you just created. Type the following
     command into the Hive shell, substituting your <span
     class="HighlightedCode">user</span> ID and <span
     class="HighlightedCode">password</span>.
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         hive> CREATE EXTERNAL TABLE extTest1(col1 int, col2 varchar(20))
            STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
            TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=splice\;password=admin", "splice.tableName"="SPLICE.hcattest");
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 4.  Use HiveQL to select data in the Splice Machine table
     {: .topLevel}
-    
+
     Once you've created your external table, you can use `SELECT`
     statements in the Hive shell to retrieve data from Splice Machine
     table. For example:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         hive> select * from extTest1;
         OK
@@ -190,9 +190,9 @@ directly to a Splice Machine table.
         3row 3
         4row 4
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
-    
+
     If the external table that you created does not have the same number
     of columns as are in your Splice Machine table, then the Hive
     table's columns are mapped to columns in the Splice Machine table,
@@ -209,64 +209,64 @@ types and a primary key.
 <div class="opsStepsList" markdown="1">
 1.  Create and verify the Splice Machine table
     {: .topLevel}
-    
+
     This example uses a simple Splice Machine database table that we've
     created, `tblA`, which we verify:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         splice> describe tblA;
         COLUMN_NAME | TYPE_NAME | DES&|NUM&|COLUMN&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
         --------------------------------------------------------------------------
         COL1        |CHAR       |NULL |NULL|20     |NULL      |40        |YES
         COL2        |VARCHAR    |NULL |NULL|56     |NULL      |112       |YES
-        
+
         2 rows selected
         splice> select * from tblA;
         COL1        |COL2
         -------------------------------
         char         varchar 2
         char 1       varchar 1
-        
+
         2 rows selected
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  Create an external table in Hive
     {: .topLevel}
-    
+
     You need to create an external table in Hive, and connect that table
     with the Splice Machine table you just created. Type the following
     command into the Hive shell, substituting your <span
     class="HighlightedCode">user</span> ID and <span
     class="HighlightedCode">password</span>.
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         hive> CREATE EXTERNAL TABLE extTest2(col1 String, col2 varchar(56))
            STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
            TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=splice\;password=admin", "splice.tableName"="SPLICE.tblA");
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 3.  Use HiveQL to select data in the Splice Machine table
     {: .topLevel}
-    
+
     Once you've created your external table, you can use `SELECT`
     statements in the Hive shell to retrieve data from Splice Machine
     table. For example:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         hive> select * from extTest2;
         OK
         char  varchar 2
         char 1varchar 1
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -279,65 +279,65 @@ and uses integer columns.
 <div class="opsStepsList" markdown="1">
 1.  Create and verify the Splice Machine table
     {: .topLevel}
-    
+
     This example uses a simple Splice Machine database table that we've
     created, `tblA`, which we verify:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        
+
         splice> describe tblA;
         COLUMN_NAME | TYPE_NAME | DES&|NUM&|COLUMN&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
         --------------------------------------------------------------------------
         COL1        |INTEGER    |0    |10  |10     |NULL      |NULL      |NO
         COL2        |INTEGER    |0    |10  |10     |NULL      |NULL      |YES
         COL3        |INTEGER    |0    |10  |10     |NULL      |NULL      |NO
-        
+
         3 rows selected
         splice> select * from tblB;
         COL1        |COL2       |COL3
         -------------------------------
         1           |1          |1
         2           |2          |2
-        
+
         2 rows selected
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  Create an external table in Hive
     {: .topLevel}
-    
+
     You need to create an external table in Hive, and connect that table
     with the Splice Machine table you just created. Type the following
     command into the Hive shell, substituting your <span
     class="HighlightedCode">user</span> ID and <span
     class="HighlightedCode">password</span>.
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         hive> CREATE EXTERNAL TABLE extTest3(col1 String, col2 varchar(56))
            STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
            TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=splice\;password=admin", "splice.tableName"="SPLICE.tblB");
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 3.  Select data from the Splice Machine input table
     {: .topLevel}
-    
+
     Once you've created your external table, you can use `SELECT`
     statements in the Hive shell to retrieve data from Splice Machine
     input table. table. For example:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         hive> select * from extTest3;
         OK
         111
         122
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 

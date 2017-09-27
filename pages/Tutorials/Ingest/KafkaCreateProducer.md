@@ -15,8 +15,10 @@ folder: Tutorials/Ingest
 This topic demonstrates how to create a Kafka Producer to feed data into
 Splice Machine; we'll subsequently use this producer in other tutorials.
 
-{% if site.incl_onlypdf %}{% include splice_snippets/pdf_note.html %}{%
-endif %} {% if site.incl_notpdf %}
+{% if site.incl_onlypdf %}
+This video tutorial is not available for viewing in the PDF version.</p>
+{% endif %}
+{% if site.incl_notpdf %}
 <div markdown="1">
 ## Watch the Video:    {#Watch}
 
@@ -33,4 +35,3 @@ allowfullscreen="1" width="560px" height="315px"></iframe>
 {% endif %}
 </div>
 </section>
-

@@ -12,7 +12,7 @@ folder: DBaaS/CloudManager
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Managing Your Splice Machine Account
 
-{% include splice_snippets/dbaasonlytopic.html %}
+{% include splice_snippets/dbaasonlytopic.md %}
 This topic describes the actions you can perform from the Account tab
 and Account drop-down in your Dashboard, which include:
 

@@ -8,7 +8,7 @@ sidebar: tutorials_sidebar
 permalink: tutorials_connect_scala.html
 folder: Tutorials/Connect
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Connecting to Splice Machine with Scala and JDBC
 

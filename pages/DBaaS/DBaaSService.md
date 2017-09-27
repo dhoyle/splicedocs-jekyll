@@ -8,11 +8,11 @@ product: all
 permalink: dbaas_serviceoverview.html
 folder: DBaaS
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Service Overview
 
-{% include splice_snippets/dbaasonlytopic.html %}
+{% include splice_snippets/dbaasonlytopic.md %}
 Our Database Service is a subscription-based service, hosted in the
 Cloud. We take care of managing your cluster services, and you can focus
 on working with our scalable, dual-engine database.

@@ -8,7 +8,7 @@ sidebar:  notes_sidebar
 permalink: notes_examplesdb.html
 folder: Notes
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # About Our Documentation Examples Database
 

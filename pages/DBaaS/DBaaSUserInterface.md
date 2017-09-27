@@ -12,7 +12,7 @@ folder: DBaaS
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Database Service User Interface
 
-{% include splice_snippets/dbaasonlytopic.html %}
+{% include splice_snippets/dbaasonlytopic.md %}
 In addition to our our database, the Splice Machine Database Service
 includes all of the tools you need to create your cluster, load data
 into your database, query and manipulate your database, and create

@@ -8,7 +8,7 @@ sidebar: developers_sidebar
 permalink: developers_fcnsandprocs_writing.html
 folder: Developers/FcnsAndProcs
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Writing Functions and Stored Procedures
 

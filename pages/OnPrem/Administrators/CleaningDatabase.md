@@ -8,11 +8,11 @@ sidebar:  onprem_sidebar
 permalink: onprem_admin_cleaningdb.html
 folder: OnPrem/Administrators
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Cleaning Your Database
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 Cleaning your database essentially wipes out any user-defined tables,
 indexes, and related items. You need to follow different steps,
 depending on which version of Splice Machine you are using:

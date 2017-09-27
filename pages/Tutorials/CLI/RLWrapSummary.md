@@ -12,7 +12,7 @@ folder: Tutorials/CLI
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # rlWrap Commands Synopsis
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 The <span class="CodeItalicFont">rlWrap</span> program is a *readline
 wrapper*, a small utility that uses the GNU <span
 class="CodeItalicFont">readline</span> library to allow the editing of

@@ -43,7 +43,7 @@ apply any incremental restorations.
 
 <div class="fcnWrapperWide" markdown="1">
     SYSCS_UTIL.SYSCS_RESTORE_DATABASE( VARCHAR backupDir,
-                                       BIGINT backupId ); 
+                                       BIGINT backupId );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -75,7 +75,7 @@ The ID of the backup job from which you want to restore your database.
 {: .paramDefnFirst}
 
 The system [*Backing Up and Restoring*](onprem_admin_backingup.html)
-topic in our *Administrator's Guide* for more information.
+topic for more information.
 {: .paramDefn}
 
 </div>
@@ -122,15 +122,15 @@ restoring a database may take several minutes, depending on the size of
 your database.
 {: .noteIcon}
 
-    
+
     splice> SELECT * FROM SYS.SYSBACKUP;
     BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESYSTEM      |SCOPE |INCR&|INCREMENTAL_PARENT_&|BACKUP_ITEM
     ----------------------------------------------------------------------------------------------------------------------------------------
     74101     |2015-11-30 17:46:41.431  |2015-11-30 17:46:56.664  |S         |./dbBackups/    |D     |true |40975               |30
     40975     |2015-11-25 09:32:53.04   |2015-11-25 09:33:09.081  |S         |~/splicemachine |D     |false|-1                  |93
-    
+
     2 rows selected
-    
+
     splice> CALL SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 74101);
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -158,4 +158,3 @@ Your Database.](onprem_admin_startingdb.html)
 
 </div>
 </section>
-

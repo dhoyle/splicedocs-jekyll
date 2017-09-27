@@ -8,11 +8,11 @@ sidebar:  onprem_sidebar
 permalink: onprem_install_standalone.html
 folder: OnPrem/InstallingSpliceMachine
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Installing the Standalone Version of Splice Machine   {#DeployingStandalone}
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic walks you through downloading, installing, and getting
 started with using the standalone version of Splice Machine.
 

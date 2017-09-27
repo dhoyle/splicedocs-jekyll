@@ -20,8 +20,7 @@ Snapshots include both the data and indexes for tables.
 {: .noteNote}
 
 For more information, see the [*Using
-Snapshots*](developers_tuning_snapshots.html) topic in our *Developers's
-Guide*.
+Snapshots*](developers_tuning_snapshots.html) topic.
 
 ## Syntax
 
@@ -55,4 +54,3 @@ the named snapshot was created:
 </div>
 </div>
 </section>
-

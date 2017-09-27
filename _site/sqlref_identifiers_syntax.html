@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2828,29 +2828,27 @@ described below</li>
     <p>This view name:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>CREATE VIEW PitchingCoaches(RECEIVED) AS VALUES 1;
+      <pre class="Example"><code>CREATE VIEW PitchingCoaches(RECEIVED) AS VALUES 1;
 </code></pre>
-      </div>
 
     </div>
-    <p>is stored in system catalogs as <code class="highlighter-rouge">PITCHINGCOACHES</code>, since it is not
+    <p>is stored in system catalogs as <code>PITCHINGCOACHES</code>, since it is not
 quoted.</p>
 
     <p>Whereas this view name:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>CREATE VIEW "PitchingCoaches"(RECEIVED) AS VALUES 1;
+      <pre class="Example"><code>CREATE VIEW "PitchingCoaches"(RECEIVED) AS VALUES 1;
 </code></pre>
-      </div>
 
     </div>
-    <p>is quoted, and thus is stored as <code class="highlighter-rouge">PitchingCoaches</code> in the system catalog</p>
+    <p>is quoted, and thus is stored as <code>PitchingCoaches</code> in the system catalog</p>
 
     <h2 id="qualifying-dictionary-objects">Qualifying dictionary objects</h2>
 
     <p>Since some dictionary objects can be contained within other objects, you
 can qualify those dictionary object names. Each component is separated
-from the next by a period (<code class="highlighter-rouge">.</code>). You qualify a dictionary object name in
+from the next by a period (<code>.</code>). You qualify a dictionary object name in
 order to avoid ambiguity.</p>
 
     <h3 id="examples-1">Examples:</h3>
@@ -2859,18 +2857,16 @@ order to avoid ambiguity.</p>
 table:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>CREATE TABLE Coaches( ID INT NOT NULL );
+      <pre class="Example"><code>CREATE TABLE Coaches( ID INT NOT NULL );
 </code></pre>
-      </div>
 
     </div>
-    <p>And here’s an example of a table name (<code class="highlighter-rouge">Coaches</code>) qualified by a schema
-name (<code class="highlighter-rouge">Baseball</code>):</p>
+    <p>And here’s an example of a table name (<code>Coaches</code>) qualified by a schema
+name (<code>Baseball</code>):</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>CREATE TABLE Baseball.Coaches( ID INT NOT NULL );
+      <pre class="Example"><code>CREATE TABLE Baseball.Coaches( ID INT NOT NULL );
 </code></pre>
-      </div>
 
     </div>
     <h2 id="SQL92Rules">Rules for SQL Identifiers</h2>
@@ -2884,7 +2880,7 @@ quotation marks:</p>
 
         <ul class="bullet">
           <li>An ordinary identifier must begin with a letter and contain only
-letters, underscore characters (<code class="highlighter-rouge">_</code>), and digits.</li>
+letters, underscore characters (<code>_</code>), and digits.</li>
           <li>All Unicode letters and digits are permitted; however, Splice
 Machine does not attempt to ensure that the characters in
 identifiers are valid in the database’s locale.</li>
@@ -2920,7 +2916,7 @@ ANSI SQL as <em>delimited identifiers</em>.</li>
 apostrophe, use two single quotation marks. (In other words, a single
 quotation mark is the escape character for a single quotation mark).</li>
       <li>SQL keywords are case-insensitive. For example, you can type the
-keyword <code class="highlighter-rouge">SELECT</code> as <code class="highlighter-rouge">SELECT</code>, <code class="highlighter-rouge">Select</code>, <code class="highlighter-rouge">select</code>, or <code class="highlighter-rouge">sELECT</code>.</li>
+keyword <code>SELECT</code> as <code>SELECT</code>, <code>Select</code>, <code>select</code>, or <code>sELECT</code>.</li>
       <li>ANSI SQL -style identifiers are case-insensitive unless they are
 delimited.</li>
       <li>Java-style identifiers are always case-sensitive.</li>
@@ -2929,13 +2925,13 @@ delimited.</li>
     <h3 id="other-special-characters">Other Special Characters:</h3>
 
     <ul>
-      <li><code class="highlighter-rouge">*</code> is a wildcard within a <em><a href="sqlref_expressions_select.html#StarWildcard">Select
+      <li><code>*</code> is a wildcard within a <em><a href="sqlref_expressions_select.html#StarWildcard">Select
 Expression</a></em>. It can also
 be the multiplication operator. In all other cases, it is a
 syntactical metasymbol that flags items you can repeat 0 or more
 times.</li>
-      <li><code class="highlighter-rouge">%</code> and <code class="highlighter-rouge">_</code> are character wildcards when used within character strings
-following a <code class="highlighter-rouge">LIKE</code> operator (except when escaped with an escape
+      <li><code>%</code> and <code>_</code> are character wildcards when used within character strings
+following a <code>LIKE</code> operator (except when escaped with an escape
 character). See <a href="sqlref_expressions_boolean.html">Boolean
 expressions</a>.</li>
       <li>
@@ -2943,10 +2939,10 @@ expressions</a>.</li>
 standard:</p>
 
         <ul style="list-style-type: square;">
-          <li>Single line comments start with two dashes (<code class="highlighter-rouge">--</code>) and end with the
+          <li>Single line comments start with two dashes (<code>--</code>) and end with the
 newline character.</li>
           <li>Multi-line comments are bracketed and start with forward slash star
-(<code class="highlighter-rouge">/*</code>), and end with star forward slash (<code class="highlighter-rouge">*/</code>). Note that bracketed
+(<code>/*</code>), and end with star forward slash (<code>*/</code>). Note that bracketed
 comments may be nested. Any text between the starting and ending
 comment character sequence is ignored.</li>
         </ul>
@@ -2987,49 +2983,19 @@ comment character sequence is ignored.</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,19 +2810,18 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="syscsutilsyscssetdatabaseproperty---builtinsysprocssetdatabaseproperty">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY   {#BuiltInSysProcs.SetDatabaseProperty}</h1>
 
-    <p>Use the <code class="highlighter-rouge">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code> system procedure to set
+    <p>Use the <code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code> system procedure to set
 or delete the value of a property of the database on the current
 connection.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
           IN key VARCHAR(128),
           IN value VARCHAR(32672)
 )
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -2832,9 +2831,9 @@ connection.</p>
 
       <p class="paramName">value</p>
 
-      <p class="paramDefnFirst">The new property value. If this is <code class="highlighter-rouge">null</code>, then the property with key
-value <code class="highlighter-rouge">key</code> is deleted from the database property set. If this is not
-<code class="highlighter-rouge">null</code>, then this <code class="highlighter-rouge">value</code> becomes the new value of the property. If this
+      <p class="paramDefnFirst">The new property value. If this is <code>null</code>, then the property with key
+value <code>key</code> is deleted from the database property set. If this is not
+<code>null</code>, then this <code>value</code> becomes the new value of the property. If this
 value is not a valid value for the property, Splice Machine uses the
 default value of the property.</p>
 
@@ -2851,34 +2850,32 @@ database owner can grant access to other users.</p>
 
     <h2 id="jdbc-example">JDBC example</h2>
 
-    <p>Set the <code class="highlighter-rouge">splicemachine.locks.deadlockTimeout</code> property to a value of 10:</p>
+    <p>Set the <code>splicemachine.locks.deadlockTimeout</code> property to a value of 10:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>CallableStatement cs = conn.prepareCall
+      <pre class="Example"><code>CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(?, ?)");
   cs.setString(1, "splicemachine.locks.deadlockTimeout");
   cs.setString(2, "10");
   cs.execute();
   cs.close();
 </code></pre>
-      </div>
 
     </div>
     <h2 id="sql-example">SQL Example</h2>
 
-    <p>Set the <code class="highlighter-rouge">splicemachine.locks.deadlockTimeout</code> property to a value of 10:</p>
+    <p>Set the <code>splicemachine.locks.deadlockTimeout</code> property to a value of 10:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout', '10' );
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout', '10' );
 Statement executed.
 </code></pre>
-      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_sysprocs_getdbprop.html"><code class="highlighter-rouge">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</code></a>
+      <li><a href="sqlref_sysprocs_getdbprop.html"><code>SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY</code></a>
 built-in system function</li>
     </ul>
 
@@ -2916,49 +2913,19 @@ built-in system function</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

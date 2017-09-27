@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2952,7 +2952,7 @@ functions</em>, as noted below.</p>
     <h3 id="numeric_built-in_data_types_">The Numeric Built-in Data Types</h3>
 
     <p class="indentLevel1">The numeric built-in data types
-are: <a href="sqlref_builtinfcns_smallint.html"><code class="highlighter-rouge">SMALLINT</code></a>.</p>
+are: <a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
 
     <h2 id="Aggregat">Using Aggregate Functions</h2>
 
@@ -2972,17 +2972,17 @@ built-in aggregate function can operate.</p>
     <ul>
       <li>A <em>SelectItem</em> in a
 <em><a href="sqlref_expressions_select.html">SelectExpression</a>.</em></li>
-      <li>A <a href="sqlref_clauses_having.html"><code class="highlighter-rouge">HAVING</code> clause</a>.</li>
-      <li>An <a href="sqlref_clauses_orderby.html"><code class="highlighter-rouge">ORDER BY</code> clause</a> if and only if the
+      <li>A <a href="sqlref_clauses_having.html"><code>HAVING</code> clause</a>.</li>
+      <li>An <a href="sqlref_clauses_orderby.html"><code>ORDER BY</code> clause</a> if and only if the
 aggregate appears in a <em>SelectItem</em> in a
 <em><a href="sqlref_expressions_select.html">SelectExpression</a>.</em></li>
     </ul>
 
     <p>All expressions in <em>SelectItems</em> in the
 <em><a href="sqlref_expressions_select.html">SelectExpression</a></em> must be either
-aggregates or grouped columns (see <a href="sqlref_clauses_groupby.html"><code class="highlighter-rouge">GROUP BY</code>
+aggregates or grouped columns (see <a href="sqlref_clauses_groupby.html"><code>GROUP BY</code>
 clause</a>).(The same is true if there is a
-<code class="highlighter-rouge">HAVING</code> clause without a <code class="highlighter-rouge">GROUP BY</code> clause.)</p>
+<code>HAVING</code> clause without a <code>GROUP BY</code> clause.)</p>
 
     <p>This is because the <em>ResultSet</em> of a
 <em><a href="sqlref_expressions_select.html">SelectExpression</a></em> must be either a
@@ -2992,11 +2992,10 @@ column can evaluate to a vector.) For example, the following query mixes
 scalar and vector values and thus is not valid:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>   -- not valid
+      <pre class="Example"><code>   -- not valid
 SELECT MIN(flying_time), flight_id
   FROM Flights;
 </code></pre>
-      </div>
 
     </div>
     <p>Aggregates are not allowed on outer references (correlations). This
@@ -3006,7 +3005,7 @@ outer query block. For example, the following query is not valid because
 SUM operates on a column from the outer query:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>SELECT c1
+      <pre class="Example"><code>SELECT c1
   FROM t1
   GROUP BY c1
   HAVING c2 &gt;
@@ -3014,7 +3013,6 @@ SUM operates on a column from the outer query:</p>
   FROM t2
   WHERE t2.y = SUM(t1.c3));
 </code></pre>
-      </div>
 
     </div>
     <h2 id="Window">Using Window Functions</h2>
@@ -3025,16 +3023,15 @@ row. They are similar to aggregate functions, with several significant
 differences; a window function:</p>
 
     <ul>
-      <li>Always includes an <a href="sqlref_clauses_over.html"><code class="highlighter-rouge">OVER</code></a> clause</li>
+      <li>Always includes an <a href="sqlref_clauses_over.html"><code>OVER</code></a> clause</li>
       <li>Outputs one row for each input value it operates upon.</li>
       <li>Groups rows with window partitioning and frame clauses, rather than
-using <a href="sqlref_clauses_groupby.html"><code class="highlighter-rouge">GROUP BY</code></a> clauses</li>
+using <a href="sqlref_clauses_groupby.html"><code>GROUP BY</code></a> clauses</li>
     </ul>
 
     <p class="noteNote">Most developers who are new to window functions find that the easiest
 way to understand them is to view examples, such as the ones in the
-<a href="developers_fundamentals_windowfcns.html">Window Functions</a> topic in our
-<em>Splice Machine Developer’s Guide</em>.</p>
+<a href="developers_fundamentals_windowfcns.html">Window Functions</a> topic.</p>
 
     <p>Window functions can be used to handle complex analysis and reporting.
 For example, it’s easy to output running totals, moving averages for a
@@ -3042,9 +3039,9 @@ specific time frame, and similar functions. There are a few simple rules
 about window function usage you need to know:</p>
 
     <ul>
-      <li>Window functions are permitted only in the <code class="highlighter-rouge">SELECT</code> list and the
-<code class="highlighter-rouge">ORDER BY</code> clause of the query. They are forbidden elsewhere, such as
-in <code class="highlighter-rouge">GROUP BY</code>, <code class="highlighter-rouge">HAVING</code> and <code class="highlighter-rouge">WHERE</code> clauses. These restrictions are
+      <li>Window functions are permitted only in the <code>SELECT</code> list and the
+<code>ORDER BY</code> clause of the query. They are forbidden elsewhere, such as
+in <code>GROUP BY</code>, <code>HAVING</code> and <code>WHERE</code> clauses. These restrictions are
 due to the fact that window functions execute after the processing of
 those clauses.</li>
       <li>You can include an aggregate function call in the arguments to a
@@ -3058,45 +3055,43 @@ with it.</li>
     </ul>
 
     <p>The rows considered by a window function (its input rows) are those of
-the <em>virtual table</em> produced by the query’s <code class="highlighter-rouge">FROM</code> clause as filtered by
-its <code class="highlighter-rouge">WHERE</code>, <code class="highlighter-rouge">GROUP BY</code>, and <code class="highlighter-rouge">HAVING</code> clauses, if any. This means, for
-example, that a row removed because it does not meet the <code class="highlighter-rouge">WHERE</code>
+the <em>virtual table</em> produced by the query’s <code>FROM</code> clause as filtered by
+its <code>WHERE</code>, <code>GROUP BY</code>, and <code>HAVING</code> clauses, if any. This means, for
+example, that a row removed because it does not meet the <code>WHERE</code>
 condition is not seen by any window function. A query can contain
 multiple window functions that slice up the data in different ways by
-means of different <code class="highlighter-rouge">OVER</code> clauses, but they all act on the same
+means of different <code>OVER</code> clauses, but they all act on the same
 collection of rows defined by this virtual table.</p>
 
     <p>For examples and further explanation of window functions, please see the
-<a href="developers_fundamentals_windowfcns.html">Window Functions</a> topic in our
-<em>Splice Machine Developer’s Guide</em>.</p>
+<a href="developers_fundamentals_windowfcns.html">Window Functions</a> topic.</p>
 
     <h2 id="see-also">See Also</h2>
 
     <ul>
       <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
-      <li><a href="sqlref_builtinfcns_currentdate.html"><code class="highlighter-rouge">AVG</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_count.html"><code class="highlighter-rouge">COUNT</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_denserank.html"><code class="highlighter-rouge">DENSE_RANK</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_firstvalue.html"><code class="highlighter-rouge">FIRST_VALUE</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_lag.html"><code class="highlighter-rouge">LAG</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_lastvalue.html"><code class="highlighter-rouge">LAST_VALUE</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_lead.html"><code class="highlighter-rouge">LEAD</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_max.html"><code class="highlighter-rouge">MAX</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_min.html"><code class="highlighter-rouge">MIN</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_rank.html"><code class="highlighter-rouge">RANK</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_rownumber.html"><code class="highlighter-rouge">ROW_NUMBER</code></a> function</li>
-      <li><a href="sqlref_builtinfcns_sum.html"><code class="highlighter-rouge">SUM</code></a> function</li>
-      <li><a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code></a> expression</li>
-      <li><a href="sqlref_clauses_groupby.html"><code class="highlighter-rouge">GROUP BY</code></a> clause</li>
-      <li><a href="sqlref_clauses_having.html"><code class="highlighter-rouge">HAVING</code></a> clause</li>
-      <li><a href="sqlref_clauses_orderby.html"><code class="highlighter-rouge">ORDER BY</code></a> clause</li>
+      <li><a href="sqlref_builtinfcns_currentdate.html"><code>AVG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_denserank.html"><code>DENSE_RANK</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_firstvalue.html"><code>FIRST_VALUE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lag.html"><code>LAG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lastvalue.html"><code>LAST_VALUE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lead.html"><code>LEAD</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_max.html"><code>MAX</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_rank.html"><code>RANK</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_rownumber.html"><code>ROW_NUMBER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_clauses_groupby.html"><code>GROUP BY</code></a> clause</li>
+      <li><a href="sqlref_clauses_having.html"><code>HAVING</code></a> clause</li>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
       <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in
 the <em>Developer Guide</em>.</li>
     </ul>
 
   </div>
 </section>
-
 
 
     <div class="tags">
@@ -3128,49 +3123,19 @@ the <em>Developer Guide</em>.</li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

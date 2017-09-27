@@ -205,8 +205,8 @@ make sure that those characters are embedded within delimited strings.
 
 To use the single quote (`'`) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
-(`''''`) as the value of this parameter. This is standard SQL syntax.  
-  
+(`''''`) as the value of this parameter. This is standard SQL syntax.
+
  The [Example 1](#Examples){: .WithinBook .MCXref .xref .xrefWithinBook
 xrefformat="{para}"} section below contains an example that uses the
 single quote as the string delimiter character.
@@ -319,12 +319,12 @@ conjunction with the
 [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) system
 procedure to import your data.
 
-{% include splice_snippets/importtimestampformats.html %}
+{% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
 Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
 for information working with timestamps, dates, and times.
 
-{% include splice_snippets/hfileimport_example.html %}
+{% include splice_snippets/hfileimport_example.md %}
 ## See Also
 
 * [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
@@ -333,4 +333,3 @@ for information working with timestamps, dates, and times.
 
 </div>
 </section>
-

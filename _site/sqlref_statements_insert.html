@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,8 +2810,8 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="insert---statementsinsert">INSERT   {#Statements.Insert}</h1>
 
-    <p>An <code class="highlighter-rouge">INSERT</code> statement creates rows or columns and stores them in the
-named table. The number of values assigned in an <code class="highlighter-rouge">INSERT</code> statement must
+    <p>An <code>INSERT</code> statement creates rows or columns and stores them in the
+named table. The number of values assigned in an <code>INSERT</code> statement must
 be the same as the number of specified or implied columns.</p>
 
     <p>Whenever you insert into a table which has generated columns, Splice
@@ -2820,13 +2820,12 @@ Machine calculates the values of those columns.</p>
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>INSERT INTO table-Name
+      <pre class="FcnSyntax"><code>INSERT INTO table-Name
    [ (Simple-column-Name]* ) ]
    Query [ ORDER BY clause ]
    [ result offset clause ]
    [ fetch first clause ];
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
@@ -2840,23 +2839,23 @@ Machine calculates the values of those columns.</p>
 
       <p class="paramName">Query [ORDER BY clause]</p>
 
-      <p class="paramDefnFirst">A <code class="highlighter-rouge">SELECT</code> or <code class="highlighter-rouge">VALUES</code> command that provides the columns and rows of
-data to insert. The query can also be a <code class="highlighter-rouge">UNION</code> expression.</p>
+      <p class="paramDefnFirst">A <code>SELECT</code> or <code>VALUES</code> command that provides the columns and rows of
+data to insert. The query can also be a <code>UNION</code> expression.</p>
 
-      <p class="paramDefn">See the <a href="#OrderBy">Using the <code class="highlighter-rouge">ORDER BY</code> Clause</a> section below for
-information about using the <code class="highlighter-rouge">ORDER BY</code> clause.</p>
+      <p class="paramDefn">See the <a href="#OrderBy">Using the <code>ORDER BY</code> Clause</a> section below for
+information about using the <code>ORDER BY</code> clause.</p>
 
-      <p class="paramDefn">Single-row and multiple-row <code class="highlighter-rouge">VALUES</code> expressions can include the keyword
-<code class="highlighter-rouge">DEFAULT</code>. Specifying <code class="highlighter-rouge">DEFAULT</code> for a column inserts the column’s
+      <p class="paramDefn">Single-row and multiple-row <code>VALUES</code> expressions can include the keyword
+<code>DEFAULT</code>. Specifying <code>DEFAULT</code> for a column inserts the column’s
 default value into the column. Another way to insert the default value
 into the column is to omit the column from the column list and only
 insert values into other columns in the table. For more information, see
-<a href="sqlref_expressions_values.html"><code class="highlighter-rouge">VALUES</code> expression</a></p>
+<a href="sqlref_expressions_values.html"><code>VALUES</code> expression</a></p>
 
       <p class="paramName">result offset and fetch first clauses</p>
 
-      <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><code class="highlighter-rouge">fetch first</code> clause</a>, which can
-be combined with the <code class="highlighter-rouge">result offset</code> clause, limits the number of rows
+      <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><code>fetch first</code> clause</a>, which can
+be combined with the <code>result offset</code> clause, limits the number of rows
 added to the table.</p>
 
     </div>
@@ -2864,18 +2863,17 @@ added to the table.</p>
 
     <p>When you want insertion to happen with a specific ordering (for example,
 in conjunction with auto-generated keys), it can be useful to specify an
-<code class="highlighter-rouge">ORDER BY</code> clause on the result set to be inserted.</p>
+<code>ORDER BY</code> clause on the result set to be inserted.</p>
 
-    <p>If the Query is a <code class="highlighter-rouge">VALUES</code> expression, it cannot contain or be followed
-by an <code class="highlighter-rouge">ORDER BY</code>, result offset, or fetch first clause. However, if the
-<code class="highlighter-rouge">VALUES</code> expression does not contain the <code class="highlighter-rouge">DEFAULT</code> keyword, the <code class="highlighter-rouge">VALUES</code>
+    <p>If the Query is a <code>VALUES</code> expression, it cannot contain or be followed
+by an <code>ORDER BY</code>, result offset, or fetch first clause. However, if the
+<code>VALUES</code> expression does not contain the <code>DEFAULT</code> keyword, the <code>VALUES</code>
 clause can be put in a subquery and ordered, as in the following
 statement:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;
+      <pre class="Example"><code>INSERT INTO t SELECT * FROM (VALUES 'a','c','b') t ORDER BY 1;
 </code></pre>
-      </div>
 
     </div>
     <p>For more information about queries, see
@@ -2886,7 +2884,7 @@ statement:</p>
     <p class="body">These examples insert records with literal values:</p>
 
     <div class="preWrapperWide">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; INSERT INTO Players
+      <pre class="Example"><code>splice&gt; INSERT INTO Players
    VALUES( 99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991');
 1 row inserted/updated/deleted
 
@@ -2896,13 +2894,12 @@ splice&gt; INSERT INTO Players
            (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982') );
 3 rows inserted/updated/deleted
 </code></pre>
-      </div>
 
       <p class="body">This example creates a table name OldGuys that has the same columns as
 our Players table, and then loads that table with the data from Players
 for all players born before 1980:</p>
 
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>splice&gt; CREATE TABLE OldGuys(
+      <pre class="Example"><code>splice&gt; CREATE TABLE OldGuys(
     ID           SMALLINT NOT NULL PRIMARY KEY,
     Team         VARCHAR(64) NOT NULL,
     Name         VARCHAR(64) NOT NULL,
@@ -2915,24 +2912,23 @@ splice&gt; INSERT INTO OldGuys
    SELECT * FROM Players
    WHERE BirthDate &lt; '01/01/1980';
 </code></pre>
-      </div>
 
     </div>
     <h2 id="statement-dependency-system">Statement dependency system</h2>
 
-    <p>The <code class="highlighter-rouge">INSERT</code> statement depends on the table being inserted into, all of
+    <p>The <code>INSERT</code> statement depends on the table being inserted into, all of
 the conglomerates (units of storage such as heaps or indexes) for that
 table, and any other table named in the statement. Any statement that
 creates or drops an index or a constraint for the target table of a
-prepared <code class="highlighter-rouge">INSERT</code> statement invalidates the prepared <code class="highlighter-rouge">INSERT</code> statement.</p>
+prepared <code>INSERT</code> statement invalidates the prepared <code>INSERT</code> statement.</p>
 
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_clauses_resultoffset.html"><code class="highlighter-rouge">FETCH FIRST</code></a> clause</li>
-      <li><a href="sqlref_clauses_orderby.html"><code class="highlighter-rouge">ORDER BY</code></a> clause</li>
+      <li><a href="sqlref_clauses_resultoffset.html"><code>FETCH FIRST</code></a> clause</li>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
       <li><a href="sqlref_queries_query.html">Queries</a></li>
-      <li><a href="sqlref_clauses_resultoffset.html"><code class="highlighter-rouge">RESULT OFFSET</code></a> clause</li>
+      <li><a href="sqlref_clauses_resultoffset.html"><code>RESULT OFFSET</code></a> clause</li>
     </ul>
 
   </div>
@@ -2969,49 +2965,19 @@ prepared <code class="highlighter-rouge">INSERT</code> statement invalidates the
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

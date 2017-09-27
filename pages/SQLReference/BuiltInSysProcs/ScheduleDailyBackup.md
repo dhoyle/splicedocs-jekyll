@@ -20,8 +20,7 @@ Time (GMT).
 {: .noteNote}
 
 Note that you can subsequently cancel a scheduled backup job with the
-[`Backing Up and Restoring`](onprem_admin_backingup.html) topic in our
-*Administrator's Guide*.
+[`Backing Up and Restoring`](onprem_admin_backingup.html) topic.
 
 ## Syntax
 
@@ -128,4 +127,3 @@ version of Splice Machine:
 
 </div>
 </section>
-

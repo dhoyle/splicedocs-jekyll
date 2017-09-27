@@ -13,7 +13,7 @@ folder: OnPrem/InstallingSpliceMachine
 {% include splicevars.html %}
 # Installing and Configuring Splice Machine for Cloudera Manager
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 <div markdown="1">
 This topic describes installing and configuring Splice Machine on a
 Cloudera-managed cluster. Follow these steps:

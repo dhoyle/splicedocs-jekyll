@@ -15,7 +15,7 @@ folder: OnPrem/Info
 The following table summarizes support for the Enterprise Edition of
 Splice Machine.
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 <table class="featureList">
 	            <col />
 	            <col />

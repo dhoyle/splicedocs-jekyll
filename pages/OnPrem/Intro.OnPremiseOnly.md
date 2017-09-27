@@ -8,7 +8,7 @@ sidebar:  onprem_sidebar
 permalink: onprem_intro.html
 folder: OnPrem
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Welcome to the Splice Machine On-Premise Database!
 
@@ -66,7 +66,21 @@ above).
 
 If you're using an earlier version, you'll find the documentation here:
 
-{% include splice_snippets/docversions_table.html %}
+<table>
+    <col />
+    <col />
+    <tbody>
+        <tr>
+            <td>Version 2.5</td>
+            <td><a href="https://doc.splicemachine.com/2.5/index.html">Release 2.5 Documentation</a> (Feb 2017)</td>
+        </tr>
+        <tr>
+            <td>Version 2.0</td>
+            <td><a href="https://doc.splicemachine.com/2.0/home.html">Release 2.0 Documentation</a> (Sep. 2016)</td>
+        </tr>
+    </tbody>
+</table>
+
 </div>
 </section>
 

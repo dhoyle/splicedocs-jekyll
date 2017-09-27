@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2810,31 +2810,31 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="order-by---clausesorderby">ORDER BY   {#Clauses.OrderBy}</h1>
 
-    <p>The <code class="highlighter-rouge">ORDER BY</code> clause is an optional element of the following:</p>
+    <p>The <code>ORDER BY</code> clause is an optional element of the following:</p>
 
     <ul>
-      <li>A <a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code> statement</a></li>
+      <li>A <a href="sqlref_expressions_select.html"><code>SELECT</code> statement</a></li>
       <li>A <em><a href="sqlref_expressions_select.html">SelectExpression</a></em></li>
-      <li>A <a href="sqlref_expressions_values.html"><code class="highlighter-rouge">VALUES</code> expression</a></li>
+      <li>A <a href="sqlref_expressions_values.html"><code>VALUES</code> expression</a></li>
       <li>A <em><a href="sqlref_queries_scalarsubquery.html">ScalarSubquery</a></em></li>
       <li>A <em><a href="sqlref_queries_tablesubquery.html">TableSubquery</a></em></li>
     </ul>
 
-    <p>It can also be used in an <a href="sqlref_statements_createview.html"><code class="highlighter-rouge">CREATE
+    <p>It can also be used in an <a href="sqlref_statements_createview.html"><code>CREATE
 VIEW</code></a> statement.</p>
 
-    <p>An <code class="highlighter-rouge">ORDER BY</code> clause allows you to specify the order in which rows
-appear in the result set. In subqueries, the <code class="highlighter-rouge">ORDER BY</code> clause is
-meaningless unless it is accompanied by one or both of the <code class="highlighter-rouge">result
-offset</code> and <code class="highlighter-rouge">fetch first</code> clauses or in conjunction with the
-<code class="highlighter-rouge">ROW_NUMBER</code> function, since there is no guarantee that the order is
-retained in the outer result set. It is permissible to combine <code class="highlighter-rouge">ORDER
-BY</code> on the outer query with <code class="highlighter-rouge">ORDER BY</code> in subqueries.</p>
+    <p>An <code>ORDER BY</code> clause allows you to specify the order in which rows
+appear in the result set. In subqueries, the <code>ORDER BY</code> clause is
+meaningless unless it is accompanied by one or both of the <code>result
+offset</code> and <code>fetch first</code> clauses or in conjunction with the
+<code>ROW_NUMBER</code> function, since there is no guarantee that the order is
+retained in the outer result set. It is permissible to combine <code>ORDER
+BY</code> on the outer query with <code>ORDER BY</code> in subqueries.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
-      <div class="FcnSyntax highlighter-rouge"><pre class="highlight"><code>ORDER BY { column-Name |
+      <pre class="FcnSyntax"><code>ORDER BY { column-Name |
            ColumnPosition |
            Expression }
     [ ASC | DESC ]
@@ -2843,24 +2843,23 @@ BY</code> on the outer query with <code class="highlighter-rouge">ORDER BY</code
       [ NULLS FIRST | NULLS LAST ]
     ]* 
 </code></pre>
-      </div>
 
     </div>
     <div class="paramList">
       <p class="paramName">column-Name</p>
 
       <p class="paramDefnFirst">A column name, as described in the
-<a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code></a> statement. The column name(s)
-that you specify in the <code class="highlighter-rouge">ORDER BY</code> clause do not need to be the <code class="highlighter-rouge">SELECT</code>
+<a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement. The column name(s)
+that you specify in the <code>ORDER BY</code> clause do not need to be the <code>SELECT</code>
 list.</p>
 
       <p class="paramName">ColumnPosition</p>
 
       <p class="paramDefnFirst">An integer that identifies the number of the column in the
-<var>SelectItems</var> in the underlying query of the <code class="highlighter-rouge">SELECT</code>
-statement. <code class="highlighter-rouge">ColumnPosition</code> must be greater than 0 and not greater than
+<var>SelectItems</var> in the underlying query of the <code>SELECT</code>
+statement. <code>ColumnPosition</code> must be greater than 0 and not greater than
 the number of columns in the result table. In other words, if you want
-to order by a column, that column must be specified in the <code class="highlighter-rouge">SELECT</code>
+to order by a column, that column must be specified in the <code>SELECT</code>
 list.</p>
 
       <p class="paramName">Expression</p>
@@ -2872,7 +2871,7 @@ scalar subquery or case expression.</p>
       <p class="paramName">ASC</p>
 
       <p class="paramDefnFirst">Specifies that the results should be returned in ascending order. If the
-order is not specified, <code class="highlighter-rouge">ASC</code> is the default.</p>
+order is not specified, <code>ASC</code> is the default.</p>
 
       <p class="paramName">DESC</p>
 
@@ -2881,37 +2880,36 @@ order is not specified, <code class="highlighter-rouge">ASC</code> is the defaul
       <div>
         <p class="paramName">NULLS FIRST</p>
 
-        <p class="paramDefnFirst">Specifies that <code class="highlighter-rouge">NULL</code> values should be returned before
-non-<code class="highlighter-rouge">NULL</code> values. This is the default value for descending
-(<code class="highlighter-rouge">DESC</code>) order.</p>
+        <p class="paramDefnFirst">Specifies that <code>NULL</code> values should be returned before
+non-<code>NULL</code> values. This is the default value for descending
+(<code>DESC</code>) order.</p>
 
         <p class="paramName">NULLS LAST</p>
 
-        <p class="paramDefnFirst">Specifies that <code class="highlighter-rouge">NULL</code> values should be returned after non-<code class="highlighter-rouge">NULL</code> values.
-This is the default value for ascending (<code class="highlighter-rouge">ASC</code>) order.</p>
+        <p class="paramDefnFirst">Specifies that <code>NULL</code> values should be returned after non-<code>NULL</code> values.
+This is the default value for ascending (<code>ASC</code>) order.</p>
 
       </div>
     </div>
     <h2 id="using">Using</h2>
 
-    <p>If <code class="highlighter-rouge">SELECT DISTINCT</code> is specified or if the <code class="highlighter-rouge">SELECT</code> statement contains
-a <code class="highlighter-rouge">GROUP BY</code> clause, the <code class="highlighter-rouge">ORDER BY</code> columns must be in the <code class="highlighter-rouge">SELECT</code>
+    <p>If <code>SELECT DISTINCT</code> is specified or if the <code>SELECT</code> statement contains
+a <code>GROUP BY</code> clause, the <code>ORDER BY</code> columns must be in the <code>SELECT</code>
 list.</p>
 
     <h2 id="example-using-a-correlation-name">Example using a correlation name</h2>
 
     <p>You can sort the result set by a correlation name, if the correlation
 name is specified in the select list. For example, to return from the
-<code class="highlighter-rouge">CITIES</code> database all of the entries in the <code class="highlighter-rouge">CITY_NAME</code> and <code class="highlighter-rouge">COUNTRY</code>
-columns, where the <code class="highlighter-rouge">COUNTRY</code> column has the correlation name <code class="highlighter-rouge">NATION</code>,
-you specify this <code class="highlighter-rouge">SELECT</code> statement:</p>
+<code>CITIES</code> database all of the entries in the <code>CITY_NAME</code> and <code>COUNTRY</code>
+columns, where the <code>COUNTRY</code> column has the correlation name <code>NATION</code>,
+you specify this <code>SELECT</code> statement:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>SELECT CITY_NAME, COUNTRY AS NATION
+      <pre class="Example"><code>SELECT CITY_NAME, COUNTRY AS NATION
   FROM CITIES
   ORDER BY NATION;
 </code></pre>
-      </div>
 
     </div>
     <h2 id="example-using-a-numeric-expression">Example using a numeric expression</h2>
@@ -2919,23 +2917,21 @@ you specify this <code class="highlighter-rouge">SELECT</code> statement:</p>
     <p>You can sort the result set by a numeric expression, for example:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>SELECT name, salary, bonus FROM employee
+      <pre class="Example"><code>SELECT name, salary, bonus FROM employee
   ORDER BY salary+bonus;
 </code></pre>
-      </div>
 
     </div>
-    <p>In this example, the salary and bonus columns are <code class="highlighter-rouge">DECIMAL</code> data types.</p>
+    <p>In this example, the salary and bonus columns are <code>DECIMAL</code> data types.</p>
 
     <h2 id="example-using-a-function">Example using a function</h2>
 
     <p>You can sort the result set by invoking a function, for example:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>SELECT i, len FROM measures
+      <pre class="Example"><code>SELECT i, len FROM measures
   ORDER BY sin(i);
 </code></pre>
-      </div>
 
     </div>
     <h2 id="example-of-specifying-a-nullordering">Example of specifying a NULL ordering</h2>
@@ -2943,22 +2939,21 @@ you specify this <code class="highlighter-rouge">SELECT</code> statement:</p>
     <p>You can sort the result set by invoking a function, for example:</p>
 
     <div class="preWrapper">
-      <div class="Example highlighter-rouge"><pre class="highlight"><code>SELECT * FROM Players
+      <pre class="Example"><code>SELECT * FROM Players
   ORDER BY BirthDate DESC NULLS LAST;
 </code></pre>
-      </div>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_clauses_groupby.html"><code class="highlighter-rouge">GROUP BY</code></a> clause</li>
-      <li><a href="sqlref_clauses_where.html"><code class="highlighter-rouge">WHERE</code></a> clause</li>
-      <li><a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code></a> expression</li>
-      <li><a href="sqlref_expressions_values.html"><code class="highlighter-rouge">VALUES</code></a> expression</li>
-      <li><a href="sqlref_statements_createview.html"><code class="highlighter-rouge">CREATE VIEW</code></a> statement</li>
-      <li><a href="sqlref_statements_insert.html"><code class="highlighter-rouge">INSERT</code></a> statement</li>
-      <li><a href="sqlref_expressions_select.html"><code class="highlighter-rouge">SELECT</code></a> statement</li>
+      <li><a href="sqlref_clauses_groupby.html"><code>GROUP BY</code></a> clause</li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_expressions_values.html"><code>VALUES</code></a> expression</li>
+      <li><a href="sqlref_statements_createview.html"><code>CREATE VIEW</code></a> statement</li>
+      <li><a href="sqlref_statements_insert.html"><code>INSERT</code></a> statement</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
     </ul>
 
   </div>
@@ -2995,49 +2990,19 @@ you specify this <code class="highlighter-rouge">SELECT</code> statement:</p>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

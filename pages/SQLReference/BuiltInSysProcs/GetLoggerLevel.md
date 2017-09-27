@@ -66,7 +66,7 @@ include these values:
                         <td class="CodeFont">LOGLEVEL
                     </td>
                         <td>
-                            <p class="noSpaceAbove">The level of the logger. This is one of the following values, which are described in the <a href="developers_tuning_logging.html">Logging</a> topic in our <em>Developer's Guide</em>:</p>
+                            <p class="noSpaceAbove">The level of the logger. This is one of the following values, which are described in the <a href="developers_tuning_logging.html">Logging</a> topic:</p>
                             <ul>
                                 <li class="CodeFont" value="1">TRACE</li>
                                 <li class="CodeFont" value="2">DEBUG</li>
@@ -89,14 +89,14 @@ Here are two examples of using this procedure:
     LOG&
     ----
     WARN
-    
+
     1 row selected
-    
+
     splice> CALL SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL('com.splicemachine.mrio.api');
     LOGL&
     -----
     DEBUG
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -110,4 +110,3 @@ Here are two examples of using this procedure:
 
 </div>
 </section>
-

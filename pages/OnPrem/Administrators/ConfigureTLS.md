@@ -8,11 +8,11 @@ sidebar: onprem_sidebar
 permalink: onprem_install_configureTLS.html
 folder: OnPrem/InstallingSpliceMachine
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Configuring SSL/TLS Authentication
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 This topic describes how to configure SSL/TLS on your cluster to support
 secure JDBC connections to your Splice Machine database.
 

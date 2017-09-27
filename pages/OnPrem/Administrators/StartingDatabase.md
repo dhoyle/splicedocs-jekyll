@@ -8,11 +8,11 @@ sidebar:  onprem_sidebar
 permalink: onprem_admin_startingdb.html
 folder: OnPrem/Administrators
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Starting Your Database
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 * [Starting Your Splice Machine Database on a Cloudera-Managed
   Cluster](#StartDBCloudera)
 * [Starting Your Splice Machine Database on a Hortonworks HDP-Managed

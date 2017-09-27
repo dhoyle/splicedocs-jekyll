@@ -8,9 +8,9 @@ sidebar:  onprem_sidebar
 permalink: onprem_info_release.html
 folder: OnPrem/Info
 ---
-# Release Notes for Splice Machine On-Premise Database v2.6.1 (September 19, 2017)
+# Release Notes for Splice Machine On-Premise Database v2.6.1 (September 25, 2017)
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 
 Welcome to 2.6.1 release of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 
@@ -28,9 +28,9 @@ This topic contains the following sections:
 ## Supported Platforms
 The supported platforms with 2.6.1 are:
 
-* Cloudera CDH 5.8.0, 5.8.3
-* MapR 5.1.0 and 5.2.0
-* HortonWorks HDP 2.5 and 2.5.5
+* Cloudera CDH 5.12.0, 5.8.3
+* MapR 5.2.0
+* HortonWorks HDP 2.5.5
 
 ## Enterprise-only Features
 The following features will NOT work on the Community Edition of Splice Machine.  You will need to upgrade to the Enterprise version:
@@ -54,10 +54,12 @@ These are the significant new features in this release, along with their Splice 
 
 * VTI Support for Hive ORC Files    (SPLICE-879)
 * Support For Array Data Type    (SPLICE-1320)
+* Mechanism to log/view all queries that have run (SPLICE-1373)
 * HBase Bulk Import    (SPLICE-1482)
 * Multiple Distinct Operations in Aggregates Support    (SPLICE-1512)
 * Allow Physical Deletes in a Table    (SPLICE-1591)
 * Support sample statistics collection (via Analyze)    (SPLICE-1603)
+* Sparse index support (null suppression when creating index)  (SPLICE-1617)
 * Bulk delete by loading HFiles    (SPLICE-1669)
 * Enable snapshot with bulk load procedure    (SPLICE-1671)
 * Enable monitoring and reporting capability of memory usage for HBase's JVM via JMX    (SPLICE-1701)
@@ -67,13 +69,14 @@ These are the significant new features in this release, along with their Splice 
 * Support BLOB/CLOB in ODBC
 * HAProxy and connection load balancing solution
 
-<p class="noteIcon">For additional information about new features in this release, see <a href="onprem_info_newfeatures.html">our new feature information page</a>.</p>
+<div class="noteIcon">For additional information about new features in this release, see <a href="onprem_info_newfeatures.html">our new feature information page</a>.</div>
 
 
 ## Improvements
 Here are major improvements we've included in this version:
 
 * Support 'drop view if exists'    (SPLICE-398)
+* Built-in function ROUND added (SPLICE-949)
 * Implement in-memory subtransactions    (SPLICE-1222)
 * Upgrade Sketching Library from 0.8.1 - 0.8.4    (SPLICE-1351)
 * Control-side query control    (SPLICE-1372)
@@ -87,11 +90,32 @@ Here are major improvements we've included in this version:
 * Core Spark Adapter Functionality With Maven Build    (SPLICE-1568)
 * Update the Spark Adapter to 2.1.1    (SPLICE-1619)
 * Introduce query hint "skipStats" after a table identifier to bypass fetching real stats from dictionary tables    (SPLICE-1681)
+* Removed LocatedRow construct from the execution tree (SPLICE-1702)
+* Changed "size==0" to isEmpty()  (SPLICE-1703)
+* Ignore "should not give a splitkey that equates to startkey" exception (SPLICE-1714)
+* External table documentation updated (SPLICE-1725)
 * Handle 'drop table table_name if exists'    (SPLICE-1729)
 * Support type conversion Varchar to INT    (SPLICE-1733)
 * Added CREATE SCHEMA IF NOT EXISTS functionality    (SPLICE-1739)
 * Support inserting int types to char types    (SPLICE-1752)
 * Introduce database property collectIndexStatsOnly to specify the collect stats behavior    (SPLICE-1756)
+* Enhancement to provide corresponding Spark JobID when Splice jobs or queries are submitted through Spark (SPLICE-1760)
+* Too many tasks are launched in the last stage of bulk import (SPLICE-1785)
+* Remove EFS FileSystem (SPLICE-1834)
+* Remove MBeanResultSet (SPLICE-1835)
+* Remove SpliceCsvTokenizer (SPLICE-1836)
+* Remove Old Cost Estimate Implementation... (SPLICE-1837)
+* Remove Left Over Aggregate Plumbing (SPLICE-1838)
+* Remove Serial Encoding Package (SPLICE-1839)
+* Remove Dead PhysicalStatsStore (SPLICE-1840)
+* Remove ScanInfo class and Interfaces (SPLICE-1841)
+* Derby Utils Dead Code Cleanup (SPLICE-1842)
+* Tweak Kryo Serde for Missing Elements (SPLICE-1845)
+* Remove concurrent.traffic package (SPLICE-1851)
+* Added documentation for GET_SESSION_INFO (SPLICE-1873)
+* Added documentation for GET_RUNNING_OPERATIONS and KILL_OPERATION (SPLICE-1875)
+* KeyBy Function on Control is a multimap index vs. a map function (SPLICE-1879)
+* Modify ReduceByKey to execute lazily and not use Multimaps. (SPLICE-1880)
 
 * Added SplicemachineContext.g
 * DB-5872 Bcast implementation dataset vs rddetConnection() to enable commit/rollback in Scala
@@ -219,11 +243,22 @@ These bug fixes have been incorporated into this version:
 * Unifying the thread pools    (SPLICE-1773)
 * Fixing Object Creation on IndexTransformFunction    (SPLICE-1781)
 * Fixing Serial Cutpoint Generation    (SPLICE-1784)
+* Query does not scale on 4000 regions (SPLICE-1784)
 * Make username's more specific to resolve concurrent conflicts    (SPLICE-1791)
 * BroadcastJoinMemoryLimitIT must be executed serially    (SPLICE-1792)
 * Fix NullPointerExeption for update with expression, and uncomment test case in HdfsImport related to this bug    (SPLICE-1795)
 * Parallel Queries can fail on SPS Descriptor Update...    (SPLICE-1798)
+* Transaction are not popped from transaction stack when releasing savepoints (SPLICE-1813)
 * NullPointer when collecting stats on ORC table    (SPLICE-1824)
+* Couldn't find subpartitions in range exception with external tables (SPLICE-1850)
+* Wrong count(*) result for partitioned external table (SPLICE-1853)
+* wrong result query orc table with predicate on date column (SPLICE-1854)
+* Join result is wrong for a partitioned external table (SPLICE-1858)
+* Error analyzing table when columns contains zero length data (SPLICE-1860)
+* Boolean operator &lt;&gt; is broken with external tables (SPLICE-1865)
+* SHOW TABLES is broken (SPLICE-1867)
+* Large table scan runs on control with predicate of high selectivity (SPLICE-1874)
+
 
 * Allow more packages to be loaded from user code
 * Drop and re-create foreign key write handler after truncating a table

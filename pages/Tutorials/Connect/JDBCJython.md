@@ -8,7 +8,7 @@ sidebar: tutorials_sidebar
 permalink: tutorials_connect_jython.html
 folder: Tutorials/Connect
 ---
-\{% include splicevars.html %} <section>
+{% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Connecting to Splice Machine with Jython and JDBC
 

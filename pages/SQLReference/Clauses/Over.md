@@ -18,8 +18,7 @@ which the function operates. Window functions are permitted only in the
 
 For general information about and examples of Window functions in Splice
 Machine, see the [Using Window
-Functions](developers_fundamentals_windowfcns.html) topic in our *Splice
-Machine Developer's Guide*.
+Functions](developers_fundamentals_windowfcns.html) topic.
 
 ## Syntax
 
@@ -113,7 +112,7 @@ The syntax for both *frameStart* and *frameEnd* is:
     <n> PRECEDING       |
     CURRENT ROW         |
     <n> FOLLOWING       |
-    UNBOUNDED FOLLOWING 
+    UNBOUNDED FOLLOWING
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -176,7 +175,7 @@ the frame clause.
 <div class="preWrapperWide" markdown="1">
     --- Rank each year within a player by the number of home runs hit by that player
     RANK() OVER (PARTITION BY playerID ORDER BY desc(H));
-    
+
     --- Compute the change in number of games played from one year to the next:
     G - LAG(G) OVER (PARTITION G playerID ORDER BY yearID);
 {: .Example xml:space="preserve"}
@@ -221,11 +220,11 @@ Here are some examples of window functions using frame clauses:
     --- Compute the running sum of G for each player:
     SUM(G) OVER (PARTITION BY playerID ORDER BY yearID
       BETWEEN UNBOUNDED PRECEEDING AND CURRENT ROW);
-    
+
     --- Compute the career year:
     YearID - min(YEARID) OVER (PARTITION BY playerID
        BETWEEN UNBOUNDED PRECEEDING AND UNBOUNDED FOLLOWING) + 1;
-    
+
     --- Compute a rolling average of games by player:
     MEAN(G) OVER (PARTITION BY playerID ORDER BY yearID
        BETWEEN 2 PRECEEDING AND 2 FOLLOWING);
@@ -245,4 +244,3 @@ Here are some examples of window functions using frame clauses:
 
 </div>
 </section>
-

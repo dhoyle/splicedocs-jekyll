@@ -12,7 +12,7 @@ folder: DBaaS/Zeppelin
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Zeppelin Usage Notes
 
-{% include splice_snippets/dbaasonlytopic.html %}
+{% include splice_snippets/dbaasonlytopic.md %}
 This page currently contains exactly one tip about using Zeppelin with
 Splice Machine; this will grow into a loose collection of tips over
 time.
