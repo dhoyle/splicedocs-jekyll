@@ -8,7 +8,7 @@ sidebar:  onprem_sidebar
 permalink: onprem_admin_startingdb.html
 folder: OnPrem/Administrators
 ---
-{% include splicevars.html %} <section>
+<section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Starting Your Database
 
@@ -30,15 +30,16 @@ Use the Cloudera Manager to start HBase:
 1.  Navigate to the *Services-&gt;All Services* screen in *Cloudera
     Manager*, and select this action to start *HBase*:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         Actions -> Start
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
 </div>
+{% include splicevars.html %}
 ## Starting Your Splice Machine Database on a Hortonworks HDP--Managed Cluster   {#StartDBHDP}
 
 Use the Ambari dashboard to start Splice Machine:
@@ -49,20 +50,20 @@ Use the Ambari dashboard to start Splice Machine:
     class="HighlightedCode">&lt;hostName&gt;</span> for your master node
     that is hosting Ambari Server:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         http://<hostName>:8080/
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  Start cluster services:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         Action -> Start All
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -90,20 +91,20 @@ version of Splice Machine:
 <div class="opsStepsList" markdown="1">
 1.  Change directory to your install directory:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         cd splicemachine
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  Run the Splice Machine start-up script:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
-        $ {{spvar_platform_StandaloneStartScript}}
+        $ {{splvar_location_StandaloneStartScript}}
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -123,42 +124,41 @@ To stop and restart Splice Machine, follow these steps:
 1.  Make sure that you have quit the <span
     class="AppCommand">splice&gt;</span> command line interpreter:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         splice> quit;
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  Change directory to your install directory:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         cd splicemachine
     {: .ShellCommand}
-    
+
     </div>
 
 3.  Run the Splice Machine shut-down script:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
-        $ {{spvar_platform_StandaloneStopScript}}
+        $ {{splvar_location_StandaloneStopScript}}
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 4.  Run the Splice Machine start-up
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
-        $ {{spvar_platform_StandaloneStartScript}}
+        $ {{splvar_location_StandaloneStartScript}}
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
 </div>
 </div>
 </section>
-

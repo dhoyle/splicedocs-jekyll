@@ -240,13 +240,6 @@
             
             
             
-            
-            
-            <li><a href="onprem_about.html">About Our On-Premise DB</a></li>
-            
-            
-            
-            
         </ul>
      </li>
        
@@ -762,7 +755,7 @@ performed; use.one of the following values: <code>full</code> or <code>increment
         <h4 id="example-2execute-an-incremental-backup-now">Example 2: Execute an incremental backup now:</h4>
 
         <p>This call will run an incremental backup right now. Splice Machine
-checks the  <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a>
+checks the  <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code> system table</a>
 to determine if there already is a backup for the system; if not, Splice
 Machine will perform a full backup, and subsequent backups will be
 incremental. The backup data is stored in the specified directory.</p>
@@ -795,8 +788,8 @@ procedure:</p>
       <p class="paramDefnFirst">A <code>VARCHAR</code> value that specifies the path to the directory in which the
 backup isstored.</p>
 
-      <p class="paramDefn">You can find the <em>backupId</em> you want to use by querying the  <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP
-System Table</code></a>. See the <a href="#Reviewing">Reviewing
+      <p class="paramDefn">You can find the <em>backupId</em> you want to use by querying the  <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code>
+ System Table</a>. See the <a href="#Reviewing">Reviewing
 Backup Information</a> section below for more information.</p>
 
       <p class="paramName">backupId</p>
@@ -840,7 +833,7 @@ file in the directory to which a backup is written when it runs.</p>
     <h4 id="backup-job-information">Backup Job Information</h4>
 
     <p>Information about your scheduled backup jobs is stored in the
-<a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS System Table</code></a>:</p>
+<a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code> system table</a>:</p>
 
     <div class="preWrapperWide">
       <pre class="Example"><code>splice&gt; select * from SYS.SYSBACKUPJOBS;
@@ -856,7 +849,7 @@ scheduled backup.</p>
     <h4 id="backup-information">Backup Information</h4>
 
     <p>Information about each backup of your database is stored in the
-<a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a>, including
+<a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code> system table</a>, including
 the ID assigned to the backup and its location. You can query this table
 to find the ID of a specific backup, which you need if you want to
 restore your database from it, or to delete it:</p>
@@ -906,7 +899,7 @@ procedure:</p>
 cancel.</p>
 
       <p class="paramDefn">You can find the <em>jobId</em> you want to cancel by querying the
-<a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS System Table</code></a>.</p>
+<a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code> system table</a>.</p>
 
       <p class="noteNote">Once you cancel a daily backup, it will no longer be scheduled to run.</p>
 
@@ -960,7 +953,7 @@ procedure to delete a single backup:</p>
       <p class="paramDefnFirst">A <code>BIGINT</code> value that specifies which backup you want to delete.</p>
 
       <p class="paramDefn">You can find the <em>backupId</em> you want to delete by querying the
-<a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a>,</p>
+<a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code> system table</a>,</p>
 
       <h4 id="exampledelete-a-backup">Example: Delete a backup</h4>
 
@@ -1252,9 +1245,9 @@ example:</p>
       <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a></li>
       <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a></li>
       <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a></li>
-      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a></li>
-      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS System Table</code></a></li>
-      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS System Table</code></a></li>
+      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code> system table</a></li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS</code> system table</a></li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code> system table</a></li>
     </ul>
 
   </div>
@@ -1276,7 +1269,7 @@ example:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 28, 2017 <br />
+ Site last generated: Sep 29, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -226,7 +226,7 @@ To execute a backup right now:
 #### Example 2: Execute an incremental backup now:
 
 This call will run an incremental backup right now. Splice Machine
-checks the &nbsp;[`SYSBACKUP System Table`](sqlref_systables_sysbackup.html)
+checks the &nbsp;[`SYSBACKUP` system table](sqlref_systables_sysbackup.html)
 to determine if there already is a backup for the system; if not, Splice
 Machine will perform a full backup, and subsequent backups will be
 incremental. The backup data is stored in the specified directory.
@@ -261,8 +261,8 @@ A `VARCHAR` value that specifies the path to the directory in which the
 backup isstored.
 {: .paramDefnFirst}
 
-You can find the *backupId* you want to use by querying the &nbsp;[`SYSBACKUP
-System Table`](sqlref_systables_sysbackup.html). See the [Reviewing
+You can find the *backupId* you want to use by querying the &nbsp;[`SYSBACKUP`
+ System Table](sqlref_systables_sysbackup.html). See the [Reviewing
 Backup Information](#Reviewing) section below for more information.
 {: .paramDefn}
 
@@ -305,7 +305,7 @@ file in the directory to which a backup is written when it runs.
 #### Backup Job Information
 
 Information about your scheduled backup jobs is stored in the
-[`SYSBACKUPJOBS System Table`](sqlref_systables_sysbackupjobs.html):
+[`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html):
 
 <div class="preWrapperWide" markdown="1">
     splice> select * from SYS.SYSBACKUPJOBS;
@@ -321,7 +321,7 @@ scheduled backup.
 #### Backup Information
 
 Information about each backup of your database is stored in the
-[`SYSBACKUP System Table`](sqlref_systables_sysbackup.html), including
+[`SYSBACKUP` system table](sqlref_systables_sysbackup.html), including
 the ID assigned to the backup and its location. You can query this table
 to find the ID of a specific backup, which you need if you want to
 restore your database from it, or to delete it:
@@ -373,7 +373,7 @@ cancel.
 {: .paramDefnFirst}
 
 You can find the *jobId* you want to cancel by querying the
-[`SYSBACKUPJOBS System Table`](sqlref_systables_sysbackupjobs.html).
+[`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html).
 {: .paramDefn}
 
 Once you cancel a daily backup, it will no longer be scheduled to run.
@@ -431,7 +431,7 @@ A `BIGINT` value that specifies which backup you want to delete.
 {: .paramDefnFirst}
 
 You can find the *backupId* you want to delete by querying the
-[`SYSBACKUP System Table`](sqlref_systables_sysbackup.html),
+[`SYSBACKUP` system table](sqlref_systables_sysbackup.html),
 {: .paramDefn}
 
 #### Example: Delete a backup
@@ -709,9 +709,9 @@ Follow these steps:
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
-* [`SYSBACKUP System Table`](sqlref_systables_sysbackup.html)
-* [`SYSBACKUPITEMS System Table`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS System Table`](sqlref_systables_sysbackupjobs.html)
+* [`SYSBACKUP` system table](sqlref_systables_sysbackup.html)
+* [`SYSBACKUPITEMS` system table](sqlref_systables_sysbackupitems.html)
+* [`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>
