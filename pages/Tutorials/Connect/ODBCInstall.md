@@ -46,9 +46,8 @@ the driver:
     The file you download will have a name similar to these:
     {: .indentLevel1}
 
-    * {: .CodeFont value="1"} splice_odbc_setup_64bit_1.0.28.0.msi
-    * {: .CodeFont value="2"} splice_odbc_setup_32bit_1.0.28.0.msi
-    {: .plainFont}
+    * <span class="PlainFont">`splice_odbc_setup_64bit_1.0.28.0.msi`
+    * <span class="PlainFont">`splice_odbc_setup_32bit_1.0.28.0.msi`
 
 2.  Start the installer
     {: .topLevel}

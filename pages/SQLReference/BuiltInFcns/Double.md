@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DOUBLE   {#BuiltInFcns.Double}
+# DOUBLE
 
 The `DOUBLE` function returns a floating-point number corresponding to
 a:
@@ -22,7 +22,7 @@ a:
 ## Numeric to Double
 
 <div class="fcnWrapperWide" markdown="1">
-    DOUBLE [PRECISION] (NumericExpression ) 
+    DOUBLE [PRECISION] (NumericExpression )
 {: .FcnSyntax}
 
 </div>
@@ -37,7 +37,7 @@ numeric data type.
 </div>
 ### Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 If the argument can be `NULL`, the result can be `NULL`; if the argument
@@ -49,7 +49,7 @@ assigned to a double-precision floating-point column or variable.
 ## Character String to Double
 
 <div class="fcnWrapperWide" markdown="1">
-    DOUBLE (StringExpression ) 
+    DOUBLE (StringExpression )
 {: .FcnSyntax}
 
 </div>
@@ -57,7 +57,7 @@ assigned to a double-precision floating-point column or variable.
 StringExpression
 {: .paramName}
 
-The argument can be of type [`VARCHAR`](sqlref_datatypes_varchar.html)
+The argument can be of type &nbsp;[`VARCHAR`](sqlref_datatypes_varchar.html)
 in the form of a numeric constant. Leading and trailing blanks in
 argument are ignored.
 {: .paramDefnFirst}
@@ -65,7 +65,7 @@ argument are ignored.
 </div>
 ### Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 If the argument can be `NULL`, the result can be `NULL`; if the argument
@@ -82,7 +82,7 @@ column or variable.
     1
     ----------
     84.4
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -93,4 +93,3 @@ column or variable.
 
 </div>
 </section>
-

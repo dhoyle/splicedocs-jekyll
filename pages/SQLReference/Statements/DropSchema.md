@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP SCHEMA   {#Statements.DropSchema}
+# DROP SCHEMA
 
 The `DROP SCHEMA` statement drops a schema. The target schema must be
 empty for the drop to succeed.

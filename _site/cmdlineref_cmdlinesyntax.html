@@ -546,13 +546,13 @@ operations like loading a number of files into your database</li>
     <p>The remainder of this section contains a reference page for each of the
 command line commands.</p>
 
-    <h2 id="splice-command-line-interpreter---splice">splice&gt; Command Line Interpreter   {#splice&gt;}</h2>
+    <h2 id="splice-command-line-interpreter">splice&gt; Command Line Interpreter</h2>
 
     <p>To run the Splice Machine command line interpreter, run the <span class="ShellCommand">sqlshell.sh</span> script in your terminal window.</p>
 
     <div class="preWrapperWide">
       <pre class="ShellCommand"><code>% ./sqlshell.sh
-splice&gt; 
+splice&gt;
 </code></pre>
 
     </div>
@@ -626,7 +626,7 @@ splice&gt; select count(*) from CUST_EMAIL;
 1 row selected
 ELAPSED TIME = 6399 milliseconds
 splice&gt;
-$ 
+$
 </code></pre>
 
       </div>
@@ -802,7 +802,7 @@ statement with a semicolon (<code>;</code>). For example:</p>
 
     <div class="preWrapper">
 
-      <pre class="AppCommand"><code>splice&gt; select * from myTable;	
+      <pre class="AppCommand"><code>splice&gt; select * from myTable;
 </code></pre>
 
     </div>
@@ -813,7 +813,7 @@ at the beginning of each line. For example:</p>
 
     <div class="preWrapper">
 
-      <pre class="AppCommand"><code>splice&gt; select * from myTable&gt; where i &gt; 1;	
+      <pre class="AppCommand"><code>splice&gt; select * from myTable&gt; where i &gt; 1;
 </code></pre>
 
     </div>
@@ -845,7 +845,7 @@ symbols, the interpreter can seem unresponsive. The solution is to add
 the missing quotation mark(s), followed by a semicolon, and resubmit the
 line. It won’t work as expected, but it will enable you to keep working.</p>
 
-    <h3 id="Using">Using rlWrap on the Command Line&gt;</h3>
+    <h3 id="Using">Using rlWrap on the Command Line</h3>
 
     <p>rlWrap is a Unix utility that Splice Machine encourages you to use: it
 allows you to scroll through your command line history, reuse and alter
@@ -893,7 +893,7 @@ here.</a></p>
                     </tr>
                 </tbody>
             </table>
-    <h2 id="scripting-splice-commands">Scripting <span class="AppCommand">splice&gt;</span> Commands</h2>
+    <h2 id="scripting-splice-commands">Scripting splice&gt; Commands</h2>
 
     <p>You can use the Splice Machine Command Line Interface (<span class="AppCommand">splice&gt;</span>) to interactively run database
 commands. This topic describes how to create a script of <span class="AppCommand">splice&gt;</span> commands to run a series of
@@ -947,10 +947,10 @@ statements file named <code>create-my-tables.sql:</code></p>
           <div class="preWrapper indentLevel1">
             <pre class="Example" style="font-weight: normal;"><code>   --First connect to the database
 connect 'jdbc:splice://&lt;regionServer&gt;:1527/splicedb';
-    
+
    --Next run your sql file
 run '/users/yourname/create-my-tables.sql';
-    
+
 show tables;
 quit;
 </code></pre>
@@ -971,7 +971,7 @@ standalone version of Splice Machine, specify <span class="HighlightedCode">loca
 
           <div class="preWrapperWide">
             <pre class="Example" style="font-weight: normal;"><code>#!/bin/bash
-    
+
 export CLASSPATH=&lt;FULL_PATH_TO_SPLICEMACHINE_JAR_FILE&gt;
 java -Djdbc.drivers=com.splicemachine.db.jdbc.ClientDriver -Dij.outfile=my_load_datascript.out com.splicemachine.db.tools.ij &lt; my_load_datascript.sql
 </code></pre>
@@ -1051,7 +1051,6 @@ to do</p>
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -1066,7 +1065,7 @@ to do</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

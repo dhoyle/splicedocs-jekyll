@@ -10,7 +10,7 @@ folder: OnPrem/InstallingSpliceMachine
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% include splicevars.html %} 
+{% include splicevars.html %}
 # Installing and Configuring Splice Machine for MapR
 
 {% include splice_snippets/onpremonlytopic.md %}
@@ -35,7 +35,9 @@ MapR secure clusters do not support the Community Edition of Splice
 Machine. You can check this by:
 
 1.  Open the HBase Configuration page
+
 2.  Search the XML for the `hbase.security.authentication` setting
+
 3.  If the setting value is anything other than `simple`, you need the
     *Enterprise* edition of Splice Machine.
 
@@ -52,19 +54,27 @@ Before starting your Splice Machine installation, please make sure that
 your cluster contains the prerequisite software components:
 
 * A cluster running MapR with MapR-FS
+
 * HBase installed
+
 * YARN installed
+
 * ZooKeeper installed
+
 * The latest `mapr-patch` should be installed to bring in all
   MapR-supplied platform patches, before proceeding with your Splice
   Machine installation.
+
 * The MapR Ecosystem Package (MEP) should be installed on all cluster
   nodes, before proceeding with your Splice Machine installation.
+
 * Ensure Spark services are **NOT** installed; Splice Machine cannot
   currently coexist with Spark 1.x on a cluster:
+
   * If `MEP version 1.x` is in use, you must remove the `Spark 1.x`
     packages from your cluster, as described below, in [Removing Spark
     Packages from Your Cluster.](#Removing)
+
   * MEP version 2.0 bundles Spark 2.0, and will not cause conflicts with
     Splice Machine.
   {: .bullet}
@@ -117,40 +127,38 @@ in your cluster:
 
 <div class="opsStepsList" markdown="1">
 1.  Download the installer for your version.
-    Which Splice Machine installer (gzip) package you need depends upon
-    which Splice Machine version you're installing and which version of
-    MapR you are using. Here are the URLs for Splice Machine Release
-    {{splvar_basic_SpliceReleaseVersion}} and
-    {{splvar_basic_SplicePrevReleaseVersion}}:
+    {: .topLevel}
+
+    Which Splice Machine installer (gzip) package you need depends upon which Splice Machine version you're installing and which version of MapR you are using. Here are the URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and {{splvar_basic_SplicePrevReleaseVersion}}:
     {: .indentLevel1}
 
     <table>
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <thead>
-                                        <tr>
-                                            <th>Splice Machine Release</th>
-                                            <th>MapR Version</th>
-                                            <th>Installer Package Link</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr>
-                                           <td class="SpliceRelease">2.6.1</td>
-                                           <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
-                                           <td><a href="{{splvar_install_v261_MAPR520}}">{{splvar_install_v261_MAPR520}}</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="Separator"> </td>
-                                        </tr>
-                                       <tr>
-                                           <td class="SpliceRelease">2.5.0</td>
-                                           <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
-                                           <td><a href="{{splvar_install_v250_MAPR520}}">{{splvar_install_v250_MAPR520}}</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <col />
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Splice Machine Release</th>
+                <th>MapR Version</th>
+                <th>Installer Package Link</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr>
+               <td class="SpliceRelease">2.6.1</td>
+               <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
+               <td><a href="{{splvar_install_v261_MAPR520}}">{{splvar_install_v261_MAPR520}}</a></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="Separator"> </td>
+            </tr>
+           <tr>
+               <td class="SpliceRelease">2.5.0</td>
+               <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
+               <td><a href="{{splvar_install_v250_MAPR520}}">{{splvar_install_v250_MAPR520}}</a></td>
+            </tr>
+        </tbody>
+    </table>
 
     To be sure that you have the latest URL, please check [the Splice
     Machine Community site][2]{: target="_blank"} or contact your Splice

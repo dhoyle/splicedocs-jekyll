@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.IMPORT_DATA   {#BuiltInSysProcs.ImportData}
+# SYSCS_UTIL.IMPORT_DATA
 
 The `SYSCS_UTIL.IMPORT_DATA` system procedure imports data to a subset
 of columns in a table. You choose the subset of columns by specifying
@@ -118,7 +118,7 @@ Typical reasons for a row (record) import to fail include:
 
 * Improper data expected for a column.
 * Improper number of columns of data.
-* A primary key violation: [`SYSCS_UTIL.IMPORT_DATA`](#) will only work
+* A primary key violation:&nbsp; [`SYSCS_UTIL.IMPORT_DATA`](#) will only work
   correctly if the table into which you are inserting/updating has
   primary keys.
 
@@ -128,7 +128,7 @@ Typical reasons for a row (record) import to fail include:
 
 {% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
+Values](developers_fundamentals_dates.html)* 
 for information working with timestamps, dates, and times.
 
 ## Usage Notes

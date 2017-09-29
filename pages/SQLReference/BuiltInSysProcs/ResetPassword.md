@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_RESET_PASSWORD   {#BuiltInSysProcs.ResetPassword}
+# SYSCS_UTIL.SYSCS_RESET_PASSWORD
 
 The `SYSCS_UTIL.SYSCS_RESET_PASSWORD` system procedure resets a password
 for a user whose password has expired or has been forgotten.

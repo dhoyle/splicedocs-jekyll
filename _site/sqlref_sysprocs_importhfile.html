@@ -2835,10 +2835,10 @@ with either:</p>
 
     <ul>
       <li>The
-<a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> system
+  <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> system
 procedure.</li>
       <li>The
-<a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> system
+  <a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> system
 procedure, which combines the functionality of those two procedures.</li>
     </ul>
 
@@ -2849,22 +2849,22 @@ section to see an example of using these procedures together.</p>
 
     <div class="fcnWrapperWide">
       <pre class="FcnSyntax"><code>call SYSCS_UTIL.BULK_IMPORT_FILE (
-		schemaName,
-		tableName,
-		insertColumnList | null,
-		fileName,
-		columnDelimiter | null,
-		characterDelimiter | null,
-		timestampFormat | null,
-		dateFormat | null,
-		timeFormat | null,
-		maxBadRecords,
-		badRecordDirectory | null,
-		oneLineRecords | null,
-		charset | null,
-		bulkImportDirectory,
-		skipSampling
-		);
+    schemaName,
+    tableName,
+    insertColumnList | null,
+    fileName,
+    columnDelimiter | null,
+    characterDelimiter | null,
+    timestampFormat | null,
+    dateFormat | null,
+    timeFormat | null,
+    maxBadRecords,
+    badRecordDirectory | null,
+    oneLineRecords | null,
+    charset | null,
+    bulkImportDirectory,
+    skipSampling
+);
 </code></pre>
 
     </div>
@@ -3015,11 +3015,11 @@ special characters as delimiters:</p>
       <p class="paramDefnFirst">If your input contains control characters such as newline characters,
 make sure that those characters are embedded within delimited strings.</p>
 
-      <p>To use the single quote (<code>'</code>) character as your string delimiter, you
+      <p class="paramDefn">To use the single quote (<code>'</code>) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
 (<code>''''</code>) as the value of this parameter. This is standard SQL syntax.</p>
 
-      <p class="noteNote">The <a href="#Examples" class="WithinBook MCXref xref xrefWithinBook">Example 1</a>”} section below contains an example that uses the
+      <p class="noteNote">The <a href="#Examples">Example 1</a> section below contains an example that uses the
 single quote as the string delimiter character.</p>
 
       <p class="paramName">timestampFormat</p>
@@ -3027,8 +3027,8 @@ single quote as the string delimiter character.</p>
       <p class="paramDefnFirst">The format of timestamps stored in the file. You can set this to <code>null</code>
 if there are no time columns in the file, or if the format of any
 timestamps in the file match the <code>Java.sql.Timestamp</code> default format,
-which is: “<em>yyyy-MM-dd HH:mm:ss</em>”. See the <a href="#TimestampFormats" class="WithinBook MCXref xref xrefWithinBook">About Timestamp
-Formats</a>”} section below for more information about
+which is: “<em>yyyy-MM-dd HH:mm:ss</em>”. See the <a href="#TimestampFormats">About Timestamp
+Formats</a> section below for more information about
 timestamps.</p>
 
       <p class="noteNote">All of the timestamps in the file you are importing must use the same
@@ -3116,18 +3116,21 @@ compute the split key for you.</p>
     </div>
     <h2 id="results">Results</h2>
 
-    <p><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> generates a keys file, which you use in
-conjunction with the
-<a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a>
-system procedure to split your table, prior to calling the
-<a href="#"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a> system procedure to import your
-data.</p>
+    <p>You use these three system procedures together:</p>
 
-    <p>﻿ &lt;div markdown="1"&gt;
-Splice Machine uses the following Java date and time pattern letters to
+    <ul>
+      <li>The  <a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> prodedure generates a keys file</li>
+      <li>You use the keys file in conjunction with the  <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> system procedure to split your table</li>
+      <li>You then call the <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedure to import your data.</li>
+    </ul>
+
+    <div>
+      <h2 id="timestamps">Timestamps</h2>
+
+      <p>Splice Machine uses the following Java date and time pattern letters to
 construct timestamps:</p>
 
-    <table summary="Timestamp format pattern letter descriptions">
+      <table summary="Timestamp format pattern letter descriptions">
                 <col />
                 <col />
                 <col style="width: 330px;" />
@@ -3194,29 +3197,29 @@ construct timestamps:</p>
                     </tr>
                 </tbody>
             </table>
-    <p>The default timestamp format for Splice Machine imports is: <code>yyyy-MM-dd
+      <p>The default timestamp format for Splice Machine imports is: <code>yyyy-MM-dd
 HH:mm:ss</code>, which uses a 24-hour clock, does not allow for decimal digits
 of seconds, and does not allow for time zone specification.</p>
 
-    <p class="noteNote">The standard Java library does not support microsecond precision, so you
+      <p class="noteNote">The standard Java library does not support microsecond precision, so you
 <strong>cannot</strong> specify millisecond (<code>S</code>) values in a custom timestamp format
 and import such values with the desired precision.</p>
 
-    <h3 id="timestamps-and-importing-data-at-different-locations">Timestamps and Importing Data at Different Locations</h3>
+      <h3 id="timestamps-and-importing-data-at-different-locations">Timestamps and Importing Data at Different Locations</h3>
 
-    <p>Note that timestamp values are relative to the geographic location at
+      <p>Note that timestamp values are relative to the geographic location at
 which they are imported, or more specifically, relative to the timezone
 setting and daylight saving time status where the data is imported.</p>
 
-    <p>This means that timestamp values from the same data file may appear
+      <p>This means that timestamp values from the same data file may appear
 differently after being imported in different timezones.</p>
 
-    <h3 id="examples">Examples</h3>
+      <h3 id="examples">Examples</h3>
 
-    <p>The following tables shows valid examples of timestamps and their
+      <p>The following tables shows valid examples of timestamps and their
 corresponding format (parsing) patterns:</p>
 
-    <table>
+      <table>
                 <col />
                 <col />
                 <col />
@@ -3266,198 +3269,195 @@ corresponding format (parsing) patterns:</p>
                     </tr>
                 </tbody>
             </table>
-  </div>
+    </div>
 
+    <p>Please see <em><a href="developers_fundamentals_dates.html">Working With Date and Time
+Values</a></em>
+for information working with timestamps, dates, and times.</p>
 
+    <p class="heading2">﻿<a name="Usage"></a>Usage Notes</p>
 
-Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
-for information working with timestamps, dates, and times.
-
-﻿<a name="Usage" />Usage Notes
-{: .heading2}
-
-As mentioned earlier, you can have `SYSCS_UTIL.BULK_IMPORT_HFILE`
+    <p class="body">As mentioned earlier, you can have <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>
 automatically compute the splits for your table; it does so by sampling
 the data in the table, generating a histogram, and then using that
-histogram to compute the import splits. `SYSCS_UTIL.BULK_IMPORT_HFILE`
-automatically computes the splits when the `skipSampling` parameter is
-set to `false`.
-{: .body}
+histogram to compute the import splits. <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>
+automatically computes the splits when the <code>skipSampling</code> parameter is
+set to <code>false</code>.</p>
 
-Computing Split Keys for HFile Import
-{: .heading3}
+    <p class="heading3">Computing Split Keys for HFile Import</p>
 
-If you are using `skipSampling=false` to allow automatic computation of
+    <p class="noteIcon">If you are using <code>skipSampling=false</code> to allow automatic computation of
 splits, you can ignore the rest of this section, and skip to the
-[Examples](#Examples) section below.
-{: .noteIcon}
+<a href="#Examples">Examples</a> section below.</p>
 
-If you\'re computing splits for your import (and setting the
-`skipSampling` parameter to `true`), you need to use these three
-Splice Machine system procedures together:
+    <p>If you're computing splits for your import (and setting the
+<code>skipSampling</code> parameter to <code>true</code>), you need to use these three
+Splice Machine system procedures together:</p>
 
-* `SYSCS_UTIL.COMPUTE_SPLIT_KEY` generates a keys file
-* `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` sets up the splits
-  in Splice Machine
-* `SYSCS_UTIL.BULK_IMPORT_HFILE` splits your input file into HFiles,
-  imports your data, and then removes the HFiles
+    <ul>
+      <li><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> generates a keys file</li>
+      <li><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code> sets up the splits
+in Splice Machine</li>
+      <li><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> splits your input file into HFiles,
+imports your data, and then removes the HFiles</li>
+    </ul>
 
-Alternatively, you can use
-[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
-with `SYSCS_UTIL.BULK_IMPORT_HFILE`. The
-`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX` system procedure combines the
-functionality of `SYSCS_UTIL.COMPUTE_SPLIT_KEY` and
-`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`.
+    <p>Alternatively, you can use
+<a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a>
+with <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>. The
+<code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code> system procedure combines the
+functionality of <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> and
+<code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code>.</p>
 
-The process is as follows (and is shown in more detail in *Example 1*
-and *Example 2* below):
+    <p>The process is as follows (and is shown in more detail in <em>Example 1</em>
+and <em>Example 2</em> below):</p>
 
-<div class="opsStepsList">
-    <ol>
-      <li>
-        <p>Create a directory on HDFS; for example:</p>
+    <div class="opsStepsList">
+      <ol>
+        <li>
+          <p>Create a directory on HDFS; for example:</p>
 
-        <div class="preWrapperWide">
-          <pre class="ShellCommand"><code>sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
 </code></pre>
 
-        </div>
+          </div>
 
-        <p>Make sure that the directory you create has permissions set to allow
+          <p>Make sure that the directory you create has permissions set to allow
 Splice Machine to write your csv and Hfiles there.</p>
-      </li>
-      <li>
-        <p>Determine primary key values that can horizontally split the table
+        </li>
+        <li>
+          <p>Determine primary key values that can horizontally split the table
 into roughly equal sized partitions.</p>
 
-        <div class="noteNote">
-          <p>Note the value of your <code>hbase.hregion.max.filesize</code> setting; each
+          <div class="noteNote">
+            <p>Note the value of your <code>hbase.hregion.max.filesize</code> setting; each
 partition should ideally be about 1/2 of that value, so that the
 region can grow after data is loaded.</p>
 
-          <p>The sizes must be less than the <code>hbase.hregion.max.filesize value</code>.</p>
+            <p>The sizes must be less than the <code>hbase.hregion.max.filesize value</code>.</p>
 
-        </div>
-      </li>
-      <li>Store those keys in a CSV file.</li>
-      <li>If you're using the combination of
-<a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a>
+          </div>
+        </li>
+        <li>Store those keys in a CSV file.</li>
+        <li>If you're using the combination of
+    <a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a>
 and
-<a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a>:
-        <ol class="LowerAlphaPlainFont">
-          <li>Pass that CSV file into the
-<a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> procedure
+    <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a>:
+          <ol class="LowerAlphaPlainFont">
+            <li>Pass that CSV file into the
+    <a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> procedure
 to compute the split row keys.</li>
-          <li>
-            <p>Examine the computed (and encoded) row keys, which were written
+            <li>
+              <p>Examine the computed (and encoded) row keys, which were written
 to a file named keys in a subdirectory of your
 <code>OutputDirectory</code>.</p>
 
-            <p>The name of the subdirectory is the conglomerate ID for the
+              <p>The name of the subdirectory is the conglomerate ID for the
 named table. You can find a table's conglomerate ID with the
-<a href="cmdlineref_showtables.html"><code>SHOW TABLES</code></a> command. </p>
-          </li>
-          <li>Copy the encoded keys to your clipboard.</li>
-          <li>Call the
-<a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> procedure,
+    <a href="cmdlineref_showtables.html"><code>SHOW TABLES</code></a> command. </p>
+            </li>
+            <li>Copy the encoded keys to your clipboard.</li>
+            <li>Call the
+    <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> procedure,
 passing in the row key values from your clipboard. This splits
 your table inside the database.</li>
-        </ol>
+          </ol>
 
-        <p>If you are using the single procedure
-<a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a>
+          <p>If you are using the single procedure
+    <a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a>
 instead:</p>
 
-        <ol class="LowerAlphaPlainFont">
-          <li>Pass that CSV file into the
-<a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> procedure
+          <ol class="LowerAlphaPlainFont">
+            <li>Pass that CSV file into the
+    <a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> procedure
 to compute the split row keys and split your table inside the
 database.</li>
-        </ol>
-      </li>
-      <li>Repeat steps 1, 2, and 3 to split the indexes on your table.</li>
-      <li>Call the
-<a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a> procedure
+          </ol>
+        </li>
+        <li>Repeat steps 1, 2, and 3 to split the indexes on your table.</li>
+        <li>Call the
+    <a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a> procedure
 to split the input data file into HFiles and import the HFiles into
 your Splice Machine database. The HFiles are deleted after being
 imported.</li>
-    </ol>
+      </ol>
 
-  </div>
+    </div>
 
-Example 1
-{: .heading2 #Examples}
+    <p class="heading2" id="Examples">Example 1</p>
 
-This example details the steps used to import data in HFile format using
-the Splice Machine `SYSCS_UTIL.BULK_IMPORT_HFILE` system procedure with
-automatic splitting.
+    <p>This example details the steps used to import data in HFile format using
+the Splice Machine <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedure with
+automatic splitting.</p>
 
-Follow these steps :
+    <p>Follow these steps :</p>
 
-<div class="opsStepsList">
-    <ol class="boldFont">
-      <li>
-        <p class="topLevel">Create a directory on HDFS for the import; for example:</p>
+    <div class="opsStepsList">
+      <ol>
+        <li>
+          <p class="topLevel">Create a directory on HDFS for the import; for example:</p>
 
-        <div class="preWrapperWide">
-          <pre class="ShellCommand"><code>sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
 </code></pre>
 
-        </div>
+          </div>
 
-        <p>Make sure that the directory you create has permissions set to allow
+          <p>Make sure that the directory you create has permissions set to allow
 Splice Machine to write your csv and Hfiles there.</p>
-      </li>
-      <li>
-        <p class="topLevel">Create table and index:</p>
+        </li>
+        <li>
+          <p class="topLevel">Create table and index:</p>
+        </li>
+      </ol>
 
-        <div class="preWrapperWide">
-          <pre class="Example"><code>CREATE TABLE TPCH.LINEITEM (
-		 L_ORDERKEY BIGINT NOT NULL,
-		 L_PARTKEY INTEGER NOT NULL,
-		 L_SUPPKEY INTEGER NOT NULL,
-		 L_LINENUMBER INTEGER NOT NULL,
-		 L_QUANTITY DECIMAL(15,2),
-		 L_EXTENDEDPRICE DECIMAL(15,2),
-		 L_DISCOUNT DECIMAL(15,2),
-		 L_TAX DECIMAL(15,2),
-		 L_RETURNFLAG VARCHAR(1),
-		 L_LINESTATUS VARCHAR(1),
-		 L_SHIPDATE DATE,
-		 L_COMMITDATE DATE,
-		 L_RECEIPTDATE DATE,
-		 L_SHIPINSTRUCT VARCHAR(25),
-		 L_SHIPMODE VARCHAR(10),
-		 L_COMMENT VARCHAR(44),
-		 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
-		 );
+      <div class="preWrapperWide">
+        <pre class="Example"><code>CREATE TABLE TPCH.LINEITEM (
+    L_ORDERKEY BIGINT NOT NULL,
+    L_PARTKEY INTEGER NOT NULL,
+    L_SUPPKEY INTEGER NOT NULL,
+    L_LINENUMBER INTEGER NOT NULL,
+    L_QUANTITY DECIMAL(15,2),
+    L_EXTENDEDPRICE DECIMAL(15,2),
+    L_DISCOUNT DECIMAL(15,2),
+    L_TAX DECIMAL(15,2),
+    L_RETURNFLAG VARCHAR(1),
+    L_LINESTATUS VARCHAR(1),
+    L_SHIPDATE DATE,
+    L_COMMITDATE DATE,
+    L_RECEIPTDATE DATE,
+    L_SHIPINSTRUCT VARCHAR(25),
+    L_SHIPMODE VARCHAR(10),
+    L_COMMENT VARCHAR(44),
+    PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+);
 
 CREATE INDEX L_SHIPDATE_IDX on TPCH.LINEITEM(
-		 L_SHIPDATE,
-		 L_PARTKEY,
-		 L_EXTENDEDPRICE,
-		 L_DISCOUNT
-		 );
+    L_SHIPDATE,
+    L_PARTKEY,
+    L_EXTENDEDPRICE,
+    L_DISCOUNT
+);
 </code></pre>
 
-        </div>
-      </li>
-      <li>
-        <p class="topLevel">Import the HFiles Into Your Database</p>
+      </div>
 
-        <p class="indentLevel1">Once you have split your table and indexes, call this procedure to
-generate and import the HFiles into your Splice Machine database:</p>
+      <ol class="topLevel">
+        <li>Import the HFiles Into Your Database</li>
+      </ol>
 
-        <div class="preWrapperWide">
-          <pre class="Example"><code>call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);
+      <pre class="indentLevel1"><code>Once you have split your table and indexes, call this procedure to
+generate and import the HFiles into your Splice Machine database:
 </code></pre>
 
-        </div>
+      <pre class="Example"><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null, '/TPCH/1/lineitem', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);
+</code></pre>
 
-        <p class="indentLevel1">The generated HFiles are automatically deleted after being imported.</p>
-      </li>
-    </ol>
+    </div>
+
+    <p class="indentLevel1 boldFont">The generated HFiles are automatically deleted after being imported.</p>
 
   </div>
 
@@ -3465,15 +3465,14 @@ Example 2
 {: .heading2 #Examples}
 
 The example in this section details the steps used to
-import data in
-HFile format using the Splice Machine `SYSCS_UTIL.COMPUTE_SPLIT_KEY`,
+import data in HFile format using the Splice Machine `SYSCS_UTIL.COMPUTE_SPLIT_KEY`,
 `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`, and
 `SYSCS_UTIL.BULK_IMPORT_HFILE` system procedures.
 
- Follow these steps :
+Follow these steps :
 
- <div class="opsStepsList">
-    <ol class="boldFont">
+<div class="opsStepsList">
+    <ol>
       <li>
         <p class="topLevel">Create a directory on HDFS for the import; for example:</p>
 
@@ -3488,165 +3487,158 @@ Splice Machine to write your csv and Hfiles there.</p>
       </li>
       <li>
         <p class="topLevel">Create table and index:</p>
+      </li>
+    </ol>
 
-        <div class="preWrapperWide">
-          <pre class="Example"><code>CREATE TABLE TPCH.LINEITEM (
-		 L_ORDERKEY BIGINT NOT NULL,
-		 L_PARTKEY INTEGER NOT NULL,
-		 L_SUPPKEY INTEGER NOT NULL,
-		 L_LINENUMBER INTEGER NOT NULL,
-		 L_QUANTITY DECIMAL(15,2),
-		 L_EXTENDEDPRICE DECIMAL(15,2),
-		 L_DISCOUNT DECIMAL(15,2),
-		 L_TAX DECIMAL(15,2),
-		 L_RETURNFLAG VARCHAR(1),
-		 L_LINESTATUS VARCHAR(1),
-		 L_SHIPDATE DATE,
-		 L_COMMITDATE DATE,
-		 L_RECEIPTDATE DATE,
-		 L_SHIPINSTRUCT VARCHAR(25),
-		 L_SHIPMODE VARCHAR(10),
-		 L_COMMENT VARCHAR(44),
-		 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
-		 );
-
-CREATE INDEX L_SHIPDATE_IDX on TPCH.LINEITEM(
-		 L_SHIPDATE,
-		 L_PARTKEY,
-		 L_EXTENDEDPRICE,
-		 L_DISCOUNT
-		 );
+    <div class="preWrapperWide">
+      <pre><code>CREATE TABLE TPCH.LINEITEM (
+     L_ORDERKEY BIGINT NOT NULL,
+     L_PARTKEY INTEGER NOT NULL,
+     L_SUPPKEY INTEGER NOT NULL,
+     L_LINENUMBER INTEGER NOT NULL,
+     L_QUANTITY DECIMAL(15,2),
+     L_EXTENDEDPRICE DECIMAL(15,2),
+     L_DISCOUNT DECIMAL(15,2),
+     L_TAX DECIMAL(15,2),
+     L_RETURNFLAG VARCHAR(1),
+     L_LINESTATUS VARCHAR(1),
+     L_SHIPDATE DATE,
+     L_COMMITDATE DATE,
+     L_RECEIPTDATE DATE,
+     L_SHIPINSTRUCT VARCHAR(25),
+     L_SHIPMODE VARCHAR(10),
+     L_COMMENT VARCHAR(44),
+     PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+);
 </code></pre>
 
-        </div>
-      </li>
+    </div>
+
+    <ol class="boldFont">
       <li>
         <p class="topLevel">Compute the split row keys for the table:</p>
 
-        <ol class="LowerAlphaPlainFont">
-          <li>
-            <p>Find primary key values that can horizontally split the table
-into roughly equal sized partitions.</p>
+        <p>a.  Find primary key values that can horizontally split the table
+    into roughly equal sized partitions.</p>
 
-            <p>For this example, we provide 3 keys in a file named
-<code>lineitemKey.csv</code>. Note that each of our three keys includes a
-second column that is <code>null</code>:</p>
+        <pre><code>For this example, we provide 3 keys in a file named
+`lineitemKey.csv`. Note that each of our three keys includes a
+second column that is `null`\:
 
-            <div class="preWrapperWide">
-              <pre class="Example"><code>1500000|3000000|4500000|
+&lt;div class="preWrapperWide" markdown="1"&gt;
+    1500000|
+    3000000|
+    4500000|
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
 
-            </div>
-          </li>
-          <li>
-            <p>Specify the column names in the csv file in the <code>columnList</code>
-parameter; in our example, the primary key columns are:</p>
+        <p>b.  Specify the column names in the csv file in the <code>columnList</code>
+    parameter; in our example, the primary key columns are:</p>
 
-            <div class="preWrapperWide">
-              <pre class="Example"><code>'L_ORDERKEY,L_LINENUMBER'
+        <pre><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    'L_ORDERKEY,L_LINENUMBER'
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
 
-            </div>
-          </li>
-          <li>
-            <p>Invoke <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> to compute hbase split row
-keys and write them to a file:</p>
+        <p>c.  Invoke <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> to compute hbase split row
+    keys and write them to a file:</p>
 
-            <pre class="Example"><code>call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', 'hdfs:///tmp/test_hfile_import/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');
+        <pre class="LowerAlphaPlainFont"><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER', 'hdfs:///tmp/test_hfile_import/lineitemKey.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
-          </li>
-        </ol>
       </li>
       <li>
         <p class="topLevel">Set up the table splits in your database:</p>
 
-        <ol class="LowerAlphaPlainFont">
-          <li>
-            <p>Use <code>SHOW TABLES</code> to discover the conglomerate ID for the
-<code>TPCH.LINEITEM</code> table, which for this example is <code>1536</code>. This
-means that the split keys file for this table is in the
-<code>hdfs:///tmp/test_hfile_import/1536</code> directory. You'll see
-values like these:</p>
+        <p>a.  Use <code>SHOW TABLES</code> to discover the conglomerate ID for the
+    <code>TPCH.LINEITEM</code> table, which for this example is <code>1536</code>. This
+    means that the split keys file for this table is in the
+    <code>hdfs:///tmp/test_hfile_import/1536</code> directory. You'll see
+    values like these:</p>
 
-            <div class="preWrapperWide">
-              <pre class="Example"><code>\xE4\x16\xE3`\xE4-\xC6\xC0\xE4D\xAA
+        <pre><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    \xE4\x16\xE3`\xE4-\xC6\xC0\xE4D\xAA
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
 
-            </div>
-          </li>
-          <li>
-            <p>Now use those values in a call to our system procedure to split
-the table inside the database:</p>
+        <p>b.  Now use those values in a call to our system procedure to split
+    the table inside the database:</p>
 
-            <div class="preWrapperWide">
-              <pre class="Example"><code>call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS('TPCH','LINEITEM',null,'\xE4\x16\xE3`,\xE4-\xC6\xC0,\xE4D\xAA');
+        <pre class="LowerAlphaPlainFont"><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS('TPCH','LINEITEM',null,'\xE4\x16\xE3`,\xE4-\xC6\xC0,\xE4D\xAA');
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
-
-            </div>
-          </li>
-        </ol>
       </li>
       <li>
         <p class="topLevel">Compute the split keys for your index:</p>
 
-        <ol class="LowerAlphaPlainFont">
-          <li>Find index values that can horizontally split the table into
-roughly equal sized partitions.</li>
-          <li>
-            <p>For this example, we provide 2 index values in a file named
-<code>shipDateIndex.csv</code>. Note that each of our keys includes <code>null</code>
-column values:</p>
+        <p>a.  Find index values that can horizontally split the table into
+    roughly equal sized partitions.</p>
 
-            <div class="preWrapperWide">
-              <pre class="Example"><code>1994-01-01|||
-1996-01-01|||
+        <p>b.  For this example, we provide 2 index values in a file named
+    <code>shipDateIndex.csv</code>. Note that each of our keys includes <code>null</code>
+    column values:</p>
+
+        <pre><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    1994-01-01|||
+    1996-01-01|||
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
 
-            </div>
-          </li>
-          <li>
-            <p>Specify the column names in the csv file in the <code>columnList</code>
-parameter; in our example, the index columns are:</p>
+        <p>c.  Specify the column names in the csv file in the <code>columnList</code>
+    parameter; in our example, the index columns are:</p>
 
-            <div class="preWrapperWide">
-              <pre class="Example"><code>'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT'
+        <pre><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT'
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
 
-            </div>
-          </li>
-          <li>
-            <p>Invoke <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> to compute hbase split row
-keys and write them to a file:</p>
+        <p>d.  Invoke <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> to compute hbase split row
+    keys and write them to a file:</p>
 
-            <pre class="Example"><code>call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', 'hdfs:///tmp/test_hfile_import/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');
+        <pre class="LowerAlphaPlainFont"><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    call SYSCS_UTIL.COMPUTE_SPLIT_KEY('TPCH', 'LINEITEM', 'L_SHIPDATE_IDX', 'L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT', 'hdfs:///tmp/test_hfile_import/shipDateIndex.csv', '|', null, null, null, null, -1, '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/');
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
-          </li>
-        </ol>
       </li>
       <li>
         <p class="topLevel">Set up the indexes in your database:</p>
 
-        <ol class="LowerAlphaPlainFont">
-          <li>
-            <p>Copy the row key values from the output file:</p>
+        <p>a.  Copy the row key values from the output file:</p>
 
-            <div class="preWrapperWide">
-              <pre class="Example"><code>\xEC\xB0Y9\xBC\x00\x00\x00\x00\x00\x80
-\xEC\xBF\x08\x9C\x14\x00\x00\x00\x00\x00\x80
+        <pre><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    \xEC\xB0Y9\xBC\x00\x00\x00\x00\x00\x80
+    \xEC\xBF\x08\x9C\x14\x00\x00\x00\x00\x00\x80
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
 
-            </div>
-          </li>
-          <li>
-            <p>Now call our system procedure to split the index:</p>
+        <p>b.  Now call our system procedure to split the index:</p>
 
-            <div class="preWrapperWide">
-              <pre class="Example"><code>call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS('TPCH','LINEITEM','L_SHIPDATE_IDX','\xEC\xB0Y9\xBC\x00\x00\x00\x00\x00\x80,\xEC\xBF\x08\x9C\x14\x00\x00\x00\x00\x00\x80');
+        <pre class="LowerAlphaPlainFont"><code>&lt;div class="preWrapperWide" markdown="1"&gt;
+    call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS('TPCH','LINEITEM','L_SHIPDATE_IDX','\xEC\xB0Y9\xBC\x00\x00\x00\x00\x00\x80,\xEC\xBF\x08\x9C\x14\x00\x00\x00\x00\x00\x80');
+{: .Example}
+
+&lt;/div&gt;
 </code></pre>
-
-            </div>
-          </li>
-        </ol>
       </li>
       <li>
         <p class="topLevel">Import the HFiles Into Your Database</p>
@@ -3842,7 +3834,7 @@ generate and import the HFiles into your Splice Machine database:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

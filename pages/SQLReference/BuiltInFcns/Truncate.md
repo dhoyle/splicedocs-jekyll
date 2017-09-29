@@ -35,13 +35,13 @@ An integer or decimal number to be truncated.
 date
 {: .paramName}
 
-A [`DATE`](sqlref_builtinfcns_date.html) value to be truncated.
+A &nbsp;[`DATE`](sqlref_builtinfcns_date.html) value to be truncated.
 {: .paramDefnFirst}
 
 timestamp
 {: .paramName}
 
-A [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) value to be
+A &nbsp;[`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) value to be
 truncated.
 {: .paramDefnFirst}
 
@@ -62,6 +62,7 @@ truncate (made zero) when applying this function to a *number*.
   `truncate(123.456,0)` returns `123.000`.
 * If this value is not specified, the decimal portion of the number is
   zero'ed, which means that `truncate(123.456)` returns `123.000`.
+{: .bulletNested}
 
 See the [Truncating Numbers](#Truncati) examples below.
 
@@ -137,59 +138,59 @@ The default value, if nothing is specified, is `DAY`.
     1
     ----------------------
     1234.450
-    
+
     splice> VALUES TRUNCATE(123.456,-1);
     1
     ----------------------
     120.000
-    
+
     splice> VALUES TRUNCATE(123.456,0);
     1
     ----------------------
     123.000
-    
+
     splice> VALUES TRUNCATE(123.456);
     1
     ----------------------
     123.000
-    
+
     splice> VALUES TRUNC(1234.456, 2);
     1
     ----------------------
     1234.450
-    
+
     splice> VALUES TRUNCATE(123.456,-1);
     1
     ----------------------
     120.000
-    
+
     splice> VALUES TRUNCATE(123.456,0);
     1
     ----------------------
     123.000
     1 row selected
-    
+
     splice> VALUES TRUNCATE(123.456);
     1
     ----------------------
     123.000
-    
+
     VALUES TRUNCATE(1234.6789, 1);
     -----------------------
     12345.6000
-    
+
     VALUES TRUNCATE(12345.6789, 2);
     -----------------------
     12345.6700
-    
+
     VALUES TRUNCATE(12345.6789, -1);
     -----------------------
     12340.0000
-    
+
     VALUES TRUNCATE(12345.6789, 0);
     -----------------------
     12345.0000
-    
+
     VALUES TRUNCATE(12345.6789);
     -----------------------
     12345.0000
@@ -199,23 +200,23 @@ The default value, if nothing is specified, is `DAY`.
 ### Truncating Dates
 
 <div class="preWrapper" markdown="1">
-    
+
     VALUES TRUNCATE(DATE('1988-12-26'), 'year');
     ----------------------
     1988-01-01
-    
+
     VALUES TRUNCATE(DATE('1988-12-26'), 'month');
     ----------------------
     1988-12-01
-    
+
     VALUES TRUNCATE(DATE('1988-12-26'), 'day');
     ----------------------
     1988-12-26
-    
+
     VALUES TRUNCATE(DATE('1988-12-26'));
     ----------------------
     1988-12-26
-    
+
     VALUES TRUNCATE(DATE('2011-12-26'), 'MONTH');
     ----------------------
     2011-12-01
@@ -225,35 +226,35 @@ The default value, if nothing is specified, is `DAY`.
 ### Truncating Timestamps
 
 <div class="preWrapper" markdown="1">
-    
+
     VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'year');
     ----------------------
     2000-01-01 00:00:00.0
-    
+
     VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'month');
     ----------------------
     2000-06-01 00:00:00.0
-    
+
     VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'day');
     ----------------------
     2000-06-07 00:00:00.0
-    
+
     VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'hour');
     ----------------------
     2000-06-07 17:00:00.0
-    
+
     VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'minute');
     ----------------------
     2000-06-07 17:12:00.0
-    
+
     VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'second');
     ----------------------
     2000-06-07 17:12:30.0
-    
+
     VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'), 'MONTH');
     ----------------------
     2011-12-01 00:00:00.0
-    
+
     VALUES TRUNCATE(TIMESTAMP('2000-06-07 17:12:30.0'));
     ----------------------
     2011-12-26 00:00:00.0
@@ -262,4 +263,3 @@ The default value, if nothing is specified, is `DAY`.
 </div>
 </div>
 </section>
-

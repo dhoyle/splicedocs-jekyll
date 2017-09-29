@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TIMESTAMP   {#BuiltInFcns.TimeStamp}
+# TIMESTAMP
 
 The `TIMESTAMP` function returns a timestamp from a value or a pair of
 values.
@@ -33,8 +33,9 @@ valid string representation of a date.
 If only *expression1* is specified, it must be one of the following:
 {: .paramDefn}
 
-* A [`DATE`](sqlref_builtinfcns_date.html) value
+* A &nbsp;[`DATE`](sqlref_builtinfcns_date.html) value
 * A valid SQL string representation of a timestamp
+{: .bulletNested}
 
 expression2
 {: .paramName}
@@ -67,7 +68,7 @@ This example converts date and time strings into a timestamp value:
     1
     -----------------------------
     2015-11-12 19:02:43.0
-    
+
     1 row selected
 {: .Example}
 
@@ -99,7 +100,7 @@ born in the final quarter of the year:
     1988-12-21 00:00:00.0
     1989-11-17 00:00:00.0
     1991-11-15 00:00:00.0
-    
+
     17 rows selected
 {: .Example xml:space="preserve"}
 
@@ -127,4 +128,3 @@ born in the final quarter of the year:
 
 </div>
 </section>
-

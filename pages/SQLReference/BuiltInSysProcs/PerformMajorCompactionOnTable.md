@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE   {#BuiltInSysProcs.PerformMajorCompactionOnTable}
+# SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE
 
 The `SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE` system
 procedure performs a major compaction on a table. The compaction is

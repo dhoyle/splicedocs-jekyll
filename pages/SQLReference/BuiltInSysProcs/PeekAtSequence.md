@@ -10,11 +10,11 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE Function   {#BuiltInSysFcns.PeekAtSequence}
+# SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE Function
 
 The `SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE` function allows users to observe
 the instantaneous current value of a sequence generator without having
-to query the [`SYSSEQUENCES` system
+to query the &nbsp;[`SYSSEQUENCES` system
 table](sqlref_systables_syssequences.html).
 
 Querying the `SYSSEQUENCES` table does not actually return the current
@@ -31,9 +31,9 @@ sequence generator concurrency to slow drastically.
 
 <div class="fcnWrapperWide" markdown="1">
     BIGINT SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE(
-    			IN SchemaName VARCHAR(128),
-    			IN SequenceName VARCHAR(128)
-    			)
+                IN SchemaName VARCHAR(128),
+                IN SequenceName VARCHAR(128)
+    )
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -68,8 +68,7 @@ By default, all users have execute privileges on this function.
 </div>
 ## See Also
 
-* [`SYSSEQUENCES`](sqlref_systables_syssequences.html) system table
+* [`SYSSEQUENCES`](sqlref_systables_syssequences.html)
 
 </div>
 </section>
-

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_RESTORE_SNAPSHOT   {#BuiltInSysProcs.DeleteSnapshot}
+# SYSCS_UTIL.SYSCS_RESTORE_SNAPSHOT
 
 The `SYSCS_UTIL.SYSCS_RESTORE_SNAPSHOT` system procedure restores a
 table or schema to the state it was in at the time the snapshot was

@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE FUNCTION   {#Statements.CreateFunction}
+# CREATE FUNCTION
 
 The `CREATE FUNCTION` statement allows you to create Java functions,
 which you can then use in expressions.
@@ -275,7 +275,7 @@ pull results from it, and returns those results as a JDBC `ResultSet`:
 {: .Example}
 
 </div>
-Next we use the [`CREATE FUNCTION`](#) .statement to declare a table
+Next we use the &nbsp;[`CREATE FUNCTION`](#) .statement to declare a table
 function to read data from our external database and insert it into our
 Splice Machine database:
 

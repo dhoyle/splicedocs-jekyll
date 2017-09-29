@@ -16,8 +16,8 @@ The <span class="AppCommand">savepoint</span> command issues a
 `java.sql.Connection.setSavepoint` request, which sets a savepoint
 within the current transaction.
 
-Savepoints are only useful when autocommit is off.  
-  
+Savepoints are only useful when autocommit is off.
+
 You can define multiple savepoints within a transaction.
 {: .noteNote}
 
@@ -58,7 +58,7 @@ our table:
     1
     2
     3
-    
+
     3 rows selected
 {: .AppCommand}
 
@@ -76,6 +76,7 @@ Next we add new values to the table and again verify its contents:
     3
     4
     5
+
     5 rows selected
 {: .AppCommand}
 
@@ -91,7 +92,7 @@ Now we roll back to our savepoint, and verify that the rollback worked:
     1
     2
     3
-    
+
     3 rows selected
 {: .AppCommand}
 
@@ -113,4 +114,3 @@ And finally, we commit the transaction:
 
 </div>
 </section>
-

@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP FUNCTION   {#Statements.DropFunction}
+# DROP FUNCTION
 
 The `DROP FUNCTION` statement drops a function from your database.
 Functions are added to the database with the

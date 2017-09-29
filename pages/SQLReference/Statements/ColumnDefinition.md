@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# column-definition   {#Statements.ColumnDefinition}
+# column-definition
 
 <div class="fcnWrapperWide" markdown="1">
     Simple-column-Name
@@ -39,7 +39,7 @@ the *generation-clause* must be assignable to *DataType*
 Column-level-constraint
 {: .paramName}
 
-See the [`CONSTRAINT` clause](sqlref_clauses_constraint.html)
+See the &nbsp;[`CONSTRAINT` clause](sqlref_clauses_constraint.html)
 documentation.
 {: .paramDefnFirst}
 

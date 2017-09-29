@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSTABLEPERMS System Table   {#SystemTables.SysTablePerms}
+# SYSTABLEPERMS System Table
 
 The `SYSTABLEPERMS` table stores the table permissions that have been
 granted but not revoked.

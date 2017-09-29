@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SQRT   {#BuiltInFcns.Sqrt}
+# SQRT
 
 The `SQRT` function returns the square root of a floating point number.
 
@@ -29,7 +29,7 @@ must first cast them to floating point types.
 FloatingPointExpression
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 {: .paramDefnFirst}
 
 </div>

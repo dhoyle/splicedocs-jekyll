@@ -10,7 +10,7 @@ folder: SQLReference
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SQL Limitations   {#SQLReference.SQLLimitations}
+# SQL Limitations
 
 This topic specifies limitations for various values in Splice Machine
 SQL:

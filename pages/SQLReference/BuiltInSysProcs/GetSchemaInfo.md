@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO   {#BuiltInSysProcs.GetSchemaInfo}
+# SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO
 
 The `SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO` system procedure displays table
 information,including the HBase regions occupied and their store file

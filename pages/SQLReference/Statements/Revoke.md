@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# REVOKE   {#Statements.Revoke}
+# REVOKE
 
 Use the `REVOKE` statement to remove privileges from a specific user or
 role, or from all users, to perform actions on database objects. You can
@@ -24,7 +24,7 @@ you are revoking privileges to a schema object or revoking a role.
 
 <div class="fcnWrapperWide" markdown="1">
     REVOKE privilege-type
-       ON [ SCHEMA ] S
+       ON [ SCHEMA ] schema
        FROM grantees
 {: .FcnSyntax xml:space="preserve"}
 
@@ -41,13 +41,14 @@ privilege-type
  |UPDATE [( column-identifier {, column-identifier}* )]`
 {: .paramDefnFirst}
 
+
 See the [Privilege Types](#PrivilegeTypes) section below for more
 information.
 {: .paramDefn}
 
-<span class="noteEnterpriseNote">ENTERPRISE ONLY: Column-level
-privileges are available only with a Splice Machine Enterprise
-license.</span>
+<div class="noteEnterprise" markdown="1">
+Column-level privileges are available only with a Splice Machine Enterprise
+license.
 
 You cannot grant or revoke privileges at the `column-identifier` level
 with the Community version of Splice Machine.
@@ -55,6 +56,7 @@ with the Community version of Splice Machine.
 To obtain a license for the Splice Machine Enterprise Edition, <span
 class="noteEnterpriseNote">please [Contact Splice Machine Sales][1]{:
 target="_blank"} today.</span>
+</div>
 
 schema-Name
 {: .paramName}
@@ -83,21 +85,23 @@ Grantees](#AboutGrantees) section below for more information.
 privilege-type
 {: .paramName}
 
-`DELETE
- |INSERT
- |REFERENCES [( column-identifier {, column-identifier}* )]
- |SELECT [( column-identifier {, column-identifier}* )]
- |TRIGGER
- |UPDATE [( column-identifier {, column-identifier}* )]`
-{: .paramDefnFirst}
+<div class="fcnWrapperWide" markdown="1">
+      DELETE
+    | INSERT
+    | REFERENCES [( column-identifier {, column-identifier}* )]
+    | SELECT [( column-identifier {, column-identifier}* )]
+    | TRIGGER
+    | UPDATE [( column-identifier {, column-identifier}* )]
+{: .FcnSyntax xml:space="preserve"}
+</div>
 
 See the [Privilege Types](#PrivilegeTypes) section below for more
 information.
 {: .paramDefn}
 
-<span class="noteEnterpriseNote">ENTERPRISE ONLY: Column-level
-privileges are available only with a Splice Machine Enterprise
-license.</span>
+<div class="noteEnterprise" markdown="1">
+Column-level privileges are available only with a Splice Machine Enterprise
+license.
 
 You cannot grant or revoke privileges at the `column-identifier` level
 with the Community version of Splice Machine.
@@ -105,6 +109,7 @@ with the Community version of Splice Machine.
 To obtain a license for the Splice Machine Enterprise Edition, <span
 class="noteEnterpriseNote">please [Contact Splice Machine Sales][1]{:
 target="_blank"} today.</span>
+</div>
 
 table-Name
 {: .paramName}
@@ -136,7 +141,7 @@ Grantees](#AboutGrantees) section below for more information.
 
 </div>
 <div class="paramList" markdown="1">
-function-name | procedure-name
+function-name  \|  procedure-name
 {: .paramName}
 
 The name of the function or procedure for which you are revoking access.

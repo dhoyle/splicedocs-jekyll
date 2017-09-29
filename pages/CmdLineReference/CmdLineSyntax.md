@@ -35,14 +35,14 @@ interpreter, in the following sections:
 The remainder of this section contains a reference page for each of the
 command line commands.
 
-## splice&gt; Command Line Interpreter   {#splice&gt;}
+## splice&gt; Command Line Interpreter
 
 To run the Splice Machine command line interpreter, run the <span
 class="ShellCommand">sqlshell.sh</span> script in your terminal window.
 
 <div class="preWrapperWide" markdown="1">
     % ./sqlshell.sh
-    splice> 
+    splice>
 {: .ShellCommand xml:space="preserve"}
 
 </div>
@@ -117,9 +117,9 @@ runs the commands in the file, and then exits. For example:
 
 <div class="preWrapperWide" markdown="1">
     $ ./sqlshell.sh -f /home/mydir/sql/test.sql
-    
+
      ========= rlwrap detected and enabled.  Use up and down arrow keys to scroll through command line history. ========
-    
+
     Running Splice Machine SQL shell
     For help: "splice> help;"
     SPLICE* - 	jdbc:splice://10.1.1.111:1527/splicedb
@@ -129,11 +129,11 @@ runs the commands in the file, and then exits. For example:
     1
     --------------------
     0
-    
+
     1 row selected
     ELAPSED TIME = 6399 milliseconds
     splice>
-    $ 
+    $
 {: .ShellCommand xml:space="preserve"}
 
 </div>
@@ -308,8 +308,8 @@ class="AppCommand">splice&gt;</span> prompt), you must end each SQL
 statement with a semicolon (`;`). For example:
 
 <div class="preWrapper" markdown="1">
-    
-    splice> select * from myTable;	
+
+    splice> select * from myTable;
 {: .AppCommand}
 
 </div>
@@ -319,8 +319,8 @@ interface prompts you with a fresh <span class="AppCommand">&gt;</span>
 at the beginning of each line. For example:
 
 <div class="preWrapper" markdown="1">
-    
-    splice> select * from myTable> where i > 1;	
+
+    splice> select * from myTable> where i > 1;
 {: .AppCommand xml:space="preserve"}
 
 </div>
@@ -352,7 +352,7 @@ symbols, the interpreter can seem unresponsive. The solution is to add
 the missing quotation mark(s), followed by a semicolon, and resubmit the
 line. It won't work as expected, but it will enable you to keep working.
 
-### Using rlWrap on the Command Line&gt;   {#Using}
+### Using rlWrap on the Command Line   {#Using}
 
 rlWrap is a Unix utility that Splice Machine encourages you to use: it
 allows you to scroll through your command line history, reuse and alter
@@ -400,7 +400,7 @@ Here are several example command lines:
                     </tr>
                 </tbody>
             </table>
-## Scripting <span class="AppCommand">splice&gt;</span> Commands
+## Scripting splice&gt; Commands
 
 You can use the Splice Machine Command Line Interface (<span
 class="AppCommand">splice&gt;</span>) to interactively run database
@@ -420,13 +420,13 @@ Follow these steps to create your script:
 <div class="opsStepsList" markdown="1">
 1.  Create a file of SQL commands:
     {: .topLevel}
-    
+
     First, create a file that contains the SQL commands you want to run
     against your Splice Machine database. For this example, we'll create
     a file named `create-my-tables.sql` that creates a table in the
     database:
     {: .indentLevel1}
-    
+
     <div class="preWrapper" markdown="1">
         create table customers (
            CUSTOMER_ID BIGINT,
@@ -434,40 +434,40 @@ Follow these steps to create your script:
            LAST_NAME VARCHAR(30)
         );
     {: .Example xml:space="preserve"}
-    
+
     </div>
 
 2.  Create an SQL file to connect to the database and invoke the
     commands file
     {: .topLevel}
-    
+
     We need a separate SQL file named `my_load_datascript.sql`that
     connects to your database and then invokes the file of SQL commands
     we just created.
     {: .indentLevel1}
-    
+
     The `connect` command in this file must run before running the file
     of SQL statements.
     {: .noteNote}
-    
+
     Here we name the first SQL file, and define it to run the SQL
     statements file named `create-my-tables.sql:`
     {: .indentLevel1}
-    
+
     <div class="preWrapper" markdown="1">
            --First connect to the database
         connect 'jdbc:splice://<regionServer>:1527/splicedb';
-        
+
            --Next run your sql file
         run '/users/yourname/create-my-tables.sql';
-        
+
         show tables;
         quit;
     {: .Example xml:space="preserve" style="font-weight: normal;"}
-    
+
     </div>
     {: .indentLevel1}
-    
+
     If you are running Splice Machine on a cluster, connect from a
     machine that is NOT running an HBase RegionServer and specify the IP
     address of a <span class="HighlightedCode">regionServer</span> node,
@@ -478,20 +478,20 @@ Follow these steps to create your script:
 
 3.  Create a shell script to run your SQL connect file
     {: .topLevel}
-    
+
     We now create a shell script named `load_datascript.sh` to run the
     `my_load_datascript.sql` file:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         #!/bin/bash
-        
+
         export CLASSPATH=<FULL_PATH_TO_SPLICEMACHINE_JAR_FILE>
         java -Djdbc.drivers=com.splicemachine.db.jdbc.ClientDriver -Dij.outfile=my_load_datascript.out com.splicemachine.db.tools.ij < my_load_datascript.sql
     {: .Example xml:space="preserve" style="font-weight: normal;"}
-    
+
     </div>
-    
+
     The first line of this script must set the `CLASSPATH` to the
     location of your Splice Machine jar file. The second line runs the
     ij command, specifying its output file (`my_load_datascript.out`)
@@ -501,77 +501,76 @@ Follow these steps to create your script:
 
 4.  Make your shell script executable
     {: .topLevel}
-    
+
     We need to make the shell script executable with the chmod shell
     command:
     {: .indentLevel1}
-    
+
     <div class="preWrapper" markdown="1">
-        
+
         chmod +x load_datascript.sh
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 5.  Use nohup to run the script
     {: .topLevel}
-    
+
     The <span class="ShellCommand">nohup</span> utility allows you to
     run a script file in the background, which means that it will
     continue running if you log out, disconnect from a remote machine,
     or lose your network connection.
     {: .indentLevel1}
-    
+
     <div class="preWrapper" markdown="1">
-        
+
         nohup ./load_datascript.sh > ./load_datascript.out 2>&1 &
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
-    
+
     Here's the syntax for the `nohup` utility:
     {: .indentLevel1}
-    
+
     <div class="fcnWrapperWide" markdown="1">
-        
+
         nohup ./command-name.sh > ./command-name.out 2>&1 &
     {: .FcnSyntax xml:space="preserve"}
-    
+
     </div>
-    
+
     <div class="paramList" markdown="1">
     command-name.sh
     {: .paramName}
-    
+
     The name of the shell script or a command name.
     {: .paramDefnFirst}
-    
+
     command-name.out
     {: .paramName}
-    
+
     The name of the file to capture any output written to `stdout`.
     {: .paramDefnFirst}
-    
+
     2&gt;&amp;1
     {: .paramName}
-    
+
     This causes `stderr` (file descriptor `2`) to be written to `stdout`
     (file descriptor `1`); this means that all output will be captured
     in `command-name.out`.
     {: .paramDefnFirst}
-    
+
     &amp;
     {: .paramName}
-    
+
     The <span class="ShellCommand">nohup</span> utility does not
     automatically run its command in the background, so we add the `&`
     to do
     {: .paramDefnFirst}
-    
+
     </div>
 {: .boldFont}
 
 </div>
 </div>
 </section>
-

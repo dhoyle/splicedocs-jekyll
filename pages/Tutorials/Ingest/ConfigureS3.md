@@ -58,7 +58,7 @@ You can follow these steps to configure access to your S3 bucket(s) for Splice 
 4.  Create a new policy:
     {: .topLevel}
 
-    1.  Select <span class="ConsoleLink">Policies</span>from the
+    1.  Select <span class="ConsoleLink">Policies</span> from the
         IAM screen, then select <span class="ConsoleLink">Create
         Policy:</span>
 
@@ -135,7 +135,9 @@ You can follow these steps to configure access to your S3 bucket(s) for Splice 
 
     1.  Select <span class="ConsoleLink">Users</span> from the left-hand
         navigation pane.
+
     2.  Click <span class="ConsoleLink">Add User</span>.
+
     3.  Enter a <span class="ConsoleLink">User name</span> (we've used
         *SpliceMachine*) and select <span
         class="ConsoleLink">Programmatic access</span> as the access
@@ -145,6 +147,7 @@ You can follow these steps to configure access to your S3 bucket(s) for Splice 
 
     4.  Click <span class="ConsoleLink">Attach existing policies
         directly</span>.
+
     5.  Select the policy you just created and click <span
         class="ConsoleLink">Next</span>:
 

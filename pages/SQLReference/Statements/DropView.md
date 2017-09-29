@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP VIEW   {#Statements.DropView}
+# DROP VIEW
 
 The `DROP VIEW` statement drops the specified view.
 

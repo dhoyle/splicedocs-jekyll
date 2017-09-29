@@ -54,28 +54,29 @@ How you access the Splice Machine Database Console depends on which
 Splice Machine product you're using:
 
 <table>
-				<col />
-				<col />
-				<thead>
-					<th>Product</th>
-					<th>DB Console Access</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Database-as-Service</td>
-						<td>
-							<ul>
-								<li>To monitor the Splice Machine jobs running on your cluster, click the <span class="ConsoleLink">DB Console</span> button at the top right of your Management screen or click the DB Console link in the cluster created email that you received from Splice Machine.</li>
-								<li>To monitor any non-Splice Machine Spark jobs that are running on your cluster, you need to use a different Spark console, which you can access by clicking the <span class="ConsoleLink">External Spark Console</span> link that is displayed in the bottom left corner of your cluster's dashboard page.</li>
-							</ul>
-						</td>
-					</tr>
-					<tr>
-						<td>On-Premise Database</td>
-						<td><div class="preWrapper"><pre class="AppCommand">{{splvar_location_SpliceMgmtConsoleUrl}}</pre></div></td>
-            		</tr>
-				</tbody>
-			</table>
+    <col />
+    <col />
+    <thead>
+        <th>Product</th>
+        <th>DB Console Access</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Database-as-Service</td>
+            <td>
+                <ul>
+                <li>To monitor the Splice Machine jobs running on your cluster, click the <span class="ConsoleLink">DB Console</span> button at the top right of your Management screen or click the DB Console link in the cluster created email that you received from Splice Machine.</li>
+                <li>To monitor any non-Splice Machine Spark jobs that are running on your cluster, you need to use a different Spark console, which you can access by clicking the <span class="ConsoleLink">External Spark Console</span> link that is displayed in the bottom left corner of your cluster's dashboard page.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>On-Premise Database</td>
+{% include splicevars.html %}
+            <td><div class="preWrapper"><pre class="AppCommand">{{splvar_location_SpliceMgmtConsoleUrl}}</pre></div></td>
+        </tr>
+    </tbody>
+</table>
 The Database Console URL will only be active after you've run at least
 one query on our Spark engine; prior to using the Spark engine, your
 browser will report an error such as *Connection Refused*.

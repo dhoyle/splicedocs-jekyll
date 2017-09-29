@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DECIMAL   {#DataTypes.Decimal}
+# DECIMAL
 
 The `DECIMAL` data type provides an exact numeric in which the precision
 and scale can be arbitrarily sized. You can specify the *precision* (the
@@ -20,7 +20,7 @@ component). The amount of storage required depends on the precision you
 specify.
 
 Note that `NUMERIC` is a synonym for `DECIMAL`, and that the
-documentation for the [`NUMERIC`](sqlref_datatypes_numeric.html) data
+documentation for the &nbsp;[`NUMERIC`](sqlref_datatypes_numeric.html) data
 type exactly matches the documentation for this topic.
 
 ## Syntax

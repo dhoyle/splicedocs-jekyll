@@ -83,29 +83,19 @@ Machine developers:
                     <tr>
                         <td><a href="developers_fundamentals_hcatalog.html">Using HCatalog</a>
                         </td>
-                        <td>
-                            <p>How to use Splice Machine with HCatalog. </p>
-{% include splice_snippets/onpremonlytopic.md %}
-                        </td>
+                        <td>How to use Splice Machine with HCatalog.</td>
                     </tr>
                     <tr>
                         <td><a href="developers_fundamentals_mapreduce.html">Using MapReduce</a>
                         </td>
-                        <td>
-                            <p>The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.</p>
-{% include splice_snippets/onpremonlytopic.md %}
-                        </td>
+                        <td>The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.</td>
                     </tr>
                     <tr>
                         <td><a href="developers_fundamentals_hbase.html">Working with HBase</a>
                         </td>
-                        <td>
-                            <p>Working in HBase with Splice Machine.</p>
-{% include splice_snippets/onpremonlytopic.md %}
-                        </td>
+                        <td>Working in HBase with Splice Machine.</td>
                     </tr>
                 </tbody>
             </table>
 </div>
 </section>
-

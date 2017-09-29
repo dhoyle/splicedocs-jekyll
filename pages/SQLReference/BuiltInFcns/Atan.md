@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# ATAN   {#BuiltInFcns.Atan}
+# ATAN
 
 The `ATAN` function returns the arc tangent of a specified number.
 
@@ -25,14 +25,14 @@ The `ATAN` function returns the arc tangent of a specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the tangent, in radians, of the angle that you want.
 {: .paramDefnFirst}
 
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number. The returned
 value, in radians, is in the range `pi/2` to `pi/2`.
 

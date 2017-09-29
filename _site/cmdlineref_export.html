@@ -518,7 +518,7 @@
 
     
 
-  <section class="paramDefnFirst">
+  <section>
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="export-command">Export Command</h1>
 
@@ -538,63 +538,67 @@ of an SQL query to a CSV (comma separated value) file.</p>
 
     </div>
     <div class="paramList">
-      <p class="paramName"><em>exportPath</em></p>
+      <p class="paramName">exportPath</p>
 
       <p class="paramDefnFirst">The directory in which you want the export file(s) written.</p>
 
-      <p class="paramName"><em>compress</em></p>
+      <p class="paramName">compress</p>
 
-      <p>Whether or not to compress the exported files. You can specify one of
-the following values: &lt;table summary="Possible values for compression
-setting in the export command."&gt;
-                &lt;col /&gt;
-                &lt;col /&gt;
-                &lt;thead&gt;
-                    &lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;<code>true</code>&lt;/td&gt;
-                        &lt;td&gt;&lt;p&gt;The exported files are compressed using
-<code>deflate/gzip</code>. &lt;/p&gt;&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;<code>false</code>&lt;/td&gt;
-                        &lt;td&gt;&lt;p&gt;Exported files are not compressed.&lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-                &lt;/table&gt;</p>
+      <p class="paramDefnFirst">Whether or not to compress the exported files. You can specify one of
+the following values:</p>
 
-      <p class="paramName"><em>replicationCount</em></p>
+      <div>
+    <table summary="Possible values for compression">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>true</code></td>
+                    <td>The exported files are compressed using <code>deflate/gzip</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>false</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+
+      <p class="paramName">replicationCount</p>
 
       <p class="paramDefnFirst">The file system block replication count to use for the exported
 CSV files.</p>
 
       <p class="paramDefn">You can specify any positive integer value. The default value is <code>1</code>.</p>
 
-      <p class="paramName"><em>fileEncoding</em></p>
+      <p class="paramName">fileEncoding</p>
 
       <p class="paramDefnFirst">The character set encoding to use for the exported CSV files.</p>
 
       <p class="paramDefn">You can specify any character set encoding that is supported by the
-Java
-Virtual Machine (JVM). The default encoding is <code>UTF-8</code>.</p>
+Java Virtual Machine (JVM). The default encoding is <code>UTF-8</code>.</p>
 
-      <p class="paramName"><em>fieldSeparator</em></p>
+      <p class="paramName">fieldSeparator</p>
 
       <p class="paramDefnFirst">The character to use for separating fields in the exported CSV files.</p>
 
       <p class="paramDefn">The default separator character is the comma (<code>,</code>).</p>
 
-      <p class="paramName"><em>quoteCharacter</em></p>
+      <p class="paramName">quoteCharacter</p>
 
       <p class="paramDefnFirst">The character to use for quoting output in the exported CSV files.</p>
 
       <p class="paramDefn">The default quote character is the double quotation mark (<code>"</code>).</p>
 
     </div>
-    <p>## Usage</p>
+
+    <h2 id="usage">Usage</h2>
 
     <p>The <span class="AppCommand">EXPORT</span> command generates one or
 more
@@ -623,7 +627,7 @@ this format:</p>
     <p>The value of <span class="AppCommand">&lt;N&gt;</span> is a random
 integer value.</p>
 
-    <p>### Merging the Exported Files</p>
+    <h3 id="merging-the-exported-files">Merging the Exported Files</h3>
 
     <p>You can copy all of the exported files into a single file on your local
 file system using the Hadoop FS command <code>getmerge</code>. The syntax for
@@ -641,7 +645,7 @@ the exported CSV files to your <em>localPath</em>.</p>
     <p>For more information about the <code>getmerge</code> command, see
 <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge" target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
 
-    <p>## Examples</p>
+    <h2 id="examples">Examples</h2>
 
     <div class="preWrapperWide">
       <pre class="AppCommand"><code>         -- This example uses all default options:
@@ -655,11 +659,8 @@ splice&gt; EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
 
     </div>
 
-  </div> </section>
-
-<p>&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;</p>
+  </div>
+</section>
 
 
 
@@ -677,7 +678,7 @@ splice&gt; EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

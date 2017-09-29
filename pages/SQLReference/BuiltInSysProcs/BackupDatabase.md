@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_BACKUP_DATABASE   {#BuiltInSysProcs.BackupDatabase}
+# SYSCS_UTIL.SYSCS_BACKUP_DATABASE
 
 The `SYSCS_UTIL.SYSCS_BACKUP_DATABASE` system procedure performs an
 immediate full or incremental backup of your database to a specified
@@ -51,8 +51,7 @@ MapR-FS).
 
 You must have permissions set properly to use cloud storage as a backup
 destination. See [Backing Up to Cloud
-Storage](onprem_admin_backingup.html#Backing) in the *Administrator's
-Guide* for information about setting backup permissions properties.
+Storage](onprem_admin_backingup.html#Backing) for information about setting backup permissions properties.
 {: .noteNote}
 
 Relative paths are resolved based on the current user directory. To
@@ -63,12 +62,12 @@ when specifying the backup destination.
 backupType
 {: .paramName}
 
-Specifies the type of backup that you want performed.This must be one of
-the following values: `'full'` or `'incremental'`; any other value
+Specifies the type of backup that you want performed. This must be one of
+the following values: `full` or `incremental`; any other value
 produces an error and the backup is not run.
 {: .paramDefnFirst}
 
-Note that if you specify `'incremental'`, Splice Machine checks the
+Note that if you specify `'incremental'`, Splice Machine checks the &nbsp;
 [`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) table to determine if
 there already is a backup for the system; if not, Splice Machine will
 perform a full backup, and subsequent backups will be incremental.
@@ -152,21 +151,15 @@ Splice Machine:
 </div>
 ## See Also
 
-* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html) in
-  the *Administrator's Guide*
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)built-in
-  system procedure
-* [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)built-in
-  system procedure
+* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
+* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
+* [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-  built-in system procedure
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-  built-in system procedure
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
-  built-in system procedure
-* [`SYSBACKUP`](sqlref_systables_sysbackup.html) system table
-* [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html) system table
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html) system table
+* [`SYSBACKUP`](sqlref_systables_sysbackup.html)
+* [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
+* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

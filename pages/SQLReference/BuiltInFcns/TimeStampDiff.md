@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TIMESTAMPDIFF   {#BuiltInFcns.TimeStamp}
+# TIMESTAMPDIFF
 
 The `TIMESTAMPDIFF` function finds the difference between two
 timestamps, in terms of the specfied interval.
@@ -29,16 +29,16 @@ interval
 One of the following timestamp interval constants:
 {: .paramDefnFirst}
 
-* {: .CodeFont value="1"} SQL_TSI_FRAC_SECOND
-* {: .CodeFont value="2"} SQL_TSI_SECOND
-* {: .CodeFont value="3"} SQL_TSI_MINUTE
-* {: .CodeFont value="4"} SQL_TSI_HOUR
-* {: .CodeFont value="5"} SQL_TSI_DAY
-* {: .CodeFont value="6"} SQL_TSI_WEEK,
-* {: .CodeFont value="7"} SQL_TSI_MONTH
-* {: .CodeFont value="8"} SQL_TSI_QUARTER
-* {: .CodeFont value="9"} SQL_TSI_YEAR
-{: .bullet}
+* `SQL_TSI_FRAC_SECOND`
+* `SQL_TSI_SECOND`
+* `SQL_TSI_MINUTE`
+* `SQL_TSI_HOUR`
+* `SQL_TSI_DAY`
+* `SQL_TSI_WEEK`
+* `SQL_TSI_MONTH`
+* `SQL_TSI_QUARTER`
+* `SQL_TSI_YEAR`
+{: .bulletNested}
 
 timeStamp1
 {: .paramName}
@@ -85,7 +85,7 @@ These examples shows the number of years a player was born after Nov 22,
     2     |1988-04-20|24
     3     |1990-10-30|26
     5     |1991-01-15|27
-    
+
     10 rows selected
 {: .Example xml:space="preserve"}
 
@@ -104,4 +104,3 @@ These examples shows the number of years a player was born after Nov 22,
 
 </div>
 </section>
-

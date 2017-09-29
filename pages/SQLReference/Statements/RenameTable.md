@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# RENAME TABLE   {#Statements.RenameTable}
+# RENAME TABLE
 
 The `RENAME TABLE` statement allows you to rename an existing table in
 any schema (except the schema `SYS`).
@@ -54,7 +54,7 @@ Attempting to rename a table generates an error if:
 {: .Example xml:space="preserve"}
 
 </div>
-See the [`ALTER TABLE` statement](sqlref_statements_altertable.html) for
+See the &nbsp;[`ALTER TABLE` statement](sqlref_statements_altertable.html) for
 more information.
 
 </div>

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CURRENT_TIME   {#BuiltInFcns.CurrentTime}
+# CURRENT_TIME
 
 `CURRENT_TIME` returns the current time.
 

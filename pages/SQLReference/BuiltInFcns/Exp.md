@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# EXP   {#BuiltInFcns.Exp}
+# EXP
 
 The `EXP` function returns `e` raised to the power of the specified
 number. The constant `e` is the base of the natural logarithms.
@@ -26,7 +26,7 @@ number. The constant `e` is the base of the natural logarithms.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the exponent to which you want to raise `e`.
 {: .paramDefnFirst}
 
@@ -45,7 +45,7 @@ that specifies the exponent to which you want to raise `e`.
 </div>
 ## Results
 
-The data type of the result is a [`DOUBLE
+The data type of the result is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 ## See Also

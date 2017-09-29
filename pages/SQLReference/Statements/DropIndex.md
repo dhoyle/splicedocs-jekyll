@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP INDEX   {#Statements.DropIndex}
+# DROP INDEX
 
 The `DROP INDEX` statement removes the specified index.
 

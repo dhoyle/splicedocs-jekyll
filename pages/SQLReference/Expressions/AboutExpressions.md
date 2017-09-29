@@ -10,7 +10,7 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# About Expressions   {#Expressions.AboutExpressions}
+# About Expressions
 
 Syntax for many statements and expressions includes the term
 *Expression*, or a term for a specific kind of expression such as

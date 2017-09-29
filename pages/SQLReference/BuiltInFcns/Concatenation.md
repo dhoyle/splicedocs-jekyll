@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Concatenation Operator   {#BuiltInFcns.Concatenation}
+# Concatenation Operator
 
 The concatenation operator, `||`, concatenates its right operand onto
 the end of its left operand; it operates on character string or bit
@@ -56,7 +56,7 @@ arguments.
 For character strings:
 
 * If both the left and right operands are of type
-  [`VARCHAR`](sqlref_datatypes_varchar.html).
+ &nbsp;[`VARCHAR`](sqlref_datatypes_varchar.html).
 * The normal blank padding/trimming rules for `CHAR` and `VARCHAR` apply
   to the result of this operator.
 * The length of the resulting string is the sum of the lengths of both

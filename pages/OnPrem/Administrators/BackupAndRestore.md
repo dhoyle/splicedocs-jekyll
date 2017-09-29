@@ -226,7 +226,7 @@ To execute a backup right now:
 #### Example 2: Execute an incremental backup now:
 
 This call will run an incremental backup right now. Splice Machine
-checks the [`SYSBACKUP System Table`](sqlref_systables_sysbackup.html)
+checks the &nbsp;[`SYSBACKUP System Table`](sqlref_systables_sysbackup.html)
 to determine if there already is a backup for the system; if not, Splice
 Machine will perform a full backup, and subsequent backups will be
 incremental. The backup data is stored in the specified directory.
@@ -261,7 +261,7 @@ A `VARCHAR` value that specifies the path to the directory in which the
 backup isstored.
 {: .paramDefnFirst}
 
-You can find the *backupId* you want to use by querying the [`SYSBACKUP
+You can find the *backupId* you want to use by querying the &nbsp;[`SYSBACKUP
 System Table`](sqlref_systables_sysbackup.html). See the [Reviewing
 Backup Information](#Reviewing) section below for more information.
 {: .paramDefn}
@@ -511,14 +511,13 @@ Splice Machine backups; follow these steps:
 2.  Stop both HBase and HDFS: 
     {: .topLevel}
 
-    * Click the <span class="AppCommand">HBase Actions</span> drop-down
+    * <span class="PlainFont">Click the <span class="AppCommand">HBase Actions</span> drop-down
       arrow associated with (to the right of) `HBase` in the cluster
       summary section of the home screen, and then click <span
-      class="AppCommand">Stop</span> to stop HBase.
-    * Click the <span class="AppCommand">HDFS Actions</span> drop-down
+      class="AppCommand">Stop</span> to stop HBase.</span>
+    * <span class="PlainFont">Click the <span class="AppCommand">HDFS Actions</span> drop-down
       arrow associated with (to the right of) and then click <span
-      class="AppCommand">Stop</span> to stop HDFS.
-    {: .plainFont}
+      class="AppCommand">Stop</span> to stop HDFS.</span>
 
 3.  Click <span class="AppCommand">HDFS</span> in the Cloudera Manager
     home screen, then click the <span
@@ -537,15 +536,14 @@ Splice Machine backups; follow these steps:
 4.  Restart both services:
     {: .topLevel}
 
-    * Click the <span class="AppCommand">HDFS Actions</span> drop-down
+    * <span class="PlainFont">Click the <span class="AppCommand">HDFS Actions</span> drop-down
       arrow associated with (to the right of) HDFS in the cluster
       summary section of the Cloudera Manager home screen, and then
-      click <span class="AppCommand">Start</span> to restart HDFS.
-    * Navigate to the *HBase Status* tab in Cloudera Manager. Then,
+      click <span class="AppCommand">Start</span> to restart HDFS.</span>
+    * <span class="PlainFont">Navigate to the *HBase Status* tab in Cloudera Manager. Then,
       using the <span class="AppCommand">Actions</span> drop-down in the
       upper-right corner, click <span class="AppCommand">Start</span> to
-      create a start HBase.
-    {: .plainFont}
+      create a start HBase.</span>
 {: .boldFont}
 
 </div>
@@ -560,14 +558,13 @@ these steps:
     of the Ambari dashboard screen, then stop both HBase and HDFS: 
     {: .topLevel}
 
-    * Click <span class="AppCommand">HBase</span> in the left pane of
+    * <span class="PlainFont">Click <span class="AppCommand">HBase</span> in the left pane of
       the screen, then click <span class="AppCommand">Service
       Actions-&gt;Stop</span> in the upper-right portion of the Ambari
-      screen.
-    * Click <span class="AppCommand">HDFS</span> in the left pane of the
+      screen.</span>
+    * <span class="PlainFont">Click <span class="AppCommand">HDFS</span> in the left pane of the
       screen, the click <span class="AppCommand">Service
-      Actions-&gt;Stop</span>.
-    {: .plainFont}
+      Actions-&gt;Stop</span>.</span>
 
 3.  Select <span class="AppCommand">Custom core-site</span> and add
     these properties:
@@ -582,13 +579,12 @@ these steps:
 4.  Restart both services:
     {: .topLevel}
 
-    * Click <span class="AppCommand">HDFS</span> in the left pane of the
+    * <span class="PlainFont">Click <span class="AppCommand">HDFS</span> in the left pane of the
       screen, the click <span class="AppCommand">Service
-      Actions-&gt;Restart All</span>.
-    * Click <span class="AppCommand">HBase</span> in the left pane of
+      Actions-&gt;Restart All</span>.</span>
+    * <span class="PlainFont">Click <span class="AppCommand">HBase</span> in the left pane of
       the screen, the click <span class="AppCommand">Service
-      Actions-&gt;Restart All</span>.
-    {: .plainFont}
+      Actions-&gt;Restart All</span>.</span>
 {: .boldFont}
 
 </div>
@@ -614,11 +610,10 @@ Follow these steps:
     files:
     {: .topLevel}
 
-    * `/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml` for
-      *Hadoop/MapReduce/YARN 2.x* site configuration
-    * `/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml` for
-      *Hadoop/MapReduce 0.x/1.x* site configuration
-    {: .plainFont}
+    * <span class="PlainFont">`/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml` for
+      *Hadoop/MapReduce/YARN 2.x* site configuration</span>
+    * <span class="PlainFont">`/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml` for
+      *Hadoop/MapReduce 0.x/1.x* site configuration</span>
 
     If both *MapReduce v1* and *YARN/MapReduce 2* are installed on the
     MapR compute hosts, the newer *hadoop-2.x.x* version of the file
@@ -707,26 +702,16 @@ Follow these steps:
 </div>
 ## See Also
 
-* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html) in
-  the *SQL Reference Manual*
+* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
 * [`SYSCS_UTIL.SYSCS_CANCEL_BACKUP`](sqlref_sysprocs_cancelbackup.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
-  in the *SQL Reference Manual*
-* [`SYSBACKUP System Table`](sqlref_systables_sysbackup.html) in the
-  *SQL Reference Manual*
+* [`SYSBACKUP System Table`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS System Table`](sqlref_systables_sysbackupitems.html)
-  in the *SQL Reference Manual*
-* [`SYSBACKUPJOBS System Table`](sqlref_systables_sysbackupjobs.html) in
-  the *SQL Reference Manual*
+* [`SYSBACKUPJOBS System Table`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

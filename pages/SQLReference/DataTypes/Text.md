@@ -17,7 +17,7 @@ characters long. A `TEXT` object is used to store unicode
 character-based data, such as large documents in any character set.
 
 Note that, in Splice Machine, `TEXT` is a synonym for `CLOB`, and that
-the documentation for the [`CLOB`](sqlref_datatypes_clob.html) data type
+the documentation for the &nbsp;[`CLOB`](sqlref_datatypes_clob.html) data type
 functionally matches the documentation for this topic. Splice Machine
 simply translates `TEXT` into `CLOB`.
 

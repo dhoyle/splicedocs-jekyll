@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# COALESCE   {#BuiltInFcns.Coalesce}
+# COALESCE
 
 The `COALESCE` function returns the first non-`NULL` expression from a
 list of expressions.
@@ -22,8 +22,10 @@ example:
     COALESCE( expresssion_1, expression_2,...expression_n);
 {: .Example xml:space="preserve"}
 
+</div>
 is equivalent to:
 
+<div class="preWrapperWide" markdown="1">
     CASE WHEN expression_1 IS NOT NULL THEN expression_1
        ELSE WHEN expression_1 IS NOT NULL THEN expression_2
      ...
@@ -74,7 +76,7 @@ dynamic.
 ## Example
 
 <div class="preWrapperWide" markdown="1">
-    
+
        -- create table with three different integer types
     splice> SELECT ID, FldGames, PassedBalls, WildPitches, Pickoffs,
        COALESCE(PassedBalls, WildPitches, Pickoffs) as "FirstNonNull"
@@ -116,11 +118,10 @@ dynamic.
     82    |71    |NULL  |NULL  |1     |1
     84    |68    |NULL  |NULL  |0     |0
     92    |81    |NULL  |NULL  |3     |3
-    
+
     33 rows selected
 {: .Example xml:space="preserve"}
 
 </div>
 </div>
 </section>
-

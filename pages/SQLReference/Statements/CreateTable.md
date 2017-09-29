@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE TABLE   {#Statements.CreateTable}
+# CREATE TABLE
 
 A `CREATE TABLE` statement creates a table. Tables contain columns and
 constraints, rules to which data must conform. Table-level constraints
@@ -32,7 +32,7 @@ Only database and schema owners can use the `CREATE TABLE` statement,
 which means that table creation privileges cannot be granted to others.
 {: .noteIcon}
 
-For information about constraints, see [`CONSTRAINT`
+For information about constraints, see &nbsp;[`CONSTRAINT`
 clause](sqlref_clauses_constraint.html).
 
 You can specify a default value for a column. A default value is the
@@ -100,7 +100,7 @@ A column definition.
 AS query-expression
 {: .paramName}
 
-See the [`CREATE TABLE AS`](#createAs) section below.
+See the &nbsp;[`CREATE TABLE AS`](#createAs) section below.
 {: .paramDefnFirst}
 
 If this select list contains an expression, you must name the result of
@@ -111,7 +111,7 @@ page.
 WITH NO DATA
 {: .paramName}
 
-See the [`CREATE TABLE AS`](#createAs) section below.
+See the &nbsp;[`CREATE TABLE AS`](#createAs) section below.
 {: .paramDefnFirst}
 
 </div>
@@ -227,7 +227,7 @@ of 5 that increments by 5, and also includes a primary key constraint:
 {: .Example xml:space="preserve"}
 
 For more examples of `CREATE TABLE` statements using the various
-constraints, see [`CONSTRAINT` clause](sqlref_clauses_constraint.html)
+constraints, see &nbsp;[`CONSTRAINT` clause](sqlref_clauses_constraint.html)
 {: .noteNote}
 
 </div>

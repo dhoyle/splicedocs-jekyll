@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.VACUUM   {#BuiltInSysProcs.Vacuum}
+# SYSCS_UTIL.VACUUM
 
 The `SYSCS_UTIL.VACUUM` system procedure performs the following clean-up
 operations:

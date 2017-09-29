@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# VARCHAR   {#DataTypes.Varchar}
+# VARCHAR
 
 The `VARCHAR` data type provides for variable-length storage of strings.
 

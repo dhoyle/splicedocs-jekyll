@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# MOD   {#BuiltInFcns.Mod}
+# MOD
 
 `MOD` returns the remainder (modulus) of argument 1 divided by argument
 2.

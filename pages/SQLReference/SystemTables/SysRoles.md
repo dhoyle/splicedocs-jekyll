@@ -10,13 +10,13 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSROLES System Table    {#SystemTables.SysRoles}
+# SYSROLES System Table
 
 The `SYSROLES` table stores the roles in the database.
 
 A row in the `SYSROLES` table represents one of the following:
 
-* A role definition (the result of a [`CREATE ROLE`
+* A role definition (the result of a &nbsp;[`CREATE ROLE`
   statement](sqlref_statements_createrole.html))
 * A role grant
 

@@ -2808,14 +2808,14 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="syssequences-system-table---systemtablessyssequences">SYSSEQUENCES System Table   {#SystemTables.SysSequences}</h1>
+    <h1 id="syssequences-system-table">SYSSEQUENCES System Table</h1>
 
     <p>The <code>SYSSEQUENCES</code> table describes the sequence generators in the
 database.</p>
 
     <p class="noteNote">Users should not directly query the <code>SYSSEQUENCES</code> table, because that
 will slow down the performance of sequence generators. Instead, users
-should call the <a href="sqlref_sysprocs_peekatseq.html"><code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code> system
+should call the  <a href="sqlref_sysprocs_peekatseq.html"><code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code> system
 function</a></p>
 
     <p>The following table shows the contents of the <code>SYSSEQUENCES</code> system
@@ -2850,16 +2850,14 @@ table.</p>
                         <td><code>VARCHAR</code></td>
                         <td><code>128</code></td>
                         <td><code>NO</code></td>
-                        <td>The name of the sequence generator. There is a unique index
-					on (<code>SCHEMAID, SEQUENCENAME</code>).</td>
+                        <td>The name of the sequence generator. There is a unique index on (<code>SCHEMAID, SEQUENCENAME</code>).</td>
                     </tr>
                     <tr>
                         <td><code>SCHEMAID</code></td>
                         <td><code>CHAR</code></td>
                         <td><code>36</code></td>
                         <td><code>NO</code></td>
-                        <td>The ID of the schema that holds the sequence generator.
-					There is a foreign key linking this column to <code>SYSSCHEMAS.SCHEMAID</code>.</td>
+                        <td>The ID of the schema that holds the sequence generator. There is a foreign key linking this column to <code>SYSSCHEMAS.SCHEMAID</code>.</td>
                     </tr>
                     <tr>
                         <td><code>SEQUENCEDATATYPE</code></td>
@@ -2867,8 +2865,7 @@ table.</p>
                         </td>
                         <td><code>-1</code></td>
                         <td><code>NO</code></td>
-                        <td>System type that describes the precision, length, scale,
-					nullability, type name, and storage type of the data</td>
+                        <td>System type that describes the precision, length, scale, nullability, type name, and storage type of the data</td>
                     </tr>
                     <tr>
                         <td><code>CURRENTVALUE</code></td>
@@ -2876,15 +2873,9 @@ table.</p>
                         <td><code>19</code></td>
                         <td><code>YES</code></td>
                         <td>
-                            <p class="noSpaceAbove">The current value of the sequence generator. This is not the
-						actual next value for the sequence generator. That value can be obtained by
-						calling the system function <code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code>.</p>
-                            <p>&lt;![CDATA[
-						]]&gt;<code>SYSSEQUENCES.CURRENTVALUE</code> holds the end of the range of values that have been
-						preallocated in order to boost concurrency. The initial
-						value of this column is <code>STARTVALUE</code>. </p>
-                            <p>This column is <code>NULL</code> only if the sequence
-					generator is exhausted and cannot issue any more numbers.</p>
+                            <p class="noSpaceAbove">The current value of the sequence generator. This is not the actual next value for the sequence generator. That value can be obtained by calling the system function <code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code>.</p>
+                            <p><code>SYSSEQUENCES.CURRENTVALUE</code> holds the end of the range of values that have been preallocated in order to boost concurrency. The initial value of this column is <code>STARTVALUE</code>. </p>
+                            <p>This column is <code>NULL</code> only if the sequence generator is exhausted and cannot issue any more numbers.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2922,8 +2913,7 @@ table.</p>
                         <td>NO</td>
                         <td>
                             <p class="noSpaceAbove">If the sequence generator cycles, this value is <code>'Y'</code>.</p>
-                            <p>
-					If the sequence generator does not cycle, this value is <code>'N'</code>.</p>
+                            <p>If the sequence generator does not cycle, this value is <code>'N'</code>.</p>
                         </td>
                     </tr>
                 </tbody>
@@ -2936,7 +2926,6 @@ table.</p>
 
   </div>
 </section>
-
 
 
     <div class="tags">
@@ -2953,7 +2942,7 @@ table.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

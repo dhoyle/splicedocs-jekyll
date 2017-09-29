@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInFcns
 # TO_DATE
 
 The `TO_DATE` function formats a date string according to a formatting
-specification, and returns a [`DATE`](sqlref_builtinfcns_date.html)
+specification, and returns a &nbsp;[`DATE`](sqlref_builtinfcns_date.html)
 values do not store time components.
 
 ## Syntax
@@ -31,7 +31,8 @@ A string expression that contains a date that is formatted according to
 the format string.
 {: .paramDefnFirst}
 
-*formatStr*
+formatStr
+{: .paramName}
 
 A string that specifies the format you want applied to the `dateStr`.
 See the [Date and Time Formats](#Date) section below for more
@@ -41,7 +42,7 @@ information about format specification.
 </div>
 ## Results
 
-The result is always a [`DATE`](sqlref_builtinfcns_date.html) value.
+The result is always a &nbsp;[`DATE`](sqlref_builtinfcns_date.html) value.
 
 ## Date and Time Formats   {#Date}
 
@@ -433,30 +434,30 @@ Here are several simple examples:
     ----------
     2015-01-01
     1 row selected
-    
+
     splice> VALUES TO_DATE('01-01-2015', 'MM-dd-YYYY');
     1
     ----------
     2015-01-01
     1 row selected
-    
+
     splice> VALUES (TO_DATE('01-01-2015', 'MM-dd-YYYY') + 30);
     1
     ----------
     2015-01-31
     1
-    
+
     splice> VALUES (TO_DATE('2015-126', 'MM-DDD'));
     1
     ----------
     2015-05-06
     1 row selected
-    
+
     splice> VALUES (TO_DATE('2015-026', 'MM-DDD'));
     1
     ----------
     2015-01-26
-    
+
     splice> VALUES (TO_DATE('2015-26', 'MM-DD'));
     1
     ----------

@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSTABLES System Table   {#SystemTables.SysTables}
+# SYSTABLES System Table
 
 The `SYSTABLES` table describes the tables and views within the current
 database.

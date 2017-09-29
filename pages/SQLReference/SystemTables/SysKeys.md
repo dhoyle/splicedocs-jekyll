@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSKEYS System Table   {#SystemTables.SysKeys}
+# SYSKEYS System Table
 
 The `SYSKEYS` table describes the specific information for primary key
 and unique constraints within the current database.

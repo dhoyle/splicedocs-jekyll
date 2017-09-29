@@ -39,7 +39,7 @@ back: all savepoints up to and including this one are rolled back.
 </div>
 ## Usage Notes
 
-In contrast to the [`Rollback`](cmdlineref_rollback.html) command, the
+In contrast to the &nbsp;[`Rollback`](cmdlineref_rollback.html) command, the
 `Rollback to Savepoint` command rolls back but of your work, but does
 not start a new transaction.
 {: .body}

@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSVIEWS System Table   {#SystemTables.SysViews}
+# SYSVIEWS System Table
 
 The `SYSVIEWS` table describes the view definitions within the current
 database.

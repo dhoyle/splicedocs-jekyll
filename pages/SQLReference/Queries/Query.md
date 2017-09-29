@@ -10,7 +10,7 @@ folder: SQLReference/Queries
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Query   {#SQL-Queries.Query}
+# Query
 
 A *Query* creates a virtual table based on existing tables or constants
 built into tables.

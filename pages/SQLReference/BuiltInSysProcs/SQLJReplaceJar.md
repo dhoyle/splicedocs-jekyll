@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SQLJ.REPLACE_JAR   {#BuiltInSysProcs.SQLJReplaceJar}
+# SQLJ.REPLACE_JAR
 
 The `SQLJ.REPLACE_JAR` system procedure replaces a jar file in a
 database.
@@ -26,7 +26,7 @@ Stored Procedures](developers_fcnsandprocs_intro.html) section in our
     SQLJ.REPLACE_JAR(
                     IN jar_file_path_or-url VARCHAR(32672),
                     IN qualified_jar_name VARCHAR(32672)
-    )
+                    )
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -74,7 +74,7 @@ database owner can grant access to other users.
 <div class="preWrapperWide" markdown="1">
        -- SQL statement
     CALL sqlj.replace_jar('c:\myjarfiles\newtours.jar', 'SPLICE.Sample1');
-    
+
        -- SQL statement
        -- replace jar from remote location
     CALL SQLJ.REPLACE_JAR('http://www.example.com/tours.jar', 'SPLICE.Sample2');
@@ -88,4 +88,3 @@ database owner can grant access to other users.
 
 </div>
 </section>
-

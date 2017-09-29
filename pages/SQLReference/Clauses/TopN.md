@@ -35,7 +35,7 @@ return from the query. If you omit this parameter, the default value of
 column-Name
 {: .paramName}
 
-A column name, as described in the [`Column
+A column name, as described in the &nbsp;[`Column
 Name`](sqlref_identifiers_types.html#ColumnName) topic.
 {: .paramDefnFirst}
 

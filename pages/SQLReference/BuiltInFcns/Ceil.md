@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CEIL or CEILING   {#BuiltInFcns.Ceil}
+# CEIL or CEILING
 
 The `CEIL` and `CEILING` functions round the specified number up, and
 return the smallest number that is greater than or equal to the
@@ -32,7 +32,7 @@ specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) value.
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) value.
 {: .paramDefnFirst}
 
 The expression can contain multiple column references or expressions,
@@ -47,7 +47,7 @@ If an expression evaluates to `NULL`, the aggregate skips that value.
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 The returned value is the smallest (closest to negative infinity) double

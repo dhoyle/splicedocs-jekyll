@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CURRENT SCHEMA   {#BuiltInFcns.CurrentSchema}
+# CURRENT SCHEMA
 
 `CURRENT SCHEMA` returns the schema name used to qualify unqualified
 database object references.

@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE PROCEDURE   {#Statements.CreateFunction}
+# CREATE PROCEDURE
 
 The `CREATE PROCEDURE` statement allows you to create Java procedures,
 which you can then call using the `CALL PROCEDURE` statement.

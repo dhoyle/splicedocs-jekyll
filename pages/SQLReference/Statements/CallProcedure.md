@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CALL (Procedure)   {#Statements.CallProcedure}
+# CALL (Procedure)
 
 The `CALL (PROCEDURE)` statement is used to call stored procedures.
 

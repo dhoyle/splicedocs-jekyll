@@ -44,7 +44,7 @@ The default value is 1.
 overClause
 {: .paramName}
 
-See the [`OVER`](sqlref_clauses_over.html) clause documentation.
+See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 {: .paramDefnFirst}
 
 </div>
@@ -56,7 +56,7 @@ software.
 ## Usage Notes
 
 Splice Machine recommends that you use the `LEAD` function with the
-[`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
+&nbsp;[`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
 deterministic results.
 
 ## Results
@@ -117,7 +117,7 @@ in the column used in the expression.
     Bob Cranker             |SS  |3175000             |1500000
     Jonathan Pearlman       |SS  |1500000             |NULL
     Joseph Arkman           |UT  |1450000             |NULL
-    
+
     42 rows selected
 {: .Example xml:space="preserve"}
 
@@ -139,4 +139,3 @@ in the column used in the expression.
 
 </div>
 </section>
-

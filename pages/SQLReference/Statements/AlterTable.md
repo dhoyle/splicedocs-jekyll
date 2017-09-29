@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# ALTER TABLE   {#Statements.AlterTable}
+# ALTER TABLE
 
 The `ALTER TABLE` statement allows you to modify a table in a variety of
 ways, including adding and dropping columns and constraints from the
@@ -46,7 +46,7 @@ column-definition
 
 </div>
 The syntax for the *column-definition* for a new column is a subset of
-the syntax for a column in a [`CREATE
+the syntax for a column in a &nbsp;[`CREATE
 TABLE`](sqlref_statements_createtable.html) statement.
 {: .paramDefnFirst}
 
@@ -70,7 +70,6 @@ column-alteration
 {: .FcnSyntax}
 
 </div>
-<div class="paramListNested" markdown="1">
 In the column-alteration, `SET INCREMENT BY` integer-constant specifies
 the interval between consecutive values of the identity column. The next
 value to be generated for the identity column will be determined from
@@ -144,7 +143,6 @@ add a `DEFAULT` clause to a generated column.
 {: .paramDefn}
 
 </div>
-</div>
 ## Usage
 
 The `ALTER TABLE` statement allows you to:
@@ -188,8 +186,8 @@ existing table.
 
 The `ALTER TABLE ADD CONSTRAINT`statement is not currently taking
 currently running transactions into account, and thus can fail to add
-the constraint. This issue will be resolved in a future release.  
-  
+the constraint. This issue will be resolved in a future release.
+
 You can reliably add constraints when using the
 `CREATE TABLE` statement.
 {: .noteRelease}
@@ -204,7 +202,7 @@ existing table:
   the constraint is not added.
 * All columns included in a primary key must contain non null data and
   be unique.
-  
+
   `ALTER TABLE ADD UNIQUE` or `PRIMARY KEY` provide a shorthand method
   of defining a primary key composed of a single column. If `PRIMARY
   KEY` is specified in the definition of column C, the effect is the
@@ -233,10 +231,10 @@ named column in the following ways:
 * Increasing the width of an existing `VARCHAR` column. `CHARACTER
   VARYING` or `CHAR VARYING` can be used as synonyms for the `VARCHAR`
   keyword.
-  
+
   To increase the width of a column of these types, specify the data
   type and new size after the column name.
-  
+
   You are not allowed to decrease the width or to change the data type.
   You are not allowed to increase the width of a column that is part of
   a primary or unique key referenced by a foreign key constraint or that
@@ -244,7 +242,7 @@ named column in the following ways:
 
 * Specifying the interval between consecutive values of the identity
   column.
-  
+
   To set an interval between consecutive values of the identity column,
   specify the integer-constant. You must previously define the column
   with the `IDENTITY` attribute (SQLSTATE 42837). If there are existing
@@ -252,17 +250,17 @@ named column in the following ways:
   INCREMENT` default was added do not change.
 
 * Modifying the nullability constraint of a column.
-  
+
   You can add the `NOT NULL` constraint to an existing column; however,
   you cannot do so if there are `NULL` values for the column in the
   table.
-  
+
   You can remove the `NOT NULL` constraint from an existing column;
   however, you cannot do so if the column is used in a `PRIMARY KEY`
   constraint.
 
 * Changing the default value for a column.
-  
+
   You can use `DEFAULT` default-value to change a column default. To
   disable a previously set default, use `DROP DEFAULT` (alternatively,
   you can specify `NULL` as the default-value).
@@ -275,7 +273,7 @@ not explicitly specified, the default value of a column is `NULL`. If
 you add a default to a new column, existing rows in the table gain the
 default value in the new column.
 
-For more information about defaults, see [`CREATE
+For more information about defaults, see &nbsp;[`CREATE
 TABLE`](sqlref_statements_createtable.html) statement.
 
 An `ALTER TABLE` statement causes all statements that are dependent on
@@ -300,19 +298,19 @@ include:
        OldTeam VARCHAR(32),
        NewTeam VARCHAR(32) );
     0 rows inserted/updated/deleted
-    
+
     splice> ALTER TABLE PlayerTrades ADD COLUMN Updated TIMESTAMP;
     0 rows inserted/updated/deleted
-    
+
     splice> ALTER TABLE PlayerTrades ADD COLUMN TradeDate DATE;
     0 rows inserted/updated/deleted
-    
+
     splice> ALTER TABLE PlayerTrades ADD COLUMN Years INT;
     0 rows inserted/updated/deleted
-    
+
     splice> INSERT INTO PlayerTrades VALUES( 1, 'Greinke', 'SP', 'Dodgers', 'Giants', CURRENT_TIMESTAMP, CURRENT_DATE);
     1 row inserted/updated/deleted
-    
+
     splice> DESCRIBE PlayerTrades;
     COLUMN_NAME   |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
     ---------------------------------------------------------------------------
@@ -324,7 +322,7 @@ include:
     UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |YES
     TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
     YEARS         |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
-    
+
     8 rows selected
 {: .Example xml:space="preserve"}
 
@@ -342,13 +340,13 @@ In this example, we use `ALTER TABLE` to alter columns in various ways:
 <div class="preWrapperWide" markdown="1">
     splice> ALTER TABLE PlayerTrades ALTER COLUMN Updated NOT NULL;
     0 rows inserted/updated/deleted
-    
+
     splice> ALTER TABLE PlayerTrades ALTER COLUMN Years DEFAULT 3;
     0 rows inserted/updated/deleted
-    
+
     splice> ALTER TABLE PlayerTrades ALTER COLUMN NewTeam DEFAULT 'Giants';
     0 rows inserted/updated/deleted
-    
+
     splice> DESCRIBE PlayerTrades;
     COLUMN_NAME   |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
     ---------------------------------------------------------------------------
@@ -360,7 +358,7 @@ In this example, we use `ALTER TABLE` to alter columns in various ways:
     UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO
     TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
     YEARS         |INTEGER  |0   |10  |10    |3         |NULL      |YES
-    
+
     7 rows selected
 {: .Example xml:space="preserve"}
 
@@ -372,13 +370,13 @@ default associated with `NewTeam`:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> ALTER TABLE PlayerTrades DROP COLUMN Years;
     0 rows inserted/updated/deleted
-    
+
     splice> ALTER TABLE PlayerTrades ALTER COLUMN NewTeam DROP DEFAULT;
     0 rows inserted/updated/deleted
-    
+
     splice> DESCRIBE PlayerTrades;
     COLUMN_NAME   |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
     ---------------------------------------------------------------------------
@@ -389,7 +387,7 @@ default associated with `NewTeam`:
     NEWTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
     UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO
     TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
-    
+
     7 rows selected
 {: .Example xml:space="preserve"}
 
@@ -400,10 +398,10 @@ This example changes the width of one of our `VARCHAR` columns:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> ALTER TABLE PlayerTrades ALTER COLUMN PlayerName SET DATA TYPE VARCHAR(40);
     0 rows inserted/updated/deleted
-    
+
     splice> DESCRIBE PlayerTrades;
     COLUMN_NAME   |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
     ---------------------------------------------------------------------------
@@ -414,7 +412,7 @@ This example changes the width of one of our `VARCHAR` columns:
     NEWTEAM       |VARCHAR  |NULL|NULL|32    |NULL      |64        |YES
     UPDATED       |TIMESTAMP|9   |10  |29    |NULL      |NULL      |NO
     TRADEDATE     |DATE     |0   |10  |10    |NULL      |NULL      |YES
-    
+
     7 rows selected
 {: .Example xml:space="preserve"}
 
@@ -426,25 +424,25 @@ changing the increment for that column:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TABLE NewPlayers( 
        newID INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
        PlayerName);
     0 rows inserted/updated/deleted
-    
+
     splice> ALTER TABLE NewPlayers ALTER COLUMN newID SET INCREMENT BY 10;
     0 rows inserted/updated/deleted
-    
+
     splice> INSERT INTO NewPlayers(PlayerName) ('Greinke'),('Cespedes');
     2 rows inserted/updated/deleted
-    
+
     splice> SELECT * FROM NewPlayers;
     NEWID      |PLAYERNAME
     -----------------------
     1          |Greinke
     11         |Cespedes
-    
-    2 rows selected	
+
+    2 rows selected
 {: .Example xml:space="preserve"}
 
 </div>
@@ -459,4 +457,3 @@ changing the increment for that column:
 
 </div>
 </section>
-

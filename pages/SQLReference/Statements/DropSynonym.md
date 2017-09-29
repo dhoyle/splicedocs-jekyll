@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP SYNONYM   {#Statements.DropSynonym}
+# DROP SYNONYM
 
 The `DROP SYNONYM` statement drops a synonym that was previously defined
 for a table or view.

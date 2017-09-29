@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSSTATEMENTS System Table   {#SystemTables.SysStatements}
+# SYSSTATEMENTS System Table
 
 The `SYSSTATEMENTS` table describes the prepared statements in the
 database.

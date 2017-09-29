@@ -10,17 +10,17 @@ folder: SQLReference/Clauses
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# ORDER BY   {#Clauses.OrderBy}
+# ORDER BY
 
 The `ORDER BY` clause is an optional element of the following:
 
-* A [`SELECT` statement](sqlref_expressions_select.html)
+* A &nbsp;[`SELECT` statement](sqlref_expressions_select.html)
 * A *[SelectExpression](sqlref_expressions_select.html)*
-* A [`VALUES` expression](sqlref_expressions_values.html)
+* A &nbsp;[`VALUES` expression](sqlref_expressions_values.html)
 * A *[ScalarSubquery](sqlref_queries_scalarsubquery.html)*
 * A *[TableSubquery](sqlref_queries_tablesubquery.html)*
 
-It can also be used in an [`CREATE
+It can also be used in an &nbsp;[`CREATE
 VIEW`](sqlref_statements_createview.html) statement.
 
 An `ORDER BY` clause allows you to specify the order in which rows

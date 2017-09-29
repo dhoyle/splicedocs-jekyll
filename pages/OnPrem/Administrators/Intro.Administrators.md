@@ -17,7 +17,7 @@ This *Administrator's Guide* describes the administrative tasks
 associated with configuring and maintaining your Splice Machine
 software, in the following topics:
 
-<table summary="Table of descriptions of and links to the sections in this book.">
+<table summary="Table of descriptions of and links to the sections in this section.">
                 <col />
                 <col />
                 <thead>
@@ -65,4 +65,3 @@ For a summary of all Splice Machine documentation, see the
 
 </div>
 </section>
-

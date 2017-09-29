@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# INTEGER   {#BuiltInFcns.Integer}
+# INTEGER
 
 The `INTEGER` function returns an integer representation of a number or
 character string in the form of an integer constant.

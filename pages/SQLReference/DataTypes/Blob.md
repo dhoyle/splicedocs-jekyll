@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# BLOB   {#DataTypes.Blob}
+# BLOB
 
 A `BLOB` (binary large object) value is a varying-length binary string
 that can be up to 2GB (`2,147,483,647`) characters long.
@@ -94,14 +94,14 @@ objects, which we refer to as LOB-types:
 
 ## Example
 
-Using an [`INSERT`](sqlref_statements_insert.html) statement to put
+Using an &nbsp;[`INSERT`](sqlref_statements_insert.html) statement to put
 `BLOB` data into a table has some limitations if you need to cast a long
 string constant to a `BLOB`. You may be better off using a binary
 stream, as in the following code fragment.
 
 <div class="preWrapperWide" markdown="1">
     package com.splicemachine.tutorials.blob;
-    
+
     import java.io.FileInputStream;
     import java.io.FileNotFoundException;
     import java.io.InputStream;
@@ -111,9 +111,9 @@ stream, as in the following code fragment.
     import java.sql.ResultSet;
     import java.sql.SQLException;
     import java.sql.Statement;
-    
+
     public class ExampleInsertBlob {
-    
+
         /**
          * Example of inserting a blob using JDBC
          *
@@ -124,53 +124,53 @@ stream, as in the following code fragment.
             Connection conn = null;
             Statement statement = null;
             ResultSet rs = null;
-    
+
             if(args.length == 0) {
                 System.out.println("You must pass in an file (like an image) to be loaded");
             }
-    
+
             try {
-    
+
                 String imageFileToLoad = args[0];
-    
+
                 //Default JDBC Connection String - connects to local database
                 String dbUrl = "jdbc:splice://localhost:1527/splicedb;user=splice;password=true";
-    
+
                 //Checks to see if a JDBC URL is passed in
                 if(args.length > 1) {
                     dbUrl = args[1];
                 }
-    
+
                 //For the JDBC Driver - Use the Splice Machine Client Driver
                 Class.forName("com.splicemachine.db.jdbc.ClientDriver");
-    
+
                 //Connect to the databae
                 conn = DriverManager.getConnection(dbUrl);
-    
+
                 //Create a statement
                 statement = conn.createStatement();
-    
+
                 //Create a table
                 statement.execute("CREATE TABLE IMAGES(a INT, test BLOB)");
-    
-    
+
+
                 //Create an input stream
                 InputStream fin = new FileInputStream(imageFileToLoad);
                 PreparedStatement ps = conn.prepareStatement("INSERT INTO IMAGES VALUES (?, ?)");
                 ps.setInt(1, 1477);
-    
+
                 // - set value of input parameter to the input stream
                 ps.setBinaryStream(2, fin);
                 ps.execute();
-    
+
                 ps.close();
-    
+
                 //Lets get the count of records
                 rs = statement.executeQuery("select count(1) from IMAGES");
                 if(rs.next()) {
                     System.out.println("count=[" + rs.getInt(1) + "]");
                 }
-    
+
             } catch (ClassNotFoundException cne) {
                 cne.printStackTrace();
             } catch (SQLException se) {
@@ -188,14 +188,13 @@ stream, as in the following code fragment.
                 if(conn != null) {
                     try { conn.close(); } catch (Exception ignore) { }
                 }
-    
+
             }
         }
-    
+
     }
 {: .Example}
 
 </div>
 </div>
 </section>
-

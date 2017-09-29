@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="set-schema---statementssetschema">SET SCHEMA   {#Statements.SetSchema}</h1>
+    <h1 id="set-schema">SET SCHEMA</h1>
 
     <p>The <code>SET SCHEMA</code> statement sets the default schema for a connection’s
 session to the designated schema. The default schema is used as the
@@ -2816,8 +2816,7 @@ target schema for all statements issued from the connection that do not
 explicitly specify a schema name.</p>
 
     <p>The target schema must exist for the <code>SET SCHEMA</code> statement to succeed.
-If the schema doesn’t exist an error is returned. See the <a href="sqlref_statements_createschema.html"><code>CREATE
-SCHEMA</code> statement</a></p>
+If the schema doesn’t exist an error is returned.</p>
 
     <p class="noteNote">The <code>SET SCHEMA</code> statement is not transactional: if the <code>SET SCHEMA</code>
 statement is part of a transaction that is rolled back, the schema
@@ -2860,20 +2859,23 @@ splice&gt; SET SCHEMA "BASEBALL";
 splice&gt; SET SCHEMA 'BASEBALL'
 0 rows inserted/updated/deleted
 </code></pre>
+    </div>
 
-      <p class="body">These fail because of case sensitivity:</p>
+    <p class="body">These fail because of case sensitivity:</p>
 
+    <div class="preWrapperWide">
       <pre class="Example"><code>splice&gt; SET SCHEMA "Baseball";
 ERROR 42Y07: Schema 'Baseball' does not exist
 
 splice&gt; SET SCHEMA 'BaseBall';
 ERROR 42Y07: Schema 'BaseBall' does not exist
 </code></pre>
+    </div>
 
-      <p class="body">Here’s an example using a prepared statement:</p>
+    <p class="body">Here’s an example using a prepared statement:</p>
 
-      <div class="preWrapperWide">
-        <pre class="Example"><code>PreparedStatement ps = conn.PrepareStatement("set schema ?");
+    <div class="preWrapperWide">
+      <pre class="Example"><code>PreparedStatement ps = conn.PrepareStatement("set schema ?");
 ps.setString(1,"HOTEL");
 ps.executeUpdate();
   ... these work:
@@ -2885,7 +2887,6 @@ ps.setString(1,"splice");       //error - string is case sensitive
  ps.setNull(1, Types.VARCHAR); //error - null is not allowed
 </code></pre>
 
-      </div>
     </div>
     <h2 id="see-also">See Also</h2>
 
@@ -2897,7 +2898,6 @@ ps.setString(1,"splice");       //error - string is case sensitive
 
   </div>
 </section>
-
 
 
     <div class="tags">
@@ -2914,7 +2914,7 @@ ps.setString(1,"splice");       //error - string is case sensitive
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

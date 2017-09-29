@@ -140,7 +140,11 @@ insert one record into the audit trail table (`employees_log`) for each
 record that gets updated in the `employees` table.
 
 <div class="preWrapperWide" markdown="1">
-    CREATE TRIGGER log_salary_increaseAFTER UPDATE ON employees FOR EACH ROW   INSERT INTO employees_log     (emp_id, log_date, new_salary, action)   VALUES     (:new.empno, CURRENT_DATE, :new.salary, 'NEW SALARY');
+    CREATE TRIGGER log_salary_increase
+    AFTER UPDATE ON employees FOR EACH ROW
+    INSERT INTO employees_log
+        (emp_id, log_date, new_salary, action)
+        VALUES (:new.empno, CURRENT_DATE, :new.salary, 'NEW SALARY');
 {: .Example xml:space="preserve"}
 
 </div>
@@ -148,7 +152,9 @@ If you then issue following statement to update salaries of all
 employees in the PD department:
 
 <div class="preWrapperWide" markdown="1">
-    UPDATE employees SET salary = salary + 1000.0 WHERE department = 'PD';
+    UPDATE employees
+     SET salary = salary + 1000.0
+     WHERE department = 'PD';
 {: .Example xml:space="preserve"}
 
 </div>
@@ -171,9 +177,8 @@ record that gets updated in the `employees` table.
     CREATE TRIGGER log_salary_increase
     AFTER UPDATE ON employees referencing NEW as NEW FOR EACH ROW
     INSERT INTO employees_log
-    (emp_id, log_date, new_salary, action)
-    VALUES
-    (NEW.empno, CURRENT_DATE, NEW.salary, 'NEW SALARY');
+        (emp_id, log_date, new_salary, action)
+        VALUES (NEW.empno, CURRENT_DATE, NEW.salary, 'NEW SALARY');
 {: .Example xml:space="preserve"}
 
 </div>
@@ -181,7 +186,8 @@ If you then issue the same Update statement as used in the previous
 example:
 
 <div class="preWrapperWide" markdown="1">
-    UPDATE employees SET salary = salary + 1000.0 WHERE department = 'PD';
+    UPDATE employees SET salary = salary + 1000.0
+    WHERE department = 'PD';
 {: .Example xml:space="preserve"}
 
 </div>
@@ -195,22 +201,19 @@ This example shows a row level trigger that is called before a row is
 inserted into the `employees` table.
 
 <div class="preWrapperWide" markdown="1">
-    CREATE TRIGGER empUpdateTrigBEFORE UPDATE ON employees   FOR EACH STATEMENT SELECT ID FROM myTbl;
+    CREATE TRIGGER empUpdateTrig
+    BEFORE UPDATE ON employees
+       FOR EACH STATEMENT SELECT ID FROM myTbl;
 {: .Example xml:space="preserve"}
 
 </div>
 ## See Also
 
-* [`CREATE TRIGGER`](sqlref_statements_createtrigger.html) statement in
-  the *SQL Reference Manual*
-* [`DROP TRIGGER`](sqlref_statements_droptrigger.html) statement in the
-  *SQL Reference Manual*
+* [`CREATE TRIGGER`](sqlref_statements_createtrigger.html)
+* [`DROP TRIGGER`](sqlref_statements_droptrigger.html)
 * [Foreign keys](developers_fundamentals_foreignkeys.html)
-* [`UPDATE`](sqlref_statements_update.html) statement in the
-  *SQL Reference Manual*
-* [`WHERE`](sqlref_clauses_where.html) clause in the *SQL Reference
-  Manual*
+* [`UPDATE`](sqlref_statements_update.html)
+* [`WHERE`](sqlref_clauses_where.html)
 
 </div>
 </section>
-

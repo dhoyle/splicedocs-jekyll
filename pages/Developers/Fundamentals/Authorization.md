@@ -35,7 +35,7 @@ database to which the user is requesting a connection.
 Splice manages users with standard system procedures:
 
 * You can create a user with the
-  [`SYSCS_UTIL.SYSCS_CREATE_USER`](sqlref_builtinfcns_user.html)
+ &nbsp;[`SYSCS_UTIL.SYSCS_CREATE_USER`](sqlref_builtinfcns_user.html)
   procedure:
   <div class="preWrapperWide" markdown="1">
       splice> call syscs_util.syscs_create_user('username', 'password');
@@ -44,7 +44,7 @@ Splice manages users with standard system procedures:
   </div>
 
 * You can drop a user with the
-  [`SYSCS_UTIL.SYSCS_DROP_USER`](sqlref_builtinfcns_user.html)
+ &nbsp;[`SYSCS_UTIL.SYSCS_DROP_USER`](sqlref_builtinfcns_user.html)
   procedure:
   <div class="preWrapperWide" markdown="1">
       splice> call syscs_util.syscs_drop_user('username');
@@ -87,7 +87,7 @@ password is `admin`.
 
 ### Creating and Using Roles
 
-The database owner can use the [`GRANT`](sqlref_statements_grant.html)
+The database owner can use the &nbsp;[`GRANT`](sqlref_statements_grant.html)
 statement to grant a role to one or more users, to `PUBLIC`, or to
 another role. Roles can be contained within other roles and can inherit
 privileges from roles that they contain.
@@ -110,7 +110,7 @@ has only the privileges granted to the user directly or to `PUBLIC`.
 Within stored procedures and functions that contain SQL, the current
 role depends on whether the routine executes with invoker's rights or
 with definer's rights, as specified by the `EXTERNAL SECURITY` clause in
-the [`CREATE PROCEDURE`](sqlref_statements_createprocedure.html)
+the &nbsp;[`CREATE PROCEDURE`](sqlref_statements_createprocedure.html)
 statements. During execution, the current user and current role are kept
 on an authorization stack which is pushed during a stored routine call.
 
@@ -133,13 +133,13 @@ role (or user) of the nested context.
 
 ### Dropping Roles
 
-Only the database owner can drop a role. To drop a role, use the [`DROP
+Only the database owner can drop a role. To drop a role, use the &nbsp;[`DROP
 ROLE`](sqlref_statements_droprole.html) statement. Dropping a role
 effectively revokes all grants of this role to users and other roles.
 
 ## Granting Privileges
 
-Use the [`GRANT`](sqlref_statements_grant.html) statement to grant
+Use the &nbsp;[`GRANT`](sqlref_statements_grant.html) statement to grant
 privileges on schemas, tables and routines to a role or to a user.
 
 Note that when you grant privileges to a role, you are implicitly
@@ -147,7 +147,7 @@ granting those same privileges to all roles that contain that role.
 
 ## Revoking Privileges
 
-Use the [`REVOKE`](sqlref_statements_revoke.html) statement to revoke
+Use the &nbsp;[`REVOKE`](sqlref_statements_revoke.html) statement to revoke
 privileges on schemas, tables and routines.
 
 When a privilege is revoked from a user:
@@ -170,26 +170,17 @@ user.
 ## See Also
 
 * [Configuring Splice Machine
-  Authentication](onprem_install_configureauth.html) in this Guide
-* [`CREATE FUNCTION`](sqlref_statements_createfunction.html) in the
-  *SQL Reference Manual*
-* [`CREATE PROCEDURE`](sqlref_statements_createprocedure.html) in the
-  *SQL Reference Manual*
-* [`CREATE ROLE`](sqlref_statements_createrole.html) in the
-  *SQL Reference Manual*
-* [`CURRENT_ROLE`](sqlref_builtinfcns_currentrole.html) in the
-  *SQL Reference Manual*
-* [`DROP ROLE`](sqlref_statements_droprole.html) in the *SQL Reference
-  Manual*
-* [`GRANT`](sqlref_statements_grant.html) in the *SQL Reference Manual*
-* [`REVOKE`](sqlref_statements_revoke.html) in the *SQL Reference
-  Manual*
-* [`SET ROLE`](sqlref_statements_setrole.html) in the *SQL Reference
-  Manual*
-* [`SYSCS_UTIL.SYSCS_CREATE_USER`](sqlref_builtinfcns_user.html) in the
-  *SQL Reference Manual*
-* [`SYSCS_UTIL.SYSCS_DROP_USER`](sqlref_builtinfcns_user.html) in the
-  *SQL Reference Manual*
+  Authentication](onprem_install_configureauth.html)
+* [`CREATE FUNCTION`](sqlref_statements_createfunction.html)
+* [`CREATE PROCEDURE`](sqlref_statements_createprocedure.html)
+* [`CREATE ROLE`](sqlref_statements_createrole.html)
+* [`CURRENT_ROLE`](sqlref_builtinfcns_currentrole.html)
+* [`DROP ROLE`](sqlref_statements_droprole.html)
+* [`GRANT`](sqlref_statements_grant.html)
+* [`REVOKE`](sqlref_statements_revoke.html)
+* [`SET ROLE`](sqlref_statements_setrole.html)
+* [`SYSCS_UTIL.SYSCS_CREATE_USER`](sqlref_builtinfcns_user.html)
+* [`SYSCS_UTIL.SYSCS_DROP_USER`](sqlref_builtinfcns_user.html)
 
 </div>
 </section>

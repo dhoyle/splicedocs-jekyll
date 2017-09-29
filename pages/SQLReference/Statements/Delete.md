@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DELETE   {#Statements.Delete}
+# DELETE
 
 The `DELETE` statement deletes records from a table.
 
@@ -92,7 +92,7 @@ compaction.
 
 A searched delete statement depends on the table being updated, all of
 its conglomerates (units of storage such as heaps or indexes), and any
-other table named in the `WHERE` clause. A [`DROP
+other table named in the `WHERE` clause. A &nbsp;[`DROP
 INDEX`](sqlref_statements_dropindex.html) statement for the target table
 of a prepared searched delete statement invalidates the prepared
 searched delete statement.

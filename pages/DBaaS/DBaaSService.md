@@ -12,10 +12,11 @@ folder: DBaaS
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Service Overview
 
-{% include splice_snippets/dbaasonlytopic.md %}
 Our Database Service is a subscription-based service, hosted in the
 Cloud. We take care of managing your cluster services, and you can focus
 on working with our scalable, dual-engine database.
+
+{% include splice_snippets/dbaasonlytopic.md %}
 
 ## Service Availability   {#serviceavail}
 
@@ -111,4 +112,3 @@ service is cancelled. See your license agreement for more details.
 
 </div>
 </section>
-

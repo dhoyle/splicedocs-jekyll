@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# RTRIM   {#BuiltInFcns.RTrim}
+# RTRIM
 
 `RTRIM` removes blanks from the end of a character string expression.
 
@@ -25,7 +25,7 @@ folder: SQLReference/BuiltInFcns
 CharacterExpression
 {: .paramName}
 
-A [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type, any
+A &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type, any
 built-in type that is implicitly converted to a string.
 {: .paramDefnFirst}
 

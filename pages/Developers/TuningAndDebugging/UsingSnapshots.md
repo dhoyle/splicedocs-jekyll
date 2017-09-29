@@ -27,19 +27,19 @@ Snapshots include both the data and indexes for tables.
 You use these system procedures and tables to work with snapshots:
 
 * Use the
-  [`SYSCS_UTIL.SNAPSHOT_TABLE`](sqlref_sysprocs_snapshottable.html)
+ &nbsp;[`SYSCS_UTIL.SNAPSHOT_TABLE`](sqlref_sysprocs_snapshottable.html)
   system procedure to create a named snapshot for a table.
 * Use the
-  [`SYSCS_UTIL.SNAPSHOT_SCHEMA`](sqlref_sysprocs_snapshotschema.html)
+ &nbsp;[`SYSCS_UTIL.SNAPSHOT_SCHEMA`](sqlref_sysprocs_snapshotschema.html)
   system procedure to create a named snapshot for a schema.
 * Use the
-  [`SYSCS_UTIL.RESTORE_SNAPSHOT`](sqlref_sysprocs_restoresnapshot.html)
+ &nbsp;[`SYSCS_UTIL.RESTORE_SNAPSHOT`](sqlref_sysprocs_restoresnapshot.html)
   system procedure to restore a table or schema from a named snapshot.
 * Use the
-  [`SYSCS_UTIL.DELETE_SNAPSHOT`](sqlref_sysprocs_deletesnapshot.html)
+ &nbsp;[`SYSCS_UTIL.DELETE_SNAPSHOT`](sqlref_sysprocs_deletesnapshot.html)
   system procedure to delete a named snapshot.
 * Information about stored snapshots, including their names, is found in
-  the [`SYS.SYSSNAPSHOTS`](sqlref_systables_syssnapshots.html) system
+  the &nbsp;[`SYS.SYSSNAPSHOTS`](sqlref_systables_syssnapshots.html) system
   table.
 
 </div>

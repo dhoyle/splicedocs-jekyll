@@ -10,9 +10,9 @@ folder: SQLReference/JoinOps
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CROSS JOIN   {#SQL-JoinOps.CrossJoin}
+# CROSS JOIN
 
-A `CROSS JOIN` is a [`JOIN` operation](sqlref_joinops_about.html) that
+A `CROSS JOIN` is a &nbsp;[`JOIN` operation](sqlref_joinops_about.html) that
 produces the Cartesian product of two tables. Unlike other `JOIN`
 operators, it does not let you specify a join clause. You may, however,
 specify a `WHERE` clause in the `SELECT` statement.
@@ -32,7 +32,7 @@ The following `SELECT` statements are equivalent:
 
 <div class="preWrapper" markdown="1">
     splice> SELECT * FROM CITIES CROSS JOIN FLIGHTS;
-    
+
     splice> SELECT * FROM CITIES, FLIGHTS;
 {: .Example xml:space="preserve"}
 
@@ -42,7 +42,7 @@ The following `SELECT` statements are equivalent:
 <div class="preWrapper" markdown="1">
     splice> SELECT * FROM CITIES CROSS JOIN FLIGHTS
        WHERE CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT;
-    
+
     splice> SELECT * FROM CITIES INNER JOIN FLIGHTS
         ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT;
 {: .Example xml:space="preserve"}
@@ -69,7 +69,7 @@ be replaced with a sub-query. So equivalent queries would be:
       FLIGHTS INNER JOIN COUNTRIES ON 1=1
       ON CITIES.AIRPORT = FLIGHTS.ORIG_AIRPORT
       WHERE COUNTRIES.COUNTRY_ISO_CODE = 'US';
-    
+
     splice> SELECT * FROM CITIES LEFT OUTER JOIN
       (SELECT * FROM FLIGHTS, COUNTRIES) S
       ON CITIES.AIRPORT = S.ORIG_AIRPORT
@@ -84,4 +84,3 @@ be replaced with a sub-query. So equivalent queries would be:
 
 </div>
 </section>
-

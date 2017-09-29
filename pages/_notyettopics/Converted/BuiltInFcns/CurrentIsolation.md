@@ -1,7 +1,7 @@
 ﻿---
 title: CURRENT_ISOLATION built-in SQL function
 summary: Built-in SQL function that returns the current isolation level.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -9,7 +9,7 @@ permalink: sqlref_builtinfcns_currentisolation.html
 folder: SQLReference/BuiltInFcns
 ---
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CURRENT\_ISOLATION   {#BuiltInFcns.CurrentIsolation}
+# CURRENT\_ISOLATION
 
 `CURRENT ISOLATION` returns the current isolation level as a char(2)
 value of either \"\"(blank), \"UR\", \"CS\", \"RS\", or \"RR\".
@@ -30,4 +30,4 @@ value of either \"\"(blank), \"UR\", \"CS\", \"RS\", or \"RR\".
 </div>
 </div>
 
- </section> 
+ </section>

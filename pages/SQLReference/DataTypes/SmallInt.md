@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SMALLINT   {#DataTypes.SmallInt}
+# SMALLINT
 
 The `SMALLINT` data type provides 2 bytes of storage.
 

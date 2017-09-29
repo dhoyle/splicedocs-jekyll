@@ -626,7 +626,7 @@ below.</p>
 
           <div class="preWrapperWide">
             <pre class="Example"><code>package com.splicemachine.cs.function;
-    
+
 public class Functions {
    public static int addNumbers(int val1, int val2) {
       return val1 + val2;
@@ -664,10 +664,10 @@ class name, and <code>addNumbers</code> is the method name:</p>
 Stored Procedures</a> topic in
 this section to:</p>
 
-          <ul class="plainFont">
-            <li>store your Jar file</li>
-            <li>update the class path so that Splice Machine can find your code
-when the function is called.</li>
+          <ul>
+            <li><span class="PlainFont">store your Jar file</span></li>
+            <li><span class="PlainFont">update the class path so that Splice Machine can find your code
+when the function is called.</span></li>
           </ul>
 
           <p class="topLevel">Invoke your function</p>
@@ -705,23 +705,23 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-    
-    
+
+
 /**
  * This class contains custom stored procedures that will be dynamically loaded into the Splice Machine
  * database with the SQLJ jar file loading system procedures.
  *
  * @author Splice Machine
  */
-    
-    
+
+
 public class CustomSpliceProcs {
  /**
   * Return the names for all tables in the database.
   *
   * @param rs    result set containing names of all the tables in teh database
   */
-    
+
    public static void GET_TABLE_NAMES(ResultSet[] rs)
 	 throws SQLException
    {
@@ -784,35 +784,43 @@ from the <span class="AppCommand">splice&gt;</span> command line
 interpreter. For example:</p>
 
           <div class="preWrapperWide">
-            <pre class="AppCommand"><code>CALL SQLJ.INSTALL_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
-    
-CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
+            <pre class="AppCommand"><code>CALL SQLJ.INSTALL_JAR(
+  '/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar',
+  'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
+
+CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
+'derby.database.classpath', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
 </code></pre>
 
           </div>
 
-          <p class="indentLevel1">The <a href="sqlref_sysprocs_installjar.html"><code>SQLJ.INSTALL_JAR</code></a> system
+          <p class="indentLevel1">The  <a href="sqlref_sysprocs_installjar.html"><code>SQLJ.INSTALL_JAR</code></a> system
 procedure uploads the jar file from the local file system where
 <span class="AppCommand">splice&gt;</span> is executing into the
 HDFS:</p>
 
-          <ul class="plainFont">
-            <li>If you are running a cluster, the Jar files are stored under the
-<code>/hbase/splicedb/jar</code> directory in HDFS (or MapR-FS).</li>
-            <li>If you are running in standalone mode, the Jar files are stored on
+          <ul>
+            <li><span class="PlainFont">If you are running a cluster, the Jar files are stored under the
+<code>/hbase/splicedb/jar</code> directory in HDFS (or MapR-FS).</span></li>
+            <li><span class="PlainFont">If you are running in standalone mode, the Jar files are stored on
 the local file system under the <code>splicedb/jar</code> directory in the
-Splice install directory.</li>
+Splice install directory.</span></li>
           </ul>
         </li>
         <li>
           <p class="topLevel">Register your stored procedure with Splice Machine</p>
 
           <p class="indentLevel1">Register your stored procedure with the database by calling the
-<a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a>
+    <a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a>
 statement. For example:</p>
 
           <div class="preWrapperWide">
-            <pre class="AppCommand"><code>CREATE PROCEDURE SPLICE.GET_TABLE_NAMES()   PARAMETER STYLE JAVA   READS SQL DATA   LANGUAGE JAVA   DYNAMIC RESULT SETS 1   EXTERNAL NAME 'org.splicetest.customprocs.CustomSpliceProcs.GET_TABLE_NAMES';
+            <pre class="AppCommand"><code>CREATE PROCEDURE SPLICE.GET_TABLE_NAMES()
+   PARAMETER STYLE JAVA
+   READS SQL DATA
+   LANGUAGE JAVA
+   DYNAMIC RESULT SETS 1
+   EXTERNAL NAME 'org.splicetest.customprocs.CustomSpliceProcs.GET_TABLE_NAMES';
 </code></pre>
 
           </div>
@@ -823,7 +831,7 @@ run the Splice Machine <span class="AppCommand">show
 procedures</span> command.</p>
 
           <p class="indentLevel1">You can find the complete syntax for
-<a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a> in the
+    <a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a> in the
 <em>Splice Machine SQL Reference</em> manual.</p>
         </li>
         <li>
@@ -845,7 +853,9 @@ new Jar file and reload that into your databaseby calling the
 <code>SQLJ.REPLACE_JAR</code> system procedure:</p>
 
           <div class="preWrapper">
-            <pre class="AppCommand"><code>CALL SQLJ.REPLACE_JAR('/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar', 'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
+            <pre class="AppCommand"><code>CALL SQLJ.REPLACE_JAR(
+  '/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar',
+  'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
 </code></pre>
 
           </div>
@@ -884,7 +894,7 @@ procedure’s method, that closes the <code>ResultSet</code> you want. Instead, 
 can close the connection.</li>
       <li>The Splice Machine database engine itself creates the one element
 <code>ResultSet</code> arrays that hold the returned <code>ResultSets</code>.</li>
-      <li>Although the <a href="sqlref_statements_createprocedure.html"><code>CREATE
+      <li>Although the  <a href="sqlref_statements_createprocedure.html"><code>CREATE
 PROCEDURE</code></a> call allows you to
 specify the number of <code>DYNAMIC RESULT SETs</code>, we currently only support
 returning a single <code>ResultSet</code>.</li>
@@ -892,7 +902,6 @@ returning a single <code>ResultSet</code>.</li>
 
   </div>
 </section>
-
 
 
     <div class="tags">
@@ -909,7 +918,7 @@ returning a single <code>ResultSet</code>.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

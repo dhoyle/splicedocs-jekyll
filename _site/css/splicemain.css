@@ -1545,7 +1545,7 @@ li.CodeFont {
   widows: 0;
   margin: 1.1em 0 1em 0;
   padding: 0, 0, 0, 0;
-  font-family: #codefont-face;
+  font-family: "Courier";
   font-weight: normal;
   color: #4a4f54; }
   li.CodeFont p {
@@ -1579,6 +1579,20 @@ li.nested {
   li.nested p {
     margin-top: 0; }
   li.nested p.topLevel {
+    margin: 18px 0 2px 0;
+    font-weight: normal; }
+
+li.plainFont {
+  orphans: 0;
+  widows: 0;
+  margin: 1.1em 0 1em 0;
+  padding: 0, 0, 0, 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  color: #4a4f54; }
+  li.plainFont p {
+    margin-top: 0; }
+  li.plainFont p.topLevel {
     margin: 18px 0 2px 0;
     font-weight: normal; }
 
@@ -1825,7 +1839,7 @@ ul.ThirdLevel {
 /* make room for the nav bar */
 h1[id] {
   padding-top: 20px;
-  margin-top: -40px; }
+  margin-top: -20px; }
 
 h2[id],
 h3[id],
@@ -2070,7 +2084,8 @@ pre {
   background-color: transparent;
   font-weight: normal;
   padding: 0;
-  margin-left: 0; }
+  margin-left: 0;
+  margin-top: 6px; }
 
 pre.AppCommand,
 pre.AppCommandCell {
@@ -2079,7 +2094,8 @@ pre.AppCommandCell {
   background-color: #fffdf5;
   font-weight: 500;
   padding: 6px 6px 6px 6px;
-  margin-left: 32px; }
+  margin-left: 32px;
+  margin-top: 6px; }
 
 pre.Example,
 pre.ExampleCell {
@@ -2088,7 +2104,8 @@ pre.ExampleCell {
   background-color: #fcf8f0;
   font-weight: 500;
   padding: 6px 6px 6px 6px;
-  margin-left: 32px; }
+  margin-left: 32px;
+  margin-top: 6px; }
 
 pre.FcnSyntax,
 pre.FcnSyntaxCell {
@@ -2097,7 +2114,8 @@ pre.FcnSyntaxCell {
   background-color: #edf4fa;
   font-weight: 500;
   padding: 6px 6px 6px 6px;
-  margin-left: 32px; }
+  margin-left: 32px;
+  margin-top: 6px; }
 
 pre.Plain,
 pre.PlainCell {
@@ -2106,7 +2124,8 @@ pre.PlainCell {
   background-color: transparent;
   font-weight: normal;
   padding: 6px 6px 6px 6px;
-  margin-left: 32px; }
+  margin-left: 32px;
+  margin-top: 6px; }
 
 pre.ShellCommand,
 pre.ShellCommandCell {
@@ -2115,7 +2134,8 @@ pre.ShellCommandCell {
   background-color: #f5fff5;
   font-weight: 500;
   padding: 6px 6px 6px 6px;
-  margin-left: 32px; }
+  margin-left: 32px;
+  margin-top: 6px; }
 
 pre.AppCommandCell,
 pre.ExampleCell,
@@ -2364,6 +2384,10 @@ span.varName {
   text-transform: none; }
   span.varName a:link {
     color: #3390db; }
+
+span.PlainFont {
+  font-weight: normal;
+  font-face: "Open Sans", sans-serif; }
 
 table,
 table.noBorder {

@@ -10,10 +10,10 @@ folder: SQLReference/Clauses
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CONSTRAINT   {#Clauses.Constraint}
+# CONSTRAINT
 
 A `CONSTRAINT` clause is a rule to which data must conform, and is an
-optional part of [`ALTER TABLE`](sqlref_clauses_constraint.html)
+optional part of &nbsp;[`ALTER TABLE`](sqlref_clauses_constraint.html)
 statements. Constraints can optionally be named.
 
 There are two types of constraints:
@@ -49,25 +49,24 @@ difference is in where you specify them.
 
 <div class="fcnWrapperWide" markdown="1">
     {
-    NOT NULL |
-    [ [CONSTRAINT constraint-Name]
-    {PRIMARY KEY}
+      NOT NULL |
+     [ [CONSTRAINT constraint-Name] {PRIMARY KEY} ]
     }
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
 <div class="fcnWrapperWide" markdown="1">
     {
-    NOT NULL |
-    [ [CONSTRAINT constraint-Name]
-    {
-    CHECK (searchCondition) |
-    {
-    PRIMARY KEY |
-    UNIQUE |
-    REFERENCES clause
-    }
-    }
+      NOT NULL |
+      [ [CONSTRAINT constraint-Name]
+      {
+         CHECK (searchCondition) |
+         {
+            PRIMARY KEY |
+            UNIQUE |
+            REFERENCES clause
+          }
+        }
     }
 {: .FcnSyntax xml:space="preserve"}
 
@@ -92,7 +91,7 @@ At this time, you **cannot** add a primary key using `ALTER TABLE`.
 
 If you attempt to add a primary key using `ALTER TABLE` and any of the
 columns included in the primary key contain null values, an error will
-be generated and the primary key will not be added. See [`ALTER TABLE`
+be generated and the primary key will not be added. See &nbsp;[`ALTER TABLE`
 statement](sqlref_statements_altertable.html) for more information.
 {: .noteNote}
 
@@ -130,17 +129,13 @@ Specifies rules for values in the column.
 <div class="fcnWrapperWide" markdown="1">
     [CONSTRAINT constraint-Name]
     {
-       CHECK (searchCondition) |
-       {
-       PRIMARY KEY ( Simple-column-Name
-       [ , Simple-column-Name ]* ) |
-       UNIQUE ( Simple-column-Name
-       [ , Simple-column-Name ]* ) |
-       FOREIGN KEY (
-       Simple-column-Name
-       [ , Simple-column-Name ]* )
-       REFERENCES clause
-       }
+        CHECK (searchCondition) |
+        {
+            PRIMARY KEY ( Simple-column-Name [ , Simple-column-Name ]* ) |
+            UNIQUE ( Simple-column-Name [ , Simple-column-Name ]* ) |
+            FOREIGN KEY ( Simple-column-Name [ , Simple-column-Name ]* )
+                sREFERENCES clause
+        }
     }
 {: .FcnSyntax xml:space="preserve"}
 
@@ -313,7 +308,7 @@ constraints).
 If a check constraint is specified as part of a column-definition, a
 column reference can only be made to the same column. Check constraints
 specified as part of a table definition can have column references
-identifying columns previously defined in the [`CREATE
+identifying columns previously defined in the &nbsp;[`CREATE
 TABLE`](sqlref_statements_createtable.html) statement.
 
 The search condition must always return the same value if applied to the
@@ -324,7 +319,7 @@ same values. Thus, it cannot contain any of the following:
   ([`CURRENT_TIMESTAMP`](sqlref_builtinfcns_currenttimestamp.html))
 * Subqueries
 * User Functions (such as
-  [`CURRENT_USER`](sqlref_builtinfcns_currentuser.html))
+ &nbsp;[`CURRENT_USER`](sqlref_builtinfcns_currentuser.html))
 
 ## Examples
 
@@ -338,7 +333,7 @@ same values. Thus, it cannot contain any of the following:
     OUT_TRAY_PK PRIMARY KEY,
     NOTE_TEXT VARCHAR(3000)
     );
-    
+
     -- the table-level primary key definition allows you to
     -- include two columns in the primary key definition:
     CREATE TABLE SAMP.SCHED
@@ -364,7 +359,7 @@ same values. Thus, it cannot contain any of the following:
     TAX DECIMAL(9,2),
     CONSTRAINT BONUS_CK CHECK (BONUS > TAX)
     );
-    
+
     -- use a check constraint to allow only appropriate
     -- abbreviations for the meals
     CREATE TABLE FLIGHTS
@@ -408,4 +403,3 @@ from the target table.
 
 </div>
 </section>
-

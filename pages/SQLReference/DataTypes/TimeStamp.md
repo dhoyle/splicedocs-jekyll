@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TIMESTAMP   {#DataTypes.TimeStamp}
+# TIMESTAMP
 
 The `TIMESTAMP` data type stores a combined
 [`TIME`](sqlref_builtinfcns_time.html) value that permits fractional
@@ -112,7 +112,7 @@ HH:mm:ss`, which uses a 24-hour clock, does not allow for decimal digits
 of seconds, and does not allow for time zone specification.
 
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
+Values](developers_fundamentals_dates.html)*  
 for information about using simple arithmetic with `TIMESTAMP` values.
 
 ### Examples
@@ -180,7 +180,7 @@ Splice Machine also accepts strings in the locale specific datetime
 format, using the locale of the database server. If there is an
 ambiguity, the built-in formats shown above take precedence.
 
-At this time,dates in [`TimeStamp`](#) values only work correctly when
+At this time,dates in &nbsp;[`TimeStamp`](#) values only work correctly when
 limited to this range of date values:    `1678-01-01 to 2261-12-31`
 {: .noteRelease}
 
@@ -192,4 +192,3 @@ limited to this range of date values:    `1678-01-01 to 2261-12-31`
 
 </div>
 </section>
-

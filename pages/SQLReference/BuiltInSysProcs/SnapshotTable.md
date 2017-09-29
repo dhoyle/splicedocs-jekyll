@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_SNAPSHOT_TABLE   {#BuiltInSysProcs.SnapshotTable}
+# SYSCS_UTIL.SYSCS_SNAPSHOT_TABLE
 
 The `SYSCS_UTIL.SYSCS_SNAPSHOT_TABLE` system procedure creates a Splice
 Machine snapshot of the specified table. These snapshots can

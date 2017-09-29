@@ -10,7 +10,7 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Dynamic Parameters   {#Expressions.DynamicParameters}
+# Dynamic Parameters
 
 You can prepare statements that are allowed to have parameters for which
 the value is not specified when the statement is repared using

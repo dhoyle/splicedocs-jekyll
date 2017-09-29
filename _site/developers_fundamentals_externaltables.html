@@ -614,7 +614,7 @@ tables pretty much the same way as you do the tables in your database.</p>
 
     <p>External tables reference files that are stored in a flat file format
 such as Apache Parquet or Apache Orc, both of which are columnar storage
-formats that are available in Hadoop. You can use the <a href="sqlref_statements_createexternaltable.html"><code>CREATE EXTERNAL
+formats that are available in Hadoop. You can use the  <a href="sqlref_statements_createexternaltable.html"><code>CREATE EXTERNAL
 TABLE</code></a> statement to create
 an external table that is connected to a specific flat file.</p>
 
@@ -627,7 +627,7 @@ Splice Machine.</p>
     <h3 id="importing-data-into-an-external-table">Importing Data Into an External Table</h3>
 
     <p>You cannot import data directly into an external table; if you already
-have an external table in a compatible format, you can use <a href="sqlref_statements_createexternaltable.html"><code>CREATE
+have an external table in a compatible format, you can use  <a href="sqlref_statements_createexternaltable.html"><code>CREATE
 EXTERNAL TABLE</code></a> statement
 to point at the external file and query against it.</p>
 
@@ -637,11 +637,11 @@ follow these steps:</p>
     <ol>
       <li>Create (or use) a table in your Splice Machine database (your
 internal table).</li>
-      <li>Use <a href="sqlref_statements_createexternaltable.html"><code>CREATE EXTERNAL
+      <li>Use  <a href="sqlref_statements_createexternaltable.html"><code>CREATE EXTERNAL
 TABLE</code></a> to create your
 empty external table, specifying the location where you want that
 data stored externally.</li>
-      <li>Use <a href="sqlref_statements_insert.html"><code>INSERT INTO</code></a> (your external
+      <li>Use  <a href="sqlref_statements_insert.html"><code>INSERT INTO</code></a> (your external
 table) <code>SELECT</code> (from your internal table) to populate the external
 file with your data.</li>
       <li>You can now query the external table.</li>
@@ -653,7 +653,11 @@ file with your data.</li>
 <code>PARQUET</code> file that is stored on your computer:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>splice&gt; CREATE EXTERNAL TABLE myExtTbl (      col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   STORED AS PARQUET   LOCATION '/users/myname/myParquetFile';0 rows inserted/updated/deleted
+      <pre class="Example"><code>splice&gt; CREATE EXTERNAL TABLE myExtTbl (
+  col1 INT, col2 VARCHAR(24))
+    PARTITIONED BY (col1)
+    STORED AS PARQUET
+    LOCATION '/users/myname/myParquetFile';0 rows inserted/updated/deleted
 </code></pre>
 
     </div>
@@ -677,7 +681,17 @@ external table for an <code>ORC</code> file and inserts data into it:</p>
 
     <div class="preWrapperWide">
 
-      <pre class="Example"><code>splice&gt; CREATE EXTERNAL TABLE myExtTbl2(   col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   STORED AS ORC   LOCATION '/users/myname/myOrcFile';0 rows inserted/updated/deletedsplice&gt; INSERT INTO myExtTbl2 VALUES (1, 'One'), (2, 'Two'), (3, 'Three');3 rows inserted/updated/deletedsplice&gt; SELECT * FROM myExtTbl2;COL1        |COL2------------------------------------
+      <pre class="Example"><code>splice&gt; CREATE EXTERNAL TABLE myExtTbl2
+  (col1 INT, col2 VARCHAR(24))
+   PARTITIONED BY (col1)
+   STORED AS ORC
+   LOCATION '/users/myname/myOrcFile';
+0 rows inserted/updated/deleted
+splice&gt; INSERT INTO myExtTbl2 VALUES (1, 'One'), (2, 'Two'), (3, 'Three');
+3 rows inserted/updated/deletedsplice
+&gt; SELECT * FROM myExtTbl2;
+COL1        |COL2
+------------------------------------
 3           |Three
 2           |Two
 1           |One
@@ -702,7 +716,13 @@ the external table just as you would with an ordinary table.</p>
 
     <div class="preWrapperWide">
 
-      <pre class="Example"><code>splice&gt; CREATE EXTERNAL TABLE myTextTable(   col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'   LINES TERMINATED BY '\\n'   STORED AS TEXTFILE   LOCATION '/users/myName/myTextFile';0 rows inserted/updated/deleted
+      <pre class="Example"><code>splice&gt; CREATE EXTERNAL TABLE myTextTable(
+     col1 INT, col2 VARCHAR(24))
+   PARTITIONED BY (col1)
+   ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'
+   LINES TERMINATED BY '\\n'
+   STORED AS TEXTFILE
+   LOCATION '/users/myName/myTextFile';0 rows inserted/updated/deleted
 </code></pre>
 
     </div>
@@ -723,7 +743,13 @@ table with the file named <code>myOrcFile</code>, and tells Splice Machine that
 source file has been compressed with Snappy compression:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>splice&gt; CREATE EXTERNAL TABLE myExtTbl (      col1 INT, col2 VARCHAR(24))   COMPRESSED WITH SNAPPY   PARTITIONED BY (col1)   STORED AS PARQUET   LOCATION '/users/myname/myParquetFile';0 rows inserted/updated/deleted
+      <pre class="Example"><code>splice&gt; CREATE EXTERNAL TABLE myExtTbl (
+      col1 INT, col2 VARCHAR(24))
+    COMPRESSED WITH SNAPPY
+    PARTITIONED BY (col1)
+    STORED AS PARQUET
+    LOCATION '/users/myname/myParquetFile';
+ 0 rows inserted/updated/deleted
 </code></pre>
 
     </div>
@@ -758,7 +784,6 @@ built-in system procedure.</p>
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -773,7 +798,7 @@ built-in system procedure.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

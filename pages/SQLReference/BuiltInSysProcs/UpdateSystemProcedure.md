@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE   {#BuiltInSysProcs.UpdateSystemProcedure}
+# SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE
 
 The `SYSCS_UTIL.SYSCS_UPDATE_SYSTEM_PROCEDURE` system procedure updates
 the stored declaration of a specific system procedure in the data

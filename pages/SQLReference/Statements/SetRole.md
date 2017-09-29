@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SET ROLE   {#Statements.SetRole}
+# SET ROLE
 
 The `SET ROLE` statement allows you to set the current role for the
 current SQL context of a session.
@@ -57,7 +57,7 @@ following:
 
 * The privileges granted to that role
 * The union of privileges of roles contained in that role (for a
-  definition of role containment, see "Syntax for roles" in [`GRANT`
+  definition of role containment, see "Syntax for roles" in &nbsp;[`GRANT`
   statement](sqlref_statements_grant.html))
 
 In a session, the *current privileges* define what the session is

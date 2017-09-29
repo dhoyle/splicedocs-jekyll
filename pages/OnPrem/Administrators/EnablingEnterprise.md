@@ -18,7 +18,7 @@ Machine:
 
 * To access enterprise features such as Backup and Restore, you can
   simply call the
-  [`SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE`](sqlref_sysprocs_enableenterprise.html) built-in
+ &nbsp;[`SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE`](sqlref_sysprocs_enableenterprise.html) built-in
   system procedure with the license key you obtain from Splice Machine,
   as described in the next section.
 * To unlock Splice Machine Enterprise features that require

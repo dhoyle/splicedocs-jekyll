@@ -8,7 +8,7 @@ sidebar:  onprem_sidebar
 permalink: onprem_install_configureauth.html
 folder: OnPrem/InstallingSpliceMachine
 ---
-{% include splicevars.html %} <section>
+<section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Configuring Splice Machine Authentication
 
@@ -27,35 +27,35 @@ You can use one of the following authentication mechanisms, each of
 which is described below the table:
 
 <table summary="Descriptions of available authentication mechanisms.">
-                    <col style="width: 109px;" />
-                    <col style="width: 528px;" />
-                    <thead>
-                        <tr>
-                            <th>Authentication Mechanism</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>None</code></td>
-                            <td>Any user ID and password combination is allowed to connect to database.</td>
-                        </tr>
-                        <tr>
-                            <td><code>>Native</code></td>
-                            <td>
-                                <p>User IDs in a database table are validating against the corresponding, encrypted password.</p>
-                                <p>This is the default authentication setting for Splice Machine installations.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><code>LDAP</code></td>
-                            <td>
-                                <p>User IDs are validating against an existing LDAP service.</p>
+    <col style="width: 109px;" />
+    <col style="width: 528px;" />
+    <thead>
+        <tr>
+            <th>Authentication Mechanism</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>None</code></td>
+            <td>Any user ID and password combination is allowed to connect to database.</td>
+        </tr>
+        <tr>
+            <td><code>Native</code></td>
+            <td>
+                <p>User IDs in a database table are validating against the corresponding, encrypted password.</p>
+                <p>This is the default authentication setting for Splice Machine installations.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>LDAP</code></td>
+            <td>
+                <p>User IDs are validating against an existing LDAP service.</p>
 {% include splice_snippets/enterpriseonly_note.md %}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
 ## Configuring Authentication   {#Configur}
 
 You configure Splice Machine authentication by adding or updating
@@ -70,44 +70,47 @@ whenever you want. This section contains the following subsections:
 
 ### Locating Your Configuration File   {#Locating}
 
+{% include splicevars.html %}
+
 The following table specifies the platform-specific location of the
 configuration you need to update when changing your Splice Machine
 authentication properties:
 
 <table summary="Instructions for configuring Splice Machine authentication for your platform.">
-                    <col />
-                    <col />
-                    <thead>
-                        <tr>
-                            <th>Platform</th>
-                            <th>Configuration file to modify with your authentication properties</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>CDH</td>
-                            <td>{{spvar_platform_CDH5AuthSettingsLoc}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>HDP</td>
-                            <td><span class="PlatformVariablesHDP2AuthSettingsLoc">Select the Custom HBase Configs option from the HBase configuration tab.</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>MapR</td>
-                            <td>
-                                <p>{{spvar_platform_MapRAuthSettingsLoc}}
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Standalone version</td>
-                            <td>{{spvar_platform_StandaloneAuthSettingsLoc}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Platform</th>
+                <th>Configuration file to modify with your authentication properties</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CDH</td>
+                <td>{{splvar_platform_v26_CDH5-AuthSettingsLoc}}
+                </td>
+            </tr>
+            <tr>
+                <td>HDP</td>
+                <td><span class="splvar_platform_v26_HDP2-AuthSettingsLoc">Select the Custom HBase Configs option from the HBase configuration tab.</span>
+                </td>
+            </tr>
+            <tr>
+                <td>MapR</td>
+                <td>
+                    <p>{{splvar_platform_MapR-AuthSettingsLoc}}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Standalone version</td>
+                <td>{{splvar_platform_Standalone-AuthSettingsLoc}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 Configure your authentication settings by adding or modifying properties
 in the configuration file.
 
@@ -167,25 +170,25 @@ configuration file:
 
 LDAP authentication in Splice Machine uses an external LDAP server.
 
-<span class="noteEnterpriseNote">ENTERPRISE ONLY: LDAP authentication is
-available only with a Splice Machine Enterprise license.</span>
-
-You cannot use LDAP authentication with the Community version of Splice
-Machine.
-
-To obtain a license for the Splice Machine Enterprise Edition, <span
-class="noteEnterpriseNote">please [Contact Splice Machine Sales][1]{:
-target="_blank"} today.</span>
+<div class="noteIcon" markdown="0">
+<p>LDAP authentication is available only with a Splice Machine Enterprise license; you cannot use LDAP authentication with the Community version of Splice
+Machine.</p>
+<p>To obtain a license for the Splice Machine Enterprise Edition, <span
+class="noteEnterpriseNote">please <a href="https://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales today.</a></span></p>
+</div>
 
 To use LDAP with Splice Machine, you must:
 
-* [Contact us][1]{: target="_blank"} to obtain a license key from
+* <a href="https://www.splicemachine.com/company/contact-us/" target="_blank">Contact us</a> to obtain a license key from
   Splice Machine.
+
 * Enable Enterprise features by adding your Splice Machine license key
   to your HBase configuration file as the value of the
   `splicemachine.enterprise.key` property, as shown below.
+
 * Make sure that a user with name `splice` has been created in the LDAP
   server.
+
 * Add the Splice Machine LDAP properties in your HBase configuration
   file, along with the license key property:
 
@@ -194,12 +197,34 @@ To use LDAP with Splice Machine, you must:
 These are the property settings you need to configure:
 
 <div class="preWrapperWide" markdown="1">
-    <property>   <name>splicemachine.enterprise.key</name>   <value><your-Splice-Machine-license-key></value></property><property>   <name>splice.authentication</name>   <value>LDAP</value></property>
-    <property>   <name>splice.authentication.ldap.server</name>   <value><ldap://servername-ldap.yourcompany.com:389></value></property>
-    <property>   <name>splice.authentication.ldap.searchAuthDN</name>   <value><cn=commonName,ou=Users,dc=yourcompany,dc=com></value></property>
-    <property>   <name>splice.authentication.ldap.searchAuthPW</name>   <value><yourpassword</value></property>
-    <property>   <name>splice.authentication.ldap.searchBase</name>   <value>ou=Users,dc=yourcompany,dc=com</value></property>
-    <property>   <name>splice.authentication.ldap.searchFilter</name>   <value><(&amp;(objectClass=*)(uid=%USERNAME%))></value></property>
+    <property>
+       <name>splicemachine.enterprise.key</name>
+       <value><your-Splice-Machine-license-key></value>
+    </property>
+    <property>
+       <name>splice.authentication</name>
+       <value>LDAP</value>
+    </property>
+    <property>
+       <name>splice.authentication.ldap.server</name>
+       <value><ldap://servername-ldap.yourcompany.com:389></value>
+    </property>
+    <property>
+       <name>splice.authentication.ldap.searchAuthDN</name>
+       <value><cn=commonName,ou=Users,dc=yourcompany,dc=com></value>
+    </property>
+    <property>
+       <name>splice.authentication.ldap.searchAuthPW</name>
+       <value><yourpassword</span></value>
+    </property>
+    <property>
+       <name>splice.authentication.ldap.searchBase</name>
+       <value>ou=Users,dc=yourcompany,dc=com</value>
+    </property>
+    <property>
+       <name>splice.authentication.ldap.searchFilter</name>
+       <value>&lt;(&amp;(objectClass=*)(uid=%USERNAME%))&gt;</value>
+    </property>
 {: .Example xml:space="preserve"}
 
 </div>
@@ -240,7 +265,3 @@ LDAP authentication, using a connection string similar to this:
 </div>
 </div>
 </section>
-
-
-
-[1]: https://www.splicemachine.com/company/contact-us/

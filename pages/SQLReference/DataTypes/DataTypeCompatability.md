@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Splice Machine Data Assignments and Comparisons   {#DataTypes.Assignments}
+# Splice Machine Data Assignments and Comparisons
 
 The following table displays valid assignments between data types in
 Splice Machine. A *Y* indicates that the assignment is valid.
@@ -792,4 +792,3 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
             </table>
 </div>
 </section>
-

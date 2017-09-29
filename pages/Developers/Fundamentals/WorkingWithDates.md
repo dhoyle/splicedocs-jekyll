@@ -17,8 +17,8 @@ This topic provides an overview of working with dates in Splice Machine.
 For date and time values to work as expected in your database, you must
 make sure that all nodes in your cluster are set to the same time zone;
 otherwise the data you read from your database may differ, when you
-communicate with different servers!   
-  
+communicate with different servers!
+
 Please contact your system administrator if you have any questions about
 this.
 {: .noteIcon}
@@ -201,7 +201,7 @@ and a `TIMESTAMP` value, and we'll use those values in our example.
 <div class="preWrapperWide" markdown="1">
     splice> CREATE TABLE date_math (s VARCHAR(30), d DATE, t TIMESTAMP);
     0 rows inserted/updated/deleted
-    
+
     splice> INSERT INTO date_math values ('2012-05-23 12:24:36', '1988-12-26', '2000-06-07 17:12:30');
     1 row inserted/updated/deleted
 {: .Example xml:space="preserve"}
@@ -215,7 +215,7 @@ and a `TIMESTAMP` value, and we'll use those values in our example.
     ----------
     1988-12-27
     1 row selected
-    
+
     splice> select 1+t from date_math;
     1
     ----------
@@ -254,44 +254,44 @@ and a `TIMESTAMP` value, and we'll use those values in our example.
     ----------
     2011-12-27
     1 row selected
-    
+
     splice> values  date('2011-12-26') - 1;
     1
     ----------
     2011-12-25
     1 row selected
-    
+
     splice> values  timestamp('2011-12-26', '17:13:30') + 1;
     1
     -----------------------------
     2011-12-27 17:13:30.0
     1 row selected
-    
+
     splice> values  timestamp('2011-12-26', '17:13:30') - 1;
     1
     -----------------------------
     2011-12-25 17:13:30.0
     1 row selected
-    
+
     splice> values  date('2011-12-26') - date('2011-06-05');
     1
     -----------
     204
     1 row selected
-    
+
     splice> values  date('2011-06-05') - date('2011-12-26');
     1
     -----------
     -204
     1 row selected
-    
-    
+
+
     splice> values  timestamp('2015-06-07', '05:06:00') - current_date;
     1
     -----------
     108
     1 row selected
-    
+
     splice> values  timestamp('2011-06-05', '05:06:00') - date('2011-12-26');
     1
     -----------
@@ -305,24 +305,23 @@ and a `TIMESTAMP` value, and we'll use those values in our example.
 All of the following are in the *[SQL Reference
 Manual](sqlref_intro.html)*:
 
-* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html) function
-* [`DATE`](sqlref_builtinfcns_date.html) data type
-* [`DATE`](sqlref_builtinfcns_date.html) function
-* [`DAY`](sqlref_builtinfcns_day.html) function
-* [`EXTRACT`](sqlref_builtinfcns_extract.html) function
-* [`LASTDAY`](sqlref_builtinfcns_day.html) function
-* [`MONTH`](sqlref_builtinfcns_month.html) function
-* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html) function
-* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) function
-* [`NEXTDAY`](sqlref_builtinfcns_day.html) function
-* [`NOW`](sqlref_builtinfcns_now.html) function
-* [`QUARTER`](sqlref_builtinfcns_quarter.html) function
-* [`TIME`](sqlref_builtinfcns_time.html) data type
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) function
-* [`TO_CHAR`](sqlref_builtinfcns_char.html) function
-* [`TO_DATE`](sqlref_builtinfcns_date.html) function
-* [`WEEK`](sqlref_builtinfcns_week.html) function
+* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html)
+* [`DATE`](sqlref_builtinfcns_date.html)
+* [`DATE`](sqlref_builtinfcns_date.html) 
+* [`DAY`](sqlref_builtinfcns_day.html) 
+* [`EXTRACT`](sqlref_builtinfcns_extract.html) 
+* [`LASTDAY`](sqlref_builtinfcns_day.html) 
+* [`MONTH`](sqlref_builtinfcns_month.html)
+* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html)
+* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) 
+* [`NEXTDAY`](sqlref_builtinfcns_day.html) 
+* [`NOW`](sqlref_builtinfcns_now.html)
+* [`QUARTER`](sqlref_builtinfcns_quarter.html)
+* [`TIME`](sqlref_builtinfcns_time.html)
+* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) 
+* [`TO_CHAR`](sqlref_builtinfcns_char.html) 
+* [`TO_DATE`](sqlref_builtinfcns_date.html)
+* [`WEEK`](sqlref_builtinfcns_week.html)
 
 </div>
 </section>
-

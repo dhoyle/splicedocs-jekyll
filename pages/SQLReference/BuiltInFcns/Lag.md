@@ -43,7 +43,7 @@ The default value is 1.
 overClause
 {: .paramName}
 
-See the [`OVER`](sqlref_clauses_over.html) clause documentation.
+See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 {: .paramDefnFirst}
 
 </div>
@@ -54,7 +54,7 @@ software.
 
 ## Usage Notes
 
-Splice Machine recommends that you use the `LAG` function with the
+Splice Machine recommends that you use the `LAG` function with the &nbsp;
 [`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
 deterministic results.
 
@@ -67,8 +67,7 @@ in the column used in the expression.
 ## Examples
 
 The following example shows the salaries per position for players in our
-baseball database, grouped by position, and ordered from highest salary
-to lowest for each position:
+baseball database, grouped by position, and ordered from highest salary to lowest for each position:
 {: .body}
 
 <div class="preWrapper" markdown="1">
@@ -120,7 +119,7 @@ to lowest for each position:
     SS  |4     |3175000             |NULL
     SS  |52    |1500000             |3175000
     UT  |17    |1450000             |NULL
-    
+
     41 rows selected
 {: .Example xml:space="preserve"}
 
@@ -142,4 +141,3 @@ to lowest for each position:
 
 </div>
 </section>
-

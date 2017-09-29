@@ -98,7 +98,7 @@ expression.
 The numeric hour (`0-23`) is extracted from the date-time expression.
 {: .paramDefnFirst}
 
-Note that Splice Machine [`DATE`](sqlref_builtinfcns_date.html) values
+Note that Splice Machine &nbsp;[`DATE`](sqlref_builtinfcns_date.html) values
 do not include time information and will not work correctly with this
 *infoType*.
 {: .paramDefn}
@@ -109,7 +109,7 @@ do not include time information and will not work correctly with this
 The numeric minute (`0-59`) is extracted from the date-time expression.
 {: .paramDefnFirst}
 
-Note that Splice Machine [`DATE`](sqlref_builtinfcns_date.html) values
+Note that Splice Machine &nbsp;[`DATE`](sqlref_builtinfcns_date.html) values
 do not include time information and will not work correctly with this
 *infoType*.
 {: .paramDefn}
@@ -120,7 +120,7 @@ do not include time information and will not work correctly with this
 The numeric second (`0-59`) is extracted from the date-time expression.
 {: .paramDefnFirst}
 
-Note that Splice Machine [`DATE`](sqlref_builtinfcns_date.html) values
+Note that Splice Machine &nbsp;[`DATE`](sqlref_builtinfcns_date.html) values
 do not include time information and will not work correctly with this
 *infoType*.
 {: .paramDefn}
@@ -132,7 +132,7 @@ dateExpr
 The date-time expression from which you wish to extract information.
 {: .paramDefnFirst}
 
-Note that Splice Machine [`DATE`](sqlref_builtinfcns_date.html) values
+Note that Splice Machine &nbsp;[`DATE`](sqlref_builtinfcns_date.html) values
 do not include time information and thus will not produce correct values
 if you specify `HOUR`, `MINUTE`, or `SECOND` infoTypes.
 {: .paramDefn}
@@ -141,7 +141,7 @@ if you specify `HOUR`, `MINUTE`, or `SECOND` infoTypes.
 ## Examples
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> SELECT Birthdate,
        EXTRACT (Quarter FROM Birthdate) "Quarter",
        EXTRACT (Week FROM Birthdate) "Week",
@@ -170,44 +170,44 @@ if you specify `HOUR`, `MINUTE`, or `SECOND` infoTypes.
     1983-11-06|4          |44         |7
     1982-10-12|4          |41         |2
     1989-11-17|4          |46         |5
-    
+
     19 rows selected
-    
+
     splice> values EXTRACT(monthname FROM '2009-09-02 11:22:33.04');
     1
     --------------
     September
-    
-    
+
+
     splice> values EXTRACT(weekdayname FROM '2009-11-07 11:22:33.04');
     1
     --------------
     Saturday
     1 row selected
-    
+
     splice> values EXTRACT(dayofyear FROM '2009-02-01 11:22:33.04');
     1
     -----------
     32
     1 row selected
-    
+
     splice> values EXTRACT(hour FROM '2009-07-02 11:22:33.04');
     1
     -----------
     11
     1 row selected
-    
+
     splice> values EXTRACT(minute FROM '2009-07-02 11:22:33.04');
     1
     -----------
     22
     1 row selected
-    
+
     splice> values EXTRACT(second FROM '2009-07-02 11:22:33.04');
     1
     -----------
     33
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -235,4 +235,3 @@ if you specify `HOUR`, `MINUTE`, or `SECOND` infoTypes.
 
 </div>
 </section>
-

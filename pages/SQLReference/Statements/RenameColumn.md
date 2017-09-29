@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# RENAME COLUMN   {#Statements.RenameColumn}
+# RENAME COLUMN
 
 Use the `RENAME COLUMN` statement to rename a column in a table.
 
@@ -50,7 +50,7 @@ The new name for the column.
 To rename a column, you must either be the database owner or the table
 owner.
 
-To perform other table alterations, see the [`ALTER TABLE`
+To perform other table alterations, see the &nbsp;[`ALTER TABLE`
 statement](sqlref_statements_altertable.html).
 
 If a view, <span>trigger, </span>check constraint, or

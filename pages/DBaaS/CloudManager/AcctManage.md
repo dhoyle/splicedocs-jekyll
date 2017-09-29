@@ -19,7 +19,7 @@ and Account drop-down in your Dashboard, which include:
 * [Logging Out of Your Account](#Logging)
 * [Reviewing and Updating Your Billing Information](#Reviewin)
 * [Viewing and Updating Your User Profile and Password](#Updating2)
-* [[Viewing and Adding Users](#Inviting)](#Inviting)
+* [Viewing and Adding Users](#Inviting)
 * [Reviewing and Updating Your Company Information](#Updating3)
 
 ## Logging Out of Your Account   {#Logging}
@@ -113,4 +113,3 @@ class="CalloutFont">Edit</span> button.
 
 </div>
 </section>
-

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_REQUESTS   {#BuiltInSysProcs.GetRequests}
+# SYSCS_UTIL.SYSCS_GET_REQUESTS
 
 The `SYSCS_UTIL.SYSCS_GET_REQUESTS` system procedure displays
 information about the number of RPC requests that are coming into Splice

@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCONSTRAINTS System Table   {#SystemTables.SysConstraints}
+# SYSCONSTRAINTS System Table
 
 The `SYSCONSTRAINTS` table describes the information common to all types
 of constraints within the current database (currently, this includes

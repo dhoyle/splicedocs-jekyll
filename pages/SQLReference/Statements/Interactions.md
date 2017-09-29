@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Interaction with the Dependency System   {#Statements.Interaction}
+# Interaction with the Dependency System
 
 Splice Machine internally tracks the dependencies of prepared
 statements, which are SQL statements that are precompiled before being

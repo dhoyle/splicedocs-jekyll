@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="syscsutilsyscsbackupdatabase---builtinsysprocsbackupdatabase">SYSCS_UTIL.SYSCS_BACKUP_DATABASE   {#BuiltInSysProcs.BackupDatabase}</h1>
+    <h1 id="syscsutilsyscsbackupdatabase">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</h1>
 
     <p>The <code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code> system procedure performs an
 immediate full or incremental backup of your database to a specified
@@ -2848,8 +2848,7 @@ MapR-FS).</p>
 
       <p class="noteNote">You must have permissions set properly to use cloud storage as a backup
 destination. See <a href="onprem_admin_backingup.html#Backing">Backing Up to Cloud
-Storage</a> in the <em>Administrator’s
-Guide</em> for information about setting backup permissions properties.</p>
+Storage</a> for information about setting backup permissions properties.</p>
 
       <p class="paramDefn">Relative paths are resolved based on the current user directory. To
 avoid confusion, we strongly recommend that you use an absolute path
@@ -2857,11 +2856,11 @@ when specifying the backup destination.</p>
 
       <p class="paramName">backupType</p>
 
-      <p class="paramDefnFirst">Specifies the type of backup that you want performed.This must be one of
-the following values: <code>'full'</code> or <code>'incremental'</code>; any other value
+      <p class="paramDefnFirst">Specifies the type of backup that you want performed. This must be one of
+the following values: <code>full</code> or <code>incremental</code>; any other value
 produces an error and the backup is not run.</p>
 
-      <p class="paramDefn">Note that if you specify <code>'incremental'</code>, Splice Machine checks the
+      <p class="paramDefn">Note that if you specify <code>'incremental'</code>, Splice Machine checks the  
 <a href="sqlref_systables_sysbackup.html"><code>SYS.SYSBACKUP</code></a> table to determine if
 there already is a backup for the system; if not, Splice Machine will
 perform a full backup, and subsequent backups will be incremental.</p>
@@ -2946,21 +2945,15 @@ Statement executed.
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in
-the <em>Administrator’s Guide</em></li>
-      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>built-in
-system procedure</li>
-      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>built-in
-system procedure</li>
-      <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a>
-built-in system procedure</li>
-      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a>
-built-in system procedure</li>
-      <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a>
-built-in system procedure</li>
-      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code></a> system table</li>
-      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS</code></a> system table</li>
-      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code></a> system table</li>
+      <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a></li>
+      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a></li>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a></li>
+      <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a></li>
+      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a></li>
+      <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a></li>
+      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code></a></li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS</code></a></li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code></a></li>
     </ul>
 
   </div>
@@ -2981,7 +2974,7 @@ built-in system procedure</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

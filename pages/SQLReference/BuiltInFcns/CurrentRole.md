@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CURRENT_ROLE   {#BuiltInFcns.CurrentRole}
+# CURRENT_ROLE
 
 `CURRENT_ROLE` returns the authorization identifier of the current role.
 If there is no current role, it returns `NULL`.

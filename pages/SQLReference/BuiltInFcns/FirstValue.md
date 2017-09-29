@@ -25,7 +25,7 @@ of rows without having to use a self join.
 
 </div>
 <div class="paramList" markdown="1">
-expression<![CDATA[ ]]>
+expression
 {: .paramName}
 
 The expression to evaluate; typically a column name or computation
@@ -53,14 +53,14 @@ value is always returned, even if it is `NULL`.
 overClause
 {: .paramName}
 
-See the [`OVER`](sqlref_clauses_over.html) clause documentation.
+See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 {: .paramDefnFirst}
 
 </div>
 ## Usage Notes
 
 Splice Machine recommends that you use the `FIRST_VALUE` function with
-the [`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
+the &nbsp;[`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
 deterministic results.
 
 ## Results
@@ -104,7 +104,7 @@ group on his team:
     Giants   |Buddy Painter           |19    |12
     Giants   |Billy Bopper            |18    |12
     Giants   |Mitch Duffer            |12    |12
-    
+
     10 rows selected
 {: .Example xml:space="preserve"}
 
@@ -121,9 +121,7 @@ group on his team:
 * [`MIN`](sqlref_builtinfcns_min.html) function
 * [`SUM`](sqlref_builtinfcns_sum.html) function
 * [`OVER`](sqlref_clauses_over.html) clause
-* *[Using Window Functions](developers_fundamentals_windowfcns.html)* in
-  the *Developer Guide*.
+* *[Using Window Functions](developers_fundamentals_windowfcns.html)*
 
 </div>
 </section>
-

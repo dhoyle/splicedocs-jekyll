@@ -70,21 +70,15 @@ And then cancel that job; for example:
 
 ## See Also
 
-* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html) in
-  the *Administrator's Guide*
-* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)built-in
-  system procedure
-* [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)built-in
-  system procedure
+* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
+* [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-  built-in system procedure
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-  built-in system procedure
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
-  built-in system procedure
-* [`SYSBACKUP`](sqlref_systables_sysbackup.html) system table
-* [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html) system table
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html) system table
+* [`SYSBACKUP`](sqlref_systables_sysbackup.html)
+* [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
+* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

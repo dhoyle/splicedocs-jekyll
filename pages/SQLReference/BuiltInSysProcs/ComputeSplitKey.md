@@ -28,34 +28,32 @@ section to see an example of using these procedures together.
 
 <div class="fcnWrapperWide" markdown="1">
     call SYSCS_UTIL.COMPUTE_SPLIT_KEY (
-    		schemaName,
-    		tableName,
-    		indexName,
-    		columnList | null,
-    		fileName,
-    		columnDelimiter | null,
-    		characterDelimiter | null,
-    		timestampFormat | null,
-    		dateFormat | null,
-    		timeFormat | null,
-    		maxBadRecords,
-    		badRecordDirectory | null,
-    		oneLineRecords | null,
-    		charset | null,
-    		outputDirectory
-    		);
+            schemaName,
+            tableName,
+            indexName,
+            columnList | null,
+            fileName,
+            columnDelimiter | null,
+            characterDelimiter | null,
+            timestampFormat | null,
+            dateFormat | null,
+            timeFormat | null,
+            maxBadRecords,
+            badRecordDirectory | null,
+            oneLineRecords | null,
+            charset | null,
+            outputDirectory
+    );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
 <div class="noteNote" markdown="1">
 Almost all of the parameter values that you pass to this procedure
-should match the parameter values that you pass to the
-[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
+should match the parameter values that you pass to the &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 procedure.
 
 Also note that these parameters are also used in exactly the same was as
-they are in the
-[`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) procedures.
+they are in the &nbsp;[`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) procedures.
 
 </div>
 <div class="paramList" markdown="1">
@@ -96,7 +94,9 @@ column:
 {: .paramDefnFirst}
 
 <div class="preWrapper" markdown="1">
-    1500000|3000000|4500000|
+    1500000 |
+    3000000 |
+    4500000 |
 {: .Example}
 
 </div>
@@ -206,9 +206,9 @@ make sure that those characters are embedded within delimited strings.
 To use the single quote (`'`) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
 (`''''`) as the value of this parameter. This is standard SQL syntax.
+{: .paramDefn}
 
- The [Example 1](#Examples){: .WithinBook .MCXref .xref .xrefWithinBook
-xrefformat="{para}"} section below contains an example that uses the
+The [Example 1](#Examples) section below contains an example that uses the
 single quote as the string delimiter character.
 {: .noteNote}
 
@@ -219,8 +219,7 @@ The format of timestamps stored in the file. You can set this to `null`
 if there are no time columns in the file, or if the format of any
 timestamps in the file match the `Java.sql.Timestamp` default format,
 which is: "*yyyy-MM-dd HH:mm:ss*". See the [About Timestamp
-Formats](#TimestampFormats){: .WithinBook .MCXref .xref .xrefWithinBook
-xrefformat="{para}"} section below for more information about
+Formats](#TimestampFormats) section below for more information about
 timestamps.
 {: .paramDefnFirst}
 
@@ -253,10 +252,9 @@ import fails. If this count of rejected records is reached, the import
 fails, and any successful record imports are rolled back.
 {: .paramDefnFirst}
 
-* If you specify `-1` as the value of this parameter, all record import
-  failures are tolerated and logged.
-* If you specify `0` as the value of this parameter, the import will
-  fail if even one record is bad.
+* If you specify `-1` as the value of this parameter, all record import failures are tolerated and logged.
+* If you specify `0` as the value of this parameter, the import will fail if even one record is bad.
+{: .bulletNested}
 
 badRecordDirectory
 {: .paramName}
@@ -306,7 +304,7 @@ The directory into which the split keys are written:
   specified `outputDirectory`.
 * {: .nested value="3"} The name of the subdirectory in which the keys are written is the
   conglomerate ID for the named table; the
-  [`SHOW TABLES`](cmdlineref_showtables.html) command displays a table's
+ &nbsp;[`SHOW TABLES`](cmdlineref_showtables.html) command displays a table's
   conglomerate ID. 
 {: .nested}
 
@@ -321,7 +319,7 @@ procedure to import your data.
 
 {% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
+Values](developers_fundamentals_dates.html)*
 for information working with timestamps, dates, and times.
 
 {% include splice_snippets/hfileimport_example.md %}

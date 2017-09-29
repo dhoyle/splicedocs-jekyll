@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE SYNONYM   {#Statements.CreateSynonym}
+# CREATE SYNONYM
 
 The `CREATE SYNONYM` statement allows you to create an alternate name
 for a table or a view.

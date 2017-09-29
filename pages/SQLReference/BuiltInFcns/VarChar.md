@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# VARCHAR   {#BuiltInFcns.VarChar}
+# VARCHAR
 
 The `VARCHAR` function returns a varying-length character string
 representation of a character string.

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_DROP_USER   {#BuiltInSysProcs.DropUser}
+# SYSCS_UTIL.SYSCS_DROP_USER
 
 The `SYSCS_UTIL.SYSCS_DROP_USER` system procedure removes a user account
 from a database.
@@ -77,8 +77,6 @@ Drop a user named FreD:
 ## See Also
 
 * [`SYSCS_UTIL.SYSCS_CREATE_USER`](sqlref_builtinfcns_user.html)
-  built-in system procedure
 
 </div>
 </section>
-

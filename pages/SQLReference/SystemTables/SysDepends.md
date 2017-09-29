@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSDEPENDS System Table    {#SystemTables.SysDepends}
+# SYSDEPENDS System Table
 
 The `SYSDEPENDS` table stores the dependency relationships between
 persistent objects in the database.

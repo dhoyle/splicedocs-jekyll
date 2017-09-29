@@ -10,7 +10,7 @@ folder: SQLReference/Queries
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Scalar Subquery   {#Queries.ScalarSubquery}
+# Scalar Subquery
 
 A *ScalarSubquery* turns a
 *[SelectExpression](sqlref_expressions_select.html)* result into a

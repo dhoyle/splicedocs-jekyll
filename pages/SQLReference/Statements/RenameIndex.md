@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# RENAME INDEX   {#RefSection.RenameIndex}
+# RENAME INDEX
 
 The `RENAME INDEX` statement allows you to rename an index in the
 current schema. Users cannot rename indexes in the `SYS` schema.

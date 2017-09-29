@@ -10,12 +10,12 @@ folder: SQLReference/Clauses
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# HAVING   {#Clauses.Having}
+# HAVING
 
 A `HAVING` clause restricts the results of a `SelectExpression.`
 
 The `HAVING` clause is applied to each group of the grouped table,
-similarly to how a [`WHERE`](sqlref_clauses_where.html) clause is
+similarly to how a &nbsp;[`WHERE`](sqlref_clauses_where.html) clause is
 applied to a select list.
 
 If there is no `GROUP BY` clause, the `HAVING` clause is applied to the
@@ -45,7 +45,7 @@ The *searchCondition*, is a specialized
 *[booleanExpression](sqlref_expressions_boolean.html)* that can contain
 only;
 
-* grouping columns (see [`GROUP BY`](sqlref_clauses_groupby.html)
+* grouping columns (see &nbsp;[`GROUP BY`](sqlref_clauses_groupby.html)
   clause)
 * columns that are part of aggregate expressions
 * columns that are part of a subquery

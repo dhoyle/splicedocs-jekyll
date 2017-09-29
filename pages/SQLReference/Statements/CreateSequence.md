@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE SEQUENCE   {#Statements.CreateSequence}
+# CREATE SEQUENCE
 
 The `CREATE SEQUENCE` statement creates a sequence generator, which is a
 mechanism for generating exact numeric values, one at a time.
@@ -139,7 +139,7 @@ generator wraps around. The default behavior is `NO CYCLE`.
 
 </div>
 </div>
-To retrieve the next value from a sequence generator, use a [`NEXT VALUE
+To retrieve the next value from a sequence generator, use a &nbsp;[`NEXT VALUE
 FOR` expression](sqlref_expressions_nextvaluefor.html).
 
 ## Usage Privileges
@@ -148,8 +148,8 @@ The owner of the schema where the sequence generator lives automatically
 gains the `USAGE` privilege on the sequence generator, and can grant
 this privilege to other users and roles. Only the database owner and the
 owner of the sequence generator can grant these `USAGE` privileges. The
-`USAGE` privilege cannot be revoked from the schema owner. See [`GRANT
-statement`](sqlref_statements_grant.html) and [`REVOKE
+`USAGE` privilege cannot be revoked from the schema owner. See &nbsp;[`GRANT
+statement`](sqlref_statements_grant.html) and &nbsp;[`REVOKE
 statement`](sqlref_statements_revoke.html) for more information.
 
 ## Performance

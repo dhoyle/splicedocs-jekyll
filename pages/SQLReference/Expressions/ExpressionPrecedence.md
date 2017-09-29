@@ -10,7 +10,7 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Expression Precedence   {#Expressions.ExpressionPrecedence}
+# Expression Precedence
 
 The precedence of operations from highest to lowest is:
 

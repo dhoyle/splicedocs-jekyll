@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_LOGGERS   {#BuiltInSysProcs.GetLoggers}
+# SYSCS_UTIL.SYSCS_GET_LOGGERS
 
 The `SYSCS_UTIL.SYSCS_GET_LOGGERS` system procedure displays the names
 of all Splice Machine loggers in the system. Use this to find loggers of

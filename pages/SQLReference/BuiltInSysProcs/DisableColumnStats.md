@@ -18,8 +18,10 @@ collection of statistics on a specific table column in your database.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.DISABLE_COLUMN_STATISTICS(                       VARCHAR(128) schema,
-                           VARCHAR(128) table,                       VARCHAR(128) columnName)
+    SYSCS_UTIL.DISABLE_COLUMN_STATISTICS(
+                           VARCHAR(128) schema,
+                           VARCHAR(128) table,
+                           VARCHAR(128) columnName)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -61,7 +63,7 @@ an error.
 ## SQL Examples
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CALL SYSCS_UTIL.DISABLE_COLUMN_STATISTICS('SPLICE', 'Salaries', 'Salary');
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -74,9 +76,7 @@ an error.
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
 * [`SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS`](sqlref_sysprocs_collectschemastats.html)
 * [`SYSCS_UTIL.DROP_SCHEMA_STATISTICS`](sqlref_sysprocs_dropschemastats.html)
-* [Using Statistics](developers_tuning_usingstats.html) in the
-  *Developer's Guide*
+* [Using Statistics](developers_tuning_usingstats.html)
 
 </div>
 </section>
-

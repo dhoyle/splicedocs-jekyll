@@ -90,13 +90,14 @@ delimiter, which is the double-quote (`"`).
 
 If your input contains control characters such as newline characters,
 make sure that those characters are embedded within delimited strings.
-{: .paramDefnFirst}
+{: .paramDefn}
 
 To use the single quote (`'`) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
-(`''''`) as the value of this parameter. This is standard SQL syntax.  
-  
- The [Examples](#Examples) section below contains an example that uses
+(`''''`) as the value of this parameter. This is standard SQL syntax.
+{: .paramDefn}
+
+The [Examples](#Examples) section below contains an example that uses
 the single quote as the string delimiter character.
 {: .noteNote}
 
@@ -200,7 +201,7 @@ key range `{1,2}` to `{1,8}`:
     -----------------------------------------------------------------
     132c824b9e269006a8e0a3fad577bd12 |{ 1, 2}          |{ 1, 6}        |\x81\x00\x82    |\x81\x00\x86  |1          |1645  |2017-08-17 12:44:15.0  |splice:2944,\x81\x00\x82,1502999053574.132c824b9e269006a8e0a3fad577bd12.
     2ee995a552cbb75b7172eed27b917cab |{ 1, 6 }         |{ 1, 8 }       |\x81\x00\x86    |\x81\x00\x88  |1          |1192  |2017-08-17 08:37:56.0  |splice:2944,\x81\x00\x86,1502984266749.2ee995a552cbb75b7172eed27b917cab.
-    
+
     2 rows selected
 {: .Example xml:space="preserve"}
 
@@ -215,4 +216,3 @@ key range `{1,2}` to `{1,8}`:
 
 </div>
 </section>
-

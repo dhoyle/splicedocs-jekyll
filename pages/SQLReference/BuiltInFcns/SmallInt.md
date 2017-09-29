@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SMALLINT   {#BuiltInFcns.SmallInt}
+# SMALLINT
 
 The `SMALLINT` function returns a small integer representation of a
 number or character string, in the form of a small integer constant.

@@ -1,7 +1,7 @@
 ---
 summary: How to download, install, and start using the sandbox version of Splice Machine.
 title: Installing Splice Machine on Amazon Web Services
-keywords: AWS, sandbox, 
+keywords: AWS, sandbox,
 toc: false
 product: onprem
 sidebar:  onprem_sidebar
@@ -10,7 +10,7 @@ folder: OnPrem/InstallingSpliceMachine
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Installing Splice Machine on Amazon Web Services   {#DeployingCloudfront}
+# Installing Splice Machine on Amazon Web Services
 
 {% include splice_snippets/onpremonlytopic.md %}
 The fastest way to deploy Splice Machine is on the Amazon Web Services
@@ -45,8 +45,8 @@ Machine recommends a minimum configuration such as the following:
 "Splice Machine Cluster Generator dialog"){: .indentedTightSpacing}
 
 The EC2 KeyPair Name of your pem file, which can be located anywhere on
-your computer.   
-  
+your computer.
+
 When specifying your EC2 KeyPair name, **DO NOT** include any file name
 suffix. For example, enter `splice-demo`, NOT `splice-demo.pem`.
 {: .noteIndent}
@@ -187,9 +187,9 @@ database. For example:
     ~$ ssh -i ~/Downloads/splice-demo.pem.txt centos@ec2-54-164-248-229.compute-1.amazonaws.com
     Last login: Sun Jul 17 23:58:17 2016 from 10.250.0.10
     [centos@ip-10-250-0-11 ~]$ sqlshell.sh
-    
+
      ========= rlwrap detected and enabled.  Use up and down arrow keys to scroll through command line history. ========
-    
+
     Running Splice Machine SQL shell
     For help: "splice> help;"
     SPLICE* - jdbc:splice://localhost:1527/splicedb
@@ -227,11 +227,10 @@ database. For example:
     SYS           |SYSUSERS                  |880       |
     SYS           |SYSVIEWS                  |320       |
     SYSIBM        |SYSDUMMY1                 |1328      |
-    
+
     30 rows selected
     splice>
 {: .Example}
 
 </div>
 </section>
-

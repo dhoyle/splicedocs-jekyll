@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY Function   {#BuiltInSysFcns.GetDatabaseProperty}
+# SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY Function
 
 The `SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY` function fetches the value
 of the specified property of the database on the current connection.
@@ -20,7 +20,7 @@ of the specified property of the database on the current connection.
 <div class="fcnWrapperWide" markdown="1">
     VARCHAR(32672) SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY(
       IN Key VARCHAR(128)
-      ) 
+      )
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -58,7 +58,7 @@ property:
     1
     -------------------------------------------------------------
     10
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -66,8 +66,6 @@ property:
 ## See Also
 
 * [`SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY`](sqlref_sysprocs_setdbprop.html)
-  built-in system procedure
 
 </div>
 </section>
-

@@ -663,7 +663,9 @@ Certain identifiers and keywords are case sensitive: this means that
 these commands are all equivalent:</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; show connections;splice&gt; SHOW CONNECTIONS;splice&gt; Show Connections;
+      <pre class="AppCommand"><code>splice&gt; show connections;
+splice&gt; SHOW CONNECTIONS;
+splice&gt; Show Connections;
 </code></pre>
 
     </div>
@@ -744,27 +746,37 @@ numerous object types in your database, including:
 connection is designated as the current database; this is the database
 with which you’re currently working.</p>
 
-    <p>To view your current connections, use the <a href="cmdlineref_showconnections.html"><code>show
+    <p>To view your current connections, use the  <a href="cmdlineref_showconnections.html"><code>show
 connections</code></a> command:</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; show connections;DEMO     - jdbc:splice://srv55:1527/splicedbSPLICE*  - jdbc:splice://localhost:1527/splicedb* = current connection
+      <pre class="AppCommand"><code>splice&gt; show connections;
+DEMO     - jdbc:splice://srv55:1527/splicedb
+SPLICE*  - jdbc:splice://localhost:1527/splicedb
+* = current connection
 </code></pre>
 
     </div>
-    <p>You can use the <a href="cmdlineref_setconnection.html"><code>set connection</code></a>
+    <p>You can use the  <a href="cmdlineref_setconnection.html"><code>set connection</code></a>
 command to modify the current connection:</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; SET CONNECTION DEMO;splice&gt; show connections;DEMO*    - jdbc:splice://srv55:1527/splicedbSPLICE   - jdbc:splice://localhost:1527/splicedb* = current connection
+      <pre class="AppCommand"><code>splice&gt; SET CONNECTION DEMO;
+splice&gt; show connections;
+DEMO*    - jdbc:splice://srv55:1527/splicedb
+SPLICE   - jdbc:splice://localhost:1527/splicedb
+* = current connection
 </code></pre>
 
     </div>
-    <p>You can use the <a href="cmdlineref_disconnect.html"><code>disconnect</code></a> command to
+    <p>You can use the  <a href="cmdlineref_disconnect.html"><code>disconnect</code></a> command to
 close a connection:</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; Disconnect DEMO;splice&gt; show Connections;SPLICE  - jdbc:splice://localhost:1527/splicedbNo current connection
+      <pre class="AppCommand"><code>splice&gt; Disconnect DEMO;
+splice&gt; show Connections;
+SPLICE  - jdbc:splice://localhost:1527/splicedb
+No current connection
 </code></pre>
 
     </div>
@@ -773,14 +785,19 @@ the connection named <code>DEMO</code>, which had been the current connection. W
 can easily resolve this by connecting to a named connection:</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; connect splice;splice&gt; show connections;SPLICE*  - jdbc:splice://localhost:1527/splicedb* = current connection
+      <pre class="AppCommand"><code>splice&gt; connect splice;
+splice&gt; show connections;
+SPLICE*  - jdbc:splice://localhost:1527/splicedb
+* = current connection
 </code></pre>
 
     </div>
     <p>Finally, to disconnect from all connections:</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; disconnect all;splice&gt; show connections;No connections available
+      <pre class="AppCommand"><code>splice&gt; disconnect all;
+splice&gt; show connections;
+No connections available
 </code></pre>
 
     </div>
@@ -814,7 +831,7 @@ optionally specify a schema name in the show tables command; if you
 don’t include a schema name, Splice Machine assumes the current schema
 name.</p>
 
-    <p>To display the current schema name, use the built-in <a href="sqlref_builtinfcns_currentschema.html"><code>current
+    <p>To display the current schema name, use the built-in  <a href="sqlref_builtinfcns_currentschema.html"><code>current
 schema</code></a> function:</p>
 
     <div class="preWrapperWide">
@@ -830,17 +847,25 @@ SPLICE
 schema</code></a> statement:</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; set schema SYS;0 rows inserted/updated/deletedsplice&gt; values(current schema);1------------------------------SYS1 row selected
+      <pre class="AppCommand"><code>splice&gt; set schema SYS;
+0 rows inserted/updated/deleted
+splice&gt; values(current schema);
+1
+------------------------------
+SYS
+
+1 row selected
 </code></pre>
 
     </div>
     <h4 id="Viewing3">Displaying Tables</h4>
 
-    <p>The <a href="cmdlineref_showtables.html"><code>show tables</code></a> command displays a list
+    <p>The  <a href="cmdlineref_showtables.html"><code>show tables</code></a> command displays a list
 of all tables in all of the schemas in your database:</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; SHOW TABLES;TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
+      <pre class="AppCommand"><code>splice&gt; SHOW TABLES;
+TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
 --------------------------------------------------------
 SYS          |SYSALIASES            |256       |
 SYS          |SYSBACKUP             |992       |
@@ -856,11 +881,11 @@ SYS          |SYSCONSTRAINTS        |304       |
 SYS          |SYSDEPENDS            |368       |
 SYS          |SYSFILES              |288       |
 SYS          |SYSFOREIGNKEYS        |272       |
-SYS          |SYSKEYS        	     |240       |
-SYS          |SYSPERMS     	     |912       |
+SYS          |SYSKEYS               |240       |
+SYS          |SYSPERMS              |912       |
 SYS          |SYSPHYSICALSTATS      |1280      |
 SYS          |SYSPRIMARYKEYS        |320       |
-SYS          |SYSROLES     	     |816       |
+SYS          |SYSROLES              |816       |
 SYS          |SYSROUTINEPERMS       |656       |
 SYS          |SYSSCHEMAPERMS        |1328      |
 SYS          |SYSSCHEMAS            |32        |
@@ -875,17 +900,23 @@ SYS          |SYSVIEWS              |352       |
 SYSIBM       |SYSDUMMY1             |1312      |
 SPLICE       |CUSTOMERS             |1568      |
 SPLICE       |T_DETAIL              |1552      |
-SPLICE       |T_HEADER              |1536      |34 rows selected
+SPLICE       |T_HEADER              |1536      |
+
+34 rows selected
 </code></pre>
 
     </div>
     <p>To display the tables in a specific schema (named <code>SPLICE</code>):</p>
 
     <div class="preWrapperWide">
-      <pre class="AppCommand"><code>splice&gt; show tables in SPLICE;TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
---------------------------------------------------------SPLICE       |CUSTOMERS             |1568      |
+      <pre class="AppCommand"><code>splice&gt; show tables in SPLICE;
+TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
+--------------------------------------------------------
+SPLICE       |CUSTOMERS             |1568      |
 SPLICE       |T_DETAIL              |1552      |
-SPLICE       |T_HEADER              |1536      |3 rows selected
+SPLICE       |T_HEADER              |1536      |
+
+3 rows selected
 </code></pre>
 
     </div>
@@ -926,23 +957,24 @@ T_HEADER      |THIDX2        |TRANSACTION_DT      |2       |true      |BTREE|A  
     </div>
     <p>Or you can display the indexes defined for a specific table:</p>
 
-    <p class="noteIcon">Note that we use <code>IN</code> to display the indexes in a schema, and <code>FROM</code> to
-display the indexes in a table.</p>
-
     <div class="preWrapperWide">
       <pre class="AppCommand"><code>splice&gt; show indexes FROM T_DETAIL;
 TABLE_NAME    |INDEX_NAME    |COLUMN_NAME         |ORDINAL&amp;|NON_UNIQUE|TYPE |ASC&amp;|CONGLOM_NO
----------------------------------------------------------------------------------------------T_DETAIL      |TDIDX1        |ORIGINAL_SKU_CATEGO&amp;|1       |true      |BTREE|A   |1585
+---------------------------------------------------------------------------------------------
+T_DETAIL      |TDIDX1        |ORIGINAL_SKU_CATEGO&amp;|1       |true      |BTREE|A   |1585
 T_DETAIL      |TDIDX1        |TRANSACTION_DT      |2       |true      |BTREE|A   |1585
 T_DETAIL      |TDIDX1        |CUSTOMER_MASTER_ID  |3       |true      |BTREE|A   |1585
 
 3 rows selected
 </code></pre>
 
+      <p class="noteIcon">Note that we use <code>IN</code> to display the indexes in a schema, and <code>FROM</code> to
+display the indexes in a table.</p>
+
     </div>
     <h4 id="Views">Displaying Views</h4>
 
-    <p>Similarly to indexes, you can use the <a href="cmdlineref_showviews.html"><code>show
+    <p>Similarly to indexes, you can use the  <a href="cmdlineref_showviews.html"><code>show
 views</code></a> command to display all of the indexes
 in your database or in a schema:</p>
 
@@ -969,7 +1001,7 @@ SYS            |SYSTABLESTATISTICS    |NULL      |
 in SQL statements; these functions can be invoked where most other
 built-in functions are allowed, including within SQL expressions and
 <code>SELECT</code> statement. Functions must be deterministic, and cannot be used
-to make changes to the database. You can use the <a href="cmdlineref_showfunctions.html"><code>show
+to make changes to the database. You can use the  <a href="cmdlineref_showfunctions.html"><code>show
 functions</code></a> command to display which
 functions are defined in your database or schema:</p>
 
@@ -988,7 +1020,7 @@ logic into a <em>stored procedure</em>, which is a subroutine that is stored in
 your database’s data dictionary. Unlike user-defined functions, a stored
 procedure is not an expression and can only be invoked using the <code>CALL</code>
 statement. Stored procedures allow you to modify the database and return
-<code>Result Sets</code> or nothing at all. You can use the <a href="cmdlineref_showprocedures.html"><code>show
+<code>Result Sets</code> or nothing at all. You can use the  <a href="cmdlineref_showprocedures.html"><code>show
 procedures</code></a> command to display which
 functions are defined in your database or schema:</p>
 
@@ -1027,7 +1059,11 @@ our <em>SQL Reference Manual</em> for more information.</p>
     <p>SQL uses <code>CREATE</code> statements to create objects such as
 <a href="sqlref_statements_createtable.html">tables</a>. For example:</p>
 
-    <pre class="AppCommand"><code>splice&gt; CREATE schema MySchema1;0 rows inserted/updated/deletedsplice&gt; create Schema mySchema2;0 rows inserted/updated/deletedsplice&gt; show schemas;
+    <pre class="AppCommand"><code>splice&gt; CREATE schema MySchema1;
+0 rows inserted/updated/deleted
+splice&gt; create Schema mySchema2;
+0 rows inserted/updated/deleted
+splice&gt; show schemas;
 TABLE_SCHEM
 ------------------------------
 MYSCHEMA1MYSCHEMA2NULLID
@@ -1041,7 +1077,12 @@ SYSFUN
 SYSIBM
 SYSPROC
 SYSSTAT
-13 rows selectedsplice&gt; SET SCHEMA MySchema1;0 rows inserted/updated/deletedsplice&gt; CREATE TABLE myTable ( myNum int, myName VARCHAR(64) );0 rows inserted/updated/deletedsplice&gt; CREATE TABLE Players(
+13 rows selected
+splice&gt; SET SCHEMA MySchema1;
+0 rows inserted/updated/deleted
+splice&gt; CREATE TABLE myTable ( myNum int, myName VARCHAR(64) );
+0 rows inserted/updated/deleted
+splice&gt; CREATE TABLE Players(
     ID           SMALLINT NOT NULL PRIMARY KEY,
     Team         VARCHAR(64) NOT NULL,
     Name         VARCHAR(64) NOT NULL,
@@ -1049,9 +1090,16 @@ SYSSTAT
     DisplayName  VARCHAR(24),
     BirthDate    DATE
     );
-0 rows inserted/updated/deletedsplice&gt; SHOW TABLES IN MySchema1;TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
---------------------------------------------------------MYSCHEMA1    |MYTABLE               |1616      |
-MYSCHEMA1    |PLAYERS               |1632      |2 rows selectedsplice&gt; describe Players;COLUMN_NAME   |TYPE_NAME|DEC&amp;|NUM&amp;|COLUM&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
+0 rows inserted/updated/deleted
+splice&gt; SHOW TABLES IN MySchema1;
+TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
+--------------------------------------------------------
+MYSCHEMA1    |MYTABLE               |1616      |
+MYSCHEMA1    |PLAYERS               |1632      |
+2 rows selected
+
+splice&gt; describe Players;
+COLUMN_NAME   |TYPE_NAME|DEC&amp;|NUM&amp;|COLUM&amp;|COLUMN_DEF|CHAR_OCTE&amp;|IS_NULL&amp;
 -------------------------------------------------------------------
 ID            |SMALLINT |0   |10  |5     |NULL      |NULL      |NO
 TEAM          |VARCHAR  |NULL|NULL|64    |NULL      |128       |NO
@@ -1078,9 +1126,12 @@ section in our <em>SQL Reference Manual</em> for more information.</p>
 enforces the rule that the schema cannot be deleted from the database if
 there are any objects defined in the schema.</p>
 
-    <pre class="AppCommand"><code>splice&gt; show schemas;TABLE_SCHEM
+    <pre class="AppCommand"><code>splice&gt; show schemas;
+TABLE_SCHEM
 ------------------------------
-MYSCHEMA1MYSCHEMA2NULLID
+MYSCHEMA1
+MYSCHEMA2
+NULLID
 SPLICE
 SQLJ
 SYS
@@ -1091,8 +1142,14 @@ SYSFUN
 SYSIBM
 SYSPROC
 SYSSTAT
-12 rows selectedsplice&gt; DROP TABLE myTable;0 rows inserted/updated/deletedsplice&gt; SHOW TABLES IN MySchema1;TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
---------------------------------------------------------MYSCHEMA1    |PLAYERS               |1632      |1 row selected
+12 rows selected
+
+splice&gt; DROP TABLE myTable;
+0 rows inserted/updated/deleted
+splice&gt; SHOW TABLES IN MySchema1;
+TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
+--------------------------------------------------------
+MYSCHEMA1    |PLAYERS               |1632      |1 row selected
 </code></pre>
 
     <p>See the <em><a href="sqlref_statements_dropstatements.html">DROP Statements</a></em>
@@ -1155,13 +1212,16 @@ ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE
     <pre class="AppCommand"><code>splice&gt; select * from Players WHERE Team='Cards';
 ID    |TEAM   |NAME           |POS&amp;|DISPLAYNAME    |BIRTHDATE
 ---------------------------------------------------------------
-27    |Cards  |Earl Hastings  |OF  |Speedy Earl    |1982-04-221 row selected
+27    |Cards  |Earl Hastings  |OF  |Speedy Earl    |1982-04-22
+1 row selected
 </code></pre>
 
     <p>You can easily count the records in a table by using the
 <a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement; for example:</p>
 
-    <pre class="AppCommand"><code>splice&gt; select count(*) from Players;1-----------------------31 row selected
+    <pre class="AppCommand"><code>splice&gt; select count(*) from Players;
+-----------------------
+31 rows selected
 </code></pre>
 
     <h2 id="see-also">See Also</h2>
@@ -1196,7 +1256,7 @@ Splice Machine.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

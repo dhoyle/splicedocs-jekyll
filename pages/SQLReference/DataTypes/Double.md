@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DOUBLE   {#DataTypes.Double}
+# DOUBLE
 
 The `DOUBLE` data type provides 8-byte storage for numbers using IEEE
 floating-point notation. `DOUBLE PRECISION` can be used synonymously

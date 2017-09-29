@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# ABS or ABSVAL   {#BuiltInFcns.Abs}
+# ABS or ABSVAL
 
 `ABS` or `ABSVAL` returns the absolute value of a numeric expression.
 
@@ -37,12 +37,12 @@ The return type is the type of the input parameter.
 ## Example
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> VALUES ABS(-3);
     1
     ----------
     3
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -53,4 +53,3 @@ The return type is the type of the input parameter.
 
 </div>
 </section>
-

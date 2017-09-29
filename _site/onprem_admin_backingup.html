@@ -540,20 +540,18 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="backing-up-and-restoring-your-database">Backing Up and Restoring Your Database</h1>
 
-    <div class="openSourceNoteWrapper">
-<div class="openSourceNote">
-        <p><span class="noteEnterpriseNote">ENTERPRISE ONLY: This feature is
+    <div class="openSourceNote">
+      <p><span class="noteEnterpriseNote">ENTERPRISE ONLY: This feature is
 available only for the Splice Machine Enterprise version of our
-On-Premise Database product.</span> You cannot use this feature with the
-Community editions of Splice Machine. For a list of the additional
-features available in the Enterprise edition, see our <a href="notes_editions.html">Splice Machine
+On-Premise Database product.</span></p>
+
+      <p>You cannot use this feature with the Community editions of Splice Machine. For a list of the additional features available in the Enterprise edition, see our <a href="notes_editions.html">Splice Machine
 Editions</a> page.</p>
 
-        <p>To obtain a license for the Splice Machine <em>Enterprise Edition</em>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a>
+      <p>To obtain a license for the Splice Machine <em>Enterprise Edition</em>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/">Contact Splice Machine Sales</a>
 today.</span></p>
 
-      </div>
-</div>
+    </div>
 
     <p>Splice Machine provides built-in system procedures that make it easy to
 back up and restore your entire database. You can:</p>
@@ -764,7 +762,7 @@ performed; use.one of the following values: <code>full</code> or <code>increment
         <h4 id="example-2execute-an-incremental-backup-now">Example 2: Execute an incremental backup now:</h4>
 
         <p>This call will run an incremental backup right now. Splice Machine
-checks the <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a>
+checks the  <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a>
 to determine if there already is a backup for the system; if not, Splice
 Machine will perform a full backup, and subsequent backups will be
 incremental. The backup data is stored in the specified directory.</p>
@@ -797,7 +795,7 @@ procedure:</p>
       <p class="paramDefnFirst">A <code>VARCHAR</code> value that specifies the path to the directory in which the
 backup isstored.</p>
 
-      <p class="paramDefn">You can find the <em>backupId</em> you want to use by querying the <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP
+      <p class="paramDefn">You can find the <em>backupId</em> you want to use by querying the  <a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP
 System Table</code></a>. See the <a href="#Reviewing">Reviewing
 Backup Information</a> section below for more information.</p>
 
@@ -1043,12 +1041,12 @@ Splice Machine backups; follow these steps:</p>
         <li>
           <p class="topLevel">Stop both HBase and HDFS: </p>
 
-          <ul class="plainFont">
-            <li>Click the <span class="AppCommand">HBase Actions</span> drop-down
+          <ul>
+            <li><span class="PlainFont">Click the <span class="AppCommand">HBase Actions</span> drop-down
 arrow associated with (to the right of) <code>HBase</code> in the cluster
-summary section of the home screen, and then click <span class="AppCommand">Stop</span> to stop HBase.</li>
-            <li>Click the <span class="AppCommand">HDFS Actions</span> drop-down
-arrow associated with (to the right of) and then click <span class="AppCommand">Stop</span> to stop HDFS.</li>
+summary section of the home screen, and then click <span class="AppCommand">Stop</span> to stop HBase.</span></li>
+            <li><span class="PlainFont">Click the <span class="AppCommand">HDFS Actions</span> drop-down
+arrow associated with (to the right of) and then click <span class="AppCommand">Stop</span> to stop HDFS.</span></li>
           </ul>
         </li>
         <li>Click <span class="AppCommand">HDFS</span> in the Cloudera Manager
@@ -1067,15 +1065,15 @@ fs.s3.awsSecretAccessKey   = &lt;Your AWS Access Secret Key&gt;
         <li>
           <p class="topLevel">Restart both services:</p>
 
-          <ul class="plainFont">
-            <li>Click the <span class="AppCommand">HDFS Actions</span> drop-down
+          <ul>
+            <li><span class="PlainFont">Click the <span class="AppCommand">HDFS Actions</span> drop-down
 arrow associated with (to the right of) HDFS in the cluster
 summary section of the Cloudera Manager home screen, and then
-click <span class="AppCommand">Start</span> to restart HDFS.</li>
-            <li>Navigate to the <em>HBase Status</em> tab in Cloudera Manager. Then,
+click <span class="AppCommand">Start</span> to restart HDFS.</span></li>
+            <li><span class="PlainFont">Navigate to the <em>HBase Status</em> tab in Cloudera Manager. Then,
 using the <span class="AppCommand">Actions</span> drop-down in the
 upper-right corner, click <span class="AppCommand">Start</span> to
-create a start HBase.</li>
+create a start HBase.</span></li>
           </ul>
         </li>
       </ol>
@@ -1093,14 +1091,14 @@ these steps:</p>
           <p class="topLevel">Select the <span class="AppCommand">Services</span> tab at the top
 of the Ambari dashboard screen, then stop both HBase and HDFS: </p>
 
-          <ul class="plainFont">
-            <li>Click <span class="AppCommand">HBase</span> in the left pane of
+          <ul>
+            <li><span class="PlainFont">Click <span class="AppCommand">HBase</span> in the left pane of
 the screen, then click <span class="AppCommand">Service
 Actions-&gt;Stop</span> in the upper-right portion of the Ambari
-screen.</li>
-            <li>Click <span class="AppCommand">HDFS</span> in the left pane of the
+screen.</span></li>
+            <li><span class="PlainFont">Click <span class="AppCommand">HDFS</span> in the left pane of the
 screen, the click <span class="AppCommand">Service
-Actions-&gt;Stop</span>.</li>
+Actions-&gt;Stop</span>.</span></li>
           </ul>
         </li>
         <li>Select <span class="AppCommand">Custom core-site</span> and add
@@ -1116,13 +1114,13 @@ fs.s3.awsSecretAccessKey   = &lt;Your AWS Secret Access Key&gt;
         <li>
           <p class="topLevel">Restart both services:</p>
 
-          <ul class="plainFont">
-            <li>Click <span class="AppCommand">HDFS</span> in the left pane of the
+          <ul>
+            <li><span class="PlainFont">Click <span class="AppCommand">HDFS</span> in the left pane of the
 screen, the click <span class="AppCommand">Service
-Actions-&gt;Restart All</span>.</li>
-            <li>Click <span class="AppCommand">HBase</span> in the left pane of
+Actions-&gt;Restart All</span>.</span></li>
+            <li><span class="PlainFont">Click <span class="AppCommand">HBase</span> in the left pane of
 the screen, the click <span class="AppCommand">Service
-Actions-&gt;Restart All</span>.</li>
+Actions-&gt;Restart All</span>.</span></li>
           </ul>
         </li>
       </ol>
@@ -1151,11 +1149,11 @@ RegionServer in your cluster to allow hosts access to Amazon S3. You
 need to provide the fs.s3 access key ID and secret in each of these
 files:</p>
 
-          <ul class="plainFont">
-            <li><code>/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml</code> for
-<em>Hadoop/MapReduce/YARN 2.x</em> site configuration</li>
-            <li><code>/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml</code> for
-<em>Hadoop/MapReduce 0.x/1.x</em> site configuration</li>
+          <ul>
+            <li><span class="PlainFont"><code>/opt/mapr/hadoop/hadoop-2.x.x/etc/hadoop/core-site.xml</code> for
+<em>Hadoop/MapReduce/YARN 2.x</em> site configuration</span></li>
+            <li><span class="PlainFont"><code>/opt/mapr/hadoop/hadoop-0.x.x/conf/core-site.xml</code> for
+<em>Hadoop/MapReduce 0.x/1.x</em> site configuration</span></li>
           </ul>
 
           <p>If both <em>MapReduce v1</em> and <em>YARN/MapReduce 2</em> are installed on the
@@ -1247,26 +1245,16 @@ example:</p>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a> in
-the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_sysprocs_cancelbackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_BACKUP</code></a>
-in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>
-in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>
-in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a>
-in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a>
-in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a>
-in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a> in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS System Table</code></a>
-in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS System Table</code></a> in
-the <em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a></li>
+      <li><a href="sqlref_sysprocs_cancelbackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_BACKUP</code></a></li>
+      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a></li>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a></li>
+      <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a></li>
+      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a></li>
+      <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a></li>
+      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP System Table</code></a></li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS System Table</code></a></li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS System Table</code></a></li>
     </ul>
 
   </div>
@@ -1288,7 +1276,7 @@ the <em>SQL Reference Manual</em></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

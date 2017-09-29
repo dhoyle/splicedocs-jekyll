@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_SESSION_INFO   {#BuiltInSysProcs.GetSchemaInfo}
+# SYSCS_UTIL.SYSCS_GET_SESSION_INFO
 
 The `SYSCS_UTIL.SYSCS_GET_SESSION_INFO` system procedure displays the
 hostname and session ID for your current session. You can use this

@@ -614,7 +614,7 @@ database to which the user is requesting a connection.</p>
 
     <ul>
       <li>You can create a user with the
-<a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_CREATE_USER</code></a>
+  <a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_CREATE_USER</code></a>
 procedure:
         <div class="preWrapperWide">
           <pre class="AppCommand"><code>splice&gt; call syscs_util.syscs_create_user('username', 'password');
@@ -623,7 +623,7 @@ procedure:
         </div>
       </li>
       <li>You can drop a user with the
-<a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_DROP_USER</code></a>
+  <a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_DROP_USER</code></a>
 procedure:
         <div class="preWrapperWide">
           <pre class="AppCommand"><code>splice&gt; call syscs_util.syscs_drop_user('username');
@@ -670,7 +670,7 @@ password is <code>admin</code>.</p>
 
     <h3 id="creating-and-using-roles">Creating and Using Roles</h3>
 
-    <p>The database owner can use the <a href="sqlref_statements_grant.html"><code>GRANT</code></a>
+    <p>The database owner can use the  <a href="sqlref_statements_grant.html"><code>GRANT</code></a>
 statement to grant a role to one or more users, to <code>PUBLIC</code>, or to
 another role. Roles can be contained within other roles and can inherit
 privileges from roles that they contain.</p>
@@ -693,7 +693,7 @@ has only the privileges granted to the user directly or to <code>PUBLIC</code>.<
     <p>Within stored procedures and functions that contain SQL, the current
 role depends on whether the routine executes with invoker’s rights or
 with definer’s rights, as specified by the <code>EXTERNAL SECURITY</code> clause in
-the <a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a>
+the  <a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a>
 statements. During execution, the current user and current role are kept
 on an authorization stack which is pushed during a stored routine call.</p>
 
@@ -718,13 +718,13 @@ role (or user) of the nested context.</p>
 
     <h3 id="dropping-roles">Dropping Roles</h3>
 
-    <p>Only the database owner can drop a role. To drop a role, use the <a href="sqlref_statements_droprole.html"><code>DROP
+    <p>Only the database owner can drop a role. To drop a role, use the  <a href="sqlref_statements_droprole.html"><code>DROP
 ROLE</code></a> statement. Dropping a role
 effectively revokes all grants of this role to users and other roles.</p>
 
     <h2 id="granting-privileges">Granting Privileges</h2>
 
-    <p>Use the <a href="sqlref_statements_grant.html"><code>GRANT</code></a> statement to grant
+    <p>Use the  <a href="sqlref_statements_grant.html"><code>GRANT</code></a> statement to grant
 privileges on schemas, tables and routines to a role or to a user.</p>
 
     <p>Note that when you grant privileges to a role, you are implicitly
@@ -732,7 +732,7 @@ granting those same privileges to all roles that contain that role.</p>
 
     <h2 id="revoking-privileges">Revoking Privileges</h2>
 
-    <p>Use the <a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> statement to revoke
+    <p>Use the  <a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> statement to revoke
 privileges on schemas, tables and routines.</p>
 
     <p>When a privilege is revoked from a user:</p>
@@ -758,26 +758,17 @@ user.</p>
 
     <ul>
       <li><a href="onprem_install_configureauth.html">Configuring Splice Machine
-Authentication</a> in this Guide</li>
-      <li><a href="sqlref_statements_createfunction.html"><code>CREATE FUNCTION</code></a> in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a> in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_createrole.html"><code>CREATE ROLE</code></a> in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_builtinfcns_currentrole.html"><code>CURRENT_ROLE</code></a> in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_droprole.html"><code>DROP ROLE</code></a> in the <em>SQL Reference
-Manual</em></li>
-      <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a> in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> in the <em>SQL Reference
-Manual</em></li>
-      <li><a href="sqlref_statements_setrole.html"><code>SET ROLE</code></a> in the <em>SQL Reference
-Manual</em></li>
-      <li><a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_CREATE_USER</code></a> in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_DROP_USER</code></a> in the
-<em>SQL Reference Manual</em></li>
+Authentication</a></li>
+      <li><a href="sqlref_statements_createfunction.html"><code>CREATE FUNCTION</code></a></li>
+      <li><a href="sqlref_statements_createprocedure.html"><code>CREATE PROCEDURE</code></a></li>
+      <li><a href="sqlref_statements_createrole.html"><code>CREATE ROLE</code></a></li>
+      <li><a href="sqlref_builtinfcns_currentrole.html"><code>CURRENT_ROLE</code></a></li>
+      <li><a href="sqlref_statements_droprole.html"><code>DROP ROLE</code></a></li>
+      <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a></li>
+      <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a></li>
+      <li><a href="sqlref_statements_setrole.html"><code>SET ROLE</code></a></li>
+      <li><a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_CREATE_USER</code></a></li>
+      <li><a href="sqlref_builtinfcns_user.html"><code>SYSCS_UTIL.SYSCS_DROP_USER</code></a></li>
     </ul>
 
   </div>
@@ -798,7 +789,7 @@ Manual</em></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

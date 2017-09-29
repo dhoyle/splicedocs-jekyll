@@ -544,7 +544,7 @@ you install Splice Machine. You’ll find it in the <span class="CodeFont">jdbc-
 directory; typically:</p>
 
           <div class="PreWrapperWide">
-            <pre class="Example"><code>/splicemachine/jdbc-driver/db-client-2.6.1.1736-SNAPSHOT.jar
+            <pre class="Example"><code>/splicemachine/jdbc-driver/
 </code></pre>
 
           </div>
@@ -567,53 +567,53 @@ software update.</p>
 
           <div class="preWrapperWide">
             <pre class="Example"><code>package com.splicemachine.cs.tools
-    
+
 import java.sql.*;
-    
+
 /**
 * Simple example that establishes a connection with splice and does a few basic JDBC operations
 */
 public class SampleJDBC {
 public static void main(String[] arg) {
-	//JDBC Connection String - sample connects to local database
-	String dbUrl = "jdbc:splice://localhost:1527/splicedb;user=splice;password=admin";
-	try{
-		//For the JDBC Driver - Use the Apache Derby Client Driver
-		Class.forName("com.splicemachine.db.jdbc.ClientDriver");
-	}catch(ClassNotFoundException cne){
-		cne.printStackTrace();
-		return; //exit early if we can't find the driver
-	}
-    
-	try(Connection conn = DriverManager.getConnection(dbUrl)){
-		//Create a statement
-		try(Statement statement = conn.createStatement()){
-    
-			//Create a table
-			statement.execute("CREATE TABLE MYTESTTABLE(a int, b varchar(30))");
-    
-			//Insert data into the table
-			statement.execute("insert into MYTESTTABLE values (1,'a')");
-			statement.execute("insert into MYTESTTABLE values (2,'b')");
-			statement.execute("insert into MYTESTTABLE values (3,'c')");
-			statement.execute("insert into MYTESTTABLE values (4,'c')");
-			statement.execute("insert into MYTESTTABLE values (5,'c')");
-    
-			int counter=0;
-			//Execute a Query
-			try(ResultSet rs=statement.executeQuery("select a, b from MYTESTTABLE")){
-				while(rs.next()){
-					counter++;
-					int val_a=rs.getInt(1);
-					String val_b=rs.getString(2);
-					System.out.println("record=["+counter+"] a=["+val_a+"] b=["+val_b+"]");
-				}
-			}
-		}
-    
-	}catch (SQLException se) {
-		se.printStackTrace();
-	}
+    //JDBC Connection String - sample connects to local database
+    String dbUrl = "jdbc:splice://localhost:1527/splicedb;user=splice;password=admin";
+    try{
+        //For the JDBC Driver - Use the Apache Derby Client Driver
+        Class.forName("com.splicemachine.db.jdbc.ClientDriver");
+    }catch(ClassNotFoundException cne){
+        cne.printStackTrace();
+        return; //exit early if we can't find the driver
+    }
+
+    try(Connection conn = DriverManager.getConnection(dbUrl)){
+        //Create a statement
+        try(Statement statement = conn.createStatement()){
+
+            //Create a table
+            statement.execute("CREATE TABLE MYTESTTABLE(a int, b varchar(30))");
+
+            //Insert data into the table
+            statement.execute("insert into MYTESTTABLE values (1,'a')");
+            statement.execute("insert into MYTESTTABLE values (2,'b')");
+            statement.execute("insert into MYTESTTABLE values (3,'c')");
+            statement.execute("insert into MYTESTTABLE values (4,'c')");
+            statement.execute("insert into MYTESTTABLE values (5,'c')");
+
+            int counter=0;
+            //Execute a Query
+            try(ResultSet rs=statement.executeQuery("select a, b from MYTESTTABLE")){
+                while(rs.next()){
+                    counter++;
+                    int val_a=rs.getInt(1);
+                    String val_b=rs.getString(2);
+                    System.out.println("record=["+counter+"] a=["+val_a+"] b=["+val_b+"]");
+                }
+            }
+        }
+
+    }catch (SQLException se) {
+        se.printStackTrace();
+    }
 }
 </code></pre>
 
@@ -623,32 +623,32 @@ public static void main(String[] arg) {
 values:</p>
 
           <table summary="Table of default Splice Machine connection parameters.">
-                            <col />
-                            <col />
-                            <col />
-                            <thead>
-                                <tr>
-                                    <th>Connection Parameter</th>
-                                    <th>Default Value</th>
-                                    <th>Comments</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><em>JDBC URL</em></td>
-                                    <td><code>jdbc:splice://<span class="Highlighted">&lt;hostname&gt;</span>:1527/splicedb</code></td>
-                                    <td>
-                                        <p class="noSpaceAbove">Use <code>localhost</code> as the <span class="HighlightedCode">&lt;hostname&gt;</span> value for the standalone version of Splice Machine.</p>
-                                        <p>On a cluster, specify the IP address of an HBase RegionServer.</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><em>JDBC driver class</em></td>
-                                    <td><code>com.splicemachine.db.jdbc.ClientDriver</code></td>
-                                    <td> </td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Connection Parameter</th>
+            <th>Default Value</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>JDBC URL</td>
+            <td><code>jdbc:splice://<span class="Highlighted">&lt;hostname&gt;</span>:1527/splicedb</code></td>
+            <td>
+                <p class="noSpaceAbove">Use <code>localhost</code> as the <span class="HighlightedCode">&lt;hostname&gt;</span> value for the standalone version of Splice Machine.</p>
+                <p>On a cluster, specify the IP address of an HBase RegionServer.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>JDBC driver class</td>
+            <td><code>com.splicemachine.db.jdbc.ClientDriver</code></td>
+            <td> </td>
+        </tr>
+    </tbody>
+</table>
         </li>
         <li>
           <p class="topLevel">Compile the code</p>
@@ -664,7 +664,7 @@ code into <code>splice-jdbc-test-0.1.0-SNAPSHOT.jar</code>, you can run the
 program with this command line:</p>
 
           <div class="preWrapperWide">
-            <pre class="ShellCommand"><code>java -cp splice-installer-&lt;platformVersion&gt;/resources/jdbc-driver/ com.splicemachine.cs.tools.SampleJDBC   
+            <pre class="ShellCommand"><code>java -cp splice-installer-&lt;platformVersion&gt;/resources/jdbc-driver/ com.splicemachine.cs.tools.SampleJDBC
 </code></pre>
 
           </div>
@@ -689,7 +689,6 @@ record=[5] a=[5] b=[c]
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -704,7 +703,7 @@ record=[5] a=[5] b=[c]
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

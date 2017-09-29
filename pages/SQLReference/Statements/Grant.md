@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# GRANT   {#Statements.Grant}
+# GRANT
 
 Use the `GRANT` statement to give privileges to a specific user or role,
 or to all users, to perform actions on database objects. You can also
@@ -28,7 +28,9 @@ even with `GRANT ALL PRIVILEGES`.
 ## Syntax for Schemas
 
 <div class="fcnWrapperWide" markdown="1">
-    GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege }*   ON [SCHEMA] schema-Name    TO grantees
+    GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege }*
+       ON [SCHEMA] schema-Name
+       TO grantees
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -36,21 +38,22 @@ even with `GRANT ALL PRIVILEGES`.
 schema-privilege
 {: .paramName}
 
-`DELETE
-					|INSERT
-					|REFERENCES [( column-identifier {, column-identifier}* )]
-					|SELECT [( column-identifier {, column-identifier}* )]
-				|TRIGGER
-			|UPDATE [( column-identifier {, column-identifier}* )]`
+<div class="preWrapper"
+` DELETE
+| INSERT
+| REFERENCES [( column-identifier {, column-identifier}* )]
+| SELECT [( column-identifier {, column-identifier}* )]
+| TRIGGER
+| UPDATE [( column-identifier {, column-identifier}* )]`
 {: .paramDefnFirst}
 
 See the [Privilege Types](#PrivilegeTypes) section below for more
 information.
 {: .paramDefn}
 
-<span class="noteEnterpriseNote">ENTERPRISE ONLY: Column-level
-privileges are available only with a Splice Machine Enterprise
-license.</span>
+<div class="noteEnterprise" markdown="1">
+Column-level privileges are available only with a Splice Machine Enterprise
+license.
 
 You cannot grant or revoke privileges at the `column-identifier` level
 with the Community version of Splice Machine.
@@ -58,6 +61,7 @@ with the Community version of Splice Machine.
 To obtain a license for the Splice Machine Enterprise Edition, <span
 class="noteEnterpriseNote">please [Contact Splice Machine Sales][1]{:
 target="_blank"} today.</span>
+</div>
 
 schema-Name
 {: .paramName}
@@ -91,21 +95,23 @@ Grantees](#AboutGrantees) section below for more information.
 table-privilege
 {: .paramName}
 
-`DELETE
-					|INSERT
-					|REFERENCES [( column-identifier {, column-identifier}* )]
-					|SELECT [( column-identifier {, column-identifier}* )]
-				|TRIGGER
-			|UPDATE [( column-identifier {, column-identifier}* )]`
-{: .paramDefnFirst}
+<div class="fcnWrapperWide" markdown="1">
+      DELETE
+    | INSERT
+    | REFERENCES [( column-identifier {, column-identifier}* )]
+    | SELECT [( column-identifier {, column-identifier}* )]
+    | TRIGGER
+    | UPDATE [( column-identifier {, column-identifier}* )]
+{: .FcnSyntax xml:space="preserve"}
+</div>
 
 See the [Privilege Types](#PrivilegeTypes) section below for more
 information.
 {: .paramDefn}
 
-<span class="noteEnterpriseNote">ENTERPRISE ONLY: Column-level
-privileges are available only with a Splice Machine Enterprise
-license.</span>
+<div class="noteEnterprise" markdown="1">
+Column-level privileges are available only with a Splice Machine Enterprise
+license.
 
 You cannot grant or revoke privileges at the `column-identifier` level
 with the Community version of Splice Machine.
@@ -113,6 +119,7 @@ with the Community version of Splice Machine.
 To obtain a license for the Splice Machine Enterprise Edition, <span
 class="noteEnterpriseNote">please [Contact Splice Machine Sales][1]{:
 target="_blank"} today.</span>
+</div>
 
 table-Name
 {: .paramName}
@@ -156,7 +163,7 @@ Grantees](#AboutGrantees) section below for more information.
 
 </div>
 <div class="paramList" markdown="1">
-function-name | procedure-name
+function-name  \|  procedure-name
 {: .paramName}
 
 The name of the function or procedure to which you are granting access.
@@ -221,7 +228,7 @@ Grantees](#AboutGrantees) section below for more information.
 
 </div>
 Before you can grant a role to a user or to another role, you must
-create the role using the [`CREATE ROLE`
+create the role using the &nbsp;[`CREATE ROLE`
 statement](sqlref_statements_createrole.html). Only the database owner
 can grant a role.
 

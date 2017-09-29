@@ -32,7 +32,7 @@ A date value.
 </div>
 ## Results
 
-The return type is always [`DATE`](sqlref_builtinfcns_date.html),
+The return type is always &nbsp;[`DATE`](sqlref_builtinfcns_date.html),
 regardless of the data type of the *dateExpression*.
 
 ## Examples

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DAY   {#BuiltInFcns.Day}
+# DAY
 
 The `DAY` function returns the day part of a value.
 
@@ -28,7 +28,7 @@ expression
 An expression that can be any of the following:
 {: .paramDefnFirst}
 
-* {: .nested value="1"} A [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) value.
+* {: .nested value="1"} A &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) value.
 {: .bulletNested}
 
 </div>

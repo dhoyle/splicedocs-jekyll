@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP PROCEDURE   {#Statements.DropProcedure}
+# DROP PROCEDURE
 
 The `DROP PROCEDURE` statement drops a procedure from your database.
 Procedures are added to the database with the

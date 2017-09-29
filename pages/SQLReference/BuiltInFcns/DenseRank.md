@@ -28,7 +28,7 @@ functions](sqlref_builtinfcns_windowfcnsintro.html).
 overClause
 {: .paramName}
 
-See the [`OVER`](sqlref_clauses_over.html) clause documentation.
+See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 {: .paramDefnFirst}
 
 Ranking functions such as `DENSE_RANK` must include an
@@ -39,11 +39,11 @@ This is because the ranking is calculated based on the ordering.
 </div>
 ## Results
 
-The resulting data type is [`BIGINT`](sqlref_builtinfcns_bigint.html).
+The resulting data type is &nbsp;[`BIGINT`](sqlref_builtinfcns_bigint.html).
 
 ## Usage
 
-The `DENSE_RANK()` and [`RANK()`](sqlref_builtinfcns_rank.html) analytic
+The `DENSE_RANK()` and &nbsp;[`RANK()`](sqlref_builtinfcns_rank.html) analytic
 functions are very similar. The difference shows up when there are
 multiple input rows that have the same ranking value. When that happens:
 
@@ -87,7 +87,7 @@ salary is at least $1 million.
        DENSE_RANK() OVER (PARTITION BY Team ORDER BY Salary Desc) "RANK"
        FROM Players JOIN Salaries  ON Salaries.ID=Players.ID
        WHERE Salary>999999 AND Season=2015;
-    
+
     DISPLAYNAME             |TEAM     |SEASON|SALARY              |RANK
     ---------------------------------------------------------------------
     Mitch Hassleman         |Cards     |2015  |17000000            |1
@@ -132,7 +132,7 @@ salary is at least $1 million.
     Joseph Arkman           |Giants    |2015  |1450000             |18
     Trevor Imhof            |Giants    |2015  |1100000             |19
     Jason Minman            |Giants    |2015  |1000000             |20
-    
+
     42 rows selected
 {: .Example xml:space="preserve"}
 
@@ -145,7 +145,7 @@ tied rankings are handled differently:
        RANK() OVER (PARTITION BY Team ORDER BY Salary Desc) "RANK"
        FROM Players JOIN Salaries  ON Salaries.ID=Players.ID
        WHERE Salary>999999 AND Season=2015;
-    
+
     DISPLAYNAME             |TEAM     |SEASON|SALARY              |RANK
     ---------------------------------------------------------------------
     Mitch Hassleman         |Cards     |2015  |17000000            |1
@@ -190,7 +190,7 @@ tied rankings are handled differently:
     Joseph Arkman           |Giants    |2015  |1450000             |22
     Trevor Imhof            |Giants    |2015  |1100000             |23
     Jason Minman            |Giants    |2015  |1000000             |24
-    
+
     42 rows selected
 {: .Example xml:space="preserve"}
 
@@ -207,4 +207,3 @@ tied rankings are handled differently:
 
 </div>
 </section>
-

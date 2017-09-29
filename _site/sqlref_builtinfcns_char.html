@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="char---builtinfcnschar">CHAR   {#BuiltInFcns.Char}</h1>
+    <h1 id="char">CHAR</h1>
 
     <p>The <code>CHAR</code> function returns a fixed-length character string
 representation. The representations are:</p>
@@ -2833,7 +2833,7 @@ argument is <code>NULL</code>, the result is the <code>NULL</code>value.</p>
     <h2 id="character-to-character-syntax">Character to character syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>CHAR (CharacterExpression [, integer] ) 
+      <pre class="FcnSyntax"><code>CHAR (CharacterExpression [, integer] )
 </code></pre>
 
     </div>
@@ -2849,23 +2849,21 @@ VARCHAR</code>, or <code>CLOB</code> data type.</p>
 The value must be between 0 and 254.</p>
 
     </div>
-    <blockquote>
-      <h3 id="results">Results</h3>
+    <h3 id="results">Results</h3>
 
-      <p>If the length of the character-expression is less than the length
+    <p>If the length of the character-expression is less than the length
 attribute of the result, the result is padded with blanks up to the
 length of the result.</p>
 
-      <p>If the length of the character-expression is greater than the length
+    <p>If the length of the character-expression is greater than the length
 attribute of the result, truncation is performed. A warning is
 returned unless the truncated characters were all blanks and the
 character-expression was not a long string (<code>LONG VARCHAR</code> or <code>CLOB</code>).</p>
-    </blockquote>
 
     <h2 id="integer-to-character-syntax">Integer to character syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>CHAR (IntegerExpression ) 
+      <pre class="FcnSyntax"><code>CHAR (IntegerExpression )
 </code></pre>
 
     </div>
@@ -2876,35 +2874,24 @@ character-expression was not a long string (<code>LONG VARCHAR</code> or <code>C
 SMALLINT, INTEGER or BIGINT).</p>
 
     </div>
-    <blockquote>
-      <h3 id="results-1">Results</h3>
+    <h3 id="results-1">Results</h3>
 
-      <p>The result is the character string representation of the argument in
+    <p>The result is the character string representation of the argument in
 the form of an SQL integer constant. The result consists of n
 characters that are the significant digits that represent the value of
 the argument with a preceding minus sign if the argument is negative.
 It is left justified.</p>
 
-      <ul>
-        <li>If the first argument is a small integer: The length of the result
-is 6. If the number of characters in the result is less than 6, then
-the result is padded on the right with blanks to length 6.</li>
-        <li>If the first argument is a large integer: The length of the result
-is 11. If the number of characters in the result is less than 11,
-then the result is padded on the right with blanks to length 11.</li>
-        <li>If the first argument is a big integer: The length of the result is
-          <ol>
-            <li>If the number of characters in the result is less than 20, then
-the result is padded on the right with blanks to length 20.</li>
-          </ol>
-        </li>
-      </ul>
-    </blockquote>
+    <ul>
+      <li>If the first argument is a small integer: the length of the result is 6. If the number of characters in the result is less than 6, then the result is padded on the right with blanks to length 6.</li>
+      <li>If the first argument is a large integer: the length of the result is 11. If the number of characters in the result is less than 11, then the result is padded on the right with blanks to length 11.</li>
+      <li>If the first argument is a big integer: the length of the result is 20. If the number of characters in the result is less than 20, then the result is padded on the right with blanks to length 20.</li>
+    </ul>
 
     <h2 id="datetime-to-character-syntax">Datetime to character syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>CHAR (DatetimeExpression ) 
+      <pre class="FcnSyntax"><code>CHAR (DatetimeExpression )
 </code></pre>
 
     </div>
@@ -2942,7 +2929,7 @@ the result is padded on the right with blanks to length 20.</li>
     <h2 id="decimal-to-character">Decimal to character</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>CHAR (DecimalExpression ) 
+      <pre class="FcnSyntax"><code>CHAR (DecimalExpression )
 </code></pre>
 
     </div>
@@ -2958,7 +2945,7 @@ scalar function first to make the change.</p>
     <h2 id="floating-point-to-character-syntax">Floating point to character syntax</h2>
 
     <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>CHAR (FloatingPointExpression ) 
+      <pre class="FcnSyntax"><code>CHAR (FloatingPointExpression )
 </code></pre>
 
     </div>
@@ -3008,7 +2995,6 @@ characters long.</p>
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -3023,7 +3009,7 @@ characters long.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.UPSERT_DATA_FROM_FILE   {#BuiltInSysProcs.UpsertDataFromFile}
+# SYSCS_UTIL.UPSERT_DATA_FROM_FILE
 
 The `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` system procedure updates or
 inserts data from a file to a subset of columns in a table. You choose
@@ -29,7 +29,7 @@ incoming record:
 * If no matching record is found in the database, the incoming record is
   added to the database as a new record, exactly as it would be if had
   you called
-  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html).
+ &nbsp;[`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html).
 
 Splice Machine also provides a variant of this procedure that also
 imports new records and updates existing records in a table:
@@ -142,7 +142,7 @@ Typical reasons for a row (record) import to fail include:
 
 * Improper data expected for a column.
 * Improper number of columns of data.
-* A primary key violation: [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](#) will
+* A primary key violation:&nbsp; [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](#) will
   only work correctly if the table into which you are inserting/updating
   has primary keys.
 
@@ -151,7 +151,7 @@ Typical reasons for a row (record) import to fail include:
 
 {% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
+Values](developers_fundamentals_dates.html)* 
 for information working with timestamps, dates, and times.
 
 ## Examples   {#Examples}

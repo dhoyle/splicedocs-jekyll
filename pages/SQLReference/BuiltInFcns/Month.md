@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# MONTH   {#BuiltInFcns.Month}
+# MONTH
 
 The `MONTH` function returns the month part of a value.
 
@@ -25,11 +25,8 @@ The `MONTH` function returns the month part of a value.
 expression
 {: .paramName}
 
-An expression that can be any of the following:
+An expression that can be a time, timestamp, or a valid character string representation of a time or timestamp.
 {: .paramDefnFirst}
-
-* A [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) value.
-{: .bullet}
 
 </div>
 ## Results
@@ -85,7 +82,7 @@ Select all players who were born in December:
     Edward Erdman           |Cards     |1985-12-21
     Taylor Trantula         |Cards     |1987-12-17
     Tam Croonster           |Cards     |1980-12-19
-    
+
     6 rows selected
 {: .Example xml:space="preserve"}
 
@@ -113,4 +110,3 @@ Select all players who were born in December:
 
 </div>
 </section>
-

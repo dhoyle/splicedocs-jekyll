@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCOLPERMS System Table    {#SystemTables.SysColPerms}
+# SYSCOLPERMS System Table
 
 The `SYSCOLPERMS` table stores the column permissions that have been
 granted but not revoked.

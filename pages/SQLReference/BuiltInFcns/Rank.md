@@ -28,7 +28,7 @@ functions](sqlref_builtinfcns_windowfcnsintro.html).
 overClause
 {: .paramName}
 
-See the [`OVER`](sqlref_clauses_over.html) clause documentation.
+See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 {: .paramDefnFirst}
 
 Ranking functions such as `RANK` must include an
@@ -39,7 +39,7 @@ This is because the ranking is calculated based on the ordering.
 </div>
 ## Results
 
-The resulting data type is [`BIGINT`](sqlref_builtinfcns_bigint.html).
+The resulting data type is &nbsp;[`BIGINT`](sqlref_builtinfcns_bigint.html).
 
 ## Usage
 

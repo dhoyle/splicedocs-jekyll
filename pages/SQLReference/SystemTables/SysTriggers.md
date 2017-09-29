@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSTRIGGERS System Table    {#SystemTables.SysTriggers}
+# SYSTRIGGERS System Table
 
 The `SYSTRIGGERS` table describes the database's triggers.
 

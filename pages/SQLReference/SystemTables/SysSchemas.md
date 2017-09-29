@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSSCHEMAS System Table   {#SystemTables.SysSchemas}
+# SYSSCHEMAS System Table
 
 The `SYSSCHEMAS` table describes the schemas within the current
 database.

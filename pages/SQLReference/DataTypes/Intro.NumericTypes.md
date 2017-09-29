@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# About Numeric Data Types   {#DataTypes.AboutNumericTypes}
+# About Numeric Data Types
 
 This section contains the reference documentation for the numeric data
 types built into Splice Machine SQL:

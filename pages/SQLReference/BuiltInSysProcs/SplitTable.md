@@ -206,9 +206,9 @@ make sure that those characters are embedded within delimited strings.
 To use the single quote (`'`) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
 (`''''`) as the value of this parameter. This is standard SQL syntax.
+{: .paramDefn}
 
- The [Example 1](#Examples){: .WithinBook .MCXref .xref .xrefWithinBook
-xrefformat="{para}"} section below contains an example that uses the
+The [Example 1](#Examples) section below contains an example that uses the
 single quote as the string delimiter character.
 {: .noteNote}
 
@@ -219,8 +219,7 @@ The format of timestamps stored in the file. You can set this to `null`
 if there are no time columns in the file, or if the format of any
 timestamps in the file match the `Java.sql.Timestamp` default format,
 which is: "*yyyy-MM-dd HH:mm:ss*". See the [About Timestamp
-Formats](#TimestampFormats){: .WithinBook .MCXref .xref .xrefWithinBook
-xrefformat="{para}"} section below for more information about
+Formats](#TimestampFormats) section below for more information about
 timestamps.
 {: .paramDefnFirst}
 
@@ -306,7 +305,7 @@ procedure to split your table into HFiles and import your data.
 
 {% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
+Values](developers_fundamentals_dates.html)*
 for information working with timestamps, dates, and times.
 
 {% include splice_snippets/hfileimport_example.md %}

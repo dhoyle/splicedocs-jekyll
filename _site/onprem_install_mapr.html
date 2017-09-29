@@ -240,13 +240,6 @@
             
             
             
-            
-            
-            <li><a href="onprem_about.html">About Our On-Premise DB</a></li>
-            
-            
-            
-            
         </ul>
      </li>
        
@@ -566,10 +559,16 @@ Enterprise Edition of Splice Machine</span></p>
 Machine. You can check this by:</p>
 
         <ol>
-          <li>Open the HBase Configuration page</li>
-          <li>Search the XML for the <code>hbase.security.authentication</code> setting</li>
-          <li>If the setting value is anything other than <code>simple</code>, you need the
-<em>Enterprise</em> edition of Splice Machine.</li>
+          <li>
+            <p>Open the HBase Configuration page</p>
+          </li>
+          <li>
+            <p>Search the XML for the <code>hbase.security.authentication</code> setting</p>
+          </li>
+          <li>
+            <p>If the setting value is anything other than <code>simple</code>, you need the
+<em>Enterprise</em> edition of Splice Machine.</p>
+          </li>
         </ol>
 
         <p>To read more about the additional features available in the Enterprise
@@ -583,23 +582,41 @@ obtain a license for the Splice Machine <em>Enterprise Edition</em>, <span class
 your cluster contains the prerequisite software components:</p>
 
       <ul>
-        <li>A cluster running MapR with MapR-FS</li>
-        <li>HBase installed</li>
-        <li>YARN installed</li>
-        <li>ZooKeeper installed</li>
-        <li>The latest <code>mapr-patch</code> should be installed to bring in all
+        <li>
+          <p>A cluster running MapR with MapR-FS</p>
+        </li>
+        <li>
+          <p>HBase installed</p>
+        </li>
+        <li>
+          <p>YARN installed</p>
+        </li>
+        <li>
+          <p>ZooKeeper installed</p>
+        </li>
+        <li>
+          <p>The latest <code>mapr-patch</code> should be installed to bring in all
 MapR-supplied platform patches, before proceeding with your Splice
-Machine installation.</li>
-        <li>The MapR Ecosystem Package (MEP) should be installed on all cluster
-nodes, before proceeding with your Splice Machine installation.</li>
-        <li>Ensure Spark services are <strong>NOT</strong> installed; Splice Machine cannot
-currently coexist with Spark 1.x on a cluster:
+Machine installation.</p>
+        </li>
+        <li>
+          <p>The MapR Ecosystem Package (MEP) should be installed on all cluster
+nodes, before proceeding with your Splice Machine installation.</p>
+        </li>
+        <li>
+          <p>Ensure Spark services are <strong>NOT</strong> installed; Splice Machine cannot
+currently coexist with Spark 1.x on a cluster:</p>
+
           <ul class="bullet">
-            <li>If <code>MEP version 1.x</code> is in use, you must remove the <code>Spark 1.x</code>
+            <li>
+              <p>If <code>MEP version 1.x</code> is in use, you must remove the <code>Spark 1.x</code>
 packages from your cluster, as described below, in <a href="#Removing">Removing Spark
-Packages from Your Cluster.</a></li>
-            <li>MEP version 2.0 bundles Spark 2.0, and will not cause conflicts with
-Splice Machine.</li>
+Packages from Your Cluster.</a></p>
+            </li>
+            <li>
+              <p>MEP version 2.0 bundles Spark 2.0, and will not cause conflicts with
+Splice Machine.</p>
+            </li>
           </ul>
         </li>
       </ul>
@@ -653,40 +670,37 @@ in your cluster:</p>
       <div class="opsStepsList">
         <ol class="boldFont">
           <li>
-            <p class="indentLevel1">Download the installer for your version.
-Which Splice Machine installer (gzip) package you need depends upon
-which Splice Machine version you’re installing and which version of
-MapR you are using. Here are the URLs for Splice Machine Release
-2.6.1 and
-2.6:</p>
+            <p class="topLevel">Download the installer for your version.</p>
+
+            <p class="indentLevel1">Which Splice Machine installer (gzip) package you need depends upon which Splice Machine version you’re installing and which version of MapR you are using. Here are the URLs for Splice Machine Release 2.6.1 and 2.6:</p>
 
             <table>
-                                <col />
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>Splice Machine Release</th>
-                                        <th>MapR Version</th>
-                                        <th>Installer Package Link</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                   <tr>
-                                       <td class="SpliceRelease">2.6.1</td>
-                                       <td class="SplicePlatform">5.2.0</td>
-                                       <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.6.1.1736.mapr5.2.0.p0.74.tar.gz">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.6.1.1736.mapr5.2.0.p0.74.tar.gz</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" class="Separator"> </td>
-                                    </tr>
-                                   <tr>
-                                       <td class="SpliceRelease">2.5.0</td>
-                                       <td class="SplicePlatform">5.2.0</td>
-                                       <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.5.0.1735.mapr5.2.0.p0.434.tar.gz">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.5.0.1735.mapr5.2.0.p0.434.tar.gz</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Splice Machine Release</th>
+            <th>MapR Version</th>
+            <th>Installer Package Link</th>
+        </tr>
+    </thead>
+    <tbody>
+       <tr>
+           <td class="SpliceRelease">2.6.1</td>
+           <td class="SplicePlatform">5.2.0</td>
+           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.6.1.1736.mapr5.2.0.p0.74.tar.gz">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.6.1.1736.mapr5.2.0.p0.74.tar.gz</a></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="Separator"> </td>
+        </tr>
+       <tr>
+           <td class="SpliceRelease">2.5.0</td>
+           <td class="SplicePlatform">5.2.0</td>
+           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.5.0.1735.mapr5.2.0.p0.434.tar.gz">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.5.0.1735.mapr5.2.0.p0.434.tar.gz</a></td>
+        </tr>
+    </tbody>
+</table>
 
             <p class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/" target="_blank">the Splice
 Machine Community site</a> or contact your Splice
@@ -991,7 +1005,7 @@ and command syntax.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

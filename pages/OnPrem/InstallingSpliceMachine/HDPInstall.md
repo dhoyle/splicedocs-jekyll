@@ -52,40 +52,38 @@ in your cluster:
 
 <div class="opsStepsList" markdown="1">
 1.  Download the installer for your version.
-    Which Splice Machine installer (gzip) package you need depends upon
-    which Splice Machine version you're installing and which version of
-    HDP you are using. Here are the URLs for Splice Machine Release
-    {{splvar_basic_SpliceReleaseVersion}} and
-    {{splvar_basic_SplicePrevReleaseVersion}}:
+    {: .topLevel}
+
+    Which Splice Machine installer (gzip) package you need depends upon which Splice Machine version you're installing and which version of HDP you are using. Here are the URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and {{splvar_basic_SplicePrevReleaseVersion}}:
     {: .indentLevel1}
 
     <table>
-                                <col />
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>Splice Machine Release</th>
-                                        <th>HDP Version</th>
-                                        <th>Installer Package Link</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                       <tr>
-                                           <td class="SpliceRelease">2.6.1</td>
-                                           <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
-                                           <td><a href="{{splvar_install_v261_HDP255}}">{{splvar_install_v261_HDP255}}</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="Separator"> </td>
-                                        </tr>
-                                       <tr>
-                                           <td class="SpliceRelease">2.5.0</td>
-                                           <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
-                                           <td><a href="{{splvar_install_v250_HDP255}}">{{splvar_install_v250_HDP255}}</a></td>
-                                        </tr>
-                                </tbody>
-                            </table>
+        <col />
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Splice Machine Release</th>
+                <th>HDP Version</th>
+                <th>Installer Package Link</th>
+            </tr>
+        </thead>
+        <tbody>
+               <tr>
+                   <td class="SpliceRelease">2.6.1</td>
+                   <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
+                   <td><a href="{{splvar_install_v261_HDP255}}">{{splvar_install_v261_HDP255}}</a></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="Separator"> </td>
+                </tr>
+               <tr>
+                   <td class="SpliceRelease">2.5.0</td>
+                   <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
+                   <td><a href="{{splvar_install_v250_HDP255}}">{{splvar_install_v250_HDP255}}</a></td>
+                </tr>
+        </tbody>
+    </table>
 
     To be sure that you have the latest URL, please check [the Splice
     Machine Community site][1]{: target="_blank"} or contact your Splice
@@ -230,26 +228,23 @@ class="AppCommand">Configs</span> tab.
     {: .topLevel}
 
     <table>
-                                <col />
-                                <col />
-                                <tbody>
-                                    <tr>
-                                        <td class="AppFont">NameNode Java heap size</td>
-                                        <td class="AppFontCust">4 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">DataNode maximum Java heap size</td>
-                                        <td class="AppFontCust">2 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Block replication</td>
-                                        <td class="AppFontCust">
-                                            <p>2 <span class="bodyFont">(for clusters with less than 8 nodes)</span></p>
-                                            <p>3 <span class="bodyFont">(for clusters with 8 or more nodes)</span></p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td class="AppFont">NameNode Java heap size</td>
+                    <td class="AppFontCust">4 GB</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">DataNode maximum Java heap size</td>
+                    <td class="AppFontCust">2 GB</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">Block replication</td>
+                    <td class="AppFontCust">2 <span class="bodyFont">(for clusters with less than 8 nodes)</span><br />3 <span class="bodyFont">(for clusters with 8 or more nodes)</span></td>
+                </tr>
+            </tbody>
+        </table>
 
 2.  Add a new property:
     {: .topLevel}
@@ -319,52 +314,52 @@ class="AppCommand">Configs</span> tab.
     {: .topLevel}
 
     <table>
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>Setting</th>
-                                        <th>New Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="AppFont">yarn.application.classpath </td>
-                                        <td class="AppFontCust">
-                                            <div class="preWrapperWide"><pre class="Example">$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*,/usr/hdp/current/hadoop-mapreduce-client/*,/usr/hdp/current/hadoop-mapreduce-client/lib/*,/usr/hdp/current/hbase-regionserver/*,/usr/hdp/current/hbase-regionserver/lib/*,/opt/splice/default/lib/*</pre>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">yarn.nodemanager.aux-services.spark2_shuffle.classpath</td>
-                                        <td class="AppFontCust">/opt/splice/default/lib/*</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">yarn.nodemanager.aux-services.spark_shuffle.classpath</td>
-                                        <td class="AppFontCust">/opt/splice/default/lib/*</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">yarn.nodemanager.aux-services.spark2_shuffle.class</td>
-                                        <td class="AppFontCust">org.apache.spark.network.yarn.YarnShuffleService</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">yarn.nodemanager.delete.debug-delay-sec</td>
-                                        <td class="AppFontCust">86400</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Memory allocated for all YARN containers on a node </td>
-                                        <td class="AppFontCust">30 GB (based on node specs)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Minimum Container Size (Memory)</td>
-                                        <td class="AppFontCust">1 GB (based on node specs)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Minimum Container Size (Memory)</td>
-                                        <td class="AppFontCust">30 GB (based on node specs)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Setting</th>
+                <th>New Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="AppFont">yarn.application.classpath </td>
+                <td class="AppFontCust">
+                    <div class="preWrapperWide"><pre class="Example">$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*,/usr/hdp/current/hadoop-mapreduce-client/*,/usr/hdp/current/hadoop-mapreduce-client/lib/*,/usr/hdp/current/hbase-regionserver/*,/usr/hdp/current/hbase-regionserver/lib/*,/opt/splice/default/lib/*</pre>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="AppFont">yarn.nodemanager.aux-services.spark2_shuffle.classpath</td>
+                <td class="AppFontCust">/opt/splice/default/lib/*</td>
+            </tr>
+            <tr>
+                <td class="AppFont">yarn.nodemanager.aux-services.spark_shuffle.classpath</td>
+                <td class="AppFontCust">/opt/splice/default/lib/*</td>
+            </tr>
+            <tr>
+                <td class="AppFont">yarn.nodemanager.aux-services.spark2_shuffle.class</td>
+                <td class="AppFontCust">org.apache.spark.network.yarn.YarnShuffleService</td>
+            </tr>
+            <tr>
+                <td class="AppFont">yarn.nodemanager.delete.debug-delay-sec</td>
+                <td class="AppFontCust">86400</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Memory allocated for all YARN containers on a node </td>
+                <td class="AppFontCust">30 GB (based on node specs)</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Minimum Container Size (Memory)</td>
+                <td class="AppFontCust">1 GB (based on node specs)</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Minimum Container Size (Memory)</td>
+                <td class="AppFontCust">30 GB (based on node specs)</td>
+            </tr>
+        </tbody>
+    </table>
 
 2.  Save Changes
     {: .topLevel}
@@ -395,23 +390,28 @@ class="AppCommand">Configs</span> tab.
 Ambari automatically sets these values for you:
 
 * Map Memory
+
 * Reduce Memory
+
 * Sort Allocation Memory
+
 * AppMaster Memory
+
 * MR Map Java Heap Size
+
 * MR Reduce Java Heap Size
-{: .codeListNested}
+{: .codeList}
 
 You do, however, need to make a few property changes for this service.
+
 To edit the MapReduce2 configuration, select the <span
 class="AppCommand">Services</span> tab at the top of the Ambari
 dashboard screen, then click <span class="AppCommand">MapReduce2</span>
 in the Ambari in the left pane of the screen. Finally, click the <span
-class="AppCommand">Configs</span> tab.
+class="AppCommand">Configs</span> tab and follow these steps:
 
 <div class="opsStepsList" markdown="1">
-1.  Select the <span class="AppCommand">Configs</span> tab to configure
-    MapReduce2.
+1.  Select the <span class="AppCommand">Configs</span> tab to configure MapReduce2.
     {: .topLevel}
 
 2.  Update property values
@@ -423,18 +423,23 @@ class="AppCommand">Configs</span> tab.
     {: .indentLevel1}
 
     * mapreduce.admin.map.child.java.opts
+
     * mapreduce.admin.reduce.child.java.opts
+
     * mapreduce.admin.user.env
+
     * mapreduce.application.classpath
+
     * mapreduce.application.framework.path
+
     * yarn.app.mapreduce.am.admin-command-opts
-    * MR AppMaster Java Heap Size
-    {: .codeListNested}
+
+    * MR AppMaster Java Heap Size  <br /><br />
 
     An example of an HDP version number that you would substitute for
     <span class="AppFontCustCode">${hdp.version}</span> is
     `2.5.0.0-1245`.
-    {: .noteIndent}
+    {: .noteNote}
 
 3.  Save Changes
     {: .topLevel}
@@ -472,85 +477,85 @@ make these changes:
     {: .topLevel}
 
     <table>
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>Setting</th>
-                                        <th>New Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="AppFont">% of RegionServer Allocated to Write Buffer<br />(hbase.regionserver.global.memstore.size)</td>
-                                        <td class="AppFontCust">0.25</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase RegionServer Maximum Memory<br /> (hbase_regionserver_heapsize)</td>
-                                        <td class="AppFontCust">24 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">% of RegionServer Allocated to Read Buffers<br /> (hfile.block.cache.size)</td>
-                                        <td class="AppFontCust">0.25</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase Master Maximum Memory<br /> (hbase_master_heapsize)</td>
-                                        <td class="AppFontCust">5 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Number of Handlers per RegionServer<br /> (hbase.regionserver.handler.count)</td>
-                                        <td class="AppFontCust">200</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase RegionServer Meta-Handler Count</td>
-                                        <td class="AppFontCust">200</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase RPC Timeout</td>
-                                        <td class="AppFontCust">1200000 (20 minutes)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Zookeeper Session Timeout</td>
-                                        <td class="AppFontCust">120000 (2 minutes)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">hbase.coprocessor.master.classes</td>
-                                        <td class="AppFontCust">com.splicemachine.hbase.SpliceMasterObserver</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">hbase.coprocessor.region.classes</td>
-                                        <td class="AppFontCust">
-                                            <p><span class="bodyFont">The value of this property is shown below, in Step 2</span>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Maximum Store Files before Minor Compaction<br /> (hbase.hstore.compactionThreshold)<br /></td>
-                                        <td class="AppFontCust">5</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Number of Fetched Rows when Scanning from Disk<br /> (hbase.client.scanner.caching)<br /></td>
-                                        <td class="AppFontCust">1000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">hstore blocking storefiles<br /> (hbase.hstore.blockingStoreFiles)</td>
-                                        <td class="AppFontCust">20</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Advanced hbase-env</td>
-                                        <td class="AppFontCust"><span class="bodyFont">The value of this property is shown below, in Step 3</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Custom hbase-site</td>
-                                        <td class="AppFontCust"><span class="bodyFont">The value of this is shown below, in Step 4</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Setting</th>
+                    <th>New Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="AppFont">% of RegionServer Allocated to Write Buffer<br />(hbase.regionserver.global.memstore.size)</td>
+                    <td class="AppFontCust">0.25</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">HBase RegionServer Maximum Memory<br /> (hbase_regionserver_heapsize)</td>
+                    <td class="AppFontCust">24 GB</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">% of RegionServer Allocated to Read Buffers<br /> (hfile.block.cache.size)</td>
+                    <td class="AppFontCust">0.25</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">HBase Master Maximum Memory<br /> (hbase_master_heapsize)</td>
+                    <td class="AppFontCust">5 GB</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">Number of Handlers per RegionServer<br /> (hbase.regionserver.handler.count)</td>
+                    <td class="AppFontCust">200</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">HBase RegionServer Meta-Handler Count</td>
+                    <td class="AppFontCust">200</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">HBase RPC Timeout</td>
+                    <td class="AppFontCust">1200000 (20 minutes)</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">Zookeeper Session Timeout</td>
+                    <td class="AppFontCust">120000 (2 minutes)</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">hbase.coprocessor.master.classes</td>
+                    <td class="AppFontCust">com.splicemachine.hbase.SpliceMasterObserver</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">hbase.coprocessor.region.classes</td>
+                    <td class="AppFontCust">
+                        <p><span class="bodyFont">The value of this property is shown below, in Step 2</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="AppFont">Maximum Store Files before Minor Compaction<br /> (hbase.hstore.compactionThreshold)<br /></td>
+                    <td class="AppFontCust">5</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">Number of Fetched Rows when Scanning from Disk<br /> (hbase.client.scanner.caching)<br /></td>
+                    <td class="AppFontCust">1000</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">hstore blocking storefiles<br /> (hbase.hstore.blockingStoreFiles)</td>
+                    <td class="AppFontCust">20</td>
+                </tr>
+                <tr>
+                    <td class="AppFont">Advanced hbase-env</td>
+                    <td class="AppFontCust"><span class="bodyFont">The value of this property is shown below, in Step 3</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="AppFont">Custom hbase-site</td>
+                    <td class="AppFontCust"><span class="bodyFont">The value of this is shown below, in Step 4</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-2.  Set the value of the `hbase.coprocessor.region.classes` property to
-    the following:
+2.  Set the value of the `hbase.coprocessor.region.classes` property to the following:
+    {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
         com.splicemachine.hbase.MemstoreAwareObserver,com.splicemachine.derby.hbase.SpliceIndexObserver,com.splicemachine.derby.hbase.SpliceIndexEndpoint,com.splicemachine.hbase.RegionSizeEndpoint,com.splicemachine.si.data.hbase.coprocessor.TxnLifecycleEndpoint,com.splicemachine.si.data.hbase.coprocessor.SIObserver,com.splicemachine.hbase.BackupEndpointObserver
@@ -558,9 +563,9 @@ make these changes:
 
     </div>
 
-3.  Under `Advanced hbase-env`, set the value of `hbase-env template` to
-    the following:
-
+3.  Under `Advanced hbase-env`, set the value of `hbase-env template` to the following:
+    {: .topLevel}
+    
     <div class="preWrapperWide" markdown="1">
         # Set environment variables here.
 

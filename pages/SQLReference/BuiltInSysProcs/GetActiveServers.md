@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS   {#BuiltInSysProcs.GetActiveServers}
+# SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS
 
 The `SYSCS_UTIL.SYSCS_GET_ACTIVE_SERVERS` system procedure displays the
 active servers in the Splice cluster.

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES   {#BuiltInSysProcs.GetActiveServers}
+# SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES
 
 The `SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES` system procedure displays all
 of the Splice Machine Derby properties.

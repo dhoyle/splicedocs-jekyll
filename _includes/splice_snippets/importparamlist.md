@@ -36,9 +36,8 @@ the data in table\'s `b` column will be replaced with the default value
 for that column.
 
 </div>
-fileOrDirectoryName <span class="bodyFont">(for IMPORT or UPSERT)</span>
-
- fileName <span class="bodyFont">(for MERGE)</span>
+fileOrDirectoryName <span class="bodyFont">(for IMPORT or UPSERT)</span><br />
+fileName <span class="bodyFont">(for MERGE)</span>
 {: .paramName}
 
 For the `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` or
@@ -179,9 +178,10 @@ make sure that those characters are embedded within delimited strings.
 
 To use the single quote (`'`) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
-(`''''`) as the value of this parameter. This is standard SQL syntax.  
-  
- The [Examples](#Examples) section below contains an example that uses
+(`''''`) as the value of this parameter. This is standard SQL syntax.
+{: .paramDefnFirst}
+
+The [Examples](#Examples) section below contains an example that uses
 the single quote as the string delimiter character.
 {: .noteNote}
 
@@ -322,4 +322,3 @@ Here\'s an example of the property definitions:
 
 </div>
 </div>
-

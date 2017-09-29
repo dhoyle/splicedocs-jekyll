@@ -10,9 +10,9 @@ folder: SQLReference/JoinOps
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# INNER JOIN   {#SQL-JoinOps.InnerJoin}
+# INNER JOIN
 
-An `INNER JOIN` is a [`JOIN` operation](sqlref_joinops_about.html) that
+An `INNER JOIN` is a &nbsp;[`JOIN` operation](sqlref_joinops_about.html) that
 allows you to specify an explicit join clause.
 
 ## Syntax
@@ -51,7 +51,7 @@ does).
     splice> SELECT SAMP.EMP_ACT.*, LASTNAME
       FROM SAMP.EMP_ACT JOIN SAMP.EMPLOYEE
       ON EMP_ACT.EMPNO = EMPLOYEE.EMPNO;
-    
+
        -- Join the EMPLOYEE and DEPARTMENT tables,
        -- select the employee number (EMPNO),
        -- employee surname (LASTNAME),
@@ -63,7 +63,7 @@ does).
       FROM SAMP.EMPLOYEE JOIN SAMP.DEPARTMENT
       ON WORKDEPT = DEPTNO
       AND YEAR(BIRTHDATE) < 1930;
-    
+
        -- Another example of "generating" new data values,
        -- using a query which selects from a VALUES clause (which is an
        -- alternate form of a fullselect).
@@ -80,13 +80,13 @@ does).
        -- -----------------------------------------------
        -- 3          |4          |3          |2
        -- 1          |5          |1          |2
-    
+
        -- List every department with the employee number and
        -- last name of the manager
     splice> SELECT DEPTNO, DEPTNAME, EMPNO, LASTNAME
       FROM DEPARTMENT INNER JOIN EMPLOYEE
       ON MGRNO = EMPNO;
-    
+
        -- List every employee number and last name
        -- with the employee number and last name of their manager
     splice> SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
@@ -104,4 +104,3 @@ does).
 
 </div>
 </section>
-

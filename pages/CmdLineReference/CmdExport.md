@@ -28,85 +28,91 @@ of an SQL query to a CSV (comma separated value) file.
 
 </div>
 <div class="paramList" markdown="1">
-*exportPath*
+exportPath
 {: .paramName}
 
 The directory in which you want the export file(s) written.
 {: .paramDefnFirst}
 
-*compress*
+compress
 {: .paramName}
 
 Whether or not to compress the exported files. You can specify one of
-the following values: <table summary="Possible values for compression
-setting in the export command.">
-                <col />
-                <col />
-                <thead>
-                    <tr><th>Value</th><th>Description</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>true</code></td>
-                        <td><p>The exported files are compressed using
-<code>deflate/gzip</code>. </p></td>
-                    </tr>
-                    <tr>
-                        <td><code>false</code></td>
-                        <td><p>Exported files are not compressed.</p>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
+the following values:
+{: .paramDefnFirst}
 
- *replicationCount*
+<div markdown="0">
+    <table summary="Possible values for compression">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>true</code></td>
+                    <td>The exported files are compressed using <code>deflate/gzip</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>false</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+
+replicationCount
 {: .paramName}
 
- The file system block replication count to use for the exported
+The file system block replication count to use for the exported
 CSV files.
 {: .paramDefnFirst}
 
- You can specify any positive integer value. The default value is `1`.
+You can specify any positive integer value. The default value is `1`.
 {: .paramDefn}
 
- *fileEncoding*
+fileEncoding
 {: .paramName}
 
- The character set encoding to use for the exported CSV files.
+The character set encoding to use for the exported CSV files.
 {: .paramDefnFirst}
 
- You can specify any character set encoding that is supported by the
-Java
-Virtual Machine (JVM). The default encoding is `UTF-8`.
+You can specify any character set encoding that is supported by the
+Java Virtual Machine (JVM). The default encoding is `UTF-8`.
 {: .paramDefn}
 
- *fieldSeparator*
+fieldSeparator
 {: .paramName}
 
- The character to use for separating fields in the exported CSV files.
+The character to use for separating fields in the exported CSV files.
 {: .paramDefnFirst}
 
- The default separator character is the comma (`,`).
+The default separator character is the comma (`,`).
 {: .paramDefn}
 
- *quoteCharacter*
+quoteCharacter
 {: .paramName}
 
- The character to use for quoting output in the exported CSV files.
+The character to use for quoting output in the exported CSV files.
 {: .paramDefnFirst}
 
- The default quote character is the double quotation mark (`"`).
+The default quote character is the double quotation mark (`"`).
 {: .paramDefn}
 
- </div> ## Usage
+</div>
 
- The <span class="AppCommand">EXPORT</span> command generates one or
+## Usage
+
+The <span class="AppCommand">EXPORT</span> command generates one or
 more
 CSV files and stores them in the directory that you specified in the
 `exportPath` parameter. More than one output file is generated to
 enhance the parallelism and performance of this operation.
 
- If `compression=true`, then each of the generated files is named with
+If `compression=true`, then each of the generated files is named with
 this format:
 
  <div class="preWrapper" markdown="1">
@@ -115,7 +121,7 @@ this format:
 
 </div>
 
- If `compression=false`, then each of the generated files is named with
+If `compression=false`, then each of the generated files is named with
 this format:
 
  <div class="preWrapper" markdown="1">
@@ -124,12 +130,12 @@ this format:
 
 </div>
 
- The value of <span class="AppCommand">&lt;N&gt;</span> is a random
+The value of <span class="AppCommand">&lt;N&gt;</span> is a random
 integer value.
 
- ### Merging the Exported Files
+### Merging the Exported Files
 
- You can copy all of the exported files into a single file on your local
+You can copy all of the exported files into a single file on your local
 file system using the Hadoop FS command `getmerge`. The syntax for
 `getmerge` is:
 
@@ -139,20 +145,20 @@ file system using the Hadoop FS command `getmerge`. The syntax for
 
 </div>
 
- Use the *exportPath* directory as the value of sourceDir to copy all of
+Use the *exportPath* directory as the value of sourceDir to copy all of
 the exported CSV files to your *localPath*.
 
- For more information about the `getmerge` command, see
+For more information about the `getmerge` command, see
 [http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.][1]{:
 target="_blank"}
 
- ## Examples
+## Examples
 
  <div class="preWrapperWide" markdown="1">
              -- This example uses all default options:
      splice> EXPORT('/my/export/dir', false, null, null, null, null)
               SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a;
-    
+
              -- This example explicitly specifies options:
     splice> EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
               SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a;
@@ -160,10 +166,6 @@ target="_blank"}
 
 </div>
 
- </div> </section>
-{: .paramDefnFirst}
-
-</div>
 </div>
 </section>
 

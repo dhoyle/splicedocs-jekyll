@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# INSERT   {#Statements.Insert}
+# INSERT
 
 An `INSERT` statement creates rows or columns and stores them in the
 named table. The number of values assigned in an `INSERT` statement must
@@ -65,7 +65,7 @@ insert values into other columns in the table. For more information, see
 result offset and fetch first clauses
 {: .paramName}
 
-The [`fetch first` clause](sqlref_clauses_resultoffset.html), which can
+The &nbsp;[`fetch first` clause](sqlref_clauses_resultoffset.html), which can
 be combined with the `result offset` clause, limits the number of rows
 added to the table.
 {: .paramDefnFirst}
@@ -100,19 +100,21 @@ These examples insert records with literal values:
     splice> INSERT INTO Players
        VALUES( 99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991');
     1 row inserted/updated/deleted
-    
+
     splice> INSERT INTO Players
        VALUES( (99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991'),
                (73, 'Giants', 'Lester Johns', 'P', 'Big John', '06/09/1984'),
                (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982') );
     3 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
+</div>
 
 This example creates a table name OldGuys that has the same columns as
 our Players table, and then loads that table with the data from Players
 for all players born before 1980:
 {: .body}
 
+<div class="preWrapperWide" markdown="1">
     splice> CREATE TABLE OldGuys(
         ID           SMALLINT NOT NULL PRIMARY KEY,
         Team         VARCHAR(64) NOT NULL,
@@ -121,7 +123,7 @@ for all players born before 1980:
         DisplayName  VARCHAR(24),
         BirthDate    DATE
         );
-    
+
     splice> INSERT INTO OldGuys
        SELECT * FROM Players
        WHERE BirthDate < '01/01/1980';
@@ -145,4 +147,3 @@ prepared `INSERT` statement invalidates the prepared `INSERT` statement.
 
 </div>
 </section>
-

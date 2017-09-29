@@ -29,14 +29,14 @@ with Splice Machine
 <div class="opsStepsList" markdown="1">
 1.  Install DBVisualizer, if you've not already done so
     {: .topLevel}
-    
+
     [Follow the instructions on the DBVis web site][1]{:
     target="_blank"}.
     {: .indentLevel1}
 
 2.  Configure a Splice Machine connection in DBVisualizer
     {: .topLevel}
-    
+
     Follow the instructions in the next section, [Configure a
     DBVisualizer Connection for Splice Machine](#ConfiguringDBVis), to
     create and test a new connection in DBVisualizer.
@@ -44,13 +44,13 @@ with Splice Machine
 
 3.  Connect DBVisualizer to Splice Machine
     {: .topLevel}
-    
+
     In DBVisualizer, open the connection alias you created and click the
     <span class="AppCommand">Connect</span> button. Your database will
     display in DBVisualizer, and you can inspect objects or enter SQL to
     interact with your data.
     {: .indentLevel1}
-    
+
     ![](images/DBVisSplice.png){: .nestedTightSpacing}
     {: .indentLevel1}
 {: .boldFont}
@@ -67,61 +67,64 @@ connection in DBVisualizer.
 2.  Open the DBVisualizer application.
 3.  Use the Driver Manager to create a new DBVisualizer driver entry.
     {: .topLevel}
-    
+
     Select <span class="AppCommand">Driver Manager</span> from the
     *Tools* menu; in the <span class="AppCommand">Driver Manager</span>
     screen:
     {: .indentLevel1}
-    
+
     1.  Click the green plus sign <span class="AppFontCust">+</span>
         button to add a new driver entry.
+
     2.  Name the driver and enter
         `jdbc:splice://localhost:1527/splicedb` in the <span
         class="AppCommand">URL Format</span> field:
-        
+
         ![](images/DBVis.Driver.png){: .nestedTightSpacing}
-    
+
     3.  In the Driver File Paths section, click <span
         class="AppCommand">User Specified</span>, and then click the
         yellow folder icon.
+
     4.  Navigate to and select the Splice JDBC Driver jar file. which
         you'll find it in the `jdbc-driver` folder under the
         `splicemachine` directory on your computer.
+        
     5.  Close the Driver Manager screen.
     {: .LowerAlphaPlainFont}
 
 4.  Create a DBVisualizer connection alias that uses the new driver:
-    
+
     1.  Select <span class="AppCommand">Create Database
         Connection</span> from the *Database* menu. If prompted about
         using the Wizard, click the <span class="AppCommand">No
         Wizard</span> button.
-    
+
     2.  Name the connection (we use <span class="AppCommand">Splice
         Machine</span>), then click the empty field next to the <span
         class="AppCommand">Driver (JDBC)</span> caption and select the
         driver you just created:
-        
+
         ![](images/DBVisSelectDriver.png){: .nestedTightSpacing}
-    
+
     3.  Enter the following URL into the <span
         class="AppCommand">Database URL</span> field that appears once
         you've selected the driver:
-        
+
         <div class="preWrapperWide" markdown="1">
             jdbc:splice://localhost:1527/splicedb
         {: .AppCommand}
-        
+
         </div>
-        
+
         Use <span class="CodeBoldFont">localhost:1527</span> with the
         standalone (local computer) version of splicemachine. If you're
         running Splice Machine on a cluster, substitute the address of
-        your server for `localhost`; for example:  
+        your server for `localhost`; for example:
            <span
         class="CodeBoldFont">jdbc:splice://mySrv123cba:1527/splicedb</span>.
         {: .noteIcon}
-    
+
     4.  Fill in the <span class="AppCommand">Userid</span>
         (`splice`) and <span class="AppCommand">Password</span>
         (`admin`) fields. Then click the <span

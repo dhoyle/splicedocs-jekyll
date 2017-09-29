@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DECLARE GLOBAL TEMPORARY TABLE   {#Statements.CreateGlobalTempTable}
+# DECLARE GLOBAL TEMPORARY TABLE
 
 The `DECLARE GLOBAL TEMPORARY TABLE` statement defines a temporary table
 for the current connection.
@@ -86,11 +86,11 @@ Temporary tables have the following operational limitations:
 * exist only while a user session is alive
 * are not visible to other sessions or transactions
 * cannot be altered using the
-  [`RENAME COLUMN`](sqlref_statements_renamecolumn.html) statements
+ &nbsp;[`RENAME COLUMN`](sqlref_statements_renamecolumn.html) statements
 * do not get backed up
 * cannot be used as data providers to views
 * cannot be referenced by foreign keys in other tables
-* are not displayed by the [`SHOW
+* are not displayed by the &nbsp;[`SHOW
   TABLES`](cmdlineref_showtables.html) command
 
 Also note that temporary tables persist across transactions in a session

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TRIM   {#BuiltInFcns.Trim}
+# TRIM
 
 The `TRIM` function that takes a character expression and returns that
 expression with leading and/or trailing pad characters removed. Optional
@@ -67,48 +67,44 @@ The character expression to be trimmed
 </div>
 ## Results
 
-If either *trimCharacter* or *trimSource* evaluates to `NULL`, the
-result of the `TRIM` function is `NULL`. Otherwise, the result of the
-`TRIM` function is defined as follows:
+If either *trimCharacter* or *trimSource* evaluates to `NULL`, the result of the `TRIM`
+ function is `NULL`. Otherwise, the result is defined as follows:
 
-* If *trimType* is `LEADING`, the result will be the *trimSource* value
-  with all leading occurrences of *trimCharacter* removed.
-* If *trimType* is `TRAILING`, the result will be the *trimSource* value
-  with all trailing occurrences of *trimCharacter*removed.
-* If *trimType* is `BOTH`, the result will be the *trimSource* value
-  with all leading AND trailing occurrences of *trimCharacter*removed.
+* If *trimType* is `LEADING`, the result will be the *trimSource* value with all leading occurrences of *trimCharacter* removed.
+* If *trimType* is `TRAILING`, the result will be the *trimSource* value with all trailing occurrences of *trimCharacter* removed.
+* If *trimType* is `BOTH`, the result will be the *trimSource* value with all leading AND trailing occurrences of *trimCharacter* removed.
 
-If *trimSource*'s data type is [`CLOB`](sqlref_datatypes_clob.html).
+If trimSource's data type is `CHAR` or `VARCHAR`, the return type of the `TRIM` function will be `VARCHAR`. Otherwise the return type of the `TRIM` function will be `CLOB`.
 
 ## Examples
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> VALUES TRIM('      Space Case   ');
     1
     -----------
     Space Case	--- This is the string 'Space Case'
-    
+
     splice> VALUES TRIM(BOTH ' ' FROM '      Space Case   ');
     1
     -----------
     Space Case	--- This is the string 'Space Case'
-    
+
     splice> VALUES TRIM(TRAILING ' ' FROM '     Space Case     ');
     1
     -----------
          Space Case	--- This is the string '     Space Case'
-    
+
     splice> VALUES TRIM(CAST NULL AS CHAR(1) FROM '     Space Case     ');
     1
     -----------
     NULL
-    
+
     splice> VALUES TRIM('o' FROM 'VooDoo');
     1
     ----------
     VooD
-    
+
        -- results in an error because trimCharacter can only be 1 character
     splice> VALUES TRIM('Do' FROM 'VooDoo');
 {: .Example xml:space="preserve"}
@@ -132,4 +128,3 @@ If *trimSource*'s data type is [`CLOB`](sqlref_datatypes_clob.html).
 
 </div>
 </section>
-

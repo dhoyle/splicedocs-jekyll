@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSPERMS System Table    {#SystemTables.SysPerms}
+# SYSPERMS System Table
 
 The `SYSPERMS` table describes the `USAGE` permissions for sequence
 generators and user-defined types.

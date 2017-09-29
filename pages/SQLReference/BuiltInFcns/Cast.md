@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CAST   {#BuiltInFcns.Cast}
+# CAST
 
 The `CAST` function converts a value from one data type to another and
 provides a data type to a dynamic parameter or a `NULL` value.

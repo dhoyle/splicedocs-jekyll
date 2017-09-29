@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES   {#BuiltInSysProcs.UpdateAllSystemProcedures}
+# SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES
 
 The `SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES` system procedure
 updates the signatures of all of the system procedures in a database.

@@ -14,7 +14,7 @@ folder: OnPrem/InstallingSpliceMachine
 # Installing and Configuring Splice Machine for Cloudera Manager
 
 {% include splice_snippets/onpremonlytopic.md %}
-<div markdown="1">
+
 This topic describes installing and configuring Splice Machine on a
 Cloudera-managed cluster. Follow these steps:
 
@@ -54,157 +54,156 @@ Machine on your cluster:
 
 <div class="opsStepsList" markdown="1">
 1.  Copy your parcel URL to the clipboard for use in the next step.
+    {: .topLevel}
+
     Which Splice Machine parcel URL you need depends upon which Splice
     Machine version you're installing and which version of CDH you are
-    using. Here are the URLs for Splice Machine Release
-    {{splvar_basic_SpliceReleaseVersion}} and
+    using. Here are the URLs for Splice Machine Release {{splvar_basic_SpliceReleaseVersion}} and
     {{splvar_basic_SplicePrevReleaseVersion}}:
     {: .indentLevel1}
 
     <table>
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <thead>
-                                        <tr>
-                                            <th>Splice Machine Release</th>
-                                            <th>CDH Version</th>
-                                            <th>Parcel Type</th>
-                                            <th>Installer Package Link(s)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr>
-                                           <td rowspan="12" class="SpliceRelease">2.6.1</td>
-                                           <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH5120}}</td>
-                                           <td>EL6</td>
-                                           <td><a href="{{splvar_install_v261_CDH5120-EL6}}">{{splvar_install_v261_CDH5120-EL6}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>EL7</td>
-                                           <td><a href="{{splvar_install_v261_CDH5120-EL7}}">{{splvar_install_v261_CDH5120-EL7}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Precise</td>
-                                           <td><a href="{{splvar_install_v261_CDH5120-PRECISE}}">{{splvar_install_v261_CDH5120-PRECISE}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>SLES11</td>
-                                           <td><a href="{{splvar_install_v261_CDH5120-SLES11}}">{{splvar_install_v261_CDH5120-SLES11}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Trusty</td>
-                                           <td><a href="{{splvar_install_v261_CDH5120-TRUSTY}}">{{splvar_install_v261_CDH5120-TRUSTY}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Wheezy</td>
-                                           <td><a href="{{splvar_install_v261_CDH5120-WHEEZY}}">{{splvar_install_v261_CDH5120-WHEEZY}}</a></td>
-                                        </tr>
-                                       <tr>
-                                           <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
-                                           <td>EL6</td>
-                                           <td><a href="{{splvar_install_v261_CDH583-EL6}}">{{splvar_install_v261_CDH583-EL6}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>EL7</td>
-                                           <td><a href="{{splvar_install_v261_CDH583-EL7}}">{{splvar_install_v261_CDH583-EL7}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>PRECISE</td>
-                                           <td><a href="{{splvar_install_v261_CDH583-PRECISE}}">{{splvar_install_v261_CDH583-PRECISE}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>SLES11</td>
-                                           <td><a href="{{splvar_install_v261_CDH583-SLES11}}">{{splvar_install_v261_CDH583-SLES11}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Trusty</td>
-                                           <td><a href="{{splvar_install_v261_CDH583-TRUSTY}}">{{splvar_install_v261_CDH583-TRUSTY}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Wheezy</td>
-                                           <td><a href="{{splvar_install_v261_CDH583-WHEEZY}}">{{splvar_install_v261_CDH583-WHEEZY}}</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" class="Separator"> </td>
-                                        </tr>
-                                       <tr>
-                                           <td rowspan="12" class="SpliceRelease">2.5.0</td>
-                                           <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
-                                           <td>EL6</td>
-                                           <td><a href="{{splvar_install_v250_CDH583-EL6}}">{{splvar_install_v250_CDH583-EL6}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>EL7</td>
-                                           <td><a href="{{splvar_install_v250_CDH583-EL7}}">{{splvar_install_v250_CDH583-EL7}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Precise</td>
-                                           <td><a href="{{splvar_install_v250_CDH583-PRECISE}}">{{splvar_install_v250_CDH583-PRECISE}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>SLES11</td>
-                                           <td><a href="{{splvar_install_v250_CDH583-SLES11}}">{{splvar_install_v250_CDH583-SLES11}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Trusty</td>
-                                           <td><a href="{{splvar_install_v250_CDH583-TRUSTY}}">{{splvar_install_v250_CDH583-TRUSTY}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Wheezy</td>
-                                           <td><a href="{{splvar_install_v250_CDH583-WHEEZY}}">{{splvar_install_v250_CDH583-WHEEZY}}</a></td>
-                                        </tr>
-                                       <tr>
-                                           <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH580}}</td>
-                                           <td>EL6</td>
-                                           <td><a href="{{splvar_install_v250_CDH580-EL6}}">{{splvar_install_v250_CDH580-EL6}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>EL7</td>
-                                           <td><a href="{{splvar_install_v250_CDH580-EL7}}">{{splvar_install_v250_CDH580-EL7}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Precise</td>
-                                           <td><a href="{{splvar_install_v250_CDH580-PRECISE}}">{{splvar_install_v250_CDH580-PRECISE}}</a></td>
-                                           splvar_install_v250_CDH580-WHEEZY
-                                       </tr>
-                                       <tr>
-                                           <td>SLES11</td>
-                                           <td><a href="{{splvar_install_v250_CDH580-SLES11}}">{{splvar_install_v250_CDH580-SLES11}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Trusty</td>
-                                           <td><a href="{{splvar_install_v250_CDH580-TRUSTY}}">{{splvar_install_v250_CDH580-TRUSTY}}</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Wheezy</td>
-                                           <td><a href="{{splvar_install_v250_CDH580-WHEEZY}}">{{splvar_install_v250_CDH580-WHEEZY}}</a></td>
-                                        </tr>
-                                </table>
+        <col />
+        <col />
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Splice Machine Release</th>
+                <th>CDH Version</th>
+                <th>Parcel Type</th>
+                <th>Installer Package Link(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr>
+               <td rowspan="12" class="SpliceRelease">2.6.1</td>
+               <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH5120}}</td>
+               <td>EL6</td>
+               <td><a href="{{splvar_install_v261_CDH5120-EL6}}">{{splvar_install_v261_CDH5120-EL6}}</a></td>
+           </tr>
+           <tr>
+               <td>EL7</td>
+               <td><a href="{{splvar_install_v261_CDH5120-EL7}}">{{splvar_install_v261_CDH5120-EL7}}</a></td>
+           </tr>
+           <tr>
+               <td>Precise</td>
+               <td><a href="{{splvar_install_v261_CDH5120-PRECISE}}">{{splvar_install_v261_CDH5120-PRECISE}}</a></td>
+           </tr>
+           <tr>
+               <td>SLES11</td>
+               <td><a href="{{splvar_install_v261_CDH5120-SLES11}}">{{splvar_install_v261_CDH5120-SLES11}}</a></td>
+           </tr>
+           <tr>
+               <td>Trusty</td>
+               <td><a href="{{splvar_install_v261_CDH5120-TRUSTY}}">{{splvar_install_v261_CDH5120-TRUSTY}}</a></td>
+           </tr>
+           <tr>
+               <td>Wheezy</td>
+               <td><a href="{{splvar_install_v261_CDH5120-WHEEZY}}">{{splvar_install_v261_CDH5120-WHEEZY}}</a></td>
+            </tr>
+           <tr>
+               <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
+               <td>EL6</td>
+               <td><a href="{{splvar_install_v261_CDH583-EL6}}">{{splvar_install_v261_CDH583-EL6}}</a></td>
+           </tr>
+           <tr>
+               <td>EL7</td>
+               <td><a href="{{splvar_install_v261_CDH583-EL7}}">{{splvar_install_v261_CDH583-EL7}}</a></td>
+           </tr>
+           <tr>
+               <td>PRECISE</td>
+               <td><a href="{{splvar_install_v261_CDH583-PRECISE}}">{{splvar_install_v261_CDH583-PRECISE}}</a></td>
+           </tr>
+           <tr>
+               <td>SLES11</td>
+               <td><a href="{{splvar_install_v261_CDH583-SLES11}}">{{splvar_install_v261_CDH583-SLES11}}</a></td>
+           </tr>
+           <tr>
+               <td>Trusty</td>
+               <td><a href="{{splvar_install_v261_CDH583-TRUSTY}}">{{splvar_install_v261_CDH583-TRUSTY}}</a></td>
+           </tr>
+           <tr>
+               <td>Wheezy</td>
+               <td><a href="{{splvar_install_v261_CDH583-WHEEZY}}">{{splvar_install_v261_CDH583-WHEEZY}}</a></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="Separator"> </td>
+            </tr>
+           <tr>
+               <td rowspan="12" class="SpliceRelease">2.5.0</td>
+               <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
+               <td>EL6</td>
+               <td><a href="{{splvar_install_v250_CDH583-EL6}}">{{splvar_install_v250_CDH583-EL6}}</a></td>
+           </tr>
+           <tr>
+               <td>EL7</td>
+               <td><a href="{{splvar_install_v250_CDH583-EL7}}">{{splvar_install_v250_CDH583-EL7}}</a></td>
+           </tr>
+           <tr>
+               <td>Precise</td>
+               <td><a href="{{splvar_install_v250_CDH583-PRECISE}}">{{splvar_install_v250_CDH583-PRECISE}}</a></td>
+           </tr>
+           <tr>
+               <td>SLES11</td>
+               <td><a href="{{splvar_install_v250_CDH583-SLES11}}">{{splvar_install_v250_CDH583-SLES11}}</a></td>
+           </tr>
+           <tr>
+               <td>Trusty</td>
+               <td><a href="{{splvar_install_v250_CDH583-TRUSTY}}">{{splvar_install_v250_CDH583-TRUSTY}}</a></td>
+           </tr>
+           <tr>
+               <td>Wheezy</td>
+               <td><a href="{{splvar_install_v250_CDH583-WHEEZY}}">{{splvar_install_v250_CDH583-WHEEZY}}</a></td>
+            </tr>
+           <tr>
+               <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH580}}</td>
+               <td>EL6</td>
+               <td><a href="{{splvar_install_v250_CDH580-EL6}}">{{splvar_install_v250_CDH580-EL6}}</a></td>
+           </tr>
+           <tr>
+               <td>EL7</td>
+               <td><a href="{{splvar_install_v250_CDH580-EL7}}">{{splvar_install_v250_CDH580-EL7}}</a></td>
+           </tr>
+           <tr>
+               <td>Precise</td>
+               <td><a href="{{splvar_install_v250_CDH580-PRECISE}}">{{splvar_install_v250_CDH580-PRECISE}}</a></td>
+           </tr>
+           <tr>
+               <td>SLES11</td>
+               <td><a href="{{splvar_install_v250_CDH580-SLES11}}">{{splvar_install_v250_CDH580-SLES11}}</a></td>
+           </tr>
+           <tr>
+               <td>Trusty</td>
+               <td><a href="{{splvar_install_v250_CDH580-TRUSTY}}">{{splvar_install_v250_CDH580-TRUSTY}}</a></td>
+           </tr>
+           <tr>
+               <td>Wheezy</td>
+               <td><a href="{{splvar_install_v250_CDH580-WHEEZY}}">{{splvar_install_v250_CDH580-WHEEZY}}</a></td>
+            </tr>
+        </tbody>
+    </table>
 
     To be sure that you have the latest URL, please check [the Splice
     Machine Community site][1]{: target="_blank"} or contact your Splice
     Machine representative.
     {: .noteIcon}
 
-2.  Add the parcel repository:
+2.  Add the parcel repository
     {: .topLevel}
 
-    Now select your repository in the Cloudera Manager *Select
-    Repository* screen.
-    {: .indentLevel1}
+    1. Make sure the <span class="AppCommand">Use Parcels
+    (Recommended)</span> option and the <span
+    class="AppCommand">Matched release</span> option are both
+    selected.
 
-    1.  Make sure the <span class="AppCommand">Use Parcels
-        (Recommended)</span> option and the <span
-        class="AppCommand">Matched release</span> option are both
-        selected.
-    2.  Click the <span class="AppCommand">Continue</span> button to
-        land on the *More Options* screen.
-    3.  Cick the <span class="AppCommand">+</span> button for the <span
-        class="AppCommand">Remote Parcel Repository URLs</span> field.
-        Paste your Splice Machine repository URL into this field.
-    {: .plainFont}
+    2. Click the <span class="AppCommand">Continue</span> button to
+    land on the *More Options* screen.
+
+    3. Cick the <span class="AppCommand">+</span> button for the <span
+    class="AppCommand">Remote Parcel Repository URLs</span> field.
+    Paste your Splice Machine repository URL into this field.
+    {: .LowerAlphaPlainFont}
 
 3.  Use Cloudera Manager to install the parcel.
     {: .topLevel}
@@ -218,8 +217,10 @@ Machine on your cluster:
     {: .indentLevel1}
 
 5.  Restart and redeploy any client changes when Cloudera Manager
-    prompts you.
+prompts you.
     {: .topLevel}
+
+    </div>
 {: .boldFont}
 
 </div>
@@ -279,7 +280,7 @@ work properly on a CDH cluster:
 
     <div class="preWrapperWide" markdown="1">
 
-        sudo /opt/cloudera/parcels/SPLICEMACHINE/scripts/install-splice-symlinks.sh
+    sudo /opt/cloudera/parcels/SPLICEMACHINE/scripts/install-splice-symlinks.sh
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -305,8 +306,9 @@ configurations:
     ![Configuring the Cloudera Manager
     ports](images/CM.AlertListenPort.png){: .nestedTightSpacing}
 
-2.  Change the value of the Alerts: Listen Port to to <span
-    class="AppFontCustCode">10110</span>.
+2.  Change the value of the Alerts: Listen Port to <span
+class="AppFontCustCode">10110</span>.
+
 3.  Save changes and restart the Management Service.
 {: .boldFont}
 
@@ -326,8 +328,8 @@ and follow these steps:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        Maximum Client Connections = 0
-        Maximum Session Timeout    = 120000
+    Maximum Client Connections = 0
+    Maximum Session Timeout    = 120000
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -346,48 +348,48 @@ these changes:
 
 <div class="opsStepsList" markdown="1">
 1.  Verify that the HDFS data directories for your cluster are set up to
-    use your data disks.
+use your data disks.
     {: .topLevel}
 
 2.  Change the values of these settings
     {: .topLevel}
 
     <table>
-                                    <col />
-                                    <col />
-                                    <thead>
-                                        <tr>
-                                            <th>Setting</th>
-                                            <th>New Value</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="AppFont">Handler Count</td>
-                                            <td class="AppFontCust">20</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Maximum Number of Transfer Threads</td>
-                                            <td class="AppFontCust">8192</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">NameNodeHandler Count</td>
-                                            <td class="AppFontCust">64</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">NameNode Service Handler Count</td>
-                                            <td class="AppFontCust">60</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Replication Factor</td>
-                                            <td class="AppFontCust">2 or 3 *</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Java Heap Size of DataNode in Bytes</td>
-                                            <td class="AppFontCust">2 GB</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Setting</th>
+                <th>New Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="AppFont">Handler Count</td>
+                <td class="AppFontCust">20</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Maximum Number of Transfer Threads</td>
+                <td class="AppFontCust">8192</td>
+            </tr>
+            <tr>
+                <td class="AppFont">NameNodeHandler Count</td>
+                <td class="AppFontCust">64</td>
+            </tr>
+            <tr>
+                <td class="AppFont">NameNode Service Handler Count</td>
+                <td class="AppFontCust">60</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Replication Factor</td>
+                <td class="AppFontCust">2 or 3 *</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Java Heap Size of DataNode in Bytes</td>
+                <td class="AppFontCust">2 GB</td>
+            </tr>
+        </tbody>
+    </table>
 
 3.  Click the <span class="AppCommand">Save Changes</span> button.
 {: .boldFont}
@@ -401,98 +403,96 @@ click the <span class="AppCommand">Configuration</span> tab and make
 these changes:
 
 <div class="opsStepsList" markdown="1">
-1.  Verify that the following directories are set up to use your data
-    disks.
+1.  Verify that the following directories are set up to use your data disks.
     {: .topLevel}
 
     <table>
-                                    <col />
-                                    <tbody>
-                                        <tr>
-                                            <td class="AppFont">
-    NodeManager Local Directories<br />NameNode Data Directories<br />HDFS Checkpoint Directories<br /></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <col />
+        <tbody>
+            <tr>
+                <td class="AppFont">NodeManager Local Directories<br />NameNode Data Directories<br />HDFS Checkpoint Directories<br /></td>
+            </tr>
+        </tbody>
+    </table>
 
 2.  Change the values of these settings
-    {: .topLevel}
+{: .topLevel}
 
     <table>
-                                    <col />
-                                    <col />
-                                    <thead>
-                                        <tr>
-                                            <th>Setting</th>
-                                            <th>New Value</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="AppFont">Heartbeat Interval</td>
-                                            <td class="AppFontCust">100 ms</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">MR Application Classpath</td>
-                                            <td class="AppFontCust">
-                                                <div class="preWrapperWide"><pre class="Example">$HADOOP_MAPRED_HOME/*
-    $HADOOP_MAPRED_HOME/lib/*
-    $MR2_CLASSPATH/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">YARN Application Classpath</td>
-                                            <td class="AppFontCust">
-                                                <div class="preWrapperWide"><pre class="Example">$HADOOP_CLIENT_CONF_DIR
-    $HADOOP_CONF_DIR
-    $HADOOP_COMMON_HOME/*
-    $HADOOP_COMMON_HOME/lib/*
-    $HADOOP_HDFS_HOME/*
-    $HADOOP_HDFS_HOME/lib/*
-    $HADOOP_YARN_HOME/*
-    $HADOOP_YARN_HOME/lib/*
-    $HADOOP_MAPRED_HOME/*
-    $HADOOP_MAPRED_HOME/lib/*
-    $MR2_CLASSPATH
-    /opt/cloudera/parcels/CDH/lib/hbase/*/opt/cloudera/parcels/CDH/lib/hbase/lib/*/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Localized Dir Deletion Delay</td>
-                                            <td class="AppFontCust">86400</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">JobHistory Server Max Log Size</td>
-                                            <td class="AppFontCust">1 GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">NodeManager Max Log Size</td>
-                                            <td class="AppFontCust">1 GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">ResourceManager Max Log Size</td>
-                                            <td class="AppFontCust">1 GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Container Memory</td>
-                                            <td class="AppFontCust">30 GB (based on node specs)</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Container Memory Maximum</td>
-                                            <td class="AppFontCust">30 GB (based on node specs)</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Container Virtual CPU Cores</td>
-                                            <td class="AppFontCust">19 (based on node specs)</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Container Virtual CPU Cores Maximum</td>
-                                            <td class="AppFontCust">19 (Based on node specs)</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Setting</th>
+                <th>New Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="AppFont">Heartbeat Interval</td>
+                <td class="AppFontCust">100 ms</td>
+            </tr>
+            <tr>
+                <td class="AppFont">MR Application Classpath</td>
+                <td class="AppFontCust">
+                    <div class="preWrapperWide"><pre class="Example">$HADOOP_MAPRED_HOME/*
+$HADOOP_MAPRED_HOME/lib/*
+$MR2_CLASSPATH/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="AppFont">YARN Application Classpath</td>
+                <td class="AppFontCust">
+                    <div class="preWrapperWide"><pre class="Example">$HADOOP_CLIENT_CONF_DIR
+$HADOOP_CONF_DIR
+$HADOOP_COMMON_HOME/*
+$HADOOP_COMMON_HOME/lib/*
+$HADOOP_HDFS_HOME/*
+$HADOOP_HDFS_HOME/lib/*
+$HADOOP_YARN_HOME/*
+$HADOOP_YARN_HOME/lib/*
+$HADOOP_MAPRED_HOME/*
+$HADOOP_MAPRED_HOME/lib/*
+$MR2_CLASSPATH
+/opt/cloudera/parcels/CDH/lib/hbase/*/opt/cloudera/parcels/CDH/lib/hbase/lib/*/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="AppFont">Localized Dir Deletion Delay</td>
+                <td class="AppFontCust">86400</td>
+            </tr>
+            <tr>
+                <td class="AppFont">JobHistory Server Max Log Size</td>
+                <td class="AppFontCust">1 GB</td>
+            </tr>
+            <tr>
+                <td class="AppFont">NodeManager Max Log Size</td>
+                <td class="AppFontCust">1 GB</td>
+            </tr>
+            <tr>
+                <td class="AppFont">ResourceManager Max Log Size</td>
+                <td class="AppFontCust">1 GB</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Container Memory</td>
+                <td class="AppFontCust">30 GB (based on node specs)</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Container Memory Maximum</td>
+                <td class="AppFontCust">30 GB (based on node specs)</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Container Virtual CPU Cores</td>
+                <td class="AppFontCust">19 (based on node specs)</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Container Virtual CPU Cores Maximum</td>
+                <td class="AppFontCust">19 (Based on node specs)</td>
+            </tr>
+        </tbody>
+    </table>
 
 3.  Add property values
     {: .topLevel}
@@ -505,38 +505,37 @@ these changes:
     {: .indentLevel1}
 
     <table>
-                                    <col />
-                                    <col />
-                                    <thead>
-                                        <tr>
-                                            <th>XML Property Name</th>
-                                            <th>XML Property Value</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="AppFont">yarn.nodemanager.aux-services.spark_shuffle.class</td>
-                                            <td class="AppFontCust">org.apache.spark.network.yarn.YarnShuffleService</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">yarn.nodemanager.aux-services</td>
-                                            <td class="AppFontCust">mapreduce_shuffle,spark_shuffle</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>XML Property Name</th>
+                <th>XML Property Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="AppFont">yarn.nodemanager.aux-services.spark_shuffle.class</td>
+                <td class="AppFontCust">org.apache.spark.network.yarn.YarnShuffleService</td>
+            </tr>
+            <tr>
+                <td class="AppFont">yarn.nodemanager.aux-services</td>
+                <td class="AppFontCust">mapreduce_shuffle,spark_shuffle</td>
+            </tr>
+        </tbody>
+    </table>
 
     To each of these YARN settings:
     {: .indentLevel1}
 
-    * Yarn Service Advanced Configuration Snippet (Safety Valve) for
-      yarn-site.xml
-    * Yarn Client Advanced Configuration Snippet (Safety Valve) for
-      yarn-site.xml
-    * NodeManager Advanced Configuration Snippet (Safety Valve) for
-      yarn-site.xml
-    * ResourceManager Advanced Configuration Snippet (Safety Valve) for
-      yarn-site.xml
-    {: .codeList}
+    * Yarn Service Advanced Configuration Snippet (Safety Valve) for yarn-site.xml
+
+    * Yarn Client Advanced Configuration Snippet (Safety Valve) for yarn-site.xml
+
+    * NodeManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml
+
+    * ResourceManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml
+    {: .plainFont}
 
 4.  Click the <span class="AppCommand">Save Changes</span> button.
 {: .boldFont}
@@ -554,142 +553,138 @@ make these changes:
     {: .topLevel}
 
     <table>
-                                    <col />
-                                    <col />
-                                    <thead>
-                                        <tr>
-                                            <th>Setting</th>
-                                            <th>New Value</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="AppFont">HBase Client Scanner Caching</td>
-                                            <td class="AppFontCust">100 ms</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Graceful Shutdown Timeout</td>
-                                            <td class="AppFontCust">
-                                                <div class="preWrapperWide">
-                                                    <p>30 seconds</p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase Service Advanced Configuration Snippet (Safety Valve) for hbase-site.xml</td>
-                                            <td class="AppFontCust"><span class="bodyFont">The property list for the Safety Valve snippet is shown below, in Step 2</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">SplitLog Manager Timeout</td>
-                                            <td class="AppFontCust">5 minutes</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Maximum HBase Client Retries</td>
-                                            <td class="AppFontCust">40</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">RPC Timeout</td>
-                                            <td class="AppFontCust">20 minutes (or 1200000 milliseconds)</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase Client Pause</td>
-                                            <td class="AppFontCust">90</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">ZooKeeper Session Timeout</td>
-                                            <td class="AppFontCust">120000</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase Master Web UI Port</td>
-                                            <td class="AppFontCust">16010</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase Master Port</td>
-                                            <td class="AppFontCust">16000</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Java Configuration Options for HBase Master</td>
-                                            <td class="AppFontCust"><span class="bodyFont">The  HBase Master Java configuration options list is shown below, in Step 3</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase Coprocessor Master Classes</td>
-                                            <td class="AppFontCust">
-                                                <p>com.splicemachine.hbase.SpliceMasterObserver</p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Java Heap Size of HBase Master in Bytes</td>
-                                            <td class="AppFontCust">5 GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HStore Compaction Threshold</td>
-                                            <td class="AppFontCust">5</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase RegionServer Web UI port</td>
-                                            <td class="AppFontCust">16030</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HStore Blocking Store Files</td>
-                                            <td class="AppFontCust">20</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Java Configuration Options for HBase RegionServer</td>
-                                            <td class="AppFontCust"><span class="bodyFont">The HBase RegionServerJava configuration options list is shown below, in Step 4</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase Memstore Block Multiplier</td>
-                                            <td class="AppFontCust">4</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Maximum Number of HStoreFiles Compaction</td>
-                                            <td class="AppFontCust">7</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase RegionServer Lease Period</td>
-                                            <td class="AppFontCust">20 minutes (or 1200000 milliseconds)</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HFile Block Cache Size</td>
-                                            <td class="AppFontCust">0.25</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Java Heap Size of HBase RegionServer in Bytes</td>
-                                            <td class="AppFontCust">24 GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase RegionServer Handler Count</td>
-                                            <td class="AppFontCust">200</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase RegionServer Meta-Handler Count</td>
-                                            <td class="AppFontCust">200</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase Coprocessor Region Classes</td>
-                                            <td class="AppFontCust">com.splicemachine.hbase.MemstoreAwareObserver<br />com.splicemachine.derby.hbase.SpliceIndexObserver<br />com.splicemachine.derby.hbase.SpliceIndexEndpoint<br />com.splicemachine.hbase.RegionSizeEndpoint<br />com.splicemachine.si.data.hbase.coprocessor.TxnLifecycleEndpoint<br />com.splicemachine.si.data.hbase.coprocessor.SIObserver<br />com.splicemachine.hbase.BackupEndpointObserver</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Maximum number of Write-Ahead Log (WAL) files</td>
-                                            <td class="AppFontCust">48</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">RegionServer Small Compactions Thread Count</td>
-                                            <td class="AppFontCust">4</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">HBase RegionServer Port</td>
-                                            <td class="AppFontCust">16020</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="AppFont">Per-RegionServer Number of WAL Pipelines</td>
-                                            <td class="AppFontCust">16</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Setting</th>
+                <th>New Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="AppFont">HBase Client Scanner Caching</td>
+                <td class="AppFontCust">100 ms</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Graceful Shutdown Timeout</td>
+                <td class="AppFontCust">30 seconds</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase Service Advanced Configuration Snippet (Safety Valve) for hbase-site.xml</td>
+                <td class="AppFontCust"><span class="bodyFont">The property list for the Safety Valve snippet is shown below, in Step 2</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="AppFont">SplitLog Manager Timeout</td>
+                <td class="AppFontCust">5 minutes</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Maximum HBase Client Retries</td>
+                <td class="AppFontCust">40</td>
+            </tr>
+            <tr>
+                <td class="AppFont">RPC Timeout</td>
+                <td class="AppFontCust">20 minutes (or 1200000 milliseconds)</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase Client Pause</td>
+                <td class="AppFontCust">90</td>
+            </tr>
+            <tr>
+                <td class="AppFont">ZooKeeper Session Timeout</td>
+                <td class="AppFontCust">120000</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase Master Web UI Port</td>
+                <td class="AppFontCust">16010</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase Master Port</td>
+                <td class="AppFontCust">16000</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Java Configuration Options for HBase Master</td>
+                <td class="AppFontCust"><span class="bodyFont">The  HBase Master Java configuration options list is shown below, in Step 3</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase Coprocessor Master Classes</td>
+                <td class="AppFontCust">
+                    <p>com.splicemachine.hbase.SpliceMasterObserver</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="AppFont">Java Heap Size of HBase Master in Bytes</td>
+                <td class="AppFontCust">5 GB</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HStore Compaction Threshold</td>
+                <td class="AppFontCust">5</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase RegionServer Web UI port</td>
+                <td class="AppFontCust">16030</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HStore Blocking Store Files</td>
+                <td class="AppFontCust">20</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Java Configuration Options for HBase RegionServer</td>
+                <td class="AppFontCust"><span class="bodyFont">The HBase RegionServerJava configuration options list is shown below, in Step 4</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase Memstore Block Multiplier</td>
+                <td class="AppFontCust">4</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Maximum Number of HStoreFiles Compaction</td>
+                <td class="AppFontCust">7</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase RegionServer Lease Period</td>
+                <td class="AppFontCust">20 minutes (or 1200000 milliseconds)</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HFile Block Cache Size</td>
+                <td class="AppFontCust">0.25</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Java Heap Size of HBase RegionServer in Bytes</td>
+                <td class="AppFontCust">24 GB</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase RegionServer Handler Count</td>
+                <td class="AppFontCust">200</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase RegionServer Meta-Handler Count</td>
+                <td class="AppFontCust">200</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase Coprocessor Region Classes</td>
+                <td class="AppFontCust">com.splicemachine.hbase.MemstoreAwareObserver<br />com.splicemachine.derby.hbase.SpliceIndexObserver<br />com.splicemachine.derby.hbase.SpliceIndexEndpoint<br />com.splicemachine.hbase.RegionSizeEndpoint<br />com.splicemachine.si.data.hbase.coprocessor.TxnLifecycleEndpoint<br />com.splicemachine.si.data.hbase.coprocessor.SIObserver<br />com.splicemachine.hbase.BackupEndpointObserver</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Maximum number of Write-Ahead Log (WAL) files</td>
+                <td class="AppFontCust">48</td>
+            </tr>
+            <tr>
+                <td class="AppFont">RegionServer Small Compactions Thread Count</td>
+                <td class="AppFontCust">4</td>
+            </tr>
+            <tr>
+                <td class="AppFont">HBase RegionServer Port</td>
+                <td class="AppFontCust">16020</td>
+            </tr>
+            <tr>
+                <td class="AppFont">Per-RegionServer Number of WAL Pipelines</td>
+                <td class="AppFontCust">16</td>
+            </tr>
+        </tbody>
+    </table>
 
 2.  Set the value of `HBase Service Advanced Configuration Snippet
     (Safety Valve)` for `hbase-site.xml`:
@@ -745,7 +740,39 @@ make these changes:
 3.  Set the value of Java Configuration Options for HBase Master:
 
     <div class="preWrapperWide" markdown="1">
-        -XX:MaxPermSize=512M -XX:+HeapDumpOnOutOfMemoryError -XX:MaxDirectMemorySize=2g -XX:+AlwaysPreTouch -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=10101 -Dsplice.spark.enabled=true -Dsplice.spark.app.name=SpliceMachine -Dsplice.spark.master=yarn-client -Dsplice.spark.logConf=true -Dsplice.spark.yarn.maxAppAttempts=1 -Dsplice.spark.driver.maxResultSize=1g -Dsplice.spark.driver.cores=2 -Dsplice.spark.yarn.am.memory=1g -Dsplice.spark.dynamicAllocation.enabled=true -Dsplice.spark.dynamicAllocation.executorIdleTimeout=120 -Dsplice.spark.dynamicAllocation.cachedExecutorIdleTimeout=120 -Dsplice.spark.dynamicAllocation.minExecutors=0 -Dsplice.spark.dynamicAllocation.maxExecutors=12 -Dsplice.spark.io.compression.lz4.blockSize=32k -Dsplice.spark.kryo.referenceTracking=false -Dsplice.spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator -Dsplice.spark.kryoserializer.buffer.max=512m -Dsplice.spark.kryoserializer.buffer=4m -Dsplice.spark.locality.wait=100 -Dsplice.spark.memory.fraction=0.5 -Dsplice.spark.scheduler.mode=FAIR -Dsplice.spark.serializer=org.apache.spark.serializer.KryoSerializer -Dsplice.spark.shuffle.compress=false -Dsplice.spark.shuffle.file.buffer=128k -Dsplice.spark.shuffle.service.enabled=true -Dsplice.spark.yarn.am.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native -Dsplice.spark.yarn.am.waitTime=10s -Dsplice.spark.yarn.executor.memoryOverhead=2048 -Dsplice.spark.driver.extraJavaOptions=-Dlog4j.configuration=file:/etc/spark/conf/log4j.properties -Dsplice.spark.driver.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native -Dsplice.spark.driver.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/CDH/jars/htrace-core-3.1.0-incubating.jar -Dsplice.spark.executor.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native -Dsplice.spark.executor.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/CDH/jars/htrace-core-3.1.0-incubating.jar -Dsplice.spark.ui.retainedJobs=100 -Dsplice.spark.ui.retainedStages=100 -Dsplice.spark.worker.ui.retainedExecutors=100 -Dsplice.spark.worker.ui.retainedDrivers=100 -Dsplice.spark.streaming.ui.retainedBatches=100 -Dsplice.spark.executor.cores=4 -Dsplice.spark.executor.memory=8g -Dspark.compaction.reserved.slots=4 -Dsplice.spark.eventLog.enabled=true -Dsplice.spark.eventLog.dir=hdfs:///user/splice/history -Dsplice.spark.local.dir=/tmp -Dsplice.spark.yarn.jars=/opt/cloudera/parcels/SPLICEMACHINE/lib/*
+        -XX:MaxPermSize=512M -XX:+HeapDumpOnOutOfMemoryError -XX:MaxDirectMemorySize=2g
+        -XX:+AlwaysPreTouch -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
+        -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled
+        -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+        -Dcom.sun.management.jmxremote.port=10101 -Dsplice.spark.enabled=true
+        -Dsplice.spark.app.name=SpliceMachine -Dsplice.spark.master=yarn-client
+        -Dsplice.spark.logConf=true -Dsplice.spark.yarn.maxAppAttempts=1
+        -Dsplice.spark.driver.maxResultSize=1g -Dsplice.spark.driver.cores=2
+        -Dsplice.spark.yarn.am.memory=1g -Dsplice.spark.dynamicAllocation.enabled=true
+        -Dsplice.spark.dynamicAllocation.executorIdleTimeout=120
+        -Dsplice.spark.dynamicAllocation.cachedExecutorIdleTimeout=120
+        -Dsplice.spark.dynamicAllocation.minExecutors=0
+        -Dsplice.spark.dynamicAllocation.maxExecutors=12 -Dsplice.spark.io.compression.lz4.blockSize=32k
+        -Dsplice.spark.kryo.referenceTracking=false
+        -Dsplice.spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator
+        -Dsplice.spark.kryoserializer.buffer.max=512m -Dsplice.spark.kryoserializer.buffer=4m
+        -Dsplice.spark.locality.wait=100 -Dsplice.spark.memory.fraction=0.5
+        -Dsplice.spark.scheduler.mode=FAIR
+        -Dsplice.spark.serializer=org.apache.spark.serializer.KryoSerializer
+        -Dsplice.spark.shuffle.compress=false -Dsplice.spark.shuffle.file.buffer=128k
+        -Dsplice.spark.shuffle.service.enabled=true
+        -Dsplice.spark.yarn.am.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native
+        -Dsplice.spark.yarn.am.waitTime=10s -Dsplice.spark.yarn.executor.memoryOverhead=2048
+        -Dsplice.spark.driver.extraJavaOptions=-Dlog4j.configuration=file:/etc/spark/conf/log4j.properties
+        -Dsplice.spark.driver.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native
+        -Dsplice.spark.driver.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/CDH/jars/htrace-core-3.1.0-incubating.jar
+        -Dsplice.spark.executor.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native
+        -Dsplice.spark.executor.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/CDH/jars/htrace-core-3.1.0-incubating.jar
+        -Dsplice.spark.ui.retainedJobs=100 -Dsplice.spark.ui.retainedStages=100 -Dsplice.spark.worker.ui.retainedExecutors=100
+        -Dsplice.spark.worker.ui.retainedDrivers=100 -Dsplice.spark.streaming.ui.retainedBatches=100 -Dsplice.spark.executor.cores=4
+        -Dsplice.spark.executor.memory=8g -Dspark.compaction.reserved.slots=4 -Dsplice.spark.eventLog.enabled=true
+        -Dsplice.spark.eventLog.dir=hdfs:///user/splice/history -Dsplice.spark.local.dir=/tmp
+        -Dsplice.spark.yarn.jars=/opt/cloudera/parcels/SPLICEMACHINE/lib/*
     {: .Example}
 
     </div>

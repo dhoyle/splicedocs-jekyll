@@ -24,7 +24,9 @@ outside of Spark, you need to call
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE(            String schemaName,           String tableName )
+    SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE(
+                String schemaName,
+                String tableName )
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -64,4 +66,3 @@ This refreshes the schema of the external table named `myTable`:
 
 </div>
 </section>
-

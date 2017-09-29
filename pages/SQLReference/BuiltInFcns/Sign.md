@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SIGN   {#BuiltInFcns.Sign}
+# SIGN
 
 The `SIGN` function returns the sign of the specified number.
 
@@ -25,7 +25,7 @@ The `SIGN` function returns the sign of the specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the value whose sign you want.
 {: .paramDefnFirst}
 

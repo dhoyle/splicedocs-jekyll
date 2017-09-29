@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TIMESTAMPADD   {#BuiltInFcns.TimeStamp}
+# TIMESTAMPADD
 
 The `TIMESTAMPADD` function adds the value of an interval to a timestamp
 value and returns the sum as a new timestamp. You can supply a negative
@@ -30,16 +30,16 @@ interval
 One of the following timestamp interval constants:
 {: .paramDefnFirst}
 
-* {: .CodeFont value="1"} SQL_TSI_FRAC_SECOND
-* {: .CodeFont value="2"} SQL_TSI_SECOND
-* {: .CodeFont value="3"} SQL_TSI_MINUTE
-* {: .CodeFont value="4"} SQL_TSI_HOUR
-* {: .CodeFont value="5"} SQL_TSI_DAY
-* {: .CodeFont value="6"} SQL_TSI_WEEK,
-* {: .CodeFont value="7"} SQL_TSI_MONTH
-* {: .CodeFont value="8"} SQL_TSI_QUARTER
-* {: .CodeFont value="9"} SQL_TSI_YEAR
-{: .bullet}
+* `SQL_TSI_FRAC_SECOND`
+* `SQL_TSI_SECOND`
+* `SQL_TSI_MINUTE`
+* `SQL_TSI_HOUR`
+* `SQL_TSI_DAY`
+* `SQL_TSI_WEEK`
+* `SQL_TSI_MONTH`
+* `SQL_TSI_QUARTER`
+* `SQL_TSI_YEAR`
+{: .bulletNested}
 
 count
 {: .paramName}
@@ -77,7 +77,7 @@ value two months from now:
     1                            |2
     -----------------------------------------------------------
     2015-11-23 13:54:16.728      |2016-01-23 13:54:16.728
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -96,4 +96,3 @@ value two months from now:
 
 </div>
 </section>
-

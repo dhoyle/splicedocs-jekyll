@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE   {#BuiltInSysProcs.EmptyStatementCache}
+# SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE
 
 The `SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE` stored procedure
 removes as many compiled statements (plans) as possible from the

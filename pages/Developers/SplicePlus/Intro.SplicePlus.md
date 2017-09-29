@@ -20,7 +20,7 @@ Splice Machine.
 This section contains the following topics about using Splice*Plus,
 PL/SQL for Splice Machine:
 
-<table summary="Table of descriptions of and links to the topics in this chapter">
+<table summary="Table of descriptions of and links to the topics in this section">
                 <col />
                 <col />
                 <thead>
@@ -49,4 +49,3 @@ PL/SQL for Splice Machine:
             </table>
 </div>
 </section>
-

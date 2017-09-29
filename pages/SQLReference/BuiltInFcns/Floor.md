@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# FLOOR   {#BuiltInFcns.Floor}
+# FLOOR
 
 The `FLOOR` function rounds the specified number down, and returns the
 largest number that is less than or equal to the specified number.
@@ -26,7 +26,7 @@ largest number that is less than or equal to the specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 {: .paramDefnFirst}
 
 </div>
@@ -44,7 +44,7 @@ A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 </div>
 ## Results
 
-The data type of the result is a [`DOUBLE
+The data type of the result is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number. The returned
 value is equal to a mathematical integer.
 

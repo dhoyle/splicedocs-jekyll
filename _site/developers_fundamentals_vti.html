@@ -589,7 +589,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="top">Using the Splice Machine Virtual Table Interface (VTI)</h1>
+    <h1 id="using-the-splice-machine-virtual-table-interface-vti">Using the Splice Machine Virtual Table Interface (VTI)</h1>
 
     <p>The Virtual Table Interface (VTI) allows you to use an SQL interface
 with data that is external to your database. This topic introduces the
@@ -636,7 +636,16 @@ example of a declaration for a table function that is bound to the
 in this topic:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))    RETURNS TABLE       (         KEY_NAME varchar(100)         VALUE varchar(200)       )    LANGUAGE JAVA    PARAMETER STYLE SPLICE_JDBC_RESULT_SET    READS SQL DATA    EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
+      <pre class="Example"><code>CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))
+    RETURNS TABLE
+       (
+         KEY_NAME varchar(100)
+         VALUE varchar(200)
+       )
+    LANGUAGE JAVA
+    PARAMETER STYLE SPLICE_JDBC_RESULT_SET
+    READS SQL DATA
+    EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
 </code></pre>
 
     </div>
@@ -810,8 +819,7 @@ class:</p>
 class in table functions:</p>
 
         <div class="preWrapperWide">
-          <pre class="Example"><code>public PropertiesFileVTI()&lt;![CDATA[
-]]&gt;
+          <pre class="Example"><code>public PropertiesFileVTI()
 </code></pre>
 
         </div>
@@ -821,8 +829,7 @@ class in table functions:</p>
 SQL queries:</p>
 
         <div class="preWrapperWide">
-          <pre class="Example"><code>public PropertiesFileVTI(String pfileName)&lt;![CDATA[
-]]&gt;
+          <pre class="Example"><code>public PropertiesFileVTI(String pfileName)
 </code></pre>
 
         </div>
@@ -831,8 +838,7 @@ SQL queries:</p>
         <p>This static constructor is called by the VTI - Table Function.</p>
 
         <div class="preWrapperWide">
-          <pre class="Example"><code>public static DatasetProvider getPropertiesFileVTI(String fileName)&lt;![CDATA[
-]]&gt;
+          <pre class="Example"><code>public static DatasetProvider getPropertiesFileVTI(String fileName)
 </code></pre>
 
         </div>
@@ -862,7 +868,10 @@ method <code>getDataSet</code>, which you override to generate and return a
 <code>DataSet</code>. It’s declaration looks like this:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>DataSet&lt;LocatedRow&gt; getDataSet(        SpliceOperation op,       // References the op at the top of the stack        DataSetProcessor dsp,     // Mechanism for constructing the execution tree        ExecRow execRow ) throws StandardException;
+      <pre class="Example"><code>DataSet&lt;LocatedRow&gt; getDataSet(
+        SpliceOperation op,       // References the op at the top of the stack
+        DataSetProcessor dsp,     // Mechanism for constructing the execution tree
+        ExecRow execRow ) throws StandardException;
 </code></pre>
 
     </div>
@@ -967,8 +976,7 @@ public double getEstimatedCostPerInstantiation(VTIEnvironment arg0) throws SQLEx
 @Override
 public double getEstimatedRowCount(VTIEnvironment arg0) throws SQLException {
     return 0;
-}&lt;![CDATA[
-]]&gt;
+}
 @Override
 public boolean supportsMultipleInstantiations(VTIEnvironment arg0) throws SQLException {
     return false;
@@ -1037,7 +1045,16 @@ simplify use of your custom VTI. Here’s a table declaration for our
 custom interface:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))    RETURNS TABLE       (         KEY_NAME varchar(100)         VALUE varchar(200)       )    LANGUAGE JAVA    PARAMETER STYLE SPLICE_JDBC_RESULT_SET    READS SQL DATA    EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
+      <pre class="Example"><code>CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))
+    RETURNS TABLE
+       (
+         KEY_NAME varchar(100)
+         VALUE varchar(200)
+       )
+    LANGUAGE JAVA
+    PARAMETER STYLE SPLICE_JDBC_RESULT_SET
+    READS SQL DATA
+    EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
 </code></pre>
 
     </div>
@@ -1052,7 +1069,8 @@ custom interface:</p>
 example:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>select * from new com.splicemachine.tutorials.vti.PropertiesFileVTI('sample.properties')    as b (KEY_NAME VARCHAR(20), VALUE VARCHAR(100));
+      <pre class="Example"><code>select * from new com.splicemachine.tutorials.vti.PropertiesFileVTI('sample.properties')
+    as b (KEY_NAME VARCHAR(20), VALUE VARCHAR(100));
 </code></pre>
 
     </div>
@@ -1082,13 +1100,18 @@ such as a csv file, as shown in the examples below.</p>
     </div>
     <div class="fcnWrapperWide">
 
-      <pre class="FcnSyntax"><code>public SpliceFileVTI(String fileName,                     String characterDelimiter,                     String columnDelimiter)
+      <pre class="FcnSyntax"><code>public SpliceFileVTI(String fileName,
+                     String characterDelimiter,
+                     String columnDelimiter)
 </code></pre>
 
     </div>
     <div class="fcnWrapperWide">
 
-      <pre class="FcnSyntax"><code>public SpliceFileVTI(String fileName,                     String characterDelimiter,                     String columnDelimiter,                     boolean oneLineRecords)
+      <pre class="FcnSyntax"><code>public SpliceFileVTI(String fileName,
+                     String characterDelimiter,
+                     String columnDelimiter,
+                     boolean oneLineRecords)
 </code></pre>
 
     </div>
@@ -1130,7 +1153,9 @@ provide JDBC connections.</p>
 
     <div class="fcnWrapperWide">
 
-      <pre class="FcnSyntax"><code>public SpliceJDBCVTI(String connectionUrl,                     String schemaName,                     String tableName)
+      <pre class="FcnSyntax"><code>public SpliceJDBCVTI(String connectionUrl,
+                     String schemaName,
+                     String tableName)
 </code></pre>
 
     </div>
@@ -1150,7 +1175,8 @@ provide JDBC connections.</p>
     </div>
     <div class="fcnWrapperWide">
 
-      <pre class="FcnSyntax"><code>public SpliceJDBCVTI(String connectionUrl,                     String sql)
+      <pre class="FcnSyntax"><code>public SpliceJDBCVTI(String connectionUrl,
+                     String sql)
 </code></pre>
 
     </div>
@@ -1188,7 +1214,7 @@ VTI class hierarchy.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

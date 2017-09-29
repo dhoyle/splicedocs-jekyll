@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="create-trigger---statementscreatetrigger">CREATE TRIGGER   {#Statements.CreateTrigger}</h1>
+    <h1 id="create-trigger">CREATE TRIGGER</h1>
 
     <p>A <code>CREATE TRIGGER</code> statement creates a trigger, which defines a set of
 actions that are executed when a database event known as the <code>triggering
@@ -2844,16 +2844,9 @@ triggers.</p>
 
       <p class="paramDefnFirst">The name to associate with the trigger.</p>
 
-      <table class="paramName">
-        <tbody>
-          <tr>
-            <td>AFTER </td>
-            <td> BEFORE</td>
-          </tr>
-        </tbody>
-      </table>
+      <p class="paramName">AFTER | BEFORE</p>
 
-      <p class="paramDefnFirst">Triggers are defined as either <em>Before</em> or <em>After</em> triggers.</p>
+      <p class="paramDefnFirst">Triggers are defined as either <code>Before</code> or <code>After</code> triggers.</p>
 
       <p class="paramDefn"><code>BEFORE</code> triggers fire before the statement’s changes are applied and
 before any constraints have been applied. <code>AFTER</code> triggers fire after
@@ -2875,16 +2868,7 @@ check).</li>
 same table for the same trigger time (before or after), triggers are
 fired in the order in which they were created.</p>
 
-      <table class="paramName">
-        <tbody>
-          <tr>
-            <td>INSERT</td>
-            <td>DELETE</td>
-            <td>SELECT</td>
-            <td>UPDATE</td>
-          </tr>
-        </tbody>
-      </table>
+      <p class="paramName">INSERT | DELETE | SELECT | UPDATE</p>
 
       <p class="paramDefnFirst">Defines which database event causes the trigger to fire. If you specify
 <code>UPDATE</code>, you can specify which column(s) cause the triggering event.</p>
@@ -2899,14 +2883,7 @@ fired in the order in which they were created.</p>
 the database event that caused the trigger to fire. See the <a href="#ReferencingClause">Referencing
 Clause</a> section below.</p>
 
-      <table class="paramName">
-        <tbody>
-          <tr>
-            <td>FOR EACH {ROW </td>
-            <td> STATEMENT}</td>
-          </tr>
-        </tbody>
-      </table>
+      <p class="paramName">FOR EACH {ROW | STATEMENT}</p>
 
       <p class="paramDefnFirst">A <code>FOR EACH ROW</code> triggered action executes once for each row that the
 triggering statement affects.</p>
@@ -3091,7 +3068,6 @@ with a single row.</p>
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -3106,7 +3082,7 @@ with a single row.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

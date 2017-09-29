@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TIME   {#BuiltInFcns.Time}
+# TIME
 
 The `TIME` function returns a time from a value.
 
@@ -28,9 +28,9 @@ expression
 An expression that can be any of the following:
 {: .paramDefnFirst}
 
-* A [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) value
+* A &nbsp;[`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) value
 * A valid string representation of a time or timestamp
-{: .bullet}
+{: .bulletNested}
 
 </div>
 ## Results
@@ -59,7 +59,7 @@ The returned result is governed by the following rules:
     1
     --------
     18:53:13
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -71,4 +71,3 @@ The returned result is governed by the following rules:
 
 </div>
 </section>
-

@@ -557,7 +557,7 @@ For `ROWS` mode, you can specify:
 > </div>
 
 For `RANGE` mode, you can only specify:
-{: .paramDefnFirst}
+{: .paramDefn}
 
 > <div class="fcnWrapperWide" markdown="1">
 >     CURRENT ROW
@@ -594,7 +594,7 @@ For `ROWS` mode, you can specify:
 > </div>
 
 For `RANGE` mode, you can only specify:
-{: .paramDefnFirst}
+{: .paramDefn}
 
 > <div class="fcnWrapperWide" markdown="1">
 >     CURRENT ROW
@@ -815,7 +815,7 @@ columns,
 Splice Machine is currently expanding the set of SQL functions already
 able to take advantage of windowing functionality.
 
-The [`OVER`](sqlref_clauses_over.html) clause topic completes the complete reference information for `OVER`.
+The &nbsp;[`OVER`](sqlref_clauses_over.html) clause topic completes the complete reference information for `OVER`.
 
 Here is a list of the functions that currently support windowing:
 

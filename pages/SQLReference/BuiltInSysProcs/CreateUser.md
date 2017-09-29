@@ -11,7 +11,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_CREATE_USER   {#BuiltInSysProcs.CreateUser}
+# SYSCS_UTIL.SYSCS_CREATE_USER
 
 The `SYSCS_UTIL.SYSCS_CREATE_USER` system procedure adds a new user
 account to a database.
@@ -73,7 +73,22 @@ administrator adding a new user named `fred` and then verifying that the
 schema named `fred` is now active:
 
 <div class="preWrapper" markdown="1">
-    splice> CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');Statement executed.splice> VALUES(CURRENT SCHEMA);1------------------------------------------------------------------SPLICE1 row selectedsplice> SET SCHEMA fred;0 rows inserted/updated/deletedsplice> VALUES(CURRENT SCHEMA);1------------------------------------------------------------------FRED1 row selected
+    splice> CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');
+    Statement executed.
+    splice> VALUES(CURRENT SCHEMA);
+    1
+    ------------------------------------------------------------------
+    SPLICE
+
+    1 row selected
+    splice> SET SCHEMA fred;
+    0 rows inserted/updated/deleted
+    splice> VALUES(CURRENT SCHEMA);
+    1
+    ------------------------------------------------------------------
+    FRED
+    
+    1 row selected
 {: .Example xml:space="preserve"}
 
 </div>
@@ -140,4 +155,3 @@ Create a (case sensitive) user named `MrBaseball`:
 
 </div>
 </section>
-

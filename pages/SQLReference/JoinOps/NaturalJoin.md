@@ -10,7 +10,7 @@ folder: SQLReference/JoinOps
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# NATURAL JOIN   {#JoinOps.NaturalJoin}
+# NATURAL JOIN
 
 A `NATURAL JOIN` is a [ `JOIN` operation](sqlref_joinops_about.html)
 that creates an implicit join clause for you based on the common columns

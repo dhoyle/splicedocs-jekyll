@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# BIGINT   {#BuiltInFcns.BigInt}
+# BIGINT
 
 The `BIGINT` function returns a 64-bit integer representation of a
 number or character string in the form of an integer constant.

@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# UPDATE   {#Statements.Update}
+# UPDATE
 
 Use the `UPDATE` statement to update existing records in a table.
 
@@ -95,7 +95,7 @@ This example updates the team name associated with all players on the
 A searched update statement depends on the table being updated, all of
 its conglomerates (units of storage such as heaps or indexes), all of
 its constraints, and any other table named in the `DROP
-			INDEX` statement or an [`ALTER
+			INDEX` statement or an &nbsp;[`ALTER
 TABLE`](sqlref_statements_altertable.html) statement for the target
 table of a prepared searched update statement invalidates the prepared
 searched update statement.

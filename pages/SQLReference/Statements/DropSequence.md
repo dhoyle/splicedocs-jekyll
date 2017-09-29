@@ -10,16 +10,16 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP SEQUENCE   {#Statements.DropSequence}
+# DROP SEQUENCE
 
 The `DROP SEQUENCE` statement removes a sequence generator that was
-created using a [`CREATE SEQUENCE`
+created using a &nbsp;[`CREATE SEQUENCE`
 statement](sqlref_statements_createsequence.html).
 
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    DROP SEQUENCE [ SQL Identifier RESTRICT
+    DROP SEQUENCE [ schemaName. ] SQL Identifier RESTRICT
 {: .FcnSyntax}
 
 </div>
@@ -68,4 +68,3 @@ that reference it.
 
 </div>
 </section>
-

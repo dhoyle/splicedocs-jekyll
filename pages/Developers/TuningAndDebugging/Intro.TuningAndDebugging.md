@@ -15,7 +15,7 @@ folder: Developers/TuningAndDebugging
 This section contains the following topics to help you optimize your
 Splice Machine database queries:
 
-<table summary="Table of descriptions of and links to the sections in this chapter.">
+<table summary="Table of descriptions of and links to the sections in this section.">
                 <col />
                 <col />
                 <thead>
@@ -55,4 +55,3 @@ Splice Machine database queries:
 {% include splice_snippets/githublink.html %}
 </div>
 </section>
-

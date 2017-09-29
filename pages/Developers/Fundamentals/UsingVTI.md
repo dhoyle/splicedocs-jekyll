@@ -10,7 +10,7 @@ folder: Developers/Fundamentals
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Using the Splice Machine Virtual Table Interface (VTI)   {#top}
+# Using the Splice Machine Virtual Table Interface (VTI)
 
 The Virtual Table Interface (VTI) allows you to use an SQL interface
 with data that is external to your database. This topic introduces the
@@ -54,7 +54,16 @@ example of a declaration for a table function that is bound to the
 in this topic:
 
 <div class="preWrapperWide" markdown="1">
-    CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))    RETURNS TABLE       (         KEY_NAME varchar(100)         VALUE varchar(200)       )    LANGUAGE JAVA    PARAMETER STYLE SPLICE_JDBC_RESULT_SET    READS SQL DATA    EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
+    CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))
+        RETURNS TABLE
+           (
+             KEY_NAME varchar(100)
+             VALUE varchar(200)
+           )
+        LANGUAGE JAVA
+        PARAMETER STYLE SPLICE_JDBC_RESULT_SET
+        READS SQL DATA
+        EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
 {: .Example}
 
 </div>
@@ -117,7 +126,7 @@ of our input file:
     mbamburger  |Manager           |47    |08-25-2015  |2015-08-20 08:10:08.0  |10:08:08
     gbrown      |Batting Coach     |46    |08-24-2015  |2015-08-21 08:11:08.0  |11:08:08
     jardson     |Left Fielder      |34    |08-23X-2015 |2015-08-22 08:12:08.0  |11:08:08
-    
+
     5 rows selected
 {: .Example}
 
@@ -138,7 +147,7 @@ stored in a MySQL database:
     mbamburger  |Manager           |47    |08-25-2015  |2015-08-20 08:10:08.0  |10:08:08
     gbrown      |Batting Coach     |46    |08-24-2015  |2015-08-21 08:11:08.0  |11:08:08
     jardson     |Left Fielder      |34    |08-23X-2015 |2015-08-22 08:12:08.0  |11:08:08
-    
+
     5 rows selected
 {: .Example}
 
@@ -204,15 +213,15 @@ Here's the declaration:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     public class PropertiesFileVTI implements DatasetProvider, VTICosting {
-    
+
         //Used for logging (and optional)
         private static final Logger LOG = Logger.getLogger(PropertiesFileVTI.class);
-    
+
         //Instance variable that will store the name of the properties file that is being read
         private String fileName;
-    
+
         //Provide external context which can be carried with the operation
         protected OperationContext operationContext;
 {: .Example}
@@ -226,31 +235,28 @@ class:
 
 * You need to implement an empty constructor if you want to use your
   class in table functions:
-  
+
   <div class="preWrapperWide" markdown="1">
-      public PropertiesFileVTI()<![CDATA[
-      ]]>
+      public PropertiesFileVTI()
   {: .Example}
-  
+
   </div>
 
 * This is the signature used by invoking the VTI using the class name in
   SQL queries:
-  
+
   <div class="preWrapperWide" markdown="1">
-      public PropertiesFileVTI(String pfileName)<![CDATA[
-      ]]>
+      public PropertiesFileVTI(String pfileName)
   {: .Example}
-  
+
   </div>
 
 * This static constructor is called by the VTI - Table Function.
-  
+
   <div class="preWrapperWide" markdown="1">
-      public static DatasetProvider getPropertiesFileVTI(String fileName)<![CDATA[
-      ]]>
+      public static DatasetProvider getPropertiesFileVTI(String fileName)
   {: .Example}
-  
+
   </div>
 
 Here's our implementation of the constructors for the
@@ -258,12 +264,12 @@ Here's our implementation of the constructors for the
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     public PropertiesFileVTI() {}
     public PropertiesFileVTI(String pfileName) {
         this.fileName = pfileName;
     }
-    
+
     public static DatasetProvider getPropertiesFileVTI(String fileName) {
         return new PropertiesFileVTI(fileName);
     }
@@ -278,7 +284,10 @@ method `getDataSet`, which you override to generate and return a
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    DataSet<LocatedRow> getDataSet(        SpliceOperation op,       // References the op at the top of the stack        DataSetProcessor dsp,     // Mechanism for constructing the execution tree        ExecRow execRow ) throws StandardException;
+    DataSet<LocatedRow> getDataSet(
+            SpliceOperation op,       // References the op at the top of the stack
+            DataSetProcessor dsp,     // Mechanism for constructing the execution tree
+            ExecRow execRow ) throws StandardException;
 {: .Example}
 
 </div>
@@ -291,16 +300,16 @@ here:
     @Override
     public DataSet<LocatedRow> getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
         operationContext = dsp.createOperationContext(op);
-    
+
             //Create an arraylist to store the key-value pairs
         ArrayList<LocatedRow> items = new ArrayList<LocatedRow>();
-    
+
         try {
             Properties properties = new Properties();
-    
+
             //Load the properties file
             properties.load(getClass().getClassLoader().getResourceAsStream(fileName));
-    
+
             //Loop through the properties and create an array
             for (String key : properties.stringPropertyNames()) {
                 String value = properties.getProperty(key);
@@ -332,21 +341,21 @@ costing methods in your VTI class:
   instantiate and iterate through your table function. Unless you have
   an accurate means of estimating this cost, simply return `0` in your
   implementation.
-  
+
   <div class="preWrapperWide" markdown="1">
       public double getEstimatedCostPerInstantiation( VTIEnvironment vtiEnv) throws SQLException;
   {: .Example}
-  
+
   </div>
 
 * `getEstimatedRowCount` returns the estimated row count for a single
   scan of your table function. Unless you have an accurate means of
   estimating this cost, simply return `0` in your implementation.
-  
+
   <div class="preWrapperWide" markdown="1">
       public double getEstimatedCostPerInstantiation( VTIEnvironment vtiEnv) throws SQLException;
   {: .Example}
-  
+
   </div>
 
 * `supportsMultipleInstantiations` returns a Boolean value indicating
@@ -354,11 +363,11 @@ costing methods in your VTI class:
   times in a single query. For our `PropertiesFileVTI` implementation of
   this method, we simply return `False`, since there's no reason for our
   function to be used that way.
-  
+
   <div class="preWrapperWide" markdown="1">
       public double supportsMultipleInstantiations( VTIEnvironment vtiEnv) throws SQLException;
   {: .Example}
-  
+
   </div>
 
 The VTICosting methods each take a `VTIEnvironment` argument; this is a
@@ -372,17 +381,16 @@ Here is the implementation of costing methods for our
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     @Override
     public double getEstimatedCostPerInstantiation(VTIEnvironment arg0) throws SQLException {
         return 0;
     }
-    
+
     @Override
     public double getEstimatedRowCount(VTIEnvironment arg0) throws SQLException {
         return 0;
-    }<![CDATA[
-    ]]>
+    }
     @Override
     public boolean supportsMultipleInstantiations(VTIEnvironment arg0) throws SQLException {
         return false;
@@ -397,11 +405,11 @@ You also need to implement two additional `DatasetProvider` methods:
 
 * `getOperationContext` simply returns the current operation context
   (this.`operationContext`).
-  
+
   <div class="preWrapperWide" markdown="1">
       OperationContext getOperationContext();
   {: .Example}
-  
+
   </div>
 
 * `getMetaData` returns metadata that is used to dynamically bind your
@@ -410,11 +418,11 @@ You also need to implement two additional `DatasetProvider` methods:
   type, and its size. In our `PropertiesFileVTI`, we assign the
   descriptors to a static variable, and our implementation of this
   method simply returns that value.
-  
+
   <div class="preWrapperWide" markdown="1">
       ResultSetMetaData getMetaData() throws SQLException;
   {: .Example}
-  
+
   </div>
 
 Here is the implementation of these methods for our
@@ -422,7 +430,7 @@ Here is the implementation of these methods for our
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     @Override
     public OperationContext getOperationContext() {
         return this.operationContext;
@@ -430,12 +438,12 @@ Here is the implementation of these methods for our
     public ResultSetMetaData getMetaData() throws SQLException {
         return metadata;
     }
-    
+
     private static final ResultColumnDescriptor[] columnInfo = {
             EmbedResultSetMetaData.getResultColumnDescriptor("KEY1", Types.VARCHAR, false, 200),
             EmbedResultSetMetaData.getResultColumnDescriptor("VALUE", Types.VARCHAR, false, 200),
     };
-    
+
     private static final ResultSetMetaData metadata = new EmbedResultSetMetaData(columnInfo);
     }
 {: .Example}
@@ -449,7 +457,16 @@ custom interface:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))    RETURNS TABLE       (         KEY_NAME varchar(100)         VALUE varchar(200)       )    LANGUAGE JAVA    PARAMETER STYLE SPLICE_JDBC_RESULT_SET    READS SQL DATA    EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
+    CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))
+        RETURNS TABLE
+           (
+             KEY_NAME varchar(100)
+             VALUE varchar(200)
+           )
+        LANGUAGE JAVA
+        PARAMETER STYLE SPLICE_JDBC_RESULT_SET
+        READS SQL DATA
+        EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
 {: .Example}
 
 </div>
@@ -466,7 +483,8 @@ example:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    select * from new com.splicemachine.tutorials.vti.PropertiesFileVTI('sample.properties')    as b (KEY_NAME VARCHAR(20), VALUE VARCHAR(100));
+    select * from new com.splicemachine.tutorials.vti.PropertiesFileVTI('sample.properties')
+        as b (KEY_NAME VARCHAR(20), VALUE VARCHAR(100));
 {: .Example}
 
 </div>
@@ -493,14 +511,19 @@ You can use the following constructor methods with the
 
 </div>
 <div class="fcnWrapperWide" markdown="1">
-    
-    public SpliceFileVTI(String fileName,                     String characterDelimiter,                     String columnDelimiter)
+
+    public SpliceFileVTI(String fileName,
+                         String characterDelimiter,
+                         String columnDelimiter)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
 <div class="fcnWrapperWide" markdown="1">
-    
-    public SpliceFileVTI(String fileName,                     String characterDelimiter,                     String columnDelimiter,                     boolean oneLineRecords)
+
+    public SpliceFileVTI(String fileName,
+                         String characterDelimiter,
+                         String columnDelimiter,
+                         boolean oneLineRecords)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -549,8 +572,10 @@ You can use the following constructor methods with the
 `SpliceJDBCVTI` class.
 
 <div class="fcnWrapperWide" markdown="1">
-    
-    public SpliceJDBCVTI(String connectionUrl,                     String schemaName,                     String tableName)
+
+    public SpliceJDBCVTI(String connectionUrl,
+                         String schemaName,
+                         String tableName)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -575,8 +600,9 @@ The name of the table in the database schema.
 
 </div>
 <div class="fcnWrapperWide" markdown="1">
-    
-    public SpliceJDBCVTI(String connectionUrl,                     String sql)
+
+    public SpliceJDBCVTI(String connectionUrl,
+                         String sql)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>

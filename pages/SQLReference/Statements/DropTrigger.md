@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP TRIGGER   {#Statements.DropTrigger}
+# DROP TRIGGER
 
 The `DROP TRIGGER` statement removes the specified trigger.
 

@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCOLUMNS System Table   {#SystemTables.SysColumns}
+# SYSCOLUMNS System Table
 
 The `SYSCOLUMNS` table describes the columns within all tables in the
 current database.

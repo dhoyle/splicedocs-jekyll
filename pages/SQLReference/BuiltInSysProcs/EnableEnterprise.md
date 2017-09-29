@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE   {#BuiltInSysProcs.EmptyStatementCache}
+# SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE
 
 The `SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE` stored procedure unlocks access
 to features that are only available in the Enterprise Edition of Splice
@@ -67,7 +67,7 @@ invalid license key, you'll see an error message displayed:
 ## See Also
 
 * [Upgrading to the Enterprise Edition of
-  Splice Machine](onprem_admin_enablingenterprise.html) topic.
+  Splice Machine](onprem_admin_enablingenterprise.html)
 
 </div>
 </section>

@@ -55,18 +55,18 @@ imported in the `insertColumnList` parameter; these procedures differ in
 how they handle updating records when you specify an input column list
 that isn't 1-to-1 with the columns in the table.
 
-* The [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
+* The &nbsp;[`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
   procedure imports data into your database, creating a new record in
   your table for each record in the imported data, and inserts the
   default value of each column that is not specified in the input.
 * The
-  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
+ &nbsp;[`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
   procedure inserts new records and *updates existing records* in the
   table. It also inserts or updates the value in the table of each
   column that is not specified in the input; inserting the default value
   (or NULL if there is no default) for that column.
 * The
-  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
+ &nbsp;[`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
   procedure also updates existing records; however, it does not replace
   values in the table for unspecified columns when updating an existing
   record in the table.

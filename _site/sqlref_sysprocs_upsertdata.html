@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="syscsutilupsertdatafromfile---builtinsysprocsupsertdatafromfile">SYSCS_UTIL.UPSERT_DATA_FROM_FILE   {#BuiltInSysProcs.UpsertDataFromFile}</h1>
+    <h1 id="syscsutilupsertdatafromfile">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</h1>
 
     <p>The <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code> system procedure updates or
 inserts data from a file to a subset of columns in a table. You choose
@@ -2828,7 +2828,7 @@ with column values from the incoming record.</li>
       <li>If no matching record is found in the database, the incoming record is
 added to the database as a new record, exactly as it would be if had
 you called
-<a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a>.</li>
+  <a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a>.</li>
     </ul>
 
     <p class="noteIcon">Splice Machine also provides a variant of this procedure that also
@@ -2912,9 +2912,8 @@ the data in table's <code>b</code> column will be replaced with the default valu
 for that column.</p>
 
         </div>
-        <p>fileOrDirectoryName <span class="bodyFont">(for IMPORT or UPSERT)</span></p>
-
-        <p class="paramName">fileName <span class="bodyFont">(for MERGE)</span></p>
+        <p class="paramName">fileOrDirectoryName <span class="bodyFont">(for IMPORT or UPSERT)</span><br />
+fileName <span class="bodyFont">(for MERGE)</span></p>
 
         <p class="paramDefnFirst">For the <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code> or
 <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code> procedures, this is either a single
@@ -3043,7 +3042,7 @@ special characters as delimiters:</p>
         <p class="paramDefnFirst">If your input contains control characters such as newline characters,
 make sure that those characters are embedded within delimited strings.</p>
 
-        <p>To use the single quote (<code>'</code>) character as your string delimiter, you
+        <p class="paramDefnFirst">To use the single quote (<code>'</code>) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
 (<code>''''</code>) as the value of this parameter. This is standard SQL syntax.</p>
 
@@ -3236,7 +3235,7 @@ contain:</p>
     <ul>
       <li>Improper data expected for a column.</li>
       <li>Improper number of columns of data.</li>
-      <li>A primary key violation: <a href="#"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a> will
+      <li>A primary key violation:  <a href="#"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a> will
 only work correctly if the table into which you are inserting/updating
 has primary keys.</li>
     </ul>
@@ -3494,11 +3493,13 @@ before upserting or merging data into a table.</p>
 
     <h2 id="TimestampFormats">About Timestamp Formats</h2>
 
-    <p>﻿ &lt;div markdown="1"&gt;
-Splice Machine uses the following Java date and time pattern letters to
+    <div>
+      <h2 id="timestamps">Timestamps</h2>
+
+      <p>Splice Machine uses the following Java date and time pattern letters to
 construct timestamps:</p>
 
-    <table summary="Timestamp format pattern letter descriptions">
+      <table summary="Timestamp format pattern letter descriptions">
                 <col />
                 <col />
                 <col style="width: 330px;" />
@@ -3565,29 +3566,29 @@ construct timestamps:</p>
                     </tr>
                 </tbody>
             </table>
-    <p>The default timestamp format for Splice Machine imports is: <code>yyyy-MM-dd
+      <p>The default timestamp format for Splice Machine imports is: <code>yyyy-MM-dd
 HH:mm:ss</code>, which uses a 24-hour clock, does not allow for decimal digits
 of seconds, and does not allow for time zone specification.</p>
 
-    <p class="noteNote">The standard Java library does not support microsecond precision, so you
+      <p class="noteNote">The standard Java library does not support microsecond precision, so you
 <strong>cannot</strong> specify millisecond (<code>S</code>) values in a custom timestamp format
 and import such values with the desired precision.</p>
 
-    <h3 id="timestamps-and-importing-data-at-different-locations">Timestamps and Importing Data at Different Locations</h3>
+      <h3 id="timestamps-and-importing-data-at-different-locations">Timestamps and Importing Data at Different Locations</h3>
 
-    <p>Note that timestamp values are relative to the geographic location at
+      <p>Note that timestamp values are relative to the geographic location at
 which they are imported, or more specifically, relative to the timezone
 setting and daylight saving time status where the data is imported.</p>
 
-    <p>This means that timestamp values from the same data file may appear
+      <p>This means that timestamp values from the same data file may appear
 differently after being imported in different timezones.</p>
 
-    <h3 id="examples">Examples</h3>
+      <h3 id="examples">Examples</h3>
 
-    <p>The following tables shows valid examples of timestamps and their
+      <p>The following tables shows valid examples of timestamps and their
 corresponding format (parsing) patterns:</p>
 
-    <table>
+      <table>
                 <col />
                 <col />
                 <col />
@@ -3637,107 +3638,108 @@ corresponding format (parsing) patterns:</p>
                     </tr>
                 </tbody>
             </table>
-  </div>
+    </div>
 
+    <p>Please see <em><a href="developers_fundamentals_dates.html">Working With Date and Time
+Values</a></em> 
+for information working with timestamps, dates, and times.</p>
 
-Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
-for information working with timestamps, dates, and times.
+    <h2 id="Examples">Examples</h2>
 
-## Examples   {#Examples}
+    <p>The examples in this section illustrate using different timestamp
+formats and different string delimiter characters.</p>
 
-The examples in this section illustrate using different timestamp
-formats and different string delimiter characters.
+    <h3 id="example-1-specifying-a-timestamp-format-for-an-entire-table">Example 1: Specifying a timestamp format for an entire table</h3>
 
-### Example 1: Specifying a timestamp format for an entire table
+    <p>Use a single timestamp format for the entire table by explicitly
+specifying a single <code>timeStampFormat</code>.</p>
 
-Use a single timestamp format for the entire table by explicitly
-specifying a single `timeStampFormat`.
-
-<div class="preWrapper">
-    <pre class="Example"><code>Mike,2013-04-21 09:21:24.98-05
+    <div class="preWrapper">
+      <pre class="Example"><code>Mike,2013-04-21 09:21:24.98-05
 Mike,2013-04-21 09:15:32.78-04
 Mike,2013-03-23 09:45:00.68-05
 </code></pre>
 
-  </div>
-You can then import the data with the following call:
+    </div>
+    <p>You can then import the data with the following call:</p>
 
-<div class="preWrapper">
-    <pre class="Example"><code>call SYSCS_UTIL.UPSERT_DATA_FROM_FILE('app','tabx','c1,c2',
+    <div class="preWrapper">
+      <pre class="Example"><code>call SYSCS_UTIL.UPSERT_DATA_FROM_FILE('app','tabx','c1,c2',
 	'/path/to/ts3.csv',
 	',', '''',
 	'yyyy-MM-dd HH:mm:ss.SSZ',
 	null, null, 0, null, true, null);
 </code></pre>
 
-  </div>
-Note that for any import use case shown above, the time shown in the
+    </div>
+    <p>Note that for any import use case shown above, the time shown in the
 imported table depends on the timezone setting in the server timestamp.
 In other words, given the same csv file, if imported on different
 servers with timestamps set to different time zones, the value in the
 table shown will be different. Additionally, daylight savings time may
-account for a 1-hour difference if timezone is specified.
+account for a 1-hour difference if timezone is specified.</p>
 
-### Example 2: Importing strings with embedded special characters
+    <h3 id="example-2-importing-strings-with-embedded-special-characters">Example 2: Importing strings with embedded special characters</h3>
 
-This example imports a csv file that includes newline (`Ctrl-M`)
+    <p>This example imports a csv file that includes newline (<code>Ctrl-M</code>)
 characters in some of the input strings. We use the default double-quote
-as our character delimiter to import data such as the following:
+as our character delimiter to import data such as the following:</p>
 
-<div class="preWrapperWide">
-    <pre class="Example"><code>1,This field is one line,Able
+    <div class="preWrapperWide">
+      <pre class="Example"><code>1,This field is one line,Able
 2,"This field has two lines
 This is the second line of the field",Baker
 3,This field is also just one line,Charlie
 </code></pre>
 
-  </div>
-We then use the following call to import the data:
+    </div>
+    <p>We then use the following call to import the data:</p>
 
-<div class="preWrapperWide">
-    <pre class="Example"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t',null,null,null,null,0,'BAD', false, null);
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t',null,null,null,null,0,'BAD', false, null);
 </code></pre>
 
-  </div>
-We can also explicitly specify double quotes (or any other character) as
-our delimiter character for strings:
+    </div>
+    <p>We can also explicitly specify double quotes (or any other character) as
+our delimiter character for strings:</p>
 
-<div class="preWrapperWide">
-    <pre class="Example"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t','"',null,null,null,0,'BAD', false, null);
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t','"',null,null,null,0,'BAD', false, null);
 </code></pre>
 
-  </div>
-### Example 3: Using single quotes to delimit strings
+    </div>
+    <h3 id="example-3-using-single-quotes-to-delimit-strings">Example 3: Using single quotes to delimit strings</h3>
 
-This example performs the same import as the previous example, simply
+    <p>This example performs the same import as the previous example, simply
 substituting single quotes for double quotes as the character delimiter
-in the input:
+in the input:</p>
 
-<div class="preWrapperWide">
-    <pre class="Example"><code>1,This field is one line,Able
+    <div class="preWrapperWide">
+      <pre class="Example"><code>1,This field is one line,Able
 2,'This field has two lines
 This is the second line of the field',Baker
 3,This field is also just one line,Charlie
 </code></pre>
 
-  </div>
-Note that you must escape single quotes in SQL, which means that you
+    </div>
+    <p>Note that you must escape single quotes in SQL, which means that you
 actually define the character delimiter parameter with four single
-quotes, as follow
+quotes, as follow</p>
 
-<div class="preWrapperWide">
-    <pre class="Example"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t','''',null,null,null,0,'BAD', false, null);
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t','''',null,null,null,0,'BAD', false, null);
 </code></pre>
 
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="tutorials_ingest_importing.html">Our Importing Data Tutorial</a></li>
+      <li><a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a></li>
+      <li><a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a></li>
+    </ul>
+
   </div>
-## See Also
-
-* [Our Importing Data Tutorial](tutorials_ingest_importing.html)
-* [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-* [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_importdata.html)
-
-&lt;/div&gt;
 </section>
 
 
@@ -3755,7 +3757,7 @@ quotes, as follow
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

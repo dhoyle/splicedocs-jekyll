@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSALIASES System Table   {#SystemTables.SysAliases}
+# SYSALIASES System Table
 
 The `SYSALIASES` table describes the procedures, functions, and
 user-defined types in the database.

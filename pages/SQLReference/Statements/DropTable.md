@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP TABLE   {#Statements.DropTable}
+# DROP TABLE
 
 The `DROP TABLE` statement removes the specified table.
 

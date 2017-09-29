@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# generation-clause   {#Statements.GenerationClause}
+# generation-clause
 
 ## Syntax
 

@@ -10,7 +10,7 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CASE Expression   {#Expressions.Case}
+# CASE Expression
 
 The `CASE` expression can be used for conditional expressions in Splice
 Machine.

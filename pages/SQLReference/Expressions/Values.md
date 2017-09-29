@@ -10,7 +10,7 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# VALUES Expression   {#Expressions.Values}
+# VALUES Expression
 
 The `VALUES` expression allows construction of a row or a table from
 other values.
@@ -52,14 +52,14 @@ and only insert values into other columns in the table.
 ORDER BY clause
 {: .paramName}
 
-The [`ORDER BY` clause](sqlref_clauses_orderby.html) allows you to
+The &nbsp;[`ORDER BY` clause](sqlref_clauses_orderby.html) allows you to
 specify the order in which rows appear in the result set.
 {: .paramDefnFirst}
 
 result offset and fetch first clauses
 {: .paramName}
 
-The [`fetch first` clause](sqlref_clauses_resultoffset.html), which can
+The &nbsp;[`fetch first` clause](sqlref_clauses_resultoffset.html), which can
 be combined with the `result offset` clause, limits the number of rows
 returned in the result set.
 {: .paramDefnFirst}
@@ -73,7 +73,7 @@ and thus can be used in any of the following ways:
 * As a statement that returns a *ResultSet*
 * Within expressions and statements wherever subqueries are permitted
 * As the source of values for an
-  [`INSERT`](sqlref_statements_insert.html) statement (in an `INSERT`
+ &nbsp;[`INSERT`](sqlref_statements_insert.html) statement (in an `INSERT`
   statement, you normally use a `VALUES` expression when you do not use
   a *[SelectExpression](sqlref_expressions_select.html)*)
 

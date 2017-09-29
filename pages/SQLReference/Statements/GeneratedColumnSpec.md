@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# generated-column-spec   {#Statements.GeneratedColumnSpec}
+# generated-column-spec
 
 A generated column is one whose value is defined by an expression,
 typically involving values from other columns in the same table. The
@@ -25,7 +25,7 @@ change in the value of any column upon which the expression depends.
 
 </div>
 <div class="paramList" markdown="1">
-{ALWAYS | BY DEFAULT} AS IDENTITY
+{ALWAYS \| BY DEFAULT} AS IDENTITY
 {: .paramName}
 
 A table can have at most one identity column. See the [Identity Column
@@ -84,7 +84,7 @@ insertion statement. For example:
            -- use generated default
     insert into greetings values (DEFAULT, 'salut');
            -- use generated default
-    insert into greetings(ch) values ('bonjour'); 
+    insert into greetings(ch) values ('bonjour');
 {: .Example xml:space="preserve"}
 
 </div>
@@ -226,7 +226,7 @@ triggers. You can only have 16 levels of trigger recursion.
      -- use generated default
     insert into greetings(ch) values ('bonjour);
     drop table if exists words;
-    
+
     splice> CREATE TABLE WORDS(WORD VARCHAR(20), UWORD GENERATED ALWAYS AS (UPPER(WORD)));
     0 rows inserted/updated/deleted
     splice> CREATE INDEX IDX_UWORD ON WORDS(UWORD);
@@ -240,7 +240,7 @@ triggers. You can only have 16 levels of trigger recursion.
     Coca-Cola           |COCA-COLA
     hamburger           |HAMBURGER
     carrot              |CARROT
-    
+
     4 rows selected
     splice> select upper(word) from words;
     1
@@ -249,7 +249,7 @@ triggers. You can only have 16 levels of trigger recursion.
     COCA-COLA
     HAMBURGER
     CARROT
-    
+
     4 rows selected
     splice> drop table if exists t;
     0 rows inserted/updated/deleted
@@ -264,7 +264,7 @@ triggers. You can only have 16 levels of trigger recursion.
     1          |2          |3
     3          |4          |7
     5          |6          |11
-    
+
     3 rows selected
     splice> UPDATE T SET COL2 = 100 WHERE COL1 = 1;
     1 row inserted/updated/deleted
@@ -274,11 +274,10 @@ triggers. You can only have 16 levels of trigger recursion.
     1          |100        |101
     3          |4          |7
     5          |6          |11
-    
+
     3 rows selected
 {: .Example xml:space="preserve"}
 
 </div>
 </div>
 </section>
-

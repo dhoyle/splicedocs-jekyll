@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# BIGINT   {#DataTypes.BigInt}
+# BIGINT
 
 The `BIGINT` data type provides 8 bytes of storage for integer values.
 

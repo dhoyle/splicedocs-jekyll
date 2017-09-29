@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CHAR   {#BuiltInFcns.Char}
+# CHAR
 
 The `CHAR` function returns a fixed-length character string
 representation. The representations are:
@@ -33,7 +33,7 @@ argument is `NULL`, the result is the `NULL`value.
 ## Character to character syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    CHAR (CharacterExpression [, integer] ) 
+    CHAR (CharacterExpression [, integer] )
 {: .FcnSyntax}
 
 </div>
@@ -53,21 +53,21 @@ The value must be between 0 and 254.
 {: .paramDefnFirst}
 
 </div>
-> ### Results
-> 
-> If the length of the character-expression is less than the length
-> attribute of the result, the result is padded with blanks up to the
-> length of the result.
-> 
-> If the length of the character-expression is greater than the length
-> attribute of the result, truncation is performed. A warning is
-> returned unless the truncated characters were all blanks and the
-> character-expression was not a long string (`LONG VARCHAR` or `CLOB`).
+### Results
+
+If the length of the character-expression is less than the length
+attribute of the result, the result is padded with blanks up to the
+length of the result.
+
+If the length of the character-expression is greater than the length
+attribute of the result, truncation is performed. A warning is
+returned unless the truncated characters were all blanks and the
+character-expression was not a long string (`LONG VARCHAR` or `CLOB`).
 
 ## Integer to character syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    CHAR (IntegerExpression ) 
+    CHAR (IntegerExpression )
 {: .FcnSyntax}
 
 </div>
@@ -80,28 +80,22 @@ SMALLINT, INTEGER or BIGINT).
 {: .paramDefnFirst}
 
 </div>
-> ### Results
-> 
-> The result is the character string representation of the argument in
-> the form of an SQL integer constant. The result consists of n
-> characters that are the significant digits that represent the value of
-> the argument with a preceding minus sign if the argument is negative.
-> It is left justified.
-> 
-> * If the first argument is a small integer: The length of the result
->   is 6. If the number of characters in the result is less than 6, then
->   the result is padded on the right with blanks to length 6.
-> * If the first argument is a large integer: The length of the result
->   is 11. If the number of characters in the result is less than 11,
->   then the result is padded on the right with blanks to length 11.
-> * If the first argument is a big integer: The length of the result is
->   20. If the number of characters in the result is less than 20, then
->   the result is padded on the right with blanks to length 20.
+### Results
+
+The result is the character string representation of the argument in
+the form of an SQL integer constant. The result consists of n
+characters that are the significant digits that represent the value of
+the argument with a preceding minus sign if the argument is negative.
+It is left justified.
+
+* If the first argument is a small integer: the length of the result is 6. If the number of characters in the result is less than 6, then the result is padded on the right with blanks to length 6.
+* If the first argument is a large integer: the length of the result is 11. If the number of characters in the result is less than 11, then the result is padded on the right with blanks to length 11.
+* If the first argument is a big integer: the length of the result is 20. If the number of characters in the result is less than 20, then the result is padded on the right with blanks to length 20.
 
 ## Datetime to character syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    CHAR (DatetimeExpression ) 
+    CHAR (DatetimeExpression )
 {: .FcnSyntax}
 
 </div>
@@ -141,7 +135,7 @@ An expression that is one of the following three data types:
 ## Decimal to character
 
 <div class="fcnWrapperWide" markdown="1">
-    CHAR (DecimalExpression ) 
+    CHAR (DecimalExpression )
 {: .FcnSyntax}
 
 </div>
@@ -160,7 +154,7 @@ scalar function first to make the change.
 ## Floating point to character syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    CHAR (FloatingPointExpression ) 
+    CHAR (FloatingPointExpression )
 {: .FcnSyntax}
 
 </div>
@@ -193,7 +187,7 @@ Use the `CHAR` function to return the values for `PlateAppearances`
     446
     744
     548
-    
+
     10 rows selected
 {: .Example xml:space="preserve"}
 
@@ -208,4 +202,3 @@ characters long.
 
 </div>
 </section>
-

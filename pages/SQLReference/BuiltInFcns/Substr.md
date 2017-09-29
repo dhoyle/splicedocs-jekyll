@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SUBSTR   {#BuiltInFcns.Substr}
+# SUBSTR
 
 The `SUBSTR` function extracts and returns a portion of a character
 string or bit string expression, starting at the specified character or

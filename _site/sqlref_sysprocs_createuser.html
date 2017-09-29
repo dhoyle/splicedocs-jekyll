@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="syscsutilsyscscreateuser---builtinsysprocscreateuser">SYSCS_UTIL.SYSCS_CREATE_USER   {#BuiltInSysProcs.CreateUser}</h1>
+    <h1 id="syscsutilsyscscreateuser">SYSCS_UTIL.SYSCS_CREATE_USER</h1>
 
     <p>The <code>SYSCS_UTIL.SYSCS_CREATE_USER</code> system procedure adds a new user
 account to a database.</p>
@@ -2865,7 +2865,22 @@ administrator adding a new user named <code>fred</code> and then verifying that 
 schema named <code>fred</code> is now active:</p>
 
     <div class="preWrapper">
-      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');Statement executed.splice&gt; VALUES(CURRENT SCHEMA);1------------------------------------------------------------------SPLICE1 row selectedsplice&gt; SET SCHEMA fred;0 rows inserted/updated/deletedsplice&gt; VALUES(CURRENT SCHEMA);1------------------------------------------------------------------FRED1 row selected
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_CREATE_USER('fred', 'fredpassword');
+Statement executed.
+splice&gt; VALUES(CURRENT SCHEMA);
+1
+------------------------------------------------------------------
+SPLICE
+
+1 row selected
+splice&gt; SET SCHEMA fred;
+0 rows inserted/updated/deleted
+splice&gt; VALUES(CURRENT SCHEMA);
+1
+------------------------------------------------------------------
+FRED
+
+1 row selected
 </code></pre>
 
     </div>
@@ -2936,7 +2951,6 @@ system procedure</li>
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -2951,7 +2965,7 @@ system procedure</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

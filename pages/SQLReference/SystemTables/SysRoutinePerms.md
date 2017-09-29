@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSROUTINEPERMS System Table    {#SystemTables.SysRoutinePerms}
+# SYSROUTINEPERMS System Table
 
 The `SYSROUTINEPERMS` table stores the permissions that have been
 granted to routines.

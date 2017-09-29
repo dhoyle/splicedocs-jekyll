@@ -47,7 +47,7 @@ database:
                         </td>
                         <td>
                             <p>Backs up the database to a specified backup directory.</p>
-{% include splice_snippets/onpremonlytopic.md %}
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -55,7 +55,7 @@ database:
                         </td>
                         <td>
                             <p>Cancels a backup.</p>
-{% include splice_snippets/onpremonlytopic.md %}
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -63,11 +63,11 @@ database:
                         </td>
                         <td>
                             <p>Cancels a scheduled daily backup.</p>
-{% include splice_snippets/onpremonlytopic.md %}
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
-        				<td><a href="sqlref_sysprocs_compactregion.html"><code>SYSCS_UTIL.COMPACT_REGION</code></a></td>
+                        <td><a href="sqlref_sysprocs_compactregion.html"><code>SYSCS_UTIL.COMPACT_REGION</code></a></td>
                         <td>Performs a minor compaction on a table or index region.</td>
                     </tr>
                     <tr>
@@ -80,7 +80,7 @@ database:
                         </td>
                         <td>
                             <p>Delete a specific backup.</p>
-{% include splice_snippets/onpremonlytopic.md %}
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -88,7 +88,7 @@ database:
                         </td>
                         <td>
                             <p>Deletes all backups that were created more than a certain number of days ago.</p>
-{% include splice_snippets/onpremonlytopic.md %}
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -97,19 +97,19 @@ database:
                         <td>Removes a user account from a database.</td>
                     </tr>
                     <tr>
-        				<td><a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a></td>
+                        <td><a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a></td>
                         <td>Returns the encoded name of the HBase region that contains the specified, unencoded Splice Machine table primary key or index values.</td>
                     </tr>
                     <tr>
-        				<td><a href="sqlref_sysprocs_getregions.html"><code>SYSCS_UTIL.GET_REGIONS</code></a></td>
+                        <td><a href="sqlref_sysprocs_getregions.html"><code>SYSCS_UTIL.GET_REGIONS</code></a></td>
                         <td>Retrieves the list of regions containing a range of key values.</td>
                     </tr>
                     <tr>
-        				<td><a href="sqlref_sysprocs_getrunningops.html"><code>SYSCS_UTIL.GET_RUNNING_OPERATIONS</code></a></td>
+                        <td><a href="sqlref_sysprocs_getrunningops.html"><code>SYSCS_UTIL.GET_RUNNING_OPERATIONS</code></a></td>
                         <td>Displays information about each Splice Machine operations running on a server.</td>
                     </tr>
                     <tr>
-        				<td><a href="sqlref_sysprocs_getstartkey.html"><code>SYSCS_UTIL.GET_START_KEY</code></a></td>
+                        <td><a href="sqlref_sysprocs_getstartkey.html"><code>SYSCS_UTIL.GET_START_KEY</code></a></td>
                         <td>Retrieves the unencoded start key for a specified HBase table or index region.</td>
                     </tr>
                     <tr>
@@ -118,11 +118,11 @@ database:
                         <td>Terminates a Splice Machine operation running on the server to which you are connected.</td>
                     </tr>
                     <tr>
-        				<td><a href="sqlref_sysprocs_majorcompactregion.html"><code>SYSCS_UTIL.MAJOR_COMPACT_REGION</code></a></td>
+                        <td><a href="sqlref_sysprocs_majorcompactregion.html"><code>SYSCS_UTIL.MAJOR_COMPACT_REGION</code></a></td>
                         <td>Performs a major compaction on a table or index region.</td>
                     </tr>
                     <tr>
-        				<td><a href="sqlref_sysprocs_mergeregions.html"><code>SYSCS_UTIL.MERGE_REGIONS</code></a></td>
+                        <td><a href="sqlref_sysprocs_mergeregions.html"><code>SYSCS_UTIL.MERGE_REGIONS</code></a></td>
                         <td>Merges two adjacent table or index regions.</td>
                     </tr>
                     <tr>
@@ -155,7 +155,7 @@ database:
                         </td>
                         <td>
                             <p>Restores a database from a previous backup.</p>
-{% include splice_snippets/onpremonlytopic.md %}
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -163,7 +163,7 @@ database:
                         </td>
                         <td>
                             <p>Schedules a full or incremental database backup to run at a specified time daily.</p>
-{% include splice_snippets/onpremonlytopic.md %}
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -535,4 +535,3 @@ transactions in your database
 {% include splice_snippets/githublink.html %}
 </div>
 </section>
-

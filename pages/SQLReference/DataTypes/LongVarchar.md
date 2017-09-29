@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LONG VARCHAR   {#DataTypes.LongVarchar}
+# LONG VARCHAR
 
 The `LONG VARCHAR` type allows storage of character strings with a
 maximum length of 32,670 characters. It is almost identical to

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO   {#BuiltInSysProcs.GetWriteIntakeInfo}
+# SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO
 
 The `SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO` system procedure displays
 information about the number of writes coming into Splice Machine.

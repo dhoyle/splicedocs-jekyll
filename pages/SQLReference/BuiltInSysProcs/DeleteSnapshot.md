@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_DELETE_SNAPSHOT   {#BuiltInSysProcs.DeleteSnapshot}
+# SYSCS_UTIL.SYSCS_DELETE_SNAPSHOT
 
 The `SYSCS_UTIL.SYSCS_DELETE_SNAPSHOT` system procedure deletes a
 previously created Splice Machine snapshot.

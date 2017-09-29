@@ -10,10 +10,10 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# NEXT VALUE FOR Expression   {#Expressions.NextValueFor}
+# NEXT VALUE FOR Expression
 
 The `NEXT VALUE FOR` expression retrieves the next value from a sequence
-generator that was created with a [`CREATE SEQUENCE`
+generator that was created with a &nbsp;[`CREATE SEQUENCE`
 statement](sqlref_statements_createsequence.html).
 
 ## Syntax
@@ -39,7 +39,7 @@ schema name:
 If *schemaName* is not provided, the current schema is the default
 schema. If a qualified sequence name is specified, the schema name
 cannot begin with the `SYS. `prefix.
-{: .paramDefnFirst}
+{: .paramDefn}
 
 </div>
 ## Usage

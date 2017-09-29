@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SUM   {#BuiltInFcns.Sum}
+# SUM
 
 `SUM`returns the sum of values of an expression over a set of rows. You
 can use it as an [window

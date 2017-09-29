@@ -10,9 +10,9 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TABLE Expression   {#Expressions.Table}
+# TABLE Expression
 
-A *TableExpression* specifies a table, view, or function in a [`FROM`
+A *TableExpression* specifies a table, view, or function in a &nbsp;[`FROM`
 clause](sqlref_clauses_from.html). It is the source from which a
 *[TableExpression](#)* selects a result.
 

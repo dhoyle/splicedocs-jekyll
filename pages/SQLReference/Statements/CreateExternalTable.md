@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE EXTERNAL TABLE   {#Statements.CreateTable}
+# CREATE EXTERNAL TABLE
 
 A `CREATE EXTERNAL TABLE` statement creates a table in Splice Machine
 that you can use to query data that is stored externally in a flat file,
@@ -39,8 +39,13 @@ with `SYS`.
     CREATE EXTERNAL TABLE table-Name
       {
         ( column-definition]* )    [ COMPRESSED WITH compression-format ]
-        [ PARTITIONED BY (column-name ) ]}
-        [ ROW FORMAT DELIMITED       [ FIELDS TERMINATED BY char [ESCAPED BY char] ]       [ LINES TERMINATED BY char ]    ]    STORED AS file-format LOCATION location  }
+        [ PARTITIONED BY (column-name ) ]}
+        [ ROW FORMAT DELIMITED 
+             [ FIELDS TERMINATED BY char [ESCAPED BY char] ]
+             [ LINES TERMINATED BY char ]
+        ]
+        STORED AS file-format LOCATION location
+      }
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -67,7 +72,7 @@ You cannot specify a <span
 class="CodeItalicFont">compression-format</span> when using the
 `TEXTFILE `<span class="CodeItalicFont">file-format</span>; doing so
 generates an error.
-{: .paramDefnFirst}
+{: .paramDefn}
 
 column-definition
 {: .paramName}
@@ -143,7 +148,7 @@ Here are some notes about using external tables:
 * Splice Machine isn't able to know when the schema of the file
   represented by an external table is updated; when this occurs, you
   need to update the external table in Splice Machine by calling the
-  [`SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE`](sqlref_sysprocs_refreshexttable.html)
+ &nbsp;[`SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE`](sqlref_sysprocs_refreshexttable.html)
   built-in system procedure.
 * You cannot specify a <span
   class="CodeItalicFont">compression-format</span> when using the
@@ -215,4 +220,3 @@ compressed with Snappy compression:
 
 </div>
 </section>
-

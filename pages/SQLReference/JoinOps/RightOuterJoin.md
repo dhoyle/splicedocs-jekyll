@@ -10,9 +10,9 @@ folder: SQLReference/JoinOps
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# RIGHT OUTER JOIN   {#JoinOps.RightOuterJoin}
+# RIGHT OUTER JOIN
 
-A `RIGHT OUTER JOIN` is one of the [`JOIN`
+A `RIGHT OUTER JOIN` is one of the &nbsp;[`JOIN`
 operations](sqlref_joinops_about.html) that allow you to specify a
 `JOIN` clause. It preserves the unmatched rows from the second (right)
 table, joining them with a `NULL` in the shape of the first (left)

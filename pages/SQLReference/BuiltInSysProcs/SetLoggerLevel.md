@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL   {#BuiltInSysProcs.SetLoggerLevel}
+# SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL
 
 The `SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL` system procedure changes the
 logging level of the specified logger.
@@ -42,12 +42,12 @@ must be one of the following level values, which are described in the
 [Logging](developers_tuning_logging.html) topic:
 {: .paramDefnFirst}
 
-* {: .CodeFont value="1"} 'TRACE'
-* {: .CodeFont value="2"} 'DEBUG'
-* {: .CodeFont value="3"} 'INFO'
-* {: .CodeFont value="4"} 'WARN'
-* {: .CodeFont value="5"} 'ERROR'
-* {: .CodeFont value="6"} 'FATAL'
+* `TRACE`
+* `DEBUG`
+* `INFO`
+* `WARN`
+* `ERROR`
+* `FATAL`
 {: .bulletNested}
 
 </div>
@@ -82,8 +82,7 @@ procedure.
 
 * [`SYSCS_UTIL.SYSCS_GET_LOGGERS`](sqlref_sysprocs_getloggers.html)
 * [`SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL`](#)
-* *[Splice Machine Logging](developers_tuning_logging.html)* in our
-  *Developer's Guide*.
+* *[Splice Machine Logging](developers_tuning_logging.html)*
 
 </div>
 </section>

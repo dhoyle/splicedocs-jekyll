@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA   {#BuiltInSysProcs.SnapshotSchema}
+# SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA
 
 The `SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA` system procedure creates a Splice
 Machine snapshot of the specified schema. These snapshots can

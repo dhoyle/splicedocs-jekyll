@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DATE   {#DataTypes.Date}
+# DATE
 
 The `DATE` data type provides for storage of a year-month-day in the
 range supported by *java.sql.Date*.
@@ -18,7 +18,7 @@ range supported by *java.sql.Date*.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    
+
     DATE
 {: .FcnSyntax}
 
@@ -33,7 +33,7 @@ range supported by *java.sql.Date*.
 ## JDBC Metadata Type (java.sql.Types)
 
 <div class="fcnWrapperWide" markdown="1">
-    
+
     DATE
 {: .FcnSyntax}
 
@@ -52,7 +52,7 @@ Here are several notes about using the `DATE` data type:
       mm/dd/yyyy
       dd.mm.yyyy
   {: .FcnSyntax xml:space="preserve"}
-  
+
   </div>
 
 * The first of the three formats above is the *java.sql.Date* format.
@@ -63,13 +63,13 @@ Here are several notes about using the `DATE` data type:
   ambiguity, the built-in formats above take precedence.
 
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
+Values](developers_fundamentals_dates.html)* in the 
 for information about using simple arithmetic with `DATE` values.
 
 ## Examples
 
 <div class="preWrapper" markdown="1">
-    
+
     VALUES DATE('1994-02-23');
     VALUES '1993-09-01';
 {: .Example xml:space="preserve"}
@@ -98,4 +98,3 @@ for information about using simple arithmetic with `DATE` values.
 
 </div>
 </section>
-

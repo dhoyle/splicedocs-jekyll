@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_MODIFY_PASSWORD   {#BuiltInSysProcs.ModifyPassword}
+# SYSCS_UTIL.SYSCS_MODIFY_PASSWORD
 
 The `SYSCS_UTIL.SYSCS_MODIFY_PASSWORD` system procedure is called by a
 user to change that user's own password.

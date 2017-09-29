@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# MAX   {#BuiltInFcns.Max}
+# MAX
 
 `MAX`evaluates the maximum of an expression over a set of rows. You can
 use it as an [window

@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSSNAPSHOTS System Table   {#SystemTables.SysSchemas}
+# SYSSNAPSHOTS System Table
 
 The `SYSSSNAPSHOTS` table describes the metadata for system snapshots.
 

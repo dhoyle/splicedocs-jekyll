@@ -641,11 +641,12 @@ different syntax</p>
                         <td><a href="sqlref_statements_createtemptable.html"><code>CREATE TEMPORARY TABLE</code></a>
                         </td>
                         <td>
-                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em> {
-      ( {<em>column-definition</em> | <em>Table-level constraint</em>}
-         [ , {<em>column-definition</em>} ] * )
-      ( <em>column-name</em> [ , <em>column-name</em> ] * )
-  }
+                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL|GLOBAL] TEMPORARY TABLE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em>
+{
+  ( {<em>column-definition</em> | <em>Table-level constraint</em>}
+     [ , {<em>column-definition</em>} ] * )
+  ( <em>column-name</em> [ , <em>column-name</em> ] * )
+}
   [NOLOGGING | ON COMMIT PRESERVE ROWS];</pre>
                             </div>
                         </td>
@@ -688,11 +689,11 @@ are noted in this section, including these:</p>
       <li>are visible in system tables, but are otherwise not visible to other
 sessions or transactions</li>
       <li>cannot be altered using the
-<a href="sqlref_statements_renamecolumn.html"><code>RENAME COLUMN</code></a> statements</li>
+  <a href="sqlref_statements_renamecolumn.html"><code>RENAME COLUMN</code></a> statements</li>
       <li>do not get backed up</li>
       <li>cannot be used as data providers to views</li>
       <li>cannot be referenced by foreign keys in other tables</li>
-      <li>are not displayed by the <a href="cmdlineref_showtables.html"><code>show tables</code></a>
+      <li>are not displayed by the  <a href="cmdlineref_showtables.html"><code>show tables</code></a>
 command</li>
     </ul>
 
@@ -708,7 +709,7 @@ Temporary tables:</p>
       <li>persist across transactions in a session</li>
       <li>are automatically dropped when a session terminates or expires</li>
       <li>can also be dropped with the
-<a href="sqlref_statements_droptable.html"><code>DROP TABLE</code></a> statement</li>
+  <a href="sqlref_statements_droptable.html"><code>DROP TABLE</code></a> statement</li>
     </ul>
 
     <h2 id="example">Example</h2>
@@ -726,23 +727,16 @@ select * from temp_num_dt;
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_statements_altertable.html"><code>ALTER TABLE</code></a> in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_createtemptable.html"><code>CREATE TEMPORARY TABLE</code></a>
-statement in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_globaltemptable.html"><code>DECLARE GLOBAL TEMPORARY TABLE</code></a>
-statement in the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_droptable.html"><code>DROP TABLE</code></a> statement in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_renamecolumn.html"><code>RENAME COLUMN</code></a> statement in
-the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_renametable.html"><code>RENAME TABLE</code></a> statement in the
-<em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_statements_altertable.html"><code>ALTER TABLE</code></a></li>
+      <li><a href="sqlref_statements_createtemptable.html"><code>CREATE TEMPORARY TABLE</code></a></li>
+      <li><a href="sqlref_statements_globaltemptable.html"><code>DECLARE GLOBAL TEMPORARY TABLE</code></a></li>
+      <li><a href="sqlref_statements_droptable.html"><code>DROP TABLE</code></a></li>
+      <li><a href="sqlref_statements_renamecolumn.html"><code>RENAME COLUMN</code></a></li>
+      <li><a href="sqlref_statements_renametable.html"><code>RENAME TABLE</code></a></li>
     </ul>
 
   </div>
 </section>
-
 
 
     <div class="tags">
@@ -759,7 +753,7 @@ the <em>SQL Reference Manual</em></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

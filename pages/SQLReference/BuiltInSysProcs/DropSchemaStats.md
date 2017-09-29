@@ -49,7 +49,7 @@ This procedure does not produce a result.
 ## SQL Examples
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CALL SYSCS_UTIL.DROP_SCHEMA_STATISTICS('MYSCHEMA');
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -62,9 +62,7 @@ This procedure does not produce a result.
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
 * [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html)
 * [`SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS`](sqlref_sysprocs_collectschemastats.html)
-* [Using Statistics](developers_tuning_usingstats.html) in the
-  *Administrator's Guide*
+* [Using Statistics](developers_tuning_usingstats.html)
 
 </div>
 </section>
-

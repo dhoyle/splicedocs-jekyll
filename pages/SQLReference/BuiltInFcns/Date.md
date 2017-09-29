@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DATE   {#BuiltInFcns.Date}
+# DATE
 
 The `DATE` function returns a date from a value.
 
@@ -28,7 +28,7 @@ expression
 An expression that can be any of the following:
 {: .paramDefnFirst}
 
-* {: .nested value="1"} A [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) value, which
+* {: .nested value="1"} A &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) value, which
   must represent a valid date in the form `yyyynnn`, where `yyyy` is a
   four-digit year value, and `nnn` is a three-digit day value in the
   range 001 to 366.

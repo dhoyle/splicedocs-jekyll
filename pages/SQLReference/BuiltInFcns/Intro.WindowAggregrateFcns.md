@@ -171,14 +171,14 @@ Aggregates are permitted only in the following:
 
 * A *SelectItem* in a
   *[SelectExpression](sqlref_expressions_select.html).*
-* A [`HAVING` clause](sqlref_clauses_having.html).
-* An [`ORDER BY` clause](sqlref_clauses_orderby.html) if and only if the
+* A &nbsp;[`HAVING` clause](sqlref_clauses_having.html).
+* An &nbsp;[`ORDER BY` clause](sqlref_clauses_orderby.html) if and only if the
   aggregate appears in a *SelectItem* in a
   *[SelectExpression](sqlref_expressions_select.html).*
 
 All expressions in *SelectItems* in the
 *[SelectExpression](sqlref_expressions_select.html)* must be either
-aggregates or grouped columns (see [`GROUP BY`
+aggregates or grouped columns (see &nbsp;[`GROUP BY`
 clause](sqlref_clauses_groupby.html)).(The same is true if there is a
 `HAVING` clause without a `GROUP BY` clause.)
 
@@ -220,10 +220,10 @@ calculations across a set of table rows that are related to the current
 row. They are similar to aggregate functions, with several significant
 differences; a window function:
 
-* Always includes an [`OVER`](sqlref_clauses_over.html) clause
+* Always includes an &nbsp;[`OVER`](sqlref_clauses_over.html) clause
 * Outputs one row for each input value it operates upon.
 * Groups rows with window partitioning and frame clauses, rather than
-  using [`GROUP BY`](sqlref_clauses_groupby.html) clauses
+  using &nbsp;[`GROUP BY`](sqlref_clauses_groupby.html) clauses
 
 Most developers who are new to window functions find that the easiest
 way to understand them is to view examples, such as the ones in the

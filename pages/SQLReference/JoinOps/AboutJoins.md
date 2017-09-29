@@ -10,7 +10,7 @@ folder: SQLReference/JoinOps
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# About Join Operations   {#JoinOps.AboutJoins}
+# About Join Operations
 
 The `JOIN` operations, which are among the possible *[`FROM`
 clause](sqlref_clauses_from.html)*, perform joins between two tables.
@@ -62,13 +62,13 @@ The following table describes the `JOIN` operations:
                 </tbody>
             </table>
 In all cases, you can specify additional restrictions on one or both of
-the tables being joined in outer join clauses or in the [`WHERE`
+the tables being joined in outer join clauses or in the &nbsp;[`WHERE`
 clause](sqlref_clauses_where.html).
 
 ## Usage
 
 Note that you can also perform a join between two tables using an
-explicit equality test in a [`WHERE` clause](sqlref_clauses_where.html),
+explicit equality test in a &nbsp;[`WHERE` clause](sqlref_clauses_where.html),
 such as:
 
 <div class="preWrapper" markdown="1">

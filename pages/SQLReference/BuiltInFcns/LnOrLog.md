@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LN or LOG   {#BuiltInFcns.LnOrLog}
+# LN or LOG
 
 The `LN` and `LOG` functions return the natural logarithm (base `e`) of
 the specified number.
@@ -27,7 +27,7 @@ the specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that is greater than zero (`0`).
 {: .paramDefnFirst}
 
@@ -46,7 +46,7 @@ that is greater than zero (`0`).
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 * If the specified number is `NULL`, the result of these functions is

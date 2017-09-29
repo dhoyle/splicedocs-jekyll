@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SQLJ.REMOVE_JAR   {#BuiltInSysProcs.SQLJRemoveJar}
+# SQLJ.REMOVE_JAR
 
 The *SQLJ.REMOVE_JAR* system procedure removes a jar file from a
 database.

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_KILL_OPERATION   {#BuiltInSysProcs.GetActiveServers}
+# SYSCS_UTIL.SYSCS_KILL_OPERATION
 
 The `SYSCS_UTIL.SYSCS_KILL_OPERATION` system procedure terminates an
 operation that is running on the server to which you are currently

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# PI   {#BuiltInFcns.Pi}
+# PI
 
 The `PI` function returns a value that is closer than any other value to
 `pi`. The constant `pi` is the ratio of the circumference of a circle to
@@ -25,7 +25,7 @@ the diameter of a circle.
 </div>
 ## Syntax
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 ## Example

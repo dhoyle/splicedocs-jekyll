@@ -10,14 +10,14 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# RADIANS   {#BuiltInFcns.Radians}
+# RADIANS
 
 The `RADIANS` function converts a specified number from degrees to
 radians.
 
 The specified number is an angle measured in degrees, which is converted
 to an approximately equivalent angle measured in radians. The specified
-number must be a [`DOUBLE
+number must be a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 The conversion from degrees to radians is not exact.

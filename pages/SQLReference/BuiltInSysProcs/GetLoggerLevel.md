@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL   {#BuiltInSysProcs.GetLoggerLevel}
+# SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL
 
 The `SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL` system procedure displays the
 logging level of the specified logger.

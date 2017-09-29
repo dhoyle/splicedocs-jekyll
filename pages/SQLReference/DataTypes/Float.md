@@ -10,9 +10,9 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# FLOAT   {#DataTypes.Float}
+# FLOAT
 
-The `FLOAT` data type is an alias for either a [`DOUBLE
+The `FLOAT` data type is an alias for either a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) data type, depending
 on the precision you specify.
 
@@ -58,7 +58,7 @@ are similar to the limits of `DOUBLE`.
 If you are using a precision of `23` or less, the limits of `FLOAT` are
 similar to the limits of `REAL`.
 
-Data defined with type [`double`](sqlref_builtinfcns_double.html) at
+Data defined with type &nbsp;[`double`](sqlref_builtinfcns_double.html) at
 this time. Note that this does not cause a loss of precision, though the
 data may require slightly more space.
 {: .noteRelease}

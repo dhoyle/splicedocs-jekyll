@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# BOOLEAN   {#DataTypes.Boolean}
+# BOOLEAN
 
 The `BOOLEAN` data type provides 1 byte of storage for logical values.
 

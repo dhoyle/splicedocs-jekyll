@@ -31,8 +31,8 @@ This topic describes how to:
 Statistics are inexact; in fact, some statistics like table cardinality
 are estimated using advanced algorithms, due to the resources required
 to compute these values. It's important to keep this in mind when basing
-design decisions on values in database statistics tables.  
-  
+design decisions on values in database statistics tables.
+
 It's also important to note that the statistics for your database are
 not automatically refreshed when the data in your database changes,
 which means that when you query a statistical table or view, the results
@@ -51,7 +51,7 @@ procedure to collect statistics on an entire schema, including every
 table in the schema. For example:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CALL SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( 'SPLICEBBALL', false );
 {: .Example xml:space="preserve"}
 
@@ -137,7 +137,7 @@ in tables using the
 procedure. For example:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     CALL SYSCS_UTIL.ENABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Players', 'Birthdate');
 {: .Example xml:space="preserve"}
 
@@ -151,7 +151,7 @@ procedure:
 {: .spaceAbove}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CALL SYSCS_UTIL.DISABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Players', 'Birthdate');
 {: .Example xml:space="preserve"}
 
@@ -190,33 +190,23 @@ in optimization that result from having the statistics collected.
 Splice Machine provides two system tables you can query to view the
 statistics that have been collected for your database:
 
-* Query the [`SYSTABLESTATISTICS System
+* Query the &nbsp;[`SYSTABLESTATISTICS System
   Table`](sqlref_systables_systablestats.html) to view statistics for
   specific tables
-* Query the [`SYSCOLUMNSTATISTICS System
+* Query the &nbsp;[`SYSCOLUMNSTATISTICS System
   Table`](sqlref_systables_syscolumnstats.html) to view statistics for
   specific table columns
 
 ## See Also
 
 * [Splice Machine Data Assignments and
-  Comparisons](sqlref_datatypes_compatability.html) in the
-  *SQL Reference Manual*
+  Comparisons](sqlref_datatypes_compatability.html)
 * [`SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS`](sqlref_sysprocs_collectschemastats.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.DROP_SCHEMA_STATISTICS`](sqlref_sysprocs_dropschemastats.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
-  in the *SQL Reference Manual*
-* [`SYSCOLUMNSTATISTICS System
-  Table`](sqlref_systables_syscolumnstats.html) in the *SQL Reference
-  Manual*
-* [`SYSTABLESTATISTICS System
-  Table`](sqlref_systables_systablestats.html) in the *SQL Reference
-  Manual*
+* [`SYSCOLUMNSTATISTICS System Table`](sqlref_systables_syscolumnstats.html)
+* [`SYSTABLESTATISTICS System Table`](sqlref_systables_systablestats.html)
 
 </div>
 </section>
-

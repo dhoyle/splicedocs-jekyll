@@ -34,7 +34,7 @@ stored as external tables.
     CREATE [LOCAL | GLOBAL] TEMPORARY TABLE table-Name {
           ( {column-definition | Table-level constraint}
              [ , {column-definition} ] * )
-          ( column-name [ , column-name ] * ) 
+          ( column-name [ , column-name ] * )
       }
       [NOLOGGING | ON COMMIT PRESERVE ROWS];
 {: .FcnSyntax xml:space="preserve"}
@@ -46,7 +46,7 @@ modifiers other than the `NOLOGGING`and
 {: .noteNote}
 
 <div class="paramList" markdown="1">
-LOCAL | GLOBAL
+LOCAL  \|  GLOBAL
 {: .paramName}
 
 These values are ignored by Splice Machine, and are in place simply to
@@ -114,11 +114,11 @@ Temporary tables have the following operational limitations:
 * exist only while a user session is alive
 * are not visible to other sessions or transactions
 * cannot be altered using the
-  [`RENAME COLUMN`](sqlref_statements_renamecolumn.html) statements
+ &nbsp;[`RENAME COLUMN`](sqlref_statements_renamecolumn.html) statements
 * do not get backed up
 * cannot be used as data providers to views
 * cannot be referenced by foreign keys in other tables
-* are not displayed by the [`SHOW
+* are not displayed by the &nbsp;[`SHOW
   TABLES`](cmdlineref_showtables.html) command
 
 Also note that temporary tables persist across transactions in a session
@@ -136,9 +136,9 @@ Temporary tables:
 
 <div class="preWrapper" markdown="1">
     splice> CREATE GLOBAL TEMPORARY TABLE FirstAndLast(
-          id INT NOT NULL PRIMARY KEY, 
-          firstName VARCHAR(8) NOT NULL, 
-          lastName VARCHAR(10) NOT NULL ) 
+          id INT NOT NULL PRIMARY KEY,
+          firstName VARCHAR(8) NOT NULL,
+          lastName VARCHAR(10) NOT NULL )
        ON COMMIT PRESERVE ROWS;
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
@@ -152,4 +152,3 @@ Temporary tables:
 
 </div>
 </section>
-

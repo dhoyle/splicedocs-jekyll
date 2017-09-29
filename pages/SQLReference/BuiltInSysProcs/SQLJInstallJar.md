@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SQLJ.INSTALL_JAR   {#BuiltInSysProcs.SQLJInstallJar}
+# SQLJ.INSTALL_JAR
 
 The `SQLJ.INSTALL_JAR` system procedure stores a jar file in a database.
 

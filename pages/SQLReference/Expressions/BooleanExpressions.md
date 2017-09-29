@@ -10,9 +10,9 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Boolean Expressions   {#Expressions.BooleanExpressions}
+# Boolean Expressions
 
-Boolean expressions are allowed in [`CONSTRAINT
+Boolean expressions are allowed in &nbsp;[`CONSTRAINT
 clause`](sqlref_clauses_constraint.html) for more information. Boolean
 expressions in a `WHERE` clause have a highly liberal syntax; see `WHERE
 clause`, for example.

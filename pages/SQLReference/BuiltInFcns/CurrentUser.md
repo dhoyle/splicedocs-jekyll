@@ -10,23 +10,22 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CURRENT_USER   {#BuiltInFcns.CurrentUser}
+# CURRENT_USER
 
-When used outside stored routines,
-[`SESSION_USER`](sqlref_builtinfcns_sessionuser.html) all return the
+When used outside stored routines, `CURRENT_USER`, &nbsp;[`USER`](sqlref_builtinfcns_user.html), and &nbsp;[`SESSION_USER`](sqlref_builtinfcns_sessionuser.html) all return the
 authorization identifier of the user who created the SQL session.
 
 `SESSION_USER` also always returns this value when used within stored
 routines.
 
 If used within a stored routine created with `EXTERNAL SECURITY
-DEFINER`, however, `CURRENT_USER` and
+DEFINER`, however, `CURRENT_USER` and &nbsp;
 [`USER`](sqlref_builtinfcns_user.html) return the authorization
 identifier of the user that owns the schema of the routine. This is
 usually the creating user, although the database owner could be the
 creator as well.
 
-For information about definer's and invoker's rights, see [`CREATE
+For information about definer's and invoker's rights, see &nbsp;[`CREATE
 FUNCTION` statement](sqlref_statements_createfunction.html).
 
 Each of these functions returns a string of up to 128 characters.
@@ -45,7 +44,7 @@ Each of these functions returns a string of up to 128 characters.
     1
     --------------------------------------------------------------------
     SPLICE
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -59,4 +58,3 @@ Each of these functions returns a string of up to 128 characters.
 
 </div>
 </section>
-

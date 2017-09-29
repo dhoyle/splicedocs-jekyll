@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SINH   {#BuiltInFcns.Sinh}
+# SINH
 
 The `SINH` function returns the hyperbolic sine of a specified number.
 
@@ -25,7 +25,7 @@ The `SINH` function returns the hyperbolic sine of a specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the angle, in radians, for which you want the hyperbolic
 sine computed.
 {: .paramDefnFirst}
@@ -33,7 +33,7 @@ sine computed.
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 If *number* is `NULL`, the result of the function is `NULL`.

@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSFOREIGNKEYS System Table    {#SystemTables.SysForeignKeys}
+# SYSFOREIGNKEYS System Table
 
 The `SYSFOREIGNKEYS` table describes the information specific to foreign
 key constraints in the current database.

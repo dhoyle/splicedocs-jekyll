@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# NUMERIC Data Type   {#DataTypes.Numeric}
+# NUMERIC Data Type
 
 `NUMERIC` is a synonym for the
 [`DECIMAL`](sqlref_datatypes_decimal.html) data type and behaves the

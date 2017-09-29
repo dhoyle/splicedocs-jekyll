@@ -175,7 +175,7 @@ and stored procedures with regard to when and where they can be used:
             </table>
 ## Viewing Functions and Stored Procedures
 
-You can use the [`show functions`](cmdlineref_showfunctions.html) and
+You can use the &nbsp;[`show functions`](cmdlineref_showfunctions.html) and
 [`show procedures`](cmdlineref_showprocedures.html) commands in the
 <span class="AppCommand">splice&gt;</span> command line interface to
 display the functions and stored procedures available in your database:
@@ -232,11 +232,8 @@ these topics:
 
 ## See Also
 
-* [`CREATE FUNCTION`](sqlref_statements_createfunction.html) in the *SQL
-  Reference Manual*
-* [`CREATE PROCEDURE`](sqlref_statements_createprocedure.html) in the
-  *SQL Reference Manual*
+* [`CREATE FUNCTION`](sqlref_statements_createfunction.html)
+* [`CREATE PROCEDURE`](sqlref_statements_createprocedure.html) 
 
 </div>
 </section>
-

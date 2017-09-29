@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE VIEW   {#Statements.CreateView}
+# CREATE VIEW
 
 Views are virtual tables formed by a query. A view is a dictionary
 object that you can use until you drop it. Views are not updatable.
@@ -63,7 +63,7 @@ view.
 result offset and fetch first clauses
 {: .paramName}
 
-The [`FETCH FIRST` clause](sqlref_clauses_resultoffset.html), which can
+The &nbsp;[`FETCH FIRST` clause](sqlref_clauses_resultoffset.html), which can
 be combined with the `RESULT OFFSET` clause, limits the number of rows
 added to the view.
 {: .paramDefnFirst}

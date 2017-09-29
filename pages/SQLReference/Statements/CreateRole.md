@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE ROLE   {#Statements.CreateRole}
+# CREATE ROLE
 
 The `CREATE ROLE` statement allows you to create an SQL role. Only the
 database owner can create a role.

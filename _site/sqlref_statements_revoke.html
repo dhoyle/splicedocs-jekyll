@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="revoke---statementsrevoke">REVOKE   {#Statements.Revoke}</h1>
+    <h1 id="revoke">REVOKE</h1>
 
     <p>Use the <code>REVOKE</code> statement to remove privileges from a specific user or
 role, or from all users, to perform actions on database objects. You can
@@ -2822,7 +2822,7 @@ you are revoking privileges to a schema object or revoking a role.</p>
 
     <div class="fcnWrapperWide">
       <pre class="FcnSyntax"><code>REVOKE privilege-type
-   ON [ SCHEMA ] S
+   ON [ SCHEMA ] schema
    FROM grantees
 </code></pre>
 
@@ -2840,14 +2840,15 @@ you are revoking privileges to a schema object or revoking a role.</p>
       <p class="paramDefn">See the <a href="#PrivilegeTypes">Privilege Types</a> section below for more
 information.</p>
 
-      <p><span class="noteEnterpriseNote">ENTERPRISE ONLY: Column-level
-privileges are available only with a Splice Machine Enterprise
-license.</span></p>
+      <div class="noteEnterprise">
+        <p>Column-level privileges are available only with a Splice Machine Enterprise
+license.</p>
 
-      <p>You cannot grant or revoke privileges at the <code>column-identifier</code> level
+        <p>You cannot grant or revoke privileges at the <code>column-identifier</code> level
 with the Community version of Splice Machine.</p>
 
-      <p>To obtain a license for the Splice Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+        <p>To obtain a license for the Splice Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+      </div>
 
       <p class="paramName">schema-Name</p>
 
@@ -2871,24 +2872,28 @@ Grantees</a> section below for more information.</p>
     <div class="paramList">
       <p class="paramName">privilege-type</p>
 
-      <p class="paramDefnFirst"><code>DELETE
- |INSERT
- |REFERENCES [( column-identifier {, column-identifier}* )]
- |SELECT [( column-identifier {, column-identifier}* )]
- |TRIGGER
- |UPDATE [( column-identifier {, column-identifier}* )]</code></p>
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>  DELETE
+| INSERT
+| REFERENCES [( column-identifier {, column-identifier}* )]
+| SELECT [( column-identifier {, column-identifier}* )]
+| TRIGGER
+| UPDATE [( column-identifier {, column-identifier}* )]
+</code></pre>
+      </div>
 
       <p class="paramDefn">See the <a href="#PrivilegeTypes">Privilege Types</a> section below for more
 information.</p>
 
-      <p><span class="noteEnterpriseNote">ENTERPRISE ONLY: Column-level
-privileges are available only with a Splice Machine Enterprise
-license.</span></p>
+      <div class="noteEnterprise">
+        <p>Column-level privileges are available only with a Splice Machine Enterprise
+license.</p>
 
-      <p>You cannot grant or revoke privileges at the <code>column-identifier</code> level
+        <p>You cannot grant or revoke privileges at the <code>column-identifier</code> level
 with the Community version of Splice Machine.</p>
 
-      <p>To obtain a license for the Splice Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+        <p>To obtain a license for the Splice Machine Enterprise Edition, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+      </div>
 
       <p class="paramName">table-Name</p>
 
@@ -2914,14 +2919,7 @@ Grantees</a> section below for more information.</p>
 
     </div>
     <div class="paramList">
-      <table class="paramName">
-        <tbody>
-          <tr>
-            <td>function-name</td>
-            <td> procedure-name</td>
-          </tr>
-        </tbody>
-      </table>
+      <p class="paramName">function-name  |  procedure-name</p>
 
       <p class="paramDefnFirst">The name of the function or procedure for which you are revoking access.</p>
 
@@ -3323,7 +3321,7 @@ authorization ID <code>george</code>, use the following syntax:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

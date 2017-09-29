@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# INTEGER Data Type   {#DataTypes.Integer}
+# INTEGER Data Type
 
 The `INTEGER` data type provides 4 bytes of storage for integer values.
 

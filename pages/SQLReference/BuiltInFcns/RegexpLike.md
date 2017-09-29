@@ -21,7 +21,6 @@ character matching.
 
 <div class="fcnWrapperWide" markdown="1">
     REGEXP_LIKE( sourceString, patternString )
-    }
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -61,13 +60,13 @@ The following query finds all players whose name begins with *Ste*:
     splice> SELECT DisplayName
        FROM Players
        WHERE REGEXP_LIKE(DisplayName, '^Ste.*');
-    
+
     DISPLAYNAME
     ------------------------
     Steve Raster
     Steve Mossely
     Stephen Tuvesco
-    
+
     3 rows selected
 {: .Example xml:space="preserve"}
 

@@ -20,8 +20,8 @@ an `SQLException` to be thrown.
 
 When you commit a transaction, any savepoints created in that
 transaction are automatically released and invalidated when the
-transaction is committed or the entire transaction is rolled back.  
-  
+transaction is committed or the entire transaction is rolled back.
+
 When you rollback a transaction to a savepoint, that savepoint and any
 others created after it within the transaction are automatically
 released.
@@ -64,7 +64,7 @@ our table:
     1
     2
     3
-    
+
     3 rows selected
 {: .AppCommand}
 
@@ -82,6 +82,7 @@ Next we add new values to the table and again verify its contents:
     3
     4
     5
+
     5 rows selected
 {: .AppCommand}
 
@@ -99,7 +100,14 @@ create a new savepoint, `savept2`.
     1
     2
     3
-    4        5        6        77 rows selectedsplice> SAVEPOINT savept2;0 rows inserted/updated/deleted
+    4
+    5
+    6
+    7
+
+    7 rows selected
+    splice> SAVEPOINT savept2;
+    0 rows inserted/updated/deleted
 {: .AppCommand}
 
 </div>
@@ -121,7 +129,7 @@ rollback:
     7
     8
     9
-    
+
     9 rows selected
     splice> ROLLBACK TO SAVEPOINT savept1;
     ERROR 3B001: Savepoint SAVEPT1 does not  exist or is not active in the current transaction.
@@ -137,7 +145,7 @@ rollback:
     5
     6
     7
-    
+
     7 rows selected
 {: .AppCommand}
 
@@ -159,4 +167,3 @@ And finally, we commit the transaction:
 
 </div>
 </section>
-

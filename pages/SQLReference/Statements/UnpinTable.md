@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# UNPIN TABLE   {#Statements.UnpinTable}
+# UNPIN TABLE
 
 The `UNPIN TABLE` statement unpins a table, which means that the pinned
 (previously cached) version of the table no longer exists.

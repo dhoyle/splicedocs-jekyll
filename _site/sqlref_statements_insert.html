@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="insert---statementsinsert">INSERT   {#Statements.Insert}</h1>
+    <h1 id="insert">INSERT</h1>
 
     <p>An <code>INSERT</code> statement creates rows or columns and stores them in the
 named table. The number of values assigned in an <code>INSERT</code> statement must
@@ -2854,7 +2854,7 @@ insert values into other columns in the table. For more information, see
 
       <p class="paramName">result offset and fetch first clauses</p>
 
-      <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><code>fetch first</code> clause</a>, which can
+      <p class="paramDefnFirst">The  <a href="sqlref_clauses_resultoffset.html"><code>fetch first</code> clause</a>, which can
 be combined with the <code>result offset</code> clause, limits the number of rows
 added to the table.</p>
 
@@ -2894,11 +2894,13 @@ splice&gt; INSERT INTO Players
            (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982') );
 3 rows inserted/updated/deleted
 </code></pre>
+    </div>
 
-      <p class="body">This example creates a table name OldGuys that has the same columns as
+    <p class="body">This example creates a table name OldGuys that has the same columns as
 our Players table, and then loads that table with the data from Players
 for all players born before 1980:</p>
 
+    <div class="preWrapperWide">
       <pre class="Example"><code>splice&gt; CREATE TABLE OldGuys(
     ID           SMALLINT NOT NULL PRIMARY KEY,
     Team         VARCHAR(64) NOT NULL,
@@ -2935,7 +2937,6 @@ prepared <code>INSERT</code> statement invalidates the prepared <code>INSERT</co
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -2950,7 +2951,7 @@ prepared <code>INSERT</code> statement invalidates the prepared <code>INSERT</co
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

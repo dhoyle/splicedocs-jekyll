@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSUSERS System Table   {#SystemTables.SysUsers}
+# SYSUSERS System Table
 
 The `SYSUSERS` table stores user credentials when `NATIVE`
 authentication is enabled.

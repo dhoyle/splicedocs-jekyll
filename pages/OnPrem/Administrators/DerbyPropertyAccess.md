@@ -98,15 +98,15 @@ The following is an example of a `splice-site.xml` file:
        <configuration>
            <property>
                <name>splice.debug.logStatementContext</name>
-    	    <value>true</value>
-    	    <description>Property  to enable logging of all statements.</description>
-    	</property>
-    	<property>
-    	    <name>splice.debug.david</name>
-    	    <value>true</value>
-    	    <description>Property  to test something.</description>
-    	</property>
-       </configuration> 
+               <value>true</value>
+               <description>Property  to enable logging of all statements.</description>
+               </property>
+              <property>
+              <name>splice.debug.david</name>
+              <value>true</value>
+              <description>Property  to test something.</description>
+              </property>
+       </configuration>
 {: .Example xml:space="preserve"}
 
 </div>
@@ -118,7 +118,7 @@ information like this:
 
 <div class="preWrapperWide" markdown="1">
     splice> call SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES();
-    
+
     KEY                                       |VALUE            |TYPE     
     ----------------------------------------------------------------------
     derby.authentication.builtin.algorithm    |SHA-256          |DATABASE 
@@ -134,14 +134,13 @@ information like this:
     derby.storage.propertiesId                |16               |SERVICE  
     derby.language.logQueryPlan               |true             |JVM      
     splice.updateSystemProcs                  |false            |JVM      
-    derby.storage.rowLocking                  |false            |SERVICE   
+    derby.storage.rowLocking                  |false            |SERVICE  
 {: xml:space="preserve" .Example}
 
 </div>
 ## See Also
 
 * [`SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY`](sqlref_sysprocs_setdbprop.html)
-  in the *SQL Reference Manual*
 * The *Derby Properties Guide* on the [Apache Derby documentation
   site][1]{: target="_blank"}.
 

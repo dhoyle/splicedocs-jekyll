@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CURRENT_DATE   {#BuiltInFcns.CurrentDate}
+# CURRENT_DATE
 
 `CURRENT_DATE` returns the current date.
 
@@ -35,7 +35,7 @@ or, alternately
 </div>
 ## Results
 
-A [`DATE`](sqlref_builtinfcns_date.html) value.
+A &nbsp;[`DATE`](sqlref_builtinfcns_date.html) value.
 
 ## Examples
 

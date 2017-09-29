@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# ATAN2   {#BuiltInFcns.Atan2}
+# ATAN2
 
 The `ATAN2` function returns the arctangent, in radians, of the quotient
 of the two arguments.
@@ -26,20 +26,20 @@ of the two arguments.
 y
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 {: .paramDefnFirst}
 
 x
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 {: .paramDefnFirst}
 
 </div>
 ## Results
 
 `ATAN2` returns the arc tangent of *y*/*x* in the range -*pi* to *pi*
-radians, as a [`DOUBLE
+radians, as a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html)number.
 
 * If either argument is `NULL`, the result of the function is `NULL`.

@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSFILES System Table   {#SystemTables.SysFiles}
+# SYSFILES System Table
 
 The `SYSFILES` table describes jar files stored in the database.
 

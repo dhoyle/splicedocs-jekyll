@@ -53,14 +53,14 @@ is always returned, even if it is `NULL`.
 overClause
 {: .paramName}
 
-See the [`OVER`](sqlref_clauses_over.html) clause documentation.
+See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 {: .paramDefnFirst}
 
 </div>
 ## Usage Notes
 
 Splice Machine recommends that you use the `LAST_VALUE` function with
-the [`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
+the &nbsp;[`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
 deterministic results.
 
 ## Results

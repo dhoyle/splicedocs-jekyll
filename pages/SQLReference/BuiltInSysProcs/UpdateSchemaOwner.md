@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER   {#BuiltInSysProcs.SetUserAccess}
+# SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER
 
 The `SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER` system procedure changes the
 owner of a schema.

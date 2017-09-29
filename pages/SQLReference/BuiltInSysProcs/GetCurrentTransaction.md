@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION   {#BuiltInSysProcs.DumpTransactions}
+# SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION
 
 The `SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION` system procedure displays
 summary information about the current transaction.

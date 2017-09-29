@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE TRIGGER   {#Statements.CreateTrigger}
+# CREATE TRIGGER
 
 A `CREATE TRIGGER` statement creates a trigger, which defines a set of
 actions that are executed when a database event known as the `triggering
@@ -48,10 +48,10 @@ TriggerName
 The name to associate with the trigger.
 {: .paramDefnFirst}
 
-AFTER | BEFORE
+AFTER \| BEFORE
 {: .paramName}
 
-Triggers are defined as either *Before* or *After* triggers.
+Triggers are defined as either `Before` or `After` triggers.
 {: .paramDefnFirst}
 
 `BEFORE` triggers fire before the statement's changes are applied and
@@ -75,7 +75,7 @@ same table for the same trigger time (before or after), triggers are
 fired in the order in which they were created.
 {: .paramDefnFirst}
 
-INSERT | DELETE | SELECT | UPDATE
+INSERT \| DELETE \| SELECT \| UPDATE
 {: .paramName}
 
 Defines which database event causes the trigger to fire. If you specify
@@ -96,7 +96,7 @@ the database event that caused the trigger to fire. See the [Referencing
 Clause](#ReferencingClause) section below.
 {: .paramDefnFirst}
 
-FOR EACH {ROW | STATEMENT}
+FOR EACH {ROW \| STATEMENT}
 {: .paramName}
 
 A `FOR EACH ROW` triggered action executes once for each row that the
@@ -171,8 +171,8 @@ triggered-SQL-statement:
 The `OLD` and `NEW` transition variables map to a *java.sql.ResultSet*
 with a single row.
 
-`INSERT` row triggers cannot reference an `OLD` row.   
-  
+`INSERT` row triggers cannot reference an `OLD` row.
+
 `DELETE` row triggers cannot reference a `NEW` row.
 {: .noteNote}
 
@@ -199,7 +199,7 @@ This section presents examples of creating triggers:
 #### A statement trigger calling a custom stored procedure:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TRIGGER triggerName
        AFTER UPDATE
        ON TARGET_TABLE
@@ -212,7 +212,7 @@ This section presents examples of creating triggers:
 #### A simple row trigger:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TRIGGER triggerName
        AFTER UPDATE
        ON TARGET_TABLE
@@ -225,7 +225,7 @@ This section presents examples of creating triggers:
 #### A row trigger defined on a subset of columns:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TRIGGER triggerName
        AFTER UPDATE OF col1, col2
        ON TARGET_TABLE
@@ -248,7 +248,7 @@ This section presents examples of creating triggers:
 #### A row trigger defined on a subset of columns, referencing new and old values:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TRIGGER triggerName
        AFTER UPDATE OF col1, col2
        ON T
@@ -262,7 +262,7 @@ This section presents examples of creating triggers:
 #### A row trigger defined on a subset of columns, referencing new and old values, calling custom stored procedure:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TRIGGER triggerName
        AFTER UPDATE OF col1, col2
        ON T
@@ -282,4 +282,3 @@ This section presents examples of creating triggers:
 
 </div>
 </section>
-

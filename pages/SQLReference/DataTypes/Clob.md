@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CLOB   {#DataTypes.Clob}
+# CLOB
 
 A `CLOB` (character large object) value can be up to 2 GB (2,147,483,647
 characters) long. A `CLOB` is used to store unicode character-based
@@ -21,7 +21,7 @@ size of the CLOB is limited to 512 MB, due to address space limitations.
 {: .noteRestriction}
 
 Note that, in Splice Machine, `TEXT` is a synonym for `CLOB`, and that
-the documentation for the [`TEXT`](sqlref_datatypes_text.html) data type
+the documentation for the &nbsp;[`TEXT`](sqlref_datatypes_text.html) data type
 functionally matches the documentation for this topic. Splice Machine
 simply translates `TEXT` into `CLOB`.
 

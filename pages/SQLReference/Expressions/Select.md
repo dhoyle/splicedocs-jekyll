@@ -1,7 +1,7 @@
 ---
 title: SELECT Expression
 summary: Describes the SELECT expression, which builds a table value based on filtering and projecting values from other tables.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -10,7 +10,7 @@ folder: SQLReference/Expressions
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SELECT Expression   {#Expressions.Select}
+# SELECT Expression
 
 A *SelectExpression* is the basic `SELECT-FROM-WHERE` construct used to
 build a table value based on filtering and projecting values from other
@@ -35,7 +35,7 @@ SELECT clause
 {: .paramName}
 
 The `SELECT` clause contains a list of expressions and an optional
-quantifier that is applied to the results of the [`WHERE`
+quantifier that is applied to the results of the &nbsp;[`WHERE`
 clause](sqlref_clauses_where.html).
 {: .paramDefnFirst}
 
@@ -76,21 +76,21 @@ statement](sqlref_statements_grant.html) for more information.
 FROM clause
 {: .paramName}
 
-The result of the [`FROM` clause](sqlref_clauses_from.html) is the cross
+The result of the &nbsp;[`FROM` clause](sqlref_clauses_from.html) is the cross
 product of the `FROM` items.
 {: .paramDefnFirst}
 
 WHERE clause
 {: .paramName}
 
-The [`WHERE` clause](sqlref_clauses_where.html) can further qualify the
+The &nbsp;[`WHERE` clause](sqlref_clauses_where.html) can further qualify the
 result of the `FROM` clause.
 {: .paramDefnFirst}
 
 GROUP BY clause
 {: .paramName}
 
-The [`GROUP BY` clause](sqlref_clauses_where.html) groups rows in the
+The &nbsp;[`GROUP BY` clause](sqlref_clauses_where.html) groups rows in the
 result into subsets that have matching values for one or more columns.
 {: .paramDefnFirst}
 
@@ -118,7 +118,7 @@ table is the single group.
 HAVING clause
 {: .paramName}
 
-The [`HAVING` clause](sqlref_clauses_having.html) can further qualify
+The &nbsp;[`HAVING` clause](sqlref_clauses_having.html) can further qualify
 the result of the `FROM` clause. This clause restricts a grouped table,
 specifying a search condition (much like a `WHERE` clause) that can
 refer only to grouping columns or aggregates from the current scope.
@@ -134,7 +134,7 @@ grouped into one group for the entire table.
 ORDER BY clause
 {: .paramName}
 
-The [`ORDER BY` clause](sqlref_clauses_orderby.html) allows you to
+The &nbsp;[`ORDER BY` clause](sqlref_clauses_orderby.html) allows you to
 specify the order in which rows appear in the result set. In subqueries,
 the `ORDER BY` clause is meaningless unless it is accompanied by one or
 both of the result offset and fetch first clauses.
@@ -144,7 +144,7 @@ both of the result offset and fetch first clauses.
 class="CodeItalicFont">fetch first</span> clauses
 {: .paramName}
 
-The [`fetch first` clause](sqlref_clauses_resultoffset.html), which can
+The &nbsp;[`fetch first` clause](sqlref_clauses_resultoffset.html), which can
 be combined with the `result offset` clause, limits the number of rows
 returned in the result set.
 {: .paramDefnFirst}
@@ -181,7 +181,7 @@ value, not getting data out of a table), use a
 The wildcard character (***) expands to all columns in the tables in the
 associated `FROM` clause.
 
-*[correlation-Name](sqlref_identifiers_types.html).** expand to all
+* [correlation-Name](sqlref_identifiers_types.html) identifiers expand to all
 columns in the identified table. That table must be listed in the
 associated `FROM` clause.
 
@@ -228,7 +228,7 @@ and 1989:
     Jack Hellman            |Cards     |1989-08-09
     Elliot Andrews          |Giants    |1989-08-21
     Henry Socomy            |Giants    |1989-11-17
-    
+
     13 rows selected
 {: .Example xml:space="preserve"}
 
@@ -237,7 +237,7 @@ This example shows using correlation names for the tables:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> SELECT CONSTRAINTNAME, COLUMNNAME
       FROM SYS.SYSTABLES t, SYS.SYSCOLUMNS col,
       SYS.SYSCONSTRAINTS cons, SYS.SYSCHECKS checks
@@ -251,7 +251,7 @@ This example shows using correlation names for the tables:
 This example shows using the `DISTINCT` clause:
 {: .body}
 
-    
+
      SELECT DISTINCT SALARY   FROM Salaries;
 {: .Example}
 
@@ -260,7 +260,7 @@ the maximum department salary for all departments whose maximum salary
 is less than the average salary i all other departments:
 {: .body}
 
-    
+
      SELECT WORKDEPT AS DPT, MAX(SALARY) AS BOSS
        FROM EMPLOYEE EMP_COR
        GROUP BY WORKDEPT
@@ -281,4 +281,3 @@ is less than the average salary i all other departments:
 
 </div>
 </section>
-

@@ -569,7 +569,7 @@ development:
           <p class="noteIcon">Use <span class="CodeBoldFont">localhost:1527</span> with the
 standalone (local computer) version of splicemachine. If you’re
 running Splice Machine on a cluster, substitute the address of your
-server for <code>localhost</code>; for example:<br />
+server for <code>localhost</code>; for example:
    <span class="CodeBoldFont">jdbc:splice://mySrv123cba:1527/splicedb</span>.</p>
         </li>
         <li>
@@ -584,9 +584,9 @@ COLUMN_NAME         |TYPE_NAME|DEC |NUM |COLUMN|COLUMN_DEF|CHAR_OCTE |IS_NULL
 ------------------------------------------------------------------------------
 A                   |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
 B                   |VARCHAR  |NULL|NULL|30    |NULL      |60        |YES
-    
+
 2 rows selected
-    
+
 splice&gt; select * from MYTESTTABLE order by A;
 A     |B
 ---------------------------
@@ -595,7 +595,7 @@ A     |B
 3     |c
 4     |c
 5     |c
-    
+
 5 rows selected
 </code></pre>
 
@@ -607,18 +607,18 @@ A     |B
           <p class="indentLevel1">You can copy the example program code and paste it into your editor:</p>
 
           <div class="preWrapperWide">
-            <pre><code>require 'java'
-    
+            <pre class="Example"><code>require 'java'
+
 module JavaLang
 include_package "java.lang"
 end
-    
+
 module JavaSql
 include_package 'java.sql'
 end
-    
+
 import 'com.splicemachine.db.jdbc.ClientDriver'
-    
+
 begin
     conn = JavaSql::DriverManager.getConnection("jdbc:splice://localhost:1527/splicedb;user=splice;password=admin");
     stmt = conn.createStatement
@@ -646,7 +646,7 @@ end
           <p class="indentLevel1">Run the <code>JRubyConnect</code> program as follows</p>
 
           <div class="preWrapperWide">
-            <pre class="ShellCommand"><code>jruby jrubyjdbc.rb   
+            <pre class="ShellCommand"><code>jruby jrubyjdbc.rb
 </code></pre>
 
           </div>
@@ -671,7 +671,6 @@ Record=[5] a=[2] b=[b]
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -686,7 +685,7 @@ Record=[5] a=[2] b=[b]
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

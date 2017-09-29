@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CHAR   {#DataTypes.Char}
+# CHAR
 
 The `CHAR` data type provides for fixed-length storage of strings.
 

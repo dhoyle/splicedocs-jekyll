@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# NULLIF   {#BuiltInFcns.Nullif}
+# NULLIF
 
 The `NULLIF` function compares the values of two expressions; if they
 are equal, it returns `NULL`; otherwise, it returns the value of the

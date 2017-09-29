@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# COUNT   {#BuiltInFcns.Count}
+# COUNT
 
 `COUNT` returns the number of rows returned by the query. You can use it
 as an [window

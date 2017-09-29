@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCONGLOMERATES System Table   {#SystemTables.SysConglomerates}
+# SYSCONGLOMERATES System Table
 
 The `SYSCONGLOMERATES` table describes the conglomerates within the
 current database. A conglomerate is a unit of storage and is either a

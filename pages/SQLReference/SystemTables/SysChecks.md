@@ -10,7 +10,7 @@ folder: SQLReference/SystemTables
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCHECKS System Table   {#SystemTables.SysChecks}
+# SYSCHECKS System Table
 
 The `SYSCHECKS` table describes the check constraints within the current
 database.

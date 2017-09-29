@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# HOUR   {#BuiltInFcns.Hour}
+# HOUR
 
 The `HOUR` function returns the hour part of a value.
 
@@ -25,11 +25,8 @@ The `HOUR` function returns the hour part of a value.
 expression
 {: .paramName}
 
-An expression that can be any of the following:
+An expression that can be a time, timestamp, or a valid character string representation of a time or timestamp.
 {: .paramDefnFirst}
-
-* A [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) value.
-{: .bullet}
 
 </div>
 ## Results
@@ -46,7 +43,7 @@ is `NULL`, the result is the `NULL`value.
     1                            |2          |3          |4
     ----------------------------------------------------------------------------
     2015-11-12 17:48:55.217      |17         |48         |55.217
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -63,4 +60,3 @@ is `NULL`, the result is the `NULL`value.
 
 </div>
 </section>
-

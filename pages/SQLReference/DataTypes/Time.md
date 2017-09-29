@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TIME   {#DataTypes.Time}
+# TIME
 
 The `TIME` data type provides for storage of a time-of-day value.
 
@@ -49,9 +49,9 @@ Here are several usage notes for the `TIME` data type:
       hh.mm[.ss]
       hh[:mm] {AM | PM}
   {: .FcnSyntax}
-  
+
   </div>
-  
+
   The first of the three formats above is the *java.sql.Time* format.
 
 * Hours may have one or two digits.
@@ -61,7 +61,7 @@ Here are several usage notes for the `TIME` data type:
   ambiguity, the built-in formats above take precedence.
 
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* in the *Developer's Guide*
+Values](developers_fundamentals_dates.html)* 
 for information about using simple arithmetic with `TIME` values.
 
 ## Examples
@@ -95,4 +95,3 @@ for information about using simple arithmetic with `TIME` values.
 
 </div>
 </section>
-

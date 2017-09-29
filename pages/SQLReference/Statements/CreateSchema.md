@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE SCHEMA   {#Statements.CreateSchema}
+# CREATE SCHEMA
 
 The `CREATE SCHEMA` statement allows you to create a database schema,
 which is a way to logically group objects in a single collection and

@@ -64,11 +64,12 @@ different syntax
                         <td><a href="sqlref_statements_createtemptable.html"><code>CREATE TEMPORARY TABLE</code></a>
                         </td>
                         <td>
-                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em> {
-      ( {<em>column-definition</em> | <em>Table-level constraint</em>}
-         [ , {<em>column-definition</em>} ] * )
-      ( <em>column-name</em> [ , <em>column-name</em> ] * )
-  }
+                            <div class="fcnWrapperWide"><pre class="FcnSyntaxCell" xml:space="preserve">CREATE [LOCAL|GLOBAL] TEMPORARY TABLE <em><a href="sqlref_identifiers_types.html#TableName">table-Name</a></em>
+{
+  ( {<em>column-definition</em> | <em>Table-level constraint</em>}
+     [ , {<em>column-definition</em>} ] * )
+  ( <em>column-name</em> [ , <em>column-name</em> ] * )
+}
   [NOLOGGING | ON COMMIT PRESERVE ROWS];</pre>
                             </div>
                         </td>
@@ -109,11 +110,11 @@ Temporary tables have the following operational limitations; they:
 * are visible in system tables, but are otherwise not visible to other
   sessions or transactions
 * cannot be altered using the
-  [`RENAME COLUMN`](sqlref_statements_renamecolumn.html) statements
+ &nbsp;[`RENAME COLUMN`](sqlref_statements_renamecolumn.html) statements
 * do not get backed up
 * cannot be used as data providers to views
 * cannot be referenced by foreign keys in other tables
-* are not displayed by the [`show tables`](cmdlineref_showtables.html)
+* are not displayed by the &nbsp;[`show tables`](cmdlineref_showtables.html)
   command
 
 Also note that temporary tables persist across transactions in a session
@@ -127,7 +128,7 @@ Temporary tables:
 * persist across transactions in a session
 * are automatically dropped when a session terminates or expires
 * can also be dropped with the
-  [`DROP TABLE`](sqlref_statements_droptable.html) statement
+ &nbsp;[`DROP TABLE`](sqlref_statements_droptable.html) statement
 
 ## Example
 
@@ -143,19 +144,12 @@ Temporary tables:
 
 ## See Also
 
-* [`ALTER TABLE`](sqlref_statements_altertable.html) in the
-  *SQL Reference Manual*
+* [`ALTER TABLE`](sqlref_statements_altertable.html)
 * [`CREATE TEMPORARY TABLE`](sqlref_statements_createtemptable.html)
-  statement in the *SQL Reference Manual*
 * [`DECLARE GLOBAL TEMPORARY TABLE`](sqlref_statements_globaltemptable.html)
-  statement in the *SQL Reference Manual*
-* [`DROP TABLE`](sqlref_statements_droptable.html) statement in the
-  *SQL Reference Manual*
-* [`RENAME COLUMN`](sqlref_statements_renamecolumn.html) statement in
-  the *SQL Reference Manual*
-* [`RENAME TABLE`](sqlref_statements_renametable.html) statement in the
-  *SQL Reference Manual*
+* [`DROP TABLE`](sqlref_statements_droptable.html)
+* [`RENAME COLUMN`](sqlref_statements_renamecolumn.html)
+* [`RENAME TABLE`](sqlref_statements_renametable.html)
 
 </div>
 </section>
-

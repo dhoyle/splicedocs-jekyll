@@ -88,9 +88,10 @@ make sure that those characters are embedded within delimited strings.
 
 To use the single quote (`'`) character as your string delimiter, you
 need to escape that character. This means that you specify four quotes
-(`''''`) as the value of this parameter. This is standard SQL syntax.  
-  
- The [Examples](#Examples) section below contains an example that uses
+(`''''`) as the value of this parameter. This is standard SQL syntax.
+{: .paramDefnFirst}
+
+The [Examples](#Examples) section below contains an example that uses
 the single quote as the string delimiter character.
 {: .noteNote}
 
@@ -174,7 +175,7 @@ for a table row that has key value `1|2`:
     ENCODED_REGION_NAME                     |START_KEY                                         |END_KEY
     ------------------------------------------------------------------------------------------------------------------
     8ffc80e3f8ac3b180441371319ea90e2        |\x81\x00\x82                                      |\x81\x00\x84
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -187,7 +188,7 @@ region that contains index value `1996-04-12,155190,21168.23,0.04`:
     ENCODED_REGION_NAME                     |START_KEY                                         |END_KEY
     ------------------------------------------------------------------------------------------------------------------
     ff8f9e54519a31e15f264ba6d2b828a4        |\xEC\xC1\x15\xAD\xCD\x80\x00\xE1\x06\xEE\x00\xE4V&|
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -202,4 +203,3 @@ region that contains index value `1996-04-12,155190,21168.23,0.04`:
 
 </div>
 </section>
-

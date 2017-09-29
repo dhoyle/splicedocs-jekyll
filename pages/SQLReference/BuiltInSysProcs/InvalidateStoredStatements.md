@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS   {#BuiltInSysProcs.InvalidateStoredStatements}
+# SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS
 
 The `SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS` system procedure
 invalidates all system prepared statements, and forces the query

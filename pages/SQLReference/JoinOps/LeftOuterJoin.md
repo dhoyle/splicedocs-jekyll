@@ -10,9 +10,9 @@ folder: SQLReference/JoinOps
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LEFT OUTER JOIN   {#JoinOps.LeftOuterJoin}
+# LEFT OUTER JOIN
 
-A `LEFT OUTER JOIN` is one of the [`JOIN`
+A `LEFT OUTER JOIN` is one of the &nbsp;[`JOIN`
 operations](sqlref_joinops_about.html) that allow you to specify a join
 clause. It preserves the unmatched rows from the first (left) table,
 joining them with a `NULL` row in the shape of the second (right) table.

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO   {#BuiltInSysProcs.GetRegionServerTaskIno}
+# SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO
 
 The `SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO` system procedure
 displays input and output statistics about the cluster.

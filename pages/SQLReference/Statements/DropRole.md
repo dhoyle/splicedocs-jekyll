@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DROP ROLE   {#Statements.DropRole}
+# DROP ROLE
 
 The `DROP ROLE` statement allows you to drop a role from your database.
 
@@ -33,11 +33,11 @@ The name of the role that you want to drop from your database.
 
 Dropping a role has the effect of removing the role from the database
 dictionary. This means that no session user can henceforth set that role
-(see [`CURRENT_ROLE` function](sqlref_builtinfcns_currentrole.html))
+(see &nbsp;[`CURRENT_ROLE` function](sqlref_builtinfcns_currentrole.html))
 will now have a `NULL CURRENT_ROLE`.
 
 Dropping a role also has the effect of revoking that role from any user
-and role it has been granted to. See the [`REVOKE`
+and role it has been granted to. See the &nbsp;[`REVOKE`
 statement](sqlref_statements_revoke.html) for information on how
 revoking a role may impact any dependent objects.
 

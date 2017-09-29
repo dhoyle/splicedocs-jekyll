@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# COSH   {#BuiltInFcns.Cosh}
+# COSH
 
 The `COSH` function returns the hyperbolic cosine of a specified number.
 
@@ -25,7 +25,7 @@ The `COSH` function returns the hyperbolic cosine of a specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the angle, in radians, for which you want the hyperbolic
 cosine computed.
 {: .paramDefnFirst}
@@ -33,7 +33,7 @@ cosine computed.
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 * If the specified number is `NULL`, the result of this function is

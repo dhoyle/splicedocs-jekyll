@@ -10,10 +10,9 @@ folder: SQLReference/Clauses
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# WHERE   {#Clauses.Where}
+# WHERE
 
-The `WHERE` clause is an optional part of a
-[`UPDATE`](sqlref_statements_update.html) statement.
+The `WHERE` clause is an optional part of an  &nbsp;[`UPDATE`](sqlref_statements_update.html) statement.
 
 The `WHERE` clause lets you select rows based on a Boolean expression.
 Only rows for which the expression evaluates to `TRUE` are selected to
@@ -38,13 +37,13 @@ Expressions](sqlref_expressions_boolean.html) topic.
 ## Example
 
 <div class="preWrapperWide" markdown="1">
-    
+
        -- find the flights where no business-class seats have been booked
     SELECT *
       FROM FlightAvailability
       WHERE business_seats_taken IS NULL
          OR business_seats_taken = 0;
-    
+
        -- Join the EMP_ACT and EMPLOYEE tables
        -- select all the columns from the EMP_ACT table and
        -- add the employee's surname (LASTNAME) from the EMPLOYEE table
@@ -52,8 +51,8 @@ Expressions](sqlref_expressions_boolean.html) topic.
     SELECT SAMP.EMP_ACT.*, LASTNAME
       FROM SAMP.EMP_ACT, SAMP.EMPLOYEE
       WHERE EMP_ACT.EMPNO = EMPLOYEE.EMPNO;
-    
-    
+
+
        -- Determine the employee number and salary of sales representatives
        -- along with the average salary and head count of their departments.
        -- This query must first create a new-column-name specified in the AS clause
@@ -82,4 +81,3 @@ Expressions](sqlref_expressions_boolean.html) topic.
 
 </div>
 </section>
-

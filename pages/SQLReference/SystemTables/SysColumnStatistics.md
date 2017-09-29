@@ -129,8 +129,7 @@ here: [https://datasketches.github.io/][1]{: target="_blank"}
 ## See Also
 
 * [About System Tables](sqlref_systables_intro.html)
-* [`SYSTABLESTATISTICS`](sqlref_systables_systablestats.html) system
-  table
+* [`SYSTABLESTATISTICS`](sqlref_systables_systablestats.html)
 
 </div>
 </section>

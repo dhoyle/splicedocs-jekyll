@@ -10,7 +10,7 @@ folder: SQLReference/Clauses
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-#  USING   {#Clauses.Using}
+#  USING
 
 The `USING` clause specifies which columns to test for equality when two
 tables are joined. It can be used instead of an `ON` clause in `JOIN`
@@ -55,8 +55,7 @@ that table that is not listed in the `USING` clause.
 
 If a column in the `USING` clause is referenced without being qualified
 by a table name, the column reference points to the column in the first
-(left) table if the join is an `LEFT OUTER
-			JOIN`. If it is a [`RIGHT OUTER
+(left) table if the join is a &nbsp;[`LEFT OUTER JOIN`](sqlref_joinops_leftouterjoin.html). If it is a &nbsp;[`RIGHT OUTER
 JOIN`](sqlref_joinops_rightouterjoin.html), unqualified references to a
 column in the `USING` clause point to the column in the second (right)
 table.
@@ -90,4 +89,3 @@ join condition that `COUNTRIES.COUNTRY_ISO_CODE` is equal to
 
 </div>
 </section>
-

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SECOND   {#BuiltInFcns.Second}
+# SECOND
 
 The `SECOND` function returns the seconds part of a value.
 
@@ -19,17 +19,14 @@ The `SECOND` function returns the seconds part of a value.
 <div class="fcnWrapperWide" markdown="1">
     SECOND( expression )
 {: .FcnSyntax xml:space="preserve"}
-
 </div>
+
 <div class="paramList" markdown="1">
 expression
 {: .paramName}
 
-An expression that can be any of the following:
+An expression that can be a time, timestamp, or a valid character string representation of a time or timestamp.
 {: .paramDefnFirst}
-
-* A [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) value.
-{: .bullet}
 
 </div>
 ## Results
@@ -46,7 +43,7 @@ is `NULL`, the result is the `NULL`value.
     1                            |2          |3          |4
     ----------------------------------------------------------------------------
     2015-11-12 17:48:55.217      |17         |48         |55.217
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -63,4 +60,3 @@ is `NULL`, the result is the `NULL`value.
 
 </div>
 </section>
-

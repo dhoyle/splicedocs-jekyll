@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_VERSION_INFO   {#BuiltInSysProcs.GetVersionInfo}
+# SYSCS_UTIL.SYSCS_GET_VERSION_INFO
 
 The `SYSCS_UTIL.SYSCS_GET_VERSION_INFO` system procedure displays the
 version of Splice Machine installed on each node in your cluster.

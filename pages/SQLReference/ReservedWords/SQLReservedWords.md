@@ -10,7 +10,7 @@ folder: SQLReference/ReservedWords
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Reserved Words   {#SQLReference.SQLReservedWords}
+# Reserved Words
 
 This section lists all of the Splice Machine reserved words, including
 those in the SQL standard. Splice Machine will return an error if you

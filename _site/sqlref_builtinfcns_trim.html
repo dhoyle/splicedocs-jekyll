@@ -2808,7 +2808,7 @@
 
   <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="trim---builtinfcnstrim">TRIM   {#BuiltInFcns.Trim}</h1>
+    <h1 id="trim">TRIM</h1>
 
     <p>The <code>TRIM</code> function that takes a character expression and returns that
 expression with leading and/or trailing pad characters removed. Optional
@@ -2858,20 +2858,16 @@ defaults to the space character (<code>' '</code>).</p>
     </div>
     <h2 id="results">Results</h2>
 
-    <p>If either <em>trimCharacter</em> or <em>trimSource</em> evaluates to <code>NULL</code>, the
-result of the <code>TRIM</code> function is <code>NULL</code>. Otherwise, the result of the
-<code>TRIM</code> function is defined as follows:</p>
+    <p>If either <em>trimCharacter</em> or <em>trimSource</em> evaluates to <code>NULL</code>, the result of the <code>TRIM</code>
+ function is <code>NULL</code>. Otherwise, the result is defined as follows:</p>
 
     <ul>
-      <li>If <em>trimType</em> is <code>LEADING</code>, the result will be the <em>trimSource</em> value
-with all leading occurrences of <em>trimCharacter</em> removed.</li>
-      <li>If <em>trimType</em> is <code>TRAILING</code>, the result will be the <em>trimSource</em> value
-with all trailing occurrences of <em>trimCharacter</em>removed.</li>
-      <li>If <em>trimType</em> is <code>BOTH</code>, the result will be the <em>trimSource</em> value
-with all leading AND trailing occurrences of <em>trimCharacter</em>removed.</li>
+      <li>If <em>trimType</em> is <code>LEADING</code>, the result will be the <em>trimSource</em> value with all leading occurrences of <em>trimCharacter</em> removed.</li>
+      <li>If <em>trimType</em> is <code>TRAILING</code>, the result will be the <em>trimSource</em> value with all trailing occurrences of <em>trimCharacter</em> removed.</li>
+      <li>If <em>trimType</em> is <code>BOTH</code>, the result will be the <em>trimSource</em> value with all leading AND trailing occurrences of <em>trimCharacter</em> removed.</li>
     </ul>
 
-    <p>If <em>trimSource</em>’s data type is <a href="sqlref_datatypes_clob.html"><code>CLOB</code></a>.</p>
+    <p>If trimSource’s data type is <code>CHAR</code> or <code>VARCHAR</code>, the return type of the <code>TRIM</code> function will be <code>VARCHAR</code>. Otherwise the return type of the <code>TRIM</code> function will be <code>CLOB</code>.</p>
 
     <h2 id="examples">Examples</h2>
 
@@ -2929,7 +2925,6 @@ splice&gt; VALUES TRIM('Do' FROM 'VooDoo');
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -2944,7 +2939,7 @@ splice&gt; VALUES TRIM('Do' FROM 'VooDoo');
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 27, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

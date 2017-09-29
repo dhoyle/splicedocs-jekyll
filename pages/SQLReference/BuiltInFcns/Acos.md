@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# ACOS   {#BuiltInFcns.Acos}
+# ACOS
 
 The `ACOS` function returns the arc cosine of a specified number.
 
@@ -25,14 +25,14 @@ The `ACOS` function returns the arc cosine of a specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the cosine, in radians, of the angle that you want.
 {: .paramDefnFirst}
 
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number. The returned
 value, in radians, is in the range of zero (`0`) to `pi`.
 
@@ -49,7 +49,7 @@ value, in radians, is in the range of zero (`0`) to `pi`.
     1
     ----------
     1.0471975511965979
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -72,4 +72,3 @@ value, in radians, is in the range of zero (`0`) to `pi`.
 
 </div>
 </section>
-

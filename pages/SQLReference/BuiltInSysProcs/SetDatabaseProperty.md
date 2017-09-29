@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY   {#BuiltInSysProcs.SetDatabaseProperty}
+# SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY
 
 Use the `SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY` system procedure to set
 or delete the value of a property of the database on the current
@@ -22,7 +22,7 @@ connection.
     SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
               IN key VARCHAR(128),
               IN value VARCHAR(32672)
-    )
+            )
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -81,8 +81,6 @@ Set the `splicemachine.locks.deadlockTimeout` property to a value of 10:
 ## See Also
 
 * [`SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY`](sqlref_sysprocs_getdbprop.html)
-  built-in system function
 
 </div>
 </section>
-

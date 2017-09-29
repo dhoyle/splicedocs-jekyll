@@ -14,7 +14,7 @@ folder: SQLReference/Clauses
 
 The `OVER` clause is used in window functions to define the window on
 which the function operates. Window functions are permitted only in the
-[`ORDER BY`](sqlref_clauses_orderby.html) clause of queries.
+&nbsp;&nbsp;[`ORDER BY`](sqlref_clauses_orderby.html) clause of queries.
 
 For general information about and examples of Window functions in Splice
 Machine, see the [Using Window

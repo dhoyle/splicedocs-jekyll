@@ -616,21 +616,22 @@ the value of the <code>derby.database.classpath</code> property.</p>
           <p class="topLevel">Load your Jar file into the Splice Machine database</p>
 
           <div class="preWrapperWide">
-            <pre class="AppCommand"><code>splice&gt; CALL SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP', 0);
+            <pre class="AppCommand"><code>splice&gt; CALL SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar',
+                              'SPLICE.MY_EXAMPLE_APP', 0);
 </code></pre>
 
           </div>
 
           <p class="indentLevel1">Please refer to the
-<a href="sqlref_sysprocs_installjar.html"><code>SQLJ.INSTALL_JAR</code></a> topicfor more information about
+    <a href="sqlref_sysprocs_installjar.html"><code>SQLJ.INSTALL_JAR</code></a> topic for more information about
 using this system procedure. To summarize:</p>
 
-          <ul class="plainFont">
-            <li>The first argument is the path on your computer to your Jar file.</li>
-            <li>The second argument is the name for the stored procedure Jar file
-in your database, in <code>schema.name</code> format.</li>
-            <li>The third argument is currently unused but required; use <code>0</code> as
-its value.</li>
+          <ul>
+            <li><span class="PlainFont">The first argument is the path on your computer to your Jar file.</span></li>
+            <li><span class="PlainFont">The second argument is the name for the stored procedure Jar file
+in your database, in <code>schema.name</code> format.</span></li>
+            <li><span class="PlainFont">The third argument is currently unused but required; use <code>0</code> as
+its value.</span></li>
           </ul>
         </li>
         <li>
@@ -638,11 +639,12 @@ its value.</li>
 
           <p class="indentLevel1">You need to update your <code>CLASSPATH</code> so that Splice Machine can find
 your code. You can do this by using the
-<a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> system
+    <a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> system
 procedure to update the <code>derby.database.classpath</code> property:</p>
 
           <div class="preWrapperWide">
-            <pre class="AppCommand"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');
+            <pre class="AppCommand"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath',
+                                                           'SPLICE.MY_EXAMPLE_APP');
 </code></pre>
 
           </div>
@@ -650,11 +652,12 @@ procedure to update the <code>derby.database.classpath</code> property:</p>
           <p class="indentLevel1">Note that if you’ve developed more than one Jar file, you can update
 the <code>derby.database.classpath</code> property with multiple Jars by
 separating the Jar file names with colons when you call the
-<a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> system
+    <a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> system
 procedure . For example:</p>
 
           <div class="preWrapperWide">
-            <pre class="AppCommand"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP:SPLICE.YOUR_EXAMPLE');
+            <pre class="AppCommand"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath',
+                                                           'SPLICE.MY_EXAMPLE_APP:SPLICE.YOUR_EXAMPLE');
 </code></pre>
 
           </div>
@@ -673,19 +676,20 @@ interface to replace a Jar file:</p>
           <p class="topLevel">Replace the stored Jar file</p>
 
           <div class="preWrapperWide">
-            <pre class="AppCommand"><code>splice&gt; CALL SQLJ.REPLACE_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP');
+            <pre class="AppCommand"><code>splice&gt; CALL SQLJ.REPLACE_JAR('/Users/me/dev/workspace/examples/bin/example.jar',
+                             'SPLICE.MY_EXAMPLE_APP');
 </code></pre>
 
           </div>
 
           <p class="indentLevel1">Please refer to the
-<a href="sqlref_sysprocs_replacejar.html"><code>SQLJ.REPLACE_JAR</code></a> topic for more information about
+    <a href="sqlref_sysprocs_replacejar.html"><code>SQLJ.REPLACE_JAR</code></a> topic for more information about
 using this system procedure. To summarize:</p>
 
-          <ul class="plainFont">
-            <li>The first argument is the path on your computer to your Jar file.</li>
-            <li>The second argument is the name for the stored procedure Jar file
-in your database, in <code>schema.name</code> format.</li>
+          <ul>
+            <li><span class="PlainFont">The first argument is the path on your computer to your Jar file.</span></li>
+            <li><span class="PlainFont">The second argument is the name for the stored procedure Jar file
+in your database, in <code>schema.name</code> format.</span></li>
           </ul>
         </li>
       </ol>
@@ -708,14 +712,14 @@ interface to delete a Jar file:</p>
           </div>
 
           <p class="indentLevel1">Please refer to the
-<a href="sqlref_sysprocs_removejar.html"><code>SQLJ.REMOVE_JAR</code></a> topic for more information about
+    <a href="sqlref_sysprocs_removejar.html"><code>SQLJ.REMOVE_JAR</code></a> topic for more information about
 using this system procedure. To summarize:</p>
 
-          <ul class="plainFont">
-            <li>The first argument is the name for the stored procedure Jar file
-in your database, in <code>schema.name</code> format.</li>
-            <li>The second argument is currently unused but required; use <code>0</code> as
-its value.</li>
+          <ul>
+            <li><span class="PlainFont">The first argument is the name for the stored procedure Jar file
+in your database, in <code>schema.name</code> format.</span></li>
+            <li><span class="PlainFont">The second argument is currently unused but required; use <code>0</code> as
+its value.</span></li>
           </ul>
         </li>
       </ol>
@@ -744,7 +748,7 @@ rolling back a transaction will not have any impact on these operations.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

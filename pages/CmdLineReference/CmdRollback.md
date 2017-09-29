@@ -21,7 +21,7 @@ You should only use this command when auto-commit mode is disabled.
 
 ## Usage Notes
 
-In contrast to the [`Rollback to
+In contrast to the &nbsp;[`Rollback to
 Savepoint`](cmdlineref_rollbacktosavepoint.html) command, the `Rollback`
 command aborts the current transaction and starts a new one.
 {: .body}

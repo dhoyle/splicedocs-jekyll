@@ -661,7 +661,7 @@ a prefix for this run.</p>
 
           <p class="noteNote">The source code for this utility program is in a different GitHub
 project than the rest of this code. You’ll find it in the
-<a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-kafka-producer" target="_blank"><code>tutorial-kafka-producer</code></a> Github project.</p>
+    <a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-kafka-producer" target="_blank"><code>tutorial-kafka-producer</code></a> Github project.</p>
         </li>
       </ol>
 
@@ -672,42 +672,42 @@ project than the rest of this code. You’ll find it in the
 code; here’s a summary of the classes:</p>
 
     <table>
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Java Class</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="CodeFont"><a href="#MQTTPubl">MQTTPublisher</a>
-                        </td>
-                        <td>Puts csv messages on an MQTT queue.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="#SparkStr">SparkStreamingMQTT</a>
-                        </td>
-                        <td>The Spark streaming job that reads messages from the MQTT queue.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="#SaveRDD">SaveRDD</a>
-                        </td>
-                        <td>Inserts the data into Splice Machine using the <code>RFIDMessageVTI</code> class.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="#RFIDMess2">RFIDMessageVTI</a>
-                        </td>
-                        <td>A virtual table interface for parsing an <code>RFIDMessage</code>.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="#RFIDMess">RFIDMessage</a>
-                        </td>
-                        <td>Java object (a POJO) for converting from a csv string to an object to a database entry.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Java Class</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="#MQTTPubl">MQTTPublisher</a>
+            </td>
+            <td>Puts csv messages on an MQTT queue.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#SparkStr">SparkStreamingMQTT</a>
+            </td>
+            <td>The Spark streaming job that reads messages from the MQTT queue.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#SaveRDD">SaveRDD</a>
+            </td>
+            <td>Inserts the data into Splice Machine using the <code>RFIDMessageVTI</code> class.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#RFIDMess2">RFIDMessageVTI</a>
+            </td>
+            <td>A virtual table interface for parsing an <code>RFIDMessage</code>.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#RFIDMess">RFIDMessage</a>
+            </td>
+            <td>Java object (a POJO) for converting from a csv string to an object to a database entry.</td>
+        </tr>
+    </tbody>
+</table>
     <h4 id="MQTTPubl">MQTTPublisher</h4>
 
     <p>This class puts CSV messages on an MQTT queue. The function of most
@@ -717,22 +717,22 @@ program:</p>
     <div class="preWrapperWide">
       <pre class="Example"><code>public void doDemo() {
    try {
-		long startTime = System.currentTimeMillis();
-		client = new MqttClient(broker, clientId);
-		client.connect();
-		MqttMessage message = new MqttMessage();
-		for (int i=0; inumMessages; i++) {
-			// Build a csv string
-			message.setPayload( prefix + "Asset" + i ", Location" + i + "," + new Timestamp((new Date()).getTime())).getBytes());
-			client.publish(topicName, message);
-			if (i % 1000 == 0) {
-				System.out.println("records:" + i + " duration=" + (System.currentTimeMillis() - startTime));
-				startTime = System.currentTimeMillis();
-			}
-		client.disconnect();
-	} catch (MqttException e) {
-		e.printStackTrace();
-	}
+        long startTime = System.currentTimeMillis();
+        client = new MqttClient(broker, clientId);
+        client.connect();
+        MqttMessage message = new MqttMessage();
+        for (int i=0; inumMessages; i++) {
+            // Build a csv string
+            message.setPayload( prefix + "Asset" + i ", Location" + i + "," + new Timestamp((new Date()).getTime())).getBytes());
+            client.publish(topicName, message);
+            if (i % 1000 == 0) {
+                System.out.println("records:" + i + " duration=" + (System.currentTimeMillis() - startTime));
+                startTime = System.currentTimeMillis();
+            }
+        client.disconnect();
+    } catch (MqttException e) {
+        e.printStackTrace();
+    }
 }
 </code></pre>
 
@@ -756,28 +756,28 @@ main method in this class is <code>processMQTT</code>:</p>
     <div class="preWrapperWide">
       <pre class="Example"><code>public void processMQTT(final String broker, final String topic, final int numSeconds) {
 
-        LOG.info("************ SparkStreamingMQTTOutside.processMQTT start");
+    LOG.info("************ SparkStreamingMQTTOutside.processMQTT start");
 
-        // Create the spark application and set the name to MQTT
-        SparkConf sparkConf = new SparkConf().setAppName("MQTT");
+    // Create the spark application and set the name to MQTT
+    SparkConf sparkConf = new SparkConf().setAppName("MQTT");
 
-        // Create the spark streaming context with a 'numSeconds' second batch size
-        jssc = new JavaStreamingContext(sparkConf, Durations.seconds(numSeconds));
-        jssc.checkpoint(checkpointDirectory);
+    // Create the spark streaming context with a 'numSeconds' second batch size
+    jssc = new JavaStreamingContext(sparkConf, Durations.seconds(numSeconds));
+    jssc.checkpoint(checkpointDirectory);
 
-        LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to read the MQTTUtils.createStream");
-        //2. MQTTUtils to collect MQTT messages
-        JavaReceiverInputDStreamString&gt; messages = MQTTUtils.createStream(jssc, broker, topic);
+    LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to read the MQTTUtils.createStream");
+    //2. MQTTUtils to collect MQTT messages
+    JavaReceiverInputDStreamString&gt; messages = MQTTUtils.createStream(jssc, broker, topic);
 
-        LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to do foreachRDD");
-        //process the messages on the queue and save them to the database
-        messages.foreachRDD(new SaveRDD());
+    LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to do foreachRDD");
+    //process the messages on the queue and save them to the database
+    messages.foreachRDD(new SaveRDD());
 
-        LOG.info("************ SparkStreamingMQTTOutside.processMQTT prior to context.strt");
-        // Start the context
-        jssc.start();
-        jssc.awaitTermination();
-    }
+    LOG.info("************ SparkStreamingMQTTOutside.processMQTT prior to context.strt");
+    // Start the context
+    jssc.start();
+    jssc.awaitTermination();
+}
 </code></pre>
 
     </div>
@@ -880,35 +880,35 @@ through each CSV record from the input stream and converts it into an
 <code>RFIDMessage</code> object that is added onto a list of message items:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>    @Override
-    public DataSetLocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
-        operationContext = dsp.createOperationContext(op);
+      <pre class="Example"><code>@Override
+public DataSetLocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
+    operationContext = dsp.createOperationContext(op);
 
-        //Create an arraylist to store the key / value pairs
-        ArrayListLocatedRow&gt; items = new ArrayListLocatedRow&gt;();
+    //Create an arraylist to store the key / value pairs
+    ArrayListLocatedRow&gt; items = new ArrayListLocatedRow&gt;();
 
-        try {
+    try {
 
-            int numRcds = this.records == null ? 0 : this.records.size();
+        int numRcds = this.records == null ? 0 : this.records.size();
 
-            if (numRcds &gt; 0) {
+        if (numRcds &gt; 0) {
 
-                LOG.info("Records to process:" + numRcds);
-                //Loop through each record convert to a SensorObject
-                //and then set the values
-                for (String csvString : records) {
-                    CsvBeanReader beanReader = new CsvBeanReader(new StringReader(csvString), CsvPreference.STANDARD_PREFERENCE);
-                    RFIDMessage msg = beanReader.read(RFIDMessage.class, header, processors);
-                    items.add(new LocatedRow(msg.getRow()));
-                }
+            LOG.info("Records to process:" + numRcds);
+            //Loop through each record convert to a SensorObject
+            //and then set the values
+            for (String csvString : records) {
+                CsvBeanReader beanReader = new CsvBeanReader(new StringReader(csvString), CsvPreference.STANDARD_PREFERENCE);
+                RFIDMessage msg = beanReader.read(RFIDMessage.class, header, processors);
+                items.add(new LocatedRow(msg.getRow()));
             }
-        } catch (Exception e) {
-            LOG.error("Exception processing RFIDMessageVTI", e);
-        } finally {
-            operationContext.popScope();
         }
-        return new ControlDataSet&gt;(items);
+    } catch (Exception e) {
+        LOG.error("Exception processing RFIDMessageVTI", e);
+    } finally {
+        operationContext.popScope();
     }
+    return new ControlDataSet&gt;(items);
+}
 </code></pre>
 
     </div>
@@ -925,35 +925,35 @@ setters for each of the object properties, plus the <code>getTableDefinition</co
 and <code>getRow</code> methods:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>    /**
-     * Used by the VTI to build a Splice Machine compatible resultset
-     *
-     * @return
-     * @throws SQLException
-     * @throws StandardException
-     */
-    public ValueRow getRow() throws SQLException, StandardException {
-        ValueRow valueRow = new ValueRow(5);
-        valueRow.setColumn(1, new SQLVarchar(this.getAssetNumber()));
-        valueRow.setColumn(2, new SQLVarchar(this.getAssetDescription()));
-        valueRow.setColumn(3, new SQLTimestamp(this.getRecordedTime()));
-        valueRow.setColumn(4, new SQLVarchar(this.getAssetType()));
-        valueRow.setColumn(5, new SQLVarchar(this.getAssetLocation()));
-        return valueRow;
-    }
+      <pre class="Example"><code>/**
+ * Used by the VTI to build a Splice Machine compatible resultset
+ *
+ * @return
+ * @throws SQLException
+ * @throws StandardException
+ */
+public ValueRow getRow() throws SQLException, StandardException {
+    ValueRow valueRow = new ValueRow(5);
+    valueRow.setColumn(1, new SQLVarchar(this.getAssetNumber()));
+    valueRow.setColumn(2, new SQLVarchar(this.getAssetDescription()));
+    valueRow.setColumn(3, new SQLTimestamp(this.getRecordedTime()));
+    valueRow.setColumn(4, new SQLVarchar(this.getAssetType()));
+    valueRow.setColumn(5, new SQLVarchar(this.getAssetLocation()));
+    return valueRow;
+}
 
-    /**
-     * Table definition to use when using a VTI that is an instance of a class
-     *
-     * @return
-     */
-    public static String getTableDefinition() {
-        return "ASSET_NUMBER varchar(50), "
-        + "ASSET_DESCRIPTION varchar(100), "
-        + "RECORDED_TIME TIMESTAMP, "
-        + "ASSET_TYPE VARCHAR(50), "
-        + "ASSET_LOCATION VARCHAR(50) ";
-    }
+/**
+ * Table definition to use when using a VTI that is an instance of a class
+ *
+ * @return
+ */
+public static String getTableDefinition() {
+    return "ASSET_NUMBER varchar(50), "
+    + "ASSET_DESCRIPTION varchar(100), "
+    + "RECORDED_TIME TIMESTAMP, "
+    + "ASSET_TYPE VARCHAR(50), "
+    + "ASSET_LOCATION VARCHAR(50) ";
+}
 </code></pre>
 
     </div>
@@ -970,25 +970,25 @@ returns the row as a <code>resultset</code> that is compatible with Splice Mach
     <p>These are also two scripts that we use with this tutorial:</p>
 
     <table>
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Class</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>/ddl/create-tables.sql</code></td>
-                        <td>A simple SQL script that you can use to have Splice Machine create the table into which RFID messages are stored.</td>
-                    </tr>
-                    <tr>
-                        <td><code>/scripts/run-mqtt-spark-streaming.sh</code></td>
-                        <td>Starts the Spark streaming job.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Class</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>/ddl/create-tables.sql</code></td>
+            <td>A simple SQL script that you can use to have Splice Machine create the table into which RFID messages are stored.</td>
+        </tr>
+        <tr>
+            <td><code>/scripts/run-mqtt-spark-streaming.sh</code></td>
+            <td>Starts the Spark streaming job.</td>
+        </tr>
+    </tbody>
+</table>
   </div>
 </section>
 
@@ -1008,7 +1008,7 @@ returns the row as a <code>resultset</code> that is compatible with Splice Mach
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

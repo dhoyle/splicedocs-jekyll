@@ -10,7 +10,7 @@ folder: SQLReference/ArgMatching
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Argument Matching in Splice Machine   {#SQLArgumentMatching}
+# Argument Matching in Splice Machine
 
 When you declare a function or procedure using `CREATE
 FUNCTION/PROCEDURE`, Splice Machine does not verify whether a matching
@@ -141,12 +141,12 @@ The following function:
 would match all of the following methods:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     public static double toDegrees( double arg ) {...}
     public static Double toDegrees( double arg ) {...}
     public static double toDegrees( Double arg ) {...}
     public static Double toDegrees( Double arg ) {...}
-    		
+
 {: .Example}
 
 </div>
@@ -293,4 +293,3 @@ types to Java data types.
 
 </div>
 </section>
-

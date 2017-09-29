@@ -10,7 +10,7 @@ folder: SQLReference/Clauses
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# RESULT OFFSET and FETCH FIRST   {#Clauses.ResultOffset}
+# RESULT OFFSET and FETCH FIRST
 
 The *result offset clause* provides a way to skip the N first rows in a
 result set before starting to return any rows.

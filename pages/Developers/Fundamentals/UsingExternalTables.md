@@ -33,7 +33,7 @@ tables pretty much the same way as you do the tables in your database.
 
 External tables reference files that are stored in a flat file format
 such as Apache Parquet or Apache Orc, both of which are columnar storage
-formats that are available in Hadoop. You can use the [`CREATE EXTERNAL
+formats that are available in Hadoop. You can use the &nbsp;[`CREATE EXTERNAL
 TABLE`](sqlref_statements_createexternaltable.html) statement to create
 an external table that is connected to a specific flat file.
 
@@ -46,7 +46,7 @@ Splice Machine.
 ### Importing Data Into an External Table
 
 You cannot import data directly into an external table; if you already
-have an external table in a compatible format, you can use [`CREATE
+have an external table in a compatible format, you can use &nbsp;[`CREATE
 EXTERNAL TABLE`](sqlref_statements_createexternaltable.html) statement
 to point at the external file and query against it.
 
@@ -55,11 +55,11 @@ follow these steps:
 
 1.  Create (or use) a table in your Splice Machine database (your
     internal table).
-2.  Use [`CREATE EXTERNAL
+2.  Use &nbsp;[`CREATE EXTERNAL
     TABLE`](sqlref_statements_createexternaltable.html) to create your
     empty external table, specifying the location where you want that
     data stored externally.
-3.  Use [`INSERT INTO`](sqlref_statements_insert.html) (your external
+3.  Use &nbsp;[`INSERT INTO`](sqlref_statements_insert.html) (your external
     table) `SELECT` (from your internal table) to populate the external
     file with your data.
 4.  You can now query the external table.
@@ -70,7 +70,11 @@ The following statement creates an external table for querying a
 `PARQUET` file that is stored on your computer:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CREATE EXTERNAL TABLE myExtTbl (      col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   STORED AS PARQUET   LOCATION '/users/myname/myParquetFile';0 rows inserted/updated/deleted
+    splice> CREATE EXTERNAL TABLE myExtTbl (
+      col1 INT, col2 VARCHAR(24))
+        PARTITIONED BY (col1)
+        STORED AS PARQUET
+        LOCATION '/users/myname/myParquetFile';0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
@@ -91,8 +95,18 @@ The following statement creates an external table for creates an
 external table for an `ORC` file and inserts data into it:
 
 <div class="preWrapperWide" markdown="1">
-    
-    splice> CREATE EXTERNAL TABLE myExtTbl2(   col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   STORED AS ORC   LOCATION '/users/myname/myOrcFile';0 rows inserted/updated/deletedsplice> INSERT INTO myExtTbl2 VALUES (1, 'One'), (2, 'Two'), (3, 'Three');3 rows inserted/updated/deletedsplice> SELECT * FROM myExtTbl2;COL1        |COL2------------------------------------
+
+    splice> CREATE EXTERNAL TABLE myExtTbl2
+      (col1 INT, col2 VARCHAR(24))
+       PARTITIONED BY (col1)
+       STORED AS ORC
+       LOCATION '/users/myname/myOrcFile';
+    0 rows inserted/updated/deleted
+    splice> INSERT INTO myExtTbl2 VALUES (1, 'One'), (2, 'Two'), (3, 'Three');
+    3 rows inserted/updated/deletedsplice
+    > SELECT * FROM myExtTbl2;
+    COL1        |COL2
+    ------------------------------------
     3           |Three
     2           |Two
     1           |One
@@ -115,8 +129,14 @@ You can specify a table constraint on an external table; for example:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
-    splice> CREATE EXTERNAL TABLE myTextTable(   col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'   LINES TERMINATED BY '\\n'   STORED AS TEXTFILE   LOCATION '/users/myName/myTextFile';0 rows inserted/updated/deleted
+
+    splice> CREATE EXTERNAL TABLE myTextTable(
+         col1 INT, col2 VARCHAR(24))
+       PARTITIONED BY (col1)
+       ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'
+       LINES TERMINATED BY '\\n'
+       STORED AS TEXTFILE
+       LOCATION '/users/myName/myTextFile';0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
@@ -135,7 +155,13 @@ This example is exactly the same as our first example, except that the
 source file has been compressed with Snappy compression:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CREATE EXTERNAL TABLE myExtTbl (      col1 INT, col2 VARCHAR(24))   COMPRESSED WITH SNAPPY   PARTITIONED BY (col1)   STORED AS PARQUET   LOCATION '/users/myname/myParquetFile';0 rows inserted/updated/deleted
+    splice> CREATE EXTERNAL TABLE myExtTbl (
+          col1 INT, col2 VARCHAR(24))
+        COMPRESSED WITH SNAPPY
+        PARTITIONED BY (col1)
+        STORED AS PARQUET
+        LOCATION '/users/myname/myParquetFile';
+     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
@@ -168,4 +194,3 @@ built-in system procedure.
 
 </div>
 </section>
-

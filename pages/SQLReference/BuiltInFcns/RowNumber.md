@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# ROW_NUMBER   {#BuiltInFcns.RowNumber}
+# ROW_NUMBER
 
 `ROW_NUMBER()` is a *ranking function* that numbers the rows within the
 ordered partition of values defined by its `OVER` clause. Ranking
@@ -28,7 +28,7 @@ functions](sqlref_builtinfcns_windowfcnsintro.html).
 overClause
 {: .paramName}
 
-See the [`OVER`](sqlref_clauses_over.html) clause documentation.
+See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 {: .paramDefnFirst}
 
 Ranking functions such as `ROW_NUMBER` must include an
@@ -39,7 +39,7 @@ This is because the ranking is calculated based on the ordering.
 </div>
 ## Results
 
-The resulting data type is [`BIGINT`](sqlref_builtinfcns_bigint.html).
+The resulting data type is &nbsp;[`BIGINT`](sqlref_builtinfcns_bigint.html).
 
 ## Example
 

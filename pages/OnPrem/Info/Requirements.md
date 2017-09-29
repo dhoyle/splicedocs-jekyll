@@ -10,7 +10,7 @@ folder: OnPrem/Info
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Splice Machine Requirements   {#Splice}
+# Splice Machine Requirements
 
 {% include splice_snippets/onpremonlytopic.md %}
 This topic summarizes the hardware and software requirements for Splice
@@ -224,7 +224,7 @@ for your platform:
 Splice Machine supports the following versions of the Java JDK:
 
 * Oracle JDK 1.8, update 60 or higher
-  
+
   We recommend that you do not use JDK 1.8.0_40
   {: .noteNote}
 
@@ -281,4 +281,3 @@ computers that meet these basic requirements:
 </div>
 </div>
 </section>
-

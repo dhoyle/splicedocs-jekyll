@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# ASIN   {#BuiltInFcns.Asin}
+# ASIN
 
 The `ASIN` function returns the arc sine of a specified number.
 
@@ -25,14 +25,14 @@ The `ASIN` function returns the arc sine of a specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the sine, in radians, of the angle that you want.
 {: .paramDefnFirst}
 
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number. The returned
 value, in radians, is in the range `pi/2` to `pi/2`.
 
@@ -51,7 +51,7 @@ value, in radians, is in the range `pi/2` to `pi/2`.
     1
     ----------
     0.5235987755982989
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -74,4 +74,3 @@ value, in radians, is in the range `pi/2` to `pi/2`.
 
 </div>
 </section>
-

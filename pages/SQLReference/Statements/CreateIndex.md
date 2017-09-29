@@ -10,21 +10,10 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CREATE INDEX   {#Statements.CreateIndex}
+# CREATE INDEX
 
 A `CREATE INDEX` statement creates an index on a table. Indexes can be
 on one or more columns in the table.
-
- 
-
-If an index to be created has the same index columns with an existing
-index, then the index will not be created. For example, if an index idx
-has been created on table t(col1, col2), and a user run the following
-SQL
-
-create index idx2 on t(col1, col2)
-
-idx2 will not be created.
 
 ## Syntax
 
@@ -131,7 +120,7 @@ when the index is created.
 <div class="preWrapper" markdown="1">
     splice> CREATE TABLE myTable (ID INT NOT NULL, NAME VARCHAR(32) NOT NULL );
     0 rows inserted/updated/deleted
-    
+
     splice> CREATE INDEX myIdx ON myTable(ID);
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
@@ -147,4 +136,3 @@ when the index is created.
 
 </div>
 </section>
-

@@ -33,8 +33,8 @@ Then `SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS` will collect statistics for
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS(
-                         VARCHAR(128) schema,                     BOOLEAN staleOnly)
+    SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( VARCHAR(128) schema,
+                                          BOOLEAN staleOnly)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -123,7 +123,7 @@ Collecting statistics on a schema can take some time.
 ## SQL Examples
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CALL SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( 'SPLICE', false );
     schemaName |tableName  |partition                               |rowsCollec&|partitionSize
     ------------------------------------------------------------------------------------------
@@ -132,7 +132,7 @@ Collecting statistics on a schema can take some time.
     SPLICE     |BATTING    |splice:1472,,1467393754889.b34f5da64c36e|44         |22571        
     SPLICE     |PITCHING   |splice:1488,,1467393760434.35ee9880e5090|32         |21212
     SPLICE     |FIELDING   |splice:1504,,1467393775949.674b34acdb182|44         |9876
-    
+
     5 rows selected
 {: .Example xml:space="preserve"}
 
@@ -149,4 +149,3 @@ Collecting statistics on a schema can take some time.
 
 </div>
 </section>
-

@@ -21,11 +21,12 @@ configure SSL/TLS authentication for two different encryption modes:
 
 * *Basic SSL/TLS Encryption* encrypts the data sent back and forth
   between a client and the server.
+
 * *SSL/TLS Encryption with Peer Authentication* encrypts the data sent
   between client and server, and adds a layer of authentication known as
   peer authentication, which uses trusted certificates to authenticate
   the sender and/or receiver.
-  
+
   The term *peer* is used in this context to refer to the other side of
   a server-client communication: the client is the server's peer, and
   the server is the client's peer.You can set up peer authentication on
@@ -85,7 +86,7 @@ example of interacting with the keytool:
        [Unknown]: US
     IS CN=John Doe, OU=TechPubs, O=MyCompany, L=San Francisco, ST=CA, C=US correct?
        [no]: yes
-    
+
     Enter key password for <MyServerName>
     	    (RETURN if same as keystore password): myPassword
 {: .ShellCommand}
@@ -149,7 +150,7 @@ You need to copy (`scp`) the server certificate to the client, and then
 use a *keytool* command like this to import the certificate:
 
 <div class="preWrap" markdown="1">
-    
+
     % keytool -import -alias favoriteServerCertificate \
      -file ServerCertificate -keystore ~/vault/ClientTrustStore \
      -storepass secretClientTrustStorePassword
@@ -163,9 +164,9 @@ use a *keytool* command like this to import the certificate:
     	 SHA256: 8D:55:1A:10:37:39:21:14:8E:21:3A:10:78:A1:C7:25:5F:9C:A7:8D:4E:3F:87:40:A0:ED:70:BE:EC:0F:7A:D9
     	 Signature algorithm name: SHA1withDSA
     	 Version: 3
-    
+
     Extensions:
-    
+
     #1: ObjectId: 2.5.29.14 Criticality=false
     SubjectKeyIdentifier [
     KeyIdentifier [
@@ -182,7 +183,7 @@ Next, copy (`scp`) the client certificate to the region server and use
 *keytool* to import the certificate:
 
 <div class="preWrap" markdown="1">
-    
+
     % keytool -import -alias Client_1_Certificate \
      -file ClientCertificate -keystore ~/vault/ServerTrustStore \
      -storepass secretServerTrustStorePassword
@@ -196,9 +197,9 @@ Next, copy (`scp`) the client certificate to the region server and use
     	 SHA256: 88:8E:6E:97:ED:78:B1:AE:5E:65:09:30:C2:E8:AF:B3:DD:40:5A:7B:19:97:ED:04:E0:A3:82:66:E9:A4:3E:2A
     	 Signature algorithm name: SHA1withDSA
     	 Version: 3
-    
+
     Extensions:
-    
+
     #1: ObjectId: 2.5.29.14 Criticality=false
     SubjectKeyIdentifier [
     KeyIdentifier [
@@ -206,7 +207,7 @@ Next, copy (`scp`) the client certificate to the region server and use
     0010: E6 B9 24 08                                        ..$.
     ]
     ]
-    
+
     Trust this certificate? [no]:  yes
     Certificate was added to keystore
     %
@@ -239,16 +240,16 @@ server Java options, which you'll find in the Admin console:
 </div>
 * If you're using basic SSL/TLS (without peer authentication), add this
   property:
-  
+
   <div class="preWrap" markdown="1">
       -Dderby.drda.sslMode=basic
   {: .Plain}
-  
+
   </div>
 
 * If you're using full SSL/TLS (with peer authentication), add these
   properties:
-  
+
   <div class="preWrap" markdown="1">
       -Dderby.drda.sslMode=peerAuthentication
       -Djavax.net.ssl.keyStore=/tmp/vault/ServerKeyStore
@@ -256,7 +257,7 @@ server Java options, which you'll find in the Admin console:
       -Djavax.net.ssl.trustStore=/tmp/vault/ServerTrustStore
       -Djavax.net.ssl.trustStorePassword=secretServerTrustStorePassword
   {: .Plain}
-  
+
   </div>
 
 ## Rebooting Your Cluster   {#reboots}
@@ -311,34 +312,34 @@ command. You use different `connect` commands for each of the three
 security modes:
 
 <table>
-				<col />
-				<col />
-				<thead>
-					<tr><th>Security Mode</th>
-						<th>Connect Command</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>None</td>
-						<td>
-							<div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin';</pre></div>
-						</td>
-					</tr>
-					<tr>
-						<td>Basic SSL</td>
-						<td>
-							<div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin;ssl=basic';</pre></div>
-						</td>
-					</tr>
-					<tr>
-						<td>SSL w/Peer Authentication</td>
-						<td>
-							<div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication';</pre></div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+    <col />
+    <col />
+    <thead>
+        <tr><th>Security Mode</th>
+        <th>Connect Command</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>None</td>
+            <td>
+            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin';</pre></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Basic SSL</td>
+            <td>
+            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin;ssl=basic';</pre></div>
+            </td>
+        </tr>
+        <tr>
+            <td>SSL w/Peer Authentication</td>
+            <td>
+            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication';</pre></div>
+            </td>
+        </tr>
+    </tbody>
+</table>
 ### Running a JDBC Client App Securely   {#jdbcapp}
 
 To use a secured connection with a JDBC client app, you need to specify
@@ -354,6 +355,7 @@ Splice Machine database:
 {: .Example}
 
 </div>
+
 We can create a Java program that includes that declaration and then
 compile it into `SampleJDBC.java` with a command like this:
 
@@ -362,13 +364,16 @@ compile it into `SampleJDBC.java` with a command like this:
 {: .Example}
 
 </div>
+
 We can then use a command like this to execute and JDBC app with the
 correct SSL keystore and truststore properties:
 
 <div class="preWrap" markdown="1">
-    % java -classpath .:./db-client-2.6.0.1729-SNAPSHOT.jar -Djavax.net.ssl.keyStore=/home/splice/vault/ClientKeyStore
-    			-Djavax.net.ssl.keyStorePassword=myPassword
-    			-Djavax.net.ssl.trustStore=/home/splice/vault/ClientTrustStore -Djavax.netDjavax.net.ssl.trustStore.ssl.trustStorePassword=secretClientTrustStorePassword SampleJDBC
+    % java -classpath .:./db-client-2.6.0.1729-SNAPSHOT.jar
+    -Djavax.net.ssl.keyStore=/home/splice/vault/ClientKeyStore
+    -Djavax.net.ssl.keyStorePassword=myPassword
+    -Djavax.net.ssl.trustStore=/home/splice/vault/ClientTrustStore
+    -Djavax.netDjavax.net.ssl.trustStore.ssl.trustStorePassword=secretClientTrustStorePassword SampleJDBC
 {: .Example}
 
 </div>
@@ -378,10 +383,13 @@ Whenever you connect a new client node to a server, you need to perform
 a few steps to enable SSL/TLS on the new node:
 
 * [Generate a new client certificate.](#gencerts)
+
 * [Import the new client certificate into the server's
   keystore.](#imports)
+
 * [Import the server certificate into the new client's
   keystore.](#updates)
+
 * Restart the server.
 
 Finally, you need to set these env variables:
@@ -403,49 +411,52 @@ steps
 
 1.  Navigate to and edit the `bin/interpreter.sh` file in the `Zeppelin`
     installation directory.
+
 2.  Find the <span class="CodeBoldFont">JAVA_INTP_OPTS</span> property
     definition.
+
 3.  Append the following SSL properties onto that definition:
-    
+
     <div class="preWrap" markdown="1">
-        JAVA_INTP_OPTS+=" -Dzeppelin.log.file=${ZEPPELIN_LOGFILE} \
+        JAVA_INTP_OPTS+="
+        -Dzeppelin.log.file=${ZEPPELIN_LOGFILE} \
         -Djavax.net.ssl.keyStore=${CLIENT_SSL_KEYSTORE} \
         -Djavax.net.ssl.keyStorePassword=${CLIENT_SSL_KEYSTOREPASSWD} \
         -Djavax.net.ssl.trustStore=${CLIENT_SSL_TRUSTSTORE} \
         -Djavax.netDjavax.net.ssl.trustStore.ssl.trustStorePassword=${CLIENT_SSL_TRUSTSTOREPASSWD} "
     {: .Plain}
-    
+
     </div>
 
 4.  Make sure that you have exported the SSL keystore and truststore env
     variables:
-    
+
     <div class="preWrap" markdown="1">
         export CLIENT_SSL_KEYSTORE=/home/splice/vault/ClientKeyStore
         export CLIENT_SSL_KEYSTOREPASSWD=myPassword
         export CLIENT_SSL_TRUSTSTORE=/home/splice/vault/ClientTrustStore
         export CLIENT_SSL_TRUSTSTOREPASSWD=secretClientTrustStorePassword
     {: .ShellCommand}
-    
+
     </div>
 
 5.  Restart Zeppelin:
-    
+
     <div class="preWrap" markdown="1">
         % zeppelin-daemon.sh start
     {: .ShellCommand}
-    
+
     </div>
 
 6.  Create a new JDBC Interpreter
-    
+
     Navigate to the [Zeppelin interface URL:][2], then click <span
     class="ConsoleLink">Interpreter->+Create</span> to create a new
     interpreter. The image below shows sample settings for the new
     interpreter:
-    
+
     ![](images/NewZepInterpreter.png)
-    
+
     Be sure to provide the correct JDBC driver loaction in the artifact
     dependencies section.
     {: .noteIcon}

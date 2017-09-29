@@ -54,8 +54,7 @@ with Splice Machine
     {: .topLevel}
 
     Follow the instructions in the next section, [Configure a
-    SQuirreL Connection for Splice Machine](#ConfiguringSquirrel){:
-    .MCXref .xref .selected}, to create and test a new connection in
+    SQuirreL Connection for Splice Machine](#ConfiguringSquirrel), to create and test a new connection in
     SQuirreL.
     {: .indentLevel1}
 
@@ -111,6 +110,7 @@ alias in SQuirreL.
     2.  Click the <span class="AppFontCust">Extra Class Path</span>
         button, and click the <span class="AppCommand">Add</span>
         button.
+
     3.  Navigate to and select the Splice JDBC Driver jar file. which
         you'll find it in the `jdbc-driver` folder under the
         `splicemachine` directory on your computer.
@@ -123,7 +123,7 @@ alias in SQuirreL.
 
         <div class="preWrapperWide" markdown="1">
             com.splicemachine.db.jdbc.ClientDriver
-        {: .PlainCell}
+        {: .Plain}
 
         </div>
 
@@ -137,6 +137,7 @@ alias in SQuirreL.
     1.  Click the *Aliases* tab in the SQuirreL window, and then click
         the <span class="AppCommand">Create new Alias</span> (blue
         + sign) button.
+        
     2.  Enter a name for your alias and select the driver you just
         created from the drop-down list
 

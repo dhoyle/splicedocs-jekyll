@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LOCATE   {#BuiltInFcns.Locate}
+# LOCATE
 
 The `LOCATE` function is used to search for a string (the
 *needle*) within another string (the *haystack*). If the desired string

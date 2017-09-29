@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# DEGREES   {#BuiltInFcns.Degrees}
+# DEGREES
 
 The `DEGREES` function converts (approximately) a specified number from
 radians to degrees.
@@ -30,7 +30,7 @@ expect `DEGREES(ACOS(0.5))` to return exactly `60.0`.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the angle you want converted, in radians.
 {: .paramDefnFirst}
 
@@ -49,7 +49,7 @@ that specifies the angle you want converted, in radians.
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 ## See Also

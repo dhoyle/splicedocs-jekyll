@@ -10,7 +10,7 @@ folder: SQLReference/DataTypes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# REAL   {#DataTypes.Real}
+# REAL
 
 The `REAL` data type provides 4 bytes of storage for numbers using IEEE
 floating-point notation.
@@ -98,7 +98,7 @@ Here are several usage notes for the `REAL` data type:
 * See also [Storing values of one numeric data type in columns of
   another numeric data
   type](sqlref_datatypes_numerictypes.html#StoringValues).
-* Constants always map to [`DOUBLE
+* Constants always map to &nbsp;[`DOUBLE
   PRECISION`](sqlref_datatypes_doubleprecision.html); use a `CAST` to
   convert a constant to a `REAL`.
 

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LTRIM   {#BuiltInFcns.LTrim}
+# LTRIM
 
 `LTRIM` removes blanks from the beginning of a character string
 expression.
@@ -26,7 +26,7 @@ expression.
 CharacterExpression
 {: .paramName}
 
-A [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type, or any
+A &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type, or any
 built-in type that is implicitly converted to a string.
 {: .paramDefnFirst}
 

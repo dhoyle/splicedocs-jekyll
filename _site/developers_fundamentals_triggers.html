@@ -720,7 +720,11 @@ insert one record into the audit trail table (<code>employees_log</code>) for ea
 record that gets updated in the <code>employees</code> table.</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>CREATE TRIGGER log_salary_increaseAFTER UPDATE ON employees FOR EACH ROW   INSERT INTO employees_log     (emp_id, log_date, new_salary, action)   VALUES     (:new.empno, CURRENT_DATE, :new.salary, 'NEW SALARY');
+      <pre class="Example"><code>CREATE TRIGGER log_salary_increase
+AFTER UPDATE ON employees FOR EACH ROW
+INSERT INTO employees_log
+    (emp_id, log_date, new_salary, action)
+    VALUES (:new.empno, CURRENT_DATE, :new.salary, 'NEW SALARY');
 </code></pre>
 
     </div>
@@ -728,7 +732,9 @@ record that gets updated in the <code>employees</code> table.</p>
 employees in the PD department:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>UPDATE employees SET salary = salary + 1000.0 WHERE department = 'PD';
+      <pre class="Example"><code>UPDATE employees
+ SET salary = salary + 1000.0
+ WHERE department = 'PD';
 </code></pre>
 
     </div>
@@ -751,9 +757,8 @@ record that gets updated in the <code>employees</code> table.</p>
       <pre class="Example"><code>CREATE TRIGGER log_salary_increase
 AFTER UPDATE ON employees referencing NEW as NEW FOR EACH ROW
 INSERT INTO employees_log
-(emp_id, log_date, new_salary, action)
-VALUES
-(NEW.empno, CURRENT_DATE, NEW.salary, 'NEW SALARY');
+    (emp_id, log_date, new_salary, action)
+    VALUES (NEW.empno, CURRENT_DATE, NEW.salary, 'NEW SALARY');
 </code></pre>
 
     </div>
@@ -761,7 +766,8 @@ VALUES
 example:</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>UPDATE employees SET salary = salary + 1000.0 WHERE department = 'PD';
+      <pre class="Example"><code>UPDATE employees SET salary = salary + 1000.0
+WHERE department = 'PD';
 </code></pre>
 
     </div>
@@ -775,27 +781,24 @@ by the statement.</p>
 inserted into the <code>employees</code> table.</p>
 
     <div class="preWrapperWide">
-      <pre class="Example"><code>CREATE TRIGGER empUpdateTrigBEFORE UPDATE ON employees   FOR EACH STATEMENT SELECT ID FROM myTbl;
+      <pre class="Example"><code>CREATE TRIGGER empUpdateTrig
+BEFORE UPDATE ON employees
+   FOR EACH STATEMENT SELECT ID FROM myTbl;
 </code></pre>
 
     </div>
     <h2 id="see-also">See Also</h2>
 
     <ul>
-      <li><a href="sqlref_statements_createtrigger.html"><code>CREATE TRIGGER</code></a> statement in
-the <em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_statements_droptrigger.html"><code>DROP TRIGGER</code></a> statement in the
-<em>SQL Reference Manual</em></li>
+      <li><a href="sqlref_statements_createtrigger.html"><code>CREATE TRIGGER</code></a></li>
+      <li><a href="sqlref_statements_droptrigger.html"><code>DROP TRIGGER</code></a></li>
       <li><a href="developers_fundamentals_foreignkeys.html">Foreign keys</a></li>
-      <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement in the
-<em>SQL Reference Manual</em></li>
-      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause in the <em>SQL Reference
-Manual</em></li>
+      <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a></li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a></li>
     </ul>
 
   </div>
 </section>
-
 
 
     <div class="tags">
@@ -812,7 +815,7 @@ Manual</em></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# COT   {#BuiltInFcns.Cot}
+# COT
 
 The `COT` function returns the cotangent of a specified number.
 
@@ -25,7 +25,7 @@ The `COT` function returns the cotangent of a specified number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that specifies the angle, in radians, for which you want the cotangent
 computed.
 {: .paramDefnFirst}
@@ -33,7 +33,7 @@ computed.
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 * If the specified number is NULL, the result of this function is NULL.

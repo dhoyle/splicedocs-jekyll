@@ -10,7 +10,7 @@ folder: SQLReference/Queries
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Table Subquery   {#Queries.TableSubquery}
+# Table Subquery
 
 A *TableSubquery* is a subquery that returns multiple rows.
 
@@ -30,7 +30,7 @@ A *TableSubquery* is a subquery that returns multiple rows.
 Unlike a *[ScalarSubquery](sqlref_queries_scalarsubquery.html),* a
 *TableSubquery* is allowed only:
 
-* as a *[TableExpression](sqlref_expressions_table.html)* in a [`FROM`
+* as a *[TableExpression](sqlref_expressions_table.html)* in a &nbsp;[`FROM`
   clause](sqlref_clauses_from.html)
 * with `EXISTS`, `IN`, or quantified comparisons.
 

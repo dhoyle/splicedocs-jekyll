@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# YEAR   {#BuiltInFcns.Year}
+# YEAR
 
 The `YEAR` function returns the year part of a value. The argument must
 be a date, timestamp, or a valid character string representation of a

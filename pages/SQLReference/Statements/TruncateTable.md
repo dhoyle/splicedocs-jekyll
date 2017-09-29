@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TRUNCATE TABLE   {#Statements.TruncateTable}
+# TRUNCATE TABLE
 
 The `TRUNCATE TABLE` statement allows you to quickly remove all content
 from the specified table and return it to its initial empty state.

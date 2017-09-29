@@ -2809,7 +2809,7 @@
   
 <section>
 <div class="TopicContent" data-swiftype-index="true">
-    <h1 id="create-external-table---statementscreatetable">CREATE EXTERNAL TABLE   {#Statements.CreateTable}</h1>
+    <h1 id="create-external-table">CREATE EXTERNAL TABLE</h1>
 
     <p>A <code>CREATE EXTERNAL TABLE</code> statement creates a table in Splice Machine
 that you can use to query data that is stored externally in a flat file,
@@ -2837,8 +2837,13 @@ with <code>SYS</code>.</p>
       <pre class="FcnSyntax"><code>CREATE EXTERNAL TABLE table-Name
   {
     ( column-definition]* )    [ COMPRESSED WITH compression-format ]
-    [ PARTITIONED BY (column-name ) ]}
-    [ ROW FORMAT DELIMITED       [ FIELDS TERMINATED BY char [ESCAPED BY char] ]       [ LINES TERMINATED BY char ]    ]    STORED AS file-format LOCATION location  }
+    [ PARTITIONED BY (column-name ) ]}
+    [ ROW FORMAT DELIMITED 
+         [ FIELDS TERMINATED BY char [ESCAPED BY char] ]
+         [ LINES TERMINATED BY char ]
+    ]
+    STORED AS file-format LOCATION location
+  }
 </code></pre>
 
     </div>
@@ -2857,7 +2862,7 @@ external table. You can specify one of the following values:</p>
         <li><code>SNAPPY</code></li>
       </ul>
 
-      <p class="paramDefnFirst">If you don’t specify a compression format, the default is uncompressed.
+      <p class="paramDefn">If you don’t specify a compression format, the default is uncompressed.
 You cannot specify a <span class="CodeItalicFont">compression-format</span> when using the
 <code>TEXTFILE </code><span class="CodeItalicFont">file-format</span>; doing so
 generates an error.</p>
@@ -2927,7 +2932,7 @@ any compression format you specify will be ignored.</li>
       <li>Splice Machine isn’t able to know when the schema of the file
 represented by an external table is updated; when this occurs, you
 need to update the external table in Splice Machine by calling the
-<a href="sqlref_sysprocs_refreshexttable.html"><code>SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</code></a>
+  <a href="sqlref_sysprocs_refreshexttable.html"><code>SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</code></a>
 built-in system procedure.</li>
       <li>You cannot specify a <span class="CodeItalicFont">compression-format</span> when using the
 <code>TEXTFILE </code><span class="CodeItalicFont">file-format</span>; doing so
@@ -2998,7 +3003,6 @@ Guide</em>.</li>
 </section>
 
 
-
     <div class="tags">
         
     </div>
@@ -3013,7 +3017,7 @@ Guide</em>.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 26, 2017 <br />
+ Site last generated: Sep 28, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

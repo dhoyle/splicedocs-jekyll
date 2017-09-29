@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LOG10   {#BuiltInFcns.Log10}
+# LOG10
 
 The `LOG10` function returns the base-10 logarithm of the specified
 number.
@@ -26,14 +26,14 @@ number.
 number
 {: .paramName}
 
-A [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
+A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number
 that is greater than zero (`0`).
 {: .paramDefnFirst}
 
 </div>
 ## Results
 
-The data type of the returned value is a [`DOUBLE
+The data type of the returned value is a &nbsp;[`DOUBLE
 PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 * If the specified number is `NULL`, the result of this function is

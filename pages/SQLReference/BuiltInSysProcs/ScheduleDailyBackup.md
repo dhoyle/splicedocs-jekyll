@@ -29,7 +29,7 @@ Note that you can subsequently cancel a scheduled backup job with the
                    VARCHAR backupDir,
                    VARCHAR(30) backupType,
                    INT startHour
-    );
+                   );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>

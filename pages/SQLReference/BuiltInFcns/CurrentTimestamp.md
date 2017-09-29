@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# CURRENT_TIMESTAMP   {#BuiltInFcns.CurrentTimestamp}
+# CURRENT_TIMESTAMP
 
 `CURRENT_TIMESTAMP` returns the current timestamp.
 

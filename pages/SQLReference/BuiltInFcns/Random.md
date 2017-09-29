@@ -10,11 +10,11 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# RANDOM   {#BuiltInFcns.Random}
+# RANDOM
 
 The `RANDOM` function returns a random number.
 
-The `RANDOM` function returns a
+The `RANDOM` function returns an &nbsp;
 [`INTEGER`](sqlref_builtinfcns_integer.html) seed number.
 
 ## Syntax
@@ -31,7 +31,7 @@ The `RANDOM` function returns a
     1
     ----------
     0.2826393098638572
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -43,4 +43,3 @@ The `RANDOM` function returns a
 
 </div>
 </section>
-

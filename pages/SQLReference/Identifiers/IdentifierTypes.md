@@ -156,9 +156,9 @@ qualify the column name:
 * When creating a table ([`CREATE TABLE`
   statement](sqlref_statements_createtable.html)).
 * In a column's `correlation-Name` in a
-  [`SELECT expression`](sqlref_expressions_select.html)
+ &nbsp;[`SELECT expression`](sqlref_expressions_select.html)
 * In a column's`correlation-Name` in a
-  [`TABLE expression`](sqlref_expressions_table.html)
+ &nbsp;[`TABLE expression`](sqlref_expressions_table.html)
 
 ## Correlation Name Notes   {#Note.CorrelationName}
 

@@ -10,7 +10,7 @@ folder: SQLReference/Clauses
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# FROM   {#Clauses.From}
+# FROM
 
 The `FROM` clause is a mandatory clause in a
 *[SelectExpression](sqlref_expressions_select.html).* It specifies the

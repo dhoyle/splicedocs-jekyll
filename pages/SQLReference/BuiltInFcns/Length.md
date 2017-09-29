@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LENGTH   {#BuiltInFcns.Length}
+# LENGTH
 
 The `LENGTH` function returns the number of characters in a character
 string expression or bit string expression.

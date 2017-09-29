@@ -1,4 +1,6 @@
-﻿ <div markdown="1">
+<div markdown="1">
+## Timestamps
+
 Splice Machine uses the following Java date and time pattern letters to
 construct timestamps:
 
@@ -143,4 +145,3 @@ corresponding format (parsing) patterns:
                 </tbody>
             </table>
 </div>
-

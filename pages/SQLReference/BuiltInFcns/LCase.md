@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LCASE or LOWER   {#BuiltInFcns.LCase}
+# LCASE or LOWER
 
 `LCASE` or `LOWER` returns a string in which all alphabetic characters
 in the input character expression have been converted to lowercase.
@@ -29,7 +29,7 @@ in the input character expression have been converted to lowercase.
 CharacterExpression
 {: .paramName}
 
-A [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type, or any
+A &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type, or any
 built-in type that is implicitly converted to a string (but not a bit
 expression).
 {: .paramDefnFirst}
@@ -42,11 +42,11 @@ The data type of the result is as follows:
 * If the *CharacterExpression* evaluates to `NULL`, this function
   returns `NULL`.
 * If the *CharacterExpression* is of type
-  [`CHAR`](sqlref_builtinfcns_char.html).
+ &nbsp;[`CHAR`](sqlref_builtinfcns_char.html).
 * If the *CharacterExpression* is of type
-  [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html).
+ &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html).
 * Otherwise, the return type is
-  [`VARCHAR`](sqlref_datatypes_varchar.html).
+ &nbsp;[`VARCHAR`](sqlref_datatypes_varchar.html).
 
 The length and maximum length of the returned value are the same as the
 length and maximum length of the parameter.

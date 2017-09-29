@@ -52,16 +52,16 @@ disable logging of statements, you can do so in either of these ways:
 * You can pass an argument to your Splice Machine JVM startup script, as
   follows:
   {: .noSpaceBelow}
-  
+
   <div class="preWrapperWide" markdown="1">
       -Dderby.language.logStatementText=false
   {: .Example xml:space="preserve"}
-  
+
   </div>
 
 * You can add the following property definition to your
   `hbase-default.xml`, `hbase-site.xml`, or `splice-site.xml` file:
-  
+
   <div class="preWrapperWide" markdown="1">
       <property>
       <name>splice.debug.logStatementContext</name>
@@ -69,7 +69,7 @@ disable logging of statements, you can do so in either of these ways:
       <description>Property to enable logging of all statements.</description>
       </property>
   {: .Example}
-  
+
   </div>
 
 You can examine the logged data in your region server's logs; if you
@@ -223,12 +223,9 @@ interacting with the Splice Machine logs:
             </table>
 ## See Also
 
-* [`SYSCS_UTIL.SYSCS_GET_LOGGERS`](sqlref_sysprocs_getloggers.html) in
-  the *SQL Reference Manual*
+* [`SYSCS_UTIL.SYSCS_GET_LOGGERS`](sqlref_sysprocs_getloggers.html)
 * [`SYSCS_UTIL.SYSCS_GET_LOGGER_LEVEL`](sqlref_sysprocs_getloggerlevel.html)
-  in the *SQL Reference Manual*
 * [`SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL`](sqlref_sysprocs_setloggerlevel.html)
-  in the *SQL Reference Manual*
 
 </div>
 </section>

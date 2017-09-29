@@ -10,10 +10,9 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# USER   {#BuiltInFcns.User}
+# USER
 
-When used outside stored routines,
-[`SESSION_USER`](sqlref_builtinfcns_sessionuser.html) all return the
+When used outside stored routines, &nbsp;[`CURRENT_USER`](sqlref_builtinfcns_currentuser.html), &nbsp;`USER`, and  &nbsp;[`SESSION_USER`](sqlref_builtinfcns_sessionuser.html) all return the
 authorization identifier of the user who created the SQL session.
 
 `SESSION_USER` also always returns this value when used within stored
@@ -25,7 +24,7 @@ identifier of the user that owns the schema of the routine. This is
 usually the creating user, although the database owner could be the
 creator as well.
 
-For information about definer's and invoker's rights, see [`CREATE
+For information about definer's and invoker's rights, see &nbsp;[`CREATE
 FUNCTION` statement](sqlref_statements_createfunction.html).
 
 ## Syntax
@@ -54,4 +53,3 @@ FUNCTION` statement](sqlref_statements_createfunction.html).
 
 </div>
 </section>
-

@@ -73,7 +73,7 @@ steps:
     {: .topLevel}
     
     Now, in <span class="AppCommand">splice&gt;</span>, run your script
-    with the [`run`](cmdlineref_run.html) command:
+    with the &nbsp;[`run`](cmdlineref_run.html) command:
     {: .indentLevel1}
     
     <div class="preWrapperWide" markdown="1">

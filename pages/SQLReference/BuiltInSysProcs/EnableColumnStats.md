@@ -62,7 +62,7 @@ collecting column statistics:
 * Statistics can only be collected on columns with data types that can
   be ordered; numeric types, some `CHAR` types, some `BIT` types, and
   date/time types can be ordered.
-  
+
   You can determine if a data type can be ordered by examining the
   Comparisons table in the [Data Assignments and
   Comparisons](sqlref_datatypes_compatability.html) topic: any data type
@@ -74,7 +74,7 @@ collecting column statistics:
 ## SQL Examples
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CALL SYSCS_UTIL.ENABLE_COLUMN_STATISTICS('SPLICE', 'Salaries', 'Salary');
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -87,9 +87,7 @@ collecting column statistics:
 * [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html)
 * [`SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS`](sqlref_sysprocs_collectschemastats.html)
 * [`SYSCS_UTIL.DROP_SCHEMA_STATISTICS`](sqlref_sysprocs_dropschemastats.html)
-* [Using Statistics](developers_tuning_usingstats.html) in the
-  *Developer's Guide*
+* [Using Statistics](developers_tuning_usingstats.html)
 
 </div>
 </section>
-

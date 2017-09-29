@@ -1,4 +1,4 @@
----
+T---
 title: SELECT statement
 summary: Selects records from your database.
 keywords: selecting records
@@ -10,7 +10,7 @@ folder: SQLReference/Statements
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SELECT   {#Statements.Select}
+# SELECT
 
 Use the `SELECT` statement to query a database and receive back results.
 
@@ -36,7 +36,7 @@ query construct is `SELECT`. (*Query* includes the
 ORDER BY clause
 {: .paramName}
 
-The [`ORDER BY`](sqlref_clauses_orderby.html) clause allows you to order
+The &nbsp;[`ORDER BY`](sqlref_clauses_orderby.html) clause allows you to order
 the results of the `SELECT`. Without the `ORDER BY` clause, the results
 are returned in random order.
 {: .paramDefnFirst}
@@ -44,7 +44,7 @@ are returned in random order.
 result offset and fetch first clauses
 {: .paramName}
 
-The [`fetch first` clause](sqlref_clauses_resultoffset.html), which can
+The &nbsp;[`fetch first` clause](sqlref_clauses_resultoffset.html), which can
 be combined with the `result offset` clause, limits the number of rows
 fetched.
 {: .paramDefnFirst}
@@ -52,7 +52,7 @@ fetched.
 </div>
 ## Example
 
-This examples selects all records in the Players table:
+This example selectss all records in the Players table:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
@@ -69,12 +69,12 @@ This examples selects all records in the Players table:
     8     |Giants   |RF  |Harry Pennello     |1983-04-13
     9     |Giants   |OF  |Greg Brown         |1983-12-24
     10    |Giants   |RF  |Jason Minman       |1983-11-06
-    
+
     10 rows selected
 {: .Example xml:space="preserve"}
 
 </div>
-This examples select the Birthdate of all players born in November or
+This example selects the Birthdate of all players born in November or
 December:
 {: .body}
 
@@ -102,7 +102,7 @@ December:
     1988-12-21
     1989-11-17
     1991-11-15
-    
+
     17 rows selected
 {: .Example xml:space="preserve"}
 
@@ -131,7 +131,7 @@ in 1985 and 1989:
     Jack Hellman            |Cards     |1989-08-09
     Elliot Andrews          |Giants    |1989-08-21
     Henry Socomy            |Giants    |1989-11-17
-    
+
     13 rows selected
 {: .Example xml:space="preserve"}
 
@@ -140,10 +140,9 @@ in 1985 and 1989:
 
 The `SELECT` statement depends on all the tables and views named in the
 query and the conglomerates (units of storage such as heaps and indexes)
-chosen for access paths on those tables. [`CREATE VIEW`
-statement](sqlref_statements_createview.html)).
+chosen for access paths on those tables.
 
-The `SELECT` statements depends on all aliases used in the query.
+The `SELECT` statement depends on all aliases used in the query.
 Dropping an alias invalidates any prepared `SELECT` statement that uses
 the alias.
 
@@ -160,4 +159,3 @@ the alias.
 
 </div>
 </section>
-
