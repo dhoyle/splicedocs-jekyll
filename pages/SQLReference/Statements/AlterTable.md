@@ -18,31 +18,29 @@ table.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    ALTER TABLE table-Name
-       {
-       ADD COLUMN column-definition |
-       ADD CONSTRAINT clause |
-       DROP [ COLUMN ] column-name
-       DROP { UNIQUE constraint-name |
-              CHECK constraint-name
-       }
-       ALTER [ COLUMN ] column-alteration
-       }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+ALTER TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
+   {
+   ADD COLUMN <a href="sqlref_identifiers_types.html#ColumnDefinition">column-definition</a> |
+   ADD <a href="sqlref_clauses_constraint.html#TableName">CONSTRAINT</a> clause |
+   DROP [ COLUMN ] column-name
+   DROP { UNIQUE constraint-name |
+          CHECK constraint-name
+   }
+   ALTER [ COLUMN ] <a href="sqlref_statements_altertable#ColumnAlteration">column-alteration</a>
+   }</pre>
 
 </div>
 <div class="paramList" markdown="1">
 column-definition
 {: .paramName #ColumnDefinition}
 
-<div class="fcnWrapperWide" markdown="1">
-    DataType ]
-    [ Column-level-constraint ]*
-    [ [ WITH ] DEFAULT DefaultConstantExpression
-     | generation-clause
-    ]
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-name</a> [ DataType ]
+  [ <a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a> ]*
+  [ [ WITH ] DEFAULT DefaultConstantExpression
+    | <a href="sqlref_statements_generationclause.html">generation-clause</a>
+  ]</pre>
 
 </div>
 The syntax for the *column-definition* for a new column is a subset of
@@ -61,8 +59,8 @@ column-alteration
 {: .paramName #ColumnAlteration}
 
 <div class="fcnWrapperWide" markdown="1">
-    column-Name SET DATA TYPE VARCHAR(integer) |<![CDATA[
-    ]]>column-name SET INCREMENT BY integer-constant |
+    column-Name SET DATA TYPE VARCHAR(integer) |
+    column-name SET INCREMENT BY integer-constant |
     column-name RESTART WITH integer-constant |
     column-name [ NOT ] NULL |
     column-name [ WITH | SET ] DEFAULT default-value |
@@ -330,12 +328,12 @@ include:
 ### Example 2: Altering Columns
 
 In this example, we use `ALTER TABLE` to alter columns in various ways:
-{: .body}
 
 * specify that the `Updated` column cannot be `NULL`
+
 * set the default value for `Years` to `3`
+
 * set the default value for `NewTeam` to `'Giants'`
-{: .bulletNested}
 
 <div class="preWrapperWide" markdown="1">
     splice> ALTER TABLE PlayerTrades ALTER COLUMN Updated NOT NULL;

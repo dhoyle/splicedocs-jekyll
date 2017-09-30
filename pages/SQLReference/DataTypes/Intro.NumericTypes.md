@@ -182,7 +182,7 @@ on the mix of numeric data types in the expressions.
 For example:
 
 <div class="preWrapper" markdown="1">
-    
+
        -- returns a double precision value
     VALUES 1 + 1.0e0;
        -- returns a decimal value
@@ -199,7 +199,7 @@ location of a smaller size fails only if the value cannot be stored in
 the smaller-size location. For example:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     create table mytable (r REAL, d DOUBLE PRECISION);
        0 rows inserted/updated/deleted
     INSERT INTO mytable (r, d) values (3.4028236E38, 3.4028235E38);
@@ -211,7 +211,7 @@ You can store a floating point type in an `INTEGER` column; the
 fractional part of the number is truncated. For example:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     INSERT INTO mytable(integer_column) values (1.09e0);
        1 row inserted/updated/deleted
        SELECT integer_column
@@ -228,11 +228,11 @@ Integers can be stored in decimals if the `DECIMAL` precision is large
 enough for the value. For example:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     ij>
     insert into mytable (decimal_column) VALUES (55555555556666666666);
        ERROR X0Y21: The number '55555555556666666666' is outside the
-       range of the target DECIMAL/NUMERIC(5,2) datatype.	
+       range of the target DECIMAL/NUMERIC(5,2) datatype.
 {: .Example}
 
 </div>
@@ -241,7 +241,7 @@ location of a smaller size fails if the value cannot be stored in the
 smaller-size location. For example:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     INSERT INTO mytable (int_column) values 2147483648;
        ERROR 22003: The resulting value is outside the range for the data type INTEGER.
 {: .Example}
@@ -293,8 +293,7 @@ type for the following kinds of arithmetical expressions:
                         <td><em>31 - lp + ls - rs</em></td>
                     </tr>
                     <tr>
-                        <td><code>AVG()</code><![CDATA[
-                ]]></td>
+                        <td><code>AVG()</code></td>
                         <td><em>max(max(ls, rs), 4)</em></td>
                     </tr>
                     <tr>
@@ -308,7 +307,7 @@ For example, the scale of the resulting data type of the following
 expression is <span class="Example">27</span>:
 
 <div class="preWrapper" markdown="1">
-    
+
     11.0/1111.33
        // 31 - 3 + 1 - 2 = 2
 {: .Example}
@@ -374,4 +373,3 @@ data type for the following kinds of arithmetical expressions:
 
 </div>
 </section>
-

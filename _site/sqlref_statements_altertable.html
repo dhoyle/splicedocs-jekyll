@@ -2816,32 +2816,30 @@ table.</p>
 
     <h2 id="syntax">Syntax</h2>
 
-    <div class="fcnWrapperWide">
-      <pre class="FcnSyntax"><code>ALTER TABLE table-Name
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+ALTER TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
    {
-   ADD COLUMN column-definition |
-   ADD CONSTRAINT clause |
+   ADD COLUMN <a href="sqlref_identifiers_types.html#ColumnDefinition">column-definition</a> |
+   ADD <a href="sqlref_clauses_constraint.html#TableName">CONSTRAINT</a> clause |
    DROP [ COLUMN ] column-name
    DROP { UNIQUE constraint-name |
           CHECK constraint-name
    }
-   ALTER [ COLUMN ] column-alteration
-   }
-</code></pre>
+   ALTER [ COLUMN ] <a href="sqlref_statements_altertable#ColumnAlteration">column-alteration</a>
+   }</pre>
 
-    </div>
+</div>
     <div class="paramList">
       <p class="paramName" id="ColumnDefinition">column-definition</p>
 
-      <div class="fcnWrapperWide">
-        <pre class="FcnSyntax"><code>DataType ]
-[ Column-level-constraint ]*
-[ [ WITH ] DEFAULT DefaultConstantExpression
- | generation-clause
-]
-</code></pre>
+      <div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-name</a> [ DataType ]
+  [ <a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a> ]*
+  [ [ WITH ] DEFAULT DefaultConstantExpression
+    | <a href="sqlref_statements_generationclause.html">generation-clause</a>
+  ]</pre>
 
-      </div>
+</div>
       <p class="paramDefnFirst">The syntax for the <em>column-definition</em> for a new column is a subset of
 the syntax for a column in a  <a href="sqlref_statements_createtable.html"><code>CREATE
 TABLE</code></a> statement.</p>
@@ -2855,8 +2853,8 @@ assignable to <em>DataType</em>.</p>
       <p class="paramName" id="ColumnAlteration">column-alteration</p>
 
       <div class="fcnWrapperWide">
-        <pre class="FcnSyntax"><code>column-Name SET DATA TYPE VARCHAR(integer) |&lt;![CDATA[
-]]&gt;column-name SET INCREMENT BY integer-constant |
+        <pre class="FcnSyntax"><code>column-Name SET DATA TYPE VARCHAR(integer) |
+column-name SET INCREMENT BY integer-constant |
 column-name RESTART WITH integer-constant |
 column-name [ NOT ] NULL |
 column-name [ WITH | SET ] DEFAULT default-value |
@@ -3122,12 +3120,18 @@ YEARS         |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
     </div>
     <h3 id="example-2altering-columns">Example 2: Altering Columns</h3>
 
-    <p class="body">In this example, we use <code>ALTER TABLE</code> to alter columns in various ways:</p>
+    <p>In this example, we use <code>ALTER TABLE</code> to alter columns in various ways:</p>
 
-    <ul class="bulletNested">
-      <li>specify that the <code>Updated</code> column cannot be <code>NULL</code></li>
-      <li>set the default value for <code>Years</code> to <code>3</code></li>
-      <li>set the default value for <code>NewTeam</code> to <code>'Giants'</code></li>
+    <ul>
+      <li>
+        <p>specify that the <code>Updated</code> column cannot be <code>NULL</code></p>
+      </li>
+      <li>
+        <p>set the default value for <code>Years</code> to <code>3</code></p>
+      </li>
+      <li>
+        <p>set the default value for <code>NewTeam</code> to <code>'Giants'</code></p>
+      </li>
     </ul>
 
     <div class="preWrapperWide">
@@ -3265,7 +3269,7 @@ Guide</em>.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Sep 27, 2017 <br />
+ Site last generated: Sep 29, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

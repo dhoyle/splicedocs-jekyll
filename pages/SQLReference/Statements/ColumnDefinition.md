@@ -12,16 +12,15 @@ folder: SQLReference/Statements
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # column-definition
 
-<div class="fcnWrapperWide" markdown="1">
-    Simple-column-Name
-       [ DataType ]
-       [ Column-level-constraint ]*
-       [ [ WITH ] DEFAULT DefaultConstantExpression
-         | generated-column-spec
-         | generation-clause
-       ]
-       [ Column-level-constraint ]*
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>
+   [ DataType ]
+   [ <a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a> ]*
+   [ [ WITH ] DEFAULT DefaultConstantExpression
+     | <a href="sqlref_statements_generatedcolspec.html">generated-column-spec</a>
+     | <a href="sqlref_statements_generationclause.html">generation-clause</a>
+   ]
+   [ <a href="sqlref_clauses_constraint.html#ColumnConstraint">Column-level-constraint</a> ]*</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -96,4 +95,3 @@ This example creates a table and uses two column definitions.
 
 </div>
 </section>
-

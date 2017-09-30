@@ -67,7 +67,7 @@ folder: SQLReference/ErrorCodes
                     </tr>
                     <tr>
                         <td><code>XSDBB.D</code></td>
-                        <td>Unknown page format at page <span class="VarName">&lt;page&gt;</span>, page dump follows: <span class="VarName">&lt;value&gt;</span> <![CDATA[ ]]></td>
+                        <td>Unknown page format at page <span class="VarName">&lt;page&gt;</span>, page dump follows: <span class="VarName">&lt;value&gt;</span></td>
                     </tr>
                     <tr>
                         <td><code>XSDBC.D</code></td>
@@ -77,4 +77,3 @@ folder: SQLReference/ErrorCodes
             </table>
 </div>
 </section>
-

@@ -35,18 +35,18 @@ with `SYS`.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE EXTERNAL TABLE table-Name
-      {
-        ( column-definition]* )    [ COMPRESSED WITH compression-format ]
-        [ PARTITIONED BY (column-name ) ]}
-        [ ROW FORMAT DELIMITED 
-             [ FIELDS TERMINATED BY char [ESCAPED BY char] ]
-             [ LINES TERMINATED BY char ]
-        ]
-        STORED AS file-format LOCATION location
-      }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE EXTERNAL TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
+  {
+    ( <a href="sqlref_statements_columndef.html">column-definition</a>* )
+    [ COMPRESSED WITH compression-format ]
+    [ PARTITIONED BY (column-name ) ]}
+    [ ROW FORMAT DELIMITED 
+         [ FIELDS TERMINATED BY char [ESCAPED BY char] ]
+         [ LINES TERMINATED BY char ]
+    ]
+    STORED AS file-format LOCATION location
+  }</pre>
 
 </div>
 <div class="paramList" markdown="1">

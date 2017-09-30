@@ -111,15 +111,14 @@ Splice Machine resolves function and procedure invocations as follows:
                     <tr>
                         <td><em>Procedure                    </em></td>
                         <td>
-                            <p class="noSpaceAbove">Splice Machine looks for a method which returns void and whose argument types match as follows:
-						</p>
+                            <p class="noSpaceAbove">Splice Machine looks for a method which returns void and whose argument types match as follows:</p>
                             <ul>
                                 <li><code>IN</code> - Method arguments are <em>primitive match</em>es or <em>wrapper matches</em> for the procedure's <code>IN</code> arguments.</li>
                                 <li><code>OUT and INOUT</code> - Method arguments are <em>array match</em>es for the
-						procedure's <code>OUT</code> and <code>INOUT</code> arguments.</li>
+                        procedure's <code>OUT</code> and <code>INOUT</code> arguments.</li>
                             </ul>
-                            <p>
-						In addition, if the procedure returns <em>n</em> RESULT SETS, then the last <em>n</em> arguments of the Java method must be of type <em>java.sql.ResultSet[]</em></p><![CDATA[					]]></td>
+                        <p>In addition, if the procedure returns <em>n</em> RESULT SETS, then the last <em>n</em> arguments of the Java method must be of type <em>java.sql.ResultSet[]</em></p>
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -107,7 +107,7 @@ folder: SQLReference/ErrorCodes
                     </tr>
                     <tr>
                         <td><code>XIE0R.S</code></td>
-                        <td>Import error on line <span class="VarName">&lt;lineNumber&gt;</span> of file <span class="VarName">&lt;fileName&gt;</span>: <span class="VarName">&lt;details&gt;</span> <![CDATA[ ]]></td>
+                        <td>Import error on line <span class="VarName">&lt;lineNumber&gt;</span> of file <span class="VarName">&lt;fileName&gt;</span>: <span class="VarName">&lt;details&gt;</span></td>
                     </tr>
                     <tr>
                         <td><code>XIE10.S</code></td>
@@ -141,4 +141,3 @@ folder: SQLReference/ErrorCodes
             </table>
 </div>
 </section>
-

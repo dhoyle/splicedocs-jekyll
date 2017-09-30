@@ -19,11 +19,8 @@ specify a `WHERE` clause in the `SELECT` statement.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    TableExpression CROSS JOIN {
-        TableExpression )
-    }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
+<a href="sqlref_expressions_table.html">TableExpression</a> CROSS JOIN ( <a href="sqlref_expressions_table.html">TableExpression</a> )</pre>
 
 </div>
 ## Examples
