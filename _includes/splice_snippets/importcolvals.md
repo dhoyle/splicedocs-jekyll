@@ -64,7 +64,10 @@ values when adding new records to a table using one of our import
 procedures; we use an example database table created with this
 statement:
 
-    CREATE TABLE myTable (   colA INT,   colB CHAR(12) DEFAULT 'myDefaultVal',   colC INT);
+    CREATE TABLE myTable (
+                    colA INT,
+                    colB CHAR(12) DEFAULT 'myDefaultVal',
+                    colC INT);
 {: .Example}
 
 <table summary="Detailed example of what gets imported for different input values in a new record">

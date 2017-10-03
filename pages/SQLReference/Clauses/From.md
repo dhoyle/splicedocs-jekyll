@@ -20,9 +20,8 @@ expressions.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    FROM TableExpression [ , TableExpression ] *
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+FROM <a href="sqlref_expressions_table.html">TableExpression</a> [ , <a href="sqlref_expressions_table.html">TableExpression</a> ]*</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -37,24 +36,24 @@ Specifies a table, view, or function; it is the source from which a
 ## Examples
 
 <div class="preWrapperWide" markdown="1">
-    
+
     SELECT Cities.city_id
       FROM Cities
       WHERE city_id < 5;
-    
+
         -- other types of TableExpressions
       SELECT TABLENAME, ISINDEX
       FROM SYS.SYSTABLES T, SYS.SYSCONGLOMERATES C
       WHERE T.TABLEID = C.TABLEID
       ORDER BY TABLENAME, ISINDEX;
-    
+
         -- force the join order
       SELECT *
       FROM Flights, FlightAvailability
       WHERE FlightAvailability.flight_id = Flights.flight_id
        AND FlightAvailability.segment_number = Flights.segment_number
        AND Flights.flight_id < 'AA1115';
-    
+
        -- a TableExpression can be a joinOperation. Therefore
        -- you can have multiple join operations in a FROM clause
       SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME,
@@ -73,4 +72,3 @@ Specifies a table, view, or function; it is the source from which a
 
 </div>
 </section>
-

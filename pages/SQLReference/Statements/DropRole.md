@@ -16,9 +16,8 @@ The `DROP ROLE` statement allows you to drop a role from your database.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DROP ROLE roleName
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP ROLE <a href="sqlref_identifiers_types.html#RoleName">roleName</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -59,4 +58,3 @@ revoking a role may impact any dependent objects.
 
 </div>
 </section>
-

@@ -117,27 +117,25 @@ Specifies rules for values in the column.
 </div>
 ## Table Constraints   {#TableConstraint}
 
-<div class="fcnWrapperWide" markdown="1">
-    [CONSTRAINT constraint-Name]
-    {
-       PRIMARY KEY ( Simple-column-Name
-       [ , Simple-column-Name ]* )
-    }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+[CONSTRAINT constraint-Name]
+{
+   PRIMARY KEY ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>
+   [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> ]* )
+}</pre>
 
 </div>
-<div class="fcnWrapperWide" markdown="1">
-    [CONSTRAINT constraint-Name]
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+[CONSTRAINT constraint-Name]
+{
+    CHECK (searchCondition) |
     {
-        CHECK (searchCondition) |
-        {
-            PRIMARY KEY ( Simple-column-Name [ , Simple-column-Name ]* ) |
-            UNIQUE ( Simple-column-Name [ , Simple-column-Name ]* ) |
-            FOREIGN KEY ( Simple-column-Name [ , Simple-column-Name ]* )
-                sREFERENCES clause
-        }
+        PRIMARY KEY ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> ]* ) |
+        UNIQUE ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> ]* ) |
+        FOREIGN KEY ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> ]* )
+        REFERENCES clause
     }
-{: .FcnSyntax xml:space="preserve"}
+}</pre>
 
 </div>
 <div class="paramList" markdown="1">

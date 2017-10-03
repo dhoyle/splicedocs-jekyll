@@ -56,7 +56,7 @@ software.
 ## Usage Notes
 
 Splice Machine recommends that you use the `LEAD` function with the
-&nbsp;[`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
+&nbsp; [`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
 deterministic results.
 
 ## Results

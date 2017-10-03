@@ -26,15 +26,13 @@ grouping should be computed at once.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-
-    GROUP BY
-      {
-      column-Name-or-Position ]*  |
-      ROLLUP ( column-Name-or-Position
-    	   [ , column-Name-or-Position ]* )
-      }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+GROUP BY
+  {
+  <a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a> ]*  |
+  ROLLUP ( <a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a>
+       [ , <a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a> ]* )
+  }</pre>
 
 </div>
 <div class="paramList" markdown="1">

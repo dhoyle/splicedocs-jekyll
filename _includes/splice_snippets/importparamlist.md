@@ -291,7 +291,9 @@ bucket.
 You can include the access keys inline; for example:
 
 <div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, '/Users/hive', true, null);
+    call SYSCS_UTIL.IMPORT_DATA ( 'TPCH', 'REGION', null,
+              's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/region',
+              '|', null, null, null, null, -1, '/Users/hive', true, null);
 {: .Example}
 
 </div>
@@ -299,7 +301,9 @@ Alternatively, you can define the keys once in the `core-site.xml` file
 on your cluster, and then simply specify the `s3a` URL; for example:
 
 <div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, 0, '/BAD', true, null);
+    call SYSCS_UTIL.IMPORT_DATA ( 'TPCH', 'REGION', null,
+                's3a://splice-benchmark-data/flat/TPCH/100/region',
+                '|', null, null, null, null, 0, '/BAD', true, null);
 {: .Example}
 
 </div>
@@ -310,14 +314,28 @@ define the `fs.s3a.awsAccessKeyId` and `fs.s3a.awsSecretAccessKey`
 properties in that file:
 
 <div class="preWrapperWide" markdown="1">
-    <property>   <name>fs.s3a.awsAccessKeyId</name>   <value>access key</value></property><property>   <name>fs.s3a.awsSecretAccessKey</name>   value>secret key</value></property>
+    <property>
+        <name>fs.s3a.awsAccessKeyId</name>
+        <value>access key</value>
+    </property>
+    <property>
+        <name>fs.s3a.awsSecretAccessKey</name>
+        <value>secret key</value>
+    </property>
 {: .Example}
 
 </div>
 Here\'s an example of the property definitions:
 
 <div class="preWrapperWide" markdown="1">
-    <property>   <name>fs.s3a.awsAccessKeyId</name>   <value>AKIAIOSFODNN7EXAMPLE</value></property><property>   <name>fs.s3a.awsSecretAccessKey</name>   value>wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</value></property>
+    <property>
+        <name>fs.s3a.awsAccessKeyId</name>
+        <value>AKIAIOSFODNN7EXAMPLE</value>
+    </property>
+    <property>
+        <name>fs.s3a.awsSecretAccessKey</name>
+        <value>wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</value>
+    </property>
 {: .Example}
 
 </div>

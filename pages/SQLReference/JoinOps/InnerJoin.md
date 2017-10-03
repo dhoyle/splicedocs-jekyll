@@ -12,15 +12,14 @@ folder: SQLReference/JoinOps
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # INNER JOIN
 
-An `INNER JOIN` is a &nbsp;[`JOIN` operation](sqlref_joinops_about.html) that
+An `INNER JOIN` is a &nbsp; [`JOIN` operation](sqlref_joinops_about.html) that
 allows you to specify an explicit join clause.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    TableExpression
-      {ON booleanExpression | USING clause}
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_expressions_table.html">TableExpression</a>
+  { ON booleanExpression | <a href="sqlref_clauses_using.html">USING clause</a> }</pre>
 
 </div>
 You can specify the join clause by specifying `ON` with a boolean

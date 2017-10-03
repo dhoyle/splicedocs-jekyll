@@ -17,9 +17,8 @@ database owner can create a role.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE ROLE roleName
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE ROLE <a href="sqlref_identifiers_types.html#RoleName">roleName</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -102,4 +101,3 @@ an error:
 
 </div>
 </section>
-

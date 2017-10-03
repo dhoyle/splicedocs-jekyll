@@ -1,7 +1,7 @@
 ---
 title: DECLARE GLOBAL TEMPORARY TABLE statement
 summary: Defines a temporary table for the current connection.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -26,12 +26,11 @@ in our *Developer's Guide*.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DECLARE GLOBAL TEMPORARY TABLE table-Name
-       { column-definition[ , column-definition] * }
-           [ON COMMIT PRESERVE ROWS ]
-           [NOT LOGGED]
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DECLARE GLOBAL TEMPORARY TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
+   { column-definition[ , column-definition] * }
+       [ON COMMIT PRESERVE ROWS ]
+       [NOT LOGGED]</pre>
 
 </div>
 Splice Machine generates a warning if you attempt to specify any other
@@ -125,4 +124,3 @@ Temporary tables:
 
 </div>
 </section>
-

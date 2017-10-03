@@ -18,16 +18,15 @@ tables.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    SELECT [ DISTINCT | ALL ] SelectItem [ , SelectItem ]*
-       FROM clause
-       [ WHERE clause]
-       [ GROUP BY clause ]
-       [ HAVING clause ]
-       [ ORDER BY clause ]
-       [ result offset clause ]
-       [ fetch first clause ]
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+SELECT [ DISTINCT | ALL ] SelectItem [ , SelectItem ]*
+   <a href="sqlref_clauses_from.html">FROM clause</a>
+   [ <a href="sqlref_clauses_where.html">WHERE clause</a> ]
+   [ <a href="sqlref_clauses_groupby.html">GROUP BY clause</a> ]
+   [ <a href="sqlref_clauses_having.html">HAVING clause</a> ]
+   [ <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+   [ <a href="sqlref_clauses_resultoffset.html">result offset clause</a> ]
+   [ <a href="sqlref_clauses_resultoffset.html">fetch first clause</a> ]</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -52,13 +51,12 @@ result in applying the `SELECT` clause. This is the default behavior.
 SelectItem:
 {: .paramName}
 
-<div class="fcnWrapperWide" markdown="1">
-    {
-        * |
-        { correlation-Name } .* |
-          Expression [AS Simple-column-Name] }
-    }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+{
+    * |
+    { <a href="correlation-Name } .* |
+      Expression [AS <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>] }
+}</pre>
 
 </div>
 A<em> SelectItem</em> projects one or more result column values for a
@@ -167,7 +165,7 @@ following order:
 * `SELECT` clause
 
 When a query does not have a `FROM` clause (when you are constructing a
-value, not getting data out of a table), use a
+value, not getting data out of a table), use a &nbsp;
 [`VALUES`](sqlref_expressions_values.html) expression, not a
 *SelectExpression*. For example:
 

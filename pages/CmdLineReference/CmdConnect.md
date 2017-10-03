@@ -21,8 +21,7 @@ connection to that URL.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    CONNECT ConnectionURLString
-       [ AS Identifier ]
+    CONNECT ConnectionURLString  [ AS Identifier ]
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -96,4 +95,3 @@ string:
 </div>
 </div>
 </section>
-

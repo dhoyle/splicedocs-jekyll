@@ -16,9 +16,8 @@ The `DROP INDEX` statement removes the specified index.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DROP INDEX index-Name
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP INDEX <a href="sqlref_identifiers_types.html#IndexName">index-Name</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -47,4 +46,3 @@ The name of the index that you want to drop from your database.
 
 </div>
 </section>
-

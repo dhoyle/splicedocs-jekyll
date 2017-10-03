@@ -12,7 +12,7 @@ folder: SQLReference/JoinOps
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # CROSS JOIN
 
-A `CROSS JOIN` is a &nbsp;[`JOIN` operation](sqlref_joinops_about.html) that
+A `CROSS JOIN` is a &nbsp; [`JOIN` operation](sqlref_joinops_about.html) that
 produces the Cartesian product of two tables. Unlike other `JOIN`
 operators, it does not let you specify a join clause. You may, however,
 specify a `WHERE` clause in the `SELECT` statement.

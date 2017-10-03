@@ -12,7 +12,7 @@ folder: SQLReference/DataTypes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # TIMESTAMP
 
-The `TIMESTAMP` data type stores a combined
+The `TIMESTAMP` data type stores a combined &nbsp;
 [`TIME`](sqlref_builtinfcns_time.html) value that permits fractional
 seconds values of up to nine digits.
 
@@ -112,7 +112,7 @@ HH:mm:ss`, which uses a 24-hour clock, does not allow for decimal digits
 of seconds, and does not allow for time zone specification.
 
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)*  
+Values](developers_fundamentals_dates.html)*
 for information about using simple arithmetic with `TIMESTAMP` values.
 
 ### Examples

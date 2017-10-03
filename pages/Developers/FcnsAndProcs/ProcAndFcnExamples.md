@@ -46,7 +46,7 @@ Follow these steps to define and use the `word_limiter` function:
 
     * <span class="PlainFont">the sentence that we want to limit</span>
     * <span class="PlainFont">the number of words to which we want to limit the output</span>
-    
+
     The output is a string that contains the limited words.
     {: .indentLevel1}
 
@@ -78,32 +78,32 @@ Follow these steps to define and use the `word_limiter` function:
         package com.splicemachine.example;
 
         public class ExampleStringFunctions {
-        	/**
-        	 * Truncates a string to the number of words specified.  An input of
-        	 * "Today is a wonderful day and I am looking forward to going to the beach.", 5
-        	 * will return "Today is a wonderful day".
-        	 *
-        	 * @param inboundSentence
-        	 * @param numberOfWords
-        	 * @return
-        	 */
-        	public static String wordLimiter(String inboundSentence, int numberOfWords) {
-        		String truncatedString = "";
-        		if(inboundSentence != null) {
-        			String[] splitBySpace = inboundSentence.split("\\s+");
-        			if(splitBySpace.length = numberOfWords) {
-        				truncatedString = inboundSentence;
-        			} else {
-        				StringBuilder sb = new StringBuilder();
-        				for(int i=0; inumberOfWords; i++) {
-        					if(i > 0) sb.append(" ");
-        					sb.append(splitBySpace[i]);
-        				}
-        				truncatedString = sb.toString();
-        			}
-        		}
-        		return truncatedString;
-        	}
+            /**
+             * Truncates a string to the number of words specified.  An input of
+             * "Today is a wonderful day and I am looking forward to going to the beach.", 5
+             * will return "Today is a wonderful day".
+             *
+             * @param inboundSentence
+             * @param numberOfWords
+             * @return
+             */
+            public static String wordLimiter(String inboundSentence, int numberOfWords) {
+                String truncatedString = "";
+                if(inboundSentence != null) {
+                    String[] splitBySpace = inboundSentence.split("\\s+");
+                    if(splitBySpace.length = numberOfWords) {
+                        truncatedString = inboundSentence;
+                    } else {
+                        StringBuilder sb = new StringBuilder();
+                        for(int i=0; inumberOfWords; i++) {
+                            if(i > 0) sb.append(" ");
+                            sb.append(splitBySpace[i]);
+                        }
+                        truncatedString = sb.toString();
+                    }
+                }
+                return truncatedString;
+            }
         }
     {: .Example}
 
@@ -124,7 +124,9 @@ Follow these steps to define and use the `word_limiter` function:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        splice> CALL SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP', 0);
+        splice> CALL SQLJ.INSTALL_JAR(
+                    '/Users/me/dev/workspace/examples/bin/example.jar',
+                    'SPLICE.MY_EXAMPLE_APP', 0);
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -133,7 +135,9 @@ Follow these steps to define and use the `word_limiter` function:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        splice> CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');
+        splice> CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
+                    'derby.database.classpath',
+                    'SPLICE.MY_EXAMPLE_APP');
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -149,7 +153,9 @@ Follow these steps to define and use the `word_limiter` function:
 
     <div class="preWrapperWide" markdown="1">
 
-        splice> CREATE FUNCTION WORD_LIMITER(MY_SENTENCE VARCHAR(9999), NUM_WORDS INT) RETURNS VARCHAR(9999)
+        splice> CREATE FUNCTION WORD_LIMITER(
+                            MY_SENTENCE VARCHAR(9999),
+                            NUM_WORDS INT) RETURNS VARCHAR(9999)
         LANGUAGE JAVA
         PARAMETER STYLE JAVA
         NO SQL
@@ -165,7 +171,8 @@ Follow these steps to define and use the `word_limiter` function:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        splice> SELECT WORD_LIMITER('Today is a wonderful day and I am looking forward to going to the beach.', 5)
+        splice> SELECT WORD_LIMITER(
+                    'Today is a wonderful day and I am looking forward to going to the beach.', 5)
            FROM SYSIBM.SYSDUMMY1;
     {: .AppCommand xml:space="preserve"}
 

@@ -17,9 +17,8 @@ for a table or view.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DROP SYNONYM synonymName
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP SYNONYM <a href="sqlref_identifiers_types.html#SynonymName">synonymName</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -46,4 +45,3 @@ The name of the synonym that you want to drop from your database.
 
 </div>
 </section>
-

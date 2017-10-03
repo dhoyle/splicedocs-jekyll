@@ -10,17 +10,15 @@ folder: SQLReference/Clauses
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# TOP n 
+# TOP n
 
 A `TOP` clause, also called the `TOP n` clause, limits the results of a
 query to the first `n` result records.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    
-    TOP [number] column-Name]*
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+TOP [number] <a href="sqlref_identifiers_types.html#ColumnName">column-Name</a>]*</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -58,14 +56,14 @@ You can specify `*` as the column name to represent all columns.
     a7 |b7 |c7 |d7
     a8 |b8 |c8 |d8
     8 rows selected
-    
+
     splice> select top * from toptest order by a;
     A |B |C |D
     --------------------------------------------------------------------------------
     a1 |b1 |c1 |d1
     1 row selected
-    
-    
+
+
     splice> select top 3 a, b, c from toptest order by a;
     A  |B  |C
     --------------------------------------------------------------------------------
@@ -73,8 +71,8 @@ You can specify `*` as the column name to represent all columns.
     a2 |b2 |c2
     a3 |b3 |c3
     3 rows selected
-    
-    
+
+
     splice> select top 10 a, b from toptest order by a;
     A  |B
     --------------------------------------------------------------------------------
@@ -87,7 +85,7 @@ You can specify `*` as the column name to represent all columns.
     a7 |b7
     a8 |b8
     8 rows selected
-    
+
     splice> select top 4 * from toptest order by a offset 1 row;
     A |B |C |D
     --------------------------------------------------------------------------------
@@ -96,7 +94,7 @@ You can specify `*` as the column name to represent all columns.
     a4 |b4 |c4 |d4
     a5 |b5 |c5 |d5
     4 rows selected
-    
+
     splice> select top 4 * from toptest order by a offset 2 row;
     A |B |C |D
     --------------------------------------------------------------------------------
@@ -105,11 +103,11 @@ You can specify `*` as the column name to represent all columns.
     a5 |b5 |c5 |d5
     a6 |b6 |c6 |d6
     4 rows selected
-    
+
     splice> select top 4 * from toptest order by a offset -1 row ;
     ERROR 2201X: Invalid row count for OFFSET, must be >= 0.
-    
-    
+
+
     splice> select top 4 * from toptest order by a offset 10 row;
     A |B |C |D
     --------------------------------------------------------------------------------
@@ -127,4 +125,3 @@ You can specify `*` as the column name to represent all columns.
 
 </div>
 </section>
-

@@ -19,12 +19,11 @@ deletion of large amounts of data.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    {
-      DELETE FROM correlation-Name]
-        [WHERE clause]
-    }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+{
+  DELETE FROM <a href="sqlref_identifiers_types.html">correlation-Name</a>]
+    [<a href="sqlref_clauses_where.html">WHERE clause</a>]
+}</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -110,4 +109,3 @@ statement.
 
 </div>
 </section>
-

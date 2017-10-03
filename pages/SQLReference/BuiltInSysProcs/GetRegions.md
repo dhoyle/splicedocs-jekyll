@@ -196,7 +196,8 @@ The following call returns information about the regions that are in the
 key range `{1,2}` to `{1,8}`:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.GET_REGIONS('SPLICE','TestTable', null, '1|2', '1|8', '|',null,null,null,null);
+    splice> CALL SYSCS_UTIL.GET_REGIONS( 'SPLICE','TestTable', null,
+                                         '1|2', '1|8', '|',null,null,null,null);
     ENCODED_REGION_NAME              |SPLICE_START_KEY |SPLICE_END_KEY |HBASE_START_KEY |HBASE_END_KEY |NUM_HFILES |SIZE  |LAST_MODIFICATION_TIME |REGION_NAME
     -----------------------------------------------------------------
     132c824b9e269006a8e0a3fad577bd12 |{ 1, 2}          |{ 1, 6}        |\x81\x00\x82    |\x81\x00\x86  |1          |1645  |2017-08-17 12:44:15.0  |splice:2944,\x81\x00\x82,1502999053574.132c824b9e269006a8e0a3fad577bd12.

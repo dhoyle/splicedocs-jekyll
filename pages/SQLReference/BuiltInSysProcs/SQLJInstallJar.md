@@ -94,7 +94,12 @@ database owner can grant access to other users.
 
 <div class="preWrapperWide" markdown="1">
 
-       -- Make sure Derby classpath variable is correctly set for our examplesCALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.SAMPLE1_APP:SPLICE.SAMPLE2');   -- install jar from current directory
+       -- Make sure Derby classpath variable is correctly set for our examples
+    CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
+                        'derby.database.classpath',
+                        'SPLICE.SAMPLE1_APP:SPLICE.SAMPLE2');
+
+                           -- install jar from current directory
     splice> CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE.SAMPLE1_APP', 0);
 
        -- install jar using full path

@@ -43,7 +43,7 @@ The resulting data type is &nbsp;[`BIGINT`](sqlref_builtinfcns_bigint.html).
 
 ## Usage
 
-The `DENSE_RANK()` and &nbsp;[`RANK()`](sqlref_builtinfcns_rank.html) analytic
+The `DENSE_RANK()` and &nbsp; [`RANK()`](sqlref_builtinfcns_rank.html) analytic
 functions are very similar. The difference shows up when there are
 multiple input rows that have the same ranking value. When that happens:
 

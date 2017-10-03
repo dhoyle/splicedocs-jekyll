@@ -89,7 +89,8 @@ process results that looks like this:
 
 <div class="preWrapperWide" markdown="1">
 
-    rowsImported   |failedRows   |files   |dataSize   |failedLog-------------------------------------------------------------
+    rowsImported   |failedRows   |files   |dataSize   |failedLog
+    -------------------------------------------------------------
     94             |0            |1       |4720       |NONE
 {: .Example xml:space="preserve"}
 
@@ -116,7 +117,7 @@ circumstances:
   of the columns in the data file.
 
 Please see the [Inserting and Updating Column Values When Importing
-Data](#ImportColVals)section below for detailed information about how
+Data](#ImportColVals) section below for detailed information about how
 table column values are updated when importing data with our different
 procedures.
 
@@ -151,7 +152,7 @@ Typical reasons for a row (record) import to fail include:
 
 {% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* 
+Values](developers_fundamentals_dates.html)*
 for information working with timestamps, dates, and times.
 
 ## Examples   {#Examples}
@@ -174,11 +175,11 @@ specifying a single `timeStampFormat`.
 You can then import the data with the following call:
 
 <div class="preWrapper" markdown="1">
-    call SYSCS_UTIL.UPSERT_DATA_FROM_FILE('app','tabx','c1,c2',
-    	'/path/to/ts3.csv',
-    	',', '''',
-    	'yyyy-MM-dd HH:mm:ss.SSZ',
-    	null, null, 0, null, true, null);
+    call SYSCS_UTIL.UPSERT_DATA_FROM_FILE( 'app','tabx','c1,c2',
+        '/path/to/ts3.csv',
+        ',', '''',
+        'yyyy-MM-dd HH:mm:ss.SSZ',
+        null, null, 0, null, true, null);
 {: .Example xml:space="preserve"}
 
 </div>
@@ -206,7 +207,8 @@ as our character delimiter to import data such as the following:
 We then use the following call to import the data:
 
 <div class="preWrapperWide" markdown="1">
-    SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t',null,null,null,null,0,'BAD', false, null);
+    SYSCS_UTIL.UPSERT_DATA_FROM_FILE( 'SPLICE', 'MYTABLE', null, 'data.csv',
+                                      '\t', null, null, null, null, 0, 'BAD', false, null );
 {: .Example xml:space="preserve"}
 
 </div>
@@ -214,7 +216,8 @@ We can also explicitly specify double quotes (or any other character) as
 our delimiter character for strings:
 
 <div class="preWrapperWide" markdown="1">
-    SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t','"',null,null,null,0,'BAD', false, null);
+    SYSCS_UTIL.UPSERT_DATA_FROM_FILE( 'SPLICE','MYTABLE',null,'data.csv',
+                                      '\t', '"', null, null, null, 0,'BAD', false, null);
 {: .Example xml:space="preserve"}
 
 </div>
@@ -237,7 +240,8 @@ actually define the character delimiter parameter with four single
 quotes, as follow
 
 <div class="preWrapperWide" markdown="1">
-    SYSCS_UTIL.UPSERT_DATA_FROM_FILE('SPLICE','MYTABLE',null,'data.csv','\t','''',null,null,null,0,'BAD', false, null);
+    SYSCS_UTIL.UPSERT_DATA_FROM_FILE( 'SPLICE','MYTABLE',null,'data.csv',
+                                      '\t', '''', null, null, null, 0, 'BAD', false, null);
 {: .Example xml:space="preserve"}
 
 </div>

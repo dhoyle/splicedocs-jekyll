@@ -18,9 +18,8 @@ statement](sqlref_statements_createsequence.html).
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DROP SEQUENCE [ schemaName. ] SQL Identifier RESTRICT
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP SEQUENCE [ schemaName "." ] <a href="sqlref_identifiers_intro.html">SQL Identifier</a> RESTRICT</pre>
 
 </div>
 <div class="paramList" markdown="1">

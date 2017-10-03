@@ -21,13 +21,12 @@ Machine calculates the values of those columns.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    INSERT INTO table-Name
-       [ (Simple-column-Name]* ) ]
-       Query [ ORDER BY clause ]
-       [ result offset clause ]
-       [ fetch first clause ];
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+    INSERT INTO <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
+       [ (<a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>]* ) ]
+       Query [ <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+       [ <a href="sqlref_clauses_resultoffset.html">result offset clause</a> ]
+       [ <a href="sqlref_clauses_resultoffset.html">fetch first clause</a> ];</pre>
 
 </div>
 <div class="paramList" markdown="1">

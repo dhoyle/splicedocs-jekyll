@@ -12,9 +12,7 @@ folder: SQLReference/Statements
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # DROP FUNCTION
 
-The `DROP FUNCTION` statement drops a function from your database.
-Functions are added to the database with the
-[`CREATE FUNCTION`](sqlref_statements_createfunction.html) statement.
+The `DROP FUNCTION` statement drops a function from your database. Functions are added to the database with the &nbsp; [`CREATE FUNCTION`](sqlref_statements_createfunction.html) statement.
 
 ## Syntax
 
@@ -63,4 +61,3 @@ An error will occur in any of the following circumstances:
 
 </div>
 </section>
-

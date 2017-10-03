@@ -20,9 +20,8 @@ schema can be dropped.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DROP SCHEMA schemaName RESTRICT
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP SCHEMA <a href="sqlref_identifiers_types.html#SchemaName">schemaName</a> RESTRICT</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -57,4 +56,3 @@ schema.
 
 </div>
 </section>
-

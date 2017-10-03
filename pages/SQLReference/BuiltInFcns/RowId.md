@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInFcns
 `ROWID` is a *pseudocolumn* that uniquely defines a single row in a
 database table.
 
-The term pseudocolumn is used because you can refer to `ROWID` in the
+The term pseudocolumn is used because you can refer to `ROWID` in the &nbsp;
 [`WHERE`](sqlref_clauses_where.html) clauses of a query as you would
 refer to a column stored in your database; the difference is you cannot
 insert, update, or delete `ROWID` values.
@@ -33,7 +33,7 @@ is an index organized table and you change its primary key.
 </div>
 ## Usage
 
-You can use a `ROWID` value to refer to a row in a table in the
+You can use a `ROWID` value to refer to a row in a table in the &nbsp; 
 [`WHERE`](sqlref_clauses_where.html) clauses of a query. These values
 have several valuable uses:
 
@@ -79,14 +79,14 @@ in the employees database in the engineering department:
     splice> SELECT ROWID, DisplayName, Position
        FROM Players
        WHERE Team='Giants' and Position='OF';
-    
+
     ROWID                         |DISPLAYNAME             |POS&
     ------------------------------------------------------------
     89                            |Greg Brown              |OF
     93                            |Jeremy Packman          |OF
     95                            |Jason Pratter           |OF
     99                            |Reed Lister             |OF
-    
+
     4 rows selected
 {: .Example xml:space="preserve"}
 
@@ -108,4 +108,3 @@ This statement updates column `c` in all rows in which column `b` equals
 
 </div>
 </section>
-

@@ -19,7 +19,7 @@ SQL command string or a prepared statement.
 
 <div class="fcnWrapperWide" markdown="1">
     EXECUTE { SQLString | PreparedStatementIdentifier }
-    [ USING { String | Identifier } ]
+              [ USING { String | Identifier } ]
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -88,7 +88,7 @@ set as its result:
     10         |TEN
     20         |TWENTY
     30         |THIRTY
-    
+
     3 rows selected
     splice> connect 'jdbc:splice://xyz:1527/splicedb';
     splice(CONNECTION1)> create table newtable (newid int primary key,
@@ -108,16 +108,15 @@ set as its result:
     10         |TEN
     20         |TWENTY
     30         |THIRTY
-    
+
     3 rows selected
     splice(CONNECTION1)> show connections;
     CONNECTION0 -   jdbc:splice://abc:1527/splicedb
     CONNECTION1* -  jdbc:splice://xyz:1527/splicedb
     splice(CONNECTION1)> disconnect connection0;
-    splice> 
+    splice>
 {: .AppCommand xml:space="preserve"}
 
 </div>
 </div>
 </section>
-

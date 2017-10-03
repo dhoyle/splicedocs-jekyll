@@ -19,8 +19,7 @@ You specify the scheduled start hour of the backup in Greenwich Mean
 Time (GMT).
 {: .noteNote}
 
-Note that you can subsequently cancel a scheduled backup job with the
-[`Backing Up and Restoring`](onprem_admin_backingup.html) topic.
+Note that you can subsequently cancel a scheduled backup job with the [Backing Up and Restoring](onprem_admin_backingup.html) topic.
 
 ## Syntax
 
@@ -58,12 +57,11 @@ backupType
 {: .paramName}
 
 Specifies the type of backup that you want performed. This must be one
-of the following values: `'full'` or "`'incremental'`; any other value
+of the following values: `'full'` or `'incremental'`; any other value
 produces an error and the backup is not run.
 {: .paramDefnFirst}
 
-Note that if you specify `'incremental'`, Splice Machine checks the
-[`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) table to determine if
+Note that if you specify `'incremental'`, Splice Machine checks the &nbsp;  [`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) table to determine if
 there already is a backup for the system; if not, Splice Machine will
 perform a full backup, and subsequent backups will be incremental.
 {: .paramDefn}

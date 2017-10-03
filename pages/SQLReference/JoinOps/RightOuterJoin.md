@@ -12,7 +12,7 @@ folder: SQLReference/JoinOps
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # RIGHT OUTER JOIN
 
-A `RIGHT OUTER JOIN` is one of the &nbsp;[`JOIN`
+A `RIGHT OUTER JOIN` is one of the &nbsp; [`JOIN`
 operations](sqlref_joinops_about.html) that allow you to specify a
 `JOIN` clause. It preserves the unmatched rows from the second (right)
 table, joining them with a `NULL` in the shape of the first (left)
@@ -21,12 +21,11 @@ with the columns in a different order.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    TableExpression
-    {
-     ON booleanExpression | USING clause
-    }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_expressions_table.html">TableExpression</a>
+{
+ ON booleanExpression | <a href="sqlref_clauses_using.html">USING clause</a>
+}</pre>
 
 </div>
 The scope of expressions in the `ON` clause includes the current tables
@@ -42,7 +41,7 @@ reference either of the tables being joined (though typically it does).
     splice> SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
       FROM CITIES  RIGHT OUTER JOIN COUNTRIES
       ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE;
-    
+
        -- get all countries in Africa and corresponding cities,
        -- including countries without any cities
     splice> SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
@@ -50,7 +49,7 @@ reference either of the tables being joined (though typically it does).
       RIGHT OUTER JOIN COUNTRIES
       ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
       WHERE Countries.region = 'Africa';
-    
+
       -- use the synonymous syntax, RIGHT JOIN, to achieve exactly
       -- the same results as in the example above
     splice> SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
@@ -84,4 +83,3 @@ reference either of the tables being joined (though typically it does).
 
 </div>
 </section>
-

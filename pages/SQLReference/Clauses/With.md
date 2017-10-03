@@ -37,9 +37,9 @@ query.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    WITH queryName    AS SELECT Query
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+WITH <a href="sqlref_queries_query.html">queryName</a>
+   AS SELECT Query</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -110,4 +110,3 @@ WITH
 </div>
 </div>
 </section>
-

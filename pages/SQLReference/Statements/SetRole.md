@@ -25,9 +25,8 @@ attempt to set a role results in an error.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    SET ROLE { roleName | 'string-constant' | ? | NONE }
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+SET ROLE { <a href="sqlref_identifiers_types.html#RoleName">roleName</a> | 'string-constant' | ? | NONE }</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -89,11 +88,11 @@ This examples set the role of the current user to `reader_role`:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     stmt.execute("SET ROLE admin");      -- case normal form: ADMIN
     stmt.execute("SET ROLE \"admin\"");  -- case normal form: admin
     stmt.execute("SET ROLE none");       -- special case
-    
+
     PreparedStatement ps = conn.prepareStatement("SET ROLE ?");
     ps.setString(1, "  admin ");         -- on execute: case normal form: ADMIN
     ps.setString(1, "\"admin\"");        -- on execute: case normal form: admin
@@ -118,4 +117,3 @@ This examples set the role of the current user to `reader_role`:
 
 </div>
 </section>
-

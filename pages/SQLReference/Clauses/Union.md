@@ -17,9 +17,8 @@ The `UNION` operator combines the result set of two or more similar
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    SELECT expression ]*
-{: .FcnSyntax}
+<div class="FcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_expressions_select.html">SELECT expression</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -76,11 +75,11 @@ A result set.
     CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY,
                      i1 INTEGER, i2 INTEGER,
                      c10 char(10), c30 char(30), tm time);
-    
+
     CREATE TABLE t2( id INTEGER NOT NULL PRIMARY KEY,
                      i1 INTEGER, i2 INTEGER,
                      vc20 varchar(20), d double, dt date);
-    
+
     INSERT INTO t1(id,i1,i2,c10,c30) VALUES
       (1,1,1,'a','123456789012345678901234567890'),
       (2,1,2,'a','bb'),
@@ -88,7 +87,7 @@ A result set.
       (4,1,3,'zz','5'),
       (5,NULL,NULL,NULL,'1.0'),
       (6,NULL,NULL,NULL,'a');
-    
+
     INSERT INTO t2(id,i1,i2,vc20,d) VALUES
       (1,1,1,'a',1.0),
       (2,1,2,'a',1.1),
@@ -113,7 +112,7 @@ A result set.
     102        |5          |5
     103        |1          |3
     104        |1          |3
-    
+
     11 rows selected
 {: .Example}
 
@@ -134,7 +133,7 @@ A result set.
     102        |5          |5
     103        |1          |3
     104        |1          |3
-    
+
     14 rows selected
 {: .Example}
 
@@ -145,4 +144,3 @@ A result set.
 
 </div>
 </section>
-

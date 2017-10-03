@@ -20,14 +20,12 @@ If a qualified view name is specified, the schema name cannot begin with
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    
-    CREATE VIEW view-Name
-       [ ( Simple-column-Name] * ) ]
-       AS ORDER BY clause ]
-         [ RESULT OFFSET clause ]
-         [ FETCH FIRST clause ] 
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE VIEW <a href="sqlref_identifiers_types.html#ViewName">view-Name</a>
+   [ ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>] * ) ]
+   AS <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+     [ <a href="sqlref_clauses_resultoffset.html">RESULT OFFSET clause</a> ]
+     [ <a href="sqlref_clauses_resultoffset.html">FETCH FIRST clause</a> ]</pre>
 
 </div>
 A view definition can contain an optional view column list to explicitly
@@ -81,7 +79,7 @@ database:
           INT( (Now - Birthdate) / 365.25) AS Age
           FROM Players;
     0 rows inserted/updated/deleted
-    
+
     splice> SELECT * FROM PlayerAges WHERE Age > 30 ORDER BY Team, Age DESC;
     PLAYER                  |TEAM     |AGE
     -----------------------------------------
@@ -120,7 +118,7 @@ database:
     Tam Lassiter            |Giants   |31
     Martin Cassman          |Giants   |31
     Yuri Piamam             |Giants   |31
-    
+
     35 rows selected
 {: .Example xml:space="preserve"}
 
@@ -138,13 +136,13 @@ optimized. For example, given:
 <div class="preWrapper" markdown="1">
     splice> CREATE TABLE T1 (C1 DOUBLE PRECISION);
     0 rows inserted/updated/deleted
-    
+
     splice>CREATE FUNCTION SIN (DATA DOUBLE)
        RETURNS DOUBLE
        EXTERNAL NAME 'java.lang.Math.sin'
        LANGUAGE JAVA PARAMETER STYLE JAVA;
     0 rows inserted/updated/deleted
-    
+
     splice> CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
@@ -167,4 +165,3 @@ Is dependent on view *V1*, table *T1,* and external scalar function
 
 </div>
 </section>
-

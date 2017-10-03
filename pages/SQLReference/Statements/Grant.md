@@ -27,24 +27,25 @@ even with `GRANT ALL PRIVILEGES`.
 
 ## Syntax for Schemas
 
-<div class="fcnWrapperWide" markdown="1">
-    GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege }*
-       ON [SCHEMA] schema-Name
-       TO grantees
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege }*
+   ON [SCHEMA] <a href="sqlref_identifiers_types.html#SchemaName">schema-Name</a>
+   TO grantees</pre>
 
 </div>
 <div class="paramList" markdown="1">
 schema-privilege
 {: .paramName}
 
-<div class="preWrapper"
-` DELETE
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+  DELETE
 | INSERT
 | REFERENCES [( column-identifier {, column-identifier}* )]
 | SELECT [( column-identifier {, column-identifier}* )]
 | TRIGGER
-| UPDATE [( column-identifier {, column-identifier}* )]`
+| UPDATE [( column-identifier {, column-identifier}* )]</pre>
+
+</div>
 {: .paramDefnFirst}
 
 See the [Privilege Types](#PrivilegeTypes) section below for more
@@ -81,14 +82,14 @@ Grantees](#AboutGrantees) section below for more information.
 
 * When you drop a schema from your database, all privileges associated
   with the schema are removed.
+
 * Table-level privileges override schema-level privileges.
 
 ## Syntax for Tables
 
-<div class="fcnWrapperWide" markdown="1">
-    GRANT ALL PRIVILEGES | table-privilege {, table-privilege }*   ON [TABLE] { view-Name }
-       TO grantees
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+GRANT ALL PRIVILEGES | table-privilege {, table-privilege }*   ON [TABLE] { <a href="sqlref_identifiers_types.html#TableName">tableName</a> }
+   TO grantees</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -179,11 +180,10 @@ Grantees](#AboutGrantees) section below for more information.
 </div>
 ## Syntax for User-defined Types
 
-<div class="fcnWrapperWide" markdown="1">
-    GRANT USAGE
-       ON TYPE [ SQL Identifier
-       TO grantees
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+GRANT USAGE
+   <a href="sqlref_identifiers_intro.html">SQL Identifier</a>
+   TO grantees</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -206,10 +206,10 @@ Grantees](#AboutGrantees) section below for more information.
 </div>
 ## Syntax for Roles
 
-<div class="fcnWrapperWide" markdown="1">
-    GRANT roleName }* ]
-       TO grantees
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+GRANT <a href="sqlref_identifiers_types.html#RoleName">roleName</a>
+    { <a href="sqlref_identifiers_types.html#RoleName">roleName</a> }*
+   TO grantees</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -247,10 +247,9 @@ grant a role to a user or to another role.
 
 Here's the syntax:
 
-<div class="fcnWrapperWide" markdown="1">
-    {     roleName | PUBLIC }
-       [, { roleName | PUBLIC } ] *
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+{      <a href="sqlref_identifiers_types.html#RoleName">roleName</a> | PUBLIC }
+  [, { <a href="sqlref_identifiers_types.html#RoleName">roleName</a> | PUBLIC } ] *</pre>
 
 </div>
 <div class="paramList" markdown="1">

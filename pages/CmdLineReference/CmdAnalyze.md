@@ -22,7 +22,8 @@ automatically used by the query optimizer.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    ANALYZE TABLE [schemaName '.'] table-Name [ESTIMATE STATISTICS SAMPLE samplepercent PERCENT];
+    ANALYZE TABLE [schemaName '.'] table-Name
+                  [ESTIMATE STATISTICS SAMPLE samplepercent PERCENT];
     ANALYZE SCHEMA schema-Name;
 {: .FcnSyntax xml:space="preserve"}
 

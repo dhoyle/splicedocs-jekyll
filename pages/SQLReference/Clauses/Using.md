@@ -18,9 +18,8 @@ operations that have an explicit join clause.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    USING ( Simple-column-Name ]* )
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+USING ( [ <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> ]* )</pre>
 
 </div>
 <div class="paramList" markdown="1">

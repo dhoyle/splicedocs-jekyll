@@ -40,7 +40,7 @@ A &nbsp;[`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 `ATAN2` returns the arc tangent of *y*/*x* in the range -*pi* to *pi*
 radians, as a &nbsp;[`DOUBLE
-PRECISION`](sqlref_datatypes_doubleprecision.html)number.
+PRECISION`](sqlref_datatypes_doubleprecision.html) number.
 
 * If either argument is `NULL`, the result of the function is `NULL`.
 * If the first argument is zero and the second argument is positive, the
@@ -59,7 +59,7 @@ PRECISION`](sqlref_datatypes_doubleprecision.html)number.
     1
     ----------
     1.5707963267948966
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -82,4 +82,3 @@ PRECISION`](sqlref_datatypes_doubleprecision.html)number.
 
 </div>
 </section>
-

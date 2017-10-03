@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # USER
 
-When used outside stored routines, &nbsp;[`CURRENT_USER`](sqlref_builtinfcns_currentuser.html), &nbsp;`USER`, and  &nbsp;[`SESSION_USER`](sqlref_builtinfcns_sessionuser.html) all return the
+When used outside stored routines, &nbsp;[`CURRENT_USER`](sqlref_builtinfcns_currentuser.html), &nbsp;`USER`, and  &nbsp; [`SESSION_USER`](sqlref_builtinfcns_sessionuser.html) all return the
 authorization identifier of the user who created the SQL session.
 
 `SESSION_USER` also always returns this value when used within stored

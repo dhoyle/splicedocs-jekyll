@@ -27,9 +27,8 @@ change remains in effect.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    SET [CURRENT] SCHEMA [=] schemaName
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+SET [CURRENT] SCHEMA [=] <a href="sqlref_identifiers_types.html#SchemaName">schemaName</a></pre>
 
 </div>
 <div class="paramList" markdown="1">

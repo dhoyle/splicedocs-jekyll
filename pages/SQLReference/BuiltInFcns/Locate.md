@@ -20,8 +20,7 @@ desired string is not found, `LOCATE` returns 0.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    LOCATE(CharacterExpression1, CharacterExpression2
-            [, StartPosition] )
+    LOCATE ( CharacterExpression1, CharacterExpression2 [, StartPosition] )
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -77,7 +76,7 @@ first located. Index positions start with 1.
     Jeremy Packman          |8
     Pablo Bonjourno         |0
     Paul Kaster             |0
-    
+
     5 rows selected
 {: .Example xml:space="preserve"}
 
@@ -100,4 +99,3 @@ first located. Index positions start with 1.
 
 </div>
 </section>
-

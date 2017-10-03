@@ -22,23 +22,25 @@ you are revoking privileges to a schema object or revoking a role.
 
 ## Syntax for SCHEMA
 
-<div class="fcnWrapperWide" markdown="1">
-    REVOKE privilege-type
-       ON [ SCHEMA ] schema
-       FROM grantees
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+REVOKE <a href="#PrivilegeTypes">privilege-type</a>
+   ON [ SCHEMA ] schema
+   FROM <a href="#AboutGrantees">grantees</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
 privilege-type
 {: .paramName}
 
-`DELETE
- |INSERT
- |REFERENCES [( column-identifier {, column-identifier}* )]
- |SELECT [( column-identifier {, column-identifier}* )]
- |TRIGGER
- |UPDATE [( column-identifier {, column-identifier}* )]`
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+   DELETE
+ | INSERT
+ | REFERENCES [( column-identifier {, column-identifier}* )]
+ | SELECT [( column-identifier {, column-identifier}* )]
+ | TRIGGER
+ | UPDATE [( column-identifier {, column-identifier}* )]</pre>
+
+</div>
 {: .paramDefnFirst}
 
 
@@ -74,13 +76,13 @@ Grantees](#AboutGrantees) section below for more information.
 </div>
 ## Syntax for Tables
 
-<div class="fcnWrapperWide" markdown="1">
-    REVOKE privilege-type
-       ON [ TABLE ] { view-Name }
-       FROM grantees
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+REVOKE <a href="#PrivilegeTypes">privilege-type</a>
+   ON [ TABLE ] <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
+   FROM <a href="#AboutGrantees">grantees</a></pre>
 
 </div>
+
 <div class="paramList" markdown="1">
 privilege-type
 {: .paramName}
@@ -169,11 +171,10 @@ view, trigger, or constraint.
 </div>
 ## Syntax for User-defined types
 
-<div class="fcnWrapperWide" markdown="1">
-    REVOKE USAGE
-       ON TYPE  [ SQL Identifier
-       FROM grantees RESTRICT
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+REVOKE USAGE
+   ON TYPE <a href="sqlref_identifiers_intro.html">SQL Identifier</a>
+   FROM grantees RESTRICT</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -209,10 +210,11 @@ or constraint.
 </div>
 ## Syntax for Roles
 
-<div class="fcnWrapperWide" markdown="1">
-    REVOKE roleName }* ]
-       FROM grantees
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+REVOKE <a href="sqlref_identifiers_types.html#RoleName">roleName</a>
+    { <a href="sqlref_identifiers_types.html#RoleName">roleName</a> }*
+   FROM grantees</pre>
+
 
 </div>
 <div class="paramList" markdown="1">
@@ -287,57 +289,64 @@ privilege..
 ## Privilege Types   {#PrivilegeTypes}
 
 <table summary="Privilege types">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Privilege Type</th>
-                        <th>Usage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>ALL PRIVILEGES</code></td>
-                        <td>To revoke all of the privileges to the user or role for the specified table. You can also grant one or more table privileges by specifying a privilege-list.</td>
-                    </tr>
-                    <tr>
-                        <td><code>DELETE</code></td>
-                        <td>To revoke permission to delete rows from the specified table.</td>
-                    </tr>
-                    <tr>
-                        <td><code>INSERT</code></td>
-                        <td>To revoke permission to insert rows into the specified table.</td>
-                    </tr>
-                    <tr>
-                        <td><code>REFERENCES</code></td>
-                        <td>To revoke permission to create a foreign key reference to the specified table. If a column list is  pecified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
-                    </tr>
-                    <tr>
-                        <td><code>SELECT</code></td>
-                        <td>To revoke permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a> on a table or view. If a column list is specified with the <code>SELECT</code> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <code>SELECT</code> statement or <em>SelectExpression</em> (for example, queries that use <code>COUNT(*)</code>), the user must have at least one column-level <code>SELECT</code> privilege or table-level <code>SELECT</code> privilege.</p></td>
-                    </tr>
-                    <tr>
-                        <td><code>TRIGGER</code></td>
-                        <td>To revoke permission to create a trigger on the specified table.</td>
-                    </tr>
-                    <tr>
-                        <td><code>UPDATE</code></td>
-                        <td>To revoke permission to use the <a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause, you must have the <code>SELECT</code> privilege on the columns in the row that you want to update.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Privilege Type</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>ALL PRIVILEGES</code></td>
+            <td>To revoke all of the privileges to the user or role for the specified table. You can also grant one or more table privileges by specifying a privilege-list.</td>
+        </tr>
+        <tr>
+            <td><code>DELETE</code></td>
+            <td>To revoke permission to delete rows from the specified table.</td>
+        </tr>
+        <tr>
+            <td><code>INSERT</code></td>
+            <td>To revoke permission to insert rows into the specified table.</td>
+        </tr>
+        <tr>
+            <td><code>REFERENCES</code></td>
+            <td>To revoke permission to create a foreign key reference to the specified table. If a column list is  pecified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
+        </tr>
+        <tr>
+            <td><code>SELECT</code></td>
+            <td>To revoke permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a> on a table or view. If a column list is specified with the <code>SELECT</code> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <code>SELECT</code> statement or <em>SelectExpression</em> (for example, queries that use <code>COUNT(*)</code>), the user must have at least one column-level <code>SELECT</code> privilege or table-level <code>SELECT</code> privilege.</p></td>
+        </tr>
+        <tr>
+            <td><code>TRIGGER</code></td>
+            <td>To revoke permission to create a trigger on the specified table.</td>
+        </tr>
+        <tr>
+            <td><code>UPDATE</code></td>
+            <td>To revoke permission to use the <a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause, you must have the <code>SELECT</code> privilege on the columns in the row that you want to update.</td>
+        </tr>
+    </tbody>
+</table>
+
 ## Usage Notes
 
 The following types of privileges can be revoked:
 
 * Delete data from a specific table.
+
 * Insert data into a specific table.
+
 * Create a foreign key reference to the named table or to a subset of
   columns from a table.
+
 * Select data from a table, view, or a subset of columns in a table.
 * Create a trigger on a table.
+
 * Update data in a table or in a subset of columns in a table.
+
 * Run a specified routine (function or procedure).
+
 * Use a user-defined type.
 
 Before you issue a `REVOKE` statement, check that the

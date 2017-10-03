@@ -15,11 +15,11 @@ folder: SQLReference/Clauses
 A `HAVING` clause restricts the results of a `SelectExpression.`
 
 The `HAVING` clause is applied to each group of the grouped table,
-similarly to how a &nbsp;[`WHERE`](sqlref_clauses_where.html) clause is
+similarly to how a &nbsp; [`WHERE`](sqlref_clauses_where.html) clause is
 applied to a select list.
 
 If there is no `GROUP BY` clause, the `HAVING` clause is applied to the
-entire result as a single group. The
+entire result as a single group. The &nbsp; 
 [`SELECT`](sqlref_expressions_select.html) expression cannot refer
 directly to any column that does not have a `GROUP BY` clause. It can,
 however, refer to constants, aggregates, and special registers.
@@ -55,7 +55,7 @@ is not a grouping column, it does not appear within an aggregate, and it
 is not within a subquery:
 
 <div class="preWrapper" markdown="1">
-    
+
     SELECT COUNT(*)
       FROM SAMP.STAFF
       GROUP BY ID
@@ -70,7 +70,7 @@ to the outer query block if and only if it refers to a grouping column.
 ## Example
 
 <div class="preWrapperWide" markdown="1">
-    
+
        -- Find the total number of economy seats taken on a flight,
        -- grouped by airline,
        -- only when the group has at least 2 records.
@@ -90,4 +90,3 @@ to the outer query block if and only if it refers to a grouping column.
 
 </div>
 </section>
-

@@ -18,7 +18,7 @@ in-progress backup.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_CANCEL_BACKUP( ); 
+    SYSCS_UTIL.SYSCS_CANCEL_BACKUP( );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -37,25 +37,24 @@ database owner can grant access to other users.
 This cancels the currently running backup:
 
 <div class="preWrapperWide" markdown="1">
-    CALL SYSCS_UTIL.SYSCS_CANCEL_BACKUP(); 
+    CALL SYSCS_UTIL.SYSCS_CANCEL_BACKUP();
 {: .Example xml:space="preserve"}
 
 </div>
 ## See Also
 
-* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html) in
-  the *Administrator's Guide*
-* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)built-in
-  system procedure
-* [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)built-in
-  system procedure
+* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
+
+* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
+
+* [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
+
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-  built-in system procedure
+
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-  built-in system procedure
+
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
-  built-in system procedure
+
 
 </div>
 </section>
-

@@ -23,9 +23,8 @@ statement.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    TRUNCATE TABLE table-Name
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+TRUNCATE TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -49,4 +48,3 @@ statement:
 </div>
 </div>
 </section>
-

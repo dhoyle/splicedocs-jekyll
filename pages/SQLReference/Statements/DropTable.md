@@ -16,9 +16,8 @@ The `DROP TABLE` statement removes the specified table.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DROP TABLE [IF EXISTS] table-Name
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP TABLE [IF EXISTS] <a href="sqlref_identifiers_types.html#TableName">table-Name</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -58,4 +57,3 @@ system](sqlref_statements_interactions.html).)
 
 </div>
 </section>
-

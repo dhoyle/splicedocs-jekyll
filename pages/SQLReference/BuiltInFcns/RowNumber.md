@@ -31,7 +31,7 @@ overClause
 See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 {: .paramDefnFirst}
 
-Ranking functions such as `ROW_NUMBER` must include an
+Ranking functions such as `ROW_NUMBER` must include an &nbsp; 
 [`ORDER BY`](sqlref_clauses_orderby.html) clause in the `OVER` clause.
 This is because the ranking is calculated based on the ordering.
 {: .noteNote}
@@ -51,7 +51,7 @@ salaries are at least $1 million:
        ROW_NUMBER() OVER (PARTITION BY Team ORDER BY Salary DESC) "RowNum"
        FROM Players JOIN Salaries ON Players.ID=Salaries.ID
        WHERE Team='Cards' and Salary>999999;
-    
+
     DISPLAYNAME             |SALARY              |RowNum
     ------------------------------------------------------------------
     Mitch Hassleman         |17000000            |1
@@ -72,7 +72,7 @@ salaries are at least $1 million:
     Pablo Bonjourno         |1650000             |16
     Jonathan Pearlman       |1500000             |17
     Jan Bromley             |1200000             |18
-    
+
     18 rows selected
 {: .Example xml:space="preserve"}
 
@@ -89,4 +89,3 @@ salaries are at least $1 million:
 
 </div>
 </section>
-

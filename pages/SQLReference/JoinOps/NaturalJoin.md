@@ -12,20 +12,18 @@ folder: SQLReference/JoinOps
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # NATURAL JOIN
 
-A `NATURAL JOIN` is a [ `JOIN` operation](sqlref_joinops_about.html)
+A `NATURAL JOIN` is a &nbsp; [ `JOIN` operation](sqlref_joinops_about.html)
 that creates an implicit join clause for you based on the common columns
 in the two tables being joined. Common columns are columns that have the
 same name in both tables.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    TableExpression NATURAL
-       [ { LEFT | RIGHT }
-         [ OUTER ] | INNER ] JOIN
-       { TableViewOrFunctionExpression |
-         ( TableExpression ) }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_expressions_table.html">TableExpression</a> NATURAL
+   [ { LEFT | RIGHT }
+     [ OUTER ] | INNER ] JOIN
+   { <a href="sqlref_expressions_table.html#TableViewExpression">TableViewOrFunctionExpression</a> | ( <a href="sqlref_expressions_table.html">TableExpression</a> ) }</pre>
 
 </div>
 ## Usage
@@ -64,7 +62,7 @@ are equivalent:
     splice> SELECT *
       FROM COUNTRIES
       NATURAL JOIN CITIES;
-    
+
     splice> SELECT *
       FROM COUNTRIES
       JOIN CITIES
@@ -90,4 +88,3 @@ unmatched rows from the first (left) table:
 
 </div>
 </section>
-

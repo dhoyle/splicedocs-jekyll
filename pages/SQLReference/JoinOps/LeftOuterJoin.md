@@ -12,20 +12,19 @@ folder: SQLReference/JoinOps
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # LEFT OUTER JOIN
 
-A `LEFT OUTER JOIN` is one of the &nbsp;[`JOIN`
+A `LEFT OUTER JOIN` is one of the &nbsp; [`JOIN`
 operations](sqlref_joinops_about.html) that allow you to specify a join
 clause. It preserves the unmatched rows from the first (left) table,
 joining them with a `NULL` row in the shape of the second (right) table.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    TableExpression
-    {
-        ON booleanExpression |
-        USING clause
-    }
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_expressions_table.html">TableExpression</a>
+{
+    ON booleanExpression |
+    <a href="sqlref_clauses_using.html">USING clause</a>
+}</pre>
 
 </div>
 The scope of expressions in either the `ON` clause includes the current
@@ -42,7 +41,7 @@ reference either of the tables being joined (though typically it does).
       LEFT OUTER JOIN Cities
       ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
       WHERE REGION = 'Asia';
-    
+
        -- use the synonymous syntax, LEFT JOIN, to achieve exactly
        -- the same results as in the example above
     splice> SELECT  COUNTRIES.COUNTRY, CITIES.CITY_NAME,REGION
@@ -67,7 +66,7 @@ reference either of the tables being joined (though typically it does).
       FROM SAMP.EMPLOYEE LEFT OUTER JOIN SAMP.DEPARTMENT
       ON WORKDEPT = DEPTNO
       AND YEAR(BIRTHDATE) < 1930;
-    
+
        -- List every department with the employee number and
        -- last name of the manager,
        -- including departments without a manager
@@ -85,4 +84,3 @@ reference either of the tables being joined (though typically it does).
 
 </div>
 </section>
-

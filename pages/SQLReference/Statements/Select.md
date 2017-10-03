@@ -1,4 +1,4 @@
-T---
+---
 title: SELECT statement
 summary: Selects records from your database.
 keywords: selecting records
@@ -16,12 +16,11 @@ Use the `SELECT` statement to query a database and receive back results.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    SELECT Query
-       [ORDER BY clause]
-       [result offset clause]
-       [fetch first clause]
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+SELECT <a href="sqlref_queries_query.html">Query</a>
+   [<a href="sqlref_clauses_orderby.html">ORDER BY clause</a>]
+   [<a href="sqlref_clauses_resultoffset.html">result offset clause</a>]
+   [<a href="sqlref_clauses_resultoffset.html">fetch first clause</a>]</pre>
 
 </div>
 <div class="paramList" markdown="1">

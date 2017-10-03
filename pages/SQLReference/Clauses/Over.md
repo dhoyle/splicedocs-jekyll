@@ -75,7 +75,8 @@ essentially the same as for the
 
 <div class="fcnWrapperWide" markdown="1">
     ORDER BY expression
-       [ ASC | DESC | USING operator ]   [ NULLS FIRST | NULLS LAST ]
+       [ ASC | DESC | USING operator ]
+       [ NULLS FIRST | NULLS LAST ]
        [, ...]
 {: .FcnSyntax xml:space="preserve"}
 
@@ -127,8 +128,8 @@ A a non-negative integer value.
 </div>
 ## Usage Restrictions
 
-Because window functions are only allowed in
-[`HAVING`](sqlref_clauses_using.html)clauses, you sometimes need to use
+Because window functions are only allowed in 
+[`HAVING`](sqlref_clauses_using.html) clauses, you sometimes need to use
 subqueries with window functions to accomplish what seems like it could
 be done in a simpler query.
 

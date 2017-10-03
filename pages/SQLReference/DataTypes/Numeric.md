@@ -12,7 +12,7 @@ folder: SQLReference/DataTypes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # NUMERIC Data Type
 
-`NUMERIC` is a synonym for the
+`NUMERIC` is a synonym for the &nbsp;
 [`DECIMAL`](sqlref_datatypes_decimal.html) data type and behaves the
 same way. The documentation below is a mirror of the documentation for
 the `DECIMAL` data type.
@@ -64,7 +64,7 @@ Here are several notes about using the `NUMERIC` data type:
       values cast (1798765 AS numeric(5,2));
       ERROR 22003: The resulting value is outside the range for the data type DECIMAL/NUMERIC(5,2).
   {: .Example xml:space="preserve"}
-  
+
   </div>
 
 * When mixed with other data types in expressions, the resulting data
@@ -93,7 +93,7 @@ Here are several notes about using the `NUMERIC` data type:
 ## Examples
 
 <div class="preWrapper" markdown="1">
-    
+
     VALUES 123.456;
     VALUES 0.001;
 {: .Example xml:space="preserve"}
@@ -101,4 +101,3 @@ Here are several notes about using the `NUMERIC` data type:
 </div>
 </div>
 </section>
-

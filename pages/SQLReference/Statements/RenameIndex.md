@@ -17,9 +17,8 @@ current schema. Users cannot rename indexes in the `SYS` schema.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    RENAME INDEX index-Name TO new-index-Name
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+RENAME INDEX <a href="sqlref_identifiers_types.html#IndexName">index-Name</a> TO <a href="sqlref_identifiers_types.html#IndexName">new-index-Name</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -50,4 +49,3 @@ The new name for the index.
 
 </div>
 </section>
-

@@ -16,9 +16,8 @@ The `DROP VIEW` statement drops the specified view.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DROP VIEW view-Name
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP VIEW <a href="sqlref_identifiers_types.html#ViewName">view-Name</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -49,4 +48,3 @@ statement.
 
 </div>
 </section>
-

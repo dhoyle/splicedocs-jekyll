@@ -33,16 +33,15 @@ BY` on the outer query with `ORDER BY` in subqueries.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    ORDER BY { column-Name |
-               ColumnPosition |
-               Expression }
-        [ ASC | DESC ]
-        [ , column-Name | ColumnPosition | Expression
-          [ ASC | DESC ]
-          [ NULLS FIRST | NULLS LAST ]
-        ]* 
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+ORDER BY { <a href="sqlref_identifiers_types.html#ColumnName">column-Name</a> |
+           ColumnPosition |
+           Expression }
+    [ ASC | DESC ]
+    [ , <a href="sqlref_identifiers_types.html#ColumnName">column-Name</a> | ColumnPosition | Expression
+      [ ASC | DESC ]
+      [ NULLS FIRST | NULLS LAST ]
+    ]*</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -170,4 +169,3 @@ You can sort the result set by invoking a function, for example:
 
 </div>
 </section>
-

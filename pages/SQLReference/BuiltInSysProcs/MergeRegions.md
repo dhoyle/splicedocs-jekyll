@@ -99,7 +99,9 @@ have called `SYSCS_UTIL.GET_ENCODED_REGION_NAME` to retrieve the encoded
 key values for each region:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.MERGE_REGIONS('SPLICE','TESTTABLE', NULL, 'cf0163796bba8666b1183788fc7bc31b', '4e11260fb5ae106a681574be90709449');
+    splice> CALL SYSCS_UTIL.MERGE_REGIONS('SPLICE','TESTTABLE', NULL,
+                                          'cf0163796bba8666b1183788fc7bc31b',
+                                          '4e11260fb5ae106a681574be90709449');
     Statement executed.
 {: .Example xml:space="preserve"}
 
@@ -109,7 +111,9 @@ have called `SYSCS_UTIL.GET_ENCODED_REGION_NAME` to retrieve the encoded
 key values for each region::
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.MERGE_REGIONS('SPLICE','TESTTABLE', 'SHIP_INDEX', '5a59b4a46a8a0a7180a469dbe0b40fad', '039ba9b2ecdf458b3293bd9e74e88f65');
+    splice> CALL SYSCS_UTIL.MERGE_REGIONS('SPLICE','TESTTABLE', 'SHIP_INDEX',
+                                          '5a59b4a46a8a0a7180a469dbe0b40fad',
+                                          '039ba9b2ecdf458b3293bd9e74e88f65');
     Statement executed.
 {: .Example xml:space="preserve"}
 
@@ -124,4 +128,3 @@ key values for each region::
 
 </div>
 </section>
-

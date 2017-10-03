@@ -50,7 +50,6 @@ connect with Splice Machine using our ODBC driver.
     {: .indentLevel1}
 
     1.  Open the list of connections:
-        {: .topLevel}
 
         Click <span class="AppCommand">Connect to Data</span> on
         Tableau's opening screen to reveal the list of possible data
@@ -58,7 +57,6 @@ connect with Splice Machine using our ODBC driver.
         {: .indentLevel1}
 
     2.  Select ODBC:
-        {: .topLevel}
 
         Scroll to the bottom of the <span class="AppCommand">To a
         server</span> list, click More Servers, then click <span
@@ -66,7 +64,6 @@ connect with Splice Machine using our ODBC driver.
         {: .indentLevel1}
 
     3.  Select your DSN and connect:
-        {: .topLevel}
 
         Select the DSN you just created (typically named Splice Machine)
         when installing our ODBC driver) from the drop-down list, and
@@ -74,14 +71,12 @@ connect with Splice Machine using our ODBC driver.
         {: .indentLevel1}
 
     4.  Select the schema:
-        {: .topLevel}
 
         Select the schema you want to work with (`splice`), and then
         select the <span class="AppCommand">Single Table</span> option.
         {: .indentLevel1}
 
     5.  Select the table to view:
-        {: .topLevel}
 
         Click the search (magnifying glass) icon, and then select the
         table you want to view from the drop-down list.

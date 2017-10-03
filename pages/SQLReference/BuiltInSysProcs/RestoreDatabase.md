@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInSysProcs
 The `SYSCS_UTIL.SYSCS_RESTORE_DATABASE` system procedure restores your
 database to the state it was in when a specific backup was performed,
 using a backup that you previously created using either the
-&nbsp;[`SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
+&nbsp; [`SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
 procedure.
 
 You can restore your database from any previous full or incremental

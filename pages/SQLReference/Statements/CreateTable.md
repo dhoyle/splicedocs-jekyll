@@ -53,21 +53,21 @@ depending on whether you are specifying the column definitions and
 constraints, or whether you are modeling the columns after the results
 of a query expression with the `CREATE TABLE AS` form:
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE TABLE table-Name
-      {
-          ( {column-definition |
-             Table-level constraint}
-             [ , {column-definition} ] *
-          )
-      |
-          [ ( column-name ] * ) ]
-          AS query-expression [AS <name>]
-          WITH NO DATA
-       }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
+  {
+      ( {<a href="sqlref_statements_columndef.html">column-definition</a> |
+         <a href="sqlref_clauses_constraint.html#TableConstraint">Table-level constraint</a>}
+         [ , {<a href="sqlref_statements_columndef.html">column-definition}</a> ] *
+      )
+  |
+      [ ( <a href="sqlref_identifiers_types.html#ColumnName">column-name</a> ]* ) ]
+      AS query-expression [AS &lt;name&gt;]
+      WITH NO DATA
+  }</pre>
 
 </div>
+
 <div class="paramList" markdown="1">
 table-Name
 {: .paramName}
@@ -123,8 +123,8 @@ query. The columns in the query result are used as a model for creating
 the columns in the new table.
 
 **You cannot include** an `ORDER BY` clause in the query expression you
-use in the `CREATE TABLE AS` statement.   
-  
+use in the `CREATE TABLE AS` statement.
+
 If the select list contains an expression, **you must name the result of
 the expression**. Refer to the final example at the bottom of this topic
 page.
@@ -166,7 +166,7 @@ the data, and then insert the data; for example:
        FROM t1 RIGHT OUTER JOIN t2 ON t1.b = t2.c
        WITH NO DATA;
     0 rows inserted/updated/deleted
-    
+
     splice> INSERT INTO t3
        SELECT t1.a,t1.b,t2.c,t2.d
        FROM t1 RIGHT OUTER JOIN t2 ON t1.b = t2.c;
@@ -186,7 +186,7 @@ This example creates our Players table:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TABLE Players(
         ID           SMALLINT NOT NULL PRIMARY KEY,
         Team         VARCHAR(64) NOT NULL,
@@ -203,7 +203,7 @@ two columns:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> CREATE TABLE HOTELAVAILABILITY (
        Hotel_ID INT NOT NULL,
        Booking_Date DATE NOT NULL,
@@ -218,7 +218,7 @@ of 5 that increments by 5, and also includes a primary key constraint:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> CREATE TABLE PEOPLE (
        Person_ID INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 5, INCREMENT BY 5)
           CONSTRAINT People_PK PRIMARY KEY,
@@ -252,7 +252,7 @@ the columns:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TABLE MorePlayers (ID, PlayerName, Born)
        AS SELECT ID, DisplayName, Birthdate
              FROM Players WITH DATA;
@@ -266,7 +266,7 @@ in the newly created table:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TABLE T3 (X,Y)
        AS SELECT 2*I AS COL1, 2.0*F AS COL2
              FROM T1 WITH NO DATA;
@@ -289,4 +289,3 @@ in the newly created table:
 
 </div>
 </section>
-

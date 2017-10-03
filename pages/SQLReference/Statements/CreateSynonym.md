@@ -17,9 +17,8 @@ for a table or a view.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE SYNONYM( tableName } );
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE SYNONYM( <a href="sqlref_identifiers_types.html#TableName">tableName</a> } );</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -74,7 +73,7 @@ Here are a few other important notes about using synonyms:
 <div class="preWrapper" markdown="1">
     splice> CREATE SYNONYM Hitting FOR Batting;
     0 rows inserted/updated/deleted
-    
+
     splice> SELECT ID, Games FROM Batting WHERE ID < 11;
     ID    |GAMES
     -------------
@@ -88,9 +87,9 @@ Here are a few other important notes about using synonyms:
     8     |52
     9     |115
     10    |100
-    
+
     0 rows inserted/updated/deleted
-    
+
     splice> SELECT ID, Games FROM Hitting WHERE ID < 11;
     ID    |GAMES
     -------------
@@ -104,7 +103,7 @@ Here are a few other important notes about using synonyms:
     8     |52
     9     |115
     10    |100
-    
+
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
@@ -117,4 +116,3 @@ Here are a few other important notes about using synonyms:
 
 </div>
 </section>
-

@@ -17,15 +17,15 @@ other values.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    {
-        VALUES ( Value {, Value }* )
-            [ , ( Value {, Value }* ) ]* |
-        VALUES Value [ , Value ]*
-    } [ ORDER BY clause ]
-      [ result offset clause ]
-      [ fetch first clause ]
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+{
+ VALUES ( Value {, Value }* )
+    [ , ( Value {, Value }* ) ]* |
+ VALUES Value [ , Value ]*
+}
+  [ <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+  [ <a href="sqlref_clauses_resultoffset.html">result offset clause</a> ]
+  [ <a href="sqlref_clauses_resultoffset.html">fetch first clause</a> ]</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -82,7 +82,7 @@ query that selects from a `VALUES` clause; for example:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
      SELECT R1,R2
        FROM (VALUES('GROUP 1','GROUP 2')) AS MYTBL(R1,R2);
 {: .Example xml:space="preserve"}
@@ -103,41 +103,41 @@ subquery and ordered, as in the following statement:
 <div class="preWrapperWide" markdown="1">
        -- 3 rows of 1 column
     splice> VALUES (1),(2),(3);
-    
+
        -- 3 rows of 1 column
     splice> VALUES 1, 2, 3;
-    
+
        -- 1 row of 3 columns
     splice> VALUES (1, 2, 3);
-    
+
        -- 3 rows of 2 columns
     splice> VALUES (1,21),(2,22),(3,23);
-    
+
        -- using ORDER BY and FETCH FIRST
     splice> VALUES (3,21),(1,22),(2,23) ORDER BY 1 FETCH FIRST 2 ROWS ONLY;
-    
+
        -- using ORDER BY and OFFSET
     splice> VALUES (3,21),(1,22),(2,23) ORDER BY 1 OFFSET 1 ROW;
-    
+
        -- constructing a derived table
     splice> VALUES ('orange', 'orange'), ('apple', 'red'), ('banana', 'yellow');
-    
+
        -- Insert two new departments using one statement into the DEPARTMENT table,
        -- but do not assign a manager to the new department.
     splice> INSERT INTO DEPARTMENT (DEPTNO, DEPTNAME, ADMRDEPT)
       VALUES ('B11', 'PURCHASING', 'B01'),
         ('E41', 'DATABASE ADMINISTRATION', 'E01');
-    
+
        -- insert a row with a DEFAULT value for the MAJPROJ column
     splice> INSERT INTO PROJECT (PROJNO, PROJNAME, DEPTNO, RESPEMP, PRSTDATE, MAJPROJ)
     VALUES ('PL2101', 'ENSURE COMPAT PLAN', 'B01', '000020', CURRENT_DATE, DEFAULT);
-    
+
        -- using a built-in function
     splice> VALUES CURRENT_DATE;
-    
+
        -- getting the value of an arbitrary expression
     splice> VALUES (3*29, 26.0E0/3);
-    
+
        -- getting a value returned by a built-in function
     splice> values char(1);
 {: .Example xml:space="preserve"}
@@ -151,4 +151,3 @@ subquery and ordered, as in the following statement:
 
 </div>
 </section>
-

@@ -20,22 +20,20 @@ see [Argument matching](sqlref_sqlargmatching.html).
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE PROCEDURE procedureName (
-    	[ procedureParameter
-       	[, procedureParameter] ] *
-    	)
-         [ ProcedureElement ] *
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE PROCEDURE procedureName (
+     [ procedureParameter
+     [, procedureParameter] ] *
+    )
+     [ <a href="sqlref_statements_createprocedure.html#FunctionElements">ProcedureElement</a> ] *</pre>
 
 </div>
 <div class="paramList" markdown="1">
 procedureName
 {: .paramName}
 
-<div class="fcnWrapperWide" markdown="1">
-    [ SQL Identifier
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+[ <a href="sqlref_identifiers_intro.html">SQL Identifier</a> ]</pre>
 
 </div>
 If `schemaName` is not provided, then the current schema is the default
@@ -46,9 +44,8 @@ cannot begin with `SYS`.
 procedureParameter
 {: .paramName}
 
-<div class="fcnWrapperWide" markdown="1">
-    [ { IN | OUT | INOUT } ] [ parameterName ] DataType
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+[ { IN | OUT | INOUT } ] [ parameterName ] <a href="sqlref_datatypes_intro.html">DataType</a></pre>
 
 </div>
 `parameterName` is an identifier that must be unique within the
@@ -59,8 +56,8 @@ By default, parameters are `IN` parameters unless you specify otherwise.
 {: .paramDefn}
 
 Data-types such as `BLOB, CLOB, LONG VARCHAR` are not allowed as
-parameters in a `CREATE PROCEDURE` statement.  
-  
+parameters in a `CREATE PROCEDURE` statement.
+
 Also: At this time, Splice Machine will return only one `ResultSet` from
 a stored procedure.
 {: .noteNote}
@@ -215,4 +212,3 @@ section of our *Developer's Guide*.
 
 </div>
 </section>
-

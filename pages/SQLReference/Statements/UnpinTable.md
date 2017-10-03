@@ -17,9 +17,8 @@ The `UNPIN TABLE` statement unpins a table, which means that the pinned
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    UNPIN TABLE table-Name
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+UNPIN TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -40,17 +39,25 @@ The name of the pinned table that you want to unpin.
     COL 1      |COL2
     ---------------------
     1           One
-    2           Two2 rows selectedsplice> PIN TABLE myTbl;
+    2           Two
+    2 rows selected
+    splice> PIN TABLE myTbl;
     0 rows inserted/updated/deleted
     splice> SELECT * FROM myTbl --splice-properties pin=true
     > ;
     COL 1      |COL2
     ---------------------
     1           One
-    2           Two2 rows selectedsplice> UNPIN TABLE myTbl;splice> SELECT * FROM myTbl;COL 1      |COL2
+    2           Two
+    2 rows selected
+    splice> UNPIN TABLE myTbl;splice> SELECT * FROM myTbl;
+    COL 1      |COL2
     ---------------------
     1           One
-    2           Two2 rows selectedsplice> SELECT * FROM myTbl --splice-properties pin=true> ERROR: Pinned table read failed with exception 'Table or view not found in database'
+    2           Two
+    2 rows selected
+    splice> SELECT * FROM myTbl --splice-properties pin=true
+    > ERROR: Pinned table read failed with exception 'Table or view not found in database'
 {: .Example xml:space="preserve"}
 
 </div>
@@ -64,4 +71,3 @@ The name of the pinned table that you want to unpin.
 
 </div>
 </section>
-

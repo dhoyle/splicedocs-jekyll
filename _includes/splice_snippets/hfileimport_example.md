@@ -109,12 +109,14 @@ and *Example 2* below):
     {: .LowerAlphaPlainFont}
 
 5.  Repeat steps 1, 2, and 3 to split the indexes on your table.
+    {: .topLevel}
 
 6.  Call the
     &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure
     to split the input data file into HFiles and import the HFiles into
     your Splice Machine database. The HFiles are deleted after being
     imported.
+    {: .topLevel}
 {: .boldFont}
 
 </div>

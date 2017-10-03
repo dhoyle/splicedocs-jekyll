@@ -16,15 +16,14 @@ Use the `UPDATE` statement to update existing records in a table.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    {
-     UPDATE table-Name
-       [[AS] correlation-Name]
-       SET column-Name = Value
-           [ , column-Name = Value} ]*
-       [WHERE clause]
-    } 
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+{
+ UPDATE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
+   [[AS] correlation-Name]
+   SET <a href="sqlref_identifiers_types.html#ColumnName">column-Name</a> = Value
+       [ , <a href="sqlref_identifiers_types.html#ColumnName">column-Name</a> = Value} ]*
+   [<a href="sqlref_clauses_where.html">WHERE clause</a>]
+}</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -122,4 +121,3 @@ invalidates the update statement.
 
 </div>
 </section>
-

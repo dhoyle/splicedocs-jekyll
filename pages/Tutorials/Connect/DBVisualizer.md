@@ -64,7 +64,9 @@ connection in DBVisualizer.
 <div class="opsStepsList" markdown="1">
 1.  Start a Splice Machine session on the computer on which you have
     installed DBVisualizer.
+
 2.  Open the DBVisualizer application.
+
 3.  Use the Driver Manager to create a new DBVisualizer driver entry.
     {: .topLevel}
 
@@ -89,11 +91,12 @@ connection in DBVisualizer.
     4.  Navigate to and select the Splice JDBC Driver jar file. which
         you'll find it in the `jdbc-driver` folder under the
         `splicemachine` directory on your computer.
-        
+
     5.  Close the Driver Manager screen.
     {: .LowerAlphaPlainFont}
 
 4.  Create a DBVisualizer connection alias that uses the new driver:
+    {: .topLevel}
 
     1.  Select <span class="AppCommand">Create Database
         Connection</span> from the *Database* menu. If prompted about

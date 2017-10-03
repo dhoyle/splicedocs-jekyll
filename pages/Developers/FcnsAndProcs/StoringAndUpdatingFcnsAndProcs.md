@@ -39,8 +39,9 @@ the value of the `derby.database.classpath` property.
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        splice> CALL SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar',
-                                      'SPLICE.MY_EXAMPLE_APP', 0);
+        splice> CALL SQLJ.INSTALL_JAR(
+                   '/Users/me/dev/workspace/examples/bin/example.jar',
+                   'SPLICE.MY_EXAMPLE_APP', 0);
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -66,8 +67,9 @@ the value of the `derby.database.classpath` property.
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        splice> CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath',
-                                                                   'SPLICE.MY_EXAMPLE_APP');
+        splice> CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
+                    'derby.database.classpath',
+                    'SPLICE.MY_EXAMPLE_APP');
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -80,8 +82,9 @@ the value of the `derby.database.classpath` property.
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        splice> CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath',
-                                                                   'SPLICE.MY_EXAMPLE_APP:SPLICE.YOUR_EXAMPLE');
+        splice> CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
+                    'derby.database.classpath',
+                   'SPLICE.MY_EXAMPLE_APP:SPLICE.YOUR_EXAMPLE');
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -98,8 +101,9 @@ interface to replace a Jar file:
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        splice> CALL SQLJ.REPLACE_JAR('/Users/me/dev/workspace/examples/bin/example.jar',
-                                     'SPLICE.MY_EXAMPLE_APP');
+        splice> CALL SQLJ.REPLACE_JAR(
+                    '/Users/me/dev/workspace/examples/bin/example.jar',
+                    'SPLICE.MY_EXAMPLE_APP');
     {: .AppCommand xml:space="preserve"}
 
     </div>

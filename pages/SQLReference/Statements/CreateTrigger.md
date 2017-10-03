@@ -30,15 +30,14 @@ triggers.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE TRIGGER TriggerName
-       { AFTER | BEFORE }
-       { INSERT | DELETE | UPDATE [ OF column-Name [, column-Name]* ] }
-       ON table-Name
-          [ ReferencingClause ]
-          [ FOR EACH { ROW | STATEMENT } ]
-     Triggered-SQL-statement
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE TRIGGER <a href="sqlref_identifiers_types.html#TriggerName">TriggerName</a>
+   { AFTER | BEFORE }
+   { INSERT | DELETE | UPDATE [ OF column-Name [, <a href="sqlref_identifiers_types.html#ColumnName">column-Name</a>]* ] }
+   ON <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
+      [ <a href="sqlref_statements_createtrigger.html#ReferencingClause">ReferencingClause</a> ]
+      [ FOR EACH { ROW | STATEMENT } ]
+   Triggered-SQL-statement</pre>
 
 </div>
 <div class="paramList" markdown="1">

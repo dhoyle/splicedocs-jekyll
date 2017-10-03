@@ -18,13 +18,12 @@ scalar value because it returns only a single row and column value.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    ( Query
-      [ ORDER BY clause ]
-      [ result offset clause ]
-      [ fetch first clause ]
-    )
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+( <a href="sqlref_queries_query.html">Query</a>
+  [ <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+  [ <a href="sqlref_clauses_resultoffset.html">result offset clause</a> ]
+  [ <a href="sqlref_clauses_resultoffset.html">fetch first clause</a> ]
+)</pre>
 
 </div>
 ## Usage
@@ -41,7 +40,7 @@ subquery:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     SELECT NAME, COMM
       FROM STAFF
       WHERE EXISTS
@@ -60,4 +59,3 @@ subquery:
 
 </div>
 </section>
-

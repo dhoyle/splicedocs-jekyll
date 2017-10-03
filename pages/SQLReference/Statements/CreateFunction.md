@@ -22,9 +22,9 @@ For details on how Splice Machine matches functions to Java methods, see
 
 <div class="fcnWrapperWide" markdown="1">
     CREATE FUNCTION functionName (
-    	[ functionParameter
-       	[, functionParameter] ] *
-    	)
+        [  functionParameter ]
+        [, functionParameter] ] *
+        )
         RETURNS returnDataType [ functionElement ] *
 {: .FcnSyntax xml:space="preserve"}
 
@@ -33,9 +33,8 @@ For details on how Splice Machine matches functions to Java methods, see
 functionName
 {: .paramName}
 
-<div class="fcnWrapperWide" markdown="1">
-    [ SQL Identifier
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_identifiers_intro.html">SQL Identifier</a></pre>
 
 </div>
 If `schemaName` is not provided, then the current schema is the default
@@ -46,9 +45,8 @@ cannot begin with `SYS`.
 functionParameter
 {: .paramName}
 
-<div class="fcnWrapperWide" markdown="1">
-    [ parameterName ] DataType
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+[ parameterName ] <a href="sqlref_datatypes_intro.html">DataType</a></pre>
 
 </div>
 `parameterName` is an identifier that must be unique within the
@@ -62,10 +60,9 @@ parameters in a `CREATE FUNCTION` statement.
 returnDataType
 {: .paramName}
 
-<div class="fcnWrapperWide" markdown="1">
-    DataType |
-    TableType
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_datatypes_intro.html">DataType</a> |
+<a href="sqlref_statements_createfunction.html#TableType">TableType</a></pre>
 
 </div>
 functionElement
@@ -255,7 +252,7 @@ Procedures](developers_fcnsandprocs_intro.html) section of our
       PARAMETER STYLE JAVA
       NO SQL LANGUAGE JAVA
       EXTERNAL NAME 'java.lang.Math.toDegrees';
-    
+
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
@@ -271,7 +268,17 @@ connects to an external (foreign) database, uses a prepared statement to
 pull results from it, and returns those results as a JDBC `ResultSet`:
 
 <div class="preWrapperWide" markdown="1">
-    package splicemachine.example.vti;import java.sql.*;public class EmployeeTable{   public static ResultSet read()          throws SQLException    {        Connection conn DriverManager.getConnection( "jdbc:mysql://localhost/hr?user=myName&password=myPswd" );        PreparedStatement ps = conn.prepareStatement( "SELECT * FROM hrSchema.EmployeeTable" );        return ps.executeQuery();    }}
+    package splicemachine.example.vti;
+    import java.sql.*;
+    public class EmployeeTable{
+        public static ResultSet read()  throws SQLException {
+            Connection conn DriverManager.getConnection(
+                    "jdbc:mysql://localhost/hr?user=myName&password=myPswd" );
+            PreparedStatement ps = conn.prepareStatement(
+                    "SELECT * FROM hrSchema.EmployeeTable" );
+            return ps.executeQuery();
+        }
+    }
 {: .Example}
 
 </div>
@@ -326,4 +333,3 @@ example, `myExtTbl` in the above example.
 
 </div>
 </section>
-

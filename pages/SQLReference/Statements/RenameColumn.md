@@ -19,10 +19,9 @@ in an existing table in any schema (except the schema `SYS`).
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    RENAME COLUMN simple-Column-Name
-      TO simple-Column-Name
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+RENAME COLUMN <a href="sqlref_identifiers_types.html#SimpleColumnName">simple-Column-Name</a>
+  TO <a href="sqlref_identifiers_types.html#SimpleColumnName">simple-Column-Name</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -90,16 +89,16 @@ example below:
 4.  Rename the new column with the old column's name.
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> ALTER TABLE Players ADD COLUMN NewPosition VARCHAR(8);
     0 rows inserted/updated/deleted
-    
+
     splice> UPDATE Players SET NewPosition = Position;
     0 rows inserted/updated/deleted
-    
+
     splice> ALTER TABLE Players DROP COLUMN Position;
     0 rows inserted/updated/deleted
-    
+
     splice> RENAME COLUMN Players.NewPosition TO Position;
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
@@ -111,4 +110,3 @@ example below:
 
 </div>
 </section>
-

@@ -13,14 +13,13 @@ folder: SQLReference/Expressions
 # NEXT VALUE FOR Expression
 
 The `NEXT VALUE FOR` expression retrieves the next value from a sequence
-generator that was created with a &nbsp;[`CREATE SEQUENCE`
+generator that was created with a &nbsp; [`CREATE SEQUENCE`
 statement](sqlref_statements_createsequence.html).
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    NEXT VALUE FOR sequenceName
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+NEXT VALUE FOR <a href="sqlref_identifiers_intro.html">sequenceName</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -96,12 +95,12 @@ A `NEXT VALUE` expression **may not appear** in any of these situations:
 
 <div class="preWrapper" markdown="1">
     VALUES (NEXT VALUE FOR order_id);
-    
+
     INSERT INTO re_order_table
       SELECT NEXT VALUE FOR order_id, order_date, quantity
       FROM orders
       WHERE back_order = 1;
-    
+
     UPDATE orders
       SET oid = NEXT VALUE FOR order_id
       WHERE expired = 1;
@@ -117,4 +116,3 @@ A `NEXT VALUE` expression **may not appear** in any of these situations:
 
 </div>
 </section>
-

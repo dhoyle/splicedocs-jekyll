@@ -30,18 +30,17 @@ stored as external tables.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE [LOCAL | GLOBAL] TEMPORARY TABLE table-Name {
-          ( {column-definition | Table-level constraint}
-             [ , {column-definition} ] * )
-          ( column-name [ , column-name ] * )
-      }
-      [NOLOGGING | ON COMMIT PRESERVE ROWS];
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE [LOCAL | GLOBAL] TEMPORARY TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a> {
+      ( {column-definition | Table-level constraint}
+         [ , {column-definition} ] * )
+      ( column-name [ , column-name ] * )
+  }
+  [NOLOGGING | ON COMMIT PRESERVE ROWS];</pre>
 
 </div>
 Splice Machine generates a warning if you attempt to specify any other
-modifiers other than the `NOLOGGING`and
+modifiers other than the `NOLOGGING` and
 `ON COMMIT PRESERVE ROWS` modifiers shown above.
 {: .noteNote}
 

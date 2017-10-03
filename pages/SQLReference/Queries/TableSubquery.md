@@ -16,13 +16,13 @@ A *TableSubquery* is a subquery that returns multiple rows.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    ( Query
-        [ ORDER BY clause ]
-        [ result offset clause ]
-        [ fetch first clause ]
-    )
-{: .FcnSyntax}
+
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+( <a href="sqlref_queries_query.html">Query</a>
+  [ <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+  [ <a href="sqlref_clauses_resultoffset.html">result offset clause</a> ]
+  [ <a href="sqlref_clauses_resultoffset.html">fetch first clause</a> ]
+)</pre>
 
 </div>
 ## Usage
@@ -48,7 +48,7 @@ This example shows a subquery used as a table expression in a
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     SELECT VirtualFlightTable.flight_ID
       FROM
          (SELECT flight_ID, orig_airport, dest_airport
@@ -63,7 +63,7 @@ This shows one subquery used with `EXISTS` and another used with `IN`:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     SELECT *
       FROM Flights
       WHERE EXISTS
@@ -71,7 +71,7 @@ This shows one subquery used with `EXISTS` and another used with `IN`:
            FROM Flights
            WHERE dest_airport = 'SFO'
            AND orig_airport = 'GRU');
-    
+
     SELECT flight_id, segment_number
       FROM Flights
       WHERE flight_id IN
@@ -91,4 +91,3 @@ This shows one subquery used with `EXISTS` and another used with `IN`:
 
 </div>
 </section>
-

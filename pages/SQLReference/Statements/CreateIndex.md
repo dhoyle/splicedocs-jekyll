@@ -17,14 +17,13 @@ on one or more columns in the table.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE [UNIQUE] INDEX indexName
-       ON tableName(
-          simpleColumnName
-          [ ASC  | DESC ]
-          [ , simpleColumnName [ ASC | DESC ]] *
-         )
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexName</a>
+   ON <a href="sqlref_identifiers_types.html#TableName">tableName</a> (
+      <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a>
+      [ ASC  | DESC ]
+      [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
+     )</pre>
 
 </div>
 <div class="paramList" markdown="1">

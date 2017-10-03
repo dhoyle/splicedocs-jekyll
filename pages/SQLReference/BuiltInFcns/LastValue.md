@@ -60,7 +60,7 @@ See the &nbsp;[`OVER`](sqlref_clauses_over.html) clause documentation.
 ## Usage Notes
 
 Splice Machine recommends that you use the `LAST_VALUE` function with
-the &nbsp;[`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
+the &nbsp; [`ORDER BY`](sqlref_clauses_orderby.html) clause to produce
 deterministic results.
 
 ## Results
@@ -104,7 +104,7 @@ team:
     Giants   |Buddy Painter           |19    |21
     Giants   |Billy Bopper            |18    |21
     Giants   |Mitch Duffer            |12    |21
-    
+
     10 rows selected
 {: .Example xml:space="preserve"}
 
@@ -126,4 +126,3 @@ team:
 
 </div>
 </section>
-

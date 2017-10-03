@@ -163,7 +163,12 @@ This example creates an external table for a `PARQUET` file:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    splice> CREATE EXTERNAL TABLE myParquetTable(      col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   STORED AS PARQUET   LOCATION '/users/myName/myParquetFile';
+    splice> CREATE EXTERNAL TABLE myParquetTable(
+                        col1 INT, col2 VARCHAR(24))
+                        PARTITIONED BY (col1)
+                        STORED AS PARQUET
+                        LOCATION '/users/myName/myParquetFile'
+            );
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
@@ -171,7 +176,13 @@ This example creates an external table for an `AVRO` file:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE myAvroTable(     col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   STORED AS AVRO   LOCATION '/users/myName/myAvroFile';0 rows inserted/updated/deleted
+    splice> CREATE EXTERNAL TABLE myAvroTable(
+                        col1 INT, col2 VARCHAR(24))
+                        PARTITIONED BY (col1)
+                        STORED AS AVRO
+                        LOCATION '/users/myName/myAvroFile'
+            );
+    0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
@@ -180,7 +191,17 @@ data into it:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE myOrcTable(   col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   STORED AS ORC   LOCATION '/users/myName/myOrcFile';0 rows inserted/updated/deletedsplice> INSERT INTO myOrcTable VALUES (1, 'One'), (2, 'Two'), (3, 'Three');3 rows inserted/updated/deletedsplice> SELECT * FROM myOrcTable;COL1        |COL2------------------------------------
+    splice> CREATE EXTERNAL TABLE myOrcTable(
+                        col1 INT, col2 VARCHAR(24))
+                        PARTITIONED BY (col1)
+                        STORED AS ORC
+                        LOCATION '/users/myName/myOrcFile'
+            );
+    0 rows inserted/updated/deleted
+    splice> INSERT INTO myOrcTable VALUES (1, 'One'), (2, 'Two'), (3, 'Three');
+    3 rows inserted/updated/deleted
+    splice> SELECT * FROM myOrcTable;
+    COL1        |COL2------------------------------------
     3           |Three
     2           |Two
     1           |One
@@ -191,7 +212,17 @@ This example creates an external table for a plain text file:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE myTextTable(   col1 INT, col2 VARCHAR(24))   PARTITIONED BY (col1)   ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'   LINES TERMINATED BY '\\n'   STORED AS TEXTFILE   LOCATION '/users/myName/myTextFile';0 rows inserted/updated/deleted
+    splice> CREATE EXTERNAL TABLE myTextTable(
+                        col1 INT, col2 VARCHAR(24))
+                        PARTITIONED BY (col1)
+                        ROW FORMAT DELIMITED FIELDS
+                        TERMINATED BY ','
+                        ESCAPED BY '\\' 
+                        LINES TERMINATED BY '\\n'
+                        STORED AS TEXTFILE
+                        LOCATION '/users/myName/myTextFile'
+            );
+    0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
@@ -200,7 +231,13 @@ compressed with Snappy compression:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE mySnappyParquetTable(      col1 INT, col2 VARCHAR(24))   COMPRESSED WITH SNAPPY   PARTITIONED BY (col1)   STORED AS PARQUET   LOCATION '/users/myName/mySnappyParquetFile';
+    splice> CREATE EXTERNAL TABLE mySnappyParquetTable(
+                        col1 INT, col2 VARCHAR(24))
+                        COMPRESSED WITH SNAPPY
+                        PARTITIONED BY (col1)
+                        STORED AS PARQUET
+                        LOCATION '/users/myName/mySnappyParquetFile'
+    );
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
@@ -208,15 +245,12 @@ compressed with Snappy compression:
 </div>
 ## See Also
 
-* [`CREATE TABLE`](sqlref_statements_createtable.html) statement
-* [`PIN TABLE`](sqlref_statements_pintable.html) statement
-* [`DROP TABLE`](sqlref_statements_droptable.html) statement
-* [`REFRESH EXTERNAL TABLE`](sqlref_sysprocs_refreshexttable.html) built-in
-  system procedure
-* [Foreign Keys](developers_fundamentals_foreignkeys.html) in the
-  *Developer's Guide*.
-* [Triggers](developers_fundamentals_triggers.html) in the *Developer's
-  Guide*.
+* [`CREATE TABLE`](sqlref_statements_createtable.html)
+* [`PIN TABLE`](sqlref_statements_pintable.html)
+* [`DROP TABLE`](sqlref_statements_droptable.html)
+* [`REFRESH EXTERNAL TABLE`](sqlref_sysprocs_refreshexttable.html)
+* [Foreign Keys](developers_fundamentals_foreignkeys.html)
+* [Triggers](developers_fundamentals_triggers.html)
 
 </div>
 </section>

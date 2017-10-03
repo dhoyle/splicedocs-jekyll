@@ -17,11 +17,10 @@ mechanism for generating exact numeric values, one at a time.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE SEQUENCE
-       [ SQL Identifier
-       [ sequenceElement ]*
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE SEQUENCE
+   [ <a href="sqlref_identifiers_intro.html">SQL Identifier</a> ]
+   [ sequenceElement ]*</pre>
 
 </div>
 The sequence name is composed of an optional *schemaName* and a *SQL
@@ -208,4 +207,3 @@ throws an exception.
 
 </div>
 </section>
-

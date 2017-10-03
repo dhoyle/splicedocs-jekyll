@@ -21,7 +21,7 @@ clause](sqlref_clauses_from.html). It is the source from which a
 <div class="fcnWrapperWide" markdown="1">
     {
        JOIN operations
-    } 
+    }
 {: .FcnSyntax}
 
 </div>
@@ -63,29 +63,27 @@ The Query in a *[TableSubquery](sqlref_queries_tablesubquery.html).*
 </div>
 ## TableViewOrFunctionExpression   {#TableViewExpression}
 
-<div class="fcnWrapperWide" markdown="1">
-    {
-       { view-Name }
-       [ CorrelationClause ]  |
-       { TableSubquery | TableFunctionInvocation }
-       CorrelationClause
-    }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+{
+   { <a href="sqlref_identifiers_types.html#ViewName">view-Name</a> }
+   [ CorrelationClause ]  |
+   { <a href="sqlref_queries_tablesubquery.html">TableSubquery</a> | <a href="sqlref_expressions_table.html#TableFunction">TableFunctionInvocation</a> }
+   CorrelationClause
+}</pre>
 
 </div>
 where *CorrelationClause* is
 
-<div class="fcnWrapperWide" markdown="1">
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
     [ AS ]
     correlation-Name
-    [ ( Simple-column-Name ]* ) ]
-{: .FcnSyntax}
+    [ ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a> * ) ]</pre>
 
 </div>
 ## TableFunctionExpression   {#TableFunction}
 
 <div class="fcnWrapperWide" markdown="1">
-    
+
     {
       TABLE function-name( [ [ function-arg ] [, function-arg ]* ] )
     }
@@ -109,4 +107,3 @@ correlation name. For example:
 
 </div>
 </section>
-

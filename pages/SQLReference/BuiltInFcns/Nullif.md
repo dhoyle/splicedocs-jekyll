@@ -1,7 +1,7 @@
 ---
 title: NULLIF built-in SQL function
 summary: Built-in SQL function that returns the first argument, or returns NULL if both arguments are equal
-keywords: null if, 
+keywords: null if,
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -43,7 +43,7 @@ The first .expression whose value you want to compare.
 </div>
 ## Results
 
-The `NULLIF` function is logically similar to the following
+The `NULLIF` function is logically similar to the following &nbsp; 
 [`CASE`](sqlref_expressions_case.html) expression:
 
 <div class="preWrapper" markdown="1">
@@ -54,7 +54,7 @@ The `NULLIF` function is logically similar to the following
 ## Example
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> Select DisplayName "Position Player", NULLIF(Position,'P') "Position"
        FROM Players
        WHERE MOD(ID, 2)=1
@@ -108,7 +108,7 @@ The `NULLIF` function is logically similar to the following
     Mark Hasty              |NULL
     Stephen Tuvesco         |NULL
     Joseph Arkman           |UT
-    
+
     47 rows selected
 {: .Example xml:space="preserve"}
 
@@ -119,4 +119,3 @@ The `NULLIF` function is logically similar to the following
 
 </div>
 </section>
-

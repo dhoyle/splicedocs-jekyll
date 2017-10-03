@@ -38,25 +38,23 @@ The displayed results of calling
                 </thead>
                 <tbody>
                     <tr>
-                        <td><code>HOST					</code></td>
+                        <td><code>HOST</code></td>
                         <td>The host name (or IP address).</td>
                     </tr>
                     <tr>
-                        <td><code>REGIONCOUNT					</code></td>
+                        <td><code>REGIONCOUNT</code></td>
                         <td>The number of regions.</td>
                     </tr>
                     <tr>
-                        <td><code>STOREFILECOUNT					</code></td>
+                        <td><code>STOREFILECOUNT</code></td>
                         <td>The number of files stored.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">WRITEREQUESTCOUNT
-					</td>
+                        <td class="CodeFont">WRITEREQUESTCOUNT</td>
                         <td>The number of write requests.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">READREQUESTCOUNT
-					</td>
+                        <td class="CodeFont">READREQUESTCOUNT</td>
                         <td>The number of read requests.</td>
                     </tr>
                     <tr>
@@ -68,7 +66,8 @@ The displayed results of calling
 ## Example
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO();Host          |regionCount         |storeFileCount      |writeRequestCount   |readRequestCount    |totalRequestCount
+    splice> CALL SYSCS_UTIL.SYSCS_GET_REGION_SERVER_STATS_INFO();
+    Host          |regionCount         |storeFileCount      |writeRequestCount   |readRequestCount    |totalRequestCount
     --------------------------------------------------------------------------------------------------------------------
     111.222.3.4   |58                  |0                   |5956                |99697               |20517
     555.666.7.8   |59                  |0                   |1723                |57022               |6253
@@ -78,4 +77,3 @@ The displayed results of calling
 </div>
 </div>
 </section>
-

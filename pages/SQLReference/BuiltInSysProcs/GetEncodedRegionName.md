@@ -171,10 +171,11 @@ The following call will retrieve the encoded region name for `TESTTABLE`
 for a table row that has key value `1|2`:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.GET_ENCODED_REGION_NAME('SPLICE', 'TESTTABLE', null, '1|2', '|', null, null, null, null););
-    ENCODED_REGION_NAME                     |START_KEY                                         |END_KEY
-    ------------------------------------------------------------------------------------------------------------------
-    8ffc80e3f8ac3b180441371319ea90e2        |\x81\x00\x82                                      |\x81\x00\x84
+    splice> CALL SYSCS_UTIL.GET_ENCODED_REGION_NAME(
+                    'SPLICE', 'TESTTABLE', null, '1|2', '|', null, null, null, null););
+    ENCODED_REGION_NAME                     |START_KEY      |END_KEY
+    -----------------------------------------------------------------------
+    8ffc80e3f8ac3b180441371319ea90e2        |\x81\x00\x82   |\x81\x00\x84
 
     1 row selected
 {: .Example xml:space="preserve"}
@@ -184,10 +185,12 @@ This call will retrieve the encoded region name for `TESTTABLE` for a
 region that contains index value `1996-04-12,155190,21168.23,0.04`:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.GET_ENCODED_REGION_NAME('SPLICE', 'TESTTABLE', 'SHIP_INDEX','1996-04-12|155190|21168.23|0.04', '|', null, null, null, null);
-    ENCODED_REGION_NAME                     |START_KEY                                         |END_KEY
-    ------------------------------------------------------------------------------------------------------------------
-    ff8f9e54519a31e15f264ba6d2b828a4        |\xEC\xC1\x15\xAD\xCD\x80\x00\xE1\x06\xEE\x00\xE4V&|
+    splice> CALL SYSCS_UTIL.GET_ENCODED_REGION_NAME(
+                    'SPLICE', 'TESTTABLE', 'SHIP_INDEX','1996-04-12|155190|21168.23|0.04',
+                    '|', null, null, null, null);
+    ENCODED_REGION_NAME              |START_KEY                                         |END_KEY
+    --------------------------------------------------------------------------------------------
+    ff8f9e54519a31e15f264ba6d2b828a4 |\xEC\xC1\x15\xAD\xCD\x80\x00\xE1\x06\xEE\x00\xE4V&|
 
     1 row selected
 {: .Example xml:space="preserve"}

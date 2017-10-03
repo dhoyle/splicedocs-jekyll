@@ -17,18 +17,17 @@ built into tables.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    {
-      ( Query
-           [ ORDER BY clause ]
-           [ result offset clause ]
-           [ fetch first clause ] 
-      ) |
-       Query EXCEPT [ ALL | DISTINCT ] Query |
-       Query UNION [ ALL | DISTINCT ] Query |
-       VALUES Expression
-    }
-{: .FcnSyntax xml:space="preserve"}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+{
+  ( Query
+       [ <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+       [ <a href="sqlref_clauses_resultoffset.html">result offset clause</a> ]
+       [ <a href="sqlref_clauses_resultoffset.html">fetch first clause</a> ]
+  ) |
+   Query EXCEPT [ ALL | DISTINCT ] Query |
+   Query UNION [ ALL | DISTINCT ] Query |
+   <a href="sqlref_expressions_values.html">VALUES Expression</a>
+}</pre>
 
 </div>
 You can arbitrarily put parentheses around queries, or use the
@@ -64,7 +63,7 @@ Here's a simple `SELECT` expression:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     SELECT *
       FROM ORG;
 {: .Example xml:space="preserve"}
@@ -74,7 +73,7 @@ Here's a `SELECT` with a subquery:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     SELECT *
       FROM (SELECT CLASS_CODE FROM CL_SCHED) AS CS;
 {: .Example xml:space="preserve"}
@@ -84,7 +83,7 @@ Here's a `SELECT` with a subquery:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     SELECT *
       FROM (SELECT CLASS_CODE FROM CL_SCHED) AS CS;
 {: .Example xml:space="preserve"}
@@ -95,7 +94,7 @@ departments who are assigned to specified project numbers:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    
+
     SELECT EMPNO, 'emp'
       FROM EMPLOYEE
       WHERE WORKDEPT LIKE 'E%'
@@ -115,4 +114,3 @@ departments who are assigned to specified project numbers:
 
 </div>
 </section>
-

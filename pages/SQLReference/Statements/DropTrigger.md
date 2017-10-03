@@ -16,9 +16,8 @@ The `DROP TRIGGER` statement removes the specified trigger.
 
 ## Syntax
 
-<div class="fcnWrapperWide" markdown="1">
-    DROP TRIGGER TriggerName
-{: .FcnSyntax}
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP TRIGGER <a href="sqlref_identifiers_types.html#TriggerName">TriggerName</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -51,4 +50,3 @@ dropping the table.
 
 </div>
 </section>
-
