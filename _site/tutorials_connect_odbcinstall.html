@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -510,257 +510,6 @@
 
     
 
-<<<<<<< HEAD
-  ﻿
-
-
-
-
-
-
-
-
-
-
-
-
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1>Using the Splice Machine ODBC&#160;Driver</h1>
-            <p>This topic describes how to configure and use the Splice Machine ODBC&#160;driver, which you can use to connect with other databases and business tools that need to access your database.</p>
-﻿        <p class="noteImportant">You <span class="BoldFont">must</span> use the <span class="ItalicFont">Splice Machine</span> ODBC driver; other drivers will not work correctly.</p>
-
-            <p>This topic describes how to install and configure the Splice&#160;Machine ODBC&#160;driver for these operating systems:</p>
-            <ul>
-                <li>Installing the Splice Machine ODBC&#160;Driver on Windows</li>
-                <li>Installing the Splice Machine ODBC&#160;Driver on Linux</li>
-            </ul>
-            <p>This topic also includes an <a href="#Using">example that illustrates using our ODBC&#160;driver</a> with the C&#160;language.</p>
-            <h2 id="Installi">Installing and Configuring the Driver on Windows</h2>
-            <p>You can install the Windows version of the Splice Machine ODBC&#160;driver using the provided Windows installer (<span class="CodeFont">.msi</span> file); we provide both 64-bit and 32-bit versions of the driver. Follow these steps to install the driver:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Download the installer:</p>
-                        <p class="indentLevel1">You can download the driver installer from <a href="https://www.splicemachine.com/get-started/odbc-driver-download/"  target="_blank">our ODBC&#160;download</a> site:&#160;</p>
-                        <p class="indentLevel1">The file you download will have a name similar to these:</p>
-                        <ul class="plainFont">
-                            <li class="CodeFont" value="1">splice_odbc_setup_64bit_1.0.28.0.msi</li>
-                            <li class="CodeFont" value="2">splice_odbc_setup_32bit_1.0.28.0.msi</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start the installer</p>
-                        <p class="indentLevel1">Double-click the installers <span class="CodeFont">.msi</span> file to start installation. You'll see the Welcome screen:</p>
-                        <div>
-                            <img src="images/ODBCInstall.Welcome.png" alt="Image of the welcome screen for the Splice Machine ODBC driver installer" class="nestedTightSpacing" />
-                        </div>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button to proceed.</p>
-                    </li>
-                    <li>Accept the license agreement.</li>
-                    <li>
-                        <p class="topLevel">Select the destination folder for the driver</p>
-                        <p class="indentLevel1">The default destination is generally fine, but you can select a different location if you like:</p>
-                        <div>
-                            <img src="images/ODBCInstall.Dest.png" class="nestedTightSpacing" alt="Splice Machine ODBC Driver destination folder" />
-                        </div>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button to continue to the Ready to Install screen.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Click install</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Install</span> button on the Ready to install screen. Installation can take a minute or two to complete.</p>
-                        <div class="noteNote">The installer may notify you that you either need to stop certain software before continuing, or that you can continue and then reboot your computer after the installation completes.</div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Finish the installation</p>
-                        <p class="indentLevel1">Click the Finish button, and you're ready to use the Splice Machine ODBC&#160;driver.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start the Windows ODBC&#160;Data Source Administrator tool</p>
-                        <p class="indentLevel1">You need to add our ODBC&#160;driver to the set of Windows ODBC&#160;data sources, using the Windows ODBC&#160;Data Source Administrator tool; You can read about this tool here: <a href="https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx"  target="_blank">https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx</a>.</p>
-                        <p class="indentLevel1">You can find and start the Windows ODBC&#160;Administrator tool using a Windows search for ODBC&#160;on your computer; here's what it looks like on Windows 7:</p>
-                        <div>
-                            <img src="images/ODBCAdmin.png" alt="Image of using Windows search to find the ODBC Administrator tool" class="nestedTightSpacing" />
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Add the Splice Machine driver as a data source</p>
-                        <p class="indentLevel1">Click the <span class="AppCommand">Add button</span> the User DSN&#160;tab of the ODBC&#160;Data Source Administrator screen, and then select the Splice Machine driver you just installed:</p>
-                        <div>
-                            <img src="images/ODBCAddSource.png" class="nestedTightSpacing" alt="Adding the Splice Machine driver as an ODBC data source on Windows" />
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Configure your new data source:</p>
-                        <p class="indentLevel1">When you click the <span class="AppCommand">Finish</span> button in the <span class="ItalicFont">Create New Data Source</span> screen, the ODBC&#160;Administrator tool displays the data source configuration screen. Fill it in similarly to this:</p>
-                        <div>
-                            <img src="images/ODBCConfigure.png" class="nestedTightSpacing" alt="Configuring the Splice Machine ODBC data source on Windows" />
-                        </div>
-                        <div class="noteNote">The default <span class="AppCommand">user</span> name is <span class="CodeFont">splice</span>, and the default <span class="AppCommand">password</span> is <span class="CodeFont">admin</span>.<br /><br />For <span class="AppCommand">Server</span>:&#160;on a cluster, specify the IP&#160;address of an HBase RegionServer. If you're running the standalone version of Splice Machine, specify <span class="CodeFont">localhost</span>.</div>
-                        <p class="indentLevel1">If you have Splice Machine running, you can click the Test Connection button to verify that all is well.<br /></p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Configure logging (optional):</p>
-                        <p class="indentLevel1">You can optionally configure the ODBC&#160;driver to log activity. This can be handy for debugging connection issues; however, it adds overhead and will have a significant impact on performance. Click the <span class="AppCommand">Logging Options</span> button in the ODBC&#160;Administrator <span class="ItalicFont">Configuration</span> screen to enable or disable logging:</p>
-                        <div>
-                            <img src="images/ODBCLogging.png" class="nestedTightSpacing" alt="Configuring Splice Machine ODBC driver logging on Windows" />
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <h2 id="Installi2">Installing the Driver on Linux</h2>
-            <p>Follow these steps to install the Splice&#160;Machine ODBC&#160;driver on a Linux computer:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Make sure you have unixODBC installed.</p>
-                        <p class="indentLevel1">You must have version <span class="CodeFont">2.2.12</span> or later of the <span class="CodeFont">unixODBC</span>&#160;driver manager installed to run the Splice Machine ODBC&#160;driver.</p>
-                        <p class="indentLevel1">Some Linux distributions include <span class="CodeFont">unixODBC</span>, while others do not. Our driver will not work without it. For more information about unixODBC, see: <a href="http://www.unixodbc.org/"  target="_blank">http://www.unixodbc.org</a>. </p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Download the installer:</p>
-                        <p class="indentLevel1">You can download the driver installer from our ODBC&#160;download site:&#160;<a href="https://www.splicemachine.com/get-started/odbc-driver-download/"  target="_blank" title="Click to open the Splice Machine ODBC driver download page in a new tab or window" alt="Click to open the Splice Machine ODBC driver download page in a new tab or window">https://www.splicemachine.com/get-started/odbc-driver-download/</a></p>
-                        <p class="indentLevel1">Download the installer to the Linux computer on which you want to install the driver. The file will have a name similar to this:</p>
-                        <div class="preWrapper"><pre class="Plain">splice_odbc_64-1.0.28.0.x86_64.tar.gz</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Unzip the installation package</p>
-                        <p class="indentLevel1">Use the following command to unpack the tarball you installed, substituting in the actual version number from the download:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">tar xzf splice_odbc_64-<span class="Highlighted">&lt;version&gt;</span>.x86_64.tar.gz</pre>
-                        </div>
-                        <p class="indentLevel1">This creates a directory named <span class="CodeFont">splice_odbc_64-<span class="Highlighted">&lt;version&gt;</span></span>.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Install the driver:</p>
-                        <p class="indentLevel1">Navigate to the directory that was created when you unzipped the tarball, and run the install script:</p>
-                        <p class="indentLevel1">If you run the script as root, the default installation directory is <span class="CodeFont">/usr/local/splice:</span></p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">sudo ./install.sh</pre>
-                        </div>
-                        <p class="indentLevel1">If you run the script as a different user, the driver is installed to <span class="CodeFont">~/splice</span>.</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">./install.sh</pre>
-                        </div>
-                        <p class="indentLevel1">The script prompts you for a location; in most cases, you can simply accept the default directory.</p>
-                        <p class="indentLevel1">The install directory will contain two subdirectories:</p>
-                        <table summary="ODBC Driver SubDirectories">
-=======
   
 <section>
 <div class="TopicContent" data-swiftype-index="true">
@@ -983,7 +732,6 @@ accept the default directory.</p>
           <p class="indentLevel1">The install directory will contain two subdirectories:</p>
 
           <table summary="ODBC Driver SubDirectories">
->>>>>>> MDConvert
                             <col />
                             <col />
                             <thead>
@@ -1285,11 +1033,7 @@ main() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
-<<<<<<< HEAD
- Site last generated: Sep 26, 2017 <br />
-=======
  Site last generated: Oct 3, 2017 <br />
->>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -1304,49 +1048,19 @@ main() {
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

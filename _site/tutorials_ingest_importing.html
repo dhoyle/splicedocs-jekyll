@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -510,52 +510,6 @@
 
     
 
-<<<<<<< HEAD
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1>How to Import Data Into Splice Machine</h1>
-            <p>This tutorial describes how to import data into your Splice Machine database, and includes a number of examples. It also contains specific tips to help you with the details of getting your data correctly imported. This tutorial contains these sections:</p>
-            <ul>
-                <li><a href="#Syntax">Import Procedures Syntax</a> summarizes the syntax for calling the available Splice Machine import procedures, along with brief descriptions of the parameters. This syntax applies to all three of our data import procedures.</li>
-				<li><a href="#ImportColVals">Inserting and Updating Column Values When Importing Data</a> summarizes how table column values are updated when importing data into a table.</li>
-                <li><a href="#Import">Import Examples</a> contains several examples of importing data.</li>
-                <li><a href="#Tips">Tips for Importing Data into Splice Machine</a> provides specific tips to apply when specifying your import parameters.</li>
-            </ul>
-            <p>The Splice Machine data import procedures allow you to perform bulk imports that utilize the parallel processing power of Hadoop's scale-out architecture while distributing the data evenly into different region servers to prevent "hot spots." We utilize a custom-built, asynchronous write pipeline, which is an extension to the native HBase pipeline, to accomplish this effort.</p>
-            <p>If you're importing data from an S3 bucket on AWS, please review our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial before proceeding.</p>
-            <div class="noteIcon">Our <a href="#">Importing HFile Data tutorial</a> walks you through using our HFile import procedure, which uses similar syntax and has improved performance; however, the bulk HFile import requires extra work on your part and lacks constraint checking.</div>
-	        <h2>Three Different Procedures for Loading Data</h2>
-	        <p>Splice Machine provides three built-in system procedures that you can use for loading data into a database table, each of which uses identical syntax. You can specify which columns in the input data are to be imported in the <span class="CodeFont">insertColumnList</span> parameter; these procedures differ in how they handle updating records when you specify an input column list that isn't 1-to-1 with the columns in the table.</p>
-	        <ul>
-	            <li>The <a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a> procedure imports data into your database, creating a new record in your table for each record in the imported data, and inserts the default value of each column that is not specified in the input.</li>
-	            <li>The <a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a> procedure inserts new records and <span class="ItalicFont">updates existing records</span> in the table. It also inserts or updates the value in the table of each column that is not specified in the input; inserting the default value (or NULL if there is no default) for that column.</li>
-	            <li><p>The <a href="sqlref_sysprocs_mergedata.html"><span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span></a> procedure also updates existing records; however, it does not replace values in the table for unspecified columns when updating an existing record in the table.</p>
-	            </li>
-	        </ul>
-			<p><a href="#Example2">Example 2</a> illustrates how the <span class="CodeFont">UPSERT</span> and <span class="CodeFont">MERGE</span> procedures differ in their handling of record updates.</p>
-            <h2 id="Syntax">Import Procedures Syntax</h2>
-            <p>In this section, we'll go through the syntax used with our import procedures, using the <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span> built-in system procedure for examples.</p>
-            <div class="noteIcon">You'll find complete descriptions of these parameters in the reference pages for the <a href="sqlref_sysprocs_importdata.html"><span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span></a>,&nbsp;&nbsp;<a href="sqlref_sysprocs_upsertdata.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>,&nbsp;&nbsp;and <a href="sqlref_sysprocs_mergedata.html"><span class="CodeFont">SYSCS_UTIL.MERGE_DATA_FROM_FILE</span></a> procedures.</div>
-            <p>The syntax for calling these procedures includes a large number of parameters:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">call SYSCS_UTIL.IMPORT_DATA (
-		<span class="ItalicFont">schemaName</span>,
-		<span class="ItalicFont">tableName</span>,
-		<span class="ItalicFont">insertColumnList</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">fileOrDirectoryName</span>,
-		<span class="ItalicFont">columnDelimiter</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">characterDelimiter</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">timestampFormat</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">dateFormat</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">timeFormat</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">badRecordsAllowed</span>,
-		<span class="ItalicFont">badRecordDirectory</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">oneLineRecords</span><span class="CodeFont"> | null</span>,
-		<span class="ItalicFont">charset</span><span class="CodeFont"> | null</span>
-		);</pre>
-            </div>
-            <p>These parameters are described in detail in the <a href="sqlref_sysprocs_importdata.html">SQL Reference Manual</a>; here are brief descriptions:</p>
-            <table>
-=======
   <section>
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="how-to-import-data-into-splice-machine">How to Import Data Into Splice Machine</h1>
@@ -663,7 +617,6 @@ parameters:</p>
 Manual</a>; here are brief descriptions:</p>
 
     <table>
->>>>>>> MDConvert
                 <col />
                 <col />
                 <col />
@@ -1680,11 +1633,7 @@ when you start the interpreter.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
-<<<<<<< HEAD
- Site last generated: Sep 26, 2017 <br />
-=======
  Site last generated: Oct 3, 2017 <br />
->>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -1699,49 +1648,19 @@ when you start the interpreter.</p>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

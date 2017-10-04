@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -587,93 +587,6 @@
 
     
 
-<<<<<<< HEAD
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1>Using Statistics with Splice Machine</h1>
-            <p>This topic introduces how to use database statistics with Splice Machine. Database statistics are a form of metadata (data about data) that assists the Splice Machine query optimizer; the statistics help the optimizer select the most efficient approach to running a query, based on information that has been gathered about the tables involved in the query.</p>
-            <p>This topic describes how to:</p>
-            <ul>
-                <li><a href="#Collecti">Collecting statistics</a> for a schema or table in your database</li>
-                <li><a href="#Dropping">Dropping statistics</a> for a schema</li>
-                <li><a href="#Enabling">Enable and disable collection of statistics</a> on specific columns in tables in your database</li>
-                <li><a href="#Viewing">View collected statistics</a>
-                </li>
-            </ul>
-            <div class="noteImportant">Statistics are inexact; in fact, some statistics like table cardinality are estimated using advanced algorithms, due to the resources required to compute these values. It's important to keep this in mind when basing design decisions on values in database statistics tables.<br /><br />It's also important to note that the statistics for your database are not automatically refreshed when the data in your database changes, which means that when you query a statistical table or view, the results you see may not exactly match the data in the actual tables. </div>
-            <h2 id="Collecti">Collecting Statistics</h2>
-            <p>You can collect statistics on a schema or table using the <a href="cmdlineref_analyze.html"><span class="AppFontCustCode">splice&gt;&#160;Analyze</span></a> command.</p>
-            <p>You can also use the <span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> procedure to collect statistics on an entire schema, including every table in the schema. For example:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-splice&gt;&#160;CALL SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( 'SPLICEBBALL', false );</pre>
-            </div>
-            <p class="spaceAbove">During statistical collection:</p>
-            <ul>
-                <li>Statistics are automatically collected on columns in a primary key, and on columns that are indexed. These are called <span class="ItalicFont">keyed columns</span>.</li>
-                <li>Statistics are also collected on columns for which you have enabled statistics collection, as described in the next section, <a href="#Enabling">Enabling and Disabling Statistics.</a></li>
-            </ul>
-            <p>Once collection of statistics has completed, the Splice Machine query optimizer will automatically begin using the updated statistics to optimize query execution plans.</p>
-            <h3>When Should You Collect Statistics?</h3>
-            <p>We advise that you collect statistics after you have:</p>
-            <ul>
-                <li>Created an index on a table.</li>
-                <li>Modified a significant number of rows in a table with update, insert, or delete operations.</li>
-            </ul>
-            <div class="noteIndent">A general rule-of-thumb is that you should collect statistics after modifying more than 10% of data.</div>
-            <h3>On Which Columns Should You Collect Statistics?</h3>
-            <p>By default, Splice Machine collects statistics on all columns in a table.</p>
-            <p>To reduce the operational cost of analyzing large tables (such as fact tables), you can tell Splice Machine to not collect statistics on certain columns by running the <span class="CodeFont"><a href="sqlref_sysprocs_disablecolumnstats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span>&#160;built-in system procedure:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" style="text-indent: 0.5in;">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS(&#160;<span class="ItalicFont">schema, table, column</span>);</pre>
-            </div>
-            <p>Splice Machine strongly recommends that you <span class="ItalicFont">always</span> collect statistics on small tables, such as a table that has hundreds of rows on each region server.</p>
-            <h3>How to Determine if You Should Collect or Drop Statistics</h3>
-            <p>You can use <a href="developers_tuning_explainplan.html">Explain Plan</a> in your development or test environment to determine how dropping or collecting statistics changes the execution plan for a query.</p>
-            <h2 id="Dropping">Dropping Statistics</h2>
-            <p>If you subsequently wish to drop statistics for a schema, you can use the <span class="CodeFont"><a href="sqlref_sysprocs_dropschemastats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a></span> procedure to drop statistics for an entire schema. For example:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.DROP_SCHEMA_STATISTICS('SPLICEBBALL');</pre>
-            </div>
-            <h2 id="Enabling">Enabling and Disabling Statistics on Specific Columns</h2>
-            <p>When you collect statistics, Splice Machine automatically collects statistics on keyed columns, which are columns in a primary key and columns that are indexed.</p>
-            <div class="noteTip"> Please review the recommendations and restrictions regarding which columns should or should not have statistics collection enabled, as noted below in  the <a href="#Selectin">Selecting Columns for Statistics Collection</a> subsection.</div>
-            <p>You can also explicitly enable statistics collection on specific columns in tables using the <span class="CodeFont"><a href="sqlref_sysprocs_enablecolumnstats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a></span> procedure. For example:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-CALL SYSCS_UTIL.ENABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Players', 'Birthdate');</pre>
-            </div>
-            <h4>Disabling Statistics Collection on a Column</h4>
-            <p class="spaceAbove">If you subsequently wish to disable collection of statistics on a specific column in a table, use the <span class="CodeFont"><a href="sqlref_sysprocs_disablecolumnstats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span> procedure:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-splice&gt;&#160;CALL SYSCS_UTIL.DISABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Players', 'Birthdate');</pre>
-            </div>
-            <p>Once you've enabled or disabled statistics collection for one or more table columns, you should update the query optimizer by <a href="#Collecti">collecting statistics</a> on the table or schema.</p>
-            <h3 id="Selectin">Selecting Columns for Statistics Collection</h3>
-            <p>You can only collect statistics on columns containing data that can be ordered. This includes all numeric types, Boolean values, some <span class="CodeFont">CHAR</span>&#160;and <span class="CodeFont">BIT</span>&#160;data types, and date and timestamp values. </p>
-            <p>When selecting columns on which statistics should be collected, keep these ideas in mind:</p>
-            <ul>
-                <li>The process of collecting statistics requires both memory and compute time to complete; the more statistics you collect, the longer it takes and the more of your computing resources that it uses. </li>
-                <li>You <span class="ItalicFont">should collect statistics</span> for any column that is used as a predicate in a query.</li>
-                <li>You <span class="ItalicFont">should collect statistics</span> for any column that is used in a <span class="CodeFont">select distinct</span>, <span class="CodeFont">Group by</span>, <span class="CodeFont">order by</span>, or <span class="CodeFont">join</span> clause.</li>
-                <li>You <span class="ItalicFont">do not need to enable statistics</span> for columns that are merely carried through the computation; however, doing so may improve heap size estimations, which in turn can make broadcast joins more likely to be chosen.</li>
-            </ul>
-            <p> As you can see, selecting columns for statistics is a tradeoff between the resources required to collect the statistics, and the improvements in optimization that result from having the statistics collected.</p>
-            <h2 id="Viewing">Viewing Collected Statistics</h2>
-            <p>Splice Machine provides two system tables you can query to view the statistics that have been collected for your database:</p>
-            <ul>
-                <li>Query the <span class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSTABLESTATISTICS System Table</a></span> to view statistics for specific tables</li>
-                <li>Query the <span class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSCOLUMNSTATISTICS System Table</a></span> to view statistics for specific table columns</li>
-            </ul>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_compatability.html">Splice Machine Data Assignments and Comparisons</a> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_sysprocs_collectschemastats.html">SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_sysprocs_disablecolumnstats.html">SYSCS_UTIL.DISABLE_COLUMN_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_sysprocs_dropschemastats.html">SYSCS_UTIL.DROP_SCHEMA_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_sysprocs_enablecolumnstats.html">SYSCS_UTIL.ENABLE_COLUMN_STATISTICS</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSCOLUMNSTATISTICS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li><span class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSTABLESTATISTICS System Table</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-            </ul>
-        </div>
-	</section>
-=======
   <section>
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="using-statistics-with-splice-machine">Using Statistics with Splice Machine</h1>
@@ -882,7 +795,6 @@ Comparisons</a></li>
 
   </div>
 </section>
->>>>>>> MDConvert
 
 
     <div class="tags">
@@ -899,11 +811,7 @@ Comparisons</a></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
-<<<<<<< HEAD
- Site last generated: Sep 26, 2017 <br />
-=======
  Site last generated: Oct 3, 2017 <br />
->>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -918,49 +826,19 @@ Comparisons</a></li>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

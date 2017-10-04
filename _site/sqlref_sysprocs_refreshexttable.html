@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -2806,36 +2806,6 @@
 
     
 
-<<<<<<< HEAD
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1>SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</h1>
-            <p>You call the <span class="CodeFont">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</span> system procedure to manually refresh the schema of an external table in Splice Machine that has been modified outside of Spark. When you use the external table, Spark caches its schema in memory to improve performance; as long as you are using Spark to modify the table, it is smart enough to refresh the cached schema. However, if the table schema is modified outside of Spark, you need to call <span class="CodeFont">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</span>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE( <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String <span class="ItalicFont">schemaName</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String <span class="ItalicFont">tableName</span> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">Specifies the schema of the
-			table. Passing a <span class="CodeFont">null</span> or non-existent schema name generates an error.</p>
-                <p class="paramName">table Name</p>
-                <p class="paramDefnFirst">The table name.</p>
-            </div>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Example</h2>
-            <p>This refreshes the schema of the external table named <span class="CodeFont">myTable</span>:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE('APP', 'myTable');
-Statement executed.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul class="codeList">
-                <li><a href="sqlref_statements_createexternaltable.html">CREATE&#160;EXTERNAL&#160;TABLE</a>
-                </li>
-            </ul>
-        </div>
-	</section>
-=======
   <section>
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="syscsutilsyscsrefreshexternaltable">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</h1>
@@ -2891,7 +2861,6 @@ Statement executed.
 
   </div>
 </section>
->>>>>>> MDConvert
 
 
     <div class="tags">
@@ -2908,11 +2877,7 @@ Statement executed.
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
-<<<<<<< HEAD
- Site last generated: Sep 26, 2017 <br />
-=======
  Site last generated: Oct 3, 2017 <br />
->>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -2927,49 +2892,19 @@ Statement executed.
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

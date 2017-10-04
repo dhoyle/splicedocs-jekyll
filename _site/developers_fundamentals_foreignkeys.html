@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -587,31 +587,6 @@
 
     
 
-<<<<<<< HEAD
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1>Foreign Keys and Referential Integrity</h1>
-            <p>This topic describes the Splice Machine implementation of <span class="ItalicFont">foreign keys</span> and how our implementation ensures referential integrity.</p>
-            <p>See our <span class="ItalicFont">SQL&#160;Reference Manual</span> for full reference information about defining foreign keys using using <a href="sqlref_clauses_constraint.html">constraint clauses</a> when <a href="sqlref_statements_createtable.html">creating </a>a database table.</p>
-            <h2>About Foreign Keys</h2>
-            <p>A foreign key is a column or group of columns in a relational database table that provides a link between data in two tables. A foreign key acts as a cross-reference between tables in that it references the primary key or unique key columns of another table, and thus establishes a link between them.</p>
-            <p>The purpose of a foreign key is to identify a particular row of the referenced table; as such, the foreign key must be equal to the key in some row of the primary table, or else be <span class="CodeFont">null</span>. This rule is called a <span class="ItalicFont">referential integrity constraint between the two tables</span>, and is usually abbreviated as just <span class="ItalicFont">referential integrity</span>. </p>
-            <h3>Maintaining Referential Integrity</h3>
-            <p>To maintain referential integrity, Splice Machine ensures that database operations do not violate foreign key constraints, including not allowing any operations that will cause a foreign key to not correspond to a row in the referenced table. This can happen when a row is inserted, updated, or deleted in either table.</p>
-            <p> For example, suppose you have:</p>
-            <ul>
-                <li>A table named <span class="CodeFont">Players</span> with primary key <span class="CodeFont">player_id</span>. This table is called the <span class="ItalicFont">parent table</span> or <span class="ItalicFont">referenced table</span>.</li>
-                <li>
-                    <p>A second table named <span class="CodeFont">PlayerStats</span> has a foreign key, which is also a column named <span class="CodeFont">player_id</span>. This table is called the <span class="ItalicFont">child table</span> or <span class="ItalicFont">referencing table</span>.</p>
-                </li>
-            </ul>
-            <p>The <span class="CodeFont">player_id</span> column in the <span class="ItalicFont">referencing</span> table is the foreign key that references the primary key <span class="CodeFont">player_id</span> in the <span class="ItalicFont">referenced</span> table. </p>
-            <p>When you insert a new record into the referencing <span class="CodeFont">PlayerStats</span> table, the insertion must satisfy the foreign key constraint, which means that it must include a <span class="CodeFont">player_id</span> value that is present in the referenced <span class="CodeFont">Players</span> table. If this is not so, the insert operation fails in order to maintain the table's referential integrity.</p>
-            <h3>About Foreign Key Constraints</h3>
-            <p>You can define a foreign key constraint on a table when you create the table with the <span class="CodeFont"><a href="sqlref_statements_createtable.html">CREATE&#160;TABLE</a></span>&#160;statement. Foreign key constraints are always immediate:&#160;a violation of a constraint immediately throws an exception.</p>
-            <p>Here's an example of defining a foreign key, in which we use the <span class="CodeFont">REFERENCES</span>&#160;clause of a column definition in a <span class="CodeFont">CREATE&#160;TABLE</span>&#160;statement:</p>
-            <div class="preWrapper"><pre class="Example">CREATE TABLE t1 (c1 NUMERIC PRIMARY KEY);
-=======
   <section>
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="foreign-keys-and-referential-integrity">Foreign Keys and Referential Integrity</h1>
@@ -679,7 +654,6 @@ immediately throws an exception.</p>
 
     <div class="preWrapper">
       <pre class="Example"><code>CREATE TABLE t1 (c1 NUMERIC PRIMARY KEY);
->>>>>>> MDConvert
 
 CREATE TABLE t2 (
    c1 NUMERIC PRIMARY KEY,
@@ -740,11 +714,7 @@ foreign key constraint:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
-<<<<<<< HEAD
- Site last generated: Sep 26, 2017 <br />
-=======
  Site last generated: Oct 3, 2017 <br />
->>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -759,49 +729,19 @@ foreign key constraint:</p>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

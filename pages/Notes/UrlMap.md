@@ -46,10 +46,7 @@ released prior to July 15, 2017.
                     <tr>
                        <td>doc.splicemachine.com/#CmdLineReference/CmdConnect.html</td>
                        <td><a href="https://doc.splicemachine.com/cmdlineref_connect.html">doc.splicemachine.com/cmdlineref_connect.html</a></td>
-<<<<<<< HEAD:pages/Notes/UrlMap.html
-=======
                     </tr>
->>>>>>> MDConvert:pages/Notes/UrlMap.md
                     <tr>
                        <td>doc.splicemachine.com/#CmdLineReference/CmdDescribe.html</td>
                        <td><a href="https://doc.splicemachine.com/cmdlineref_describe.html">doc.splicemachine.com/cmdlineref_describe.html</a></td>

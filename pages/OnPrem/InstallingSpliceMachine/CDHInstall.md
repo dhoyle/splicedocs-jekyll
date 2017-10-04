@@ -38,8 +38,6 @@ your cluster contains the prerequisite software components:
 * HDFS installed
 * YARN installed
 * ZooKeeper installed
-* Ensure that Spark services are **NOT** installed on your cluster;
-  Splice Machine cannot currently coexist with Spark 1.x on a cluster.
 
 The specific versions of these components that you need depend on your
 operating environment, and are called out in detail in the
@@ -265,8 +263,7 @@ work properly on a CDH cluster:
 2.  Remove Spark 1.6.x libraries
     {: .topLevel}
 
-    To avoid Spark version mismatches, you must remove all Spark 1.6.x
-    libraries from `/opt/cloudera/parcels/CDH/jars/`.
+    By default, Splice Machine version uses Spark 2.0. To avoid Spark version mismatches, we strongly recommend that you remove Spark 1.6x libraries from /opt/cloudera/parcels/CDH/jars/; however, if you need to retain Spark 1.6 for other applications, please contact our install team to help with your configuration.
     {: .indentLevel1}
 
 3.  Run our script as *root* user <span class="important">on each
@@ -416,7 +413,7 @@ these changes:
     </table>
 
 2.  Change the values of these settings
-{: .topLevel}
+    {: .topLevel}
 
     <table>
         <col />
@@ -455,7 +452,9 @@ $HADOOP_YARN_HOME/lib/*
 $HADOOP_MAPRED_HOME/*
 $HADOOP_MAPRED_HOME/lib/*
 $MR2_CLASSPATH
-/opt/cloudera/parcels/CDH/lib/hbase/*/opt/cloudera/parcels/CDH/lib/hbase/lib/*/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
+/opt/cloudera/parcels/CDH/lib/hbase/*
+/opt/cloudera/parcels/CDH/lib/hbase/lib/*
+/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
                     </div>
                 </td>
             </tr>

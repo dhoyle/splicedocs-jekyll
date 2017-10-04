@@ -103,7 +103,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Documentation</span></a>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Splice Machine Internal Docs</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -529,726 +529,6 @@
 
     
 
-<<<<<<< HEAD
-  ﻿
-
-
-
-
-
-
-
-
-
-
-
-
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1>Installing and Configuring Splice Machine for Cloudera Manager</h1>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
-
-            <div>
-                <p>This topic describes installing and configuring Splice Machine on a Cloudera-managed cluster. Follow these steps:</p>
-                <ol>
-                    <li><a href="#Verify">Verify Prerequisites</a>
-                    </li>
-                    <li><a href="#Install">Install the Splice Machine Parcel</a>
-                    </li>
-                    <li><a href="#Stop" class="WithinBook">Stop Hadoop Services</a>
-                    </li>
-                    <li><a href="#ClusterMod">Make Cluster Modifications for Splice Machine</a>
-                    </li>
-                    <li><a href="#Configur8">Configure Hadoop Services</a>
-                    </li>
-                    <li>Make any needed <a href="#Optional">Optional Configuration Modifications</a></li>
-                    <li><a href="#Deploy">Deploy the Client Configuration</a>
-                    </li>
-                    <li><a href="#Restart">Restart the Cluster</a>
-                    </li>
-                    <li><a href="#Run">Verify your Splice Machine Installation</a>
-                    </li>
-                </ol>
-                <h2 id="Verify">Verify Prerequisites</h2>
-                <p>Before starting your Splice Machine installation, please make sure that your cluster contains the prerequisite software components:</p>
-                <ul>
-                    <li>A cluster running Cloudera Data Hub (CDH) with Cloudera Manager (CM)</li>
-                    <li>HBase  installed</li>
-                    <li>HDFS installed</li>
-                    <li>YARN installed</li>
-                    <li>ZooKeeper installed</li>
-                    <li>Ensure that Spark services are <span class="BoldFont">NOT</span> installed on your cluster; Splice Machine cannot currently coexist with Spark 1.x on a cluster.</li>
-                </ul>
-                <div class="noteNote">The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="onprem_info_requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</div>
-                <h2 id="Install">Install the Splice Machine Parcel</h2>
-                <p>Follow these steps to install CDH, Hadoop, Hadoop services, and Splice Machine on your cluster:</p>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>Copy your parcel URL to the clipboard for use in the next step.
-                        <p class="indentLevel1">Which Splice Machine parcel URL you need depends upon which Splice Machine version you're installing and which version of CDH you are using. Here are the URLs for Splice Machine Releases 2.6.1 and 2.5:</p>
-    <table>
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <thead>
-                                        <tr>
-                                            <th>Splice Machine Release</th>
-                                            <th>CDH Version</th>
-                                            <th>Parcel Type</th>
-                                            <th>Installer Package Link(s)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr>
-                                           <td rowspan="12" class="SpliceRelease">2.6.1</td>
-                                           <td rowspan="6" class="SplicePlatform">5.12.0</td>
-                                           <td>EL6</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-el6.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-el6.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>EL7</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-el7.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-el7.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Precise</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-precise.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-precise.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>SLES11</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-sles11.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-sles11.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Trusty</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-trusty.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-trusty.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Wheezy</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-wheezy.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.12.0/SPLICEMACHINE-2.6.1.1736.cdh5.12.0.p0.74-wheezy.parcel</a></td>
-                                        </tr>
-                                       <tr>
-                                           <td rowspan="6" class="SplicePlatform">5.8.3</td>
-                                           <td>EL6</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-el6.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-el6.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>EL7</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-el7.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-el7.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>PRECISE</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-precise.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-precise.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>SLES11</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-sles11.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-sles11.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Trusty</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-trusty.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-trusty.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Wheezy</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-wheezy.parcel">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.6.1.1736.cdh5.8.3.p0.74-wheezy.parcel</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" class="Separator"> </td>
-                                        </tr>
-                                       <tr>
-                                           <td rowspan="12" class="SpliceRelease">2.5.0</td>
-                                           <td rowspan="6" class="SplicePlatform">5.8.3</td>
-                                           <td>EL6</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-el6.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-el6.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>EL7</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-el7.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-el7.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Precise</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-precise.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-precise.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>SLES11</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-sles11.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-sles11.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Trusty</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-trusty.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-trusty.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Wheezy</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-wheezy.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.3/SPLICEMACHINE-2.5.0.1735.cdh5.8.3.p0.434-wheezy.parcel</a></td>
-                                        </tr>
-                                       <tr>
-                                           <td rowspan="6" class="SplicePlatform">5.8.0</td>
-                                           <td>EL6</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-el6.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-el6.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>EL7</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-el7.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-el7.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Precise</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-precise.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-precise.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>SLES11</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-sles11.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-sles11.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Trusty</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-trusty.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-trusty.parcel</a></td>
-                                       </tr>
-                                       <tr>
-                                           <td>Wheezy</td>
-                                           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-wheezy.parcel">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/parcel/cdh5.8.0/SPLICEMACHINE-2.5.0.1735.cdh5.8.0.p0.434-wheezy.parcel</a></td>
-                                        </tr>
-                                </table>
-                            <div class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/"  target="_blank">the Splice Machine Community site</a> or contact your Splice Machine representative.</div>
-                        </li>
-                        <li>
-                            <p class="topLevel">Add the parcel repository:</p>
-                            <p class="indentLevel1">Now select your repository in the Cloudera Manager <span class="ItalicFont">Select Repository</span> screen.</p>
-                            <ol class="plainFont">
-                                <li>Make sure the <span class="AppCommand">Use Parcels (Recommended)</span> option and the <span class="AppCommand">Matched release</span> option are both selected.</li>
-                                <li>Click the <span class="AppCommand">Continue</span> button to land on the <span class="ItalicFont">More Options</span> screen.</li>
-                                <li>Cick the <span class="AppCommand">+</span> button for the <span class="AppCommand">Remote Parcel Repository URLs</span> field. Paste your Splice Machine repository URL into this field.</li>
-                            </ol>
-                        </li>
-                        <li>
-                            <p class="topLevel">Use Cloudera Manager to install the parcel.</p>
-                        </li>
-                        <li>
-                            <p class="topLevel">Verify that the parcel has been distributed and activated.</p>
-                            <p class="indentLevel1">The Splice Machine parcel is identified as <span class="CodeFont">SPLICEMACHINE</span> in the Cloudera Manager user interface. Make sure that this parcel has been downloaded, distributed, and activated on your cluster.</p>
-                        </li>
-                        <li>
-                            <p class="topLevel">Restart and redeploy any client changes when Cloudera Manager prompts you.</p>
-                        </li>
-                    </ol>
-                </div>
-                <h2 id="Stop">Stop Hadoop Services</h2>
-                <p>As a first step, we stop cluster services to allow our installer to make changes that require the cluster to be temporarily inactive. </p>
-                <p>From the Cloudera Manager home screen, click the drop-down arrow next to the cluster on </p>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>
-                            <p class="topLevel">Select your cluster in Cloudera Manager</p>
-                            <p class="indentLevel1">Click the  drop-down arrow next to the name of the cluster on which you are installing Splice Machine.</p>
-                        </li>
-                        <li>
-                            <p class="topLevel">Stop the cluster</p>
-                            <p class="indentLevel1">Click the <span class="AppCommand">Stop</span> button.</p>
-                        </li>
-                    </ol>
-                </div>
-                <h2 id="ClusterMod">Make Cluster Modifications for Splice Machine</h2>
-                <p>Splice Machine requires a few modifications at the file system level to work properly on a CDH cluster:</p>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>
-                            <p class="topLevel">Install updated Java Servlet library:</p>
-                            <p class="indentLevel1">You need to install an updated <span class="AppFontCustCode">javax.servlet-api</span> library so that Splice Machine can use Spark 2.0.x functionality in YARN.</p>
-                        </li>
-                        <li>
-                            <p class="topLevel">Remove Spark 1.6.x libraries</p>
-                            <p class="indentLevel1">To avoid Spark version mismatches, you must remove all Spark 1.6.x libraries from <span class="CodeFont">/opt/cloudera/parcels/CDH/jars/</span>.</p>
-                        </li>
-                        <li>
-                            <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to the Splice Machine uber jar and YARN proxy jar into the YARN directories</p>
-                            <p class="indentLevel1">Issue this command <span class="important">on each node</span> in your cluster::</p>
-                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
-sudo /opt/cloudera/parcels/SPLICEMACHINE/scripts/install-splice-symlinks.sh</pre>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-                <h2 id="Configur8">Configure Hadoop Services</h2>
-                <p>Now it's time to make a few modifications in the Hadoop services configurations:</p>
-                <ul>
-                    <li><a href="#Configur">Configure and Restart the Management Service</a>
-                    </li>
-                    <li><a href="#Configur4">Configure ZooKeeper</a>
-                    </li>
-                    <li><a href="#Configur5">Configure HDFS</a>
-                    </li>
-                    <li><a href="#Configur2">Configure YARN</a>
-                    </li>
-                    <li><a href="#Configur3">Configure HBASE</a>
-                    </li>
-                </ul>
-                <h3 id="Configur">Configure and Restart the Management Service</h3>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>
-                            <p>Select the <span class="AppCommand">Configuration</span> tab in CM:</p>
-                            <div>
-                                <img src="images/CM.AlertListenPort.png" class="nestedTightSpacing" alt="Configuring the Cloudera Manager ports" />
-                            </div>
-                        </li>
-                        <li>Change the value of the Alerts: Listen Port to  to <span class="AppFontCustCode">10110</span>.</li>
-                        <li>Save changes and restart the Management Service.</li>
-                    </ol>
-                </div>
-                <h3 id="Configur4">Configure ZooKeeper</h3>
-                <p>To edit the ZooKeeper configuration, click <span class="AppCommand">ZooKeeper</span> in the Cloudera Manager (CM) home screen, then click the <span class="AppCommand">Configuration</span> tab and follow these steps:</p>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>
-                            <p class="topLevel">Select the <span class="AppCommand">Service-Wide</span> category.</p>
-                            <p class="indentLevel1">Make the following changes:</p>
-                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">Maximum Client Connections = <span class="AppFontCust">0</span>
-Maximum Session Timeout    = <span class="AppFontCust">120000</span></pre>
-                            </div>
-                            <p class="indentLevel1">Click the <span class="AppCommand">Save Changes</span> button.</p>
-                        </li>
-                    </ol>
-                </div>
-                <h3 id="Configur5">Configure HDFS</h3>
-                <p>To edit the HDFS configuration, click <span class="AppCommand">HDFS</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>
-                            <p class="topLevel">Verify that the HDFS data directories for your cluster are set up to use your data disks.</p>
-                        </li>
-                        <li>
-                            <p class="topLevel">Change the values of these settings</p>
-                            <table>
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>Setting</th>
-                                        <th>New Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="AppFont">Handler Count</td>
-                                        <td class="AppFontCust">20</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Maximum Number of Transfer Threads</td>
-                                        <td class="AppFontCust">8192</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">NameNodeHandler Count</td>
-                                        <td class="AppFontCust">64</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">NameNode Service Handler Count</td>
-                                        <td class="AppFontCust">60</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Replication Factor</td>
-                                        <td class="AppFontCust">2 or 3 *</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Java Heap Size of DataNode in Bytes</td>
-                                        <td class="AppFontCust">2 GB</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                        <li>Click the <span class="AppCommand">Save Changes</span> button.</li>
-                    </ol>
-                </div>
-                <h3 id="Configur2">Configure YARN</h3>
-                <p>To edit the YARN configuration, click <span class="AppCommand">YARN</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>
-                            <p class="topLevel">Verify that the following directories are set up to use your data disks.</p>
-                            <table>
-                                <col />
-                                <tbody>
-                                    <tr>
-                                        <td class="AppFont">
-NodeManager Local Directories<br />NameNode Data Directories<br />HDFS Checkpoint Directories<br /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                        <li>
-                            <p class="topLevel">Change the values of these settings</p>
-                            <table>
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>Setting</th>
-                                        <th>New Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="AppFont">Heartbeat Interval</td>
-                                        <td class="AppFontCust">100 ms</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">MR Application Classpath</td>
-                                        <td class="AppFontCust">
-                                            <div class="preWrapperWide"><pre class="Example">$HADOOP_MAPRED_HOME/*
-$HADOOP_MAPRED_HOME/lib/*
-$MR2_CLASSPATH/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">YARN Application Classpath</td>
-                                        <td class="AppFontCust">
-                                            <div class="preWrapperWide"><pre class="Example">$HADOOP_CLIENT_CONF_DIR
-$HADOOP_CONF_DIR
-$HADOOP_COMMON_HOME/*
-$HADOOP_COMMON_HOME/lib/*
-$HADOOP_HDFS_HOME/*
-$HADOOP_HDFS_HOME/lib/*
-$HADOOP_YARN_HOME/*
-$HADOOP_YARN_HOME/lib/*
-$HADOOP_MAPRED_HOME/*
-$HADOOP_MAPRED_HOME/lib/*
-$MR2_CLASSPATH
-/opt/cloudera/parcels/CDH/lib/hbase/*/opt/cloudera/parcels/CDH/lib/hbase/lib/*/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Localized Dir Deletion Delay</td>
-                                        <td class="AppFontCust">86400</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">JobHistory Server Max Log Size</td>
-                                        <td class="AppFontCust">1 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">NodeManager Max Log Size</td>
-                                        <td class="AppFontCust">1 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">ResourceManager Max Log Size</td>
-                                        <td class="AppFontCust">1 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Container Memory</td>
-                                        <td class="AppFontCust">30 GB (based on node specs)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Container Memory Maximum</td>
-                                        <td class="AppFontCust">30 GB (based on node specs)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Container Virtual CPU Cores</td>
-                                        <td class="AppFontCust">19 (based on node specs)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Container Virtual CPU Cores Maximum</td>
-                                        <td class="AppFontCust">19 (Based on node specs)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                        <li>
-                            <p class="topLevel">Add property values </p>
-                            <p class="indentLevel1">You need to add the same two property values to each of four YARN advanced configuration settings.</p>
-                            <p class="indentLevel1">Add these properties:</p>
-                            <table>
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>XML Property Name</th>
-                                        <th>XML Property Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="AppFont">yarn.nodemanager.aux-services.spark_shuffle.class</td>
-                                        <td class="AppFontCust">org.apache.spark.network.yarn.YarnShuffleService</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">yarn.nodemanager.aux-services</td>
-                                        <td class="AppFontCust">mapreduce_shuffle,spark_shuffle</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p class="indentLevel1">To each of these YARN settings:</p>
-                            <ul class="codeList">
-                                <li>Yarn Service Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
-                                <li>Yarn Client Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
-                                <li>NodeManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
-                                <li>ResourceManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml</li>
-                            </ul>
-                        </li>
-                        <li>Click the <span class="AppCommand">Save Changes</span> button.</li>
-                    </ol>
-                </div>
-                <h3 id="Configur3">Configure HBASE</h3>
-                <p>To edit the HBASE configuration, click <span class="AppCommand">HBASE</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
-                <div class="opsStepsList">
-                    <ol class="boldFont">
-                        <li>
-                            <p class="topLevel">Change the values of these settings</p>
-                            <table>
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>Setting</th>
-                                        <th>New Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="AppFont">HBase Client Scanner Caching</td>
-                                        <td class="AppFontCust">100 ms</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Graceful Shutdown Timeout</td>
-                                        <td class="AppFontCust">
-                                            <div class="preWrapperWide">
-                                                <p>30 seconds</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase Service Advanced Configuration Snippet (Safety Valve) for hbase-site.xml</td>
-                                        <td class="AppFontCust"><span class="bodyFont">The property list for the Safety Valve snippet is shown below, in Step 2</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">SplitLog Manager Timeout</td>
-                                        <td class="AppFontCust">5 minutes</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Maximum HBase Client Retries</td>
-                                        <td class="AppFontCust">40</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">RPC Timeout</td>
-                                        <td class="AppFontCust">20 minutes (or 1200000 milliseconds)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase Client Pause</td>
-                                        <td class="AppFontCust">90</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">ZooKeeper Session Timeout</td>
-                                        <td class="AppFontCust">120000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase Master Web UI Port</td>
-                                        <td class="AppFontCust">16010</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase Master Port</td>
-                                        <td class="AppFontCust">16000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Java Configuration Options for HBase Master</td>
-                                        <td class="AppFontCust"><span class="bodyFont">The  HBase Master Java configuration options list is shown below, in Step 3</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase Coprocessor Master Classes</td>
-                                        <td class="AppFontCust">
-                                            <p>com.splicemachine.hbase.SpliceMasterObserver</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Java Heap Size of HBase Master in Bytes</td>
-                                        <td class="AppFontCust">5 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HStore Compaction Threshold</td>
-                                        <td class="AppFontCust">5</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase RegionServer Web UI port</td>
-                                        <td class="AppFontCust">16030</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HStore Blocking Store Files</td>
-                                        <td class="AppFontCust">20</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Java Configuration Options for HBase RegionServer</td>
-                                        <td class="AppFontCust"><span class="bodyFont">The HBase RegionServerJava configuration options list is shown below, in Step 4</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase Memstore Block Multiplier</td>
-                                        <td class="AppFontCust">4</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Maximum Number of HStoreFiles Compaction</td>
-                                        <td class="AppFontCust">7</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase RegionServer Lease Period</td>
-                                        <td class="AppFontCust">20 minutes (or 1200000 milliseconds)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HFile Block Cache Size</td>
-                                        <td class="AppFontCust">0.25</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Java Heap Size of HBase RegionServer in Bytes</td>
-                                        <td class="AppFontCust">24 GB</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase RegionServer Handler Count</td>
-                                        <td class="AppFontCust">200</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase RegionServer Meta-Handler Count</td>
-                                        <td class="AppFontCust">200</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase Coprocessor Region Classes</td>
-                                        <td class="AppFontCust">com.splicemachine.hbase.MemstoreAwareObserver<br />com.splicemachine.derby.hbase.SpliceIndexObserver<br />com.splicemachine.derby.hbase.SpliceIndexEndpoint<br />com.splicemachine.hbase.RegionSizeEndpoint<br />com.splicemachine.si.data.hbase.coprocessor.TxnLifecycleEndpoint<br />com.splicemachine.si.data.hbase.coprocessor.SIObserver<br />com.splicemachine.hbase.BackupEndpointObserver</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Maximum number of Write-Ahead Log (WAL) files</td>
-                                        <td class="AppFontCust">48</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">RegionServer Small Compactions Thread Count</td>
-                                        <td class="AppFontCust">4</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">HBase RegionServer Port</td>
-                                        <td class="AppFontCust">16020</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="AppFont">Per-RegionServer Number of WAL Pipelines</td>
-                                        <td class="AppFontCust">16</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                        <li>
-                            <p id="HBaseAdvConfigStep">Set the value of <span class="CodeFont">HBase Service Advanced Configuration Snippet (Safety Valve)</span> for <span class="CodeFont">hbase-site.xml</span>:</p>
-                            <div class="preWrapperWide"><pre class="Example">&lt;property&gt;&lt;name&gt;dfs.client.read.shortcircuit.buffer.size&lt;/name&gt;&lt;value&gt;131072&lt;/value&gt;&lt;/property&gt;
-=======
   <section>
 <div class="TopicContent" data-swiftype-index="true">
 
@@ -1282,8 +562,6 @@ your cluster contains the prerequisite software components:</p>
       <li>HDFS installed</li>
       <li>YARN installed</li>
       <li>ZooKeeper installed</li>
-      <li>Ensure that Spark services are <strong>NOT</strong> installed on your cluster;
-Splice Machine cannot currently coexist with Spark 1.x on a cluster.</li>
     </ul>
 
     <p class="noteNote">The specific versions of these components that you need depend on your
@@ -1510,8 +788,7 @@ Splice Machine can use Spark 2.0.x functionality in YARN.</p>
         <li>
           <p class="topLevel">Remove Spark 1.6.x libraries</p>
 
-          <p class="indentLevel1">To avoid Spark version mismatches, you must remove all Spark 1.6.x
-libraries from <code>/opt/cloudera/parcels/CDH/jars/</code>.</p>
+          <p class="indentLevel1">By default, Splice Machine version uses Spark 2.0. To avoid Spark version mismatches, we strongly recommend that you remove Spark 1.6x libraries from /opt/cloudera/parcels/CDH/jars/; however, if you need to retain Spark 1.6 for other applications, please contact our install team to help with your configuration.</p>
         </li>
         <li>
           <p class="topLevel">Run our script as <em>root</em> user <span class="important">on each
@@ -1651,7 +928,7 @@ click the <span class="AppCommand">Configuration</span> tab and make
 these changes:</p>
 
     <div class="opsStepsList">
-      <ol class="topLevel">
+      <ol class="boldFont">
         <li>
           <p class="topLevel">Verify that the following directories are set up to use your data disks.</p>
 
@@ -1665,75 +942,86 @@ these changes:</p>
 </table>
         </li>
         <li>
-          <p>Change the values of these settings</p>
+          <p class="topLevel">Change the values of these settings</p>
+
+          <table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Setting</th>
+            <th>New Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="AppFont">Heartbeat Interval</td>
+            <td class="AppFontCust">100 ms</td>
+        </tr>
+        <tr>
+            <td class="AppFont">MR Application Classpath</td>
+            <td class="AppFontCust">
+                <div class="preWrapperWide"><pre class="Example">$HADOOP_MAPRED_HOME/*
+$HADOOP_MAPRED_HOME/lib/*
+$MR2_CLASSPATH/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="AppFont">YARN Application Classpath</td>
+            <td class="AppFontCust">
+                <div class="preWrapperWide"><pre class="Example">$HADOOP_CLIENT_CONF_DIR
+$HADOOP_CONF_DIR
+$HADOOP_COMMON_HOME/*
+$HADOOP_COMMON_HOME/lib/*
+$HADOOP_HDFS_HOME/*
+$HADOOP_HDFS_HOME/lib/*
+$HADOOP_YARN_HOME/*
+$HADOOP_YARN_HOME/lib/*
+$HADOOP_MAPRED_HOME/*
+$HADOOP_MAPRED_HOME/lib/*
+$MR2_CLASSPATH
+/opt/cloudera/parcels/CDH/lib/hbase/*
+/opt/cloudera/parcels/CDH/lib/hbase/lib/*
+/opt/cloudera/parcels/SPLICEMACHINE/lib/*</pre>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="AppFont">Localized Dir Deletion Delay</td>
+            <td class="AppFontCust">86400</td>
+        </tr>
+        <tr>
+            <td class="AppFont">JobHistory Server Max Log Size</td>
+            <td class="AppFontCust">1 GB</td>
+        </tr>
+        <tr>
+            <td class="AppFont">NodeManager Max Log Size</td>
+            <td class="AppFontCust">1 GB</td>
+        </tr>
+        <tr>
+            <td class="AppFont">ResourceManager Max Log Size</td>
+            <td class="AppFontCust">1 GB</td>
+        </tr>
+        <tr>
+            <td class="AppFont">Container Memory</td>
+            <td class="AppFontCust">30 GB (based on node specs)</td>
+        </tr>
+        <tr>
+            <td class="AppFont">Container Memory Maximum</td>
+            <td class="AppFontCust">30 GB (based on node specs)</td>
+        </tr>
+        <tr>
+            <td class="AppFont">Container Virtual CPU Cores</td>
+            <td class="AppFontCust">19 (based on node specs)</td>
+        </tr>
+        <tr>
+            <td class="AppFont">Container Virtual CPU Cores Maximum</td>
+            <td class="AppFontCust">19 (Based on node specs)</td>
+        </tr>
+    </tbody>
+</table>
         </li>
-      </ol>
-
-      <pre><code>&lt;table&gt;
-    &lt;col /&gt;
-    &lt;col /&gt;
-    &lt;thead&gt;
-        &lt;tr&gt;
-            &lt;th&gt;Setting&lt;/th&gt;
-            &lt;th&gt;New Value&lt;/th&gt;
-        &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;Heartbeat Interval&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;100 ms&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;MR Application Classpath&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;
-                &lt;div class="preWrapperWide"&gt;&lt;pre class="Example"&gt;$HADOOP_MAPRED_HOME/* $HADOOP_MAPRED_HOME/lib/* $MR2_CLASSPATH/opt/cloudera/parcels/SPLICEMACHINE/lib/*&lt;/pre&gt;
-                &lt;/div&gt;
-            &lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;YARN Application Classpath&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;
-                &lt;div class="preWrapperWide"&gt;&lt;pre class="Example"&gt;$HADOOP_CLIENT_CONF_DIR $HADOOP_CONF_DIR $HADOOP_COMMON_HOME/* $HADOOP_COMMON_HOME/lib/* $HADOOP_HDFS_HOME/* $HADOOP_HDFS_HOME/lib/* $HADOOP_YARN_HOME/* $HADOOP_YARN_HOME/lib/* $HADOOP_MAPRED_HOME/* $HADOOP_MAPRED_HOME/lib/* $MR2_CLASSPATH /opt/cloudera/parcels/CDH/lib/hbase/*/opt/cloudera/parcels/CDH/lib/hbase/lib/*/opt/cloudera/parcels/SPLICEMACHINE/lib/*&lt;/pre&gt;
-                &lt;/div&gt;
-            &lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;Localized Dir Deletion Delay&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;86400&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;JobHistory Server Max Log Size&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;1 GB&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;NodeManager Max Log Size&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;1 GB&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;ResourceManager Max Log Size&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;1 GB&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;Container Memory&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;30 GB (based on node specs)&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;Container Memory Maximum&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;30 GB (based on node specs)&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;Container Virtual CPU Cores&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;19 (based on node specs)&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td class="AppFont"&gt;Container Virtual CPU Cores Maximum&lt;/td&gt;
-            &lt;td class="AppFontCust"&gt;19 (Based on node specs)&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
-</code></pre>
-
-      <ol class="boldFont">
         <li>
           <p class="topLevel">Add property values</p>
 
@@ -1937,7 +1225,6 @@ make these changes:</p>
 
           <div class="preWrapperWide">
             <pre class="Example"><code>&lt;property&gt;&lt;name&gt;dfs.client.read.shortcircuit.buffer.size&lt;/name&gt;&lt;value&gt;131072&lt;/value&gt;&lt;/property&gt;
->>>>>>> MDConvert
 &lt;property&gt;&lt;name&gt;hbase.balancer.period&lt;/name&gt;&lt;value&gt;60000&lt;/value&gt;&lt;/property&gt;
 &lt;property&gt;&lt;name&gt;hbase.client.ipc.pool.size&lt;/name&gt;&lt;value&gt;10&lt;/value&gt;&lt;/property&gt;
 &lt;property&gt;&lt;name&gt;hbase.client.max.perregion.tasks&lt;/name&gt;&lt;value&gt;100&lt;/value&gt;&lt;/property&gt;
@@ -2267,11 +1554,7 @@ and command syntax.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
-<<<<<<< HEAD
- Site last generated: Sep 26, 2017 <br />
-=======
  Site last generated: Oct 3, 2017 <br />
->>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -2286,49 +1569,19 @@ and command syntax.</p>
 
         <!-- Swiftype script for docstest -->
 
-           <!-- Swiftype script for doc-->
     <script type="text/javascript">
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
     e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
+      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
     </script>
+
 
 
 
 </body>
     <!-- Only include analytics scripts if generating the customer docs -->
-
-        <!-- Google Analytics Script: the ID gets auto inserted from the config file -->
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-35630173-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-        <!-- Marketo Analytics Script -->
-<script type="text/javascript">
-(function() {
-  var didInit = false;
-  function initMunchkin() {
-    if(didInit === false) {
-      didInit = true;
-      Munchkin.init('331-FEU-348');
-    }
-  }
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = '//munchkin.marketo.net/munchkin-beta.js';
-  s.onreadystatechange = function() {
-    if (this.readyState == 'complete' || this.readyState == 'loaded') {
-      initMunchkin();
-    }
-  };
-  s.onload = initMunchkin;
-  document.getElementsByTagName('head')[0].appendChild(s);
-})();
-</script>
-
 
 
 </html>

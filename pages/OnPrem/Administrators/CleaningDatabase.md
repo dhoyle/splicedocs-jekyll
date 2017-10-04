@@ -70,14 +70,9 @@ Cloudera-managed cluster version of Splice Machine:
     {: .indentLevel1}
 
     <div class="preWrapper" markdown="1">
-        rmr /startupPath
-        rmr /spliceJobs
-        rmr /derbyPropertyPath
-        rmr /spliceTasks
+        rmr /splice
         rmr /hbase
-        rmr /conglomerates
-        rmr /transactions
-        rmr /ddl
+        quit
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -195,14 +190,9 @@ Splice Machine on an Ambari-managed Hortonworks Cluster:
     {: .indentLevel1}
 
     <div class="preWrapper" markdown="1">
-        rmr /startupPath
-        rmr /spliceJobs
-        rmr /derbyPropertyPath
-        rmr /spliceTasks
-        rmr /hbase-unsecure
-        rmr /conglomerates
-        rmr /transactions
-        rmr /ddl
+        rmr /splice
+        rmr /hbase
+        quit
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -350,14 +340,8 @@ some steps, as indicated, must be run on each node in your cluster.
     {: .indentLevel1}
 
     <div class="preWrapper" markdown="1">
-        rmr /startupPath
-        rmr /spliceJobs
-        rmr /derbyPropertyPath
-        rmr /spliceTasks
+        rmr /splice
         rmr /hbase
-        rmr /conglomerates
-        rmr /transactions
-        rmr /ddl
         quit
     {: .AppCommand xml:space="preserve"}
 
