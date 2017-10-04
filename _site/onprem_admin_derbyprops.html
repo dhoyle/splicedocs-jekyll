@@ -240,13 +240,6 @@
             
             
             
-            
-            
-            <li><a href="onprem_about.html">About Our On-Premise DB</a></li>
-            
-            
-            
-            
         </ul>
      </li>
        
@@ -536,14 +529,30 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Derby Property Access</h1>
 <div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="derby-property-access">Derby Property Access</h1>
 
-            <p>This topic describes how to enable and disable Derby features by setting Derby properties, which are divided into categories, as shown in the following table.</p>
-            <div class="noteNote">When a property value is used, the property is searched for in the order shown in the table; in other words, the property is searched for in the JVM&#160;properties; if not found there, it is searched for in the Service properties, then in the Database properties, and finally in the App properties.</div>
-            <table summary="Table of Splice Machine property categories.">
+    <p class="noteOnPremiseOnly">    <a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
+>>>>>>> MDConvert
+
+    <p>This topic describes how to enable and disable Derby features by setting
+Derby properties, which are divided into categories, as shown in the
+following table.</p>
+
+    <p class="noteNote">When a property value is used, the property is searched for in the order
+shown in the table; in other words, the property is searched for in the
+JVM properties; if not found there, it is searched for in the Service
+properties, then in the Database properties, and finally in the App
+properties.</p>
+
+    <table summary="Table of Splice Machine property categories.">
                 <col />
                 <col />
                 <thead>
@@ -554,11 +563,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">JVM&#160;(System)&#160;</td>
+                        <td><em>JVM (System) </em></td>
                         <td>
                             <p class="noSpaceAbove">These properties can be as command line arguments to JVM:</p>
                             <ul>
-                                <li>For Maven, include the command line arguments as an <span class="CodeFont">&lt;argument&gt;</span>&#160;element in the <span class="CodeFont">pom.xml</span> file. For example:</li>
+                                <li>For Maven, include the command line arguments as an <code>&lt;argument&gt;</code> element in the <code>pom.xml</code> file. For example:</li>
                             </ul>
                             <div class="preWrapperWide"><pre class="AppCommand">&lt;argument&gt;-Dderby.language.logStatementText=true&lt;/argument&gt;</pre>
                             </div>
@@ -567,91 +576,107 @@
                             </ul>
                             <div class="preWrapperWide"><pre class="AppCommand">java -Dderby.language.logStatementText=true ... </pre>
                             </div>
-                            <p>System properties can also be set manually using the <span class="CodeFont">System.setProperty(key, value)</span>&#160;function.</p>
+                            <p>System properties can also be set manually using the <code>System.setProperty(key, value)</code> function.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Service</td>
+                        <td><em>Service</em></td>
                         <td>
                             <p class="noSpaceAbove">Service properties are a special type of database property that is required to boot the database; as such, these properties cannot be stored in the database. Instead, they are stored outside the database, as follows:</p>
                             <ul>
-                                <li>Derby stores service properties in the <span class="CodeFont">service.properties file</span></li>
+                                <li>Derby stores service properties in the <code>service.properties file</code></li>
                                 <li>Splice Machine stores service properties in a Zookeeper element.</li>
                             </ul>
-                            <p>You can temporarily change service properties with the <span class="CodeFont"><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span> built-in system procedure. These changes will be lost when the server is next restarted.</p>
-                            <p>To make a permanent change in a Derby service property, modify the value in the <span class="CodeFont">service.properties</span> file and then restart the server to apply the changes.</p>
+                            <p>You can temporarily change service properties with the <a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> built-in system procedure. These changes will be lost when the server is next restarted.</p>
+                            <p>To make a permanent change in a Derby service property, modify the value in the <code>service.properties</code> file and then restart the server to apply the changes.</p>
                             <p>To make a permanent change in a Splice Machine service property, modify the value in ZooKeeper and then restart the server to apply the changes.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Database</td>
+                        <td><em>Database</em></td>
                         <td>
-                            <p class="noSpaceAbove">Splice Machine database properties are saved in a hidden HBASE&#160;table with <span class="CodeFont">CONGLOMERATEID=16</span>.</p>
+                            <p class="noSpaceAbove">Splice Machine database properties are saved in a hidden HBASE table with <code>CONGLOMERATEID=16</code>.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">App (Derby/Splice)</td>
+                        <td><em>App (Derby/Splice)</em></td>
                         <td>
-                            <p class="noSpaceAbove">App properties for both Derby and Splice Machine are saved to the <span class="CodeFont">derby.properties</span> file in the Derby/Splice home directory. </p>
-                            <p>App properties can also be saved to these HBASE XML&#160;configuration files:</p>
+                            <p class="noSpaceAbove">App properties for both Derby and Splice Machine are saved to the <code>derby.properties</code> file in the Derby/Splice home directory. </p>
+                            <p>App properties can also be saved to these HBASE XML configuration files:</p>
                             <ul>
-                                <li><span class="CodeFont">hbase-default.xml</span>
+                                <li><code>hbase-default.xml</code>
                                 </li>
-                                <li><span class="CodeFont">hbase-site.xml</span>
+                                <li><code>hbase-site.xml</code>
                                 </li>
-                                <li><span class="CodeFont">splice-site.xml</span>
+                                <li><code>splice-site.xml</code>
                                 </li>
                             </ul>
-                            <p>Note that the XML&#160;files must reside in the <span class="CodeFont">CLASSPATH</span>.</p>
+                            <p>Note that the XML files must reside in the <code>CLASSPATH</code>.</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <h2>Site File Example</h2>
-            <p>The following is an example of a <span class="CodeFont">splice-site.xml</span> file:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">&lt;?xml version="1.0"?&gt;
+    <h2 id="site-file-example">Site File Example</h2>
+
+    <p>The following is an example of a <code>splice-site.xml</code> file:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>&lt;?xml version="1.0"?&gt;
 &lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;
    &lt;configuration&gt;
        &lt;property&gt;
            &lt;name&gt;splice.debug.logStatementContext&lt;/name&gt;
-	    &lt;value&gt;true&lt;/value&gt;
-	    &lt;description&gt;Property  to enable logging of all statements.&lt;/description&gt;
-	&lt;/property&gt;
-	&lt;property&gt;
-	    &lt;name&gt;splice.debug.david&lt;/name&gt;
-	    &lt;value&gt;true&lt;/value&gt;
-	    &lt;description&gt;Property  to test something.&lt;/description&gt;
-	&lt;/property&gt;
-   &lt;/configuration&gt; </pre>
-            </div>
-            <h2>Displaying Derby/Splice Properties</h2>
-            <p>You can display the Derby/Splice properties with the <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES</span> system procedure, which displays information like this:</p>
-            <div class="preWrapperWide"><pre xml:space="preserve" class="Example">splice&gt; call SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES();
+           &lt;value&gt;true&lt;/value&gt;
+           &lt;description&gt;Property  to enable logging of all statements.&lt;/description&gt;
+           &lt;/property&gt;
+          &lt;property&gt;
+          &lt;name&gt;splice.debug.david&lt;/name&gt;
+          &lt;value&gt;true&lt;/value&gt;
+          &lt;description&gt;Property  to test something.&lt;/description&gt;
+          &lt;/property&gt;
+   &lt;/configuration&gt;
+</code></pre>
 
-KEY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|VALUE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|TYPE&#160;&#160;&#160;&#160;&#160;
+    </div>
+    <h2 id="displaying-derbysplice-properties">Displaying Derby/Splice Properties</h2>
+
+    <p>You can display the Derby/Splice properties with the
+<code>SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES</code> system procedure, which displays
+information like this:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; call SYSCS_UTIL.SYSCS_GET_ALL_PROPERTIES();
+
+KEY                                       |VALUE            |TYPE     
 ----------------------------------------------------------------------
-derby.authentication.builtin.algorithm&#160;&#160;&#160;&#160;|SHA-256&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|DATABASE&#160;
-derby.user.BROWSE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|Browse&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|APP&#160;&#160;&#160;&#160;&#160;&#160;
-derby.engineType&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160;
-derby.david.foo&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|WINTERS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|APP&#160;&#160;&#160;&#160;&#160;&#160;
-derby.connection.requireAuthentication&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|JVM&#160;&#160;&#160;&#160;&#160;&#160;
-derby.locks.escalationThreshold&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|500&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160;
-derby.database.defaultConnectionMode&#160;&#160;&#160;&#160;&#160;&#160;|fullAccess&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160;
-derby.database.propertiesOnly&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160;
-derby.database.collation&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|UCS_BASIC&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|DATABASE&#160;
-derby.language.logStatementText&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|JVM&#160;&#160;&#160;&#160;&#160;&#160;
-derby.storage.propertiesId&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|16&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160;
-derby.language.logQueryPlan&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|true&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|JVM&#160;&#160;&#160;&#160;&#160;&#160;
-splice.updateSystemProcs&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|JVM&#160;&#160;&#160;&#160;&#160;&#160;
-derby.storage.rowLocking&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|false&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;|SERVICE&#160;&#160; </pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><span class="CodeFont"><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span> in the <span class="ItalicFont">SQL&#160;Reference Manual</span></li>
-                <li>The <span class="ItalicFont">Derby Properties Guide</span> on the <a href="https://db.apache.org/derby/manuals/index.html"  target="_blank">Apache Derby documentation site</a>.</li>
-            </ul>
-        </div>
-	</section>
+derby.authentication.builtin.algorithm    |SHA-256          |DATABASE 
+derby.user.BROWSE                         |Browse           |APP      
+derby.engineType                          |2                |SERVICE  
+derby.david.foo                           |WINTERS          |APP      
+derby.connection.requireAuthentication    |false            |JVM      
+derby.locks.escalationThreshold           |500              |SERVICE  
+derby.database.defaultConnectionMode      |fullAccess       |SERVICE  
+derby.database.propertiesOnly             |false            |SERVICE  
+derby.database.collation                  |UCS_BASIC        |DATABASE 
+derby.language.logStatementText           |false            |JVM      
+derby.storage.propertiesId                |16               |SERVICE  
+derby.language.logQueryPlan               |true             |JVM      
+splice.updateSystemProcs                  |false            |JVM      
+derby.storage.rowLocking                  |false            |SERVICE  
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a></li>
+      <li>The <em>Derby Properties Guide</em> on the <a href="https://db.apache.org/derby/manuals/index.html" target="_blank">Apache Derby documentation
+site</a>.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -668,7 +693,11 @@ derby.storage.rowLocking&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

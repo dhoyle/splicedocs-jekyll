@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCOLUMNSTATISTICS System Table</h1>
@@ -2814,6 +2815,21 @@
             <div class="noteNote"><span class="CodeFont">SYS.SYSCOLUMNSTATISTICS</span>&#160;is a system view.</div>
             <p>The following table shows the contents of the <span class="CodeFont">SYSCOLUMNSTATISTICS</span> system table.</p>
             <table>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscolumnstatistics-system-table">SYSCOLUMNSTATISTICS System Table</h1>
+
+    <p>The <code>SYSCOLUMNSTATISTICS</code> table view describes the statistics for a
+specific table column within the current database.</p>
+
+    <p class="noteNote"><code>SYS.SYSCOLUMNSTATISTICS</code> is a system view.</p>
+
+    <p>The following table shows the contents of the <code>SYSCOLUMNSTATISTICS</code>
+system table.</p>
+
+    <table>
+>>>>>>> MDConvert
                 <caption>SYSCOLUMNSTATISTICS system table</caption>
                 <col />
                 <col />
@@ -2831,99 +2847,102 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">SCHEMANAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>SCHEMANAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the schema.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>TABLENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the table.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMNNAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>COLUMNNAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the column.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CARDINALITY</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>CARDINALITY</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The estimated number of distinct values for the column.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">NULL_COUNT</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>NULL_COUNT</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The number of rows in the table that have NULL for the column.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">NULL_FRACTION</td>
-                        <td class="CodeFont">REAL</td>
-                        <td class="CodeFont">23</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>NULL_FRACTION</code></td>
+                        <td><code>REAL</code></td>
+                        <td><code>23</code></td>
+                        <td><code>YES</code></td>
                         <td>
-                            <p class="noSpaceAbove">The ratio of <span class="CodeFont">NULL</span>&#160;records to all records:</p><pre class="PlainCell">NULL_COUNT / TOTAL_ROW_COUNT</pre>
+                            <p class="noSpaceAbove">The ratio of <code>NULL</code> records to all records:</p><pre class="PlainCell">NULL_COUNT / TOTAL_ROW_COUNT</pre>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">MIN_VALUE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>MIN_VALUE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The minimum value for the column.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">MAX_VALUE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>MAX_VALUE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The maximum value for the column.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">QUANTILES</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>QUANTILES</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>
                             <p>The quantiles statistics sketch for the column.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">FREQUENCIES</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>FREQUENCIES</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The frequencies statistics sketch for the column.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">THETA</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>THETA</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The theta statistics sketch for the column.</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="notePlain">
-                <p>The <span class="CodeFont">QUANTILES</span>, <span class="CodeFont">FREQUENCIES</span>, and <span class="CodeFont">THETA</span>&#160;values are all sketches computed using the Yahoo Data Sketches library, which you can read about here:&#160;<a href="https://datasketches.github.io/"  target="_blank">https://datasketches.github.io/</a></p>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_systables_intro.html">About System Tables</a>
-                </li>
-                <li><span class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSTABLESTATISTICS</a></span>&#160;system table</li>
-            </ul>
-        </div>
-	</section>
+    <p class="notePlain">The <code>QUANTILES</code>, <code>FREQUENCIES</code>, and <code>THETA</code> values are all sketches
+computed using the Yahoo Data Sketches library, which you can read about
+here: <a href="https://datasketches.github.io/" target="_blank">https://datasketches.github.io/</a></p>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_systables_intro.html">About System Tables</a></li>
+      <li><a href="sqlref_systables_systablestats.html"><code>SYSTABLESTATISTICS</code></a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2940,7 +2959,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

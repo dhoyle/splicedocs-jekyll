@@ -2806,24 +2806,42 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="DataTypes.Real">REAL</h1>
-            <p>The <span class="CodeFont">REAL</span> data type provides 4 bytes of storage for numbers using
-		IEEE floating-point notation. </p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">REAL</pre>
-            </div>
-            <h2>Corresponding Compile-time Java Type</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">java.lang.Float</pre>
-            </div>
-            <h2>JDBC Metadata Type (java.sql.Types)</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">REAL</pre>
-            </div>
-            <h2>Limitations</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">REAL value ranges:</pre>
-            </div>
-            <table summary="Limits of real values">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="real">REAL</h1>
+
+    <p>The <code>REAL</code> data type provides 4 bytes of storage for numbers using IEEE
+floating-point notation.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>REAL
+</code></pre>
+
+    </div>
+    <h2 id="corresponding-compile-time-java-type">Corresponding Compile-time Java Type</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>java.lang.Float
+</code></pre>
+
+    </div>
+    <h2 id="jdbc-metadata-type-javasqltypes">JDBC Metadata Type (java.sql.Types)</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>REAL
+</code></pre>
+
+    </div>
+    <h2 id="limitations">Limitations</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>REAL value ranges:
+</code></pre>
+
+    </div>
+    <table summary="Limits of real values">
                 <col />
                 <col />
                 <thead>
@@ -2834,37 +2852,58 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">Smallest REAL value</td>
-                        <td class="CodeFont">-3.402E+38</td>
+                        <td><em>Smallest REAL value</em></td>
+                        <td><code>-3.402E+38</code></td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Largest REAL value</td>
-                        <td class="CodeFont"> 3.402E+38</td>
+                        <td><em>Largest REAL value</em></td>
+                        <td><code> 3.402E+38</code></td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Smallest positive REAL value</td>
-                        <td class="CodeFont"> 1.175E-37</td>
+                        <td><em>Smallest positive REAL value</em></td>
+                        <td><code> 1.175E-37</code></td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Largest negative REAL value</td>
-                        <td class="CodeFont">-1.175E-37</td>
+                        <td><em>Largest negative REAL value</em></td>
+                        <td><code>-1.175E-37</code></td>
                     </tr>
                 </tbody>
             </table>
-            <div class="noteNote">These limits are different from the <span class="CodeFont">java.lang.Float</span> Java type limits.</div>
-            <h2>Usage Notes</h2>
-            <p>Here are several usage notes for the <span class="CodeFont">REAL</span>&#160;data type:</p>
-            <ul>
-                <li>An exception is thrown when any double value is calculated or entered that is outside of these value ranges. Arithmetic operations <span class="BoldFont">do not</span> round their resulting values to zero. If the values are too small, you will receive an exception. The arithmetic operations take place with double arithmetic in order to detect under flows.</li>
-                <li>Numeric floating point constants are limited to a length of 30 characters.
-        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- this example will fail because the constant is too long:
-values 01234567890123456789012345678901e0;</pre></div></li>
-                <li>When mixed with other data types in expressions, the resulting data type follows the rules shown in <a href="sqlref_datatypes_numerictypes.html#NumericTypePromotion">Numeric type promotion in expressions</a>.</li>
-                <li>See also <a href="sqlref_datatypes_numerictypes.html#StoringValues">Storing values of one numeric data type in columns of another numeric data type</a>.</li>
-                <li>Constants always map to <span class="CodeFont"><a href="sqlref_datatypes_doubleprecision.html">DOUBLE PRECISION</a></span>; use a <span class="CodeFont">CAST</span> to convert a constant to a <span class="CodeFont">REAL</span>.</li>
-            </ul>
+    <p class="noteNote">These limits are different from the <code>java.lang.Float</code> Java type limits.</p>
+
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Here are several usage notes for the <code>REAL</code> data type:</p>
+
+    <ul>
+      <li>An exception is thrown when any double value is calculated or entered
+that is outside of these value ranges. Arithmetic operations <strong>do
+not</strong> round their resulting values to zero. If the values are too
+small, you will receive an exception. The arithmetic operations take
+place with double arithmetic in order to detect under flows.</li>
+      <li>Numeric floating point constants are limited to a length of 30
+characters.
+        <div class="preWrapperWide">
+          <pre class="Example"><code>   -- this example will fail because the constant is too long:
+values 01234567890123456789012345678901e0;
+</code></pre>
+
         </div>
-	</section>
+      </li>
+      <li>When mixed with other data types in expressions, the resulting data
+type follows the rules shown in <a href="sqlref_datatypes_numerictypes.html#NumericTypePromotion">Numeric type promotion in
+expressions</a>.</li>
+      <li>See also <a href="sqlref_datatypes_numerictypes.html#StoringValues">Storing values of one numeric data type in columns of
+another numeric data
+type</a>.</li>
+      <li>Constants always map to  <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE
+PRECISION</code></a>; use a <code>CAST</code> to
+convert a constant to a <code>REAL</code>.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2881,7 +2920,11 @@ values 01234567890123456789012345678901e0;</pre></div></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

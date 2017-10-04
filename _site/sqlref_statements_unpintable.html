@@ -2806,46 +2806,69 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="Statements.UnpinTable">UNPIN&#160;TABLE</h1>
-            <p>The <span class="CodeFont">UNPIN&#160;TABLE</span> statement unpins a table, which means that the pinned (previously cached)&#160;version of the table no longer exists.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">UNPIN&#160;TABLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span></pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">table-Name</p>
-                <p class="paramDefnFirst">The name of the pinned table that you want to unpin.</p>
-            </div>
-            <h2>Example</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE TABLE myTbl (col1 int, col2 varchar(10));
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="unpintable">UNPIN TABLE</h1>
+
+    <p>The <code>UNPIN TABLE</code> statement unpins a table, which means that the pinned
+(previously cached) version of the table no longer exists.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+UNPIN TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a></pre>
+
+</div>
+    <div class="paramList">
+      <p class="paramName">table-Name</p>
+
+      <p class="paramDefnFirst">The name of the pinned table that you want to unpin.</p>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CREATE TABLE myTbl (col1 int, col2 varchar(10));
 0 rows inserted/updated/deleted
 splice&gt; INSERT INTO myTbl VALUES (1, 'One'), (2, 'Two');
 2 rows inserted/updated/deleted
 COL 1      |COL2
 ---------------------
 1           One
-2           Two<br /><br />2 rows selected<br />splice&gt; PIN TABLE myTbl;
+2           Two
+2 rows selected
+splice&gt; PIN TABLE myTbl;
 0 rows inserted/updated/deleted
 splice&gt; SELECT * FROM myTbl --splice-properties pin=true
 &gt; ;
 COL 1      |COL2
 ---------------------
 1           One
-2           Two<br /><br />2 rows selected<br />splice&gt; UNPIN&#160;TABLE&#160;myTbl;<br />splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;myTbl;<br />COL 1      |COL2
+2           Two
+2 rows selected
+splice&gt; UNPIN TABLE myTbl;splice&gt; SELECT * FROM myTbl;
+COL 1      |COL2
 ---------------------
 1           One
-2           Two<br /><br />2 rows selected<br />splice&gt;&#160;SELECT&#160;*&#160;FROM&#160;myTbl --splice-properties pin=true<br />&gt; ERROR:&#160;Pinned table read failed with exception 'Table or view not found in database'<br /></pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><span class="CodeFont"><a href="sqlref_statements_createexternaltable.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createtable.html">CREATE&#160;TABLE</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_pintable.html">PIN&#160;TABLE</a></span>&#160;statement</li>
-                <li><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the <span class="ItalicFont">Splice Machine Developer's Guide</span></li>
-            </ul>
-        </div>
-	</section>
+2           Two
+2 rows selected
+splice&gt; SELECT * FROM myTbl --splice-properties pin=true
+&gt; ERROR: Pinned table read failed with exception 'Table or view not found in database'
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_createexternaltable.html"><code>CREATE EXTERNAL TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_createtable.html"><code>CREATE TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_pintable.html"><code>PIN TABLE</code></a> statement</li>
+      <li><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the
+<em>Splice Machine Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2862,7 +2885,11 @@ COL 1      |COL2
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

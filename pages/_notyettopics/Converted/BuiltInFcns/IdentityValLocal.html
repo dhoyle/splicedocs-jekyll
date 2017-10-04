@@ -9,24 +9,24 @@ permalink: sqlref_builtinfcns_identityvallocal.html
 folder: SQLReference/BuiltInFcns
 ---
 	<section>
-		<div class="TopicContent" data-swiftype-index="true">
+		<div class="TopicContent" data-swiftype-index="true" markdown="1">
             <h1 id="BuiltInFcns.IdentityValLocal">IDENTITY_VAL_LOCAL</h1>
-            <p>Splice Machine supports the <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function. </p>
+            <p>Splice Machine supports the <code>IDENTITY_VAL_LOCAL</code> function. </p>
             <h2>Syntax:</h2>
             <div class="fcnWrapperWide"><pre class="FcnSyntax">IDENTITY_VAL_LOCAL ( )</pre>
             </div>
-            <p>The <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function is a non-deterministic function that returns the most recently assigned value of an identity column for a connection, where the assignment occurred as a result of a single row <span class="CodeFont">INSERT</span> statement using a <span class="CodeFont">VALUES</span> clause. </p>
-            <p>The <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function has no input parameters. The result is a <span class="CodeFont">DECIMAL (31,0)</span>, regardless of the actual data type of the corresponding
+            <p>The <code>IDENTITY_VAL_LOCAL</code> function is a non-deterministic function that returns the most recently assigned value of an identity column for a connection, where the assignment occurred as a result of a single row <code>INSERT</code> statement using a <code>VALUES</code> clause. </p>
+            <p>The <code>IDENTITY_VAL_LOCAL</code> function has no input parameters. The result is a <code>DECIMAL (31,0)</code>, regardless of the actual data type of the corresponding
 		identity column.</p>
-            <p>The value returned by the <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function for a connection is the value assigned to the identity column of the table identified in the
-		most recent single row <span class="CodeFont">INSERT</span> statement. The <span class="CodeFont">INSERT</span> statement must contain a <span class="CodeFont">VALUES</span> clause on a table containing an identity column. This function returns a <span class="CodeFont">null</span> value when a single row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause has not been issued for a table containing an identity column.</p>
-            <p>The result of the function is <span class="BoldFont">not</span> affected by the following:</p>
+            <p>The value returned by the <code>IDENTITY_VAL_LOCAL</code> function for a connection is the value assigned to the identity column of the table identified in the
+		most recent single row <code>INSERT</code> statement. The <code>INSERT</code> statement must contain a <code>VALUES</code> clause on a table containing an identity column. This function returns a <code>null</code> value when a single row <code>INSERT</code> statement with a <code>VALUES</code> clause has not been issued for a table containing an identity column.</p>
+            <p>The result of the function is <strong>not</strong> affected by the following:</p>
             <ul>
-                <li>A single row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause for a table without an identity column</li>
-                <li>A multiple row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause</li>
-                <li>An <span class="CodeFont">INSERT</span> statement with a full <span class="CodeFont">SELECT</span></li>
+                <li>A single row <code>INSERT</code> statement with a <code>VALUES</code> clause for a table without an identity column</li>
+                <li>A multiple row <code>INSERT</code> statement with a <code>VALUES</code> clause</li>
+                <li>An <code>INSERT</code> statement with a full <code>SELECT</code></li>
             </ul>
-            <div class="noteNote">If a table with an identity column has an <span class="CodeFont">INSERT</span> trigger defined that inserts into another table with another identity column, then the <span class="CodeFont">IDENTITY_VAL_LOCAL()</span> function will return the generated value for the statement table, and not for the table modified by the trigger.</div>
+            <p class="noteNote">If a table with an identity column has an <code>INSERT</code> trigger defined that inserts into another table with another identity column, then the <code>IDENTITY_VAL_LOCAL()</code> function will return the generated value for the statement table, and not for the table modified by the trigger.</p>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example">splice&gt; CREATE&#160;TABLE t1(c1 INT&#160;GENERATED&#160;ALWAYS&#160;AS&#160;IDENTITY, c2 INT);
 0 rows inserted/updated/deleted<br /><br />splice&gt; INSERT&#160;INTO&#160;t1(c2) VALUES(8);

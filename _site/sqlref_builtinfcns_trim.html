@@ -2806,41 +2806,74 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInFcns.Trim">TRIM</h1>
-            <p>The <span class="CodeFont">TRIM</span> function that takes a character expression and returns that expression with leading and/or trailing pad characters removed. Optional parameters indicate whether leading, or trailing, or both leading and trailing pad characters should be removed, and specify the pad character that is to be removed.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">TRIM( [ <span class="ItalicFont">trimOperands</span> ] <span class="ItalicFont">trimSource</span>)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">trimOperands</p>
-                    <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{  { <span class="ItalicFont">trimType</span> [<span class="ItalicFont">trimCharacter</span>]  FROM
-  |&#160; <span class="ItalicFont">trimCharacter</span> FROM
-}</pre>
-                    </div>
-                    <div class="paramList">
-                        <p class="paramName">trimCharacter</p>
-                        <p class="paramDefnFirst">A character expression that specifies which character to trim from the source. If this is specified, it must evaluate to either <span class="CodeFont">NULL</span>&#160;or to a character string whose length is exactly one. If left unspecified, it defaults to the space character (<span class="CodeFont">' '</span>). </p>
-                        <p class="paramName">trimType</p>
-                            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{LEADING | TRAILING | BOTH}</pre>
-                            </div>
-                        <p class="paramDefnFirst">If this value is not specified, the default value of <span class="CodeFont">BOTH</span>&#160;is used.</p>
-                    </div>
-                <p class="paramName">trimSource</p>
-                <p class="paramDefnFirst">The character expression to be trimmed</p>
-            </div>
-            <h2>Results</h2>
-            <p>If either <span class="ItalicFont">trimCharacter</span> or <span class="ItalicFont">trimSource</span> evaluates to <span class="CodeFont">NULL</span>, the result of the <span class="CodeFont">TRIM</span> function is <span class="CodeFont">NULL</span>. Otherwise, the result of the <span class="CodeFont">TRIM</span> function is defined as follows:</p>
-            <ul>
-                <li>If <span class="ItalicFont">trimType</span> is <span class="CodeFont">LEADING</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all leading occurrences of <span class="ItalicFont">trimCharacter</span> removed.</li>
-                <li>If <span class="ItalicFont">trimType</span> is <span class="CodeFont">TRAILING</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all trailing occurrences of <span class="ItalicFont">trimCharacter</span>removed.</li>
-                <li>If <span class="ItalicFont">trimType</span> is <span class="CodeFont">BOTH</span>, the result will be the <span class="ItalicFont">trimSource</span> value with all leading AND&#160;trailing occurrences of <span class="ItalicFont">trimCharacter</span>removed.</li>
-            </ul>
-            <p>If <span class="ItalicFont">trimSource</span>'s data type is <a href="sqlref_datatypes_clob.html"><span class="CodeFont">CLOB</span></a>. </p>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-splice&gt;&#160;VALUES TRIM('      Space Case   ');
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="trim">TRIM</h1>
+
+    <p>The <code>TRIM</code> function that takes a character expression and returns that
+expression with leading and/or trailing pad characters removed. Optional
+parameters indicate whether leading, or trailing, or both leading and
+trailing pad characters should be removed, and specify the pad character
+that is to be removed.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TRIM( [ trimOperands ] trimSource)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">trimOperands</p>
+
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>{  { trimType [trimCharacter]  FROM
+  |  trimCharacter FROM
+}
+</code></pre>
+
+      </div>
+      <div class="paramList">
+        <p class="paramName">trimCharacter</p>
+
+        <p class="paramDefnFirst">A character expression that specifies which character to trim from the
+source. If this is specified, it must evaluate to either <code>NULL</code> or to a
+character string whose length is exactly one. If left unspecified, it
+defaults to the space character (<code>' '</code>).</p>
+
+        <p class="paramName">trimType</p>
+
+        <div class="fcnWrapperWide">
+          <pre class="FcnSyntax"><code>{LEADING | TRAILING | BOTH}
+</code></pre>
+
+        </div>
+        <p class="paramDefnFirst">If this value is not specified, the default value of <code>BOTH</code> is used.</p>
+
+      </div>
+      <p class="paramName">trimSource</p>
+
+      <p class="paramDefnFirst">The character expression to be trimmed</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>If either <em>trimCharacter</em> or <em>trimSource</em> evaluates to <code>NULL</code>, the result of the <code>TRIM</code>
+ function is <code>NULL</code>. Otherwise, the result is defined as follows:</p>
+
+    <ul>
+      <li>If <em>trimType</em> is <code>LEADING</code>, the result will be the <em>trimSource</em> value with all leading occurrences of <em>trimCharacter</em> removed.</li>
+      <li>If <em>trimType</em> is <code>TRAILING</code>, the result will be the <em>trimSource</em> value with all trailing occurrences of <em>trimCharacter</em> removed.</li>
+      <li>If <em>trimType</em> is <code>BOTH</code>, the result will be the <em>trimSource</em> value with all leading AND trailing occurrences of <em>trimCharacter</em> removed.</li>
+    </ul>
+
+    <p>If trimSource’s data type is <code>CHAR</code> or <code>VARCHAR</code>, the return type of the <code>TRIM</code> function will be <code>VARCHAR</code>. Otherwise the return type of the <code>TRIM</code> function will be <code>CLOB</code>.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>splice&gt; VALUES TRIM('      Space Case   ');
 1
 -----------
 Space Case	--- This is the string 'Space Case'
@@ -2850,43 +2883,46 @@ splice&gt; VALUES TRIM(BOTH ' ' FROM '      Space Case   ');
 -----------
 Space Case	--- This is the string 'Space Case'
 
-splice&gt;&#160;VALUES&#160;TRIM(TRAILING&#160;' ' FROM&#160;'     Space&#160;Case     ');
+splice&gt; VALUES TRIM(TRAILING ' ' FROM '     Space Case     ');
 1
 -----------
      Space Case	--- This is the string '     Space Case'
 
-splice&gt;&#160;VALUES&#160;TRIM(CAST&#160;NULL&#160;AS&#160;CHAR(1)&#160;FROM&#160;'     Space Case     ');
+splice&gt; VALUES TRIM(CAST NULL AS CHAR(1) FROM '     Space Case     ');
 1
 -----------
 NULL
 
-splice&gt;&#160;VALUES&#160;TRIM('o' FROM&#160;'VooDoo');
+splice&gt; VALUES TRIM('o' FROM 'VooDoo');
 1
 ----------
 VooD
 
-   -- results in an error because <span class="ItalicFont">trimCharacter</span> can only be 1 character
-splice&gt;&#160;VALUES TRIM('Do' FROM 'VooDoo');</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
-                <li><a href="sqlref_builtinfcns_initcap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_lcase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_locate.html"><span class="CodeFont">LOCATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ltrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_regexplike.html">REGEX_LIKE</a></span>&#160;operator</li>
-                <li><a href="sqlref_builtinfcns_replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_rtrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_ucase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
-            </ul>
-        </div>
-	</section>
+   -- results in an error because trimCharacter can only be 1 character
+splice&gt; VALUES TRIM('Do' FROM 'VooDoo');
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_builtinfcns_concat.html">Concatenation</a> operator</li>
+      <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_instr.html"><code>INSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_length.html"><code>LENGTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_locate.html"><code>LOCATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_regexplike.html"><code>REGEX_LIKE</code></a> operator</li>
+      <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ucase.html"><code>UCASE</code></a> function</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2903,7 +2939,11 @@ splice&gt;&#160;VALUES TRIM('Do' FROM 'VooDoo');</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

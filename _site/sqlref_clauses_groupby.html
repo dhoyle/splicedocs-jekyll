@@ -2806,88 +2806,127 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="Clauses.GroupBy">GROUP BY</h1>
-            <p>A <span class="CodeFont">GROUP BY</span> clause is part of a <span class="ItalicFont"><a href="sqlref_expressions_select.html">SelectExpression</a>,</span> that groups a result into subsets that have matching values for one or more columns. In each group, no two rows have the same value for the grouping column or columns. NULLs are considered equivalent for grouping purposes.</p>
-            <p>You typically use a <span class="CodeFont">GROUP BY</span> clause in conjunction with an aggregate expression.</p>
-            <p>Using the <span class="CodeFont">ROLLUP</span> syntax, you can specify that multiple levels of grouping  should be computed at once.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="group-by">GROUP BY</h1>
+
+    <p>A <code>GROUP BY</code> clause is part of a
+<em><a href="sqlref_expressions_select.html">SelectExpression</a>,</em> that groups a
+result into subsets that have matching values for one or more columns.
+In each group, no two rows have the same value for the grouping column
+or columns. NULLs are considered equivalent for grouping purposes.</p>
+
+    <p>You typically use a <code>GROUP BY</code> clause in conjunction with an aggregate
+expression.</p>
+
+    <p>Using the <code>ROLLUP</code> syntax, you can specify that multiple levels of
+grouping should be computed at once.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
 GROUP BY
   {
-  <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></span> ]*  |
-  ROLLUP ( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></span>
-	   [ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a></span> ]* )
+  <a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a> ]*  |
+  ROLLUP ( <a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a>
+       [ , <a href="sqlref_identifiers_types.html#ColumnNameOrPosn">column-Name-or-Position</a> ]* )
   }</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">column-Name-or-Position</p>
-                <p class="paramDefnFirst">Must be either the name or position of a column from
-			the current scope of the query; there can be no columns from a query block
-			outside the current scope. For example, if a <span class="CodeFont">GROUP BY</span> clause is in a subquery,
-		it cannot refer to columns in the outer query.</p>
-            </div>
-            <h2>Usage Notes</h2>
-            <p><span class="ItalicFont">SelectItems</span> in
-			the <span class="ItalicFont"><a href="sqlref_expressions_select.html">SelectExpression</a></span> with
-		a <span class="CodeFont">GROUP BY</span> clause must contain only aggregates or grouping columns.</p>
-            <h2>Examples</h2>
-        <h4>Create our Test Table:</h4>
-        <div class="preWrapperWide"><pre class="Example">CREATE TABLE Test1
+
+</div>
+    <div class="paramList">
+      <p class="paramName">column-Name-or-Position</p>
+
+      <p class="paramDefnFirst">Must be either the name or position of a column from the current scope
+of the query; there can be no columns from a query block outside the
+current scope. For example, if a <code>GROUP BY</code> clause is in a subquery, it
+cannot refer to columns in the outer query.</p>
+
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p><em>SelectItems</em> in the
+<em><a href="sqlref_expressions_select.html">SelectExpression</a></em> with a <code>GROUP BY</code>
+clause must contain only aggregates or grouping columns.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <h4 id="create-our-test-table">Create our Test Table:</h4>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE TABLE Test1
 (
-TRACK_SEQ VARCHAR(40),
-TRACK_CD VARCHAR(18),
-REC_SEQ_NBR BIGINT,
-INDIV_ID BIGINT,
-BIZ_ID BIGINT,
-ADDR_ID BIGINT,
-HH_ID BIGINT,
-TRIAD_CB_DT DATE
-);</pre></div>
-        <h4>Populate our Test Table:</h4>
-        <div class="preWrapperWide"><pre class="Example">CREATE TABLE Test1
+    TRACK_SEQ VARCHAR(40),
+    TRACK_CD VARCHAR(18),
+    REC_SEQ_NBR BIGINT,
+    INDIV_ID BIGINT,
+    BIZ_ID BIGINT,
+    ADDR_ID BIGINT,
+    HH_ID BIGINT,
+    TRIAD_CB_DT DATE
+);
+</code></pre>
+
+    </div>
+    <h4 id="populate-our-test-table">Populate our Test Table:</h4>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE TABLE Test1
 INSERT INTO Test1 VALUES
     ('1','A',1,1,1,1,1,'2017-07-01'),
     ('1','A',1,1,2,2,2,'2017-07-02'),
     ('3','C',3,1,3,3,3,'2017-07-03'),
     ('1','A',1,2,1,1,1,'2017-07-01'),
     ('1','A',1,2,2,2,2,'2017-07-02'),
-    ('3','C',3,2,3,3,3,'2017-07-03');</pre></div>
-        <h4>Example: Query Using Column Names:</h4>
-        <div class="preWrapperWide"><pre class="Example">SELECT indiv_id, track_seq, rec_seq_nbr, triad_cb_dt, ROW_NUMBER()
+    ('3','C',3,2,3,3,3,'2017-07-03');
+</code></pre>
+
+    </div>
+    <h4 id="example-query-using-column-names">Example: Query Using Column Names:</h4>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT indiv_id, track_seq, rec_seq_nbr, triad_cb_dt, ROW_NUMBER()
 OVER (PARTITION BY indiv_id ORDER BY triad_cb_dt desc,rec_seq_nbr desc) AS ranking
 FROM Test1
 GROUP BY indiv_id,track_seq,rec_seq_nbr,triad_cb_dt;
-INDIV_ID |TRACK_SEQ |REC_SEQ_NBR |TRIAD_CB_&#38;|RANKING 
+INDIV_ID |TRACK_SEQ |REC_SEQ_NBR |TRIAD_CB_&amp;|RANKING
 ---------------------------------------------------------
-1        |1         |1           |2017-07-01|3 
-1        |1         |1           |2017-07-02|2 
-1        |3         |3           |2017-07-03|1 
-2        |1         |1           |2017-07-01|3 
-2        |1         |1           |2017-07-02|2 
+1        |1         |1           |2017-07-01|3
+1        |1         |1           |2017-07-02|2
+1        |3         |3           |2017-07-03|1
+2        |1         |1           |2017-07-01|3
+2        |1         |1           |2017-07-02|2
 2        |3         |3           |2017-07-03|1
-6 rows selected</pre></div>
-        <h4>Example: Query Using Column Positions:</h4>
-        <div class="preWrapperWide"><pre class="Example">SELECT indiv_id, track_seq, rec_seq_nbr, triad_cb_dt, ROW_NUMBER()
+6 rows selected
+</code></pre>
+
+    </div>
+    <h4 id="example-query-using-column-positions">Example: Query Using Column Positions:</h4>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT indiv_id, track_seq, rec_seq_nbr, triad_cb_dt, ROW_NUMBER()
 OVER (PARTITION BY indiv_id ORDER BY triad_cb_dt desc,rec_seq_nbr desc) AS ranking
 FROM Test1
 GROUP BY 1,2,3,4;
-INDIV_ID |TRACK_SEQ |REC_SEQ_NBR |TRIAD_CB_&#38;|RANKING 
+INDIV_ID |TRACK_SEQ |REC_SEQ_NBR |TRIAD_CB_&amp;|RANKING
 ---------------------------------------------------------
-1        |1         |1           |2017-07-01|3 
-1        |1         |1           |2017-07-02|2 
-1        |3         |3           |2017-07-03|1 
-2        |1         |1           |2017-07-01|3 
-2        |1         |1           |2017-07-02|2 
+1        |1         |1           |2017-07-01|3
+1        |1         |1           |2017-07-02|2
+1        |3         |3           |2017-07-03|1
+2        |1         |1           |2017-07-01|3
+2        |1         |1           |2017-07-02|2
 2        |3         |3           |2017-07-03|1
-6 rows selected</pre></div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>
-            </ul>
-        </div>
-	</section>
+6 rows selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2904,7 +2943,11 @@ INDIV_ID |TRACK_SEQ |REC_SEQ_NBR |TRIAD_CB_&#38;|RANKING
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

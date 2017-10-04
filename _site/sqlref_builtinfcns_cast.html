@@ -2806,371 +2806,394 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInFcns.Cast">CAST</h1>
-            <p>The <span class="CodeFont">CAST</span> function converts a value from one data type to another
-		and provides a data type to a dynamic parameter or a <span class="CodeFont">NULL</span> value.</p>
-            <p><span class="CodeFont">CAST</span> expressions are permitted anywhere expressions are permitted.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CAST ( [ <span class="ItalicFont">Expression</span> | NULL | ? ]
-  AS <span class="ItalicFont">Datatype</span>)</pre>
-            </div>
-            <p>The data type to which you are casting an expression is the <span class="ItalicFont">target type</span>. The data type of the expression
-		from which you are casting is the <span class="ItalicFont">source type</span>.</p>
-            <h2>CAST conversions among ANSI&#160;SQL data types</h2>
-            <p>The following table shows valid explicit conversions between source types and target types
-		for SQL data types. This table shows which explicit conversions between data types are valid. The first column on the table lists the source data types. The first row lists the target data types. A "Y" indicates that a conversion from the source to the target is valid. For example, the first cell in the second row lists the source data type SMALLINT. The remaining cells on the second row indicate the whether or not you can convert SMALLINT to the target data types that are listed in the first row of the table.</p>
-            <table summary="ANSI SQL data type CAST conversions matrix">
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
-                <col  />
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="cast">CAST</h1>
+
+    <p>The <code>CAST</code> function converts a value from one data type to another and
+provides a data type to a dynamic parameter or a <code>NULL</code> value.</p>
+
+    <p><code>CAST</code> expressions are permitted anywhere expressions are permitted.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CAST ( [ Expression | NULL | ? ]
+  AS Datatype)
+</code></pre>
+
+    </div>
+    <p>The data type to which you are casting an expression is the <em>target
+type</em>. The data type of the expression from which you are casting is the
+<em>source type</em>.</p>
+
+    <h2 id="cast-conversions-among-ansisql-data-types">CAST conversions among ANSI SQL data types</h2>
+
+    <p>The following table shows valid explicit conversions between source
+types and target types for SQL data types. This table shows which
+explicit conversions between data types are valid. The first column on
+the table lists the source data types. The first row lists the target
+data types. A “Y” indicates that a conversion from the source to the
+target is valid. For example, the first cell in the second row lists the
+source data type SMALLINT. The remaining cells on the second row
+indicate the whether or not you can convert SMALLINT to the target data
+types that are listed in the first row of the table.</p>
+
+    <table summary="ANSI SQL data type CAST conversions matrix">
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
                 <thead>
-                    <tr >
-                        <th >TYPES</th>
-                        <th  style="vertical-align:bottom;">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
-                        <th  style="vertical-align:bottom;">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
-                        <th  style="vertical-align:bottom;">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
-                        <th  style="vertical-align:bottom;">B<br />I<br />G<br />I<br />N<br />T</th>
-                        <th  style="vertical-align:bottom;">D<br />E<br />C<br />I<br />M<br />A<br />L</th>
-                        <th  style="vertical-align:bottom;">R<br />E<br />A<br />L</th>
-                        <th  style="vertical-align:bottom;">D<br />O<br />U<br />B<br />L<br />E</th>
-                        <th  style="vertical-align:bottom;">F<br />L<br />O<br />A<br />T</th>
-                        <th  style="vertical-align:bottom;">C<br />H<br />A<br />R</th>
-                        <th  style="vertical-align:bottom;">V<br />A<br />R<br />C<br />H<br />A<br />R</th>
-                        <th  style="vertical-align:bottom;">L<br />O<br />N<br />G<br /><br />V<br />A<br />R<br />C<br />H<br />A<br />R</th>
-                        <th  style="vertical-align:bottom;">C<br />L<br />O<br />B</th>
-                        <th  style="vertical-align:bottom;">B<br />L<br />O<br />B<br /></th>
-                        <th  style="vertical-align:bottom;">D<br />A<br />T<br />E</th>
-                        <th  style="vertical-align:bottom;">T<br />I<br />M<br />E</th>
-                        <th  style="vertical-align:bottom;">T<br />I<br />M<br />E<br />S<br />T<br />A<br />M<br />P</th>
+                    <tr>
+                        <th>TYPES</th>
+                        <th style="vertical-align:bottom;">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
+                        <th style="vertical-align:bottom;">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
+                        <th style="vertical-align:bottom;">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
+                        <th style="vertical-align:bottom;">B<br />I<br />G<br />I<br />N<br />T</th>
+                        <th style="vertical-align:bottom;">D<br />E<br />C<br />I<br />M<br />A<br />L</th>
+                        <th style="vertical-align:bottom;">R<br />E<br />A<br />L</th>
+                        <th style="vertical-align:bottom;">D<br />O<br />U<br />B<br />L<br />E</th>
+                        <th style="vertical-align:bottom;">F<br />L<br />O<br />A<br />T</th>
+                        <th style="vertical-align:bottom;">C<br />H<br />A<br />R</th>
+                        <th style="vertical-align:bottom;">V<br />A<br />R<br />C<br />H<br />A<br />R</th>
+                        <th style="vertical-align:bottom;">L<br />O<br />N<br />G<br /><br />V<br />A<br />R<br />C<br />H<br />A<br />R</th>
+                        <th style="vertical-align:bottom;">C<br />L<br />O<br />B</th>
+                        <th style="vertical-align:bottom;">B<br />L<br />O<br />B<br /></th>
+                        <th style="vertical-align:bottom;">D<br />A<br />T<br />E</th>
+                        <th style="vertical-align:bottom;">T<br />I<br />M<br />E</th>
+                        <th style="vertical-align:bottom;">T<br />I<br />M<br />E<br />S<br />T<br />A<br />M<br />P</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                        <td >BOOLEAN</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>BOOLEAN</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >SMALLINT</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>SMALLINT</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >INTEGER</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>INTEGER</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >BIGINT</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>BIGINT</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >DECIMAL</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>DECIMAL</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >REAL</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>REAL</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >DOUBLE</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>DOUBLE</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >FLOAT</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>FLOAT</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >CHAR</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
+                    <tr>
+                        <td>CHAR</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
                     </tr>
-                    <tr >
-                        <td >VARCHAR</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
+                    <tr>
+                        <td>VARCHAR</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
                     </tr>
-                    <tr >
-                        <td >LONG VARCHAR</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>LONG VARCHAR</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >CLOB</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>CLOB</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >BLOB</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>BLOB</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >DATE</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
+                    <tr>
+                        <td>DATE</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >TIME</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >-</td>
+                    <tr>
+                        <td>TIME</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>-</td>
                     </tr>
-                    <tr >
-                        <td >TIMESTAMP</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >-</td>
-                        <td >Y</td>
-                        <td >Y</td>
-                        <td >Y</td>
+                    <tr>
+                        <td>TIMESTAMP</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
                     </tr>
                 </tbody>
             </table>
-            <p>If a conversion is valid, CASTs are allowed. Size incompatibilities between the source and target types might cause runtime errors.</p>
-            <h2>Type Categories</h2>
-            <p class="body">This section lists information about converting specific data types. The Splice Machine ANSI&#160;SQL data types are categorized as follows:</p>
-            <table summary="SQL data type categories">
+    <p>If a conversion is valid, CASTs are allowed. Size incompatibilities
+between the source and target types might cause runtime errors.</p>
+
+    <h2 id="type-categories">Type Categories</h2>
+
+    <p class="body">This section lists information about converting specific data types. The
+Splice Machine ANSI SQL data types are categorized as follows:</p>
+
+    <table summary="SQL data type categories">
                 <col />
                 <col />
                 <thead>
@@ -3181,87 +3204,140 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">logical</td>
-                        <td><span class="CodeFont">BOOLEAN</span>
+                        <td><em>logical</em></td>
+                        <td><code>BOOLEAN</code>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">numeric</td>
+                        <td><em>numeric</em></td>
                         <td>
-                            <p>Exact numeric:&#160;<span class="CodeFont">SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC</span></p>
-                            <p>Approximate numeric:&#160;<span class="CodeFont">FLOAT, REAL, DOUBLE&#160;PRECISION</span></p>
+                            <p>Exact numeric: <code>SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC</code></p>
+                            <p>Approximate numeric: <code>FLOAT, REAL, DOUBLE PRECISION</code></p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">string</td>
+                        <td><em>string</em></td>
                         <td>
-                            <p>Character string: <span class="CodeFont">CLOB, CHAR, VARCHAR, LONG&#160;VARCHAR</span></p>
-                            <p>Bit string: <span class="CodeFont">BLOB</span></p>
+                            <p>Character string: <code>CLOB, CHAR, VARCHAR, LONG VARCHAR</code></p>
+                            <p>Bit string: <code>BLOB</code></p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">date and time</td>
-                        <td><span class="CodeFont">DATE, TIME, TIMESTAMP</span>
+                        <td><em>date and time</em></td>
+                        <td><code>DATE, TIME, TIMESTAMP</code>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <h2>Conversion Notes</h2>
-            <p class="body">This section lists additional information about casting of certain data types.</p>
-            <h3>Applying Multiple Conversions</h3>
-            <p>As shown in the above table, you cannot convert freely among all types. For example, you cannot <span class="CodeFont">CAST</span>an <span class="CodeFont">INTEGER</span> value to a <span class="CodeFont">VARCHAR</span> value. However, you may be able to achieve your conversion by using multiple <span class="CodeFont">CAST</span>&#160;operations. </p>
-            <p>For example, since you can convert an <span class="CodeFont">INTEGER</span> value to a <span class="CodeFont">CHAR</span>&#160;value, and you can convert a <span class="CodeFont">CHAR</span> value to a <span class="CodeFont">VARCHAR</span> value, you can use multiple <span class="CodeFont">CAST</span> operations, as shown here:</p>
-            <div class="preWrapper"><pre class="Example">CAST(CAST(123 AS&#160;CHAR(10))&#160;AS&#160;VARCHAR(10));<br /><br />SELECT&#160;CAST(CAST(myId as CHAR(20)) as VARCHAR(20));</pre>
-            </div>
-            <h3>Conversions to and from logical types</h3>
-            <p class="body">These notes apply to converting logical values to strings and vice-versa:</p>
-            <ul>
-                <li>A <span class="CodeFont">BOOLEAN</span> value can be cast explicitly to any of the string types. The result is <span class="CodeFont">'true'</span>, <span class="CodeFont">'false'</span>, or <span class="CodeFont">null</span>. </li>
-                <li>Conversely, string types can be cast to <span class="CodeFont">BOOLEAN</span>; however, an error is raised if the string value is not <span class="CodeFont">'true'</span>, <span class="CodeFont">'false'</span>, <span class="CodeFont">'unknown'</span>, or <span class="CodeFont">null</span>. </li>
-                <li>Casting <span class="CodeFont">'false'</span> to <span class="CodeFont">BOOLEAN</span> results in a <span class="CodeFont">null</span> value.</li>
-            </ul>
-            <h3>Conversions from numeric types</h3>
-            <p class="body">A numeric type can be converted to any other numeric type. These notes apply:</p>
-            <ul>
-                <li>If the target type cannot represent the non-fractional component without truncation, an exception is raised.</li>
-                <li>If  the target numeric cannot represent the fractional component (scale) of the source numeric, then the source is silently truncated to fit into the target. For example, casting <span class="CodeFont">763.1234</span> as <span class="CodeFont">INTEGER</span> yields <span class="CodeFont">763</span>.</li>
-            </ul>
-            <h3>Conversions from and to bit strings</h3>
-            <p>Bit strings 	can be converted to other bit strings, but not to character strings. Strings that are converted to bit strings are padded with trailing zeros to fit the size of the target bit string. The <span class="CodeFont">BLOB</span> type is more limited and requires explicit casting. In most cases the <span class="CodeFont">BLOB</span> type cannot be cast to and from other types: you can cast a <span class="CodeFont">BLOB</span> only to another <span class="CodeFont">BLOB</span>, but you can cast other bit string types to a <span class="CodeFont">BLOB</span>.</p>
-            <h3>Conversions of date/time values</h3>
-            <p>A 	date/time value can always be converted to and from a <span class="CodeFont">TIMESTAMP</span>. </p>
-            <p>If a <span class="CodeFont">DATE</span> is converted to a <span class="CodeFont">TIMESTAMP</span>, the <span class="CodeFont">TIME</span> component of the resulting <span class="CodeFont">TIMESTAMP</span> is always <span class="CodeFont">00:00:00</span>.</p>
-            <p>If a <span class="CodeFont">TIME</span> data value is converted to a <span class="CodeFont">TIMESTAMP</span>, the <span class="CodeFont">DATE</span> component is set to the value of <span class="CodeFont">CURRENT_DATE</span> at the time the <span class="CodeFont">CAST</span> is executed. </p>
-            <p>If a <span class="CodeFont">TIMESTAMP</span> is converted to a <span class="CodeFont">DATE</span>, the <span class="CodeFont">TIME</span> component is silently truncated. </p>
-            <p>If a <span class="CodeFont">TIMESTAMP</span> is converted to a <span class="CodeFont">TIME</span>, the <span class="CodeFont">DATE</span> component is silently truncated.</p>
-            <h2>Examples</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT CAST (TotalBases AS BIGINT)
+    <h2 id="conversion-notes">Conversion Notes</h2>
+
+    <p class="body">This section lists additional information about casting of certain data
+types.</p>
+
+    <h3 id="applying-multiple-conversions">Applying Multiple Conversions</h3>
+
+    <p>As shown in the above table, you cannot convert freely among all types.
+For example, you cannot <code>CAST</code>an <code>INTEGER</code> value to a <code>VARCHAR</code> value.
+However, you may be able to achieve your conversion by using multiple
+<code>CAST</code> operations.</p>
+
+    <p>For example, since you can convert an <code>INTEGER</code> value to a <code>CHAR</code> value,
+and you can convert a <code>CHAR</code> value to a <code>VARCHAR</code> value, you can use
+multiple <code>CAST</code> operations, as shown here:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>CAST(CAST(123 AS CHAR(10)) AS VARCHAR(10));SELECT CAST(CAST(myId as CHAR(20)) as VARCHAR(20));
+</code></pre>
+
+    </div>
+    <h3 id="conversions-to-and-from-logical-types">Conversions to and from logical types</h3>
+
+    <p class="body">These notes apply to converting logical values to strings and
+vice-versa:</p>
+
+    <ul>
+      <li>A <code>BOOLEAN</code> value can be cast explicitly to any of the string types.
+The result is <code>'true'</code>, <code>'false'</code>, or <code>null</code>.</li>
+      <li>Conversely, string types can be cast to <code>BOOLEAN</code>; however, an error
+is raised if the string value is not <code>'true'</code>, <code>'false'</code>, <code>'unknown'</code>,
+or <code>null</code>.</li>
+      <li>Casting <code>'false'</code> to <code>BOOLEAN</code> results in a <code>null</code> value.</li>
+    </ul>
+
+    <h3 id="conversions-from-numeric-types">Conversions from numeric types</h3>
+
+    <p class="body">A numeric type can be converted to any other numeric type. These notes
+apply:</p>
+
+    <ul>
+      <li>If the target type cannot represent the non-fractional component
+without truncation, an exception is raised.</li>
+      <li>If the target numeric cannot represent the fractional component
+(scale) of the source numeric, then the source is silently truncated
+to fit into the target. For example, casting <code>763.1234</code> as <code>INTEGER</code>
+yields <code>763</code>.</li>
+    </ul>
+
+    <h3 id="conversions-from-and-to-bit-strings">Conversions from and to bit strings</h3>
+
+    <p>Bit strings can be converted to other bit strings, but not to character
+strings. Strings that are converted to bit strings are padded with
+trailing zeros to fit the size of the target bit string. The <code>BLOB</code> type
+is more limited and requires explicit casting. In most cases the <code>BLOB</code>
+type cannot be cast to and from other types: you can cast a <code>BLOB</code> only
+to another <code>BLOB</code>, but you can cast other bit string types to a <code>BLOB</code>.</p>
+
+    <h3 id="conversions-of-datetime-values">Conversions of date/time values</h3>
+
+    <p>A date/time value can always be converted to and from a <code>TIMESTAMP</code>.</p>
+
+    <p>If a <code>DATE</code> is converted to a <code>TIMESTAMP</code>, the <code>TIME</code> component of the
+resulting <code>TIMESTAMP</code> is always <code>00:00:00</code>.</p>
+
+    <p>If a <code>TIME</code> data value is converted to a <code>TIMESTAMP</code>, the <code>DATE</code>
+component is set to the value of <code>CURRENT_DATE</code> at the time the <code>CAST</code>
+is executed.</p>
+
+    <p>If a <code>TIMESTAMP</code> is converted to a <code>DATE</code>, the <code>TIME</code> component is
+silently truncated.</p>
+
+    <p>If a <code>TIMESTAMP</code> is converted to a <code>TIME</code>, the <code>DATE</code> component is
+silently truncated.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT CAST (TotalBases AS BIGINT)
   FROM Batting;
 
    -- convert timestamps to text
-splice&gt;&#160;INSERT INTO mytable (text_column)
+splice&gt; INSERT INTO mytable (text_column)
   VALUES (CAST (CURRENT_TIMESTAMP AS VARCHAR(100)));
 
    -- you must cast NULL as a data type to use it
-splice&gt;&#160;SELECT airline
+splice&gt; SELECT airline
   FROM Airlines
   UNION ALL
   VALUES (CAST (NULL AS CHAR(2)));
 
    -- cast a double as a decimal
-splice&gt;&#160;SELECT CAST (FLYING_TIME AS DECIMAL(5,2))
+splice&gt; SELECT CAST (FLYING_TIME AS DECIMAL(5,2))
   FROM FLIGHTS;
 
    -- cast a SMALLINT to a BIGINT
-splice&gt;&#160;VALUES CAST (CAST (12 as SMALLINT) as BIGINT);</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+splice&gt; VALUES CAST (CAST (12 as SMALLINT) as BIGINT);
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -3278,7 +3354,11 @@ splice&gt;&#160;VALUES CAST (CAST (12 as SMALLINT) as BIGINT);</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

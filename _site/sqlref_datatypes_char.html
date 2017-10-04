@@ -2806,34 +2806,62 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="DataTypes.Char">CHAR</h1>
-            <p>The <span class="CodeFont">CHAR</span> data type provides for fixed-length storage of strings.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR[ACTER] [(<span class="ItalicFont">length</span>)]</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">length</p>
-                <p class="paramDefnFirst">An unsigned integer literal designating the length in bytes. The default <span class="ItalicFont">length</span> for a <span class="CodeFont">CHAR</span> is <span class="CodeFont">1</span>; the maximum size of <span class="ItalicFont">length</span> is <span class="CodeFont">254</span>..</p>
-            </div>
-            <h2>Corresponding Compile-time Java Type</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">java.lang.String</pre>
-            </div>
-            <h2>JDBC Metadata Type (java.sql.Types)</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">CHAR</pre>
-            </div>
-            <h2>Usage Notes</h2>
-            <p>Here are several usage notes for the <span class="CodeFont">CHAR</span>&#160;data type:</p>
-            <ul>
-                <li>Splice Machine inserts spaces to pad a string value shorter than the expected length, and truncates spaces from a string value longer than the expected length. Characters other than spaces cause an exception to be raised. When <a href="sqlref_expressions_boolean.html">comparison boolean operators</a> are applied to <span class="CodeFont">CHARs</span>, the shorter string is padded with spaces to the length
-		of the longer string.</li>
-                <li>When <span class="CodeFont">CHARs</span> and <span class="CodeFont">VARCHARs</span> are mixed in expressions, the shorter value is padded with spaces to the length of the longer value.</li>
-                <li>The type of a string constant is <span class="CodeFont">CHAR</span>.</li>
-            </ul>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-   -- within a string constant use two single quotation marks
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="char">CHAR</h1>
+
+    <p>The <code>CHAR</code> data type provides for fixed-length storage of strings.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CHAR[ACTER] [(length)]
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">length</p>
+
+      <p class="paramDefnFirst">An unsigned integer literal designating the length in bytes. The default
+<em>length</em> for a <code>CHAR</code> is <code>1</code>; the maximum size of <em>length</em> is <code>254</code>..</p>
+
+    </div>
+    <h2 id="corresponding-compile-time-java-type">Corresponding Compile-time Java Type</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>java.lang.String
+</code></pre>
+
+    </div>
+    <h2 id="jdbc-metadata-type-javasqltypes">JDBC Metadata Type (java.sql.Types)</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>CHAR
+</code></pre>
+
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Here are several usage notes for the <code>CHAR</code> data type:</p>
+
+    <ul>
+      <li>Splice Machine inserts spaces to pad a string value shorter than the
+expected length, and truncates spaces from a string value longer than
+the expected length. Characters other than spaces cause an exception
+to be raised. When <a href="sqlref_expressions_boolean.html">comparison boolean
+operators</a> are applied to <code>CHARs</code>,
+the shorter string is padded with spaces to the length of the longer
+string.</li>
+      <li>When <code>CHARs</code> and <code>VARCHARs</code> are mixed in expressions, the shorter
+value is padded with spaces to the length of the longer value.</li>
+      <li>The type of a string constant is <code>CHAR</code>.</li>
+    </ul>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>   -- within a string constant use two single quotation marks
    -- to represent a single quotation mark or apostrophe
 VALUES 'hello this is Joe''s string';
 
@@ -2842,10 +2870,13 @@ CREATE TABLE STATUS (
     STATUSCODE CHAR(2) NOT NULL
         CONSTRAINT PK_STATUS PRIMARY KEY,
     STATUSDESC VARCHAR(40) NOT NULL
-);    </pre>
-            </div>
-        </div>
-	</section>
+);    
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2862,7 +2893,11 @@ CREATE TABLE STATUS (
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

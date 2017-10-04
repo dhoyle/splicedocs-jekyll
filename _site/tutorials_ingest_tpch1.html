@@ -510,6 +510,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Importing TPCH Data Into Your Database</h1>
@@ -527,7 +528,41 @@
                         <p class="topLevel">Create the schema and tables</p>
                         <p class="indentLevel1">You can copy/paste the following SQL&#160;statements to create the schema and tables for importing the sample data:</p>
                         <div class="preWrapperWide"><pre class="Example">CREATE SCHEMA TPCH;
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="importing-tpch-data-into-your-database">Importing TPCH Data Into Your Database</h1>
 
+    <p>This tutorial walks you through importing sample data into your
+Splice Machine database and then querying that data, in these sections:</p>
+
+    <ul>
+      <li><a href="#Import">Import Sample Data</a> walks you through importing TPCH data
+from our AWS bucket into your Splice Machine database</li>
+      <li><a href="#Importin">Importing Your Own Data</a> links to our tutorial that helps
+you to import your own data</li>
+      <li><a href="#Addition">The TPCH Queries</a> includes the SQL source for each of the
+TPCH queries, so you can quickly run any of them against your newly
+imported data.</li>
+    </ul>
+
+    <h2 id="Import">Import Sample Data</h2>
+>>>>>>> MDConvert
+
+    <p>You can use the following steps to import TPCH data into your new Splice
+Machine database:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Create the schema and tables</p>
+
+          <p class="indentLevel1">You can copy/paste the following SQL statements to create the schema
+and tables for importing the sample data:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>CREATE SCHEMA TPCH;
+    
 CREATE TABLE TPCH.LINEITEM (
  L_ORDERKEY BIGINT NOT NULL,
  L_PARTKEY INTEGER NOT NULL,
@@ -547,7 +582,7 @@ CREATE TABLE TPCH.LINEITEM (
  L_COMMENT VARCHAR(44),
  PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
  );
-
+    
 CREATE TABLE TPCH.ORDERS (
  O_ORDERKEY BIGINT NOT NULL PRIMARY KEY,
  O_CUSTKEY INTEGER,
@@ -559,7 +594,7 @@ CREATE TABLE TPCH.ORDERS (
  O_SHIPPRIORITY INTEGER ,
  O_COMMENT VARCHAR(79)
  );
-
+    
 CREATE TABLE TPCH.CUSTOMER (
  C_CUSTKEY INTEGER NOT NULL PRIMARY KEY,
  C_NAME VARCHAR(25),
@@ -570,7 +605,7 @@ CREATE TABLE TPCH.CUSTOMER (
  C_MKTSEGMENT VARCHAR(10),
  C_COMMENT VARCHAR(117)
  );
-
+    
 CREATE TABLE TPCH.PARTSUPP (
  PS_PARTKEY INTEGER NOT NULL ,
  PS_SUPPKEY INTEGER NOT NULL ,
@@ -579,7 +614,7 @@ CREATE TABLE TPCH.PARTSUPP (
  PS_COMMENT VARCHAR(199),
  PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY)
  );
-
+    
 CREATE TABLE TPCH.SUPPLIER (
  S_SUPPKEY INTEGER NOT NULL PRIMARY KEY,
  S_NAME VARCHAR(25) ,
@@ -589,7 +624,7 @@ CREATE TABLE TPCH.SUPPLIER (
  S_ACCTBAL DECIMAL(15,2),
  S_COMMENT VARCHAR(101)
  );
-
+    
 CREATE TABLE TPCH.PART (
  P_PARTKEY INTEGER NOT NULL PRIMARY KEY,
  P_NAME VARCHAR(55) ,
@@ -601,46 +636,60 @@ CREATE TABLE TPCH.PART (
  P_RETAILPRICE DECIMAL(15,2),
  P_COMMENT VARCHAR(23)
  );
-
+    
 CREATE TABLE TPCH.REGION (
  R_REGIONKEY INTEGER NOT NULL PRIMARY KEY,
  R_NAME VARCHAR(25),
  R_COMMENT VARCHAR(152)
  );
-
+    
 CREATE TABLE TPCH.NATION (
  N_NATIONKEY INTEGER NOT NULL,
  N_NAME VARCHAR(25),
  N_REGIONKEY INTEGER NOT NULL,
  N_COMMENT VARCHAR(152),
  PRIMARY KEY (N_NATIONKEY)
- );</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Import data</p>
-                        <p class="indentLevel1">We've put a copy of the TPCH data in an AWS&#160;S3 bucket, for convenient retrieval. You can copy/paste the following <span class="CodeFont">SYSCS_UTIL.IMPORT_DATA</span>&#160;statements to quickly pull that data into your database:</p>
-                        <div class="preWrapperWide"><pre class="Example">call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'LINEITEM', null, 's3a:/splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
+ );
+</code></pre>
 
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Import data</p>
+
+          <p class="indentLevel1">We’ve put a copy of the TPCH data in an AWS S3 bucket, for
+convenient retrieval. You can copy/paste the following
+<code>SYSCS_UTIL.IMPORT_DATA</code> statements to quickly pull that data into
+your database:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'LINEITEM', null, 's3a:/splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'ORDERS',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/orders',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'CUSTOMER', null, 's3a:/splice-benchmark-data/flat/TPCH/1/customer', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'PARTSUPP', null, 's3a:/splice-benchmark-data/flat/TPCH/1/partsupp', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'SUPPLIER', null, 's3a:/splice-benchmark-data/flat/TPCH/1/supplier', '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'PART',     null, 's3a:/splice-benchmark-data/flat/TPCH/1/part',     '|', null, null, null, null, 0, '/tmp/BAD', true, null);
-
+    
 call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/region',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);
+    
+call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'NATION',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);
+</code></pre>
 
-call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'NATION',   null, 's3a:/splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp/BAD', true, null);</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run a query</p>
-                        <p class="indentLevel1">You can now copy/paste <span class="ItalicFont">TPCH Query 01</span> against the imported data to verify that all's well:</p>
-                        <div class="preWrapperWide"><pre class="Example">-- QUERY 01
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Run a query</p>
+
+          <p class="indentLevel1">You can now copy/paste <em>TPCH Query 01</em> against the imported data to
+verify that all’s well:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>-- QUERY 01
 select
 	l_returnflag,
 	l_linestatus,
@@ -662,22 +711,35 @@ group by
 order by
 	l_returnflag,
 	l_linestatus
--- END OF QUERY</pre>
-                        </div>
-                        <p class="indentLevel1">We've also included the SQL&#160;for most of the other <a href="#Addition">TPCH queries</a> in this topic, should you want to try others.</p>
-                    </li>
-                </ol>
-            </div>
-            <h2 id="Importin">Importing Your Own Data</h2>
-            <p>You can follow similar steps to import your own data. Setting up your import requires some precision; we encourage you to look through our <a href="tutorials_ingest_importing.html">Importing Your Data</a> tutorial for guidance and tips to make that process go smoothly.</p>
-            <h2 id="Addition">The TPCH Queries</h2>
-            <p>Here are a number of additional queries you might want to run against the TPCH data:</p>
-            <table>
+-- END OF QUERY
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">We’ve also included the SQL for most of the other <a href="#Addition">TPCH
+queries</a> in this topic, should you want to try others.</p>
+        </li>
+      </ol>
+
+    </div>
+    <h2 id="Importin">Importing Your Own Data</h2>
+
+    <p>You can follow similar steps to import your own data. Setting up your
+import requires some precision; we encourage you to look through our
+<a href="tutorials_ingest_importing.html">Importing Your Data</a> tutorial for
+guidance and tips to make that process go smoothly.</p>
+
+    <h2 id="Addition">The TPCH Queries</h2>
+
+    <p>Here are a number of additional queries you might want to run against
+the TPCH data:</p>
+
+    <table>
                 <col />
                 <col />
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">Query01</td>
+                        <td><em>Query01</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 01
 select
@@ -706,7 +768,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query02</td>
+                        <td><em>Query02</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 02
 select
@@ -757,7 +819,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query03</td>
+                        <td><em>Query03</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 03
 select
@@ -788,7 +850,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query04</td>
+                        <td><em>Query04</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 04
 select
@@ -817,7 +879,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query05</td>
+                        <td><em>Query05</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 05
 select
@@ -849,7 +911,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query06</td>
+                        <td><em>Query06</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 06
 select
@@ -867,7 +929,7 @@ where
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query07</td>
+                        <td><em>Query07</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 07
 select
@@ -914,7 +976,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query08</td>
+                        <td><em>Query08</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 08
 select
@@ -959,7 +1021,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query09</td>
+                        <td><em>Query09</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 09
 select
@@ -999,7 +1061,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query10</td>
+                        <td><em>Query10</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 10
 select
@@ -1039,7 +1101,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query11</td>
+                        <td><em>Query11</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 11
 select
@@ -1074,7 +1136,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query12</td>
+                        <td><em>Query12</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 12
 select
@@ -1110,7 +1172,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query13</td>
+                        <td><em>Query13</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 13
 select
@@ -1138,7 +1200,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query14</td>
+                        <td><em>Query14</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 14
 select
@@ -1159,7 +1221,7 @@ where
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query15</td>
+                        <td><em>Query15</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 15
 select
@@ -1186,7 +1248,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query16</td>
+                        <td><em>Query16</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 16
 select
@@ -1224,7 +1286,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query17</td>
+                        <td><em>Query17</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 17
 select
@@ -1249,7 +1311,7 @@ where
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query18</td>
+                        <td><em>Query18</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 18
 select
@@ -1290,7 +1352,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query19</td>
+                        <td><em>Query19</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 19
 select
@@ -1333,7 +1395,7 @@ where
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query21</td>
+                        <td><em>Query21</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 21
 select
@@ -1381,7 +1443,7 @@ order by
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Query22</td>
+                        <td><em>Query22</em></td>
                         <td>
                             <div class="preWrapperWide"><pre class="Example">-- QUERY 22
 select
@@ -1427,8 +1489,9 @@ order by
                     </tr>
                 </tbody>
             </table>
-        </div>
-	</section>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -1445,7 +1508,11 @@ order by
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

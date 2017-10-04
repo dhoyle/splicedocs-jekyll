@@ -29,6 +29,37 @@
 	}
 }
 
+
+@mixin pgfnotes($color: $note-text-color,
+				$weight: $note-text-weight,
+				$margin: (20px 20px 20px 32px),
+				$padding: (5px 10px 5px 10px),
+				$radius: $border-note-radius,
+				$maxWidth: 75%,
+				$minHeight: 0,
+				$beforeTxt: "",
+				$bgImg: none )
+{
+	background-color: $bgcolor-note;
+	background-repeat: no-repeat;
+	background-image: $bgImg;
+	color:   $color;
+	margin:  $margin;
+	padding: $padding;
+	font-weight: $weight;
+	z-index: -1;
+	border: $border-note;
+	border-radius: $radius;
+	max-width: $maxWidth;
+	min-height: $minHeight;
+
+	&:before {
+		content: $beforeTxt;
+		color: $note-leader-color;
+		font-weight: $note-leader-weight;
+	}
+}
+
 div.smallfont
 {
 	font-size: $smallfont-size;
@@ -59,10 +90,20 @@ div.noteChange {
 	@include notes($beforeTxt: "CHANGE ALERT: ");
 }
 
+p.noteChange {
+	@include pgfnotes($beforeTxt: "CHANGE ALERT: ");
+}
+
 div.noteDBaaSOnly {
 	@include notes($beforeTxt: "This is a DB-Service-Only topic!   ",
 	               $margin: (15px auto 20px auto),
 				   $maxWidth: 475px );
+}
+
+p.noteDBaaSOnly {
+	@include pgfnotes($beforeTxt: "This is a DB-Service-Only topic!   ",
+	                  $margin: (15px auto 20px auto),
+				      $maxWidth: 475px );
 }
 
 div.noteEnterprise {
@@ -73,6 +114,14 @@ div.noteEnterprise {
                  $padding: (5px 10px 5px 40px) );
 }
 
+p.noteEnterprise {
+  @include pgfnotes($bgImg: url('/images/SpliceNoteIcon.png'),
+                    $minHeight: 48px,
+                    $radius: 0,
+                    $margin: (0 35px 15px 35px),
+                    $padding: (5px 10px 5px 40px) );
+}
+
 div.noteIcon {
   @include notes($bgImg: url('/images/SpliceNoteIcon.png'),
                  $minHeight: 48px,
@@ -80,13 +129,29 @@ div.noteIcon {
                  $padding: (5px 10px 5px 48px) );
 }
 
+p.noteIcon {
+  @include pgfnotes($bgImg: url('/images/SpliceNoteIcon.png'),
+                    $minHeight: 48px,
+                    $margin: (20px 60px 20px 60px),
+                    $padding: (5px 10px 5px 48px) );
+}
+
 div.noteIndent {
   @include notes($beforeTxt: "NOTE:  ",
                  $margin:(20px 20px 20px 60px))
 }
 
+p.noteIndent {
+  @include pgfnotes($beforeTxt: "NOTE:  ",
+                    $margin:(20px 20px 20px 60px))
+}
+
 div.noteNote {
 	@include notes($beforeTxt: "NOTE: ");
+}
+
+p.noteNote {
+	@include pgfnotes($beforeTxt: "NOTE: ");
 }
 
 div.noteOnPremiseOnly {
@@ -95,8 +160,18 @@ div.noteOnPremiseOnly {
 				   $maxWidth: 475px );
 }
 
+p.noteOnPremiseOnly {
+	@include pgfnotes($beforeTxt: "This is an On-Premise-Only topic!   ",
+	                  $margin: (15px auto 20px auto),
+				      $maxWidth: 475px );
+}
+
 div.notePlain {
 	@include notes;
+}
+
+p.notePlain {
+	@include pgfnotes;
 }
 
 div.openSourceNote {
@@ -104,6 +179,13 @@ div.openSourceNote {
                  $minHeight: 48px,
                  $margin: (25px auto 20px auto),
                  $padding: (5px 10px 5px 40px) );
+}
+
+p.openSourceNote {
+  @include pgfnotes($bgImg: url('/images/SpliceNoteIcon.png'),
+                    $minHeight: 48px,
+                    $margin: (25px auto 20px auto),
+                    $padding: (5px 10px 5px 40px) );
 }
 
 div.opsStepsList {

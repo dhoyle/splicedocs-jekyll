@@ -2806,13 +2806,24 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="SQLArgumentMatching" id="SQLArgumentMatching">Argument Matching in Splice Machine</h1>
-            <p>When you declare a function or procedure using <span class="CodeFont">CREATE FUNCTION/PROCEDURE</span>, Splice Machine does not verify whether a matching Java method exists. Instead, Splice Machine looks for a matching method only when you invoke the function or procedure in a later SQL statement. </p>
-            <p>At that time, Splice Machine searches for a public, static method having the class and method name declared in the <span class="CodeFont">EXTERNAL NAME </span>clause of the earlier <span class="CodeFont">CREATE FUNCTION/PROCEDURE</span> statement. Furthermore, the Java types of the method's arguments and return value must match the SQL types declared in the <span class="CodeFont">CREATE FUNCTION/PROCEDURE </span>statement. </p>
-            <p>The following may happen:</p>
-            <table summary="Pssible results of argument mismatches">
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="argument-matching-in-splice-machine">Argument Matching in Splice Machine</h1>
+
+    <p>When you declare a function or procedure using <code>CREATE
+FUNCTION/PROCEDURE</code>, Splice Machine does not verify whether a matching
+Java method exists. Instead, Splice Machine looks for a matching method
+only when you invoke the function or procedure in a later SQL statement.</p>
+
+    <p>At that time, Splice Machine searches for a public, static method having
+the class and method name declared in the <code>EXTERNAL NAME </code>clause of the
+earlier <code>CREATE FUNCTION/PROCEDURE</code> statement. Furthermore, the Java
+types of the method’s arguments and return value must match the SQL
+types declared in the <code>CREATE FUNCTION/PROCEDURE </code>statement.</p>
+
+    <p>The following may happen:</p>
+
+    <table summary="Pssible results of argument mismatches">
                 <col />
                 <col />
                 <thead>
@@ -2839,10 +2850,10 @@
                     </tr>
                 </tbody>
             </table>
-            <p>
-			In mapping SQL data types to Java data types, Splice Machine considers the following kinds of matches:
-		</p>
-            <table summary="Types of argument matches">
+    <p>In mapping SQL data types to Java data types, Splice Machine considers
+the following kinds of matches:</p>
+
+    <table summary="Types of argument matches">
                 <col />
                 <col />
                 <col />
@@ -2850,36 +2861,37 @@
                     <tr>
                         <th>Result</th>
                         <th>Description</th>
-                        <th>&#160;</th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="ItalicFont">Primitive Match
                     </td>
-                        <td>Splice Machine looks for a primitive	Java type corresponding to the SQL type. For instance, SQL <span class="CodeFont">INTEGER </span>matches Java <span class="ItalicFont">int</span></td>
+                        <td>Splice Machine looks for a primitive	Java type corresponding to the SQL type. For instance, SQL <code>INTEGER </code>matches Java <em>int</em></td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">Wrapper Match
                     </td>
-                        <td> Splice Machine looks for a wrapper class in the <span class="ItalicFont">java.lang</span> or <span class="ItalicFont">java.sql</span> packages corresponding to the
-					SQL type. For instance, SQL INTEGER matches <span class="ItalicFont">java.lang.Integer</span>. For a user-defined type (UDT), Splice Machine looks for the UDT's external name class.</td>
+                        <td> Splice Machine looks for a wrapper class in the <em>java.lang</em> or <em>java.sql</em> packages corresponding to the
+					SQL type. For instance, SQL INTEGER matches <em>java.lang.Integer</em>. For a user-defined type (UDT), Splice Machine looks for the UDT's external name class.</td>
                     </tr>
                     <tr>
                         <td class="ItalicFont">Array Match
                     </td>
-                        <td>For <span class="CodeFont">OUT</span> and <span class="CodeFont">INOUT</span> procedure arguments, Splice Machine looks for an array of the corresponding primitive or wrapper type. For
-					example, an <span class="CodeFont">OUT</span> procedure argument of type SQL <span class="CodeFont">INTEGER </span>matches	<span class="ItalicFont">int[]</span> and <span class="ItalicFont">Integer[]</span>.</td>
+                        <td>For <code>OUT</code> and <code>INOUT</code> procedure arguments, Splice Machine looks for an array of the corresponding primitive or wrapper type. For
+					example, an <code>OUT</code> procedure argument of type SQL <code>INTEGER </code>matches	<em>int[]</em> and <em>Integer[]</em>.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">ResultSet&#160;Match
+                        <td class="ItalicFont">ResultSet Match
                     </td>
-                        <td> If a procedure is declared to return <span class="ItalicFont">n</span> RESULT SETS, Splice Machine looks for a method whose last <span class="ItalicFont">n</span> arguments are of type <span class="ItalicFont">java.sql.ResultSet[]</span>.</td>
+                        <td> If a procedure is declared to return <em>n</em> RESULT SETS, Splice Machine looks for a method whose last <em>n</em> arguments are of type <em>java.sql.ResultSet[]</em>.</td>
                     </tr>
                 </tbody>
             </table>
-            <p>Splice Machine resolves function and procedure invocations as follows: </p>
-            <table summary="How Splice Machine resolves argments matches in function and procedure calls">
+    <p>Splice Machine resolves function and procedure invocations as follows:</p>
+
+    <table summary="How Splice Machine resolves argments matches in function and procedure calls">
                 <col />
                 <col />
                 <thead>
@@ -2892,39 +2904,46 @@
                     <tr>
                         <td class="ItalicFont">Function
                  </td>
-                        <td>Splice Machine looks for a method whose argument and return types are <span class="ItalicFont">primitive match</span>es or <span class="ItalicFont">wrapper match</span>es for the function's SQL arguments and return value.</td>
+                        <td>Splice Machine looks for a method whose argument and return types are <em>primitive match</em>es or <em>wrapper match</em>es for the function's SQL arguments and return value.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Procedure                    </td>
+                        <td><em>Procedure                    </em></td>
                         <td>
-                            <p class="noSpaceAbove">Splice Machine looks for a method which returns void and whose argument types match as follows:
-						</p>
+                            <p class="noSpaceAbove">Splice Machine looks for a method which returns void and whose argument types match as follows:</p>
                             <ul>
-                                <li><span class="CodeFont">IN</span> - Method arguments are <span class="ItalicFont">primitive match</span>es or <span class="ItalicFont">wrapper matches</span> for the procedure's <span class="CodeFont">IN</span> arguments.</li>
-                                <li><span class="CodeFont">OUT and INOUT</span> - Method arguments are <span class="ItalicFont">array match</span>es for the
-						procedure's <span class="CodeFont">OUT</span> and <span class="CodeFont">INOUT</span> arguments.</li>
+                                <li><code>IN</code> - Method arguments are <em>primitive match</em>es or <em>wrapper matches</em> for the procedure's <code>IN</code> arguments.</li>
+                                <li><code>OUT and INOUT</code> - Method arguments are <em>array match</em>es for the
+                        procedure's <code>OUT</code> and <code>INOUT</code> arguments.</li>
                             </ul>
-                            <p>
-						In addition, if the procedure returns <span class="ItalicFont">n</span> RESULT SETS, then the last <span class="ItalicFont">n</span> arguments of the Java method must be of type <span class="ItalicFont">java.sql.ResultSet[]</span></p><![CDATA[					]]></td>
+                        <p>In addition, if the procedure returns <em>n</em> RESULT SETS, then the last <em>n</em> arguments of the Java method must be of type <em>java.sql.ResultSet[]</em></p>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <h2>Example of argument matching</h2>
-            <p>The following function: </p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">CREATE FUNCTION TO_DEGREES
+    <h2 id="example-of-argument-matching">Example of argument matching</h2>
+
+    <p>The following function:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE FUNCTION TO_DEGREES
      ( RADIANS DOUBLE )
 RETURNS DOUBLE
 PARAMETER STYLE JAVA
 NO SQL LANGUAGE JAVA
 EXTERNAL NAME 'example.MathUtils.toDegrees'
-;</pre>
-            </div>
-            <p>would match all of the following methods:</p>
-            <div class="preWrapperWide"><pre class="Example">
-public static double toDegrees( double arg ) {...}
+;
+</code></pre>
+
+    </div>
+    <p>would match all of the following methods:</p>
+
+    <div class="preWrapperWide">
+
+      <pre><code>public static double toDegrees( double arg ) {...}
 public static Double toDegrees( double arg ) {...}
 public static double toDegrees( Double arg ) {...}
 public static Double toDegrees( Double arg ) {...}
+<<<<<<< HEAD
 		</pre>
             </div>
             <p>Note that Splice Machine raises an exception if it finds more than one matching method. </p>
@@ -2935,137 +2954,156 @@ public static Double toDegrees( Double arg ) {...}
                 <col  />
                 <col  />
                 <col  />
+=======
+</code></pre>
+
+    </div>
+    <p>Note that Splice Machine raises an exception if it finds more than one
+matching method.</p>
+
+    <h2 id="mapping-sql-data-types-to-java-data-types">Mapping SQL data types to Java data types</h2>
+
+    <p>The following table shows how Splice Machine maps specific SQL data
+types to Java data types.</p>
+
+    <table>
+                <caption>SQL and Java type correspondence</caption>
+                <col />
+                <col />
+                <col />
+>>>>>>> MDConvert
                 <thead>
-                    <tr >
-                        <th >SQL Type</th>
-                        <th >Primitive Match</th>
-                        <th >Wrapper Match</th>
+                    <tr>
+                        <th>SQL Type</th>
+                        <th>Primitive Match</th>
+                        <th>Wrapper Match</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                        <td  style="font-family: monospace;">BOOLEAN</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">boolean</span>
+                    <tr>
+                        <td style="font-family: monospace;">BOOLEAN</td>
+                        <td style="font-family: monospace;"><em>boolean</em>
                         </td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Boolean</span>
-                        </td>
-                    </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">SMALLINT</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">short</span>
-                        </td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Integer</span>
+                        <td style="font-family: monospace;"><em>java.lang.Boolean</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">INTEGER</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">int</span>
+                    <tr>
+                        <td style="font-family: monospace;">SMALLINT</td>
+                        <td style="font-family: monospace;"><em>short</em>
                         </td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Integer</span>
-                        </td>
-                    </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">BIGINT</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">long</span>
-                        </td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Long</span>
+                        <td style="font-family: monospace;"><em>java.lang.Integer</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">DECIMAL</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.math.BigDecimal</span>
+                    <tr>
+                        <td style="font-family: monospace;">INTEGER</td>
+                        <td style="font-family: monospace;"><em>int</em>
+                        </td>
+                        <td style="font-family: monospace;"><em>java.lang.Integer</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">NUMERIC</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.math.BigDecimal</span>
+                    <tr>
+                        <td style="font-family: monospace;">BIGINT</td>
+                        <td style="font-family: monospace;"><em>long</em>
+                        </td>
+                        <td style="font-family: monospace;"><em>java.lang.Long</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">REAL</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">float</span>
-                        </td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Float</span>
-                        </td>
-                    </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">DOUBLE</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">double</span>
-                        </td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Double</span>
+                    <tr>
+                        <td style="font-family: monospace;">DECIMAL</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.math.BigDecimal</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">FLOAT</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">double</span>
-                        </td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.Double</span>
-                        </td>
-                    </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">CHAR</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
+                    <tr>
+                        <td style="font-family: monospace;">NUMERIC</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.math.BigDecimal</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">VARCHAR</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
+                    <tr>
+                        <td style="font-family: monospace;">REAL</td>
+                        <td style="font-family: monospace;"><em>float</em>
+                        </td>
+                        <td style="font-family: monospace;"><em>java.lang.Float</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">LONG VARCHAR</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.lang.String</span>
+                    <tr>
+                        <td style="font-family: monospace;">DOUBLE</td>
+                        <td style="font-family: monospace;"><em>double</em>
+                        </td>
+                        <td style="font-family: monospace;"><em>java.lang.Double</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">CLOB</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Clob</span>
+                    <tr>
+                        <td style="font-family: monospace;">FLOAT</td>
+                        <td style="font-family: monospace;"><em>double</em>
+                        </td>
+                        <td style="font-family: monospace;"><em>java.lang.Double</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">BLOB</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Blob</span>
+                    <tr>
+                        <td style="font-family: monospace;">CHAR</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.lang.String</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">DATE</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Date</span>
+                    <tr>
+                        <td style="font-family: monospace;">VARCHAR</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.lang.String</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">TIME</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Time</span>
+                    <tr>
+                        <td style="font-family: monospace;">LONG VARCHAR</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.lang.String</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td  style="font-family: monospace;">TIMESTAMP</td>
-                        <td >None</td>
-                        <td  style="font-family: monospace;"><span class="ItalicFont">java.sql.Timestamp</span>
+                    <tr>
+                        <td style="font-family: monospace;">CLOB</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.sql.Clob</em>
                         </td>
                     </tr>
-                    <tr >
-                        <td >User-defined type</td>
-                        <td >None</td>
-                        <td >Underlying Java class</td>
+                    <tr>
+                        <td style="font-family: monospace;">BLOB</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.sql.Blob</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace;">DATE</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.sql.Date</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace;">TIME</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.sql.Time</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace;">TIMESTAMP</td>
+                        <td>None</td>
+                        <td style="font-family: monospace;"><em>java.sql.Timestamp</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>User-defined type</td>
+                        <td>None</td>
+                        <td>Underlying Java class</td>
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_intro.html">About Data Types</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_intro.html">About Data Types</a></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -3082,7 +3120,11 @@ public static Double toDegrees( Double arg ) {...}
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

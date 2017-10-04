@@ -2806,50 +2806,77 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInSysProcs.DeleteBackup">SYSCS_UTIL.SYSCS_DELETE_BACKUP</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_BACKUP</span> system procedure
-deletes a backup that you previously created using either the <span class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a></span>&#160;system procedures.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_DELETE_BACKUP( BIGINT&#160;<span class="ItalicFont">backupId</span> ); </pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">backupId</p>
-                <p class="paramDefnFirst">Specifies the ID&#160;of the backup job you want to delete. </p>
-                <p class="paramDefn">You can find the ID&#160;of a specific backup by querying the <span class="CodeFont"><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring</span></a></span> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
-            </div>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Execute Privileges</h2>
-            <p>If authentication and SQL authorization are both enabled, only the database owner has
-execute privileges on this function by default. The
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsdeletebackup">SYSCS_UTIL.SYSCS_DELETE_BACKUP</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code> system procedure deletes a backup
+that you previously created using either the
+<a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a> system
+procedures.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP( BIGINT backupId );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupId</p>
+
+      <p class="paramDefnFirst">Specifies the ID of the backup job you want to delete.</p>
+
+      <p class="paramDefn">To find the <em>jobId</em> you want to cancel, see the <a href="onprem_admin_backingup.html"><em>Backing Up
+and Restoring</em></a> topic.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="execute-privileges">Execute Privileges</h2>
+
+    <p>If authentication and SQL authorization are both enabled, only the
+database owner has execute privileges on this function by default. The
 database owner can grant access to other users.</p>
-            <h2>Example</h2>
-            <p>If necessary, you can first query the <span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYS.SYSBACKUP</a></span> system table to find the <span class="CodeFont">BACKUP_ID</span> of the job you want to delete; entries in that table include timestamp information.</p>
-            <p>And then delete that job:</p><pre class="Example" xml:space="preserve">splice&gt; SELECT * FROM SYS.SYSBACKUP;
+
+    <h2 id="example">Example</h2>
+
+    <p>If necessary, you can first query the
+<a href="sqlref_systables_sysbackup.html"><code>SYS.SYSBACKUP</code></a> system table to find
+the <code>BACKUP_ID</code> of the job you want to delete; entries in that table
+include timestamp information.</p>
+
+    <p>And then delete that job:</p>
+
+    <pre class="Example"><code>splice&gt; SELECT * FROM SYS.SYSBACKUP;
 BACKUP_ID  |BEGIN_TIMESTAMP           |END_TIMESTAMP            |STATUS  |FILESYSTEM                                     |SCOPE |INCR&amp;|INCREMENTAL_PARENT_&amp;|BACKUP_ITEM
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 40975      |2015-11-25 09:32:53.04    |2015-11-25 09:33:09.081  |S       |/Users/me/Documents/splicemachine/dbBackups    |D     |false|-1                  |93
 
 1 row selected
 
-splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_DELETE_BACKUP(40975);
-Statement executed.</pre>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="onprem_admin_backingup.html"><span class="ItalicFont">Backing Up and Restoring Databases</span></a> in the <span class="ItalicFont">Administrator's Guide</span></li>
-                <li><a href="sqlref_sysprocs_backupdb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_BACKUP_DATABASE</span></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_canceldailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_deleteoldbackups.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</span></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_restoredb.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</span></a> built-in system procedure</li>
-                <li><a href="sqlref_sysprocs_scheduledailybackup.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</span></a> built-in system procedure</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackup.html">SYSBACKUP</a></span> system table</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupitems.html">SYSBACKUPITEMS</a></span> system table</li>
-                <li><span class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a></span> system table</li>
-            </ul>
-        </div>
-	</section>
+splice&gt; CALL SYSCS_UTIL.SYSCS_DELETE_BACKUP(40975);
+Statement executed.
+</code></pre>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a></li>
+      <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a></li>
+      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a></li>
+      <li><a href="sqlref_sysprocs_deleteoldbackups.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a></li>
+      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a></li>
+      <li><a href="sqlref_sysprocs_scheduledailybackup.html"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code></a></li>
+      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code></a></li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS</code></a></li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code></a></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2866,7 +2893,11 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

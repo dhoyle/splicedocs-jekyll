@@ -9,25 +9,25 @@ permalink: sqlref_statements_createtype.html
 folder: SQLReference/Statements
 ---
 <section>
-	<div class="TopicContent" data-swiftype-index="true">
+	<div class="TopicContent" data-swiftype-index="true" markdown="1">
         <h1 id="Statements.CreateType">CREATE TYPE</h1>
-        <p>The <span class="CodeFont">CREATE TYPE</span> statement creates a user-defined type (UDT). A UDT is a serializable Java class whose instances are stored in columns. The class must implement the <span class="ItalicFont">java.io.Serializable</span> interface.</p>
+        <p>The <code>CREATE TYPE</code> statement creates a user-defined type (UDT). A UDT is a serializable Java class whose instances are stored in columns. The class must implement the <em>java.io.Serializable</em> interface.</p>
         <h2>Syntax</h2>
-        <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE TYPE [ <span class="ItalicFont"><a href="sqlref_identifiers_types#SchemaName">schemaName</a>.</span> ] <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQL Identifier</a></span>
-   EXTERNAL NAME <span class="ItalicFont">singleQuotedJavaClassName</span>
+        <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE TYPE [ <em><a href="sqlref_identifiers_types#SchemaName">schemaName</a>.</em> ] <em><a href="sqlref_identifiers_intro.html">SQL Identifier</a></em>
+   EXTERNAL NAME <em>singleQuotedJavaClassName</em>
    LANGUAGE JAVA</pre>
         </div>
         <div class="paramList">
             <p class="paramName">[schemaName] SQLIdentifier</p>
-            <p class="paramDefnFirst">The type name consists of an optional <span class="ItalicFont">schemaName</span> and a <span class="ItalicFont">SQL Identifier</span>. If a <span class="ItalicFont">schemaName</span> is not provided, the current schema is the default schema. If a qualified type name is specified, the schema name cannot begin with <span class="CodeFont">SYS</span>.</p>
+            <p class="paramDefnFirst">The type name consists of an optional <em>schemaName</em> and a <em>SQL Identifier</em>. If a <em>schemaName</em> is not provided, the current schema is the default schema. If a qualified type name is specified, the schema name cannot begin with <code>SYS</code>.</p>
             <p class="paramName">EXTERNAL&#160;NAME</p>
-            <p class="paramDefnFirst">If the Java class does not implement <span class="ItalicFont">java.io.Serializable</span>, or if it is not public and visible on the classpath, Splice Machine raises an exception when preparing statements which refer to the UDT.</p>
+            <p class="paramDefnFirst">If the Java class does not implement <em>java.io.Serializable</em>, or if it is not public and visible on the classpath, Splice Machine raises an exception when preparing statements which refer to the UDT.</p>
             <p class="paramName">LANGUAGE</p>
-            <p class="paramDefnFirst">Only <span class="CodeFont">JAVA</span>&#160;is accepted at this time. </p>
+            <p class="paramDefnFirst">Only <code>JAVA</code>&#160;is accepted at this time. </p>
         </div>
         <h2>About UDTs</h2>
         <p>A UDT cannot be cast explicitly to any other type, and no other type can be cast to a UDT.</p>
-        <p>A UDT has no ordering. This means that you cannot compare and sort UDTs. You cannot use them in expressions involving the <span class="CodeFont">&lt;</span>, <span class="CodeFont">=</span>, <span class="CodeFont">&gt;</span>, IN, BETWEEN, and LIKE operators. You cannot use UDTs in aggregates, DISTINCT expressions, and GROUP/ORDER BY clauses. You cannot build indexes on them.</p>
+        <p>A UDT has no ordering. This means that you cannot compare and sort UDTs. You cannot use them in expressions involving the <code>&lt;</code>, <code>=</code>, <code>&gt;</code>, IN, BETWEEN, and LIKE operators. You cannot use UDTs in aggregates, DISTINCT expressions, and GROUP/ORDER BY clauses. You cannot build indexes on them.</p>
         <p>You can use subtypes in UDTs. That is, if you use the CREATE TYPE statement to bind a class named C to a UDT, you can populate that UDT value with an instance of any subclass of C.</p>
         <h2>Example</h2>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">CREATE TYPE price
@@ -65,7 +65,7 @@ UPDATE order SET totalPrice = adjustForInflation( totalPrice );</pre>
         <p>Using functions, you can access fields inside UDTs in a SELECT statement:</p>
         <div class="preWrapperWide"><pre class="Example">SELECT getCurrencyCode( totalPrice ) from order;</pre>
         </div>
-        <p>You can use JDBC API <span class="ItalicFont">setObject()</span> and <span class="ItalicFont">getObject()</span> methods to store and retrieve values of UDTs. For example:</p>
+        <p>You can use JDBC API <em>setObject()</em> and <em>getObject()</em> methods to store and retrieve values of UDTs. For example:</p>
         <div class="preWrapperWide"><pre class="Example" xml:space="preserve">PreparedStatement ps = conn.prepareStatement( "SELECT * from order" );
   ResultSet rs = ps.executeQuery();
   while( rs.next() )

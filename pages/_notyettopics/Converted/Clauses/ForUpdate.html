@@ -1,7 +1,7 @@
 ﻿---
 title: FOR UPDATE clause
-summary: An optional clause in a SELECT statement that indicates that the cursor should be updatable.. 
-keywords: 
+summary: An optional clause in a SELECT statement that indicates that the cursor should be updatable..
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -9,15 +9,15 @@ permalink: sqlref_clauses_forupdate.html
 folder: SQLReference/Clauses
 ---
 <section>
-	<div class="TopicContent" data-swiftype-index="true">
+	<div class="TopicContent" data-swiftype-index="true" markdown="1">
         <h1 id="Clauses.ForUpdate">FOR UPDATE</h1>
-        <p> The <span class="CodeFont">FOR UPDATE</span> clause is an optional part of a <a href="../Statements/Select.html"><span class="CodeFont">SELECT</span> statement</a>. Cursors are read-only by default. The <span class="CodeFont">FOR UPDATE</span> clause specifies that the cursor should be updatable, and enforces a check during compilation that the <span class="CodeFont">SELECT</span> statement meets the requirements for an updatable <span class="ItalicFont">cursor</span>.</p>
+        <p> The <code>FOR UPDATE</code> clause is an optional part of a <a href="../Statements/Select.html"><code>SELECT</code> statement</a>. Cursors are read-only by default. The <code>FOR UPDATE</code> clause specifies that the cursor should be updatable, and enforces a check during compilation that the <code>SELECT</code> statement meets the requirements for an updatable <em>cursor</em>.</p>
         <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">FOR
   {
   READ ONLY | FETCH ONLY |
-  UPDATE [ OF <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></span>
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; [ , <span class="ItalicFont"><a href="sqlref_identifiers_types#SimpleColumnName">Simple-column-Name</a></span>]* ]
+  UPDATE [ OF <em><a href="../Identifiers/IdentifierTypes.html#SimpleColumnName">Simple-column-Name</a></em>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; [ , <em><a href="sqlref_identifiers_types#SimpleColumnName">Simple-column-Name</a></em>]* ]
   }</pre>
         </div>
         <div class="paramList">
@@ -25,9 +25,7 @@ folder: SQLReference/Clauses
             <p class="paramDefnFirst">The names visible
 		for the table specified in the FROM clause of the underlying query.</p>
         </div>
-        <div class="noteNote">The use of the <span class="CodeFont">FOR UPDATE</span> clause is not mandatory to obtain an updatable 
-						JDBC <span class="ItalicFont">ResultSet</span>. If the statement used to generate the ResultSet meets the requirements for updatable cursors, then the JDBC&#160;statement needs to have  concurrency mode 
-					<span class="CodeFont">ResultSet.CONCUR_UPDATABLE</span> for the ResultSet to be updatable.</div>
+        <p class="noteNote">The use of the <code>FOR UPDATE</code> clause is not mandatory to obtain an updatable JDBC <em>ResultSet</em>. If the statement used to generate the ResultSet meets the requirements for updatable cursors, then the JDBC&#160;statement needs to have  concurrency mode 	<code>ResultSet.CONCUR_UPDATABLE</code> for the ResultSet to be updatable.</p>
         <p>The optimizer is able to use an index even if the column in the index is being updated.</p>
         <h2>Example</h2>
         <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT RECEIVED, SOURCE, SUBJECT, NOTE_TEXT

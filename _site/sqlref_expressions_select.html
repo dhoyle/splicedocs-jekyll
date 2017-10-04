@@ -2806,89 +2806,188 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="Expressions.Select">SELECT Expression</h1>
-            <p>A <span class="ItalicFont">SelectExpression</span> is the basic <span class="CodeFont">SELECT-FROM-WHERE</span> construct used to build a table value based on filtering and projecting values from other tables.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SELECT [ DISTINCT | ALL ] <span class="ItalicFont">SelectItem</span> [ , <span class="ItalicFont">SelectItem </span>]*
-   <span class="ItalicFont"><a href="sqlref_clauses_from.html">FROM clause</a></span>
-   [ <span class="ItalicFont"><a href="sqlref_clauses_where.html">WHERE clause</a></span>]
-   [ <span class="ItalicFont"><a href="sqlref_clauses_groupby.html">GROUP BY clause</a></span> ]
-   [ <span class="ItalicFont"><a href="sqlref_clauses_having.html">HAVING clause</a></span> ]
-   [ <span class="ItalicFont"><a href="sqlref_clauses_orderby.html">ORDER BY clause</a></span> ]
-   [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">result offset clause</a></span> ]
-   [ <span class="ItalicFont"><a href="sqlref_clauses_resultoffset.html">fetch first clause</a></span> ]</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">SELECT&#160;clause</p>
-                <p class="paramDefnFirst">The <span class="CodeFont">SELECT</span> clause contains a list of expressions and an optional quantifier that is applied to the results of the <a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span> clause</a>.</p>
-                <p class="paramDefn">If <span class="CodeFont">DISTINCT</span> is specified, only one copy of any row value is included in the result. Nulls are considered duplicates of one another for the purposes of <span class="CodeFont">DISTINCT</span>. </p>
-                <p class="paramDefn">If no quantifier, or <span class="CodeFont">ALL</span>, is specified, no rows are removed from the result in applying the <span class="CodeFont">SELECT</span> clause. This is the default behavior.</p>
-                <div class="paramListNested">
-                    <p class="paramName">SelectItem:</p>
-                        <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
-&#160;&#160;&#160; * |
-&#160;&#160;&#160; { <span class="ItalicFont"><a href="sqlref_identifiers_types.html">correlation-Name</a></span> } .* |
-&#160;&#160;&#160;   <span class="ItalicFont">Expression</span> [AS <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a></span>] }
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="select-expression">SELECT Expression</h1>
+
+    <p>A <em>SelectExpression</em> is the basic <code>SELECT-FROM-WHERE</code> construct used to
+build a table value based on filtering and projecting values from other
+tables.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+SELECT [ DISTINCT | ALL ] SelectItem [ , SelectItem ]*
+   <a href="sqlref_clauses_from.html">FROM clause</a>
+   [ <a href="sqlref_clauses_where.html">WHERE clause</a> ]
+   [ <a href="sqlref_clauses_groupby.html">GROUP BY clause</a> ]
+   [ <a href="sqlref_clauses_having.html">HAVING clause</a> ]
+   [ <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+   [ <a href="sqlref_clauses_resultoffset.html">result offset clause</a> ]
+   [ <a href="sqlref_clauses_resultoffset.html">fetch first clause</a> ]</pre>
+
+</div>
+    <div class="paramList">
+      <p class="paramName">SELECT clause</p>
+
+      <p class="paramDefnFirst">The <code>SELECT</code> clause contains a list of expressions and an optional
+quantifier that is applied to the results of the  <a href="sqlref_clauses_where.html"><code>WHERE</code>
+clause</a>.</p>
+
+      <p class="paramDefn">If <code>DISTINCT</code> is specified, only one copy of any row value is included
+in the result. Nulls are considered duplicates of one another for the
+purposes of <code>DISTINCT</code>.</p>
+
+      <p class="paramDefn">If no quantifier, or <code>ALL</code>, is specified, no rows are removed from the
+result in applying the <code>SELECT</code> clause. This is the default behavior.</p>
+
+      <div class="paramListNested">
+        <p class="paramName">SelectItem:</p>
+
+        <div class="fcnWrapperWide"><pre class="FcnSyntax">
+{
+    * |
+    { &lt;a href="correlation-Name } .* |
+      Expression [AS <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>] }
 }</pre>
-                        </div>
-                    
-                    <p class="paramDefn">A<span class="ItalicFont"> SelectItem</span> projects one or more result column values for a table result being constructed in a <span class="ItalicFont">SelectExpression</span>.</p>
-                    <p class="paramDefn">For queries that do not select a specific column from the tables involved in the <span class="ItalicFont">SelectExpression</span> (for example, queries that use <span class="CodeFont">COUNT(*)</span>), the user must have at least one column-level SELECT privilege or table-level SELECT privilege. See <a href="sqlref_statements_grant.html">GRANT statement</a> for more information.</p>
-                </div>
-                <p class="paramName">FROM clause</p>
-                <p class="paramDefnFirst">The result of the <a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span> clause</a> is the cross product of the <span class="CodeFont">FROM</span> items.</p>
-                <p class="paramName">WHERE&#160;clause</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span> clause</a> can further qualify the result of the <span class="CodeFont">FROM</span>&#160;clause.</p>
-                <p class="paramName">GROUP&#160;BY&#160;clause</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_where.html"><span class="CodeFont">GROUP BY</span> clause</a> groups rows in the result into subsets that have matching values for one or more columns. </p>
-                <p class="paramDefn"><span class="CodeFont">GROUP BY</span> clauses are typically used with aggregates. If there is a <span class="CodeFont">GROUP BY</span> clause, the <span class="CodeFont">SELECT</span> clause must contain <span class="ItalicFont">only</span> aggregates or grouping columns. If you want to include a non-grouped column in the <span class="CodeFont">SELECT</span> clause, include the column in an aggregate expression. For example, this query computes the average salary of each team in a baseball league:</p>
-                <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT COUNT(*) AS PlayerCount, Team, AVG(Salary) AS AverageSalary
+
+</div>
+        <p class="paramDefn">A<em> SelectItem</em> projects one or more result column values for a
+table result being constructed in a <em>SelectExpression</em>.</p>
+
+        <p class="paramDefn">For queries that do not select a specific column from the tables
+involved in the <em>SelectExpression</em> (for example, queries that use
+<code>COUNT(*)</code>), the user must have at least one column-level SELECT
+privilege or table-level SELECT privilege. See <a href="sqlref_statements_grant.html">GRANT
+statement</a> for more information.</p>
+
+      </div>
+      <p class="paramName">FROM clause</p>
+
+      <p class="paramDefnFirst">The result of the  <a href="sqlref_clauses_from.html"><code>FROM</code> clause</a> is the cross
+product of the <code>FROM</code> items.</p>
+
+      <p class="paramName">WHERE clause</p>
+
+      <p class="paramDefnFirst">The  <a href="sqlref_clauses_where.html"><code>WHERE</code> clause</a> can further qualify the
+result of the <code>FROM</code> clause.</p>
+
+      <p class="paramName">GROUP BY clause</p>
+
+      <p class="paramDefnFirst">The  <a href="sqlref_clauses_where.html"><code>GROUP BY</code> clause</a> groups rows in the
+result into subsets that have matching values for one or more columns.</p>
+
+      <p class="paramDefn"><code>GROUP BY</code> clauses are typically used with aggregates. If there is a
+<code>GROUP BY</code> clause, the <code>SELECT</code> clause must contain <em>only</em> aggregates or
+grouping columns. If you want to include a non-grouped column in the
+<code>SELECT</code> clause, include the column in an aggregate expression. For
+example, this query computes the average salary of each team in a
+baseball league:</p>
+
+      <div class="preWrapper">
+        <pre class="Example"><code>splice&gt; SELECT COUNT(*) AS PlayerCount, Team, AVG(Salary) AS AverageSalary
    FROM Players JOIN Salaries ON Players.ID=Salaries.ID
    GROUP BY Team
-   ORDER BY AverageSalary;</pre>
-                </div>
-                <p class="paramDefnFirst">If there is no <span class="CodeFont">GROUP BY</span> clause, but a <span class="ItalicFont">SelectItem</span> contains an aggregate not in a subquery, the query is implicitly grouped. The entire table is the single group. </p>
-                <p class="paramName">HAVING&#160;clause</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_having.html"><span class="CodeFont">HAVING</span> clause</a> can further qualify the result of the <span class="CodeFont">FROM</span>&#160;clause. This clause restricts a grouped table, specifying a search condition (much like a <span class="CodeFont">WHERE</span> clause) that can refer only to grouping columns or aggregates from the current scope.</p>
-                <p class="paramDefn">The <span class="CodeFont">HAVING</span> clause is applied to each group of the grouped table. If the <span class="CodeFont">HAVING</span> clause evaluates to <span class="CodeFont">TRUE</span>, the row is retained for further processing; if it evaluates to <span class="CodeFont">FALSE</span> or <span class="CodeFont">NULL</span>, the row is discarded. If there is a <span class="CodeFont">HAVING</span> clause but no <span class="CodeFont">GROUP BY</span>, the table is implicitly grouped into one group for the entire table.</p>
-                <p class="paramName">ORDER&#160;BY&#160;clause</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span> clause</a> allows you to specify the order in which rows appear in the result set. In subqueries, the <span class="CodeFont">ORDER BY</span> clause is meaningless unless it is accompanied by one or both of the result offset and fetch first clauses.</p>
-                <p class="paramName"><span class="CodeItalicFont">result offset</span> and <span class="CodeItalicFont">fetch first</span> clauses</p>
-                <p class="paramDefnFirst">The <a href="sqlref_clauses_resultoffset.html"><span class="CodeFont">fetch first</span> clause</a>, which can be combined with the <span class="CodeFont">result offset</span> clause, limits the number of rows returned in the result set.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>The result of a <span class="ItalicFont">SelectExpression</span> is always a table.</p>
-            <p>Splice Machine processes the clauses in a <span class="CodeFont">Select</span> expression in the following order:</p>
-            <ul>
-                <li><span class="CodeFont">FROM</span> clause</li>
-                <li><span class="CodeFont">WHERE</span> clause</li>
-                <li><span class="CodeFont">GROUP BY</span> (or implicit <span class="CodeFont">GROUP BY</span>)</li>
-                <li><span class="CodeFont">HAVING</span> clause</li>
-                <li><span class="CodeFont">ORDER BY</span> clause</li>
-                <li><span class="CodeFont">Result offset</span> clause</li>
-                <li><span class="CodeFont">Fetch first</span> clause</li>
-                <li><span class="CodeFont">SELECT</span> clause</li>
-            </ul>
-            <p>When a query does not have a <span class="CodeFont">FROM</span> clause (when you are constructing a value, not getting data out of a table), use a <span class="CodeFont"><a href="sqlref_expressions_values.html">VALUES</a></span> expression, not a <span class="ItalicFont">SelectExpression</span>. For example:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">VALUES CURRENT_TIMESTAMP;</pre>
-            </div>
-            <h2 id="StarWildcard">The * wildcard</h2>
-            <p>The wildcard character (<span class="ItalicFont">*</span>) expands to all columns in the tables in the associated <span class="CodeFont">FROM</span> clause.</p>
-            <p><span class="ItalicFont"><a href="sqlref_identifiers_types.html">correlation-Name</a>.*</span> expand to all columns in the identified table. That table must be listed in the associated <span class="CodeFont">FROM</span> clause.</p>
-            <h2>Naming columns</h2>
-            <p>You can name a <span class="ItalicFont">SelectItem</span> column using the <span class="CodeFont">AS</span> clause. </p>
-            <p>If a column of a <span class="ItalicFont">SelectItem</span> is not a simple <span class="ItalicFont">ColumnReference</span> expression or named with an <span class="CodeFont">AS</span> clause, it is given a generated unique name.</p>
-            <p>These column names are useful in several cases:</p>
-            <ul>
-                <li>They are made available on the JDBC <span class="ItalicFont">ResultSetMetaData</span>.</li>
-                <li>They are used as the names of the columns in the resulting table when the <span class="ItalicFont">SelectExpression</span> is used as a table subquery in a <span class="CodeFont">FROM</span> clause.</li>
-                <li>They are used in the <span class="CodeFont">ORDER BY</span> clause as the column names available for sorting.</li>
-            </ul>
-            <h2>Examples</h2>
-            <p class="body">This example shows using a <span class="CodeFont">SELECT</span>&#160;with <span class="CodeFont">WHERE</span>&#160;and <span class="CodeFont">ORDER&#160;BY</span>&#160;clauses; it selects the name, team, and birth date of all players born in 1985 and 1989:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT DisplayName, Team, BirthDate
+   ORDER BY AverageSalary;
+</code></pre>
+
+      </div>
+      <p class="paramDefnFirst">If there is no <code>GROUP BY</code> clause, but a <em>SelectItem</em> contains an
+aggregate not in a subquery, the query is implicitly grouped. The entire
+table is the single group.</p>
+
+      <p class="paramName">HAVING clause</p>
+
+      <p class="paramDefnFirst">The  <a href="sqlref_clauses_having.html"><code>HAVING</code> clause</a> can further qualify
+the result of the <code>FROM</code> clause. This clause restricts a grouped table,
+specifying a search condition (much like a <code>WHERE</code> clause) that can
+refer only to grouping columns or aggregates from the current scope.</p>
+
+      <p class="paramDefn">The <code>HAVING</code> clause is applied to each group of the grouped table. If
+the <code>HAVING</code> clause evaluates to <code>TRUE</code>, the row is retained for further
+processing; if it evaluates to <code>FALSE</code> or <code>NULL</code>, the row is discarded.
+If there is a <code>HAVING</code> clause but no <code>GROUP BY</code>, the table is implicitly
+grouped into one group for the entire table.</p>
+
+      <p class="paramName">ORDER BY clause</p>
+
+      <p class="paramDefnFirst">The  <a href="sqlref_clauses_orderby.html"><code>ORDER BY</code> clause</a> allows you to
+specify the order in which rows appear in the result set. In subqueries,
+the <code>ORDER BY</code> clause is meaningless unless it is accompanied by one or
+both of the result offset and fetch first clauses.</p>
+
+      <p class="paramName"><span class="CodeItalicFont">result offset</span> and <span class="CodeItalicFont">fetch first</span> clauses</p>
+
+      <p class="paramDefnFirst">The  <a href="sqlref_clauses_resultoffset.html"><code>fetch first</code> clause</a>, which can
+be combined with the <code>result offset</code> clause, limits the number of rows
+returned in the result set.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>The result of a <em>SelectExpression</em> is always a table.</p>
+
+    <p>Splice Machine processes the clauses in a <code>Select</code> expression in the
+following order:</p>
+
+    <ul>
+      <li><code>FROM</code> clause</li>
+      <li><code>WHERE</code> clause</li>
+      <li><code>GROUP BY</code> (or implicit <code>GROUP BY</code>)</li>
+      <li><code>HAVING</code> clause</li>
+      <li><code>ORDER BY</code> clause</li>
+      <li><code>Result offset</code> clause</li>
+      <li><code>Fetch first</code> clause</li>
+      <li><code>SELECT</code> clause</li>
+    </ul>
+
+    <p>When a query does not have a <code>FROM</code> clause (when you are constructing a
+value, not getting data out of a table), use a  
+<a href="sqlref_expressions_values.html"><code>VALUES</code></a> expression, not a
+<em>SelectExpression</em>. For example:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>VALUES CURRENT_TIMESTAMP;
+</code></pre>
+
+    </div>
+    <h2 id="StarWildcard">The * wildcard</h2>
+
+    <p>The wildcard character (***) expands to all columns in the tables in the
+associated <code>FROM</code> clause.</p>
+
+    <ul>
+      <li><a href="sqlref_identifiers_types.html">correlation-Name</a> identifiers expand to all
+columns in the identified table. That table must be listed in the
+associated <code>FROM</code> clause.</li>
+    </ul>
+
+    <h2 id="naming-columns">Naming columns</h2>
+
+    <p>You can name a <em>SelectItem</em> column using the <code>AS</code> clause.</p>
+
+    <p>If a column of a <em>SelectItem</em> is not a simple <em>ColumnReference</em>
+expression or named with an <code>AS</code> clause, it is given a generated unique
+name.</p>
+
+    <p>These column names are useful in several cases:</p>
+
+    <ul>
+      <li>They are made available on the JDBC <em>ResultSetMetaData</em>.</li>
+      <li>They are used as the names of the columns in the resulting table when
+the <em>SelectExpression</em> is used as a table subquery in a <code>FROM</code> clause.</li>
+      <li>They are used in the <code>ORDER BY</code> clause as the column names available
+for sorting.</li>
+    </ul>
+
+    <h2 id="examples">Examples</h2>
+
+    <p class="body">This example shows using a <code>SELECT</code> with <code>WHERE</code> and <code>ORDER BY</code> clauses;
+it selects the name, team, and birth date of all players born in 1985
+and 1989:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT DisplayName, Team, BirthDate
    FROM Players
    WHERE YEAR(BirthDate) IN (1985, 1989)
    ORDER BY BirthDate;
@@ -2908,39 +3007,55 @@ Jack Hellman            |Cards     |1989-08-09
 Elliot Andrews          |Giants    |1989-08-21
 Henry Socomy            |Giants    |1989-11-17
 
-13 rows selected</pre>
-            </div>
-            <p class="body">This example shows using correlation names for the tables:</p>
-            <div class="preWrapperWide"><pre class="Example">
-splice&gt;&#160;SELECT CONSTRAINTNAME, COLUMNNAME
+13 rows selected
+</code></pre>
+
+    </div>
+    <p class="body">This example shows using correlation names for the tables:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>splice&gt; SELECT CONSTRAINTNAME, COLUMNNAME
   FROM SYS.SYSTABLES t, SYS.SYSCOLUMNS col,
   SYS.SYSCONSTRAINTS cons, SYS.SYSCHECKS checks
   WHERE t.TABLENAME = 'FLIGHTS'
     AND t.TABLEID = col.REFERENCEID
     AND t.TABLEID = cons.TABLEID
     AND cons.CONSTRAINTID = checks.CONSTRAINTID
-  ORDER BY CONSTRAINTNAME;</pre>
-                <p class="body">This example shows using the <span class="CodeFont">DISTINCT</span>&#160;clause:</p><pre class="Example">
- SELECT DISTINCT SALARY<br />   FROM Salaries;</pre>
-                <p class="body">This example shows how to rename an expression. We use the name BOSS&#160;as the maximum department salary for all departments whose maximum salary is less than the average salary i all other departments:</p><pre class="Example">
- SELECT WORKDEPT AS DPT, MAX(SALARY) AS BOSS
+  ORDER BY CONSTRAINTNAME;
+</code></pre>
+
+      <p class="body">This example shows using the <code>DISTINCT</code> clause:</p>
+
+      <pre class="Example"><code> SELECT DISTINCT SALARY   FROM Salaries;
+</code></pre>
+
+      <p class="body">This example shows how to rename an expression. We use the name BOSS as
+the maximum department salary for all departments whose maximum salary
+is less than the average salary i all other departments:</p>
+
+      <pre class="Example"><code> SELECT WORKDEPT AS DPT, MAX(SALARY) AS BOSS
    FROM EMPLOYEE EMP_COR
    GROUP BY WORKDEPT
-   HAVING MAX(SALARY) &lt;<br /> &#160;&#160;&#160;&#160;(SELECT AVG(SALARY)
-   &#160;&#160; FROM EMPLOYEE
-   &#160;&#160; WHERE NOT WORKDEPT = EMP_COR.WORKDEPT)
-   ORDER BY BOSS;</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_clauses_from.html"><span class="CodeFont">FROM</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_groupby.html"><span class="CodeFont">GROUP&#160;BY</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_having.html"><span class="CodeFont">HAVING</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
-            </ul>
-        </div>
-	</section>
+   HAVING MAX(SALARY) &lt;     (SELECT AVG(SALARY)
+      FROM EMPLOYEE
+      WHERE NOT WORKDEPT = EMP_COR.WORKDEPT)
+   ORDER BY BOSS;
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_from.html"><code>FROM</code></a> clause</li>
+      <li><a href="sqlref_clauses_groupby.html"><code>GROUP BY</code></a> clause</li>
+      <li><a href="sqlref_clauses_having.html"><code>HAVING</code></a> clause</li>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2957,7 +3072,11 @@ splice&gt;&#160;SELECT CONSTRAINTNAME, COLUMNNAME
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

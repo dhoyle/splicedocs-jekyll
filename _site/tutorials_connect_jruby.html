@@ -510,6 +510,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Connecting to Splice Machine with JRuby and JDBC</h1>
@@ -532,6 +533,50 @@
                         <p class="topLevel">Configure the connection</p>
                         <p>You must assign the database connectivity parameters in the <span class="CodeFont">config/database.yml</span> file for your JRuby application. Your connectivity parameters should look like the following, which use our default database, user, URL, and password values:</p>
                         <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve"># Configure Using Gemfile
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="connecting-to-splice-machine-with-jruby-and-jdbc">Connecting to Splice Machine with JRuby and JDBC</h1>
+
+    <p>This topic shows you how to compile and run a sample JRuby program that
+connects to Splice Machine using our JDBC driver. The
+<code>JRubyJDBC</code> program does the following:</p>
+
+    <ul>
+      <li>connects to a standalone (<code>localhost</code>) version of Splice Machine</li>
+      <li>selects and displays the records in a table</li>
+    </ul>
+
+    <h2 id="Compile">Compile and Run the Sample Program</h2>
+
+    <p>This section walks you through compiling and running the <code>JRubyJDBC</code>
+example program, in the following steps:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Install the JDBC Adapter gem</p>
+
+          <p class="indentLevel1">Use the following command to install the
+<code>activerecord-jdbcderby-adapter</code> gem:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>gem install activerecord-jdbcderby-adapter
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Configure the connection</p>
+
+          <p>You must assign the database connectivity parameters in the
+<code>config/database.yml</code> file for your JRuby application. Your
+connectivity parameters should look like the following, which use
+our default database, user, URL, and password values:</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code># Configure Using Gemfile
+>>>>>>> MDConvert
 # gem 'activerecord-jdbcsqlite3-adapter'
 # gem 'activerecord-jdbcderby-adapter'
 #
@@ -541,14 +586,25 @@ development:
     username: splice
     password: admin
     driver: com.splicemachine.db.jdbc.ClientDriver
-    url: jdbc:splice://localhost:1527/splicedb</pre>
-                        </div>
-                        <div class="noteIcon">Use <span class="CodeBoldFont">localhost:1527</span> with the standalone (local computer)&#160;version of splicemachine. If you're running Splice&#160;Machine on a cluster, substitute the address of your server for <span class="CodeFont">localhost</span>; for example:<br />&#160;&#160;&#160;<span class="CodeBoldFont">jdbc:splice://mySrv123cba:1527/splicedb</span>.</div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Create the sample data table</p>
-                        <p class="indentLevel1">Create the <span class="CodeFont">MYTESTTABLE</span>&#160;table in your database and add a little test data. Your table should look something like the following: </p>
-                            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;describe SPLICE.MYTESTTABLE;
+    url: jdbc:splice://localhost:1527/splicedb
+</code></pre>
+
+          </div>
+
+          <p class="noteIcon">Use <span class="CodeBoldFont">localhost:1527</span> with the
+standalone (local computer) version of splicemachine. If you’re
+running Splice Machine on a cluster, substitute the address of your
+server for <code>localhost</code>; for example:
+   <span class="CodeBoldFont">jdbc:splice://mySrv123cba:1527/splicedb</span>.</p>
+        </li>
+        <li>
+          <p class="topLevel">Create the sample data table</p>
+
+          <p class="indentLevel1">Create the <code>MYTESTTABLE</code> table in your database and add a little
+test data. Your table should look something like the following:</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>splice&gt; describe SPLICE.MYTESTTABLE;
 COLUMN_NAME         |TYPE_NAME|DEC |NUM |COLUMN|COLUMN_DEF|CHAR_OCTE |IS_NULL
 ------------------------------------------------------------------------------
 A                   |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
@@ -556,7 +612,7 @@ B                   |VARCHAR  |NULL|NULL|30    |NULL      |60        |YES
 
 2 rows selected
 
-splice&gt;&#160;select *&#160;from MYTESTTABLE&#160;order by A;
+splice&gt; select * from MYTESTTABLE order by A;
 A     |B
 ---------------------------
 1     |a
@@ -565,13 +621,18 @@ A     |B
 4     |c
 5     |c
 
-5 rows selected</pre>
-                            </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Copy the code</p>
-                        <p class="indentLevel1">You can copy the example program code and paste it into your editor:</p>
-                        <div class="preWrapperWide"><pre class="Example">require 'java'
+5 rows selected
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Copy the code</p>
+
+          <p class="indentLevel1">You can copy the example program code and paste it into your editor:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>require 'java'
 
 module JavaLang
 include_package "java.lang"
@@ -600,27 +661,39 @@ begin
     rescue JavaSql::SQLException =&gt; e
         stderr.print "Java told me: #{e}n"
 end
-                        </pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run the program</p>
-                        <p class="indentLevel1">Run the <span class="CodeFont">JRubyConnect</span> program as follows</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">jruby jrubyjdbc.rb   </pre>
-                        </div>
-                        <p class="indentLevel1">The command should display a result like the following:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
-Record=[1] a=[3] b=[c]
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Run the program</p>
+
+          <p class="indentLevel1">Run the <code>JRubyConnect</code> program as follows</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>jruby jrubyjdbc.rb
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">The command should display a result like the following:</p>
+
+          <div class="preWrapperWide">
+
+            <pre class="AppCommand"><code>Record=[1] a=[3] b=[c]
 Record=[2] a=[4] b=[c]
 Record=[3] a=[5] b=[c]
 Record=[4] a=[1] b=[a]
-Record=[5] a=[2] b=[b]</pre>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-        </div>
-	</section>
+Record=[5] a=[2] b=[b]
+</code></pre>
+
+          </div>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
 
 
     <div class="tags">
@@ -637,7 +710,11 @@ Record=[5] a=[2] b=[b]</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

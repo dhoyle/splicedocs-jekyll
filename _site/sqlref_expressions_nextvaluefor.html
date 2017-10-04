@@ -2806,63 +2806,96 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="Expressions.NextValueFor">NEXT VALUE FOR Expression</h1>
-            <p>The <span class="CodeFont">NEXT VALUE FOR</span> expression retrieves the next value from a sequence generator that was created with a
-		<a href="sqlref_statements_createsequence.html"><span class="CodeFont">CREATE SEQUENCE</span> statement</a>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">NEXT VALUE FOR <span class="ItalicFont">sequenceName</span></pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">sequenceName</p>
-                <p class="paramDefnFirst">A sequence name is an identifier that can optionally be qualified by a schema name:</p>
-                <div class="fcnWrapperWide"><pre class="FcnSyntax">[ <span class="ItalicFont"><a href="sqlref_identifiers_intro.html">SQLIdentifier</a></span></pre>
-                </div>
-                <p class="paramDefnFirst">If <span class="ItalicFont">schemaName</span> is not provided, the current schema is the default schema. If a qualified sequence name is specified, the schema name cannot begin with the <span class="CodeFont">SYS. </span>prefix.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>If this is the first use of the sequence generator, the generator returns its
-			<span class="CodeFont">START</span> value. Otherwise, the <span class="CodeFont">INCREMENT</span> value is added to the previous value
-			returned by the sequence generator. The data type of the value is the
-		<span class="ItalicFont">dataType</span> specified for the sequence generator.</p>
-            <p>If the sequence generator wraps around, then one of the following happens:</p>
-            <ul>
-                <li>If the sequence generator was created using the <span class="CodeFont">CYCLE</span> keyword, the sequence generator is reset to its <span class="CodeFont">START</span> value.</li>
-                <li>If the sequence generator was created with the default <span class="CodeFont">NO CYCLE</span> behavior, Splice Machine throws an exception. </li>
-            </ul>
-            <p>In order to retrieve the next value of a sequence generator, you or your session's current role must have <span class="CodeFont">USAGE</span> privilege on the generator.</p>
-            <p>A <span class="CodeFont">NEXT VALUE FOR</span> expression may occur in the following places:</p>
-            <ul>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span> statement</a>:
-			As part of the expression defining a returned column in a <span class="CodeFont">SELECT</span> list</li>
-                <li><a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span> expression</a>:
-				As part of the expression defining a column in a row constructor (<span class="CodeFont">VALUES</span>
-			expression)</li>
-                <li><a href="sqlref_statements_update.html"><span class="CodeFont">UPDATE</span> statement</a>;
-				As part of the expression defining the new value to which a column is being
-			set</li>
-            </ul>
-            <p>The next value of a sequence generator is not affected by whether the user
-		commits or rolls back a transaction which invoked the sequence generator.</p>
-            <h2>Restrictions</h2>
-            <p>Only one <span class="CodeFont">NEXT VALUE FOR</span> expression is allowed per sequence per statement.</p>
-            <p>The <span class="CodeFont">NEXT VALUE FOR</span> expression is not allowed in any statement which has a
-		<span class="CodeFont">DISTINCT</span> or <span class="CodeFont">ORDER BY</span> expression.</p>
-            <p>A <span class="CodeFont">NEXT VALUE</span> expression <span class="BoldFont">may not appear</span> in any of these situations:</p>
-            <ul>
-                <li><span class="CodeFont"><a href="sqlref_expressions_case.html">CASE</a></span> expression</li>
-                <li><span class="CodeFont"><a href="sqlref_clauses_where.html">WHERE</a></span> clause</li>
-                <li><span class="CodeFont"><a href="sqlref_clauses_orderby.html">ORDER BY</a></span> clause</li>
-                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Aggregate expression</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window functions</a>
-                </li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_rownumber.html">ROW_NUMBER</a></span> function</li>
-                <li><span class="CodeFont">DISTINCT</span> select list</li>
-            </ul>
-            <h2>Examples</h2>
-            <div class="preWrapper"><pre class="Example">VALUES (NEXT VALUE FOR order_id);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="next-value-for-expression">NEXT VALUE FOR Expression</h1>
+
+    <p>The <code>NEXT VALUE FOR</code> expression retrieves the next value from a sequence
+generator that was created with a   <a href="sqlref_statements_createsequence.html"><code>CREATE SEQUENCE</code>
+statement</a>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+NEXT VALUE FOR <a href="sqlref_identifiers_intro.html">sequenceName</a></pre>
+
+</div>
+    <div class="paramList">
+      <p class="paramName">sequenceName</p>
+
+      <p class="paramDefnFirst">A sequence name is an identifier that can optionally be qualified by a
+schema name:</p>
+
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>[ SQLIdentifier
+</code></pre>
+
+      </div>
+      <p class="paramDefn">If <em>schemaName</em> is not provided, the current schema is the default
+schema. If a qualified sequence name is specified, the schema name
+cannot begin with the <code>SYS. </code>prefix.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>If this is the first use of the sequence generator, the generator
+returns its <code>START</code> value. Otherwise, the <code>INCREMENT</code> value is added to
+the previous value returned by the sequence generator. The data type of
+the value is the <em>dataType</em> specified for the sequence generator.</p>
+
+    <p>If the sequence generator wraps around, then one of the following
+happens:</p>
+
+    <ul>
+      <li>If the sequence generator was created using the <code>CYCLE</code> keyword, the
+sequence generator is reset to its <code>START</code> value.</li>
+      <li>If the sequence generator was created with the default <code>NO CYCLE</code>
+behavior, Splice Machine throws an exception.</li>
+    </ul>
+
+    <p>In order to retrieve the next value of a sequence generator, you or your
+session’s current role must have <code>USAGE</code> privilege on the generator.</p>
+
+    <p>A <code>NEXT VALUE FOR</code> expression may occur in the following places:</p>
+
+    <ul>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code> statement</a>: As part of the
+expression defining a returned column in a <code>SELECT</code> list</li>
+      <li><a href="sqlref_expressions_values.html"><code>VALUES</code> expression</a>: As part of the
+expression defining a column in a row constructor (<code>VALUES</code>
+expression)</li>
+      <li><a href="sqlref_statements_update.html"><code>UPDATE</code> statement</a>; As part of the
+expression defining the new value to which a column is being set</li>
+    </ul>
+
+    <p>The next value of a sequence generator is not affected by whether the
+user commits or rolls back a transaction which invoked the sequence
+generator.</p>
+
+    <h2 id="restrictions">Restrictions</h2>
+
+    <p>Only one <code>NEXT VALUE FOR</code> expression is allowed per sequence per
+statement.</p>
+
+    <p>The <code>NEXT VALUE FOR</code> expression is not allowed in any statement which
+has a <code>DISTINCT</code> or <code>ORDER BY</code> expression.</p>
+
+    <p>A <code>NEXT VALUE</code> expression <strong>may not appear</strong> in any of these situations:</p>
+
+    <ul>
+      <li><a href="sqlref_expressions_case.html"><code>CASE</code></a> expression</li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
+      <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Aggregate expression</a></li>
+      <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window functions</a></li>
+      <li><a href="sqlref_builtinfcns_rownumber.html"><code>ROW_NUMBER</code></a> function</li>
+      <li><code>DISTINCT</code> select list</li>
+    </ul>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>VALUES (NEXT VALUE FOR order_id);
 
 INSERT INTO re_order_table
   SELECT NEXT VALUE FOR order_id, order_date, quantity
@@ -2871,17 +2904,21 @@ INSERT INTO re_order_table
 
 UPDATE orders
   SET oid = NEXT VALUE FOR order_id
-  WHERE expired = 1;</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_createsequence.html"><span class="CodeFont">CREATE&#160;SEQUENCE</span></a>&#160;function</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
-                <li><a href="sqlref_expressions_values.html"><span class="CodeFont">VALUES</span></a>&#160;expression</li>
-                <li><a href="sqlref_statements_update.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
-            </ul>
-        </div>
-	</section>
+  WHERE expired = 1;
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_createsequence.html"><code>CREATE SEQUENCE</code></a> function</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
+      <li><a href="sqlref_expressions_values.html"><code>VALUES</code></a> expression</li>
+      <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2898,7 +2935,11 @@ UPDATE orders
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

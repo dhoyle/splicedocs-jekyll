@@ -510,6 +510,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Streaming MQTT&#160;Spark Data</h1>
@@ -531,171 +532,309 @@
                     </p>
                 </div>
             </div>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="streaming-mqttspark-data">Streaming MQTT Spark Data</h1>
+>>>>>>> MDConvert
 
-            <h2 id="Written">Written Walk Through</h2>
-            <p>This section walks you through the same sequence of steps as the video, in these sections:</p>
-            <ul>
-                <li> <a href="#Deployin">Deploying the Tutorial Code</a> walks you through downloading and deploying the sample code.</li>
-                <li><a href="#About">About the Sample Code</a> describes the high-level methods in each class.</li>
-                <li><a href="#About2">About the Sample Code Scripts</a> describes the scripts used to deploy and execute the sample code.</li>
-            </ul>
-            <h3 id="Deployin">Deploying the Tutorial Code</h3>
-            <p>Follow these steps to deploy the tutorial code:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Download the code from  our <a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-mqtt-spark-streaming"  target="_blank">GitHub community repository.</a></p>
-                        <p class="indentLevel1">Pull the code from our git repository:</p>
-                        <div class="preWrapperWide"><pre class="Plain"><a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-storm"  target="_blank">https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-mqtt-spark-streaming</a></pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Compile and package the code:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">mvn clean compile package<br /></pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Copy three JAR&#160;files to each server:</p>
-                        <p class="indentLevel1">Copy these three files:</p>
-                        <div class="preWrapperWide"><pre class="Plain">./target/splice-tutorial-mqtt-2.0.jar<br />spark-streaming-mqtt_2.10-1.6.1.jar<br />org.eclipse.paho.client.mqttv3-1.1.0.jar<br /></pre>
-                        </div>
-                        <p class="indentLevel1">to this directory on each server:</p>
-                        <div class="preWrapperWide"><pre class="Plain"> /opt/splice/default/lib</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Restart Hbase</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Create the target table in splice machine:</p>
-                        <p class="indentLevel1">Run this script to create the table:</p>
-                        <div class="preWrapperWide"><pre class="Plain"> create-tables.sql</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start Mosquitto:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">sudo su /usr/sbin/mosquitto -d -c /etc/mosquitto/mosquitto.conf &gt; /var/log/mosquitto.log 2&gt;&amp;1</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start the Spark streaming script:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">sudo -su mapr ./run-mqtt-spark-streaming.sh tcp://srv61:1883 /testing 10</pre>
-                        </div>
-                        <p class="indentLevel1">The first parameter (<span class="CodeFont">tcp://srv61:1883</span>)&#160;is the MQTT broker, the second (<span class="CodeFont">/testing</span>) is the topic name, and the third (<span class="CodeFont">10</span>)&#160;is the number of seconds each stream should run.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start putting messages on the queue:</p>
-                        <p class="indentLevel1">Here's a java program that is set up to put messages on the queue:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">java -cp /opt/splice/default/lib/splice-tutorial-mqtt-2.0-SNAPSHOT.jar:/opt/splice/default/lib/org.eclipse.paho.client.mqttv3-1.1.0.jar com.splicemachine.tutorials.sparkstreaming.mqtt.MQTTPublisher tcp://localhost:1883 /testing 1000 R1</pre>
-                        </div>
-                        <p class="indentLevel1">The first parameter (<span class="CodeFont">tcp://localhost:1883</span>)&#160;is the MQTT broker, the second (<span class="CodeFont">/testing</span>) is the topic name, the third (<span class="CodeFont">1000</span>)&#160;is the number of iterations to execute, and the fourth parameter (<span class="CodeFont">R1</span>)&#160;is a prefix for this run.</p>
-                        <div class="noteNote">The source code for this utility program is in a different GitHub project than the rest of this code. You'll find it in the <span class="CodeFont"><a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-kafka-producer"  target="_blank">tutorial-kafka-producer</a></span> Github project. </div>
-                    </li>
-                </ol>
-            </div>
-            <h3 id="About">About the Sample Code</h3>
-            <p>This section describes the main class methods used in this MQTT&#160;example code; here's a summary of the classes:</p>
-            <table>
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Java Class</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="CodeFont"><a href="#MQTTPubl">MQTTPublisher</a>
-                        </td>
-                        <td>Puts csv messages on an MQTT&#160;queue.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="#SparkStr">SparkStreamingMQTT</a>
-                        </td>
-                        <td>The Spark streaming job that reads messages from the MQTT&#160;queue.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="#SaveRDD">SaveRDD</a>
-                        </td>
-                        <td>Inserts the data into Splice&#160;Machine using the <span class="CodeFont">RFIDMessageVTI</span> class.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="#RFIDMess2">RFIDMessageVTI</a>
-                        </td>
-                        <td>A virtual table interface for parsing an <span class="CodeFont">RFIDMessage</span>.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="#RFIDMess">RFIDMessage</a>
-                        </td>
-                        <td>Java object (a POJO)&#160;for converting from a csv string to an object to a database entry.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h4 id="MQTTPubl">MQTTPublisher</h4>
-            <p>This class puts CSV messages on an MQTT queue. The function of most interest in MQTTPublisher.java is <span class="CodeFont">DoDemo</span>, which controls our sample program:</p>
-            <div class="preWrapperWide"><pre class="Example">public void doDemo() {
+    <p>This topic walks you through using MQTT Spark streaming with
+Splice Machine. MQTT is a lightweight, publish-subscribe messaging
+protocol designed for connecting remotely when a small footprint is
+required. MQTT is frequently used for data collection with the Internet
+of Things (IoT).</p>
+
+    <p>The example code in this tutorial uses <a href="https://mosquitto.org/" target="_blank">Mosquitto</a>, which is an open source message broker that implements
+the MQTT. This tutorial uses a cluster managed by MapR; if you’re using
+different platform management software, you’ll need to make a few
+adjustments in how the code is deployed on your cluster.</p>
+
+    <p class="noteNote">All of the code used in this tutorial is available in our <a href="https://github.com/splicemachine/splice-community-sample-code" target="_blank">GitHub
+community repository</a>.</p>
+
+    <div>
+      <p>You can complete this tutorial by <a href="#Watch">watching a short video</a> or by
+<a href="#Written">following the written directions</a> below.</p>
+
+      <h2 id="Watch">Watch the Video</h2>
+
+      <p>The following video shows you how to:</p>
+
+      <ul>
+        <li>put messages on an MQTT queue</li>
+        <li>consume those messages using Spark streaming</li>
+        <li>save those messages to Splice Machine with a virtual table (VTI)</li>
+      </ul>
+
+      <div class="centered">
+        <iframe class="youtube-player_0" src="https://www.youtube.com/embed/Nt2J2khM0Xw?" frameborder="0" allowfullscreen="1" width="560px" height="315px"></iframe>
+
+      </div>
+    </div>
+
+    <h2 id="Written">Written Walk Through</h2>
+
+    <p>This section walks you through the same sequence of steps as the video,
+in these sections:</p>
+
+    <ul>
+      <li><a href="#Deployin">Deploying the Tutorial Code</a> walks you through downloading
+and deploying the sample code.</li>
+      <li><a href="#About">About the Sample Code</a> describes the high-level methods in
+each class.</li>
+      <li><a href="#About2">About the Sample Code Scripts</a> describes the scripts used to
+deploy and execute the sample code.</li>
+    </ul>
+
+    <h3 id="Deployin">Deploying the Tutorial Code</h3>
+
+    <p>Follow these steps to deploy the tutorial code:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Download the code from our <a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-mqtt-spark-streaming" target="_blank">GitHub community repository.</a></p>
+
+          <p class="indentLevel1">Pull the code from our git repository:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Plain"><code>https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-mqtt-spark-streaming
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Compile and package the code:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>mvn clean compile package
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Copy three JAR files to each server:</p>
+
+          <p class="indentLevel1">Copy these three files:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Plain"><code>./target/splice-tutorial-mqtt-2.0.jarspark-streaming-mqtt_2.10-1.6.1.jarorg.eclipse.paho.client.mqttv3-1.1.0.jar
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">to this directory on each server:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Plain"><code> /opt/splice/default/lib
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Restart Hbase</p>
+        </li>
+        <li>
+          <p class="topLevel">Create the target table in splice machine:</p>
+
+          <p class="indentLevel1">Run this script to create the table:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Plain"><code> create-tables.sql
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Start Mosquitto:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>sudo su /usr/sbin/mosquitto -d -c /etc/mosquitto/mosquitto.conf &gt; /var/log/mosquitto.log 2&gt;&amp;1
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Start the Spark streaming script:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>sudo -su mapr ./run-mqtt-spark-streaming.sh tcp://srv61:1883 /testing 10
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">The first parameter (<code>tcp://srv61:1883</code>) is the MQTT broker, the
+second (<code>/testing</code>) is the topic name, and the third (<code>10</code>) is the
+number of seconds each stream should run.</p>
+        </li>
+        <li>
+          <p class="topLevel">Start putting messages on the queue:</p>
+
+          <p class="indentLevel1">Here’s a java program that is set up to put messages on the queue:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>java -cp /opt/splice/default/lib/splice-tutorial-mqtt-2.0-SNAPSHOT.jar:/opt/splice/default/lib/org.eclipse.paho.client.mqttv3-1.1.0.jar com.splicemachine.tutorials.sparkstreaming.mqtt.MQTTPublisher tcp://localhost:1883 /testing 1000 R1
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">The first parameter (<code>tcp://localhost:1883</code>) is the MQTT broker, the
+second (<code>/testing</code>) is the topic name, the third (<code>1000</code>) is the
+number of iterations to execute, and the fourth parameter (<code>R1</code>) is
+a prefix for this run.</p>
+
+          <p class="noteNote">The source code for this utility program is in a different GitHub
+project than the rest of this code. You’ll find it in the
+    <a href="https://github.com/splicemachine/splice-community-sample-code/tree/master/tutorial-kafka-producer" target="_blank"><code>tutorial-kafka-producer</code></a> Github project.</p>
+        </li>
+      </ol>
+
+    </div>
+    <h3 id="About">About the Sample Code</h3>
+
+    <p>This section describes the main class methods used in this MQTT example
+code; here’s a summary of the classes:</p>
+
+    <table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Java Class</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="#MQTTPubl">MQTTPublisher</a>
+            </td>
+            <td>Puts csv messages on an MQTT queue.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#SparkStr">SparkStreamingMQTT</a>
+            </td>
+            <td>The Spark streaming job that reads messages from the MQTT queue.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#SaveRDD">SaveRDD</a>
+            </td>
+            <td>Inserts the data into Splice Machine using the <code>RFIDMessageVTI</code> class.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#RFIDMess2">RFIDMessageVTI</a>
+            </td>
+            <td>A virtual table interface for parsing an <code>RFIDMessage</code>.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#RFIDMess">RFIDMessage</a>
+            </td>
+            <td>Java object (a POJO) for converting from a csv string to an object to a database entry.</td>
+        </tr>
+    </tbody>
+</table>
+    <h4 id="MQTTPubl">MQTTPublisher</h4>
+
+    <p>This class puts CSV messages on an MQTT queue. The function of most
+interest in MQTTPublisher.java is <code>DoDemo</code>, which controls our sample
+program:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>public void doDemo() {
    try {
-		long startTime = System.currentTimeMillis();
-		client = new MqttClient(broker, clientId);
-		client.connect();
-		MqttMessage message = new MqttMessage();
-		for (int i=0; inumMessages; i++) {
-			// Build a csv string
-			message.setPayload( prefix + "Asset" + i ", Location" + i + "," + new Timestamp((new Date()).getTime())).getBytes());
-			client.publish(topicName, message);
-			if (i % 1000 == 0) {
-				System.out.println("records:" + i + " duration=" + (System.currentTimeMillis() - startTime));
-				startTime = System.currentTimeMillis();
-			}
-		client.disconnect();
-	} catch (MqttException e) {
-		e.printStackTrace();
-	}
-}</pre>
-            </div>
-            <p><span class="CodeFont">DoDemo</span> does a little initialization, then starts putting messages out on the queue. Our sample program is set up to loop until it creates <span class="CodeFont">numMessages</span> messages; after every 1000 messages, it displays a status message that helps us determine how much time is going to put messages on the queue, and how much to take them off the queue.</p>
-            <p><span class="CodeFont">DoDemo</span> builds a csv record (line) for each message, setting an asset&#160;ID, a location ID, and a timestamp in the <span class="CodeFont">payload</span> of the message. It them publishes that message to the topic <span class="CodeFont">topicName</span>. </p>
-            <h4 id="SparkStr">SparkStreamingMQTT</h4>
-            <p>Once the messages are on the queue, our <span class="CodeFont">SparkStreamingMQTT</span> class object reads them from the queue and inserts them into our database. The main method in this class is <span class="CodeFont">processMQTT</span>:</p>
-            <div class="preWrapperWide"><pre class="Example">public void processMQTT(final String broker, final String topic, final int numSeconds) {
+        long startTime = System.currentTimeMillis();
+        client = new MqttClient(broker, clientId);
+        client.connect();
+        MqttMessage message = new MqttMessage();
+        for (int i=0; inumMessages; i++) {
+            // Build a csv string
+            message.setPayload( prefix + "Asset" + i ", Location" + i + "," + new Timestamp((new Date()).getTime())).getBytes());
+            client.publish(topicName, message);
+            if (i % 1000 == 0) {
+                System.out.println("records:" + i + " duration=" + (System.currentTimeMillis() - startTime));
+                startTime = System.currentTimeMillis();
+            }
+        client.disconnect();
+    } catch (MqttException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
 
-        LOG.info("************ SparkStreamingMQTTOutside.processMQTT start");
+    </div>
+    <p><code>DoDemo</code> does a little initialization, then starts putting messages out
+on the queue. Our sample program is set up to loop until it creates
+<code>numMessages</code> messages; after every 1000 messages, it displays a status
+message that helps us determine how much time is going to put messages
+on the queue, and how much to take them off the queue.</p>
 
-        // Create the spark application and set the name to MQTT
-        SparkConf sparkConf = new SparkConf().setAppName("MQTT");
+    <p><code>DoDemo</code> builds a csv record (line) for each message, setting an
+asset ID, a location ID, and a timestamp in the <code>payload</code> of the
+message. It them publishes that message to the topic <code>topicName</code>.</p>
 
-        // Create the spark streaming context with a 'numSeconds' second batch size
-        jssc = new JavaStreamingContext(sparkConf, Durations.seconds(numSeconds));
-        jssc.checkpoint(checkpointDirectory);
+    <h4 id="SparkStr">SparkStreamingMQTT</h4>
 
-        LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to read the MQTTUtils.createStream");
-        //2. MQTTUtils to collect MQTT messages
-        JavaReceiverInputDStreamString&gt; messages = MQTTUtils.createStream(jssc, broker, topic);
+    <p>Once the messages are on the queue, our <code>SparkStreamingMQTT</code> class
+object reads them from the queue and inserts them into our database. The
+main method in this class is <code>processMQTT</code>:</p>
 
-        LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to do foreachRDD");
-        //process the messages on the queue and save them to the database
-        messages.foreachRDD(new SaveRDD());
+    <div class="preWrapperWide">
+      <pre class="Example"><code>public void processMQTT(final String broker, final String topic, final int numSeconds) {
 
-        LOG.info("************ SparkStreamingMQTTOutside.processMQTT prior to context.strt");
-        // Start the context
-        jssc.start();
-        jssc.awaitTermination();
-    }</pre>
-            </div>
-            <p class="spaceAbove">The <span class="CodeFont">processMQTT</span>&#160;method takes three parameters:</p>
-            <div class="paramList">
-                <p class="paramName">broker</p>
-                <p class="paramDefnFirst">The URL&#160;of the MQTT&#160;broker.</p>
-                <p class="paramName">topic</p>
-                <p class="paramDefnFirst">The MQTT&#160;topic name.</p>
-                <p class="paramName">numSeconds</p>
-                <p class="paramDefnFirst">The number of seconds at which streaming data will be divided into batches.</p>
-            </div>
-            <p class="spaceAbove">The <span class="CodeFont">processMQTT</span>&#160;method processes the messages on the queue and saves them by calling the <span class="CodeFont">SaveMDD</span> class.</p>
-            <h4 id="SaveRDD">SaveRDD</h4>
-            <p>The <span class="CodeFont">SaveRDD</span>&#160;class is an example of a Spark streaming function that uses our virtual table interface (VTI) to insert data into your Splice Machine database. This function checks for messages in the stream, and if there any, it creates a connection your database and uses a prepared statement to insert the messages into the database.</p>
-            <div class="preWrapperWide"><pre class="Example">/**
+    LOG.info("************ SparkStreamingMQTTOutside.processMQTT start");
+
+    // Create the spark application and set the name to MQTT
+    SparkConf sparkConf = new SparkConf().setAppName("MQTT");
+
+    // Create the spark streaming context with a 'numSeconds' second batch size
+    jssc = new JavaStreamingContext(sparkConf, Durations.seconds(numSeconds));
+    jssc.checkpoint(checkpointDirectory);
+
+    LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to read the MQTTUtils.createStream");
+    //2. MQTTUtils to collect MQTT messages
+    JavaReceiverInputDStreamString&gt; messages = MQTTUtils.createStream(jssc, broker, topic);
+
+    LOG.info("************ SparkStreamingMQTTOutside.processMQTT about to do foreachRDD");
+    //process the messages on the queue and save them to the database
+    messages.foreachRDD(new SaveRDD());
+
+    LOG.info("************ SparkStreamingMQTTOutside.processMQTT prior to context.strt");
+    // Start the context
+    jssc.start();
+    jssc.awaitTermination();
+}
+</code></pre>
+
+    </div>
+    <p class="spaceAbove">The <code>processMQTT</code> method takes three parameters:</p>
+
+    <div class="paramList">
+      <p class="paramName">broker</p>
+
+      <p class="paramDefnFirst">The URL of the MQTT broker.</p>
+
+      <p class="paramName">topic</p>
+
+      <p class="paramDefnFirst">The MQTT topic name.</p>
+
+      <p class="paramName">numSeconds</p>
+
+      <p class="paramDefnFirst">The number of seconds at which streaming data will be divided into
+batches.</p>
+
+    </div>
+    <p class="spaceAbove">The <code>processMQTT</code> method processes the messages on the queue and saves
+them by calling the <code>SaveMDD</code> class.</p>
+
+    <h4 id="SaveRDD">SaveRDD</h4>
+
+    <p>The <code>SaveRDD</code> class is an example of a Spark streaming function that
+uses our virtual table interface (VTI) to insert data into your Splice
+Machine database. This function checks for messages in the stream, and
+if there any, it creates a connection your database and uses a prepared
+statement to insert the messages into the database.</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>/**
  * This is an example of spark streaming function that
  * inserts data into Splice Machine using a VTI.
  *
@@ -737,107 +876,146 @@ public class SaveRDD implements FunctionJavaRDDString&gt;, Void&gt;, Externaliza
         }
         return null;
     }
-</pre>
-            </div>
-            <p class="spaceAbove">The heart of this function is the statement that creates the prepared statement, using a VTI&#160;class instance:</p>
-            <div class="preWrapperWide"><pre class="Plain">String vtiStatement = "INSERT INTO IOT.RFID " <br />&#160;&#160;&#160;&#160;+ "select s.* from new <br />&#160;&#160;&#160;&#160;com.splicemachine.tutorials.sparkstreaming.mqtt.RFIDMessageVTI(?) s ("
-&#160;&#160;&#160;&#160;+ RFIDMessage.getTableDefinition() + ")";
-PreparedStatement ps = con.prepareStatement(vtiStatement);</pre>
-            </div>
-            <p>Note that the statement references both our <span class="CodeFont">RFIDMessage</span> and <span class="CodeFont">RFIDMessageVTI</span>&#160;classes, which are described below.</p>
-            <h4 id="RFIDMess2">RFIDMessageVTI</h4>
-            <p>The <span class="CodeFont">RFIDMessageVTI</span>&#160;class implements an example of a virtual table interface that reads in a list of strings that are in CSV&#160;format, converts that into an <span class="CodeFont">RFIDMessage</span> object, and returns the resultant list in a format that is compatible with Splice&#160;Machine.</p>
-            <p>This class features an override of the <span class="CodeFont">getDataSet</span> method, which loops through each CSV&#160;record from the input stream and converts it into an <span class="CodeFont">RFIDMessage</span> object that is added onto a list of message items:</p>
-            <div class="preWrapperWide"><pre class="Example">    @Override
-    public DataSetLocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
-        operationContext = dsp.createOperationContext(op);
+</code></pre>
 
-        //Create an arraylist to store the key / value pairs
-        ArrayListLocatedRow&gt; items = new ArrayListLocatedRow&gt;();
+    </div>
+    <p class="spaceAbove">The heart of this function is the statement that creates the prepared
+statement, using a VTI class instance:</p>
 
-        try {
+    <div class="preWrapperWide">
+      <pre class="Plain"><code>String vtiStatement = "INSERT INTO IOT.RFID "     + "select s.* from new     com.splicemachine.tutorials.sparkstreaming.mqtt.RFIDMessageVTI(?) s ("
+    + RFIDMessage.getTableDefinition() + ")";
+PreparedStatement ps = con.prepareStatement(vtiStatement);
+</code></pre>
 
-            int numRcds = this.records == null ? 0 : this.records.size();
+    </div>
+    <p>Note that the statement references both our <code>RFIDMessage</code> and
+<code>RFIDMessageVTI</code> classes, which are described below.</p>
 
-            if (numRcds &gt; 0) {
+    <h4 id="RFIDMess2">RFIDMessageVTI</h4>
 
-                LOG.info("Records to process:" + numRcds);
-                //Loop through each record convert to a SensorObject
-                //and then set the values
-                for (String csvString : records) {
-                    CsvBeanReader beanReader = new CsvBeanReader(new StringReader(csvString), CsvPreference.STANDARD_PREFERENCE);
-                    RFIDMessage msg = beanReader.read(RFIDMessage.class, header, processors);
-                    items.add(new LocatedRow(msg.getRow()));
-                }
+    <p>The <code>RFIDMessageVTI</code> class implements an example of a virtual table
+interface that reads in a list of strings that are in CSV format,
+converts that into an <code>RFIDMessage</code> object, and returns the resultant
+list in a format that is compatible with Splice Machine.</p>
+
+    <p>This class features an override of the <code>getDataSet</code> method, which loops
+through each CSV record from the input stream and converts it into an
+<code>RFIDMessage</code> object that is added onto a list of message items:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>@Override
+public DataSetLocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
+    operationContext = dsp.createOperationContext(op);
+
+    //Create an arraylist to store the key / value pairs
+    ArrayListLocatedRow&gt; items = new ArrayListLocatedRow&gt;();
+
+    try {
+
+        int numRcds = this.records == null ? 0 : this.records.size();
+
+        if (numRcds &gt; 0) {
+
+            LOG.info("Records to process:" + numRcds);
+            //Loop through each record convert to a SensorObject
+            //and then set the values
+            for (String csvString : records) {
+                CsvBeanReader beanReader = new CsvBeanReader(new StringReader(csvString), CsvPreference.STANDARD_PREFERENCE);
+                RFIDMessage msg = beanReader.read(RFIDMessage.class, header, processors);
+                items.add(new LocatedRow(msg.getRow()));
             }
-        } catch (Exception e) {
-            LOG.error("Exception processing RFIDMessageVTI", e);
-        } finally {
-            operationContext.popScope();
         }
-        return new ControlDataSet&gt;(items);
+    } catch (Exception e) {
+        LOG.error("Exception processing RFIDMessageVTI", e);
+    } finally {
+        operationContext.popScope();
     }
-</pre>
-            </div>
-            <div class="noteIcon">For more information about using our virtual table interface, see <a href="developers_fundamentals_vti.html">Using the Splice Machine Virtual Table Interface.</a></div>
-            <h4 id="RFIDMess">RFIDMessage</h4>
-            <p>The <span class="CodeFont">RFIDMessage</span> class creates a simple Java object (a POJO)&#160;that represents an RFID&#160;message; we use this to convert an incoming CSV-formatted message into an object. This class includes getters and setters for each of the object properties, plus the <span class="CodeFont">getTableDefinition</span> and <span class="CodeFont">getRow</span> methods:</p>
-            <div class="preWrapperWide"><pre class="Example">    /**
-     * Used by the VTI to build a Splice Machine compatible resultset
-     *
-     * @return
-     * @throws SQLException
-     * @throws StandardException
-     */
-    public ValueRow getRow() throws SQLException, StandardException {
-        ValueRow valueRow = new ValueRow(5);
-        valueRow.setColumn(1, new SQLVarchar(this.getAssetNumber()));
-        valueRow.setColumn(2, new SQLVarchar(this.getAssetDescription()));
-        valueRow.setColumn(3, new SQLTimestamp(this.getRecordedTime()));
-        valueRow.setColumn(4, new SQLVarchar(this.getAssetType()));
-        valueRow.setColumn(5, new SQLVarchar(this.getAssetLocation()));
-        return valueRow;
-    }
+    return new ControlDataSet&gt;(items);
+}
+</code></pre>
 
-    /**
-     * Table definition to use when using a VTI that is an instance of a class
-     *
-     * @return
-     */
-    public static String getTableDefinition() {
-        return "ASSET_NUMBER varchar(50), "
-        + "ASSET_DESCRIPTION varchar(100), "
-        + "RECORDED_TIME TIMESTAMP, "
-        + "ASSET_TYPE VARCHAR(50), "
-        + "ASSET_LOCATION VARCHAR(50) ";
-    }</pre>
-            </div>
-            <p>The <span class="CodeFont">getTableDefinition</span> method is a string description of the table into which you're inserting records; this pretty much replicates the specification you would use in an SQL&#160;<span class="CodeFont">CREATE_TABLE</span>&#160;statement.</p>
-            <p>The <span class="CodeFont">getRow</span> method creates a data row with the appropriate number of columns, uses property getters to set the value of each column, and returns the row as a <span class="CodeFont">resultset</span> that is compatible with Splice&#160;Machine.</p>
-            <h3 id="About2">About the Sample Code Scripts</h3>
-            <p>These are also two scripts that we use with this tutorial:</p>
-            <table>
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Class</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="CodeFont">/ddl/create-tables.sql</td>
-                        <td>A simple SQL&#160;script that you can use to have Splice&#160;Machine create the table into which RFID&#160;messages are stored.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">/scripts/run-mqtt-spark-streaming.sh</td>
-                        <td>Starts the Spark streaming job.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-	</section>
+    </div>
+    <p class="noteIcon">For more information about using our virtual table interface, see <a href="developers_fundamentals_vti.html">Using
+the Splice Machine Virtual Table
+Interface.</a></p>
+
+    <h4 id="RFIDMess">RFIDMessage</h4>
+
+    <p>The <code>RFIDMessage</code> class creates a simple Java object (a POJO) that
+represents an RFID message; we use this to convert an incoming
+CSV-formatted message into an object. This class includes getters and
+setters for each of the object properties, plus the <code>getTableDefinition</code>
+and <code>getRow</code> methods:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>/**
+ * Used by the VTI to build a Splice Machine compatible resultset
+ *
+ * @return
+ * @throws SQLException
+ * @throws StandardException
+ */
+public ValueRow getRow() throws SQLException, StandardException {
+    ValueRow valueRow = new ValueRow(5);
+    valueRow.setColumn(1, new SQLVarchar(this.getAssetNumber()));
+    valueRow.setColumn(2, new SQLVarchar(this.getAssetDescription()));
+    valueRow.setColumn(3, new SQLTimestamp(this.getRecordedTime()));
+    valueRow.setColumn(4, new SQLVarchar(this.getAssetType()));
+    valueRow.setColumn(5, new SQLVarchar(this.getAssetLocation()));
+    return valueRow;
+}
+
+/**
+ * Table definition to use when using a VTI that is an instance of a class
+ *
+ * @return
+ */
+public static String getTableDefinition() {
+    return "ASSET_NUMBER varchar(50), "
+    + "ASSET_DESCRIPTION varchar(100), "
+    + "RECORDED_TIME TIMESTAMP, "
+    + "ASSET_TYPE VARCHAR(50), "
+    + "ASSET_LOCATION VARCHAR(50) ";
+}
+</code></pre>
+
+    </div>
+    <p>The <code>getTableDefinition</code> method is a string description of the table
+into which you’re inserting records; this pretty much replicates the
+specification you would use in an SQL <code>CREATE_TABLE</code> statement.</p>
+
+    <p>The <code>getRow</code> method creates a data row with the appropriate number of
+columns, uses property getters to set the value of each column, and
+returns the row as a <code>resultset</code> that is compatible with Splice Machine.</p>
+
+    <h3 id="About2">About the Sample Code Scripts</h3>
+
+    <p>These are also two scripts that we use with this tutorial:</p>
+
+    <table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Class</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>/ddl/create-tables.sql</code></td>
+            <td>A simple SQL script that you can use to have Splice Machine create the table into which RFID messages are stored.</td>
+        </tr>
+        <tr>
+            <td><code>/scripts/run-mqtt-spark-streaming.sh</code></td>
+            <td>Starts the Spark streaming job.</td>
+        </tr>
+    </tbody>
+</table>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -854,7 +1032,11 @@ PreparedStatement ps = con.prepareStatement(vtiStatement);</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

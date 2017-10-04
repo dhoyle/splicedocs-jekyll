@@ -2806,50 +2806,71 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInFcns.Cot">COT</h1>
-            <p>The <span class="CodeFont">COT</span> function returns the cotangent of a specified number.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">COT ( <span class="ItalicFont">number</span> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">number
-            </p>
-                <p class="paramDefnFirst">A <a href="sqlref_datatypes_doubleprecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a> number that specifies the angle, in radians, for which you want the cotangent computed.</p>
-            </div>
-            <h2>Results</h2>
-            <p>The data type of the returned value is a <a href="sqlref_datatypes_doubleprecision.html"><span class="CodeFont">DOUBLE PRECISION</span></a> number.</p>
-            <ul>
-                <li>If the specified number is NULL, the result of this function is NULL.</li>
-                <li>If the specified number is zero (<span class="CodeFont">0</span>), the result of this function is one (<span class="CodeFont">1.0</span>).</li>
-            </ul>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES COT(1.234);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="cot">COT</h1>
+
+    <p>The <code>COT</code> function returns the cotangent of a specified number.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>COT ( number )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">number</p>
+
+      <p class="paramDefnFirst">A  <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> number
+that specifies the angle, in radians, for which you want the cotangent
+computed.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The data type of the returned value is a  <a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE
+PRECISION</code></a> number.</p>
+
+    <ul>
+      <li>If the specified number is NULL, the result of this function is NULL.</li>
+      <li>If the specified number is zero (<code>0</code>), the result of this function is
+one (<code>1.0</code>).</li>
+    </ul>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; VALUES COT(1.234);
 1
 ----------
 0.35013639786791445
 
-1 row selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_doubleprecision.html"><span class="CodeFont">DOUBLE&#160;PRECISION</span></a> data type</li>
-                <li><a href="sqlref_builtinfcns_acos.html"><span class="CodeFont">ACOS</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_asin.html"><span class="CodeFont">ASIN</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_atan.html"><span class="CodeFont">ATAN</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_atan2.html"><span class="CodeFont">ATAN2</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_cos.html"><span class="CodeFont">COS</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_cosh.html"><span class="CodeFont">COSH</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_degrees.html"><span class="CodeFont">DEGREES</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_radians.html"><span class="CodeFont">RADIANS</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_sin.html"><span class="CodeFont">SIN</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_sinh.html"><span class="CodeFont">SINH</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_tan.html"><span class="CodeFont">TAN</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_tanh.html"><span class="CodeFont">TANH</span></a>&#160;function</li>
-            </ul>
-        </div>
-	</section>
+1 row selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_doubleprecision.html"><code>DOUBLE PRECISION</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_acos.html"><code>ACOS</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_asin.html"><code>ASIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_atan.html"><code>ATAN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_atan2.html"><code>ATAN2</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_cos.html"><code>COS</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_cosh.html"><code>COSH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_degrees.html"><code>DEGREES</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_radians.html"><code>RADIANS</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sin.html"><code>SIN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sinh.html"><code>SINH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_tan.html"><code>TAN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_tanh.html"><code>TANH</code></a> function</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2866,7 +2887,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

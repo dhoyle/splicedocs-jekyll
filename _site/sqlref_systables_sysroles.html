@@ -2806,22 +2806,30 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="SystemTables.SysRoles">SYSROLES System Table </h1>
-            <p>The <span class="CodeFont">SYSROLES</span> table stores the roles in the database.</p>
-            <p>A row in the <span class="CodeFont">SYSROLES</span> table represents one of the following:</p>
-            <ul>
-                <li>A role definition (the result of a <a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE ROLE</span> statement</a>)</li>
-                <li>A role grant</li>
-            </ul>
-            <p>The keys for the <span class="CodeFont">SYSROLES</span> table are:</p>
-            <ul>
-                <li>Primary key (<span class="CodeFont">GRANTEE, ROLEID, GRANTOR</span>)</li>
-                <li>Unique key (<span class="CodeFont">UUID</span>)</li>
-            </ul>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSROLES</span> system table.</p>
-            <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="sysroles-system-table">SYSROLES System Table</h1>
+
+    <p>The <code>SYSROLES</code> table stores the roles in the database.</p>
+
+    <p>A row in the <code>SYSROLES</code> table represents one of the following:</p>
+
+    <ul>
+      <li>A role definition (the result of a  <a href="sqlref_statements_createrole.html"><code>CREATE ROLE</code>
+statement</a>)</li>
+      <li>A role grant</li>
+    </ul>
+
+    <p>The keys for the <code>SYSROLES</code> table are:</p>
+
+    <ul>
+      <li>Primary key (<code>GRANTEE, ROLEID, GRANTOR</code>)</li>
+      <li>Unique key (<code>UUID</code>)</li>
+    </ul>
+
+    <p>The following table shows the contents of the <code>SYSROLES</code> system table.</p>
+
+    <table>
                 <caption>SYSROLES system table</caption>
                 <col />
                 <col />
@@ -2839,77 +2847,79 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont"> UUID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> UUID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>A unique identifier for this role</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> ROLEID</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> ROLEID</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The role name, after conversion to case normal form</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> GRANTEE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> GRANTEE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>If the row represents a role grant, this is the authorization
 						identifier of a user or role to which this role is granted. If the row
 					represents a role definition, this is the database owner's user name.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> GRANTOR</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> GRANTOR</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>This is the authorization identifier of the user that granted
 						this role. If the row represents a role definition, this is the authorization
-						identifier <span class="CodeFont">_SYSTEM</span>. If the row represents a role grant, this is the database
+						identifier <code>_SYSTEM</code>. If the row represents a role grant, this is the database
 						owner's user name (since only the database owner can create and grant roles).
 					</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">WITHADMINOPTION</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>WITHADMINOPTION</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
-                            <p class="noSpaceAbove">A role definition is modelled as a grant from <span class="CodeFont">_SYSTEM</span> to the
+                            <p class="noSpaceAbove">A role definition is modelled as a grant from <code>_SYSTEM</code> to the
 						database owner, so if the row represents a role definition, the value is always
-						<span class="CodeFont">'Y'</span>. </p>
+						<code>'Y'</code>. </p>
                             <p>This means that the creator (the database owner) is always allowed
-						to grant the newly created role. Currently roles cannot be granted <span class="CodeFont">WITH ADMIN
-						OPTION</span>, so if the row represents a role grant, the value is always
-					<span class="CodeFont">'N'</span>.</p>
+						to grant the newly created role. Currently roles cannot be granted <code>WITH ADMIN
+						OPTION</code>, so if the row represents a role grant, the value is always
+					<code>'N'</code>.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> ISDEF</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> ISDEF</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>If the row represents a role definition, this value is
-					<span class="CodeFont">'Y'</span>. If the row represents a role grant, the value is <span class="CodeFont">'N'</span>.</td>
+					<code>'Y'</code>. If the row represents a role grant, the value is <code>'N'</code>.</td>
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_systables_intro.html">About System Tables</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_currentrole.html"><span class="CodeFont">CURRENT_ROLE</span></a>&#160;function</li>
-                <li><a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE_ROLE</span></a> statement</li>
-                <li><a href="sqlref_statements_droprole.html"><span class="CodeFont">DROP_ROLE</span></a> statement</li>
-                <li><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_revoke.html"><span class="CodeFont">REVOKE</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_setrole.html"><span class="CodeFont">SET&#160;ROLE</span></a> statement</li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_systables_intro.html">About System Tables</a></li>
+      <li><a href="sqlref_builtinfcns_currentrole.html"><code>CURRENT_ROLE</code></a> function</li>
+      <li><a href="sqlref_statements_createrole.html"><code>CREATE_ROLE</code></a> statement</li>
+      <li><a href="sqlref_statements_droprole.html"><code>DROP_ROLE</code></a> statement</li>
+      <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a> statement</li>
+      <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> statement</li>
+      <li><a href="sqlref_statements_setrole.html"><code>SET ROLE</code></a> statement</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2926,7 +2936,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

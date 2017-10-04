@@ -518,6 +518,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Execute Command</h1>
@@ -543,6 +544,62 @@
             </div>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; autocommit off;
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="execute-command">Execute Command</h1>
+
+    <p>The <span class="AppCommand">execute</span> command executes an
+SQL command string or a prepared statement.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>EXECUTE { SQLString | PreparedStatementIdentifier }
+          [ USING { String | Identifier } ]
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">SQLString</p>
+
+      <p class="paramDefnFirst">The SQL command string to execute; this string is passed to the
+connection without further processing by the command line interpreter.</p>
+
+      <p class="paramName">PreparedStatementIdentifier</p>
+
+      <p class="paramDefnFirst">The identifier of the prepared statement to execute; this must be the
+name associated with a prepared statement when created by the
+<a href="cmdlineref_prepare.html">Prepare</a> command.</p>
+
+      <p class="paramName">String</p>
+
+      <p class="paramDefnFirst">Use this or <em>Identifier</em> to supply values for dynamic parameters, if the
+command being executed contains them.</p>
+
+      <p class="paramName">Identifier</p>
+
+      <p class="paramDefnFirst">Use this or <em>String</em> to supply values for dynamic parameters, if the
+command being executed contains them. This identifier must have a result
+set as its result:</p>
+
+      <ul>
+        <li>Each row of the result set is applied to the input parameters of the
+command to be executed, so the number of columns in the <code>Using</code>
+clause’s result set must match the number of input parameters in the
+statement being executed.</li>
+        <li>The command line interpreter displays the results of each execution of
+the statement as they are created.</li>
+        <li>If the Using clause’s result set contains zero rows, the statement is
+not executed.</li>
+      </ul>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; autocommit off;
+>>>>>>> MDConvert
 splice&gt; prepare menuInsert as 'INSERT INTO menu VALUES (?, ?, ?)';
 splice&gt; execute menuInsert using 'VALUES
 (''entree'', ''lamb chop'', 14),
@@ -589,10 +646,12 @@ splice(CONNECTION1)&gt; show connections;
 CONNECTION0 -   jdbc:splice://abc:1527/splicedb
 CONNECTION1* -  jdbc:splice://xyz:1527/splicedb
 splice(CONNECTION1)&gt; disconnect connection0;
-splice&gt; </pre>
-            </div>
-        </div>
-	</section>
+splice&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
 
 
     <div class="tags">
@@ -609,7 +668,11 @@ splice&gt; </pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

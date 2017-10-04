@@ -518,6 +518,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Autocommit Command</h1>
@@ -535,6 +536,47 @@
             </div>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand">splice&gt; autocommit off;
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="autocommit-command">Autocommit Command</h1>
+
+    <p>The <span class="AppCommand">autocommit</span> command enables or
+disables auto-commit mode.</p>
+
+    <p>JDBC specifies that the default auto-commit mode is enabled; however,
+certain types of processing require that auto-commit mode be disabled.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>AUTOCOMMIT {ON | OFF}
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">ON</p>
+
+      <p class="paramDefnFirst">Enables auto-commit mode.</p>
+
+      <p class="paramDefn">If auto-commit mode is changed from disabled (<code>off</code>) to enabled
+(<code>on</code>) when there is a transaction outstanding, that work is committed
+when the current transaction commits, not at the time auto-commit is
+enabled. Thus, if you are enabling auto-commit when a transaction is
+outstanding, first use either the <a href="cmdlineref_rollback.html">Rollback</a>
+command to ensure that all prior work is completed before the return to
+auto-commit mode.</p>
+
+      <p name="paramName" class="paramName">OFF</p>
+
+      <p class="paramDefnFirst">Disables auto-commit mode.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; autocommit off;
+>>>>>>> MDConvert
 splice&gt; DROP TABLE menu;
 0 rows inserted/updated/deleted
 splice&gt; CREATE TABLE menu (course CHAR(10), item CHAR(20), price INT);
@@ -545,10 +587,13 @@ splice&gt; INSERT INTO menu VALUES ('entree', 'lamb chop', 14),
 3 rows inserted/updated/deleted
 splice&gt; commit;
 splice&gt; autocommit on;
-splice&gt;</pre>
-            </div>
-        </div>
-	</section>
+splice&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -565,7 +610,11 @@ splice&gt;</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

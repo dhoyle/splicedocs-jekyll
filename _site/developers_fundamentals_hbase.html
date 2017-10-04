@@ -587,24 +587,42 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1>Working with HBase</h1>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="working-with-hbase">Working with HBase</h1>
 
-            <p>This topic presents information about working in HBase with Splice Machine, in these sections:</p>
-            <ul>
-                <li>The <a href="#MappingTables">Mapping Splice Machine Tables to HBase</a> section shows you how to view your Splice Machine tables and how map the table names that we see in HBase to the more descriptive table names that we see in Splice Machine.</li>
-                <li>The <a href="#AccessingHbaseMaster">Accessing HBase Master</a> section shows you how to access HBase Master so that you can peek under the surface a bit.</li>
-            </ul>
-            <h2 id="MappingTables">Mapping Splice Machine Tables to HBase</h2>
-            <p>If you are looking at tables in the Splice Machine database that do not appear to match what you see in the HBase Master Web user interface, they may not match up. To view your Splice Machine tables in HBase, follow these steps:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Use the Splice interactive command interface to view the tables:</p>
-                        <p class="indentLevel1">You can use the <span class="CodeFont">show tables</span> command to view the tables in your Splice Machine database:</p>
-                        <div class="preWrapperWide"><pre class="Example">TABLE_SCHEM     |TABLE_NAME         |CONGLOM_ID|REMARKS
+    <p class="noteOnPremiseOnly">    <a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
+
+    <p>This topic presents information about working in HBase with Splice
+Machine, in these sections:</p>
+
+    <ul>
+      <li>The <a href="#MappingTables">Mapping Splice Machine Tables to HBase</a> section
+shows you how to view your Splice Machine tables and how map the table
+names that we see in HBase to the more descriptive table names that we
+see in Splice Machine.</li>
+      <li>The <a href="#AccessingHbaseMaster">Accessing HBase Master</a> section shows you
+how to access HBase Master so that you can peek under the surface a
+bit.</li>
+    </ul>
+
+    <h2 id="MappingTables">Mapping Splice Machine Tables to HBase</h2>
+
+    <p>If you are looking at tables in the Splice Machine database that do not
+appear to match what you see in the HBase Master Web user interface,
+they may not match up. To view your Splice Machine tables in HBase,
+follow these steps:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Use the Splice interactive command interface to view the tables:</p>
+
+          <p class="indentLevel1">You can use the <code>show tables</code> command to view the tables in your
+Splice Machine database:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>TABLE_SCHEM     |TABLE_NAME         |CONGLOM_ID|REMARKS
 -------------------------------------------------------------
 SYS             |SYSALIASES         |368       |
 SYS             |SYSBACKUP          |944       |
@@ -635,28 +653,51 @@ SYS             |SYSTABLESTATS      |1280      |
 SYS             |SYSTRIGGERS        |304       |
 SYS             |SYSUSERS           |880       |
 SYS             |SYSVIEWS           |352       |
-SYSIBM          |SYSDUMMY1          |1296      |      </pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">View the tables in the HBase Master Web Console:</p>
-                        <p class="indentLevel1">To view the HBase tables, use the HBase Master Web Console, at <span class="CodeFont">http://localhost:60010/</span>.</p>
-                        <p class="indentLevel1"> Note that all of the user tables in the&#160;<span class="ItalicFont">Tables</span> section have numeric names; the numbers match the conglomerate number&#160;(<span class="CodeFont">CONGLOM_ID</span>)&#160;values displayed by the <span class="CodeFont">show tables</span> command.</p>
-                        <div>
-                            <img src="images/HBaseTables.jpg" class="nestedTightSpacing" />
-                        </div>
-                        <p class="indentLevel1"> These numbers are used in HBase as directory names; you can find those directories in your file system and examine the tables directly.</p>
-                    </li>
-                </ol>
-            </div>
-            <h2 id="AccessingHbaseMaster">Accessing HBase Master</h2>
-            <p>If you are an HBase veteran or someone interested in seeing a little of what goes on under the surface, you can access HBase Master with the default HBase URL:</p>
-            <div class="preWrapper"><pre class="ShellCommand">http://localhost:60010</pre>
-            </div>
-            <p>Because Splice Machine encodes and compresses the data for space efficiency, the actual data in your tables is virtually unreadable.</p>
-            <div class="noteNote">In this version, Splice Machine has purposely left ports 60010 and 60030 open for people to see the HBase tables. If security is an issue in your deployment, you can easily block this access.</div>
-        </div>
-	</section>
+SYSIBM          |SYSDUMMY1          |1296      |      
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">View the tables in the HBase Master Web Console:</p>
+
+          <p class="indentLevel1">To view the HBase tables, use the HBase Master Web Console, at
+<code>http://localhost:60010/</code>.</p>
+
+          <p class="indentLevel1">Note that all of the user tables in the <em>Tables</em> section have
+numeric names; the numbers match the conglomerate
+number (<code>CONGLOM_ID</code>) values displayed by the <code>show tables</code> command.</p>
+
+          <p><img src="images/HBaseTables.jpg" alt="" class="nestedTightSpacing" /></p>
+
+          <p class="indentLevel1">These numbers are used in HBase as directory names; you can find
+those directories in your file system and examine the tables
+directly.</p>
+        </li>
+      </ol>
+
+    </div>
+    <h2 id="AccessingHbaseMaster">Accessing HBase Master</h2>
+
+    <p>If you are an HBase veteran or someone interested in seeing a little of
+what goes on under the surface, you can access HBase Master with the
+default HBase URL:</p>
+
+    <div class="preWrapper">
+      <pre class="ShellCommand"><code>http://localhost:60010
+</code></pre>
+
+    </div>
+    <p>Because Splice Machine encodes and compresses the data for space
+efficiency, the actual data in your tables is virtually unreadable.</p>
+
+    <p class="noteNote">In this version, Splice Machine has purposely left ports 60010 and 60030
+open for people to see the HBase tables. If security is an issue in your
+deployment, you can easily block this access.</p>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -673,7 +714,11 @@ SYSIBM          |SYSDUMMY1          |1296      |      </pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

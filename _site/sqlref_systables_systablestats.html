@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSTABLESTATISTICS System Table</h1>
@@ -2814,6 +2815,21 @@
             <div class="noteNote"><span class="CodeFont">SYS.SYSTABLESTATISTICS</span>&#160;is a system view.</div>
             <p>The following table shows the contents of the <span class="CodeFont">SYSTABLESTATISTICS</span> system table.</p>
             <table>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="systablestatistics-system-table">SYSTABLESTATISTICS System Table</h1>
+
+    <p>The <code>SYSTABLESTATISTICS</code> table view describes the statistics for tables
+within the current database.</p>
+
+    <p class="noteNote"><code>SYS.SYSTABLESTATISTICS</code> is a system view.</p>
+
+    <p>The following table shows the contents of the <code>SYSTABLESTATISTICS</code>
+system table.</p>
+
+    <table>
+>>>>>>> MDConvert
                 <caption>SYSTABLESTATISTICS system table</caption>
                 <col />
                 <col />
@@ -2831,76 +2847,76 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">SCHEMANAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>SCHEMANAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the schema</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>TABLENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CONGLOMERATENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">32672</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>CONGLOMERATENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32672</code></td>
+                        <td><code>YES</code></td>
                         <td>The name of the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TOTAL_ROW_COUNT</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>TOTAL_ROW_COUNT</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The total number of rows in the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">AVG_ROW_COUNT</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>AVG_ROW_COUNT</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The average number of rows in the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TOTAL_SIZE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>TOTAL_SIZE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The total size of the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">NUM_PARTITIONS</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>NUM_PARTITIONS</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The number of partitions<span class="Footnote">1</span> for which statistics were collected.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">AVG_PARTITION_SIZE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>AVG_PARTITION_SIZE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>The average size of a single partition<span class="Footnote">1</span>, in bytes.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">ROW_WIDTH</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>ROW_WIDTH</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>
-                            <p class="noSpaceAbove">The <span class="ItalicFont">maximum average</span> of the widths of rows in the table, across all partitions, in bytes.</p>
+                            <p class="noSpaceAbove">The <em>maximum average</em> of the widths of rows in the table, across all partitions, in bytes.</p>
                             <p>Each partition records the average width of a single row. This value is the maximum of those averages across all partitions.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">STATS_TYPE</td>
-                        <td class="CodeFont">INTEGER</td>
-                        <td class="CodeFont">10</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>STATS_TYPE</code></td>
+                        <td><code>INTEGER</code></td>
+                        <td><code>10</code></td>
+                        <td><code>YES</code></td>
                         <td>
                             <p>The type of statistics, which is one of these values:</p>
                             <table>
@@ -2925,36 +2941,42 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <p>If this value is <span class="CodeFont">NULL</span>, <span class="CodeFont">0</span> is used.</p>
+                            <p>If this value is <code>NULL</code>, <code>0</code> is used.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SAMPLE_FRACTION</td>
-                        <td class="CodeFont">DOUBLE</td>
-                        <td class="CodeFont">52</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>SAMPLE_FRACTION</code></td>
+                        <td><code>DOUBLE</code></td>
+                        <td><code>52</code></td>
+                        <td><code>YES</code></td>
                         <td>
-                            <p>The sampling percentage, expressed as <span class="CodeFont">0.0</span> to <span class="CodeFont">1.0</span>, </p>
+                            <p>The sampling percentage, expressed as <code>0.0</code> to <code>1.0</code>, </p>
                         <ul>
-                            <li>If <span class="CodeFont">statsType=0</span> (full statistics), this value is not used, and is shown as <span class="CodeFont">0</span>.</li>
-                            <li>If <span class="CodeFont">statsType=1</span>, this value is the percentage or rows to be sampled. A value of <span class="CodeFont">0</span> means no rows, and a value of <span class="CodeFont">1</span> means all rows (full statistics).</li>
+                            <li>If <code>statsType=0</code> (full statistics), this value is not used, and is shown as <code>0</code>.</li>
+                            <li>If <code>statsType=1</code>, this value is the percentage or rows to be sampled. A value of <code>0</code> means no rows, and a value of <code>1</code> means all rows (full statistics).</li>
                         </ul>
 
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <blockquote>
-                <p><span class="Footnote">1</span>Currently, a <span class="ItalicFont">partition</span> is equivalent to a region. In the future, we may use a more finely-grained definition for partition.</p>
-            </blockquote>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_systables_intro.html">About System Tables</a>
-                </li>
-                <li><span class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSCOLUMNSTATISTICS</a></span>&#160;system table</li>
-            </ul>
-        </div>
-	</section>
+    <blockquote>
+      <p><span class="Footnote">1</span>Currently, a <em>partition</em> is equivalent
+to a region. In the future, we may use a more finely-grained
+definition for partition.</p>
+    </blockquote>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_systables_intro.html">About System Tables</a></li>
+      <li><a href="sqlref_systables_syscolumnstats.html"><code>SYSCOLUMNSTATISTICS</code></a> system
+table</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2971,7 +2993,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -587,35 +587,73 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="top">Using the Splice Machine Virtual Table Interface (VTI)</h1>
-            <p>The Virtual Table Interface (VTI) allows you to use an SQL interface with data that is external to your database. This topic introduces the Splice Machine VTI in these sections:</p>
-            <ul>
-                <li><a href="#About">About VTI</a> describes the virtual table interface.</li>
-                <li><a href="#Splice">Splice Machine Built-in Virtual Table Interfaces</a> describes the virtual table interfaces built into Splice Machine, and provides examples of using each.</li>
-                <li><a href="#Creating">Creating a Custom Virtual Table Interface</a> walks you through the steps required to create a custom virtual table interface, and demonstrates how to simplify its use with a table function.</li>
-                <li>
-                    <p><a href="#VirtualFile">The Splice Machine Built-in VTI&#160;Classes</a> provides reference descriptions of the virtual table interface classes built into by Splice Machine.</p>
-                </li>
-            </ul>
-            <h2 id="About">About VTI</h2>
-            <p>You can use the Splice Machine Virtual Table Interface (<span class="ItalicFont">VTI</span>)&#160;to access data in external files, libraries, and databases. </p>
-            <div class="noteNote">A virtual table is a view of data stored elsewhere; the data itself is not duplicated in your Splice Machine database. </div>
-            <p>The external data source can be any information source, including:</p>
-            <ul>
-                <li>XML&#160;formatted reports and logs.</li>
-                <li>Queries that run in external databases that support JDBC, such as Oracle and DB2.</li>
-                <li>RSS&#160;feeds.</li>
-                <li>Flat files in formats such as comma-separated value (csv)&#160;format.</li>
-            </ul>
-            <h3>About Table Functions</h3>
-            <p>A <span class="ItalicFont">table function</span> returns <span class="CodeFont">ResultSet</span> values that you can query like you do tables that live in your Splice Machine database. A table function is bound to a constructor for a custom VTI&#160;class. Here's an example of a declaration for a table function that is bound to the <span class="CodeFont">PropertiesFileVTI</span> class, which we walk you through implementing later in this topic:</p>
-            <div class="preWrapperWide"><pre class="Example">CREATE&#160;FUNCTION&#160;propertiesFile(propertyFilename VARCHAR(200))<br />&#160;&#160;&#160;&#160;RETURNS&#160;TABLE<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;(<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;KEY_NAME&#160;varchar(100)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VALUE&#160;varchar(200)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;)<br />&#160;&#160;&#160;&#160;LANGUAGE&#160;JAVA<br />&#160;&#160;&#160;&#160;PARAMETER&#160;STYLE&#160;SPLICE_JDBC_RESULT_SET<br />&#160;&#160;&#160;&#160;READS&#160;SQL&#160;DATA<br />&#160;&#160;&#160;&#160;EXTERNAL&#160;NAME&#160;'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';</pre>
-            </div>
-            <h2 id="Splice">Splice Machine Built-in Virtual Table Interfaces</h2>
-            <p>Splice Machine provides two built-in VTI&#160;classes that you can use:</p>
-            <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="using-the-splice-machine-virtual-table-interface-vti">Using the Splice Machine Virtual Table Interface (VTI)</h1>
+
+    <p>The Virtual Table Interface (VTI) allows you to use an SQL interface
+with data that is external to your database. This topic introduces the
+Splice Machine VTI in these sections:</p>
+
+    <ul>
+      <li><a href="#About">About VTI</a> describes the virtual table interface.</li>
+      <li><a href="#Splice">Splice Machine Built-in Virtual Table Interfaces</a> describes
+the virtual table interfaces built into Splice Machine, and provides
+examples of using each.</li>
+      <li><a href="#Creating">Creating a Custom Virtual Table Interface</a> walks you
+through the steps required to create a custom virtual table interface,
+and demonstrates how to simplify its use with a table function.</li>
+      <li><a href="#VirtualFile">The Splice Machine Built-in VTI Classes</a> provides
+reference descriptions of the virtual table interface classes built
+into by Splice Machine.</li>
+    </ul>
+
+    <h2 id="About">About VTI</h2>
+
+    <p>You can use the Splice Machine Virtual Table Interface (<em>VTI</em>) to access
+data in external files, libraries, and databases.</p>
+
+    <p class="noteNote">A virtual table is a view of data stored elsewhere; the data itself is
+not duplicated in your Splice Machine database.</p>
+
+    <p>The external data source can be any information source, including:</p>
+
+    <ul>
+      <li>XML formatted reports and logs.</li>
+      <li>Queries that run in external databases that support JDBC, such as
+Oracle and DB2.</li>
+      <li>RSS feeds.</li>
+      <li>Flat files in formats such as comma-separated value (csv) format.</li>
+    </ul>
+
+    <h3 id="about-table-functions">About Table Functions</h3>
+
+    <p>A <em>table function</em> returns <code>ResultSet</code> values that you can query like
+you do tables that live in your Splice Machine database. A table
+function is bound to a constructor for a custom VTI class. Here’s an
+example of a declaration for a table function that is bound to the
+<code>PropertiesFileVTI</code> class, which we walk you through implementing later
+in this topic:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))
+    RETURNS TABLE
+       (
+         KEY_NAME varchar(100)
+         VALUE varchar(200)
+       )
+    LANGUAGE JAVA
+    PARAMETER STYLE SPLICE_JDBC_RESULT_SET
+    READS SQL DATA
+    EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
+</code></pre>
+
+    </div>
+    <h2 id="Splice">Splice Machine Built-in Virtual Table Interfaces</h2>
+
+    <p>Splice Machine provides two built-in VTI classes that you can use:</p>
+
+    <table>
                 <col />
                 <col />
                 <col />
@@ -628,31 +666,42 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">SpliceFileVTI</td>
-                        <td>For querying delimited flat files, such as CSV&#160;files.</td>
-                        <td class="CodeFont">com.splicemachine.derby.vti.SpliceFileVTI</td>
+                        <td><code>SpliceFileVTI</code></td>
+                        <td>For querying delimited flat files, such as CSV files.</td>
+                        <td><code>com.splicemachine.derby.vti.SpliceFileVTI</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SpliceJDBCVTI</td>
+                        <td><code>SpliceJDBCVTI</code></td>
                         <td>For querying data from external sources that support the JDBC API.</td>
-                        <td class="CodeFont">com.splicemachine.derby.vti.SpliceJDBCVTI</td>
+                        <td><code>com.splicemachine.derby.vti.SpliceJDBCVTI</code></td>
                     </tr>
                 </tbody>
             </table>
-            <p>Each of these classes implements the <span class="CodeFont">DatasetProvider</span> interface, which is used by Spark for creating execution trees, and the <span class="CodeFont">VTICosting</span> interface, which is used by the Splice&#160;Machine optimizer.</p>
-            <h4>SpliceFileVTI&#160;Example</h4>
-            <p>For example, if we have  an input file named <span class="CodeFont">vtiInfile.csv</span> that contains this information:</p>
-            <div class="preWrapperWide"><pre class="Example">sculligan,Relief Pitcher,27,08-27-2015,2015-08-27 08:08:08,06:08:08
+    <p>Each of these classes implements the <code>DatasetProvider</code> interface, which
+is used by Spark for creating execution trees, and the <code>VTICosting</code>
+interface, which is used by the Splice Machine optimizer.</p>
+
+    <h4 id="splicefilevtiexample">SpliceFileVTI Example</h4>
+
+    <p>For example, if we have an input file named <code>vtiInfile.csv</code> that
+contains this information:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>sculligan,Relief Pitcher,27,08-27-2015,2015-08-27 08:08:08,06:08:08
 jpeepers,Catcher,37,08-26-2015,2015-08-21 08:09:08,08:08:08
 mbamburger,Manager,47,08-25-2015,2015-08-20 08:10:08,10:08:08
 gbrown,Batting Coach,46,08-24-2015,2015-08-21 08:11:08,11:08:08
 jardson,Left Fielder,34,08-23-2015,2015-08-22 08:12:08,11:08:08
-</pre>
-            </div>
-            <p>We can use the <span class="CodeFont">SpliceFileVTI</span> class to select and display the contents of our input file:</p>
-            <div class="preWrapperWide"><pre class="Example">SELECT * FROM new com.splicemachine.derby.vti.SpliceFileVTI(
+</code></pre>
+
+    </div>
+    <p>We can use the <code>SpliceFileVTI</code> class to select and display the contents
+of our input file:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT * FROM new com.splicemachine.derby.vti.SpliceFileVTI(
   '/&lt;path&gt;/data/vtiInfile.csv','',',') AS b
-   (name VARCHAR(10), title VARCHAR(30), age INT, something VARCHAR(12), date_hired TIMESTAMP, clock TIME);<br /><br />NAME        |TITLE             |AGE   |SOMETHING   |DATE_HIRED             |CLOCK
+   (name VARCHAR(10), title VARCHAR(30), age INT, something VARCHAR(12), date_hired TIMESTAMP, clock TIME);NAME        |TITLE             |AGE   |SOMETHING   |DATE_HIRED             |CLOCK
 ---------------------------------------------------------------------------------------
 sculligan   |Relief Pitcher    |27    |08X-27-2015 |2015-08-27 08:08:08.0  |06:08:08
 jpeepers    |Catcher           |37    |08-26-2015  |2015-08-21 08:09:08.0  |08:08:08
@@ -661,13 +710,19 @@ gbrown      |Batting Coach     |46    |08-24-2015  |2015-08-21 08:11:08.0  |11:0
 jardson     |Left Fielder      |34    |08-23X-2015 |2015-08-22 08:12:08.0  |11:08:08
 
 5 rows selected
-</pre>
-            </div>
-            <h4>SpliceJDBCVTI&#160;Example</h4>
-            <p>We can use the <span class="CodeFont">SpliceJDBCVTI</span> class to select and display the contents a table in a JDBC-compliant database. For example, here we query a table stored in a MySQL&#160;database:</p>
-            <div class="preWrapperWide"><pre class="Example">SELECT * FROM new com.splicemachine.derby.vti.SpliceJDBCVTI(
+</code></pre>
+
+    </div>
+    <h4 id="splicejdbcvtiexample">SpliceJDBCVTI Example</h4>
+
+    <p>We can use the <code>SpliceJDBCVTI</code> class to select and display the contents
+a table in a JDBC-compliant database. For example, here we query a table
+stored in a MySQL database:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT * FROM new com.splicemachine.derby.vti.SpliceJDBCVTI(
   'jdbc:mysql://localhost/hr?user=root&amp;password=mysql-passwd','mySchema','myTable') AS b
-   (name VARCHAR(10), title VARCHAR(30), age INT, something VARCHAR(12), date_hired TIMESTAMP, clock TIME);<br /><br />NAME        |TITLE             |AGE   |SOMETHING   |DATE_HIRED             |CLOCK
+   (name VARCHAR(10), title VARCHAR(30), age INT, something VARCHAR(12), date_hired TIMESTAMP, clock TIME);NAME        |TITLE             |AGE   |SOMETHING   |DATE_HIRED             |CLOCK
 ---------------------------------------------------------------------------------------
 sculligan   |Relief Pitcher    |27    |08X-27-2015 |2015-08-27 08:08:08.0  |06:08:08
 jpeepers    |Catcher           |37    |08-26-2015  |2015-08-21 08:09:08.0  |08:08:08
@@ -676,32 +731,47 @@ gbrown      |Batting Coach     |46    |08-24-2015  |2015-08-21 08:11:08.0  |11:0
 jardson     |Left Fielder      |34    |08-23X-2015 |2015-08-22 08:12:08.0  |11:08:08
 
 5 rows selected
-</pre>
-            </div>
-            <h2 id="Creating">Creating a Custom Virtual Table Interface</h2>
-            <p>You can create a custom virtual table interface by creating a class that implements the <span class="CodeFont">DatasetProvider</span> and <span class="CodeFont">VTICosting</span> interfaces, which are described below.</p>
-            <p>You can then use your custom VTI within SQL&#160;queries by using VTI&#160;syntax, as shown in the examples in the previous section. You can also create a table function for your custom VTI, and then call that function in your queries, which simplifies using your interface.</p>
-            <p>This section walks you through creating a custom virtual table interface that reads and displays the property keys and values in a properties file. This interface can be executed using a table
- function or by specifying its full method name in SQL&#160;statements. </p>
-            <div class="noteIcon">The full code for this example is in the Splice <a href="https://github.com/splicemachine/splice-community-sample-code"  target="_blank">Community Sample Code Repository on Github.</a></div>
-            <p>The remainder of this section is divided into these subsections:</p>
-            <ul>
-                <li><a href="#Declare">Declare Your Class</a>
-                </li>
-                <li><a href="#Implemen">Implement the Constructors</a>
-                </li>
-                <li><a href="#Implemen2">Implement Your Method to Generate Results</a>
-                </li>
-                <li><a href="#Implemen3">Implement Costing Methods</a>
-                </li>
-                <li><a href="#Implemen4">Implement Other DatasetProvider Methods</a>
-                </li>
-                <li><a href="#Use">Use Your Custom Virtual Table Interface</a>
-                </li>
-            </ul>
-            <h3 id="Declare">Declare Your Class</h3>
-            <p class="body">The first thing you need to do is to declare your public class; since we're creating an interface to read property files, we'll call our class <span class="CodeFont">PropertiesFileVTI</span>. To create a custom VTI&#160;interface, you need to implement the following classes:</p>
-            <table>
+</code></pre>
+
+    </div>
+    <h2 id="Creating">Creating a Custom Virtual Table Interface</h2>
+
+    <p>You can create a custom virtual table interface by creating a class that
+implements the <code>DatasetProvider</code> and <code>VTICosting</code> interfaces, which are
+described below.</p>
+
+    <p>You can then use your custom VTI within SQL queries by using VTI syntax,
+as shown in the examples in the previous section. You can also create a
+table function for your custom VTI, and then call that function in your
+queries, which simplifies using your interface.</p>
+
+    <p>This section walks you through creating a custom virtual table interface
+that reads and displays the property keys and values in a properties
+file. This interface can be executed using a table function or by
+specifying its full method name in SQL statements.</p>
+
+    <p class="noteIcon">The full code for this example is in the Splice <a href="https://github.com/splicemachine/splice-community-sample-code" target="_blank">Community Sample Code
+Repository on Github.</a></p>
+
+    <p>The remainder of this section is divided into these subsections:</p>
+
+    <ul>
+      <li><a href="#Declare">Declare Your Class</a></li>
+      <li><a href="#Implemen">Implement the Constructors</a></li>
+      <li><a href="#Implemen2">Implement Your Method to Generate Results</a></li>
+      <li><a href="#Implemen3">Implement Costing Methods</a></li>
+      <li><a href="#Implemen4">Implement Other DatasetProvider Methods</a></li>
+      <li><a href="#Use">Use Your Custom Virtual Table Interface</a></li>
+    </ul>
+
+    <h3 id="Declare">Declare Your Class</h3>
+
+    <p class="body">The first thing you need to do is to declare your public class; since
+we’re creating an interface to read property files, we’ll call our class
+<code>PropertiesFileVTI</code>. To create a custom VTI interface, you need to
+implement the following classes:</p>
+
+    <table>
                 <col />
                 <col />
                 <thead>
@@ -712,18 +782,20 @@ jardson     |Left Fielder      |34    |08-23X-2015 |2015-08-22 08:12:08.0  |11:0
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">DatasetProvider</td>
+                        <td><code>DatasetProvider</code></td>
                         <td>Used by Spark to construct execution trees.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">VTICosting</td>
+                        <td><code>VTICosting</code></td>
                         <td>Used by the Splice Machine optimizer to estimate the cost of operations.</td>
                     </tr>
                 </tbody>
             </table>
-            <p class="body">Here's the declaration:</p>
-            <div class="preWrapperWide"><pre class="Example">
-public class PropertiesFileVTI implements DatasetProvider, VTICosting {
+    <p class="body">Here’s the declaration:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>public class PropertiesFileVTI implements DatasetProvider, VTICosting {
 
     //Used for logging (and optional)
     private static final Logger LOG = Logger.getLogger(PropertiesFileVTI.class);
@@ -733,53 +805,86 @@ public class PropertiesFileVTI implements DatasetProvider, VTICosting {
 
     //Provide external context which can be carried with the operation
     protected OperationContext operationContext;
-</pre>
-            </div>
-            <h3 id="Implemen">Implement the Constructors</h3>
-            <p class="body">This section describes the constructors that we implement for our custom class:</p>
-            <ul>
-                <li>
-                    <p>You need to implement an empty constructor if you want to use your class in table functions:</p>
-                    <div class="preWrapperWide"><pre class="Example">public PropertiesFileVTI()<![CDATA[
-]]></pre>
-                    </div>
-                </li>
-                <li>
-                    <p>This is the signature used by invoking the VTI using the class name in SQL&#160;queries:</p>
-                    <div class="preWrapperWide"><pre class="Example">public PropertiesFileVTI(String pfileName)<![CDATA[
-]]></pre>
-                    </div>
-                </li>
-                <li>
-                    <p>This static constructor is called by the VTI - Table Function.</p>
-                    <div class="preWrapperWide"><pre class="Example">public static DatasetProvider getPropertiesFileVTI(String fileName)<![CDATA[
-]]></pre>
-                    </div>
-                </li>
-            </ul>
-            <p class="body">Here's our implementation of the constructors for the <span class="CodeFont">PropertiesFileVTI</span>&#160;class:</p>
-            <div class="preWrapperWide"><pre class="Example">
-public PropertiesFileVTI() {<br />}
-<br />public PropertiesFileVTI(String pfileName) {
+</code></pre>
+
+    </div>
+    <h3 id="Implemen">Implement the Constructors</h3>
+
+    <p class="body">This section describes the constructors that we implement for our custom
+class:</p>
+
+    <ul>
+      <li>
+        <p>You need to implement an empty constructor if you want to use your
+class in table functions:</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>public PropertiesFileVTI()
+</code></pre>
+
+        </div>
+      </li>
+      <li>
+        <p>This is the signature used by invoking the VTI using the class name in
+SQL queries:</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>public PropertiesFileVTI(String pfileName)
+</code></pre>
+
+        </div>
+      </li>
+      <li>
+        <p>This static constructor is called by the VTI - Table Function.</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>public static DatasetProvider getPropertiesFileVTI(String fileName)
+</code></pre>
+
+        </div>
+      </li>
+    </ul>
+
+    <p class="body">Here’s our implementation of the constructors for the
+<code>PropertiesFileVTI</code> class:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>public PropertiesFileVTI() {}
+public PropertiesFileVTI(String pfileName) {
     this.fileName = pfileName;
 }
 
 public static DatasetProvider getPropertiesFileVTI(String fileName) {
     return new PropertiesFileVTI(fileName);
 }
-</pre>
-            </div>
-            <h3 id="Implemen2">Implement Your Method to Generate Results</h3>
-            <p class="body">The heart of your virtual table interface is the <span class="CodeFont">DatasetProvider</span> method <span class="CodeFont">getDataSet</span>, which you override to generate and return a <span class="CodeFont">DataSet</span>. It's declaration looks like this:</p>
-            <div class="preWrapperWide"><pre class="Example">DataSet&lt;LocatedRow&gt; getDataSet(<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SpliceOperation op, &#160;&#160;&#160;&#160;&#160;&#160;// References the op at the top of the stack<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;DataSetProcessor dsp,&#160;&#160;&#160;&#160;&#160;// Mechanism for constructing the execution tree<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ExecRow execRow ) throws StandardException;
-</pre>
-            </div>
-            <p class="body">The <span class="CodeFont">VTIOperation</span> process calls this method to compute the <span class="CodeFont">ResultSet</span> that it should return. Our <span class="CodeFont">PropertiesFileVTI</span>&#160;implementation is shown here:</p>
-            <div class="preWrapperWide"><pre class="Example">@Override
+</code></pre>
+
+    </div>
+    <h3 id="Implemen2">Implement Your Method to Generate Results</h3>
+
+    <p class="body">The heart of your virtual table interface is the <code>DatasetProvider</code>
+method <code>getDataSet</code>, which you override to generate and return a
+<code>DataSet</code>. It’s declaration looks like this:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>DataSet&lt;LocatedRow&gt; getDataSet(
+        SpliceOperation op,       // References the op at the top of the stack
+        DataSetProcessor dsp,     // Mechanism for constructing the execution tree
+        ExecRow execRow ) throws StandardException;
+</code></pre>
+
+    </div>
+    <p class="body">The <code>VTIOperation</code> process calls this method to compute the <code>ResultSet</code>
+that it should return. Our <code>PropertiesFileVTI</code> implementation is shown
+here:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>@Override
 public DataSet&lt;LocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor dsp, ExecRow execRow) throws StandardException {
     operationContext = dsp.createOperationContext(op);
 
-    &#160;&#160;&#160;&#160;//Create an arraylist to store the key-value pairs
+        //Create an arraylist to store the key-value pairs
     ArrayList&lt;LocatedRow&gt; items = new ArrayList&lt;LocatedRow&gt;();
 
     try {
@@ -805,34 +910,65 @@ public DataSet&lt;LocatedRow&gt; getDataSet(SpliceOperation op, DataSetProcessor
     }
     return new ControlDataSet&lt;&gt;(items);
 }
-</pre>
-            </div>
-            <h3 id="Implemen3">Implement Costing Methods</h3>
-            <p class="body">The Splice Machine optimizer uses costing estimates to determine the optimal execution plan for each query. You need to implement several costing methods in your VTI&#160;class:</p>
-            <ul>
-                <li>
-                    <p><span class="CodeFont">getEstimatedCostPerInstantiation</span> returns the estimated cost to instantiate and iterate through your table function. Unless you have an accurate means of estimating this cost, simply return <span class="CodeFont">0</span> in your implementation.</p>
-                    <div class="preWrapperWide"><pre class="Example">public double getEstimatedCostPerInstantiation( VTIEnvironment vtiEnv) throws SQLException;
-</pre>
-                    </div>
-                </li>
-                <li>
-                    <p><span class="CodeFont">getEstimatedRowCount</span> returns the estimated row count for a single scan of your table function. Unless you have an accurate means of estimating this cost, simply return <span class="CodeFont">0</span> in your implementation.</p>
-                    <div class="preWrapperWide"><pre class="Example">public double getEstimatedCostPerInstantiation( VTIEnvironment vtiEnv) throws SQLException;
-</pre>
-                    </div>
-                </li>
-                <li>
-                    <p><span class="CodeFont">supportsMultipleInstantiations</span> returns a Boolean value indicating whether your table function's <span class="CodeFont">ResultSet</span> can be instantiated multiple times in a single query. For our <span class="CodeFont">PropertiesFileVTI</span> implementation of this method, we simply return <span class="CodeFont">False</span>, since there's no reason for our function to be used that way.</p>
-                    <div class="preWrapperWide"><pre class="Example">public double supportsMultipleInstantiations( VTIEnvironment vtiEnv) throws SQLException;
-</pre>
-                    </div>
-                </li>
-            </ul>
-            <div class="noteNote">The VTICosting methods each take a <span class="CodeFont">VTIEnvironment</span> argument; this is a state variable created by the Splice Machine optimizer, which methods can use to pass information to each other or to learn other details about the operating environment..</div>
-            <p class="body"> Here is the implementation of costing methods for our <span class="CodeFont">PropertiesFileVTI</span>&#160;class:</p>
-            <div class="preWrapperWide"><pre class="Example">
-@Override
+</code></pre>
+
+    </div>
+    <h3 id="Implemen3">Implement Costing Methods</h3>
+
+    <p class="body">The Splice Machine optimizer uses costing estimates to determine the
+optimal execution plan for each query. You need to implement several
+costing methods in your VTI class:</p>
+
+    <ul>
+      <li>
+        <p><code>getEstimatedCostPerInstantiation</code> returns the estimated cost to
+instantiate and iterate through your table function. Unless you have
+an accurate means of estimating this cost, simply return <code>0</code> in your
+implementation.</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>public double getEstimatedCostPerInstantiation( VTIEnvironment vtiEnv) throws SQLException;
+</code></pre>
+
+        </div>
+      </li>
+      <li>
+        <p><code>getEstimatedRowCount</code> returns the estimated row count for a single
+scan of your table function. Unless you have an accurate means of
+estimating this cost, simply return <code>0</code> in your implementation.</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>public double getEstimatedCostPerInstantiation( VTIEnvironment vtiEnv) throws SQLException;
+</code></pre>
+
+        </div>
+      </li>
+      <li>
+        <p><code>supportsMultipleInstantiations</code> returns a Boolean value indicating
+whether your table function’s <code>ResultSet</code> can be instantiated multiple
+times in a single query. For our <code>PropertiesFileVTI</code> implementation of
+this method, we simply return <code>False</code>, since there’s no reason for our
+function to be used that way.</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>public double supportsMultipleInstantiations( VTIEnvironment vtiEnv) throws SQLException;
+</code></pre>
+
+        </div>
+      </li>
+    </ul>
+
+    <p class="noteNote">The VTICosting methods each take a <code>VTIEnvironment</code> argument; this is a
+state variable created by the Splice Machine optimizer, which methods
+can use to pass information to each other or to learn other details
+about the operating environment..</p>
+
+    <p class="body">Here is the implementation of costing methods for our
+<code>PropertiesFileVTI</code> class:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>@Override
 public double getEstimatedCostPerInstantiation(VTIEnvironment arg0) throws SQLException {
     return 0;
 }
@@ -840,34 +976,54 @@ public double getEstimatedCostPerInstantiation(VTIEnvironment arg0) throws SQLEx
 @Override
 public double getEstimatedRowCount(VTIEnvironment arg0) throws SQLException {
     return 0;
-}<br /><![CDATA[
-]]>
+}
 @Override
 public boolean supportsMultipleInstantiations(VTIEnvironment arg0) throws SQLException {
     return false;
 }
-</pre>
-            </div>
-            <h3 id="Implemen4">Implement Other DatasetProvider Methods</h3>
-            <p class="body">You also need to implement two additional <span class="CodeFont">DatasetProvider</span> methods:</p>
-            <ul>
-                <li>
-                    <p><span class="CodeFont">getOperationContext</span> simply returns the current operation context (this.<span class="CodeFont">operationContext</span>).</p>
-                    <div class="preWrapperWide"><pre class="Example">OperationContext getOperationContext();</pre>
-                    </div>
-                </li>
-                <li>
-                    <p><span class="CodeFont">getMetaData</span> returns metadata that is used to dynamically bind your table function; this metadata includes a column descriptor for each column in your virtual table, including the name of the column, its type, and its size. In our <span class="CodeFont">PropertiesFileVTI</span>, we assign the descriptors to a static variable, and our implementation of this method simply returns that value.</p>
-                    <div class="preWrapperWide"><pre class="Example">ResultSetMetaData getMetaData() throws SQLException;</pre>
-                    </div>
-                </li>
-            </ul>
-            <p class="body"> Here is the implementation of these methods for our <span class="CodeFont">PropertiesFileVTI</span>&#160;class:</p>
-            <div class="preWrapperWide"><pre class="Example">
-@Override
+</code></pre>
+
+    </div>
+    <h3 id="Implemen4">Implement Other DatasetProvider Methods</h3>
+
+    <p class="body">You also need to implement two additional <code>DatasetProvider</code> methods:</p>
+
+    <ul>
+      <li>
+        <p><code>getOperationContext</code> simply returns the current operation context
+(this.<code>operationContext</code>).</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>OperationContext getOperationContext();
+</code></pre>
+
+        </div>
+      </li>
+      <li>
+        <p><code>getMetaData</code> returns metadata that is used to dynamically bind your
+table function; this metadata includes a column descriptor for each
+column in your virtual table, including the name of the column, its
+type, and its size. In our <code>PropertiesFileVTI</code>, we assign the
+descriptors to a static variable, and our implementation of this
+method simply returns that value.</p>
+
+        <div class="preWrapperWide">
+          <pre class="Example"><code>ResultSetMetaData getMetaData() throws SQLException;
+</code></pre>
+
+        </div>
+      </li>
+    </ul>
+
+    <p class="body">Here is the implementation of these methods for our
+<code>PropertiesFileVTI</code> class:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>@Override
 public OperationContext getOperationContext() {
     return this.operationContext;
-}<br /><br />@Override
+}@Override
 public ResultSetMetaData getMetaData() throws SQLException {
     return metadata;
 }
@@ -878,78 +1034,170 @@ private static final ResultColumnDescriptor[] columnInfo = {
 };
 
 private static final ResultSetMetaData metadata = new EmbedResultSetMetaData(columnInfo);
-}</pre>
-            </div>
-            <h3 id="Use">Use Your Custom Virtual Table Interface</h3>
-            <p class="body">You can create a table function in your Splice Machine database to simplify use of your custom VTI. Here's a table declaration for our custom interface:</p>
-            <div class="preWrapperWide"><pre class="Example">CREATE&#160;FUNCTION&#160;propertiesFile(propertyFilename VARCHAR(200))<br />&#160;&#160;&#160;&#160;RETURNS&#160;TABLE<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;(<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;KEY_NAME&#160;varchar(100)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VALUE&#160;varchar(200)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;)<br />&#160;&#160;&#160;&#160;LANGUAGE&#160;JAVA<br />&#160;&#160;&#160;&#160;PARAMETER&#160;STYLE&#160;SPLICE_JDBC_RESULT_SET<br />&#160;&#160;&#160;&#160;READS&#160;SQL&#160;DATA<br />&#160;&#160;&#160;&#160;EXTERNAL&#160;NAME&#160;'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';</pre>
-            </div>
-            <p class="body">You can now use your interface with table function syntax; for example:</p>
-            <div class="preWrapperWide"><pre class="Example">select * from table (propertiesFile('sample.properties')) b;
-</pre>
-            </div>
-            <p class="body">You can also use your interface by using VTI&#160;syntax in an SQL&#160;query; for example:</p>
-            <div class="preWrapperWide"><pre class="Example">select * from new com.splicemachine.tutorials.vti.PropertiesFileVTI('sample.properties') <br />&#160;&#160;&#160;as b (KEY_NAME VARCHAR(20), VALUE VARCHAR(100));
-</pre>
-            </div>
-            <h2 id="VirtualFile">The Splice Machine Built-in VTI&#160;Classes</h2>
-            <p>This section describes the built-in VTI&#160;classes:</p>
-            <ul>
-                <li><a href="#The">The <span class="CodeFont">SpliceFileVTI</span>&#160;class </a>
-                </li>
-                <li><a href="#Using">The <span class="CodeFont">SpliceJDBCVTI</span>&#160;class </a>
-                </li>
-            </ul>
-            <h3 id="The">The SpliceFileVTI&#160;Class</h3>
-            <p>You can use the <span class="CodeFont">SpliceFileVTI</span>&#160;class to apply SQL&#160;queries to a file, such as a csv file, as shown in the examples below.</p>
-            <h4>Constructors</h4>
-            <p>You can use the following constructor methods with the <span class="CodeFont">SpliceFileVTI</span>&#160;class. Each creates a virtual table from a file:</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">public SpliceFileVTI(String fileName)</pre>
-            </div>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
-public SpliceFileVTI(String fileName,<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String characterDelimiter,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String columnDelimiter)</pre>
-            </div>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
-public SpliceFileVTI(String fileName,<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String characterDelimiter,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String columnDelimiter,<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;boolean oneLineRecords)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">fileName</p>
-                <p class="paramDefnFirst">The name of the file that you are reading.</p>
-                <p class="paramName">characterDelimiter</p>
-                <p class="paramDefnFirst">Specifies which character is used to delimit strings in the imported data. You can specify <span class="CodeFont">null</span> or the empty string (<span class="CodeFont">''</span>) to use the default string delimiter, which is the double-quote (<span class="CodeFont">"</span>). If your input contains control characters such as newline characters, make sure that those characters are embedded within delimited strings.</p>
-                <p class="paramName">columnDelimiter</p>
-                <p class="paramDefnFirst">The character used to separate columns, Specify <span class="CodeFont">null</span> if using the comma (<span class="CodeFont">,</span>)&#160;character as your delimiter. Note that the backslash (<span class="CodeFont">\</span>)&#160;character is not allowed as the column delimiter.</p>
-                <p class="paramName">oneLineRecords </p>
-                <p class="paramDefnFirst">A&#160;Boolean value that specifies whether each line in the import file contains one complete record; if you specify false, records can span multiple lines in the input file.</p>
-            </div>
-            <h3 id="Using">The SpliceJDBCVTI&#160;Class </h3>
-            <p>You can use the <span class="CodeFont">SpliceJDBCVTI</span>&#160;class to access external databases that provide JDBC&#160;connections.</p>
-            <h4>Constructors</h4>
-            <p>You can use the following constructor methods with the <span class="CodeFont">SpliceJDBCVTI</span>&#160;class. </p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
-public SpliceJDBCVTI(String connectionUrl,<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String schemaName,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String tableName)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">connectionURL</p>
-                <p class="paramDefnFirst">The URL&#160;of the database connection you are using.</p>
-                <p class="paramName">schemaName</p>
-                <p class="paramDefnFirst">The name of the database schema.</p>
-                <p class="paramName">tableName</p>
-                <p class="paramDefnFirst">The name of the table in the database schema.</p>
-            </div>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">
-public SpliceJDBCVTI(String connectionUrl,<br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;String sql)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">connectionURL</p>
-                <p class="paramDefnFirst">The URL&#160;of the database connection you are using.</p>
-                <p class="paramName">sql</p>
-                <p class="paramDefnFirst">The SQL&#160;string to execute in that database.</p>
-            </div>
-            <h2>See Also</h2>
-            <p class="body">We recommend visiting the <a href="http://db.apache.org/derby/docs/10.9/publishedapi/jdbc3/org/apache/derby/vti/package-summary.html"  target="_blank">Derby VTI&#160;documentation</a>, which provides full reference documentation for the VTI&#160;class hierarchy.</p>
-        </div>
-	</section>
+}
+</code></pre>
+
+    </div>
+    <h3 id="Use">Use Your Custom Virtual Table Interface</h3>
+
+    <p class="body">You can create a table function in your Splice Machine database to
+simplify use of your custom VTI. Here’s a table declaration for our
+custom interface:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE FUNCTION propertiesFile(propertyFilename VARCHAR(200))
+    RETURNS TABLE
+       (
+         KEY_NAME varchar(100)
+         VALUE varchar(200)
+       )
+    LANGUAGE JAVA
+    PARAMETER STYLE SPLICE_JDBC_RESULT_SET
+    READS SQL DATA
+    EXTERNAL NAME 'com.splicemachine.tutorials.vti.PropertiesFIleVTI.getPropertiesFileVTI';
+</code></pre>
+
+    </div>
+    <p class="body">You can now use your interface with table function syntax; for example:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>select * from table (propertiesFile('sample.properties')) b;
+</code></pre>
+
+    </div>
+    <p class="body">You can also use your interface by using VTI syntax in an SQL query; for
+example:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>select * from new com.splicemachine.tutorials.vti.PropertiesFileVTI('sample.properties')
+    as b (KEY_NAME VARCHAR(20), VALUE VARCHAR(100));
+</code></pre>
+
+    </div>
+    <h2 id="VirtualFile">The Splice Machine Built-in VTI Classes</h2>
+
+    <p>This section describes the built-in VTI classes:</p>
+
+    <ul>
+      <li><a href="#The">The <code>SpliceFileVTI</code> class </a></li>
+      <li><a href="#Using">The <code>SpliceJDBCVTI</code> class </a></li>
+    </ul>
+
+    <h3 id="The">The SpliceFileVTI Class</h3>
+
+    <p>You can use the <code>SpliceFileVTI</code> class to apply SQL queries to a file,
+such as a csv file, as shown in the examples below.</p>
+
+    <h4 id="constructors">Constructors</h4>
+
+    <p>You can use the following constructor methods with the
+<code>SpliceFileVTI</code> class. Each creates a virtual table from a file:</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>public SpliceFileVTI(String fileName)
+</code></pre>
+
+    </div>
+    <div class="fcnWrapperWide">
+
+      <pre class="FcnSyntax"><code>public SpliceFileVTI(String fileName,
+                     String characterDelimiter,
+                     String columnDelimiter)
+</code></pre>
+
+    </div>
+    <div class="fcnWrapperWide">
+
+      <pre class="FcnSyntax"><code>public SpliceFileVTI(String fileName,
+                     String characterDelimiter,
+                     String columnDelimiter,
+                     boolean oneLineRecords)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">fileName</p>
+
+      <p class="paramDefnFirst">The name of the file that you are reading.</p>
+
+      <p class="paramName">characterDelimiter</p>
+
+      <p class="paramDefnFirst">Specifies which character is used to delimit strings in the imported
+data. You can specify <code>null</code> or the empty string (<code>''</code>) to use the
+default string delimiter, which is the double-quote (<code>"</code>). If your input
+contains control characters such as newline characters, make sure that
+those characters are embedded within delimited strings.</p>
+
+      <p class="paramName">columnDelimiter</p>
+
+      <p class="paramDefnFirst">The character used to separate columns, Specify <code>null</code> if using the
+comma (<code>,</code>) character as your delimiter. Note that the backslash
+(<code>\</code>) character is not allowed as the column delimiter.</p>
+
+      <p class="paramName">oneLineRecords</p>
+
+      <p class="paramDefnFirst">A Boolean value that specifies whether each line in the import file
+contains one complete record; if you specify false, records can span
+multiple lines in the input file.</p>
+
+    </div>
+    <h3 id="Using">The SpliceJDBCVTI Class</h3>
+
+    <p>You can use the <code>SpliceJDBCVTI</code> class to access external databases that
+provide JDBC connections.</p>
+
+    <h4 id="constructors-1">Constructors</h4>
+
+    <p>You can use the following constructor methods with the
+<code>SpliceJDBCVTI</code> class.</p>
+
+    <div class="fcnWrapperWide">
+
+      <pre class="FcnSyntax"><code>public SpliceJDBCVTI(String connectionUrl,
+                     String schemaName,
+                     String tableName)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">connectionURL</p>
+
+      <p class="paramDefnFirst">The URL of the database connection you are using.</p>
+
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">The name of the database schema.</p>
+
+      <p class="paramName">tableName</p>
+
+      <p class="paramDefnFirst">The name of the table in the database schema.</p>
+
+    </div>
+    <div class="fcnWrapperWide">
+
+      <pre class="FcnSyntax"><code>public SpliceJDBCVTI(String connectionUrl,
+                     String sql)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">connectionURL</p>
+
+      <p class="paramDefnFirst">The URL of the database connection you are using.</p>
+
+      <p class="paramName">sql</p>
+
+      <p class="paramDefnFirst">The SQL string to execute in that database.</p>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <p class="body">We recommend visiting the <a href="http://db.apache.org/derby/docs/10.9/publishedapi/jdbc3/org/apache/derby/vti/package-summary.html" target="_blank">Derby VTI documentation</a>, which provides full reference documentation for the
+VTI class hierarchy.</p>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -966,7 +1214,11 @@ public SpliceJDBCVTI(String connectionUrl,<br /> &#160;&#160;&#160;&#160;&#160;&
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

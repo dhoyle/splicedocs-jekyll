@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</h1>
@@ -2860,6 +2861,117 @@ Statement executed.</pre>
             </ul>
         </div>
 	</section>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsscheduledailybackup">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</h1>
+
+    <p>You can use the <code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</code> to schedule a
+full or incremental backup job that runs at a specified time each day.</p>
+
+    <p class="noteNote">You specify the scheduled start hour of the backup in Greenwich Mean
+Time (GMT).</p>
+
+    <p>Note that you can subsequently cancel a scheduled backup job with the <a href="onprem_admin_backingup.html">Backing Up and Restoring</a> topic.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_DATABASE(
+               VARCHAR backupDir,
+               VARCHAR(30) backupType,
+               INT startHour
+               );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">backupDir</p>
+
+      <p class="paramDefnFirst">Specifies the path to the directory in which you want the backup stored.
+This can be a local directory if you’re using the standalone version of
+Splice Machine, or a directory in your cluster’s file system (HDFS or
+MapR-FS).</p>
+
+      <p class="noteNote">You must have permissions set properly to use cloud storage as a backup
+destination. See <a href="onprem_admin_backingup.html#Backing">Backing Up to Cloud
+Storage</a> in the <em>Administrator’s
+Guide</em> for information about setting backup permissions properties.</p>
+
+      <p class="paramDefn">Relative paths are resolved based on the current user directory. To
+avoid confusion, we strongly recommend that you use an absolute path
+when specifying the backup destination.</p>
+
+      <p class="paramName">backupType</p>
+
+      <p class="paramDefnFirst">Specifies the type of backup that you want performed. This must be one
+of the following values: <code>'full'</code> or <code>'incremental'</code>; any other value
+produces an error and the backup is not run.</p>
+
+      <p class="paramDefn">Note that if you specify <code>'incremental'</code>, Splice Machine checks the    <a href="sqlref_systables_sysbackup.html"><code>SYS.SYSBACKUP</code></a> table to determine if
+there already is a backup for the system; if not, Splice Machine will
+perform a full backup, and subsequent backups will be incremental.</p>
+
+      <p class="paramName">startHour</p>
+
+      <p class="paramDefnFirst">Specifies the hour (<code>0-23</code>) <strong>in GMT</strong> at which you want the backup to
+run each day. A value less than <code>0</code> or greater than <code>23</code> produces an
+error and the backup is not scheduled.</p>
+
+    </div>
+    <h2 id="sql-examples">SQL Examples</h2>
+
+    <div>
+      <p>The following example schedules a daily incremental backup that runs at
+3 am (GMT) and gets stored in the <code>hdfs:///home/backup/</code> directory:</p>
+
+      <div class="preWrapperWide">
+        <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('hdfs:///home/backup', 'incremental', 3);
+Statement executed;
+</code></pre>
+
+      </div>
+      <p>The following example schedules the same backup and stores it on AWS:</p>
+
+      <div class="preWrapperWide">
+        <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('s3://backup1234', 'incremental', 3);
+Statement executed.
+</code></pre>
+
+      </div>
+    </div>
+    <p>And this example schedules a daily backup at 6pm (GMT) on a standalone
+version of Splice Machine:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('./dbBackups', 'full',18);
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="onprem_admin_backingup.html"><em>Backing Up and Restoring Databases</em></a> in
+the <em>Administrator’s Guide</em></li>
+      <li><a href="sqlref_sysprocs_backupdb.html"><code>SYSCS_UTIL.SYSCS_BACKUP_DATABASE</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_canceldailybackup.html"><code>SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_BACKUP</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_deletebackup.html"><code>SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_sysprocs_restoredb.html"><code>SYSCS_UTIL.SYSCS_RESTORE_DATABASE</code></a>
+built-in system procedure</li>
+      <li><a href="sqlref_systables_sysbackup.html"><code>SYSBACKUP</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackupitems.html"><code>SYSBACKUPITEMS</code></a> system table</li>
+      <li><a href="sqlref_systables_sysbackupjobs.html"><code>SYSBACKUPJOBS</code></a> system table</li>
+    </ul>
+
+  </div>
+</section>
+>>>>>>> MDConvert
 
 
     <div class="tags">
@@ -2876,7 +2988,11 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

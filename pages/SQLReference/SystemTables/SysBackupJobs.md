@@ -1,0 +1,74 @@
+---
+title: SYSBACKUPJOBS system table
+summary: System table that stores information about each backup job.
+keywords: backup jobs table
+toc: false
+product: all
+sidebar:  sqlref_sidebar
+permalink: sqlref_systables_sysbackupjobs.html
+folder: SQLReference/SystemTables
+---
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
+# SYSBACKUPJOBS System Table
+
+The `SYSBACKUPJOBS` table maintains information about all backup jobs
+that have been created for the database.
+
+<table>
+                <caption>SYSBACKUPJOBS system table</caption>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Nullable</th>
+                        <th>Contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>JOB_ID</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>NO</code></td>
+                        <td>The ID of this backup job.</td>
+                    </tr>
+                    <tr>
+                        <td><code>FILESYSTEM</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>4000</code></td>
+                        <td><code>NO</code></td>
+                        <td>The backup destination directory.</td>
+                    </tr>
+                    <tr>
+                        <td><code>TYPE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>32</code></td>
+                        <td><code>NO</code></td>
+                        <td>The backup type; possible values are: <code>incremental</code> or <code>full</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>HOUR_OF_DAY</code></td>
+                        <td><code>INTEGER</code></td>
+                        <td><code>10</code></td>
+                        <td><code>NO</code></td>
+                        <td>The regularly scheduled start time (in GMT hours) of the backup job if it is a daily backup.</td>
+                    </tr>
+                    <tr>
+                        <td><code>BEGIN_TIMESTAMP</code></td>
+                        <td><code>TIMESTAMP</code></td>
+                        <td><code>29</code></td>
+                        <td><code>NO</code></td>
+                        <td>When this job was submitted.</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+</section>
+

@@ -2806,47 +2806,96 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInFcns.Min">MIN</h1>
-            <p><span class="CodeFont">MIN</span> evaluates the minimum of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">MIN ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">DISTINCT
-            </p>
-                <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated. </p>
-                <p class="paramName"><span class="ItalicFont">ALL</span>
-                </p>
-                <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.  </p>
-                <p class="paramName">Expression
-            </p>
-                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>.</p>
-                <p class="paramDefn">The expression can contain multiple column references or expressions, but it cannot contain another aggregate or subquery, and it must evaluate to an ANSI&#160;SQL numeric data type. This means that you can call methods that evaluate to ANSI&#160;SQL data types. </p>
-                <p class="paramDefn">If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont">Expression</span> is allowed. For example, the following query is not valid:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">   --- Not a valid query:
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="min">MIN</h1>
+
+    <p><code>MIN</code> evaluates the minimum of an expression over a set of rows. You can
+use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window
+(analytic) function</a>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>MIN ( [ DISTINCT | ALL ] Expression )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">DISTINCT</p>
+
+      <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated.</p>
+
+      <p class="paramName"><em>ALL</em></p>
+
+      <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the
+default value.</p>
+
+      <p class="paramName">Expression</p>
+
+      <p class="paramDefnFirst">An expression that evaluates to a numeric data
+type: <a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
+
+      <p class="paramDefn">The expression can contain multiple column references or expressions,
+but it cannot contain another aggregate or subquery, and it must
+evaluate to an ANSI SQL numeric data type. This means that you can call
+methods that evaluate to ANSI SQL data types.</p>
+
+      <p class="paramDefn">If an expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>Only one <code>DISTINCT</code> aggregate expression per <em>Expression</em> is allowed.
+For example, the following query is not valid:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>   --- Not a valid query:
 SELECT COUNT (DISTINCT flying_time),
               MIN (DISTINCT miles)
- FROM Flights;</pre>
-            </div>
-            <div class="noteNote"> Since duplicate values do not change the computation of the minimum value, the <span class="CodeFont">DISTINCT</span>&#160;and <span class="CodeFont">ALL</span>&#160;qualifiers have no impact on this function.</div>
-            <p>The <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery. It must evaluate to a built-in data type. You can therefore call methods that evaluate to built-in data types. (For example, a method that returns a <span class="ItalicFont">java.lang.Integer</span> or <span class="ItalicFont">int</span> evaluates to an <span class="CodeFont">INTEGER</span>.) If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
-            <h2>Results</h2>
-            <p>The resulting data type is the same as the expression on which it operates; it will never overflow. </p>
-            <p>The comparison rules for the <span class="ItalicFont">Expression's</span> type determine the resulting minimum value. For example, if you supply a <a href="sqlref_datatypes_varchar.html"><span class="CodeFont">VARCHAR</span></a> argument, the number of blank spaces at the end of the value can affect how the minimum value is evaluated:  if the values <span class="CodeFont">'z'</span> and <span class="CodeFont">'z '</span> are both stored in a column, you cannot control which one will be returned as the minimum, because blank spaces are ignored for character comparisons.</p>
-            <h2>Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;SELECT MIN (BirthDate) FROM Players;
+ FROM Flights;
+</code></pre>
+
+    </div>
+    <p class="noteNote">Since duplicate values do not change the computation of the minimum
+value, the <code>DISTINCT</code> and <code>ALL</code> qualifiers have no impact on this
+function.</p>
+
+    <p>The <em>Expression</em> can contain multiple column references or expressions,
+but it cannot contain another aggregate or subquery. It must evaluate to
+a built-in data type. You can therefore call methods that evaluate to
+built-in data types. (For example, a method that returns a
+<em>java.lang.Integer</em> or <em>int</em> evaluates to an <code>INTEGER</code>.) If an
+expression evaluates to <code>NULL</code>, the aggregate skips that value.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>The resulting data type is the same as the expression on which it
+operates; it will never overflow.</p>
+
+    <p>The comparison rules for the <em>Expression’s</em> type determine the resulting
+minimum value. For example, if you supply a
+<a href="sqlref_datatypes_varchar.html"><code>VARCHAR</code></a> argument, the number of blank
+spaces at the end of the value can affect how the minimum value is
+evaluated: if the values <code>'z'</code> and <code>'z '</code> are both stored in a column,
+you cannot control which one will be returned as the minimum, because
+blank spaces are ignored for character comparisons.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT MIN (BirthDate) FROM Players;
 1
 ----------
 1975-07-13
-</pre>
-            </div>
-            <p>This example finds the minimum number of walks and strikeouts by any pitcher in the database:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT MIN(Walks) "Walks", Min(Strikeouts) "Strikeouts"
+</code></pre>
+
+    </div>
+    <p>This example finds the minimum number of walks and strikeouts by any
+pitcher in the database:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT MIN(Walks) "Walks", Min(Strikeouts) "Strikeouts"
    FROM Pitching JOIN Players on Pitching.ID=Players.ID
    WHERE Position='P';
 Walks |Strik&amp;
@@ -2854,11 +2903,17 @@ Walks |Strik&amp;
 1     |1
 
 1 row selected
-</pre>
-            </div>
-            <h2>Analytic Example</h2>
-            <p>The following shows the homeruns hit by all batters who hit more than 10, compared to the least number of Homeruns by a player who hit 10 or more on his team:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, HomeRuns,
+</code></pre>
+
+    </div>
+    <h2 id="analytic-example">Analytic Example</h2>
+
+    <p>The following shows the homeruns hit by all batters who hit more than
+10, compared to the least number of Homeruns by a player who hit 10 or
+more on his team:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT Team, DisplayName, HomeRuns,
    MIN(HomeRuns) OVER (PARTITION BY Team ORDER BY HomeRuns
    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) "Least"
    FROM Players JOIN Batting ON Players.ID=Batting.ID
@@ -2877,22 +2932,26 @@ Giants    |Buddy Painter           |19    |12
 Giants    |Billy Bopper            |18    |12
 Giants    |Mitch Duffer            |12    |12
 
-10 rows selected</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate functions</a>
-                </li>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_count.html"><span class="CodeFont">COUNT</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_max.html"><span class="CodeFont">MAX</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_sum.html"><span class="CodeFont">SUM</span></a> function</li>
-                <li><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
-            </ul>
-        </div>
-	</section>
+10 rows selected
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate
+functions</a></li>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_max.html"><code>MAX</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_sum.html"><code>SUM</code></a> function</li>
+      <li><a href="sqlref_clauses_over.html"><code>OVER</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2909,7 +2968,11 @@ Giants    |Mitch Duffer            |12    |12
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

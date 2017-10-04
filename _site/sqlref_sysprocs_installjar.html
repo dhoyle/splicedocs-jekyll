@@ -2806,69 +2806,112 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInSysProcs.SQLJInstallJar">SQLJ.INSTALL_JAR</h1>
-            <p>The <span class="CodeFont">SQLJ.INSTALL_JAR</span> system procedure stores a jar file in a database. </p>
-            <div class="noteNote">For more information about using JAR&#160;files, see the <a href="developers_fcnsandprocs_intro.html">Using Functions and Stored Procedures</a> section in our <span class="ItalicFont">Developer's Guide</span>.</div>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SQLJ.INSTALL_JAR(IN <span class="ItalicFont">jar_file_path_or-url</span> VARCHAR(32672),
-                 IN <span class="ItalicFont">qualified_jar_name</span> VARCHAR(32672),
-                 IN <span class="ItalicFont">deploy</span> INTEGER)</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">jar_file_path_or-url</p>
-                <p class="paramDefnFirst">The path or URL of the jar file to add. A path includes both the directory
-and the file name (unless the file is in the current directory, in which case
-the directory is optional). For example:
-</p>
-                <div class="preWrapper"><pre class="Example">d:/todays_build/tours.jar</pre>
-                </div>
-                <p class="paramName">qualified_jar_name</p>
-                <p class="paramDefnFirst">Splice Machine name of the
-jar file, qualified by the schema name. Two examples:
-</p>
-                <div class="preWrapper"><pre class="Example">MYSCHEMA.Sample1
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="sqljinstalljar">SQLJ.INSTALL_JAR</h1>
+
+    <p>The <code>SQLJ.INSTALL_JAR</code> system procedure stores a jar file in a database.</p>
+
+    <p class="noteNote">For more information about using JAR files, see the <a href="developers_fcnsandprocs_intro.html">Using Functions and
+Stored Procedures</a> section in our
+<em>Developer’s Guide</em>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SQLJ.INSTALL_JAR(IN jar_file_path_or-url VARCHAR(32672),
+                 IN qualified_jar_name VARCHAR(32672),
+                 IN deploy INTEGER)
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">jar_file_path_or-url</p>
+
+      <p class="paramDefnFirst">The path or URL of the jar file to add. A path includes both the
+directory and the file name (unless the file is in the current
+directory, in which case the directory is optional). For example:</p>
+
+      <div class="preWrapper">
+        <pre class="Example"><code>d:/todays_build/tours.jar
+</code></pre>
+
+      </div>
+      <p class="paramName">qualified_jar_name</p>
+
+      <p class="paramDefnFirst">Splice Machine name of the jar file, qualified by the schema name. Two
+examples:</p>
+
+      <div class="preWrapper">
+        <pre class="Example"><code>MYSCHEMA.Sample1
    -- a delimited identifier
-MYSCHEMA."Sample2"</pre>
-                </div>
-                <p class="paramName">deploy</p>
-                <p class="paramDefnFirst">If this set to <span class="CodeFont">1</span>, it indicates the existence of an SQLJ deployment descriptor file.
-Splice Machine ignores this
-argument, so it is normally set to <span class="CodeFont">0</span>.</p>
-            </div>
-            <h2>Usage Notes</h2>
-            <p class="body">This procedure will not work properly unless you have first added your procedure to the Derby CLASSPATH&#160;variable. For example:</p><pre class="Example">CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');</pre>
-            <p class="body">For information about storing and updating stored procedures, and the setting of the Derby classpath, see the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Splice Machine Functions and Stored Procedures</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</p>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Execute Privileges</h2>
-            <p>If authentication and SQL authorization are both enabled, only the database owner has
-execute privileges on this function by default. The database owner can grant access to other users.</p>
-            <h2>SQL Examples</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">
-&#160;&#160;&#160;-- Make sure Derby classpath variable is correctly set for our examples<br />CALL&#160;SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath',&#160;'SPLICE.SAMPLE1_APP:SPLICE.SAMPLE2');<br /><br />&#160;&#160; -- install jar from current directory
-splice&gt;&#160;CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE.SAMPLE1_APP', 0);
+MYSCHEMA."Sample2"
+</code></pre>
+
+      </div>
+      <p class="paramName">deploy</p>
+
+      <p class="paramDefnFirst">If this set to <code>1</code>, it indicates the existence of an SQLJ deployment
+descriptor file. Splice Machine ignores this argument, so it is normally
+set to <code>0</code>.</p>
+
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p class="body">This procedure will not work properly unless you have first added your
+procedure to the Derby CLASSPATH variable. For example:</p>
+
+    <pre class="Example"><code>CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');
+</code></pre>
+
+    <p class="body">For information about storing and updating stored procedures, and the
+setting of the Derby classpath, see the <a href="developers_fcnsandprocs_storing.html">Storing and Updating Splice
+Machine Functions and Stored
+Procedures</a> topic.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="execute-privileges">Execute Privileges</h2>
+
+    <p>If authentication and SQL authorization are both enabled, only the
+database owner has execute privileges on this function by default. The
+database owner can grant access to other users.</p>
+
+    <h2 id="sql-examples">SQL Examples</h2>
+
+    <div class="preWrapperWide">
+
+      <pre class="Example"><code>   -- Make sure Derby classpath variable is correctly set for our examples
+CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
+                    'derby.database.classpath',
+                    'SPLICE.SAMPLE1_APP:SPLICE.SAMPLE2');
+
+                       -- install jar from current directory
+splice&gt; CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE.SAMPLE1_APP', 0);
 
    -- install jar using full path
-splice&gt;&#160;CALL SQLJ.INSTALL_JAR('c:\myjarfiles\tours.jar', 'SPLICE.SAMPLE1_APP', 0);
+splice&gt; CALL SQLJ.INSTALL_JAR('c:\myjarfiles\tours.jar', 'SPLICE.SAMPLE1_APP', 0);
 
    -- install jar from remote location
-splice&gt;&#160;CALL SQLJ.INSTALL_JAR('http://www.example.com/tours.jar', 'SPLICE.SAMPLE2_APP', 0);
+splice&gt; CALL SQLJ.INSTALL_JAR('http://www.example.com/tours.jar', 'SPLICE.SAMPLE2_APP', 0);
 
    -- install jar using a quoted identifier for the
    -- Splice Machine jar name
-splice&gt;&#160;CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE."SAMPLE2"', 0);</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sysprocs_removejar.html"><span class="CodeFont">SQLJ_REMOVE_JAR</span></a>
-                </li>
-                <li><a href="sqlref_sysprocs_replacejar.html"><span class="CodeFont">SQLJ_REPLACE_JAR</span></a>
-                </li>
-            </ul>
-        </div>
-	</section>
+splice&gt; CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE."SAMPLE2"', 0);
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_removejar.html"><code>SQLJ_REMOVE_JAR</code></a></li>
+      <li><a href="sqlref_sysprocs_replacejar.html"><code>SQLJ_REPLACE_JAR</code></a></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2885,7 +2928,11 @@ splice&gt;&#160;CALL SQLJ.INSTALL_JAR('tours.jar', 'SPLICE."SAMPLE2"', 0);</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

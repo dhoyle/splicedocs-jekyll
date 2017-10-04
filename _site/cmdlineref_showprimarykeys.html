@@ -518,6 +518,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Show PrimaryKeys</h1>
@@ -534,6 +535,38 @@
             <h3>Results</h3>
             <p>The <span class="AppCommand">show primary keys</span> command results contains the following columns: </p>
             <table summary="List of columns in the output of the show primary keys command.">
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="show-primarykeys">Show PrimaryKeys</h1>
+
+    <p>The <span class="AppCommand">show primarykeys</span> command displays
+all the primary keys in the specified table.</p>
+
+    <h3 id="syntax">Syntax</h3>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SHOW PRIMARYKEYS FROM schemaName.tableName
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">The schema name.</p>
+
+      <p class="paramName">tableName</p>
+
+      <p class="paramDefnFirst">The table name.</p>
+
+    </div>
+    <h3 id="results">Results</h3>
+
+    <p>The <span class="AppCommand">show primary keys</span> command results
+contains the following columns:</p>
+
+    <table summary="List of columns in the output of the show primary keys command.">
+>>>>>>> MDConvert
                 <col />
                 <col />
                 <thead>
@@ -544,25 +577,27 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">TABLE_NAME</td>
+                        <td><code>TABLE_NAME</code></td>
                         <td>The name of the table</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMN_NAME</td>
+                        <td><code>COLUMN_NAME</code></td>
                         <td>The name of the column</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">KEY_SEQ</td>
+                        <td><code>KEY_SEQ</code></td>
                         <td>The order of the column within the primary key</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">PK_NAME</td>
+                        <td><code>PK_NAME</code></td>
                         <td>The unique name of the constraint</td>
                     </tr>
                 </tbody>
             </table>
-            <h3>Examples</h3>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;create table myTable(i int, j int, primary key (i,j));
+    <h3 id="examples">Examples</h3>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; create table myTable(i int, j int, primary key (i,j));
 0 rows inserted/updated/deleted
 
 splice&gt; show primarykeys from mySchema.myTable;
@@ -571,10 +606,13 @@ TABLE_NAME  |COLUMN_NAME  |KEY_SEQ  |PK_NAME
 A           |I            |1        |SQL141120202723310
 A           |J            |2        |SQL141120202723310
 
-2 rows selected</pre>
-            </div>
-        </div>
-	</section>
+2 rows selected
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -591,7 +629,11 @@ A           |J            |2        |SQL141120202723310
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

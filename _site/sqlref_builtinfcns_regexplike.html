@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>REGEXP_LIKE Operator</h1>
@@ -2826,6 +2827,49 @@
             <h2>Examples</h2>
             <p class="body">The following query finds all players whose name begins with <span class="ItalicFont">Ste</span>:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="regexplike-operator">REGEXP_LIKE Operator</h1>
+
+    <p>The <code>REGEXP_LIKE</code> operator returns <code>true</code> if the string matches the
+regular expression. This function is similar to the <code>LIKE</code> predicate,
+except that it uses regular expressions rather than simple wildcard
+character matching.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>REGEXP_LIKE( sourceString, patternString )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">sourceString</p>
+
+      <p class="paramDefnFirst">The character expression to match against the regular expression.</p>
+
+      <p class="paramName">patternString</p>
+
+      <p class="paramDefnFirst">The regular expression string used to search for a match in <span class="CodeItalicFont">sourceString</span>.</p>
+
+      <p class="paramDefn">The pattern is a <code>java.util.regex</code> pattern. You can find documentation
+for the JDK 8 version
+here: <a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/package-summary.html" target="_blank">http://docs.oracle.com/javase/8/docs/api/java/util/regex/package-summary.html</a>.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>Returns true if the <span class="CodeItalicFont">sourcestring</span> you
+are testing matches the specified regular expression in <span class="CodeItalicFont">patternString</span>.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p class="body">The following query finds all players whose name begins with <em>Ste</em>:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; SELECT DisplayName
+>>>>>>> MDConvert
    FROM Players
    WHERE REGEXP_LIKE(DisplayName, '^Ste.*');
 
@@ -2836,26 +2880,29 @@ Steve Mossely
 Stephen Tuvesco
 
 3 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_concat.html">CONCATENATION</a></span>&#160;operator</li>
-                <li><a href="sqlref_builtinfcns_initcap.html"><span class="CodeFont">INITCAP</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_instr.html"><span class="CodeFont">INSTR</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_lcase.html"><span class="CodeFont">LCASE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_length.html"><span class="CodeFont">LENGTH</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ltrim.html"><span class="CodeFont">LTRIM</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_replace.html"><span class="CodeFont">REPLACE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_rtrim.html"><span class="CodeFont">RTRIM</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_substr.html"><span class="CodeFont">SUBSTR</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_trim.html"><span class="CodeFont">TRIM</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_ucase.html"><span class="CodeFont">UCASE</span></a>&#160;function</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_builtinfcns_concat.html"><code>CONCATENATION</code></a> operator</li>
+      <li><a href="sqlref_builtinfcns_initcap.html"><code>INITCAP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_instr.html"><code>INSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_lcase.html"><code>LCASE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_length.html"><code>LENGTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ltrim.html"><code>LTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_replace.html"><code>REPLACE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_rtrim.html"><code>RTRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_substr.html"><code>SUBSTR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_trim.html"><code>TRIM</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_ucase.html"><code>UCASE</code></a> function</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2872,7 +2919,11 @@ Stephen Tuvesco
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

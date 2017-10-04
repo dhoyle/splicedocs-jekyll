@@ -2806,14 +2806,22 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="SystemTables.SysSequences">SYSSEQUENCES System Table</h1>
-            <p>The <span class="CodeFont">SYSSEQUENCES</span> table describes the sequence generators in the
-		database.</p>
-            <div class="noteNote">Users should not directly query the <span class="CodeFont">SYSSEQUENCES</span> table, because that will slow down the performance of sequence generators. Instead, users should call the <a href="sqlref_sysprocs_peekatseq.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</span> system function</a></div>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSSEQUENCES</span> system table.</p>
-            <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syssequences-system-table">SYSSEQUENCES System Table</h1>
+
+    <p>The <code>SYSSEQUENCES</code> table describes the sequence generators in the
+database.</p>
+
+    <p class="noteNote">Users should not directly query the <code>SYSSEQUENCES</code> table, because that
+will slow down the performance of sequence generators. Instead, users
+should call the  <a href="sqlref_sysprocs_peekatseq.html"><code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code> system
+function</a></p>
+
+    <p>The following table shows the contents of the <code>SYSSEQUENCES</code> system
+table.</p>
+
+    <table>
                 <caption>SYSSEQUENCES system table</caption>
                 <col />
                 <col />
@@ -2831,102 +2839,93 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">SEQUENCEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>SEQUENCEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The ID of the sequence generator. This is the primary key.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SEQUENCENAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
-                        <td>The name of the sequence generator. There is a unique index
-					on (<span class="CodeFont">SCHEMAID, SEQUENCENAME</span>).</td>
+                        <td><code>SEQUENCENAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
+                        <td>The name of the sequence generator. There is a unique index on (<code>SCHEMAID, SEQUENCENAME</code>).</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SCHEMAID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
-                        <td>The ID of the schema that holds the sequence generator.
-					There is a foreign key linking this column to <span class="CodeFont">SYSSCHEMAS.SCHEMAID</span>.</td>
+                        <td><code>SCHEMAID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
+                        <td>The ID of the schema that holds the sequence generator. There is a foreign key linking this column to <code>SYSSCHEMAS.SCHEMAID</code>.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SEQUENCEDATATYPE</td>
-                        <td class="CodeFont"><span class="ItalicFont">com.splicemachine.db.catalog.TypeDescriptor</span>
+                        <td><code>SEQUENCEDATATYPE</code></td>
+                        <td class="CodeFont"><em>com.splicemachine.db.catalog.TypeDescriptor</em>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">NO</td>
-                        <td>System type that describes the precision, length, scale,
-					nullability, type name, and storage type of the data</td>
+                        <td><code>-1</code></td>
+                        <td><code>NO</code></td>
+                        <td>System type that describes the precision, length, scale, nullability, type name, and storage type of the data</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CURRENTVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
-                        <td class="CodeFont">YES</td>
+                        <td><code>CURRENTVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
+                        <td><code>YES</code></td>
                         <td>
-                            <p class="noSpaceAbove">The current value of the sequence generator. This is not the
-						actual next value for the sequence generator. That value can be obtained by
-						calling the system function <span class="CodeFont">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</span>.</p>
-                            <p><![CDATA[
-						]]><span class="CodeFont">SYSSEQUENCES.CURRENTVALUE</span> holds the end of the range of values that have been
-						preallocated in order to boost concurrency. The initial
-						value of this column is <span class="CodeFont">STARTVALUE</span>. </p>
-                            <p>This column is <span class="CodeFont">NULL</span> only if the sequence
-					generator is exhausted and cannot issue any more numbers.</p>
+                            <p class="noSpaceAbove">The current value of the sequence generator. This is not the actual next value for the sequence generator. That value can be obtained by calling the system function <code>SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE</code>.</p>
+                            <p><code>SYSSEQUENCES.CURRENTVALUE</code> holds the end of the range of values that have been preallocated in order to boost concurrency. The initial value of this column is <code>STARTVALUE</code>. </p>
+                            <p>This column is <code>NULL</code> only if the sequence generator is exhausted and cannot issue any more numbers.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">STARTVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
+                        <td><code>STARTVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
                         <td>NO</td>
                         <td>The initial value of the sequence generator</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">MINIMUMVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
+                        <td><code>MINIMUMVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
                         <td>NO</td>
                         <td>The minimum value of the sequence generator</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">MAXIMUMVALUE</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
+                        <td><code>MAXIMUMVALUE</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
                         <td>NO</td>
                         <td>The maximum value of the sequence generator</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">INCREMENT</td>
-                        <td class="CodeFont">BIGINT</td>
-                        <td class="CodeFont">19</td>
+                        <td><code>INCREMENT</code></td>
+                        <td><code>BIGINT</code></td>
+                        <td><code>19</code></td>
                         <td>NO</td>
                         <td>The step size of the sequence generator</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CYCLEOPTION</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
+                        <td><code>CYCLEOPTION</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
                         <td>NO</td>
                         <td>
-                            <p class="noSpaceAbove">If the sequence generator cycles, this value is <span class="CodeFont">'Y'</span>.</p>
-                            <p>
-					If the sequence generator does not cycle, this value is <span class="CodeFont">'N'</span>.</p>
+                            <p class="noSpaceAbove">If the sequence generator cycles, this value is <code>'Y'</code>.</p>
+                            <p>If the sequence generator does not cycle, this value is <code>'N'</code>.</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_systables_intro.html">About System Tables</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_systables_intro.html">About System Tables</a></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2943,7 +2942,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

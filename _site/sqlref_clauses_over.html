@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>OVER</h1>
@@ -2867,14 +2868,172 @@ WHERE&#160;rank&#160;= 1;</pre>
             <p>The examples in this section are fairly simple because they don't use the frame clause.</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">--- Rank each year within a player by the number of home runs hit by that player
 RANK()&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;desc(H));
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="over">OVER</h1>
+
+    <p>The <code>OVER</code> clause is used in window functions to define the window on
+which the function operates. Window functions are permitted only in the
+  <a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause of queries.</p>
+
+    <p>For general information about and examples of Window functions in Splice
+Machine, see the <a href="developers_fundamentals_windowfcns.html">Using Window
+Functions</a> topic.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>expression OVER( 
+     [partitionClause]
+     [orderClause]
+     [frameClause] );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">expression</p>
+
+      <p class="paramDefnFirst">Any value expression that does not itself contain window function calls.</p>
+
+      <p class="paramName">partitionClause</p>
+
+      <p class="paramDefnFirst">Optional. Specifies how the window function is broken down over groups,
+in the same way that <code>GROUP BY</code> specifies groupings for regular
+aggregate functions. If you omit this clause, there is one partition
+that contains all rows.</p>
+
+      <p class="paramDefn">The syntax for this clause is essentially the same as for the
+<a href="sqlref_clauses_groupby.html"><code>GROUP BY</code></a> clause for queries; To recap:</p>
+
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>PARTITION BY expression [, ...]
+</code></pre>
+
+      </div>
+      <div class="paramList">
+        <p class="paramName">expression [,…]</p>
+
+        <p class="paramDefnFirst">A list of expressions that define the partitioning.</p>
+
+      </div>
+      <p class="paramName">orderClause</p>
+
+      <p class="paramDefnFirst">Optional. Controls the ordering. It is important for ranking functions,
+since it specifies by which variables ranking is performed. It is also
+needed for cumulative functions. The syntax for this clause is
+essentially the same as for the
+<a href="sqlref_clauses_orderby.html"><code>SQL Reference</code></a>. To recap:</p>
+
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>ORDER BY expression
+   [ ASC | DESC | USING operator ]
+   [ NULLS FIRST | NULLS LAST ]
+   [, ...]
+</code></pre>
+
+      </div>
+      <p class="noteNote">The default ordering is ascending (<code>ASC</code>). For ascending order,
+<code>NULL</code> values are returned last unless you specify <code>NULLS FIRST</code>; for
+descending order, <code>NULL</code> values are returned first unless you specify
+<code>NULLS LAST</code>.</p>
+
+      <p class="paramName">frameClause</p>
+
+      <p class="paramDefnFirst">Optional. Defines which of the rows (which <em>frame</em>) that are passed to
+the window function should be included in the computation. The
+<em>frameClause</em> provides two offsets that determine the start and end of
+the frame.</p>
+
+      <p class="paramDefn">The syntax for the frame clause is:</p>
+
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>[RANGE | ROWS] frameStart |
+[RANGE | ROWS] BETWEEN frameStart AND frameEnd
+</code></pre>
+
+      </div>
+      <p class="paramDefn">The syntax for both <em>frameStart</em> and <em>frameEnd</em> is:</p>
+
+      <div class="fcnWrapperWide">
+        <pre class="FcnSyntax"><code>UNBOUNDED PRECEDING |
+&lt;n&gt; PRECEDING       |
+CURRENT ROW         |
+&lt;n&gt; FOLLOWING       |
+UNBOUNDED FOLLOWING
+</code></pre>
+
+      </div>
+      <div class="paramList">
+        <p class="paramName">&lt;n&gt;</p>
+
+        <p class="paramDefnFirst">A a non-negative integer value.</p>
+
+      </div>
+    </div>
+    <h2 id="usage-restrictions">Usage Restrictions</h2>
+
+    <p>Because window functions are only allowed in 
+<a href="sqlref_clauses_using.html"><code>HAVING</code></a> clauses, you sometimes need to use
+subqueries with window functions to accomplish what seems like it could
+be done in a simpler query.</p>
+
+    <p>For example, because you cannot use an <code>OVER</code> clause in a
+<code>WHERE</code> clause, a query like the following is not possible:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT *
+FROM Batting
+WHERE rank() OVER (PARTITION BY "playerID" ORDER BY "G") = 1;
+</code></pre>
+
+    </div>
+    <p>And because <code>WHERE</code> and <code>HAVING</code> are computed before the windowing
+functions, this won’t work either:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT *, rank() OVER (PARTITION BY "playerID" ORDER BY "G") as rank
+FROM Batting
+WHERE rank = 1;
+</code></pre>
+
+    </div>
+    <p>Instead, you need to use a subquery:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>SELECT *
+FROM (
+   SELECT *, rank() OVER (PARTITION BY "playerID" ORDER BY "G") as rank
+   FROM Batting
+) tmp
+WHERE rank = 1;
+</code></pre>
+
+    </div>
+    <p>And note that the above subquery will add a rank column to the original
+columns,</p>
+
+    <h2 id="simple-window-function-examples">Simple Window Function Examples</h2>
+
+    <p>The examples in this section are fairly simple because they don’t use
+the frame clause.</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>--- Rank each year within a player by the number of home runs hit by that player
+RANK() OVER (PARTITION BY playerID ORDER BY desc(H));
+>>>>>>> MDConvert
 
 --- Compute the change in number of games played from one year to the next:
-G&#160;- LAG(G)&#160;OVER&#160;(PARTITION&#160;G&#160;playerID&#160;ORDER&#160;BY&#160;yearID);
-</pre>
-            </div>
-            <h2>Examples with Frame Clauses</h2>
-            <p>The frame clause can be confusing, given all of the options that it presents. There are three commonly used frame clauses:</p>
-            <table summary="Frame clause types">
+G - LAG(G) OVER (PARTITION G playerID ORDER BY yearID);
+</code></pre>
+
+    </div>
+    <h2 id="examples-with-frame-clauses">Examples with Frame Clauses</h2>
+
+    <p>The frame clause can be confusing, given all of the options that it
+presents. There are three commonly used frame clauses:</p>
+
+    <table summary="Frame clause types">
                 <col />
                 <col />
                 <thead>
@@ -2885,48 +3044,55 @@ G&#160;- LAG(G)&#160;OVER&#160;(PARTITION&#160;G&#160;playerID&#160;ORDER&#160;B
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">Recycled</td>
+                        <td><em>Recycled</em></td>
                         <td class="CodeFont">
-                            <p>BETWEEN&#160;UNBOUNDED&#160;PRECEEDING&#160;AND&#160;UNBOUNDED&#160;FOLLOWING</p>
+                            <p>BETWEEN UNBOUNDED PRECEEDING AND UNBOUNDED FOLLOWING</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Cumulative</td>
+                        <td><em>Cumulative</em></td>
                         <td class="CodeFont">
-                            <p>BETWEEN&#160;UNBOUNDED&#160;PRECEEDING&#160;AND&#160;CURRENT&#160;ROW</p>
+                            <p>BETWEEN UNBOUNDED PRECEEDING AND CURRENT ROW</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Rolling</td>
-                        <td class="CodeFont">BETWEEN&#160;2 PRECEEDING&#160;AND&#160;2 FOLLOWING</td>
+                        <td><em>Rolling</em></td>
+                        <td><code>BETWEEN 2 PRECEEDING AND 2 FOLLOWING</code></td>
                     </tr>
                 </tbody>
             </table>
-            <p>Here are some examples of window functions using frame clauses:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">--- Compute the running sum of G&#160;for each player:
-SUM(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;yearID
-  BETWEEN&#160;UNBOUNDED&#160;PRECEEDING&#160;AND&#160;CURRENT&#160;ROW);
+    <p>Here are some examples of window functions using frame clauses:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>--- Compute the running sum of G for each player:
+SUM(G) OVER (PARTITION BY playerID ORDER BY yearID
+  BETWEEN UNBOUNDED PRECEEDING AND CURRENT ROW);
 
 --- Compute the career year:
-YearID - min(YEARID)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID
-   BETWEEN&#160;UNBOUNDED&#160;PRECEEDING&#160;AND&#160;UNBOUNDED&#160;FOLLOWING)&#160;+ 1;
+YearID - min(YEARID) OVER (PARTITION BY playerID
+   BETWEEN UNBOUNDED PRECEEDING AND UNBOUNDED FOLLOWING) + 1;
 
 --- Compute a rolling average of games by player:
-MEAN(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;yearID
-   BETWEEN&#160;2 PRECEEDING&#160;AND&#160;2 FOLLOWING);
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate </a>functions</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>
-                <li><a href="sqlref_clauses_having.html"><span class="CodeFont">HAVING</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER BY</span></a>&#160;clause</li>
-                <li><a href="sqlref_clauses_where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
-                <li>The <a href="developers_fundamentals_windowfcns.html">Using Window Functions</a> section in our <span class="ItalicFont">Splice Machine Developer's Guide</span></li>
-            </ul>
-        </div>
-	</section>
+MEAN(G) OVER (PARTITION BY playerID ORDER BY yearID
+   BETWEEN 2 PRECEEDING AND 2 FOLLOWING);
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and Aggregate
+</a>functions</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+      <li><a href="sqlref_clauses_having.html"><code>HAVING</code></a> clause</li>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
+      <li><a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause</li>
+      <li>The <a href="developers_fundamentals_windowfcns.html">Using Window Functions</a>
+section in our <em>Splice Machine Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2943,7 +3109,11 @@ MEAN(G)&#160;OVER&#160;(PARTITION&#160;BY&#160;playerID&#160;ORDER&#160;BY&#160;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

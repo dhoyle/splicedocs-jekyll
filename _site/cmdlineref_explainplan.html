@@ -518,6 +518,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Explain Plan Command</h1>
@@ -540,6 +541,55 @@
             <p>The <a href="developers_tuning_explainplan.html">Explain Plan</a> topic in the <span class="ItalicFont">Performance Tuning</span> section of our <span class="ItalicFont">Administrator's Guide</span> contains a number of examples that are described in detail.</p>
         </div>
 	</section>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="explain-plan-command">Explain Plan Command</h1>
+
+    <p>The <span class="AppCommand">explain</span> command displays the
+execution plan for a statement without actually executing the statement;
+it parses and optimizes the SQL, then presents its execution plan.</p>
+
+    <p>You can use this to tune a query for improved performance.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>explain Statement
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName"><em>Statement</em></p>
+
+      <p class="paramDefnFirst">An SQL statement.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>SQL Data Definition Language (DDL) statement have no known cost, and
+thus do not require optimization. Because of this, the <code>explain</code> command
+does not work with DDL statements; attempting to <code>explain</code> a DDL
+statement such as <code>CREATE TABLE</code> will generate a syntax error.</p>
+
+    <p>For more information about using the explain command, including a number
+of annotated examples, see <a href="developers_tuning_explainplan.html">Explain
+Plan</a>.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select * from t t1 where t1.i &lt; (select max(i) from t t1);
+</code></pre>
+
+    </div>
+    <p>The <a href="developers_tuning_explainplan.html">Explain Plan</a> topic contains a
+number of examples that are described in detail.</p>
+
+  </div>
+</section>
+
+>>>>>>> MDConvert
 
 
     <div class="tags">
@@ -556,7 +606,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

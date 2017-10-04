@@ -10,7 +10,7 @@ folder: OnPrem/Info
 ---
 # On-Premise Database Limitations and Workarounds
 
-{% include splice_snippets/dbaasonlytopic.html %}
+{% include splice_snippets/dbaasonlytopic.md %}
 
 This topic describes workarounds for known limitations in this release of the *Splice Machine On-Premise Database* product. These can include previously unstated limitations or workarounds for problems that will be fixed in a future release.
 

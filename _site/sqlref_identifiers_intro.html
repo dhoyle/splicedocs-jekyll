@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Identifiers</h1>
@@ -2858,6 +2859,99 @@
             <div class="noteIcon">Complete syntax, including information about case sensitivity and special character usage, in SQL&#160;Identifier types is found in the <a href="sqlref_identifiers_syntax.html">SQL&#160;Identifier Syntax</a> topic in this section.</div>
         </div>
 	</section>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="identifiers">Identifiers</h1>
+
+    <p>This section contains the reference documentation for the Splice Machine
+SQL Identifiers, in these topics:</p>
+
+    <ul>
+      <li>This page provides an introduction to <code>SQLIdentifiers</code>.</li>
+      <li>The <a href="sqlref_identifiers_syntax.html">SQL Identifier Syntax</a> topic
+contains additional information about <code>SQLIdentifier</code> naming rules,
+capitalization, and special characters.</li>
+      <li>
+        <p>The <a href="sqlref_identifiers_types.html">SQL Identifier Types</a> topic
+provides specific information about the different types of
+<code>SQLIdentifiers</code> that you’ll find mentioned in this manual, including:</p>
+
+        <ul class="codeList">
+          <li class="nested" value="1">AuthorizationIdentifier</li>
+          <li class="nested" value="2">column-Name and simple-column-Name</li>
+          <li class="nested" value="3">constraint-Name</li>
+          <li class="nested" value="4">correlation-Name</li>
+          <li class="nested" value="5">index-Name</li>
+          <li class="nested" value="6">new-Table-Name</li>
+          <li class="nested" value="7">RoleName</li>
+          <li class="nested" value="8">schemaName</li>
+          <li class="nested" value="9">synonym-Name</li>
+          <li class="nested" value="10">table-Name</li>
+          <li class="nested" value="11">triggerName</li>
+          <li class="nested" value="12">view-Name</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2 id="SQLIdentifier">About SQLIdentifiers</h2>
+
+    <p>An SQLIdentifier is a dictionary object identifier that conforms to the
+rules of ANSI SQL; identifiers for dictionary objects:</p>
+
+    <ul>
+      <li>are limited to 128 characters</li>
+      <li>are automatically translated into uppercase by the system, making them
+case-insensitive unless delimited by double quotes</li>
+      <li>cannot be a <a href="sqlref_sqlreserved.html">Splice Machine SQL keyword</a>
+unless delimited by double quotes</li>
+      <li>can sometimes be qualified by a schema, table, or correlation name, as
+described below</li>
+    </ul>
+
+    <h3 id="examples">Examples:</h3>
+
+    <p>Here is an example of a simple, unqualified SQLIdentifier used to name a
+table:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE TABLE Coaches( ID INT NOT NULL );
+</code></pre>
+
+    </div>
+    <p>And here’s an example of a table name (<code>Coaches</code>) qualified by a schema
+name (<code>Baseball</code>):</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE TABLE Baseball.Coaches( ID INT NOT NULL );
+</code></pre>
+
+    </div>
+    <p>This view name is stored in system catalogs as <code>PITCHINGCOACHES</code>, since
+it is not quoted:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE VIEW PitchingCoaches(RECEIVED) AS VALUES 1;
+</code></pre>
+
+    </div>
+    <p>Whereas this view name is quoted, and thus is stored as
+<code>PitchingCoaches</code> in the system catalog:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>CREATE VIEW "PitchingCoaches"(RECEIVED) AS VALUES 1;
+</code></pre>
+
+    </div>
+    <p class="noteIcon">Complete syntax, including information about case sensitivity and
+special character usage, in SQL Identifier types is found in the
+<a href="sqlref_identifiers_syntax.html">SQL Identifier Syntax</a> topic in this
+section.</p>
+
+  </div>
+</section>
+
+>>>>>>> MDConvert
 
 
     <div class="tags">
@@ -2874,7 +2968,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

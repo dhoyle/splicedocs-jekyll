@@ -2806,34 +2806,56 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="Statements.DropRole">DROP ROLE</h1>
-            <p>The <span class="CodeFont">DROP&#160;ROLE</span>&#160;statement allows you to drop a role from your database.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">DROP ROLE <span class="ItalicFont"><a href="sqlref_identifiers_types.html#RoleName">roleName</a></span></pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">roleName</p>
-                <p class="paramDefnFirst">The name of the role that you want to drop from your database.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>Dropping a role has the effect of removing the role from the database dictionary. This means that no session user can henceforth set that role (see <a href="sqlref_builtinfcns_currentrole.html"><span class="CodeFont">CURRENT_ROLE</span> function</a>) will now have a <span class="CodeFont">NULL CURRENT_ROLE</span>. </p>
-            <p>Dropping a role also has the effect of revoking that role from any user and role it has been granted to. See the <a href="sqlref_statements_revoke.html"><span class="CodeFont">REVOKE</span> statement</a> for information on how revoking a role may impact any dependent objects.</p>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP ROLE statsEditor_role;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_createrole.html"><span class="CodeFont">CREATE_ROLE</span></a> statement</li>
-                <li><a href="sqlref_statements_grant.html"><span class="CodeFont">GRANT</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_revoke.html"><span class="CodeFont">REVOKE</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_setrole.html"><span class="CodeFont">SET&#160;ROLE</span></a> statement</li>
-                <li><a href="sqlref_systables_sysroles.html"><span class="CodeFont">SYSROLES</span></a>&#160;system table</li>
-            </ul>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="drop-role">DROP ROLE</h1>
+
+    <p>The <code>DROP ROLE</code> statement allows you to drop a role from your database.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP ROLE <a href="sqlref_identifiers_types.html#RoleName">roleName</a></pre>
+
+</div>
+    <div class="paramList">
+      <p class="paramName">roleName</p>
+
+      <p class="paramDefnFirst">The name of the role that you want to drop from your database.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>Dropping a role has the effect of removing the role from the database
+dictionary. This means that no session user can henceforth set that role
+(see  <a href="sqlref_builtinfcns_currentrole.html"><code>CURRENT_ROLE</code> function</a>)
+will now have a <code>NULL CURRENT_ROLE</code>.</p>
+
+    <p>Dropping a role also has the effect of revoking that role from any user
+and role it has been granted to. See the  <a href="sqlref_statements_revoke.html"><code>REVOKE</code>
+statement</a> for information on how
+revoking a role may impact any dependent objects.</p>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; DROP ROLE statsEditor_role;
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_createrole.html"><code>CREATE_ROLE</code></a> statement</li>
+      <li><a href="sqlref_statements_grant.html"><code>GRANT</code></a> statement</li>
+      <li><a href="sqlref_statements_revoke.html"><code>REVOKE</code></a> statement</li>
+      <li><a href="sqlref_statements_setrole.html"><code>SET ROLE</code></a> statement</li>
+      <li><a href="sqlref_systables_sysroles.html"><code>SYSROLES</code></a> system table</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2850,7 +2872,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -10,7 +10,7 @@ folder: OnPrem/Info
 ---
 # Release Notes for Splice Machine On-Premise Database v2.6.1 (September 25, 2017)
 
-{% include splice_snippets/onpremonlytopic.html %}
+{% include splice_snippets/onpremonlytopic.md %}
 
 Welcome to 2.6.1 release of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 

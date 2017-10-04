@@ -2806,66 +2806,128 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="Statements.CreateIndex">CREATE INDEX</h1>
-            <p>A <span class="CodeFont">CREATE INDEX</span> statement creates an index on a table. Indexes can be on one or more columns in the table.</p>
-            <p>&#160;</p>
-            <p>If an index to be created has the same index columns with an existing index, then the index will not be created. For example, if an index idx has been created on table t(col1, col2), and a user run the following SQL</p>
-            <p>create index idx2 on t(col1, col2)</p>
-            <p>idx2 will not be created.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE [UNIQUE] INDEX <span class="ItalicFont"><a href="sqlref_identifiers_types.html#IndexName">indexName</a></span>
-   ON <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">tableName</a></span>(
-      <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a></span>
-     &#160;[ ASC <span> | DESC</span> ]
-    &#160; [ , <span class="ItalicFont"><a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a></span> [ ASC<span> | DESC</span> ]] *
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="create-index">CREATE INDEX</h1>
+
+    <p>A <code>CREATE INDEX</code> statement creates an index on a table. Indexes can be
+on one or more columns in the table.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexName</a>
+   ON <a href="sqlref_identifiers_types.html#TableName">tableName</a> (
+      <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a>
+      [ ASC  | DESC ]
+      [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
      )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">indexName</p>
-                <p class="paramDefnFirst">An identifier, the length of which cannot exceed 128 characters.</p>
-                <p class="paramName">tableName</p>
-                <p class="paramDefnFirst">A table name, which can optionally be qualified by a schema name.</p>
-                <p class="paramName">simpleColumnName</p>
-                <p class="paramDefnFirst">A&#160;simple column name. </p>
-                <p class="paramDefn">You cannot use the same column name more than once in a single <span class="CodeFont">CREATE INDEX</span> statement. Note, however, that a single column name can be used in multiple indexes.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>Splice Machine can use indexes to improve the performance of data manipulation statements. In addition, <span class="CodeFont">UNIQUE</span> indexes provide a form of data integrity checking.</p>
-            <p><span class="BoldFont">Index names are unique within a schema</span>. (Some database systems allow different tables in a single schema to have indexes of the same name, but Splice Machine does not.) Both index and table are assumed to be in the same schema if a schema name is specified for one of the names, but not the other. If schema names are specified for both index and table, an exception will be thrown if the schema names are not the same. If no schema name is specified for either table or index, the current schema is used.</p>
-            <p>You cannot create an index that has the same index columns as an existing index; if you attempt to do so, Splice Machine issues a warning and does not create the index, as you can see in this example:</p>
-            <div class="preWrapperWide"><pre class="Example">splice&gt; CREATE INDEX idx1 ON myTable(id, eventType);
+
+</div>
+    <div class="paramList">
+      <p class="paramName">indexName</p>
+
+      <p class="paramDefnFirst">An identifier, the length of which cannot exceed 128 characters.</p>
+
+      <p class="paramName">tableName</p>
+
+      <p class="paramDefnFirst">A table name, which can optionally be qualified by a schema name.</p>
+
+      <p class="paramName">simpleColumnName</p>
+
+      <p class="paramDefnFirst">A simple column name.</p>
+
+      <p class="paramDefn">You cannot use the same column name more than once in a single <code>CREATE
+INDEX</code> statement. Note, however, that a single column name can be used
+in multiple indexes.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>Splice Machine can use indexes to improve the performance of data
+manipulation statements. In addition, <code>UNIQUE</code> indexes provide a form of
+data integrity checking.</p>
+
+    <p><strong>Index names are unique within a schema</strong>. (Some database systems allow
+different tables in a single schema to have indexes of the same name,
+but Splice Machine does not.) Both index and table are assumed to be in
+the same schema if a schema name is specified for one of the names, but
+not the other. If schema names are specified for both index and table,
+an exception will be thrown if the schema names are not the same. If no
+schema name is specified for either table or index, the current schema
+is used.</p>
+
+    <p>You cannot create an index that has the same index columns as an
+existing index; if you attempt to do so, Splice Machine issues a warning
+and does not create the index, as you can see in this example:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CREATE INDEX idx1 ON myTable(id, eventType);
 0 rows inserted/updated/deleted
 splice&gt; CREATE INDEX idx2 ON myTable(id, eventType);
 WARNING 01504: The new index is a duplicate of an existing index: idx1.
 splice&gt; DROP INDEX idx2;
-ERROR 42X65: Index 'idx2' does not exist.</pre>
-            </div>
-            <p>By default, Splice Machine uses the ascending order of each column to create the index. Specifying <span class="CodeFont">ASC</span> after the column name does not alter the default behavior. <span>The <span class="CodeFont">DESC</span> keyword after the column name causes Splice Machine to use descending order for the column to create the index. Using the descending order for a column can help improve the performance of queries that require the results in mixed sort order or descending order and for queries that select the minimum or maximum value of an indexed column.</span></p>
-            <p>If a qualified index name is specified, the schema name cannot begin with <span class="CodeFont">SYS</span>.</p>
-            <h2>Indexes and constraints</h2>
-            <p>Unique and primary key constraints generate indexes that enforce or "back" the constraint (and are thus sometimes called <span class="ItalicFont">backing indexes</span>). If a column or set of columns has a <span class="CodeFont">UNIQUE</span> or <span class="CodeFont">PRIMARY KEY</span> constraint on it, you can not create an index on those columns. </p>
-            <p>Splice Machine has already created it for you with a system-generated name. System-generated names for indexes that back up constraints are easy to find by querying the system tables if you name your constraint. Adding a <span class="CodeFont">PRIMARY KEY</span> or <span class="CodeFont">UNIQUE</span> constraint when an existing <span class="CodeFont">UNIQUE</span> index exists on the same set of columns will result in two physical indexes on the table for the same set of columns. One index is the original <span class="CodeFont">UNIQUE</span> index and one is the backing index for the new constraint.</p>
-            <h2>Statement Dependency System</h2>
-            <p>Prepared statements that involve <span class="CodeFont">SELECT, INSERT, UPDATE</span>, and <span class="CodeFont">DELETE</span> on the table referenced by the <span class="CodeFont">CREATE INDEX</span> statement are invalidated when the index is created. </p>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE&#160;myTable (ID&#160;INT&#160;NOT&#160;NULL, NAME&#160;VARCHAR(32) NOT&#160;NULL );
+ERROR 42X65: Index 'idx2' does not exist.
+</code></pre>
+
+    </div>
+    <p>By default, Splice Machine uses the ascending order of each column to
+create the index. Specifying <code>ASC</code> after the column name does not alter
+the default behavior. <span>The <code>DESC</code> keyword after the column name
+causes Splice Machine to use descending order for the column to create
+the index. Using the descending order for a column can help improve the
+performance of queries that require the results in mixed sort order or
+descending order and for queries that select the minimum or maximum
+value of an indexed column.</span></p>
+
+    <p>If a qualified index name is specified, the schema name cannot begin
+with <code>SYS</code>.</p>
+
+    <h2 id="indexes-and-constraints">Indexes and constraints</h2>
+
+    <p>Unique and primary key constraints generate indexes that enforce or
+“back” the constraint (and are thus sometimes called <em>backing indexes</em>).
+If a column or set of columns has a <code>UNIQUE</code> or <code>PRIMARY KEY</code> constraint
+on it, you can not create an index on those columns.</p>
+
+    <p>Splice Machine has already created it for you with a system-generated
+name. System-generated names for indexes that back up constraints are
+easy to find by querying the system tables if you name your constraint.
+Adding a <code>PRIMARY KEY</code> or <code>UNIQUE</code> constraint when an existing <code>UNIQUE</code>
+index exists on the same set of columns will result in two physical
+indexes on the table for the same set of columns. One index is the
+original <code>UNIQUE</code> index and one is the backing index for the new
+constraint.</p>
+
+    <h2 id="statement-dependency-system">Statement Dependency System</h2>
+
+    <p>Prepared statements that involve <code>SELECT, INSERT, UPDATE</code>, and <code>DELETE</code>
+on the table referenced by the <code>CREATE INDEX</code> statement are invalidated
+when the index is created.</p>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE TABLE myTable (ID INT NOT NULL, NAME VARCHAR(32) NOT NULL );
 0 rows inserted/updated/deleted
 
-splice&gt;&#160;CREATE&#160;INDEX&#160;myIdx ON&#160;myTable(ID);
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_delete.html"><span class="CodeFont">DELETE</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_dropindex.html"><span class="CodeFont">DROP&#160;INDEX</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_insert.html"><span class="CodeFont">INSERT</span></a>&#160;statement</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
-                <li><a href="sqlref_statements_update.html"><span class="CodeFont">UPDATE</span></a>&#160;statement</li>
-            </ul>
-        </div>
-	</section>
+splice&gt; CREATE INDEX myIdx ON myTable(ID);
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_delete.html"><code>DELETE</code></a> statement</li>
+      <li><a href="sqlref_statements_dropindex.html"><code>DROP INDEX</code></a> statement</li>
+      <li><a href="sqlref_statements_insert.html"><code>INSERT</code></a> statement</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> statement</li>
+      <li><a href="sqlref_statements_update.html"><code>UPDATE</code></a> statement</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2882,7 +2944,11 @@ splice&gt;&#160;CREATE&#160;INDEX&#160;myIdx ON&#160;myTable(ID);
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

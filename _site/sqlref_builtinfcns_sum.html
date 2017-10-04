@@ -2806,43 +2806,86 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInFcns.Sum">SUM</h1>
-            <p><span class="CodeFont">SUM</span>returns the sum of values of an expression over a set of rows. You can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window (analytic)&#160;function</a>.</p>
-            <p>The <span class="CodeFont">SUM</span>&#160;function function takes as an argument any numeric data type or any non-numeric data type that can be implicitly converted to a numeric data type. The function returns the same data type as the numeric data type of the argument.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SUM ( [ DISTINCT | ALL ] <span class="ItalicFont">Expression</span> )</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">DISTINCT
-            </p>
-                <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated</p>
-                <p class="paramDefn">If you specify <span class="CodeFont">DISTINCT</span>&#160;in the analytic version of <span class="CodeFont">SUM</span>, the <span class="CodeFont"><a href="sqlref_clauses_over.html">OVER</a></span>&#160;clause for your window function cannot include an <span class="CodeFont">ORDER&#160;BY</span>&#160;clause or a <span class="ItalicFont">frame clause</span>.</p>
-                <p class="paramName"><span class="ItalicFont">ALL</span>
-                </p>
-                <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the default value.</p>
-                <p class="paramName">Expression
-            </p>
-                <p class="paramDefnFirst">An expression that evaluates to a numeric data type:&#160;<a href="sqlref_builtinfcns_smallint.html"><span class="CodeFont">SMALLINT</span></a>.</p>
-                <p class="paramDefn">An <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate or subquery.</p>
-                <p class="paramDefn">If an <span class="ItalicFont">Expression</span>evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
-            </div>
-            <h2>Usage</h2>
-            <p>The <span class="ItalicFont">Expression</span> can contain multiple column references or expressions, but it cannot contain another aggregate
-		or subquery. It must evaluate to a built-in numeric data type. If an expression evaluates to <span class="CodeFont">NULL</span>, the aggregate skips that value.</p>
-            <p>Only one <span class="CodeFont">DISTINCT</span> aggregate expression per <span class="ItalicFont">Expression</span> is allowed. For example, the following query is not valid:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">   -- query not allowed
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="sum">SUM</h1>
+
+    <p><code>SUM</code>returns the sum of values of an expression over a set of rows. You
+can use it as an <a href="sqlref_builtinfcns_windowfcnsintro.html">window
+(analytic) function</a>.</p>
+
+    <p>The <code>SUM</code> function function takes as an argument any numeric data type
+or any non-numeric data type that can be implicitly converted to a
+numeric data type. The function returns the same data type as the
+numeric data type of the argument.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SUM ( [ DISTINCT | ALL ] Expression )
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">DISTINCT</p>
+
+      <p class="paramDefnFirst">If this qualifier is specified, duplicates are eliminated</p>
+
+      <p class="paramDefn">If you specify <code>DISTINCT</code> in the analytic version of <code>SUM</code>, the
+<a href="sqlref_clauses_over.html"><code>OVER</code></a> clause for your window function
+cannot include an <code>ORDER BY</code> clause or a <em>frame clause</em>.</p>
+
+      <p class="paramName"><em>ALL</em></p>
+
+      <p class="paramDefnFirst">If this qualifier is specified, all duplicates are retained. This is the
+default value.</p>
+
+      <p class="paramName">Expression</p>
+
+      <p class="paramDefnFirst">An expression that evaluates to a numeric data
+type: <a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a>.</p>
+
+      <p class="paramDefn">An <em>Expression</em> can contain multiple column references or expressions,
+but it cannot contain another aggregate or subquery.</p>
+
+      <p class="paramDefn">If an <em>Expression</em>evaluates to <code>NULL</code>, the aggregate skips that value.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>The <em>Expression</em> can contain multiple column references or expressions,
+but it cannot contain another aggregate or subquery. It must evaluate to
+a built-in numeric data type. If an expression evaluates to <code>NULL</code>, the
+aggregate skips that value.</p>
+
+    <p>Only one <code>DISTINCT</code> aggregate expression per <em>Expression</em> is allowed.
+For example, the following query is not valid:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>   -- query not allowed
 SELECT AVG (DISTINCT flying_time),
   SUM (DISTINCT miles)
-  FROM Flights;</pre>
-            </div>
-            <p>Note that specifying <span class="CodeFont">DISTINCT</span>&#160;can result in a different value, since a smaller number of values may be summed. For example, if a column contains the values 1, 1, 1, 1, and 2, <span class="CodeFont">SUM(col)</span> returns a greater value than <span class="CodeFont">SUM(DISTINCT col)</span>.</p>
-            <h2>Results</h2>
-            <p>The resulting data type is the same as the expression on which it operates (it might overflow).</p>
-            <h2>Aggregate Examples</h2>
-            <p class="body">These queries compute the total of all salaries for all teams, and then the total for each individually.</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT SUM(Salary) FROM Salaries;
+  FROM Flights;
+</code></pre>
+
+    </div>
+    <p>Note that specifying <code>DISTINCT</code> can result in a different value, since a
+smaller number of values may be summed. For example, if a column
+contains the values 1, 1, 1, 1, and 2, <code>SUM(col)</code> returns a greater
+value than <code>SUM(DISTINCT col)</code>.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>The resulting data type is the same as the expression on which it
+operates (it might overflow).</p>
+
+    <h2 id="aggregate-examples">Aggregate Examples</h2>
+
+    <p class="body">These queries compute the total of all salaries for all teams, and then
+the total for each individually.</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT SUM(Salary) FROM Salaries;
 1
 --------------------
 277275362
@@ -2860,11 +2903,16 @@ splice&gt; SELECT SUM(Salary) FROM Salaries JOIN Players ON Salaries.ID=Players.
 180268132
 
 1 row selected
-</pre>
-            </div>
-            <h2>Analytic Example</h2>
-            <p class="body">This example computes the running total of salaries, per team, counting only the players who make at least $5 million in salary.</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT Team, DisplayName, Salary,
+</code></pre>
+
+    </div>
+    <h2 id="analytic-example">Analytic Example</h2>
+
+    <p class="body">This example computes the running total of salaries, per team, counting
+only the players who make at least $5 million in salary.</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT Team, DisplayName, Salary,
    SUM(Salary) OVER(PARTITION BY Team ORDER BY Salary ASC
                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) "Running Total"
    FROM Players JOIN Salaries ON Players.ID=Salaries.ID
@@ -2891,22 +2939,27 @@ Giants   |Harry Pennello          |18500000            |111977777
 Giants   |Martin Cassman          |20833333            |132811110
 
 16 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a>
-                </li>
-                <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and aggregate</a> functions</li>
-                <li><a href="sqlref_builtinfcns_avg.html"><span class="CodeFont">AVG</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_count.html"><span class="CodeFont">COUNT</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_max.html"><span class="CodeFont">MAX</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_min.html"><span class="CodeFont">MIN</span></a> function</li>
-                <li><a href="sqlref_clauses_over.html"><span class="CodeFont">OVER</span></a>&#160;clause</li>
-                <li><span class="ItalicFont"><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></span> in the <span class="ItalicFont">Developer Guide</span>.</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_datatypes_numerictypes.html">About Data Types</a></li>
+      <li><a href="sqlref_builtinfcns_windowfcnsintro.html">Window and aggregate</a>
+functions</li>
+      <li><a href="sqlref_builtinfcns_avg.html"><code>AVG</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_count.html"><code>COUNT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_max.html"><code>MAX</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_min.html"><code>MIN</code></a> function</li>
+      <li><a href="sqlref_clauses_over.html"><code>OVER</code></a> clause</li>
+      <li><em><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a></em> in
+the <em>Developer Guide</em>.</li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2923,7 +2976,11 @@ Giants   |Martin Cassman          |20833333            |132811110
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

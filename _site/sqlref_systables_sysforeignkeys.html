@@ -2806,17 +2806,21 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="SystemTables.SysForeignKeys">SYSFOREIGNKEYS System Table </h1>
-            <p>The <span class="CodeFont">SYSFOREIGNKEYS</span> table describes the information specific to
-		foreign key constraints in the current database.</p>
-            <p>Splice Machine generates
-			a backing index for each foreign key constraint. The name of this index is
-		the same as <span class="CodeFont">SYSFOREIGNKEYS.CONGLOMERATEID</span>.</p>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSFOREIGNKEYS</span> system
-		table.</p>
-            <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="sysforeignkeys-system-table">SYSFOREIGNKEYS System Table</h1>
+
+    <p>The <code>SYSFOREIGNKEYS</code> table describes the information specific to foreign
+key constraints in the current database.</p>
+
+    <p>Splice Machine generates a backing index for each foreign key
+constraint. The name of this index is the same as
+<code>SYSFOREIGNKEYS.CONGLOMERATEID</code>.</p>
+
+    <p>The following table shows the contents of the <code>SYSFOREIGNKEYS</code> system
+table.</p>
+
+    <table>
                 <caption>SYSFOREIGNKEYS system table</caption>
                 <col />
                 <col />
@@ -2834,54 +2838,55 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">CONSTRAINTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Unique identifier for the foreign key constraint (join with <span class="CodeFont">SYSCONSTRAINTS.CONSTRAINTID</span>)</td>
+                        <td><code>CONSTRAINTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
+                        <td>Unique identifier for the foreign key constraint (join with <code>SYSCONSTRAINTS.CONSTRAINTID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CONGLOMERATEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Unique identifier for index backing up the foreign key constraint (join with <span class="CodeFont">SYSCONGLOMERATES.CONGLOMERATEID</span>)</td>
+                        <td><code>CONGLOMERATEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
+                        <td>Unique identifier for index backing up the foreign key constraint (join with <code>SYSCONGLOMERATES.CONGLOMERATEID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">KEYCONSTRAINTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Unique identifier for the primary key or unique constraint referenced by this foreign key <span class="CodeFont">SYSKEYS.CONSTRAINTID</span> or <span class="CodeFont">SYSCONSTRAINTS.CONSTRAINTID</span>)</td>
+                        <td><code>KEYCONSTRAINTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
+                        <td>Unique identifier for the primary key or unique constraint referenced by this foreign key <code>SYSKEYS.CONSTRAINTID</code> or <code>SYSCONSTRAINTS.CONSTRAINTID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">DELETERULE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>DELETERULE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">Possible values:</p>
-                            <p><span class="CodeFont">'R'</span> for <span class="CodeFont">NO ACTION</span> (default)</p>
-                            <p><span class="CodeFont">'S'</span> for <span class="CodeFont">RESTRICT</span></p>
-                            <p> <span class="CodeFont">'C'</span> for <span class="CodeFont">CASCADE</span></p>
-                            <p><span class="CodeFont">'U'</span> for <span class="CodeFont">SET NULL</span></p>
+                            <p><code>'R'</code> for <code>NO ACTION</code> (default)</p>
+                            <p><code>'S'</code> for <code>RESTRICT</code></p>
+                            <p> <code>'C'</code> for <code>CASCADE</code></p>
+                            <p><code>'U'</code> for <code>SET NULL</code></p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">UPDATERULE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>UPDATERULE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">Possible values:</p>
-                            <p><span class="CodeFont">'R'</span> for <span class="CodeFont">NO ACTION</span> (default)</p>
-                            <p><span class="CodeFont">'S'</span> for <span class="CodeFont">RESTRICT</span></p>
+                            <p><code>'R'</code> for <code>NO ACTION</code> (default)</p>
+                            <p><code>'S'</code> for <code>RESTRICT</code></p>
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-	</section>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2898,7 +2903,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

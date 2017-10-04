@@ -2806,36 +2806,62 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInFcns.Year">YEAR</h1>
-            <p>The <span class="CodeFont">YEAR</span> function returns the year part of a value. The argument must be a date, timestamp, or a valid character string representation of a date or timestamp. The result of the function is an integer between <span class="CodeFont">1</span> and <span class="CodeFont">9999</span>.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">YEAR ( <span class="ItalicFont">expression</span> )</pre>
-            </div>
-            <h2>Usage</h2>
-            <p> If the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span> value.</p>
-            <h2>Examples</h2>
-            <p>Get the current date:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;value(current_date);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="year">YEAR</h1>
+
+    <p>The <code>YEAR</code> function returns the year part of a value. The argument must
+be a date, timestamp, or a valid character string representation of a
+date or timestamp. The result of the function is an integer between <code>1</code>
+and <code>9999</code>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>YEAR ( expression )
+</code></pre>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p>If the argument is <code>NULL</code>, the result is the <code>NULL</code> value.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <p>Get the current date:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; value(current_date);
 1
 --------
-2014-02-25</pre>
-            </div>
-            <p>Now get the current year only:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;value(year(current_date));
+2014-02-25
+</code></pre>
+
+    </div>
+    <p>Now get the current year only:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; value(year(current_date));
 1
 --------
-2015</pre>
-            </div>
-            <p>Now get the year value from 60 days ago:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;value(year(current_date-60));
+2015
+</code></pre>
+
+    </div>
+    <p>Now get the year value from 60 days ago:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; value(year(current_date-60));
 1
 --------
-2014</pre>
-            </div>
-            <p>Select all players born in 1985 or 1989:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT DisplayName, Team, BirthDate
+2014
+</code></pre>
+
+    </div>
+    <p>Select all players born in 1985 or 1989:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; SELECT DisplayName, Team, BirthDate
    FROM Players
    WHERE YEAR(BirthDate) IN (1985, 1989)
    ORDER BY BirthDate;
@@ -2856,22 +2882,27 @@ Elliot Andrews          |Giants   |1989-08-21
 Henry Socomy            |Giants   |1989-11-17
 
 13 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_currentdate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
-                <li><span class="CodeFont"><a href="sqlref_builtinfcns_month.html">MONTH</a></span>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
-                <li><span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> function</li>
+      <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2888,7 +2919,11 @@ Henry Socomy            |Giants   |1989-11-17
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

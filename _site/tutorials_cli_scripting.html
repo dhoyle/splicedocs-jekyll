@@ -510,28 +510,48 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Scripting the splice&gt;&#160;Command Line Interface</h1>
 <div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="scripting-the-splicecommand-line-interface">Scripting the splice&gt; Command Line Interface</h1>
+>>>>>>> MDConvert
 
-            <p>You can use two simple and different methods to script the <span class="AppCommand">splice&gt;</span>&#160;command line interpreter; both of described here:</p>
-            <ul>
-                <li><a href="#Running">Running a File of splice&gt;&#160;Commands</a>
-                </li>
-                <li><a href="#Running2">Running Splice Machine From a Shell Script</a>
-                </li>
-            </ul>
-            <h2 id="Running">Running a File of splice&gt;&#160;Commands</h2>
-            <p>You can create a simple text file of command lines and use the splice&gt;&#160;run command to run the commands in that file. Follow these steps:</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Create a file of SQL&#160;commands:</p>
-                        <p class="indentLevel1">First, create a file that contains any SQL&#160;commands you want to run against your Splice Machine database. </p>
-                        <p class="indentLevel1">For this example, we'll create a file named <span class="CodeFont">mySQLScript.sql</span> that connects to a database, creates a table, inserts records into that table, and then displays the records in the table.</p>
-                        <div class="preWrapperWide"><pre class="Example" xml:space="preserve">connect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
+    <p class="noteOnPremiseOnly">    <a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
+    <p>You can use two simple and different methods to script the <span class="AppCommand">splice&gt;</span> command line interpreter; both of
+described here:</p>
+
+    <ul>
+      <li><a href="#Running">Running a File of splice&gt; Commands</a></li>
+      <li><a href="#Running2">Running Splice Machine From a Shell Script</a></li>
+    </ul>
+
+    <h2 id="Running">Running a File of splice&gt; Commands</h2>
+
+    <p>You can create a simple text file of command lines and use the
+splice&gt; run command to run the commands in that file. Follow these
+steps:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Create a file of SQL commands:</p>
+
+          <p class="indentLevel1">First, create a file that contains any SQL commands you want to run
+against your Splice Machine database.</p>
+
+          <p class="indentLevel1">For this example, we’ll create a file named <code>mySQLScript.sql</code> that
+connects to a database, creates a table, inserts records into that
+table, and then displays the records in the table.</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>connect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
+    
 create table players (
  ID SMALLINT NOT NULL PRIMARY KEY,
  Team VARCHAR(64) NOT NULL,
@@ -539,26 +559,43 @@ create table players (
  Position CHAR(2),
  DisplayName VARCHAR(24),
  BirthDate DATE );
-
+    
 INSERT INTO Players
    VALUES (99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991'),
           (73, 'Giants', 'Lester Johns', 'P', 'Big John', '06/09/1984'),
           (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982');
+    
+SELECT * FROM Players;
+</code></pre>
 
-SELECT * FROM Players;</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Start splice&gt;</p>
-                        <p class="indentLevel1">If you've not yet done so, start Splice Machine and the splice&gt;&#160;command line interface. If you don't know how to do so, please see our <a href="tutorials_cli_usingcli.html">Introduction to the splice&gt; Command Line Interface</a>.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run the SQL&#160;Script</p>
-                        <p class="indentLevel1">Now, in <span class="AppCommand">splice&gt;</span>, run your script with the <span class="CodeFont"><a href="cmdlineref_run.html">run</a></span> command:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand">run 'mySQLScript.sql';</pre>
-                        </div>
-                        <p class="spaceAbove">You'll notice that <span class="AppCommand">splice&gt;</span>&#160;displays exactly the same results as you would see if you typed each command line into the interface:</p>
-                        <div class="preWrapperWide"><pre class="AppCommand">splice&gt; connect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Start splice&gt;</p>
+
+          <p class="indentLevel1">If you’ve not yet done so, start Splice Machine and the
+splice&gt; command line interface. If you don’t know how to do so,
+please see our <a href="tutorials_cli_usingcli.html">Introduction to the splice&gt; Command Line
+Interface</a>.</p>
+        </li>
+        <li>
+          <p class="topLevel">Run the SQL Script</p>
+
+          <p class="indentLevel1">Now, in <span class="AppCommand">splice&gt;</span>, run your script
+with the  <a href="cmdlineref_run.html"><code>run</code></a> command:</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>run 'mySQLScript.sql';
+</code></pre>
+
+          </div>
+
+          <p class="spaceAbove">You’ll notice that <span class="AppCommand">splice&gt;</span> displays exactly the same
+results as you would see if you typed each command line into the
+interface:</p>
+
+          <div class="preWrapperWide">
+            <pre class="AppCommand"><code>splice&gt; connect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
 splice&gt; create table players (
  ID SMALLINT NOT NULL PRIMARY KEY,
  Team VARCHAR(64) NOT NULL,
@@ -578,22 +615,35 @@ ID    |TEAM      |NAME                   |POS&amp;|DISPLAYNAME             |BIRT
 27    |Cards     |Earl Hastings          |OF  |Speedy Earl             |1982-04-22
 73    |Giants    |Lester Johns           |P   |Big John                |1984-06-09
 99    |Giants    |Joe Bojangles          |C   |Little Joey             |1991-07-11
-
+    
 3 rows selected
-<br />splice&gt;</pre>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <h2 id="Running2">Running Splice Machine From a Shell Script</h2>
-            <p>You can also use a shell script to start the splice&gt;&#160;command line interpreter and run command lines with Unix heredoc (<span class="CodeFont">&lt;&lt;</span>)&#160;input redirection. For example, we can easily rework the SQL&#160;script we used in the previous section into a shell script that starts <span class="AppCommand">splice&gt;</span>, runs several commands/statements, and then exits <span class="AppCommand">splice&gt;</span>.</p>
-            <div class="opsStepsList">
-                <ol class="boldFont">
-                    <li>
-                        <p class="topLevel">Create a shell script</p>
-                        <p class="indentLevel1">For this example, we'll create a file named <span class="CodeFont">myShellScript.sql</span> that uses the same commands as we did in the previous example:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">#!/bin/bash<br />echo "Running splice&gt;&#160;commands from a shell script"<br /><br />./bin/sqlshell.sh &lt;&lt;&#160;EOF<br />connect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
+splice&gt;
+</code></pre>
 
+          </div>
+        </li>
+      </ol>
+
+    </div>
+    <h2 id="Running2">Running Splice Machine From a Shell Script</h2>
+
+    <p>You can also use a shell script to start the splice&gt; command line
+interpreter and run command lines with Unix heredoc (<code>&lt;&lt;</code>) input
+redirection. For example, we can easily rework the SQL script we used in
+the previous section into a shell script that starts <span class="AppCommand">splice&gt;</span>, runs several commands/statements,
+and then exits <span class="AppCommand">splice&gt;</span>.</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Create a shell script</p>
+
+          <p class="indentLevel1">For this example, we’ll create a file named <code>myShellScript.sql</code> that
+uses the same commands as we did in the previous example:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>#!/bin/bashecho "Running splice&gt; commands from a shell script"./bin/sqlshell.sh &lt;&lt; EOFconnect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
+    
 create table players (
  ID SMALLINT NOT NULL PRIMARY KEY,
  Team VARCHAR(64) NOT NULL,
@@ -601,34 +651,57 @@ create table players (
  Position CHAR(2),
  DisplayName VARCHAR(24),
  BirthDate DATE );
-
+    
 INSERT INTO Players
    VALUES (99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991'),
           (73, 'Giants', 'Lester Johns', 'P', 'Big John', '06/09/1984'),
           (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982');
+    
+SELECT * FROM Players;exit;EOF
+</code></pre>
 
-SELECT * FROM Players;<br />exit;<br />EOF</pre>
-                        </div>
-                        <p class="indentLevel1">If you're not familiar with this kind of input redirection:&#160;the &lt;&lt;&#160;specifies that an interactive program (<span class="CodeFont">./bin/sqlshell.sh</span>) will receive its input from the lines in the file until it encounters EOF. The program responds exactly as it would had a user directly typed in those commands.</p>
-                    </li>
-                    <li>
-                        <p class="topLevel">Make your script executable</p>
-                        <p class="indentLevel1">Be sure to update permissions on your script file to allow it to run:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">chmod +x myShellScript.sh</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="topLevel">Run the script</p>
-                        <p class="indentLevel1">In your terminal window, invoke the script:</p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">./myShellScript.sh</pre>
-                        </div>
-                        <p class="spaceAbove">You'll notice that <span class="AppCommand">splice&gt;</span>&#160;starts and runs exactly as it did in the SQL&#160;script example above, then exits. </p>
-                        <div class="preWrapperWide"><pre class="ShellCommand">Running Splice Machine Commands from a Shell Script...
+          </div>
 
+          <p class="indentLevel1">If you’re not familiar with this kind of input redirection: the
+&lt;&lt; specifies that an interactive program (<code>./bin/sqlshell.sh</code>)
+will receive its input from the lines in the file until it
+encounters EOF. The program responds exactly as it would had a user
+directly typed in those commands.</p>
+        </li>
+        <li>
+          <p class="topLevel">Make your script executable</p>
+
+          <p class="indentLevel1">Be sure to update permissions on your script file to allow it to
+run:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>chmod +x myShellScript.sh
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Run the script</p>
+
+          <p class="indentLevel1">In your terminal window, invoke the script:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>./myShellScript.sh
+</code></pre>
+
+          </div>
+
+          <p class="spaceAbove">You’ll notice that <span class="AppCommand">splice&gt;</span> starts
+and runs exactly as it did in the SQL script example above, then
+exits.</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>Running Splice Machine Commands from a Shell Script...
+    
  ========= rlwrap detected and enabled.  Use up and down arrow keys to scroll through command line history. ========
-
+    
 Running Splice Machine SQL shell
-For help: "splice&gt; help;"<br />splice&gt; connect 'jdbc:splice://srv55:1527/splicedb;user=splice;password=admin';
+For help: "splice&gt; help;"splice&gt; connect 'jdbc:splice://srv55:1527/splicedb;user=splice;password=admin';
 splice&gt; create table players (
  ID SMALLINT NOT NULL PRIMARY KEY,
  Team VARCHAR(64) NOT NULL,
@@ -648,21 +721,35 @@ ID    |TEAM      |NAME                   |POS&amp;|DISPLAYNAME             |BIRT
 27    |Cards     |Earl Hastings          |OF  |Speedy Earl             |1982-04-22
 73    |Giants    |Lester Johns           |P   |Big John                |1984-06-09
 99    |Giants    |Joe Bojangles          |C   |Little Joey             |1991-07-11
-
+    
 3 rows selected
-</pre>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <h3 id="Nohup">Using nohub for Long-Running Scripts</h3>
-            <p>If you want to run an unattended shell script that may take a long time, you can: use the Unix <span class="CodeFont">nohup</span> utility, which allows you to start a script in the background and redirect its output. This means that you can start the script, log out, and view the output at a later time. For example:</p>
-            <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
-nohup ./myShellScript.sh &gt; ./myShellScript.out 2&gt;&amp;1 &amp;</pre>
-            </div>
-            <p class="topLevel">Once you've issued this command, you can log out, and subsequently view the output of your script in the <span class="CodeFont">myShellScript.out</span> file.</p>
-        </div>
-	</section>
+</code></pre>
+
+          </div>
+        </li>
+      </ol>
+
+    </div>
+    <h3 id="Nohup">Using nohub for Long-Running Scripts</h3>
+
+    <p>If you want to run an unattended shell script that may take a long time,
+you can: use the Unix <code>nohup</code> utility, which allows you to start a
+script in the background and redirect its output. This means that you
+can start the script, log out, and view the output at a later time. For
+example:</p>
+
+    <div class="preWrapperWide">
+
+      <pre class="ShellCommand"><code>nohup ./myShellScript.sh &gt; ./myShellScript.out 2&gt;&amp;1 &amp;
+</code></pre>
+
+    </div>
+    <p class="topLevel">Once you’ve issued this command, you can log out, and subsequently view
+the output of your script in the <code>myShellScript.out</code> file.</p>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -679,7 +766,11 @@ nohup ./myShellScript.sh &gt; ./myShellScript.out 2&gt;&amp;1 &amp;</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

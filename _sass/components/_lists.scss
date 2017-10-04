@@ -51,7 +51,7 @@ li {
 }
 
 li.CodeFont {
-  @include listItems($fontFamily: #codefont-face)
+  @include listItems($fontFamily: $codefont-face)
  }
 
 li.codeList {
@@ -61,6 +61,10 @@ li.codeList {
 
 li.nested {
   @include listItems($margin: (0 0 1.0em 0))
+}
+
+li.plainFont {
+  @include listItems()
 }
 
 li.topSpace {

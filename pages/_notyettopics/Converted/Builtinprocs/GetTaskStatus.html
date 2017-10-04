@@ -9,14 +9,14 @@ permalink: sqlref_sysprocs_gettaskstatus.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
-	<div class="TopicContent" data-swiftype-index="true">
+	<div class="TopicContent" data-swiftype-index="true" markdown="1">
         <h1><a id="BuiltInSysProcs.DumpTransactions">SYSCS_UTIL.SYSCS_GET_TASK_STATUS</h1>
-        <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_TASK_STATUS</span> system procedure displays the status of running statements, including job information for each and the node on which each is running.</p>
+        <p>The <code>SYSCS_UTIL.SYSCS_GET_TASK_STATUS</code> system procedure displays the status of running statements, including job information for each and the node on which each is running.</p>
         <h2>Syntax</h2>
         <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_GET_TASK_STATUS()</pre>
         </div>
         <h2>Results</h2>
-        <p>The displayed results of calling <span class="CodeFont">SYSCS_UTIL.SYSCS_GET_TASK_STATUS</span> include these values:</p>
+        <p>The displayed results of calling <code>SYSCS_UTIL.SYSCS_GET_TASK_STATUS</code> include these values:</p>
         <table summary=" summary=&quot;Columns in Get_Task_Status results display&quot;">
             <col />
             <col />
@@ -40,29 +40,29 @@ folder: SQLReference/BuiltInSysProcs
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">JOBHOST</td>
+                    <td><code>JOBHOST</code></td>
                     <td>The node on which the job is running.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">TASKID</td>
+                    <td><code>TASKID</code></td>
                     <td>The ID&#160;of the tasks contained in the job. Note that the tasks do the actual work required to complete the statement.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">TASKHOST</td>
+                    <td><code>TASKHOST</code></td>
                     <td>The node on which the task is running.</td>
                 </tr>
                 <tr>
-                    <td class="CodeFont">STATUS</td>
+                    <td><code>STATUS</code></td>
                     <td>
                         <p>The status of the task. This is one of the following values:</p>
                         <ul>
-                            <li><span class="CodeFont">PENDING</span>
+                            <li><code>PENDING</code>
                             </li>
-                            <li><span class="CodeFont">RUNNING</span>
+                            <li><code>RUNNING</code>
                             </li>
-                            <li><span class="CodeFont">FAILED</span>
+                            <li><code>FAILED</code>
                             </li>
-                            <li><span class="CodeFont">COMPLETED</span>
+                            <li><code>COMPLETED</code>
                             </li>
                         </ul>
                     </td>

@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>EXCEPT</h1>
@@ -2831,12 +2832,69 @@ Although the number, data types, and order of the fields in the select queries t
             <p>A result set.</p>
             <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example">CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY,
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="except">EXCEPT</h1>
+
+    <p>The <code>EXCEPT</code> operator combines the result set of two or more similar
+<code>SELECT</code> queries, returning the results from the first query that do not
+appear in the results of the second query.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+EXCEPT [ <a href="sqlref_expressions_select.html">SELECT expression</a> ]*</pre>
+
+</div>
+    <div class="paramList">
+      <p class="paramName">SELECT expression</p>
+
+      <p class="paramDefnFirst">A <code>SELECT</code> expression that does not include an <code>ORDER BY</code> clause.</p>
+
+      <p class="paramDefn">If you include an <code>ORDER BY</code> clause, that clause applies to the
+intersection operation.</p>
+
+      <p class="paramName">DISTINCT</p>
+
+      <p class="paramDefnFirst">(Optional). Indicates that only distinct (non-duplicate) rows from the
+queries are included. This is the default.</p>
+
+      <p class="paramName">ALL</p>
+
+      <p class="paramDefnFirst">(Optional). Indicates that all rows from the queries are included,
+including duplicates. With <code>ALL</code>, a row that has m duplicates in the
+left table and n duplicates in the right table will appear <code>max(m-n,0)</code>
+times in the result set.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p class="body">Each <code>SELECT</code> statement in the operation must contain the same number of
+columns, with similar data types, in the same order. Although the
+number, data types, and order of the fields in the select queries that
+you combine in an <code>EXCEPT</code> clause must correspond, you can use
+expressions, such as calculations or subqueries, to make them
+correspond.</p>
+
+    <p class="body">When comparing column values for determining <code>DISTINCT</code> rows, two <code>NULL</code>
+values are considered equal.</p>
+
+    <h2 id="results">Results</h2>
+
+    <p>A result set.</p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>CREATE TABLE t1( id INTEGER NOT NULL PRIMARY KEY,
+>>>>>>> MDConvert
                  i1 INTEGER, i2 INTEGER,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;c10 char(10), c30 char(30), tm time);
+                 c10 char(10), c30 char(30), tm time);
 
 CREATE TABLE t2( id INTEGER NOT NULL PRIMARY KEY,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;i1 INTEGER, i2 INTEGER,
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;vc20 varchar(20), d double, dt date);
+                 i1 INTEGER, i2 INTEGER,
+                 vc20 varchar(20), d double, dt date);
 
 INSERT INTO t1(id,i1,i2,c10,c30) VALUES
   (1,1,1,'a','123456789012345678901234567890'),
@@ -2854,14 +2912,20 @@ INSERT INTO t2(id,i1,i2,vc20,d) VALUES
   (101,1,2,'bb',NULL),
   (102,5,5,'',NULL),
   (103,1,3,' a',NULL),
-  (104,1,3,'NULL',7.4);<br /></pre><pre class="Example">splice&gt; SELECT id,i1,i2 FROM t1 EXCEPT SELECT id,i1,i2 FROM t2 ORDER BY id,i1,i2;
+  (104,1,3,'NULL',7.4);
+</code></pre>
+
+      <pre class="Example"><code>splice&gt; SELECT id,i1,i2 FROM t1 EXCEPT SELECT id,i1,i2 FROM t2 ORDER BY id,i1,i2;
 ID         |I1         |I2
 -----------------------------------
 4          |1          |3
 3          |1          |3
 6          |NULL       |NULL
 
-3 rows selected</pre><pre class="Example">splice&gt; <br />SELECT i1,i2 FROM t1<br /> EXCEPT <br />SELECT i1,i2 FROM t2 where id = -1 ORDER BY 1,2;
+3 rows selected
+</code></pre>
+
+      <pre class="Example"><code>splice&gt; SELECT i1,i2 FROM t1 EXCEPT SELECT i1,i2 FROM t2 where id = -1 ORDER BY 1,2;
 I1         |I2
 -----------------------
 NULL       |NULL
@@ -2869,20 +2933,25 @@ NULL       |NULL
 1          |2
 1          |1
 
-4 rows selected</pre><pre class="Example">splice&gt; <br />SELECT i1,i2 FROM t1 where id = -1<br /> EXCEPT <br />SELECT i1,i2 FROM t2 ORDER BY 1,2;
+4 rows selected
+</code></pre>
+
+      <pre class="Example"><code>splice&gt; SELECT i1,i2 FROM t1 where id = -1 EXCEPT SELECT i1,i2 FROM t2 ORDER BY 1,2;
 I1         |I2
 -----------------------
 
 0 rows selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_clauses_union.html">Union clause</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_union.html">Union clause</a></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2899,7 +2968,11 @@ I1         |I2
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

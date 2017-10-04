@@ -1,7 +1,9 @@
+.AppCommand {}
 
 @mixin preStyle ($bgColor: transparent,
 				 $fontWeight: $codefont-weight,
 				 $padding: 6px 6px 6px 6px,
+				 $topMargin: 6px,
 				 $leftMargin: 32px) {
 	font-family: $codefont-face;
 	white-space: pre-wrap;
@@ -9,6 +11,7 @@
 	font-weight: $fontWeight;
 	padding: $padding;
 	margin-left: $leftMargin;
+	margin-top: $topMargin;
 }
 
 pre {
@@ -28,6 +31,7 @@ pre.ExampleCell {
 pre.FcnSyntax,
 pre.FcnSyntaxCell {
 	@include preStyle( $bgColor: $bgcolor-fcnSyntax );
+	a:link { font-style: italic;}
 }
 
 pre.Plain,
@@ -44,6 +48,17 @@ pre.AppCommandCell,
 pre.ExampleCell,
 pre.FcnSyntaxCell,
 pre.PlainCell,
-pre.ShellCommandCell { 
+pre.ShellCommandCell {
 	margin-left: 2px;
 }
+
+
+.AppCommand { background-color: $bgcolor-app; }
+
+.Example { background-color: $bgcolor-example; }
+
+.FcnSyntax { background-color: $bgcolor-fcnSyntax; }
+
+.Plain { background-color: transparent; }
+
+.ShellCommand { background-color: $bgcolor-shellcmd; }

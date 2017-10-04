@@ -518,6 +518,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Export Command</h1>
@@ -589,16 +590,152 @@
             <p>For more information about the <span class="CodeFont">getmerge</span> command, see <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge"  target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">         -- This example uses all default options:
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="export-command">Export Command</h1>
+
+    <p>The <span class="AppCommand">export</span> command exports the results
+of an SQL query to a CSV (comma separated value) file.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>EXPORT ( exportPath,
+         compression,
+         replicationCount,
+         fileEncoding,
+         fieldSeparator,
+         quoteCharacter )  &lt;SQL_QUERY&gt;;
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">exportPath</p>
+
+      <p class="paramDefnFirst">The directory in which you want the export file(s) written.</p>
+
+      <p class="paramName">compress</p>
+
+      <p class="paramDefnFirst">Whether or not to compress the exported files. You can specify one of
+the following values:</p>
+
+      <div>
+    <table summary="Possible values for compression">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>true</code></td>
+                    <td>The exported files are compressed using <code>deflate/gzip</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>false</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+
+      <p class="paramName">replicationCount</p>
+
+      <p class="paramDefnFirst">The file system block replication count to use for the exported
+CSV files.</p>
+
+      <p class="paramDefn">You can specify any positive integer value. The default value is <code>1</code>.</p>
+
+      <p class="paramName">fileEncoding</p>
+
+      <p class="paramDefnFirst">The character set encoding to use for the exported CSV files.</p>
+
+      <p class="paramDefn">You can specify any character set encoding that is supported by the
+Java Virtual Machine (JVM). The default encoding is <code>UTF-8</code>.</p>
+
+      <p class="paramName">fieldSeparator</p>
+
+      <p class="paramDefnFirst">The character to use for separating fields in the exported CSV files.</p>
+
+      <p class="paramDefn">The default separator character is the comma (<code>,</code>).</p>
+
+      <p class="paramName">quoteCharacter</p>
+
+      <p class="paramDefnFirst">The character to use for quoting output in the exported CSV files.</p>
+
+      <p class="paramDefn">The default quote character is the double quotation mark (<code>"</code>).</p>
+
+    </div>
+
+    <h2 id="usage">Usage</h2>
+
+    <p>The <span class="AppCommand">EXPORT</span> command generates one or
+more
+CSV files and stores them in the directory that you specified in the
+<code>exportPath</code> parameter. More than one output file is generated to
+enhance the parallelism and performance of this operation.</p>
+
+    <p>If <code>compression=true</code>, then each of the generated files is named with
+this format:</p>
+
+    <div class="preWrapper">
+      <pre class="AppCommand"><code>export_&lt;N&gt;.csv.gz
+</code></pre>
+
+    </div>
+
+    <p>If <code>compression=false</code>, then each of the generated files is named with
+this format:</p>
+
+    <div class="preWrapper">
+      <pre class="AppCommand"><code>export_&lt;N&gt;.csv
+</code></pre>
+
+    </div>
+
+    <p>The value of <span class="AppCommand">&lt;N&gt;</span> is a random
+integer value.</p>
+
+    <h3 id="merging-the-exported-files">Merging the Exported Files</h3>
+
+    <p>You can copy all of the exported files into a single file on your local
+file system using the Hadoop FS command <code>getmerge</code>. The syntax for
+<code>getmerge</code> is:</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>hadoop fs -getmerge sourceDir localPath
+</code></pre>
+
+    </div>
+
+    <p>Use the <em>exportPath</em> directory as the value of sourceDir to copy all of
+the exported CSV files to your <em>localPath</em>.</p>
+
+    <p>For more information about the <code>getmerge</code> command, see
+<a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge" target="_blank">http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.</a></p>
+
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>         -- This example uses all default options:
+>>>>>>> MDConvert
  splice&gt; EXPORT('/my/export/dir', false, null, null, null, null)
-          SELECT&#160;a,b,sqrt(c) FROM&#160;t1 join t2 on t1.a=t2.a;
+          SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a;
 
          -- This example explicitly specifies options:
 splice&gt; EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
-          SELECT&#160;a,b,sqrt(c) FROM&#160;t1 join t2 on t1.a=t2.a;
-</pre>
-            </div>
-        </div>
-	</section>
+          SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a;
+</code></pre>
+
+    </div>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -615,7 +752,11 @@ splice&gt; EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

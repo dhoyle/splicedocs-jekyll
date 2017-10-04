@@ -518,6 +518,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Show Functions</h1>
@@ -532,6 +533,36 @@
             <h3>Results</h3>
             <p>The <span class="AppCommand">show functions</span> command results contains the following columns:</p>
             <table summary="List of columns in the output of the show functions command.">
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="show-functions">Show Functions</h1>
+
+    <p>The <span class="AppCommand">show functions</span> command displays all
+of the functions in the database, or the names of the functions in the
+specified schema.</p>
+
+    <h3 id="syntax">Syntax</h3>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SHOW FUNCTIONS [ IN schemaName ]
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">schemaName</p>
+
+      <p class="paramDefnFirst">If you supply a schema name, only the functions in that schema are
+displayed; otherwise, all functions in the database are displayed.</p>
+
+    </div>
+    <h3 id="results">Results</h3>
+
+    <p>The <span class="AppCommand">show functions</span> command results
+contains the following columns:</p>
+
+    <table summary="List of columns in the output of the show functions command.">
+>>>>>>> MDConvert
                 <col />
                 <col />
                 <thead>
@@ -542,21 +573,23 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">FUNCTION_SCHEMA</td>
+                        <td><code>FUNCTION_SCHEMA</code></td>
                         <td>The name of the function's schema</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">FUNCTION_NAME</td>
+                        <td><code>FUNCTION_NAME</code></td>
                         <td>The name of the function</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">REMARKS</td>
+                        <td><code>REMARKS</code></td>
                         <td>Any remarks that have been stored for the function</td>
                     </tr>
                 </tbody>
             </table>
-            <h3>Examples</h3>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; CREATE FUNCTION TO_DEGREES ( RADIANS DOUBLE )
+    <h3 id="examples">Examples</h3>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; CREATE FUNCTION TO_DEGREES ( RADIANS DOUBLE )
 &gt; RETURNS DOUBLE
 &gt; PARAMETER STYLE JAVA
 &gt; NO SQL LANGUAGE JAVA
@@ -568,10 +601,12 @@ FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
 SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees
 
 1 row selected
-</pre>
-            </div>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -588,7 +623,11 @@ SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

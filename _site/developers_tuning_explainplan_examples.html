@@ -587,6 +587,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Explain Plan Examples</h1>
@@ -615,45 +616,104 @@
             <h2 id="TableSca">TableScan Examples</h2>
             <p>This example show a plan for a <span class="CodeFont">TableScan</span> operation that has no qualifiers, known as a <span class="ItalicFont">raw scan</span>:</p>
             <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; explain select * from sys.systables;<br /><br />Plan
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="explain-plan-examples">Explain Plan Examples</h1>
+
+    <p>This topic contains the following examples of using the <code>explain</code>
+command to display the execution plan for a statement, including the
+following examples:</p>
+
+    <ul>
+      <li><a href="#TableSca">TableScan Examples</a></li>
+      <li><a href="#IndexSca">IndexScan Examples</a></li>
+      <li><a href="#Projecti">Projection and Restriction Examples</a></li>
+      <li><a href="#Index">Index Lookup</a></li>
+      <li><a href="#Join">Join Example</a></li>
+      <li><a href="#Union">Union Example</a></li>
+      <li><a href="#Order">Order By Example</a></li>
+      <li><a href="#Aggregat">Aggregation Operation Examples</a></li>
+      <li><a href="#Subquery">Subquery Example</a></li>
+    </ul>
+
+    <p class="noteIcon">The format and meaning of the common fields in the output plans shown
+here is found in the previous topic, <a href="developers_tuning_explainplan.html">About Explain
+Plan</a>.</p>
+
+    <h2 id="TableSca">TableScan Examples</h2>
+
+    <p>This example show a plan for a <code>TableScan</code> operation that has no
+qualifiers, known as a <em>raw scan</em>:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select * from sys.systables;Plan
+>>>>>>> MDConvert
 -------------------------------------------------------------------------------------------------
 Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=2,totalCost=8.594,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
     -&gt;  TableScan[SYSTABLES(48)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
 
-3 rows selected</pre>
-            </div>
-            <p>This example show a plan for a <span class="CodeFont">TableScan</span> operation that does have qualifiers::</p>
-            <div class="preWrapperWide"><pre class="AppCommand">splice&gt;&#160;explain select *&#160;from sys.systables --SPLICE-PROPERTIES index=NULL<br />&#160;&#160;&#160;where tablename='SYSTABLES';<br /><br />Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
+3 rows selected
+</code></pre>
+
+    </div>
+    <p>This example show a plan for a <code>TableScan</code> operation that does have
+qualifiers::</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select * from sys.systables --SPLICE-PROPERTIES index=NULL   where tablename='SYSTABLES';Plan
+-------------------------------------------------------------------------------------------------Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=2,totalCost=8.54,outputRows=18,outputHeapSize=2.988 KB,partitions=1)
     -&gt;  TableScan[SYSTABLES(48)](n=1,totalCost=4.054,outputRows=18,outputHeapSize=2.988 KB,partitions=1,preds=[(TABLENAME[0:2] = SYSTABLES)])
 
-3 rows selected</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>
-                    <p>The plan labels this operation as <span class="CodeFont">TableScan[</span><span class="ItalicFont">tableId</span>(<span class="ItalicFont">conglomerateId</span>)<span class="CodeFont">]</span>:</p>
-                    <ul class="SecondLevel">
-                        <li><span class="ItalicFont">tableId</span> is the name of the table, in the form <span class="CodeFont">schemaName '.' tableName</span>.</li>
-                        <li><span class="ItalicFont">conglomerateId</span> is an ID&#160;that is unique to every HBase table; this value is used internally, and can be used for certain administrative tasks</li>
-                    </ul>
-                </li>
-                <li>The <span class="CodeFont">preds</span> field includes qualifiers that were pushed down to the base table.</li>
-            </ul>
-            <h2 id="IndexSca">IndexScan Examples</h2>
-            <p>This example show a plan for an <span class="CodeFont">IndexScan</span> operation that has no predicates:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables; --covering index
+3 rows selected
+</code></pre>
+
+    </div>
+    <h3 id="nodes">Nodes</h3>
+
+    <ul>
+      <li>
+        <p>The plan labels this operation as
+<code>TableScan[</code><em>tableId</em>(<em>conglomerateId</em>)<code>]</code>:</p>
+
+        <ul class="SecondLevel">
+          <li><em>tableId</em> is the name of the table, in the form <code>schemaName '.'
+tableName</code>.</li>
+          <li><em>conglomerateId</em> is an ID that is unique to every HBase table; this
+value is used internally, and can be used for certain administrative
+tasks</li>
+        </ul>
+      </li>
+      <li>
+        <p>The <code>preds</code> field includes qualifiers that were pushed down to the
+base table.</p>
+      </li>
+    </ul>
+
+    <h2 id="IndexSca">IndexScan Examples</h2>
+
+    <p>This example show a plan for an <code>IndexScan</code> operation that has no
+predicates:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select tablename from sys.systables; --covering index
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=2,totalCost=8.31,outputRows=20,outputHeapSize=560 B,partitions=1)
     -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=560 B,partitions=1,baseTable=SYSTABLES(32))
 
-3 rows selected<br /></pre>
-            </div>
-            <p>This example shows a plan for an <span class="CodeFont">IndexScan</span> operation that contains predicates:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables --SPLICE-PROPERTIES index=SYSTABLES_INDEX1
+3 rows selected
+</code></pre>
+
+    </div>
+    <p>This example shows a plan for an <code>IndexScan</code> operation that contains
+predicates:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select tablename from sys.systables --SPLICE-PROPERTIES index=SYSTABLES_INDEX1
         where tablename = 'SYSTABLES';
 
 Plan
@@ -661,98 +721,147 @@ Plan
   -&gt;  ScrollInsensitive(n=2,totalCost=8.272,outputRows=18,outputHeapSize=432 B,partitions=1)
     -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.049,outputRows=18,outputHeapSize=432 B,partitions=1,baseTable=SYSTABLES(48),preds=[(TABLENAME[0:1] = SYSTABLES)])
 
-3 rows selected</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>
-                    <p>The plan labels this operation as <span class="CodeFont">IndexScan[</span><span class="ItalicFont">indexId(conglomerateId)</span><span class="CodeFont">]</span>:</p>
-                    <ul class="SecondLevel">
-                        <li><span class="ItalicFont">indexId</span> is the name of the index</li>
-                        <li><span class="ItalicFont">conglomerateId</span> is an ID&#160;that is unique to every HBase table; this value is used internally, and can be used for certain administrative tasks</li>
-                    </ul>
-                </li>
-                <li>The <span class="CodeFont">preds</span> field includes qualifiers that were pushed down to the base table.</li>
-            </ul>
-            <h2 id="Projecti">Projection and Restriction Examples</h2>
-            <p>This example show a plan for a <span class="CodeFont">Projection</span> operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename || 'hello' from sys.systables;
+3 rows selected
+</code></pre>
+
+    </div>
+    <h3 id="nodes-1">Nodes</h3>
+
+    <ul>
+      <li>
+        <p>The plan labels this operation as
+<code>IndexScan[</code><em>indexId(conglomerateId)</em><code>]</code>:</p>
+
+        <ul class="SecondLevel">
+          <li><em>indexId</em> is the name of the index</li>
+          <li><em>conglomerateId</em> is an ID that is unique to every HBase table; this
+value is used internally, and can be used for certain administrative
+tasks</li>
+        </ul>
+      </li>
+      <li>
+        <p>The <code>preds</code> field includes qualifiers that were pushed down to the
+base table.</p>
+      </li>
+    </ul>
+
+    <h2 id="Projecti">Projection and Restriction Examples</h2>
+
+    <p>This example show a plan for a <code>Projection</code> operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select tablename || 'hello' from sys.systables;
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=3,totalCost=8.302,outputRows=20,outputHeapSize=480 B,partitions=1)
     -&gt;  ProjectRestrict(n=2,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1)
       -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
 
-4 rows selected</pre>
-            </div>
-            <p>This example shows a plan for a <span class="CodeFont">Restriction</span> operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables
-&#160;       where tablename like '%SYS%';
+4 rows selected
+</code></pre>
+
+    </div>
+    <p>This example shows a plan for a <code>Restriction</code> operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select tablename from sys.systables
+        where tablename like '%SYS%';
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=4,rows=10,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=4,rows=10,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=3,totalCost=8.178,outputRows=10,outputHeapSize=240 B,partitions=1)
     -&gt;  ProjectRestrict(n=2,totalCost=4.054,outputRows=10,outputHeapSize=240 B,partitions=1,preds=[like(TABLENAME[0:1], %SYS%)])
       -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=240 B,partitions=1,baseTable=SYSTABLES(48))
 
-4 rows selected</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>The plan labels both projection and restriction operations as <span class="CodeFont">ProjectRestrict</span>. which can contain both <span class="ItalicFont">projections</span> and <span class="ItalicFont">non-qualifier restrictions</span>. A <span class="ItalicFont">non-qualifier restriction</span> is a predicate that cannot be pushed to the underlying table scan.</li>
-            </ul>
-            <h2 id="Index">Index Lookup</h2>
-            <p>This example shows a plan for an <span class="CodeFont">IndexLookup</span> operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select * from SYS.SYSTABLES --SPLICE-PROPERTIES index=SYSTABLES_INDEX1
+4 rows selected
+</code></pre>
+
+    </div>
+    <h3 id="nodes-2">Nodes</h3>
+
+    <ul>
+      <li>The plan labels both projection and restriction operations as
+<code>ProjectRestrict</code>. which can contain both <em>projections</em> and
+<em>non-qualifier restrictions</em>. A <em>non-qualifier restriction</em> is a
+predicate that cannot be pushed to the underlying table scan.</li>
+    </ul>
+
+    <h2 id="Index">Index Lookup</h2>
+
+    <p>This example shows a plan for an <code>IndexLookup</code> operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select * from SYS.SYSTABLES --SPLICE-PROPERTIES index=SYSTABLES_INDEX1
 where tablename = 'SYSTABLES';;
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=4,rows=18,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=4,rows=18,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=3,totalCost=177.265,outputRows=18,outputHeapSize=921.586 KB,partitions=1)
     -&gt;  IndexLookup(n=2,totalCost=78.715,outputRows=18,outputHeapSize=921.586 KB,partitions=1)
-      -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=6.715,outputRows=18,outputHeapSize=921.586 KB,partitions=1,baseTable=SYSTABLES(48),preds=[(TABLENAME[1:2] = SYSTABLES)])</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>The plan labels the operation as <span class="CodeFont">IndexLookup</span>; you may see this labeled as an <span class="CodeFont">IndexToBaseRow</span> operation elsewhere.</li>
-                <li>Plans for <span class="CodeFont">IndexLookup</span> operations do not contain any special fields.</li>
-            </ul>
-            <h2 id="Join">Join Example</h2>
-            <p>This example shows a plan for a <span class="CodeFont">Join</span> operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select * from sys.systables t, sys.sysschemas s
+      -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=6.715,outputRows=18,outputHeapSize=921.586 KB,partitions=1,baseTable=SYSTABLES(48),preds=[(TABLENAME[1:2] = SYSTABLES)])
+</code></pre>
+
+    </div>
+    <h3 id="nodes-3">Nodes</h3>
+
+    <ul>
+      <li>The plan labels the operation as <code>IndexLookup</code>; you may see this
+labeled as an <code>IndexToBaseRow</code> operation elsewhere.</li>
+      <li>Plans for <code>IndexLookup</code> operations do not contain any special fields.</li>
+    </ul>
+
+    <h2 id="Join">Join Example</h2>
+
+    <p>This example shows a plan for a <code>Join</code> operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select * from sys.systables t, sys.sysschemas s
         where t.schemaid =s.schemaid;
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=5,rows=20,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=5,rows=20,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=4,totalCost=21.728,outputRows=20,outputHeapSize=6.641 KB,partitions=1)
     -&gt;  BroadcastJoin(n=3,totalCost=12.648,outputRows=20,outputHeapSize=6.641 KB,partitions=1,preds=[(T.SCHEMAID[4:4] = S.SCHEMAID[4:8])])
       -&gt;  TableScan[SYSSCHEMAS(32)](n=2,totalCost=4.054,outputRows=20,outputHeapSize=6.641 KB,partitions=1)
       -&gt;  TableScan[SYSTABLES(48)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
 
-5 rows selected</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>
-                    <p>The plan labels the operation using the <span class="ItalicFont">join type</span> followed by <span class="CodeFont">Join</span>; the possible values are:</p>
-                    <ul class="SecondLevel">
-                        <li class="CodeFont" value="1">BroadcastJoin</li>
-                        <li class="CodeFont" value="2">MergeJoin</li>
-                        <li class="CodeFont" value="3">MergeSortJoin</li>
-                        <li class="CodeFont" value="4">NestedLoopJoin</li>
-                        <li class="CodeFont" value="5">OuterJoin</li>
-                    </ul>
-                </li>
-                <li>The plan may include a <span class="CodeFont">preds</span> field, which lists the join predicates.</li>
-                <li><span class="CodeFont">NestedLoopJoin</span> operations do not include a <span class="CodeFont">preds</span> field; instead, the predicates are listed in either a <span class="CodeFont">ProjectRestrict</span> or in the underlying scan.</li>
-                <li>
-                    <p>The right side of the <span class="ItalicFont">Join</span> operation is listed first, followed by the left side of the join.</p>
-                </li>
-            </ul>
-            <h3>Outer Joins</h3>
-            <p>An <span class="ItalicFont">outer join</span> does not display it as a separate strategy in the plan; instead, it is treated a <span class="ItalicFont">postfix</span> for the strategy that's used. For example, if you are using a Broadcast join, and it's a left outer join, then you'll see <span class="CodeFont">BroadcastLeftOuterJoin</span>. Here's an example:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">explain select s.schemaname,t.tablename from sys.sysschemas s left outer join sys.systables t
+5 rows selected
+</code></pre>
+
+    </div>
+    <h3 id="nodes-4">Nodes</h3>
+
+    <ul>
+      <li>
+        <p>The plan labels the operation using the <em>join type</em> followed by
+<code>Join</code>; the possible values are:</p>
+
+        <ul class="SecondLevel">
+          <li class="CodeFont" value="1">BroadcastJoin</li>
+          <li class="CodeFont" value="2">MergeJoin</li>
+          <li class="CodeFont" value="3">MergeSortJoin</li>
+          <li class="CodeFont" value="4">NestedLoopJoin</li>
+          <li class="CodeFont" value="5">OuterJoin</li>
+        </ul>
+      </li>
+      <li>The plan may include a <code>preds</code> field, which lists the join predicates.</li>
+      <li><code>NestedLoopJoin</code> operations do not include a <code>preds</code> field; instead,
+the predicates are listed in either a <code>ProjectRestrict</code> or in the
+underlying scan.</li>
+      <li>The right side of the <em>Join</em> operation is listed first, followed by
+the left side of the join.</li>
+    </ul>
+
+    <h3 id="outer-joins">Outer Joins</h3>
+
+    <p>An <em>outer join</em> does not display it as a separate strategy in the plan;
+instead, it is treated a <em>postfix</em> for the strategy that’s used. For
+example, if you are using a Broadcast join, and it’s a left outer join,
+then you’ll see <code>BroadcastLeftOuterJoin</code>. Here’s an example:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>explain select s.schemaname,t.tablename from sys.sysschemas s left outer join sys.systables t
 &gt; on s.schemaid = t.schemaid;
 Plan
 -------------------------------------------------------------------------------------------------
@@ -761,11 +870,16 @@ Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
     -&gt;  ProjectRestrict(n=4,totalCost=130.579,outputRows=20,outputHeapSize=2 MB,partitions=1)
       -&gt;  BroadcastLeftOuterJoin(n=3,totalCost=130.579,outputRows=20,outputHeapSize=2 MB,partitions=1,preds=[(S.SCHEMAID[4:1] = T.SCHEMAID[4:4])])
         -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=2,totalCost=7.017,outputRows=20,outputHeapSize=2 MB,partitions=1,baseTable=SYSTABLES(48))
-        -&gt;  TableScan[SYSSCHEMAS(32)](n=1,totalCost=7.516,outputRows=20,outputHeapSize=1023.984 KB,partitions=1)</pre>
-            </div>
-            <h2 id="Union">Union Example</h2>
-            <p>This example shows a plan for a <span class="CodeFont">Union</span> operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables t union all select schemaname from sys.sysschemas;
+        -&gt;  TableScan[SYSSCHEMAS(32)](n=1,totalCost=7.516,outputRows=20,outputHeapSize=1023.984 KB,partitions=1)
+</code></pre>
+
+    </div>
+    <h2 id="Union">Union Example</h2>
+
+    <p>This example shows a plan for a <code>Union</code> operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select tablename from sys.systables t union all select schemaname from sys.sysschemas;
 
 Plan
 -------------------------------------------------------------------------------------------------
@@ -775,47 +889,66 @@ Cursor(n=5,rows=40,updateMode=READ_ONLY (1),engine=control)
       -&gt;  IndexScan[SYSSCHEMAS_INDEX1(209)](n=2,totalCost=4.054,outputRows=20,outputHeapSize=1.094 KB,partitions=1,baseTable=SYSSCHEMAS(32))
       -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
 
-5 rows selected</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>The right side of the <span class="CodeFont">Union</span> is listed first, followed by the left side of the union,</li>
-            </ul>
-            <h2 id="Order">Order By Example</h2>
-            <p>This example shows a plan for an order by operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename from sys.systables order by tablename desc;
+5 rows selected
+</code></pre>
+
+    </div>
+    <h3 id="nodes-5">Nodes</h3>
+
+    <ul>
+      <li>The right side of the <code>Union</code> is listed first, followed by the left
+side of the union,</li>
+    </ul>
+
+    <h2 id="Order">Order By Example</h2>
+
+    <p>This example shows a plan for an order by operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select tablename from sys.systables order by tablename desc;
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=3,totalCost=16.604,outputRows=20,outputHeapSize=480 B,partitions=1)
     -&gt;  OrderBy(n=2,totalCost=12.356,outputRows=20,outputHeapSize=480 B,partitions=1)
       -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
 
-4 rows selected</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>The plan labels this operation as <span class="CodeFont">OrderBy</span>.</li>
-            </ul>
-            <h2 id="Aggregat">Aggregation Operation Examples</h2>
-            <p>This example show a plan for a grouped aggregate operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename, count(*) from sys.systables group by tablename;
+4 rows selected
+</code></pre>
+
+    </div>
+    <h3 id="nodes-6">Nodes</h3>
+
+    <ul>
+      <li>The plan labels this operation as <code>OrderBy</code>.</li>
+    </ul>
+
+    <h2 id="Aggregat">Aggregation Operation Examples</h2>
+
+    <p>This example show a plan for a grouped aggregate operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select tablename, count(*) from sys.systables group by tablename;
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=5,totalCost=12.568,outputRows=20,outputHeapSize=480 B,partitions=16)
     -&gt;  ProjectRestrict(n=4,totalCost=8.32,outputRows=20,outputHeapSize=480 B,partitions=16)
       -&gt;  GroupBy(n=3,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1)
         -&gt;  ProjectRestrict(n=2,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1)
           -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
 
-6 rows selected)</pre>
-            </div>
-            <p>This example shows a plan for a scalar aggregate operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select count(*) from sys.systables;
+6 rows selected)
+</code></pre>
+
+    </div>
+    <p>This example shows a plan for a scalar aggregate operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select count(*) from sys.systables;
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=5,totalCost=8.797,outputRows=1,outputHeapSize=0 B,partitions=1)
     -&gt;  ProjectRestrict(n=4,totalCost=4.257,outputRows=1,outputHeapSize=0 B,partitions=1)
       -&gt;  GroupBy(n=3,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
@@ -823,40 +956,58 @@ Plan
           -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1,baseTable=SYSTABLES(48))
 
 6 rows selected
-</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>The plan labels both grouped and scaled aggregate operations as <span class="CodeFont">GroupBy</span>.</li>
-            </ul>
-            <h2 id="Subquery">Subquery Example</h2>
-            <p>This example shows a plan for a <span class="CodeFont">SubQuery</span> operation:</p>
-            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;explain select tablename, (select tablename from sys.systables t2 where t2.tablename = t.tablename)from sys.systables t;
+</code></pre>
+
+    </div>
+    <h3 id="nodes-7">Nodes</h3>
+
+    <ul>
+      <li>The plan labels both grouped and scaled aggregate operations as
+<code>GroupBy</code>.</li>
+    </ul>
+
+    <h2 id="Subquery">Subquery Example</h2>
+
+    <p>This example shows a plan for a <code>SubQuery</code> operation:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; explain select tablename, (select tablename from sys.systables t2 where t2.tablename = t.tablename)from sys.systables t;
 
 Plan
--------------------------------------------------------------------------------------------------<br />Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
+-------------------------------------------------------------------------------------------------Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
   -&gt;  ScrollInsensitive(n=5,totalCost=8.302,outputRows=20,outputHeapSize=480 B,partitions=1)
     -&gt;  ProjectRestrict(n=4,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1)
       -&gt;  Subquery(n=3,totalCost=12.55,outputRows=20,outputHeapSize=480 B,partitions=1,correlated=true,expression=true,invariant=true)
         -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=2,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48),preds=[(T2.TABLENAME[0:1] = T.TABLENAME[4:1])])
       -&gt;  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
 
-6 rows selected</pre>
-            </div>
-            <h3>Nodes</h3>
-            <ul>
-                <li>Subqueries are listed as a second query tree, whose starting indentation level is the same as the <span class="CodeFont">ProjectRestrict</span> operation that <span class="ItalicFont">owns</span> the subquery.</li>
-                <li>Includes a <span class="ItalicFont">correlated</span> field, which specifies whether or not the query is treated as correlated or uncorrelated.</li>
-                <li>Includes an <span class="ItalicFont">expression</span> field, which specifies whether or not the subquery is an expression.</li>
-                <li>Includes an <span class="ItalicFont">invariant</span> field, which indicates whether the subquery is invariant.</li>
-            </ul>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="developers_tuning_explainplan.html">About Explain Plan</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+6 rows selected
+</code></pre>
+
+    </div>
+    <h3 id="nodes-8">Nodes</h3>
+
+    <ul>
+      <li>Subqueries are listed as a second query tree, whose starting
+indentation level is the same as the <code>ProjectRestrict</code> operation that
+<em>owns</em> the subquery.</li>
+      <li>Includes a <em>correlated</em> field, which specifies whether or not the
+query is treated as correlated or uncorrelated.</li>
+      <li>Includes an <em>expression</em> field, which specifies whether or not the
+subquery is an expression.</li>
+      <li>Includes an <em>invariant</em> field, which indicates whether the subquery is
+invariant.</li>
+    </ul>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="developers_tuning_explainplan.html">About Explain Plan</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -873,7 +1024,11 @@ Plan
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

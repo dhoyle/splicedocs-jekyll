@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>PIN&#160;TABLE</h1>
@@ -2842,6 +2843,76 @@
             </ul>
             <p>Here's a simple example that illustrates these qualities:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE TABLE myTbl (col1 int, col2 varchar(10));
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="pintable">PIN TABLE</h1>
+
+    <p>The <code>PIN TABLE</code> statement allows you to pin (cache) a table in memory,
+which can improve performance for tables that are being used frequently
+in analytic operations.</p>
+
+    <p class="noteImportant">The pinned version of a table is a static version of that table; updates
+to the underlying table are not automatically reflected in the pinned
+version. To refresh the pinned version, you need to unpin and then repin
+the table, as described in the <a href="#Usage">Usage Notes</a> section below.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>PIN TABLE tableName;
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">tableName</p>
+
+      <p class="paramDefnFirst">A string that specifies the name of the table that you want to pin in
+memory.</p>
+
+      <p class="paramDefn">An error occurs if the named table does not exist.</p>
+
+    </div>
+    <h2 id="Usage">Usage Notes</h2>
+
+    <p>Here are a few important notes about using pinned tables:</p>
+
+    <ul>
+      <li><a href="#Pinned">Pinned and Unpinned Table Versions</a></li>
+      <li><a href="#Refreshi">Refreshing the Pinned Version of a Table</a></li>
+      <li><a href="#Unpinnin">Unpinning and Dropping Pinned Tables</a></li>
+    </ul>
+
+    <h3 id="Pinned">Pinned and Unpinned Table Versions</h3>
+
+    <p>Once you pin a table, you effectively have two versions of it to work
+with:</p>
+
+    <ul>
+      <li>The original table continues to work just as usual</li>
+      <li>The pinned version is a static version of the table at the time you
+pinned it. To access the pinned version of a table, you must specify
+the Splice <code>pin=true</code> property. If you do not specify this property in
+your query, the query will operate on the unpinned version of the
+table.</li>
+    </ul>
+
+    <p>The pinned version (version) of a table is statically cached in memory;
+this means that:</p>
+
+    <ul>
+      <li>Updates to the table (unpinned version) are not automatically
+reflected in the pinned version of the table.</li>
+      <li>Updates to the pinned version of the table are not permitted: you
+cannot insert into, delete from, or update the pinned version of a
+table.</li>
+    </ul>
+
+    <p>Here’s a simple example that illustrates these qualities:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CREATE TABLE myTbl (col1 int, col2 varchar(10));
+>>>>>>> MDConvert
 0 rows inserted/updated/deleted
 splice&gt; INSERT INTO myTbl VALUES (1, 'One'), (2, 'Two');
 2 rows inserted/updated/deleted
@@ -2863,25 +2934,45 @@ splice&gt; SELECT * FROM myTbl --splice-properties pin=true
 COL1      |COL2
 ---------------------
 1           One
-2           Two<br /><br />2 rows selected<br />splice&gt;&#160;UPDATE&#160;myTbl SET&#160;col1=11 WHERE&#160;col1=1;<br />1 row inserted/updated/deleted<br />splice&gt;&#160;UPDATE&#160;myTbl --splice-properties pin=true<br />SET&#160;col1=21 WHERE&#160;col1=2;<br />ERROR:&#160;Pinned Table read failed with exception Table or view not found in database.</pre>
-            </div>
-            <h3 id="Refreshi">Refreshing the Pinned Version of a Table</h3>
-            <p class="body">If you update the table and want the pinned version to reflect those updates, you need to refresh your pinned table version. You can simply unpin the table from memory, and then repin it into memory:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;UNPIN&#160;TABLE&#160;Players;<br />0 rows inserted/updated/deleted<br />splice&gt; PIN&#160;TABLE&#160;Players;<br />0 rows inserted/updated/deleted</pre>
-            </div>
-            <p class="body">Now the pinned version of the table matches the original version.</p>
-            <h3 id="Unpinnin">Unpinning and Dropping Pinned Tables</h3>
-            <p>When you drop a table (with the <span class="CodeFont"><a href="sqlref_statements_droptable.html">DROP&#160;TABLE</a></span>&#160;statement), the pinned version is automatically deleted and can no longer be used.</p>
-            <p>To delete just the pinned version of a table, use the <span class="CodeFont"><a href="sqlref_statements_unpintable.html">UNPIN&#160;TABLE</a></span> statement.</p>
-            <h2>See Also</h2>
-            <ul>
-                <li><span class="CodeFont"><a href="sqlref_statements_createexternaltable.html">CREATE&#160;EXTERNAL&#160;TABLE</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createtable.html">CREATE&#160;TABLE</a></span>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_unpintable.html">UNPIN&#160;TABLE</a></span> statement</li>
-                <li><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the <span class="ItalicFont">Splice Machine Developer's Guide</span></li>
-            </ul>
-        </div>
-	</section>
+2           Two2 rows selectedsplice&gt; UPDATE myTbl SET col1=11 WHERE col1=1;1 row inserted/updated/deletedsplice&gt; UPDATE myTbl --splice-properties pin=trueSET col1=21 WHERE col1=2;ERROR: Pinned Table read failed with exception Table or view not found in database.
+</code></pre>
+
+    </div>
+    <h3 id="Refreshi">Refreshing the Pinned Version of a Table</h3>
+
+    <p class="body">If you update the table and want the pinned version to reflect those
+updates, you need to refresh your pinned table version. You can simply
+unpin the table from memory, and then repin it into memory:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; UNPIN TABLE Players;0 rows inserted/updated/deletedsplice&gt; PIN TABLE Players;0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <p class="body">Now the pinned version of the table matches the original version.</p>
+
+    <h3 id="Unpinnin">Unpinning and Dropping Pinned Tables</h3>
+
+    <p>When you drop a table (with the
+<a href="sqlref_statements_droptable.html"><code>DROP TABLE</code></a> statement), the pinned
+version is automatically deleted and can no longer be used.</p>
+
+    <p>To delete just the pinned version of a table, use the
+<a href="sqlref_statements_unpintable.html"><code>UNPIN TABLE</code></a> statement.</p>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_createexternaltable.html"><code>CREATE EXTERNAL TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_createtable.html"><code>CREATE TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_unpintable.html"><code>UNPIN TABLE</code></a> statement</li>
+      <li><a href="developers_tuning_queryoptimization.html">Query Optimizations</a> in the
+<em>Splice Machine Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2898,7 +2989,11 @@ COL1      |COL2
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

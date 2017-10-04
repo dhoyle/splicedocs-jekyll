@@ -2806,32 +2806,56 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInSysProcs.InvalidateStoredStatements">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</span> system procedure invalidates all system prepared statements, and forces the query optimizer to create new execution plans. You can use this to speed up query execution by the data dictionary when performance has become sub-optimal.</p>
-            <p>If you notice that <span class="CodeFont">ij show </span>commands have slowed down, you can call  <span class="CodeFont">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS </span>to refresh the execution plans.</p>
-            <div class="noteNote">
-                    Splice Machine uses prepared statements known as system procedures to access data in the system tables. These procedures are cached, along with their execution plans, in the data dictionary. The cached execution plans can become sub-optimal after you issue a large number of schema-modifying DLL&#160;statements, such as defining and/or modifying a number of tables.
-                    </div>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS()</pre>
-            </div>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Example</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CALL SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS();
-Statement executed.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sysprocs_emptycache.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</span></a>
-                </li>
-                <li><a href="sqlref_sysprocs_emptycache.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</span></a>
-                </li>
-            </ul>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsinvalidatestoredstatements">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</code> system procedure
+invalidates all system prepared statements, and forces the query
+optimizer to create new execution plans. You can use this to speed up
+query execution by the data dictionary when performance has become
+sub-optimal.</p>
+
+    <p>If you notice that <code>ij show </code>commands have slowed down, you can call
+<code>SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS </code>to refresh the execution
+plans.</p>
+
+    <p class="noteNote">Splice Machine uses prepared statements known as system procedures to
+access data in the system tables. These procedures are cached, along
+with their execution plans, in the data dictionary. The cached execution
+plans can become sub-optimal after you issue a large number of
+schema-modifying DLL statements, such as defining and/or modifying a
+number of tables.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS()
+</code></pre>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS();
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_emptycache.html"><code>SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</code></a></li>
+      <li><a href="sqlref_sysprocs_emptycache.html"><code>SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</code></a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2848,7 +2872,11 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

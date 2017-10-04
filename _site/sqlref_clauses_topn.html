@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>TOP&#160;n </h1>
@@ -2823,6 +2824,40 @@ TOP&#160;[<span class="ItalicFont">number</span>] <span class="ItalicFont"><a hr
             </div>
             <h2>Examples</h2>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; select * from toptest order by a;
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="topn">TOP n</h1>
+
+    <p>A <code>TOP</code> clause, also called the <code>TOP n</code> clause, limits the results of a
+query to the first <code>n</code> result records.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+TOP [number] <a href="sqlref_identifiers_types.html#ColumnName">column-Name</a>]*</pre>
+
+</div>
+    <div class="paramList">
+      <p class="paramName">number</p>
+
+      <p class="paramDefnFirst">Optional. An integer value that specifies the maximum number of rows to
+return from the query. If you omit this parameter, the default value of
+1 is used.</p>
+
+      <p class="paramName">column-Name</p>
+
+      <p class="paramDefnFirst">A column name, as described in the  <a href="sqlref_identifiers_types.html#ColumnName"><code>Column
+Name</code></a> topic.</p>
+
+      <p class="paramDefn">You can specify <code>*</code> as the column name to represent all columns.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; select * from toptest order by a;
+>>>>>>> MDConvert
 A  |B  |C  |D
 --------------------------------------------------------------------------------
 a1 |b1 |c1 |d1
@@ -2892,16 +2927,19 @@ A |B |C |D
 0 rows selected
 splice&gt; select top -1 * from toptest;
 ERROR 2201W: Row count for FIRST/NEXT/TOP must be &gt;= 1 and row count for LIMIT must be &gt;= 0.
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><span class="CodeFont"><a href="sqlref_clauses_limitn.html">LIMIT n</a></span>&#160;clause</li>
-                <li><span class="CodeFont"><a href="sqlref_clauses_resultoffset.html">RESULT&#160;OFFSET</a></span>&#160;clause</li>
-                <li><a href="sqlref_expressions_select.html"><span class="CodeFont">SELECT</span></a> expression</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_clauses_limitn.html"><code>LIMIT n</code></a> clause</li>
+      <li><a href="sqlref_clauses_resultoffset.html"><code>RESULT OFFSET</code></a> clause</li>
+      <li><a href="sqlref_expressions_select.html"><code>SELECT</code></a> expression</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2918,7 +2956,11 @@ ERROR 2201W: Row count for FIRST/NEXT/TOP must be &gt;= 1 and row count for LIMI
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

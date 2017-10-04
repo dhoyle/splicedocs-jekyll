@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>TO_DATE</h1>
@@ -2835,6 +2836,72 @@
             <h3 id="Pattern">Pattern Specifications</h3>
             <p>You can specify formatting or parsing patterns for date-time values using the pattern letters shown in the following table.&#160;Note that pattern letters are typically repeated in a format specification. For example, <span class="CodeFont">YYYY</span>&#160;or <span class="CodeFont">YY</span>. Refer to the next section for specific information about multiple pattern letters in the different <a href="#Presenta">presentation types</a>.</p>
             <table summary="Formatting and parsing patterns for date-time values">
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="todate">TO_DATE</h1>
+
+    <p>The <code>TO_DATE</code> function formats a date string according to a formatting
+specification, and returns a  <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a>
+values do not store time components.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>TO_DATE( dateStrExpr, formatStr );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">dateStrExpr</p>
+
+      <p class="paramDefnFirst">A string expression that contains a date that is formatted according to
+the format string.</p>
+
+      <p class="paramName">formatStr</p>
+
+      <p class="paramDefnFirst">A string that specifies the format you want applied to the <code>dateStr</code>.
+See the <a href="#Date">Date and Time Formats</a> section below for more
+information about format specification.</p>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>The result is always a  <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> value.</p>
+
+    <h2 id="Date">Date and Time Formats</h2>
+
+    <p>Splice Machine supports date and time format specifications based on the
+Java <a href="http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html#rfc822timezone" target="_blank">SimpleDateFormat</a> class.</p>
+
+    <p>Date and time value formats are used for both parsing input values and
+for formatting output values. For example, the format specification
+<code>yyyy-MM-dd HH:mm:ssZ</code> parses or formats values like <code>2014-03-02
+11:47:44-0800</code>.</p>
+
+    <p>The remainder of this topic describes format specifications in these
+sections:</p>
+
+    <ul>
+      <li><a href="#Pattern">Pattern Specifications</a> contains a table showing details
+for all of the pattern letters you can use.</li>
+      <li><a href="#Presenta">Presentation Types</a> describes how certain pattern letters
+are interpreted for parsing and/or formatting.</li>
+      <li><a href="#Presenta">Examples</a> contains a number of examples that will help you
+understand how to use formats.</li>
+    </ul>
+
+    <h3 id="Pattern">Pattern Specifications</h3>
+
+    <p>You can specify formatting or parsing patterns for date-time values
+using the pattern letters shown in the following table. Note that
+pattern letters are typically repeated in a format specification. For
+example, <code>YYYY</code> or <code>YY</code>. Refer to the next section for specific
+information about multiple pattern letters in the different
+<a href="#Presenta">presentation types</a>.</p>
+
+    <table summary="Formatting and parsing patterns for date-time values">
+>>>>>>> MDConvert
                 <col />
                 <col />
                 <col />
@@ -2849,163 +2916,168 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">G</td>
+                        <td><code>G</code></td>
                         <td>Era designator</td>
-                        <td class="ItalicFont">Text</td>
-                        <td class="CodeFont">BC</td>
+                        <td><em>Text</em></td>
+                        <td><code>BC</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">y</td>
+                        <td><code>y</code></td>
                         <td>Year</td>
-                        <td class="ItalicFont">Year</td>
-                        <td class="CodeFont">2015 <span class="bodyFont">-or-</span> 15</td>
+                        <td><em>Year</em></td>
+                        <td><code>2015 <span class="bodyFont">-or-</span> 15</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">Y</td>
+                        <td><code>Y</code></td>
                         <td>Week year</td>
-                        <td class="ItalicFont">Year</td>
-                        <td class="CodeFont">2011 <span class="bodyFont">-or-</span> 11</td>
+                        <td><em>Year</em></td>
+                        <td><code>2011 <span class="bodyFont">-or-</span> 11</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">M</td>
+                        <td><code>M</code></td>
                         <td>Month in year</td>
-                        <td class="ItalicFont">Month</td>
-                        <td class="CodeFont">July <span class="bodyFont">-or-</span> Jul <span class="bodyFont">-or-</span> 07</td>
+                        <td><em>Month</em></td>
+                        <td><code>July <span class="bodyFont">-or-</span> Jul <span class="bodyFont">-or-</span> 07</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">w</td>
+                        <td><code>w</code></td>
                         <td>Week in year</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">27</td>
+                        <td><em>Number</em></td>
+                        <td><code>27</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">W</td>
+                        <td><code>W</code></td>
                         <td>Week in month</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">3</td>
+                        <td><em>Number</em></td>
+                        <td><code>3</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">D</td>
+                        <td><code>D</code></td>
                         <td>Day in year</td>
-                        <td class="ItalicFont">Number</td>
+                        <td><em>Number</em></td>
                         <td class="CodeFont">
                             <p>212</p>
-                            <p>A common usage error is to mistakenly specify <span class="CodeFont">DD</span> for the day field:</p>
+                            <p>A common usage error is to mistakenly specify <code>DD</code> for the day field:</p>
                             <ul>
-                                <li>use <span class="CodeFont">dd</span> to specify day of month</li>
-                                <li>use <span class="CodeFont">DD</span> to specify the day of the year</li>
+                                <li>use <code>dd</code> to specify day of month</li>
+                                <li>use <code>DD</code> to specify the day of the year</li>
                             </ul>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">d</td>
+                        <td><code>d</code></td>
                         <td>Day in month</td>
-                        <td class="ItalicFont">Number</td>
+                        <td><em>Number</em></td>
                         <td class="CodeFont">
                             <p>13</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">F</td>
+                        <td><code>F</code></td>
                         <td>Day of week in month</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">2</td>
+                        <td><em>Number</em></td>
+                        <td><code>2</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">E</td>
+                        <td><code>E</code></td>
                         <td>Day name in week</td>
-                        <td class="ItalicFont">Text</td>
-                        <td class="CodeFont">Tuesday <span class="bodyFont">-or-</span> Tue</td>
+                        <td><em>Text</em></td>
+                        <td><code>Tuesday <span class="bodyFont">-or-</span> Tue</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">u</td>
-                        <td>Day number of week<br />(<span class="CodeFont">1</span>=Monday, <span class="CodeFont">7</span>=Sunday)</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">4</td>
+                        <td><code>u</code></td>
+                        <td>Day number of week<br />(<code>1</code>=Monday, <code>7</code>=Sunday)</td>
+                        <td><em>Number</em></td>
+                        <td><code>4</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">a</td>
-                        <td>AM / PM&#160;marker</td>
-                        <td class="ItalicFont">Text</td>
-                        <td class="CodeFont">PM</td>
+                        <td><code>a</code></td>
+                        <td>AM / PM marker</td>
+                        <td><em>Text</em></td>
+                        <td><code>PM</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">H</td>
-                        <td>Hour in day <br />(<span class="CodeFont">0 - 23</span>)</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">23</td>
+                        <td><code>H</code></td>
+                        <td>Hour in day <br />(<code>0 - 23</code>)</td>
+                        <td><em>Number</em></td>
+                        <td><code>23</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">k</td>
-                        <td>Hour in day<br /><span class="CodeFont">(1 - 24)</span></td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">24</td>
+                        <td><code>k</code></td>
+                        <td>Hour in day<br /><code>(1 - 24)</code></td>
+                        <td><em>Number</em></td>
+                        <td><code>24</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">K</td>
-                        <td>Hour in AM/PM<br />(<span class="CodeFont">0 - 11</span>)</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">11</td>
+                        <td><code>K</code></td>
+                        <td>Hour in AM/PM<br />(<code>0 - 11</code>)</td>
+                        <td><em>Number</em></td>
+                        <td><code>11</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">h</td>
-                        <td>Hour in AM/PM<br />(<span class="CodeFont">1 - 12</span>)</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">12</td>
+                        <td><code>h</code></td>
+                        <td>Hour in AM/PM<br />(<code>1 - 12</code>)</td>
+                        <td><em>Number</em></td>
+                        <td><code>12</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">m</td>
+                        <td><code>m</code></td>
                         <td>Minute in hour</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">33</td>
+                        <td><em>Number</em></td>
+                        <td><code>33</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">s</td>
+                        <td><code>s</code></td>
                         <td>Second in minute</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">55</td>
+                        <td><em>Number</em></td>
+                        <td><code>55</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">S</td>
+                        <td><code>S</code></td>
                         <td>Millisecond</td>
-                        <td class="ItalicFont">Number</td>
-                        <td class="CodeFont">959</td>
+                        <td><em>Number</em></td>
+                        <td><code>959</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">z</td>
+                        <td><code>z</code></td>
                         <td>Time zone</td>
-                        <td class="ItalicFont">General time zone</td>
-                        <td class="CodeFont">Pacific Standard Time <span class="bodyFont">-or-</span> PST <span class="bodyFont">-or-</span> GMT-08:00</td>
+                        <td><em>General time zone</em></td>
+                        <td><code>Pacific Standard Time <span class="bodyFont">-or-</span> PST <span class="bodyFont">-or-</span> GMT-08:00</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">Z</td>
+                        <td><code>Z</code></td>
                         <td>Time zone</td>
-                        <td class="ItalicFont">RFC 822 time zone</td>
-                        <td class="CodeFont">-0800</td>
+                        <td><em>RFC 822 time zone</em></td>
+                        <td><code>-0800</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">X</td>
+                        <td><code>X</code></td>
                         <td>Time zone</td>
-                        <td class="ItalicFont">ISO&#160;8601 time zone</td>
-                        <td class="CodeFont">-08 <span class="bodyFont">-or-</span> -0800 <span class="bodyFont">-or-</span> -08:00</td>
+                        <td><em>ISO 8601 time zone</em></td>
+                        <td><code>-08 <span class="bodyFont">-or-</span> -0800 <span class="bodyFont">-or-</span> -08:00</code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">'</td>
+                        <td><code>'</code></td>
                         <td>Escape char for text</td>
-                        <td class="ItalicFont">Delimiter</td>
-                        <td class="CodeFont">&#160;</td>
+                        <td><em>Delimiter</em></td>
+                        <td><code> </code></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">''</td>
+                        <td><code>''</code></td>
                         <td>Single quote</td>
-                        <td class="ItalicFont">Literal</td>
-                        <td class="CodeFont">'</td>
+                        <td><em>Literal</em></td>
+                        <td><code>'</code></td>
                     </tr>
                 </tbody>
             </table>
-            <h3 id="Presenta">Presentation Types</h3>
-            <p>How a presentation type is interpreted for certain pattern letters depends on the number of repeated letters in the pattern. In some cases, as noted in the following table, other factors can influence how the pattern is interpreted.</p>
-            <table summary="Presentation types for date-time values">
+    <h3 id="Presenta">Presentation Types</h3>
+
+    <p>How a presentation type is interpreted for certain pattern letters
+depends on the number of repeated letters in the pattern. In some cases,
+as noted in the following table, other factors can influence how the
+pattern is interpreted.</p>
+
+    <table summary="Presentation types for date-time values">
                 <col />
                 <col />
                 <thead>
@@ -3016,103 +3088,104 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">Text</td>
+                        <td><em>Text</em></td>
                         <td>
                             <p>For formatting, if the number of pattern letters is 4 or more, the full form is used. Otherwise, a short or abbreviated form is used, if available. </p>
                             <p>For parsing, both forms are accepted, independent of the number of pattern letters.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Number</td>
+                        <td><em>Number</em></td>
                         <td>
                             <p>For formatting, the number of pattern letters is the minimum number of digits, and shorter numbers are zero-padded to this amount.</p>
                             <p>For parsing, the number of pattern letters is ignored unless it's needed to separate two adjacent fields.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Year<br />(for Gregorian calendar)</td>
+                        <td><em>Year<br />(for Gregorian calendar)</em></td>
                         <td>
                             <p>For formatting, if the number of pattern letters is 2, the year is truncated to 2 digits; otherwise it is interpreted as a number.</p>
                             <p>For parsing, if the number of pattern letters is more than 2, the year is interpreted literally, regardless of the number of digits; e.g.:</p>
                             <ul>
-                                <li> if you use the pattern <span class="CodeFont">MM/dd/yyyy</span>, the value <span class="CodeFont">01/11/12</span>&#160;parses to <span class="CodeFont">January 11, 12 A.D.</span></li>
-                                <li> if you use the pattern <span class="CodeFont">MM/dd/yy</span>, the value <span class="CodeFont">01/11/12</span>&#160;parses to <span class="CodeFont">January 11, 2012.</span></li>
+                                <li> if you use the pattern <code>MM/dd/yyyy</code>, the value <code>01/11/12</code> parses to <code>January 11, 12 A.D.</code></li>
+                                <li> if you use the pattern <code>MM/dd/yy</code>, the value <code>01/11/12</code> parses to <code>January 11, 2012.</code></li>
                             </ul>
-                            <p>If the number of pattern letters is one or two,  (<span class="CodeFont">y</span> or <span class="CodeFont">yy</span>), the abbreviated year is interpreted as relative to a century; this is done by adjusting dates to be within 80 years before and 20 years after the current date.  </p>
+                            <p>If the number of pattern letters is one or two,  (<code>y</code> or <code>yy</code>), the abbreviated year is interpreted as relative to a century; this is done by adjusting dates to be within 80 years before and 20 years after the current date.  </p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Year<br />(other calendar systems)</td>
+                        <td><em>Year<br />(other calendar systems)</em></td>
                         <td>
                             <p>Calendar-system specific forms are applied. </p>
                             <p>For both formatting and parsing, if the number of pattern letters is 4 or more, a calendar specific long form is used. Otherwise, a calendar specific short or abbreviated form is used.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Month</td>
+                        <td><em>Month</em></td>
                         <td>If the number of pattern letters is 3 or more, the month is interpreted as text; otherwise, it is interpreted as a number.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">General time zone</td>
+                        <td><em>General time zone</em></td>
                         <td>
                             <p>Time zones are interpreted as text if they have names. </p>
                             <p>For time zones representing a GMT offset value, the following syntax is used:</p>
                             <div class="indented">
-                                <p><![CDATA[             ]]><span class="CodeFont">GMT Sign Hours : Minutes
-</span></p>
+                                <p><code>GMT Sign Hours : Minutes</code></p>
                             </div>
                             <p>where:</p>
                             <div class="indented">
-                                <p><span class="CodeFont">Sign</span> is <span class="CodeFont">+</span>&#160;or <span class="CodeFont">-</span></p>
-                                <p><span class="CodeFont">Hours</span> is either <span class="CodeFont">Digit</span> or <span class="CodeFont">Digit Digit</span>, between <span class="CodeFont">0</span> and <span class="CodeFont">23</span>. </p>
-                                <p><span class="CodeFont">Minutes</span> is <span class="CodeFont">Digit Digit</span> and must be between <span class="CodeFont">00</span> and <span class="CodeFont">59</span>. </p>
+                                <p><code>Sign</code> is <code>+</code> or <code>-</code></p>
+                                <p><code>Hours</code> is either <code>Digit</code> or <code>Digit Digit</code>, between <code>0</code> and <code>23</code>. </p>
+                                <p><code>Minutes</code> is <code>Digit Digit</code> and must be between <code>00</code> and <code>59</code>. </p>
                             </div>
-                            <p>For parsing, RFC&#160;822 time zones are also accepted.</p>
+                            <p>For parsing, RFC 822 time zones are also accepted.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">RFC 822 time zone</td>
+                        <td><em>RFC 822 time zone</em></td>
                         <td>
-                            <p>For formatting, use the RFC&#160;822 4-digit time zone format is used:</p>
+                            <p>For formatting, use the RFC 822 4-digit time zone format is used:</p>
                             <div class="indented">
-                                <p><![CDATA[             ]]><span class="CodeFont">Sign TwoDigitHours Minutes</span></p>
+                                <p><code>Sign TwoDigitHours Minutes</code></p>
                             </div>
-                            <p><span class="CodeFont">TwoDigitHours</span> must be between <span class="CodeFont">00</span> and <span class="CodeFont">23</span>.</p>
+                            <p><code>TwoDigitHours</code> must be between <code>00</code> and <code>23</code>.</p>
                             <p>For parsing General time zones are also accepted.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">ISO&#160;8601 time zone</td>
+                        <td><em>ISO 8601 time zone</em></td>
                         <td>
                             <p>The number of pattern letters designates the format for both formatting and parsing as follows:</p>
                             <div class="preWrapper"><pre xml:space="preserve">  Sign TwoDigitHours Z
 | Sign TwoDigitHours Minutes Z
-| Sign TwoDigitHours&#160;:&#160;Minutes Z</pre>
+| Sign TwoDigitHours : Minutes Z</pre>
                             </div>
                             <p>For formatting:</p>
                             <ul>
-                                <li> if the offset value from GMT is 0, <span class="CodeFont">Z</span>&#160;value is produced</li>
+                                <li> if the offset value from GMT is 0, <code>Z</code> value is produced</li>
                                 <li>if the number of pattern letters is 1, any fraction of an hour is ignored</li>
                             </ul>
-                            <p>For parsing, Z&#160;is parsed as the UTC&#160;time zone designator. Note that General time zones <span class="ItalicFont">are not accepted</span>.</p>
+                            <p>For parsing, Z is parsed as the UTC time zone designator. Note that General time zones <em>are not accepted</em>.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Delimiter</td>
+                        <td><em>Delimiter</em></td>
                         <td>Use the single quote to escape characters in text strings.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Literal</td>
+                        <td><em>Literal</em></td>
                         <td>
-                            <p>You can include literals in your format specification by enclosing the character(s)&#160;in single quotes. </p>
-                            <p>Note that you must escape single quotes to include them as literals, e.g. use <span class="CodeFont">''T''</span> to include the literal string <span class="CodeFont">'T'</span>.</p>
+                            <p>You can include literals in your format specification by enclosing the character(s) in single quotes. </p>
+                            <p>Note that you must escape single quotes to include them as literals, e.g. use <code>''T''</code> to include the literal string <code>'T'</code>.</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <h3 id="Presenta">Formatting Examples</h3>
-            <p>The following table contains a number of examples of date time formats:</p>
-            <table summary="Examples of date and time patterns">
+    <h3 id="Presenta">Formatting Examples</h3>
+
+    <p>The following table contains a number of examples of date time formats:</p>
+
+    <table summary="Examples of date and time patterns">
                 <col />
                 <col />
                 <thead>
@@ -3123,65 +3196,68 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">"yyyy.MM.dd G 'at' HH:mm:ss z"</td>
+                        <td><code>"yyyy.MM.dd G 'at' HH:mm:ss z"</code></td>
                         <td><span class="Example">2001.07.04 AD at 12:08:56 PDT</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"EEE, MMM d, ''yy"</td>
+                        <td><code>"EEE, MMM d, ''yy"</code></td>
                         <td><span class="Example">Wed, Jul 4, '01</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"h:mm a"</td>
+                        <td><code>"h:mm a"</code></td>
                         <td><span class="Example">12:08 PM</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"hh 'o''clock' a, zzzz"</td>
+                        <td><code>"hh 'o''clock' a, zzzz"</code></td>
                         <td><span class="Example">12 o'clock PM, Pacific Daylight Time</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"K:mm a, z"</td>
+                        <td><code>"K:mm a, z"</code></td>
                         <td><span class="Example">0:08 PM, PDT</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"yyyyy.MMMMM.dd GGG hh:mm aaa"</td>
+                        <td><code>"yyyyy.MMMMM.dd GGG hh:mm aaa"</code></td>
                         <td><span class="Example">02001.July.04 AD 12:08 PM</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"EEE, d MMM yyyy HH:mm:ss Z"</td>
+                        <td><code>"EEE, d MMM yyyy HH:mm:ss Z"</code></td>
                         <td><span class="Example">Wed, 4 Jul 2001 12:08:56 -0700</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"yyMMddHHmmssZ"</td>
+                        <td><code>"yyMMddHHmmssZ"</code></td>
                         <td><span class="Example">010704120856-0700</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"yyyy-MM-dd'T'HH:mm:ss.SSSZ"</td>
+                        <td><code>"yyyy-MM-dd'T'HH:mm:ss.SSSZ"</code></td>
                         <td><span class="Example">2001-07-04T12:08:56.235-0700</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"yyyy-MM-dd'T'HH:mm:ss.SSSXXX"</td>
+                        <td><code>"yyyy-MM-dd'T'HH:mm:ss.SSSXXX"</code></td>
                         <td><span class="Example">2001-07-04T12:08:56.235-07:00</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">"YYYY-'W'ww-u"</td>
+                        <td><code>"YYYY-'W'ww-u"</code></td>
                         <td><span class="Example">2001-W27-3</span>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <h2>Examples of Using <span class="CodeFont">TO_DATE</span></h2>
-            <p>Here are several simple examples:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES TO_DATE('2015-01-01', 'YYYY-MM-dd');
+    <h2 id="examples-of-using-todate">Examples of Using <code>TO_DATE</code></h2>
+
+    <p>Here are several simple examples:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; VALUES TO_DATE('2015-01-01', 'YYYY-MM-dd');
 1
 ----------
 2015-01-01
@@ -3214,45 +3290,67 @@ splice&gt; VALUES (TO_DATE('2015-26', 'MM-DD'));
 1
 ----------
 2015-01-26
-1 row selected</pre>
-            </div>
-            <p>And here is an example that shows two interesting aspects of using <span class="CodeFont">TO_DATE</span>. In this example,  the input includes the literal <span class="CodeFont">T</span>), which means that the format pattern must delimit that letter with single quotes. Since we're delimiting the entire pattern in single quotes, we then have to escape those marks and specify <span class="CodeFont">''T''</span> in our parsing pattern.</p>
-            <p>And because this example specifies a time zone (Z) in the parsing pattern but not in the input string, the timezone information is not preserved. In this case, that means that the parsed date is actually a day earlier than intended:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES TO_DATE('2013-06-18T01:03:30.000-0800','yyyy-MM-dd''T''HH:mm:ss.SSSZ');
+1 row selected
+</code></pre>
+
+    </div>
+    <p>And here is an example that shows two interesting aspects of using
+<code>TO_DATE</code>. In this example, the input includes the literal <code>T</code>), which
+means that the format pattern must delimit that letter with single
+quotes. Since we’re delimiting the entire pattern in single quotes, we
+then have to escape those marks and specify <code>''T''</code> in our parsing
+pattern.</p>
+
+    <p>And because this example specifies a time zone (Z) in the parsing
+pattern but not in the input string, the timezone information is not
+preserved. In this case, that means that the parsed date is actually a
+day earlier than intended:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; VALUES TO_DATE('2013-06-18T01:03:30.000-0800','yyyy-MM-dd''T''HH:mm:ss.SSSZ');
 1
 ----------
 2013-06-17
-</pre>
-            </div>
-            <p>The solution is to explicitly include the timezone for your locale in the input string:</p>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; VALUES TO_DATE('2013-06-18T01:03:30.000-08:00','yyyy-MM-dd''T''HH:mm:ss.SSSZ');
+</code></pre>
+
+    </div>
+    <p>The solution is to explicitly include the timezone for your locale in
+the input string:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; VALUES TO_DATE('2013-06-18T01:03:30.000-08:00','yyyy-MM-dd''T''HH:mm:ss.SSSZ');
 1
 ----------
 2013-06-18
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_currentdate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_extract.html"><span class="CodeFont">EXTRACT</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_month.html"><span class="CodeFont">MONTH</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthname.html"><span class="CodeFont">MONTHNAME</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_now.html"><span class="CodeFont">NOW</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_quarter.html"><span class="CodeFont">QUARTER</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_char.html"><span class="CodeFont">TO_CHAR</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_week.html"><span class="CodeFont">WEEK</span></a> function</li>
-                <li><span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_extract.html"><code>EXTRACT</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
+      <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -3269,7 +3367,11 @@ splice&gt; VALUES (TO_DATE('2015-26', 'MM-DD'));
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

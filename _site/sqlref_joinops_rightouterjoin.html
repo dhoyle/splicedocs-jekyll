@@ -2806,27 +2806,43 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="JoinOps.RightOuterJoin">RIGHT OUTER JOIN</h1>
-            <p>A <span class="CodeFont">RIGHT OUTER JOIN</span> is one of the <a href="sqlref_joinops_about.html"><span class="CodeFont">JOIN</span> operations</a> that allow you to specify a <span class="CodeFont">JOIN</span> clause. It preserves the unmatched rows from the second (right) table, joining them with a <span class="CodeFont">NULL</span> in the shape of the first (left) table. A Right Outer <span class="CodeFont">JOIN B </span>is equivalent to <span class="CodeFont">B RIGHT OUTER JOIN A</span>, with the columns in a different order.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve"><span class="ItalicFont"><a href="sqlref_expressions_table.html">TableExpression</a></span>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="right-outer-join">RIGHT OUTER JOIN</h1>
+
+    <p>A <code>RIGHT OUTER JOIN</code> is one of the   <a href="sqlref_joinops_about.html"><code>JOIN</code>
+operations</a> that allow you to specify a
+<code>JOIN</code> clause. It preserves the unmatched rows from the second (right)
+table, joining them with a <code>NULL</code> in the shape of the first (left)
+table. A Right Outer <code>JOIN B </code>is equivalent to <code>B RIGHT OUTER JOIN A</code>,
+with the columns in a different order.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+<a href="sqlref_expressions_table.html">TableExpression</a>
 {
- ON <span class="ItalicFont">booleanExpression</span> | <span class="ItalicFont"><a href="sqlref_clauses_using.html">USING clause</a></span>
+ ON booleanExpression | <a href="sqlref_clauses_using.html">USING clause</a>
 }</pre>
-            </div>
-            <p>The scope of expressions in the <span class="CodeFont">ON</span> clause includes the current tables and any tables in query blocks outer to the current <span class="CodeFont">SELECT</span>. The <span class="CodeFont">ON</span> clause can reference tables not being joined and does not have to reference either of the tables being joined (though typically it does).</p>
-            <h2>Example 1</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- get all countries and corresponding cities, including
+
+</div>
+    <p>The scope of expressions in the <code>ON</code> clause includes the current tables
+and any tables in query blocks outer to the current <code>SELECT</code>. The <code>ON</code>
+clause can reference tables not being joined and does not have to
+reference either of the tables being joined (though typically it does).</p>
+
+    <h2 id="example-1">Example 1</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>   -- get all countries and corresponding cities, including
    -- countries without any cities
-splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
+splice&gt; SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
   FROM CITIES  RIGHT OUTER JOIN COUNTRIES
   ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE;
 
    -- get all countries in Africa and corresponding cities,
    -- including countries without any cities
-splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
+splice&gt; SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
   FROM CITIES
   RIGHT OUTER JOIN COUNTRIES
   ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
@@ -2834,31 +2850,39 @@ splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
 
   -- use the synonymous syntax, RIGHT JOIN, to achieve exactly
   -- the same results as in the example above
-splice&gt;&#160;SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
+splice&gt; SELECT COUNTRIES.COUNTRY, CITIES.CITY_NAME
   FROM CITIES
   RIGHT JOIN COUNTRIES
   ON CITIES.COUNTRY_ISO_CODE = COUNTRIES.COUNTRY_ISO_CODE
-  WHERE Countries.region = 'Africa';</pre>
-            </div>
-            <h2>Example 2</h2>
-            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">   -- a TableExpression can be a joinOperation. Therefore
+  WHERE Countries.region = 'Africa';
+</code></pre>
+
+    </div>
+    <h2 id="example-2">Example 2</h2>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>   -- a TableExpression can be a joinOperation. Therefore
    -- you can have multiple join operations in a FROM clause
    -- List every employee number and last name
    -- with the employee number and last name of their manager
-splice&gt;&#160;SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
+splice&gt; SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
   FROM EMPLOYEE E RIGHT OUTER JOIN
   DEPARTMENT RIGHT OUTER JOIN EMPLOYEE M
   ON MGRNO = M.EMPNO
-  ON E.WORKDEPT = DEPTNO;</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_joinops_intro.html"><span class="CodeFont">JOIN</span></a>&#160;operations</li>
-                <li><a href="sqlref_expressions_table.html"><span class="CodeFont">TABLE</span></a> expression</li>
-                <li><a href="sqlref_clauses_using.html"><span class="CodeFont">USING</span></a>&#160;clause</li>
-            </ul>
-        </div>
-	</section>
+  ON E.WORKDEPT = DEPTNO;
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_joinops_intro.html"><code>JOIN</code></a> operations</li>
+      <li><a href="sqlref_expressions_table.html"><code>TABLE</code></a> expression</li>
+      <li><a href="sqlref_clauses_using.html"><code>USING</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2875,7 +2899,11 @@ splice&gt;&#160;SELECT E.EMPNO, E.LASTNAME, M.EMPNO, M.LASTNAME
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

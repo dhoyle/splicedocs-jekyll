@@ -2806,42 +2806,66 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInSysProcs.EmptyStatementCache">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</span> stored
-			procedure removes as many compiled statements (plans) as possible from the database statement cache. on your current region server.This procedure does not remove statements related
-			to currently executing queries or to activations that are about to be garbage
-			collected, so the cache is not guaranteed to be completely empty after it completes.</p>
-            <div class="noteNote">The related procedure <span class="CodeFont"><a href="sqlref_sysprocs_emptyglobalcache.html">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</a></span>&#160;performs the same operation across the entire cluster.</div>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE()</pre>
-            </div>
-            <h2>Results</h2>
-            <p>This procedure does not return a result.</p>
-            <h2>Execute Privileges</h2>
-            <p>If authentication and SQL authorization are both enabled, only the database owner has
-			execute privileges on this function by default. The
-		database owner can grant access to other users.</p>
-            <h2>JDBC Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">CallableStatement cs = conn.prepareCall
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsemptystatementcache">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE</code> stored procedure removes as
+many compiled statements (plans) as possible from the database statement
+cache. on your current region server.This procedure does not remove
+statements related to currently executing queries or to activations that
+are about to be garbage collected, so the cache is not guaranteed to be
+completely empty after it completes.</p>
+
+    <p class="noteNote">The related procedure
+<a href="sqlref_sysprocs_emptyglobalcache.html"><code>SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</code></a> performs
+the same operation across the entire cluster.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE()
+</code></pre>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result.</p>
+
+    <h2 id="execute-privileges">Execute Privileges</h2>
+
+    <p>If authentication and SQL authorization are both enabled, only the
+database owner has execute privileges on this function by default. The
+database owner can grant access to other users.</p>
+
+    <h2 id="jdbc-example">JDBC Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>CallableStatement cs = conn.prepareCall
   ("CALL SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE()");
   cs.execute();
-  cs.close();</pre>
-            </div>
-            <h2>SQL Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE();
-Statement executed.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_sysprocs_emptyglobalcache.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</span></a>
-                </li>
-                <li><a href="sqlref_sysprocs_invalidatestoredstmts.html"><span class="CodeFont">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</span></a>
-                </li>
-            </ul>
-        </div>
-	</section>
+  cs.close();
+</code></pre>
+
+    </div>
+    <h2 id="sql-example">SQL Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE();
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_sysprocs_emptyglobalcache.html"><code>SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE</code></a></li>
+      <li><a href="sqlref_sysprocs_invalidatestoredstmts.html"><code>SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS</code></a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2858,7 +2882,11 @@ Statement executed.</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

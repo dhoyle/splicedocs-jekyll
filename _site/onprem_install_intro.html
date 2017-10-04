@@ -240,13 +240,6 @@
             
             
             
-            
-            
-            <li><a href="onprem_about.html">About Our On-Premise DB</a></li>
-            
-            
-            
-            
         </ul>
      </li>
        
@@ -536,6 +529,7 @@
 
     
 
+<<<<<<< HEAD
   ﻿
 
 
@@ -817,6 +811,57 @@
                 <h2><a name="ClusterNodeRequirements"></a>Cluster Node Requirements</h2>
                 <p>The following table summarizes the minimum requirements for the nodes in your cluster:</p>
                 <table summary="Splice Machine cluster node hardware requirements">
+=======
+  
+<section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="splice-machine-installation-guide">Splice Machine Installation Guide</h1>
+
+    <p class="noteOnPremiseOnly">    <a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
+
+    <p>This <em>Installation Guide</em> walks you through installing Splice Machine on
+your cluster, or on computer if you’re using the standalone version.</p>
+
+    <p>The fastest way to get started with Splice Machine is to set up our
+sandbox on the Amazon Web Services (AWS) platform on EC2 instances using
+<code>cloud.splicemachine.com</code>:</p>
+
+    <p class="noteIcon">See the <a href="onprem_install_awssandbox.html">Installing Splice Machine on Amazon Web
+Services</a> topic for
+step-by-step instructions for setting up the Splice Machine sandbox.</p>
+
+    <p>If you want to download and install Splice Machine on your cluster or
+standalone computer, please read the remainder of this page, which
+includes these sections:</p>
+
+    <ul>
+      <li>The Cluster Node Requirements section below details the hardware and
+ecosystem requirements for installing Splice Machine on a cluster or
+on a standalone computer.</li>
+      <li>The <a href="#Configur">Configure Linux for Splice Machine</a> section specifies
+the Linux software that Splice Machine requires.</li>
+      <li>The <a href="#Install">Install Splice Machine</a> links to the platform-specific
+installation and upgrade pages for each version of Splice Machine.</li>
+    </ul>
+
+    <h2 id="installing-the-splice-machine-sandbox-on-aws">Installing the Splice Machine Sandbox on AWS</h2>
+
+    <p>The fastest way to get started with Splice Machine is to set up our
+sandbox on the Amazon Web Services (AWS) platform on EC2 instances using
+<code>cloud.splicemachine.com</code>.</p>
+
+    <p class="noteIcon">See the <a href="onprem_install_awssandbox.html">Installing Splice Machine on Amazon Web
+Services</a> topic for
+step-by-step instructions.</p>
+
+    <div>
+      <h2 id="cluster-node-requirements"><a name="ClusterNodeRequirements"></a>Cluster Node Requirements</h2>
+
+      <p>The following table summarizes the minimum requirements for the nodes in
+your cluster:</p>
+
+      <table summary="Splice Machine cluster node hardware requirements">
+>>>>>>> MDConvert
                     <col />
                     <col />
                     <thead>
@@ -832,12 +877,12 @@
                         </tr>
                         <tr>
                             <td class="BoldFont">Memory</td>
-                            <td>We recommend that each machine in your cluster have at least 64 GB&#160;of available memory.</td>
+                            <td>We recommend that each machine in your cluster have at least 64 GB of available memory.</td>
                         </tr>
                         <tr>
                             <td class="BoldFont">Disk Space</td>
                             <td>
-                                <p class="noSpaceAbove">Your root drive needs to have at least 100 GB&#160;of free space. </p>
+                                <p class="noSpaceAbove">Your root drive needs to have at least 100 GB of free space. </p>
                                 <p>Splice Machine recommends separate data drives on each cluster node to maintain a separation between the operating system and your database data. You need capacity for a minimum of three times the size of the data you intend to load; the typical recommended configuration is 2 TB or more of attached storage per node.</p>
                                 <p><span class="BoldFont">Your data disks should be set up with a single partition and formatted with an <span class="CodeFont">ext4</span> file system.</span>
                                 </p>
@@ -853,9 +898,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <h3>Amazon Web Services&#160;(AWS) Requirements</h3>
-                <p>If you're running on AWS, your cluster must meet these minimum requirements:</p>
-                <table summary="Splice Machine cluster node hardware requirements">
+      <h3 id="amazon-web-servicesaws-requirements">Amazon Web Services (AWS) Requirements</h3>
+
+      <p>If you’re running on AWS, your cluster must meet these minimum
+requirements:</p>
+
+      <table summary="Splice Machine cluster node hardware requirements">
                     <col />
                     <col />
                     <thead>
@@ -868,7 +916,7 @@
                         <tr>
                             <td class="BoldFont">Minimum Cluster Size</td>
                             <td>
-                                <p>The minimum cluster size on AWS&#160;is <span class="ItalicFont">5 nodes</span>:</p>
+                                <p>The minimum cluster size on AWS is <span class="ItalicFont">5 nodes</span>:</p>
                                 <ul class="bullet">
                                     <li>1 master node</li>
                                     <li>4 worker nodes</li>
@@ -884,17 +932,20 @@
                             <td>
                                 <p class="noSpaceAbove">Minimum recommended storage space:</p>
                                 <ul class="bullet">
-                                    <li><span class="ItalicFont">100GB</span>&#160;EBS&#160;root drive</li>
-                                    <li>4 EBS&#160;data drives per node</li>
+                                    <li><span class="ItalicFont">100GB</span> EBS root drive</li>
+                                    <li>4 EBS data drives per node</li>
                                 </ul>
                                 <p>Note that the required number of data drives per node depends on your use case.</p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <h3>Hadoop Ecosystem Requirements</h3>
-                <p>The following table summarizes the required Hadoop ecosystem components for your platform:</p>
-                <table summary="Splice Machine Hadoop ecosystem requirements">
+      <h3 id="hadoop-ecosystem-requirements">Hadoop Ecosystem Requirements</h3>
+
+      <p>The following table summarizes the required Hadoop ecosystem components
+for your platform:</p>
+
+      <table summary="Splice Machine Hadoop ecosystem requirements">
                     <col />
                     <col />
                     <col />
@@ -957,7 +1008,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" class="Separator">&#160;</td>
+                            <td colspan="6" class="Separator"> </td>
                         </tr>
 
                         <tr>
@@ -1006,18 +1057,27 @@
                         </tr>
                     </tbody>
                 </table>
-                <h3>Java JDK&#160;Requirements</h3>
-                <p>Splice Machine supports the following versions of the Java JDK:</p>
-                <ul>
-                    <li>
-                        <p>Oracle JDK&#160;1.8, update 60 or higher</p>
-                        <p class="noteNote">We recommend that you do not use JDK&#160;1.8.0_40</p>
-                    </li>
-                </ul>
-                <p>Splice Machine does not test our releases with OpenJDK, so we recommend against using it.</p>
-                <h2 id="Standalo">Standalone Version Prerequisites</h2>
-                <p>You can use the standalone version of Splice Machine on MacOS and Linux computers that meet these basic requirements:</p>
-                <table summary="Standalone version requirements for running Splice Machine">
+      <h3 id="java-jdkrequirements">Java JDK Requirements</h3>
+
+      <p>Splice Machine supports the following versions of the Java JDK:</p>
+
+      <ul>
+        <li>
+          <p>Oracle JDK 1.8, update 60 or higher</p>
+
+          <p class="noteNote">We recommend that you do not use JDK 1.8.0_40</p>
+        </li>
+      </ul>
+
+      <p>Splice Machine does not test our releases with OpenJDK, so we recommend
+against using it.</p>
+
+      <h2 id="Standalo">Standalone Version Prerequisites</h2>
+
+      <p>You can use the standalone version of Splice Machine on MacOS and Linux
+computers that meet these basic requirements:</p>
+
+      <table summary="Standalone version requirements for running Splice Machine">
                     <col />
                     <col />
                     <thead>
@@ -1032,7 +1092,7 @@
                             </td>
                             <td>
                                 <p class="noSpaceAbove">Mac OS X, version 10.8 or later.</p>
-                                <p>CentOS&#160;6.4 or equivalent.</p>
+                                <p>CentOS 6.4 or equivalent.</p>
                             </td>
                         </tr>
                         <tr>
@@ -1043,29 +1103,31 @@
                         <tr>
                             <td><span class="BoldFont">Memory</span>
                             </td>
-                            <td>At least 16 GB&#160;RAM, of which at least 10 GB is available.</td>
+                            <td>At least 16 GB RAM, of which at least 10 GB is available.</td>
                         </tr>
                         <tr>
                             <td><span class="BoldFont">Disk Space</span>
                             </td>
-                            <td>At least 100 GB&#160;of disk space available for Splice Machine software, plus as much space as will be required for your data; for example, if you have a 1 TB dataset, you need at least 1 TB of available data space.</td>
+                            <td>At least 100 GB of disk space available for Splice Machine software, plus as much space as will be required for your data; for example, if you have a 1 TB dataset, you need at least 1 TB of available data space.</td>
                         </tr>
                         <tr>
                             <td><span class="BoldFont">Software</span>
                             </td>
                             <td>
-                                <p class="noSpaceAbove">You must have JDK&#160;installed on your computer.</p>
+                                <p class="noSpaceAbove">You must have JDK installed on your computer.</p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
+    </div>
 
+    <h2 id="Configur">Configure Linux for Splice Machine</h2>
 
-            <h2 id="Configur">Configure Linux for Splice&#160;Machine</h2>
-            <div>
-                <p>The following table summarizes Linux configuration requirements for running Splice&#160;Machine on your cluster:</p>
-                <table summary="Summary of Linux configuration requirements">
+    <div>
+      <p>The following table summarizes Linux configuration requirements for
+running Splice Machine on your cluster:</p>
+
+      <table summary="Summary of Linux configuration requirements">
                     <col />
                     <col />
                     <thead>
@@ -1076,7 +1138,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Configure SSH&#160;access:</td>
+                            <td>Configure SSH access:</td>
                             <td>Configure the user account that you're using for cluster administration for password-free access, to simplify installation.</td>
                         </tr>
                         <tr>
@@ -1109,8 +1171,8 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
                                 <ul>
                                     <li class="CodeFont" value="1">curl</li>
 									<li class="CodeFont">
-                                    <p>Oracle JDK&#160;1.8, update 60 or higher. We recommend against using JDK 1.8.0_40 or OpenJDK.</p>
-                                    <div class="noteNote">Your platform management software may re-install&#160;JDK during its own installation process.</div>
+                                    <p>Oracle JDK 1.8, update 60 or higher. We recommend against using JDK 1.8.0_40 or OpenJDK.</p>
+                                    <p class="noteNote">Your platform management software may re-install JDK during its own installation process.</p>
                                 </li>                                    <li class="CodeFont" value="3">nscd</li>
                                     <li class="CodeFont" value="4">ntp</li>
                                     <li class="CodeFont" value="5">openssh, openssh-clients<span class="bodyFont">, and</span> openssh-server</li>
@@ -1121,13 +1183,13 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
                             </td>
                         </tr>
                         <tr>
-                            <td>Additional required software on CentOS&#160;or RHEL</td>
+                            <td>Additional required software on CentOS or RHEL</td>
                             <td>
                                 <div class="preWrapperWide">
-                                    <p class="noSpaceAbove">If you're running on CENTOS&#160;or RHEL, you also need to have this software available on each node:</p>
+                                    <p class="noSpaceAbove">If you're running on CENTOS or RHEL, you also need to have this software available on each node:</p>
                                     <ul>
                                         <li class="CodeFont" value="1">ftp</li>
-                                        <li class="CodeFont" value="2">EPEL&#160;<span class="bodyFont">repository</span></li>
+                                        <li class="CodeFont" value="2">EPEL <span class="bodyFont">repository</span></li>
                                     </ul>
                                 </div>
                             </td>
@@ -1137,10 +1199,10 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
                             <td>
                                 <p class="noSpaceAbove">You need to make sure that the following services are enabled and started:</p>
                                 <ul>
-                                    <li><span class="CodeFont">nscd</span>
+                                    <li><code>nscd</code>
                                     </li>
-                                    <li><span class="CodeFont">ntpd</span> (<span class="CodeFont">ntp</span> package)</li>
-                                    <li><span class="CodeFont">sshd</span> (<span class="CodeFont">openssh</span>-server package)</li>
+                                    <li><code>ntpd</code> (<code>ntp</code> package)</li>
+                                    <li><code>sshd</code> (<code>openssh</code>-server package)</li>
                                 </ul>
                             </td>
                         </tr>
@@ -1151,11 +1213,19 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <h2 id="Install">Install Splice Machine</h2>
-            <p>If you've decided to try our sandbox, see the <a href="onprem_install_awssandbox.html">Installing Splice Machine on Amazon Web Services</a> topic in this chapter for step-by-step instructions for setting up the Splice Machine sandbox.&#160;&#160;&#160;&#160;&#160;</p>
-            <p>To install Splice Machine on your cluster or standalone computer, click the link below to see the instructions for your platform; each page walks you through downloading and installing and configuring a specific version of Splice Machine:</p>
-            <table summary="Links to instructions for installing Splice Machine on each platform.">
+    </div>
+    <h2 id="Install">Install Splice Machine</h2>
+
+    <p>If you’ve decided to try our sandbox, see the <a href="onprem_install_awssandbox.html">Installing Splice Machine
+on Amazon Web Services</a> topic for step-by-step instructions for setting up the Splice Machine
+sandbox.     </p>
+
+    <p>To install Splice Machine on your cluster or standalone computer, click
+the link below to see the instructions for your platform; each page
+walks you through downloading and installing and configuring a specific
+version of Splice Machine:</p>
+
+    <table summary="Links to instructions for installing Splice Machine on each platform.">
                 <col />
                 <col />
                 <thead>
@@ -1176,17 +1246,18 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
                         </td>
                     </tr>
                     <tr>
-                        <td>MapR-managed&#160;cluster</td>
+                        <td>MapR-managed cluster</td>
                         <td><a href="onprem_install_mapr.html">Installing and Configuring Splice Machine for MapR</a>
                         </td>
                     </tr>
                     <tr>
                         <td>Standalone version of Splice Machine</td>
-                        <td><a href="onprem_install_standalone.html">Installing the Standalone Version of Splice&#160;Machine</a>
+                        <td><a href="onprem_install_standalone.html">Installing the Standalone Version of Splice Machine</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+<<<<<<< HEAD
 ﻿﻿
 
 
@@ -1322,9 +1393,18 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
 		<p>For access to the source code for the Community Edition of Splice Machine, visit <a href="https://github.com/splicemachine/spliceengine" title="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)" alt="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)">our open source GitHub repository.</a></p>
 	</div>
 </div>
+=======
+    <p>﻿</p>
+>>>>>>> MDConvert
 
-        </div>
-	</section>
+    <div class="openSourceNoteWrapper">
+	<div class="openSourceNote">
+		<p>For access to the source code for the Community Edition of Splice Machine, visit <a href="https://github.com/splicemachine/spliceengine" title="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)" alt="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)">our open source GitHub repository.</a></p>
+	</div>
+</div>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -1341,7 +1421,11 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

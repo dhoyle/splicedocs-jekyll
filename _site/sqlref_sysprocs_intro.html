@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Built-in System Procedures and Functions</h1>
@@ -2833,6 +2834,34 @@
             <h2 id="DatabaseAdmin">Database Admin Procedures and Functions</h2>
             <p class="body">These are the system procedures and functions for administering your database:</p>
             <table summary="Summary of Splice Machine system database administration procedures and functions">
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="built-in-system-procedures-and-functions">Built-in System Procedures and Functions</h1>
+
+    <p>This section contains the reference documentation for the Splice Machine
+Built-in SQL System Procedures and Functions, in the following
+subsections:</p>
+
+    <ul>
+      <li><a href="#DatabaseAdmin">Database Admin Procedures and Functions</a></li>
+      <li><a href="#DatabaseProps">Database Property Procedures and Functions</a></li>
+      <li><a href="#Importing">Importing Data Procedures and Functions</a></li>
+      <li><a href="#Jar">Jar File Procedures and Functions</a></li>
+      <li><a href="#Logging">Logging Procedures and Functions</a></li>
+      <li><a href="#Statement">Statements and Stored Procedures System Procedures</a></li>
+      <li><a href="#Statistics">Statistics Procedures and Functions</a></li>
+      <li><a href="#SystemStatus">System Status Procedures and Functions</a></li>
+      <li><a href="#Transaction">Transaction Procedures and Functions</a></li>
+    </ul>
+
+    <h2 id="DatabaseAdmin">Database Admin Procedures and Functions</h2>
+
+    <p class="body">These are the system procedures and functions for administering your
+database:</p>
+
+    <table summary="Summary of Splice Machine system database administration procedures and functions">
+>>>>>>> MDConvert
                 <col />
                 <col />
                 <thead>
@@ -2847,8 +2876,7 @@
                         </td>
                         <td>
                             <p>Backs up the database to a specified backup directory.</p>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
-
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2856,8 +2884,7 @@
                         </td>
                         <td>
                             <p>Cancels a backup.</p>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
-
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2865,12 +2892,11 @@
                         </td>
                         <td>
                             <p>Cancels a scheduled daily backup.</p>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
-
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
-        				<td class="CodeFont"><a href="sqlref_sysprocs_compactregion.html">SYSCS_UTIL.COMPACT_REGION</a></td>
+                        <td><a href="sqlref_sysprocs_compactregion.html"><code>SYSCS_UTIL.COMPACT_REGION</code></a></td>
                         <td>Performs a minor compaction on a table or index region.</td>
                     </tr>
                     <tr>
@@ -2883,8 +2909,7 @@
                         </td>
                         <td>
                             <p>Delete a specific backup.</p>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
-
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2892,8 +2917,7 @@
                         </td>
                         <td>
                             <p>Deletes all backups that were created more than a certain number of days ago.</p>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
-
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2902,19 +2926,19 @@
                         <td>Removes a user account from a database.</td>
                     </tr>
                     <tr>
-        				<td class="CodeFont"><a href="sqlref_sysprocs_getencodedregion.html">SYSCS_UTIL.GET_ENCODED_REGION_NAME</a></td>
+                        <td><a href="sqlref_sysprocs_getencodedregion.html"><code>SYSCS_UTIL.GET_ENCODED_REGION_NAME</code></a></td>
                         <td>Returns the encoded name of the HBase region that contains the specified, unencoded Splice Machine table primary key or index values.</td>
                     </tr>
                     <tr>
-        				<td class="CodeFont"><a href="sqlref_sysprocs_getregions.html">SYSCS_UTIL.GET_REGIONS</a></td>
+                        <td><a href="sqlref_sysprocs_getregions.html"><code>SYSCS_UTIL.GET_REGIONS</code></a></td>
                         <td>Retrieves the list of regions containing a range of key values.</td>
                     </tr>
                     <tr>
-        				<td class="CodeFont"><a href="sqlref_sysprocs_getrunningops.html">SYSCS_UTIL.GET_RUNNING_OPERATIONS</a></td>
+                        <td><a href="sqlref_sysprocs_getrunningops.html"><code>SYSCS_UTIL.GET_RUNNING_OPERATIONS</code></a></td>
                         <td>Displays information about each Splice Machine operations running on a server.</td>
                     </tr>
                     <tr>
-        				<td class="CodeFont"><a href="sqlref_sysprocs_getstartkey.html">SYSCS_UTIL.GET_START_KEY</a></td>
+                        <td><a href="sqlref_sysprocs_getstartkey.html"><code>SYSCS_UTIL.GET_START_KEY</code></a></td>
                         <td>Retrieves the unencoded start key for a specified HBase table or index region.</td>
                     </tr>
                     <tr>
@@ -2923,11 +2947,11 @@
                         <td>Terminates a Splice Machine operation running on the server to which you are connected.</td>
                     </tr>
                     <tr>
-        				<td class="CodeFont"><a href="sqlref_sysprocs_majorcompactregion.html">SYSCS_UTIL.MAJOR_COMPACT_REGION</a></td>
+                        <td><a href="sqlref_sysprocs_majorcompactregion.html"><code>SYSCS_UTIL.MAJOR_COMPACT_REGION</code></a></td>
                         <td>Performs a major compaction on a table or index region.</td>
                     </tr>
                     <tr>
-        				<td class="CodeFont"><a href="sqlref_sysprocs_mergeregions.html">SYSCS_UTIL.MERGE_REGIONS</a></td>
+                        <td><a href="sqlref_sysprocs_mergeregions.html"><code>SYSCS_UTIL.MERGE_REGIONS</code></a></td>
                         <td>Merges two adjacent table or index regions.</td>
                     </tr>
                     <tr>
@@ -2948,7 +2972,7 @@
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_refreshexttable.html">SYSCS_UTIL.SYSCS_REFRESH_EXTERNAL_TABLE</a>
                         </td>
-                        <td>Refreshes the schema of an external table in Splice Machine; use this when the schema of the table's source file has been modified outside of Splice&#160;Machine.</td>
+                        <td>Refreshes the schema of an external table in Splice Machine; use this when the schema of the table's source file has been modified outside of Splice Machine.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_resetpassword.html">SYSCS_UTIL.SYSCS_RESET_PASSWORD</a>
@@ -2960,8 +2984,7 @@
                         </td>
                         <td>
                             <p>Restores a database from a previous backup.</p>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
-
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2969,8 +2992,7 @@
                         </td>
                         <td>
                             <p>Schedules a full or incremental database backup to run at a specified time daily.</p>
-<div class="noteOnPremiseOnly">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></div>
-
+                            <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
                         </td>
                     </tr>
                     <tr>
@@ -2985,9 +3007,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="DatabaseProps">Database Properties Procedures and Functions</h2>
-            <p class="body">These are the system procedures and functions for working with your database properties:</p>
-            <table summary="Summary of Splice Machine system database properties procedures and functions">
+    <h2 id="DatabaseProps">Database Properties Procedures and Functions</h2>
+
+    <p class="body">These are the system procedures and functions for working with your
+database properties:</p>
+
+    <table summary="Summary of Splice Machine system database properties procedures and functions">
                 <col />
                 <col />
                 <thead>
@@ -3016,7 +3041,7 @@
                         <td class="CodeFont"><a href="sqlref_sysprocs_peekatseq.html">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE function</a>
                         </td>
                         <td>
-                            <p>Allows users to observe the instantaneous current value of a sequence generator without having to query the <a href="sqlref_systables_syssequences.html"><span class="CodeFont">SYSSEQUENCES</span> system table</a>. </p>
+                            <p>Allows users to observe the instantaneous current value of a sequence generator without having to query the <a href="sqlref_systables_syssequences.html"><code>SYSSEQUENCES</code> system table</a>. </p>
                         </td>
                     </tr>
                     <tr>
@@ -3026,9 +3051,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Importing">Importing Data Procedures and Functions</h2>
-            <p class="body">These are the system procedures and functions for importing data into your database:</p>
-            <table summary="Summary of Splice Machine system procedures and functions for importing data">
+    <h2 id="Importing">Importing Data Procedures and Functions</h2>
+
+    <p class="body">These are the system procedures and functions for importing data into
+your database:</p>
+
+    <table summary="Summary of Splice Machine system procedures and functions for importing data">
                 <col />
                 <col />
                 <thead>
@@ -3086,14 +3114,14 @@
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</a>
                         </td>
-                        <td>Sets up a table or index in your database with split keys computed by the <span class="CodeFont">COMPUTE_SPLIT_KEY</span>&#160;procedure.</td>
+                        <td>Sets up a table or index in your database with split keys computed by the <code>COMPUTE_SPLIT_KEY</code> procedure.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX</a>
                         </td>
                         <td>
                             <p>Computes split keys for a table or index and then sets up the table or index.</p>
-                            <p>This combines the functionality of <span class="CodeFont">SYSCS_UTIL.COMPUTE_SPLIT_KEY</span> and <span class="CodeFont">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</span>.</p>
+                            <p>This combines the functionality of <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> and <code>SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</code>.</p>
                         </td>
                     </tr>
                     <tr>
@@ -3103,9 +3131,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Jar">Jar File Procedures and&#160;Functions</h2>
-            <p class="body">These are the system procedures and functions for working with JAR&#160;files:</p>
-            <table summary="Summary of Splice Machine system JAR file procedures and functions">
+    <h2 id="Jar">Jar File Procedures and Functions</h2>
+
+    <p class="body">These are the system procedures and functions for working with
+JAR files:</p>
+
+    <table summary="Summary of Splice Machine system JAR file procedures and functions">
                 <col />
                 <col />
                 <thead>
@@ -3132,9 +3163,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Logging">Logging Procedures and Functions</h2>
-            <p class="body">These are the system procedures and functions for working with system logs:</p>
-            <table summary="Summary of Splice Machine system logging and tracing procedures and functions">
+    <h2 id="Logging">Logging Procedures and Functions</h2>
+
+    <p class="body">These are the system procedures and functions for working with system
+logs:</p>
+
+    <table summary="Summary of Splice Machine system logging and tracing procedures and functions">
                 <col />
                 <col />
                 <thead>
@@ -3161,9 +3195,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Statement">Statement and Stored Procedures System Procedures</h2>
-            <p class="body">These are the system procedures and functions for working with executing statements and stored procedures:</p>
-            <table summary="Summary of Splice Machine system procedures and functions for working with statements and stored procedures">
+    <h2 id="Statement">Statement and Stored Procedures System Procedures</h2>
+
+    <p class="body">These are the system procedures and functions for working with executing
+statements and stored procedures:</p>
+
+    <table summary="Summary of Splice Machine system procedures and functions for working with statements and stored procedures">
                 <col />
                 <col />
                 <thead>
@@ -3200,9 +3237,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Statistics">Statistics Procedures and Functions</h2>
-            <p class="body">These are the system procedures and functions for managing database statistics:</p>
-            <table summary="Summary of Splice Machine built-in statistics procedures and functions">
+    <h2 id="Statistics">Statistics Procedures and Functions</h2>
+
+    <p class="body">These are the system procedures and functions for managing database
+statistics:</p>
+
+    <table summary="Summary of Splice Machine built-in statistics procedures and functions">
                 <col />
                 <col />
                 <thead>
@@ -3234,9 +3274,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="SystemStatus">System Status Procedures and Functions</h2>
-            <p class="body">These are the system procedures and functions for monitoring and adjusting system status:</p>
-            <table summary="Summary of Splice Machine built-in system status procedures and functions">
+    <h2 id="SystemStatus">System Status Procedures and Functions</h2>
+
+    <p class="body">These are the system procedures and functions for monitoring and
+adjusting system status:</p>
+
+    <table summary="Summary of Splice Machine built-in system status procedures and functions">
                 <col />
                 <col />
                 <thead>
@@ -3288,9 +3331,12 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 id="Transaction">Transaction Procedures and Functions</h2>
-            <p class="body">These are the system procedures and functions for working with transactions in your database</p>
-            <table summary="Summary of Splice Machine built-in procedures and functions for working with transactions">
+    <h2 id="Transaction">Transaction Procedures and Functions</h2>
+
+    <p class="body">These are the system procedures and functions for working with
+transactions in your database</p>
+
+    <table summary="Summary of Splice Machine built-in procedures and functions for working with transactions">
                 <col />
                 <col />
                 <thead>
@@ -3307,6 +3353,7 @@
                     </tr>
                 </tbody>
             </table>
+<<<<<<< HEAD
 ﻿﻿
 
 
@@ -3442,9 +3489,18 @@
 		<p>For access to the source code for the Community Edition of Splice Machine, visit <a href="https://github.com/splicemachine/spliceengine" title="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)" alt="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)">our open source GitHub repository.</a></p>
 	</div>
 </div>
+=======
+    <p>﻿</p>
+>>>>>>> MDConvert
 
-        </div>
-	</section>
+    <div class="openSourceNoteWrapper">
+	<div class="openSourceNote">
+		<p>For access to the source code for the Community Edition of Splice Machine, visit <a href="https://github.com/splicemachine/spliceengine" title="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)" alt="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)">our open source GitHub repository.</a></p>
+	</div>
+</div>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -3461,7 +3517,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

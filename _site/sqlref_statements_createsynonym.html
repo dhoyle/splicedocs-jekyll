@@ -2806,40 +2806,68 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="Statements.CreateSynonym">CREATE SYNONYM</h1>
-            <p>The <span class="CodeFont">CREATE SYNONYM</span> statement allows you to create an alternate name
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="create-synonym">CREATE SYNONYM</h1>
+
+    <p>The <code>CREATE SYNONYM</code> statement allows you to create an alternate name
 for a table or a view.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">CREATE&#160;SYNONYM( <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">tableName</a></span> } );</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">synonymName</p>
-                <p class="paramDefnFirst">An <a href="sqlref_identifiers_intro.html">SQLIdentifier</a>, which can optionally include a schema name. This is the new name you want to create for the view or table.</p>
-                <p class="paramName">viewName</p>
-                <p class="paramDefnFirst">An <a href="sqlref_identifiers_intro.html">SQLIdentifier</a> that identifies the view for which you are creating a synonym.</p>
-                <p class="paramName">tableName</p>
-                <p class="paramDefnFirst">An <a href="sqlref_identifiers_intro.html">SQLIdentifier</a> that identifies the table for which you are creating a synonym.</p>
-            </div>
-            <h2>Usage</h2>
-            <div class="noteNote">Currently, you can only use a synonym instead of the original qualified table or view name in these statements: <span class="CodeFont"><a href="sqlref_statements_delete.html">DELETE</a></span>.</div>
-            <p>Here are a few other important notes about using synonyms:</p>
-            <ul>
-                <li>Synonyms share
-the same name space as tables or views. You cannot create a synonym with the
-same name as a table that already exists in the same schema. Similarly, you
-cannot create a table or view with a name that matches a synonym already present.</li>
-                <li>You can create a synonym for a table or view that does not yet exist; however, you can only use the synonym if the table or view is present in your database.</li>
-                <li>You can create synonyms for other synonyms (nested synonyms); however, an error will occur if you attempt to create a synonym that results in a circular reference.</li>
-                <li>You cannot create synonyms in system schemas. Any schema that starts with <span class="CodeFont">SYS</span> is a system schema.</li>
-                <li>You cannot define a synonym for a temporary table.</li>
-            </ul>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE SYNONYM Hitting FOR Batting;
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE SYNONYM( <a href="sqlref_identifiers_types.html#TableName">tableName</a> } );</pre>
+
+</div>
+    <div class="paramList">
+      <p class="paramName">synonymName</p>
+
+      <p class="paramDefnFirst">An <a href="sqlref_identifiers_intro.html">SQLIdentifier</a>, which can optionally
+include a schema name. This is the new name you want to create for the
+view or table.</p>
+
+      <p class="paramName">viewName</p>
+
+      <p class="paramDefnFirst">An <a href="sqlref_identifiers_intro.html">SQLIdentifier</a> that identifies the
+view for which you are creating a synonym.</p>
+
+      <p class="paramName">tableName</p>
+
+      <p class="paramDefnFirst">An <a href="sqlref_identifiers_intro.html">SQLIdentifier</a> that identifies the
+table for which you are creating a synonym.</p>
+
+    </div>
+    <h2 id="usage">Usage</h2>
+
+    <p class="noteNote">Currently, you can only use a synonym instead of the original qualified
+table or view name in these statements:
+<a href="sqlref_statements_delete.html"><code>DELETE</code></a>.</p>
+
+    <p>Here are a few other important notes about using synonyms:</p>
+
+    <ul>
+      <li>Synonyms share the same name space as tables or views. You cannot
+create a synonym with the same name as a table that already exists in
+the same schema. Similarly, you cannot create a table or view with a
+name that matches a synonym already present.</li>
+      <li>You can create a synonym for a table or view that does not yet exist;
+however, you can only use the synonym if the table or view is present
+in your database.</li>
+      <li>You can create synonyms for other synonyms (nested synonyms); however,
+an error will occur if you attempt to create a synonym that results in
+a circular reference.</li>
+      <li>You cannot create synonyms in system schemas. Any schema that starts
+with <code>SYS</code> is a system schema.</li>
+      <li>You cannot define a synonym for a temporary table.</li>
+    </ul>
+
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE SYNONYM Hitting FOR Batting;
 0 rows inserted/updated/deleted
 
-splice&gt;&#160;SELECT&#160;ID, Games FROM&#160;Batting WHERE&#160;ID&#160;&lt;&#160;11;
+splice&gt; SELECT ID, Games FROM Batting WHERE ID &lt; 11;
 ID    |GAMES
 -------------
 1     |150
@@ -2855,7 +2883,7 @@ ID    |GAMES
 
 0 rows inserted/updated/deleted
 
-splice&gt;&#160;SELECT&#160;ID, Games FROM&#160;Hitting&#160;WHERE&#160;ID&#160;&lt;&#160;11;
+splice&gt; SELECT ID, Games FROM Hitting WHERE ID &lt; 11;
 ID    |GAMES
 -------------
 1     |150
@@ -2870,15 +2898,19 @@ ID    |GAMES
 10    |100
 
 0 rows inserted/updated/deleted
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_dropsynonym.html"><span class="CodeFont">DROP_SYNONYM</span></a> statement</li>
-                <li><span class="CodeFont"><a href="cmdlineref_showsynonyms.html">SHOW&#160;SYNONYMS</a></span>&#160;command in our <span class="ItalicFont">Developer's Guide</span>.</li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_dropsynonym.html"><code>DROP_SYNONYM</code></a> statement</li>
+      <li><a href="cmdlineref_showsynonyms.html"><code>SHOW SYNONYMS</code></a> command in our
+<em>Developer’s Guide</em>.</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2895,7 +2927,11 @@ ID    |GAMES
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

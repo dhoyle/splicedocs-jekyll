@@ -2806,38 +2806,55 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="Statements.DropTable">DROP TABLE</h1>
-            <p>The <span class="CodeFont">DROP TABLE</span> statement removes the specified table.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax" xml:space="preserve">DROP TABLE [IF&#160;EXISTS] <span class="ItalicFont"><a href="sqlref_identifiers_types.html#TableName">table-Name</a></span></pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">table-Name</p>
-                <p class="paramDefnFirst">The name of the schema that you want to drop from your database.</p>
-            </div>
-            <div>
-                <h2>Statement dependency system</h2>
-                <p>Indexes and constraints ,
-constraints (primary, unique, check and references from the table being dropped)
-and triggers on the table are silently dropped.</p>
-                <p>Dropping a table invalidates
-statements that depend on the table. (Invalidating a statement causes it to
-be recompiled upon the next execution. See <a href="sqlref_statements_interactions.html">Interaction with the dependency system</a>.)</p>
-            </div>
-            <h2>Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;DROP TABLE&#160;Salaries;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_update.html"><span class="CodeFont">ALTER TABLE</span></a>&#160;statement</li>
-                <li><span class="CodeFont"><a href="sqlref_statements_createtable.html">CREATE TABLE</a></span>&#160;statement</li>
-                <li><a href="sqlref_clauses_constraint.html"><span class="CodeFont">CONSTRAINT</span></a> clause</li>
-            </ul>
-        </div>
-	</section>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="drop-table">DROP TABLE</h1>
+
+    <p>The <code>DROP TABLE</code> statement removes the specified table.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+DROP TABLE [IF EXISTS] <a href="sqlref_identifiers_types.html#TableName">table-Name</a></pre>
+
+</div>
+    <div class="paramList">
+      <p class="paramName">table-Name</p>
+
+      <p class="paramDefnFirst">The name of the schema that you want to drop from your database.</p>
+
+    </div>
+    <div>
+      <h2 id="statement-dependency-system">Statement dependency system</h2>
+
+      <p>Indexes and constraints , constraints (primary, unique, check and
+references from the table being dropped) and triggers on the table are
+silently dropped.</p>
+
+      <p>Dropping a table invalidates statements that depend on the table.
+(Invalidating a statement causes it to be recompiled upon the next
+execution. See <a href="sqlref_statements_interactions.html">Interaction with the dependency
+system</a>.)</p>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; DROP TABLE Salaries;
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_update.html"><code>ALTER TABLE</code></a> statement</li>
+      <li><a href="sqlref_statements_createtable.html"><code>CREATE TABLE</code></a> statement</li>
+      <li><a href="sqlref_clauses_constraint.html"><code>CONSTRAINT</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2854,7 +2871,11 @@ be recompiled upon the next execution. See <a href="sqlref_statements_interactio
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

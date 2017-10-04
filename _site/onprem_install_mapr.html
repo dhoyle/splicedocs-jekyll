@@ -240,13 +240,6 @@
             
             
             
-            
-            
-            <li><a href="onprem_about.html">About Our On-Premise DB</a></li>
-            
-            
-            
-            
         </ul>
      </li>
        
@@ -536,6 +529,7 @@
 
     
 
+<<<<<<< HEAD
   ﻿
 
 
@@ -868,6 +862,397 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                 <div class="noteNote">The command line interpreter defaults to connecting on port <span class="CodeFont">1527</span> on <span class="CodeFont">localhost</span>, with username <span class="CodeFont">splice</span>, and password <span class="CodeFont">admin</span>. You can override these defaults when starting the interpreter, as described in the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</div>
                 <p>Now try entering a few sample commands you can run to verify that everything is working with your Splice Machine installation.</p>
                 <table summary="Sample commands to verify your installation">
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+
+    <h1 id="installing-and-configuring-splice-machine-for-mapr">Installing and Configuring Splice Machine for MapR</h1>
+
+    <p class="noteOnPremiseOnly">    <a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
+
+    <div>
+      <p>This topic describes installing and configuring Splice Machine on a
+MapR-managed cluster. Follow these steps:</p>
+
+      <ol>
+        <li><a href="#Verify">Verify Prerequisites</a></li>
+        <li><a href="#Install">Download and Install Splice Machine</a></li>
+        <li><a href="#Configur">Configure Cluster Services</a></li>
+        <li><a href="#Stop">Stop Cluster Services</a></li>
+        <li><a href="#StartCluster">Restart Cluster Services</a></li>
+        <li><a href="#CreateLogDir">Create the Splice Machine Event Log Directory</a></li>
+        <li>Make any needed <a href="#Optional">Optional Configuration Modifications</a></li>
+        <li><a href="#Run">Verify your Splice Machine Installation</a></li>
+      </ol>
+
+      <div class="openSourceNote">
+        <p><span class="noteEnterpriseNote">MapR Secure Clusters Only Work with the
+Enterprise Edition of Splice Machine</span></p>
+
+        <p>MapR secure clusters do not support the Community Edition of Splice
+Machine. You can check this by:</p>
+
+        <ol>
+          <li>
+            <p>Open the HBase Configuration page</p>
+          </li>
+          <li>
+            <p>Search the XML for the <code>hbase.security.authentication</code> setting</p>
+          </li>
+          <li>
+            <p>If the setting value is anything other than <code>simple</code>, you need the
+<em>Enterprise</em> edition of Splice Machine.</p>
+          </li>
+        </ol>
+
+        <p>To read more about the additional features available in the Enterprise
+Edition, see our <a href="notes_editions.html">Splice Machine Editions</a> page. To
+obtain a license for the Splice Machine <em>Enterprise Edition</em>, <span class="noteEnterpriseNote">please <a href="http://www.splicemachine.com/company/contact-us/" target="_blank">Contact Splice Machine Sales</a> today.</span></p>
+
+      </div>
+      <h2 id="Verify">Verify Prerequisites</h2>
+
+      <p>Before starting your Splice Machine installation, please make sure that
+your cluster contains the prerequisite software components:</p>
+
+      <ul>
+        <li>
+          <p>A cluster running MapR with MapR-FS</p>
+        </li>
+        <li>
+          <p>HBase installed</p>
+        </li>
+        <li>
+          <p>YARN installed</p>
+        </li>
+        <li>
+          <p>ZooKeeper installed</p>
+        </li>
+        <li>
+          <p>The latest <code>mapr-patch</code> should be installed to bring in all
+MapR-supplied platform patches, before proceeding with your Splice
+Machine installation.</p>
+        </li>
+        <li>
+          <p>The MapR Ecosystem Package (MEP) should be installed on all cluster
+nodes, before proceeding with your Splice Machine installation.</p>
+        </li>
+        <li>
+          <p>Ensure Spark services are <strong>NOT</strong> installed; Splice Machine cannot
+currently coexist with Spark 1.x on a cluster:</p>
+
+          <ul class="bullet">
+            <li>
+              <p>If <code>MEP version 1.x</code> is in use, you must remove the <code>Spark 1.x</code>
+packages from your cluster, as described below, in <a href="#Removing">Removing Spark
+Packages from Your Cluster.</a></p>
+            </li>
+            <li>
+              <p>MEP version 2.0 bundles Spark 2.0, and will not cause conflicts with
+Splice Machine.</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <p class="noteNote">The specific versions of these components that you need depend on your
+operating environment, and are called out in detail in the
+<a href="onprem_info_requirements.html">Requirements</a> topic of our <em>Getting
+Started Guide</em>.</p>
+
+      <h3 id="Removing">Removing Spark Packages from Your Cluster</h3>
+
+      <p>To remove Spark packages from your cluster and update your
+configuration, follow these steps</p>
+
+      <div class="opsStepsList">
+        <ol class="boldFont">
+          <li>
+            <p class="topLevel">If you’re running a Debian/Ubuntu-based Linux distribution:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>dpkg -l | awk '/ii.*mapr-spark/{print $2}' | xargs sudo apt-get purge
+</code></pre>
+
+            </div>
+
+            <p class="indentLevel1">If you’re running on a RHEL/CentOS-based Linux distribution:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>rpm -qa \*mapr-spark\* | xargs sudo yum -y erase
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Reconfigure node services in your cluster:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>sudo /opt/mapr/server/configure.sh -R
+</code></pre>
+
+            </div>
+          </li>
+        </ol>
+
+      </div>
+      <h2 id="Install">Download and Install Splice Machine</h2>
+
+      <p>Perform the following steps <span class="important">on each node</span>
+in your cluster:</p>
+
+      <div class="opsStepsList">
+        <ol class="boldFont">
+          <li>
+            <p class="topLevel">Download the installer for your version.</p>
+
+            <p class="indentLevel1">Which Splice Machine installer (gzip) package you need depends upon which Splice Machine version you’re installing and which version of MapR you are using. Here are the URLs for Splice Machine Release 2.6.1 and 2.6:</p>
+
+            <table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Splice Machine Release</th>
+            <th>MapR Version</th>
+            <th>Installer Package Link</th>
+        </tr>
+    </thead>
+    <tbody>
+       <tr>
+           <td class="SpliceRelease">2.6.1</td>
+           <td class="SplicePlatform">5.2.0</td>
+           <td><a href="https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.6.1.1736.mapr5.2.0.p0.74.tar.gz">https://s3.amazonaws.com/splice-releases/2.6.1.1736/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.6.1.1736.mapr5.2.0.p0.74.tar.gz</a></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="Separator"> </td>
+        </tr>
+       <tr>
+           <td class="SpliceRelease">2.5.0</td>
+           <td class="SplicePlatform">5.2.0</td>
+           <td><a href="https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.5.0.1735.mapr5.2.0.p0.434.tar.gz">https://s3.amazonaws.com/splice-releases/2.5.0.1735/cluster/installer/mapr5.2.0/SPLICEMACHINE-2.5.0.1735.mapr5.2.0.p0.434.tar.gz</a></td>
+        </tr>
+    </tbody>
+</table>
+
+            <p class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/" target="_blank">the Splice
+Machine Community site</a> or contact your Splice
+Machine representative.</p>
+          </li>
+          <li>
+            <p class="topLevel">Create the <code>splice</code> installation directory:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>mkdir -p /opt/splice
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Download the Splice Machine package into the <code>splice</code> directory on
+the node. For example:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>cd /opt/splicecurl -O '////SPLICEMACHINE-..'
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Extract the Splice Machine package:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>tar -xf SPLICEMACHINE-..
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Create a symbolic link. For example:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>ln -sf SPLICEMACHINE-.. default
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Run our script as <em>root</em> user <span class="important">on each
+node</span> in your cluster to add symbolic links to the set up the
+Splice Machine jar and to script symbolic links:</p>
+
+            <p class="indentLevel1">Issue this command on each node in your cluster:</p>
+
+            <div class="preWrapperWide">
+
+              <pre class="ShellCommand"><code>sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh
+</code></pre>
+
+            </div>
+          </li>
+        </ol>
+
+      </div>
+      <h2 id="Configur">Configure Cluster Services</h2>
+
+      <p>The scripts used in this section all assume that password-less <span class="ShellCommand">ssh </span>and password-less <span class="ShellCommand">sudo </span>are enabled across all cluster nodes.
+These scripts are designed to be run on the CLDB node in a cluster with
+only one CLDB node. If your cluster has multiple CLDB nodes, do not run
+these script; you need to change configuration settings manually <span class="important">on each node</span> in the cluster. To do so, refer to
+the <code>*.patch</code> files in the <code>/opt/splice/default/conf</code> directory.</p>
+
+      <p>If you’re running on a cluster with a single CLDB node, follow these
+steps:</p>
+
+      <div class="opsStepsList">
+        <ol class="boldFont">
+          <li>
+            <p class="topLevel">Tighten the ephemeral port range so HBase doesn’t bump into it:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
+./install-sysctl-conf.sh
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Update <code>hbase-site.xml</code>:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
+./install-hbase-site-xml.sh
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Update <code>hbase-env.sh</code>:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
+./install-hbase-env-sh.sh
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Update <code>yarn-site.xml</code>:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
+./install-yarn-site-xml.sh
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Update <code>warden.conf</code>:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
+./install-warden-conf.sh
+</code></pre>
+
+            </div>
+          </li>
+          <li>
+            <p class="topLevel">Update <code>zoo.cfg</code>:</p>
+
+            <div class="preWrapperWide">
+              <pre class="ShellCommand"><code>cd /opt/splice/default/scripts
+./install-zookeeper-conf.sh
+</code></pre>
+
+            </div>
+          </li>
+        </ol>
+
+      </div>
+      <h2 id="Stop">Stop Cluster Services</h2>
+
+      <p>You need to stop all cluster services to continue with installing Splice
+Machine. Run the following commands as <code>root</code> user <span class="important">on each node</span> in your cluster</p>
+
+      <div class="preWrapperWide">
+        <pre class="ShellCommand"><code>sudo service mapr-warden stopsudo service mapr-zookeeper stop
+</code></pre>
+
+      </div>
+      <h2 id="StartCluster">Restart Cluster Services</h2>
+
+      <p>Once you’ve completed the configuration steps described above, start
+services on your cluster; run the following commands <span class="important">on each node</span> in your cluster:</p>
+
+      <div class="preWrapper">
+        <pre class="ShellCommand"><code>sudo service mapr-zookeeper startsudo service mapr-warden start
+</code></pre>
+
+      </div>
+      <h2 id="CreateLogDir">Create the Splice Machine Event Log Directory</h2>
+
+      <p>Create the Splice Machine event log directory by executing the following
+commands on a single cluster node while MapR is up and running:</p>
+
+      <div class="preWrapper">
+        <pre class="ShellCommand"><code>sudo -su mapr hadoop fs -mkdir -p /user/splice/historysudo -su mapr hadoop fs -chown -R mapr:mapr /user/splicesudo -su mapr hadoop fs -chmod 1777 /user/splice/history
+</code></pre>
+
+      </div>
+      <h2 id="Optional">Optional Configuration Modifications</h2>
+
+      <p>There are a few configuration modifications you might want to make:</p>
+
+      <ul>
+        <li><a href="#Modify">Modify the Authentication Mechanism</a> if you want to
+authenticate users with something other than the default <em>native
+authentication</em> mechanism.</li>
+        <li><a href="#Adjust">Adjust the Replication Factor</a> if you have a small cluster
+and need to improve resource usage or performance.</li>
+      </ul>
+
+      <h3 id="Modify">Modify the Authentication Mechanism</h3>
+
+      <p>Splice Machine installs with Native authentication configured; native
+authentication uses the <code>sys.sysusers</code> table in the <code>splice</code> schema for
+configuring user names and passwords.</p>
+
+      <p>You can disable authentication or change the authentication mechanism
+that Splice Machine uses to LDAP by following the simple instructions in
+<a href="cmdlineref_intro.html" class="WithinBook">Command Line (splice&gt;) Reference</a></p>
+
+      <h3 id="Adjust">Adjust the Replication Factor</h3>
+
+      <p>The default namespace replication factor for Splice Machine is <span class="PlatformVariablesMapRDefaultReplication">3</span>. If you’re
+running a small cluster you may want to adjust the replication down to
+improve resource and performance drag. To do so in MapR, use the
+following command:</p>
+
+      <pre class="ShellCommand"><code>maprcli volume modify -nsreplication &lt;value&gt;
+</code></pre>
+
+      <p>For more information, see the MapR documentation site,
+<a href="http://doc.mapr.com/" title="MapR documentation site" target="_blank">doc.mapr.com</a>.</p>
+
+      <h2 id="Run">Verify your Splice Machine Installation</h2>
+
+      <p>Now start using the Splice Machine command line interpreter, which is
+referred to as <em>the splice prompt</em> or simply <span class="AppCommand">splice&gt;</span> by launching the <code>sqlshell.sh</code>
+script on any node in your cluster that is running an HBase region
+server.</p>
+
+      <p class="noteNote">The command line interpreter defaults to connecting on port <code>1527</code> on
+<code>localhost</code>, with username <code>splice</code>, and password <code>admin</code>. You can
+override these defaults when starting the interpreter, as described in
+the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> topic
+in our <em>Developer’s Guide</em>.</p>
+
+      <p>Now try entering a few sample commands you can run to verify that
+everything is working with your Splice Machine installation.</p>
+
+      <table summary="Sample commands to verify your installation">
+>>>>>>> MDConvert
                     <col />
                     <col />
                     <thead>
@@ -927,14 +1312,18 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><span class="BoldFont">Make sure you end each command with a semicolon</span> (<span class="CodeFont">;</span>), followed by the <span class="ItalicFont">Enter</span> key or <span class="ItalicFont">Return</span> key </td>
+                            <td colspan="2"><strong>Make sure you end each command with a semicolon</strong> (<code>;</code>), followed by the <em>Enter</em> key or <em>Return</em> key </td>
                         </tr>
                     </tbody>
                 </table>
-                <p>See the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a> section of our <span class="ItalicFont">Developer's Guide</span> for information about our commands and command syntax.</p>
-            </div>
-        </div>
-	</section>
+      <p>See the <a href="cmdlineref_intro.html">Command Line (splice&gt;) Reference</a>
+section of our <em>Developer’s Guide</em> for information about our commands
+and command syntax.</p>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -951,7 +1340,11 @@ sudo bash /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

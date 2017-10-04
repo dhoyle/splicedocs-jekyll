@@ -2806,15 +2806,18 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="SystemTables.SysConstraints">SYSCONSTRAINTS System Table</h1>
-            <p>The <span class="CodeFont">SYSCONSTRAINTS</span> table describes the information common to all
-types of constraints within the current database (currently, this includes
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="sysconstraints-system-table">SYSCONSTRAINTS System Table</h1>
+
+    <p>The <code>SYSCONSTRAINTS</code> table describes the information common to all types
+of constraints within the current database (currently, this includes
 primary key, unique, and check constraints).</p>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSCONSTRAINTS</span> system
+
+    <p>The following table shows the contents of the <code>SYSCONSTRAINTS</code> system
 table.</p>
-            <table>
+
+    <table>
                 <caption>SYSCONSTRAINTS system table</caption>
                 <col />
                 <col />
@@ -2832,77 +2835,79 @@ table.</p>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">CONSTRAINTID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>CONSTRAINTID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Unique identifier for constraint</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Identifier for table (join with <span class="CodeFont">SYSTABLES.TABLEID</span>)</td>
+                        <td><code>TABLEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
+                        <td>Identifier for table (join with <code>SYSTABLES.TABLEID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">CONSTRAINTNAME</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>CONSTRAINTNAME</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>Constraint name (internally generated if not specified by user)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TYPE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TYPE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">Possible values:</p>
                             <ul>
-                                <li><span class="CodeFont">'P'</span> for primary key)</li>
-                                <li> <span class="CodeFont">'U'</span> for unique)</li>
-                                <li><span class="CodeFont">'C'</span>
+                                <li><code>'P'</code> for primary key)</li>
+                                <li> <code>'U'</code> for unique)</li>
+                                <li><code>'C'</code>
 for check)</li>
                             </ul>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SCHEMAID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Identifier for schema that the constraint belongs to (join with <span class="CodeFont">SYSSCHEMAS.SCHEMAID</span>)</td>
+                        <td><code>SCHEMAID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
+                        <td>Identifier for schema that the constraint belongs to (join with <code>SYSSCHEMAS.SCHEMAID</code>)</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">STATE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>STATE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>
                             <p class="noSpaceAbove">Possible values:</p>
                             <ul>
-                                <li><span class="CodeFont">'E'</span> for enabled</li>
-                                <li><span class="CodeFont">'D'</span> for disabled</li>
+                                <li><code>'E'</code> for enabled</li>
+                                <li><code>'D'</code> for disabled</li>
                             </ul>
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">REFERENCECOUNT</td>
-                        <td class="CodeFont">INTEGER</td>
-                        <td class="CodeFont">10</td>
-                        <td class="CodeFont">NO</td>
-                        <td>The count of the number of foreign key constraints that reference this constraint; this number can be greater than zero only or <span class="CodeFont">PRIMARY KEY</span> and <span class="CodeFont">UNIQUE</span> constraints</td>
+                        <td><code>REFERENCECOUNT</code></td>
+                        <td><code>INTEGER</code></td>
+                        <td><code>10</code></td>
+                        <td><code>NO</code></td>
+                        <td>The count of the number of foreign key constraints that reference this constraint; this number can be greater than zero only or <code>PRIMARY KEY</code> and <code>UNIQUE</code> constraints</td>
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_systables_intro.html">About System Tables</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_systables_intro.html">About System Tables</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2919,7 +2924,11 @@ for check)</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

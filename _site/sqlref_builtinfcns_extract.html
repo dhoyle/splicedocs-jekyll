@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>EXTRACT</h1>
@@ -2867,6 +2868,111 @@
             <h2>Examples</h2>
             <div class="preWrapper"><pre class="Example" xml:space="preserve">
 splice&gt; SELECT Birthdate,
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="extract">EXTRACT</h1>
+
+    <p>You can use the <code>EXTRACT</code> built-in function can use to extract specific
+information from date and time values.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>EXTRACT( infoType FROM dateExpr );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">infoType</p>
+
+      <p class="paramDefnFirst">The value (information) that you want to extract and return from the
+date-time expression. This can be one of the following values:</p>
+
+      <div class="paramListNested">
+        <p class="paramName"><code>YEAR</code></p>
+
+        <p class="paramDefnFirst">The four-digit year value is extracted from the date-time expression.</p>
+
+        <p class="paramName"><code>QUARTER</code></p>
+
+        <p class="paramDefnFirst">The single digit (<code>1-4</code>) quarter number is extracted from the date-time
+expression.</p>
+
+        <p class="paramName"><code>MONTH</code></p>
+
+        <p class="paramDefnFirst">The month number (<code>1-12</code>) is extracted from the date-time expression.</p>
+
+        <p class="paramName"><code>MONTHNAME</code></p>
+
+        <p class="paramDefnFirst">The full month name (e.g. <code>September</code>) is extracted from the date-time
+expression.</p>
+
+        <p class="paramName"><code>WEEK</code></p>
+
+        <p class="paramDefnFirst">The week-of-year number (1 is the first week) is extracted from the
+date-time expression.</p>
+
+        <p class="paramName"><code>WEEKDAY</code></p>
+
+        <p class="paramDefnFirst">The day-of-week number (<code>1-7</code>, with Monday as <code>1</code> and Sunday as <code>7</code>) is
+extracted from the date-time expression.</p>
+
+        <p class="paramName"><code>WEEKDAYNAME</code></p>
+
+        <p class="paramDefnFirst">The day-of-week name (e.g. <code>Tuesday</code>)  is extracted from the date-time
+expression.</p>
+
+        <p class="paramName"><code>DAYOFYEAR</code></p>
+
+        <p class="paramDefnFirst">The numeric day-of-year (<code>0-366</code>) is extracted from the date-time
+expression.</p>
+
+        <p class="paramName"><code>DAY</code></p>
+
+        <p class="paramDefnFirst">The numeric day-of-month (<code>0-31</code>) is extracted from the date-time
+expression.</p>
+
+        <p class="paramName"><code>HOUR</code></p>
+
+        <p class="paramDefnFirst">The numeric hour (<code>0-23</code>) is extracted from the date-time expression.</p>
+
+        <p class="paramDefn">Note that Splice Machine  <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> values
+do not include time information and will not work correctly with this
+<em>infoType</em>.</p>
+
+        <p class="paramName"><code>MINUTE</code></p>
+
+        <p class="paramDefnFirst">The numeric minute (<code>0-59</code>) is extracted from the date-time expression.</p>
+
+        <p class="paramDefn">Note that Splice Machine  <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> values
+do not include time information and will not work correctly with this
+<em>infoType</em>.</p>
+
+        <p class="paramName"><code>SECOND</code></p>
+
+        <p class="paramDefnFirst">The numeric second (<code>0-59</code>) is extracted from the date-time expression.</p>
+
+        <p class="paramDefn">Note that Splice Machine  <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> values
+do not include time information and will not work correctly with this
+<em>infoType</em>.</p>
+
+      </div>
+      <p class="paramName">dateExpr</p>
+
+      <p class="paramDefnFirst">The date-time expression from which you wish to extract information.</p>
+
+      <p class="paramDefn">Note that Splice Machine  <a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> values
+do not include time information and thus will not produce correct values
+if you specify <code>HOUR</code>, <code>MINUTE</code>, or <code>SECOND</code> infoTypes.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+
+      <pre class="Example"><code>splice&gt; SELECT Birthdate,
+>>>>>>> MDConvert
    EXTRACT (Quarter FROM Birthdate) "Quarter",
    EXTRACT (Week FROM Birthdate) "Week",
    EXTRACT(WeekDay FROM Birthdate) "Weekday"
@@ -2933,30 +3039,34 @@ splice&gt; values EXTRACT(second FROM '2009-07-02 11:22:33.04');
 33
 
 1 row selected
-</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_builtinfcns_currentdate.html"><span class="CodeFont">CURRENT_DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">DAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">LASTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_month.html"><span class="CodeFont">MONTH</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthbetween.html"><span class="CodeFont">MONTH_BETWEEN</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_monthname.html"><span class="CodeFont">MONTHNAME</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_day.html"><span class="CodeFont">NEXTDAY</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_now.html"><span class="CodeFont">NOW</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_quarter.html"><span class="CodeFont">QUARTER</span></a> function</li>
-                <li><a href="sqlref_builtinfcns_time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
-                <li><a href="sqlref_builtinfcns_timestamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_char.html"><span class="CodeFont">TO_CHAR</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_date.html"><span class="CodeFont">TO_DATE</span></a>&#160;function</li>
-                <li><a href="sqlref_builtinfcns_week.html"><span class="CodeFont">WEEK</span></a> function</li>
-                <li><span class="ItalicFont"><a href="developers_fundamentals_dates.html">Working with Dates</a></span> in the <span class="ItalicFont">Developer's Guide</span></li>
-            </ul>
-        </div>
-	</section>
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_builtinfcns_currentdate.html"><code>CURRENT_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>DAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>LASTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthbetween.html"><code>MONTH_BETWEEN</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_monthname.html"><code>MONTHNAME</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_day.html"><code>NEXTDAY</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_now.html"><code>NOW</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_quarter.html"><code>QUARTER</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_time.html"><code>TIME</code></a> data type</li>
+      <li><a href="sqlref_builtinfcns_timestamp.html"><code>TIMESTAMP</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_char.html"><code>TO_CHAR</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_date.html"><code>TO_DATE</code></a> function</li>
+      <li><a href="sqlref_builtinfcns_week.html"><code>WEEK</code></a> function</li>
+      <li><em><a href="developers_fundamentals_dates.html">Working with Dates</a></em> in the
+<em>Developer’s Guide</em></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2973,7 +3083,11 @@ splice&gt; values EXTRACT(second FROM '2009-07-02 11:22:33.04');
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -518,6 +518,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Help Command</h1>
@@ -571,6 +572,72 @@ splice&gt;
             </div>
         </div>
 	</section>
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="help-command">Help Command</h1>
+
+    <p>The <span class="AppCommand">help</span> command displays a list of the
+available <span class="AppCommand">splice&gt;</span> commands.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>HELP
+</code></pre>
+
+    </div>
+    <h2 id="example">Example</h2>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; help;
+
+ Supported commands include:
+
+  CONNECT 'url for database' [ PROTOCOL namedProtocol ] [ AS connectionName ];
+                               -- connects to database URL
+                               -- and may assign identifier
+  AUTOCOMMIT [ ON | OFF ];     -- sets autocommit mode for the connection
+  SHOW SCHEMAS;                -- lists all schemas in the current database
+  SHOW [ TABLES | VIEWS | PROCEDURES | FUNCTIONS | SYNONYMS] { IN schema };
+                               -- lists tables, views, procedures, functions or synonyms
+  SHOW INDEXES { IN schema | FROM table };
+                               -- lists indexes in a schema, or for a table
+  SHOW ROLES;                  -- lists all defined roles in the database,
+                               -- sorted
+  SHOW SETTABLE_ROLES;         -- lists the roles which can be set for the
+                               -- current connection, sorted
+  DESCRIBE name;               -- lists columns in the named table
+
+  COMMIT;                      -- commits the current transaction
+  ROLLBACK;                    -- rolls back the current transaction
+
+  PREPARE name AS 'SQL text'; -- prepares the SQL text
+  EXECUTE { name | 'SQL text' } [ USING { name | 'SQL text' } ] ;
+                               -- executes the statement with parameter
+                               -- values from the USING result set row
+  REMOVE name;                 -- removes the named previously prepared statement
+
+  RUN 'filename';              -- run commands from the named file
+
+  ELAPSEDTIME [ ON | OFF ];    -- sets elapsed time mode for splice
+  MAXIMUMDISPLAYWIDTH integerValue;
+                               -- sets the maximum display width for
+                               -- each column to integerValue
+
+  EXIT;                        -- exits splice
+  HELP;                        -- shows this message
+
+ Any unrecognized commands are treated as potential SQL commands and executed directly.
+
+splice&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+>>>>>>> MDConvert
 
 
     <div class="tags">
@@ -587,7 +654,11 @@ splice&gt;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

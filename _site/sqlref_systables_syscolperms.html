@@ -2806,21 +2806,27 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="SystemTables.SysColPerms">SYSCOLPERMS System Table </h1>
-            <p>The <span class="CodeFont">SYSCOLPERMS</span> table stores the column permissions that have been
-		granted but not revoked.</p>
-            <p>All of the permissions for one (<span class="CodeFont">GRANTEE, TABLEID, TYPE, GRANTOR</span>)
-			combination are specified in a single row in the <span class="CodeFont">SYSCOLPERMS</span> table. The keys
-		for the <span class="CodeFont">SYSCOLPERMS</span> table are:</p>
-            <ul>
-                <li>Primary key (<span class="CodeFont">GRANTEE, TABLEID, TYPE, GRANTOR</span>)</li>
-                <li>Unique key (<span class="CodeFont">COLPERMSID</span>)</li>
-                <li>Foreign key (<span class="CodeFont">TABLEID</span> references <span class="CodeFont">SYS.SYSTABLES</span>)</li>
-            </ul>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSCOLPERMS</span> system table.</p>
-            <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscolperms-system-table">SYSCOLPERMS System Table</h1>
+
+    <p>The <code>SYSCOLPERMS</code> table stores the column permissions that have been
+granted but not revoked.</p>
+
+    <p>All of the permissions for one (<code>GRANTEE, TABLEID, TYPE, GRANTOR</code>)
+combination are specified in a single row in the <code>SYSCOLPERMS</code> table.
+The keys for the <code>SYSCOLPERMS</code> table are:</p>
+
+    <ul>
+      <li>Primary key (<code>GRANTEE, TABLEID, TYPE, GRANTOR</code>)</li>
+      <li>Unique key (<code>COLPERMSID</code>)</li>
+      <li>Foreign key (<code>TABLEID</code> references <code>SYS.SYSTABLES</code>)</li>
+    </ul>
+
+    <p>The following table shows the contents of the <code>SYSCOLPERMS</code> system
+table.</p>
+
+    <table>
                 <caption>SYSCOLPERMS system table</caption>
                 <col />
                 <col />
@@ -2838,69 +2844,71 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont">COLPERMSID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>COLPERMSID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Used by the dependency manager to track the dependency
 of a view, trigger, or constraint on the column level permissions</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">GRANTEE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>GRANTEE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The authorization ID of the user or role to which the
 privilege was granted</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">GRANTOR</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>GRANTOR</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The authorization ID of the user who granted the privilege.
 Privileges can be granted only by the object owner</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TABLEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The unique identifier for the table on which the permissions
 have been granted</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TYPE</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TYPE</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
                         <td>If the privilege is non-grantable, the valid values are:
-<ul><li><span class="CodeFont">'s'</span> for <span class="CodeFont">SELECT</span></li><li><span class="CodeFont">'u'</span> for <span class="CodeFont">UPDATE</span></li><li><span class="CodeFont">'r'</span> for <span class="CodeFont">REFERENCES</span><br /></li></ul><p>
+<ul><li><code>'s'</code> for <code>SELECT</code></li><li><code>'u'</code> for <code>UPDATE</code></li><li><code>'r'</code> for <code>REFERENCES</code><br /></li></ul><p>
 If the privilege is grantable, the valid values are:
-</p><ul><li><span class="CodeFont">'S'</span> for <span class="CodeFont">SELECT</span></li><li><span class="CodeFont">'U'</span> for <span class="CodeFont">UPDATE</span></li><li><span class="CodeFont">'R'</span> for <span class="CodeFont">REFERENCES</span></li></ul></td>
+</p><ul><li><code>'S'</code> for <code>SELECT</code></li><li><code>'U'</code> for <code>UPDATE</code></li><li><code>'R'</code> for <code>REFERENCES</code></li></ul></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">COLUMNS</td>
-                        <td><span class="ItalicFont">org.apache.Splice Machine.
+                        <td><code>COLUMNS</code></td>
+                        <td><em>org.apache.Splice Machine.
 iapi.services.io.
-FormatableBitSet</span>
+FormatableBitSet</em>
                             <br />
                             <br />
                             <p>This class is not part of the public API.</p>
                         </td>
-                        <td class="CodeFont">-1</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>-1</code></td>
+                        <td><code>NO</code></td>
                         <td>A list of columns to which the privilege applies</td>
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_systables_intro.html">About System Tables</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_systables_intro.html">About System Tables</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2917,7 +2925,11 @@ FormatableBitSet</span>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

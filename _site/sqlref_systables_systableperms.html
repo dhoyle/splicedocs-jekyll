@@ -2806,21 +2806,27 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="SystemTables.SysTablePerms">SYSTABLEPERMS System Table</h1>
-            <p>The <span class="CodeFont">SYSTABLEPERMS</span> table stores the table permissions that have
-		been granted but not revoked.</p>
-            <p>All of the permissions for one (<span class="CodeFont">GRANTEE, TABLEID, GRANTOR</span>) combination
-			are specified in a single row in the <span class="CodeFont">SYSTABLEPERMS</span> table. The keys for the
-		<span class="CodeFont">SYSTABLEPERMS</span> table are:</p>
-            <ul>
-                <li>Primary key (<span class="CodeFont">GRANTEE, TABLEID, GRANTOR</span>)</li>
-                <li>Unique key (<span class="CodeFont">TABLEPERMSID</span>)</li>
-                <li>Foreign key (<span class="CodeFont">TABLEID </span>references <span class="CodeFont">SYS.SYSTABLES</span>)</li>
-            </ul>
-            <p>The following table shows the contents of the <span class="CodeFont">SYSTABLEPERMS</span> system table.</p>
-            <table>
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="systableperms-system-table">SYSTABLEPERMS System Table</h1>
+
+    <p>The <code>SYSTABLEPERMS</code> table stores the table permissions that have been
+granted but not revoked.</p>
+
+    <p>All of the permissions for one (<code>GRANTEE, TABLEID, GRANTOR</code>) combination
+are specified in a single row in the <code>SYSTABLEPERMS</code> table. The keys for
+the <code>SYSTABLEPERMS</code> table are:</p>
+
+    <ul>
+      <li>Primary key (<code>GRANTEE, TABLEID, GRANTOR</code>)</li>
+      <li>Unique key (<code>TABLEPERMSID</code>)</li>
+      <li>Foreign key (<code>TABLEID </code>references <code>SYS.SYSTABLES</code>)</li>
+    </ul>
+
+    <p>The following table shows the contents of the <code>SYSTABLEPERMS</code> system
+table.</p>
+
+    <table>
                 <caption>SYSTABLEPERMS system table</caption>
                 <col />
                 <col />
@@ -2838,86 +2844,88 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="CodeFont"> TABLEPERMSID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code> TABLEPERMSID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>Used by the dependency manager to track the dependency
 					of a view, trigger, or constraint on the table level permissions</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">  GRANTEE</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>  GRANTEE</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The authorization ID of the user or role to which the
 					privilege is granted</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">GRANTOR</td>
-                        <td class="CodeFont">VARCHAR</td>
-                        <td class="CodeFont">128</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>GRANTOR</code></td>
+                        <td><code>VARCHAR</code></td>
+                        <td><code>128</code></td>
+                        <td><code>NO</code></td>
                         <td>The authorization ID of the user who granted the privilege. Privileges can be granted only by the object owner</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TABLEID</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">36</td>
-                        <td class="CodeFont">NO</td>
+                        <td><code>TABLEID</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>36</code></td>
+                        <td><code>NO</code></td>
                         <td>The unique identifier for the table on which the permissions have been granted</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">SELECTPRIV</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Specifies if the <span class="CodeFont">SELECT</span> permission is granted. The valid values are: <ul><li><span class="CodeFont">'y'</span> (non-grantable privilege)</li><li><span class="CodeFont">'Y'</span> (grantable privilege)<br /></li><li><span class="CodeFont">'N'</span> (no privilege)</li></ul></td>
+                        <td><code>SELECTPRIV</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
+                        <td>Specifies if the <code>SELECT</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)</li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">DELETEPRIV</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Specifies if the <span class="CodeFont">DELETE</span> permission is granted. The valid values are: <ul><li><span class="CodeFont">'y'</span> (non-grantable privilege)<br /></li><li><span class="CodeFont">'Y'</span> (grantable privilege)<br /></li><li><span class="CodeFont">'N'</span> (no privilege)</li></ul></td>
+                        <td><code>DELETEPRIV</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
+                        <td>Specifies if the <code>DELETE</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">INSERTPRIV</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Specifies if the <span class="CodeFont">INSERT</span> permission is granted. The valid values are: <ul><li><span class="CodeFont">'y'</span> (non-grantable privilege)<br /></li><li><span class="CodeFont">'Y'</span> (grantable privilege)<br /></li><li><span class="CodeFont">'N'</span> (no privilege)</li></ul></td>
+                        <td><code>INSERTPRIV</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
+                        <td>Specifies if the <code>INSERT</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"> UPDATEPRIV</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Specifies if the <span class="CodeFont">UPDATE</span> permission is granted. The valid values are: <ul><li><span class="CodeFont">'y'</span> (non-grantable privilege)<br /></li><li><span class="CodeFont">'Y'</span> (grantable privilege)<br /></li><li><span class="CodeFont">'N'</span> (no privilege)</li></ul></td>
+                        <td><code> UPDATEPRIV</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
+                        <td>Specifies if the <code>UPDATE</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">REFERENCESPRIV</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Specifies if the <span class="CodeFont">REFERENCE</span> permission is granted. The valid values are: <ul><li><span class="CodeFont">'y'</span> (non-grantable privilege)<br /></li><li><span class="CodeFont">'Y'</span> (grantable privilege)<br /></li><li><span class="CodeFont">'N'</span> (no privilege)</li></ul></td>
+                        <td><code>REFERENCESPRIV</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
+                        <td>Specifies if the <code>REFERENCE</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
                     </tr>
                     <tr>
-                        <td class="CodeFont">TRIGGERPRIV</td>
-                        <td class="CodeFont">CHAR</td>
-                        <td class="CodeFont">1</td>
-                        <td class="CodeFont">NO</td>
-                        <td>Specifies if the <span class="CodeFont">TRIGGER</span> permission is granted. The valid values are: <ul><li><span class="CodeFont">'y'</span> (non-grantable privilege)<br /></li><li><span class="CodeFont">'Y'</span> (grantable privilege)<br /></li><li><span class="CodeFont">'N'</span> (no privilege)</li></ul></td>
+                        <td><code>TRIGGERPRIV</code></td>
+                        <td><code>CHAR</code></td>
+                        <td><code>1</code></td>
+                        <td><code>NO</code></td>
+                        <td>Specifies if the <code>TRIGGER</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
                     </tr>
                 </tbody>
             </table>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_systables_intro.html">About System Tables</a>
-                </li>
-            </ul>
-        </div>
-	</section>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_systables_intro.html">About System Tables</a></li>
+    </ul>
+
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2934,7 +2942,11 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

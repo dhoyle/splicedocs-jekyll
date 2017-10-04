@@ -2806,42 +2806,88 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="DataTypes.DoublePrecision">DOUBLE PRECISION</h1>
-            <p>The <span class="CodeFont">DOUBLE PRECISION</span> data type provides 8-byte storage for numbers
-using IEEE floating-point notation. <span class="CodeFont">DOUBLE</span> can be used synonymously with <span class="CodeFont">DOUBLE PRECISION</span>, and the documentation for this topic is identical to the documentation for the <span class="CodeFont"><a href="sqlref_builtinfcns_double.html">DOUBLE</a></span>&#160;topic.</p>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">DOUBLE PRECISION</pre>
-            </div>
-            <p>or, alternately</p>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">DOUBLE</pre>
-            </div>
-            <h2>Usage Notes</h2>
-            <p>Here are several usage notes for the <span class="CodeFont">DOUBLE</span>/<span class="CodeFont">DOUBLE&#160;PRECISION</span>&#160;data type:</p>
-            <ul>
-                <li>The following range limitations apply:
-        <table summary="Value limitations for the DOUBLE PRECISION data type"><col /><col /><thead><tr><th>Limit type</th><th>Limitation</th></tr></thead><tbody><tr><td>Smallest <span class="CodeFont">DOUBLE</span> value</td><td class="CodeFont">-1.79769E+308</td></tr><tr><td>Largest <span class="CodeFont">DOUBLE</span> value</td><td class="CodeFont"> 1.79769E+308</td></tr><tr><td>Smallest positive <span class="CodeFont">DOUBLE</span> value</td><td class="CodeFont"> 2.225E-307</td></tr><tr><td>Largest negative <span class="CodeFont">DOUBLE</span> value</td><td class="CodeFont">-2.225E-307</td></tr></tbody></table><div class="noteNote">These limits are different from the <span class="CodeFont">java.lang.Double</span> Java type limits</div></li>
-                <li>An exception is thrown when any double value is calculated or entered that is outside of these value ranges. Arithmetic operations <span class="BoldFont">do not</span> round their resulting values to zero. If the values are too small, you will receive an exception. </li>
-                <li>Numeric floating point constants are limited to a length of 30 characters.
-        <div class="preWrapper"><pre class="Example">   -- this example will fail because the constant is too long:
-values 01234567890123456789012345678901e0;</pre></div></li>
-                <li>When mixed with other data types in expressions, the resulting data type follows the rules shown in <a href="sqlref_datatypes_numerictypes.html#StoringValues">Storing values of one numeric data type in columns of another numeric data type</a>.</li>
-            </ul>
-            <h2>Corresponding Compile-time Java Type</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">java.lang.Double</pre>
-            </div>
-            <h2>JDBC Metadata Type (java.sql.Types)</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">DOUBLE</pre>
-            </div>
-            <h2>Examples</h2>
-            <div class="preWrapper"><pre class="Example">3421E+09
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="double-precision">DOUBLE PRECISION</h1>
+
+    <p>The <code>DOUBLE PRECISION</code> data type provides 8-byte storage for numbers
+using IEEE floating-point notation. <code>DOUBLE</code> can be used synonymously
+with <code>DOUBLE PRECISION</code>, and the documentation for this topic is
+identical to the documentation for the
+<a href="sqlref_builtinfcns_double.html"><code>DOUBLE</code></a> topic.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>DOUBLE PRECISION
+</code></pre>
+
+    </div>
+    <p>or, alternately</p>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>DOUBLE
+</code></pre>
+
+    </div>
+    <h2 id="usage-notes">Usage Notes</h2>
+
+    <p>Here are several usage notes for the <code>DOUBLE</code>/<code>DOUBLE PRECISION</code> data
+type:</p>
+
+    <ul>
+      <li>The following range limitations apply:
+        <table summary="Value limitations for the DOUBLE PRECISION data type"><col /><col /><thead><tr><th>Limit type</th><th>Limitation</th></tr></thead><tbody><tr><td>Smallest <code>DOUBLE</code> value</td><td><code>-1.79769E+308</code></td></tr><tr><td>Largest <code>DOUBLE</code> value</td><td><code> 1.79769E+308</code></td></tr><tr><td>Smallest positive <code>DOUBLE</code> value</td><td><code> 2.225E-307</code></td></tr><tr><td>Largest negative <code>DOUBLE</code> value</td><td><code>-2.225E-307</code></td></tr></tbody></table>
+
+        <p class="noteNote">These limits are different from the <code>java.lang.Double</code> Java type
+limits</p>
+      </li>
+      <li>An exception is thrown when any double value is calculated or entered
+that is outside of these value ranges. Arithmetic operations <strong>do
+not</strong> round their resulting values to zero. If the values are too
+small, you will receive an exception.</li>
+      <li>Numeric floating point constants are limited to a length of 30
+characters.
+        <div class="preWrapper">
+          <pre class="Example"><code>   -- this example will fail because the constant is too long:
+values 01234567890123456789012345678901e0;
+</code></pre>
+
+        </div>
+      </li>
+      <li>When mixed with other data types in expressions, the resulting data
+type follows the rules shown in <a href="sqlref_datatypes_numerictypes.html#StoringValues">Storing values of one numeric data
+type in columns of another numeric data
+type</a>.</li>
+    </ul>
+
+    <h2 id="corresponding-compile-time-java-type">Corresponding Compile-time Java Type</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>java.lang.Double
+</code></pre>
+
+    </div>
+    <h2 id="jdbc-metadata-type-javasqltypes">JDBC Metadata Type (java.sql.Types)</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>DOUBLE
+</code></pre>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>3421E+09
 425.43E9
 9E-10
-4356267544.32333E+30</pre>
-            </div>
-        </div>
-	</section>
+4356267544.32333E+30
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
 
 
     <div class="tags">
@@ -2858,7 +2904,11 @@ values 01234567890123456789012345678901e0;</pre></div></li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

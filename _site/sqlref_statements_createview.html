@@ -2806,6 +2806,7 @@
 
     
 
+<<<<<<< HEAD
   ﻿
 
 
@@ -2964,6 +2965,66 @@ CREATE VIEW <span class="ItalicFont"><a href="sqlref_identifiers_types.html#View
             <h2>Examples</h2>
             <p class="body">This example creates a view that shows the age of each player in our database:</p>
             <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt; CREATE VIEW PlayerAges (Player, Team, Age)
+=======
+  
+<section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="create-view">CREATE VIEW</h1>
+
+    <p>Views are virtual tables formed by a query. A view is a dictionary
+object that you can use until you drop it. Views are not updatable.</p>
+
+    <p>If a qualified view name is specified, the schema name cannot begin with
+<em>SYS</em>.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE VIEW <a href="sqlref_identifiers_types.html#ViewName">view-Name</a>
+   [ ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>] * ) ]
+   AS <a href="sqlref_clauses_orderby.html">ORDER BY clause</a> ]
+     [ <a href="sqlref_clauses_resultoffset.html">RESULT OFFSET clause</a> ]
+     [ <a href="sqlref_clauses_resultoffset.html">FETCH FIRST clause</a> ]</pre>
+
+</div>
+    <p>A view definition can contain an optional view column list to explicitly
+name the columns in the view. If there is no column list, the view
+inherits the column names from the underlying query. All columns in a
+view must be uniquely named.</p>
+
+    <div class="paramList">
+      <p class="paramName">view-Name</p>
+
+      <p class="paramDefnFirst">The name to assign to the view.</p>
+
+      <p class="paramName">Simple-column-Name*</p>
+
+      <p class="paramDefnFirst">An optional list of names to be used for columns of the view. If not
+given, the column names are deduced from the query.</p>
+
+      <p class="paramDefn">The maximum number of columns in a view is
+<code>5000</code>.</p>
+
+      <p class="paramName">AS Query [ORDER BY clause]</p>
+
+      <p class="paramDefnFirst">A <code>SELECT</code> or <code>VALUES</code> command that provides the columns and rows of the
+view.</p>
+
+      <p class="paramName">result offset and fetch first clauses</p>
+
+      <p class="paramDefnFirst">The  <a href="sqlref_clauses_resultoffset.html"><code>FETCH FIRST</code> clause</a>, which can
+be combined with the <code>RESULT OFFSET</code> clause, limits the number of rows
+added to the view.</p>
+
+    </div>
+    <h2 id="examples">Examples</h2>
+
+    <p class="body">This example creates a view that shows the age of each player in our
+database:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example"><code>splice&gt; CREATE VIEW PlayerAges (Player, Team, Age)
+>>>>>>> MDConvert
    AS SELECT DisplayName, Team,
       INT( (Now - Birthdate) / 365.25) AS Age
       FROM Players;
@@ -3009,11 +3070,21 @@ Martin Cassman          |Giants   |31
 Yuri Piamam             |Giants   |31
 
 35 rows selected
-</pre>
-            </div>
-            <h2>Statement Dependency System</h2>
-            <p>View definitions are dependent on the tables and views referenced within the view definition. DML (data manipulation language) statements that contain view references depend on those views, as well as the objects in the view definitions that the views are dependent on. Statements that reference the view depend on indexes the view uses; which index a view uses can change from statement to statement based on how the query is optimized. For example, given:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CREATE TABLE T1 (C1 DOUBLE PRECISION);
+</code></pre>
+
+    </div>
+    <h2 id="statement-dependency-system">Statement Dependency System</h2>
+
+    <p>View definitions are dependent on the tables and views referenced within
+the view definition. DML (data manipulation language) statements that
+contain view references depend on those views, as well as the objects in
+the view definitions that the views are dependent on. Statements that
+reference the view depend on indexes the view uses; which index a view
+uses can change from statement to statement based on how the query is
+optimized. For example, given:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CREATE TABLE T1 (C1 DOUBLE PRECISION);
 0 rows inserted/updated/deleted
 
 splice&gt;CREATE FUNCTION SIN (DATA DOUBLE)
@@ -3022,20 +3093,30 @@ splice&gt;CREATE FUNCTION SIN (DATA DOUBLE)
    LANGUAGE JAVA PARAMETER STYLE JAVA;
 0 rows inserted/updated/deleted
 
-splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
-0 rows inserted/updated/deleted</pre>
-            </div>
-            <p>The following <span class="CodeFont">SELECT</span>:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT * FROM V1;</pre>
-            </div>
-            <p>Is dependent on view <span class="ItalicFont">V1</span>, table <span class="ItalicFont">T1,</span> and external scalar function  <span class="ItalicFont">SIN.</span></p>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="sqlref_statements_dropview.html"><span class="CodeFont">DROP&#160;VIEW</span></a>&#160;statement</li>
-                <li><a href="sqlref_clauses_orderby.html"><span class="CodeFont">ORDER&#160;BY</span></a> clause</li>
-            </ul>
-        </div>
-	</section>
+splice&gt; CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
+0 rows inserted/updated/deleted
+</code></pre>
+
+    </div>
+    <p>The following <code>SELECT</code>:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>SELECT * FROM V1;
+</code></pre>
+
+    </div>
+    <p>Is dependent on view <em>V1</em>, table <em>T1,</em> and external scalar function
+<em>SIN.</em></p>
+
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="sqlref_statements_dropview.html"><code>DROP VIEW</code></a> statement</li>
+      <li><a href="sqlref_clauses_orderby.html"><code>ORDER BY</code></a> clause</li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -3052,7 +3133,11 @@ splice&gt;&#160;CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

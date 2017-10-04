@@ -2806,37 +2806,67 @@
 
     
 
-  	<section>
-		<div class="TopicContent" data-swiftype-index="true">
-            <h1 id="BuiltInSysProcs.EmptyStatementCache">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</h1>
-            <p>The <span class="CodeFont">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</span> stored
-			procedure unlocks access to features that are only available in the Enterprise Edition of Splice Machine.</p>
-            <div class="noteNote">Calling <span class="CodeFont">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</span> with a valid license key unlocks access to <span class="ItalicFont">Enterprise-only</span> features in Splice&#160;Machine such as backing up and restoring your database. However, to unlock bootstrapped authentication and encryption features such as LDAP&#160;and Kerberos, you must also modify your <span class="CodeFont">hbase-site.xml</span> file and restart Splice&#160;Machine. <br /><br />Please see the <a href="onprem_admin_enablingenterprise.html">Upgrading to the Enterprise Edition of Splice&#160;Machine</a> topic in the <span class="ItalicFont">Administrator's Guide</span> for more information.</div>
-            <h2>Syntax</h2>
-            <div class="fcnWrapperWide"><pre class="FcnSyntax">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE( STRING license_key );</pre>
-            </div>
-            <div class="paramList">
-                <p class="paramName">license_key</p>
-                <p class="paramDefnFirst">The license key you received from Splice&#160;Machine.</p>
-            </div>
-            <h2>SQL Example</h2>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE&#160;(<span class="HighlightedCode">&lt;your-license-code&gt;</span>);
-Statement executed.</pre>
-            </div>
-            <h2>Results</h2>
-            <p>This procedure does not return a result; however, if you provide an invalid license key, you'll see an error message displayed:</p>
-            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;CALL SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE&#160;(<span class="HighlightedCode">&lt;bogus-code&gt;</span>);
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="syscsutilsyscsenableenterprise">SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</h1>
+
+    <p>The <code>SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</code> stored procedure unlocks access
+to features that are only available in the Enterprise Edition of Splice
+Machine.</p>
+
+    <p>Calling <code>SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE</code> with a valid license key
+unlocks access to <em>Enterprise-only</em> features in Splice Machine such as
+backing up and restoring your database. However, to unlock bootstrapped
+authentication and encryption features such as LDAP and Kerberos, you
+must also modify your <code>hbase-site.xml</code> file and restart Splice Machine.</p>
+
+    <p class="noteNote">Please see the <a href="onprem_admin_enablingenterprise.html">Upgrading to the Enterprise Edition of
+Splice Machine</a> topic for more information.</p>
+
+    <h2 id="syntax">Syntax</h2>
+
+    <div class="fcnWrapperWide">
+      <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE( STRING license_key );
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">license_key</p>
+
+      <p class="paramDefnFirst">The license key you received from Splice Machine.</p>
+
+    </div>
+    <h2 id="sql-example">SQL Example</h2>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE (&lt;your-license-code&gt;);
+Statement executed.
+</code></pre>
+
+    </div>
+    <h2 id="results">Results</h2>
+
+    <p>This procedure does not return a result; however, if you provide an
+invalid license key, you’ll see an error message displayed:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>splice&gt; CALL SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE (&lt;bogus-code&gt;);
 Error
 -------------------------------
 
-ERROR XSRSE: Unable to enable the enterprise Manager. Enterprise services are disabled. Contact your Splice Machine representative to enable.</pre>
-            </div>
-            <h2>See Also</h2>
-            <ul>
-                <li><a href="onprem_admin_enablingenterprise.html">Upgrading to the Enterprise Edition of Splice&#160;Machine</a> topic in the <span class="ItalicFont">Administrator's Guide</span></li>
-            </ul>
-        </div>
-	</section>
+ERROR XSRSE: Unable to enable the enterprise Manager. Enterprise services are disabled. Contact your Splice Machine representative to enable.
+</code></pre>
+
+    </div>
+    <h2 id="see-also">See Also</h2>
+
+    <ul>
+      <li><a href="onprem_admin_enablingenterprise.html">Upgrading to the Enterprise Edition of
+Splice Machine</a></li>
+    </ul>
+
+  </div>
+</section>
 
 
     <div class="tags">
@@ -2853,7 +2883,11 @@ ERROR XSRSE: Unable to enable the enterprise Manager. Enterprise services are di
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

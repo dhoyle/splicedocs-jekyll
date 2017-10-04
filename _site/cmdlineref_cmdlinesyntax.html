@@ -518,6 +518,7 @@
 
     
 
+<<<<<<< HEAD
   	<section>
 		<div class="TopicContent" data-swiftype-index="true">
             <h1>Using the splice&gt; Command Line Interface</h1>
@@ -558,6 +559,100 @@ splice&gt; </pre>
                 <p class="paramName">-f [fileName]</p>
                 <p class="paramDefnFirst">The name of a file with SQL commands in it: <span class="CodeFont">sqlshell</span> starts up the <span class="AppCommand">splice&gt;</span> command line interpreter, runs the commands in the file, and then exits. For example:</p>
                 <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">$ ./sqlshell.sh -f /home/mydir/sql/test.sql
+=======
+  <section>
+<div class="TopicContent" data-swiftype-index="true">
+    <h1 id="using-the-splice-command-line-interface">Using the splice&gt; Command Line Interface</h1>
+
+    <p>This topic presents information that will help you in using the Splice
+Machine <span class="AppCommand">splice&gt;</span> command line
+interpreter, in the following sections:</p>
+
+    <ul>
+      <li>The <a href="#splice%3E" class="selected">splice&gt; Command Line Interpreter</a>
+section shows you how to invoke the splice&gt; command line.</li>
+      <li>The <a href="#Command" class="selected">Command Line Output</a> section describes how
+you can adjust the appearance of output from the interepreter.</li>
+      <li>The <a href="#Syntax" class="selected">Command Line Syntax</a> section summarizes the
+syntax of commands, including capitalization and case-sensitivity
+rules, as well as various special characters you can use in your
+commands. It also shows you how to include comments in your command
+lines and how to run a file of SQL commands.</li>
+      <li>The <a href="#ExampleCommands" class="selected">Example Command Lines</a> section
+shows several examples of command lines.</li>
+      <li>The <a href="tutorials_cli_scripting.html">Scripting Splice Commands</a> tutorial
+describes how to create a script of <span class="AppCommand">splice&gt;</span> commands to run a series of
+operations like loading a number of files into your database</li>
+    </ul>
+
+    <p>The remainder of this section contains a reference page for each of the
+command line commands.</p>
+
+    <h2 id="splice-command-line-interpreter">splice&gt; Command Line Interpreter</h2>
+
+    <p>To run the Splice Machine command line interpreter, run the <span class="ShellCommand">sqlshell.sh</span> script in your terminal window.</p>
+
+    <div class="preWrapperWide">
+      <pre class="ShellCommand"><code>% ./sqlshell.sh
+splice&gt;
+</code></pre>
+
+    </div>
+    <p>When the interpreter prompts you with <span class="AppCommand">splice&gt;</span>, you can enter commands, ending
+each with a semicolon. For a complete description of <span class="AppCommand">splice&gt;</span> syntax, see the next section in
+this topic, <a href="#Syntax" class="selected">Command Line Syntax</a>,</p>
+
+    <p>Note that you can optionally specify a file of sql commands that the
+interpreter will run using the <code>-f</code> parameter; after running those
+commands, the interpreter exits. For example:</p>
+
+    <div class="preWrapper">
+      <pre class="ShellCommand"><code>./sqlshell.sh -f /home/mydir/sql/test.sql
+</code></pre>
+
+    </div>
+    <p>You can optionally include parameter values when running <span class="ShellCommand">sqlshell.sh</span> script, to change default
+values. Here’s the syntax:</p>
+
+    <div class="preWrapper">
+      <pre class="ShellCommand"><code>sqlshell.sh [-h host] [-p port ] [-u username] [-s password] [-f commandsFile
+</code></pre>
+
+    </div>
+    <div class="paramList">
+      <p class="paramName">-host</p>
+
+      <p class="paramDefnFirst">The hostname or IP address of your Splice Machine HBase RegionServer.</p>
+
+      <p class="paramDefn">The default value is <code>localhost</code>.</p>
+
+      <p class="paramName">-port</p>
+
+      <p class="paramDefnFirst">The port on which Splice Machine is listening for your connection.</p>
+
+      <p class="paramDefn">The default value is <code>1527</code>.</p>
+
+      <p class="paramName">-username</p>
+
+      <p class="paramDefnFirst">The user name for your Splice Machine database.</p>
+
+      <p class="paramDefn">The default value is <code>splice</code>.</p>
+
+      <p class="paramName">-password</p>
+
+      <p class="paramDefnFirst">The password for your Splice Machine database.</p>
+
+      <p class="paramDefn">The default value is <code>admin</code>.</p>
+
+      <p class="paramName">-f [fileName]</p>
+
+      <p class="paramDefnFirst">The name of a file with SQL commands in it: <code>sqlshell</code> starts up the
+<span class="AppCommand">splice&gt;</span> command line interpreter,
+runs the commands in the file, and then exits. For example:</p>
+
+      <div class="preWrapperWide">
+        <pre class="ShellCommand"><code>$ ./sqlshell.sh -f /home/mydir/sql/test.sql
+>>>>>>> MDConvert
 
  ========= rlwrap detected and enabled.  Use up and down arrow keys to scroll through command line history. ========
 
@@ -574,6 +669,7 @@ splice&gt; select count(*) from CUST_EMAIL;
 1 row selected
 ELAPSED TIME = 6399 milliseconds
 splice&gt;
+<<<<<<< HEAD
 $ </pre>
                 </div>
                 <p>The <span class="CodeFont">test.sql</span> file used in the above example contains the following commands:</p>
@@ -608,6 +704,65 @@ select count(*) from CUST_EMAIL;</pre>
             <h3 id="Capitali">Capitalization and Case Sensitivity Rules</h3>
             <p>Certain identifiers and keywords are case sensitive:</p>
             <table summary="Summary of case sensitivity in the splice&gt; command line syntax.">
+=======
+$
+</code></pre>
+
+      </div>
+      <p>The <code>test.sql</code> file used in the above example contains the following
+commands:</p>
+
+      <div class="preWrapperWide">
+        <pre class="ShellCommand"><code>elapsedtime on;
+select count(*) from CUST_EMAIL;
+</code></pre>
+
+      </div>
+    </div>
+    <h2 id="Command">Command Line Output</h2>
+
+    <p>Output from <span class="AppCommand">splice&gt;</span> commands is
+displayed in your terminal window. The
+<a href="cmdlineref_maximumdisplaywidth.html"><code>maximumdisplaywidth</code></a> setting
+affects how the output is displayed; specifically, it determines if the
+content of each column is truncated to fit within the width that you
+specify.</p>
+
+    <p>When you set
+<a href="cmdlineref_maximumdisplaywidth.html"><code>maximumdisplaywidth</code></a> to <code>0</code>, all
+output is displayed, without truncation.</p>
+
+    <h2 id="Syntax">Command Line Syntax</h2>
+
+    <p>This section briefly summarizes the syntax of command lines you can
+enter in Zeppelin notebooks and in response to the <span class="AppCommand">splice&gt;</span> prompt, including these
+subsections:</p>
+
+    <ul>
+      <li><a href="#Finish" class="selected">Finishing and submitting command lines</a></li>
+      <li><a href="#Capitali" class="selected">Capitalization and case sensitivity rules</a></li>
+      <li><a href="#Special" class="selected">Special character usage</a></li>
+      <li><a href="#Multiline" class="selected">Running multi-line commands</a></li>
+      <li><a href="#RunFromFile" class="selected">Running commands from a file</a></li>
+      <li><a href="#Comments" class="selected">Including comments in your command lines</a></li>
+      <li><a href="#Using" class="selected">Using rlWrap on the command line</a></li>
+    </ul>
+
+    <h3 id="Finish">Finish Commands with a Semicolon</h3>
+
+    <p>The command line interface allows you to enter multi-line commands, and
+waits for a non-escaped semicolon (<code>;</code>) character to signal the end of
+the command.</p>
+
+    <p>A command is not executed until you enter the semicolon character and
+press the <code>Return</code> or <code>Enter</code> key.</p>
+
+    <h3 id="Capitali">Capitalization and Case Sensitivity Rules</h3>
+
+    <p>Certain identifiers and keywords are case sensitive:</p>
+
+    <table summary="Summary of case sensitivity in the splice&gt; command line syntax.">
+>>>>>>> MDConvert
                 <col />
                 <col />
                 <col />
@@ -627,12 +782,16 @@ select count(*) from CUST_EMAIL;</pre>
                         <td>These are all equivalent: <span class="Example">SELECT, Select, select, SeLeCt</span>.</td>
                     </tr>
                     <tr>
+<<<<<<< HEAD
                         <td class="ItalicFont">ANSI SQL identifiers</td>
+=======
+                        <td><em>ANSI SQL identifiers</em></td>
+>>>>>>> MDConvert
                         <td>Not case sensitive</td>
                         <td>These are not case sensitive unless they are delimited.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">Java-style identifiers</td>
+                        <td><em>Java-style identifiers</em></td>
                         <td>Always case sensitive</td>
                         <td>
                             <p>These are NOT equivalent: <span class="Example">my_name, My_Name</span>.</p>
@@ -640,9 +799,18 @@ select count(*) from CUST_EMAIL;</pre>
                     </tr>
                 </tbody>
             </table>
+<<<<<<< HEAD
             <h3 id="Special">Special Characters You Can Use</h3>
             <p>The following table describes the special characters you can use in commands:</p>
             <table summary="Summary of special character usage in splice&gt; command line syntax.">
+=======
+    <h3 id="Special">Special Characters You Can Use</h3>
+
+    <p>The following table describes the special characters you can use in
+commands:</p>
+
+    <table summary="Summary of special character usage in splice&gt; command line syntax.">
+>>>>>>> MDConvert
                 <col />
                 <col />
                 <col />
@@ -655,18 +823,23 @@ select count(*) from CUST_EMAIL;</pre>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="ItalicFont">To delimit special identifiers</td>
-                        <td>Double quotation marks (<span class="CodeFont">"</span>)</td>
-                        <td>Special identifiers are  also known as <span class="ItalicFont">delimited identifiers</span>.</td>
+                        <td><em>To delimit special identifiers</em></td>
+                        <td>Double quotation marks (<code>"</code>)</td>
+                        <td>Special identifiers are  also known as <em>delimited identifiers</em>.</td>
                     </tr>
                     <tr>
+<<<<<<< HEAD
                         <td class="ItalicFont">To delimit character strings</td>
                         <td>Single quotation marks (<span class="CodeFont">'</span>)</td>
+=======
+                        <td><em>To delimit character strings</em></td>
+                        <td>Single quotation marks (<code>'</code>)</td>
+>>>>>>> MDConvert
                         <td> </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To escape a single quote or apostrophe within a character string</td>
-                        <td>Single quotation mark ( (<span class="CodeFont">'</span>)</td>
+                        <td><em>To escape a single quote or apostrophe within a character string</em></td>
+                        <td>Single quotation mark ( (<code>'</code>)</td>
                         <td>
                             <p class="noSpaceAbove">Since single quotation marks are used to delimit strings, you must escape any single quotation marks you want included in the string itself. </p>
                             <p>Use the single quotation mark itself as the escape character, which means that you enter two single quotation marks within a character string to include one single quotation mark. </p>
@@ -674,20 +847,21 @@ select count(*) from CUST_EMAIL;</pre>
                         </td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To escape a double quote</td>
-                        <td><span class="ItalicFont">Not needed </span>
+                        <td><em>To escape a double quote</em></td>
+                        <td><em>Not needed </em>
                         </td>
                         <td>You can simply include a double quotation mark in your command lines.</td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To specify a wild card within a Select expression</td>
-                        <td>The asterisk (<span class="CodeFont">*</span>) character</td>
+                        <td><em>To specify a wild card within a Select expression</em></td>
+                        <td>The asterisk (<code>*</code>) character</td>
                         <td>
                             <p class="noSpaceAbove">This is the SQL metasymbol for selecting all matching entries.</p>
                             <p>Example: <span class="Example">SELECT * FROM MyTable;</span></p>
                         </td>
                     </tr>
                     <tr>
+<<<<<<< HEAD
                         <td class="ItalicFont">To specify a wild card sequence in a string with the <span class="CodeFont">LIKE</span> operator</td>
                         <td>The percentage (<span class="CodeFont">%</span>) character</td>
                         <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE 'Ga%';</span></td>
@@ -695,11 +869,20 @@ select count(*) from CUST_EMAIL;</pre>
                     <tr>
                         <td class="ItalicFont">To specify a single wild card character in a string with the <span class="CodeFont">LIKE</span> operator</td>
                         <td>The underline (<span class="CodeFont">_</span>) character</td>
+=======
+                        <td><em>To specify a wild card sequence in a string with the <code>LIKE</code> operator</em></td>
+                        <td>The percentage (<code>%</code>) character</td>
+                        <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE 'Ga%';</span></td>
+                    </tr>
+                    <tr>
+                        <td><em>To specify a single wild card character in a string with the <code>LIKE</code> operator</em></td>
+                        <td>The underline (<code>_</code>) character</td>
+>>>>>>> MDConvert
                         <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE '%Er_n%';</span></td>
                     </tr>
                     <tr>
-                        <td class="ItalicFont">To begin a single-line comment</td>
-                        <td>Two dashes (<span class="CodeFont">--</span>)</td>
+                        <td><em>To begin a single-line comment</em></td>
+                        <td>Two dashes (<code>--</code>)</td>
                         <td>
                             <p class="noSpaceAbove"><span class="Example"> -- the following selects everything in my table:</span>
                                 <br /><span class="Example">SELECT * FROM MyTable;</span>
@@ -707,16 +890,22 @@ select count(*) from CUST_EMAIL;</pre>
                         </td>
                     </tr>
                     <tr>
+<<<<<<< HEAD
                         <td class="ItalicFont">To bracket a multi-line comment</td>
                         <td><span class="CodeFont">/*</span> and <span class="CodeFont">*/</span></td>
+=======
+                        <td><em>To bracket a multi-line comment</em></td>
+                        <td><code>/*</code> and <code>*/</code></td>
+>>>>>>> MDConvert
                         <td>
-                            <p class="noSpaceAbove">All text between the comment start <span class="CodeFont">/*</span> and the comment end <span class="CodeFont">*/</span> is ignored.</p><pre class="ExampleCell" xml:space="preserve">/* the following selects everything in my table,
+                            <p class="noSpaceAbove">All text between the comment start <code>/*</code> and the comment end <code>*/</code> is ignored.</p><pre class="ExampleCell" xml:space="preserve">/* the following selects everything in my table,
    which we'll then display on the screen */
 SELECT * FROM MyTable;</pre>
                         </td>
                     </tr>
                 </tbody>
             </table>
+<<<<<<< HEAD
             <h3 id="pages">Entering Multi-line Commands</h3>
             <p>When using the command line (the <span class="AppCommand">splice&gt;</span> prompt), you must end each SQL statement with a semicolon (<span class="CodeFont">;</span>). For example:</p>
             <div class="preWrapper"><pre class="AppCommand">
@@ -741,6 +930,70 @@ splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
             <h2 id="ExampleCommands">Example Command Lines</h2>
             <p>Here are several example command lines:</p>
             <table summary="Example command lines">
+=======
+    <h3 id="pages">Entering Multi-line Commands</h3>
+
+    <p>When using the command line (the <span class="AppCommand">splice&gt;</span> prompt), you must end each SQL
+statement with a semicolon (<code>;</code>). For example:</p>
+
+    <div class="preWrapper">
+
+      <pre class="AppCommand"><code>splice&gt; select * from myTable;
+</code></pre>
+
+    </div>
+    <p>You can extend SQL statements across multiple lines, as long as you end
+the last line with a semicolon. Note that the <code>splice&gt;</code> command line
+interface prompts you with a fresh <span class="AppCommand">&gt;</span>
+at the beginning of each line. For example:</p>
+
+    <div class="preWrapper">
+
+      <pre class="AppCommand"><code>splice&gt; select * from myTable&gt; where i &gt; 1;
+</code></pre>
+
+    </div>
+    <h3 id="RunFromFile">Running SQL Statements From a File</h3>
+
+    <p>You can also create a file that contains a collection of SQL statements,
+and then use the <code>run </code>command to run those statements. For example:</p>
+
+    <div class="preWrapper">
+      <pre class="AppCommand"><code>splice&gt; run 'path/to/file.sql';
+</code></pre>
+
+    </div>
+    <h3 id="Comments">Including Comments</h3>
+
+    <p>You can include comments on the command line or in a SQL statement file
+by prefacing the command with two dashes (<code>--</code>). Any text following the
+dashes is ignored by the SQL parser. For example:</p>
+
+    <div class="preWrapperWide">
+      <pre class="AppCommand"><code>splice&gt; select * from myTable   -- This selects everything in myTable;
+</code></pre>
+
+    </div>
+    <h3 id="misaligned-quotes">Misaligned Quotes</h3>
+
+    <p>If you mistakenly enter a command line that has misaligned quotation
+symbols, the interpreter can seem unresponsive. The solution is to add
+the missing quotation mark(s), followed by a semicolon, and resubmit the
+line. It won’t work as expected, but it will enable you to keep working.</p>
+
+    <h3 id="Using">Using rlWrap on the Command Line</h3>
+
+    <p>rlWrap is a Unix utility that Splice Machine encourages you to use: it
+allows you to scroll through your command line history, reuse and alter
+lines, and more. We’ve included a <a href="tutorials_cli_rlwrap.html">synopsis of it
+here.</a></p>
+
+    <h2 id="ExampleCommands">Example Command Lines</h2>
+
+    <p>Here are several example command lines:</p>
+
+    <table summary="Example command lines">
+>>>>>>> MDConvert
                 <col />
                 <col />
                 <thead>
@@ -772,11 +1025,16 @@ splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
                     </tr>
                     <tr>
                         <td colspan="2">
+<<<<<<< HEAD
                             <div class="noteNote">Remember that you must end your command lines with the semicolon (<span class="CodeFont">;</span>) character, which submits the command line to the interpreter.</div>
+=======
+                            <p class="noteNote">Remember that you must end your command lines with the semicolon (<code>;</code>) character, which submits the command line to the interpreter.</p>
+>>>>>>> MDConvert
                         </td>
                     </tr>
                 </tbody>
             </table>
+<<<<<<< HEAD
             <h2>Scripting <span class="AppCommand">splice&gt;</span> Commands</h2>
             <p>You can use the Splice Machine Command Line Interface (<span class="AppCommand">splice&gt;</span>) to interactively run database commands. This topic describes how to create a script of <span class="AppCommand">splice&gt;</span> commands to run a series of operations, such as loading a number of files into your database. To script a series of <span class="AppCommand">splice&gt;</span> commands, you need to create:</p>
             <ul>
@@ -805,11 +1063,68 @@ splice&gt; select * from myTable<br />&gt; where i &gt; 1;	</pre>
                         <p class="indentLevel1">
                             <div class="preWrapper"><pre class="Example" xml:space="preserve" style="font-weight: normal;">   --First connect to the database
 connect 'jdbc:splice://<span class="Highlighted">&lt;regionServer&gt;</span>:1527/splicedb';
+=======
+    <h2 id="scripting-splice-commands">Scripting splice&gt; Commands</h2>
+
+    <p>You can use the Splice Machine Command Line Interface (<span class="AppCommand">splice&gt;</span>) to interactively run database
+commands. This topic describes how to create a script of <span class="AppCommand">splice&gt;</span> commands to run a series of
+operations, such as loading a number of files into your database. To
+script a series of <span class="AppCommand">splice&gt;</span> commands,
+you need to create:</p>
+
+    <ul>
+      <li>an SQL commands file containing the SQL statements you want executed</li>
+      <li>an SQL file to connect to the database and invoke the SQL commands
+file</li>
+      <li>a shell script using Bash (<code>/bin/bash</code>)</li>
+    </ul>
+
+    <p>Follow these steps to create your script:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Create a file of SQL commands:</p>
+
+          <p class="indentLevel1">First, create a file that contains the SQL commands you want to run
+against your Splice Machine database. For this example, we’ll create
+a file named <code>create-my-tables.sql</code> that creates a table in the
+database:</p>
+
+          <div class="preWrapper">
+            <pre class="Example"><code>create table customers (
+   CUSTOMER_ID BIGINT,
+   FIRST_NAME VARCHAR(30),
+   LAST_NAME VARCHAR(30)
+);
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Create an SQL file to connect to the database and invoke the
+commands file</p>
+
+          <p class="indentLevel1">We need a separate SQL file named <code>my_load_datascript.sql</code>that
+connects to your database and then invokes the file of SQL commands
+we just created.</p>
+
+          <p class="noteNote">The <code>connect</code> command in this file must run before running the file
+of SQL statements.</p>
+
+          <p class="indentLevel1">Here we name the first SQL file, and define it to run the SQL
+statements file named <code>create-my-tables.sql:</code></p>
+
+          <div class="preWrapper indentLevel1">
+            <pre class="Example" style="font-weight: normal;"><code>   --First connect to the database
+connect 'jdbc:splice://&lt;regionServer&gt;:1527/splicedb';
+>>>>>>> MDConvert
 
    --Next run your sql file
 run '/users/yourname/create-my-tables.sql';
 
 show tables;
+<<<<<<< HEAD
 quit;</pre>
                             </div>
                         </p>
@@ -858,6 +1173,105 @@ nohup ./command-name.sh &gt; ./command-name.out 2&gt;&amp;1 &amp;
             </div>
         </div>
 	</section>
+=======
+quit;
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">If you are running Splice Machine on a cluster, connect from a
+machine that is NOT running an HBase RegionServer and specify the IP
+address of a <span class="HighlightedCode">regionServer</span> node,
+e.g. <span class="AppCommand">10.1.1.110</span>. If you’re using the
+standalone version of Splice Machine, specify <span class="HighlightedCode">localhost</span> instead.</p>
+        </li>
+        <li>
+          <p class="topLevel">Create a shell script to run your SQL connect file</p>
+
+          <p class="indentLevel1">We now create a shell script named <code>load_datascript.sh</code> to run the
+<code>my_load_datascript.sql</code> file:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example" style="font-weight: normal;"><code>#!/bin/bash
+
+export CLASSPATH=&lt;FULL_PATH_TO_SPLICEMACHINE_JAR_FILE&gt;
+java -Djdbc.drivers=com.splicemachine.db.jdbc.ClientDriver -Dij.outfile=my_load_datascript.out com.splicemachine.db.tools.ij &lt; my_load_datascript.sql
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">The first line of this script must set the <code>CLASSPATH</code> to the
+location of your Splice Machine jar file. The second line runs the
+ij command, specifying its output file (<code>my_load_datascript.out</code>)
+and its SQL commands input file, which is the
+<code>my_load_datascript_sql</code> file that we created in the previous step.</p>
+        </li>
+        <li>
+          <p class="topLevel">Make your shell script executable</p>
+
+          <p class="indentLevel1">We need to make the shell script executable with the chmod shell
+command:</p>
+
+          <div class="preWrapper">
+
+            <pre class="ShellCommand"><code>chmod +x load_datascript.sh
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Use nohup to run the script</p>
+
+          <p class="indentLevel1">The <span class="ShellCommand">nohup</span> utility allows you to
+run a script file in the background, which means that it will
+continue running if you log out, disconnect from a remote machine,
+or lose your network connection.</p>
+
+          <div class="preWrapper">
+
+            <pre class="ShellCommand"><code>nohup ./load_datascript.sh &gt; ./load_datascript.out 2&gt;&amp;1 &amp;
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">Here’s the syntax for the <code>nohup</code> utility:</p>
+
+          <div class="fcnWrapperWide">
+
+            <pre class="FcnSyntax"><code>nohup ./command-name.sh &gt; ./command-name.out 2&gt;&amp;1 &amp;
+</code></pre>
+
+          </div>
+
+          <div class="paramList">
+            <p class="paramName">command-name.sh</p>
+
+            <p class="paramDefnFirst">The name of the shell script or a command name.</p>
+
+            <p class="paramName">command-name.out</p>
+
+            <p class="paramDefnFirst">The name of the file to capture any output written to <code>stdout</code>.</p>
+
+            <p class="paramName">2&gt;&amp;1</p>
+
+            <p class="paramDefnFirst">This causes <code>stderr</code> (file descriptor <code>2</code>) to be written to <code>stdout</code>
+(file descriptor <code>1</code>); this means that all output will be captured
+in <code>command-name.out</code>.</p>
+
+            <p class="paramName">&amp;</p>
+
+            <p class="paramDefnFirst">The <span class="ShellCommand">nohup</span> utility does not
+automatically run its command in the background, so we add the <code>&amp;</code>
+to do</p>
+
+          </div>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
+>>>>>>> MDConvert
 
 
     <div class="tags">
@@ -874,7 +1288,11 @@ nohup ./command-name.sh &gt; ./command-name.out 2&gt;&amp;1 &amp;
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
+<<<<<<< HEAD
  Site last generated: Sep 26, 2017 <br />
+=======
+ Site last generated: Oct 3, 2017 <br />
+>>>>>>> MDConvert
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
