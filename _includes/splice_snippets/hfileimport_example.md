@@ -1,6 +1,17 @@
 <a name="Usage" />Usage Notes
 {: .heading2}
 
+<div class="noteIcon" markdown="1">
+
+Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make these two changes in your Yarn configuration:
+
+* yarn.nodemanager.pmem-check-enabled=false
+
+* yarn.nodemanager.vmem-check-enabled=false
+{: .bulletCode}
+
+</div>
+
 As mentioned earlier, you can have `SYSCS_UTIL.BULK_IMPORT_HFILE`
 automatically compute the splits for your table; it does so by sampling
 the data in the table, generating a histogram, and then using that

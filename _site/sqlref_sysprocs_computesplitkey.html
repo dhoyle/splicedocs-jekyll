@@ -3235,6 +3235,21 @@ for information working with timestamps, dates, and times.</p>
 
     <p class="heading2"><a name="Usage"></a>Usage Notes</p>
 
+    <div class="noteIcon">
+
+      <p>Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make these two changes in your Yarn configuration:</p>
+
+      <ul class="bulletCode">
+        <li>
+          <p>yarn.nodemanager.pmem-check-enabled=false</p>
+        </li>
+        <li>
+          <p>yarn.nodemanager.vmem-check-enabled=false</p>
+        </li>
+      </ul>
+
+    </div>
+
     <p class="body">As mentioned earlier, you can have <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>
 automatically compute the splits for your table; it does so by sampling
 the data in the table, generating a histogram, and then using that
@@ -3843,7 +3858,7 @@ generate and import the HFiles into your Splice Machine database:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Oct 3, 2017 <br />
+ Site last generated: Oct 4, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

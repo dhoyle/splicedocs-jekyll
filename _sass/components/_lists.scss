@@ -102,13 +102,13 @@ ul.plainFont {
 				   $listStyle: disc,
 				   $margin: (1em 0 1em 0px) )
 }
+ul.boldFont {
+  @include lists($fontWeight: $bodyfont-bold )
+}
 
 ul.bullet {
   @include lists($listStyle: disc,
 			     $margin: (1em 0 1em 0px) );
-}
-ul.boldFont {
-  @include lists($fontWeight: $bodyfont-bold )
 }
 
 ul.bulletCell {
@@ -130,6 +130,16 @@ ul.bulletCellNoTopSpace {
 
 ul.bulletCellNoTopSpace li {
 	@include listItems( $margin: (0 0 1em 2px) )
+}
+
+ul.bulletCode {
+  @include lists($listStyle: disc,
+			     $margin: (1em 0 1em 0px) );
+				 $fontFamily: $codefont-face;
+}
+
+ul.bulletCode li {
+    @include listItems ($fontFamily: $codefont-face)
 }
 
 ul.codeList {
