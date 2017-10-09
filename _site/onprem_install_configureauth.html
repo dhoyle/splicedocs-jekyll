@@ -567,14 +567,14 @@ which is described below the table:</p>
         <tr>
             <td><code>Native</code></td>
             <td>
-                <p>User IDs in a database table are validating against the corresponding, encrypted password.</p>
+                <p>User IDs in a database table are validated against the corresponding, encrypted password.</p>
                 <p>This is the default authentication setting for Splice Machine installations.</p>
             </td>
         </tr>
         <tr>
             <td><code>LDAP</code></td>
             <td>
-                <p>User IDs are validating against an existing LDAP service.</p>
+                <p>User IDs are validated against an existing LDAP service.</p>
 <div class="openSourceNote">
                 <p><span class="noteEnterpriseNote">ENTERPRISE ONLY: This feature is
 available only for the Splice Machine Enterprise version of our
@@ -663,7 +663,10 @@ against the database by setting your authentication properties as
 follows:</p>
 
       <div class="preWrapperWide">
-        <pre class="ExampleCell"><code>&lt;property&gt;   &lt;name&gt;splice.authentication&lt;/name&gt;   &lt;value&gt;NONE&lt;/value&gt;&lt;/property&gt;
+        <pre class="ExampleCell"><code>&lt;property&gt;
+   &lt;name&gt;splice.authentication&lt;/name&gt;
+   &lt;value&gt;NONE&lt;/value&gt;
+&lt;/property&gt;
 </code></pre>
 
       </div>
@@ -677,8 +680,14 @@ configuring user names and passwords.</p>
       <p class="noSpaceAbove">The default native authentication property settings are:</p>
 
       <div class="preWrapperWide">
-        <pre class="ExampleCell"><code>&lt;property&gt;   &lt;name&gt;splice.authentication&lt;/name&gt;   &lt;value&gt;NATIVE&lt;/value&gt;&lt;/property&gt;
-&lt;property&gt;   &lt;name&gt;splice.authentication.native.algorithm&lt;/name&gt;   &lt;value&gt;SHA-512&lt;/value&gt;&lt;/property&gt;
+        <pre class="ExampleCell"><code>&lt;property&gt;
+    &lt;name&gt;splice.authentication&lt;/name&gt;
+    &lt;value&gt;NATIVE&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+    &lt;name&gt;splice.authentication.native.algorithm&lt;/name&gt;
+    &lt;value&gt;SHA-512&lt;/value&gt;
+&lt;/property&gt;
 </code></pre>
 
       </div>
@@ -694,7 +703,10 @@ you need to take: you must re-initialize the credentials database
 configuration file:</p>
 
       <div class="preWrapperWide">
-        <pre class="Example"><code>&lt;property&gt;&lt;name&gt;splice.authentication.native.create.credentials.database&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;/property&gt;
+        <pre class="Example"><code>&lt;property&gt;
+    &lt;name&gt;splice.authentication.native.create.credentials.database&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
 </code></pre>
 
       </div>
@@ -821,7 +833,7 @@ LDAP authentication, using a connection string similar to this:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Oct 4, 2017 <br />
+ Site last generated: Oct 9, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

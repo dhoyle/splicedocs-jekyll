@@ -43,14 +43,14 @@ which is described below the table:
         <tr>
             <td><code>Native</code></td>
             <td>
-                <p>User IDs in a database table are validating against the corresponding, encrypted password.</p>
+                <p>User IDs in a database table are validated against the corresponding, encrypted password.</p>
                 <p>This is the default authentication setting for Splice Machine installations.</p>
             </td>
         </tr>
         <tr>
             <td><code>LDAP</code></td>
             <td>
-                <p>User IDs are validating against an existing LDAP service.</p>
+                <p>User IDs are validated against an existing LDAP service.</p>
 {% include splice_snippets/enterpriseonly_note.md %}
             </td>
         </tr>
@@ -129,7 +129,10 @@ follows:
 {: .noSpaceAbove}
 
 <div class="preWrapperWide" markdown="1">
-    <property>   <name>splice.authentication</name>   <value>NONE</value></property>
+    <property>
+       <name>splice.authentication</name>
+       <value>NONE</value>
+    </property>
 {: .ExampleCell xml:space="preserve"}
 
 </div>
@@ -144,8 +147,14 @@ The default native authentication property settings are:
 {: .noSpaceAbove}
 
 <div class="preWrapperWide" markdown="1">
-    <property>   <name>splice.authentication</name>   <value>NATIVE</value></property>
-    <property>   <name>splice.authentication.native.algorithm</name>   <value>SHA-512</value></property>
+    <property>
+        <name>splice.authentication</name>
+        <value>NATIVE</value>
+    </property>
+    <property>
+        <name>splice.authentication.native.algorithm</name>
+        <value>SHA-512</value>
+    </property>
 {: .ExampleCell xml:space="preserve"}
 
 </div>
@@ -162,7 +171,10 @@ you need to take: you must re-initialize the credentials database
 configuration file:
 
 <div class="preWrapperWide" markdown="1">
-    <property><name>splice.authentication.native.create.credentials.database</name><value>true</value></property>
+    <property>
+        <name>splice.authentication.native.create.credentials.database</name>
+        <value>true</value>
+    </property>
 {: .Example}
 
 </div>
