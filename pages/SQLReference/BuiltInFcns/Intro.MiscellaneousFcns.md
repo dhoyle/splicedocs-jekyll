@@ -39,6 +39,13 @@ Miscellaneous functions built into Splice Machine SQL:
                     <td>
                     Returns NULL if the two arguments are equal, and it Returns the first argument if they are not equal.
                 </td>
+                <tr>
+                    <td class="CodeFont"><a href="sqlref_builtinfcns_nvl.html">NVL</a>
+                    </td>
+                    <td>
+                    Takes two or more compatible arguments and Returns the first argument that is not null.
+                </td>
+                </tr>
                 </tr>
                 <tr>
                     <td class="CodeFont"><a href="sqlref_builtinfcns_rownumber.html">ROWID</a>
@@ -48,4 +55,3 @@ Miscellaneous functions built into Splice Machine SQL:
             </table>
 </div>
 </section>
-
