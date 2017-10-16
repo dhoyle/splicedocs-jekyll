@@ -71,6 +71,7 @@ img.inline {
 table.splicezep
 {
 	table-layout: auto;
+	min-width: 25%;
 	max-width: 90%;
 	border: 1px solid #8d9090;
 	border-collapse: collapse;
@@ -84,7 +85,9 @@ table.splicezep tr {
 }
 
 table.splicezep td,
-table.splicezep td.CodeFont {
+table.splicezep td.CodeFont,
+table.splicezep td.BoldFont,
+table.splicezep td.ItalicFont {
 	border: 1px solid #8d9090;
 	padding: 8px;
 	text-align: left;
@@ -97,7 +100,15 @@ table.splicezep td.CodeFont{
 	font-family: "Courier";
 }
 
-table.splicezep td p:first-child
+table.splicezep td.ItalicFont{
+	font-style: italic;
+}
+
+table.splicezep td.BoldFont{
+	font-weight: bold;
+}
+
+table.splicezep td p:first-child {
 	margin-top: 0;
 }
 
