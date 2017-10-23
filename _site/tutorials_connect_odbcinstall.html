@@ -564,7 +564,9 @@ installer" class="nestedTightSpacing" /></p>
 
           <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button to proceed.</p>
         </li>
-        <li>Accept the license agreement.</li>
+        <li>
+          <p>Accept the license agreement.</p>
+        </li>
         <li>
           <p class="topLevel">Select the destination folder for the driver</p>
 
@@ -622,10 +624,13 @@ Windows" class="nestedTightSpacing" /></p>
         <li>
           <p class="topLevel">Configure your new data source:</p>
 
-          <p class="indentLevel1">When you click the <span class="AppCommand">Finish</span> button in
+          <p>When you click the <span class="AppCommand">Finish</span> button in
 the <em>Create New Data Source</em> screen, the ODBC Administrator tool
-displays the data source configuration screen. Fill it in similarly
-to this:</p>
+displays the data source configuration screen.</p>
+
+          <h4 id="configuring-the-data-source-and-login">Configuring the Data Source and Login</h4>
+
+          <p class="indentLevel1">Set the fields in the <em>Data Source</em> and <em>Splice Machine Login</em> sections similarly to the settings shown here:</p>
 
           <p><img src="images/ODBCConfigure.png" alt="Configuring the Splice Machine ODBC data source on
 Windows" class="nestedTightSpacing" /></p>
@@ -637,8 +642,40 @@ and the default <span class="AppCommand">password</span> is <code>admin</code>.<
 the IP address of an HBase RegionServer. If you’re running the
 standalone version of Splice Machine, specify <code>localhost</code>.</p>
 
-          <p class="indentLevel1">If you have Splice Machine running, you can click the Test
-Connection button to verify that all is well.</p>
+          <h4 id="configuring-ssl">Configuring SSL</h4>
+          <p class="indentLevel1">To configure SSL for your ODBC connections, click the drop-down arrow in the <em>Use SLL:</em> setting and change the setting from <code>none</code> to one of the following settings:</p>
+
+          <table>
+   <col />
+   <col />
+   <thead>
+        <tr>
+            <th>SSL Setting</th>
+            <th>Description</th>
+        </tr>
+   </thead>
+   <tbody>
+       <tr>
+          <td class="CodeFont">basic</td>
+          <td class="PlainFont">The communications channel is encrypted, but no attempt is made to verify client or host certificates.</td>
+       </tr>
+       <tr>
+          <td class="CodeFont">peerAuthentication</td>
+          <td class="PlainFont">
+              <p>You must specify the location of both the client certificate file and the client private key in their respective fields.</p>
+              <p>You can store both the certificate and key in the same .pem file, and specify the same location for both.</p>
+              <p>If you select the *Always trust server certificate* checkbox, the driver will skip verfication of the host certificate by the client; if you do not select this option, then the client attempt to verify the host by using the client's trust store and CA chain.</p>
+          </td>
+       </tr>
+   </tbody>
+</table>
+
+          <p>Here’s an example of configuring Peer Authentication and trusting the certificate:</p>
+
+          <p><img src="images/ODBCConfigureTLS.png" alt="Configuring the SSL for the Splice Machine ODBC data source on
+Windows" class="nestedTightSpacing" /></p>
+
+          <p class="indentLevel1">If you have Splice Machine running, you can click the <em>Test…</em> button at the bottom of the Configuration dialog to verify that all is well.</p>
         </li>
         <li>
           <p class="topLevel">Configure logging (optional):</p>
@@ -819,7 +856,7 @@ a dot:</p>
               <p>The default version of the <code>odbc.ini</code> file looks like this:</p>
 
               <div class="preWrapperWide">
-                <pre class="Plain"><code>[ODBC Data Sources]
+                <pre><code>[ODBC Data Sources]
 SpliceODBC64        = SpliceODBCDriver
 
 [SpliceODBC64]
@@ -827,7 +864,13 @@ Description     = Splice Machine ODBC 64-bit
 Driver          = /usr/local/splice/lib64/libsplice_odbc.so
 UID             = splice
 PWD             = admin
-URL             = 0.0.0.0PORT            = 1527
+URL             = 0.0.0.0
+PORT            = 1527
+
+*SSL            = peerAuthentication
+SSL_CERT        = /home/splice/client.pem
+SSL_PKEY        = /home/splice/client.key
+SSL_TRUST       = TRUE*
 </code></pre>
 
               </div>
@@ -1033,7 +1076,7 @@ main() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Oct 22, 2017 <br />
+ Site last generated: Oct 23, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

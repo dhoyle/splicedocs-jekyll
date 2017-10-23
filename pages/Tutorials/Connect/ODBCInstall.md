@@ -63,6 +63,7 @@ the driver:
     {: .indentLevel1}
 
 3.  Accept the license agreement.
+
 4.  Select the destination folder for the driver
     {: .topLevel}
 
@@ -126,13 +127,43 @@ the driver:
     ![Adding the Splice Machine driver as an ODBC data source on
     Windows](images/ODBCAddSource.png){: .nestedTightSpacing}
 
+{% if site.isbuild_doc == true %}
 9.  Configure your new data source:
     {: .topLevel}
 
     When you click the <span class="AppCommand">Finish</span> button in
     the *Create New Data Source* screen, the ODBC Administrator tool
-    displays the data source configuration screen. Fill it in similarly
-    to this:
+    displays the data source configuration screen.
+
+    Set the fields in the *Data Source* and *Splice Machine Login* sections similarly to the settings shown here:
+    {: .indentLevel1}
+
+    ![Configuring the Splice Machine ODBC data source on
+    Windows](images/ODBCConfigureOld.png){: .nestedTightSpacing}
+
+    The default <span class="AppCommand">user</span> name is `splice`,
+    and the default <span class="AppCommand">password</span> is `admin`.
+
+    For <span class="AppCommand">Server</span>: on a cluster, specify
+    the IP address of an HBase RegionServer. If you're running the
+    standalone version of Splice Machine, specify `localhost`.
+    {: .noteNote}
+
+    If you have Splice Machine running, you can click the *Test...* button at the bottom of the Configuration dialog to verify that all is well.
+    {: .indentLevel1}
+
+{% else %}
+
+9.  Configure your new data source:
+    {: .topLevel}
+
+    When you click the <span class="AppCommand">Finish</span> button in
+    the *Create New Data Source* screen, the ODBC Administrator tool
+    displays the data source configuration screen.
+
+    #### Configuring the Data Source and Login
+
+    Set the fields in the *Data Source* and *Splice Machine Login* sections similarly to the settings shown here:
     {: .indentLevel1}
 
     ![Configuring the Splice Machine ODBC data source on
@@ -141,15 +172,49 @@ the driver:
     The default <span class="AppCommand">user</span> name is `splice`,
     and the default <span class="AppCommand">password</span> is `admin`.
 
-
     For <span class="AppCommand">Server</span>: on a cluster, specify
     the IP address of an HBase RegionServer. If you're running the
     standalone version of Splice Machine, specify `localhost`.
     {: .noteNote}
 
-    If you have Splice Machine running, you can click the Test
-    Connection button to verify that all is well.
+    #### Configuring SSL
+    To configure SSL for your ODBC connections, click the drop-down arrow in the *Use SLL:* setting and change the setting from `none` to one of the following settings:
     {: .indentLevel1}
+
+    <table>
+       <col />
+       <col />
+       <thead>
+            <tr>
+                <th>SSL Setting</th>
+                <th>Description</th>
+            </tr>
+       </thead>
+       <tbody>
+           <tr>
+              <td class="CodeFont">basic</td>
+              <td class="PlainFont">The communications channel is encrypted, but no attempt is made to verify client or host certificates.</td>
+           </tr>
+           <tr>
+              <td class="CodeFont">peerAuthentication</td>
+              <td class="PlainFont">
+                  <p>You must specify the location of both the client certificate file and the client private key in their respective fields.</p>
+                  <p>You can store both the certificate and key in the same .pem file, and specify the same location for both.</p>
+                  <p>If you select the *Always trust server certificate* checkbox, the driver will skip verfication of the host certificate by the client; if you do not select this option, then the client attempt to verify the host by using the client's trust store and CA chain.</p>
+              </td>
+           </tr>
+       </tbody>
+    </table>
+
+    Here's an example of configuring Peer Authentication and trusting the certificate:
+
+    ![Configuring the SSL for the Splice Machine ODBC data source on
+    Windows](images/ODBCConfigureTLS.png){: .nestedTightSpacing}
+
+    If you have Splice Machine running, you can click the *Test...* button at the bottom of the Configuration dialog to verify that all is well.
+    {: .indentLevel1}
+
+{% endif %}
 
 10. Configure logging (optional):
     {: .topLevel}
@@ -347,7 +412,14 @@ computer:
             Driver          = /usr/local/splice/lib64/libsplice_odbc.so
             UID             = splice
             PWD             = admin
-            URL             = 0.0.0.0PORT            = 1527
+            URL             = 0.0.0.0
+            PORT            = 1527
+{% if site.isbuild_docstest == true %}
+            *SSL            = peerAuthentication
+            SSL_CERT        = /home/splice/client.pem
+            SSL_PKEY        = /home/splice/client.key
+            SSL_TRUST       = TRUE*
+{% endif %}
         {: .Plain}
 
         </div>
