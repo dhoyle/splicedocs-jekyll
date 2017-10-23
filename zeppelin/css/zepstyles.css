@@ -68,7 +68,8 @@ img.inline {
 	width: 20px;
 }
 
-table.splicezep
+table.splicezep,
+table.splicezepNoBorder
 {
 	table-layout: auto;
 	min-width: 25%;
@@ -80,8 +81,19 @@ table.splicezep
 	word-wrap: break-word;
 	overflow: auto;
 }
+
+table.splicezepNoBorder
+{
+	border: none;
+}
+
 table.splicezep tr {
 
+}
+
+table.splicezepNoBorder tr {
+	border: none;
+	background-color: transparent;
 }
 
 table.splicezep td,
@@ -96,28 +108,52 @@ table.splicezep td.ItalicFont {
 	overflow: auto;
 }
 
-table.splicezep td.CodeFont{
+table.splicezepNoBorder td,
+table.splicezepNoBorder td.CodeFont,
+table.splicezepNoBorder td.BoldFont,
+table.splicezepNoBorder td.ItalicFont {
+	border: none;
+	padding: 8px;
+	text-align: left;
+	vertical-align: top;
+	word-wrap: break-word;
+	overflow: auto;
+}
+
+table.splicezep td.CodeFont,
+table.splicezepNoBorder td.CodeFont
+{
 	font-family: "Courier";
 }
 
-table.splicezep td.ItalicFont{
+table.splicezep td.ItalicFont,
+table.splicezepNoBorder td.ItalicFont
+{
 	font-style: italic;
 }
 
-table.splicezep td.BoldFont{
+table.splicezep td.BoldFont,
+table.splicezepNoBorder td.BoldFont
+{
 	font-weight: bold;
 }
 
-table.splicezep td p:first-child {
+table.splicezep td p:first-child,
+table.splicezepNoBorder td p:first-child
+{
 	margin-top: 0;
 }
 
 table.splicezep td > ul > li:first-of-type,
-table.splicezep td > ol > li:first-of-type {
+table.splicezep td > ol > li:first-of-type,
+table.splicezepNoBorder td > ul > li:first-of-type,
+table.splicezepNoBorder td > ol > li:first-of-type
+{
 	margin-top: 0;
 }
 
-table.splicezep th {
+table.splicezep th,
+table.splicezepNoBorder th {
 	border: 1px solid #8d9090;
 	padding: 8px;
 	text-align: left;
@@ -129,7 +165,14 @@ table.splicezep th {
 	background-color: #dcdcdc;
 }
 
-table.splicezep img {
+table.splicezepNoBorder th {
+	border: none;
+	background-color: transparent;
+}
+
+table.splicezep img,
+table.splicezepNoBorder img
+{
 	border: none;
 	width: auto;
 	height: auto;
@@ -196,4 +239,16 @@ div.noteIcon:before {
 	content: "";
 	color: #F39939;
 	font-weight: 600;
+}
+
+span.ConsoleLink {
+	font-weight: 600;
+	color: #3ba3d8;
+	text-transform: none;
+}
+
+span.ConsoleLink a:link {
+	color: #3390db;
+}
+
 }

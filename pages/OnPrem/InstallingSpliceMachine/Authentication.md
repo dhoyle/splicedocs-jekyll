@@ -202,7 +202,7 @@ To use LDAP with Splice Machine, you must:
   server.
 
 * Add the Splice Machine LDAP properties in your HBase configuration
-  file, along with the license key property:
+  file, along with the license key property. Note that you may need to set `splice.authentication` properties in both service and client HBase configuration files:
 
 #### LDAP Property Settings
 

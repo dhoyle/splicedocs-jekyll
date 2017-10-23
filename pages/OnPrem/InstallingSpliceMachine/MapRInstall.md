@@ -335,6 +335,9 @@ There are a few configuration modifications you might want to make:
 * [Modify the Authentication Mechanism](#Modify) if you want to
   authenticate users with something other than the default *native
   authentication* mechanism.
+* [Modify the Log Location](#Logging) if you want your Splice Machine
+  log entries stored somewhere other than in the logs for your region
+  servers.
 * [Adjust the Replication Factor](#Adjust) if you have a small cluster
   and need to improve resource usage or performance.
 
@@ -346,8 +349,57 @@ configuring user names and passwords.
 
 You can disable authentication or change the authentication mechanism
 that Splice Machine uses to LDAP by following the simple instructions in
-[Command Line (splice&gt;) Reference](cmdlineref_intro.html){:
-.WithinBook}
+[Command Line (splice&gt;) Reference](cmdlineref_intro.html)
+### Modify the Log Location   {#Logging}
+
+Splice Machine logs all SQL statements by default, storing the log
+entries in your region server's logs, as described in our [Using
+Logging](developers_tuning_logging) topic. You can modify where Splice
+Machine stores logs as follows:
+
+<div class="opsStepsList" markdown="1">
+1.  Append the following configuration information to the `/opt/mapr/hbase/hbase-1.1.1/conf/log4jd/properties` file _on each node_ in your cluster:
+    {: .topLevel}
+
+    <div class="preWrapper" markdown="1">
+        log4j.appender.spliceDerby=org.apache.log4j.FileAppender
+        log4j.appender.spliceDerby.File=${hbase.log.dir}/splice-derby.log
+        log4j.appender.spliceDerby.layout=org.apache.log4j.EnhancedPatternLayout
+        log4j.appender.spliceDerby.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+        log4j.appender.spliceStatement=org.apache.log4j.FileAppender
+        log4j.appender.spliceStatement.File=${hbase.log.dir}/splice-statement.log
+        log4j.appender.spliceStatement.layout=org.apache.log4j.EnhancedPatternLayout
+        log4j.appender.spliceStatement.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
+
+        log4j.logger.splice-derby=INFO, spliceDerby
+        log4j.additivity.splice-derby=false
+
+        # Uncomment to log statements to a different file:
+        #log4j.logger.splice-derby.statement=INFO, spliceStatement
+        # Uncomment to not replicate statements to the spliceDerby file:
+        #log4j.additivity.splice-derby.statement=false
+    {: .Plain}
+
+    </div>
+
+2.  Use either of these methods to take the log changes live:
+    {: .topLevel}
+
+    1. Restart the MapR service on each node in your cluster:
+
+       service mapr-warden restart
+       {: .ShellCommand}
+
+    2. OR, restart the HBase service _on each node_ in your cluster by issuing these commands from your Master node:
+
+       sudo -su mapr maprcli node services -hbmaster restart -nodes <span class="Highlighted">&lt;master node&gt;</span> <br />
+       sudo -su mapr maprcli node services -hbregionserver restart -nodes  <span class="Highlighted">&lt;regional node 1&gt; &lt;regional node 2&gt; ... &lt;regional node n&gt;</span>
+       {: .ShellCommand}
+
+{: .boldFont}
+
+</div>
 
 ### Adjust the Replication Factor   {#Adjust}
 

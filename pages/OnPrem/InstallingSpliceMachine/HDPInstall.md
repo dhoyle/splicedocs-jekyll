@@ -565,7 +565,7 @@ make these changes:
 
 3.  Under `Advanced hbase-env`, set the value of `hbase-env template` to the following:
     {: .topLevel}
-    
+
     <div class="preWrapperWide" markdown="1">
         # Set environment variables here.
 
@@ -758,7 +758,7 @@ Authentication](onprem_install_configureauth.html){: .WithinBook}
 Splice Machine logs all SQL statements by default, storing the log
 entries in your region server's logs, as described in our [Using
 Logging](developers_tuning_logging) topic. You can modify where Splice
-Machine by adding the following snippet to your *RegionServer Logging
+Machine stores logs by adding the following snippet to your *RegionServer Logging
 Advanced Configuration Snippet (Safety Valve)* section of your HBase
 Configuration:
 
