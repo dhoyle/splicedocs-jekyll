@@ -2821,6 +2821,8 @@
 ways, including adding and dropping columns and constraints from the
 table.</p>
 
+    <p class="noteNote">You cannot currently use <code>ALTER TABLE</code> to add a primary key or drop a foreign key.</p>
+
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide"><pre class="FcnSyntax">
@@ -2948,9 +2950,13 @@ add a <code>DEFAULT</code> clause to a generated column.</p>
       <li>change the default value for a column</li>
     </ul>
 
-    <p class="noteRelease">You cannot currently use <code>ALTER TABLE</code> to drop a foreign key constraint
-in Splice Machine. Until that capability is available, we recommend
-re-creating the table without the constraint.</p>
+    <div class="noteIcon">
+In the current release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to:
+<ul>
+<li>add a primary key</li>
+<li>drop a foreign key constraint</li>
+</ul>
+</div>
 
     <h3 id="adding-columns">Adding columns</h3>
 
@@ -2973,15 +2979,15 @@ column.</p>
     <p><code>ALTER TABLE ADD CONSTRAINT</code> adds a table-level constraint to an
 existing table.</p>
 
-    <p>The <code>ALTER TABLE ADD CONSTRAINT</code>statement is not currently taking
+    <div class="noteIcon">
+<p>The <code>ALTER TABLE ADD CONSTRAINT</code> statement is not currently taking
 currently running transactions into account, and thus can fail to add
 the constraint. This issue will be resolved in a future release.</p>
-
-    <p class="noteRelease">You can reliably add constraints when using the
+<p>You can reliably add constraints when using the
 <code>CREATE TABLE</code> statement.</p>
+</div>
 
-    <p>Any supported table-level constraint type can be added via <code>ALTER
-TABLE</code>. The following limitations exist on adding a constraint to an
+    <p>The following limitations exist on adding a constraint to an
 existing table:</p>
 
     <ul>
@@ -2989,17 +2995,6 @@ existing table:</p>
 checks the table to make sure existing rows satisfy the constraint. If
 any row is invalid, Splice Machine throws a statement exception and
 the constraint is not added.</li>
-      <li>
-        <p>All columns included in a primary key must contain non null data and
-be unique.</p>
-
-        <p><code>ALTER TABLE ADD UNIQUE</code> or <code>PRIMARY KEY</code> provide a shorthand method
-of defining a primary key composed of a single column. If <code>PRIMARY
-KEY</code> is specified in the definition of column C, the effect is the
-same as if the <code>PRIMARY KEY(C)</code> clause were specified as a separate
-clause. The column cannot contain null values, so the <code>NOT NULL</code>
-attribute must also be specified.</p>
-      </li>
     </ul>
 
     <p>For information on the syntax of constraints, see
@@ -3276,7 +3271,7 @@ Guide</em>.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Oct 23, 2017 <br />
+ Site last generated: Oct 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

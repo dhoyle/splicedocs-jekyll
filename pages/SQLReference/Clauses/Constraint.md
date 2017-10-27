@@ -89,11 +89,12 @@ identified columns must be defined as `NOT NULL`.
 At this time, you **cannot** add a primary key using `ALTER TABLE`.
 {: .noteNote}
 
+{% if site.incl_hidden %}
 If you attempt to add a primary key using `ALTER TABLE` and any of the
 columns included in the primary key contain null values, an error will
 be generated and the primary key will not be added. See &nbsp;[`ALTER TABLE`
 statement](sqlref_statements_altertable.html) for more information.
-{: .noteNote}
+{% endif %}
 
 UNIQUE
 {: .paramName}

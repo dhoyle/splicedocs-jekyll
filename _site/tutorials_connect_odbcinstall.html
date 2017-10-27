@@ -643,7 +643,7 @@ the IP address of an HBase RegionServer. If you’re running the
 standalone version of Splice Machine, specify <code>localhost</code>.</p>
 
           <h4 id="configuring-ssl">Configuring SSL</h4>
-          <p class="indentLevel1">To configure SSL for your ODBC connections, click the drop-down arrow in the <em>Use SLL:</em> setting and change the setting from <code>none</code> to one of the following settings:</p>
+          <p class="indentLevel1">To configure SSL for your ODBC connections, click the drop-down arrow in the <em>Use SSL:</em> setting and change the setting from <code>none</code> to one of the following settings:</p>
 
           <table>
    <col />
@@ -663,8 +663,9 @@ standalone version of Splice Machine, specify <code>localhost</code>.</p>
           <td class="CodeFont">peerAuthentication</td>
           <td class="PlainFont">
               <p>You must specify the location of both the client certificate file and the client private key in their respective fields.</p>
-              <p>You can store both the certificate and key in the same .pem file, and specify the same location for both.</p>
-              <p>If you select the *Always trust server certificate* checkbox, the driver will skip verfication of the host certificate by the client; if you do not select this option, then the client attempt to verify the host by using the client's trust store and CA chain.</p>
+              <p>You can store both the certificate and key in the same <code>.pem</code> file, and specify the same location for both.</p>
+              <p>Select the <em>Always trust server certificate</em> checkbox to specify that the driver can skip verfication of the host certificate by the client; if you do not select this option, then the client attempts to verify the host certificate chain.</p>
+                  <p class="noteNote">You should select the <em>Always trust server certificate</em> option if you are using a self-signed certificate.</p>
           </td>
        </tr>
    </tbody>
@@ -866,11 +867,10 @@ UID             = splice
 PWD             = admin
 URL             = 0.0.0.0
 PORT            = 1527
-
-*SSL            = peerAuthentication
+SSL             = peerAuthentication
 SSL_CERT        = /home/splice/client.pem
 SSL_PKEY        = /home/splice/client.key
-SSL_TRUST       = TRUE*
+SSL_TRUST       = TRUE
 </code></pre>
 
               </div>
@@ -1076,7 +1076,7 @@ main() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Oct 23, 2017 <br />
+ Site last generated: Oct 26, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

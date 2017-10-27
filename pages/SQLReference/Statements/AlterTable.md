@@ -16,6 +16,9 @@ The `ALTER TABLE` statement allows you to modify a table in a variety of
 ways, including adding and dropping columns and constraints from the
 table.
 
+You cannot currently use `ALTER TABLE` to add a primary key or drop a foreign key.
+{: .noteNote}
+
 ## Syntax
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
@@ -155,10 +158,13 @@ The `ALTER TABLE` statement allows you to:
 * change the nullability constraint for a column
 * change the default value for a column
 
-You cannot currently use `ALTER TABLE` to drop a foreign key constraint
-in Splice Machine. Until that capability is available, we recommend
-re-creating the table without the constraint.
-{: .noteRelease}
+<div class="noteIcon">
+In the current release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to:
+<ul>
+<li>add a primary key</li>
+<li>drop a foreign key constraint</li>
+</ul>
+</div>
 
 ### Adding columns
 
@@ -182,31 +188,21 @@ column.
 `ALTER TABLE ADD CONSTRAINT` adds a table-level constraint to an
 existing table.
 
-The `ALTER TABLE ADD CONSTRAINT`statement is not currently taking
+<div class="noteIcon">
+<p>The <code>ALTER TABLE ADD CONSTRAINT</code> statement is not currently taking
 currently running transactions into account, and thus can fail to add
-the constraint. This issue will be resolved in a future release.
+the constraint. This issue will be resolved in a future release.</p>
+<p>You can reliably add constraints when using the
+<code>CREATE TABLE</code> statement.</p>
+</div>
 
-You can reliably add constraints when using the
-`CREATE TABLE` statement.
-{: .noteRelease}
-
-Any supported table-level constraint type can be added via `ALTER
-TABLE`. The following limitations exist on adding a constraint to an
+The following limitations exist on adding a constraint to an
 existing table:
 
 * When adding a check constraint to an existing table, Splice Machine
   checks the table to make sure existing rows satisfy the constraint. If
   any row is invalid, Splice Machine throws a statement exception and
   the constraint is not added.
-* All columns included in a primary key must contain non null data and
-  be unique.
-
-  `ALTER TABLE ADD UNIQUE` or `PRIMARY KEY` provide a shorthand method
-  of defining a primary key composed of a single column. If `PRIMARY
-  KEY` is specified in the definition of column C, the effect is the
-  same as if the `PRIMARY KEY(C)` clause were specified as a separate
-  clause. The column cannot contain null values, so the `NOT NULL`
-  attribute must also be specified.
 
 For information on the syntax of constraints, see
 [`CONSTRAINT`](sqlref_clauses_constraint.html) clause. Use the syntax

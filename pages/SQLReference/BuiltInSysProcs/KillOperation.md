@@ -23,7 +23,7 @@ system procedure. to find the UUID for an operation you want to kill.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.KILL_OPERATION(operationId)
+    SYSCS_UTIL.SYSCS_KILL_OPERATION(operationId)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -53,9 +53,9 @@ This procedure does not return a result.
     -------------------------------------------------------------------------------------------------------------------------------
     bf610dea-d33e-4304-bf2e-4f10e667aa98    |SPLICE   |localhost:1528   |2          |call SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS()
     33567e3c-ef33-46dc-8d10-5ceb79348c2e    |SPLICE   |localhost:1528   |20         |insert into a select * from a
-    
+
     2 rows selected
-    
+
     splice> call SYSCS_UTIL.SYSCS_KILL_OPERATION('33567e3c-ef33-46dc-8d10-5ceb79348c2e');
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -63,4 +63,3 @@ This procedure does not return a result.
 </div>
 </div>
 </section>
-

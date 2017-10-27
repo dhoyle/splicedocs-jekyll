@@ -178,7 +178,7 @@ the driver:
     {: .noteNote}
 
     #### Configuring SSL
-    To configure SSL for your ODBC connections, click the drop-down arrow in the *Use SLL:* setting and change the setting from `none` to one of the following settings:
+    To configure SSL for your ODBC connections, click the drop-down arrow in the *Use SSL:* setting and change the setting from `none` to one of the following settings:
     {: .indentLevel1}
 
     <table>
@@ -199,8 +199,9 @@ the driver:
               <td class="CodeFont">peerAuthentication</td>
               <td class="PlainFont">
                   <p>You must specify the location of both the client certificate file and the client private key in their respective fields.</p>
-                  <p>You can store both the certificate and key in the same .pem file, and specify the same location for both.</p>
-                  <p>If you select the *Always trust server certificate* checkbox, the driver will skip verfication of the host certificate by the client; if you do not select this option, then the client attempt to verify the host by using the client's trust store and CA chain.</p>
+                  <p>You can store both the certificate and key in the same <code>.pem</code> file, and specify the same location for both.</p>
+                  <p>Select the <em>Always trust server certificate</em> checkbox to specify that the driver can skip verfication of the host certificate by the client; if you do not select this option, then the client attempts to verify the host certificate chain.</p>
+                      <p class="noteNote">You should select the <em>Always trust server certificate</em> option if you are using a self-signed certificate.</p>
               </td>
            </tr>
        </tbody>
@@ -414,11 +415,10 @@ computer:
             PWD             = admin
             URL             = 0.0.0.0
             PORT            = 1527
-{% if site.isbuild_docstest == true %}
-            *SSL            = peerAuthentication
+{% if site.isbuild_docstest == true %}            SSL             = peerAuthentication
             SSL_CERT        = /home/splice/client.pem
             SSL_PKEY        = /home/splice/client.key
-            SSL_TRUST       = TRUE*
+            SSL_TRUST       = TRUE
 {% endif %}
         {: .Plain}
 
