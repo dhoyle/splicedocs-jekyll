@@ -16,8 +16,13 @@ The `ALTER TABLE` statement allows you to modify a table in a variety of
 ways, including adding and dropping columns and constraints from the
 table.
 
-You cannot currently use `ALTER TABLE` to add a primary key or drop a foreign key.
-{: .noteNote}
+<div class="noteIcon">
+In the current release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to:
+<ul>
+<li>add a primary key</li>
+<li>drop a foreign key constraint</li>
+</ul>
+</div>
 
 ## Syntax
 
@@ -157,14 +162,6 @@ The `ALTER TABLE` statement allows you to:
 * change the increment value and start value of the identity column
 * change the nullability constraint for a column
 * change the default value for a column
-
-<div class="noteIcon">
-In the current release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to:
-<ul>
-<li>add a primary key</li>
-<li>drop a foreign key constraint</li>
-</ul>
-</div>
 
 ### Adding columns
 
