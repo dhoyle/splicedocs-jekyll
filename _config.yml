@@ -1,10 +1,9 @@
-        # THIS DEFAULT CONFIGURATION BUILDS THE DOCSTEST VERSION OF SPLICE MACHINE DOCUMENTATION
 repository: splicemachine/splicedocs-jekyll
 
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: Splice Machine Internal Docs
+topnav_title: Splice Machine Docs
 # this appears on the top navigation bar next to the home button
 
 site_title: Splice Machine Documentation
@@ -44,6 +43,7 @@ feedback_disable: true
 
 # feedback_link: "http://helpy.io/"
 # if you uncomment the previous line, it changes where the feedback link points to
+
 
 highlighter: none
 # library used for syntax highlighting
@@ -101,7 +101,7 @@ description: "Documentation for Splice Machine."
 # needed for sitemap.xml file only
 url: https://docstest.splicemachine.com
 
-#google_analytics: UA-35630173-2
+#google_analytics: Only used in doc build
 
 # Conditional Include Variables for Docstest Build
 isbuild_doc: false
@@ -111,5 +111,8 @@ isbuild_docsdev: false
 incl_notpdf: true
 incl_notyet: false
 incl_onlypdf: false
-
 incl_hidden: false
+
+# Variables used for swiftype search script (includes/swiftype_install) and filter meta tag (includes/head.html)
+build_version: "current"
+site_search_id: "YGtH3zGt4NJzs35yCo5A"

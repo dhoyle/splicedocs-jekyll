@@ -1,20 +1,20 @@
-        <!-- Swiftype script for docstest -->
-{% if site.isbuild_docstest == true or site.isbuild_docsdev == true %}
-    <script type="text/javascript">
-    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0');
-    </script>
+        <!-- Swiftype script; values depend on which built type and which build version -->
 
-{% else %}
-           <!-- Swiftype script for doc-->
-    <script type="text/javascript">
-    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-      _st('install','eg_YmbQ_YzBTPNDdxQxT','2.0.0');
-    </script>
-{% endif %}
+<script type="text/javascript">
+(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','{{ site.site_search_id }}','2.0.0', {
+  install: {
+    hooks: {
+      query_filter: function(query) {
+        query.setFilterDataByDocumentTypeSlugAndFilterField('page', 'buildversion', { values: ['{{site.build_version}}'], type: "and" });
+
+        return query;
+      }
+    }
+  }
+});
+</script>

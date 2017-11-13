@@ -22,8 +22,8 @@ You **must** use the *Splice Machine* ODBC driver; other drivers will not work c
 This topic describes how to install and configure the Splice Machine
 ODBC driver for these operating systems:
 
-* Installing the Splice Machine ODBC Driver on Windows
-* Installing the Splice Machine ODBC Driver on Linux
+* [Installing the Splice Machine ODBC Driver on Windows](#Installi)
+* [Installing the Splice Machine ODBC Driver on Linux](#Installi2)
 
 This topic also includes an [example that illustrates using our
 ODBC driver](#Using) with the C language.
