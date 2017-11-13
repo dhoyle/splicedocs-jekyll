@@ -101,9 +101,9 @@ These examples insert records with literal values:
     1 row inserted/updated/deleted
 
     splice> INSERT INTO Players
-       VALUES( (99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991'),
-               (73, 'Giants', 'Lester Johns', 'P', 'Big John', '06/09/1984'),
-               (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982') );
+       VALUES (99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991'),
+              (73, 'Giants', 'Lester Johns', 'P', 'Big John', '06/09/1984'),
+              (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982');
     3 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 </div>

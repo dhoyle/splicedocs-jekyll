@@ -22,7 +22,7 @@ Machine Cloud Manager
 				<tbody>
 					<tr>
 						<td style="width: 80px;"><img src="images/chaticon.png" /></td>
-						<td>You can initiate a chat session with one of our support specialists by clicking this chat icon that you'll see on Cloud Manager screens.</td>
+						<td>You can initiate a chat session with one of our support specialists by clicking this chat icon, which you'll see on Cloud Manager screens.</td>
 					</tr>
 				</tbody>
 			</table>
@@ -105,4 +105,3 @@ Here are the topics included in this guide:
         </table>
 </div>
 </section>
-

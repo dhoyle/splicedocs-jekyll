@@ -751,7 +751,8 @@ make these changes:
         -Dsplice.spark.dynamicAllocation.executorIdleTimeout=120
         -Dsplice.spark.dynamicAllocation.cachedExecutorIdleTimeout=120
         -Dsplice.spark.dynamicAllocation.minExecutors=0
-        -Dsplice.spark.dynamicAllocation.maxExecutors=12 -Dsplice.spark.io.compression.lz4.blockSize=32k
+        -Dsplice.spark.dynamicAllocation.maxExecutors=12
+        -Dsplice.spark.io.compression.lz4.blockSize=32k
         -Dsplice.spark.kryo.referenceTracking=false
         -Dsplice.spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator
         -Dsplice.spark.kryoserializer.buffer.max=512m -Dsplice.spark.kryoserializer.buffer=4m

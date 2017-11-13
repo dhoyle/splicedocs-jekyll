@@ -180,7 +180,8 @@ To force the use of a particular index, you can specify the index name;
 for example:
 
 <div class="preWrapperWide" markdown="1">
-    splice> SELECT * FROM my_table --splice-properties index=my_index> ;
+    splice> SELECT * FROM my_table --splice-properties index=my_index
+    > ;
 {: .Example xml:space="preserve"}
 
 </div>
@@ -188,7 +189,8 @@ To tell the query interface to not use an index for an operation,
 specify the null index. For example:
 
 <div class="preWrapperWide" markdown="1">
-    splice> SELECT * FROM my_table --splice-properties index=null> ;
+    splice> SELECT * FROM my_table --splice-properties index=null
+    > ;
 {: .Example xml:space="preserve"}
 
 </div>
