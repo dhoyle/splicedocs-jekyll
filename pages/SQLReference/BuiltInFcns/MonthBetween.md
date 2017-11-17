@@ -38,9 +38,9 @@ The second date
 </div>
 ## Results
 
-If `date1` is later than `date2`, then the result is positive.
+If `date2` is later than `date1`, then the result is positive.
 
-If `date1` is earlier than `date2`, then the result is negative.
+If `date2` is earlier than `date1`, then the result is negative.
 
 If `date1` and `date2` are either the same days of the month or both
 last days of months, then the result is always an integer.
@@ -48,12 +48,12 @@ last days of months, then the result is always an integer.
 ## Examples
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> VALUES(MONTH_BETWEEN(CURRENT_DATE, DATE('2015-8-15')));
     1
     ----------------------
     3.0
-    
+
     splice> SELECT MIN(BirthDate) "Oldest",
        MAX(Birthdate) "Youngest",
        MONTH_BETWEEN(MIN(Birthdate), MAX(BirthDate)) "Months Between"
@@ -61,7 +61,7 @@ last days of months, then the result is always an integer.
     Oldest     |Youngest   |Months Between
     --------------------------------------------
     1975-07-14 |1992-10-19 |207.0
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -89,4 +89,3 @@ last days of months, then the result is always an integer.
 
 </div>
 </section>
-

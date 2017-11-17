@@ -1,6 +1,6 @@
 #!/bin/sh
-printf "Enter the version to build (doc, docstest, docsdev): "
-read VERS
-printf "Enter the branch to build (current, 2.7, 2.6, 2.5): "
-read BRANCH
-jekyll serve --config=_config.yml,_config_$VERS.yml,_config_$BRANCH.yml
+read -p "Enter the version to build (doc, docstest, docsdev) [docstest]: " version
+version=${version:-docstest}
+read -p "Enter the branch to build (2.7.0, 2.6.1, 2.6.0, 2.5) [2.6.1]: " branch
+branch=${branch:-2.6.1}
+jekyll serve --config=_config.yml,_config_$version.yml,_config_$branch.yml
