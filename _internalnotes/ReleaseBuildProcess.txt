@@ -1,0 +1,18 @@
+
+Step-by-step release build-and-upload process (using 2.7.0 as example)
+
+1. Build 2.6.0 for docstest and generate sitemap
+
+2. Upload build to 2.6.0/NewVersion
+
+3. Build 2.6.1 for docstest and generate sitemap
+
+4. Upload build to 2.6.1/NewVersion
+
+5. Build 2.7.0 (new release) for docstest and generate sitemap
+
+6. Combine sitemaps:
+    cat sitemap.xxx.xml > _site/sitemap.xml
+    edit extraneous lines out of _site/sitemap.xml
+
+7. Upload build to 2.7.0/NewVersion

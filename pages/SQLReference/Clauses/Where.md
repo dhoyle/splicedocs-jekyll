@@ -21,7 +21,7 @@ return or operate upon (delete or update).
 ## Syntax
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-WHERE <a href="https://doc.splicemachine.com/sqlref_expressions_boolean.html">BooleanExpression</a></pre>
+WHERE <a href="sqlref_expressions_boolean.html">BooleanExpression</a></pre>
 
 </div>
 <div class="paramList" markdown="1">
