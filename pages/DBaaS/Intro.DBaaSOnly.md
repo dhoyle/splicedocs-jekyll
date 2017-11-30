@@ -15,7 +15,7 @@ folder: DBaaS
 Welcome to Splice Machine, the database platform for adaptive
 applications that manage operational processes. This site contains
 documentation for our <span class="ConsoleLink">Managed Database Service
-in the Cloud</span>.
+in the Cloud</span>, which includes Release {{ site.build_version }} of the Splice Machine Database.
 
 ## Getting Started With our Database Service
 
@@ -76,4 +76,3 @@ database system:
 
 </div>
 </section>
-
