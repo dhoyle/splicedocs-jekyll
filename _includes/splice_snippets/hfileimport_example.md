@@ -271,10 +271,22 @@ Follow these steps :
         second column that is `null`\:
 
         <div class="preWrapperWide" markdown="1">
-            1500000|3000000|4500000|
+            1500000|
+            3000000|
+            4500000|
         {: .Example}
 
         </div>
+
+        For every N lines of split data you specify, you'll end up with N+1 regions; for example, the above 3 splits will produce these 4 regions:
+
+        <div class="preWrapperWide" markdown="1">
+            0 -> 1500000
+            1500000 -> 3000000
+            3000000 -> 4500000
+            4500000 -> (last possible key)
+        {: .Example}
+
 
     2.  Specify the column names in the csv file in the `columnList`
         parameter; in our example, the primary key columns are:
