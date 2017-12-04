@@ -38,22 +38,22 @@ features. You only need to do this once:
 1.  Obtain your Splice Machine Enterprise Edition license key.
 2.  Enter this command on the <span
     class="AppCommand">splice&gt;</span> command line:
-    
+
     <div class="preWrapperWide" markdown="1">
         splice> CALL SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE('<yourLicenseKey>');Statement executed.
     {: .AppCommandCell}
-    
+
     </div>
-    
+
     If you enter an invalid license key, you'll see an error message:
-    
+
     <div class="preWrapperWide" markdown="1">
         splice> CALL SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE ('<bogus-license>');
         Error
         -------------------------------
         ERROR XSRSE: Unable to enable the enterprise Manager. Enterprise services are disabled. Contact your Splice Machine representative to enable.
     {: .AppCommandCell}
-    
+
     </div>
 
 </div>
@@ -66,21 +66,29 @@ configuration, and then restart Splice Machine. Follow these steps:
 <div class="opsStepsList" markdown="1">
 1.  Obtain your Splice Machine Enterprise Edition license key.
 2.  Edit the `hbase-site.xml` configuration file, adding this property:
-    
+
     <div class="preWrapperWide" markdown="1">
         <property>   <name>splicemachine.enterprise.key</name>   <value><your-Splice-Machine-license-key></value></property>
     {: .Example}
-    
+
     </div>
 
 3.  If you're using or switching from another authentication mechanism
     to LDAP, also add the LDAP properties to your `hbase-site.xml` file,
     as described in the [Splice Machine Authentication and
     Authorization](developers_fundamentals_auth.html) topic.
-4.  Restart Splice Machine, by first [Starting Your
+
+4. If you're using Kerberos, add this to your HBase Master Java Configuration Options:
+
+    <div class="preWrapperWide" markdown="1">
+       -Dsplice.spark.hadoop.fs.hdfs.impl.disable.cache=true
+    {: .Example}
+
+    </div>
+
+5.  Restart Splice Machine, by first [Starting Your
     Database](onprem_admin_startingdb.html).
 
 </div>
 </div>
 </section>
-

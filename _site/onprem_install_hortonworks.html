@@ -1331,6 +1331,14 @@ that Splice Machine uses to LDAP by following the simple instructions in
 <a href="onprem_install_configureauth.html" class="WithinBook">Configuring Splice Machine
 Authentication</a></p>
 
+    <p>If you’re using Kerberos, you need to add this option to your HBase Master Java Configuration Options:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>-Dsplice.spark.hadoop.fs.hdfs.impl.disable.cache=true
+</code></pre>
+
+    </div>
+
     <h3 id="Logging">Modify the Log Location</h3>
 
     <p>Splice Machine logs all SQL statements by default, storing the log

@@ -1376,7 +1376,13 @@ that Splice Machine uses to LDAP by following the simple instructions in
 <a href="onprem_install_configureauth.html">Configuring Splice Machine
 Authentication</a></p>
 
-    <p>You can use <a href="https://www.cloudera.com/documentation/enterprise/5-8-x/topics/cm_sg_intro_kerb.html" target="_blank">Cloudera’s Kerberos Wizard</a> to enable Kerberos mode on a CDH5.8.x cluster.</p>
+    <p>You can use <a href="https://www.cloudera.com/documentation/enterprise/5-8-x/topics/cm_sg_intro_kerb.html" target="_blank">Cloudera’s Kerberos Wizard</a> to enable Kerberos mode on a CDH5.8.x cluster. If you’re enabling Kerberos, you need to add this option to your HBase Master Java Configuration Options:</p>
+
+    <div class="preWrapper">
+      <pre class="Example"><code>-Dsplice.spark.hadoop.fs.hdfs.impl.disable.cache=true
+</code></pre>
+
+    </div>
 
     <h3 id="Logging">Modify the Log Location</h3>
 

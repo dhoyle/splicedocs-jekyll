@@ -650,10 +650,21 @@ configuration, and then restart Splice Machine. Follow these steps:</p>
 
           </div>
         </li>
-        <li>If you’re using or switching from another authentication mechanism
+        <li>
+          <p>If you’re using or switching from another authentication mechanism
 to LDAP, also add the LDAP properties to your <code>hbase-site.xml</code> file,
 as described in the <a href="developers_fundamentals_auth.html">Splice Machine Authentication and
-Authorization</a> topic.</li>
+Authorization</a> topic.</p>
+        </li>
+        <li>
+          <p>If you’re using Kerberos, add this to your HBase Master Java Configuration Options:</p>
+
+          <div class="preWrapperWide">
+            <pre class="Example"><code>-Dsplice.spark.hadoop.fs.hdfs.impl.disable.cache=true
+</code></pre>
+
+          </div>
+        </li>
         <li>Restart Splice Machine, by first <a href="onprem_admin_startingdb.html">Starting Your
 Database</a>.</li>
       </ol>
@@ -661,7 +672,6 @@ Database</a>.</li>
     </div>
   </div>
 </section>
-
 
 
     <div class="tags">
