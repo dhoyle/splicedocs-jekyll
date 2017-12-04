@@ -19,6 +19,7 @@ This topic provides troubleshooting guidance for these issues that you may encou
 * [Restarting Splice Machine after an HMaster Failure](*HMasterRestart)
 * [Increasing Parallelism for Spark Shuffles](#SparkShuffles)
 * [Force Compaction to Run Locally](#LocalCompaction)
+* [Kerberos Configuration Option](#KerberosConfig)
 
 ## Restarting Splice Machine After HMaster Failure {#HMasterRestart}
 
@@ -56,6 +57,15 @@ For a cluster with 20 Region Servers, you would set these to:
     -Dsplice.spark.dynamicAllocation.minExecutors=20
     -Dsplice.spark.dynamicAllocation.maxExecutors=40
 {: .ShellCommand}
+
+## Kerberos Configuration Option )  {#KerberosConfig}
+If you're using Kerberos, you need to add this option to your HBase Master Java Configuration Options:
+
+<div class="preWrapper" markdown="1">
+    -Dsplice.spark.hadoop.fs.hdfs.impl.disable.cache=true
+{:.ShellCommand}
+</div>
+
 
 </div>
 </section>
