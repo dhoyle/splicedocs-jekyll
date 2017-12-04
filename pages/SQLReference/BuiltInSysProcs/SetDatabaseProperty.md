@@ -1,25 +1,24 @@
 ---
-title: SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY built-in system procedure
-summary: Built-in system procedure that sets or deletes the value of a property of the database on the current connection.
-keywords: properties, set_database_property, set property value
+title: SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY built-in system procedure
+summary: Built-in system procedure that sets or deletes the value of a property of the database.
+keywords: properties, SET_GLOBAL_DATABASE_PROPERTY, set property value
 toc: false
 product: all
 sidebar:  sqlref_sidebar
-permalink: sqlref_sysprocs_setdbprop.html
+permalink: sqlref_sysprocs_setglobaldbprop.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY
+# SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY
 
-Use the `SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY` system procedure to set
-or delete the value of a property of the database on the current
-connection.
+Use the `SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY` system procedure to set
+or delete the value of a property of the database.
 
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
+    SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
               IN key VARCHAR(128),
               IN value VARCHAR(32672)
             )
@@ -60,7 +59,7 @@ Set the `splicemachine.locks.deadlockTimeout` property to a value of 10:
 
 <div class="preWrapperWide" markdown="1">
     CallableStatement cs = conn.prepareCall
-      ("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(?, ?)");
+      ("CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(?, ?)");
       cs.setString(1, "splicemachine.locks.deadlockTimeout");
       cs.setString(2, "10");
       cs.execute();
@@ -73,14 +72,14 @@ Set the `splicemachine.locks.deadlockTimeout` property to a value of 10:
 Set the `splicemachine.locks.deadlockTimeout` property to a value of 10:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout', '10' );
+    splice> CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout', '10' );
     Statement executed.
 {: .Example xml:space="preserve"}
 
 </div>
 ## See Also
 
-* [`SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY`](sqlref_sysprocs_getdbprop.html)
+* [`SYSCS_UTIL.SYSCS_GET_GLOBAL_DATABASE_PROPERTY`](sqlref_sysprocs_getglobaldbprop.html)
 
 </div>
 </section>

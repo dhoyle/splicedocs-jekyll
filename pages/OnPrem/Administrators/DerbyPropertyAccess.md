@@ -59,7 +59,7 @@ properties.
                                 <li>Derby stores service properties in the <code>service.properties file</code></li>
                                 <li>Splice Machine stores service properties in a Zookeeper element.</li>
                             </ul>
-                            <p>You can temporarily change service properties with the <a href="sqlref_sysprocs_setdbprop.html"><code>SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</code></a> built-in system procedure. These changes will be lost when the server is next restarted.</p>
+                            <p>You can temporarily change service properties with the <a href="sqlref_sysprocs_setglobaldbprop.html"><code>SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY</code></a> built-in system procedure. These changes will be lost when the server is next restarted.</p>
                             <p>To make a permanent change in a Derby service property, modify the value in the <code>service.properties</code> file and then restart the server to apply the changes.</p>
                             <p>To make a permanent change in a Splice Machine service property, modify the value in ZooKeeper and then restart the server to apply the changes.</p>
                         </td>
@@ -140,7 +140,7 @@ information like this:
 </div>
 ## See Also
 
-* [`SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY`](sqlref_sysprocs_setdbprop.html)
+* [`SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY`](sqlref_sysprocs_setglobaldbprop.html)
 * The *Derby Properties Guide* on the [Apache Derby documentation
   site][1]{: target="_blank"}.
 

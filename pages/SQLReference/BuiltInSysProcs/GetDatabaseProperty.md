@@ -1,24 +1,24 @@
 ---
-title: SYSCS_GET_DATABASE_PROPERTY built-in system function
-summary: Built-in system function that fetches the value of the specified property of the database on the current connection.
-keywords: properties, get_database_property, get property, property value
+title: SYSCS_GET_GLOBAL_DATABASE_PROPERTY built-in system function
+summary: Built-in system function that fetches the value of the specified property of the database.
+keywords: properties, GET_GLOBAL_DATABASE_PROPERTY, get property, property value
 toc: false
 product: all
 sidebar:  sqlref_sidebar
-permalink: sqlref_sysprocs_getdbprop.html
+permalink: sqlref_sysprocs_getglobaldbprop.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY Function
+# SYSCS_UTIL.SYSCS_GET_GLOBAL_DATABASE_PROPERTY Function
 
-The `SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY` function fetches the value
-of the specified property of the database on the current connection.
+The `SYSCS_UTIL.SYSCS_GET_GLOBAL_DATABASE_PROPERTY` function fetches the value
+of the specified property of the database.
 
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    VARCHAR(32672) SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY(
+    VARCHAR(32672) SYSCS_UTIL.SYSCS_GET_GLOBAL_DATABASE_PROPERTY(
       IN Key VARCHAR(128)
       )
 {: .FcnSyntax xml:space="preserve"}
@@ -38,7 +38,7 @@ An error occurs if *Key* is null.
 ## Results
 
 Returns the value of the property. If the value that was set for the
-property is invalid, the `SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY`
+property is invalid, the `SYSCS_UTIL.SYSCS_GET_GLOBAL_DATABASE_PROPERTY`
 function returns the invalid value, but Splice Machine uses the default
 value.
 
@@ -54,7 +54,7 @@ Retrieve the value of the `splicemachine.locks.deadlockTimeout`
 property:
 
 <div class="preWrapper" markdown="1">
-    splice> VALUES SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout' );
+    splice> VALUES SYSCS_UTIL.SYSCS_GET_GLOBAL_DATABASE_PROPERTY( 'splicemachine.locks.deadlockTimeout' );
     1
     -------------------------------------------------------------
     10
@@ -65,7 +65,7 @@ property:
 </div>
 ## See Also
 
-* [`SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY`](sqlref_sysprocs_setdbprop.html)
+* [`SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY`](sqlref_sysprocs_setglobaldbprop.html)
 
 </div>
 </section>

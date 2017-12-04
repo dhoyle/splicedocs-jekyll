@@ -62,7 +62,7 @@ the value of the `derby.database.classpath` property.
 
     You need to update your `CLASSPATH` so that Splice Machine can find
     your code. You can do this by using the
-   &nbsp;[`SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY`](sqlref_sysprocs_setdbprop.html) system
+   &nbsp;[`SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY`](sqlref_sysprocs_setglobaldbprop.html) system
     procedure to update the `derby.database.classpath` property:
     {: .indentLevel1}
 
@@ -77,7 +77,7 @@ the value of the `derby.database.classpath` property.
     Note that if you've developed more than one Jar file, you can update
     the `derby.database.classpath` property with multiple Jars by
     separating the Jar file names with colons when you call the
-   &nbsp;[`SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY`](sqlref_sysprocs_setdbprop.html) system
+   &nbsp;[`SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY`](sqlref_sysprocs_setglobaldbprop.html) system
     procedure . For example:
     {: .indentLevel1}
 

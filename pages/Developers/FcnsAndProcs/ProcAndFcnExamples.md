@@ -135,7 +135,7 @@ Follow these steps to define and use the `word_limiter` function:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        splice> CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
+        splice> CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
                     'derby.database.classpath',
                     'SPLICE.MY_EXAMPLE_APP');
     {: .AppCommand xml:space="preserve"}
@@ -286,7 +286,7 @@ function:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        splice> CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.GET_SKU_INVENTORY');
+        splice> CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.GET_SKU_INVENTORY');
     {: .AppCommand xml:space="preserve"}
 
     </div>

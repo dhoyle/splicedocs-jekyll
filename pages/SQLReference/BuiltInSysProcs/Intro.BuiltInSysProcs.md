@@ -200,9 +200,9 @@ database properties:
                         <td>Displays all of the Splice Machine Derby properties.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="sqlref_sysprocs_getdbprop.html">SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY function</a>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_getglobaldbprop.html">SYSCS_UTIL.SYSCS_GET_GLOBAL_DATABASE_PROPERTY function</a>
                         </td>
-                        <td>Fetches the value of the specified property of the database on the current connection.</td>
+                        <td>Fetches the value of the specified property of the database.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_getschemainfo.html">SYSCS_UTIL.SYSCS_GET_SCHEMA_INFO</a>
@@ -217,9 +217,9 @@ database properties:
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="sqlref_sysprocs_setdbprop.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_setglobaldbprop.html">SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY</a>
                         </td>
-                        <td>Sets or deletes the value of a property of the database on the current connection.</td>
+                        <td>Sets or deletes the value of a property of the database.</td>
                     </tr>
                 </tbody>
             </table>

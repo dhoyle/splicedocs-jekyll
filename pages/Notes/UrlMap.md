@@ -889,7 +889,7 @@ released prior to July 15, 2017.
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#SQLReference/BuiltInSysProcs/GetDatabaseProperty.html</td>
-                       <td><a href="https://doc.splicemachine.com/sqlref_sysprocs_getdbprop.html">doc.splicemachine.com/sqlref_sysprocs_getdbprop.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/sqlref_sysprocs_getglobaldbprop.html">doc.splicemachine.com/sqlref_sysprocs_getglobaldbprop.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#SQLReference/BuiltInSysProcs/GetLoggerLevel.html</td>
@@ -1001,7 +1001,7 @@ released prior to July 15, 2017.
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#SQLReference/BuiltInSysProcs/SetDatabaseProperty.html</td>
-                       <td><a href="https://doc.splicemachine.com/sqlref_sysprocs_setdbprop.html">doc.splicemachine.com/sqlref_sysprocs_setdbprop.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/sqlref_sysprocs_setglobaldbprop.html">doc.splicemachine.com/sqlref_sysprocs_setglobaldbprop.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#SQLReference/BuiltInSysProcs/SetLoggerLevel.html</td>
@@ -1988,4 +1988,3 @@ released prior to July 15, 2017.
 </div>
 </div>
 </section>
-
