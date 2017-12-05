@@ -58,7 +58,7 @@ For a cluster with 20 Region Servers, you would set these to:
     -Dsplice.spark.dynamicAllocation.maxExecutors=40
 {: .ShellCommand}
 
-## Kerberos Configuration Option )  {#KerberosConfig}
+## Kerberos Configuration Option  {#KerberosConfig}
 If you're using Kerberos, you need to add this option to your HBase Master Java Configuration Options:
 
 <div class="preWrapper" markdown="1">
