@@ -719,7 +719,7 @@ changes that require the cluster to be temporarily inactive.</p>
           <p class="topLevel">Access the Ambari Home Screen</p>
         </li>
         <li>
-          <p class="topLevel">Click the <span class="AppCommand">Actions</span> drop-down, and
+          <p class="topLevel">Click the <span class="AppCommand">Actions</span> drop-down in the Ambari <em>Services</em> sidebar, and
 then click the <span class="AppCommand">Stop All</span> button.</p>
         </li>
       </ol>
@@ -740,25 +740,16 @@ configurations:</p>
 
     <h3 id="Configur4">Configure and Restart ZooKeeper</h3>
 
-    <p>To edit the ZooKeeper configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari
-dashboard screen, then click <span class="AppCommand">ZooKeeper</span>
-in the Ambari in the left pane of the screen.</p>
+    <p>To edit the ZooKeeper configuration, click <span class="AppCommand">ZooKeeper</span> in the Ambari <em>Services</em> sidebar. Then click the <span class="AppCommand">Configs</span> tab and follow these steps:</p>
 
     <div class="opsStepsList">
       <ol class="boldFont">
         <li>
-          <p class="topLevel">Select the <span class="AppCommand">Configs</span> tab to configure
-ZooKeeper</p>
-        </li>
-        <li>
-          <p class="topLevel">Make configuration changes:</p>
-
-          <p class="indentLevel1">Scroll down to where you see <em>Custom zoo.cfg</em> and click <span class="AppCommand">Add Property</span> to add the <code>maxClientCnxns</code>
+          <p class="topLevel">Click the <em>Custom zoo.cfg</em> drop-down arrow, then click <span class="AppCommand">Add Property</span> to add the <code>maxClientCnxns</code>
 property and then again to add the <code>maxSessionTimeout</code> property,
 with these values:</p>
 
           <div class="preWrapperWide">
-
             <pre class="AppCommand"><code>maxClientCnxns=0
 maxSessionTimeout=120000
 </code></pre>
@@ -766,30 +757,21 @@ maxSessionTimeout=120000
           </div>
         </li>
         <li>
-          <p class="topLevel">Save Changes</p>
-
-          <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your
+          <p class="topLevel">Click the <span class="AppCommand">Save</span> button to save your
 changes. You’ll be prompted to optionally add a note such as
 <code>Updated ZooKeeper configuration for Splice Machine</code>. Click <span class="AppCommand">Save</span> again.</p>
         </li>
         <li>
-          <p class="topLevel">Start ZooKeeper</p>
-
-          <p class="indentLevel1">After you save your changes, you’ll land back on the ZooKeeper
-Service <span class="AppCommand">Configs</span> tab in Ambari.</p>
-
-          <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down
-in the upper-right corner and select the <span class="AppCommand">Start</span> action to start ZooKeeper. Wait for
-the restart to complete.</p>
+          <p class="topLevel">Select the <span class="AppCommand">Actions</span> drop-down
+in the Ambari <em>Services</em> sidebar, then click the <span class="AppCommand">Start</span> action to start ZooKeeper. Wait for the
+restart to complete.</p>
         </li>
       </ol>
 
     </div>
     <h3 id="Configur5">Configure and Restart HDFS</h3>
 
-    <p>To edit the HDFS configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari
-dashboard screen, then click <span class="AppCommand">HDFS</span> in the
-Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
+    <p>To edit the HDFS configuration, click <span class="AppCommand">HDFS</span> in the Ambari <em>Services</em> sidebar. Then click the <span class="AppCommand">Configs</span> tab and follow these steps:</p>
 
     <div class="opsStepsList">
       <ol class="boldFont">
@@ -840,8 +822,8 @@ changes. You’ll be prompted to optionally add a note such as
 
           <p class="indentLevel1">After you save your changes, you’ll land back on the <span class="AppCommand">HDFS Service Configs</span> tab in Ambari.</p>
 
-          <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down
-in the upper-right corner and select the <span class="AppCommand">Start</span> action to start HDFS. Wait for the
+          <p class="indentLevel1">Click the <span class="AppCommand">Actions</span> drop-down
+in the Ambari <em>Services</em> sidebar, then click the <span class="AppCommand">Start</span> action to start HDFS. Wait for the
 restart to complete.</p>
         </li>
         <li>
@@ -864,9 +846,7 @@ sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/hist
     </div>
     <h3 id="Configur2">Configure and Restart YARN</h3>
 
-    <p>To edit the YARN configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari
-dashboard screen, then click <span class="AppCommand">YARN</span> in the
-Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
+    <p>To edit the YARN configuration, click <span class="AppCommand">YARN</span> in the Ambari <em>Services</em> sidebar. Then click the <span class="AppCommand">Configs</span> tab and follow these steps:</p>
 
     <div class="opsStepsList">
       <ol class="boldFont">
@@ -945,96 +925,55 @@ restart to complete.</p>
     <p>Ambari automatically sets these values for you:</p>
 
     <ul class="codeList">
-      <li>
-        <p>Map Memory</p>
-      </li>
-      <li>
-        <p>Reduce Memory</p>
-      </li>
-      <li>
-        <p>Sort Allocation Memory</p>
-      </li>
-      <li>
-        <p>AppMaster Memory</p>
-      </li>
-      <li>
-        <p>MR Map Java Heap Size</p>
-      </li>
-      <li>
-        <p>MR Reduce Java Heap Size</p>
-      </li>
+      <li>Map Memory</li>
+      <li>Reduce Memory</li>
+      <li>Sort Allocation Memory</li>
+      <li>AppMaster Memory</li>
+      <li>MR Map Java Heap Size</li>
+      <li>MR Reduce Java Heap Size</li>
     </ul>
 
     <p>You do, however, need to make a few property changes for this service.</p>
 
-    <p>To edit the MapReduce2 configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari
-dashboard screen, then click <span class="AppCommand">MapReduce2</span>
-in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab and follow these steps:</p>
+    <p>To edit the MapReduce2 configuration, click <span class="AppCommand">MapReduce2</span> in the Ambari <em>Services</em> sidebar. Then click the <span class="AppCommand">Configs</span> tab and follow these steps:</p>
 
     <div class="opsStepsList">
       <ol class="boldFont">
         <li>
-          <p class="topLevel">Select the <span class="AppCommand">Configs</span> tab to configure MapReduce2.</p>
-        </li>
-        <li>
-          <p class="topLevel">Update property values</p>
-
-          <p class="indentLevel1">You need to replace <span class="AppFontCustCode">${hdp.version}</span> with the actual HDP
+          <p class="topLevel">You need to replace <span class="HighlightedCode">${hdp.version}</span> with the actual HDP
 version number you are using in these property values:</p>
 
-          <ul>
-            <li>
-              <p>mapreduce.admin.map.child.java.opts</p>
-            </li>
-            <li>
-              <p>mapreduce.admin.reduce.child.java.opts</p>
-            </li>
-            <li>
-              <p>mapreduce.admin.user.env</p>
-            </li>
-            <li>
-              <p>mapreduce.application.classpath</p>
-            </li>
-            <li>
-              <p>mapreduce.application.framework.path</p>
-            </li>
-            <li>
-              <p>yarn.app.mapreduce.am.admin-command-opts</p>
-            </li>
-            <li>
-              <p>MR AppMaster Java Heap Size  <br /><br /></p>
-            </li>
-          </ul>
+          <div class="preWrapperWide">
+            <pre class="Example"><code>mapreduce.admin.map.child.java.opts
+mapreduce.admin.reduce.child.java.opts
+mapreduce.admin.user.env
+mapreduce.application.classpath
+mapreduce.application.framework.path
+yarn.app.mapreduce.am.admin-command-opts
+MR AppMaster Java Heap Size
+</code></pre>
+          </div>
 
           <p class="noteNote">An example of an HDP version number that you would substitute for
 <span class="AppFontCustCode">${hdp.version}</span> is
 <code>2.5.0.0-1245</code>.</p>
         </li>
         <li>
-          <p class="topLevel">Save Changes</p>
-
-          <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your
+          <p class="topLevel">Click the <span class="AppCommand">Save</span> button to save your
 changes. You’ll be prompted to optionally add a note such as
 <code>Updated MapReduce2 configuration for Splice Machine</code>. Click <span class="AppCommand">Save</span> again.</p>
         </li>
         <li>
-          <p class="topLevel">Start MapReduce2</p>
-
-          <p class="indentLevel1">After you save your changes, you’ll land back on the MapReduce2
-Service <span class="AppCommand">Configs</span> tab in Ambari.</p>
-
-          <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down
-in the upper-right corner and select the <span class="AppCommand">Start</span> action to start MapReduce2. Wait for
-the restart to complete.</p>
+          <p class="topLevel">Select the <span class="AppCommand">Actions</span> drop-down
+in the Ambari <em>Services</em> sidebar, then click the <span class="AppCommand">Start</span> action to start MapReduce2. Wait for the
+restart to complete.</p>
         </li>
       </ol>
 
     </div>
     <h3 id="Configur3">Configure and Restart HBASE</h3>
 
-    <p>To edit the HBASE configuration, click <span class="AppCommand">HBASE</span> in the Cloudera Manager home screen,
-then click the <span class="AppCommand">Configuration</span> tab and
-make these changes:</p>
+    <p>To edit the HBase configuration, click <span class="AppCommand">HBase</span> in the Ambari <em>Services</em> sidebar. Then click the <span class="AppCommand">Configs</span> tab and follow these steps:</p>
 
     <div class="opsStepsList">
       <ol class="boldFont">
@@ -1354,7 +1293,7 @@ Advanced Configuration Snippet (Safety Valve)</em> section of your HBase
 Configuration:</p>
 
     <div class="preWrapper">
-      <pre class="Plain"><code>log4j.appender.spliceDerby=org.apache.log4j.FileAppender
+      <pre class="Example"><code>log4j.appender.spliceDerby=org.apache.log4j.FileAppender
 log4j.appender.spliceDerby.File=${hbase.log.dir}/splice-derby.log
 log4j.appender.spliceDerby.layout=org.apache.log4j.EnhancedPatternLayout
 log4j.appender.spliceDerby.layout.ConversionPattern=%d{EEE MMM d HH:mm:ss,SSS} Thread[%t] %m%n
@@ -1471,7 +1410,7 @@ and command syntax.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Dec 4, 2017 <br />
+ Site last generated: Dec 8, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
