@@ -12,6 +12,6 @@ folder: Tutorials/Ingest
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Importing Data: Logging and Error Handling
 
-This topic provides 
+This topic provides
 
 ##
