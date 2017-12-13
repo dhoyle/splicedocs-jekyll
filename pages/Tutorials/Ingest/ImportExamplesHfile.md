@@ -1,5 +1,5 @@
 ---
-title: "Importing Data: Examples of Using the Bulk HFile Import Procedure"
+title: "Importing Data 6: Bulk HFile Examples"
 summary: Walk-throughs of using the built-in bulk HFile import procedure.
 keywords: import, ingest, bulk hfile
 toc: false

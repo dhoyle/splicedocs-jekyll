@@ -1,5 +1,5 @@
 ---
-title: "Importing Data: Specifying Parameters"
+title: "Importing Data 2: Parameter Usage"
 summary: Detailed specifications of the parameter values used in Splice Machine data ingestion.
 keywords: import, ingest, input parameters, compression, encoding, separator
 toc: false
@@ -12,9 +12,93 @@ folder: Tutorials/Ingest
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Importing Data: Specifying the Import Parameter Values
 
-This topic provides detailed information about the input parameters you need to specify when calling one of the Splice Machine data ingestion procedures.
+This topic first shows you the syntax of each of the four import procedures, and then provides detailed information about the input parameters you need to specify when calling one of the Splice Machine data ingestion procedures.
 
-You'll find the declarations of the import procedures in the [Import Overview](tutorials_ingest_importoverview.html) topic of this tutorial, and repeated in the reference page for each in the our [SQL Reference Manual](sqlref_sysprocs_intro.html).
+## Import Procedures Syntax {#Syntax}
+
+Here are the declarations of our four data import procedures; as you can see, three of our four import procedures use identical parameters, and the fourth (`SYSCS_UTIL.BULK_IMPORT_FILE`) adds a couple extra parameters at the end:
+
+<div class="fcnWrapperWide" markdown="1">
+    call SYSCS_UTIL.IMPORT_DATA (
+            schemaName,
+            tableName,
+            insertColumnList | null,
+            fileOrDirectoryName,
+            columnDelimiter | null,
+            characterDelimiter | null,
+            timestampFormat | null,
+            dateFormat | null,
+            timeFormat | null,
+            badRecordsAllowed,
+            badRecordDirectory | null,
+            oneLineRecords | null,
+            charset | null
+            );
+{: .FcnSyntax xml:space="preserve"}
+
+</div>
+
+<div class="fcnWrapperWide" markdown="1">
+    call SYSCS_UTIL.UPSERT_DATA_FROM_FILE (
+           schemaName,
+           tableName,
+           insertColumnList | null,
+           fileOrDirectoryName,
+           columnDelimiter | null,
+           characterDelimiter | null,
+           timestampFormat | null,
+           dateFormat | null,
+           timeFormat | null,
+           badRecordsAllowed,
+           badRecordDirectory | null,
+           oneLineRecords | null,
+           charset | null
+    );
+{: .FcnSyntax xml:space="preserve"}
+
+</div>
+
+<div class="fcnWrapperWide" markdown="1">
+    call SYSCS_UTIL.MERGE_DATA_FROM_FILE (
+           schemaName,
+           tableName,
+           insertColumnList | null,
+           fileOrDirectoryName,
+           columnDelimiter | null,
+           characterDelimiter | null,
+           timestampFormat | null,
+           dateFormat | null,
+           timeFormat | null,
+           badRecordsAllowed,
+           badRecordDirectory | null,
+           oneLineRecords | null,
+           charset | null
+    );
+{: .FcnSyntax xml:space="preserve"}
+
+</div>
+
+<div class="fcnWrapperWide" markdown="1">
+    call SYSCS_UTIL.BULK_IMPORT_FILE (
+        schemaName,
+        tableName,
+        insertColumnList | null,
+        fileName,
+        columnDelimiter | null,
+        characterDelimiter | null,
+        timestampFormat | null,
+        dateFormat | null,
+        timeFormat | null,
+        maxBadRecords,
+        badRecordDirectory | null,
+        oneLineRecords | null,
+        charset | null,
+        bulkImportDirectory,
+        skipSampling
+    );
+{: .FcnSyntax xml:space="preserve"}
+
+</div>
 
 ## Overview of Parameters Used in Import Procedures
 
@@ -118,6 +202,22 @@ The following table summarizes these parameters. Each parameter name links to it
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
+        <tr>
+            <td rowspan="2" class="BoldFont">Bulk HFile Import</td>
+            <td class="CodeFont"><a href="#bulkImportDirectory">bulkImportDirectory</a></td>
+            <td><p>The name of the  directory into which the generated HFiles are written prior to being
+            imported into your database.</p>
+            <p>This parameter is only used with the `SYSCS_UTIL.BULK_IMPORT_FILE` system procedure.</p>
+            </td>
+            <td class="CodeFont">'hdfs:///tmp/test_hfile_import/'</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="#skipSampling">skipSampling</a></td>
+            <td><p>The `skipSampling` parameter is a Boolean value that specifies how you want the split keys used for the bulk HFile import to be computed. Set to `false` to have `SYSCS_UTIL.BULK_IMPORT_FILE` automatically determine splits for you.</p>
+            <p>This parameter is only used with the `SYSCS_UTIL.BULK_IMPORT_FILE` system procedure.</p>
+            </td>
+            <td class="CodeFont">false</td>
+        </tr>
     </tbody>
 </table>
 
@@ -129,11 +229,11 @@ This section provides reference documentation for all of the data importation pa
 
 The `schemaName` is a string that specifies the name of the schema of the table into which you are importing data.
 
-### `tableName`
+### `tableName` {#tableName}
 
 The `tableName` is a string that specifies the name of the table into which you are importing data.
 
-### `insertColumnList`
+### `insertColumnList` {#insertColumnList}
 
 The `insertColumnList` parameter is a string that specifies the names, in single quotes, of the columns you wish to import. If this is `null`, all columns are imported.
 
@@ -155,7 +255,7 @@ for that column.
 {: indentLevel1}
 
 
-### `fileOrDirectoryName`
+### `fileOrDirectoryName` {#fileOrDirectoryName}
 
 The `fileOrDirectoryName` (or `fileName`) parameter is a string that specifies the location of the data that you're importing. This parameter is slightly different for different procedures:
 
@@ -191,7 +291,7 @@ makes a difference; for example,
   be split.
 </div>
 
-### `oneLineRecords`
+### `oneLineRecords` {#oneLineRecords}
 
 The `oneLineRecords` parameter is a Boolean value that specifies whether each line in the import file contains one complete record:
 
@@ -204,14 +304,14 @@ split and processed in parallel; if you import a directory of multiple
 line files, each file as a whole is processed in parallel, but no
 splitting takes place.
 
-### `charset`
+### `charset` {#charset}
 
 The `charset` parameter is a string that specifies the character encoding of the import file. The default value is `UTF-8`.
 
 Currently, any value other than `UTF-8` is ignored, and `UTF-8` is used.
 {: .noteNote}
 
-### `columnDelimiter`
+### `columnDelimiter` {#columnDelimiter}
 
 The `columnDelimiter` parameter is a string that specifies the character used to separate columns, You can specify `null` if using the comma (`,`) character as your delimiter.
 
@@ -254,7 +354,7 @@ special characters as delimiters:
     </tbody>
 </table>
 
-### `characterDelimiter`
+### `characterDelimiter` {#characterDelimiter}
 
 The `characterDelimiter` parameter is a string that specifies which character is used to delimit strings in the imported data. You can specify `null` or the empty string to use the default string delimiter, which is the double-quote (`"`).
 
@@ -307,7 +407,7 @@ need to escape that character. This means that you specify four quotes
 (`''''`) as the value of this parameter. This is standard SQL syntax.
 </div>
 
-### `timestampFormat`
+### `timestampFormat` {#timestampFormat}
 
 The `timestampFormat` parameter specifies the format of timestamps in your input data. You can set this to `null` if either:
 
@@ -320,21 +420,21 @@ format.
 {: .noteIcon}
 
 
-### `dateFormat`
+### `dateFormat` {#dateFormat}
 
 The `dateFormat` parameter specifies the format of datestamps stored in the file. You can set this to `null` if either:
 
 * there are no date columns in the file
 * the format of any dates in the input match this pattern: \"*yyyy-MM-dd*\".
 
-### `timeFormat`
+### `timeFormat` {#timeFormat}
 
 The `timeFormat` parameter specifies the format of time values in your input data. You can set this to null if either:
 
 * there are no time columns in the file
 * the format of any times in the input match this pattern: \"*HH:mm:ss*\".
 
-### `badRecordsAllowed`
+### `badRecordsAllowed` {#badRecordsAllowed}
 
 The `badRecordsAllowed` parameter is integer value that specifies the number of rejected (bad) records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back.
 
@@ -345,14 +445,14 @@ These values have special meaning:
 * If you specify `0` as the value of this parameter, the import will
   fail if even one record is bad.
 
-### `badRecordDirectory`
+### `badRecordDirectory` {#badRecordDirectory}
 
 The `badRecordDirectory` parameter is a string that specifies the directory in which bad record information is logged. The default value is the directory in which the import files are found.
 
 Splice Machine logs information to the `<import_file_name>.bad` file in this directory; for example, bad records in an input file named `foo.csv` would be
 logged to a file named *badRecordDirectory*`/foo.csv.bad`.
 
-### `bulkImportDirectory`
+### `bulkImportDirectory` {#bulkImportDirectory}
 
 This parameter is only used with the `SYSCS_UTIL.BULK_IMPORT_HFILE` system procedure.
 {: .noteNote}
@@ -362,7 +462,7 @@ imported into your database. The generated files are automatically removed after
 
 Please review the [Bulk HFile Import Walkthrough](tutorials_ingest_importexampleshfile.html) topic to understand how importing bulk HFiles works.
 
-### `skipSampling`
+### `skipSampling` {#skipSampling}
 
 This parameter is only used with the `SYSCS_UTIL.BULK_IMPORT_HFILE` system procedure.
 {: .noteNote}
@@ -376,7 +476,7 @@ samples your input data and computes the table splits for you, in the following 
 
     1. Scans (sample) the data
     2. Collects a rowkey histogram
-    3. Uses that historgram to calculate the split key for the table
+    3. Uses that histogram to calculate the split key for the table
     4. Uses the calculated split key to split the table into HFiles
 
 Please review the [Bulk HFile Import Walkthrough](tutorials_ingest_importexampleshfile.html) topic to understand how importing bulk HFiles works.

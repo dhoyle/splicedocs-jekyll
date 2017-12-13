@@ -1,5 +1,5 @@
 ---
-title: "Importing Data: Logging and Error Handling"
+title: "Importing Data 4:  Error Handling"
 summary: Describes how to use logging and how to handle errors during data ingestion.
 keywords: import, ingest, input parameters, compression, encoding, separator
 toc: false
