@@ -1,6 +1,5 @@
 ---
 title: SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE built-in system procedure
-
 summary: Built-in system procedure that removes as many compiled statements (plans) as possible from the database statement cache on the current region server.
 keywords:
 toc: false
@@ -64,7 +63,7 @@ database owner can grant access to other users.
 
 * [`SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE`](sqlref_sysprocs_emptyglobalcache.html)
 * [`SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS`](sqlref_sysprocs_invalidatestoredstmts.html)
+* [`SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS`](sqlref_sysprocs_updatemetastmts.html)
 
 </div>
 </section>
-

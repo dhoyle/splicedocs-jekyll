@@ -48,6 +48,14 @@ Supported hardware for the STANDALONE release:
 * Mac OS X (10.8 or greater)
 * Centos (6.4 or equivalent)
 
+## After Updating
+
+After updating to a new release of Splice Machine, you need to update your stored statement metadata by calling these two system procedures:
+
+<div class="preWrapperWide"><pre class="Example">
+CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS();</a>
+CALL <a href="sqlref_sysprocs_emptycache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE();</a>
+</pre></div>
 
 ## New Features
 These are the significant new features in this release, along with their Splice Machine open source JIRA identifiers:

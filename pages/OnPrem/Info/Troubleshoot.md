@@ -17,6 +17,7 @@ folder: OnPrem/Info
 This topic provides troubleshooting guidance for these issues that you may encounter with your Splice Machine database:
 
 * [Restarting Splice Machine after an HMaster Failure](*HMasterRestart)
+* [Updating Stored Query Plans after a Splice Machine Update](*SpliceUpdate)
 * [Increasing Parallelism for Spark Shuffles](#SparkShuffles)
 * [Force Compaction to Run Locally](#LocalCompaction)
 * [Kerberos Configuration Option](#KerberosConfig)
@@ -27,6 +28,18 @@ If you run Splice Machine without redundant HMasters, and you lose your HMaster,
 
 1. Restart the HMaster node
 2. Restart every HRegion Server node
+
+## Updating Stored Query Plans after a Splice Machine Update {#SpliceUpdate}
+
+When you install a new version of your Splice Machine software, you need to
+make these two calls:
+
+<div class="preWrapperWide"><pre class="Example">
+CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS();</a>
+CALL <a href="sqlref_sysprocs_emptycache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE();</a>
+</pre></div>
+
+These calls will update the stored metadata query plans and purge the statement cache, which is required because the query plan APIs have changed. This is true for both minor (patch) releases and major new releases.
 
 ## Increasing Parallelism for Spark Shuffles {#SparkShuffles}
 

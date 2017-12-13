@@ -402,6 +402,11 @@ statements and stored procedures:
                         <td>Invalidates all system prepared statements and forces the query optimizer to create new execution plans.</td>
                     </tr>
                     <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS</a>
+                        </td>
+                        <td>Updates the execution plan for stored procedures in your  database.</td>
+                    </tr>
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_updateallsysprocs.html">SYSCS_UTIL.SYSCS_UPDATE_ALL_SYSTEM_PROCEDURES</a>
                         </td>
                         <td>Updates the signatures of all of the system procedures in a database.</td>
