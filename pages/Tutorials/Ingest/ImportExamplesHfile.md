@@ -26,7 +26,7 @@ Machine database with the [`SYSCS_UTIL.BULK_IMPORT_HFILES`](sqlref_sysprocs_impo
 
 * [Examples of Using `SYSCS_UTIL.BULK_IMPORT_HFILE`](#Examples) walks through using this procedure both with automatic table splits and with two different methods of manually computing table splits.
 
-Our [Importing Your Data tutorial](tutorials_ingest_importing.html) topic
+Our [Importing Data 5: Usage Examples](tutorials_ingest_importexamples1.html) topic
 walks you through using our standard import procedures (`SYSCS_UTIL.IMPORT_DATA`, `SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE`, and `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE`), which are simpler to use, though their performance is slightly lower than importing HFiles.
 
 Bulk importing HFiles boosts import performance; however, constraint checking is not applied to the imported data. If you need constraint checking, use one of our standard import procedures.
@@ -37,7 +37,7 @@ Bulk importing HFiles boosts import performance; however, constraint checking is
 Our HFile data import procedure leverages HBase bulk loading, which
 allows it to import your data at a faster rate; however, using this
 procedure instead of our standard
-[`SYSCS_UTIL.IMPORT_DATA`](tutorials_ingest_importing.html) procedure
+[`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedure
 means that *constraint checks are not performing during data
 importation*.
 
@@ -74,9 +74,11 @@ with the `skipSampling` parameter set to `false`. Computing the splits requires 
 
 Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make these two changes in your Yarn configuration:
 
-* yarn.nodemanager.pmem-check-enabled=false
-* yarn.nodemanager.vmem-check-enabled=false
-{: .bulletCode}
+<div class="preWrapperWide" markdown="1">
+    yarn.nodemanager.pmem-check-enabled=false
+    yarn.nodemanager.vmem-check-enabled=false
+{: .Example}
+</div>
 
 ## Importing Data From the Cloud  {#CloudAccess}
 
@@ -99,22 +101,38 @@ In either case, after computing the splits, you call `SYSCS_UTIL.BULK_IMPORT_HFI
 
 Here's a quick summary of how you can compute your table splits:
 
-1.  Create a directory on HDFS; for example:
+<div class="opsStepsList" markdown="1">
+1.  Create a directory on HDFS for the import; for example:
+    {: .topLevel}
+
+    <div class="preWrapperWide" markdown="1">
+        sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
+    {: .ShellCommand}
+    </div>
 
 2.  Determine primary key values that can horizontally split the table
     into roughly equal sized partitions.
+    {: .topLevel}
 
-    Ideally, each partition should be about 1/2 the size of your `hbase.hregion.max.filesize` setting, which leaves room for the region to grow after your data is imported. The size of each partition __must be less than__ the value of `hbase.hregion.max.filesize`.
+    Ideally, each partition should be about 1/2 the size of your `hbase.hregion.max.filesize` setting, which leaves room for the region to grow after your data is imported.\\
+    \\
+    The size of each partition **must be less than** the value of `hbase.hregion.max.filesize`.
     {: .notePlain}
 
 3.  Store those keys in a CSV file.
+    {: .topLevel}
 
 4.  Compute the split keys and then split the table.
+    {: .topLevel}
 
 5.  Repeat steps 1, 2, and 3 to split the indexes on your table.
+    {: .topLevel}
 
 6.  Call the &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure
     to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are automatically deleted after being imported.
+    {: .topLevel}
+
+</div>
 
 You'll find detailed descriptions of these steps in these two examples:
 * [Example 2: Using `SPLIT_TABLE_OR_INDEX` to Compute Table Splits](#ManualSplitExample1)

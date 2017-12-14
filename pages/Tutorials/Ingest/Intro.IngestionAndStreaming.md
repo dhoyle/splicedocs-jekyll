@@ -15,7 +15,7 @@ folder: Tutorials/Ingest
 This section provides tutorials to help you to ingest (import) and
 stream data with Splice Machine:
 
-* [Importing Data](tutorials_ingest_importing.html) provides an overview
+* [Importing Data Tutorial](tutorials_ingest_importoverview.html) provides an overview
   of importing data into Splice Machine, including examples and handy
   tips.
 * The [Configuring a Kafka Feed](tutorials_ingest_kafkafeed.html) shows
@@ -36,4 +36,3 @@ stream data with Splice Machine:
 
 </div>
 </section>
-

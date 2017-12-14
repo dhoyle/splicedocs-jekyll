@@ -31,7 +31,7 @@ various aspects of using Splice Machine:
                         <td>
                             <p>This section includes topics that show you how to get data into your database:</p>
                             <ul class="bullet">
-                                <li><a href="tutorials_ingest_importing.html">Importing Data</a>
+                                <li><a href="tutorials_ingest_importoverview.html">Importing Data Tutorial</a>
                                 </li>
                                 <li><a href="tutorials_ingest_kafkaproducer.html">Streaming with Kafka and Splice Machine</a>
                                 </li>
@@ -92,4 +92,3 @@ various aspects of using Splice Machine:
             </table>
 </div>
 </section>
-

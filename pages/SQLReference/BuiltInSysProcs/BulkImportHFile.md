@@ -19,7 +19,7 @@ importing those HFiles.
 Our HFile data import procedure leverages HBase bulk loading, which
 allows it to import your data at a faster rate; however, using this
 procedure instead of our standard
-[`SYSCS_UTIL.IMPORT_DATA`](tutorials_ingest_importing.html) procedure
+[`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedure
 means that <span class="CalloutFont">constraint checks are not performed
 during data importation</span>.
 {: .noteImportant}

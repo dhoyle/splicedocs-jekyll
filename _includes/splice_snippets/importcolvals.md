@@ -239,7 +239,7 @@ in a database table:
 
 #### Generated Column Import Examples
 
-Our [Importing Data](tutorials_ingest_importing.html) tutorial includes
+Our [Importing Data Tutorial](tutorials_ingest_importoverview.html) includes
 an example that illustrates this difference. We recommend reviewing it
 before upserting or merging data into a table.
 </div>

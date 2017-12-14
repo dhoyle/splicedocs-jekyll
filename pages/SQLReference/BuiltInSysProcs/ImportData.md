@@ -128,7 +128,7 @@ Typical reasons for a row (record) import to fail include:
 
 {% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* 
+Values](developers_fundamentals_dates.html)*
 for information working with timestamps, dates, and times.
 
 ## Usage Notes
@@ -265,7 +265,7 @@ quotes, as follow
 
 ## See Also
 
-* [Our Importing Data Tutorial](tutorials_ingest_importing.html)
+* [Our Importing Data Tutorial](tutorials_ingest_importoverview.html)
 * [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 * [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 

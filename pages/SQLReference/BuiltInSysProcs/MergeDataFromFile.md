@@ -144,7 +144,7 @@ Typical reasons for a row (record) import to fail include:
 
 {% include splice_snippets/importtimestampformats.md %}
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* 
+Values](developers_fundamentals_dates.html)*
 for information working with timestamps, dates, and times.
 
 ## Examples   {#Examples}
@@ -236,7 +236,7 @@ quotes, as follow
 </div>
 ## See Also
 
-* [Our Importing Data Tutorial](tutorials_ingest_importing.html)
+* [Our Importing Data Tutorial](tutorials_ingest_importoverview.html)
 * [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
 * [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 

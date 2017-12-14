@@ -247,7 +247,7 @@ quotes, as follow
 </div>
 ## See Also
 
-* [Our Importing Data Tutorial](tutorials_ingest_importing.html)
+* [Our Importing Data Tutorial](tutorials_ingest_importoverview.html)
 * [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
 * [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_importdata.html)
 

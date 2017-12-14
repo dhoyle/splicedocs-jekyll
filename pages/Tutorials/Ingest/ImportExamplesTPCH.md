@@ -206,7 +206,7 @@ Machine database:
 
 You can follow similar steps to import your own data. Setting up your
 import requires some precision; we encourage you to look through our
-[Importing Your Data](tutorials_ingest_importing.html) tutorial for
+[Importing Your Data Tutorial](tutorials_ingest_importoverview.html) for
 guidance and tips to make that process go smoothly.
 
 ## The TPCH Queries   {#Addition}
