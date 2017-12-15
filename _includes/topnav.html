@@ -46,6 +46,9 @@
                       </li>
                    {% endfor %}
                 {% endfor %}
+
+                <!-- If building the docsdev version, do not include Swiftype search box -->
+                {% if ( {{site.isbuild_doc}} or {{site.isbuild_docstest}} ) %}
                 <li>
 <!-- Start Swiftype search -->
                     <div id="swiftype-search-container">
@@ -55,6 +58,7 @@
                         </form>
                     </div>
                 </li>
+                {% endif %}
             </ul>
         </div>
         </div>

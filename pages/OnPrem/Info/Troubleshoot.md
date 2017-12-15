@@ -57,7 +57,7 @@ Splice Machine attempts to run database compaction jobs on an executor that is c
 
 To do so:
 * Set the value of `splice.spark.dynamicAllocation.minExecutors` to the number of Region Servers in your cluster
-* Set the value of `splice.spark.dynamicAllocation.maxExecutors` to twice that number. Adjust these setting in the `Java Config Options` section of your HBase Master configuration.
+* Set the value of `splice.spark.dynamicAllocation.maxExecutors` to equal to or greater than that number. Adjust these setting in the `Java Config Options` section of your HBase Master configuration.
 
 The default option settings are:
 
@@ -68,7 +68,7 @@ The default option settings are:
 For a cluster with 20 Region Servers, you would set these to:
 
     -Dsplice.spark.dynamicAllocation.minExecutors=20
-    -Dsplice.spark.dynamicAllocation.maxExecutors=40
+    -Dsplice.spark.dynamicAllocation.maxExecutors=20
 {: .ShellCommand}
 
 ## Kerberos Configuration Option  {#KerberosConfig}
