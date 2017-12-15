@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -208,6 +208,9 @@
                       </li>
                    
                 
+
+                <!-- If building the docsdev version, do not include Swiftype search box -->
+                
                 <li>
 <!-- Start Swiftype search -->
                     <div id="swiftype-search-container">
@@ -217,6 +220,7 @@
                         </form>
                     </div>
                 </li>
+                
             </ul>
         </div>
         </div>
@@ -234,7 +238,7 @@
                 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Splice Machine Dev v2.7.0</li>
+    <li class="sidebarTitle">Splice Machine Internal v2.7.0</li>
     
     
     
@@ -876,6 +880,10 @@ UID             = splice
 PWD             = admin
 URL             = 0.0.0.0
 PORT            = 1527
+SSL             = peerAuthentication
+SSL_CERT        = /home/splice/client.pem
+SSL_PKEY        = /home/splice/client.key
+SSL_TRUST       = TRUE
 </code></pre>
 
               </div>
