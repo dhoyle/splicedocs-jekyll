@@ -1,5 +1,5 @@
 ---
-title: "Importing Data 5: Usage Examples"
+title: "Importing Data: Usage Examples"
 summary: Walk-throughs of using the built-in import, upsert, and merge procedures.
 keywords: import, upsert, merge
 toc: false
@@ -29,7 +29,7 @@ Machine using our *standard* import procedures (`IMPORT_DATA`, `UPSERT_DATA_FROM
 
 ## Import, Upsert, or Merge?
 
-The [Importing Data 1: Import Overview](tutorials_ingest_importoverview.html) topic provides the information you need to decide which of our import procedures best meets your needs, including an easy-to-use decision tree.
+The [Importing Data: Import Overview](tutorials_ingest_importoverview.html) topic provides the information you need to decide which of our import procedures best meets your needs, including an easy-to-use decision tree.
 
 To summarize, our three *standard* import procedures operate very similarly, with a few key differences:
 
@@ -39,7 +39,7 @@ To summarize, our three *standard* import procedures operate very similarly, wit
 
 A fourth option works differently:
 
-* `BULK_IMPORT_HFILE` creates temporary HFiles and imports from them, which improves import speed, but eliminates constraint checking and adds complexity. Examples of bulk HFile imports are found in the [Importing Data 6: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html) tutorial topic.
+* `BULK_IMPORT_HFILE` creates temporary HFiles and imports from them, which improves import speed, but eliminates constraint checking and adds complexity. Examples of bulk HFile imports are found in the [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html) tutorial topic.
 
 ## Example 1: Importing data into a table with fewer columns than in the file   {#Example1}
 

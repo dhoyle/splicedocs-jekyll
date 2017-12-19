@@ -1,5 +1,5 @@
 ---
-title: "Importing Data 7: Importing TPCH Data"
+title: "Importing Data: Importing TPCH Data"
 summary: Walks you through importing TPCH data into your database.
 keywords: import TPCH data
 toc: false

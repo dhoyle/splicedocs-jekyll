@@ -303,12 +303,25 @@ sets up the splits in your database. You then call the
 [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) system
 procedure to split your table into HFiles and import your data.
 
-{% include splice_snippets/importtimestampformats.md %}
-Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)*
-for information working with timestamps, dates, and times.
+## About Timestamp Formats   {#TimestampFormats}
 
-{% include splice_snippets/hfileimport_example.md %}
+The `timestampFormat` parameter specifies the format of timestamps in your input data. You can set this to `null` if either of these conditions is true:
+
+* there are no time columns in the file
+* all time stamps in the input match the `Java.sql.Timestamp` default format,
+which is: \"*yyyy-MM-dd HH:mm:ss*\".
+
+All of the timestamps in the file you are importing must use the same
+format.
+{: .noteIcon}
+
+The [Importing Data Tutorial: Input Parameters](tutorials_ingest_importparams.html) topic provides detailed information about timestamp formats and handling.
+
+[Working With Date and Time Values](developers_fundamentals_dates.html) in our Developer's Guide discusses working with date, time, and timestamp values in Splice Machine.
+
+
+The [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html) topic walks you through several examples of importing data with bulk HFiles.
+
 ## See Also
 
 * [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)

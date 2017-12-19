@@ -1,5 +1,5 @@
 ---
-title: "Importing Data 6: Bulk HFile Examples"
+title: "Importing Data: Bulk HFile Examples"
 summary: Walk-throughs of using the built-in bulk HFile import procedure.
 keywords: import, ingest, bulk hfile
 toc: false
@@ -26,7 +26,7 @@ Machine database with the [`SYSCS_UTIL.BULK_IMPORT_HFILES`](sqlref_sysprocs_impo
 
 * [Examples of Using `SYSCS_UTIL.BULK_IMPORT_HFILE`](#Examples) walks through using this procedure both with automatic table splits and with two different methods of manually computing table splits.
 
-Our [Importing Data 5: Usage Examples](tutorials_ingest_importexamples1.html) topic
+Our [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html) topic
 walks you through using our standard import procedures (`SYSCS_UTIL.IMPORT_DATA`, `SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE`, and `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE`), which are simpler to use, though their performance is slightly lower than importing HFiles.
 
 Bulk importing HFiles boosts import performance; however, constraint checking is not applied to the imported data. If you need constraint checking, use one of our standard import procedures.

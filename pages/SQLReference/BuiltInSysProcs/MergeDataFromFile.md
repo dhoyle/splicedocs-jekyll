@@ -74,7 +74,13 @@ for example:
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
-{% include splice_snippets/importparamlist.md %}
+
+## Parameters
+
+The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FROM_FILE` and other Splice Machine data importation procedures. Each parameter name links to a more detailed description in our [Importing Data Tutorial](tutorials_ingest_importparams.html).
+
+{% include splice_snippets/importparamstable.md %}
+
 ## Results
 
 `SYSCS_UTIL.MERGE_DATA_FROM_FILE` displays a summary of the import
@@ -82,7 +88,8 @@ process results that looks like this:
 
 <div class="preWrapperWide" markdown="1">
 
-    rowsImported   |failedRows   |files   |dataSize   |failedLog-------------------------------------------------------------
+    rowsImported   |failedRows   |files   |dataSize   |failedLog
+    -------------------------------------------------------------
     94             |0            |1       |4720       |NONE
 {: .Example xml:space="preserve"}
 
@@ -97,22 +104,6 @@ a full compaction on table; see the
 system procedure.
 {: .noteNote}
 
-### Importing a Subset of Data From a File
-
-When you import data from a file into a table, all of the data in the
-file is not necessarily imported. This can happen in either of these
-circumstances:
-
-* If the table into which you're importing contains less columns than
-  does the data file, the "extra" columns of data are ignored.
-* If the `insertColumnList` in your import call specifies only a subset
-  of the columns in the data file.
-
-Please see the [Inserting and Updating Column Values When Importing
-Data](#ImportColVals)section below for detailed information about how
-table column values are updated when importing data with our different
-procedures.
-
 ## Usage
 
 This procedure will only work correctly if the table into which you are
@@ -122,6 +113,17 @@ When you generate the input file, it must:
 
 * contain the columns to be changed
 * contain all `NON_NULL` columns
+
+## Importing and Updating Records
+
+What distinguishes `SYSCS_UTIL.IMPORT_DATA` from the similar [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) and [`SYSCS_UTIL.SYSCS_MERGED_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html) procedures is how each works with these specific conditions:
+
+* You are importing only a subset of data from the input data into your table, either because the table contains less columns than does the input file, or because you've specified a subset of the columns in your `insertColumnList` parameter.
+* Inserting and updating data in a column with generated values.
+* Inserting and updating data in a column with default values.
+* Handling of missing values.
+
+The [Importing Data Tutorial: Input Handling](tutorials_ingest_importinput.html) topic describes how each of these conditions is handled by the different system procedures.
 
 ## Record Import Failure Reasons
 
@@ -139,18 +141,26 @@ Typical reasons for a row (record) import to fail include:
   only work correctly if the table into which you are inserting/updating
   has primary keys.
 
-{% include splice_snippets/importcolvals.md %}
 ## About Timestamp Formats   {#TimestampFormats}
 
-{% include splice_snippets/importtimestampformats.md %}
-Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)*
-for information working with timestamps, dates, and times.
+The `timestampFormat` parameter specifies the format of timestamps in your input data. You can set this to `null` if either of these conditions is true:
+
+* there are no time columns in the file
+* all time stamps in the input match the `Java.sql.Timestamp` default format,
+which is: \"*yyyy-MM-dd HH:mm:ss*\".
+
+All of the timestamps in the file you are importing must use the same
+format.
+{: .noteIcon}
+
+The [Importing Data Tutorial: Input Parameters](tutorials_ingest_importparams.html) topic provides detailed information about timestamp formats and handling.
+
+[Working With Date and Time Values](developers_fundamentals_dates.html) in our Developer's Guide discusses working with date, time, and timestamp values in Splice Machine.
 
 ## Examples   {#Examples}
 
 The examples in this section illustrate using different timestamp
-formats and different string delimiter characters.
+formats and different string delimiter characters with `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE.`
 
 ### Example 1: Specifying a timestamp format for an entire table
 

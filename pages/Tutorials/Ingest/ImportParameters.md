@@ -1,5 +1,5 @@
 ---
-title: "Importing Data 2: Parameter Usage"
+title: "Importing Data: Parameter Usage"
 summary: Detailed specifications of the parameter values used in Splice Machine data ingestion.
 keywords: import, ingest, input parameters, compression, encoding, separator
 toc: false
@@ -19,10 +19,10 @@ This topic first shows you the syntax of each of the four import procedures, and
 Three of our four data import procedures use identical parameters:
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.IMPORT_DATA
-    SYSCS_UTIL.UPSERT_DATA_FROM_FILE
-    SYSCS_UTIL.MERGE_DATA_FROM_FILE
-      ( schemaName,
+    SYSCS_UTIL.IMPORT_DATA (
+    SYSCS_UTIL.UPSERT_DATA_FROM_FILE (
+    SYSCS_UTIL.MERGE_DATA_FROM_FILE (
+        schemaName,
         tableName,
         insertColumnList | null,
         fileOrDirectoryName,
@@ -70,120 +70,7 @@ All of the Splice Machine data import procedures share a number of parameters th
 
 The following table summarizes these parameters. Each parameter name links to its reference description, found below the table:
 
-<table>
-    <col />
-    <col />
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Parameter</th>
-            <th>Description</th>
-            <th>Example Value</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan="2" class="BoldFont">Table Info</td>
-            <td class="CodeFont"><a href="#schemaName">schemaName</a></td>
-            <td>The name of the schema of the table in which to import.</td>
-            <td class="CodeFont">SPLICE</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#tableName">tableName</a></td>
-            <td>The name of the table in which to import</td>
-            <td class="CodeFont">playerTeams</td>
-        </tr>
-        <tr>
-            <td rowspan="2" class="BoldFont">Data Location</td>
-            <td class="CodeFont"><a href="#insertColumnList">insertColumnList</a></td>
-            <td>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</td>
-            <td class="CodeFont">'ID, TEAM'</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#fileOrDirectoryName">fileOrDirectoryName</a></td>
-            <td>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.
-            </td>
-            <td class="CodeFont">
-                <p>/data/mydata/mytable.csv</p>
-                <p>'s3a://splice-benchmark-data/flat/TPCH/100/region'</p>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="7" class="BoldFont">Data Formats</td>
-            <td class="CodeFont"><a href="#oneLineRecords">oneLineRecords</a></td>
-            <td>A Boolean value that specifies whether (<code>true</code>) each record in the import file is contained in one input line, or (<code>false</code>) if a record can span multiple lines.
-            </td>
-            <td class="CodeFont">true</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#charset">charset</a></td>
-            <td>The character encoding of the import file. The default value is UTF-8.
-            </td>
-            <td class="CodeFont">null</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#columnDelimiter">columnDelimiter</a></td>
-            <td>The character used to separate columns, Specify <code>null</code> if using the comma (<code>,</code>) character as your delimiter. </td>
-            <td class="CodeFont">'|'</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#characterDelimiter">characterDelimiter</a></td>
-            <td>The character is used to delimit strings in the imported data.
-            </td>
-            <td class="CodeFont">''</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#timestampFormat">timestampFormat</a></td>
-            <td>The format of timestamps stored in the file. You can set this to <code>null</code> if there are no time columns in the file, or if the format of any timestamps in the file match the <code>Java.sql.Timestamp</code> default format, which is: "<em>yyyy-MM-dd HH:mm:ss</em>".
-            </td>
-            <td class="CodeFont">
-                <p>'yyyy-MM-dd HH:mm:ss.SSZ'</p>
-            </td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#dateFormat">dateFormat</a></td>
-            <td>The format of datestamps stored in the file. You can set this to <code>null</code> if there are no date columns in the file, or if the format of any dates in the file match pattern: "<em>yyyy-MM-dd</em>".</td>
-            <td class="CodeFont">yyyy-MM-dd</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#timeFormat">timeFormat</a></td>
-            <td>The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "<em>HH:mm:ss</em>".
-            </td>
-            <td class="CodeFont">HH:mm:ss</td>
-        </tr>
-        <tr>
-            <td rowspan="2" class="BoldFont">Problem Logging</td>
-            <td class="CodeFont"><a href="#badRecordsAllowed">badRecordsAllowed</a></td>
-            <td>The number of rejected (bad) records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back. Specify 0 to indicate that no bad records are tolerated, and specify -1 to indicate that all bad records should be logged and allowed.
-            </td>
-            <td class="CodeFont">25</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#badRecordDirectory">badRecordDirectory</a></td>
-            <td>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.
-            </td>
-            <td class="CodeFont">'importErrsDir'</td>
-        </tr>
-        <tr>
-            <td rowspan="2" class="BoldFont">Bulk HFile Import</td>
-            <td class="CodeFont"><a href="#bulkImportDirectory">bulkImportDirectory</a></td>
-            <td><p>The name of the  directory into which the generated HFiles are written prior to being
-            imported into your database.</p>
-            <p>This parameter is only used with the `SYSCS_UTIL.BULK_IMPORT_FILE` system procedure.</p>
-            </td>
-            <td class="CodeFont">'hdfs:///tmp/test_hfile_import/'</td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="#skipSampling">skipSampling</a></td>
-            <td><p>The `skipSampling` parameter is a Boolean value that specifies how you want the split keys used for the bulk HFile import to be computed. Set to `false` to have `SYSCS_UTIL.BULK_IMPORT_FILE` automatically determine splits for you.</p>
-            <p>This parameter is only used with the `SYSCS_UTIL.BULK_IMPORT_FILE` system procedure.</p>
-            </td>
-            <td class="CodeFont">false</td>
-        </tr>
-    </tbody>
-</table>
+{% include splice_snippets/importparamstable.md %}
 
 ## Import Parameters Reference
 
@@ -193,15 +80,13 @@ This section provides reference documentation for all of the data importation pa
 
 The `schemaName` is a string that specifies the name of the schema of the table into which you are importing data.
 
-Example: `SPLICE`
-{: .Example}
+**Example:** <span class="Example">`SPLICE`</span>
 
 ### `tableName` {#tableName}
 
 The `tableName` is a string that specifies the name of the table into which you are importing data.
 
-Example: `playerTeams`
-{: .Example}
+**Example:** <span class="Example">`playerTeams`</span>
 
 ### `insertColumnList` {#insertColumnList}
 
@@ -224,8 +109,10 @@ the data in table\'s `b` column will be replaced with the default value
 for that column.
 {: indentLevel1}
 
-Example: `ID, TEAM`
-{: .Example}
+**Example:** <span class="Example">`ID, TEAM`</span>
+
+See [*Importing and Updating Records*](tutorials_ingest_importinput.html#Updating) for additional information about handling of missing, generated, and default values during data importation.
+{: .notePlain}
 
 ### `fileOrDirectoryName` {#fileOrDirectoryName}
 
@@ -238,17 +125,18 @@ this is a directory, all of the files in that directory are imported.
 
 * For the `SYSCS_UTIL.MERGE_DATA_FROM_FILE` and `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure, this can only be a single file (directories are not allowed).
 
-Example: `data/mydata/mytable.csv`
-{: .Example}
+**Example:** <span class="Example">`data/mydata/mytable.csv`</span>
 
 #### Importing from S3
 
 If you are importing data that is stored in an S3 bucket on AWS, you
 need to specify the data location in an `s3a` URL that includes access
-key information. Our [Configuring an S3 Bucket for Splice Machine Access](tutorials_ingest_configures3.html) walks you through using your AWS dashboard to generate and apply the necessary credentials.
+key information.
 
-Example: `s3a://splice-benchmark-data/flat/TPCH/100/region`
-{: .Example}
+**Example:** <span class="Example">`s3a://splice-benchmark-data/flat/TPCH/100/region`</span>
+
+See [*Specifying Your Input Data Location*](tutorials_ingest_importinput.html#Location) for additional information about specifying your input data location.
+{: .notePlain}
 
 #### Importing Compressed Files
 
@@ -282,8 +170,7 @@ split and processed in parallel; if you import a directory of multiple
 line files, each file as a whole is processed in parallel, but no
 splitting takes place.
 
-Example: `true`
-{: .Example}
+**Example:** <span class="Example">`true`</span>
 
 ### `charset` {#charset}
 
@@ -292,8 +179,7 @@ The `charset` parameter is a string that specifies the character encoding of the
 Currently, any value other than `UTF-8` is ignored, and `UTF-8` is used.
 {: .noteNote}
 
-Example: `null`
-{: .Example}
+**Example:** <span class="Example">`null`</span>
 
 ### `columnDelimiter` {#columnDelimiter}
 
@@ -338,8 +224,10 @@ special characters as delimiters:
     </tbody>
 </table>
 
-Example: `'|'`
-{: .Example}
+**Example:** <span class="Example">`'|'`</span>
+
+See [*Column Delimiters*](tutorials_ingest_importinput.html#DelimColumn) for additional information about column delimiters.
+{: .notePlain}
 
 ### `characterDelimiter` {#characterDelimiter}
 
@@ -394,8 +282,10 @@ need to escape that character. This means that you specify four quotes
 (`''''`) as the value of this parameter. This is standard SQL syntax.
 </div>
 
-Example: `''`
-{: .Example}
+**Example:** <span class="Example">`''`</span>
+
+See [*Character Delimeters*](tutorials_ingest_importinput.html#DelimChar) for additional information about character delimiters.
+{: .notePlain}
 
 ### `timestampFormat` {#timestampFormat}
 
@@ -409,8 +299,152 @@ All of the timestamps in the file you are importing must use the same
 format.
 {: .noteIcon}
 
-Example: `'yyyy-MM-dd HH:mm:ss.SSZ'`
-{: .Example}
+Splice Machine uses the following Java date and time pattern letters to
+construct timestamps:
+
+<table summary="Timestamp format pattern letter descriptions">
+    <col />
+    <col />
+    <col style="width: 330px;" />
+    <thead>
+        <tr>
+            <th>Pattern Letter</th>
+            <th>Description</th>
+            <th>Format(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>y</code></td>
+            <td>year</td>
+            <td><code>yy or yyyy</code></td>
+        </tr>
+        <tr>
+            <td><code>M</code></td>
+            <td>month</td>
+            <td><code>MM</code></td>
+        </tr>
+        <tr>
+            <td><code>d</code></td>
+            <td>day in month</td>
+            <td><code>dd</code></td>
+        </tr>
+        <tr>
+            <td><code>h</code></td>
+            <td>hour (0-12)</td>
+            <td><code>hh</code></td>
+        </tr>
+        <tr>
+            <td><code>H</code></td>
+            <td>hour (0-23)</td>
+            <td><code>HH</code></td>
+        </tr>
+        <tr>
+            <td><code>m</code></td>
+            <td>minute in hour</td>
+            <td><code>mm</code></td>
+        </tr>
+        <tr>
+            <td><code>s</code></td>
+            <td>seconds</td>
+            <td><code>ss</code></td>
+        </tr>
+        <tr>
+            <td><code>S</code></td>
+            <td>tenths of seconds</td>
+            <td class="CodeFont">
+                <p>S, SS, SSS, SSSS, SSSSS or SSSSSS<span class="important">*</span></p>
+                <p><span class="important">*</span><span class="bodyFont">Specify </span>SSSSSS <span class="bodyFont">to allow a variable number (any number) of digits after the decimal point.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>z</code></td>
+            <td>time zone text</td>
+            <td><code>e.g. Pacific Standard time</code></td>
+        </tr>
+        <tr>
+            <td><code>Z</code></td>
+            <td>time zone, time offset</td>
+            <td><code>e.g. -0800</code></td>
+        </tr>
+    </tbody>
+</table>
+The default timestamp format for Splice Machine imports is: `yyyy-MM-dd
+HH:mm:ss`, which uses a 24-hour clock, does not allow for decimal digits
+of seconds, and does not allow for time zone specification.
+
+The standard Java library does not support microsecond precision, so you
+**cannot** specify millisecond (`S`) values in a custom timestamp format
+and import such values with the desired precision.
+{: .noteNote}
+
+#### Timestamps and Importing Data at Different Locations
+
+Note that timestamp values are relative to the geographic location at
+which they are imported, or more specifically, relative to the timezone
+setting and daylight saving time status where the data is imported.
+
+This means that timestamp values from the same data file may appear
+differently after being imported in different timezones.
+
+#### Examples
+
+The following tables shows valid examples of timestamps and their
+corresponding format (parsing) patterns:
+
+<table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Timestamp value</th>
+            <th>Format Pattern</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>2013-03-23 09:45:00</code></td>
+            <td><code>yyyy-MM-dd HH:mm:ss</code></td>
+            <td>This is the default pattern.</td>
+        </tr>
+        <tr>
+            <td><code>2013-03-23 19:45:00.98-05</code></td>
+            <td><code>yyyy-MM-dd HH:mm:ss.SSZ</code></td>
+            <td>This pattern allows up to 2 decimal digits of seconds, and requires a time zone specification.</td>
+        </tr>
+        <tr>
+            <td><code>2013-03-23 09:45:00-07</code></td>
+            <td><code>yyyy-MM-dd HH:mm:ssZ</code></td>
+            <td>This patterns requires a time zone specification, but does not allow for decimal digits of seconds.</td>
+        </tr>
+        <tr>
+            <td><code>2013-03-23 19:45:00.98-0530</code></td>
+            <td><code>yyyy-MM-dd HH:mm:ss.SSZ</code></td>
+            <td>This pattern allows up to 2 decimal digits of seconds, and requires a time zone specification.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">
+                <p>2013-03-23 19:45:00.123</p>
+                <p>2013-03-23 19:45:00.12</p>
+            </td>
+            <td><code>yyyy-MM-dd HH:mm:ss.SSS</code></td>
+            <td>
+                <p>This pattern allows up to 3 decimal digits of seconds, but does not allow a time zone specification.</p>
+                <p>Note that if your data specifies more than 3 decimal digits of seconds, an error occurs.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>2013-03-23 19:45:00.1298</code></td>
+            <td><code>yyyy-MM-dd HH:mm:ss.SSSS</code></td>
+            <td>This pattern allows up to 4 decimal digits of seconds, but does not allow a time zone specification.</td>
+        </tr>
+    </tbody>
+</table>
+
+See [*Time and Date Formats in Input Records*](tutorials_ingest_importinput.html#DateFormats) for additional information about date, time, and timestamp values.
+{: .notePlain}
 
 ### `dateFormat` {#dateFormat}
 
@@ -419,8 +453,10 @@ The `dateFormat` parameter specifies the format of datestamps stored in the file
 * there are no date columns in the file
 * the format of any dates in the input match this pattern: \"*yyyy-MM-dd*\".
 
-Example: `yyyy-MM-dd`
-{: .Example}
+**Example:** <span class="Example">`yyyy-MM-dd`</span>
+
+See [*Time and Date Formats in Input Records*](tutorials_ingest_importinput.html#DateFormats) for additional information about date, time, and timestamp values.
+{: .notePlain}
 
 ### `timeFormat` {#timeFormat}
 
@@ -429,8 +465,10 @@ The `timeFormat` parameter specifies the format of time values in your input dat
 * there are no time columns in the file
 * the format of any times in the input match this pattern: \"*HH:mm:ss*\".
 
-Example: `HH:mm:ss`
-{: .Example}
+**Example:** <span class="Example">`HH:mm:ss`</span>
+
+See [*Time and Date Formats in Input Records*](tutorials_ingest_importinput.html#DateFormats) for additional information about date, time, and timestamp values.
+{: .notePlain}
 
 ### `badRecordsAllowed` {#badRecordsAllowed}
 
@@ -443,8 +481,7 @@ These values have special meaning:
 * If you specify `0` as the value of this parameter, the import will
   fail if even one record is bad.
 
-Example: `25`
-{: .Example}
+**Example:** <span class="Example">`25`</span>
 
 ### `badRecordDirectory` {#badRecordDirectory}
 
@@ -453,8 +490,7 @@ The `badRecordDirectory` parameter is a string that specifies the directory in w
 Splice Machine logs information to the `<import_file_name>.bad` file in this directory; for example, bad records in an input file named `foo.csv` would be
 logged to a file named *badRecordDirectory*`/foo.csv.bad`.
 
-Example: `'importErrsDir'`
-{: .Example}
+**Example:** <span class="Example">`'importErrsDir'`</span>
 
 ### `bulkImportDirectory` {#bulkImportDirectory}
 
@@ -464,8 +500,7 @@ This parameter is only used with the `SYSCS_UTIL.BULK_IMPORT_HFILE` system proce
 The `bulkImportDirectory` parameter is a string that specifies the name of the  directory into which the generated HFiles are written prior to being
 imported into your database. The generated files are automatically removed after they've been imported.
 
-Example: `'hdfs:///tmp/test_hfile_import/'`
-{: .Example}
+**Example:** <span class="Example">`'hdfs:///tmp/test_hfile_import/'`</span>
 
 Please review the [Bulk HFile Import Walkthrough](tutorials_ingest_importexampleshfile.html) topic to understand how importing bulk HFiles works.
 
@@ -486,7 +521,6 @@ samples your input data and computes the table splits for you, in the following 
     3. Uses that histogram to calculate the split key for the table
     4. Uses the calculated split key to split the table into HFiles
 
-Example: `false`
-{: .Example}
+**Example:** <span class="Example">`false`</span>
 
 Please review the [Bulk HFile Import Walkthrough](tutorials_ingest_importexampleshfile.html) topic to understand how importing bulk HFiles works.

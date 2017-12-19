@@ -1,5 +1,5 @@
 ---
-title: "Importing Data 1: Tutorial Overview"
+title: "Importing Data: Tutorial Overview"
 summary: An overview of the procedures and options for importing data into your Splice Machine database.
 keywords: import, load data, import data, importing from, ingest
 toc: false
@@ -106,6 +106,12 @@ The following diagram helps you decide which of our data importation procedures 
 
 <img src="images/WhichImportProc.png">
 {: .nestedTightSpacing}
+
+### Notes
+
+* The `IMPORT_DATA` procedure imports new records into a database. The `UPSERT_DATA_FROM_FILE` and `MERGE_DATA_FROM_FILE` procedures import new records and update existing records. Importing all new records is faster because the database doesn't need to check if the record already exists in the database.
+* If your table contains auto-generated column values and you don't want those values overwritten when a record gets updated, use the `MERGE_DATA_FROM_FILE` procedure (`UPSERT_DATA_FROM_FILE` will overwrite).
+* The `BULK_IMPORT_HFILES` procedure is great when you're importing a very large dataset and need extra performance. However, it does not perform constraint checking.
 
 ## Import Procedures Syntax {#Syntax}
 

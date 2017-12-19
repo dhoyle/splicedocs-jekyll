@@ -75,7 +75,9 @@ This is the list of split points computed by a previous call to the
 `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` does not produce
 results.
 
-{% include splice_snippets/hfileimport_example.md %}
+
+The [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html) topic walks you through several examples of importing data with bulk HFiles.
+
 ## See Also
 
 * [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
