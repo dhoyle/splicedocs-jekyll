@@ -26,7 +26,7 @@ Machine developers:
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="tutorials_ingest_importing.html">Importing Data</a>
+                        <td><a href="tutorials_ingest_importoverview.html">Importing Data Tutorial</a>
                         </td>
                         <td>How to import data into your Splice Machine database, using built-in procedures </td>
                     </tr>

@@ -1941,15 +1941,15 @@ released prior to July 15, 2017.
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#Developers/IngestionAndStreaming/ImportingData.html</td>
-                       <td><a href="https://doc.splicemachine.com/tutorials_ingest_importing.html">doc.splicemachine.com/tutorials_ingest_importing.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/tutorials_ingest_importoverview.html">doc.splicemachine.com/tutorials_ingest_importoverview.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#Developers/IngestionAndStreaming/ImportingHFiles.html</td>
-                       <td><a href="https://doc.splicemachine.com/tutorials_ingest_hfiles.html">doc.splicemachine.com/tutorials_ingest_hfiles.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/tutorials_ingest_importexampleshfile.html">doc.splicemachine.com/tutorials_ingest_importhfiles.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#Developers/IngestionAndStreaming/ImportTPCH1.html</td>
-                       <td><a href="https://doc.splicemachine.com/tutorials_ingest_tpch1.html">doc.splicemachine.com/tutorials_ingest_tpch1.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/tutorials_ingest_importexamplestpch.html">doc.splicemachine.com/tutorials_ingest_examplestpch.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#Developers/IngestionAndStreaming/Intro.IngestionAndStreaming.html</td>

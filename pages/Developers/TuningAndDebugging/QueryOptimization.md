@@ -365,7 +365,7 @@ Spark. For example:
 You can use the `bulkDeleteDirectory` hint to specify that you want to
 use our bulk delete feature to optimize the deletion of a large amount
 of data. Similar to our [bulk import
-feature](tutorials_ingest_hfiles.html), bulk delete generates HFiles,
+feature](sqlref_sysprocs_bulkimporthfile.html), bulk delete generates HFiles,
 which allows us to bypass the Splice Machine write pipeline and HBase
 write path when performing the deletion. This can significantly speed up
 the deletion process.

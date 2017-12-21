@@ -12,62 +12,53 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.IMPORT_DATA
 
-The `SYSCS_UTIL.IMPORT_DATA` system procedure imports data to a subset
-of columns in a table. You choose the subset of columns by specifying
-insert columns.
-
-Splice Machine also provides two built-in system procedures that will
-import new records *and* update existing records in a table:
-`SYSCS_UTIL.UPSERT_DATA_FROM_FILE` and
-`SYSCS_UTIL.MERGE_DATA_FROM_FILE`; these operate similarly, but apply
-different semantics when updating existing records. For more
-information, see the [Inserting and Updating Column Values When
-Importing](#ImportColVals) section below..
-{: .noteIcon}
+The `SYSCS_UTIL.IMPORT_DATA` system procedure imports data to a new record in a table. You can choose to import all or a subset of the columns from the input data into your database using the `insertColumnList` parameter.
 
 After a successful import completes, a simple report displays, showing
 how many files were imported, and how many record imports succeeded or
 failed.
 
-<div class="noteNote" markdown="1">
-On a cluster, the files to be imported **MUST be on S3, HDFS (or
-MapR-FS)**, as must the `badRecordDirectory` directory. If you're using
-our Database Service product, files can only be imported from S3.
+## Selecting an Import Procedure
 
-In addition, the files must be readable by the `hbase` user, and the
-`badRecordDirectory` directory must be writable by the hbase user,
-either by setting the user explicity, or by opening up the permissions;
-for example:
+Splice Machine provides four system procedures for importing data:
 
-<div class="preWrapper" markdown="1">
-    sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory
-{: .ShellCommand}
+* This procedure, `SYSCS_UTIL.IMPORT_DATA`, imports each input record into a new record in your database.
+* The [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) procedure updates existing records and adds new records to your database. It only differs from `SYSCS_UTIL.MERGE_DATA_FROM_FILE` in that upserting
+ **overwrites** the generated or default value of a column that *is not specified* in your `insertColumnList` parameter when updating a record.
+* The [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html) procedure updates existing records and adds new records to your database. It only differs from `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` in that merging **does not
+overwrite** the generated or default value of a column that *is not specified* in your `insertColumnList` parameter when updating a record.
+* The [`SYSCS_BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure takes advantage of HBase bulk loading to import table data into your database by temporarily converting the table file that you’re importing into HFiles, importing those directly into your database, and then removing the temporary HFiles. This procedure has improved performance for large tables; however, the bulk HFile import requires extra work on your part and lacks constraint checking.
 
-</div>
-</div>
+Our [Importing Data Tutorial](tutorials_ingest_importoverview.html) includes a decision tree and brief discussion to help you determine which procedure best meets your needs.
+
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
     call SYSCS_UTIL.IMPORT_DATA (
-    		schemaName,
-    		tableName,
-    		insertColumnList | null,
-    		fileOrDirectoryName,
-    		columnDelimiter | null,
-    		characterDelimiter | null,
-    		timestampFormat | null,
-    		dateFormat | null,
-    		timeFormat | null,
-    		badRecordsAllowed,
-    		badRecordDirectory | null,
-    		oneLineRecords | null,
-    		charset | null
-    		);
+            schemaName,
+            tableName,
+            insertColumnList | null,
+            fileOrDirectoryName,
+            columnDelimiter | null,
+            characterDelimiter | null,
+            timestampFormat | null,
+            dateFormat | null,
+            timeFormat | null,
+            badRecordsAllowed,
+            badRecordDirectory | null,
+            oneLineRecords | null,
+            charset | null
+            );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
 
-{% include splice_snippets/importparamlist.md %}
+## Parameters
+
+The following table summarizes the parameters used by `SYSCS_UTIL.IMPORT_DATA` and other Splice Machine data importation procedures. Each parameter name links to a more detailed description in our [Importing Data Tutorial](tutorials_ingest_importparams.html).
+
+{% include splice_snippets/importparamstable.md %}
+
 ## Results
 
 `SYSCS_UTIL.IMPORT_DATA` displays a summary of the import process
@@ -75,7 +66,8 @@ results that looks like this:
 
 <div class="preWrapperWide" markdown="1">
 
-    rowsImported   |failedRows   |files   |dataSize   |failedLog-------------------------------------------------------------
+    rowsImported   |failedRows   |files   |dataSize   |failedLog
+    -------------------------------------------------------------
     94             |0            |1       |4720       |NONE
 {: .Example xml:space="preserve"}
 
@@ -84,35 +76,20 @@ This procedure also logs rejected record activity into `.bad` files in
 the `badRecordDirectory` directory; one file for each imported file.
 {: .spaceAbove}
 
-After importing a large amount of data into a table, it is useful to run
-a full compaction on table; see the
-[`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE`](sqlref_sysprocs_compacttable.html)
-system procedure.
-{: .noteNote}
+## Importing and Updating Records
 
-### Importing a Subset of Data From a File
+What distinguishes `SYSCS_UTIL.IMPORT_DATA` from the similar
+ &nbsp;[`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) and
+ &nbsp;[`SYSCS_UTIL.SYSCS_MERGED_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html) procedures is how each works with these specific conditions:
 
-When you import data from a file into a table, all of the data in the
-file is not necessarily imported. This can happen in either of these
-circumstances:
+* You are importing only a subset of data from the input data into your table, either because the table contains less columns than does the input file, or because you've specified a subset of the columns in your `insertColumnList` parameter.
+* Inserting and updating data in a column with generated values.
+* Inserting and updating data in a column with default values.
+* Handling of missing values.
 
-* If the table into which you're importing contains less columns than
-  does the data file, the "extra" columns of data are ignored.
-* If the `insertColumnList` in your import call specifies only a subset
-  of the columns in the data file.
-
-Please see the [Inserting and Updating Column Values When Importing
-Data](#ImportColVals)section below for detailed information about how
-table column values are updated when importing data with our different
-procedures.
+The [Importing Data Tutorial: Input Handling](tutorials_ingest_importinput.html) topic describes how each of these conditions is handled by the different system procedures.
 
 ## Record Import Failure Reasons
-
-When upserting data from a file, the input file you generate must
-contain:
-
-* the columns to be changed
-* all `NON_NULL` columns
 
 Typical reasons for a row (record) import to fail include:
 
@@ -122,31 +99,31 @@ Typical reasons for a row (record) import to fail include:
   correctly if the table into which you are inserting/updating has
   primary keys.
 
-{% include splice_snippets/importcolvals.md %}
-
-## About Timestamp Formats   {#TimestampFormats}
-
-{% include splice_snippets/importtimestampformats.md %}
-Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* 
-for information working with timestamps, dates, and times.
-
 ## Usage Notes
 
-We have seen a problem in which the compaction queue grows quite large
-after importing large amounts of data, and are investigating a solution;
-for now, please use the following workaround:
+A few important notes:
 
-Run a full compaction on tables into which you have imported a large
-amount of data, using the
-[`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE`](sqlref_sysprocs_compacttable.html)
-system procedure.
-{: .noteRelease}
+* Splice Machine advises you to run a full compaction (with the  [`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE`](sqlref_sysprocs_compacttable.html) system procedure) after importing large amounts of data into your database.
+
+* On a cluster, the files to be imported **MUST be on S3, HDFS (or
+MapR-FS)**, as must the `badRecordDirectory` directory. If you're using
+our Database Service product, files can only be imported from S3.
+
+  In addition, the files must be readable by the `hbase` user, and the
+`badRecordDirectory` directory must be writable by the `hbase` user,
+either by setting the user explicity, or by opening up the permissions;
+for example:
+
+<div class="preWrapper" markdown="1">
+        sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory
+{: .ShellCommand}
+</div>
 
 ## Examples   {#Examples}
 
-The examples in this section illustrate using different timestamp
-formats and different string delimiter characters.
+This section presents a couple simple examples.
+
+The [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) topic contains a more extensive set of examples.
 
 ### Example 1: Importing our doc examples player data
 
@@ -156,11 +133,12 @@ table into our documentation examples database:
 
 <div class="preWrapperWide" markdown="1">
     splice> CALL SYSCS_UTIL.IMPORT_DATA('SPLICEBBALL', 'Players',
-    	'ID, Team, Name, Position, DisplayName, BirthDate',
-    	'/Data/DocExamplesDb/Players.csv',
-    	null, null, null, null, null, 0, null, true, null);
+        'ID, Team, Name, Position, DisplayName, BirthDate',
+        '/Data/DocExamplesDb/Players.csv',
+        null, null, null, null, null, 0, null, true, null);
     rowsImported        |failedRows          |files      |dataSize            |failedLog--------------------------------------------------------------------------------------
-    94                  |0                   |1          |4720                |NONE1 row selected
+    94                  |0                   |1          |4720                |NONE
+    1 row selected
 {: .Example xml:space="preserve"}
 
 </div>
@@ -194,78 +172,12 @@ servers with timestamps set to different time zones, the value in the
 table shown will be different. Additionally, daylight savings time may
 account for a 1-hour difference if timezone is specified.
 
-### Example 3: Importing strings with embedded special characters
-
-This example imports a csv file that includes newline (`Ctrl-M`)
-characters in some of the input strings. We use the default double-quote
-as our character delimiter to import data such as the following:
-
-<div class="preWrapperWide" markdown="1">
-    1,This field is one line,Able
-    2,"This field has two lines
-    This is the second line of the field",Baker
-    3,This field is also just one line,Charlie
-{: .Example xml:space="preserve"}
-
-</div>
-We then use the following call to import the data:
-
-<div class="preWrapperWide" markdown="1">
-    splie> CALL SYSCS_UTIL.IMPORT_DATA( 'SPLICE',
-       'MYTABLE',
-       null,
-       'data.csv',
-       '\t',null,null,null,null,0,
-       'Status', false, null);
-{: .Example xml:space="preserve"}
-
-</div>
-We can also explicitly specify double quotes (or any other character) as
-our delimiter character for strings:
-
-<div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.IMPORT_DATA( 'SPLICE',
-       'MYTABLE',
-       null,
-       'data.csv',
-       '\t','"',null,null,null,0,
-       'Status', true, null);
-{: .Example xml:space="preserve"}
-
-</div>
-### Example 4: Using single quotes to delimit strings
-
-This example performs the same import as the previous example, simply
-substituting single quotes for double quotes as the character delimiter
-in the input:
-
-<div class="preWrapperWide" markdown="1">
-    1,This field is one line,Able
-    2,'This field has two lines
-    This is the second line of the field',Baker
-    3,This field is also just one line,Charlie
-{: .Example xml:space="preserve"}
-
-</div>
-Note that you must escape single quotes in SQL, which means that you
-actually define the character delimiter parameter with four single
-quotes, as follow
-
-<div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.IMPORT_DATA('SPLICE',
-       'MYTABLE',
-       null,
-       'data.csv',
-       '\t','''',null,null,null,0,
-       'Status', false, null);
-{: .Example xml:space="preserve"}
-
-</div>
-
+See [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) for more examples.
 
 ## See Also
 
-* [Our Importing Data Tutorial](tutorials_ingest_importing.html)
+* [Our Importing Data Tutorial](tutorials_ingest_importoverview.html)
+* [Importing Data Usage Examples](tutorials_ingest_importexamples1.html)
 * [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 * [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 

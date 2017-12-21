@@ -281,7 +281,7 @@ into your Splice Machine database:
   access your bucket; see our [Configuring an S3 Bucket for Splice
   Machine Access](tutorials_ingest_configures3.html) tutorial.
 * Once you've got your data in a bucket, you can follow our [Importing
-  Data](tutorials_ingest_importing.html) tutorial to load that data into
+  Data Tutorial](tutorials_ingest_importoverview.html) to load that data into
   Splice Machine.
 
 </div>
