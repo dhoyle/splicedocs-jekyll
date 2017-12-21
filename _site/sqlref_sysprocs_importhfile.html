@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -211,6 +211,16 @@
 
                 <!-- If building the docsdev version, do not include search box -->
                 
+                <li>
+<!-- Start Swiftype search -->
+                    <div id="swiftype-search-container">
+                        <form>
+                          <input type="text" class="st-default-search-input swiftype-input">
+                          <button type="submit" class="swiftype-submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                
             </ul>
         </div>
         </div>
@@ -228,7 +238,7 @@
                 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Splice Machine Dev v2.7.0</li>
+    <li class="sidebarTitle">Splice Machine Internal v2.7.0</li>
     
     
     
@@ -2020,9 +2030,7 @@
             
             
             
-            
-            
-            <li><a href="sqlref_sysprocs_mergeregions.html">MERGE_REGIONS</a></li>
+            <li><a href="sqlref_sysprocs_mergedata.html">MERGE_DATA_FROM_FILE</a></li>
             
             
             
@@ -2831,29 +2839,20 @@ procedure instead of our standard
 means that <span class="CalloutFont">constraint checks are not performed
 during data importation</span>.</p>
 
-    <h2 id="two-methods-for-using-syscsutilbulkimporthfile">Two Methods for Using <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></h2>
+    <h2 id="selecting-an-import-procedure">Selecting an Import Procedure</h2>
 
-    <p>You can tell this procedure to automatically sample your data compute
-the split keys for generating the HFiles to import (parameter
-<code>skipSampling=false</code>), or you can control the split key computation
-yourself by using other system procedures to compute the split keys
-before calling <code>SYSCS_UTIL.IMPORT_DATA</code> with parameter
-<code>skipSampling=true</code>).</p>
-
-    <p>If you are computing the splits, you use this procedure in conjunction
-with either:</p>
+    <p>Splice Machine provides four system procedures for importing data:</p>
 
     <ul>
-      <li>The
-  <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> system
-procedure.</li>
-      <li>The
-  <a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> system
-procedure, which combines the functionality of those two procedures.</li>
+      <li>The <a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a> procedure imports each input record into a new record in your database.</li>
+      <li>The <a href="sqlref_sysprocs_upsertdata.html"><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></a> procedure updates existing records and adds new records to your database. It only differs from <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> in that upserting
+ <strong>overwrites</strong> the generated or default value of a column that <em>is not specified</em> in your <code>insertColumnList</code> parameter when updating a record.</li>
+      <li>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> procedure updates existing records and adds new records to your database. .It only differs from <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code> in that merging <strong>does not
+overwrite</strong> the generated or default value of a column that <em>is not specified</em> in your <code>insertColumnList</code> parameter when updating a record.</li>
+      <li>This procedure, <a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_BULK_IMPORT_HFILE,</code></a> takes advantage of HBase bulk loading to import table data into your database by temporarily converting the table file that you’re importing into HFiles, importing those directly into your database, and then removing the temporary HFiles. This procedure has improved performance for large tables; however, the bulk HFile import requires extra work on your part and lacks constraint checking.</li>
     </ul>
 
-    <p>See the <em>Usage Notes</em> section for more information and the <em>Example</em>
-section to see an example of using these procedures together.</p>
+    <p>Our <a href="tutorials_ingest_importoverview.html">Importing Data Tutorial</a> includes a decision tree and brief discussion to help you determine which procedure best meets your needs.</p>
 
     <h2 id="syntax">Syntax</h2>
 
@@ -2879,11 +2878,11 @@ section to see an example of using these procedures together.</p>
 
     </div>
 
-    <p class="noteNote">If you are computing the splits, then almost all of the parameter values
-that you pass to this procedure should match the parameter values that
-you pass to the
-<a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a>
-procedures.</p>
+    <p class="noteNote">If you have specified <code>skipSampling=true</code> to indicate that you’re computing the splits yourself,
+as described <a href="#Usage">below</a> , the parameter values that you pass to the
+  <a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> or  
+  <a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> procedures should match the values
+ that you pass to this procedure.</p>
 
     <h2 id="parameters">Parameters</h2>
 
@@ -2922,7 +2921,10 @@ procedures.</p>
         </tr>
         <tr>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#fileOrDirectoryName">fileOrDirectoryName</a></td>
-            <td>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.
+            <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
+            <p class="notePlain">The <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> procedure only works with single files; <strong>you cannot specify a directory name</strong> when calling <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code>.</p>
+            <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
+            MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
             </td>
             <td class="CodeFont">
                 <p>/data/mydata/mytable.csv</p>
@@ -2955,7 +2957,8 @@ procedures.</p>
         </tr>
         <tr>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#timestampFormat">timestampFormat</a></td>
-            <td>The format of timestamps stored in the file. You can set this to <code>null</code> if there are no time columns in the file, or if the format of any timestamps in the file match the <code>Java.sql.Timestamp</code> default format, which is: "<em>yyyy-MM-dd HH:mm:ss</em>".
+            <td><p>The format of timestamps stored in the file. You can set this to <code>null</code> if there are no time columns in the file, or if the format of any timestamps in the file match the <code>Java.sql.Timestamp</code> default format, which is: "<em>yyyy-MM-dd HH:mm:ss</em>".</p>
+            <p class="noteIcon">All of the timestamps in the file you are importing must use the same format.</p>
             </td>
             <td class="CodeFont">
                 <p>'yyyy-MM-dd HH:mm:ss.SSZ'</p>
@@ -2981,16 +2984,16 @@ procedures.</p>
         </tr>
         <tr>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#badRecordDirectory">badRecordDirectory</a></td>
-            <td>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.
+            <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
         <tr>
             <td rowspan="2" class="BoldFont">Bulk HFile Import</td>
-            <td class="CodeFont"><a href="tutorials_ingest_importparams.html#bulkImportDirectory">bulkImportDirectory</a></td>
-            <td><p>The name of the  directory into which the generated HFiles are written prior to being
-            imported into your database.</p>
-            <p>This parameter is only used with the <code>SYSCS_UTIL.BULK_IMPORT_FILE</code> system procedure.</p>
+            <td class="CodeFont"><a href="tutorials_ingest_importparams.html#bulkImportDirectory">bulkImportDirectory  (outputDirectory)</a></td>
+            <td><p>For <code>SYSCS_UTIL.BULK_IMPORT_FILE</code>, this is the name of the  directory into which the generated HFiles are written prior to being imported into your database.</p>
+            <p>For the <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> procedure, where it is named <code>outputDirectory</code>, this parameter specifies the directory into which the split keys are written.</p>
             </td>
             <td class="CodeFont"><code>hdfs:///tmp/test_hfile_import/</code></td>
         </tr>
@@ -3004,32 +3007,40 @@ procedures.</p>
     </tbody>
 </table>
 
+    <h2 id="Usage">Usage</h2>
+
+    <p>The <a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a> procedure needs the data that you’re importing split into multiple HFiles before it actually imports the data into your database. You can achieve these splits in three ways:</p>
+
+    <ul>
+      <li>
+        <p>You can call <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> with the <code>skipSampling</code> parameter to <code>false</code>. <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> samples the data to determine the splits, then splits the data into multiple HFiles, and then imports the data.</p>
+      </li>
+      <li>
+        <p>You can split the data into HFiles with the  <a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> system procedure, which both computes the keys and performs the splits. You then call
+  <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> with the <code>skipSampling</code> parameter to <code>true</code> to import your data.</p>
+      </li>
+      <li>
+        <p>You can split the data into HFiles by first calling the <a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> procedure and then  calling the <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> procedure to split the table or index.  You then call
+  <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> with the <code>skipSampling</code> parameter to <code>true</code> to import your data.</p>
+      </li>
+    </ul>
+
+    <p>In all cases, <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> automatically deletes the HFiles after the import process has completed.</p>
+
+    <p>The <a href="tutorials_ingest_importexampleshfile.html">Bulk HFile Import Examples</a> section of our <em>Importing Data Tutorial</em> describes how these methods differ and provides examples of using them to import data.</p>
+
     <h2 id="results">Results</h2>
 
-    <p>You use these three system procedures together:</p>
+    <p><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> displays a summary of the import
+process results that looks like this:</p>
 
-    <ul>
-      <li>The  <a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> prodedure generates a keys file</li>
-      <li>You use the keys file in conjunction with the  <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> system procedure to split your table</li>
-      <li>You then call the <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedure to import your data.</li>
-    </ul>
+    <div class="preWrapperWide">
 
-    <h2 id="TimestampFormats">About Timestamp Formats</h2>
-
-    <p>The <code>timestampFormat</code> parameter specifies the format of timestamps in your input data. You can set this to <code>null</code> if either of these conditions is true:</p>
-
-    <ul>
-      <li>there are no time columns in the file</li>
-      <li>all time stamps in the input match the <code>Java.sql.Timestamp</code> default format,
-which is: "<em>yyyy-MM-dd HH:mm:ss</em>".</li>
-    </ul>
-
-    <p class="noteIcon">All of the timestamps in the file you are importing must use the same
-format.</p>
-
-    <p>The <a href="tutorials_ingest_importparams.html">Importing Data Tutorial: Input Parameters</a> topic provides detailed information about timestamp formats and handling.</p>
-
-    <p><a href="developers_fundamentals_dates.html">Working With Date and Time Values</a> in our Developer’s Guide discusses working with date, time, and timestamp values in Splice Machine.</p>
+      <pre class="Example"><code>rowsImported   |failedRows   |files   |dataSize   |failedLog
+-------------------------------------------------------------
+94             |0            |1       |4720       |NONE
+</code></pre>
+    </div>
 
     <h2 id="examples">Examples</h2>
 
@@ -3061,7 +3072,7 @@ format.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Dec 19, 2017 <br />
+ Site last generated: Dec 21, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

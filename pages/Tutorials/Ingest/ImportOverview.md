@@ -46,7 +46,7 @@ This tutorial guides you through importing (loading) data into your Splice Machi
         </tr>
         <tr>
             <td><a href="tutorials_ingest_importexampleshfile.html">6: Bulk HFile Examples</a></td>
-            <td>Walks you through examples of using the <code>SYSCS_UTIL.BULK_IMPORT_HFILES</code> system procedure.</td>
+            <td>Walks you through examples of using the <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedure.</td>
         </tr>
         <tr>
             <td><a href="tutorials_ingest_importexamplestpch.html">7: Importing TPCH Data</a></td>
@@ -94,7 +94,7 @@ Splice Machine includes four different procedures for importing data into your d
             <td>Imports data into your database, creating new records and *updating existing records* in the table. Identical to <span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span> except that it does not replace  values in the table for unspecified columns when updating an existing record in the table.</td>
         </tr>
         <tr>
-            <td class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILES</td>
+            <td class="CodeFont">SYSCS_UTIL.BULK_IMPORT_HFILE</td>
             <td>Takes advantage of HBase bulk loading to import table data into your database by temporarily converting the table file that you’re importing into HFiles, importing those directly into your database, and then removing the temporary HFiles. This procedure uses syntax very similar to the other import procedures and has improved performance for large tables; however, the bulk HFile import requires extra work on your part and lacks constraint checking.</td>
         </tr>
     </tbody>
@@ -111,7 +111,7 @@ The following diagram helps you decide which of our data importation procedures 
 
 * The `IMPORT_DATA` procedure imports new records into a database. The `UPSERT_DATA_FROM_FILE` and `MERGE_DATA_FROM_FILE` procedures import new records and update existing records. Importing all new records is faster because the database doesn't need to check if the record already exists in the database.
 * If your table contains auto-generated column values and you don't want those values overwritten when a record gets updated, use the `MERGE_DATA_FROM_FILE` procedure (`UPSERT_DATA_FROM_FILE` will overwrite).
-* The `BULK_IMPORT_HFILES` procedure is great when you're importing a very large dataset and need extra performance. However, it does not perform constraint checking.
+* The `BULK_IMPORT_HFILE` procedure is great when you're importing a very large dataset and need extra performance. However, it does not perform constraint checking.
 
 ## Import Procedures Syntax {#Syntax}
 
@@ -202,3 +202,16 @@ Here are the declarations of our four data import procedures; as you can see, th
 You'll find descriptions and detailed reference information for all of these parameters in the [Import Parameters](tutorials_ingest_importparams.html) topic of this tutorial.
 
 And you'll find detailed reference descriptions of all four procedures in our [SQL Reference Manual](sqlref_intro.html).
+
+## See Also
+
+*  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
+*  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
+*  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
+*  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
+*  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
+*  [Importing Data: Importing TPCH Data](tutorials_ingest_importexamplestpch.html)
+*  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
+*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
+*  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
+*  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)

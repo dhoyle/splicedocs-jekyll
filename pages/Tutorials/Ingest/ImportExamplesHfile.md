@@ -13,12 +13,12 @@ folder: Tutorials/Ingest
 # Importing Data With the Bulk HFile Import Procedure
 
 This tutorial describes how to import data using HFiles into your Splice
-Machine database with the [`SYSCS_UTIL.BULK_IMPORT_HFILES`](sqlref_sysprocs_importhfile.html) system procedure. This topic includes these sections:
+Machine database with the [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) system procedure. This topic includes these sections:
 
 * [How Importing Your Data as HFiles Works](#How) presents an overview of
   using the HFile import functions.
 
-* [Configuration Settings](#ConfigSettings) describes any configuration settings that you may need to modify when using the [`SYSCS_UTIL.BULK_IMPORT_HFILES`](sqlref_sysprocs_importhfile.html) procedure to import data into your database.
+* [Configuration Settings](#ConfigSettings) describes any configuration settings that you may need to modify when using the [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure to import data into your database.
 
 * [Importing Data From the Cloud](#CloudAccess) links to our instructions for configuring Splice Machine access to your data in the cloud.
 
@@ -41,12 +41,12 @@ procedure instead of our standard
 means that *constraint checks are not performing during data
 importation*.
 
-You import a table as HFiles using our `SYSCS_UTIL.BULK_IMPORT_HFILES`
+You import a table as HFiles using our `SYSCS_UTIL.BULK_IMPORT_HFILE`
 procedure, which temporarily converts the table file that you're
 importing into HFiles, imports those directly into your database, and
 then removes the temporary HFiles.
 
-Before it generate HFiles, `SYSCS_UTIL.BULK_IMPORT_HFILES` must determine how to split the data
+Before it generate HFiles, `SYSCS_UTIL.BULK_IMPORT_HFILE` must determine how to split the data
 into multiple regions by looking at the primary keys and figuring out
 which values will yield relatively evenly-sized splits; the objective is
 to compute splits such that roughly the same number of table rows will
@@ -54,12 +54,12 @@ end up in each split.
 
 You have two choices for determining the table splits:
 
-* You can have `SYSCS_UTIL.BULK_IMPORT_HFILES` scan and analyze your table to
-determine the best splits automatically by calling `SYSCS_UTIL.BULK_IMPORT_HFILES`
+* You can have `SYSCS_UTIL.BULK_IMPORT_HFILE` scan and analyze your table to
+determine the best splits automatically by calling `SYSCS_UTIL.BULK_IMPORT_HFILE`
 with the `skipSampling` parameter set to `true`. We walk you through using this approach
  in the first example below, [Example 1: Bulk HFile Import with Automatic Table Splitting](#AutoExample)
 
-* You can compute the splits yourself and then call `SYSCS_UTIL.BULK_IMPORT_HFILES`
+* You can compute the splits yourself and then call `SYSCS_UTIL.BULK_IMPORT_HFILE`
 with the `skipSampling` parameter set to `false`. Computing the splits requires these steps, which are described in the next section, [Manually Computing Table Splits](#ManualSplits).
 
     1. Determine which values make sense for splitting your data
@@ -68,7 +68,7 @@ with the `skipSampling` parameter set to `false`. Computing the splits requires 
     splits.
     2. Call our system procedures to compute the HBase-encoded keys and set up the splits inside
     your Splice Machine database.
-    3. Call the `SYSCS_UTIL.BULK_IMPORT_HFILES` procedure with the `skipSampling` parameter  to `false` to perform the import.
+    3. Call the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure with the `skipSampling` parameter  to `false` to perform the import.
 
 ## Configuration Settings {#ConfigSettings}
 
@@ -88,7 +88,7 @@ key information. Our [Configuring an S3 Bucket for Splice Machine Access](tutori
 
 ## Manually Computing Table Splits {#ManualSplits}
 
-If you\'re computing splits for your import (and calling the `SYSCS_UTIL.BULK_IMPORT_HFILES` procedure with
+If you\'re computing splits for your import (and calling the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure with
 `skipSampling` parameter  to `false`), you need to select one of these two methods of computing the table splits:
 
 * You can call [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) to compute the splits; the [Example 2](#ManualSplitExample1) example walks you through this.
@@ -572,3 +572,16 @@ Follow these steps:
     {: .indentLevel1}
 {: .boldFont}
 </div>
+
+## See Also
+
+*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
+*  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
+*  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
+*  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
+*  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
+*  [Importing Data: Importing TPCH Data](tutorials_ingest_importexamplestpch.html)
+*  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
+*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
+*  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
+*  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)

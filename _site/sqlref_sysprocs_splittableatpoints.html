@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Built-in system procedure that splits a table or index into HFiles based on split keys that were computed by the SYSCS_UTIL.SYSCS_COMPUTE_SPLIT_KEYS procedure.">
 <meta name="keywords" content=" split table at points, split_table_or_index_at_points">
-<title>SYSCS_UTIL.SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS built-in system procedure | Splice Machine Documentation</title>
-<meta class="swiftype" name="title" data-type="string" content="SYSCS_UTIL.SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS built-in system procedure">
+<title>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS built-in system procedure | Splice Machine Documentation</title>
+<meta class="swiftype" name="title" data-type="string" content="SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS built-in system procedure">
 <meta class="swiftype" name="info" data-type="string" content="Built-in system procedure that splits a table or index into HFiles based on split keys that were computed by the SYSCS_UTIL.SYSCS_COMPUTE_SPLIT_KEYS procedure.">
 <meta class="swiftype" name="buildversion" data-type="enum" content="2.7.0">
 
@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -211,6 +211,16 @@
 
                 <!-- If building the docsdev version, do not include search box -->
                 
+                <li>
+<!-- Start Swiftype search -->
+                    <div id="swiftype-search-container">
+                        <form>
+                          <input type="text" class="st-default-search-input swiftype-input">
+                          <button type="submit" class="swiftype-submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                
             </ul>
         </div>
         </div>
@@ -228,7 +238,7 @@
                 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Splice Machine Dev v2.7.0</li>
+    <li class="sidebarTitle">Splice Machine Internal v2.7.0</li>
     
     
     
@@ -2020,9 +2030,7 @@
             
             
             
-            
-            
-            <li><a href="sqlref_sysprocs_mergeregions.html">MERGE_REGIONS</a></li>
+            <li><a href="sqlref_sysprocs_mergedata.html">MERGE_DATA_FROM_FILE</a></li>
             
             
             
@@ -2820,32 +2828,22 @@
 <div class="TopicContent" data-swiftype-index="true">
     <h1 id="syscsutilsyscssplittableorindexatpoints">SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</h1>
 
-    <p>The <code>SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</code> system procedure sets up
-table or index splits in your database, prior to importing that table in
-HFile format.</p>
-
-    <p>You must use this procedure in conjunction with two others:</p>
-
-    <ul>
-      <li><a href="#"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a></li>
-      <li><a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a></li>
-    </ul>
-
-    <p>See the <em>Usage Notes</em> section for more information and the <em>Example</em>
-section to see an example of using these procedures together.</p>
+    <p>Before using this procedure, <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code>, you must first call the <a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> procedure to compute the split points for the data you’re importing. After computing the split keys, use this procedure to split the data into HFiles, and then call   <a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a>
+system procedure to import your data in HFile format.</p>
 
     <h2 id="syntax">Syntax</h2>
 
     <div class="fcnWrapperWide">
       <pre class="FcnSyntax"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS (
-		schemaName,
-		tableName,
-		indexName,
-		splitPoints
-		);
+        schemaName,
+        tableName,
+        indexName,
+        splitPoints
+        );
 </code></pre>
 
     </div>
+
     <div class="paramList">
       <p class="paramName">schemaName</p>
 
@@ -2869,14 +2867,30 @@ instead.</p>
 <a href="sqlref_sysprocs_computesplitkey.html"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> procedure.</p>
 
     </div>
-    <p> </p>
 
-    <h2 id="results">Results</h2>
+    <h2 id="Usage">Usage</h2>
 
-    <p><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code> does not produce
-results.</p>
+    <p>The <a href="sqlref_sysprocs_importhfile.html"><code>SYSCS_UTIL.BULK_IMPORT_HFILE</code></a> procedure needs the data that you’re importing split into multiple HFiles before it actually imports the data into your database. You can achieve these splits in three ways:</p>
 
-    <p>The <a href="tutorials_ingest_importexampleshfile.html">Importing Data: Bulk HFile Examples</a> topic walks you through several examples of importing data with bulk HFiles.</p>
+    <ul>
+      <li>
+        <p>You can call <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> with the <code>skipSampling</code> parameter to <code>false</code>. <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> samples the data to determine the splits, then splits the data into multiple HFiles, and then imports the data.</p>
+      </li>
+      <li>
+        <p>You can split the data into HFiles with the
+  <a href="sqlref_sysprocs_splittable"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> procedure, which both computes the keys and performs the splits. You then call
+  <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> with the <code>skipSampling</code> parameter to <code>true</code> to import your data.</p>
+      </li>
+      <li>
+        <p>You can split the data into HFiles by first calling the  <a href="sqlref_sysprocs_computesplitkey"><code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code></a> procedure to compute the split points, and then call this procedure,
+  <code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code> procedure to split the table or index.  You then call
+  <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> with the <code>skipSampling</code> parameter to <code>true</code> to import your data.</p>
+      </li>
+    </ul>
+
+    <p>In all cases, <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> automatically deletes the HFiles after the import process has completed.</p>
+
+    <p>The <a href="tutorials_ingest_importexampleshfile.html">Bulk HFile Import Examples</a> section of our <em>Importing Data Tutorial</em> describes how these methods differ and provides examples of using them to import data.</p>
 
     <h2 id="see-also">See Also</h2>
 
@@ -2904,7 +2918,7 @@ results.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Dec 19, 2017 <br />
+ Site last generated: Dec 21, 2017 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

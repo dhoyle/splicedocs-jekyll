@@ -24,27 +24,18 @@ means that <span class="CalloutFont">constraint checks are not performed
 during data importation</span>.
 {: .noteImportant}
 
-## Two Methods for Using `SYSCS_UTIL.BULK_IMPORT_HFILE`
+## Selecting an Import Procedure
 
-You can tell this procedure to automatically sample your data compute
-the split keys for generating the HFiles to import (parameter
-`skipSampling=false`), or you can control the split key computation
-yourself by using other system procedures to compute the split keys
-before calling `SYSCS_UTIL.IMPORT_DATA` with parameter
-`skipSampling=true`).
+Splice Machine provides four system procedures for importing data:
 
-If you are computing the splits, you use this procedure in conjunction
-with either:
+* The [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedure imports each input record into a new record in your database.
+* The [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) procedure updates existing records and adds new records to your database. It only differs from `SYSCS_UTIL.MERGE_DATA_FROM_FILE` in that upserting
+ **overwrites** the generated or default value of a column that *is not specified* in your `insertColumnList` parameter when updating a record.
+* The [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html) procedure updates existing records and adds new records to your database. .It only differs from `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` in that merging **does not
+overwrite** the generated or default value of a column that *is not specified* in your `insertColumnList` parameter when updating a record.
+* This procedure, [`SYSCS_BULK_IMPORT_HFILE,`](sqlref_sysprocs_importhfile.html) takes advantage of HBase bulk loading to import table data into your database by temporarily converting the table file that you’re importing into HFiles, importing those directly into your database, and then removing the temporary HFiles. This procedure has improved performance for large tables; however, the bulk HFile import requires extra work on your part and lacks constraint checking.
 
-* The
- &nbsp;[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) system
-  procedure.
-* The
- &nbsp;[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) system
-  procedure, which combines the functionality of those two procedures.
-
-See the *Usage Notes* section for more information and the *Example*
-section to see an example of using these procedures together.
+Our [Importing Data Tutorial](tutorials_ingest_importoverview.html) includes a decision tree and brief discussion to help you determine which procedure best meets your needs.
 
 ## Syntax
 
@@ -70,11 +61,11 @@ section to see an example of using these procedures together.
 
 </div>
 
-If you are computing the splits, then almost all of the parameter values
-that you pass to this procedure should match the parameter values that
-you pass to the
-[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
-procedures.
+If you have specified `skipSampling=true` to indicate that you're computing the splits yourself,
+as described [below](#Usage) , the parameter values that you pass to the
+ &nbsp;[`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) or &nbsp;
+ &nbsp;[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) procedures should match the values
+ that you pass to this procedure.
 {: .noteNote}
 
 ## Parameters
@@ -83,30 +74,34 @@ The following table summarizes the parameters used by `SYSCS_UTIL.BULK_IMPORT_FI
 
 {% include splice_snippets/importparamstable.md %}
 
+## Usage {#Usage}
+
+The [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure needs the data that you're importing split into multiple HFiles before it actually imports the data into your database. You can achieve these splits in three ways:
+
+* You can call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter to `false`. `SYSCS_UTIL.BULK_IMPORT_HFILE` samples the data to determine the splits, then splits the data into multiple HFiles, and then imports the data.
+
+* You can split the data into HFiles with the &nbsp;[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) system procedure, which both computes the keys and performs the splits. You then call
+ &nbsp;`SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter to `true` to import your data.
+
+* You can split the data into HFiles by first calling the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) procedure and then  calling the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedure to split the table or index.  You then call
+ &nbsp;`SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter to `true` to import your data.
+
+In all cases, `SYSCS_UTIL.BULK_IMPORT_HFILE` automatically deletes the HFiles after the import process has completed.
+
+The [Bulk HFile Import Examples](tutorials_ingest_importexampleshfile.html) section of our *Importing Data Tutorial* describes how these methods differ and provides examples of using them to import data.
+
 ## Results
 
-You use these three system procedures together:
+`SYSCS_UTIL.BULK_IMPORT_HFILE` displays a summary of the import
+process results that looks like this:
 
-* The &nbsp;[`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) prodedure generates a keys file
-* You use the keys file in conjunction with the &nbsp;[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) system procedure to split your table
-* You then call the `SYSCS_UTIL.BULK_IMPORT_HFILE` system procedure to import your data.
+<div class="preWrapperWide" markdown="1">
 
-
-## About Timestamp Formats   {#TimestampFormats}
-
-The `timestampFormat` parameter specifies the format of timestamps in your input data. You can set this to `null` if either of these conditions is true:
-
-* there are no time columns in the file
-* all time stamps in the input match the `Java.sql.Timestamp` default format,
-which is: \"*yyyy-MM-dd HH:mm:ss*\".
-
-All of the timestamps in the file you are importing must use the same
-format.
-{: .noteIcon}
-
-The [Importing Data Tutorial: Input Parameters](tutorials_ingest_importparams.html) topic provides detailed information about timestamp formats and handling.
-
-[Working With Date and Time Values](developers_fundamentals_dates.html) in our Developer's Guide discusses working with date, time, and timestamp values in Splice Machine.
+    rowsImported   |failedRows   |files   |dataSize   |failedLog
+    -------------------------------------------------------------
+    94             |0            |1       |4720       |NONE
+{: .Example xml:space="preserve"}
+</div>
 
 ## Examples
 

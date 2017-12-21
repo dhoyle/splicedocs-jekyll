@@ -125,6 +125,12 @@ this is a directory, all of the files in that directory are imported.
 
 * For the `SYSCS_UTIL.MERGE_DATA_FROM_FILE` and `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure, this can only be a single file (directories are not allowed).
 
+<div class="noteNote" markdown="1">
+On a cluster, the files to be imported **MUST be on S3, HDFS (or
+MapR-FS)**, as must the `badRecordDirectory` directory. If you're using
+our Database Service product, files can only be imported from S3. The files must also be readable by the `hbase` user.
+</div>
+
 **Example:** <span class="Example">`data/mydata/mytable.csv`</span>
 
 #### Importing from S3
@@ -490,6 +496,15 @@ The `badRecordDirectory` parameter is a string that specifies the directory in w
 Splice Machine logs information to the `<import_file_name>.bad` file in this directory; for example, bad records in an input file named `foo.csv` would be
 logged to a file named *badRecordDirectory*`/foo.csv.bad`.
 
+The `badRecordDirectory` directory must be writable by the hbase user,
+either by setting the user explicity, or by opening up the permissions;
+for example:
+
+<div class="preWrapper" markdown="1">
+    sudo -su hdfs hadoop fs -chmod 777 /badRecordDirectory
+{: .ShellCommand}
+</div>
+
 **Example:** <span class="Example">`'importErrsDir'`</span>
 
 ### `bulkImportDirectory` {#bulkImportDirectory}
@@ -524,3 +539,16 @@ samples your input data and computes the table splits for you, in the following 
 **Example:** <span class="Example">`false`</span>
 
 Please review the [Bulk HFile Import Walkthrough](tutorials_ingest_importexampleshfile.html) topic to understand how importing bulk HFiles works.
+
+## See Also
+
+*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
+*  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
+*  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
+*  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
+*  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
+*  [Importing Data: Importing TPCH Data](tutorials_ingest_importexamplestpch.html)
+*  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
+*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
+*  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
+*  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)

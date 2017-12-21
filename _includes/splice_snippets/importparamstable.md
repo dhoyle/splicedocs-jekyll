@@ -31,7 +31,10 @@
         </tr>
         <tr>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#fileOrDirectoryName">fileOrDirectoryName</a></td>
-            <td>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.
+            <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
+            <p class="notePlain">The <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> procedure only works with single files; <strong>you cannot specify a directory name</strong> when calling <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code>.</p>
+            <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
+            MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
             </td>
             <td class="CodeFont">
                 <p>/data/mydata/mytable.csv</p>
@@ -64,7 +67,8 @@
         </tr>
         <tr>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#timestampFormat">timestampFormat</a></td>
-            <td>The format of timestamps stored in the file. You can set this to <code>null</code> if there are no time columns in the file, or if the format of any timestamps in the file match the <code>Java.sql.Timestamp</code> default format, which is: "<em>yyyy-MM-dd HH:mm:ss</em>".
+            <td><p>The format of timestamps stored in the file. You can set this to <code>null</code> if there are no time columns in the file, or if the format of any timestamps in the file match the <code>Java.sql.Timestamp</code> default format, which is: "<em>yyyy-MM-dd HH:mm:ss</em>".</p>
+            <p class="noteIcon">All of the timestamps in the file you are importing must use the same format.</p>
             </td>
             <td class="CodeFont">
                 <p>'yyyy-MM-dd HH:mm:ss.SSZ'</p>
@@ -90,16 +94,16 @@
         </tr>
         <tr>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#badRecordDirectory">badRecordDirectory</a></td>
-            <td>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.
+            <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
         <tr>
             <td rowspan="2" class="BoldFont">Bulk HFile Import</td>
-            <td class="CodeFont"><a href="tutorials_ingest_importparams.html#bulkImportDirectory">bulkImportDirectory</a></td>
-            <td><p>The name of the  directory into which the generated HFiles are written prior to being
-            imported into your database.</p>
-            <p>This parameter is only used with the <code>SYSCS_UTIL.BULK_IMPORT_FILE</code> system procedure.</p>
+            <td class="CodeFont"><a href="tutorials_ingest_importparams.html#bulkImportDirectory">bulkImportDirectory  (outputDirectory)</a></td>
+            <td><p>For <code>SYSCS_UTIL.BULK_IMPORT_FILE</code>, this is the name of the  directory into which the generated HFiles are written prior to being imported into your database.</p>
+            <p>For the <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> procedure, where it is named <code>outputDirectory</code>, this parameter specifies the directory into which the split keys are written.</p>
             </td>
             <td class="CodeFont"><code>hdfs:///tmp/test_hfile_import/</code></td>
         </tr>
