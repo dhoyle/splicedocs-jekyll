@@ -503,6 +503,7 @@ To edit the HBase configuration, click <span class="AppCommand">HBase</span> in 
 
     </div>
 
+{% raw %}               <!-- We need to escape liquid '{{' because they're used in the instructions below }}-->
 3.  Under `Advanced hbase-env`, set the value of `hbase-env template` to the following:
     {: .topLevel}
 
@@ -677,6 +678,8 @@ To edit the HBase configuration, click <span class="AppCommand">HBase</span> in 
 {: .boldFont}
 
 </div>
+{% endraw %}
+
 ## Start any Additional Services   {#Start}
 
 We started this installation by shutting down your cluster services, and
