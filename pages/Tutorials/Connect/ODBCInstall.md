@@ -199,8 +199,10 @@ the driver:
               <td class="CodeFont">peerAuthentication</td>
               <td class="PlainFont">
                   <p>You must specify the location of both the client certificate file and the client private key in their respective fields.</p>
-                  <p>You can store both the certificate and key in the same <code>.pem</code> file, and specify the same location for both.</p>
-                  <p>Select the <em>Always trust server certificate</em> checkbox to specify that the driver can skip verfication of the host certificate by the client; if you do not select this option, then the client attempts to verify the host certificate chain.</p>
+                  <p>The <em>Certificate file</em> field defaults to the <code>.pem</code> extension and must contain the path to a PEM-formatted file. That file must contain either a) the client certificate alone, or b) both the client certificate and the private key.</p>
+                  <p>The <em>Private key file</em> field defaults to the <code>.key</code> extension and must contain the path to a PEM-formatted file. That file must contain either a) the private key alone, or b) both the client certificate and the private key.</p>
+                      <p class="notePlain">You can find more information about PEM files by <a href="https://www.google.com/search?q=pem+formatted+file&rlz=1C1HIJB_enUS701US702&oq=pem+formatted+file&aqs=chrome..69i57j0l5.3839j0j4&sourceid=chrome&ie=UTF-8" target="_blank">searching the web for <em>pem formatted file</em></a>.</p>
+                  <p>Select the <em>Always trust server certificate</em> checkbox to specify that the driver can skip verification of the host certificate by the client; if you do not select this option, then the client attempts to verify the host certificate chain.</p>
                       <p class="noteNote">You should select the <em>Always trust server certificate</em> option if you are using a self-signed certificate.</p>
               </td>
            </tr>
@@ -487,31 +489,31 @@ computer:
         values:
 
         <table>
-                                            <col />
-                                            <col />
-                                            <tbody>
-                                                <tr>
-                                                    <td><code>LogLevel</code></td>
-                                                    <td>
-                                                        <p>You can specify one of the following values:</p>
-                                                        <div class="preWrapperWide"><pre class="Plain">0 = OFF<br />1 = LOG_FATAL<br />2 = LOG_ERROR<br />3 = LOG_WARNING<br />4 = LOG_INFO<br />5 = LOG_DEBUG<br />6 = LOG_TRACE</pre>
-                                                        </div>
-                                                        <p>The larger the LogLevel value, the more verbose the logging.</p>
-                                                        <p class="noteIcon">Logging does impact driver performance.</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><code>LogPath</code></td>
-                                                    <td>
-                                                        <p>The path to the directory in which you want the logging files stored. Two log files are written in this directory:</p>
-                                                        <ul>
-                                                            <li>the <code>splice_driver.log</code> file contains driver interactions with the application and the driver manager</li>
-                                                            <li>the <code>splice_derby.log</code> file contains information about the drivers interaction with the Splice Machine cluster</li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td><code>LogLevel</code></td>
+                    <td>
+                        <p>You can specify one of the following values:</p>
+                        <div class="preWrapperWide"><pre class="Plain">0 = OFF<br />1 = LOG_FATAL<br />2 = LOG_ERROR<br />3 = LOG_WARNING<br />4 = LOG_INFO<br />5 = LOG_DEBUG<br />6 = LOG_TRACE</pre>
+                        </div>
+                        <p>The larger the LogLevel value, the more verbose the logging.</p>
+                        <p class="noteIcon">Logging does impact driver performance.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>LogPath</code></td>
+                    <td>
+                        <p>The path to the directory in which you want the logging files stored. Two log files are written in this directory:</p>
+                        <ul class="plainFont">
+                            <li>the <code>splice_driver.log</code> file contains driver interactions with the application and the driver manager</li>
+                            <li>the <code>splice_derby.log</code> file contains information about the drivers interaction with the Splice Machine cluster</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     {: .LowerAlpha}
 
 6.  Verify your installation
