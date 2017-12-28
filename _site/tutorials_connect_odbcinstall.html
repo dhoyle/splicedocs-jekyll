@@ -568,6 +568,7 @@ ODBC driver for these operating systems:</p>
     <ul>
       <li><a href="#Installi">Installing the Splice Machine ODBC Driver on Windows</a></li>
       <li><a href="#Installi2">Installing the Splice Machine ODBC Driver on Linux</a></li>
+      <li><a href="#Installi3">Installing the Splice Machine ODBC Driver on MacOS</a></li>
     </ul>
 
     <p>This topic also includes an <a href="#Using">example that illustrates using our
@@ -1004,9 +1005,9 @@ values:</p>
             <td><code>LogPath</code></td>
             <td>
                 <p>The path to the directory in which you want the logging files stored. Two log files are written in this directory:</p>
-                <ul class="plainFont">
-                    <li>the <code>splice_driver.log</code> file contains driver interactions with the application and the driver manager</li>
-                    <li>the <code>splice_derby.log</code> file contains information about the drivers interaction with the Splice Machine cluster</li>
+                <ul>
+                    <li class="plainFont">the <code>splice_driver.log</code> file contains driver interactions with the application and the driver manager</li>
+                    <li class="plainFont">the <code>splice_derby.log</code> file contains information about the drivers interaction with the Splice Machine cluster</li>
                 </ul>
             </td>
         </tr>
@@ -1026,6 +1027,210 @@ values:</p>
 </code></pre>
 
           </div>
+        </li>
+      </ol>
+
+    </div>
+
+    <h2 id="Installi3">Installing the Driver on MacOS</h2>
+
+    <p>Follow these steps to install the Splice Machine ODBC driver on a MacOS
+computer:</p>
+
+    <div class="opsStepsList">
+      <ol class="boldFont">
+        <li>
+          <p class="topLevel">Make sure you have iODBC installed.</p>
+
+          <p class="indentLevel1">You must have an ODBC administration driver to manage ODBC data sources on your Mac. We recommend installing the iODBC driver for the Mac, which you’ll find on the iODBC site: <a href="www.iodbc.org" target="_blank">www.iodbc.org</a></p>
+        </li>
+        <li>
+          <p class="topLevel">Download the installer:</p>
+
+          <p class="indentLevel1">You can download the driver installer from our ODBC download
+site: <a href="https://www.splicemachine.com/get-started/odbc-driver-download/" target="_blank">https://www.splicemachine.com/get-started/odbc-driver-download/</a></p>
+
+          <p class="indentLevel1">Download the installer to the MacOS computer on which you want to
+install the driver. The file will have a name similar to this:</p>
+
+          <div class="preWrapper">
+            <pre class="Plain"><code>splice_odbc_64_macosx64-2.5-45.0.tar.gz
+</code></pre>
+
+          </div>
+        </li>
+        <li>
+          <p class="topLevel">Unzip the installation package</p>
+
+          <p class="indentLevel1">Use the following command to unpack the tarball you installed,
+substituting in the actual version number from the download:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>tar -xzf splice_odbc_64_macosx64-&lt;version&gt;.tar.gz
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">This creates a directory named <code>splice_odbc_macosx64</code>.</p>
+        </li>
+        <li>
+          <p class="topLevel">Install the driver:</p>
+
+          <p class="indentLevel1">Navigate to the directory that was created when you unzipped the
+tarball, and run the install script:</p>
+
+          <div class="preWrapperWide">
+            <pre class="ShellCommand"><code>./install.sh
+</code></pre>
+
+          </div>
+
+          <p class="indentLevel1">Follow the installer prompts. In most cases, you can simply accept the default values.</p>
+
+          <p class="indentLevel1">The installer will create several files in the install directory, including these three files, which contain the configuration info that can be modified as required:</p>
+
+          <table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>File</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>odbc.ini</code></td>
+            <td>
+                <p>Specifies the ODBC data sources (DSNs).</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>odbcinst.ini</code></td>
+            <td>Specifies the ODBC drivers.</td>
+        </tr>
+        <tr>
+            <td><code>splice.odbcdriver.ini</code></td>
+            <td>Configuration information specific to the Splice Machine ODBC driver.</td>
+        </tr>
+    </tbody>
+</table>
+
+          <p class="indentLevel1">If you have not previously installed our ODBC driver, the installer will also copy the files into $HOME/Library/ODBC for use with iODBC.</p>
+        </li>
+        <li>
+          <p class="topLevel">Configure the driver:</p>
+
+          <p class="indentLevel1">The installed driver is configured with settings that you specified when responding to the installer prompts. You can change values as follows:</p>
+
+          <ol class="LowerAlpha">
+            <li>
+              <p class="topLevel">Edit the <code>odbc.ini</code> file to match your
+configuration.</p>
+
+              <p>You’ll find the <code>odbc.ini</code> file in your
+$HOME/Library/ODBC directory; we also create a link to this file in
+$HOME/.odbc.ini. You can edit <code>odbc.ini</code> (or <code>.odbc.ini</code>) from either location.</p>
+
+              <blockquote>
+                <p class="noteNote">The <span class="AppCommand">URL</span> field in the
+<code>odbc.ini</code> file is actually the IP address of the Splice
+Machine server.</p>
+              </blockquote>
+
+              <p>The default version of the <code>odbc.ini</code> file looks like this:</p>
+
+              <div class="preWrapperWide">
+                <pre class="Plain"><code>[ODBC Data Sources]
+SpliceODBC64        = SpliceODBCDriver
+
+[SpliceODBC64]
+Description     = Splice Machine ODBC 64-bit
+Driver          = /usr/local/splice/lib64/libsplice_odbc.so
+UID             = splice
+PWD             = admin
+URL             = 0.0.0.0
+PORT            = 1527
+</code></pre>
+
+              </div>
+
+              <p>If you are connecting to a Kerberos-enabled cluster using ODBC, you <strong>must add this parameter</strong>:</p>
+              <div class="preWrapperWide">
+                <pre class="Plain"><code>USE_KERBEROS    = 1
+</code></pre>
+              </div>
+
+              <p>For more information about connecting to a Kerberos-enabled cluster, see <a href="tutorials_connect_haproxy.html">Connecting to Splice Machine Through HAProxy</a>.</p>
+            </li>
+            <li>
+              <p class="topLevel">Edit (if desired) and copy the <code>splice.odbcdriver.ini</code> file:</p>
+
+              <p>The <code>splice.odbcdriver.ini</code> file contains information specific
+to the driver. You can edit this file to configure driver
+logging, which is disabled by default:</p>
+
+              <div class="preWrapperWide">
+                <pre class="Plain"><code>[Driver]
+DriverManagerEncoding=UTF-16
+DriverLocale=en-US
+ErrorMessagesPath=/usr/local/splice/errormessages/
+LogLevel=0
+LogNamespace=
+LogPath=
+ODBCInstLib=/usr/lib64/libodbcinst.so
+</code></pre>
+
+              </div>
+
+              <p class="indentLevel1">A copy of the Splice Machine ODBC configuration file, <code>splice.odbcdriver.ini,</code>
+which contains the default values, was copy to <code>/Library/ODBC/SpliceMachine</code> during
+installation. You will need root access to modify this file:</p>
+
+              <div class="preWrapperWide">
+                <pre class="ShellCommand"><code>sudo vi /Library/ODBC/SpliceMachine/splice.odbcdriver.ini
+</code></pre>
+
+              </div>
+
+              <p>To configure logging, modify the <code>LogLevel</code> and <code>LogPath</code>
+values:</p>
+
+              <table>
+    <col />
+    <col />
+    <tbody>
+        <tr>
+            <td><code>LogLevel</code></td>
+            <td>
+                <p>You can specify one of the following values:</p>
+                <div class="preWrapperWide"><pre class="Plain">0 = OFF<br />1 = LOG_FATAL<br />2 = LOG_ERROR<br />3 = LOG_WARNING<br />4 = LOG_INFO<br />5 = LOG_DEBUG<br />6 = LOG_TRACE</pre>
+                </div>
+                <p>The larger the LogLevel value, the more verbose the logging.</p>
+                <p class="noteIcon">Logging does impact driver performance.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>LogPath</code></td>
+            <td>
+                <p>The path to the directory in which you want the logging files stored. Two log files are written in this directory:</p>
+                <ul>
+                    <li class="plainFont">the <code>splice_driver.log</code> file contains driver interactions with the application and the driver manager</li>
+                    <li class="plainFont">the <code>splice_derby.log</code> file contains information about the drivers interaction with the Splice Machine cluster</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p class="topLevel">Verify your installation</p>
+
+          <p>You can test your installation by launching the 64-bit version of the
+iODBC Data Source Administrator for both configuring and testing your DSNs. Note
+that you can also perform your <code>odbc.ini</code> modifications with this tool instead of manually editing the file.</p>
         </li>
       </ol>
 
