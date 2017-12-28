@@ -417,14 +417,20 @@ computer:
             PWD             = admin
             URL             = 0.0.0.0
             PORT            = 1527
-{% if site.isbuild_docstest == true %}            SSL             = peerAuthentication
+            SSL             = peerAuthentication
             SSL_CERT        = /home/splice/client.pem
             SSL_PKEY        = /home/splice/client.key
             SSL_TRUST       = TRUE
-{% endif %}
         {: .Plain}
-
         </div>
+
+        If you are connecting to a Kerberos-enabled cluster using ODBC, you **must add this parameter**:
+        <div class="preWrapperWide" markdown="1">
+            USE_KERBEROS    = 1
+        {: .Plain}
+        </div>
+
+        For more information about connecting to a Kerberos-enabled cluster, see [Connecting to Splice Machine Through HAProxy](tutorials_connect_haproxy.html).
 
     2.  Copy the `odbcinst.ini` configuration file:
         {: .topLevel}

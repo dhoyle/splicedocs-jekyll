@@ -238,10 +238,10 @@ Follow these steps:
 </div>
 ## Using HAProxy with Splice Machine on a Kerberos-Enabled Cluster   {#Using}
 
-Your JDBC applications can authenticate to the backend region server
+Your JDBC and ODBC applications can authenticate to the backend region server
 through HAProxy on a Splice Machine cluster that has Kerberos enabled,
 
-You can enable Kerberos mode on a CDH5.8.x cluster using the
+You can enable Kerberos mode on a CDH5.8.x or later cluster using the
 configuration wizard described here:
 
 <div class="preWrapperWide" markdown="1">
@@ -249,19 +249,45 @@ configuration wizard described here:
 {: .Plain}
 
 </div>
-As a Kerberos pre-requisite for Splice Machines JDBC access:
+
+### Kerberos and Application Access
+As a Kerberos pre-requisite for Splice Machine JDBC and ODBC access:
 
 * Database users must be added in the Kerberos realm as principals
 * Keytab entries must be generated and deployed to the remote clients on
-  which the JDBC applications are going to connect.
+  which the applications are going to connect.
 
 HAProxy will then transparently forward the connections to the back-end
 cluster in Kerberos setup.
 
+### Kerberos and ODBC Access
+To connect to a Kerberos-enabled cluster with ODBC, follow these steps:
+
+1. Verify that the odbc.ini configuration file for the DSN you're connecting to
+  includes this setting:
+
+    <div class="preWrapperWide" markdown="0"><pre class="Example">
+    USE_KERBEROS=1</pre>
+    </div>
+  See our [Using the Splice Machine ODBC Driver](tutorials_connect_odbcinstall.html) for more information.
+
+2. A default security principal user must be established with a TGT in the ticket
+  cache prior to invoking the driver. You can use the following command to establish
+  the principal user:
+
+    <div class="preWrapperWide" markdown="0"><pre class="ShellCommand">
+    kinit <em>principal</em></pre>
+    </div>
+    Where *principal* is the name of the user who will be accessing Splice Machine.
+    Enter the password for this user when prompted.
+
+3. Launch the application that will connect using ODBC. The ODBC driver will use
+  that default Kerberos *principal* when authenticating with Splice Machine.
+
 ### Example
 
 This example assumes that you are using the default user name `splice`.
-Follow these steps to connect through HAProxy:
+Follow these steps to connect with through HAProxy:
 
 <div class="opsStepsList" markdown="1">
 1.  Create the principal in Kerberos Key Distribution Center
@@ -281,7 +307,7 @@ Follow these steps to connect through HAProxy:
 3.  Connect:
     {: .topLevel}
 
-    You can now connect to the Kerberos-enabled Splice Machine cluster
+    You can now connect to the Kerberos-enabled Splice Machine cluster with JDBC
     through HAProxy, using the following URL:
 
     <div class="preWrapperWide" markdown="1">

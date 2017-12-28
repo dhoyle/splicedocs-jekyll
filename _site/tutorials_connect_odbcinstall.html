@@ -900,7 +900,7 @@ a dot:</p>
               <p>The default version of the <code>odbc.ini</code> file looks like this:</p>
 
               <div class="preWrapperWide">
-                <pre><code>[ODBC Data Sources]
+                <pre class="Plain"><code>[ODBC Data Sources]
 SpliceODBC64        = SpliceODBCDriver
 
 [SpliceODBC64]
@@ -915,8 +915,15 @@ SSL_CERT        = /home/splice/client.pem
 SSL_PKEY        = /home/splice/client.key
 SSL_TRUST       = TRUE
 </code></pre>
-
               </div>
+
+              <p>If you are connecting to a Kerberos-enabled cluster using ODBC, you <strong>must add this parameter</strong>:</p>
+              <div class="preWrapperWide">
+                <pre class="Plain"><code>USE_KERBEROS    = 1
+</code></pre>
+              </div>
+
+              <p>For more information about connecting to a Kerberos-enabled cluster, see <a href="tutorials_connect_haproxy.html">Connecting to Splice Machine Through HAProxy</a>.</p>
             </li>
             <li>
               <p class="topLevel">Copy the <code>odbcinst.ini</code> configuration file:</p>
