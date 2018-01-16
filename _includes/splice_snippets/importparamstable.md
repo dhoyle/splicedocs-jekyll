@@ -63,7 +63,7 @@
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#characterDelimiter">characterDelimiter</a></td>
             <td>The character is used to delimit strings in the imported data.
             </td>
-            <td class="CodeFont">''</td>
+            <td class="CodeFont">'"'</td>
         </tr>
         <tr>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#timestampFormat">timestampFormat</a></td>

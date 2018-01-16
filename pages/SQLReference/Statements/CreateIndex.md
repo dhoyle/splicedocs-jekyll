@@ -23,8 +23,9 @@ CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexNam
       <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a>
       [ ASC  | DESC ]
       [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
-     )</pre>
-
+     )
+   [ SPLITKEYS splitKeyInfo HFILE hfileLocation ]
+</pre>
 </div>
 <div class="paramList" markdown="1">
 indexName
@@ -50,7 +51,69 @@ INDEX` statement. Note, however, that a single column name can be used
 in multiple indexes.
 {: .paramDefn}
 
+splitKeyInfo
+{: .paramName}
+
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+AUTO |
+{ LOCATION filePath
+    [ columnDelimiter ]
+    [ characterDelimiter ]
+    [ timestampFormat ]
+    [ dateFormat ]
+    [ timeFormat ]
+}</pre>
 </div>
+
+Use the optional `SPLITKEYS` section to create indexes using HFile Bulk Loading, which improves performance when indexing very large datasets. The table you're indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted. This is very similar to using HFile Bulk Loading for importing large datasets, which is described in our [Bulk HFile Import Tutorial](tutorials_ingest_importexampleshfile.html).
+{: .paramDefnFirst}
+
+You can specify `AUTO` to have Splice Machine scan the data and determine the splits automatically. Or you can specify the location (full path) of a CSV file that you've created that defines the split keys, again similarly to how you specify split keys when using our Bulk HFile Import procedure.
+{: .paramDefn}
+
+If you're using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions. Each parameter name links to a fuller description of the possible parameter values, which are the same as those used in our [Import Parameters Tutorial](tutorials_ingest_importparams.html).
+{: .paramDefn}
+
+   <div class="paramList" markdown="1">
+   [columnDelimiter](tutorials_ingest_importparams.html#columnDelimiter)
+   {: .paramName}
+
+   The character used to separate columns. You don't need to specify this if using the comma (,) character as your delimiter.
+   {: .paramDefnFirst}
+
+   [characterDelimiter](tutorials_ingest_importparams.html#characterDelimiter)
+   {: .paramName}
+
+   The character is used to delimit strings in the imported data. You don't need to specify this if using the double-quote (`\"`) character as your delimiter.
+   {: .paramDefnFirst}
+
+   [timeStampFormat](tutorials_ingest_importparams.html#timestampFormat)
+   {: .paramName}
+
+   The format of timestamps stored in the file. You don't need to specify this if no time columns in the file, or if the format of any timestamps in the file match the Java.sql.Timestamp default format, which is: "*yyyy-MM-dd HH:mm:ss*".
+   {: .paramDefnFirst}
+
+   [dateFormat](tutorials_ingest_importparams.html#dateFormat)
+   {: .paramName}
+
+   The format of datestamps stored in the file. You don't need to specify this if there are no date columns in the file, or if the format of any dates in the file match the pattern: "*yyyy-MM-dd*".
+   {: .paramDefnFirst}
+
+   [timeFormat](tutorials_ingest_importparams.html#timeFormat)
+   {: .paramName}
+
+   The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "*HH:mm:ss*".
+   {: .paramDefnFirst}
+   </div>
+
+hFileLocation
+{: .paramName}
+
+The location (full path) in which the temporary HFiles will be created. These files will automatically be deleted after the index creation process completes. This parameter is required when specifying split keys.
+{: .paramDefnFirst}
+
+</div>
+
 ## Usage
 
 Splice Machine can use indexes to improve the performance of data

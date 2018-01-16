@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -211,16 +211,6 @@
 
                 <!-- If building the docsdev version, do not include Swiftype search box -->
                 
-                <li>
-<!-- Start Swiftype search -->
-                    <div id="swiftype-search-container">
-                        <form>
-                          <input type="text" class="st-default-search-input swiftype-input">
-                          <button type="submit" class="swiftype-submit">Search</button>
-                        </form>
-                    </div>
-                </li>
-                
             </ul>
         </div>
         </div>
@@ -238,7 +228,7 @@
                 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Splice Machine Internal v2.7.0</li>
+    <li class="sidebarTitle">Splice Machine Dev v2.7.0</li>
     
     
     
@@ -2846,8 +2836,9 @@ CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexNam
       <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a>
       [ ASC  | DESC ]
       [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
-     )</pre>
-
+     )
+   [ SPLITKEYS splitKeyInfo HFILE hfileLocation ]
+</pre>
 </div>
     <div class="paramList">
       <p class="paramName">indexName</p>
@@ -2866,7 +2857,53 @@ CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexNam
 INDEX</code> statement. Note, however, that a single column name can be used
 in multiple indexes.</p>
 
+      <p class="paramName">splitKeyInfo</p>
+
+      <div class="fcnWrapperWide"><pre class="FcnSyntax">
+AUTO |
+{ LOCATION filePath
+    [ columnDelimiter ]
+    [ characterDelimiter ]
+    [ timestampFormat ]
+    [ dateFormat ]
+    [ timeFormat ]
+}</pre>
+</div>
+
+      <p class="paramDefnFirst">Use the optional <code>SPLITKEYS</code> section to create indexes using HFile Bulk Loading, which improves performance when indexing very large datasets. The table you’re indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted. This is very similar to using HFile Bulk Loading for importing large datasets, which is described in our <a href="tutorials_ingest_importexampleshfile.html">Bulk HFile Import Tutorial</a>.</p>
+
+      <p class="paramDefn">You can specify <code>AUTO</code> to have Splice Machine scan the data and determine the splits automatically. Or you can specify the location (full path) of a CSV file that you’ve created that defines the split keys, again similarly to how you specify split keys when using our Bulk HFile Import procedure.</p>
+
+      <p class="paramDefn">If you’re using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions. Each parameter name links to a fuller description of the possible parameter values, which are the same as those used in our <a href="tutorials_ingest_importparams.html">Import Parameters Tutorial</a>.</p>
+
+      <div class="paramList">
+        <p class="paramName"><a href="tutorials_ingest_importparams.html#columnDelimiter">columnDelimiter</a></p>
+
+        <p class="paramDefnFirst">The character used to separate columns. You don’t need to specify this if using the comma (,) character as your delimiter.</p>
+
+        <p class="paramName"><a href="tutorials_ingest_importparams.html#characterDelimiter">characterDelimiter</a></p>
+
+        <p class="paramDefnFirst">The character is used to delimit strings in the imported data. You don’t need to specify this if using the double-quote (<code>\"</code>) character as your delimiter.</p>
+
+        <p class="paramName"><a href="tutorials_ingest_importparams.html#timestampFormat">timeStampFormat</a></p>
+
+        <p class="paramDefnFirst">The format of timestamps stored in the file. You don’t need to specify this if no time columns in the file, or if the format of any timestamps in the file match the Java.sql.Timestamp default format, which is: “<em>yyyy-MM-dd HH:mm:ss</em>”.</p>
+
+        <p class="paramName"><a href="tutorials_ingest_importparams.html#dateFormat">dateFormat</a></p>
+
+        <p class="paramDefnFirst">The format of datestamps stored in the file. You don’t need to specify this if there are no date columns in the file, or if the format of any dates in the file match the pattern: “<em>yyyy-MM-dd</em>”.</p>
+
+        <p class="paramName"><a href="tutorials_ingest_importparams.html#timeFormat">timeFormat</a></p>
+
+        <p class="paramDefnFirst">The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: “<em>HH:mm:ss</em>”.</p>
+      </div>
+
+      <p class="paramName">hFileLocation</p>
+
+      <p class="paramDefnFirst">The location (full path) in which the temporary HFiles will be created. These files will automatically be deleted after the index creation process completes. This parameter is required when specifying split keys.</p>
+
     </div>
+
     <h2 id="usage">Usage</h2>
 
     <p>Splice Machine can use indexes to improve the performance of data
@@ -2968,8 +3005,8 @@ splice&gt; CREATE INDEX myIdx ON myTable(ID);
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2017 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Dec 28, 2017 <br />
+               &copy;2018 Splice Machine, Inc. All rights reserved. <br />
+ Site last generated: Jan 16, 2018 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
