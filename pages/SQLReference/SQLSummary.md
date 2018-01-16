@@ -47,7 +47,7 @@ Splice Machine:
                     </tr>
                     <tr>
                         <td><em>DDL</em></td>
-                        <td><code>CREATE TABLE, CREATE SCHEMA, ALTER TABLE, DELETE, UPDATE</code></td>
+                        <td><code>CREATE TABLE, CREATE SCHEMA, CREATE INDEX, ALTER TABLE, DELETE, UPDATE</code></td>
                     </tr>
                     <tr>
                         <td><em>DML</em></td>
@@ -123,4 +123,3 @@ processing speed of your queries:
 
 </div>
 </section>
-
