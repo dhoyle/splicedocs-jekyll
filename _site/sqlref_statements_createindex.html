@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -211,6 +211,16 @@
 
                 <!-- If building the docsdev version, do not include Swiftype search box -->
                 
+                <li>
+<!-- Start Swiftype search -->
+                    <div id="swiftype-search-container">
+                        <form>
+                          <input type="text" class="st-default-search-input swiftype-input">
+                          <button type="submit" class="swiftype-submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                
             </ul>
         </div>
         </div>
@@ -228,7 +238,7 @@
                 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Splice Machine Dev v2.7.0</li>
+    <li class="sidebarTitle">Splice Machine Internal v2.7.0</li>
     
     
     
@@ -2862,26 +2872,24 @@ in multiple indexes.</p>
       <div class="fcnWrapperWide"><pre class="FcnSyntax">
 AUTO |
 { LOCATION filePath
-    [ columnDelimiter ]
-    [ characterDelimiter ]
+    [ colDelimiter ]
+    [ charDelimiter ]
     [ timestampFormat ]
     [ dateFormat ]
     [ timeFormat ]
 }</pre>
 </div>
 
-      <p class="paramDefnFirst">Use the optional <code>SPLITKEYS</code> section to create indexes using HFile Bulk Loading, which improves performance when indexing very large datasets. The table you’re indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted. This is very similar to using HFile Bulk Loading for importing large datasets, which is described in our <a href="tutorials_ingest_importexampleshfile.html">Bulk HFile Import Tutorial</a>.</p>
+      <p class="paramDefnFirst">Use the optional <code>SPLITKEYS</code> section to create indexes using HFile Bulk Loading, which is described in the <a href="#BulkIndex">Using Bulk Hfile Indexing</a> section, below. Using bulk HFiles improves performance for large datasets, and is related to our <a href="tutorials_ingest_importexampleshfile.html">Bulk HFile Import procedure</a>.</p>
 
-      <p class="paramDefn">You can specify <code>AUTO</code> to have Splice Machine scan the data and determine the splits automatically. Or you can specify the location (full path) of a CSV file that you’ve created that defines the split keys, again similarly to how you specify split keys when using our Bulk HFile Import procedure.</p>
-
-      <p class="paramDefn">If you’re using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions. Each parameter name links to a fuller description of the possible parameter values, which are the same as those used in our <a href="tutorials_ingest_importparams.html">Import Parameters Tutorial</a>.</p>
+      <p class="paramDefn">You can specify <code>AUTO</code> to have Splice Machine scan the data and determine the splits automatically. Or you can specify your own split keys in a CSV file; if you’re using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions. Each parameter name links to a fuller description of the possible parameter values, which are the similar to those used in our <a href="tutorials_ingest_importparams.html">Import Parameters Tutorial</a>.</p>
 
       <div class="paramList">
-        <p class="paramName"><a href="tutorials_ingest_importparams.html#columnDelimiter">columnDelimiter</a></p>
+        <p class="paramName"><a href="tutorials_ingest_importparams.html#columnDelimiter">colDelimiter</a></p>
 
         <p class="paramDefnFirst">The character used to separate columns. You don’t need to specify this if using the comma (,) character as your delimiter.</p>
 
-        <p class="paramName"><a href="tutorials_ingest_importparams.html#characterDelimiter">characterDelimiter</a></p>
+        <p class="paramName"><a href="tutorials_ingest_importparams.html#characterDelimiter">charDelimiter</a></p>
 
         <p class="paramDefnFirst">The character is used to delimit strings in the imported data. You don’t need to specify this if using the double-quote (<code>\"</code>) character as your delimiter.</p>
 
@@ -2944,6 +2952,26 @@ value of an indexed column.</span></p>
 
     <p>If a qualified index name is specified, the schema name cannot begin
 with <code>SYS</code>.</p>
+
+    <h2 id="BulkIndex">Using Bulk HFiles to Create an Index</h2>
+
+    <p>Bulk HFile indexing improves performance when indexing very large datasets. The table you’re indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted. This is very similar to using HFile Bulk Loading for importing large datasets, which is described in our <a href="tutorials_ingest_importexampleshfile.html">Bulk HFile Import Tutorial</a>.</p>
+
+    <p>You can have Splice Machine automatically determine the splits by scanning the data, or you can define the split keys in a CSV file. In the following example, we use our understanding of the <code>Orders</code> table to first create a CSV file named <code>ordersKey.csv</code> that contains the split keys we want, and then use the following <code>CREATE INDEX</code> statement to create the index:</p>
+
+    <div class="preWrapperWide">
+      <pre class="Example">
+CREATE INDEX o_Cust_Idx on Orders(
+   o_custKey,
+   o_orderKey
+)
+SPLITKEYS LOCATION '/tmp/ordersKey.csv'
+          COLDELIMITER '|'
+          HFILE LOCATION '/tmp/HFiles';
+</pre>
+    </div>
+
+    <p>The <code>/tmp/ordersKey.csv</code> file specifies the index keys; it uses the <code>|</code> character as a column delimiter. The temporary HFiles are created in the <code>/tmp/HFiles</code> directory.</p>
 
     <h2 id="indexes-and-constraints">Indexes and constraints</h2>
 

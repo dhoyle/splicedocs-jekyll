@@ -57,31 +57,28 @@ splitKeyInfo
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 AUTO |
 { LOCATION filePath
-    [ columnDelimiter ]
-    [ characterDelimiter ]
+    [ colDelimiter ]
+    [ charDelimiter ]
     [ timestampFormat ]
     [ dateFormat ]
     [ timeFormat ]
 }</pre>
 </div>
 
-Use the optional `SPLITKEYS` section to create indexes using HFile Bulk Loading, which improves performance when indexing very large datasets. The table you're indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted. This is very similar to using HFile Bulk Loading for importing large datasets, which is described in our [Bulk HFile Import Tutorial](tutorials_ingest_importexampleshfile.html).
+Use the optional `SPLITKEYS` section to create indexes using HFile Bulk Loading, which is described in the [Using Bulk Hfile Indexing](#BulkIndex) section, below. Using bulk HFiles improves performance for large datasets, and is related to our [Bulk HFile Import procedure](tutorials_ingest_importexampleshfile.html).
 {: .paramDefnFirst}
 
-You can specify `AUTO` to have Splice Machine scan the data and determine the splits automatically. Or you can specify the location (full path) of a CSV file that you've created that defines the split keys, again similarly to how you specify split keys when using our Bulk HFile Import procedure.
-{: .paramDefn}
-
-If you're using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions. Each parameter name links to a fuller description of the possible parameter values, which are the same as those used in our [Import Parameters Tutorial](tutorials_ingest_importparams.html).
+You can specify `AUTO` to have Splice Machine scan the data and determine the splits automatically. Or you can specify your own split keys in a CSV file; if you're using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions. Each parameter name links to a fuller description of the possible parameter values, which are the similar to those used in our [Import Parameters Tutorial](tutorials_ingest_importparams.html).
 {: .paramDefn}
 
    <div class="paramList" markdown="1">
-   [columnDelimiter](tutorials_ingest_importparams.html#columnDelimiter)
+   [colDelimiter](tutorials_ingest_importparams.html#columnDelimiter)
    {: .paramName}
 
    The character used to separate columns. You don't need to specify this if using the comma (,) character as your delimiter.
    {: .paramDefnFirst}
 
-   [characterDelimiter](tutorials_ingest_importparams.html#characterDelimiter)
+   [charDelimiter](tutorials_ingest_importparams.html#characterDelimiter)
    {: .paramName}
 
    The character is used to delimit strings in the imported data. You don't need to specify this if using the double-quote (`\"`) character as your delimiter.
@@ -154,6 +151,24 @@ value of an indexed column.</span>
 
 If a qualified index name is specified, the schema name cannot begin
 with `SYS`.
+
+## Using Bulk HFiles to Create an Index  {#BulkIndex}
+
+Bulk HFile indexing improves performance when indexing very large datasets. The table you're indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted. This is very similar to using HFile Bulk Loading for importing large datasets, which is described in our [Bulk HFile Import Tutorial](tutorials_ingest_importexampleshfile.html).
+
+You can have Splice Machine automatically determine the splits by scanning the data, or you can define the split keys in a CSV file. In the following example, we use our understanding of the `Orders` table to first create a CSV file named `ordersKey.csv` that contains the split keys we want, and then use the following `CREATE INDEX` statement to create the index:
+
+<div class="preWrapperWide" markdown="1"><pre class="Example">
+CREATE INDEX o_Cust_Idx on Orders(
+   o_custKey,
+   o_orderKey
+)
+SPLITKEYS LOCATION '/tmp/ordersKey.csv'
+          COLDELIMITER '|'
+          HFILE LOCATION '/tmp/HFiles';
+</pre></div>
+
+The `/tmp/ordersKey.csv` file specifies the index keys; it uses the `|` character as a column delimiter. The temporary HFiles are created in the `/tmp/HFiles` directory.
 
 ## Indexes and constraints
 

@@ -545,6 +545,9 @@ computer:
 Follow these steps to install the Splice Machine ODBC driver on a MacOS
 computer:
 
+Our MacOS ODBC driver is currently in Beta release.
+{: .noteIcon}
+
 <div class="opsStepsList" markdown="1">
 1.  Make sure you have iODBC installed.
     {: .topLevel}

@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -211,6 +211,16 @@
 
                 <!-- If building the docsdev version, do not include Swiftype search box -->
                 
+                <li>
+<!-- Start Swiftype search -->
+                    <div id="swiftype-search-container">
+                        <form>
+                          <input type="text" class="st-default-search-input swiftype-input">
+                          <button type="submit" class="swiftype-submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                
             </ul>
         </div>
         </div>
@@ -228,7 +238,7 @@
                 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Splice Machine Dev v2.7.0</li>
+    <li class="sidebarTitle">Splice Machine Internal v2.7.0</li>
     
     
     
@@ -579,7 +589,11 @@
     <p class="noteOnPremiseOnly">    <a href="https://www.splicemachine.com/get-started/" target="_blank">Learn about our products</a></p>
 
     <p>Cleaning your database essentially wipes out any user-defined tables,
-indexes, and related items. You need to follow different steps,
+indexes, and related items.</p>
+
+    <p class="noteIcon"><span class="important">This is a destructive process and should only be used by an administrator.</span> Following the steps in this topic destroys your database data. And if you have non-SpliceMachine data stored in HBase, you must exercise additional caution to not destroy that data. Please follow the steps for your platform carefully.</p>
+
+    <p>You need to follow different steps,
 depending on which version of Splice Machine you are using:</p>
 
     <ul>
@@ -597,6 +611,8 @@ installation</a></li>
 
     <p>Follow these steps to clean your database if you’re using the
 Cloudera-managed cluster version of Splice Machine:</p>
+
+    <p class="noteIcon">This is a destructive process and should only be used by an administrator!</p>
 
     <div class="opsStepsList">
       <ol class="boldFont">
@@ -709,6 +725,8 @@ Cloudera Manager, using this action:</p>
     <p>Follow these steps to clean (or <em>flatten</em>) your database if you’re using
 Splice Machine on an Ambari-managed Hortonworks Cluster:</p>
 
+    <p class="noteIcon">This is a destructive process and should only be used by an administrator!</p>
+
     <div class="opsStepsList">
       <ol class="boldFont">
         <li>
@@ -803,6 +821,8 @@ cluster. You must be logged in as the cluster administrator (typically
 <code>clusteradmin</code> or <code>ec2-user</code>) to run each step. Unless otherwise
 specified, run each of these steps <strong>on your cluster control node</strong>;
 some steps, as indicated, must be run on each node in your cluster.</p>
+
+    <p class="noteIcon">This is a destructive process and should only be used by an administrator!</p>
 
     <div class="opsStepsList">
       <ol class="boldFont">

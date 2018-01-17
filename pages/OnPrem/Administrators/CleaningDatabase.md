@@ -14,7 +14,12 @@ folder: OnPrem/Administrators
 
 {% include splice_snippets/onpremonlytopic.md %}
 Cleaning your database essentially wipes out any user-defined tables,
-indexes, and related items. You need to follow different steps,
+indexes, and related items.
+
+<span class="important">This is a destructive process and should only be used by an administrator.</span> Following the steps in this topic destroys your database data. And if you have non-SpliceMachine data stored in HBase, you must exercise additional caution to not destroy that data. Please follow the steps for your platform carefully.
+{: .noteIcon}
+
+You need to follow different steps,
 depending on which version of Splice Machine you are using:
 
 * [Cleaning Your Splice Machine Database on a Cloudera-Managed
@@ -30,6 +35,9 @@ depending on which version of Splice Machine you are using:
 
 Follow these steps to clean your database if you're using the
 Cloudera-managed cluster version of Splice Machine:
+
+This is a destructive process and should only be used by an administrator!
+{: .noteIcon}
 
 <div class="opsStepsList" markdown="1">
 1.  Shut down HBase and HDFS
@@ -152,6 +160,9 @@ Cloudera-managed cluster version of Splice Machine:
 Follow these steps to clean (or *flatten*) your database if you're using
 Splice Machine on an Ambari-managed Hortonworks Cluster:
 
+This is a destructive process and should only be used by an administrator!
+{: .noteIcon}
+
 <div class="opsStepsList" markdown="1">
 1.  Shut down HBase and HDFS
     {: .topLevel}
@@ -253,6 +264,9 @@ cluster. You must be logged in as the cluster administrator (typically
 `clusteradmin` or `ec2-user`) to run each step. Unless otherwise
 specified, run each of these steps **on your cluster control node**;
 some steps, as indicated, must be run on each node in your cluster.
+
+This is a destructive process and should only be used by an administrator!
+{: .noteIcon}
 
 <div class="opsStepsList" markdown="1">
 1.  Stop the HBase RegionServers and Master:
