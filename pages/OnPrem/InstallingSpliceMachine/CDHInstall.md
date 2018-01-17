@@ -130,6 +130,31 @@ Machine on your cluster:
             </tr>
            <tr>
                <td rowspan="12" class="SpliceRelease">2.5.0</td>
+               <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH5120}}</td>
+               <td>EL6</td>
+               <td><a href="{{splvar_install_v250_CDH5120-EL6}}">{{splvar_install_v250_CDH5120-EL6}}</a></td>
+           </tr>
+           <tr>
+               <td>EL7</td>
+               <td><a href="{{splvar_install_v250_CDH5120-EL7}}">{{splvar_install_v250_CDH5120-EL7}}</a></td>
+           </tr>
+           <tr>
+               <td>Precise</td>
+               <td><a href="{{splvar_install_v250_CDH5120-PRECISE}}">{{splvar_install_v250_CDH5120-PRECISE}}</a></td>
+           </tr>
+           <tr>
+               <td>SLES11</td>
+               <td><a href="{{splvar_install_v250_CDH5120-SLES11}}">{{splvar_install_v250_CDH5120-SLES11}}</a></td>
+           </tr>
+           <tr>
+               <td>Trusty</td>
+               <td><a href="{{splvar_install_v250_CDH5120-TRUSTY}}">{{splvar_install_v250_CDH5120-TRUSTY}}</a></td>
+           </tr>
+           <tr>
+               <td>Wheezy</td>
+               <td><a href="{{splvar_install_v250_CDH5120-WHEEZY}}">{{splvar_install_v250_CDH5120-WHEEZY}}</a></td>
+            </tr>
+           <tr>
                <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH583}}</td>
                <td>EL6</td>
                <td><a href="{{splvar_install_v250_CDH583-EL6}}">{{splvar_install_v250_CDH583-EL6}}</a></td>
@@ -153,31 +178,6 @@ Machine on your cluster:
            <tr>
                <td>Wheezy</td>
                <td><a href="{{splvar_install_v250_CDH583-WHEEZY}}">{{splvar_install_v250_CDH583-WHEEZY}}</a></td>
-            </tr>
-           <tr>
-               <td rowspan="6" class="SplicePlatform">{{splvar_install_CDH580}}</td>
-               <td>EL6</td>
-               <td><a href="{{splvar_install_v250_CDH580-EL6}}">{{splvar_install_v250_CDH580-EL6}}</a></td>
-           </tr>
-           <tr>
-               <td>EL7</td>
-               <td><a href="{{splvar_install_v250_CDH580-EL7}}">{{splvar_install_v250_CDH580-EL7}}</a></td>
-           </tr>
-           <tr>
-               <td>Precise</td>
-               <td><a href="{{splvar_install_v250_CDH580-PRECISE}}">{{splvar_install_v250_CDH580-PRECISE}}</a></td>
-           </tr>
-           <tr>
-               <td>SLES11</td>
-               <td><a href="{{splvar_install_v250_CDH580-SLES11}}">{{splvar_install_v250_CDH580-SLES11}}</a></td>
-           </tr>
-           <tr>
-               <td>Trusty</td>
-               <td><a href="{{splvar_install_v250_CDH580-TRUSTY}}">{{splvar_install_v250_CDH580-TRUSTY}}</a></td>
-           </tr>
-           <tr>
-               <td>Wheezy</td>
-               <td><a href="{{splvar_install_v250_CDH580-WHEEZY}}">{{splvar_install_v250_CDH580-WHEEZY}}</a></td>
             </tr>
         </tbody>
     </table>
