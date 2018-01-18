@@ -552,7 +552,7 @@ Our MacOS ODBC driver is currently in Beta release.
 1.  Make sure you have iODBC installed.
     {: .topLevel}
 
-    You must have an ODBC administration driver to manage ODBC data sources on your Mac. We recommend installing the iODBC driver for the Mac, which you'll find on the iODBC site: <a href="www.iodbc.org" target='_blank'>www.iodbc.org</a>
+    You must have an ODBC administration driver to manage ODBC data sources on your Mac. We recommend installing the iODBC driver for the Mac, which you'll find on the iODBC site: <a href="http://www.iodbc.org/" target='_blank'>www.iodbc.org/</a>
     {: .indentLevel1}
 
 2.  Download the installer:
