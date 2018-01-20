@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -211,6 +211,16 @@
 
                 <!-- If building the docsdev version, do not include Swiftype search box -->
                 
+                <li>
+<!-- Start Swiftype search -->
+                    <div id="swiftype-search-container">
+                        <form>
+                          <input type="text" class="st-default-search-input swiftype-input">
+                          <button type="submit" class="swiftype-submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                
             </ul>
         </div>
         </div>
@@ -228,7 +238,7 @@
                 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Splice Machine Dev v2.7.0</li>
+    <li class="sidebarTitle">Splice Machine Internal v2.7.0</li>
     
     
     
@@ -2891,6 +2901,10 @@ perform a full backup, and subsequent backups will be incremental.</p>
     <h2 id="results">Results</h2>
 
     <p>This procedure does not return a result.</p>
+
+    <h2 id="backup-resource-allocation">Backup Resource Allocation</h2>
+
+    <p>Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. See the <a href="onprem_info_troubleshoot.html#BackupResources">Backup Resource Allocation</a> section of our <em>Troubleshooting Guide</em> for specific information about allocation of resources.</p>
 
     <h2 id="usage-notes">Usage Notes</h2>
 

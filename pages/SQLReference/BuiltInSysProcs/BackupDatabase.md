@@ -78,6 +78,10 @@ perform a full backup, and subsequent backups will be incremental.
 
 This procedure does not return a result.
 
+## Backup Resource Allocation
+
+Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. See the [Backup Resource Allocation](onprem_info_troubleshoot.html#BackupResources) section of our *Troubleshooting Guide* for specific information about allocation of resources.
+
 ## Usage Notes
 
 There's a subtle issue with performing a backup when you're using a
