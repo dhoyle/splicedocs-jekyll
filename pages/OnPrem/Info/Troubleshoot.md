@@ -16,12 +16,13 @@ folder: OnPrem/Info
 
 This topic provides troubleshooting guidance for these issues that you may encounter with your Splice Machine database:
 
-* [Restarting Splice Machine after an HMaster Failure](*HMasterRestart)
-* [Updating Stored Query Plans after a Splice Machine Update](*SpliceUpdate)
+* [Restarting Splice Machine after an HMaster Failure](#HMasterRestart)
+* [Updating Stored Query Plans after a Splice Machine Update](#SpliceUpdate)
 * [Increasing Parallelism for Spark Shuffles](#SparkShuffles)
 * [Force Compaction to Run Locally](#LocalCompaction)
 * [Kerberos Configuration Option](#KerberosConfig)
 * [Resource Allocation for Backup Jobs](#BackupResources)
+* [Bulk Import of Very Large Datasets with Spark 2.2 as Separate Service](#BulkImportSparkSep)
 
 ## Restarting Splice Machine After HMaster Failure {#HMasterRestart}
 
@@ -144,6 +145,28 @@ Thus, the total number of memory that must be available for Map Reduce jobs is:
   {: .Example}
   </div>
 
+## Bulk Import of Very Large Datasets with Spark 2.2 as Separate Service  {#BulkImportSparkSep}
+
+When using Splice Machine with Spark 2.2 as a separate service with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
+
+#### Update Shuffle-to-Mem Setting
+
+Modify the following setting in the Cloudera Manager's *Java Configuration Options for HBase Master*:
+
+  <div class="preWrapperWide" markdown="1">
+    -Dsplice.spark.reducer.maxReqSizeShuffleToMem=134217728
+  {: .Example}
+  </div>
+
+#### Update the YARN User Classpath
+
+Modify the following settings in the Cloudera Manager's *YARN (MR2 Included) Service Environment Advanced Configuration Snippet (Safety Valve)*:
+
+  <div class="preWrapperWide" markdown="1">
+    YARN_USER_CLASSPATH=/opt/cloudera/parcels/SPARK2/lib/spark2/yarn/spark-2.2.0.cloudera1-yarn-shuffle.jar:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/scala-library-2.11.8.jar
+    YARN_USER_CLASSPATH_FIRST=true
+  {: .Example}
+  </div>
 
 </div>
 </section>
