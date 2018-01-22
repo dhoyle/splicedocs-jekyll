@@ -22,7 +22,7 @@ This topic provides troubleshooting guidance for these issues that you may encou
 * [Force Compaction to Run Locally](#LocalCompaction)
 * [Kerberos Configuration Option](#KerberosConfig)
 * [Resource Allocation for Backup Jobs](#BackupResources)
-* [Bulk Import of Very Large Datasets with Spark 2.2 as Separate Service](#BulkImportSparkSep)
+* [Bulk Import of Very Large Datasets with Spark 2.2](#BulkImportSparkSep)
 
 ## Restarting Splice Machine After HMaster Failure {#HMasterRestart}
 
@@ -145,7 +145,7 @@ Thus, the total number of memory that must be available for Map Reduce jobs is:
   {: .Example}
   </div>
 
-## Bulk Import of Very Large Datasets with Spark 2.2 as Separate Service  {#BulkImportSparkSep}
+## Bulk Import of Very Large Datasets with Spark 2.2  {#BulkImportSparkSep}
 
 When using Splice Machine with Spark 2.2 as a separate service with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
 
