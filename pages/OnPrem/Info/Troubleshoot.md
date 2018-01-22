@@ -114,13 +114,13 @@ The Map Reduce application master requires the following number of vcores:
 
 There must be at least this many additional vcores available to execute Map Reduce tasks:
   <div class="preWrapperWide" markdown="1">
-    max{mapreduce.map.cpu.vcores+mapreduce.reduce.cpu.vcores}
+    max{mapreduce.map.cpu.vcores,mapreduce.reduce.cpu.vcores}
   {: .Example}
   </div>
 
 Thus, the total number of vcores that must be available for Map Reduce jobs is:
   <div class="preWrapperWide" markdown="1">
-    yarn.app.mapreduce.am.resource.cpu-vcores * splice.backup.parallesim + max{mapreduce.map.cpu.vcores+mapreduce.reduce.cpu.vcores}
+    yarn.app.mapreduce.am.resource.cpu-vcores * splice.backup.parallesim + max{mapreduce.map.cpu.vcores,mapreduce.reduce.cpu.vcores}
   {: .Example}
   </div>
 
