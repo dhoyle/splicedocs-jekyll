@@ -147,7 +147,7 @@ Thus, the total number of memory that must be available for Map Reduce jobs is:
 
 ## Bulk Import of Very Large Datasets with Spark 2.2  {#BulkImportSparkSep}
 
-When using Splice Machine with Spark 2.2 as a separate service with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
+When using Splice Machine with Spark 2.2 with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
 
 #### Update Shuffle-to-Mem Setting
 
