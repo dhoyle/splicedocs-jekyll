@@ -1,18 +1,16 @@
+Build a new version:
+    1) Run servesplice
+    2) Upload to server as usual; all should work
 
-Step-by-step release build-and-upload process (using 2.7.0 as example)
+When adding a new release version (e.g. 2.8):
 
-1. Build 2.6.0 for docstest and generate sitemap
+    1) Update servesplice with new version #
 
-2. Upload build to 2.6.0/NewVersion
+    2) Create a new sitemapgen.<vers>.xml that appends the appropriate vers to each url (e.g. 2.7)
 
-3. Build 2.6.1 for docstest and generate sitemap
+    3) Uupdate serveprev with new previous version #
 
-4. Upload build to 2.6.1/NewVersion
-
-5. Build 2.7.0 (new release) for docstest and generate sitemap
-
-6. Combine sitemaps:
-    cat sitemap.xxx.xml > _site/sitemap.xml
-    edit extraneous lines out of _site/sitemap.xml
-
-7. Upload build to 2.7.0/NewVersion
+    4) Add a new sitemap file name to each of these sitemapindex files:
+       - sitemapindex.doc.xml
+       - sitemap.docstest.xml
+       - sitemap.docsdev.xml
