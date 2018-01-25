@@ -1,18 +1,145 @@
+                BUILDING THE SPLICE MACHINE JEKYLL DOCS
+                ---------------------------------------
 
-Step-by-step release build-and-upload process (using 2.7.0 as example)
+Building a new version
+----------------------
+Sitemap files complicate things a bit. To deal with this, we use different scripts when building a current release or previous release. Prev versions are different only in that the generated sitemap includes the version subdirectory, e.g. 2.5/, so a different version of the sitemap is written to the _site/ directory.
 
-1. Build 2.6.0 for docstest and generate sitemap
+Our build actually generates a sitemap for the current build and for all previous builds. The sitemap.xml file
 
-2. Upload build to 2.6.0/NewVersion
+The build script copies the appropriate generated sitemap to the _/site directory when the build (or serve) completes. This means that you can simply upload the site to the correct server location (doc root or doc/subdir) and all will work.
 
-3. Build 2.6.1 for docstest and generate sitemap
+Build the current doc (or docstest) version:
+--------------------------------------------
+    1) Run buildsplice or servesplice
+       - build generates the files but doesn't run the build; this has the advantage of creating the target sitemap files upon build. When you use servesplice, the target sitemap file is not created until you ctrl-c out of the running (local) site.
+       --> This means that if you use servesplice, you MUST quit running the local site before uploading files to the server.
 
-4. Upload build to 2.6.1/NewVersion
+    2) Once the build or serve is done, you can use FTP to upload the version to either:
+        - doc.splicemachine.com/NewVersion
+        - docstest.splicemachine.com/NewVersion
+        - docsdev.splicemachine.com/<JIRA-ID>  --  use this for new content dev-only builds
 
-5. Build 2.7.0 (new release) for docstest and generate sitemap
+        After uploading to doc.splicemachine.com:
+           a) verify the build by pointing your browser to doc.splicemachine.com/NewVersion
+           b) log into the server
+           c) cd subs/doc
+           d) ./UpdateVersion.sh
+           e) logout
 
-6. Combine sitemaps:
-    cat sitemap.xxx.xml > _site/sitemap.xml
-    edit extraneous lines out of _site/sitemap.xml
+        After uploading to docstest.splicemachine.com:
+           a) verify the build by pointing your browser to docstest.splicemachine.com/NewVersion
+           b) log into the server
+           c) cd subs/doc
+           d) ./UpdateVersion.sh
+           e) logout
 
-7. Upload build to 2.7.0/NewVersion
+        After uploading to docsdev
+           - No server action required; simply notify the reviewer
+
+
+Build a prev version
+--------------------
+    - This is never done for docsdev
+    - The process is almost exactly the same as for building a current version
+    - The differences are:
+        a) The generated sitemap must include the previous version's subdirectory; thus it uses a different sitemapgen xml file
+        b) ??? DO WE NEED TO COPY THIS UPLEVEL ????
+
+    1) Run buildprev or serveprev
+       - build generates the files but doesn't run the build; this has the advantage of creating the target sitemap files upon build. When you use serveprev, the target sitemap file is not created until you ctrl-c out of the running (local) site.
+       --> This means that if you use serveprev, you MUST quit running the local site before uploading files to the server.
+
+    2) Once the build or serve is done, you can use FTP to upload the version to either:
+        - doc.splicemachine.com/<subdir>NewVersion
+        - docstest.splicemachine.com/<subdir>NewVersion
+
+        Where <subdir> is something like '2.5' (e.g. doc.splicemachine.com/2.5/NewVersion)
+
+        After uploading to doc.splicemachine.com/<subdir>:
+           a) verify the build by pointing your browser to doc.splicemachine.com/<subdir>/NewVersion
+           b) log into the server
+           c) cd subs/doc/<subdir>
+           d) ./UpdateVersion.sh
+           e) logout
+
+        After uploading to docstest.splicemachine.com/<subdir>:
+           a) verify the build by pointing your browser to docstest.splicemachine.com/<subdir>/NewVersion
+           b) log into the server
+           c) cd subs/docstest/<subdir>
+           d) ./UpdateVersion.sh
+           e) logout
+
+
+Files involved:
+----------------
+    Script Files:
+    -------------
+            - servesplice      Bash script for building and serving the current version
+            - serveprev        Bash script for building and serving an updated previous release version
+            - buildsplice      Bash script for building the current version
+            - buildprev        Bash script for building an updated previous release version
+
+          Building a previous version is only different because sitemaps contains absolute path URLs, and the path for the previous version on the server will include a subdirectory name. We uses a different sitemapgen.xml file for each previous version.
+
+          When Jekyll generates the docs web, it uses the code in a sitemapgen file to generate the sitemap for the build. We uses sitemapgen.xml for the current build, and a different file (e.g. sitemapgen.2.5.xml) for previous versions; the previous version injects a directory into each URL.
+
+          The difference between the 'serve' and 'build' scripts is that the serve scripts perform the build and then run the built web in http://127.0.0.1:4000 (for doc and docstest) or http://127.0.0.1:4006 (for docsdev). The important difference is:
+            - When you use the 'serve' scripts, the generated sitemap is not complete until you quit serving the web by CTRL-C'ing it in your terminal window. This MUST happen before you upload the built web to the server.
+
+            - When you use the 'build' scripts, the sitemap is complete when the script ends.
+
+          WE use the 'serve' scripts, verify that all looks well in the browser, and then CTRL-C the serve before uploading.
+
+
+    Config Files:
+    -------------
+            - _config.yml             The base configuration file, used in all builds.
+            - _config_doc.yml         Configuration overrides for doc.splicemachine.com
+            - _config.docstest.yml    Configuration overrides for docstest.splicemachine.com
+            - _config.docsdev.yml     Configuration overrides for docsdev.splicemachine.com
+            - _config_2.7.yml         Configuration overrides for version 2.7 builds
+            - _config_2.5.yml         Configuration overrides for version 2.5 builds
+            - _config_x.x.yml         Configuration overrides for another version
+
+          These files are automatically pulled in by the build scripts. Note that files that begin with the underscore (_) character are not processed by Jekyll when it builds the site; they control build parameters, but are not processed into output.
+
+
+    Sitemap Index Files:
+    --------------------
+            - sitemapindex.doc.xml        The sitemap.xml file for doc.splicemachine.com, which links to
+                                               version-specific sitemaps.
+            - sitemapindex.docstest.xml   The sitemap.xml file for docstest.splicemachine.com, which links to
+                                               version-specific sitemaps.
+            - sitemapindex.docsdev.xml    The sitemap.xml file for docsdev.splicemachine.com, which links to
+                                               version-specific sitemaps.
+
+          These files are only used when building a current version (not for prev versions). After the build, the appropriate file (based on build type) is copied to the generated _site/sitemap.xml folder, so that when you upload the _site folder, it replaces the previous master sitemap.
+
+
+    Sitemap Generate Files:
+    --------------------
+            - sitemapgen.xml       Jekyll uses this to create a sitemap for the top-level build
+            - sitemapgen.2.5.xml   Jekyll uses this to create a sitemap for the /2.5 subdirectory
+
+          The sitemapgen.xml file generates URLs like this:
+             <url><loc>https://docsdev.splicemachine.com/onprem_install_awssandbox.html</loc></url>
+
+          The sitemapgen.2.5.xml file generates URLs like this:
+             <url><loc>https://docsdev.splicemachine.com/2.5/onprem_install_awssandbox.html</loc></url>
+
+ADDING A NEW RELEASE VERSION
+----------------------------
+
+When adding a new release version:
+    1) Clone the master version to create a repo for what was the current version
+        (master always reflects the in-progress, docstest version)
+
+    2) Create a new _config.x.yml file for the new version: clone a previous version and change the details (should be obvious)
+
+    3) Create a new sitemapgen.x.yml file for what will become a new previous version. Clone a previous version file and simply modify this statement in the file (this is from sitemapgen.2.5.xml)
+          {% for page in site.pages %}{% unless page.search == "exclude" %}<url><loc>{{site.sitemap_url | append: '/2.5' }}{{ page.url}}</loc></url>
+
+          --> change the '/2.5' to '/2.7' or whatever version it should be. This should match the name of the file, e.g. sitemapgen.2.7.xml.
+
+    4) Update the script files to allow the user to specify the new version number.
