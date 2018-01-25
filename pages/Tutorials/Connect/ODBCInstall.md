@@ -314,216 +314,172 @@ computer:
 
     </div>
 
-    The script prompts you for a location; in most cases, you can simply
-    accept the default directory.
+    The script creates a `splice` directory in the install location; you'll be prompted for that location, which defaults to `/usr/local`.
     {: .indentLevel1}
 
-    The install directory will contain two subdirectories:
+    You'll also be prompted to enter the IP address of the Splice Machine server, which defaults to `127.0.0.1`.
+
+    The install directory, e.g. `/usr/local/splice`, will contain two subdirectories:
     {: .indentLevel1}
 
     <table summary="ODBC Driver SubDirectories">
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>Directory</th>
-                                        <th>Contents</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>lib64</code></td>
-                                        <td>The driver binary.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>errormessages</code></td>
-                                        <td>The XML error message source for any error messages issued by the driver.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Directory</th>
+                <th>Contents</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>lib64</code></td>
+                <td>The driver binary.</td>
+            </tr>
+            <tr>
+                <td><code>errormessages</code></td>
+                <td>The XML error message source for any error messages issued by the driver.</td>
+            </tr>
+        </tbody>
+    </table>
 
 5.  Configure the driver:
     {: .topLevel}
 
-    The install directory will also contain 3 configuration files that
-    you can edit:
+    If you ran the installation script as root, the `odbc.ini`, `odbcinst.ini`, and `splice.odbcdriver.ini` configuration files were copied into the `/etc` folder, and any previous copies were renamed, e.g. `odbc.ini.1`.
+    {: .indentLevel1}
+
+    If you did not run the installation script as root, then hidden versions of the same files are located in your `$HOME` directory: `.odbc.ini`, `.odbcinst.ini`, and `.splice.odbcdriver.ini`.
     {: .indentLevel1}
 
     <table>
-                                <col />
-                                <col />
-                                <thead>
-                                    <tr>
-                                        <th>File</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>odbc.ini</code></td>
-                                        <td>
-                                            <p>Specifies the ODBC data sources (DSNs).</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>odbcinst.ini</code></td>
-                                        <td>Specifies the ODBC drivers.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>splice.odbcdriver.ini</code></td>
-                                        <td>Configuration information specific to the Splice Machine ODBC driver.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>File</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>odbc.ini</code></td>
+                <td>
+                    <p>Specifies the ODBC data sources (DSNs).</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>odbcinst.ini</code></td>
+                <td>Specifies the ODBC drivers.</td>
+            </tr>
+            <tr>
+                <td><code>splice.odbcdriver.ini</code></td>
+                <td>Configuration information specific to the Splice Machine ODBC driver.</td>
+            </tr>
+        </tbody>
+    </table>
 
-    1.  Edit the `odbc.ini` file in the install directory to match your
-        configuration by changing the `Driver` `URL` value to match your
-        Splice Machine installation.
-        {: .topLevel}
+    The default version of the `odbc.ini` file looks like this:
+    {: .indentLevel1}
 
-        > The <span class="AppCommand">URL</span> field in the
-        > `odbc.ini` file is actually the IP address of the Splice
-        > Machine server.
-        > {: .noteNote}
+    <div class="preWrapperWide" markdown="1">
+        [ODBC Data Sources]
+        SpliceODBC64        = SpliceODBCDriver
 
-        Then copy the modified `odbc.ini` file into your home directory,
-        making sure you make the file hidden by preceding its name with
-        a dot:
+        [SpliceODBC64]
+        Description     = Splice Machine ODBC 64-bit
+        Driver          = /usr/local/splice/lib64/libsplice_odbc.so
+        UID             = splice
+        PWD             = admin
+        URL             = 127.0.0.1
+        PORT            = 1527
+        SSL             = peerAuthentication
+        SSL_CERT        = /home/splice/client.pem
+        SSL_PKEY        = /home/splice/client.key
+        SSL_TRUST       = TRUE
+    {: .Plain}
+    </div>
 
-        <div class="preWrapperWide" markdown="1">
-            cp odbc.ini ~/.odbc.ini
-        {: .ShellCommand}
+    If you specified a different installation directory, you need to update the `Driver` location setting in your `odbc.ini` file. This is not typically required; however, if you do make this change, you should copy your modified file to the `/etc` directory.
+    {: indentLevel1}
 
-        </div>
+    <div class="preWrapperWide" markdown="1">
+        cp odbc.ini /etc/
+    {: .ShellCommand}
+    </div>
 
-        If you want your settings to apply system-wide, copy the file to
-        `/etc`:
+    If you are connecting to a Kerberos-enabled cluster using ODBC, you **must add this parameter**:
+    <div class="preWrapperWide" markdown="1">
+        USE_KERBEROS    = 1
+    {: .Plain}
+    </div>
 
-        <div class="preWrapperWide" markdown="1">
-            cp odbc.ini /etc/
-        {: .ShellCommand}
+    For more information about connecting to a Kerberos-enabled cluster, see [Connecting to Splice Machine Through HAProxy](tutorials_connect_haproxy.html).
 
-        </div>
 
-        The default version of the `odbc.ini` file looks like this:
+6.  Configure Driver Logging, if desired
+    {: .topLevel}
 
-        <div class="preWrapperWide" markdown="1">
-            [ODBC Data Sources]
-            SpliceODBC64        = SpliceODBCDriver
+    You can edit the `splice.odbcdriver.ini` file to configure driver logging, which is disabled by default:
+    {: .indentLevel1}
 
-            [SpliceODBC64]
-            Description     = Splice Machine ODBC 64-bit
-            Driver          = /usr/local/splice/lib64/libsplice_odbc.so
-            UID             = splice
-            PWD             = admin
-            URL             = 0.0.0.0
-            PORT            = 1527
-            SSL             = peerAuthentication
-            SSL_CERT        = /home/splice/client.pem
-            SSL_PKEY        = /home/splice/client.key
-            SSL_TRUST       = TRUE
-        {: .Plain}
-        </div>
+    <div class="preWrapperWide" markdown="1">
+        [Driver]
+        DriverManagerEncoding=UTF-16
+        DriverLocale=en-US
+        ErrorMessagesPath=/usr/local/splice/errormessages/
+        LogLevel=0
+        LogNamespace=
+        LogPath=
+        ODBCInstLib=/usr/lib64/libodbcinst.so
+    {: .Plain}
+    </div>
 
-        If you are connecting to a Kerberos-enabled cluster using ODBC, you **must add this parameter**:
-        <div class="preWrapperWide" markdown="1">
-            USE_KERBEROS    = 1
-        {: .Plain}
-        </div>
+    To configure logging, modify the `LogLevel` and `LogPath` values:
+    {: .indentLevel1}
 
-        For more information about connecting to a Kerberos-enabled cluster, see [Connecting to Splice Machine Through HAProxy](tutorials_connect_haproxy.html).
+    <table>
+        <col />
+        <col />
+        <tbody>
+            <tr>
+                <td><code>LogLevel</code></td>
+                <td>
+                    <p>You can specify one of the following values:</p>
+                    <div class="preWrapperWide"><pre class="Plain">0 = OFF<br />1 = LOG_FATAL<br />2 = LOG_ERROR<br />3 = LOG_WARNING<br />4 = LOG_INFO<br />5 = LOG_DEBUG<br />6 = LOG_TRACE</pre>
+                    </div>
+                    <p>The larger the LogLevel value, the more verbose the logging.</p>
+                    <p class="noteIcon">Logging does impact driver performance.</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>LogPath</code></td>
+                <td>
+                    <p>The path to the directory in which you want the logging files stored. Two log files are written in this directory:</p>
+                    <table class="noBorder">
+                       <col />
+                       <col />
+                       <tbody>
+                          <tr>
+                             <td><code>splice_driver.log</code></td>
+                             <td>Contains driver interactions with the application and the driver manager.</td>
+                          </tr>
+                          <tr>
+                             <td><code>splice_derby.log</code></td>
+                             <td>Contains information about the drivers interaction with the Splice Machine cluster.</td>
+                          </tr>
+                       </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-    2.  Copy the `odbcinst.ini` configuration file:
-        {: .topLevel}
+    After configuring logging, copy the file to `/etc`:
+    {: .indentLevel1}
 
-        The `odbcinst.ini` file does not typically require any
-        modification. You should copy it to your home directory, and if
-        desired, make it system-wide by copying to `/etc`:
 
-        <div class="preWrapperWide" markdown="1">
-            cp odbcinst.ini ~/.odbcinst.inicp odbcinst.ini /etc/
-        {: .ShellCommand}
-
-        </div>
-
-        The default version of the `odbcinst.ini` file looks like this:
-
-        <div class="preWrapperWide" markdown="1">
-            [ODBC Drivers]
-            SpliceODBCDriver = Installed
-            [SpliceODBCDriver]
-            Description = Splice Machine 64-bit ODBC Driver
-            Driver = /usr/local/splice/lib64/libsplice_odbc.so
-            SQLLevel = 1
-            APILevel = 1
-            ConnectFunctions = YYY
-            DriverIDBCVer = 03.80
-        {: .Plain}
-
-        </div>
-
-    3.  Edit (if desired) and copy the `splice.odbcdriver.ini` file:
-        {: .topLevel}
-
-        The `splice.odbcdriver.ini` file contains information specific
-        to the driver. You can edit this file to configure driver
-        logging, which is disabled by default:
-
-        <div class="preWrapperWide" markdown="1">
-            [Driver]
-            DriverManagerEncoding=UTF-16
-            DriverLocale=en-US
-            ErrorMessagesPath=/usr/local/splice/errormessages/
-            LogLevel=0
-            LogNamespace=
-            LogPath=
-            ODBCInstLib=/usr/lib64/libodbcinst.so
-        {: .Plain}
-
-        </div>
-
-        Copy the `splice.odbcdriver.ini` file to your `$HOME` directory,
-        renaming it to `.splice.odbcdriver.ini`:
-        {: .indentLevel1}
-
-        <div class="preWrapperWide" markdown="1">
-            cp splice.odbcdriver.ini $HOME/.splice.odbcdriver.ini
-        {: .ShellCommand}
-
-        </div>
-
-        To configure logging, modify the `LogLevel` and `LogPath`
-        values:
-
-        <table>
-            <col />
-            <col />
-            <tbody>
-                <tr>
-                    <td><code>LogLevel</code></td>
-                    <td>
-                        <p>You can specify one of the following values:</p>
-                        <div class="preWrapperWide"><pre class="Plain">0 = OFF<br />1 = LOG_FATAL<br />2 = LOG_ERROR<br />3 = LOG_WARNING<br />4 = LOG_INFO<br />5 = LOG_DEBUG<br />6 = LOG_TRACE</pre>
-                        </div>
-                        <p>The larger the LogLevel value, the more verbose the logging.</p>
-                        <p class="noteIcon">Logging does impact driver performance.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><code>LogPath</code></td>
-                    <td>
-                        <p>The path to the directory in which you want the logging files stored. Two log files are written in this directory:</p>
-                        <ul>
-                            <li class="plainFont">the <code>splice_driver.log</code> file contains driver interactions with the application and the driver manager</li>
-                            <li class="plainFont">the <code>splice_derby.log</code> file contains information about the drivers interaction with the Splice Machine cluster</li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    {: .LowerAlpha}
-
-6.  Verify your installation
+7.  Verify your installation
     {: .topLevel}
 
     You can test your installation by using the following command to run
@@ -733,10 +689,20 @@ Our MacOS ODBC driver is currently in Beta release.
                     <td><code>LogPath</code></td>
                     <td>
                         <p>The path to the directory in which you want the logging files stored. Two log files are written in this directory:</p>
-                        <ul>
-                            <li class="plainFont">the <code>splice_driver.log</code> file contains driver interactions with the application and the driver manager</li>
-                            <li class="plainFont">the <code>splice_derby.log</code> file contains information about the drivers interaction with the Splice Machine cluster</li>
-                        </ul>
+                        <table class="noBorder">
+                           <col />
+                           <col />
+                           <tbody>
+                              <tr>
+                                  <td class="CodeFont">splice_driver.log</td>
+                                  <td>contains driver interactions with the application and the driver manager</td>
+                              </tr>
+                              <tr>
+                                  <td class="CodeFont">splice_derby.log</td>
+                                  <td>contains information about the drivers interaction with the Splice Machine cluster</td>
+                              </tr>
+                           </tbody>
+                        </table>
                     </td>
                 </tr>
             </tbody>
