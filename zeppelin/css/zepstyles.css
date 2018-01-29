@@ -1,7 +1,48 @@
 
+div.noteIcon {
+	background-color: #F6F6F8;
+	background-repeat: no-repeat;
+	background-image: url("https://doc.splicemachine.com/zeppelin/images/zepNoteIcon.png");
+	color: #4a4f54;
+	margin: 20px 60px 20px 60px;
+	padding: 5px 10px 5px 48px;
+	font-weight: normal;
+	z-index: -1;
+	border: 2px solid #d6dbe0;
+	border-radius: 12px;
+	max-width: 75%;
+	min-height: 48px;
+}
+div.noteIcon:before {
+	content: "";
+	color: #F39939;
+	font-weight: 600;
+}
+
+
+div.noteNote {
+	background-color: #F6F6F8;
+	background-repeat: no-repeat;
+	background-image: none;
+	color: #4a4f54;
+	margin: 20px 20px 20px 32px;
+	padding: 5px 10px 5px 10px;
+	font-weight: normal;
+	z-index: -1;
+	border: 2px solid #d6dbe0;
+	border-radius: 12px;
+	max-width: 75%;
+	min-height: 0;
+}
+div.noteNote:before {
+	content: "NOTE: ";
+	color: #F39939;
+	font-weight: 600;
+}
+
 h1, h2, h3, h4, h5
 {
-	line-height: 110%;
+	line-height: 105%;
 	font-weight: 600;
 	font-style: normal;
 	margin: 2px, 0, 4px, 0;
@@ -11,41 +52,40 @@ h1, h2, h3, h4, h5
 
 h1
 {
-	font-size: 1.8em;
+	font-size: 1.7em;
 	margin-top: 0px;
 	margin-bottom: 8px;
 	padding-bottom: 10px;
-	color: #f7a800;;
+	color: #f7a800;
 }
 
 h2
 {
-	font-size: 1.6em;
-	margin-top: 48px;
+	font-size: 1.5em;
+	margin-top: 50px;
 	color: #3390db;
 }
 
 h3
 {
 	font-size: 1.3em;
-	line-height: 110%;
-	margin-top: 30px;
-	color: #127fd6;
+	margin-top: 40px;
+	color: #f7a800;
 }
 
 h4
 {
 	font-size: 1.1em;
 	font-style: italic;
-	margin-top: 28px;
+	margin-top: 30px;
 	color: #174e89;
 }
 
 h5
 {
-	font-size: 1.0em;
-	line-height: 110%;
-	margin-top: 24px;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-top: 25px;
 	color: #606060;
 }
 
@@ -58,14 +98,92 @@ blockquote
 	color: inherit;
 }
 
-img {
+img.splice {
 	margin: 20px 0 20px 100px;
+}
+
+img.fitwidth {
+	margin: 20px 20px 20px 20px;
+	max-width: 90%;
+}
+
+img.fithalfwidth {
+	margin: 20px 20px 20px 20px;
+	max-width: 50%;
+}
+
+img.fit3qtrwidth {
+	margin: 20px 20px 20px 20px;
+	max-width: 75%;
+
 }
 
 img.inline {
 	margin: 0;
 	display: inline;
 	width: 20px;
+}
+
+img.small {
+	margin: 20px 0 20px 100px;
+	width: 300px;
+}
+
+img.tiny {
+	margin: 20px 0 20px 100px;
+	max-width: 200px;
+	max-height: 50px;
+}
+
+p.noteIcon {
+	background-color: #F6F6F8;
+	background-repeat: no-repeat;
+	background-image: url("https://doc.splicemachine.com/zeppelin/images/zepNoteIcon.png");
+	color: #4a4f54;
+	margin: 20px 60px 20px 60px;
+	padding: 5px 10px 5px 48px;
+	font-weight: normal;
+	z-index: -1;
+	border: 2px solid #d6dbe0;
+	border-radius: 12px;
+	max-width: 75%;
+	min-height: 48px;
+}
+
+p.noteIcon:before {
+	content: "";
+	color: #F39939;
+	font-weight: 600;
+}
+
+p.noteNote {
+	background-color: #F6F6F8;
+	background-repeat: no-repeat;
+	background-image: none;
+	color: #4a4f54;
+	margin: 20px 20px 20px 32px;
+	padding: 5px 10px 5px 10px;
+	font-weight: normal;
+	z-index: -1;
+	border: 2px solid #d6dbe0;
+	border-radius: 12px;
+	max-width: 75%;
+	min-height: 0;
+}
+p.noteNote:before {
+	content: "NOTE: ";
+	color: #F39939;
+	font-weight: 600;
+}
+
+span.ConsoleLink {
+	font-weight: 600;
+	color: #3ba3d8;
+	text-transform: none;
+}
+
+span.ConsoleLink a:link {
+	color: #3390db;
 }
 
 table.splicezep,
@@ -179,95 +297,7 @@ table.splicezepNoBorder img
 	margin: 0;
 }
 
-p.noteIcon {
-	background-color: #F6F6F8;
-	background-repeat: no-repeat;
-	background-image: url("https://doc.splicemachine.com/zeppelin/images/zepNoteIcon.png");
-	color: #4a4f54;
-	margin: 20px 60px 20px 60px;
-	padding: 5px 10px 5px 48px;
-	font-weight: normal;
-	z-index: -1;
-	border: 2px solid #d6dbe0;
-	border-radius: 12px;
-	max-width: 75%;
-	min-height: 48px;
-}
-
-p.noteIcon:before {
-	content: "";
-	color: #F39939;
-	font-weight: 600;
-}
-
-p.noteNote {
-	background-color: #F6F6F8;
-	background-repeat: no-repeat;
-	background-image: none;
-	color: #4a4f54;
-	margin: 20px 20px 20px 32px;
-	padding: 5px 10px 5px 10px;
-	font-weight: normal;
-	z-index: -1;
-	border: 2px solid #d6dbe0;
-	border-radius: 12px;
-	max-width: 75%;
-	min-height: 0;
-}
-p.noteNote:before {
-	content: "NOTE: ";
-	color: #F39939;
-	font-weight: 600;
-}
-
-
-div.noteIcon {
-	background-color: #F6F6F8;
-	background-repeat: no-repeat;
-	background-image: url("https://doc.splicemachine.com/zeppelin/images/zepNoteIcon.png");
-	color: #4a4f54;
-	margin: 20px 60px 20px 60px;
-	padding: 5px 10px 5px 48px;
-	font-weight: normal;
-	z-index: -1;
-	border: 2px solid #d6dbe0;
-	border-radius: 12px;
-	max-width: 75%;
-	min-height: 48px;
-}
-div.noteIcon:before {
-	content: "";
-	color: #F39939;
-	font-weight: 600;
-}
-
-
-div.noteNote {
-	background-color: #F6F6F8;
-	background-repeat: no-repeat;
-	background-image: none;
-	color: #4a4f54;
-	margin: 20px 20px 20px 32px;
-	padding: 5px 10px 5px 10px;
-	font-weight: normal;
-	z-index: -1;
-	border: 2px solid #d6dbe0;
-	border-radius: 12px;
-	max-width: 75%;
-	min-height: 0;
-}
-div.noteNote:before {
-	content: "NOTE: ";
-	color: #F39939;
-	font-weight: 600;
-}
-
-span.ConsoleLink {
-	font-weight: 600;
-	color: #3ba3d8;
-	text-transform: none;
-}
-
-span.ConsoleLink a:link {
-	color: #3390db;
+ul.italic,
+ol.italic {
+	font-style: italic;
 }
