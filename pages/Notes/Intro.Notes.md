@@ -44,11 +44,6 @@ useful.
                         <td>Introduces our documentation conventions and provides navigation and search tips.</td>
                     </tr>
                     <tr>
-                        <td><a href="notes_urlmap.html">Documentation URLs Map</a>
-                        </td>
-                        <td>Maps Splice Machine documentation URLs from previous versions (prior to July 2017) to the corresponding permalink in our new documentation system.</td>
-                    </tr>
-                    <tr>
                         <td><a href="notes_examplesdb.html">Our Documentation Examples</a>
                         </td>
                         <td>Describes the simple database that we use for many of the examples in our documentation.</td>
@@ -67,4 +62,3 @@ useful.
             </table>
 </div>
 </section>
-

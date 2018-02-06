@@ -9,7 +9,7 @@
 <title>TOP n clause | Splice Machine Documentation</title>
 <meta class="swiftype" name="title" data-type="string" content="TOP n clause">
 <meta class="swiftype" name="info" data-type="string" content="A clause that limits the number of results returned by a query.">
-<meta class="swiftype" name="buildversion" data-type="enum" content="2.7.0">
+<meta class="swiftype" name="buildversion" data-type="enum" content="2.7">
 
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -211,6 +211,16 @@
 
                 <!-- If building the docsdev version, do not include Swiftype search box -->
                 
+                <li>
+<!-- Start Swiftype search -->
+                    <div id="swiftype-search-container">
+                        <form>
+                          <input type="text" class="st-default-search-input swiftype-input">
+                          <button type="submit" class="swiftype-submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                
             </ul>
         </div>
         </div>
@@ -229,7 +239,7 @@
 
 <ul id="mysidebar" class="nav">
     
-        <li class="sidebarTitle">Development Docs v2.7.0</li>
+        <li class="sidebarTitle">Internal Docs v2.7</li>
     
     
     
@@ -2960,7 +2970,7 @@ ERROR 2201W: Row count for FIRST/NEXT/TOP must be &gt;= 1 and row count for LIMI
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2018 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jan 25, 2018 <br />
+ Site last generated: Feb 5, 2018 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -2985,7 +2995,7 @@ _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0', {
   install: {
     hooks: {
       query_filter: function(query) {
-        query.setFilterDataByDocumentTypeSlugAndFilterField('page', 'buildversion', { values: ['2.7.0'], type: "and" });
+        query.setFilterDataByDocumentTypeSlugAndFilterField('page', 'buildversion', { values: ['2.7'], type: "and" });
 
         return query;
       }

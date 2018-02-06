@@ -30,8 +30,8 @@ Machine On-Premise-Database product.
                 </thead>
                 <tbody>
 					<tr>
-						<td><a href="onprem_info_release.html">Release Information (v2.6)</a></td>
-						<td>Release notes, workarounds, and other information about this release (v2.6).</td>
+						<td><a href="onprem_info_release.html">Release Information (v2.7)</a></td>
+						<td>Release notes, workarounds, and other information about this release (v2.7).</td>
 					</tr>
 					<tr>
 						<td><a href="onprem_info_release2.5.html">Release Information (v2.5)</a></td>
@@ -66,4 +66,3 @@ Machine On-Premise-Database product.
             </table>
 </div>
 </section>
-

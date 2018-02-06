@@ -70,9 +70,9 @@ in your cluster:
         </thead>
         <tbody>
                <tr>
-                   <td class="SpliceRelease">2.6.1</td>
+                   <td class="SpliceRelease">2.7.0</td>
                    <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
-                   <td><a href="{{splvar_install_v261_HDP255}}">{{splvar_install_v261_HDP255}}</a></td>
+                   <td><a href="{{splvar_install_v270_HDP255}}">{{splvar_install_v270_HDP255}}</a></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="Separator"> </td>

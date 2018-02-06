@@ -60,9 +60,7 @@ documentation system.
 
 ### Version Information
 
-This site contains the documentation for version 2.6 of Splice Machine,
-and also applies to our August 2017 2.5 patch release (v2.5.0.1729 and
-above).
+This site contains the documentation for version 2.7.0 of Splice Machine.
 
 If you're using an earlier version, you'll find the documentation here:
 
@@ -73,10 +71,6 @@ If you're using an earlier version, you'll find the documentation here:
         <tr>
             <td>Version 2.5</td>
             <td><a href="https://doc.splicemachine.com/2.5/index.html">Release 2.5 Documentation</a> (Feb 2017)</td>
-        </tr>
-        <tr>
-            <td>Version 2.0</td>
-            <td><a href="https://doc.splicemachine.com/2.0/home.html">Release 2.0 Documentation</a> (Sep. 2016)</td>
         </tr>
     </tbody>
 </table>

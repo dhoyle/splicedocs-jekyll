@@ -548,8 +548,8 @@ using it!
         </thead>
         <tbody>
            <tr>
-               <td class="SpliceRelease">2.6.1</td>
-               <td><a href="{{splvar_install_v261_Standalone}}">{{splvar_install_v261_Standalone}}</a></td>
+               <td class="SpliceRelease">2.7.0</td>
+               <td><a href="{{splvar_install_v270_Standalone}}">{{splvar_install_v270_Standalone}}</a></td>
             </tr>
             <tr>
                 <td colspan="2" class="Separator"> </td>

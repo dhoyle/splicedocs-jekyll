@@ -9,7 +9,7 @@
 <title>Writing Functions and Stored Procedures | Splice Machine Documentation</title>
 <meta class="swiftype" name="title" data-type="string" content="Writing Functions and Stored Procedures">
 <meta class="swiftype" name="info" data-type="string" content="A mini-tutorial on writing database functions and stored procedures for your Splice Machine database.">
-<meta class="swiftype" name="buildversion" data-type="enum" content="2.7.0">
+<meta class="swiftype" name="buildversion" data-type="enum" content="2.7">
 
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -40,7 +40,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4006/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -211,6 +211,16 @@
 
                 <!-- If building the docsdev version, do not include Swiftype search box -->
                 
+                <li>
+<!-- Start Swiftype search -->
+                    <div id="swiftype-search-container">
+                        <form>
+                          <input type="text" class="st-default-search-input swiftype-input">
+                          <button type="submit" class="swiftype-submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                
             </ul>
         </div>
         </div>
@@ -229,7 +239,7 @@
 
 <ul id="mysidebar" class="nav">
     
-        <li class="sidebarTitle">Development Docs v2.7.0</li>
+        <li class="sidebarTitle">Internal Docs v2.7</li>
     
     
     
@@ -776,7 +786,7 @@ interpreter. For example:</p>
 
           <div class="preWrapperWide">
             <pre class="AppCommand"><code>CALL SQLJ.INSTALL_JAR(
-  '/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar',
+  '/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.7.0-SNAPSHOT.jar',
   'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
 
 CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
@@ -845,7 +855,7 @@ new Jar file and reload that into your databaseby calling the
 
           <div class="preWrapper">
             <pre class="AppCommand"><code>CALL SQLJ.REPLACE_JAR(
-  '/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.6.1-SNAPSHOT.jar',
+  '/Users/splice/my-directory-for-jar-files/custom-splice-procs-2.7.0-SNAPSHOT.jar',
   'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
 </code></pre>
 
@@ -909,7 +919,7 @@ returning a single <code>ResultSet</code>.</li>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2018 Splice Machine, Inc. All rights reserved. <br />
- Site last generated: Jan 25, 2018 <br />
+ Site last generated: Feb 5, 2018 <br />
 <p><img src="images/company_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
@@ -934,7 +944,7 @@ _st('install','YGtH3zGt4NJzs35yCo5A','2.0.0', {
   install: {
     hooks: {
       query_filter: function(query) {
-        query.setFilterDataByDocumentTypeSlugAndFilterField('page', 'buildversion', { values: ['2.7.0'], type: "and" });
+        query.setFilterDataByDocumentTypeSlugAndFilterField('page', 'buildversion', { values: ['2.7'], type: "and" });
 
         return query;
       }

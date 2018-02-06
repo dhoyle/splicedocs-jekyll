@@ -145,9 +145,9 @@ in your cluster:
         </thead>
         <tbody>
            <tr>
-               <td class="SpliceRelease">2.6.1</td>
+               <td class="SpliceRelease">2.7.0</td>
                <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
-               <td><a href="{{splvar_install_v261_MAPR520}}">{{splvar_install_v261_MAPR520}}</a></td>
+               <td><a href="{{splvar_install_v270_MAPR520}}">{{splvar_install_v270_MAPR520}}</a></td>
             </tr>
             <tr>
                 <td colspan="3" class="Separator"> </td>

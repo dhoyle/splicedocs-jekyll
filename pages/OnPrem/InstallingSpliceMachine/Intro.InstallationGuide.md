@@ -158,47 +158,47 @@ for your platform:
                     </thead>
                     <tbody>
                         <tr>
-                            <td rowspan="3"><span class="BoldFont">Release 2.6</span>
+                            <td rowspan="3"><span class="BoldFont">Release 2.7.0</span>
                             </td>
-                            <td>{{splvar_platform_v26_CDH5-Versions}}
+                            <td>{{splvar_platform_v27_CDH5-Versions}}
                             </td>
                             <td>
-                                <p class="noSpaceAbove">{{splvar_platform_v26_CDH5-OS}}
+                                <p class="noSpaceAbove">{{splvar_platform_v27_CDH5-OS}}
                                 </p>
                             </td>
-                            <td>{{splvar_platform_v26_CDH5-Hadoop}}
+                            <td>{{splvar_platform_v27_CDH5-Hadoop}}
                             </td>
-                            <td>{{splvar_platform_v26_CDH5-HBase}}
+                            <td>{{splvar_platform_v27_CDH5-HBase}}
                             </td>
-                            <td>{{splvar_platform_v26_CDH5-Zookeeper}}
+                            <td>{{splvar_platform_v27_CDH5-Zookeeper}}
                             </td>
                         </tr>
                         <tr>
-                            <td>{{splvar_platform_v26_HDP2-Versions}}
+                            <td>{{splvar_platform_v27_HDP2-Versions}}
                             </td>
                             <td>
-                                <p class="noSpaceAbove">{{splvar_platform_v26_HDP2-OS}}
+                                <p class="noSpaceAbove">{{splvar_platform_v27_HDP2-OS}}
                                 </p>
                             </td>
-                            <td>{{splvar_platform_v26_HDP2-Hadoop}}
+                            <td>{{splvar_platform_v27_HDP2-Hadoop}}
                             </td>
-                            <td>{{splvar_platform_v26_HDP2-HBase}}
+                            <td>{{splvar_platform_v27_HDP2-HBase}}
                             </td>
-                            <td>{{splvar_platform_v26_HDP2-Zookeeper}}
+                            <td>{{splvar_platform_v27_HDP2-Zookeeper}}
                             </td>
                         </tr>
                         <tr>
-                            <td>{{splvar_platform_v26_MapR5-Versions}}
+                            <td>{{splvar_platform_v27_MapR5-Versions}}
                             </td>
                             <td>
-                                <p class="noSpaceAbove">{{splvar_platform_v26_MapR5-OS}}
+                                <p class="noSpaceAbove">{{splvar_platform_v27_MapR5-OS}}
                                 </p>
                             </td>
-                            <td>{{splvar_platform_v26_MapR5-Hadoop}}
+                            <td>{{splvar_platform_v27_MapR5-Hadoop}}
                             </td>
-                            <td>{{splvar_platform_v26_MapR5-HBase}}
+                            <td>{{splvar_platform_v27_MapR5-HBase}}
                             </td>
-                            <td>{{splvar_platform_v26_MapR5-Zookeeper}}
+                            <td>{{splvar_platform_v27_MapR5-Zookeeper}}
                             </td>
                         </tr>
                         <tr>

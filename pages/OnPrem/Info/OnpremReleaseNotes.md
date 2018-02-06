@@ -8,11 +8,11 @@ sidebar:  onprem_sidebar
 permalink: onprem_info_release.html
 folder: OnPrem/Info
 ---
-# Release Notes for Splice Machine On-Premise Database v2.6.1 (September 25, 2017)
+# Release Notes for Splice Machine On-Premise Database v2.7 (February, 2018)
 
 {% include splice_snippets/onpremonlytopic.md %}
 
-Welcome to 2.6.1 release of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
+Welcome to the 2.7 release of Splice Machine! The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 
 This topic contains the following sections:
 
@@ -26,7 +26,7 @@ This topic contains the following sections:
 
 
 ## Supported Platforms
-The supported platforms with 2.6.1 are:
+The supported platforms with 2.7 are:
 
 * Cloudera CDH 5.12.0, 5.8.3
 * MapR 5.2.0
@@ -164,7 +164,7 @@ These bug fixes have been incorporated into this version:
 * CREATE EXTERNAL TABLE can failed with some specific users in hdfs,    (SPLICE-1358)
 * SanityManager.DEBUG messages create a lot of noise in derby.log    (SPLICE-1359)
 * Adding SQL Array Data Type Basic Serde Functions    (SPLICE-1360)
-* Kerberos keytab not picked up by Spark on Splice Machine 2.5/2.6    (SPLICE-1361)
+* Kerberos keytab not picked up by Spark on Splice Machine 2.5/2.7    (SPLICE-1361)
 * Synchronize access to internalConnection's contextManager    (SPLICE-1362)
 * Store external table on S3    (SPLICE-1369)
 * INSERT, UPDATE, DELETE error message for pin tables    (SPLICE-1370)
@@ -210,7 +210,7 @@ These bug fixes have been incorporated into this version:
 * bulkImportDirectory is case sensitive    (SPLICE-1559)
 * Allowing Clients to turn off cache and lazily execute    (SPLICE-1561)
 * Set remotecost for merge join    (SPLICE-1567)
-* Upgrade from 2.5 to 2.6    (SPLICE-1578)
+* Upgrade from 2.5 to 2.7    (SPLICE-1578)
 * Apply memory limit on consecutive broadcast joins    (SPLICE-1582)
 * Fix IndexOutOfBound exception when not all column stats are collected and we try to access column stats for estimation.    (SPLICE-1584)
 * Prevent NPE when Spark job fails    (SPLICE-1586)

@@ -88,12 +88,12 @@ authentication properties:
         <tbody>
             <tr>
                 <td>CDH</td>
-                <td>{{splvar_platform_v26_CDH5-AuthSettingsLoc}}
+                <td>{{splvar_platform_v27_CDH5-AuthSettingsLoc}}
                 </td>
             </tr>
             <tr>
                 <td>HDP</td>
-                <td><span class="splvar_platform_v26_HDP2-AuthSettingsLoc">Select the Custom HBase Configs option from the HBase configuration tab.</span>
+                <td><span class="splvar_platform_v27_HDP2-AuthSettingsLoc">Select the Custom HBase Configs option from the HBase configuration tab.</span>
                 </td>
             </tr>
             <tr>
