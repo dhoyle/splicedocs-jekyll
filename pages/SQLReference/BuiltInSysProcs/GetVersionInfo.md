@@ -1,6 +1,6 @@
 ---
 title: SYSCS_UTIL.SYSCS_GET_VERSION_INFO built-in system procedure
-summary: Built-in system procedure that returns information about the version of Splice Machine that you're using.
+summary: Built-in system procedure that returns information about the version of Splice Machine that is installed on each server in your cluster.
 keywords: get version info, get_version_info
 toc: false
 product: all
@@ -33,11 +33,10 @@ This procedure does not return a result.
     HOSTNAME       |RELEASE            |IMPLEMENT&|BUILDTIME              |URL
     --------------------------------------------------------------------------------------------------
     localhost:52897|2.5.0.1708-SNAPSHOT|85caa07187|2017-02-25 04:56 +0000 |http://www.splicemachine.com
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
 </div>
 </div>
 </section>
-

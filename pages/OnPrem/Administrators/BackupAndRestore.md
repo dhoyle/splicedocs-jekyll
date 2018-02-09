@@ -496,9 +496,8 @@ backing up your database. The instructions below give general
 guidelines; however, S3 access differs in every deployment. For more
 information, see these sites:
 
-* [http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html][1]{:
-  target="_blank"}
-* [https://wiki.apache.org/hadoop/AmazonS3][1]{: target="_blank"}
+* <a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html" target="_blank">http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html</a>
+* <a href="https://wiki.apache.org/hadoop/AmazonS3" target="_blank">https://wiki.apache.org/hadoop/AmazonS3</a>
 
 </div>
 * [Enabling backups on CDH](#Enabling)

@@ -500,7 +500,7 @@ adjusting system status:
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_getversioninfo.html">SYSCS_UTIL.SYSCS_GET_VERSION_INFO</a>
                         </td>
-                        <td>Displays the version of Splice Machine installed on each node in your cluster.</td>
+                        <td>Displays the version of Splice Machine installed on each server in your cluster.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_getwriteintakeinfo.html">SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO</a>

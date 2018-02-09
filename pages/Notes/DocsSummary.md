@@ -76,7 +76,7 @@ The following table summarizes the main sections of our documentation:
         <tr>
             <td rowspan="7" class="MenuName">Splice Machine</td>
             <td><a href="index.html">Welcome</a></td>
-            <td>The content accessible from this menu applies to all Splice Machine products.</td>
+            <td>Information about our database: the basis of all Splice Machine products.</td>
         </tr>
         <tr>
             <td><a href="tutorials_intro.html">Tutorials</a></td>
@@ -97,6 +97,10 @@ The following table summarizes the main sections of our documentation:
         <tr>
             <td><a href="dbconsole_intro.html">Database Console Guide</a></td>
             <td>An introduction to the Splice Machine Spark Database Console.</td>
+        </tr>
+        <tr>
+            <td><a href="notes_intro.html">Release Notes</a></td>
+            <td>Information about new features, improvements, and fixes in the current database release.</td>
         </tr>
         <tr>
             <td><a href="notes_intro.html">General Information</a></td>
@@ -131,16 +135,16 @@ The following table summarizes the main sections of our documentation:
             <td>The content in this section is specific to our on-premise database product.</td>
         </tr>
         <tr>
-            <td><a href="onprem_install_intro.html">Installation</a></td>
+            <td><a href="onprem_install_intro.html">Installing Splice Machine</a></td>
             <td>Step-by-step instructions for installing the on-premise version of Splice Machine on compatible platforms.</td>
         </tr>
         <tr>
-            <td><a href="onprem_admin_intro.html">Administrator's Guide</a></td>
+            <td><a href="onprem_admin_intro.html">On-Premise Administration</a></td>
             <td>Topics that describe the administrative tasks associated with installing, configuring, and maintaining your on-premise Splice Machine database.</td>
         </tr>
         <tr>
-            <td><a href="onprem_info_release.html">Release Information</a></td>
-            <td>Release notes, workarounds, and other information about this release.</td>
+            <td><a href="onprem_info_troubleshoot.html">Best Practices and Troubleshooting</a></td>
+            <td>Tips for best practices and solving common problems.</td>
         </tr>
     </tbody>
 </table>

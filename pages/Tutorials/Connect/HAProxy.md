@@ -380,7 +380,7 @@ client systems. This example sets up access for a new user name `jdoe`.
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        jdbc:splice://ha-proxy-host:1527/splicedb;principal=user1@SPLICEMACHINE.COLO;keytab=/home/splice/user1.keytab
+        jdbc:splice://ha-proxy-host:1527/splicedb;principal=jdoe@SPLICEMACHINE.COLO;keytab=/home/splice/user1.keytab
     {: .Plain}
 
     </div>

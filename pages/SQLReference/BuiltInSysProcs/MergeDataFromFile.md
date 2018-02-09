@@ -22,7 +22,7 @@ failed.
 
 Splice Machine provides four system procedures for importing data:
 
-* The [SYSCS_UTIL.IMPORT_DATA](sqlref_sysprocs_importdata.html) procedure imports each input record into a new record in your database.
+* The [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedure imports each input record into a new record in your database.
 * The [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html) procedure updates existing records and adds new records to your database. It only differs from `SYSCS_UTIL.MERGE_DATA_FROM_FILE` in that upserting
  **overwrites** the generated or default value of a column that *is not specified* in your `insertColumnList` parameter when updating a record.
 * This procedure, `SYSCS_UTIL.MERGE_DATA_FROM_FILE` procedure updates existing records and adds new records to your database. It only differs from `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` in that merging **does not

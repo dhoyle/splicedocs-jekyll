@@ -40,7 +40,7 @@ with Splice Machine
 
     This plug-in is required to operate with Splice Machine. If you
     didn't select the Derby plug-in when you installed SQuirreL, you can
-    download
+    <a href="https://db.apache.org/derby/derby_downloads.html" target="_blank"> download Apache Derby here</a> and drop the plugin file into the plugin/ directory of your SQuirrel SQL installation directory. See <a href="http://www.squirrelsql.org/index.php?page=plugins" target="_blank">SQuirrel’s Plugin Overview</a> for more info.
     {: .indentLevel1}
 
 3.  Start a Splice Machine session on the computer on which you have
@@ -137,7 +137,7 @@ alias in SQuirreL.
     1.  Click the *Aliases* tab in the SQuirreL window, and then click
         the <span class="AppCommand">Create new Alias</span> (blue
         + sign) button.
-        
+
     2.  Enter a name for your alias and select the driver you just
         created from the drop-down list
 

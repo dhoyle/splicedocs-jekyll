@@ -67,7 +67,7 @@ In Splice Machine, you can execute queries without a table by using the
 `sysibm.sysdummy1` dummy table. Here's the syntax:
 
 <div class="fcnWrapperWide" markdown="1">
-    select expression FROM sysibm.dummy1
+    select expression FROM sysibm.sysdummy1
 {: .FcnSyntax xml:space="preserve"}
 
 </div>

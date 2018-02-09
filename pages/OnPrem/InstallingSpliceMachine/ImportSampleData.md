@@ -69,7 +69,7 @@ database:
 <div class="opsStepsList" markdown="1">
 1.  Start the command line interpreter
     {: .topLevel}
-    
+
     You can use the Splice Machine command line interpreter (CLI), or
     <span class="AppCommand">splice&gt;</span> prompt, to work directly
     with your database. If you're using the cluster version of Splice
@@ -77,90 +77,90 @@ database:
     class="AppCommand">splice&gt;</span> prompt by entering this shell
     command on any node on which it is available:
     {: .indentLevel1}
-    
+
     <div class="preWrapper" markdown="1">
         ./sqlshell.sh
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
-    
+
     If you're using the standalone version of Splice Machine, use these
     steps to access the <span
     class="AppCommand">splice&gt;</span> prompt:
     {: .indentLevel1}
-    
+
     <div class="preWrapper" markdown="1">
         cd <your.splicemachine-directory>
         ./bin/sqlshell.sh
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  Modify the script that loads the data to use your path:
     {: .topLevel}
-    
+
     Before running the <span class="AppCommand">loadall.sql</span>
     script, you must change the file path used in the script.
     {: .indentLevel1}
-    
+
     There are calls to `SYSCS_UTIL.IMPORT_DATA` near the bottom of the
     script. Change the file path parameter in each of these calls to use
     the absolute path to your Splice Machine `demodata` directory:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '<yourPath>/demodata/data/theader.csv.gz', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '<yourPath>/demodata/data/tdetail.csv.gz', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '<yourPath>/demodata/data/customers.csv.gz', ...;
+        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '<yourPath>/demodata/data/theader.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '<yourPath>/demodata/data/tdetail.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '<yourPath>/demodata/data/customers.csv', ...;
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
-    
+
     Make sure you use the absolute (versus relative) path. For example:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
-        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '/Users/myName/mySplice/demodata/data/theader.csv.gz', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '/Users/myName/mySplice/demodata/data/tdetail.csv.gz', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '/Users/myName/mySplice/demodata/data/customers.csv.gz',...;
+        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '/Users/myName/mySplice/demodata/data/theader.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '/Users/myName/mySplice/demodata/data/tdetail.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '/Users/myName/mySplice/demodata/data/customers.csv',...;
     {: .ShellCommand xml:space="preserve"}
     
     </div>
 
 3.  Run the modify script to loads the data:
     {: .topLevel}
-    
+
     From the <span class="AppCommand">splice&gt;</span> prompt, *run*
     the file that will load the data, using single quotes around the
     path/filename (and remember to include the semicolon at the end):
     {: .indentLevel1}
-    
+
     <div class="preWrapper" markdown="1">
         splice> run 'demodata/sql/loadall.sql';
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 4.  Wait for the script to finish
     {: .topLevel}
-    
+
     If your database is not currently running, start it up and launch
     the command line interpreter (<span
     class="AppCommand">splice&gt;</span> prompt) by issuing this command
     in your terminal window:
     {: .indentLevel1}
-    
+
     <div class="preWrapper" markdown="1">
         ./bin/sqlshell.sh
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
-    
+
     The loading process can take several minutes: the `loadall.sql` file
     creates the schema, loads the data, and creates indexes for the
     tables.
     {: .indentLevel1}
-    
+
     While the database is running, logging information is written to the
     `splice.log` file, which is found in the `splicemachine` directory.
     {: .noteNote}
-    
+
     When you again see the <span class="AppCommand">splice&gt;</span>
     prompt, the demo data is ready to use. We recommend running the
     sample queries in the next section to get a feel for using Splice
@@ -197,13 +197,13 @@ and category ID.
 {: .Example xml:space="preserve"}
 
 </div>
-#### Example of Selecting With a Join 
+#### Example of Selecting With a Join
 
 You can use the following to query a join of the `T_HEADER` and
 `CUSTOMERS` tables.
 
 <div class="preWrapperWide" markdown="1">
-    
+
     select t.transaction_header_key, t.transaction_dt, t.store_nbr,
            t.geocapture_flg, t.exchange_rate_percent    from T_HEADER t, CUSTOMERS c   where c.customer_master_id=t.customer_master_id   and t.customer_master_id > 14000
        and t.customer_master_id < 15000;
@@ -230,4 +230,3 @@ generated the exception.
 
 </div>
 </section>
-

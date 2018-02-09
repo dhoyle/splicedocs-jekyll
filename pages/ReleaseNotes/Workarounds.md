@@ -1,20 +1,17 @@
 ---
 title: Known Limitations and Workarounds
-summary: Limitations and workarounds for our on-premise database product.
+summary: Limitations and workarounds in our database.
 keywords: on-premise limitations, work arounds, limits,
 toc: false
 product: all
-sidebar:  onprem_sidebar
-permalink: onprem_info_workarounds.html
-folder: OnPrem/Info
+sidebar:  releasenotes_sidebar
+permalink: releasenotes_workarounds.html
+folder: ReleaseNotes
 ---
-# On-Premise Database Limitations and Workarounds
+# Limitations and Workarounds in Release {{splvar_basic_SpliceReleaseVersion}} of the Splice Machine Database
 
-{% include splice_snippets/dbaasonlytopic.md %}
-
-This topic describes workarounds for known limitations in this release of the *Splice Machine On-Premise Database* product. These can include previously unstated limitations or workarounds for problems that will be fixed in a future release.
-
-<div class="noteIcon">See the <a href="onprem_info_release.html">Release Notes</a> for a list of new features and improvements in this release.</div>
+{% include splice_snippets/onpremonlytopic.md %}
+This topic describes workarounds for known limitations in this release of the Splice Machine Database. These can include previously unstated limitations or workarounds for problems that will be fixed in a future release.
 
 These are the notes and workarounds for known issues in our current release:
 
@@ -135,3 +132,7 @@ INSERT INTO t3
 ## Import Performance Issues With Many Foreign Key References
 
 The presence of many foreign key references on a table will slow down imports of data into that table.
+
+
+</div>
+</section>
