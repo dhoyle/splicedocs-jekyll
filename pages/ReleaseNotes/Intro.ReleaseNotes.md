@@ -30,7 +30,7 @@ Welcome to the {{splvar_basic_SpliceReleaseVersion}} release of Splice Machine, 
             <td><a href="releasenotes_dbintro.html">Splice Machine Database Release Notes</a></td>
             <td><p>Release notes for the Splice Machine database, which is the basis for both our <em>Database-as-Service</em> and <em>On-Premise Database</em> products. These release notes are presented in these topics:</p>
                 <ul>
-                    <li><a href="releasenotes_newfeatures.html">New Features</a></li>
+                    <li><a href="releasenotes_newfeatures.html">New Features and Changes</a></li>
                     <li><a href="releasenotes_improvements.html">Improvements</a></li>
                     <li><a href="releasenotes_bugfixes.html">Issues Fixed</a></li>
                     <li><a href="releasenotes_workarounds.html">Limitations and Workarounds</a></li>

@@ -16,7 +16,7 @@ folder: ReleaseNotes
 
 Welcome to the {{splvar_basic_SpliceReleaseVersion}} release of Splice Machine, originally released  {{splvar_basic_CustDocReleaseDate}}. The release notes for our database are presented in these topics:
 
-* <a href="releasenotes_newfeatures.html">New Features</a>
+* <a href="releasenotes_newfeatures.html">New Features and Changes</a>
 * <a href="releasenotes_improvements.html">Improvements</a>
 * <a href="releasenotes_bugfixes.html">Issues Fixed</a>
 * <a href="releasenotes_workarounds.html">Limitations and Workarounds</a>

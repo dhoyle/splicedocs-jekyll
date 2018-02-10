@@ -8,7 +8,7 @@ sidebar:  releasenotes_sidebar
 permalink: releasenotes_workarounds.html
 folder: ReleaseNotes
 ---
-# Limitations and Workarounds in Release {{splvar_basic_SpliceReleaseVersion}} of the Splice Machine Database
+# Limitations and Workarounds in This Release of Splice Machine
 
 {% include splice_snippets/onpremonlytopic.md %}
 This topic describes workarounds for known limitations in this release of the Splice Machine Database. These can include previously unstated limitations or workarounds for problems that will be fixed in a future release.

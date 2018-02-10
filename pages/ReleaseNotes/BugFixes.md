@@ -14,10 +14,255 @@ folder: ReleaseNotes
 # Bug Fixes in Release {{splvar_basic_SpliceReleaseVersion}} of the Splice Machine Database
 
 {% include splice_snippets/onpremonlytopic.md %}
-This topic describes bug fixes in the Splice Machine Database, which is used in both our Database-as-Service and On-Premise Database products.
+This topic describes bug fixes in the Splice Machine Database, which is used in both our Database-as-Service and On-Premise Database products, with notes for each patch release since the initial release of version 2.5, in these sections:
 
-Here's a summary of the bug fixes in this release:
+* [Patch Release 2.5.0.1805](#Patch1805)
+* [Patch Release 2.5.0.1804](#Patch1804)
+* [Patch Release 2.5.0.1803](#Patch1803)
+* [Patch Release 2.5.0.1802](#Patch1802)
+* [Patch Release 2.5.0.1749](#Patch1749)
+* [Patch Release 2.5.0.1748](#Patch1748)
+* [Patch Release 2.5.0.1747](#Patch1747)
+* [Patch Release 2.5.0.1745](#Patch1745)
+* [Release 2.5.0.1735](#Release1735)
 
+## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-1995</td>
+            <td>Correct imported rows</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1804 Patch Release  28-Jan-18  {#Patch1804}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-1717</td>
+            <td>Asynchronous transaction resolution in compactions</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2012</td>
+            <td>HMaster doesn't exit after shutdown</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1803 Patch Release  21-Jan-18  {#Patch1803}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-1900</td>
+            <td>Incorrect error message while reading data from Empty external table of AVRO file format.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2004</td>
+            <td>Fix inconsistency between plan logged in log and that in the explain</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1802 Patch Release  14-Jan-18  {#Patch1802}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-1870</td>
+            <td>Fix update through index lookup path</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1927</td>
+            <td>Amend pattern string for detecting splice machine ready to accept connections</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1998</td>
+            <td>Modify splice 2.5 log file's time stamp format to ISO8601</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1749 Patch Release  26-Dec-17  {#Patch1749}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-1983</td>
+            <td>OOM in Spark executors while running TPCH1 repeatedly</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1748 Patch Release  18-Dec-17  {#Patch1748}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-1970</td>
+            <td>Exclude metrics jars from splice-uber.jar to avoid class loader issues when using Spark Adapter</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1978</td>
+            <td>Add null check to <code>GET_RUNNING_OPERATIONS</code></td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1747 Patch Release  08-Dec-17  {#Patch1747}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-865</td>
+            <td> Check if enterprise version is activated and if the user try to use column privileges.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1784</td>
+            <td>Query does not scale on 4000 regions (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1895</td>
+            <td>Wait for wrap up before closing remote query client (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1906</td>
+            <td>Make coprocessors throw only <code>IOExceptions</code></td>
+        </tr>
+        <tr>
+            <td>SPLICE-1908</td>
+            <td>Add check for actionAllowed</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1921</td>
+            <td>Fix wrong result with sort merge inclusion join for spark path</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1928</td>
+            <td>Decode region start/end key by fetching actual rowkey</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1930</td>
+            <td>Fixes an issue where maven uses platform installed protobuf</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1934</td>
+            <td>WordUtils.wrap() from commons-lang3 3.5 is broken</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1937</td>
+            <td>Add cdh5.12 platform (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1961</td>
+            <td>Missing splice_spark module in <code>pom.xml</code></td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.6.1.1745 Patch Release  08-Dec-17  {#Patch1745}
+
+2.6 was an interim release that has been folded in to 2.5
+{: .noteIcon}
+
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-1784</td>
+            <td>Trying to do cutpoints again</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1887</td>
+            <td>Fix memory leak for merge join</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1906</td>
+            <td>Make coprocessors throw only <code>IOExceptions</code></td>
+        </tr>
+        <tr>
+            <td>SPLICE-1915</td>
+            <td>Enable query logging by default</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1921</td>
+            <td>Fix wrong result with sort merge inclusion join for spar</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1895</td>
+            <td>Wait for wrap up before closing remote query client</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1928</td>
+            <td>Decode region start/end key by fetching actual rowkey</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1934</td>
+            <td>WordUtils.wrap() from commons-lang3 3.5 is broken</td>
+        </tr>
+    </tbody>
+</table>
+
+## Splice Release 2.5.0.1735  {#Release1735}
 <table summary="Summary of Bug Fixes in this release">
     <col width="125px" />
     <col />
@@ -309,7 +554,7 @@ Here's a summary of the bug fixes in this release:
             <td>Eliminate duplicates in the IN list</td>
         </tr>
         <tr>
-            <td>SPLICE-1541,1543</td>
+            <td><p>SPLICE-1541</p><p>SPLICE-1543</p></td>
             <td>Fix IN-list issues with dynamic bindings and char column</td>
         </tr>
         <tr>
@@ -553,171 +798,171 @@ Here's a summary of the bug fixes in this release:
             <td>Large table scan runs on control with predicate of high selectivity</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Allow more packages to be loaded from user code</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Drop and re-create foreign key write handler after truncating a table</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Name space null check</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix table number to allow predicate push down</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Remove check for collecting schema level stats for external table</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Explicitly unset ordering</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Redo nested connection on Spark fix</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Avoid bad file naming collision</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Allow inner table of broadcast join to be any FromTable</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix stat collection on external table textfile</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Resubmit to Spark if we consume too many resouces in control</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix a couple issues that cause backup to hang</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Clean up timeout backup</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Bind select statement only once in insert into select</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Concatenate all iterables at once to avoid stack overflow error</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Prune query blocks based on unsatisfiable conditions</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix hash join column ordering</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Throw BR014 for concurrent backup</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix incremental backup hang</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Restore cleanup</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Continue processing tables when one doesn't have a namespace</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Restore a chain of backup(2.5)</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Correct postSplit</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fixing S3 File System Implementation</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Allowing SpliceClient.isClient to allow distributed execution for inserts</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix Driver Loading in Zeppelin where it fails initially</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix a problem while reading orc byte stream</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Disable dictionary cache for hbase master and spark executor</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix Orc Partition Pruning</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Making sure schema is ejected from the cache correctly</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Disable Spark block cache and fix broadcast costing</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fixing ClosedConnectionException</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Clean up backup endpoint to avoid hang</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Update the error message when partial record is found</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Suppress false constraint violation during retry</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Avoid deleting a nonexist snapshot</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Keep the column indexes zero based for new orc stats collection job</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Correct a query to find indexes of a table</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Spark job has problems renewing a kerberos ticket</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Support ColumnPosition in GroupBy list</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix wrong result for broadcast with implicit cast from int to numeric type</td>
         </tr>
         <tr>
-            <td>N/A</td>
+            <td>Internal</td>
             <td>Fix limit on multiple partitions on Spark</td>
         </tr>
     </tbody>
