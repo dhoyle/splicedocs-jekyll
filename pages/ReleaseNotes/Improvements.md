@@ -1,6 +1,6 @@
 ---
-title: Improvements in the Current Release of Splice Machine
-summary: Improvements in the current release of Splice Machine.
+title: Improvements in This Release of Splice Machine
+summary: Improvements in this release of Splice Machine.
 keywords: release notes, on-premise
 toc: false
 product: all

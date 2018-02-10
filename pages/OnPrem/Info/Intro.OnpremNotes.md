@@ -29,23 +29,9 @@ Machine On-Premise-Database product.
                     </tr>
                 </thead>
                 <tbody>
-					<tr>
-						<td><a href="onprem_info_release.html">Release Information (v2.7)</a></td>
-						<td>Release notes, workarounds, and other information about this release (v2.7).</td>
-					</tr>
-					<tr>
-						<td><a href="onprem_info_release2.5.html">Release Information (v2.5)</a></td>
-						<td>Release notes, workarounds, and other information for the v2.5 release.</td>
-					</tr>
                     <tr>
-                        <td><a href="onprem_info_newfeatures.html">New Features</a>
-                        </td>
-                        <td>Summarizes the new features in this release.</td>
-                    </tr>
-                    <tr>
-                        <td><a href="onprem_info_workarounds.html">Limits and Workarounds</a>
-                        </td>
-                        <td>Summarizes the known limitations and workarounds for this release.</td>
+                        <td><a href="onprem_info_release.html">Release Notes</a></td>
+                        <td>Release notes, workarounds, and other information about this release.</td>
                     </tr>
                     <tr>
                         <td><a href="onprem_info_requirements.html">Requirements</a>

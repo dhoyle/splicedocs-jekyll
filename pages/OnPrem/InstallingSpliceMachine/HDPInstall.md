@@ -63,20 +63,11 @@ in your cluster:
         <col />
         <thead>
             <tr>
-                <th>Splice Machine Release</th>
                 <th>HDP Version</th>
                 <th>Installer Package Link</th>
             </tr>
         </thead>
         <tbody>
-               <tr>
-                   <td class="SpliceRelease">2.7.0</td>
-                   <td class="SplicePlatform">{{splvar_install_HDP255}}</td>
-                   <td><a href="{{splvar_install_v270_HDP255}}">{{splvar_install_v270_HDP255}}</a></td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="Separator"> </td>
-                </tr>
                <tr>
                    <td class="SpliceRelease">2.5.0</td>
                    <td class="SplicePlatform">{{splvar_install_HDP255}}</td>

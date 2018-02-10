@@ -1,6 +1,6 @@
 ---
 title: New Features
-summary: Notes about new features in the current release of our database.
+summary: Notes about new features in this release of our database.
 keywords: update notes
 toc: false
 product: all

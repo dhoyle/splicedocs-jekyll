@@ -13,7 +13,7 @@ folder: ReleaseNotes
 {% include splice_snippets/onpremonlytopic.md %}
 This topic describes workarounds for known limitations in this release of the Splice Machine Database. These can include previously unstated limitations or workarounds for problems that will be fixed in a future release.
 
-These are the notes and workarounds for known issues in our current release:
+These are the notes and workarounds for known issues in this release:
 
 * [With Clauses and Temporary Tables](#with-clauses-and-temporary-tables)
 
