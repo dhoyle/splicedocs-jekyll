@@ -45,12 +45,10 @@
                           </ul>
                       </li>
                    {% endfor %}
-                {% endfor %}
-
-                <!-- If building the docsdev version, do not include Swiftype search box -->
-                {% if ( {{site.isbuild_doc}} or {{site.isbuild_docstest}} ) %}
+    <!-- Include the search container at right end of the top bar;
+         don't include search in docsdev, because it doesnt work locally -->
+    {% unless {{site.isbuild_docsdev}} == true %}
                 <li>
-<!-- Start Swiftype search -->
                     <div id="swiftype-search-container">
                         <form>
                           <input type="text" class="st-default-search-input swiftype-input">
@@ -58,7 +56,8 @@
                         </form>
                     </div>
                 </li>
-                {% endif %}
+    {% endunless %}
+                {% endfor %}
             </ul>
         </div>
         </div>
