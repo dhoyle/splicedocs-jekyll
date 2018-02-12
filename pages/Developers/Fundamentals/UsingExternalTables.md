@@ -18,7 +18,6 @@ use flat files that are stored in one of these formats:
 
 * `ORC` is a columnar storage format
 * `PARQUET` is a columnar storage format
-* `Avro` is a data serialization system
 * `TEXTFILE` is a plain text file
 
 You can access `ORC` and `PARQUET` files that have been compressed with

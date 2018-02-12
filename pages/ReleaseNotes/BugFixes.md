@@ -78,10 +78,6 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
     </thead>
     <tbody>
         <tr>
-            <td>SPLICE-1900</td>
-            <td>Incorrect error message while reading data from Empty external table of AVRO file format.</td>
-        </tr>
-        <tr>
             <td>SPLICE-2004</td>
             <td>Fix inconsistency between plan logged in log and that in the explain</td>
         </tr>
