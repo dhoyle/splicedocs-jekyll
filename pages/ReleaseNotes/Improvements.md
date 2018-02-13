@@ -259,6 +259,10 @@ This topic describes significant improvements in the Splice Machine Database, wh
             <td>Enable compression for WritePipeline</td>
         </tr>
         <tr>
+            <td>SPLICE-1517</td>
+            <td>Orc Reader Additions</td>
+        </tr>
+        <tr>
             <td>SPLICE-1555</td>
             <td>Enable optimizer trace info for costing</td>
         </tr>
