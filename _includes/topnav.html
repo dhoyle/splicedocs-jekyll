@@ -47,7 +47,7 @@
                    {% endfor %}
     <!-- Include the search container at right end of the top bar;
          don't include search in docsdev, because it doesnt work locally -->
-    {% unless {{site.isbuild_docsdev}} == true %}
+    {% unless site.build_type == "Docsdev" %}
                 <li>
                     <div id="swiftype-search-container">
                         <form>

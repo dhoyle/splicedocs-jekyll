@@ -214,7 +214,7 @@ procedure.
 
     <div class="preWrapperWide" markdown="1">
         CALL SQLJ.INSTALL_JAR(
-          '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.isbuild_doc == true %}{{splvar_basic_SpliceReleaseVersion}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
+          '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.build_type  == "Doc" %}{{splvar_basic_SpliceReleaseVersion}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
           'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
 
         CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
@@ -288,7 +288,7 @@ procedure.
 
     <div class="preWrapper" markdown="1">
         CALL SQLJ.REPLACE_JAR(
-          '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.isbuild_doc == true %}{{splvar_basic_SpliceReleaseVersion}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
+          '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.build_type == "Doc" %}{{splvar_basic_SpliceReleaseVersion}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
           'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
     {: .AppCommand xml:space="preserve"}
 

@@ -128,7 +128,7 @@ the driver:
     ![Adding the Splice Machine driver as an ODBC data source on
     Windows](images/ODBCAddSource.png){: .nestedTightSpacing}
 
-{% if site.isbuild_doc == true %}
+{% if site.build_type == "Doc" %}
 9.  Configure your new data source:
     {: .topLevel}
 

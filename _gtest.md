@@ -12,11 +12,10 @@ folder: /
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Gary's Test Page
 
-The value of isbuild_doc is {{site.isbuild_doc}}.
 
-The value of isbuild_docstest is {{site.isbuild_docstest}}.
-
-The value of isbuild_docsdev is {{site.isbuild_docsdev}}.
+<h3>The value of build_type is {{site.build_type}}.</h3>
+<h4>Inside an if w/o brackets:     {% if site.build_type == "Docsdev" %} THIS IS DOCSDEV {% else %} THIS IS NOT DOCSDEV{% endif %}
+</h4>
 
 </div>
 </section>

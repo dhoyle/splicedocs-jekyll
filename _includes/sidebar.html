@@ -1,8 +1,8 @@
 {% assign sidebar = site.data.sidebars[page.sidebar].entries %}
 
 <ul id="mysidebar" class="nav">
-    {% if site.isbuild_doc %}
-        <li class="sidebarTitle">Release 2.5</li>
+    {% if site.build_type == "Doc" %}
+        <li class="sidebarTitle">Release 2.7</li>
     {% else %}
         <li class="sidebarTitle">{{site.build_product}} v{{site.build_version}}</li>
     {% endif %}
