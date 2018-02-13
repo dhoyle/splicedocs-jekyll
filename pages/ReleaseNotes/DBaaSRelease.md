@@ -33,7 +33,7 @@ These features are not yet available, but will be very soon:
 
 ## Current Limitations {#current-limitations}
 
-These limitations exist in the current release, and will be removed in the near future:
+These limitations exist in this release, and will be removed in the near future:
 
 * On a JDBC connection, individual queries or actions will time out after one hour; you can run long-running queries within a Zeppelin notebook.
 * Updating of CPU, Memory, and Disk usage graphs for clusters is currently limited: the updates are happening only intermittently.

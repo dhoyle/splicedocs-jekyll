@@ -1,6 +1,6 @@
 ---
-title: Bug Fixes in the Current Release of Splice Machine
-summary: Bug fixes in the current release of Splice Machine.
+title: Bug Fixes in the This Release of Splice Machine
+summary: Bug fixes in the this release of Splice Machine.
 keywords: release notes, on-premise
 toc: false
 product: all
@@ -77,10 +77,6 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>SPLICE-1900</td>
-            <td>Incorrect error message while reading data from Empty external table of AVRO file format.</td>
-        </tr>
         <tr>
             <td>SPLICE-2004</td>
             <td>Fix inconsistency between plan logged in log and that in the explain</td>
@@ -391,7 +387,7 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
         </tr>
         <tr>
             <td>SPLICE-1361</td>
-            <td>Kerberos keytab not picked up by Spark on Splice Machine 2.5/2.7</td>
+            <td>Kerberos keytab not picked up by Spark on Splice Machine</td>
         </tr>
         <tr>
             <td>SPLICE-1362</td>

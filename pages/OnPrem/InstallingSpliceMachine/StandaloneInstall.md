@@ -534,32 +534,8 @@ using it!
 3.  Install Splice Machine:
     {: .topLevel}
 
-    Unpack the tarball `gz` file that you downloaded:
+    Unpack the tarball `gz` file that you downloaded: <a href="{{splvar_install_v250_Standalone}}">{{splvar_install_v250_Standalone}}</a>
     {: .indentLevel1}
-
-    <table>
-        <col />
-        <col />
-        <thead>
-            <tr>
-                <th>Splice Machine Release</th>
-                <th>Installer Package Link</th>
-            </tr>
-        </thead>
-        <tbody>
-           <tr>
-               <td class="SpliceRelease">2.7.0</td>
-               <td><a href="{{splvar_install_v270_Standalone}}">{{splvar_install_v270_Standalone}}</a></td>
-            </tr>
-            <tr>
-                <td colspan="2" class="Separator"> </td>
-            </tr>
-           <tr>
-               <td class="SpliceRelease">2.5.0</td>
-               <td><a href="{{splvar_install_v250_Standalone}}">{{splvar_install_v250_Standalone}}</a></td>
-            </tr>
-        </tbody>
-    </table>
 
     This creates a `splicemachine` subdirectory and installs Splice
     Machine software in it.

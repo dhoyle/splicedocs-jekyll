@@ -17,7 +17,7 @@ ways, including adding and dropping columns and constraints from the
 table.
 
 <div class="noteIcon">
-In the current release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to:
+In this release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to:
 <ul>
 <li>add a primary key</li>
 <li>drop a foreign key constraint</li>

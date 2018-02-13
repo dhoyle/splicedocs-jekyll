@@ -116,7 +116,6 @@ for your platform:
     <col />
     <thead>
         <tr>
-            <th>Splice Machine </th>
             <th>Hadoop platform</th>
             <th>Linux</th>
             <th>Hadoop</th>
@@ -126,56 +125,6 @@ for your platform:
     </thead>
     <tbody>
         <tr>
-            <td rowspan="3"><span class="BoldFont">Release 2.7</span>
-            </td>
-            <td>{{splvar_platform_v27_CDH5-Versions}}
-            </td>
-            <td>
-                <p class="noSpaceAbove">{{splvar_platform_v27_CDH5-OS}}
-                </p>
-            </td>
-            <td>{{splvar_platform_v27_CDH5-Hadoop}}
-            </td>
-            <td>{{splvar_platform_v27_CDH5-HBase}}
-            </td>
-            <td>{{splvar_platform_v27_CDH5-Zookeeper}}
-            </td>
-        </tr>
-        <tr>
-            <td>{{splvar_platform_v27_HDP2-Versions}}
-            </td>
-            <td>
-                <p class="noSpaceAbove">{{splvar_platform_v27_HDP2-OS}}
-                </p>
-            </td>
-            <td>{{splvar_platform_v27_HDP2-Hadoop}}
-            </td>
-            <td>{{splvar_platform_v27_HDP2-HBase}}
-            </td>
-            <td>{{splvar_platform_v27_HDP2-Zookeeper}}
-            </td>
-        </tr>
-        <tr>
-            <td>{{splvar_platform_v27_MapR5-Versions}}
-            </td>
-            <td>
-                <p class="noSpaceAbove">{{splvar_platform_v27_MapR5-OS}}
-                </p>
-            </td>
-            <td>{{splvar_platform_v27_MapR5-Hadoop}}
-            </td>
-            <td>{{splvar_platform_v27_MapR5-HBase}}
-            </td>
-            <td>{{splvar_platform_v27_MapR5-Zookeeper}}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="6" class="Separator"> </td>
-        </tr>
-
-        <tr>
-            <td rowspan="3"><span class="BoldFont">Release 2.5</span>
-            </td>
             <td>{{splvar_platform_v25_CDH5-Versions}}
             </td>
             <td>

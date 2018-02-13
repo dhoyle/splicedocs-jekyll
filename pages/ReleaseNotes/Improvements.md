@@ -1,6 +1,6 @@
 ---
-title: Improvements in the Current Release of Splice Machine
-summary: Improvements in the current release of Splice Machine.
+title: Improvements in This Release of Splice Machine
+summary: Improvements in this release of Splice Machine.
 keywords: release notes, on-premise
 toc: false
 product: all
@@ -255,10 +255,6 @@ This topic describes significant improvements in the Splice Machine Database, wh
         <tr>
             <td>SPLICE-1516</td>
             <td>Enable compression for WritePipeline</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1517</td>
-            <td>Orc Reader Additions</td>
         </tr>
         <tr>
             <td>SPLICE-1555</td>

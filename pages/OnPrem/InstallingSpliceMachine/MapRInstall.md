@@ -138,20 +138,11 @@ in your cluster:
         <col />
         <thead>
             <tr>
-                <th>Splice Machine Release</th>
                 <th>MapR Version</th>
                 <th>Installer Package Link</th>
             </tr>
         </thead>
         <tbody>
-           <tr>
-               <td class="SpliceRelease">2.7.0</td>
-               <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>
-               <td><a href="{{splvar_install_v270_MAPR520}}">{{splvar_install_v270_MAPR520}}</a></td>
-            </tr>
-            <tr>
-                <td colspan="3" class="Separator"> </td>
-            </tr>
            <tr>
                <td class="SpliceRelease">2.5.0</td>
                <td class="SplicePlatform">{{splvar_install_MAPR520}}</td>

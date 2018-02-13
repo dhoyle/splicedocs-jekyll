@@ -60,7 +60,7 @@ documentation system.
 
 ### Version Information
 
-This site contains the documentation for version 2.7.0 of Splice Machine.
+This site contains the documentation for version 2.5 of Splice Machine.
 
 If you're using an earlier version, you'll find the documentation here:
 

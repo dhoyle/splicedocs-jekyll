@@ -1,7 +1,7 @@
 ---
 title: CREATE EXTERNAL TABLE statement
 summary: Allows you to query data stored in a flat file as if that data were stored in a Splice Machine table.
-keywords: external tables, orc, avro, parquet, textfile, compression, encoding, separator
+keywords: external tables, orc, parquet, textfile, compression, encoding, separator
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -115,7 +115,6 @@ currently one of these values:
 
 * `ORC` is a columnar storage format
 * `PARQUET` is a columnar storage format
-* `Avro` is a data serialization system
 * `TEXTFILE` is a plain text file
 {: .bulletNested}
 
@@ -138,13 +137,10 @@ Here are some notes about using external tables:
 * The `ROW FORMAT` parameter is only applicable to plain text
   (`TextFile`) not supported for columnar storage format files (`ORC` or
   `PARQUET` files)
-  <!-- or row-based storage format files (AVRO).-->
 
 * If you specify the location of a non-existent file when you create an
   external table, Splice Machine automatically creates an external file
   at that location.
-* `AVRO` external tables do not currently work with compressed files;
-  any compression format you specify will be ignored.
 * Splice Machine isn't able to know when the schema of the file
   represented by an external table is updated; when this occurs, you
   need to update the external table in Splice Machine by calling the
@@ -168,19 +164,6 @@ This example creates an external table for a `PARQUET` file:
                         PARTITIONED BY (col1)
                         STORED AS PARQUET
                         LOCATION '/users/myName/myParquetFile'
-            );
-    0 rows inserted/updated/deleted
-{: .Example xml:space="preserve"}
-
-This example creates an external table for an `AVRO` file:
-{: .body}
-
-<div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE myAvroTable(
-                        col1 INT, col2 VARCHAR(24))
-                        PARTITIONED BY (col1)
-                        STORED AS AVRO
-                        LOCATION '/users/myName/myAvroFile'
             );
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
