@@ -40,7 +40,7 @@ Our [Importing Data Tutorial](tutorials_ingest_importoverview.html) includes a d
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    call SYSCS_UTIL.BULK_IMPORT_FILE (
+    call SYSCS_UTIL.BULK_IMPORT_HFILE (
         schemaName,
         tableName,
         insertColumnList | null,
@@ -70,7 +70,7 @@ as described [below](#Usage) , the parameter values that you pass to the
 
 ## Parameters
 
-The following table summarizes the parameters used by `SYSCS_UTIL.BULK_IMPORT_FILE` and other Splice Machine data importation procedures. Each parameter name links to a more detailed description in our [Importing Data Tutorial](tutorials_ingest_importparams.html).
+The following table summarizes the parameters used by `SYSCS_UTIL.BULK_IMPORT_HFILE` and other Splice Machine data importation procedures. Each parameter name links to a more detailed description in our [Importing Data Tutorial](tutorials_ingest_importparams.html).
 
 {% include splice_snippets/importparamstable.md %}
 

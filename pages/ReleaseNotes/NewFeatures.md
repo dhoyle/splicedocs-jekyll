@@ -24,7 +24,9 @@ This topic describes significant new features and changes in the Splice Machine 
 * [Patch Release 2.5.0.1748](#Patch1748)
 * [Patch Release 2.5.0.1747](#Patch1747)
 * [Patch Release 2.5.0.1745](#Patch1745)
-* [Release 2.5.0.1735](#Release1735)
+* [Patch Release 2.5.0.1735](#Patch1735)
+* [Patch Release 2.5.0.1729](#Patch1729)
+* [2.5 GA Release 2.5.0.1707](#Release1707)
 
 ## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>
@@ -366,7 +368,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## Splice Release 2.5.0.1735](#Release1735)
+## Splice Patch Release 2.5.0.1735 {#Patch1735}
 <table summary="Summary of new features and changes in this release">
     <col width="125px" />
     <col />
@@ -467,6 +469,88 @@ This topic describes significant new features and changes in the Splice Machine 
         <tr>
             <td>Internal</td>
             <td>Our ODBC Driver now supports BLOB and CLOB objects.</td>
+        </tr>
+    </tbody>
+</table>
+
+## Splice Patch Release 2.5.0.1729  01-Aug-17 {#Patch1729}
+
+<table summary="Summary of new features and changes in this release">
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Internal</td>
+            <td>add a system procedure MERGE_DATA_FROM_FILE to achieve a limited fashion of merge-into</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Implement Kerberos JDBC support (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1482</td>
+            <td>HBase Bulk Import</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1591</td>
+            <td>Allow Physical Deletes in a Table</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1603</td>
+            <td>Support sample statistics collection (via Analyze)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1671</td>
+            <td>Enable snapshot with bulk load procedure</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5 GA Release  01-Mar-17 {#Release1707}
+
+<table summary="Summary of new features and changes in this release">
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Internal</td>
+            <td>Privileges at schema level.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Incremental backup/restore.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Non-native database dump/load.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>ORC and Parquet implemented as external tables.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>SQL WITH clause.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Window function enhancements.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Caching of RDDs (pinning).</td>
         </tr>
     </tbody>
 </table>

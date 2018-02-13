@@ -24,7 +24,9 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
 * [Patch Release 2.5.0.1748](#Patch1748)
 * [Patch Release 2.5.0.1747](#Patch1747)
 * [Patch Release 2.5.0.1745](#Patch1745)
-* [Release 2.5.0.1735](#Release1735)
+* [Patch Release 2.5.0.1735](#Patch1735)
+* [Patch Release 2.5.0.1729](#Patch1729)
+* [2.5 GA Release 2.5.0.1707](#Release1707)
 
 ## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>
@@ -258,7 +260,7 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
     </tbody>
 </table>
 
-## Splice Release 2.5.0.1735  {#Release1735}
+## Splice Patch Release 2.5.0.1735  {#Patch1735}
 <table summary="Summary of Bug Fixes in this release">
     <col width="125px" />
     <col />
@@ -960,6 +962,441 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
         <tr>
             <td>Internal</td>
             <td>Fix limit on multiple partitions on Spark</td>
+        </tr>
+    </tbody>
+</table>
+
+## Splice Patch Release 2.5.0.1729  01-Aug-17 {#Patch1729}
+
+<table summary="Summary of issues fixed in this release">
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-77</td>
+            <td>order by column in subquery not projected should not be resolved</td>
+        </tr>
+        <tr>
+            <td>SPLICE-79</td>
+            <td>generate correct insert statement to import char for bit column</td>
+        </tr>
+        <tr>
+            <td>SPLICE-612</td>
+            <td>fix wrong result in right outer join with expression in join condition</td>
+        </tr>
+        <tr>
+            <td>SPLICE-774</td>
+            <td>Reset statistics during upgrade</td>
+        </tr>
+        <tr>
+            <td>SPLICE-774</td>
+            <td>Wait for master to clear upgrade znode</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1023</td>
+            <td>add more info in the message for data import error</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1098</td>
+            <td>prevent nonnull selectivity from being 0</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1294</td>
+            <td>Poor Costing when first part of PK is not =</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1395</td>
+            <td>add a generic error message for import failure from S3</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1423</td>
+            <td>clean up import error messages for bad file</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1438</td>
+            <td>fix the explain plan issues</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1443</td>
+            <td>Skip cutpoint that create empty partitions</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1452</td>
+            <td>correct cardinality estimation when there is missing partition stats</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1461</td>
+            <td>Wrap exception parsing against errors</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1469</td>
+            <td>Set hbase.rowlock.wait.duration to 0 to avoid deadlock</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1470</td>
+            <td>Make sure user transaction rollbacks on Spark failure</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1473</td>
+            <td>Allow user code to load com.splicemachine.db.iapi.error</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1478</td>
+            <td>Fixing Statement Limits</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1497</td>
+            <td>Add flag for inserts to skip conflict detection</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1526</td>
+            <td>Handle CodecPool manually to avoid leaking memory</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1533</td>
+            <td>eliminate duplicates in the IN list</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1541</td>
+            <td>fix IN-list issues with dynamic bindings and char column</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1543</td>
+            <td>fix IN-list issues with dynamic bindings and char column</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1559</td>
+            <td>bulkImportDirectory is case sensitive</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1582</td>
+            <td>Apply memory limit on consecutive broadcast joins</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1584</td>
+            <td>fix IndexOutOfBound exception when not all column stats are collected and we try to access column stats for estimation.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1586</td>
+            <td>Prevent NPE when Spark job fails</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1589</td>
+            <td>All transactions are processed by pre-created region 0</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1601</td>
+            <td>fix wrong result for min/max/sum on empty table without groupby</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1609</td>
+            <td>normalize row source for split_table_or_index procedure</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1622</td>
+            <td>Return only latest version for sequences</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1624</td>
+            <td>Load pipeline driver at RS startup</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1628</td>
+            <td>HFile bulk load is slow to copy/move HFile to regions</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1637</td>
+            <td>Enable compression for HFile gen in bulk loader</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1639</td>
+            <td>Fix NPE due to Spark static initialization missing</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1640</td>
+            <td>apply memory limit check for consecutive outer broadcast join and derived tables</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1660</td>
+            <td>Delete Not Using Index Scan due to index columns being required for the scan.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1675</td>
+            <td>merge partition stats at the stats collection time</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1682</td>
+            <td>Perform accumulator check before txn resolution (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1684</td>
+            <td>fix stats collection logic for ArrayIndexOutOfBoundsException in the presence of empty partition and some column stats disabled</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1690</td>
+            <td>Merge statistics on Spark (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1692</td>
+            <td>Perform (anti)tombstone txn resolution only when needed</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1696</td>
+            <td>Add ScanOperation and SplcieBaseOperation to Kryo</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1702</td>
+            <td>refresh/resolve changes with latest master branch</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1737</td>
+            <td>fix value outside the range of the data type INTEGER error for analyze table statement.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1749</td>
+            <td>fix delete over nestedloop join</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1759</td>
+            <td>HBase Master generates 1.1GB/s of network bandwidth even when cluster is idle</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1781</td>
+            <td>Fixing Object Creation on IndexTransformFunction</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1782</td>
+            <td>Code Cleanup on BulkInsertRowIndex</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1784</td>
+            <td>Fixing Serial Cutpoint Generation</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1791</td>
+            <td>Make username's more specific to resolve concurrent conflicts</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1792</td>
+            <td>BroadcastJoinMemoryLimitIT must be executed serially</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1795</td>
+            <td>fix NullPointerExeption for update with expression, and uncomment test case in HdfsImport related to this bug</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1798</td>
+            <td>Parallel Queries can fail on SPS Descriptor Update...</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>null checking for REGEXP_LIKE</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Resubmit to Spark if we consume too many resouces in control</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Fix a couple issues that cause backup to hang</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Backups block flushes forever if not stopped cleanly</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>bind select statement only once in insert into select</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>concatenate all iterables at once to avoid stack overflow error</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>fix hash join column ordering</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>throw BR014 for concurrent backup</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>fix incremental backup hang</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Continue processing tables when one doesn't have a namespace</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>correct postSplit</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>disable dictionary cache for hbase master and spark executor</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Making sure schema is ejected from the cache correctly</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Disable Spark block cache and fix broadcast costing</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Fixing ClosedConnectionException handling</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>clean up backup endpoint to avoid hang</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>update error message when partial record is found (2.5)</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>suppress false constraint violation during retry</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>avoid deleting a nonexist snapshot</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>cleanup failed backup from old build</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>correct a query to find indexes of a table</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Spark job has problems renewing a kerberos ticket</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>support ColumnPosition in GroupBy list</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>fix wrong result for broadcast with implicit cast from int to numeric type</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Fix limit on multiple partitions on Spark</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## Splice 2.5 GA Release  01-Mar-17 {#Release1707}
+
+<table summary="Summary of issues fixed in this release">
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-961</td>
+            <td>Context manager leaks in OlapServer</td>
+        </tr>
+        <tr>
+            <td>SPLICE-995</td>
+            <td>TPCC test fails on CDH.5.7.2 platform</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1059</td>
+            <td>Regression: create table using text data type gives syntax error.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1062</td>
+            <td>TPCH100g : Import fails with " java.util.concurrent.ExecutionException " in /bad record file.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1325</td>
+            <td>NLJoinFunction creates too many threads</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1329</td>
+            <td>Memory leak in SpliceObserverInstructions</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1379</td>
+            <td>The number of threads in the HBase priority executor is inadequately low</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1353</td>
+            <td>Export to S3 gives java.lang.IllegalArgumentExceptionWrong FS</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1361</td>
+            <td>Kerberos keytab not picked up by Spark on Splice Machine 2.5</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1366</td>
+            <td>S3: Import fails in case of BAD directory parameter is set to null</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1374</td>
+            <td>S3: import fails when S3 file source is specified as /BAD file source, with error: java.lang.IllegalArgumentException</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1463</td>
+            <td>Reading from Spark sometimes returns deleted rows</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>2.0.x Class Not Found creating custom VTI</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Restore DB brokes database for creation tables in case new table creates after backup.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Regression: backup_database() is giving communication error</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Class Not Found creating custom VTI</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>database owner can be changed with improper connection string</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Restore from S3 fails with SQL exception Failed to start database 'splicedb'</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>[ODBC] unable to get output of EXPLAIN statement</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>[Backup/Restore][Incremental Backup] Unable to select from table after restoring from incremental backup.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Inconsistent results from a query</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Running SpliceFileVTI not workingH</td>
         </tr>
     </tbody>
 </table>

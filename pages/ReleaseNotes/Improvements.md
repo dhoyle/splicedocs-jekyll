@@ -24,7 +24,9 @@ This topic describes significant improvements in the Splice Machine Database, wh
 * [Patch Release 2.5.0.1748](#Patch1748)
 * [Patch Release 2.5.0.1747](#Patch1747)
 * [Patch Release 2.5.0.1745](#Patch1745)
-* [Release 2.5.0.1735](#Release1735)
+* [Patch Release 2.5.0.1735](#Patch1735)
+* [Patch Release 2.5.0.1729](#Patch1729)
+* [2.5 GA Release 2.5.0.1707](#Release1707)
 
 ## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>
@@ -204,7 +206,7 @@ This topic describes significant improvements in the Splice Machine Database, wh
     </tbody>
 </table>
 
-## Splice Release 2.5.0.1735] {#Release1735}
+## Splice Patch Release 2.5.0.1735 {#Patch1735}
 
 <table summary="Summary of Improvements in this release">
     <col width="125px" />
@@ -394,6 +396,105 @@ This topic describes significant improvements in the Splice Machine Database, wh
         </tr>
     </tbody>
 </table>
+
+## Splice Patch Release 2.5.0.1729  01-Aug-17 {#Patch1729}
+
+<table summary="Summary of improvements in this release">
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-398</td>
+            <td>Support 'drop view if exists' for 2.5</td>
+        </tr>
+        <tr>
+            <td>SPLICE-774</td>
+            <td>Support upgrade from K2 (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1479</td>
+            <td>iterator based stats collection (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1516</td>
+            <td>Enable compression for WritePipeline</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1500</td>
+            <td>Skip WAL for unsafe imports (2.5)</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1555</td>
+            <td>Enable optimizer trace info for costing</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1681</td>
+            <td>Introduce query hint "skipStats"</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1701</td>
+            <td>JXM mbean server for cache and enginedriver exec service</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1729</td>
+            <td>Support 'drop table t_name if exists' for 2.5</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1756</td>
+            <td>introduce database property collectIndexStatsOnly to specify the collect stats behavior</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1769</td>
+            <td>Improve distributed boot process</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Bcast implementation dataset vs rdd</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>prune query blocks based on unsatisfiable conditions</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Add logging to Vacuum process</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Restore breaks transaction semantics(2.5)</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5 GA Release  01-Mar-17 {#Release1707}
+
+<table summary="Summary of improvements in this release">
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Internal</td>
+            <td>Performance enhancement on TPCC, TPCH, and Backup/Restore.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Statistics enhancements, including histograms.</td>
+        </tr>
+    </tbody>
+</table>
+
 
 For a full list of JIRA's for the Community/Open Source software, see <https://splice.atlassian.net>
 
