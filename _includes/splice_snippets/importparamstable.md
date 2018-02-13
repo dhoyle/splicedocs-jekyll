@@ -102,15 +102,15 @@
         <tr>
             <td rowspan="2" class="BoldFont">Bulk HFile Import</td>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#bulkImportDirectory">bulkImportDirectory  (outputDirectory)</a></td>
-            <td><p>For <code>SYSCS_UTIL.BULK_IMPORT_FILE</code>, this is the name of the  directory into which the generated HFiles are written prior to being imported into your database.</p>
+            <td><p>For <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>, this is the name of the  directory into which the generated HFiles are written prior to being imported into your database.</p>
             <p>For the <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> procedure, where it is named <code>outputDirectory</code>, this parameter specifies the directory into which the split keys are written.</p>
             </td>
             <td class="CodeFont"><code>hdfs:///tmp/test_hfile_import/</code></td>
         </tr>
         <tr>
             <td class="CodeFont"><a href="tutorials_ingest_importparams.html#skipSampling">skipSampling</a></td>
-            <td><p>The <code>skipSampling</code> parameter is a Boolean value that specifies how you want the split keys used for the bulk HFile import to be computed. Set to <code>false</code> to have <code>SYSCS_UTIL.BULK_IMPORT_FILE</code> automatically determine splits for you.</p>
-            <p>This parameter is only used with the <code>SYSCS_UTIL.BULK_IMPORT_FILE</code> system procedure.</p>
+            <td><p>The <code>skipSampling</code> parameter is a Boolean value that specifies how you want the split keys used for the bulk HFile import to be computed. Set to <code>false</code> to have <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> automatically determine splits for you.</p>
+            <p>This parameter is only used with the <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedure.</p>
             </td>
             <td class="CodeFont">false</td>
         </tr>

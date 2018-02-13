@@ -115,7 +115,7 @@ The following diagram helps you decide which of our data importation procedures 
 
 ## Import Procedures Syntax {#Syntax}
 
-Here are the declarations of our four data import procedures; as you can see, three of our four import procedures use identical parameters, and the fourth (`SYSCS_UTIL.BULK_IMPORT_FILE`) adds a couple extra parameters at the end:
+Here are the declarations of our four data import procedures; as you can see, three of our four import procedures use identical parameters, and the fourth (`SYSCS_UTIL.BULK_IMPORT_HFILE`) adds a couple extra parameters at the end:
 
 <div class="fcnWrapperWide" markdown="1">
     call SYSCS_UTIL.IMPORT_DATA (
@@ -178,7 +178,7 @@ Here are the declarations of our four data import procedures; as you can see, th
 </div>
 
 <div class="fcnWrapperWide" markdown="1">
-    call SYSCS_UTIL.BULK_IMPORT_FILE (
+    call SYSCS_UTIL.BULK_IMPORT_HFILE (
         schemaName,
         tableName,
         insertColumnList | null,

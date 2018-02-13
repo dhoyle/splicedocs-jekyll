@@ -36,7 +36,7 @@ The supported platforms for release {{splvar_basic_SpliceReleaseVersion}} are:
 
 * Cloudera CDH 5.12.0, 5.8.3
 * MapR 5.2.0
-* HortonWorks HDP 2.6.3, 2.5.5
+* HortonWorks HDP 2.5.5
 
 ## Enterprise-only Features {#enterprise-only-features}
 Some features only work on the *Enterprise Edition* of Splice Machine; they __do not__ work on the Community Edition of Splice Machine. To obtain a license for the Splice Machine *Enterprise Edition*, please [Contact Splice Machine Sales](http://www.splicemachine.com/company/contact-us/)
@@ -51,7 +51,7 @@ These are the enterprise-only features in our *On-Premise Database*:
 * Encryption at rest
 
 
-## Running the Standalone Version {}#running-the-standalone-version}
+## Running the Standalone Version {#running-the-standalone-version}
 The supported operating systems for the STANDALONE release of Splice Machine are:
 
 * Mac OS X (10.8 or greater)

@@ -40,10 +40,10 @@ Three of our four data import procedures use identical parameters:
 
 </div>
 
-The fourth procedure, `SYSCS_UTIL.BULK_IMPORT_FILE`, adds a couple extra parameters at the end:
+The fourth procedure, `SYSCS_UTIL.BULK_IMPORT_HFILE`, adds a couple extra parameters at the end:
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.BULK_IMPORT_FILE
+    SYSCS_UTIL.BULK_IMPORT_HFILE
       ( schemaName,
         tableName,
         insertColumnList | null,
