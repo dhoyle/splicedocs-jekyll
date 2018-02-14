@@ -13,8 +13,14 @@ folder: ReleaseNotes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Improvements in Release {{splvar_basic_SpliceReleaseVersion}} of the Splice Machine Database
 
-{% include splice_snippets/onpremonlytopic.md %}
-This topic describes significant improvements in the Splice Machine Database, which is used in both our Database-as-Service and On-Premise Database products with notes for each patch release since the initial release of version 2.5, in these sections:
+The Splice Machine database is used in both our Database-Service and On-Premise Database products.
+
+This page describes all of the significant improvements made in the Splice Machine database since the 2.5 GA Release of Splice Machine. With only one noted exception, all of the improvements listed here have been made in both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+
+Splice Machine release 2.6 was an interim Release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+{: .noteIcon}
+
+Each section in this topic includes a list of significant improvements in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
 * [Patch Release 2.5.0.1805](#Patch1805)
 * [Patch Release 2.5.0.1804](#Patch1804)
@@ -26,7 +32,6 @@ This topic describes significant improvements in the Splice Machine Database, wh
 * [Patch Release 2.5.0.1745](#Patch1745)
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
-* [2.5 GA Release 2.5.0.1707](#Release1707)
 
 ## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>
@@ -260,7 +265,9 @@ This topic describes significant improvements in the Splice Machine Database, wh
         </tr>
         <tr>
             <td>SPLICE-1517</td>
-            <td>Orc Reader Additions</td>
+            <td><p>Orc Reader Additions</p>
+                <p class="noteIcon">This improvement has not been backported into release 2.5.1.</p>
+            </td>
         </tr>
         <tr>
             <td>SPLICE-1555</td>
@@ -475,30 +482,6 @@ This topic describes significant improvements in the Splice Machine Database, wh
         </tr>
     </tbody>
 </table>
-
-## 2.5 GA Release  01-Mar-17 {#Release1707}
-
-<table summary="Summary of improvements in this release">
-    <col width="125px" />
-    <col />
-    <thead>
-        <tr>
-            <th>JIRA ID</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Internal</td>
-            <td>Performance enhancement on TPCC, TPCH, and Backup/Restore.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Statistics enhancements, including histograms.</td>
-        </tr>
-    </tbody>
-</table>
-
 
 For a full list of JIRA's for the Community/Open Source software, see <https://splice.atlassian.net>
 

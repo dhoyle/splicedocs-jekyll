@@ -10,8 +10,7 @@ folder: ReleaseNotes
 ---
 # Limitations and Workarounds in This Release of Splice Machine
 
-{% include splice_snippets/onpremonlytopic.md %}
-This topic describes workarounds for known limitations in this release of the Splice Machine Database. These can include previously unstated limitations or workarounds for problems that will be fixed in a future release.
+This topic describes workarounds for known limitations in this Release of the Splice Machine Database. These can include previously unstated limitations or workarounds for problems that will be fixed in a future Release.
 
 These are the notes and workarounds for known issues in this release:
 

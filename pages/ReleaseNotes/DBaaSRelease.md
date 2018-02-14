@@ -14,7 +14,7 @@ folder: ReleaseNotes
 # Release Notes for the Splice Machine Database-as-a-Service Product
 
 {% include splice_snippets/dbaasonlytopic.md %}
-This topic includes any release notes that are specific to the Splice Machine *Database-as-a-Service* product, in these sections:
+This topic includes any release notes that are specific to the Splice Machine *Database-as-Service* product, in these sections:
 
 * [Features Not Yet Available](#features-not-yet-available)
 * [Current Limitations](#current-limitations)

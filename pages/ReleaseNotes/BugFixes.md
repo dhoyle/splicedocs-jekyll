@@ -13,8 +13,14 @@ folder: ReleaseNotes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Bug Fixes in Release {{splvar_basic_SpliceReleaseVersion}} of the Splice Machine Database
 
-{% include splice_snippets/onpremonlytopic.md %}
-This topic describes bug fixes in the Splice Machine Database, which is used in both our Database-as-Service and On-Premise Database products, with notes for each patch release since the initial release of version 2.5, in these sections:
+The Splice Machine database is used in both our Database-Service and On-Premise Database products.
+
+This page describes all of the issues that have been fixed in the Splice Machine database since the 2.5 GA Release of Splice Machine. With only one noted exception, all of the fixes listed here have been applied to both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+
+Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+{: .noteIcon}
+
+Each section in this topic includes a list of issues fixed in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
 * [Patch Release 2.5.0.1805](#Patch1805)
 * [Patch Release 2.5.0.1804](#Patch1804)
@@ -26,7 +32,6 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
 * [Patch Release 2.5.0.1745](#Patch1745)
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
-* [2.5 GA Release 2.5.0.1707](#Release1707)
 
 ## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>
@@ -81,7 +86,9 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
     <tbody>
         <tr>
             <td>SPLICE-1900</td>
-            <td>Incorrect error message while reading data from Empty external table of AVRO file format.</td>
+            <td><p>Incorrect error message while reading data from Empty external table of AVRO file format.</p>
+                <p class="noteIcon">This improvement has not been backported into release 2.5.1.</p>
+            </td>
         </tr>
         <tr>
             <td>SPLICE-2004</td>
@@ -1301,109 +1308,6 @@ This topic describes bug fixes in the Splice Machine Database, which is used in 
     </tbody>
 </table>
 
-
-## Splice 2.5 GA Release  01-Mar-17 {#Release1707}
-
-<table summary="Summary of issues fixed in this release">
-    <col width="125px" />
-    <col />
-    <thead>
-        <tr>
-            <th>JIRA ID</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>SPLICE-961</td>
-            <td>Context manager leaks in OlapServer</td>
-        </tr>
-        <tr>
-            <td>SPLICE-995</td>
-            <td>TPCC test fails on CDH.5.7.2 platform</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1059</td>
-            <td>Regression: create table using text data type gives syntax error.</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1062</td>
-            <td>TPCH100g : Import fails with " java.util.concurrent.ExecutionException " in /bad record file.</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1325</td>
-            <td>NLJoinFunction creates too many threads</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1329</td>
-            <td>Memory leak in SpliceObserverInstructions</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1379</td>
-            <td>The number of threads in the HBase priority executor is inadequately low</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1353</td>
-            <td>Export to S3 gives java.lang.IllegalArgumentExceptionWrong FS</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1361</td>
-            <td>Kerberos keytab not picked up by Spark on Splice Machine 2.5</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1366</td>
-            <td>S3: Import fails in case of BAD directory parameter is set to null</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1374</td>
-            <td>S3: import fails when S3 file source is specified as /BAD file source, with error: java.lang.IllegalArgumentException</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1463</td>
-            <td>Reading from Spark sometimes returns deleted rows</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>2.0.x Class Not Found creating custom VTI</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Restore DB brokes database for creation tables in case new table creates after backup.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Regression: backup_database() is giving communication error</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Class Not Found creating custom VTI</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>database owner can be changed with improper connection string</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Restore from S3 fails with SQL exception Failed to start database 'splicedb'</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>[ODBC] unable to get output of EXPLAIN statement</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>[Backup/Restore][Incremental Backup] Unable to select from table after restoring from incremental backup.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Inconsistent results from a query</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Running SpliceFileVTI not workingH</td>
-        </tr>
-    </tbody>
-</table>
 
 For a full list of JIRA's for the Community/Open Source software, see <https://splice.atlassian.net>
 

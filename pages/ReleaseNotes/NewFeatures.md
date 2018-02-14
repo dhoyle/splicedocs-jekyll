@@ -13,8 +13,53 @@ folder: ReleaseNotes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # New Features and Changes in Release {{splvar_basic_SpliceReleaseVersion}} of the Splice Machine Database
 
-{% include splice_snippets/onpremonlytopic.md %}
-This topic describes significant new features and changes in the Splice Machine database, which is used in both our Database-as-Service and On-Premise Database products, with notes for each patch release since the initial release of version 2.5, in these sections:
+The Splice Machine database is used in both our Database-Service and On-Premise Database products.
+
+This page describes the major new features added to the Splice Machine database since the 2.5 GA Release of Splice Machine. With the exception of a few features note in the [New Features Only Available in v2.7 section](#Only27) below, all of these features have added to both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+
+Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+{: .noteIcon}
+
+## New Features Only Available in Splice Machine Release 2.7  {#Only27}
+
+These features have been added to Release 2.7 of Splice Machine, and have not been backported to Release 2.5.1:
+
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Internal</td>
+            <td>Add support for AVRO format for external tables.</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td>Query Logging</td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td><p>Add MacOS version of our ODBC driver.</p>
+                <p class="noteIcon">This is a provisional feature that has not yet been as thoroughly tested as it will be.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Internal</td>
+            <td><p>JDBC Driver Improvements</p>
+                <p class="noteIcon">This is a provisional feature that has not yet been as thoroughly tested as it will be.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## New Features in Available in Splice Machine Releases 2.7 and 2.5.1
+
+Each section in this topic includes a list of major new in each interim Splice Machine release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
 * [Patch Release 2.5.0.1805](#Patch1805)
 * [Patch Release 2.5.0.1804](#Patch1804)
@@ -26,9 +71,8 @@ This topic describes significant new features and changes in the Splice Machine 
 * [Patch Release 2.5.0.1745](#Patch1745)
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
-* [2.5 GA Release 2.5.0.1707](#Release1707)
 
-## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
+###  2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>
     <col width="125px" />
     <col />
@@ -54,7 +98,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## 2.5.0.1804 Patch Release  28-Jan-18  {#Patch1804}
+###  2.5.0.1804 Patch Release  28-Jan-18  {#Patch1804}
 <table>
     <col width="125px" />
     <col />
@@ -92,7 +136,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## 2.5.0.1803 Patch Release  21-Jan-18  {#Patch1803}
+###  2.5.0.1803 Patch Release  21-Jan-18  {#Patch1803}
 <table>
     <col width="125px" />
     <col />
@@ -114,7 +158,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## 2.5.0.1802 Patch Release  14-Jan-18  {#Patch1802}
+###  2.5.0.1802 Patch Release  14-Jan-18  {#Patch1802}
 <table>
     <col width="125px" />
     <col />
@@ -152,7 +196,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## 2.5.0.1749 Patch Release  26-Dec-17  {#Patch1749}
+###  2.5.0.1749 Patch Release  26-Dec-17  {#Patch1749}
 <table>
     <col width="125px" />
     <col />
@@ -174,7 +218,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## 2.5.0.1748 Patch Release  18-Dec-17  {#Patch1748}
+###  2.5.0.1748 Patch Release  18-Dec-17  {#Patch1748}
 <table>
     <col width="125px" />
     <col />
@@ -208,7 +252,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## 2.5.0.1747 Patch Release  08-Dec-17  {#Patch1747}
+###  2.5.0.1747 Patch Release  08-Dec-17  {#Patch1747}
 <table>
     <col width="125px" />
     <col />
@@ -254,7 +298,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## 2.6.1.1745 Patch Release  08-Dec-17  {#Patch1745}
+###  2.6.1.1745 Patch Release  08-Dec-17  {#Patch1745}
 
 2.6 was an interim release that has been folded in to 2.5
 {: .noteIcon}
@@ -368,7 +412,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## Splice Patch Release 2.5.0.1735 {#Patch1735}
+###  Splice Patch Release 2.5.0.1735 {#Patch1735}
 <table summary="Summary of new features and changes in this release">
     <col width="125px" />
     <col />
@@ -473,7 +517,7 @@ This topic describes significant new features and changes in the Splice Machine 
     </tbody>
 </table>
 
-## Splice Patch Release 2.5.0.1729  01-Aug-17 {#Patch1729}
+###  Splice Patch Release 2.5.0.1729  01-Aug-17 {#Patch1729}
 
 <table summary="Summary of new features and changes in this release">
     <col width="125px" />
@@ -508,49 +552,6 @@ This topic describes significant new features and changes in the Splice Machine 
         <tr>
             <td>SPLICE-1671</td>
             <td>Enable snapshot with bulk load procedure</td>
-        </tr>
-    </tbody>
-</table>
-
-## 2.5 GA Release  01-Mar-17 {#Release1707}
-
-<table summary="Summary of new features and changes in this release">
-    <col width="125px" />
-    <col />
-    <thead>
-        <tr>
-            <th>JIRA ID</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Internal</td>
-            <td>Privileges at schema level.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Incremental backup/restore.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Non-native database dump/load.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>ORC and Parquet implemented as external tables.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>SQL WITH clause.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Window function enhancements.</td>
-        </tr>
-        <tr>
-            <td>Internal</td>
-            <td>Caching of RDDs (pinning).</td>
         </tr>
     </tbody>
 </table>
