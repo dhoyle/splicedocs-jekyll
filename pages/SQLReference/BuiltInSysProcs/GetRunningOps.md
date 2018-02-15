@@ -67,24 +67,38 @@ The displayed results of calling
                         <td><code>SQL</code></td>
                         <td>The SQL statement that is running.</td>
                     </tr>
+                    <tr>
+                        <td><code>SUBMITTED</code></td>
+                        <td>The date and time that the operation was submitted.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ELAPSED</code></td>
+                        <td>Elapsed time since the operation began running.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ENGINE</code></td>
+                        <td>Which engine (SPARK or CONTROL) is running the operation.</td>
+                    </tr>
+                    <tr>
+                        <td><code>JOBTYPE</code></td>
+                        <td>The operation type.</td>
+                    </tr>
                 </tbody>
             </table>
 ## Example
 
-<div class="preWrapper" markdown="1">
-    splice> call SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS();
-    UUID                                    |USER     |HOSTNAME         |SESSION    |SQL
-    -------------------------------------------------------------------------------------------------------------------------------
-    bf610dea-d33e-4304-bf2e-4f10e667aa98    |SPLICE   |localhost:1528   |2          |call SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS()
-    33567e3c-ef33-46dc-8d10-5ceb79348c2e    |SPLICE   |localhost:1528   |20         |insert into a select * from a
-    
-    2 rows selected
-    
-    splice> call SYSCS_UTIL.SYSCS_KILL_OPERATION('33567e3c-ef33-46dc-8d10-5ceb79348c2e');
-    Statement executed.
-{: .Example xml:space="preserve"}
+<code>splice> call SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS();</code>
 
-</div>
+|UUID                                    |USER                              |HOSTNAME                                                                                                                |SESSION    |SQL                                                                                                                                                                                                                     |SUBMITTED     |ELAPSED                        |ENGINE      |JOBTYPE                                  |
+|34b0f479-be9a-4933-9b4d-900af218a19c    |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |264        |select * from sys.systables --splice-properties useSpark=true                                                                                                                                                                                                   |2018-02-02 17:39:05               | 26 sec(s)|SPARK     |Produce Result Set |
+|4099f016-3c9d-4c62-8059-ff18d3b38a19     |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |4          |call syscs_util.syscs_get_running_operations()                                                                                                                                                                                                                  |2018-02-02 17:39:31               |0 sec(s) |CONTROL   |Call Procedure |
+
+```
+2 rows selected
+
+splice> call SYSCS_UTIL.SYSCS_KILL_OPERATION('4099f016-3c9d-4c62-8059-ff18d3b38a19');
+Statement executed.
+```
+
 </div>
 </section>
-
