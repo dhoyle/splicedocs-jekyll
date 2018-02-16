@@ -23,10 +23,7 @@ To use Kerberos with the Splice Machine ODBC driver on Windows, you must downloa
 ## Download and Run the MIT Kerberos Installer for Windows
 
 You can find the installer here:
-<div class="preWrapperWide" markdown="1">
-    http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi
-{: .Plain}
-</div>
+&nbsp;&nbsp;&nbsp;<a href="http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi" target="_blank">http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi</a>
 
 ## Set up the Kerberos Configuration file
 
