@@ -178,6 +178,9 @@ the driver:
     standalone version of Splice Machine, specify `localhost`.
     {: .noteNote}
 
+    #### Configuring Kerberos
+    To configure Kerberos for your ODBC connections, you must install MIT Kerberos for Windows; see our [Configuring Kerberos for Windows ODBC](tutorials_connect_odbcwin.html) topic for instructions.
+
     #### Configuring SSL
     To configure SSL for your ODBC connections, click the drop-down arrow in the *Use SSL:* setting and change the setting from `none` to one of the following settings:
     {: .indentLevel1}
