@@ -26,7 +26,6 @@ Most of the information about changes in the Splice Machine database that underl
 
 These features are not yet available, but will be very soon:
 
-* TLS is not yet enabled for JDBC connections.
 * VPC Settings are not yet enabled but will be in a near future release.
 * You currently cannot cancel queries that are running through Zeppelin or JDBC tools; you can use the Spark User Interface to cancel Spark queries.
 
