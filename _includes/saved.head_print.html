@@ -5,20 +5,20 @@
 <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
 <title>{% if page.homepage == true %} {{site.homepage_title}} {% elsif page.title %}{{ page.title }}{% endif %}  | {{ site.site_title }}</title>
 
-<link rel="stylesheet" href="{{ "/css/syntax.css" }}">
-<link rel="stylesheet" href="{{ "/css/font-awesome.min.css" }}">
-<link rel="stylesheet" href="{{ "/css/bootstrap.min.css" }}">
-<link rel="stylesheet" href="{{ "/css/modern-business.css"  }}">
-<link rel="stylesheet" href="{{ "/css/spliceprintmain.css" }}">
+<link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl | prepend: site.url }}">
+<link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl | prepend: site.url }}">
+<link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl | prepend: site.url }}">
+<link rel="stylesheet" href="{{ "/css/modern-business.css" | prepend: site.baseurl | prepend: site.url }}">
+<link rel="stylesheet" href="{{ "/css/spliceprintmain.css" | prepend: site.baseurl }}">
 
 <script>
     Prince.addScriptFunc("datestamp", function() {
-        return "Last generated: {{ site.time | date: '%B %d, %Y' }}";
+        return "PDF last generated: {{ site.time | date: '%B %d, %Y' }}";
     });
 </script>
 
 <script>
     Prince.addScriptFunc("guideName", function() {
-        return "{{site.print_title}}";
+        return "{{site.print_title}} User Guide";
     });
 </script>

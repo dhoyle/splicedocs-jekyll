@@ -1,0 +1,129 @@
+
+@page {
+    size: $page-size;
+    margin: $page-margins;
+    inside-margin: $page-inside-margins;
+    font-family: $bodyfont-face;
+    font-style:none;
+    color: $bodyfont-color;
+}
+
+@page title {
+    @top-left {
+        content: " ";
+    }
+    @top-right {
+        content: " "
+    }
+    @bottom-right {
+        content: " ";
+    }
+    @bottom-left {
+        content: " ";
+    }
+}
+
+@page frontmatter {
+    @top-left {
+        content: prince-script(guideName);
+    }
+    @top-right {
+        content: prince-script(datestamp);
+    }
+    @bottom-right {
+        content: counter(page, lower-roman);
+    }
+    @bottom-left {
+        content: "docs@splicemachine.com";
+    }
+}
+
+@page {
+    @top-left {
+        content: string(doctitle);
+        font-size: $pageheaderfont-size;
+        font-style: $pageheadertitle-style;
+    }
+    @top-right {
+        content: prince-script(datestamp);
+        font-size: $pageheaderfont-size;
+    }
+    @bottom-right {
+        content: "Page " counter(page);
+        font-size: $pageheaderfont-size;
+    }
+    @bottom-left {
+        content: prince-script(guideName);
+        font-size: $pageheaderfont-size;
+    }
+}
+
+body.frontmatter { page: frontmatter }
+body.frontmatter {counter-reset: page 1}
+body.first_page {counter-reset: page 1}
+body.title { page: title }
+
+
+.printTitle {
+    line-height:30pt;
+    font-size:27pt;
+    font-weight: bold;
+    letter-spacing: -.5px;
+    margin-bottom:25px;
+}
+
+.printSubtitle {
+    font-size: 19pt;
+    color: #cccccc !important;
+    front-family: "Grotesque MT Light";
+    line-height: 22pt;
+    letter-spacing: -.5px;
+    margin-bottom:20px;
+}
+
+.printTitleArea hr {
+    color: #999999 !important;
+    height: 2px;
+    width: 100%;
+}
+
+.printTitleImage {
+    max-width: 300px;
+    margin-bottom: 200px;
+}
+
+.copyrightBoilerplate {
+    page-break-before: always;
+    font-size: $copyrightfont-size;
+}
+
+.lastGeneratedDate {
+    font-style: $lastgendatefont-style;
+    font-size: $lastgendatefont-size;
+    color: $lastgendatefont-color;
+}
+
+.nav ul li a {border-top:0px; background-color:transparent; color: #808080; }
+#navig a[href] {color: #595959 !important;}
+table .table {max-width:650px;}
+
+#navig li.sectionHead {font-weight: bold; font-size: 18px; color: #595959 !important; }
+#navig li {font-weight: normal; }
+
+#navig a[href]::after { content: leader(".") target-counter(attr(href), page); }
+
+a[href]::after {
+    content: " (page " target-counter(attr(href), page) ")"
+}
+
+a[href^="http:"]::after, a[href^="https:"]::after {
+    content: " (" attr(href) ")";
+}
+
+a[href] {
+    color: blue !important;
+}
+
+a[href*="mailto"]::after, a[data-toggle="tooltip"]::after, a[href].noCrossRef::after {
+    content: "";
+}
