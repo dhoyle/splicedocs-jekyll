@@ -3,10 +3,15 @@ clear
 
 PS3="Select which PDF to build: "
 COLUMNS=30
-OPTIONS=( 'Command Line Ref' 'DBaaS' 'DB Console' 'Developer Guide' 'General Info'
-          'On-Premise' 'Release Notes' 'SQL Reference' 'Tutorials' )
+OPTIONS=( 'All' 'Command Line Ref' 'DBaaS' 'DB Console' 'Developer Guide'
+          'General Info' 'On-Premise' 'Release Notes' 'SQL Reference' 'Tutorials' )
 select opt in "${OPTIONS[@]}"; do
     case $opt in
+        'All')
+            id='all'
+            title='Splice Machine Documentation'
+            break;
+            ;;
         'Command Line Ref')
             id='cmdlineref'
             title='Command Line Reference'
@@ -64,5 +69,5 @@ echo "Building $title HTML site"
 echo "done"
 
 echo "Creating pdf/$id.pdf"
- prince --javascript --input-list=_site/pdfconfigs/prince-list.txt -o pdf/$id.pdf 2>/dev/null
+ prince --javascript --input-list=_site/pdfconfigs/prince-list.txt -o pdf/$id.pdf 2>pdfwarns.txt
 echo "done"
