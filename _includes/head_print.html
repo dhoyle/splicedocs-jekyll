@@ -3,13 +3,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
 <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
-<title>{% if page.homepage == true %} {{site.homepage_title}} {% elsif page.title %}{{ page.title }}{% endif %}  | {{ site.site_title }}</title>
+<title>{% if page.homepage == true %} {{site.homeguide_heading}} {% elsif page.title %}{{ page.title }}{% endif %}  | {{ site.site_title }}</title>
 
-<link rel="stylesheet" href="{{ "/css/syntax.css" }}">
 <link rel="stylesheet" href="{{ "/css/font-awesome.min.css" }}">
-<link rel="stylesheet" href="{{ "/css/bootstrap.min.css" }}">
+<link rel="stylesheet" href="{{ "/css/bootstrap.min.css"    }}">
 <link rel="stylesheet" href="{{ "/css/modern-business.css"  }}">
-<link rel="stylesheet" href="{{ "/css/spliceprintmain.css" }}">
+<link rel="stylesheet" href="{{ "/css/spliceprintmain.css"  }}">
 
 <script>
     Prince.addScriptFunc("datestamp", function() {
@@ -20,5 +19,12 @@
 <script>
     Prince.addScriptFunc("guideName", function() {
         return "{{site.print_title}}";
+    });
+</script>
+
+
+<script>
+    Prince.addScriptFunc("guideHeader", function() {
+        return "{{site.guide_heading}}";
     });
 </script>

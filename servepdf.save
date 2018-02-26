@@ -1,0 +1,72 @@
+#!/bin/sh
+
+PS3="Select which PDF to build: "
+COLUMNS=30
+OPTIONS=( 'All' 'Command Line Ref' 'DBaaS' 'DB Console' 'Developer Guide'
+          'General Info' 'On-Premise' 'Release Notes' 'SQL Reference' 'Tutorials' )
+select opt in "${OPTIONS[@]}"; do
+    case $opt in
+        'All')
+            id='all'
+            title='Splice Machine Documentation'
+            break;
+            ;;
+        'Command Line Ref')
+            id='cmdlineref'
+            title='Command Line Reference'
+            break;
+            ;;
+        'DBaaS')
+            id='dbaas'
+            title='Database-as-Service Product'
+            break;
+            ;;
+        'DB Console')
+            id='dbconsole'
+            title='Database Console'
+            break;
+            ;;
+        'Developer Guide')
+            id='devguide'
+            title='Developer Guide'
+            break;
+            ;;
+        'General Info')
+            id='notes'
+            title='General Information'
+            break;
+            ;;
+        'On-Premise')
+            id='onprem'
+            title='On-Premise Database Product'
+            break;
+            ;;
+        'Release Notes')
+            id='releasenotes'
+            title='Release Notes'
+            break;
+            ;;
+        'SQL Reference')
+            id='sqlref'
+            title='SQL Reference'
+            break;
+            ;;
+        'Tutorials')
+            id='tutorials'
+            title='Developer Tutorials'
+            break;
+            ;;
+        *) echo Invalid option;;
+    esac
+done
+
+echo "Killing all Jekyll instances"
+kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
+
+echo "Building $title HTML site"
+ jekyll serve --detach --config _config.yml,_config_2.7.yml,_config_doc.yml,pdfconfigs/config\_$id\_pdf.yml
+echo "done"
+
+echo "Creating pdf/$id.pdf"
+ prince --javascript --input-list=_site/pdfconfigs/prince-list.txt -o pdf/$id.pdf 2>pdfwarns.txt
+echo "done"

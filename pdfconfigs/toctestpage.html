@@ -4,14 +4,17 @@ search: exclude
 permalink: /tocpage/
 ---
 
-    <!-- This generates one very large Table of Contents for the entire Docs Suite;
-         We use parallel arrays to display correct book name in the <h2> in our TOC -->
+<!-- new page -->
 
+<!--
 {% assign splicetocs = "tutorials_sidebar,sqlref_sidebar,developers_sidebar,cmdlineref_sidebar,dbconsole_sidebar,dbaas_sidebar,onprem_sidebar,releasenotes_sidebar,notes_sidebar" | split: ',' %}
 
 {% assign splicebooks = "Developer Tutorials,SQL Reference Manual,Developer's Guide,Command Line Reference,Database Console,Database-as-Service Product,On-Premise Database Product,Release Notes,General Information" | split: ',' %}
+-->
 
-    <!-- Need to use an integer index into the book names array, so use a counter -->
+{% assign splicetocs = "developers_sidebar" | split: ',' %}
+{% assign splicebooks = "Developer's Guide" | split: ',' %}
+
 {% assign tocId = 0 %}
 
 <div id="tocnav">
@@ -28,7 +31,7 @@ permalink: /tocpage/
                         <ul class="printtoc2">
                         {% for folderitem in folder.folderitems %}
                             {% if folderitem.output contains "pdf" %}
-                                <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
+                                <li><a href="{{folderitem.url | prepend: site.url | prepend: site.baseurl }}">{{folderitem.title}}</a></li>
                             {% endif %}
                         {% endfor %}
                         </ul>
