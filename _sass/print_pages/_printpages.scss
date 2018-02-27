@@ -27,7 +27,7 @@
         padding-top:    0.25in;
     }
     @bottom {
-        content:        "Page " counter(page) " of " counter(pages);
+        content:        "Page " counter(page);
         font-family:    $pagefooter-font;
         font-size:      $pagefooter-size;
         font-style:     $pagefooter-style;
@@ -74,11 +74,27 @@
     }
 }
 
-body.frontmatter { page: frontmatter }
-body.frontmatter { counter-reset: page 1 }
-body.first_page  { counter-reset: page 1 }
-body.title       { page: title }
+@page first_page {
+    @top {
+        content: " ";
+    }
+    @bottom {
+        content: " ";
+    }
+}
 
+body.frontmatter {
+    page: frontmatter;
+    counter-reset: page 1;
+}
+
+body.first_page {
+    page: first_page;
+}
+
+body.title {
+    page: title
+}
 
 .printTitle {
     font-family:    $printtitle-font;

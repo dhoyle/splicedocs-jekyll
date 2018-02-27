@@ -28,7 +28,7 @@ permalink: /tocpage/
                         <ul class="printtoc2">
                         {% for folderitem in folder.folderitems %}
                             {% if folderitem.output contains "pdf" %}
-                                <li><a href="{{folderitem.url}}">{{folderitem.title}}</a></li>
+                                <li><a href="{{folderitem.url | prepend: site.url | prepend: site.baseurl }}">{{folderitem.title}}</a></li>
                             {% endif %}
                         {% endfor %}
                         </ul>
