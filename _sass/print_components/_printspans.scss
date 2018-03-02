@@ -14,6 +14,14 @@ code {
 	font-size: $codefont-size;
 	color: inherit;
 	text-transform: none;
+
+	a:link,
+	a:active,
+	a:visited,
+	a:hover,
+	a:focus {
+		color: $link-color;
+	}
 }
 
 @mixin spanStyle ($bgColor: transparent,
@@ -23,16 +31,13 @@ code {
 				  $fontSize: $bodyfont-size,
 				  $color: inherit,
 				  $transform: none) {
-  background-color: $bgColor;
-  font-family: $fontFamily;
-  font-style: $fontStyle;
-  font-size:  $fontSize;
-  font-weight: $fontWeight;
-  color: $color;
-  text-transform: $transform;
-
-  a:link {color: $link-color}
-
+	background-color: $bgColor;
+	font-family: $fontFamily;
+	font-style: $fontStyle;
+	font-size:  $fontSize;
+	font-weight: $fontWeight;
+	color: $color;
+	text-transform: $transform;
 }
 
 span.AppFontCust {
