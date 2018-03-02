@@ -10,6 +10,7 @@ folder: DBConsole
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+{% assign site.pdf_runninghead = "Database Console Guide" %}
 # Splice Machine Database Console Guide
 
 This topic introduces the *Splice Machine Database Console*, a

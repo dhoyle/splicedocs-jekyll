@@ -1,0 +1,70 @@
+#!/bin/sh
+
+PS3="Select which PDF to build: "
+COLUMNS=30
+OPTIONS=( 'Command Line Ref' 'DBaaS' 'DB Console' 'Developer Guide'
+          'General Info' 'On-Premise' 'Release Notes' 'SQL Reference' 'Tutorials' )
+select opt in "${OPTIONS[@]}"; do
+    case $opt in
+        'Command Line Ref')
+            id='cmdlineref'
+            title='Command Line Reference'
+            break;
+            ;;
+        'DBaaS')
+            id='dbaas'
+            title='Database-as-Service Product'
+            break;
+            ;;
+        'DB Console')
+            id='dbconsole'
+            title='Database Console'
+            break;
+            ;;
+        'Developer Guide')
+            id='developers'
+            title='Developer Guide'
+            break;
+            ;;
+        'General Info')
+            id='notes'
+            title='General Information'
+            break;
+            ;;
+        'On-Premise')
+            id='onprem'
+            title='On-Premise Database Product'
+            break;
+            ;;
+        'Release Notes')
+            id='releasenotes'
+            title='Release Notes'
+            break;
+            ;;
+        'SQL Reference')
+            id='sqlref'
+            title='SQL Reference'
+            break;
+            ;;
+        'Tutorials')
+            id='tutorials'
+            title='Developer Tutorials'
+            break;
+            ;;
+        *) echo Invalid option;;
+    esac
+done
+
+echo "Killing all Jekyll instances"
+kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
+
+echo "Copying pdfconfigs/singles/_${id}_tocpage.html to pdfconfigs/singles/tocpage.html"
+cp pdfconfigs/singles/_${id}_tocpage.html pdfconfigs/singles/tocpage.html
+
+echo "Building $title HTML site"
+ jekyll serve --detach --config _config.yml,_config_2.7.yml,_config_doc.yml,pdfconfigs/singles/${id}_pdfconfig.yml
+echo "done"
+
+echo "Creating pdf/$id.pdf"
+ prince --javascript --input-list=_site/pdfconfigs/singles/${id}_pdflist.txt -o pdf/splice${id}.pdf 2>pdfwarns.txt
+echo "done"

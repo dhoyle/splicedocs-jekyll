@@ -12,6 +12,7 @@
     color:         $bodyfont-color;
 }
 
+/* SHOULD BE ABLE tO SET @bottom-left to {{site.pdf_runninghead}} */
 @page {
     @top {
         content:        prince-script(guideHeader);
@@ -21,13 +22,13 @@
         font-weight:    $pageheader-weight;
         color:          $pageheader-color;
         vertical-align: top;
-        text-align:     center;
-        text-decoration:underline;
-        text-decoration-color: $pageheader-color;
+        text-align:     right;
+        text-decoration:none;
         padding-top:    0.25in;
+        padding-right:  0.25in;
     }
     @bottom {
-        content:        "Page " counter(page);
+        content:        "-" counter(page) "-";
         font-family:    $pagefooter-font;
         font-size:      $pagefooter-size;
         font-style:     $pagefooter-style;
@@ -56,9 +57,8 @@
         font-weight:    $pageheader-weight;
         color:          $pageheader-color;
         vertical-align: top;
-        text-align:     center;
-        text-decoration:underline;
-        text-decoration-color: $pageheader-line-color;
+        text-align:     right;
+        text-decoration:none;
         padding-top:    0.25in;
     }
     @bottom {
@@ -90,6 +90,7 @@ body.frontmatter {
 
 body.first_page {
     page: first_page;
+    counter-reset: page 0;
 }
 
 body.title {

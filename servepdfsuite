@@ -1,0 +1,15 @@
+#!/bin/sh
+
+
+echo "Killing all Jekyll instances"
+kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
+
+echo "Building Splice Documentation HTML site"
+ jekyll serve --detach --config _config.yml,_config_2.7.yml,_config_doc.yml,pdfconfigs/suite/config_pdf.yml
+echo "done"
+
+echo "Creating PDF file: pdf/splicedocs.pdf"
+ prince --javascript --input-list=_site/pdfconfigs/suite/prince-list.txt -o pdf/splicedocs.pdf 2>pdfwarns.txt
+echo "done"
+
+afplay /System/Library/Sounds/Sosumi.aiff
