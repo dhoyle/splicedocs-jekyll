@@ -10,6 +10,7 @@ folder: CmdLineReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+{% assign site.pdf_runninghead = "Command Line Reference" %}
 # Splice Machine Commands Reference
 
 This section contains a reference topic page for each Splice Machine

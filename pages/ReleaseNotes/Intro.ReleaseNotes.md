@@ -11,6 +11,7 @@ folder: ReleaseNotes
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 {% include splicevars.html %}
+{% assign site.pdf_runninghead = "Release Notes" %}
 
 # Release Notes for Splice Machine
 

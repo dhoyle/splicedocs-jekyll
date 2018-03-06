@@ -10,6 +10,7 @@ folder: Tutorials
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+{% assign site.pdf_runninghead = "Developer Tutorials" %}
 # Splice Machine Tutorials
 
 This guide includes tutorials to help you quickly become proficient in

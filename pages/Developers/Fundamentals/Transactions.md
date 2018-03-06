@@ -474,7 +474,7 @@ and *rollback* in action:
     splice> insert into myTbl  values 4,5;   - insert more datasplice> select * from myTbl;             - verify table contents
     splice> rollback;                        - roll back latest insertions
     splice> select * from myTbl;             - and verify again
-    ...	
+    ...
 {: .AppCommand xml:space="preserve"}
 
 </div>
@@ -522,7 +522,7 @@ our table:
     1
     2
     3
-    
+
     3 rows selected
 {: .AppCommand}
 
@@ -554,7 +554,7 @@ Now we roll back to our savepoint, and verify that the rollback worked:
     1
     2
     3
-    
+
     3 rows selected
 {: .AppCommand}
 
@@ -600,4 +600,3 @@ In other words:
 
 </div>
 </section>
-

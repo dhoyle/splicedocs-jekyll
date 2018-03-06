@@ -10,6 +10,7 @@ folder: DBaaS
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+{% assign site.pdf_runninghead = "Database-as-Service Product" %}
 # Welcome to the Splice Machine Database Service!
 
 Welcome to Splice Machine, the database platform for adaptive
