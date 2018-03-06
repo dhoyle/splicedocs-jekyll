@@ -1,0 +1,286 @@
+
+@mixin cellStyle ( $bgColor: transparent,
+				   $fontFace: $bodyfont-face,
+				   $fontWeight: normal,
+				   $fontStyle: normal,
+				   $fontColor: $bodyfont-color,
+				   $fontSize: 1em,
+				   $fontTransform: none,
+				   $vertAlign: top ) {
+	background-color: $bgColor;
+	font-family: $fontFace;
+	font-weight: $fontWeight;
+	font-style: $fontStyle;
+	color: $fontColor;
+	font-size: $fontSize;
+	text-transform: $fontTransform;
+	vertical-align: $vertAlign;
+}
+
+table,
+table.noBorder
+{
+	table-layout: auto;
+	border: $border-table;
+	border-collapse: collapse;
+	border-radius: $border-table-radius;
+	margin: 0.35in 0.25in 0.35in 0.25in;
+	word-wrap: break-word;
+	overflow: auto;
+	font-weight: normal;
+
+	caption {
+		text-align: center;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		font-weight: $bodyfont-bold;
+		font-size: 1.05em;
+	}
+
+	tr {
+	   }
+
+	td {
+		border: $border-table;
+		padding: 8px;
+		text-align: left;
+		vertical-align: top;
+		word-wrap: break-word;
+		overflow: auto;
+	}
+
+	td p:first-child,
+	td.middle p:first-child {
+		margin-top: 0;
+	}
+
+	td > ul > li:first-of-type,
+	td > ol > li:first-of-type {
+	    margin-top: 0;
+	}
+
+	td.middle {
+		vertical-align: middle;
+	}
+
+	th {
+		border: $border-table;
+		padding: 8px;
+		text-align: left;
+		vertical-align: top;
+		word-wrap: break-word;
+		overflow: auto;
+		font-family: $bodyfont-face;
+		font-style: normal;
+		font-weight: $bodyfont-bold;
+		background-color: $bgColor-table-th;
+
+		.center {
+			text-align: center;
+		}
+
+		.smallText {
+			font-size: 0.9em;
+			line-height: 1em;
+		}
+	}
+
+	div.preWrapper {
+		max-width: 65%;
+	}
+
+	div.preWrapperWide {
+		max-width: 95%;
+	}
+
+    img {
+		border: none;
+		width: auto;
+		height: auto;
+		margin: 0;
+	}
+}
+
+table.noBorder {
+    border: none;
+    td { border: none;}
+    th { border: none;}
+}
+
+table td.AppFont {
+	@include cellStyle ($fontFace: $codefont-face,
+						$fontWeight: $codefont-weight,
+						$bgColor: $table-appFont-color)
+}
+
+table td.AppFont {
+	@include cellStyle ($fontFace: $codefont-face,
+						$bgColor: $table-appFont-color)
+}
+
+table td.DbaasIntroNum{
+	@include cellStyle ($fontFace: $codefont-face,
+						$fontSize:  $extralargefont-size,
+						$fontColor: $consoleLink-color,
+						$vertAlign: middle )
+}
+
+table td.DbaasIntroStep{
+	@include cellStyle ($fontSize:  $largefont-size,
+						$fontColor: $callout-color,
+						$vertAlign: middle,
+						$fontWeight: bold )
+}
+
+
+table td.DbaasIntroArrow{
+	@include cellStyle ($fontSize:  $extralargefont-size,
+						$fontColor: $consoleLink-color,
+						$fontWeight: bold,
+						$vertAlign: middle )
+}
+
+table td.DbaasIntroDesc{
+	@include cellStyle ($fontColor: $consoleLink-color,
+						$vertAlign: middle )
+}
+
+table td.BoldFont {
+	@include cellStyle ($fontWeight: bold)
+}
+
+table td.BoldBlueBG {
+	@include cellStyle( $bgColor: $bgcolor-blue,
+						$fontWeight: $bodyfont-bold )
+}
+
+table td.BoldGreenBG {
+	@include cellStyle( $bgColor: $bgcolor-green,
+						$fontWeight: $bodyfont-bold )
+}
+
+table td.BoldDarkGreenBG {
+	@include cellStyle( $bgColor: $bgcolor-darkgreen,
+						$fontWeight: $bodyfont-bold )
+}
+
+table td.BoldRedBG {
+	@include cellStyle( $bgColor: $bgcolor-red,
+						$fontWeight: $bodyfont-bold )
+}
+
+table td.CodeFont {
+	@include cellStyle( $fontFace: $codefont-face )
+}
+
+table td.CodeFontUC {
+	@include cellStyle( $fontFace: $codefont-face,
+						$fontTransform: uppercase )
+}
+
+table td.CodeFontSmall {
+	@include cellStyle( $fontFace: $codefont-face,
+						$fontSize: 0.9em )
+}
+
+table td.ConsoleLink {
+	@include cellStyle( $fontColor: $consoleLink-color,
+						$fontWeight: 600 )
+}
+
+table td.ItalicFont {
+	@include cellStyle( $fontStyle: italic )
+}
+
+table td.MenuName {
+	@include cellStyle ($fontStyle: italic,
+						$bgColor: $table-appFont-color)
+}
+
+table td.PlainFont {
+	@include cellStyle( $fontWeight: normal )
+}
+
+table td.Separator {
+	@include cellStyle( $bgColor: $table-separator-color );
+	height: $table-separator-height;
+	line-height: $table-separator-height;
+}
+
+table td.smallText {
+	@include cellStyle( $fontSize: 0.9em );
+	line-height: 1em;
+}
+
+table td.SpliceRelease {
+    @include cellStyle( $fontColor: $versTbl-release-color,
+                        $bgColor: $versTbl-release-bgcolor,
+                        $fontWeight: $versTbl-release-weight );
+}
+
+table td.SplicePlatform {
+    @include cellStyle( $fontColor: $versTbl-platform-color,
+                        $bgColor: $versTbl-platform-bgcolor,
+                        $fontWeight: $versTbl-platform-weight);
+}
+
+table td.SpliceParcel {
+    @include cellStyle( $fontColor: $versTbl-parcel-color,
+                        $bgColor: $versTbl-parcel-bgcolor,
+                        $fontWeight: $versTbl-parcel-weight);
+}
+
+
+
+table.featureList
+{
+	table-layout: auto;
+	border: $border-table;
+	border-collapse: collapse;
+	border-radius: 0;
+	margin: 20px 50px 20px 50px;
+	word-wrap: break-word;
+	overflow: auto;
+
+	td,
+	td.leftAlign{
+		border: $border-table;
+		padding: 5px;
+		word-wrap: break-word;
+		overflow: auto;
+		color: $featureTable-color;
+		font-weight: normal;
+		text-align: center;
+		vertical-align: middle;
+	}
+	td.leftAlign{
+		text-align: left;
+	}
+	td.featureName {
+		text-align: left;
+		padding: 4px 12px 4px 12px;
+		font-family: $featureTable-name-face;
+		font-weight: 600;
+		font-size: 13px;
+		color: $featureTable-color;
+		background-color: $bgColor-featureTable;
+	}
+	td.checkmark {
+		text-align: center;
+		font-family: $featureTable-checkmark-face;
+		font-size: 13px;
+		color: $featureTable-checkmark-color;
+	}
+	th,
+	td.subHeader {
+		background-color: $bgColor-featureTable-th;
+		border: $border-table;
+		padding: 5px;
+		vertical-align: middle;
+		text-align: center;
+		word-wrap: break-word;
+		overflow: auto;
+		color: $featureTable-th-color;
+		font-weight: $bodyfont-bold;
+	}
+}

@@ -10,6 +10,7 @@ folder: Notes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+{% assign site.pdf_runninghead = "General Information" %}
 # General Information
 
 This page includes links to various note pages, including our glossary,

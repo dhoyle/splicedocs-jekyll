@@ -1,17 +1,40 @@
 #!/bin/sh
-read -p "Enter the version to build (doc, docstest, docsdev)      [docsdev]: " version
-version=${version:-docsdev}
 
-if [ $version = 'doc' ]
-then
-    read -p "Enter the branch to build (2.7, 2.5)    [2.7]: " branch
-branch=${branch:-2.7}
-else
-    branch='2.7'
-fi
+PS3="Select which Docs Version to build: "
+COLUMNS=12
+OPTIONS=( 'DocsDev'
+          'DocsTest'
+          'Doc 2.7'
+          'Doc 2.5' )
+select opt in "${OPTIONS[@]}"; do
+    case $opt in
+        'DocsDev')
+            version='docsdev'
+            branch='2.7'
+            break;
+            ;;
+        'DocsTest')
+            version='docstest'
+            branch='2.7'
+            break;
+            ;;
+        'Doc 2.7')
+            version='doc'
+            branch='2.7'
+            break;
+            ;;
+        'Doc 2.5')
+            version='doc'
+            branch='2.5'
+            break;
+            ;;
+        *) echo Invalid option;;
+    esac
+done
 
-echo "Will generate sitemap file: _site/sitemap.$branch.xml"
-echo "Will rename sitemap index file sitemapindex.$version.xml to _site/sitemap.xml"
+echo "  --> Building with _config.yml,_config_$version.yml,_config_$branch.yml"
+echo "       - Will generate sitemap file: _site/sitemap.$branch.xml"
+echo "       - Will rename sitemap index file sitemapindex.$version.xml to _site/sitemap.xml"
 
 jekyll serve --config=_config.yml,_config_$version.yml,_config_$branch.yml
 

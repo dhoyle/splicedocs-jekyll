@@ -1,0 +1,161 @@
+
+h1 { string-set: runningfooter content() }
+
+@page {
+    size:          $page-size;
+    margin-top:    $page-margin-top;
+    margin-bottom: $page-margin-bottom;
+    margin-left:   $page-margin-left;
+    margin-right:  $page-margin-right;
+    margin-inside: $page-margin-inside;
+    margin-outside:$page-margin-outside;
+    font-family:   $bodyfont-face;
+    font-style:    none;
+    color:         $bodyfont-color;
+}
+
+@page {
+    @top {
+        content:        prince-script(guideHeader);
+        font-family:    $pageheader-font;
+        font-size:      $pageheader-size;
+        font-style:     $pageheader-style;
+        font-weight:    $pageheader-weight;
+        color:          $pageheader-color;
+        vertical-align: top;
+        text-align:     right;
+        text-decoration:none;
+        padding-top:    0.25in;
+        padding-right:  0.5in;
+    }
+    @bottom-left {
+        content: string(runningfooter);
+        font-family:    $pagefooter-font;
+        font-size:      $pagefooter-size;
+        font-style:     $pagefooter-style;
+        font-weight:    $pagefooter-weight;
+        color:          $pagefooter-color;
+        vertical-align: bottom;
+        text-align:     left;
+        padding-bottom: 0.25in;
+        padding-left:   0.5in;
+    }
+    @bottom-right {
+        content:        counter(page);
+        font-family:    $pagefooter-font;
+        font-size:      $pagefooter-size;
+        font-style:     $pagefooter-style;
+        font-weight:    $pagefooter-weight;
+        color:          $pagefooter-color;
+        vertical-align: bottom;
+        text-align:     right;
+        padding-bottom: 0.25in;
+        padding-right:  0.5in;
+    }
+}
+
+@page title {
+    @top {
+        content: " ";
+    }
+    @bottom-left {
+        content: " ";
+    }
+    @bottom-right {
+        content: " ";
+    }
+}
+
+@page frontmatter {
+    @top {
+        content:        prince-script(guideHeader);
+        font-family:    $pageheader-font;
+        font-size:      $pageheader-size;
+        font-style:     $pageheader-style;
+        font-weight:    $pageheader-weight;
+        color:          $pageheader-color;
+        vertical-align: top;
+        text-align:     right;
+        text-decoration:none;
+        padding-top:    0.25in;
+    }
+    @bottom-left {
+        content: " ";
+    }
+    @bottom-right {
+        content: " ";
+    }
+    @bottom {
+        content: counter(page, lower-roman);
+        font-family:    $pagefooter-font;
+        font-size:      $pagefooter-size;
+        font-style:     $pagefooter-style;
+        font-weight:    $pagefooter-weight;
+        color:          $pagefooter-color;
+        vertical-align: bottom;
+        text-align:     center;
+        padding-bottom: 0.25in;
+    }
+}
+
+@page first_page {
+    @top {
+        content: " ";
+    }
+    @bottom-left {
+        content: " ";
+    }
+    @bottom-right {
+        content: " ";
+    }
+}
+
+body.frontmatter {
+    page: frontmatter;
+    counter-reset: page 1;
+}
+
+body.first_page {
+    page: first_page;
+    counter-reset: page 0;
+}
+
+body.title {
+    page: title
+}
+
+.printTitle {
+    font-family:    $printtitle-font;
+    font-size:      $printtitle-size;
+    font-weight:    $printtitle-weight;
+    line-height:    $printtitle-size+5;
+    color:          $printtitle-color;
+    letter-spacing: -.5px;
+    margin-bottom:  25px;
+    text-align:     center;
+}
+
+.printTitleArea hr {
+    color:  #999999 !important;
+    height: 2px;
+    width:  100%;
+}
+
+.printTitleImage {
+    margin:     100pt auto 144pt auto;
+    text-align: center;
+}
+
+.lastGeneratedDate {
+    margin:     200pt auto 0 auto;
+    text-align: center;
+    font-style: $lastgendatefont-style;
+    font-size:  $lastgendatefont-size;
+    color:      $lastgendatefont-color;
+}
+
+.copyrightBoilerplate {
+    page-break-before: always;
+    margin-top:        250pt;
+    font-size:         $copyrightfont-size;
+}

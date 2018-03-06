@@ -1,0 +1,39 @@
+
+a:link,
+a:active,
+a:focus {
+	color: $link-color;
+	text-decoration: underline;
+	text-decoration-color: $link-color;
+}
+
+a:hover {
+	color: $link-hover-color;
+	text-decoration: none;
+}
+
+a:visited {
+	color: $link-visited-color;
+	text-decoration: underline;
+	text-decoration-color: $link-visited-color;
+}
+
+a[href]::after {
+	content:"";
+}
+
+
+	/* This fancy bit of CSS is used to change the appearance of links to
+	   other books when building a single-book PDF. It changes such links to
+	   use the body text color and not be underlined, so they don't look like
+	   live links; note that the links will still be clickable, but won't go anywhere
+     */
+
+a:link:not(   [href^="developers_"], [href^="#"], [href^="http"]),
+a:active:not( [href^="developers_"], [href^="#"], [href^="http"]),
+a:focus:not(  [href^="developers_"], [href^="#"], [href^="http"]),
+a:hover:not(  [href^="developers_"], [href^="#"], [href^="http"]),
+a:visited:not([href^="developers_"], [href^="#"], [href^="http"]) {
+	color: $bodyfont-color;
+	text-decoration: none;
+}

@@ -1,0 +1,115 @@
+
+@mixin pgfStyle ( $fontSize: $bodyfont-size,
+				  $fontWeight: normal,
+				  $fontStyle: normal,
+				  $color: $bodyfont-color,
+				  $leftMargin: 0,
+				  $rightMargin: 0,
+				  $topMargin: 4px,
+				  $bottomMargin: 16px,
+				  $textAlign: left ) {
+	font-size: $fontSize;
+	font-weight: $fontWeight;
+	font-style: $fontStyle;
+	color: $color;
+	margin: ($topMargin $rightMargin $bottomMargin $leftMargin);
+	text-align: $textAlign;
+}
+
+
+p,
+p.body {
+	@include pgfStyle;
+}
+
+p.centered {
+	@include pgfStyle( $textAlign: center );
+}
+
+p.checkbox {
+	@include pgfStyle;
+}
+
+p.copyright {
+	@include pgfStyle( $textAlign: center,
+					   $fontSize: 9pt,
+					   $fontStyle: italic,
+					   $topMargin: 0,
+					   $bottomMargin: 0,
+					   $color: $copyright-color );
+}
+
+p.favicon {
+	@include pgfStyle;
+	cursor: url('images/favicon.png');
+}
+
+p.indentLevel1 {
+	@include pgfStyle( $leftMargin: 32px );
+}
+
+
+p.indentLevel2 {
+	@include pgfStyle( $leftMargin: 64px );
+}
+
+p.indentLevel3 {
+	@include pgfStyle( $leftMargin: 96px );
+}
+
+p.invisible,
+p.invisible a:link,
+p.invisible a:visited,
+p.invisible a:focus,
+p.invisible a:hover,
+p.invisible a:active {
+	@include pgfStyle( $color: white, $fontSize: 0.2em );
+	text-decoration: none;
+}
+
+p.noSpaceAbove {
+	@include pgfStyle;
+}
+
+p.noSpaceBelow {
+	@include pgfStyle( $bottomMargin: 0 );
+}
+
+p.noSpaceAboveOrBelow {
+	@include pgfStyle( $topMargin: 0,
+					   $bottomMargin: 0 );
+}
+
+p.paramDefnFirst {
+	@include pgfStyle( $leftMargin: 32px,
+					   $rightMargin: 10px,
+					   $topMargin: 2px,
+					   $bottomMargin: 4px );
+}
+
+p.paramDefn {
+	@include pgfStyle( $leftMargin: 32px,
+					   $rightMargin: 10px,
+					   $topMargin: 12px,
+					   $bottomMargin: 4px );
+}
+
+p.paramName {
+	@include pgfStyle( $fontStyle: italic,
+					   $topMargin: 12px,
+					   $bottomMargin: 0 );
+}
+
+p.spaceAbove {
+	@include pgfStyle( $topMargin: 16px,
+					   $bottomMargin: 16px );
+}
+
+    /*** From CustomStyles ***/
+
+p.external a {
+    text-align:right;
+    font-size:12px;
+    color: #0088cc;
+    display:inline;
+}
