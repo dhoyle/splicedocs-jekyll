@@ -1,11 +1,44 @@
 #!/bin/sh
 
+PS3="Select which Docs Version to build: "
+COLUMNS=12
+OPTIONS=( 'DocsDev'
+          'DocsTest'
+          'Doc 2.7'
+          'Doc 2.5' )
+select opt in "${OPTIONS[@]}"; do
+    case $opt in
+        'DocsDev')
+            version='docsdev'
+            branch='2.7'
+            break;
+            ;;
+        'DocsTest')
+            version='docstest'
+            branch='2.7'
+            break;
+            ;;
+        'Doc 2.7')
+            version='doc'
+            branch='2.7'
+            break;
+            ;;
+        'Doc 2.5')
+            version='doc'
+            branch='2.5'
+            break;
+            ;;
+        *) echo Invalid option;;
+    esac
+done
 
 echo "Killing all Jekyll instances"
 kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
 
-echo "Building Splice Documentation HTML site"
- jekyll serve --detach --config _config.yml,_config_2.7.yml,_config_doc.yml,pdfconfigs/suite/config_pdf.yml
+echo "  --> Building with _config.yml,_config_$version.yml,_config_$branch.yml"
+
+echo "Building Splice Documentation HTML suite"
+ jekyll serve --detach --config _config.yml,_config_$version.yml,_config_$branch.yml,pdfconfigs/suite/config_pdf.yml
 echo "done"
 
 echo "Creating PDF file: pdf/splicedocs.pdf"
