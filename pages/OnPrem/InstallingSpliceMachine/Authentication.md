@@ -88,24 +88,24 @@ authentication properties:
         <tbody>
             <tr>
                 <td>CDH</td>
-                <td>{{splvar_platform_v27_CDH5-AuthSettingsLoc}}
+                <td>{{splvar_location_CDHAuthSettings}}
                 </td>
             </tr>
             <tr>
                 <td>HDP</td>
-                <td><span class="splvar_platform_v27_HDP2-AuthSettingsLoc">Select the Custom HBase Configs option from the HBase configuration tab.</span>
+                <td><span class="splvar_location_HDPAuthSettings">Select the Custom HBase Configs option from the HBase configuration tab.</span>
                 </td>
             </tr>
             <tr>
                 <td>MapR</td>
                 <td>
-                    <p>{{splvar_platform_MapR-AuthSettingsLoc}}
+                    <p>{{splvar_location_MapRAuthSettings}}
                     </p>
                 </td>
             </tr>
             <tr>
                 <td>Standalone version</td>
-                <td>{{splvar_platform_Standalone-AuthSettingsLoc}}
+                <td>{{splvar_location_StandaloneAuthSettings}}
                 </td>
             </tr>
         </tbody>

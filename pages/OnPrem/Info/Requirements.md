@@ -125,45 +125,45 @@ for your platform:
     </thead>
     <tbody>
         <tr>
-            <td>{{splvar_platform_v25_CDH5-Versions}}
+            <td>{{splvar_requirements_CDH-Versions}}
             </td>
             <td>
-                <p class="noSpaceAbove">{{splvar_platform_v25_CDH5-OS}}
+                <p class="noSpaceAbove">{{splvar_requirements_CDH-OS}}
                 </p>
             </td>
-            <td>{{splvar_platform_v25_CDH5-Hadoop}}
+            <td>{{splvar_requirements_CDH-Hadoop}}
             </td>
-            <td>{{splvar_platform_v25_CDH5-HBase}}
+            <td>{{splvar_requirements_CDH-HBase}}
             </td>
-            <td>{{splvar_platform_v25_CDH5-Zookeeper}}
+            <td>{{splvar_requirements_CDH-ZooKeeper}}
             </td>
         </tr>
         <tr>
-            <td>{{splvar_platform_v25_HDP2-Versions}}
+            <td>{{splvar_requirements_HDP-Versions}}
             </td>
             <td>
-                <p class="noSpaceAbove">{{splvar_platform_v25_HDP2-OS}}
+                <p class="noSpaceAbove">{{splvar_requirements_HDP-OS}}
                 </p>
             </td>
-            <td>{{splvar_platform_v25_HDP2-Hadoop}}
+            <td>{{splvar_requirements_HDP-Hadoop}}
             </td>
-            <td>{{splvar_platform_v25_HDP2-HBase}}
+            <td>{{splvar_requirements_HDP-HBase}}
             </td>
-            <td>{{splvar_platform_v25_HDP2-Zookeeper}}
+            <td>{{splvar_requirements_HDP-ZooKeeper}}
             </td>
         </tr>
         <tr>
-            <td>{{splvar_platform_v25_MapR5-Versions}}
+            <td>{{splvar_requirements_MapR-Versions}}
             </td>
             <td>
-                <p class="noSpaceAbove">{{splvar_platform_v25_MapR5-OS}}
+                <p class="noSpaceAbove">{{splvar_requirements_MapR-OS}}
                 </p>
             </td>
-            <td>{{splvar_platform_v25_MapR5-Hadoop}}
+            <td>{{splvar_requirements_MapR-Hadoop}}
             </td>
-            <td>{{splvar_platform_v25_MapR5-HBase}}
+            <td>{{splvar_requirements_MapR-HBase}}
             </td>
-            <td>{{splvar_platform_v25_MapR5-Zookeeper}}
+            <td>{{splvar_requirements_MapR-ZooKeeper}}
             </td>
         </tr>
     </tbody>
