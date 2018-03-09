@@ -1,6 +1,6 @@
 ---
-title: Connecting to Splice Machine with Java and JDBC
-summary: Walks you through compiling and running a Java program that connects to your Splice Machine database via our JDBC driver.&#xA;
+title: Connecting to Splice Machine with Java via JDBC
+summary: Walks you through compiling and running a Java program that connects to your Splice Machine database via our JDBC driver.
 keywords: Java, JDBC, connect tutorial, java jdbc, jdbc java
 toc: false
 product: all

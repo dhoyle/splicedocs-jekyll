@@ -20,6 +20,8 @@ This section introduces our JDBC driver and shows you how to connect to Splice 
 * [Connecting with Java via JDBC](tutorials_connect_java.html)
 * [Connecting with JRuby via JDBC](tutorials_connect_jruby.html)
 * [Connecting with Jython via JDBC](tutorials_connect_jython.html)
+* [Connecting with Python via JDBC](tutorials_connect_python.html)
+* [Connecting with R via JDBC](tutorials_connect_r.html)
 * [Connecting with Scala via JDBC](tutorials_connect_scala.html)
 * [Connecting with AngularJS/NodeJS via JDBC](tutorials_connect_angular.html)
 
