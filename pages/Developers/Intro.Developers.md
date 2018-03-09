@@ -16,95 +16,46 @@ folder: Developers
 This chapter describes how to do development work with your Splice
 Machine Database. It is divided into these sections:
 
-<table summary="Table of descriptions of and links to the sections in this chapter.&#xA;">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Section</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="#">Fundamentals</a>
-                        </td>
-                        <td>
-                            <p>Using the basic developer features of Splice Machine, including:</p>
-                            <ul class="bullet">
-                                <li><a href="developers_fundamentals_transactions.html">Running Transactions</a>
-                                </li>
-                                <li><a href="developers_fundamentals_dates.html">Working with Date and Time Values</a>
-                                </li>
-                                <li><a href="developers_fundamentals_triggers.html">Using Database Triggers</a>
-                                </li>
-                                <li><a href="developers_fundamentals_foreignkeys.html">Using Foreign Keys</a>
-                                </li>
-                                <li><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a>
-                                </li>
-                                <li><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a>
-                                </li>
-                                <li><a href="developers_fundamentals_auth.html">Roles and Authorization</a>
-                                </li>
-                                <li><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a>
-                                </li>
-                                <li><a href="developers_fundamentals_vti.html">Using the Virtual Table Interface</a>
-                                </li>
-                                <li><a href="developers_fundamentals_externaltables.html">Using External Tables</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="tutorials_ingest_intro.html">Data Ingestion and Streaming</a>
-                        </td>
-                        <td>
-                            <p>We provide a number of tutorials in the <a href="tutorials_ingest_intro.html">Data Ingestion section</a> of our <em>Tutorials Guide</em>, which guide you through specific ingestion and streaming tasks.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="tutorials_connect_intro.html">Connecting Your Database</a>
-                        </td>
-                        <td>
-                            <p>The <a href="tutorials_connect_intro.html">Connecting</a> section of our <em>Tutorials Guide</em> includes a number of mini-tutorials that guide you through using our JDBC and ODBC drivers to connect to your Splice Machine database with various programming languages.</p>
-                            <p>The <a href="tutorials_connect_intro.html">Connecting</a> section of our <em>Tutorials Guide</em> also includes a number of mini-tutorials that guide you through connecting various Business Intelligence tools to your Splice Machine database.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="developers_fcnsandprocs_intro.html">Functions and Stored Procedures</a>
-                        </td>
-                        <td>
-                            <p>Provides an overview of writing and using functions and stored procedures in Splice Machine, in these topics:</p>
-                            <ul class="bullet">
-                                <li><a href="developers_fcnsandprocs_intro.html">Using Functions and Stored Procedures</a>
-                                </li>
-                                <li><a href="developers_fcnsandprocs_writing.html">How to Write Functions and Stored Procedures</a>
-                                </li>
-                                <li><a href="developers_fcnsandprocs_storing.html">Storing and Updating Functions and Stored Procedures</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="developers_tuning_debugging.html">Tuning and Debugging Splice Machine</a>
-                        </td>
-                        <td>
-                            <p>Describes the tools available to tune and debug your Splice Machine queries:</p>
-                            <ul class="bullet">
-                                <li><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a>
-                                </li>
-                                <li><a href="developers_tuning_usingstats.html">Using Splice Machine Statistics</a>
-                                </li>
-                                <li><a href="developers_tuning_explainplan.html">Using Explain Plan</a>
-                                </li>
-                                <li><a href="developers_tuning_logging.html">Splice Machine Logging</a>
-                                </li>
-                                <li><a href="developers_tuning_debugging.html">Debugging Splice Machine</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+* [Developer Fundamentals](#Fundamentals)
+* [Functions and Stored Procedures](#StoredProcs)
+* [Tuning and Debugging] (#Tuning)
+
+## Developer Fundamentals {#Fundamentals}
+This section contains topics that contain in-depth information about fundamental aspects of working with Splice Machine:
+
+*[Running Transactions](developers_fundamentals_transactions.html)
+*[Working with Date and Time Values](developers_fundamentals_dates.html)
+*[Using Database Triggers](developers_fundamentals_triggers.html)
+*[Using Foreign Keys](developers_fundamentals_foreignkeys.html)
+*[Using Window Functions](developers_fundamentals_windowfcns.html)
+*[Using Temporary Tables](developers_fundamentals_temptables.html)
+*[Using Spark Libraries](developers_fundamentals_sparklibs.html)
+*[Using the Virtual Table Interface](developers_fundamentals_vti.html)
+*[Using External Tables](developers_fundamentals_externaltables.html)
+*[Using HCatalog](developers_fundamentals_hcatalog.html)
+*[Connecting Through HAProxy](tutorials_connect_haproxy.html)
+*[Using the MapReduce API](developers_fundamentals_mapreduce.html)
+*[Working with HBase](developers_fundamentals_hbase.html)
+
+## Functions and Stored Procedures {#StoredProcs}
+This section contains information about creating and using stored procedures and functions with Splice Machine, in these topics:
+
+* [Writing Functions and Stored Procedures](developers_fcnsandprocs_writing.html)
+* [Storing/Updating Functions and Procs](developers_fcnsandprocs_storing.html)
+* [Stored Procedure Examples](developers_fcnsandprocs_examples.html)
+
+
+## Tuning and Debugging {#Tuning}
+This section contains information about tuning the performance of your database, as well as debugging slowdowns, in these topics:
+
+* [Introduction](developers_tuning_intro.html)
+* [Optimizing Queries](developers_tuning_queryoptimization.html)
+* [Using Statistics](developers_tuning_usingstats.html)
+* [Using Explain Plan](developers_tuning_explainplan.html)
+* [Explain Plan Examples](developers_tuning_explainplan_examples.html)
+* [Logging](developers_tuning_logging.html)
+* [Debugging](developers_tuning_debugging.html)
+* [Using Snapshots](developers_tuning_snapshots.html)
+
 </div>
 </section>

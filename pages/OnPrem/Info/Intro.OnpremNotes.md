@@ -20,35 +20,35 @@ Machine On-Premise-Database product.
 ## Release Information
 
 <table summary="Summary table with links to and descriptions of pages that list specific topics in this documentation suite">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Link</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="onprem_info_release.html">Release Notes</a></td>
-                        <td>Release notes, workarounds, and other information about this release.</td>
-                    </tr>
-                    <tr>
-                        <td><a href="onprem_info_requirements.html">Requirements</a>
-                        </td>
-                        <td>Summarizes the hardware and software requirements for Splice Machine running on a cluster or on a standalone computer.</td>
-                    </tr>
-                    <tr>
-                        <td><a href="onprem_info_editions.html">Enterprise Edition Support</a>
-                        </td>
-                        <td>Summarizes the support options for the Splice Machine Enterprise Edition of our <em>On-Premise Database product.</em></td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://www.splicemachine.com/company/end-user-license-agreement/" target="_blank">Splice Machine License</a>
-                        </td>
-                        <td>Splice Machine Software End User License Agreement web page.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Link</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="onprem_info_release.html">Release Notes</a></td>
+            <td>Release notes, workarounds, and other information about this release.</td>
+        </tr>
+        <tr>
+            <td><a href="onprem_info_requirements.html">Requirements</a>
+            </td>
+            <td>Summarizes the hardware and software requirements for Splice Machine running on a cluster or on a standalone computer.</td>
+        </tr>
+        <tr>
+            <td><a href="onprem_info_editions.html">Enterprise Edition Support</a>
+            </td>
+            <td>Summarizes the support options for the Splice Machine Enterprise Edition of our <em>On-Premise Database product.</em></td>
+        </tr>
+        <tr>
+            <td><a href="https://www.splicemachine.com/company/end-user-license-agreement/" target="_blank">Splice Machine License</a>
+            </td>
+            <td>Splice Machine Software End User License Agreement web page.</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 </section>

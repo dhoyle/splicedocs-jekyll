@@ -14,8 +14,10 @@ folder: Tutorials/Security
 
 This section shows you how to configure security for Splice Machine, in these topics:
 
-* [XXX](XXX)
-* [XXX](XXX)
+* [Roles and Authorization](developers_fundamentals_auth.html)
+* [Configuring Authentication](onprem_install_configureauth.html)
+* [Configuring SSL/TLS](onprem_install_configureTLS.html)
+* [Using HAProxy with Kerberos](tutorials_security_haproxykerberos.html)
 
 </div>
 </section>

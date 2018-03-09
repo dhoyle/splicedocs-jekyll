@@ -6,7 +6,7 @@ toc: false
 product: all
 sidebar: developers_sidebar
 permalink: developers_fundamentals_mapreduce.html
-folder: Developers
+folder: Developers/On-PremiseOnly
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

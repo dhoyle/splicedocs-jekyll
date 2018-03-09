@@ -18,8 +18,8 @@ This section introduces our ODBC Driver and shows you how to connect to Splice M
 * [About our ODBC Driver](#ODBCDriver)
 * [Default Connection Parameters](#DefaultParams)
 * [Installing the Splice Machine ODBC Driver](tutorials_connect_odbcinstall.html)
-* [Connecting With C and ODBC](tutorials_connect_odbcc.html)
-* [Connecting With Python and ODBC](tutorials_connect_python.html)
+* [Connecting With C via ODBC](tutorials_connect_odbcc.html)
+* [Connecting With Python via ODBC](tutorials_connect_python.html)
 
 ## The Splice Machine ODBC Driver   {#ODBCDriver}
 

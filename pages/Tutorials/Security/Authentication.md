@@ -4,9 +4,9 @@ title: Configuring Splice Machine Authentication
 keywords: authenticate, credentials, configuring, native authentication, ldap
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar:  tutorials_sidebar
 permalink: onprem_install_configureauth.html
-folder: OnPrem/InstallingSpliceMachine
+folder: Tutorials/Security
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

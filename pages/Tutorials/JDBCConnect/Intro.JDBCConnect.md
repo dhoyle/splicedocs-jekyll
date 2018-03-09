@@ -17,11 +17,11 @@ This section introduces our JDBC driver and shows you how to connect to Splice 
 
 * [About our JDBC Driver](#JDBCDriver)
 * [Default Connection Parameters](#DefaultParams)
-* [Connecting with Java and JDBC](tutorials_connect_java.html)
-* [Connecting with JRuby and JDBC](tutorials_connect_jruby.html)
-* [Connecting with Jython and JDBC](tutorials_connect_jython.html)
-* [Connecting with Scala and JDBC](tutorials_connect_scala.html)
-* [Connecting with AngularJS/NodeJS and JDBC](tutorials_connect_angular.html)
+* [Connecting with Java via JDBC](tutorials_connect_java.html)
+* [Connecting with JRuby via JDBC](tutorials_connect_jruby.html)
+* [Connecting with Jython via JDBC](tutorials_connect_jython.html)
+* [Connecting with Scala via JDBC](tutorials_connect_scala.html)
+* [Connecting with AngularJS/NodeJS via JDBC](tutorials_connect_angular.html)
 
 ## The Splice Machine JDBC Driver   {#JDBCDriver}
 

@@ -6,7 +6,7 @@ toc: false
 product: all
 sidebar: developers_sidebar
 permalink: developers_fundamentals_hbase.html
-folder: Developers
+folder: Developers/On-PremiseOnly
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
@@ -34,11 +34,11 @@ follow these steps:
 <div class="opsStepsList" markdown="1">
 1.  Use the Splice interactive command interface to view the tables:
     {: .topLevel}
-    
+
     You can use the `show tables` command to view the tables in your
     Splice Machine database:
     {: .indentLevel1}
-    
+
     <div class="preWrapperWide" markdown="1">
         TABLE_SCHEM     |TABLE_NAME         |CONGLOM_ID|REMARKS
         -------------------------------------------------------------
@@ -71,25 +71,25 @@ follow these steps:
         SYS             |SYSTRIGGERS        |304       |
         SYS             |SYSUSERS           |880       |
         SYS             |SYSVIEWS           |352       |
-        SYSIBM          |SYSDUMMY1          |1296      |      
+        SYSIBM          |SYSDUMMY1          |1296      |
     {: .Example}
-    
+
     </div>
 
 2.  View the tables in the HBase Master Web Console:
     {: .topLevel}
-    
+
     To view the HBase tables, use the HBase Master Web Console, at
     `http://localhost:60010/`.
     {: .indentLevel1}
-    
+
     Note that all of the user tables in the *Tables* section have
     numeric names; the numbers match the conglomerate
     number (`CONGLOM_ID`) values displayed by the `show tables` command.
     {: .indentLevel1}
-    
+
     ![](images/HBaseTables.jpg){: .nestedTightSpacing}
-    
+
     These numbers are used in HBase as directory names; you can find
     those directories in your file system and examine the tables
     directly.
@@ -118,4 +118,3 @@ deployment, you can easily block this access.
 
 </div>
 </section>
-
