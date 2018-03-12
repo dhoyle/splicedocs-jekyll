@@ -18,8 +18,5 @@ learning tools with Splice Machine:
 * [Connecting with Apache Zeppelin](tutorials_ml_zeppelin.html) shows
   you how to use Zeppelin with Splice Machine.
 
- 
-
 </div>
 </section>
-

@@ -24,37 +24,37 @@ Getting started with our database is as simple as can be; just follow
 these steps, and you can be up and running in less than an hour:
 
 <table class="noBorder">
-                <col />
-                <col width="350px" />
-                <col />
-				<col />
-                <tbody>
-                    <tr>
-                        <td class="DbaasIntroNum">➊</td>
-                        <td class="DbaasIntroStep"><a href="dbaas_cm_login.html">LOG INTO SPLICE MACHINE</a></td>
-						<td class="DbaasIntroArrow">→</td>
-                        <td class="DbaasIntroDesc">Log in directly, or use your Google or Amazon ID.</td>
-                    </tr>
-					<tr>
-                        <td class="DbaasIntroNum">➋</td>
-                        <td class="DbaasIntroStep"><a href="dbaas_cm_initialstartup.html">CREATE DATABASE CLUSTER</a></td>
-						<td class="DbaasIntroArrow">→</td>
-                        <td class="DbaasIntroDesc">Adjust 4 sliders for your processing and storage needs; your database cluster is ready within 15 minutes.</td>
-                    </tr>
-                    <tr>
-                        <td class="DbaasIntroNum">➌</td>
-                        <td class="DbaasIntroStep"><a href="dbaas_zep_simple.html">LOAD YOUR DATA</a></td>
-						<td class="DbaasIntroArrow">→</td>
-                        <td class="DbaasIntroDesc">Copy data to S3, then perform a fast import. Time required varies with dataset size. Our <a href="dbaas_zep_simple.html">Zeppelin Simple Example</a> provides a quick example.</td>
-                    </tr>
-                    <tr>
-                        <td class="DbaasIntroNum">➍</td>
-                        <td class="DbaasIntroStep"><a href="dbaas_zep_getstarted.html">QUERY AND UPDATE YOUR DATABASE</a></td>
-						<td class="DbaasIntroArrow">→</td>
-                        <td class="DbaasIntroDesc">Use Zeppelin notebooks to quickly update, query, and display results graphically, without coding.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col width="350px" />
+    <col />
+    <col />
+    <tbody>
+        <tr>
+            <td class="DbaasIntroNum">➊</td>
+            <td class="DbaasIntroStep"><a href="dbaas_cm_login.html">LOG INTO SPLICE MACHINE</a></td>
+            <td class="DbaasIntroArrow">→</td>
+            <td class="DbaasIntroDesc">Log in directly, or use your Google or Amazon ID.</td>
+        </tr>
+        <tr>
+            <td class="DbaasIntroNum">➋</td>
+            <td class="DbaasIntroStep"><a href="dbaas_cm_initialstartup.html">CREATE DATABASE CLUSTER</a></td>
+            <td class="DbaasIntroArrow">→</td>
+            <td class="DbaasIntroDesc">Adjust 4 sliders for your processing and storage needs; your database cluster is ready within 15 minutes.</td>
+        </tr>
+        <tr>
+            <td class="DbaasIntroNum">➌</td>
+            <td class="DbaasIntroStep"><a href="dbaas_zep_simple.html">LOAD YOUR DATA</a></td>
+            <td class="DbaasIntroArrow">→</td>
+            <td class="DbaasIntroDesc">Copy data to S3, then perform a fast import. Time required varies with dataset size. Our <a href="dbaas_zep_simple.html">Zeppelin Simple Example</a> provides a quick example.</td>
+        </tr>
+        <tr>
+            <td class="DbaasIntroNum">➍</td>
+            <td class="DbaasIntroStep"><a href="dbaas_zep_getstarted.html">QUERY AND UPDATE YOUR DATABASE</a></td>
+            <td class="DbaasIntroArrow">→</td>
+            <td class="DbaasIntroDesc">Use Zeppelin notebooks to quickly update, query, and display results graphically, without coding.</td>
+        </tr>
+    </tbody>
+</table>
 ## Next Steps
 
 Easy next steps you can take to become more proficient with your new

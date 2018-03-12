@@ -16,80 +16,84 @@ folder: Tutorials
 This guide includes tutorials to help you quickly become proficient in
 various aspects of using Splice Machine:
 
-<table summary="Table of descriptions of and links to the sections in this chapter.&#xA;">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Section</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="tutorials_ingest_intro.html">Data Ingestion and Streaming</a>
-                        </td>
-                        <td>
-                            <p>This section includes topics that show you how to get data into your database:</p>
-                            <ul class="bullet">
-                                <li><a href="tutorials_ingest_importoverview.html">Importing Data Tutorial</a>
-                                </li>
-                                <li><a href="tutorials_ingest_kafkaproducer.html">Streaming with Kafka and Splice Machine</a>
-                                </li>
-                                <li><a href="tutorials_ingest_mqttSpark.html">Spark Streaming with MQTT</a>
-                                </li>
-                                <li><a href="tutorials_ingest_storm.html">Using Apache Storm with Splice Machine</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="tutorials_connect_intro.html">Connecting Your Database</a>
-                        </td>
-                        <td>
-                            <p>This section introduces our JDBC and ODBC drivers and contains mini-tutorials to help you use our drivers to connect to your Splice Machine database with various programming languages, including:</p>
-                            <ul class="bullet">
-                                <li><a href="tutorials_connect_angular.html">Connecting with AngularJS and JDBC</a>
-                                </li>
-                                <li><a href="tutorials_connect_java.html">Connecting with Java and JDBC</a>
-                                </li>
-                                <li><a href="tutorials_connect_jruby.html">Connecting with JRuby and JDBC</a>
-                                </li>
-                                <li><a href="tutorials_connect_jython.html">Connecting with Jython and JDBC</a>
-                                </li>
-                                <li><a href="tutorials_connect_scala.html">Connecting with Scala and JDBC</a>
-                                </li>
-                                <li><a href="tutorials_connect_odbcc.html">Connecting with C and ODBC</a>
-                                </li>
-                                <li><a href="tutorials_connect_python.html">Connecting with Python and ODBC</a>
-                                </li>
-                            </ul>
-                            <p>This section also contains mini-tutorials to help you connect specific Business Intelligence tools to your Splice Machine database, including:</p>
-                            <ul class="bullet">
-                                <li><a href="tutorials_connect_cognos.html">Connecting Cognos to Splice Machine</a>
-                                </li>
-                                <li><a href="tutorials_connect_dbeaver.html">Connecting DBeaver to Splice Machine</a>
-                                </li>
-                                <li><a href="tutorials_connect_dbvisualizer.html">Connecting DBVisualizer to Splice Machine</a>
-                                </li>
-                                <li><a href="tutorials_connect_squirrel.html">Connecting SQuirreL to Splice Machine</a>
-                                </li>
-                                <li><a href="tutorials_connect_tableau.html">Connecting Tableau to Splice Machine</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="tutorials_ml_intro.html">Analytics and Machine Learning</a>
-                        </td>
-                        <td>
-                            <ul class="bullet">
-                                <li><a href="tutorials_ml_zeppelin.html">Using Zeppelin with Splice Machine</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+* [Using the Splice Machine Command Line Interface](#UsingCLI)
+* [Configuring Splice Machine Security Settings](#Security)
+* [Importing Data](#Importing)
+* [Accessing Data in the Cloud](#Cloud)
+* [Streaming Data](#Streaming)
+* [Connecting to Splice Machine with JDBC](#JDBC)
+* [Connecting to Splice Machine with ODBC](#ODBC)
+* [Connecting Splice Machine with Business Intelligence Tools](#BITools)
+* [Analytics and Machine Learning](#MachineLearning)
+
+## Using the Splice Machine Command Line Interface {#UsingCLI}
+This section shows you how to use the `splice>` command line interface, in these topics:
+
+* [Using the splice> command line interface](tutorials_cli_usingcli.html)
+* [Scripting commands](tutorials_cli_scripting.html)
+* [Using rlWrap](tutorials_cli_rlwrap.html)
+
+## Configuring Splice Machine Security Settings {#Security}
+This section shows you how to configure security for use with Splice Machine, in these topics:
+
+* [Splice Machine Authentication and Authorization](developers_fundamentals_auth.html)
+* [Configuring SSL/TLS Authentication](onprem_install_configureTLS.html)
+* [Using HAProxy on a Kerberos-Enabled Cluster](tutorials_security_haproxykerberos.html)
+
+## Importing Data {#Importing}
+Our *Importing Data* tutorial walks you through importing data into Splice Machine, in these topics:
+
+* [Overview of Importing Data](tutorials_ingest_importoverview.html)
+* [Import Parameters](tutorials_ingest_importparams.html)
+* [Handling Import Input Data](tutorials_ingest_importinput.html)
+* [Import Error Handling](tutorials_ingest_importerrors.html)
+* [Examples of Importing Data](tutorials_ingest_importexamples1.html)
+* [Examples of Using Bulk HFile Import](tutorials_ingest_importexampleshfile.html)
+* [Example: Importing TPCH Benchmark Data](tutorials_ingest_importexamplestpch.html)
+
+## Accessing Data in the Cloud {#Cloud}
+This section shows you how to access data that you have stored in the Cloud from Splice Machine, in these topics:
+
+* [Configuring S3 Buckets for Splice Machine Access](tutorials_ingest_configures3.html)
+* [Uploading Data to an S3 Bucket](tutorials_ingest_uploadtos3.html)
+
+## Connecting to Splice Machine with JDBC {#JDBC}
+This section introduces our JDBC driver and shows you how to connect to Splice Machine via JDBC with various programming languages, including:
+
+* [Connecting with Java and JDBC](tutorials_connect_java.html)
+* [Connecting with JRuby and JDBC](tutorials_connect_jruby.html)
+* [Connecting with Jython and JDBC](tutorials_connect_jython.html)
+* [Connecting with Scala and JDBC](tutorials_connect_scala.html)
+* [Connecting with AngularJS/NodeJS and JDBC](tutorials_connect_angular.html)
+
+## Connecting to Splice Machine with ODBC {#ODBC}
+This section introduces our ODBC driver and shows you how to connect to Splice Machine via ODBC with various programming languages, including:
+
+* [Installing our ODBC Driver](tutorials_connect_odbcinstall.html)
+* [Connecting with Python and ODBC](tutorials_connect_python.html)
+* [Connecting with C and ODBC](tutorials_connect_odbcc.html)
+
+## Streaming Data {#Streaming}
+This section contains topics that show you how to stream data into and out of Splice Machine:
+
+* [Streaming MQTT Data](tutorials_ingest_mqttSpark.html)
+* [Integrating Apache Storm with Splice Machine](tutorials_ingest_storm.html)
+* [Configuring a Kafka Feed](tutorials_ingest_kafkafeed.html)
+* [Creating a Kafka Producer](tutorials_ingest_kafkaproducer.html)
+
+## Connecting Splice Machine with Business Intelligence Tools {#BITools}
+This section shows you how to connect specific Business Intelligence tools to your Splice Machine database, including:
+
+* [Connecting Cognos to Splice Machine](tutorials_connect_cognos.html)
+* [Connecting DBeaver to Splice Machine](tutorials_connect_dbeaver.html)
+* [Connecting DBVisualizer to Splice Machine](tutorials_connect_dbvisualizer.html)
+* [Connecting SQuirreL to Splice Machine](tutorials_connect_squirrel.html)
+* [Connecting Tableau to Splice Machine](tutorials_connect_tableau.html)
+
+## Analytics and Machine Learning {#MachineLearning}
+This section provides examples of using Splice Machine with various analytical and machine learning tools.
+
+* [Connecting with Apache Zeppelin](tutorials_ml_zeppelin.html)
+
 </div>
 </section>

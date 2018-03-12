@@ -13,7 +13,7 @@ folder: SQLReference/Clauses
 # UNION
 
 The `UNION` operator combines the result set of two or more similar
-`SELECT` queries, and returns distinct rows.
+` SELECT ` queries, and returns distinct rows.
 
 ## Syntax
 
@@ -57,12 +57,12 @@ expressions, such as calculations or subqueries, to make them
 correspond.
 {: .body}
 
-Each `UNION` keyword combines the `SELECT` statements that immediately
+Each `UNION` keyword combines the` SELECT `statements that immediately
 precede and follow it. If you use the `ALL` keyword with some of the
 `UNION` keywords in your query, but not with others, the results will
-include duplicate rows from the pairs of `SELECT` statements that are
+include duplicate rows from the pairs of` SELECT `statements that are
 combined by using `UNION ALL`, but will not include duplicate rows from
-the `SELECT` statements that are combined by using `UNION` without the
+the` SELECT `statements that are combined by using `UNION` without the
 `ALL` keyword.
 
 ## Results
