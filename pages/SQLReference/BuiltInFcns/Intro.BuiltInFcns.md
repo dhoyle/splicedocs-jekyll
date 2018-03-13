@@ -440,6 +440,12 @@ functions](sqlref_builtinfcns_numericfcnsintro.html):
                     <td>Returns a random number.</td>
                 </tr>
                 <tr>
+                    <td class="CodeFont"><a href="sqlref_builtinfcns_round.html">ROUND</a>
+                    </td>
+                    <td>
+                    Rounds the specified number to the specified number of decimal places.
+                </td>
+                <tr>
                     <td class="CodeFont"><a href="sqlref_builtinfcns_sign.html">SIGN</a>
                     </td>
                     <td>
