@@ -32,7 +32,7 @@ CALL <a href="sqlref_sysprocs_emptycache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_
 </pre></div>
 
 ## Supported Platforms {#supported-platforms}
-The supported platforms for release {{splvar_basic_SpliceReleaseVersion}} are:
+The supported platforms for release {{site.build_version}} are:
 
 * Cloudera CDH 5.12.0, 5.8.3
 * MapR 5.2.0

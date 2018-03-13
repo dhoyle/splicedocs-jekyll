@@ -11,7 +11,7 @@ folder: ReleaseNotes
 {% include splicevars.html %}
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Improvements in Release {{splvar_basic_SpliceReleaseVersion}} of the Splice Machine Database
+# Improvements in Release {{site.build_version}} of the Splice Machine Database
 
 The Splice Machine database is used in both our Database-Service and On-Premise Database products.
 

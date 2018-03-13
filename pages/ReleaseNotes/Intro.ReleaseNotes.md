@@ -15,7 +15,7 @@ folder: ReleaseNotes
 
 # Release Notes for Splice Machine
 
-Welcome to the {{splvar_basic_SpliceReleaseVersion}} Release of Splice Machine, originally released  {{splvar_basic_CustDocReleaseDate}}. Our release notes are presented in these topics:
+Welcome to the {{site.build_version}} Release of Splice Machine, originally released  {{site.release_date}}. Our release notes are presented in these topics:
 
 <table>
     <col width="40%" />
