@@ -14,10 +14,10 @@ folder: Tutorials/Streaming
 
 This section provides tutorials to help you stream data with Splice Machine, in these topics:
 
-* [Streaming MQTT Data](tutorials_ingest_mqttSpark.html)
-* [Integrating Apache Storm with Splice Machine](tutorials_ingest_storm.html)
-* [Configuring a Kafka Feed](tutorials_ingest_kafkafeed.html)
+* [Using Apache Storm](tutorials_ingest_storm.html)
+* [MQTT&#160;Spark Streaming](tutorials_ingest_mqttSpark.html)
 * [Creating a Kafka Producer](tutorials_ingest_kafkaproducer.html)
+* [Configuring a Kafka Feed](tutorials_ingest_kafkafeed.html)
 
 </div>
 </section>

@@ -4,9 +4,9 @@ summary: Describes how to configure and manage user authentication and user auth
 keywords: authorizing, authenticating, roles, managing roles, native authentication, grant, set role, users, create user, create role, drop role, cascade
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: tutorials_sidebar
 permalink: developers_fundamentals_auth.html
-folder: Developers/Fundamentals
+folder: Tutorials/Security
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

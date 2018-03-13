@@ -4,9 +4,9 @@ summary: How to configure SSL/TLS authentication for connecting to Splice Machin
 keywords: SSL, TLS, Secure Socket Layer, Transport Layer Security, authentication, peer authentication
 toc: false
 product: all
-sidebar: onprem_sidebar
+sidebar: tutorials_sidebar
 permalink: onprem_install_configureTLS.html
-folder: OnPrem/InstallingSpliceMachine
+folder: Tutorials/Security
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
