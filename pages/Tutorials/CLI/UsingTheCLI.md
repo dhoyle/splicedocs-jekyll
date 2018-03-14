@@ -12,7 +12,6 @@ folder: Tutorials/CLI
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Getting Started With the splice&gt; Command Line Interface
 
-{% include splice_snippets/onpremonlytopic.md %}
 The <span class="AppCommand">splice&gt;</span> command line interpreter
 is an easy way to interact with your Splice Machine database. This topic
 introduces <span class="AppCommand">splice&gt;</span> and some of the
