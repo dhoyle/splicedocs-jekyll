@@ -80,12 +80,12 @@ To use the `splice>` command line interface with your cloud-managed database, fo
 
    The <span class="HighlightedCode">&lt;hostname&gt;</span> is part of the `JDBC URL` that you'll find in either the `new cluster` email or at the bottom of the Cluster Management screen for your cluster. Specifically, it's the part of the URL that follows `jdbc:splice://` and precedes `:1527`. For example, if your JDBC URL is this:
    ````
-       jdbc:splice://myaccount-mycluster-splicemachine.io:1527
+       jdbc:splice://myaccount-mycluster.splicemachine.io:1527
    ````
 
    Then your hostname is:
    ````
-       myaccount-mycluster-splicemachine.io
+       myaccount-mycluster.splicemachine.io
    ````
 
 We recommend installing `rlwrap` to use with `sqlshell`. The [rlwrap utility](tutorials_cli_rlwrap.html) allows you to access and edit command lines that you've previously entered, and can save a lot of time.
