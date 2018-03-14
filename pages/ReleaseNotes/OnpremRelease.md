@@ -34,9 +34,16 @@ CALL <a href="sqlref_sysprocs_emptycache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_
 ## Supported Platforms {#supported-platforms}
 The supported platforms for release {{site.build_version}} are:
 
-* Cloudera CDH 5.12.0, 5.8.3
+
+{% if site.build_version == "2.7" %}
+blah
+* Cloudera CDH 5.13.2, 5.12.0
+{% else %}
+* Cloudera CDH 5.13.2, 5.12.0, 5.8.3
+{% endif %}
+
 * MapR 5.2.0
-* HortonWorks HDP 2.5.5, 2.6.3
+* HortonWorks HDP 2.6.3, 2.5.5
 
 ## Enterprise-only Features {#enterprise-only-features}
 Some features only work on the *Enterprise Edition* of Splice Machine; they __do not__ work on the Community Edition of Splice Machine. To obtain a license for the Splice Machine *Enterprise Edition*, please [Contact Splice Machine Sales](http://www.splicemachine.com/company/contact-us/)

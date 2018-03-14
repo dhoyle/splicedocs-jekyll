@@ -29,17 +29,13 @@ Our installation instructions for Splice Machine are now being maintained in our
     </thead>
     <tbody>
         <tr>
-            <td rowspan="7"><strong>2.7</strong></td>
+            <td rowspan="6"><strong>2.7</strong></td>
             <td>CDH 5.13.2</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.2/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.2/docs/CDH-installation.md</a></td>
         </tr>
         <tr>
             <td>CDH 5.12.0</td>
             <td><a href="https://github.com/splicemachine/spliceengine/tree/branch-2.7/platforms/cdh5.12.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/tree/branch-2.7/platforms/cdh5.12.0/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>CDH 5.8.3</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.8.3/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.8.3/docs/CDH-installation.md</a></td>
         </tr>
         <tr>
             <td>HDP 2.6.3</td>
