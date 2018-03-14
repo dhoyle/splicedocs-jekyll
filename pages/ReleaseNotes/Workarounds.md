@@ -8,11 +8,15 @@ sidebar:  releasenotes_sidebar
 permalink: releasenotes_workarounds.html
 folder: ReleaseNotes
 ---
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Limitations and Workarounds in This Release of Splice Machine
 
 This topic describes workarounds for known limitations in this Release of the Splice Machine Database. These can include previously unstated limitations or workarounds for problems that will be fixed in a future Release.
 
 These are the notes and workarounds for known issues in this release:
+
+* [Incremental Backup and Bulk HFile Import Issues](#incremental-backup-and-bulk-hfile-import-issues)
 
 * [With Clauses and Temporary Tables](#with-clauses-and-temporary-tables)
 
@@ -38,6 +42,10 @@ These are the notes and workarounds for known issues in this release:
 
 * [Import Performance Issues With Many Foreign Key References](#import-performance-issues-with-many-foreign-key-references)
 
+
+## Incremental Backup and Bulk HFile Import Issues {#incremental-backup-and-bulk-hfile-import-issues}
+
+Our incremental backup feature does not currently capture data loaded via the Bulk HFile Import ([`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)) mechanism. After you restore from an incremental backup, you must re-run bulk imports to bring the database to the state it was in when you backed up.
 
 ## With Clauses and Temporary Tables
 
@@ -92,8 +100,7 @@ The ``DROP FOREIGN KEY`` clause of the [ALTER TABLE](sqlref_statements_altertabl
 
 We have seen a problem in which the compaction queue grows quite large after importing large amounts of data, and are investigating a solution; for now, please use the following workaround.
 
-Run a full compaction on tables into which you have imported a large amount of data, using the [SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE](sqlref_sysprocs_compacttable.html) system procedure.</div>
-
+Run a full compaction on tables into which you have imported a large amount of data, using the [SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE](sqlref_sysprocs_compacttable.html) system procedure.
 
 ## Alter Table Issues
 

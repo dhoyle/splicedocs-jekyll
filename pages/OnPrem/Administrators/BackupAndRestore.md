@@ -40,7 +40,7 @@ Splice Machine supports: both full and incremental backups: 
 * A *full backup* backs up all of the files/blocks that constitute your
   database.
 * An *incremental backup* only stores database files/blocks that have
-  changed since a previous backup.
+  changed since a previous backup. To use incremental backups, you _must_ make a few HBase configuration changes and be aware of one significant restriction, as described below, in the [Incremental Backup Configuration and Limitations](#incrconfig) section.
 
 Because backups can consume a lot of disk space, most customers define a
 backup strategy that blends their needs for security, recover-ability,
@@ -53,6 +53,7 @@ incremental backup and performs a one-time full backup; subsequent runs
 will only back up changed files/blocks.
 {: .noteNote}
 
+
 ### Backup IDs, Backup Jobs, and Backup Tables
 
 Splice Machine uses *backup IDs* to identify a specific full or
@@ -61,32 +62,32 @@ IDs* to identify each scheduled *backup job*. Information about backups
 and backup jobs is stored in these system tables:
 
 <table summary="Table of Splice Machine system backup tables.">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>System Table</th>
-                        <th>Contains Information About</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>SYS.SYSBACKUP</code>
-                        </td>
-                        <td>Each database backup; you can query this table to find the ID of and details about a backup that was run at a specific time.</td>
-                    </tr>
-                    <tr>
-                        <td><code>SYS.SYSBACKUPITEMS</code>
-                        </td>
-                        <td>Each item (table) in a backup.</td>
-                    </tr>
-                    <tr>
-                        <td><code>SYS.SYSBACKUPJOBS</code>
-                        </td>
-                        <td>Each backup job that has been run for the database.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>System Table</th>
+            <th>Contains Information About</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>SYS.SYSBACKUP</code>
+            </td>
+            <td>Each database backup; you can query this table to find the ID of and details about a backup that was run at a specific time.</td>
+        </tr>
+        <tr>
+            <td><code>SYS.SYSBACKUPITEMS</code>
+            </td>
+            <td>Each item (table) in a backup.</td>
+        </tr>
+        <tr>
+            <td><code>SYS.SYSBACKUPJOBS</code>
+            </td>
+            <td>Each backup job that has been run for the database.</td>
+        </tr>
+    </tbody>
+</table>
 ### Temporary Tables and Backups
 
 There's a subtle issue with performing a backup when you're using a
@@ -101,6 +102,20 @@ There's a simple workaround:
     temporary table and its system table entries.
 2.  Start a new session (reconnect to your database).
 3.  Start your backup job.
+
+## Incremental Backup Configuration and Limitations {#incrconfig}
+
+If you're performing incremental backups, you _must_ add the following options to your `hbase-site.xml` configuration file:
+
+<div class="preWrapperWide" markdown="1">
+    hbase.master.hfilecleaner.plugins = com.splicemachine.hbase.SpliceHFileCleaner,
+    org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileClean
+{: .AppCommand}
+</div>
+
+### Current Restriction/Workaround
+
+Our incremental backup feature does not currently capture data loaded via the Bulk HFile Import ([`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)) mechanism. After you restore from an incremental backup, you must re-run bulk imports to bring the database to the state it was in when up.
 
 ## Using the Backup Operations   {#Using}
 

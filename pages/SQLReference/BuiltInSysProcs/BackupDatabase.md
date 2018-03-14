@@ -84,6 +84,28 @@ Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may
 
 ## Usage Notes
 
+Please review these important notes about usage of this system procedure:
+
+* HBase Configuration Options for Incremental Backup
+* Incremental Backups and Bulk HFile Imports
+* Temporary Tables and Backups
+
+### HBase Configuration Options for Incremental Backup {#UsageConfig}
+
+If you're performing incremental backups, you _must_ add the following options to your `hbase-site.xml` configuration file:
+
+<div class="preWrapperWide" markdown="1">
+    hbase.master.hfilecleaner.plugins = com.splicemachine.hbase.SpliceHFileCleaner,
+    org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileClean
+{: .AppCommand}
+</div>
+
+### Incremental Backups and Bulk HFile Imports {#UsageBulk}
+
+Our incremental backup feature does not currently capture data loaded via the Bulk HFile Import ([`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)) mechanism. After you restore from an incremental backup, you must re-run bulk imports to bring the database to the state it was in when up.
+
+### Temporary Tables and Backups {#UsageTemp}
+
 There's a subtle issue with performing a backup when you're using a
 temporary table in your session: although the temporary table is
 (correctly) not backed up, the temporary table's entry in the system

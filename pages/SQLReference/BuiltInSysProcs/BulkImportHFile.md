@@ -103,6 +103,10 @@ process results that looks like this:
 {: .Example xml:space="preserve"}
 </div>
 
+## Restriction with Incremental Backups
+
+There's currently a restriction involving incremental backups and bulk HFile backups: our incremental backup feature does not currently capture data loaded via the Bulk HFile Import mechanism. After you restore from an incremental backup, you must re-run bulk imports to bring the database to the state it was in when up.
+
 ## Examples
 
 The [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html) topic walks you through several examples of importing data with bulk HFiles.
