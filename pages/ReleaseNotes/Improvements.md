@@ -22,6 +22,11 @@ Splice Machine release 2.6 was an interim Release in September, 2017, which coin
 
 Each section in this topic includes a list of significant improvements in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
+* [Patch Release 2.5.0.1810](#Patch1810)
+* [Patch Release 2.5.0.1809](#Patch1809)
+* [Patch Release 2.5.0.1808](#Patch1808)
+* [Patch Release 2.5.0.1807](#Patch1807)
+* [Patch Release 2.5.0.1806](#Patch1806)
 * [Patch Release 2.5.0.1805](#Patch1805)
 * [Patch Release 2.5.0.1804](#Patch1804)
 * [Patch Release 2.5.0.1803](#Patch1803)
@@ -32,6 +37,141 @@ Each section in this topic includes a list of significant improvements in each i
 * [Patch Release 2.5.0.1745](#Patch1745)
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
+
+
+## 2.5.0.1810 Patch Release  10-Mar-18  {#Patch1810}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6751</td>
+            <td>Clean up backup logging for better diagnosability</td>
+        </tr>
+        <tr>
+            <td>DB-6619</td>
+            <td>Splice 5.13.2 Platform Support</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1936</td>
+            <td>Refactored and stream-line: execute in one place.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2103</td>
+            <td>Remove Explain Generation from Hot Path for real-time que…</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1809 Patch Release  03-Mar-18  {#Patch1809}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6567</td>
+            <td>Decrease DEFAULT_BROADCAST_REGION_ROW_THRESHOLD</td>
+        </tr>
+        <tr>
+            <td>DB-6640</td>
+            <td>Avoid ldap passwords while dumping all properties</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2083</td>
+            <td>Remove Folders that have already been removed from parent pom</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2085</td>
+            <td>Removing very old version of HDP</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2086</td>
+            <td>CDH 5.14.0 support</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1808 Patch Release  24-Feb-18  {#Patch1808}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6640</td>
+            <td>Take out ldap password from logs</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2081</td>
+            <td>Excessive creation of Kryo instances</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1807 Patch Release  18-Feb-18  {#Patch1807}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6582</td>
+            <td>Remove SparkListener for export</td>
+        </tr>
+        <tr>
+            <td>SPLICE-1587</td>
+            <td>Add modifyPriv for Schema level privilege SPLICE-1587 add authorization check for PIN table statement SPLICE-1587 add IT SPLICE-1587 add upgrade logic</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1806 Patch Release  12-Feb-18  {#Patch1806}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6478</td>
+            <td>Fix error in IT test case and ignored it in MEM mode</td>
+        </tr>
+        <tr>
+            <td>SPLICE-175</td>
+            <td>External Olap server</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2008</td>
+            <td>Resolve transactions during flushes</td>
+        </tr>
+    </tbody>
+</table>
 
 ## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>

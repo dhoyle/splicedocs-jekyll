@@ -10,9 +10,9 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA
+# SYSCS_UTIL.SNAPSHOT_SCHEMA
 
-The `SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA` system procedure creates a Splice
+The `SYSCS_UTIL.SNAPSHOT_SCHEMA` system procedure creates a Splice
 Machine snapshot of the specified schema. These snapshots can
 subsequently be used to restore the schema to its state at the time that
 a snapshot was created.
@@ -26,8 +26,8 @@ Snapshots*](developers_tuning_snapshots.html) topic.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_SNAPSHOT_SCHEMA( VARCHAR(128) schemaName,
-                                      VARCHAR(128) snapshotName );
+    SYSCS_UTIL.SNAPSHOT_SCHEMA( VARCHAR(128) schemaName,
+                                VARCHAR(128) snapshotName );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>

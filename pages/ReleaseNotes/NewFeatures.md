@@ -61,6 +61,11 @@ These features have been added to Release 2.7 of Splice Machine, and have not be
 
 Each section in this topic includes a list of major new in each interim Splice Machine release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
+* [Patch Release 2.5.0.1810](#Patch1810)
+* [Patch Release 2.5.0.1809](#Patch1809)
+* [Patch Release 2.5.0.1808](#Patch1808)
+* [Patch Release 2.5.0.1807](#Patch1807)
+* [Patch Release 2.5.0.1806](#Patch1806)
 * [Patch Release 2.5.0.1805](#Patch1805)
 * [Patch Release 2.5.0.1804](#Patch1804)
 * [Patch Release 2.5.0.1803](#Patch1803)
@@ -71,6 +76,101 @@ Each section in this topic includes a list of major new in each interim Splice M
 * [Patch Release 2.5.0.1745](#Patch1745)
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
+
+## 2.5.0.1810 Patch Release  10-Mar-18  {#Patch1810}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-1883</td>
+            <td>Add rowcount threshold parameter to determine Spark or Control</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2102</td>
+            <td>Stats and truncate functions, a bit of scaladoc writing</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1809 Patch Release  03-Mar-18  {#Patch1809}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1808 Patch Release  24-Feb-18  {#Patch1808}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1807 Patch Release  18-Feb-18  {#Patch1807}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1806 Patch Release  12-Feb-18  {#Patch1806}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+    </tbody>
+</table>
+
 
 ###  2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>

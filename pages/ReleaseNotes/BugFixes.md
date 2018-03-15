@@ -22,6 +22,11 @@ Splice Machine Release 2.6 was an interim release in September, 2017, which coin
 
 Each section in this topic includes a list of issues fixed in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
+* [Patch Release 2.5.0.1810](#Patch1810)
+* [Patch Release 2.5.0.1809](#Patch1809)
+* [Patch Release 2.5.0.1808](#Patch1808)
+* [Patch Release 2.5.0.1807](#Patch1807)
+* [Patch Release 2.5.0.1806](#Patch1806)
 * [Patch Release 2.5.0.1805](#Patch1805)
 * [Patch Release 2.5.0.1804](#Patch1804)
 * [Patch Release 2.5.0.1803](#Patch1803)
@@ -32,6 +37,180 @@ Each section in this topic includes a list of issues fixed in each interim Splic
 * [Patch Release 2.5.0.1745](#Patch1745)
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
+
+## 2.5.0.1810 Patch Release  10-Mar-18  {#Patch1810}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6759</td>
+            <td>Encode split key with null value correctly</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2092</td>
+            <td>Relogin from keytab on OlapServerMaster when needed</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2094</td>
+            <td>Fix wrong result with Multi-Probe scan under prepare mode</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2095</td>
+            <td>Pad default values with extra space if it is shorter than the column size of fixed-length char type</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1809 Patch Release  03-Mar-18  {#Patch1809}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6662</td>
+            <td>Make QueryTimeout more robust</td>
+        </tr>
+        <tr>
+            <td>DB-6684</td>
+            <td>Fixed ZooKeeperServerMain arguments</td>
+        </tr>
+        <tr>
+            <td>DB-6707</td>
+            <td>Restore only deletes splice table</td>
+        </tr>
+        <tr>
+            <td>DB-6722</td>
+            <td>Fixing Log4j inclusion in hbase_sql jar</td>
+        </tr>
+        <tr>
+            <td>DB-6735</td>
+            <td>Fixing HDP2.6.3 build to support OLAP Server properly</td>
+        </tr>
+        <tr>
+            <td>DB-6740</td>
+            <td>Fix SerDe issue for WindowFunctionInfo</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2066</td>
+            <td>Duplicate create connection in Splicemachinecontext</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2067</td>
+            <td>Fix for Client cannot authenticate via:[TOKEN, KERBEROS]</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1808 Patch Release  24-Feb-18  {#Patch1808}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6679</td>
+            <td>Merge 2.5.0.1806S branch to branch-2.5</td>
+        </tr>
+        <tr>
+            <td>DB-6685</td>
+            <td>Invalidate dictionary cache after update schema owner.</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1807 Patch Release  18-Feb-18  {#Patch1807}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6516</td>
+            <td>Disable dependency manager for spark</td>
+        </tr>
+        <tr>
+            <td>DB-6541</td>
+            <td>User defined function does not work on spark</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2066</td>
+            <td>Duplicate create connection in Splicemachinecontext</td>
+        </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1806 Patch Release  12-Feb-18  {#Patch1806}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DB-6262</td>
+            <td>Improve failure handling during initialization</td>
+        </tr>
+        <tr>
+            <td>DB-6295</td>
+            <td>Add maximum concurrent compactions parameter</td>
+        </tr>
+        <tr>
+            <td>DB-6345</td>
+            <td>Fix query failure with non-covering index as right table of a join</td>
+        </tr>
+        <tr>
+            <td>DB-6464</td>
+            <td>Set isOpen to true for an operation for Spark execution</td>
+        </tr>
+        <tr>
+            <td>DB-6600</td>
+            <td>Case When Not Matching or Clause</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2032</td>
+            <td>Reenable OlapServerIT and increase robustness</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2057</td>
+            <td>Release blocked thread if Spark task is killed</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2062</td>
+            <td>Set yarn user without affecting Spark</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2063</td>
+            <td>Log original stack trace when parsing exception</td>
+        </tr>
+    </tbody>
+</table>
 
 ## 2.5.0.1805 Patch Release  5-Feb-18  {#Patch1805}
 <table>

@@ -10,9 +10,9 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCS_UTIL.SYSCS_SNAPSHOT_TABLE
+# SYSCS_UTIL.SNAPSHOT_TABLE
 
-The `SYSCS_UTIL.SYSCS_SNAPSHOT_TABLE` system procedure creates a Splice
+The `SYSCS_UTIL.SNAPSHOT_TABLE` system procedure creates a Splice
 Machine snapshot of the specified table. These snapshots can
 subsequently be used to restore the table to its state at the time that
 a snapshot was created.
@@ -26,9 +26,9 @@ Snapshots*](developers_tuning_snapshots.html) topic.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_SNAPSHOT_TABLE( VARCHAR(128) schemaName,
-                                      VARCHAR(128) tableName,
-                                      VARCHAR(128) snapshotName );
+    SYSCS_UTIL.SNAPSHOT_TABLE( VARCHAR(128) schemaName,
+                               VARCHAR(128) tableName,
+                               VARCHAR(128) snapshotName );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -67,7 +67,7 @@ complete, depending on the size of the table.
 The following example creates a snapshot of the table named `myTable`:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.SNAPSHOT_SCHEMA('mySchema', 'myTable', 'snap_myschema_070417a');
+    splice> CALL SYSCS_UTIL.SNAPSHOT_TABLE('mySchema', 'myTable', 'snap_myschema_070417a');
     Statement executed.
 {: .Example xml:space="preserve"}
 

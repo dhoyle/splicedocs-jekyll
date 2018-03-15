@@ -243,6 +243,10 @@ server Java options, which you'll find in the Admin console:
 
   <div class="preWrap" markdown="1">
       -Dderby.drda.sslMode=basic
+      -Djavax.net.ssl.keyStore=/tmp/vault/ServerKeyStore
+      -Djavax.net.ssl.keyStorePassword=myPassword
+      -Djavax.net.ssl.trustStore=/tmp/vault/ServerTrustStore
+      -Djavax.net.ssl.trustStorePassword=secretServerTrustStorePassword
   {: .Plain}
 
   </div>
