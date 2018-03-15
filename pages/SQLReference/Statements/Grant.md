@@ -40,6 +40,7 @@ schema-privilege
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
   DELETE
 | INSERT
+| MODIFY
 | REFERENCES [( column-identifier {, column-identifier}* )]
 | SELECT [( column-identifier {, column-identifier}* )]
 | TRIGGER
@@ -99,6 +100,7 @@ table-privilege
 <div class="fcnWrapperWide" markdown="1">
       DELETE
     | INSERT
+    | MODIFY
     | REFERENCES [( column-identifier {, column-identifier}* )]
     | SELECT [( column-identifier {, column-identifier}* )]
     | TRIGGER
@@ -291,48 +293,54 @@ privilege.
 ## Privilege Types   {#PrivilegeTypes}
 
 <table summary="Privilege types">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Privilege Type</th>
-                        <th>Usage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>ALL PRIVILEGES</code></td>
-                        <td>
-                            <p>To grant all of the privileges to the user or role for the specified table. You can also grant one or more table privileges by specifying a privilege-list.</p>
-                            <p class="noteIcon">Only database and schema owners can use the <code>CREATE TABLE</code> statement, which means that table creation privileges cannot be granted to others, even with  <code>GRANT ALL PRIVILEGES</code>.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>DELETE</code></td>
-                        <td>To grant permission to delete rows from the specified table.</td>
-                    </tr>
-                    <tr>
-                        <td><code>INSERT</code></td>
-                        <td>To grant permission to insert rows into the specified table.</td>
-                    </tr>
-                    <tr>
-                        <td><code>REFERENCES</code></td>
-                        <td>To grant permission to create a foreign key reference to the specified table. If a column list is  pecified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
-                    </tr>
-                    <tr>
-                        <td><code>SELECT</code></td>
-                        <td>To grant permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a> on a table or view. If a column list is specified with the <code>SELECT</code> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <code>SELECT</code> statement or <em>SelectExpression</em> (for example, queries that use <code>COUNT(*)</code>), the user must have at least one column-level <code>SELECT</code> privilege or table-level <code>SELECT</code> privilege.</p></td>
-                    </tr>
-                    <tr>
-                        <td><code>TRIGGER</code></td>
-                        <td>To grant permission to create a trigger on the specified table.</td>
-                    </tr>
-                    <tr>
-                        <td><code>UPDATE</code></td>
-                        <td>To grant permission to use the <a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause, you must have the <code>SELECT</code> privilege on the columns in the row that you want to update.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Privilege Type</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>ALL PRIVILEGES</code></td>
+            <td>
+                <p>To grant all of the privileges to the user or role for the specified table. You can also grant one or more table privileges by specifying a privilege-list.</p>
+                <p class="noteIcon">Only database and schema owners can use the <code>CREATE TABLE</code> statement, which means that table creation privileges cannot be granted to others, even with  <code>GRANT ALL PRIVILEGES</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>DELETE</code></td>
+            <td>To grant permission to delete rows from the specified table.</td>
+        </tr>
+        <tr>
+            <td><code>INSERT</code></td>
+            <td>To grant permission to insert rows into the specified table.</td>
+        </tr>
+        <tr>
+            <td><code>MODIFY</code></td>
+            <td><p>To grant permission to modify the schema itself.</p>
+                <p class="noteNote">Permission to modify the schema does not imply other permissions; use <code>ALL PRIVILEGES</code> to grant all permissions</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>REFERENCES</code></td>
+            <td>To grant permission to create a foreign key reference to the specified table. If a column list is  pecified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
+        </tr>
+        <tr>
+            <td><code>SELECT</code></td>
+            <td>To grant permission to perform <a href="sqlref_expressions_select.html">SelectExpressions</a> on a table or view. If a column list is specified with the <code>SELECT</code> privilege, the permission is valid on only those columns. If no column list is specified, then the privilege is valid on all of the columns in the table.<p>For queries that do not select a specific column from the tables involved in a <code>SELECT</code> statement or <em>SelectExpression</em> (for example, queries that use <code>COUNT(*)</code>), the user must have at least one column-level <code>SELECT</code> privilege or table-level <code>SELECT</code> privilege.</p></td>
+        </tr>
+        <tr>
+            <td><code>TRIGGER</code></td>
+            <td>To grant permission to create a trigger on the specified table.</td>
+        </tr>
+        <tr>
+            <td><code>UPDATE</code></td>
+            <td>To grant permission to use the <a href="sqlref_clauses_where.html"><code>WHERE</code></a> clause, you must have the <code>SELECT</code> privilege on the columns in the row that you want to update.</td>
+        </tr>
+    </tbody>
+</table>
 ## Usage Notes
 
 The following types of privileges can be granted:
