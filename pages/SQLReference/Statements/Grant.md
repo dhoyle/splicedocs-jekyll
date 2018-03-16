@@ -24,7 +24,7 @@ are granting privileges to a schema object or granting a role.
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege }*
-   ON [SCHEMA] <a href="sqlref_identifiers_types.html#SchemaName">schema-Name</a>
+   ON SCHEMA <a href="sqlref_identifiers_types.html#SchemaName">schema-Name</a>
    TO grantees</pre>
 
 </div>
