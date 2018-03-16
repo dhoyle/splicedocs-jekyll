@@ -35,6 +35,7 @@ privilege-type
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
    DELETE
  | INSERT
+ | MODIFY
  | REFERENCES [( column-identifier {, column-identifier}* )]
  | SELECT [( column-identifier {, column-identifier}* )]
  | TRIGGER
@@ -90,6 +91,7 @@ privilege-type
 <div class="fcnWrapperWide" markdown="1">
       DELETE
     | INSERT
+    | MODIFY
     | REFERENCES [( column-identifier {, column-identifier}* )]
     | SELECT [( column-identifier {, column-identifier}* )]
     | TRIGGER
@@ -300,7 +302,7 @@ privilege..
     <tbody>
         <tr>
             <td><code>ALL PRIVILEGES</code></td>
-            <td>To revoke all of the privileges to the user or role for the specified table. You can also grant one or more table privileges by specifying a privilege-list.</td>
+            <td>To revoke all of the privileges to the user or role for the specified table. You can also revoke one or more table privileges by specifying a privilege-list.</td>
         </tr>
         <tr>
             <td><code>DELETE</code></td>
@@ -309,6 +311,12 @@ privilege..
         <tr>
             <td><code>INSERT</code></td>
             <td>To revoke permission to insert rows into the specified table.</td>
+        </tr>
+        <tr>
+            <td><code>MODIFY</code></td>
+            <td><p>To revoke permission to modify the schema itself.</p>
+                <p class="noteNote">Revoking schema modification privilege does not imply other permissions; use <code>ALL PRIVILEGES</code> to revoke all permissions</p>
+            </td>
         </tr>
         <tr>
             <td><code>REFERENCES</code></td>
