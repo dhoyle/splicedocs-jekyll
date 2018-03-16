@@ -24,7 +24,7 @@ you are revoking privileges to a schema object or revoking a role.
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 REVOKE <a href="#PrivilegeTypes">privilege-type</a>
-   ON [ SCHEMA ] schema
+   ON SCHEMA schema
    FROM <a href="#AboutGrantees">grantees</a></pre>
 
 </div>
