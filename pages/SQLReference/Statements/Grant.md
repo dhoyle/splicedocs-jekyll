@@ -20,11 +20,6 @@ another role.
 The syntax that you use for the `GRANT` statement depends on whether you
 are granting privileges to a schema object or granting a role.
 
-Only database and schema owners can use the `CREATE TABLE` statement,
-which means that table creation privileges cannot be granted to others,
-even with `GRANT ALL PRIVILEGES`.
-{: .noteIcon}
-
 ## Syntax for Schemas
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
@@ -100,7 +95,6 @@ table-privilege
 <div class="fcnWrapperWide" markdown="1">
       DELETE
     | INSERT
-    | MODIFY
     | REFERENCES [( column-identifier {, column-identifier}* )]
     | SELECT [( column-identifier {, column-identifier}* )]
     | TRIGGER
@@ -319,13 +313,13 @@ privilege.
         </tr>
         <tr>
             <td><code>MODIFY</code></td>
-            <td><p>To grant permission to modify the schema itself.</p>
-                <p class="noteNote">Permission to modify the schema does not imply other permissions; use <code>ALL PRIVILEGES</code> to grant all permissions</p>
+            <td><p>Schema-level privilege that grants permission to modify the schema itself.</p>
+                <p class="noteNote">Permission to modify the schema does not imply granting of other permissions; use <code>ALL PRIVILEGES</code> to grant all permissions.</p>
             </td>
         </tr>
         <tr>
             <td><code>REFERENCES</code></td>
-            <td>To grant permission to create a foreign key reference to the specified table. If a column list is  pecified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
+            <td>To grant permission to create a foreign key reference to the specified table. If a column list is  specified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
         </tr>
         <tr>
             <td><code>SELECT</code></td>

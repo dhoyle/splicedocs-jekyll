@@ -91,7 +91,6 @@ privilege-type
 <div class="fcnWrapperWide" markdown="1">
       DELETE
     | INSERT
-    | MODIFY
     | REFERENCES [( column-identifier {, column-identifier}* )]
     | SELECT [( column-identifier {, column-identifier}* )]
     | TRIGGER
@@ -315,12 +314,12 @@ privilege..
         <tr>
             <td><code>MODIFY</code></td>
             <td><p>To revoke permission to modify the schema itself.</p>
-                <p class="noteNote">Revoking schema modification privilege does not imply other permissions; use <code>ALL PRIVILEGES</code> to revoke all permissions</p>
+                <p class="noteNote">Revoking schema modification privilege does not imply revocation of other permissions; use <code>ALL PRIVILEGES</code> to revoke all permissions.</p>
             </td>
         </tr>
         <tr>
             <td><code>REFERENCES</code></td>
-            <td>To revoke permission to create a foreign key reference to the specified table. If a column list is  pecified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
+            <td>To revoke permission to create a foreign key reference to the specified table. If a column list is  specified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
         </tr>
         <tr>
             <td><code>SELECT</code></td>
