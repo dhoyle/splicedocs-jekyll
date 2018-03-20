@@ -92,18 +92,21 @@ statement to grant a role to one or more users, to `PUBLIC`, or to
 another role. Roles can be contained within other roles and can inherit
 privileges from roles that they contain.
 
-### Setting Roles
+When you `GRANT` a role to a user, that user is automatically defined as a *default* role for that user, which means that whenever that user connects to the database, they will have the permissions associated with that role. This `AS DEFAULT` behavior is how `GRANT` operates by default. If you want to grant a user a role just for their current session, you can specify the `NOT AS DEFAULT` option in your `GRANT` statement.
 
-When a user first connects to Splice Machine, no role is set, and the
-[`SET ROLE`](sqlref_statements_setrole.html) statement to set the
-current role for that session. The role can be any role that has been
-granted to the session's current user or to `PUBLIC`.
+You can also revoke the association of a role as `AS DEFAULT` behavior for a user by using the `NOT AS DEFAULT`
+{: .noteNote}
 
-To unset the current role, you can call `SET ROLE` with an argument of
-`NONE`. At any time during a session, there is always a current user,
-but there is a current role only if `SET ROLE` has been called with an
-argument other than `NONE`. If a current role is not set, the session
-has only the privileges granted to the user directly or to `PUBLIC`.
+See the [`GRANT` statement](sqlref_statements_grant.html) documentation for examples of using `AS DEFAULT` and `NOT AS DEFAULT` with roles.
+
+#### Using `SET ROLE` to Add Permissions
+
+When a user connects to Splice Machine, that user is granted any permissions that are associated with the `public` user, and is granted any permissions associated with roles that have been granted by default to that user.
+
+You can add additional roles for a user's sessions with the [`SET ROLE`](sqlref_statements_setrole.html) statement, which adds a role for the current session.
+
+To unset all roles for the user's current session, you can call `SET ROLE` with an argument of
+`NONE`.
 
 ### Roles in Stored Procedures and Functions
 
@@ -140,7 +143,7 @@ effectively revokes all grants of this role to users and other roles.
 ## Granting Privileges
 
 Use the &nbsp;[`GRANT`](sqlref_statements_grant.html) statement to grant
-privileges on schemas, tables and routines to a role or to a user.
+privileges on schemas, tables, and routines to a role or to a user.
 
 Note that when you grant privileges to a role, you are implicitly
 granting those same privileges to all roles that contain that role.
@@ -148,7 +151,7 @@ granting those same privileges to all roles that contain that role.
 ## Revoking Privileges
 
 Use the &nbsp;[`REVOKE`](sqlref_statements_revoke.html) statement to revoke
-privileges on schemas, tables and routines.
+privileges on schemas, tables, and routines.
 
 When a privilege is revoked from a user:
 

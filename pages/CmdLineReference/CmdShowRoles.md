@@ -13,7 +13,7 @@ folder: CmdLineReference
 # Show Roles
 
 The <span class="AppCommand">show roles</span> command a sorted list of
-all of the roles defined in the database.
+all of the roles that are applied in the current user session.
 
 ### Syntax
 
@@ -28,15 +28,14 @@ all of the roles defined in the database.
     splice> create role testRole;
     0 rows inserted/updated/deleted
     splice> show roles;
-    
+
     ROLEID
     ------------------------------
     TESTROLE
-    
+
     1 row selected
 {: .AppCommand xml:space="preserve"}
 
 </div>
 </div>
 </section>
-
