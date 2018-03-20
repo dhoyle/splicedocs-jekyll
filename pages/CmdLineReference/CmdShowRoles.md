@@ -13,7 +13,10 @@ folder: CmdLineReference
 # Show Roles
 
 The <span class="AppCommand">show roles</span> command a sorted list of
-all of the roles that are applied in the current user session.
+all of the roles that have been defined in the database.
+
+Use the "`values current_role;`" statement to display the list of roles that are active in the current session.
+{: .noteNote}
 
 ### Syntax
 
@@ -31,7 +34,7 @@ all of the roles that are applied in the current user session.
 
     ROLEID
     ------------------------------
-    TESTROLE
+    ADMIN, EDITOR, WRITER
 
     1 row selected
 {: .AppCommand xml:space="preserve"}
