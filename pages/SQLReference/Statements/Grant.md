@@ -18,9 +18,21 @@ use the `GRANT` statement to grant a role to a user, to `PUBLIC`, or to
 another role.
 
 The syntax that you use for the `GRANT` statement depends on whether you
-are granting privileges to a schema object or granting a role.
+are granting privileges to a schema object or granting a role, as described in these sections:
 
-## Syntax for Schemas
+* [Syntax for Schemas](#SchemaSyntax)
+* [Syntax for Tables](#TableSyntax)
+* [Syntax for Roles](#RoleSyntax)
+* [Syntax for Routines](#RoutineSyntax)
+* [Syntax for User-Defined Types](#UserDefinedSyntax)
+
+This topic also contains these sections that help explain the use of the `GRANT` statement:
+* [About Grantees](#Grantees)
+* [Privilege Types](#Privileges)
+* [Usage Notes](#UsageNotes)
+* [Examples](#Examples)
+
+## Syntax for Schemas {#SchemaSyntax}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 GRANT ALL PRIVILEGES | schema-privilege {, schema-privilege }*
@@ -81,7 +93,7 @@ Grantees](#AboutGrantees) section below for more information.
 
 * Table-level privileges override schema-level privileges.
 
-## Syntax for Tables
+## Syntax for Tables {#TableSyntax}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 GRANT ALL PRIVILEGES | table-privilege {, table-privilege }*   ON [TABLE] { <a href="sqlref_identifiers_types.html#TableName">tableName</a> }
@@ -150,7 +162,50 @@ Grantees](#AboutGrantees) section below for more information.
   with the table are removed.
 * Table-level privileges override schema-level privileges.
 
-## Syntax for Routines
+## Syntax for Roles {#RoleSyntax}
+
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+GRANT <a href="sqlref_identifiers_types.html#RoleName">roleName</a> [ {, <a href="sqlref_identifiers_types.html#RoleName">roleName</a> }* ]  
+   TO grantees
+   [ [NOT] AS DEFAULT ]</pre>
+</div>
+
+<div class="paramList" markdown="1">
+roleName
+{: .paramName}
+
+The name to the role(s) to which you are granting access.
+{: .paramDefnFirst}
+
+grantees
+{: .paramName}
+
+The user(s) or role(s) to whom you are granting access. See the [About
+Grantees](#AboutGrantees) section below for more information.
+{: .paramDefnFirst}
+
+[NOT] AS DEFAULT
+{: .paramName}
+
+When you grant a role to a user, that role is, by default, applied to the user whenever s/he connects to the database. This is the behavior defined by the optional phrase `AS DEFAULT`.
+{: .paramDefnFirst}
+
+If you *do not* want the role granted to the user by default, you *must* specify `NOT AS DEFAULT`; this means that the role will be applied to the user's current session, but will not automatically apply to future sessions.
+{: .paramDefn}
+
+</div>
+Before you can grant a role to a user or to another role, you must
+create the role using the &nbsp;[`CREATE ROLE`
+statement](sqlref_statements_createrole.html). Only the database owner
+can grant a role.
+
+A role A *contains* another role B if role B is granted to role A, or is
+contained in a role C granted to role A. Privileges granted to a
+contained role are inherited by the containing roles. So the set of
+privileges identified by role A is the union of the privileges granted
+to role A and the privileges granted to any contained roles of role A.
+
+## Syntax for Routines {#RoutineSyntax}
 
 <div class="fcnWrapperWide" markdown="1">
     GRANT EXECUTE
@@ -174,7 +229,8 @@ Grantees](#AboutGrantees) section below for more information.
 {: .paramDefnFirst}
 
 </div>
-## Syntax for User-defined Types
+
+## Syntax for User-defined Types {#UserDefinedSyntax}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 GRANT USAGE
@@ -198,43 +254,9 @@ grantees
 The user(s) or role(s) to whom you are granting access. See the [About
 Grantees](#AboutGrantees) section below for more information.
 {: .paramDefnFirst}
-
 </div>
-## Syntax for Roles
 
-<div class="fcnWrapperWide"><pre class="FcnSyntax">
-GRANT <a href="sqlref_identifiers_types.html#RoleName">roleName</a>
-    { <a href="sqlref_identifiers_types.html#RoleName">roleName</a> }*
-   TO grantees</pre>
-
-</div>
-<div class="paramList" markdown="1">
-roleName
-{: .paramName}
-
-The name to the role(s) to which you are granting access.
-{: .paramDefnFirst}
-
-grantees
-{: .paramName}
-
-The user(s) or role(s) to whom you are granting access. See the [About
-Grantees](#AboutGrantees) section below for more information.
-{: .paramDefnFirst}
-
-</div>
-Before you can grant a role to a user or to another role, you must
-create the role using the &nbsp;[`CREATE ROLE`
-statement](sqlref_statements_createrole.html). Only the database owner
-can grant a role.
-
-A role A *contains* another role B if role B is granted to role A, or is
-contained in a role C granted to role A. Privileges granted to a
-contained role are inherited by the containing roles. So the set of
-privileges identified by role A is the union of the privileges granted
-to role A and the privileges granted to any contained roles of role A.
-
-## About Grantees   {#AboutGrantees}
+## About Grantees   {#Grantees}
 
 A grantee can be one or more specific users, one or more specific roles,
 or all users (`PUBLIC`). Either the object owner or the database owner
@@ -284,7 +306,8 @@ privilege.
 {: .paramDefn}
 
 </div>
-## Privilege Types   {#PrivilegeTypes}
+
+## Privilege Types   {#Privileges}
 
 <table summary="Privilege types">
     <col />
@@ -335,7 +358,8 @@ privilege.
         </tr>
     </tbody>
 </table>
-## Usage Notes
+
+## Usage Notes {#UsageNotes}
 
 The following types of privileges can be granted:
 
@@ -359,9 +383,15 @@ or the database owner. See documentation for the
 [`CREATE`](sqlref_statements_createstatements.html) statements for more
 information.
 
-## Examples
+## Examples {#Examples}
 
-### Granting Privileges to Users
+This section contains examples for:
+
+* Granting Privileges to Users (#UserPrivs)
+* Granting Roles to Users (#UserRoles)
+* Granting Privileges to Roles (#RolePrivs)
+
+### Granting Privileges to Users {#UserPrivs}
 
 To grant the `SELECT` privilege on the schema `SpliceBBall` to the
 authorization IDs `Bill` and `Joan`, use the following syntax:
@@ -408,18 +438,147 @@ authorization ID `george`, use the following syntax:
 {: .Example xml:space="preserve"}
 
 </div>
-### Granting Roles to Users
+### Granting Roles to Users {#UserRoles}
 
-To grant the role ` purchases_reader_role` to the authorization IDs
+To grant the role `purchases_reader_role` to the authorization IDs
 `george` and `maria`, use the following syntax:
 
 <div class="preWrapper" markdown="1">
     splice> GRANT purchases_reader_role TO george,maria;
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
-
 </div>
-### Granting Privileges to Roles
+
+This grants the role to both users for the current session, and also sets the role as a default role whenever one of the users connects to the database. The *as default* behavior is applied by default, or you can specify it explicitly:
+
+<div class="preWrapper" markdown="1">
+    splice> GRANT purchases_reader_role TO george,maria AS DEFAULT;
+    0 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+</div>
+
+To grant the role to `george` only for the current session, use:
+
+<div class="preWrapper" markdown="1">
+    splice> GRANT purchases_reader_role TO george NOT AS DEFAULT;
+    0 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+</div>
+
+#### A More Extensive ROLE Example
+
+Let's set up our example. First we'll use create 4 schemas and 4 roles, and we'll grant all priveleges to each role on its respective schema:
+
+<div class="preWrapper" markdown="1">
+    splice> CREATE SCHEMA test_schema1;
+    0 rows inserted/updated/deleted
+    splice> CREATE ROLE test_role1;
+    0 rows inserted/updated/deleted
+    splice> GRANT ALL PRIVILEGES ON SCHEMA test_schema1 TO test_role1;
+    0 rows inserted/updated/deleted
+
+    splice> CREATE SCHEMA test_schema2;
+    0 rows inserted/updated/deleted
+    splice> CREATE ROLE test_schema2;
+    0 rows inserted/updated/deleted
+    splice> GRANT ALL PRIVILEGES ON SCHEMA test_schema2 TO test_role2;
+    0 rows inserted/updated/deleted
+
+    splice> CREATE SCHEMA test_schema3;
+    0 rows inserted/updated/deleted
+    splice> CREATE ROLE test_role3;
+    0 rows inserted/updated/deleted
+    splice> GRANT ALL PRIVILEGES ON SCHEMA test_schema3 TO test_role3;
+    0 rows inserted/updated/deleted
+
+    splice> CREATE SCHEMA test_schema4;
+    0 rows inserted/updated/deleted
+    splice> CREATE ROLE test_role4;
+    0 rows inserted/updated/deleted
+    splice> GRANT ALL PRIVILEGES ON SCHEMA test_schema4 TO test_role4;
+    0 rows inserted/updated/deleted
+{: .Example}
+</div>
+
+Next we'll create two users so we can demonstrate assigning different roles to different users:
+
+<div class="preWrapper" markdown="1">
+    splice> CALL syscs_util.syscs_create_user('user1', 'user1pswd');
+    Statement executed;
+
+    splice> CALL syscs_util.syscs_create_user('user2', 'user2pswd');
+    Statement executed
+{: .Example}
+</div>
+
+Now we'll grant the role `test_role1` to all users (the `public` user), and GRANT specific roles to specific users:
+
+<div class="preWrapper" markdown="1">
+    splice> GRANT test_role1 TO public AS DEFAULT;
+    0 rows inserted/updated/deleted
+
+    splice> GRANT test_role2 TO user1 AS DEFAULT;
+    0 rows inserted/updated/deleted
+
+    splice> GRANT test_role3 TO user1;
+    0 rows inserted/updated/deleted
+{: .Example}
+</div>
+
+Now let's CONNECT as `user1` and check our role assignments:
+<div class="preWrapper" markdown="1">
+    splice> CONNECT 'jdbc:splice://localhost:1527/splicedb;user=user1;password=user1pswd' AS user1_connection;
+
+    splice> VALUES current_user
+    1
+    ----------------------------------------------------------------------------------------------------------
+    USER1
+
+    splice> VALUES current_role;
+    1
+    ----------------------------------------------------------------------------------------------------------
+    "TEST_ROLE2", "TEST_ROLE3", "TEST_ROLE1"
+    1 row selected
+{: .Example}
+</div>
+
+As you can see, when `user1` connects, s/he is granted:
+* `TEST_ROLE1` because it is now granted by default to all users (`public`).
+* `TEST_ROLE2` and `TEST_ROLE3` because they were granted to `user1` as a default privilege upon connecting.
+
+Now we'll CONNECT as `user2`:
+<div class="preWrapper" markdown="1">
+    splice> CONNECT 'jdbc:splice://localhost:1527/splicedb;user=user2;password=user2pswd' as user2_connection;
+
+    splice> VALUES current_user
+    1
+    ----------------------------------------------------------------------------------------------------------
+    USER2
+
+    splice> VALUES current_role;
+    1
+    ----------------------------------------------------------------------------------------------------------
+    "TEST_ROLE1"
+    1 row selected
+{: .Example}
+</div>
+
+Note that `user2` is connected with only one role, `TEST_ROLE1` because that role has been GRANTed by default to all users (`public`) and no other roles have been granted to `user2`.
+
+#### Unsetting the AS DEFAULT Role Setting
+
+If you want to GRANT a role to a user just for the current session, you can use the `NOT AS DEFAULT` syntax.
+
+You can use the same syntax to modify an existing role from DEFAULT to non-DEFAULT:
+<div class="preWrapper" markdown="1">
+    splice> GRANT test_role1 TO public not AS DEFAULT;
+    Statement executed;
+{: .Example}
+</div>
+
+As a result, new public connections will no longer be granted the privileges associated with `test_role1`.
+
+### Granting Privileges to Roles {#RolePrivs}
 
 To grant the `SELECT` privilege on schema `SpliceBBall` to the role
 `purchases_reader_role`, use the following syntax:
