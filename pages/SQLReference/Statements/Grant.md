@@ -190,7 +190,7 @@ Grantees](#AboutGrantees) section below for more information.
 When you grant a role to a user, that role is, by default, applied to the user whenever s/he connects to the database. This is the behavior defined by the optional phrase `AS DEFAULT`.
 {: .paramDefnFirst}
 
-If you *do not* want the role granted to the user by default, you *must* specify `NOT AS DEFAULT`; this means that the role will be applied to the user's current session, but will not automatically apply to future sessions.
+If you *do not* want the role granted to the user by default, you *must* specify `NOT AS DEFAULT`; this means that the role will not automatically apply to sessions: you must use the &nbsp;&nbsp;[`SET ROLE` statement](sqlref_statements_setrole.html) to apply a `NOT AS DEFAULT` role in a session.
 {: .paramDefn}
 
 </div>

@@ -26,7 +26,7 @@ attempt to set a role results in an error.
 
 * To unset all roles for the current session, use the `SET ROLE NONE` statement.
 
-* Setting a role applies only to the current session; to automatically set roles for users whenever they connect, use the [GRANT ROLE](sqlref_statements_grant#RoleSyntax) statement.
+* Setting a role applies only to the current session; to automatically set roles for users whenever they connect, use the &nbsp;[`GRANT ROLE`](sqlref_statements_grant#RoleSyntax) statement.
 
 ## Syntax
 
@@ -61,7 +61,7 @@ following:
 
 * The privileges granted to that role
 * The union of privileges of roles contained in that role (for a
-  definition of role containment, see the [GRANT ROLE](sqlref_statements_grant#RoleSyntax) statement.
+  definition of role containment, see the &nbsp;[`GRANT ROLE`](sqlref_statements_grant#RoleSyntax) statement.
 
 In a session, the *current privileges* define what the session is
 allowed to access. The *current privileges* are the union of the

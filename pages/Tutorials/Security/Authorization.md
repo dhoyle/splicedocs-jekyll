@@ -101,7 +101,7 @@ See the [`GRANT` statement](sqlref_statements_grant.html) documentation for exam
 
 #### Using `SET ROLE` to Add Permissions
 
-When a user connects to Splice Machine, that user is granted any permissions that are associated with the `public` user, and is granted any permissions associated with roles that have been granted by default to that user.
+When a user connects to Splice Machine, that user is granted any permissions that are associated with the `public` user, and is granted any permissions associated with roles that have been granted by default to that user or the `public` user.
 
 You can add additional roles for a user's sessions with the [`SET ROLE`](sqlref_statements_setrole.html) statement, which adds a role for the current session.
 
