@@ -19,6 +19,7 @@ This topic provides troubleshooting guidance for these issues that you may encou
 * [Restarting Splice Machine after an HMaster Failure](#HMasterRestart)
 * [Updating Stored Query Plans after a Splice Machine Update](#SpliceUpdate)
 * [Increasing Parallelism for Spark Shuffles](#SparkShuffles)
+* [Increasing Memory Settings for Heavy Analytical Work Loads](#OLAPMemSettings)
 * [Force Compaction to Run Locally](#LocalCompaction)
 * [Kerberos Configuration Option](#KerberosConfig)
 * [Resource Allocation for Backup Jobs](#BackupResources)
@@ -52,6 +53,46 @@ This option is similar to the `spark.sql.shuffle.partitions` option, which confi
 Specifically, increasing the number of shuffle partitions with the `splice.olap.shuffle.partitions` option is useful when performing operations on small tables that generate large, intermediate datasets; additional, but smaller sized partitions allows us to operate with better parallelism.
 
 The default value of `splice.olap.shuffle.partitions` is `200`.
+
+## Increasing Memory Settings for Heavy Analytical Work Loads  {#OLAPMemSettings}
+
+If you are running heavy analytical loads or running OLAP jobs on very large tables, you may want to increase these property settings in your `hbase-site.xml` file:
+
+<table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Default Value</th>
+            <th>Recommendations for Heavy Analytical Loads</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">splice.olap_server.memory</td>
+            <td>1 GB</td>
+            <td>Set to the same value as HMaster heap size</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">splice.olap_server.memoryOverhead</td>
+            <td>512 MB</td>
+            <td>Set to 10% of <span class="CodeFont">splice.olap_server.memory</span></td>
+        </tr>
+        <tr>
+            <td class="CodeFont">splice.olap_server.virtualCores</td>
+            <td>1 vCore</td>
+            <td>4 vCores</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">splice.olap_server.external</td>
+            <td>true</td>
+            <td>true</td>
+        </tr>
+    </tbody>
+</table>
+
 
 ## Force Compaction to Run on Local Region Server {#LocalCompaction}
 
