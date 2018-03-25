@@ -38,7 +38,7 @@ If you run Splice Machine without redundant HMasters, and you lose your HMaster,
 
 We have seen a situation where HMaster doesn't exit when you attempt a shutdown, and a forced shutdown is used. The forced shutdown means that HBase may not be able to flush all data and delete all write-ahead logs (WALs); as a result, it can take longer than usual to restart HBase and Splice Machine.
 
-Splice Machine now sets the HBase *Graceful Shutdown Timeout* to 10 minutes, which should be plenty of time. If the shutdown is still hanging up after 10 minutes, it's likely that there's a problem in one of your running queries.
+Splice Machine now sets the HBase *Graceful Shutdown Timeout* to 10 minutes, which should be plenty of time. If the shutdown is still hanging up after 10 minutes, a forced shutdown is appropriate.
 
 ## Updating Stored Query Plans after a Splice Machine Update {#SpliceUpdate}
 
