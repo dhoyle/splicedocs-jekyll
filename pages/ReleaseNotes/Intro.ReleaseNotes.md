@@ -50,7 +50,7 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
     </tbody>
 </table>
 
-Most of the features incorporated into the release 2.7 of Splice Machine have also been backported into version 2.5.1. The documentation and release notes for v2.5.1 are found here: <a href="https://doc.splicemachine.com/2.5.1" target="_blank">https://doc.splicemachine.com/2.5.1
+Most of the features incorporated into the release 2.7 of Splice Machine have also been backported into version 2.5. The documentation and release notes for v2.5 are found here: <a href="https://doc.splicemachine.com/2.5" target="_blank">https://doc.splicemachine.com/2.5</a>.
 {: .noteIcon}
 
 The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.

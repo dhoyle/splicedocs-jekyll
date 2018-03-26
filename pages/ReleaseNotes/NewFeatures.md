@@ -15,14 +15,14 @@ folder: ReleaseNotes
 
 The Splice Machine database is used in both our Database-Service and On-Premise Database products.
 
-This page describes the major new features added to the Splice Machine database since the 2.5 GA Release of Splice Machine. With the exception of a few features note in the [New Features Only Available in v2.7 section](#Only27) below, all of these features have added to both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+This page describes the major new features added to the Splice Machine database since the 2.5 GA Release of Splice Machine. With the exception of a few features note in the [New Features Only Available in v2.7 section](#Only27) below, all of these features have added to both the 2.7 and 2.5 Releases of the Splice Machine database.
 
-Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5 Releases of the Splice Machine database.
 {: .noteIcon}
 
 ## New Features Only Available in Splice Machine Release 2.7  {#Only27}
 
-These features have been added to Release 2.7 of Splice Machine, and have not been backported to Release 2.5.1:
+These features have been added to Release 2.7 of Splice Machine, and have not been backported to Release 2.5:
 
 <table>
     <col width="125px" />
@@ -57,7 +57,7 @@ These features have been added to Release 2.7 of Splice Machine, and have not be
     </tbody>
 </table>
 
-## New Features in Available in Splice Machine Releases 2.7 and 2.5.1
+## New Features in Available in Splice Machine Releases 2.7 and 2.5
 
 Each section in this topic includes a list of major new in each interim Splice Machine release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
@@ -387,14 +387,6 @@ Each section in this topic includes a list of major new in each interim Splice M
             <td>Internal</td>
             <td>Populate default value for column of DATE type in defaultRow with the right type (regression fix for SPLICE-1700)</td>
         </tr>
-        <tr>
-            <td>SPLICE-1700</td>
-            <td>Avoid updating existing physical rows when adding not-null</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1802</td>
-            <td>Create index by HFile loading(2.5)</td>
-        </tr>
     </tbody>
 </table>
 
@@ -562,14 +554,6 @@ Each section in this topic includes a list of major new in each interim Splice M
             <td>Allows use of multiple <code>DISTINCT</code> operations in aggregates.</td>
         </tr>
         <tr>
-            <td>SPLICE-1591</td>
-            <td>Adds an option to purge deleted rows when performing a major compaction.</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1603</td>
-            <td>Adds a clause to the <code>ANALYZE TABLE</code> command to allow analyzing via sampled statistics, rather than analyzing the entire table.</td>
-        </tr>
-        <tr>
             <td>SPLICE-1607</td>
             <td>You can now configure and use SSL/TLS secured JDBC connections to your Splice Machine database. We support both basic encrypted connections and peer-authenticated connections. Please see our <a href="onprem_install_configureTLS.html">Configuring SSL/TLS topic</a> for more information.</td>
         </tr>
@@ -580,10 +564,6 @@ Each section in this topic includes a list of major new in each interim Splice M
         <tr>
             <td>SPLICE-1669</td>
             <td>Supports bulk delete via HFiles, bypassing the HBase write path.</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1671</td>
-            <td>Added the ability to take snapshots of tables (and their indexes).</td>
         </tr>
         <tr>
             <td>SPLICE-1701</td>
@@ -636,10 +616,6 @@ Each section in this topic includes a list of major new in each interim Splice M
         <tr>
             <td>Internal</td>
             <td>Implement Kerberos JDBC support (2.5)</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1482</td>
-            <td>HBase Bulk Import</td>
         </tr>
         <tr>
             <td>SPLICE-1591</td>

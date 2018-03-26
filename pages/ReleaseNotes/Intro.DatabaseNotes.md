@@ -23,7 +23,7 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
 
 Each of the above topics contains the release notes for the initial Release, along with links to release notes for incremental (patch) versions that have been released since then.
 
-Most of the features incorporated into the release 2.7 of Splice Machine have also been backported into version 2.5.1. The documentation and release notes for v2.5.1 are found here: <a href="https://doc.splicemachine.com/2.5.1" target="_blank">https://doc.splicemachine.com/2.5.1
+Most of the features incorporated into the release 2.7 of Splice Machine have also been backported into version 2.5. The documentation and release notes for v2.5 are found here: <a href="https://doc.splicemachine.com/2.5" target="_blank">https://doc.splicemachine.com/2.5</a>
 {: .noteIcon}
 
 

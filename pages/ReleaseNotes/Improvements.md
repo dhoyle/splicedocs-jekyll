@@ -15,9 +15,9 @@ folder: ReleaseNotes
 
 The Splice Machine database is used in both our Database-Service and On-Premise Database products.
 
-This page describes all of the significant improvements made in the Splice Machine database since the 2.5 GA Release of Splice Machine. With only one noted exception, all of the improvements listed here have been made in both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+This page describes all of the significant improvements made in the Splice Machine database since the 2.5 GA Release of Splice Machine. With only one noted exception, all of the improvements listed here have been made in both the 2.7 and 2.5 Releases of the Splice Machine database.
 
-Splice Machine release 2.6 was an interim Release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+Splice Machine release 2.6 was an interim Release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5 Releases of the Splice Machine database.
 {: .noteIcon}
 
 Each section in this topic includes a list of significant improvements in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
@@ -51,11 +51,11 @@ Each section in this topic includes a list of significant improvements in each i
     </thead>
     <tbody>
         <tr>
-            <td>DB-6751</td>
+            <td>Internal</td>
             <td>Clean up backup logging for better diagnosability</td>
         </tr>
         <tr>
-            <td>DB-6619</td>
+            <td>Internal</td>
             <td>Splice 5.13.2 Platform Support</td>
         </tr>
         <tr>
@@ -81,11 +81,11 @@ Each section in this topic includes a list of significant improvements in each i
     </thead>
     <tbody>
         <tr>
-            <td>DB-6567</td>
+            <td>Internal</td>
             <td>Decrease DEFAULT_BROADCAST_REGION_ROW_THRESHOLD</td>
         </tr>
         <tr>
-            <td>DB-6640</td>
+            <td>Internal</td>
             <td>Avoid ldap passwords while dumping all properties</td>
         </tr>
         <tr>
@@ -115,7 +115,7 @@ Each section in this topic includes a list of significant improvements in each i
     </thead>
     <tbody>
         <tr>
-            <td>DB-6640</td>
+            <td>Internal</td>
             <td>Take out ldap password from logs</td>
         </tr>
         <tr>
@@ -137,7 +137,7 @@ Each section in this topic includes a list of significant improvements in each i
     </thead>
     <tbody>
         <tr>
-            <td>DB-6582</td>
+            <td>Internal</td>
             <td>Remove SparkListener for export</td>
         </tr>
         <tr>
@@ -159,7 +159,7 @@ Each section in this topic includes a list of significant improvements in each i
     </thead>
     <tbody>
         <tr>
-            <td>DB-6478</td>
+            <td>Internal</td>
             <td>Fix error in IT test case and ignored it in MEM mode</td>
         </tr>
         <tr>
@@ -299,10 +299,6 @@ Each section in this topic includes a list of significant improvements in each i
     </thead>
     <tbody>
         <tr>
-            <td>SPLICE-1351</td>
-            <td>Upgrade Sketching Library from 0.8.1 - 0.8.4</td>
-        </tr>
-        <tr>
             <td>SPLICE-1948</td>
             <td>Increase test timeout</td>
         </tr>
@@ -406,7 +402,7 @@ Each section in this topic includes a list of significant improvements in each i
         <tr>
             <td>SPLICE-1517</td>
             <td><p>Orc Reader Additions</p>
-                <p class="noteIcon">This improvement has not been backported into release 2.5.1.</p>
+                <p class="noteIcon">This improvement has not been backported into release 2.5</p>
             </td>
         </tr>
         <tr>
@@ -456,10 +452,6 @@ Each section in this topic includes a list of significant improvements in each i
         <tr>
             <td>SPLICE-1752</td>
             <td>Support inserting int types to char types</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1756</td>
-            <td>Introduce database property collectIndexStatsOnly to specify the collect stats behavior</td>
         </tr>
         <tr>
             <td>SPLICE-1760</td>
@@ -561,40 +553,12 @@ Each section in this topic includes a list of significant improvements in each i
     </thead>
     <tbody>
         <tr>
-            <td>SPLICE-398</td>
-            <td>Support 'drop view if exists' for 2.5</td>
-        </tr>
-        <tr>
             <td>SPLICE-774</td>
             <td>Support upgrade from K2 (2.5)</td>
         </tr>
         <tr>
-            <td>SPLICE-1479</td>
-            <td>iterator based stats collection (2.5)</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1516</td>
-            <td>Enable compression for WritePipeline</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1500</td>
-            <td>Skip WAL for unsafe imports (2.5)</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1555</td>
-            <td>Enable optimizer trace info for costing</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1681</td>
-            <td>Introduce query hint "skipStats"</td>
-        </tr>
-        <tr>
             <td>SPLICE-1701</td>
             <td>JXM mbean server for cache and enginedriver exec service</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1729</td>
-            <td>Support 'drop table t_name if exists' for 2.5</td>
         </tr>
         <tr>
             <td>SPLICE-1756</td>

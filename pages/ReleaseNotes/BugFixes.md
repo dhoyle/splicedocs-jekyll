@@ -15,9 +15,9 @@ folder: ReleaseNotes
 
 The Splice Machine database is used in both our Database-Service and On-Premise Database products.
 
-This page describes all of the issues that have been fixed in the Splice Machine database since the 2.5 GA Release of Splice Machine. With only one noted exception, all of the fixes listed here have been applied to both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+This page describes all of the issues that have been fixed in the Splice Machine database since the 2.5 GA Release of Splice Machine. With only one noted exception, all of the fixes listed here have been applied to both the 2.7 and 2.5 Releases of the Splice Machine database.
 
-Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5.1 Releases of the Splice Machine database.
+Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5 Releases of the Splice Machine database.
 {: .noteIcon}
 
 Each section in this topic includes a list of issues fixed in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
@@ -50,7 +50,7 @@ Each section in this topic includes a list of issues fixed in each interim Splic
     </thead>
     <tbody>
         <tr>
-            <td>DB-6759</td>
+            <td>Internal</td>
             <td>Encode split key with null value correctly</td>
         </tr>
         <tr>
@@ -80,27 +80,27 @@ Each section in this topic includes a list of issues fixed in each interim Splic
     </thead>
     <tbody>
         <tr>
-            <td>DB-6662</td>
+            <td>Internal</td>
             <td>Make QueryTimeout more robust</td>
         </tr>
         <tr>
-            <td>DB-6684</td>
+            <td>Internal</td>
             <td>Fixed ZooKeeperServerMain arguments</td>
         </tr>
         <tr>
-            <td>DB-6707</td>
+            <td>Internal</td>
             <td>Restore only deletes splice table</td>
         </tr>
         <tr>
-            <td>DB-6722</td>
+            <td>Internal</td>
             <td>Fixing Log4j inclusion in hbase_sql jar</td>
         </tr>
         <tr>
-            <td>DB-6735</td>
+            <td>Internal</td>
             <td>Fixing HDP2.6.3 build to support OLAP Server properly</td>
         </tr>
         <tr>
-            <td>DB-6740</td>
+            <td>Internal</td>
             <td>Fix SerDe issue for WindowFunctionInfo</td>
         </tr>
         <tr>
@@ -126,11 +126,11 @@ Each section in this topic includes a list of issues fixed in each interim Splic
     </thead>
     <tbody>
         <tr>
-            <td>DB-6679</td>
+            <td>Internal</td>
             <td>Merge 2.5.0.1806S branch to branch-2.5</td>
         </tr>
         <tr>
-            <td>DB-6685</td>
+            <td>Internal</td>
             <td>Invalidate dictionary cache after update schema owner.</td>
         </tr>
     </tbody>
@@ -148,16 +148,12 @@ Each section in this topic includes a list of issues fixed in each interim Splic
     </thead>
     <tbody>
         <tr>
-            <td>DB-6516</td>
+            <td>Internal</td>
             <td>Disable dependency manager for spark</td>
         </tr>
         <tr>
-            <td>DB-6541</td>
+            <td>Internal</td>
             <td>User defined function does not work on spark</td>
-        </tr>
-        <tr>
-            <td>SPLICE-2066</td>
-            <td>Duplicate create connection in Splicemachinecontext</td>
         </tr>
     </tbody>
 </table>
@@ -174,23 +170,23 @@ Each section in this topic includes a list of issues fixed in each interim Splic
     </thead>
     <tbody>
         <tr>
-            <td>DB-6262</td>
+            <td>Internal</td>
             <td>Improve failure handling during initialization</td>
         </tr>
         <tr>
-            <td>DB-6295</td>
+            <td>Internal</td>
             <td>Add maximum concurrent compactions parameter</td>
         </tr>
         <tr>
-            <td>DB-6345</td>
+            <td>Internal</td>
             <td>Fix query failure with non-covering index as right table of a join</td>
         </tr>
         <tr>
-            <td>DB-6464</td>
+            <td>Internal</td>
             <td>Set isOpen to true for an operation for Spark execution</td>
         </tr>
         <tr>
-            <td>DB-6600</td>
+            <td>Internal</td>
             <td>Case When Not Matching or Clause</td>
         </tr>
         <tr>
@@ -266,7 +262,7 @@ Each section in this topic includes a list of issues fixed in each interim Splic
         <tr>
             <td>SPLICE-1900</td>
             <td><p>Incorrect error message while reading data from Empty external table of AVRO file format.</p>
-                <p class="noteIcon">This improvement has not been backported into release 2.5.1.</p>
+                <p class="noteIcon">This improvement has not been backported into release 2.5.</p>
             </td>
         </tr>
         <tr>
@@ -354,14 +350,6 @@ Each section in this topic includes a list of issues fixed in each interim Splic
     </thead>
     <tbody>
         <tr>
-            <td>SPLICE-865</td>
-            <td> Check if enterprise version is activated and if the user try to use column privileges.</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1784</td>
-            <td>Query does not scale on 4000 regions (2.5)</td>
-        </tr>
-        <tr>
             <td>SPLICE-1895</td>
             <td>Wait for wrap up before closing remote query client (2.5)</td>
         </tr>
@@ -415,10 +403,6 @@ Each section in this topic includes a list of issues fixed in each interim Splic
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>SPLICE-1784</td>
-            <td>Trying to do cutpoints again</td>
-        </tr>
         <tr>
             <td>SPLICE-1887</td>
             <td>Fix memory leak for merge join</td>
@@ -534,10 +518,6 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Adding Batch Writes to the dictionary</td>
         </tr>
         <tr>
-            <td>SPLICE-1294</td>
-            <td>Poor Costing when first part of PK is not =</td>
-        </tr>
-        <tr>
             <td>SPLICE-1320</td>
             <td>Fix Assertion Placement and Comment Out test to get build out</td>
         </tr>
@@ -610,20 +590,12 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Load jar file from S3</td>
         </tr>
         <tr>
-            <td>SPLICE-1395</td>
-            <td>Add a generic error message for import failure from S3</td>
-        </tr>
-        <tr>
             <td>SPLICE-1410</td>
             <td>Make the compilation of the pattern static</td>
         </tr>
         <tr>
             <td>SPLICE-1411</td>
             <td>Resolve over clause expr when alias from inner query is used in window fn</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1423</td>
-            <td>Add null check for bad file directory</td>
         </tr>
         <tr>
             <td>SPLICE-1424</td>
@@ -642,14 +614,6 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Fix drop pinned table</td>
         </tr>
         <tr>
-            <td>SPLICE-1438</td>
-            <td>Fix the explain plan issues</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1443</td>
-            <td>Add logging to debug "can't find subpartitions" exception</td>
-        </tr>
-        <tr>
             <td>SPLICE-1443</td>
             <td>Skip cutpoint that create empty partitions</td>
         </tr>
@@ -662,16 +626,8 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Make sure SpliceSpark.getContext/Session isn't misused</td>
         </tr>
         <tr>
-            <td>SPLICE-1452</td>
-            <td>Correct cardinality estimation when there is missing partition stats</td>
-        </tr>
-        <tr>
             <td>SPLICE-1453</td>
             <td>Fixing Calculating Stats on Array Types</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1461</td>
-            <td>Add null check on exception parsing</td>
         </tr>
         <tr>
             <td>SPLICE-1461</td>
@@ -688,22 +644,6 @@ Each section in this topic includes a list of issues fixed in each interim Splic
         <tr>
             <td>SPLICE-1464</td>
             <td>Bypass schema checking for csv file</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1469</td>
-            <td>Set hbase.rowlock.wait.duration to 0 to avoid deadlock</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1470</td>
-            <td>Make sure user transaction rollbacks on Spark failure</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1473</td>
-            <td>Allow user code to load com.splicemachine.db.iapi.error</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1478</td>
-            <td>Fixing Statement Limits</td>
         </tr>
         <tr>
             <td>SPLICE-1479</td>
@@ -730,28 +670,12 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Remove Array Copy for Key From Insert</td>
         </tr>
         <tr>
-            <td>SPLICE-1526</td>
-            <td>Handle CodecPool manually to avoid leaking memory</td>
-        </tr>
-        <tr>
             <td>SPLICE-1531</td>
             <td>Fixed ThreadLocal in AbstractTimeDescriptorSerializer</td>
         </tr>
         <tr>
-            <td>SPLICE-1533</td>
-            <td>Eliminate duplicates in the IN list</td>
-        </tr>
-        <tr>
-            <td><p>SPLICE-1541</p><p>SPLICE-1543</p></td>
-            <td>Fix IN-list issues with dynamic bindings and char column</td>
-        </tr>
-        <tr>
             <td>SPLICE-1550</td>
             <td>Recursive Init Calls</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1559</td>
-            <td>bulkImportDirectory is case sensitive</td>
         </tr>
         <tr>
             <td>SPLICE-1561</td>
@@ -766,36 +690,8 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Upgrade from 2.5 to 2.7</td>
         </tr>
         <tr>
-            <td>SPLICE-1582</td>
-            <td>Apply memory limit on consecutive broadcast joins</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1584</td>
-            <td>Fix IndexOutOfBound exception when not all column stats are collected and we try to access column stats for estimation.</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1586</td>
-            <td>Prevent NPE when Spark job fails</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1589</td>
-            <td>All transactions are processed by pre-created region 0</td>
-        </tr>
-        <tr>
             <td>SPLICE-1597</td>
             <td>Fix issue with cache dictionary when  SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER is called .</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1601</td>
-            <td>Fix wrong result for min/max/sum on empty table without groupby</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1609</td>
-            <td>Normalize row source for split_table_or_index procedure</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1611</td>
-            <td>TPC-C workload causes many prepared statement recompilations</td>
         </tr>
         <tr>
             <td>SPLICE-1613</td>
@@ -806,56 +702,8 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Fix select from partitioned orc table error</td>
         </tr>
         <tr>
-            <td>SPLICE-1622</td>
-            <td>Return only latest version for sequences</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1624</td>
-            <td>Load pipeline driver at RS startup</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1628</td>
-            <td>Don't raise exception if path doesn't exist</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1628</td>
-            <td>Parallelize hstore bulkLoad step in Spark</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1637</td>
-            <td>Enable compression for HFile gen in bulk loader</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1639</td>
-            <td>Fix NPE due to Spark static initialization missing</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1640</td>
-            <td>Apply memory limit check for consecutive outer broadcast join and derived tables</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1660</td>
-            <td>Delete Not Using Index Scan due to index columns being required for the scan.</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1675</td>
-            <td>Merge partition stats at the stats collection time</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1682</td>
-            <td>Perform accumulator check before txn resolution</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1684</td>
-            <td>Fix stats collection logic for ArrayIndexOutOfBoundsException in the presence of empty partition and some column stats disabled</td>
-        </tr>
-        <tr>
             <td>SPLICE-1690</td>
             <td>Merge statistics on Spark</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1696</td>
-            <td>Add ScanOperation and SplcieBaseOperation to Kryo</td>
         </tr>
         <tr>
             <td>SPLICE-1698</td>
@@ -890,10 +738,6 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Remove Constant Array Creation Style</td>
         </tr>
         <tr>
-            <td>SPLICE-1737</td>
-            <td>Fix value outside the range of the data type INTEGER error for analyze table statement.</td>
-        </tr>
-        <tr>
             <td>SPLICE-1744</td>
             <td>Removing Dictionary Check</td>
         </tr>
@@ -902,48 +746,12 @@ Each section in this topic includes a list of issues fixed in each interim Splic
             <td>Fixing Role Cache Usage</td>
         </tr>
         <tr>
-            <td>SPLICE-1749</td>
-            <td>Fix delete over nestedloop join</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1759</td>
-            <td>HBase Master generates 1.1GB/s of network bandwidth even when cluster is idle</td>
-        </tr>
-        <tr>
             <td>SPLICE-1769</td>
             <td>Improve distributed boot process</td>
         </tr>
         <tr>
             <td>SPLICE-1773</td>
             <td>Unifying the thread pools</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1781</td>
-            <td>Fixing Object Creation on IndexTransformFunction</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1784</td>
-            <td>Fixing Serial Cutpoint Generation</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1784</td>
-            <td>Query does not scale on 4000 regions</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1791</td>
-            <td>Make username's more specific to resolve concurrent conflicts</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1792</td>
-            <td>BroadcastJoinMemoryLimitIT must be executed serially</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1795</td>
-            <td>Fix NullPointerExeption for update with expression, and uncomment test case in HdfsImport related to this bug</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1798</td>
-            <td>Parallel Queries can fail on SPS Descriptor Update...</td>
         </tr>
         <tr>
             <td>SPLICE-1813</td>
@@ -1187,14 +995,6 @@ Each section in this topic includes a list of issues fixed in each interim Splic
         <tr>
             <td>SPLICE-774</td>
             <td>Wait for master to clear upgrade znode</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1023</td>
-            <td>add more info in the message for data import error</td>
-        </tr>
-        <tr>
-            <td>SPLICE-1098</td>
-            <td>prevent nonnull selectivity from being 0</td>
         </tr>
         <tr>
             <td>SPLICE-1294</td>
