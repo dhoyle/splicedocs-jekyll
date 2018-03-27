@@ -504,7 +504,7 @@ Each section in this topic includes a list of major new in each interim Splice M
     </tbody>
 </table>
 
-###  Splice Patch Release 2.5.0.1735 {#Patch1735}
+## Splice Patch Release 2.5.0.1735  06-Sep-17  {#Patch1735}
 <table summary="Summary of new features and changes in this release">
     <col width="125px" />
     <col />
