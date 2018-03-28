@@ -22,6 +22,8 @@ Splice Machine release 2.6 was an interim Release in September, 2017, which coin
 
 Each section in this topic includes a list of significant improvements in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
+* [Patch Release 2.5.0.1812](#Patch1812)
+* [Patch Release 2.5.0.1811](#Patch1811)
 * [Patch Release 2.5.0.1810](#Patch1810)
 * [Patch Release 2.5.0.1809](#Patch1809)
 * [Patch Release 2.5.0.1808](#Patch1808)
@@ -38,6 +40,54 @@ Each section in this topic includes a list of significant improvements in each i
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
 
+## 2.5.0.1812 Patch Release  24-Mar-18  {#Patch1812}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## 2.5.0.1811 Patch Release  17-Mar-18  {#Patch1811}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SPLICE-2096</td>
+            <td>Remove Role Scan Hit</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2104</td>
+            <td>Dictionary Scans Should Use HBase Small Scans vs. the network heavy regular scan.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2105</td>
+            <td>Throw exception if you attempt to delete or update a table without a primary key.</td>
+        </tr>
+        <tr>
+            <td>SPLICE-2109</td>
+            <td>Add log message in a finally clause to indicate the vacuum job is complete.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## 2.5.0.1810 Patch Release  10-Mar-18  {#Patch1810}
 <table>
