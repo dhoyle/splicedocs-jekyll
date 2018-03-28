@@ -23,10 +23,12 @@ folder: /
             {% endif %}
         {% elsif site.build_type == "Docstest" %}
             <p>This web contains the current internal documentation for <strong>version {{site.build_version}}</strong> of Splice Machine.</p>
+            {% if site.build_version == "2.7" %}
             <p>If you're using an earlier version, you can find the documentation in these locations:</p>
             <ul>
                 <li><a href="https://docstest.splicemachine.com/2.5/index.html" target="_blank">Splice Machine Version 2.5 Documentation.</a></li>
             </ul>
+            {% endif %}
         {% else %}
             <p>This web contains the current internal documentation for <strong>version {{site.build_version}}</strong> of Splice Machine.</p>
             <p class="noteIcon">This <em>Internal Development Version</em> of our documentation <strong>DOES NOT</strong> include Search. You must use the top-menu and sidebar navigation to find topics.</p>

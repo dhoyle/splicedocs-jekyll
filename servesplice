@@ -4,7 +4,8 @@ isprev=
 PS3="Select which Docs Version to build: "
 COLUMNS=12
 OPTIONS=( 'DocsDev'
-          'DocsTest'
+          'DocsTest 2.7'
+          'DocsTest 2.5'
           'Doc 2.7'
           'Doc 2.5' )
 select opt in "${OPTIONS[@]}"; do
@@ -15,10 +16,16 @@ select opt in "${OPTIONS[@]}"; do
             smap='sitemapgen'
             break;
             ;;
-        'DocsTest')
+        'DocsTest 2.7')
             version='docstest'
             branch='2.7'
             smap='sitemapgen'
+            break;
+            ;;
+        'DocsTest 2.5')
+            version='docstest'
+            branch='2.5'
+            smap='sitemapgen.2.5'
             break;
             ;;
         'Doc 2.7')

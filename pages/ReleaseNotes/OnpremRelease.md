@@ -36,7 +36,6 @@ The supported platforms for release {{site.build_version}} are:
 
 
 {% if site.build_version == "2.7" %}
-blah
 * Cloudera CDH 5.13.2, 5.12.0
 {% else %}
 * Cloudera CDH 5.13.2, 5.12.0, 5.8.3
