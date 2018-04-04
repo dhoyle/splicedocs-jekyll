@@ -73,19 +73,19 @@ If you are running heavy analytical loads or running OLAP jobs on very large tab
     <thead>
         <tr>
             <th>Property</th>
-            <th>Default Value</th>
+            <th>Default Value (MB)</th>
             <th>Recommendations for Heavy Analytical Loads</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="CodeFont">splice.olap_server.memory</td>
-            <td>1 GB</td>
+            <td>1024</td>
             <td>Set to the same value as HMaster heap size</td>
         </tr>
         <tr>
             <td class="CodeFont">splice.olap_server.memoryOverhead</td>
-            <td>512 MB</td>
+            <td>512</td>
             <td>Set to 10% of <span class="CodeFont">splice.olap_server.memory</span></td>
         </tr>
         <tr>
