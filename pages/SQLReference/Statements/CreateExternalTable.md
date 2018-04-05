@@ -163,12 +163,11 @@ This example creates an external table for a `PARQUET` file:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
-    splice> CREATE EXTERNAL TABLE myParquetTable(
-                        col1 INT, col2 VARCHAR(24))
+    splice> CREATE EXTERNAL TABLE myParquetTable
+                        (col1 INT, col2 VARCHAR(24))
                         PARTITIONED BY (col1)
                         STORED AS PARQUET
-                        LOCATION '/users/myName/myParquetFile'
-            );
+                        LOCATION '/users/myName/myParquetFile';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
@@ -176,12 +175,11 @@ This example creates an external table for an `AVRO` file:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE myAvroTable(
-                        col1 INT, col2 VARCHAR(24))
+    splice> CREATE EXTERNAL TABLE myAvroTable
+                        (col1 INT, col2 VARCHAR(24))
                         PARTITIONED BY (col1)
                         STORED AS AVRO
-                        LOCATION '/users/myName/myAvroFile'
-            );
+                        LOCATION '/users/myName/myAvroFile';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
@@ -191,12 +189,11 @@ data into it:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE myOrcTable(
-                        col1 INT, col2 VARCHAR(24))
+    splice> CREATE EXTERNAL TABLE myOrcTable
+                        (col1 INT, col2 VARCHAR(24))
                         PARTITIONED BY (col1)
                         STORED AS ORC
-                        LOCATION '/users/myName/myOrcFile'
-            );
+                        LOCATION '/users/myName/myOrcFile';
     0 rows inserted/updated/deleted
     splice> INSERT INTO myOrcTable VALUES (1, 'One'), (2, 'Two'), (3, 'Three');
     3 rows inserted/updated/deleted
@@ -212,16 +209,15 @@ This example creates an external table for a plain text file:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE myTextTable(
-                        col1 INT, col2 VARCHAR(24))
+    splice> CREATE EXTERNAL TABLE myTextTable
+                        (col1 INT, col2 VARCHAR(24))
                         PARTITIONED BY (col1)
                         ROW FORMAT DELIMITED FIELDS
                         TERMINATED BY ','
                         ESCAPED BY '\\' 
                         LINES TERMINATED BY '\\n'
                         STORED AS TEXTFILE
-                        LOCATION '/users/myName/myTextFile'
-            );
+                        LOCATION '/users/myName/myTextFile';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
@@ -231,13 +227,12 @@ compressed with Snappy compression:
 {: .body}
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE mySnappyParquetTable(
-                        col1 INT, col2 VARCHAR(24))
+    splice> CREATE EXTERNAL TABLE mySnappyParquetTable
+                        (col1 INT, col2 VARCHAR(24))
                         COMPRESSED WITH SNAPPY
                         PARTITIONED BY (col1)
                         STORED AS PARQUET
-                        LOCATION '/users/myName/mySnappyParquetFile'
-    );
+                        LOCATION '/users/myName/mySnappyParquetFile';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
