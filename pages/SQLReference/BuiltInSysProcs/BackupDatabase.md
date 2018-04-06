@@ -100,10 +100,6 @@ If you're performing incremental backups, you _must_ add the following options t
 {: .AppCommand}
 </div>
 
-### Incremental Backups and Bulk HFile Imports {#UsageBulk}
-
-Our incremental backup feature does not currently capture data loaded via the Bulk HFile Import ([`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)) mechanism. After you restore from an incremental backup, you must re-run bulk imports to bring the database to the state it was in when up.
-
 ### Temporary Tables and Backups {#UsageTemp}
 
 There's a subtle issue with performing a backup when you're using a

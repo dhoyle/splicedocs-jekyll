@@ -113,10 +113,6 @@ If you're performing incremental backups, you _must_ add the following options t
 {: .AppCommand}
 </div>
 
-### Current Restriction/Workaround
-
-Our incremental backup feature does not currently capture data loaded via the Bulk HFile Import ([`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)) mechanism. After you restore from an incremental backup, you must re-run bulk imports to bring the database to the state it was in when up.
-
 ## Using the Backup Operations   {#Using}
 
 This section summarizes and provides examples of using the Splice

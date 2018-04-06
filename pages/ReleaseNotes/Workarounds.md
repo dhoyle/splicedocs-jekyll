@@ -16,8 +16,6 @@ This topic describes workarounds for known limitations in this Release of the Sp
 
 These are the notes and workarounds for known issues in this release:
 
-* [Incremental Backup and Bulk HFile Import Issues](#incremental-backup-and-bulk-hfile-import-issues)
-
 * [With Clauses and Temporary Tables](#with-clauses-and-temporary-tables)
 
 * [Temporary Tables and Backups](#temporary-tables-and-backups)
@@ -41,11 +39,6 @@ These are the notes and workarounds for known issues in this release:
 * [CREATE TABLE AS with RIGHT OUTER JOIN](#create-table-as-with-right-outer-join)
 
 * [Import Performance Issues With Many Foreign Key References](#import-performance-issues-with-many-foreign-key-references)
-
-
-## Incremental Backup and Bulk HFile Import Issues {#incremental-backup-and-bulk-hfile-import-issues}
-
-Our incremental backup feature does not currently capture data loaded via the Bulk HFile Import ([`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)) mechanism. After you restore from an incremental backup, you must re-run bulk imports to bring the database to the state it was in when you backed up.
 
 ## With Clauses and Temporary Tables
 
