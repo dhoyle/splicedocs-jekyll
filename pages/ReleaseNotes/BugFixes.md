@@ -22,6 +22,7 @@ Splice Machine Release 2.6 was an interim release in September, 2017, which coin
 
 Each section in this topic includes a list of issues fixed in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
+* [Patch Release 2.5.0.1813](#Patch1813)
 * [Patch Release 2.5.0.1812](#Patch1812)
 * [Patch Release 2.5.0.1811](#Patch1811)
 * [Patch Release 2.5.0.1810](#Patch1810)
@@ -39,6 +40,52 @@ Each section in this topic includes a list of issues fixed in each interim Splic
 * [Patch Release 2.5.0.1745](#Patch1745)
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
+
+## 2.5.0.1813 Patch Release  01-Apr-18  {#Patch1813}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr>
+             <td>Internal</td>
+             <td>Incremental backup for bulk import</td>
+         </tr>
+         <tr>
+             <td>Internal</td>
+             <td>Fix HFile import logging </td>
+         </tr>
+         <tr>
+             <td>Internal</td>
+             <td>Handling Throwable SQLException  </td>
+         </tr>
+         <tr>
+             <td>Internal</td>
+             <td>Cache region partition info</td>
+         </tr>
+         <tr>
+             <td>Internal</td>
+             <td>Fix NPE when calling system functions from a user without default schema </td>
+         </tr>
+         <tr>
+             <td>Internal</td>
+             <td>Remove clear text sensitive information </td>
+         </tr>
+         <tr>
+             <td>Internal</td>
+             <td>Set hbase.rootdir in all platforms </td>
+         </tr>
+         <tr>
+             <td>Internal</td>
+             <td>properly compute the referencd columns for index lookup operation  </td>
+         </tr>
+    </tbody>
+</table>
 
 ## 2.5.0.1812 Patch Release  24-Mar-18  {#Patch1812}
 <table>
