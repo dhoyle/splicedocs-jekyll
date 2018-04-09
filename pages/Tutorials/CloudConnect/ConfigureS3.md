@@ -82,7 +82,7 @@ You can follow these steps to configure access to your S3 bucket(s) for Splice 
 
         <div class="preWrapperWide" markdown="1">
             {
-                "Version": "2017-04-17",
+                "Version": "2012-10-17",
                 "Statement": [
                     {
                         "Effect": "Allow",
