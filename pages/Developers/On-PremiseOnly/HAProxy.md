@@ -49,8 +49,10 @@ Follow these steps:
     <div class="preWrapper" markdown="1">
         # yum install haproxy
     {: .ShellCommand}
-
     </div>
+
+    You may use a different `haproxy` package, depending on which Linux distribution you're using.
+    {: .noteNote}
 
 2.  Configure the `/etc/haproxy/haproxy.cfg` file, following the
     comments in the sample file below:
@@ -63,8 +65,7 @@ Follow these steps:
     the region server that has the least number of connections; thus,
     the client JDBC URL should point to `<haproxy_host>:1527`.
 
-    The HAProxy manual describes other balancing algorithms that you can
-    use.
+    The example below uses the *least connections* load-balancing algorithm. There are other load balancing algorithms, such as round robin, that can also be used, depending on the nature of your desired workload distribution.
     {: .noteNote}
 
     Here is the `haproxy.cfg` file for this example:
