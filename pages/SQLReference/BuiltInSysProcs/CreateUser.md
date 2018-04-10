@@ -18,18 +18,6 @@ account to a database.
 
 This procedure creates users for use with NATIVE authentication.
 
-If NATIVE authentication is not already turned on when you call this
-procedure:
-
-* {: style="margin-bottom:8px" value="1"} The first user whose credentials are stored must be the database
-  owner.
-* {: style="margin-bottom:8px" value="2"} Calling this procedure will turn on NATIVE authentication the next
-  time the database is booted.
-
-Once you turn on NATIVE authentication with this procedure, it remains
-turned on permanently. There is no way to turn it off.
-{: .noteIcon}
-
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
@@ -87,7 +75,7 @@ schema named `fred` is now active:
     1
     ------------------------------------------------------------------
     FRED
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 

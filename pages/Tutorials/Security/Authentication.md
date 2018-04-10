@@ -19,6 +19,9 @@ in these sections:
 
 * [Supported Authentication Mechanisms](#Supporte)
 * [Configuring Authentication](#Configur)
+* [Using Native Authentication](#Using)
+* [Using KERBEROS Authentication](#UsingKerb)
+* [Using LDAP Authentication](#Using2)
 
 <div markdown="1">
 ## Supported Authentication Mechanisms   {#Supporte}
@@ -62,6 +65,7 @@ which is described below the table:
         </tr>
     </tbody>
 </table>
+
 ## Configuring Authentication   {#Configur}
 
 You configure Splice Machine authentication by adding or updating
@@ -71,9 +75,6 @@ whenever you want. This section contains the following subsections:
 
 * [Locating Your Configuration File](#Locating)
 * [Disabling Authentication](#Disablin)
-* [Using Native Authentication](#Using)
-* [Using KERBEROS Authentication](#UsingKerb)
-* [Using LDAP Authentication](#Using2)
 
 ### Locating Your Configuration File   {#Locating}
 
@@ -143,7 +144,8 @@ follows:
 {: .ExampleCell xml:space="preserve"}
 
 </div>
-### Using Native Authentication   {#Using}
+
+## Using Native Authentication   {#Using}
 
 Native authentication is the default mechanism for Splice Machine; you
 don't need to modify your configuration if you wish to use it. Native
@@ -169,7 +171,7 @@ You can use `MD5`, `SHA-256`, or `SHA-512` for the value of the <span
 class="HighlightedCode">native.algorithm</span> property; `SHA-512` is
 the default value.
 
-#### Switching to Native Authentication
+### Switching to Native Authentication
 
 If you are switching your authentication from to `Native` authentication
 from another mechanism (including `NONE`), there's one additional step
@@ -185,7 +187,8 @@ configuration file:
 {: .Example}
 
 </div>
-### Using KERBEROS Authentication   {#UsingKerb}
+
+## Using KERBEROS Authentication   {#UsingKerb}
 
 Kerberos authentication in Splice Machine uses an external KDC server. Follow these steps to enable Kerberos authentication:
 
@@ -258,7 +261,7 @@ Kerberos authentication in Splice Machine uses an external KDC server. Follow th
    </div>
 </div>
 
-### Using LDAP Authentication   {#Using2}
+## Using LDAP Authentication   {#Using2}
 
 LDAP authentication in Splice Machine uses an external LDAP server.
 
@@ -284,7 +287,7 @@ To use LDAP with Splice Machine, you must:
 * Add the Splice Machine LDAP properties in your HBase configuration
   file, along with the license key property. Note that you may need to set `splice.authentication` properties in both service and client HBase configuration files:
 
-#### LDAP Property Settings
+### LDAP Property Settings
 
 These are the property settings you need to configure:
 
@@ -344,7 +347,46 @@ Notes about the LDAP property values:
   user while searching for a user DN
 {: .bullet}
 
-#### Connecting with JDBC and LDAP
+### Authenticating With an LDAP Group
+To use a LDAP GROUP, you must create a Splice Machine database user for that group. You can then assign privileges to that user, and everyone belonging to the LDAP GROUP will gain those privileges.
+
+For example, given an LDAP GROUP named `test_devel`:
+
+<div class="preWrapperWide" markdown="1"><pre>
+splice> call syscs_util.syscs_create_user('test_devel', 'test_devel');
+Statement executed.
+splice> create schema test_devel_schema;
+0 rows inserted/updated/deleted
+splice> create role test_devel_role;
+0 rows inserted/updated/deleted
+splice> grant all privileges on schema test_devel_schema to test_devel_role;
+0 rows inserted/updated/deleted
+splice> grant cdl_devl_role to test_devel;
+0 rows inserted/updated/deleted</pre>
+{: .Example}
+</div>
+
+Now we can connect as user `testuser`, who belongs to the `test_devel` LDAP Group:
+
+<div class="preWrapperWide" markdown="1"><pre>
+splice> connect 'jdbc:splice://localhost:1527/splicedb;user=testuser;password=testpswd';
+splice> create table test_devel_schema.t1(a int);
+0 rows inserted/updated/deleted
+splice> insert into test_devel_schema.t1 values (10), (20), (30);
+3 rows inserted/updated/deleted
+splice> select * from test_devel_schema.t1;
+A
+-----------
+10
+20
+30
+
+3 rows selected</pre>
+{: .Example}
+</div>
+
+
+### Connecting with JDBC and LDAP
 
 You can then use our JDBC driver to connect to your database with
 LDAP authentication, using a connection string similar to this:
