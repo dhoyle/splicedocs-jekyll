@@ -22,6 +22,7 @@ Splice Machine Release 2.6 was an interim release in September, 2017, which coin
 
 Each section in this topic includes a list of issues fixed in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
+* [Patch Release 2.5.0.1814](#Patch1814)
 * [Patch Release 2.5.0.1813](#Patch1813)
 * [Patch Release 2.5.0.1812](#Patch1812)
 * [Patch Release 2.5.0.1811](#Patch1811)
@@ -41,7 +42,29 @@ Each section in this topic includes a list of issues fixed in each interim Splic
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
 
-## 2.5.0.1813 Patch Release  01-Apr-18  {#Patch1813}
+## 2.5.0.1814 Patch Release  06-Apr-18  {#Patch1814}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr>
+             <td>Internal</td>
+             <td>Set Max Dependent and Independent write threads directly</td>
+         </tr>
+         <tr>
+             <td>SPLICE-2134</td>
+             <td>Fixing Column Sequencing for views, issue shows up with column level permissions on views </td>
+         </tr>
+    </tbody>
+</table>
+
+## 2.5.0.1813 Patch Release  31-Mar-18  {#Patch1813}
 <table>
     <col width="125px" />
     <col />
