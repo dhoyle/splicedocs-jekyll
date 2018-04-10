@@ -683,11 +683,7 @@ if (SpliceContext.tableExists(Splice MachineTableName)) {
 
 ## Examples of Using the Spark Adapter in Zeppelin Notebooks {#zepexamples}
 
-The examples in this section show how to use the adapter using the `%spark` and `%splicemachine` Zeppelin interpreters in a Zeppelin notebook.
-
-### Creating a Splice Machine Table from Spark
-
-This example shows you how to use the Spark Adapter to create a simple Splice Machine database table, and then access and modify that table.
+This example in this section shows you how to use the Spark Adapter in an Apache Zeppelin notebook. We use the `%spark` and `%splicemachine` Zeppelin interpreters to create a simple Splice Machine database table, and then access and modify that table.
 
 ### Setting Up the Splice Machine Adapter
 <div class="preMarkerWide" markdown="1"><pre>
@@ -774,17 +770,6 @@ if (SpliceContext.tableExists("SPLICE.CARSTBL")) {
 {: .Example}
 </div>
 
-
-### Example of Streaming Data with the Adapter
-
-Suppose you want to stream real-time data that's brokered by Kafka into a database table. All you need to do in your code is:
-
-1. Subscribe to the Kafka feed.
-2. Instantiate a Splice Spark Adapter (`SplicemachineContext`) object that connects to your database via JDBC.
-3. Use Spark to read the stream and convert it into a DataFrame.
-4. Use the `.insert` method of your adapter object to insert the data into your table.
-
-TBD
 
 </div>
 </section>
