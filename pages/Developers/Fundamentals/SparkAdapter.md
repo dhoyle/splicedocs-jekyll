@@ -36,7 +36,10 @@ To use the adapter, you must:
 
 2. Make sure that each user who is going to use the Splice Machine Spark Adapter has `execute` permission on the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` system procedure.
 
-   Use this `splice>` command:
+   `SYSCS_UTIL.SYSCS_HDFS_OPERATION` is a Splice Machine system procedure that is used internally to efficiently perform direct HDFS operations. This procedure *is not documented* because it is intended only for use by the Splice Machine code itself; however, the Spark Adapter uses it, so any user of the Adapter must have permission to execute the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` procedure.
+   {: .noteIcon}
+
+   Here's an example of granting `execute` permission for two users:
    <div class="preWrapperWide" markdown="1">
        splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to someuser;
        0 rows inserted/updated/deleted

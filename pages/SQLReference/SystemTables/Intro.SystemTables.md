@@ -201,71 +201,71 @@ These are the System Tables with database permissions information:
             </table>
 ## Database Statistics Tables
 
-These are the System Tables with database statistics information:
+These are the System Tables and Views with database statistics information:
 
-<table summary="Summary table with links to and descriptions of system statistics tables">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>System Table</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSCOLUMNSTATISTICS</a>
-                        </td>
-                        <td>Statistics gathered for each column in each table.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSTABLESTATISTICS</a>
-                        </td>
-                        <td>Describes the statistics for each table within the current
-		database.</td>
-                    </tr>
-                </tbody>
-            </table>
+<table summary="Summary table with links to and descriptions of system statistics tables/views">
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>System Table/View</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSCOLUMNSTATISTICS</a>
+            </td>
+            <td>Statistics gathered for each column in each table.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSTABLESTATISTICS</a>
+            </td>
+            <td>Describes the statistics for each table within the current
+database.</td>
+        </tr>
+    </tbody>
+</table>
 ## System Information Tables
 
 These are the System Tables with system information:
 
 <table summary="Summary table with links to and descriptions of system information tables">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>System Table</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_systables_sysconglomerates.html">SYSCONGLOMERATES</a>
-                        </td>
-                        <td>Describes the conglomerates
-			within the current database. A conglomerate is a unit of storage and
-		is either a table or an index.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_systables_sysfiles.html">SYSFILES</a>
-                        </td>
-                        <td>Describes jar files stored in the
-		database.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_systables_sysstatements.html">SYSSTATEMENTS</a>
-                        </td>
-                        <td>Describes the prepared statements in
-		the database.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_systables_sysusers.html">SYSUSERS</a>
-                        </td>
-                        <td>Stores user credentials when NATIVE authentication
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>System Table</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="sqlref_systables_sysconglomerates.html">SYSCONGLOMERATES</a>
+            </td>
+            <td>Describes the conglomerates
+within the current database. A conglomerate is a unit of storage and
+is either a table or an index.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="sqlref_systables_sysfiles.html">SYSFILES</a>
+            </td>
+            <td>Describes jar files stored in the
+database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="sqlref_systables_sysstatements.html">SYSSTATEMENTS</a>
+            </td>
+            <td>Describes the prepared statements in
+the database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="sqlref_systables_sysusers.html">SYSUSERS</a>
+            </td>
+            <td>Stores user credentials when NATIVE authentication
 is enabled.</td>
-                    </tr>
-                </tbody>
-            </table>
+        </tr>
+    </tbody>
+</table>
 </div>
 </section>

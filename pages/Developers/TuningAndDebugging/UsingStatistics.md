@@ -92,9 +92,9 @@ certain columns by running the
 [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html) built-in
 system procedure:
 
-<div class="fcnWrapperWide" markdown="1">
+<div class="preWrapperWide" markdown="1">
     SYSCS_UTIL.DISABLE_COLUMN_STATISTICS( schema, table, column);
-{: .FcnSyntax style="text-indent: 0.5in;"}
+{: .FcnSyntax}
 
 </div>
 Splice Machine strongly recommends that you *always* collect statistics
@@ -191,10 +191,10 @@ Splice Machine provides two system tables you can query to view the
 statistics that have been collected for your database:
 
 * Query the &nbsp;[`SYSTABLESTATISTICS System
-  Table`](sqlref_systables_systablestats.html) to view statistics for
+  View`](sqlref_systables_systablestats.html) to view statistics for
   specific tables
 * Query the &nbsp;[`SYSCOLUMNSTATISTICS System
-  Table`](sqlref_systables_syscolumnstats.html) to view statistics for
+  View`](sqlref_systables_syscolumnstats.html) to view statistics for
   specific table columns
 
 ## See Also
@@ -205,8 +205,8 @@ statistics that have been collected for your database:
 * [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html)
 * [`SYSCS_UTIL.DROP_SCHEMA_STATISTICS`](sqlref_sysprocs_dropschemastats.html)
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
-* [`SYSCOLUMNSTATISTICS System Table`](sqlref_systables_syscolumnstats.html)
-* [`SYSTABLESTATISTICS System Table`](sqlref_systables_systablestats.html)
+* [`SYSCOLUMNSTATISTICS System View`](sqlref_systables_syscolumnstats.html)
+* [`SYSTABLESTATISTICS System View`](sqlref_systables_systablestats.html)
 
 </div>
 </section>
