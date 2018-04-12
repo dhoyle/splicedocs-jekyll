@@ -29,7 +29,11 @@ Our installation instructions for Splice Machine are now being maintained in our
     </thead>
     <tbody>
         <tr>
-            <td rowspan="6"><strong>2.7</strong></td>
+            <td rowspan="7"><strong>2.7</strong></td>
+            <td>CDH 5.14.0</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
+        </tr>
+        <tr>
             <td>CDH 5.13.2</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.2/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.2/docs/CDH-installation.md</a></td>
         </tr>
@@ -54,7 +58,11 @@ Our installation instructions for Splice Machine are now being maintained in our
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md</a></td>
         </tr>
         <tr>
-            <td rowspan="7"><strong>2.5</strong></td>
+            <td rowspan="8"><strong>2.5</strong></td>
+            <td>CDH 5.14.0</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
+        </tr>
+        <tr>
             <td>CDH 5.13.2</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.2/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.2/docs/CDH-installation.md</a></td>
         </tr>
