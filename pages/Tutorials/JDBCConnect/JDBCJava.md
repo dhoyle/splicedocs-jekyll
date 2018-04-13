@@ -42,18 +42,24 @@ This section walks you through compiling and running the
     <div class="PreWrapperWide" markdown="1">
         /splicemachine/jdbc-driver/{{splvar_location_JDBCDriverJar260}}
     {: .Example}
-
     </div>
 
-    \- or -
+    You can also download the latest JDBC Driver from:
+    {: .topLevel}
 
+{% if site.build_version == "2.7" %}
     <div class="PreWrapperWide" markdown="1">
-        /splicemachine/jdbc-driver/{{splvar_jdbc_jarV250}}
+        {{splvar_jdbc_jarV270}}
     {: .Example}
-
     </div>
+{% else %}
+    <div class="PreWrapperWide" markdown="1">
+        {{splvar_jdbc_jarV250}}
+    {: .Example}
+    </div>
+{% endif %}
 
-    The build number, e.g. `1729`, varies with each Splice Machine
+    The build number, e.g. `1814`, varies with each Splice Machine
     software update.
     {: .noteNote}
 

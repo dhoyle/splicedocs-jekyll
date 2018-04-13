@@ -269,7 +269,7 @@ computer:
     {: .indentLevel1}
 
     <div class="preWrapper" markdown="1">
-        splice_odbc_64-1.0.28.0.x86_64.tar.gz
+        splice_odbc_linux64-<version>.tar.gz
     {: .Plain}
 
     </div>
@@ -282,12 +282,12 @@ computer:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        tar xzf splice_odbc_64-<version>.x86_64.tar.gz
+        tar xzf splice_odbc_linux64-<version>.tar.gz
     {: .ShellCommand}
 
     </div>
 
-    This creates a directory named `splice_odbc_64-<version>`.
+    This creates a directory named `splice_odbc_64`.
     {: .indentLevel1}
 
 4.  Install the driver:
@@ -526,7 +526,7 @@ Our MacOS ODBC driver is currently in Beta release.
     {: .indentLevel1}
 
     <div class="preWrapper" markdown="1">
-        splice_odbc_64_macosx64-2.5-45.0.tar.gz
+        splice_odbc_64_macosx64-2.5-51.0.tar.gz
     {: .Plain}
 
     </div>
@@ -539,7 +539,7 @@ Our MacOS ODBC driver is currently in Beta release.
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        tar -xzf splice_odbc_64_macosx64-<version>.tar.gz
+        tar -xzf splice_odbc_macosx64-<version>.tar.gz
     {: .ShellCommand}
 
     </div>
