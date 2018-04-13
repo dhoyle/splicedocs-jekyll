@@ -15,9 +15,9 @@ folder: ReleaseNotes
 
 The Splice Machine database is used in both our Database-Service and On-Premise Database products.
 
-This page describes the major new features added to the Splice Machine database since the 2.5 GA Release of Splice Machine. With the exception of a few features note in the [New Features Only Available in v2.7 section](#Only27) below, all of these features have added to both the 2.7 and 2.5 Releases of the Splice Machine database.
+This page describes the major new features added to the Splice Machine database since the original 2.5 GA Release of Splice Machine, in March, 2017.
 
-Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into both the 2.7 and 2.5 Releases of the Splice Machine database.
+Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into  the 2.7 Release of the Splice Machine database.
 {: .noteIcon}
 
 ## New Features Only Available in Splice Machine Release 2.7  {#Only27}
