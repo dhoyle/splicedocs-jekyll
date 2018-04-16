@@ -34,13 +34,7 @@ CALL <a href="sqlref_sysprocs_emptycache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_
 ## Supported Platforms {#supported-platforms}
 The supported platforms for release {{site.build_version}} are:
 
-
-{% if site.build_version == "2.7" %}
-* Cloudera CDH 5.13.2, 5.12.0
-{% else %}
-* Cloudera CDH 5.13.2, 5.12.0, 5.8.3
-{% endif %}
-
+* {{splvar_requirements_CDH-Versions}}
 * MapR 5.2.0
 * HortonWorks HDP 2.6.3, 2.5.5
 
