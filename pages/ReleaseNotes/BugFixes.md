@@ -17,7 +17,7 @@ The Splice Machine database is used in both our Database-Service and On-Premise 
 
 This page describes all of the issues that have been fixed in the Splice Machine database since the original 2.5 GA Release of Splice Machine, in March, 2017.
 
-Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have also been incorporated into  the 2.7 Release of the Splice Machine database.
+Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have been incorporated into the 2.7 Release of the Splice Machine database.
 {: .noteIcon}
 
 Each section in this topic includes a list of issues fixed in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.

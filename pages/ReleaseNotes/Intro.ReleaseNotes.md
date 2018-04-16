@@ -50,7 +50,7 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
     </tbody>
 </table>
 
-Most of the features incorporated into the release 2.7 of Splice Machine have also been backported into version 2.5. The documentation and release notes for v2.5 are found here: <a href="https://doc.splicemachine.com/2.5" target="_blank">https://doc.splicemachine.com/2.5</a>.
+Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have been incorporated into the 2.7 Release of the Splice Machine database.
 {: .noteIcon}
 
 The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
