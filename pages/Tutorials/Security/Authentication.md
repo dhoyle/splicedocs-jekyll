@@ -309,7 +309,7 @@ These are the property settings you need to configure:
        <value><cn=commonName,ou=Users,dc=yourcompany,dc=com></value>
     </property>
     <property>
-       <name>splice.authentication.ldap.searchAuthPW</name>
+       <name>splice.authentication.ldap.searchAuth.password</name>
        <value><yourpassword</span></value>
     </property>
     <property>
@@ -337,7 +337,7 @@ Notes about the LDAP property values:
   * The `cn=` is the *common name* of the security principal.
   {: .bullet}
 
-* The <span class="HighlightedCode">ldap.searchAuthPW</span> property
+* The <span class="HighlightedCode">ldap.searchAuth.password</span> property
   specifies password Splice Machine should use to perform the DN search.
 * The <span class="HighlightedCode">ldap.searchBase</span> property
   specifies the root DN of the point in your hierarchy from which to
