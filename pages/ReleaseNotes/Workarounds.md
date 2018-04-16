@@ -38,6 +38,8 @@ These are the notes and workarounds for known issues in this release:
 
 * [CREATE TABLE AS with RIGHT OUTER JOIN](#create-table-as-with-right-outer-join)
 
+* [Importing Data with SYSCS_IMPORT_DATA from Amazon S3](#ImportFromS3)
+
 * [Import Performance Issues With Many Foreign Key References](#import-performance-issues-with-many-foreign-key-references)
 
 ## With Clauses and Temporary Tables
@@ -127,6 +129,16 @@ INSERT INTO t3
    FROM t1 RIGHT OUTER JOIN t2 ON t1.b = t2.c;
 ~~~
 
+## Importing Data with SYSCS_IMPORT_DATA from Amazon S3 {#ImportFromS3}
+
+When using the <a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a> system procedure to import data from S3, you currently need to add this custom setting to your `hdfs-site.xml` file:
+
+````
+    fs.s3a.impl=com.splicemachine.fs.s3.PrestoS3FileSystem
+````
+
+This may impact non-SpliceMachine services or applications that rely on an implementation other than the Presto implementation; for example, `org.apache.hadoop.fs.s3a.S3AFileSystem`.
+{: .noteNote}
 
 ## Import Performance Issues With Many Foreign Key References
 
