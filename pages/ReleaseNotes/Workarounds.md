@@ -35,7 +35,6 @@ These are the notes and workarounds for known issues in this release:
 * [LDAP Authentication Property Issue](#LDAPPropIssue)
 {% endif %}
 
-If you're using Splice Machine
 ## With Clauses and Temporary Tables
 
 You cannot currently use temporary tables in ``WITH`` clauses.
