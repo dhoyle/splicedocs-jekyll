@@ -40,7 +40,7 @@ This section walks you through compiling and running the
     {: .indentLevel1}
 
     <div class="PreWrapperWide" markdown="1">
-        /splicemachine/jdbc-driver/{{splvar_location_JDBCDriverJar260}}
+        /splicemachine/jdbc-driver{{splvar_jdbc_jarloc}}
     {: .Example}
     </div>
 
