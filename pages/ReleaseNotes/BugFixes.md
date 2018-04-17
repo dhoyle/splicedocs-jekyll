@@ -22,8 +22,8 @@ Splice Machine Release 2.6 was an interim release in September, 2017, which coin
 
 Each section in this topic includes a list of issues fixed in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
-* [Patch Release 2.7.0.1815](#Patch1815)
-* [Patch Release 2.7.0.1814](#Patch1814)
+* [GA Release 2.7.0.1815](#Patch1815)
+* [GA Release Candidate 2.7.0.1814](#Patch1814)
 * [Patch Release 2.5.0.1813](#Patch1813)
 * [Patch Release 2.5.0.1812](#Patch1812)
 * [Patch Release 2.5.0.1811](#Patch1811)
@@ -43,7 +43,7 @@ Each section in this topic includes a list of issues fixed in each interim Splic
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
 
-## 2.7.0.1815 Patch Release  14-Apr-18  {#Patch1815}
+## GA Release 2.7.0.1815  14-Apr-18  {#Patch1815}
 <table>
     <col width="125px" />
     <col />
@@ -81,7 +81,7 @@ Each section in this topic includes a list of issues fixed in each interim Splic
     </tbody>
 </table>
 
-## 2.7.0.1814 Patch Release  06-Apr-18  {#Patch1814}
+## GA Release Candidate 2.7.0.1814  06-Apr-18  {#Patch1814}
 <table>
     <col width="125px" />
     <col />

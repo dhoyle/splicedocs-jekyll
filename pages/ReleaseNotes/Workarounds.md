@@ -17,31 +17,25 @@ This topic describes workarounds for known limitations in this Release of the Sp
 These are the notes and workarounds for known issues in this release:
 
 * [With Clauses and Temporary Tables](#with-clauses-and-temporary-tables)
-
 * [Temporary Tables and Backups](#temporary-tables-and-backups)
-
 * [Natural Self Joins Not Supported](#natural-self-joins-not-supported)
-
 * [Columnar Screen Output Gets Truncated](#columnar-screen-output-gets-truncated)
-
 * [TimeStamp Date Value Limitations](#timestamp-date-value-limitations)
-
 * [ToDate Function Problem With DD Designator](#todate-function-problem-with-dd-designator)
-
 * [Dropping Foreign Keys](#dropping-foreign-keys)
-
 * [Compaction Queue Issue](#compaction-queue-issue)
-
 * [Alter Table Issues](#alter-table-issues)
-
 * [Default Value for Lead and Lag Functions](#default-value-for-lead-and-lag-functions)
-
 * [CREATE TABLE AS with RIGHT OUTER JOIN](#create-table-as-with-right-outer-join)
-
-* [Importing Data with SYSCS_IMPORT_DATA from Amazon S3](#ImportFromS3)
-
 * [Import Performance Issues With Many Foreign Key References](#import-performance-issues-with-many-foreign-key-references)
+{% if site.build_version == "2.7" %}
+* [Importing Data with SYSCS_IMPORT_DATA from Amazon S3](#ImportFromS3)
+* [HDP 2.6.3 OLAP Memory Setting](#HDPOLAPMem)
+{% elsif site.build_version == "2.5" %}
+* [LDAP Authentication Property Issue](#LDAPPropIssue)
+{% endif %}
 
+If you're using Splice Machine
 ## With Clauses and Temporary Tables
 
 You cannot currently use temporary tables in ``WITH`` clauses.
@@ -129,21 +123,57 @@ INSERT INTO t3
    FROM t1 RIGHT OUTER JOIN t2 ON t1.b = t2.c;
 ~~~
 
-## Importing Data with SYSCS_IMPORT_DATA from Amazon S3 {#ImportFromS3}
-
-When using the <a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a> system procedure to import data from S3, you currently need to add this custom setting to your `hdfs-site.xml` file:
-
-````
-    fs.s3a.impl=com.splicemachine.fs.s3.PrestoS3FileSystem
-````
-
-This may impact non-SpliceMachine services or applications that rely on an implementation other than the Presto implementation; for example, `org.apache.hadoop.fs.s3a.S3AFileSystem`.
-{: .noteNote}
-
 ## Import Performance Issues With Many Foreign Key References
 
 The presence of many foreign key references on a table will slow down imports of data into that table.
 
+{% if site.build_version == "2.7" %}
+## Importing Data with SYSCS_IMPORT_DATA from Amazon S3 {#ImportFromS3}
 
+There are currently two platform-dependent issue for importing data using the <a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a> system procedure from Amazon S3 in this release:
+
+* If you're using Splice Machine on HDP 2.5.5, you need to add a custom setting to your `hdfs-site.xml` file:
+
+  ````
+      fs.s3a.impl=com.splicemachine.fs.s3.PrestoS3FileSystem
+  ````
+
+  This may impact non-SpliceMachine services or applications that rely on an implementation other than the Presto implementation; for example, `org.apache.hadoop.fs.s3a.S3AFileSystem`.
+  {: .noteNote}
+
+* If you're using Splice Machine on MapR 5.2.0, there's a known problem impacting S3 import functionality; this will be fixed in a subsequent patch release.
+
+## HDP 2.6.3 OLAP Memory Setting {#HDPOLAPMem}
+
+If you're using Splice Machine on HDP 2.6.3, you need to correct a property setting in the `HBase Service Advanced Configuration Snippet (Safety Valve)` settings for `hbase-site.xml`.
+
+Replace the `.` between `olap` and `server` in this property name:
+````
+    splice.olap.server.memory=8192
+````
+
+with the `_` character to produce the correct property name:
+````
+    splice.olap_server.memory=8192
+````
+
+Note that the `.` character needs to be changed to the `_` character in `splice.olap`
+
+{% endif %}
+
+{% if site.build_version == "2.5" %}
+## LDAP Authentication Property Issue {#LDAPPropIssue}
+
+For customers who use LDAP authentication and are updating from an earlier version of release 2.5, you need to modify a property name in your HBase configuration file. Replace this property name:
+````
+    splice.authentication.ldap.searchAuthPW
+````
+
+with this property name:
+````
+    splice.authentication.ldap.searchAuth.password
+````
+
+{% endif %}
 </div>
 </section>
