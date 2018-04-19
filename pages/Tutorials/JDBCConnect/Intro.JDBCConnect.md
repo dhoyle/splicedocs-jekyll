@@ -27,35 +27,24 @@ This section introduces our JDBC driver and shows you how to connect to Splice 
 
 ## The Splice Machine JDBC Driver   {#JDBCDriver}
 
-Our JDBC driver is automatically installed on your computer(s) when you
-install Splice Machine. You'll find it in the `jdbc-driver` folder under
-the `splicemachine` directory. Typical locations are:
+Our JDBC driver is automatically installed on your computer(s) when
+you install Splice Machine. You'll find it in the <span
+class="CodeFont">jdbc-driver</span> folder under the `splicemachine`
+directory; typically:
 
-<table summary="Locations of the JDBC driver.">
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>OS</th>
-            <th>Driver Location</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Linux / MacOS</strong></td>
-            <td><code>/splicemachine/jdbc-driver/{{splvar_jdbc_jarloc}}</code></td>
-        </tr>
-        <tr>
-            <td><strong>Windows</strong></td>
-            <td><code>C:\splicemachine\jdbc-driver\{{splvar_jdbc_jarloc}}</code></td>
-        </tr>
-    </tbody>
-</table>
+<div class="PreWrapperWide" markdown="1">
+    /splicemachine/jdbc-driver/{{splvar_jdbc_jarloc}}
+{: .Example}
+</div>
+You can also download the driver from our JDBC Download site:
+<div class="indented">
+    <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}.</a>
+</div>
 
 You **must** use the *Splice Machine* JDBC driver to connect
 with your Splice Machine database; other JDBC drivers will not work
 correctly.
-{: .noteImportant}
+{: .noteIcon}
 
 ## Default Driver Connection Parameters   {#DefaultParams}
 

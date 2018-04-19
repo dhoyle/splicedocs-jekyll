@@ -37,31 +37,16 @@ This section walks you through compiling and running the
     you install Splice Machine. You'll find it in the <span
     class="CodeFont">jdbc-driver</span> folder under the `splicemachine`
     directory; typically:
-    {: .indentLevel1}
 
     <div class="PreWrapperWide" markdown="1">
-        /splicemachine/jdbc-driver{{splvar_jdbc_jarloc}}
+        /splicemachine/jdbc-driver/{{splvar_jdbc_jarloc}}
     {: .Example}
     </div>
 
-    You can also download the latest JDBC Driver from:
-    {: .topLevel}
-
-{% if site.build_version == "2.7" %}
-    <div class="PreWrapperWide" markdown="1">
-        {{splvar_jdbc_jarV270}}
-    {: .Example}
+    You can also download the driver from our JDBC Download site:
+    <div class="indented">
+        <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}</a>
     </div>
-{% else %}
-    <div class="PreWrapperWide" markdown="1">
-        {{splvar_jdbc_jarV250}}
-    {: .Example}
-    </div>
-{% endif %}
-
-    The build number, e.g. `1814`, varies with each Splice Machine
-    software update.
-    {: .noteNote}
 
 2.  Copy the example program code:
     {: .topLevel}
