@@ -129,18 +129,50 @@ The presence of many foreign key references on a table will slow down imports of
 {% if site.build_version == "2.7" %}
 ## Importing Data with SYSCS_IMPORT_DATA from Amazon S3 {#ImportFromS3}
 
-There are currently two platform-dependent issue for importing data using the <a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a> system procedure from Amazon S3 in this release:
+There are currently two platform-dependent issue for importing data using the <a href="sqlref_sysprocs_importdata.html">SYSCS_UTIL.IMPORT_DATA</a> system procedure from Amazon S3 in this release. You only need to pay attention to this note if you're using HDP 2.5.5 or MapR 5.2.0:
 
-* If you're using Splice Machine on HDP 2.5.5, you need to add a custom setting to your `hdfs-site.xml` file:
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Platform</th>
+            <th>Settings</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>HDP 2.5.5</td>
+            <td><p class ="indentLevel1">Add a custom setting to your    <code>hdfs-site.xml</code> file. Using Ambari, click:</p>
+                <pre>
+        HDFS->Configs->Advanced->Customer hdfs-site</pre>
+                <p class="indentLevel1"><br />and add this setting:</p>
+                <div class="preWrapperWide"><pre>
+        fs.s3a.impl=com.splicemachine.fs.s3.PrestoS3FileSystem</pre></div>
+            </td>
+        </tr>
+        <tr>
+            <td>MapR 5.2.0</td>
+            <td><ol>
+                <li><p>Add the following property setting in <code>/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop/hdfs-site.xml</code> <bold>on each node:</bold></p>
+                    <div class="preWrapperWide"><pre>
+    &lt;property&gt;
+        &lt;name>fs.s3a.impl&lt;/name&gt;
+        &lt;value>com.splicemachine.fs.s3.PrestoS3FileSystem&lt;/value&gt;
+    &lt;/property&gt;</pre></div>
+                </li>
+                <li><p>Add the following option in <code>/opt/mapr/hbase/hbase-1.1.1/conf/hbase-env.sh</code> <bold> on each node:</bold></p>
+                <div class="preWrapperWide"><pre>
+    SPLICE_HBASE_REGIONSERVER_OPTS="$SPLICE_HBASE_REGIONSERVER_OPTS -Dorg.xerial.snappy.tempdir=/tmp"</pre></div>
+                </li>
+                </ol>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-  ````
-      fs.s3a.impl=com.splicemachine.fs.s3.PrestoS3FileSystem
-  ````
-
-  This may impact non-SpliceMachine services or applications that rely on an implementation other than the Presto implementation; for example, `org.apache.hadoop.fs.s3a.S3AFileSystem`.
+  These changes may impact non-SpliceMachine services or applications that rely on an implementation other than the Presto implementation; for example, `org.apache.hadoop.fs.s3a.S3AFileSystem`.
   {: .noteNote}
-
-* If you're using Splice Machine on MapR 5.2.0, there's a known problem impacting S3 import functionality; this will be fixed in a subsequent patch release.
 
 ## HDP 2.6.3 OLAP Memory Setting {#HDPOLAPMem}
 
