@@ -65,7 +65,7 @@ This section walks you through compiling and running the
         public class SampleJDBC {
         public static void main(String[] arg) {
             //JDBC Connection String - sample connects to local database
-            String dbUrl = "jdbc:splice://localhost:1527/splicedb;user=splice;password=admin";
+            String dbUrl = "jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword";
             try{
                 //For the JDBC Driver - Use the Apache Derby Client Driver
                 Class.forName("com.splicemachine.db.jdbc.ClientDriver");

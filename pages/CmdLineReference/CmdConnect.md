@@ -59,7 +59,7 @@ This example includes a user ID and password in the connection URL
 string:
 
 <div class="preWrapperWide" markdown="1">
-    splice> connect 'jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin';
+    splice> connect 'jdbc:splice://1.2.3.456:1527/splicedb;user=YourUserId;password=YourPassword';
 {: .AppCommand xml:space="preserve"}
 
 </div>
@@ -67,7 +67,7 @@ And this example includes specifies that SSL peer authentication will be
 enabled for the connection:
 
 <div class="preWrapperWide" markdown="1">
-    splice> connect 'jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication';
+    splice> connect 'jdbc:splice://1.2.3.456:1527/splicedb;user=YourUserId;password=YourPassword;ssl=peerAuthentication';
 {: .AppCommand xml:space="preserve"}
 
 </div>

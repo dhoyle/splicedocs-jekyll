@@ -40,7 +40,7 @@ steps:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        connect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
+        connect 'jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword';
 
         create table players (
          ID SMALLINT NOT NULL PRIMARY KEY,
@@ -89,7 +89,7 @@ steps:
     {: .spaceAbove}
 
     <div class="preWrapperWide" markdown="1">
-        splice> connect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
+        splice> connect 'jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword';
         splice> create table players (
          ID SMALLINT NOT NULL PRIMARY KEY,
          Team VARCHAR(64) NOT NULL,
@@ -136,7 +136,7 @@ and then exits <span class="AppCommand">splice&gt;</span>.
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        #!/bin/bashecho "Running splice> commands from a shell script"./bin/sqlshell.sh << EOFconnect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin';
+        #!/bin/bashecho "Running splice> commands from a shell script"./bin/sqlshell.sh << EOFconnect 'jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword';
 
         create table players (
          ID SMALLINT NOT NULL PRIMARY KEY,
@@ -199,7 +199,7 @@ and then exits <span class="AppCommand">splice&gt;</span>.
          ========= rlwrap detected and enabled.  Use up and down arrow keys to scroll through command line history. ========
 
         Running Splice Machine SQL shell
-        For help: "splice> help;"splice> connect 'jdbc:splice://srv55:1527/splicedb;user=splice;password=admin';
+        For help: "splice> help;"splice> connect 'jdbc:splice://srv55:1527/splicedb;user=YourUserId;password=YourPassword';
         splice> create table players (
          ID SMALLINT NOT NULL PRIMARY KEY,
          Team VARCHAR(64) NOT NULL,

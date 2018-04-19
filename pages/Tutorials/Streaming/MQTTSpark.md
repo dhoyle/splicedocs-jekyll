@@ -346,7 +346,7 @@ statement to insert the messages into the database.
 
                 if (numRcds > 0) {
                     try {
-                        Connection con = DriverManager.getConnection("jdbc:splice://localhost:1527/splicedb;user=splice;password=admin");
+                        Connection con = DriverManager.getConnection("jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword");
 
                         //Syntax for using a class instance in a VTI, this could also be a table function
                         String vtiStatement = "INSERT INTO IOT.RFID "

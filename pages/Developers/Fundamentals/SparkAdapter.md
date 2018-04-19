@@ -694,7 +694,7 @@ This example in this section shows you how to use the Spark Adapter in an Apache
 import com.splicemachine.spark.splicemachine._
 import com.splicemachine.derby.utils._
 
-val JDBC_URL = "jdbc:splice://XXXX:1527/splicedb;user=splice;password=admin"
+val JDBC_URL = "jdbc:splice://XXXX:1527/splicedb;user=YourUserId;password=YourPassword"
 val SpliceContext = new SplicemachineContext(JDBC_URL)</pre>
 {: .Example}
 </div>

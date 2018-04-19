@@ -180,7 +180,7 @@ default database. You can connect to other databases with the
 [`connect`](cmdlineref_connect.html) command:
 
 <div class="preWrapperWide" markdown="1">
-    connect 'jdbc:splice://srv55:1527/splicedb;user=splice;password=admin' AS DEMO;
+    connect 'jdbc:splice://srv55:1527/splicedb;user=YourUserId;password=YourPassword' AS DEMO;
 {: .AppCommand}
 
 </div>
@@ -220,7 +220,7 @@ database:
                         <td>The name of the database you're connecting to on the server.</td>
                     </tr>
                     <tr>
-                        <td><code>user=splice;password=admin</code></td>
+                        <td><code>user=YourUserId;password=YourPassword</code></td>
                         <td>Connection parameters</td>
                         <td>Any required connection parameters, such as userId and password.</td>
                     </tr>

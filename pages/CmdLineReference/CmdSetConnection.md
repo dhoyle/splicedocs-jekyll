@@ -38,7 +38,7 @@ The name of the connection that you want to be the current connection.
 ## Examples
 
 <div class="preWrapperWide" markdown="1">
-    splice> connect 'jdbc:splice://abc:1527/splicedb;user=splice;password=admin' as sample1;
+    splice> connect 'jdbc:splice://abc:1527/splicedb;user=YourUserId;password=YourPassword' as sample1;
     splice> connect 'jdbc:splice://xyz:1527/splicedb' as sample2;
     splice (NEWDB)> show connections;
     SAMPLE1 -    jdbc:splice://abc:1527/splicedb
@@ -52,4 +52,3 @@ The name of the connection that you want to be the current connection.
 </div>
 </div>
 </section>
-

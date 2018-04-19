@@ -60,7 +60,7 @@ This section walks you through compiling and running the
 
         		// connect to the database named "splicedb" on the localhost
         		val driver = "com.splicemachine.db.jdbc.ClientDriver"
-        		val dbUrl = "jdbc:splice://localhost:1527/splicedb;user=splice;password=admin"
+        		val dbUrl = "jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword"
 
         		var connection:Connection = null
 

@@ -120,7 +120,7 @@ example program, in the following steps:
         import 'com.splicemachine.db.jdbc.ClientDriver'
 
         begin
-            conn = JavaSql::DriverManager.getConnection("jdbc:splice://localhost:1527/splicedb;user=splice;password=admin");
+            conn = JavaSql::DriverManager.getConnection("jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword");
             stmt = conn.createStatement
             rs = stmt.executeQuery("select a, b from MYTESTTABLE")
             counter = 0

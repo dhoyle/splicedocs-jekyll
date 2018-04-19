@@ -327,19 +327,19 @@ security modes:
         <tr>
             <td>None</td>
             <td>
-            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin';</pre></div>
+            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=YourUserId;password=YourPassword';</pre></div>
             </td>
         </tr>
         <tr>
             <td>Basic SSL</td>
             <td>
-            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin;ssl=basic';</pre></div>
+            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=YourUserId;password=YourPassword;ssl=basic';</pre></div>
             </td>
         </tr>
         <tr>
             <td>SSL w/Peer Authentication</td>
             <td>
-            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication';</pre></div>
+            <div class="preWrap"><pre class="ShellCommandCell">connect 'jdbc:splice://<span class="HighlightedCode">x.x.x.xxx</span>:1527/splicedb;user=YourUserId;password=YourPassword;ssl=peerAuthentication';</pre></div>
             </td>
         </tr>
     </tbody>
@@ -355,7 +355,7 @@ Here's a sample declaration for a peer authenticated connection to a
 Splice Machine database:
 
 <div class="preWrap" markdown="1">
-    String dbUrl = "jdbc:splice://1.2.3.456:1527/splicedb;user=splice;password=admin;ssl=peerAuthentication";
+    String dbUrl = "jdbc:splice://1.2.3.456:1527/splicedb;user=YourUserId;password=YourPassword;ssl=peerAuthentication";
 {: .Example}
 
 </div>

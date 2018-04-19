@@ -202,7 +202,7 @@ Follow these steps:
     command line interpreter, sqlshell.sh. Use the following JDBC URL:
 
     <div class="preWrapperWide" markdown="1">
-        jdbc:splice://<haproxy_host>:1527/splicedb;user=splice;password=admin
+        jdbc:splice://<haproxy_host>:1527/splicedb;user=YourUserId;password=YourPassword
     {: .Plain}
 
     </div>
