@@ -23,6 +23,7 @@ Splice Machine Release 2.6 was an interim release in September, 2017, which coin
 
 Each section in this topic includes a list of significant improvements in each interim Splice Machine Release since the 2.5 GA Release (2.5.0.1707) on March 1, 2017.
 
+* [Patch Release 2.7.0.1816](#Patch1816)
 * [GA Release 2.7.0.1815](#Patch1815)
 * [GA Release Candidate 2.7.0.1814](#Patch1814)
 * [Patch Release 2.5.0.1813](#Patch1813)
@@ -43,6 +44,38 @@ Each section in this topic includes a list of significant improvements in each i
 * [Patch Release 2.5.0.1745](#Patch1745)
 * [Patch Release 2.5.0.1735](#Patch1735)
 * [Patch Release 2.5.0.1729](#Patch1729)
+
+## Patch Release 2.7.0.1816  22-Apr-18  {#Patch1816}
+<table>
+    <col width="125px" />
+    <col />
+    <thead>
+        <tr>
+            <th>JIRA-ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Internal
+            </td>
+        </tr>
+        <tr>
+            <td>
+                OLAP server not running in Splice Application Queue
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Internal
+            </td>
+            <td>
+                Text to Numeric Conversion in Splice
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ## GA Release 2.7.0.1815  14-Apr-18  {#Patch1815}
 <table>
