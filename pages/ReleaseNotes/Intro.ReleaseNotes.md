@@ -28,15 +28,11 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
     </thead>
     <tbody>
         <tr>
-            <td><a href="releasenotes_dbintro.html">Splice Machine Database Release Notes</a></td>
-            <td><p>Release notes for the Splice Machine database, which is the basis for both our <em>Database-as-Service</em> and <em>On-Premise Database</em> products. These release notes are presented in these topics:</p>
-                <ul>
-                    <li><a href="releasenotes_newfeatures.html">New Features and Changes</a></li>
-                    <li><a href="releasenotes_improvements.html">Improvements</a></li>
-                    <li><a href="releasenotes_bugfixes.html">Issues Fixed</a></li>
-                    <li><a href="releasenotes_workarounds.html">Limitations and Workarounds</a></li>
-                </ul>
-                <p>Each note category contains the base release notes, and links to incremental (patch) update notes.</p>
+            <td><p>Release notes for the Splice Machine database, which is the basis for both our <em>Database-as-Service</em> and <em>On-Premise Database</em> products. Each major and patch release has its own page of notes:</p>
+            <ul>
+                <li>[Patch Release 2.7.0.1816](releasenotes_2.7.0.1816)</li>
+                <li>[GA Release 2.7.0.1815](releasenotes_2.7.0.1815)</li>
+            </ul>
             </td>
         </tr>
         <tr>
@@ -46,6 +42,10 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
         <tr>
             <td><a href="releasenotes_onprem.html">Splice Machine On-Premise Database Product</a></td>
             <td>Release notes specific to changes in our on-premise database product.</td>
+        </tr>
+        <tr>
+            <td><a href="releasenotes_workarounds.html">Known Issues and Workarounds</a></td>
+            <td>Describes each known issue in the current release and its workaround.</td>
         </tr>
     </tbody>
 </table>
