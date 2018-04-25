@@ -28,10 +28,11 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
     </thead>
     <tbody>
         <tr>
+            <td>Database Release Notes</td>
             <td><p>Release notes for the Splice Machine database, which is the basis for both our <em>Database-as-Service</em> and <em>On-Premise Database</em> products. Each major and patch release has its own page of notes:</p>
             <ul>
-                <li>[Patch Release 2.7.0.1816](releasenotes_2.7.0.1816)</li>
-                <li>[GA Release 2.7.0.1815](releasenotes_2.7.0.1815)</li>
+                <li><a href="releasenotes_2.7.0.1816">Patch Release 2.7.0.1816</a></li>
+                <li><a href="Greleasenotes_2.7.0.1815">GA Release 2.7.0.1815</a></li>
             </ul>
             </td>
         </tr>
@@ -49,9 +50,6 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
         </tr>
     </tbody>
 </table>
-
-Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have been incorporated into the 2.7 Release of the Splice Machine database.
-{: .noteIcon}
 
 The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 

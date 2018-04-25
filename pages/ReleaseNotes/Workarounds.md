@@ -12,7 +12,7 @@ folder: ReleaseNotes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Limitations and Workarounds in This Release of Splice Machine
 
-This topic describes workarounds for known limitations in this Release of the Splice Machine Database. These can include previously unstated limitations or workarounds for problems that will be fixed in a future Release.
+This topic describes workarounds for known limitations in this release of the Splice Machine Database. These can include previously unstated limitations or workarounds for problems that will be fixed in a future Release.
 
 These are the notes and workarounds for known issues in this release:
 
