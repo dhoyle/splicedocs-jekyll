@@ -20,7 +20,7 @@ This topic includes release notes that are specific to the Splice Machine *On-Pr
 * [Enterprise-only Features](#enterprise-only-features)
 * [Running the Standalone Version](#running-the-standalone-version)
 
-Most of the information about changes in the Splice Machine database that forms the basis of this product are found in the <a href="releasenotes_dbintro.html">Splice Machine database</a> release notes.
+Most of the information about changes in the Splice Machine database that underlies this product are found in the individual release note pages for each major and patch release of the database.
 
 ## After Updating
 

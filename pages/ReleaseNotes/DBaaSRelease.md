@@ -20,7 +20,6 @@ This topic includes any release notes that are specific to the Splice Machine *D
 * [Current Limitations](#current-limitations)
 * [Important Notes](#important-notes)
 
-Most of the information about changes in the Splice Machine database that underlies this product are found in the <a href="releasenotes_dbintro.html">Splice Machine database</a> release notes.
 
 ## Features Not Yet Available {#features-not-yet-available}
 

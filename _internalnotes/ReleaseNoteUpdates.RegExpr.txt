@@ -1,0 +1,43 @@
+Release Note Updates - Regular Expressions:
+
+
+---REPLACE:
+Improvement (SPLICE-.*?) (.*$)
+-->WITH:
+<tr>\n    <td>Improvement</td>\n    <td>$1</td>\n    <td>$2</td>\n</tr>
+
+---REPLACE:
+Improvement (DB-.*?) (.*$)
+-->WITH:
+<tr>\n    <td>Improvement</td>\n    <td>Internal</td>\n    <td>$2</td>\n</tr>
+
+
+
+---REPLACE:
+Bug (SPLICE-.*?) (.*$)
+-->WITH:
+<tr>\n    <td>Issue Fixed</td>\n    <td>$1</td>\n    <td>$2</td>\n</tr>
+
+---REPLACE:
+Improvement (DB-.*?) (.*$)
+-->WITH:
+<tr>\n    <td>Issue Fixed</td>\n    <td>Internal</td>\n    <td>$2</td>\n</tr>
+
+
+
+---REPLACE:
+New Feature (SPLICE-.*?) (.*$)
+-->WITH:
+<tr>\n    <td>New Feature</td>\n    <td>$1</td>\n    <td>$2</td>\n</tr>
+
+---REPLACE:
+Improvement (DB-.*?) (.*$)
+-->WITH:
+<tr>\n    <td>New Feature</td>\n    <td>Internal</td>\n    <td>$2</td>\n</tr>
+
+
+
+---REPLACE:
+>SPLICE-(.*?)\<
+-->WITH:
+><a href="https://splice.atlassian.net/browse/SPLICE-$1" target="_blank">SPLICE-$1<

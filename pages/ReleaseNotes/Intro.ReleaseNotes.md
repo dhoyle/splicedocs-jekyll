@@ -28,15 +28,12 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
     </thead>
     <tbody>
         <tr>
-            <td><a href="releasenotes_dbintro.html">Splice Machine Database Release Notes</a></td>
-            <td><p>Release notes for the Splice Machine database, which is the basis for both our <em>Database-as-Service</em> and <em>On-Premise Database</em> products. These release notes are presented in these topics:</p>
-                <ul>
-                    <li><a href="releasenotes_newfeatures.html">New Features and Changes</a></li>
-                    <li><a href="releasenotes_improvements.html">Improvements</a></li>
-                    <li><a href="releasenotes_bugfixes.html">Issues Fixed</a></li>
-                    <li><a href="releasenotes_workarounds.html">Limitations and Workarounds</a></li>
-                </ul>
-                <p>Each note category contains the base release notes, and links to incremental (patch) update notes.</p>
+            <td>Database Release Notes</td>
+            <td><p>Release notes for the Splice Machine database, which is the basis for both our <em>Database-as-Service</em> and <em>On-Premise Database</em> products. Each major and patch release has its own page of notes:</p>
+            <ul>
+                <li><a href="releasenotes_2.7.0.1816">Patch Release 2.7.0.1816</a></li>
+                <li><a href="Greleasenotes_2.7.0.1815">GA Release 2.7.0.1815</a></li>
+            </ul>
             </td>
         </tr>
         <tr>
@@ -47,11 +44,12 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
             <td><a href="releasenotes_onprem.html">Splice Machine On-Premise Database Product</a></td>
             <td>Release notes specific to changes in our on-premise database product.</td>
         </tr>
+        <tr>
+            <td><a href="releasenotes_workarounds.html">Known Issues and Workarounds</a></td>
+            <td>Describes each known issue in the current release and its workaround.</td>
+        </tr>
     </tbody>
 </table>
-
-Splice Machine Release 2.6 was an interim release in September, 2017, which coincided with the initial Release of our Database-as-a-Service product. All changes in v2.6 have been incorporated into the 2.7 Release of the Splice Machine database.
-{: .noteIcon}
 
 The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
 
