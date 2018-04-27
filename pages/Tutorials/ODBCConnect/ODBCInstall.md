@@ -245,17 +245,25 @@ Follow these steps to install the Splice Machine ODBC driver on a Linux
 computer:
 
 <div class="opsStepsList" markdown="1">
-1.  Make sure you have unixODBC installed.
+1.  Make sure you have the software our driver requires installed:
     {: .topLevel}
 
-    You must have version `2.2.12` or later of the `unixODBC` driver
-    manager installed to run the Splice Machine ODBC driver.
-    {: .indentLevel1}
+<ul class="nested">
+    <li>
+        <p>You must have version <strong>4.82</strong> or later of the GNU Compiler Collection (<em>GCC</em>) installed. You can use the following command to verify your version:</p>
+        <div class="preWrapper"><pre class="ShellCommand">
+gcc -version</pre>
+        </div>
+    </li>
+    <li>
+        <p>You must have version <strong>2.2.12</strong> or later of the <em>unixODBC</em> driver manager installed. You can use the following command to verify your version:</p>
+        <div class="preWrapper"><pre class="ShellCommand">
+odbcinst -j</pre>
+        </div>
+    </li>
+</ul>
 
-    Some Linux distributions include `unixODBC`, while others do not.
-    Our driver will not work without it. For more information about
-    unixODBC, see: [http://www.unixodbc.org][3]{: target="_blank"}.
-    {: .indentLevel1}
+<p class="indentLevel2">Some Linux distributions include <em>unixODBC</em>, while others do not. Our driver will not work without it. For more information about unixODBC, see: <a href="http://www.unixodbc.org" target="_blank">http://www.unixodbc.org</a>.</p>
 
 2.  Download the installer:
     {: .topLevel}
@@ -803,4 +811,3 @@ it by following these steps:
 
 [1]: https://www.splicemachine.com/get-started/odbc-driver-download/
 [2]: https://msdn.microsoft.com/en-us/library/ms712362(v=vs.85).aspx
-[3]: http://www.unixodbc.org/
