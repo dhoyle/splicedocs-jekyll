@@ -34,7 +34,6 @@ These are the notes and workarounds for known issues in this release:
 {% elsif site.build_version == "2.5" %}
 * [LDAP Authentication Property Issue](#LDAPPropIssue)
 {% endif %}
-* [Case Sensitivity in Granting HBase Privileges](#GrantCasing)
 
 ## With Clauses and Temporary Tables
 
@@ -207,8 +206,6 @@ with this property name:
 ````
 
 {% endif %}
-
-## Case Sensitivity in Granting HBase Privileges {#GrantCasing}
 
 
 </div>
