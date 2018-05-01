@@ -517,6 +517,9 @@ imported into your database. The generated files are automatically removed after
 
 **Example:** <span class="Example">`'hdfs:///tmp/test_hfile_import/'`</span>
 
+If you're using this procedure with our On-Premise database product, on a cluster with Amazon Key Management Service (KMS) enabled, there are a few extra configuration steps required. Please see [this troubleshooting note](onprem_info_troubleshoot.html#BulkImportKMS) for details.
+{: .noteIcon}
+
 Please review the [Bulk HFile Import Walkthrough](tutorials_ingest_importexampleshfile.html) topic to understand how importing bulk HFiles works.
 
 ### `skipSampling` {#skipSampling}
