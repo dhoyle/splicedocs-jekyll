@@ -25,6 +25,7 @@ This topic provides troubleshooting guidance for these issues that you may encou
 * [Kerberos Configuration Option](#KerberosConfig)
 * [Resource Allocation for Backup Jobs](#BackupResources)
 * [Bulk Import of Very Large Datasets with Spark 2.2](#BulkImportSparkSep)
+* [Using Bulk Import on a KMS-Enabled Cluster](#BulkImportKMS)
 
 
 ## Restarting Splice Machine After HMaster Failure {#HMasterRestart}
@@ -216,6 +217,33 @@ Modify the following settings in the Cloudera Manager's *YARN (MR2 Included) Ser
     YARN_USER_CLASSPATH_FIRST=true
   {: .Example}
   </div>
+
+## Using Bulk Import on a KMS-Enabled Cluster {#BulkImportKMS}
+
+If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Amazon Key Management Service (KMS) enabled, you must complete these extra configuration steps:
+
+1. Change the permissions of `/hbase` to `711`.
+2. Configure permissions for `hbase.rootdir.perms` to `711` by adding this property to `hbase-site.xml` on HMaster:
+   <div class="preWrapperWide" markdown="1">
+       <property>
+           <name>hbase.rootdir.perms</name>
+           <value>711</value>
+       </property>
+   {: .Plain}
+   </div>
+3. Make sure that the `bulkImportDirectory` is in the same encryption zone as is HBase.
+4. Add these properties to `hbase-site.xml` to load secure Apache BulkLoad and to put its staging directory in the same encryption zone as HBase:
+   <div class="preWrapperWide" markdown="1">
+        <property>
+          <name>hbase.bulkload.staging.dir</name>
+          <value>/tmp/hbase-staging</value>
+        </property>
+        <property>
+          <name>hbase.coprocessor.region.classes</name>
+          <value>org.apache.hadoop.hbase.security.access.SecureBulkLoadEndpoint</value>
+        </property>
+   {: .Plain}
+   </div>
 
 </div>
 </section>

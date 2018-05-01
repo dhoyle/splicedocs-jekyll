@@ -76,6 +76,9 @@ The following table summarizes the parameters used by `SYSCS_UTIL.BULK_IMPORT_HF
 
 ## Usage {#Usage}
 
+If you're using this procedure with our On-Premise database product, on a cluster with Amazon Key Management Service (KMS) enabled, there are a few extra configuration steps required. Please see [this troubleshooting note](onprem_info_troubleshoot.html#BulkImportKMS) for details.
+{: .noteIcon}
+
 The [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure needs the data that you're importing split into multiple HFiles before it actually imports the data into your database. You can achieve these splits in three ways:
 
 * You can call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter to `false`. `SYSCS_UTIL.BULK_IMPORT_HFILE` samples the data to determine the splits, then splits the data into multiple HFiles, and then imports the data.

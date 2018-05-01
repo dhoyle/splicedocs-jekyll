@@ -80,6 +80,11 @@ Due to how Yarn manages memory, you need to modify your YARN configuration when 
 {: .Example}
 </div>
 
+### Extra Configuration Steps for KMS-Enabled Clusters
+
+If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Amazon Key Management Service (KMS) enabled, you must complete a few extra configuration steps, which are described in [this troubleshooting note](onprem_info_troubleshoot.html#BulkImportKMS) for details.
+{: .noteIcon}
+
 ## Importing Data From the Cloud  {#CloudAccess}
 
 If you are importing data that is stored in an S3 bucket on AWS, you
