@@ -220,7 +220,7 @@ Modify the following settings in the Cloudera Manager's *YARN (MR2 Included) Ser
 
 ## Using Bulk Import on a KMS-Enabled Cluster {#BulkImportKMS}
 
-If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Amazon Key Management Service (KMS) enabled, you must complete these extra configuration steps:
+If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Cloudera Key Management Service (KMS) enabled, you must complete these extra configuration steps:
 
 1. Change the permissions of `/hbase` to `711`.
 2. Configure permissions for `hbase.rootdir.perms` to `711` by adding this property to `hbase-site.xml` on HMaster:
@@ -233,17 +233,22 @@ If you are a Splice Machine On-Premise Database customer and want to use bulk im
    </div>
 3. Make sure that the `bulkImportDirectory` is in the same encryption zone as is HBase.
 4. Add these properties to `hbase-site.xml` to load secure Apache BulkLoad and to put its staging directory in the same encryption zone as HBase:
-   <div class="preWrapperWide" markdown="1">
-        <property>
-          <name>hbase.bulkload.staging.dir</name>
-          <value>/tmp/hbase-staging</value>
-        </property>
-        <property>
-          <name>hbase.coprocessor.region.classes</name>
-          <value>org.apache.hadoop.hbase.security.access.SecureBulkLoadEndpoint</value>
-        </property>
-   {: .Plain}
+   <div class="preWrapperWide"><pre class="Plain">&lt;property&gt;
+      &lt;name&gt;hbase.bulkload.staging.dir&lt;/name&gt;
+      &lt;value&gt;<span class="HighlightedCode">&lt;YourStagingDirectory&gt;</span>&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+      &lt;name&gt;hbase.coprocessor.region.classes&lt;/name&gt;
+      &lt;value&gt;org.apache.hadoop.hbase.security.access.SecureBulkLoadEndpoint&lt;/value&gt;
+    &lt;/property&gt;</pre>
    </div>
+
+   Replace <span class="HighlightedCode">&lt;YourStagingDirectory&gt;</span> with the path to your staging directory, and make sure that directory is in the same encryption zone as HBase; for example:
+   ````
+       <value>/hbase/load/staging</value>
+   ````
+
+For more information about KMS, see <a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html" target="_blank">https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html</a>.
 
 </div>
 </section>
