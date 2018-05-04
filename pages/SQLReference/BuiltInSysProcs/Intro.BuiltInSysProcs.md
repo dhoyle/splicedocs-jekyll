@@ -113,7 +113,17 @@ database:
                         <td>Retrieves the unencoded start key for a specified HBase table or index region.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="sqlref_sysprocs_getloggers.html">SYSCS_UTIL.KILL_OPERATION</a>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_invaldictcache.html">SYSCS_UTIL.INVALIDATE_DICTIONARY_CACHE</a>
+                        </td>
+                        <td>Invalidates the dictionary cache on the connection's region server.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_invalglobaldictcache.html">SYSCS_UTIL.INVALIDATE_GLOBAL_DICTIONARY_CACHE</a>
+                        </td>
+                        <td>Invalidates the dictionary cache on all region servers.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_killoperation.html">SYSCS_UTIL.KILL_OPERATION</a>
                         </td>
                         <td>Terminates a Splice Machine operation running on the server to which you are connected.</td>
                     </tr>
@@ -506,11 +516,6 @@ adjusting system status:
                         <td class="CodeFont"><a href="sqlref_sysprocs_getwriteintakeinfo.html">SYSCS_UTIL.SYSCS_GET_WRITE_INTAKE_INFO</a>
                         </td>
                         <td>Displays information about the number of writes coming into Splice Machine.</td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_sysprocs_killoperation.html">SYSCS_UTIL.KILL_OPERATION</a>
-                        </td>
-                        <td>Terminates a Splice Machine operation running on the server to which you are connected.</td>
                     </tr>
                 </tbody>
             </table>

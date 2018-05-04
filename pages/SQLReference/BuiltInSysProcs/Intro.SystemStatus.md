@@ -55,4 +55,3 @@ adjusting system status:
             </table>
 </div>
 </section>
-

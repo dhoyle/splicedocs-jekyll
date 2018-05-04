@@ -77,6 +77,21 @@ database:
                         <td>Removes a user account from a database.</td>
                     </tr>
                     <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_invaldictcache.html">SYSCS_UTIL.INVALIDATE_DICTIONARY_CACHE</a>
+                        </td>
+                        <td>Invalidates the dictionary cache on the connection's region server.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_invalglobaldictcache.html">SYSCS_UTIL.INVALIDATE_GLOBAL_DICTIONARY_CACHE</a>
+                        </td>
+                        <td>Invalidates the dictionary cache on all region servers.</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_killoperation.html">SYSCS_UTIL.KILL_OPERATION</a>
+                        </td>
+                        <td>Terminates a Splice Machine operation running on the server to which you are connected.</td>
+                    </tr>
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_modifypassword.html">SYSCS_UTIL.SYSCS_MODIFY_PASSWORD</a>
                         </td>
                         <td>Called by a user to change that user's own password.</td>
@@ -143,4 +158,3 @@ database:
             </table>
 </div>
 </section>
-
