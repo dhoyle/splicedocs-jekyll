@@ -44,7 +44,7 @@ example program, in the following steps:
     You must assign the database connectivity parameters in the
     `config/database.yml` file for your JRuby application. Your
     connectivity parameters should look like the following, which use
-    our default database, user, URL, and password values:
+    our default database and URL values:
 
     <div class="preWrapperWide" markdown="1">
         # Configure Using Gemfile
@@ -54,8 +54,8 @@ example program, in the following steps:
         development:
             adapter: jdbcderby
             database: splicedb
-            username: splice
-            password: admin
+            username: yourUserId
+            password: yourPassword
             driver: com.splicemachine.db.jdbc.ClientDriver
             url: jdbc:splice://localhost:1527/splicedb
     {: .AppCommand xml:space="preserve"}

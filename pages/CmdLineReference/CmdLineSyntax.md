@@ -66,7 +66,7 @@ class="ShellCommand">sqlshell.sh</span> script, to change default
 values. Here's the syntax:
 
 <div class="preWrapper" markdown="1">
-    sqlshell.sh [-h host] [-p port ] [-u username] [-s password] [-f commandsFile
+    sqlshell.sh [-h host] [-p port ] [-u username] [-s password] [-f commandsFile]
 {: .ShellCommand xml:space="preserve"}
 
 </div>
@@ -95,17 +95,11 @@ The default value is `1527`.
 The user name for your Splice Machine database.
 {: .paramDefnFirst}
 
-The default value is `splice`.
-{: .paramDefn}
-
 -password
 {: .paramName}
 
 The password for your Splice Machine database.
 {: .paramDefnFirst}
-
-The default value is `admin`.
-{: .paramDefn}
 
 -f [fileName]
 {: .paramName}

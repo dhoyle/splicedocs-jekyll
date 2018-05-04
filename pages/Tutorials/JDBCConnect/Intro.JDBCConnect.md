@@ -49,8 +49,7 @@ correctly.
 ## Default Driver Connection Parameters   {#DefaultParams}
 
 The following table shows the default connection values you use with
-Splice Machine. These values are used in all of the Splice Machine
-connection tutorials:
+Splice Machine. Replace the your
 
 <table summary="Table of default Splice Machine connection parameters.">
     <col />
@@ -68,11 +67,13 @@ connection tutorials:
         </tr>
         <tr>
             <td><em>User name</em></td>
-            <td><code>splice</code></td>
+            <td><p><span class="HighlightedCode">splice</span></p>
+                <p>Substitute your own user ID</p></td>
         </tr>
         <tr>
             <td><em>Password</em></td>
-            <td><code>admin</code></td>
+            <td><p><span class="HighlightedCode">admin</span></p>
+                <p>Substitute your own password</p></td>
         </tr>
         <tr>
             <td><em>Database name</em></td>

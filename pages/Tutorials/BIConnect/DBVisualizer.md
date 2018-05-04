@@ -129,10 +129,10 @@ connection in DBVisualizer.
         {: .noteIcon}
 
     4.  Fill in the <span class="AppCommand">Userid</span>
-        (`splice`) and <span class="AppCommand">Password</span>
-        (`admin`) fields. Then click the <span
+        and <span class="AppCommand">Password</span>
+        fields with your user Id and password. Then click the <span
         class="AppCommand">Connect</span> button. Your Splice Machine
-        database will now display in DBVisualizer:
+        database will now display in DBVisualizer.
     {: .LowerAlphaPlainFont}
 {: .boldFont}
 

@@ -105,12 +105,12 @@ This section describes the Kettle routines in the example.
                                     </tr>
                                     <tr>
                                         <td><em>User Name</em></td>
-                                        <td class="CodeFont"><span class="AppCommand">splice</span>
+                                        <td class="CodeFont"><span class="AppCommand">yourUserId</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><em>Password</em></td>
-                                        <td class="CodeFont"><span class="AppCommand">admin</span>
+                                        <td class="CodeFont"><span class="AppCommand">yourPassword</span>
                                         </td>
                                     </tr>
                                 </tbody>

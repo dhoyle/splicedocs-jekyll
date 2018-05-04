@@ -83,7 +83,7 @@ The database owner log-in information for Splice Machine is configured
 when your database software is installed. If you're using our database
 as a service, there is no default userId or password; if you're using
 our on-premise database, the default userID is `splice`, and the default
-password is `admin`.
+password is `admin`. We strongly suggest changing these values.
 
 ### Creating and Using Roles
 

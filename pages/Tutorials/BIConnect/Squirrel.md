@@ -144,8 +144,8 @@ alias in SQuirreL.
         ![](images/SquirrelAlias2.png){: .tableCell450}
 
     3.  Click the <span class="AppCommand">Test</span> button to verify
-        your connection.In the Connect screen, enter `splice` as the
-        <span class="AppCommand">User:</span> value and `admin` for the
+        your connection. In the Connect screen, enter your user ID as the
+        <span class="AppCommand">User:</span> value and your password for the
         <span class="AppCommand">Password:</span> value.
 
         ![](images/SquirrelConnect.png){: .tableCell450}

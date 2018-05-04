@@ -39,8 +39,7 @@ This section walks you through compiling and running the
     {: .topLevel}
 
     You can copy and paste the code below; note that this example uses
-    our default connectivity parameters (database, user, URL, and
-    password values):
+    our default connectivity database and URL parameters:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
@@ -51,8 +50,8 @@ This section walks you through compiling and running the
         url    = 'jdbc:splice://localhost:1527/splicedb'
         driver = 'com.splicemachine.db.jdbc.ClientDriver'
         props  = Properties()
-        props.setProperty('user', 'splice')
-        props.setProperty('password', 'admin')
+        props.setProperty('user', 'yourUserId')
+        props.setProperty('password', 'yourPassword')
         jcc    = Class.forName(driver).newInstance()
         conn   = DriverManager.getConnection(url, props)
         stmt   = conn.createStatement()

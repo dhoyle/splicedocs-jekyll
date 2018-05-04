@@ -48,7 +48,7 @@ Machine database:
 <div class="preWrapperWide" markdown="1">
     hive> CREATE EXTERNAL TABLE extTest1(col1 int, col2 varchar(20))
        STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
-       TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=splice\;password=admin", "splice.tableName"="TEST.hcattest");
+       TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=yourUserId\;password=yourPassword", "splice.tableName"="TEST.hcattest");
 {: .Example xml:space="preserve"}
 
 </div>
@@ -169,7 +169,7 @@ directly to a Splice Machine table.
     <div class="preWrapperWide" markdown="1">
         hive> CREATE EXTERNAL TABLE extTest1(col1 int, col2 varchar(20))
            STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
-           TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=splice\;password=admin", "splice.tableName"="SPLICE.hcattest");
+           TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=yourUserId\;password=yourPassword", "splice.tableName"="SPLICE.hcattest");
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -247,7 +247,7 @@ types and a primary key.
     <div class="preWrapperWide" markdown="1">
         hive> CREATE EXTERNAL TABLE extTest2(col1 String, col2 varchar(56))
            STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
-           TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=splice\;password=admin", "splice.tableName"="SPLICE.tblA");
+           TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=yourUserId\;password=yourPassword", "splice.tableName"="SPLICE.tblA");
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -318,7 +318,7 @@ and uses integer columns.
     <div class="preWrapperWide" markdown="1">
         hive> CREATE EXTERNAL TABLE extTest3(col1 String, col2 varchar(56))
            STORED BY 'com.splicemachine.mrio.api.hive.SMStorageHandler'
-           TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=splice\;password=admin", "splice.tableName"="SPLICE.tblB");
+           TBLPROPERTIES ("splice.jdbc"="jdbc:splice://localhost:1527/splicedb\;user=yourUserId\;password=yourPassword", "splice.tableName"="SPLICE.tblB");
     {: .AppCommand xml:space="preserve"}
 
     </div>

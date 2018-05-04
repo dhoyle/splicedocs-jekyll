@@ -142,9 +142,6 @@ the driver:
     ![Configuring the Splice Machine ODBC data source on
     Windows](images/ODBCConfigureOld.png){: .nestedTightSpacing}
 
-    The default <span class="AppCommand">user</span> name is `splice`,
-    and the default <span class="AppCommand">password</span> is `admin`.
-
     For <span class="AppCommand">Server</span>: on a cluster, specify
     the IP address of an HBase RegionServer. If you're running the
     standalone version of Splice Machine, specify `localhost`.
@@ -169,9 +166,6 @@ the driver:
 
     ![Configuring the Splice Machine ODBC data source on
     Windows](images/ODBCConfigure.png){: .nestedTightSpacing}
-
-    The default <span class="AppCommand">user</span> name is `splice`,
-    and the default <span class="AppCommand">password</span> is `admin`.
 
     For <span class="AppCommand">Server</span>: on a cluster, specify
     the IP address of an HBase RegionServer. If you're running the
@@ -400,8 +394,8 @@ odbcinst -j</pre>
         [SpliceODBC64]
         Description     = Splice Machine ODBC 64-bit
         Driver          = /usr/local/splice/lib64/libsplice_odbc.so
-        UID             = splice
-        PWD             = admin
+        UID             = yourUserID
+        PWD             = yourPassword
         URL             = 127.0.0.1
         PORT            = 1527
         SSL             = peerAuthentication
@@ -498,7 +492,7 @@ odbcinst -j</pre>
     {: .indentLevel1}
 
     <div class="preWrapper" markdown="1">
-        isql SpliceODBC64 splice admin
+        isql SpliceODBC64 yourUserId yourPassword
     {: .ShellCommand}
 
     </div>
@@ -629,8 +623,8 @@ computer:
             [SpliceODBC64]
             Description     = Splice Machine ODBC 64-bit
             Driver          = /usr/local/splice/lib64/libsplice_odbc.so
-            UID             = splice
-            PWD             = admin
+            UID             = yourUserId
+            PWD             = yourPassword
             URL             = 0.0.0.0
             PORT            = 1527
         {: .Plain}

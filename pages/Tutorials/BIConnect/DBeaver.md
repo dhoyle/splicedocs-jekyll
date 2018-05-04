@@ -145,9 +145,8 @@ alias in DBeaver .
     2.  Several of the fields in the *Generic JDBC Connection Settings*
         screen were pre-populated for you when you selected the driver.
         You need to fill in the <span class="AppCommand">User
-        name:</span> (default is `splice`) and <span
-        class="AppCommand">Password:</span> (default is `admin`) field
-        values:
+        name:</span> and <span
+        class="AppCommand">Password:</span> fields with your user ID and password:
 
         ![](images/DBeaverConnection2.png){: .nestedTightSpacing}
 

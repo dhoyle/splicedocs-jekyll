@@ -52,7 +52,7 @@ The steps in this topi use *R Studio*, which is _not_ required.
 
         vDriver <- JDBC(driverClass="com.splicemachine.db.jdbc.ClientDriver",
         classPath="MyJDBCJarLoc/splice.jdbc.jar")
-        db  <- dbConnect(vDriver, "jdbc:splice://localhost:1527/splicedb", "splice", "admin")
+        db  <- dbConnect(vDriver, "jdbc:splice://localhost:1527/splicedb", "yourUserId", "yourPassword")
         sql <- "select * from SCHEMA.TABLE"
         df1 <- dbGetQuery(db, sql)
 
