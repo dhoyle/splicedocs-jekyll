@@ -3,17 +3,24 @@
 isprev=
 PS3="Select which Docs Version to build: "
 COLUMNS=12
-OPTIONS=( 'DocsDev'
+OPTIONS=( 'DocsDev 2.7'
+          'DocsDev 2.5'
           'DocsTest 2.7'
           'DocsTest 2.5'
           'Doc 2.7'
           'Doc 2.5' )
 select opt in "${OPTIONS[@]}"; do
     case $opt in
-        'DocsDev')
+        'DocsDev 2.7')
             version='docsdev'
             branch='2.7'
             smap='sitemapgen'
+            break;
+            ;;
+        'DocsDev 2.5')
+            version='docsdev'
+            branch='2.7'
+            smap='sitemapgen.2.5'
             break;
             ;;
         'DocsTest 2.7')
