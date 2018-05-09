@@ -27,7 +27,7 @@ interpreter, in the following sections:
   lines and how to run a file of SQL commands.
 * The [Example Command Lines](#ExampleCommands){: .selected} section
   shows several examples of command lines.
-* The [Scripting Splice Commands](tutorials_cli_scripting.html) tutorial
+* Our [Scripting Splice Commands](tutorials_cli_scripting.html) tutorial
   describes how to create a script of <span
   class="AppCommand">splice&gt;</span> commands to run a series of
   operations like loading a number of files into your database
@@ -50,15 +50,10 @@ When the interpreter prompts you with <span
 class="AppCommand">splice&gt;</span>, you can enter commands, ending
 each with a semicolon. For a complete description of <span
 class="AppCommand">splice&gt;</span> syntax, see the next section in
-this topic, [Command Line Syntax](#Syntax){: .selected},
+this topic, [Command Line Syntax](#Syntax).
 
-Note that you can optionally specify a file of sql commands that the
-interpreter will run using the `-f` parameter; after running those
-commands, the interpreter exits. For example:
-
-<div class="preWrapper" markdown="1">
-    ./sqlshell.sh -f /home/mydir/sql/test.sql
-{: .ShellCommand xml:space="preserve"}
+Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try to start sqlshell.sh on a system that doesn't have the required version of the JDK, you'll see an error message indicating that the connection has been terminated.
+{: .noteIcon}
 
 </div>
 You can optionally include parameter values when running <span
@@ -66,6 +61,7 @@ class="ShellCommand">sqlshell.sh</span> script, to change default
 values. Here's the syntax:
 
 <div class="preWrapper" markdown="1">
+<<<<<<< HEAD
     sqlshell.sh [-h host] [-p port ] [-u username] [-s password] [-f commandsFile]
 {: .FcnSyntax xml:space="preserve"}
 
@@ -144,6 +140,108 @@ When you invoke this file, you'll see this in your terminal window:
 {: .Example xml:space="preserve"}
 </div>
 </div>
+=======
+    sqlshell.sh [-U url] [-h host] [-p port] [-u user] [-s pass] [-P] [-S]
+                [-k principal] [-K keytab] [-w width] [-f script] [-o output] [-q]
+{: .ShellCommand xml:space="preserve"}
+
+</div>
+
+<table>
+    <col width="20%" />
+    <col width="45%" />
+    <col width="35%" />
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">-U <em>url</em></td>
+            <td>The full JDBC <em>U</em>RL for connecting to your Splice Machine database.</td>
+            <td class="CodeFont">-U 'jdbc:splice://xyz:1527/splicedb'</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-h <em>hostname</em></td>
+            <td>The <em>h</em>ostname or IP address of the Splice Machine HBase Region Server.</td>
+            <td class="CodeFont">-h splicetrial-mycluster.splicemachine.io</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-p <em>port</em></td>
+            <td><p>The <em>p</em>ort on which Splice Machine is listening.</p>
+                <p>The default value is 1527.</p>
+            </td>
+            <td class="CodeFont">-p 10001</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-u <em>user</em></td>
+            <td>Your Splice Machine database <em>u</em>sername.</td>
+            <td class="CodeFont">-u myName</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-s <em>pass</em></td>
+            <td>Your Splice Machine database <em>p</em>assword.</td>
+            <td class="CodeFont">-s myPswd</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-P</td>
+            <td><p>Tells Splice Machine to <em>P</em>rompt for your password.</p>
+                <p class="noteNote">Your keystrokes are obscured when entering your password.</p>
+            </td>
+            <td class="CodeFont">-P</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-S</td>
+            <td><p>Use basic connection <em>S</em>ecurity (<code>ssl=basic</code>) for connecting to your database.</p>
+                <p class="noteNote">You must use this option when using sqlshell.sh with our Database-as-Service product.</p>
+            </td>
+            <td class="CodeFont">-S</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-k <em>principal</em></td>
+            <td>Your <em>k</em>erberos principal.</td>
+            <td class="CodeFont">-k splice</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-K <em>keytab</em></td>
+            <td><p>Your <em>K</em>erberos keytab.</p>
+                <p class="noteNote">You must also specify the <code>-k</code> option when specifying this option.</p>
+            </td>
+            <td class="CodeFont">-K splice.keytab</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-w <em>width</em></td>
+            <td><p>The <em>w</em>idth of output rows in your window.</p>
+                <p>The default width is 128.</p>
+            </td>
+            <td class="CodeFont">-w 200</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-f scriptFile</td>
+            <td><p>The fully-qualified name of the SQL <em>f</em>ile to be executed.</p>
+                <p>For more information about running SQL scripts, please see our <a href="tutorials_cli_scripting.html">Scripting Splice Commands] tutorial</a>.</p>
+            </td>
+            <td class="CodeFont">-f mySqlScript.sql</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-o outputFile</td>
+            <td><p>Redirects the <em>o</em>utput of a script </p>
+                <p>This is typically used in conjunction with running a script with the <code>-f</code> option.</p>
+            </td>
+            <td class="CodeFont">-o /tmp/myscript.out</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">-q</td>
+            <td><p>Starts sqlshell in <em>q</em>uiet mode, which suppresses the series of messages that displays when you first start <code>sqlshell.sh</code>.</p>
+                <p>This is useful when running a script with the <code>-f</code> option.</p></td>
+            <td class="CodeFont">-q</td>
+        </tr>
+    </tbody>
+</table>
+>>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
 
 ## Command Line Output   {#Command}
 
@@ -199,17 +297,32 @@ Certain identifiers and keywords are case sensitive:
     </thead>
     <tbody>
         <tr>
+<<<<<<< HEAD
             <td class="ItalicFont">SQL keywords</td>
+=======
+            <td class="ItalicFont">
+                <p>SQL keywords</p>
+            </td>
+>>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
             <td>Not case sensitive</td>
             <td>These are all equivalent: <span class="Example">SELECT, Select, select, SeLeCt</span>.</td>
         </tr>
         <tr>
+<<<<<<< HEAD
             <td class="ItalicFont">ANSI SQL identifiers</td>
             <td>Not case sensitive</td>
             <td>These are not case sensitive unless they are delimited; for example <code>myTBL</code> matches <code>myTbl</code>, but <code>"myTBL"</code> does not match <code>"myTbl"</code>.</td>
         </tr>
         <tr>
             <td class="ItalicFont">Java-style identifiers</td>
+=======
+            <td><em>ANSI SQL identifiers</em></td>
+            <td>Not case sensitive</td>
+            <td>These are not case sensitive unless they are delimited.</td>
+        </tr>
+        <tr>
+            <td><em>Java-style identifiers</em></td>
+>>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
             <td>Always case sensitive</td>
             <td>
                 <p>These are NOT equivalent: <span class="Example">my_name, My_Name</span>.</p>
@@ -247,7 +360,11 @@ commands:
         </tr>
         <tr>
             <td><em>To escape a single quote or apostrophe within a character string</em></td>
+<<<<<<< HEAD
             <td>Single quotation mark (<code>'</code>)</td>
+=======
+            <td>Single quotation mark ( (<code>'</code>)</td>
+>>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
             <td>
                 <p class="noSpaceAbove">Since single quotation marks are used to delimit strings, you must escape any single quotation marks you want included in the string itself. </p>
                 <p>Use the single quotation mark itself as the escape character, which means that you enter two single quotation marks within a character string to include one single quotation mark. </p>
@@ -387,7 +504,11 @@ Here are several example command lines:
             </td>
         </tr>
         <tr>
+<<<<<<< HEAD
             <td>Print the current timestamp</td>
+=======
+            <td>Print a current time stamp</td>
+>>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
             <td><span class="AppCommand">splice&gt; values current_timestamp;</span>
             </td>
         </tr>
@@ -398,6 +519,7 @@ Here are several example command lines:
         </tr>
     </tbody>
 </table>
+<<<<<<< HEAD
 
 ## Scripting splice&gt; Commands
 
@@ -569,6 +691,8 @@ Follow these steps to create your script:
 
     </div>
 {: .boldFont}
+=======
+>>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
 
 </div>
 </div>

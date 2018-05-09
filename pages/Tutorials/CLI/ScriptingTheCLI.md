@@ -63,7 +63,7 @@ steps:
     {: .topLevel}
 
     If you've not yet done so, start Splice Machine and the
-    splice&gt; command line interface. If you don't know how to do so,
+    <span class="AppCommand">splice&gt;</span> command line interface. If you don't know how to do so,
     please see our [Introduction to the splice&gt; Command Line
     Interface](tutorials_cli_usingcli.html).
     {: .indentLevel1}
@@ -135,7 +135,9 @@ and then exits <span class="AppCommand">splice&gt;</span>.
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        #!/bin/bashecho "Running splice> commands from a shell script"./bin/sqlshell.sh << EOFconnect 'jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword';
+        #!/bin/bash
+        echo "Running splice> commands from a shell script"
+        ./bin/sqlshell.sh << EOFconnect 'jdbc:splice://localhost:1527/splicedb;user=YourUserId;password=YourPassword';
 
         create table players (
          ID SMALLINT NOT NULL PRIMARY KEY,

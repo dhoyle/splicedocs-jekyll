@@ -15,11 +15,9 @@ folder: Tutorials/CLI
 The <span class="AppCommand">splice&gt;</span> command line interpreter
 is an easy way to interact with your Splice Machine database. This topic
 introduces <span class="AppCommand">splice&gt;</span> and some of the
-more common commands you'll use
+more common commands you'll use.
 
-The command line interpreter, as documented here, is not available in
-our Cloud-Managed Database-as-Service product.
-{: .noteIcon}
+Our [Command Line Reference](cmdlineref_intro.html) contains additional information about command line syntax and commands, and includes examples of each available command. 
 
 {% if site.incl_notpdf %}
 <div markdown="1">
