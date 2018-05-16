@@ -1,4 +1,4 @@
----
+g---
 title: Splice Machine Authentication and Authorization
 summary: Describes how to configure and manage user authentication and user authorization, in two main sections
 keywords: authorizing, authenticating, roles, managing roles, native authentication, grant, set role, users, create user, create role, drop role, cascade
@@ -92,7 +92,7 @@ statement to grant a role to one or more users, to `PUBLIC`, or to
 another role. Roles can be contained within other roles and can inherit
 privileges from roles that they contain.
 
-When you `GRANT` a role to a user, that user is automatically defined as a *default* role for that user, which means that whenever that user connects to the database, they will have the permissions associated with that role. This `AS DEFAULT` behavior is how `GRANT` operates by default. If you want to grant a user a role just for their current session, you can specify the `NOT AS DEFAULT` option in your `GRANT` statement.
+When you `GRANT` a role to a user, that role is automatically defined as a *default* role for that user, which means that whenever that user connects to the database, they will have the permissions associated with that role. This `AS DEFAULT` behavior is how `GRANT` operates by default. If you want to grant a user a role just for their current session, you can specify the `NOT AS DEFAULT` option in your `GRANT` statement.
 
 You can also revoke the association of a role as `AS DEFAULT` behavior for a user by using the `NOT AS DEFAULT`
 {: .noteNote}

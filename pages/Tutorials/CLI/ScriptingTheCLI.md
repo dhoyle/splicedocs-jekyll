@@ -12,7 +12,6 @@ folder: Tutorials/CLI
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Scripting the splice&gt; Command Line Interface
 
-{% include splice_snippets/onpremonlytopic.md %}
 You can use two simple and different methods to script the <span
 class="AppCommand">splice&gt;</span> command line interpreter; both of
 described here:

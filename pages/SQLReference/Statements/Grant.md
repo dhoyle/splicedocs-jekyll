@@ -24,6 +24,7 @@ are granting privileges to a schema object or granting a role, as described in t
 * [Syntax for Tables](#TableSyntax)
 * [Syntax for Roles](#RoleSyntax)
 * [Syntax for Routines](#RoutineSyntax)
+* [Syntax for Sequences](#SeqenceSyntax)
 * [Syntax for User-Defined Types](#UserDefinedSyntax)
 
 This topic also contains these sections that help explain the use of the `GRANT` statement:
@@ -219,6 +220,31 @@ function-name  \|  procedure-name
 {: .paramName}
 
 The name of the function or procedure to which you are granting access.
+{: .paramDefnFirst}
+
+grantees
+{: .paramName}
+
+The user(s) or role(s) to whom you are granting access. See the [About
+Grantees](#AboutGrantees) section below for more information.
+{: .paramDefnFirst}
+
+</div>
+
+## Syntax for Sequences {#SequenceSyntax}
+
+<div class="fcnWrapperWide" markdown="1">
+    GRANT USAGE
+       ON SEQUENCE sequence-name
+       TO grantees
+{: .FcnSyntax xml:space="preserve"}
+
+</div>
+<div class="paramList" markdown="1">
+sequence-name
+{: .paramName}
+
+An SQL_Identifier specifying the name of the sequence to which you are granting access.
 {: .paramDefnFirst}
 
 grantees
