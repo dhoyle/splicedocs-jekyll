@@ -24,7 +24,7 @@ are granting privileges to a schema object or granting a role, as described in t
 * [Syntax for Tables](#TableSyntax)
 * [Syntax for Roles](#RoleSyntax)
 * [Syntax for Routines](#RoutineSyntax)
-* [Syntax for Sequences](#SeqenceSyntax)
+* [Syntax for Sequences](#SequenceSyntax)
 * [Syntax for User-Defined Types](#UserDefinedSyntax)
 
 This topic also contains these sections that help explain the use of the `GRANT` statement:
