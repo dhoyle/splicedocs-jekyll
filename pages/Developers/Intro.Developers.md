@@ -23,19 +23,19 @@ Machine Database. It is divided into these sections:
 ## Developer Fundamentals {#Fundamentals}
 This section contains topics that contain in-depth information about fundamental aspects of working with Splice Machine:
 
-*[Running Transactions](developers_fundamentals_transactions.html)
-*[Working with Date and Time Values](developers_fundamentals_dates.html)
-*[Using Database Triggers](developers_fundamentals_triggers.html)
-*[Using Foreign Keys](developers_fundamentals_foreignkeys.html)
-*[Using Window Functions](developers_fundamentals_windowfcns.html)
-*[Using Temporary Tables](developers_fundamentals_temptables.html)
-*[Using Spark Libraries](developers_fundamentals_sparklibs.html)
-*[Using the Virtual Table Interface](developers_fundamentals_vti.html)
-*[Using External Tables](developers_fundamentals_externaltables.html)
-*[Using HCatalog](developers_fundamentals_hcatalog.html)
-*[Connecting Through HAProxy](tutorials_connect_haproxy.html)
-*[Using the MapReduce API](developers_fundamentals_mapreduce.html)
-*[Working with HBase](developers_fundamentals_hbase.html)
+* [Running Transactions](developers_fundamentals_transactions.html)
+* [Working with Date and Time Values](developers_fundamentals_dates.html)
+* [Using Database Triggers](developers_fundamentals_triggers.html)
+* [Using Foreign Keys](developers_fundamentals_foreignkeys.html)
+* [Using Window Functions](developers_fundamentals_windowfcns.html)
+* [Using Temporary Tables](developers_fundamentals_temptables.html)
+* [Using Spark Libraries](developers_fundamentals_sparklibs.html)
+* [Using the Virtual Table Interface](developers_fundamentals_vti.html)
+* [Using External Tables](developers_fundamentals_externaltables.html)
+* [Using HCatalog](developers_fundamentals_hcatalog.html)
+* [Connecting Through HAProxy](tutorials_connect_haproxy.html)
+* [Using the MapReduce API](developers_fundamentals_mapreduce.html)
+* [Working with HBase](developers_fundamentals_hbase.html)
 
 ## Functions and Stored Procedures {#StoredProcs}
 This section contains information about creating and using stored procedures and functions with Splice Machine, in these topics:

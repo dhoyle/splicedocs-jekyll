@@ -49,7 +49,7 @@ correctly.
 ## Default Driver Connection Parameters   {#DefaultParams}
 
 The following table shows the default connection values you use with
-Splice Machine. Replace the your
+Splice Machine.
 
 <table summary="Table of default Splice Machine connection parameters.">
     <col />

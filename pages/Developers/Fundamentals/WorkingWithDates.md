@@ -12,18 +12,19 @@ folder: Developers/Fundamentals
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Working With Date and Time Values
 
-This topic provides an overview of working with dates in Splice Machine.
+This topic provides an overview of working with dates in Splice Machine, in these sections:
+
+* [Date and Time Functions](#Functions)
+* [Date Arithmetic](#Arithmetic)
 
 For date and time values to work as expected in your database, you must
 make sure that all nodes in your cluster are set to the same time zone;
-otherwise the data you read from your database may differ, when you
-communicate with different servers!
-
-Please contact your system administrator if you have any questions about
+otherwise the data you read from your database may differ when you
+communicate with different servers! Please contact your system administrator if you have any questions about
 this.
 {: .noteIcon}
 
-## Date and Time Functions
+## Date and Time Functions {#Functions}
 
 Here is a summary of the
  [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) functions included in
@@ -131,7 +132,7 @@ this release of Splice Machine:
         </tr>
     </tbody>
 </table>
-## Date Arithmetic
+## Date Arithmetic {#Arithmetic}
 
 Splice Machine provides simple arithmetic operations addition and
 subtraction on date and timestamp values. You can:

@@ -35,39 +35,39 @@ information on the database; they are most commonly used to:
 Each trigger has two required components:
 
 <table summary="Descriptions of trigger components.">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Triggering event (or statement)</td>
-                        <td>
-                            <p class="noSpaceAbove">The SQL statement that causes a trigger to be fired. This can be one of the following types of statement:</p>
-                            <ul>
-                                <li class="CodeFont" value="1">INSERT</li>
-                                <li class="CodeFont" value="2">UPDATE</li>
-                                <li class="CodeFont" value="3">DELETE</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Trigger action</td>
-                        <td>
-                            <p class="noSpaceAbove">The procedure that contains the SQL statements to be executed when a triggering statement is issued and any trigger restrictions evaluate to <code>TRUE</code>. </p>
-                            <p>A trigger action is one of the following:</p>
-                            <ul>
-                                <li>arbitrary SQL</li>
-                                <li>a call to a <a href="developers_fcnsandprocs_intro.html">user-defined stored procedure</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Component</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="ItalicFont">Triggering event (or statement)</td>
+            <td>
+                <p class="noSpaceAbove">The SQL statement that causes a trigger to be fired. This can be one of the following types of statement:</p>
+                <ul>
+                    <li class="CodeFont" value="1">INSERT</li>
+                    <li class="CodeFont" value="2">UPDATE</li>
+                    <li class="CodeFont" value="3">DELETE</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="ItalicFont">Trigger action</td>
+            <td>
+                <p class="noSpaceAbove">The procedure that contains the SQL statements to be executed when a triggering statement is issued and any trigger restrictions evaluate to <code>TRUE</code>. </p>
+                <p>A trigger action is one of the following:</p>
+                <ul>
+                    <li>arbitrary SQL</li>
+                    <li>a call to a <a href="developers_fcnsandprocs_intro.html">user-defined stored procedure</a></li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
 ### When a Trigger Fires
 
 You can define both statement and row triggers as either *before

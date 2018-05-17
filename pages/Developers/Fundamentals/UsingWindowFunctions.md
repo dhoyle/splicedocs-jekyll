@@ -28,87 +28,87 @@ following table:
 
 <div class="indented">
 <table>
-                    <col />
-                    <col />
-                    <col />
-                    <thead>
-                        <tr>
-                            <th>OrderID</th>
-                            <th>CustomerID</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>123</td>
-                            <td>1</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>
-                            144
-                        </td>
-                            <td>1</td>
-                            <td>250</td>
-                        </tr>
-                        <tr>
-                            <td>167</td>
-                            <td>1</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td>
-                            202
-                        </td>
-                            <td>
-                            1
-                        </td>
-                            <td>250</td>
-                        </tr>
-                        <tr>
-                            <td>209</td>
-                            <td>1</td>
-                            <td>325</td>
-                        </tr>
-                        <tr>
-                            <td>
-                            224
-                        </td>
-                            <td>
-                            1
-                        </td>
-                            <td>125</td>
-                        </tr>
-                        <tr>
-                            <td>66</td>
-                            <td>2</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>
-                            94
-                        </td>
-                            <td>
-                            2
-                        </td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td>127</td>
-                            <td>2</td>
-                            <td>300</td>
-                        </tr>
-                        <tr>
-                            <td>
-                            444
-                        </td>
-                            <td>
-                            2
-                        </td>
-                            <td>400</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerID</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>123</td>
+            <td>1</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>
+            144
+        </td>
+            <td>1</td>
+            <td>250</td>
+        </tr>
+        <tr>
+            <td>167</td>
+            <td>1</td>
+            <td>150</td>
+        </tr>
+        <tr>
+            <td>
+            202
+        </td>
+            <td>
+            1
+        </td>
+            <td>250</td>
+        </tr>
+        <tr>
+            <td>209</td>
+            <td>1</td>
+            <td>325</td>
+        </tr>
+        <tr>
+            <td>
+            224
+        </td>
+            <td>
+            1
+        </td>
+            <td>125</td>
+        </tr>
+        <tr>
+            <td>66</td>
+            <td>2</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>
+            94
+        </td>
+            <td>
+            2
+        </td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <td>127</td>
+            <td>2</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td>
+            444
+        </td>
+            <td>
+            2
+        </td>
+            <td>400</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 This query will find the first Order ID for each specified Customer ID
 in the above table:
@@ -131,69 +131,69 @@ The results for our sample table are:
 
 <div class="indented">
 <table summary="Sample table results from a FIRST_VALUE operation.">
-                    <col />
-                    <col />
-                    <col />
-                    <thead>
-                        <tr>
-                            <th>OrderID</th>
-                            <th>CustomerID</th>
-                            <th>FirstOrderID</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>123</td>
-                            <td>1</td>
-                            <td>123</td>
-                        </tr>
-                        <tr>
-                            <td>144</td>
-                            <td>1</td>
-                            <td>123</td>
-                        </tr>
-                        <tr>
-                            <td>167</td>
-                            <td>1</td>
-                            <td>123</td>
-                        </tr>
-                        <tr>
-                            <td>202</td>
-                            <td>1</td>
-                            <td>123</td>
-                        </tr>
-                        <tr>
-                            <td>209</td>
-                            <td>1</td>
-                            <td>123</td>
-                        </tr>
-                        <tr>
-                            <td>224</td>
-                            <td>1</td>
-                            <td>123</td>
-                        </tr>
-                        <tr>
-                            <td>66</td>
-                            <td>2</td>
-                            <td>66</td>
-                        </tr>
-                        <tr>
-                            <td>94</td>
-                            <td>2</td>
-                            <td>66</td>
-                        </tr>
-                        <tr>
-                            <td>127</td>
-                            <td>2</td>
-                            <td>66</td>
-                        </tr>
-                        <tr>
-                            <td>444</td>
-                            <td>2</td>
-                            <td>66</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerID</th>
+            <th>FirstOrderID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>123</td>
+            <td>1</td>
+            <td>123</td>
+        </tr>
+        <tr>
+            <td>144</td>
+            <td>1</td>
+            <td>123</td>
+        </tr>
+        <tr>
+            <td>167</td>
+            <td>1</td>
+            <td>123</td>
+        </tr>
+        <tr>
+            <td>202</td>
+            <td>1</td>
+            <td>123</td>
+        </tr>
+        <tr>
+            <td>209</td>
+            <td>1</td>
+            <td>123</td>
+        </tr>
+        <tr>
+            <td>224</td>
+            <td>1</td>
+            <td>123</td>
+        </tr>
+        <tr>
+            <td>66</td>
+            <td>2</td>
+            <td>66</td>
+        </tr>
+        <tr>
+            <td>94</td>
+            <td>2</td>
+            <td>66</td>
+        </tr>
+        <tr>
+            <td>127</td>
+            <td>2</td>
+            <td>66</td>
+        </tr>
+        <tr>
+            <td>444</td>
+            <td>2</td>
+            <td>66</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 See the [Window Frames](#Window2){: .selected} section below for a
 further explanation of this query.
@@ -222,7 +222,7 @@ Window functions:
   This `ORDER BY` clause is independent of the `ORDER BY` clause that
   specifies the order in which rows are output.
 
-  Note that the [ROW NUMBER](sqlref_builtinfcns_rownumber.html) **must
+  Note that the [`ROW NUMBER`](sqlref_builtinfcns_rownumber.html) **must
   contain** an `ORDER BY` clause.
 
 * The `OVER` clause can also contain an optional *frame clause* that
