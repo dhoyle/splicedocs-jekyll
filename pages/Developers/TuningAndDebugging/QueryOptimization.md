@@ -93,15 +93,51 @@ that a query should be run on (or not on) Spark, if possible.
 There are different kinds of hints you can supply, each of which is
 described in a section below; here's a summary:
 
-| Hint Type | Examples | Used to Specify |
-|----------
-| [Index](#Index) | `--splice-properties index=my_index` | Which index to use or not use |
-| [Join Order](#JoinOrder) | `--splice-properties joinOrder=fixed` | Which join order to use for two tables |
-| [Join Strategy](#JoinStrategy) | `--splice-properties joinStrategy=sortmerge` | How a join is processed (in conjunction with the Join Order hint) |
-| [Pinned Table](#Pinned) | `--splice-properties pin=true` | That you want the pinned (cached in memory) version of a table used in a query |
-| [Spark](#Spark) | `--splice-properties useSpark=true` | That you want a query to run (or not run) on Spark |
-| [Delete](#Delete) | `--splice-properties bulkDeleteDirectory='/path'` | That you are deleting a large amount of data and want to bypass the normal write pipeline to speed up the deletion. |
-{: summary="Splice Machine hint types"}
+
+<table>
+    <col width="120px"/>
+    <col width="45%"/>
+    <col />
+    <thead>
+        <tr>
+            <th>Hint Type</th>
+            <th>Example</th>
+            <th>Used to Specify</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#Index">Index</a></td>
+            <td class="CodeFont">--splice-properties index=my_index</td>
+            <td>Which index to use or not use</td>
+        </tr>
+        <tr>
+            <td><a href="#JoinOrder">Join Order</a></td>
+            <td class="CodeFont">--splice-properties joinOrder=fixed</td>
+            <td>Which join order to use for two tables</td>
+        </tr>
+        <tr>
+            <td><a href="#JoinStrategy">Join Strategy</a></td>
+            <td class="CodeFont">--splice-properties joinStrategy=sortmerge</td>
+            <td>How a join is processed (in conjunction with the Join Order hint)</td>
+        </tr>
+        <tr>
+            <td><a href="#Pinned">Pinned Table</a></td>
+            <td class="CodeFont">--splice-properties pin=true</td>
+            <td>That you want the pinned (cached in memory) version of a table used in a query</td>
+        </tr>
+        <tr>
+            <td><a href="#Spark">Spark</a></td>
+            <td class="CodeFont">--splice-properties useSpark=true</td>
+            <td>That you want a query to run (or not run) on Spark</td>
+        </tr>
+        <tr>
+            <td><a href="#Delete">Delete</a></td>
+            <td class="CodeFont">--splice-properties bulkDeleteDirectory='/path'</td>
+            <td>That you are deleting a large amount of data and want to bypass the normal write pipeline to speed up the deletion.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Including Hints in Your Queries
 

@@ -20,7 +20,7 @@ stored procedures in Splice Machine.
 You can create user-defined database functions that can be evaluated in
 SQL statements; these functions can be invoked where most other built-in
 functions are allowed, including within SQL expressions and `SELECT`
-statement. Functions must be deterministic, and cannot be used to make
+statements. Functions must be deterministic, and cannot be used to make
 changes to the database.
 
 You can create two kinds of functions:

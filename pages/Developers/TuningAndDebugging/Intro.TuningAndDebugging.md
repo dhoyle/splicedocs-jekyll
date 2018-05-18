@@ -16,42 +16,47 @@ This section contains the following topics to help you optimize your
 Splice Machine database queries:
 
 <table summary="Table of descriptions of and links to the sections in this section.">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Topic</th>
-                        <th>Describes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a>
-                        </td>
-                        <td>Gets you started with optimizing your queries for Splice Machine.</td>
-                    </tr>
-                    <tr>
-                        <td><a href="developers_tuning_usingstats.html">Using Statistics</a>
-                        </td>
-                        <td>Using our statistics gathering facility to help optimize queries.</td>
-                    </tr>
-                    <tr>
-                        <td><a href="developers_tuning_explainplan.html">Explain Plan</a>
-                        </td>
-                        <td>The Explain Plan feature, which allows you to examine the execution plan for a query without executing the query.</td>
-                    </tr>
-                    <tr>
-                        <td><a href="developers_tuning_logging.html">Logging</a>
-                        </td>
-                        <td>The Splice Machine logging facility.</td>
-                    </tr>
-                    <tr>
-                        <td><a href="developers_tuning_debugging.html">Debugging</a>
-                        </td>
-                        <td>Describes the parameter values to use when using debugger software with Splice Machine.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Describes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a>
+            </td>
+            <td>Gets you started with optimizing your queries for Splice Machine.</td>
+        </tr>
+        <tr>
+            <td><a href="developers_tuning_usingstats.html">Using Statistics</a>
+            </td>
+            <td>Using our statistics gathering facility to help optimize queries.</td>
+        </tr>
+        <tr>
+            <td><a href="developers_tuning_explainplan.html">Explain Plan</a>
+            </td>
+            <td>The Explain Plan feature, which allows you to examine the execution plan for a query without executing the query.</td>
+        </tr>
+        <tr>
+            <td><a href="developers_tuning_logging.html">Logging</a>
+            </td>
+            <td>The Splice Machine logging facility.</td>
+        </tr>
+        <tr>
+            <td><a href="developers_tuning_debugging.html">Debugging</a>
+            </td>
+            <td>Describes the parameter values to use when using debugger software with Splice Machine.</td>
+        </tr>
+        <tr>
+            <td><a href="developers_tuning_snapshots.html">Using Snapshots</a></td>
+            <td>How to use the Splice Machine snapshot feature to
+            create a restorable snapshot of a table or schema</td>
+        </tr>
+    </tbody>
+</table>
 {% include splice_snippets/githublink.html %}
 </div>
 </section>

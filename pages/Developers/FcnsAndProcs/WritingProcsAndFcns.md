@@ -57,7 +57,7 @@ Follow the steps below to write a Splice Machine database function.
 2.  Create the function in the database
     {: .topLevel}
 
-    You can find the complete syntax for `CREATE FUNCTION `in the
+    You can find the complete syntax for [`CREATE FUNCTION`](sqlref_statements_createfunction.html) in the
     *Splice Machine SQL Reference* manual.
     {: .indentLevel1}
 

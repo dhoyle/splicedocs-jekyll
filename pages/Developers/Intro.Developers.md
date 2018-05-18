@@ -18,7 +18,7 @@ Machine Database. It is divided into these sections:
 
 * [Developer Fundamentals](#Fundamentals)
 * [Functions and Stored Procedures](#StoredProcs)
-* [Tuning and Debugging] (#Tuning)
+* [Tuning and Debugging](#Tuning)
 
 ## Developer Fundamentals {#Fundamentals}
 This section contains topics that contain in-depth information about fundamental aspects of working with Splice Machine:
