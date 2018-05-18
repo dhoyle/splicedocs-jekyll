@@ -54,13 +54,11 @@ connection tutorials:
         </tr>
         <tr>
             <td><em>User name</em></td>
-            <td><p><span class="HighlightedCode">splice</span></p>
-                <p>Substitute your own user ID.</p></td>
+            <td>Substitute your own user ID.</td>
         </tr>
         <tr>
             <td><em>Password</em></td>
-            <td><p><span class="HighlightedCode">admin</span></p>
-                <p>Substitute your own password.</p></td>
+            <td>Substitute your own password.</td>
 </td>
         </tr>
         <tr>
