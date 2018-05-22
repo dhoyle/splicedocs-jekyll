@@ -321,37 +321,41 @@ And this uses a `joinOrder` hint along with two `joinStrategy` hints:
 You can specify these join strategies:
 
 <table summary="Join strategy hint types">
-<tbody>
-<tr><th>JoinStrategy Value</th><th>Strategy Description</th></tr>
-<tr>
-<td><code>BROADCAST</code></td>
-<td>
-<p class="noSpaceAbove">Read the results of the Right Result Set (<em>RHS</em>) into memory, then for each row in the left result set (<em>LHS</em>), perform a local lookup to determine the right side of the join.</p>
-<p class="noSpaceAbove"><code>BROADCAST</code> will only work on equijoin (<code>=</code>) predicates that do not include a function call.</p>
-</td>
-</tr>
-<tr>
-<td><code>MERGE</code></td>
-<td>
-<p class="noSpaceAbove">Read the Right and Left result sets simultaneously in order and join them together as they are read.</p>
-<p class="noSpaceAbove"><code>MERGE</code> joins require that both the left and right result sets be sorted according to the join keys. <code>MERGE</code> requires an equijoin predicate that does not include a function call.</p>
-</td>
-</tr>
-<tr>
-<td><code>NESTEDLOOP</code></td>
-<td>
-<p>For each row on the left, fetch the values on the right that match the join.</p>
-<p><code>NESTEDLOOP</code> is the only join that can work with any join predicate of any type; however this type of join is generally very slow.</p>
-</td>
-</tr>
-<tr>
-<td><code>SORTMERGE</code></td>
-<td>
-<p class="noSpaceAbove">Re-sort both the left and right sides according to the join keys, then perform a <code>MERGE</code> join on the results.</p>
-<p class="noSpaceAbove"><code>SORTMERGE</code> requires an equijoin predicate with no function calls.</p>
-</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr><th>JoinStrategy Value</th><th>Strategy Description</th></tr>
+        <tr>
+            <td><code>BROADCAST</code></td>
+            <td>
+                <p class="noSpaceAbove">Read the results of the Right Result Set (<em>RHS</em>) into memory, then for each row in the left result set (<em>LHS</em>), perform a local lookup to determine the right side of the join.</p>
+                <p class="noSpaceAbove"><code>BROADCAST</code> will only work if at least one of the following is true:</p>
+                <ul>
+                   <li>There is at least one equijoin (<code>=</code>) predicate that does not include a function call.</li>
+                   <li>There is at least one inequality join predicate, the RHS is a base table, and the join is evaluated in Spark.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+        <td><code>MERGE</code></td>
+            <td>
+                <p class="noSpaceAbove">Read the Right and Left result sets simultaneously in order and join them together as they are read.</p>
+                <p class="noSpaceAbove"><code>MERGE</code> joins require that both the left and right result sets be sorted according to the join keys. <code>MERGE</code> requires an equijoin predicate that does not include a function call.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>NESTEDLOOP</code></td>
+            <td>
+                <p>For each row on the left, fetch the values on the right that match the join.</p>
+                <p><code>NESTEDLOOP</code> is the only join that can work with any join predicate of any type; however this type of join is generally very slow.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>SORTMERGE</code></td>
+            <td>
+                <p class="noSpaceAbove">Re-sort both the left and right sides according to the join keys, then perform a <code>MERGE</code> join on the results.</p>
+                <p class="noSpaceAbove"><code>SORTMERGE</code> requires an equijoin predicate with no function calls.</p>
+            </td>
+        </tr>
+    </tbody>
 </table>
 ### Pinned Table Hint   {#Pinned}
 
