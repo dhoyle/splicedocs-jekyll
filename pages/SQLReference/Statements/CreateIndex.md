@@ -25,6 +25,7 @@ CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexNam
       [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
      )
    [ SPLITKEYS splitKeyInfo HFILE hfileLocation ]
+   [ EXCLUDE ( NULL | DEFAULT ) KEYS ]
 </pre>
 </div>
 <div class="paramList" markdown="1">
@@ -170,6 +171,18 @@ SPLITKEYS LOCATION '/tmp/ordersKey.csv'
 
 The `/tmp/ordersKey.csv` file specifies the index keys; it uses the `|` character as a column delimiter. The temporary HFiles are created in the `/tmp/HFiles` directory.
 
+## Excluding NULL and Default Values
+
+You can include the optional `EXCLUDE` clause to specify that you want to exclude from the index either default values or NULL values for the column. This can be desirable for a large table in which the index column is largely populated with the same (default or NULL) value; excluding these values in the index can mean:
+
+* avoiding a large amount of wasted storage space for the index
+* a significant reduction of system resources needed to maintain a very large index
+
+For an index with multiple columns, only rows with NULL or default values on the leading index column are excluded.
+{: .noteIcon}
+
+Excluding NULL or default values is not applicable for all queries; the Splice Machine optimizer will automatically determine automatically whether or not such an index can be applied in a specific query. The optimizer determines this based on both the cost of using the index, and whether the predicates in the query can guarantee that no rows with NULL or default values could be qualified.
+
 ## Indexes and constraints
 
 Unique and primary key constraints generate indexes that enforce or
@@ -192,7 +205,9 @@ Prepared statements that involve `SELECT, INSERT, UPDATE`, and `DELETE`
 on the table referenced by the `CREATE INDEX` statement are invalidated
 when the index is created.
 
-## Example
+## Examples
+
+Here's a simple example of creating an index on a table:
 
 <div class="preWrapper" markdown="1">
     splice> CREATE TABLE myTable (ID INT NOT NULL, NAME VARCHAR(32) NOT NULL );
@@ -201,8 +216,94 @@ when the index is created.
     splice> CREATE INDEX myIdx ON myTable(ID);
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
-
 </div>
+
+### Example of Using the EXCLUDE Clause
+This example uses the EXCLUDE DEFAULT KEYS clause, and shows you how the optimizer determines the applicability of the index with that clause.
+
+<div class="preWrapper" markdown="1">
+    splice> CREATE TABLE myTable2 (col1 int, col2 int default 5);
+    0 rows inserted/updated/deleted
+
+    splice> CREATE INDEX myIdx2 ON myTable2(col2) EXCLUDE DEFAULT KEYS;
+    0 rows inserted/updated/deleted
+
+    splice> insert into myTable2 values (1,1), (2,2);
+    2 rows inserted/updated/deleted
+
+    splice> insert into myTable2(col1) values 3,4,5;
+    3 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+</div>
+
+Now the table contains 5 rows, 3 of which have default values in `col2`.
+
+<div class="preWrapper" markdown="1">
+    splice> select * from myTable2;
+    COL1       |COL2
+    -----------------------
+    1          |1
+    2          |2
+    3          |5
+    4          |5
+    5          |5
+
+    5 rows selected
+{: .Example xml:space="preserve"}
+</div>
+
+As you can see from the generated plan, the optimizer determines that the following query can use the index `myIdx2` because it can tell for sure that the rows with default values on `col2` will not be qualified:
+
+<div class="preWrapper" markdown="1">
+    splice> explain select col2 from mytable2 where col2 < 5;
+    Plan
+    ------------------------------------------------------------------------------------------------
+    Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
+      ->  ScrollInsensitive(n=2,totalCost=8.207,outputRows=18,outputHeapSize=18 B,partitions=1)
+        ->  IndexScan[MYIDX2(1713)](n=1,totalCost=4.027,scannedRows=18,outputRows=18,outputHeapSize=18 B,partitions=1,baseTable=MYTABLE2(1696),preds=[(COL2[0:1] < 5)])
+
+    3 rows selected
+    splice> select col2 from mytable2 where col2 < 5;
+    COL2
+    -----------
+    1
+    2
+
+    2 rows selected
+{: .Example}
+</div>
+
+The optimizer determines that the following query *cannot* use `myIdx2`, because rows with the default value in `col2` could survive the predicate `col2 > 3`:
+
+<div class="preWrapper" markdown="1">
+    splice> explain select col2 from mytable2 where col2 > 3;
+    Plan
+    ----------------------------------------------------------------------------------------------------
+    Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
+      ->  ScrollInsensitive(n=2,totalCost=8.22,outputRows=18,outputHeapSize=18 B,partitions=1)
+        ->  TableScan[MYTABLE2(1696)](n=1,totalCost=4.04,scannedRows=20,outputRows=18,outputHeapSize=18 B,partitions=1,preds=[(COL2[0:1] > 3)])
+
+    3 rows selected
+
+    COL2
+    -----------
+    5
+    5
+    5
+
+    3 rows selected
+{: .Example}
+</div>
+
+Now, if we force the index to be used in the above case, you'll see an error:
+
+<div class="preWrapper" markdown="1">
+    splice> explain select col2 from mytable2 --splice-properties index=myIdx2
+    > where col2 > 3;
+    ERROR 42Y69: No valid execution plan was found for this statement. This is usually because an infeasible join strategy was chosen, or because an index was chosen which prevents the chosen join strategy from being used.
+{: .Example}
+</div>
+
 ## See Also
 
 * [`DELETE`](sqlref_statements_delete.html) statement
