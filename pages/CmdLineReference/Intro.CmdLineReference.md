@@ -18,16 +18,18 @@ command. Another topic, [Using the splice&gt; Command Line
 Interface](cmdlineref_cmdlinesyntax.html), presents general syntax and
 usage help for the <span class="AppCommand">splice&gt;</span> prompt.
 
+The remainder of this topic summarizes which commands you can use, depending on how you are connecting with your Splice Machine database:
+
 * [Commands you can use with all connections to Splice Machine databases](#splice), which
   means that you can use them with the `sqlshell` interface in our *On-Premise Database* and *Database-as-Service* products, and also with programs that connect to a Splice Machine database using JDBC or ODBC, including the Zeppelin notebook interface in our Database Service.
 
 * [Commands you can only use with the <span
-  class="AppCommand">splice&gt;</span> (`sqlshell.sh`) command line interface in our *On-Premise Database* and *Database-as-Service* products](#spliceproducts). These are mostly commands that display
-  information about the database in a terminal interface, and are not available through JDBC or ODBC connections.
+  class="AppCommand">splice&gt;</span> (`sqlshell.sh`) command line interface](#spliceproducts) in our *On-Premise Database* and *Database-as-Service* products. These are mostly commands that display
+  information about the database in a terminal interface, which are not available through JDBC or ODBC connections.
 
 ## Commands You Can Use with All Connections to a Splice Machine Database   {#splice}
 
-The following table sunmmarizes the commands that you can use them with the `sqlshell` interface in our *On-Premise Database* and *Database-as-Service* products, and also with programs that connect to a Splice Machine database using JDBC or ODBC, including the Zeppelin notebook interface in our Database Service.
+The following table summarizes the commands that you can use them with the `sqlshell` interface in our *On-Premise Database* and *Database-as-Service* products, and also with programs that connect to a Splice Machine database using JDBC or ODBC, including the Zeppelin notebook interface in our Database Service.
 
 <table summary="Command Line Interface - Splice commands">
     <col />

@@ -12,18 +12,18 @@ folder: CmdLineReference
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using the splice&gt; Command Line Interface
 
-This topic presents information that will help you in using the Splice
+This topic presents information that will help you to use the Splice
 Machine <span class="AppCommand">splice&gt;</span> command line
 interpreter, in the following sections:
 
 * The [splice&gt; Command Line Interpreter](#splice%3E){: .selected}
-  section shows you how to invoke the splice&gt; command line.
+  section shows you how to invoke the <span class="AppCommand">splice&gt;</span> command line.
 * The [Command Line Output](#Command){: .selected} section describes how
   you can adjust the appearance of output from the interepreter.
 * The [Command Line Syntax](#Syntax){: .selected} section summarizes the
   syntax of commands, including capitalization and case-sensitivity
   rules, as well as various special characters you can use in your
-  commands. It also shows you how to include comments in your command
+  commands. It also shows you how to include comments on your command
   lines and how to run a file of SQL commands.
 * The [Example Command Lines](#ExampleCommands){: .selected} section
   shows several examples of command lines.
@@ -67,7 +67,7 @@ values. Here's the syntax:
 
 <div class="preWrapper" markdown="1">
     sqlshell.sh [-h host] [-p port ] [-u username] [-s password] [-f commandsFile]
-{: .ShellCommand xml:space="preserve"}
+{: .FcnSyntax xml:space="preserve"}
 
 </div>
 <div class="paramList" markdown="1">
@@ -106,8 +106,21 @@ The password for your Splice Machine database.
 
 The name of a file with SQL commands in it: `sqlshell` starts up the
 <span class="AppCommand">splice&gt;</span> command line interpreter,
-runs the commands in the file, and then exits. For example:
+runs the commands in the file, and then exits.
 {: .paramDefnFirst}
+
+In the following example, we tell the interpreter to run the SQL commands in a file named `test.sql`,
+which contains these two statements:
+{: .paramDefn}
+
+<div class="preWrapperWide" markdown="1">
+    elapsedtime on;
+    select count(*) from CUST_EMAIL;
+{: .Plain xml:space="preserve"}
+</div>
+
+When you invoke this file, you'll see this in your terminal window:
+{: .paramDefn}
 
 <div class="preWrapperWide" markdown="1">
     $ ./sqlshell.sh -f /home/mydir/sql/test.sql
@@ -128,19 +141,10 @@ runs the commands in the file, and then exits. For example:
     ELAPSED TIME = 6399 milliseconds
     splice>
     $
-{: .ShellCommand xml:space="preserve"}
-
-</div>
-The `test.sql` file used in the above example contains the following
-commands:
-
-<div class="preWrapperWide" markdown="1">
-    elapsedtime on;
-    select count(*) from CUST_EMAIL;
-{: .ShellCommand xml:space="preserve"}
-
+{: .Example xml:space="preserve"}
 </div>
 </div>
+
 ## Command Line Output   {#Command}
 
 Output from <span class="AppCommand">splice&gt;</span> commands is
@@ -183,118 +187,118 @@ press the `Return` or `Enter` key.
 Certain identifiers and keywords are case sensitive:
 
 <table summary="Summary of case sensitivity in the splice&gt; command line syntax.">
-                <col />
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Identifier</th>
-                        <th>Case Sensitive?</th>
-                        <th>Notes and Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="ItalicFont">
-                            <p>SQL keywords</p>
-                        </td>
-                        <td>Not case sensitive</td>
-                        <td>These are all equivalent: <span class="Example">SELECT, Select, select, SeLeCt</span>.</td>
-                    </tr>
-                    <tr>
-                        <td><em>ANSI SQL identifiers</em></td>
-                        <td>Not case sensitive</td>
-                        <td>These are not case sensitive unless they are delimited.</td>
-                    </tr>
-                    <tr>
-                        <td><em>Java-style identifiers</em></td>
-                        <td>Always case sensitive</td>
-                        <td>
-                            <p>These are NOT equivalent: <span class="Example">my_name, My_Name</span>.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Identifier</th>
+            <th>Case Sensitive?</th>
+            <th>Notes and Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="ItalicFont">SQL keywords</td>
+            <td>Not case sensitive</td>
+            <td>These are all equivalent: <span class="Example">SELECT, Select, select, SeLeCt</span>.</td>
+        </tr>
+        <tr>
+            <td class="ItalicFont">ANSI SQL identifiers</td>
+            <td>Not case sensitive</td>
+            <td>These are not case sensitive unless they are delimited; for example <code>myTBL</code> matches <code>myTbl</code>, but <code>"myTBL"</code> does not match <code>"myTbl"</code>.</td>
+        </tr>
+        <tr>
+            <td class="ItalicFont">Java-style identifiers</td>
+            <td>Always case sensitive</td>
+            <td>
+                <p>These are NOT equivalent: <span class="Example">my_name, My_Name</span>.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ### Special Characters You Can Use   {#Special}
 
 The following table describes the special characters you can use in
 commands:
 
 <table summary="Summary of special character usage in splice&gt; command line syntax.">
-                <col />
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Purpose</th>
-                        <th>Character(s) to use</th>
-                        <th>Notes and example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><em>To delimit special identifiers</em></td>
-                        <td>Double quotation marks (<code>"</code>)</td>
-                        <td>Special identifiers are  also known as <em>delimited identifiers</em>.</td>
-                    </tr>
-                    <tr>
-                        <td><em>To delimit character strings</em></td>
-                        <td>Single quotation marks (<code>'</code>)</td>
-                        <td> </td>
-                    </tr>
-                    <tr>
-                        <td><em>To escape a single quote or apostrophe within a character string</em></td>
-                        <td>Single quotation mark ( (<code>'</code>)</td>
-                        <td>
-                            <p class="noSpaceAbove">Since single quotation marks are used to delimit strings, you must escape any single quotation marks you want included in the string itself. </p>
-                            <p>Use the single quotation mark itself as the escape character, which means that you enter two single quotation marks within a character string to include one single quotation mark. </p>
-                            <p>Example: <span class="Example">'This string includes ''my quoted string'' within it.'</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>To escape a double quote</em></td>
-                        <td><em>Not needed </em>
-                        </td>
-                        <td>You can simply include a double quotation mark in your command lines.</td>
-                    </tr>
-                    <tr>
-                        <td><em>To specify a wild card within a Select expression</em></td>
-                        <td>The asterisk (<code>*</code>) character</td>
-                        <td>
-                            <p class="noSpaceAbove">This is the SQL metasymbol for selecting all matching entries.</p>
-                            <p>Example: <span class="Example">SELECT * FROM MyTable;</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>To specify a wild card sequence in a string with the <code>LIKE</code> operator</em></td>
-                        <td>The percentage (<code>%</code>) character</td>
-                        <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE 'Ga%';</span></td>
-                    </tr>
-                    <tr>
-                        <td><em>To specify a single wild card character in a string with the <code>LIKE</code> operator</em></td>
-                        <td>The underline (<code>_</code>) character</td>
-                        <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE '%Er_n%';</span></td>
-                    </tr>
-                    <tr>
-                        <td><em>To begin a single-line comment</em></td>
-                        <td>Two dashes (<code>--</code>)</td>
-                        <td>
-                            <p class="noSpaceAbove"><span class="Example"> -- the following selects everything in my table:</span>
-                                <br /><span class="Example">SELECT * FROM MyTable;</span>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>To bracket a multi-line comment</em></td>
-                        <td><code>/*</code> and <code>*/</code></td>
-                        <td>
-                            <p class="noSpaceAbove">All text between the comment start <code>/*</code> and the comment end <code>*/</code> is ignored.</p><pre class="ExampleCell" xml:space="preserve">/* the following selects everything in my table,
-   which we'll then display on the screen */
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Purpose</th>
+            <th>Character(s) to use</th>
+            <th>Notes and example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><em>To delimit special identifiers</em></td>
+            <td>Double quotation marks (<code>"</code>)</td>
+            <td>Special identifiers are  also known as <em>delimited identifiers</em>.</td>
+        </tr>
+        <tr>
+            <td><em>To delimit character strings</em></td>
+            <td>Single quotation marks (<code>'</code>)</td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td><em>To escape a single quote or apostrophe within a character string</em></td>
+            <td>Single quotation mark (<code>'</code>)</td>
+            <td>
+                <p class="noSpaceAbove">Since single quotation marks are used to delimit strings, you must escape any single quotation marks you want included in the string itself. </p>
+                <p>Use the single quotation mark itself as the escape character, which means that you enter two single quotation marks within a character string to include one single quotation mark. </p>
+                <p>Example: <span class="Example">'This string includes ''my quoted string'' within it.'</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>To escape a double quote</em></td>
+            <td><em>Not needed </em>
+            </td>
+            <td>You can simply include a double quotation mark in your command lines.</td>
+        </tr>
+        <tr>
+            <td><em>To specify a wild card within a Select expression</em></td>
+            <td>The asterisk (<code>*</code>) character</td>
+            <td>
+                <p class="noSpaceAbove">This is the SQL metasymbol for selecting all matching entries.</p>
+                <p>Example: <span class="Example">SELECT * FROM MyTable;</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>To specify a wild card sequence in a string with the <code>LIKE</code> operator</em></td>
+            <td>The percentage (<code>%</code>) character</td>
+            <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE 'Ga%';</span></td>
+        </tr>
+        <tr>
+            <td><em>To specify a single wild card character in a string with the <code>LIKE</code> operator</em></td>
+            <td>The underline (<code>_</code>) character</td>
+            <td>Example: <span class="Example">SELECT * FROM MyTable WHERE Name LIKE '%Er_n%';</span></td>
+        </tr>
+        <tr>
+            <td><em>To begin a single-line comment</em></td>
+            <td>Two dashes (<code>--</code>)</td>
+            <td>
+                <p class="noSpaceAbove"><span class="Example"> -- the following selects everything in my table:</span>
+                    <br /><span class="Example">SELECT * FROM MyTable;</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>To bracket a multi-line comment</em></td>
+            <td><code>/*</code> and <code>*/</code></td>
+            <td>
+                <p class="noSpaceAbove">All text between the comment start <code>/*</code> and the comment end <code>*/</code> is ignored.</p><pre class="ExampleCell" xml:space="preserve">/* the following selects everything in my table,
+which we'll then display on the screen */
 SELECT * FROM MyTable;</pre>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ### Entering Multi-line Commands   {#pages}
 
 When using the command line (the <span
@@ -358,42 +362,43 @@ here.](tutorials_cli_rlwrap.html)
 Here are several example command lines:
 
 <table summary="Example command lines">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Operation</th>
-                        <th>Command Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Display a list of all tables and their schemas</td>
-                        <td><span class="AppCommand">splice&gt; show tables;</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Display the columns and attributes of a table</td>
-                        <td><span class="AppCommand">splice&gt; describe tableA;</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Limit the number of rows returned from a select statement</td>
-                        <td><span class="AppCommand">splice&gt; select * from tableA { limit 10 };</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Print a current time stamp</td>
-                        <td><span class="AppCommand">splice&gt; values current_timestamp;</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <p class="noteNote">Remember that you must end your command lines with the semicolon (<code>;</code>) character, which submits the command line to the interpreter.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Operation</th>
+            <th>Command Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Display a list of all tables and their schemas</td>
+            <td><span class="AppCommand">splice&gt; show tables;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Display the columns and attributes of a table</td>
+            <td><span class="AppCommand">splice&gt; describe tableA;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Limit the number of rows returned from a select statement</td>
+            <td><span class="AppCommand">splice&gt; select * from tableA { limit 10 };</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Print the current timestamp</td>
+            <td><span class="AppCommand">splice&gt; values current_timestamp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p class="noteNote">Remember that you must end your command lines with the semicolon (<code>;</code>) character, which submits the command line to the interpreter.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ## Scripting splice&gt; Commands
 
 You can use the Splice Machine Command Line Interface (<span

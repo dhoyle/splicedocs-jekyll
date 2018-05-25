@@ -29,7 +29,7 @@ target="_blank"}.
 
 This section is organized into the following topics:
 
-* The next section, [About the Splice Machine Database Console](#About),
+* The remainder of this topic, [About the Splice Machine Database Console](#About),
   tells you about the Database Console, including how to access it in
   your browser.
 * The [Features of the Splice Machine Database

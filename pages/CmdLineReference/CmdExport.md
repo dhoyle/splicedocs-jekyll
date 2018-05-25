@@ -145,7 +145,7 @@ file system using the Hadoop FS command `getmerge`. The syntax for
 
 </div>
 
-Use the *exportPath* directory as the value of sourceDir to copy all of
+Use the *exportPath* directory as the value of `sourceDir` to copy all of
 the exported CSV files to your *localPath*.
 
 For more information about the `getmerge` command, see
