@@ -384,7 +384,11 @@ The standard Java library does not support microsecond precision, so you
 and import such values with the desired precision.
 {: .noteNote}
 
-#### Timestamps and Importing Data at Different Locations
+#### Converting Out-of-Range Timestamp Values Upon Import
+
+{% include splice_snippets/importtimestampfix.md %}
+
+#### Timestamps and Importing Data at Different Locations {#TSConvert}
 
 Note that timestamp values are relative to the geographic location at
 which they are imported, or more specifically, relative to the timezone

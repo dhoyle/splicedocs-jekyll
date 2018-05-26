@@ -286,8 +286,7 @@ their data is with date, time, and timestamp values.
 Splice Machine adheres to the Java `SimpleDateFormat` syntax for all
 date, time, and timestamp values, `SimpleDateFormat` is described here:
 
-[https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html][1]{:
-target="_blank"}
+<a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html" target="_blank">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>
 {: .indentLevel1}
 
 Splice Machine's implementation of `SimpleDateFormat` is case-sensitive;
@@ -314,14 +313,14 @@ importing must use the same timestamp format.
 
 </div>
 
+### Converting Out-of-Range Timestamp Values Upon Import  {#TSConvert}
+
+{% include splice_snippets/importtimestampfix.md %}
+
 ### Additional Notes
 
 A few additional notes:
 
-* The `Timestamp` data type has a range of `1678-01-01` to `2261-12-31`.
-  Some customers have used dummy timestamp values like `9999-01-01`,
-  which will fail because the value is out of range for a timestamp.
-  Note that this is not an issue with `Date` values.
 * Splice Machine suggests that, if your data contains any date or
   timestamp values that are not in the format `yyyy-MM-dd HH:mm:ss`, you
   create a simple table that has just one or two columns and test

@@ -136,7 +136,8 @@ You can specify a table constraint on an external table; for example:
        ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'
        LINES TERMINATED BY '\\n'
        STORED AS TEXTFILE
-       LOCATION '/users/myName/myTextFile';0 rows inserted/updated/deleted
+       LOCATION '/users/myName/myTextFile';
+     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
