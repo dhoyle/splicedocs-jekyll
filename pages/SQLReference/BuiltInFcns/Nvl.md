@@ -27,7 +27,7 @@ is equivalent to:
 
 <div class="preWrapperWide" markdown="1">
     CASE WHEN expression_1 IS NOT NULL THEN expression_1
-       ELSE WHEN expression_1 IS NOT NULL THEN expression_2
+       ELSE WHEN expression_2 IS NOT NULL THEN expression_2
      ...
        ELSE expression_n;
 {: .Example xml:space="preserve"}
