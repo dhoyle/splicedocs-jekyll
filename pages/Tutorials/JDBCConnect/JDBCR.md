@@ -14,7 +14,7 @@ folder: Tutorials/JDBCConnect
 
 This topic shows you how to connect to a Splice Machine database using our JDBC driver with R, using the following steps.
 
-The steps in this topi use *R Studio*, which is _not_ required.
+The steps in this topic use *R Studio*, which is _not_ required.
 {: .noteNote}
 
 <div class="opsStepsList" markdown="1">
