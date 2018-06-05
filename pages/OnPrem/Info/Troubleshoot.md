@@ -26,6 +26,7 @@ This topic provides troubleshooting guidance for these issues that you may encou
 * [Resource Allocation for Backup Jobs](#BackupResources)
 * [Bulk Import of Very Large Datasets with Spark 2.2](#BulkImportSparkSep)
 * [Using Bulk Import on a KMS-Enabled Cluster](#BulkImportKMS)
+* [Assigning Full Administrative Privileges to Users](#SuperUsers)
 
 
 ## Restarting Splice Machine After HMaster Failure {#HMasterRestart}
@@ -249,6 +250,41 @@ If you are a Splice Machine On-Premise Database customer and want to use bulk im
    ````
 
 For more information about KMS, see <a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html" target="_blank">https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html</a>.
+
+## Assigning Full Administrative Privileges to Users {#SuperUsers}
+
+The default administrative user ID in Splice Machine is `splice`. If you want to configure other users to have the same privileges as the `splice` user, follow these steps:
+
+1. Add an LDAP `admin_group` mapping for the `splice` user to the `HBase Service Advanced Configuration Snippet (Safety Valve) for hbase-site.xml`.  This maps members of the `admin_group` to the same privileges as the `splice` user:
+   <div class="preWrapperWide"><pre class="Example">
+&lt;property&gt;
+    &lt;name&gt;splice.authentication.ldap.mapGroupAttr&lt;/name&gt;
+    &lt;value&gt;admin_group=splice&lt;/value&gt;
+&lt;/property&gt;</pre>
+   </div>
+
+2. Assign the `admin_group` to a user by specifying `cn=admin_group` in the user definition. For example, we'll add a `myUser` with these attributes:
+
+   <div class="preWrapperWide"><pre class="Example">
+dn: cn=admin_group,ou=Users,dc=splicemachine,dc=colo
+sn: MyUser
+objectClass: inetOrgPerson
+userPassword: myPassword
+uid: myUser</pre>
+   </div>
+
+   Now `myUser` belongs to the `admin_group` group, and thus gains all privileges associated with that group.
+
+### Assigning to Multiple Groups
+You can assign the privileges to multiple groups by specifying a comma separated list in the `ldap.mapGroupAttr` property. For example, changing its definition to this:
+   <div class="preWrapperWide"><pre class="Example">
+&lt;property&gt;
+    &lt;name&gt;splice.authentication.ldap.mapGroupAttr&lt;/name&gt;
+    &lt;value&gt;admin_group=splice,cdl_group=splice&lt;/value&gt;
+&lt;/property&gt;</pre>
+   </div>
+
+Means that members of both the `admin_group` and `cdl_group` groups will have the same privileges as the `splice` user.
 
 </div>
 </section>
