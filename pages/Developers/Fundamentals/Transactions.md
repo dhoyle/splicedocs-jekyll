@@ -166,6 +166,7 @@ The following diagram shows an example of snapshot isolation for a set
 of transactions, some of which are running in parallel.
 
 In this example, the T3' transaction has to be retried by the user.
+{: .noteNote}
 
 ![Snapshot Isolation](images/GS.SnapshotIsolation.png){: .indented}
 
