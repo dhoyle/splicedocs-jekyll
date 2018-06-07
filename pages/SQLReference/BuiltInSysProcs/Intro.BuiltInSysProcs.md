@@ -67,6 +67,10 @@ database:
                         </td>
                     </tr>
                     <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_checktable.html"><code>SYSCS_UTIL.CHECK_TABLE</code></a></td>
+                        <td>Reports on inconsistencies between a table and its indexes.</td>
+                    </tr>
+                    <tr>
                         <td><a href="sqlref_sysprocs_compactregion.html"><code>SYSCS_UTIL.COMPACT_REGION</code></a></td>
                         <td>Performs a minor compaction on a table or index region.</td>
                     </tr>

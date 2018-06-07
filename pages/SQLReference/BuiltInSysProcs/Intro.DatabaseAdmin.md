@@ -51,6 +51,10 @@ database:
                         </td>
                     </tr>
                     <tr>
+                        <td class="CodeFont"><a href="sqlref_sysprocs_checktable.html"><code>SYSCS_UTIL.CHECK_TABLE</code></a></td>
+                        <td>Reports on inconsistencies between a table and its indexes.</td>
+                    </tr>
+                    <tr>
                         <td class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_CREATE_USER</a>
                         </td>
                         <td>Adds a new user account to a database.</td>
