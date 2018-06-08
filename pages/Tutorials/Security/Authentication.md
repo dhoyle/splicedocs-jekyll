@@ -318,7 +318,7 @@ These are the property settings you need to configure:
     </property>
     <property>
        <name>splice.authentication.ldap.searchFilter</name>
-       <value>&lt;(&amp;(objectClass=*)(uid=%USERNAME%))&gt;</value>
+       <value>(&(objectClass=*)(uid=%USERNAME%))</value>
     </property>
 {: .Example xml:space="preserve"}
 
