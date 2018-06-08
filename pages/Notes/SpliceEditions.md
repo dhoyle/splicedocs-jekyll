@@ -24,153 +24,178 @@ please [Contact Splice Machine Sales][1]{: target="_blank"} today.
 This table summarizes the features that are available in each edition of
 Splice Machine:
 
-<table class="featureList">
-    <col />
-    <col />
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>Features</th>
-            <th>Cloud Edition</th>
-            <th>Enterprise Edition</th>
-            <th>Community Edition</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="featureName">On-Demand Compute Nodes and Storage</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">Managed Backups and Restores</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">Integrated Zeppelin Notebooks</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">Splice Machine Cloud Manager</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">Scale-Out Architecture</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">ANSI SQL</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">Concurrent Acid Transactions</td>
-            <td class="checkmark"> ✓</td>
-            <td class="checkmark"> ✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">OLAP and OLTP Resource Isolation</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">Distributed In-Memory Joins, Aggregations, Scans, and Groupings</td>
-            <td class="checkmark"> ✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">Cost-Based Statistics / Query Optimizer</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">Hybrid Row-based and Columnar Storage</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">Compaction Optimization</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">Stored Procedures, Triggers, User-Defined Functions</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">Apache Kafka-enabled Streaming</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">Virtual Table Interfaces</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-        <tr>
-            <td class="featureName">PL/SQL Support</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">Backup and Restore Capabilities</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">Column Level Access Control</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">Encryption</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">Security Features, including Kerberos</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">LDAP Support</td>
-            <td> </td>
-            <td class="checkmark">✓</td>
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="featureName">New Releases and Maintenance Updates</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-            <td class="checkmark">✓</td>
-        </tr>
-    </tbody>
+            <table class="featureList">
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Features</th>
+                        <th>Cloud Edition</th>
+                        <th>Enterprise Edition</th>
+                        <th>Community Edition</th>
+                        <th>Standalone Edition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="featureName">On-Demand Compute Nodes and Storage</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Managed Backups and Restores</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Integrated Zeppelin Notebooks</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Splice Machine Cloud Manager</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Scale-Out Architecture</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">ANSI SQL</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Concurrent Acid Transactions</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">OLAP and OLTP Resource Isolation</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Distributed In-Memory Joins, Aggregations, Scans, and Groupings</td>
+                        <td class="checkmark"> ✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Cost-Based Statistics / Query Optimizer</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Hybrid Row-based and Columnar Storage</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Compaction Optimization</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Stored Procedures, Triggers, User-Defined Functions</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Apache Kafka-enabled Streaming</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Virtual Table Interfaces</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">PL/SQL Support</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Backup and Restore Capabilities</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Column Level Access Control</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Encryption</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">Security Features, including Kerberos</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">LDAP Support</td>
+                        <td> </td>
+                        <td class="checkmark">✓</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="featureName">New Releases and Maintenance Updates</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                        <td class="checkmark">✓</td>
+                    </tr>
+                </tbody>
+            </table>
 </table>
 ## Additional Materials and Support
 
