@@ -1,0 +1,67 @@
+In the page https://docstest.splicemachine.com/onprem_info_troubleshoot.html#SuperUsers, please make the following changes:
+# For bullet 1, at the end of the sentence "Add an LDAP admin_group mapping for the splice user to the HBase Service Advanced Configuration Snippet (Safety Valve) for hbase-site.xml", please add "as well as HBase Client Advanced Configuration Snippet (Safety Valve) for hbase-site.xml".
+# For bullet 2, before the sentence "Now myUser belongs to ...", please add "Please make sure the name put in cn is exactly the same as the left hand size of the equality symbol in the property splice.authentication.ldap.mapGroupAttr, the matching is case sensitive."
+# Add a third bullet, We can run a few tests to verify that the super user _myUser_ has administrative privileges.
+Suppose userA, userB are two regular LDAP users, and there are two schemas userA and userB in splice database owned by the two users respectively. Schema userA has a table t1, and schema userB has a able t2 with the following content:
+{noformat}
+splice> select * from userA.t1;
+A1
+-----------
+1
+2
+3
+
+3 rows selected
+splice> select * from userb.t2;
+A2
+-----------
+1
+2
+3
+
+3 rows selected
+{noformat}
+## Test1: _myUser_ can access any schemas and tables in them:
+### connect to splice using the user _myUser_, for example, in sqlshell.sh, issue
+{noformat}
+connect 'jdbc:splice://localhost:1527/splicedb;user=myUser;password=myUserPassWord' as myuser_con;
+{noformat}
+### issue a select statement and the query should go through:
+{noformat}
+splice> select * from userA.t1;
+A1
+-----------
+1
+2
+3
+
+3 rows selected
+splice> select * from userb.t2;
+A2
+-----------
+1
+2
+3
+
+3 rows selected
+{noformat}
+### Within the same connection, we can also check insert, delete, update, drop table, as well as create/drop schemas.
+## Test2: _myUser_ can grant privileges to other users. For example, userA by default won't have access to tables belonging to userB. After _myUser_ granting privileges on schema userB to userA, userA can access schema userB.
+{noformat}
+splice> connect 'jdbc:splice://localhost:1527/splicedb;user=userA;password=userAPassword' as userA_con;
+splice> select * from userB.t2;
+ERROR 42502: User 'USERA' does not have SELECT permission on column 'A2' of table 'USERB'.'T2'.
+splice> set connection myuser_con;
+splice> grant all privileges on schema userB to userA;
+0 rows inserted/updated/deleted
+splice> set connection userA_con;
+splice> select * from userB.t2;
+A2
+-----------
+1
+2
+3
+
+3 rows selected
+splice>
+{noformat}
