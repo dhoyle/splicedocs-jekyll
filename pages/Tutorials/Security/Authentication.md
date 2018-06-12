@@ -291,44 +291,41 @@ To use LDAP with Splice Machine, you must:
 
 These are the property settings you need to configure:
 
-<div class="preWrapperWide" markdown="1">
-    <property>
-       <name>splicemachine.enterprise.key</name>
-       <value><your-Splice-Machine-license-key></value>
-    </property>
-    <property>
-       <name>splice.authentication</name>
-       <value>LDAP</value>
-    </property>
-    <property>
-       <name>splice.authentication.ldap.server</name>
-       <value><ldap://servername-ldap.yourcompany.com:389></value>
-    </property>
-    <property>
-       <name>splice.authentication.ldap.searchAuthDN</name>
-       <value><cn=commonName,ou=Users,dc=yourcompany,dc=com></value>
-    </property>
-    <property>
-       <name>splice.authentication.ldap.searchAuth.password</name>
-       <value><yourpassword</span></value>
-    </property>
-    <property>
-       <name>splice.authentication.ldap.searchBase</name>
-       <value>ou=Users,dc=yourcompany,dc=com</value>
-    </property>
-    <property>
-       <name>splice.authentication.ldap.searchFilter</name>
-       <value>(&(objectClass=*)(uid=%USERNAME%))</value>
-    </property>
-{: .Example xml:space="preserve"}
-
+<div class="preWrapperWide"><pre class="Example">
+    &lt;property&gt;
+       &lt;name&gt;splicemachine.enterprise.key&lt;/name&gt;
+       &lt;value&gt;<span class="HighlightedCode">your-Splice-Machine-license-key</span>&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+       &lt;name&gt;splice.authentication&lt;/name&gt;
+       &lt;value&gt;LDAP&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+       &lt;name&gt;splice.authentication.ldap.server&lt;/name&gt;
+       &lt;value&gt;ldap://<span class="HighlightedCode">servername-ldap.yourcompany.com</span>:<span class="HighlightedCode">port-number</span>&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+       &lt;name&gt;splice.authentication.ldap.searchAuthDN&lt;/name&gt;
+       &lt;value&gt;cn=<span class="HighlightedCode">commonName</span>,ou=Users,dc=<span class="HighlightedCode">yourcompany</span>,dc=<span class="HighlightedCode">com</span>&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+       &lt;name&gt;splice.authentication.ldap.searchAuth.password&lt;/name&gt;
+       &lt;value&gt;<span class="HighlightedCode">yourpassword</span>&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+       &lt;name&gt;splice.authentication.ldap.searchBase&lt;/name&gt;
+       &lt;value&gt;ou=Users,dc=<span class="HighlightedCode">yourcompany</span>,dc=<span class="HighlightedCode">com</span>&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+       &lt;name&gt;splice.authentication.ldap.searchFilter&lt;/name&gt;
+       &lt;value&gt;<span class="HighlightedCode">search-filter-criteria</span>&lt;/value&gt;
+    &lt;/property&gt;</pre>
 </div>
+
 Notes about the LDAP property values:
 
-* Specify the location of your external LDAP server host in the <span
-  class="Example">splice.authentication.ldap.server</span> property on
-  port <span class="HighlightedCode">389</span>.
-* The <span class="HighlightedCode">ldap.searchAuthDN</span> property is
+* Specify both the location of your external LDAP server host and the port number in the `splice.authentication.ldap.server property`. The default `openLDAP` port is `389`.
+* The `ldap.searchAuthDN` property is
   the security principal:
 
   * This is used to create the initial LDAP context (aka its connection
@@ -337,14 +334,12 @@ Notes about the LDAP property values:
   * The `cn=` is the *common name* of the security principal.
   {: .bullet}
 
-* The <span class="HighlightedCode">ldap.searchAuth.password</span> property
-  specifies password Splice Machine should use to perform the DN search.
-* The <span class="HighlightedCode">ldap.searchBase</span> property
+* The `ldap.searchAuth.password` property
+  specifies password Splice Machine should use to perform the DN search; this is the password of the `DN` specified in ldap.searchAuthDN property.
+* The `ldap.searchBase` property
   specifies the root DN of the point in your hierarchy from which to
   begin a guest or anonymous search for the user's DN.
-* The <span class="HighlightedCode">ldap.searchFilter</span> property
-  specifies the search filter to use to determine what constitutes a
-  user while searching for a user DN
+* The `ldap.searchFilter` property specifies the search filter to use to determine what constitutes a user while searching for a user DN. An example is: <span class="Example">(&(objectClass=*)(uid=%USERNAME%))</span>
 {: .bullet}
 
 ### Authenticating With an LDAP Group
