@@ -154,7 +154,6 @@ and then exits <span class="AppCommand">splice&gt;</span>.
 
         SELECT * FROM Players;exit;EOF
     {: .ShellCommand}
-
     </div>
 
     If you're not familiar with this kind of input redirection: the

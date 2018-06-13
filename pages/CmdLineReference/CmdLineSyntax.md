@@ -12,18 +12,18 @@ folder: CmdLineReference
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using the splice&gt; Command Line Interface
 
-This topic presents information that will help you to use the Splice
+This topic presents information that will help you in using the Splice
 Machine <span class="AppCommand">splice&gt;</span> command line
 interpreter, in the following sections:
 
 * The [splice&gt; Command Line Interpreter](#splice%3E){: .selected}
-  section shows you how to invoke the <span class="AppCommand">splice&gt;</span> command line.
+  section shows you how to invoke the splice&gt; command line.
 * The [Command Line Output](#Command){: .selected} section describes how
   you can adjust the appearance of output from the interepreter.
 * The [Command Line Syntax](#Syntax){: .selected} section summarizes the
   syntax of commands, including capitalization and case-sensitivity
   rules, as well as various special characters you can use in your
-  commands. It also shows you how to include comments on your command
+  commands. It also shows you how to include comments in your command
   lines and how to run a file of SQL commands.
 * The [Example Command Lines](#ExampleCommands){: .selected} section
   shows several examples of command lines.
@@ -55,92 +55,11 @@ this topic, [Command Line Syntax](#Syntax).
 Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try to start sqlshell.sh on a system that doesn't have the required version of the JDK, you'll see an error message indicating that the connection has been terminated.
 {: .noteIcon}
 
-</div>
 You can optionally include parameter values when running <span
 class="ShellCommand">sqlshell.sh</span> script, to change default
 values. Here's the syntax:
 
 <div class="preWrapper" markdown="1">
-<<<<<<< HEAD
-    sqlshell.sh [-h host] [-p port ] [-u username] [-s password] [-f commandsFile]
-{: .FcnSyntax xml:space="preserve"}
-
-</div>
-<div class="paramList" markdown="1">
--host
-{: .paramName}
-
-The hostname or IP address of your Splice Machine HBase RegionServer.
-{: .paramDefnFirst}
-
-The default value is `localhost`.
-{: .paramDefn}
-
--port
-{: .paramName}
-
-The port on which Splice Machine is listening for your connection.
-{: .paramDefnFirst}
-
-The default value is `1527`.
-{: .paramDefn}
-
--username
-{: .paramName}
-
-The user name for your Splice Machine database.
-{: .paramDefnFirst}
-
--password
-{: .paramName}
-
-The password for your Splice Machine database.
-{: .paramDefnFirst}
-
--f [fileName]
-{: .paramName}
-
-The name of a file with SQL commands in it: `sqlshell` starts up the
-<span class="AppCommand">splice&gt;</span> command line interpreter,
-runs the commands in the file, and then exits.
-{: .paramDefnFirst}
-
-In the following example, we tell the interpreter to run the SQL commands in a file named `test.sql`,
-which contains these two statements:
-{: .paramDefn}
-
-<div class="preWrapperWide" markdown="1">
-    elapsedtime on;
-    select count(*) from CUST_EMAIL;
-{: .Plain xml:space="preserve"}
-</div>
-
-When you invoke this file, you'll see this in your terminal window:
-{: .paramDefn}
-
-<div class="preWrapperWide" markdown="1">
-    $ ./sqlshell.sh -f /home/mydir/sql/test.sql
-
-     ========= rlwrap detected and enabled.  Use up and down arrow keys to scroll through command line history. ========
-
-    Running Splice Machine SQL shell
-    For help: "splice> help;"
-    SPLICE* - 	jdbc:splice://10.1.1.111:1527/splicedb
-    * = current connection
-    splice> elapsedtime on;
-    splice> select count(*) from CUST_EMAIL;
-    1
-    --------------------
-    0
-
-    1 row selected
-    ELAPSED TIME = 6399 milliseconds
-    splice>
-    $
-{: .Example xml:space="preserve"}
-</div>
-</div>
-=======
     sqlshell.sh [-U url] [-h host] [-p port] [-u user] [-s pass] [-P] [-S]
                 [-k principal] [-K keytab] [-w width] [-f script] [-o output] [-q]
 {: .ShellCommand xml:space="preserve"}
@@ -241,7 +160,6 @@ When you invoke this file, you'll see this in your terminal window:
         </tr>
     </tbody>
 </table>
->>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
 
 ## Command Line Output   {#Command}
 
@@ -297,32 +215,19 @@ Certain identifiers and keywords are case sensitive:
     </thead>
     <tbody>
         <tr>
-<<<<<<< HEAD
-            <td class="ItalicFont">SQL keywords</td>
-=======
             <td class="ItalicFont">
                 <p>SQL keywords</p>
             </td>
->>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
             <td>Not case sensitive</td>
             <td>These are all equivalent: <span class="Example">SELECT, Select, select, SeLeCt</span>.</td>
         </tr>
         <tr>
-<<<<<<< HEAD
-            <td class="ItalicFont">ANSI SQL identifiers</td>
-            <td>Not case sensitive</td>
-            <td>These are not case sensitive unless they are delimited; for example <code>myTBL</code> matches <code>myTbl</code>, but <code>"myTBL"</code> does not match <code>"myTbl"</code>.</td>
-        </tr>
-        <tr>
-            <td class="ItalicFont">Java-style identifiers</td>
-=======
             <td><em>ANSI SQL identifiers</em></td>
             <td>Not case sensitive</td>
             <td>These are not case sensitive unless they are delimited.</td>
         </tr>
         <tr>
             <td><em>Java-style identifiers</em></td>
->>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
             <td>Always case sensitive</td>
             <td>
                 <p>These are NOT equivalent: <span class="Example">my_name, My_Name</span>.</p>
@@ -360,11 +265,7 @@ commands:
         </tr>
         <tr>
             <td><em>To escape a single quote or apostrophe within a character string</em></td>
-<<<<<<< HEAD
-            <td>Single quotation mark (<code>'</code>)</td>
-=======
             <td>Single quotation mark ( (<code>'</code>)</td>
->>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
             <td>
                 <p class="noSpaceAbove">Since single quotation marks are used to delimit strings, you must escape any single quotation marks you want included in the string itself. </p>
                 <p>Use the single quotation mark itself as the escape character, which means that you enter two single quotation marks within a character string to include one single quotation mark. </p>
@@ -435,7 +336,8 @@ at the beginning of each line. For example:
 
 <div class="preWrapper" markdown="1">
 
-    splice> select * from myTable> where i > 1;
+    splice> select * from myTable
+    > where i > 1;
 {: .AppCommand xml:space="preserve"}
 
 </div>
@@ -456,7 +358,8 @@ by prefacing the command with two dashes (`--`). Any text following the
 dashes is ignored by the SQL parser. For example:
 
 <div class="preWrapperWide" markdown="1">
-    splice> select * from myTable   -- This selects everything in myTable;
+    splice> select * from myTable   -- This selects everything in myTable
+    > ;
 {: .AppCommand xml:space="preserve"}
 
 </div>
@@ -504,11 +407,7 @@ Here are several example command lines:
             </td>
         </tr>
         <tr>
-<<<<<<< HEAD
-            <td>Print the current timestamp</td>
-=======
             <td>Print a current time stamp</td>
->>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
             <td><span class="AppCommand">splice&gt; values current_timestamp;</span>
             </td>
         </tr>
@@ -519,181 +418,6 @@ Here are several example command lines:
         </tr>
     </tbody>
 </table>
-<<<<<<< HEAD
 
-## Scripting splice&gt; Commands
-
-You can use the Splice Machine Command Line Interface (<span
-class="AppCommand">splice&gt;</span>) to interactively run database
-commands. This topic describes how to create a script of <span
-class="AppCommand">splice&gt;</span> commands to run a series of
-operations, such as loading a number of files into your database. To
-script a series of <span class="AppCommand">splice&gt;</span> commands,
-you need to create:
-
-* an SQL commands file containing the SQL statements you want executed
-* an SQL file to connect to the database and invoke the SQL commands
-  file
-* a shell script using Bash (`/bin/bash`)
-
-Follow these steps to create your script:
-
-<div class="opsStepsList" markdown="1">
-1.  Create a file of SQL commands:
-    {: .topLevel}
-
-    First, create a file that contains the SQL commands you want to run
-    against your Splice Machine database. For this example, we'll create
-    a file named `create-my-tables.sql` that creates a table in the
-    database:
-    {: .indentLevel1}
-
-    <div class="preWrapper" markdown="1">
-        create table customers (
-           CUSTOMER_ID BIGINT,
-           FIRST_NAME VARCHAR(30),
-           LAST_NAME VARCHAR(30)
-        );
-    {: .Example xml:space="preserve"}
-
-    </div>
-
-2.  Create an SQL file to connect to the database and invoke the
-    commands file
-    {: .topLevel}
-
-    We need a separate SQL file named `my_load_datascript.sql`that
-    connects to your database and then invokes the file of SQL commands
-    we just created.
-    {: .indentLevel1}
-
-    The `connect` command in this file must run before running the file
-    of SQL statements.
-    {: .noteNote}
-
-    Here we name the first SQL file, and define it to run the SQL
-    statements file named `create-my-tables.sql:`
-    {: .indentLevel1}
-
-    <div class="preWrapper" markdown="1">
-           --First connect to the database
-        connect 'jdbc:splice://<regionServer>:1527/splicedb';
-
-           --Next run your sql file
-        run '/users/yourname/create-my-tables.sql';
-
-        show tables;
-        quit;
-    {: .Example xml:space="preserve" style="font-weight: normal;"}
-
-    </div>
-    {: .indentLevel1}
-
-    If you are running Splice Machine on a cluster, connect from a
-    machine that is NOT running an HBase RegionServer and specify the IP
-    address of a <span class="HighlightedCode">regionServer</span> node,
-    e.g. <span class="AppCommand">10.1.1.110</span>. If you're using the
-    standalone version of Splice Machine, specify <span
-    class="HighlightedCode">localhost</span> instead.
-    {: .indentLevel1}
-
-3.  Create a shell script to run your SQL connect file
-    {: .topLevel}
-
-    We now create a shell script named `load_datascript.sh` to run the
-    `my_load_datascript.sql` file:
-    {: .indentLevel1}
-
-    <div class="preWrapperWide" markdown="1">
-        #!/bin/bash
-
-        export CLASSPATH=<FULL_PATH_TO_SPLICEMACHINE_JAR_FILE>
-        java -Djdbc.drivers=com.splicemachine.db.jdbc.ClientDriver -Dij.outfile=my_load_datascript.out com.splicemachine.db.tools.ij < my_load_datascript.sql
-    {: .Example xml:space="preserve" style="font-weight: normal;"}
-
-    </div>
-
-    The first line of this script must set the `CLASSPATH` to the
-    location of your Splice Machine jar file. The second line runs the
-    ij command, specifying its output file (`my_load_datascript.out`)
-    and its SQL commands input file, which is the
-    `my_load_datascript_sql` file that we created in the previous step.
-    {: .indentLevel1}
-
-4.  Make your shell script executable
-    {: .topLevel}
-
-    We need to make the shell script executable with the chmod shell
-    command:
-    {: .indentLevel1}
-
-    <div class="preWrapper" markdown="1">
-
-        chmod +x load_datascript.sh
-    {: .ShellCommand xml:space="preserve"}
-
-    </div>
-
-5.  Use nohup to run the script
-    {: .topLevel}
-
-    The <span class="ShellCommand">nohup</span> utility allows you to
-    run a script file in the background, which means that it will
-    continue running if you log out, disconnect from a remote machine,
-    or lose your network connection.
-    {: .indentLevel1}
-
-    <div class="preWrapper" markdown="1">
-
-        nohup ./load_datascript.sh > ./load_datascript.out 2>&1 &
-    {: .ShellCommand xml:space="preserve"}
-
-    </div>
-
-    Here's the syntax for the `nohup` utility:
-    {: .indentLevel1}
-
-    <div class="fcnWrapperWide" markdown="1">
-
-        nohup ./command-name.sh > ./command-name.out 2>&1 &
-    {: .FcnSyntax xml:space="preserve"}
-
-    </div>
-
-    <div class="paramList" markdown="1">
-    command-name.sh
-    {: .paramName}
-
-    The name of the shell script or a command name.
-    {: .paramDefnFirst}
-
-    command-name.out
-    {: .paramName}
-
-    The name of the file to capture any output written to `stdout`.
-    {: .paramDefnFirst}
-
-    2&gt;&amp;1
-    {: .paramName}
-
-    This causes `stderr` (file descriptor `2`) to be written to `stdout`
-    (file descriptor `1`); this means that all output will be captured
-    in `command-name.out`.
-    {: .paramDefnFirst}
-
-    &amp;
-    {: .paramName}
-
-    The <span class="ShellCommand">nohup</span> utility does not
-    automatically run its command in the background, so we add the `&`
-    to do
-    {: .paramDefnFirst}
-
-    </div>
-{: .boldFont}
-=======
->>>>>>> 814ad3b18... Updates for changes to the sqlshell.sh command line options, plus clean-up of the syntax page versus the tutorial page. Posted to docsdev for review by mbrown.
-
-</div>
 </div>
 </section>

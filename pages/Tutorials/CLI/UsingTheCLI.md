@@ -17,7 +17,7 @@ is an easy way to interact with your Splice Machine database. This topic
 introduces <span class="AppCommand">splice&gt;</span> and some of the
 more common commands you'll use.
 
-Our [Command Line Reference](cmdlineref_intro.html) contains additional information about command line syntax and commands, and includes examples of each available command. 
+Our [Command Line Reference](cmdlineref_intro.html) contains additional information about command line syntax and commands, and includes examples of each available command.
 
 {% if site.incl_notpdf %}
 <div markdown="1">
@@ -188,50 +188,50 @@ Here's how to breakdown the connection strings we use to connect to a
 database:
 
 <table>
-                <col />
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Examples</th>
-                        <th>Component</th>
-                        <th>Comments</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>jdbc:splice:</code></td>
-                        <td>Connection driver name</td>
-                        <td> </td>
-                    </tr>
-                    <tr>
-                        <td class="CodeFont">
-                            <p>srv55:1527</p>
-                            <p>localhost:1527</p>
-                        </td>
-                        <td>Server Name:Port</td>
-                        <td><span class="AppCommand">splice&gt;</span> listens on port <code>1527</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>splicedb</code></td>
-                        <td>Database name</td>
-                        <td>The name of the database you're connecting to on the server.</td>
-                    </tr>
-                    <tr>
-                        <td><code>user=YourUserId;password=YourPassword</code></td>
-                        <td>Connection parameters</td>
-                        <td>Any required connection parameters, such as userId and password.</td>
-                    </tr>
-                    <tr>
-                        <td><code>AS DEMO</code></td>
-                        <td>Optional connection identifier</td>
-                        <td>
-                            <p>The name that you want associated with this connection.</p>
-                            <p>If you don't supply a name, Splice Machine assigns one for your; for example: <code>CONNECTION1</code>.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Examples</th>
+            <th>Component</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>jdbc:splice:</code></td>
+            <td>Connection driver name</td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td class="CodeFont">
+                <p>srv55:1527</p>
+                <p>localhost:1527</p>
+            </td>
+            <td>Server Name:Port</td>
+            <td><span class="AppCommand">splice&gt;</span> listens on port <code>1527</code></td>
+        </tr>
+        <tr>
+            <td><code>splicedb</code></td>
+            <td>Database name</td>
+            <td>The name of the database you're connecting to on the server.</td>
+        </tr>
+        <tr>
+            <td><code>user=YourUserId;password=YourPassword</code></td>
+            <td>Connection parameters</td>
+            <td>Any required connection parameters, such as userId and password.</td>
+        </tr>
+        <tr>
+            <td><code>AS DEMO</code></td>
+            <td>Optional connection identifier</td>
+            <td>
+                <p>The name that you want associated with this connection.</p>
+                <p>If you don't supply a name, Splice Machine assigns one for your; for example: <code>CONNECTION1</code>.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
 ### Displaying Database Objects   {#Viewing4}
 
 We'll first explore the `show` command, which is available to view
