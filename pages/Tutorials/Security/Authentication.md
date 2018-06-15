@@ -54,6 +54,7 @@ which is described below the table:
             <td><code>KERBEROS</code></td>
             <td>
                 <p>User IDs are validated against kerberos server.</p>
+{% include splice_snippets/enterpriseonly_note.md %}
             </td>
         </tr>
         <tr>
