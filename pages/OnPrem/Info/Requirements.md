@@ -228,5 +228,8 @@ computers that meet these basic requirements:
     </tbody>
 </table>
 </div>
+
+You can also run our standalone version on a virtual machine, using Virtual Box. See our [Standalone Installation](onprem_install_standalone.html) page for details.
+
 </div>
 </section>

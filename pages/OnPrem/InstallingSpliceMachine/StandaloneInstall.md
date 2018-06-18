@@ -10,9 +10,16 @@ folder: OnPrem/InstallingSpliceMachine
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Installing the Standalone Version of Splice Machine
+This topic describes installing and getting started with the standalone version of Splice Machine, in these sections:
 
-Installation instructions for Splice Machine are now being maintained in our GitHub repository; you'll find an `installation.md` document in the `docs` subdirectory of each Splice Machine release/platform directory. For example:
+* [Installing the Standalone Version of Splice Machine](#installgit)
+* [Installing the Virtual Box Standalone](#virtualbox)
+* [Installing the Splice Machine Demo Data](#demodata)
+* [Troubleshooting Transaction Exceptions on MacOS](#transtrouble)
+
+## Installing the Standalone Version of Splice Machine {#installgit}
+
+Installation instructions for Splice Machine are maintained in our GitHub repository; you'll find an `installation.md` document in the `docs` subdirectory of each Splice Machine release/platform directory. For example:
 
 <table>
     <col />
@@ -35,8 +42,99 @@ Installation instructions for Splice Machine are now being maintained in our Git
     </tbody>
 </table>
 
+## Installing the Virtual Box Standalone {#virtualbox}
 
-## Installing the Splice Machine Demo Data
+You can use the virtual machine standalone version of Splice Machine on Windows and other operating systems by following the instructions below. Your computer must meet these requirements; it must:
+
+* support VirtualBox software
+* have at least 8GB of RAM
+* have at least 30GB of available disk space
+
+Follow these instructions:
+
+<div class="opsStepsList" markdown="1">
+1. Download VirtualBox on to your computer from <a href="https://www.virtualbox.org" target="blank">https://www.virtualbox.org</a>.
+   {: .topLevel}
+
+2. Get the VM: Get a copy of the Splice Machine Virtual Machine.  This is a large file (4.3GB) so if you don't have a local copy already, you can download it from here: <a href="https://aws.amazon.com/s3://splice-training/splice2.5/Splice2.5.ova" >https://aws.amazon.com/s3://splice-training/splice2.5/Splice2.5.ova</a>.
+   {: .topLevel}
+
+   This is a very large (4.3GB) file; as a result, it can take a very long time to download, so we recommend storing the downloaded file to share with other employees.
+   {: .noteNote}
+
+3. Import the VM. Start up Virtual Box, and select "File->Import Appliance..." and navigate to the `Splice2.5.ova` file on your machine.  Click Continue then Import.
+   {: .topLevel}
+
+4. Start the VM. You will see the Splice2.5 VM in the VirtualBox window.  Double-click to start it.
+   {: .topLevel}
+
+   If your computer is blocking virtualization, the VM will fail to open the session, and the detailed message will say something like *VT-x is disabled in the BIOS*. You need to reboot your computer, enter BIOS, and enable Intel Virtualization. The following YouTube video walks you through resolving this problem: <a href="https://www.youtube.com/watch?v=u0AWnCr80Ws" target="blank">https://www.youtube.com/watch?v=u0AWnCr80Ws</a>.
+   {: .indentLevel1}
+
+5. Log in using `splice` for both the user ID and the password.
+   {: .topLevel}
+
+6. Right-click on the VirtualBox desktop, and click *Open Terminal* to open a terminal window.
+   {: .topLevel}
+
+7. Run this command (**required**):
+   {: .topLevel}
+
+   ```
+   sudo ln -s /usr/bin/java /bin/java
+   ```
+   {: .ShellCommand}
+
+8. Start Splice Machine from your terminal window by entering these two commands:
+   {: .topLevel}
+
+   ```
+   cd splicemachine
+   ./bin/start-splice.sh
+   ```
+   {: .ShellCommand}
+
+   It will take a couple minutes until you see `done` and your terminal window prompt displays again. Splice Machine is now running.
+   {: .indentLevel1}
+
+9. You can now use the Splice Machine command line interpreter, `splice>` by entering this command in your terminal window:
+   {: .topLevel}
+
+   ```
+   ./bin/sqlshell.sh
+   ```
+   {: .ShellCommand}
+
+   When you see the `splice>` prompt, verify that all is well by entering this command (including the required `;` at the end):
+   {: .indentLevel1}
+
+   ```
+   splice> show tables;
+   ```
+   {: .AppCommand}
+
+   To exit the command line interpreter, enter:
+   {: .indentLevel1}
+
+   ```
+   exit;
+   ```
+   {: .AppCommand}
+
+10. When you're done (after you exit `splice>`), you can stop the Splice Machine processes with this command in your terminal window:
+   {: .topLevel}
+
+   ```
+   ./bin/stop-splice.sh
+   ```
+   {: .ShellCommand}
+
+</div>
+
+
+You can (optionally) shut down your virtual machine by clicking *Shutdown* under the gear icon in the upper right corner of the virtual desktop.
+
+## Installing the Splice Machine Demo Data {#demodata}
 
 The Splice Machine installer package includes demo data that you can
 import into your database, so you can get used to working with your new
@@ -122,17 +220,19 @@ database:
     the absolute path to your Splice Machine `demodata` directory:
     {: .indentLevel1}
 
-    <div class="preWrapperWide" markdown="1">
-        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '<yourPath>/demodata/data/theader.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '<yourPath>/demodata/data/tdetail.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '<yourPath>/demodata/data/customers.csv', ...;
-    {: .ShellCommand xml:space="preserve"}
-
+    <div class="preWrapperWide"><pre class="ShellCommand">
+    call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '<span class="Highlighted">yourPath</span>/demodata/data/theader.csv', ...;
+    call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '<span class="Highlighted">yourPath</span>/demodata/data/tdetail.csv', ...;
+    call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '<span class="Highlighted">yourPath</span>/demodata/data/customers.csv', ...;</pre>
     </div>
 
     Make sure you use the absolute (versus relative) path. For example:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '/Users/myName/mySplice/demodata/data/theader.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '/Users/myName/mySplice/demodata/data/tdetail.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '/Users/myName/mySplice/demodata/data/customers.csv',...;
+        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '/Users/myName/mySplice/demodata/data/theader.csv', ...;
+        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '/Users/myName/mySplice/demodata/data/tdetail.csv', ...;
+        call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '/Users/myName/mySplice/demodata/data/customers.csv',...;
     {: .ShellCommand xml:space="preserve"}
 
     </div>
@@ -224,7 +324,7 @@ You can use the following to query a join of the `T_HEADER` and
 {: .Example xml:space="preserve"}
 
 </div>
-### Troubleshooting Transaction Exceptions on MacOS
+## Troubleshooting Transaction Exceptions on MacOS {#transtrouble}
 
 If you're running transactions in the standalone version of
 Splice Machine on MacOS, you may run into an exception caused by the
