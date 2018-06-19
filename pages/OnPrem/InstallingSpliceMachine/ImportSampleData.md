@@ -1,6 +1,6 @@
 ---
 summary: How to use the standalone version sample data.
-title: Importing and Querying Demo Data
+title: Importing and Querying Standalone Demo Data
 keywords: sample data, demo data, importing
 toc: false
 product: onprem
@@ -10,12 +10,11 @@ folder: OnPrem/InstallingSpliceMachine
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Importing and Querying Demo Data
+# Importing and Querying Standalone Demo Data
 
 {% include splice_snippets/onpremonlytopic.md %}
-This topic walks you through importing and querying the demo
-(sample) data that is packaged with the Splice Machine standalone
-installer.
+The standalone version of Splice Machine includes sample data that you can
+use to quickly try importing and querying meaningful data. This topic walks you through using the sample data.
 
 You must [install the standalone version of
 Splice Machine](onprem_install_standalone.html) on your computer before
@@ -120,7 +119,7 @@ database:
     <div class="preWrapperWide" markdown="1">
         call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_HEADER',  null, '/Users/myName/mySplice/demodata/data/theader.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'T_DETAIL',  null, '/Users/myName/mySplice/demodata/data/tdetail.csv', ...;call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMERS', null, '/Users/myName/mySplice/demodata/data/customers.csv',...;
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 3.  Run the modify script to loads the data:
