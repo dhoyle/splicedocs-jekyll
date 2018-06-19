@@ -61,7 +61,7 @@ uid: myUser</pre>
    Now `myUser` belongs to the `admin_group` group, and thus gains all privileges associated with that group.
 
 ### Verifying the Configuration
-We can now run a few tests to verify the the super uer *myUser* has administrative privileges. Suppose:
+We can now run a few tests to verify the the super user *myUser* has administrative privileges. Suppose:
 
    * `userA` and `userB` are regular LDAP users
    * `userA` owns the schema `userA` in your Splice Machine database
