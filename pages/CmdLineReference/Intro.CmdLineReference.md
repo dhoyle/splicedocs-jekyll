@@ -214,6 +214,13 @@ our *On-Premise Database* and *Database-as-Service* products.
             </td>
         </tr>
         <tr>
+            <td class="CodeFont"><a href="cmdlineref_setsessionproperty.html">Set Session_Property</a>
+            </td>
+            <td>Allows you to specify default hint values for certain query hints</td>
+            <td><span class="AppCommand">splice&gt; set session_property useSpark=true;</span>
+            </td>
+        </tr>
+        <tr>
             <td class="CodeFont"><a href="cmdlineref_showconnections.html">Show Connections</a>
             </td>
             <td>Displays information about active connections and database objects.</td>
