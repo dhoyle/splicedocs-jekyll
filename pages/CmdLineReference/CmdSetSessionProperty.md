@@ -12,7 +12,10 @@ folder: CmdLineReference
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SET SESSION_PROPERTY
 
-The `SET SESSION_PROPERTY` command sets or unsets specific session-level property values. This allows you to, for example, activate the `useSpark` hint for every query in a session, without having to specify the hint in each query.
+The `SET SESSION_PROPERTY` command sets or unsets specific session-level property values. Session-level properties assign an initial value to certain Splice Machine [query hints](developers_tuning_queryoptimization.html#queryhints), which allows you to supply the hint by default in all queries.
+
+This command should __only be used by advanced users__. Query hints are very powerful, and applying them by default can lead to unforeseen and unfortunate consequences.
+{: .noteIcon}
 
 ## Syntax
 
@@ -27,20 +30,16 @@ propertySetting
 {: .paramName}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-  ( skipStats = [true | false | null] )
-| ( useSpark  = [true | false | null] )
-| ( defaultSelectivityFactor = [ <em>unitInterval</em> | null] )</pre>
+useSpark  = [true | false | null]</pre>
 </div>
 {: paramDefnFirst}
 </div>
 
-A *unitInterval* is a numeric value between `0` and `1`, which can be expressed using scientific notation; for example:
-`1.0E-4` or `1e-4`.
-{: .indentLevel2}
+Splice Machine will include additional session properties in the future.
+{: .noteNote}
+
 
 ## Usage
-
-To unset a session property, assign `null` as its value.
 
 Specifying a hint in a query overrides the session-level property setting. For example, if you use this command to tell Splice Machine to use Spark to process every query in the session:
 
@@ -57,7 +56,7 @@ and then submit a query with the hint:
 ```
 {: .Example}
 
-That query will run on the control side (using HBase), and not on Spark.
+That query will run on the control side (using HBase), and not on Spark. Other, unhinted queries will continue to assume the `useSpark=true` default hint value.
 {: .spaceAbove}
 
 The following table summarizes the currently available session properties:
@@ -82,19 +81,22 @@ The following table summarizes the currently available session properties:
     </tbody>
 </table>
 
-You can use the `values` expression to display the current `session_property` values. Note that only properties that you have explicitly set to non-null values are displayed.
+### Unsetting a Property
+To unset a session property, assign `null` as its value.
+
+### Displaying Current Session Properties
+You can use the `values current session_property` expression to display the current `session_property` values. Note that only properties that you have explicitly set to non-null values are displayed.
 
 ## Examples
-
-Here's an example of setting two session properties:
+Here's an example of setting a session property:
 
 <div class="preWrapperWide" markdown="1"><pre class="Example">
-splice> set session_property useSpark=true,defaultSelectivityFactor=1e-4;
+splice> set session_property useSpark=true;
 0 rows inserted/updated/deleted
 splice> values current session_property;
 1
 ------------------------------------------------------------------
-USESPARK=true; DEFAULTSELECTIVITYFACTOR=1.0E-4;
+USESPARK=true;
 
 1 row selected</pre>
 </div>
@@ -102,7 +104,7 @@ USESPARK=true; DEFAULTSELECTIVITYFACTOR=1.0E-4;
 And here's an example of unsetting those values (resetting them to their connection default values):
 
 <div class="preWrapperWide" markdown="1"><pre class="Example">
-splice> set session_property useSpark=null,defaultSelectivityFactor=null;
+splice> set session_property useSpark=null;
 0 rows inserted/updated/deleted
 splice> values current session_property;
 1
