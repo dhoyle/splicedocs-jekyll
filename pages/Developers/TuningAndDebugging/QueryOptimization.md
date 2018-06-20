@@ -78,7 +78,7 @@ And here's an example:
 {: .Example xml:space="preserve"}
 
 </div>
-## Using Splice Machine Query Hints
+## Using Splice Machine Query Hints {#queryhints}
 
 You can use *hints* to help the Splice Machine query interface optimize
 your database queries.
@@ -387,7 +387,8 @@ optimizer may end up choosing the wrong engine for the query.
 {: .noteNote}
 
 <div class="preWrapperWide" markdown="1">
-    splice> SELECT COUNT(*) FROM my_table --splice-properties useSpark=true> ;
+    splice> SELECT COUNT(*) FROM my_table --splice-properties useSpark=true
+    > ;
 {: .Example xml:space="preserve"}
 
 </div>
@@ -396,7 +397,8 @@ Spark. For example:
 {: .indentLevel1}
 
 <div class="preWrapperWide" markdown="1">
-    splice> SELECT COUNT(*) FROM your_table --splice-properties useSpark=false> ;
+    splice> SELECT COUNT(*) FROM your_table --splice-properties useSpark=false
+    > ;
 {: .Example xml:space="preserve"}
 
 </div>
@@ -420,7 +422,7 @@ Access](tutorials_ingest_configures3.html) tutorial before proceeding.
 
 <div class="preWrapperWide" markdown="1">
     splice> DELETE FROM my_table --splice-properties bulkDeleteDirectory='/bulkFilesPath'
-    ;
+    > ;
 {: .Example xml:space="preserve"}
 
 </div>
