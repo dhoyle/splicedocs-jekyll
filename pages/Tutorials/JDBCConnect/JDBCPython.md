@@ -39,7 +39,7 @@ This topic shows you how to connect to a Splice Machine database using our JDBC 
         >>> conn = jaydebeapi.connect("com.splicemachine.db.jdbc.ClientDriver",
         "jdbc:splice://asdsaccount-qatest4.splicemachine-qa.io:1527/splicedb",
         {'user': "yourUserId", 'password': "yourPassword", 'ssl': "basic"},
-        "/Users/admin/Downloads/db-client-2.6.1.1736.jar");
+        "/Users/admin/Downloads/db-client-2.6.1.1736.jar")
         >>> curs = conn.cursor()
         >>> curs.execute('select count(1) from sys.systables')
         >>> n = curs.fetchall()
