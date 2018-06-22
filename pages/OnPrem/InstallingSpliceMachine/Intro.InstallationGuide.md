@@ -82,10 +82,12 @@ The table below links to instructions for installing Splice Machine. We recommen
             <td><p><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/std/docs/STD-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/std/docs/STD-installation.md</a></p>
             <p class="noSpaceBelow">See our <a href="onprem_install_demodata.html">Import and Query Sample Standalone Sample Data</a> topic if you wish to import and query the sample data packaged with our standalone installer.</p></td>
         </tr>
+<!--
         <tr>
             <td>VirtualBox VM</td>
             <td>See our <a href="onprem_install_virtualbox.html">Virtual Box VM</a> installation instructions.</td>
         </tr>
+-->
     </tbody>
 </table>
 
