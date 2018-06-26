@@ -330,7 +330,7 @@ Notes about the LDAP property values:
   the security principal:
 
   * This is used to create the initial LDAP context (aka its connection
-    to a specific DN).
+    to a specific DN (*distinct name*)).
   * It must have the authority to search the user space for user DNs.
   * The `cn=` is the *common name* of the security principal.
   {: .bullet}
@@ -381,6 +381,24 @@ A
 {: .Example}
 </div>
 
+### LDAP Groups and Splice Machine
+
+Given an LDAP user and its `DN` (*Distinct Name*), Splice Machine honors the LDAP groups that user belongs to from two sources:
+
+* the first `CN` (*Common Name*) in the `DN`, which may or may not be the same as the LDAP user name
+* the user's `memberOf` property
+
+Here's an example for an LDAP user with these `DN` and `memberOf` attributes:
+
+<div class="preWrapperWide" markdown="1">
+<pre># user3, Users, splicemachine.colo
+dn: cn=user3,ou=Users,dc=splicemachine,dc=colo
+memberOf: cn=foo,ou=groups,dc=splicemachine,dc=colo
+memberOf: cn=mygroup,ou=groups,dc=splicemachine,dc=color</pre>
+{: .Example}
+</div>
+
+Splice Machine treats <span class="Example">user3</span>, <span class="Example">`foo`</span>, and <span class="Example">`mygroup`</span> as the LDAP groups to which `user3` belongs. All privileges granted to those three groups are inherited by the LDAP user `user3`.
 
 ### Connecting with JDBC and LDAP
 
