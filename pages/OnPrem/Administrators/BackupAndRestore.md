@@ -192,7 +192,7 @@ To run a full backup every night at 3am:
 To run an incremental backup every day at noon.
 
 <div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'incremental', 12);
+    call SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('/home/backup', 'incremental', 12);
 {: .AppCommand xml:space="preserve"}
 
 </div>
