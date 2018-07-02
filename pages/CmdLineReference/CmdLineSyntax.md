@@ -5,8 +5,8 @@ keywords: cli syntax, splice>
 toc: false
 product: all
 sidebar: cmdlineref_sidebar
-permalink: cmdlineref_cmdlinesyntax.html
-folder: CmdLineReference
+permalink: cmdlineref_using_cli.html
+folder: CmdLineReference/Using
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
@@ -27,7 +27,7 @@ interpreter, in the following sections:
   lines and how to run a file of SQL commands.
 * The [Example Command Lines](#ExampleCommands){: .selected} section
   shows several examples of command lines.
-* Our [Scripting Splice Commands](tutorials_cli_scripting.html) tutorial
+* Our [Scripting Splice Commands](cmdlineref_using_cliscripting.html) tutorial
   describes how to create a script of <span
   class="AppCommand">splice&gt;</span> commands to run a series of
   operations like loading a number of files into your database
@@ -141,7 +141,7 @@ values. Here's the syntax:
         <tr>
             <td class="CodeFont">-f scriptFile</td>
             <td><p>The fully-qualified name of the SQL <em>f</em>ile to be executed.</p>
-                <p>For more information about running SQL scripts, please see our <a href="tutorials_cli_scripting.html">Scripting Splice Commands] tutorial</a>.</p>
+                <p>For more information about running SQL scripts, please see our <a href="cmdlineref_using_cliscripting.html">Scripting Splice Commands] tutorial</a>.</p>
             </td>
             <td class="CodeFont">-f mySqlScript.sql</td>
         </tr>
@@ -375,7 +375,7 @@ line. It won't work as expected, but it will enable you to keep working.
 rlWrap is a Unix utility that Splice Machine encourages you to use: it
 allows you to scroll through your command line history, reuse and alter
 lines, and more. We've included a [synopsis of it
-here.](tutorials_cli_rlwrap.html)
+here.](cmdlineref_using_rlwrap.html)
 
 ## Example Command Lines   {#ExampleCommands}
 

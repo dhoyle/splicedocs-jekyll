@@ -16,7 +16,6 @@ folder: Tutorials
 This guide includes tutorials to help you quickly become proficient in
 various aspects of using Splice Machine:
 
-* [Using the Splice Machine Command Line Interface](#UsingCLI)
 * [Configuring Splice Machine Security Settings](#Security)
 * [Importing Data](#Importing)
 * [Accessing Data in the Cloud](#Cloud)
@@ -25,13 +24,6 @@ various aspects of using Splice Machine:
 * [Connecting to Splice Machine with ODBC](#ODBC)
 * [Connecting Splice Machine with Business Intelligence Tools](#BITools)
 * [Analytics and Machine Learning](#MachineLearning)
-
-## Using the Splice Machine Command Line Interface {#UsingCLI}
-This section shows you how to use the `splice>` command line interface, in these topics:
-
-* [Using the splice> command line interface](tutorials_cli_usingcli.html)
-* [Scripting commands](tutorials_cli_scripting.html)
-* [Using rlWrap](tutorials_cli_rlwrap.html)
 
 ## Configuring Splice Machine Security Settings {#Security}
 This section shows you how to configure security for use with Splice Machine, in these topics:

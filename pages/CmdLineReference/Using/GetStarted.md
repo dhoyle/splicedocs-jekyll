@@ -1,12 +1,12 @@
 ---
-title: Using the splice&gt; Command Line Interpreter
+title: Getting Started with the splice&gt; Command Line Interpreter
 summary: An introduction to using our command line interpreter to create and interact with your Splice Machine database.
 keywords: CLI, cli, command line interface
 toc: false
 product: all
-sidebar: tutorials_sidebar
-permalink: tutorials_cli_usingcli.html
-folder: Tutorials/CLI
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_using_getstarted.html
+folder: CmdLineReference/Using
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
@@ -167,7 +167,7 @@ these commands are all equivalent:
 {: .AppCommand}
 
 </div>
-The *[Command Line Syntax](cmdlineref_cmdlinesyntax.html)* topic
+The *[Command Line Syntax](cmdlineref_using_cli.html)* topic
 contains a complete syntax reference for <span
 class="AppCommand">splice&gt;</span>.
 
@@ -732,7 +732,7 @@ You can easily count the records in a table by using the
 
 * To learn how to script <span
   class="AppCommand">splice&gt;</span> commands, please see the
-  [Scripting Splice Machine Commands](tutorials_cli_scripting.html)
+  [Scripting Splice Machine Commands](cmdlineref_using_cliscripting.html)
   tutorial.
 * For more information about the <span
   class="AppCommand">splice&gt;</span> command line interpreter, see

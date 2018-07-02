@@ -40,7 +40,7 @@ that statement, if prepared. Here is an example using The Splice Machine
 command line interface:
 
 <div class="preWrapperWide" markdown="1">
-    
+
     splice> CREATE TABLE mytable (mycol INT);
       0 rows inserted/updated/deleted
     splice> INSERT INTO mytable VALUES (1), (2), (3);
@@ -87,8 +87,7 @@ command line interface:
 * [`CREATE TABLE`](sqlref_statements_createindex.html) statement
 * [`DROP TABLE`](sqlref_statements_droptable.html) statement
 * [`INSERT`](sqlref_statements_insert.html) statement
-* [Using the `splice>` prompt](cmdlineref_cmdlinesyntax.html)
+* [Using the `splice>` prompt](cmdlineref_using_cli.html)
 
 </div>
 </section>
-

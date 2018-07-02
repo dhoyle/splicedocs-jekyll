@@ -4,9 +4,9 @@ summary: Walks you through scripting a set of commands to submit to the splice&g
 keywords: scripting cli
 toc: false
 product: all
-sidebar: tutorials_sidebar
-permalink: tutorials_cli_scripting.html
-folder: Tutorials/CLI
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_using_cliscripting.html
+folder: CmdLineReference/Using
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
@@ -65,7 +65,7 @@ steps:
     If you've not yet done so, start Splice Machine and the
     <span class="AppCommand">splice&gt;</span> command line interface. If you don't know how to do so,
     please see our [Introduction to the splice&gt; Command Line
-    Interface](tutorials_cli_usingcli.html).
+    Interface](cmdlineref_using_getstarted.html).
     {: .indentLevel1}
 
 3.  Run the SQL Script

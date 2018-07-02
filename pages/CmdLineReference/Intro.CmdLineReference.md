@@ -13,19 +13,17 @@ folder: CmdLineReference
 {% assign site.pdf_runninghead = "Command Line Reference" %}
 # Splice Machine Commands Reference
 
-This section contains a reference topic page for each Splice Machine
-command. Another topic, [Using the splice&gt; Command Line
-Interface](cmdlineref_cmdlinesyntax.html), presents general syntax and
-usage help for the <span class="AppCommand">splice&gt;</span> prompt.
+This guide contains reference information for using the Splice Machine command line interpreter, which is also known as the Splice Prompt (<span class="AppCommand">splice&gt;</span>).
 
-The remainder of this topic summarizes which commands you can use, depending on how you are connecting with your Splice Machine database:
+The *Using* section of the guide will help you to get started, in the topics:
 
-* [Commands you can use with all connections to Splice Machine databases](#splice), which
-  means that you can use them with the `sqlshell` interface in our *On-Premise Database* and *Database-as-Service* products, and also with programs that connect to a Splice Machine database using JDBC or ODBC, including the Zeppelin notebook interface in our Database Service.
+* [Getting Started with the CLI](cmdlineref_using_getstarted.html) introduces you to using the CLI.
+* [Command Line Syntax](cmdlineref_using_cli.html) summarizes command line parameters and syntax.
+* [Scripting the CLI](cmdlineref_using_scriptingcli.html) shows you how to script a set of commands to submit via the CLI.
+* [Using RLWrap with splice>](cmdlineref_using_rlwrap.html) summarizes the RLWrap commands you can use to enhance the CLI.
 
-* [Commands you can only use with the <span
-  class="AppCommand">splice&gt;</span> (`sqlshell.sh`) command line interface](#spliceproducts) in our *On-Premise Database* and *Database-as-Service* products. These are mostly commands that display
-  information about the database in a terminal interface, which are not available through JDBC or ODBC connections.
+The remainder of this guide contains a reference topic page for each Splice Machine
+command. As shown in the tables below, you can use many of the commands when connected in any way (including JDBC and ODBC) to Splice Machine, while some commands can only be used via our command line interpreter.
 
 ## Commands You Can Use with All Connections to a Splice Machine Database   {#splice}
 

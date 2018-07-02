@@ -4,9 +4,9 @@ summary: Summarizes RLWrap commands.
 keywords: rlWrap
 toc: false
 product: all
-sidebar: tutorials_sidebar
-permalink: tutorials_cli_rlwrap.html
-folder: Tutorials/CLI
+sidebar: cmdlineref_sidebar
+permalink: cmdlineref_using_rlwrap.html
+folder: CmdLineReference/Using
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
