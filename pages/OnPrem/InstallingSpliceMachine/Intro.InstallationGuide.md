@@ -13,8 +13,7 @@ folder: OnPrem/InstallingSpliceMachine
 # Splice Machine Installation Guide
 
 {% include splice_snippets/onpremonlytopic.md %}
-The table below links to instructions for installing Splice Machine. We recommend that you review our
-[requirements for installing and running Splice Machine](onprem_install_requirements.html) for your cluster or computer before proceeding.
+The table below links to instructions for installing Splice Machine. We recommend that you review the installation requirements for Splice Machine on the instructions page before proceeding.
 
 <table summary="Links to instructions for installing Splice Machine on each platform.">
     <col />
@@ -28,7 +27,11 @@ The table below links to instructions for installing Splice Machine. We recommen
     </thead>
     <tbody>
         <tr>
-            <td rowspan="6"><strong>2.7</strong></td>
+            <td rowspan="7"><strong>2.7</strong></td>
+            <td>CDH 5.14.0</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
+        </tr>
+        <tr>
             <td>CDH 5.13.2</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.2/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.2/docs/CDH-installation.md</a></td>
         </tr>
@@ -53,7 +56,11 @@ The table below links to instructions for installing Splice Machine. We recommen
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md</a></td>
         </tr>
         <tr>
-            <td rowspan="8"><strong>2.5</strong></td>
+            <td rowspan="9"><strong>2.5</strong></td>
+            <td>CDH 5.14.0</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
+        </tr>
+        <tr>
             <td>CDH 5.13.2</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.2/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.2/docs/CDH-installation.md</a></td>
         </tr>
