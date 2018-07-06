@@ -26,27 +26,26 @@ The Splice Machine Spark Adapter allows you to directly connect Spark DataFrames
 
 ## Prerequisites for Using the Adapter {#prereq}
 
-To use the adapter, you must:
-
-1. Make sure that `splice` space has read, write, and create permissions on HBase. For example:
-   <div class="preWrapperWide" markdown="1">
-       hbase(main):003:0> grant 'someuser', 'RWC', '@splice'
-   {: .ShellCommand}
-   </div>
-
-2. Make sure that each user who is going to use the Splice Machine Spark Adapter has `execute` permission on the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` system procedure.
+To use the adapter, you must make sure that each user who is going to use the Splice Machine Spark Adapter has `execute` permission on the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` system procedure.
 
    `SYSCS_UTIL.SYSCS_HDFS_OPERATION` is a Splice Machine system procedure that is used internally to efficiently perform direct HDFS operations. This procedure *is not documented* because it is intended only for use by the Splice Machine code itself; however, the Spark Adapter uses it, so any user of the Adapter must have permission to execute the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` procedure.
    {: .noteIcon}
 
    Here's an example of granting `execute` permission for two users:
-   <div class="preWrapperWide" markdown="1">
-       splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to someuser;
-       0 rows inserted/updated/deleted
-       splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to anotheruser;
-       0 rows inserted/updated/deleted
-   {: .Example}
-   </div>
+````
+splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to someuser;
+0 rows inserted/updated/deleted
+splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to anotheruser;
+0 rows inserted/updated/deleted
+````
+{: .Example}
+
+If you're using the Spark Adapter on a Kerberized cluster, you must set this property value in your `hbase-site.xml` settings file:
+{: .spaceAbove}
+````
+splice.authentication.token.enabled=true
+````
+{: .AppCommand}
 
 ## The Spark Adapter Methods {#methods}
 
@@ -524,15 +523,10 @@ You instantiate and object of the SplicemachineContext class to work with the Sp
     // Create a Spark and SQL context
 val sc = new SparkContext(sparkConf)
 val sqlContext = new SQLContext(sc)
-
-    // Comma-separated list of Splice Machine masters with port numbers
-val master1 = "ip-xx-yy-1-zzz.ec2.internal:7051"
-val master2 = "ip-xx-yy-2-yyy.ec2.internal:7051"
-val master3 = "ip-xx-yy-3-yyy.ec2.internal:7051"
-val Splice MachineMasters = Seq(master1, master2, master3).mkString(",")
+SpliceSpark.setcontext(sc)      // make the context available to Splice Machine
 
     // Create an instance of a SplicemachineContext
-val SpliceContext = new SplicemachineContext(Splice MachineMasters)</pre>
+val SpliceContext = new SplicemachineContext("jdbc:splice:///...")</pre>
 {: .Example}
 </div>
 
@@ -543,7 +537,7 @@ Now we'll use the Adapter to create a new table in our database, in 5 steps.
 First, since we run this code frequently, we'll remove any  pre-existing version of our table from our database:
 <div class="preWrapperWide" markdown="1"><pre>
     // Specify a table name
-var Splice MachineTableName = "spark_Splice Machine_tbl"
+var spliceMachineTableName = "spark_Splice Machine_tbl"
 if (SpliceContext.tableExists(Splice MachineTableName)) {
     SpliceContext.dropTable(Splice MachineTableName) }
 }</pre>
@@ -553,7 +547,7 @@ if (SpliceContext.tableExists(Splice MachineTableName)) {
 #### 2. Define a schema
 Next we'll define the schema for our new table:
 <div class="preWrapperWide" markdown="1"><pre>
-val Splice MachineTableSchema = StructType(
+val spliceMachineTableSchema = StructType(
         //  col name   type    nullable?
    StructField("id", IntegerType , false) ::
    StructField("make" , StringType, true ) ::
@@ -564,14 +558,14 @@ val Splice MachineTableSchema = StructType(
 #### 3. Define the Primary Key
 Let's make the ID column our primary key:
 <div class="preWrapperWide" markdown="1"><pre>
-val Splice MachinePrimaryKey = Seq("id")</pre>
+val spliceMachinePrimaryKey = Seq("id")</pre>
 {: .Example}
 </div>
 
 #### 4. Specify any Additional Options
 We can specify any added options for our new table:
 <div class="preWrapperWide" markdown="1"><pre>
-val Splice MachineTableOptions = new CreateTableOptions()
+val spliceMachineTableOptions = new CreateTableOptions()
 Splice MachineTableOptions.setRangePartitionColumns(List("name").asJava).setNumReplicas(3)</pre>
 {: .Example}
 </div>
