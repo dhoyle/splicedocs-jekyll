@@ -46,12 +46,12 @@ You can install Apache Ranger with the Splice Machine Ambari Service on Hortonwo
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2"><strong>2.7</strong></td>
+            <td><strong>2.7</strong></td>
             <td>HDP 2.6.3</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
         </tr>
         <tr>
-            <td rowspan="2"><strong>2.5</strong></td>
+            <td><strong>2.5</strong></td>
             <td>HDP 2.6.3</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
         </tr>
