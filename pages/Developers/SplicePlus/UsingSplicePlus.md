@@ -3,7 +3,7 @@ title: Using Splice*Plus
 toc: false
 keywords:
 product: all
-summary: 
+summary:
 sidebar: developers_sidebar
 permalink: developers_spliceplus_using.html
 folder: Developers/SplicePlus
@@ -37,7 +37,7 @@ about between this implementation of PL/SQL and other implementations.
 Here's a basic PL/SQL version of "Hello World:"
 
 <div class="preWrapperWide" markdown="1">
-    
+
     DECLARE
        message  varchar2(20):= 'Hello, World!';
     BEGIN
@@ -59,7 +59,7 @@ the block.
 ## Invoking Splice*Plus
 
 *Splice*Plus* is automatically installed for you when you install
-Splice Machine. To run a PL/SQL program that you have stored in a text
+the *Enterprise Version* of Splice Machine. To run a PL/SQL program that you have stored in a text
 file, invoke <span class="AppCommand">spliceplus</span> and specify on
 the command line that it should take its input from that file:
 
@@ -108,4 +108,3 @@ Tools to help debugging
 
 </div>
 </section>
-
