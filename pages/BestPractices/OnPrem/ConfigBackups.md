@@ -15,13 +15,55 @@ folder: BestPractices/OnPrem
 
 This section contains best practice and troubleshooting information related to backing up your data with our *On-Premise Database* product, in these topics:
 
-* [Resource Allocation for Backup Jobs](#BackupResources)
-* [Bulk Import of Very Large Datasets with Spark 2.2](#BulkImportSparkSep)
+* [How Backup Jobs Run](#howjobsrun)
+* [Configuring Backups When Copying with Spark Executors](#usingspark)
+* [Configuring Backups When Copying with `distcp`](#usingdistcp)
 
+## How Backup Jobs Run {#howjobsrun}
 
-## Resource Management for Backup Jobs {#BackupResources}
+Splice Machine backups run as Spark jobs, submitting tasks to copy HFiles. In the past, Splice Machine backups used the Apache Hadoop `distcp` tool to copy the HFile; `distcp` uses MapReduce to copy, which can require significant resources. These requirements can limit file copying parallelism and reduce backup throughput. Splice Machine backups now can run (and do so by default) using a Spark executor to copy the HFiles, which significantly increases backup performance.
 
-Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. To make sure the resources are available, follow these three configuration steps:
+## Configuring Backups When Copying with Spark Executors {#usingspark}
+
+The default way for backups to run is using Spark executors to perform the file copies, which results in a significant performance boost compared to the older method of using `distcp`. You can configure these backups using the following options:
+
+<table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Default value</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">splice.backup.max.bandwidth.mb</td>
+            <td class="CodeFont">100</td>
+            <td>Sets the maximum throughput, in megabtyes, for one thread of file copying; if copying is faster than this value, I/O is throttled to avoid consuming too much network and disk bandwidth. The default value is 100MB per second. </td>
+        </tr>
+        <tr>
+            <td class="CodeFont">splice.backup.io.buffer.size</td>
+            <td class="CodeFont">64</td>
+            <td>This is the size, in kilobytes, of the buffer used to read from and write to HDFS.Tuning this value has an impact of backup performance. The default value is 64KB.</td>
+        </tr>
+    </tbody>
+</table>
+
+## Resource Configuration When Using `distcp`  {#usingdistcp}
+
+You can choose to have Splice Machine use `distcp` for copying HFiles when backing up your database. To do so, set the following configuration option:
+
+````
+splice.backup.use.distcp = true
+````
+{: .AppCommand}
+
+The default value of `splice.backup.use.distcp` is `false`.
+
+When using `distcp` for copying, Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. To make sure the resources are available, follow these three configuration steps:
 
 1. [Configure minimum executors for Splice Spark](#ConfigMinExec)
 2. [Verify that adequate vcores are available for Map Reduce tasks](#EnoughVcores)
