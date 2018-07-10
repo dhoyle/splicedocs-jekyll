@@ -27,9 +27,13 @@ The table below links to instructions for installing Splice Machine. We recommen
     </thead>
     <tbody>
         <tr>
-            <td rowspan="7"><strong>2.7</strong></td>
+            <td rowspan="9"><strong>2.7</strong></td>
             <td>CDH 5.14.0</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
+        </tr>
+        <tr>
+            <td>CDH 5.13.3</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.3/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.3/docs/CDH-installation.md</a></td>
         </tr>
         <tr>
             <td>CDH 5.13.2</td>
@@ -44,6 +48,10 @@ The table below links to instructions for installing Splice Machine. We recommen
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
         </tr>
         <tr>
+            <td>HDP 2.6.1</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.1/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.1/docs/HDP-installation.md</a></td>
+        </tr>
+        <tr>
             <td>HDP 2.5.5</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.5.5/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.5.5/docs/HDP-installation.md</a></td>
         </tr>
@@ -53,12 +61,18 @@ The table below links to instructions for installing Splice Machine. We recommen
         </tr>
         <tr>
             <td>Standalone</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md</a></td>
+            <td><p><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md</a></p>
+            <p class="noSpaceBelow">See our <a href="onprem_install_demodata.html">Import and Query Sample Standalone Sample Data</a> topic if you wish to import and query the sample data packaged with our standalone installer.</p></td>
+            </td>
         </tr>
         <tr>
-            <td rowspan="9"><strong>2.5</strong></td>
+            <td rowspan="10"><strong>2.5</strong></td>
             <td>CDH 5.14.0</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
+        </tr>
+        <tr>
+            <td>CDH 5.13.3</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.3/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.3/docs/CDH-installation.md</a></td>
         </tr>
         <tr>
             <td>CDH 5.13.2</td>
@@ -69,12 +83,12 @@ The table below links to instructions for installing Splice Machine. We recommen
             <td><a href="https://github.com/splicemachine/spliceengine/tree/branch-2.5/platforms/cdh5.12.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/tree/branch-2.5/platforms/cdh5.12.0/docs/CDH-installation.md</a></td>
         </tr>
         <tr>
-            <td>CDH 5.8.3</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.8.3/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.8.3/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
             <td>HDP 2.6.3</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
+        </tr>
+        <tr>
+            <td>HDP 2.6.1</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.1/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.1/docs/HDP-installation.md</a></td>
         </tr>
         <tr>
             <td>HDP 2.5.5</td>

@@ -89,6 +89,31 @@ This example updates the team name associated with all players on the
 {: .Example xml:space="preserve"}
 
 </div>
+This example updates two columns in a table by selecting values from another table:
+{: .body}
+
+<div class="preWrapperWide" markdown="1">
+
+    splice> CREATE TABLE table_a (column2 INT, column3 INT);
+    0 rows inserted/updated/deleted
+    splice> CREATE TABLE table_b (columnx INT, columny INT);
+    0 rows inserted/updated/deleted
+    splice> INSERT INTO table_b VALUES (1,1),(2,2);
+    2 rows inserted/updated/deleted
+    splice> INSERT INTO table_a VALUES (1,10),(2,20);
+    2 rows inserted/updated/deleted
+
+    splice> UPDATE table_a SET (column2, column3) = (SELECT columnx, columny FROM table_b AS b WHERE table_a.column2 = b.columnx);
+    2 rows inserted/updated/deleted
+
+    splice> select * from table_a;
+    COLUMN2|COLUMN3
+    ---------------
+    1      |1
+    2      |2
+{: .Example xml:space="preserve"}
+
+</div>
 ## Statement dependency system
 
 A searched update statement depends on the table being updated, all of
