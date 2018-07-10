@@ -57,6 +57,7 @@ By default, parameters are `IN` parameters unless you specify otherwise.
 
 Data-types such as `BLOB, CLOB, LONG VARCHAR` are not allowed as
 parameters in a `CREATE PROCEDURE` statement.
+{: .paramDefn}
 
 Also: At this time, Splice Machine will return only one `ResultSet` from
 a stored procedure.
@@ -78,6 +79,7 @@ next section.
       | DeterministicCharacteristic
       | EXTERNAL NAME javaMethodName
       | PARAMETER STYLE parameterStyle
+      | DYNAMIC RESULT SETS integer
       | sqlStatementType
     }
 {: .FcnSyntax xml:space="preserve"}
@@ -149,6 +151,15 @@ Splice Machine does not support long column types such as
 these long column types.
 {: .paramDefn}
 
+DYNAMIC RESULT SETS integer
+{: .paramName}
+
+Specifies the number of dynamic result sets produced by the procedure.
+{: .paramDefnFirst}
+
+Currently, Splice Machine only supports `0` or `1` dynamic result sets.
+{: .paramDefn}
+
 sqlStatementType
 {: .paramName}
 
@@ -193,6 +204,7 @@ section of our *Developer's Guide*.
         IN S_MONTH INTEGER,
         IN S_YEAR INTEGER, OUT TOTAL DECIMAL(10,2))
         PARAMETER STYLE JAVA
+        DYNAMIC RESULT SETS 1
         READS SQL DATA LANGUAGE
         JAVA EXTERNAL NAME 'com.example.sales.calculateRevenueByMonth';
     0 rows inserted/updated/deleted
@@ -201,6 +213,7 @@ section of our *Developer's Guide*.
 </div>
 ## See Also
 
+* [Writing Functions and Stored Procedures](developers_fcnsandprocs_writing.html)
 * [Argument matching](sqlref_sqlargmatching.html)
 * [`CREATE_FUNCTION`](sqlref_statements_createfunction.html) statement
 * [`CURRENT_USER`](sqlref_builtinfcns_currentuser.html) function

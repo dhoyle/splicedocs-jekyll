@@ -317,6 +317,9 @@ the `resultSet` parameter in the `MY_TEST_PROC` method in our
 Here are a set of things you should know about `ResultSets[]` in stored
 procedures:
 
+Although the &nbsp;[`CREATE PROCEDURE`](sqlref_statements_createprocedure.html) call allows you to specify the number of `DYNAMIC RESULT SETs`, we currently only support returning a single `ResultSet`.
+{: .noteIcon}
+
 * The `ResultSets` are returned in the order in which they were created.
 * The `ResultSets` must be open and generated from the
   `jdbc:default:connection` default connection. Any other `ResultSets`
@@ -326,10 +329,6 @@ procedures:
   can close the connection.
 * The Splice Machine database engine itself creates the one element
   `ResultSet` arrays that hold the returned `ResultSets`.
-* Although the &nbsp;[`CREATE
-  PROCEDURE`](sqlref_statements_createprocedure.html) call allows you to
-  specify the number of `DYNAMIC RESULT SETs`, we currently only support
-  returning a single `ResultSet`.
 
 </div>
 </section>
