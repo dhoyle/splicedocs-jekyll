@@ -57,68 +57,69 @@ anonymous block:
 Some notes of interest about the basic constructs of PL/SQL:
 
 <table>
-            <col />
-            <col />
-            <thead>
-                <tr>
-                    <th>Construct</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><em>Labels</em></td>
-                    <td>
-                        <p>Labels are specified surrounded by double chevrons (<code>&lt;&lt;</code> and <code>&gt;&gt;</code>).</p>
-                        <p>Labels are optional for anonymous blocks such as the main body of your program.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><em>Declarations</em></td>
-                    <td>
-                        <p>The declare section of a block is optional; however, you must declare a variable prior to using it.</p>
-                        <p>The declaration section of an anonymous block begins with the keyword <code>DECLARE</code>.</p>
-                        <p>Variable declarations can include initial values, which you assign with the PL/SQL assignment operator (<code>:=</code>). If you don't specify an initial value, the variable is initially <code>NULL</code>.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><em>Terminators</em></td>
-                    <td>You must terminate each declaration and statement with a semicolon (<code>;</code>).</td>
-                </tr>
-                <tr>
-                    <td><em>Executable part</em></td>
-                    <td>The executable part of the block begins with the <code>BEGIN</code> keyword and is required.</td>
-                </tr>
-                <tr>
-                    <td><em>Exceptions</em></td>
-                    <td>The <code>exception</code> keyword begins the optional section of the block in which you handle exceptions generated in the executable part.</td>
-                </tr>
-                <tr>
-                    <td><em>Nested blocks and variable scope</em></td>
-                    <td>
-                        <p>You can nest a block within another block.</p>
-                        <p>Variable scoping works as you expect: variables declared in outer blocks are accessible to all blocks nested within them (inner blocks), while variables declared in inner blocks are not accessible to the outer blocks. </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><em>Comments</em></td>
-                    <td>
-                        <p>You can add comments in two ways:</p>
-                        <ul>
-                            <li>single-line comments start with the delimiter <code>--</code> (double hyphen)</li>
-                            <li>multi-line comments are enclosed by <code>/*</code> and <code>*/</code>.</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td><em>/ at end</em></td>
-                    <td>
-                        <p>You include a single <code>/</code> on a blank line at the end of a PL/SQL block to tell the PL/SQL interpreter to run the block after loading it. If you leave this out, the interpreter will simply wait after loading your code block.</p>
-                        <p class="noteNote">If you're creating a program that includes one or more function or procedure definitions (see below), you must include the <code>/</code> after each function or procedure block to have them loaded when you run your program.</p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Construct</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><em>Labels</em></td>
+            <td>
+                <p>Labels are specified surrounded by double chevrons (<code>&lt;&lt;</code> and <code>&gt;&gt;</code>).</p>
+                <p>Labels are optional for anonymous blocks such as the main body of your program.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Declarations</em></td>
+            <td>
+                <p>The declare section of a block is optional; however, you must declare a variable prior to using it.</p>
+                <p>The declaration section of an anonymous block begins with the keyword <code>DECLARE</code>.</p>
+                <p>Variable declarations can include initial values, which you assign with the PL/SQL assignment operator (<code>:=</code>). If you don't specify an initial value, the variable is initially <code>NULL</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Terminators</em></td>
+            <td>You must terminate each declaration and statement with a semicolon (<code>;</code>).</td>
+        </tr>
+        <tr>
+            <td><em>Executable part</em></td>
+            <td>The executable part of the block begins with the <code>BEGIN</code> keyword and is required.</td>
+        </tr>
+        <tr>
+            <td><em>Exceptions</em></td>
+            <td>The <code>exception</code> keyword begins the optional section of the block in which you handle exceptions generated in the executable part.</td>
+        </tr>
+        <tr>
+            <td><em>Nested blocks and variable scope</em></td>
+            <td>
+                <p>You can nest a block within another block.</p>
+                <p>Variable scoping works as you expect: variables declared in outer blocks are accessible to all blocks nested within them (inner blocks), while variables declared in inner blocks are not accessible to the outer blocks. </p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Comments</em></td>
+            <td>
+                <p>You can add comments in two ways:</p>
+                <ul>
+                    <li>single-line comments start with the delimiter <code>--</code> (double hyphen)</li>
+                    <li>multi-line comments are enclosed by <code>/*</code> and <code>*/</code>.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><em>/ at end</em></td>
+            <td>
+                <p>You include a single <code>/</code> on a blank line at the end of a PL/SQL block to tell the PL/SQL interpreter to run the block after loading it. If you leave this out, the interpreter will simply wait after loading your code block.</p>
+                <p class="noteNote">If you're creating a program that includes one or more function or procedure definitions (see below), you must include the <code>/</code> after each function or procedure block to have them loaded when you run your program.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ### PL/SQL Procedures and Functions
 
 Your PL/SQL programs can include procedures and functions, which are
@@ -194,11 +195,11 @@ an exception handling block that can contain any number of
 `WHEN` statements. In summary:
 
 * You can raise exceptions by name in your code:
-  
+
   <div class="fcnWrapperWide" markdown="1">
       RAISE <exception_name>;
   {: .FcnSyntax}
-  
+
   </div>
 
 * Each block can contain an optional exception section that begins with
@@ -206,11 +207,11 @@ an exception handling block that can contain any number of
 * The exception section can contain any number of exception handlers,
   each of which is defined in a `WHEN` statement.
 * Each `WHEN` statement handles a specific `exception_name`:
-  
+
   <div class="fcnWrapperWide" markdown="1">
       WHEN <exception_name>;
   {: .FcnSyntax}
-  
+
   </div>
 
 * The exception name `others` is used to define an exception handler
