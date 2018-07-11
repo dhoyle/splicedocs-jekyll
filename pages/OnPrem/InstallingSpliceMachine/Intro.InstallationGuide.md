@@ -27,7 +27,7 @@ The table below links to instructions for installing Splice Machine. We recommen
     </thead>
     <tbody>
         <tr>
-            <td rowspan="9"><strong>2.7</strong></td>
+            <td rowspan="8"><strong>2.7</strong></td>
             <td>CDH 5.14.0</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
         </tr>
@@ -50,10 +50,6 @@ The table below links to instructions for installing Splice Machine. We recommen
         <tr>
             <td>HDP 2.6.1</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.1/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.1/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.5.5</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.5.5/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.5.5/docs/HDP-installation.md</a></td>
         </tr>
         <tr>
             <td>MapR 5.2.0</td>

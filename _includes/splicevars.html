@@ -23,7 +23,11 @@
 {% assign splvar_requirements_CDH-OS = 'CentOS/RHEL 6' %}
 {% assign splvar_requirements_CDH-ZooKeeper = '3.4.5' %}
 
-{% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.3, HDP 2.6.1, HDP 2.5.5' %}
+{% if site.build_version == "2.7" %}
+    {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.3, HDP 2.6.1' %}
+{% else %}
+    {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.3, HDP 2.6.1, HDP 2.5.5' %}
+{% endif %}
 {% assign splvar_requirements_HDP-Hadoop = '2.7.1' %}
 {% assign splvar_requirements_HDP-HBase = '1.1.2' %}
 {% assign splvar_requirements_HDP-OS = 'CentOS/RHEL 6' %}
