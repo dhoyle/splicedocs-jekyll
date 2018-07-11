@@ -91,8 +91,7 @@ you would any other table in your database.
 
 ### Accessing and Updating an ORC File
 
-The following statement creates an external table for creates an
-external table for an `ORC` file and inserts data into it:
+The following statement creates an external table for an `ORC` file stored in an AWS S3 bucket and inserts data into it:
 
 <div class="preWrapperWide" markdown="1">
 
@@ -100,7 +99,7 @@ external table for an `ORC` file and inserts data into it:
       (col1 INT, col2 VARCHAR(24))
        PARTITIONED BY (col1)
        STORED AS ORC
-       LOCATION '/users/myname/myOrcFile';
+       LOCATION 's3a://myOrcData/myName/myOrcFile';
     0 rows inserted/updated/deleted
     splice> INSERT INTO myExtTbl2 VALUES (1, 'One'), (2, 'Two'), (3, 'Three');
     3 rows inserted/updated/deletedsplice
@@ -136,7 +135,7 @@ You can specify a table constraint on an external table; for example:
        ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ESCAPED BY '\\'
        LINES TERMINATED BY '\\n'
        STORED AS TEXTFILE
-       LOCATION '/users/myName/myTextFile';
+       LOCATION 'hdfs:///tmp/myTables/myTextFile';
      0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
