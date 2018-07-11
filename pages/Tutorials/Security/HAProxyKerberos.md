@@ -62,7 +62,7 @@ To connect to a Kerberos-enabled cluster with ODBC, follow these steps:
 3. Launch the application that will connect using ODBC. The ODBC driver will use
   that default Kerberos *principal* when authenticating with Splice Machine.
 
-## Example
+## JDBC Example
 
 This example assumes that you are using the default user name `splice`.
 Follow these steps to connect with through HAProxy:
@@ -91,7 +91,19 @@ Follow these steps to connect with through HAProxy:
     <div class="preWrapperWide" markdown="1">
         jdbc:splice://<haproxy_host>:1527/splicedb;principal=splice@<realm_name>;keytab=/<path>/splice.keytab
     {: .Plain}
+    </div>
 
+    If your keytab file is stored on HDFS, you can specify the connection like this instead:
+    {: .topLevel}
+    <div class="preWrapperWide" markdown="1">
+        jdbc:splice://localhost:1527/splicedb;principal=jdoe@SPLICEMACHINE.COLO;keytab=hdfs:///tmp/splice.keytab
+    {: .Plain}
+    </div>
+
+    When connecting third-party software via JDBC using a keytab file stored on HDFS, you must make sure that the Splice Machine libraries are in your classpath:
+    <div class="preWrapperWide" markdown="1">
+        export HADOOP_CLASSPATH=/opt/cloudera/parcels/SPLICEMACHINE/lib/*
+    {: .ShellCommand}
     </div>
 {: .boldFont}
 

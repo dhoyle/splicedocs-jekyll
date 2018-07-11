@@ -97,25 +97,19 @@ authentication properties:
         <tbody>
             <tr>
                 <td>CDH</td>
-                <td>{{splvar_location_CDHAuthSettings}}
-                </td>
+                <td class="CodeFont">{{splvar_location_CDHAuthSettings}}</td>
             </tr>
             <tr>
                 <td>HDP</td>
-                <td><span class="splvar_location_HDPAuthSettings">Select the Custom HBase Configs option from the HBase configuration tab.</span>
-                </td>
+                <td>{{splvar_location_HDPAuthSettings}}</td>
             </tr>
             <tr>
                 <td>MapR</td>
-                <td>
-                    <p>{{splvar_location_MapRAuthSettings}}
-                    </p>
-                </td>
+                <td class="CodeFont">{{splvar_location_MapRAuthSettings}}</td>
             </tr>
             <tr>
                 <td>Standalone version</td>
-                <td>{{splvar_location_StandaloneAuthSettings}}
-                </td>
+                <td class="CodeFont">{{splvar_location_StandaloneAuthSettings}}</td>
             </tr>
         </tbody>
     </table>
@@ -260,6 +254,20 @@ Kerberos authentication in Splice Machine uses an external KDC server. Follow th
        splice> CONNECT  'jdbc:splice://localhost:1527/splicedb;principal=jdoe@SPLICEMACHINE.COLO;keytab=/tmp/user1.keytab';
    {: .Example}
    </div>
+
+   If your keytab file is stored on HDFS, you can specify the connection like this instead:
+   {: .topLevel}
+   <div class="preWrapperWide" markdown="1">
+       splice> CONNECT  'jdbc:splice://localhost:1527/splicedb;principal=jdoe@SPLICEMACHINE.COLO;keytab=hdfs:///tmp/splice.keytab';
+   {: .Example}
+   </div>
+
+   When connecting third-party software via JDBC using a keytab file stored on HDFS, you must make sure that the Splice Machine libraries are in your classpath:
+   <div class="preWrapperWide" markdown="1">
+       export HADOOP_CLASSPATH=/opt/cloudera/parcels/SPLICEMACHINE/lib/*
+   {: .ShellCommand}
+   </div>
+
 </div>
 
 ## Using LDAP Authentication   {#Using2}
