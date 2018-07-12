@@ -39,15 +39,15 @@ HAProxy will then transparently forward the connections to the back-end
 cluster in Kerberos setup.
 
 ### Kerberos and ODBC Access
-To connect to a Kerberos-enabled cluster with ODBC, follow these steps:
+To connect to a Kerberos-enabled cluster with ODBC, please review the information in our [Configuring Kerberos for ODBC Windows](tutorials_connect_odbcwin.html) topic.
 
-1. Verify that the odbc.ini configuration file for the DSN you're connecting to
-  includes this setting:
+In summary, follow these steps:
+
+1. [Follow our instructions for installing and configuring our ODBC driver](tutorials_connect_odbcinstall.html). Verify that the odbc.ini configuration file for the DSN you're connecting to includes this setting:
 
     <div class="preWrapperWide" markdown="0"><pre class="Example">
     USE_KERBEROS=1</pre>
     </div>
-  See our [Using the Splice Machine ODBC Driver](tutorials_connect_odbcinstall.html) for more information.
 
 2. A default security principal user must be established with a TGT in the ticket
   cache prior to invoking the driver. You can use the following command to establish

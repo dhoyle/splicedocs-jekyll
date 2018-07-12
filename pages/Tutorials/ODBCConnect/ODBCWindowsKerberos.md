@@ -11,21 +11,21 @@ folder: Tutorials/ODBCConnect
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# Configurating Kerberos for Windows and the Splice Machine ODBC Driver
+# Configuring Kerberos for Windows and the Splice Machine ODBC Driver
 
 To use Kerberos with the Splice Machine ODBC driver on Windows, you must download and install MIT Kerberos for Windows 4.0.1. Follow these steps:
 
-1. Download and Run the MIT Kerberos Installer
-2. Set up the Kerberos Configuration File
-3. Set up the Kerberos Credential Cache File
-4. Obtain a ticket for a Kerberos Principal
+1. [Download and Run the MIT Kerberos Installer](#install)
+2. [Set up the Kerberos Configuration File](#setup)
+3. [Set up the Kerberos Credential Cache File](#cache)
+4. [Obtain a ticket for a Kerberos Principal](#ticket)
 
-## Download and Run the MIT Kerberos Installer for Windows
+## Download and Run the MIT Kerberos Installer for Windows {#install}
 
 You can find the installer here:
 &nbsp;&nbsp;&nbsp;<a href="http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi" target="_blank">http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi</a>
 
-## Set up the Kerberos Configuration file
+## Set up the Kerberos Configuration file {#setup}
 
 There are two ways to do this, both of which are described in this section.
 * Set up in the default windows directory.
@@ -53,7 +53,7 @@ To set up the configuration in a custom location, first obtain the `/etc/krb5.co
 9. Ensure the variable is listed in the System variables list.
 10. Click `OK` to close the Environment Variables dialog, and then click `OK` to close the System Properties dialog.
 
-## Set Up the Kerberos Credential Cache File
+## Set Up the Kerberos Credential Cache File {#cache}
 
 Kerberos uses a credential cache to store and manage credentials. Follow these steps to set up the credentials cache file:
 
@@ -72,7 +72,7 @@ Kerberos uses a credential cache to store and manage credentials. Follow these s
 10. Click `OK` to close the Environment Variables dialog, and then click `OK` to close the System Properties dialog.
 11. To ensure that Kerberos uses the new settings, __restart your computer__.
 
-## Obtain a Ticket for a Kerberos Principal
+## Obtain a Ticket for a Kerberos Principal {#ticket}
 
 A principal is a user or service that can authenticate to Kerberos. To authenticate to Kerberos, a principal must obtain a ticket in one of these ways:
 
