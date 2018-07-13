@@ -12,13 +12,15 @@ folder: Developers/Fundamentals
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using the Splice Machine Spark Adapter
 
-This topic describes the API for the Splice Machine Spark Adapter and provides examples of using the API in scala programming and in Apache Zeppelin notebooks. This topic is organized into these sections:
+This topic describes the API for the Splice Machine Native Spark DataSource (aks *Splice Machine Spark Adapter*) and provides examples of using the API in scala programming and in Apache Zeppelin notebooks. This topic is organized into these sections:
 
 * [About the Splice Machine Spark Adapter](#about)
 * [Prerequisites for Using the Adapter](#prereq)
 * [The Spark Adapter Methods](#methods)
 * [Examples using Scala](#sparksubmit)
 * [Examples of Using the Spark Adapter in Zeppelin Notebooks](#zepexamples)
+
+[This blog article on our website](https://www.splicemachine.com/the-splice-machine-native-spark-datasource) provides a full walkthrough of using the Native DataSource in Zeppelin.
 
 ## About the Splice Machine Spark Adapter {#about}
 
@@ -47,6 +49,27 @@ splice.authentication.token.enabled=true
 ````
 {: .AppCommand}
 
+## Spark Adapter Access to Database Objects {#access}
+
+By default, Spark Adapter queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, when your Spark Adapter application uses our Access Control List (*ACL*) feature, one feature that is unavailable, view permissions, can be problematic.
+
+The ACL feature is enabled by `splice.authentication.token.enabled = true`.
+{: .noteNote}
+
+The specific problem is that the Spark Adapter does not have the ability to check permissions on a view; instead, it checks permissions on the table underlying the view. This means that your Spark Adapter application doesn't have access to the table underlying a view, it will not have access to the view; as a result, a query against the view fails and throws an exception.
+
+The workaround for this problem is to tell the Spark Adapter to use *internal* access to the database; this enables view permission checking, at a slight cost in performance. With internal access, the adapter runs queries in Splice Machine and temporarily persists data in HDFS while running the query.
+
+### Enabling Internal Execution
+You can specify that you want your Spark Adapter application to use internal query execution in two ways:
+
+* You can use the alternative methods [`internalDf`](#df) and [`internalRdd`](#rdd), which use internal execution instead of the standard `df` and `rdd` methods for creating DataFrames and RDDs from your database queries.
+
+* You can assign the value `true` to the `JDBC_INTERNAL_QUERIES` option when you create your  `splicemachineContext` object, which tells the Spark Adapter to automatically run queries using internal execution.
+* You can also use the `JDBC_TEMP_DIRECTORY` option to specify a location for the temporary data (other than the default of `/tmp`).
+
+See the [Spark Adapter JDBC Connection Options](#jdbc) section below for information about JDBC connection string options.
+
 ## The Spark Adapter Methods {#methods}
 
 This section describes the following methods of the `SplicemachineContext` class:
@@ -56,10 +79,10 @@ This section describes the following methods of the `SplicemachineContext` class
 * [`bulkImportHFile`](#bulkimporthfile)
 * [`createTable`](#createtable)
 * [`delete`](#delete)
-* [`df`](#df)
+* [`df` and `internalDf`](#df)
 * [`dropTable`](#droptable)
 * [`insert`](#insert)
-* [`rdd`](#rdd)
+* [`rdd` and `internalRdd`](#rdd)
 * [`tableExists`](#tableexists)
 * [`truncateTable`](#truncatetable)
 * [`update`](#update)
@@ -251,12 +274,17 @@ A structure that specifies the layout of the data in the RDD.
 </div>
 
 
-### df {#df}
+### df and internalDf {#df}
 
-This method executes an SQL string within Splice Machine and returns the results in a Spark DataFrame.
+These methods executes an SQL string within Splice Machine and returns the results in a Spark DataFrame.
+
+The only difference between `df` and `internalDf` methods is that the `internalDf` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views.
+{: .noteIcon}
 
 <div class="fcnWrapperWide" markdown="1"><pre>
-df( sql: String ): Dataset[Row]</pre>
+df( sql: String ): Dataset[Row]
+
+internalDf( sql: String ): Dataset[Row]</pre>
 {: .FcnSyntax xml:space="preserve"}
 </div>
 
@@ -347,12 +375,18 @@ A structure that specifies the layout of the data in the RDD.
 </div>
 
 
-### rdd {#rdd}
+### rdd and internalRdd {#rdd}
 
-This method creates a Spark RDD from a Splice Machine table.
+These methods creates a Spark RDD from a Splice Machine table.
+
+The only difference between the `rdd` and `internalRdd` methods is that the `internalRdd` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views.
+{: .noteIcon}
 
 <div class="fcnWrapperWide" markdown="1"><pre>
 rdd( schemaTableName: String,
+     columnProjection: Seq[String] = Nil ): RDD[Row]
+
+internalRdd( schemaTableName: String,
      columnProjection: Seq[String] = Nil ): RDD[Row]</pre>
 {: .FcnSyntax xml:space="preserve"}
 </div>
@@ -512,7 +546,6 @@ A structure that specifies the layout of the data in the RDD.
 {: .paramDefnFirst}
 </div>
 
-
 ## Examples using Scala {#sparksubmit}
 
 In this section, we'll use `scala` to create a simple Splice Machine database table, and then access and modify that table.
@@ -525,10 +558,58 @@ val sc = new SparkContext(sparkConf)
 val sqlContext = new SQLContext(sc)
 SpliceSpark.setcontext(sc)      // make the context available to Splice Machine
 
-    // Create an instance of a SplicemachineContext
-val SpliceContext = new SplicemachineContext("jdbc:splice:///...")</pre>
+    // Create an instance of a SplicemachineContext and select/display table contents
+val dbUrl = "jdbc:splice://myhost:1527/splicedb;user=myUserName;password=myPswd"
+val SpliceContext = new SplicemachineContext(dbUrl)
+splicemachineContext.df("SELECT * FROM sys.systables").show()
+
+</pre>
 {: .Example}
 </div>
+
+The SplicemachineContext object support two constructor methods:
+
+````
+   SpliceContext = new SplicemachineContext(jdbcUrl: String)
+````
+{: .FcnSyntax}
+
+and
+
+````
+   SpliceContext = new SplicemachineContext(options: Map[String, String]
+````
+{: .FcnSyntax}
+
+The available `options` are:
+{: .spaceAbove}
+
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">JDBC_URL</td>
+            <td>The JDBC URL.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">JDBC_INTERNAL_QUERIES</td>
+            <td>A string with value <code>true</code> or <code>false</code>, which indicates whether or not to run queries internally by default.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">JDBC_TEMP_DIRECTORY</td>
+            <td><p>The path to the temporary directory that you want to use when persisting temporary data from internally executed queries.</p>
+                <p>The default value is <code>/tmp</code>.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ### Creating a Table in Your Splice Machine Database
 Now we'll use the Adapter to create a new table in our database, in 5 steps.
