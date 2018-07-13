@@ -38,7 +38,7 @@ to provision your cluster:
 ![](images/CreateNewCluster1.png "Initial settings for new Splice
 Machine cluster"){: .indentedTightSpacing}
 
-You can select your cloud provider from the <span class="ConsoleLink">Cloud Provider</span> drop-down, just under the <span class="ConsoleLink">Cluster Name</span> field:
+You can select your cloud provider from the <span class="ConsoleLink">Cloud Provider</span> drop-down, just beneath the <span class="ConsoleLink">Cluster Name</span> field:
 
 ![](images/CloudProviderDropdown.png "Cloud Provider Drop-down List"){: .indentedTightSpacing}
 
