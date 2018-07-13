@@ -1,0 +1,26 @@
+
+## Spark Adapter Access to Database Objects {#access}
+
+You can configure your Spark Adapter application to execute
+By default, queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, some features in the database do not work properly when run in the Spark application; one such feature is checking permissions on Views:
+
+* If your Spark Adapter application runs a query against a View and the application user does not have access to the Table underlying that View, the query fails and throws an exception.
+
+**** NEED A LIST OF SUCH FEATURES HERE ****
+
+The solution to this problem is to us
+
+
+
+
+
+
+
+
+spark adapter:
+   - internal vs non-internal = "Spark Application"?
+   - need internal for spark adapter apps to use all Splice features (View permission checking, for instance). What other features?
+
+JDBC options: document in spark adapter page only ?
+   JDBC_TEMP_DIRECTORY
+   JDBC_INTERNAL_QUERIES

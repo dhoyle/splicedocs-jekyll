@@ -13,21 +13,7 @@ folder: DBaaS/CloudManager
 # Splice Machine Cloud Manager
 
 This guide helps you to get registered with and start using the Splice
-Machine Cloud Manager
-
-<div class="notePlain">
-<table class="noBorder">
-				<col />
-				<col />
-				<tbody>
-					<tr>
-						<td style="width: 80px;"><img src="images/chaticon.png" /></td>
-						<td>You can initiate a chat session with one of our support specialists by clicking this chat icon, which you'll see on Cloud Manager screens.</td>
-					</tr>
-				</tbody>
-			</table>
-</div>
-Here are the topics included in this guide:
+Machine Cloud Manager. Here are the topics included in this guide:
 
 <table>
             <col />

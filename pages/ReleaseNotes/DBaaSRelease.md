@@ -16,9 +16,34 @@ folder: ReleaseNotes
 {% include splice_snippets/dbaasonlytopic.md %}
 This topic includes any release notes that are specific to the Splice Machine *Database-as-Service* product, in these sections:
 
+* [Current Database Release Versions](#database-versions)
 * [Features Not Yet Available](#features-not-yet-available)
 * [Current Limitations](#current-limitations)
 * [Important Notes](#important-notes)
+
+## Current Database Release Versions
+Our Database-as-a-Service product currently includes these versions of the Splice Machine database:
+
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Cloud Provider</th>
+            <th>Splice Machine Database Version</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>AWS</td>
+            <td>{{splvar_dbaas_AWSDBVersion}}</td>
+        </tr>
+        <tr>
+            <td>Azure</td>
+            <td>{{splvar_dbaas_AzureDBVersion}}</td>
+        </tr>
+    </tbody>
+</table>
 
 
 ## Features Not Yet Available {#features-not-yet-available}
