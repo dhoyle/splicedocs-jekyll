@@ -51,24 +51,22 @@ splice.authentication.token.enabled=true
 
 ## Spark Adapter Access to Database Objects {#access}
 
-By default, Spark Adapter queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, when your Spark Adapter application uses our Access Control List (*ACL*) feature, one feature that is unavailable, view permissions, can be problematic.
+By default, Spark Adapter queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, when your Spark Adapter application uses our Access Control List (*ACL*) feature, there is a restriction with regard to checking permissions.
+
+The specific problem is that the Spark Adapter does not have the ability to check permissions at the view level or column level; instead, it checks permissions on the base table. This means that your Spark Adapter application doesn't have access to the table underlying a view or column, it will not have access to that view or column; as a result, a query against the view or colunn fails and throws an exception.
+
+The workaround for this problem is to tell the Spark Adapter to use *internal* access to the database; this enables view/column permission checking, at a slight cost in performance. With internal access, the adapter runs queries in Splice Machine and temporarily persists data in HDFS while running the query.
 
 The ACL feature is enabled by `splice.authentication.token.enabled = true`.
 {: .noteNote}
 
-The specific problem is that the Spark Adapter does not have the ability to check permissions on a view; instead, it checks permissions on the table underlying the view. This means that your Spark Adapter application doesn't have access to the table underlying a view, it will not have access to the view; as a result, a query against the view fails and throws an exception.
+### Using Internal Execution
 
-The workaround for this problem is to tell the Spark Adapter to use *internal* access to the database; this enables view permission checking, at a slight cost in performance. With internal access, the adapter runs queries in Splice Machine and temporarily persists data in HDFS while running the query.
-
-### Enabling Internal Execution
 You can specify that you want your Spark Adapter application to use internal query execution in two ways:
 
 * You can use the alternative methods [`internalDf`](#df) and [`internalRdd`](#rdd), which use internal execution instead of the standard `df` and `rdd` methods for creating DataFrames and RDDs from your database queries.
 
-* You can assign the value `true` to the `JDBC_INTERNAL_QUERIES` option when you create your  `splicemachineContext` object, which tells the Spark Adapter to automatically run queries using internal execution.
-* You can also use the `JDBC_TEMP_DIRECTORY` option to specify a location for the temporary data (other than the default of `/tmp`).
-
-See the [Spark Adapter JDBC Connection Options](#jdbc) section below for information about JDBC connection string options.
+* If you are using Spark's `read()` method, you can set the value of the `SpliceJDBCOptions.JDBC_INTERNAL_QUERIES` option to `true`. See the [Spark Adapter JDBC Connection Options](#jdbc) section below for information about JDBC connection string options.
 
 ## The Spark Adapter Methods {#methods}
 
@@ -581,8 +579,12 @@ and
 ````
 {: .FcnSyntax}
 
-The available `options` are:
+The available `options` are listed in the next section.
 {: .spaceAbove}
+
+### Spark Adapter JDBC Connection Options {#jdbc}
+
+The Spark Adapter JDBC Options (`SpliceJDBCOptions`) are:
 
 <table>
     <col />
