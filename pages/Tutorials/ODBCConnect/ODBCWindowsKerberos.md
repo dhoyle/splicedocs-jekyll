@@ -16,4 +16,4 @@ folder: Tutorials/ODBCConnect
 The content of this topic has been moved to the [Using Splice Machine On a Kerberos-Enabled Cluster](tutorials_security_usingkerberos.html) topic.
 
 </div>
-</html>
+</section>
