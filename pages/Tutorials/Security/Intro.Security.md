@@ -18,7 +18,7 @@ This section shows you how to configure security for Splice Machine, in these to
 * [Configuring Authentication](onprem_install_configureauth.html)
 * [System Privileges for Users and Super-Users](tutorials_security_userprivs.html)
 * [Configuring SSL/TLS](onprem_install_configureTLS.html)
-* [Using HAProxy with Kerberos](tutorials_security_haproxykerberos.html)
+* [Using Splice Machine On a Kerberos-Enabled Cluster](tutorials_security_usingkerberos.html)
 * [Using Apache Ranger with Splice Machine](tutorials_security_rangeruserguide.html)
 
 </div>

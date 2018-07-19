@@ -194,7 +194,7 @@ You can then connect through JDBC with the `principal` and `keytab` values. For 
    {: .Example}
    </div>
 
-For more information, see our [Using Kerberos](tutorials_security_usingkerberos.html) topic.
+For more information about using Kerberos with Splice Machine, see our [Using Kerberos](tutorials_security_usingkerberos.html) topic.
 
 ## Using LDAP Authentication   {#Using2}
 

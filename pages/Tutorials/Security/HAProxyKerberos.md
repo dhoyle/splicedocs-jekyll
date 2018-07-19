@@ -13,9 +13,10 @@ folder: Tutorials/Security
 
 # Using HAProxy with Splice Machine on a Kerberos-Enabled Cluster   {#Using}
 
-If you are connecting to Splice Machine on a Kerberized cluster through HAProxy,
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+Connecting via HAProxy to a Kerberized cluster is a simple matter of:
 
-</div>
+* Follow the instructions in our [Configuring Load Balancing and High Availability with HAProxy](tutorials_connect_haproxy.html) to make sure HAProxy is configured correctly.
+* Follow the instructions in our [Using Splice Machine On a Kerberos-Enabled Cluster](tutorials_security_usingkerberos.html) topic for configuring Kerberos. When connecting, specify the proxy server in your connection string.
+
 </div>
 </section>

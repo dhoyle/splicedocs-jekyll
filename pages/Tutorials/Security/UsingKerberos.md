@@ -18,7 +18,6 @@ This topic describes how to configure and use Kerberos with your Splice Machine 
 * [Enabling Kerberos Authentication on Your Cluster](#UseOnCluster) describes how to enable Kerberos authentication in your cluster.
 * [Using Kerberos Authentication with Splice Machine on Windows](#UseOnWindows) describes how to set up Kerberos access to Splice Machine on Windows.
 * [Kerberos and Application Access](#AppAccess) describes how to connect to Splice Machine using Kerberos via our [JDBC](#JDBCAccess) and [ODBC](#ODBCAccess) drivers.
-* [Connecting Through HAProxy](#HAProxy)
 
 
 ## Enabling Splice Machine Kerberos Authentication on Your Cluster {#UseOnCluster}
@@ -38,7 +37,9 @@ To use Kerberos with the Splice Machine on Windows, you must download and instal
 ### Step 1: Download and Run the MIT Kerberos Installer for Windows {#install}
 
 You can find the installer here:
-&nbsp;&nbsp;&nbsp;<a href="http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi" target="_blank">http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi</a>
+&nbsp;&nbsp;&nbsp;<a href="http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi" target="_blank">http://web.mit.edu/kerberos/dist/kfw/4.0/kfw-4.0.1-amd64.msi</a>.
+
+MIT's documentation page for Kerberos is here: [http://web.mit.edu/kerberos/](http://web.mit.edu/kerberos/).
 
 ### Step 2: Set up the Kerberos Configuration file {#setup}
 
@@ -228,7 +229,7 @@ Each of these options is described in this section.
 
 </div>
 
-For more information about configuring Kerberos, including the default keytab file, consult the MIT Kerberos documentation
+For more information about configuring Kerberos, consult the MIT Kerberos documentation: [http://web.mit.edu/kerberos/](http://web.mit.edu/kerberos/).
 {: .noteNote}
 
 ## Kerberos and Application Access {#AppAccess}
@@ -247,14 +248,22 @@ Once you've configured Kerberos, you can connect with JDBC by specifying the pri
    {: .AppCommand}
    </div>
 
-If your keytab file is stored on HDFS, you can specify the connection like this instead:
+If you're using HAProxy, simply specify your proxy host as the server in the connect string:
+{: .spaceAbove}
+   <div class="PreWrapper" markdown="1">
+    splice> CONNECT 'jdbc:splice://<haproxy-host>:1527/splicedb;principal=jdoe@SPLICEMACHINE.COLO;keytab=/tmp/user1.keytab';
+   {: .AppCommand}
+   </div>
 
+If your keytab file is stored on HDFS, you can specify the connection like this instead:
+{: .spaceAbove}
    <div class="PreWrapper" markdown="1">
     splice> CONNECT 'jdbc:splice://localhost:1527/splicedb;principal=jdoe@SPLICEMACHINE.COLO;keytab=hdfs:///tmp/splice.keytab';
    {: .AppCommand}
    </div>
 
 When connecting third-party software via JDBC using a keytab file stored on HDFS, you must make sure that the Splice Machine libraries are in your classpath:
+{: .spaceAbove}
    <div class="PreWrapper" markdown="1">
     export HADOOP_CLASSPATH=/opt/cloudera/parcels/SPLICEMACHINE/lib/*
    {: .ShellCommand}
@@ -262,17 +271,20 @@ When connecting third-party software via JDBC using a keytab file stored on HDFS
 
 ### Connecting Splice Machine with Kerberos and ODBC {#ODBCAccess}
 
-To connect to a Kerberized cluster with ODBC, you must:
+Follow these steps to connect to a Kerberized cluster with ODBC:
 
+<div class="opsStepsList" markdown="1">
 1. [Follow our instructions for installing and configuring our ODBC driver](tutorials_connect_odbcinstall.html). Verify that the `odbc.ini` configuration file for the DSN you're connecting to includes this setting:
+   {: .topLevel}
 
     <div class="preWrapperWide" markdown="0"><pre class="Example">
     USE_KERBEROS=1</pre>
     </div>
 
-2. A default security principal user must be established with a ticket-granting ticket (*TGT*) in the ticket
+2. Establish a default security principal user with a ticket-granting ticket (*TGT*) in the ticket
   cache prior to invoking the driver. You can use the following command to establish
   the principal user:
+   {: .topLevel}
 
     <div class="preWrapperWide" markdown="0"><pre class="ShellCommand">
     kinit <em>principal</em></pre>
@@ -280,35 +292,10 @@ To connect to a Kerberized cluster with ODBC, you must:
     Where *principal* is the name of the user who will be accessing Splice Machine.
     Enter the password for this user when prompted.
 
-3. Launch the application that will connect using ODBC. The ODBC driver will use
+3. Launch the application that connects using ODBC; our ODBC driver will use
   that default Kerberos *principal* when authenticating with Splice Machine.
-
-## Connecting Through HAProxy {#HAProxy}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="preWrapperWide" markdown="1">
-        jdbc:splice://ha-proxy-host:1527/splicedb;principal=jdoe@SPLICEMACHINE.COLO;keytab=/home/splice/user1.keytab
-
+   {: .topLevel}
 </div>
+
 </div>
 </section>

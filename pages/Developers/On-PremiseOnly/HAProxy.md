@@ -33,9 +33,6 @@ The advantages of using HAProxy with Splice Machine clusters are:
 
 The remainder of this topic walks you through configuring HAProxy on a non-Splice Machine node that is running Red Hat Enterprise Linux.
 
-Our Tutorials chapter includes a topic that addresses [Using HAProxy on a Kerberos-enabled Cluster](tutorials_security_haproxykerberos.html).
-{: .noteIcon}
-
 ## Configuring HAProxy with Splice Machine   {#Configur}
 
 The following example shows you how to configure HAProxy load balancer

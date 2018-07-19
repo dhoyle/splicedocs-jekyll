@@ -28,9 +28,12 @@ various aspects of using Splice Machine:
 ## Configuring Splice Machine Security Settings {#Security}
 This section shows you how to configure security for use with Splice Machine, in these topics:
 
-* [Splice Machine Authentication and Authorization](developers_fundamentals_auth.html)
-* [Configuring SSL/TLS Authentication](onprem_install_configureTLS.html)
-* [Using HAProxy on a Kerberos-Enabled Cluster](tutorials_security_haproxykerberos.html)
+* [Roles and Authorization](developers_fundamentals_auth.html)
+* [Configuring Authentication](onprem_install_configureauth.html)
+* [System Privileges for Users and Super-Users](tutorials_security_userprivs.html)
+* [Configuring SSL/TLS](onprem_install_configureTLS.html)
+* [Using Splice Machine On a Kerberos-Enabled Cluster](tutorials_security_usingkerberos.html)
+* [Using Apache Ranger with Splice Machine](tutorials_security_rangeruserguide.html)
 
 ## Importing Data {#Importing}
 Our *Importing Data* tutorial walks you through importing data into Splice Machine, in these topics:
