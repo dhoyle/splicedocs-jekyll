@@ -125,7 +125,7 @@ Kerberos uses a credential cache to store and manage credentials. Follow these s
 7. In the <span class="varName">Variable Value</span> field, type the path to the folder you created in step 1, and then append the file name <span class="varName">krb5cache</span>. For example, <span class="Example">C:\temp\krb5cache</span>.
    {: .topLevel}
 
-   <span class="varName">krb5cache</span> is a file (not a directory) that is managed by the Kerberos software which __should not be created by users__; if you receive a permission error when you first use Kerberos, ensure that <span class="varName">krb5cache</span> does not already exist as a file or a directory.
+   <span class="varName">krb5cache</span> is a file (not a directory) that is managed by the Kerberos software which __should not be created by users__; if you receive a permission error when you first use Kerberos, ensure that <span class="varName">krb5cache</span> does not already exist as a file or directory.
    {: .noteNote}
 
 8. Click <span class="varName">OK</span> to save the new variable.
@@ -135,10 +135,10 @@ Kerberos uses a credential cache to store and manage credentials. Follow these s
    {: .topLevel}
 
 10. Click <span class="varName">OK</span> to close the Environment Variables dialog, and then click <span class="varName">OK</span> to close the System Properties dialog.
-   {: .topLevel}
+    {: .topLevel}
 
 11. To ensure that Kerberos uses the new settings, __restart your computer__.
-   {: .topLevel}
+    {: .topLevel}
 
 </div>
 
