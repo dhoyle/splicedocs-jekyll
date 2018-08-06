@@ -205,35 +205,42 @@ special characters as delimiters:
     </thead>
     <tbody>
         <tr>
-            <td><code>\t</code></td>
+            <td><code>'\t'</code></td>
             <td>Tab </td>
         </tr>
         <tr>
-            <td><code>\f</code></td>
+            <td><code>'\f'</code></td>
             <td>Formfeed</td>
         </tr>
         <tr>
-            <td><code>\b</code></td>
+            <td><code>'\b'</code></td>
             <td>Backspace</td>
         </tr>
         <tr>
-            <td><code>\\</code></td>
+            <td><code>'\\'</code></td>
             <td>Backslash</td>
         </tr>
         <tr>
-            <td><code>^a (or ^A)</code></td>
+            <td><code>'^a'</code><br />(or <code>'^A'</code>)</td>
             <td>
                 <p>Control-a</p>
                 <p class="noteIndent">If you are using a script file from the <code>splice&gt;</code> command line, your script can contain the actual <code>Control-a</code> character as the value of this parameter.</p>
             </td>
         </tr>
+        <tr>
+            <td><code>''''</code></td>
+            <td>Single Quote (<code>'</code>)</td>
+        </tr>
     </tbody>
 </table>
+<div class="indented" markdown="1">
+#### Notes:
+* To use the single quote (`'`) character as your column delimiter, you
+need to escape that character. This means that you specify four quotes
+(`''''`) as the value of this parameter. This is standard SQL syntax.
+</div>
 
 **Example:** <span class="Example">`'|'`</span>
-
-See [*Column Delimiters*](tutorials_ingest_importinput.html#DelimColumn) for additional information about column delimiters.
-{: .notePlain}
 
 ### `characterDelimiter` {#characterDelimiter}
 
@@ -253,27 +260,31 @@ special characters as delimiters:
     </thead>
     <tbody>
         <tr>
-            <td><code>\t</code></td>
+            <td><code>'\t'</code></td>
             <td>Tab </td>
         </tr>
         <tr>
-            <td><code>\f</code></td>
+            <td><code>'\f'</code></td>
             <td>Formfeed</td>
         </tr>
         <tr>
-            <td><code>\b</code></td>
+            <td><code>'\b'</code></td>
             <td>Backspace</td>
         </tr>
         <tr>
-            <td><code>\\</code></td>
+            <td><code>'\\'</code></td>
             <td>Backslash</td>
         </tr>
         <tr>
-            <td><code>^a (or ^A)</code></td>
+            <td><code>'^a'</code><br />(or <code>'^A'</code>)</td>
             <td>
                 <p>Control-a</p>
                 <p class="noteIndent">If you are using a script file from the <code>splice&gt;</code> command line, your script can contain the actual <code>Control-a</code> character as the value of this parameter.</p>
             </td>
+        </tr>
+        <tr>
+            <td><code>''''</code></td>
+            <td>Single Quote (<code>'</code>)</td>
         </tr>
     </tbody>
 </table>
@@ -288,10 +299,7 @@ need to escape that character. This means that you specify four quotes
 (`''''`) as the value of this parameter. This is standard SQL syntax.
 </div>
 
-**Example:** <span class="Example">`''`</span>
-
-See [*Character Delimeters*](tutorials_ingest_importinput.html#DelimChar) for additional information about character delimiters.
-{: .notePlain}
+**Example:** <span class="Example">`'"'`</span>
 
 ### `timestampFormat` {#timestampFormat}
 
