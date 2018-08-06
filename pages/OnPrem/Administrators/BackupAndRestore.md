@@ -105,12 +105,26 @@ There's a simple workaround:
 
 ## Incremental Backup Configuration and Limitations {#incrconfig}
 
-If you're performing incremental backups, you _must_ add the following options to your `hbase-site.xml` configuration file:
+If you're going to perform incremental backups, you _must_ follow these steps:
 
-<div class="preWrapperWide" markdown="1">
-    hbase.master.hfilecleaner.plugins = com.splicemachine.hbase.SpliceHFileCleaner,
-    org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileClean
-{: .AppCommand}
+<div class="opsStepsList" markdown="1">
+1.  Add the following options to your `hbase-site.xml` configuration file:
+    <div class="preWrapperWide" markdown="1">
+        hbase.master.hfilecleaner.plugins = com.splicemachine.hbase.SpliceHFileCleaner,
+        org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileClean
+    {: .AppCommand xml:space="preserve"}
+
+    </div>
+
+2.  Purge the <code>/hbase/backup/data directory</code>.
+    {: .topLevel}
+
+3.  Run a full backup.
+    {: .topLevel}
+
+4.  Run your first incremental backup.
+    {: .topLevel}
+
 </div>
 
 ## Using the Backup Operations   {#Using}

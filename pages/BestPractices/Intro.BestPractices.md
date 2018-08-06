@@ -19,7 +19,7 @@ This section contains best practices and troubleshooting information for users o
 * [On-Premise Database Product Best Practices](bestpractices_onprem_intro.html)
 * [Database-as-Service Product Best Practices](bestpractices_dbaas_intro.html)
 
-Currently, all of our best practice topics apply only to our *Database-as-Service* product.
+Currently, all of our best practice topics apply only to our *On-Premise Database* product.
 {: .noteIcon}
 
 </div>

@@ -139,7 +139,7 @@ Grantees](#AboutGrantees) section below for more information.
 <div class="fcnWrapperWide" markdown="1">
     REVOKE EXECUTE ON { FUNCTION | PROCEDURE }
         {function-name | procedure-name}
-     TO grantees RESTRICT
+     FROM grantees RESTRICT
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -174,7 +174,7 @@ view, trigger, or constraint.
 
 <div class="fcnWrapperWide" markdown="1">
     REVOKE USAGE ON SEQUENCE sequence-name}
-     TO grantees
+     FROM grantees
 {: .FcnSyntax xml:space="preserve"}
 
 </div>

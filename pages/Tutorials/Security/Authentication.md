@@ -44,7 +44,7 @@ which is described below the table:
             <td>Any user ID and password combination is allowed to connect to database.</td>
         </tr>
         <tr>
-            <td><code>Native</code></td>
+            <td><code>NATIVE</code></td>
             <td>
                 <p>User IDs in a database table are validated against the corresponding, encrypted password.</p>
                 <p>This is the default authentication setting for Splice Machine installations.</p>
@@ -140,7 +140,7 @@ follows:
 
 </div>
 
-## Using Native Authentication   {#Using}
+## Using NATIVE Authentication   {#Using}
 
 Native authentication is the default mechanism for Splice Machine; you
 don't need to modify your configuration if you wish to use it. Native
@@ -168,7 +168,7 @@ the default value.
 
 ### Switching to Native Authentication
 
-If you are switching your authentication from to `Native` authentication
+If you are switching your authentication from to `NATIVE` authentication
 from another mechanism (including `NONE`), there's one additional step
 you need to take: you must re-initialize the credentials database
 (`SYSUSERS` table), by adding the following property setting to your
