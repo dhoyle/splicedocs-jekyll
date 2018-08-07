@@ -76,11 +76,17 @@ next section.
 
 <div class="fcnWrapperWide" markdown="1">
      {
+<<<<<<< HEAD
 {% if site.build_type != "Doc" %}        LANGUAGE { JAVA | PYTHON }
       | EXTERNAL NAME { javaMethodName | AS ' pythonScript ' }{% else %}
         LANGUAGE { JAVA }
       | EXTERNAL NAME { javaMethodName }{% endif %}
       | DeterministicCharacteristic
+=======
+        LANGUAGE { JAVA | PYTHON }
+      | DeterministicCharacteristic
+      | EXTERNAL NAME { javaMethodName | AS ' pythonScript ' }
+>>>>>>> 0ebea5fc9... Major updates to CreateProcedure ref page and WritingProcsAndFcns Dev page for Python stored procedures (via Ao)
       | PARAMETER STYLE parameterStyle
       | DYNAMIC RESULT SETS integer
       | sqlStatementType
@@ -99,8 +105,12 @@ can only appear once. These procedure elements are required:
 LANGUAGE
 {: .paramName}
 
+<<<<<<< HEAD
 Specify the language in which your procedure is written; this must be either `JAVA`{% if site.build_type != "Doc" %}
  or `PYTHON`{% endif %}.
+=======
+Specify the language in which your procedure is written; this must be either `JAVA` or `PYTHON`.
+>>>>>>> 0ebea5fc9... Major updates to CreateProcedure ref page and WritingProcsAndFcns Dev page for Python stored procedures (via Ao)
 {: .paramDefnFirst}
 
 DeterministicCharacteristic
@@ -133,7 +143,11 @@ This is the name of the Java method to call when this procedure
 executes.
 {: .paramDefnFirst}
 
+<<<<<<< HEAD
 {% if site.build_type != "Doc" %}pythonScript
+=======
+pythonScript
+>>>>>>> 0ebea5fc9... Major updates to CreateProcedure ref page and WritingProcsAndFcns Dev page for Python stored procedures (via Ao)
 {: .paramName}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">def run(<em>scriptArgs</em>): <em>scriptCode</em></pre>
@@ -147,7 +161,11 @@ section of our *Developer's Guide*:
 * Use double quotes (`"`) around strings within the script; if you must use a single quote within the script, specify it as two single quotes (`''`).
 * Write the script under the `run` function.
 * The arguments you specify for your script in the `CREATE PROCEDURE` statement should match the order specified in your method definition.
+<<<<<<< HEAD
 {: .nested}{% endif %}
+=======
+{: .nested}
+>>>>>>> 0ebea5fc9... Major updates to CreateProcedure ref page and WritingProcsAndFcns Dev page for Python stored procedures (via Ao)
 
 parameterStyle
 {: .paramName}
@@ -213,8 +231,12 @@ Indicates that the procedure can execute any SQL statement.
 </div>
 ## Examples
 
+<<<<<<< HEAD
 {% if site.build_type != "Doc" %}This section contains two examples of creating procedures: one in JAVA, and another in PYTHON.{% else %}
 This section contains an example of creating a stored procedure in JAVA.{% endif %}
+=======
+This section contains two examples of creating procedures: one in JAVA, and another in PYTHON.
+>>>>>>> 0ebea5fc9... Major updates to CreateProcedure ref page and WritingProcsAndFcns Dev page for Python stored procedures (via Ao)
 For functional examples of using `CREATE PROCEDURE`, please see the [Using
 Functions and Stored Procedures](developers_fcnsandprocs_intro.html)
 section of our *Developer's Guide*.
@@ -236,7 +258,10 @@ The following example depends on a fictionalized java class.
 
 </div>
 
+<<<<<<< HEAD
 {% if site.build_type != "Doc" %}
+=======
+>>>>>>> 0ebea5fc9... Major updates to CreateProcedure ref page and WritingProcsAndFcns Dev page for Python stored procedures (via Ao)
 ### Example of Creating a Stored Procedure in Python
 The following example creates a Python stored procedure that executes an SQL statement.
 
@@ -264,7 +289,10 @@ The following example creates a Python stored procedure that executes an SQL sta
 {: .Example xml:space="preserve"}
 
 </div>
+<<<<<<< HEAD
 {% endif %}
+=======
+>>>>>>> 0ebea5fc9... Major updates to CreateProcedure ref page and WritingProcsAndFcns Dev page for Python stored procedures (via Ao)
 
 ## See Also
 
