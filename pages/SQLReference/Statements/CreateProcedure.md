@@ -75,9 +75,9 @@ next section.
 
 <div class="fcnWrapperWide" markdown="1">
      {
-        LANGUAGE { JAVA }
+        LANGUAGE { JAVA | PYTHON }
       | DeterministicCharacteristic
-      | EXTERNAL NAME javaMethodName
+      | EXTERNAL NAME { javaMethodName | AS ' pythonScript ' }
       | PARAMETER STYLE parameterStyle
       | DYNAMIC RESULT SETS integer
       | sqlStatementType
@@ -96,8 +96,7 @@ can only appear once. These procedure elements are required:
 LANGUAGE
 {: .paramName}
 
-Only `JAVA` is accepted at this time. Splice Machine will call the
-procedure as a public static method in a Java class.
+Specify the language in which your procedure is written; this must be either `JAVA` or `PYTHON`.
 {: .paramDefnFirst}
 
 DeterministicCharacteristic
@@ -129,6 +128,22 @@ javaMethodName
 This is the name of the Java method to call when this procedure
 executes.
 {: .paramDefnFirst}
+
+pythonScript
+{: .paramName}
+
+<div class="fcnWrapperWide"><pre class="FcnSyntax">def run(<em>scriptArgs</em>): <em>scriptCode</em></pre>
+</div>
+This is the Python script, enclosed in single quotes (`'`). Here are a few important notes about Python scripts in stored procedures, which are described more fully in the [Using
+Functions and Stored Procedures](developers_fcnsandprocs_intro.html)
+section of our *Developer's Guide*:
+{: .paramDefnFirst}
+
+* The entire script must be enclosed in single quotes.
+* Use double quotes (`"`) around strings within the script; if you must use a single quote within the script, specify it as two single quotes (`''`).
+* Write the script under the `run` function.
+* The arguments you specify for your script in the `CREATE PROCEDURE` statement should match the order specified in your method definition.
+{: .nested}
 
 parameterStyle
 {: .paramName}
@@ -192,25 +207,58 @@ Indicates that the procedure can execute any SQL statement.
 
 </div>
 </div>
-## Example
+## Examples
 
-The following example depends on a fictionalized java class. For
-functional examples of using `CREATE PROCEDURE`, please see the [Using
+This section contains two examples of creating procedures: one in JAVA, and another in PYTHON.
+For functional examples of using `CREATE PROCEDURE`, please see the [Using
 Functions and Stored Procedures](developers_fcnsandprocs_intro.html)
 section of our *Developer's Guide*.
+
+### Example of Creating a Stored Procedure in Java
+The following example depends on a fictionalized java class.
 
 <div class="preWrapper" markdown="1">
     splice> CREATE PROCEDURE SALES.TOTAL_REVENUE (
         IN S_MONTH INTEGER,
-        IN S_YEAR INTEGER, OUT TOTAL DECIMAL(10,2))
+        IN S_YEAR INTEGER, OUT TOTAL DECIMAL(10,2) )
         PARAMETER STYLE JAVA
+        LANGUAGE JAVA
         DYNAMIC RESULT SETS 1
-        READS SQL DATA LANGUAGE
-        JAVA EXTERNAL NAME 'com.example.sales.calculateRevenueByMonth';
+        READS SQL DATA
+        EXTERNAL NAME 'com.example.sales.calculateRevenueByMonth';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
+
+### Example of Creating a Stored Procedure in Python
+The following example creates a Python stored procedure that executes an SQL statement.
+
+<div class="preWrapper" markdown="1">
+    splice> CREATE PROCEDURE SPLICE.PYTHON_TEST (
+        IN limit INT )
+        PARAMETER STYLE JAVA
+        LANGUAGE PYTHON
+        DYNAMIC RESULT SETS 1
+        READS SQL DATA
+        AS ' def run(lim, res):
+                c = conn.cursor()
+                    # select alias and javaclassname columns from sys.sysaliases tables
+                    # return them as a ResultSet
+                stmt = "select alias, javaclassname from sys.sysaliases {limit ?}"
+                c.executemany(stmt,[lim])
+                d = c.description
+                result = c.fetchall()
+                    # construct the ResultSet and fill it into the ResultSet list res
+                res[0] = factory.create([d,result])
+                conn.commit()
+                c.close()
+                conn.close() ';
+    0 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+
+</div>
+
 ## See Also
 
 * [Writing Functions and Stored Procedures](developers_fcnsandprocs_writing.html)

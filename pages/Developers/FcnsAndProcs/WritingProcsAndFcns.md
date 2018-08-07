@@ -107,9 +107,13 @@ Follow the steps below to write a Splice Machine database function.
 
 </div>
 ## Writing a Stored Procedure in Splice Machine   {#CreatingStoredProc}
+This section includes these subsections:
 
-Follow the steps below to write a Splice Machine database stored
-procedure.
+* [Writing a Stored Procedure in JAVA](#JavaProc)
+* [Writing a Stored Procedure in Python](#PythonProc)
+
+### Writing a Stored Procedure in JAVA {#JavaProc}
+Follow the steps below to write a stored procedure in Java.
 
 <div class="opsStepsList" markdown="1">
 1.  Write your custom stored procedure:
@@ -139,7 +143,7 @@ procedure.
          /**
           * Return the names for all tables in the database.
           *
-          * @param rs    result set containing names of all the tables in teh database
+          * @param rs    result set containing names of all the tables in the database
           */
 
            public static void GET_TABLE_NAMES(ResultSet[] rs)
@@ -265,37 +269,133 @@ procedure.
     *Splice Machine SQL Reference* manual.
     {: .indentLevel1}
 
-6.  Run your stored procedure
-    {: .topLevel}
-
-    You can run your stored procedure by calling it from the <span
-    class="AppCommand">splice&gt;</span> prompt. For example:
-    {: .indentLevel1}
-
-    <div class="preWrapper" markdown="1">
-        splice> call SPLICE.GET_TABLE_NAMES();
-    {: .AppCommand xml:space="preserve"}
-
-    </div>
-
-7.  Updating/Reloading your stored procedure
-    {: .topLevel}
-
-    If you make changes to your procedure's code, you need to create a
-    new Jar file and reload that into your databaseby calling the
-    `SQLJ.REPLACE_JAR` system procedure:
-    {: .indentLevel1}
-
-    <div class="preWrapper" markdown="1">
-        CALL SQLJ.REPLACE_JAR(
-          '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.build_type == "Doc" %}{{site.build_version}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
-          'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
-    {: .AppCommand xml:space="preserve"}
-
-    </div>
+6. See [Running Your Stored Procedure](#runningProc) for information about running your stored procedure, and [Updating Your Stored Procedure](#updatingProc) for information about updating your stored procedure.
 {: .boldFont}
 
 </div>
+
+### Writing a Stored Procedure in Python {#PythonProc}
+Follow the steps below to write a stored procedure in Python.
+
+<div class="opsStepsList" markdown="1">
+#### Specifying Your Script
+When creating a Python stored procedure, include your Python script directly in the `CREATE PROCEDURE` statement. Here's a simple example:
+{: .topLevel}
+
+<div class="preWrapper" markdown="1">
+    splice> CREATE PROCEDURE SPLICE.PYTHON_TEST (
+        IN limit INT )
+        PARAMETER STYLE JAVA
+        LANGUAGE PYTHON
+        DYNAMIC RESULT SETS 1
+        READS SQL DATA
+        AS ' def run(lim, res):
+                c = conn.cursor()
+                    # select alias and javaclassname columns from sys.sysaliases tables
+                    # return them as a ResultSet
+                stmt = "select alias, javaclassname from sys.sysaliases {limit ?}"
+                c.executemany(stmt,[lim])
+                d = c.description
+                result = c.fetchall()
+                    # construct the ResultSet and fill it into the ResultSet list res
+                res[0] = factory.create([d,result])
+                conn.commit()
+                c.close()
+                conn.close() ';
+    0 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+</div>
+
+#### General Rules
+Here are some important notes about your script:
+{: .indentLevel1}
+* The entire script must be enclosed in single quotes.
+* Use double quotes (`"`) around strings within the script; if you must use single quote within the script, specify each as two single quotes (`''`).
+* Write the script under the `run` function.
+* The arguments you specify for your script in the `CREATE PROCEDURE` statement should match the order specified in your method definition. Note that their names do not need to match.
+
+#### Connecting to Your Database
+The `conn` global variable provides a default connection to your database.
+
+#### Restrictions
+Transactional `auto-commit` cannot be enabled within SQL statements in your stored procedure; this is due to the fact that the SQL statements are executed via a nested connection.
+
+#### Constructing and Returning ResultSets
+If your procedure returns a `ResultSet`, you must specify the `ResultSet` as a final argument to your method; for example, `res` in this snippet:
+
+<div class="preWrapper" markdown="1">
+    def run(lim, res)
+    ...
+    d = c.description
+    result = c.fetchall()
+    res[0] = factory.create([d,result])
+{: .Example}
+</div>
+
+You can use the pre-defined `create` function to construct the `ResultSet`. Access this function from the global variable `factory`, which is defined here:
+    <div class="preWrapper" markdown="1">
+        com.splicemachine.derby.impl.sql.pyprocedure.PyStoredProcedureResultSetFactory
+    </div>
+
+The `factory.create` function has the following syntax:
+<div class="fcnWrapperWide" markdown="1">
+    factory.create( description, resultRows)
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
+<div class="paramList" markdown="1">
+description
+{: .paramName}
+
+A tuple containing these 7 values:
+   * name
+   * type code
+   * display size
+   * internal size
+   * precision
+   * scale
+   * nullability
+{: .paramDefnFirst}
+
+resultRows
+{: .paramName}
+
+A list of all of the rows retrieved from the cursor of the result set. You can retrieve this list by calling the cursor's `fetchall` method.
+</div>
+
+#### Running and Updating Your Procedure
+See [Running Your Stored Procedure](#runningProc) for information about running your stored procedure, and [Updating Your Stored Procedure](#updatingProc) for information about updating your stored procedure.
+</div>
+
+
+
+## Running Your Stored Procedure {#runningProc}
+You can run your stored procedure by calling it from the <span
+class="AppCommand">splice&gt;</span> prompt. For example:
+
+<div class="preWrapper" markdown="1">
+    splice> call SPLICE.GET_TABLE_NAMES();
+{: .AppCommand xml:space="preserve"}
+</div>
+
+<div class="preWrapper" markdown="1">
+    splice> call SPLICE.PYTHON_TEST(5);
+{: .AppCommand xml:space="preserve"}
+</div>
+
+## Updating Your Stored Procedure {#updatingProc}
+If you make changes to your procedure's code, you need to create a
+new Jar file and reload that into your database by calling the
+`SQLJ.REPLACE_JAR` system procedure:
+
+<div class="preWrapper" markdown="1">
+    CALL SQLJ.REPLACE_JAR(
+      '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.build_type == "Doc" %}{{site.build_version}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
+      'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
+{: .AppCommand xml:space="preserve"}
+
+</div>
+
 ## Working with ResultSets   {#ResultSet}
 
 Splice Machine follows the SQL-J part 1 standard for returning
