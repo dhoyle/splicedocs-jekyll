@@ -30,7 +30,7 @@ These are the notes and workarounds for known issues in this release:
 * [Import Performance Issues With Many Foreign Key References](#import-performance-issues-with-many-foreign-key-references)
 {% if site.build_version == "2.7" %}
 * [Importing Data with SYSCS_IMPORT_DATA from Amazon S3](#ImportFromS3)
-* [HDP 2.6.3 OLAP Memory Setting](#HDPOLAPMem)
+* [HDP 2.6.4 and 2.6.3 OLAP Memory Setting](#HDPOLAPMem)
 {% elsif site.build_version == "2.5" %}
 * [LDAP Authentication Property Issue](#LDAPPropIssue)
 {% endif %}
@@ -174,9 +174,9 @@ There are currently two platform-dependent issue for importing data using the <a
   These changes may impact non-SpliceMachine services or applications that rely on an implementation other than the Presto implementation; for example, `org.apache.hadoop.fs.s3a.S3AFileSystem`.
   {: .noteNote}
 
-## HDP 2.6.3 OLAP Memory Setting {#HDPOLAPMem}
+## HDP 2.6.4 and 2.6.3 OLAP Memory Setting {#HDPOLAPMem}
 
-If you're using Splice Machine on HDP 2.6.3, you need to correct a property setting in the `HBase Service Advanced Configuration Snippet (Safety Valve)` settings for `hbase-site.xml`.
+If you're using Splice Machine on HDP 2.6.4 or HDP 2.6.3, you need to correct a property setting in the `HBase Service Advanced Configuration Snippet (Safety Valve)` settings for `hbase-site.xml`.
 
 Replace the `.` between `olap` and `server` in this property name:
 ````
@@ -184,11 +184,13 @@ Replace the `.` between `olap` and `server` in this property name:
 ````
 
 with the `_` character to produce the correct property name:
+{: .spaceAbove}
 ````
     splice.olap_server.memory=8192
 ````
 
 Note that the `.` character needs to be changed to the `_` character in `splice.olap`
+{: .spaceAbove}
 
 {% endif %}
 

@@ -36,7 +36,7 @@ The supported platforms for release {{site.build_version}} are:
 
 * {{splvar_requirements_CDH-Versions}}
 * MapR 5.2.0
-* HortonWorks HDP 2.6.3, 2.5.5
+* HortonWorks HDP2.6.4,  2.6.3, 2.5.5
 
 ## Enterprise-only Features {#enterprise-only-features}
 Some features only work on the *Enterprise Edition* of Splice Machine; they __do not__ work on the Community Edition of Splice Machine. To obtain a license for the Splice Machine *Enterprise Edition*, please [Contact Splice Machine Sales](http://www.splicemachine.com/company/contact-us/)
