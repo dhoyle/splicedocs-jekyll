@@ -437,6 +437,55 @@ changing the increment for that column:
 {: .Example xml:space="preserve"}
 
 </div>
+
+### Example 6: Adding a Foreign Key After Table Creation
+This example shows adding invalid foreign key into a table that already contains data:
+{: .body}
+
+<div class="preWrapperWide" markdown="1">
+    CREATE TABLE orders (id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(30));
+    CREATE TABLE orderlines (lineitemid INTEGER NOT NULL PRIMARY KEY, orderid INTEGER, total DOUBLE);
+
+    INSERT INTO orders VALUES (1,'test1');
+    INSERT INTO orders VALUES (2, 'test2');
+    INSERT INTO orders VALUES (3, 'test3');
+
+    INSERT INTO orderlines VALUES (1,1,12.50);
+    INSERT INTO orderlines VALUES (2,1,12.50);
+
+    ALTER TABLE orderlines ADD CONSTRAINT FK_Order FOREIGN KEY (orderid) REFERENCES Orders(id);
+
+        # This insertion fails because of the new constraint:
+    splice> INSERT INTO ORDERLINES VALUES (3,5,12.50);
+    ERROR 23503: Operation on table 'ORDERLINES' caused a violation of foreign key constraint 'FK_ORDER' for key (ORDERID).  The statement has been rolled back.
+{: .Example xml:space="preserve"}
+</div>
+
+
+### Example 7: Adding a Foreign Key in Table With Invalid Data
+==================================================================================================
+This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the constraint:
+{: .body}
+
+<div class="preWrapperWide" markdown="1">
+    CREATE TABLE orders3 (id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(30));
+    CREATE TABLE orderlines3 (lineitemid INTEGER NOT NULL PRIMARY KEY, orderid INTEGER, total DOUBLE);
+
+    INSERT INTO orders3 VALUES (1,'test1');
+    INSERT INTO orders3 VALUES (2, 'test2');
+    INSERT INTO orders3 VALUES (3, 'test3');
+
+    INSERT INTO orderlines3 VALUES (1,1,12.50);
+    INSERT INTO orderlines3 VALUES (2,1,12.50);
+    INSERT INTO orderlines3 VALUES (3,5,12.50);
+
+        # Creating this foreign key fails because the table contains non-conformant data:
+    splice> ALTER TABLE orderlines3 ADD CONSTRAINT FK_Order3 FOREIGN KEY (orderid) REFERENCES Orders3(id);
+    ERROR X0Y45: Foreign key constraint 'FK_ORDER3' cannot be added to or enabled on table "SPLICE"."ORDERLINES3" because one or more foreign keys do not have matching referenced keys.
+{: .Example xml:space="preserve"}
+</div>
+
+
 ## See Also
 
 * [`CONSTRAINT`](sqlref_clauses_constraint.html) clause
