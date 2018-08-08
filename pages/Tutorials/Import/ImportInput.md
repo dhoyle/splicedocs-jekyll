@@ -579,13 +579,13 @@ in a database table:
 
 ## Importing CLOBs and BLOBs {#LOBs}
 
-If you are importing `CLOB`s, pay careful attention to tips [4](#Tip4)
-and [7](#Tip7). Be sure to use special characters for both your column
-and character delimiters. If your `CLOB` data can span multiple lines,
-be sure to set the `oneLineRecords` parameter to `false`.
+When importing `CLOB`s, be sure to review these tips to avoid common problems:
 
-At this time, the Splice Machine import procedures do not import work
-with columns of type `BLOB`. You can create a virtual table interface
+* Be sure that the data you’re importing *does not* includes a special character that you’ve designated as a column or character delimiter. Otherwise, you’ll end up with records in your bad record directory and can spend hours trying to determine the issue, only to discover that it’s because the data includes a delimiter character.
+* If your data contains line feed characters like `CTRL-M`, you need to set the `oneLineRecords` parameter to `false` to allow Splice Machine to properly handle the data; however, the import will take longer because Splice Machine will not be able to break the file up and distribute it across the cluster. To improve import performance, avoid including line feed characters in your data and set the `oneLineRecords` parameter to `true`.
+
+At this time, the Splice Machine import procedures do not work
+with columns of type `BLOB`. You can, however, create a virtual table interface
 (VTI) that reads the `BLOB`s and inserts them into your database.
 
 ## Scripting Your Imports   {#Scripting}
