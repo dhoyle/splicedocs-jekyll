@@ -19,6 +19,7 @@ back up and restore your entire database. You can:
 * create full and incremental backups to run immediately
 * schedule daily full or incremental backups
 * restore your database from a backup
+* validate backups
 * manage your backups
 * access logs of your backups
 
@@ -135,6 +136,7 @@ Machine backup operations:
 * [Scheduling a Daily Backup Job](#Scheduling)
 * [Running an Immediate Backup](#Running)
 * [Restoring Your Database From a Previous Backup](#Restorin)
+* [Validating Backups](#Validating)
 * [Reviewing Backup Information](#Reviewing)
 * [Canceling a Scheduled Backup Job](#Cancelin)
 * [Canceling a Backup That's In Progress](#CancelB){: .WithinBook}
@@ -268,17 +270,69 @@ incremental. The backup data is stored in the specified directory.
 </div>
 </div>
 ### Restoring Your Database From a Previous Backup   {#Restorin}
-
-You can restore your database from a previous backup, use the
-[`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html) system
-procedure.
-
 To restore your database from a previous backup, use the
 [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html) system
 procedure:
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_RESTORE_DATABASE(backupDir, backupId);
+    SYSCS_UTIL.SYSCS_RESTORE_DATABASE(backupDir, backupId, validate);
+{: .FcnSyntax xml:space="preserve"}
+
+</div>
+<div class="paramList" markdown="1">
+backupDir
+{: .paramName}
+
+A `VARCHAR` value that specifies the path to the directory in which the
+backup is stored.
+{: .paramDefnFirst}
+
+You can find the *backupId* you want to use by querying the &nbsp;[`SYSBACKUP`
+ System Table](sqlref_systables_sysbackup.html). See the [Reviewing
+Backup Information](#Reviewing) section below for more information.
+{: .paramDefn}
+
+backupId
+{: .paramName}
+
+A `BIGINT` value that specifies which backup you want to use to restore
+your database.
+{: .paramDefnFirst}
+
+validate
+{: .paramName}
+
+A `BOOLEAN` value that specifies whether you want the backup validated before restoring the database from it. If this is `true` and the validation finds inconsistencies, the database is *not* restored. If this is `false`, validation is not performed.
+{: .paramDefnFirst}
+</div>
+
+<div class="notePlain" markdown="1">
+There are several important things to know about restoring your database
+from a previous backup:
+
+* Restoring a database **wipes out your database** and replaces it with
+  what had been previously backed up.
+* You **cannot use your cluster** while restoring your database.
+* You **must reboot your database** after the restore is complete by
+  first [Starting Your Database](onprem_admin_startingdb.html).
+
+</div>
+#### Example: Restore the database from a local, full backup
+This example restores your database from the backup stored in the
+`/home/backup` directory that has `backupId=1273`, after first validating the backup:
+
+<div class="preWrapperWide" markdown="1">
+    call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1273, true);
+{: .AppCommand xml:space="preserve"}
+</div>
+
+### Validating Backups  {#Validating}
+
+You can validate a database backup with the[`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html) system
+procedure:
+
+<div class="fcnWrapperWide" markdown="1">
+    SYSCS_UTIL.SYSCS_VALIDATE_BACKUP(backupDir, backupId);
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -298,32 +352,20 @@ Backup Information](#Reviewing) section below for more information.
 backupId
 {: .paramName}
 
-A `BIGINT` value that specifies which backup you want to use to restore
+A `BIGINT` value that specifies which backup you want to use to validate
 your database.
 {: .paramDefnFirst}
 
 </div>
-<div class="notePlain" markdown="1">
-There are several important things to know about restoring your database
-from a previous backup:
+#### Example: Validating a backup
+This example validates the backup stored in the
+`/home/backup` directory that has `backupId=1273`:
 
-* Restoring a database **wipes out your database** and replaces it with
-  what had been previously backed up.
-* You **cannot use your cluster** while restoring your database.
-* You **must reboot your database** after the restore is complete by
-  first [Starting Your Database](onprem_admin_startingdb.html).
+<div class="preWrapperWide" markdown="1">
+    call SYSCS_UTIL.VALIDATE_BACKUP('/home/backup', 1273);
+{: .AppCommand xml:space="preserve"}
 
 </div>
-> #### Example: Restore the database from a local, full backup
->
-> This example restores your database from the backup stored in the
-> `/home/backup` directory that has `backupId=1273`:
->
-> <div class="preWrapperWide" markdown="1">
->     call SYSCS_UTIL.SYSCS_RESTORE_DATABASE('/home/backup', 1273);
-> {: .AppCommand xml:space="preserve"}
->
-> </div>
 
 ### Reviewing Backups   {#Reviewing}
 
@@ -737,6 +779,7 @@ Follow these steps:
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
+* [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
 * [`SYSBACKUP` system table](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS` system table](sqlref_systables_sysbackupitems.html)
 * [`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html)

@@ -43,7 +43,8 @@ apply any incremental restorations.
 
 <div class="fcnWrapperWide" markdown="1">
     SYSCS_UTIL.SYSCS_RESTORE_DATABASE( VARCHAR backupDir,
-                                       BIGINT backupId );
+                                       BIGINT  backupId,
+                                       BOOLEAN validate );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -78,6 +79,15 @@ The system [*Backing Up and Restoring*](onprem_admin_backingup.html)
 topic for more information.
 {: .paramDefn}
 
+validate
+{: .paramName}
+
+A Boolean value that specifies whether to validate the backup before restoring from it:
+{: .paramDefnFirst}
+
+* If *validate* is `false`, the restore proceeds without any pre-validation.
+* If *validate* is `true`, the backup is validated before the restoration is started. (See [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the database is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
+{: .nested}
 </div>
 ## Usage
 
@@ -112,15 +122,17 @@ database owner has execute privileges on this function by default. The
 database owner can grant access to other users.
 
 ## Examples
+This section includes two examples, both of which perform a pre-restore validation of the backup.
 
-The following example first queries the system backup table to find the
-ID of the backup from which we want to restore, and then initiates the
-restoration.
-
-Stop using your database before backing up, and keep in mind that
+Stop using your database before restoring, and keep in mind that
 restoring a database may take several minutes, depending on the size of
 your database.
 {: .noteIcon}
+
+### Example 1: Successful Restoration
+The following example first queries the system backup table to find the
+ID of the backup from which we want to restore, and then initiates the
+restoration.
 
 
     splice> SELECT * FROM SYS.SYSBACKUP;
@@ -131,12 +143,32 @@ your database.
 
     2 rows selected
 
-    splice> CALL SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 74101);
+    splice> CALL SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 74101, true);
     Statement executed.
 {: .Example xml:space="preserve"}
 
 Once the restoration is complete, reboot your database by the [Starting
 Your Database.](onprem_admin_startingdb.html)
+
+### Example 2: Validation Failure
+Here's a similar restore attempt that terminates after finding inconsistencies in the backup during validation:
+
+    splice> SELECT * FROM SYS.SYSBACKUP;
+    BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESYSTEM      |SCOPE |INCR&|INCREMENTAL_PARENT_&|BACKUP_ITEM
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    63541     |2017-10-30 13:46:41.431  |2017-10-30 13:46:56.664  |S         |./dbBackups/    |D     |true |60836               |30
+    60836     |2017-10-25 08:32:53.04   |2017-10-25 08:33:09.081  |S         |~/splicemachine |D     |false|-1                  |93
+
+    2 rows selected
+
+    splice> CALL SYSCS_UTIL.SYSCS_RESTORE_DATABASE('./dbBackups/', 63541, true);
+    result                                  |warnings
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    BR010                                   |A data file ./dbBackups/BACKUP_63541/tables/SPLICE_TXN/f4460c47f6c96fe8d76c0def11c22dc8/V/c7350de1acaf4a11a561472675eda1dd is missing. The restored table may be corrupted.
+    Found inconsistencies in backup         |To force a restore, set validate to false
+
+    2 rows selected
+{: .Example xml:space="preserve"}
 
 ## See Also
 
@@ -146,6 +178,7 @@ Your Database.](onprem_admin_startingdb.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
+* [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
 * [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
