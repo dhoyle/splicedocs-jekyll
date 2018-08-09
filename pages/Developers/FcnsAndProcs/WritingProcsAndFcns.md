@@ -110,7 +110,7 @@ Follow the steps below to write a Splice Machine database function.
 This section includes these subsections:
 
 * [Writing a Stored Procedure in JAVA](#JavaProc)
-* [Writing a Stored Procedure in Python](#PythonProc)
+{% if site.build_type != "Doc" %}* [Writing a Stored Procedure in Python](#PythonProc){% endif %}
 
 ### Writing a Stored Procedure in JAVA {#JavaProc}
 Follow the steps below to write a stored procedure in Java.
@@ -274,12 +274,13 @@ Follow the steps below to write a stored procedure in Java.
 
 </div>
 
+{% if site.build_type != "Doc" %}
 ### Writing a Stored Procedure in Python {#PythonProc}
 Follow the steps below to write a stored procedure in Python. Please note the following Python-related version information:
 
 * Our Python stored procedure implementation uses {{splvar_storedprocs_JythonVersion}}.
 * Python scripts should be compatible with {{splvar_storedprocs_PythonVersion}}.
-* The JDBC connection uses {{splvar_storedprocs_PythonDbApiVersion}}; it is implemented by [{{splvar_storedprocs_PythonJDBC}}]({{splvar_storedprocs_Python}}). 
+* The JDBC connection uses {{splvar_storedprocs_PythonDbApiVersion}}; it is implemented by [{{splvar_storedprocs_PythonJDBC}}]({{splvar_storedprocs_Python}}).
 
 <div class="opsStepsList" markdown="1">
 #### Specifying Your Script
@@ -370,8 +371,7 @@ A list of all of the rows retrieved from the cursor of the result set. You can r
 #### Running and Updating Your Procedure
 See [Running Your Stored Procedure](#runningProc) for information about running your stored procedure, and [Updating Your Stored Procedure](#updatingProc) for information about updating your stored procedure.
 </div>
-
-
+{% endif %}
 
 ## Running Your Stored Procedure {#runningProc}
 You can run your stored procedure by calling it from the <span
@@ -382,10 +382,12 @@ class="AppCommand">splice&gt;</span> prompt. For example:
 {: .AppCommand xml:space="preserve"}
 </div>
 
+{% if site.build_type != "Doc" %}
 <div class="preWrapper" markdown="1">
     splice> call SPLICE.PYTHON_TEST(5);
 {: .AppCommand xml:space="preserve"}
 </div>
+{% endif %}
 
 ## Updating Your Stored Procedure {#updatingProc}
 If you make changes to your procedure's code, you need to create a
