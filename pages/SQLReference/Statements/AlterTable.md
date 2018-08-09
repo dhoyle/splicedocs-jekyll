@@ -439,7 +439,7 @@ changing the increment for that column:
 </div>
 
 ### Example 6: Adding a Foreign Key After Table Creation
-This example shows adding invalid foreign key into a table that already contains data:
+This example shows adding a foreign key into a table that already contains data, and then attempting an invalid insertion to demonstrate that the new constraint is active:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
@@ -455,7 +455,7 @@ This example shows adding invalid foreign key into a table that already contains
 
     ALTER TABLE orderlines ADD CONSTRAINT FK_Order FOREIGN KEY (orderid) REFERENCES Orders(id);
 
-        # This insertion fails because of the new constraint:
+        # This insertion fails because of the newly added foreign key constraint:
     splice> INSERT INTO ORDERLINES VALUES (3,5,12.50);
     ERROR 23503: Operation on table 'ORDERLINES' caused a violation of foreign key constraint 'FK_ORDER' for key (ORDERID).  The statement has been rolled back.
 {: .Example xml:space="preserve"}
@@ -463,8 +463,7 @@ This example shows adding invalid foreign key into a table that already contains
 
 
 ### Example 7: Adding a Foreign Key in Table With Invalid Data
-==================================================================================================
-This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the constraint:
+This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the new constraint:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
