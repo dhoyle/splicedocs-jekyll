@@ -275,7 +275,11 @@ Follow the steps below to write a stored procedure in Java.
 </div>
 
 ### Writing a Stored Procedure in Python {#PythonProc}
-Follow the steps below to write a stored procedure in Python.
+Follow the steps below to write a stored procedure in Python. Please note the following Python-related version information:
+
+* Our Python stored procedure implementation uses {{splvar_storedprocs_JythonVersion}}.
+* Python scripts should be compatible with {{splvar_storedprocs_PythonVersion}}.
+* The JDBC connection uses {{splvar_storedprocs_PythonDbApiVersion}}; it is implemented by [{{splvar_storedprocs_PythonJDBC}}]({{splvar_storedprocs_Python}}). 
 
 <div class="opsStepsList" markdown="1">
 #### Specifying Your Script

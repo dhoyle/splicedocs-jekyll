@@ -12,7 +12,7 @@ folder: SQLReference/Statements
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # CREATE PROCEDURE
 
-The `CREATE PROCEDURE` statement allows you to create Java procedures,
+The `CREATE PROCEDURE` statement allows you to create Java or Python procedures,
 which you can then call using the `CALL PROCEDURE` statement.
 
 For details on how Splice Machine matches procedures to Java methods,
