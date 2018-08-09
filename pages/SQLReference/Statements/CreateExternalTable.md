@@ -46,6 +46,7 @@ CREATE EXTERNAL TABLE <a href="sqlref_identifiers_types.html#TableName">table-N
          [ LINES TERMINATED BY char ]
     ]
     STORED AS file-format LOCATION location
+    [ MERGE SCHEMA ]
   }</pre>
 
 </div>
@@ -125,6 +126,14 @@ location
 The location at which the file is stored.
 {: .paramDefnFirst}
 
+MERGE SCHEMA
+{: .paramName}
+
+This optional setting tells Splice Machine to infer the table schema from all data files, rather than the default behavior of inferring the schema from one data file; it is useful when the external data schema evolves. Using this setting can be very expensive performance-wise.
+{: .paramDefnFirst}
+
+The `MERGE SCHEMA` option only works with PARQUET data files because Spark does not support this feature for `ORC` or `AVRO` data files; this means that Splice Machine can only handle schema evolution for external tables on existing `PARQUET` data.
+{: .noteIcon}
 </div>
 ## Usage Notes
 
@@ -159,7 +168,7 @@ Here are some notes about using external tables:
 
 This section presents examples of the `CREATE EXTERNAL TABLE` statement.
 
-This example creates an external table for a `PARQUET` file:
+This example creates an external table for the `PARQUET` data files in the `users/myName/myParquetData` directory, inferring the table schema from one data file in that directory:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
@@ -167,7 +176,23 @@ This example creates an external table for a `PARQUET` file:
                         (col1 INT, col2 VARCHAR(24))
                         PARTITIONED BY (col1)
                         STORED AS PARQUET
-                        LOCATION '/users/myName/myParquetFile';
+                        LOCATION '/users/myName/myParquetData';
+    0 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+
+This example creates an external table for a `PARQUET` file:
+{: .body}
+
+This example creates an external table for the `PARQUET` data files in the `users/myName/myParquetData` directory, inferring the table schema from **all** of the data files in that directory:
+{: .body}
+
+<div class="preWrapperWide" markdown="1">
+    splice> CREATE EXTERNAL TABLE myParquetTable
+                        (col1 INT, col2 VARCHAR(24))
+                        PARTITIONED BY (col1)
+                        STORED AS PARQUET
+                        LOCATION '/users/myName/myParquetData'
+                        MERGE SCHEMA;
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 

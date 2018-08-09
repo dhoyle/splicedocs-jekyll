@@ -67,19 +67,21 @@ follow these steps:
 ### Accessing a Parquet File
 
 The following statement creates an external table for querying a
-`PARQUET` file that is stored on your computer:
+`PARQUET` file (or set of `PARQUET` files in a directory) stored on your computer:
 
 <div class="preWrapperWide" markdown="1">
     splice> CREATE EXTERNAL TABLE myExtTbl (
       col1 INT, col2 VARCHAR(24))
         PARTITIONED BY (col1)
         STORED AS PARQUET
-        LOCATION '/users/myname/myParquetFile';0 rows inserted/updated/deleted
+        LOCATION '/users/myname/myParquetFile';
+
+    0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
 The call to `CREATE EXTERNAL TABLE` associates a Splice Machine external
-table with the file named `myparquetfile`, and tells Splice Machine
+table with the data files in the directory named `myparquetfile`, and tells Splice Machine
 that:
 
 * The table should be partitioned based on the values in `col1`.
@@ -89,9 +91,31 @@ that:
 After you create the external table, you can query `myExtTbl` just as
 you would any other table in your database.
 
+#### External Table Schema Evolution for PARQUET Data Files
+If your external data is stored in `PARQUET` format, you can specify the `MERGE SCHEMA` option when creating your external table. This is useful when your data has schema evolution: ordinarily (without the option), Splice Machine infers the schema for your data by examining the column data types of one of the data files in the directory of files specified in the `LOCATION` parameter. This works fine except when the schema of the external data changes; for schema evolution cases, you can specify `MERGE SCHEMA` to tell Splice Machine to infer the schema from all of the data files.
+
+To use schema merging with the previous example, simply add the `MERGE SCHEMA` clause:
+
+<div class="preWrapperWide" markdown="1">
+    splice> CREATE EXTERNAL TABLE myExtTbl (
+      col1 INT, col2 VARCHAR(24))
+        PARTITIONED BY (col1)
+        STORED AS PARQUET
+        LOCATION '/users/myname/myParquetFile'
+        MERGE SCHEMA;
+
+    0 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+</div>
+
+Merging schemas from a large set of external files is expensive in terms of performance, so you should only use this option when necessary.
+
+This option is only available for data in `PARQUET` format, due to Spark restrictions.
+{: .noteIcon}
+
 ### Accessing and Updating an ORC File
 
-The following statement creates an external table for an `ORC` file stored in an AWS S3 bucket and inserts data into it:
+The following statement creates an external table for the `ORC` file stored in an AWS S3 bucket and inserts data into it:
 
 <div class="preWrapperWide" markdown="1">
 
