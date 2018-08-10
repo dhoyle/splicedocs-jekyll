@@ -372,11 +372,6 @@ A list of all of the rows retrieved from the cursor of the result set. You can r
 See [Running Your Stored Procedure](#runningProc) for information about running your stored procedure, and [Updating Your Stored Procedure](#updatingProc) for information about updating your stored procedure.
 </div>
 {% endif %}
-</div>
-
-#### Running and Updating Your Procedure
-See [Running Your Stored Procedure](#runningProc) for information about running your stored procedure, and [Updating Your Stored Procedure](#updatingProc) for information about updating your stored procedure.
-</div>
 
 ## Running Your Stored Procedure {#runningProc}
 You can run your stored procedure by calling it from the <span

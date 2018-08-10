@@ -80,9 +80,6 @@ next section.
       | EXTERNAL NAME { javaMethodName | AS ' pythonScript ' }{% else %}        LANGUAGE { JAVA }
       | EXTERNAL NAME { javaMethodName }{% endif %}
       | DeterministicCharacteristic
-        LANGUAGE { JAVA | PYTHON }
-      | DeterministicCharacteristic
-      | EXTERNAL NAME { javaMethodName | AS ' pythonScript ' }
       | PARAMETER STYLE parameterStyle
       | DYNAMIC RESULT SETS integer
       | sqlStatementType
