@@ -37,16 +37,16 @@ directory and the file name (unless the file is in the current
 directory, in which case the directory is optional).
 {: .paramDefnFirst}
 
-If you're using Splice Machine on a cluster, the Jar file can be in the HDFS file system or in an S3a bucket on Amazon AWS.
-If you're using our standalone version, the Jar file can be in your local file system or in an S3a bucket on Amazon AWS.
-{: .noteNote}
+* If you're using Splice Machine on a cluster, the Jar file can be in the `HDFS` file system or in an `S3a` bucket on Amazon AWS.
+* If you're using our standalone version, the Jar file can be in an `S3a` bucket on Amazon AWS or in your local file system.
+{: .nested}
 
 Here are a few examples:
 {: .paramDefn}
 <div class="preWrapper" markdown="1">
-    d:/todays_build/tours.jar
     https://s3a.amazonaws.com/splice/examples/jars/tours.jar
     hdfs:///home/jars/tours.jar
+    d:/todays_build/tours.jar
 {: .Example}
 </div>
 

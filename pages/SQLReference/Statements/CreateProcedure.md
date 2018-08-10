@@ -217,7 +217,6 @@ Indicates that the procedure can execute any SQL statement.
 
 {% if site.build_type != "Doc" %}This section contains two examples of creating procedures: one in JAVA, and another in PYTHON.{% else %}
 This section contains an example of creating a stored procedure in JAVA.{% endif %}
-This section contains two examples of creating procedures: one in JAVA, and another in PYTHON.
 For functional examples of using `CREATE PROCEDURE`, please see the [Using
 Functions and Stored Procedures](developers_fcnsandprocs_intro.html)
 section of our *Developer's Guide*.
