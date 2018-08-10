@@ -223,7 +223,8 @@ data into it:
     splice> INSERT INTO myOrcTable VALUES (1, 'One'), (2, 'Two'), (3, 'Three');
     3 rows inserted/updated/deleted
     splice> SELECT * FROM myOrcTable;
-    COL1        |COL2------------------------------------
+    COL1        |COL2
+    ------------------------------------
     3           |Three
     2           |Two
     1           |One
