@@ -29,7 +29,7 @@ select opt in "${OPTIONS[@]}"; do
         'Doc 2.8')
             version='doc'
             branch='2.8'
-            smap='sitemapgen'
+            smap='sitemapgen.2.8'
             break;
             ;;
         'DocsDev 2.7')
@@ -75,9 +75,11 @@ done
 read -p "Do you want to serve or build      [serve]: " buildtype
 buildtype=${buildtype:-serve}
 
+echo ""
 echo "  --> Building with _config.yml,_config_$version.yml,_config_$branch.yml"
 echo "       - Will generate sitemap file: _site/sitemap.$branch.xml"
 echo "       - Will rename sitemap index file sitemapindex.$version.xml to _site/sitemap.index.xml"
+echo ""
 
 jekyll $buildtype --config=_config.yml,_config_$version.yml,_config_$branch.yml
 
@@ -88,3 +90,7 @@ jekyll $buildtype --config=_config.yml,_config_$version.yml,_config_$branch.yml
 mv _site/$smap.xml _site/sitemap.$branch.xml
 
 cp sitemapindex.$version.xml _site/sitemap.index.xml
+
+echo "done"
+
+afplay /System/Library/Sounds/Sosumi.aiff

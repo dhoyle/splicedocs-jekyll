@@ -34,14 +34,22 @@ jar_file_path_or-url
 
 The path or URL of the jar file to add. A path includes both the
 directory and the file name (unless the file is in the current
-directory, in which case the directory is optional). For example:
+directory, in which case the directory is optional).
 {: .paramDefnFirst}
 
+If you're using Splice Machine on a cluster, the Jar file can be in the HDFS file system or in an S3a bucket on Amazon AWS.
+If you're using our standalone version, the Jar file can be in your local file system or in an S3a bucket on Amazon AWS.
+{: .noteNote}
+
+Here are a few examples:
+{: .paramDefn}
 <div class="preWrapper" markdown="1">
     d:/todays_build/tours.jar
+    https://s3a.amazonaws.com/splice/examples/jars/tours.jar
+    hdfs:///home/jars/tours.jar
 {: .Example}
-
 </div>
+
 qualified_jar_name
 {: .paramName}
 
