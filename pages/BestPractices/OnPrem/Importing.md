@@ -10,7 +10,6 @@ folder: BestPractices
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Best Practices" %}
 # Splice Machine Best Practices for Importing Data
 
 This section contains best practice and troubleshooting information related to importing  data into our *On-Premise Database* product, in these topics:
@@ -23,17 +22,8 @@ This section contains best practice and troubleshooting information related to i
 
 If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Cloudera Key Management Service (KMS) enabled, you must complete these extra configuration steps:
 
-1. Change the permissions of `/hbase` to `711`.
-2. Configure permissions for `hbase.rootdir.perms` to `711` by adding this property to `hbase-site.xml` on HMaster:
-   <div class="preWrapperWide" markdown="1">
-       <property>
-           <name>hbase.rootdir.perms</name>
-           <value>711</value>
-       </property>
-   {: .Plain}
-   </div>
-3. Make sure that the `bulkImportDirectory` is in the same encryption zone as is HBase.
-4. Add these properties to `hbase-site.xml` to load secure Apache BulkLoad and to put its staging directory in the same encryption zone as HBase:
+1. Make sure that the `bulkImportDirectory` is in the same encryption zone as is HBase.
+2. Add these properties to `hbase-site.xml` to load secure Apache BulkLoad and to put its staging directory in the same encryption zone as HBase:
    <div class="preWrapperWide"><pre class="Plain">&lt;property&gt;
       &lt;name&gt;hbase.bulkload.staging.dir&lt;/name&gt;
       &lt;value&gt;<span class="HighlightedCode">&lt;YourStagingDirectory&gt;</span>&lt;/value&gt;

@@ -96,7 +96,7 @@ buttons near the upper-right corner of the Dashboard screen:
 ![](images/DashboardLinks.png){: .indentedTightSpacing}
 
 Click the <span class="CalloutFont">DB Console</span> button to land on
-our [Database Console](dbconsole_intro.html) interface.
+our [Database Console](tutorials_dbconsole_intro.html) interface.
 
 Click the <span class="CalloutFont">Notebook</span> button to land on
 our [Zeppelin Notebook](dbaas_zep_intro.html) interface.

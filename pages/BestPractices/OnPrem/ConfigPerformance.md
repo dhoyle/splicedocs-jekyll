@@ -10,7 +10,6 @@ folder: BestPractices
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Best Practices" %}
 # Configuring Performance of Your Splice Machine Database
 
 

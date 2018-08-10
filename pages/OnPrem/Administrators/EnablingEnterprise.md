@@ -12,7 +12,6 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Enabling Enterprise Features in Splice Machine
 
-{% include splice_snippets/onpremonlytopic.md %}
 There are two mechanisms for enabling enterprise features in Splice
 Machine:
 
@@ -26,6 +25,8 @@ Machine:
   LDAP, you need to add one or more properties to your configuration
   file, as described in [Using Configuration Properties to Upgrade to
   the Enterprise](#Using2), below.
+  
+{% include splice_snippets/onpremonlytopic.md %}
 
 ## Using `SYSCS_UTIL.SYSCS_ENABLE_ENTERPRISE` to Upgrade   {#Using}
 
@@ -76,7 +77,7 @@ configuration, and then restart Splice Machine. Follow these steps:
 3.  If you're using or switching from another authentication mechanism
     to LDAP, also add the LDAP properties to your `hbase-site.xml` file,
     as described in the [Splice Machine Authentication and
-    Authorization](developers_fundamentals_auth.html) topic.
+    Authorization](tutorials_security_ssltls.html) topic.
 
 4. If you're using Kerberos, add this to your HBase Master Java Configuration Options:
 

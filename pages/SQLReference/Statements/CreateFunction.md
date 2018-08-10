@@ -12,8 +12,7 @@ folder: SQLReference/Statements
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # CREATE FUNCTION
 
-The `CREATE FUNCTION` statement allows you to create Java {% if site.build_type != "Doc" %}
-or Python {% endif %}functions,
+The `CREATE FUNCTION` statement allows you to create Java or Python functions,
 which you can then use in expressions.
 
 For details on how Splice Machine matches functions to Java methods, see
@@ -92,10 +91,9 @@ A *[SQL Identifier](sqlref_identifiers_intro.html)*.
 Table functions return `TableType` results. Currently, only Splice
 Machine-style table functions are supported, which are functions that
 return JDBC *ResultSets.*
-{% if site.build_type != "Doc" %}
+
 You cannot currently write table functions in Python.
 {: .noteIcon}
-{% endif %}
 
 When values are extracted from a *ResultSet*, the data types of the
 values are coerced to match the data types declared in the
@@ -111,9 +109,8 @@ know about:
 
 <div class="fcnWrapperWide" markdown="1">
      {
-{% if site.build_type != "Doc" %}        LANGUAGE { JAVA | PYTHON }
-      | { EXTERNAL NAME javaMethodName | AS ' pythonScript ' }{% else %}        LANGUAGE { JAVA }
-      | EXTERNAL NAME javaMethodName{% endif %}
+        LANGUAGE { JAVA | PYTHON }
+      | { EXTERNAL NAME javaMethodName | AS ' pythonScript ' }
       | DeterministicCharacteristic
       | PARAMETER STYLE parameterStyle
       | sqlStatementType
@@ -135,8 +132,7 @@ These function elements are required:
 LANGUAGE
 {: .paramName}
 
-Specify the language in which your function is written; this must be `JAVA`{% if site.build_type != "Doc" %}
- or `PYTHON`{% endif %}.
+Specify the language in which your function is written; this must be `JAVA` or `PYTHON`.
 {: .paramDefnFirst}
 
 DeterministicCharacteristic
@@ -168,7 +164,7 @@ javaMethodName
 This is the name of the Java method to call when this function executes.
 {: .paramDefnFirst}
 
-{% if site.build_type != "Doc" %}pythonScript
+pythonScript
 {: .paramName}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">def run(<em>scriptArgs</em>): <em>scriptCode</em></pre>
@@ -184,7 +180,6 @@ section of our *Developer's Guide*:
 * Write the script under the `run` function.
 * The arguments you specify for your script in the `CREATE FUNCTION` statement should match the order specified in your method definition.
 {: .nested}
-{% endif %}
 
 parameterStyle
 {: .paramName}
@@ -263,7 +258,7 @@ result may be null or not null.
 
 </div>
 </div>
-## Example of declaring a scalar function {% if site.build_type != "Doc" %}(JAVA or Python){% endif %}
+## Example of declaring a scalar function (JAVA or Python)
 
 For more complete examples of using `CREATE FUNCTION`, please see the
 [Using Functions and Stored
@@ -284,7 +279,6 @@ Procedures](developers_fcnsandprocs_intro.html) section of our
 
 </div>
 
-{% if site.build_type != "Doc" %}
 ### Python Example
 
 <div class="preWrapper" markdown="1">
@@ -311,17 +305,16 @@ You can now use this function as follows:
 {: .Example xml:space="preserve"}
 </div>
 
-{% endif %}
 
-## Example of declaring a table function {% if site.build_type != "Doc" %}(JAVA only){% endif %}
+## Example of declaring a table function (JAVA only)
 
 This example reads data from a mySql database and inserts it into a
 Splice Machine database.
 {: .body}
-{% if site.build_type != "Doc" %}
+
 You cannot currently write table functions in Python.
 {: .noteIcon}
-{% endif %}
+
 
 We first implement a class that contains a public static method that
 connects to an external (foreign) database, uses a prepared statement to

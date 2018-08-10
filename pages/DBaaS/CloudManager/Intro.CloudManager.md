@@ -57,7 +57,7 @@ Machine Cloud Manager. Here are the topics included in this guide:
                     </td>
                 </tr>
                 <tr>
-                    <td><em><a href="dbconsole_intro.html">Using the DB Console</a></em></td>
+                    <td><em><a href="tutorials_dbconsole_intro.html">Using the DB Console</a></em></td>
                     <td>
                         <p>The <span class="ConsoleLink">Splice Machine Database Console</span> is a browser-based tool that you can use to monitor database queries on your cluster in real time. The Console UI allows you to see the Spark queries that are currently running in Splice Machine on your cluster, and to then drill down into each job to see the current progress of the queries, and to identify any potential bottlenecks. If you see something amiss, you can also terminate a query.</p>
 						<p>The DB Console is available for all Splice Machine products; you access the Splice DB Console for the Database-as-Service product by clicking the <span class="ConsoleLink">DB Console</span> link in your Cluster Management dashboard, or by following the link sent to you by Splice Machine when your cluster was originally created.</p>

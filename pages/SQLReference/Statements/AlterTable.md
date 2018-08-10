@@ -16,13 +16,8 @@ The `ALTER TABLE` statement allows you to modify a table in a variety of
 ways, including adding and dropping columns and constraints from the
 table.
 
-<div class="noteIcon">
-In this release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to:
-<ul>
-<li>add a primary key</li>
-<li>drop a foreign key constraint</li>
-</ul>
-</div>
+In this release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to add a primary key.
+{: .noteIcon}
 
 ## Syntax
 
@@ -32,7 +27,8 @@ ALTER TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
    ADD COLUMN <a href="sqlref_identifiers_types.html#ColumnDefinition">column-definition</a> |
    ADD <a href="sqlref_clauses_constraint.html#TableName">CONSTRAINT</a> clause |
    DROP [ COLUMN ] column-name
-   DROP { UNIQUE constraint-name |
+   DROP { constraint-name |
+          UNIQUE constraint-name |
           CHECK constraint-name
    }
    ALTER [ COLUMN ] <a href="sqlref_statements_altertable#ColumnAlteration">column-alteration</a>
@@ -61,6 +57,21 @@ If you omit the *DataType*, the type of the generated column is the type
 of the *generation-clause*. If you specify both a *DataType* and a
 *generation-clause*, the type of the *generation-clause* must be
 assignable to *DataType*.
+{: .paramDefn}
+
+column-name
+{: .paramName}
+
+An [SQLIdentifier](sqlref_identifiers_intro.html) specifying the name of the column that you want to drop.
+{: .paramDefnFirst}
+
+constraint-name
+{: .paramName}
+
+An [SQLIdentifier](sqlref_identifiers_intro.html) specifying the name of the constraint that you want to drop.
+{: .paramDefnFirst}
+
+If the constraint is unnamed, you can specify the generated `CONSTRAINTNAME` ID that is stored in the &nbsp;&nbsp;[`SYS.SYSCONSTRAINTS` table](sqlref_systables_sysconstraints.html) as a delimited value. You can find the constraint ID by joining `SYS.SYSCONSTRAINTS` with &nbsp;&nbsp;[`SYS.SYSTABLES`](sqlref_systables_systables.html).
 {: .paramDefn}
 
 column-alteration
@@ -156,8 +167,7 @@ The `ALTER TABLE` statement allows you to:
 * add a column to a table
 * add a constraint to a table
 * drop a column from a table
-* drop an existing constraint from a table<span
-  class="important">*</span>
+* drop an existing constraint from a table
 * increase the width of a `VARCHAR` column
 * change the increment value and start value of the identity column
 * change the nullability constraint for a column
@@ -213,6 +223,11 @@ ADD CONSTRAINT` syntax.
 The keyword `COLUMN` is optional.
 
 You may not drop the last (only) column in a table.
+
+### Dropping constraints
+`ALTER TABLE DROP CONSTRAINT` allows you to drop a constraint from a table. You can specify the constraint by its name, or if the constraint is unnamed, you can specify the generated `CONSTRAINTNAME` ID that is stored in the &nbsp;&nbsp;[`SYS.SYSCONSTRAINTS` table](sqlref_systables_sysconstraints.html) as a delimited value. You can find the constraint ID by joining `SYS.SYSCONSTRAINTS` with &nbsp;&nbsp;[`SYS.SYSTABLES`](sqlref_systables_systables.html).
+
+[Example 8: Dropping a Foreign Key Constraint](#example8) at the end of this topic shows dropping an unnamed foreign key constraint.
 
 ### Modifying columns
 
@@ -272,9 +287,19 @@ the table being altered to be recompiled before their next execution.
 
 ## Examples
 
-This section provides examples of using the `ALTER TABLE` statement.
+This section provides examples of using the `ALTER TABLE` statement:
 
-### Example 1: Adding Columns to a Table
+* [Example 1: Adding Columns to a Table](#example1)
+* [Example 2: Altering Columns](#example2)
+* [Example 3: Dropping a column](#example3)
+* [Example 4: Changing Varchar Column Width](#example4)
+* [Example 5: Changing Increment Value](#example5)
+* [Example 6: Adding a Foreign Key After Table Creation](#example6)
+* [Example 7: Adding a Foreign Key in Table With Invalid Data](#example7)
+* [Example 8: Dropping a Foreign Key Constraint](#example8)
+
+
+### Example 1: Adding Columns to a Table {#example1}
 
 In this example. we create a new table, and then use
 `ALTER TABLE` statements to add three columns that we have decided to
@@ -318,7 +343,7 @@ include:
 {: .Example xml:space="preserve"}
 
 </div>
-### Example 2: Altering Columns
+### Example 2: Altering Columns {#example2}
 
 In this example, we use `ALTER TABLE` to alter columns in various ways:
 
@@ -354,7 +379,7 @@ In this example, we use `ALTER TABLE` to alter columns in various ways:
 {: .Example xml:space="preserve"}
 
 </div>
-### Example 3: Dropping a column
+### Example 3: Dropping a column {#example3}
 
 This example drops the `Years` column from our table, and then drops the
 default associated with `NewTeam`:
@@ -383,7 +408,7 @@ default associated with `NewTeam`:
 {: .Example xml:space="preserve"}
 
 </div>
-### Example 4: Changing Varchar Column Width
+### Example 4: Changing Varchar Column Width {#example4}
 
 This example changes the width of one of our `VARCHAR` columns:
 {: .body}
@@ -408,7 +433,7 @@ This example changes the width of one of our `VARCHAR` columns:
 {: .Example xml:space="preserve"}
 
 </div>
-### Example 5: Changing Increment Value
+### Example 5: Changing Increment Value {#example5}
 
 This example shows creating a table with an identity column, and then
 changing the increment for that column:
@@ -438,7 +463,7 @@ changing the increment for that column:
 
 </div>
 
-### Example 6: Adding a Foreign Key After Table Creation
+### Example 6: Adding a Foreign Key After Table Creation {#example6}
 This example shows adding a foreign key into a table that already contains data, and then attempting an invalid insertion to demonstrate that the new constraint is active:
 {: .body}
 
@@ -461,8 +486,7 @@ This example shows adding a foreign key into a table that already contains data,
 {: .Example xml:space="preserve"}
 </div>
 
-
-### Example 7: Adding a Foreign Key in Table With Invalid Data
+### Example 7: Adding a Foreign Key in Table With Invalid Data {#example7}
 This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the new constraint:
 {: .body}
 
@@ -481,6 +505,43 @@ This example shows an attempt to add a foreign key into a table that already con
         # Creating this foreign key fails because the table contains non-conformant data:
     splice> ALTER TABLE orderlines3 ADD CONSTRAINT FK_Order3 FOREIGN KEY (orderid) REFERENCES Orders3(id);
     ERROR X0Y45: Foreign key constraint 'FK_ORDER3' cannot be added to or enabled on table "SPLICE"."ORDERLINES3" because one or more foreign keys do not have matching referenced keys.
+{: .Example xml:space="preserve"}
+</div>
+
+
+### Example 8: Dropping a Foreign Key Constraint {#example8}
+This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the new constraint, and then after dropping the constraint. Since the constraint is unnamed, we can specify its ID, which you can find by joining [`SYS.SYSCONSTRAINTS`](sqlref_systables_sysconstraints.html) with [`SYS.SYSTABLES`](sqlref_systables_systables.html). In this example, an earlier error message shows us the ID, so we don't need to look it up:
+{: .body}
+
+<div class="preWrapperWide" markdown="1">
+    -- create original table
+    splice> CREATE TABLE t1 (c1 NUMERIC PRIMARY KEY);
+    0 rows inserted/updated/deleted
+
+    -- create secondary table
+    CREATE TABLE t2 (
+       c1 NUMERIC PRIMARY KEY,
+       c2 NUMERIC REFERENCES t1(c1) );
+    0 rows inserted/updated/deleted
+
+    -- try (but fail) to enter a row because of fk constraint:
+    splice> insert into t2 values (1,1);
+    ERROR 23503: Operation on table 'T2' caused a violation of foreign key constraint 'SQL180830233242711' for key (C2).  The statement has been rolled back.
+
+    -- enter record correctly:
+    splice> insert into t1 values 1;
+    1 row inserted/updated/deleted
+
+    splice> insert into t2 values (1,1);
+    1 row inserted/updated/deleted
+
+    -- now get rid of the fk constraint:
+    splice> alter table t2 drop constraint SQL180830233242711;
+    0 rows inserted/updated/deleted
+
+    -- now we can insert rows that don't reference an fk:
+    splice> insert into t2 values (2,2);
+    1 row inserted/updated/deleted
 {: .Example xml:space="preserve"}
 </div>
 

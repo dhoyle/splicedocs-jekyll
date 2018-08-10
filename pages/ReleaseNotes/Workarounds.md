@@ -20,9 +20,7 @@ These are the notes and workarounds for known issues in this release:
 * [Temporary Tables and Backups](#temporary-tables-and-backups)
 * [Natural Self Joins Not Supported](#natural-self-joins-not-supported)
 * [Columnar Screen Output Gets Truncated](#columnar-screen-output-gets-truncated)
-* [TimeStamp Date Value Limitations](#timestamp-date-value-limitations)
 * [ToDate Function Problem With DD Designator](#todate-function-problem-with-dd-designator)
-* [Dropping Foreign Keys](#dropping-foreign-keys)
 * [Compaction Queue Issue](#compaction-queue-issue)
 * [Alter Table Issues](#alter-table-issues)
 * [Default Value for Lead and Lag Functions](#default-value-for-lead-and-lag-functions)
@@ -62,27 +60,11 @@ When using ``Explain Plan`` and other commands that generate lengthy output line
 **WORKAROUND:** Use the `maximumdisplaywidth=0` command to force all column contents to be displayed.
 
 
-## TimeStamp Date Value limitations
-
-Dates in [TIMESTAMP Data Type](sqlref_builtinfcns_timestamp.html) values only work correctly when limited to this range of date values:
-~~~~
-    1678-01-01 to 2261-12-31
-~~~~
-
-
 ## ToDate Function Problem With DD Designator
 
 The [TO_DATE](sqlref_builtinfcns_date.html) function currently returns the wrong date if you specify ``DD`` for the day field; however, specifying ``dd`` instead works properly.
 
 **WORKAROUND:** Use `dd` instead of `DD`.
-
-
-## Dropping Foreign Keys
-
-The ``DROP FOREIGN KEY`` clause of the [ALTER TABLE](sqlref_statements_altertable.html) statement is currently unavailable in Splice Machine.
-
-**WORKAROUND:** Re-create the table without the foreign key constraint.
-
 
 ## Compaction Queue Issue
 

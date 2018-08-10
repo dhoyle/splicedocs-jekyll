@@ -74,29 +74,29 @@ The following table summarizes the main sections of our documentation:
     </thead>
     <tbody>
         <tr>
-            <td rowspan="7" class="MenuName">Splice Machine</td>
+            <td rowspan="8" class="MenuName">Splice Machine</td>
             <td><a href="index.html">Welcome</a></td>
             <td>Information about our database: the basis of all Splice Machine products.</td>
-        </tr>
-        <tr>
-            <td><a href="tutorials_intro.html">Tutorials</a></td>
-            <td>A collection of tutorials that walk you through numerous specific tasks to help you quickly learn how to use your Splice Machine database more productively.</td>
-        </tr>
-        <tr>
-            <td><a href="sqlref_intro.html">SQL Reference Manual</a></td>
-            <td>The reference manual for the Splice Machine implementation of SQL.</td>
-        </tr>
-        <tr>
-            <td><a href="developers_intro.html">Developer's Manual</a></td>
-            <td>Topics of interest to all developers working with Splice Machine.</td>
         </tr>
         <tr>
             <td><a href="cmdlineref_intro.html">Command Line Reference</a></td>
             <td>The reference manual for our Splice Machine command line interface.</td>
         </tr>
         <tr>
-            <td><a href="dbconsole_intro.html">Database Console Guide</a></td>
-            <td>An introduction to the Splice Machine Spark Database Console.</td>
+            <td><a href="sqlref_intro.html">SQL Reference Manual</a></td>
+            <td>The reference manual for the Splice Machine implementation of SQL.</td>
+        </tr>
+        <tr>
+            <td><a href="developers_intro.html">Developer Topics</a></td>
+            <td>Topics of interest to all developers working with Splice Machine.</td>
+        </tr>
+        <tr>
+            <td><a href="tutorials_intro.html">Developer Tutorials</a></td>
+            <td>A collection of tutorials that walk you through numerous specific tasks to help you quickly learn how to use your Splice Machine database more productively.</td>
+        </tr>
+        <tr>
+            <td><a href="bestpractices_intro.html">Best Practices Guide</a></td>
+            <td>Best practices and troubleshooting information.</td>
         </tr>
         <tr>
             <td><a href="notes_intro.html">Release Notes</a></td>
@@ -104,7 +104,7 @@ The following table summarizes the main sections of our documentation:
         </tr>
         <tr>
             <td><a href="notes_intro.html">General Information</a></td>
-            <td>General information about our database products and our documentation.</td>
+            <td>Links to general information about our products.</td>
         </tr>
         <tr>
             <td colspan="3" class="Separator"> </td>
@@ -124,27 +124,35 @@ The following table summarizes the main sections of our documentation:
         </tr>
         <tr>
             <td><a href="dbaas_info_release.html">Release Information</a></td>
-            <td>Release notes, workarounds, and other information about this release.</td>
+            <td>Release notes, workarounds, and other information about this database-as-service release.</td>
         </tr>
         <tr>
             <td colspan="3" class="Separator"> </td>
         </tr>
         <tr>
-            <td rowspan="4" class="MenuName">On-Premise-DB Only</td>
+            <td rowspan="6" class="MenuName">On-Premise-DB Only</td>
             <td><a href="onprem_intro.html">Welcome</a></td>
             <td>The content in this section is specific to our on-premise database product.</td>
         </tr>
         <tr>
-            <td><a href="onprem_install_intro.html">Installing Splice Machine</a></td>
+            <td><a href="onprem_install_intro.html">Installation</a></td>
             <td>Step-by-step instructions for installing the on-premise version of Splice Machine on compatible platforms.</td>
         </tr>
         <tr>
-            <td><a href="onprem_admin_intro.html">On-Premise Administration</a></td>
+            <td><a href="onprem_admin_intro.html">Administrator's Guide</a></td>
             <td>Topics that describe the administrative tasks associated with installing, configuring, and maintaining your on-premise Splice Machine database.</td>
         </tr>
         <tr>
-            <td><a href="onprem_info_troubleshoot.html">Best Practices and Troubleshooting</a></td>
+            <td><a href="bestpractices_onprem_intro.html">Best Practices</a></td>
             <td>Tips for best practices and solving common problems.</td>
+        </tr>
+        <tr>
+            <td><a href="releasenotes_onprem.html">Release notes</a></td>
+            <td>Release notes, workarounds, and other information about this on-premise database release.</td>
+        </tr>
+        <tr>
+            <td><a href="onprem_info_intro.html">Product Information</a></td>
+            <td>Links to general information about our on-premise-database product.</td>
         </tr>
     </tbody>
 </table>

@@ -12,7 +12,6 @@ folder: OnPrem/InstallingSpliceMachine
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Importing and Querying Standalone Demo Data
 
-{% include splice_snippets/onpremonlytopic.md %}
 The standalone version of Splice Machine includes sample data that you can
 use to quickly try importing and querying meaningful data. This topic walks you through using the sample data.
 

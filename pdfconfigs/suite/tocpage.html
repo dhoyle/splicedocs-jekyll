@@ -7,9 +7,9 @@ permalink: /tocpage/suite.html
     <!-- This generates one very large Table of Contents for the entire Docs Suite;
          We use parallel arrays to display correct book name in the <h2> in our TOC -->
 
-{% assign splicetocs = "tutorials_sidebar,sqlref_sidebar,developers_sidebar,cmdlineref_sidebar,dbconsole_sidebar,dbaas_sidebar,onprem_sidebar,bestpractices_sidebar,releasenotes_sidebar,notes_sidebar" | split: ',' %}
+{% assign splicetocs = "cmdlineref_sidebar,sqlref_sidebar,developers_sidebar,tutorials_sidebar,bestpractices_sidebar,dbaas_sidebar,onprem_sidebar,releasenotes_sidebar,notes_sidebar" | split: ',' %}
 
-{% assign splicebooks = "Developer Tutorials,SQL Reference Manual,Developer's Guide,Command Line Reference,Database Console,Database-as-Service Product,On-Premise Database Product,Best Practices,Release Notes,General Information" | split: ',' %}
+{% assign splicebooks = "Command Line Reference,SQL Reference Manual,Developer Topics,Developer Tutorials,Best Practices,DB-Service Product,On-Premise-DB Product,Release Notes,General Information" | split: ',' %}
 
     <!-- Need to use an integer index into the book names array, so use a counter -->
 {% assign tocId = 0 %}

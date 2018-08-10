@@ -12,7 +12,6 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Starting Your Database
 
-{% include splice_snippets/onpremonlytopic.md %}
 * [Starting Your Splice Machine Database on a Cloudera-Managed
   Cluster](#StartDBCloudera)
 * [Starting Your Splice Machine Database on a Hortonworks HDP-Managed
@@ -21,6 +20,8 @@ folder: OnPrem/Administrators
   Cluster](#StartDBMapR)
 * [Starting Your Splice Machine Database on a Standalone
   installation](#StartDbStandalone)
+
+{% include splice_snippets/onpremonlytopic.md %}
 
 ## Starting Your Splice Machine Database on a Cloudera-Managed Cluster   {#StartDBCloudera}
 

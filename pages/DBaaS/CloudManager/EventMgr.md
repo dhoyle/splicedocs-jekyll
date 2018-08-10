@@ -12,9 +12,10 @@ folder: DBaaS/CloudManager
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Managing Your Event Notifications
 
-{% include splice_snippets/dbaasonlytopic.md %}
 This topic describes the Splice Machine Events Manager, which allows you
 to examine notification messages sent to your cluster.
+
+{% include splice_snippets/dbaasonlytopic.md %}
 
 Here's a screenshot of a partially populated <span
 class="ConsoleLink">Events Manager screen:</span>
@@ -28,11 +29,11 @@ You can initiate these actions in the Events Manager:
   *GaryDocs2*.
 * Filter which messages are displayed; enter filter criteria, then click
   the <span class="CalloutFont">Filter</span> button. You can filter on:
-  
+
   * A start date.
   * An end date.
   * A keyword or exact phrase.
-  
+
   You can filter on a start date or end date on its own, or combine them
   together to specify a date range. You can also combine a date or
   date-range filter with a keyword filter to find only events that meet
@@ -50,4 +51,3 @@ You can initiate these actions in the Events Manager:
 
 </div>
 </section>
-

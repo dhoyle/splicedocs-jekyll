@@ -12,9 +12,8 @@ folder: DBaaS/Zeppelin
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Zeppelin Usage Notes
 
-{% include splice_snippets/dbaasonlytopic.md %}
-This page currently contains exactly one tip about using Zeppelin with
-Splice Machine; this will grow into a loose collection of tips over
+This page currently contains exactly one tip about using Zeppelin with the
+Splice Machine database service; this will grow into a loose collection of tips over
 time.
 
 ## Use Full Classpath!
@@ -34,7 +33,7 @@ For example, this generates an error:
     classOffoo
     val tt = Timestamp.valueOf("2261-12-31 00:00:00")
     class foo extends Object { val xx: Timestamp = Timestamp.valueOf("2261-12-31 00:00:00") }
-    
+
     import java.util.Date
     import java.sql.{Connection, Timestamp}
     res12: Classjava.sql.Timestamp = class java.sql.Timestamp
@@ -46,7 +45,7 @@ For example, this generates an error:
     <console>:13: error: not found: value Timestamp
     val xx: Timestamp = Timestamp.valueOf("2261-12-31 00:00:00")
     ^
-    ERROR 
+    ERROR
 {: .Example}
 
 </div>
@@ -62,17 +61,16 @@ The error is resolved by specifying the full classpath:
     classOffoo
     val tt = Timestamp.valueOf("2261-12-31 00:00:00")
     class foo extends Object { val xx: java.sql.Timestamp = java.sql.Timestamp.valueOf("2261-12-31 00:00:00") }
-    
+
     import java.util.Date
     import java.sql.{Connection, Timestamp}
     res14: Classjava.sql.Timestamp = class java.sql.Timestamp
     res15: Classfoo = class foo
     tt: java.sql.Timestamp = 2261-12-31 00:00:00.0
     defined class foo
-    FINISHED 
+    FINISHED
 {: .Example}
 
 </div>
 </div>
 </section>
-

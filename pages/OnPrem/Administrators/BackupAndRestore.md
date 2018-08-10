@@ -32,7 +32,7 @@ these sections:
 
 ## Backup Resource Allocation
 
-Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. See the [Backup Resource Allocation](onprem_info_troubleshoot.html#BackupResources) section of our *Troubleshooting Guide* for specific information about allocation of resources.
+Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. See the [Troubleshooting Backups](bestpractices_onprem_backups.html) section of our *Best Practices Guide* for specific information about allocation of resources.
 
 ## About Splice Machine Backups   {#About}
 

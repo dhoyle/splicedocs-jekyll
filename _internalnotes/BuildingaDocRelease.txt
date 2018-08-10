@@ -23,16 +23,11 @@ When creating a new "previous release" directory, you must first prepare that di
     * Update Search
 
 A Note About Serve vs Build:
-    We use Jekyll to build the docs system, and we use a script we've created, servesplice, to manage building different versions (doc or docstest or docsdev) and different releases (e.g. 2.7, 2.5). There's an issue you should be aware of:
+    We use Jekyll to build the docs system, and we use two scripts:
+        * Use `servesplice` to tell Jekyll to serve a docs system. When it serves, Jekyll does the build, then runs the built web locally and serves it on `http://127.0.0.1:4000` (for doc or docstest) or `http://127.0.0.1:4006` (for docsdev). This is how we examine and test our changes during the development cycle. Use `CTRL-C` to terminate the run of a served session.
 
-        * You can tell Jekyll to build or serve a docs system. When it serves, Jekyll does the build, then runs the built web locally, on http://127.0.0.1:4000. This is how we examine and test our changes during the development cycle.
+        * Use `buildsplice` to tell Jekyll to build a production docs system. This differs from `servesplice` only in that our script needs to rename and/or copy some (sitemap) files after the build completes. However, if you serve the web and then Ctrl-C to terminate the run, those steps are not run, because the script has been cancelled.
 
-        * When Jekyll runs the web locally, you need to use Ctrl-C to terminate the run.
-
-        * When building a production version, our servesplice script needs to rename and/or copy some files after the build completes. However, if you serve the web and then Ctrl-C to terminate the run, those steps are not run, because the script has been cancelled.
-
-        * The solution: when building a production version, tell Jekyll to build the system, and when building a development version, tell Jekyll to serve the system.
-        The servesplice script handles this by asking whether you want to serve or build the system.
 
 _________________________________
 Build the Previous Release First:
@@ -47,8 +42,8 @@ _________________________________
 
     3. In Terminal:
        a. cd to splicedocs-jekyll directory  (alias=splicedocs)
-       b. Use the ./servepdfsuite script to build the PDF version of 2.5
-       c. Use the ./servesplice script to build the 2.5 version of doc: when asked to serve or build, type in build.
+       b. Use the ./buildsplicepdf script to build the PDF version of 2.5
+       c. Use the ./buildsplice script to build the 2.5 version of doc.
 
     4. In an FTP client:
        a. Connect to doc.splicemachine.com/2.5
@@ -79,7 +74,7 @@ Next, Build the Current Release:
 _________________________________
 
     1. In Git:
-       a. Switch to the master branch of the splicedocs-jekyll repo
+       a. Switch to the current version (possibly `master`) branch of the splicedocs-jekyll repo
 
     2. Using a text editor such as Atom:
        a. Open the docs project
@@ -87,8 +82,8 @@ _________________________________
 
     3. In Terminal:
        a. cd to splicedocs-jekyll directory  (alias=splicedocs)
-       b. Use the ./servepdfsuite script to build the PDF version of 2.7
-       c. Use the ./servesplice script to build the 2.5 version of doc: when asked to serve or build, type in build.
+       b. Use the ./buildsplicepdf script to build the PDF version of 2.7
+       c. Use the ./buildsplice script to build the 2.5 version of doc.
 
     4. In an FTP client:
        a. Connect to doc.splicemachine.com
@@ -157,9 +152,9 @@ You can prepare the directory on the server by simply following these steps:
        mv 2.5 Temp/
        mv 2.7 Temp/
 
-NOW, Update the servesplice and servepdfsuite shell scripts in the repos:
+NOW, Update the servesplice, buildsplice, and buildsplicepdf shell scripts in the repos:
     1. Add the new release versions (e.g. 'docsdev 2.8', 'docstest 2.8', 'doc 2.8') in the case statements in both scripts.
-    2. In servesplice script, make sure to change the smap value of the now-previous (e.g. 2.7) version(s), so that they're generating e.g. sitemapgen.2.7
+    2. In servesplice and buildsplice script, make sure to change the smap value of the now-previous (e.g. 2.7) version(s), so that they're generating e.g. sitemapgen.2.7
 
 FINALLY: update the sitemapindex.xxx.xml files for the new version
     Add a new sitemap to the set of sitemaps in sitemapindex.docstest.xml, and (when ready to go live) to sitemapindex.doc.xml.  You can also do this in docsdev, but its site index doesn't get used, so it does no good (but does no harm).

@@ -12,9 +12,10 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Cleaning Your Database
 
-{% include splice_snippets/onpremonlytopic.md %}
 Cleaning your database essentially wipes out any user-defined tables,
 indexes, and related items.
+
+{% include splice_snippets/onpremonlytopic.md %}
 
 <span class="important">This is a destructive process and should only be used by an administrator.</span> Following the steps in this topic destroys your database data. And if you have non-SpliceMachine data stored in HBase, you must exercise additional caution to not destroy that data. Please follow the steps for your platform carefully.
 {: .noteIcon}

@@ -12,7 +12,6 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Shutting Down Your Database
 
-{% include splice_snippets/onpremonlytopic.md %}
 This topic describes how to shut down your Splice Machine database. You
 need to follow different steps, depending on which version of Splice
 Machine you are using:
@@ -26,6 +25,8 @@ Machine you are using:
 * [Shutting Down Your Splice Machine Database on a Standalone
   installation](#ShutdownDbStandalone)
 
+{% include splice_snippets/onpremonlytopic.md %}
+
 ## Shutting Down Your Splice Machine Database on a Cloudera-Managed Cluster   {#ShutdownDBCloudera}
 
 Use the Cloudera Manager to either shut down HBase or to shut down the
@@ -35,21 +36,21 @@ entire cluster, whichever is appropriate for your situation.
 1.  Navigate to the *Services-&gt;All Services* screen in *Cloudera
     Manager*, and select this action to stop *HBase*:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         hbase -> Actions -> Stop
     {: .AppCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  If you also want to shut down the entire cluster, select this action
     in the same screen to stop*HDFS*:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         hdfs1 -> Actions -> Stop
     {: .AppCommand}
-    
+
     </div>
 {: .boldFont}
 
@@ -64,20 +65,20 @@ Use the Ambari dashboard to shut down Splice Machine:
     class="HighlightedCode">&lt;hostName&gt;</span> for your master node
     that is hosting Ambari Server:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         http://<hostName>:8080/
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 
 2.  Shut down cluster services by selecting:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         Action -> Stop All
     {: .AppCommand}
-    
+
     </div>
 {: .boldFont}
 
@@ -104,30 +105,30 @@ Standalone version of Splice Machine:
 1.  Make sure that you have quit the <span
     class="AppCommand">splice&gt;</span> command line interpreter:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         splice> quit;
     {: .AppCommand}
-    
+
     </div>
 
 2.  Change directory to your install directory:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
         cd splicemachine
     {: .ShellCommand}
-    
+
     </div>
 
 3.  Run the following scripts:
     {: .topLevel}
-    
+
     <div class="preWrapper" markdown="1">
-        
+
         $ ./bin/stop-splice.sh
     {: .ShellCommand xml:space="preserve"}
-    
+
     </div>
 {: .boldFont}
 
@@ -138,4 +139,3 @@ Administrative Console.
 </div>
 </div>
 </section>
-

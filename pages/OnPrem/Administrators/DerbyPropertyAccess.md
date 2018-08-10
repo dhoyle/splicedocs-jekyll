@@ -12,82 +12,87 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Derby Property Access
 
-{% include splice_snippets/onpremonlytopic.md %}
 This topic describes how to enable and disable Derby features by setting
 Derby properties, which are divided into categories, as shown in the
 following table.
 
+{% include splice_snippets/onpremonlytopic.md %}
+
+## About Property Categories
+
+The following table summarizes the categories of Splice Machine properties.
+
+<table summary="Table of Splice Machine property categories.">
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Property Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><em>JVM (System) </em></td>
+            <td>
+                <p class="noSpaceAbove">These properties can be as command line arguments to JVM:</p>
+                <ul>
+                    <li>For Maven, include the command line arguments as an <code>&lt;argument&gt;</code> element in the <code>pom.xml</code> file. For example:</li>
+                </ul>
+                <div class="preWrapperWide"><pre class="AppCommand">&lt;argument&gt;-Dderby.language.logStatementText=true&lt;/argument&gt;</pre>
+                </div>
+                <ul>
+                    <li>For shell scripts, you may need to manually add the argument to the java executable command line. For example:</li>
+                </ul>
+                <div class="preWrapperWide"><pre class="AppCommand">java -Dderby.language.logStatementText=true ... </pre>
+                </div>
+                <p>System properties can also be set manually using the <code>System.setProperty(key, value)</code> function.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Service</em></td>
+            <td>
+                <p class="noSpaceAbove">Service properties are a special type of database property that is required to boot the database; as such, these properties cannot be stored in the database. Instead, they are stored outside the database, as follows:</p>
+                <ul>
+                    <li>Derby stores service properties in the <code>service.properties file</code></li>
+                    <li>Splice Machine stores service properties in a Zookeeper element.</li>
+                </ul>
+                <p>You can temporarily change service properties with the <a href="sqlref_sysprocs_setglobaldbprop.html"><code>SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY</code></a> built-in system procedure. These changes will be lost when the server is next restarted.</p>
+                <p>To make a permanent change in a Derby service property, modify the value in the <code>service.properties</code> file and then restart the server to apply the changes.</p>
+                <p>To make a permanent change in a Splice Machine service property, modify the value in ZooKeeper and then restart the server to apply the changes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Database</em></td>
+            <td>
+                <p class="noSpaceAbove">Splice Machine database properties are saved in a hidden HBASE table with <code>CONGLOMERATEID=16</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><em>App (Derby/Splice)</em></td>
+            <td>
+                <p class="noSpaceAbove">App properties for both Derby and Splice Machine are saved to the <code>derby.properties</code> file in the Derby/Splice home directory. </p>
+                <p>App properties can also be saved to these HBASE XML configuration files:</p>
+                <ul>
+                    <li><code>hbase-default.xml</code>
+                    </li>
+                    <li><code>hbase-site.xml</code>
+                    </li>
+                    <li><code>splice-site.xml</code>
+                    </li>
+                </ul>
+                <p>Note that the XML files must reside in the <code>CLASSPATH</code>.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 When a property value is used, the property is searched for in the order
-shown in the table; in other words, the property is searched for in the
+shown in the table: the property is first searched for in the
 JVM properties; if not found there, it is searched for in the Service
 properties, then in the Database properties, and finally in the App
 properties.
-{: .noteNote}
 
-<table summary="Table of Splice Machine property categories.">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Property Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><em>JVM (System) </em></td>
-                        <td>
-                            <p class="noSpaceAbove">These properties can be as command line arguments to JVM:</p>
-                            <ul>
-                                <li>For Maven, include the command line arguments as an <code>&lt;argument&gt;</code> element in the <code>pom.xml</code> file. For example:</li>
-                            </ul>
-                            <div class="preWrapperWide"><pre class="AppCommand">&lt;argument&gt;-Dderby.language.logStatementText=true&lt;/argument&gt;</pre>
-                            </div>
-                            <ul>
-                                <li>For shell scripts, you may need to manually add the argument to the java executable command line. For example:</li>
-                            </ul>
-                            <div class="preWrapperWide"><pre class="AppCommand">java -Dderby.language.logStatementText=true ... </pre>
-                            </div>
-                            <p>System properties can also be set manually using the <code>System.setProperty(key, value)</code> function.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Service</em></td>
-                        <td>
-                            <p class="noSpaceAbove">Service properties are a special type of database property that is required to boot the database; as such, these properties cannot be stored in the database. Instead, they are stored outside the database, as follows:</p>
-                            <ul>
-                                <li>Derby stores service properties in the <code>service.properties file</code></li>
-                                <li>Splice Machine stores service properties in a Zookeeper element.</li>
-                            </ul>
-                            <p>You can temporarily change service properties with the <a href="sqlref_sysprocs_setglobaldbprop.html"><code>SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY</code></a> built-in system procedure. These changes will be lost when the server is next restarted.</p>
-                            <p>To make a permanent change in a Derby service property, modify the value in the <code>service.properties</code> file and then restart the server to apply the changes.</p>
-                            <p>To make a permanent change in a Splice Machine service property, modify the value in ZooKeeper and then restart the server to apply the changes.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Database</em></td>
-                        <td>
-                            <p class="noSpaceAbove">Splice Machine database properties are saved in a hidden HBASE table with <code>CONGLOMERATEID=16</code>.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>App (Derby/Splice)</em></td>
-                        <td>
-                            <p class="noSpaceAbove">App properties for both Derby and Splice Machine are saved to the <code>derby.properties</code> file in the Derby/Splice home directory. </p>
-                            <p>App properties can also be saved to these HBASE XML configuration files:</p>
-                            <ul>
-                                <li><code>hbase-default.xml</code>
-                                </li>
-                                <li><code>hbase-site.xml</code>
-                                </li>
-                                <li><code>splice-site.xml</code>
-                                </li>
-                            </ul>
-                            <p>Note that the XML files must reside in the <code>CLASSPATH</code>.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
 ## Site File Example
 
 The following is an example of a `splice-site.xml` file:

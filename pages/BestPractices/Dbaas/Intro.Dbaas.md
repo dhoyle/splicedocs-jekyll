@@ -10,7 +10,6 @@ folder: BestPractices
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Best Practices" %}
 # Splice Machine Database-as-Service Product Best Practices
 
 This section will contain the Splice Machine best practices information for our *Database-as-Service* product

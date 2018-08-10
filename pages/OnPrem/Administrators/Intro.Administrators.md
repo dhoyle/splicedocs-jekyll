@@ -12,10 +12,11 @@ folder: OnPrem/Administrators
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Splice Machine Administrator's Guide
 
-{% include splice_snippets/onpremonlytopic.md %}
 This *Administrator's Guide* describes the administrative tasks
 associated with configuring and maintaining your Splice Machine
-software, in the following topics:
+software, in the topics shown in the following table.
+
+{% include splice_snippets/onpremonlytopic.md %}
 
 <table summary="Table of descriptions of and links to the sections in this section.">
     <col />

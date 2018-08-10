@@ -10,7 +10,6 @@ folder: BestPractices
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Best Practices" %}
 # Configuring Your Splice Machine Database Installation
 
 The following table provides summary information about (some of) the configuration options used by Splice Machine.
@@ -30,12 +29,12 @@ The following table provides summary information about (some of) the configurati
         <tr>
             <td class="CodeFont">splice.authentication</td>
             <td class="CodeFont">NATIVE</td>
-            <td>This is documented in our <a href="onprem_install_configureauth.html">Configuring Authentication</a> topic.</td>
+            <td>This is documented in our <a href="tutorials_security_authentication.html.html">Configuring Authentication</a> topic.</td>
         </tr>
         <tr>
             <td class="CodeFont">splice.authentication.native.algorithm</td>
             <td>SHA-512</td>
-            <td>This is documented in our <a href="onprem_install_configureauth.html">Configuring Authentication</a> topic.</td>
+            <td>This is documented in our <a href="tutorials_security_authentication.html.html">Configuring Authentication</a> topic.</td>
         </tr>
         <tr>
             <td class="CodeFont">splice.client.write.maxDependentWrites</td>

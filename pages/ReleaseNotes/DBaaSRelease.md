@@ -13,7 +13,6 @@ folder: ReleaseNotes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Release Notes for the Splice Machine Database-as-a-Service Product
 
-{% include splice_snippets/dbaasonlytopic.md %}
 This topic includes any release notes that are specific to the Splice Machine *Database-as-Service* product, in these sections:
 
 * [Current Database Release Versions](#database-versions)

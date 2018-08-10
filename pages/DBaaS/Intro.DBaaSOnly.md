@@ -18,7 +18,7 @@ applications that manage operational processes. This site contains
 documentation for our <span class="ConsoleLink">Managed Database Service
 in the Cloud</span>, which includes Release {{ site.build_version }} of the Splice Machine Database.
 
-## Getting Started With our Database Service
+## Getting Started With Our Database Service
 
 Getting started with our database is as simple as can be; just follow
 these steps, and you can be up and running in less than an hour:

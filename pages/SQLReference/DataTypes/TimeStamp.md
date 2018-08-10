@@ -180,9 +180,7 @@ Splice Machine also accepts strings in the locale specific datetime
 format, using the locale of the database server. If there is an
 ambiguity, the built-in formats shown above take precedence.
 
-At this time,dates in &nbsp;[`TimeStamp`](#) values only work correctly when
-limited to this range of date values:    `1678-01-01 to 2261-12-31`
-{: .noteRelease}
+[`TimeStamp`](#) values range from '`01 Jan 0001 00:00:00 GMT`' &nbsp;&nbsp; to &nbsp;&nbsp; '`31 Dec 9999 23:59:59 GMT`'.
 
 ## See Also
 

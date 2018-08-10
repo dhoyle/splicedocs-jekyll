@@ -13,7 +13,6 @@ folder: ReleaseNotes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Release Notes for the Splice Machine On-Premise Product
 
-{% include splice_snippets/onpremonlytopic.md %}
 This topic includes release notes that are specific to the Splice Machine *On-Premise Database* product, in these sections:
 
 * [Supported Platforms](#supported-platforms)
@@ -24,11 +23,12 @@ Most of the information about changes in the Splice Machine database that underl
 
 ## After Updating
 
-After updating to a new release of Splice Machine, you need to update your stored statement metadata by calling these two system procedures:
+After updating to a new release of Splice Machine, you may need to update your stored statement metadata by calling these system procedures:
 
 <div class="preWrapperWide"><pre class="Example">
+CALL <a href="sqlref_sysprocs_emptyglobalcache.html">SYSCS_UTIL.SYSCS_EMPTY_GLOBAL_STATEMENT_CACHE();</a>
+CALL <a href="sqlref_sysprocs_invalidatestoredstmts.html">SYSCS_UTIL.SYSCS_INVALIDATE_STORED_STATEMENTS();</a>
 CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS();</a>
-CALL <a href="sqlref_sysprocs_emptycache.html">SYSCS_UTIL.SYSCS_EMPTY_STATEMENT_CACHE();</a>
 </pre></div>
 
 ## Supported Platforms {#supported-platforms}

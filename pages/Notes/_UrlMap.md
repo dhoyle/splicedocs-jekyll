@@ -393,15 +393,15 @@ released prior to July 15, 2017.
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#ManagementConsole/ConsoleFeatures.html</td>
-                       <td><a href="https://doc.splicemachine.com/dbconsole_features.html">doc.splicemachine.com/dbconsole_features.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/tutorials_dbconsole_features.html">doc.splicemachine.com/tutorials_dbconsole_features.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#ManagementConsole/Intro.ManagementConsole.html</td>
-                       <td><a href="https://doc.splicemachine.com/dbconsole_intro.html">doc.splicemachine.com/dbconsole_intro.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/tutorials_dbconsole_intro.html">doc.splicemachine.com/tutorials_dbconsole_intro.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#ManagementConsole/ManagingQueries.html</td>
-                       <td><a href="https://doc.splicemachine.com/dbconsole_queries.html">doc.splicemachine.com/dbconsole_queries.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/tutorials_dbconsole_queries.html">doc.splicemachine.com/tutorials_dbconsole_queries.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#SQLReference/ArgMatching/ArgumentMatching.html</td>

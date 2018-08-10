@@ -10,7 +10,6 @@ folder: BestPractices
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Best Practices" %}
 # Splice Machine Best Practices for Database Security
 
 This section contains best practice and troubleshooting information related to configurating security in our *On-Premise Database* product, in these topics:

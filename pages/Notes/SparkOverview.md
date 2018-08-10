@@ -129,12 +129,12 @@ Examples include <code>save</code> and <code>collect</code> functions.</td>
             </table>
 ## See Also
 
-* [About the Splice Machine Database Console](dbconsole_intro.html)
+* [About the Splice Machine Database Console](tutorials_dbconsole_intro.html)
 * [User Interface Features of the Splice Machine Database
-  Console](dbconsole_features.html)
-* [Managing Queries with the Console](dbconsole_queries.html)
+  Console](tutorials_dbconsole_features.html)
+* [Managing Queries with the Console](tutorials_dbconsole_queries.html)
 * [Using Spark Libraries with Splice
-  Machine](developers_fundamentals_sparklibs.html)
+  Machine](developers_spark_libs.html)
 * The Apache Spark web site, [spark.apache.org][1]{: target="_blank"}
 
  

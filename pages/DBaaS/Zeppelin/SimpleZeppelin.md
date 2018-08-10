@@ -12,9 +12,10 @@ folder: DBaaS/Zeppelin
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # A Simple Zeppelin Tutorial
 
-{% include splice_snippets/dbaasonlytopic.md %}
 This topic walks you through using a very simple Zeppelin notebook, to
-help you learn about using Zeppelin with Splice Machine.
+help you learn about using Zeppelin with the Splice Machine database service.
+
+{% include splice_snippets/dbaasonlytopic.md %}
 
 Our [Getting Started with Zeppelin](dbaas_zep_getstarted.html) page
 provides a very brief overview of using Zeppelin; If you're new to
@@ -37,21 +38,21 @@ includes these steps:
 
 * Click the first <span class="CalloutFont">READY</span> button to
   create the schema and a table:
-  
+
   ![](images/zepSimple1.png){: .indentedTightSpacing}
 
 * Import data (in this case, TPCH1 benchmark data) into the table, then
   verify the data load by counting the number of records in the table:
-  
+
   ![](images/zepSimple2a.png){: .indentedTightSpacing}
 
 * Create indexes on the table, and then run compaction on the data,
   which is always a good idea after updating a large number of records:
-  
+
   ![](images/zepSimple2b.png){: .indentedTightSpacing}
 
 * Collect statistics, to improve query planning, and then run a query:
-  
+
   ![](images/zepSimple3.png){: .indentedTightSpacing}
 
 After the query runs, you can take advantage of Zeppelin's built-in

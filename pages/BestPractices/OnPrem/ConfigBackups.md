@@ -1,5 +1,5 @@
 ---
-title: Backing Up Your Data
+title: Troubleshooting Backups
 summary: Summary of options for configuring backups
 keywords: importing
 toc: false
@@ -10,7 +10,6 @@ folder: BestPractices/OnPrem
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Best Practices" %}
 # Configuring Your Splice Machine Backups
 
 This section contains best practice and troubleshooting information related to backing up your data with our *On-Premise Database* product, in these topics:

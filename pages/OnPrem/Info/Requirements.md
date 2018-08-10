@@ -12,7 +12,6 @@ folder: OnPrem/Info
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Splice Machine Requirements
 
-{% include splice_snippets/onpremonlytopic.md %}
 This topic summarizes the hardware and software requirements for Splice
 Machine running on a cluster or on a standalone computer, in these sections:
 
@@ -22,6 +21,8 @@ Machine running on a cluster or on a standalone computer, in these sections:
   * [Linux Configuration Requirements](#LinuxReq)
 * [Standalone Version Prerequisites](#Standalo) summarizes requirements for running the standalone version of Splice Machine.
 * [Java JDK Requirements](#JavaReq) summarizes which Java JDK requirements for running Splice Machine.
+
+{% include splice_snippets/onpremonlytopic.md %}
 
 {% include splicevars.html %}
 <div markdown="1">

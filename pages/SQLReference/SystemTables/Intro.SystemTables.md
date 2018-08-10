@@ -31,9 +31,10 @@ about these tables.
 
 <div markdown="1">
 ## Database Backups Tables
+The following table lists the System Tables with backups information:
 
-{% include splice_snippets/onpremonlytopic.md %}
-These are the System Tables with backups information:
+The tables listed in this section apply only to our on-premise database product.
+{: .noteIcon}
 
 <table summary="Summary table with links to and descriptions of system backup tables">
                     <col />

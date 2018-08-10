@@ -1,5 +1,5 @@
 ---
-summary: Troubleshooting your on-premise Splice Machine Database
+summary: Troubleshooting your On-Premise Splice Machine Database
 title: Troubleshooting and Best Practices
 keywords: troubleshooting, best practices
 toc: false
@@ -13,7 +13,7 @@ folder: OnPrem/Info
 {% include splicevars.html %}
 # Splice Machine Troubleshooting and Best Practices
 
-The content that was previously in this topic has been moved to our *Splice Machine Best Practices Guide*. The links below have been updated to topics in that guide:
+The content that was previously in this topic has been moved to our [*Splice Machine Best Practices Guide*](bestpractices_onprem_intro.html). The links below have been updated to topics in that guide:
 
 * [Restarting Splice Machine after an HMaster Failure](bestpractices_onprem_restarts.html#HMasterRestart)
 * [Slow Restart After Forced Shutdown](bestpractices_onprem_restarts.html#ForcedShutdown)

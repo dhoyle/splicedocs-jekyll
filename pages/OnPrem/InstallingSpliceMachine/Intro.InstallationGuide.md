@@ -12,8 +12,9 @@ folder: OnPrem/InstallingSpliceMachine
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Splice Machine Installation Guide
 
-{% include splice_snippets/onpremonlytopic.md %}
 The table below links to instructions for installing Splice Machine. We recommend that you review the [installation requirements for Splice Machine](onprem_info_requirements.html) before proceeding.
+
+{% include splice_snippets/onpremonlytopic.md %}
 
 <table summary="Links to instructions for installing Splice Machine on each platform.">
     <col />

@@ -12,9 +12,10 @@ folder: DBaaS/Zeppelin
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using Zeppelin Notebooks
 
-{% include splice_snippets/dbaasonlytopic.md %}
 This guide helps you to get started with using Zeppelin notebooks to
-interact with your Splice Machine database.
+interact with your Splice Machine database service.
+
+{% include splice_snippets/dbaasonlytopic.md %}
 
 <table>
             <col />
@@ -42,4 +43,3 @@ interact with your Splice Machine database.
         </table>
 </div>
 </section>
-

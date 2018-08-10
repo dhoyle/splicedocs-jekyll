@@ -76,7 +76,7 @@ The following table summarizes the parameters used by `SYSCS_UTIL.BULK_IMPORT_HF
 
 ## Usage {#Usage}
 
-If you're using this procedure with our On-Premise database product, on a cluster with Cloudera Key Management Service (KMS) enabled, there are a few extra configuration steps required. Please see [this troubleshooting note](onprem_info_troubleshoot.html#BulkImportKMS) for details.
+If you're using this procedure with our On-Premise database product, on a cluster with Cloudera Key Management Service (KMS) enabled, there are a few extra configuration steps required. Please see [this troubleshooting note](bestpractices_onprem_importing.html#BulkImportKMS) for details.
 {: .noteIcon}
 
 The [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure needs the data that you're importing split into multiple HFiles before it actually imports the data into your database. You can achieve these splits in three ways:

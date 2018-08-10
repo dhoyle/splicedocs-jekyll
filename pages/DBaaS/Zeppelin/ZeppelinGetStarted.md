@@ -12,14 +12,11 @@ folder: DBaaS/Zeppelin
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Getting Started with Zeppelin
 
-{% include splice_snippets/dbaasonlytopic.md %}
 This topic helps you to get started with using Zeppelin with your Splice
-Machine database.
+Machine database service.
 
-We strongly encourage you to visit the [Zeppelin documentation
-site][1]{: target="_blank"} to learn about creating, modifying, and
-running your own Zeppelin notebooks.
-{: .noteNote}
+{% include splice_snippets/dbaasonlytopic.md %}
+
 
 ## The Zeppelin Dashboard
 
@@ -146,6 +143,11 @@ From the <span class="ConsoleLink">Job</span> screen, you can:
 Be sure to view our [Usage Notes](dbaas_zep_notes.html) page for
 important information about creating Zeppelin notebooks to use with
 Splice Machine.
+
+We strongly encourage you to visit the [Zeppelin documentation
+site][1]{: target="_blank"} to learn about creating, modifying, and
+running your own Zeppelin notebooks.
+{: .noteNote}
 
 </div>
 </section>

@@ -1,0 +1,78 @@
+#!/bin/sh
+
+PS3="Select which Docs Version to build: "
+COLUMNS=12
+OPTIONS=( 'DocsDev 2.8'
+          'DocsTest 2.8'
+          'Doc 2.8'
+          'DocsDev 2.7'
+          'DocsTest 2.7'
+          'Doc 2.7'
+          'DocsDev 2.5'
+          'DocsTest 2.5'
+          'Doc 2.5' )
+select opt in "${OPTIONS[@]}"; do
+    case $opt in
+        'DocsDev 2.8')
+            version='docsdev'
+            branch='2.8'
+            break;
+            ;;
+        'DocsTest 2.8')
+            version='docstest'
+            branch='2.8'
+            break;
+            ;;
+        'Doc 2.8')
+            version='doc'
+            branch='2.8'
+            break;
+            ;;
+        'DocsDev 2.7')
+            version='docsdev'
+            branch='2.7'
+            break;
+            ;;
+        'DocsTest 2.7')
+            version='docstest'
+            branch='2.7'
+            break;
+            ;;
+        'Doc 2.7')
+            version='doc'
+            branch='2.7'
+            break;
+            ;;
+        'DocsDev 2.5')
+            version='docsdev'
+            branch='2.5'
+            break;
+            ;;
+        'DocsTest 2.5')
+            version='docstest'
+            branch='2.5'
+            break;
+            ;;
+        'Doc 2.5')
+            version='doc'
+            branch='2.5'
+            break;
+            ;;
+        *) echo Invalid option;;
+    esac
+done
+
+echo "Killing all Jekyll instances"
+kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
+
+echo "  --> Building with _config.yml,_config_$version.yml,_config_$branch.yml"
+
+echo "Building Splice Documentation HTML suite"
+ jekyll serve --detach --config _config.yml,_config_$version.yml,_config_$branch.yml,pdfconfigs/suite/config_pdf.yml
+echo "done"
+
+echo "Creating PDF file: pdf/splicedocs.pdf"
+ prince --javascript --input-list=_site/pdfconfigs/suite/prince-list.txt -o pdf/splicedocs.pdf 2>pdfwarns.txt
+echo "done"
+
+say -v Fiona "$version $branch PDF Done"
