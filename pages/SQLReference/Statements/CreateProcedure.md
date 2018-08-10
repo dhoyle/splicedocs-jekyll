@@ -77,8 +77,8 @@ next section.
 <div class="fcnWrapperWide" markdown="1">
      {
 {% if site.build_type != "Doc" %}        LANGUAGE { JAVA | PYTHON }
-      | EXTERNAL NAME { javaMethodName | AS ' pythonScript ' }{% else %}        LANGUAGE { JAVA }
-      | EXTERNAL NAME { javaMethodName }{% endif %}
+      | { EXTERNAL NAME javaMethodName | AS ' pythonScript ' }{% else %}        LANGUAGE { JAVA }
+      | EXTERNAL NAME javaMethodName{% endif %}
       | DeterministicCharacteristic
       | PARAMETER STYLE parameterStyle
       | DYNAMIC RESULT SETS integer
