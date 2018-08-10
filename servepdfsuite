@@ -2,16 +2,44 @@
 
 PS3="Select which Docs Version to build: "
 COLUMNS=12
-OPTIONS=( 'DocsDev 2.7'
-          'DocsDev 2.5'
+OPTIONS=( 'DocsDev 2.8'
+          'DocsTest 2.8'
+          'Doc 2.8'
+          'DocsDev 2.7'
           'DocsTest 2.7'
-          'DocsTest 2.5'
           'Doc 2.7'
+          'DocsDev 2.5'
+          'DocsTest 2.5'
           'Doc 2.5' )
 select opt in "${OPTIONS[@]}"; do
     case $opt in
+        'DocsDev 2.8')
+            version='docsdev'
+            branch='2.8'
+            break;
+            ;;
+        'DocsTest 2.8')
+            version='docstest'
+            branch='2.8'
+            break;
+            ;;
+        'Doc 2.8')
+            version='doc'
+            branch='2.8'
+            break;
+            ;;
         'DocsDev 2.7')
             version='docsdev'
+            branch='2.7'
+            break;
+            ;;
+        'DocsTest 2.7')
+            version='docstest'
+            branch='2.7'
+            break;
+            ;;
+        'Doc 2.7')
+            version='doc'
             branch='2.7'
             break;
             ;;
@@ -20,19 +48,9 @@ select opt in "${OPTIONS[@]}"; do
             branch='2.5'
             break;
             ;;
-        'DocsTest 2.7')
-            version='docstest'
-            branch='2.7'
-            break;
-            ;;
         'DocsTest 2.5')
             version='docstest'
             branch='2.5'
-            break;
-            ;;
-        'Doc 2.7')
-            version='doc'
-            branch='2.7'
             break;
             ;;
         'Doc 2.5')

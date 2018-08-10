@@ -138,7 +138,8 @@ _________________________________
 If you need to create a new "previous release" directory on the server, that directory must be pre-populated with several files before you upload the docs there.
 
 For example, if Splice Machine releases version 2.8, and wants to maintain the documentation for customers on 2.5 and 2.7, we would need to create and pre-populate a 2.7 directory.
-You can prepare the directory by simply following these steps:
+
+You can prepare the directory on the server by simply following these steps:
 
     1. Ssh into doc.splicemachine.com
 
@@ -155,5 +156,37 @@ You can prepare the directory by simply following these steps:
     4. Edit the UpdateVersion.sh script, adding a line to move your new prev-release directory to Temp. For example, you would add a line for 2.7, so the UpdateVersion.sh script now would contain:
        mv 2.5 Temp/
        mv 2.7 Temp/
+
+NOW, Update the servesplice and servepdfsuite shell scripts in the repos:
+    1. Add the new release versions (e.g. 'docsdev 2.8', 'docstest 2.8', 'doc 2.8') in the case statements in both scripts.
+    2. In servesplice script, make sure to change the smap value of the now-previous (e.g. 2.7) version(s), so that they're generating e.g. sitemapgen.2.7
+
+FINALLY: update the sitemapindex.xxx.xml files for the new version
+    Add a new sitemap to the set of sitemaps in sitemapindex.docstest.xml, and (when ready to go live) to sitemapindex.doc.xml.  You can also do this in docsdev, but its site index doesn't get used, so it does no good (but does no harm).
+
+    For example, this:
+        <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          <sitemap>
+            <loc>https://docstest.splicemachine.com/2.7/sitemap.2.7.xml</loc>
+          </sitemap>
+          <sitemap>
+            <loc>https://docstest.splicemachine.com/2.5/sitemap.2.5.xml</loc>
+          </sitemap>
+        </sitemapindex>
+
+    Becomes this:
+        <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          <sitemap>
+            <loc>https://docstest.splicemachine.com/sitemap.2.8.xml</loc>
+          </sitemap>
+          <sitemap>
+            <loc>https://docstest.splicemachine.com/2.7/sitemap.2.7.xml</loc>
+          </sitemap>
+          <sitemap>
+            <loc>https://docstest.splicemachine.com/2.5/sitemap.2.5.xml</loc>
+          </sitemap>
+        </sitemapindex>
+
+
 
 Now you'll be able to FTP updated versions of the 2.7 docs to your new directory and use the UpdateVersion.sh script to take that update live.

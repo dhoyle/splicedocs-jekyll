@@ -3,7 +3,7 @@
                 ---------------------------------------------------------------------
 {% endcomment %}
 
-{% assign splvar_basic_InternalReleaseVersion = '2.7.0' %}
+{% assign splvar_basic_InternalReleaseVersion = '2.8.0' %}
 {% assign splvar_basic_SpliceOpenSourceGit = 'https://github.com/splicemachine/spliceengine' %}
 
 {% assign splvar_dbaas_AWSDBVersion   = '2.7.0.1828' %}
@@ -15,7 +15,9 @@
                 ---------------------------------------------------------------------
 {% endcomment %}
 
-{% if site.build_version == "2.7" %}
+{% if site.build_version == "2.8" %}
+    {% assign splvar_requirements_CDH-Versions = 'CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
+{% elsif site.build_version == "2.7" %}
     {% assign splvar_requirements_CDH-Versions = 'CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
 {% else %}
     {% assign splvar_requirements_CDH-Versions = 'CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
@@ -25,7 +27,9 @@
 {% assign splvar_requirements_CDH-OS = 'CentOS/RHEL 6' %}
 {% assign splvar_requirements_CDH-ZooKeeper = '3.4.5' %}
 
-{% if site.build_version == "2.7" %}
+{% if site.build_version == "2.8" %}
+    {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1' %}
+{% elsif site.build_version == "2.7" %}
     {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1' %}
 {% else %}
     {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1, HDP 2.5.5' %}
