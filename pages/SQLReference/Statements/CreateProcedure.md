@@ -146,6 +146,7 @@ section of our *Developer's Guide*:
 
 * The entire script must be enclosed in single quotes.
 * Use double quotes (`"`) around strings within the script; if you must use a single quote within the script, specify it as two single quotes (`''`).
+* Use spaces instead of tabs within your scripts; the command line processor will convert tabs to a single space in your script, *even within a string.*
 * Write the script under the `run` function.
 * The arguments you specify for your script in the `CREATE PROCEDURE` statement should match the order specified in your method definition.
 {: .nested}
