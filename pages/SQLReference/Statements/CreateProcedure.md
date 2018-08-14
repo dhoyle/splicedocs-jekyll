@@ -98,9 +98,8 @@ can only appear once. These procedure elements are required:
 LANGUAGE
 {: .paramName}
 
-Specify the language in which your procedure is written; this must be either `JAVA`{% if site.build_type != "Doc" %}
+Specify the language in which your procedure is written; this must be `JAVA`{% if site.build_type != "Doc" %}
  or `PYTHON`{% endif %}.
-Specify the language in which your procedure is written; this must be either `JAVA` or `PYTHON`.
 {: .paramDefnFirst}
 
 DeterministicCharacteristic
@@ -134,7 +133,6 @@ executes.
 {: .paramDefnFirst}
 
 {% if site.build_type != "Doc" %}pythonScript
-pythonScript
 {: .paramName}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">def run(<em>scriptArgs</em>): <em>scriptCode</em></pre>

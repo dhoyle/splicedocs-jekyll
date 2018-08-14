@@ -33,7 +33,13 @@ below.
 
 ## Writing a Function in Splice Machine
 
-Follow the steps below to write a Splice Machine database function.
+This section includes these subsections:
+
+* [Writing a Function in JAVA](#JavaFcn)
+{% if site.build_type != "Doc" %}* [Writing a Function in Python](#PythonFcn){% endif %}
+
+### Writing a Function in Java {#JavaFcn}
+Follow the steps below to write a Splice Machine database function in Java.
 
 <div class="opsStepsList" markdown="1">
 1.  Create a Java method
@@ -106,6 +112,53 @@ Follow the steps below to write a Splice Machine database function.
 {: .boldFont}
 
 </div>
+{% if site.build_type != "Doc" %}
+### Writing a Function in Python {#PythonFcn}
+Follow the steps below to write a Splice Machine database function in Python.
+
+<div class="opsStepsList" markdown="1">
+1.  Define a Python script as a function in your database:
+    {: .topLevel}
+
+    <div class="preWrapperWide" markdown="1">
+        CREATE FUNCTION SPLICE.PYSAMPLE_FUNC( a VARCHAR(50) )
+          RETURNS VARCHAR(50)
+          PARAMETER STYLE JAVA
+          READS SQL DATA
+          SQL LANGUAGE PYTHON
+          AS ' def run(inputStr):
+                import re
+                result = inputStr.strip().split(",")[0]
+                return result ';
+    {: .Example xml:space="preserve"}
+
+    </div>
+
+    You can find the complete syntax for [`CREATE FUNCTION`](sqlref_statements_createfunction.html) in the
+    *Splice Machine SQL Reference* manual.
+    {: .indentLevel1}
+
+2.  Invoke your function
+    {: .topLevel}
+
+    You can invoke functions just like you would call any built-in
+    database function. For example, you could use the above sample function as follows:
+    {: .indentLevel1}
+
+    <div class="preWrapper" markdown="1">
+        splice> VALUES SPLICE.PYSAMPLE_FUNC('Splice,Machine');
+
+        1
+        -----------------------------------------------------
+        Splice
+    {: .AppCommand xml:space="preserve"}
+
+    </div>
+{: .boldFont}
+
+</div>
+{% endif %}
+
 ## Writing a Stored Procedure in Splice Machine   {#CreatingStoredProc}
 This section includes these subsections:
 

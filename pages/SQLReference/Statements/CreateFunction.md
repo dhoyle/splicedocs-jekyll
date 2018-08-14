@@ -12,7 +12,8 @@ folder: SQLReference/Statements
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # CREATE FUNCTION
 
-The `CREATE FUNCTION` statement allows you to create Java functions,
+The `CREATE FUNCTION` statement allows you to create Java {% if site.build_type != "Doc" %}
+or Python {% endif %}functions,
 which you can then use in expressions.
 
 For details on how Splice Machine matches functions to Java methods, see
@@ -89,8 +90,12 @@ A *[SQL Identifier](sqlref_identifiers_intro.html)*.
 
 </div>
 Table functions return `TableType` results. Currently, only Splice
-Machine-style table functions are supporte, which are functions that
+Machine-style table functions are supported, which are functions that
 return JDBC *ResultSets.*
+{% if site.build_type != "Doc" %}
+You cannot currently write table functions in Python.
+{: .noteIcon}
+{% endif %}
 
 When values are extracted from a *ResultSet*, the data types of the
 values are coerced to match the data types declared in the
@@ -106,9 +111,10 @@ know about:
 
 <div class="fcnWrapperWide" markdown="1">
      {
-        LANGUAGE { JAVA }
+{% if site.build_type != "Doc" %}        LANGUAGE { JAVA | PYTHON }
+      | { EXTERNAL NAME javaMethodName | AS ' pythonScript ' }{% else %}        LANGUAGE { JAVA }
+      | EXTERNAL NAME javaMethodName{% endif %}
       | DeterministicCharacteristic
-      | EXTERNAL NAME javaMethodName
       | PARAMETER STYLE parameterStyle
       | sqlStatementType
       | nullInputAction
@@ -121,7 +127,7 @@ can only appear once.
 
 These function elements are required:
 
-*  *LANGUAGE*
+* *LANGUAGE*
 * *EXTERNAL NAME*
 * *PARAMETER STYLE*
 
@@ -129,8 +135,8 @@ These function elements are required:
 LANGUAGE
 {: .paramName}
 
-Only `JAVA` is accepted at this time. Splice Machine will call the
-function as a public static method in a Java class.
+Specify the language in which your function is written; this must be `JAVA`{% if site.build_type != "Doc" %}
+ or `PYTHON`{% endif %}.
 {: .paramDefnFirst}
 
 DeterministicCharacteristic
@@ -161,6 +167,24 @@ javaMethodName
 </div>
 This is the name of the Java method to call when this function executes.
 {: .paramDefnFirst}
+
+{% if site.build_type != "Doc" %}pythonScript
+{: .paramName}
+
+<div class="fcnWrapperWide"><pre class="FcnSyntax">def run(<em>scriptArgs</em>): <em>scriptCode</em></pre>
+</div>
+This is the Python script, enclosed in single quotes (`'`). Here are a few important notes about Python scripts in functions, which are described more fully in the [Using
+Functions and Stored Procedures](developers_fcnsandprocs_intro.html)
+section of our *Developer's Guide*:
+{: .paramDefnFirst}
+
+* The entire script must be enclosed in single quotes.
+* Use double quotes (`"`) around strings within the script; if you must use a single quote within the script, specify it as two single quotes (`''`).
+* Use spaces instead of tabs within your scripts; the command line processor will convert tabs to a single space in your script, *even within a string.*
+* Write the script under the `run` function.
+* The arguments you specify for your script in the `CREATE FUNCTION` statement should match the order specified in your method definition.
+{: .nested}
+{% endif %}
 
 parameterStyle
 {: .paramName}
@@ -239,12 +263,14 @@ result may be null or not null.
 
 </div>
 </div>
-## Example of declaring a scalar function
+## Example of declaring a scalar function {% if site.build_type != "Doc" %}(JAVA or Python){% endif %}
 
 For more complete examples of using `CREATE FUNCTION`, please see the
 [Using Functions and Stored
 Procedures](developers_fcnsandprocs_intro.html) section of our
 *Developer's Guide*.
+
+### JAVA Example
 
 <div class="preWrapper" markdown="1">
     splice> CREATE FUNCTION TO_DEGREES( RADIANS DOUBLE )
@@ -257,11 +283,45 @@ Procedures](developers_fcnsandprocs_intro.html) section of our
 {: .Example xml:space="preserve"}
 
 </div>
-## Example of declaring a table function
+
+{% if site.build_type != "Doc" %}
+### Python Example
+
+<div class="preWrapper" markdown="1">
+    splice> CREATE FUNCTION SPLICE.PYSAMPLE_FUNC( a VARCHAR(50) )
+      RETURNS VARCHAR(50)
+      PARAMETER STYLE JAVA
+      READS SQL DATA
+      SQL LANGUAGE PYTHON
+      AS ' def run(inputStr):
+            import re
+            result = inputStr.strip().split(",")[0]
+            return result ';
+    0 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+</div>
+
+You can now use this function as follows:
+<div class="preWrapper" markdown="1">
+    splice> VALUES SPLICE.PYSAMPLE_FUNC('Splice,Machine');
+
+    1
+    -----------------------------------------------------
+    Splice
+{: .Example xml:space="preserve"}
+</div>
+
+{% endif %}
+
+## Example of declaring a table function {% if site.build_type != "Doc" %}(JAVA only){% endif %}
 
 This example reads data from a mySql database and inserts it into a
 Splice Machine database.
 {: .body}
+{% if site.build_type != "Doc" %}
+You cannot currently write table functions in Python.
+{: .noteIcon}
+{% endif %}
 
 We first implement a class that contains a public static method that
 connects to an external (foreign) database, uses a prepared statement to
