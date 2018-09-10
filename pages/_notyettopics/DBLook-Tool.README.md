@@ -1,4 +1,4 @@
-Download the file, extract it to a directory and then navigate to the directory where the script get-ddl.sh is. This is only tested this on a mac and linux. It doesn't work on Windows. It assumes that the java command is known. 
+Download the file, extract it to a directory and then navigate to the directory where the script get-ddl.sh is. This is only tested this on a mac and linux. It doesn't work on Windows. It assumes that the java command is known.
 
 You may use test.sql to create a test schema and a couple of tables to test.
 
@@ -7,6 +7,7 @@ HOST=
 PORT=
 USER=
 PASS=
+
 
 Here are some examples of how to use the tool.
 
