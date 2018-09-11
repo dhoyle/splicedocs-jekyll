@@ -1,0 +1,52 @@
+DB-7426:
+
+https://docstest.splicemachine.com/sqlref_sysprocs_computesplitkey.html
+
+    In the Parameters section, under fileOrDirectoryName the description references SYSCS_UTIL.MERGE_DATA_FROM_FILE. Why? It seems like the parameters section is just a copy/paste from the documentation for MERGE_DATA_FROM_FILE. This whole section should be rewritten from the standpoint of COMPUTE_SPLIT_KEYS, not running MERGE_DATA_FROM_FILE.
+
+    The Usage section describes 3 ways of importing splits. But since this page is just about COMPUTE_SPLIT_KEYS this section should only talk about what it does. It gets very confusing by adding more info than necessary for this procedure.
+
+    The Examples section is just a link to another examples page which other pages link to. The problem is that if I am only interested in COMPUTE_SPLIT_KEYS I want to see an example of using COMPUTE_SPLIT_KEY and not a link to another page where I can get confused by all the other methods that are also linking to the examples page.
+
+====================================================
+
+mbrown [5:23 PM]
+Hot tip of the day: When engaged either 'splitting' or 'pre-splitting' your tables and indexes, be sure that the csv file you generate to contain the split keys does *NOT* contain a column header.  We're running a database here, people, we only need the data :wink:
+
+garyh [5:25 PM]
+@mbrown Label this tip “Splitting Tables for Import” in the docs??
+
+mbrown [7:51 AM]
+yes, this is part of splitting tables for import
+Another one:
+
+If you are using hfile_bulk_import, and loading more than about 300gb of data, we strongly recommend ‘pre-splitting’. Pre splitting is the art of calculating split keys for your dataset, and providing those after you make the table and before you hfile_bulk_load the data.
+
+For smaller datasets you do not have to pre split, but you must run major compaction after the bulk load, so that hbase gets a chance to spread out the data into an appropriate number of regions.
+@garyh sorry for missing that question! its been a busy week, and I feel like we’ve learned a lot more about how to properly load data. Ted was putting in a documentation ticket to try to make the splitting/bulk load parts a bit more approachable. If you have questions or text to review, he and I would both like to help.
+
+changli [9:18 AM]
+The tip of Pre-Spliting would be much helpful for performance tuning. Recently I tested TPC-DS 100G, I loaded data into Splice Machine from cvs. I found most of tables were only in one Online Regions which is a hole for running queries in parallelism I think. So I’m looking forward about the document.
+
+mbrown [11:16 AM]
+@changli did you try to run major compaction on all of those TPC-DS tables? I would think that the compaction jobs would succeed, and you should end up with ~10 regions on a 100GB table.
+the pre-splitting tip that i had in mind was to pre-split for a data size that is ~300GB or bigger, for which we learned that major compaction fails (due to the extreme quantity of data which has to be split)
+
+changli [4:05 PM]
+@mbrown you are right that I did major compaction and tables over 10G have ~10 regions. Tables having 1 region were small tables.  I may misunderstand that pre-splitting is a necessary step for over 100G data set.
+
+mbrown [4:34 PM]
+pre-splitting is not a necessary step for small tables; i'm suggesting that about 300G seems to be the practical limit (in our cloud service). A table *larger* than that is unable to complete the major compaction job - it fails. so I think pre-splitting is a requirement on tables bigger than that.  It does not *hurt* to split any table if you know something about the layout of the primary keys of your data set.
+but I am suggesting it is *required* for a table over 300GB.  I'd like to nail down that limitation better, as I think it is calculatable based on RegionServer memory; but I am not yet sure the limiting factor.
+
+msirek [8:57 AM]
+Supporting salted primary key tables may eliminate the need to do this.  The hash of the PK value would determine the region the row belongs to.
+
+mbrown [9:27 AM]
+sorry @msirek - i 'm confused. you are suggesting that a salted primary key will eliminate the need to presplit when using hfile_bulk_load? this doesnt make sense to me. We *must* presplit because we bypass hbase's native split behavior on hfile_bulk_load; and since a major_compaction fails with larger files (somewhere north of 300gigs and less than 600gigs), we *must* presplit. I think? how would salted primary keys avoid the need to get the right # of regions for a large dataset?
+
+msirek [9:40 AM]
+@mbrown  Prefix the rowkey with a byte built from hash(PK) mod 256, and do automatic pre-splitting with each of these 256 values getting its own region (automatic splitting, so the customer doesn’t have to manually do it).  The number of regions could be specified in DDL, or we could have a default number of regions.  We could have a DDL option for the user to estimate the size of the table, and then splice could, based on the number of region servers, calculate the optimal number of regions to split the table into and use that as the modulo value in the salt expression.  Of course the optimizer and execution would need to be modified to be aware of the salt and use new appropriate access paths and join plans.
+
+garyh [9:40 AM]
+@mbrown I think this info belongs in the import tutorial, as it seems bigger than a best practice tip. I can add a link from best practices to the tutorial page(s). I’ll start work on this in the next couple days, will need help with specifics once I get there

@@ -1,5 +1,5 @@
 ---
-title: The DBLook Tool
+title: The Splice Machine Log Collector Tool
 summary:
 keywords:
 toc: false
@@ -10,47 +10,93 @@ folder: DeveloperTopics/SpliceTools
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Log Collector
+# The Splice Machine Log Collector
+The *Splice Machine Log Collector* tool collects logging information related to Splice Machine from your cluster, including logs from:
 
-## Description
-
-Log collector: collect logs in a time range related to Splice on a cluster. Specifically, it will collect these logs:
-
-1. Zookeeper
-2. YARN resource manager
-3. YARN application logs related to Splice: Spark jobs related to Splice and OLAP server (optional)
-4. HBase master and region server logs (which includes Splice logs)
-5. Splice derby logs.
-6. GC logs for Splice.
-
+* ZooKeeper
+* The Yarn resource manager
+* The Yarn application logs (optional)
+* HBase master and region server logs, including Splice Machine logs
+* The Splice Machine Derby logs
+* Garbage collection logs for Splice Machine
 
 ## Usage
 
-Run `./collect-splice-logs.sh` to see the options. This is an example:
+You can invoke the *log collector* in your terminal window, by navigating to your `splicemachine` directory, and then issuing this command:
+```
+./collect-splice-logs.sh <options>
+```
+{: .ShellCommand}
+
+Here are the command line options:
+
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-s</td>
+            <td>Specifies the starting date/time for the log collection.</td>
+            <td>2018-07-06 00:00:00</td>
+        </tr>
+        <tr>
+            <td>-e</td>
+            <td>Specifies the ending date/time for the log collection</td>
+            <td>2018-07-07 00:00:00</td>
+        </tr>
+        <tr>
+            <td>-u</td>
+            <td>The user name **** Need Info Here ****</td>
+            <td>splice</td>
+       </tr>
+        <tr>
+            <td>-d</td>
+            <td>The directory in which to store the output ****????**** </td>
+            <td>/home/splice/splice-log-dump</td>
+        </tr>
+        <tr>
+            <td>-c</td>
+            <td><p>Include Yarn application logs in the collection process.</p>
+                <p class="noteNote">You can only use this option if you have permissions to use `sudo`: Yarn applications are submitted by other users, which means that non-superusers cannot access their logs.</p>
+            </td>
+            <td>-c</td>
+        </tr>
+    </tbody>
+</table>
+
+For example, this command collects all logs available from between midnight 2018-07-06 and midnight 2018-07-07:
 
 ```
 ./collect-splice-logs.sh -s "2018-07-06 00:00:00" -e "2018-07-07 00:00:00" -u splice -d /home/splice/splice-log-dump  -c
 ```
+{: .ShellCommand}
 
-This will collect all the logs between 2018-07-06 to 2018-07-07.
-
-### Redirect Outputs to File for Debug
-
-The log configurations may different for customers. So it is a good idea to run this script and redirect all the output to a file in order to debug if the script fails. For example:
+### Using *Log Collector* with Kerberos
+If you are using the *log collector* on a kerberized cluster and collecting Yarn logs, you must issue the following command before running the collector:
 
 ```
-bash +x ./collect-splice-logs.sh -s "2018-07-06 00:00:00" -e "2018-07-07 00:00:00" -u splice -d /home/splice/splice-log-dump  -c &> log.txt
+kinit yarn
 ```
+{: .ShellCommand}
 
-`bash +x` here will print every commands in the script when it runs.
+### Redirecting Output
 
-### Use with Kerberos
+Here's an example of saving the *log collector* output to a text file:
 
-If you are using on a kerberized cluster, you must `kinit yarn` first in order to run yarn related commands.
+```
+./collect-splice-logs.sh -s "2018-07-06 00:00:00" -e "2018-07-07 00:00:00" -u splice -d /home/splice/splice-log-dump  -c &> log.txt
+```
+{: .ShellCommand}
 
-### Collect Yarn Application Logs
-
-In order to collect yarn application logs (with `-c` option), the user you specify must have permission to run `sudo`. This is because yarn applications are submitted by other users (`hbase` in our case) and normal user will not have permission to read these.
+## Customizing the Script
+You can customize the `collect-splice-logs.sh` script
 
 ### Customize Based on Your Logs
 
