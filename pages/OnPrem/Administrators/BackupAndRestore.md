@@ -112,7 +112,7 @@ If you're going to perform incremental backups, you _must_ follow these steps:
 1.  Add the following options to your `hbase-site.xml` configuration file:
     <div class="preWrapperWide" markdown="1">
         hbase.master.hfilecleaner.plugins = com.splicemachine.hbase.SpliceHFileCleaner,
-        org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileClean
+        org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileCleaner
     {: .AppCommand xml:space="preserve"}
 
     </div>
