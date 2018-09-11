@@ -1,4 +1,19 @@
-Download the file, extract it to a directory and then navigate to the directory where the script get-ddl.sh is. This is only tested this on a mac and linux. It doesn't work on Windows. It assumes that the java command is known. 
+---
+title: The DBLook Tool
+summary:
+keywords:
+toc: false
+product: all
+sidebar: developers_sidebar
+permalink: developers_splicetools_dblook.html
+folder: DeveloperTopics/SpliceTools
+---
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
+# DBLook
+
+The Splice Machine *DBLook* tool allows you to 
+Download the file, extract it to a directory and then navigate to the directory where the script get-ddl.sh is. This is only tested this on a mac and linux. It doesn't work on Windows. It assumes that the java command is known.
 
 You may use test.sql to create a test schema and a couple of tables to test.
 
@@ -30,3 +45,5 @@ Write ddl to a file and only extract the SPLICE schema with verbose output
 
 Add the ddl to the existing to output file
 ./get-ddl.sh -o ddl.sql -z SPLICE -a
+</div>
+</section>

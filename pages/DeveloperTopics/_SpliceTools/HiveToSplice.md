@@ -1,3 +1,15 @@
+---
+title: The DBLook Tool
+summary:
+keywords:
+toc: false
+product: all
+sidebar: developers_sidebar
+permalink: developers_splicetools_hivetosplice.html
+folder: DeveloperTopics/SpliceTools
+---
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Hive to Splice Machine DDL Tool Usage
 ## Quick Start
 ### Set Properties
@@ -46,3 +58,5 @@ Can't use this tool to import Hive table having these data types:
 * Maps
 * Struct
 * Uniontype
+</div>
+</section>
