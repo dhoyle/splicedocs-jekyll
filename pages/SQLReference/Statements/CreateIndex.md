@@ -165,7 +165,7 @@ CREATE INDEX o_Cust_Idx on Orders(
    o_orderKey
 )
 SPLITKEYS LOCATION '/tmp/ordersKey.csv'
-          COLDELIMITER '|'
+          COLUMNDELIMITER '|'
           HFILE LOCATION '/tmp/HFiles';
 </pre></div>
 
