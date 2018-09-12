@@ -17,6 +17,7 @@ This section walks you through importing data into Splice Machine, in these topi
 * [Overview of Importing Data](tutorials_ingest_importoverview.html)
 * [Import Parameters](tutorials_ingest_importparams.html)
 * [Handling Import Input Data](tutorials_ingest_importinput.html)
+* [Splitting Input Data Files](tutorials_ingest_importsplit.html)
 * [Import Error Handling](tutorials_ingest_importerrors.html)
 * [Examples of Importing Data](tutorials_ingest_importexamples1.html)
 * [Examples of Using Bulk HFile Import](tutorials_ingest_importexampleshfile.html)
