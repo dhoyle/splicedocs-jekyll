@@ -96,7 +96,7 @@ If you're performing incremental backups, you _must_ add the following options t
 
 <div class="preWrapperWide" markdown="1">
     hbase.master.hfilecleaner.plugins = com.splicemachine.hbase.SpliceHFileCleaner,
-    org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileClean
+    org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileCleaner
 {: .AppCommand}
 </div>
 
