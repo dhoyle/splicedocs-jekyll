@@ -31,8 +31,9 @@ You can invoke the *log collector* in your terminal window, by navigating to you
 Here are the command line options:
 
 <table>
-    <col />
-    <col />
+    <col width="25%" />
+    <col width="45%" />
+    <col width="30%" />
     <thead>
         <tr>
             <th>Option</th>
@@ -42,31 +43,31 @@ Here are the command line options:
     </thead>
     <tbody>
         <tr>
-            <td>-s</td>
+            <td class="CodeFont">-s &lt;timestamp&gt;</td>
             <td>Specifies the starting date/time for the log collection.</td>
-            <td>2018-07-06 00:00:00</td>
+            <td class="CodeFont">2018-07-06 00:00:00</td>
         </tr>
         <tr>
-            <td>-e</td>
+            <td class="CodeFont">-e &lt;timestamp&gt;</td>
             <td>Specifies the ending date/time for the log collection</td>
-            <td>2018-07-07 00:00:00</td>
+            <td class="CodeFont">2018-07-07 00:00:00</td>
         </tr>
         <tr>
-            <td>-u</td>
-            <td>The user name **** Need Info Here ****</td>
-            <td>splice</td>
+            <td class="CodeFont">-u &lt;userId&gt;</td>
+            <td>The user name XXXXXXXXXXX NEED INFO HERE XXXXXXXXXXXXX</td>
+            <td class="CodeFont">splice</td>
        </tr>
         <tr>
-            <td>-d</td>
-            <td>The directory in which to store the output ****????**** </td>
-            <td>/home/splice/splice-log-dump</td>
+            <td class="CodeFont">-d &lt;directoryName&gt;</td>
+            <td>The directory in which to store the output XXXXXXXXXXX NEED INFO HERE XXXXXXXXXXXXX </td>
+            <td class="CodeFont">/home/splice/splice-log-dump</td>
         </tr>
         <tr>
-            <td>-c</td>
+            <td class="CodeFont">-c</td>
             <td><p>Include Yarn application logs in the collection process.</p>
-                <p class="noteNote">You can only use this option if you have permissions to use `sudo`: Yarn applications are submitted by other users, which means that non-superusers cannot access their logs.</p>
+                <p class="noteNote">You can only use this option if you have permissions to use <code>sudo</code>: Yarn applications are submitted by other users, which means that non-superusers cannot access their logs.</p>
             </td>
-            <td>-c</td>
+            <td class="CodeFont">-c</td>
         </tr>
     </tbody>
 </table>
@@ -95,17 +96,36 @@ Here's an example of saving the *log collector* output to a text file:
 ```
 {: .ShellCommand}
 
-## Customizing the Script
-You can customize the `collect-splice-logs.sh` script
+## Customizing the Log Collector Script
+You can customize the `collect-splice-logs.sh` script by modifying some of its script variables:
 
-### Customize Based on Your Logs
-
-This script makes some assumption about log locations and log formats. If you have log files other than the default configuration, you may need to customize it in the script `collect-splice-logs.sh`.
-
-There are some variables can be configured in the script:
-
-1. `*_time_regex`: these variables specify how to match the time for a single line in a log file. For example, `^(.{19})(.*)` will match the first 19 chars in a line as the time.
-2. `*_time_format`: these variables specify what is the time format.
-3. `*_logs`: these variables specify where are the log files. `yarn_container_dir` specifies where is the yarn application log directory.
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Variables</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">*_time_regex</td>
+            <td><p>This set of variables specify the number of characters used to match time values for each line in a log file.</p>
+                <p>For example, <span class="Example">^(.{19})(.*)</span> will use the first 19 chars in each line as the time value to compare to your specified time range.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont">*_time_format</td>
+            <td>This set of variables specify the format of time values.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">*_logs</td>
+            <td><p>This set of variables specify the locations of log files</p>
+                <p>The <code>yarn-container-dir</code> variable specifies the location of the yarn application log directory.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
 </div>
 </section>

@@ -12,38 +12,116 @@ folder: DeveloperTopics/SpliceTools
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # DBLook
 
-The Splice Machine *DBLook* tool allows you to 
-Download the file, extract it to a directory and then navigate to the directory where the script get-ddl.sh is. This is only tested this on a mac and linux. It doesn't work on Windows. It assumes that the java command is known.
+You can use the Splice Machine *DBLook* tool on MacOS or Linux to export the DDL (data definition language). The *DBLook* tool does not work on Windows.
 
-You may use test.sql to create a test schema and a couple of tables to test.
+To use this tool, you need to:
 
-You may also need to modify get-ddl.sh. For example, the following variables should be changed to match your environment:
-HOST=
-PORT=
-USER=
-PASS=
+1. Download and install it into the directory in which you want to use it.
+2. Modify variables in the script file (`get-ddl.sh`) as required to match your environment.
+3. Run the script with your desired options.
 
-Here are some examples of how to use the tool.
+## Download and Install
+To install the *DBLook* tool, follow these steps:
+1. Download the XXXXXXX file from XXXXXXX.
+2. Unpack the file to the directory in which you want to run *DBLook*, using the following command:
+   ```
+   xxx
+   ```
+   {: .ShellCommand}
 
-Writing the DDL to a file
-./get-ddl.sh -o ddl.sql
+## Modify the Script Variables
+You may need to modify some variables in the `get-ddl.sh` script file, including these:
 
-Writing the DDL to a file connecting to a database on server MYSERVER, with user SOMEUSER and password MYPASSWORD
-/get-ddl.sh -o ddl.sql -h MYSERVER -u SOMEUSER -s MYPASSWORD
+* `HOST`
+* `PORT`
+* `USER`
+* `PASS`
 
-Write ddl to a file and only extract the SPLICE schema
-./get-ddl.sh -o ddl.sql -z SPLICE
+## Run the Script
 
-Write ddl to a file and only extract the table TABLE1 in schema SPLICE
-./get-ddl.sh -o ddl.sql -z SPLICE -t "TABLE1"
+Here are the command line options for the *DBLook* tool:
+<table>
+    <col width="25%" />
+    <col width="45%" />
+    <col width="30%" />
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">name</td>
+            <td>description</td>
+            <td class="CodeFont">example</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">name</td>
+            <td>description</td>
+            <td class="CodeFont">example</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">name</td>
+            <td>description</td>
+            <td class="CodeFont">example</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">name</td>
+            <td>description</td>
+            <td class="CodeFont">example</td>
+        </tr>
+    </tbody>
+</table>
 
-Write ddl to a file and only extract the table TABLE1 and TABLE2 in schema SPLICE
-./get-ddl.sh -o ddl.sql -z SPLICE -t "TABLE1 TABLE2"
+## Examples
 
-Write ddl to a file and only extract the SPLICE schema with verbose output
-./get-ddl.sh -o ddl.sql -z SPLICE -v
+The following table shows you various examples of using the *DBLook* tool:
 
-Add the ddl to the existing to output file
-./get-ddl.sh -o ddl.sql -z SPLICE -a
+<table>
+    <col width="50%" />
+    <col width="50%" />
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Command Line Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Write the DDL to a file</td>
+            <td class="CodeFont">./get-ddl.sh -o ddl.sql</td>
+        </tr>
+        <tr>
+            <td>Write the DDL to a file connecting to a database on server <code>MYSERVER</code>, with user <code>SOMEUSER</code> and password <code>MYPASSWORD</code></td>
+            <td class="CodeFont">/get-ddl.sh -o ddl.sql -h MYSERVER -u SOMEUSER -s MYPASSWORD</td>
+        </tr>
+        <tr>
+            <td>Write the DDL to a file, extracting only the <code>SPLICE</code> schema.</td>
+            <td class="CodeFont">./get-ddl.sh -o ddl.sql -z SPLICE</td>
+        </tr>
+        <tr>
+            <td>Write the DDL to a file, extracting only the <code>TABLE1</code> table that is in schema <code>SPLICE</code>.</td>
+            <td class="CodeFont">./get-ddl.sh -o ddl.sql -z SPLICE -t "TABLE1"</td>
+        </tr>
+        <tr>
+            <td>Write the DDL to a file, extracting only the <code>TABLE1</code> and <code>TABLE2</code> tables that are in schema <code>SPLICE</code>.</td>
+            <td class="CodeFont">./get-ddl.sh -o ddl.sql -z SPLICE -t "TABLE1 TABLE2"</td>
+        </tr>
+        <tr>
+            <td>Write the DDL to a file, extracting only the <code>SPLICE</code> schema, with verbose output.</td>
+            <td class="CodeFont">./get-ddl.sh -o ddl.sql -z SPLICE -v</td>
+        </tr>
+        <tr>
+            <td>Add the DDL to an existing file</td>
+            <td class="CodeFont">./get-ddl.sh -o ddl.sql -z <code>SPLICE</code> -a</td>
+        </tr>
+    </tbody>
+</table>
+
+You can use the included `test.sql` file to experiment with this tool.
+{: .noteNote}
+
 </div>
 </section>
