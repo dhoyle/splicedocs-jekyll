@@ -15,6 +15,9 @@ folder: SQLReference/Statements
 The `CREATE PROCEDURE` statement allows you to create Java or Python procedures,
 which you can then call using the `CALL PROCEDURE` statement.
 
+Creating stored procedures in Python is currently a __Beta Release__ feature; it will become generally available in a future release.
+{: .noteIcon}
+
 For details on how Splice Machine matches procedures to Java methods,
 see [Argument matching](sqlref_sqlargmatching.html).
 
@@ -99,6 +102,9 @@ LANGUAGE
 Specify the language in which your procedure is written; this must be `JAVA` or `PYTHON`.
 {: .paramDefnFirst}
 
+Creating stored procedures in Python is currently a __Beta Release__ feature; it will become generally available in a future release.
+{: .noteIcon}
+
 DeterministicCharacteristic
 {: .paramName}
 
@@ -139,6 +145,7 @@ Functions and Stored Procedures](developers_fcnsandprocs_intro.html)
 section of our *Developer's Guide*:
 {: .paramDefnFirst}
 
+* This feature is currently in Beta release.
 * The entire script must be enclosed in single quotes.
 * Use double quotes (`"`) around strings within the script; if you must use a single quote within the script, specify it as two single quotes (`''`).
 * Use spaces instead of tabs within your scripts; the command line processor will convert tabs to a single space in your script, *even within a string.*
@@ -234,6 +241,9 @@ The following example depends on a fictionalized java class.
 
 ### Example of Creating a Stored Procedure in Python
 The following example creates a Python stored procedure that executes an SQL statement.
+
+Creating stored procedures in Python is currently a __Beta Release__ feature; it will become generally available in a future release.
+{: .noteIcon}
 
 <div class="preWrapper" markdown="1">
     splice> CREATE PROCEDURE SPLICE.PYTHON_TEST (

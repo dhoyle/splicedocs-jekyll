@@ -115,6 +115,9 @@ Follow the steps below to write a Splice Machine database function in Java.
 ### Writing a Function in Python {#PythonFcn}
 Follow the steps below to write a Splice Machine database function in Python.
 
+Creating functions in Python is currently a __Beta Release__ feature; it will become generally available in a future release.
+{: .noteIcon}
+
 <div class="opsStepsList" markdown="1">
 1.  Define a Python script as a function in your database:
     {: .topLevel}
@@ -328,6 +331,7 @@ Follow the steps below to write a stored procedure in Java.
 ### Writing a Stored Procedure in Python {#PythonProc}
 Follow the steps below to write a stored procedure in Python. Please note the following Python-related version information:
 
+* Creating functions in Python is currently a __Beta Release__ feature; it will become generally available in a future release.
 * Our Python stored procedure implementation uses {{splvar_storedprocs_JythonVersion}}.
 * Python scripts should be compatible with {{splvar_storedprocs_PythonVersion}}.
 * The JDBC connection uses {{splvar_storedprocs_PythonDbApiVersion}}; it is implemented by [{{splvar_storedprocs_PythonJDBC}}]({{splvar_storedprocs_Python}}).

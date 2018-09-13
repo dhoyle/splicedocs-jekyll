@@ -15,6 +15,9 @@ folder: SQLReference/Statements
 The `CREATE FUNCTION` statement allows you to create Java or Python functions,
 which you can then use in expressions.
 
+Creating functions in Python is currently a __Beta Release__ feature; it will become generally available in a future release.
+{: .noteIcon}
+
 For details on how Splice Machine matches functions to Java methods, see
 [Argument matching](sqlref_sqlargmatching.html).
 
@@ -134,6 +137,8 @@ LANGUAGE
 
 Specify the language in which your function is written; this must be `JAVA` or `PYTHON`.
 {: .paramDefnFirst}
+Creating functions in Python is currently a __Beta Release__ feature; it will become generally available in a future release.
+{: .noteIcon}
 
 DeterministicCharacteristic
 {: .paramName}
@@ -174,6 +179,7 @@ Functions and Stored Procedures](developers_fcnsandprocs_intro.html)
 section of our *Developer's Guide*:
 {: .paramDefnFirst}
 
+* This feature is currently in Beta release.
 * The entire script must be enclosed in single quotes.
 * Use double quotes (`"`) around strings within the script; if you must use a single quote within the script, specify it as two single quotes (`''`).
 * Use spaces instead of tabs within your scripts; the command line processor will convert tabs to a single space in your script, *even within a string.*
@@ -280,6 +286,8 @@ Procedures](developers_fcnsandprocs_intro.html) section of our
 </div>
 
 ### Python Example
+Creating functions in Python is currently a __Beta Release__ feature; it will become generally available in a future release.
+{: .noteIcon}
 
 <div class="preWrapper" markdown="1">
     splice> CREATE FUNCTION SPLICE.PYSAMPLE_FUNC( a VARCHAR(50) )
