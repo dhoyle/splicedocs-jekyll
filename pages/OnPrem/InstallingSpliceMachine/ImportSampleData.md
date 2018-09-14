@@ -15,9 +15,8 @@ folder: OnPrem/InstallingSpliceMachine
 The standalone version of Splice Machine includes sample data that you can
 use to quickly try importing and querying meaningful data. This topic walks you through using the sample data.
 
-You must [install the standalone version of
-Splice Machine](onprem_install_standalone.html) on your computer before
-following the steps in this tutorial.
+You must install the standalone version of Splice Machine on your computer before
+following the steps in this tutorial. You'll find the link to the standalone installer and instructions in our [Installing Splice Machine](onprem_install_intro.html) page.
 {: .noteIcon}
 
 The Splice Machine installer package includes demo data that you can
