@@ -541,7 +541,7 @@ This parameter is only used with the `SYSCS_UTIL.BULK_IMPORT_HFILE` system proce
 
 The `skipSampling` parameter is a Boolean value that specifies how you want the split keys used for the bulk HFile import to be computed:
 
-* If `skipSampling` is `true`, you need to use our &nbsp;&nbsp;[`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) and [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) system procedures to manually split your table before calling `SYSCS_UTIL.BULK_IMPORT_HFILE`. This allows you more control over the splits, but adds a layer of complexity.
+* If `skipSampling` is `true`, you need to use our &nbsp;&nbsp;[`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) and [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) system procedures to manually split your table before calling `SYSCS_UTIL.BULK_IMPORT_HFILE`. This allows you more control over the splits, but adds a layer of complexity. You can learn about computing splits for your input data in the [Importing Data: Splitting Input Data](tutorials_ingest_importsplit.html) topic of this tutorial.
 
 * If `skipSampling` is `false`, then `SYSCS_UTIL.BULK_IMPORT_HFILE`
 samples your input data and computes the table splits for you, in the following steps. It:
@@ -559,6 +559,7 @@ Please review the [Bulk HFile Import Walkthrough](tutorials_ingest_importexample
 
 *  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
 *  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
+*  [Importing Data: Splitting Input Data](tutorials_ingest_importsplit.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)

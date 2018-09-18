@@ -187,6 +187,7 @@ Customer Success engineers like to use:
 * /data/mytable1/group3
 {: .codeList}
 
+You can learn more about splitting your input data in the [Importing Data: Splitting Input Data](tutorials_ingest_importsplit.html) topic of this tutorial.
 
 ## Delimiters in Your Input Data {#Delimiters}
 
@@ -635,6 +636,7 @@ when you start the interpreter.
 
 *  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
+*  [Importing Data: Splitting Input Data](tutorials_ingest_importsplit.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)

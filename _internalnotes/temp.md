@@ -1,38 +1,60 @@
----
-title: "Importing Data: Bulk HFile Examples"
-summary: Walk-throughs of using the built-in bulk HFile import procedure.
-keywords: import, ingest, bulk hfile
-toc: false
-product: all
-sidebar: tutorials_sidebar
-permalink: tutorials_ingest_importexampleshfile.html
-folder: DeveloperTutorials/Import
----
-<section>
-<div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Importing Data With the Bulk HFile Import Procedure
 
-This tutorial describes how to import data using HFiles into your Splice
-Machine database with the [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) system procedure. This topic includes these sections:
 
-* [How Importing Your Data as HFiles Works](#How) presents an overview of
-  using the HFile import functions.
+my understanding is that **if you know the splitkeys you can create the file containing the splitkeys then call SPLIT_TABLE_OR_INDEX()**. *if you want splice to figure out the splitkeys then call COMPUTE_SPLIT_KEY() + SPLIT_TABLE_OR_INDEX_AT_POINTS()*.
 
-* [Configuration Settings](#ConfigSettings) describes any configuration settings that you may need to modify when using the [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure to import data into your database.
+mbrown [3:47 PM]
+so
+i suggest something liek the: if the customer has a static set of data that will not change much, then compute_split_key will give a perfect answer
+however, if their data is a moving target, they shoudl pre-split it with their brain, not with our statstics helper function.
+i view the challenge as a goal for the 'data architect'.  They should *know* how the database will change as time passes
+for instance, if you build a table that is intended to have a 12 month rolling window of data, but initially load it with 6 months of historical
+then it should probably be split *evenly* over the entire 12 months, not just over the historical 6 months.
+then, in 6 months time, once it is 'full', it would be possible to drop old paritions and create new ones in a very efficient manner
 
-* [Importing Data From the Cloud](#CloudAccess) links to our instructions for configuring Splice Machine access to your data in the cloud.
+wtang [4:11 PM]
+I agree https://doc.splicemachine.com/tutorials_ingest_importexampleshfile.html#ManualSplits needs to be reworked to be more readable. Murray’s motivating example is also correct for using compute_split_key() if you want to control how to accommodate future data growth according to a “partitioning” scheme (for both data retention and query performance).
 
-* [Manually Computing Table Splits](#ManualSplits) outlines the steps you use to manually compute table splits, if you prefer to not have that handled automatically.
+You can call SYSCS_UTIL.BULK_IMPORT_HFILE and set skipSampling to false to allow SYSCS_UTIL.BULK_IMPORT_HFILE to sample data to determine the splits, then splits the data into multiple HFiles, and then imports the data.
 
-* [Examples of Using `SYSCS_UTIL.BULK_IMPORT_HFILE`](#Examples) walks through using this procedure both with automatic table splits and with two different methods of manually computing table splits.
+You can split the data into HFiles with SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX, which both computes the keys and performs the splits. You then call  SYSCS_UTIL.BULK_IMPORT_HFILE and set skipSampling to true to import your data.
 
-Our [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html) topic
-walks you through using our standard import procedures (`SYSCS_UTIL.IMPORT_DATA`, `SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE`, and `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE`), which are simpler to use, though their performance is slightly lower than importing HFiles.
+You can also split the data into HFiles by first calling the SYSCS_UTIL.COMPUTE_SPLIT_KEY procedure and then calling the SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS procedure to split the table or index. You then call  SYSCS_UTIL.BULK_IMPORT_HFILE and set skipSampling to true to import your data.
+doc.splicemachine.com
+Importing Data: Bulk HFile Examples | Splice Machine Documentation
+Walk-throughs of using the built-in bulk HFile import procedure.
 
-Bulk importing HFiles boosts import performance; however, constraint checking is not applied to the imported data. If you need constraint checking, use one of our standard import procedures.
-{: .noteIcon}
+garyh [4:25 PM]
+Okay, that makes sense and is helpful. However, if I’m telling someone how to choose among our three options (3rd = let bulk_import compute the splits), how do I distinguish between that and using Compute_split_key, which seems like it does almost the same thing and uses pretty much the same parameters ??
 
-## How Importing Your Data as HFiles Works   {#How}
+mbrown [4:31 PM]
+so i think there are really two options to import:
+1) SYSCS_UTIL.BULK_IMPORT_HFILE with 'skipSampling false', i.e. lets us automatically do a full sampling and split it for you.  Perfect for static data sets.
+2) create a split points file 'by hand' or 'offline, and pass it into SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS before loading anything; then call SYSCS_UTIL.BULK_IMPORT_HFILE with 'skipSampling true'
+
+The *practical* reason to call SYSCS_UTIL.COMPUTE_SPLIT_KEY is probably for making a *new index* on an *existing table*.  In that case the data exists, and you want the index to be created quickly with the rationally correct same split points as the base table.
+its the _or_index part which gives it away. you can bulk load indexes too, and pre-split them to the 'right' degree of parallelism, so that the indexes are fast and appropriately parallel, to match the base table
+
+garyh [4:40 PM]
+Thanks for that; however, “Probably” makes us tech writers nervous. should I explain to readers that _that_ is THE reason for using Compute_split_key?  If not, I’ll need help with a better explanation
+
+wtang [4:41 PM]
+Please work with Jun on the wording. Or you can call a short meeting with Jun and me.
+
+garyh [4:43 PM]
+@jun Can you suggest wording for why to use Compute_Split_Key ?  If too difficult, perhaps you can spend a couple minutes with Wei and me tomorrow morning (we have a meeting at 11) ???
+
+jun [4:50 PM]
+Compute_Split_Key() only calculates split point in HBase encoding given a csv file of primary/index key values. The output can be used by SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS to split table. This two step approach can be combined into SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX.
+@garyh I think the documentation already explains well https://doc.splicemachine.com/sqlref_sysprocs_computesplitkey.html
+doc.splicemachine.com
+SYSCS_UTIL.COMPUTE_SPLIT_KEY built-in system procedure | Splice Machine Documentation
+Built-in system procedure that computes the split keys for a table or index, prior to using the BULK_IMPORT_HFILE procedure to import data from HFiles.
+COMPUTE_SPLIT_KEY() + SPLIT_TABLE_OR_INDEX_AT_POINTS() = SPLIT_TABLE_OR_INDEX()
+
+
+FROM: tutorials_ingest_importexampleshfile.html
+
+# XXX Computing Splits XXX
 
 Our HFile data import procedure leverages HBase bulk loading, which
 allows it to import your data at a faster rate; however, using this
@@ -54,6 +76,9 @@ end up in each split.
 
 You have two choices for determining the table splits:
 
+
+## Why Manually Compute Splits?
+
 * You can have `SYSCS_UTIL.BULK_IMPORT_HFILE` scan and analyze your table to
 determine the best splits automatically by calling `SYSCS_UTIL.BULK_IMPORT_HFILE`
 with the `skipSampling` parameter set to `false`. We walk you through using this approach
@@ -62,6 +87,10 @@ with the `skipSampling` parameter set to `false`. We walk you through using this
 * You can compute the splits yourself and then call `SYSCS_UTIL.BULK_IMPORT_HFILE`
 with the `skipSampling` parameter set to `true`. Computing the splits requires these steps, which are described in the next section, [Manually Computing Table Splits](#ManualSplits).
 
+
+## Overview of Computing Table and Index Splits
+
+
     1. Determine which values make sense for splitting your data
     into multiple regions. This means looking at the primary keys for the
     table and figuring out which values will yield relatively evenly-sized (in number of rows)
@@ -69,40 +98,6 @@ with the `skipSampling` parameter set to `true`. Computing the splits requires t
     2. Call our system procedures to compute the HBase-encoded keys and set up the splits inside
     your Splice Machine database.
     3. Call the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure with the `skipSampling` parameter  to `true` to perform the import.
-
-## Configuration Settings {#ConfigSettings}
-
-Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make these two changes in your Yarn configuration:
-
-<div class="preWrapperWide" markdown="1">
-    yarn.nodemanager.pmem-check-enabled=false
-    yarn.nodemanager.vmem-check-enabled=false
-{: .Example}
-</div>
-
-### Extra Configuration Steps for KMS-Enabled Clusters
-
-If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Cloudera Key Management Service (KMS) enabled, you must complete a few extra configuration steps, which are described in [this troubleshooting note](bestpractices_onprem_importing.html#BulkImportKMS) for details.
-{: .noteIcon}
-
-## Importing Data From the Cloud  {#CloudAccess}
-
-If you are importing data that is stored in an S3 bucket on AWS, you
-need to specify the data location in an `s3a` URL that includes access
-key information. Our [Configuring an S3 Bucket for Splice Machine Access](tutorials_ingest_configures3.html) walks you through using your AWS dashboard to generate and apply the necessary credentials.
-
-## Manually Computing Table Splits {#ManualSplits}
-
-If you\'re computing splits for your import (and calling the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure with
-`skipSampling` parameter  to `true`), you need to select one of these two methods of computing the table splits:
-
-* You can call [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) to compute the splits; the [Example 2](#ManualSplitExample1) example walks you through this.
-
--or-
-
-* You can call [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) to generate a keys file, and then call [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) to set up the splits in your database; the [Example 3](#ManualSplitExample2) example walks you through this.
-
-In either case, after computing the splits, you call `SYSCS_UTIL.BULK_IMPORT_HFILE` to split your input file into HFiles, import your data, and then remove the temporary HFiles.
 
 Here's a quick summary of how you can compute your table splits:
 
@@ -139,94 +134,16 @@ Here's a quick summary of how you can compute your table splits:
 
 </div>
 
-You'll find detailed descriptions of these steps in these two examples:
-* [Example 2: Using `SPLIT_TABLE_OR_INDEX` to Compute Table Splits](#ManualSplitExample1)
-* [Example 3: Using `SYSCS_UTIL.COMPUTE_SPLIT_KEY` and `SPLIT_TABLE_OR_INDEX_AT_POINTS` to Compute Table Splits](#ManualSplitExample2).
 
-## Examples of Using `SYSCS_UTIL.BULK_IMPORT_HFILE`
+## Manually Computing Table Splits {#ManualSplits}
 
-This section contains example walkthroughs of using the `SYSCS_UTIL.BULK_IMPORT_HFILE` system procedure in three different ways:
+* You can call [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) to compute the splits; the [Example 2](#ManualSplitExample1) example walks you through this.
 
-* [Example 1](#AutoExample) uses the automatic table splitting built into `SYSCS_UTIL.BULK_IMPORT_HFILE` to import a table into your Splice Machine database.
+-or-
 
-* [Example 2](#ManualSplitExample1) uses the `SYSCS_UTIL.COMPUTE_SPLIT_TABLE_OR_INDEX` system procedure to calculate the table splits before calling `SYSCS_UTIL.BULK_IMPORT_HFILE` to import a table into your Splice Machine database.
+* You can call [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) to generate a keys file, and then call [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) to set up the splits in your database; the [Example 3](#ManualSplitExample2) example walks you through this.
 
-* [Example 3](#ManualSplitExample2) uses the `SYSCS_UTIL.COMPUTE_SPLIT_KEY` and
-`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` system procedures to calculate the table splits before calling `SYSCS_UTIL.BULK_IMPORT_HFILE` to import a table into your Splice Machine database.
 
-### Example 1: Bulk HFile Import with Automatic Table Splitting {#AutoExample}
-
-This example details the steps used to import data in HFile format using
-the Splice Machine `SYSCS_UTIL.BULK_IMPORT_HFILE` system procedure with
-automatic splitting.
-
-Follow these steps:
-
-<div class="opsStepsList" markdown="1">
-1.  Create a directory on HDFS for the import; for example:
-    {: .topLevel}
-
-    <div class="preWrapperWide" markdown="1">
-        sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
-    {: .ShellCommand}
-    </div>
-
-    Make sure that the directory you create has permissions set to allow
-    Splice Machine to write your csv and Hfiles there.
-    {: .indentLevel1}
-
-2.  Create table and index:
-    {: .topLevel}
-
-    <div class="preWrapperWide" markdown="1">
-        CREATE TABLE TPCH.LINEITEM (
-            L_ORDERKEY BIGINT NOT NULL,
-            L_PARTKEY INTEGER NOT NULL,
-            L_SUPPKEY INTEGER NOT NULL,
-            L_LINENUMBER INTEGER NOT NULL,
-            L_QUANTITY DECIMAL(15,2),
-            L_EXTENDEDPRICE DECIMAL(15,2),
-            L_DISCOUNT DECIMAL(15,2),
-            L_TAX DECIMAL(15,2),
-            L_RETURNFLAG VARCHAR(1),
-            L_LINESTATUS VARCHAR(1),
-            L_SHIPDATE DATE,
-            L_COMMITDATE DATE,
-            L_RECEIPTDATE DATE,
-            L_SHIPINSTRUCT VARCHAR(25),
-            L_SHIPMODE VARCHAR(10),
-            L_COMMENT VARCHAR(44),
-            PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
-        );
-
-        CREATE INDEX L_SHIPDATE_IDX on TPCH.LINEITEM(
-            L_SHIPDATE,
-            L_PARTKEY,
-            L_EXTENDEDPRICE,
-            L_DISCOUNT
-        );
-    {: .Example}
-    </div>
-
-3.  Import the HFiles Into Your Database
-    {: .topLevel}
-
-    Once you have split your table and indexes, call this procedure to
-    generate and import the HFiles into your Splice Machine database:
-    {: .indentLevel1}
-
-    <div class="preWrapperWide" markdown="1">
-        call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,
-                '/TPCH/1/lineitem', '|', null, null, null, null, -1,
-                '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);
-    {: .Example}
-    </div>
-
-    The generated HFiles are automatically deleted after being imported.
-    {: .indentLevel1}
-{: .boldFont}
-
-</div>
 
 ### Example 2: Using `SPLIT_TABLE_OR_INDEX` to Compute Table Splits {#ManualSplitExample1}
 
@@ -577,19 +494,3 @@ Follow these steps:
     {: .indentLevel1}
 {: .boldFont}
 </div>
-
-## See Also
-
-*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
-*  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
-*  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
-*  [Importing Data: Splitting Input Data](tutorials_ingest_importsplit.html)
-*  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
-*  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
-*  [Importing Data: Importing TPCH Data](tutorials_ingest_importexamplestpch.html)
-*  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
-*  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
-*  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
-</div>
-</section>

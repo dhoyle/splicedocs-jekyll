@@ -23,6 +23,7 @@ This topic describes how and why to compute *splits* for the data you are import
 
 *  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
+*  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)

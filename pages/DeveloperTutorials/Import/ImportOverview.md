@@ -37,19 +37,23 @@ This tutorial guides you through importing (loading) data into your Splice Machi
             <td>Provides detailed information and tips about input data handling during ingestion.</td>
         </tr>
         <tr>
-            <td><a href="tutorials_ingest_importerrors.html">4: Error Handling</a></td>
+            <td><a href="tutorials_ingest_importsplit.html">4: Splitting Input Data</a></td>
+            <td>Describes how  to compute *splits* for the data you are bulk importing to allow paralellization and greater import performance.</td>
+        </tr>
+        <tr>
+            <td><a href="tutorials_ingest_importerrors.html">5: Error Handling</a></td>
             <td>Helps you to understand and use logging to discover and repair any input data problems that occur during an ingestion process.</td>
         </tr>
         <tr>
-            <td><a href="tutorials_ingest_importexamples1.html">5: Usage Examples</a></td>
+            <td><a href="tutorials_ingest_importexamples1.html">6: Usage Examples</a></td>
             <td>Walks you through examples of importing data with the &nbsp; <code>SYSCS_UTIL.IMPORT_DATA</code>, <code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code>, and <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> system procedures.</td>
         </tr>
         <tr>
-            <td><a href="tutorials_ingest_importexampleshfile.html">6: Bulk HFile Examples</a></td>
+            <td><a href="tutorials_ingest_importexampleshfile.html">7: Bulk HFile Examples</a></td>
             <td>Walks you through examples of using the <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedure.</td>
         </tr>
         <tr>
-            <td><a href="tutorials_ingest_importexamplestpch.html">7: Importing TPCH Data</a></td>
+            <td><a href="tutorials_ingest_importexamplestpch.html">8: Importing TPCH Data</a></td>
             <td>Walks you through importing TPCH sample data into your database.</td>
         </tr>
     </tbody>
@@ -207,6 +211,7 @@ And you'll find detailed reference descriptions of all four procedures in our [S
 
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
 *  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
+*  [Importing Data: Splitting Input Data](tutorials_ingest_importsplit.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
