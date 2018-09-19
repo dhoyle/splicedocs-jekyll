@@ -16,6 +16,11 @@ Use the `SYSCS_UTIL.COMPUTE_SPLIT_KEY` system procedure to compute
 the split keys for a table or index prior to calling the &nbsp; [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedure to split the data into HFiles. Once you've done that, call  &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 system procedure to import your data in HFile format.
 
+The [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) system procedure has largely replaced the use of `SYSCS_UTIL.COMPUTE_SPLIT_KEY` and `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` procedures; it combines those two procedures into one with a simplified interface. We strongly encourage you to use [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) instead of this procedure.
+{: .noteIcon}
+
+For more information about splitting your tables and indexes into HFiles, see the [Splitting Input Data](tutorials_ingest_importsplit.html) section of our *Importing Data* tutorial.
+
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
@@ -62,6 +67,9 @@ The [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure
 
 * You can split the data into HFiles by first calling this procedure,  &nbsp;`SYSCS_UTIL.COMPUTE_SPLIT_KEY`, and then  calling the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedure to split the table or index.  You then call
  &nbsp;`SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter to `true` to import your data.
+
+  We strongly encourage you to use the simpler &nbsp;`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX` procedure instead of using `SYSCS_UTIL.COMPUTE_SPLIT_KEY` combined with `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`.
+  {: .noteIcon}
 
 In all cases, `SYSCS_UTIL.BULK_IMPORT_HFILE` automatically deletes the HFiles after the import process has completed.
 

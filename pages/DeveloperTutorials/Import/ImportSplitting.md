@@ -12,9 +12,7 @@ folder: DeveloperTutorials/Import
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Importing Data: Splitting Input Data
 
-This topic describes how and why to compute *splits* for the data you are importing to allow paralellization and greater import performance.
-
-## Why Split Data?
+This topic describes how  to compute *splits* for the data you are bulk importing to allow paralellization and greater import performance.
 
 ## How to Split Data
 
