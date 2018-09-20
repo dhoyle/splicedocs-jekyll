@@ -19,7 +19,7 @@ system procedure to import your data in HFile format.
 The [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) system procedure has largely replaced the use of `SYSCS_UTIL.COMPUTE_SPLIT_KEY` and `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` procedures; it combines those two procedures into one with a simplified interface. We strongly encourage you to use [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) instead of this procedure.
 {: .noteIcon}
 
-For more information about splitting your tables and indexes into HFiles, see the [Splitting Input Data](tutorials_ingest_importsplit.html) section of our *Importing Data* tutorial.
+For more information about splitting your tables and indexes into HFiles, see the [Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) section of our *Importing Data* tutorial.
 
 ## Syntax
 

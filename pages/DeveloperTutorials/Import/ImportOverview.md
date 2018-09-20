@@ -37,8 +37,8 @@ This tutorial guides you through importing (loading) data into your Splice Machi
             <td>Provides detailed information and tips about input data handling during ingestion.</td>
         </tr>
         <tr>
-            <td><a href="tutorials_ingest_importsplit.html">4: Splitting Input Data</a></td>
-            <td>Describes how  to compute *splits* for the data you are bulk importing to allow paralellization and greater import performance.</td>
+            <td><a href="tutorials_ingest_importbulkhfile.html">4: Using Bulk HFile Import</a></td>
+            <td>Describes how to use our bulk HFile import process for performant loading of large datasets.</td>
         </tr>
         <tr>
             <td><a href="tutorials_ingest_importerrors.html">5: Error Handling</a></td>
@@ -211,7 +211,7 @@ And you'll find detailed reference descriptions of all four procedures in our [S
 
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
 *  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
-*  [Importing Data: Splitting Input Data](tutorials_ingest_importsplit.html)
+*  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
