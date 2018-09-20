@@ -107,8 +107,6 @@ are noted in this section, including these:
 Temporary tables have the following operational limitations; they:
 
 * exist only while a user session is alive
-* are visible in system tables, but are otherwise not visible to other
-  sessions or transactions
 * cannot be altered using the
  &nbsp;[`RENAME COLUMN`](sqlref_statements_renamecolumn.html) statements
 * do not get backed up
