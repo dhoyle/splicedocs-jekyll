@@ -1,3 +1,16 @@
+---
+title: The DBLook Tool
+summary:
+keywords:
+toc: false
+product: all
+sidebar: developers_sidebar
+permalink: developers_splicetools_logcollector.html
+folder: DeveloperTopics/SpliceTools
+---
+<section>
+<div class="TopicContent" data-swiftype-index="true" markdown="1">
+# Log Collector
 
 ## Description
 
@@ -48,3 +61,5 @@ There are some variables can be configured in the script:
 1. `*_time_regex`: these variables specify how to match the time for a single line in a log file. For example, `^(.{19})(.*)` will match the first 19 chars in a line as the time.
 2. `*_time_format`: these variables specify what is the time format.
 3. `*_logs`: these variables specify where are the log files. `yarn_container_dir` specifies where is the yarn application log directory.
+</div>
+</section>

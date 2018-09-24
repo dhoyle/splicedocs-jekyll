@@ -327,6 +327,7 @@ quotes, as shown here:
 *  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
 *  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
+*  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
 *  [Importing Data: Importing TPCH Data](tutorials_ingest_importexamplestpch.html)
@@ -334,3 +335,6 @@ quotes, as shown here:
 *  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 *  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
+
+</div>
+</section>

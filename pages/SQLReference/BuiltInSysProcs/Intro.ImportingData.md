@@ -32,11 +32,6 @@ your database:
                         <td>Imports data from an HFile.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="sqlref_sysprocs_computesplitkey.html">SYSCS_UTIL.COMPUTE_SPLIT_KEY</a>
-                        </td>
-                        <td>Computes split keys for a table or index.</td>
-                    </tr>
-                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_deletesnapshot.html">SYSCS_UTIL.DELETE_SNAPSHOT</a>
                         </td>
                         <td>Deletes a stored snapshot.</td>
@@ -62,17 +57,9 @@ your database:
                         <td>Creates a Splice Machine snapshot of a specific table.</td>
                     </tr>
                     <tr>
-                        <td class="CodeFont"><a href="sqlref_sysprocs_splittableatpoints.html">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</a>
-                        </td>
-                        <td>Sets up a table or index in your database with split keys computed by the <code>COMPUTE_SPLIT_KEY</code> procedure.</td>
-                    </tr>
-                    <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_splittable.html">SYSCS_UTIL.SPLIT_TABLE_OR_INDEX</a>
                         </td>
-                        <td>
-                            <p>Computes split keys for a table or index and then sets up the table or index.</p>
-                            <p>This combines the functionality of <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> and <code>SYSCS_UTIL.SPLIT_TABLE_OR_INDEX_AT_POINTS</code>.</p>
-                        </td>
+                        <td>Computes split keys for a table or index and then sets up the table or index.</td>
                     </tr>
                     <tr>
                         <td class="CodeFont"><a href="sqlref_sysprocs_upsertdata.html">SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE</a>
@@ -83,4 +70,3 @@ your database:
             </table>
 </div>
 </section>
-

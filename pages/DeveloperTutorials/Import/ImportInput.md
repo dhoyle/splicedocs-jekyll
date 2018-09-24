@@ -1,4 +1,4 @@
----
+w---
 title: "Importing Data: Input Data Handling"
 summary: Detailed information about input data handling during ingestion.
 keywords: import, load data, import data, importing from, ingest, input parameters, compression, encoding, separator
@@ -123,7 +123,14 @@ define the `fs.s3a.awsAccessKeyId` and `fs.s3a.awsSecretAccessKey`
 properties in that file:
 
 <div class="preWrapperWide" markdown="1">
-    <property>   <name>fs.s3a.awsAccessKeyId</name>   <value>access key</value></property><property>   <name>fs.s3a.awsSecretAccessKey</name>   value>secret key</value></property>
+    <property>
+       <name>fs.s3a.awsAccessKeyId</name>
+       <value>access key</value>
+    </property>
+    <property>
+       <name>fs.s3a.awsSecretAccessKey</name>
+       <value>secret key</value>
+    </property>
 {: .Example}
 
 </div>
@@ -180,6 +187,7 @@ Customer Success engineers like to use:
 * /data/mytable1/group3
 {: .codeList}
 
+If you are importing a lot of data, our [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) bulk import procedure greatly improves data loading performance by splitting the data into HFiles, doing the import, and then deleting the HFiles. You can have `SYSCS_UTIL.BULK_IMPORT_HFILE` use sampling to determine the keys to use for splitting your data by, or you can use the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) procedure to compute the splits, and then call the bulk import procedure. For more information, see the [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) topic of this tutorial.
 
 ## Delimiters in Your Input Data {#Delimiters}
 
@@ -628,6 +636,7 @@ when you start the interpreter.
 
 *  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
+*  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
@@ -636,3 +645,8 @@ when you start the interpreter.
 *  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 *  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
+*  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
+*  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
+
+</div>
+</section>
