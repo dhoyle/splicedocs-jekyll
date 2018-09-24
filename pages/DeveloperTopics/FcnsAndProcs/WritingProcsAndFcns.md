@@ -272,7 +272,7 @@ Follow the steps below to write a stored procedure in Java.
 
     <div class="preWrapperWide" markdown="1">
         CALL SQLJ.INSTALL_JAR(
-          '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.build_type  == "Doc" %}{{site.build_version}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
+          '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.build_type  == "doc" %}{{site.build_version}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
           'SPLICE.CUSTOM_SPLICE_PROCS_JAR', 0);
 
         CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(
@@ -448,7 +448,7 @@ new Jar file and reload that into your database by calling the
 
 <div class="preWrapper" markdown="1">
     CALL SQLJ.REPLACE_JAR(
-      '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.build_type == "Doc" %}{{site.build_version}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
+      '/Users/splice/my-directory-for-jar-files/custom-splice-procs-{% if site.build_type == "doc" %}{{site.build_version}}{% else %}{{splvar_basic_InternalReleaseVersion}}{% endif %}-SNAPSHOT.jar',
       'SPLICE.CUSTOM_SPLICE_PROCS_JAR');
 {: .AppCommand xml:space="preserve"}
 
