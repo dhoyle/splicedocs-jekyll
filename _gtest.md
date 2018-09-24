@@ -14,7 +14,7 @@ folder: /
 
 
 <h3>The value of build_type is {{site.build_type}}.</h3>
-<h4>Inside an if w/o brackets:     {% if site.build_type == "Docsdev" %} THIS IS DOCSDEV {% else %} THIS IS NOT DOCSDEV{% endif %}
+<h4>Inside an if w/o brackets:     {% if site.build_type == "docsdev" %} THIS IS DOCSDEV {% else %} THIS IS NOT DOCSDEV{% endif %}
 </h4>
 
 </div>
