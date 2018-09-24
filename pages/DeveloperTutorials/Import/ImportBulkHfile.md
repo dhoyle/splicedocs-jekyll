@@ -63,108 +63,12 @@ end up in each split.
 
 You have two choices for determining the table splits:
 
-* You can have `SYSCS_UTIL.BULK_IMPORT_HFILE` scan and analyze your table to
-determine the best splits automatically by calling `SYSCS_UTIL.BULK_IMPORT_HFILE`
-with the `skipSampling` parameter set to `false`. It then splits the data into temporary HFiles and 
+* You can have `SYSCS_UTIL.BULK_IMPORT_HFILE` scan and analyze your table to determine the best splits automatically by calling `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `false`. It samples and analyzes the data in your file and then splits the data into temporary HFiles based on that analysis.
 
-* You can compute the splits yourself and then call `SYSCS_UTIL.BULK_IMPORT_HFILE`
-with the `skipSampling` parameter set to `true`. Computing the splits requires these steps, which are described in the next section, [Manually Computing Table Splits](#ManualSplits).
+* You can call the [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) to "manually" compute and perform the splits yourself, and then call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `true`. Computing the splits requires these steps, which are described in the next section, [Manually Computing Table Splits](#ManualSplits).
 
-    1. Determine which values make sense for splitting your data
-    into multiple regions. This means looking at the primary keys for the
-    table and figuring out which values will yield relatively evenly-sized (in number of rows)
-    splits.
-    2. Call our system procedures to compute the HBase-encoded keys and set up the splits inside
-    your Splice Machine database.
-    3. Call the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure with the `skipSampling` parameter  to `true` to perform the import.
-
-
-
-
-How your data is split into HFiles has an impact on performance; Splice Machine provides two mechanisms for computing the keys used to split your data:
-* Our `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure can sample the data that you're importing and automatically determine the split keys, as described in the [Automatic Splits Computation](#AutoSplit) section below.
-* You can use our `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX` system procedure to determine the split keys prior to calling `SYSCS_UTIL.BULK_IMPORT_HFILE`, , as described in the [Manual Splits Computation](#ManualSplit) section below.
-
-
-### Automatic Splits Computation {#AutoSplit}
-
-### Manual Splits Computation {#ManualSplit}
-
-
-by leveraging HFile bulk Before it generate HFiles, `SYSCS_UTIL.BULK_IMPORT_HFILE` must determine how to split the data
-into multiple regions by looking at the primary keys and figuring out
-which values will yield relatively evenly-sized splits; the objective is
-to compute splits such that roughly the same number of table rows will
-end up in each split.
-
-
-======================
-
- This topic includes these sections:
-* [Examples of Using `SYSCS_UTIL.BULK_IMPORT_HFILE`](#Examples) walks through using this procedure both with automatic table splits and with two different methods of manually computing table splits.
-
-Our [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html) topic
-walks you through using our standard import procedures (`SYSCS_UTIL.IMPORT_DATA`, `SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE`, and `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE`), which are simpler to use, though their performance is slightly lower than importing HFiles.
-
-
-
-
-This topic describes how
-
-* [How Importing Your Data as HFiles Works](#How) presents an overview of
-  using the HFile import functions.
-
-* [Configuration Settings](#ConfigSettings) describes any configuration settings that you may need to modify when using the [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure to import data into your database.
-
-* [Importing Data From the Cloud](#CloudAccess) links to our instructions for configuring Splice Machine access to your data in the cloud.
-
-* [Manually Computing Table Splits](#ManualSplits) outlines the steps you use to manually compute table splits, if you prefer to not have that handled automatically.
-
-## Manually Computing Table Splits {#ManualSplits}
-
-If you\'re computing splits for your import (and calling the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure with
-`skipSampling` parameter  to `true`), you need to call [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) to compute the splits the [Example 2](#ManualSplitExample1) example walks you through this.
-
--or-
-
-* You can call [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) to generate a keys file, and then call [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) to set up the splits in your database; the [Example 3](#ManualSplitExample2) example walks you through this.
-
-In either case, after computing the splits, you call `SYSCS_UTIL.BULK_IMPORT_HFILE` to split your input file into HFiles, import your data, and then remove the temporary HFiles.
-
-Here's a quick summary of how you can compute your table splits:
-
-<div class="opsStepsList" markdown="1">
-1.  Create a directory on HDFS for the import; for example:
-    {: .topLevel}
-
-    <div class="preWrapperWide" markdown="1">
-        sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
-    {: .ShellCommand}
-    </div>
-
-2.  Determine primary key values that can horizontally split the table
-    into roughly equal sized partitions.
-    {: .topLevel}
-
-    Ideally, each partition should be about 1/2 the size of your `hbase.hregion.max.filesize` setting, which leaves room for the region to grow after your data is imported.\\
-    \\
-    The size of each partition **must be less than** the value of `hbase.hregion.max.filesize`.
-    {: .notePlain}
-
-3.  Store those keys in a CSV file.
-    {: .topLevel}
-
-4.  Compute the split keys and then split the table.
-    {: .topLevel}
-
-5.  Repeat steps 1, 2, and 3 to split the indexes on your table.
-    {: .topLevel}
-
-6.  Call the &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure
-    to split the input data file into HFiles and import the HFiles into your Splice Machine database. The HFiles are automatically deleted after being imported.
-    {: .topLevel}
-
-</div>
+How your data is split into HFiles has a significant impact on performance; again, the goal is to split the data into evenly-sized numbers of rows.
+{: .noteIcon}
 
 You'll find detailed descriptions of these steps in the examples in the [Bulk HFile Import Examples](tutorials_ingest_importexampleshfile.html) topic of this tutorial:
 * [Example 1: Automatic Splitting](tutorials_ingest_importexampleshfile.html#AutoExample) shows how to use the automatic splits computation built into the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure.
