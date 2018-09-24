@@ -61,12 +61,12 @@ The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FRO
     <tbody>
         <tr>
             <td class="CodeFont">schemaName</td>
-            <td>The name of the schema of the table in which to import.</td>
+            <td>The name of the schema of the table into which to import.</td>
             <td class="CodeFont">SPLICE</td>
         </tr>
         <tr>
             <td class="CodeFont">tableName</td>
-            <td>The name of the table in which to import</td>
+            <td>The name of the table into which to import.</td>
             <td class="CodeFont">playerTeams</td>
         </tr>
         <tr>

@@ -72,12 +72,12 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td rowspan="2" class="BoldFont">Table Info</td>
             <td class="CodeFont">schemaName</td>
-            <td>The name of the schema of the table in which to import.</td>
+            <td>The name of the schema of the table into which to import.</td>
             <td class="CodeFont">SPLICE</td>
         </tr>
         <tr>
             <td class="CodeFont">tableName</td>
-            <td>The name of the table in which to import</td>
+            <td>The name of the table into which to import.</td>
             <td class="CodeFont">playerTeams</td>
         </tr>
         <tr>

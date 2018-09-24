@@ -65,17 +65,17 @@ This table includes a brief description of each parameter; additional informatio
     <tbody>
         <tr>
             <td class="CodeFont">schemaName</td>
-            <td>The name of the schema of the table in which to import.</td>
+            <td>The name of the schema of the table into which to import.</td>
             <td class="CodeFont">SPLICE</td>
         </tr>
         <tr>
             <td class="CodeFont">tableName</td>
-            <td>The name of the table in which to import</td>
+            <td>The name of the table into which to import.</td>
             <td class="CodeFont">playerTeams</td>
         </tr>
          <tr>
              <td class="CodeFont">indexName</td>
-             <td>The name of the index in which to import</td>
+             <td>The name of the index into which to import.</td>
              <td class="CodeFont">playerTeamsIdx</td>
          </tr>
        <tr>
@@ -84,27 +84,12 @@ This table includes a brief description of each parameter; additional informatio
             <td class="CodeFont">'ID, TEAM'</td>
         </tr>
         <tr>
-            <td class="CodeFont">fileOrDirectoryName</td>
-            <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
-            <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
+            <td class="CodeFont">fileName</td>
+            <td><p>The name of the file that you want to import.</p>
+                <p>On a cluster, the file to be imported <code>MUST be on S3, HDFS (or
             MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
             </td>
-            <td class="CodeFont">
-                <p>/data/mydata/mytable.csv</p>
-                <p>'s3a://splice-benchmark-data/flat/TPCH/100/region'</p>
-            </td>
-        </tr>
-        <tr>
-            <td class="CodeFont">oneLineRecords</td>
-            <td>A Boolean value that specifies whether (<code>true</code>) each record in the import file is contained in one input line, or (<code>false</code>) if a record can span multiple lines.
-            </td>
-            <td class="CodeFont">true</td>
-        </tr>
-        <tr>
-            <td class="CodeFont">charset</td>
-            <td>The character encoding of the import file. The default value is UTF-8.
-            </td>
-            <td class="CodeFont">null</td>
+            <td class="CodeFont">/data/mydata/mytable.csv</td>
         </tr>
         <tr>
             <td class="CodeFont">columnDelimiter</td>
@@ -138,7 +123,7 @@ This table includes a brief description of each parameter; additional informatio
             <td class="CodeFont">HH:mm:ss</td>
         </tr>
         <tr>
-            <td class="CodeFont">badRecordsAllowed</td>
+            <td class="CodeFont">maxBadRecords</td>
             <td>The number of rejected (bad) records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back. Specify 0 to indicate that no bad records are tolerated, and specify -1 to indicate that all bad records should be logged and allowed.
             </td>
             <td class="CodeFont">25</td>
@@ -146,23 +131,21 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td class="CodeFont">badRecordDirectory</td>
             <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
-            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from S3.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, it must be on S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
         <tr>
-            <td class="CodeFont">bulkImportDirectory  (outputDirectory)</td>
-            <td><p>For <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>, this is the name of the  directory into which the generated HFiles are written prior to being imported into your database.</p>
-            <p>For the <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> procedure, where it is named <code>outputDirectory</code>, this parameter specifies the directory into which the split keys are written.</p>
+            <td class="CodeFont">oneLineRecords</td>
+            <td>A Boolean value that specifies whether (<code>true</code>) each record in the import file is contained in one input line, or (<code>false</code>) if a record can span multiple lines.
             </td>
-            <td class="CodeFont"><code>hdfs:///tmp/test_hfile_import/</code></td>
+            <td class="CodeFont">true</td>
         </tr>
         <tr>
-            <td class="CodeFont">skipSampling</td>
-            <td><p>The <code>skipSampling</code> parameter is a Boolean value that specifies how you want the split keys used for the bulk HFile import to be computed. Set to <code>false</code> to have <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> automatically determine splits for you.</p>
-            <p>This parameter is only used with the <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> system procedure.</p>
+            <td class="CodeFont">charset</td>
+            <td>The character encoding of the import file. The default value is UTF-8.
             </td>
-            <td class="CodeFont">false</td>
+            <td class="CodeFont">null</td>
         </tr>
     </tbody>
 </table>
