@@ -14,13 +14,14 @@ folder: DeveloperTutorials/Import
 
 This section walks you through importing data into Splice Machine, in these topics:
 
-* [Overview of Importing Data](tutorials_ingest_importoverview.html)
-* [Import Parameters](tutorials_ingest_importparams.html)
-* [Handling Import Input Data](tutorials_ingest_importinput.html)
-* [Import Error Handling](tutorials_ingest_importerrors.html)
-* [Examples of Importing Data](tutorials_ingest_importexamples1.html)
-* [Examples of Using Bulk HFile Import](tutorials_ingest_importexampleshfile.html)
-* [Example: Importing TPCH Benchmark Data](tutorials_ingest_importexamplestpch.html)
+*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
+*  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
+*  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
+*  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
+*  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
+*  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
+*  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
+*  [Importing Data: Importing TPCH Data](tutorials_ingest_importexamplestpch.html)
 
 </div>
 </section>
