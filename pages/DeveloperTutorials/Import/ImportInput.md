@@ -1,4 +1,4 @@
-w---
+---
 title: "Importing Data: Input Data Handling"
 summary: Detailed information about input data handling during ingestion.
 keywords: import, load data, import data, importing from, ingest, input parameters, compression, encoding, separator
