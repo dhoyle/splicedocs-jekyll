@@ -152,11 +152,11 @@ values in Splice Machine.
                     </tr>
                     <tr>
                         <td>Smallest <code>TIMESTAMP</code> value</td>
-                        <td><code>1677-09-21-00.12.44.000000</code></td>
+                        <td><code>0000-00-00-00.00.00.000000</code></td>
                     </tr>
                     <tr>
                         <td>Largest <code>TIMESTAMP</code> value</td>
-                        <td><code>2262-04-11-23.47.16.999999</code></td>
+                        <td><code>9999-12-31-23.59.59.999999</code></td>
                     </tr>
                 </tbody>
             </table>
@@ -383,4 +383,3 @@ Machine.
             </table>
 </div>
 </section>
-

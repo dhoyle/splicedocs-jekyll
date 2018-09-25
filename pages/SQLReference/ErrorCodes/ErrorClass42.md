@@ -1306,10 +1306,9 @@ folder: SQLReference/ErrorCodes
                     </tr>
                     <tr>
                         <td><code>44003</code></td>
-                        <td>Timestamp '<span class="VarName">&lt;dateOrTimestamp&gt;</span>' is out of range (~ from 21 Sep 1677 00:12:44 GMT to 11 Apr 2262 23:47:16 GMT).</td>
+                        <td>Timestamp '<span class="VarName">&lt;dateOrTimestamp&gt;</span>' is out of range (~ from 0000-00-00 00:00:00 GMT to 9999-12-31 23:59:59 GMT).</td>
                     </tr>
                 </tbody>
             </table>
 </div>
 </section>
-
