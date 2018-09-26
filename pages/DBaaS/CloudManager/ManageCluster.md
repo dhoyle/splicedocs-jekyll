@@ -19,7 +19,7 @@ class="ConsoleLink">Cluster Management</span> screen, which include:
 * [Reconfiguring cluster access](#reconfiguring)
 * [Resizing your cluster](#resizing)
 * [Deleting your cluster](#deleting)
-* [Using Zeppelin and the Database Console with your cluster](working)
+* [Using Zeppelin and the Database Console with your cluster](#working)
 
 ## The Cluster Management Screen
 
@@ -41,8 +41,8 @@ similar resource usage graphs displayed:
 ## Modifying Your Cluster   {#modifying}
 
 Your dashboard features three cluster modification choices; you can
-[Reconfiguring](reconfiguring), [Resizing](Resizing), or
-[Deleting](Deleting) your cluster by clicking one of the buttons near
+[Reconfiguring](#reconfiguring), [Resizing](#resizing), or
+[Deleting](#deleting) your cluster by clicking one of the buttons near
 the top-left of your Dashboard screen:
 
 ![](images/DashboardButtons.png){: .indentedTightSpacing}
@@ -115,4 +115,3 @@ letting you know that your cluster creation was successful.
 
 </div>
 </section>
-

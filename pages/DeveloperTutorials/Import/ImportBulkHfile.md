@@ -5,7 +5,7 @@ keywords: import, ingest, input parameters, compression, encoding, separator
 toc: false
 product: all
 sidebar: tutorials_sidebar
-permalink: tutorials_ingest_importbulkHfile.html
+permalink: tutorials_ingest_importbulkhfile.html
 folder: DeveloperTutorials/Import
 ---
 <section>

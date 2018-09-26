@@ -88,7 +88,7 @@ This section describes the following methods of the `SplicemachineContext` class
 
 ### analyzeSchema {#analyzeSchema}
 
-This method collects statistics for an entire schema; it is the same as using the [`ANALYZE SCHEMA`](cmdlineref_analyze.html`) `splice>` command line.
+This method collects statistics for an entire schema; it is the same as using the [`ANALYZE SCHEMA`](cmdlineref_analyze.html) `splice>` command line.
 
 <div class="fcnWrapperWide" markdown="1"><pre>
 analyzeSchema(schemaName: String): Unit</pre>
@@ -106,7 +106,7 @@ The name of the schema that you want analyzed.
 
 ### analyzeTable
 
-This method collects statistics for a specific table; it is the same as using the [`ANALYZE TABLE`](cmdlineref_analyze.html`) `splice>` command line.
+This method collects statistics for a specific table; it is the same as using the [`ANALYZE TABLE`](cmdlineref_analyze.html) `splice>` command line.
 
 <div class="fcnWrapperWide" markdown="1"><pre>
 analyzeTable( tableName: String,

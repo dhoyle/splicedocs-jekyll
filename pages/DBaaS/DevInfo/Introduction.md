@@ -88,7 +88,7 @@ To use the `splice>` command line interface with your cloud-managed database, fo
        myaccount-mycluster.splicemachine.io
    ````
 
-We recommend installing `rlwrap` to use with `sqlshell`. The [rlwrap utility](tutorials_cli_rlwrap.html) allows you to access and edit command lines that you've previously entered, and can save a lot of time.
+We recommend installing `rlwrap` to use with `sqlshell`. The [rlwrap utility](cmdlineref_using_rlwrap.html) allows you to access and edit command lines that you've previously entered, and can save a lot of time.
 {: .noteNote}
 
 </div>

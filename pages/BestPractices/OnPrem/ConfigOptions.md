@@ -29,12 +29,12 @@ The following table provides summary information about (some of) the configurati
         <tr>
             <td class="CodeFont">splice.authentication</td>
             <td class="CodeFont">NATIVE</td>
-            <td>This is documented in our <a href="tutorials_security_authentication.html.html">Configuring Authentication</a> topic.</td>
+            <td>This is documented in our <a href="tutorials_security_authentication.html">Configuring Authentication</a> topic.</td>
         </tr>
         <tr>
             <td class="CodeFont">splice.authentication.native.algorithm</td>
             <td>SHA-512</td>
-            <td>This is documented in our <a href="tutorials_security_authentication.html.html">Configuring Authentication</a> topic.</td>
+            <td>This is documented in our <a href="tutorials_security_authentication.html">Configuring Authentication</a> topic.</td>
         </tr>
         <tr>
             <td class="CodeFont">splice.client.write.maxDependentWrites</td>

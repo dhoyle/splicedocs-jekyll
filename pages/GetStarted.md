@@ -259,7 +259,7 @@ Our [Developer Tutorials](tutorials_intro.html) includes deep dives into more co
             <td>Introduces the *Splice Machine Database Console,* which is a browser-based tool that you can use to monitor database queries on your cluster in real time.</td>
         </tr>
         <tr>
-            <td class="ItalicFont"><a href="tutorials_connectjdbc_intro.html">Connecting via JDBC</a> and <a href="tutorials_connectodbc_intro">Connecting via ODBC</a></td>
+            <td class="ItalicFont"><a href="tutorials_connectjdbc_intro.html">Connecting via JDBC</a> and <a href="tutorials_connectodbc_intro.html">Connecting via ODBC</a></td>
             <td>Include examples in different programming languages that show you how to programmatically connect to your database.</td>
         </tr>
         <tr>

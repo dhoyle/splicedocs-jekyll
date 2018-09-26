@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInSysProcs
 
 The `SYSCS_UTIL.BULK_IMPORT_HFILE` system procedure imports data into
 your Splice Machine database by first generating HFiles and then
-importing those HFiles. Our *Importing Data Tutorial* includes a section about [using bulk HFile import](tutorials_ingest_importbulkHfile.html) that explains the process.
+importing those HFiles. Our *Importing Data Tutorial* includes a section about [using bulk HFile import](tutorials_ingest_importbulkhfile.html) that explains the process.
 
 Our HFile data import procedure leverages HBase bulk loading, which
 allows it to import your data at a faster rate; however, using this

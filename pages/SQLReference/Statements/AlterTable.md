@@ -31,7 +31,7 @@ ALTER TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
           UNIQUE constraint-name |
           CHECK constraint-name
    }
-   ALTER [ COLUMN ] <a href="sqlref_statements_altertable#ColumnAlteration">column-alteration</a>
+   ALTER [ COLUMN ] <a href="sqlref_statements_altertable.html#ColumnAlteration">column-alteration</a>
    }</pre>
 
 </div>
