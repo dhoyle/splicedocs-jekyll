@@ -17,7 +17,7 @@ This topic contains example walkthroughs of using the `SYSCS_UTIL.BULK_IMPORT_HF
 * [Example 1](#AutoExample) uses the automatic table splitting built into `SYSCS_UTIL.BULK_IMPORT_HFILE` to import a table into your Splice Machine database.
 * [Example 2](#ManualExample) uses the `SYSCS_UTIL.COMPUTE_SPLIT_TABLE_OR_INDEX` system procedure to calculate the table splits before calling `SYSCS_UTIL.BULK_IMPORT_HFILE` to import a table into your Splice Machine database.
 
-For general information about using Bulk HFile Import, see the [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkHfile.html) topic in this tutorial section.
+For general information about using Bulk HFile Import, see the [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) topic in this tutorial section.
 
 ## Example 1: Bulk HFile Import with Automatic Table Splitting {#AutoExample}
 

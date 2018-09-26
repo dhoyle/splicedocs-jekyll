@@ -110,7 +110,7 @@ The following table summarizes the main sections of our documentation:
             <td colspan="3" class="Separator"> </td>
         </tr>
         <tr>
-            <td rowspan="4" class="MenuName">DB-Service Only</td>
+            <td rowspan="3" class="MenuName">DB-Service Only</td>
             <td><a href="dbaas_intro.html">Welcome</a></td>
             <td>The content in this section is specific to our cloud-managed database service product.</td>
         </tr>
@@ -121,10 +121,6 @@ The following table summarizes the main sections of our documentation:
         <tr>
             <td><a href="dbaas_zep_intro.html">Using Zeppelin</a></td>
             <td>A guide to using Zeppelin notebooks to work with your Splice Machine databases.</td>
-        </tr>
-        <tr>
-            <td><a href="dbaas_info_release.html">Release Information</a></td>
-            <td>Release notes, workarounds, and other information about this database-as-service release.</td>
         </tr>
         <tr>
             <td colspan="3" class="Separator"> </td>

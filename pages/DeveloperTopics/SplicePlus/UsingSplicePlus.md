@@ -25,8 +25,8 @@ class="AppCommand">splice&gt;</span> prompt to run SQL commands.
 
 If you are already familiar with PL/SQL from using it with Oracle or
 another database, Splice Machine PL/SQL is almost exactly the same. The
-[Splice\*Plus language](tutorials_spliceplus_lang.html) topic provides a quick review of the
-supported language structures, and the [Migrating to Splice\*Plus](tutorials_spliceplus_migrating.html) topic describes any important differences between Splice*Plus and Oracle's PL/SQL implementations.
+[Splice\*Plus language](developers_spliceplus_lang.html) topic provides a quick review of the
+supported language structures, and the [Migrating to Splice\*Plus](developers_spliceplus_migrating.html) topic describes any important differences between Splice*Plus and Oracle's PL/SQL implementations.
 {: .noteImportant}
 
 The remainder of this topic includes these sections:

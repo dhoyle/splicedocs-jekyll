@@ -31,10 +31,6 @@ Machine On-Premise-Database product.
     </thead>
     <tbody>
         <tr>
-            <td><a href="onprem_info_release.html">Release Notes</a></td>
-            <td>Release notes, workarounds, and other information about this release.</td>
-        </tr>
-        <tr>
             <td><a href="onprem_info_requirements.html">Requirements</a>
             </td>
             <td>Summarizes the hardware and software requirements for Splice Machine running on a cluster or on a standalone computer.</td>

@@ -39,7 +39,7 @@ includes these steps:
 * Click the first <span class="CalloutFont">READY</span> button to
   create the schema and a table:
 
-  ![](images/zepSimple1.png){: .indentedTightSpacing}
+  ![](images/ZepSimple1.png){: .indentedTightSpacing}
 
 * Import data (in this case, TPCH1 benchmark data) into the table, then
   verify the data load by counting the number of records in the table:
@@ -53,7 +53,7 @@ includes these steps:
 
 * Collect statistics, to improve query planning, and then run a query:
 
-  ![](images/zepSimple3.png){: .indentedTightSpacing}
+  ![](images/ZepSimple3.png){: .indentedTightSpacing}
 
 After the query runs, you can take advantage of Zeppelin's built-in
 visualization tools to display the query results in various graphical

@@ -19,7 +19,7 @@ The *Using* section of the guide will help you to get started, in the topics:
 
 * [Getting Started with the CLI](cmdlineref_using_getstarted.html) introduces you to using the CLI.
 * [Command Line Syntax](cmdlineref_using_cli.html) summarizes command line parameters and syntax.
-* [Scripting the CLI](cmdlineref_using_scriptingcli.html) shows you how to script a set of commands to submit via the CLI.
+* [Scripting the CLI](cmdlineref_using_cliscripting.html) shows you how to script a set of commands to submit via the CLI.
 * [Using RLWrap with splice>](cmdlineref_using_rlwrap.html) summarizes the RLWrap commands you can use to enhance the CLI.
 
 The remainder of this guide contains a reference topic page for each Splice Machine
