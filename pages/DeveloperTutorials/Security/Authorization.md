@@ -19,7 +19,7 @@ users.
 The on-premise version of Splice Machine offers several different
 authentication mechanisms for your database, as described in the
 [About Splice Machine
-Authentication](tutorials_security_authentication.html.html) topic.
+Authentication](tutorials_security_authentication.html) topic.
 Native authentication is the default mechanism.
 {: .noteNote}
 
@@ -175,7 +175,7 @@ user.
 ## See Also
 
 * [Configuring Splice Machine
-  Authentication](tutorials_security_authentication.html.html)
+  Authentication](tutorials_security_authentication.html)
 * [`CREATE FUNCTION`](sqlref_statements_createfunction.html)
 * [`CREATE PROCEDURE`](sqlref_statements_createprocedure.html)
 * [`CREATE ROLE`](sqlref_statements_createrole.html)
