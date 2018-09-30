@@ -44,8 +44,6 @@ This procedure is one of several built-in system procedures provided by Splice M
 
 ## Parameters
 
-The following table summarizes the parameters used by `SYSCS_UTIL.IMPORT_DATA` and other Splice Machine data importation procedures. Each parameter name links to a more detailed description in our [Importing Data Tutorial](tutorials_ingest_importparams.html).
-
 This table includes a brief description of each parameter; additional information is available in the [Import Parameters](tutorials_ingest_importparams.html) topic of our *Importing Data* tutorial.
 
 <table>

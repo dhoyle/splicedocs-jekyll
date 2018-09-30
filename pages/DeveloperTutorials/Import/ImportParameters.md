@@ -173,10 +173,8 @@ The following table summarizes these parameters. Each parameter name links to it
         </tr>
         <tr>
             <td rowspan="2" class="BoldFont">Bulk HFile Import</td>
-            <td class="CodeFont"><a href="tutorials_ingest_importparams.html#bulkImportDirectory">bulkImportDirectory  (outputDirectory)</a></td>
-            <td><p>For <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>, this is the name of the  directory into which the generated HFiles are written prior to being imported into your database.</p>
-            <p>For the <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> procedure, where it is named <code>outputDirectory</code>, this parameter specifies the directory into which the split keys are written.</p>
-            </td>
+            <td class="CodeFont"><a href="tutorials_ingest_importparams.html#bulkImportDirectory">bulkImportDirectory</a></td>
+            <td>For <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>, this is the name of the  directory into which the generated HFiles are written prior to being imported into your database.</td>
             <td class="CodeFont"><code>hdfs:///tmp/test_hfile_import/</code></td>
         </tr>
         <tr>
@@ -649,7 +647,7 @@ imported into your database. The generated files are automatically removed after
 If you're using this procedure with our On-Premise database product, on a cluster with Cloudera Key Management Service (KMS) enabled, there are a few extra configuration steps required. Please see [this troubleshooting note](bestpractices_onprem_importing.html#BulkImportKMS) for details.
 {: .noteIcon}
 
-Please review the [Bulk HFile Import Walkthrough](tutorials_ingest_importexampleshfile.html) topic to understand how importing bulk HFiles works.
+Please review the [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) topic to understand how importing bulk HFiles works.
 
 ### `skipSampling` {#skipSampling}
 

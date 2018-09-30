@@ -11,7 +11,7 @@ folder: DeveloperTutorials/Import
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Importing Data: Using Bulk HFile Import
-This topic describes how to import data using HFiles into your Splice
+This topic describes how to import data (tables or indexes) using HFiles into your Splice
 Machine database with the [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) system procedure. This process significantly improves data loading performance by temporarily splitting your tables and indexes into Hadoop HFiles and loading your data from those files.
 
 Bulk importing HFiles boosts import performance; however, constraint checking is not applied to the imported data. If you need constraint checking, use one of our standard import procedures, which are described in the [introduction](tutorials_ingest_importoverview.html) to this tutorial.
@@ -56,23 +56,21 @@ key information. Our [Configuring an S3 Bucket for Splice Machine Access](tutori
 ## How to Split Your Data into HFiles {#HowToSplit}
 
 Before it generate HFiles, `SYSCS_UTIL.BULK_IMPORT_HFILE` must determine how to split the data
-into multiple regions by looking at the primary keys and figuring out
-which values will yield relatively evenly-sized splits; the objective is
-to compute splits such that roughly the same number of table rows will
-end up in each split.
-
-You have two choices for determining the table splits:
-
-* You can have `SYSCS_UTIL.BULK_IMPORT_HFILE` scan and analyze your table to determine the best splits automatically by calling `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `false`. It samples and analyzes the data in your file and then splits the data into temporary HFiles based on that analysis.
-
-* You can call the [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) to "manually" compute and perform the splits yourself, and then call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `true`. Computing the splits requires these steps, which are described in the next section, [Manually Computing Table Splits](#ManualSplits).
+into multiple HFiles based on *split keys*, which determine how the data will be distributed into
+regions. The objective is to compute splits such that roughly the same number of table rows will
+end up in each region.
 
 How your data is split into HFiles has a significant impact on performance; again, the goal is to split the data into evenly-sized numbers of rows.
 {: .noteIcon}
 
-You'll find detailed descriptions of these steps in the examples in the [Bulk HFile Import Examples](tutorials_ingest_importexampleshfile.html) topic of this tutorial:
-* [Example 1: Automatic Splitting](tutorials_ingest_importexampleshfile.html#AutoExample) shows how to use the automatic splits computation built into the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure.
-* [Example 2: Manual Splitting](tutorials_ingest_importexampleshfile.html#ManualExample) shows how to pre-split your data using `SPLIT_TABLE_OR_INDEX` before performing the import.
+You have these choices for determining how the data is split:
+
+* You can call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `false`; this procedure then samples and analyzes the data in your file and splits the data into temporary HFiles based on that analysis. [Example 1: Automatic Splitting](tutorials_ingest_importexampleshfile.html#autosplit) shows how to use the automatic splits computation built into the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure.
+
+* You can *pre-split* your data by first creating a CSV file that specifies the split keys to use to perform the pre-splits, and then calling the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) to pre-split your table or index file. You then call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `true` to import the data. [Example 2: Computed Pre-Splits](tutorials_ingest_importexampleshfile.html#computesplit) shows how to pre-split your data using `SPLIT_TABLE_OR_INDEX` before performing the import.
+
+* If you want even more control over how your data is split into evenly-sized regions, you can specify the row boundaries for pre-splitting yourself in a CSV file. You then
+supply that file as a parameter to the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedure, which performs the pre-splitting, after which you call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `true`. We recommend that only expert customers use this procedure.
 
 ## See Also
 
@@ -87,6 +85,8 @@ You'll find detailed descriptions of these steps in the examples in the [Bulk HF
 *  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 *  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
+*  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
+*  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html)
 
 </div>
 </section>
