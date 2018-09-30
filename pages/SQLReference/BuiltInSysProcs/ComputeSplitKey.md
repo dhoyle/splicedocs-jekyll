@@ -12,11 +12,11 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.COMPUTE_SPLIT_KEY
 
-Use the `SYSCS_UTIL.COMPUTE_SPLIT_KEY` system procedure to compute
-the split keys for a table or index prior to calling the &nbsp; [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedure to split the data into HFiles. Once you've done that, call  &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
-system procedure to import your data in HFile format.
+You can use the `SYSCS_UTIL.COMPUTE_SPLIT_KEY` system procedure to compute
+the split keys for a table or index prior to calling the &nbsp; [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedure to pre-split the data that you're importing into HFiles.
 
-The [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) system procedure has largely replaced the use of `SYSCS_UTIL.COMPUTE_SPLIT_KEY` and `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` procedures; it combines those two procedures into one with a simplified interface. We strongly encourage you to use [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) instead of this procedure.
+Splice Machine recommends using the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) system procedure instead of this one unless you're an expert user. The combination of using `SYSCS_UTIL.COMPUTE_SPLIT_KEY` with `SYSCS_UTIL.COMPUTE_SPLIT_KEY` is exactly equivalent to using `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`.
+{: .noteIcon}
 {: .noteIcon}
 
 For more information about splitting your tables and indexes into HFiles, see the [Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) section of our *Importing Data* tutorial.
@@ -47,8 +47,6 @@ For more information about splitting your tables and indexes into HFiles, see th
 
 ## Parameters
 
-The following table summarizes the parameters used by `SYSCS_UTIL.COMPUTE_SPLIT_KEY` and other Splice Machine data importation procedures. Each parameter name links to a more detailed description in our [Importing Data Tutorial](tutorials_ingest_importparams.html).
-
 The parameter values that you pass into this procedure should match the values that you use when you subsequently call the
  &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure to perform the import.
 {: .noteIcon}
@@ -62,7 +60,6 @@ This table includes a brief description of each parameter; additional informatio
     <col />
     <thead>
         <tr>
-            <th>Category</th>
             <th>Parameter</th>
             <th>Description</th>
             <th>Example Value</th>
@@ -70,7 +67,6 @@ This table includes a brief description of each parameter; additional informatio
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2" class="BoldFont">Table Info</td>
             <td class="CodeFont">schemaName</td>
             <td>The name of the schema of the table into which to import.</td>
             <td class="CodeFont">SPLICE</td>
@@ -81,7 +77,6 @@ This table includes a brief description of each parameter; additional informatio
             <td class="CodeFont">playerTeams</td>
         </tr>
         <tr>
-            <td rowspan="2" class="BoldFont">Data Location</td>
             <td class="CodeFont">insertColumnList</td>
             <td>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</td>
             <td class="CodeFont">'ID, TEAM'</td>
@@ -99,7 +94,6 @@ This table includes a brief description of each parameter; additional informatio
             </td>
         </tr>
         <tr>
-            <td rowspan="7" class="BoldFont">Data Formats</td>
             <td class="CodeFont">oneLineRecords</td>
             <td>A Boolean value that specifies whether (<code>true</code>) each record in the import file is contained in one input line, or (<code>false</code>) if a record can span multiple lines.
             </td>
@@ -143,7 +137,6 @@ This table includes a brief description of each parameter; additional informatio
             <td class="CodeFont">HH:mm:ss</td>
         </tr>
         <tr>
-            <td rowspan="2" class="BoldFont">Problem Logging</td>
             <td class="CodeFont">badRecordsAllowed</td>
             <td>The number of rejected (bad) records that are tolerated before the import fails. If this count of rejected records is reached, the import fails, and any successful record imports are rolled back. Specify 0 to indicate that no bad records are tolerated, and specify -1 to indicate that all bad records should be logged and allowed.
             </td>
@@ -175,34 +168,22 @@ This table includes a brief description of each parameter; additional informatio
 </table>
 
 ## Usage {#Usage}
+This procedure generates a split keys file in CSV format, which you pass into the `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`. That procedure pre-splits the data that you then import with [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html).
 
-The [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure needs the data that you're importing split into multiple HFiles before it actually imports the data into your database. You can achieve these splits in three ways:
+The functionality of the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`] and [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedures has been combined into one simplified procedure: [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html). We recommend using the simplified procedure, which performs exactly the same functions.
+{: .noteIcon}
 
-* You can call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter to `false`. `SYSCS_UTIL.BULK_IMPORT_HFILE` samples the data to determine the splits, then splits the data into multiple HFiles, and then imports the data.
-
-* You can split the data into HFiles with the
- &nbsp;[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`] procedure, which both computes the keys and performs the splits. You then call
- &nbsp;`SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter to `true` to import your data.
-
-* You can split the data into HFiles by first calling this procedure,  &nbsp;`SYSCS_UTIL.COMPUTE_SPLIT_KEY`, and then  calling the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedure to split the table or index.  You then call
- &nbsp;`SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter to `true` to import your data.
-
-  We strongly encourage you to use the simpler &nbsp;`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX` procedure instead of using `SYSCS_UTIL.COMPUTE_SPLIT_KEY` combined with `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`.
-  {: .noteIcon}
-
-In all cases, `SYSCS_UTIL.BULK_IMPORT_HFILE` automatically deletes the HFiles after the import process has completed.
-
-The [Bulk HFile Import Examples](tutorials_ingest_importexampleshfile.html) section of our *Importing Data Tutorial* describes how these methods differ and provides examples of using them to import data.
-
-## Examples
-
-The [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html) topic walks you through several examples of importing data with bulk HFiles.
+The [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) section of our *Importing Data Tutorial* describes the different methods for using our bulk HFile import functionality.
 
 ## See Also
 
-* [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
-* [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
-* [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html)
+*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
+*  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
+*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
+*  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
+*  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
+*  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
+*  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html)
 
 </div>
 </section>
