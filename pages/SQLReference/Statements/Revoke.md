@@ -259,10 +259,24 @@ Only the database owner can revoke a role.
 
 ## About Grantees   {#AboutGrantees}
 
-A grantee can be one or more specific users, one or more specific roles,
+A grantee can be one or more specific users or groups, one or more specific roles,
 or all users (`PUBLIC`). Either the object owner or the database owner
-can grant privileges to a user or to a role. Only the database owner can
-grant a role to a user or to another role.
+can grant privileges to a user or to a role.
+
+<div class="noteNote" markdown="1">
+When using an LDAP Group name in a `GRANT` or `REVOKE` statement: if the group name contains characters other than alphanumerics or the underscore character (<span class="HighlightedCode">A-Z, a-z, 0-9, _</span>), you must:
+
+* Enclose the group name in double quotes
+* Convert all alphabetic characters in the group name to uppercase.
+
+For example, if you are granting rights to an LDAP Group with name <span class="Example">This-is-my-LDAP-Group</span>, you would use a statement like this:
+   ```
+   GRANT SELECT ON TABLE Salaries TO "THIS-IS-MY-LDAP-GROUP";
+   ```
+   {: .Example}
+</div>
+
+Only the database owner can grant a role to a user or to another role.
 
 Here's the syntax:
 
