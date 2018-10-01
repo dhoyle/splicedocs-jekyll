@@ -149,6 +149,19 @@ memberOf: cn=mygroup,ou=groups,dc=splicemachine,dc=color</pre>
 
 Splice Machine treats <span class="Example">user3</span>, <span class="Example">`foo`</span>, and <span class="Example">`mygroup`</span> as the LDAP groups to which `user3` belongs. All privileges granted to those three groups are inherited by the LDAP user `user3`.
 
+### LDAP Group Names and Splice Machine {#ldapgroupnames}
+
+When using an LDAP Group name in a `GRANT` or `REVOKE` statement: if the group name contains characters other than alphanumerics or the underscore character (<span class="HighlightedCode">A-Z, a-z, 0-9, _</span>), you must:
+
+* Enclose the group name in double quotes
+* Convert all alphabetic characters in the group name to uppercase.
+
+For example, if you are granting rights to an LDAP Group with name <span class="Example">This-is-my-LDAP-Group</span>, you would use a statement like this:
+   ```
+   GRANT SELECT ON TABLE Salaries TO "THIS-IS-MY-LDAP-GROUP";
+   ```
+   {: .Example}
+
 ### Connecting with JDBC and LDAP
 
 You can then use our JDBC driver to connect to your database with
