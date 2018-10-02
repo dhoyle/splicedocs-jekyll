@@ -84,7 +84,6 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td class="CodeFont">fileOrDirectoryName</td>
             <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
-            <p class="notePlain">The <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> procedure only works with single files; <strong>you cannot specify a directory name</strong> when calling <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code>.</p>
             <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
             MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
             </td>

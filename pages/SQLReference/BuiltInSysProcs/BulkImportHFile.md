@@ -61,7 +61,6 @@ This table includes a brief description of each parameter; additional informatio
     <col />
     <col />
     <col />
-    <col />
     <thead>
         <tr>
             <th>Parameter</th>
@@ -159,17 +158,20 @@ This table includes a brief description of each parameter; additional informatio
         </tr>
         <tr>
             <td class="CodeFont">skipSampling</td>
-            <td><p>The <code>skipSampling</code> parameter is a Boolean value that specifies how you want the split keys used for the bulk HFile import to be computed. Set to <code>false</code> to have <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> automatically determine splits for you.</p>
-                <p>If `skipSampling` is `true`, you need to use the &nbsp;&nbsp;[SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) (recommended) or the &nbsp;&nbsp; [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html) system procedure (for expert users) to pre-compute splits for your table before calling `SYSCS_UTIL.BULK_IMPORT_HFILE`.</p>
-                <p>If `skipSampling` is `false`, then `SYSCS_UTIL.BULK_IMPORT_HFILE` samples your input data and computes the table splits for you by performing the following steps. It: <p>
+            <td>
+                <p>The <code>skipSampling</code> parameter is a Boolean value that specifies how you want the split keys used for the bulk HFile import to be computed. Set to <code>false</code> to have <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> automatically determine splits for you.</p>
+
+                <p>If <code>skipSampling</code> is <code>true</code>, you need to use <a href="sqlref_sysprocs_splittable.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX</code></a> (recommended) or <a href="sqlref_sysprocs_splittableatpoints.html"><code>SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code></a> (for expert users) to pre-compute splits for your table before calling <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>.</p>
+
+                <p>If <code>skipSampling</code> is <code>false</code>, then <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code> samples your input data and computes the table splits for you by performing the following steps. It: </p>
                 <ol>
                     <li>Scans (sample) the data.</li>
                     <li>Collects a rowkey histogram.</li>
                     <li>Uses that histogram to calculate the split key for the table.</li>
                     <li>Uses the calculated split key to split the table into HFiles.</li>
                 </ol>
-                <p>This allows you more control over the splits, but adds a layer of complexity. You can learn about computing splits for your input data in the [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) topic of our *Importing Data* tutorial.</p>
-                </td>
+                <p>This allows you more control over the splits, but adds a layer of complexity. You can learn about computing splits for your input data in the <a href="tutorials_ingest_importbulkhfile.html">Importing Data: Using Bulk HFile Import</a> topic of our *Importing Data* tutorial.</p>
+            </td>
             <td class="CodeFont">false</td>
         </tr>
     </tbody>
