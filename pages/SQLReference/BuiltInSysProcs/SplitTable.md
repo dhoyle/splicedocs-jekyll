@@ -78,7 +78,7 @@ This table includes a brief description of each parameter; additional informatio
        <tr>
             <td class="CodeFont">columnList</td>
             <td>A comma-separated list of the columns used for split keys.</td>
-            <td>See the [Example](#Example) below.</td>
+            <td>See the <a href="#Example">Example</a> below.</td>
         </tr>
         <tr>
             <td class="CodeFont">fileName</td>
