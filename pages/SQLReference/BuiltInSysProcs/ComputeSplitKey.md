@@ -149,7 +149,6 @@ This table includes a brief description of each parameter; additional informatio
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
         <tr>
-            <td rowspan="2" class="BoldFont">Bulk HFile Import</td>
             <td class="CodeFont">bulkImportDirectory  (outputDirectory)</td>
             <td><p>For <code>SYSCS_UTIL.BULK_IMPORT_HFILE</code>, this is the name of the  directory into which the generated HFiles are written prior to being imported into your database.</p>
             <p>For the <code>SYSCS_UTIL.COMPUTE_SPLIT_KEY</code> procedure, where it is named <code>outputDirectory</code>, this parameter specifies the directory into which the split keys are written.</p>
