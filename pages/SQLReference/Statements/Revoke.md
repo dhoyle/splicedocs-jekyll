@@ -269,9 +269,9 @@ When using an LDAP Group name in a `GRANT` or `REVOKE` statement: if the group n
 * Enclose the group name in double quotes
 * Convert all alphabetic characters in the group name to uppercase.
 
-For example, if you are granting rights to an LDAP Group with name <span class="Example">This-is-my-LDAP-Group</span>, you would use a statement like this:
+For example, if you are revoking rights for an LDAP Group with name <span class="Example">This-is-my-LDAP-Group</span>, you would use a statement like this:
    ```
-   GRANT SELECT ON TABLE Salaries TO "THIS-IS-MY-LDAP-GROUP";
+   REVOKE SELECT ON TABLE Salaries FROM "THIS-IS-MY-LDAP-GROUP";
    ```
    {: .Example}
 </div>
