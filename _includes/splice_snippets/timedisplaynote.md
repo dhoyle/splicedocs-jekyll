@@ -1,1 +1,1 @@
-Splice Machine displays `TIME` and `TIMESTAMP` values using the current time zone for the server to which you are connected.
+Splice Machine displays `TIME` and `TIMESTAMP` values using the current time zone for the server to which you are connected. `DATE` values, however, are stored as fixed strings, and are not affected by the time zone of the server to which you are connected.
