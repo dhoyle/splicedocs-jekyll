@@ -12,9 +12,7 @@ folder: SQLReference/DataTypes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # TIMESTAMP
 
-The `TIMESTAMP` data type stores a combined &nbsp;
-[`TIME`](sqlref_builtinfcns_time.html) value that permits fractional
-seconds values of up to nine digits.
+The `TIMESTAMP` data type represents a combined date and time value. Splice Machine stores timestamp values with up to 6 fractional second digits in databases, and allows you to specify literal timestamp values with up to 9 fractional second digits.
 
 {% include splice_snippets/timedisplaynote.md %}{: .noteIcon}
 
