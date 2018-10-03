@@ -2,6 +2,7 @@
 title: TIME built-in SQL function
 summary: Built-in SQL function that returns the time part of a value
 keywords: date arithmetic, time function, time format
+compatible_level: 2.7
 toc: false
 product: all
 sidebar:  sqlref_sidebar

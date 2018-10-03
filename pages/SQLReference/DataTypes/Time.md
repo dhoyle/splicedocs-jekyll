@@ -3,6 +3,7 @@ title: TIME data type
 summary: The TIME data type provides for storage of a time-of-day value.
 keywords:
 toc: false
+compatible_level: 2.7
 product: all
 sidebar:  sqlref_sidebar
 permalink: sqlref_datatypes_time.html

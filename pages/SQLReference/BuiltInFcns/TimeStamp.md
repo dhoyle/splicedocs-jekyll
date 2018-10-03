@@ -3,6 +3,7 @@ title: TIMESTAMP built-in SQL function
 summary: Built-in SQL function that returns a timestamp from a pair of values
 keywords: timestamp function, timestamp format
 toc: false
+compatible_level: 2.7
 product: all
 sidebar:  sqlref_sidebar
 permalink: sqlref_builtinfcns_timestamp.html
