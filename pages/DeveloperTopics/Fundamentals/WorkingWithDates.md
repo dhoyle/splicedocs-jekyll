@@ -132,6 +132,9 @@ this release of Splice Machine:
         </tr>
     </tbody>
 </table>
+
+{% include splice_snippets/timedisplaynote.md %}{: .noteIcon}
+
 ## Date Arithmetic {#Arithmetic}
 
 Splice Machine provides simple arithmetic operations addition and
@@ -307,8 +310,8 @@ All of the following are in the *[SQL Reference
 Manual](sqlref_intro.html)*:
 
 * [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html)
-* [`DATE`](sqlref_builtinfcns_date.html)
-* [`DATE`](sqlref_builtinfcns_date.html) 
+* [`DATE` type](sqlref_datatypes_date.html)
+* [`DATE` function](sqlref_builtinfcns_date.html) 
 * [`DAY`](sqlref_builtinfcns_day.html) 
 * [`EXTRACT`](sqlref_builtinfcns_extract.html) 
 * [`LASTDAY`](sqlref_builtinfcns_day.html) 
@@ -318,8 +321,10 @@ Manual](sqlref_intro.html)*:
 * [`NEXTDAY`](sqlref_builtinfcns_day.html) 
 * [`NOW`](sqlref_builtinfcns_now.html)
 * [`QUARTER`](sqlref_builtinfcns_quarter.html)
-* [`TIME`](sqlref_builtinfcns_time.html)
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) 
+* [`TIME` type](sqlref_datatypes_time.html)
+* [`TIME` function](sqlref_datatypes_time.html)
+* [`TIMESTAMP` type](sqlref_builtinfcns_timestamp.html) 
+* [`TIMESTAMP` function](sqlref_builtinfcns_timestamp.html) 
 * [`TO_CHAR`](sqlref_builtinfcns_char.html) 
 * [`TO_DATE`](sqlref_builtinfcns_date.html)
 * [`WEEK`](sqlref_builtinfcns_week.html)

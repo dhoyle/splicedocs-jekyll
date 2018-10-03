@@ -1,114 +1,47 @@
-Therefore, datetime data types that contain time fields (TIME and
-TIMESTAMP) are maintained in Universal Coordinated Time (UTC), with
-an explicit or implied time zone part.
 
-The time zone part is an interval specifying the difference between
-UTC and the actual date and time in the time zone represented by
-the time or timestamp data item. The time zone displacement is
-defined as
+* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html)
+* [`CURRENT_TIME`](sqlref_builtinfcns_currenttime.html)
+* [`DATE` type](sqlref_datatypes_date.html)
+* [`DATE` function](sqlref_builtinfcns_date.html) 
+* [`DAY`](sqlref_builtinfcns_day.html) 
+* [`EXTRACT`](sqlref_builtinfcns_extract.html) 
+* [`LASTDAY`](sqlref_builtinfcns_day.html) 
+* [`MONTH`](sqlref_builtinfcns_month.html)
+* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html)
+* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) 
+* [`NEXTDAY`](sqlref_builtinfcns_day.html) 
+* [`NOW`](sqlref_builtinfcns_now.html)
+* [`QUARTER`](sqlref_builtinfcns_quarter.html)
+* [`TIME` type](sqlref_datatypes_time.html)
+* [`TIME` function](sqlref_datatypes_time.html)
+* [`TIMESTAMP` type](sqlref_datatypes_timestamp.html) 
+* [`TIMESTAMP` function](sqlref_builtinfcns_timestamp.html) 
+* [`TO_CHAR`](sqlref_builtinfcns_char.html) 
+* [`TO_DATE`](sqlref_builtinfcns_date.html)
+* [`WEEK`](sqlref_builtinfcns_week.html)
+* [Working with Dates](developers_fundamentals_dates.html)
 
-INTERVAL HOUR TO MINUTE
+Gene:: Gary please proceed with documenting this change when Mark is ready. Best way for customers to think about this is the DATE is a lot like a VARCHAR, but which can have date-operators applied to it.
 
-A TIME or TIMESTAMP that does not specify WITH TIME ZONE has an im-
-plicit time zone equal to the local time zone for the SQL-session.
-The value of time represented in the data changes along with the
-local time zone for the SQL-session. However, the meaning of the
-time does not change because it is effectively maintained in UTC.
-
-CAST
-
-2) The data type of the result of the <cast specification> is TD.
-
-3) If the <cast operand> is a <value expression>, then let SD be
-the underlying data type of the <value expression>.
-
-...let TV be the result of the <cast specification>
-
-1) If the <cast operand> is a <value expression>, then let SV be
-its value.
-
-9) If TD is the datetime data type DATE, then
-
-c) If SD is a timestamp, then TV is the year, month, and day
-<datetime field>s of SV adjusted to the implicit or explicit
-time zone displacement of SV.
-
-11)If TD is the datetime data type TIMESTAMP, then
-
-...
-b) If SD is a date, then the <datetime field>s hour, minute,
-and second of TV are set to 0 and the <datetime field>s year,
-month, and day of TV are set to their respective values in
-SV. If TD is specified WITH TIME ZONE, then the time zone
-fields of TV are set to the current time zone displacement of
-the SQL-session.
-
-
-Gene Davis
-13 days ago
-Gary please proceed with documenting this change when Mark is ready. Best way for customers to think about this is the DATE is a lot like a VARCHAR, but which can have date-operators applied to it.
-
-
-Mark Sirek
-13 days ago
-Gary Hillerson On a continuation of my last note to you, MySQL has phrasing like:
-
-By default, the current time zone for each connection is the server's time.
-Maybe we could use similar phrasing, say ‘server time zone’ or ‘server operating system time zone’ instead of just ‘operating system time zone’ to distinguish client from server.
-
-
-=========================================
-
-
-Re: Incorrect results selecting DATE data after changing OS timezone.
-h2. Problem and Solution Description
-
-Date columns in a Splice internal table are encoded as DateTime values, namely the number of milliseconds from January 1, 1970 00:00:00 GMT (midnight).  For example, for storing 1999-01-01, Splice will create a java.sql.Date object having that date, plus a time setting of midnight in the current system timezone, as set in the operating system.  The number of milliseconds delta between January 1, 1970 00:00:00 GMT and 1999-01-01 00:00:00 EST (for example), is stored in the hbase row, encoded as a long.  When the date is later read from disk, the same milliseconds are used to reconstruct the Date object, assigning the year, month and day according to the current system time zone.  If the time zone is later changed to PST, for example, the same milliseconds value would be interpreted as 1998-12-31 21:00:00 PST, because that is the corresponding DateTime in the PST time zone, and a SELECT statement would return the wrong date.  An ANSI SQL Date is not the same as a other DateTime ( types like TIMESTAMP which record a moment in time ), and a .  A given Date stored in the database should be unchanging, and not depend on the current system timezone.
-
-h3. Solution 1 (not picked)
-The first possible solution is to examine the time value when decoding the date, for example 21:00:00 PST, and determine if the time represents a negative shift or a positive shift.  In this case, there is no time zone which is 21 hours less than PST in the current date, but there is a time zone which is +3 hours in the next date (to reach a time of midnight), so we can safely add 3 hours to the stored DateTime to achieve the original date.
-
-However, this solution breaks down in other scenarios.  What if the new time zone is UTC, but the DateTime indicates a time of 12:00:00.  The original DateTime could have been saved in Wellington, New Zealand's time zone, which is on the same side of the international date line, or it could have been saved while in Midway's time zone, which is the other side of the international date line.
-
-The original timezone was not saved, so we don't know how to interpret this time difference.  Also, there are potential problems with daylight savings time, since different locations go on daylight savings on different dates, or some locations not at all, as well as partial hour timezone differences, leap seconds and other potential unknown details which would make calculating the time shift to add or subtract complex, and hard to know if all edge cases have been covered in testing.  There is a high risk or regression.
-
-h3. Solution 2 (chosen)
-The other solution, is to change the encoding, and only store dates as the year, month and day, ignoring time.  An added benefit of this solution is that it could allow dates to be stored in less space.  Currently, a date column value takes up about 7 bytes (1 byte for a null).  Removing the time component allows dates to use 4 bytes or less, with most modern dates using 3 bytes, and with an added optimization only 2 bytes.
-
-The SQLDate object encodes dates as:  year << 16 + month << 8 + day
-This reserves an entire byte for day and an entire byte for month.  But really, we only need 5 bits for day and 4 bits for month.  So, the on-disk encoding is changed to: year << 9 + month << 5 + day
-Ideally the encoding of an in-memory SQLDate could be changed to match this, but due to method SQLDate.updateThetaSketch, which reads stored SQLDates (encodedDates) and merges new sketch data with old sketch data, making such a change would cause statistics to yield incorrect distinct values estimates.  Therefore, the SQLDate date encoding is not changed.
-
-As a further optimization, once the encoded value is calculated, an encoded value representing roughly 2020-01-01 is subtracted.  This causes dates +/- 15 years (appr) from 2020-01-01 to be stored in 2 bytes and other modern dates outside this range to be stored in 3 bytes (where otherwise we may use 4 bytes).
-
-Compressing date data in this manner will allow scans of that data, including index lookups, to take less time.
-
-To change the encoding, the current table version number is bumped from 3.0 to 4.0 and a version 4 serializer map is created to use the new encoding for dates, similar to the solution of SPLICE-1212, which changed the encoding of timestamps.   The fix will only be active for new tables that are created on a version of Splice with the fix.  Older tables would need to be INSERT SELECT'ed into a new table to pick up the fix.  The fix can only be merged to master and 2.7, because it depends on SPLICE-1212, which did not merge to 2.5.
-
------------------------
-
+Me:
 Wondering if we should add an explicit statement to the documentation saying the SQL session time zone, which determines the display and interpretation of a TIME or TIMESTAMP in the database, is set from the operating system time zone.
 
--------------------------
+“Time or timestamp values are displayed using the current time zone for your connection, which is your server's time zone.” And I’m thinking it should go on all pages that describe time/timestamp functions and usage.
+
+Mark:
 
 Gary Hillerson One thing to note… with the change of SPLICE‌-2239, DATE will no longer be sensitive to the time zone setting, just TIMESTAMP and TIME.
 
--------------------------
+{% include splice_snippets/timedisplaynote.md %}{: .noteIcon}
 
-I understand the issue, but I’m not clear where this info should go or exactly what to say.
-
-I’m thinking this simple statement: “Time or timestamp values are displayed using the timezone of your operating system.” And I’m thinking it should go on all pages that describe time/timestamp functions and usage.
-
-Your thoughts, por favor?
-
---------------------------
-
-Gary please proceed with documenting this change when Mark is ready. Best way for customers to think about this is the DATE is a lot like a VARCHAR, but which can have date-operators applied to it.
+{% include splice_snippets/timedisplaynote.md %}
 
 
---------------------------
-
-Gary Hillerson On a continuation of my last note to you, MySQL has phrasing like:
-
-By default, the current time zone for each connection is the server's time.
-Maybe we could use similar phrasing, say ‘server time zone’ or ‘server operating system time zone’ instead of just ‘operating system time zone’ to distinguish client from server.
+http://docstest.splicemachine.com/developers_fundamentals_dates.html
+http://docstest.splicemachine.com/sqlref_builtinfcns_currenttime.html
+http://docstest.splicemachine.com/sqlref_builtinfcns_currenttimestamp.html
+http://docstest.splicemachine.com/sqlref_builtinfcns_now.html
+http://docstest.splicemachine.com/sqlref_builtinfcns_time.html
+http://docstest.splicemachine.com/sqlref_builtinfcns_timestamp.html
+http://docstest.splicemachine.com/sqlref_datatypes_time.html
+http://docstest.splicemachine.com/sqlref_datatypes_timestamp.html

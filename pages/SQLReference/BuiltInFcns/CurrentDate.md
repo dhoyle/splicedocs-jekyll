@@ -57,32 +57,34 @@ The following query finds all players older that 33 years (as of Nov. 9,
     Alex Wister             |1981-08-30
     Robert Cohen            |1975-09-05
     Mitch Brandon           |1980-06-06
-    
+
     8 rows selected
 {: .Example xml:space="preserve"}
 
 </div>
 ## See Also
 
-* [`DATE`](sqlref_builtinfcns_date.html) data type
-* [`DATE`](sqlref_builtinfcns_date.html) function
-* [`DAY`](sqlref_builtinfcns_day.html) function
-* [`EXTRACT`](sqlref_builtinfcns_extract.html) function
-* [`LASTDAY`](sqlref_builtinfcns_day.html) function
-* [`MONTH`](sqlref_builtinfcns_month.html) function
-* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html) function
-* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) function
-* [`NEXTDAY`](sqlref_builtinfcns_day.html) function
-* [`NOW`](sqlref_builtinfcns_now.html) function
-* [`QUARTER`](sqlref_builtinfcns_quarter.html) function
-* [`TIME`](sqlref_builtinfcns_time.html) data type
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) function
-* [`TO_CHAR`](sqlref_builtinfcns_char.html) function
-* [`TO_DATE`](sqlref_builtinfcns_date.html) function
-* [`WEEK`](sqlref_builtinfcns_week.html) function
-* *[Working with Dates](developers_fundamentals_dates.html)* in the
-  *Developer's Guide*
+* [`CURRENT_TIME`](sqlref_builtinfcns_currenttime.html)
+* [`CURRENT_TIMESTAMP`](sqlref_builtinfcns_currenttimestamp.html)
+* [`DATE` type](sqlref_datatypes_date.html)
+* [`DATE` function](sqlref_builtinfcns_date.html) 
+* [`DAY`](sqlref_builtinfcns_day.html) 
+* [`EXTRACT`](sqlref_builtinfcns_extract.html) 
+* [`LASTDAY`](sqlref_builtinfcns_day.html) 
+* [`MONTH`](sqlref_builtinfcns_month.html)
+* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html)
+* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) 
+* [`NEXTDAY`](sqlref_builtinfcns_day.html) 
+* [`NOW`](sqlref_builtinfcns_now.html)
+* [`QUARTER`](sqlref_builtinfcns_quarter.html)
+* [`TIME` type](sqlref_datatypes_time.html)
+* [`TIME` function](sqlref_datatypes_time.html)
+* [`TIMESTAMP` type](sqlref_datatypes_timestamp.html) 
+* [`TIMESTAMP` function](sqlref_builtinfcns_timestamp.html) 
+* [`TO_CHAR`](sqlref_builtinfcns_char.html) 
+* [`TO_DATE`](sqlref_builtinfcns_date.html)
+* [`WEEK`](sqlref_builtinfcns_week.html)
+* [Working with Dates](developers_fundamentals_dates.html)
 
 </div>
 </section>
-

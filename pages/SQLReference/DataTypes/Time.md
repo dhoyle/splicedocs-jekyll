@@ -13,6 +13,7 @@ folder: SQLReference/DataTypes
 # TIME
 
 The `TIME` data type provides for storage of a time-of-day value.
+{% include splice_snippets/timedisplaynote.md %}{: .noteIcon}
 
 ## Syntax
 
@@ -57,11 +58,11 @@ Here are several usage notes for the `TIME` data type:
 * Hours may have one or two digits.
 * Minutes and seconds, if present, must have two digits.
 * Splice Machine also accepts strings in the locale specific date-time
-  format, using the locale of the database server. If there is an
+  format, using the time zone for the server to which you are connected. If there is an
   ambiguity, the built-in formats above take precedence.
 
 Please see *[Working With Date and Time
-Values](developers_fundamentals_dates.html)* 
+Values](developers_fundamentals_dates.html)*
 for information about using simple arithmetic with `TIME` values.
 
 ## Examples
@@ -74,24 +75,27 @@ for information about using simple arithmetic with `TIME` values.
 </div>
 ## See Also
 
-* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html) function
-* [`DATE`](sqlref_builtinfcns_date.html) data type
-* [`DATE`](sqlref_builtinfcns_date.html) function
-* [`DAY`](sqlref_builtinfcns_day.html) function
-* [`EXTRACT`](sqlref_builtinfcns_extract.html) function
-* [`LASTDAY`](sqlref_builtinfcns_day.html) function
-* [`MONTH`](sqlref_builtinfcns_month.html) function
-* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html) function
-* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) function
-* [`NEXTDAY`](sqlref_builtinfcns_day.html) function
-* [`NOW`](sqlref_builtinfcns_now.html) function
-* [`QUARTER`](sqlref_builtinfcns_quarter.html) function
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) function
-* [`TO_CHAR`](sqlref_builtinfcns_char.html) function
-* [`TO_DATE`](sqlref_builtinfcns_date.html) function
-* [`WEEK`](sqlref_builtinfcns_week.html) function
-* *[Working with Dates](developers_fundamentals_dates.html)* in the
-  *Developer's Guide*
+* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html)
+* [`CURRENT_TIME`](sqlref_builtinfcns_currenttime.html)
+* [`CURRENT_TIMESTAMP`](sqlref_builtinfcns_currenttimestamp.html)
+* [`DATE` type](sqlref_datatypes_date.html)
+* [`DATE` function](sqlref_builtinfcns_date.html) 
+* [`DAY`](sqlref_builtinfcns_day.html) 
+* [`EXTRACT`](sqlref_builtinfcns_extract.html) 
+* [`LASTDAY`](sqlref_builtinfcns_day.html) 
+* [`MONTH`](sqlref_builtinfcns_month.html)
+* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html)
+* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) 
+* [`NEXTDAY`](sqlref_builtinfcns_day.html) 
+* [`NOW`](sqlref_builtinfcns_now.html)
+* [`QUARTER`](sqlref_builtinfcns_quarter.html)
+* [`TIME` function](sqlref_datatypes_time.html)
+* [`TIMESTAMP` type](sqlref_datatypes_timestamp.html) 
+* [`TIMESTAMP` function](sqlref_builtinfcns_timestamp.html) 
+* [`TO_CHAR`](sqlref_builtinfcns_char.html) 
+* [`TO_DATE`](sqlref_builtinfcns_date.html)
+* [`WEEK`](sqlref_builtinfcns_week.html)
+* [Working with Dates](developers_fundamentals_dates.html)
 
 </div>
 </section>

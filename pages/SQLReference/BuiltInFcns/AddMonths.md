@@ -26,7 +26,7 @@ number of months added to a specified date.
 source
 {: .paramName}
 
-The source date. This can be a `DATE` value, or any value that can be
+The source date. This can be a [`DATE`](sqlref_datetypes_date.html) value, or any value that can be
 implicitly converted to `DATE`.
 {: .paramDefnFirst}
 
@@ -55,19 +55,19 @@ date.
     ----------
     2015-02-22
     1 row selected
-    
+
     splice> VALUES(ADD_MONTHS(CURRENT_DATE,-5));
     1
     ----------
     2014-04-22
     1 row selected
-    
+
     splice> VALUES(ADD_MONTHS(DATE(CURRENT_TIMESTAMP),-5));
     1
     ----------
     2014-04-22
     1 row selected
-    
+
     splice> VALUES(ADD_MONTHS(DATE('2014-01-31'),1));
     1
     ----------
@@ -76,6 +76,31 @@ date.
 {: .Example xml:space="preserve"}
 
 </div>
+
+## See Also
+
+* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html)
+* [`CURRENT_TIME`](sqlref_builtinfcns_currenttime.html)
+* [`CURRENT_TIMESTAMP`](sqlref_builtinfcns_currenttimestamp.html)
+* [`DATE` type](sqlref_datatypes_date.html)
+* [`DATE` function](sqlref_builtinfcns_date.html) 
+* [`DAY`](sqlref_builtinfcns_day.html) 
+* [`EXTRACT`](sqlref_builtinfcns_extract.html) 
+* [`LASTDAY`](sqlref_builtinfcns_day.html) 
+* [`MONTH`](sqlref_builtinfcns_month.html)
+* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html)
+* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) 
+* [`NEXTDAY`](sqlref_builtinfcns_day.html) 
+* [`NOW`](sqlref_builtinfcns_now.html)
+* [`QUARTER`](sqlref_builtinfcns_quarter.html)
+* [`TIME` type](sqlref_datatypes_time.html)
+* [`TIME` function](sqlref_datatypes_time.html)
+* [`TIMESTAMP` type](sqlref_datatypes_timestamp.html) 
+* [`TIMESTAMP` function](sqlref_builtinfcns_timestamp.html) 
+* [`TO_CHAR`](sqlref_builtinfcns_char.html) 
+* [`TO_DATE`](sqlref_builtinfcns_date.html)
+* [`WEEK`](sqlref_builtinfcns_week.html)
+* [Working with Dates](developers_fundamentals_dates.html)
+
 </div>
 </section>
-

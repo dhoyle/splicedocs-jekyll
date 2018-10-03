@@ -92,15 +92,28 @@ These examples shows the number of years a player was born after Nov 22,
 </div>
 ## See Also
 
-* [About Data Types](sqlref_datatypes_numerictypes.html)
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) data value
-* [`HOUR`](sqlref_builtinfcns_hour.html) function
-* [`MINUTE`](sqlref_builtinfcns_minute.html) function
-* [`SECOND`](sqlref_builtinfcns_second.html) function
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) function
+* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html)
+* [`CURRENT_TIME`](sqlref_builtinfcns_currenttime.html)
+* [`DATE` type](sqlref_datatypes_date.html)
+* [`DATE` function](sqlref_builtinfcns_date.html) 
+* [`DAY`](sqlref_builtinfcns_day.html) 
+* [`EXTRACT`](sqlref_builtinfcns_extract.html) 
+* [`LASTDAY`](sqlref_builtinfcns_day.html) 
+* [`MONTH`](sqlref_builtinfcns_month.html)
+* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html)
+* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) 
+* [`NEXTDAY`](sqlref_builtinfcns_day.html) 
+* [`NOW`](sqlref_builtinfcns_now.html)
+* [`QUARTER`](sqlref_builtinfcns_quarter.html)
+* [`TIME` type](sqlref_datatypes_time.html)
+* [`TIME` function](sqlref_datatypes_time.html)
+* [`TIMESTAMP` type](sqlref_datatypes_timestamp.html) 
+* [`TIMESTAMP` function](sqlref_builtinfcns_timestamp.html) 
 * [`TIMESTAMPADD`](sqlref_builtinfcns_timestampadd.html) function
-* *[Working with Dates](developers_fundamentals_dates.html)* in the
-  *Developer's Guide*
+* [`TO_CHAR`](sqlref_builtinfcns_char.html) 
+* [`TO_DATE`](sqlref_builtinfcns_date.html)
+* [`WEEK`](sqlref_builtinfcns_week.html)
+* [Working with Dates](developers_fundamentals_dates.html)
 
 </div>
 </section>
