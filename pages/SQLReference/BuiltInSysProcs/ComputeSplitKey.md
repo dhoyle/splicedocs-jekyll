@@ -166,9 +166,9 @@ This table includes a brief description of each parameter; additional informatio
 </table>
 
 ## Usage {#Usage}
-This procedure generates a split keys file in CSV format, which you pass into the `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`. That procedure pre-splits the data that you then import with [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html).
+This procedure generates a split keys file in CSV format, which you pass into the `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`. That procedure pre-splits the data that you then import with &nbsp;&nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html).
 
-The functionality of the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`] and [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedures has been combined into one simplified procedure: [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html). We recommend using the simplified procedure, which performs exactly the same functions.
+The functionality of the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`] and [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedures has been combined into one simplified procedure: &nbsp;&nbsp;[`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html). We recommend using the simplified procedure, which performs exactly the same functions.
 {: .noteIcon}
 
 The [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) section of our *Importing Data Tutorial* describes the different methods for using our bulk HFile import functionality.
