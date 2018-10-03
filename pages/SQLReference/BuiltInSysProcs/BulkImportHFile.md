@@ -170,7 +170,7 @@ This table includes a brief description of each parameter; additional informatio
                     <li>Uses that histogram to calculate the split key for the table.</li>
                     <li>Uses the calculated split key to split the table into HFiles.</li>
                 </ol>
-                <p>This allows you more control over the splits, but adds a layer of complexity. You can learn about computing splits for your input data in the <a href="tutorials_ingest_importbulkhfile.html">Importing Data: Using Bulk HFile Import</a> topic of our *Importing Data* tutorial.</p>
+                <p>This allows you more control over the splits, but adds a layer of complexity. You can learn about computing splits for your input data in the <a href="tutorials_ingest_importbulkhfile.html">Importing Data: Using Bulk HFile Import</a> topic of our Importing Data tutorial.</p>
             </td>
             <td class="CodeFont">false</td>
         </tr>
