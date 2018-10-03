@@ -15,6 +15,8 @@ folder: SQLReference/DataTypes
 
 The `TIMESTAMP` data type represents a combined date and time value. Splice Machine stores timestamp values with up to 6 fractional second digits in databases, and allows you to specify literal timestamp values with up to 9 fractional second digits.
 
+{% include splice_snippets/timedisplaynote.md %}{: .noteIcon}
+
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
@@ -176,16 +178,34 @@ Dates, times, and timestamps cannot be mixed with one another in
 expressions.
 
 Splice Machine also accepts strings in the locale specific datetime
-format, using the locale of the database server. If there is an
+format, using the time zone for the server to which you are connected.  If there is an
 ambiguity, the built-in formats shown above take precedence.
 
-[`TimeStamp`](#) values range from '`01 Jan 0001 00:00:00 GMT`' &nbsp;&nbsp; to &nbsp;&nbsp; '`31 Dec 9999 23:59:59 GMT`'.
+`TimeStamp` values range from '`01 Jan 0001 00:00:00 GMT`' &nbsp;&nbsp; to &nbsp;&nbsp; '`31 Dec 9999 23:59:59 GMT`'.
 
 ## See Also
 
-* [About Data Types](sqlref_datatypes_numerictypes.html)
-* *[Working with Dates](developers_fundamentals_dates.html)* in the
-  *Developer's Guide*
+* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html)
+* [`CURRENT_TIME`](sqlref_builtinfcns_currenttime.html)
+* [`CURRENT_TIMESTAMP`](sqlref_builtinfcns_currenttimestamp.html)
+* [`DATE` type](sqlref_datatypes_date.html)
+* [`DATE` function](sqlref_builtinfcns_date.html) 
+* [`DAY`](sqlref_builtinfcns_day.html) 
+* [`EXTRACT`](sqlref_builtinfcns_extract.html) 
+* [`LASTDAY`](sqlref_builtinfcns_day.html) 
+* [`MONTH`](sqlref_builtinfcns_month.html)
+* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html)
+* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) 
+* [`NEXTDAY`](sqlref_builtinfcns_day.html) 
+* [`NOW`](sqlref_builtinfcns_now.html)
+* [`QUARTER`](sqlref_builtinfcns_quarter.html)
+* [`TIME` type](sqlref_datatypes_time.html)
+* [`TIME` function](sqlref_datatypes_time.html)
+* [`TIMESTAMP` function](sqlref_builtinfcns_timestamp.html) 
+* [`TO_CHAR`](sqlref_builtinfcns_char.html) 
+* [`TO_DATE`](sqlref_builtinfcns_date.html)
+* [`WEEK`](sqlref_builtinfcns_week.html)
+* [Working with Dates](developers_fundamentals_dates.html)
 
 </div>
 </section>

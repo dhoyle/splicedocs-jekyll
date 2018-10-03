@@ -23,6 +23,9 @@ values.
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
+
+{% include splice_snippets/timedisplaynote.md %}{: .noteIcon}
+
 <div class="paramList" markdown="1">
 expression1
 {: .paramName}
@@ -108,24 +111,26 @@ born in the final quarter of the year:
 </div>
 ## See Also
 
-* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html) function
-* [`DATE`](sqlref_builtinfcns_date.html) data type
-* [`DATE`](sqlref_builtinfcns_date.html) function
-* [`DAY`](sqlref_builtinfcns_day.html) function
-* [`EXTRACT`](sqlref_builtinfcns_extract.html) function
-* [`LASTDAY`](sqlref_builtinfcns_day.html) function
-* [`MONTH`](sqlref_builtinfcns_month.html) function
-* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html) function
-* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) function
-* [`NEXTDAY`](sqlref_builtinfcns_day.html) function
-* [`NOW`](sqlref_builtinfcns_now.html) function
-* [`QUARTER`](sqlref_builtinfcns_quarter.html) function
-* [`TIME`](sqlref_builtinfcns_time.html) data type
-* [`TO_CHAR`](sqlref_builtinfcns_char.html) function
-* [`TO_DATE`](sqlref_builtinfcns_date.html) function
-* [`WEEK`](sqlref_builtinfcns_week.html) function
-* *[Working with Dates](developers_fundamentals_dates.html)* in the
-  *Developer's Guide*
+* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html)
+* [`CURRENT_TIME`](sqlref_builtinfcns_currenttime.html)
+* [`DATE` type](sqlref_datatypes_date.html)
+* [`DATE` function](sqlref_builtinfcns_date.html) 
+* [`DAY`](sqlref_builtinfcns_day.html) 
+* [`EXTRACT`](sqlref_builtinfcns_extract.html) 
+* [`LASTDAY`](sqlref_builtinfcns_day.html) 
+* [`MONTH`](sqlref_builtinfcns_month.html)
+* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html)
+* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) 
+* [`NEXTDAY`](sqlref_builtinfcns_day.html) 
+* [`NOW`](sqlref_builtinfcns_now.html)
+* [`QUARTER`](sqlref_builtinfcns_quarter.html)
+* [`TIME` type](sqlref_datatypes_time.html)
+* [`TIME` function](sqlref_datatypes_time.html)
+* [`TIMESTAMP` type](sqlref_datatypes_timestamp.html) 
+* [`TO_CHAR`](sqlref_builtinfcns_char.html) 
+* [`TO_DATE`](sqlref_builtinfcns_date.html)
+* [`WEEK`](sqlref_builtinfcns_week.html)
+* [Working with Dates](developers_fundamentals_dates.html)
 
 </div>
 </section>

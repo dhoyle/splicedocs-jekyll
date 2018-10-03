@@ -56,7 +56,7 @@ is `NULL`, the result is the `NULL`value.
 * [`SECOND`](sqlref_builtinfcns_second.html) function
 * [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) function
 * [`TIMESTAMPADD`](sqlref_builtinfcns_timestampadd.html) function
-* [`TIMESTAMPDIFF`](sqlref_builtinfcns_timestampdiff.html) function
+* [`TIMESTAMPDIFF` function](sqlref_builtinfcns_timestampdiff.html)
 
 </div>
 </section>
