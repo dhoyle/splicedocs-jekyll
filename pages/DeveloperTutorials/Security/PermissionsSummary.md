@@ -3,6 +3,7 @@ title: "Summary of Permissions for Users and Roles"
 summary: Summary of privileges to Grant or Revoke access to various system objects
 keywords: privileges, user, super-user
 toc: false
+compatible_version: 2.7
 product: all
 sidebar: tutorials_sidebar
 permalink: tutorials_security_permissions.html

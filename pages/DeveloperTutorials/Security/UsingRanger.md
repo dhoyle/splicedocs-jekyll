@@ -2,6 +2,7 @@
 title: Using Ranger with Splice Machine
 summary: Ranger User Guide
 toc: false
+compatible_version: 2.7
 product: all
 sidebar: tutorials_sidebar
 permalink: tutorials_security_usingranger.html

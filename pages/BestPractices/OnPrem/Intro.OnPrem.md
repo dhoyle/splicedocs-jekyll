@@ -3,6 +3,7 @@ title: Splice Machine On-Premise Database Product Best Practices Introduction
 summary: Best practices and Troubleshooting
 keywords: troubleshooting
 toc: false
+compatible_version: 2.7
 product: all
 sidebar: bestpractices_sidebar
 permalink: bestpractices_onprem_intro.html

@@ -3,6 +3,7 @@ title: Configuring Splice Machine Authentication
 summary: Describes how to configure and manage Splice Machine, which offers several different authentication mechanisms, including LDAP.
 keywords: authenticate, credentials, configuring, native authentication, ldap
 toc: false
+compatible_version: 2.7
 product: onprem
 sidebar:  tutorials_sidebar
 permalink: tutorials_security_authentication.html
