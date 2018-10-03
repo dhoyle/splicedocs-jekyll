@@ -3,7 +3,7 @@ title: CURRENT_TIMESTAMP built-in SQL function
 summary: Built-in SQL function that returns the current timestamp
 keywords: current timestamp
 toc: false
-compatible_level: 2.7
+compatible_version: 2.7
 product: all
 sidebar:  sqlref_sidebar
 permalink: sqlref_builtinfcns_currenttimestamp.html

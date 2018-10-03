@@ -3,7 +3,7 @@ title: TIMESTAMP data type
 summary: The TIMESTAMP&#160;data type stores a combined DATE and TIME value, and allows a fractional-seconds value of up to nine digits.
 keywords:
 toc: false
-compatible_level: 2.7
+compatible_version: 2.7
 product: all
 sidebar:  sqlref_sidebar
 permalink: sqlref_datatypes_timestamp.html
