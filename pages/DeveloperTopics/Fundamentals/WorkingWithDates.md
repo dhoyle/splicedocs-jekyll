@@ -133,7 +133,7 @@ this release of Splice Machine:
     </tbody>
 </table>
 
-{% include splice_snippets/timedisplaynote.md %}{: .noteIcon}
+{% include splice_snippets/datetimedisplaynote.md %}{: .noteIcon}
 
 ## Date Arithmetic {#Arithmetic}
 
