@@ -3,6 +3,7 @@ title: Introduction to the Splice Machine Database Console
 summary: Describes the Splice Machine Database Console, which allows you to monitor (and kill) queries on your cluster in real time.
 keywords: console, guide, ui, dbaas, paas, db
 toc: false
+compatible_version: 2.7
 product: all
 sidebar:  tutorials_sidebar
 permalink: tutorials_dbconsole_intro.html

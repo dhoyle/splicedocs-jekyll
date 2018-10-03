@@ -3,6 +3,7 @@ title: Connecting to Splice Machine Through HAProxy
 summary: How to connect to Splice Machine through HAProxy
 keywords: haproxy, load balancing, high availability, TCP requests, http requests, client requests, kerberos
 toc: false
+compatible_version: 2.7
 product: all
 sidebar: developers_sidebar
 permalink: developers_fundamentals_haproxy.html

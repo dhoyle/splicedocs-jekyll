@@ -3,6 +3,7 @@ title: Using the Splice Machine Spark Adapter
 summary: Overview and examples of using the Splice Machine Spark Adapter.
 keywords: spark, adapter, splicemachineContext
 toc: false
+compatible_version: 2.7
 product: all
 sidebar: developers_sidebar
 permalink: developers_spark_adapter.html

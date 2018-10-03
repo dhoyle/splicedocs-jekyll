@@ -3,6 +3,7 @@ title: Splice Machine Authorization
 summary: Describes how to configure and manage user authentication and user authorization, in two main sections
 keywords: authorizing, authenticating, roles, managing roles, native authentication, grant, set role, users, create user, create role, drop role, cascade
 toc: false
+compatible_version: 2.7
 product: all
 sidebar: tutorials_sidebar
 permalink: tutorials_security_authorization.html

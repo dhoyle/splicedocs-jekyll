@@ -3,6 +3,7 @@ title: Using Spark Libraries with Splice Machine
 summary: Provides an example of using a Spark library in Splice Machine.
 keywords: spark, libraries, collect statistics
 toc: false
+compatible_version: 2.7
 product: all
 sidebar: developers_sidebar
 permalink: developers_spark_libs.html

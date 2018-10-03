@@ -2,7 +2,7 @@
 title: Managing queries with the Splice Machine Database Console
 summary: Describes how to use Splice Machine Database Console  to monitor (and kill) queries on your cluster in real time.
 keywords: managing queries, console, console features, ui, dbaas, paas, db
-
+compatible_version: 2.7
 toc: false
 product: all
 sidebar:  tutorials_sidebar

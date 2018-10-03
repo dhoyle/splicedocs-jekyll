@@ -3,6 +3,7 @@ title: Features of the Splice Machine Database Console
 summary: Summarizes the user interface features of the Splice Machine Database Console.
 keywords: console, console features, ui, dbaas, paas, db
 toc: false
+compatible_version: 2.7
 product: all
 sidebar:  tutorials_sidebar
 permalink: tutorials_dbconsole_features.html

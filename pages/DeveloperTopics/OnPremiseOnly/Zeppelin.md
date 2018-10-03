@@ -3,6 +3,7 @@ title: Using Apache Zeppelin with Splice Machine
 summary: A tutorial showing you how to use Apache Zeppelin to analyze data in an on-premise Splice Machine database.
 keywords: on-premise notebook, on-premise Zeppelin
 toc: false
+compatible_version: 2.7
 product: all
 sidebar: developers_sidebar
 permalink: developers_fundamentals_zeppelin.html
