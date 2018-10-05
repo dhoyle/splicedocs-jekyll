@@ -1,0 +1,256 @@
+runbook/wiki pages to reference:
+
+1.  HDFS Balancer
+
+    Alert
+    Follow these instructions if the data nodes on hdfs are out of balanced. The default threshold is 10% of the overall hdfs disk usage. For example, if the overall disk usage is at 60% then any data node that reports usage below 50% or over 70% will be considered out of balanced.
+
+    Overview
+    The steps in this run book should be followed after adding new data nodes, or if the data distribution gets out of balance.
+
+    Checking on the distribution/balance
+    To check on the relative distribution of your HDFS blocks in your filesystem
+
+    Either: SSH to one of the data nodes
+
+    Run: 'ps aux | grep datanode' to find the pid for the container running as the datanode
+    Run: 'sudo nsenter --mount --uts --ipc --net --pid --target <pid>' to enter the shell for the container
+    OR: connect directly to a data node container
+    for example: dcos task exec -ti splicehdfs01__data-20-node__f3d6301f-97db-4a1b-8fe9-6c5df779b950 bash
+
+    Run: 'export JAVA_HOME=/mnt/mesos/sandbox/jdk1.8.0_121/ && export PATH="$JAVA_HOME/bin:$PATH" && export TERM=vt102'
+
+    Run this command:
+
+    /hadoop/bin/hdfs dfsadmin -report
+    output should look like this:
+
+    [root@a5262084-33fd-4014-93eb-479a6b086202 /]# /hadoop/bin/hdfs dfsadmin -report
+    Configured Capacity: 125962865344512 (114.56 TB)
+    Present Capacity: 125725883525022 (114.35 TB)
+    DFS Remaining: 27181912715873 (24.72 TB)
+    DFS Used: 98543970809149 (89.63 TB)
+    DFS Used%: 78.38%
+    Under replicated blocks: 0
+    Blocks with corrupt replicas: 0
+    Missing blocks: 0
+    Missing blocks (with replication factor 1): 0
+
+    -------------------------------------------------
+    Live datanodes (21):
+
+    Name: 192.168.110.193:9003 (ip-192-168-110-193.ec2.internal)
+    Hostname: a68d68a3-b8cb-4f22-9d3a-5ca987af214b
+    Decommission Status : Normal
+    Configured Capacity: 5998231683072 (5.46 TB)
+    DFS Used: 4693518855682 (4.27 TB)
+    Non DFS Used: 2306302462 (2.15 GB)
+    DFS Remaining: 1293452967144 (1.18 TB)
+    DFS Used%: 78.25%
+    DFS Remaining%: 21.56%
+    Configured Cache Capacity: 0 (0 B)
+    Cache Used: 0 (0 B)
+    Cache Remaining: 0 (0 B)
+    Cache Used%: 100.00%
+    Cache Remaining%: 0.00%
+    Xceivers: 136
+    Last contact: Thu Sep 27 20:53:50 UTC 2018
+
+
+    Name: 192.168.110.65:9003 (ip-192-168-110-65.ec2.internal)
+    Hostname: 3eb0e739-66c7-4f86-b15d-4773f57d0e34
+    Decommission Status : Normal
+    Configured Capacity: 5998231683072 (5.46 TB)
+    DFS Used: 4691938017970 (4.27 TB)
+    Non DFS Used: 2305776974 (2.15 GB)
+    DFS Remaining: 1294821362353 (1.18 TB)
+    DFS Used%: 78.22%
+    DFS Remaining%: 21.59%
+    Configured Cache Capacity: 0 (0 B)
+    Cache Used: 0 (0 B)
+    Cache Remaining: 0 (0 B)
+    Cache Used%: 100.00%
+    Cache Remaining%: 0.00%
+    Xceivers: 140
+    Last contact: Thu Sep 27 20:53:51 UTC 2018
+
+    ...
+    Steps to Rebalance
+
+
+    SSH to one of the data nodes
+
+    Run: 'ps aux | grep datanode' to find the pid for the container running as the datanode
+    Run: 'sudo nsenter --mount --uts --ipc --net --pid --target <pid>' to enter the shell for the container
+    Run: 'export JAVA_HOME=/mnt/mesos/sandbox/jdk1.8.0_121/ && export PATH="$JAVA_HOME/bin:$PATH" && export TERM=vt102'
+
+    Create a shell script: 'vi balance.sh' and enter in the contents below
+
+    #!/bin/bash
+
+    /hadoop/bin/hdfs balancer -threshold <percentage>
+    The -threshold <percentage> is optional (defaults to 10%). Supply one only if you want tighter balancing by specifying a number less than 10.  Threshold represents the amount that any individual hdfs data node differs from the average % usage across the whole cluster.
+
+    Grant execution permission: 'chmod a+x balance.sh'
+
+    Execute the script: 'nohup ./balance.sh > balance.out 2>&1 &'
+
+    You can monitor the progress by tailing balance.out or in a different terminal window use the same steps to connect to the container and run '/hadoop/bin/hdfs dfsadmin -report | grep "DFS Used%"'
+
+
+
+2.  Adding Data Nodes
+
+    Alert
+    Follow these instructions when you need to add data nodes to the splicehdfs instance.   In the section where it is talking about Ansible it is essentially the same steps as Step 6 on the page Cloud Stack - Deployment AWS or Azure - Terraform - DC/OS v 1.11.3
+
+    Overview
+    This run book provides instructions for adding data nodes.
+
+    Steps
+    Make sure you have the version of the dbaas-infrastructure github repo that matches the environment you are working in.
+    Sign into AWS Console, goto EC2 and select the autoscaling groups.  Locate the 02pri autoscaling group
+
+
+    In the actions drop down, select 'Edit' and change the 'desired capacity','min' and 'max' to the new number of data nodes that you want.  Make sure to only use a odd number when adding to an existing cluster. Then click save.
+
+
+
+    Goto the instances tab and wait for the instances to launch.
+    Connect to each instance and confirm that dcos has started on that instance
+    Confirm the nodes appear in DCOS
+    Goto the DCOS UI
+    Select the Nodes link in the left hand navigation bar
+    Confirm you see the IP addresses for the new nodes
+    Make sure that your environment is setup to run ansible against the environment you want to update.
+    Run the standard ping test: ./run-ansible.sh -e prod -m ping 'tag_Name_dcos_splice'
+    Get the ip address for each new node and do the following for each
+    In the window where you tested the ansible ping command, Navigate to the location of your dbaas-infrastrucure project: cd dbaas-infrastructure/deploy/ansbile
+    Apply docker ansible recipe to machine
+    ./run-ansible.sh -e "<ENV>" -m shell -s -a \"systemctl start splice-bootstrap\" -l \'<IP_ADDRESS>\'
+    Validate that the new IP addresses are available on Calico
+    SSH to one of the existing nodes
+    Run the command: sudo /usr/local/bin/calicoctl node status
+    You should see the new IP Addresses in the list
+    Deploy the AWS permissions so that the instances can connect to elasticsearch
+    Navigate to the deploy/elk/elasticsearch folder
+    Run the following command replacing <ENV> with either dev, qa or prod
+    update-aws-es.sh access <ENV>
+
+    for example:
+
+    update-aws-es.sh access qa
+    Scale the number of instances for elk/filebeat, elk/metricbeat and metrics/probes by the number of nodes added
+    Increase the number of data nodes in the splicehdfs instance
+    Goto DCOS UI
+    Locate the splicehdfs service (e.g. splicehdfs01 for prod)
+    Goto the configuration tab / environment variable section
+    Click on the three dots and choose edit
+    Update the value of DATA_COUNT
+    Apply and Run
+    Watch the service restart in MESOS
+    You may need to force it complete some steps:
+    dcos splicehdfs --name=splicehdfs02 plan force recovery recovery data-0:[node]
+    When splicehdfs is back up and running, it is possible that you will need to restart some of the splice databases.  Look at the existing databases and figure out if any of them lost region servers, if they did you will need to do the following:
+    pause the proxy
+    pause the splicedb scheduler
+    one-at-a-time, resume the splicedb scheduler
+    EXPORT FRAMEWORK="FRAMEWORK_NAME"
+    restart the hbase pods in the 'right order' (Note: a cluster may have more than 4 region servers)
+    dcos splicedb --name=$FRAMEWORK pods restart hmaster-0
+    dcos splicedb --name=$FRAMEWORK pods restart hmaster-1
+    dcos splicedb --name=$FRAMEWORK pods restart hregion-0
+    dcos splicedb --name=$FRAMEWORK pods restart hregion-1
+    dcos splicedb --name=$FRAMEWORK pods restart hregion-2
+    dcos splicedb --name=$FRAMEWORK pods restart hregion-3
+    resume the proxy.
+    Consider running HDFS Balancer: Runbook: Run HDFS Balancer
+
+3.  Restoring a Backup
+
+    Restoration will wipe out your existing data with the backup you are restoring from.  You are required to know where your backups are AND which of them are GOOD backups.
+
+
+
+    Step-by-step guide
+    I. The following information are required when you are going to do backup restore:
+
+    DB-USER-NAME:     The DB username who has backup privileges
+    DB-USER-PASSWORD:     The DB user's password
+    DB-INSTANCE-NAME:     Your splicedb instance name
+    ENTERPRISE-CODE:     You need this code to enable DB restore.
+
+    II. Find the host IP address where "db-backup" runs in DC/OS UI.  It is per environment.
+
+    III. Log-in to the host and become root
+
+    IV. Run `docker ps` to find the db-backup container ID, then run `docker exec -it` to login to the container
+
+    V. export environment variables, DB_INSTANCE_NAME, USERNAME, and USERPWD with the correct values.
+
+    VI. Run ./run-restore <backup-location> <backup-id>
+
+4.  Run a Backup
+
+    How To Backup: Run a Database Backup Job
+    User icon
+    Muwon Lum
+    Last modified Nov 20, 2017 by Erin Driggers
+    This document outlines the information you need to schedule a database backup job.  The job scheduler is Metronome, which is part of DC/OS.  The caller can be Splice Machine Cloud UI, splicedb instance pre-install task, or post-install task, or could be something else.
+
+    Step-by-step guide
+    I. The following information are required when you are scheduling a database backup:
+
+    DB-USER-NAME:     The DB username who has backup privileges
+    DB-USER-PASSWORD:     The DB user's password
+    DB-INSTANCE-NAME:     Your splicedb instance name
+    BACKUP-DESTINATION-PATH:     The destination of your backup goes. e.g. /myinstance/backups for HDFS store,
+    s3a://splicemachine/backups/backups_montesaccount-whatifplanning-f4c38fa7cf for AWS S3.
+
+    ENTERPRISE-CODE:     You need this code to enable DB backup.
+    BACKUP-TYPE:     full or incremental.  Default is "full".
+    ENABLERETENTION:     Enable retention call.  Retention call is part of the 'full' and 'incremental' backup calls.  It is disabled by default.  Set it to true to enable it.
+    DB-BACKUPS-TO-RETAIN:     The number of backups you would like to keep.  This value is tied to DB-BACKUP-CRON-SCHEDULE, and the size limit of storage.  Default is 5.
+    DB-INSTANCE-DOMAIN:    The domain name of the splicedb instance belongs to.  e.g. splicemachine.io, splicemachine-qa.io, splicemachine-dev.io.
+
+    DB-INSTANCE-NAME:     The name of your splicedb instance.  It must be unique.
+
+    DB-BACKUP-CRON-SCHEDULE:    The schedule of your DB backup job in Unix cron job format.  Currently only 'daily' and 'weekly' are supported.
+
+    DB-BACKUP-TIMEZONE:     The timezone of your DB backup job.
+
+    SPLICE-API-DEBUG:    Enable Splice Machine API debug.  Default is 'false'.
+    II. After you decided on all of the above settings, launch a Metronome job with the desired values.  See examples here.
+
+    Caller to validate and enforce
+    Validate all the above settings
+    Ensure users do not define a DB-BACKUPS-TO-RETAIN value that is over the limit of storage the customer is entitled to/paid for.
+    Questions have no answers yet
+    When users have both 'daily' and 'weekly' backups, how do we retain them per DB-BACKUPS-TO-RETAIN?  Is mixed backups ('daily' and 'weekly') allowed?
+    How should DB-BACKUPS-TO-RETAIN work when a customer has both 'full' and 'incremental' backups?
+    How do we ensure the value of DB-BACKUPS-TO-RETAIN does not cause the deletion of customer's last full backup?
+    What to do when a backup failed?
+    How do we cancel/delete a live backup?  Do we allow users to cancel/delete?
+    How do we handle user modifications to their DB backup settings?
+    How do we support/handle multiple backup destinations? e.g. HDFS vs. AWS S3.
+    How do we handle restoration?
+    When a backup schedule wasn't triggered per schedule, how we get notified?
+
+5.  Backup and Restore Performance
+
+    DB Backup and Restore Performance
+    User icon
+    Muwon Lum
+    Last modified Feb 16, 2018 by Murray Brown
+
+
+    The following test results was based on standard Cloud infrastructure configurations: 4 OLTP and 4 OLAP.
+
+
+
+    ?	1GB	4.2m/6m	17s	NO
+    ?	100GB	26m/20m	28m	NO
+    ?	500GB	1.2h/3.6h	39m	NO
+    ?	800GB	1.9h/1.7h	1.0m	NO
+    ?	1TB	2.5h/3.3h	1.1m	YES
+    *Backup/restore time will be impacted when multiple Splice DB instances loading data and/or doing DB backup/restore at the same time.
