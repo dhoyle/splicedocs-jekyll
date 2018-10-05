@@ -17,6 +17,7 @@ This section contains best practice and troubleshooting information related to i
 * [Bulk Import of Very Large Datasets with Spark 2.2](#BulkImportSparkSep)
 * [Using Bulk Import on a KMS-Enabled Cluster](#BulkImportKMS)
 
+{% include splice_snippets/onpremonlytopic.md %}
 
 ## Using Bulk Import on a KMS-Enabled Cluster {#BulkImportKMS}
 

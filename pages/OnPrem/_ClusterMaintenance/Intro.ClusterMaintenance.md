@@ -29,17 +29,22 @@ This *Cluster Maintenance Guide* describes practices for maintaining your on-pre
         <tr>
             <td><a href="XXX.html">XXX</a>
             </td>
-            <td>XXXX.</td>
+            <td>Considerations for managing your database backups</td>
         </tr>
         <tr>
             <td><a href="XXX.html">XXX</a>
             </td>
-            <td>XXXX.</td>
+            <td>Compacting and vacuuming your database</td>
         </tr>
         <tr>
             <td><a href="XXX.html">XXX</a>
             </td>
-            <td>XXXX.</td>
+            <td>Safely restarting and flushing HBase</td>
+        </tr>
+        <tr>
+            <td><a href="XXX.html">XXX</a>
+            </td>
+            <td>Adding and removing cluster nodes</td>
         </tr>
     </tbody>
 </table>

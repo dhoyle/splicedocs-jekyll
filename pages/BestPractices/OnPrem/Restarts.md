@@ -18,6 +18,8 @@ This section contains best practice and troubleshooting information related to r
 * [Restarting Splice Machine after an HMaster Failure](#HMasterRestart)
 * [Slow Restart After Forced Shutdown](#ForcedShutdown)
 
+{% include splice_snippets/onpremonlytopic.md %}
+
 ## Restarting Splice Machine After HMaster Failure {#HMasterRestart}
 
 If you run Splice Machine without redundant HMasters, and you lose your HMaster, follow these steps to restart Splice Machine:

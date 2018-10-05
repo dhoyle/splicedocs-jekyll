@@ -12,13 +12,13 @@ folder: BestPractices
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Configuring Performance of Your Splice Machine Database
 
-
 This section contains best practice and troubleshooting information related to modifying configuration options to fine-tune database performance with our *On-Premise Database* product, in these topics:
 
 * [Increasing Parallelism for Spark Shuffles](#SparkShuffles)
 * [Increasing Memory Settings for Heavy Analytical Work Loads](#OLAPMemSettings)
 * [Force Compaction to Run Locally](#LocalCompaction)
 
+{% include splice_snippets/onpremonlytopic.md %}
 
 ## Increasing Parallelism for Spark Shuffles {#SparkShuffles}
 

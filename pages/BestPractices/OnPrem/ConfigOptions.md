@@ -14,6 +14,8 @@ folder: BestPractices
 
 The following table provides summary information about (some of) the configuration options used by Splice Machine.
 
+{% include splice_snippets/onpremonlytopic.md %}
+
 <table>
     <col />
     <col />
