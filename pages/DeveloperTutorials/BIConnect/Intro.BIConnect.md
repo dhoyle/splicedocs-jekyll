@@ -16,7 +16,6 @@ folder: DeveloperTutorials/BIConnect
 This section shows you how to connect specific Business Intelligence tools to your Splice Machine database, including:
 
 * [Connecting Cognos to Splice Machine](tutorials_connect_cognos.html)
-* [Connecting DBeaver to Splice Machine](tutorials_connect_dbeaver.html)
 * [Connecting DBVisualizer to Splice Machine](tutorials_connect_dbvisualizer.html)
 * [Connecting SQuirreL to Splice Machine](tutorials_connect_squirrel.html)
 * [Connecting Tableau to Splice Machine](tutorials_connect_tableau.html)
