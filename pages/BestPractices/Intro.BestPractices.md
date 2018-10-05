@@ -13,14 +13,18 @@ folder: BestPractices
 {% assign site.pdf_runninghead = "Best Practices" %}
 # Splice Machine Best Practices Guide
 
-This section contains best practices and troubleshooting information for users of Splice Machine, in two main subsections, one for each of our products:
+This section contains best practices and troubleshooting information for users of Splice Machine. Currently, all of our best practices topics apply only to our *On-Premise Database* product:
 
-* [Splice Machine Database Best Practices](bestpractices_database_intro.html)
-* [On-Premise Database Product Best Practices](bestpractices_onprem_intro.html)
-* [Database-as-Service Product Best Practices](bestpractices_dbaas_intro.html)
+* [Configuring Security](bestpractices_onprem_security.html)
+* [Importing Data](bestpractices_onprem_importing.html)
+* [Backing Up Your Data](bestpractices_onprem_backups.html)
+* [Fine-tuning Performance Options](bestpractices_onprem_configperf.html)
+* [Managing Your Database](bestpractices_onprem_maintenance.html)
+* [Summary of Configuration Options](bestpractices_onprem_configoptions.html)
+* [Restarting Your Database](bestpractices_onprem_restarts.html)
+* [After Updating Your Splice Machine Software](bestpractices_onprem_updating.html)
 
-Currently, all of our best practice topics apply only to our *On-Premise Database* product.
-{: .noteIcon}
+
 
 </div>
 </section>

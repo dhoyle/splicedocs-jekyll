@@ -17,6 +17,7 @@ This section contains best practice and troubleshooting information related to u
 
 * [Updating Stored Query Plans after a Splice Machine Update](#SpliceUpdate)
 
+{% include splice_snippets/onpremonlytopic.md %}
 
 ## Updating Stored Query Plans after a Splice Machine Update {#SpliceUpdate}
 

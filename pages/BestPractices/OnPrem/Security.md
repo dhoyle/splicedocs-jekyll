@@ -17,6 +17,8 @@ This section contains best practice and troubleshooting information related to c
 * [Kerberos Configuration Option](#KerberosConfig)
 * [Assigning Full Administrative Privileges to Users](#SuperUsers)
 
+{% include splice_snippets/onpremonlytopic.md %}
+
 
 ## Kerberos Configuration Option  {#KerberosConfig}
 If you're using Kerberos, you need to add this option to your HBase Master Java Configuration Options:

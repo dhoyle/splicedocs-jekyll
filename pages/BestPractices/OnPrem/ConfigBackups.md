@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting Backups
+title: Understanding and Troubleshooting Backups
 summary: Summary of options for configuring backups
 keywords: importing
 toc: false
@@ -10,13 +10,15 @@ folder: BestPractices/OnPrem
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Configuring Your Splice Machine Backups
+# Understanding and Troubleshooting Splice Machine Backups
 
 This section contains best practice and troubleshooting information related to backing up your data with our *On-Premise Database* product, in these topics:
 
 * [How Backup Jobs Run](#howjobsrun)
 * [Configuring Backups When Copying with Spark Executors](#usingspark)
 * [Configuring Backups When Copying with `distcp`](#usingdistcp)
+
+{% include splice_snippets/onpremonlytopic.md %}
 
 ## How Backup Jobs Run {#howjobsrun}
 
