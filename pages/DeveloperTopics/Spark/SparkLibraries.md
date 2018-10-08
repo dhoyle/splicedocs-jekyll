@@ -413,7 +413,7 @@ Here's the full code for our SparkStatistics class:
 </div>
 ## See Also
 
-* [Spark Overview](notes_sparkoverview.html)
+* [Spark Overview](developers_spark_adapter.html)
 * [Using the Splice Machine Database Console](tutorials_dbconsole_intro.html)
 * You can find the Spark MLlib guide in the Programming Guides section
   of the Spark documentation site: [https://spark.apache.org/docs][1]{:
