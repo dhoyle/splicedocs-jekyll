@@ -21,6 +21,15 @@ folder: DeveloperTopics/Spark
 
 In this section, we'll use `scala` to create a simple Splice Machine database table, and then access and modify that table.
 
+
+XXXXXXXXXXxx
+
+
+
+
+
+
+
 ### Setting Up the Splice Machine Adapter
 You instantiate and object of the SplicemachineContext class to work with the Splice Machine Adapter. Here's some typical code:
 <div class="preWrapperWide" markdown="1"><pre>
@@ -293,6 +302,7 @@ if (SpliceContext.tableExists("SPLICE.CARSTBL")) {
 </div>
 
 ## See Also
+* [Using the Spark Adapter](developers_spark_adapter.html)
 * [Spark Adapter Methods](developers_spark_methods.html)
 * [Using Our Spark Adapter with Zeppelin](developers_spark_zeppelin.html)
 

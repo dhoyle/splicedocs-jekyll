@@ -37,10 +37,8 @@ val SpliceContext = new SplicemachineContext(JDBC_URL)</pre>
 ```
 {: .Example}
 
-There are two JDBC options that are specific to Spark Adapter connections:
-XXXXXXXXXXXXXXXXXXXXXXX
- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  information about the Spark Adapter options you can specify in the
+The Spark Adapter has a few special (optional) requirements related to database permissions; for information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Spark Adapter* topic.
+
 
 ## Create and Populate a Table in Your Database {#createtable}
 

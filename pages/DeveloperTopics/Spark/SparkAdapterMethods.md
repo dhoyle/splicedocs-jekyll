@@ -220,7 +220,7 @@ A structure that specifies the layout of the data in the RDD.
 
 These methods executes an SQL string within Splice Machine and returns the results in a Spark DataFrame.
 
-The only difference between `df` and `internalDf` methods is that the `internalDf` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views.
+The only difference between `df` and `internalDf` methods is that the `internalDf` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Spark Adapter* topic.
 {: .noteIcon}
 
 <div class="fcnWrapperWide" markdown="1"><pre>
@@ -319,7 +319,8 @@ A structure that specifies the layout of the data in the RDD.
 
 These methods creates a Spark RDD from a Splice Machine table.
 
-The only difference between the `rdd` and `internalRdd` methods is that the `internalRdd` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views.
+The only difference between the `rdd` and `internalRdd` methods is that the `internalRdd` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Spark Adapter* topic.
+
 {: .noteIcon}
 
 <div class="fcnWrapperWide" markdown="1"><pre>
