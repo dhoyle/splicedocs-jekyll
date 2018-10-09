@@ -14,8 +14,10 @@ folder: DeveloperTopics/Spark
 
 This section includes information about using Apache Spark with your Splice Machine database, in these topics:
 
-* [Using our Spark Adapter](developers_spark_adapter.html) describes how to use the Splice Machine Spark Adapter.
-* [Using Spark Libraries](developers_spark_libs.html) describes how to interface with Spark libraries in Splice Machine.
+* [Using the Spark Adapter](developers_spark_adapter.html)
+* [Spark Adapter Methods](developers_spark_methods.html)
+* [Using Spark Submit](developers_spark_submit.html)
+* [Using Our Spark Adapter with Zeppelin](developers_spark_zeppelin.html)
 
 </div>
 </section>

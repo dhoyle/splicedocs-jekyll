@@ -55,37 +55,6 @@ and
 The available `options` are listed in the next section.
 {: .spaceAbove}
 
-### Spark Adapter JDBC Connection Options {#jdbc}
-
-The Spark Adapter JDBC Options (`SpliceJDBCOptions`) are:
-
-<table>
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="CodeFont">JDBC_URL</td>
-            <td>The JDBC URL.</td>
-        </tr>
-        <tr>
-            <td class="CodeFont">JDBC_INTERNAL_QUERIES</td>
-            <td>A string with value <code>true</code> or <code>false</code>, which indicates whether or not to run queries internally by default.</td>
-        </tr>
-        <tr>
-            <td class="CodeFont">JDBC_TEMP_DIRECTORY</td>
-            <td><p>The path to the temporary directory that you want to use when persisting temporary data from internally executed queries.</p>
-                <p>The default value is <code>/tmp</code>.</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
 ### Creating a Table in Your Splice Machine Database
 Now we'll use the Adapter to create a new table in our database, in 5 steps.
 
