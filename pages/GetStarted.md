@@ -222,8 +222,8 @@ Our [Developer Topics Guide](developers_intro.html) contains a collection of top
             <td>Walks you through installing and using our ODBC driver.</td>
         </tr>
         <tr>
-            <td class="ItalicFont"><a href="developers_spark_intro.html">Spark and Splice Machine</a></td>
-            <td>Describes how to use Apache Spark with Splice Machine, including how to use our Native Spark adapter.</td>
+            <td class="ItalicFont"><a href="developers_spark_intro.html">Using the Native Spark DataSource</a></td>
+            <td>Describes how to use the Splice Machine Native Spark DataSource.</td>
         </tr>
         <tr>
             <td class="ItalicFont"><a href="developers_spliceplus_intro.html">Splice\*Plus (PL/SQL)</a></td>

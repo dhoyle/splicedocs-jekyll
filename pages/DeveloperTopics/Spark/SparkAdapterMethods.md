@@ -1,6 +1,6 @@
 ---
-title: Splice Machine Spark Adapter Methods
-summary: Methods Available in the Splice Machine Spark Adapter.
+title: Splice Machine Native Spark DataSource Methods
+summary: Methods Available in the Splice Machine Native Spark DataSource.
 keywords: spark, adapter, splicemachineContext
 toc: false
 compatible_version: 2.7
@@ -12,7 +12,7 @@ folder: DeveloperTopics/Spark
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# The Spark Adapter Methods {#methods}
+# The Native Spark DataSource Methods {#methods}
 
 This topic describes the following methods of the `SplicemachineContext` class:
 
@@ -23,7 +23,10 @@ This topic describes the following methods of the `SplicemachineContext` class:
 * [`delete`](#delete)
 * [`df` and `internalDf`](#df)
 * [`dropTable`](#droptable)
+* [`getConnection`](#getconnection)
+* [`getSchema`](#getschema)
 * [`insert`](#insert)
+* [`pruneSchema`](#pruneschema)
 * [`rdd` and `internalRdd`](#rdd)
 * [`tableExists`](#tableexists)
 * [`truncateTable`](#truncatetable)
@@ -84,7 +87,7 @@ A value between 0 and 100 that specifies the sampling percentage to use when gen
 
 This method efficiently imports data into your Splice Machine database by first generating HFiles and then importing those HFiles; it is the same as using the Splice Machine [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) system procedure.
 
-You can either pass the data to this method in a DataFrame, or you can pass the data in an RDD, and pass in a structure that specifies the organization of the data.
+You can either pass the data to this method in a DataFrame, or you can pass the data in an RDD, and pass in a structure (the Catalyst schema) that specifies the organization of the data.
 
 <div class="fcnWrapperWide" markdown="1"><pre>
 bulkImportHFile( dataFrame: DataFrame,
@@ -117,7 +120,7 @@ rdd
 The RDD containing the data the you want imported into your database table.
 {: .paramDefnFirst}
 
-schema
+The Catalyst schema of the master table.
 {: .paramName}
 
 A structure that specifies the layout of the data in the RDD.
@@ -208,7 +211,7 @@ rdd
 The RDD containing the data the you want deleted from your database table.
 {: .paramDefnFirst}
 
-schema
+The Catalyst schema of the master table.
 {: .paramName}
 
 A structure that specifies the layout of the data in the RDD.
@@ -220,7 +223,7 @@ A structure that specifies the layout of the data in the RDD.
 
 These methods executes an SQL string within Splice Machine and returns the results in a Spark DataFrame.
 
-The only difference between `df` and `internalDf` methods is that the `internalDf` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Spark Adapter* topic.
+The only difference between `df` and `internalDf` methods is that the `internalDf` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Native Spark DataSource* topic.
 {: .noteIcon}
 
 <div class="fcnWrapperWide" markdown="1"><pre>
@@ -273,6 +276,30 @@ The name of the table.
 {: .paramDefnFirst}
 </div>
 
+## getConnection {#getconnection}
+This method returns the current connection.
+
+<div class="fcnWrapperWide" markdown="1"><pre>
+getConnection(): Connection
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
+## getSchema {#getschema}
+This method returns the Catalyst schema of the specified table.
+
+<div class="fcnWrapperWide" markdown="1"><pre>
+getSchema( schemaTableName: String ): StructType
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
+<div class="paramList" markdown="1">
+schemaTableName
+{: .paramName}
+
+The combined schema and table names, in the form: `mySchema.myTable`.
+{: .paramDefnFirst}
+</div>
+
 ## insert {#insert}
 
 This method inserts the contents of a Spark DataFrame or Spark RDD into a Splice Machine table; it is the same as using the Splice Machine [`INSERT INTO`](sqlref_statements_insert.html) SQL statement.
@@ -311,7 +338,30 @@ The RDD containing the data the you want inserted into your database table.
 schema
 {: .paramName}
 
-A structure that specifies the layout of the data in the RDD.
+The Catalyst schema of the master table.
+{: .paramDefnFirst}
+</div>
+
+## pruneSchema  {#pruneschema}
+This method prunes away all of the columns in a table except for the columns that you specify. It returns a Catalyst schema that corresponds to the specified columns, in their specified order.
+
+<div class="fcnWrapperWide" markdown="1"><pre>
+insert( schema: StructType,
+        columns: Array[String] ): StructType
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
+<div class="paramList" markdown="1">
+schema
+{: .paramName}
+
+The Catalyst schema of the master table.
+{: .paramDefnFirst}
+
+columns
+{: .paramName}
+
+The columns that you want to retain.
 {: .paramDefnFirst}
 </div>
 
@@ -319,7 +369,7 @@ A structure that specifies the layout of the data in the RDD.
 
 These methods creates a Spark RDD from a Splice Machine table.
 
-The only difference between the `rdd` and `internalRdd` methods is that the `internalRdd` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Spark Adapter* topic.
+The only difference between the `rdd` and `internalRdd` methods is that the `internalRdd` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Native Spark DataSource* topic.
 
 {: .noteIcon}
 
@@ -437,7 +487,7 @@ The RDD containing the data the you want updated in your database table.
 schema
 {: .paramName}
 
-A structure that specifies the layout of the data in the RDD.
+The Catalyst schema of the master table.
 {: .paramDefnFirst}
 </div>
 
@@ -479,14 +529,14 @@ The RDD containing the data the you want inserted into your database table.
 schema
 {: .paramName}
 
-A structure that specifies the layout of the data in the RDD.
+The Catalyst schema of the master table.
 {: .paramDefnFirst}
 </div>
 
 ## See Also
-* [Using the Splice Machine Spark Adapter](developers_spark_adapter.html)
+* [Using the Splice Machine Native Spark DataSource](developers_spark_adapter.html)
 * [Using Spark Submit](developers_spark_submit.html)
-* [Using our Spark Adapter with Zeppelin](developers_spark_zeppelin.html)
+* [Using our Native Spark DataSource with Zeppelin](developers_spark_zeppelin.html)
 
 </div>
 </section>

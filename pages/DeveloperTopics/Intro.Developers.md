@@ -91,9 +91,11 @@ This section introduces our ODBC driver and shows you how to connect to Splice M
 * [Connecting with Python and ODBC](tutorials_connect_python.html)
 * [Connecting with C and ODBC](tutorials_connect_odbcc.html)
 
-## Spark and Splice Machine  {#Spark}
-* [Using our Spark Adapter](developers_spark_adapter.html)
-* [Using Spark Libraries](developers_spark_libs.html)
+## The Splice Machine Native Spark DataSource  {#Spark}
+* [Using our Native Spark DataSource](developers_spark_adapter.html)
+* [Native Spark DataSource API Methods](developers_spark_methods.html)
+* [Using Spark Submit](developers_spark_submit.html)
+* [Native Spark DataSource Notebook Example](developers_spark_zeppelin.html)
 
 ## Splice\*Plus (PL/SQL)] {#SplicePlus}
 * [Introduction](developers_spliceplus_intro.html)

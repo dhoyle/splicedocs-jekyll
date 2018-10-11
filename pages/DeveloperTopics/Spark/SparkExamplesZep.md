@@ -1,6 +1,6 @@
 ---
-title: Using our Spark Adapter with Zeppelin
-summary: Using the Splice Machine Spark Adapter in Zeppelin
+title: Using our Native Spark DataSource with Zeppelin
+summary: Using the Splice Machine Native Spark DataSource in Zeppelin
 keywords: spark, adapter, splicemachineContext
 toc: false
 compatible_version: 2.7
@@ -12,20 +12,20 @@ folder: DeveloperTopics/Spark
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# Using the Spark Adapter in Zeppelin Notebooks {#zepexamples}
+# Using the Native Spark DataSource in Zeppelin Notebooks {#zepexamples}
 
-This topic shows you how to use the Spark Adapter in an Apache Zeppelin notebook. We use the `%spark` and `%splicemachine` Zeppelin interpreters to create a simple Splice Machine database table, and then access and modify that table, in these steps:
+This topic shows you how to use the Native Spark DataSource in an Apache Zeppelin notebook. We use the `%spark` and `%splicemachine` Zeppelin interpreters to create a simple Splice Machine database table, and then access and modify that table, in these steps:
 
-* [Set up the Spark Adapter](#setup)
+* [Set up the Native Spark DataSource](#setup)
 * [Create a Table in Your Database](#createtable)
 * [Populate the Table](#populatetable)
 * [Perform Table Operations](#performops)
 
 We have posted a [blog article](https://www.splicemachine.com/the-splice-machine-native-spark-datasource) on our website walks that you through this Zeppelin notebook example in greater detail.
 
-## Set Up the Splice Machine Adapter {#setup}
+## Set Up the Native Spark DataSource {#setup}
 
-Before you can use the Spark Adapter, you need to create a `SpliceMachineContext` that specifies the URL to use to connect to your database. For example:
+Before you can use the Native Spark DataSource, you need to create a `SpliceMachineContext` that specifies the URL to use to connect to your database. For example:
 
 ```
 %spark
@@ -37,8 +37,7 @@ val SpliceContext = new SplicemachineContext(JDBC_URL)</pre>
 ```
 {: .Example}
 
-The Spark Adapter has a few special (optional) requirements related to database permissions; for information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Spark Adapter* topic.
-
+The Native Spark DataSource has a few special (optional) requirements related to database permissions, which you can configure in your JDBC connection URL; for information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Native Spark DataSource* topic.
 
 ## Create and Populate a Table in Your Database {#createtable}
 
@@ -64,7 +63,7 @@ val carsDF = Seq(
 ```
 {: .Example}
 
-Then we use the Splice Machine Spark Adapter to insert that data into our database table:
+Then we use the Splice Machine Native Spark DataSource to insert that data into our database table:
 ```
 %spark
 SpliceContext.insert(carsDF, "SPLICE.CARSTBL")
@@ -73,7 +72,7 @@ SpliceContext.insert(carsDF, "SPLICE.CARSTBL")
 
 ## Perform Table Operations {#performops}
 
-Now we can use the Spark Adapter to directly interact with the table using Spark, as shown in the following examples.
+Now we can use the Native Spark DataSource to directly interact with the table using Spark, as shown in the following examples.
 
 #### Select Data from the Table Using Spark:
 ```
@@ -114,7 +113,7 @@ if (SpliceContext.tableExists("SPLICE.CARSTBL")) {
 {: .Example}
 
 ## See Also
-* [Spark Adapter Methods](developers_spark_methods.html)
+* [Native Spark DataSource Methods](developers_spark_methods.html)
 * [Using Spark Submit](developers_spark_submit.html)
 * [Walkthrough of using the Native DataSource in Zeppelin](https://www.splicemachine.com/the-splice-machine-native-spark-datasource)
 

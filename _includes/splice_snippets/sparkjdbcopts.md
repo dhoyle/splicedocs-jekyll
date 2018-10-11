@@ -1,4 +1,4 @@
-You can specify the following Spark Adapter JDBC connection string options for running queries internally:
+You can specify the following Native Spark DataSource JDBC connection string options for running queries internally:
 <table>
     <thead>
         <tr>
