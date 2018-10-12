@@ -34,7 +34,7 @@ How your data is split into HFiles (and thus into RegionServers) has a major imp
 
 ### Configuration Settings {#ConfigSettings}
 
-Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make these two changes in your Yarn configuration:
+Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make these two changes in your Yarn configuration, `ResourceManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml`:
 
 <div class="preWrapperWide" markdown="1">
     yarn.nodemanager.pmem-check-enabled=false
@@ -77,6 +77,7 @@ supply that file as a parameter to the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_A
 *  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
 *  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
+*  [Importing Data: Bulk HFile Index Creation](tutorials_ingest_importbulkindex.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
