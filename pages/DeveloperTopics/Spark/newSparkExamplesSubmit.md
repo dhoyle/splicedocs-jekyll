@@ -21,7 +21,7 @@ This example is a simple streaming app that produces rows from a Kafka producer,
 * [Assemble the Pieces](#assemble)
 * [Start Kafka Server and Register the Topic](#kafkaserver)
 * [Compile and Run the App](#runapp)
-* [XXX](#YYY)
+* [Source Code](#sourcecode)
 
 
 ## Assemble the Pieces  {#assemble}
@@ -47,19 +47,20 @@ To run this sample app, you need to download and prepare for running the app as 
 </div>
 
 
-
-
 ## Start Kafka Server and Register the Topic  {#kafkaserver}
-xxxxxx
-Start kafka server in one window (or start with nohup command and keep it running in background)
+Since this app uses Kafka, you need to start the Kafka server. You can start the server in a separate window, or you can start it with the `nohup` command and keep it running in the backgroun:
+
+```
 $ bin/kafka-server-start.sh  config/server.properties
+```
 
-Register the kafka topic  (Need to do it only once), e.g. to start "test-k" topic, following command is used:
+You also need to register the topic we're using with Kafka. To register the topic named `test-k`, use this command:
+```
 $ bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test-k --partitions 2 --replication-factor 1
-
+```
 
 ## Compile and Run the App  {#runapp}
-XXXXXXXXx
+Now use the following steps to compile and run the app:
 
 <div class="opsStepsList" markdown="1">
 1.  Navigate to the app folder that contains the `Main.java` app:
@@ -83,15 +84,29 @@ XXXXXXXXx
 
 5.  Launch the app by running the `spark-submit.sh` script. You can monitor the app on port 8088 of the node to which you're connected.
 
-6.  If you've not already done so, use our scripts to stream data:
+6.  Use our scripts to stream data:
     * Use the `kafka-producer/run_prod.sh` script to send a batch of rows to the kafka producer
     * You can use the `kafka-producer/stream_rows.sh` script to loop, sending a stream of data every few seconds.
 </div>
 
 ### Configuring the spark-submit.sh Script  {#sparksubmitscript}
-The script supplied by Splice Machine for running an app with our Native Spark DataSource
+The script supplied by Splice Machine for running an app with our Native Spark DataSource is named `spark-submmit.sh`. You will need to change some or all of the values at the top of this script to run it in your environment and for your app:
+
+<div class="PreWrapper"><pre class="AppCommand">
+TargetTable=<span class="HighlightedCode">&lt;tableName&gt;</span>
+TargetSchema=<span class="HighlightedCode">&lt;schemaName&gt;</span>
+RSHostName=<span class="HighlightedCode">&lt;serverId, e.g. localhost&gt;</span>
+SpliceConnectPort=<span class="HighlightedCode">&lt;portId&gt;</span>
+UserName=<span class="HighlightedCode">&lt;yourUserName&gt;</span>
+UserPassword=<span class="HighlightedCode">&lt;yourPassword&gt;</span>
+KafkaBroker=<span class="HighlightedCode">&lt;Kafka Broker ID&gt;</span>
+KafkaTopic=<span class="HighlightedCode">&lt;Registered Kafka Topic ID&gt;</span>
+KrbPrincipal=<span class="HighlightedCode">&lt;Kerberos Principal&gt;</span>
+KrbKeytab=<span class="HighlightedCode">&lt;Kerberos Keytab Location&gt;</span>
+</pre></div>
 
 Here's the default code for `spark-submit.sh`:
+{: .spaceAbove}
 
 ```
 #!/bin/bash
@@ -107,7 +122,6 @@ KafkaBroker=stl-colo-srv136
 KafkaTopic=test-k
 KrbPrincipal=hbase/stl-colo-srv136.splicemachine.colo@SPLICEMACHINE.COLO
 KrbKeytab=/tmp/hbase.keytab
-
 
 spark2-submit --conf "spark.driver.extraJavaOptions=-Dsplice.spark.yarn.principal=hbase/stl-colo-srv136.splicemachine.colo \
 -Dsplice.spark.yarn.keytab=/tmp/hbase.keytab \
@@ -165,146 +179,17 @@ $TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPasswor
 ```
 {: .ShellCommand}
 
-
-## Source Code
-
-
-### The Kafka Producer Program
-```
-import java.util.Properties;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-
-public class SimpleProducer {
-
-   public static void main(String[] args) throws Exception{
-
-      // Check arguments length value
-      if(args.length == 0){
-         System.out.println("Enter topic name");
-         return;
-      }
-
-      //Assign topicName to string variable
-      String topicName = args[0].toString();
-
-      // create instance for properties to access producer configs
-      Properties props = new Properties();
-
-      //Assign localhost id
-      props.put("bootstrap.servers", "localhost:9092,localhost:9093");
-
-      //Set acknowledgements for producer requests.
-      props.put("acks", "all");
-
-      //If the request fails, the producer can automatically retry,
-      props.put("retries", 0);
-
-      //Specify buffer size in config
-      props.put("batch.size", 16384);
-
-      //Reduce the no of requests less than 0
-      props.put("linger.ms", 1);
-
-      //The buffer.memory controls the total amount of memory available to the producer for buffering.
-      props.put("buffer.memory", 33554432);
-
-      props.put("key.serializer",
-         "org.apache.kafka.common.serialization.StringSerializer");
-
-      props.put("value.serializer",
-         "org.apache.kafka.common.serialization.StringSerializer");
-
-      Producer<String, String> producer = new KafkaProducer
-         <String, String>(props);
-
-      String r1 = "StarWars,75144,true";
-      for(int i = 0; i < 500; i++) {
-         producer.send(new ProducerRecord<String, String>(topicName, Integer.toString(i), r1));
-      }
-
-       System.out.println("Message sent successfully");
-       producer.close();
-   }
-}
-```
+## Source Code  {#sourcecode}
+This section contains the source code for our example app, in these components:
+* [The App](#theappcode)
+* [The Kafka Producer Program](#kafkaproducer)
 
 
-### The Main Program
+### The App Code {#theappcode}
+
+Here is the code for our example app; we've left out the long list of imported dependencies, which you can review in the full example code, which is in our Community Source Code repository.
 
 ```
-package com.splice.custom.reader;
-
-import org.apache.hadoop.security.Credentials;
-import org.apache.hadoop.io.Text;
-
-import org.apache.hadoop.security.token.Token;
-import org.apache.hadoop.conf.Configuration;
-
-import org.apache.hadoop.hbase.security.token.TokenUtil;
-
-import org.apache.hadoop.hbase.client.Connection;
-import org.apache.hadoop.hbase.client.ConnectionFactory;
-import org.apache.hadoop.hbase.client.Get;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
-import org.apache.hadoop.hbase.client.Result;
-
-import org.apache.hadoop.hbase.TableName;
-
-import com.splicemachine.access.hbase.HBaseConnectionFactory;
-
-import com.splicemachine.access.HConfiguration;
-import org.apache.hadoop.security.UserGroupInformation;
-import java.security.PrivilegedExceptionAction;
-import com.splicemachine.client.SpliceClient;
-import org.apache.spark.SparkConf;
-import java.net.URL;
-import java.net.URLClassLoader;
-import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.function.Function;
-import org.apache.spark.sql.*;
-import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.Row;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.FileSystems;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Properties;
-
-import com.splicemachine.derby.impl.SpliceSpark;
-import com.splicemachine.spark.splicemachine.*;
-import org.apache.spark.sql.types.DataTypes;
-import org.apache.spark.sql.types.StructField;
-import org.apache.spark.sql.types.StructType;
-
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
-import java.util.*;
-import org.apache.spark.SparkConf;
-import org.apache.spark.TaskContext;
-import org.apache.spark.api.java.*;
-import org.apache.spark.api.java.function.*;
-import org.apache.spark.streaming.api.java.*;
-import org.apache.spark.streaming.kafka010.*;
-import org.apache.spark.streaming.*;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.serialization.StringDeserializer;
-import scala.Tuple2;
-
 
 public class Main {
 
@@ -433,7 +318,72 @@ public class Main {
 
 }
 ```
+{: .Example}
 
+### The Kafka Producer Program {#kafkaproducer}
+
+Here is the code for sending messages via Kafka:
+
+```
+import java.util.Properties;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+
+public class SimpleProducer {
+
+   public static void main(String[] args) throws Exception{
+
+      // Check arguments length value
+      if(args.length == 0){
+         System.out.println("Enter topic name");
+         return;
+      }
+
+      //Assign topicName to string variable
+      String topicName = args[0].toString();
+
+      // create instance for properties to access producer configs
+      Properties props = new Properties();
+
+      //Assign localhost id
+      props.put("bootstrap.servers", "localhost:9092,localhost:9093");
+
+      //Set acknowledgements for producer requests.
+      props.put("acks", "all");
+
+      //If the request fails, the producer can automatically retry,
+      props.put("retries", 0);
+
+      //Specify buffer size in config
+      props.put("batch.size", 16384);
+
+      //Reduce the no of requests less than 0
+      props.put("linger.ms", 1);
+
+      //The buffer.memory controls the total amount of memory available to the producer for buffering.
+      props.put("buffer.memory", 33554432);
+
+      props.put("key.serializer",
+         "org.apache.kafka.common.serialization.StringSerializer");
+
+      props.put("value.serializer",
+         "org.apache.kafka.common.serialization.StringSerializer");
+
+      Producer<String, String> producer = new KafkaProducer
+         <String, String>(props);
+
+      String r1 = "StarWars,75144,true";
+      for(int i = 0; i < 500; i++) {
+         producer.send(new ProducerRecord<String, String>(topicName, Integer.toString(i), r1));
+      }
+
+       System.out.println("Message sent successfully");
+       producer.close();
+   }
+}
+```
+{: .Example}
 
 ## See Also
 * [Using the Native Spark DataSource](developers_spark_adapter.html)
