@@ -11,428 +11,192 @@ folder: DeveloperTopics/Spark
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+# Using Spark Submit
+In this topic, we'll use `scala` to create a simple Splice Machine database table, and then access and modify that table.
 
-# Example of Using the Splice Machine Native Spark DataSource
+This topic is currently being revamped; the new version will be available before the end of October, 2018.
+{: .noteIcon}
 
-This topic walks you through creating and running a program that uses the Splice Machine Native Spark DataSource API, which means that the program is a Spark application that can interact directly with your Splice Machine database, without data having to move *over a wire*.
+## Setting Up the Splice Machine Adapter
+You instantiate and object of the SplicemachineContext class to work with the Splice Machine Adapter. Here's some typical code:
+<div class="preWrapperWide" markdown="1"><pre>
+    // Create a Spark and SQL context
+val sc = new SparkContext(sparkConf)
+val sqlContext = new SQLContext(sc)
+SpliceSpark.setcontext(sc)      // make the context available to Splice Machine
 
-This example is a simple streaming app that produces rows from a Kafka producer, consumes data using Kafka Spark streaming, and then uses the Native Spark DataSource to insert batches of data into a Splice Machine database. This topic describes the app and how to run it in these sections:
+    // Create an instance of a SplicemachineContext and select/display table contents
+val dbUrl = "jdbc:splice://myhost:1527/splicedb;user=myUserName;password=myPswd"
+val SpliceContext = new SplicemachineContext(dbUrl)
+splicemachineContext.df("SELECT * FROM sys.systables").show()
 
-* [Assemble the Pieces](#assemble)
-* [Start Kafka Server and Register the Topic](#kafkaserver)
-* [Compile and Run the App](#runapp)
-* [XXX](#YYY)
+</pre>
+{: .Example}
+</div>
 
+The SplicemachineContext object support two constructor methods:
 
-## Assemble the Pieces  {#assemble}
+````
+   SpliceContext = new SplicemachineContext(jdbcUrl: String)
+````
+{: .FcnSyntax}
 
-To run this sample app, you need to download and prepare for running the app as follows:
+and
 
-<div class="opsStepsList" markdown="1">
-1.  Download Kafka from the [Apache web site](https://kafka.apache.org/downloads).
+````
+   SpliceContext = new SplicemachineContext(options: Map[String, String]
+````
+{: .FcnSyntax}
 
-2.  Untar the Kafka tarball into your `home_dir`.
+The available `options` are listed in the next section.
+{: .spaceAbove}
 
-3.  Download the Native Spark DataSource API jar file to your current directory from  our Nexus repository:
-       http://repository.splicemachine.com/nexus/content/groups/public/com/splicemachine
+## Creating a Table in Your Splice Machine Database
+Now we'll use the Adapter to create a new table in our database, in 5 steps.
 
-    Select the folder version that matches the version of Splice Machine installed on your cluster. For example, <span class="Highlighted">NEED HELP WITH EXPLAINING WHICH TO DOWNLOAD</span>.
+### 1. Remove pre-existing table if necessary:
+First, since we run this code frequently, we'll remove any  pre-existing version of our table from our database:
+<div class="preWrapperWide" markdown="1"><pre>
+    // Specify a table name
+var spliceMachineTableName = "spark_Splice Machine_tbl"
+if (SpliceContext.tableExists(Splice MachineTableName)) {
+    SpliceContext.dropTable(Splice MachineTableName) }
+}</pre>
+{: .Example}
+</div>
 
-4.  <span class="Highlighted">NEED HELP WITH EXPLAINING THIS</span>Copy the spark-streaming-kafka-0-10_2.11-2.2.0.cloudera1.jar to the current dir from SPARK2_HOME
+### 2. Define a schema
+Next we'll define the schema for our new table:
+<div class="preWrapperWide" markdown="1"><pre>
+val spliceMachineTableSchema = StructType(
+        //  col name   type    nullable?
+   StructField("id", IntegerType , false) ::
+   StructField("make" , StringType, true ) ::
+   StructField("model", StringType , true ) :: Nil)</pre>
+{: .Example}
+</div>
 
-5.  If you're running on a Kerberized cluster, find and copy the *hbase user keytab* file:
-    * Execute `sudo /var/run/cloudera-scm-agent/process/`, searching for the latest `hbase-MASTER` directory.
-    * You'll find the `hbase.keytab` file in that directory.
-    * Copy the `hbase.keytab` file in that directory to a directory that the application can access.
+### 3. Define the Primary Key
+Let's make the ID column our primary key:
+<div class="preWrapperWide" markdown="1"><pre>
+val spliceMachinePrimaryKey = Seq("id")</pre>
+{: .Example}
+</div>
+
+### 4. Specify any Additional Options
+We can specify any added options for our new table:
+<div class="preWrapperWide" markdown="1"><pre>
+val spliceMachineTableOptions = new CreateTableOptions()
+Splice MachineTableOptions.setRangePartitionColumns(List("name").asJava).setNumReplicas(3)</pre>
+{: .Example}
+</div>
+
+### 5. Create the Table
+And now we can use the `createTable` method to create our Splice Machine table:
+<div class="preWrapperWide" markdown="1"><pre>
+SpliceContext.createTable(
+    Splice MachineTableName, Splice MachineTableSchema, Splice MachinePrimaryKey, Splice MachineTableOptions)</pre>
+{: .Example}
+</div>
+
+## Inserting Data into the Table
+Now we'll use the following 4 steps to insert data into our database.
+
+### 1. Import required functionality
+<div class="preMarkerWide" markdown="1"><pre>
+import sqlContext.implicits._</pre>
+{: .Example}
+</div>
+
+### 2. Create an RDD containing table data
+
+<div class="preMarkerWide" markdown="1"><pre>
+    // Define our case class *outside* our main method
+case class Car(id:Int, make:String, model:String)
+
+    // Define a list of cars based  on the Car class
+val cars = Array(
+   Car(1, "Toyota", "Camry"),
+   Car(2, "Honda", "Accord"),
+   Car(3, "Subaru", "Impreza"),
+   Car(4, "Chevy", "Volt") )
+
+    // Transform our list into an RDD
+val carsRDD = sc.parallelize(cars)</pre>
+{: .Example}
 </div>
 
 
+### 3. Convert the RDD into a DataFrame
+<div class="preMarkerWide" markdown="1"><pre>
+val carsDF = carsRDD.toDF()
 
-
-## Start Kafka Server and Register the Topic  {#kafkaserver}
-xxxxxx
-Start kafka server in one window (or start with nohup command and keep it running in background)
-$ bin/kafka-server-start.sh  config/server.properties
-
-Register the kafka topic  (Need to do it only once), e.g. to start "test-k" topic, following command is used:
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test-k --partitions 2 --replication-factor 1
-
-
-## Compile and Run the App  {#runapp}
-XXXXXXXXx
-
-<div class="opsStepsList" markdown="1">
-1.  Navigate to the app folder that contains the `Main.java` app:
-    ```
-    src/main/java/com/splice/custom/reader
-    ```
-
-2.  Compile the app:
-    ```
-    mvn clean install
-    ```
-    {: ShellCommand}
-
-3.  Configure the `spark-submit.sh` script, as described below, in the [Configuring the spark-submit.sh Script](#sparksubmitscript) section.
-
-4.  Create a table in your Splice Machine database that matches the schema of our sample app, using the following SQL command line:
-    ```
-    CREATE TABLE TEST_TABLE (COL1 CHAR(30), COL2 INTEGER, COL3 BOOLEAN);
-    ```
-    {: .Example}
-
-5.  Launch the app by running the `spark-submit.sh` script. You can monitor the app on port 8088 of the node to which you're connected.
-
-6.  If you've not already done so, use our scripts to stream data:
-    * Use the `kafka-producer/run_prod.sh` script to send a batch of rows to the kafka producer
-    * You can use the `kafka-producer/stream_rows.sh` script to loop, sending a stream of data every few seconds.
+    // Define Splice Machine options used by various operations
+val Splice MachineOptions: Map[String, String] = Map(
+    "Splice Machine.table"  -> Splice MachineTableName,
+    "Splice Machine.master" -> Splice MachineMasters )</pre>
+{: .Example}
 </div>
 
-### Configuring the spark-submit.sh Script  {#sparksubmitscript}
-The script supplied by Splice Machine for running an app with our Native Spark DataSource
-
-Here's the default code for `spark-submit.sh`:
-
-```
-#!/bin/bash
-export SPARK_KAFKA_VERSION=0.10
-
-TargetTable=TEST_TABLE
-TargetSchema=SPLICE
-RSHostName=localhost
-SpliceConnectPort=1527
-UserName=splice
-UserPassword=admin
-KafkaBroker=stl-colo-srv136
-KafkaTopic=test-k
-KrbPrincipal=hbase/stl-colo-srv136.splicemachine.colo@SPLICEMACHINE.COLO
-KrbKeytab=/tmp/hbase.keytab
-
-
-spark2-submit --conf "spark.driver.extraJavaOptions=-Dsplice.spark.yarn.principal=hbase/stl-colo-srv136.splicemachine.colo \
--Dsplice.spark.yarn.keytab=/tmp/hbase.keytab \
--Dsplice.spark.enabled=true \
--Dsplice.spark.app.name=SpliceETLApp \
--Dsplice.spark.master=yarn-client \
--Dsplice.spark.logConf=true \
--Dsplice.spark.yarn.maxAppAttempts=1 \
--Dsplice.spark.driver.maxResultSize=3g \
--Dsplice.spark.driver.cores=4 \
--Dsplice.spark.yarn.am.memory=2g \
--Dsplice.spark.dynamicAllocation.enabled=true \
--Dsplice.spark.dynamicAllocation.executorIdleTimeout=30 \
--Dsplice.spark.dynamicAllocation.cachedExecutorIdleTimeout=30 \
--Dsplice.spark.dynamicAllocation.minExecutors=8 \
--Dsplice.spark.dynamicAllocation.maxExecutors=17 \
--Dsplice.spark.memory.fraction=0.6 \
--Dsplice.spark.scheduler.mode=FAIR \
--Dsplice.spark.serializer=org.apache.spark.serializer.KryoSerializer \
--Dsplice.spark.shuffle.service.enabled=true \
--Dsplice.spark.yarn.am.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native \
--Dsplice.spark.driver.extraJavaOptions=-Dlog4j.configuration=file:/etc/spark/conf/log4j.properties \
--Dsplice.spark.driver.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native \
--Dsplice.spark.driver.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/CDH/jars/htrace-core-3.2.0-incubating.jar \
--Dsplice.spark.executor.extraLibraryPath=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native \
--Dsplice.spark.executor.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/CDH/jars/htrace-core-3.2.0-incubating.jar \
--Dsplice.spark.eventLog.enabled=true \
--Dsplice.spark.eventLog.dir=hdfs:///user/spark/spark2ApplicationHistory \
--Dsplice.spark.local.dir=/tmp \
--Dsplice.spark.yarn.jars=/opt/cloudera/parcels/SPLICEMACHINE/lib/* \
--Dsplice.spark.ui.port=4042" \
---conf "spark.dynamicAllocation.enabled=false" \
---conf "spark.streaming.stopGracefullyOnShutdown=true" \
---conf "spark.streaming.kafka.maxRatePerPartition=500" \
---conf "spark.streaming.kafka.consumer.cache.enabled=false" \
---conf "spark.streaming.concurrentJobs=1" \
---conf "spark.task.maxFailures=2" \
---conf "spark.driver.memory=4g" \
---conf "spark.driver.cores=1" \
---conf "spark.kryoserializer.buffer=1024" \
---conf "spark.kryoserializer.buffer.max=2047" \
---conf "spark.io.compression.codec=org.apache.spark.io.SnappyCompressionCodec" \
---conf "spark.driver.extraJavaOptions=-Djava.security.krb5.conf=/etc/krb5.conf -Dspark.yarn.principal=hbase/stl-colo-srv136.splicemachine.colo -Dspark.yarn.keytab=/tmp/hbase.keytab -Dlog4j.configuration=log4j-spark.properties -XX:+UseCompressedOops -XX:+UseG1GC -XX:+PrintFlagsFinal -XX:+PrintReferenceGC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintAdaptiveSizePolicy -XX:+UnlockDiagnosticVMOptions -XX:+G1SummarizeConcMark -XX:InitiatingHeapOccupancyPercent=35 -XX:ConcGCThreads=12" \
---conf "spark.executor.extraJavaOptions=-Djava.security.krb5.conf=krb5.conf -Dlog4j.configuration=log4j-spark.properties -XX:+UseCompressedOops -XX:+UseG1GC -XX:+PrintFlagsFinal -XX:+PrintReferenceGC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintAdaptiveSizePolicy -XX:+UnlockDiagnosticVMOptions -XX:+G1SummarizeConcMark -XX:InitiatingHeapOccupancyPercent=35 -XX:ConcGCThreads=12" \
---conf "spark.executor.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
---conf "spark.driver.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
---files "/etc/spark/conf/log4j.properties,/etc/krb5.conf"  \
---keytab "/tmp/hbase.keytab"  \
---principal "hbase/stl-colo-srv136.splicemachine.colo" \
---name "DataGen" \
---jars "splicemachine-cdh5.8.3-2.1.0_2.11-2.5.0.1803-SNAPSHOT.jar,spark-streaming-kafka-0-10_2.11-2.2.0.cloudera1.jar" \
---class com.splice.custom.reader.Main \
---master yarn --deploy-mode cluster --num-executors 4 --executor-memory 10G --executor-cores 1 /home/splice/stream-app/target/reader-1.0-SNAPSHOT.jar \
-$TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPassword $KafkaBroker $KafkaTopic
-```
-{: .ShellCommand}
-
-
-## Source Code
-
-
-### The Kafka Producer Program
-```
-import java.util.Properties;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-
-public class SimpleProducer {
-
-   public static void main(String[] args) throws Exception{
-
-      // Check arguments length value
-      if(args.length == 0){
-         System.out.println("Enter topic name");
-         return;
-      }
-
-      //Assign topicName to string variable
-      String topicName = args[0].toString();
-
-      // create instance for properties to access producer configs
-      Properties props = new Properties();
-
-      //Assign localhost id
-      props.put("bootstrap.servers", "localhost:9092,localhost:9093");
-
-      //Set acknowledgements for producer requests.
-      props.put("acks", "all");
-
-      //If the request fails, the producer can automatically retry,
-      props.put("retries", 0);
-
-      //Specify buffer size in config
-      props.put("batch.size", 16384);
-
-      //Reduce the no of requests less than 0
-      props.put("linger.ms", 1);
-
-      //The buffer.memory controls the total amount of memory available to the producer for buffering.
-      props.put("buffer.memory", 33554432);
-
-      props.put("key.serializer",
-         "org.apache.kafka.common.serialization.StringSerializer");
-
-      props.put("value.serializer",
-         "org.apache.kafka.common.serialization.StringSerializer");
-
-      Producer<String, String> producer = new KafkaProducer
-         <String, String>(props);
-
-      String r1 = "StarWars,75144,true";
-      for(int i = 0; i < 500; i++) {
-         producer.send(new ProducerRecord<String, String>(topicName, Integer.toString(i), r1));
-      }
-
-       System.out.println("Message sent successfully");
-       producer.close();
-   }
-}
-```
-
-
-### The Main Program
-
-```
-package com.splice.custom.reader;
-
-import org.apache.hadoop.security.Credentials;
-import org.apache.hadoop.io.Text;
-
-import org.apache.hadoop.security.token.Token;
-import org.apache.hadoop.conf.Configuration;
-
-import org.apache.hadoop.hbase.security.token.TokenUtil;
-
-import org.apache.hadoop.hbase.client.Connection;
-import org.apache.hadoop.hbase.client.ConnectionFactory;
-import org.apache.hadoop.hbase.client.Get;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
-import org.apache.hadoop.hbase.client.Result;
-
-import org.apache.hadoop.hbase.TableName;
-
-import com.splicemachine.access.hbase.HBaseConnectionFactory;
-
-import com.splicemachine.access.HConfiguration;
-import org.apache.hadoop.security.UserGroupInformation;
-import java.security.PrivilegedExceptionAction;
-import com.splicemachine.client.SpliceClient;
-import org.apache.spark.SparkConf;
-import java.net.URL;
-import java.net.URLClassLoader;
-import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.function.Function;
-import org.apache.spark.sql.*;
-import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.Row;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.FileSystems;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Properties;
-
-import com.splicemachine.derby.impl.SpliceSpark;
-import com.splicemachine.spark.splicemachine.*;
-import org.apache.spark.sql.types.DataTypes;
-import org.apache.spark.sql.types.StructField;
-import org.apache.spark.sql.types.StructType;
-
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
-import java.util.*;
-import org.apache.spark.SparkConf;
-import org.apache.spark.TaskContext;
-import org.apache.spark.api.java.*;
-import org.apache.spark.api.java.function.*;
-import org.apache.spark.streaming.api.java.*;
-import org.apache.spark.streaming.kafka010.*;
-import org.apache.spark.streaming.*;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.serialization.StringDeserializer;
-import scala.Tuple2;
-
-
-public class Main {
-
-    public static void main(String[] args) throws Exception {
-
-        if(args.length < 7) {
-            System.err.println("Incorrect number of params ");
-            return;
-        }
-        final String inTargetTable = args[0];
-        final String inTargetSchema = args[1];
-        final String inHostName = args[2];
-        final String inHostPort = args[3];
-        final String inUserName = args[4];
-        final String inUserPassword = args[5];
-        final String kafkaBroker = args[6];
-        final String kafkaTopicName = args[7];
-
-	String inKbrPrincipal = System.getProperty("spark.yarn.principal");
-	String inKbrKeytab = System.getProperty("spark.yarn.keytab");
-
-        ClassLoader cl = ClassLoader.getSystemClassLoader();
-        URL[] urls = ((URLClassLoader)cl).getURLs();
-        for(URL url: urls){
-        	System.out.println(url.getFile());
-        }
-        UserGroupInformation ugi = UserGroupInformation.getCurrentUser();
-
-        System.out.println("Logged in as: " + ugi);
-        System.out.println("Has credentials: " + ugi.hasKerberosCredentials());
-        System.out.println("credentials: " + ugi.getCredentials());
-        System.out.println("Kafka Broker: " + kafkaBroker);
-        System.out.println("Kafka TopicName: " + kafkaTopicName);
-
-        System.out.println(inKbrPrincipal);
-        System.out.println(inKbrKeytab);
-
-        // Initalize Kafka config settings
-        Properties props = new Properties();
-        SparkConf conf = new SparkConf().setAppName("stream");
-        JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(1));
-
-        Map<String, Object> kafkaParams = new HashMap<>();
-        kafkaParams.put("bootstrap.servers", kafkaBroker+":9092");
-        kafkaParams.put("key.deserializer", StringDeserializer.class);
-        kafkaParams.put("value.deserializer", StringDeserializer.class);
-        kafkaParams.put("group.id", "test");
-        kafkaParams.put("auto.offset.reset", "latest");
-        kafkaParams.put("enable.auto.commit", false);
-
-        Collection<String> topics = Arrays.asList(kafkaTopicName);
-
-        JavaInputDStream<ConsumerRecord<String, String>> stream =
-            KafkaUtils.createDirectStream(
-                jssc,
-                LocationStrategies.PreferConsistent(),
-                ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams));
-
-        JavaPairDStream<String, String> resultRDD = stream.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
-
-
-        doWork(inTargetTable, inTargetSchema, inHostName, inHostPort, inUserName, inUserPassword, inKbrPrincipal, inKbrKeytab, resultRDD, jssc);
-
-
-    }
-
-    private static void doWork(String inTargetTable, String inTargetSchema, String inHostName, String inHostPort, String inUserName, String inUserPassword, String inKbrPrincipal, String inKbrKeytab, JavaPairDStream<String, String> resultRDD, JavaStreamingContext jssc) throws IOException, InterruptedException {
-
-        SparkConf conf = new SparkConf();
-        SparkSession spark = SparkSession.builder().appName("Reader").config(conf).getOrCreate();
-
-        // Create Splice's Spark Session
-        SpliceSpark.setContext(spark.sparkContext());
-
-        SparkConf sparkConf = spark.sparkContext().getConf();
-        String principal = sparkConf.get("spark.yarn.principal");
-        String keytab = sparkConf.get("spark.yarn.keytab");
-        System.out.println("spark.yarn.principal = " + sparkConf.get("spark.yarn.principal"));
-        System.out.println("spark.yarn.keytab = " + sparkConf.get("spark.yarn.keytab"));
-        System.out.print("principal: " + inKbrPrincipal);
-        System.out.print("keytab: " + inKbrKeytab);
-
-        String dbUrl = "jdbc:splice://" + inHostName + ":" + inHostPort + "/splicedb;user=" + inUserName + ";" + "password=" + inUserPassword;
-
-        // Create a SplicemachineContext based on the provided DB connection
-        SplicemachineContext splicemachineContext = new SplicemachineContext(dbUrl);
-
-        // Set target tablename and schemaname
-        String SPLICE_TABLE_ITEM = inTargetSchema + "." + inTargetTable;
-
-        resultRDD.foreachRDD((RDD, time) -> {
-          JavaRDD<String> rdd = RDD.values();
-
-          JavaRDD<Row> rowJavaRDD = rdd.map(new Function<String, String[]>() {
-                @Override
-                public String[] call(String line) throws Exception {
-                    return line.split(",");
-                }
-          }).map(new Function<String[], Row>() {
-                @Override
-                public Row call(String[] r) throws Exception {
-                    return RowFactory.create(r[0], Integer.parseInt(r[1]), Boolean.parseBoolean(r[2]));
-                }
-          });
-
-          Dataset<Row> ds = spark.createDataFrame(rowJavaRDD, createSchema());
-          splicemachineContext.insert(ds, SPLICE_TABLE_ITEM);
-
-        });
-
-        jssc.start();              // Start the computation
-        jssc.awaitTermination();   // Wait for the computation to terminate
-
-    }
-
-    // Match the test_table schema
-    private static StructType createSchema() {
-        List<StructField> fields = new ArrayList<>();
-        fields.add(DataTypes.createStructField("COL1", DataTypes.StringType, true));
-        fields.add(DataTypes.createStructField("COL2", DataTypes.IntegerType, true));
-        fields.add(DataTypes.createStructField("COL3", DataTypes.BooleanType, true));
-
-        StructType schema = DataTypes.createStructType(fields);
-        return (schema);
-    }
-
-}
-```
+### 4. Insert Data into Splice Machine table
+Now we'll insert the contents of the DataFrame into our table:
+<div class="preMarkerWide" markdown="1"><pre>
+SpliceContext.insertRows(customersDF, Splice MachineTableName)</pre>
+{: .Example}
+</div>
+
+## Selecting Data from Our Table
+You can select data from a database table:
+<div class="preMarkerWide" markdown="1"><pre>
+sqlContext.read.options(Splice MachineOptions).Splice Machine.show
++----+---------+-------------+
+|  id|make     |model        |
++----+---------+-------------+
+|   1|Toyota   |Camry        |
+|   2|Honda    |Accord       |
+|   3|Subaru   |Impreza      |
+|   4|Chevy    |Volt         |
++----+---------+-------------+</pre>
+{: .Example}
+</div>
+
+## Updating Data in the Table
+You can update existing data in a table:
+<div class="preMarkerWide" markdown="1"><pre>
+    // Create a DataFrame of updated rows
+val modifiedCars    = Array(Car(4, "Chevy", "Bolt"))
+val modifiedCarsRDD = sc.parallelize(modifiedCars)
+val modifiedCarsDF  = modifiedCarsRDD.toDF()
+
+    // Call update with our new and changed customers DataFrame
+SpliceContext.updateRows(modifiedCarsDF, Splice MachineTableName)</pre>
+{: .Example}
+</div>
+
+## Deleting Data
+You can delete rows from a table:
+<div class="preMarkerWide" markdown="1"><pre>
+    // Let’s register our cars dataframe as a temporary table so we
+    // refer to it in Spark SQL
+carsDF.registerTempTable("cars")
+
+    // Filter and create a keys-only DataFrame to be deleted from our table
+val deleteKeysDF = sqlContext.sql("select car from cars where make='Subaru'")
+
+    // Delete the rows from our Splice Machine table
+SpliceContext.deleteRows(deleteKeysDF, Splice MachineTableName)</pre>
+{: .Example}
+</div>
+
+## Dropping a Table
+As you've already seen, it's easy to drop a table from your database:
+<div class="preWrapperWide" markdown="1"><pre>
+    // Specify a table name
+var Splice MachineTableName = "spark_Splice Machine_tbl"
+if (SpliceContext.tableExists(Splice MachineTableName)) {
+    SpliceContext.dropTable(Splice MachineTableName) }</pre>
+{: .Example}
+</div>
 
 
 ## See Also
