@@ -252,19 +252,19 @@ Creating stored procedures in Python is currently a __Beta Release__ feature; it
         LANGUAGE PYTHON
         DYNAMIC RESULT SETS 1
         READS SQL DATA
-        AS ' def run(lim, res):
-                c = conn.cursor()
+        AS 'def run(lim, res):
+           c = conn.cursor()
                     # select alias and javaclassname columns from sys.sysaliases tables
                     # return them as a ResultSet
-                stmt = "select alias, javaclassname from sys.sysaliases {limit ?}"
-                c.executemany(stmt,[lim])
-                d = c.description
-                result = c.fetchall()
+           stmt = "select alias, javaclassname from sys.sysaliases {limit ?}"
+           c.executemany(stmt,[lim])
+           d = c.description
+           result = c.fetchall()
                     # construct the ResultSet and fill it into the ResultSet list res
-                res[0] = factory.create([d,result])
-                conn.commit()
-                c.close()
-                conn.close() ';
+           res[0] = factory.create([d,result])
+           conn.commit()
+           c.close()
+           conn.close()';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 

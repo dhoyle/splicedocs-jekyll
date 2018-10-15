@@ -296,10 +296,10 @@ Creating functions in Python is currently a __Beta Release__ feature; it will be
       PARAMETER STYLE JAVA
       READS SQL DATA
       LANGUAGE PYTHON
-      AS ' def run(inputStr):
-            import re
-            result = inputStr.strip().split(",")[0]
-            return result ';
+      AS 'def run(inputStr):
+         import re
+         result = inputStr.strip().split(",")[0]
+         return result';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 </div>
