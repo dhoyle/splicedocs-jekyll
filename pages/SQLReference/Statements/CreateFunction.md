@@ -277,7 +277,8 @@ Procedures](developers_fcnsandprocs_intro.html) section of our
     splice> CREATE FUNCTION TO_DEGREES( RADIANS DOUBLE )
       RETURNS DOUBLE
       PARAMETER STYLE JAVA
-      NO SQL LANGUAGE JAVA
+      NO SQL
+      LANGUAGE JAVA
       EXTERNAL NAME 'java.lang.Math.toDegrees';
 
     0 rows inserted/updated/deleted
@@ -294,7 +295,7 @@ Creating functions in Python is currently a __Beta Release__ feature; it will be
       RETURNS VARCHAR(50)
       PARAMETER STYLE JAVA
       READS SQL DATA
-      SQL LANGUAGE PYTHON
+      LANGUAGE PYTHON
       AS ' def run(inputStr):
             import re
             result = inputStr.strip().split(",")[0]

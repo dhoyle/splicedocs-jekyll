@@ -67,18 +67,18 @@ contains the following columns:
     splice> CREATE FUNCTION TO_DEGREES ( RADIANS DOUBLE )
     > RETURNS DOUBLE
     > PARAMETER STYLE JAVA
-    > NO SQL LANGUAGE JAVA
+    > NO SQL
+    > LANGUAGE JAVA
     > EXTERNAL NAME 'java.lang.Math.toDegrees';
     0 rows inserted/updated/deleted
     splice> show functions in splice;
     FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
     -------------------------------------------------------------------------
     SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees
-    
+
     1 row selected
 {: .AppCommand xml:space="preserve"}
 
 </div>
 </div>
 </section>
-

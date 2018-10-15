@@ -127,7 +127,7 @@ Creating functions in Python is currently a __Beta Release__ feature; it will be
           RETURNS VARCHAR(50)
           PARAMETER STYLE JAVA
           READS SQL DATA
-          SQL LANGUAGE PYTHON
+          LANGUAGE PYTHON
           AS ' def run(inputStr):
                 import re
                 result = inputStr.strip().split(",")[0]

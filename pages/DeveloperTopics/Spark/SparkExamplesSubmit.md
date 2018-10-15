@@ -38,10 +38,10 @@ To run this sample app, you need to download and prepare for running the app as 
 
     Select the folder version that matches the version of Splice Machine installed on your cluster. For example, <span class="Highlighted">NEED HELP WITH EXPLAINING WHICH TO DOWNLOAD</span>.
 
-4.  <span class="Highlighted">NEED HELP WITH EXPLAINING THIS</span>Copy the spark-streaming-kafka-0-10_2.11-2.2.0.cloudera1.jar to the current dir from SPARK2_HOME
+4.  Copy the *Spark Streaming Kafka* jar in `SPARK2_HOME` to your current directory. For example, if you're using Cloudera, copy the `spark-streaming-kafka-0-10_2.11-2.2.0.cloudera1.jar` file.
 
 5.  If you're running on a Kerberized cluster, find and copy the *hbase user keytab* file:
-    * Execute `sudo /var/run/cloudera-scm-agent/process/`, searching for the latest `hbase-MASTER` directory.
+    * Search for the latest `hbase-MASTER` directory; on Cloudera, you can use: `sudo /var/run/cloudera-scm-agent/process/`.
     * You'll find the `hbase.keytab` file in that directory.
     * Copy the `hbase.keytab` file in that directory to a directory that the application can access.
 </div>

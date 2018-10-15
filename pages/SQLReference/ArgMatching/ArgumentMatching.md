@@ -131,7 +131,8 @@ The following function:
          ( RADIANS DOUBLE )
     RETURNS DOUBLE
     PARAMETER STYLE JAVA
-    NO SQL LANGUAGE JAVA
+    NO SQL
+    LANGUAGE JAVA
     EXTERNAL NAME 'example.MathUtils.toDegrees'
     ;
 {: .Example xml:space="preserve"}
