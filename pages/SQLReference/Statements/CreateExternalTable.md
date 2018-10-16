@@ -154,6 +154,7 @@ Here are some notes about using external tables:
   at that location.
 * `AVRO` external tables do not currently work with compressed files;
   any compression format you specify will be ignored.
+* Our current implementation of `AVRO` external tables does not support the use of `DECIMAL` data values. This restriction will be eliminated in a future release.
 * Splice Machine isn't able to know when the schema of the file
   represented by an external table is updated; when this occurs, you
   need to update the external table in Splice Machine by calling the

@@ -189,6 +189,12 @@ source file has been compressed with Snappy compression:
 {: .Example xml:space="preserve"}
 
 </div>
+
+
+### AVRO Limitations
+
+Our current implementation of `AVRO` external tables does not support the use of `DECIMAL` data values. This restriction will be eliminated in a future release.
+
 ## Manually Refreshing an External Tables
 
 If the schema of the file represented by an external table is updated,
