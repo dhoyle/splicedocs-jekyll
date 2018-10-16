@@ -70,8 +70,8 @@ external table. You can specify one of the following values:
 
 If you don't specify a compression format, the default is uncompressed.
 You cannot specify a <span
-class="CodeItalicFont">compression-format</span> when using the
-`TEXTFILE `<span class="CodeItalicFont">file-format</span>; doing so
+class="CodeItalicFont">compression-format</span> when using either `AVRO` or
+`TEXTFILE `<span class="CodeItalicFont">file-formats</span>; doing so
 generates an error.
 {: .paramDefn}
 

@@ -23,7 +23,7 @@ use flat files that are stored in one of these formats:
 
 You can access `ORC` and `PARQUET` files that have been compressed with
 either Snappy or ZLIb compression; however, you cannot use a compressed
-plain text file.
+plain text or Avro file.
 
 ## About External Tables
 
@@ -193,7 +193,10 @@ source file has been compressed with Snappy compression:
 
 ### AVRO Limitations
 
-Our current implementation of `AVRO` external tables does not support the use of `DECIMAL` data values. This restriction will be eliminated in a future release.
+Our current implementation of `AVRO` external tables has these limitations:
+
+* It does not support the use of `DECIMAL` data values. This restriction will be eliminated in a future release.
+* It does not support compressed `AVRO` files.
 
 ## Manually Refreshing an External Tables
 
