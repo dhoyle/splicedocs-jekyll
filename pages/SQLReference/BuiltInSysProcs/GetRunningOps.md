@@ -28,6 +28,12 @@ system procedure.
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
+## Security Note
+This procedure runs another, internal (undocumented) system procedure named `SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS_LOCAL`. This means that when you change permissions for `SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS`, you must also make the same permission changes to `SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS_LOCAL`.
+
+This will be handled automatically in a future release.
+{: .noteNote}
+
 ## Results
 
 The displayed results of calling
