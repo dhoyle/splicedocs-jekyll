@@ -7,7 +7,7 @@ compatible_version: 2.7
 product: all
 sidebar: developers_sidebar
 permalink: developers_fundamentals_sparklibs.html
-folder: DeveloperTopics/Spark
+folder: DeveloperTopics/Fundamentals
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

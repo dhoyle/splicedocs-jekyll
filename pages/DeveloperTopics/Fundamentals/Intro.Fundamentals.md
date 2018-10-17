@@ -65,6 +65,11 @@ Machine developers:
             </td>
             <td>Describes the use of external tables (which are stored as flat files outside of your database) with Splice Machine.</td>
         </tr>
+        <tr>
+            <td><a href="developers_fundamentals_compaction.html">Compaction and Vacuuming</a>
+            </td>
+            <td>Describes how compaction and vacuuming are used to improve database performance.</td>
+        </tr>
     </tbody>
 </table>
 

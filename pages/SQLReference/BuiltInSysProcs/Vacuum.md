@@ -12,27 +12,19 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.VACUUM
 
-The `SYSCS_UTIL.VACUUM` system procedure performs the following clean-up
-operations:
+When you drop a table from your database, Splice Machine marks the space occupied by the table as *deleted*, but does not actually free the physical space. That space is only reclaimed when you call the `SYSCS_UTIL.VACUUM` system procedure, which does the following:
 
-1.  Waits for all previous transactions to complete; at this point, it
-    must be all. If it waits past a certain point, the call terminates,
-    and you will need to run it again.
-2.  Gets all the conglomerates that are seen in `sys.sysconglomerates`
-    (e.g. <span class="AppCommand">select conglomeratenumber from
-    sys.sysconglomerates</span>).
-3.  Gets a list of all of the HBase tables.
-4.  If an HBase table is not in the conglomerates list and is not a
-    system table (`conglomeratenumber < 1100 or 1168`), then it is
-    deleted.
-    If this does not occur, check the `splice.log`.
+1. Waits for all previous transactions to complete (and times out if this takes too long).
+2. Gets a list of all of the HBase tables in use.
+3. Compares that list with a list of objects currently in use in your database, and deletes any HBase tables that are no longer in use in your database.
 
-You are ready to go when you see the <span class="AppCommand">Ready to
-accept connections</span> message.
+This is a synchronous operations; when it completes, you'll see the following message:
+```
+Ready to accept connections.
+```
+{: .AppCommand}
 
-If you see an exception, but do not see the <span
-class="AppCommand">Ready to accept connections</span> message, please
-retry the command.
+If you see an exception message instead of the completion message, please try calling `SYSCS_UTIL.VACUUM` once again.
 
 ## Syntax
 
@@ -51,4 +43,3 @@ retry the command.
 </div>
 </div>
 </section>
-
