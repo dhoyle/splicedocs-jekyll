@@ -16,6 +16,12 @@ The `SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE` system
 procedure performs a major compaction on a table. The compaction is
 performed on the table and on all of its index and constraint tables.
 
+A *major compaction* actually reads every block of data from the every store file in a Region, and rewrites only the live data to a single store file. This permanently deletes the rows that were previously marked as deleted. HBase runs major compactions on a scheduled interval, which is specified in the `hbase.hregion.majorcompaction` property; the default value for this property in Splice Machine is 7 days.
+
+Splice Machine recommends running a major compaction on a table after you've imported a large dataset into the table or deleted a large number of rows from the table in your database.
+
+For more information about compactions, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).
+
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
@@ -68,4 +74,3 @@ This procedure does not return a result.
 
 </div>
 </section>
-

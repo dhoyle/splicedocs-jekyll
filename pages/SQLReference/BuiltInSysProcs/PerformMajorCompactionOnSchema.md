@@ -17,6 +17,12 @@ procedure performs a major compaction on a schema. The compaction is
 performed on all of the tables in the schema, and on all of its index
 and constraint tables for each table in the schema.
 
+A *major compaction* actually reads every block of data from the every store file in a Region, and rewrites only the live data to a single store file. This permanently deletes the rows that were previously marked as deleted. HBase runs major compactions on a scheduled interval, which is specified in the `hbase.hregion.majorcompaction` property; the default value for this property in Splice Machine is 7 days.
+
+Splice Machine recommends running a major compaction on a schema after you've imported an entire database.
+
+For more information about compactions, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).
+
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
@@ -59,4 +65,3 @@ This procedure does not return a result.
 
 </div>
 </section>
-
