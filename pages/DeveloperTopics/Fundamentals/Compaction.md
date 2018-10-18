@@ -36,7 +36,8 @@ There are two kinds of compaction:
 * A *Major compaction* actually reads every block of data from the every store file in a Region, and rewrites only the live data to a single store file. This permanently deletes the rows that were previously marked as deleted. HBase runs major compactions on a scheduled interval, which is specified in the `hbase.hregion.majorcompaction` property; the default value for this property in Splice Machine is 7 days. Note that major compactions are very resource intensive and time consuming.
 
 You can also optionally run a major compaction on a schema or table manually:
-* You use the [`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA`](sqlref_sysprocs_compactschema.html) procedure to run a major compaction on an entire schema. For example, <span class="Highlighted">when call this??????</span>
+* You use the [`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA`](sqlref_sysprocs_compactschema.html) procedure to run a major compaction on an entire schema. For example, if you've imported an entire database, you should seriously consider running a major compaction on the schema, because loading a lot of data can generate a large number of small store files; a major compaction will result in well-arranged regions that are roughly 50% full, which leaves room for growth and change. 
+
 * You use the [`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE`](sqlref_sysprocs_compacttable.html) procedure to run a major compaction on a specific table. For example, if you've imported a large dataset into a table or deleted a large number of rows from a table in your database, you may want to compact that table.
 
 ## Vacuuming {#vacuum}
