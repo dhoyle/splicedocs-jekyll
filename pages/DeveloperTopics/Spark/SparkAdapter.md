@@ -21,14 +21,14 @@ This topic provides general information about the *Splice Machine Native Spark D
 The other topics in this section provide additional information about the Native Spark DataSource:
 
 * [Native Spark DataSource Methods](developers_spark_methods.html) provides reference information for the Native Spark DataSource API methods.
-* [Using Spark Submit](developers_spark_submit.html) shows you how to submit your Splice Machine Spark application for execution with our Adapter.
+* [Native Spark DataSource Examples](developers_spark_submit.html) includes examples that show you how to launch a Spark app with our *Spark Submit* script, and how to use the Spark Adapter interactively, with the *Spark Shell*.
 * [Using Our Native Spark DataSource with Zeppelin](developers_spark_zeppelin.html) presents an example of using our Native Spark DataSource in a Zeppelin notebook.
 
 ## About the Splice Machine Native Spark DataSource {#about}
 
 The Splice Machine Native Spark DataSource allows you to directly connect Spark DataFrames and Splice Machine database tables. You can efficiently insert, upsert, select, update, and delete data in your Splice Machine tables directly from Spark in a transactionally consistent manner.
 
-To use the adapter, you simmply instantiate a `SplicemachineContext` object in your Spark code, as described in this documentation section.
+To use the adapter in your code, you simply instantiate a `SplicemachineContext` object in your Spark code. You can run Spark applications that interface with your Splice Machine database interactively in the Spark shell or Zeppelin notebooks, or you can launch a Spark app by using our Spark Submit script.
 
 ## Native Spark DataSource Access to Database Objects {#access}
 

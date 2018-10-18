@@ -1,6 +1,6 @@
 ---
-title: Using Spark Submit
-summary: Examples of using Spark Submit.
+title: Native Spark DataSource Examples
+summary: Examples of using the Splice Machine Native Spark DataSource.
 keywords: spark, adapter, splicemachineContext
 toc: false
 compatible_version: 2.7
