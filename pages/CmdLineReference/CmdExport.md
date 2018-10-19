@@ -166,6 +166,10 @@ target="_blank"}
 
 </div>
 
+## See Also
+* The [Binary_Export command](cmdlineref_binaryexport.html) exports query results in binary format.
+
+
 </div>
 </section>
 

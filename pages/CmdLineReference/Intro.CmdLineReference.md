@@ -55,7 +55,15 @@ The following table summarizes the commands that you can use them with the `sqls
             <td><span class="AppCommand">splice&gt; autocommit off;</span>
             </td>
         </tr>
-        <tr>
+         <tr>
+             <td class="CodeFont"><a href="cmdlineref_binaryexport.html">Export</a>
+             </td>
+             <td>Exports query results to binary files.</td>
+             <td><span class="AppCommand">splice&gt; BINARY_EXPORT('/my/export/dir', true, 'parquet')
+SELECT a,b,sqrt(c) FROM t1 WHERE a > 100;</span>
+             </td>
+         </tr>
+       <tr>
             <td class="CodeFont"><a href="cmdlineref_commit.html">Commit</a>
             </td>
             <td>Commits the currently active transaction and initiates a new transaction.</td>
