@@ -30,6 +30,8 @@ The Splice Machine Native Spark DataSource allows you to directly connect Spark 
 
 To use the adapter in your code, you simply instantiate a `SplicemachineContext` object in your Spark code. You can run Spark applications that interface with your Splice Machine database interactively in the Spark shell or Zeppelin notebooks, or you can launch a Spark app by using our Spark Submit script.
 
+You can craft applications that use Spark and our Native Spark DataSource in Scala, Python, and Java.
+
 ## Native Spark DataSource Access to Database Objects {#access}
 
 By default, Native Spark DataSource queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, when your Native Spark DataSource application uses our Access Control List (*ACL*) feature, there is a restriction with regard to checking permissions.
