@@ -35,12 +35,12 @@ The directory in which you want the export file(s) written.
 
 compress
 {: .paramName}
-A Boolean value that specifies whether (`true`) or not (`false`) to compress the exported files. Files are compressed using the `parquet` compression standard.
+A Boolean value that specifies whether (`true`) or not (`false`) to compress the exported files. Files are compressed using the *Snappy* compression standard.
 {: .paramDefnFirst}
 
 format
 {: .paramName}
-The format in which to write the CSV files. The only format supported at this time is `parquet`.
+The format in which to write the exported file(s). The only format supported at this time is `parquet`.
 {: .paramDefnFirst}
 </div>
 
@@ -55,12 +55,19 @@ If `compression=true`, then each of the generated files is named with
 this format:
 
  <div class="preWrapper" markdown="1">
-    export_<N>.snappy.parquet
+    part-r-<N>.snappy.parquet
 {: .AppCommand xml:space="preserve"}
 </div>
 
-The value of <span class="AppCommand">&lt;N&gt;</span> is a random
-integer value.
+If `compression=false`, then each of the generated files is named with
+this format:
+
+ <div class="preWrapper" markdown="1">
+    part-r-<N>.parquet
+{: .AppCommand xml:space="preserve"}
+</div>
+
+The value of <span class="AppCommand">&lt;N&gt;</span> is a sequence of numbers and letters.
 
 ### Merging the Exported Files
 
@@ -75,7 +82,7 @@ file system using the Hadoop FS command `getmerge`. The syntax for
 </div>
 
 Use the *exportPath* directory as the value of `sourceDir` to copy all of
-the exported CSV files to your *localPath*.
+the exported files to your *localPath*.
 
 For more information about the `getmerge` command, see
 [http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#getmerge.][1]{:
