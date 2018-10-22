@@ -1,17 +1,17 @@
 ---
-title: "Importing Data: Bulk HFile Index Creation"
-summary: Describes how to use the bulk HFile index creation.
+title: "Creating Indexes for Large Tables"
+summary: Describes different approaches for indexing large tables.
 keywords: import, ingest, input parameters, compression, encoding, separator
 toc: false
 product: all
 sidebar: tutorials_sidebar
-permalink: tutorials_ingest_importbulkindex.html
-folder: DeveloperTutorials/Import
+permalink: tutorials_indexing_largeindex.html
+folder: DeveloperTutorials/Indexing
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# Bulk HFile Index Creation
+# Creating Indexes for Large Tables
 This topic describes how to use bulk HFile index creation to index an existing table with the [`CREATE INDEX`](sqlref_statements_createindex.html) statement.
 
 When you are creating an index on a large table and need extra performance, you can use the HFile bulk loading approach described in this topic. Because Splice Machine implements indexes as tables, creating a regular index is similar to creating a new table, which means that parallelization is only possible when the index uses a sufficient number of regions. You can increase parallelism by using bulk HFile loading.
@@ -132,21 +132,9 @@ Here is a step-by-step example of computing your own split keys:
 
 ## See Also
 
-*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
-*  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
-*  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
 *  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importhbulkhfile.html)
-*  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
-*  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
-*  [Importing Data: Importing TPCH Data](tutorials_ingest_importexamplestpch.html)
 *  [`CREATE INDEX`](sqlref_statements_createindex.html)
-*  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
-*  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
-*  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
-*  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
-*  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html)
 
 </div>
 </section>

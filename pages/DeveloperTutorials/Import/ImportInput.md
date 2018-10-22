@@ -637,7 +637,6 @@ when you start the interpreter.
 *  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
 *  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
-*  [Importing Data: Bulk HFile Index Creation](tutorials_ingest_importbulkindex.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)

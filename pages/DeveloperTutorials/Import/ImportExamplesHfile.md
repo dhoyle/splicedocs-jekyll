@@ -304,7 +304,6 @@ Follow these steps:
 *  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
 *  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
 *  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
-*  [Importing Data: Bulk HFile Index Creation](tutorials_ingest_importbulkindex.html)
 *  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
 *  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
 *  [Importing Data: Importing TPCH Data](tutorials_ingest_importexamplestpch.html)
@@ -313,6 +312,7 @@ Follow these steps:
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 *  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 *  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
+*  [`CREATE INDEX` statement](sqlref_statements_createindex.html)
 
 </div>
 </section>

@@ -234,7 +234,6 @@ You'll find examples of using this procedure in the [Bulk HFile Import Examples]
 ## See Also
 
 *  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
-*  [Importing Data: Bulk HFile Index Creation](tutorials_ingest_importbulkindex.html)
 *  [Importing Data: Bulk HFile Import Examples](tutorials_ingest_importexampleshfile.html)
 *  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
 *  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
