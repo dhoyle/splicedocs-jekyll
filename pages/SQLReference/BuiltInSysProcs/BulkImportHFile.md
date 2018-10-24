@@ -24,7 +24,7 @@ procedure does not perform constraint checking while loading your data.
 Our *Importing Data Tutorial* includes topics to help with bulk HFile import:
 * [Importing Data Tutorial](tutorials_ingest_importoverview.html) provides an overview of the different data loading procedures you can use, and includes a decision tree to help you determine which is appropriate for your situation.
 * [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) describes how to use `SYSCS_UTIL.BULK_IMPORT_HFILE` and the different methods for computing the split keys used to create the HFiles.
-* [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile) includes examples of using bulk HFile import.
+* [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html) includes examples of using bulk HFile import.
 
 ## Syntax
 

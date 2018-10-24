@@ -302,4 +302,4 @@ Splice Machine:
 
 
 
-[1]: http://www.splicemachine.com/company/contact-us/
+[1]: https://www.splicemachine.com/company/contact-us/

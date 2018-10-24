@@ -81,4 +81,4 @@ If you're using an earlier version, you'll find the documentation here:
 
 
 
-[1]: http://www.splicemachine.com/company/contact-us/
+[1]: https://www.splicemachine.com/company/contact-us/

@@ -657,4 +657,4 @@ To grant the `SELECT` privilege on table `t` to the role
 
 
 
-[1]: http://www.splicemachine.com/company/contact-us/
+[1]: https://www.splicemachine.com/company/contact-us/

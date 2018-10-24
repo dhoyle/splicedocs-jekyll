@@ -26,7 +26,7 @@ number of months added to a specified date.
 source
 {: .paramName}
 
-The source date. This can be a [`DATE`](sqlref_datetypes_date.html) value, or any value that can be
+The source date. This can be a [`DATE`](sqlref_datatypes_date.html) value, or any value that can be
 implicitly converted to `DATE`.
 {: .paramDefnFirst}
 
