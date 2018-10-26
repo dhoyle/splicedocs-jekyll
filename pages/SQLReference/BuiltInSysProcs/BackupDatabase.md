@@ -87,7 +87,6 @@ Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may
 Please review these important notes about usage of this system procedure:
 
 * HBase Configuration Options for Incremental Backup
-* Incremental Backups and Bulk HFile Imports
 * Temporary Tables and Backups
 
 ### HBase Configuration Options for Incremental Backup {#UsageConfig}

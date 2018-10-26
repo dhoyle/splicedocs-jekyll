@@ -30,6 +30,8 @@ these sections:
 * [Using the Backup Operations](#Using)
 * [Backing Up to Cloud Storage](#Backing)
 
+You can also use the [SYSCS_UTIL.SYSCS_BACKUP_TABLE](#sqlref_sysprocs_backuptable.html) and [SYSCS_UTIL.SYSCS_RESTORE_TABLE](#sqlref_sysprocs_restoretable.html) procedures to back up and restore specific tables.
+
 ## Backup Resource Allocation
 
 Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. See the [Troubleshooting Backups](bestpractices_onprem_backups.html) section of our *Best Practices Guide* for specific information about allocation of resources.

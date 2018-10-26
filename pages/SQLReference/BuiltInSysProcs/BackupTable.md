@@ -28,9 +28,6 @@ performed. Subsequent runs of the backup will only copy information that
 has changed since the previous backup.
 {: .noteNote}
 
-For more information, see the [*Backing Up and
-Restoring*](onprem_admin_backingup.html) topic.
-
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
@@ -45,12 +42,14 @@ Restoring*](onprem_admin_backingup.html) topic.
 
 schemaName
 {: .paramName}
-XXXX
+
+The name of the table's schema.
 {: .paramDefnFirst}
 
 tableName
 {: .paramName}
-XXXX
+
+The name of the table that you are backing up.
 {: .paramDefnFirst}
 
 directory
@@ -80,8 +79,7 @@ the following values: `full` or `incremental`; any other value
 produces an error and the backup is not run.
 {: .paramDefnFirst}
 
-**********************CHECK ON THIS: USE SAME TABLE???*****************************
-Note that if you specify `'incremental'`, Splice Machine checks the &nbsp;
+Note that if you specify `incremental`, Splice Machine checks the &nbsp;
 [`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) table to determine if
 there already is a backup for the table; if not, Splice Machine will
 perform a full backup, and subsequent backups will be incremental.
@@ -96,15 +94,7 @@ This procedure does not return a result.
 
 Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. See the [Troubleshooting Backups](bestpractices_onprem_backups.html) section of our *Best Practices Guide* for specific information about allocation of resources.
 
-## Usage Notes
-
-Please review these important notes about usage of this system procedure:
-
-* HBase Configuration Options for Incremental Backup
-* Incremental Backups and Bulk HFile Imports
-* Temporary Tables and Backups
-
-### HBase Configuration Options for Incremental Backup {#UsageConfig}
+## HBase Configuration Options for Incremental Backup {#UsageConfig}
 
 If you're performing incremental backups, you _must_ add the following options to your `hbase-site.xml` configuration file:
 
@@ -114,21 +104,6 @@ If you're performing incremental backups, you _must_ add the following options t
 {: .AppCommand}
 </div>
 
-### Temporary Tables and Backups {#UsageTemp}
-
-There's a subtle issue with performing a backup when you're using a
-temporary table in your session: although the temporary table is
-(correctly) not backed up, the temporary table's entry in the system
-tables will be backed up. When the backup is restored, the table entries
-will be restored, but the temporary table will be missing.
-
-There's a simple workaround:
-
-1.  Exit your current session, which will automatically delete the
-    temporary table and its system table entries.
-2.  Start a new session (reconnect to your database).
-3.  Start your backup job.
-
 ## Execute Privileges
 
 If authentication and SQL authorization are both enabled, only the
@@ -137,65 +112,100 @@ database owner can grant access to other users.
 
 ## JDBC example
 
-The following example performs an immediate full backup to a
-subdirectory of the `hdfs:///home/backup` directory:
+The following example performs an immediate full backup of the TPCH100 `LINEITEM` table to a
+subdirectory of the `/backup` directory:
 
 <div class="preWrapper" markdown="1">
     CallableStatement cs = conn.prepareCall
-      ("CALL SYSCS_UTIL.SYSCS_BACKUP_TABLE(?,?)");
-      cs.setString(1, 'hdfs:///home/backup');
-      cs.setString(2, 'full');
+      ("CALL SYSCS_UTIL.SYSCS_BACKUP_TABLE(?,?,?,?)");
+      cs.setString(1, 'TPCH100');
+      cs.setString(2, 'LINEITEM');
+      cs.setString(3, '/backup');
+      cs.setString(4, 'full');
       cs.execute();
       cs.close();
 {: .Example xml:space="preserve"}
 
 </div>
-## SQL Example
+## SQL Example: Backup, Validate, and Restore a Table
 
-Backing up a database may take several minutes, depending on the size of
-your database and how much of it you're backing up.
-{: .noteRelease}
+This example shows you how to back up a table, then validate and restore it, in these steps:
 
-<div markdown="1">
-The following example runs an immediate incremental backup to the
-`hdfs:///home/backup/` directory:
+* [Backing Up the Table](#exbackup)
+* [Examining the Backup](#exexamine)
+* [Validating the Backup](#exvalidate)
+* [Restoring the Backup](#exrestore)
 
-<div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.SYSCS_BACKUP_TABLE( 'hdfs:///home/backup', 'incremental' );
-    Statement executed.
-{: .Example xml:space="preserve"}
+### Backing Up the Table  {#exbackup}
+This command line performs a full backup of the TPCH100 `LINEITEM` table to the `/backup` directory on HDFS:
 
-</div>
-The following example runs the same backup and stores it on AWS:
+```
+splice> CALL SYSCS_UTIL.SYSCS_BACKUP_TABLE('TPCH100', 'LINEITEM', '/backup', 'full');
+Success
+----------------------
+FULL backup to /backup
 
-<div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.SYSCS_BACKUP_TABLE( 's3://backup1234', 'incremental' );
-    Statement executed.
-{: .Example xml:space="preserve"}
+1 row selected
+```
 
-</div>
-</div>
-And this example does a full backup to a relative directory (relative to
-your `splicemachine` directory) on a standalone version of
-Splice Machine:
+### Examining the Backup  {#exexamine}
 
-<div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.SYSCS_BACKUP_TABLE( './dbBackups', 'full' );
-    Statement executed.
-{: .Example xml:space="preserve"}
+After the backup completes, you can examine the `sys.sysbackup` table to find the ID of our new backup:
 
-</div>
+```
+splice> SELECT * FROM sys.sysbackup;
+BACKUP_ID      |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS     |SCOPE     |INCR&|INCREMENTAL_PARENT_&|BACKUP_ITEM
+-----------------------------------------------------------------------------------------------------------------------------------
+587516417      |2018-09-25 00:12:33.896  |2018-09-25 00:42:53.546  |SUCCESS    |TABLE     |false|-1                  |3
+
+```
+
+You can use the ID of your backup job to examine the `sys.sysbackupitems` and verify that the base table and two indexes have been backed up:
+
+```
+splice> SELECT * FROM sys.sysbackupitems WHERE backup_Id=587516417 ;
+BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
+-----------------------------------------------------------------------------------------
+587516417   |splice:292000    |2018-09-25 00:12:40.512   |2018-09-25 00:32:14.856
+587516417   |splice:292033    |2018-09-25 00:12:40.513   |2018-09-25 00:42:48.573
+587516417   |splice:292017    |2018-09-25 00:12:40.512   |2018-09-25 00:41:25.683
+
+3 rows selected
+```
+
+### Validating the Backup  {#exvalidate}
+Before restoring the table, you can validate the backup:
+```
+splice> CALL SYSCS_UTIL.VALIDATE_TABLE_BACKUP( 'TPCH100', 'LINEITEM', '/backup', 587516417 );
+Results
+---------------------------------------------------------------------------------------------
+No corruptions found for backup.
+
+1 row selected
+```
+
+See the reference page for the [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html) system procedure for more information about backup validation.
+
+### Restoring the Backup  {#exrestore}
+You can restore the table to another table on the same cluster, or on a different cluster.
+
+This command restores the backed-up table to table named `LINEITEM` in the `SPLICE` schema:
+```
+splice> CALL SYSCS_UTIL.SYSCS_RESTORE_TABLE('SPLICE', 'LINEITEM', 'TPCH100', 'LINEITEM', '/backup', 587516417, false);
+Statement executed.
+```
+
+See the reference page for the [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](sqlref_sysprocs_restoretable.html) system procedure for more information about restoring a backed-up table.
+
 ## See Also
 
-* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
-* [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
-* [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-* [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](sqlref_sysprocs_restoretable.html)
+* [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
 * [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
+* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
 
 </div>
 </section>

@@ -12,30 +12,16 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_RESTORE_TABLE
 
-The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores your
-database to the state it was in when a specific backup was performed,
-using a backup that you previously created using either the
-&nbsp; [`SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
-procedure.
+The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was previously backed up with the [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html) procedure. You can restore the table to another table on the same cluster, or on a different cluster. Note that the table to which you are restoring must already exist in the database.
 
-You can restore your database from any previous full or incremental
+You can restore your table from a previous full or incremental table
 backup.
-
-There are several important things to know about restoring your database
-from a previous backup:
-
-* Restoring a database **wipes out your database** and replaces it with
-  what had been previously backed up.
-* You **cannot use your cluster** while restoring your database.
-* You **must reboot your database** after the restore is complete. See
-  the [Starting Your Database](onprem_admin_startingdb.html) topics in
-  this book for instructions on restarting your database.
 
 When you restore from a backup, Splice Machine automatically determines
 and runs whatever sequence of restores may be required to accomplish the
-restoration of your database; this means that when you select an
+restoration of your table; this means that when you select an
 incremental backup from which to restore, Splice Machine will detect
-that it needs to first restore from the previous full backup and then
+that it needs to first restore from the previous full table backup and then
 apply any incremental restorations.
 {: .noteIcon}
 
@@ -49,31 +35,33 @@ apply any incremental restorations.
                                     VARCHAR directory,
                                     BIGINT  backupId,
                                     BOOLEAN validate );
-
-
 {: .FcnSyntax xml:space="preserve"}
-
 </div>
+
 <div class="paramList" markdown="1">
 
 destSchema
 {: .paramName}
-XXXX
+
+The name of the schema to which you want the table restored.
 {: .paramDefnFirst}
 
 destTable
 {: .paramName}
-XXXX
+
+The name of the restored table.
 {: .paramDefnFirst}
 
 sourceSchema
 {: .paramName}
-XXXX
+
+The name of the schema from which the table was backed up.
 {: .paramDefnFirst}
 
 sourceTable
 {: .paramName}
-XXXX
+
+The name of the table that was backed up.
 {: .paramDefnFirst}
 
 directory
@@ -99,45 +87,20 @@ each backup) may also be corrupted.
 backupId
 {: .paramName}
 
-The ID of the backup job from which you want to restore your database.
+The ID of the backup job from which you want to restore the table.
 {: .paramDefnFirst}
-
-The system [*Backing Up and Restoring*](onprem_admin_backingup.html)
-topic for more information.
 {: .paramDefn}
 
 validate
 {: .paramName}
 
-A Boolean value that specifies whether to validate the backup before restoring from it:
+A Boolean value that specifies whether to validate the table backup before restoring from it:
 {: .paramDefnFirst}
 
 * If *validate* is `false`, the restore proceeds without any pre-validation.
-* If *validate* is `true`, the backup is validated before the restoration is started. (See [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the database is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
+* If *validate* is `true`, the backup is validated before the restoration is started. (See [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the database is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
 {: .nested}
 </div>
-## Usage
-
-Restoring you database can take a while, and has several major
-implications:
-{: .body}
-
-<div class="notePlain" markdown="1">
-There are several important things to know about restoring your database
-from a previous backup:
-
-* Restoring a database **wipes out your database** and replaces it with
-  what had been previously backed up.
-* You **cannot use your cluster** while restoring your database.
-* You **must reboot your database** after the restore is complete by
-  first [Starting Your Database](onprem_admin_startingdb.html).
-
-</div>
-As noted at the top of this topic: if you are restoring from an
-incremental backup, you must first restore from the most recent full
-backup, and then incrementally restore from each subsequent incremental
-backup. See [Example 2 below.](#Example)
-
 ## Results
 
 This procedure does not return a result.
@@ -148,67 +111,86 @@ If authentication and SQL authorization are both enabled, only the
 database owner has execute privileges on this function by default. The
 database owner can grant access to other users.
 
-## Examples
-This section includes two examples, both of which perform a pre-restore validation of the backup.
+## SQL Example: Backup, Validate, and Restore a Table
 
-Stop using your database before restoring, and keep in mind that
-restoring a database may take several minutes, depending on the size of
-your database.
-{: .noteIcon}
+This example shows you how to back up a table, then validate and restore it, in these steps:
 
-### Example 1: Successful Restoration
-The following example first queries the system backup table to find the
-ID of the backup from which we want to restore, and then initiates the
-restoration.
+* [Backing Up the Table](#exbackup)
+* [Examining the Backup](#exexamine)
+* [Validating the Backup](#exvalidate)
+* [Restoring the Backup](#exrestore)
 
+### Backing Up the Table  {#exbackup}
+This command line performs a full backup of the TPCH100 `LINEITEM` table to the `/backup` directory on HDFS:
 
-    splice> SELECT * FROM SYS.SYSBACKUP;
-    BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESYSTEM      |SCOPE |INCR&|INCREMENTAL_PARENT_&|BACKUP_ITEM
-    ----------------------------------------------------------------------------------------------------------------------------------------
-    74101     |2015-11-30 17:46:41.431  |2015-11-30 17:46:56.664  |S         |./dbBackups/    |D     |true |40975               |30
-    40975     |2015-11-25 09:32:53.04   |2015-11-25 09:33:09.081  |S         |~/splicemachine |D     |false|-1                  |93
+```
+splice> CALL SYSCS_UTIL.SYSCS_BACKUP_TABLE('TPCH100', 'LINEITEM', '/backup', 'full');
+Success
+----------------------
+FULL backup to /backup
 
-    2 rows selected
+1 row selected
+```
 
-    splice> CALL SYSCS_UTIL.SYSCS_RESTORE_TABLE('./dbBackups/', 74101, true);
-    Statement executed.
-{: .Example xml:space="preserve"}
+See the reference page for the [`SYSCS_UTIL.SYSCSBACKUP_TABLE`](sqlref_sysprocs_backuptable.html) system procedure for more information about backing up a table.
 
-Once the restoration is complete, reboot your database by the [Starting
-Your Database.](onprem_admin_startingdb.html)
+### Examining the Backup  {#exexamine}
 
-### Example 2: Validation Failure
-Here's a similar restore attempt that terminates after finding inconsistencies in the backup during validation:
+After the backup completes, you can examine the `sys.sysbackup` table to find the ID of our new backup:
 
-    splice> SELECT * FROM SYS.SYSBACKUP;
-    BACKUP_ID |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS    |FILESYSTEM      |SCOPE |INCR&|INCREMENTAL_PARENT_&|BACKUP_ITEM
-    ----------------------------------------------------------------------------------------------------------------------------------------
-    63541     |2017-10-30 13:46:41.431  |2017-10-30 13:46:56.664  |S         |./dbBackups/    |D     |true |60836               |30
-    60836     |2017-10-25 08:32:53.04   |2017-10-25 08:33:09.081  |S         |~/splicemachine |D     |false|-1                  |93
+```
+splice> SELECT * FROM sys.sysbackup;
+BACKUP_ID      |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS     |SCOPE     |INCR&|INCREMENTAL_PARENT_&|BACKUP_ITEM
+-----------------------------------------------------------------------------------------------------------------------------------
+587516417      |2018-09-25 00:12:33.896  |2018-09-25 00:42:53.546  |SUCCESS    |TABLE     |false|-1                  |3
 
-    2 rows selected
+```
 
-    splice> CALL SYSCS_UTIL.SYSCS_RESTORE_TABLE('./dbBackups/', 63541, true);
-    result                                  |warnings
-    ----------------------------------------------------------------------------------------------------------------------------------------
-    BR010                                   |A data file ./dbBackups/BACKUP_63541/tables/SPLICE_TXN/f4460c47f6c96fe8d76c0def11c22dc8/V/c7350de1acaf4a11a561472675eda1dd is missing. The restored table may be corrupted.
-    Found inconsistencies in backup         |To force a restore, set validate to false
+You can use the ID of your backup job to examine the `sys.sysbackupitems` and verify that the base table and two indexes have been backed up:
 
-    2 rows selected
-{: .Example xml:space="preserve"}
+```
+splice> SELECT * FROM sys.sysbackupitems WHERE backup_Id=587516417 ;
+BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
+-----------------------------------------------------------------------------------------
+587516417   |splice:292000    |2018-09-25 00:12:40.512   |2018-09-25 00:32:14.856
+587516417   |splice:292033    |2018-09-25 00:12:40.513   |2018-09-25 00:42:48.573
+587516417   |splice:292017    |2018-09-25 00:12:40.512   |2018-09-25 00:41:25.683
+
+3 rows selected
+```
+
+### Validating the Backup  {#exvalidate}
+Before restoring the table, you can validate the backup:
+```
+splice> CALL SYSCS_UTIL.VALIDATE_TABLE_BACKUP( 'TPCH100', 'LINEITEM', '/backup', 587516417 );
+Results
+---------------------------------------------------------------------------------------------
+No corruptions found for backup.
+
+1 row selected
+```
+
+See the reference page for the [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html) system procedure for more information about backup validation.
+
+### Restoring the Backup  {#exrestore}
+You can restore the table to another table on the same cluster, or on a different cluster.
+
+This command restores the backed-up table to table named `LINEITEM` in the `SPLICE` schema:
+```
+splice> CALL SYSCS_UTIL.SYSCS_RESTORE_TABLE('SPLICE', 'LINEITEM', 'TPCH100', 'LINEITEM', '/backup', 587516417, false);
+Statement executed.
+```
 
 ## See Also
 
-* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
-* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
-* [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
-* [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
-* [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html)
+* [`SYSCS_UTIL.SYSCS_VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
 * [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
+* [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
+
 
 </div>
 </section>
