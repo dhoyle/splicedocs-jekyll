@@ -5,7 +5,7 @@ keywords: restoring, RESTORE_SCHEMA, restore from backup
 toc: false
 product: all
 sidebar:  sqlref_sidebar
-permalink: sqlref_sysprocs_restoretable.html
+permalink: sqlref_sysprocs_restoreschema.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
