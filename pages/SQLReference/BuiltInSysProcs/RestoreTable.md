@@ -1,6 +1,6 @@
 ---
 title: SYSCS_UTIL.SYSCS_RESTORE_TABLE built-in system procedure
-summary: Built-in system procedure that restores a database from a previous backup.
+summary: Built-in system procedure that restores a table from a previous backup.
 keywords: restoring, RESTORE_TABLE, restore from backup
 toc: false
 product: all
@@ -68,7 +68,7 @@ directory
 {: .paramName}
 
 Specifies the path to the directory containing the backup from which you
-want to restore your database. This can be a local directory if you're
+want to restore your table. This can be a local directory if you're
 using the standalone version of Splice Machine, or a directory in your
 cluster's file system (HDFS or MapR-FS).
 {: .paramDefnFirst}
@@ -98,7 +98,7 @@ A Boolean value that specifies whether to validate the table backup before resto
 {: .paramDefnFirst}
 
 * If *validate* is `false`, the restore proceeds without any pre-validation.
-* If *validate* is `true`, the backup is validated before the restoration is started. (See [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the database is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
+* If *validate* is `true`, the backup is validated before the restoration is started. (See [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the table is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
 {: .nested}
 </div>
 ## Results
@@ -183,7 +183,9 @@ Statement executed.
 
 ## See Also
 
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](sqlref_sysprocs_restoreschema.html)
 * [`SYSCS_UTIL.SYSCS_VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)

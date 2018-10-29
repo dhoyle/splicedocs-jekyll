@@ -173,10 +173,14 @@ Splice Machine:
 ## See Also
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
 * [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html)
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)

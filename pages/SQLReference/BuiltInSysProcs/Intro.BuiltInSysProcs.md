@@ -51,6 +51,14 @@ database:
             </td>
         </tr>
         <tr>
+            <td class="CodeFont"><a href="sqlref_sysprocs_backupschema.html">SYSCS_UTIL.SYSCS_BACKUP_SCHEMA</a>
+            </td>
+            <td>
+                <p>Backs up tables and indexes belonging to a schema to a specified backup directory.</p>
+                <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
+            </td>
+        </tr>
+        <tr>
             <td class="CodeFont"><a href="sqlref_sysprocs_backuptable.html">SYSCS_UTIL.SYSCS_BACKUP_TABLE</a>
             </td>
             <td>
@@ -176,11 +184,19 @@ database:
             <td class="CodeFont"><a href="sqlref_sysprocs_restoredb.html">SYSCS_UTIL.SYSCS_RESTORE_DATABASE</a>
             </td>
             <td>
-                <p>Restores a database from a previous backup.</p>
+                <p>Restores the tables and indexes belonging to a schema from a previous backup.</p>
                 <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
             </td>
         </tr>
         <tr>
+            <td class="CodeFont"><a href="sqlref_sysprocs_restoreschema.html">SYSCS_UTIL.SYSCS_RESTORE_SCHEMA</a>
+            </td>
+            <td>
+                <p>Restores a schema, including its tables and indexes, from a previous schema backup.</p>
+                <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
+            </td>
+        </tr>
+       <tr>
             <td class="CodeFont"><a href="sqlref_sysprocs_restoretable.html">SYSCS_UTIL.SYSCS_RESTORE_TABLE</a>
             </td>
             <td>

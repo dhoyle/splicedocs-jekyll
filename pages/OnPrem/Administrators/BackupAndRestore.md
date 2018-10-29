@@ -30,7 +30,13 @@ these sections:
 * [Using the Backup Operations](#Using)
 * [Backing Up to Cloud Storage](#Backing)
 
-You can also use the [SYSCS_UTIL.SYSCS_BACKUP_TABLE](#sqlref_sysprocs_backuptable.html) and [SYSCS_UTIL.SYSCS_RESTORE_TABLE](#sqlref_sysprocs_restoretable.html) procedures to back up and restore specific tables.
+If you only want to back up  or restore the tables and indexes belonging to a specific schema, you can use these procedures:
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html).
+
+And i you only want to back up or restore a specific table, you can use these procedures:
+* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html).
 
 ## Backup Resource Allocation
 
@@ -775,11 +781,15 @@ Follow these steps:
 ## See Also
 
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
 * [`SYSCS_UTIL.SYSCS_CANCEL_BACKUP`](sqlref_sysprocs_cancelbackup.html)
 * [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html).
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html).
 * [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
 * [`SYSBACKUP` system table](sqlref_systables_sysbackup.html)
