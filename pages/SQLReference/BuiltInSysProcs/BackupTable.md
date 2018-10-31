@@ -16,6 +16,8 @@ The `SYSCS_UTIL.SYSCS_BACKUP_TABLE` system procedure performs an
 immediate full or incremental backup of a table in your database to a specified
 backup directory.
 
+{% include splice_snippets/enterpriseonly_note.md %}
+
 Splice Machine supports both full and incremental backups: 
 
 * A *full backup* backs up all of the files/blocks that constitute your
@@ -92,7 +94,9 @@ This procedure does not return a result.
 
 ## Backup Resource Allocation
 
-Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. See the [Troubleshooting Backups](bestpractices_onprem_backups.html) section of our *Best Practices Guide* for specific information about allocation of resources.
+Splice Machine backups run as Spark jobs, submitting tasks to copy HFiles. In the past, Splice Machine backups used the Apache Hadoop `distcp` tool to copy the HFile; `distcp` uses MapReduce to copy, which can require significant resources. These requirements can limit file copying parallelism and reduce backup throughput. Splice Machine backups now can run (and do so by default) using a Spark executor to copy the HFiles, which significantly increases backup performance.
+
+You can revert to using `distcp`, which uses a MapReduce job that can run into resource issues. For more information, see the [Understanding and Troubleshooting Backups](bestpractices_onprem_backups.html) topic.
 
 ## HBase Configuration Options for Incremental Backup {#UsageConfig}
 

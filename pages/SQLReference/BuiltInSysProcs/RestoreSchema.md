@@ -14,6 +14,8 @@ folder: SQLReference/BuiltInSysProcs
 
 The `SYSCS_UTIL.SYSCS_RESTORE_SCHEMA` system procedure restores a schema that was previously backed up with the [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html) procedure. You can restore the schema to another schema on the same cluster, or on a different cluster. Note that the schema to which you are restoring must already exist in the database.
 
+{% include splice_snippets/enterpriseonly_note.md %}
+
 You can restore your schema from a previous full or incremental table
 backup.
 

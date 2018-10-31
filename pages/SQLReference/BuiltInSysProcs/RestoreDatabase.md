@@ -18,6 +18,8 @@ using a backup that you previously created using either the
 &nbsp; [`SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
 procedure.
 
+{% include splice_snippets/enterpriseonly_note.md %}
+
 You can restore your database from any previous full or incremental
 backup.
 

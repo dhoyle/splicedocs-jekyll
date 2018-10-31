@@ -14,6 +14,8 @@ folder: SQLReference/BuiltInSysProcs
 
 The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was previously backed up with the [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html) procedure. You can restore the table to another table on the same cluster, or on a different cluster. Note that the table to which you are restoring must already exist in the database.
 
+{% include splice_snippets/enterpriseonly_note.md %}
+
 You can restore your table from a previous full or incremental table
 backup.
 

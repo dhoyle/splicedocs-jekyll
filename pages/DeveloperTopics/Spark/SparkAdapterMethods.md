@@ -26,7 +26,6 @@ This topic describes the following methods of the `SplicemachineContext` class:
 * [`getConnection`](#getconnection)
 * [`getSchema`](#getschema)
 * [`insert`](#insert)
-* [`pruneSchema`](#pruneschema)
 * [`rdd` and `internalRdd`](#rdd)
 * [`tableExists`](#tableexists)
 * [`truncateTable`](#truncatetable)
@@ -339,29 +338,6 @@ schema
 {: .paramName}
 
 The Catalyst schema of the master table.
-{: .paramDefnFirst}
-</div>
-
-## pruneSchema  {#pruneschema}
-This method prunes away all of the columns in a table except for the columns that you specify. It returns a Catalyst schema that corresponds to the specified columns, in their specified order.
-
-<div class="fcnWrapperWide" markdown="1"><pre>
-insert( schema: StructType,
-        columns: Array[String] ): StructType
-{: .FcnSyntax xml:space="preserve"}
-</div>
-
-<div class="paramList" markdown="1">
-schema
-{: .paramName}
-
-The Catalyst schema of the master table.
-{: .paramDefnFirst}
-
-columns
-{: .paramName}
-
-The columns that you want to retain.
 {: .paramDefnFirst}
 </div>
 
