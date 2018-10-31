@@ -17,7 +17,7 @@ stored procedures in Splice Machine.
 
 ## About User-Defined Functions
 
-You can create user-defined database functions that can be evaluated in
+You can create user-defined database functions (UDFs) that can be evaluated in
 SQL statements; these functions can be invoked where most other built-in
 functions are allowed, including within SQL expressions and `SELECT`
 statements. Functions must be deterministic, and cannot be used to make

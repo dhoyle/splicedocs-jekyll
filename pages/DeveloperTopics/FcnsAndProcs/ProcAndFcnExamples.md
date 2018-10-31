@@ -13,7 +13,7 @@ folder: DeveloperTopics/FcnsAndProcs
 # Examples of Splice Machine Functions and Stored Procedures
 
 This topic walks you through creating, storing, and using a sample
-database function and a sample database stored procedure, in these
+database function (a UDF, or user-defined function) and a sample database stored procedure, in these
 sections:
 
 * [Creating and Using a Sample Function in Splice
