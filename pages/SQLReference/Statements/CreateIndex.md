@@ -69,12 +69,14 @@ AUTO [ SAMPLEFRACTION fractionVal ] |
 
 Use the optional `SPLITKEYS` clause to specify keys for splitting the index into Regions; see the [Using Split Keys](#splitkeys) section below for more information about how to specify split keys.
 
-You can specify `AUTO` to have Splice Machine scan the data and determine the splits automatically. Or you can specify your own split keys in a CSV file; if you're using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions. Each parameter name links to a fuller description of the possible parameter values, which are the similar to those used in our [Import Parameters Tutorial](tutorials_ingest_importparams.html).
+You can specify `AUTO` to have Splice Machine scan the data and determine the splits automatically. Or you can specify your own split keys in a CSV file; if you're using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions.
 {: .paramDefn}
 
    <div class="paramList" markdown="1">
    fractionVal
-   {: .paramName} The sampling fraction to use; this is a decimal value in the range `0` to `1`. If you don't supply this, the value of the `splice.bulkImport.sample.fraction` configuration property is used.
+   {: .paramName}
+
+   The sampling fraction to use; this is a decimal value in the range `0` to `1`. If you don't supply this, the value of the `splice.bulkImport.sample.fraction` configuration property is used.
    {: .paramDefnFirst}
 
    filePath
@@ -82,30 +84,40 @@ You can specify `AUTO` to have Splice Machine scan the data and determine the sp
    The path to the CSV file that contains the split key values.
    {: .paramDefnFirst}
 
-   [colDelimiter](tutorials_ingest_importparams.html#columnDelimiter)
+   colDelimiter
    {: .paramName}
    The character used to separate columns. You don't need to specify this if using the comma (,) character as your delimiter.
    {: .paramDefnFirst}
+   For additional information about column delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#columnDelimiter) tutorial page.
+   {: .paramDefn}
 
-   [charDelimiter](tutorials_ingest_importparams.html#characterDelimiter)
+   charDelimiter
    {: .paramName}
    The character is used to delimit strings in the imported data. You don't need to specify this if using the double-quote (`\"`) character as your delimiter.
    {: .paramDefnFirst}
+   For additional information about character delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#characterDelimiter) tutorial page.
+   {: .paramDefn}
 
-   [timeStampFormat](tutorials_ingest_importparams.html#timestampFormat)
+   timeStampFormat
    {: .paramName}
    The format of timestamps stored in the file. You don't need to specify this if no time columns in the file, or if the format of any timestamps in the file match the Java.sql.Timestamp default format, which is: "*yyyy-MM-dd HH:mm:ss*".
    {: .paramDefnFirst}
+   For additional information about timestamp formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timestampFormat) tutorial page.
+   {: .paramDefn}
 
-   [dateFormat](tutorials_ingest_importparams.html#dateFormat)
+   dateFormat
    {: .paramName}
    The format of datestamps stored in the file. You don't need to specify this if there are no date columns in the file, or if the format of any dates in the file match the pattern: "*yyyy-MM-dd*".
    {: .paramDefnFirst}
+   For additional information about date formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#dateFormat) tutorial page.
+   {: .paramDefn}
 
-   [timeFormat](tutorials_ingest_importparams.html#timeFormat)
+   timeFormat
    {: .paramName}
    The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "*HH:mm:ss*".
    {: .paramDefnFirst}
+   For additional information about time formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timeFormat) tutorial page.
+   {: .paramDefn}
    </div>
 
 hFileLocation
@@ -385,7 +397,7 @@ Now, if we force the index to be used in the above case, you'll see an error:
 * [`INSERT`](sqlref_statements_insert.html) statement
 * [`SELECT`](sqlref_expressions_select.html) statement
 * [`UPDATE`](sqlref_statements_update.html) statement
-* [Importing Data: Bulk HFile Index Creation](tutorials_indexing_largeindex.html)
+* [Indexing Large Tables](tutorials_indexing_largeindex.html)
 * [Importing Data: Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
 
 </div>
