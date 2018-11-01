@@ -16,6 +16,8 @@ The `SYSCS_UTIL.SYSCS_RESTORE_SCHEMA` system procedure restores a schema that wa
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
+{% comment %}
++++ REMOVE THIS COMMENT WHEN INCREMENTAL BECOMES AVAILABLE +++
 You can restore your schema from a previous full or incremental table
 backup.
 
@@ -26,6 +28,7 @@ incremental backup from which to restore, Splice Machine will detect
 that it needs to first restore from the previous full schema backup and then
 apply any incremental restorations.
 {: .noteIcon}
+{% endcomment %}
 
 ## Syntax
 
@@ -45,6 +48,8 @@ destSchema
 
 The name of the schema to which you want the table restored.
 {: .paramDefnFirst}
+This table must already exist in your database.
+{: .noteNote}
 
 sourceSchema
 {: .paramName}

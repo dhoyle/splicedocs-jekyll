@@ -13,15 +13,17 @@ folder: SQLReference/BuiltInSysProcs
 # SYSCS_UTIL.SYSCS_BACKUP_TABLE
 
 The `SYSCS_UTIL.SYSCS_BACKUP_TABLE` system procedure performs an
-immediate full or incremental backup of a table in your database to a specified
+immediate full {% comment %}or incremental{% endcomment %} backup of a table in your database to a specified
 backup directory.
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
+{% comment %}
++++ REMOVE THIS COMMENT WHEN INCREMENTAL BECOMES AVAILABLE +++
 Splice Machine supports both full and incremental backups: 
 
 * A *full backup* backs up all of the files/blocks that constitute your
-  table.
+  schema.
 * An *incremental backup* only stores database files/blocks that have
   changed since a previous backup.
 
@@ -29,6 +31,7 @@ The first time that you run an incremental backup, a full backup is
 performed. Subsequent runs of the backup will only copy information that
 has changed since the previous backup.
 {: .noteNote}
+{% endcomment %}
 
 ## Syntax
 
@@ -76,8 +79,10 @@ when specifying the backup destination.
 type
 {: .paramName}
 
-Specifies the type of table backup that you want performed. This must be one of
-the following values: `full` or `incremental`; any other value
+Specifies the type of table backup that you want performed. Currently, the only valid value is `full`.
+{: .paramDefnFirst}
+{% comment %}
+This must be one ofthe following values: `full` or `incremental`; any other value
 produces an error and the backup is not run.
 {: .paramDefnFirst}
 
@@ -86,7 +91,7 @@ Note that if you specify `incremental`, Splice Machine checks the &nbsp;
 there already is a backup for the table; if not, Splice Machine will
 perform a full backup, and subsequent backups will be incremental.
 {: .paramDefn}
-
+{% endcomment %}
 </div>
 ## Results
 
