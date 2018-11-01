@@ -15,7 +15,7 @@ folder: DeveloperTutorials/Indexing
 
 Splice Machine implements indexes as tables, which means that creating a regular index is similar to creating a new table. This means that parallelization, which is essential for performance with big tables, is only possible when the index uses a sufficient number of regions. You can increase parallelism by optimizing how the index is split into regions.
 
-Note that the standard form of the `CREATE INDEX` statement to generate performant indexes for most tables: Splice Machine traverses the table and copies the specified column values to the index. For very large tables, this process can require a lot of time, and can generate an index that is split into uneven regions, which slows performance.
+Note that the standard form of the `CREATE INDEX` statement generates performant indexes for most tables: Splice Machine traverses the table and copies the specified column values to the index. For very large tables, this process can require a lot of time, and can generate an index that is split into uneven regions, which slows performance.
 
 The remainder of this topic describes using the optional `SPLITKEYS` clause of our `CREATE INDEX` statement to efficiently create highly performant indexes for very large tables; this clause allows you to specify how to split the index into regions when it is generated, in these sections:
 
