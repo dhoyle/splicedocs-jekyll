@@ -13,7 +13,7 @@ folder: SQLReference/Statements
 # CREATE INDEX
 
 A `CREATE INDEX` statement creates an index on a table. Indexes can be
-on one or more columns in the table. You can optionally create indexes using bulk HFiles, which can improve index creation performance for large tables.
+on one or more columns in the table.
 
 ## Syntax
 
@@ -21,10 +21,10 @@ on one or more columns in the table. You can optionally create indexes using bul
 CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexName</a>
    ON <a href="sqlref_identifiers_types.html#TableName">tableName</a> (
       <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a>
-      [ ASC  | DESC ]
-      [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
+      [ ASC  | DESC ]
+      [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
      )
-   [ SPLITKEYS splitKeyInfo ] [ HFILE hfileLocation ]
+   [ SPLITKEYS splitKeyInfo HFILE hfileLocation ]
    [ EXCLUDE ( NULL | DEFAULT ) KEYS ]
 </pre>
 </div>
@@ -44,7 +44,7 @@ A table name, which can optionally be qualified by a schema name.
 simpleColumnName
 {: .paramName}
 
-A simple column name.
+A simple column name.
 {: .paramDefnFirst}
 
 You cannot use the same column name more than once in a single `CREATE
@@ -56,78 +56,59 @@ splitKeyInfo
 {: .paramName}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-AUTO [ SAMPLEFRACTION fractionVal ] |
-{ [ LOGICAL | PHYSICAL ]
-  LOCATION filePath
-  [ colDelimiter ]
-  [ charDelimiter ]
-  [ timestampFormat ]
-  [ dateFormat ]
-  [ timeFormat ]
+AUTO |
+{ LOCATION filePath
+    [ colDelimiter ]
+    [ charDelimiter ]
+    [ timestampFormat ]
+    [ dateFormat ]
+    [ timeFormat ]
 }</pre>
 </div>
 
-Use the optional `SPLITKEYS` clause to specify keys for splitting the index into Regions; see the [Using Split Keys](#splitkeys) section below for more information about how to specify split keys.
+Use the optional `SPLITKEYS` section to create indexes using HFile Bulk Loading, which is described in the [Using Bulk Hfile Indexing](#BulkIndex) section, below. Using bulk HFiles improves performance for large datasets, and is related to our [Bulk HFile Import procedure](tutorials_ingest_importexampleshfile.html).
+{: .paramDefnFirst}
 
-You can specify `AUTO` to have Splice Machine scan the data and determine the splits automatically. Or you can specify your own split keys in a CSV file; if you're using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions.
+You can specify `AUTO` to have Splice Machine scan the data and determine the splits automatically. Or you can specify your own split keys in a CSV file; if you're using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions. Each parameter name links to a fuller description of the possible parameter values, which are the similar to those used in our [Import Parameters Tutorial](tutorials_ingest_importparams.html).
 {: .paramDefn}
 
    <div class="paramList" markdown="1">
-   fractionVal
+   [colDelimiter](tutorials_ingest_importparams.html#columnDelimiter)
    {: .paramName}
 
-   The sampling fraction to use; this is a decimal value in the range `0` to `1`. If you don't supply this, the value of the `splice.bulkImport.sample.fraction` configuration property is used.
-   {: .paramDefnFirst}
-
-   filePath
-   {: .paramName}
-   The path to the CSV file that contains the split key values.
-   {: .paramDefnFirst}
-
-   colDelimiter
-   {: .paramName}
    The character used to separate columns. You don't need to specify this if using the comma (,) character as your delimiter.
    {: .paramDefnFirst}
-   For additional information about column delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#columnDelimiter) tutorial page.
-   {: .paramDefn}
 
-   charDelimiter
+   [charDelimiter](tutorials_ingest_importparams.html#characterDelimiter)
    {: .paramName}
+
    The character is used to delimit strings in the imported data. You don't need to specify this if using the double-quote (`\"`) character as your delimiter.
    {: .paramDefnFirst}
-   For additional information about character delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#characterDelimiter) tutorial page.
-   {: .paramDefn}
 
-   timeStampFormat
+   [timeStampFormat](tutorials_ingest_importparams.html#timestampFormat)
    {: .paramName}
+
    The format of timestamps stored in the file. You don't need to specify this if no time columns in the file, or if the format of any timestamps in the file match the Java.sql.Timestamp default format, which is: "*yyyy-MM-dd HH:mm:ss*".
    {: .paramDefnFirst}
-   For additional information about timestamp formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timestampFormat) tutorial page.
-   {: .paramDefn}
 
-   dateFormat
+   [dateFormat](tutorials_ingest_importparams.html#dateFormat)
    {: .paramName}
+
    The format of datestamps stored in the file. You don't need to specify this if there are no date columns in the file, or if the format of any dates in the file match the pattern: "*yyyy-MM-dd*".
    {: .paramDefnFirst}
-   For additional information about date formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#dateFormat) tutorial page.
-   {: .paramDefn}
 
-   timeFormat
+   [timeFormat](tutorials_ingest_importparams.html#timeFormat)
    {: .paramName}
+
    The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "*HH:mm:ss*".
    {: .paramDefnFirst}
-   For additional information about time formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timeFormat) tutorial page.
-   {: .paramDefn}
    </div>
 
 hFileLocation
 {: .paramName}
 
-To use the bulk HFile index creation process, you __must__ specify this value, which is the location (full path) in which the temporary HFiles will be created. These files will automatically be deleted after the index creation process completes. If you leave this parameter out, the index will be created without using HFile Bulk loading.
+The location (full path) in which the temporary HFiles will be created. These files will automatically be deleted after the index creation process completes. This parameter is required when specifying split keys.
 {: .paramDefnFirst}
-
-HFile Bulk Loading of indexes is described in the [Using Bulk Hfile Indexing](#BulkIndex) section, below. Using bulk HFiles improves performance for large datasets, and is related to our [Bulk HFile Import procedure](tutorials_ingest_importexampleshfile.html).
-{: .paramDefn}
 
 </div>
 
@@ -158,8 +139,8 @@ and does not create the index, as you can see in this example:
     splice> DROP INDEX idx2;
     ERROR 42X65: Index 'idx2' does not exist.
 {: .Example}
-</div>
 
+</div>
 By default, Splice Machine uses the ascending order of each column to
 create the index. Specifying `ASC` after the column name does not alter
 the default behavior. <span>The `DESC` keyword after the column name
@@ -172,28 +153,23 @@ value of an indexed column.</span>
 If a qualified index name is specified, the schema name cannot begin
 with `SYS`.
 
-## Using Split Keys  {#splitkeys}
-You can optionally include a file of split keys for the new index; these specify how you want the index to be split over HBase Regions. You can have Splice Machine automatically determine the splits by scanning the data, or you can define the split keys in a CSV file.
+## Using Bulk HFiles to Create an Index  {#BulkIndex}
 
-The split keys file you provide can specify either `LOGICAL` or `PHYSICAL` keys:
-* Logical keys are the primary key column values that you want to define the splits.
-* Physical keys are actual split keys for the HBase table, in encoded HBase format.
+Bulk HFile indexing improves performance when indexing very large datasets. The table you're indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted. This is very similar to using HFile Bulk Loading for importing large datasets, which is described in our [Bulk HFile Import Tutorial](tutorials_ingest_importexampleshfile.html).
 
-### Automatic Sampling or Specifying Split Keys
-When you specify `AUTO` sampling for index creation, Splice Machine samples the data you're indexing and determines the best region splits for your index. You can specify the sampling rate to use, as shown below, in [Example 2: Bulk HFile Index Creation with Automatic Split Keys](#exbulkauto).
+You can have Splice Machine automatically determine the splits by scanning the data, or you can define the split keys in a CSV file. In the following example, we use our understanding of the `Orders` table to first create a CSV file named `ordersKey.csv` that contains the split keys we want, and then use the following `CREATE INDEX` statement to create the index:
 
-If you know how your data should be split into regions, you can specify those region split keys in a CSV file, as shown below, in [Example 3: Bulk HFile Index creation with Logical Split Keys](#exbulklogical). Alternatively, if you're an expert user, you can specify the split keys for the physical HBase table, as shown below, in [Example 4: Bulk HFile Index creation with Physical Split Keys](#exbulkphysical).
+<div class="preWrapperWide" markdown="1"><pre class="Example">
+CREATE INDEX o_Cust_Idx on Orders(
+   o_custKey,
+   o_orderKey
+)
+SPLITKEYS LOCATION '/tmp/ordersKey.csv'
+          COLUMNDELIMITER '|'
+          HFILE LOCATION '/tmp/HFiles';
+</pre></div>
 
-You can define logical *or* physical split keys for the index whether or not you're using Bulk HFile loading to create the index. Our [Indexing Large Tables](tutorials_indexing_largeindex.html) tutorial page provides detailed information about using automatic sampling or providing your own region split keys.
-{: .noteIcon}
-
-### Using Bulk HFiles to Create an Index  {#BulkIndex}
-
-Bulk HFile indexing improves performance when indexing very large datasets. The table you're indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted.
-
-To learn more about bulk HFile index creation, see [Indexing Large Tables](tutorials_indexing_largeindex.html) tutorial page.
-
-Bulk HFile index creation is related to using Bulk HFiles to import data, which is described in our [Importing Data: Bulk HFile Import](tutorials_ingest_importbulkhfile.html) tutorial page.
+The `/tmp/ordersKey.csv` file specifies the index keys; it uses the `|` character as a column delimiter. The temporary HFiles are created in the `/tmp/HFiles` directory.
 
 ## Excluding NULL and Default Values
 
@@ -230,88 +206,26 @@ on the table referenced by the `CREATE INDEX` statement are invalidated
 when the index is created.
 
 ## Examples
-This section includes these examples of index creation:
-* [Example 1: Simple Index Creation](#exsimple)
-* [Example 2: Bulk HFile Index Creation with Automatic Split Keys](#exbulkauto)
-* [Example 3: Bulk HFile Index creation with Logical Split Keys](#exbulklogical)
-* [Example 4: Bulk HFile Index creation with Physical Split Keys](#exbulkphysical)
-* [Example 5: Using the EXCLUDE Clause](#exexclude)
 
-### Example 1: Simple Index Creation {#exsimple}
 Here's a simple example of creating an index on a table:
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE TABLE myTable (ID INT NOT NULL, NAME VARCHAR(32) NOT NULL );
+    splice> CREATE TABLE myTable (ID INT NOT NULL, NAME VARCHAR(32) NOT NULL );
     0 rows inserted/updated/deleted
 
-    splice> CREATE INDEX myIdx ON myTable(ID);
+    splice> CREATE INDEX myIdx ON myTable(ID);
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 </div>
 
-### Example 2: Bulk HFile Index Creation with Automatic Split Keys {exbulkauto}
-This example creates an index using `AUTO` sampling, with a sampling rate of `0.001`:
-
-<div class="preWrapper" markdown="1">
-    CREATE INDEX l_part_idx ON lineitem(
-        l_partkey,
-        l_orderkey,
-        l_suppkey,
-        l_shipdate,
-        l_extendedprice,
-        l_discount,
-        l_quantity,
-        l_shipmode,
-        l_shipinstruct
-    ) SPLITKEYS AUTO SAMPLE FRACTION 0.001 HFILE LOCATION '/tmp/hfile';
-{: .Example xml:space="preserve"}
-</div>
-
-### Example 3: Bulk HFile Index creation with Logical Split Keys {exbulklogical}
-This example creates an index using logical (primary key column values) split keys that are stored in a CSV file:
-
-<div CLASS="preWrapper" markdown="1">
-    CREATE INDEX L_PART_IDX ON lineitem(
-         l_partkey,
-         l_orderkey,
-         l_suppkey,
-         l_shipdate,
-         l_extendedprice,
-         l_discount,
-         l_quantity,
-         l_shipmode,
-         l_shipinstruct
-     ) SPLITKEYS LOGICAL LOCATION '/tmp/l_part_idx.csv' HFILE LOCATION '/tmp/hfile';
-{: .Example xml:space="preserve"}
-</div>
-
-### Example 4: Bulk HFile Index creation with Physical Split Keys {exbulkphysical}
-This example creates an index using physical split keys, which are split keys for the HBase table, in encoded HBase format.
-
-<div class="preWrapper" markdown="1">
-    CREATE INDEX l_part_idx ON lineitem(
-         l_partkey,
-         l_orderkey,
-         l_suppkey,
-         l_shipdate,
-         l_extendedprice,
-         l_discount,
-         l_quantity,
-         l_shipmode,
-         L_SHIPINSTRUCT
-     ) SPLITKEYS PHYSICAL LOCATION '/tmp/l_part_idx.txt' HFILE LOCATION '/tmp/hfile';
-{: .Example xml:space="preserve"}
-</div>
-
-
-### Example 5: Using the EXCLUDE Clause  {#exexclude}
+### Example of Using the EXCLUDE Clause
 This example uses the EXCLUDE DEFAULT KEYS clause, and shows you how the optimizer determines the applicability of the index with that clause.
 
 <div class="preWrapper" markdown="1">
-    splice> CREATE TABLE myTable2 (col1 int, col2 int default 5);
+    splice> CREATE TABLE myTable2 (col1 int, col2 int default 5);
     0 rows inserted/updated/deleted
 
-    splice> CREATE INDEX myIdx2 ON myTable2(col2) EXCLUDE DEFAULT KEYS;
+    splice> CREATE INDEX myIdx2 ON myTable2(col2) EXCLUDE DEFAULT KEYS;
     0 rows inserted/updated/deleted
 
     splice> insert into myTable2 values (1,1), (2,2);
@@ -392,13 +306,11 @@ Now, if we force the index to be used in the above case, you'll see an error:
 
 ## See Also
 
-* [`DELETE`](sqlref_statements_delete.html) statement
-* [`DROP INDEX`](sqlref_statements_dropindex.html) statement
-* [`INSERT`](sqlref_statements_insert.html) statement
-* [`SELECT`](sqlref_expressions_select.html) statement
-* [`UPDATE`](sqlref_statements_update.html) statement
-* [Indexing Large Tables](tutorials_indexing_largeindex.html)
-* [Importing Data: Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
+* [`DELETE`](sqlref_statements_delete.html) statement
+* [`DROP INDEX`](sqlref_statements_dropindex.html) statement
+* [`INSERT`](sqlref_statements_insert.html) statement
+* [`SELECT`](sqlref_expressions_select.html) statement
+* [`UPDATE`](sqlref_statements_update.html) statement
 
 </div>
 </section>
