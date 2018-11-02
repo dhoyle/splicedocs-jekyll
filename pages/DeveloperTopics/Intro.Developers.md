@@ -101,7 +101,6 @@ This section introduces our ODBC driver and shows you how to connect to Splice M
 * [Introduction](developers_spliceplus_intro.html)
 * [Using Splice*Plus](developers_spliceplus_using.html)
 * [The Splice*Plus Language](developers_spliceplus_lang.html)
-* [Migrating PL/SQL to Splice*Plus](developers_spliceplus_migrating.html)
 
 </div>
 </section>

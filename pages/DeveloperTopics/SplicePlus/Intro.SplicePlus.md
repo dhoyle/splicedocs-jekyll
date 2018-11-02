@@ -40,11 +40,6 @@ PL/SQL for Splice Machine:
             </td>
             <td>A summary of the Splice*Plus PL/SQL language implementation.</td>
         </tr>
-        <tr>
-            <td><a href="developers_spliceplus_migrating.html">Migrating PL/SQL to Splice*Plus</a>
-            </td>
-            <td>Describes modifications that may be necessary when moving a PL/SQL program to SpliceMachine.</td>
-        </tr>
     </tbody>
 </table>
 </div>
