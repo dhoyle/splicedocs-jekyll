@@ -14,8 +14,8 @@ folder: BestPractices
 
 This section contains best practice and troubleshooting information related to importing  data into our *On-Premise Database* product, in these topics:
 
-* [Bulk Import of Very Large Datasets with Spark 2.2](#BulkImportSparkSep)
 * [Using Bulk Import on a KMS-Enabled Cluster](#BulkImportKMS)
+* [Bulk Import of Very Large Datasets with Spark 2.2](#BulkImportSparkSep)
 
 {% include splice_snippets/onpremonlytopic.md %}
 
