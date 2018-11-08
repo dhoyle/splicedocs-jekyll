@@ -15,7 +15,7 @@ folder: BestPractices
 This section contains best practice and troubleshooting information related to importing  data into our *On-Premise Database* product, in these topics:
 
 * [Using Bulk Import on a KMS-Enabled Cluster](#BulkImportKMS)
-* [Bulk Import of Very Large Datasets with Spark 2.2](#BulkImportSparkSep)
+* [Bulk Import of Very Large Datasets with Spark](#BulkImportSparkSep)
 
 {% include splice_snippets/onpremonlytopic.md %}
 
@@ -43,9 +43,9 @@ If you are a Splice Machine On-Premise Database customer and want to use bulk im
 For more information about KMS, see <a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html" target="_blank">https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html</a>.
 
 
-## Bulk Import of Very Large Datasets with Spark 2.2  {#BulkImportSparkSep}
+## Bulk Import of Very Large Datasets with Spark  {#BulkImportSparkSep}
 
-When using Splice Machine with Spark 2.2 with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
+When using Splice Machine with Spark with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
 
 #### Update Shuffle-to-Mem Setting
 

@@ -24,7 +24,8 @@ CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexNam
       [ ASC  | DESC ]
       [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
      )
-   [ SPLITKEYS splitKeyInfo ] [ HFILE hfileLocation ]
+   [ [ AUTO | LOGICAL | PHYSICAL ] SPLITKEYS <em>splitKeyInfo</em> ]
+   [ HFILE hfileLocation ]
    [ EXCLUDE ( NULL | DEFAULT ) KEYS ]
 </pre>
 </div>
@@ -52,13 +53,12 @@ INDEX` statement. Note, however, that a single column name can be used
 in multiple indexes.
 {: .paramDefn}
 
-splitKeyInfo
+*splitKeyInfo*
 {: .paramName}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-AUTO [ SAMPLEFRACTION fractionVal ] |
-{ [ LOGICAL | PHYSICAL ]
-  LOCATION filePath
+[ SAMPLEFRACTION fractionVal ] |
+{ LOCATION filePath
   [ colDelimiter ]
   [ charDelimiter ]
   [ timestampFormat ]
@@ -68,17 +68,25 @@ AUTO [ SAMPLEFRACTION fractionVal ] |
 </div>
 
 Use the optional `SPLITKEYS` clause to specify keys for splitting the index into Regions; see the [Using Split Keys](#splitkeys) section below for more information about how to specify split keys.
+{: .paramDefnFirst}
 
-You can specify `AUTO` to have Splice Machine scan the data and determine the splits automatically. Or you can specify your own split keys in a CSV file; if you're using a CSV file, you can optionally include delimiter and format specifications, as described in the following parameter definitions.
+You can specify `AUTO`, along with an optional sampling fraction, to have Splice Machine scan the data and determine the splits automatically.
 {: .paramDefn}
 
    <div class="paramList" markdown="1">
    fractionVal
    {: .paramName}
 
-   The sampling fraction to use; this is a decimal value in the range `0` to `1`. If you don't supply this, the value of the `splice.bulkImport.sample.fraction` configuration property is used.
+   The sampling fraction to use; this is a decimal value in the range `0` to `1`. This is only used when you specify `AUTO`; if you don't supply this value for `AUTO`, the value of the `splice.bulkImport.sample.fraction` configuration property is used.
    {: .paramDefnFirst}
+   Specifying this value when not using automatic splitting generates an error.
+   {: .paramDefn}
+   </div>
 
+Or you can specify your own split keys in a CSV file, the location of which you must include, along with optional delimiter and format specifications:
+{: .paramDefn}
+
+   <div class="paramList" markdown="1">
    filePath
    {: .paramName}
    The path to the CSV file that contains the split key values.
@@ -263,7 +271,7 @@ This example creates an index using `AUTO` sampling, with a sampling rate of `0.
         l_quantity,
         l_shipmode,
         l_shipinstruct
-    ) SPLITKEYS AUTO SAMPLE FRACTION 0.001 HFILE LOCATION '/tmp/hfile';
+    ) AUTO SPLITKEYS SAMPLE FRACTION 0.001 HFILE LOCATION '/tmp/hfile';
 {: .Example xml:space="preserve"}
 </div>
 
@@ -281,7 +289,7 @@ This example creates an index using logical (primary key column values) split ke
          l_quantity,
          l_shipmode,
          l_shipinstruct
-     ) SPLITKEYS LOGICAL LOCATION '/tmp/l_part_idx.csv' HFILE LOCATION '/tmp/hfile';
+     ) LOGICAL SPLITKEYS LOCATION '/tmp/l_part_idx.csv' HFILE LOCATION '/tmp/hfile';
 {: .Example xml:space="preserve"}
 </div>
 
@@ -299,7 +307,7 @@ This example creates an index using physical split keys, which are split keys fo
          l_quantity,
          l_shipmode,
          L_SHIPINSTRUCT
-     ) SPLITKEYS PHYSICAL LOCATION '/tmp/l_part_idx.txt' HFILE LOCATION '/tmp/hfile';
+     ) PHYSICAL SPLITKEYS LOCATION '/tmp/l_part_idx.txt' HFILE LOCATION '/tmp/hfile';
 {: .Example xml:space="preserve"}
 </div>
 

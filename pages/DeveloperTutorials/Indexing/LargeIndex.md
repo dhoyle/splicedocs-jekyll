@@ -30,7 +30,7 @@ There are several ways that you can specify split keys for creating your index, 
 * [Specifying Split Keys in a File](#keyed)
 
 ### Specifying Split Keys with Automatic Sampling  {#sampled}
-The simplest way to use split key indexing is to allow Splice Machine to sample the data in your table and determine the splits based on statistical analysis of that data by specifying `SPLITKEYS AUTO` in your `CREATE INDEX` statement. For example:
+The simplest way to use split key indexing is to allow Splice Machine to sample the data in your table and determine the splits based on statistical analysis of that data by specifying `AUTO SPLITKEYS` in your `CREATE INDEX` statement. For example:
 
 ```
 CREATE INDEX l_part_idx ON lineitem(
@@ -43,7 +43,7 @@ CREATE INDEX l_part_idx ON lineitem(
     l_quantity,
     l_shipmode,
     l_shipinstruct
-) SPLITKEYS AUTO SAMPLE FRACTION 0.001;
+) AUTO SPLITKEYS SAMPLE FRACTION 0.001;
 ```
 {: .Example xml:space="preserve"}
 
@@ -67,7 +67,7 @@ Split keys are calculated according to the quantile statistics for the index and
 
 ### Specifying Split Keys in a File  {#keyed}
 
-Splice Machine encourages you to use automatic splitting; however, if you have a very large table and you're an expert user who is comfortable with manually determining split keys for the table, you can follow the steps in this section to create your own split keys CSV file and specify it in your `CREATE INDEX` statement.
+Splice Machine encourages you to use automatic splitting; however, if you have a very large table and you're an expert user who is comfortable with manually determining split keys for the table, you can follow the steps in this section to create your own split keys CSV file and specify  and specify it in your `CREATE INDEX` statement. by specifying `AUTO SPLITKEYS` in your `CREATE INDEX` statement
 
 Manual computation of split keys is only appropriate if you know the size and shape of your data. For example, if you have a very large table that happens to have a roughly equal amount of daily data stretching for many months or years, it is relatively straightforward to estimate the number of regions to create for the table with minimal skewing. If you cannot answer questions about the ‘skewness’ of your data, you should probably use our automatic method to create your index split keys.
 
@@ -121,7 +121,7 @@ This is a step-by-step example of using `CREATE INDEX` with logical keys:
         l_quantity,
         l_shipmode,
         l_shipinstruct
-    ) SPLITKEYS LOGICAL LOCATION '/tmp/l_part_idx.csv';
+    ) LOGICAL SPLITKEYS LOCATION '/tmp/l_part_idx.csv';
     ```
     {: .Example}
 
@@ -169,7 +169,7 @@ This is a variation of the same step-by-step example that uses physical keys ins
         l_quantity,
         l_shipmode,
         l_shipinstruct
-    ) SPLITKEYS PHYSICAL LOCATION '/tmp/l_part_idx.txt' HFILE LOCATION '/tmp/hfile';
+    ) PHYSICAL SPLITKEYS LOCATION '/tmp/l_part_idx.txt' HFILE LOCATION '/tmp/hfile';
     ```
     {: .Example}
 
@@ -213,7 +213,7 @@ Here is a step-by-step example of using automatic splitting with Bulk HFiles to 
          l_quantity,
          l_shipmode,
          l_shipinstruct
-     ) SPLITKEYS AUTO SAMPLE FRACTION 0.001 HFILE LOCATION '/tmp/hfile';
+     ) AUTO SPLITKEYS SAMPLE FRACTION 0.001 HFILE LOCATION '/tmp/hfile';
     ```
     {: .Example}
 
@@ -290,7 +290,7 @@ Here is a step-by-step example of specifying your own split keys in a file  and 
         l_quantity,
         l_shipmode,
         l_shipinstruct
-    ) SPLITKEYS LOGICAL LOCATION '/tmp/l_part_idx.csv' HFILE LOCATION '/tmp/hfile';
+    ) LOGICAL SPLITKEYS LOCATION '/tmp/l_part_idx.csv' HFILE LOCATION '/tmp/hfile';
     ```
     {: .Example}
 
@@ -307,7 +307,7 @@ Here is a step-by-step example of specifying your own split keys in a file  and 
         l_quantity,
         l_shipmode,
         l_shipinstruct
-    ) SPLITKEYS PHYSICAL LOCATION '/tmp/l_part_idx.txt' HFILE LOCATION '/tmp/hfile';
+    ) PHYSICAL SPLITKEYS LOCATION '/tmp/l_part_idx.txt' HFILE LOCATION '/tmp/hfile';
     ```
     {: .Example}
 </div>
