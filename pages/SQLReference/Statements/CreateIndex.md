@@ -17,6 +17,16 @@ on one or more columns in the table. You can optionally create indexes using bul
 
 ## Syntax
 
+
+[ [LOGICAL | PHYSICAL] SPLITKEYS LOCATION filePath
+          [ colDelimiter ]
+          [ charDelimiter ]
+          [ timestampFormat ]
+          [ dateFormat ]
+          [ timeFormat ] HFILE hfileLocation ]
+    |AUTO  SPLITKEYS [ SAMPLEFRACTION fractionVal ] LOCATION filePath
+   ]
+
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexName</a>
    ON <a href="sqlref_identifiers_types.html#TableName">tableName</a> (
@@ -24,7 +34,13 @@ CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexNam
       [ ASC  | DESC ]
       [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
      )
-   [ [ AUTO | LOGICAL | PHYSICAL ] SPLITKEYS <em>splitKeyInfo</em> ]
+   [ [ LOGICAL | PHYSICAL ]  LOCATION filePath
+       [ colDelimiter ]
+       [ charDelimiter ]
+       [ timestampFormat ]
+       [ dateFormat ]
+       [ timeFormat ]  HFILE hfileLocation ]
+   ]
    [ HFILE hfileLocation ]
    [ EXCLUDE ( NULL | DEFAULT ) KEYS ]
 </pre>
