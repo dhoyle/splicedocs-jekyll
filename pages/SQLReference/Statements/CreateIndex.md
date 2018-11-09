@@ -16,133 +16,89 @@ A `CREATE INDEX` statement creates an index on a table. Indexes can be
 on one or more columns in the table. You can optionally create indexes using bulk HFiles, which can improve index creation performance for large tables.
 
 ## Syntax
-
-
-[ [LOGICAL | PHYSICAL] SPLITKEYS LOCATION filePath
-          [ colDelimiter ]
-          [ charDelimiter ]
-          [ timestampFormat ]
-          [ dateFormat ]
-          [ timeFormat ] HFILE hfileLocation ]
-    |AUTO  SPLITKEYS [ SAMPLEFRACTION fractionVal ] LOCATION filePath
-   ]
-
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 CREATE [UNIQUE] INDEX <a href="sqlref_identifiers_types.html#IndexName">indexName</a>
    ON <a href="sqlref_identifiers_types.html#TableName">tableName</a> (
       <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a>
-      [ ASC  | DESC ]
-      [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ ASC | DESC ]] *
+      [ASC | DESC]
+      [ , <a href="sqlref_identifiers_types.html#SimpleColumnName">simpleColumnName</a> [ASC | DESC] ] *
      )
-   [ [ LOGICAL | PHYSICAL ]  LOCATION filePath
-       [ colDelimiter ]
-       [ charDelimiter ]
-       [ timestampFormat ]
-       [ dateFormat ]
-       [ timeFormat ]  HFILE hfileLocation ]
-   ]
+   [  AUTO  SPLITKEYS [ SAMPLEFRACTION fractionVal ]
+    | [LOGICAL | PHYSICAL] SPLITKEYS LOCATION filePath
+          [colDelimiter] [charDelimiter] [timestampFormat] [dateFormat] [timeFormat] ]
    [ HFILE hfileLocation ]
    [ EXCLUDE ( NULL | DEFAULT ) KEYS ]
 </pre>
 </div>
+
 <div class="paramList" markdown="1">
 indexName
 {: .paramName}
-
 An identifier, the length of which cannot exceed 128 characters.
 {: .paramDefnFirst}
 
 tableName
 {: .paramName}
-
 A table name, which can optionally be qualified by a schema name.
 {: .paramDefnFirst}
 
 simpleColumnName
 {: .paramName}
-
 A simple column name.
 {: .paramDefnFirst}
-
 You cannot use the same column name more than once in a single `CREATE
 INDEX` statement. Note, however, that a single column name can be used
 in multiple indexes.
 {: .paramDefn}
 
-*splitKeyInfo*
+fractionVal
 {: .paramName}
-
-<div class="fcnWrapperWide"><pre class="FcnSyntax">
-[ SAMPLEFRACTION fractionVal ] |
-{ LOCATION filePath
-  [ colDelimiter ]
-  [ charDelimiter ]
-  [ timestampFormat ]
-  [ dateFormat ]
-  [ timeFormat ]
-}</pre>
-</div>
-
-Use the optional `SPLITKEYS` clause to specify keys for splitting the index into Regions; see the [Using Split Keys](#splitkeys) section below for more information about how to specify split keys.
+You can optionally use split keys for index creation, as described below, in the [Using Split Keys](#splitkeys) section; split keys can be computed automatically, or can be specified in a file.
 {: .paramDefnFirst}
-
-You can specify `AUTO`, along with an optional sampling fraction, to have Splice Machine scan the data and determine the splits automatically.
+When using automatic (`AUTO`) splitting, you can specify the sampling fraction in this parameter; this is  a decimal value in the range `0` to `1`. If you leave this unspecified, the default value stored in the `splice.bulkImport.sample.fraction` configuration property is used as the sampling fraction.
 {: .paramDefn}
 
-   <div class="paramList" markdown="1">
-   fractionVal
-   {: .paramName}
-
-   The sampling fraction to use; this is a decimal value in the range `0` to `1`. This is only used when you specify `AUTO`; if you don't supply this value for `AUTO`, the value of the `splice.bulkImport.sample.fraction` configuration property is used.
-   {: .paramDefnFirst}
-   Specifying this value when not using automatic splitting generates an error.
-   {: .paramDefn}
-   </div>
-
-Or you can specify your own split keys in a CSV file, the location of which you must include, along with optional delimiter and format specifications:
+filePath
+{: .paramName}
+You can also supply either `LOGICAL` (primary key) or `PHYSICAL` (encoded hbase) split keys yourself in a CSV file, instead of using automatic splitting. See the [Using Split Keys](#splitkeys) section for more information.
+{: .paramDefnFirst}
+This parameter value is the path to the CSV file that contains the split key values when using non-automatic splitting.
 {: .paramDefn}
 
-   <div class="paramList" markdown="1">
-   filePath
-   {: .paramName}
-   The path to the CSV file that contains the split key values.
-   {: .paramDefnFirst}
+colDelimiter
+{: .paramName}
+The character used to separate columns in the CSV file. You don't need to specify this if using the comma (`,`) character as your delimiter.
+{: .paramDefnFirst}
+For additional information about column delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#columnDelimiter) tutorial page.
+{: .paramDefn}
 
-   colDelimiter
-   {: .paramName}
-   The character used to separate columns. You don't need to specify this if using the comma (,) character as your delimiter.
-   {: .paramDefnFirst}
-   For additional information about column delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#columnDelimiter) tutorial page.
-   {: .paramDefn}
+charDelimiter
+{: .paramName}
+The character used to delimit strings in the CSV file. You don't need to specify this if using the double-quote (`"`) character as your delimiter.
+{: .paramDefnFirst}
+For additional information about character delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#characterDelimiter) tutorial page.
+{: .paramDefn}
 
-   charDelimiter
-   {: .paramName}
-   The character is used to delimit strings in the imported data. You don't need to specify this if using the double-quote (`\"`) character as your delimiter.
-   {: .paramDefnFirst}
-   For additional information about character delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#characterDelimiter) tutorial page.
-   {: .paramDefn}
+timeStampFormat
+{: .paramName}
+The format of timestamps stored in the CSV file. You don't need to specify this if there are not any time columns in the file, or if the format of any timestamps in the file match the Java.sql.Timestamp default format, which is: "*yyyy-MM-dd HH:mm:ss*".
+{: .paramDefnFirst}
+For additional information about timestamp formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timestampFormat) tutorial page.
+{: .paramDefn}
 
-   timeStampFormat
-   {: .paramName}
-   The format of timestamps stored in the file. You don't need to specify this if no time columns in the file, or if the format of any timestamps in the file match the Java.sql.Timestamp default format, which is: "*yyyy-MM-dd HH:mm:ss*".
-   {: .paramDefnFirst}
-   For additional information about timestamp formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timestampFormat) tutorial page.
-   {: .paramDefn}
+dateFormat
+{: .paramName}
+The format of datestamps stored in the CSV file. You don't need to specify this if there are no date columns in the file, or if the format of any dates in the file match the pattern: "*yyyy-MM-dd*".
+{: .paramDefnFirst}
+For additional information about date formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#dateFormat) tutorial page.
+{: .paramDefn}
 
-   dateFormat
-   {: .paramName}
-   The format of datestamps stored in the file. You don't need to specify this if there are no date columns in the file, or if the format of any dates in the file match the pattern: "*yyyy-MM-dd*".
-   {: .paramDefnFirst}
-   For additional information about date formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#dateFormat) tutorial page.
-   {: .paramDefn}
-
-   timeFormat
-   {: .paramName}
-   The format of time values stored in the file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "*HH:mm:ss*".
-   {: .paramDefnFirst}
-   For additional information about time formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timeFormat) tutorial page.
-   {: .paramDefn}
-   </div>
+timeFormat
+{: .paramName}
+The format of time values stored in the CSV file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "*HH:mm:ss*".
+{: .paramDefnFirst}
+For additional information about time formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timeFormat) tutorial page.
+{: .paramDefn}
 
 hFileLocation
 {: .paramName}
