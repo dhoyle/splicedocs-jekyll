@@ -149,7 +149,7 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
                 </th>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_bigint.html">BIGINT</a>
                     </td>
                     <td>
                         <p>The <code>BIGINT</code> data type provides 8 bytes of storage for integer values.</p>
@@ -164,7 +164,7 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_double.html">DOUBLE</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_double.html">DOUBLE</a>
                     </td>
                     <td>
                         <p>The <code>DOUBLE</code> data type provides 8-byte storage for numbers
@@ -190,7 +190,7 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_integer.html">INTEGER</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_integer.html">INTEGER</a>
                     </td>
                     <td>
                         <p><code>INTEGER</code> provides 4 bytes of storage for integer values.</p>
@@ -213,10 +213,17 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_smallint.html">SMALLINT</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_smallint.html">SMALLINT</a>
                     </td>
                     <td>
                         <p>The <code>SMALLINT</code> data type provides 2 bytes of storage.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="sqlref_datatypes_tinyint.html">TINYINT</a>
+                    </td>
+                    <td>
+                        <p>The <code>TINYINT</code> data type provides 1 byte of storage.</p>
                     </td>
                 </tr>
             </table>
@@ -267,4 +274,3 @@ These are the [other data types](sqlref_datatypes_othertypes.html):
 
 </div>
 </section>
-

@@ -25,7 +25,7 @@ types declared in the `CREATE FUNCTION/PROCEDURE `statement.
 
 The following may happen:
 
-<table summary="Pssible results of argument mismatches">
+<table summary="Possible results of argument mismatches">
                 <col />
                 <col />
                 <thead>
@@ -176,6 +176,13 @@ types to Java data types.
                         <td style="font-family: monospace;"><em>boolean</em>
                         </td>
                         <td style="font-family: monospace;"><em>java.lang.Boolean</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace;">TINYINT</td>
+                        <td style="font-family: monospace;"><em>byte</em>
+                        </td>
+                        <td style="font-family: monospace;"><em>java.lang.Byte</em>
                         </td>
                     </tr>
                     <tr>

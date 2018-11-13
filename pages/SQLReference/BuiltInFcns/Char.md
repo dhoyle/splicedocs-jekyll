@@ -21,7 +21,7 @@ representation. The representations are:
 * A decimal number, if the first argument is a decimal number.
 * A double-precision floating-point number, if the first argument is a
   `DOUBLE` or `REAL`.
-* An integer number, if the first argument is a `SMALLINT`, `INTEGER`,
+* An integer number, if the first argument is a `TINYINT`, `SMALLINT`, `INTEGER`,
   or `BIGINT`.
 
 The first argument must be of a built-in data type.

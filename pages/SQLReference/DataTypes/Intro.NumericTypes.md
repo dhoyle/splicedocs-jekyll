@@ -25,7 +25,7 @@ types built into Splice Machine SQL:
                     Description</th>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_bigint.html">BIGINT</a>
                     </td>
                     <td>
                         <p>The <code>BIGINT</code> data type provides 8 bytes of storage for integer values.</p>
@@ -40,7 +40,7 @@ types built into Splice Machine SQL:
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_double.html">DOUBLE</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_double.html">DOUBLE</a>
                     </td>
                     <td>
                         <p>The <code>DOUBLE</code> data type provides 8-byte storage for numbers
@@ -66,7 +66,7 @@ types built into Splice Machine SQL:
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_integer.html">INTEGER</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_integer.html">INTEGER</a>
                     </td>
                     <td>
                         <p><code>INTEGER</code> provides 4 bytes of storage for integer values.</p>
@@ -89,10 +89,17 @@ types built into Splice Machine SQL:
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_smallint.html">SMALLINT</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_smallint.html">SMALLINT</a>
                     </td>
                     <td>
                         <p>The <code>SMALLINT</code> data type provides 2 bytes of storage.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="sqlref_datatypes_tinyint.html">TINYINT</a>
+                    </td>
+                    <td>
+                        <p>The <code>TINYINT</code> data type provides 1 byte of storage.</p>
                     </td>
                 </tr>
             </table>
@@ -114,9 +121,10 @@ varying sizes:
                     <tr>
                         <td><em>Integer numerics</em></td>
                         <td>
-                            <p><a href="sqlref_builtinfcns_smallint.html"><code>SMALLINT</code></a> (2 bytes)</p>
-                            <p><a href="sqlref_builtinfcns_integer.html"><code>INTEGER</code></a> (4 bytes)</p>
-                            <p><a href="sqlref_builtinfcns_bigint.html"><code>BIGINT</code></a> (8 bytes)</p>
+                            <p><a href="sqlref_datatypes_tinyint.html"><code>TINYINT</code></a> (1 byte)</p>
+                            <p><a href="sqlref_datatypes_smallint.html"><code>SMALLINT</code></a> (2 bytes)</p>
+                            <p><a href="sqlref_datatypes_integer.html"><code>INTEGER</code></a> (4 bytes)</p>
+                            <p><a href="sqlref_datatypes_bigint.html"><code>BIGINT</code></a> (8 bytes)</p>
                         </td>
                     </tr>
                     <tr>
@@ -171,11 +179,15 @@ on the mix of numeric data types in the expressions.
                     </tr>
                     <tr>
                         <td><code>INTEGER</code></td>
-                        <td><code>INTEGER</code></td>
+                        <td><code>BIGINT</code></td>
                     </tr>
                     <tr>
                         <td><code>SMALLINT</code></td>
-                        <td><code>INTEGER</code></td>
+                        <td><code>BIGINT</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>TINYINT</code></td>
+                        <td><code>BIGINT</code></td>
                     </tr>
                 </tbody>
             </table>
@@ -187,7 +199,7 @@ For example:
     VALUES 1 + 1.0e0;
        -- returns a decimal value
     VALUES 1 + 1.0;
-       -- returns an integer value
+       -- returns a bigint value
     VALUES CAST (1 AS INT) + CAST (1 AS INT);
 {: .Example xml:space="preserve"}
 
@@ -351,24 +363,25 @@ data type for the following kinds of arithmetical expressions:
 ## See Also
 
 * [Data Type Compatability](sqlref_datatypes_compatability.html)
-* [`BIGINT`](sqlref_builtinfcns_bigint.html) data type
+* [`BIGINT`](sqlref_datatypes_bigint.html) data type
 * [`BLOB`](sqlref_datatypes_blob.html) data type
 * [`BOOLEAN`](sqlref_datatypes_boolean.html) data type
-* [`CHAR`](sqlref_builtinfcns_char.html) data type
+* [`CHAR`](sqlref_datatypes_char.html) data type
 * [`CLOB`](sqlref_datatypes_clob.html) data type
-* [`DATE`](sqlref_builtinfcns_date.html) data type
+* [`DATE`](sqlref_datatypes_date.html) data type
 * [`DECIMAL`](sqlref_datatypes_decimal.html) data type
-* [`DOUBLE`](sqlref_builtinfcns_double.html) data type
+* [`DOUBLE`](sqlref_datatypes_double.html) data type
 * [`DOUBLE PRECISION`](sqlref_datatypes_doubleprecision.html) data type
 * [`FLOAT`](sqlref_datatypes_float.html) data type
-* [`INTEGER`](sqlref_builtinfcns_integer.html) data type
+* [`INTEGER`](sqlref_datatypes_integer.html) data type
 * [`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type
 * [`NUMERIC`](sqlref_datatypes_numeric.html) data type
 * [`REAL`](sqlref_datatypes_real.html) data type
-* [`SMALLINT`](sqlref_builtinfcns_smallint.html) data type
+* [`SMALLINT`](sqlref_datatypes_smallint.html) data type
 * [`TEXT`](sqlref_datatypes_text.html) data type
-* [`TIME`](sqlref_builtinfcns_time.html) data type
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) data type
+* [`TIME`](sqlref_datatypes_time.html) data type
+* [`TIMESTAMP`](sqlref_datatypes_timestamp.html) data type
+* [`TINYINT`](sqlref_datatypes_tinyint.html) data type
 * [`VARCHAR`](sqlref_datatypes_varchar.html) data type
 
 </div>

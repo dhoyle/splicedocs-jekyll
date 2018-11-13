@@ -64,7 +64,7 @@ sequenceElement
 dataType
 {: .paramName}
 
-If specified, the *dataType* must be an integer type (`SMALLINT`, `INT`,
+If specified, the *dataType* must be an integer type (`TINYINT`, `SMALLINT`, `INT`,
 or `BIGINT`). If not specified, the default data type is `INT`.
 {: .paramDefnFirst}
 

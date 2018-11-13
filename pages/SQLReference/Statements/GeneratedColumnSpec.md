@@ -115,7 +115,7 @@ assigned.
 
 A table can have at most one identity column.
 
-For `SMALLINT`, `INT`, and `BIGINT` columns with identity attributes,
+For `TINYINT`, `SMALLINT`, `INT`, and `BIGINT` columns with identity attributes,
 Splice Machine automatically assigns increasing integer values to the
 column. Identity column attributes behave like other defaults in that
 when an insert statement does not specify a value for the column, Splice
@@ -126,6 +126,7 @@ insertion time.
 The `IDENTITY` keyword can only be specified if the data type associated
 with the column is one of the following exact integer types.
 
+* [`TINYINT`](sqlref_builtinfcns_tinyint.html)
 * [`SMALLINT`](sqlref_builtinfcns_smallint.html)
 * [`INT`](sqlref_builtinfcns_integer.html)
 * [`BIGINT`](sqlref_builtinfcns_bigint.html)
@@ -154,6 +155,12 @@ exception. The following table shows the supported ranges.
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td><code>TINYINT</code>
+                        </td>
+                        <td><code>127</code> (<em>java.lang.Byte.MAX_VALUE</em>)</td>
+                        <td><code>-128</code> (<em>java.lang.Byte.MIN_VALUE</em>)</td>
+                    </tr>
                     <tr>
                         <td><code>SMALLINT</code>
                         </td>

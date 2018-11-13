@@ -108,6 +108,7 @@ have one of the following types:
 * {: .CodeFont value="4"} INTEGER
 * {: .CodeFont value="5"} REAL
 * {: .CodeFont value="6"} SMALLINT
+* {: .CodeFont value="7"} TINYINT
 
 The following table lists the types of numeric expressions.
 
@@ -244,4 +245,3 @@ value. The following table lists the types of date and time expressions.
 
 </div>
 </section>
-

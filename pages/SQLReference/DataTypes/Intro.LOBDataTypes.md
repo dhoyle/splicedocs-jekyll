@@ -67,8 +67,8 @@ built into Splice Machine SQL:
 * [`TEXT`](sqlref_datatypes_text.html) data type
 * [`TIME`](sqlref_builtinfcns_time.html) data type
 * [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) data type
+* [`TINYINT`](sqlref_builtinfcns_tinyint.html) data type
 * [`VARCHAR`](sqlref_datatypes_varchar.html) data type
 
 </div>
 </section>
-

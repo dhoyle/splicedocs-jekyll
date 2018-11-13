@@ -69,6 +69,13 @@ functions built into Splice Machine SQL, in the following topics:
                 </td>
                 </tr>
                 <tr>
+                    <td class="CodeFont"><a href="sqlref_builtinfcns_tinyint.html">TINYINT</a>
+                    </td>
+                    <td>
+                    Returns a tiny integer representation of a number or character string in the form of a tiny integer constant.
+                </td>
+                </tr>
+                <tr>
                     <td class="CodeFont"><a href="sqlref_builtinfcns_char.html">TO_CHAR</a>
                     </td>
                     <td>Formats a date value into a string.</td>
@@ -88,4 +95,3 @@ functions built into Splice Machine SQL, in the following topics:
             </table>
 </div>
 </section>
-

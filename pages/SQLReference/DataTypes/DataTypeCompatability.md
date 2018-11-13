@@ -28,6 +28,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                 <col />
                 <col />
                 <col />
+                <col />
                 <col style="width: 25px;" />
                 <col />
                 <col />
@@ -38,6 +39,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                     <tr>
                         <th>TYPES</th>
                         <th style="vertical-align:bottom">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
+                        <th style="vertical-align:bottom">T<br />I<br />N<br />Y<br />I<br />N<br />T</th>
                         <th style="vertical-align:bottom">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
                         <th style="vertical-align:bottom">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
                         <th style="vertical-align:bottom">B<br />I<br />G<br />I<br />N<br />T</th>
@@ -76,10 +78,33 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>TINYINT</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <td>SMALLINT</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -107,6 +132,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -120,6 +146,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                     <tr>
                         <td>BIGINT</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -147,6 +174,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -160,6 +188,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                     <tr>
                         <td>REAL</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -187,6 +216,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -207,6 +237,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -219,6 +250,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                     </tr>
                     <tr>
                         <td>CHAR</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -247,6 +279,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -267,6 +300,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -279,6 +313,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                     </tr>
                     <tr>
                         <td>CLOB / TEXT</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -311,6 +346,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>-</td>
                         <td>-</td>
@@ -319,6 +355,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                     </tr>
                     <tr>
                         <td>DATE</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -347,6 +384,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>-</td>
@@ -367,6 +405,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>-</td>
@@ -379,6 +418,7 @@ Splice Machine. A *Y* indicates that the assignment is valid.
                     </tr>
                     <tr>
                         <td>User-defined type</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -429,6 +469,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                     <tr>
                         <th style="vertical-align:bottom">TYPES</th>
                         <th style="vertical-align:bottom">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
+                        <th style="vertical-align:bottom">T<br />I<br />N<br />Y<br />I<br />N<br />T</th>
                         <th style="vertical-align:bottom">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
                         <th style="vertical-align:bottom">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
                         <th style="vertical-align:bottom">B<br />I<br />G<br />I<br />N<br />T</th>
@@ -467,10 +508,12 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <td>SMALLINT</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -498,6 +541,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -511,6 +555,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                     <tr>
                         <td>BIGINT</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -538,6 +583,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -551,6 +597,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                     <tr>
                         <td>REAL</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -578,6 +625,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -591,6 +639,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                     <tr>
                         <td>FLOAT</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -618,6 +667,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>-</td>
@@ -630,6 +680,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                     </tr>
                     <tr>
                         <td>VARCHAR</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -667,9 +718,11 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <td>CLOB / TEXT</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -707,9 +760,11 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <td>DATE</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -738,6 +793,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>-</td>
@@ -758,6 +814,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>-</td>
@@ -770,6 +827,7 @@ Splice Machine. A *Y* indicates that the comparison is allowed.
                     </tr>
                     <tr>
                         <td>User-defined type</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>

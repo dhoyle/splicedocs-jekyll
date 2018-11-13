@@ -585,6 +585,9 @@ Syntax](sqlref_identifiers_syntax.html#SQL92Rules).
                         <td>TIMEZONE_MINUTE</td>
                     </tr>
                     <tr>
+                        <td>TINYINT</td>
+                    </tr>
+                    <tr>
                         <td>TO</td>
                     </tr>
                     <tr>
@@ -672,4 +675,3 @@ Syntax](sqlref_identifiers_syntax.html#SQL92Rules).
             </table>
 </div>
 </section>
-

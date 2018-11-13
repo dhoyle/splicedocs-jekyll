@@ -18,7 +18,7 @@ folder: SQLReference/BuiltInFcns
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    mod(number, divisor) 
+    mod(number, divisor)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -45,8 +45,6 @@ The result of the function is:
 
 * `NULL` if any argument is `NULL`.
 * [`SMALLINT`](sqlref_builtinfcns_smallint.html).
-* [`SMALLINT`](sqlref_builtinfcns_smallint.html).
-* [`SMALLINT`](sqlref_builtinfcns_smallint.html).
 
 The result can be `NULL`; if any argument is `NULL`, the result is the
 `NULL`value.
@@ -58,9 +56,9 @@ The result can be `NULL`; if any argument is `NULL`, the result is the
     1
     ----------
     1
-    
+
     1 row selected
-    
+
           ---select players with odd-numbered IDs:
     splice> SELECT ID, Team, DisplayName
        FROM Players
@@ -115,7 +113,7 @@ The result can be `NULL`; if any argument is `NULL`, the result is the
     89    |Cards       |Mo Grandosi
     91    |Cards       |Mark Hasty
     93    |Cards       |Stephen Tuvesco
-    
+
     47 rows selected
 {: .Example xml:space="preserve"}
 
@@ -127,4 +125,3 @@ The result can be `NULL`; if any argument is `NULL`, the result is the
 
 </div>
 </section>
-

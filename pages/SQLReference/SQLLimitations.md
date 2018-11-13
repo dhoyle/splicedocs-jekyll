@@ -276,6 +276,14 @@ The following lists limitations on the numeric values in Splice Machine.
                         <td><code>32,767</code></td>
                     </tr>
                     <tr>
+                        <td>Smallest <code>TINYINT</code></td>
+                        <td><code>-128</code></td>
+                    </tr>
+                    <tr>
+                        <td>Largest <code>TINYINT</code></td>
+                        <td><code>127</code></td>
+                    </tr>
+                    <tr>
                         <td>Largest decimal precision</td>
                         <td><code>31</code></td>
                     </tr>
