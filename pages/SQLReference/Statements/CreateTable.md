@@ -60,6 +60,7 @@ CREATE TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
          <a href="sqlref_clauses_constraint.html#TableConstraint">Table-level constraint</a>}
          [ , {<a href="sqlref_statements_columndef.html">column-definition}</a> ] *
       )
+      [ [LOGICAL | PHYSICAL] SPLITKEYS LOCATION filePath]
   |
       [ ( <a href="sqlref_identifiers_types.html#ColumnName">column-name</a> ]* ) ]
       AS query-expression [AS &lt;name&gt;]
@@ -97,6 +98,15 @@ column-name
 A column definition.
 {: .paramDefnFirst}
 
+filePath
+{: .paramName}
+You can optionally specify that you want the new table split among regions by supplying a file of split key values. This capability is typically used when you're creating a table into which a table backed up with [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html) is being restored. Creating a table with pre-defined splits is much faster than creating a table with one region and then splitting it into many regions.
+{: .paramDefnFirst}
+You can supply either `LOGICAL` (primary key) or `PHYSICAL` (encoded hbase) split keys yourself in a file. See the [Using Split Keys](#splitkeys) section for more information.
+{: .paramDefn}
+This parameter value is the path to the file that contains the split key values when using non-automatic splitting.
+{: .paramDefn}
+
 AS query-expression
 {: .paramName}
 
@@ -115,6 +125,16 @@ See the &nbsp;[`CREATE TABLE AS`](#createAs) section below.
 {: .paramDefnFirst}
 
 </div>
+
+### Using Split Keys  {#splitkeys}
+You can optionally include a file of split keys for the new table; you can include split keys when you know how the data that is going to be added to the table should be split into regions. This capability is typically used when you're creating a table for restoring a table that was previously backed up using the  [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html) system procedure.
+
+Creating a table with pre-defined splits is much faster than creating a table with one region and then splitting it into many regions. The split keys file can contain either
+ `LOGICAL` or `PHYSICAL` keys:
+
+* Logical keys are the primary key column values that you want to define the splits.
+* Physical keys are actual split keys for the HBase table, in encoded HBase format.
+
 ## CREATE TABLE ... AS ...    {#createAs}
 
 With this alternate form of the `CREATE TABLE` statement, the column
@@ -175,6 +195,7 @@ the data, and then insert the data; for example:
 
 </div>
 </div>
+
 ## Examples
 
 This section presents examples of both forms of the
@@ -232,6 +253,83 @@ constraints, see &nbsp;[`CONSTRAINT` clause](sqlref_clauses_constraint.html)
 
 </div>
 </div>
+
+### CREATE TABLE with SPLIT KEYS
+
+#### Using Logical Split Keys
+This is an example of creating a new table that will be split into regions based on the primary key values in the `lineitemKeys.csv` file:
+
+```
+CREATE TABLE LINEITEM (
+  L_ORDERKEY      INTEGER NOT NULL,
+  L_PARTKEY       INTEGER NOT NULL,
+  L_SUPPKEY       INTEGER NOT NULL,
+  L_LINENUMBER    INTEGER NOT NULL,
+  L_QUANTITY      DECIMAL(15, 2),
+  L_EXTENDEDPRICE DECIMAL(15, 2),
+  L_DISCOUNT      DECIMAL(15, 2),
+  L_TAX           DECIMAL(15, 2),
+  L_RETURNFLAG    CHAR(1),
+  L_LINESTATUS    CHAR(1),
+  L_SHIPDATE      DATE,
+  L_COMMITDATE    DATE,
+  L_RECEIPTDATE   DATE,
+  L_SHIPINSTRUCT  CHAR(25),
+  L_SHIPMODE      CHAR(10),
+  L_COMMENT       VARCHAR(44),
+  PRIMARY KEY (L_ORDERKEY, L_LINENUMBER)
+) splitkeys location '/temp/lineitemKeys.csv';
+```
+{: .Example}
+
+Here's what the `lineitemKeys.csv` file looks like:
+{: .spaceAbove}
+
+```
+1424004,7
+2384419,4
+3244416,6
+5295747,4
+```
+{: .Example}
+
+#### Using Physical Split Keys
+This is an example of creating a new table that will be split into regions based on the encoded HBase split keys:
+
+```
+CREATE TABLE LINEITEM (
+  L_ORDERKEY      INTEGER NOT NULL,
+  L_PARTKEY       INTEGER NOT NULL,
+  L_SUPPKEY       INTEGER NOT NULL,
+  L_LINENUMBER    INTEGER NOT NULL,
+  L_QUANTITY      DECIMAL(15, 2),
+  L_EXTENDEDPRICE DECIMAL(15, 2),
+  L_DISCOUNT      DECIMAL(15, 2),
+  L_TAX           DECIMAL(15, 2),
+  L_RETURNFLAG    CHAR(1),
+  L_LINESTATUS    CHAR(1),
+  L_SHIPDATE      DATE,
+  L_COMMITDATE    DATE,
+  L_RECEIPTDATE   DATE,
+  L_SHIPINSTRUCT  CHAR(25),
+  L_SHIPMODE      CHAR(10),
+  L_COMMENT       VARCHAR(44),
+  PRIMARY KEY (L_ORDERKEY, L_LINENUMBER)
+) physical splitkeys location '/temp/lineitemKeys.txt';
+```
+{: .Example}
+
+Here is what the `lineitemKeys.txt` file looks like:
+{: .spaceAbove}
+
+```
+\xE4\x15\xBA\x84\x00\x87
+\xE4$b#\x00\x84
+\xE41\x81\x80\x00\x86
+\xE4P\xCE\x83\x00\x84
+```
+{: .Example}
+
 ### CREATE TABLE AS
 
 This example creates a new table that uses all of the columns (and their
