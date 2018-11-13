@@ -23,6 +23,8 @@ This topic describes the following methods of the `SplicemachineContext` class:
 * [`delete`](#delete)
 * [`df` and `internalDf`](#df)
 * [`dropTable`](#droptable)
+* [`export`](#export)
+* [`exportBinary`](#exportbinary)
 * [`getConnection`](#getconnection)
 * [`getSchema`](#getschema)
 * [`insert`](#insert)
@@ -275,11 +277,162 @@ The name of the table.
 {: .paramDefnFirst}
 </div>
 
+## export  {#export}
+This method exports a dataFrame in CSV format.
+
+<div class="fcnWrapperWide" markdown="1"><pre>
+export( dataFrame: DataFrame,
+        location: String,
+        compression: Boolean,
+        replicationCount: Int,
+        fileEncoding: String,
+        fieldSeparator: String,
+        quoteCharacter: String): Unit</pre>
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
+<div class="paramList" markdown="1">
+dataFrame
+{: .paramName}
+The dataFrame that you want to export.
+{: .paramDefnFirst}
+
+location
+{: .paramName}
+The directory in which you want the export file(s) written.
+{: .paramDefnFirst}
+
+compression
+{: .paramName}
+Whether or not to compress the exported files. You can specify one of
+the following values:
+{: .paramDefnFirst}
+
+<div markdown="0">
+    <table summary="Possible values for compression">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>true</code></td>
+                    <td>The exported files are compressed using <code>deflate/gzip</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>false</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+
+replicationCount
+{: .paramName}
+
+The file system block replication count to use for the exported
+CSV files.
+{: .paramDefnFirst}
+
+You can specify any positive integer value. The default value is `1`.
+{: .paramDefn}
+
+fileEncoding
+{: .paramName}
+The character set encoding to use for the exported CSV files.
+{: .paramDefnFirst}
+
+You can specify any character set encoding that is supported by the
+Java Virtual Machine (JVM). The default encoding is `UTF-8`.
+{: .paramDefn}
+fieldSeparator
+{: .paramName}
+
+The character to use for separating fields in the exported CSV files.
+{: .paramDefnFirst}
+The default separator character is the comma (`,`).
+{: .paramDefn}
+
+quoteCharacter
+{: .paramName}
+The character to use for quoting output in the exported CSV files.
+{: .paramDefnFirst}
+The default quote character is the double quotation mark (`"`).
+{: .paramDefn}
+</div>
+
+## exportBinary  {#exportbinary}
+This method exports a dataFrame in binary format, generating one or
+more binary files, which are stored in the directory that you specify in the
+`location` parameter. More than one output file can be generated to
+enhance the parallelism and performance of this operation.
+
+<div class="fcnWrapperWide" markdown="1"><pre>
+exportBinary( dataFrame: DataFrame,
+              location: String,
+              compression: Boolean,
+              format: String): Unit</pre>
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
+<div class="paramList" markdown="1">
+dataFrame
+{: .paramName}
+The dataFrame that you want to export.
+{: .paramDefnFirst}
+
+location
+{: .paramName}
+The directory in which you want the export file(s) written.
+{: .paramDefnFirst}
+
+compression
+{: .paramName}
+Whether or not to compress the exported files. You can specify one of
+the following values:
+{: .paramDefnFirst}
+
+<div markdown="0">
+    <table summary="Possible values for compression">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>true</code></td>
+                    <td>The exported files are compressed using <code>Snappy</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>false</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+If `compression=true`, then each of the generated files is named with
+this format: `part-r-<N>.snappy.parquet`; if not, then each file is named with this format: `part-r-<N>.parquet`. In either case, the value of `N` is a sequence of numbers and letters.
+{: .paramDefn}
+
+format
+{: .paramName}
+The format in which to write the exported file(s). The only format supported at this time is `parquet`.
+{: .paramDefnFirst}
+</div>
+
 ## getConnection {#getconnection}
 This method returns the current connection.
 
 <div class="fcnWrapperWide" markdown="1"><pre>
-getConnection(): Connection
+getConnection(): Connection</pre>
 {: .FcnSyntax xml:space="preserve"}
 </div>
 
@@ -287,7 +440,7 @@ getConnection(): Connection
 This method returns the Catalyst schema of the specified table.
 
 <div class="fcnWrapperWide" markdown="1"><pre>
-getSchema( schemaTableName: String ): StructType
+getSchema( schemaTableName: String ): StructType</pre>
 {: .FcnSyntax xml:space="preserve"}
 </div>
 
@@ -346,7 +499,6 @@ The Catalyst schema of the master table.
 These methods creates a Spark RDD from a Splice Machine table.
 
 The only difference between the `rdd` and `internalRdd` methods is that the `internalRdd` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Native Spark DataSource* topic.
-
 {: .noteIcon}
 
 <div class="fcnWrapperWide" markdown="1"><pre>
