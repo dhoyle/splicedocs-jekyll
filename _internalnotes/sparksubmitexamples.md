@@ -1,5 +1,11 @@
-Here is an example for using spark-shell on HDP2.6.3 cluster:
-{code:bash}
+## Using Spark Shell
+This section provides examples of using the interactive Spark Shell with the Splice Machine Native Spark DataSource.
+
+### Using Spark Shell on a HDP cluster
+Here is an example for using `spark-shell` on a HDP2.6.3 cluster:
+{: .spaceAbove}
+
+```
 spark-shell \
 --conf "spark.dynamicAllocation.enabled=false" \
 --conf "spark.task.maxFailures=2" \
@@ -14,15 +20,15 @@ spark-shell \
 --conf "spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator" \
 --jars "/var/lib/splicemachine/splicemachine-hdp2.6.3-2.2.0.2.6.3.0-235_2.11-2.7.0.1836-SNAPSHOT.jar" \
 --master yarn
-{code}
+```
+{: .Example}
 
-
-
-
-
+### Using Spark Shell on a CDH cluster
 
 Here is an example using spark2-shell on CDH cluster:
-{code:bash}
+{: .spaceAbove}
+
+```
 spark2-shell
     --conf "spark.dynamicAllocation.enabled=false"
     --conf "spark.task.maxFailures=2"
@@ -37,10 +43,12 @@ spark2-shell
     --conf "spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator"
     --jars "./sparksplice.jar"
     --master yarn
-{code}
+```
+{: .Example}
 
 Interactive session in Spark-shell:
-{code:scala}
+
+```
 import com.splicemachine.spark.splicemachine._
 import com.splicemachine.derby.utils._
 import com.splicemachine.derby.impl.SpliceSpark
@@ -50,4 +58,5 @@ val SpliceContext = new SplicemachineContext(spliceJDBC)
 val ds = SpliceContext.df("select * from splice.test")
 ds.count
 ds.show
-{code}
+```
+{: .Example}

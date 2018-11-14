@@ -1,5 +1,5 @@
 ---
-title: Native Spark DataSource Examples
+title: Running Apps with the Native Spark DataSource
 summary: Examples of using the Splice Machine Native Spark DataSource.
 keywords: spark, adapter, splicemachineContext
 toc: false
@@ -12,85 +12,86 @@ folder: DeveloperTopics/Spark
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# Example of Using the Splice Machine Native Spark DataSource
+# Running Apps with the Native Spark DataSource
+This topic shows you how to submit a job to the Splice Machine Native Spark DataSource in two ways:
 
-This topic walks you through creating and running a program that uses the Splice Machine Native Spark DataSource API, which means that the program is a Spark application that can interact directly with your Splice Machine database, without data having to move *over a wire*.
+* [Using the Native Spark DataSource Interactively with Spark Shell](#interactive)
+* [Submitting an App With Spark Submit](#sparksubmit)
 
-This example is a simple streaming app that produces rows from a Kafka producer, consumes data using Kafka Spark streaming, and then uses the Native Spark DataSource to insert batches of data into a Splice Machine database. This topic describes the app and how to run it in these sections:
+## Using the Native Spark DataSource Interactively with Spark Shell  {#interactive}
+This section provides examples of using the interactive Spark Shell with the Splice Machine Native Spark DataSource, in these subsections:
 
-* [Assemble the Pieces](#assemble)
-* [Start Kafka Server and Register the Topic](#kafkaserver)
-* [Compile and Run the App](#runapp)
-* [Source Code](#sourcecode)
-
-
-## Assemble the Pieces  {#assemble}
-
-To run this sample app, you need to download and prepare for running the app as follows:
-
-<div class="opsStepsList" markdown="1">
-1.  Download Kafka from the [Apache web site](https://kafka.apache.org/downloads).
-
-2.  Untar the Kafka tarball into your `home_dir`.
-
-3.  Download the Native Spark DataSource API jar file to your current directory from  our Nexus repository:
-       http://repository.splicemachine.com/nexus/content/groups/public/com/splicemachine
-
-    Select the folder version that matches the version of Splice Machine installed on your cluster. For example, <span class="Highlighted">NEED HELP WITH EXPLAINING WHICH TO DOWNLOAD</span>.
-
-4.  Copy the *Spark Streaming Kafka* jar in `SPARK2_HOME` to your current directory. For example, if you're using Cloudera, copy the `spark-streaming-kafka-0-10_2.11-2.2.0.cloudera1.jar` file.
-
-5.  If you're running on a Kerberized cluster, find and copy the *hbase user keytab* file:
-    * Search for the latest `hbase-MASTER` directory; on Cloudera, you can use: `sudo /var/run/cloudera-scm-agent/process/`.
-    * You'll find the `hbase.keytab` file in that directory.
-    * Copy the `hbase.keytab` file in that directory to a directory that the application can access.
-</div>
+* [Using Spark Shell on a HDP cluster](#sparkshellhdp)
+* [Using Spark Shell on a CDH cluster](#sparkshellcdh)
+* [Example Program](#simpleexample1)
 
 
-## Start Kafka Server and Register the Topic  {#kafkaserver}
-Since this app uses Kafka, you need to start the Kafka server. You can start the server in a separate window, or you can start it with the `nohup` command and keep it running in the backgroun:
+### Using Spark Shell on a HDP cluster  {#sparkshellhdp}
+This command starts the Spark Shell on a Hortonworks cluster for use with the Splice Machine Native DataSource:
 
 ```
-$ bin/kafka-server-start.sh  config/server.properties
+spark-shell \
+--conf "spark.dynamicAllocation.enabled=false" \
+--conf "spark.task.maxFailures=2" \
+--conf "spark.driver.memory=4g" \
+--conf "spark.driver.cores=1" \
+--conf "spark.kryoserializer.buffer=4m" \
+--conf "spark.kryoserializer.buffer.max=100m" \
+--conf "spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator" \
+--conf "spark.io.compression.codec=org.apache.spark.io.SnappyCompressionCodec" \
+--conf "spark.executor.extraClassPath=/etc/hbase/2.6.3.0-235/0:/var/lib/splicemachine/*:/usr/hdp/2.6.3.0-235/spark2/jars/*:/usr/hdp/2.6.3.0-235/hbase/lib/*" \
+--conf "spark.driver.extraClassPath=/etc/hbase/2.6.3.0-235/0:/var/lib/splicemachine/*:/usr/hdp/2.6.3.0-235/spark2/jars/*:/usr/hdp/2.6.3.0-235/hbase/lib/*" \
+--conf "spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator" \
+--jars "/var/lib/splicemachine/splicemachine-hdp2.6.3-2.2.0.2.6.3.0-235_2.11-2.7.0.1836-SNAPSHOT.jar" \
+--master yarn
 ```
+{: .ShellCommand}
 
-You also need to register the topic we're using with Kafka. To register the topic named `test-k`, use this command:
+### Using Spark Shell on a CDH cluster  {#sparkshellcdh}
+
+This command starts the Spark Shell on a Cloudera cluster for use with the Splice Machine Native DataSource:
+
 ```
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test-k --partitions 2 --replication-factor 1
+spark2-shell
+    --conf "spark.dynamicAllocation.enabled=false"
+    --conf "spark.task.maxFailures=2"
+    --conf "spark.driver.memory=4g"
+    --conf "spark.driver.cores=1"
+    --conf "spark.kryoserializer.buffer=4m"
+    --conf "spark.kryoserializer.buffer.max=100m"
+    --conf "spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator"
+    --conf "spark.io.compression.codec=org.apache.spark.io.SnappyCompressionCodec"
+    --conf "spark.executor.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*"
+    --conf "spark.driver.extraClassPath=/opt/cloudera/parcels/CDH/lib/hbase/conf:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*"
+    --conf "spark.kryo.registrator=com.splicemachine.derby.impl.SpliceSparkKryoRegistrator"
+    --jars "./sparksplice.jar"
+    --master yarn
 ```
+{: .ShellCommand}
 
-## Compile and Run the App  {#runapp}
-Now use the following steps to compile and run the app:
+### Example Program  {#simpleexample1}
 
-<div class="opsStepsList" markdown="1">
-1.  Navigate to the app folder that contains the `Main.java` app:
-    ```
-    src/main/java/com/splice/custom/reader
-    ```
+Here's a example of an interactive Spark Shell session that uses our Native DataSource to access a Splice Machine database:
 
-2.  Compile the app:
-    ```
-    mvn clean install
-    ```
-    {: ShellCommand}
+```
+import com.splicemachine.spark.splicemachine._
+import com.splicemachine.derby.utils._
+import com.splicemachine.derby.impl.SpliceSpark
+SpliceSpark.setContext(sc)
+val spliceJDBC = "jdbc:splice://SPLICESERVERHOST:1527/splicedb;user=<yourUserId>;password=<yourPassword>"
+val SpliceContext = new SplicemachineContext(spliceJDBC)
+val ds = SpliceContext.df("select * from splice.test")
+ds.count
+ds.show
+```
+{: .Example}
 
-3.  Configure the `spark-submit.sh` script, as described below, in the [Configuring the spark-submit.sh Script](#sparksubmitscript) section.
-
-4.  Create a table in your Splice Machine database that matches the schema of our sample app, using the following SQL command line:
-    ```
-    CREATE TABLE TEST_TABLE (COL1 CHAR(30), COL2 INTEGER, COL3 BOOLEAN);
-    ```
-    {: .Example}
-
-5.  Launch the app by running the `spark-submit.sh` script. You can monitor the app on port 8088 of the node to which you're connected.
-
-6.  Use our scripts to stream data:
-    * Use the `kafka-producer/run_prod.sh` script to send a batch of rows to the kafka producer
-    * You can use the `kafka-producer/stream_rows.sh` script to loop, sending a stream of data every few seconds.
-</div>
+## Submitting an App With Spark Submit  {#sparksubmit}
+You can run your compiled apps with the Native Spark DataSource with our `spark-submit.sh` script.
 
 ### Configuring the spark-submit.sh Script  {#sparksubmitscript}
-The script supplied by Splice Machine for running an app with our Native Spark DataSource is named `spark-submmit.sh`. You will need to change some or all of the values at the top of this script to run it in your environment and for your app:
+
+You need to change some of the values at the top of this script to configure it for your environment and your app; these values typically need to be modified:
 
 <div class="PreWrapper"><pre class="AppCommand">
 TargetTable=<span class="HighlightedCode">&lt;tableName&gt;</span>
@@ -105,8 +106,8 @@ KrbPrincipal=<span class="HighlightedCode">&lt;Kerberos Principal&gt;</span>
 KrbKeytab=<span class="HighlightedCode">&lt;Kerberos Keytab Location&gt;</span>
 </pre></div>
 
-Here's the default code for `spark-submit.sh`:
-{: .spaceAbove}
+### The spark-submit.sh Script
+Here's an example of the `spark-submit.sh` script
 
 ```
 #!/bin/bash
@@ -179,211 +180,6 @@ $TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPasswor
 ```
 {: .ShellCommand}
 
-## Source Code  {#sourcecode}
-This section contains the source code for our example app, in these components:
-* [The App](#theappcode)
-* [The Kafka Producer Program](#kafkaproducer)
-
-
-### The App Code {#theappcode}
-
-Here is the code for our example app; we've left out the long list of imported dependencies, which you can review in the full example code, which is in our Community Source Code repository.
-
-```
-
-public class Main {
-
-    public static void main(String[] args) throws Exception {
-
-        if(args.length < 7) {
-            System.err.println("Incorrect number of params ");
-            return;
-        }
-        final String inTargetTable = args[0];
-        final String inTargetSchema = args[1];
-        final String inHostName = args[2];
-        final String inHostPort = args[3];
-        final String inUserName = args[4];
-        final String inUserPassword = args[5];
-        final String kafkaBroker = args[6];
-        final String kafkaTopicName = args[7];
-
-	String inKbrPrincipal = System.getProperty("spark.yarn.principal");
-	String inKbrKeytab = System.getProperty("spark.yarn.keytab");
-
-        ClassLoader cl = ClassLoader.getSystemClassLoader();
-        URL[] urls = ((URLClassLoader)cl).getURLs();
-        for(URL url: urls){
-        	System.out.println(url.getFile());
-        }
-        UserGroupInformation ugi = UserGroupInformation.getCurrentUser();
-
-        System.out.println("Logged in as: " + ugi);
-        System.out.println("Has credentials: " + ugi.hasKerberosCredentials());
-        System.out.println("credentials: " + ugi.getCredentials());
-        System.out.println("Kafka Broker: " + kafkaBroker);
-        System.out.println("Kafka TopicName: " + kafkaTopicName);
-
-        System.out.println(inKbrPrincipal);
-        System.out.println(inKbrKeytab);
-
-        // Initalize Kafka config settings
-        Properties props = new Properties();
-        SparkConf conf = new SparkConf().setAppName("stream");
-        JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(1));
-
-        Map<String, Object> kafkaParams = new HashMap<>();
-        kafkaParams.put("bootstrap.servers", kafkaBroker+":9092");
-        kafkaParams.put("key.deserializer", StringDeserializer.class);
-        kafkaParams.put("value.deserializer", StringDeserializer.class);
-        kafkaParams.put("group.id", "test");
-        kafkaParams.put("auto.offset.reset", "latest");
-        kafkaParams.put("enable.auto.commit", false);
-
-        Collection<String> topics = Arrays.asList(kafkaTopicName);
-
-        JavaInputDStream<ConsumerRecord<String, String>> stream =
-            KafkaUtils.createDirectStream(
-                jssc,
-                LocationStrategies.PreferConsistent(),
-                ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams));
-
-        JavaPairDStream<String, String> resultRDD = stream.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
-
-
-        doWork(inTargetTable, inTargetSchema, inHostName, inHostPort, inUserName, inUserPassword, inKbrPrincipal, inKbrKeytab, resultRDD, jssc);
-
-
-    }
-
-    private static void doWork(String inTargetTable, String inTargetSchema, String inHostName, String inHostPort, String inUserName, String inUserPassword, String inKbrPrincipal, String inKbrKeytab, JavaPairDStream<String, String> resultRDD, JavaStreamingContext jssc) throws IOException, InterruptedException {
-
-        SparkConf conf = new SparkConf();
-        SparkSession spark = SparkSession.builder().appName("Reader").config(conf).getOrCreate();
-
-        // Create Splice's Spark Session
-        SpliceSpark.setContext(spark.sparkContext());
-
-        SparkConf sparkConf = spark.sparkContext().getConf();
-        String principal = sparkConf.get("spark.yarn.principal");
-        String keytab = sparkConf.get("spark.yarn.keytab");
-        System.out.println("spark.yarn.principal = " + sparkConf.get("spark.yarn.principal"));
-        System.out.println("spark.yarn.keytab = " + sparkConf.get("spark.yarn.keytab"));
-        System.out.print("principal: " + inKbrPrincipal);
-        System.out.print("keytab: " + inKbrKeytab);
-
-        String dbUrl = "jdbc:splice://" + inHostName + ":" + inHostPort + "/splicedb;user=" + inUserName + ";" + "password=" + inUserPassword;
-
-        // Create a SplicemachineContext based on the provided DB connection
-        SplicemachineContext splicemachineContext = new SplicemachineContext(dbUrl);
-
-        // Set target tablename and schemaname
-        String SPLICE_TABLE_ITEM = inTargetSchema + "." + inTargetTable;
-
-        resultRDD.foreachRDD((RDD, time) -> {
-          JavaRDD<String> rdd = RDD.values();
-
-          JavaRDD<Row> rowJavaRDD = rdd.map(new Function<String, String[]>() {
-                @Override
-                public String[] call(String line) throws Exception {
-                    return line.split(",");
-                }
-          }).map(new Function<String[], Row>() {
-                @Override
-                public Row call(String[] r) throws Exception {
-                    return RowFactory.create(r[0], Integer.parseInt(r[1]), Boolean.parseBoolean(r[2]));
-                }
-          });
-
-          Dataset<Row> ds = spark.createDataFrame(rowJavaRDD, createSchema());
-          splicemachineContext.insert(ds, SPLICE_TABLE_ITEM);
-
-        });
-
-        jssc.start();              // Start the computation
-        jssc.awaitTermination();   // Wait for the computation to terminate
-
-    }
-
-    // Match the test_table schema
-    private static StructType createSchema() {
-        List<StructField> fields = new ArrayList<>();
-        fields.add(DataTypes.createStructField("COL1", DataTypes.StringType, true));
-        fields.add(DataTypes.createStructField("COL2", DataTypes.IntegerType, true));
-        fields.add(DataTypes.createStructField("COL3", DataTypes.BooleanType, true));
-
-        StructType schema = DataTypes.createStructType(fields);
-        return (schema);
-    }
-
-}
-```
-{: .Example}
-
-### The Kafka Producer Program {#kafkaproducer}
-
-Here is the code for sending messages via Kafka:
-
-```
-import java.util.Properties;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-
-public class SimpleProducer {
-
-   public static void main(String[] args) throws Exception{
-
-      // Check arguments length value
-      if(args.length == 0){
-         System.out.println("Enter topic name");
-         return;
-      }
-
-      //Assign topicName to string variable
-      String topicName = args[0].toString();
-
-      // create instance for properties to access producer configs
-      Properties props = new Properties();
-
-      //Assign localhost id
-      props.put("bootstrap.servers", "localhost:9092,localhost:9093");
-
-      //Set acknowledgements for producer requests.
-      props.put("acks", "all");
-
-      //If the request fails, the producer can automatically retry,
-      props.put("retries", 0);
-
-      //Specify buffer size in config
-      props.put("batch.size", 16384);
-
-      //Reduce the no of requests less than 0
-      props.put("linger.ms", 1);
-
-      //The buffer.memory controls the total amount of memory available to the producer for buffering.
-      props.put("buffer.memory", 33554432);
-
-      props.put("key.serializer",
-         "org.apache.kafka.common.serialization.StringSerializer");
-
-      props.put("value.serializer",
-         "org.apache.kafka.common.serialization.StringSerializer");
-
-      Producer<String, String> producer = new KafkaProducer
-         <String, String>(props);
-
-      String r1 = "StarWars,75144,true";
-      for(int i = 0; i < 500; i++) {
-         producer.send(new ProducerRecord<String, String>(topicName, Integer.toString(i), r1));
-      }
-
-       System.out.println("Message sent successfully");
-       producer.close();
-   }
-}
-```
-{: .Example}
 
 ## See Also
 * [Using the Native Spark DataSource](developers_spark_adapter.html)
