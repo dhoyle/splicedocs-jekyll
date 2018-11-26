@@ -1,8 +1,8 @@
 p.form-control-title {
 	font-size: 18px;
 	font-family: Arial, Helvetica, sans-serif;
-	line-height: 21px;
-	color: #3390db;
+	line-height: 1.5em;
+	color: black;
 }
 
 div.noteIcon {
@@ -200,7 +200,8 @@ span.ConsoleLink a:link {
 }
 
 table.splicezep,
-table.splicezepNoBorder
+table.splicezepNoBorder,
+table.splicezepOddEven
 {
 	table-layout: auto;
 	min-width: 25%;
@@ -211,6 +212,10 @@ table.splicezepNoBorder
 	margin: 20px 120px 20px 40px;
 	word-wrap: break-word;
 	overflow: auto;
+}
+
+table.splicezepOddEven {
+	border: 1px solid #F39939;
 }
 
 table.splicezepNoBorder
@@ -227,12 +232,35 @@ table.splicezepNoBorder tr {
 	background-color: transparent;
 }
 
+table.splicezepOddEven tr:nth-child(even) {
+	border: 1px solid #F39939;
+	background-color: #fefefe;
+}
+
+table.splicezepOddEven tr:nth-child(odd) {
+	border: 1px solid #F39939;
+	background-color: #F6F6F8;
+}
+
 table.splicezep td,
 table.splicezep td.CodeFont,
 table.splicezep td.BoldFont,
 table.splicezep td.ItalicFont {
+ {
 	border: 1px solid #8d9090;
 	padding: 8px;
+	text-align: left;
+	vertical-align: top;
+	word-wrap: break-word;
+	overflow: auto;
+}
+
+table.splicezepOddEven td,
+table.splicezepOddEven td.CodeFont,
+table.splicezepOddEven td.BoldFont,
+table.splicezepOddEven td.ItalicFont {
+	border: 1px solid #F39939;
+	padding: 12px 8px 12px 8px;
 	text-align: left;
 	vertical-align: top;
 	word-wrap: break-word;
@@ -252,25 +280,30 @@ table.splicezepNoBorder td.ItalicFont {
 }
 
 table.splicezep td.CodeFont,
-table.splicezepNoBorder td.CodeFont
+table.splicezepNoBorder td.CodeFont,
+table.splicezepOddEven td.CodeFont
 {
 	font-family: "Courier";
 }
 
 table.splicezep td.ItalicFont,
-table.splicezepNoBorder td.ItalicFont
+table.splicezepNoBorder td.ItalicFont,
+table.splicezepOddEven td.ItalicFont
+
 {
 	font-style: italic;
 }
 
 table.splicezep td.BoldFont,
-table.splicezepNoBorder td.BoldFont
+table.splicezepNoBorder td.BoldFont,
+table.splicezepOddEven td.BoldFont
 {
 	font-weight: bold;
 }
 
 table.splicezep td p:first-child,
-table.splicezepNoBorder td p:first-child
+table.splicezepNoBorder td p:first-child,
+table.splicezepOddEven td p:first-child
 {
 	margin-top: 0;
 }
@@ -278,13 +311,16 @@ table.splicezepNoBorder td p:first-child
 table.splicezep td > ul > li:first-of-type,
 table.splicezep td > ol > li:first-of-type,
 table.splicezepNoBorder td > ul > li:first-of-type,
-table.splicezepNoBorder td > ol > li:first-of-type
+table.splicezepNoBorder td > ol > li:first-of-type,
+table.splicezepOddEven td > ul > li:first-of-type,
+table.splicezepOddEven td > ol > li:first-of-type
 {
 	margin-top: 0;
 }
 
 table.splicezep th,
-table.splicezepNoBorder th {
+table.splicezepNoBorder th,
+table.splicezepOddEven th {
 	border: 1px solid #8d9090;
 	padding: 8px;
 	text-align: left;
@@ -296,13 +332,18 @@ table.splicezepNoBorder th {
 	background-color: #dcdcdc;
 }
 
+table.splicezepOddEven th {
+	border: 1px solid #F39939;
+}
+
 table.splicezepNoBorder th {
 	border: none;
 	background-color: transparent;
 }
 
 table.splicezep img,
-table.splicezepNoBorder img
+table.splicezepNoBorder img,
+table.splizezepOddEven img
 {
 	border: none;
 	width: auto;
