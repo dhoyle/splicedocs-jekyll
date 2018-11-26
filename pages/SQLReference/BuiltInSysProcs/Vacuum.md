@@ -20,7 +20,7 @@ When you drop a table from your database, Splice Machine marks the space occupie
 
 This is a synchronous operations; when it completes, you'll see the following message:
 ```
-Ready to accept connections.
+Statement executed.
 ```
 {: .AppCommand}
 
@@ -33,6 +33,15 @@ If you see an exception message instead of the completion message, please try ca
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
+
+## Usage
+To call `SYSCS_UTIL.VACUUM`, you must have execute permission on the (internal-only, undocumented) `SYSCS_UTIL.SYSCS_GET_OLDEST_ACTIVE_TRANSACTION` system procedure. You can use the following command to grant permission, replacing `myUserId` with your user ID:
+
+```
+grant EXECUTE on procedure SYSCS_UTIL.SYSCS_GET_OLDEST_ACTIVE_TRANSACTION to myUserId;
+```
+{: .Example}
+
 ## Example
 
 <div class="preWrapper" markdown="1">
