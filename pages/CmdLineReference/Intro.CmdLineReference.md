@@ -59,7 +59,7 @@ The following table summarizes the commands that you can use them with the `sqls
              <td class="CodeFont"><a href="cmdlineref_binaryexport.html">Export</a>
              </td>
              <td>Exports query results to binary files.</td>
-             <td><span class="AppCommand">splice&gt; BINARY_EXPORT('/my/export/dir', true, 'parquet')
+             <td><span class="AppCommand">splice&gt; EXPORT_BINARY('/my/export/dir', true, 'parquet')
 SELECT a,b,sqrt(c) FROM t1 WHERE a > 100;</span>
              </td>
          </tr>

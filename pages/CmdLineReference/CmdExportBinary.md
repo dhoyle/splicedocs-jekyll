@@ -10,9 +10,9 @@ folder: CmdLineReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Binary_Export Command
+# Export_Binary Command
 
-The <span class="AppCommand">binary_export</span> command exports the results
+The <span class="AppCommand">export_binary</span> command exports the results
 of an SQL query to one or more binary files.
 
 This command is currently limited to writing binary files only in `parquet` format; other formats will be supported in a future release.
@@ -21,7 +21,7 @@ This command is currently limited to writing binary files only in `parquet` form
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    BINARY_EXPORT ( exportPath,
+    EXPORT_BINARY ( exportPath,
                     compression,
                     format )  <SQL_QUERY>;
 {: .FcnSyntax xml:space="preserve"}
@@ -46,7 +46,7 @@ The format in which to write the exported file(s). The only format supported at 
 
 ## Usage
 
-The <span class="AppCommand">BINARY_EXPORT</span> command generates one or
+The <span class="AppCommand">EXPORT_BINARY</span> command generates one or
 more binary files and stores them in the directory that you specify in the
 `exportPath` parameter. More than one output file can be generated to
 enhance the parallelism and performance of this operation.
@@ -91,7 +91,7 @@ target="_blank"}
 ## Examples
 
  <div class="preWrapperWide" markdown="1">
-     splice> BINARY_EXPORT('/my/export/dir', true, 'parquet')
+     splice> EXPORT_BINARY('/my/export/dir', true, 'parquet')
               SELECT a,b,sqrt(c) FROM t1 WHERE a > 100;
 {: .AppCommand xml:space="preserve"}
 </div>
