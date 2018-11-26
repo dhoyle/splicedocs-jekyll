@@ -29,6 +29,7 @@ This topic describes the following methods of the `SplicemachineContext` class:
 * [`getSchema`](#getschema)
 * [`insert`](#insert)
 * [`rdd` and `internalRdd`](#rdd)
+* [`splitAndInsert`](#splitandinsert)
 * [`tableExists`](#tableexists)
 * [`truncateTable`](#truncatetable)
 * [`update`](#update)
@@ -522,6 +523,34 @@ columnProjection
 
 The names of the columns in the underlying table that you want to project into the RDD; this is a comma-separated list of strings.
 {: .paramDefnFirst}
+</div>
+
+## splitAndInsert {#splitandinsert}
+
+This method improves the performance of inserting data from the Native DataSource: instead of inserting into a single HBase region and having HBase split that region, we pre-split the table based on the data we're inserting, and then insert the dataFrame. The table splits are computed by sampling the data in the dataFrame; Splice Machine uses the sampling percentage specified by the `sampleFraction` parameter value.
+
+<div class="fcnWrapperWide" markdown="1"><pre>
+splitAndInsert( dataFrame: DataFrame,
+                schemaTableName: String,
+                sampleFraction: Double): Unit
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
+<div class="paramList" markdown="1">
+dataFrame
+{: .paramName}
+The dataFrame to sample.
+{: paramDefnFirst}
+
+schemaTableName
+{: .paramName}
+The combined schema and table names, in the form: `mySchema.myTable`.
+{: paramDefnFirst}
+
+sampleFraction
+{: .paramName}
+A value between 0 and 1 that specifies the percentage of data in the dataFrame that should be sampled to determine the splits. For example, specify `0.005` if you want 0.5% of the data sampled.
+{: paramDefnFirst}
 </div>
 
 ## tableExists {#tableexists}
