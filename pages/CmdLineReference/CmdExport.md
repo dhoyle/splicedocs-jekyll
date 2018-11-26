@@ -167,7 +167,7 @@ target="_blank"}
 </div>
 
 ## See Also
-* The [Binary_Export command](cmdlineref_binaryexport.html) exports query results in binary format.
+* The [Export_Binary command](cmdlineref_exportbinary.html) exports query results in binary format.
 
 
 </div>

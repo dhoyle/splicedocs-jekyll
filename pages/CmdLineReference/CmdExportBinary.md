@@ -1,11 +1,11 @@
 ---
-title: Binary_Export command
+title: Export_Binary command
 summary: Exports query results to binary format files.
 keywords: csv file, export, compression, encoding, separator
 toc: false
 product: all
 sidebar: cmdlineref_sidebar
-permalink: cmdlineref_binaryexport.html
+permalink: cmdlineref_exportbinary.html
 folder: CmdLineReference
 ---
 <section>

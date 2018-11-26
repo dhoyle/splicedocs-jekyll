@@ -532,7 +532,7 @@ This method improves the performance of inserting data from the Native DataSourc
 <div class="fcnWrapperWide" markdown="1"><pre>
 splitAndInsert( dataFrame: DataFrame,
                 schemaTableName: String,
-                sampleFraction: Double): Unit
+                sampleFraction: Double): Unit</pre>
 {: .FcnSyntax xml:space="preserve"}
 </div>
 
@@ -540,17 +540,17 @@ splitAndInsert( dataFrame: DataFrame,
 dataFrame
 {: .paramName}
 The dataFrame to sample.
-{: paramDefnFirst}
+{: .paramDefnFirst}
 
 schemaTableName
 {: .paramName}
 The combined schema and table names, in the form: `mySchema.myTable`.
-{: paramDefnFirst}
+{: .paramDefnFirst}
 
 sampleFraction
 {: .paramName}
 A value between 0 and 1 that specifies the percentage of data in the dataFrame that should be sampled to determine the splits. For example, specify `0.005` if you want 0.5% of the data sampled.
-{: paramDefnFirst}
+{: .paramDefnFirst}
 </div>
 
 ## tableExists {#tableexists}

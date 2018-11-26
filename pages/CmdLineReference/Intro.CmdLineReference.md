@@ -56,7 +56,7 @@ The following table summarizes the commands that you can use them with the `sqls
             </td>
         </tr>
          <tr>
-             <td class="CodeFont"><a href="cmdlineref_binaryexport.html">Export</a>
+             <td class="CodeFont"><a href="cmdlineref_exportbinary.html">Export</a>
              </td>
              <td>Exports query results to binary files.</td>
              <td><span class="AppCommand">splice&gt; EXPORT_BINARY('/my/export/dir', true, 'parquet')
