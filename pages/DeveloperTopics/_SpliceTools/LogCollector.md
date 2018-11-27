@@ -14,6 +14,13 @@ folder: DeveloperTopics/SpliceTools
 
 ## Description
 
+From Bin 11/26/2018:
+    I write the log collector tool, so I'll add some missing information about it:
+
+    1. The "-u <userId>" argument is the username that used to ssh to remote machines.
+    2. When collecting the log, on each remote server, the script will create a temporary directory to store the collected logs. Then it will copy them to local machine. The "-d" argument is used to specify the temporary directory on the remote servers.
+    3. The script will create a directory "splice-logs" in current directory, and store the fetched logs there.
+
 Log collector: collect logs in a time range related to Splice on a cluster. Specifically, it will collect these logs:
 
 1. Zookeeper
