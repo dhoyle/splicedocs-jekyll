@@ -38,7 +38,7 @@ You should start by setting up Docker on your computer:
    * 3 CPUs
    * 1 GB Swap
 
-   <img class="zepfithalfwidth" src="zeppelin/images/dockerprefs.png">
+   <img class="zepfithalfwidth" src="images/dockerprefs.png">
 
    Click *Apply & Restart* to apply these changes to Docker.
 
@@ -95,7 +95,7 @@ Once the image is fully started, follow these steps:
 3. If this is your first time here, click *Courses Introduction* to see overviews of Splice Machine, Zeppelin, and our training classes.
 4. Click one of the training class folders (e.g. *For Data Scientists*), and then proceed through the notebooks in the class in sequence.
 
-<p class="noteIcon">The notebooks within a single class must be run in sequential order, because content in later notebooks may depend on paragraphs in earlier notebooks having already run. For the same reason, please <strong>execute</strong> every paragraph that displays <em>READY</em> <img class="zepinline" src="zeppelin/images/zepPlayIcon.png" alt="Zeppelin Notebook Play button"> by clicking the <img class="zepinline" src="zeppelin/images/zepPlayIcon.png" alt="Zeppelin Notebook Play button"> button.</p>
+<p class="noteIcon">The notebooks within a single class must be run in sequential order, because content in later notebooks may depend on paragraphs in earlier notebooks having already run. For the same reason, please <strong>execute</strong> every paragraph that displays <em>READY</em> <img class="zepinline" src="images/zepPlayIcon.png" alt="Zeppelin Notebook Play button"> by clicking the <img class="zepinline" src="images/zepPlayIcon.png" alt="Zeppelin Notebook Play button"> button.</p>
 
 
 
