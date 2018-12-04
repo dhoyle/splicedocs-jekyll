@@ -1,5 +1,5 @@
 ---
-title: The DBLook Tool
+title: The Log Collector
 summary:
 keywords:
 toc: false
@@ -10,9 +10,17 @@ folder: DeveloperTopics/SpliceTools
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Log Collector
+
+# The Splice Machine Log Collector
+
+The *Log Collector* tool can gather Splice-related information from various logs for a specified time range; this tool
 
 ## Description
+
+## How It Works
+The Log Collector retrieves log information from each remote server; in doing so, it creates a temporary directory for storing the collected logs on each server. In order to access that information, the Log Collector uses the
+
+The Log Collector creates a subdirectory named `splice-logs` in the current directory of
 
 From Bin 11/26/2018:
     I write the log collector tool, so I'll add some missing information about it:
