@@ -75,6 +75,7 @@ Follow these steps to run the image:
     [root@localhost opt] # ./start-all.sh
     ```
     {: .AppCommand}
+    <p class="noteIcon">Do not move this to a background job! It must run in the foreground.</p>
 
    Our classes are ready for you (after a couple minutes) when you see these final WARNING messages:
    {: .spaceAbove}
