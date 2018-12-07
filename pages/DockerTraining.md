@@ -55,7 +55,7 @@ Follow these steps to run the image:
 1. Enter the following command in a terminal window:
 
     ```
-    docker run -ti  --sysctl net.ipv6.conf.all.disable_ipv6=1  --name spliceserver  --hostname localhost  -p 1527:1527 -p 4040:4040 -p 7078:7078  -p 8080:8080 -p 8090:8090 -p 8091:8091 -p 4041:4041 -p 8081:8081 -p 8082:8082  splicemachine/standalone:1.1.8
+    docker run -ti  --sysctl net.ipv6.conf.all.disable_ipv6=1  --name spliceserver  --hostname localhost  -p 1527:1527 -p 4040:4040 -p 7078:7078  -p 8080:8080 -p 8090:8090 -p 8091:8091 -p 4041:4041 -p 8081:8081 -p 8082:8082  splicemachine/standalone:1.1.9
     ```
     {: .AppCommand}
 
@@ -130,8 +130,23 @@ When this happens, you must stop and restart the Docker container:
 ### Run in the Foreground!
 A reminder: Please __do not run Zeppelin in background mode__; this interferes with Spark jobs running in notebooks.
 
+## What's Coming
+We'll be enhancing our notebooks and expanding our training classes in the near.
 
-## Thanks again for learning more about Splice Machine!
+Stay tuned for these:
+
+* Examples of submitting your apps with `spark-submit`
+* Deeper dives into importing data and data ingestion best practices
+* Instructions for creating stored procedures that run in the Docker container
+* Examples using R
+* Additional Machine Learning examples
+
+* *and much more ...*
+
+
+<div style="margin=auto; width=100%; text-align:center">
+<h2>Thanks again for learning more about Splice Machine!</h2>
+</div>
 
 
 </div>
