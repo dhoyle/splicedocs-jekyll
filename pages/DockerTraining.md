@@ -103,6 +103,7 @@ Once the image is fully started, follow these steps:
 ## When You’re Done...
 When you're done with using our training classes:
 * Enter `CTRL-C` in the terminal window where the image is running.
+* Then, type `exit` to exit the Docker image.
 
 You can then remove the Docker image, using this command:
 ```
