@@ -55,6 +55,7 @@ this topic, [Command Line Syntax](#Syntax).
 Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try to start sqlshell.sh on a system that doesn't have the required version of the JDK, you'll see an error message indicating that the connection has been terminated.
 {: .noteIcon}
 
+### sqlshell.sh Command Line Options
 You can optionally include parameter values when running <span
 class="ShellCommand">sqlshell.sh</span> script, to change default
 values. Here's the syntax:
