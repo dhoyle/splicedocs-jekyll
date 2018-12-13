@@ -54,16 +54,6 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
                 <li><a href="releasenotes_2.7.1827.html">Patch Release 2.7.0.1827</a></li>
                 <li><a href="releasenotes_2.7.1826.html">Patch Release 2.7.0.1826</a></li>
                 <li><a href="releasenotes_2.7.1825.html">Patch Release 2.7.0.1825</a></li>
-                <li><a href="releasenotes_2.7.1824.html">Patch Release 2.7.0.1824</a></li>
-                <li><a href="releasenotes_2.7.1823.html">Patch Release 2.7.0.1823</a></li>
-                <li><a href="releasenotes_2.7.1822.html">Patch Release 2.7.0.1822</a></li>
-                <li><a href="releasenotes_2.7.1821.html">Patch Release 2.7.0.1821</a></li>
-                <li><a href="releasenotes_2.7.1820.html">Patch Release 2.7.0.1820</a></li>
-                <li><a href="releasenotes_2.7.1819.html">Patch Release 2.7.0.1819</a></li>
-                <li><a href="releasenotes_2.7.1818.html">Patch Release 2.7.0.1818</a></li>
-                <li><a href="releasenotes_2.7.1817.html">Patch Release 2.7.0.1817</a></li>
-                <li><a href="releasenotes_2.7.1816.html">Patch Release 2.7.0.1816</a></li>
-                <li><a href="releasenotes_2.7.1815.html">GA Release 2.7.0.1815</a></li>
             </ul>
             </td>
         </tr>
