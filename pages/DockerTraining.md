@@ -17,7 +17,7 @@ Splice Machine now offers self-paced training to help you learn how to use our p
 ## Requirements
 Your computer must meet the following minimum requirements:
 * Docker-compatible (MacOS, Windows, or Linux)
-* 16 GB or more RAM
+* 8 GB or more RAM
 * 10 GB or more available disk space
 * Web browser available
 
@@ -29,9 +29,18 @@ To use any of our training classes, please follow these steps:
 3. [Run Splice Machine Training](#runtraining)
 
 ### Step 1: Set Up Docker  {#docker}
-You should start by setting up Docker on your computer:
-1. Download and install Docker. See the <a href="https://www.docker.com/get-started" target="_blank">Docker Getting Started</a> page for instructions.
-   <p class="noteNote">You must run version 18.06 or later of Docker to use our Training classes.</p>
+You should start by setting up Docker on your computer.
+<p class="noteNote">You must run version 18.06 or later of Docker to use our Training classes.</p>
+
+1.  Download and install Docker. Please click the link in the table below to review Docker requirements and follow the installation steps specific to your operating system:
+
+    * For MacOS, see <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Install Docker on Mac</a>.<br />
+    * For Linux, see <a href="https://docs.docker.com/install/linux/ubuntu/" target="_blank">Install Docker on Linux</a>.<br />
+    * For Windows, see <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Install Docker on Windows</a>.
+    <div class="noteIcon">
+        <p>Windows users should pay special attention to the hardware and software configuration requirements; contact your system administrator if you're uncertain about your machine meeting those requirements.</p>
+        <p>We also <strong>strongly recommend</strong> that Windows users pull and load the <code>hello-world</code> image, as described on <a href="https://docs.docker.com/docker-for-windows/#test-your-installation" target="_blank">the Docker<em> test your installation</em> page.</p>
+    </div>
 
 2. Once Docker is running, open the *Advanced* tab in Docker's Preferences. Configure these values, as shown in the image below:
    * 12 GB RAM
@@ -54,16 +63,13 @@ Follow these steps to run the image:
 
 1. Enter the following command in a terminal window:
 
-    ```
-    docker run -ti  --sysctl net.ipv6.conf.all.disable_ipv6=1  --name spliceserver  --hostname localhost  -p 1527:1527 -p 4040:4040 -p 7078:7078  -p 8080:8080 -p 8090:8090 -p 8091:8091 -p 4041:4041 -p 8081:8081 -p 8082:8082  splicemachine/standalone:1.1.12
-    ```
+    `docker run -ti  --sysctl net.ipv6.conf.all.disable_ipv6=1  --name spliceserver  --hostname localhost -p 1527:1527 -p 4040:4040 -p 7078:7078  -p 8080:8080 -p 8090:8090 -p 8091:8091 -p 4041:4041 -p 8081:8081 -p 8082:8082  splicemachine/standalone:1.1.12`
     {: .AppCommand}
 
     You'll know the image is loaded when you see the Docker prompt:
     {: .spaceAbove}
-    ```
-    [root@localhost opt] #
-    ```
+
+    `[root@localhost opt] #`
     {: .AppCommand}
 
     Note that the first time you run image, Docker will download and unpack it; since this is a large image (more than 4GB), this takes some time.
@@ -71,10 +77,9 @@ Follow these steps to run the image:
 
 2. Now run our *start-all.sh* script to start the Splice Machine database, Spark, and Zeppelin:
 
-    ```
-    [root@localhost opt] # ./start-all.sh
-    ```
+    `[root@localhost opt] # ./start-all.sh`
     {: .AppCommand}
+
     <p class="noteIcon">Do not move this to a background job! It must run in the foreground.</p>
 
    Our classes are ready for you (after a couple minutes) when you see these final WARNING messages:
@@ -120,11 +125,12 @@ Please note that closing or sleeping your laptop after running `./start-all.sh` 
 ```
 
 When this happens, you must stop and restart the Docker container:
+{: .spaceAbove}
+
 * Enter `CTRL-C` in the terminal window where the image is running to stop the current process.
 * Run these two scripts in succession:
   ```
   ./stop-all.sh
-
   ./start-all.sh
   ```
 
