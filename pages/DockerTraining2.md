@@ -5,7 +5,7 @@ keywords: training, docker
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: training-instructions.html
+permalink: training_instructions.html
 folder: /
 ---
 <section>
