@@ -268,7 +268,9 @@ compressed with Snappy compression:
 ## See Also
 
 * [`CREATE TABLE`](sqlref_statements_createtable.html)
+<!--
 * [`PIN TABLE`](sqlref_statements_pintable.html)
+-->
 * [`DROP TABLE`](sqlref_statements_droptable.html)
 * [`REFRESH EXTERNAL TABLE`](sqlref_sysprocs_refreshexttable.html)
 * [Foreign Keys](developers_fundamentals_foreignkeys.html)

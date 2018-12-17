@@ -35,11 +35,13 @@ SQL Statements, in the following topics:
                         </td>
                         <td>Gives privileges to specific user(s) or role(s) to perform actions on database objects.</td>
                     </tr>
+<!--
                     <tr>
                         <td class="CodeFont"><a href="sqlref_statements_pintable.html">PIN TABLE</a>
                         </td>
                         <td>Caches a table in memory for improved performance.</td>
                     </tr>
+-->
                     <tr>
                         <td class="CodeFont"><a href="sqlref_statements_renamecolumn.html">RENAME COLUMN</a>
                         </td>
@@ -65,13 +67,14 @@ SQL Statements, in the following topics:
                         </td>
                         <td>Resets a table to its initial empty state.</td>
                     </tr>
+<!--
                     <tr>
                         <td class="CodeFont"><a href="sqlref_statements_unpintable.html">UNPIN TABLE</a>
                         </td>
                         <td>Unpins a pinned (cached) table.</td>
                     </tr>
+-->
                 </tbody>
             </table>
 </div>
 </section>
-

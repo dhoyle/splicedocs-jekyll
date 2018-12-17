@@ -376,10 +376,12 @@ in the newly created table:
 
 * [`ALTER TABLE`](sqlref_statements_altertable.html) statement
 * [`CREATE EXTERNAL TABLE`](sqlref_statements_createexternaltable.html) statement
-* [`PIN TABLE`](sqlref_statements_pintable.html) statement
 * [`CONSTRAINT`](sqlref_clauses_constraint.html) clause
 * [`DROP TABLE`](sqlref_statements_droptable.html) statement
+<!--
+* [`PIN TABLE`](sqlref_statements_pintable.html) statement
 * [`UNPIN TABLE`](sqlref_statements_unpintable.html) statement
+-->
 * [Foreign Keys](developers_fundamentals_foreignkeys.html) in the
   *Developer's Guide*.
 * [Triggers](developers_fundamentals_triggers.html) in the *Developer's

@@ -121,11 +121,13 @@ described in a section below; here's a summary:
             <td class="CodeFont">--splice-properties joinStrategy=sortmerge</td>
             <td>How a join is processed (in conjunction with the Join Order hint)</td>
         </tr>
+<!--
         <tr>
             <td><a href="#Pinned">Pinned Table</a></td>
             <td class="CodeFont">--splice-properties pin=true</td>
             <td>That you want the pinned (cached in memory) version of a table used in a query</td>
         </tr>
+-->
         <tr>
             <td><a href="#Spark">Spark</a></td>
             <td class="CodeFont">--splice-properties useSpark=true</td>
@@ -357,6 +359,7 @@ You can specify these join strategies:
         </tr>
     </tbody>
 </table>
+<!--    Hidden by GRH 12/2018 via note from GDavis
 ### Pinned Table Hint   {#Pinned}
 
 You can use the `pin` hint to specify to specify that you want a query
@@ -371,7 +374,7 @@ to run against a pinned version of a table.
 You can read more about pinning tables in the
 [`PIN TABLE`](sqlref_statements_pintable.html) statement topic.
 {: .indentLevel1}
-
+-->
 ### Spark Hints   {#Spark}
 
 You can use the `useSpark` hint to specify to the optimizer that you
