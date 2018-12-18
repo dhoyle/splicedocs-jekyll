@@ -6,7 +6,8 @@
 				   $fontColor: $bodyfont-color,
 				   $fontSize: 1em,
 				   $fontTransform: none,
-				   $vertAlign: top ) {
+				   $vertAlign: top,
+				   $horizAlign: left ) {
 	background-color: $bgColor;
 	font-family: $fontFace;
 	font-weight: $fontWeight;
@@ -15,6 +16,7 @@
 	font-size: $fontSize;
 	text-transform: $fontTransform;
 	vertical-align: $vertAlign;
+	text-align: $horizAlign;
 }
 
 table,
@@ -118,6 +120,12 @@ table td.AppFont {
 						$bgColor: $table-appFont-color)
 }
 
+table td.spliceCheckbox {
+	@include cellStyle ($fontColor: $splicecheckbox-color,
+						$fontSize: 1.4em,
+						$horizAlign: center )
+}
+
 table td.DbaasIntroNum{
 	@include cellStyle ($fontFace: $codefont-face,
 						$fontSize:  $extralargefont-size,
@@ -131,7 +139,6 @@ table td.DbaasIntroStep{
 						$vertAlign: middle,
 						$fontWeight: bold )
 }
-
 
 table td.DbaasIntroArrow{
 	@include cellStyle ($fontSize:  $extralargefont-size,
