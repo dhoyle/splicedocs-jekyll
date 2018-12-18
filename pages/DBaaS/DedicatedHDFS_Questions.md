@@ -1,16 +1,16 @@
 ---
-title: Splice Machine Training Instructions
-summary: How to Get Started With our Training Classes
-keywords: training, docker
+title: Getting Ready for Splice Machine on Your AWS Account
+summary: What You Need to Run Splice Machine on Your AWS Account
+keywords: AWS, dbaas
 toc: false
 product: all
-sidebar: home_sidebar
-permalink: onprem_dedicatedhdfs.html
-folder: /
+sidebar: dbaas_sidebar
+permalink: dbaas_dedicatedhdfs.html
+folder: /DBaaS
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-## Customer Prerequisites for Dedicated HDFS Provisioning
+# Running Splice Machine with Your AWS Account
 
 Splice Machine needs your AWS Administrator to provide us with certain details so that we can configure our software to run on your AWS account. Specifically, we need you to:
 
@@ -22,7 +22,7 @@ Splice Machine needs your AWS Administrator to provide us with certain details s
 * [Provide Application Environment Details](#appdetails)
 
 
-### Configure a User with Proper Permissions {#user}
+## Configure a User with Proper Permissions {#user}
 You will need a user that has programmatic access to AWS, configured with the following policy:
 
 ```
@@ -66,7 +66,7 @@ You will need a user that has programmatic access to AWS, configured with the fo
 }
 ```
 
-### Provide a Key Pair {#keypair}
+## Provide a Key Pair {#keypair}
 You need to provide Splice Machine with a key pair (`.pem` file) for setting up the environment; if you don't already have a key pair, you can follow these steps to create one:
 
 1. Log into the AWS Console
@@ -89,7 +89,7 @@ You need to provide Splice Machine with a key pair (`.pem` file) for setting up 
     ssh-add ~/.ssh/<span class="HighlightedCode">FILENAME</span>.pem</pre>
     </div>
 
-### Provide Amazon Resource Name for SSL Certificate {#sslarn}
+## Provide Amazon Resource Name for SSL Certificate {#sslarn}
 Splice Machine needs the Amazon Resource Name (*ARN*) for the SSL Certificate for your domain; this must be a wildcard certificate. You can follow these steps to create the certificate:
 
 1. Log into the AWS Console.
@@ -104,10 +104,10 @@ Splice Machine needs the Amazon Resource Name (*ARN*) for the SSL Certificate fo
 7. Click the <span class="ConsoleLink">Next</span> button.
 8. Follow the instructions for validating the certificate through either DNS or Email.
 
-### Provide AWS Account Id {#awsacct}
+## Provide AWS Account Id {#awsacct}
 Please provide Splice Machine with your Amazon Account ID, which we need to share our AMIs.
 
-### Provide Infrastructure Environment Details  {#infradetails}
+## Provide Infrastructure Environment Details  {#infradetails}
 To correctly set up the infrastructure environment, you'll need to provide Splice Machine with values for the properties in the following table.
 
 <p class="noteIcon">You can print this page and use the <span class="spliceCheckbox">&#10080;</span> checkboxes in the next two tables to track whether you're ready with each required value.</p>
@@ -314,7 +314,7 @@ To correctly set up the infrastructure environment, you'll need to provide Splic
     </tbody>
 </table>
 
-### Provide Application Environment Details  {#appdetails}
+## Provide Application Environment Details  {#appdetails}
 In order to set up the application environment you will need to provide the values shown in the following table.
 
 <table>
