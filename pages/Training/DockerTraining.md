@@ -5,14 +5,18 @@ keywords: training, docker
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: training-instructions.html
-folder: /
+permalink: training_instructions.html
+folder: /Training
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
 # Splice Machine Training Instructions
 Splice Machine now offers self-paced training to help you learn how to use our products. These classes are packaged in a set of Zeppelin Notebooks that you can run on your computer, using Docker.
+
+The Docker image contains everything you need to learn about using Splice Machine, including a standalone version of our software that works on any Mac, PC, or Linux computer that can run Docker.
+
+<p class="noteIcon" markdown="1">Empowering our clients with the training to get the most out of Splice Machine is one of the services we offer to our current and future customers. For more information, see the *Services* page on <a href="https://www.splicemachine.com/services/" target="_blank">splicemachine.com.</a></p>
 
 ## Requirements
 Your computer must meet the following minimum requirements:
