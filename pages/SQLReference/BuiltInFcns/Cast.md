@@ -543,7 +543,24 @@ silently truncated.
 If a `TIMESTAMP` is converted to a `TIME`, the `DATE` component is
 silently truncated.
 
+### Implicit Conversions and Joins
+Splice Machine performs implicit type conversion when performing joins to allow joining of mismatched column types. Specifically, when joining a `CHAR` or `VARCHAR` column on a column of the following types, an attempt is made to convert the string value into that column's type:
+
+* `BOOLEAN`
+* `DATE`
+* `TIME`
+* `TIMESTAMP`
+
+If any row in a query that involves implicit type conversion contains a column value cannot be converted to the desired type, the `join` fails, and the following error is thrown:
+
+```
+   ERROR 22007: The syntax of the string representation of a datetime value is incorrect
+```
+
+
 ## Examples
+
+Here are a few explicit type conversions:
 
 <div class="preWrapper" markdown="1">
     splice> SELECT CAST (TotalBases AS BIGINT)
@@ -568,6 +585,41 @@ silently truncated.
 {: .Example xml:space="preserve"}
 
 </div>
+
+
+Here's an example of implicit conversion failures during attempted joins:
+
+<div class="preWrapper" markdown="1">
+    CREATE TABLE s1 (a1 INT, b1 VARCHAR(16));
+    CREATE TABLE s2 (a2 INT, b2 DATE);
+    CREATE TABLE s3 (a3 INT, b3 BOOLEAN);
+
+    INSERT INTO s2 VALUES (2,'2018-11-11');
+    INSERT INTO s3 VALUES (3,true);
+
+    INSERT INTO s1 VALUES(1,'2018-11-11');
+    SELECT a1 FROM s1 JOIN s2 ON  b1 = b2;
+    A1
+    -----------
+    1
+
+    INSERT INTO s1 VALUES(2,'foo');
+    SELECT a1 FROM s1 JOIN s2 ON  b1 = b2;
+    ERROR 22007: The syntax of the string representation of a datetime value is incorrect.
+
+    DELETE FROM s1;
+    INSERT INTO s1 VALUES (1,'1');
+    SELECT a1 FROM s1 JOIN s3 ON  b1 = b3;
+    A1
+    -----------
+    1
+
+    INSERT INTO s1 VALUES (2,'foo');
+    SELECT a1 FROM s1 JOIN s3 ON  b1 = b3;
+    ERROR 22018: Invalid character string format for type BOOLEAN.
+{: .Example xml:space="preserve"}
+</div>
+
 ## See Also
 
 * [About Data Types](sqlref_datatypes_numerictypes.html)
