@@ -65,7 +65,7 @@ For impersonation to work, you must add two entries to your `hbase-site.xml` con
                 </td>
             </tr>
             <tr>
-                <td class="CodeFont">hueUser1=john,jane; hueUser2=dennis,denise; hueUser3=mark,mary</td>
+                <td class="CodeFont">hueUser1=john,jane;hueUser2=dennis,denise;hueUser3=mark,mary</td>
                 <td>
                     <ul class="bulletCell">
                         <li><code>hueUser1</code> can impersonate <code>john</code> or <code>jane</code></li>
@@ -75,7 +75,7 @@ For impersonation to work, you must add two entries to your `hbase-site.xml` con
                 </td>
             </tr>
             <tr>
-                <td class="CodeFont">hueUser1=barry,barbara; hueUser2=barry,denise; hueUser3=*</td>
+                <td class="CodeFont">hueUser1=barry,barbara;hueUser2=barry,denise;hueUser3=*</td>
                 <td>
                     <ul class="bulletCell">
                         <li><code>hueUser1</code> can impersonate <code>barry</code> or <code>barbara</code></li>
@@ -87,7 +87,19 @@ For impersonation to work, you must add two entries to your `hbase-site.xml` con
         </tbody>
     </table>
 
+## Configuring the Hue Connection
 
+Here's an example of configuring a connection in Hue:
+
+```
+[[[Splice]]]
+  name=Splice
+  interface=jdbc
+  options='{"url": "jdbc:splice://<spliceHost>:1527/splicedb", "driver": "com.splicemachine.db.jdbc.ClientDriver", "user": "<HueUser>", "password": "<HuePassword>", "impersonation_property": "impersonate"}'
+```
+{: .Example}
+
+<p class="noteNote">When you connect, Hue will automatically add the <span class="HighlightedCode">;impersonate=<></span> part to your connection URL if the Hue configuration includes the <code>impersonation_property</code> setting. Other third party tools might require different configurations.</p>
 
 ## Specifying Impersonation in Your JDBC URL
 
