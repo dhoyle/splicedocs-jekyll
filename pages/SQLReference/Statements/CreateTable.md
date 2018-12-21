@@ -218,6 +218,7 @@ This example creates our Players table:
         );
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
+</div>
 
 This example includes a table-level primary key definition that includes
 two columns:
@@ -246,13 +247,12 @@ of 5 that increments by 5, and also includes a primary key constraint:
        Person VARCHAR(26) );
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
+</div>
 
 For more examples of `CREATE TABLE` statements using the various
 constraints, see &nbsp;[`CONSTRAINT` clause](sqlref_clauses_constraint.html)
 {: .noteNote}
 
-</div>
-</div>
 
 ### CREATE TABLE with SPLIT KEYS
 
