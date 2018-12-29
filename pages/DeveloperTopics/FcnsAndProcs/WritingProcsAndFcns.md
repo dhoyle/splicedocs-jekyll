@@ -73,7 +73,7 @@ Follow the steps below to write a Splice Machine database function in Java.
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        CREATE FUNCTION add(val1 int, val2 int)
+        CREATE FUNCTION addNum(val1 int, val2 int)
             RETURNS integer
             LANGUAGE JAVA
             PARAMETER STYLE JAVA
