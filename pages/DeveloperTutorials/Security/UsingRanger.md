@@ -29,6 +29,8 @@ The remainder of this topic describes using Ranger with Splice Machine in these 
 * [Installing Ranger for Splice Machine](#install)
 * [Ranger Components](#components)
 * [Establishing Splice Machine Security Policies with Ranger](#policies)
+* [Using Ranger with LDAP](#ldap)
+* [Using Ranger with Kerberos](#kerberos)
 * [Reviewing Audit Logs](#audits)
 
 ## Installing Ranger for Splice Machine {#install}
@@ -143,6 +145,9 @@ To add new policies for your database users, you need to:
         Statement executed.
     ````
 
+    If you're using LDAP with Splice Machine, you don't need to create a user in your Splice Machine database; instead, you can simply make sure the user name in your Ranger configuration exactly matches the user name in your LDAP configuration. See the [_Using Ranger with LDAP_](#ldap) section below for details.
+    {: .noteNote}
+
 2. Create a policy in the Ranger Admin UI, as shown in the [Setting Up the `SYSIBM` Policy](#sysibmpolicy) section, above. Specify the new user's name and the permission you want to grant them in the new policy. This screenshot shows an example of granting user `BOB` permission to `select` from `TABLE_1` in the `CDL` schema in a Splice machine database:
    <img src="images/RangerSelectPolicy.png">
 
@@ -154,6 +159,23 @@ To add new policies for your database users, you need to:
        Running Splice Machine SQL shell
        splice>
    ````
+
+## Using Ranger with LDAP  {#ldap}
+When you use Ranger with LDAP, you don't need to create a user in your Splice Machine database; you just need to make sure that the user name in your Ranger configuration matches the LDAP user name.
+
+Beware: LDAP is not case sensitive and converts user names to uppercase. Since Splice Machine is case sensitive, you must specify the Ranger user name in uppercase for it to correctly match the LDAP name in Splice Machine.
+{: .noteIcon}
+
+## Using Ranger with Kerberos  {#kerberos}
+There are some additional changes you need to make if you're using Ranger in a Kerberized environment:
+
+1. You must add the following three configuration properties for Splice Machine in the Ranger user interface:
+   <img src="images/RangerKerberosConfig.png">
+
+2. You must specify a fully qualified domain name (e.g. _www.mydomain.com_) instead of an IP address in the following property in Ambari's SpliceMachine service configuration:
+   ```
+   ranger.plugin.splicemachine.policy.rest.url
+   ```
 
 ## Reviewing Audit Logs {#audits}
 
