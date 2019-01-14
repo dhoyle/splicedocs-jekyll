@@ -43,7 +43,7 @@ You should start by setting up Docker on your computer.
     * For Windows, see <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Install Docker on Windows</a>.
     <div class="noteIcon">
         <p>Windows users should pay special attention to the hardware and software configuration requirements; contact your system administrator if you're uncertain about your machine meeting those requirements.</p>
-        <p>We also <strong>strongly recommend</strong> that Windows users pull and load the <code>hello-world</code> image, as described on <a href="https://docs.docker.com/docker-for-windows/#test-your-installation" target="_blank">the Docker<em> test your installation</em> page.</p>
+        <p>We also <strong>strongly recommend</strong> that Windows users pull and load the <code>hello-world</code> image, as described on <a href="https://docs.docker.com/docker-for-windows/#test-your-installation" target="_blank">the Docker website</a>, to test your installation.</p>
     </div>
 
 2. Once Docker is running, open the *Advanced* tab in Docker's Preferences. Configure these values, as shown in the image below:
