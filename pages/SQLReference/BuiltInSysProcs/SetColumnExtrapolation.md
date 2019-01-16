@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInSysProcs
 Use the `SYSCS_UTIL.SET_STATS_EXTRAPOLATION_FOR_COLUMN` system procedure to specify whether or not you want statistics extrapolation used for a specific column in a table.
 
 ## About Statistics Extrapolation
-Statistics extrapolation allows the Splice Machine optimizer to extrapolate statistics for specific column values that have not yet been analyzed. This means that the optimizer can then intelligently estimate values for these columns in rows that have been added to a table since the most recent `ANALYZE` operation was run, which can yield substantially better query plans.
+Statistics extrapolation allows the Splice Machine optimizer to extrapolate statistics for specific column values that have not yet been analyzed. This means that the optimizer can then estimate values for these columns in rows that have been added to a table since the most recent `ANALYZE` operation was run, which can yield better query plans.
 
 With extrapolation enabled, the optimizer captures the growth pattern for each eligible column and then uses that pattern to create an algorithm for extrapolating missing values.
 
