@@ -120,9 +120,15 @@ them from the lowest level to the highest:
             </table>
 ### Splice Machine Loggers   {#SpliceLoggers}
 
+To see a full list of loggers, use the [`SYSCS_UTIL.SYSCS_GET_LOGGERS`](sqlref_sysprocs_getloggers.html) system procedure:
+```
+   CALL SYSCS_UTIL.SYSCS_GET_LOGGERS();
+```
+
 The following table summarizes the loggers used in the Splice Machine
 environment that might interest you if you're trying to debug
 performance issues in your database:
+{: .spaceAbove}
 
 <table summary="Table of the loggers used in Splice Machine.">
                 <col />
