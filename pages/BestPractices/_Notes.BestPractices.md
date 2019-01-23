@@ -1,0 +1,17 @@
+Best Practices Notes:  Jan 2019
+
+INGEST
+
+
+
+STREAMING
+
+
+
+
+NATIVE SPARK DATASOURCE
+
+
+
+
+MIGRATION
