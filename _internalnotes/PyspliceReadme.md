@@ -44,17 +44,17 @@ splice.insert(filtered_df, 'DEMO.FILTERED_CUPCAKES)
 ```
 
   The `splicemachine.ml.zeppelin` package, on the other hand, offers machine learning utilities for use in Splice Machine's Zeppelin notebooks.
-  Some of these functions are written specifically for users who are using the MLFlow Splice Machine Lifecycle System, but others are generic for PySpark MLlib.
+  Some of these functions are written specifically for users who are using the MLflow Splice Machine Lifecycle System, but others are generic for PySpark MLlib.
 
  Here are the functions it offers:
 
-### MLFlow Run Wrapper- cross paragraph logging
+### MLflow Run Wrapper- cross paragraph logging
  Methods:
  1. Run.create_new_run: remove current run and create a new one
- 2. Run.log_param(key: string, value: string): log a parameter to MLFlow with a key: value
- 3. Run.log_metric(key:string, metric:numeric): log a metric to MLFlow
+ 2. Run.log_param(key: string, value: string): log a parameter to MLflow with a key: value
+ 3. Run.log_metric(key:string, metric:numeric): log a metric to MLflow
  4. Run.log_model(fittedPipeline: FittedPipeline object): log a fitted pipeline for later deployment to SageMaker
- 5. Run.log_artifact(run_relative_path: string (path)): log a file to MLFlow (decision tree visualization, model logs etc.)
+ 5. Run.log_artifact(run_relative_path: string (path)): log a file to MLflow (decision tree visualization, model logs etc.)
 
  ```
  Usage:
@@ -91,7 +91,7 @@ show_confusion_matrix(sc, sqlContext, TP, TN, FP, FN)
 ---> your confusion matrix will be printed in stdout
 ```
 
-### Experiment Maker -- Function that creates or uses an MLFlow Experiment
+### Experiment Maker -- Function that creates or uses an MLflow Experiment
 1. experiment_maker(experiment_id: experiment_name (string))
 
 ```
