@@ -21,7 +21,12 @@ You must have administrative access to AWS to configure your S3 buckets
 for Splice Machine.
 {: .noteNote}
 
-## Configure S3 Bucket Access
+This topic contains these two sections:
+
+* [Configuring S3 Bucket Access](#configure)
+* [Accessing S3 Buckets](#accessing)
+
+## Configuring S3 Bucket Access  {#configure}
 
 You can follow these steps to configure access to your S3 bucket(s) for Splice Machine; when you're done, you will have:
 
@@ -174,7 +179,42 @@ You can follow these steps to configure access to your S3 bucket(s) for Splice 
     access key.
     {: .notePlain}
 {: .boldFont}
+</div>
+
+## Accessing S3 Buckets {#accessing}
+
+Once you've established your access keys, you can include them inline; for example:
+
+<div class="preWrapperWide" markdown="1">
+    call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/importLog', true, null);
+{: .Example}
 
 </div>
+Alternatively, you can specify the keys once in the `core-site.xml` file
+on your cluster, and then simply specify the `s3a` URL; for example:
+
+<div class="preWrapperWide" markdown="1">
+    call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, 0, '/BAD', true, null);
+{: .Example}
+
+</div>
+To add your access and secret access keys to the `core-site.xml` file,
+define the `fs.s3a.awsAccessKeyId` and `fs.s3a.awsSecretAccessKey`
+properties in that file:
+
+<div class="preWrapperWide" markdown="1">
+    <property>
+       <name>fs.s3a.awsAccessKeyId</name>
+       <value>access key</value>
+    </property>
+    <property>
+       <name>fs.s3a.awsSecretAccessKey</name>
+       <value>secret key</value>
+    </property>
+{: .Example}
+
+</div>
+
+
 </div>
 </section>

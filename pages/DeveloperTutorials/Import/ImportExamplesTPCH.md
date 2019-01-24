@@ -136,7 +136,9 @@ Machine database:
     {: .topLevel}
 
     We've put a copy of the TPCH data in an AWS S3 bucket for
-    convenient retrieval. You can copy/paste the following
+    convenient retrieval. See the [Configuring an S3 Bucket for Splice Machine Access](tutorials_ingest_configures3.html) topic for information about accessing data on S3.
+
+    You can copy/paste the following
     `SYSCS_UTIL.IMPORT_DATA` statements to quickly pull that data into
     your database:
     {: .indentLevel1}

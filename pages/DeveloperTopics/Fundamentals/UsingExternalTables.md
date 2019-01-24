@@ -115,7 +115,11 @@ This option is only available for data in `PARQUET` format, due to Spark restric
 
 ### Accessing and Updating an ORC File
 
-The following statement creates an external table for the `ORC` file stored in an AWS S3 bucket and inserts data into it:
+The following statement creates an external table for the `ORC` file stored in an AWS S3 bucket and inserts data into it.
+
+See the [Configuring an S3 Bucket for Splice Machine Access](tutorials_ingest_configures3.html) topic for information about accessing data on S3.
+{: .noteNote}
+
 
 <div class="preWrapperWide" markdown="1">
 
