@@ -15,6 +15,9 @@ folder: SQLReference/BuiltInSysProcs
 Use the `SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY` system procedure to set
 or delete the value of a property of the database.
 
+Modifying global database property values can have negative and potentially disastrous impact on how your database performs. You should __only use this procedure__ if you truly understand the consequences of the change(s) you are making.
+{: .noteImportant}
+
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">

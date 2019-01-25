@@ -3,7 +3,6 @@ Best Practices Notes:  Jan 2019
 INGEST
 
 
-
 STREAMING
 
 

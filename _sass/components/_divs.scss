@@ -152,6 +152,17 @@ p.noteIcon {
                     $padding: (5px 10px 5px 48px) );
 }
 
+div.noteImportant {
+  @include notes($beforeTxt: "IMPORTANT:  ",
+                 $margin:(20px 20px 20px 60px),
+                 $leaderColor: red)
+}
+
+p.noteImportant {
+  @include pgfnotes($beforeTxt: "IMPORTANT:  ",
+                    $margin:(20px 20px 20px 60px),
+                    $leaderColor: red)
+}
 div.noteIndent {
   @include notes($beforeTxt: "NOTE:  ",
                  $margin:(20px 20px 20px 60px))
