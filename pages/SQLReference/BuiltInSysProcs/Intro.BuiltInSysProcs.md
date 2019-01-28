@@ -205,14 +205,6 @@ database:
             </td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysprocs_scheduledailybackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a>
-            </td>
-            <td>
-                <p>Schedules a full or incremental database backup to run at a specified time daily.</p>
-                <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
-            </td>
-        </tr>
-        <tr>
             <td class="CodeFont"><a href="sqlref_sysprocs_updateschemaowner.html">SYSCS_UTIL.SYSCS_UPDATE_SCHEMA_OWNER</a>
             </td>
             <td>Changes the owner of a schema.</td>

@@ -17,7 +17,6 @@ Splice Machine provides built-in system procedures that make it easy to
 back up and restore your entire database. You can:
 
 * create full and incremental backups to run immediately
-* schedule daily full or incremental backups
 * restore your database from a backup
 * validate backups
 * manage your backups
@@ -55,7 +54,7 @@ Because backups can consume a lot of disk space, most customers define a
 backup strategy that blends their needs for security, recover-ability,
 and space restrictions. Since incremental backups require a lot less
 space than do full backups, and allow for faster recovery of data, many
-customers schedule daily, incremental backups.
+customers choose to schedule frequent incremental backups.
 
 Splice Machine automatically detects when it is the first run of an
 incremental backup and performs a one-time full backup; subsequent runs
@@ -141,12 +140,10 @@ If you're going to perform incremental backups, you _must_ follow these steps:
 This section summarizes and provides examples of using the Splice
 Machine backup operations:
 
-* [Scheduling a Daily Backup Job](#Scheduling)
 * [Running an Immediate Backup](#Running)
 * [Restoring Your Database From a Previous Backup](#Restorin)
 * [Validating Backups](#Validating)
 * [Reviewing Backup Information](#Reviewing)
-* [Canceling a Scheduled Backup Job](#Cancelin)
 * [Canceling a Backup That's In Progress](#CancelB){: .WithinBook}
 * [Deleting a Backup](#Deleting)
 * [Deleting Outdated Backups](#DeleteOld)
@@ -161,67 +158,6 @@ such as AWS; for more information, see the [Backing Up to Cloud
 Storage](#Backing) section below.
 {: .noteNote}
 
-### Scheduling a Daily Backup Job   {#Scheduling}
-
-Use the
-[`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
-procedure to schedule a job that performs a daily incremental or full
-backup of your database:
-
-<div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP( backupDir, backupType, startHour );
-{: .FcnSyntax xml:space="preserve"}
-
-</div>
-<div class="paramList" markdown="1">
-backupDir
-{: .paramName}
-
-A `VARCHAR` value that specifies the path to the directory in which you
-want the backup stored.
-{: .paramDefnFirst}
-
-Note that this directory can be cloud-based, as described in the
-[Backing Up to Cloud Services](#Backing) section below.
-{: .paramDefn}
-
-backupType
-{: .paramName}
-
-A `VARCHAR(30)` value that specifies the type of backup that you want
-performed; one of the following values: `full` or `incremental`. The
-first run of an incremental backup is always a full backup.
-{: .paramDefnFirst}
-
-startHour
-{: .paramName}
-
-Specifies the hour (`0-23`) in GMT at which you want the backup to run
-each day. A value less than `0` or greater than `23` produces an error
-and the backup is not scheduled.
-{: .paramDefnFirst}
-
-#### Example 1: Set up a full backup to run every day at 3am:
-
-To run a full backup every night at 3am:
-
-<div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('/home/backup', 'full', 3);
-{: .AppCommand xml:space="preserve"}
-
-</div>
-<div markdown="1">
-#### Example 2: Set up an incremental backup to run every day at noon:
-
-To run an incremental backup every day at noon.
-
-<div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('/home/backup', 'incremental', 12);
-{: .AppCommand xml:space="preserve"}
-
-</div>
-</div>
-</div>
 ### Running an Immediate Backup   {#Running}
 
 Use the
@@ -431,42 +367,6 @@ Here's a sample snippet from a log file:
     Finished with Success. Total time taken for backup was 11 hours 32 minutes.
 {: .Example xml:space="preserve"}
 
-</div>
-### Canceling a Scheduled Backup   {#Cancelin}
-
-You can cancel a daily backup with the
-[`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html) system
-procedure:
-
-<div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( jobId );
-{: .FcnSyntax xml:space="preserve"}
-
-</div>
-<div class="paramList" markdown="1">
-jobId
-{: .paramName}
-
-A `BIGINT` value that specifies which scheduled backup job you want to
-cancel.
-{: .paramDefnFirst}
-
-You can find the *jobId* you want to cancel by querying the
-[`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html).
-{: .paramDefn}
-
-Once you cancel a daily backup, it will no longer be scheduled to run.
-{: .noteNote}
-
-#### Example: Cancel a daily backup
-
-This example cancels the backup that has `jobId=1273`:
-
-<div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(1273);
-{: .AppCommand xml:space="preserve"}
-
-</div>
 </div>
 ### Canceling a Backup That's In Progress   {#CancelB}
 
@@ -784,13 +684,11 @@ Follow these steps:
 * [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
 * [`SYSCS_UTIL.SYSCS_CANCEL_BACKUP`](sqlref_sysprocs_cancelbackup.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html).
 * [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html).
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
 * [`SYSBACKUP` system table](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS` system table](sqlref_systables_sysbackupitems.html)

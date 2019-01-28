@@ -68,7 +68,6 @@ more than 30 days ago.
 * [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
 * [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
