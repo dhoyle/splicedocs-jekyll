@@ -14,9 +14,7 @@ folder: SQLReference/BuiltInSysProcs
 
 The `SYSCS_UTIL.SYSCS_RESTORE_DATABASE` system procedure restores your
 database to the state it was in when a specific backup was performed,
-using a backup that you previously created using either the
-&nbsp; [`SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
-procedure.
+using a backup that you previously created.
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
@@ -176,7 +174,6 @@ Here's a similar restore attempt that terminates after finding inconsistencies i
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)

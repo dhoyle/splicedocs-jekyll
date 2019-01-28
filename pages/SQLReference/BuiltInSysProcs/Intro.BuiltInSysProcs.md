@@ -75,14 +75,6 @@ database:
             </td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a>
-            </td>
-            <td>
-                <p>Cancels a scheduled daily backup.</p>
-                <p>This procedure is only available in our <em>On-Premise Database</em> product.</p>
-            </td>
-        </tr>
-        <tr>
             <td class="CodeFont"><a href="sqlref_sysprocs_checktable.html"><code>SYSCS_UTIL.CHECK_TABLE</code></a></td>
             <td>Reports on inconsistencies between a table and its indexes.</td>
         </tr>

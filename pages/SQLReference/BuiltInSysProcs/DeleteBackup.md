@@ -12,10 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_DELETE_BACKUP
 
-The `SYSCS_UTIL.SYSCS_DELETE_BACKUP` system procedure deletes a backup
-that you previously created using either the
-[`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
-procedures.
+The `SYSCS_UTIL.SYSCS_DELETE_BACKUP` system procedure deletes a previously created backup.
 
 ## Syntax
 
@@ -70,7 +67,6 @@ And then delete that job:
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)

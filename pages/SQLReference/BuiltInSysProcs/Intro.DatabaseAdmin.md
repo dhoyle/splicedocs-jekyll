@@ -122,13 +122,6 @@ database only apply to our on-premise product:
             </td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysprocs_canceldailybackup.html">SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP</a>
-            </td>
-            <td>
-                <p>Cancels a scheduled daily backup.</p>
-            </td>
-        </tr>
-        <tr>
             <td class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_DELETE_BACKUP</a>
             </td>
             <td>
@@ -147,13 +140,6 @@ database only apply to our on-premise product:
             </td>
             <td>
                 <p>Restores a database from a previous backup.</p>
-            </td>
-        </tr>
-        <tr>
-            <td class="CodeFont"><a href="sqlref_sysprocs_deletebackup.html">SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP</a>
-            </td>
-            <td>
-                <p>Schedules a full or incremental database backup to run at a specified time daily.</p>
             </td>
         </tr>
     </tbody>
