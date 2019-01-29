@@ -28,8 +28,8 @@ backupId
 Specifies the ID of the backup job you want to delete.
 {: .paramDefnFirst}
 
-To find the *jobId* you want to cancel, see the [*Backing Up
-and Restoring*](onprem_admin_backingup.html) topic.
+To find the *jobId* you want to cancel, you can query the [`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) system table, as described in the
+[*Backing Up and Restoring*](onprem_admin_backingup.html) topic.
 {: .paramDefn}
 
 </div>
@@ -71,7 +71,6 @@ And then delete that job:
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

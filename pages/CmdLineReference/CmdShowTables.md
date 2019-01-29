@@ -27,7 +27,7 @@ displayed; otherwise, the tables in the current schema are displayed.
 ### Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SHOW TABLES [ IN schemaName ] 
+    SHOW TABLES [ IN schemaName ]
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -71,9 +71,7 @@ The `show tables` command results contains the following columns:
     ------------------------------------------------------
     SYS          |SYSALIASES         |352       |
     SYS          |SYSBACKUP          |1040      |
-    SYS          |SYSBACKUPFILESET   |1056      |
     SYS          |SYSBACKUPITEMS     |1136      |
-    SYS          |SYSBACKUPJOBS      |1200      |
     SYS          |SYSCHECKS          |368       |
     SYS          |SYSCOLPERMS        |704       |
     SYS          |SYSCOLUMNS         |64        |
@@ -101,18 +99,17 @@ The `show tables` command results contains the following columns:
     SYS          |SYSVIEWS           |336       |
     SYSIBM       |SYSDUMMY1          |1344      |
     SPLICE       |MYTABLE            |1536      |
-    
+
     32 rows selected
-    
+
     splice>show tables in SPLICE;
     TABLE_SCHEM  |TABLE_NAME         |CONGLOM_ID|REMARKS
     -----------------------------------------------------
     SPLICE       |MYTABLE            |1536      |
-    
+
     1 row selected
 {: .AppCommand xml:space="preserve"}
 
 </div>
 </div>
 </section>
-

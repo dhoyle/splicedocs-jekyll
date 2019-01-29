@@ -69,9 +69,7 @@ TABLE_SCHEM         |TABLE_NAME                                        |CONGLOM_
 -------------------------------------------------------------------------------------------
 SYS                 |SYSALIASES                                        |352       |
 SYS                 |SYSBACKUP                                         |928       |
-SYS                 |SYSBACKUPFILESET                                  |976       |
 SYS                 |SYSBACKUPITEMS                                    |1168      |
-SYS                 |SYSBACKUPJOBS                                     |1216      |
 SYS                 |SYSCHECKS                                         |384       |
 SYS                 |SYSCOLPERMS                                       |640       |
 SYS                 |SYSCOLUMNS                                        |80        |

@@ -197,7 +197,6 @@ Statement executed.
 * [`SYSCS_UTIL.SYSCS_VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
 

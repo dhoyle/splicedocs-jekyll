@@ -56,11 +56,6 @@ The tables listed in this section apply only to our on-premise database product.
                             </td>
                             <td>Information about the items backed up for each backup job.</td>
                         </tr>
-                        <tr>
-                            <td class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a>
-                            </td>
-                            <td>Information about all backup jobs that have been created for the database.</td>
-                        </tr>
                     </tbody>
                 </table>
 </div>

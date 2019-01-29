@@ -1,7 +1,7 @@
 ---
 title: Splice Machine System Backups Tables
 summary: Summarizes the Splice Machine system tables that store information about backups
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar:  sqlref_sidebar
@@ -41,13 +41,7 @@ The Backup System Tables are:
                         </td>
                         <td>Information about the items backed up for each backup job.</td>
                     </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_systables_sysbackupjobs.html">SYSBACKUPJOBS</a>
-                        </td>
-                        <td>Information about all backup jobs that have been created for the database.</td>
-                    </tr>
                 </tbody>
             </table>
 </div>
 </section>
-

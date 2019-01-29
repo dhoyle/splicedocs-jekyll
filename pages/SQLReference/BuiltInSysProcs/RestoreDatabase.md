@@ -72,12 +72,8 @@ each backup) may also be corrupted.
 backupId
 {: .paramName}
 
-The ID of the backup job from which you want to restore your database.
+The ID of the backup job from which you want to restore your database. To find the *backupId*, you can query the [`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) system table, as described in the [*Backing Up and Restoring*](onprem_admin_backingup.html) topic.
 {: .paramDefnFirst}
-
-The system [*Backing Up and Restoring*](onprem_admin_backingup.html)
-topic for more information.
-{: .paramDefn}
 
 validate
 {: .paramName}
@@ -179,7 +175,6 @@ Here's a similar restore attempt that terminates after finding inconsistencies i
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

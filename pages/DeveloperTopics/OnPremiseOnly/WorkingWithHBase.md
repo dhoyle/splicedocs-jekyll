@@ -45,9 +45,7 @@ follow these steps:
         -------------------------------------------------------------
         SYS             |SYSALIASES         |368       |
         SYS             |SYSBACKUP          |944       |
-        SYS             |SYSBACKUPFILESET   |976       |
         SYS             |SYSBACKUPITEMS     |1056      |
-        SYS             |SYSBACKUPJOBS      |1184      |
         SYS             |SYSCHECKS          |384       |
         SYS             |SYSCOLPERMS        |640       |
         SYS             |SYSCOLUMNS         |80        |

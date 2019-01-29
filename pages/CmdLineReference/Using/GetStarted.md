@@ -368,9 +368,7 @@ of all tables in all of the schemas in your database:
     --------------------------------------------------------
     SYS          |SYSALIASES            |256       |
     SYS          |SYSBACKUP             |992       |
-    SYS          |SYSBACKUPFILESET      |1008      |
     SYS          |SYSBACKUPITEMS        |1104      |
-    SYS          |SYSBACKUPJOBS         |1216      |
     SYS          |SYSCHECKS             |336       |
     SYS          |SYSCOLPERMS           |608       |
     SYS          |SYSCOLUMNS            |80        |

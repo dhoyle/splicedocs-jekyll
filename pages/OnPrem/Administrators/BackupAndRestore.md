@@ -89,11 +89,6 @@ and backup jobs is stored in these system tables:
             </td>
             <td>Each item (table) in a backup.</td>
         </tr>
-        <tr>
-            <td><code>SYS.SYSBACKUPJOBS</code>
-            </td>
-            <td>Each backup job that has been run for the database.</td>
-        </tr>
     </tbody>
 </table>
 ### Temporary Tables and Backups
@@ -316,22 +311,6 @@ This example validates the backup stored in the
 Splice Machine stores information about your backups and scheduled
 backup jobs in system tables that you can query, and stores a backup log
 file in the directory to which a backup is written when it runs.
-
-#### Backup Job Information
-
-Information about your scheduled backup jobs is stored in the
-[`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html):
-
-<div class="preWrapperWide" markdown="1">
-    splice> select * from SYS.SYSBACKUPJOBS;
-    JOB_ID         |FILESYSTEM        |TYPE           |HOUR_OF_DAY|BEGIN_TIMESTAMP
-    --------------------------------------------------------------------------------------
-    22275          |/data/backup/0101 |FULL           |22         |2015-04-03 18:43:42.631
-{: .Example xml:space="preserve"}
-
-</div>
-You can query this table to find a job ID, if you need to cancel a
-scheduled backup.
 
 #### Backup Information
 
@@ -692,7 +671,6 @@ Follow these steps:
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
 * [`SYSBACKUP` system table](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS` system table](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>
