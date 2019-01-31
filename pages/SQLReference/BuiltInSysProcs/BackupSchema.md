@@ -71,7 +71,7 @@ when specifying the backup destination.
 type
 {: .paramName}
 
-Specifies the type of table backup that you want performed. Currently, the only valid value is `full`.
+Specifies the type of schema backup that you want performed. Currently, the only valid value is `full`.
 {: .paramDefnFirst}
 {% comment %}
 This must be one ofthe following values: `full` or `incremental`; any other value
@@ -174,7 +174,7 @@ BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
 ```
 
 ### Restoring the Backup  {#exrestore}
-You can restore the table to another table on the same cluster, or on a different cluster. You can optionally specify that you want the backup validated before it is restored; the validation process checks for inconsistencies and missing files.
+You can restore the schema to another schema on the same cluster, or on a different cluster. You can optionally specify that you want the backup validated before it is restored; the validation process checks for inconsistencies and missing files.
 
 This command first validates the backed-up schema, and then restores it to a different (pre-existing) schema named `NEWTPCH1`:
 ```

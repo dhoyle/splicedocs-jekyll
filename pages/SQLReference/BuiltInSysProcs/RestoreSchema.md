@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_RESTORE_SCHEMA
 
-The `SYSCS_UTIL.SYSCS_RESTORE_SCHEMA` system procedure restores a schema that was previously backed up with the [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html) procedure. You can restore the schema to another schema on the same cluster, or on a different cluster. Note that the schema to which you are restoring must already exist in the database.
+The `SYSCS_UTIL.SYSCS_RESTORE_SCHEMA` system procedure restores a schema that was previously backed up with the [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html) procedure. You can restore the schema to another schema on the same cluster, or on a different cluster. Note that the schema to which you are restoring __must already exist__ in the database.
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
@@ -48,13 +48,13 @@ destSchema
 
 The name of the schema to which you want the table restored.
 {: .paramDefnFirst}
-This table must already exist in your database.
+This schema must already exist in your database.
 {: .noteNote}
 
 sourceSchema
 {: .paramName}
 
-The name of the schema from which the table was backed up.
+The name of the schema that was previously backed up.
 {: .paramDefnFirst}
 
 directory
@@ -150,7 +150,7 @@ BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
 ```
 
 ### Restoring the Backup  {#exrestore}
-You can restore the table to another table on the same cluster, or on a different cluster. You can optionally specify that you want the backup validated before it is restored; the validation process checks for inconsistencies and missing files.
+You can restore the schema to another schema on the same cluster, or on a different cluster. You can optionally specify that you want the backup validated before it is restored; the validation process checks for inconsistencies and missing files.
 
 This command first validates the backed-up schema, and then restores it to a different (pre-existing) schema named `NEWTPCH1`:
 ```
