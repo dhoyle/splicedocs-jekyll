@@ -12,7 +12,12 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_RESTORE_TABLE
 
-The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was previously backed up with the [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html) procedure. You can restore the table to another table on the same cluster, or on a different cluster. Note that the table to which you are restoring must already exist in the database.
+The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was previously backed up with the &nbsp;&nbsp; [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html) procedure. You can restore the table to another table on the same cluster, or on a different cluster. Note that:
+
+* The table to which you are restoring must already exist in the database.
+* The source and destination tables must have the same DDL, including the same primary keys and unique constraints.
+* The source and destinatoin tables must have the same indexes.
+
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
@@ -57,7 +62,7 @@ destTable
 
 The name of the restored table.
 {: .paramDefnFirst}
-This table must already exist in your database.
+This table must already exist in your database, and must have the same DDL as the `sourceTable`.
 {: .noteNote}
 
 sourceSchema
@@ -112,6 +117,9 @@ A Boolean value that specifies whether to validate the table backup before resto
 ## Results
 
 This procedure does not return a result.
+
+## Usage
+The source and destination tables must have the same DDL, including the same primary keys and unique constraints. They must also have the same indexes.
 
 ## Execute Privileges
 

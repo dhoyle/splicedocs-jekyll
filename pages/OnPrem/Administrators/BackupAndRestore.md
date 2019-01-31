@@ -33,7 +33,7 @@ If you only want to back up  or restore the tables and indexes belonging to a sp
 * [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html).
 
-And i you only want to back up or restore a specific table, you can use these procedures:
+And if you only want to back up or restore a specific table, you can use these procedures:
 * [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html).
 
