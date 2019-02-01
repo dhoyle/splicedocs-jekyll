@@ -14,11 +14,19 @@ folder: BestPractices
 
 This section contains best practice and troubleshooting information related to modifying configuration options to fine-tune database performance with our *On-Premise Database* product, in these topics:
 
+* [Resolving Periodic Spikes in HBase Read Times](#HbaseSpikes)
 * [Increasing Parallelism for Spark Shuffles](#SparkShuffles)
 * [Increasing Memory Settings for Heavy Analytical Work Loads](#OLAPMemSettings)
 * [Force Compaction to Run Locally](#LocalCompaction)
 
 {% include splice_snippets/onpremonlytopic.md %}
+
+## Resolving Periodic Spikes in HBase Read Times  {#HbaseSpikes}
+
+If you're using Cloudera and you closely monitor your read request queues as a way to stay on top of your cluster load, you might observe a spike in reads every 30 minutes. Cloudera Manager enables an `Hbase Region Health Canary` that pings every server once every 30 minutes. As long as you are not experiencing any throughput problems, these spikes are harmless. If you want to get rid of the spikes, you can disable this monitoring, as follows:
+
+1. In Cloudera Manager, navigate to `HBase service -> Configuration -> Monitoring`.
+2. Deselect (uncheck) `HBase Region Health Canary`.
 
 ## Increasing Parallelism for Spark Shuffles {#SparkShuffles}
 
