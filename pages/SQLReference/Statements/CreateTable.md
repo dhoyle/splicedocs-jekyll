@@ -42,9 +42,11 @@ not explicitly specified, the default value of a column is `NULL`.
 If a qualified table name is specified, the schema name cannot begin
 with `SYS`.
 
+<!--
 The [PIN TABLE](sqlref_statements_pintable.html) statements are
 documented separately in this section.
 {: .noteNote}
+-->
 
 ## Syntax
 

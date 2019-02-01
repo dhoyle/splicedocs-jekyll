@@ -177,7 +177,7 @@ Console:
   Console](tutorials_dbconsole_features.html)
 * [Managing Queries with the Console](tutorials_dbconsole_queries.html)
 * [Using Spark Libraries with Splice
-  Machine](developers_spark_libs.html)
+  Machine](developers_fundamentals_sparklibs.html)
 
 </div>
 </section>

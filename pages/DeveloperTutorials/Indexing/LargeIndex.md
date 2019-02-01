@@ -315,7 +315,7 @@ Here is a step-by-step example of specifying your own split keys in a file  and 
 ## See Also
 
 *  [`CREATE INDEX`](sqlref_statements_createindex.html)
-*  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importhbulkhfile.html)
+*  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
 *  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
 
 </div>

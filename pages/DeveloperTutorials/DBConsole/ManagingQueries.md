@@ -208,7 +208,7 @@ stages for all jobs.
 * [User Interface Features of the Splice Machine Database
   Console](tutorials_dbconsole_features.html)
 * [Using Spark Libraries with Splice
-  Machine](developers_spark_libs.html)
+  Machine](developers_fundamentals_sparklibs.html)
 
 </div>
 </section>
