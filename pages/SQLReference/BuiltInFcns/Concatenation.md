@@ -1,5 +1,5 @@
 ---
-title: Concatenation operator (||)
+title: Concatenation operator (||  or  CONCAT)
 summary: Built-in SQL function that concatenates one character or bit string expression onto another.
 keywords: concat, concatenate
 toc: false
@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Concatenation Operator
 
-The concatenation operator, `||`, concatenates its right operand onto
+The concatenation operator, which you can specify using either the symbol `||` or the word `CONCAT`, concatenates its right operand onto
 the end of its left operand; it operates on character string or bit
 string expressions.
 
@@ -24,8 +24,10 @@ function can act on all built-in data types.
 
 <div class="fcnWrapperWide" markdown="1">
     {
-       { CharacterExpression || CharacterExpression } |
-       { BitExpression || BitExpression }
+       { CharacterExpression  ||  CharacterExpression } |
+       { CharacterExpression  CONCAT  CharacterExpression } |
+       { BitExpression  ||  BitExpression }
+       { BitExpression  CONCAT  BitExpression }
     }
 {: .FcnSyntax xml:space="preserve"}
 
@@ -67,10 +69,10 @@ For character strings:
 <div class="preWrapper" markdown="1">
        -- returns 'San Francisco Giants'
     splice> VALUES 'San' || ' ' || 'Francisco' || ' ' || 'Giants';
-    
+
        -- returns NULL
-    splice> VALUES CAST (null AS VARCHAR(7))|| 'Something';
-    
+    splice> VALUES CAST (null AS VARCHAR(7)) CONCAT 'Something';
+
        -- returns 'Today it is: 93'
     splice> VALUES 'Today it is: ' || '93';
 {: .Example xml:space="preserve"}
@@ -93,4 +95,3 @@ For character strings:
 
 </div>
 </section>
-
