@@ -12,122 +12,102 @@ folder: BestPractices/Database
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
 # ﻿Best Practices: Ingesting Data
-This topic provides an overview and examples of the different methods you can use to ingest data into your Splice Machine database, in these sections:
-
-* The [Overview](#overview) section enumerates the ingestion methods that are available.
-* [Selecting the Right Ingest Method](#method) helps you to decide which method makes the most sense for your particular situation.
-* [Using Standard Import Procedures](#standard) delves into the details of and presents examples of using our standard import procedures (import, upsert, merge).
-* [Using Bulk HFile Loading](#bulkload) provides details and examples of using bulk HFile loading.
-* [Using the Native Spark DataSource](#spark) shows you how you can use the Splice Machine Native Spark DataSource to ingest data.
-* [Using External Tables](#external) presents examples of accessing data in external tables.
-* [Using Streaming](#streaming) describes and presents examples of streaming data into your database.
-
-## Overview {#overview}
-Question: What's the best way for me to ingest data into my Splice Machine database?
-
-Splice Machine provides several different methods for ingesting data; which one you use depends on a number of factors. This topic will help you determine which method is best for you. Here's a quick overview of the available methods for ingestion:
-
-<table>
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>Ingestion Method</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><em>Standard file import</em></td>
-            <td><p>All of the Splice Machine built-in import procedures work similarly:</p>
-				<table>
-				    <col />
-				    <col />
-				    <tbody>
-				        <tr>
-				            <td><code>Import_Data</code></td>
-				            <td><p>Imports data into your database, creating a new record in your table for each record in the imported data.</p>
-								<p><code>Import_Data</code> inserts the default value (or <code>NULL</code> if no default is specified in the schema) of a column when that column is not contained in the input record.</p>
-							</td>
-				        </tr>
-				        <tr>
-				            <td><code>Upsert_Data_From_File</code></td>
-				            <td><p>Imports data into your database, either updating a matching record in your table with new values or creating a new record in the table.</p>
-								<p>When <code>Upsert_Data_From_File</code>  finds a matching record in the table, it updates that row with all of the values in the input record; if the input does not contain a value for a column, that column in the row is updated with its default value  (or <code>NULL</code> if no default is specified in the schema).</p>
-							</td>
-				        </tr>
-				        <tr>
-				            <td><code>Merge_Data_From_File</code></td>
-				            <td><p>Imports data into your database, either updating a matching row in your table with new values or creating a new record (row) in the table.</p>
-								<p>Merging differs from upserting in how it handles updating a column when the input doesn't contain a value: <code>Merge_Data_From_File</code> does not modify the value of an column that's not specified in the input.</p>
-							</td>
-				        </tr>
-				    </tbody>
-				</table>
-			</td>
-        </tr>
-        <tr>
-            <td><em>Bulk HFile import</em></td>
-            <td><p>For larger datasets, you can use the <code>BULK_IMPORT_HFILE</code> procedure, which temporarily splits your table file into HBase HFiles, directly inserts them into your database in bulk, and then removes the temporary HFiles.</p>
-				<p class="noteIcon">Bulk importing has tremendous performance advantages; however bulk import does not check constraints.</p>
-				<p>For even better performance, you can provide additional information to <code>BULK_IMPORT_HFILE</code> to help it distribute your data evenly into HBase regions; ideally, each region will end up containing the same number of table rows. You can tell <code>BULK_IMPORT_HFILE</code> to split your data in these ways:</p>
-				<table>
-				    <col />
-				    <col />
-				    <tbody>
-				        <tr>
-				            <td><em>Automatic Splitting</em></td>
-				            <td><p>The  <code>BULK_IMPORT_HFILE</code> procedure automatically determines how to split your data into regions by sampling your input data.</p>
-							</td>
-				        </tr>
-				        <tr>
-				            <td><em>Pre-split data with split keys</em></td>
-				            <td><p>You specify the key values to use and then call a procedure (<code>SPLIT_TABLE_OR_INDEX</code>) that  pre-splits your input data before you call <code>BULK_IMPORT_HFILE</code> to ingest the data.</p>
-							</td>
-				        </tr>
-				    </tbody>
-				        <tr>
-				            <td><em>Pre-split data by row boundaries</em></td>
-				            <td><p>You specify the row boundaries at which the data should be split, call a procedure (<code>SPLIT_TABLE_OR_INDEX_AT_POINTS</code>) that  pre-splits your input data before you call <code>BULK_IMPORT_HFILE</code> to ingest the data.</p>
-								<p>Pre-splitting by row boundaries requires HBase expertise and keen knowledge of the data that you're ingesting.</p>
-							</td>
-				        </tr>
-				    </tbody>
-				    </tbody>
-				</table>
-			</td>
-        </tr>
-        <tr>
-            <td><em>External table</em></td>
-            <td><p>If your data resides in a flat file somewhere, you can:</p>
-			 	<ul>
-					<li>query that data directly without ingesting it into your database by creating an external table that references the file.</li>
-					<li>create an external table spec and create an internal table in your database to map all or part of the external table, inserting data from the external table as part of the table creation process.</li>
-				</ul>
-			</td>
-        </tr>
-        <tr>
-            <td><em>Native Spark DataSource</em></td>
-            <td>The Splice Machine Native Spark DataSource is native to Spark and operates directly on DataFrames, which means that you can pull the contents of an entire DataFrame into your database without using a serialized connector.</td>
-        </tr>
-        <tr>
-            <td><em>Streaming</em></td>
-            <td>You can stream data directly into your database using Kafka.</td>
-        </tr>
-    </tbody>
-</table>
-
+This topic provides an overview and examples of the different methods you can use to ingest data into your Splice Machine database, and guides you to using the best option for ingesting *your* data.
 
 ## Selecting the Right Ingest Method  {#method}
 Which method you should use to ingest your data depends on a number of factors. This section will help guide your decision.
 
 Let's start with how you plan to get at your data:
 
-* If you want to stream the data into Splice Machine, please jump to the [Ingest Streaming Data](#streaming) section.
-* If you want to access the data as an external table, please jump to the [Using an External Table](#externaltable) section.
-* Otherwise, continue on to our [Standard Import](#standard) section.
+* If you have data in a Spark DataFrame, see the section about [Ingesting with the Native Spark DataSource](#sparkadapter), which allows you to insert data directly from a DataFrame into your database, providing great performance by eliminating the need to serialize and deserialize the data.
+* If you want to stream the data into Splice Machine, please jump to the [Ingesting Streaming Data](#streaming) section.
+* If you want to access the data as an external table, please jump to the [Ingesting Data With an External Table](#externaltable) section.
+* Otherwise, continue on to our [Importing Data Files](#datafiles) section.
 
-### Selecting the Right Standard Import Method
+## Importing Data Files  {#datafiles}
+
+Splice Machine provides two major pathways for importing data and indexes from files (typically in CSV format) into your database: standard import and bulk HFile import; each pathway has different variations that use different system procedures. The following table summarizes some of the pros and cons of using each variation:
+
+<table>
+    <col width="24%" />
+    <col width="14%" />
+    <col width="14%" />
+    <col width="24%" />
+    <col width="24%" />
+    <thead>
+        <tr>
+            <th>Import Method</th>
+            <th>Complexity</th>
+            <th>Performance</th>
+            <th>Pros</th>
+            <th>Cons</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>IMPORT_DATA</code></td>
+            <td>Low</td>
+            <td>Standard</td>
+            <td><p>Constraint checking</p>
+                <p>Best for small datasets</p>
+            </td>
+            <td><p>Slow for very large datasets</p></td>
+        </tr>
+        <tr>
+            <td><code>UPSERT_DATA_FROM_FILE</code></td>
+            <td>Low</td>
+            <td>Standard</td>
+            <td><p>Constraint checking</p>
+                <p>Updates existing records in addition to adding new records</p>
+            </td>
+            <td><p>Slow for very large datasets</p></td>
+        </tr>
+        <tr>
+            <td><code>MERGE_DATA_FROM_FILE</code></td>
+            <td>Low</td>
+            <td>Standard</td>
+            <td><p>Constraint checking</p>
+                <p>Updates existing records in addition to adding new records</p>
+            </td>
+            <td><p>Slow for very large datasets</p></td>
+        </tr>
+        <tr>
+            <td><code>BULK_IMPORT_HFILE</code> with<br />automatic Splitting</td>
+            <td>Moderate</td>
+            <td>Medium</td>
+            <td>Enhanced performance</td>
+            <td>No constraint checking</td>
+        </tr>
+        <tr>
+            <td><code>BULK_IMPORT_HFILE</code> with<br />pre-Split Keys</td>
+            <td>High</td>
+            <td>High</td>
+            <td>Better performance</td>
+            <td><p>No constraint checking</p>
+                <p>Must specify split keys for input data</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>BULK_IMPORT_HFILE</code> with<br />pre-Split Row Boundaries</td>
+            <td>Very High</td>
+            <td>Best</td>
+            <td>Best performance, especially for extremely large datasets</td>
+            <td><p>No constraint checking</p>
+                <p>Must specify row boundaries for splitting input data</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+### About Pre-Splitting Data
+
+When you use the `BULK_IMPORT_HFILE` procedure to import your data, your input dataset is split into temporary HBase HFiles, then imported into your database. When the process is done, the temporary files are deleted.
+
+This approach can yield significant performance boosts, especially for large datasets. Why? Because when splits are specified for the input dataset, Splice Machine can pre-split the data into HFiles and take advantage of the bulk loading mechanism in HBase. Pre-splitting is the process of preparing and loading HFiles (HBase’s own file format) directly into the RegionServers, thus bypassing the write path; this requires significantly less resources, reduces latency, and avoids frequent garbage collection, all of which can occur when importing un-split datasets, especially when they're very large. Optimally, you compute pre-splits that will generate roughly equal-sized HFiles, which can then be mapped into (approximately) equal-size regions, which produces optimal performance.
+
+The `BULK_IMPORT_HFILES` procedure can automatically determine the key which keys to use for splitting the data; this generally produces excellent results. If you already know how your data can be evenly partitioned, you can manually provide the key values or row boundaries for even better performance. The examples later in this document show you how to accomplish this.
+
+### Selecting the Right Data Files Method
 
 To get started, please make sure you know the answers to these basic questions:
 
@@ -169,31 +149,42 @@ To get started, please make sure you know the answers to these basic questions:
                     <li>No</li>
                 </ol>
             </td>
+        <tr>
+            <td>Do you understand your data well enough to know how to split it into approximately evenly-sized partitions?</td>
+            <td><ol>
+                    <li>Yes</li>
+                    <li>No</li>
+                </ol>
+            </td>
+        </tr>
         </tr>
     </tbody>
 </table>
 
-The following table 
+Here are some simple guidelines to quickly guide you to the right choice, based on your answers to those questions:
 
+* If you need constraint checking applied during ingestion, you must choose one of the standard import methods: Import, Upsert, or Merge. Your choice should be based on this criteria:
+  * If you're importing all new data, use `IMPORT_DATA`.
+  * If you are importing updates in addition to new data, then your choice depends on how you want updated records handled:
+      - `UPSERT_DATA` replaces the value of every column in the updated record, using default values (or `NULL` if no default is defined) for any column values not contained in the input data.
+      - `MERGE_DATA` does not replace the value of a column that is not specified in the input data.
 
-Decision Tree(s) Here:
-If your data is in a Spark DataFrame, see  Using the Native Spark DataSource
-If you want to access the data in an external data without copying it into your database, see Using External Tables
-If you are streaming data into your database, see Using Streaming
-IF XXX, see Using Standard Import Procedures
-If YYY, see Using Bulk HFile Loading
+* If you're ingesting a dataset that whose size is less than 10GB or so, there's no need to use bulk HFiles. You can choose whichever standard import method works best for you, as described above.
 
+* If you have a dataset whose size is less than 250GB or so, you should use bulk loading. The least complicated way to do this is to use the automatic splitting feature of `BULK_IMPORT_HFILES`. For enhanced bulk import performance, it may be worth your while to deal with the added complexity of specifying your own pre-split keys or region boundaries.
 
-Using Standard Import Procedures
+No matter which method you decide upon, we strongly recommend debugging your ingest process with a small data sample.
+
+### Using Standard Import Procedures
 You should use one of the standard import procedures, which provide excellent performance,  if any of the following are true:
 * You're importing a small amount of data (data_size <= XXXGB)
 * You need constraint checking applied to the data that you're ingesting
 * You need to update matching records in an existing table
-If none of those factors are true, then you can take advantage of the performance boost provided by bulk HFile ingestion, which is described in the next section.
 
 
-Using Bulk HFile Loading
+## Using Bulk HFile Loading
 If you're using bulk HFile import to ingest a dataset that's less than 300GB, you can simply tell the BULK_HFILE_IMPORT procedure to automatically compute the HFile splits by sampling the data. This is simpler than pre-splitting, and the performance hit due to the extra work of sampling isn't really noticeable for datasets of that size. Our tutorial contains an example of this.
+
 When you use bulk import, Splice Machine temporarily creates temporary HFiles for your data, then ingests the data, and then deletes the temporary HFiles. If you're importing an indexed table, you can and should also use bulk import for ingesting your index.
 For this section, we'll create a table and index with the following DDL:
         CREATE TABLE TPCH.LINEITEM (
@@ -223,7 +214,8 @@ For this section, we'll create a table and index with the following DDL:
             L_EXTENDEDPRICE,
             L_DISCOUNT
         );
-Automatic Splitting
+
+#### Automatic Splitting
 To use Bulk HFile import with automatic splitting, you can follow these steps:
 1. Create a directory on HDFS for the import. For example:
 sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
@@ -236,7 +228,8 @@ If you're familiar enough with your data to do so, specifying how to split your 
 * You can specify how to split your data into HFiles by providing key values that will split your data into roughly equal-sized HFiles.
 * If you have the expertise to do so, you  can specify table row boundaries at which to split your data into roughly equal-sized HFiles.
 Note: Splice Machine recommends that you specify how to split your data whenever possible, as this can dramatically improve ingest performance.
-Specifying Split Keys
+
+#### Specifying Split Keys
 To boost the bulk HFile ingestion performance by pre-splitting, we recommend specifying your own split keys. You do this by:
 1. Create a CSV file that defines the split keys for your data:
    1. Find primary key values that can horizontally split the table into roughly equal-sized partitions
@@ -264,20 +257,24 @@ call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH',
                     null, null, -1, '/BAD', true, null);
 
 
-Specify Row Boundary Splits
+#### Specifying Row Boundary Splits
 If you are comfortable with how HBase and HFiles work, and you're very familiar with how the data you're ingesting can be split into (approximately) evenly-sized regions, you can apply more finely-grained pre-split specifications, as follows[b]:
 1. Create a CSV file that defines the row boundaries.
 2. Call the SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS procedure to split the dataset into HFiles.
 3. Call the BULK_HFILE_IMPORT to import the HFiles into your database.
-Using the Native Spark DataSource
+
+## Ingesting with the Native Spark DataSource  {#sparkadapter}
+The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data.
+
+## Ingesting Streaming Data  {#streaming}
 
 
-Using External Tables
+## Ingesting Data With an External Table  {#externaltable}
 
+## Documentation Links:
 
-Using Streaming
-Documentation Links:
 Our Importing Data Tutorial provides details about and examples of using the available methods for ingesting data.
+
 And our SQL Reference Manual contains reference pages for each of the system procedures discussed in this article:
 * SYSCS_UTIL.IMPORT_DATA
 * SYSCS_UTIL.UPSERT_DATA_FROM_FILE
@@ -286,7 +283,6 @@ And our SQL Reference Manual contains reference pages for each of the system pro
 * SYSCS_UTIL.COMPUTE_SPLIT_KEY
 * SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS
 * SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX
-[a]GENE: formatting is getting to the point where it's costing me a lot of time to use google docs instead of jekyll. I'll switch to Jekyll after we meet on this.
-[b]Not sure if we want to elaborate on this option.
+
 </div>
 </section>
