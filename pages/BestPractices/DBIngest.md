@@ -120,49 +120,60 @@ Splice Machine provides several different methods for ingesting data; which one 
 
 ## Selecting the Right Ingest Method  {#method}
 Which method you should use to ingest your data depends on a number of factors. This section will help guide your decision.
-We'll start with the following simple decision tree, which will steer you in the right direction. And then we'll delve more deeply into selecting the right method for your exact situation. To determine the best method, you'll need to have answers to the following questions:
-Question
-	Possible Values
-	Where is your data coming from?
-	1. In a Splice Machine database in another cluster
-2. In a static flat file:
-   1. In HDFS on a node in your cluster
-   2. In an S3 bucket on AWS
-   3. In BLOB storage on Azure
-1. In a Spark DataFrame
-2. In another database
-3. Real-time streaming from devices
-	Do you want to access this data as an external table?
-	1. Yes
-2. No
-	How frequently will you be ingesting the data from here?
-	1. One-time only
-2. Regularly: hourly / daily / weekly
-3. Periodically: monthly / quarterly /annually
-4. Constant streaming
-	How large is the dataset you want to be ingesting
-	1. Small: < xx GB
-2. Medium:
-3. Large:
-4. Extra-large:
-	Do you need to update existing records during ingestion?
-	1. Yes
-2. No
-	Do you need constraint checking applied during ingestion?
-	1. Yes
-2. No
-	Is boosted performance important for ingesting this data?
-	1. Yes
-   1. Do you understand how to split your data to yield evenly-sized regions?
-      1. Yes
-      2. No
-1. No
-	Is your database configured for security?
-	1. Kerberos
-2. LDAP
-3. Ranger
-4.
 
+Let's start with how you plan to get at your data:
+
+* If you want to stream the data into Splice Machine, please jump to the [Ingest Streaming Data](#streaming) section.
+* If you want to access the data as an external table, please jump to the [Using an External Table](#externaltable) section.
+* Otherwise, continue on to our [Standard Import](#standard) section.
+
+### Selecting the Right Standard Import Method
+
+To get started, please make sure you know the answers to these basic questions:
+
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Typical Values</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Where will your data be accessed?</td>
+            <td><ol>
+                    <li>In HDFS on a node in your cluster</li>
+                    <li>On a local computer</li>
+                    <li>In an S3 bucket on AWS</li>
+                    <li>In BLOB storage on Azure</li>
+                    <li>In a Spark DataFrame</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td>What's the approximate size of the data?</td>
+            <td><ol>
+                    <li>size < 10GB</li>
+                    <li>size < 100GB</li>
+                    <li>size < 500GB</li>
+                    <li>size >= 500GB</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td>Do you need constraint checking applied as the data is inserted into your database?</td>
+            <td><ol>
+                    <li>Yes</li>
+                    <li>No</li>
+                </ol>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+The following table 
 
 
 Decision Tree(s) Here:
