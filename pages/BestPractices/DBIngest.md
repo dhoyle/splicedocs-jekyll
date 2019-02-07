@@ -14,28 +14,33 @@ folder: BestPractices/Database
 # ﻿Best Practices: Ingesting Data
 This topic provides an overview and examples of the different methods you can use to ingest data into your Splice Machine database, and guides you to using the best option for ingesting *your* data.
 
-## Selecting the Right Ingest Method  {#method}
-Which method you should use to ingest your data depends on a number of factors. This section will help guide your decision.
+## Selecting the Right Ingest Method
+Which method is best for ingesting your data depends on a number of factors. This section will help guide your decision.
 
 Let's start with how you plan to get at your data:
 
-* If you have data in a Spark DataFrame, see the section about [Ingesting with the Native Spark DataSource](#sparkadapter), which allows you to insert data directly from a DataFrame into your database, providing great performance by eliminating the need to serialize and deserialize the data.
-* If you want to stream the data into Splice Machine, please jump to the [Ingesting Streaming Data](#streaming) section.
-* If you want to access the data as an external table, please jump to the [Ingesting Data With an External Table](#externaltable) section.
-* Otherwise, continue on to our [Importing Data Files](#datafiles) section.
+* If you have data in a Spark DataFrame, see the section about [Ingesting with the Splice Machine Native Spark DataSource](#sparkadapter), which allows you to insert data directly from a DataFrame into your database, providing great performance by eliminating the need to serialize and deserialize the data.
+
+* If you want to stream the data into Splice Machine, please skip ahead to the [Ingesting Streaming Data](#streaming) section.
+
+* If you want to access the data as an external table, please skip ahead to the [Ingesting Data With an External Table](#externaltable) section.
+
+* Otherwise, continue on to our [Importing Data Files](#datafiles) section, below.
 
 ## Importing Data Files  {#datafiles}
 
-Splice Machine provides two major pathways for importing data and indexes from files (typically in CSV format) into your database: standard import and bulk HFile import; each pathway has different variations that use different system procedures. The following table summarizes some of the pros and cons of using each variation:
+Splice Machine provides two major pathways for importing data and indexes from files into your database: standard import and bulk HFile import; each pathway has different variations that use different system procedures. The following table summarizes some of the pros and cons of using each variation:
 
 <table>
+    <col width="10%" />
     <col width="24%" />
-    <col width="14%" />
-    <col width="14%" />
-    <col width="24%" />
-    <col width="24%" />
+    <col width="10%" />
+    <col width="10%" />
+    <col width="23%" />
+    <col width="23%" />
     <thead>
         <tr>
+            <th>Type</th>
             <th>Import Method</th>
             <th>Complexity</th>
             <th>Performance</th>
@@ -45,11 +50,12 @@ Splice Machine provides two major pathways for importing data and indexes from f
     </thead>
     <tbody>
         <tr>
+            <td rowspan="3">Standard</td>
             <td><code>IMPORT_DATA</code></td>
             <td>Low</td>
             <td>Standard</td>
             <td><p>Constraint checking</p>
-                <p>Best for small datasets</p>
+                <p>Best for pulling in small datasets of new records</p>
             </td>
             <td><p>Slow for very large datasets</p></td>
         </tr>
@@ -72,26 +78,27 @@ Splice Machine provides two major pathways for importing data and indexes from f
             <td><p>Slow for very large datasets</p></td>
         </tr>
         <tr>
-            <td><code>BULK_IMPORT_HFILE</code> with<br />automatic Splitting</td>
+            <td rowspan="3"><code>BULK_IMPORT_HFILE</code></td>
+            <td>Automatic splitting</td>
             <td>Moderate</td>
             <td>Medium</td>
             <td>Enhanced performance</td>
             <td>No constraint checking</td>
         </tr>
         <tr>
-            <td><code>BULK_IMPORT_HFILE</code> with<br />pre-Split Keys</td>
+            <td>Keys supplied for splitting</td>
             <td>High</td>
             <td>High</td>
-            <td>Better performance</td>
+            <td>Better performance, especially for extermely large datasets</td>
             <td><p>No constraint checking</p>
                 <p>Must specify split keys for input data</p>
             </td>
         </tr>
         <tr>
-            <td><code>BULK_IMPORT_HFILE</code> with<br />pre-Split Row Boundaries</td>
+            <td>Row boundaries supplied for splitting</td>
             <td>Very High</td>
             <td>Best</td>
-            <td>Best performance, especially for extremely large datasets</td>
+            <td>Best performance for extremely large datasets</td>
             <td><p>No constraint checking</p>
                 <p>Must specify row boundaries for splitting input data</p>
             </td>
@@ -99,11 +106,11 @@ Splice Machine provides two major pathways for importing data and indexes from f
     </tbody>
 </table>
 
-### About Pre-Splitting Data
+### Pre-Splitting Data for Bulk Import
 
-When you use the `BULK_IMPORT_HFILE` procedure to import your data, your input dataset is split into temporary HBase HFiles, then imported into your database. When the process is done, the temporary files are deleted.
+When you use the `BULK_IMPORT_HFILE` procedure to import your data, your input dataset is split into temporary HBase HFiles, then imported into your database. When the process is done, the temporary files are deleted. This approach can yield significant performance boosts, especially for large datasets. Why? Because when splits are specified for the input dataset, Splice Machine can pre-split the data into HFiles and take advantage of the bulk loading mechanism in HBase.
 
-This approach can yield significant performance boosts, especially for large datasets. Why? Because when splits are specified for the input dataset, Splice Machine can pre-split the data into HFiles and take advantage of the bulk loading mechanism in HBase. Pre-splitting is the process of preparing and loading HFiles (HBase’s own file format) directly into the RegionServers, thus bypassing the write path; this requires significantly less resources, reduces latency, and avoids frequent garbage collection, all of which can occur when importing un-split datasets, especially when they're very large. Optimally, you compute pre-splits that will generate roughly equal-sized HFiles, which can then be mapped into (approximately) equal-size regions, which produces optimal performance.
+Pre-splitting is the process of preparing and loading HFiles (HBase’s own file format) directly into the RegionServers, thus bypassing the write path; this requires significantly less resources, reduces latency, and avoids frequent garbage collection, all of which can occur when importing un-split datasets, especially when they're very large. Optimally, you compute pre-splits that will generate roughly equal-sized HFiles, which can then be mapped into (approximately) equal-size regions, which produces optimal performance.
 
 The `BULK_IMPORT_HFILES` procedure can automatically determine the key which keys to use for splitting the data; this generally produces excellent results. If you already know how your data can be evenly partitioned, you can manually provide the key values or row boundaries for even better performance. The examples later in this document show you how to accomplish this.
 
@@ -117,7 +124,7 @@ To get started, please make sure you know the answers to these basic questions:
     <thead>
         <tr>
             <th>Question</th>
-            <th>Typical Values</th>
+            <th>Typical Answers</th>
         </tr>
     </thead>
     <tbody>
@@ -128,17 +135,16 @@ To get started, please make sure you know the answers to these basic questions:
                     <li>On a local computer</li>
                     <li>In an S3 bucket on AWS</li>
                     <li>In BLOB storage on Azure</li>
-                    <li>In a Spark DataFrame</li>
                 </ol>
             </td>
         </tr>
         <tr>
             <td>What's the approximate size of the data?</td>
             <td><ol>
-                    <li>size < 10GB</li>
-                    <li>size < 100GB</li>
-                    <li>size < 500GB</li>
-                    <li>size >= 500GB</li>
+                    <li>10GB</li>
+                    <li>100GB</li>
+                    <li>500GB</li>
+                    <li>1TB</li>
                 </ol>
             </td>
         </tr>
@@ -150,7 +156,7 @@ To get started, please make sure you know the answers to these basic questions:
                 </ol>
             </td>
         <tr>
-            <td>Do you understand your data well enough to know how to split it into approximately evenly-sized partitions?</td>
+            <td>Do you know your data well enough to understand how to split it into approximately evenly-sized partitions?</td>
             <td><ol>
                     <li>Yes</li>
                     <li>No</li>
@@ -265,6 +271,8 @@ If you are comfortable with how HBase and HFiles work, and you're very familiar 
 
 ## Ingesting with the Native Spark DataSource  {#sparkadapter}
 The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data.
+
+You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Zeppelin notebooks.
 
 ## Ingesting Streaming Data  {#streaming}
 
