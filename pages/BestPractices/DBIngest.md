@@ -119,8 +119,8 @@ The `BULK_IMPORT_HFILES` procedure can automatically determine the key which key
 To get started, please make sure you know the answers to these basic questions:
 
 <table>
-    <col />
-    <col />
+    <col width="55%" />
+    <col width="45%" />
     <thead>
         <tr>
             <th>Question</th>
@@ -130,54 +130,81 @@ To get started, please make sure you know the answers to these basic questions:
     <tbody>
         <tr>
             <td>Where will your data be accessed?</td>
-            <td><ol>
+            <td><ul class="bullet">
                     <li>In HDFS on a node in your cluster</li>
                     <li>On a local computer</li>
                     <li>In an S3 bucket on AWS</li>
                     <li>In BLOB storage on Azure</li>
-                </ol>
+                </ul>
             </td>
         </tr>
         <tr>
-            <td>What's the approximate size of the data?</td>
-            <td><ol>
+            <td>What's the size range of the data?</td>
+            <td><ul class="bullet">
                     <li>10GB</li>
                     <li>100GB</li>
                     <li>500GB</li>
                     <li>1TB</li>
-                </ol>
+                </ul>
             </td>
         </tr>
         <tr>
             <td>Do you need constraint checking applied as the data is inserted into your database?</td>
-            <td><ol>
+            <td><ul class="bullet">
                     <li>Yes</li>
                     <li>No</li>
-                </ol>
+                </ul>
             </td>
         <tr>
             <td>Do you know your data well enough to understand how to split it into approximately evenly-sized partitions?</td>
-            <td><ol>
+            <td><ul class="bullet">
                     <li>Yes</li>
                     <li>No</li>
-                </ol>
+                </ul>
             </td>
         </tr>
         </tr>
     </tbody>
 </table>
 
-Here are some simple guidelines to quickly guide you to the right choice, based on your answers to those questions:
+Here are some simple guidelines to quickly guide you to the right choice, based on your answers to the above questions:
 
-* If you need constraint checking applied during ingestion, you must choose one of the standard import methods: Import, Upsert, or Merge. Your choice should be based on this criteria:
-  * If you're importing all new data, use `IMPORT_DATA`.
-  * If you are importing updates in addition to new data, then your choice depends on how you want updated records handled:
-      - `UPSERT_DATA` replaces the value of every column in the updated record, using default values (or `NULL` if no default is defined) for any column values not contained in the input data.
-      - `MERGE_DATA` does not replace the value of a column that is not specified in the input data.
 
-* If you're ingesting a dataset that whose size is less than 10GB or so, there's no need to use bulk HFiles. You can choose whichever standard import method works best for you, as described above.
+<table class="noBorder">
+    <col width = "50%"/>
+    <col width = "50%"/>
+    <tbody>
+        <tr>
+            <th>Your Requirement</th>
+            <th>How to Ingest Your Data</th>
+        </tr>
+        <tr>
+            <td>If you need constraint checking as the data is imported into your database, or if the size of your dataset is less than 10GB:</td>
+            <td><p>Use a <em>standard import method</em>; choose which based on the following:</p>
+                <ul>
+                    <li>If you're importing all new data, use <code>IMPORT_DATA</code>.</li>
+                    <li><p>If you are importing updates in addition to new data, then your choice depends on how you want updated records handled:</p>
+                        <ul class="bullet">
+                            <li><code>UPSERT_DATA_FROM_FILE</code>.</li>
+                            <li><code>MERGE_DATA_FROM_FILE</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>See the XXX section below for examples.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>If you have a dataset whose size is between 10GB and XXXGB:</td>
+            <td>Use bulk import with automatic splitting, letting <code>BULK_IMPORT_HFILES</code> sample the data and perform the splitting.</td>
+        </tr>
+        <tr>
+            <td>STARTHERE:  .</td>
 
-* If you have a dataset whose size is less than 250GB or so, you should use bulk loading. The least complicated way to do this is to use the automatic splitting feature of `BULK_IMPORT_HFILES`. For enhanced bulk import performance, it may be worth your while to deal with the added complexity of specifying your own pre-split keys or region boundaries.
+            <td>XXX</td>
+        </tr>
+    </tbody>
+</table>
+
 
 No matter which method you decide upon, we strongly recommend debugging your ingest process with a small data sample.
 
