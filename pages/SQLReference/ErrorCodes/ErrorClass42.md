@@ -1218,11 +1218,11 @@ folder: SQLReference/ErrorCodes
                     </tr>
                     <tr>
                         <td><code>42ZB1</code></td>
-                        <td>Parameter style DERBY_JDBC_RESULT_SET is only allowed for table functions.</td>
+                        <td>Parameter style SPLICE_JDBC_RESULT_SET is only allowed for table functions.</td>
                     </tr>
                     <tr>
                         <td><code>42ZB2</code></td>
-                        <td>Table functions can only have parameter style DERBY_JDBC_RESULT_SET.</td>
+                        <td>Table functions can only have parameter style SPLICE_JDBC_RESULT_SET.</td>
                     </tr>
                     <tr>
                         <td><code>42ZB3</code></td>
