@@ -57,9 +57,10 @@ The following table shows the contents of the `SYSTABLES` system table.
                             <p class="noSpaceAbove">Possible values are:</p>
                             <ul>
                                 <li><code>'S'</code> (system table)</li>
-                                <li> <code>'T'</code> (user table)</li>
-                                <li> <code>'A'</code> (synonym)</li>
-                                <li> <code>'V'</code> (view)</li>
+                                <li><code>'T'</code> (user table)</li>
+                                <li><code>'A'</code> (synonym)</li>
+                                <li><code>'V'</code> (view)</li>
+                                <li><code>'E'</code> (external table)</li>
                             </ul>
                         </td>
                     </tr>
@@ -99,4 +100,3 @@ The following table shows the contents of the `SYSTABLES` system table.
 
 </div>
 </section>
-
