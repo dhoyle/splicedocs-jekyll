@@ -191,11 +191,11 @@ parameterStyle
 {: .paramName}
 
 <div class="fcnWrapperWide" markdown="1">
-    JAVA | DERBY_JDBC_RESULT_SET
+    JAVA | SPLICE_JDBC_RESULT_SET
 {: .FcnSyntax}
 
 </div>
-Only use `DERBY_JDBC_RESULT_SET` if this is a Splice Machine-style table
+Only use `SPLICE_JDBC_RESULT_SET` if this is a Splice Machine-style table
 function that returns a [TableType](#TableType) result, and is mapped to
 a Java method that returns a JDBC *ResultSet*.
 {: .paramDefnFirst}
