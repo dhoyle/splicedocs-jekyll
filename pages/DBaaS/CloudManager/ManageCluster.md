@@ -27,7 +27,13 @@ You can access the <span class="ConsoleLink">Cluster Management</span>
 screen for any cluster in your Dashboard by simply clicking the name of
 the cluster.
 
-This screen displays information about the cluster, and includes three
+This screen includes three tabs that you can use to display information about the cluster:
+
+* The *Activity* tab displays usage statistics.
+* The *Events* tab displays (filtered) event information
+* The *Log Details* tab displays (filtered) log entries
+
+and includes three
 panels that display a graph of resource usage over time. There are three
 similar resource usage graphs displayed:
 

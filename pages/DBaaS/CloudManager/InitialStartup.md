@@ -26,7 +26,7 @@ to:
 
 1.  [Configure Cluster Parameters](#Configure) for data sizing, cluster
     power, and backup frequency.
-2.  [Configure Cluster Access](#Configur) for your users.
+2.  [Configure Cluster Access and Options](#Configur) for your users.
 3.  [Set Up Payment](#Payment) for your Splice Machine cluster.
 4.  Start Using Splice Machine!
 
@@ -55,6 +55,11 @@ Many of the components of the <span class="ConsoleLink">Create
 Cluster</span> screen, like most of our Cloud Manager screens, include
 small information buttons ![](images/infobutton.png){: .icon36} that you
 can click to display a small pop-up that describes the components.
+
+For example, here are the pop-ups from the <span class="ConsoleLink">Create New Cluster</span> screen:
+![](images/CreateClusterPopups.png "Create Cluster screen Pop-ups"){: .indentedTightSpacing}
+
+Click the button again to dismiss a pop-up.
 
 ### About the Cluster Parameters
 
@@ -99,16 +104,22 @@ future, so you're not stuck forever with your initial settings.
                        </td>
                    </tr>
                    <tr>
-                       <td rowspan="2" class="ConsoleLink">Cluster Power</td>
+                       <td rowspan="3" class="ConsoleLink">Cluster Power</td>
                        <td><code>OLTP Splice Units</code></td>
                        <td>
-                           <p>Move the slider to modify your estimate of how much processing power you need for transactional query processing. More OLTP units means more region servers in your cluster.</p>
+                           <p>Move the slider to modify your estimate of how much processing power you need for transactional activity, involving quick inserts, lookups, updates, and deletes. More OLTP units means more region servers in your cluster.</p>
                        </td>
                    </tr>
                    <tr>
                        <td><code>OLAP Splice Units</code></td>
                        <td>
-                           <p>Move the slider to modify your estimate of how much processing power you need for analytical query processing. More OLAP units means more Spark executors.</p>
+                           <p>Move the slider to modify your estimate of how much processing power you need for running longer queries, typically analytical queries. More OLAP units means more Spark executors.</p>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td><code>Notebook Spark Units</code></td>
+                       <td>
+                           <p>Move the slider to modify your estimate of how many Spark units should be utilized by the Splice Machine Native Spark Datasource and other external uses of Spark libraries, such as MLlib.</p>
                        </td>
                    </tr>
                    <tr>
@@ -166,15 +177,15 @@ If you don't correct the required setting and attempt to advance to the
 message and will be unable to advance until you do correct it.
 {: .noteNote}
 
-## Configure Cluster Access   {#Configur}
+## Configure Cluster Access and Options   {#Configur}
 
 Once you've configured your cluster, click the <span
 class="CalloutFont">Next</span> button to display the <span
-class="ConsoleLink">Cluster Access</span> screen. The following image
+class="ConsoleLink">Cluster Access and Options</span> screen. The following image
 includes displays of the pop-up help information displays for the
 different access methods:
 
-![](images/CreateNewCluster4.png "Setting up VPC and/or IAM for a new
+![](images/CreateNewCluster4.png "Setting up access and options for a new
 cluster"){: .indentedTightSpacing}
 
 You can set your cluster up for access to your Amazon Virtual Private
@@ -194,7 +205,17 @@ For more information about Amazon IAM, see
 [https://aws.amazon.com/iam/][2]{: target="_blank"}.
 
 </div>
-After setting up any access methods, please confirm that you `accept our
+
+You can change the number of Zeppelin instances available on your cluster, and you can adjust
+how much Java memory is allocated for the Spark Interpreter in each instance. Multiple Zeppelin instances allow multiple users to develop and run notebooks independently.
+
+You can also add (at an additional cost) our *Machine Learning Manager*) to your
+cluster by clicking the <span class="CalloutFont">Enable button</span> in the <span
+class="ConsoleLink">ML Manager</span> section at the bottom of this screen. The Splice Machine ML Manager
+facilitates machine learning development by integrating MLflow, Amazon Sagemaker deployment, additional Machine Learning
+libraries, and our database together.
+
+After setting up any options and access methods, please confirm that you `accept our
 terms and conditions`, then click the <span
 class="CalloutFont">Launch</span> button, which will take you to the
 <span class="ConsoleLink">Payment</span> screen, unless you've
