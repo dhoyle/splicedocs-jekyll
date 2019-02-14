@@ -54,9 +54,70 @@ Where the data that you're ingesting is coming from defines which approach you s
 
 
 ## Ingesting with the Native Spark DataSource  {#sparkadapter}
-The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data.
+The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Zeppelin notebooks.
 
-You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Zeppelin notebooks.
+### Notebook Example of The Native Spark DataSource
+
+This section presents a simple Zeppelin notebook example of moving data between a Spark DataFrame and a Splice Machine table in these steps:
+
+1.  Create the context:
+
+    Using the `%spark` interpreter in Zeppelin, create an instance of the `SplicemachineContext` class; this class interacts with your Splice Machine cluster in your Spark executors, and provides the methods that you can use to perform operations such as directly inserting into your database from a DataFrame:
+
+    ```
+    %spark
+    import com.splicemachine.spark.splicemachine._
+    import com.splicemachine.derby.utils._
+
+    val JDBC_URL = "jdbc:splice://:1527/splicedb;user=;password="
+    val splicemachineContext = new SplicemachineContext(JDBC_URL)
+
+    import com.splicemachine.spark.splicemachine._
+    import com.splicemachine.derby.utils._
+    JDBC_URL: String = jdbc:splice://:1527/splicedb;user=;password=
+    splicemachineContext: com.splicemachine.spark.splicemachine.splicemachineContext = com.splicemachine.spark.splicemachine.SplicemachineContext@5f88ac02
+    ```
+    {: .Example}
+
+2.  Create a DataFrame in Scala and populate it:
+
+    ```
+    %spark
+    val carsDF = Seq(
+       (1, "Toyota", "Camry"),
+       (2, "Honda", "Accord"),
+       (3, "Subaru", "Impreza"),
+       (4, "Chevy", "Volt")
+    ).toDF("NUMBER", "MAKE", "MODEL")
+    ```
+    {: .Example}
+
+    Though this DataFrame contains only a very small amount of data, the code in this example can be scaled to DataFrames of any size.
+
+3.  Create a Table in your Splice Machine Database
+
+    Now we'll create a simple table in our database, using the `%splicemachine` interpreter in Zeppelin:
+
+    ```
+    %splicemachine
+    create table mySchema.carsTbl ( number int primary key,
+                                    make  varchar(20),
+                                    model varchar(20) );
+    ```
+    {: .Example}
+
+4.  Populate the Database Table from the DataFrame:
+
+    To ingest all of the data in the DataFrame into your database, simply use the `Insert` method of the Spark Adapter:
+
+    ```
+    %spark
+    splicemachineContext.insert( carsDF, "mySchema.carsTbl");
+    ```
+    {: .Example}
+
+    Ingesting data in this way is extremely performant because it requires no serialization or deserialization and works with any Spark DataFrame. You can also use the Native Spark DataSource to quickly query your database, and to update or delete records.
+    {: .noteImportant}
 
 ## Ingesting Streaming Data  {#streaming}
 
