@@ -57,9 +57,10 @@ small information buttons ![](images/infobutton.png){: .icon36} that you
 can click to display a small pop-up that describes the components.
 
 For example, here are the pop-ups from the <span class="ConsoleLink">Create New Cluster</span> screen:
+
 ![](images/CreateClusterPopups.png "Create Cluster screen Pop-ups"){: .indentedTightSpacing}
 
-Click the button again to dismiss a pop-up.
+Click the information button again to dismiss a pop-up.
 
 ### About the Cluster Parameters
 
