@@ -20,7 +20,9 @@ Splice Machine dashboard, which include:
 
 ## Viewing and Managing Your Clusters   {#viewing}
 Your dashboard displays a list of the clusters that you've created, along with the status of each:
+
 ![](images/DashboardView1.png){: .indentedTightSpacing}
+{: .spaceAbove}
 
 CPU, Memory, and Disk usage statistics are displayed for the currently selected cluster (in this case *mlmanager*). Simply click or tap a cluster name to display its usage information.
 
@@ -28,6 +30,7 @@ CPU, Memory, and Disk usage statistics are displayed for the currently selected 
 When you first log in to your Splice Machine Database Service, you'll see a large indication that you need to create a new cluster before you can do anything:
 
 ![](images/InitialDashboard.png){: .indentedTightSpacing}
+{: .spaceAbove}
 
 Click the large <span class="ConsoleLink">Create New Cluster</span>
 button to start the process of creating a new cluster. This process,
@@ -38,6 +41,7 @@ After you've created a new cluster, you land back on this Dashboard screen,
 at which time the status of your new cluster will be *Initializing*.
 
 ![](images/JustCreatedDashboard.png){: .indentedTightSpacing}
+{: .spaceAbove}
 
 After a few minutes, your new cluster will be initialized, its status will change to *Active*,
 and you'll receive an email message from Splice Machine notifying you that

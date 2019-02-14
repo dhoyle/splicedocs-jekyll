@@ -98,16 +98,16 @@ The bottom of the <span class="ConsoleLink">Cluster Management</span> screen inc
 {: .spaceAbove}
 
 You can:
-* Copy a basic JDBC connection URL to your cluster's database.
-
-  The same JDBC URL was emailed to you in the message from Splice Machine
-  letting you know that your cluster creation was successful.
-  {: .noteIcon}
 
 * Launch the  <span class="CalloutFont">Spark Console</span> in a separate browser tab.
 * Download the Splice Machine <span class="CalloutFont">ODBC Driver</span>.
 * Download the Splice Machine <span class="CalloutFont">JDBC Driver</span>.
 * Download the Splice Machine <span class="CalloutFont">SqlShell</span> command line client.
+* Copy a basic JDBC connection URL to your cluster's database.
+
+  The same JDBC URL was emailed to you in the message from Splice Machine
+  letting you know that your cluster creation was successful.
+  {: .noteIcon}
 
 </div>
 </section>
