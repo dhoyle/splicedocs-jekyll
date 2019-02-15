@@ -27,6 +27,12 @@ The table below links to instructions for installing Splice Machine. We recommen
         </tr>
     </thead>
     <tbody>
+    https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.16.1/docs/CDH-installation.md
+        <tr>
+            <td rowspan="10"><strong>2.7</strong></td>
+            <td>CDH 5.16.1</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.16.1/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.16.1/docs/CDH-installation.md</a></td>
+        </tr>
         <tr>
             <td rowspan="10"><strong>2.7</strong></td>
             <td>CDH 5.14.2</td>
