@@ -60,7 +60,7 @@ The *Splice Machine Native Spark DataSource* allows you to directly insert data 
 
 This section presents a simple Zeppelin notebook example of moving data between a Spark DataFrame and a Splice Machine table in these steps:
 
-1.  Create the context:
+1.  __Create the context:__
 
     Using the `%spark` interpreter in Zeppelin, create an instance of the `SplicemachineContext` class; this class interacts with your Splice Machine cluster in your Spark executors, and provides the methods that you can use to perform operations such as directly inserting into your database from a DataFrame:
 
@@ -69,17 +69,12 @@ This section presents a simple Zeppelin notebook example of moving data between 
     import com.splicemachine.spark.splicemachine._
     import com.splicemachine.derby.utils._
 
-    val JDBC_URL = "jdbc:splice://:1527/splicedb;user=;password="
+    val JDBC_URL = "jdbc:splice://<yourJDBCUrl>:1527/splicedb;user=<yourUserId>;password=<yourPassword>"
     val splicemachineContext = new SplicemachineContext(JDBC_URL)
-
-    import com.splicemachine.spark.splicemachine._
-    import com.splicemachine.derby.utils._
-    JDBC_URL: String = jdbc:splice://:1527/splicedb;user=;password=
-    splicemachineContext: com.splicemachine.spark.splicemachine.splicemachineContext = com.splicemachine.spark.splicemachine.SplicemachineContext@5f88ac02
     ```
     {: .Example}
 
-2.  Create a DataFrame in Scala and populate it:
+2.  __Create a DataFrame in Scala and populate it:__
 
     ```
     %spark
@@ -94,7 +89,7 @@ This section presents a simple Zeppelin notebook example of moving data between 
 
     Though this DataFrame contains only a very small amount of data, the code in this example can be scaled to DataFrames of any size.
 
-3.  Create a Table in your Splice Machine Database
+3.  __Create a Table in your Splice Machine Database__
 
     Now we'll create a simple table in our database, using the `%splicemachine` interpreter in Zeppelin:
 
@@ -106,7 +101,7 @@ This section presents a simple Zeppelin notebook example of moving data between 
     ```
     {: .Example}
 
-4.  Populate the Database Table from the DataFrame:
+4.  __Populate the Database Table from the DataFrame:__
 
     To ingest all of the data in the DataFrame into your database, simply use the `Insert` method of the Spark Adapter:
 
@@ -121,8 +116,21 @@ This section presents a simple Zeppelin notebook example of moving data between 
 
 ## Ingesting Streaming Data  {#streaming}
 
+This section presents two versions of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps: one version that runs in a Zeppelin notebook, and a second version that runs via spark-submit.
+
+### Notebook Example of  Spark Streaming
+This section presents the Zeppelin version of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps.
+
+**************** NEED EXAMPLE HERE ******************
+
+### Spark-submit Example of  Spark Streaming
+This section presents the spark-submit version of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps.
+
+**************** NEED EXAMPLE HERE ******************
 
 ## Ingesting Data With an External Table  {#externaltable}
+
+**************** NEED EXAMPLE HERE ******************
 
 
 ## Importing Data Files  {#datafiles}
@@ -267,7 +275,7 @@ No matter which method you decide upon, we strongly recommend debugging your ing
 {: .noteIcon}
 
 ## Standard Data File Import Examples  {#standardexamples}
-XXXXXXXXXx
+This section includes by summarizing the parameters that are common to all of the built-in system procedures for importing data, and then presents an example that shows the use of and contrasts the results of importing data into a table with each of the three *standard import* methods.
 
 ### The Common Ingest Procedure Parameters  {#table1}
 All of the Splice Machine standard import procedures use these same parameter values:
@@ -338,6 +346,7 @@ All of the Splice Machine standard import procedures use these same parameter va
     </tbody>
 </table>
 
+### Example: Comparing the Standard File Import Methods
 Follow the steps in this example to contrast how `IMPORT_DATA`, `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA` work:
 
 1.  __Create 3 simple tables, `testImport`, `testUpsert`, and `testMerge`:__
@@ -509,7 +518,15 @@ Our SQL Reference Manual includes reference pages for each of these system proce
 
 ## Bulk HFile Import Examples  {#standardexamples}
 
-This section presents examples of using the `BULK_IMPORT_HFILE` procedure.
+This section  starts with a discussion of pre-splitting your input data, and then presents these examples of using the `BULK_IMPORT_HFILE` procedure:
+
+* [Bulk Import with Sampled Splitting](#bulksampled)
+* [Bulk Import with Key Value Pre-Splits](#bulksplitkeys)
+* [Bulk Import with Row Pre-Splits](#bulksplitrows)
+
+You can also use bulk HFiles to speed up performance of the `INSERT` statement, as shown in the [Bulk Insert](#bulkinsert) example.
+{: .noteNote}
+
 
 ### About Pre-Splitting Data for Bulk Import
 
@@ -654,7 +671,7 @@ If you don't get the performance you're hoping from with sampled bulk import, yo
     Note that the final parameter, `skipSampling` is `true` in the above call; this tells `BULK_IMPORT_HFILE` that the data has already been pre-split into HFiles.
 
 
-#### Example: Bulk Import with Row Pre-Splits  {#bulksplitrows}
+### Example: Bulk Import with Row Pre-Splits  {#bulksplitrows}
 
 If you're comfortable with how HBase and HFiles work, and you're very familiar with how the data you're ingesting can be split into (approximately) evenly-sized regions, you can apply more finely-grained pre-split specifications, as follows:
 
@@ -662,8 +679,45 @@ If you're comfortable with how HBase and HFiles work, and you're very familiar w
 2. Call the SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS procedure to split the dataset into HFiles.
 3. Call the BULK_HFILE_IMPORT to import the HFiles into your database.
 
-Specifying row boundaries requires significant expertise. We recommend XXXXXXX
+Specifying row boundaries requires significant expertise. We only recommend using this approach when supplying split keys does not yield the performance you require.
 {: .noteIcon}
+
+### Example: Bulk Insert  {#bulkinsert}
+
+Splice Machine allows you to specify [optimization hints](#developers_tuning_queryoptimization.html); one of these *hints*, `bulkImportDirectory` can be used to perform bulk loading with the SQL `INSERT` statement.
+
+Here's a simple example:
+
+    ```
+    DROP TABLE IF EXISTS myUserTbl;
+    CREATE TABLE myUserTbl AS SELECT
+        user_id,
+        report_date,
+        type,
+        region,
+        country,
+        access,
+        birth_year,
+        gender,
+        product,
+        zipcode,
+        licenseID
+    FROM licensedUserInfo
+    WITH NO DATA;
+
+
+    INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
+    useSpark=true,
+    skipSampling=false
+    SELECT * FROM licensedUserInfo;
+    ```
+    {: .Example}
+
+When you use `bulkImportDirectory` with the `INSERT` statement, you must also specify these two hints:
+{: .spaceAbove}
+
+* `useSpark=true`, since Splice Machine uses Spark to generate the HFiles
+* `skipSampling`: set this to `false` to indicate that Splice Machine should sample the data that you're inserting to determine how to split it into HFiles; set it to `true` to indicate that the data you're inserting has already been split into HFiles.
 
 
 ## Documentation Links:
