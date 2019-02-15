@@ -75,75 +75,87 @@ future, so you're not stuck forever with your initial settings.
 {: .noteNote}
 
 <table>
-               <col />
-               <col />
-               <col />
-               <tbody>
-                   <tr>
-                       <td> </td>
-                       <td><code>Cluster Name</code></td>
-                       <td>Supply whatever name you want for your Splice Machine cluster.</td>
-                   </tr>
-                   <tr>
-                       <td> </td>
-                       <td><code>Region</code></td>
-                       <td>You can select in which AWS region your cluster will reside by clicking the previously selected region name, which drops down a list of choices.</td>
-                   </tr>
-                   <tr>
-                       <td rowspan="2" class="ConsoleLink">Data Sizing</td>
-                       <td><code>Internal Dataset (TB)</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how large your database will be.</p>
-                           <p><code>Internal Dataset</code> is the amount of data that you will be storing within your Splice Machine database.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td><code>External Dataset (TB)</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how large your external dataset will be.</p>
-                           <p><code>External Dataset</code> is the amount of data the you will be accessing from external data sources, using features such as external tables and our virtual table interface.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td rowspan="3" class="ConsoleLink">Cluster Power</td>
-                       <td><code>OLTP Splice Units</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how much processing power you need for transactional activity, involving quick inserts, lookups, updates, and deletes. More OLTP units means more region servers in your cluster.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td><code>OLAP Splice Units</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how much processing power you need for running longer queries, typically analytical queries. More OLAP units means more Spark executors.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td><code>Notebook Spark Units</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how many Spark units should be utilized by the Splice Machine Native Spark Datasource and other external uses of Spark libraries, such as MLlib.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td class="ConsoleLink">Backup Frequency</td>
-                       <td><code>Frequency</code></td>
-                       <td>
-                           <p>Select how frequently you want Splice Machine to back up your database. You can select <code>Hourly</code>, <code>Daily</code>, or <code>Weekly</code>; each selection displays additional backup timing and retention options:</p>
-                           <p>Hourly:</p>
-                           <p>
-                               <img src="images/HourlyBackupOptions_450x78.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 78;" />
-                           </p>
-                           <p>Daily:</p>
-                           <p>
-                               <img src="images/DailyBackupOptions_450x68.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 68;" />
-                           </p>
-                           <p>Weekly:</p>
-                           <p>
-                               <img src="images/WeeklyBackupOptions_450x67.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 67;" />
-                           </p>
-                       </td>
-                   </tr>
-               </tbody>
-           </table>
+   <col />
+   <col />
+   <col />
+   <tbody>
+       <tr>
+           <td> </td>
+           <td><code>Cluster Name</code></td>
+           <td>Supply whatever name you want for your Splice Machine cluster.</td>
+       </tr>
+       <tr>
+           <td> </td>
+           <td><code>Region</code></td>
+           <td>You can select in which AWS region your cluster will reside by clicking the previously selected region name, which drops down a list of choices.</td>
+       </tr>
+       <tr>
+           <td rowspan="3" class="ConsoleLink">Data Sizing</td>
+           <td><code>Internal Dataset (TB)</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how large your database will be.</p>
+               <p><code>Internal Dataset</code> is the amount of data that you will be storing within your Splice Machine database.</p>
+           </td>
+       </tr>
+       <tr>
+           <td><code>Dedicated Storage</code></td>
+           <td>
+               <p>Select this checkbox to have us provision dedicated storage for your database instance, which does add cost.</p>
+               <p>Leave this unselected to have your database instance stored on shared hardware.</p>
+           </td>
+       </tr>
+       <tr>
+           <td><code>External Dataset (TB)</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how large your external dataset will be.</p>
+               <p><code>External Dataset</code> is the amount of data the you will be accessing from external data sources, using features such as external tables and our virtual table interface.</p>
+           </td>
+       </tr>
+       <tr>
+           <td rowspan="3" class="ConsoleLink">Cluster Power</td>
+           <td><code>OLTP Splice Units</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how much processing power you need for transactional activity, involving quick inserts, lookups, updates, and deletes. More OLTP units means more region servers in your cluster.</p>
+           </td>
+       </tr>
+       <tr>
+           <td><code>OLAP Splice Units</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how much processing power you need for running longer queries, typically analytical queries. More OLAP units means more Spark executors.</p>
+           </td>
+       </tr>
+       <tr>
+           <td><code>Notebook Spark Units</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how many Spark units should be utilized by the Splice Machine Native Spark Datasource and other external uses of Spark libraries, such as MLlib.</p>
+           </td>
+       </tr>
+       <tr>
+           <td class="ConsoleLink">ML Manager</td>
+           <td><code>Enable</code></td>
+           <td>Select this checkbox to enable the Splice Machine ML Manager, which provides access to our Model Workflow and Deployment integration and additional Machine Learning libraries.</td>
+       </tr>
+       <tr>
+           <td class="ConsoleLink">Backup Frequency</td>
+           <td><code>Frequency</code></td>
+           <td>
+               <p>Select how frequently you want Splice Machine to back up your database. You can select <code>Hourly</code>, <code>Daily</code>, or <code>Weekly</code>; each selection displays additional backup timing and retention options:</p>
+               <p>Hourly:</p>
+               <p>
+                   <img src="images/HourlyBackupOptions_450x78.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 78;" />
+               </p>
+               <p>Daily:</p>
+               <p>
+                   <img src="images/DailyBackupOptions_450x68.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 68;" />
+               </p>
+               <p>Weekly:</p>
+               <p>
+                   <img src="images/WeeklyBackupOptions_450x67.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 67;" />
+               </p>
+           </td>
+       </tr>
+   </tbody>
+</table>
 A *Splice Unit* is a measure of processing work; one unit currently
 translates (approximately) to 2 virtual CPUs and 16 GB of memory.
 {: .noteIcon}
