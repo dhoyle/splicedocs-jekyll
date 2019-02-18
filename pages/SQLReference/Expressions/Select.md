@@ -34,8 +34,8 @@ SELECT clause
 {: .paramName}
 
 The `SELECT` clause contains a list of expressions and an optional
-quantifier that is applied to the results of the &nbsp;[`WHERE`
-clause](sqlref_clauses_where.html).
+quantifier that is applied to the results of the `WHERE`
+clause.
 {: .paramDefnFirst}
 
 If `DISTINCT` is specified, only one copy of any row value is included
@@ -54,11 +54,11 @@ SelectItem:
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 {
     * |
-    { <a href="correlation-Name } .* |
-      Expression [AS <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>] }
+    { table-Name | correlation-Name } .* |
+    Expression [AS Simple-column-Name]
 }</pre>
-
 </div>
+
 A<em> SelectItem</em> projects one or more result column values for a
 table result being constructed in a *SelectExpression*.
 {: .paramDefn}
