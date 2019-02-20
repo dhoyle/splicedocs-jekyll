@@ -88,6 +88,7 @@ This section presents a simple Zeppelin notebook example of moving data between 
     {: .Example}
 
     Though this DataFrame contains only a very small amount of data, the code in this example can be scaled to DataFrames of any size.
+    {: .spaceAbove}
 
 3.  __Create a Table in your Splice Machine Database__
 
@@ -240,7 +241,7 @@ Examine the following factors to guide you to the right method for your situatio
         <tr>
             <td><p><em>Some existing records may be updated.</em></p>
             </td>
-            <td>Use one of the following, depending on how you want to handle updating an existing column value when the input column does not have a value:</p>
+            <td><p>Use one of the following, depending on how you want to handle updating an existing column value when the input column does not have a value:</p>
                 <ul class="bullet">
                     <li>Use the <code>UPSERT_DATA_FROM_FILE</code> procedure if you want the column value modified to its default value (or <code>NULL</code> if no default value is defined for the column in the schema).</li>
                     <li>Use the <code>MERGE_DATA_FROM_FILE</code> procedure if you want the column values left unmodified when no corresponding column value is present in the input.</li>
@@ -568,16 +569,21 @@ The `BULK_IMPORT_HFILE` procedure uses  parameters shown in [Table 1](#table1), 
 To use Bulk HFile import with sampled splitting, you can follow these steps:
 
 1.  __Create a directory on HDFS for the temporary HFiles. For example:__
+
     ```
     sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
     ```
+    {: .Example}
+
 <br />
 2.  __Import your data:__
+
     ```
     call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,
                 's3a://splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, -1,
                 '/BAD', true, null, 'hdfs:///tmp/test_hfile_import/', false);
     ```
+    {: .Example}
 
     Note that the final parameter, `skipSampling` is `false` in the above call; this tells `BULK_IMPORT_HFILE` to split the data based on its own sampling.
 <br />
@@ -688,30 +694,29 @@ Splice Machine allows you to specify [optimization hints](#developers_tuning_que
 
 Here's a simple example:
 
-    ```
-    DROP TABLE IF EXISTS myUserTbl;
-    CREATE TABLE myUserTbl AS SELECT
-        user_id,
-        report_date,
-        type,
-        region,
-        country,
-        access,
-        birth_year,
-        gender,
-        product,
-        zipcode,
-        licenseID
-    FROM licensedUserInfo
-    WITH NO DATA;
+```
+DROP TABLE IF EXISTS myUserTbl;
+CREATE TABLE myUserTbl AS SELECT
+    user_id,
+    report_date,
+    type,
+    region,
+    country,
+    access,
+    birth_year,
+    gender,
+    product,
+    zipcode,
+    licenseID
+FROM licensedUserInfo
+WITH NO DATA;
 
-
-    INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
-    useSpark=true,
-    skipSampling=false
-    SELECT * FROM licensedUserInfo;
-    ```
-    {: .Example}
+INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
+useSpark=true,
+skipSampling=false
+SELECT * FROM licensedUserInfo;
+```
+{: .Example}
 
 When you use `bulkImportDirectory` with the `INSERT` statement, you must also specify these two hints:
 {: .spaceAbove}
@@ -725,13 +730,13 @@ When you use `bulkImportDirectory` with the `INSERT` statement, you must also sp
 Our Importing Data Tutorial provides details about and examples of using the available methods for ingesting data.
 
 And our SQL Reference Manual contains reference pages for each of the system procedures discussed in this article:
-* SYSCS_UTIL.IMPORT_DATA
-* SYSCS_UTIL.UPSERT_DATA_FROM_FILE
-* SYSCS_UTIL.MERGE_DATA_FROM_FILE
-* SYSCS_UTIL.BULK_IMPORT_HFILE
-* SYSCS_UTIL.COMPUTE_SPLIT_KEY
-* SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS
-* SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX
+* [SYSCS_UTIL.IMPORT_DATA](sqlref_sysprocs_importdata.html)
+* [SYSCS_UTIL.UPSERT_DATA_FROM_FILE](sqlref_sysprocs_upsertdata.html)
+* [SYSCS_UTIL.MERGE_DATA_FROM_FILE](sqlref_sysprocs_mergedata.html)
+* [SYSCS_UTIL.BULK_IMPORT_HFILE](sqlref_sysprocs_importhfile.html)
+* [SYSCS_UTIL.COMPUTE_SPLIT_KEY](sqlref_sysprocs_computesplitkey.html)
+* [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS](sqlref_sysprocs_splittableatpoints.html)
+* [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html)
 
 </div>
 </section>
