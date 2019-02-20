@@ -15,31 +15,44 @@ folder: ReleaseNotes
 
 This topic includes any release notes that are specific to the Splice Machine *Database-as-Service* product, in these sections:
 
-* [Current Database Release Versions](#database-versions)
+* [Current Release Notes](#database-versions)
 * [Features Not Yet Available](#features-not-yet-available)
 * [Current Limitations](#current-limitations)
 * [Important Notes](#important-notes)
 
-## Current Database Release Versions
+## Current Release Notes
 Our Database-as-a-Service product currently includes these versions of the Splice Machine database:
 
 <table>
-    <col />
+    <col width="145px"/>
     <col />
     <thead>
         <tr>
-            <th>Cloud Provider</th>
-            <th>Splice Machine Database Version</th>
+            <th>Category</th>
+            <th>Note</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>AWS</td>
-            <td>{{splvar_dbaas_AWSDBVersion}}</td>
+            <td><em>Database Version</em></td>
+            <td>Both our AWS and Azure release are using version {{splvar_dbaas_AWSDBVersion}} of the Splice Machine database.</td>
         </tr>
         <tr>
-            <td>Azure</td>
-            <td>{{splvar_dbaas_AzureDBVersion}}</td>
+            <td rowspan="2"><em>New Feature</em></td>
+            <td>Dedicated HDFS is now available.</td>
+        </tr>
+        <tr>
+            <td>Slider added for Notebook Spark.</td>
+        </tr>
+        <tr>
+            <td rowspan="3"><em>Bug Fixes</em></td>
+            <td>The display of the memory graph is fixed.</td>
+        </tr>
+        <tr>
+            <td>The display of the CPU graph is fixed.</td>
+        </tr>
+        <tr>
+            <td>An issue with exporting to S3 has been fixed.</td>
         </tr>
     </tbody>
 </table>
