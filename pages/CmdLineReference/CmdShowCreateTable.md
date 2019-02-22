@@ -1,5 +1,5 @@
 ---
-title: Show Create Tabke command
+title: Show Create Table command
 summary: Displays the DDL used to create a table.
 keywords: procedure, show commands
 toc: false
