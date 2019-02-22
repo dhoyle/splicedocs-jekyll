@@ -55,11 +55,17 @@ splice> CREATE TABLE Players(
     );
 0 rows inserted/updated/deleted
 
-splice> CALL SYSCS_UTIL.SHOW_CREATE_TABLE( 'SPLICE', 'PLAYERS' );
+CALL SYSCS_UTIL.SHOW_CREATE_TABLE( 'SPLICE', 'PLAYERS' );
 DDL
---------------------------------------------------------------------------------------------
-CREATE TABLE "SPLICE"."PLAYERS" ("ID" SMALLINT NOT NULL,"TEAM" VARCHAR(64) NOT NULL,
-  "NAME" VARCHAR(64) NOT NULL,"POSITION" CHAR(2),"DISPLAYNAME" VARCHAR(24),"BIRTHDATE" DATE)
+----------------------------------------------------
+CREATE TABLE "SPLICE"."PLAYERS" (
+"ID" SMALLINT NOT NULL
+,"TEAM" VARCHAR(64) NOT NULL
+,"NAME" VARCHAR(64) NOT NULL
+,"POSITION" CHAR(2)
+,"DISPLAYNAME" VARCHAR(24)
+,"BIRTHDATE" DATE
+) ;
 
 1 row selected
 

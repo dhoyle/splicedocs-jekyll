@@ -51,10 +51,17 @@ splice> CREATE TABLE Players(
     );
 0 rows inserted/updated/deleted
 
-splice> show create table players;
+show create table players;
 DDL
--------------------------------------------------------------------------
-CREATE TABLE "SPLICE"."PLAYERS" ("ID" SMALLINT NOT NULL,"TEAM" VARCHAR(64) NOT NULL,"NAME" VARCHAR(64) NOT NULL, "POSITION" CHAR(2),"DISPLAYNAME" VARCHAR(24),"BIRTHDATE" DATE)
+---
+CREATE TABLE "SPLICE"."PLAYERS" (
+"ID" SMALLINT NOT NULL
+,"TEAM" VARCHAR(64) NOT NULL
+,"NAME" VARCHAR(64) NOT NULL
+,"POSITION" CHAR(2)
+,"DISPLAYNAME" VARCHAR(24)
+,"BIRTHDATE" DATE
+) ;
 
 1 row selected
 ```
