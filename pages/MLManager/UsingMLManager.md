@@ -10,37 +10,29 @@ folder: MLManager
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Using the Splice Machine Data Science Workbench
+# Using the Machine Learning Manager (*MLManager*)
 
-The Splice Machine Data Science Workbench facilitates machine learning development. Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with the *MLManager*:
-
-<img src="images/DLFlow2.png">
-
-
-## Overview
-<img class='log' src='https://s3.amazonaws.com/splice-demo/ML+full+circle.png'>
-
-* Our platform runs directly on Apache Spark, allowing you to complete massive jobs in parallel
-* Our native PySpliceContext lets you directly access the data in your database and convert as a Spark DataFrame, no ETL.
-* MLflow is integrated directly into all Splice Machine clusters, allowing you to keep track of your entire Data Science workflow
-* After you have found the best model for your task, you can easily deploy it live to AWS SageMaker or AzureML to make predictions in real time.
-
-This topic guides you through the entire MLManager life cycle for a fraud detector: we want to predict the likelihood of a transaction being fraudulent, after training on actual, historical data.
-
-We'll guide you in these sections:
+This topic introduces you to the Splice Machine *MLManager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications. This topic is organized into these sections:
 
 * [*About MLManager*](#aboutMLManager)
-* [*Prepare Your Experiment*](#prepareExperiment)
-* [*Run Your First Experiment*](#runfirst)
-* [*Try a Different Model*](#trydifferentmodel)
+* [*Preparing Your Experiment*](#prepareExperiment)
+* [*Running Your First Experiment*](#runfirst)
+* [*Trying a Different Model*](#trydifferentmodel)
 * [*Updating the Model with New Data*](#UpdateData)
 
 ## About MLManager {#aboutMLManager}
 
-*********************INFO HERE****************************
-Offers a way to interact with MLflow directly from your Zeppelin Notebook
-Allows you to use all basic operations to manipulate Experiments and Runs (create, update, delete etc.)
-Accessible from splicemachine.ml.management.MLManager
+The MLManager facilitates machine learning development within Zeppelin notebooks.  Here are some of its key features:
+
+* MLManager runs directly on Apache Spark, allowing you to complete massive jobs in parallel.
+* Our native PySpliceContext lets you directly access the data in your database and very efficiently convert it to to a Spark DataFrame, with no serialization/deserialization required.
+* MLflow is integrated directly into all Splice Machine clusters, to facilitate tracking of your entire Machine Learning workflow.
+* After you have found the best model for your task, you can easily deploy it live to AWS SageMaker or AzureML to make predictions in real time.
+
+Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with the *MLManager*:
+
+<img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/ML+full+circle.png'>
+
 
 ### About MLflow
 
@@ -98,7 +90,7 @@ In Splice Machine, you use the `MLManager` class to manipulate experiments. You 
 ### About SageMaker
 
 
-## Prepare Your Experiment  {#prepareExperiment}
+## Preparing Your Experiment  {#prepareExperiment}
 
 In this section, we'll prepare our first experiment, in these steps:
 
@@ -217,13 +209,14 @@ df = splice.df("SELECT * FROM cc_fraud.cc_fraud_data")
 df = df.withColumnRenamed('CLASS_RESULT', 'label')
 z.show(df)
 ```
+{: .Example}
 
 ### 6. View your Experiment in the MLflow UI
 
 <img class='log' src='https://s3.amazonaws.com/splice-demo/mlflow_UI_fraud.png' width='60%' style='z-index:5'>
 
 
-## Run Your First Experiment  {#runfirst}
+## Running Your First Experiment  {#runfirst}
 
 Now that we're set up, let's create a run named `Ben` and run our experiment:
 
@@ -378,7 +371,7 @@ manager.log_spark_model(model)
 ```
 {: .Example}
 
-## Try a Different Model  {#trydifferentmodel}
+## Trying a Different Model  {#trydifferentmodel}
 
 Now that we've saved our run, we can look at creating a different pipeline and comparing results; this time, we'll re-import the data and create a pipeline by oversampling ata a `1.5x` rate and using a `LogisticRegression` model.
 
