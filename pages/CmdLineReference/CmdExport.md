@@ -157,11 +157,11 @@ target="_blank"}
  <div class="preWrapperWide" markdown="1">
              -- This example uses all default options:
      splice> EXPORT('/my/export/dir', false, null, null, null, null)
-              SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a;
+              SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a2;
 
              -- This example explicitly specifies options:
     splice> EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
-              SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a;
+              SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a2;
 {: .AppCommand xml:space="preserve"}
 
 </div>
