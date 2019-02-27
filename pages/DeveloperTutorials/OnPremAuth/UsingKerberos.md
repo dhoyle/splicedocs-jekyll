@@ -70,14 +70,7 @@ Follow these steps to enable Kerberos authentication:
 
    On Cloudera Manager, you can go to `HBase Configuration` and search for `splice.authentication`. Change the value to `KERBEROS` for both `Client Configuration` and `Service Configuration` and restart HBase.
 
-7. On the region server, start Splice Machine (`sqlshell.sh`), and create a matching user name in your database:
-   {: .topLevel}
-   <div class="preWrapperWide" markdown="1">
-       splice> call SYSCS_UTIL.SYSCS_CREATE_USER( 'jdoe', 'jdoe' );
-   {: .Example}
-   </div>
-
-8. Grant privileges to the new user. For example, here we grant all privileges to user `jdoe` on a table named `myTable`:
+7. Grant privileges to the new user. For example, here we grant all privileges to user `jdoe` on a table named `myTable`:
    {: .topLevel}
    <div class="preWrapperWide" markdown="1">
        splice> GRANT ALL PRIVILEGES ON Splice.myTable to jdoe;

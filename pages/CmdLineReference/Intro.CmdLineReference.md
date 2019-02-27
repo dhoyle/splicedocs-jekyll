@@ -234,6 +234,13 @@ our *On-Premise Database* and *Database-as-Service* products.
             </td>
         </tr>
         <tr>
+            <td class="CodeFont"><a href="cmdlineref_showcreatetable.html">Show Create Table</a>
+            </td>
+            <td>command displays the DDL used with the `create table` statement to create a specified table..</td>
+            <td><span class="AppCommand">splice&gt; show create table players;</span>
+            </td>
+        </tr>
+        <tr>
             <td class="CodeFont"><a href="cmdlineref_showfunctions.html">Show Functions</a>
             </td>
             <td>Displays information about functions defined in the database or in a schema.</td>

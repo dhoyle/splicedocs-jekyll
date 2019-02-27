@@ -14,24 +14,15 @@ folder: BestPractices
 
 This section contains best practice and troubleshooting information related to configurating security in our *On-Premise Database* product, in these topics:
 
+* [Assigning Full Administrative Privileges with LDAP](#LDAPUsers)
 * [Kerberos Configuration Option](#KerberosConfig)
-* [Assigning Full Administrative Privileges to Users](#SuperUsers)
-
+* [Assigning Full Administrative Priveleges with Native and Kerberos Authentication](#KerberosUsers)
 {% include splice_snippets/onpremonlytopic.md %}
 
 
-## Kerberos Configuration Option  {#KerberosConfig}
-If you're using Kerberos, you need to add this option to your HBase Master Java Configuration Options:
+## Assigning Full Administrative Privileges with LDAP {#LDAPUsers}
 
-<div class="preWrapper" markdown="1">
-    -Dsplice.spark.hadoop.fs.hdfs.impl.disable.cache=true
-{:.ShellCommand}
-</div>
-
-
-## Assigning Full Administrative Privileges to Users {#SuperUsers}
-
-The default administrative user ID in Splice Machine is `splice`. If you want to configure other users to have the same privileges as the `splice` user, follow these steps:
+The default administrative user ID in Splice Machine is `splice`. If you're using LDAP and want to configure other users to have the same privileges as the `splice` user, follow these steps:
 
 1. Add an LDAP `admin_group` mapping for the `splice` user to both:
 
@@ -39,22 +30,27 @@ The default administrative user ID in Splice Machine is `splice`. If you want to
    * the `HBase Client Advanced Configuration Snippet (Safety Valve) for hbase-site.xml`
 
    This maps members of the `admin_group` to the same privileges as the `splice` user:
-   <div class="preWrapperWide"><pre class="Example">
-&lt;property&gt;
-    &lt;name&gt;splice.authentication.ldap.mapGroupAttr&lt;/name&gt;
-    &lt;value&gt;admin_group=splice&lt;/value&gt;
-&lt;/property&gt;</pre>
-   </div>
+
+   ```
+   <property>
+      <name>splice.authentication.ldap.mapGroupAttr</name>
+      <value>admin_group=splice</value>
+   </property>
+   ```
+   {: .Example}
 
 2. Assign the `admin_group` to a user by specifying `cn=admin_group` in the user definition. For example, we'll add a `myUser` with these attributes:
 
+    ```
+
    <div class="preWrapperWide"><pre class="Example">
-dn: cn=admin_group,ou=Users,dc=splicemachine,dc=colo
-sn: MyUser
-objectClass: inetOrgPerson
-userPassword: myPassword
-uid: myUser</pre>
-   </div>
+   dn: cn=admin_group,ou=Users,dc=splicemachine,dc=colo
+   sn: MyUser
+   objectClass: inetOrgPerson
+   userPassword: myPassword
+   uid: myUser
+   ```
+   {: .Example}
 
    You need to make sure that the name you specify for `cn` is exactly the same as the name (the value to the left of the equality symbol) in the `splice.authentication.ldap.mapGroupAttr` property value. Matching is case sensitive!
    {: .noteIcon}
@@ -147,14 +143,66 @@ A2
 
 ### Assigning to Multiple Groups
 You can assign the privileges to multiple groups by specifying a comma separated list in the `ldap.mapGroupAttr` property. For example, changing its definition to this:
-   <div class="preWrapperWide"><pre class="Example">
-&lt;property&gt;
-    &lt;name&gt;splice.authentication.ldap.mapGroupAttr&lt;/name&gt;
-    &lt;value&gt;admin_group=splice,cdl_group=splice&lt;/value&gt;
-&lt;/property&gt;</pre>
-   </div>
+
+   ```
+   <property>
+      <name>splice.authentication.ldap.mapGroupAttr</name>
+      <value>admin_group=splice,cdl_group=splice</value>
+   </property>
+   ```
+   {: .Example}
 
 Means that members of both the `admin_group` and `cdl_group` groups will have the same privileges as the `splice` user.
+
+
+## Kerberos Configuration Option  {#KerberosConfig}
+If you're using Kerberos, you need to add this option to your HBase Master Java Configuration Options:
+
+```
+-Dsplice.spark.hadoop.fs.hdfs.impl.disable.cache=true
+```
+{:.ShellCommand}
+
+## Assigning Full Administrative Privileges with Native and Kerberos Authentication {#KerberosUsers}
+
+The default administrative user ID in Splice Machine is `splice`. If you're using Native Authentication and Kerberos Authentication, and  you want to configure other users to have the same privileges as the `splice` user, you need to set the mapping between `splice` and the other user(s) in the `splice.authentication.ldap.mapGroupAttr` configuration parameter. Here's an example:
+
+1. Follow the steps in the [Enabling Kerberos Authentication](tutorials_security_usingkerberos.html) topic to add a new principal; for this example, we'll assume the new principal is named `jdoe`.
+
+2. Assign `admin` privileges to `jdoe` by setting the `splice.authentication.ldap.mapGroupAttr` property as follows:
+
+   ```
+   <property>
+       <name>splice.authentication.ldap.mapGroupAttr</name>
+       <value>jdoe=splice</value>
+   </property>
+   ```
+   {: .Example}
+
+3. Log into your database as `jdoe`:
+
+   ```
+   connect 'jdbc:splice://regionsevername:1527/splicedb;principal=jdoe@SPLICEMACHINE.COLO;keytab=jdoe_filepath.keytab' as jdoe_con;
+   ```
+   {: .Example}
+
+4. check that jdoe has group user "SPLICE" and he can create and drop schemas
+
+   ```
+   splice> values user;
+   1
+   ---------------------------------------
+   JDOE
+   1 row selected
+   splice> values group_user;
+   1
+   ---------------------------------------
+   "SPLICE"
+
+   1 row selected
+   ```
+   {: .Example}
+
 
 </div>
 </section>

@@ -129,7 +129,7 @@ functions](sqlref_builtinfcns_currentsessionfcnsintro.html):
                 <tr>
                     <td class="CodeFont"><a href="sqlref_builtinfcns_currentrole.html">CURRENT_ROLE</a>
                     </td>
-                    <td>Returns the authorization identifier of the current role.</td>
+                    <td>Returns a list of role names for the current user.</td>
                 </tr>
                 <tr>
                     <td class="CodeFont"><a href="sqlref_builtinfcns_currentschema.html">CURRENT SCHEMA</a>
@@ -142,6 +142,11 @@ functions](sqlref_builtinfcns_currentsessionfcnsintro.html):
                     <td class="CodeFont"><a href="sqlref_builtinfcns_currentuser.html">CURRENT_USER</a>
                     </td>
                     <td>Depending on context, returns the authorization identifier of either the user who created the SQL session or the owner of the schema.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="sqlref_builtinfcns_groupuser.html">GROUP_USER</a>
+                    </td>
+                    <td>Returns the groups to which the current user belongs.</td>
                 </tr>
                 <tr>
                     <td class="CodeFont"><a href="sqlref_builtinfcns_sessionuser.html">SESSION_USER</a>
@@ -535,6 +540,11 @@ functions](sqlref_builtinfcns_stringfcnsintro.html):
                     <td class="CodeFont"><a href="sqlref_builtinfcns_regexplike.html">REGEXP_LIKE</a>
                     </td>
                     <td>Returns true if a string matches a regular expression.</td>
+                </tr>
+                <tr>
+                    <td class="CodeFont"><a href="sqlref_builtinfcns_repeat.html">REPEAT</a>
+                    </td>
+                    <td>Returns a string by concatenating a specified string onto itself a specified number of times.</td>
                 </tr>
                 <tr>
                     <td class="CodeFont"><a href="sqlref_builtinfcns_replace.html">REPLACE</a>
