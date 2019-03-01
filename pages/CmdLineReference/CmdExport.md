@@ -61,15 +61,15 @@ the following values:
                     <td>Exported files are not compressed.</td>
                 </tr>
                 <tr>
-                    <td><code>gz</code> or <code>gzip</code></td>
+                    <td><code>'gz'</code> or <code>'gzip'</code></td>
                     <td>The exported files are compressed using <code>gzip</code>.</td>
                 </tr>
                 <tr>
-                    <td><code>bz2</code> or <code>bzip2</code></td>
+                    <td><code>'bz2'</code> or <code>'bzip2'</code></td>
                     <td>The exported files are compressed using <code>bzip2</code>.</td>
                 </tr>
                 <tr>
-                    <td><code>none</code></td>
+                    <td><code>'none'</code></td>
                     <td>Exported files are not compressed.</td>
                 </tr>
             </tbody>

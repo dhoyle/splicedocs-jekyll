@@ -60,11 +60,11 @@ the following values:
                     <td>Exported files are not compressed.</td>
                 </tr>
                 <tr>
-                    <td><code>snappy</code></td>
+                    <td><code>'snappy'</code></td>
                     <td>The exported files are compressed using <code>snappy</code>.</td>
                 </tr>
                 <tr>
-                    <td><code>none</code></td>
+                    <td><code>'none'</code></td>
                     <td>Exported files are not compressed.</td>
                 </tr>
             </tbody>
