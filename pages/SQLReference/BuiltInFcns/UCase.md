@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LN or UPPER
+# UCASE or UPPER
 
 `UCASE` or `UPPER` returns a string in which all alphabetic characters
 in the input character expression have been converted to uppercase.
@@ -21,7 +21,7 @@ in the input character expression have been converted to uppercase.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    UCASE or UPPER ( CharacterExpression ) 
+    UCASE or UPPER ( CharacterExpression [, Locale ] )
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -33,6 +33,8 @@ A &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type, or any
 built-in type that is implicitly converted to a string (but not a bit
 expression).
 {: .paramDefnFirst}
+
+{% include splice_snippets/localeparam.md %}
 
 </div>
 ## Results
@@ -56,7 +58,7 @@ length and maximum length of the parameter.
 To return the names of players, use the following clause:
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> SELECT UCASE(DisplayName)
        FROM Players
        WHERE ID < 11;
@@ -72,7 +74,30 @@ To return the names of players, use the following clause:
     HARRY PENNELLO
     GREG BROWN
     JASON MINMAN
-    
+
+    10 rows selected
+{: .Example xml:space="preserve"}
+
+</div>
+
+<div class="preWrapper" markdown="1">
+
+    splice> SELECT UPPER(DisplayName, 'en_US')
+       FROM Players
+       WHERE ID < 11;
+    1
+    ------------------------
+    BUDDY PAINTER
+    BILL BOPPER
+    JOHN PURSER
+    BOB CRANKER 
+    MITCH DUFFER 
+    NORMAN AIKMAN 
+    ALEX PARAMOUR 
+    HARRY PENNELLO
+    GREG BROWN
+    JASON MINMAN
+
     10 rows selected
 {: .Example xml:space="preserve"}
 
@@ -95,4 +120,3 @@ To return the names of players, use the following clause:
 
 </div>
 </section>
-

@@ -21,7 +21,7 @@ in the input character expression have been converted to lowercase.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    LCASE or LOWER ( CharacterExpression ) 
+    LCASE or LOWER ( CharacterExpression [, Locale ] )
 {: .FcnSyntax}
 
 </div>
@@ -33,6 +33,8 @@ A &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html) data type, or any
 built-in type that is implicitly converted to a string (but not a bit
 expression).
 {: .paramDefnFirst}
+
+{% include splice_snippets/localeparam.md %}
 
 </div>
 ## Results
@@ -54,7 +56,7 @@ length and maximum length of the parameter.
 ## Examples
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> SELECT LCASE(DisplayName)
        FROM Players
        WHERE ID < 11;
@@ -70,11 +72,36 @@ length and maximum length of the parameter.
     harry pennello
     greg brown
     jason minman
-    
+
     10 rows selected
 {: .Example xml:space="preserve"}
 
 </div>
+
+
+<div class="preWrapper" markdown="1">
+
+    splice> SELECT LOWER( DisplayName, 'en_US' )
+       FROM Players
+       WHERE ID < 11;
+    1
+    ------------------------
+    buddy painter
+    billy bopper
+    john purser
+    bob cranker
+    mitch duffer
+    norman aikman
+    alex paramour
+    harry pennello
+    greg brown
+    jason minman
+
+    10 rows selected
+{: .Example xml:space="preserve"}
+
+</div>
+
 ## See Also
 
 * [About Data Types](sqlref_datatypes_numerictypes.html)
@@ -93,4 +120,3 @@ length and maximum length of the parameter.
 
 </div>
 </section>
-
