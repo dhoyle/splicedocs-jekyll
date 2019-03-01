@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInFcns
 `UCASE` or `UPPER` returns a string in which all alphabetic characters
 in the input character expression have been converted to uppercase.
 
-`UPPER` and `UCASE` follow the database locale.
+`UPPER` and `UCASE` follow the database locale unless you specify the `Locale` parameter.
 {: .noteNote}
 
 ## Syntax

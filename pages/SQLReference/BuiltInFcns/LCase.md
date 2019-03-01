@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInFcns
 `LCASE` or `LOWER` returns a string in which all alphabetic characters
 in the input character expression have been converted to lowercase.
 
-`LOWER` and `LCASE` follow the database locale.
+`LOWER` and `LCASE` follow the database locale unless you specify the `Locale` parameter.
 {: .noteNote}
 
 ## Syntax
