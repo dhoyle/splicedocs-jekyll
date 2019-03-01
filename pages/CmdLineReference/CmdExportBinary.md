@@ -33,10 +33,43 @@ exportPath
 The directory in which you want the export file(s) written.
 {: .paramDefnFirst}
 
-compress
+compression
 {: .paramName}
-A Boolean value that specifies whether (`true`) or not (`false`) to compress the exported files. Files are compressed using the *Snappy* compression standard.
+
+A Boolean or string value that specifies how to compress the exported files; you can specify one of
+the following values:
 {: .paramDefnFirst}
+
+<div markdown="0">
+    <table summary="Possible values for compression">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>true</code></td>
+                    <td>The exported files are compressed using <code>snappy</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>false</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+                <tr>
+                    <td><code>snappy</code></td>
+                    <td>The exported files are compressed using <code>snappy</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>none</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
 
 format
 {: .paramName}

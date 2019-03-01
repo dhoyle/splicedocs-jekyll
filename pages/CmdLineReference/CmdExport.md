@@ -34,10 +34,10 @@ exportPath
 The directory in which you want the export file(s) written.
 {: .paramDefnFirst}
 
-compress
+compression
 {: .paramName}
 
-Whether or not to compress the exported files. You can specify one of
+A Boolean or string value that specifies how to compress the exported files; you can specify one of
 the following values:
 {: .paramDefnFirst}
 
@@ -54,10 +54,22 @@ the following values:
             <tbody>
                 <tr>
                     <td><code>true</code></td>
-                    <td>The exported files are compressed using <code>deflate/gzip</code>.</td>
+                    <td>The exported files are compressed using <code>gzip</code>.</td>
                 </tr>
                 <tr>
                     <td><code>false</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+                <tr>
+                    <td><code>gz</code> or <code>gzip</code></td>
+                    <td>The exported files are compressed using <code>gzip</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>bz2</code> or <code>bzip2</code></td>
+                    <td>The exported files are compressed using <code>bzip2</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>none</code></td>
                     <td>Exported files are not compressed.</td>
                 </tr>
             </tbody>
@@ -160,7 +172,7 @@ target="_blank"}
               SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a2;
 
              -- This example explicitly specifies options:
-    splice> EXPORT('/my/export/dir', false, 3, 'utf-8', '|', ';')
+    splice> EXPORT('/my/export/dir', 'bz2', 3, 'utf-8', '|', ';')
               SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a2;
 {: .AppCommand xml:space="preserve"}
 
