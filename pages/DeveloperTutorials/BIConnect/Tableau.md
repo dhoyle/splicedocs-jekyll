@@ -22,6 +22,12 @@ ODBC driver. To complete this tutorial, you need to:
 * Have the Splice Machine ODBC driver installed on your computer. Follow
   the instructions in our Developer's Guide.
 
+{% include splicevars.html %}
+
+You can read more about [our JDBC Driver here](tutorials_connectjdbc_intro.html). And you can download the driver from here: <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}.</a>
+{: .notePlain}
+
+
 ## Connect Tableau with Splice Machine   {#Compile}
 
 This section walks you through configuring Tableau on a Windows PC to

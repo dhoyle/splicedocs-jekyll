@@ -21,6 +21,10 @@ This section shows you how to connect your applications to Splice Machine on a K
 
 See [Enabling Kerberos Authentication](tutorials_security_usingkerberos.html) for information about using Splice Machine on a Kerberized cluster.
 
+{% include splicevars.html %}
+
+You can read more about [our JDBC Driver here](tutorials_connectjdbc_intro.html). And you can download the driver from here: <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}.</a>
+
 ## Connecting Splice Machine with Kerberos and JDBC {#JDBCAccess}
 
 Once you've configured Kerberos, you can connect with JDBC by specifying the principal and keytab values in your connection string; for example:

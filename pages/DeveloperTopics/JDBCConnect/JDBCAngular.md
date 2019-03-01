@@ -30,5 +30,11 @@ allowfullscreen="1" width="560px" height="315px"></iframe>
 </div>
 </div>
 {% endif %}
+
+{% include splicevars.html %}
+
+You can read more about [our JDBC Driver here](tutorials_connectjdbc_intro.html). And you can download the driver from here: <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}.</a>
+{: .notePlain}
+
 </div>
 </section>

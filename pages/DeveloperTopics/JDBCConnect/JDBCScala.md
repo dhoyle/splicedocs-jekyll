@@ -21,6 +21,9 @@ connects to Splice Machine using our JDBC driver. The
 * inserts several sample records
 * selects and displays records from one of the system tables
 
+You can read more about [our JDBC Driver here](tutorials_connectjdbc_intro.html). And you can download the driver from here: <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}.</a>
+{: .notePlain}
+
 ## Compile and Run the Sample Program   {#Compile}
 
 This section walks you through compiling and running the

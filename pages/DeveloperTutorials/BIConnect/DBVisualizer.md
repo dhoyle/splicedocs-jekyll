@@ -21,6 +21,11 @@ our JDBC driver. To complete this tutorial, you need to:
   target="_blank"}); you can also download a free trial version of
   DBVisualizer from there.
 
+{% include splicevars.html %}
+
+You can read more about [our JDBC Driver here](tutorials_connectjdbc_intro.html). And you can download the driver from here: <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}.</a>
+{: .notePlain}
+
 ## Connect DBVisualizer with Splice Machine   {#Compile}
 
 This section walks you through configuring DBVisualizer to connect

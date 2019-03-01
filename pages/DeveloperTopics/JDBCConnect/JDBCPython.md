@@ -8,11 +8,15 @@ sidebar: developers_sidebar
 permalink: tutorials_connectjdbc_python.html
 folder: DeveloperTopics/JDBCConnect
 ---
-{% include splicevars.html %} <section>
+{% include splicevars.html %}
+<section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Connecting to Splice Machine with Python via JDBC
 
 This topic shows you how to connect to a Splice Machine database using our JDBC driver with Python, using these steps:
+
+You can read more about [our JDBC Driver here](tutorials_connectjdbc_intro.html). And you can download the driver from here: <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}.</a>
+{: .notePlain}
 
 <div class="opsStepsList" markdown="1">
 1. Install the JayDeBeApi python library
