@@ -34,13 +34,15 @@ Here's what the basic flow of processes involved in developing, tuning, and depl
 <img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/ML+full+circle.png'>
 
 The basic workflow is:
+<div class="opsStepsList" markdown="1">
 1. Work with MLlib and other machine learning libraries in a Zeppelin notebook that can directly interact with Spark and your Splice Machine database.
 2. Use MLflow within your notebook to create experiments and runs, and to track variables, parameters, and other information about your runs.
 3. Use the MLflow Tracking UI to monitor information about your experiments and runs.
 4. Iterate on your experiments until you develop the learning model that you want to deploy.
 5. Use the Splice Machine ML Jobs Tracker to deploy your model on AWS, by simply filling in a few form fields and clicking a button.
 6. Write Apps that use SageMaker's RESTful API to interface with your deployed model.
-7. As new data arrives: back to step 1.
+7. As new data arrives: back to step 2.
+</div>
 
 
 ### About MLflow
@@ -93,20 +95,46 @@ You can use the Splice Machine `MLManager` class in your program to manipulate e
 {: .noteIcon}
 
 
-### About Storing Models and Runs
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-
 ### About SageMaker
 
-Amazon Sagemaker XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Amazon Sagemaker allows you to easily deploy the machine learning models that you develop with the Splice Machine MLManager on Amazon AWS. The only requirement is that you have an *ECR* repository set up on AWS; ECR is Amazon's fully-managed Docker contrainer registry that simplifies deploying Docker images and is integrated with Amazon's Elastic Container Service (ECS).
+
+When you tell our MLManager to deploy a model to SageMaker, MLManager creates a Docker image and uploads it to your ECR repository. You can specify which AWS instance types you want to deploy on, and how many instances you want to deploy. We send the deployment request to SageMaker, which creates an endpoint, launches your ML compute instances, and the deploys your model to them.
+
+You can also use the same process to deploy an updated version of your model.
+
+
+### About Storing Models and Pipelines
+
+You can save your pipeline and model to S3 using the `save` method of MLlib `Pipeline` objects. Assuming that you've created a pipeline and built a model, you can save them as follows:
+
+```
+%spark.pyspark
+model.save('s3a://splice-demo/fraudDemoPipelineModel')
+```
+{: .Example}
+
+If you are developing or have developed a model that you expect to deploy in the future, you should save the model to MLflow. Assuming that you've previously created an instance of the MLManager named `manager` and have created a MLlib model named `model`, you can save the model to MLflow with this statement:
+{: .spaceAbove}
+
+```
+%spark.pyspark
+manager.log_spark_model(model)
+```
+{: .Example}
+
+The code in the next section contains examples of saving models to S3 and to MLflow.
+{: .spaceAbove}
 
 ## Running an Experiment  {#runExperiment}
 
-MLManager, along with MLflow, uses a workflow with *experiments*  HERE
+This section walks you through creating and running an experiment with MLManager, in these steps:
 
 * [Preparing Your Experiment](#prepareExperiment)
 * [The First Run](#runFirst)
 * [Trying a Different Model](#trydifferentmodel)
+
+The Splice Machine MLManager, along with mlFlow, allows you to group a set of *runs* into an *experiment*. Each run can use different values and parameters, all of which can be easily tracked and evaluated with help from the mlFlow user interface.
 
 ### Preparing Your Experiment  {#prepareExperiment}
 In this section, we'll prepare our first experiment, in these steps:
@@ -567,7 +595,13 @@ Once you've run an experiment run that looks good, you can interface with Amazon
 
 
 ### Step 1: Create an ECR Repository  {#createEcr}
-XXXXXXXXXXXXXXXXXXXXXx
+
+Elastic Container Registry (*ECR*) is Amazon's managed AWS Docker registry service; it supports private Docker repositories with resource-based permissions using AWS IAM so that specific users or Amazon EC2 instances can access repositories and images.
+
+When you tell the Splice Machine MLManager to deploy your model to SageMaker, MLManager creates a Docker image, saves it to your ECR repo, and tells AWS to deploy it for you. You then have an endpoint on AWS with a RESTfull API that your apps can use to interact with your model.
+
+To take advantage of this capability, you need to create a repository on ECR. See the [Amazon ECR documentation](https://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html){: target="_blank"} for information about creating your repository.
+
 
 ### Step 2: Find your Experiment and Run IDs  {#findIds}
 Before deploying your model, you need to have the IDs of the experiment and run that you want to deploy; you can find both of these in the *MLflow Tracking UI*. Follow these steps:
@@ -680,6 +714,10 @@ eval.input(preds)
 z.show(eval.get_results())
 ```
 {: .Example}
+
+### Redeploying the Model
+
+To redeploy your model after retraining, you can use the same steps you used when originally deploying it, as described in [Deploy Your Model](#deploy), above. Simply select *Replace* as your deployment mode, and your model will be redeployed.
 
 </div>
 </section>
