@@ -14,10 +14,10 @@ folder: MLManager
 
 This topic introduces you to the Splice Machine *MLManager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications. This topic is organized into these sections:
 
-* [About MLManager](#aboutMLManager)
-* [Running an Experiment](#runexperience)
-* [Deploying Your Model to AWS SageMaker](#deploywithsagemaker)
-* [Retraining the Model with New Data](#UpdateData)
+* [*About MLManager*](#aboutMLManager) provides a quick overview of what the MLManager does and how it interfaces with MLflow and SageMaker to provide a complete Machine Learning production environment.
+* [*Running an Experiment*](#runexperience) walks you through creating an ML experiment for detecting credit card fraud and shows you how to train, run, and compare two different learning models.
+* [*Deploying Your Model to AWS SageMaker*](#deploywithsagemaker) walks you through deploying your model on AWS.
+* [*Retraining the Model with New Data*](#UpdateData) shows you how to retrain your model with new data and update your deployment.
 
 ## About MLManager {#aboutMLManager}
 
@@ -27,11 +27,20 @@ The MLManager facilitates machine learning development within Zeppelin notebooks
 * Our native PySpliceContext lets you directly access the data in your database and very efficiently convert it to/from a Spark DataFrame without any serialization/deserialization required.
 * MLflow is integrated directly into all Splice Machine clusters, to facilitate tracking of your entire Machine Learning workflow.
 * After you have found the best model for your task, you can easily deploy it live to AWS SageMaker or AzureML to make predictions in real time.
-* As new data flows in, updating/re your model is
+* As new data flows in, updating/re your model is a simple matter of returning to your Notebook, creating new runs, and redeploying by filling in a few fields in a form.
 
 Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with the *MLManager*:
 
 <img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/ML+full+circle.png'>
+
+The basic workflow is:
+1. Work with MLlib and other machine learning libraries in a Zeppelin notebook that can directly interact with Spark and your Splice Machine database.
+2. Use MLflow within your notebook to create experiments and runs, and to track variables, parameters, and other information about your runs.
+3. Use the MLflow Tracking UI to monitor information about your experiments and runs.
+4. Iterate on your experiments until you develop the learning model that you want to deploy.
+5. Use the Splice Machine ML Jobs Tracker to deploy your model on AWS, by simply filling in a few form fields and clicking a button.
+6. Write Apps that use SageMaker's RESTful API to interface with your deployed model.
+7. As new data arrives: back to step 1.
 
 
 ### About MLflow
@@ -85,14 +94,15 @@ You can use the Splice Machine `MLManager` class in your program to manipulate e
 
 
 ### About Storing Models and Runs
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 
 ### About SageMaker
 
-Amazon Sagemaker
+Amazon Sagemaker XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## Running an Experiment  {#runExperiment}
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+MLManager, along with MLflow, uses a workflow with *experiments*  HERE
 
 * [Preparing Your Experiment](#prepareExperiment)
 * [The First Run](#runFirst)
@@ -582,7 +592,8 @@ Once you know your Experiment and Run ID values, you can use the Splice Machine 
 <div class="opsStepsList" markdown="1">
 1. Navigate to port 5003 in your web browser to display the MLManager Jobs Tracker. For example:<br />
 `https://myacct-machine.splicemachine.io:5003/#/`
-2. Click the <span class="ConsoleLink">deploy</span> link at the top of the screen to display the deploy form.
+2. Click the <span class="ConsoleLink">deploy</span> link at the top of the screen to display the deploy form:
+   <img src="images/MlJobDeploy1.png" class="indentedTightSpacing">
 3. Fill in the form fields:
    <table>
        <col />
