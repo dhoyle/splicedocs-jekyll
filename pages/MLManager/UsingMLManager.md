@@ -14,20 +14,20 @@ folder: MLManager
 
 This topic introduces you to the Splice Machine *MLManager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications. This topic is organized into these sections:
 
-* [*About MLManager*](#aboutMLManager)
-* [*Preparing Your Experiment*](#prepareExperiment)
-* [*Running Your First Experiment*](#runfirst)
-* [*Trying a Different Model*](#trydifferentmodel)
-* [*Updating the Model with New Data*](#UpdateData)
+* [About MLManager](#aboutMLManager)
+* [Running an Experiment](#runexperience)
+* [Deploying Your Model to AWS SageMaker](#deploywithsagemaker)
+* [Retraining the Model with New Data](#UpdateData)
 
 ## About MLManager {#aboutMLManager}
 
 The MLManager facilitates machine learning development within Zeppelin notebooks.  Here are some of its key features:
 
 * MLManager runs directly on Apache Spark, allowing you to complete massive jobs in parallel.
-* Our native PySpliceContext lets you directly access the data in your database and very efficiently convert it to to a Spark DataFrame, with no serialization/deserialization required.
+* Our native PySpliceContext lets you directly access the data in your database and very efficiently convert it to/from a Spark DataFrame without any serialization/deserialization required.
 * MLflow is integrated directly into all Splice Machine clusters, to facilitate tracking of your entire Machine Learning workflow.
 * After you have found the best model for your task, you can easily deploy it live to AWS SageMaker or AzureML to make predictions in real time.
+* As new data flows in, updating/re your model is
 
 Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with the *MLManager*:
 
@@ -41,66 +41,75 @@ MLflow is an open source platform for managing the end-to-end machine learning l
 * Track your model training sessions, which are called *runs*. Each run is some code that can record the following information:
 
   <table>
-    <col />
-    <col />
+    <col width="15%" />
+    <col width="45%"/>
+    <col width="40%" />
     <thead>
         <tr>
-            <th>XXX</th>
-            <th>XXX</th>
+            <th>Information Type</th>
+            <th>Purpose</th>
+            <th>Examples</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="ItalicFont">Metrics</td>
-            <td><p>Model output metrics, such as F1 score, AUC, Precision, Recall, R^2. </p>
-                <p>These map string values such as "F1" to double-precision numbers (e.g. 0.85).</p>
-            </td>
+            <td>Map string values such as `F1` to double-precision numbers such as `0.85`.</td>
+            <td>Model output metrics, such as: *F1 score, AUC, Precision, Recall, R^2*.</td>
         </tr>
         <tr>
             <td class="ItalicFont">Parameters</td>
-            <td><p>Model parameters, such as Num Trees, Preprocessing Steps, Regularization.</p>
-                <p>These map strings such as "classifier" to strings (e.g. "DecisionTree").</p>
-            </td>
+            <td>Map strings such as `classifier` to strings such as `DecisionTree`. </td>
+            <td>Model parameters, such as Num Trees, Preprocessing Steps, Regularization.</td>
         </tr>
         <tr>
             <td class="ItalicFont">Models</td>
-            <td><p>Fitted pipelines or models.</p>
-                <p>You can log models to later deploy them to SageMaker.</p>
-            </td>
+            <td>So that you can subsequently deploy them to SageMaker.</td>
+            <td>Fitted pipelines or models.</td>
         </tr>
         <tr>
             <td class="ItalicFont">Tags</td>
-            <td><p>Specific pieces of information associated with a run, such as the project, version, and deployable status.</p>
-                <p>These map strings such as "deployable" to strings (e.g. "true").</p>
-            </td>
+            <td>These map strings such as `deployable` to strings such as `true`.</td>
+            <td>Specific pieces of information associated with a run, such as the project, version, and deployable status.</td>
         </tr>
     </tbody>
   </table>
 
 
-* Group a collection of runs under and *experiment*, which allow you to visualize and compare a set of runs, and to download run artifacts for analysis by other tools.
+* Group a collection of runs under an *experiment*, which allows you to visualize and compare a set of runs, and to download run artifacts for analysis by other tools.
 
-  Note that each run belongs to an experiment.
+* View your experiments in the *MLflow Tracking UI*, which you access by pointing your browser at port `5001`.
 
-In Splice Machine, you use the `MLManager` class to manipulate experiments. You can view your experiments in the MLflow Tracking UI, which you access by pointing your browser at port `5001`.
+You can use the Splice Machine `MLManager` class in your program to manipulate experiments.
+{: .noteIcon}
 
 
 ### About Storing Models and Runs
 
 ### About SageMaker
 
+Amazon Sagemaker
 
-## Preparing Your Experiment  {#prepareExperiment}
+## Running an Experiment  {#runExperiment}
 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+
+* [Preparing Your Experiment](#prepareExperiment)
+* [The First Run](#runFirst)
+* [Trying a Different Model](#trydifferentmodel)
+
+### Preparing Your Experiment  {#prepareExperiment}
 In this section, we'll prepare our first experiment, in these steps:
 
-1. Connect to your database
-2. Load the data into your database
-3. Visualize the data in Zeppelin
-4. Set up our `MLManager` instance
-5. Use the Splice Machine Native Spark DataSource to transfer the data into a Spark Dataframe (without serialization).
+1. [Connect to your database](#connecttodb)
+2. [Load the data into your database](#loadtodb)
+3. [Try visualizing the data in Zeppelin](#tryvis)
+4. [Create your `MLManager` instance](#createmlmgr)
+5. [Create a new experiment](##createexperiment)
+6. [Load the database table directly into a Spark DataFrame](#loadintodf)
+7. [View your Experiment in the MLflow UI](#viewexpinui)
 
-### 1. Connect to your database
+#### 1. Connect to your database  {#connecttodb}
 
 First, let's establish a connection to your database using Python via our Native Spark Datasource. We will use the SpliceMLContext to establish our direct connection-- it allows us to do inserts, selects, upserts, updates and many more functions without serialization
 
@@ -111,8 +120,9 @@ splice = SpliceMLContext(spark)
 ```
 {: .Example}
 
-### 2. Load the Data into your database
+#### 2. Load the Data into your database  {#loadtodb}
 
+Next, we create the table in our Splice Machine database for our fraud data:
 ```
 %splicemachine
 set schema cc_fraud;
@@ -152,7 +162,13 @@ create table cc_fraud.cc_fraud_data (
     amount decimal(10,2),
     class_result int
 );
+```
+{: .Example}
 
+And then we import the data from S3 into the table:
+{: .spaceAbove}
+
+```
 call SYSCS_UTIL.IMPORT_DATA (
      'cc_fraud',
      'cc_fraud_data',
@@ -171,24 +187,21 @@ call SYSCS_UTIL.IMPORT_DATA (
 {: .Example}
 
 
-### 3. Visualize your data in the Notebook:
+#### 3. Try visualizing your data in the Notebook:  {#tryVis}
 
-For example:
-   * Huge data imbalance (fraud)
-     ```
-     %splicemachine
-     select class_result, count(*) from cc_fraud.cc_fraud_data group by class_result
-     ```
+You can query the data and use one of the many visualizations built into Zeppelin to display your results. For example, you might run the following query to find the imbalance of fraud data, and display it as a pie chart:
 
-   * xx
-     ```
-     %splicemachine
-     select class_result, avg(amount) as average from cc_fraud.cc_fraud_data
-     group by class_result
-     ```
+```
+%splicemachine
+select class_result, count(*) from cc_fraud.cc_fraud_data group by class_result;
+```
+{: .Example}
 
-### 4. Create your MLManager Instance
+<img src="images/MLpie1.png" style="max-width:150px; margin-left:50px; display:block">
 
+#### 4. Create your MLManager Instance  {#createmlmgr}
+
+To use MLManager, you need to first create a class instance:
 ```
 %spark.pyspark
 from splicemachine.ml.management import MLManager
@@ -196,52 +209,65 @@ manager = MLManager()
 ```
 {: .Example}
 
-### 5. Create an Experiment and Get the Data into a Spark DataFrame
+#### 5. Create an Experiment  {#createexperiment}
 
-We'll import our data using SpliceMLContext. We'll also create an MLflow Experiment named `fraud_demo`:
+Now we'll create an MLflow experiment named `fraud_demo`:
 
 ```
 %spark.pyspark
-#create our MLflow experiment
 manager.create_experiment('fraud-demo')
 manager.set_active_experiment('fraud-demo')
+```
+{: .Example}
+
+#### 6. Load our data into a DataFrame  {#loadintodf}
+
+And then we'll pull the data from our database table directly into a Spark DataFrame:
+
+```
 df = splice.df("SELECT * FROM cc_fraud.cc_fraud_data")
 df = df.withColumnRenamed('CLASS_RESULT', 'label')
 z.show(df)
 ```
 {: .Example}
 
-### 6. View your Experiment in the MLflow UI
+#### 7. View your Experiment in the MLflow UI  {#viewexpinui}
+You can now view your new experiment in the MLflow Tracking UI, at port `5001`:
 
-<img class='log' src='https://s3.amazonaws.com/splice-demo/mlflow_UI_fraud.png' width='60%' style='z-index:5'>
-
-
-## Running Your First Experiment  {#runfirst}
-
-Now that we're set up, let's create a run named `Ben` and run our experiment:
-
-Note that we use the logging functionality of `MLManager` to record and track the attributes of our run.
-{: .noteImportant}
+<img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/mlflow_UI_fraud.png'>
 
 
-### 1. Create a run
+### Running Your First Experiment  {#runfirst}
+
+Now that we're set up, let's create a run named `Ben` and run our experiment, using the logging functionality of `MLManager` to record and track the attributes of our run.
+
+We'll use these steps to run our experiment:
+1. [Create a run](#createrun)
+2. [Run the experiment](#runexperiment)
+3. [Create a Pipeline](#createpipeline)
+4. [Train and Run the Model](#trainandrun)
+5. [View Run Information](#viewruninfo)
+6. [Make Sure Model is Generalizable to Unbalanced Data](#modelgeneralizable)
+7. [Save the Model](#savemodel)
+
+#### 1. Create a run  {#createrun}
+
+We use a method of our MLManager object to create a new run:
 ```
 manager.create_new_run(user_id=‘Ben’)
 ```
 {: .Example}
 
-### 2. View the experiment:
+#### 2. Run the experiment  {#runexperiment}
 
-You can point your browser to port `5001` to view the (currently empty) experiment.
-
-### 3. Run the experiment
-
-We only have a small number of fraud examples, so we'll expand our data by oversampling our fraudulent transactions and undersampling non-fraudulent transactions. Here's the code:
+We'll start our first MLflow run; since our data contains
+a limited number of fraudulent examples, we decide to expand that number for training purposes. To achieve this, we oversample fraudulent transactions and undersample non-fraudulent ones:
 
 ```
 %spark.pyspark
 #start our first MLflow run
 manager.create_new_run(user_id='Ben')
+
 #oversample fraud data 2X
 fraud_data = df.filter('label=1')
 print('fraud data has {} rows'.format(fraud_data.count()))
@@ -252,10 +278,8 @@ manager.log_param('oversample','2X')
 
 #undersample non-fraud data 1:1
 non_fraud_df = df.filter('label=0')
-
 ratio = float(fraud_data.count())/float(df.count())
 sampled_non_fraud = non_fraud_df.sample(withReplacement=False,fraction=ratio)
-
 final_df = fraud_data.unionAll(sampled_non_fraud)
 #log undersample ratio
 manager.log_param('undersample', '1:1')
@@ -263,8 +287,8 @@ z.show(final_df)
 ```
 {: .Example}
 
-### 4. Create a Pipeline
-Now we can create a Pipeline to normalize our continuous features. We'll use the `StandardScaler`, which standardizes features by scaling to unit variance and/or removing the mean using column summary statistics on the samples in the training set.
+#### 3. Create a Pipeline  {#createpipeline}
+Now we can create a Pipeline to normalize our continuous features. We'll use the `StandardScaler`, which standardizes features by scaling to unit variance and/or removing the mean using, column summary statistics on the samples in the training set.
 
 And we'll create our feature vector with the `VectorAssembler` transformer, which combines a given list of columns into a single vector column
 
@@ -289,9 +313,9 @@ z.show(pipeline.fit(df).transform(df))
 ```
 {: .Example}
 
-### 5. Train and Run the Model
+#### 4. Train and Run the Model   {#trainandrun}
 
-Now we can train and run this model using the `SpliceBinaryClassificationEvaluator`. Note that we continue to use the logging feature to record our parameters and metrics.
+Now we can train and run this model using the `SpliceBinaryClassificationEvaluator`, again logging our parameters and metrics.
 
 ```
 %spark.pyspark
@@ -333,14 +357,14 @@ for key in vals:
 ```
 {: .Example}
 
-### 6. View Run Information
+#### 5. View Run Information  {#viewruninfo}
 
-You can now point your browser at the MLflow user interface, at port `5001`, to view the run:
+You can now view the run in the MLflow user interface, at port `5001`:
 
-<center><img class='log' src='https://s3.amazonaws.com/splice-demo/mlflow_ui_ben_run.png' width='60%' style='z-index:5'></center>
+<img src='https://s3.amazonaws.com/splice-demo/mlflow_ui_ben_run.png' class="indentedTightSpacing">
 
 
-### 7. Make Sure Model is Generalizable to Unbalanced Data
+#### 6. Make Sure Model is Generalizable to Unbalanced Data  {#modelgeneralizable}
 We have a model that looks fairly accurate; however, we trained this model on balanced data, so we need to verify that it can be generalized to work with unbalanced data:
 
 ```
@@ -358,7 +382,7 @@ z.show(new_eval.get_results())
 ```
 {: .Example}
 
-### 8. Save the Model
+#### 7. Save the Model  {#savemodel}
 
 We want to be able to retrain our model when new data arrives, so we'll save the pipeline and model to an S3 bucket. And since we're planning to deploy this model, we'll also save it to MLflow:
 
@@ -371,11 +395,28 @@ manager.log_spark_model(model)
 ```
 {: .Example}
 
-## Trying a Different Model  {#trydifferentmodel}
+### Trying a Different Model  {#trydifferentmodel}
 
-Now that we've saved our run, we can look at creating a different pipeline and comparing results; this time, we'll re-import the data and create a pipeline by oversampling ata a `1.5x` rate and using a `LogisticRegression` model.
+Now that we've saved our run, we can look at creating a different pipeline and comparing results; this time, we'll re-import the data and create a pipeline by oversampling ata a `1.5x` rate and using a `LogisticRegression` model, in these steps:
 
-### 1. Import the data and undersample/oversample like we did previously:
+1. [Start a new run](#rerun)
+2. [Scale and vectorize our features](#scalefeatures)
+3. [Train and test the model](#trainandtest)
+4. [Test on unbalanced Data](#testunbalanced)
+5. [Compare results](#compareresults)
+6. [Save the model](#savemodel2)
+
+#### Start a new run {#rerun}
+
+First, we'll create a new run and name it `Amy`:
+```
+manager.create_new_run(user_id=`Amy`)
+```
+{: .Example}
+
+
+Next we'll reload the data from our database table into a Spark DataFrame, and then
+ and undersample/oversample like we did previously:
 
 ```
 %spark.pyspark
@@ -413,9 +454,9 @@ manager.log_param('undersample', '1:1')
 ```
 {: .Example}
 
-### 2. Scale and Vectorize our Features
+#### 2. Scale and Vectorize our Features  {#scalefeatures}
 
-And again, we use the `StandardScaler` and `VectorAssembler` to normalize and vectorize our features:
+We'll again use the `StandardScaler` and `VectorAssembler` components to normalize and vectorize our features:
 
 ```
 %spark.pyspark
@@ -437,9 +478,9 @@ for feature,i in zip(feature_cols,range(len(feature_cols))):
 {: .Example}
 
 
-### 3. Train and Test the Model
+#### 3. Train and Test the Model  {#trainandtest}
 
-Now we train and test this model:
+Now we can train and test this model:
 
 ```
 %spark.pyspark
@@ -471,9 +512,9 @@ for key in vals:
 ```
 {: .Example}
 
-### Test on Unbalanced Data
+#### 4. Test on Unbalanced Data  {#testunbalanced}
 
-And make sure that this model will generalize to work with unbalanced data:
+We also need to make sure that this model will generalize to work with unbalanced data:
 
 ```
 %spark.pyspark
@@ -490,11 +531,14 @@ z.show(new_eval.get_results())
 ```
 {: .Example}
 
-### Compare Results
-Though this run was faster, its accuracy was inferior: the False Positive Rate (FPR) is too high to use for fraud prediction.
+#### 5. Compare Results  {#compareresults}
+We can now visit the MLflow Tracking UI again to compare the results of this run with our previous one:
 
-<center><img class='log' src='https://s3.amazonaws.com/splice-demo/mlflow_ui_both_runs.png' width='60%' style='z-index:5'></center>
+<img src='https://s3.amazonaws.com/splice-demo/mlflow_ui_both_runs.png' class="indentedTightSpacing">
 
+Though this run was faster, its was not as accurate; the False Positive Rate (FPR) was too high to use for fraud prediction, so we'll move forward with our initial model.
+
+#### 6. Save the run  {#savemodel2}
 We'll save this run to S3 for future testing; however, since we won't be deploying it,  we don't need to log it to MLflow at this time.
 
 ```
@@ -503,8 +547,110 @@ model.save('s3a://splice-demo/fraudDemoPipelineLogisticRegression')
 ```
 {: .Example}
 
+## Deploying the Model with SageMaker  {#deploywithsagemaker}
 
-## Updating the Model with New Data  {#UpdateData}
+Once you've run an experiment run that looks good, you can interface with Amazon SageMaker to deploy your model on AWS, following these steps:
+
+1. [Create an ECR Repository for your Experiment](#createEcr).
+2. [Find your Experiment and Run IDs](#findIds)
+3. [Deploy Your Model](#deploy)
+
+
+### Step 1: Create an ECR Repository  {#createEcr}
+XXXXXXXXXXXXXXXXXXXXXx
+
+### Step 2: Find your Experiment and Run IDs  {#findIds}
+Before deploying your model, you need to have the IDs of the experiment and run that you want to deploy; you can find both of these in the *MLflow Tracking UI*. Follow these steps:
+
+<div class="opsStepsList" markdown="1">
+1. Navigate to port 5001 in your web browser to display the MLflow Tracking UI. For example: `https://myacct-machine.splicemachine.io:5001/#/`.
+
+2. Select the experiment that you want to deploy. In this example, we've selected the experiment named `test_exp`:
+   <img src="images/MlflowTrackingUI1.png" class="indentedTightSpacing" class="indentedTightSpacing">
+
+3. Record the Experiment ID displayed for the experiment; in the above example, we're viewing Experiment ID `1`.
+
+4. Select the ID of the run that you want to deploy; here we've selected the topmost (most recent) run of Experiment `1`. When you click this Run ID, you'll see its details displayed:
+   <img src="images/MLflowTrackingUI2.png" class="indentedTightSpacing">
+
+5. Copy the `Run ID` value to your clipboard.
+</div>
+
+### Step 3: Deploy Your Model  {#deploy}
+Once you know your Experiment and Run ID values, you can use the Splice Machine ML Jobs Tracker to deploy your model. Follow these steps:
+
+<div class="opsStepsList" markdown="1">
+1. Navigate to port 5003 in your web browser to display the MLManager Jobs Tracker. For example:<br />
+`https://myacct-machine.splicemachine.io:5003/#/`
+2. Click the <span class="ConsoleLink">deploy</span> link at the top of the screen to display the deploy form.
+3. Fill in the form fields:
+   <table>
+       <col />
+       <col />
+       <thead>
+           <tr>
+               <th>Field</th>
+               <th>Value</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+               <td><em>Run UUID</em></td>
+               <td>The Run ID that you copied to your clipboard from the MLflow Tracking UI.</td>
+           </tr>
+           <tr>
+               <td><em>Experiment ID</em></td>
+               <td>The ID of the experiment that you recorded from the MLflow Tracking UI. </td>
+           </tr>
+           <tr>
+               <td><em>SageMaker App Name When Deployed</em></td>
+               <td>The name you want to use for your deployed App.</td>
+           </tr>
+           <tr>
+               <td><em>AWS Region</em></td>
+               <td>The AWS regions in which you want the app deployed. Select one of the values from the drop-down list.</td>
+           </tr>
+           <tr>
+               <td><em>Deployment Mode</em>.</td>
+               <td><p>Select one of the values from the drop-down list:</p>
+                    <table class="noBorder" style="margin-left:0; margin-top:0;">
+                        <col />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td><em>Create</em></td>
+                                <td>Create a new deployment.</td>
+                            </tr>
+                            <tr>
+                                <td><em>Replace</em></td>
+                                <td>Replace an existing deployment.</td>
+                            </tr>
+                            <tr>
+                                <td><em>Add</em></td>
+                                <td>??????????????????????????</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+           </tr>
+           <tr>
+               <td><em>Instance Count</em></td>
+               <td>The number of instances that you want deployed.</td>
+           </tr>
+           <tr>
+               <td><em>SageMaker Instance Type</em></td>
+               <td>The AWS instance type that you want to use for your deployment. Select one of the values from the drop-down list.</td>
+           </tr>
+       </tbody>
+   </table>
+
+   Here's an example of a completed deployment form:
+   <img src="images/MlJobDeploy2.png" class="indentedTightSpacing">
+
+4. Click the <span class="ConsoleLink">Submit</span> button to deploy your model.
+</div>
+
+## Retraining the Model with New Data {#UpdateData}
 
 Whenever additional labeled data arrives, we can pull either or both of our models from S3 and run the new data through it, allowing us to easily enhance accuracy over time.
 
