@@ -10,18 +10,18 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# LN or UPPER
+# UCASE or UPPER
 
 `UCASE` or `UPPER` returns a string in which all alphabetic characters
 in the input character expression have been converted to uppercase.
 
-`UPPER` and `UCASE` follow the database locale.
+`UPPER` and `UCASE` follow the database locale unless you specify the `Locale` parameter.
 {: .noteNote}
 
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    UCASE or UPPER ( CharacterExpression ) 
+    UCASE or UPPER ( CharacterExpression [, Locale ] )
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -34,29 +34,23 @@ built-in type that is implicitly converted to a string (but not a bit
 expression).
 {: .paramDefnFirst}
 
+{% include splice_snippets/localeparam.md %}
+
 </div>
 ## Results
 
-The data type of the result is as follows:
+If the *CharacterExpression* evaluates to `NULL`, this function returns `NULL`.
 
-* If the *CharacterExpression* evaluates to `NULL`, this function
-  returns `NULL`.
-* If the *CharacterExpression* is of type
- &nbsp;[`CHAR`](sqlref_builtinfcns_char.html).
-* If the *CharacterExpression* is of type
- &nbsp;[`LONG VARCHAR`](sqlref_datatypes_longvarchar.html).
-* Otherwise, the return type is
- &nbsp;[`VARCHAR`](sqlref_datatypes_varchar.html).
+In general, the type, length, and maximum length of the returned value are the same as the length and maximum length of the *CharacterExpression*. However, the data type, length, and maximum length of the result can be different if you're using a `locale` value that differs from the default locale of your database.
 
-The length and maximum length of the returned value are the same as the
-length and maximum length of the parameter.
+This is because a single character may convert into multiple characters, when a location value is involved. For example, if you're applying this function to a `CHAR` value and the resulting value length exceeds the limits of a `CHAR` value, the result will be a `VARCHAR` value. Similarly, converting a `VARCHAR` value may result in a `LONG VARCHAR` value, and converting a `LONG VARCHAR` value may results in a `CLOB` value.
 
 ## Example
 
 To return the names of players, use the following clause:
 
 <div class="preWrapper" markdown="1">
-    
+
     splice> SELECT UCASE(DisplayName)
        FROM Players
        WHERE ID < 11;
@@ -72,7 +66,30 @@ To return the names of players, use the following clause:
     HARRY PENNELLO
     GREG BROWN
     JASON MINMAN
-    
+
+    10 rows selected
+{: .Example xml:space="preserve"}
+
+</div>
+
+<div class="preWrapper" markdown="1">
+
+    splice> SELECT UPPER(DisplayName, 'en_US')
+       FROM Players
+       WHERE ID < 11;
+    1
+    ------------------------
+    BUDDY PAINTER
+    BILL BOPPER
+    JOHN PURSER
+    BOB CRANKER 
+    MITCH DUFFER 
+    NORMAN AIKMAN 
+    ALEX PARAMOUR 
+    HARRY PENNELLO
+    GREG BROWN
+    JASON MINMAN
+
     10 rows selected
 {: .Example xml:space="preserve"}
 
@@ -95,4 +112,3 @@ To return the names of players, use the following clause:
 
 </div>
 </section>
-
