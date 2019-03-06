@@ -103,6 +103,11 @@ Splice Machine backups run as Spark jobs, submitting tasks to copy HFiles. In th
 
 You can revert to using `distcp`, which uses a MapReduce job that can run into resource issues. For more information, see the [Understanding and Troubleshooting Backups](bestpractices_onprem_backups.html) topic.
 
+## Backup and Restore Compatibility
+
+{% include splice_snippets/backupcompatibility.md %}
+
+
 ## HBase Configuration Options for Incremental Backup {#UsageConfig}
 
 If you're performing incremental backups, you _must_ add the following options to your `hbase-site.xml` configuration file:

@@ -118,6 +118,11 @@ A Boolean value that specifies whether to validate the table backup before resto
 
 This procedure does not return a result.
 
+## Backup and Restore Compatibility
+
+{% include splice_snippets/backupcompatibility.md %}
+
+
 ## Usage
 The source and destination tables must have the same DDL, including the same primary keys and unique constraints. They must also have the same indexes.
 

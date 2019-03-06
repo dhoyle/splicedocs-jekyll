@@ -93,6 +93,11 @@ A Boolean value that specifies whether to validate the schema backup before rest
 * If *validate* is `true`, the backup is validated before the restoration is started. If the validation check finds inconsistencies, the errors are reported to the user, and the schema is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
 {: .nested}
 </div>
+
+## Backup and Restore Compatibility
+
+{% include splice_snippets/backupcompatibility.md %}
+
 ## Results
 
 This procedure does not return a result.

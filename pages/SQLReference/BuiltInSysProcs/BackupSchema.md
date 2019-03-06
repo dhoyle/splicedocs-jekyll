@@ -90,6 +90,11 @@ perform a full backup, and subsequent backups will be incremental.
 
 This procedure does not return a result.
 
+## Backup and Restore Compatibility
+
+{% include splice_snippets/backupcompatibility.md %}
+
+
 ## Backup Resource Allocation
 
 Splice Machine backups run as Spark jobs, submitting tasks to copy HFiles. In the past, Splice Machine backups used the Apache Hadoop `distcp` tool to copy the HFile; `distcp` uses MapReduce to copy, which can require significant resources. These requirements can limit file copying parallelism and reduce backup throughput. Splice Machine backups now can run (and do so by default) using a Spark executor to copy the HFiles, which significantly increases backup performance.

@@ -85,6 +85,11 @@ A Boolean value that specifies whether to validate the backup before restoring f
 * If *validate* is `true`, the backup is validated before the restoration is started. (See [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the database is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
 {: .nested}
 </div>
+
+## Backup and Restore Compatibility
+
+{% include splice_snippets/backupcompatibility.md %}
+
 ## Usage
 
 Restoring you database can take a while, and has several major

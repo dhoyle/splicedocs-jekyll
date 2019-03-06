@@ -29,6 +29,12 @@ these sections:
 * [Using the Backup Operations](#Using)
 * [Backing Up to Cloud Storage](#Backing)
 
+## Backup and Restore Types and Compatibility
+
+To back up and restore your entire database, use these system procedures:
+* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restorepdb.html)
+
 If you only want to back up  or restore the tables and indexes belonging to a specific schema, you can use these procedures:
 * [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html).
@@ -36,6 +42,10 @@ If you only want to back up  or restore the tables and indexes belonging to a sp
 And if you only want to back up or restore a specific table, you can use these procedures:
 * [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html).
+
+
+{% include splice_snippets/backupcompatibility.md %}
+
 
 ## Backup Resource Allocation
 
@@ -91,6 +101,7 @@ and backup jobs is stored in these system tables:
         </tr>
     </tbody>
 </table>
+
 ### Temporary Tables and Backups
 
 There's a subtle issue with performing a backup when you're using a
