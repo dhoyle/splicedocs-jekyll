@@ -72,9 +72,9 @@ We have seen a problem in which the compaction queue grows quite large after imp
 
 Run a full compaction on tables into which you have imported a large amount of data, using the [SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE](sqlref_sysprocs_compacttable.html) system procedure.
 
-## Alter Table Issues
+## Alter Table Limitations
 
-Using ``ALTER TABLE`` against ``PRIMARY KEY`` columns does not currently work properly.
+You can only use `ALTER TABLE` to add or remove `PRIMARY KEY` columns if the table being altered is empty.
 
 
 ## Default Value for Lead and Lag Functions

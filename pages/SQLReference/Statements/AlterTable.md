@@ -16,7 +16,7 @@ The `ALTER TABLE` statement allows you to modify a table in a variety of
 ways, including adding and dropping columns and constraints from the
 table.
 
-In this release, you <strong>cannot</strong> use <code>ALTER TABLE</code> to add a primary key.
+In this release, you <strong>can only</strong> use <code>ALTER TABLE</code> to add or drop a primary key if the table is empty.
 {: .noteIcon}
 
 ## Syntax
@@ -294,9 +294,10 @@ This section provides examples of using the `ALTER TABLE` statement:
 * [Example 3: Dropping a column](#example3)
 * [Example 4: Changing Varchar Column Width](#example4)
 * [Example 5: Changing Increment Value](#example5)
-* [Example 6: Adding a Foreign Key After Table Creation](#example6)
-* [Example 7: Adding a Foreign Key in Table With Invalid Data](#example7)
-* [Example 8: Dropping a Foreign Key Constraint](#example8)
+* [Example 6: Adding a Primary Key](#example6)
+* [Example 7: Adding a Foreign Key After Table Creation](#example7)
+* [Example 8: Adding a Foreign Key in Table With Invalid Data](#example8)
+* [Example 9: Dropping a Foreign Key Constraint](#example9)
 
 
 ### Example 1: Adding Columns to a Table {#example1}
@@ -463,7 +464,29 @@ changing the increment for that column:
 
 </div>
 
-### Example 6: Adding a Foreign Key After Table Creation {#example6}
+### Example 6:Adding a Primary Key {#example6}
+
+This example shows adding a primary key to an empty table.
+{: .body}
+
+In this release, you <strong>can only</strong> use <code>ALTER TABLE</code> to add or drop a primary key if the table is empty.
+{: .noteIcon}
+
+<div class="preWrapperWide" markdown="1">
+
+    splice> create table pktest (i int);
+    0 rows inserted/updated/deleted
+    splice> alter table pktest add primary key (i);
+    0 rows inserted/updated/deleted
+    splice> show primarykeys from pktest;
+    TABLE_NAME                    |COLUMN_NAME                   |KEY_SEQ   |PK_NAME
+    -------------------------------------------------------------------------------------------------------
+    PKTEST                        |I                             |1         |SQL190306171640400
+{: .Example xml:space="preserve"}
+</div>
+
+
+### Example 7: Adding a Foreign Key After Table Creation {#example7}
 This example shows adding a foreign key into a table that already contains data, and then attempting an invalid insertion to demonstrate that the new constraint is active:
 {: .body}
 
@@ -486,7 +509,7 @@ This example shows adding a foreign key into a table that already contains data,
 {: .Example xml:space="preserve"}
 </div>
 
-### Example 7: Adding a Foreign Key in Table With Invalid Data {#example7}
+### Example 8: Adding a Foreign Key in Table With Invalid Data {#example8}
 This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the new constraint:
 {: .body}
 
@@ -509,7 +532,7 @@ This example shows an attempt to add a foreign key into a table that already con
 </div>
 
 
-### Example 8: Dropping a Foreign Key Constraint {#example8}
+### Example 9: Dropping a Foreign Key Constraint {#example9}
 This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the new constraint, and then after dropping the constraint. Since the constraint is unnamed, we can specify its ID, which you can find by joining [`SYS.SYSCONSTRAINTS`](sqlref_systables_sysconstraints.html) with [`SYS.SYSTABLES`](sqlref_systables_systables.html). In this example, an earlier error message shows us the ID, so we don't need to look it up:
 {: .body}
 
