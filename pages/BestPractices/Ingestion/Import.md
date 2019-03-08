@@ -15,7 +15,7 @@ folder: BestPractices/Database
 
 This topic presents examples of using the Splice Machine standard flat file ingestion methods: `IMPORT_DATA`, `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA`, and contrasts the results of importing the same data with each method.
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_intro.html).
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_intro.html) in this section; for examples of using bulk HFile import with flat files, see [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html), also in this section.
 
 
 ## Selecting the Best Method for Your Situation
@@ -25,19 +25,60 @@ Please make sure you can answer these questions before trying to determine the b
 * *Will you be importing all new data, or will you also be updating some existing records?*
 * *Do you need constraint checking applied as the data is inserted into your database?*
 
-Splice Machine provides three standard import procedures for ingesting flat files into your database. Each of the three system procedures uses the same parameters, which are summarized below, in [Table 1](#table1). Each procedure applies constraint checking during ingestion.
+Splice Machine provides three standard import procedures for ingesting flat files into your database. Each of the three system procedures uses the same parameters, which are summarized below, in [Table 1](#table1). Each procedure applies constraint checking during ingestion; what distinguishes the procedures is how each handles updating existing records in a database during ingestion. Here's a summary:
+
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Import Method</th>
+            <th>How it Handles Updating Existing Records</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>SYSCS_UTIL.IMPORT_DATA</code></td>
+            <td>Does not update existing records.</td>
+        </tr>
+        <tr>
+            <td><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></td>
+            <td><p>Updates existing records when a match is found in the source file.</p>
+                <p>If the matching record in the source does not contain a value for a column in the database record, `UPSERT` updates the database record to have the default value for that column; if there is no default, the column value is set to `NULL`.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></td>
+            <td><p>Updates existing records when a match is found in the input.</p>
+                <p>If the matching record in the source does not contain a value for a column in the database record, `MERGE` does not modify the value in the database record.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 Which procedure you use depends on how you want to handle updating existing records during ingestion:
 
 * If you're importing all new data and not updating existing records, use the `SYSCS_UTIL.IMPORT_DATA` procedure.
 
-* If you're adding new data and updating existing records, the procedure you should use depends on how you want to handle updating an existing column value when the input column does not have a value:
+* If you're adding new data and updating existing records, the procedure you should use depends on how you want to handle updating an existing column value when the input column does not have a value. As you'll see in the examples below, this can be of particular interest with regard to tables with generated column values:
   * Use the `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` procedure if you want the column value modified to its default value (or `NULL` if no default value is defined for the column in the schema).
-  * Use the `SYSCS_UTIL.MERGE_DATA_FROM_FILE` procedure if you want the column values left unmodified when no corresponding column value is present in the input.
+  * Use the `SYSCS_UTIL.MERGE_DATA_FROM_FILE` procedure if you want the column value left unmodified when no corresponding column value is present in the input.
 
 The [Examples](#Examples) section below shows an example of using each procedure and contrasts the results of importing data with them.
 
-## Parameters Used With the Data File Import Procedures  {#table1}
+## How to Use the Import Procedures
+
+All three of the standard import procedures follows the same calling pattern; for example, the following call tells `IMPORT_DATA` to import the data in the `myData.csv` file into the `playerTeams` table in the `SPLICE` schema in your database.
+
+```
+call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'playerTeams', null, 'myData.csv',
+       null, null, null, null, null, 0, 'importErrsDir', true, null);
+```
+{: .Example}
+
+The above call to `IMPORT_DATA` includes a number of `null` values, which indicate that default values should be used for those parameters: date and time values are formatted in standard format, commas are used to separate values, and string values are enclosed in double quotes. The `0` value means that the import should be terminated as soon as any bad input record is detected, and the `importErrsDir` names the directory into which any input errors are logged. The next section describes the parameters that you use with these calls.
+
+### Parameters Used With the Data File Import Procedures  {#table1}
 The Splice Machine standard import procedures all use these parameter values:
 
 <table>
@@ -73,7 +114,7 @@ The Splice Machine standard import procedures all use these parameter values:
         </tr>
         <tr>
             <td class="CodeFont">characterDelimiter</td>
-            <td>The character used to delimit strings in the imported data.</td>
+            <td>The character used to delimit strings in the imported data; the default is the double-quote (<code>"</code>) character.</td>
         </tr>
         <tr>
             <td class="CodeFont">timestampFormat</td>
@@ -89,7 +130,7 @@ The Splice Machine standard import procedures all use these parameter values:
         </tr>
         <tr>
             <td class="CodeFont">badRecordsAllowed</td>
-            <td>The number of rejected (bad) records that are tolerated before the import fails.</td>
+            <td>The number of rejected (bad) records that are tolerated before the import fails. A value of `0` means that the import terminates as soon as a single bad record is detected; a value of `-1` means that all bad records are tolerated and logged.</td>
         </tr>
         <tr>
             <td class="CodeFont">badRecordDirectory</td>
@@ -106,7 +147,22 @@ The Splice Machine standard import procedures all use these parameter values:
     </tbody>
 </table>
 
+### After Importing Data
+
+Splice Machine recommends running a major compaction on a table after ingesting a significant amount of data into that table. For more information, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).
+
 ## Example: Comparing the Standard File Import Methods  {#Examples}
+
+This section presents a simple example of using each of the standard import procedures and compares the results, so you can understand how `IMPORT`, `UPSERT`, and `MERGE` handle situations differently. We'll:
+
+1. Create three simple tables, one for each standard import procedure: `testImport`, `testUpsert`, and `testMerge`.
+2. Access a simple data named `ttest.csv` file on S3.
+3. Import data from that file into the `testImport` table.
+4. Insert the same data into the `testUpsert` and `testMerge` tables, so we can then compare what happens when we upsert and merge the same data file into them.
+5. Upsert data from the `ttest.csv` file into the `testUpsert` table.
+6. Merge data from the `ttest.csv` file into the `testMerge` table.
+7. Compare the results to understand how upserting and merging differ.
+
 Follow the steps in this example to contrast how `IMPORT_DATA`, `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA` work:
 
 1.  __Create 3 simple tables, `testImport`, `testUpsert`, and `testMerge`:__

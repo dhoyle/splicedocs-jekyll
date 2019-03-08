@@ -82,7 +82,10 @@ are imported:
 
 <div class="preWrapperWide" markdown="1">
     call SYSCS_UTIL.IMPORT_DATA('SPLICE','playerTeams',null, 'myData.csv',
-       null, null, null, null, null, 0, 'importErrsDir', true, null);SELECT * FROM playerTeams ORDER by ID;ID   |TEAM
+       null, null, null, null, null, 0, 'importErrsDir', true, null);
+    SELECT * FROM playerTeams ORDER by ID;
+
+    ID   |TEAM
     --------------
     1    |Cards2    |Giants
     3    |Royals3 rows selected

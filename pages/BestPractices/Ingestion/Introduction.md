@@ -19,7 +19,7 @@ The best way to proceed is to follow these steps:
 1. Use [Table 1](#table1), below, to determine which use case applies to your situation, and click the *Read this section* link for your use case.
 2. Read the summary information in that section to learn how to ingest your data.
 3. Click the link in that section to the examples topic for your ingestion use case.
-4. Ingest your data!
+4. Review the relevant examples and apply the pattent to ingesting your data.
 
 
 ## Pick Your Use Case  {#table1}
@@ -67,7 +67,8 @@ Where the data that you're ingesting is coming from defines which approach you s
 The most common ingestion scenario is importing flat files into your Splice Machine database.
 process significantly improves data loading performance by temporarily splitting your tables and indexes into Hadoop HFiles and loading your data from those files.
 
-Splice Machine provides two major pathways for importing data and indexes from flat files into your database: our *standard import* system procedures are great for flat files, and our *bulk HFile import* procedures boosts performance by pre-splitting your data into Hadoop HFiles and ingesting those. Each pathway has several variations that offer different levels of complexity, performance, and functionality, as summarized in the following table:
+Splice Machine provides two major pathways for importing data and indexes from flat files into your database: our *standard import* system procedures are great for flat files, and our *bulk HFile import* procedures boosts performance by pre-splitting your data into Hadoop HFiles and ingesting those. Each pathway has several variations that offer different levels of complexity, performance, and functionality.
+ as summarized in the following table:
 
 <table>
     <col width="10%" />
@@ -144,14 +145,16 @@ Splice Machine provides two major pathways for importing data and indexes from f
     </tbody>
 </table>
 
-All of the file import procedures require you to specify information about your data such as: which delimiters are used, how dates and times are formatted, which character set is used, and how to handle invalidly formatted input records.
-
 Here are a few key factors that will guide your choice of procedure for importing your files:
 
 * If you are updating existing records in your database during ingestion, you *must* use one of the standard import procedures; bulk HFile import *cannot update records*.
 * If you need constraints applied during ingestion, you *must* use one of the standard import procedures; bulk HFile import *does not apply constraint checking*.
-* Which standard import procedure you use is determined by how you want existing records updated, as described in the [*Importing Flat Files*](bestpractices_ingest_import.html) topic in this section.
+* Which standard import procedure (`IMPORT`, `UPSERT`, or `MERGE`) you use is determined by how you want existing records updated, as described in the [*Importing Flat Files*](bestpractices_ingest_import.html) topic in this section.
 * Which bulk import procedure you use is determined by how you want to split your data into HFiles and how performant the ingestion process must be, as described in the [*Bulk Importing Flat Files*](bestpractices_ingest_bulkimport.html) topic in this section.
+
+Note that all of the file import procedures require you to specify the same information about your data, such as: which delimiters are used, how dates and times are formatted, which character set is used, and how to handle invalidly formatted input records. You basically point the procedure at your source data and destination table/index, specify a few parameters, and start loading your data. With bulk HFile importing, you also need to decide how you want your data pre-split before starting the import.
+
+Splice Machine recommends running a major compaction on a table after ingesting a significant amount of data into that table. For more information, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).
 
 No matter which method you decide upon, we strongly recommend debugging your ingest process with a small data sample before jumping into importing a large dataset.
 {: .noteIcon}
@@ -166,6 +169,14 @@ This section presents two versions of an example of using Spark streaming to ing
 
 
 ## Ingesting Data With an External Table  {#externaltable}
+
+## See Also
+
+* [Importing Flat Files](bestpractices_ingest_import.html)
+* [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
+* [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
+* [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
+* [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
 
 </div>
 </section>
