@@ -144,9 +144,14 @@ Splice Machine provides two major pathways for importing data and indexes from f
     </tbody>
 </table>
 
+All of the file import procedures require you to specify information about your data such as: which delimiters are used, how dates and times are formatted, which character set is used, and how to handle invalidly formatted input records.
 
-* You'll find examples of using the standard import methods in the [*Importing Flat Files*](bestpractices_ingest_import.html) topic, in this section.
-* You'll find examples of using the bulk import methods in the [*Bulk Importing Flat Files*](bestpractices_ingest_bulkimport.html) topic, also in this section.
+Here are a few key factors that will guide your choice of procedure for importing your files:
+
+* If you are updating existing records in your database during ingestion, you *must* use one of the standard import procedures; bulk HFile import *cannot update records*.
+* If you need constraints applied during ingestion, you *must* use one of the standard import procedures; bulk HFile import *does not apply constraint checking*.
+* Which standard import procedure you use is determined by how you want existing records updated, as described in the [*Importing Flat Files*](bestpractices_ingest_import.html) topic in this section.
+* Which bulk import procedure you use is determined by how you want to split your data into HFiles and how performant the ingestion process must be, as described in the [*Bulk Importing Flat Files*](bestpractices_ingest_bulkimport.html) topic in this section.
 
 No matter which method you decide upon, we strongly recommend debugging your ingest process with a small data sample before jumping into importing a large dataset.
 {: .noteIcon}
