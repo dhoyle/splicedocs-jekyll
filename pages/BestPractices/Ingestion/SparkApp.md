@@ -13,21 +13,18 @@ folder: BestPractices/Database
 
 # ﻿Best Practices: Ingesting Data in a Spark App
 
-This topic
+This topic describes how to use the Splice Machine Native Spark DataSource to load data with Spark into a table in your database.
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_intro.html).
-
-
-##
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
 
 
+## About the Splice Machine Native Spark DataSource
 
-## Ingesting with the Native Spark DataSource  {#sparkadapter}
 The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Zeppelin notebooks.
 
-### Notebook Example of The Native Spark DataSource
+## Notebook Example of Loading Data with the Native Spark DataSource
 
-This section presents a simple Zeppelin notebook example of moving data between a Spark DataFrame and a Splice Machine table in these steps:
+This section presents a simple Zeppelin notebook example, written in Scala, of moving data between a Spark DataFrame and a Splice Machine table:
 
 1.  __Create the context:__
 
@@ -45,6 +42,8 @@ This section presents a simple Zeppelin notebook example of moving data between 
 
 2.  __Create a DataFrame in Scala and populate it:__
 
+    Again using the `%spark` interpreter in Zeppelin, we create a DataFrame and populate it with a little data:
+
     ```
     %spark
     val carsDF = Seq(
@@ -59,7 +58,7 @@ This section presents a simple Zeppelin notebook example of moving data between 
     Though this DataFrame contains only a very small amount of data, the code in this example can be scaled to DataFrames of any size.
     {: .spaceAbove}
 
-3.  __Create a Table in your Splice Machine Database__
+3.  __Create a Table in your Splice Machine Database:__
 
     Now we'll create a simple table in our database, using the `%splicemachine` interpreter in Zeppelin:
 
@@ -73,7 +72,7 @@ This section presents a simple Zeppelin notebook example of moving data between 
 
 4.  __Populate the Database Table from the DataFrame:__
 
-    To ingest all of the data in the DataFrame into your database, simply use the `Insert` method of the Spark Adapter:
+    To ingest all of the data in the DataFrame into your database, simply use the `Insert` method of the Splice Machine Native Spark DataSource:
 
     ```
     %spark
@@ -86,7 +85,7 @@ This section presents a simple Zeppelin notebook example of moving data between 
 
 
 ## See Also
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_intro.html).
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
 
 The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
 
@@ -94,8 +93,7 @@ The other topics in this *Best Practices: Ingestion* section provide examples of
 * [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
 * [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
 * [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
-
-XXXXXXXXXXXXXXX link to native spark datasource info XXXXXXXXXXXXXx
+* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
 
 </div>
 </section>

@@ -5,14 +5,14 @@ keywords: ingest, import
 toc: false
 product: all
 sidebar: bestpractices_sidebar
-permalink: bestpractices_ingest_intro.html
+permalink: bestpractices_ingest_overview.html
 folder: BestPractices/Ingest
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# ﻿Best Practices: Ingesting Data
-This topic describes the different data ingestion use case for ingesting data into Splice Machine, and helps you to quickly identify which applies to your situation. It then provides a summary of that specific ingestion scenario, and links to another topic in this section that contains one or more detailed examples of implementing ingestion for such a use case.
+# ﻿Best Practices: Ingesting Data - Overview
+This topic describes the different data ingestion use cases for ingesting data into Splice Machine, and helps you to quickly identify which applies to your situation. It then provides a summary of that specific ingestion scenario, and links to another topic in this section that contains one or more detailed examples of implementing ingestion for such a use case.
 
 The best way to proceed is to follow these steps:
 
@@ -162,6 +162,10 @@ No matter which method you decide upon, we strongly recommend debugging your ing
 ## Ingesting with the Native Spark DataSource  {#sparkadapter}
 The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Zeppelin notebooks.
 
+Ingesting data into your database from Spark is simple: once the data is in a Spark DataFrame, you use the Native Spark DataSource's `insert` operation to insert the data into a table in your database. This operation is extremely quick, as Splice Machine reads the data into the table directly, without serializing it, sending it over a wire, and deserializing. You can similarly move data from a Splice Machine table into a Spark DataFrame with a single, non-serialized operation.
+
+The [*Ingesting Data in a Spark App*](bestpractices_ingest_sparkapp.html) topic contains examples of using the Native Spark DataSource in both a Zeppelin notebook and with Spark submit.
+
 ## Ingesting Streaming Data  {#streaming}
 
 This section presents two versions of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps: one version that runs in a Zeppelin notebook, and a second version that runs via spark-submit.
@@ -170,6 +174,14 @@ This section presents two versions of an example of using Spark streaming to ing
 
 ## Ingesting Data With an External Table  {#externaltable}
 
+Splice Machine supports *external tables*, which are flat files that you can reference, query, and update inside your database. One common use for external tables is to facilitate ingesting the data in a flat file into a table that you've created in your database. All you need to do is:
+
+* Use the `CREATE EXTERNAL TABLE` statement to specify where your external file is and how it is formatted.
+* Use the `INSERT INTO` statement to select data from the external file and insert it into a table in your database.
+
+The [*Ingesting Data From an External Table*](bestpractices_ingest_externaltbl.html) topic contains an example of importing data from an ORC file.
+
+
 ## See Also
 
 * [Importing Flat Files](bestpractices_ingest_import.html)
@@ -177,6 +189,7 @@ This section presents two versions of an example of using Spark streaming to ing
 * [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
 * [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
 * [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
+* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
 
 </div>
 </section>

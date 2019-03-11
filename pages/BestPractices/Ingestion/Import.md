@@ -11,14 +11,14 @@ folder: BestPractices/Database
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# ﻿Best Practices: Importing Flat File
+# ﻿Best Practices: Importing Flat Files
 
 This topic presents examples of using the Splice Machine standard flat file ingestion methods: `IMPORT_DATA`, `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA`, and contrasts the results of importing the same data with each method.
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_intro.html) in this section; for examples of using bulk HFile import with flat files, see [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html), also in this section.
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html) in this section; for examples of using bulk HFile import with flat files, see [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html), also in this section.
 
 
-## Selecting the Best Method for Your Situation
+## Selecting the Best Flat File Ingest Method for Your Situation
 
 Please make sure you can answer these questions before trying to determine the best method for importing your files:
 
@@ -326,7 +326,7 @@ __You'll notice that:__
 
 ## See Also
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_intro.html).
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
 
 The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
 
@@ -334,6 +334,7 @@ The other topics in this *Best Practices: Ingestion* section provide examples of
 * [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
 * [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
 * [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
+* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:
 

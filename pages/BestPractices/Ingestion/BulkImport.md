@@ -27,7 +27,7 @@ This topic starts with a discussion of bulk HFile importing and pre-splitting yo
 You can also use bulk HFiles to speed up performance of the `INSERT` statement, as shown in the [Bulk Insert](#bulkinsert) example at the end of this topic.
 {: .noteNote}
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_intro.html); for examples of using our standard flat file import procedures, see [Importing Flat Files](bestpractices_ingest_import.html), also in this section.
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html); for examples of using our standard flat file import procedures, see [Importing Flat Files](bestpractices_ingest_import.html), also in this section.
 
 ## How to Use Bulk HFile Import
 
@@ -434,7 +434,7 @@ SELECT * FROM licensedUserInfo;
 ```
 {: .Example}
 
-When you use `bulkImportDirectory` with the `INSERT` statement, you must also specify these two hints:
+When you use `bulkImportDirectory` with the `INSERT` statement, you __must also specify these two hints:
 {: .spaceAbove}
 
 * `useSpark=true`, since Splice Machine uses Spark to generate the HFiles
@@ -442,7 +442,7 @@ When you use `bulkImportDirectory` with the `INSERT` statement, you must also sp
 
 
 ## See Also
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_intro.html).
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
 
 The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
 
@@ -450,6 +450,7 @@ The other topics in this *Best Practices: Ingestion* section provide examples of
 * [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
 * [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
 * [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
+* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:
 
