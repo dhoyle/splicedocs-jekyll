@@ -31,6 +31,7 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
             <td>Database Release Notes</td>
             <td><p>Release notes for the Splice Machine database, which is the basis for both our <em>Database-as-Service</em> and <em>On-Premise Database</em> products. Each major and patch release has its own page of notes:</p>
             <ul>
+                <li><a href="releasenotes_2.7.1908.html">Patch Release 2.7.0.1908</a></li>
                 <li><a href="releasenotes_2.7.1907.html">Patch Release 2.7.0.1907</a></li>
                 <li><a href="releasenotes_2.7.1906.html">Patch Release 2.7.0.1906</a></li>
                 <li><a href="releasenotes_2.7.1905.html">Patch Release 2.7.0.1905</a></li>
