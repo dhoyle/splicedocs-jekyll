@@ -12,6 +12,8 @@ folder: BestPractices/Ingest
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
 # ﻿Best Practices: Ingesting Data - Overview
+
+Welcome to the Splice Machine *Ingesting Data* Best Practices XXX
 This topic describes the different data ingestion use cases for ingesting data into Splice Machine, and helps you to quickly identify which applies to your situation. It then provides a summary of that specific ingestion scenario, and links to another topic in this section that contains one or more detailed examples of implementing ingestion for such a use case.
 
 The best way to proceed is to follow these steps:
