@@ -43,17 +43,19 @@ plain text or Avro file.
 
 ### Importing Data From an External Table
 
-You can import data from an external table by using the `INSERT INTO` statement. For example:
+Once you've got an external table defined, you can import data from it into your Splice Machine database table by using the `INSERT INTO` statement. For example:
 
 ```
 INSERT INTO myTable SELECT * FROM myExternalTable;
 ```
 
-## Example: Loading Data From an Orc File
+***********NOTE: RE: Cloud currently means S3*******************
+
+## Example: Loading Data From an ORC File
 
 This example loads data from an ORC file that is in `/tmp` into a table in your database, in these steps:
 
-1.  __Create an external table named `LINEITEM_ext` in your database that is linked to an ORC file:__
+1.  __Create an external table named `LINEITEM_ext` in your database that points to an existing ORC file:__
 
     ```
     CREATE EXTERNAL TABLE LINEITEM_ext
@@ -112,7 +114,7 @@ This example loads data from an ORC file that is in `/tmp` into a table in your 
     ```
     {: .Example}
 
-
+4. __
 
 ## See Also
 

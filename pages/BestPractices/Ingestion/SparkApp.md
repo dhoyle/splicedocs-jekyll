@@ -24,6 +24,8 @@ The *Splice Machine Native Spark DataSource* allows you to directly insert data 
 
 ## Notebook Example of Loading Data with the Native Spark DataSource
 
+*********OTHER EXAMPLES IN ZEPP***************
+
 This section presents a simple Zeppelin notebook example, written in Scala, of moving data between a Spark DataFrame and a Splice Machine table:
 
 1.  __Create the context:__
