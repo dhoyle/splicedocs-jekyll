@@ -13,7 +13,7 @@ folder: BestPractices/Database
 
 # ﻿Best Practices: Bulk Importing Flat Files
 
-This topic describes using our `BULK_IMPORT_HFILE` procedure to import flat files into your Splice Machine database. Bulk HFile import yields high performance for larger datasets by pre-splitting your files into Hadoop HFiles; the splitting can be done in three ways: automatic sampling, by key values, and by row, each of which has complexity/performance trade-offs.
+This topic describes using our `BULK_IMPORT_HFILE` procedure to import flat files into your Splice Machine database. Our Bulk HFile import yields high performance for larger datasets by pre-splitting your files into Hadoop HFiles; the splitting can be done in three ways: automatic sampling, by key values, and by row, each of which has complexity/performance trade-offs.
 
 When you use Bulk HFile importing, constraint checking is not applied as your data is loaded into your database. If you need constraint checking, please use our [standard import procedures](bestpractices_ingest_import.html).
 {: .noteImportant}
@@ -27,17 +27,13 @@ This topic starts with a discussion of bulk HFile importing and pre-splitting yo
 You can also use bulk HFiles to speed up performance of the `INSERT` statement, as shown in the [Bulk Insert](#bulkinsert) example at the end of this topic.
 {: .noteNote}
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html); for examples of using our standard flat file import procedures, see [Importing Flat Files](bestpractices_ingest_import.html), also in this section.
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html); for examples of using our standard flat file import procedures, see [Importing Flat Files](bestpractices_ingest_import.html), also in this section.
 
 ## How to Use Bulk HFile Import
 
-You use bulk HFile import just as you would use our standard import procedures, with one additional requirement: the data has to be pre-split into HFiles before it is imported into your database. You can use three different methods of pre-splitting your data, each of which has complexity/performance trade-offs.
+You use bulk HFile import just as you would use our standard import procedures, with one additional requirement: our `BULK_IMPORT_HFILE` procedure has to be pre-split into temporary HFiles (store files) before it is imported into your database by directly loading the generated StoreFiles into your Region Servers. Ideally, the temporary HFiles are of approximately equal size, which spreads your data evenly across the Region Servers.
 
-The Bulk Import options enhance ingestion performance for larger datasets by pre-splitting the input data into temporary HBase HFiles (store files), then using the HBase bulk import mechanism to then directly load the generated StoreFiles into your Region Servers. The `BULK_IMPORT_HFILE` procedure can use sampling to determine which keys to use and split the data; this generally produces excellent results.
-
-If you already know which key values will produce even splits of your data, you can create a csv file of key values to use, and call our `SPLIT_TABLE_OR_INDEX` procedure to pre-split your data prior to calling `BULK_IMPORT_HFILE`; this further enhances ingest performance.  For some especially large datasets, it can be worthwhile to go even one step further by using exact row boundaries to pre-split your data; this requires expertise and introduces extra complexity, but can also push performance.
-
-Here's a typical call to `BULK_IMPORT_HFILE`; this bulk imports data in the `/TPCH/1/LINEITEM` file into a table named `LINEITEM` in the `TPCH` schema in your database. It uses :
+You can use three different methods of pre-splitting your data, each of which has complexity/performance trade-offs, as described in the next section. Here's a typical call to `BULK_IMPORT_HFILE`; this call uses sampling (the simplest method) to split the data and imports data in the `/TPCH/1/LINEITEM` file into a table named `LINEITEM` in the `TPCH` schema in your database:
 
 ```
 call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,
@@ -46,50 +42,59 @@ call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,
 ```
 {: .Example}
 
-The above call to `BULK_IMPORT_HFILE` includes a number of `null` values, which indicate that default values should be used for those parameters: date and time values are formatted in standard format, commas are used to separate values, and string values are enclosed in double quotes. The `-1` value means that the import should continue processing when any bad input records are found, logging input errors to files in the `hdfs:///tmp/test_hfile_import` directory. The `false` final parameter tells `BULK_IMPORT_HFILE` that it should sample the input data and perform the pre-splits itself. The next section includes descriptions of the parameters that you use for bulk importing.
+The above call to `BULK_IMPORT_HFILE` includes a number of `null` values, which indicate that default values should be used for those parameters. In this call:
 {: .spaceAbove}
+
+* Date and time values are formatted in standard format
+* Commas are used to separate values
+* String values are enclosed in double quotes
+* The `-1` value means that the import should continue processing when any bad input records are found, logging input errors to files in the `hdfs:///tmp/test_hfile_import` directory
+* The `false` final parameter (`skipSampling=false`) tells `BULK_IMPORT_HFILE` that it should sample the input data and perform the pre-splits itself. The next section includes descriptions of the parameters that you use for bulk importing.
 
 ### About Pre-Splitting Your Data
 Pre-splitting is the process of preparing and loading HFiles (HBase’s own file format) directly into the RegionServers, thus bypassing the write path; this requires significantly less resources, reduces latency, and avoids frequent garbage collection, all of which can occur when importing un-split datasets, especially when they're very large. Optimally, your data should be split into almost equal-sized HFiles, which allows the data to be spread evenly across your cluster nodes and allows for maximum parallelism.
 
-The following table summarizes the methods you can use to pre-split your data for bulk HFile ingestion:
+The following table summarizes the three methods for pre-splitting your data for bulk HFile ingestion:
+
 
 <table>
     <col />
     <col />
+    <col />
     <thead>
         <tr>
-            <th>Pre-Splitting Methodology</th>
-            <th>Trade-offs</th>
-            <th>Description</th>
+            <th>Pre-split Method</th>
+            <th>Added Complexity</th>
+            <th>Discussion</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Sampled splitting</td>
-            <td>Excellent performance, low complexity</td>
-            <td><p>You simply specify the <code>BULK_IMPORT_HFILE</code> should sample your data to compute and perform the splitting.</p>
+            <td>Sampling</td>
+            <td>None</td>
+            <td><p>Simply tell <code>BULK_IMPORT_HFILE</code> to sample your data to determine the splits. This generally produces excellent performance.</p>
                 <p>See the <a href="bulksampled">Bulk Import with Sampled Splitting Example</a> below.</p>
             </td>
         </tr>
         <tr>
-            <td>Keys supplied for splitting</td>
-            <td>Better performance, additional complexity</td>
-            <td><p>You manually supply, in a csv file, key values to split the data into HFiles and call the <code>SYSCS_SPLIT_TABLE_OR_INDEX</code> procedure to split the data into HFiles prior to calling <code>BULK_IMPORT_HFILE</code>.</p>
+            <td>Split Keys Provided</td>
+            <td>Moderate</td>
+            <td><p>You need to determine which key values will yield roughly equal splits and specify them in a CSV file. This can improve the performance of bulk ingestion.</p>
+                <p>To use this method, you pass the CSV file to the <code>SPLIT_TABLE_OR_INDEX</code> procedure to pre-split the data, and then call the <code>BULK_IMPORT_HFILE</code> procedure to import the HFiles.</p>
                 <p>See the <a href="#bulksplitkeys">Bulk Import with Key Value Pre-Splits</a> for an example.</p>
             </td>
         </tr>
         <tr>
-            <td>Row boundaries supplied for splitting</td>
-            <td>Best performance, most complexity</td>
-            <td><p>You manually supply, in a csv file, row boundaries in your source file where the data should be split. You then call the  <code>SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS</code> procedure to split the data into HFiles prior to calling <code>BULK_IMPORT_HFILE</code>.</p>
+            <td>Row Boundaries Provided</td>
+            <td>High</td>
+            <td><p>You need to find the row boundaries in your data that will yield roughly equal splits and specify them in a CSV file. This requires the most examination of your data, and can produce the best performance.</p>
+                <p>To use this method, you pass the CSV file to the <code>SPLIT_TABLE_OR_INDEX_AT_POINTS</code> procedure to pre-split the data, and then call the <code>BULK_IMPORT_HFILE</code> procedure to import the HFiles.</p>
                 <p>See the example in the <a href="#bulksplitrows">Bulk Import with Row Pre-Splits</a> section below.</p>
-                <p class="noteImportant">Determining row splits requires significant expertise; Splice Machine recommends that you only use this approach if you're confident in your ability to accurately determine the splits.</p>
+                <p class="noteIcon">Due to the complexity of this approach, Splice Machine recommends reserving it for extreme circumstances, such as needing to ingest enormous data files in a highly performant manner.</p>
             </td>
         </tr>
     </tbody>
 </table>
-
 
 ### Parameters Used With the Data File Bulk Import Procedures  {#table1}
 
@@ -193,6 +198,7 @@ To use Bulk HFile import with sampled splitting, you can follow these steps:
     {: .Example}
 
     Note that the final parameter, `skipSampling` is `false` in the above call; this tells `BULK_IMPORT_HFILE` to split the data based on its own sampling.
+    {: .spaceAbove}
 <br />
 
 ## Example: Bulk Import with Key Value Pre-Splits  {#bulksplitkeys}
@@ -211,6 +217,7 @@ If you don't get the performance you're hoping from with sampled bulk import, yo
     {: .Example}
 
 	For every N lines of split data you specify, you’ll end up with N+1 regions; for example, the above 3 splits will produce these 4 regions:
+    {: .spaceAbove}
 
 	```
 	0 -> 1500000
@@ -442,15 +449,6 @@ When you use `bulkImportDirectory` with the `INSERT` statement, you __must also 
 
 
 ## See Also
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
-
-The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
-
-* [Importing Flat Files](bestpractices_ingest_import.html)
-* [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
-* [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
-* [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
-* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:
 

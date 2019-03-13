@@ -13,10 +13,9 @@ folder: BestPractices/Database
 
 # ﻿Best Practices: Ingesting Data From an External Table
 
-This topic describes how to ingest data stored in an external table into a Splice Machine database.
+This topic describes how to ingest data stored in an external table into a Splice Machine database. For general information about using external tables, see [Using External Tables](developers_fundamentals_externaltables.html).
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
-
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
 
 ## About External Tables
 
@@ -82,6 +81,8 @@ This example loads data from an ORC file that is in `/tmp` into a table in your 
     ```
     {: .Example}
 
+    You can also link to external tables stored in the Cloud. Splice Machine currently supports access to external tables that are stored in AWS S3 buckets.
+
 2.  __Create an internal table named `LINEITEM` in your database to load data into:__
 
     ```
@@ -113,23 +114,6 @@ This example loads data from an ORC file that is in `/tmp` into a table in your 
     INSERT INTO LINEITEM SELECT * FROM LINEITEM_EXT;
     ```
     {: .Example}
-
-4. __
-
-## See Also
-
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
-
-For information about using external tables, see [Using External Tables](developers_fundamentals_externaltables.html).
-
-The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
-
-* [Importing Flat Files](bestpractices_ingest_import.html)
-* [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
-* [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
-* [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
-* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
-
 
 </div>
 </section>

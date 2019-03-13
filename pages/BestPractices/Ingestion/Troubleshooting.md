@@ -18,6 +18,8 @@ This topic provides troubleshooting help for specific ingestion scenarios, in th
 * [Ingestion Troubleshooting Tips for the Splice Machine Database](#dbtips)
 * [Ingestion Troubleshooting Tips for On-Premise Database Product Only](#dbtips)
 
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
+
 ## Ingestion Troubleshooting Tips for the Splice Machine Database  {#dbtips}
 This section contains the following tips for troubleshooting ingestion of data into your Splice Machine database:
 
@@ -96,7 +98,7 @@ When using Splice Machine with Spark with Cloudera, bulk import of very large da
 
 ## See Also
 
-* [Best Practices: Ingesting Data Overview](bestpractices_ingest_overview.html.html)
+* [Best Practices: Ingesting Data Overview](bestpractices_ingest_overview.html)
 * [Importing Flat Files](bestpractices_ingest_import.html)
 * [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
 * [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)

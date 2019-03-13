@@ -15,7 +15,7 @@ folder: BestPractices/Database
 
 This topic describes how to use the Splice Machine Native Spark DataSource to load data with Spark into a table in your database.
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
 
 
 ## About the Splice Machine Native Spark DataSource
@@ -86,16 +86,6 @@ This section presents a simple Zeppelin notebook example, written in Scala, of m
     {: .noteImportant}
 
 
-## See Also
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
-
-The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
-
-* [Importing Flat Files](bestpractices_ingest_import.html)
-* [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
-* [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
-* [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
-* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
 
 </div>
 </section>

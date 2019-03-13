@@ -1,5 +1,5 @@
 ---
-title: Importing Flat Files
+title: Standard Ingestion of Flat Files
 summary: Best practices and Troubleshooting
 keywords: ingest, import
 toc: false
@@ -11,12 +11,11 @@ folder: BestPractices/Database
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# ﻿Best Practices: Importing Flat Files
+# ﻿Best Practices: Standard Ingestion of Flat Files
 
 This topic presents examples of using the Splice Machine standard flat file ingestion methods: `IMPORT_DATA`, `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA`, and contrasts the results of importing the same data with each method.
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html) in this section; for examples of using bulk HFile import with flat files, see [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html), also in this section.
-
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
 
 ## Selecting the Best Flat File Ingest Method for Your Situation
 
@@ -44,13 +43,13 @@ Splice Machine provides three standard import procedures for ingesting flat file
         <tr>
             <td><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></td>
             <td><p>Updates existing records when a match is found in the source file.</p>
-                <p>If the matching record in the source does not contain a value for a column in the database record, `UPSERT` updates the database record to have the default value for that column; if there is no default, the column value is set to `NULL`.</p>
+                <p>If the matching record in the source does not contain a value for a column in the database record, <code>UPSERT</code> updates the database record to have the default value for that column; if there is no default, the column value is set to <code>NULL</code>.</p>
             </td>
         </tr>
         <tr>
             <td><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></td>
             <td><p>Updates existing records when a match is found in the input.</p>
-                <p>If the matching record in the source does not contain a value for a column in the database record, `MERGE` does not modify the value in the database record.</p>
+                <p>If the matching record in the source does not contain a value for a column in the database record, <code>MERGE</code> does not modify the value in the database record.</p>
             </td>
         </tr>
     </tbody>
@@ -77,6 +76,7 @@ call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'playerTeams', null, 'myData.csv',
 {: .Example}
 
 The above call to `IMPORT_DATA` includes a number of `null` values, which indicate that default values should be used for those parameters: date and time values are formatted in standard format, commas are used to separate values, and string values are enclosed in double quotes. The `0` value means that the import should be terminated as soon as any bad input record is detected, and the `importErrsDir` names the directory into which any input errors are logged. The next section describes the parameters that you use with these calls.
+{: .spaceAbove}
 
 ### Parameters Used With the Data File Import Procedures  {#table1}
 The Splice Machine standard import procedures all use these parameter values:
@@ -149,7 +149,7 @@ The Splice Machine standard import procedures all use these parameter values:
 
 ### After Importing Data
 
-Splice Machine recommends running a major compaction on a table after ingesting a significant amount of data into that table. For more information, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).
+Splice Machine recommends running a major compaction on a table after ingesting a significant amount of data into that table using any of the standard import methods. For more information, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).
 
 ## Example: Comparing the Standard File Import Methods  {#Examples}
 
@@ -325,16 +325,6 @@ __You'll notice that:__
 * The generated values in `c1` are not updated in existing records when merging data, but are updated when upserting data.
 
 ## See Also
-
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
-
-The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
-
-* [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
-* [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
-* [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
-* [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
-* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:
 

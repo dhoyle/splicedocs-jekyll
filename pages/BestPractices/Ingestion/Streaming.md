@@ -14,7 +14,7 @@ folder: BestPractices/Database
 # ﻿Best Practices: Ingesting Streaming Data
 This topic presents two versions of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps: one version that runs in a Zeppelin notebook, and a second version that runs via spark-submit.
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
 
 ## Ingesting Streaming Data  {#streaming}
 
@@ -34,7 +34,7 @@ This section presents the spark-submit version of an example of using Spark stre
 
 ## See Also
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html.html).
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html).
 
 The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
 

@@ -35,26 +35,26 @@ Where the data that you're ingesting is coming from defines which approach you s
         <tr>
             <td class="ItalicFont">You have flat files to import</td>
             <td class="spliceCheckbox">&#x261B;</td>
-            <td><a href="#datafiles">Importing Flat Files</a></td>
-            <td class="spliceCheckboxBlue">1 to 3</td>
+            <td><a href="bestpractice">Importing Flat Files</a></td>
+            <td class="spliceCheckboxBlue">&#x278B;<span class="bodyFont"> to </span> &#x278E;<br /><span class="bodyFont">(see below)</span></td>
         </tr>
         <tr>
             <td class="ItalicFont">You're writing a Spark app</td>
             <td class="spliceCheckbox">&#x261B;</td>
             <td><a href="#sparkadapter">Ingesting Data in a Spark App</a></td>
-            <td class="spliceCheckboxBlue">2</td>
+            <td class="spliceCheckboxBlue">&#x278B;</td>
         </tr>
         <tr>
             <td class="ItalicFont">You're writing a streaming app</td>
             <td class="spliceCheckbox">&#x261B;</td>
             <td><a href="#streaming">Ingesting Streaming Data</a></td>
-            <td class="spliceCheckboxBlue">3</td>
+            <td class="spliceCheckboxBlue">&#x278C;</td>
         </tr>
         <tr>
             <td class="ItalicFont">You're accessing data in an external table</td>
             <td class="spliceCheckbox">&#x261B;</td>
             <td><a href="#externalTable">Importing Data From an External Table</a></td>
-            <td class="spliceCheckboxBlue">1</td>
+            <td class="spliceCheckboxBlue">&#x278A;</td>
         </tr>
     </tbody>
 </table>
@@ -62,11 +62,13 @@ Where the data that you're ingesting is coming from defines which approach you s
 
 ## Importing Flat Files  {#datafiles}
 
-The most common ingestion scenario is importing flat files into your Splice Machine database; typically, CSV files stored on a local computer, in the cloud, or somewhere in your cluster, on HDFS. Splice Machine offers two primary methods for importing your flat files: *bulk HFile imports* and *standard flat file imports*. Each method has a few variants, which we'll describe below.
+The most common ingestion scenario is importing flat files into your Splice Machine database; typically, CSV files stored on a local computer, in the cloud, or somewhere in your cluster, on HDFS. Splice Machine offers two primary methods for importing your flat files: *bulk HFile imports* and *standard flat file imports*. Each method has a few variants, which we'll describe later.
 
 * Bulk HFile imports are highly performant because the import function pre-splits your data into Hadoop HFiles and imports them directly. When importing larger datasets, this can yield 10x ingestion performance compared to standard import methods. Splice Machine recommends that you use bulk HFile importing when possible; there are only restrictions: 1) bulk HFile importing cannot update existing records in your database, and 2) constraint checks are not applied to new records when using bulk HFile importing.
 
 * Standard flat file imports are also performant, and have two important features that may be of importance to you: 1) you can update existing records in addition to adding new records (if and only if the table you're importing into has a Primary Key), and 2) constraint checking is applied to inserts and updates when using standard import methods.
+
+Note that all of the file import procedures require you to specify the same information about your data, such as: which delimiters are used, how dates and times are formatted, which character set is used, and how to handle invalidly formatted input records. You basically point the procedure at your source data and destination table/index, specify a few parameters, and start loading your data.
 
 The following table summarizes the relative performance, complexity, and functionality of our flat file ingestion methods:
 
@@ -151,39 +153,31 @@ The following table summarizes the relative performance, complexity, and functio
 
 Our bulk HFile variations offers different levels of performance and require different levels of complexity, based on how you specify the HFile splits, keeping in mind that the ideal solution is to split your data into evenly-sized HFiles. The easiest way is to use *sampled* splitting, which adds no complexity on your part: Splice Machine samples your data to determine how to split your files. If that doesn't yield the performance you need, you can analyze your data to determine and specify the key values at which the data should be split. And if you need even greater performance, you can find and specify the row boundaries in your data files that will yield even splits.
 
-If you don't need to apply constraints or update records, use our Bulk HFile import procedure; you'll likely get the performance you want with sampled splitting, which introduces no added complexity. And if you need to boost that performance, you can choose to invest in determining the splits yourself.
+If you're importing all new data into a table and don't need to worry about constraint checking, use our Bulk HFile import procedure; you'll likely get the performance you want with sampled splitting, which introduces no added complexity. And if you need to boost that performance, you can choose to invest in determining the splits yourself.
+{: .noteIcon}
 
 If you're updating records in an existing table, importing a small dataset (less than 100GB), or you do need to apply constraints, use one of our standard import methods: `IMPORT`, `UPSERT`, or `MERGE`. They all share the same complexity and set of parameters, and they all apply constraint checking; the difference is in how each updates (or doesn't) existing records.
 
+* See [*Bulk Importing Flat Files*](bestpractices_ingest_bulkimport.html) in this Best Practices chapter for detailed information about and examples of using bulk HFile ingestion.
 
-
-* If you are updating existing records in your database during ingestion, you *must* use one of the standard import procedures; bulk HFile import *cannot update records*.
-* If you need constraints applied during ingestion, you *must* use one of the standard import procedures; bulk HFile import *does not apply constraint checking*.
-* Which standard import procedure (`IMPORT`, `UPSERT`, or `MERGE`) you use is determined by how you want existing records updated, as described in the [*Importing Flat Files*](bestpractices_ingest_import.html) topic in this section.
-* Which bulk import procedure you use is determined by how performant the ingestion process must be and how you want to split your data into HFiles, as described in the [*Bulk Importing Flat Files*](bestpractices_ingest_bulkimport.html) topic in this section.
-
-***NOTE: UPSERT/MERGE Do not handle deletes  (gene calls this net change importing)
-
-
-Note that all of the file import procedures require you to specify the same information about your data, such as: which delimiters are used, how dates and times are formatted, which character set is used, and how to handle invalidly formatted input records. You basically point the procedure at your source data and destination table/index, specify a few parameters, and start loading your data.
-
-Splice Machine recommends running a major compaction on a table after ingesting a significant amount of data into that table. For more information, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).  *****NOT FOR HFILE BULK****--> Another bonus for bulk
+* See [*Standard Ingestion of Flat Files*](bestpractices_ingest_import.html) in this Best Practices chapter for more information about and examples of using standard flat file ingestion.
 
 No matter which method you decide upon, we strongly recommend debugging your ingest process with a small data sample before jumping into importing a large dataset.
 {: .noteIcon}
 
-****ADVERTISE: FULL INFO FOR others here  (repeat links from above)
 
-## Ingesting with the Native Spark DataSource  {#sparkadapter}
-The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark apps (for use with spark-submit) that take advantage of the Native Spark DataSource, or you can use it in your Zeppelin notebooks.
+## Ingesting Data in a Spark App  {#sparkadapter}
+The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark apps (for use with spark-submit) that take advantage of the Native Spark DataSource, or you can use the DataSource in your Zeppelin notebooks.
 
-Ingesting data into your Splice Machine database from Spark is simple: once the data is in a Spark DataFrame, you use the Native Spark DataSource's `insert` operation to insert the data into a table in your database. This operation is extremely quick, as Splice Machine reads the data into the table directly, without serializing it, sending it over a wire, and deserializing. You can similarly move data from a Splice Machine table into a Spark DataFrame with a single, non-serialized operation.
+Ingesting data into your Splice Machine database from Spark is simple: once the data is in a Spark DataFrame, you use the Native Spark DataSource's `insert` operation to insert the data into a table in your database. This operation is extremely quick, because Splice Machine reads the data into the table directly, without serializing it, sending it over a wire, and deserializing. You can similarly move data from a Splice Machine table into a Spark DataFrame with a single, non-serialized operation.
 
-The [*Ingesting Data in a Spark App*](bestpractices_ingest_sparkapp.html) topic contains examples of using the Native Spark DataSource in both a Zeppelin notebook and with Spark submit.
+The [*Ingesting Data in a Spark App*](bestpractices_ingest_sparkapp.html) in this Best Practices chapter topic contains examples of using the Native Spark DataSource in both a Zeppelin notebook and with Spark submit.
 
 ## Ingesting Streaming Data  {#streaming}
 
-This section presents two versions of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps: one version that runs in a Zeppelin notebook, and a second version that runs via spark-submit.
+It's also easy to stream data into your Splice Machine database. ****NEED INFO HERE****
+
+The [*Ingesting Streaming Data*](bestpractices_ingest_streaming.html) topic in this Best Practices chapter presents two versions of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IoT) into a Splice Machine table in these steps: one version that runs in a Zeppelin notebook, and a second version that runs via spark-submit.  ***NEED EXAMPLES***
 
 
 
@@ -194,17 +188,8 @@ Splice Machine supports *external tables*, which are flat files that you can ref
 * Use the `CREATE EXTERNAL TABLE` statement to specify where your external file is and how it is formatted.
 * Use the `INSERT INTO` statement to select data from the external file and insert it into a table in your database.
 
-The [*Ingesting Data From an External Table*](bestpractices_ingest_externaltbl.html) topic contains an example of importing data from an ORC file.
+The [*Ingesting Data From an External Table*](bestpractices_ingest_externaltbl.html) topic in this Best Practices chapter contains an example of importing data from an ORC file.
 
-
-## See Also
-
-* [Importing Flat Files](bestpractices_ingest_import.html)
-* [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
-* [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
-* [Ingesting Streaming Data](bestpractices_ingest_streaming.html)
-* [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
-* [Troubleshooting Ingestion](bestpractices_ingest_troubleshooting.html)
 
 </div>
 </section>
