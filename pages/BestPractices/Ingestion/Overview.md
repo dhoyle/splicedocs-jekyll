@@ -13,16 +13,7 @@ folder: BestPractices/Ingest
 
 # ﻿Best Practices: Ingesting Data - Overview
 
-Welcome to the Splice Machine *Ingesting Data* Best Practices XXX
-This topic describes the different data ingestion use cases for ingesting data into Splice Machine, and helps you to quickly identify which applies to your situation. It then provides a summary of that specific ingestion scenario, and links to another topic in this section that contains one or more detailed examples of implementing ingestion for such a use case.
-
-The best way to proceed is to follow these steps:
-
-1. Use [Table 1](#table1), below, to determine which use case applies to your situation, and click the *Read this section* link for your use case.
-2. Read the summary information in that section to learn how to ingest your data.
-3. Click the link in that section to the examples topic for your ingestion use case.
-4. Review the relevant examples and apply the pattent to ingesting your data.
-
+In this *Ingesting Data Best Practices* topic, we'll introduce you to the various methods you can use to ingest data into your Splice Machine database, and we'll guide you to the best method to use for your specific situation. To get started, use [Table 1](#table1), below, to determine which use case applies to your situation, then click the *How it Works* link in the table. You'll see a summary of how to ingest your data, and a link to a separate page that contains one or more detailed examples.
 
 ## Pick Your Use Case  {#table1}
 
@@ -36,36 +27,42 @@ Where the data that you're ingesting is coming from defines which approach you s
         <tr>
             <th>Your Use Case</th>
             <th class="spliceCheckbox">&nbsp;</th>
-            <th>Read this Section</th>
+            <th>How it Works</th>
+            <th>Relative Complexity</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="ItalicFont">You have flat files to import</td>
             <td class="spliceCheckbox">&#x261B;</td>
-            <td><a href="#datafiles">Ingesting Data Files</a></td>
+            <td><a href="#datafiles">Importing Flat Files</a></td>
+            <td class="spliceCheckboxBlue">1 to 3</td>
         </tr>
         <tr>
-            <td class="ItalicFont">You're ingesting data into a Spark app</td>
+            <td class="ItalicFont">You're writing a Spark app</td>
             <td class="spliceCheckbox">&#x261B;</td>
             <td><a href="#sparkadapter">Ingesting Data in a Spark App</a></td>
+            <td class="spliceCheckboxBlue">2</td>
         </tr>
         <tr>
             <td class="ItalicFont">You're writing a streaming app</td>
             <td class="spliceCheckbox">&#x261B;</td>
             <td><a href="#streaming">Ingesting Streaming Data</a></td>
+            <td class="spliceCheckboxBlue">3</td>
         </tr>
         <tr>
-            <td class="ItalicFont">You are working with an external table</td>
+            <td class="ItalicFont">You're accessing data in an external table</td>
             <td class="spliceCheckbox">&#x261B;</td>
-            <td><a href="#externalTable">Ingesting Data From an External Table</a></td>
+            <td><a href="#externalTable">Importing Data From an External Table</a></td>
+            <td class="spliceCheckboxBlue">1</td>
         </tr>
     </tbody>
 </table>
 
 
-## Ingesting Data Files  {#datafiles}
+## Importing Flat Files  {#datafiles}
 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 FIX ***he most common ingestion scenario is importing flat files into your Splice Machine database.
 process significantly improves data loading performance by temporarily splitting your tables and indexes into Hadoop HFiles and loading your data from those files.
 
