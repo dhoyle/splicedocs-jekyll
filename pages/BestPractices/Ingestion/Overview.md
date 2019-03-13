@@ -62,13 +62,13 @@ Where the data that you're ingesting is coming from defines which approach you s
 
 ## Importing Flat Files  {#datafiles}
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-FIX ***he most common ingestion scenario is importing flat files into your Splice Machine database.
-process significantly improves data loading performance by temporarily splitting your tables and indexes into Hadoop HFiles and loading your data from those files.
+The most common ingestion scenario is importing flat files into your Splice Machine database; typically, CSV files stored on a local computer, in the cloud, or somewhere in your cluster, on HDFS. Splice Machine offers two primary methods for importing your flat files: *bulk HFile imports* and *standard flat file imports*. Each method has a few variants, which we'll describe below.
 
-"Different levels of performance"
-Splice Machine provides two major pathways for importing data and indexes from flat files into your database: our *standard import* system procedures are great for flat files, and our *bulk HFile import* procedures boosts performance by pre-splitting your data into Hadoop HFiles and ingesting those. Each pathway has several variations that offer different levels of complexity, performance, and functionality.
- as summarized in the following table:
+* Bulk HFile imports are highly performant because the import function pre-splits your data into Hadoop HFiles and imports them directly. When importing larger datasets, this can yield 10x ingestion performance compared to standard import methods. Splice Machine recommends that you use bulk HFile importing when possible; there are only restrictions: 1) bulk HFile importing cannot update existing records in your database, and 2) constraint checks are not applied to new records when using bulk HFile importing.
+
+* Standard flat file imports are also performant, and have two important features that may be of importance to you: 1) you can update existing records in addition to adding new records (if and only if the table you're importing into has a Primary Key), and 2) constraint checking is applied to inserts and updates when using standard import methods.
+
+The following table summarizes the relative performance, complexity, and functionality of our flat file ingestion methods:
 
 <table>
     <col width="10%" />
@@ -89,68 +89,73 @@ Splice Machine provides two major pathways for importing data and indexes from f
     </thead>
     <tbody>
         <tr>
-            <td rowspan="3">Standard</td>
-            <td><code>IMPORT_DATA</code></td>
-            <td class="spliceCheckboxBlue">&#x272F;</td>
-            <td class="spliceCheckboxBlue">&#x2713;</td>
-            <td><p>Constraint checking</p>
-                <p>Best for pulling in small datasets of new records</p>
-            </td>
-            <td><p>Slow for very large datasets</p></td>
-        </tr>
-        <tr>
-            <td><code>UPSERT_DATA_FROM_FILE</code></td>
-            <td class="spliceCheckboxBlue">&#x272F;</td>
-            <td class="spliceCheckboxBlue">&#x2713;</td>
-            <td><p>Constraint checking</p>
-                <p>Updates existing records in addition to adding new records</p>
-            </td>
-            <td><p>Slow for very large datasets</p>
-                <p>Table must have primary key</p></td>
-        </tr>
-        <tr>
-            <td><code>MERGE_DATA_FROM_FILE</code></td>
-            <td class="spliceCheckboxBlue">&#x272F;</td>
-            <td class="spliceCheckboxBlue">&#x2713;</td>
-            <td><p>Constraint checking</p>
-                <p>Updates existing records in addition to adding new records</p>
-            </td>
-            <td><p>Slow for very large datasets</p>
-                <p>Table must have primary key</p></td>
-        </tr>
-        <tr>
             <td rowspan="3"><code>BULK_IMPORT_HFILE</code></td>
             <td>Sampled splitting</td>
-            <td class="spliceCheckboxBlue">&#x272F;&#x272F;</td>
+            <td class="spliceCheckboxBlue">&#x272F;&#x272F;&#x272F;</td>
             <td class="spliceCheckboxBlue">&#x2713;&#x2713;&#x2713;</td>
-            <td>Enhanced performance</td>
+            <td><p>Enhanced performance</p>
+                <p>No major compaction required after ingestion</p>
+            </td>
             <td>No constraint checking</td>
         </tr>
         <tr>
             <td>Keys supplied for splitting</td>
-            <td class="spliceCheckboxBlue">&#x272F;&#x272F;&#x272F;</td>
+            <td class="spliceCheckboxBlue">&#x272F;&#x272F;&#x272F;&#x272F;</td>
             <td class="spliceCheckboxBlue">&#x2714;&#x2714;&#x2714;&#x2714;</td>
-            <td>Better performance, especially for extermely large datasets</td>
+            <td><p>Better performance, especially for extermely large datasets</p>
+                <p>No major compaction required after ingestion</p>
+            </td>
             <td><p>No constraint checking</p>
                 <p>Must specify split keys for input data</p>
             </td>
         </tr>
         <tr>
             <td>Row boundaries supplied for splitting</td>
-            <td class="spliceCheckboxBlue">&#x272F;&#x272F;&#x272F;&#x272F;</td>
+            <td class="spliceCheckboxBlue">&#x272F;&#x272F;&#x272F;&#x272F;&#x272F;</td>
             <td class="spliceCheckboxBlue">&#x2714;&#x2714;&#x2714;&#x2714;&#x2714;</td>
-            <td>Best performance for extremely large datasets</td>
+            <td><p>Best performance for extremely large datasets</p>
+                <p>No major compaction required after ingestion</p>
+            </td>
             <td><p>No constraint checking</p>
                 <p>Must specify row boundaries for splitting input data</p>
-                JUN: do we want to document this
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">Standard</td>
+            <td><code>IMPORT_DATA</code></td>
+            <td class="spliceCheckboxBlue">&#x272F;&#x272F;</td>
+            <td class="spliceCheckboxBlue">&#x2713;&#x2713;</td>
+            <td><p>Constraint checking</p>
+                <p>Best for pulling in small datasets of new records</p>
+            </td>
+            <td><p>Slow for very large datasets</p>
+                <p>Should run major compaction after large import</p>
+            </td>
+        </tr>
+        <tr>
+            <td><p><code>UPSERT_DATA_FROM_FILE</code></p>
+                <p><code>MERGE_DATA_FROM_FILE</code></p>
+            </td>
+            <td class="spliceCheckboxBlue">&#x272F;&#x272F;</td>
+            <td class="spliceCheckboxBlue">&#x2713;&#x2713;</td>
+            <td><p>Constraint checking</p>
+                <p>Updates existing records in addition to adding new records</p>
+            </td>
+            <td><p>Slow for very large datasets</p>
+                <p>Table must have primary key</p>
+                <p>Should run major compaction after large import</p>
             </td>
         </tr>
     </tbody>
 </table>
 
-Here are a few key factors that will guide your choice of procedure for importing your files:
+Our bulk HFile variations offers different levels of performance and require different levels of complexity, based on how you specify the HFile splits, keeping in mind that the ideal solution is to split your data into evenly-sized HFiles. The easiest way is to use *sampled* splitting, which adds no complexity on your part: Splice Machine samples your data to determine how to split your files. If that doesn't yield the performance you need, you can analyze your data to determine and specify the key values at which the data should be split. And if you need even greater performance, you can find and specify the row boundaries in your data files that will yield even splits.
 
-TURN AROUND: If you don't need to apply constraints or update records, use Bulk HFILE
+If you don't need to apply constraints or update records, use our Bulk HFile import procedure; you'll likely get the performance you want with sampled splitting, which introduces no added complexity. And if you need to boost that performance, you can choose to invest in determining the splits yourself.
+
+If you're updating records in an existing table, importing a small dataset (less than 100GB), or you do need to apply constraints, use one of our standard import methods: `IMPORT`, `UPSERT`, or `MERGE`. They all share the same complexity and set of parameters, and they all apply constraint checking; the difference is in how each updates (or doesn't) existing records.
+
+
 
 * If you are updating existing records in your database during ingestion, you *must* use one of the standard import procedures; bulk HFile import *cannot update records*.
 * If you need constraints applied during ingestion, you *must* use one of the standard import procedures; bulk HFile import *does not apply constraint checking*.
