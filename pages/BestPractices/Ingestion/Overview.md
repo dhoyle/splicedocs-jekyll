@@ -13,7 +13,9 @@ folder: BestPractices/Ingest
 
 # ﻿Best Practices: Ingesting Data - Overview
 
-In this *Ingesting Data Best Practices* topic, we'll introduce you to the various methods you can use to ingest data into your Splice Machine database, and we'll guide you to the best method to use for your specific situation. To get started, use [Table 1](#table1), below, to determine which use case applies to your situation, then click the *How it Works* link in the table. You'll see a summary of how to ingest your data, and a link to a separate page that contains one or more detailed examples.
+In this *Ingesting Data Best Practices* topic, we'll introduce you to the various methods you can use to ingest data into your Splice Machine database, and we'll guide you to the best method to use for your specific situation, then direct you to example(s) that walk you through the steps to implement your ingestion solution.
+
+To get started, use [Table 1](#table1), below, to determine which use case applies to your situation, then click the *How it Works* link in the table. You'll see a summary of how to ingest your data, and a link to a separate page that contains one or more detailed examples.
 
 ## Pick Your Use Case  {#table1}
 

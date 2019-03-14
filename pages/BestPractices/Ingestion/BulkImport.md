@@ -27,7 +27,7 @@ This topic starts with a discussion of bulk HFile importing and pre-splitting yo
 You can also use bulk HFiles to speed up performance of the `INSERT` statement, as shown in the [Bulk Insert](#bulkinsert) example at the end of this topic.
 {: .noteNote}
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html); for examples of using our standard flat file import procedures, see [Importing Flat Files](bestpractices_ingest_import.html), also in this section.
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html) in this chapter.
 
 ## How to Use Bulk HFile Import
 
@@ -90,7 +90,7 @@ The following table summarizes the three methods for pre-splitting your data for
             <td><p>You need to find the row boundaries in your data that will yield roughly equal splits and specify them in a CSV file. This requires the most examination of your data, and can produce the best performance.</p>
                 <p>To use this method, you pass the CSV file to the <code>SPLIT_TABLE_OR_INDEX_AT_POINTS</code> procedure to pre-split the data, and then call the <code>BULK_IMPORT_HFILE</code> procedure to import the HFiles.</p>
                 <p>See the example in the <a href="#bulksplitrows">Bulk Import with Row Pre-Splits</a> section below.</p>
-                <p class="noteIcon">Due to the complexity of this approach, Splice Machine recommends reserving it for extreme circumstances, such as needing to ingest enormous data files in a highly performant manner.</p>
+                <p class="noteIcon">Due to the complexity of this approach, Splice Machine recommends reserving its use only after trying and not getting the required performance from using the *split keys* bulk HFile import method.</p>
             </td>
         </tr>
     </tbody>
@@ -413,7 +413,7 @@ Here are the steps:
 
 ## Example: Bulk Insert  {#bulkinsert}
 
-Splice Machine allows you to specify [optimization hints](#developers_tuning_queryoptimization.html); one of these *hints*, `bulkImportDirectory` can be used to perform bulk loading with the SQL `INSERT` statement.
+Splice Machine allows you to specify [optimization hints](developers_tuning_queryoptimization.html); one of these *hints*, `bulkImportDirectory` can be used to perform bulk loading with the SQL `INSERT` statement.
 
 Here's a simple example:
 
