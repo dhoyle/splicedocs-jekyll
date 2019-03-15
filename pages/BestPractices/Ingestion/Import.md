@@ -1,5 +1,5 @@
 ---
-title: Standard Ingestion of Flat Files
+title: Basic Importing of Flat Files
 summary: Best practices and Troubleshooting
 keywords: ingest, import
 toc: false
@@ -11,63 +11,25 @@ folder: BestPractices/Database
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# ﻿Best Practices: Standard Ingestion of Flat Files
+# ﻿Best Practices: Basic Flat File Ingestion
 
-This topic presents examples of using the Splice Machine standard flat file ingestion methods: `IMPORT_DATA`, `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA`, and contrasts the results of importing the same data with each method.
+This topic show you how to use Splice Machine's basic data ingestion method, `IMPORT_DATA`, to import data from flat files into your database. This highly performant procedure provides numerous data handling options, and performs constraint checking, which means that it detects and reports on erroneous records (*bad data*) in the input file.
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
+You can use two variants of `IMPORT_DATA` to import new data and update existing records in your database: `INSERT_DATA_FROM_FILE`, and `MERGE_DATA_FROM_FILE`; these procedures differ only in how they handle updating existing records under certain circumstances, as described in the [Basic Import/Update Ingestion](#basicupdate) section below.
 
-## Selecting the Best Flat File Ingest Method for Your Situation
+Our [Bulk HFile Import](bestpractices_ingest_bulkimport) procedure, `BULK_HFILE_IMPORT`, offers boosted ingestion speed, but does not perform constraint checking.
 
-Please make sure you can answer these questions before trying to determine the best method for importing your files:
+## Example: Basic Flat File Ingestion
 
-* *Will you be importing all new data, or will you also be updating some existing records?*
-* *Do you need constraint checking applied as the data is inserted into your database?*
+Here's what a call to the `IMPORT_DATA` procedure looks like, with required parameters highlighted:
 
-Splice Machine provides three standard import procedures for ingesting flat files into your database. Each of the three system procedures uses the same parameters, which are summarized below, in [Table 1](#table1). Each procedure applies constraint checking during ingestion; what distinguishes the procedures is how each handles updating existing records in a database during ingestion. Here's a summary:
+<div class="preWrapper"><pre class="Example">
+call SYSCS_UTIL.IMPORT_DATA('<span class="HighlightedCode">&lt;schemaName&gt;</span>', '<span class="HighlightedCode">&lt;tableName&gt;</span>', null,
+        '<span class="HighlightedCode">&lt;inFilePath&gt;</span>', null, null, null, null, null, -1,
+        '<span class="HighlightedCode">&lt;badRecordLogDirectory&gt;</span>', true, null);</pre>
+</div>
 
-<table>
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>Import Method</th>
-            <th>How it Handles Updating Existing Records</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>SYSCS_UTIL.IMPORT_DATA</code></td>
-            <td>Does not update existing records.</td>
-        </tr>
-        <tr>
-            <td><code>SYSCS_UTIL.UPSERT_DATA_FROM_FILE</code></td>
-            <td><p>Updates existing records when a match is found in the source file.</p>
-                <p>If the matching record in the source does not contain a value for a column in the database record, <code>UPSERT</code> updates the database record to have the default value for that column; if there is no default, the column value is set to <code>NULL</code>.</p>
-            </td>
-        </tr>
-        <tr>
-            <td><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></td>
-            <td><p>Updates existing records when a match is found in the input.</p>
-                <p>If the matching record in the source does not contain a value for a column in the database record, <code>MERGE</code> does not modify the value in the database record.</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-Which procedure you use depends on how you want to handle updating existing records during ingestion:
-
-* If you're importing all new data and not updating existing records, use the `SYSCS_UTIL.IMPORT_DATA` procedure.
-
-* If you're adding new data and updating existing records, the procedure you should use depends on how you want to handle updating an existing column value when the input column does not have a value. As you'll see in the examples below, this can be of particular interest with regard to tables with generated column values:
-  * Use the `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` procedure if you want the column value modified to its default value (or `NULL` if no default value is defined for the column in the schema).
-  * Use the `SYSCS_UTIL.MERGE_DATA_FROM_FILE` procedure if you want the column value left unmodified when no corresponding column value is present in the input.
-
-The [Examples](#Examples) section below shows an example of using each procedure and contrasts the results of importing data with them.
-
-## How to Use the Import Procedures
-
-All three of the standard import procedures follows the same calling pattern; for example, the following call tells `IMPORT_DATA` to import the data in the `myData.csv` file into the `playerTeams` table in the `SPLICE` schema in your database.
+All of the `null` parameter values specify that default values should be used. All of the parameters are described, along with their default values, in [Table 1]{#table1}. Here's a call with actual values plugged in:
 
 ```
 call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'playerTeams', null, 'myData.csv',
@@ -75,14 +37,149 @@ call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'playerTeams', null, 'myData.csv',
 ```
 {: .Example}
 
-The above call to `IMPORT_DATA` includes a number of `null` values, which indicate that default values should be used for those parameters: date and time values are formatted in standard format, commas are used to separate values, and string values are enclosed in double quotes. The `0` value means that the import should be terminated as soon as any bad input record is detected, and the `importErrsDir` names the directory into which any input errors are logged. The next section describes the parameters that you use with these calls.
+In the above call, the parameter values have the following meaning:
 {: .spaceAbove}
 
-### Parameters Used With the Data File Import Procedures  {#table1}
-The Splice Machine standard import procedures all use these parameter values:
+<table>
+    <col />
+    <col />
+    <tbody>
+        <tr>
+            <td class="CodeFont">'SPLICE'</td>
+            <td>Import the data into a table in the `SPLICE` schema in our database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">'playerTeams'</td>
+            <td>Import the data into the `playerTeams` table.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">null</td>
+            <td>Import all columns of data in the file.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">'myData.csv'</td>
+            <td>The input file path.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">null</td>
+            <td>Columns in the input file are separated by the `,` character.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">null</td>
+            <td>Character strings in the input file are delimited with `"` characters.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">null</td>
+            <td>Timestamp values are in <em>yyyy-MM-dd HH:mm:ss</em> format.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">null</td>
+            <td>Date values are in <em>yyyy-MM-dd</em> format.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">null</td>
+            <td>Time values are in <em>HH:mm:ss</em> format.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">0</td>
+            <td>Zero tolerance for bad records: any input error will terminate the import.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">'importErrsDir'</td>
+            <td>Information about any bad records is logged in this directory.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">true</td>
+            <td>Each record is contained in one line in the input file.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">null</td>
+            <td>The input uses UTF-8 character encoding.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Example: Basic Import of a Flat File {#eximport}
+
+Here's a very basic example of importing a flat file into a table in your Splice Machine database. Follow these steps:
+
+1.  __Create a simple table named `testImport`:__
+
+    ```
+    CREATE SCHEMA test;
+    SET SCHEMA test;
+
+    CREATE TABLE testImport (
+             a1 INT,
+             b1 INT,
+             c1 INT GENERATED BY DEFAULT AS IDENTITY(start with 1, increment by 1),
+             d1 INT DEFAULT 999,
+             PRIMARY KEY (a1)
+    )
+     ```
+     {: .Example}
+<br />
+2.  __Access a simple file named `ttest.csv` from an S3 bucket on AWS. That file contains this data:__
+
+    ```
+    0|0
+    1|2
+    2|4
+    3|6
+    4|8
+    ```
+    {: .Example}
+<br />
+3.  __Use `IMPORT_DATA` to import that data into the `testImport` table:__
+
+    ```
+    splice> CALL SYSCS_UTIL.IMPORT_DATA('TEST', 'testImport', null,
+                        's3a:/mypublicbucket/ttest.csv',
+                        '|', null, null, null, null, 0,
+                        'hdfs:///tmp/test_import/', false, null);
+
+    rowsImported        |failedRows          |files      |dataSize            |failedLog
+    -------------------------------------------------------------------------------------
+    5                   |0                   |1          |20                  |NONE
+
+    splice> SELECT * FROM testImport;
+    A1         |B1         |C1         |D1
+    -----------------------------------------------
+    0          |0          |10001      |999
+    1          |2          |10002      |999
+    2          |4          |10003      |999
+    3          |6          |10004      |999
+    4          |8          |10005      |999
+
+    6 rows selected
+    ```
+    {: .Example}
+
+    Note that this `IMPORT_DATA` call logs bad import records to a file on `HDFS`, and uses almost all default parameter values. The exception: our data file uses the `|` to delimit columns.  All of the parameters are summarized in [Table 1](#table1) below.
+    {: .spaceAbove}
+
+4.  __Use a `SELECT` statement to verify that all went well:__
+
+    ```
+    splice> SELECT * FROM testImport;
+    A1         |B1         |C1         |D1
+    -----------------------------------------------
+    0          |0          |10001      |999
+    1          |2          |10002      |999
+    2          |4          |10003      |999
+    3          |6          |10004      |999
+    4          |8          |10005      |999
+
+    6 rows selected
+    ```
+    {: .Example}
+
+## Parameters Used With the Basic Import Procedures  {#table1}
+
+The following table summarizes the parameters you use when calling the `IMPORT_DATA`,  `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA_FROM_FILE` procedures.
 
 <table>
-    <caption class="tblCaption">Table 1: Standard Import Method Parameters</caption>
+    <caption class="tblCaption">Table 1: Basic Import Parameters</caption>
     <col width="25%"/>
     <col />
     <thead>
@@ -147,38 +244,24 @@ The Splice Machine standard import procedures all use these parameter values:
     </tbody>
 </table>
 
-### After Importing Data
+## Basic Import/Update Ingestion  {#basicupdate}
 
-Splice Machine recommends running a major compaction on a table after ingesting a significant amount of data into that table using any of the standard import methods. For more information, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).
+You can use the `UPSERT_DATA_FROM_FILE` or `MERGE_DATA_FROM_FILE` to update existing records while adding new records to a table in your Splice Machine database, as long as your table has a primary key.
 
-## Example: Comparing the Standard File Import Methods  {#Examples}
+These two procedures work almost identically; what distinguishes the two is how each handles updating existing records in a database when a match is found in the input file:
 
-This section presents a simple example of using each of the standard import procedures and compares the results, so you can understand how `IMPORT`, `UPSERT`, and `MERGE` handle situations differently. We'll:
+* If the matching record in the source does not contain a value for a column in the database record, `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` updates the database record to have the default value for that column; if there is no default, the column value is set to `NULL`.
+* If the matching record in the source does not contain a value for a column in the database record, `SYSCS_UTIL.MERGE_DATA_FROM_FILE` does not modify the value in the database record.
 
-1. Create three simple tables, one for each standard import procedure: `testImport`, `testUpsert`, and `testMerge`.
-2. Access a simple data named `ttest.csv` file on S3.
-3. Import data from that file into the `testImport` table.
-4. Insert the same data into the `testUpsert` and `testMerge` tables, so we can then compare what happens when we upsert and merge the same data file into them.
-5. Upsert data from the `ttest.csv` file into the `testUpsert` table.
-6. Merge data from the `ttest.csv` file into the `testMerge` table.
-7. Compare the results to understand how upserting and merging differ.
+## Example: Comparing the Basic Update Methods  {#basicupdates}
 
-Follow the steps in this example to contrast how `IMPORT_DATA`, `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA` work:
+This section presents a simple example of using the `UPSERT` and `MERGE`to import data into a table and constrasts the results. Follow these steps:
 
-1.  __Create 3 simple tables, `testImport`, `testUpsert`, and `testMerge`:__
+1.  __Create 2 simple tables, `testUpsert` and `testMerge`:__
 
     ```
     CREATE SCHEMA test;
     SET SCHEMA test;
-
-    CREATE TABLE testImport (
-             a1 INT,
-             b1 INT,
-             c1 INT GENERATED BY DEFAULT AS IDENTITY(start with 1, increment by 1),
-             d1 INT DEFAULT 999,
-             PRIMARY KEY (a1)
-    )
-
 
     CREATE TABLE testUpsert (
              a1 INT,
@@ -212,35 +295,7 @@ Follow the steps in this example to contrast how `IMPORT_DATA`, `UPSERT_DATA_FRO
     ```
     {: .Example}
 <br />
-3.  __Use `IMPORT_DATA` to import that data into the `testImport` table, and then verify that all went well:__
-
-    ```
-    splice> CALL SYSCS_UTIL.IMPORT_DATA('TEST', 'testImport', null,
-                        's3a:/mypublicbucket/ttest.csv',
-                        '|', null, null, null, null, 0,
-                        'hdfs:///tmp/test_import/', false, null);
-
-    rowsImported        |failedRows          |files      |dataSize            |failedLog
-    -------------------------------------------------------------------------------------
-    5                   |0                   |1          |20                  |NONE
-
-    splice> SELECT * FROM testImport;
-    A1         |B1         |C1         |D1
-    -----------------------------------------------
-    0          |0          |10001      |999
-    1          |2          |10002      |999
-    2          |4          |10003      |999
-    3          |6          |10004      |999
-    4          |8          |10005      |999
-
-    6 rows selected
-    ```
-    {: .Example}
-
-    Note that this `IMPORT_DATA` call logs bad import records to a file on `HDFS`, and uses almost all default parameter values. The exception: our data file uses the `|` to delimit columns.
-    {: .spaceAbove}
-
-4.  __Populate our other two tables with the same data, so we can then observe the difference between upserting and merging into them:__
+3.  __Populate our two tables with the same data, so we can then observe the difference between upserting and merging into them:__
 
     ```
     INSERT INTO testUpsert(a1,b1) VALUES (1,1), (2,2), (3,3), (6,6);
@@ -267,7 +322,7 @@ Follow the steps in this example to contrast how `IMPORT_DATA`, `UPSERT_DATA_FRO
     ```
     {: .Example}
 <br />
-5.  __Now, we'll call `UPSERT_DATA_FROM_FILE` and show the results:__
+4.  __Now, we'll call `UPSERT_DATA_FROM_FILE` and show the results:__
 
     ```
     CALL SYSCS_UTIL.UPSERT_DATA_FROM_FILE('TEST', 'testUpsert', 'a1,b1',
@@ -292,7 +347,7 @@ Follow the steps in this example to contrast how `IMPORT_DATA`, `UPSERT_DATA_FRO
     ```
     {: .Example}
 <br />
-6.  __And now we'll call `MERGE_DATA_FROM_FILE` and show the results of that:__
+5.  __And now we'll call `MERGE_DATA_FROM_FILE` and show the results of that:__
 
     ```
     CALL SYSCS_UTIL.MERGE_DATA_FROM_FILE('TEST', 'testMerge', 'a1,b1',
@@ -324,7 +379,7 @@ __You'll notice that:__
 * The results are identical except for the values in the generated column.
 * The generated values in `c1` are not updated in existing records when merging data, but are updated when upserting data.
 
-## See Also
+## For Additional Information
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:
 
