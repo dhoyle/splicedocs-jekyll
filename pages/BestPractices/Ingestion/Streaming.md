@@ -30,19 +30,5 @@ This section presents the spark-submit version of an example of using Spark stre
 **************** NEED EXAMPLE HERE ******************
 
 
-
-
-## See Also
-
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html).
-
-The other topics in this *Best Practices: Ingestion* section provide examples of other ingestion scenarios:
-
-* [Importing Flat Files](bestpractices_ingest_import.html)
-* [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
-* [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
-* [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
-
-
 </div>
 </section>

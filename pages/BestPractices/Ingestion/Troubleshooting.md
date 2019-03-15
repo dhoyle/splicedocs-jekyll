@@ -96,14 +96,5 @@ When using Splice Machine with Spark with Cloudera, bulk import of very large da
     ```
     {: .Example}
 
-## See Also
-
-* [Best Practices: Ingesting Data Overview](bestpractices_ingest_overview.html)
-* [Importing Flat Files](bestpractices_ingest_import.html)
-* [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
-* [Ingestion in Your Spark App](bestpractices_ingest_sparkapp.html)
-* [Ingesting External Tables](bestpractices_ingest_externaltbl.html)
-* [Best Practices: Ingesting Streaming Data](bestpractices_ingest_streaming.html)
-
 </div>
 </section>

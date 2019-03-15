@@ -84,19 +84,36 @@ This section presents a simple Zeppelin notebook example, written in Scala, of m
     Ingesting data in this way is extremely performant because it requires no serialization or deserialization and works with any Spark DataFrame. You can also use the Native Spark DataSource to quickly query your database, and to update or delete records.
     {: .noteImportant}
 
+5.  __Verify that All Went Well:__
+
+    ```
+    %splicemachine
+    select * from mySchema.carsTbl;
+
+    NUMBER      MAKE            MODEL
+    1           Toyota          Camry
+    2           Honda           Accord
+    3           Subaru          Impreza
+    4           Chevy           Volt
+    ```
+    {: .Example}
+
 ## Using the Native Spark DataSource with spark-submit to Ingest Data  {#loadsubmit}
 
-This section presents a discussion of and sample code for a standalone program submitted with `spark-submit` that uses the Splice Machine Native Spark DataSource to ingest data into a table.
+<strong>+++++++++++++ WE NEED A SIMPLER EXAMPLE, HOPEFULLY IN PYTHON +++++++++++++</strong>
 
-**** FINISH THIS***
+This section presents a discussion of and sample code for a standalone programs submitted with `spark-submit` that use the Splice Machine Native Spark DataSource to ingest data into a table.
 
+There are two aspects to getting your Spark program to run with spark-submit; you need to:
 
-### Walk-Through
-Overview discussion of what the example does
+1. Write the code for your program
+2. Modify any configuration options in our spark-submit.sh script
 
-### Example Code
+The sections below include the code for both aspect.
 
-Here's our Java sample code for importing a CSV file into a Splice Machine database table:
+### Example: Import CSV with Spark-Submit Program  {#importcode}
+
+Here's a sample Spark program in Java for importing a CSV file into a Splice Machine database table:
 
 ```
 package com.splicemachine.example;
@@ -224,7 +241,9 @@ public class Main {
 ```
 {: .Example}
 
-### Spark Submit Shell Script
+#### Spark Submit Shell Script  {#importscript}
+
+<strong>+++++++++++++ WE NEED TO HIGHLIGHT/EXPLAIN WHAT PARTS OF THIS  CUSTOMER MUST UPDATE +++++++++++++</strong>
 
 Here's the `spark-submit` shell script for submitting the above sample import program:
 
