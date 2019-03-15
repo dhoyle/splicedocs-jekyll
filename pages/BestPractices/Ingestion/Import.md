@@ -246,11 +246,9 @@ The following table summarizes the parameters you use when calling the `IMPORT_D
 
 ## Basic Import/Update Ingestion  {#basicupdate}
 
-You can use the `UPSERT_DATA_FROM_FILE` or `MERGE_DATA_FROM_FILE` to update existing records while adding new records to a table in your Splice Machine database, as long as your table has a primary key.
+You can use two variants of the`IMPORT_DATA` procedure to update existing records while adding new records to a table in your Splice Machine database, as long as your table has a primary key. These two procedures work almost identically; what distinguishes the two is how each handles updating existing records in a database when there's a missing value in the matching record in the input file:
 
-These two procedures work almost identically; what distinguishes the two is how each handles updating existing records in a database when a match is found in the input file:
-
-* If the matching record in the source does not contain a value for a column in the database record, `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` updates the database record to have the default value for that column; if there is no default, the column value is set to `NULL`.
+* If the matching record in the input file does not contain a value for a column in the database record, `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` updates the database record to have the default value for that column; if there is no default, the column value is set to `NULL`.
 * If the matching record in the source does not contain a value for a column in the database record, `SYSCS_UTIL.MERGE_DATA_FROM_FILE` does not modify the value in the database record.
 
 ## Example: Comparing the Basic Update Methods  {#basicupdates}
