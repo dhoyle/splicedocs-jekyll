@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInSysProcs
 # SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX
 
 The `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX` system procedure pre-splits a table or index
-that you are import in HFile format. You must use this procedure in conjunction with the
+that you are importing in HFile format. You must use this procedure in conjunction with the
  &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 system procedure to import your data in HFile format.
 
