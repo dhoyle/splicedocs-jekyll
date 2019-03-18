@@ -48,8 +48,6 @@ Once you've got an external table defined, you can import data from it into your
 INSERT INTO myTable SELECT * FROM myExternalTable;
 ```
 
-***********NOTE: RE: Cloud currently means S3*******************
-
 ## Example: Loading Data From an ORC File
 
 This example loads data from an ORC file that is in `/tmp` into a table in your database, in these steps:
