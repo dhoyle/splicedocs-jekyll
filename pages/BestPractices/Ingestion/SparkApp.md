@@ -102,7 +102,7 @@ This section presents a simple Zeppelin notebook example, written in Scala, of m
 
 This section presents a discussion of and sample code for a standalone program submitted with `spark-submit` that uses the Splice Machine Native Spark DataSource to ingest data into a table.
 
-All of the files required to build and run this program are available here: [./examples/StreamingSparkSubmit.tar.gz](./examples/StreamingSparkSubmit.tar.gz)
+All of the files required to build and run this program are available here: [./examples/SparkAppSubmit.tar.gz](./examples/SparkAppSubmit.tar.gz)
 {: .noteNote}
 
 We show you how to create and run this example in these subsections:
@@ -302,7 +302,7 @@ public class Main {
 
 You can download, build, and run this example program as follows:
 
-1.  __Click this link to download the example tarball:__ [./examples/StreamingSparkSubmit.tar.gz](./examples/StreamingSparkSubmit.tar.gz)
+1.  __Click this link to download the example tarball:__ [./examples/SparkAppSubmit.tar.gz](./examples/SparkAppSubmit.tar.gz)
 2.  __Build the program with this command:__
 
     ```
