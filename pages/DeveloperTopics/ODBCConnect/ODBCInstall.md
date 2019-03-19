@@ -218,7 +218,7 @@ computer:
     <li>
         <p>You must have version <strong>4.82</strong> or later of the GNU Compiler Collection (<em>GCC</em>) installed. You can use the following command to verify your version:</p>
         <div class="preWrapper"><pre class="ShellCommand">
-gcc -version</pre>
+gcc --version</pre>
         </div>
     </li>
     <li>
