@@ -19,15 +19,13 @@ For an overview of best practices for data ingestion, see [Best Practices: Inges
 ## Ingesting Streaming Data  {#streaming}
 
 
-### Notebook Example of  Spark Streaming
+## Notebook Example of  Spark Streaming
 This section presents the Zeppelin version of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps.
 
 **************** NEED EXAMPLE HERE ******************
 
-### Spark-submit Example of  Spark Streaming
+## Spark-submit Example of  Spark Streaming
 This section presents the spark-submit version of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps.
-
-**************** NEED EXAMPLE HERE ******************
 
 
 </div>

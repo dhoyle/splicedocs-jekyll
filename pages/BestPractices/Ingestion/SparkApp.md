@@ -100,20 +100,136 @@ This section presents a simple Zeppelin notebook example, written in Scala, of m
 
 ## Using the Native Spark DataSource with spark-submit to Ingest Data  {#loadsubmit}
 
-<strong>+++++++++++++ WE NEED A SIMPLER EXAMPLE, HOPEFULLY IN PYTHON +++++++++++++</strong>
+This section presents a discussion of and sample code for a standalone program submitted with `spark-submit` that uses the Splice Machine Native Spark DataSource to ingest data into a table.
 
-This section presents a discussion of and sample code for a standalone programs submitted with `spark-submit` that use the Splice Machine Native Spark DataSource to ingest data into a table.
+All of the files required to build and run this program are available here: [./examples/StreamingSparkSubmit.tar.gz](./examples/StreamingSparkSubmit.tar.gz)
+{: .noteNote}
 
-There are two aspects to getting your Spark program to run with spark-submit; you need to:
+We show you how to create and run this example in these subsections:
 
-1. Write the code for your program
-2. Modify any configuration options in our spark-submit.sh script
+1. [The Submit Script](#submitscript) presents the `spark-submit.sh` script and describes the variables that you need to modify before running the script.
+2. [The Example Code](#examplecode) section presents the code for our example program that ingests data using the Splice Machine Native Spark DataSource.
+3. [Build and Run the Example Program](#runsubmitexample) walks you through building and running the sample code.
 
-The sections below include the code for both aspect.
 
-### Example: Import CSV with Spark-Submit Program  {#importcode}
+### The Submit Script  {#submitscript}
 
-Here's a sample Spark program in Java for importing a CSV file into a Splice Machine database table:
+You can use the supplied `spark-submit.sh` script to run a Spark program. Here's a version of this script:
+
+
+```
+#!/bin/bash
+export SPARK_KAFKA_VERSION=0.10
+
+TargetTable=LINEITEM
+TargetSchema=TPCH
+RSHostName=srv132
+SpliceConnectPort=1527
+UserName=splice
+UserPassword=admin
+HdfsHostName=srv131
+HdfsPort=8020
+CsvFilePath=/TPCH/1/lineitem
+
+spark2-submit \
+--conf "spark.dynamicAllocation.enabled=false" \
+--conf "spark.streaming.stopGracefullyOnShutdown=true" \
+--conf "spark.streaming.concurrentJobs=1" \
+--conf "spark.task.maxFailures=2" \
+--conf "spark.driver.memory=4g" \
+--conf "spark.driver.cores=1" \
+--conf "spark.driver.extraJavaOptions=-verbose:class" \
+--conf "spark.executor.extraJavaOptions=-verbose:class" \
+--conf "spark.executor.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
+--conf "spark.driver.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
+--name "Spark Adapter Ingest" \
+--jars "splicemachine-cdh5.12.2-2.2.0.cloudera2_2.11-2.7.0.1908.jar" \
+--class com.splicemachine.example.Main \
+--master yarn --deploy-mode cluster --num-executors 10 --executor-memory 10G --executor-cores 4 target/example-1.0-SNAPSHOT.jar \
+$TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPassword $HdfsHostName $HdfsPort $CsvFilePath
+```
+{: .ShellCommand}
+
+Before submitting your Spark program with this script, you need to modify some of the values at the top of the script; for our sample program, these are the values, which are summarized in the table below:
+{: .spaceAbove}
+
+```
+TargetTable=LINEITEM
+TargetSchema=TPCH
+RSHostName=srv132
+SpliceConnectPort=1527
+UserName=splice
+UserPassword=admin
+HdfsHostName=srv131
+HdfsPort=8020
+CsvFilePath=/TPCH/1/lineitem
+```
+{: .ShellCommand}
+
+<table>
+    <caption class="tblCaption">Table 1: spark-submit script variables</caption>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Script Variable</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">TargetTable</td>
+            <td>The name of the table in your Splice Machine database into which you are importing data.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">TargetSchema</td>
+            <td>The name of the schema in your database to which the table belongs.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">RSHostName</td>
+            <td>The region server for connecting to your  database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">SpliceConnectPort</td>
+            <td>The port number for connecting to your database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">UserName</td>
+            <td>The user name for connecting to your database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">UserPassword</td>
+            <td>The user password for connecting to your database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">HdfsHostName</td>
+            <td>The region server for connecting to HDFS.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">HdfsPort</td>
+            <td>The port number for connecting to HDFS.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">CsvFilePath</td>
+            <td>The HDFS path to the CSV file you're importing.</td>
+        </tr>
+    </tbody>
+</table>
+
+### The Example Code  {#examplecode}
+
+This section presents a simple example of ingesting data from a CSV file into a database table with the Splice Machine Native Spark DataSource.
+
+This code does the following:
+
+1.  Configures variables from the parameters in the `spark-submit.sh` script.
+2.  Creates a Spark session.
+3.  Creates a JDBC URL for connecting to your Splice Machine database.
+4.  Creates a Splice Machine Native Spark DataSource context (`splicemachineContext`) with that URL.
+5.  Creates a Spark DataFrame from the CSV file that you're importing.
+6.  Inserts the data from the DataFrame into your database.
+
+Here's the code:
 
 ```
 package com.splicemachine.example;
@@ -139,7 +255,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        if(args.length < 10) {
+        if(args.length < 9) {
             System.err.println("Incorrect number of params ");
             return;
         }
@@ -153,53 +269,7 @@ public class Main {
         final String inHDFSHostName = args[6];
         final String inHDFSPort = args[7];
         final String inCSVFilePath = args[8];
-        final boolean bulkImport = args[9].compareToIgnoreCase("true")==0?true:false;
 
-        String inKbrPrincipal = System.getProperty("spark.yarn.principal");
-        String inKbrKeytab = System.getProperty("spark.yarn.keytab");
-
-        ClassLoader cl = ClassLoader.getSystemClassLoader();
-
-        URL[] urls = ((URLClassLoader)cl).getURLs();
-
-        for(URL url: urls){
-            System.out.println(url.getFile());
-        }
-        UserGroupInformation ugi = UserGroupInformation.getCurrentUser();
-        System.out.println("Logged in as " + ugi);
-        System.out.println("Has credentials " + ugi.hasKerberosCredentials());
-        System.out.println("credentials " + ugi.getCredentials());
-
-        System.out.println(inKbrPrincipal);
-        System.out.println(inKbrKeytab);
-
-
-        doWork(inTargetTable, inTargetSchema, inHostName, inHostPort, inUserName, inUserPassword, inKbrPrincipal, inKbrKeytab, inHDFSHostName, inHDFSPort, inCSVFilePath, bulkImport);
-    }
-
-    private static void doWork(String inTargetTable, String inTargetSchema, String inHostName, String inHostPort, String inUserName, String inUserPassword, String inKbrPrincipal, String inKbrKeytab, String inHDFSHostName, String inHDFSPort, String inCSVFilePath, boolean bulkImport) throws IOException, InterruptedException {
-
-        // Construct schema for the table
-        StructType schema = new StructType(new StructField [] {
-                new StructField("L_ORDERKEY",DataTypes.LongType, false, Metadata.empty()),
-                new StructField("L_PARTKEY",DataTypes.IntegerType, false, Metadata.empty()),
-                new StructField("L_SUPPKEY",DataTypes.IntegerType, false, Metadata.empty()),
-                new StructField("L_LINENUMBER",DataTypes.IntegerType, false, Metadata.empty()),
-                new StructField("L_QUANTITY",DataTypes.DoubleType, true, Metadata.empty()),
-                new StructField("L_EXTENDEDPRICE",DataTypes.DoubleType, true, Metadata.empty()),
-                new StructField("L_DISCOUNT",DataTypes.DoubleType, true, Metadata.empty()),
-                new StructField("L_TAX",DataTypes.DoubleType, true, Metadata.empty()),
-                new StructField("L_RETURNFLAG",DataTypes.StringType, true, Metadata.empty()),
-                new StructField("L_LINESTATUS",DataTypes.StringType, true, Metadata.empty()),
-                new StructField("L_SHIPDATE",DataTypes.DateType, true, Metadata.empty()),
-                new StructField("L_COMMITDATE",DataTypes.DateType, true, Metadata.empty()),
-                new StructField("L_RECEIPTDATE",DataTypes.DateType, true, Metadata.empty()),
-                new StructField("L_SHIPINSTRUCT",DataTypes.StringType, true, Metadata.empty()),
-                new StructField("L_SHIPMODE",DataTypes.StringType, true, Metadata.empty()),
-                new StructField("L_COMMENT",DataTypes.StringType, true, Metadata.empty())
-        });
-
-        // Create SparkContext and pass to splice
         SparkConf conf = new SparkConf();
         SparkSession spark = SparkSession.builder().appName("Ingest").config(conf).getOrCreate();
         SpliceSpark.setContext(spark.sparkContext());
@@ -213,81 +283,94 @@ public class Main {
         // Set target table name and schema name
         String SPLICE_TABLE_ITEM = inTargetSchema + "." + inTargetTable;
 
+        StructType schema = splicemachineContext.getSchema(SPLICE_TABLE_ITEM);
+
         // Create a DataFrame from a specified file
         Dataset<Row> df = spark.read().format("com.databricks.spark.csv").option("delimiter", "|").schema(schema)
                 .load("hdfs://" + inHDFSHostName + ":" + inHDFSPort + inCSVFilePath);
 
-        if (bulkImport) {
-            // bulk import data to the table
-            scala.collection.mutable.Map bulkImportOptions = new scala.collection.mutable.HashMap();
-            bulkImportOptions.put("useSpark","true");
-            bulkImportOptions.put("skipSampling", "true");
-            bulkImportOptions.put("bulkImportDirectory", "/hbase/load");
-            bulkImportOptions.put("statusDirectory", "/BAD");
-            splicemachineContext.bulkImportHFile(df, SPLICE_TABLE_ITEM, bulkImportOptions);
-        }
-        else {
-            df = df.repartition(df.toJavaRDD().getNumPartitions());
-            // sample data, split the table and import data
-            splicemachineContext.insert(df, SPLICE_TABLE_ITEM, 0.00001);
-        }
-
-        String sql = "select * from " + SPLICE_TABLE_ITEM;
-        Dataset ds = splicemachineContext.internalDf(sql);
-        ds.printSchema();
-        System.out.println("row count = " + ds.count());
+        splicemachineContext = new SplicemachineContext(dbUrl);
+        // Import the data
+        splicemachineContext.insert(df, SPLICE_TABLE_ITEM);
     }
 }
 ```
 {: .Example}
 
-#### Spark Submit Shell Script  {#importscript}
 
-<strong>+++++++++++++ WE NEED TO HIGHLIGHT/EXPLAIN WHAT PARTS OF THIS  CUSTOMER MUST UPDATE +++++++++++++</strong>
+### Build and Run the Example Program  {#runsubmitexample}
 
-Here's the `spark-submit` shell script for submitting the above sample import program:
+You can download, build, and run this example program as follows:
 
-```
-#!/bin/bash
-export SPARK_KAFKA_VERSION=0.10
+1.  __Click this link to download the example tarball:__ [./examples/StreamingSparkSubmit.tar.gz](./examples/StreamingSparkSubmit.tar.gz)
+2.  __Build the program with this command:__
 
-TargetTable=LINEITEM
-TargetSchema=TPCH
-RSHostName=srv096
-SpliceConnectPort=1527
-UserName=user5
-UserPassword=splice
-KrbPrincipal=user5@SPLICEMACHINE.COLO
-KrbKeytab=/tmp/user5.keytab
-HdfsHostName=srv091
-HdfsPort=8020
-CsvFilePath=/TPCH/1/lineitem
+    ```
+    mvn clean install
+    ```
+    {: .ShellCommand}
+3.  __Copy the `lineitem.csv` file to HDFS. For example:__
 
-spark2-submit --conf "spark.dynamicAllocation.enabled=false" \
---conf "spark.streaming.stopGracefullyOnShutdown=true" \
---conf "spark.streaming.kafka.maxRatePerPartition=500" \
---conf "spark.streaming.kafka.consumer.cache.enabled=false" \
---conf "spark.streaming.concurrentJobs=1" \
---conf "spark.task.maxFailures=2" \
---conf "spark.driver.memory=4g" \
---conf "spark.driver.cores=1" \
---conf "spark.kryoserializer.buffer=1024" \
---conf "spark.kryoserializer.buffer.max=2047" \
---conf "spark.io.compression.codec=org.apache.spark.io.SnappyCompressionCodec" \
---conf "spark.driver.extraJavaOptions=-Djava.security.krb5.conf=/etc/krb5.conf -Dspark.yarn.principal=user5@SPLICEMACHINE.COLO -Dspark.yarn.keytab=/tmp/user5.keytab -Dlog4j.configuration=log4j-spark.properties -XX:+UseCompressedOops -XX:+UseG1GC -XX:+PrintFlagsFinal -XX:+PrintReferenceGC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintAdaptiveSizePolicy -XX:+UnlockDiagnosticVMOptions -XX:+G1SummarizeConcMark -XX:InitiatingHeapOccupancyPercent=35 -XX:ConcGCThreads=12" \
---conf "spark.executor.extraJavaOptions=-Djava.security.krb5.conf=krb5.conf -Dlog4j.configuration=log4j-spark.properties -XX:+UseCompressedOops -XX:+UseG1GC -XX:+PrintFlagsFinal -XX:+PrintReferenceGC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintAdaptiveSizePolicy -XX:+UnlockDiagnosticVMOptions -XX:+G1SummarizeConcMark -XX:InitiatingHeapOccupancyPercent=35 -XX:ConcGCThreads=12" \
---conf "spark.executor.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
---conf "spark.driver.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
---files "/etc/spark/conf/log4j.properties,/etc/krb5.conf"  \
---keytab "/tmp/user5.keytab"  \
---principal "user5@SPLICEMACHINE.COLO" \
---name "Ingest" \
---jars "splicemachine-cdh5.12.2-2.2.0.cloudera2_2.11-2.5.0.1845-SNAPSHOT.jar" \
---class com.splicemachine.example.Main \
---master yarn --deploy-mode cluster --num-executors 10 --executor-memory 10G --executor-cores 4 target/example-1.0-SNAPSHOT.jar \
-$TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPassword $HdfsHostName $HdfsPort $CsvFilePath true
-```
-{: .Example}
+    ```
+    hadoop fs -copyFromLocal lineitem.csv /TPCH/1/lineitem
+    ```
+    {: .ShellCommand}
+4.  __Modify the `spark-submit.sh` script for your environment. The values you may need to modify are at the top of the script:__
+
+    To run this example, make these changes:
+
+    a.  Specify which region server and port to connect to. For example, to run on the standalone version of Splice Machine, you could use:
+
+    ```
+    RSHostName=localhost
+    SpliceConnectPort=1527
+    ```
+    {: .ShellCommand}
+
+    b.  Specify the user name and password for the connection. For example:
+
+    ```
+    UserName=myUserId
+    UserPassword=myPassword
+    ```
+    {: .ShellCommand}
+
+    c.  Specify the location of the csv file in HDFS. For example:
+
+    ```
+    HdfsHostName=srv136
+    HdfsPort=8020
+    CsvFilePath=/TPCH/1/lineitem/lineitem.csv
+    ```
+    {: .ShellCommand}
+5.  __Connect to your Splice Machine database.__
+
+6.  __Create the `LINEITEM` table in your database:__
+
+    ```
+    CREATE TABLE LINEITEM (
+      L_ORDERKEY      INTEGER NOT NULL,
+      L_PARTKEY       INTEGER NOT NULL,
+      L_SUPPKEY       INTEGER NOT NULL,
+      L_LINENUMBER    INTEGER NOT NULL,
+      L_QUANTITY      DECIMAL(15, 2),
+      L_EXTENDEDPRICE DECIMAL(15, 2),
+      L_DISCOUNT      DECIMAL(15, 2),
+      L_TAX           DECIMAL(15, 2),
+      L_RETURNFLAG    CHAR(1),
+      L_LINESTATUS    CHAR(1),
+      L_SHIPDATE      DATE,
+      L_COMMITDATE    DATE,
+      L_RECEIPTDATE   DATE,
+      L_SHIPINSTRUCT  CHAR(25),
+      L_SHIPMODE      CHAR(10),
+      L_COMMENT       VARCHAR(44)--,
+      PRIMARY KEY (L_ORDERKEY, L_LINENUMBER)
+    );
+    ```
+    {: .Example}
+7.  __Run the `spark-submit.sh` script from the command line to import the data from the `lineitem.csv` file into the `LINEITEM` table in your database.__
+
 
 </div>
 </section>
