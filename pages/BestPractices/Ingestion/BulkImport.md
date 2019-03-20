@@ -36,7 +36,7 @@ call SYSCS_UTIL.BULK_IMPORT_HFILE('<span class="HighlightedCode">&lt;schemaName&
         '<span class="HighlightedCode">&lt;badRecordLogDirectory&gt;</span>', true, null, '<span class="HighlightedCode">&lt;temporaryFileDir&gt;</span>', '<span class="HighlightedCode">&lt;skipSampling&gt;</span>');</pre>
 </div>
 
-All of the `null` parameter values specify that default values should be used. All of the parameters are described, along with their default values, in [Table 1]{#table1}. Here's a call with actual values plugged in:
+All of the `null` parameter values specify that default values should be used. All of the parameters are described, along with their default values, in [Table 1](#table1). Here's a call with actual values plugged in:
 
 ```
 call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,

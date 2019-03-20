@@ -13,11 +13,11 @@ folder: BestPractices/Database
 
 # ﻿Best Practices: Basic Flat File Ingestion
 
-This topic show you how to use Splice Machine's basic data ingestion method, `IMPORT_DATA`, to import data from flat files into your database. This highly performant procedure provides numerous data handling options, and performs constraint checking, which means that it detects and reports on erroneous records (*bad data*) in the input file.
+This topic show you how to use Splice Machine's basic data ingestion methods, `IMPORT_DATA` and `MERGE_DATA_FROM_FILE`, to import data from flat files into your database. These highly performant procedure provide numerous data handling options, and perform constraint checking, which means that they detect and report on erroneous records (*bad data*) in the input file.
 
-You can use two variants of `IMPORT_DATA` to import new data and update existing records in your database: `INSERT_DATA_FROM_FILE`, and `MERGE_DATA_FROM_FILE`; these procedures differ only in how they handle updating existing records under certain circumstances, as described in the [Basic Import/Update Ingestion](#basicupdate) section below.
+If you're ingesting all new data, use `IMPORT_DATA`; if you are also ingesting updates to existing records in your database table, use `MERGE_DATA_FROM_FILE`. You can only merge data into a table that has a primary key.
 
-Our [Bulk HFile Import](bestpractices_ingest_bulkimport) procedure, `BULK_HFILE_IMPORT`, offers boosted ingestion speed, but does not perform constraint checking.
+Our [Bulk HFile Import](bestpractices_ingest_bulkimport) procedure, `BULK_HFILE_IMPORT`, offers boosted ingestion speed when importing all new data, but does not perform constraint checking.
 
 ## Example: Basic Flat File Ingestion
 
@@ -29,7 +29,7 @@ call SYSCS_UTIL.IMPORT_DATA('<span class="HighlightedCode">&lt;schemaName&gt;</s
         '<span class="HighlightedCode">&lt;badRecordLogDirectory&gt;</span>', true, null);</pre>
 </div>
 
-All of the `null` parameter values specify that default values should be used. All of the parameters are described, along with their default values, in [Table 1]{#table1}. Here's a call with actual values plugged in:
+All of the `null` parameter values specify that default values should be used. All of the parameters are described, along with their default values, in [Table 1](#table1). Here's a call with actual values plugged in:
 
 ```
 call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'playerTeams', null, 'myData.csv',
@@ -37,7 +37,10 @@ call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'playerTeams', null, 'myData.csv',
 ```
 {: .Example}
 
-In the above call, the parameter values have the following meaning:
+The `MERGE_DATA_FROM_FILE` procedure uses exactly the same parameters.
+{: .noteNote}
+
+In the above calls, the parameter values have the following meaning:
 {: .spaceAbove}
 
 <table>
@@ -99,7 +102,7 @@ In the above call, the parameter values have the following meaning:
     </tbody>
 </table>
 
-### Example: Basic Import of a Flat File {#eximport}
+## Example: Basic Import of a Flat File {#eximport}
 
 Here's a very basic example of importing a flat file into a table in your Splice Machine database. Follow these steps:
 
@@ -140,24 +143,13 @@ Here's a very basic example of importing a flat file into a table in your Splice
 
     rowsImported        |failedRows          |files      |dataSize            |failedLog
     -------------------------------------------------------------------------------------
-    5                   |0                   |1          |20                  |NONE
-
-    splice> SELECT * FROM testImport;
-    A1         |B1         |C1         |D1
-    -----------------------------------------------
-    0          |0          |10001      |999
-    1          |2          |10002      |999
-    2          |4          |10003      |999
-    3          |6          |10004      |999
-    4          |8          |10005      |999
-
-    6 rows selected
+    5                   |0                   |1          |50                  |NONE
     ```
     {: .Example}
 
     Note that this `IMPORT_DATA` call logs bad import records to a file on `HDFS`, and uses almost all default parameter values. The exception: our data file uses the `|` to delimit columns.  All of the parameters are summarized in [Table 1](#table1) below.
     {: .spaceAbove}
-
+<br />
 4.  __Use a `SELECT` statement to verify that all went well:__
 
     ```
@@ -174,9 +166,61 @@ Here's a very basic example of importing a flat file into a table in your Splice
     ```
     {: .Example}
 
+## Example: Basic Merge of a Flat File {#eximport}
+
+Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *and* update a few existing records in a table. This example ingests into the same table that we just used in the `IMPORT_DATA` example above.
+
+1.  __Access a simple file named `mergetest.csv` from an S3 bucket on AWS. That file contains the following data. Note that the rows with key values `2` and `4` already exist in the table:__
+
+    ```
+    2|22
+    4|44
+    5|55
+    6|66
+    ```
+    {: .Example}
+<br />
+2.  __Use `MERGE_DATA` to import that data into the `testImport` table:__
+
+    ```
+    splice> CALL SYSCS_UTIL.MERGE_DATA_FROM_FILE('TEST', 'testImport', null,
+                        's3a:/mypublicbucket/mergetest.csv',
+                        '|', null, null, null, null, 0,
+                        'hdfs:///tmp/test_import/', false, null);
+
+    rowsUpdated   |rowsInserted  |failedRows     |files  |dataSize           |failedLog
+    -------------------------------------------------------------------------------------
+    2             |2             |0              |1      |44                 |NONE
+
+    1 row selected
+    ```
+    {: .Example}
+<br />
+3.  __Use a `SELECT` statement to verify that all went well:__
+
+    ```
+    splice> SELECT * FROM testImport;
+    A1         |B1         |C1         |D1
+    -----------------------------------------------
+    0          |0          |1          |999
+    1          |2          |2          |999
+    2          |22         |3          |999
+    3          |6          |4          |999
+    4          |44         |5          |999
+    5          |55         |6          |999
+    6          |66         |7          |999
+
+    7 rows selected
+    ```
+    {: .Example}
+
+    Note that this `MERGE_DATA_FROM_FILE` call uses exactly the same parameter values as does the previous call to `IMPORT_DATA`, with the exception of importing a different file. As you can see, two rows (`A1=2` and `A1=4`) were updated with new `B1` values, and two new rows were added by this merge call.
+    {: .spaceAbove}
+
 ## Parameters Used With the Basic Import Procedures  {#table1}
 
-The following table summarizes the parameters you use when calling the `IMPORT_DATA`,  `UPSERT_DATA_FROM_FILE`, and `MERGE_DATA_FROM_FILE` procedures.
+The following table summarizes the parameters you use when calling the `IMPORT_DATA` or
+ `UPSERT_DATA_FROM_FILE` procedures.
 
 <table>
     <caption class="tblCaption">Table 1: Basic Import Parameters</caption>
@@ -244,138 +288,6 @@ The following table summarizes the parameters you use when calling the `IMPORT_D
     </tbody>
 </table>
 
-## Basic Import/Update Ingestion  {#basicupdate}
-
-You can use two variants of the`IMPORT_DATA` procedure to update existing records while adding new records to a table in your Splice Machine database, as long as your table has a primary key. These two procedures work almost identically; what distinguishes the two is how each handles updating existing records in a database when there's a missing value in the matching record in the input file:
-
-* If the matching record in the input file does not contain a value for a column in the database record, `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` updates the database record to have the default value for that column; if there is no default, the column value is set to `NULL`.
-* If the matching record in the source does not contain a value for a column in the database record, `SYSCS_UTIL.MERGE_DATA_FROM_FILE` does not modify the value in the database record.
-
-## Example: Comparing the Basic Update Methods  {#basicupdates}
-
-This section presents a simple example of using the `UPSERT` and `MERGE`to import data into a table and constrasts the results. Follow these steps:
-
-1.  __Create 2 simple tables, `testUpsert` and `testMerge`:__
-
-    ```
-    CREATE SCHEMA test;
-    SET SCHEMA test;
-
-    CREATE TABLE testUpsert (
-             a1 INT,
-             b1 INT,
-             c1 INT GENERATED BY DEFAULT AS IDENTITY(start with 1, increment by 1),
-             d1 INT DEFAULT 999,
-             PRIMARY KEY (a1)
-     );
-
-    CREATE TABLE testMerge (
-             a1 INT,
-             b1 INT,
-             c1 INT GENERATED BY DEFAULT AS IDENTITY(start with 1, increment by 1),
-             d1 INT DEFAULT 999,
-             PRIMARY KEY (a1)
-     );
-     ```
-     {: .Example}
-
-     Note that the `c1` column in each table contains auto-generated values, and the `d1` column has a default value 999.
-     {: .spaceAbove}
-
-2.  __Access a simple file named `ttest.csv` from an S3 bucket on AWS. That file contains this data:__
-
-    ```
-    0|0
-    1|2
-    2|4
-    3|6
-    4|8
-    ```
-    {: .Example}
-<br />
-3.  __Populate our two tables with the same data, so we can then observe the difference between upserting and merging into them:__
-
-    ```
-    INSERT INTO testUpsert(a1,b1) VALUES (1,1), (2,2), (3,3), (6,6);
-    splice> select * from testUpsert;
-    A1         |B1         |C1         |D1
-    -----------------------------------------------
-    1          |1          |1          |999
-    2          |2          |2          |999
-    3          |3          |3          |999
-    6          |6          |4          |999
-
-    4 rows selected
-
-    INSERT INTO testMerge (a1,b1) VALUES (1,1), (2,2), (3,3), (6,6);
-    splice> select * from testMerge;
-    A1         |B1         |C1         |D1
-    -----------------------------------------------
-    1          |1          |1          |999
-    2          |2          |2          |999
-    3          |3          |3          |999
-    6          |6          |4          |999
-
-    4 rows selected
-    ```
-    {: .Example}
-<br />
-4.  __Now, we'll call `UPSERT_DATA_FROM_FILE` and show the results:__
-
-    ```
-    CALL SYSCS_UTIL.UPSERT_DATA_FROM_FILE('TEST', 'testUpsert', 'a1,b1',
-                    's3a:/mypublicbucket/ttest.csv',
-                    '|', null, null, null, null, 0,
-                    hdfs:///tmp/test_upsert/, false, null);
-    rowsImported        |failedRows          |files      |dataSize            |failedLog
-    -------------------------------------------------------------------------------------
-    5                   |0                   |1          |20                  |NONE
-
-    splice> SELECT * FROM testUpsert;
-    A1         |B1         |C1         |D1
-    -----------------------------------------------
-    0          |0          |10001      |999
-    1          |2          |10002      |999
-    2          |4          |10003      |999
-    3          |6          |10004      |999
-    4          |8          |10005      |999
-    6          |6          |4          |999
-
-    6 rows selected
-    ```
-    {: .Example}
-<br />
-5.  __And now we'll call `MERGE_DATA_FROM_FILE` and show the results of that:__
-
-    ```
-    CALL SYSCS_UTIL.MERGE_DATA_FROM_FILE('TEST', 'testMerge', 'a1,b1',
-                    's3a:/mypublicbucket/ttest.csv',
-                    '|', null, null, null, null, 0,
-                    'hdfs:///tmp/test_merge/', false, null);
-    rowsUpdated         |rowsInserted        |failedRows          |files      |dataSize            |failedLog
-    ---------------------------------------------------------------------------------------------------------
-    3                   |2                   |0                   |1          |20                  |NONE
-
-    splice> select * from testMerge;
-    A1         |B1         |C1         |D1
-    -----------------------------------------------
-    0          |0          |10001      |999
-    1          |2          |1          |999
-    2          |4          |2          |999
-    3          |6          |3          |999
-    4          |8          |10002      |999
-    6          |6          |4          |999
-
-    6 rows selected
-    ```
-    {: .Example}
-
-__You'll notice that:__
-{: .spaceAbove}
-
-* The generated column (`c1`) is not included in the `insertColumnList`  parameter in these calls.
-* The results are identical except for the values in the generated column.
-* The generated values in `c1` are not updated in existing records when merging data, but are updated when upserting data.
 
 ## For Additional Information
 
