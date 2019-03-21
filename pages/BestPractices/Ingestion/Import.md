@@ -17,9 +17,16 @@ This topic show you how to use Splice Machine's basic data ingestion methods, `I
 
 If you're ingesting all new data, use `IMPORT_DATA`; if you are also ingesting updates to existing records in your database table, use `MERGE_DATA_FROM_FILE`. You can only merge data into a table that has a primary key.
 
-Our [Bulk HFile Import](bestpractices_ingest_bulkimport) procedure, `BULK_HFILE_IMPORT`, offers boosted ingestion speed when importing all new data, but does not perform constraint checking.
+The remainder of this topic contains these sections:
 
-## Example: Basic Flat File Ingestion
+* About Basic Flat File Ingestion(#aboutflat)
+* Example: Basic Import of a Flat File(#eximport)
+* Example: Basic Merge of a Flat File(#exmerge)
+* Parameters Used With the Basic Import Procedures(#table1)
+
+Our [Bulk HFile Import](bestpractices_ingest_bulkimport) procedure, `BULK_HFILE_IMPORT`, offers boosted ingestion speed when importing large (> 100GB) data sets, but does not perform constraint checking.
+
+## About Basic Flat File Ingestion  {#aboutflat}
 
 Here's what a call to the `IMPORT_DATA` procedure looks like, with required parameters highlighted:
 
@@ -166,7 +173,7 @@ Here's a very basic example of importing a flat file into a table in your Splice
     ```
     {: .Example}
 
-## Example: Basic Merge of a Flat File {#eximport}
+## Example: Basic Merge of a Flat File {#exmerge}
 
 Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *and* update a few existing records in a table. This example ingests into the same table that we just used in the `IMPORT_DATA` example above.
 
@@ -294,7 +301,6 @@ The following table summarizes the parameters you use when calling the `IMPORT_D
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:
 
 * [SYSCS_UTIL.IMPORT_DATA](sqlref_sysprocs_importdata.html)
-* [SYSCS_UTIL.UPSERT_DATA_FROM_FILE](sqlref_sysprocs_upsertdata.html)
 * [SYSCS_UTIL.MERGE_DATA_FROM_FILE](sqlref_sysprocs_mergedata.html)
 
 
