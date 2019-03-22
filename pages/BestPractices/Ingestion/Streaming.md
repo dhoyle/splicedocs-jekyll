@@ -67,6 +67,8 @@ bin/kafka-topics --describe --zookeeper localhost:2181  --topic weather
 
 This section presents our sample code to produce a stream of weather data. The fully commented version of this code is available in  [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz).
 
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 ```
 package com.splicemachine.sample;
 
@@ -101,7 +103,12 @@ public class KafkaTopicProducer {
         kp.generateMessages();
 
     }
+```
+{: .Example}
 
+XXXXXXXXXXXXXXx
+
+```
     /* Sends messages to the Kafka queue. */
     public void generateMessages() {
         df.setRoundingMode(RoundingMode.CEILING);
@@ -136,7 +143,12 @@ public class KafkaTopicProducer {
         //display the number of messages that aw
         System.out.println("messages pushed:" + nEvents);
     }
+```
+{: .Example}
 
+XXXXXXXXXXXX
+
+```
     /* Get a randomly generated temperature value */
     public double getTemperature() {
         return 9.0 + (95.5 - 9.0) * r.nextDouble();
@@ -159,10 +171,10 @@ public class KafkaTopicProducer {
         return locations[randomNum];
     }
 
-}
+}       /* (End of the class declaration) */
 ```
 {: .Example}
-
+<br />
 
 ### 4. Create App to Consume the Stream and Insert Data into Your Table  {#createapp}
 
@@ -178,6 +190,7 @@ The `main` body of this app uses Kafka to consume entries in the stream into a S
 This code is available in  [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz).
 {: .noteNote}
 
+XXXXXXXXXXXXXXXXx
 ```
 package com.splicemachine.sample;
 
@@ -208,7 +221,8 @@ import org.apache.spark.streaming.kafka010.*;
 import org.apache.spark.streaming.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import scala.Tuple2;
-
+```
+{: .Example}
 
 public class KafkaTopicConsumer {
 
@@ -298,7 +312,7 @@ public class KafkaTopicConsumer {
 {: .Example}
 
 
-## Running the App  {runcode}
+## Running the App  {#runcode}
 
 To put it all together, you need to start streaming data, consume that data and store it in your database table, and then use the data from the table, as shown in these sections:
 
@@ -451,6 +465,7 @@ Here's a simple query you can use to verify that the table has been populated:
 ```
 splice> select * from splice.weather;
 ```
+{: .Example}
 
 </div>
 </section>

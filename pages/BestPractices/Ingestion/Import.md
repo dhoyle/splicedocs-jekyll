@@ -19,10 +19,10 @@ If you're ingesting all new data, use `IMPORT_DATA`; if you are also ingesting u
 
 The remainder of this topic contains these sections:
 
-* About Basic Flat File Ingestion(#aboutflat)
-* Example: Basic Import of a Flat File(#eximport)
-* Example: Basic Merge of a Flat File(#exmerge)
-* Parameters Used With the Basic Import Procedures(#table1)
+* [About Basic Flat File Ingestion](#aboutflat)
+* [Example: Basic Import of a Flat File](#eximport)
+* [Example: Basic Merge of a Flat File](#exmerge)
+* [Parameters Used With the Basic Import Procedures](#table1)
 
 Our [Bulk HFile Import](bestpractices_ingest_bulkimport) procedure, `BULK_HFILE_IMPORT`, offers boosted ingestion speed when importing large (> 100GB) data sets, but does not perform constraint checking.
 
@@ -156,7 +156,7 @@ Here's a very basic example of importing a flat file into a table in your Splice
 
     Note that this `IMPORT_DATA` call logs bad import records to a file on `HDFS`, and uses almost all default parameter values. The exception: our data file uses the `|` to delimit columns.  All of the parameters are summarized in [Table 1](#table1) below.
     {: .spaceAbove}
-<br />
+
 4.  __Use a `SELECT` statement to verify that all went well:__
 
     ```

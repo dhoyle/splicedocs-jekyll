@@ -20,10 +20,11 @@ We recommend using Bulk HFile importing; however, if your input might contain da
 
 The remainder of this topic contains these sections:
 
-* About Bulk HFile Import(#aboutBulkHfile)
-* Using Automatic Bulk HFile Import(#splitauto)
-* Using Manual Bulk HFile Import(#splitkey)
-* Parameters Used With Bulk Import(#table1)
+* [About Bulk HFile Import](#aboutBulkHfile)
+* [Using Automatic Bulk HFile Import](#splitauto)
+* [Using Manual Bulk HFile Import](#splitkey)
+* [Bulk Importing Indexes](#indexhandling)
+* [Parameters Used With Bulk Import](#table1)
 
 You can also use bulk HFiles to speed up performance of the `INSERT` statement, as shown in the [Using Bulk Insert](#bulkinsert) example at the end of this topic.
 
@@ -34,9 +35,9 @@ When you use bulk HFile import, Splice Machine first notes the points in your da
 
 Splice Machine offers two bulk import variations:
 
-* *Automatic Splitting* is the easier method because the `BULK_HFILE_IMPORT` procedure takes care of determining the key values that will evenly split your input data into HFiles. The procedure does this by sampling your data to figure out how to split it into (approximately) equal-sized HFiles. The next section, [automatic bulk Hfile ingestion](#splitauto) shows you how easily and quickly you can bulk import a file.
+* *Automatic Splitting* is the easier method because the `BULK_HFILE_IMPORT` procedure takes care of determining the key values that will evenly split your input data into HFiles. The procedure does this by sampling your data to figure out how to split it into (approximately) equal-sized HFiles. The next section, [automatic bulk Hfile ingestion](#splitauto) shows you how easily and quickly you can bulk import a file with automatic splitting.
 
-* If you need even better performance from `BULK_HFILE_IMPORT` and are able to invest some extra effort, you can use [*Manual Splitting*](#splitkey) instead of using automatic splitting; this can be particularly valuable for very large datasets. Because `BULK_HFILE_IMPORT` does not have to sample your data to determine the splits, manual splitting can increase performance, though it adds some complexity and requires that you have some knowledge of your data.
+* If you need even better performance from `BULK_HFILE_IMPORT` and are able to invest some extra effort, you can use [*Manual Splitting*](#splitkey) instead of using automatic splitting; this can be particularly valuable for very large datasets. Because `BULK_HFILE_IMPORT` does not have to sample your data to determine the splits, manual splitting can increase performance, though it adds some complexity and requires that you have enough knowledge of your data to determine where the splits should occur.
 
 ## Using Automatic Bulk HFile Import  {#splitauto}
 
@@ -151,7 +152,7 @@ To use Bulk HFile import with automatic splitting, follow these steps:
     ```
     {: .Example}
 
-    Note that the final parameter, `skipSampling` is `false` in the above call; this tells `BULK_IMPORT_HFILE` to split the data based on its own sampling. All of the parameters are summarized in [Table 1](#table1) below.
+    Note that the final parameter, `skipSampling`, is `false` in the above call; this tells `BULK_IMPORT_HFILE` to split the data based on its own sampling. All of the parameters are summarized in [Table 1](#table1) below.
     {: .spaceAbove}
 
 
@@ -164,8 +165,78 @@ If you don't get the performance you're hoping from with automatic bulk import, 
 
 ### Example: Manual Bulk HFile Import {#exsplitkeys}
 
-To use Bulk HFile import by manually specifying key values, follow these steps:
+To use Bulk HFile import by manually specifying key values, follow the steps below:
 
+
+1.  __Find primary key values that can horizontally split the table into roughly equal sized partitions.__
+
+    For this example, we provide 3 keys in a file named `lineitemKey.csv`, which will be specified as the value of the `fileName` parameter. Note that each of our three keys includes a second column that is `null`:__
+
+	```
+	1500000|
+	3000000|
+	4500000|
+	```
+    {: .Example}
+
+	For every N lines of split data you specify, you’ll end up with N+1 regions; for example, the above 3 splits will produce these 4 regions:
+    {: .spaceAbove}
+
+	```
+	0 -> 1500000
+	1500000 -> 3000000
+	3000000 -> 4500000
+	4500000 -> (last possible key)
+	```
+    {: .Example}
+<br />
+2.  __Specify the column names in the CSV file in the `columnList` parameter; in our example, the primary key columns are:__
+
+	```
+	L_ORDERKEY,L_LINENUMBER
+	```
+    {: .Example}
+<br />
+3.  __Invoke  the `SYSCS_SPLIT_TABLE_OR_INDEX` procedure to pre-split the table file:__
+
+	```
+	call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH',
+        	'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER',
+        	'hdfs:///tmp/test_hfile_import/lineitemKey.csv',
+        	'|', null, null, null,
+        	null, -1, '/BAD', true, null);
+	```
+    {: .Example}
+
+	Note that `SYSCS_SPLIT_TABLE_OR_INDEX` uses the same parameters as our basic import procedures.
+    {: .spaceAbove}
+<br />
+4.  __Import the HFiles into your database:__
+
+    ```
+    call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,
+                's3a://splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null,
+                -1, '/BAD', true, null,
+                'hdfs:///tmp/test_hfile_import/', true);
+    ```
+    {: .Example}
+
+    Note that the final parameter, `skipSampling` is `true` in the above call; this tells `BULK_IMPORT_HFILE` that the data has already been pre-split into HFiles.
+    {: .spaceAbove}
+
+## Bulk Importing Indexes { #indexhandling}
+
+    If you have less than 100 GB of data just import your data and build your indexes and go to town, you will be happy.
+
+    However, if you have more than 100 gigs of data you should consider different methods to bulk import it.
+
+    One of the first questions to ask is do you have any indexes on that table?
+    If you do have indexes you need to consider whether you want to create the indexes while the table is empty or else first load the data and then create the indexes. The consideration for indexes is whether or not you’re going to be able to say something about the data before the index is created. We have a method to supply indexes with their split keys, but that can only be employed if you know something about your data. For instance if your index includes the primary key of your database then you can use the same split keys for your table and index. However if your index does share the underlying table's primary key, and you do not know the # of unique values, you might need to load the data before you can inspect the data to determine split keys for that index.
+
+    Once you have determined if you will create indexes first or later; then you can load the data to your table.
+
+    If you specify skipSampling=true and don't pre-split ==> All data will be bulk imported into one region
+    (pre-splitting marks the table)
 
 1.  __Find primary key values that can horizontally split the table into roughly equal sized partitions.__
 
@@ -252,6 +323,7 @@ To use Bulk HFile import by manually specifying key values, follow these steps:
     Note that the final parameter, `skipSampling` is `true` in the above call; this tells `BULK_IMPORT_HFILE` that the data has already been pre-split into HFiles.
     {: .spaceAbove}
 
+
 ## Parameters Used With Bulk Import  {#table1}
 
 The following table summarizes the parameters you use when calling the `BULK_IMPORT_HFILE` and `SYSCS_SPLIT_TABLE_OR_INDEX` procedures.
@@ -334,7 +406,7 @@ The following table summarizes the parameters you use when calling the `BULK_IMP
 
 There's one more way to use bulk HFiles for ingesting data into your Splice Machine tables: you can add a set of hints to an `INSERT` statement that tell the database to use bulk import technology to insert a set of query results into a table.
 
-Splice Machine allows you to specify [optimization hints](developers_tuning_queryoptimization.html); one of these *hints*, `bulkImportDirectory` can be used to perform bulk loading with the SQL `INSERT` statement.
+Splice Machine allows you to specify [optimization hints](developers_tuning_queryoptimization.html){: target="_blank"}; one of these *hints*, `bulkImportDirectory`, can be used to perform bulk loading with the SQL `INSERT` statement.
 
 You do this by adding these hints to the `INSERT`:
 * The `bulkImportDirectory` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to specify where to store the temporary HFiles used for the bulk import.
@@ -366,7 +438,7 @@ skipSampling=false
 SELECT * FROM licensedUserInfo;
 ```
 {: .Example}
-
+<br />
 ## For Additional Information
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:

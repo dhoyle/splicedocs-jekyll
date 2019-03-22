@@ -149,7 +149,7 @@ The *Splice Machine Native Spark DataSource* allows you to directly insert data 
 
 Ingesting data into your Splice Machine database from Spark is simple: once the data is in a Spark DataFrame, you use the Native Spark DataSource's `insert` or `upsert` operations to insert the data into a table in your database. These operations are extremely quick, because Splice Machine reads the data into the table directly, without serializing it, sending it over a wire, and deserializing. You can similarly move data from a Splice Machine table into a Spark DataFrame with a single, non-serialized operation.
 
-The [*Ingesting Data in a Spark App*](bestpractices_ingest_sparkapp.html) topic in this Best Practices chapter contains examples of using the Native Spark DataSource in both a Zeppelin notebook and in a standalone Spark application.
+The [*Ingesting Data in a Spark App*](bestpractices_ingest_sparkapp.html) topic in this Best Practices chapter contains an example of using the Native Spark DataSource in a standalone Spark application.
 
 ## Ingesting Streaming Data  {#streaming}
 
