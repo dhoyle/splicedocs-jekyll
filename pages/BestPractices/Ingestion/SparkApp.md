@@ -125,8 +125,8 @@ TargetTable=LINEITEM
 TargetSchema=TPCH
 RSHostName=srv132
 SpliceConnectPort=1527
-UserName=splice
-UserPassword=admin
+UserName=yourDBUserId
+UserPassword=yourDBPassword
 HdfsHostName=srv131
 HdfsPort=8020
 CsvFilePath=/TPCH/1/lineitem
@@ -150,21 +150,21 @@ $TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPasswor
 ```
 {: .ShellCommand}
 
-Before submitting your Spark program with this script, you need to modify some of the values at the top of the script; for our sample program, these are the values, which are summarized in the table below:
+Before submitting your Spark program with this script, you need to modify some of the values (at least the highlighted) at the top of the script; for our sample program, these are the values, which are summarized in the table below:
 {: .spaceAbove}
 
-```
+<div class="PreWrapper"><pre class="ShellCommand">
 TargetTable=LINEITEM
 TargetSchema=TPCH
-RSHostName=srv132
+RSHostName=<span class="HighlightedCode">srv132</span>
 SpliceConnectPort=1527
-UserName=splice
-UserPassword=admin
-HdfsHostName=srv131
+UserName=<span class="HighlightedCode">yourDBUserId</span>
+UserPassword=<span class="HighlightedCode">yourDBPassword</span>
+HdfsHostName=<span class="HighlightedCode">srv131</span>
 HdfsPort=8020
-CsvFilePath=/TPCH/1/lineitem
-```
-{: .ShellCommand}
+CsvFilePath=<span class="HighlightedCode">/TPCH/1/lineitem</span>
+</pre>
+</div>
 
 <table>
     <caption class="tblCaption">Table 1: spark-submit script variables</caption>

@@ -12,81 +12,60 @@ folder: BestPractices/Database
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
 # ﻿Best Practices: Ingesting Streaming Data
-This topic presents two versions of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps: one version that runs in a Zeppelin notebook, and a second version that runs via spark-submit.
+This topic presents an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table via `spark-submit`. This topic includes the following sections:
+
+* [About Ingesting Streaming Data](#streaming)
+* [Using the Native Spark DataSource to Ingest Streaming Data](#streamsubmit)
+* [Running the App](#runcode)
 
 For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
 
-## Ingesting Streaming Data  {#streaming}
+## About Ingesting Streaming Data  {#streaming}
 
+Internet of Things (IoT) applications need to continously ingest data, process that data, make decisions, and then act. This decision-making pattern typically starts with an ingestion phase of streaming raw data from the edge to a storage medium; then data engineers and data scientists iteratively wrangle the data to get it into a form that can be used downstream by learning, planning, and operational systems.
 
-## Notebook Example of  Spark Streaming
-This section presents the Zeppelin version of an example of using Spark streaming to ingest real-time data from Internet-connected devices (IOT) into a Splice Machine table in these steps.
+The application documented in this topic shows you how to ingest streams of IoT data into Splice Machine tables. This app streams weather data from a public weather data source into a Splice Machine table that you can then use for any purpose, such as a Machine Learning application that needs to consider weather forecasts to predict critical timing of shipments.
 
-**************** NEED EXAMPLE HERE ******************
+Our demonstration app sets up a Kafka producer that streams data from a public weather service and a Kafka consumer that parses the data, transforms it into Spark DataFrames, and then uses our Native Spark DataSource to insert each DataFrame into a Splice Machine database table.
 
 ## Using the Native Spark DataSource to Ingest Streaming Data  {#streamsubmit}
 
-This section presents a discussion of and sample code for a standalone program submitted with `spark-submit` that uses the Splice Machine Native Spark DataSource to ingest streaming data.
+This section presents a sample Spark application that uses Kafka to both produce and consume a stream of real-time weather data. Coding this example involves these steps and components, each of which is described in a subsection below:
+
+1. [Create a table](#createtable) for the data in your Splice Machine database.
+2. [Create a Kafka topic](#createtopic) for the weather data.
+3. [Create a Kafka producer](#createproducer) to stream data.
+4. [Create a Spark app](#createapp) that uses Kafka to consume the stream and uses the Splice Machine Native Spark DataSource to insert the data into your database table.
 
 All of the files required to build and run this program are available here: [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz)
 {: .noteNote}
 
-We show you how to create and run this example in these subsections:
+### 1. Create a Table for the Data in Your Splice Machine Database  {#createtable}
 
-### ReadMe
+Use the following statement in your Splice Machine database to create a table :
 
+```
+CREATE TABLE splice.weather (
+    id VARCHAR(100),
+    location VARCHAR(20),
+    temperature FLOAT,
+    humidity FLOAT,
+    time TIMESTAMP
+    );
+```
+{: .Example}
 
+### 2. Create a Kafka Topic for the Weather Data  {#createtopic}
 
-1) create a table to store data streamed from Kafka
-   create table splice.weather(
-        id varchar(100),
-        location varchar(20),
-        temperature float,
-        humidity float,
-        time timestamp);
+Create your Kafka topic with a command like this:
 
-2) Create a Kafka topic named "weather"
+```
 bin/kafka-topics --describe --zookeeper localhost:2181  --topic weather
-
-3) run streamToKafka.sh to stream data into kafka topic weather.
-
-4) run spark_submit.sh to ingest data from kafka to splice
-
-### The Submit Script
-
 ```
-#!/bin/bash
 
-TargetTable=WEATHER
-TargetSchema=SPLICE
-RSHostName=srv075
-SpliceConnectPort=1527
-UserName=splice
-UserPassword=admin
-KafkaBroker=stl-colo-srv070:9092
-KafkaTopic=weather
+### 3. Create a Kafka Producer to Stream Data  {#createproducer}
 
-export SPARK_KAFKA_VERSION=0.10
-
-spark2-submit \
---conf "spark.dynamicAllocation.enabled=false" \
---conf "spark.streaming.stopGracefullyOnShutdown=true" \
---conf "spark.streaming.concurrentJobs=1" \
---conf "spark.task.maxFailures=2" \
---conf "spark.driver.memory=4g" \
---conf "spark.driver.cores=1" \
---conf "spark.driver.extraJavaOptions=-verbose:class" \
---conf "spark.executor.extraJavaOptions=-verbose:class" \
---conf "spark.executor.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
---conf "spark.driver.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
---name "Spark Adapter Test" \
---class com.splicemachine.sample.KafkaTopicConsumer \
---master yarn --deploy-mode cluster --num-executors 12 --executor-memory 8G --executor-cores 4 target/splice-adapter-kafka-streaming-1.0-SNAPSHOT-jar-with-dependencies.jar \
-$TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPassword $KafkaBroker $KafkaTopic
-```
-{: .ShellCommand}
-
-### The Kafka Producer Code
+This section presents our sample code to produce a stream of weather data. The fully commented version of this code is available in  [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz).
 
 ```
 package com.splicemachine.sample;
@@ -102,78 +81,10 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 public class KafkaTopicProducer {
 
-
-    /**
-     * Static list of locations
-     */
+    /*  Static list of locations  */
     public static final String[] locations = {
-            "Alachua",
-            "Baker",
-            "Bay",
-            "Bradford",
-            "Brevard",
-            "Broward",
-            "Calhoun",
-            "Charlotte",
-            "Citrus",
-            "Clay",
-            "Collier",
-            "Columbia",
-            "Desoto",
-            "Dixie",
-            "Duval",
-            "Escambia",
-            "Flagler",
-            "Franklin",
-            "Gadsden",
-            "Gilchrist",
-            "Glades",
-            "Gulf",
-            "Hamilton",
-            "Hardee",
-            "Hendry",
-            "Hernando",
-            "Highlands",
-            "Hillsborough",
-            "Holmes",
-            "Indian River",
-            "Jackson",
-            "Jefferson",
-            "Lafayette",
-            "Lake",
-            "Pinellas",
-            "Polk",
-            "Putnam",
-            "St. Johns",
-            "St. Lucie",
-            "Santa Rosa",
-            "Sarasota",
-            "Seminole",
-            "Sumter",
-            "Suwannee",
-            "Taylor",
-            "Union",
-            "Volusia",
-            "Wakulla",
-            "Walton",
-            "Washington",
-            "Lee",
-            "Leon",
-            "Levy",
-            "Liberty",
-            "Madison",
-            "Manatee",
-            "Marion",
-            "Martin",
-            "Miami-Dade",
-            "Monroe",
-            "Nassau",
-            "Okaloosa",
-            "Okeechobee",
-            "Orange",
-            "Osceola",
-            "Palm Beach",
-            "Pasco"};
+            "Alachua", "Baker", Bay", Bradford", Brevard", Broward", Calhoun", Charlotte", Citrus", Clay", Collier", Columbia", Desoto", Dixie", Duval", Escambia", Flagler", Franklin", Gadsden", Gilchrist", Glades", Gulf", Hamilton", Hardee", Hendry", Hernando", Highlands", Hillsborough", Holmes", Indian River", Jackson", Jefferson", Lafayette", Lake", Pinellas", Polk", Putnam", St. Johns", St. Lucie", Santa Rosa", Sarasota", Seminole", Sumter", Suwannee", Taylor", Union", Volusia", Wakulla", Walton", Washington", Lee", Leon", Levy", Liberty", Madison", Manatee", Marion", Martin", Miami-Dade", Monroe", Nassau", Okaloosa", Okeechobee", Orange", Osceola", Palm Beach", Pasco"
+        };
     Random r = new Random();
     DecimalFormat df = new DecimalFormat("#.##");
     SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -181,17 +92,8 @@ public class KafkaTopicProducer {
     private long totalEvents = 1;
     private String topic = null;
 
-    /**
-     * Adds records to a Kafka queue
-     *
-     * @param args args[0] - Kafka Broker URL
-     *             args[1] - Kafka Topic Name
-     *             args[2] - Number of messages to add to the queue
-     * @throws Exception
-     */
+    /* Adds records to a Kafka queue */
     public static void main(String[] args) throws Exception {
-
-
         KafkaTopicProducer kp = new KafkaTopicProducer();
         kp.server = args[0];
         kp.topic = args[1];
@@ -200,9 +102,7 @@ public class KafkaTopicProducer {
 
     }
 
-    /**
-     * Sends messages to the Kafka queue.
-     */
+    /* Sends messages to the Kafka queue. */
     public void generateMessages() {
         df.setRoundingMode(RoundingMode.CEILING);
 
@@ -237,39 +137,22 @@ public class KafkaTopicProducer {
         System.out.println("messages pushed:" + nEvents);
     }
 
-    /**
-     * Get a randomly generated temperature value
-     *
-     * @return
-     */
+    /* Get a randomly generated temperature value */
     public double getTemperature() {
         return 9.0 + (95.5 - 9.0) * r.nextDouble();
     }
 
-    /**
-     * Get a randomly generated humidy value
-     *
-     * @return
-     */
+    /* Get a randomly generated humidy value */
     public double getHumidity() {
         return 54.8 + (90.7 - 54.8) * r.nextDouble();
     }
 
-    /**
-     * Format the double to 2 decimal places
-     *
-     * @param dbl
-     * @return
-     */
+    /* Format the double to 2 decimal places */
     public String formatDouble(double dbl) {
         return df.format(dbl);
     }
 
-    /**
-     * Get a randomly generated value for location
-     *
-     * @return
-     */
+    /* Get a randomly generated value for location */
     public String getLocation() {
         int max = locations.length;
         int randomNum = r.nextInt((max - 0)) + 0;
@@ -280,42 +163,20 @@ public class KafkaTopicProducer {
 ```
 {: .Example}
 
-#### Running the Kafka Producer Code
 
-This is the `runKafkaProducer.sh` script:
+### 4. Create App to Consume the Stream and Insert Data into Your Table  {#createapp}
 
-```
-#!/usr/bin/env bash
+This section presents our sample app that consumes the data stream produced by our Kafka producer and inserts it into our Splice Machine database table.
 
-###############################################################################
-#  this is an example script the will require edits to make it work in any
-#  environment.
-###############################################################################
-HOST="srv070"
-KAFKA_LIB_DIR="/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*"
-java -cp target/splice-adapter-kafka-streaming-1.0-SNAPSHOT.jar:${KAFKA_LIB_DIR}\
-    com.splicemachine.sample.KafkaTopicProducer \
-    ${HOST}:9092 $@
-```
-{: .ShellCommand}
+The `main` body of this app uses Kafka to consume entries in the stream into a Spark RDD and invokes the `doWork` method to process the stream entries. The `doWork` method:
 
-#### Streaming To Kafka
+* creates a Spark session
+* connects to your Splice Machine database
+* maps stream entries into a Spark DataFrame
+* uses the `insert` function of the Splice Machine Native Spark DataSource to insert the data, in real-time, into the table.
 
-```
-This is the `streamToKafka.sh` script:
-
-#!/bin/bash
-
-for ((cnt = 0; cnt < 2000; cnt++))
-do
-  echo $cnt
-  sh ./runKafkaProducer.sh weather 500
-  sleep 2
-done
-```
-{: .ShellCommand}
-
-### The Kafka Consumer Code
+This code is available in  [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz).
+{: .noteNote}
 
 ```
 package com.splicemachine.sample;
@@ -435,6 +296,161 @@ public class KafkaTopicConsumer {
 }
 ```
 {: .Example}
+
+
+## Running the App  {runcode}
+
+To put it all together, you need to start streaming data, consume that data and store it in your database table, and then use the data from the table, as shown in these sections:
+
+1. [Run the Kafka Producer to Stream Data](#runproducer) to start streaming weather data.
+2. [Use Spark Submit to Run the App](#submitapp)
+3. [Use the Table](#usetable)
+
+### 1. Run the Kafka Producer to Stream Data {#runproducer}
+
+There are actually two shell scripts involved in streaming data into our app; both are included in the [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz) tarball:
+
+* The `runKafkaProducer.sh` script produces a number of events for a specific Kafka stream.
+* The `streamToKafka.sh` script invokes the `runKafkaProducer.sh` script a number of times, passing parameters that specify which Kafka stream to use and how many events to produce.
+
+<span class="spliceCheckbox">&#x261B;</span>You run `streamToKafka` to actually start streaming data that your app will produce.
+
+#### The `runKafkaProducer` Script
+Here's the version of the `runKafkaProducer.sh` script that is packaged into the [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz) tarball:
+
+<div class="PreWrapper"><pre class="ShellCommand">
+#!/usr/bin/env bash
+
+HOST="<span class="HighlightedCode">srv070</span>"
+KAFKA_LIB_DIR="<span class="HighlightedCode">/opt/cloudera/parcels/KAFKA/lib/kafka/libs/*</span>"
+java -cp target/<span class="HighlightedCode">splice-adapter-kafka-streaming-1.0-SNAPSHOT</span>.jar:${KAFKA_LIB_DIR}\
+  <span class="HighlightedCode">com.splicemachine.sample.KafkaTopicProducer</span> \
+  ${HOST}:9092 $@</pre>
+</div>
+
+You need to modify this script for your environment, updating at least some of the highlighted values, as appropriate.
+
+#### The `streamToKafka` Script
+
+The version of the `streamToKafka.sh` script in the tarball invokes the `runKafkaProducer.sh` script 2000 times, with each invocation producing 500 events:
+
+<div class="PreWrapper"><pre class="ShellCommand">
+#!/bin/bash
+
+for ((cnt = 0; cnt &lt; 2000; cnt++))
+do
+echo $cnt
+sh ./runKafkaProducer.sh weather 500
+sleep 2
+done</pre>
+</div>
+
+### 2. Use Spark Submit to Run the App  {#submitapp}
+
+After you've started streaming data, you can use the supplied `spark-submit.sh` script to run your app. Here's a version of this script:
+
+```
+#!/bin/bash
+
+TargetTable=WEATHER
+TargetSchema=SPLICE
+RSHostName=srv075
+SpliceConnectPort=1527
+UserName=yourDBUserId
+UserPassword=yourDBPassword
+KafkaBroker=stl-colo-srv070:9092
+KafkaTopic=weather
+
+export SPARK_KAFKA_VERSION=0.10
+
+spark2-submit \
+--conf "spark.dynamicAllocation.enabled=false" \
+--conf "spark.streaming.stopGracefullyOnShutdown=true" \
+--conf "spark.streaming.concurrentJobs=1" \
+--conf "spark.task.maxFailures=2" \
+--conf "spark.driver.memory=4g" \
+--conf "spark.driver.cores=1" \
+--conf "spark.driver.extraJavaOptions=-verbose:class" \
+--conf "spark.executor.extraJavaOptions=-verbose:class" \
+--conf "spark.executor.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
+--conf "spark.driver.extraClassPath=/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*" \
+--name "Spark Adapter Test" \
+--class com.splicemachine.sample.KafkaTopicConsumer \
+--master yarn --deploy-mode cluster --num-executors 12 --executor-memory 8G --executor-cores 4 target/splice-adapter-kafka-streaming-1.0-SNAPSHOT-jar-with-dependencies.jar \
+$TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPassword $KafkaBroker $KafkaTopic
+```
+{: .ShellCommand}
+
+
+Before submitting your Spark program with this script, you need to modify some of the values (at least the highlighted) at the top of the script; for our sample program, these are the values, which are summarized in the table below:
+{: .spaceAbove}
+
+<div class="PreWrapper"><pre class="ShellCommand">
+TargetTable=WEATHER
+TargetSchema=<span class="HighlightedCode">SPLICE</span>
+RSHostName=<span class="HighlightedCode">srv075</span>
+SpliceConnectPort=1527
+UserName=<span class="HighlightedCode">yourDBUserId</span>
+UserPassword=<span class="HighlightedCode">yourDBPassword</span>
+KafkaBroker=<span class="HighlightedCode">stl-colo-srv070:9092</span>
+KafkaTopic=weather</pre>
+</div>
+
+<table>
+    <caption class="tblCaption">Table 1: spark-submit script variables</caption>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Script Variable</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">TargetTable</td>
+            <td>The name of the table in your Splice Machine database into which you are importing data.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">TargetSchema</td>
+            <td>The name of the schema in your database to which the table belongs.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">RSHostName</td>
+            <td>The region server for connecting to your  database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">SpliceConnectPort</td>
+            <td>The port number for connecting to your database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">UserName</td>
+            <td>The user name for connecting to your database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">UserPassword</td>
+            <td>The user password for connecting to your database.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">KafkaBroker</td>
+            <td>The Kafka broker server.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">CsvFilePath</td>
+            <td>The HDFS path to the CSV file you're importing.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Use the Table  {#usetable}
+
+Once your app is running, you can query your table and use the information as you like; for example, to train a machine learning model that predicts how weather will impact delivery dates.
+
+Here's a simple query you can use to verify that the table has been populated:
+
+```
+splice> select * from splice.weather;
+```
 
 </div>
 </section>

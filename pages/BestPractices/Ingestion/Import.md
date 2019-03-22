@@ -227,7 +227,7 @@ Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *
 ## Parameters Used With the Basic Import Procedures  {#table1}
 
 The following table summarizes the parameters you use when calling the `IMPORT_DATA` or
- `UPSERT_DATA_FROM_FILE` procedures.
+ `MERGE_DATA_FROM_FILE` procedures.
 
 <table>
     <caption class="tblCaption">Table 1: Basic Import Parameters</caption>
