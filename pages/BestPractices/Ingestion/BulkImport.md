@@ -39,6 +39,9 @@ Splice Machine offers two bulk import variations:
 
 * If you need even better performance from `BULK_HFILE_IMPORT` and are able to invest some extra effort, you can use [*Manual Splitting*](#splitkey) instead of using automatic splitting; this can be particularly valuable for very large datasets. Because `BULK_HFILE_IMPORT` does not have to sample your data to determine the splits, manual splitting can increase performance, though it adds some complexity and requires that you have enough knowledge of your data to determine where the splits should occur.
 
+If you're going to index the table you're importing, Splice Machine recommends that you create the index prior to using bulk import. This allows the index to also be pre-split into regions, which will prevent downstream bottlenecks.
+{: .noteIcon}
+
 ## Using Automatic Bulk HFile Import  {#splitauto}
 
 This section shows you how to use bulk importing of data with automatic sampling, which means that the `BULK_IMPORT_HFILE` procedure samples your data to determine how to evenly (approximately) split it into HFiles. Here's what a call to this procedure looks like, with required parameters highlighted:
@@ -132,7 +135,45 @@ In the above call, the parameter values have the following meaning:
 
 To use Bulk HFile import with automatic splitting, follow these steps:
 
-1.  __Create a directory on HDFS for the temporary HFiles. For example:__
+
+1.  __Create the table in your Splice Machine database:__
+
+    ```
+    splice> CREATE TABLE TPCH.LINEITEM (
+                L_ORDERKEY BIGINT NOT NULL,
+                L_PARTKEY INTEGER NOT NULL,
+                L_SUPPKEY INTEGER NOT NULL,
+                L_LINENUMBER INTEGER NOT NULL,
+                L_QUANTITY DECIMAL(15,2),
+                L_EXTENDEDPRICE DECIMAL(15,2),
+                L_DISCOUNT DECIMAL(15,2),
+                L_TAX DECIMAL(15,2),
+                L_RETURNFLAG VARCHAR(1),
+                L_LINESTATUS VARCHAR(1),
+                L_SHIPDATE DATE,
+                L_COMMITDATE DATE,
+                L_RECEIPTDATE DATE,
+                L_SHIPINSTRUCT VARCHAR(25),
+                L_SHIPMODE VARCHAR(10),
+                L_COMMENT VARCHAR(44),
+                PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+            );
+    ```
+    {: .Example}
+<br />
+2.  __Create the index in your Splice Machine database:__
+
+    ```
+   splice>  CREATE INDEX L_SHIPDATE_IDX on TPCH.LINEITEM(
+                L_SHIPDATE,
+                L_PARTKEY,
+                L_EXTENDEDPRICE,
+                L_DISCOUNT
+            );
+    ```
+    {: .Example}
+<br />
+3.  __Create a directory on HDFS for the temporary HFiles. For example:__
 
     ```
     sudo -su hdfs hadoop fs -mkdir hdfs:///tmp/test_hfile_import
@@ -143,7 +184,7 @@ To use Bulk HFile import with automatic splitting, follow these steps:
     Splice Machine to write your CSV and Hfiles there.
     {: .spaceAbove}
 
-2.  __Import your data:__
+4.  __Import your data:__
 
     ```
     call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,
@@ -160,15 +201,80 @@ To use Bulk HFile import with automatic splitting, follow these steps:
 
 If you don't get the performance you're hoping from with automatic bulk import, you can manually specify how `BULK_IMPORT_HFILE` should split your data by providing a CSV file with key values in it. You pass the CSV file in to the `SPLIT_TABLE_OR_INDEX` procedure to pre-split the data, and then call the `BULK_IMPORT_HFILE` procedure to import the HFiles, as shown in the example below.
 
-*Pre-splitting* means that `SPLIT_TABLE_OR_INDEX` notes where to split the table that you're importing into during ingestion. When you call `BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `true`, the procedure makes use of that information to split the table.
-{: .noteNote}
+*Pre-splitting* means that `SPLIT_TABLE_OR_INDEX` notes where to split the table that you're importing into during ingestion, and stores that split information. When you call `BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `true`, the procedure makes use of that information to split the table.
+
+The remainder of this section contains these subsections:
+* [Manual Bulk Import Basics](#manualbasics) provides basic information about manual bulk import.
+* [Bulk Importing Indexes](#indexhandling) presents options for indexes on bulk imported tables.
+* [Example: Manual Bulk HFile Import](#exsplitkeys) shows an example of using bulk import.
+
+### Manual Bulk Import Basics  {#manualbasics}
+
+The basic flow for manual bulk import is:
+
+1. Create a new table in your Splice Machine database.
+2. Optionally create an index on that table.
+3. Determine key values for the table that will split it evenly and store them in a CSV file.
+4. Call `SPLIT_TABLE_OR_INDEX` with the table name and that CSV file
+5. Optionally:
+   a. Determine key values that will split the index evenly and store them in a CSV file.
+   b. Call `SPLIT_TABLE_OR_INDEX` with the table name, index name, and that CSV file.
+5. Call `BULK_IMPORT_HFILE` with `skipSampling=true` to import the file.
+
+You can use the `SPLIT_TABLE_OR_INDEX` in two ways:
+
+* To compute splits for a table into which you're about to bulk import a file: specify a table name, but not an index name, and the name of the CSV file that contains the table split key values.
+
+* To compute splits for an index on a table into which you're about to bulk import a file: specify a table name, an index name, and the name of the CSV that contains the index split key values.
+
+In both cases, `SPLIT_TABLE_OR_INDEX` associates the split key information with the table so that `BULK_IMPORT_HFILE` can use it during ingestion. If you pre-split your table, we also recommend that you pre-split your index; otherwise, your index table could eventually become a performance bottleneck. If your index includes your primary key, this is simple: you can use the same split key values for both.
+
+When you call `BULK_IMPORT_HFILE` with `skipSampling=true`, it assumes that you have previously called `SPLIT_TABLE_OR_INDEX` to pre-split the table; if you call it without first pre-splitting the table, `BULK_IMPORT_HFILE` will store the entire file in one region; such a table will suffer from very poor performance until you perform a major compaction.
+{: .noteImportant}
+
 
 ### Example: Manual Bulk HFile Import {#exsplitkeys}
 
 To use Bulk HFile import by manually specifying key values, follow the steps below:
 
+1.  __Create the table in your Splice Machine database:__
 
-1.  __Find primary key values that can horizontally split the table into roughly equal sized partitions.__
+    ```
+    splice> CREATE TABLE TPCH.LINEITEM (
+                L_ORDERKEY BIGINT NOT NULL,
+                L_PARTKEY INTEGER NOT NULL,
+                L_SUPPKEY INTEGER NOT NULL,
+                L_LINENUMBER INTEGER NOT NULL,
+                L_QUANTITY DECIMAL(15,2),
+                L_EXTENDEDPRICE DECIMAL(15,2),
+                L_DISCOUNT DECIMAL(15,2),
+                L_TAX DECIMAL(15,2),
+                L_RETURNFLAG VARCHAR(1),
+                L_LINESTATUS VARCHAR(1),
+                L_SHIPDATE DATE,
+                L_COMMITDATE DATE,
+                L_RECEIPTDATE DATE,
+                L_SHIPINSTRUCT VARCHAR(25),
+                L_SHIPMODE VARCHAR(10),
+                L_COMMENT VARCHAR(44),
+                PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
+            );
+    ```
+    {: .Example}
+<br />
+2.  __Create the index in your Splice Machine database:__
+
+    ```
+   splice>  CREATE INDEX L_SHIPDATE_IDX on TPCH.LINEITEM(
+                L_SHIPDATE,
+                L_PARTKEY,
+                L_EXTENDEDPRICE,
+                L_DISCOUNT
+            );
+    ```
+    {: .Example}
+<br />
+3.  __Find primary key values that can horizontally split the table into roughly equal sized partitions.__
 
     For this example, we provide 3 keys in a file named `lineitemKey.csv`, which will be specified as the value of the `fileName` parameter. Note that each of our three keys includes a second column that is `null`:__
 
@@ -186,18 +292,18 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 	0 -> 1500000
 	1500000 -> 3000000
 	3000000 -> 4500000
-	4500000 -> (last possible key)
+	4500000 -> (last possible key value)
 	```
     {: .Example}
 <br />
-2.  __Specify the column names in the CSV file in the `columnList` parameter; in our example, the primary key columns are:__
+4.  __Specify the column names in the CSV file in the `columnList` parameter; in our example, the primary key columns are:__
 
 	```
 	L_ORDERKEY,L_LINENUMBER
 	```
     {: .Example}
 <br />
-3.  __Invoke  the `SYSCS_SPLIT_TABLE_OR_INDEX` procedure to pre-split the table file:__
+5.  __Invoke  the `SYSCS_SPLIT_TABLE_OR_INDEX` procedure to pre-split the table file:__
 
 	```
 	call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH',
@@ -210,78 +316,8 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 
 	Note that `SYSCS_SPLIT_TABLE_OR_INDEX` uses the same parameters as our basic import procedures.
     {: .spaceAbove}
-<br />
-4.  __Import the HFiles into your database:__
 
-    ```
-    call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,
-                's3a://splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null,
-                -1, '/BAD', true, null,
-                'hdfs:///tmp/test_hfile_import/', true);
-    ```
-    {: .Example}
-
-    Note that the final parameter, `skipSampling` is `true` in the above call; this tells `BULK_IMPORT_HFILE` that the data has already been pre-split into HFiles.
-    {: .spaceAbove}
-
-## Bulk Importing Indexes { #indexhandling}
-
-    If you have less than 100 GB of data just import your data and build your indexes and go to town, you will be happy.
-
-    However, if you have more than 100 gigs of data you should consider different methods to bulk import it.
-
-    One of the first questions to ask is do you have any indexes on that table?
-    If you do have indexes you need to consider whether you want to create the indexes while the table is empty or else first load the data and then create the indexes. The consideration for indexes is whether or not you’re going to be able to say something about the data before the index is created. We have a method to supply indexes with their split keys, but that can only be employed if you know something about your data. For instance if your index includes the primary key of your database then you can use the same split keys for your table and index. However if your index does share the underlying table's primary key, and you do not know the # of unique values, you might need to load the data before you can inspect the data to determine split keys for that index.
-
-    Once you have determined if you will create indexes first or later; then you can load the data to your table.
-
-    If you specify skipSampling=true and don't pre-split ==> All data will be bulk imported into one region
-    (pre-splitting marks the table)
-
-1.  __Find primary key values that can horizontally split the table into roughly equal sized partitions.__
-
-    For this example, we provide 3 keys in a file named `lineitemKey.csv`, which will be specified as the value of the `fileName` parameter. Note that each of our three keys includes a second column that is `null`:__
-
-	```
-	1500000|
-	3000000|
-	4500000|
-	```
-    {: .Example}
-
-	For every N lines of split data you specify, you’ll end up with N+1 regions; for example, the above 3 splits will produce these 4 regions:
-    {: .spaceAbove}
-
-	```
-	0 -> 1500000
-	1500000 -> 3000000
-	3000000 -> 4500000
-	4500000 -> (last possible key)
-	```
-    {: .Example}
-<br />
-2.  __Specify the column names in the CSV file in the `columnList` parameter; in our example, the primary key columns are:__
-
-	```
-	L_ORDERKEY,L_LINENUMBER
-	```
-    {: .Example}
-<br />
-3.  __Invoke  the `SYSCS_SPLIT_TABLE_OR_INDEX` procedure to pre-split the table file:__
-
-	```
-	call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH',
-        	'LINEITEM',null, 'L_ORDERKEY,L_LINENUMBER',
-        	'hdfs:///tmp/test_hfile_import/lineitemKey.csv',
-        	'|', null, null, null,
-        	null, -1, '/BAD', true, null);
-	```
-    {: .Example}
-
-	Note that `SYSCS_SPLIT_TABLE_OR_INDEX` uses the same parameters as our basic import procedures.
-    {: .spaceAbove}
-<br />
-4.  __Now find index values that can horizontally split your index into equal-sized partitions.__
+6.  __Now find index values that can horizontally split your index into equal-sized partitions.__
 
 	For this example, we provide 2 index values in a file named `shipDateIndex.csv`, which will be specified as the value of the `fileName` parameter. Note that each of our keys includes `null` column values:
 
@@ -291,14 +327,14 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 	```
     {: .Example}
 <br />
-5.  __Specify the column names in that CSV file in the `columnList` parameter; in our example, the index columns are:__
+7.  __Specify the column names in that CSV file in the `columnList` parameter; in our example, the index columns are:__
 
 	```
 	L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT
 	```
     {: .Example}
 <br />
-6.  __Invoke SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX to pre-split your index file:__
+8.  __Invoke SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX to pre-split your index file:__
 
 	```
 	call SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX('TPCH',
@@ -310,7 +346,7 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 	```
     {: .Example}
 <br />
-7.  __Import the HFiles into your database:__
+9. __Import the file into your database:__
 
     ```
     call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,

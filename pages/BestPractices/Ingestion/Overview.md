@@ -136,6 +136,18 @@ Splice Machine offers two bulk import variations:
 
 * In *Manual Splitting*, you need to determine those key values yourself, which means that you need to know your data well enough to do that. Because `BULK_HFILE_IMPORT` does not have to sample your data, manual splitting can increase performance, though it adds complexity.
 
+### Contrasting How Standard and Bulk Import Work
+
+To help you better understand how standard and bulk import work differently, consider these significant differences in import processing:
+
+* When using standard import methods, the data you're importing is added to your table; when the table fills a region, the table is split across two regions, and the new region starts filling with table data. With bulk import methods, all of the table regions are pre-allocated, and imported data is copied into those regions in parallel.
+
+* When using standard import methods, Splice Machine assumes that the table into which you're importing is live, which means that your users may be accessing and modifying the table during ingestion; as a result, the imported records are inserted transactionally (in batches). In contrast, tables are not live during bulk import, so no transaction processing is involved. This impacts performance.
+
+#### An Illustrative Example
+Here's a very simple example to illustrate the difference. Suppose you're importing 100GB rows of data into an empty table, and that when the table was created, one 10GB region was allocated for it.
+
+__TBD:__ Illustrate the difference in import activity for standard (1 region, then 2, then 4 with increasing parallelism, transactional) versus bulk (pre-allocated regions written in parallel, not transactional)
 
 ### For Additional Information and Examples
 
