@@ -86,7 +86,7 @@ This table includes a brief description of each parameter; additional informatio
             <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
             <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
             MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
-            <p>See the <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> topic for information about accessing data on S3.</p>
+            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> topic for information about accessing data on S3.</p>
             </td>
             <td class="CodeFont">
                 <p>/data/mydata/mytable.csv</p>

@@ -208,7 +208,7 @@ Our [Developer Topics Guide](developers_intro.html) contains a collection of top
             <td>Helps you to optimize and debug your database queries.</td>
         </tr>
         <tr>
-            <td class="ItalicFont"><a href="tutorials_cloudconnect_intro.html">Accessing Data in the Cloud</a></td>
+            <td class="ItalicFont"><a href="developers_cloudconnect_intro.html">Accessing Data in the Cloud</a></td>
             <td>Shows you how to access and upload data on Amazon AWS S3.</td>
         </tr>
         <tr>

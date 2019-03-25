@@ -184,7 +184,7 @@ option and providing your VPC account ID.
 You need to configure AWS Identity and Access Management (IAM) for your
 cluster to allow Splice Machine to access selected S3 folders; this is
 described in our [Configuring an S3 bucket for Splice Machine
-Acces](tutorials_ingest_configures3.html) tutorial.
+Acces](developers_cloudconnect_configures3.html) tutorial.
 
 <div class="notePlain" markdown="1">
 For more information about Amazon VPC, see
@@ -281,10 +281,10 @@ into your Splice Machine database:
 
 * If you don't yet know how to create an S3 bucket or upload data to a
   bucket, please check our [Uploading Data to an S3
-  Bucket](tutorials_ingest_uploadtos3.html) tutorial.
+  Bucket](developers_cloudconnect_uploadtos3.html) tutorial.
 * You may need to configure IAM permissions to allow Splice Machine to
   access your bucket; see our [Configuring an S3 Bucket for Splice
-  Machine Access](tutorials_ingest_configures3.html) tutorial.
+  Machine Access](developers_cloudconnect_configures3.html) tutorial.
 * Once you've got your data in a bucket, you can follow our [Importing
   Data Tutorial](tutorials_ingest_importoverview.html) to load that data into
   Splice Machine.

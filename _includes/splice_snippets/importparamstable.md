@@ -35,7 +35,7 @@
             <p class="notePlain">The <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> procedure only works with single files; <strong>you cannot specify a directory name</strong> when calling <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code>.</p>
             <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
             MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
-            <p>See the <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> topic for information about accessing data on S3.</p>
+            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> topic for information about accessing data on S3.</p>
             </td>
             <td>
                 <p class="CodeFont">/data/mydata/mytable.csv</p>

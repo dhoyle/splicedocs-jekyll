@@ -5,7 +5,7 @@ keywords: S3, configuring, IAM, bucket,
 toc: false
 product: all
 sidebar: developers_sidebar
-permalink: tutorials_ingest_configures3.html
+permalink: developers_cloudconnect_configures3.html
 folder: DeveloperTopics/CloudConnect
 ---
 <section>

@@ -420,7 +420,7 @@ You need to specify the directory to which you want the temporary HFiles
 written; you must have write permissions on this directory to use this
 feature. If you're specifying an S3 bucket on AWS, please review our
 [Configuring an S3 Bucket for Splice Machine
-Access](tutorials_ingest_configures3.html) tutorial before proceeding.
+Access](developers_cloudconnect_configures3.html) tutorial before proceeding.
 {: .indentLevel1}
 
 <div class="preWrapperWide" markdown="1">

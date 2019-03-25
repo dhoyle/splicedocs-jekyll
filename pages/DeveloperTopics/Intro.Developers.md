@@ -70,8 +70,8 @@ This section contains information about tuning the performance of your database,
 ## Accessing Data in the Cloud {#Cloud}
 This section shows you how to access data that you have stored in the Cloud from Splice Machine, in these topics:
 
-* [Configuring S3 Buckets for Splice Machine Access](tutorials_ingest_configures3.html)
-* [Uploading Data to an S3 Bucket](tutorials_ingest_uploadtos3.html)
+* [Configuring S3 Buckets for Splice Machine Access](developers_cloudconnect_configures3.html)
+* [Uploading Data to an S3 Bucket](developers_cloudconnect_uploadtos3.html)
 
 ## Connecting to Splice Machine with JDBC {#JDBC}
 This section introduces our JDBC driver and shows you how to connect to Splice Machine via JDBC with various programming languages, including:
