@@ -16,7 +16,6 @@ folder: BestPractices
 This section contains the Splice Machine best practices information for our *Database-as-Service* product, in these topics:
 
 * [Configuring Security](bestpractices_onprem_security.html)
-* [Importing Data](bestpractices_onprem_importing.html)
 * [Backing Up Your Data](bestpractices_onprem_backups.html)
 * [Fine-tuning Performance Options](bestpractices_onprem_configperf.html)
 * [Managing Your Database](bestpractices_onprem_maintenance.html)

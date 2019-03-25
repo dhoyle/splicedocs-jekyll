@@ -44,7 +44,7 @@ Due to how Yarn manages memory, you need to modify your YARN configuration when 
 
 #### Extra Configuration Steps for KMS-Enabled Clusters
 
-If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Cloudera Key Management Service (KMS) enabled, you must complete a few extra configuration steps, which are described in [this troubleshooting note](bestpractices_onprem_importing.html#BulkImportKMS) for details.
+If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Cloudera Key Management Service (KMS) enabled, you must complete a few extra configuration steps, which are described in [this troubleshooting note](bestpractices_ingest_troubleshooting.html#BulkImportKMS) for details.
 {: .noteIcon}
 
 ### Importing Data From the Cloud  {#CloudAccess}

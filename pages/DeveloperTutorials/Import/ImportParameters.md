@@ -645,7 +645,7 @@ imported into your database. The generated files are automatically removed after
 
 **Example:** <span class="Example">`'hdfs:///tmp/test_hfile_import/'`</span>
 
-If you're using this procedure with our On-Premise database product, on a cluster with Cloudera Key Management Service (KMS) enabled, there are a few extra configuration steps required. Please see [this troubleshooting note](bestpractices_onprem_importing.html#BulkImportKMS) for details.
+If you're using this procedure with our On-Premise database product, on a cluster with Cloudera Key Management Service (KMS) enabled, there are a few extra configuration steps required. Please see [this troubleshooting note](bestpractices_ingestion_troubleshooting.html#BulkImportKMS) for details.
 {: .noteIcon}
 
 Please review the [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) topic to understand how importing bulk HFiles works.
