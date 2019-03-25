@@ -45,7 +45,7 @@ table:
                         <td><code>column-Name</code></td>
                         <td>
                             <p id="ColumnName">A <code>column-Name</code> is a <code>SQLIdentifiers</code> that can be unqualified <code>simple-column-Names</code>. or can be qualified with a <code>table-name</code> or <code>correlation-name</code>.</p>
-                            <p>See the <a href="#Note.ColumnName">Column Name Notes</a> section below for information about when a <code>column-Name</code> can or cannot be qualified.</p>
+                            <p>See the <a href="#ColumnName">Column Name Notes</a> section below for information about when a <code>column-Name</code> can or cannot be qualified.</p>
                         </td>
                     </tr>
                     <tr>
@@ -71,7 +71,7 @@ table:
                         <td><code>correlation-Name</code></td>
                         <td>
                             <p>A <code>correlation-Name</code> is a simple SQLIdentifier used in a <code>FROM</code> clause as a new name or alias for that table.</p>
-                            <p>You cannot qualify a <code>correlation-Name</code>, nor can you use it for a column named in the <code>FOR UPDATE</code> clause,  as described in the <a href="#Note.CorrelationName">Correlation Name Notes</a> section below</p>
+                            <p>You cannot qualify a <code>correlation-Name</code>, nor can you use it for a column named in the <code>FOR UPDATE</code> clause,  as described in the <a href="#CorrelationName">Correlation Name Notes</a> section below</p>
                         </td>
                     </tr>
                     <tr>
@@ -106,7 +106,7 @@ table:
                     <tr>
                         <td class="CodeFont" id="SimpleColumnName">simple-column-Name</td>
                         <td>
-                            <p>A <code>simple-column-Name</code> is used to represent a column that is not qualified by a <code>table-Name</code> or <code>correlation-Name</code>, as described in the <a href="#Note.ColumnName">Column Name Notes</a> section below.</p>
+                            <p>A <code>simple-column-Name</code> is used to represent a column that is not qualified by a <code>table-Name</code> or <code>correlation-Name</code>, as described in the <a href="#ColumnName">Column Name Notes</a> section below.</p>
                         </td>
                     </tr>
                     <tr>
@@ -139,7 +139,7 @@ table:
                     </tr>
                 </tbody>
             </table>
-## Column Name Notes   {#Note.ColumnName}
+## Column Name Notes   {#ColumnName}
 
 Column names are either `simple-column-Name` identifiers, which cannot
 be qualified, or `column-Name` identifiers that can be qualified with a
@@ -160,7 +160,7 @@ qualify the column name:
 * In a column's`correlation-Name` in a
  &nbsp;[`TABLE expression`](sqlref_expressions_table.html)
 
-## Correlation Name Notes   {#Note.CorrelationName}
+## Correlation Name Notes   {#CorrelationName}
 
 You cannot use a correlation name for columns that are listed in the
 `FOR UPDATE` list of a `SELECT`. For example, in the following:
@@ -177,4 +177,3 @@ You cannot use a correlation name for columns that are listed in the
 
 </div>
 </section>
-

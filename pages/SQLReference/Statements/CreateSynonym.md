@@ -18,7 +18,8 @@ for a table or a view.
 ## Syntax
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-CREATE SYNONYM( <a href="sqlref_identifiers_types.html#TableName">tableName</a> } );</pre>
+CREATE SYNONYM( <a href="sqlref_identifiers_types.html#SynonymName">synonymName</a>
+                FOR { <a href="sqlref_identifiers_types.html#ViewName">viewName</a> | <a href="sqlref_identifiers_types.html#TableName">tableName</a> } );</pre>
 
 </div>
 <div class="paramList" markdown="1">
