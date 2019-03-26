@@ -29,7 +29,7 @@ To log out of your Cloud Manager account, click the Account Drop-down
 arrow in the upper-right of your dashboard screen, and select <span
 class="ConsoleLink">Logout</span>:
 
-![](images/AccountDropdown.png){: .indentedTightSpacing}
+![](images/SelectLogout.png){: .indentedTiny}
 
 You'll be logged out and will land back on the Splice Machine Cloud
 Manager <span class="ConsoleLink">Login</span> page.
@@ -54,6 +54,8 @@ cluster is shown in a different color in the billing detail graphic, as
 shown below.
 
 ![](images/BillingActivity.png){: .indentedTightSpacing}
+{: .spaceAbove}
+
 
 To update your payment source, click the <span
 class="CalloutFont">Update</span> button.
@@ -69,19 +71,16 @@ applied to future bills or cluster purchases.
 You can review or edit your profile information by selecting <span
 class="ConsoleLink">Profile</span> from the click the Account Drop-down:
 
-![](images/SelectProfile.png){: .indentedTightSpacing}
+![](images/SelectProfile.png){: .indentedTiny}
+{: .spaceAbove}
 
 The <span class="ConsoleLink">Profile</span> screen displays:
 
-![](images/AccountProfile.png){: .indentedTightSpacing}
+![](images/AccountProfile.png){: .indentedSmall}
+{: .spaceAbove}
 
-You can edit your name information by clicking the <span
+You can edit your profile information by clicking the <span
 class="CalloutFont">EDIT</span> button in the Profile Info panel.
-
-You can reset your account password by entering your email address and
-then clicking the <span class="CalloutFont">Reset Password</span>
-button. You'll receive an email from Splice Machine that contains a link
-you can use to reset your password.
 
 ## Viewing and Adding Users   {#Inviting}
 
@@ -89,7 +88,8 @@ To display the names and log-in information for the users of your
 database service, select the <span class="ConsoleLink">Users</span> tab
 in your Cloud Manager screen. The *Users* screen displays:
 
-![](images/Account2.png){: .indentedTightSpacing}
+![](images/AccountUsers.png){: .indentedTightSpacing}
+{: .spaceAbove}
 
 To add another user, click the <span class="ConsoleLink">Invite User
 +</span> button in the *Users* screen. Then enter the new user's email
@@ -97,9 +97,9 @@ address in the *Invite User* screen and click the <span
 class="ConsoleLink">Send</span> button. We'll send an email inviting
 that person to set up a password to access your database.
 
-![](images/Account3.png){: .indentedTightSpacing}
+![](images/AccountUserInvite.png){: .indentedSmall}
+{: .spaceAbove}
 
- 
 
 ## Reviewing and Updating Your Company Information   {#Updating3}
 
@@ -107,7 +107,8 @@ To display the company information associated with your account, select
 the <span class="ConsoleLink">Users</span> tab in your Cloud Manager
 screen. The *Company Information* screen displays:
 
-![](images/Account4.png){: .indentedTightSpacing}
+![](images/AccountCompanyInfo.png){: .indentedTightSpacing}
+{: .spaceAbove}
 
 To edit the company information associated click the <span
 class="CalloutFont">Edit</span> button.

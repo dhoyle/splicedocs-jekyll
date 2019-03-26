@@ -13,105 +13,101 @@ folder: DBaaS/CloudManager
 # Managing a Cluster
 
 This topic describes the actions you can initiate from the <span
-class="ConsoleLink">Cluster Management</span> screen, which include:
+class="ConsoleLink">Cluster Management</span> screen. You can access the <span class="ConsoleLink">Cluster Management</span> screen for any cluster in your Dashboard by simply clicking the name of
+the cluster. You can use the controls in this screen to:
 
-* [Viewing the cluster's CPU, Disk, and Memory Usage](#managing)
-* [Reconfiguring cluster access](#reconfiguring)
-* [Resizing your cluster](#resizing)
-* [Deleting your cluster](#deleting)
-* [Using Zeppelin and the Database Console with your cluster](#working)
+* [Launch Tools for Monitoring and Notebook Development](#launch)
+* [Modify Your Cluster](#modify)
+* [View Your Cluster's Resource Usage](#managing)
+* [View Cluster Events](#events)
+* [View Log Details for Your Cluster](#logdetails)
+* [Download Drivers and Related Software](#downloads)
 
-## The Cluster Management Screen
 
-You can access the <span class="ConsoleLink">Cluster Management</span>
-screen for any cluster in your Dashboard by simply clicking the name of
-the cluster.
+## Launch Tools for Monitoring and Notebook Development  {#launch}
+The  <span class="ConsoleLink">Cluster Management</span> screen includes three buttons that launch monitoring and development tools:
 
-This screen displays information about the cluster, and includes three
-panels that display a graph of resource usage over time. There are three
-similar resource usage graphs displayed:
-
-* CPU Percentage Used (shown in the following image)
-* Disk Usage
-* Memory Usage
-
-![](images/ActiveDashboard1.png){: .indentedTightSpacing}
+![](images/clusterlinks.png){: .indentedSmall}
 {: .spaceAbove}
 
-## Modifying Your Cluster   {#modifying}
+* Click the <span class="CalloutFont">DB Console</span> button to open a new browser tab for the Database Console, which you can use to monitor the Splice Machine queries running on your cluster in real-time. The DB Console uses port 4040.
 
-Your dashboard features three cluster modification choices; you can
-[Reconfiguring](#reconfiguring), [Resizing](#resizing), or
-[Deleting](#deleting) your cluster by clicking one of the buttons near
-the top-left of your Dashboard screen:
+* Click the <span class="CalloutFont">Notebooks</span> button to open a new browser tab for your Zeppelin notebooks. you can use the notebooks that are pre-installed on your cluster to learn about and experiment with using various features of Splice Machine; you can also quickly develop your own notebooks that use your database, Spark, and Machine Learning.
 
-![](images/DashboardButtons.png){: .indentedTightSpacing}
+* Click the <span class="CalloutFont">Spark Console</span> button to open a new browser tab for the Spark Console, which you can use to monitor the Spark jobs running on your cluster in real-time. The Spark Console uses port 4041.
 
-### Reconfiguring Your Cluster   {#reconfiguring}
+## Modify Your Cluster  {#modify}
 
-To reconfigure your cluster, click the <span
-class="ConsoleLink">Reconfigure</span> button; the cluster
-reconfiguration screen displays:
+The <span class="ConsoleLink">Cluster Management</span> has four buttons you can click to update your cluster:
 
-![](images/Reconfigure1.png){: .indentedTightSpacing}
+![](images/clusterupdates.png){: .indentedSmall}
+{: .spaceAbove}
 
-You can modify your VPC and/or IAM configuration information in this
-screen. Once you've entered your new information, click the <span
-class="CalloutFont">Reconfigure</span> button to update your
-configuration and return to your Cluster Management screen.
+* Click the <span class="CalloutFont">Reconfigure</span> button to reconfigure this cluster. This displays the cluster
+reconfiguration screen:
 
-### Resizing Your Cluster   {#resizing}
+  ![](images/Reconfigure1.png){: .indentedMedium}
+  {: .spaceAbove}
 
-To resize your cluster, click the <span
-class="CalloutFont">Resize</span> button. The Resize Cluster screen,
-which is pretty much identical to the Create New Cluster screen,
-displays:
+  You can modify your VPC and/or IAM configuration information or change the Zeppelin instances settings. Click the   <span   class="CalloutFont">Reconfigure</span> button to update your
+  configuration and return to your Cluster Management screen.
 
-![](images/ResizeCluster.png){: .indentedTightSpacing}
+* Click the <span class="CalloutFont">Resize</span> button to modify the size of this cluster. This displays the cluster resize screen, which is almost identical to the <span class="ConsoleLink">Create New Cluster</span> screen:
 
-You can adjust your cluster parameters, then click the <span
-class="CalloutFont">Resize</span> button, which will return you to your
-Cluster Management screen, where you'll see the status of your cluster
-set to *Updating*.
+  ![](images/ResizeCluster.png){: .indentedTightSpacing}
+  {: .spaceAbove}
 
-### Deleting Your Cluster   {#deleting}
+  After you make any modifications to the cluster configuration, click the <span class="CalloutFont">Resize</span> button to update the cluster settings and return to your Cluster Management screen. Note that resizing a cluster can take a bit of time.
 
-To delete your cluster, click the <span
-class="CalloutFont">Delete</span> button. You'll be ask to confirm the
-deletion:
+* Click the <span class="CalloutFont">Delete</span> button to delete this cluster. This displays a confirmation screen:
 
-![](images/ClusterDelete.png){: .indentedTightSpacing}
+  ![](images/ClusterDelete.png){: .indentedSmall}
+  {: .spaceAbove}
 
-After confirming that you want to do so, your cluster will be deleted,
-and its status in your dashboard will show as *Deleted*.
+  After confirming that you want to do so, your cluster will be deleted, and its status in your dashboard will show as *Deleted*.
 
-## Working With Your Database   {#working}
+* Click the <span class="CalloutFont">Retrieve DB Password</span> button to display the user ID and password for the Splice Machine database running on this cluster.
 
-Your dashboard includes buttons with which you can access two different
-means of working with your database; you can launch the <span
-class="CalloutFont">DB Console</span> or the Apache Zeppelin <span
-class="CalloutFont">Notebook</span> interface by clicking one of the
-buttons near the upper-right corner of the Dashboard screen:
+## View Your Cluster's Resource Usage  {#managing}
+The *Activity* tab displays timeline graphs of cluster CPU, Memory, and Storage usage. For example:
 
-![](images/DashboardLinks.png){: .indentedTightSpacing}
+![](images/activitytab.png){: .indentedTightSpacing}
+{: .spaceAbove}
 
-Click the <span class="CalloutFont">DB Console</span> button to land on
-our [Database Console](tutorials_dbconsole_intro.html) interface.
+## View Cluster Events  {#events}
+The *Events* tab displays information about cluster events that have occurred over a specified period of time:
 
-Click the <span class="CalloutFont">Notebook</span> button to land on
-our [Zeppelin Notebook](dbaas_zep_intro.html) interface.
+![](images/eventstab.png){: .indentedTightSpacing}
+{: .spaceAbove}
 
-### Connecting to Your Database with JDBC
+As you can see, you're able to search for specific words in an event in addition to filtering on a range of dates.
 
-At the very bottom of the Cluster Management screen, below the three
-graph panels, is the URL you can use for a JDBC connection with your
-database service:
+## View Log Details for Your Cluster  {#logdetails}
+The *Events* tab displays information about cluster events that have occurred over a specified period of time:
 
-![](images/ActiveDashboard2.png){: .indentedTightSpacing}
+![](images/logdetailstab.png){: .indentedTightSpacing}
+{: .spaceAbove}
 
-The same JDBC link was emailed to you in the message from Splice Machine
-letting you know that your cluster creation was successful.
-{: .noteIcon}
+As you can see, you're able to search for specific words in a log entry in addition to restricting the display to a range of date/time values. You can also filter on any combination of log entry types (Info, Debug, Warning, and Error).
+
+## Download Drivers and Related Software  {#downloads}
+
+The bottom of the <span class="ConsoleLink">Cluster Management</span> screen includes a number of useful links:
+
+![](images/clustermgmtdls.png){: .indentedTightSpacing}
+{: .spaceAbove}
+
+You can:
+
+* Launch the  <span class="CalloutFont">Spark Console</span> in a separate browser tab.
+* Download the Splice Machine <span class="CalloutFont">ODBC Driver</span>.
+* Download the Splice Machine <span class="CalloutFont">JDBC Driver</span>.
+* Download the Splice Machine <span class="CalloutFont">SqlShell</span> command line client.
+* Copy a basic JDBC connection URL to your cluster's database.
+
+  The same JDBC URL was emailed to you in the message from Splice Machine
+  letting you know that your cluster creation was successful.
+  {: .noteIcon}
 
 </div>
 </section>
