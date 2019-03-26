@@ -29,7 +29,7 @@ To log out of your Cloud Manager account, click the Account Drop-down
 arrow in the upper-right of your dashboard screen, and select <span
 class="ConsoleLink">Logout</span>:
 
-![](images/SelectLogout.png){: .indentedTightSpacing}
+![](images/SelectLogout.png){: .indentedTiny}
 
 You'll be logged out and will land back on the Splice Machine Cloud
 Manager <span class="ConsoleLink">Login</span> page.
@@ -71,12 +71,12 @@ applied to future bills or cluster purchases.
 You can review or edit your profile information by selecting <span
 class="ConsoleLink">Profile</span> from the click the Account Drop-down:
 
-![](images/SelectProfile.png){: .indentedTightSpacing}
+![](images/SelectProfile.png){: .indentedTiny}
 {: .spaceAbove}
 
 The <span class="ConsoleLink">Profile</span> screen displays:
 
-![](images/AccountProfile.png){: .indentedTightSpacing}
+![](images/AccountProfile.png){: .indentedSmall}
 {: .spaceAbove}
 
 You can edit your profile information by clicking the <span
@@ -97,7 +97,7 @@ address in the *Invite User* screen and click the <span
 class="ConsoleLink">Send</span> button. We'll send an email inviting
 that person to set up a password to access your database.
 
-![](images/AccountUserInvite.png){: .indentedTightSpacing}
+![](images/AccountUserInvite.png){: .indentedSmall}
 {: .spaceAbove}
 
 

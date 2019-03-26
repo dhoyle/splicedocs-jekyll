@@ -38,11 +38,6 @@ to provision your cluster:
 ![](images/CreateNewCluster1.png "Initial settings for new Splice
 Machine cluster"){: .indentedTightSpacing}
 
-You can select your cloud provider from the <span class="ConsoleLink">Cloud Provider</span> drop-down, just beneath the <span class="ConsoleLink">Cluster Name</span> field:
-
-![](images/CloudProviderDropdown.png "Cloud Provider Drop-down List"){: .indentedTightSpacing}
-
-
 If you have subscribed to Splice Machine via the AWS Marketplace, your
 costs will be estimated on an hourly basis instead of a monthly basis:
 
@@ -86,8 +81,15 @@ future, so you're not stuck forever with your initial settings.
        </tr>
        <tr>
            <td> </td>
+           <td><code>Cloud Provider</code></td>
+           <td><p>You can select which cloud provider is hosting your cluster by clicking the current provider name, which drops down a list of choices.</p>
+               <p class="noteNote">If you have subscribed to Splice Machine via the AWS Marketplace, your costs will be estimated on an hourly basis instead of on a monthly basis.</p>
+           </td>
+       </tr>
+       <tr>
+           <td> </td>
            <td><code>Region</code></td>
-           <td>You can select in which AWS region your cluster will reside by clicking the previously selected region name, which drops down a list of choices.</td>
+           <td>You can select in which region your cluster will reside by clicking the current region name, which drops down a list of choices.</td>
        </tr>
        <tr>
            <td rowspan="3" class="ConsoleLink">Data Sizing</td>
@@ -142,15 +144,15 @@ future, so you're not stuck forever with your initial settings.
                <p>Select how frequently you want Splice Machine to back up your database. You can select <code>Hourly</code>, <code>Daily</code>, or <code>Weekly</code>; each selection displays additional backup timing and retention options:</p>
                <p>Hourly:</p>
                <p>
-                   <img src="images/HourlyBackupOptions_450x78.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 78;" />
+                   <img src="images/HourlyBackupOptions_450x78.png" class="indentedTightSpacing" title="Hourly backup options" />
                </p>
                <p>Daily:</p>
                <p>
-                   <img src="images/DailyBackupOptions_450x68.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 68;" />
+                   <img src="images/DailyBackupOptions_450x68.png" class="indentedTightSpacing" title="Hourly backup options"  />
                </p>
                <p>Weekly:</p>
                <p>
-                   <img src="images/WeeklyBackupOptions_450x67.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 67;" />
+                   <img src="images/WeeklyBackupOptions_450x67.png" class="indentedTightSpacing" title="Hourly backup options" />
                </p>
            </td>
        </tr>
@@ -249,7 +251,7 @@ one of these actions happens:
   elect to use on of three payment methods:
 
 ![](images/PaymentScreen_436x219.png "Splice Machine Provisioning
-Payment Screen"){: .nestedTightSpacing style="width: 436;height: 219;"}
+Payment Screen"){: .indentedSmall}
 
 <table>
                <col />
@@ -259,7 +261,7 @@ Payment Screen"){: .nestedTightSpacing style="width: 436;height: 219;"}
                        <td>Credit Card</td>
                        <td>
                            <p>
-                               <img src="images/PaymentCC_450x236.png" class="tableCell450" title="Paying with a credit card" style="width: 450;height: 236;" />
+                               <img src="images/PaymentCC_450x236.png" class="indentedSmall" title="Paying with a credit card" />
                            </p>
                        </td>
                    </tr>
@@ -267,7 +269,7 @@ Payment Screen"){: .nestedTightSpacing style="width: 436;height: 219;"}
                        <td>ACH Electronic Transfer</td>
                        <td>
                            <p>
-                               <img src="images/PaymentACH_450x130.png" class="tableCell450" title="Paying with ACH transfer" style="width: 450;height: 130;" />
+                               <img src="images/PaymentACH_450x130.png" class="indentedSmall" title="Paying with ACH transfer" />
                            </p>
                        </td>
                    </tr>
@@ -275,7 +277,7 @@ Payment Screen"){: .nestedTightSpacing style="width: 436;height: 219;"}
                        <td>Authorization Code</td>
                        <td>
                            <p>
-                               <img src="images/PaymentAuthCode_450x164.png" class="tableCell450" title="Paying with an authorization code" style="width: 450;height: 164;" />
+                               <img src="images/PaymentAuthCode_450x164.png" class="indentedSmall" title="Paying with an authorization code" />
                            </p>
                        </td>
                    </tr>
@@ -290,8 +292,7 @@ the <span class="CalloutFont">Update</span> button to revisit the <span
 class="ConsoleLink">Payment</span> screen:
 
 ![](images/BillingActivity_729x348.png "Billing Activity tab of the
-Account screen"){: .indentedTightSpacing style="width: 729;height:
-348;"}
+Account screen"){: .indentedTightSpacing}
 
 If you've purchased Splice Machine through Amazon Marketplace, change
 your billing credentials in the Marketplace instead.
