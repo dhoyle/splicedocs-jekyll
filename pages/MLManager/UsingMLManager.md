@@ -1,5 +1,5 @@
 ---
-title: Using the Splice Machine Machine Learning Manager
+title: Using the Splice Machine ML Manager
 summary: Overview of using the ML Manager
 keywords: data science, machine learning
 toc: false
@@ -10,38 +10,38 @@ folder: MLManager
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Using the Machine Learning Manager (*ML Manager*)
+# Using the Splice Machine ML Manager
 
-This topic introduces you to the Splice Machine *ML Manager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications. This topic is organized into these sections:
+This topic introduces you to the Splice Machine *ML Manager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks, Apache MLflow, and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications. This topic is organized into these sections:
 
 * [*About ML Manager*](#aboutMLManager) provides a quick overview of what the *ML Manager* does and how it interfaces with MLflow and SageMaker to provide a complete Machine Learning production environment.
 * [*Running an Experiment*](#runExperiment) walks you through creating an ML experiment for detecting credit card fraud and shows you how to train, run, and compare two different learning models.
 * [*Deploying Your Model to AWS SageMaker*](#deploywithsagemaker) walks you through deploying your model on AWS.
 * [*Retraining the Model with New Data*](#UpdateData) shows you how to retrain your model with new data and update your deployment.
 
-## About *ML Manager* {#aboutMLManager}
+## *ML Manager* Overview  {#aboutMLManager}
 
 The *Splice Machine ML Manager* facilitates machine learning development within Zeppelin notebooks.  Here are some of its key features:
 
 * *ML Manager* runs directly on Apache Spark, allowing you to complete massive jobs in parallel.
 * Our native `PySpliceContext` lets you directly access the data in your database and very efficiently convert it to/from a Spark DataFrame with no serialization/deserialization required.
-* MLflow is integrated directly into all Splice Machine clusters, to facilitate tracking of your entire Machine Learning workflow.
-* After you have found the best model for your task, you can easily deploy it live to AWS SageMaker or AzureML to make predictions in real time.
-* As new data flows in, updating your model is a simple matter of returning to your Notebook, creating new runs, and redeploying by filling in a few fields in a form.
+* MLflow is integrated directly into your Splice Machine cluster, to facilitate tracking of your entire Machine Learning workflow.
+* After you have found the best model for your task, you can easily deploy it live to AWS SageMaker to make predictions in real time.
+* As new data flows in, updating your model is a simple matter of returning to your Notebook, creating new runs, and redeploying by tapping a button.
 
-Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with the *ML Manager*:
+Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with *ML Manager*:
 
 <img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/ML+full+circle.png'>
 
 The basic workflow is:
 <div class="opsStepsList" markdown="1">
-1. Work with MLlib and other machine learning libraries in a Zeppelin notebook that can directly interact with Spark and your Splice Machine database.
-2. Use MLflow within your notebook to create experiments and runs, and to track variables, parameters, and other information about your runs.
+1. Work with MLlib and other machine learning libraries in a Zeppelin notebook to directly interact with Spark and your Splice Machine database.
+2. Use MLflow within your notebook to create *experiments* and *runs*, and to track variables, parameters, and other information about your runs.
 3. Use the MLflow Tracking UI to monitor information about your experiments and runs.
-4. Iterate on your experiments until you develop the learning model that you want to deploy.
-5. Use the Splice Machine ML Jobs Tracker to deploy your model on AWS, by simply filling in a few form fields and clicking a button.
+4. Iterate on your experiments until you develop the learning model that you want to deploy, using the tracking UI to compare your runs.
+5. Use the Splice Machine ML Jobs Tracker to deploy your model to AWS SageMaker, by simply filling in a few form fields and clicking a button.
 6. Write Apps that use SageMaker's RESTful API to interface with your deployed model.
-7. As new data arrives: back to step 2.
+7. As new data arrives, you can return to Step 1 and repeat the process.
 </div>
 
 
@@ -49,7 +49,52 @@ The basic workflow is:
 
 MLflow is an open source platform for managing the end-to-end machine learning lifecycle; with MLflow, you can:
 
-* Track your model training sessions, which are called *runs*. Each run is some code that can record the following information:
+* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX SOMETHING ABOUT AN EXPERIMENT ****************************************
+* Track your model training sessions, which are called *runs*.
+
+
+* Group a collection of runs under an *experiment*, which allows you to visualize and compare a set of runs, and to download run artifacts for analysis by other tools.
+
+* View your experiments in the *MLflow Tracking UI*, which you access by pointing your browser at port `5001`.
+
+### About Storing Models and Pipelines
+
+You can save your pipeline and model to S3 using the `save` method of MLlib `Pipeline` objects. Assuming that you've created a pipeline and built a model, you can save them as follows:
+
+```
+%spark.pyspark
+model.save('s3a://splice-demo/fraudDemoPipelineModel')
+```
+{: .Example}
+
+If you are developing or have developed a model that you expect to deploy in the future, you should save the model to MLflow. Assuming that you've previously created an instance of `MLManager` named `manager` and have created a MLlib model named `model`, you can save the model to MLflow with this statement:
+{: .spaceAbove}
+
+```
+%spark.pyspark
+manager.log_spark_model(model)
+```
+{: .Example}
+
+The code in the [*Running an Experiment*](#runExperiment) section below contains examples of saving models to S3 and to MLflow.
+{: .spaceAbove}
+
+### About SageMaker
+
+Amazon Sagemaker allows you to easily deploy the machine learning models that you develop with the *Splice Machine ML Manager* on Amazon AWS. The only requirement is that you have an *ECR* repository set up on AWS; ECR is Amazon's fully-managed Docker contrainer registry that simplifies deploying Docker images and is integrated with Amazon's Elastic Container Service (ECS).
+
+***********************  BEN/NIK:  does this
+
+When you tell our *ML Manager* to deploy a model to SageMaker, *ML Manager* creates a Docker image and uploads it to your ECR repository. You can specify which AWS instance types you want to deploy on, and how many instances you want to deploy. We send the deployment request to SageMaker, which creates an endpoint, launches your ML compute instances, and the deploys your model to them.
+
+You can also use the same process to deploy an updated version of your model.
+
+
+## The ML Manager API
+
+### Tracking Runs ******************************** FIX THIS****************************8
+
+Each run is some code that can record the following information:
 
   <table>
     <col width="15%" />
@@ -87,44 +132,10 @@ MLflow is an open source platform for managing the end-to-end machine learning l
   </table>
 
 
-* Group a collection of runs under an *experiment*, which allows you to visualize and compare a set of runs, and to download run artifacts for analysis by other tools.
-
-* View your experiments in the *MLflow Tracking UI*, which you access by pointing your browser at port `5001`.
-
 You can use the Splice Machine `MLManager` class in your program to manipulate experiments.
 {: .noteIcon}
 
 
-### About SageMaker
-
-Amazon Sagemaker allows you to easily deploy the machine learning models that you develop with the *Splice Machine ML Manager* on Amazon AWS. The only requirement is that you have an *ECR* repository set up on AWS; ECR is Amazon's fully-managed Docker contrainer registry that simplifies deploying Docker images and is integrated with Amazon's Elastic Container Service (ECS).
-
-When you tell our *ML Manager* to deploy a model to SageMaker, *ML Manager* creates a Docker image and uploads it to your ECR repository. You can specify which AWS instance types you want to deploy on, and how many instances you want to deploy. We send the deployment request to SageMaker, which creates an endpoint, launches your ML compute instances, and the deploys your model to them.
-
-You can also use the same process to deploy an updated version of your model.
-
-
-### About Storing Models and Pipelines
-
-You can save your pipeline and model to S3 using the `save` method of MLlib `Pipeline` objects. Assuming that you've created a pipeline and built a model, you can save them as follows:
-
-```
-%spark.pyspark
-model.save('s3a://splice-demo/fraudDemoPipelineModel')
-```
-{: .Example}
-
-If you are developing or have developed a model that you expect to deploy in the future, you should save the model to MLflow. Assuming that you've previously created an instance of `MLManager` named `manager` and have created a MLlib model named `model`, you can save the model to MLflow with this statement:
-{: .spaceAbove}
-
-```
-%spark.pyspark
-manager.log_spark_model(model)
-```
-{: .Example}
-
-The code in the next section contains examples of saving models to S3 and to MLflow.
-{: .spaceAbove}
 
 ## Running an Experiment  {#runExperiment}
 
