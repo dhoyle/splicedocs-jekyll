@@ -18,7 +18,7 @@ After a successful import completes, a simple report displays, showing
 how many files were imported, and how many record imports succeeded or
 failed.
 
-This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [*Importing Data Tutorial*](tutorials_ingest_importoverview.html) for help with selecting the right process for your situation.
+This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [*Best Practices: Ingestions*](bestpractices_ingest_overview.html) chapter for help with selecting the right process for your situation.
 
 ## Syntax
 
@@ -44,7 +44,7 @@ This procedure is one of several built-in system procedures provided by Splice M
 
 ## Parameters
 
-The following table summarizes the parameters used by `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` and other Splice Machine data importation procedures. Each parameter name links to a more detailed description in our [Importing Data Tutorial](tutorials_ingest_importparams.html).
+The following table summarizes the parameters used by `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` and other Splice Machine data importation procedures. Each parameter name links to a more detailed description in our [Ingestion Parameter Values](bestpractices_ingest_params.html).
 
 <table>
     <col />
@@ -174,7 +174,7 @@ What distinguishes `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` from the similar
 * Inserting and updating data in a column with default values.
 * Handling of missing values.
 
-The [Importing Data Tutorial: Input Handling](tutorials_ingest_importinput.html) topic describes how each of these conditions is handled by the different system procedures.
+The [Ingestion Parameters](bestpractices_ingest_params.html) topic describes how each of these conditions is handled by the different system procedures.
 
 ## Record Import Failure Reasons
 
@@ -214,7 +214,7 @@ for example:
 
 This section presents a couple simple examples.
 
-The [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) topic contains a more extensive set of examples.
+The [Best Practics: Importing Flat Files](bestpractices_ingest_import.html) topic contains a more extensive set of examples.
 
 ### Example 1: Updating our doc examples player data
 
@@ -265,12 +265,12 @@ our delimiter character for strings:
 
 </div>
 
-See [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) for more examples.
+See [Best Practices: Importing Flat Files](bestpractices_ingest_import.html) for more examples.
 
 ## See Also
 
-* [Our Importing Data Tutorial](tutorials_ingest_importoverview.html)
-* [Importing Data Usage Examples](tutorials_ingest_importexamples1.html)
+* [Best Practices - Ingestion](bestpractices_ingest_overview.html)
+* [Importing Data Examples](bestpractices_ingest_import.html)
 * [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
 * [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_importdata.html)
 

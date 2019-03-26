@@ -18,7 +18,7 @@ After a successful import completes, a simple report displays, showing
 how many files were imported, and how many record imports succeeded or
 failed.
 
-This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [*Importing Data Tutorial*](tutorials_ingest_importoverview.html) for help with selecting the right process for your situation.
+This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [Best Practices: Ingestion](bestpractices_ingest_overview.html) for help with selecting the right process for your situation.
 
 ## Syntax
 
@@ -44,7 +44,7 @@ This procedure is one of several built-in system procedures provided by Splice M
 
 ## Parameters
 
-This table includes a brief description of each parameter; additional information is available in the [Import Parameters](tutorials_ingest_importparams.html) topic of our *Importing Data* tutorial.
+This table includes a brief description of each parameter; additional information is available in the [Ingestion Parameter Values](bestpractices_ingest_params.html) topic of our *Importing Data* tutorial.
 
 <table>
     <col />
@@ -173,7 +173,7 @@ What distinguishes `SYSCS_UTIL.IMPORT_DATA` from the similar
 * Inserting and updating data in a column with default values.
 * Handling of missing values.
 
-The [Importing Data Tutorial: Input Handling](tutorials_ingest_importinput.html) topic describes how each of these conditions is handled by the different system procedures.
+The [Ingestion Parameter Values](bestpractices_ingest_params.html) topic in our Best Practices Guide describes how each of these conditions is handled by the different system procedures.
 
 ## Record Import Failure Reasons
 
@@ -209,7 +209,7 @@ for example:
 
 This section presents a couple simple examples.
 
-The [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) topic contains a more extensive set of examples.
+The [Importing Flat Files](bestpractices_ingest_import.html) topic contains a more extensive set of examples.
 
 ### Example 1: Importing our doc examples player data
 
@@ -258,12 +258,12 @@ servers with timestamps set to different time zones, the value in the
 table shown will be different. Additionally, daylight savings time may
 account for a 1-hour difference if timezone is specified.
 
-See [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) for more examples.
+See [Importing Flat Files](bestpractices_ingest_import.html) for more examples.
 
 ## See Also
 
-* [Our Importing Data Tutorial](tutorials_ingest_importoverview.html)
-* [Importing Data Usage Examples](tutorials_ingest_importexamples1.html)
+* [Best Practices: Ingestion](bestpractices_ingest_overview.html)
+* [Importing Flat Files](bestpractices_ingest_import.html)
 * [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 * [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 * [`SYSCS_UTIL.BULK_HFILE_IMPORT`](sqlref_sysprocs_importhfile.html)

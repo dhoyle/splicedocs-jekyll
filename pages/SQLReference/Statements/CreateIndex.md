@@ -69,35 +69,35 @@ colDelimiter
 {: .paramName}
 The character used to separate columns in the CSV file. You don't need to specify this if using the comma (`,`) character as your delimiter.
 {: .paramDefnFirst}
-For additional information about column delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#columnDelimiter) tutorial page.
+For additional information about column delimiters, please see the description in our [Importing Data: Input Parameters](bestpractices_ingest_params.html#columnDelimiter) tutorial page.
 {: .paramDefn}
 
 charDelimiter
 {: .paramName}
 The character used to delimit strings in the CSV file. You don't need to specify this if using the double-quote (`"`) character as your delimiter.
 {: .paramDefnFirst}
-For additional information about character delimiters, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#characterDelimiter) tutorial page.
+For additional information about character delimiters, please see the description in our [Importing Data: Input Parameters](bestpractices_ingest_params.html#characterDelimiter) tutorial page.
 {: .paramDefn}
 
 timeStampFormat
 {: .paramName}
 The format of timestamps stored in the CSV file. You don't need to specify this if there are not any time columns in the file, or if the format of any timestamps in the file match the Java.sql.Timestamp default format, which is: "*yyyy-MM-dd HH:mm:ss*".
 {: .paramDefnFirst}
-For additional information about timestamp formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timestampFormat) tutorial page.
+For additional information about timestamp formats, please see the description in our [Importing Data: Input Parameters](bestpractices_ingest_params.html#timestampFormat) tutorial page.
 {: .paramDefn}
 
 dateFormat
 {: .paramName}
 The format of datestamps stored in the CSV file. You don't need to specify this if there are no date columns in the file, or if the format of any dates in the file match the pattern: "*yyyy-MM-dd*".
 {: .paramDefnFirst}
-For additional information about date formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#dateFormat) tutorial page.
+For additional information about date formats, please see the description in our [Importing Data: Input Parameters](bestpractices_ingest_params.html#dateFormat) tutorial page.
 {: .paramDefn}
 
 timeFormat
 {: .paramName}
 The format of time values stored in the CSV file. You can set this to null if there are no time columns in the file, or if the format of any times in the file match pattern: "*HH:mm:ss*".
 {: .paramDefnFirst}
-For additional information about time formats, please see the description in our [Importing Data: Input Parameters](tutorials_ingest_importparams.html#timeFormat) tutorial page.
+For additional information about time formats, please see the description in our [Importing Data: Input Parameters](bestpractices_ingest_params.html#timeFormat) tutorial page.
 {: .paramDefn}
 
 hFileLocation
@@ -106,7 +106,7 @@ hFileLocation
 To use the bulk HFile index creation process, you __must__ specify this value, which is the location (full path) in which the temporary HFiles will be created. These files will automatically be deleted after the index creation process completes. If you leave this parameter out, the index will be created without using HFile Bulk loading.
 {: .paramDefnFirst}
 
-HFile Bulk Loading of indexes is described in the [Using Bulk Hfile Indexing](#BulkIndex) section, below. Using bulk HFiles improves performance for large datasets, and is related to our [Bulk HFile Import procedure](tutorials_ingest_importexampleshfile.html).
+HFile Bulk Loading of indexes is described in the [Using Bulk Hfile Indexing](#BulkIndex) section, below. Using bulk HFiles improves performance for large datasets, and is related to our [Bulk HFile Import procedure](bestpractices_ingest_bulkimport.html).
 {: .paramDefn}
 
 </div>
@@ -173,7 +173,7 @@ Bulk HFile indexing improves performance when indexing very large datasets. The 
 
 To learn more about bulk HFile index creation, see [Indexing Large Tables](tutorials_indexing_largeindex.html) tutorial page.
 
-Bulk HFile index creation is related to using Bulk HFiles to import data, which is described in our [Importing Data: Bulk HFile Import](tutorials_ingest_importbulkhfile.html) tutorial page.
+Bulk HFile index creation is related to using Bulk HFiles to import data, which is described in our [Importing Data: Bulk HFile Import](bestpractices_ingest_bulkimport.html) best practices page.
 
 ## Excluding NULL and Default Values
 
@@ -378,7 +378,7 @@ Now, if we force the index to be used in the above case, you'll see an error:
 * [`SELECT`](sqlref_expressions_select.html) statement
 * [`UPDATE`](sqlref_statements_update.html) statement
 * [Indexing Large Tables](tutorials_indexing_largeindex.html)
-* [Importing Data: Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
+* [Importing Data: Bulk HFile Import](bestpractices_ingest_bulkimport.html)
 
 </div>
 </section>

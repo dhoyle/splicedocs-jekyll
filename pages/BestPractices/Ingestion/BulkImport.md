@@ -364,6 +364,9 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 
 The following table summarizes the parameters you use when calling the `BULK_IMPORT_HFILE` and `SYSCS_SPLIT_TABLE_OR_INDEX` procedures.
 
+The [Data Ingestion Parameter Values](bestpractices_ingest_params.html) topic in this chapter provides reference information for all of these parameters.
+{: .noteNote}
+
 <table>
     <caption class="tblCaption">Table 1: Bulk HFile Import Parameters</caption>
     <col width="25%"/>

@@ -23,19 +23,6 @@ For an overview of best practices for data ingestion, see [Best Practices: Inges
 ## Ingestion Troubleshooting Tips for the Splice Machine Database  {#dbtips}
 This section contains the following tips for troubleshooting ingestion of data into your Splice Machine database:
 
-* [Troubleshooting Ingestion: Tip 1](#scenario1)
-* [Troubleshooting Ingestion: Tip 2](#scenario2)
-
-### Troubleshooting Ingestion: 1  {#scenario1}
-
-* Scenario description
-* Troubleshooting specifics
-
-
-### Troubleshooting Ingestion: 2  {#scenario2}
-
-* Scenario description
-* Troubleshooting specifics
 
 
 ## Ingestion Troubleshooting Tips for On-Premise Database Product Only  {#onpremtips}
@@ -73,7 +60,7 @@ If you are a Splice Machine On-Premise Database customer and want to use bulk im
 
 For more information about KMS, see <a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html" target="_blank">https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html</a>.
 
-### Bulk Import of Very Large Datasets with Spark  {#BulkImportSparkSep}
+## Bulk Import of Very Large Datasets with Spark  {#BulkImportSparkSep}
 
 When using Splice Machine with Spark with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
 
@@ -96,5 +83,12 @@ When using Splice Machine with Spark with Cloudera, bulk import of very large da
     ```
     {: .Example}
 
+3. Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make these two changes in your Yarn configuration, `ResourceManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml`:
+
+    ```
+    yarn.nodemanager.pmem-check-enabled=false
+    yarn.nodemanager.vmem-check-enabled=false
+    {: .Example}
+    ```
 </div>
 </section>

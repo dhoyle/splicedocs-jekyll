@@ -229,6 +229,9 @@ Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *
 The following table summarizes the parameters you use when calling the `IMPORT_DATA` or
  `MERGE_DATA_FROM_FILE` procedures.
 
+The [Data Ingestion Parameter Values](bestpractices_ingest_params.html) topic in this chapter provides reference information for all of these parameters.
+{: .noteNote}
+
 <table>
     <caption class="tblCaption">Table 1: Basic Import Parameters</caption>
     <col width="25%"/>

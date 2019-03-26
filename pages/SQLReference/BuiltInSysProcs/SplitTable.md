@@ -45,7 +45,7 @@ system procedure to import your data in HFile format.
 The parameter values that you pass into this procedure should match the values for the same-named parameters that you use when you subsequently call the  &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure to perform the import.
 {: .noteIcon}
 
-This table includes a brief description of each parameter; additional information is available in the [Import Parameters](tutorials_ingest_importparams.html) topic of our *Importing Data* tutorial.
+This table includes a brief description of each parameter; additional information is available in the [Ingestion Parameter Values](bestpractices_ingest_params.html) topic of our *Importing Data* tutorial.
 
 <table>
     <col />
@@ -154,7 +154,7 @@ You can use the `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX` procedure to pre-split a
 When you pre-split your data, make sure that you set the `skipSampling` parameter to `true` when calling `SYSCS_UTIL.BULK_IMPORT_HFILE`; that tells the bulk import procedure that you have already split your data.
 {: .noteIcon}
 
-The [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) section of our *Importing Data Tutorial* describes the different methods for using our bulk HFile import functionality.
+The [Best Practices: Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) section of our *Importing Data Tutorial* describes the different methods for using our bulk HFile import functionality.
 
 ## Example {#Example}
 
@@ -313,7 +313,7 @@ Follow these steps:
 
 ## See Also
 
-*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
+*  [Best Practices: Ingestion](bestpractices_ingest_overview.html)
 *  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
 *  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
