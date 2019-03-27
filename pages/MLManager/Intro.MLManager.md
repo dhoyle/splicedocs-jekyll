@@ -15,5 +15,9 @@ folder: MLManager
 
 Our [Using the MLManager](mlmanager_using.html) topic provides an overview of how you can use MLManager to develop, tune, and deploy your Machine Learning projects.
 
+*********TALK ABOUT WHAT"S NEW************
+
+LINK TO USING + API
+
 </div>
 </section>
