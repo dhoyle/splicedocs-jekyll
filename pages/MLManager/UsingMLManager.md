@@ -1,5 +1,5 @@
 ---
-title: Using the Splice Machine ML Manager
+title: Using the Splice ML Manager
 summary: Overview of using the ML Manager
 keywords: data science, machine learning
 toc: false
@@ -10,24 +10,18 @@ folder: MLManager
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Using the Splice Machine ML Manager
+# Using the Splice ML Manager
 
-This topic introduces you to the Splice Machine *ML Manager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks, Apache MLflow, and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications. This topic is organized into these sections:
+This topic shows you how to use the Splice Machine *ML Manager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks, Apache MLflow, and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications. This topic is organized into these sections:
 
-* [*About ML Manager*](#aboutMLManager) provides a quick overview of what the *ML Manager* does and how it interfaces with MLflow and SageMaker to provide a complete Machine Learning production environment.
+* [*ML Manager Workflow*](#workflow) provides a quick overview of what the *ML Manager* does and how it interfaces with MLflow and SageMaker to provide a complete Machine Learning production environment.
 * [*Running an Experiment*](#runExperiment) walks you through creating an ML experiment for detecting credit card fraud and shows you how to train, run, and compare two different learning models.
 * [*Deploying Your Model to AWS SageMaker*](#deploywithsagemaker) walks you through deploying your model on AWS.
 * [*Retraining the Model with New Data*](#UpdateData) shows you how to retrain your model with new data and update your deployment.
 
-## *ML Manager* Overview  {#aboutMLManager}
+The [*ML Manager Introduction*](mlmanager_intro.html) topic in this chapter provides an overview of the ML Manager, and the [*ML Manager API*] provides reference information for its API.
 
-The *Splice Machine ML Manager* facilitates machine learning development within Zeppelin notebooks.  Here are some of its key features:
-
-* *ML Manager* runs directly on Apache Spark, allowing you to complete massive jobs in parallel.
-* Our native `PySpliceContext` lets you directly access the data in your database and very efficiently convert it to/from a Spark DataFrame with no serialization/deserialization required.
-* MLflow is integrated directly into your Splice Machine cluster, to facilitate tracking of your entire Machine Learning workflow.
-* After you have found the best model for your task, you can easily deploy it live to AWS SageMaker to make predictions in real time.
-* As new data flows in, updating your model is a simple matter of returning to your Notebook, creating new runs, and redeploying by tapping a button.
+## *ML Manager* WorkFlow  {#workflow}
 
 Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with *ML Manager*:
 
@@ -39,7 +33,7 @@ The basic workflow is:
 2. Use MLflow within your notebook to create *experiments* and *runs*, and to track variables, parameters, and other information about your runs.
 3. Use the MLflow Tracking UI to monitor information about your experiments and runs.
 4. Iterate on your experiments until you develop the learning model that you want to deploy, using the tracking UI to compare your runs.
-5. Use the Splice Machine ML Jobs Tracker to deploy your model to AWS SageMaker, by simply filling in a few form fields and clicking a button.
+5. Use the Splice ML Jobs Tracker to deploy your model to AWS SageMaker, by simply filling in a few form fields and clicking a button.
 6. Write Apps that use SageMaker's RESTful API to interface with your deployed model.
 7. As new data arrives, you can return to Step 1 and repeat the process.
 </div>
@@ -81,7 +75,7 @@ The code in the [*Running an Experiment*](#runExperiment) section below contains
 
 ### About SageMaker
 
-Amazon Sagemaker allows you to easily deploy the machine learning models that you develop with the *Splice Machine ML Manager* on Amazon AWS. The only requirement is that you have an *ECR* repository set up on AWS; ECR is Amazon's fully-managed Docker contrainer registry that simplifies deploying Docker images and is integrated with Amazon's Elastic Container Service (ECS).
+Amazon Sagemaker allows you to easily deploy the machine learning models that you develop with the *Splice ML Manager* on Amazon AWS. The only requirement is that you have an *ECR* repository set up on AWS; ECR is Amazon's fully-managed Docker contrainer registry that simplifies deploying Docker images and is integrated with Amazon's Elastic Container Service (ECS).
 
 ***********************  BEN/NIK:  does this
 
@@ -145,7 +139,7 @@ This section walks you through creating and running an experiment with ML Manage
 * [The First Run](#runFirst)
 * [Trying a Different Model](#trydifferentmodel)
 
-The Splice Machine ML Manager, along with mlFlow, allows you to group a set of *runs* into an *experiment*. Each run can use different values and parameters, all of which can be easily tracked and evaluated with help from the mlFlow user interface.
+The Splice ML Manager, along with mlFlow, allows you to group a set of *runs* into an *experiment*. Each run can use different values and parameters, all of which can be easily tracked and evaluated with help from the mlFlow user interface.
 
 ### Preparing Your Experiment  {#prepareExperiment}
 In this section, we'll prepare our first experiment, in these steps:
@@ -609,7 +603,7 @@ Once you've run an experiment run that looks good, you can interface with Amazon
 
 Elastic Container Registry (*ECR*) is Amazon's managed AWS Docker registry service; it supports private Docker repositories with resource-based permissions using AWS IAM so that specific users or Amazon EC2 instances can access repositories and images.
 
-When you tell the *Splice Machine ML Manager* to deploy your model to SageMaker, *ML Manager* creates a Docker image, saves it to your ECR repo, and tells AWS to deploy it for you. You then have an endpoint on AWS with a RESTfull API that your apps can use to interact with your model.
+When you tell the *Splice ML Manager* to deploy your model to SageMaker, *ML Manager* creates a Docker image, saves it to your ECR repo, and tells AWS to deploy it for you. You then have an endpoint on AWS with a RESTfull API that your apps can use to interact with your model.
 
 To take advantage of this capability, you need to create a repository on ECR. See the [Amazon ECR documentation](https://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html){: target="_blank"} for information about creating your repository.
 
@@ -632,7 +626,7 @@ Before deploying your model, you need to have the IDs of the experiment and run 
 </div>
 
 ### Step 3: Deploy Your Model  {#deploy}
-Once you know your Experiment and Run ID values, you can use the Splice Machine ML Jobs Tracker to deploy your model. Follow these steps:
+Once you know your Experiment and Run ID values, you can use the Splice ML Jobs Tracker to deploy your model. Follow these steps:
 
 <div class="opsStepsList" markdown="1">
 1. Navigate to port 5003 in your web browser to display the *ML Manager* Jobs Tracker. For example:<br />
