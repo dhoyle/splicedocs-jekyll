@@ -19,7 +19,7 @@ This topic shows you how to use the Splice Machine *ML Manager*, a machine learn
 * [*Deploying Your Model to AWS SageMaker*](#deploywithsagemaker) walks you through deploying your model on AWS.
 * [*Retraining the Model with New Data*](#UpdateData) shows you how to retrain your model with new data and update your deployment.
 
-The [*ML Manager Introduction*](mlmanager_intro.html) topic in this chapter provides an overview of the ML Manager, and the [*ML Manager API*] provides reference information for its API.
+The [*ML Manager Introduction*](mlmanager_intro.html) topic in this chapter provides an overview of the ML Manager, and the [*ML Manager API*](mlmanager_api.html) topic provides reference information for its API.
 
 ## *ML Manager* WorkFlow  {#workflow}
 
@@ -41,14 +41,10 @@ The basic workflow is:
 
 ### About MLflow
 
-MLflow is an open source platform for managing the end-to-end machine learning lifecycle; with MLflow, you can:
+MLflow is an open source platform for managing the end-to-end machine learning lifecycle; with MLflow and Splice ML Manager, you can:
 
-* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX SOMETHING ABOUT AN EXPERIMENT ****************************************
 * Track your model training sessions, which are called *runs*.
-
-
 * Group a collection of runs under an *experiment*, which allows you to visualize and compare a set of runs, and to download run artifacts for analysis by other tools.
-
 * View your experiments in the *MLflow Tracking UI*, which you access by pointing your browser at port `5001`.
 
 ### About Storing Models and Pipelines
@@ -77,59 +73,9 @@ The code in the [*Running an Experiment*](#runExperiment) section below contains
 
 Amazon Sagemaker allows you to easily deploy the machine learning models that you develop with the *Splice ML Manager* on Amazon AWS. The only requirement is that you have an *ECR* repository set up on AWS; ECR is Amazon's fully-managed Docker contrainer registry that simplifies deploying Docker images and is integrated with Amazon's Elastic Container Service (ECS).
 
-***********************  BEN/NIK:  does this
-
 When you tell our *ML Manager* to deploy a model to SageMaker, *ML Manager* creates a Docker image and uploads it to your ECR repository. You can specify which AWS instance types you want to deploy on, and how many instances you want to deploy. We send the deployment request to SageMaker, which creates an endpoint, launches your ML compute instances, and the deploys your model to them.
 
 You can also use the same process to deploy an updated version of your model.
-
-
-## The ML Manager API
-
-### Tracking Runs ******************************** FIX THIS****************************8
-
-Each run is some code that can record the following information:
-
-  <table>
-    <col width="15%" />
-    <col width="45%"/>
-    <col width="40%" />
-    <thead>
-        <tr>
-            <th>Information Type</th>
-            <th>Purpose</th>
-            <th>Examples</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="ItalicFont">Metrics</td>
-            <td>Map string values such as <code>F1</code> to double-precision numbers such as <code>0.85</code>.</td>
-            <td>Model output metrics, such as: *F1 score, AUC, Precision, Recall, R^2*.</td>
-        </tr>
-        <tr>
-            <td class="ItalicFont">Parameters</td>
-            <td>Map strings such as <code>classifier</code> to strings such as <code>DecisionTree</code>. </td>
-            <td>Model parameters, such as Num Trees, Preprocessing Steps, Regularization.</td>
-        </tr>
-        <tr>
-            <td class="ItalicFont">Models</td>
-            <td>So that you can subsequently deploy them to SageMaker.</td>
-            <td>Fitted pipelines or models.</td>
-        </tr>
-        <tr>
-            <td class="ItalicFont">Tags</td>
-            <td>These map strings such as <code>deployable</code> to strings such as <code>true</code>.</td>
-            <td>Specific pieces of information associated with a run, such as the project, version, and deployable status.</td>
-        </tr>
-    </tbody>
-  </table>
-
-
-You can use the Splice Machine `MLManager` class in your program to manipulate experiments.
-{: .noteIcon}
-
-
 
 ## Running an Experiment  {#runExperiment}
 
