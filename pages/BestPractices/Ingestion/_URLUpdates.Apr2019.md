@@ -26,4 +26,16 @@ tutorials_ingest_importexampleshfile.html
     ==> bestpractices_ingest_bulkimport.html
 
 tutorials_ingest_importexamplestpch.html
-    ==> bestpractices_ingest_XXXXXXXXXXXXXXXXXXXx
+    ==> bestpractices_ingest_tpch.html
+
+developers_spark_adapter.html
+    ==> bestpractices_sparkadapter_intro.html
+
+developers_spark_methods.html
+    ==> bestpractices_sparkadapter_api.html
+
+developers_spark_submit.html
+    ==> bestpractices_sparkadapter_submit.html
+
+developers_spark_zeppelin.html
+    ==> bestpractices_sparkadapter_zeppelin.html
