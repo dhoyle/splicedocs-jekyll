@@ -17,7 +17,7 @@ The Splice ML Manager is an integrated machine learning (ML) platform that minim
 
 * Experiment frequently using diverse parameters to compare model effectiveness
 * Leverage updated operational data to concurrently train the model
-* Minimize the movement of data by running the models in the database
+* Minimize the movement of data by running the models on your cluster's Spark executors
 * Compress the time from model deployment to action
 
 Splice ML Manager provides end-to-end life-cycle management for your ML models, thereby streamlining and accelerating the design and deployment of intelligent applications using real-time data. ML Manager through its tight integration with Splice data platform results in reduced data movement that empowers data scientists to conduct a higher number of experiments to derive better feature vectors with more signal and compare algorithms with varied parameters to build better models in a limited amount of time.
@@ -70,6 +70,8 @@ A run is the execution of some data science code; each run can record different 
     </tr>
 </tbody>
 </table>
+
+For more information about logging information in the ML Manager, see the [ML Manager API](mlmanager_api.html) topic.
 
 ML Manager organizes runs into *experiments*; each experiment groups runs together for a specific task; for example, you might experiment with using  different machine learning models in different runs, to compare results.
 
