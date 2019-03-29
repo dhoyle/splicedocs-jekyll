@@ -150,7 +150,7 @@ Here's a very basic example of importing a flat file into a table in your Splice
 
     rowsImported        |failedRows          |files      |dataSize            |failedLog
     -------------------------------------------------------------------------------------
-    5                   |0                   |1          |50                  |NONE
+    5                   |0                   |1          |20                  |NONE
     ```
     {: .Example}
 
@@ -163,11 +163,11 @@ Here's a very basic example of importing a flat file into a table in your Splice
     splice> SELECT * FROM testImport;
     A1         |B1         |C1         |D1
     -----------------------------------------------
-    0          |0          |10001      |999
-    1          |2          |10002      |999
-    2          |4          |10003      |999
-    3          |6          |10004      |999
-    4          |8          |10005      |999
+    0          |0          |1      |999
+    1          |2          |2      |999
+    2          |4          |3      |999
+    3          |6          |4      |999
+    4          |8          |5      |999
 
     6 rows selected
     ```
@@ -197,7 +197,7 @@ Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *
 
     rowsUpdated   |rowsInserted  |failedRows     |files  |dataSize           |failedLog
     -------------------------------------------------------------------------------------
-    2             |2             |0              |1      |44                 |NONE
+    2             |2             |0              |1      |20                 |NONE
 
     1 row selected
     ```
@@ -214,8 +214,8 @@ Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *
     2          |22         |3          |999
     3          |6          |4          |999
     4          |44         |5          |999
-    5          |55         |6          |999
-    6          |66         |7          |999
+    5          |55         |10001      |999
+    6          |66         |10002      |999
 
     7 rows selected
     ```

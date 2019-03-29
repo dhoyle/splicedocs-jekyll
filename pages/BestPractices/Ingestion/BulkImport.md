@@ -346,7 +346,15 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 	```
     {: .Example}
 <br />
-9. __Import the file into your database:__
+9.  __Call SYSCS_UTIL.GET_REGIONS to verify that the table and index are split as expected:__
+
+	```
+    CALL SYSCS_UTIL.GET_REGIONS( 'TPCH','LINEITEM', L_SHIPDATE_IDX,
+            null, null, '|',null,null,null,null);
+	```
+    {: .Example}
+<br />
+10. __Import the file into your database:__
 
     ```
     call SYSCS_UTIL.BULK_IMPORT_HFILE('TPCH', 'LINEITEM', null,

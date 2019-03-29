@@ -61,7 +61,7 @@ startKey
 For a table, this is a comma-separated-value (CSV) representation of the
 primary key value for the start of the regions in which you are
 interested. For an index, this is the CSV representation of the index
-columns.
+columns. Specify `NULL` to indicate all regions.
 {: .paramDefnFirst}
 
 endKey
@@ -70,7 +70,7 @@ endKey
 For a table, this is a comma-separated-value (CSV) representation of the
 primary key value for the end of the regions in which you are
 interested. For an index, this is the CSV representation of the index
-columns.
+columns.  Specify `NULL` to indicate all regions.
 {: .paramDefnFirst}
 
 columnDelimiter
@@ -197,13 +197,22 @@ key range `{1,2}` to `{1,8}`:
 
 <div class="preWrapperWide" markdown="1">
     splice> CALL SYSCS_UTIL.GET_REGIONS( 'SPLICE','TestTable', null,
-                                         '1|2', '1|8', '|',null,null,null,null);
+                             '1|2', '1|8', '|',null,null,null,null);
     ENCODED_REGION_NAME              |SPLICE_START_KEY |SPLICE_END_KEY |HBASE_START_KEY |HBASE_END_KEY |NUM_HFILES |SIZE  |LAST_MODIFICATION_TIME |REGION_NAME
     -----------------------------------------------------------------
     132c824b9e269006a8e0a3fad577bd12 |{ 1, 2}          |{ 1, 6}        |\x81\x00\x82    |\x81\x00\x86  |1          |1645  |2017-08-17 12:44:15.0  |splice:2944,\x81\x00\x82,1502999053574.132c824b9e269006a8e0a3fad577bd12.
     2ee995a552cbb75b7172eed27b917cab |{ 1, 6 }         |{ 1, 8 }       |\x81\x00\x86    |\x81\x00\x88  |1          |1192  |2017-08-17 08:37:56.0  |splice:2944,\x81\x00\x86,1502984266749.2ee995a552cbb75b7172eed27b917cab.
 
     2 rows selected
+{: .Example xml:space="preserve"}
+
+</div>
+
+To list information about all regions instead, use `NULL` for the `startKey` and `endKey` values:
+
+<div class="preWrapperWide" markdown="1">
+    splice> CALL SYSCS_UTIL.GET_REGIONS( 'SPLICE','TestTable', null,
+                             null, null, '|',null,null,null,null);
 {: .Example xml:space="preserve"}
 
 </div>

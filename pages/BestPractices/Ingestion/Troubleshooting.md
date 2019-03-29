@@ -13,16 +13,21 @@ folder: BestPractices/Database
 
 # ﻿Best Practices: Troubleshooting Ingestion
 
+{% comment %}
+
 This topic provides troubleshooting help for specific ingestion scenarios, in these subsections:
 
 * [Ingestion Troubleshooting Tips for the Splice Machine Database](#dbtips)
 * [Ingestion Troubleshooting Tips for On-Premise Database Product Only](#dbtips)
+{% endcomment %}
+This topic provides troubleshooting help for specific ingestion scenarios.
 
 For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
 
+{% comment %}
 ## Ingestion Troubleshooting Tips for the Splice Machine Database  {#dbtips}
 This section contains the following tips for troubleshooting ingestion of data into your Splice Machine database:
-
+{% endcomment %}
 
 
 ## Ingestion Troubleshooting Tips for On-Premise Database Product Only  {#onpremtips}
@@ -60,7 +65,7 @@ If you are a Splice Machine On-Premise Database customer and want to use bulk im
 
 For more information about KMS, see <a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html" target="_blank">https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html</a>.
 
-## Bulk Import of Very Large Datasets with Spark  {#BulkImportSparkSep}
+### Bulk Import of Very Large Datasets with Spark  {#BulkImportSparkSep}
 
 When using Splice Machine with Spark with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
 

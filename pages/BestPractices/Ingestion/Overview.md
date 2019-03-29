@@ -29,7 +29,7 @@ Where the data that you're ingesting is coming from defines which approach you s
         <tr>
             <th>Your Use Case</th>
             <th class="spliceCheckbox">&nbsp;</th>
-            <th>How it Works</th>
+            <th>What to Read</th>
             <th>Relative Complexity</th>
         </tr>
     </thead>
@@ -142,12 +142,14 @@ To help you better understand how standard and bulk import work differently, con
 
 * When using standard import methods, the data you're importing is added to your table; when the table fills a region, the table is split across two regions, and the new region starts filling with table data. With bulk import methods, all of the table regions are pre-allocated, and imported data is copied into those regions in parallel.
 
-* When using standard import methods, Splice Machine assumes that the table into which you're importing is live, which means that your users may be accessing and modifying the table during ingestion; as a result, the imported records are inserted transactionally (in batches). In contrast, tables are not live during bulk import, so no transaction processing is involved. This impacts performance.
+* When using standard import methods, Splice Machine uses the standard HBase write path, which writes to the HBase Write-ahead-Log (WAL), writes to memstore, flushes to disk, and causes compaction and region splitting. Bulk import bypasses all of this, which results in significantly improved performance.
 
+{% comment %}
 #### An Illustrative Example
 Here's a very simple example to illustrate the difference. Suppose you're importing 100GB rows of data into an empty table, and that when the table was created, one 10GB region was allocated for it.
 
 __TBD:__ Illustrate the difference in import activity for standard (1 region, then 2, then 4 with increasing parallelism, transactional) versus bulk (pre-allocated regions written in parallel, not transactional)
+{% endcomment %}
 
 ### For Additional Information and Examples
 

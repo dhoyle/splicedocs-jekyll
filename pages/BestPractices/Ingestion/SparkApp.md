@@ -145,7 +145,7 @@ spark2-submit \
 --name "Spark Adapter Ingest" \
 --jars "splicemachine-cdh5.12.2-2.2.0.cloudera2_2.11-2.7.0.1908.jar" \
 --class com.splicemachine.example.Main \
---master yarn --deploy-mode cluster --num-executors 10 --executor-memory 10G --executor-cores 4 target/example-1.0-SNAPSHOT.jar \
+--master yarn --deploy-mode cluster --num-executors 10 --executor-memory 10G --executor-cores 4 \ target/example-1.0-SNAPSHOT.jar \
 $TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPassword $HdfsHostName $HdfsPort $CsvFilePath
 ```
 {: .ShellCommand}
@@ -275,7 +275,9 @@ public class Main {
         SpliceSpark.setContext(spark.sparkContext());
 
         // Construct a connection string
-        String dbUrl = "jdbc:splice://" + inHostName + ":" + inHostPort + "/splicedb;user=" + inUserName + ";" + "password=" + inUserPassword;
+        String dbUrl = "jdbc:splice://" + inHostName + ":" + inHostPort
+                        + "/splicedb;user=" + inUserName
+                        + ";" + "password=" + inUserPassword;
 
         // Create a SplicemachineContext based on the provided DB connection
         SplicemachineContext splicemachineContext = new SplicemachineContext(dbUrl);
@@ -286,8 +288,9 @@ public class Main {
         StructType schema = splicemachineContext.getSchema(SPLICE_TABLE_ITEM);
 
         // Create a DataFrame from a specified file
-        Dataset<Row> df = spark.read().format("com.databricks.spark.csv").option("delimiter", "|").schema(schema)
-                .load("hdfs://" + inHDFSHostName + ":" + inHDFSPort + inCSVFilePath);
+        Dataset<Row> df = spark.read().format("com.databricks.spark.csv").option(
+                    "delimiter", "|").schema(schema)
+                    .load("hdfs://" + inHDFSHostName + ":" + inHDFSPort + inCSVFilePath);
 
         splicemachineContext = new SplicemachineContext(dbUrl);
         // Import the data

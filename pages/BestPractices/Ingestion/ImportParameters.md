@@ -615,7 +615,7 @@ samples your input data and computes the table splits for you, in the following 
     1. Scans (sample) the data
     2. Collects a rowkey histogram
     3. Uses that histogram to calculate the split key for the table
-    4. Uses the calculated split key to split the table into HFiles
+    4. Uses the calculated split key to split the table
 
 **Example:** <span class="Example">`false`</span>
 
@@ -681,7 +681,7 @@ If you are running a stand alone environment, the name or path will be
 to a file or directory on the file system. For example:
 
 <div class="preWrapperWide" markdown="1">
-    /users/myname/mydata/mytable.csv/users/myname/mydatadir
+    /users/myname/mydatadir/mytable.csv
 {: .Example}
 
 </div>

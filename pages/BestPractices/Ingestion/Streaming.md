@@ -60,7 +60,7 @@ CREATE TABLE splice.weather (
 Create your Kafka topic with a command like this:
 
 ```
-bin/kafka-topics --describe --zookeeper localhost:2181  --topic weather
+bin/kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 2 --topic weather
 ```
 
 ### 3. Create a Kafka Producer to Stream Data  {#createproducer}
@@ -68,7 +68,8 @@ bin/kafka-topics --describe --zookeeper localhost:2181  --topic weather
 This section presents our sample code to produce a stream of weather data. The fully commented version of this code is available in  [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz).
 
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+Here's the main code for our Kafka producer:
+
 ```
 package com.splicemachine.sample;
 
@@ -85,8 +86,15 @@ public class KafkaTopicProducer {
 
     /*  Static list of locations  */
     public static final String[] locations = {
-            "Alachua", "Baker", Bay", Bradford", Brevard", Broward", Calhoun", Charlotte", Citrus", Clay", Collier", Columbia", Desoto", Dixie", Duval", Escambia", Flagler", Franklin", Gadsden", Gilchrist", Glades", Gulf", Hamilton", Hardee", Hendry", Hernando", Highlands", Hillsborough", Holmes", Indian River", Jackson", Jefferson", Lafayette", Lake", Pinellas", Polk", Putnam", St. Johns", St. Lucie", Santa Rosa", Sarasota", Seminole", Sumter", Suwannee", Taylor", Union", Volusia", Wakulla", Walton", Washington", Lee", Leon", Levy", Liberty", Madison", Manatee", Marion", Martin", Miami-Dade", Monroe", Nassau", Okaloosa", Okeechobee", Orange", Osceola", Palm Beach", Pasco"
-        };
+            "Alachua", "Baker", Bay", Bradford", Brevard", Broward", Calhoun", Charlotte",
+            Citrus", Clay", Collier", Columbia", Desoto", Dixie", Duval", Escambia", Flagler",
+            Franklin", Gadsden", Gilchrist", Glades", Gulf", Hamilton", Hardee", Hendry",
+            Hernando", Highlands", Hillsborough", Holmes", Indian River", Jackson", Jefferson",
+            Lafayette", Lake", Pinellas", Polk", Putnam", St. Johns", St. Lucie", Santa Rosa",
+            Sarasota", Seminole", Sumter", Suwannee", Taylor", Union", Volusia", Wakulla",
+            Walton", Washington", Lee", Leon", Levy", Liberty", Madison", Manatee", Marion",
+            Martin", Miami-Dade", Monroe", Nassau", Okaloosa", Okeechobee", Orange", Osceola",
+            Palm Beach",  Pasco" };
     Random r = new Random();
     DecimalFormat df = new DecimalFormat("#.##");
     SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -106,7 +114,8 @@ public class KafkaTopicProducer {
 ```
 {: .Example}
 
-XXXXXXXXXXXXXXx
+Here's the code that sends messages to the Kafka queue:
+{: .spaceAbove}
 
 ```
     /* Sends messages to the Kafka queue. */
@@ -134,7 +143,8 @@ XXXXXXXXXXXXXXx
             String id = "A_" + nEvents;
 
             String record = id +"," + getLocation() + "," + formatDouble(getTemperature())
-+ "," + formatDouble(getHumidity()) + "," + new Timestamp(System.currentTimeMillis()).toString();
+                               + "," + formatDouble(getHumidity()) + ","
+                               + new Timestamp(System.currentTimeMillis()).toString();
             producer.send(new ProducerRecord<String, String>(topic, id, record));
         }
         //Flush and close the queue
@@ -146,7 +156,8 @@ XXXXXXXXXXXXXXx
 ```
 {: .Example}
 
-XXXXXXXXXXXX
+And here are the *helper* functions:
+{: .spaceAbove}
 
 ```
     /* Get a randomly generated temperature value */
@@ -171,7 +182,7 @@ XXXXXXXXXXXX
         return locations[randomNum];
     }
 
-}       /* (End of the class declaration) */
+}
 ```
 {: .Example}
 <br />
@@ -190,7 +201,8 @@ The `main` body of this app uses Kafka to consume entries in the stream into a S
 This code is available in  [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz).
 {: .noteNote}
 
-XXXXXXXXXXXXXXXXx
+Here are the package and class import statements for the program:
+
 ```
 package com.splicemachine.sample;
 
@@ -224,6 +236,10 @@ import scala.Tuple2;
 ```
 {: .Example}
 
+Here's the main Kafka consumer code:
+{: .spaceAbove}
+
+```
 public class KafkaTopicConsumer {
 
     public static void main(String[] args) throws Exception {
@@ -255,18 +271,31 @@ public class KafkaTopicConsumer {
         kafkaParams.put("enable.auto.commit", false);
         Collection<String> topics = Arrays.asList(kafkaTopicName);
 
-	    JavaInputDStream<ConsumerRecord<String, String>> stream =
+        JavaInputDStream<ConsumerRecord<String, String>> stream =
                 KafkaUtils.createDirectStream(
                         jssc,
                         LocationStrategies.PreferConsistent(),
                         ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams));
 
-        JavaPairDStream<String, String> resultRDD = stream.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
+        JavaPairDStream<String, String> resultRDD
+                    = stream.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
 
-        doWork(inTargetTable, inTargetSchema, inHostName, inHostPort, inUserName, inUserPassword, resultRDD, jssc);
+        doWork(inTargetTable, inTargetSchema, inHostName, inHostPort,
+               inUserName, inUserPassword, resultRDD, jssc);
     }
+```
+{: .Example}
 
-    private static void doWork(String inTargetTable, String inTargetSchema, String inHostName, String inHostPort, String inUserName, String inUserPassword, JavaPairDStream<String, String> resultRDD, JavaStreamingContext jssc) throws IOException, InterruptedException {
+And here's the code that moves consumed data into your Splice Machine database:
+{: .spaceAbove}
+
+```
+    private static void doWork(String inTargetTable, String inTargetSchema,
+                              String inHostName, String inHostPort,
+                              String inUserName, String inUserPassword,
+                              JavaPairDStream<String, String> resultRDD,
+                              JavaStreamingContext jssc) throws IOException,
+                              InterruptedException {
 
         SparkConf conf = new SparkConf();
         SparkSession spark = SparkSession.builder().appName("Reader").config(conf).getOrCreate();
@@ -274,7 +303,8 @@ public class KafkaTopicConsumer {
         // Create Splice's Spark Session
         SpliceSpark.setContext(spark.sparkContext());
 
-        String dbUrl = "jdbc:splice://" + inHostName + ":" + inHostPort + "/splicedb;user=" + inUserName
+        String dbUrl = "jdbc:splice://" + inHostName + ":" + inHostPort
+                + "/splicedb;user=" + inUserName
                 + ";" + "password=" + inUserPassword;
 
         // Create a SplicemachineContext based on the provided DB connection
@@ -295,7 +325,8 @@ public class KafkaTopicConsumer {
             }).map(new Function<String[], Row>() {
                 @Override
                 public Row call(String[] r) throws Exception {
-                    return RowFactory.create(r[0], r[1], Double.parseDouble(r[2]), Double.parseDouble(r[3]),Timestamp.valueOf(r[4]));
+                    return RowFactory.create(r[0], r[1], Double.parseDouble(r[2]),
+                    Double.parseDouble(r[3]),Timestamp.valueOf(r[4]));
                 }
             });
 

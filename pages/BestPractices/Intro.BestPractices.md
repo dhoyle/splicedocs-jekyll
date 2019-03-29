@@ -17,7 +17,7 @@ This section contains best practices information for users of Splice Machine, in
 
 *   *Best Practices: Splice Machine Database:*
     This section provides best practices and troubleshooting topics that apply to all users of the Splice Machine database:
-    * [Best Practices: Ingestion](#bestpractices_ingest_overview.html) guides you to the best available solution for ingesting data when using Splice Machine.
+    * [Best Practices: Ingestion](#bestpractices_ingest_overview.html) guides you to the best available solution for ingesting data when using any Splice Machine product.
 <br /><br />
 
 *   *Best Practices: On-Premise Only Topics:*
