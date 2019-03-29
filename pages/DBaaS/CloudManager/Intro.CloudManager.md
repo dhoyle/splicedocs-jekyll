@@ -45,13 +45,13 @@ Machine Cloud Manager. Here are the topics included in this guide:
                     <td>Follow this steps in this topic to quickly become productive with your clustered database. In only a few minutes, you'll have your cluster up and running, and will be able to load and work with your data.</td>
                 </tr>
                 <tr>
-                    <td><em><a href="tutorials_ingest_importoverview.html">Loading Your Data</a></em></td>
+                    <td><em><a href="bestpractices_ingest_overview.html">Best Practices: Ingesting Data</a></em></td>
                     <td>
                         <p>You can load your data into Splice Machine from an AWS S3 bucket:</p>
                         <ul>
-                            <li>If you don't yet know how to create an S3 bucket or upload data to a bucket, please check our <a href="tutorials_ingest_uploadtos3.html">Uploading Data to an S3 Bucket</a> tutorial.</li>
-                            <li>You may need to configure IAM permissions to allow Splice Machine to access your bucket; see our <a href="tutorials_ingest_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial.</li>
-                            <li>Once you've got your data in a bucket, you can follow our <a href="tutorials_ingest_importoverview.html">Importing Data Tutorial</a> to load that data into Splice Machine.</li>
+                            <li>If you don't yet know how to create an S3 bucket or upload data to a bucket, please check our <a href="developers_cloudconnect_uploadtos3.html">Uploading Data to an S3 Bucket</a> tutorial.</li>
+                            <li>You may need to configure IAM permissions to allow Splice Machine to access your bucket; see our <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> tutorial.</li>
+                            <li>Once you've got your data in a bucket, you can follow our <a href="bestpractices_ingest_overview.html">Best Practices: Ingesting Data</a> topic to load that data into Splice Machine.</li>
                         </ul>
                         <p>Also note that the S3 directory you specify for the log of record import issues (the <em>bad record</em> directory), must be write-accessible using the same AWS credentials that apply to the input directory, i.e. the bad record directory must allow the same access key/secret key pair.</p>
                     </td>

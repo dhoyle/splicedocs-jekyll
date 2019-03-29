@@ -5,7 +5,7 @@ keywords: upload data, aws, s3, bucket, import
 toc: false
 product: all
 sidebar: developers_sidebar
-permalink: tutorials_ingest_uploadtos3.html
+permalink: developers_cloudconnect_uploadtos3.html
 folder: DeveloperTopics/CloudConnect
 ---
 <section>
@@ -123,7 +123,7 @@ upload data to a folder in an AWS S3 bucket:
     {: .topLevel}
 
     Review the IAM configuration options in our [Configuring an S3
-    Bucket for Splice Machine Access](tutorials_ingest_configures3.html)
+    Bucket for Splice Machine Access](developers_cloudconnect_configures3.html)
     tutorial to allow Splice Machine to import your data.
     {: .indentLevel1}
 {: .boldFont}

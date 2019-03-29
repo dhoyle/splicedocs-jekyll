@@ -410,7 +410,7 @@ Spark. For example:
 You can use the `bulkDeleteDirectory` hint to specify that you want to
 use our bulk delete feature to optimize the deletion of a large amount
 of data. Similar to our [bulk import
-feature](tutorials_ingest_importbulkhfile.html), bulk delete generates HFiles,
+feature](bestpracticses_ingest_bulkimport.html), bulk delete generates HFiles,
 which allows us to bypass the Splice Machine write pipeline and HBase
 write path when performing the deletion. This can significantly speed up
 the deletion process.
@@ -420,7 +420,7 @@ You need to specify the directory to which you want the temporary HFiles
 written; you must have write permissions on this directory to use this
 feature. If you're specifying an S3 bucket on AWS, please review our
 [Configuring an S3 Bucket for Splice Machine
-Access](tutorials_ingest_configures3.html) tutorial before proceeding.
+Access](developers_cloudconnect_configures3.html) tutorial before proceeding.
 {: .indentLevel1}
 
 <div class="preWrapperWide" markdown="1">

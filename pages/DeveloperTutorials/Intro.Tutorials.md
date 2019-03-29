@@ -40,17 +40,6 @@ This section shows you how to configure security for use with Splice Machine, in
 * [Summary of Permissions for Users and Roles](tutorials_security_permissions.html)
 * [Using Apache Ranger with Splice Machine](tutorials_security_usingranger.html)
 
-## Importing Data {#Importing}
-Our *Importing Data* tutorial walks you through importing data into Splice Machine, in these topics:
-
-* [Overview of Importing Data](tutorials_ingest_importoverview.html)
-* [Import Parameters](tutorials_ingest_importparams.html)
-* [Handling Import Input Data](tutorials_ingest_importinput.html)
-* [Import Error Handling](tutorials_ingest_importerrors.html)
-* [Examples of Importing Data](tutorials_ingest_importexamples1.html)
-* [Examples of Using Bulk HFile Import](tutorials_ingest_importexampleshfile.html)
-* [Example: Importing TPCH Benchmark Data](tutorials_ingest_importexamplestpch.html)
-
 ## Using the Database Console {#Console}
 Our *Database Console* tutorial walks you through using the Splice Machine database console to monitor queries in real time:
 

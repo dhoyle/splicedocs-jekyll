@@ -1937,7 +1937,7 @@ released prior to July 15, 2017.
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#Developers/IngestionAndStreaming/ConfigureS3.html</td>
-                       <td><a href="https://doc.splicemachine.com/tutorials_ingest_configures3.html">doc.splicemachine.com/tutorials_ingest_configures3.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/developers_cloudconnect_configures3.html">doc.splicemachine.com/developers_cloudconnect_configures3.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#Developers/IngestionAndStreaming/ImportingData.html</td>
@@ -1973,7 +1973,7 @@ released prior to July 15, 2017.
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#Developers/IngestionAndStreaming/UploadToS3.html</td>
-                       <td><a href="https://doc.splicemachine.com/tutorials_ingest_uploadtos3.html">doc.splicemachine.com/tutorials_ingest_uploadtos3.html</a></td>
+                       <td><a href="https://doc.splicemachine.com/developers_cloudconnect_uploadtos3.html">doc.splicemachine.com/developers_cloudconnect_uploadtos3.html</a></td>
                     </tr>
                     <tr>
                        <td>doc.splicemachine.com/#Developers/AnalyticsAndML/Intro.AnalyticsAndML.html</td>

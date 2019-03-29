@@ -70,7 +70,7 @@ You simply add a
 [`splice-properties`](developers_tuning_queryoptimization.html) hint
 that specifies where to generate the HFiles. If you're specifying an S3
 bucket on AWS, please review our [Configuring an S3 Bucket for Splice
-Machine Access](tutorials_ingest_configures3.html) tutorial before
+Machine Access](developers_cloudconnect_configures3.html) tutorial before
 proceeding.
 
 <div class="preWrapperWide" markdown="1">

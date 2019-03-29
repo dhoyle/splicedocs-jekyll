@@ -5,7 +5,7 @@ keywords: cloud, aws, azure
 toc: false
 product: all
 sidebar: developers_sidebar
-permalink: tutorials_cloudconnect_intro.html
+permalink: developers_cloudconnect_intro.html
 folder: DeveloperTopics/CloudConnect
 ---
 <section>
@@ -14,8 +14,8 @@ folder: DeveloperTopics/CloudConnect
 
 This section provides tutorials to help you configure connections to data that you have stored in the Cloud, in these topics:
 
-* [Configuring S3 Buckets for Splice Machine Access](tutorials_ingest_configures3.html)
-* [Uploading Data to an S3 Bucket](tutorials_ingest_uploadtos3.html)
+* [Configuring S3 Buckets for Splice Machine Access](developers_cloudconnect_configures3.html)
+* [Uploading Data to an S3 Bucket](developers_cloudconnect_uploadtos3.html)
 
 </div>
 </section>

@@ -257,7 +257,7 @@ data into it:
 
 </div>
 
-See the [Configuring an S3 Bucket for Splice Machine Access](tutorials_ingest_configures3.html) topic for information about accessing data on S3.
+See the [Configuring an S3 Bucket for Splice Machine Access](developers_cloudconnect_configures3.html) topic for information about accessing data on S3.
 {: .noteNote}
 
 ### External Table Plain Text Example

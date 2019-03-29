@@ -1,33 +1,20 @@
 ---
-title: "Importing Data: Importing TPCH Data"
-summary: Walks you through importing TPCH data into your database.
-keywords: import TPCH data
+title: "Importing the TPCH Data into Splice Machine"
+summary: Importing TPCH data into your database.
+keywords: import, ingest, tpch
 toc: false
 product: all
-sidebar: tutorials_sidebar
-permalink: tutorials_ingest_importexamplestpch.html
-folder: DeveloperTutorials/Import
+sidebar: bestpractices_sidebar
+permalink: bestpractices_ingest_tpch.html
+folder: BestPractices/Database
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Importing TPCH Data Into Your Database
+# Importing the TPCH Data into Your Database
 
-This topic walks you through importing the TPCH sample data into your
-Splice Machine database and then querying that data, in these sections:
+This topic shows you how to import the TPCH Data into your Splice Machine database, and then includes the SQL for [the TPCH queries](#theQueries).
 
-* [Import TPCH Data](#Import) walks you through importing TPCH data
-  from our AWS bucket into your Splice Machine database.
-
-* [Importing Your Own Data](#Importin) links to our tutorial that helps
-  you to import your own data.
-
-* [The TPCH Queries](#Addition) includes the SQL source for each of the
-  TPCH queries, so you can quickly run any of them against your newly
-  imported data.
-
-## Import TPCH Data   {#Import}
-
-You can use the following steps to import TPCH data into your new Splice
+You can use the following steps to import TPCH data into your Splice
 Machine database:
 
 <div class="opsStepsList" markdown="1">
@@ -136,7 +123,7 @@ Machine database:
     {: .topLevel}
 
     We've put a copy of the TPCH data in an AWS S3 bucket for
-    convenient retrieval. See the [Configuring an S3 Bucket for Splice Machine Access](tutorials_ingest_configures3.html) topic for information about accessing data on S3.
+    convenient retrieval. See the [Configuring an S3 Bucket for Splice Machine Access](developers_cloudconnect_configures3.html) topic for information about accessing data on S3.
 
     You can copy/paste the following
     `SYSCS_UTIL.IMPORT_DATA` statements to quickly pull that data into
@@ -206,14 +193,8 @@ Machine database:
 {: .boldFont}
 
 </div>
-## Importing Your Own Data   {#Importin}
 
-You can follow similar steps to import your own data. Setting up your
-import requires some precision; we encourage you to look through our
-[Importing Your Data Tutorial](tutorials_ingest_importoverview.html) for
-guidance and tips to make that process go smoothly.
-
-## The TPCH Queries   {#Addition}
+## The TPCH Queries   {#theQueries}
 
 Here are a number of additional queries you might want to run against
 the TPCH data:
@@ -1068,23 +1049,6 @@ order by
 ```
 {: .Example}
 
-
-</div>
-</section>
-
-## See Also
-
-*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
-*  [Importing Data: Input Parameters](tutorials_ingest_importparams.html)
-*  [Importing Data: Input Data Handling](tutorials_ingest_importinput.html)
-*  [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html)
-*  [Importing Data: Error Handling](tutorials_ingest_importerrors.html)
-*  [Importing Data: Usage Examples](tutorials_ingest_importexamples1.html)
-*  [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html)
-*  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
-*  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
-*  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 
 </div>
 </section>

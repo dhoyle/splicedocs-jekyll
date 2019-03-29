@@ -13,16 +13,22 @@ folder: BestPractices
 {% assign site.pdf_runninghead = "Best Practices" %}
 # Splice Machine Best Practices Guide
 
-This section contains best practices and troubleshooting information for users of Splice Machine. Currently, all of our best practices topics apply only to our *On-Premise Database* product:
+This section contains best practices information for users of Splice Machine, in these subsections:
 
-* [Configuring Security](bestpractices_onprem_security.html)
-* [Importing Data](bestpractices_onprem_importing.html)
-* [Backing Up Your Data](bestpractices_onprem_backups.html)
-* [Fine-tuning Performance Options](bestpractices_onprem_configperf.html)
-* [Managing Your Database](bestpractices_onprem_maintenance.html)
-* [Summary of Configuration Options](bestpractices_onprem_configoptions.html)
-* [Restarting Your Database](bestpractices_onprem_restarts.html)
-* [After Updating Your Splice Machine Software](bestpractices_onprem_updating.html)
+*   *Best Practices: Splice Machine Database:*
+    This section provides best practices and troubleshooting topics that apply to all users of the Splice Machine database:
+    * [Best Practices: Ingestion](#bestpractices_ingest_overview.html) guides you to the best available solution for ingesting data when using any Splice Machine product.
+<br /><br />
+
+*   *Best Practices: On-Premise Only Topics:*
+    This section contains best practice and troubleshooting information that are specific to our on-premise database product, including:
+    * [Configuring Security](bestpractices_onprem_security.html)
+    * [Backing Up Your Data](bestpractices_onprem_backups.html)
+    * [Fine-tuning Performance Options](bestpractices_onprem_configperf.html)
+    * [Managing Your Database](bestpractices_onprem_maintenance.html)
+    * [Summary of Configuration Options](bestpractices_onprem_configoptions.html)
+    * [Restarting Your Database](bestpractices_onprem_restarts.html)
+    * [After Updating Your Splice Machine Software](bestpractices_onprem_updating.html)
 
 
 
