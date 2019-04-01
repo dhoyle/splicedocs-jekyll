@@ -230,9 +230,9 @@ Our [Developer Topics Guide](developers_intro.html) contains a collection of top
     </tbody>
 </table>
 
-## 4. Explore our Developer Tutorials {#devtutorials}
+## 4. Explore our Developer Tutorials and Best Practices{#devtutorials}
 
-Our [Developer Tutorials](tutorials_intro.html) includes deep dives into more complex developer topics, such as:
+Our [Developer Tutorials](tutorials_intro.html) and [Best Practices](bestpractices_intro.html) Guides include deep dives into more complex developer topics, such as:
 
 <table>
     <col  width="28%" />
@@ -249,7 +249,7 @@ Our [Developer Tutorials](tutorials_intro.html) includes deep dives into more co
             <td>Includes sections on securing your JDBC connections, authentication methods, and authorization of users and roles.</td>
         </tr>
         <tr>
-            <td class="ItalicFont"><a href="tutorials_import_intro.html">Importing Data</a></td>
+            <td class="ItalicFont"><a href="bestpractices_ingest_overview.html">Importing Data</a></td>
             <td>Compares and walks you through the different ways to import data into your database, and includes detailed examples.</td>
         </tr>
         <tr>
