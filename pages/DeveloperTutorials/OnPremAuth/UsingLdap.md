@@ -13,6 +13,15 @@ folder: DeveloperTutorials/OnPremAuth
 
 # Using LDAP Authentication
 
+This topic describes how to use LDAP authentication in Splice Machine, in these subsections:
+
+* [About LDAP Authentication in Splice Machine](#about)
+* [LDAP Property Settings](#props)
+* [Authenticating With an LDAP Group](#groupauth)
+* [Troubleshooting LDAP](#troubleshoot)
+
+
+## About LDAP Authentication in Splice Machine  {#about}
 LDAP authentication in Splice Machine uses an external LDAP server.
 
 <div class="noteIcon" markdown="0">
@@ -37,7 +46,7 @@ To use LDAP with Splice Machine, you must:
 * Add the Splice Machine LDAP properties in your HBase configuration
   file, along with the license key property. Note that you may need to set `splice.authentication` properties in both service and client HBase configuration files:
 
-## LDAP Property Settings
+## LDAP Property Settings  {#props}
 
 These are the property settings you need to configure:
 
@@ -92,7 +101,7 @@ These are the property settings you need to configure:
 * The `ldap.searchFilter` property specifies the search filter to use to determine what constitutes a user while searching for a user DN. An example is: <span class="Example">(&(objectClass=*)(uid=%USERNAME%))</span>
 {: .bullet}
 
-## Authenticating With an LDAP Group
+## Authenticating With an LDAP Group  {#groupauth}
 To use a LDAP GROUP, you must create a Splice Machine database user for that group. You can then assign privileges to that user, and everyone belonging to the LDAP GROUP will gain those privileges.
 
 For example, given an LDAP GROUP named `test_devel`:
@@ -171,6 +180,18 @@ LDAP authentication, using a connection string similar to this:
     jdbc:splice://localhost:1527/splicedb;user=yourName;password=yourPswd
 {: .Example}
 </div>
+
+## Troubleshooting LDAP  {#troubleshoot}
+
+There is a known issue when authenticating with LDAP protocol to an Active Directory instance. If you see "*Unprocessed Continuation Reference*" error messages in the Splice Machine region server logs, this is typically caused by using a default Active Directory port (`369`/`636`). To fix:
+
+* Change port `369` to port `3268` for LDAP
+* Change port `636` to port `3269` for LDAPS.
+
+Using the alternate port allows for a broader search and lets you follow references.
+
+Secure ldap is always preferred since it is the only way to securely encrypt your users' passwords.
+{: .notePlain}
 
 </div>
 </section>
