@@ -184,7 +184,7 @@ Statement executed.
 
 
 ## 3. Investigate our Developer Topics {#devtopics}
-Our [Developer Topics Guide](developers_intro.html) contains a collection of topics that are useful to database developers, most of which involve using basic SQL functionality and/or built-in system procedures. These topics are organized into multiple sections, including these:
+Our [Developer Tutorials](tutorials_intro.html) and [Best Practices](bestpractices_intro.html) Guides contain topics that are useful to database developers, most of which involve using basic SQL functionality and/or built-in system procedures. These topics are organized into multiple sections, including these:
 <table>
     <col width="28%" />
     <col />
@@ -220,7 +220,7 @@ Our [Developer Topics Guide](developers_intro.html) contains a collection of top
             <td>Walks you through installing and using our ODBC driver.</td>
         </tr>
         <tr>
-            <td class="ItalicFont"><a href="developers_spark_intro.html">Using the Native Spark DataSource</a></td>
+            <td class="ItalicFont"><a href="bestpractices_sparkadapter_intro.html">Using the Native Spark DataSource</a></td>
             <td>Describes how to use the Splice Machine Native Spark DataSource.</td>
         </tr>
         <tr>

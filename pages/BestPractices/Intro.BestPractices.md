@@ -18,6 +18,7 @@ This section contains best practices information for users of Splice Machine, in
 *   *Best Practices: Splice Machine Database:*
     This section provides best practices and troubleshooting topics that apply to all users of the Splice Machine database:
     * [Best Practices: Ingestion](#bestpractices_ingest_overview.html) guides you to the best available solution for ingesting data when using any Splice Machine product.
+    * [Best Practices: Native Spark DataSource](#bestpractices_sparkadapter_intro.html) shows you how to use the Splice Machine Native Spark DataSource for high performance access to your database in Spark.
 <br /><br />
 
 *   *Best Practices: On-Premise Only Topics:*

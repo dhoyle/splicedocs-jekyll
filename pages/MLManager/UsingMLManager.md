@@ -566,7 +566,7 @@ Before deploying your model, you need to have the IDs of the experiment and run 
 3. Record the Experiment ID displayed for the experiment; in the above example, we're viewing Experiment ID `1`.
 
 4. Select the ID of the run that you want to deploy; here we've selected the topmost (most recent) run of Experiment `1`. When you click this Run ID, you'll see its details displayed:
-   <img src="images/MLflowTrackingUI2.png" class="indentedTightSpacing">
+   <img src="images/MlflowTrackingUI2.png" class="indentedTightSpacing">
 
 5. Copy the `Run ID` value to your clipboard.
 </div>

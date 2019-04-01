@@ -24,7 +24,7 @@ The remainder of this topic contains these sections:
 * [Example: Basic Merge of a Flat File](#exmerge)
 * [Parameters Used With the Basic Import Procedures](#table1)
 
-Our [Bulk HFile Import](bestpractices_ingest_bulkimport) procedure, `BULK_HFILE_IMPORT`, offers boosted ingestion speed when importing large (> 100GB) data sets, but does not perform constraint checking.
+Our [Bulk HFile Import](bestpractices_ingest_bulkimport.html) procedure, `BULK_HFILE_IMPORT`, offers boosted ingestion speed when importing large (> 100GB) data sets, but does not perform constraint checking.
 
 ## About Basic Flat File Ingestion  {#aboutflat}
 
