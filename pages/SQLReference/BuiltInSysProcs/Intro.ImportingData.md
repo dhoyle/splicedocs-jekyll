@@ -61,11 +61,6 @@ your database:
                         </td>
                         <td>Computes split keys for a table or index and then sets up the table or index.</td>
                     </tr>
-                    <tr>
-                        <td class="CodeFont"><a href="sqlref_sysprocs_upsertdata.html">SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE</a>
-                        </td>
-                        <td>Checks upsert data without actually performing the insertions or updates.</td>
-                    </tr>
                 </tbody>
             </table>
 </div>

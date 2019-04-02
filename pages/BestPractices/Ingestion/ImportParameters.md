@@ -938,7 +938,7 @@ A few additional notes:
 
 ### Inserting and Updating Column Values When Importing Data   {#ImportColVals}
 
-This section summarizes what happens when you are importing, upserting,
+This section summarizes what happens when you are importing
 or merging records into a database table, based on:
 
 * Whether you are importing a new record or updating an existing record.
@@ -946,14 +946,11 @@ or merging records into a database table, based on:
 * If the table column is a generated value or has a default value.
 
 The important difference in actions taken when importing data occurs
-when you are updating an existing record with the UPSERT or MERGE and
+when you are updating an existing record with `MERGE` and
 your column list does not contain the name of a table column:
 
 * For newly inserted records, the default or auto-generated value is
   always inserted, as usual.
-* If you are updating an existing record in the table with `UPSERT`, the
-  default auto-generated value in that record is overwritten with a new
-  value.
 * If you are updating an existing record in the table with `MERGE`, the
   column value is not updated.
 
@@ -1079,7 +1076,7 @@ statement:
             </tbody>
         </table>
 
-Note that the value \`DEFAULT\` in the imported file **is not
+Note that the value `"DEFAULT"` in the imported file **is not
 interpreted** to mean that the default value should be applied to that
 column; instead:
 
@@ -1104,75 +1101,7 @@ split your import file into two files and import each:
 * Import the file containing records with default values with the column
   name excluded from the `insertColumnList`.
 
-#### Updating a Table Record with UPSERT
-
-The following table shows the action taken when you are using the
-`SYSCS_UTIL.UPSERT_DATA_FROM_FILE` procedure to update an existing
-record in a database table:
-
-<table>
-            <col />
-            <col />
-            <col />
-            <thead>
-                <tr>
-                    <th>Column included in <em>importColumnList</em>?</th>
-                    <th>Table column conditions</th>
-                    <th>Action Taken</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>YES</td>
-                    <td>N/A</td>
-                    <td>Import value updated in table column if valid; if not valid, a bad record error is logged.</td>
-                </tr>
-                <tr>
-                    <td rowspan="3">NO</td>
-                    <td>Has Default Value</td>
-                    <td>Table column is overwritten with default value.</td>
-                </tr>
-                <tr>
-                    <td>Is Generated Value</td>
-                    <td>Table column is overwritten with newly generated value.</td>
-                </tr>
-                <tr>
-                    <td>None</td>
-                    <td>Table column is overwritten with NULL value.</td>
-                </tr>
-            </tbody>
-        </table>
-
-#### Updating a Table Record with MERGE
-
-The following table shows the action taken when you are using the
-`SYSCS_UTIL.MERGE_DATA_FROM_FILE` procedure to update an existing record
-in a database table:
-
-<table>
-            <col />
-            <col />
-            <col />
-            <thead>
-                <tr>
-                    <th>Column included in <em>importColumnList</em>?</th>
-                    <th>Table column conditions</th>
-                    <th>Action Taken</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>YES</td>
-                    <td>N/A</td>
-                    <td>Import value updated in table column if valid; if not valid, a bad record error is logged.</td>
-                </tr>
-                <tr>
-                    <td rowspan="3">NO</td>
-                    <td>N/A</td>
-                    <td>Table column is not updated.</td>
-                </tr>
-            </tbody>
-        </table>
+When using the `MERGE_DATA_FROM_FILE` procedure to update an existing record in a table: columns not listed in your `importColumnList` are not updated.
 
 ### Importing CLOBs and BLOBs {#LOBs}
 

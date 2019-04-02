@@ -164,16 +164,8 @@ the `badRecordDirectory` directory; one file for each imported file.
 
 ## Importing and Updating Records
 
-What distinguishes `SYSCS_UTIL.IMPORT_DATA` from the similar
- &nbsp;[`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) and
- &nbsp;[`SYSCS_UTIL.SYSCS_MERGED_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html) procedures is how each works with these specific conditions:
-
-* You are importing only a subset of data from the input data into your table, either because the table contains less columns than does the input file, or because you've specified a subset of the columns in your `insertColumnList` parameter.
-* Inserting and updating data in a column with generated values.
-* Inserting and updating data in a column with default values.
-* Handling of missing values.
-
-The [Ingestion Parameter Values](bestpractices_ingest_params.html) topic in our Best Practices Guide describes how each of these conditions is handled by the different system procedures.
+The `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` imports new records into your database in the same way as does the
+ [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedure. `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` can also update existing records in your database; for this to work, the table you're importing into must have a primary key. Because this procedure has to determine if a record already exists and how to update it, `MERGE_DATA` is slightly slower than using `IMPORT_DATA`; if you know that you're ingesting all new records, you'll get better performance with `IMPORT_DATA`.
 
 ## Record Import Failure Reasons
 
@@ -264,7 +256,6 @@ See [Importing Flat Files](bestpractices_ingest_import.html) for more examples.
 
 * [Best Practices: Ingestion](bestpractices_ingest_overview.html)
 * [Importing Flat Files](bestpractices_ingest_import.html)
-* [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 * [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 * [`SYSCS_UTIL.BULK_HFILE_IMPORT`](sqlref_sysprocs_importhfile.html)
 

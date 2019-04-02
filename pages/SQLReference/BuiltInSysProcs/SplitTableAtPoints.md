@@ -11,14 +11,9 @@ folder: SQLReference/BuiltInSysProcs
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS
-This procedure splits a table or index file that you want to bulk import into HFiles, using the *split keys* that you specify. The split keys are specified in a CSV file that you can create in one of two ways:
+This procedure splits a table or index file that you want to bulk import into HFiles, using the *split keys* that you specify. The split keys are specified in a CSV file that is encoded in HBase format.
 
-* If you know how your data can best be split into evenly sized HFiles, you can manually create a CSV file, as described in our [Best Practices: Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) topic.
-* You can call the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) procedure to compute the split keys for the data and save them in a CSV file.
-
-For more information about splitting your tables and indexes into HFiles, see the [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) section of our *Best Practices: Ingestion* chapter.
-
-Splice Machine recommends using the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) system procedure instead of this one unless you're an expert user. The combination of using `SYSCS_UTIL.COMPUTE_SPLIT_KEY` with `SYSCS_UTIL.COMPUTE_SPLIT_KEY` is exactly equivalent to using `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`.
+Unless you already have your split keys accessible in HBase format, Splice Machine recommends using the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) system procedure instead of this one. The combination of using `SYSCS_UTIL.COMPUTE_SPLIT_KEY` with `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` is exactly equivalent to using `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`.
 {: .noteIcon}
 
 ## Syntax
@@ -58,7 +53,7 @@ instead.
 splitPoints
 {: .paramName}
 
-A list of split points for the table or index, supplied in a CSV file; this list can be created by a previous call to the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) procedure, or you can prepare it manually, in which case, it needs to follow the criteria specified in the next section, [Split Points CSV File Format](#csvfile).
+A list of split points for the table or index, supplied in HBase format in a CSV file this list can be created by a previous call to the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) procedure, or you can prepare it manually, in which case, it needs to follow the criteria specified in the next section, [Split Points CSV File Format](#csvfile).
 {: .paramDefnFirst}
 
 </div>
@@ -82,7 +77,6 @@ The [Best Practices: Bulk Importing Flat Files](bestpractices_ingest_bulkimport.
 
 *  [Best Practices: Ingestion](bestpractices_ingest_overview.html)
 *  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 *  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 *  [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html)

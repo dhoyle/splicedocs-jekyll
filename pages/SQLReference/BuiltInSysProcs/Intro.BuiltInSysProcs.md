@@ -323,11 +323,6 @@ your database:
             <td>Computes split keys for a table or index and then sets up the table or index.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysprocs_upsertdata.html">SYSCS_UTIL.SYSCS_UPSERT_DATA_FROM_FILE</a>
-            </td>
-            <td>Imports data from external files, inserting new records and updating existing records.</td>
-        </tr>
-        <tr>
             <td class="CodeFont"><a href="sqlref_sysprocs_showcreatetable.html"><code>SYSCS_UTIL.SHOW_CREATE_TABLE</code></a></td>
             <td>Returns the DDL for creating a specified table with the `CREATE TABLE` statement, in string form.</td>
         </tr>

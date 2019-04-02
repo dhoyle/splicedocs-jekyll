@@ -14,6 +14,10 @@ folder: SQLReference/BuiltInSysProcs
 
 The `SYSCS_UTIL.UPSERT_DATA_FROM_FILE` system procedure imports data to update an existing record or create a new record in your database. You can choose to import all or a subset of the columns from the input data into your database using the `insertColumnList` parameter.
 
+This procedure has been deprecated; you can still use it in the current release, but Splice Machine strongly recommends using the more performant [SYSCS_UTIL.MERGE_DATA_FROM_FILE](sqlref_sysprocs_mergedata.html) system procedure instead.
+{: .noteIcon}
+
+
 After a successful import completes, a simple report displays, showing
 how many files were imported, and how many record imports succeeded or
 failed.

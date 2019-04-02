@@ -163,20 +163,12 @@ the `badRecordDirectory` directory; one file for each imported file.
 
 ## Importing and Updating Records
 
-What distinguishes `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` from the
- similar [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) and
- [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedures is how each works with these specific conditions:
-
-* You are importing only a subset of data from the input data into your table, either because the table contains less columns than does the input file, or because you've specified a subset of the columns in your `insertColumnList` parameter.
-* Inserting and updating data in a column with generated values.
-* Inserting and updating data in a column with default values.
-* Handling of missing values.
-
-The [Ingestion Parameters](bestpractices_ingest_params.html) topic in our Best Practices Guide describes how each of these conditions is handled by the different system procedures.
+The `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` imports new records into your database in the same way as does the
+ [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedure. `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` can also update existing records in your database; for this to work, the table you're importing into must have a primary key. Because this procedure has to determine if a record already exists and how to update it, `MERGE_DATA` is slightly slower than using `IMPORT_DATA`; if you know that you're ingesting all new records, you'll get better performance with `IMPORT_DATA`.
 
 ## Record Import Failure Reasons
 
-When upserting data from a file, the input file you generate must
+When merging data from a file, the input file you generate must
 contain:
 
 * the columns to be changed
@@ -231,7 +223,58 @@ This example shows the `MERGE_DATA` call used to update the Players in our docum
 
 </div>
 
-### Example 2: Using single quotes to delimit strings
+## Example 2: Basic Merge of a Flat File {#exmerge}
+
+Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *and* update a few existing records in a table. This example ingests into the same table that we just used in the `IMPORT_DATA` example above.
+
+1.  __Access a simple file named `mergetest.csv` from an S3 bucket on AWS. That file contains the following data. Note that the rows with key values `2` and `4` already exist in the table:__
+
+    ```
+    2|22
+    4|44
+    5|55
+    6|66
+    ```
+    {: .Example}
+<br />
+2.  __Use `MERGE_DATA` to import that data into the `testImport` table:__
+
+    ```
+    splice> CALL SYSCS_UTIL.MERGE_DATA_FROM_FILE('TEST', 'testImport', null,
+                        's3a:/mypublicbucket/mergetest.csv',
+                        '|', null, null, null, null, 0,
+                        'hdfs:///tmp/test_import/', false, null);
+
+    rowsUpdated   |rowsInserted  |failedRows     |files  |dataSize           |failedLog
+    -------------------------------------------------------------------------------------
+    2             |2             |0              |1      |20                 |NONE
+
+    1 row selected
+    ```
+    {: .Example}
+<br />
+3.  __Use a `SELECT` statement to verify that all went well:__
+
+    ```
+    splice> SELECT * FROM testImport;
+    A1         |B1         |C1         |D1
+    -----------------------------------------------
+    0          |0          |1          |999
+    1          |2          |2          |999
+    2          |22         |3          |999
+    3          |6          |4          |999
+    4          |44         |5          |999
+    5          |55         |10001      |999
+    6          |66         |10002      |999
+
+    7 rows selected
+    ```
+    {: .Example}
+
+    Note that this `MERGE_DATA_FROM_FILE` call uses exactly the same parameter values as does the previous call to `IMPORT_DATA`, with the exception of importing a different file. As you can see, two rows (`A1=2` and `A1=4`) were updated with new `B1` values, and two new rows were added by this merge call.
+    {: .spaceAbove}
+
+### Example 3: Using single quotes to delimit strings
 
 This example uses single quotes instead of double quotes as the character delimiter
 in the input:
@@ -261,7 +304,6 @@ See [Importing Flat Files](bestpractices_ingest_import.html) for more examples.
 * [Best Practices: Ingestion](bestpractices_ingest_overview.html)
 * [Importing Flat Files](bestpractices_ingest_import.html)
 * [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-* [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 
 </div>
 </section>
