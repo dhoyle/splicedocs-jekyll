@@ -76,11 +76,13 @@ This table includes a brief description of each parameter; additional informatio
             <td>The name of the table into which to import.</td>
             <td class="CodeFont">playerTeams</td>
         </tr>
-            <tr>
-                <td class="CodeFont">insertColumnList</td>
-                <td>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</td>
-                <td class="CodeFont">'ID, TEAM'</td>
-            </tr>
+        <tr>
+            <td class="CodeFont">insertColumnList</td>
+            <td><p>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</p>
+            <p class="noteNote">The individual column names in the <code>insertColumnList</code> do not need to be double-quoted, even if they contain special characters. However, if you do double-quote any column name, <strong>you must</strong> double-quote all of the column names.</p>
+            </td>
+            <td class="CodeFont">'ID, TEAM'</td>
+        </tr>
         <tr>
             <td class="CodeFont">fileOrDirectoryName</td>
             <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>

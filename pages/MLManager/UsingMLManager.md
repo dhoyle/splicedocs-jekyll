@@ -49,13 +49,22 @@ MLflow is an open source platform for managing the end-to-end machine learning l
 
 ### About Storing Models and Pipelines
 
-You can save your pipeline and model to S3 using the `save` method of MLlib `Pipeline` objects. Assuming that you've created a pipeline and built a model, you can save them as follows:
+You can save your pipeline and model to S3 using the `save` method of MLlib `Pipeline` or MLlib `model` objects. Assuming that you've created a pipeline and built a model, you can save them as follows:
 
 ```
 %spark.pyspark
 model.save('s3a://splice-demo/fraudDemoPipelineModel')
 ```
 {: .Example}
+
+or
+
+```
+%spark.pyspark
+pipeline.save('s3a://splice-demo/fraudDemoPipeline')
+```
+{: .Example}
+
 
 If you are developing or have developed a model that you expect to deploy in the future, you should save the model to MLflow. Assuming that you've previously created an instance of `MLManager` named `manager` and have created a MLlib model named `model`, you can save the model to MLflow with this statement:
 {: .spaceAbove}

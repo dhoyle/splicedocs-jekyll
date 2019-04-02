@@ -78,7 +78,9 @@ This table includes a brief description of each parameter; additional informatio
         </tr>
         <tr>
             <td class="CodeFont">insertColumnList</td>
-            <td>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</td>
+            <td><p>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</p>
+            <p class="noteNote">The individual column names in the <code>insertColumnList</code> do not need to be double-quoted, even if they contain special characters. However, if you do double-quote any column name, <strong>you must</strong> double-quote all of the column names.</p>
+            </td>
             <td class="CodeFont">'ID, TEAM'</td>
         </tr>
         <tr>

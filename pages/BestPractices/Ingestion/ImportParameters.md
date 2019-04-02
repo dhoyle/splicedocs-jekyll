@@ -175,10 +175,30 @@ the data in table\'s `b` column will be replaced with the default value
 for that column.
 {: indentLevel1}
 
-**Example:** <span class="Example">`ID, TEAM`</span>
 
-See [*Importing and Updating Records*](#ImportColVals) below for additional information about handling of missing, generated, and default values during data importation.
-{: .notePlain}
+**Example:** <span class="Example">'ID, TEAM'</span>
+
+#### Quoting Column Names
+
+In the current release of Splice Machine, the individual column names in the `insertColumnList` do not need to be quoted, even if they contain special characters. However, if you do quote any column name, __you must__ quote all of the column names.
+
+For example, the following are both valid column list specifications:
+
+```
+'ID, TEAM, #MYCOLNAME'
+'"ID", "TEAM", "MYCOLNAME"'
+```
+{: .Example}
+
+BUT, the following column list will generate an error:
+{: .spaceAbove}
+
+```
+'ID, TEAM, "MYCOLNAME"'
+```
+{: .Example}
+
+
 
 ### `fileOrDirectoryName` {#fileOrDirectoryName}
 
