@@ -5,8 +5,8 @@ keywords: spark, adapter, splicemachineContext
 toc: false
 compatible_version: 2.7
 product: all
-sidebar: developers_sidebar
-permalink: bestpractices_sparkadapter_zeppelin.html.html
+sidebar: bestpractices_sidebar
+permalink: bestpractices_sparkadapter_zeppelin.html
 folder: BestPractices/SparkAdapter
 ---
 <section>
@@ -37,7 +37,7 @@ val SpliceContext = new SplicemachineContext(JDBC_URL)</pre>
 ```
 {: .Example}
 
-The Native Spark DataSource has a few special (optional) requirements related to database permissions, which you can configure in your JDBC connection URL; for information, please see the [Accessing Database Objects](developers_spark_adapter.html#access) section in our *Using the Native Spark DataSource* topic.
+The Native Spark DataSource has a few special (optional) requirements related to database permissions, which you can configure in your JDBC connection URL; for information, please see the [Accessing Database Objects](bestpractices_sparkadapter_intro.html#access) section in our *Using the Native Spark DataSource* topic.
 
 ## Create and Populate a Table in Your Database {#createtable}
 
@@ -113,8 +113,8 @@ if (SpliceContext.tableExists("SPLICE.CARSTBL")) {
 {: .Example}
 
 ## See Also
-* [Native Spark DataSource Methods](developers_spark_methods.html)
-* [Using Spark Submit](developers_spark_submit.html)
+* [Native Spark DataSource Methods](bestpractices_sparkadapter_api.html)
+* [Using Spark Submit](bestpractices_sparkadapter_submit.html)
 * [Walkthrough of using the Native DataSource in Zeppelin](https://www.splicemachine.com/the-splice-machine-native-spark-datasource)
 
 </div>

@@ -23,7 +23,6 @@ Machine Database. It is divided into these sections:
 * [Accessing Data in the Cloud](#Cloud)
 * [Connecting to Splice Machine with JDBC](#JDBC)
 * [Connecting to Splice Machine with ODBC](#ODBC)
-* [Spark and Splice Machine](#Spark)
 * [Splice\*Plus (PL/SQL)](#SplicePlus)
 
 ## Developer Fundamentals {#Fundamentals}
@@ -90,12 +89,6 @@ This section introduces our ODBC driver and shows you how to connect to Splice M
 * [ODBC Access to Splice Machine with Kerberos](developers_connectodbc_kerberos.html)
 * [Connecting with Python and ODBC](tutorials_connect_python.html)
 * [Connecting with C and ODBC](tutorials_connect_odbcc.html)
-
-## The Splice Machine Native Spark DataSource  {#Spark}
-* [Using our Native Spark DataSource](developers_spark_adapter.html)
-* [Native Spark DataSource API Methods](developers_spark_methods.html)
-* [Using Spark Submit](developers_spark_submit.html)
-* [Native Spark DataSource Notebook Example](developers_spark_zeppelin.html)
 
 ## Splice\*Plus (PL/SQL)] {#SplicePlus}
 * [Introduction](developers_spliceplus_intro.html)
