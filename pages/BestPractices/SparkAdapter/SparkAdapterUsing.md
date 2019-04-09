@@ -13,27 +13,64 @@ folder: BestPractices/SparkAdapter
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # How to Use the Splice Machine Native Spark DataSource
 
-This topic provides general information about the *Splice Machine Native Spark DataSource* (aka the Splice Machine Spark Adapter), in these subsections:
-* [Native Spark DataSource Overview](#about)
-* [Connecting with the Native Spark DataSource](#connect)
+This topic will help you to get started with using the Splice Machine Native Spark DataSource (aka the *Spark Adapter*) in your applications and Zeppelin notebooks, in the following sections:
+
+* [The SplicemachineContext Class](#class)
 * [Database Permissions and the Native Spark DataSource](#prereq)
 * [Accessing Database Objects with Internal Access](#access)
 
-The other topics in this chapter provide additional information about the Native Spark DataSource:
+See the [Native Spark DataSource Overview](bestpractices_sparkadapter_intro.html) topic for an overview of the Native Spark DataSource.
 
-* [Native Spark DataSource API](bestpractices_sparkadapter_api.html) provides reference information for the Native Spark DataSource API methods.
-* [Native Spark DataSource Examples](bestpractices_sparkadapter_submit.html) includes examples that show you how to launch a Spark app with our *Spark Submit* script, and how to use the Native Spark DataSource interactively, with the *Spark Shell*.
-* [Using Our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_submit.html) presents an example of using our Native Spark DataSource in a Zeppelin notebook.
+## The SplicemachineContext Class  {#class}
 
-## Native Spark DataSource Overview  {#about}
+`SplicemachineContext` is the primary serializable class that you can broadcast in your Spark applications. This class interacts with your Splice Machine cluster in your Spark executors, and provides the methods that you can use to perform operations including:
 
-The Splice Machine Native Spark DataSource, which is also referred to as the *Spark Adapter*, allows you to directly connect Spark DataFrames and Splice Machine database tables. You can efficiently insert, upsert, select, update, and delete data in your Splice Machine tables directly from Spark in a transactionally consistent manner. With the Spark Adapter, transfers of data between Spark and your database are completed without serialization/deserialization, which generates tremendous performance boosts over traditional *over-the-wire* transfers.
+* Interfacing with the Splice Machine RDD
+* Running inserts, updates, and deletes on your data
+* Converting data types between Splice Machine and Spark
 
-To use the adapter in your code, you simply instantiate a `SplicemachineContext` object in your Spark code. You can run Spark applications that interface with your Splice Machine database interactively in the Spark shell or Zeppelin notebooks, or you can launch a Spark app by using our Spark Submit script.
+### Creating Your Context
 
-You can craft applications that use Spark and our Native Spark DataSource in Scala, Python, and Java. Note that you can use the Native Spark DataSource in the Splice Machine [*ML Manager*](mlmanager_intro.html) and *Zeppelin Notebook* interfaces.
+Here's a example of creating a context in an interactive Spark Shell session:
 
-## Connecting with the Native Spark DataSource  {#connect}
+```
+import com.splicemachine.spark.splicemachine._
+import com.splicemachine.derby.utils._
+import com.splicemachine.derby.impl.SpliceSpark
+SpliceSpark.setContext(sc)
+val spliceJDBC = "jdbc:splice://SPLICESERVERHOST:1527/splicedb;user=<yourUserId>;password=<yourPassword>"
+val SpliceContext = new SplicemachineContext(spliceJDBC)
+val ds = SpliceContext.df("select * from splice.test")
+```
+{: .Example}
+
+
+And here's a similar example from a Zeppelin notebook:
+
+```
+%spark
+import com.splicemachine.spark.splicemachine._
+import com.splicemachine.derby.utils._
+
+val JDBC_URL = "jdbc:splice://:1527/splicedb;user=<yourname>;password=<yourpswd>"
+val splicemachineContext = new SplicemachineContext(JDBC_URL)
+```
+{: .Example}
+
+
+## Accessing Database Objects with Internal Access {#access}
+
+By default, Native Spark DataSource queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, when your Native Spark DataSource application uses our Access Control List (*ACL*) feature, there is a restriction with regard to checking permissions.
+
+The specific problem is that the Native Spark DataSource does not have the ability to check permissions at the view level or column level; instead, it checks permissions on the base table. This means that your Native Spark DataSource application doesn't have access to the table underlying a view or column, it will not have access to that view or column; as a result, a query against the view or colunn fails and throws an exception.
+
+The workaround for this problem is to tell the Native Spark DataSource to use *internal* access to the database; this enables view/column permission checking, at a very slight cost in performance. With internal access, the adapter runs queries in Splice Machine and temporarily persists data in HDFS while running the query.
+
+The ACL feature is enabled by setting the property `splice.authentication.token.enabled = true`.
+{: .noteNote}
+
+
+### Context Connection Options  {#connect}
 
 When using the Native Spark DataSource, you can specify some optional properties for the JDBC connection you're using to access your Splice Machine database. To do so, `Map` those options using a `SpliceJDBCOptions` object, and then create your `SplicemachineContext` with that map. For example:
 
@@ -62,7 +99,9 @@ The `SpliceJDBCOptions` properties that you can currently specify in the JDBC co
         <tr>
             <td class="CodeFont">JDBC_INTERNAL_QUERIES</td>
             <td class="CodeFont">false</td>
-            <td>A string with value <code>true</code> or <code>false</code>, which indicates whether or not to run queries internally by default.</td>
+            <td><p>A string with value <code>true</code> or <code>false</code>, which indicates whether or not to run queries internally by default.</p>
+                <p>See XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX for information about using the internal query option</p>
+            </td>
         </tr>
         <tr>
             <td class="CodeFont">JDBC_TEMP_DIRECTORY</td>
@@ -73,16 +112,6 @@ The `SpliceJDBCOptions` properties that you can currently specify in the JDBC co
         </tr>
     </tbody>
 </table>
-
-
-Note that a typical JDBC URL for connecting to a Splice Machine database looks like this:
-{: .spaceAbove}
-
-```
-jdbc:splice://myhost:1527/splicedb;user=myUserName;password=myPswd
-```
-{: .Example}
-
 
 ## Database Permissions and the Native Spark DataSource {#prereq}
 
@@ -101,7 +130,7 @@ splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to anotheruse
 ````
 {: .Example}
 
-### Additional Property Setting for Kerberos
+## Using the Native Spark DataSource with Kerberos
 
 If you're using the Native Spark DataSource on a Kerberized cluster, you must set the following property value in your `hbase-site.xml` settings file:
 {: .spaceAbove}
@@ -110,24 +139,6 @@ splice.authentication.token.enabled=true
 ````
 {: .AppCommand}
 
-
-## Accessing Database Objects with Internal Access {#access}
-
-By default, Native Spark DataSource queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, when your Native Spark DataSource application uses our Access Control List (*ACL*) feature, there is a restriction with regard to checking permissions.
-
-The specific problem is that the Native Spark DataSource does not have the ability to check permissions at the view level or column level; instead, it checks permissions on the base table. This means that your Native Spark DataSource application doesn't have access to the table underlying a view or column, it will not have access to that view or column; as a result, a query against the view or colunn fails and throws an exception.
-
-The workaround for this problem is to tell the Native Spark DataSource to [use *internal* access](#useinternal) to the database; this enables view/column permission checking, at a slight cost in performance. With internal access, the adapter runs queries in Splice Machine and temporarily persists data in HDFS while running the query.
-
-The ACL feature is enabled by setting the property `splice.authentication.token.enabled = true`.
-{: .noteNote}
-
-## See Also
-
-* [Native Spark DataSource Methods](bestpractices_sparkadapter_api.html)
-* [Using Spark Submit](bestpractices_sparkadapter_submit.html)
-* [Using Our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_submit.html)
-* <a href="https://www.splicemachine.com/the-splice-machine-native-spark-datasource" target="_blank">Walkthrough of using the Native Spark DataSource in Zeppelin</a>
 
 </div>
 </section>
