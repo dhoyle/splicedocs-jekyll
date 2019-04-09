@@ -11,7 +11,7 @@ folder: BestPractices/SparkAdapter
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Using the Splice Machine Native Spark DataSource
+# Overview of the Splice Machine Native Spark DataSource
 
 This topic provides general information about the *Splice Machine Native Spark DataSource* (aka the Splice Machine Spark Adapter), in these subsections:
 * [Native Spark DataSource Overview](#about)
@@ -33,101 +33,21 @@ To use the adapter in your code, you simply instantiate a `SplicemachineContext`
 
 You can craft applications that use Spark and our Native Spark DataSource in Scala, Python, and Java. Note that you can use the Native Spark DataSource in the Splice Machine [*ML Manager*](mlmanager_intro.html) and *Zeppelin Notebook* interfaces.
 
-## Connecting with the Native Spark DataSource  {#connect}
+## Why Use the Native DataSource?
 
-When using the Native Spark DataSource, you can specify some optional properties for the JDBC connection you're using to access your Splice Machine database. To do so, `Map` those options using a `SpliceJDBCOptions` object, and then create your `SplicemachineContext` with that map. For example:
+The primary reason for using the Native DataSource is that it provides dramatic performance improvements for large scale data operations; this is because the DataSource works directly on native DataFrames and RDDs, thus eliminating the need to serialize data. Spark is optimized to work on DataFrames, which is a distributed collection of data (an RDD) organized into named columns, with a schema that specifies data types, that is designed to support efficiently operating on scalable, massive datasets.
 
-```
-val options = Map(
-  JDBCOptions.JDBC_URL -> "jdbc:splice://<jdbcUrlString>",
-        SpliceJDBCOptions.JDBC_INTERNAL_QUERIES -> "true"
-)
+The Splice Machine DataSource is native to Spark, which means that it operates directly on these DataFrames and in the same Spark executors that your programs are using to analyze or transform the data. Instead of accessing, inserting, or manipulating data one record at a time over a serialized connection, you can use the Splice Machine Native Spark DataSource to pull the contents of an entire DataFrame into your database, and to push database query results into a DataFrame.
 
-spliceContext  = new SplicemachineContext( options )
-```
-{: .Example}
+We haveseen 100x performance increases compared to using JDBC for operations such as inserting millions of records in a database! For example, a typical web application might use a React frontend with a Node backend that accesses information in a database. When a customer refreshes the app dashboard, the app uses a JDBC connection to query the database, pulling information out one record at a time to populate the screen. The results of each query are serialized (turned into a string of data), then sent over a network connection to the app, and then displayed on the customer’s screen.
 
-The `SpliceJDBCOptions` properties that you can currently specify in the JDBC connect URL are:
-{: .spaceAbove}
+When you use the Splice Machine Native Spark DataSource, the contents of the database table are typically sitting in a DataFrame in memory that resides on the same Spark executor that’s performing the query. The query takes place in memory, and there’s no need to serialize or stream the results over a wire. Similarly, when the app sends updates to the database, the data is inserted into the database directly from the DataFrame. As a result, a great deal of overhead is eliminated, and performance gains can be remarkable.
 
-<table>
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Default Value</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="CodeFont">JDBC_INTERNAL_QUERIES</td>
-            <td class="CodeFont">false</td>
-            <td>A string with value <code>true</code> or <code>false</code>, which indicates whether or not to run queries internally by default.</td>
-        </tr>
-        <tr>
-            <td class="CodeFont">JDBC_TEMP_DIRECTORY</td>
-            <td class="CodeFont">/tmp</td>
-            <td><p>The path to the temporary directory that you want to use when persisting temporary data from internally executed queries.</p>
-                <p class="noteIcon">The user running a query <strong>must have write permission</strong> on this directory, or your connected application may freeze or fail.</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+### Leveraging Developer Agility
 
+The Native Spark DataSource provides support for the development tools of the Data Scientists and Data Engineers alike. Data Scientists and Data Engineers typically access Spark contexts to operate on DataFrames. Spark provides a powerful set of transformations and actions to the developer to manipulate large datasets efficiently plus additional libraries for machine learning and streaming.
 
-Note that a typical JDBC URL for connecting to a Splice Machine database looks like this:
-{: .spaceAbove}
-
-```
-jdbc:splice://myhost:1527/splicedb;user=myUserName;password=myPswd
-```
-{: .Example}
-
-
-## Database Permissions and the Native Spark DataSource {#prereq}
-
-You must make sure that each user who is going to use the Splice Machine Native Spark DataSource has `execute` permission on the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` system procedure.
-
-   `SYSCS_UTIL.SYSCS_HDFS_OPERATION` is a Splice Machine system procedure that is used internally to efficiently perform direct HDFS operations. This procedure *is not documented* because it is intended only for use by the Splice Machine code itself; however, the Native Spark DataSource uses it, so any user of the Adapter must have permission to execute the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` procedure.
-   {: .noteIcon}
-
-   Here's an example of granting `execute` permission for two users:
-
-````
-splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to someuser;
-0 rows inserted/updated/deleted
-splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to anotheruser;
-0 rows inserted/updated/deleted
-````
-{: .Example}
-
-### Additional Property Setting for Kerberos
-
-If you're using the Native Spark DataSource on a Kerberized cluster, you must set the following property value in your `hbase-site.xml` settings file:
-{: .spaceAbove}
-````
-splice.authentication.token.enabled=true
-````
-{: .AppCommand}
-
-
-## Accessing Database Objects with Internal Access {#access}
-
-By default, Native Spark DataSource queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, when your Native Spark DataSource application uses our Access Control List (*ACL*) feature, there is a restriction with regard to checking permissions.
-
-The specific problem is that the Native Spark DataSource does not have the ability to check permissions at the view level or column level; instead, it checks permissions on the base table. This means that your Native Spark DataSource application doesn't have access to the table underlying a view or column, it will not have access to that view or column; as a result, a query against the view or colunn fails and throws an exception.
-
-The workaround for this problem is to tell the Native Spark DataSource to [use *internal* access](#useinternal) to the database; this enables view/column permission checking, at a slight cost in performance. With internal access, the adapter runs queries in Splice Machine and temporarily persists data in HDFS while running the query.
-
-The ACL feature is enabled by setting the property `splice.authentication.token.enabled = true`.
-{: .noteNote}
-
-## See Also
-
-* [Native Spark DataSource Methods](bestpractices_sparkadapter_api.html)
-* [Using Spark Submit](bestpractices_sparkadapter_submit.html)
-* [Using Our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_submit.html)
-* <a href="https://www.splicemachine.com/the-splice-machine-native-spark-datasource" target="_blank">Walkthrough of using the Native Spark DataSource in Zeppelin</a>
+With Splice Machine’s native Spark DataSource, you can perform transactional database operations directly on DataFrames and receive DataFrames as result sets of arbitrary ANSI-SQL queries. This means that Splice Machine’s full transactional capabilities are available to developers without requiring them to change the way they do data engineering and data science. We’ll see examples of this below.
 
 </div>
 </section>

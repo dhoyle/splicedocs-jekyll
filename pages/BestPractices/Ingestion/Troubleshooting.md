@@ -11,32 +11,19 @@ folder: BestPractices/Database
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# ﻿Best Practices: Troubleshooting Ingestion
+# ﻿Best Practices: Troubleshooting On-Premise Bulk Import
 
-{% comment %}
-
-This topic provides troubleshooting help for specific ingestion scenarios, in these subsections:
-
-* [Ingestion Troubleshooting Tips for the Splice Machine Database](#dbtips)
-* [Ingestion Troubleshooting Tips for On-Premise Database Product Only](#dbtips)
-{% endcomment %}
-This topic provides troubleshooting help for specific ingestion scenarios.
-
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
-
-{% comment %}
-## Ingestion Troubleshooting Tips for the Splice Machine Database  {#dbtips}
-This section contains the following tips for troubleshooting ingestion of data into your Splice Machine database:
-{% endcomment %}
-
-
-## Ingestion Troubleshooting Tips for On-Premise Database Product Only  {#onpremtips}
 This section contains the following tips for troubleshooting ingestion of  data into our *On-Premise Database* product:
 
 * [Using Bulk Import on a KMS-Enabled Cluster](#BulkImportKMS)
-* [Bulk Import of Very Large Datasets with Spark](#BulkImportSparkSep)
+* [Bulk Import: Out of Heap Memory](#heapmem)
+* [Bulk Import: Out of Direct Memory (Cloudera)](#directmem)
+* [Bulk Import: Network Timeout](#networktimeout)
 
-### Using Bulk Import on a KMS-Enabled Cluster {#BulkImportKMS}
+There are currently no troubleshooting issues to address if you're using the *Splice Machine Database-as-Service* product.
+{: .noteIcon}
+
+## Using Bulk Import on a KMS-Enabled Cluster {#BulkImportKMS}
 
 If you are a Splice Machine On-Premise Database customer and want to use bulk import on a cluster with Cloudera Key Management Service (KMS) enabled, you must complete these extra configuration steps:
 
@@ -65,9 +52,28 @@ If you are a Splice Machine On-Premise Database customer and want to use bulk im
 
 For more information about KMS, see <a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html" target="_blank">https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html</a>.
 
-### Bulk Import of Very Large Datasets with Spark  {#BulkImportSparkSep}
+## Bulk Import: Out of Heap Memory  {#heapmem}
+If you run out of heap memory while bulk importing an extremely large amount of data with our *On-Premise* product, you can resolve the issue by setting the `hfile.block.cache.size` property value to a very small number. We recommend this setting:
 
-When using Splice Machine with Spark with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
+```
+hfile.block.cache.size=0.01
+```
+{: .Example}
+
+
+## Bulk Import: Network Timeout  {#networktimeout}
+
+If you enounter a network timeout during bulk ingestion with our *On-Premise* product, you can resolve it by adjusting the value of the `shuffle.io.connectionTimout` property as follows:
+
+```
+-Dsplice.spark.shuffle.io.connectionTimeout=480s
+```
+{: .Example}
+
+
+## Bulk Import: Out of Direct Memory (Cloudera)  {#directmem}
+
+When using the *On-Premise* version of Splice Machine with Spark with Cloudera, bulk import of very large datasets can fail due to direct memory usage. Use the following settings to resolve this issue:
 
 1.  Update the Shuffle-to-Mem Setting
 
@@ -93,7 +99,8 @@ When using Splice Machine with Spark with Cloudera, bulk import of very large da
     ```
     yarn.nodemanager.pmem-check-enabled=false
     yarn.nodemanager.vmem-check-enabled=false
-    {: .Example}
     ```
+    {: .Example}
+
 </div>
 </section>
