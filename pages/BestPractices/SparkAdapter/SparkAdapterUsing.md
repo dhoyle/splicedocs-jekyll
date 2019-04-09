@@ -23,7 +23,7 @@ See the [Native Spark DataSource Overview](bestpractices_sparkadapter_intro.html
 
 ## The SplicemachineContext Class  {#class}
 
-`SplicemachineContext` is the primary serializable class that you can broadcast in your Spark applications. This class interacts with your Splice Machine cluster in your Spark executors, and provides the methods that you can use to perform operations including:
+The first thing you need to do when using the Native Spark DataSource is to create an instance of the `SplicemachineContext` class; this is the primary serializable class that you can broadcast in your Spark applications. This class interacts with your Splice Machine cluster in your Spark executors, and provides the methods that you can use to perform operations such as:
 
 * Interfacing with the Splice Machine RDD
 * Running inserts, updates, and deletes on your data
@@ -57,12 +57,50 @@ val splicemachineContext = new SplicemachineContext(JDBC_URL)
 ```
 {: .Example}
 
+### Using the Context to Populate a Table
+
+Here's a simple example that illustrates how to populate a Splice Machine table from a Spark DataFrame. This example uses Zepplin.
+
+First we'll create a DataFrame with a little data in it:
+
+```
+%spark
+val carsDF = Seq(
+   (1, "Toyota", "Camry"),
+   (2, "Honda", "Accord"),
+   (3, "Subaru", "Impreza"),
+   (4, "Chevy", "Volt")
+).toDF("NUMBER", "MAKE", "MODEL")
+```
+{: .Example}
+
+Then we'll create a table in our Splice Machine database:
+
+```
+%splicemachine
+create table mySchema.carsTbl ( number int primary key,
+                                make  varchar(20),
+                                model varchar(20) );
+```
+{: .Example}
+
+Now we can insert the contents of our DataFrame directly into the table:
+
+```
+%spark
+splicemachineContext.insert( carsDF, "mySchema.carsTbl");
+```
+{: .Example}
+
+Though this simple example contains little data, you can operate on a DataFrame of any size in exactly the same way.
+
+The [Running Apps with the Native Spark DataSource](bestpractices_sparkadapter_submit.html) and [Using our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_zeppelin.html) topics in this chapter contains example walkthroughs that show you how to use the context object to interact with your Splice Machine database.
 
 ## Accessing Database Objects with Internal Access {#access}
 
 By default, Native Spark DataSource queries execute in the Spark application, which is highly performant and allows access to almost all Splice Machine features. However, when your Native Spark DataSource application uses our Access Control List (*ACL*) feature, there is a restriction with regard to checking permissions.
 
-The specific problem is that the Native Spark DataSource does not have the ability to check permissions at the view level or column level; instead, it checks permissions on the base table. This means that your Native Spark DataSource application doesn't have access to the table underlying a view or column, it will not have access to that view or column; as a result, a query against the view or colunn fails and throws an exception.
+The specific problem is that the Native Spark DataSource does not have the ability to check permissions at the view level or column level; instead, it checks permissions on the base table. This means that if your Native Spark DataSource application doesn't have access to the table underlying a view or column, it will not have access to that view or column; as a result, a query against the view or colunn fails and throws an exception.
 
 The workaround for this problem is to tell the Native Spark DataSource to use *internal* access to the database; this enables view/column permission checking, at a very slight cost in performance. With internal access, the adapter runs queries in Splice Machine and temporarily persists data in HDFS while running the query.
 
@@ -72,12 +110,12 @@ The ACL feature is enabled by setting the property `splice.authentication.token.
 
 ### Context Connection Options  {#connect}
 
-When using the Native Spark DataSource, you can specify some optional properties for the JDBC connection you're using to access your Splice Machine database. To do so, `Map` those options using a `SpliceJDBCOptions` object, and then create your `SplicemachineContext` with that map. For example:
+When using the Native Spark DataSource, you can specify some optional properties for the JDBC connection that you're using to access your Splice Machine database. To do so, `Map` those options using a `SpliceJDBCOptions` object, and then create your `SplicemachineContext` with that map. For example:
 
 ```
 val options = Map(
   JDBCOptions.JDBC_URL -> "jdbc:splice://<jdbcUrlString>",
-        SpliceJDBCOptions.JDBC_INTERNAL_QUERIES -> "true"
+  SpliceJDBCOptions.JDBC_INTERNAL_QUERIES -> "true"
 )
 
 spliceContext  = new SplicemachineContext( options )
@@ -99,9 +137,7 @@ The `SpliceJDBCOptions` properties that you can currently specify in the JDBC co
         <tr>
             <td class="CodeFont">JDBC_INTERNAL_QUERIES</td>
             <td class="CodeFont">false</td>
-            <td><p>A string with value <code>true</code> or <code>false</code>, which indicates whether or not to run queries internally by default.</p>
-                <p>See XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX for information about using the internal query option</p>
-            </td>
+            <td>A string with value <code>true</code> or <code>false</code>, which indicates whether or not to run queries internally by default.</td>
         </tr>
         <tr>
             <td class="CodeFont">JDBC_TEMP_DIRECTORY</td>

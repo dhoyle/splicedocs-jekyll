@@ -53,13 +53,15 @@ If you are a Splice Machine On-Premise Database customer and want to use bulk im
 For more information about KMS, see <a href="https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html" target="_blank">https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_kms.html</a>.
 
 ## Bulk Import: Out of Heap Memory  {#heapmem}
-If you run out of heap memory while bulk importing an extremely large amount of data with our *On-Premise* product, you can resolve the issue by setting the `hfile.block.cache.size` property value to a very small number. We recommend this setting:
+If you run out of heap memory while bulk importing an extremely large amount of data with our *On-Premise* product, you can resolve the issue by setting the hbase client's `hfile.block.cache.size` property value to a very small number. We recommend this setting:
 
 ```
 hfile.block.cache.size=0.01
 ```
 {: .Example}
 
+This setting should be applied only to the HBase client.
+{: .noteNote}
 
 ## Bulk Import: Network Timeout  {#networktimeout}
 
