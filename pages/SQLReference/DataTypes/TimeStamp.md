@@ -45,72 +45,78 @@ Splice Machine uses the following Java date and time pattern letters to
 construct timestamps:
 
 <table summary="Timestamp format pattern letter descriptions">
-                    <col />
-                    <col />
-                    <col />
-                    <thead>
-                        <tr>
-                            <th>Pattern Letter</th>
-                            <th>Description</th>
-                            <th>Format(s)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>y</code></td>
-                            <td>year</td>
-                            <td><code>yy or yyyy</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>M</code></td>
-                            <td>month</td>
-                            <td><code>MM</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>d</code></td>
-                            <td>day in month</td>
-                            <td><code>dd</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>h</code></td>
-                            <td>hour (0-12)</td>
-                            <td><code>hh</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>H</code></td>
-                            <td>hour (0-23)</td>
-                            <td><code>HH</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>m</code></td>
-                            <td>minute in hour</td>
-                            <td><code>mm</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>s</code></td>
-                            <td>seconds</td>
-                            <td><code>ss</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>S</code></td>
-                            <td>tenths of seconds</td>
-                            <td><code>SSS (up to 6 decimal digits: SSSSSS)</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>z</code></td>
-                            <td>time zone text</td>
-                            <td><code>e.g. Pacific Standard time</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>Z</code></td>
-                            <td>time zone, time offset</td>
-                            <td><code>e.g. -0800</code></td>
-                        </tr>
-                    </tbody>
-                </table>
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Pattern Letter</th>
+            <th>Description</th>
+            <th>Format(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>y</code></td>
+            <td>year</td>
+            <td><code>yy or yyyy</code></td>
+        </tr>
+        <tr>
+            <td><code>M</code></td>
+            <td>month</td>
+            <td><code>MM</code></td>
+        </tr>
+        <tr>
+            <td><code>d</code></td>
+            <td>day in month</td>
+            <td><code>dd</code></td>
+        </tr>
+        <tr>
+            <td><code>a</code></td>
+            <td>Am/pm marker (AM or PM)</td>
+            <td><code>a or aa</code></td>
+        </tr>
+        <tr>
+            <td><code>h</code></td>
+            <td>hour (0-12)</td>
+            <td><code>hh</code></td>
+        </tr>
+        <tr>
+            <td><code>H</code></td>
+            <td>hour (0-23)</td>
+            <td><code>HH</code></td>
+        </tr>
+        <tr>
+            <td><code>m</code></td>
+            <td>minute in hour</td>
+            <td><code>mm</code></td>
+        </tr>
+        <tr>
+            <td><code>s</code></td>
+            <td>seconds</td>
+            <td><code>ss</code></td>
+        </tr>
+        <tr>
+            <td><code>S</code></td>
+            <td>tenths of seconds</td>
+            <td><code>SSS (up to 6 decimal digits: SSSSSS)</code></td>
+        </tr>
+        <tr>
+            <td><code>z</code></td>
+            <td>time zone text</td>
+            <td><code>e.g. Pacific Standard time</code></td>
+        </tr>
+        <tr>
+            <td><code>Z</code></td>
+            <td>time zone, time offset</td>
+            <td><code>e.g. -0800</code></td>
+        </tr>
+    </tbody>
+</table>
+
 The default timestamp format for Splice Machine imports is: `yyyy-MM-dd
 HH:mm:ss`, which uses a 24-hour clock, does not allow for decimal digits
-of seconds, and does not allow for time zone specification.
+of seconds, does not allow for time zone specification, and does not include the AM/PM marker.
 
 Please see *[Working With Date and Time
 Values](developers_fundamentals_dates.html)*

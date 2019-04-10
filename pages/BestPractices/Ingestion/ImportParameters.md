@@ -431,6 +431,11 @@ construct timestamps:
             <td><code>dd</code></td>
         </tr>
         <tr>
+            <td><code>a</code></td>
+            <td>Am/pm marker (AM or PM)</td>
+            <td><code>a or aa</code></td>
+        </tr>
+        <tr>
             <td><code>h</code></td>
             <td>hour (0-12)</td>
             <td><code>hh</code></td>
