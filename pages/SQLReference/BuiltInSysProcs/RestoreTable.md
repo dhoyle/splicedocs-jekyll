@@ -111,7 +111,7 @@ A Boolean value that specifies whether to validate the table backup before resto
 {: .paramDefnFirst}
 
 * If *validate* is `false`, the restore proceeds without any pre-validation.
-* If *validate* is `true`, the backup is validated before the restoration is started. (See [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the table is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
+* If *validate* is `true`, the backup is validated before the restoration is started. (See&nbsp;&nbsp; [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the table is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
 {: .nested}
 </div>
 ## Results
