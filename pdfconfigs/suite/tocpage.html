@@ -21,20 +21,35 @@ permalink: /tocpage/suite.html
         <h2>Splice Machine {{splicebooks[tocId]}}</h2>
         {% assign tocId = tocId | plus: 1 %}
         <ul class="printtoc1">
-            {% for entry in sidebar %}
-                {% for folder in entry.folders %}
-                    {% if folder.output contains "pdf" and folder.type != "frontmatter" %}
-                        <li class="sectionHead">{{folder.title}}</li>
+        {% for entry in sidebar %}
+            {% for folder in entry.folders %}
+                {% if folder.output contains "pdf" and folder.type != "frontmatter" %}
+                    <li class="sectionHead">{{folder.title}}
                         <ul class="printtoc2">
                         {% for folderitem in folder.folderitems %}
                             {% if folderitem.output contains "pdf" %}
-                                <li><a href="{{folderitem.url | prepend: site.url | prepend: site.baseurl }}">{{folderitem.title}}</a></li>
+                                <li><a href="{{folderitem.url | prepend: site.url | prepend: site.baseurl }}">{{folderitem.title}}</a>
+                                    {% for subfolder in folderitem.subfolders %}
+                                        {% if subfolder.output contains "pdf" %}
+                                            <li class="sectionHead">{{subfolder.title}}
+                                                <ul class="printtoc3">
+                                                {% for subfolderitem in subfolder.subfolderitems %}
+                                                    {% if subfolderitem.output contains "pdf" %}
+                                                        <li><a href="{{subfolderitem.url | prepend: site.url | prepend: site.baseurl }}">{{subfolderitem.title}}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </ul>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </li>
                             {% endif %}
                         {% endfor %}
                         </ul>
-                    {% endif %}
-                {% endfor %}
+                    </li>
+                {% endif %}
             {% endfor %}
+        {% endfor %}
         </ul>
     {% endfor %}
 </div>
