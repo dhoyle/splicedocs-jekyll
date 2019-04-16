@@ -154,7 +154,6 @@ You need to copy (`scp`) the server certificate to the client, and then
 use a *keytool* command like this to import the certificate:
 
 <div class="preWrap" markdown="1">
-
     % keytool -import -alias favoriteServerCertificate \
      -file ServerCertificate -keystore ~/vault/ClientTrustStore \
      -storepass secretClientTrustStorePassword
@@ -187,6 +186,11 @@ Next, copy (`scp`) the client certificate to the region server and use
 *keytool* to import the certificate:
 
 <div class="preWrap" markdown="1">
+{% comment %}
+    % keytool -import -alias favoriteServerCertificate \
+     -file ServerCertificate -keyStore ./ServerTrustStore \
+     -storepass secretServerTrustStorePassword
+{% endcomment %}
 
     % keytool -import -alias Client_1_Certificate \
      -file ClientCertificate -keystore ~/vault/ServerTrustStore \
