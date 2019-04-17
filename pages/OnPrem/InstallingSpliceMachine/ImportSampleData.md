@@ -4,7 +4,7 @@ title: Importing and Querying Standalone Demo Data
 keywords: sample data, demo data, importing
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar:  getstarted_sidebar
 permalink: onprem_install_demodata.html
 folder: OnPrem/InstallingSpliceMachine
 ---

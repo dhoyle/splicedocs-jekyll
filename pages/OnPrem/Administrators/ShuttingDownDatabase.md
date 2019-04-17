@@ -4,7 +4,7 @@ title: Shutting Down Your Database
 keywords: shutting down
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar:  getstarted_sidebar
 permalink: onprem_admin_shuttingdowndb.html
 folder: OnPrem/Administrators
 ---

@@ -4,7 +4,7 @@ title: Logging in to Splice Machine Cloud Manager
 keywords: login, account, dbaas, paas, cloud manager
 toc: false
 product: dbaas
-sidebar:  dbaas_sidebar
+sidebar:  getstarted_sidebar
 permalink: dbaas_cm_login.html
 folder: DBaaS/CloudManager
 ---

@@ -2,7 +2,7 @@
 summary: Describes the functionality of the Cluster Management screen
 title: Managing a Cluster
 keywords: cloud manager, dashboard, cluster manager
-sidebar:  dbaas_sidebar
+sidebar:  getstarted_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_cm_managecluster.html

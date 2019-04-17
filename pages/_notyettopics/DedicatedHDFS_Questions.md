@@ -4,7 +4,7 @@ summary: What You Need to Run Splice Machine on Your AWS Account
 keywords: AWS, dbaas
 toc: false
 product: all
-sidebar: dbaas_sidebar
+sidebar: getstarted_sidebar
 permalink: dbaas_dedicatedhdfs.html
 folder: /DBaaS
 ---

@@ -2,7 +2,7 @@
 title: Introduction
 summary: A list of the topics in this documentation that apply only to our database-as-a-service; these topics do not apply to our on-premise product product.
 keywords: home, welcome, dbaas, Service, paas
-sidebar:  dbaas_sidebar
+sidebar:  getstarted_sidebar
 toc: false
 product: all
 permalink: dbaas_intro.html

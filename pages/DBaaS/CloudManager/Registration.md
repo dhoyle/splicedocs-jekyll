@@ -2,7 +2,7 @@
 summary: Shows you how to register as a user of the Splice Machine Cloud Manager.
 title: Registering with Splice Machine Cloud Manager
 keywords: registration, register, dbaas, paas, cloud manager
-sidebar:  dbaas_sidebar
+sidebar:  getstarted_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_cm_registration.html

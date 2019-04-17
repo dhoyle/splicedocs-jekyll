@@ -2,7 +2,7 @@
 summary: Notes About Using Zeppelin
 title: Zeppelin Usage Notes
 keywords: zep, notebook, dbaas, paas, classpath
-sidebar: dbaas_sidebar
+sidebar: getstarted_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_zep_notes.html

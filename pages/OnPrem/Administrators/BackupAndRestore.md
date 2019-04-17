@@ -4,7 +4,7 @@ title: Backing Up and Restoring Your Database
 keywords: back up, restore, backup, backup restore, backing up, restoring, incremental backup, full backup
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar:  getstarted_sidebar
 permalink: onprem_admin_backingup.html
 folder: OnPrem/Administrators
 ---

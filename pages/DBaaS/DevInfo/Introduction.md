@@ -2,7 +2,7 @@
 title: Introduction
 summary: Quick start for Developers Using our Database-as-Service product.
 keywords: dbaas, Service, paas
-sidebar:  dbaas_sidebar
+sidebar:  getstarted_sidebar
 toc: false
 product: all
 permalink: dbaas_devinfo_intro.html

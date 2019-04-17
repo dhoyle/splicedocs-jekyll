@@ -4,7 +4,7 @@ summary: A quick overview of the Splice Machine in-memory engine, powered by Apa
 keywords: spark, overview, 'in-memory engine', 'spark overview'
 toc: false
 product: all
-sidebar:  notes_sidebar
+sidebar:  getstarted_sidebar
 permalink: notes_sparkoverview.html
 folder: Notes
 ---

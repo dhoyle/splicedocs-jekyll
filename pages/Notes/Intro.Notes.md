@@ -4,7 +4,7 @@ summary: A list of pages that quickly link you to specific topics in the Splice 
 keywords: notes, 'general notes', 'general information', license
 toc: false
 product: all
-sidebar:  notes_sidebar
+sidebar:  getstarted_sidebar
 permalink: notes_intro.html
 folder: Notes
 ---

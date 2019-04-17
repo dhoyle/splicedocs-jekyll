@@ -4,7 +4,7 @@ summary: Splice Machine Database-as-Service Product Release Notes
 keywords: release notes, on-premise
 toc: false
 product: all
-sidebar:  releasenotes_sidebar
+sidebar:  getstarted_sidebar
 permalink: releasenotes_dbaas.html
 folder: ReleaseNotes
 ---

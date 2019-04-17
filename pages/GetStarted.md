@@ -4,7 +4,7 @@ summary: Getting started with Splice Machine
 keywords:
 toc: false
 product: all
-sidebar: home_sidebar
+sidebar: getstarted_sidebar
 permalink: getstarted.html
 folder: /
 ---

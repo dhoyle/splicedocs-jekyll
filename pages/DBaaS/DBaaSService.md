@@ -2,7 +2,7 @@
 title: Splice Machine Database Service Overview
 summary: An overview of the Splice Machine Cloud Managed Database Service.
 keywords: dbaas, Service, paas, service overview, overview of service, availability, support, service support, service terms, license
-sidebar:  dbaas_sidebar
+sidebar:  getstarted_sidebar
 toc: false
 product: all
 permalink: dbaas_serviceoverview.html

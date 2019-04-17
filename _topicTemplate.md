@@ -21,12 +21,12 @@ NOTES:
    a. Find and open the sidebar .yml file in the project's _data/sidebars folder. Our sidebars are:
 
        * cmdlineref_sidebar
-       * dbaas_sidebar
+       * getstarted_sidebar
        * dbconsole_sidebar
        * developers_sidebar
        * home_sidebar
-       * notes_sidebar
-       * onprem_sidebar
+       * getstarted_sidebar
+       * getstarted_sidebar
        * sqlref_sidebar
        * tutorials_sidebar
 
