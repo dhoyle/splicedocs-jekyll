@@ -4,7 +4,7 @@ summary: Release notes for this release of Splice Machine.
 keywords: release notes, on-premise
 toc: false
 product: all
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: releasenotes_intro.html
 folder: ReleaseNotes
 ---

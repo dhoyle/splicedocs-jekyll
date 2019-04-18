@@ -4,7 +4,7 @@ summary: System view that describes the statistics collected for a specific tabl
 keywords: column statistics table view
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_syscolumnstats.html
 folder: SQLReference/SystemTables
 ---

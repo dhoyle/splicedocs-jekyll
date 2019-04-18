@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns a number rounded to a certain number
 keywords: rounding up
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_round.html
 folder: SQLReference/BuiltInFcns
 ---

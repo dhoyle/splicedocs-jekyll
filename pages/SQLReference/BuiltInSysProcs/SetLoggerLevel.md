@@ -4,7 +4,7 @@ summary: Built-in system procedure that changes the log level of the specified l
 keywords: loggers, logs, set_logger_level
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_setloggerlevel.html
 folder: SQLReference/BuiltInSysProcs
 ---

@@ -4,7 +4,7 @@ summary: System table that describes the information common to all types of cons
 keywords: constraints table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysconstraints.html
 folder: SQLReference/SystemTables
 ---

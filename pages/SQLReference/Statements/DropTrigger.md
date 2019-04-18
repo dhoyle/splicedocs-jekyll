@@ -4,7 +4,7 @@ summary: Drops a trigger from a database.
 keywords: dropping a trigger
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_droptrigger.html
 folder: SQLReference/Statements
 ---

@@ -4,7 +4,7 @@ summary: The INTEGER data type provides 4 bytes of storage for integer values.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_integer.html
 folder: SQLReference/DataTypes
 ---

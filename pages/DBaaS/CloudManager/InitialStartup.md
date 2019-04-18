@@ -2,7 +2,7 @@
 summary: Walks you through creating your cluster and getting started.
 title: Getting Started with Splice Machine Cloud Manager
 keywords: dbaas, create cluster, cloud manager, dashboard, splice units
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_cm_initialstartup.html

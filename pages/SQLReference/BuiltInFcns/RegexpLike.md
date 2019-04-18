@@ -4,7 +4,7 @@ summary: Built-in SQL function that determines if a source string matches a regu
 keywords: regexp, like
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_regexplike.html
 folder: SQLReference/BuiltInFcns
 ---

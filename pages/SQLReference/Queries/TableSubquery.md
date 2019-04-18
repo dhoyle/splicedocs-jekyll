@@ -4,7 +4,7 @@ summary: A subquery that returns multiple rows.
 keywords: exists, order by
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_queries_tablesubquery.html
 folder: SQLReference/Queries
 ---

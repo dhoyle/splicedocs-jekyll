@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the hyperbolic cosine of a specified
 keywords: hyperbolic cosine
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_cosh.html
 folder: SQLReference/BuiltInFcns
 ---

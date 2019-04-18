@@ -4,7 +4,7 @@ summary: Built-in SQL function that extracts information (parts) from date and t
 keywords: date values, time values, extracting date values, extracting time values
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_extract.html
 folder: SQLReference/BuiltInFcns
 ---

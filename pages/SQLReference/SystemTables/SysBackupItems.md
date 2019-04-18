@@ -4,7 +4,7 @@ summary: System table that stores information about the items backed up for each
 keywords: backup items table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysbackupitems.html
 folder: SQLReference/SystemTables
 ---

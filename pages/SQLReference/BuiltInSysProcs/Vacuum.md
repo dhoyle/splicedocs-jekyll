@@ -4,7 +4,7 @@ summary: Built-in system procedure that performs clean-up operations on the syst
 keywords: vacuum, vacuuming, vacuum procedure
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_vacuum.html
 folder: SQLReference/BuiltInSysProcs
 ---

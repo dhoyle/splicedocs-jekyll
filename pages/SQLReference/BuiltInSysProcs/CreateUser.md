@@ -5,7 +5,7 @@ summary: Built-in system procedure that adds a new user account to a database.
 keywords: add new user, create_user
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_createuser.html
 folder: SQLReference/BuiltInSysProcs
 ---

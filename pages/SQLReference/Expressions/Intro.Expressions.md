@@ -4,7 +4,7 @@ summary: Introduction to and summary of Splice Machine SQL expressions
 keywords: expressions overview
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_intro.html
 folder: SQLReference/Expressions
 ---

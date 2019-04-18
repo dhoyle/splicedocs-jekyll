@@ -4,7 +4,7 @@ summary: Built-in system procedure that imports or updates data from a file into
 keywords: upserting, upsert data, upsert_data_from_file
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_upsertdata.html
 folder: SQLReference/BuiltInSysProcs
 ---

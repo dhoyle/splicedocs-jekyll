@@ -4,7 +4,7 @@ title: Splice Machine On-Premise Database
 keywords:
 toc: false
 product: all
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_intro.html
 folder: OnPrem
 ---

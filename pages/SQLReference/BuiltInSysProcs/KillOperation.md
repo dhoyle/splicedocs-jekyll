@@ -4,7 +4,7 @@ summary: Built-in system procedure that terminates an operation that is currentl
 keywords: operations, server ops, kill operation
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_killoperation.html
 folder: SQLReference/BuiltInSysProcs
 ---

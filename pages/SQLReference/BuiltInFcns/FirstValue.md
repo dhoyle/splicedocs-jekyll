@@ -4,7 +4,7 @@ summary: Built-in SQL aggregate or window function that evaluates the value of a
 keywords: first row of a window, first value, first_value
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_firstvalue.html
 folder: SQLReference/BuiltInFcns
 ---

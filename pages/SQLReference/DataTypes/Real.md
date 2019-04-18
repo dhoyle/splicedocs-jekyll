@@ -4,7 +4,7 @@ summary: The REAL data type provides 4 bytes of storage for numbers using &#xA;I
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_real.html
 folder: SQLReference/DataTypes
 ---

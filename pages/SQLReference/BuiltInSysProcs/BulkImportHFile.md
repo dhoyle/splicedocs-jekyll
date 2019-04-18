@@ -4,7 +4,7 @@ summary: Built-in system procedure that imports data from an hfile.
 keywords: bulk import, hfile import, bulk_import_hfile, import_hfile
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_importhfile.html
 folder: SQLReference/BuiltInSysProcs
 ---

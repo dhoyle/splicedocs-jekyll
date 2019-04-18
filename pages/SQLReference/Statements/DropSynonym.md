@@ -4,7 +4,7 @@ summary: Drops a synonym from a database.
 keywords: dropping a synonym
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dropsynonym.html
 folder: SQLReference/Statements
 ---

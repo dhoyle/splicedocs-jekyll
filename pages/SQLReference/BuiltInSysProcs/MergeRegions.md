@@ -4,7 +4,7 @@ summary: Built-in system procedure that merges two adjacent table or index regio
 keywords: region merge, merge regions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_mergeregions.html
 folder: SQLReference/BuiltInSysProcs
 ---

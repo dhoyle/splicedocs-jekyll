@@ -4,7 +4,7 @@ summary: System table that describes the procedures, functions, and user-defined
 keywords: aliases table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysaliases.html
 folder: SQLReference/SystemTables
 ---

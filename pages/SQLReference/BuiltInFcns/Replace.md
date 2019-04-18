@@ -4,7 +4,7 @@ summary: Built-in SQL function that replaces all occurrences of a substring in a
 keywords: replace substrings
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_replace.html
 folder: SQLReference/BuiltInFcns
 ---

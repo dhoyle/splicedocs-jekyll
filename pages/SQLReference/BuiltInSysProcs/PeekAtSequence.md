@@ -4,7 +4,7 @@ summary: Built-in system function that allows users to observe the current value
 keywords: peek_at_sequence, peek, sequence
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_peekatseq.html
 folder: SQLReference/BuiltInSysProcs
 ---

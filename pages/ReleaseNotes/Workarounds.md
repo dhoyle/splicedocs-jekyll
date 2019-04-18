@@ -4,7 +4,7 @@ summary: Limitations and workarounds in our database.
 keywords: on-premise limitations, work arounds, limits,
 toc: false
 product: all
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: releasenotes_workarounds.html
 folder: ReleaseNotes
 ---

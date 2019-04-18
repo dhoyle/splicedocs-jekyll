@@ -4,7 +4,7 @@ summary: Summarizes numerous value limitations in Splice Machine SQL.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sqlsummary.html
 folder: SQLReference
 ---

@@ -4,7 +4,7 @@ title: Starting Your Database
 keywords: starting
 toc: false
 product: onprem
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_admin_startingdb.html
 folder: OnPrem/Administrators
 ---

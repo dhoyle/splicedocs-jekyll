@@ -4,7 +4,7 @@ summary: Built-in system procedure that refreshes the schema of an external tabl
 keywords: refresh_external_table, refreshing external table, external tables, orc, parquet, textfile
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_refreshexttable.html
 folder: SQLReference/BuiltInSysProcs
 ---

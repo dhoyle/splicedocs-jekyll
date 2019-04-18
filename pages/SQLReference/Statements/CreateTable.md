@@ -4,7 +4,7 @@ summary: Creates a new table.
 keywords: creating a table, create table as, 'with no data'
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createtable.html
 folder: SQLReference/Statements
 ---

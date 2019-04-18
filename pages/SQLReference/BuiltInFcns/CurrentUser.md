@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the authorization identifier of the 
 keywords: current user, authorization id
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_currentuser.html
 folder: SQLReference/BuiltInFcns
 ---

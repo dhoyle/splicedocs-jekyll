@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 24 Errors
 keywords: 24 errors, error 24
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class24.html
 folder: SQLReference/ErrorCodes
 ---

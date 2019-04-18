@@ -4,7 +4,7 @@ summary: A list of trademarks used in the Splice Machine documentation
 keywords: trademarks
 toc: false
 product: all
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: notes_trademarks.html
 folder: Notes
 ---

@@ -4,7 +4,7 @@ summary: Summarizes how assignment and comparison compatibility among the differ
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_compatability.html
 folder: SQLReference/DataTypes
 ---

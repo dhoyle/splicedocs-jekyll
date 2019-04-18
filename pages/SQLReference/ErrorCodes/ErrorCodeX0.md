@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class X0 Errors
 keywords: X0 errors, error X0
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classx0.html
 folder: SQLReference/ErrorCodes
 ---

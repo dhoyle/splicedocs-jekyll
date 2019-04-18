@@ -4,7 +4,7 @@ summary: Built-in system procedure that changes which user owns the schema.
 keywords: update_schema_owner, change schema owner, modify schema owner
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_updateschemaowner.html
 folder: SQLReference/BuiltInSysProcs
 ---

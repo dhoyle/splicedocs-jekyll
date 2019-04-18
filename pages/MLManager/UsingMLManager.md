@@ -4,7 +4,7 @@ summary: Overview of using the ML Manager
 keywords: data science, machine learning
 toc: false
 product: all
-sidebar: mlmanager_sidebar
+sidebar: home_sidebar
 permalink: mlmanager_using.html
 folder: MLManager
 ---

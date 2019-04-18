@@ -4,7 +4,7 @@ summary: Built-in system procedure that deletes a stored Splice Machine snapshot
 keywords: delete snapshot, delete_snapshot
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_deletesnapshot.html
 folder: SQLReference/BuiltInSysProcs
 ---

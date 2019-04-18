@@ -4,7 +4,7 @@ summary: Introduces the Splice Machine SQL Reference manual
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_intro.html
 folder: SQLReference
 ---

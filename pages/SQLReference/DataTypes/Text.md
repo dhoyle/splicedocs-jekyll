@@ -4,7 +4,7 @@ summary: The TEXT data type is used for varying-length character strings that ca
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_text.html
 folder: SQLReference/DataTypes
 ---

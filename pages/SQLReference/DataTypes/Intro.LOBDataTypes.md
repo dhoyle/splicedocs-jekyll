@@ -4,7 +4,7 @@ summary: A summary of the LOB data types available in Splice Machine SQL.
 keywords: LOB types, Clob, Blob, binary, binary large object, varying-length, character, character large object
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_lobtypes.html
 folder: SQLReference/DataTypes
 ---

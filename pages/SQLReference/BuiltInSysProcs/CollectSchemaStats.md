@@ -4,7 +4,7 @@ summary: Built-in system procedure that collects statistics on a schema.
 keywords: collect schema stats, collect_schema_stats, collect statistics
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_collectschemastats.html
 folder: SQLReference/BuiltInSysProcs
 ---

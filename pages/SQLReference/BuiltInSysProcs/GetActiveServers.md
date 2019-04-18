@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays the number of active servers in
 keywords: active servers, get_active_servers
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getactiveservers.html
 folder: SQLReference/BuiltInSysProcs
 ---

@@ -4,7 +4,7 @@ summary: Resets a table to its initial empty state.
 keywords: truncating a table, resetting a table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_truncatetable.html
 folder: SQLReference/Statements
 ---

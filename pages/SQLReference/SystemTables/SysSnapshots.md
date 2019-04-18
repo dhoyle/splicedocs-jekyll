@@ -4,7 +4,7 @@ summary: System table that stores metadata for Splice Machine snapshots.
 keywords: snapshots metadata table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_syssnapshots.html
 folder: SQLReference/SystemTables
 ---

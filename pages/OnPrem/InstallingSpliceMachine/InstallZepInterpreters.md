@@ -4,7 +4,7 @@ title: Installing the Splice Machine Zeppelin Interpreter
 keywords: sample data, demo data, importing
 toc: false
 product: onprem
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_install_zeppelin.html
 folder: OnPrem/InstallingSpliceMachine
 ---

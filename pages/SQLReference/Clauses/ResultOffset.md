@@ -4,7 +4,7 @@ summary: Clauses that provides a way to skip the N  first rows in a result set b
 keywords: skipping rows in result set
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_resultoffset.html
 folder: SQLReference/Clauses
 ---

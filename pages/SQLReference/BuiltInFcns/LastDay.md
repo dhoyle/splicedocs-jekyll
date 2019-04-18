@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the date of the last day of a month
 keywords: last day of month
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_lastday.html
 folder: SQLReference/BuiltInFcns
 ---

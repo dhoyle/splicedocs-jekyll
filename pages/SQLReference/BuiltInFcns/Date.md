@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns a date value from an expression
 keywords: date value, date format, date function
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_date.html
 folder: SQLReference/BuiltInFcns
 ---

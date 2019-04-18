@@ -4,7 +4,7 @@ summary: Renames an index in the current schema.
 keywords: renaming an index
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_renameindex.html
 folder: SQLReference/Statements
 ---

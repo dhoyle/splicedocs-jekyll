@@ -4,7 +4,7 @@ summary: System table that describes the check constraints within the current da
 keywords: constraint checks table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_syschecks.html
 folder: SQLReference/SystemTables
 ---

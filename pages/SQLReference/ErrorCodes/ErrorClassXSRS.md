@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSRS Errors
 keywords: XSRS errors, error XSRS
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsrs.html
 folder: SQLReference/ErrorCodes
 ---

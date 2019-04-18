@@ -4,7 +4,7 @@ summary: Best practices for importing data
 keywords: importing
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_onprem_maintenance.html
 folder: BestPractices
 ---

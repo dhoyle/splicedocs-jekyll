@@ -4,7 +4,7 @@ summary: Built-in system procedure that validates a previous database backup.
 keywords: backing up, backup_database, backup database
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_validatebackup.html
 folder: SQLReference/BuiltInSysProcs
 ---

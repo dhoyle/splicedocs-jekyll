@@ -2,7 +2,7 @@
 summary: Overview of the Cloud Manager Account Operations
 title: Cloud Manager Account Management
 keywords: dbaas, paas, cloud manager, account
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_cm_acctmanage.html

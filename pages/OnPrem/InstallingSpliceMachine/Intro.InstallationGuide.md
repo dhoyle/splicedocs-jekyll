@@ -4,7 +4,7 @@ title: Splice Machine Installation Guide
 keywords: installation, hadoop, hbase, hdfs
 toc: false
 product: onprem
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_install_intro.html
 folder: OnPrem/InstallingSpliceMachine
 ---

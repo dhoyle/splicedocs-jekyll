@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSDB Errors
 keywords: XSDB errors, error XSDB
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsdb.html
 folder: SQLReference/ErrorCodes
 ---

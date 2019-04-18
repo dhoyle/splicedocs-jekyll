@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the hour part of a date/time value.
 keywords: extract hour part
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_hour.html
 folder: SQLReference/BuiltInFcns
 ---

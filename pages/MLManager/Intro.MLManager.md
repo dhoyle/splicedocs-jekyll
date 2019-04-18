@@ -4,7 +4,7 @@ summary: Machine Learning Manager
 keywords: data science, machine learning
 toc: false
 product: all
-sidebar: mlmanager_sidebar
+sidebar: home_sidebar
 permalink: mlmanager_intro.html
 folder: MLManager
 ---

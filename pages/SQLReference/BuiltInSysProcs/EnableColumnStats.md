@@ -4,7 +4,7 @@ summary: Built-in system procedure that enables collection of statistics on a sp
 keywords: enable column statistics, enable_column_statistics
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_enablecolumnstats.html
 folder: SQLReference/BuiltInSysProcs
 ---

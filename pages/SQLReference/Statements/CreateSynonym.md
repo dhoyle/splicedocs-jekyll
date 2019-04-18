@@ -4,7 +4,7 @@ summary:  Creates a synonym, which can provide an alternate namefor a table or a
 keywords: creating a synonym
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createsynonym.html
 folder: SQLReference/Statements
 ---

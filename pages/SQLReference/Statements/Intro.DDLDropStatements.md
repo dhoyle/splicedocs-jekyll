@@ -4,7 +4,7 @@ summary: Summarizes all of the SQL DROP statements available in Splice Machine S
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dropstatements.html
 folder: SQLReference/Statements
 ---

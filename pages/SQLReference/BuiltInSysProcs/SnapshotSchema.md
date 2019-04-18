@@ -4,7 +4,7 @@ summary: Built-in system procedure that creates a snapshot of a schema.
 keywords: snapshots, snapshot_schema, create schema snapshot
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_snapshotschema.html
 folder: SQLReference/BuiltInSysProcs
 ---

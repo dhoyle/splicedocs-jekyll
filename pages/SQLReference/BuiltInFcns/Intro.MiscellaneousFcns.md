@@ -4,7 +4,7 @@ summary: Summary of miscellaneous built-in SQL functions in Splice Machine
 keywords: miscellaneous functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_miscfcnsintro.html
 folder: SQLReference/BuiltInFcns
 ---

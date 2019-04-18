@@ -4,7 +4,7 @@ summary: Built-in SQL function that converts the first letter of every word to u
 keywords: convert case, string function
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_initcap.html
 folder: SQLReference/BuiltInFcns
 ---

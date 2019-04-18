@@ -4,7 +4,7 @@ summary: Join operation that creates an implicit join clause for you based on th
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_joinops_naturaljoin.html
 folder: SQLReference/JoinOps
 ---

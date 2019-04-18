@@ -4,7 +4,7 @@ summary: Built-in system procedure that computes the split keys for a table or i
 keywords: compute split keys for HFile import, compute_split_key
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_computesplitkey.html
 folder: SQLReference/BuiltInSysProcs
 ---

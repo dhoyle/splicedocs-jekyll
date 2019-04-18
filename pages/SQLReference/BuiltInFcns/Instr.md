@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the index of the first occurrence of
 keywords: find substring, instr
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_instr.html
 folder: SQLReference/BuiltInFcns
 ---

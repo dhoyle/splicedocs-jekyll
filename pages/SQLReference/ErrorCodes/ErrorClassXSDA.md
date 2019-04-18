@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSDA Errors
 keywords: XSDA errors, error XSDA
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsda.html
 folder: SQLReference/ErrorCodes
 ---

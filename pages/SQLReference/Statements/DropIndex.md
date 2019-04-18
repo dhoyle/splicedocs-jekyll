@@ -4,7 +4,7 @@ summary: Drops an index from a database.
 keywords: dropping an index
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dropindex.html
 folder: SQLReference/Statements
 ---

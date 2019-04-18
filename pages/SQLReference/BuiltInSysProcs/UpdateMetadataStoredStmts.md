@@ -5,7 +5,7 @@ summary: Built-in system procedure that updates updates the execution plan for s
 keywords: update_system_procedure, update system procedure
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_updatemetastmts.html
 folder: SQLReference/BuiltInSysProcs
 ---

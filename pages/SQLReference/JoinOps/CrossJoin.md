@@ -4,7 +4,7 @@ summary: Join operation that roduces the Cartesian product of two tables:&#160;i
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_joinops_crossjoin.html
 folder: SQLReference/JoinOps
 ---

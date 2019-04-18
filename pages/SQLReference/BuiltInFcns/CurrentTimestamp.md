@@ -5,7 +5,7 @@ keywords: current timestamp
 toc: false
 compatible_version: 2.7
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_currenttimestamp.html
 folder: SQLReference/BuiltInFcns
 ---

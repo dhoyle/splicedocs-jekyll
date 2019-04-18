@@ -4,7 +4,7 @@ summary: Creates a schema in your database
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createschema.html
 folder: SQLReference/Statements
 ---

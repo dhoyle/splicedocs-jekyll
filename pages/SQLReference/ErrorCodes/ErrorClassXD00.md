@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XD00 Errors
 keywords: XD00 errors, error XD00
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxd00.html
 folder: SQLReference/ErrorCodes
 ---

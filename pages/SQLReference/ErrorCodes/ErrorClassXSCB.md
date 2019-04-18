@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSCB Errors
 keywords: XCSB errors, error XCSB
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxscb.html
 folder: SQLReference/ErrorCodes
 ---

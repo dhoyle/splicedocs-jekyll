@@ -4,7 +4,7 @@ summary: Built-in system procedure that restores a table from a previous backup.
 keywords: restoring, RESTORE_TABLE, restore from backup
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_restoretable.html
 folder: SQLReference/BuiltInSysProcs
 ---

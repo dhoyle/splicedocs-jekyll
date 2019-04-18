@@ -4,7 +4,7 @@ summary: Summarizes the Splice Machine system tables that store information abou
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysinfointro.html
 folder: SQLReference/SystemTables
 ---

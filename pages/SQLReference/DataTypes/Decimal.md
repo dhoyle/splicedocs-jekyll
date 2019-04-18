@@ -4,7 +4,7 @@ summary: The  DECIMALdata type provides an exact numeric in which the precision 
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_decimal.html
 folder: SQLReference/DataTypes
 ---

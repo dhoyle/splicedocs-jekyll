@@ -4,7 +4,7 @@ summary: Performs set intersection on results from multiple queries
 keywords: intersection, except, ORDER, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_except.html
 folder: SQLReference/Clauses
 ---

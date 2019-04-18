@@ -4,7 +4,7 @@ summary: A list of pages with information about the current software release.
 keywords: release, on-premise
 toc: false
 product: all
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_info_intro.html
 folder: OnPrem/Info
 ---

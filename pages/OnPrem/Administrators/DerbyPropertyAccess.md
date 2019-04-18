@@ -4,7 +4,7 @@ title: Derby Property Access
 keywords: derby, property, properties
 toc: false
 product: onprem
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_admin_derbyprops.html
 folder: OnPrem/Administrators
 ---

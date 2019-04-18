@@ -4,7 +4,7 @@ summary: Summarizes all of the reserved words in Splice Machine SQL.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sqlreserved.html
 folder: SQLReference/ReservedWords
 ---

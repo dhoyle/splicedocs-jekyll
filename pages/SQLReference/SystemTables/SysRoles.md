@@ -4,7 +4,7 @@ summary: System table that stores the roles in the database.
 keywords: roles tables
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysroles.html
 folder: SQLReference/SystemTables
 ---

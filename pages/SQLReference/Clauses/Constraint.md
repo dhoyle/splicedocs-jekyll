@@ -4,7 +4,7 @@ summary: An optional clause in CREATE TABLE and ALTER TABLE statements that spec
 keywords: constraints, column-level constraints, primary key, foreign key, unique
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_constraint.html
 folder: SQLReference/Clauses
 ---

@@ -4,7 +4,7 @@ title: Enabling Enterprise Features in Splice Machine
 keywords: Enterprise version, upgrading, license
 toc: false
 product: onprem
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_admin_enablingenterprise.html
 folder: OnPrem/Administrators
 ---

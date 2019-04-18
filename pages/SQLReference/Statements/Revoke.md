@@ -4,7 +4,7 @@ summary: Revokes privileges for specific user(s) or role(s) to perform actions o
 keywords: revoking privileges
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_revoke.html
 folder: SQLReference/Statements
 ---

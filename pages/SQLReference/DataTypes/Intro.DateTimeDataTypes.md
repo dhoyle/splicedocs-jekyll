@@ -4,7 +4,7 @@ summary: A summary of the date and time data types available in Splice Machine S
 keywords: date types, time types
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_datetimetypes.html
 folder: SQLReference/DataTypes
 ---

@@ -4,7 +4,7 @@ summary: The CHAR data type provides for fixed-length storage of strings.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_char.html
 folder: SQLReference/DataTypes
 ---

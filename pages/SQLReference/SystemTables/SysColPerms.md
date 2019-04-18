@@ -4,7 +4,7 @@ summary: System table that stores the column permissions that have been granted 
 keywords: column permissions table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_syscolperms.html
 folder: SQLReference/SystemTables
 ---

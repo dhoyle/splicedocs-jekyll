@@ -4,7 +4,7 @@ summary: Sets the current role for the current SQL context of a session.
 keywords: setting the current role
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_setrole.html
 folder: SQLReference/Statements
 ---

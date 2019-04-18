@@ -4,7 +4,7 @@ summary: A&#160;clause in a Select Expression that specifies the tables from whi
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_from.html
 folder: SQLReference/Clauses
 ---

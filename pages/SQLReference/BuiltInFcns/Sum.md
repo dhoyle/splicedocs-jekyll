@@ -4,7 +4,7 @@ summary: Built-in SQL aggregate or window function that returns the sum of value
 keywords: window functions, summing, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_sum.html
 folder: SQLReference/BuiltInFcns
 ---

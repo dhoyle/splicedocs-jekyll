@@ -4,7 +4,7 @@ summary: Built-in system procedure that specifies whether to use statistics extr
 keywords: statistics, extrapolation
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_setstatsextrapolation.html
 folder: SQLReference/BuiltInSysProcs
 ---

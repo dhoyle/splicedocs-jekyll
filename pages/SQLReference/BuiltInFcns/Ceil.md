@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the smallest integer greater than or
 keywords: ceiling
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_ceil.html
 folder: SQLReference/BuiltInFcns
 ---

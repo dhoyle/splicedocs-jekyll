@@ -4,7 +4,7 @@ summary: Built-in SQL function that generates a character string by repeating a 
 keywords: repeat
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_repeat.html
 folder: SQLReference/BuiltInFcns
 ---

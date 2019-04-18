@@ -4,7 +4,7 @@ summary: Unpins a pinned table.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_unpintable.html
 folder: SQLReference/Statements
 ---

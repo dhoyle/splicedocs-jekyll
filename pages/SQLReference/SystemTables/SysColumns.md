@@ -4,7 +4,7 @@ summary: System table that describes the columns within all tables in the curren
 keywords: columns descriptions table, autoincrement, columns, collect statistics
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_syscolumns.html
 folder: SQLReference/SystemTables
 ---

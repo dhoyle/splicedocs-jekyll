@@ -4,7 +4,7 @@ summary: A summary of the string data types available in Splice Machine SQL.
 keywords: string data types summary
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_charstringtypes.html
 folder: SQLReference/DataTypes
 ---

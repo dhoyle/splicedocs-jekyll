@@ -4,7 +4,7 @@ summary: Built-in system procedure that cancels a specific backup.
 keywords: cancel backup, cancel_backup
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_cancelbackup.html
 folder: SQLReference/BuiltInSysProcs
 ---

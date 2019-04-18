@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 07 Errors
 keywords: 07 errors, error 07
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class07.html
 folder: SQLReference/ErrorCodes
 ---

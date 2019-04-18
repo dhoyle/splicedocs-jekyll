@@ -4,7 +4,7 @@ summary: Describes the syntax and restrictions that apply to the generation clau
 keywords: generated always as
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_generationclause.html
 folder: SQLReference/Statements
 ---

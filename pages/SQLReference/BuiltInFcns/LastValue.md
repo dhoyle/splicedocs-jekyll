@@ -4,7 +4,7 @@ summary: Built-in SQL aggregate or window function that evaluates the value of a
 keywords: last value window function
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_lastvalue.html
 folder: SQLReference/BuiltInFcns
 ---

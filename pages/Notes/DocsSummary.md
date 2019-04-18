@@ -4,7 +4,7 @@ summary: A summary of the main sections of our documentation suite.
 keywords: navigating, using documentation, documentation summary
 toc: false
 product: all
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: notes_usingdocs.html
 folder: Notes
 ---

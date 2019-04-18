@@ -4,7 +4,7 @@ summary: System table that stores information about each run of a backup job for
 keywords: backup jobs table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysbackup.html
 folder: SQLReference/SystemTables
 ---

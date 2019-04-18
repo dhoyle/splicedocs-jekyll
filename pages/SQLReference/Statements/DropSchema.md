@@ -4,7 +4,7 @@ summary: Drops a schema from a database.
 keywords: dropping a schema
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dropschema.html
 folder: SQLReference/Statements
 ---

@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XXXXX Errors
 keywords: XXXXX errors, error XXXXX
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxxxxx.html
 folder: SQLReference/ErrorCodes
 ---

@@ -4,7 +4,7 @@ summary: Summarizes all of the SQL session control statements available in Splic
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_sessioncontrolintro.html
 folder: SQLReference/Statements
 ---

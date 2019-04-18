@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XJ Errors
 keywords: XJ errors, error XJ
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxj.html
 folder: SQLReference/ErrorCodes
 ---

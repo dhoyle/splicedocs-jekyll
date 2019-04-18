@@ -4,7 +4,7 @@ summary: Defines a temporary table for the current connection.
 keywords: creating a temporary table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createtemptable.html
 folder: SQLReference/Statements
 ---

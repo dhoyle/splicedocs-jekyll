@@ -4,7 +4,7 @@ summary: Built-in system procedure that stores a jar file in a database.
 keywords: jar file, install_jar, install jar, jar file
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_installjar.html
 folder: SQLReference/BuiltInSysProcs
 ---

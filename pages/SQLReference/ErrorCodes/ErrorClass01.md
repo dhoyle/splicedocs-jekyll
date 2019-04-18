@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 01 Errors
 keywords: 01 errors, error 01
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class01.html
 folder: SQLReference/ErrorCodes
 ---

@@ -4,7 +4,7 @@ summary: Built-in system procedure that returns information about the version of
 keywords: get version info, get_version_info
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getversioninfo.html
 folder: SQLReference/BuiltInSysProcs
 ---

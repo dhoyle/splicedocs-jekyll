@@ -4,7 +4,7 @@ summary: Built-in SQL function that removes blanks from the beginning of a chara
 keywords: remove blanks, left trim
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_ltrim.html
 folder: SQLReference/BuiltInFcns
 ---

@@ -4,7 +4,7 @@ summary: The WITH clause is also known as the subquery refactoring clause, and i
 keywords: WITH CLAUSE, Common Table Expression, CTE
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_with.html
 folder: SQLReference/Clauses
 ---

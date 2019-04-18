@@ -2,7 +2,7 @@
 summary: Overview of the Cloud Manager Event Manager
 title: Cloud Manager Event Manager
 keywords: dbaas, paas, cloud manager, events, notifications
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_cm_eventsmgr.html

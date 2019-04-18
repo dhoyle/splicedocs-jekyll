@@ -4,7 +4,7 @@ title: Configuration Options Overview
 keywords:
 toc: false
 product: onprem
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_info_aboutconfigoptions.html
 folder: OnPrem/Info
 ---

@@ -4,7 +4,7 @@ summary: Summarizes numerous value limitations in Splice Machine SQL.
 keywords: limits, column limits, table limits, identifier length, numeric limitations, string limitations, xml limitations, maximum limits in database
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sqllimitations.html
 folder: SQLReference
 ---

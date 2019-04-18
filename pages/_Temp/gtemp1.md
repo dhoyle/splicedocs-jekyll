@@ -4,7 +4,7 @@ summary: Release Notes for Patch Release 2.5.0.1729
 keywords: release notes, on-premise
 toc: false
 product: all
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: gtemp1.html
 folder: ReleaseNotes
 ---

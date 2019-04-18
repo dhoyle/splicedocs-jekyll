@@ -4,7 +4,7 @@ summary: Summarizes the window and aggregate functions you can use to evaluate a
 keywords: window functions, aggregate functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_windowfcnsintro.html
 folder: SQLReference/BuiltInFcns
 ---

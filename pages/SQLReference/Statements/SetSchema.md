@@ -4,7 +4,7 @@ summary: Sets the default schema for a connection's session.
 keywords: default schema, setting schema, change schema, changing schema
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_setschema.html
 folder: SQLReference/Statements
 ---

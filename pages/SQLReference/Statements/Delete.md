@@ -4,7 +4,7 @@ summary: Deletes records from a table.
 keywords: deleting records, hfile delete, delete hfile, bulk delete
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_delete.html
 folder: SQLReference/Statements
 ---

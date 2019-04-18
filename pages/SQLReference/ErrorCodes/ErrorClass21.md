@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 21 Errors
 keywords: 21 errors, error 21
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class21.html
 folder: SQLReference/ErrorCodes
 ---

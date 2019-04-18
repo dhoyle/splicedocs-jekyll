@@ -4,7 +4,7 @@ summary: Built-in SQL function that converts input to a 64-bit integer represent
 keywords: big integer
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_bigint.html
 folder: SQLReference/BuiltInFcns
 ---

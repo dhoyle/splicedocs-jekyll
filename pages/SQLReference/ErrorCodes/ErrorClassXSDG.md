@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSDG Errors
 keywords: XSDG errors, error XSDG
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsdg.html
 folder: SQLReference/ErrorCodes
 ---

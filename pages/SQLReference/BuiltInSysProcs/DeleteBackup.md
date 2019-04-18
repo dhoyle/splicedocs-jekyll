@@ -4,7 +4,7 @@ summary: Built-in system procedure that delete a specific backup.
 keywords: Delete a backup, delete_backup
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_deletebackup.html
 folder: SQLReference/BuiltInSysProcs
 ---

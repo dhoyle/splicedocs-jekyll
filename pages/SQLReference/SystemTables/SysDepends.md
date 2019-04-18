@@ -4,7 +4,7 @@ summary: System table that stores the dependency relationships between persisten
 keywords: dependencies table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysdepends.html
 folder: SQLReference/SystemTables
 ---

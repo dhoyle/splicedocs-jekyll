@@ -4,7 +4,7 @@ summary: A summary of the support available for Enterprise editions of Splice Ma
 keywords: Splice Machine Editions, community, enterprise, encryption, support
 toc: false
 product: all
-sidebar:  getstarted_sidebar
+sidebar: home_sidebar
 permalink: onprem_info_editions.html
 folder: OnPrem/Info
 ---

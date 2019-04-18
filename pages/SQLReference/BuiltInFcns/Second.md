@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the seconds part of a date/time valu
 keywords: date arithmetic, date math
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_second.html
 folder: SQLReference/BuiltInFcns
 ---

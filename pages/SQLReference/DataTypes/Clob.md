@@ -4,7 +4,7 @@ summary: The CLOB (character large object) data type is used for varying-length 
 keywords: character, character large object, varying-length
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_clob.html
 folder: SQLReference/DataTypes
 ---

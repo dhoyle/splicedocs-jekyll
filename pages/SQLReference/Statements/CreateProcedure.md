@@ -4,7 +4,7 @@ summary: Creates Java stored procedures, which you can then call using the CallP
 keywords: creating a procedure
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createprocedure.html
 folder: SQLReference/Statements
 ---

@@ -4,7 +4,7 @@ summary: System table that describes the usage permissions for sequence generato
 keywords: permissions table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysperms.html
 folder: SQLReference/SystemTables
 ---
