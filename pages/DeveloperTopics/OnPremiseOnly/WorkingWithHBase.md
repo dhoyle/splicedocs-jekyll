@@ -4,7 +4,7 @@ summary: Presents information about working in HBase with Splice Machine.
 keywords: HBase tables
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_hbase.html
 folder: DeveloperTopics/OnPremiseOnly
 ---

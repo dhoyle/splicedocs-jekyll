@@ -4,7 +4,7 @@ summary: Topics about accessing data in the Cloud from Splice Machine
 keywords: cloud, aws, azure
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_cloudconnect_intro.html
 folder: DeveloperTopics/CloudConnect
 ---

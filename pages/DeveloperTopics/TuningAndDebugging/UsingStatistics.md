@@ -4,7 +4,7 @@ summary: How to use our statistics collection tools to enhance query optimizatio
 keywords: statistics, collect statistics
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_tuning_usingstats.html
 folder: DeveloperTopics/TuningAndDebugging
 ---

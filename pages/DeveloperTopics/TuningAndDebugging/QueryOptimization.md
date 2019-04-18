@@ -4,7 +4,7 @@ summary: Gets you started with using and optimizing your queries with Splice Mac
 keywords: optimizing, explain plan, statistics, indexes, hints, query hints, select without table, index hint, join order hint, join strategy hint, pinned table hint, spark hint, usespark, delete hint, bulk delete, hfile delete, delete hfile, splice-properties, hints, hinting, --splice-properties, broadcast join, outer join, natural join, joinorder, fixed, joinstrategy, sortmerge, nestedloop, merge
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_tuning_queryoptimization.html
 folder: DeveloperTopics/TuningAndDebugging
 ---

@@ -4,7 +4,7 @@ summary: ODBC Access to Splice Machine with Kerberos
 keywords: kerberos
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_connectodbc_kerberos.html
 folder: DeveloperTopics/ODBCConnect
 ---

@@ -4,7 +4,7 @@ summary: Introduction to topics related to maintaining your Splice Machine datab
 keywords: query tuning, optimization, performance, statistics, tuning queries
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_tuning_intro.html
 folder: DeveloperTopics/TuningAndDebugging
 ---

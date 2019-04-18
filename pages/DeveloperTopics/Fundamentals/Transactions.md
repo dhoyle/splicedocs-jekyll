@@ -4,7 +4,7 @@ summary: Introduces you to the basics of running transactions with Splice Machin
 keywords: transactions, running transcations, ACID, MVCC, Snapshot isolation
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_transactions.html
 folder: DeveloperTopics/Fundamentals
 ---

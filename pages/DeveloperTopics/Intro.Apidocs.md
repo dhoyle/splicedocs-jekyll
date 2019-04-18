@@ -4,7 +4,7 @@ summary: JavaDocs and ScalaDocs for our open source code
 keywords: developers
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_apidocs.html
 folder: DeveloperTopics
 ---

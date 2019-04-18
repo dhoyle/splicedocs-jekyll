@@ -4,7 +4,7 @@ summary: Examples of using JDBC to connect with Splice Machine from various prog
 keywords: JDBC
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connectjdbc_intro.html
 folder: DeveloperTopics/JDBCConnect
 ---

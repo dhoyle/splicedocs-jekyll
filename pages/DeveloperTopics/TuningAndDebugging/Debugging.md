@@ -4,7 +4,7 @@ summary: Describes the parameter values you use when using debugging software wi
 keywords: debug, debug port, trace
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_tuning_debugging.html
 folder: DeveloperTopics/TuningAndDebugging
 ---

@@ -4,7 +4,7 @@ summary: A mini-tutorial on writing database functions and stored procedures for
 keywords: stored procedures, writing procedures, writing functions, creating procedures, creating stored procedures, creating functions
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fcnsandprocs_writing.html
 folder: DeveloperTopics/FcnsAndProcs
 ---

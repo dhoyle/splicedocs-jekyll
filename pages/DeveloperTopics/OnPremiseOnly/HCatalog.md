@@ -4,7 +4,7 @@ summary: How to access Splice Machine as a data source using HCatalog.
 keywords: HCatalog, metadata, HDFS
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_hcatalog.html
 folder: DeveloperTopics/OnPremiseOnly
 ---

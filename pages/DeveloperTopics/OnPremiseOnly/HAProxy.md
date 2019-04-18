@@ -5,7 +5,7 @@ keywords: haproxy, load balancing, high availability, TCP requests, http request
 toc: false
 compatible_version: 2.7
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_haproxy.html
 folder: DeveloperTopics/OnPremiseOnly
 ---

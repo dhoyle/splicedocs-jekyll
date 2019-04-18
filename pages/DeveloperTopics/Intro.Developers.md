@@ -4,7 +4,7 @@ summary: An introduction to the developer documentation for Splice Machine
 keywords: developers
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_intro.html
 folder: DeveloperTopics
 ---

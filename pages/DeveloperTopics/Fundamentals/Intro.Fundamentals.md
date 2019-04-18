@@ -4,7 +4,7 @@ summary: Describes the fundamental developer-oriented features in Splice Machine
 keywords: fundamentals, developers
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_intro.html
 folder: DeveloperTopics/Fundamentals
 ---

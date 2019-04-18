@@ -4,7 +4,7 @@ summary: How to use the Splice Machine Virtual Table Interface (VTI) to access o
 keywords: VTI, virtual tables, table functions
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_vti.html
 folder: DeveloperTopics/Fundamentals
 ---

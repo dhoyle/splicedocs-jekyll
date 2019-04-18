@@ -4,7 +4,7 @@ summary: JDBC Access to Splice Machine with Kerberos
 keywords: kerberos
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_connectjdbc_kerberos.html
 folder: DeveloperTopics/JDBCConnect
 ---

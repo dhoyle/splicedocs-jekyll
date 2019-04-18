@@ -4,7 +4,7 @@ summary: Walks you through compiling and running a Scala program that connects t
 keywords: Scala, JDBC, connect tutorial
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_scala.html
 folder: DeveloperTopics/JDBCConnect
 ---

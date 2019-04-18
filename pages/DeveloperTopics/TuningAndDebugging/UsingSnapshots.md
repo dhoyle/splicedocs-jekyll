@@ -4,7 +4,7 @@ summary: Describes Splice Machine snapshots, which you can use to store and subs
 keywords: snapshots, restore, importing, table snapshot, schema snapshot, restore snapshot, delete snapshot, backup table, backup schema, restore table, restore schema, backup restore
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_tuning_snapshots.html
 folder: DeveloperTopics/TuningAndDebugging
 ---

@@ -4,7 +4,7 @@ summary: Examples of creating and using database functions and stored procedures
 keywords: stored procedures, examples
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fcnsandprocs_examples.html
 folder: DeveloperTopics/FcnsAndProcs
 ---

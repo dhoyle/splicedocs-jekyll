@@ -4,7 +4,7 @@ summary: Walks you through compiling and running a Jython program that connects 
 keywords: JDBC, Jython, connect tutorial
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_jython.html
 folder: DeveloperTopics/JDBCConnect
 ---
