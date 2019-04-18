@@ -4,7 +4,7 @@ summary: Connect to a database via its URL.
 keywords: connect, connecting, connectionUrlString
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_connect.html
 folder: CmdLineReference
 ---

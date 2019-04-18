@@ -4,7 +4,7 @@ summary: Releases a savepoint.
 keywords: savepoints, release, transactions
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_releasesavepoint.html
 folder: CmdLineReference
 ---

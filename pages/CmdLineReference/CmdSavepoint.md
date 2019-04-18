@@ -4,7 +4,7 @@ summary: Creates a savepoint within the current transaction.
 keywords: savepoints, transactions
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_savepoint.html
 folder: CmdLineReference
 ---

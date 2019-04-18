@@ -4,7 +4,7 @@ summary: Commits the currently active transaction and initiates a new transactio
 keywords: commit, transactions
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_commit.html
 folder: CmdLineReference
 ---

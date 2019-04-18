@@ -4,7 +4,7 @@ summary: Walks you through scripting a set of commands to submit to the splice&g
 keywords: scripting cli
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_using_cliscripting.html
 folder: CmdLineReference/Using
 ---

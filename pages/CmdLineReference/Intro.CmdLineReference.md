@@ -4,7 +4,7 @@ summary: Summarizes the splice&gt; commands.
 keywords: splice>, cli, command reference
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_intro.html
 folder: CmdLineReference
 ---

@@ -4,7 +4,7 @@ summary: Rolls back the currently active transaction and initiates a new transac
 keywords: rolling back, transactions
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_rollback.html
 folder: CmdLineReference
 ---

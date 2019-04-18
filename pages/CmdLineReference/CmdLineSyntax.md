@@ -4,7 +4,7 @@ summary: Syntax rules and helpful information for using the Splice Machine splic
 keywords: cli syntax, splice>
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_using_cli.html
 folder: CmdLineReference/Using
 ---

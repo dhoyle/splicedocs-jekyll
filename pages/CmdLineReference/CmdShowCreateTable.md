@@ -4,7 +4,7 @@ summary: Displays the DDL used to create a table.
 keywords: procedure, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showcreatetable.html
 folder: CmdLineReference
 ---

@@ -44,7 +44,7 @@ summary: Collects statistics for a table or schema.
 keywords: analyze, analyze command, statistics, stats
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_analyze.html
 folder: CmdLineReference
 ---

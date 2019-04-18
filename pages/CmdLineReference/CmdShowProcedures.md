@@ -4,7 +4,7 @@ summary: Displays information about the procedures that have created in a databa
 keywords: procedure, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showprocedures.html
 folder: CmdLineReference
 ---

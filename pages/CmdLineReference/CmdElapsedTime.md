@@ -4,7 +4,7 @@ summary: Enables or disables display of elapsed time for command execution.
 keywords: elapsed time
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_elapsedtime.html
 folder: CmdLineReference
 ---

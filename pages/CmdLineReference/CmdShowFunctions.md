@@ -4,7 +4,7 @@ summary: Displays information about functions defined in the database or in a sc
 keywords: function, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showfunctions.html
 folder: CmdLineReference
 ---

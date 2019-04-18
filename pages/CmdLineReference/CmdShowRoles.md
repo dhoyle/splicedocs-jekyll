@@ -4,7 +4,7 @@ summary: Displays information about all of the roles defined in the database.
 keywords: role, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showroles.html
 folder: CmdLineReference
 ---

@@ -4,7 +4,7 @@ summary: An introduction to using our command line interpreter to create and int
 keywords: CLI, cli, command line interface
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_using_getstarted.html
 folder: CmdLineReference/Using
 ---
