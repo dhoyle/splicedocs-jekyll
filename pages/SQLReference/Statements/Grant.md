@@ -33,6 +33,9 @@ This topic also contains these sections that help explain the use of the `GRANT`
 * [Usage Notes](#UsageNotes)
 * [Examples](#Examples)
 
+There is no explicit mechanism for granting permission to create indexes; a user must have *modify* permission (`grant modify schema`) on the schema containing a table to have permission to create an index on that table.
+{: .noteIcon}
+
 ## Syntax for Schemas {#SchemaSyntax}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
@@ -93,6 +96,7 @@ Grantees](#AboutGrantees) section below for more information.
   with the schema are removed.
 
 * Table-level privileges override schema-level privileges.
+* To have permissions to create an index on a table, a user must have modify priveleges on the schema (`grant modify schema`) that contains the table; there is not explicit mechanism for granting permissions to create indexes.
 
 ## Syntax for Tables {#TableSyntax}
 

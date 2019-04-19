@@ -20,6 +20,9 @@ also use the `REVOKE` statement to revoke a role from a user, from
 The syntax that you use for the `REVOKE` statement depends on whether
 you are revoking privileges to a schema object or revoking a role.
 
+There is no explicit mechanism for revoking permission to create indexes; you must revoke the user's *modify* permission  on the schema (`revoke modify schema`) containing the table to revoke permission to create an index on that table.
+{: .noteIcon}
+
 ## Syntax for SCHEMA
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
@@ -64,7 +67,7 @@ target="_blank"} today.</span>
 schema-Name
 {: .paramName}
 
-The name of the schemafor which you are revoking access.
+The name of the schema for which you are revoking access.
 {: .paramDefnFirst}
 
 grantees
