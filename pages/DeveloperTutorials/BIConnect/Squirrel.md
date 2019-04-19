@@ -4,7 +4,7 @@ summary: How to configure a Squirrel connection to Splice Machine
 keywords: connect tutorial
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_squirrel.html
 folder: DeveloperTutorials/BIConnect
 ---

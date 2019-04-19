@@ -4,7 +4,7 @@ summary: A tutorial showing you how to configure a Kafka Producer for use with S
 keywords: kafka configure, kafka streaming, configure producer
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_ingest_kafkaproducer.html
 folder: DeveloperTutorials/Streaming
 ---

@@ -4,7 +4,7 @@ summary: A tutorial showing you how to put messages on an MQTT queue, how to con
 keywords: VTI, MQTT, streaming
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_ingest_mqttSpark.html
 folder: DeveloperTutorials/Streaming
 ---

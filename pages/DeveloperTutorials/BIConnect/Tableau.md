@@ -4,7 +4,7 @@ summary: How to configure a Tableau connection to Splice Machine
 keywords: tableau, connect tutorial, odbc
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_tableau.html
 folder: DeveloperTutorials/BIConnect
 ---

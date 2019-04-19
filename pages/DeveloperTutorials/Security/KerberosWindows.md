@@ -4,7 +4,7 @@ summary: Accessing Splice Machine from Windows on a Kerberized Cluster
 keywords: kerberos
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_security_kerberoswin.html
 folder: DeveloperTutorials/Security
 ---

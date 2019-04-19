@@ -4,7 +4,7 @@ summary: How to configure a DBVisualizer connection to Splice Machine
 keywords: dbvisualizer, dbvis, connect tutorial, db visualizer
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_dbvisualizer.html
 folder: DeveloperTutorials/BIConnect
 ---

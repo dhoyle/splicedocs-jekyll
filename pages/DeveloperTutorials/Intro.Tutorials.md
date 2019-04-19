@@ -4,7 +4,7 @@ summary: Links to the Splice Machine tutorials
 keywords:
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_intro.html
 folder: DeveloperTutorials
 ---

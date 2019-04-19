@@ -4,7 +4,7 @@ summary: Provides an example of using the Pentaho Data Integration ETL&#160;tool
 keywords: ETL, connect tutorial
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_pentaho.html
 folder: DeveloperTutorials/BIConnect
 ---

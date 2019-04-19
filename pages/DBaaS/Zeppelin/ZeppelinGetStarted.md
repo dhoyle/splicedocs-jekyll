@@ -2,7 +2,7 @@
 summary: Introduction to using Zeppelin with Splice Machine.
 title: Getting Started with Zeppelin
 keywords: getting started, zep, notebook, paragraph
-sidebar: getstarted_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_zep_getstarted.html

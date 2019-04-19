@@ -4,7 +4,7 @@ summary: How to configure a Cognos connection to Splice Machine
 keywords: cognos, connect tutorial
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_cognos.html
 folder: DeveloperTutorials/BIConnect
 ---

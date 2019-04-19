@@ -4,7 +4,7 @@ summary: Describes different approaches for indexing large tables.
 keywords: import, ingest, input parameters, compression, encoding, separator
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_indexing_largeindex.html
 folder: DeveloperTutorials/Indexing
 ---

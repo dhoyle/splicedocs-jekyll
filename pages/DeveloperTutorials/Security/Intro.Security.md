@@ -4,7 +4,7 @@ summary: Links to the Splice Machine Security Configuration Tutorials
 keywords: tutorial, security, ldap, kerberos, native, authentication, authorization
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_security_intro.html
 folder: DeveloperTutorials/Security
 ---

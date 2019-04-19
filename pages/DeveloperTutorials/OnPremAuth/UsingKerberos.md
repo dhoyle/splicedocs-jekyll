@@ -4,7 +4,7 @@ summary: How to use Kerberize your Splice Machine cluster
 keywords: kerberos
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_security_usingkerberos.html
 folder: DeveloperTutorials/OnPremAuth
 ---
