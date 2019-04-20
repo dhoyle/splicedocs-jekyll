@@ -7,49 +7,41 @@ permalink: /tocpage/suite.html
     <!-- This generates one very large Table of Contents for the entire Docs Suite;
          We use parallel arrays to display correct book name in the <h2> in our TOC -->
 
-{% assign splicetocs = "cmdlineref_sidebar,sqlref_sidebar,developers_sidebar,tutorials_sidebar,bestpractices_sidebar,getstarted_sidebar,getstarted_sidebar,getstarted_sidebar,getstarted_sidebar" | split: ',' %}
-
-{% assign splicebooks = "Command Line Reference,SQL Reference Manual,Developer Topics,Developer Tutorials,Best Practices,DB-Service Product,On-Premise-DB Product,Release Notes,General Information" | split: ',' %}
-
-    <!-- Need to use an integer index into the book names array, so use a counter -->
-{% assign tocId = 0 %}
 
 <div id="tocnav">
 <h1 style="text-align:center;">Table of Contents</h1>
-    {% for toc in splicetocs %}
-        {% assign sidebar=site.data.sidebars[toc].entries %}
-        <h2>Splice Machine {{splicebooks[tocId]}}</h2>
-        {% assign tocId = tocId | plus: 1 %}
-        <ul class="printtoc1">
-        {% for entry in sidebar %}
-            {% for folder in entry.folders %}
-                {% if folder.output contains "pdf" and folder.type != "frontmatter" %}
-                    <li class="sectionHead">{{folder.title}}
-                        <ul class="printtoc2">
-                        {% for folderitem in folder.folderitems %}
-                            {% if folderitem.output contains "pdf" %}
-                                <li><a href="{{folderitem.url | prepend: site.url | prepend: site.baseurl }}">{{folderitem.title}}</a>
-                                    {% for subfolder in folderitem.subfolders %}
-                                        {% if subfolder.output contains "pdf" %}
-                                            <li class="sectionHead">{{subfolder.title}}
-                                                <ul class="printtoc3">
-                                                {% for subfolderitem in subfolder.subfolderitems %}
-                                                    {% if subfolderitem.output contains "pdf" %}
-                                                        <li><a href="{{subfolderitem.url | prepend: site.url | prepend: site.baseurl }}">{{subfolderitem.title}}</a></li>
-                                                    {% endif %}
-                                                {% endfor %}
-                                                </ul>
-                                            </li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                        </ul>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        {% endfor %}
-        </ul>
+{% assign sidebar=site.data.sidebars[home_sidebar].entries %}
+<h2>Splice Machine {{site.pdf_runninghead}}</h2>
+<ul class="printtoc1">
+{% for entry in sidebar %}
+{{entry | pprint}}
+    {% for folder in entry.folders %}
+        {% if folder.output contains "pdf" and folder.type != "frontmatter" %}
+            <li class="sectionHead">{{folder.title}}
+                <ul class="printtoc2">
+                {% for folderitem in folder.folderitems %}
+                    {% if folderitem.output contains "pdf" %}
+                        <li><a href="{{folderitem.url | prepend: site.url | prepend: site.baseurl }}">{{folderitem.title}}</a>
+                            {% for subfolder in folderitem.subfolders %}
+                                {% if subfolder.output contains "pdf" %}
+                                    <li class="sectionHead">{{subfolder.title}}
+                                        <ul class="printtoc3">
+                                        {% for subfolderitem in subfolder.subfolderitems %}
+                                            {% if subfolderitem.output contains "pdf" %}
+                                                <li><a href="{{subfolderitem.url | prepend: site.url | prepend: site.baseurl }}">{{subfolderitem.title}}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </li>
+        {% endif %}
     {% endfor %}
+{% endfor %}
+</ul>
 </div>

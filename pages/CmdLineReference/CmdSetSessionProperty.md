@@ -4,7 +4,7 @@ summary: Sets properties connection's session.
 keywords: session properties
 toc: false
 product: all
-sidebar:  cmdlineref_sidebar
+sidebar:  home_sidebar
 permalink: cmdlineref_setsessionproperty.html
 folder: CmdLineReference
 ---

@@ -230,7 +230,7 @@ Our [Developer Tutorials](tutorials_intro.html) and [Best Practices](bestpractic
     </tbody>
 </table>
 
-## 4. Explore our Developer Tutorials and Best Practices{#devtutorials}
+## 4. Explore our Developer Tutorials and Best Practices {#devtutorials}
 
 Our [Developer Tutorials](tutorials_intro.html) and [Best Practices](bestpractices_intro.html) Guides include deep dives into more complex developer topics, such as:
 

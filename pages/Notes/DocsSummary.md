@@ -29,126 +29,74 @@ called the *topbar*:
 
 ![](images/topnav.png){: .indentedTightSpacing}
 
-The topbar features these elements:
+The topbar features these user interface elements:
 
 * Click the *Splice Machine Documentation* title to return you to the
   home page of our documentation.
-* Click the [Navigation Toggle](#navswitch) to toggle the sidebar off
-  (to expand the width of the main content) or off.
-* The [top navigation menus](#topnavmenus) includes our three main
-  menus, which link to the main topic sections.
-* A [sidebar](#sidebar) for navigating to topics within the main
-  sections.
-* A [search bar](#searchbar) that you can use to search for topic titles
-  within the documentation.
-* The [main content area](#contentareea), which contains the content of
-  each topic.
+* Use the *Top Navigation menus* to navigate to the landing page of each main section of the documentation.
+* Use the cascading menus in the *Sidebar Navigation* to navigate to specific topics.
+* Click the *Navigation Toggle* to toggle the sidebar navigation off or on.
+* Start typing your search terms in the *Search Bar* at the top to find relevant topic.
+
+The sidebar will automatically highlight the location of your current page in the navigation hierachy whenever you jump to a new page.
 
 ### Internal and External Links
 
-Links to other pages in the documenation are shown in [underlined blue](notes_usingdocs.html).
+Links to other pages in the documenation are shown in underlined blue.
 
-Links to external sites are also shown in underlined blue, and include a boxed arrow symbol that indicates the link will automatically open in a separate browser tab or window. For example, <a href="https://www.splicemachine.com" target="_blank">this link</a> opens the Splice Machine web home page in a separate browser tab.
+Links to external sites are also shown in underlined blue, and include a boxed arrow symbol that indicates the link will automatically open in a separate browser tab or window.
 
-## Navigating our Documentation
+## Documentation Organization
 
 This site includes documentation for both of our Splice Machine
-products. The topic sections are organized into three main categories,
-each of which has detailed sections and is represented by one of the
-menus at the top of each page (*Splice Machine, DB-Service Only,
-On-Premise-DB Only*). The sidebar navigation (on the left) automatically
-changes whenever you select a new section of the docs.
-
-The following table summarizes the main sections of our documentation:
+products and two ways to navigate. Most of the topics apply to all of our products; any product-specific topics are gathered into their own top-level (chapter) sections. Here are the main sections of the Splice Machine documentation:
 
 <table summary="Links to and descriptions of the section in the Splice Machine documentation suite.">
-    <col width="180px" />
-    <col width="180px" />
+    <col width="280px" />
+    <col width />
     <col />
     <thead>
         <tr>
-            <th>Menu</th>
             <th>Section</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td rowspan="8" class="MenuName">Splice Machine</td>
             <td><a href="index.html">Welcome</a></td>
             <td>Information about our database: the basis of all Splice Machine products.</td>
         </tr>
         <tr>
-            <td><a href="cmdlineref_intro.html">Command Line Reference</a></td>
+            <td><a href="getstarted.html">About Splice Machine</a></td>
+            <td><em>Getting Started with Splice Machine</em>, release notes, and general product and documentation information.</td>
+        </tr>
+        <tr>
+            <td><a href="bestpractices_intro.html">Best Practices Guide</a></td>
+            <td>Best practices information for common product usage scenarios.</td>
+        </tr>
+        <tr>
+            <td><a href="dbaas_intro.html">Database-as-Service Product Info</a></td>
+            <td>Usage information specific to our cloud-managed database service product.</td>
+        </tr>
+        <tr>
+            <td><a href="developers_intro.html">Developer Topics and Tutorials</a></td>
+            <td>Topics of interest to all developers working with Splice Machine.</td>
+        </tr>
+        <tr>
+            <td><a href="onprem_intro.html">On-Premise Product Info</a></td>
+            <td>Usage information specific to our on-premise database product.</td>
+        </tr>
+        <tr>
+            <td><a href="cmdlineref_intro.html">splice&gt; Command Line Reference</a></td>
             <td>The reference manual for our Splice Machine command line interface.</td>
+        </tr>
+        <tr>
+            <td><a href="mlmanager_intro.html">The ML Manager</a></td>
+            <td>How to use the Splice Machine Machine Learning Manager for your data science projects.</td>
         </tr>
         <tr>
             <td><a href="sqlref_intro.html">SQL Reference Manual</a></td>
             <td>The reference manual for the Splice Machine implementation of SQL.</td>
-        </tr>
-        <tr>
-            <td><a href="developers_intro.html">Developer Topics</a></td>
-            <td>Topics of interest to all developers working with Splice Machine.</td>
-        </tr>
-        <tr>
-            <td><a href="tutorials_intro.html">Developer Tutorials</a></td>
-            <td>A collection of tutorials that walk you through numerous specific tasks to help you quickly learn how to use your Splice Machine database more productively.</td>
-        </tr>
-        <tr>
-            <td><a href="bestpractices_intro.html">Best Practices Guide</a></td>
-            <td>Best practices and troubleshooting information.</td>
-        </tr>
-        <tr>
-            <td><a href="notes_intro.html">Release Notes</a></td>
-            <td>Information about new features, improvements, and fixes in the current database release.</td>
-        </tr>
-        <tr>
-            <td><a href="notes_intro.html">General Information</a></td>
-            <td>Links to general information about our products.</td>
-        </tr>
-        <tr>
-            <td colspan="3" class="Separator"> </td>
-        </tr>
-        <tr>
-            <td rowspan="3" class="MenuName">DB-Service Only</td>
-            <td><a href="dbaas_intro.html">Welcome</a></td>
-            <td>The content in this section is specific to our cloud-managed database service product.</td>
-        </tr>
-        <tr>
-            <td><a href="dbaas_cm_intro.html">Cloud Manager Guide</a></td>
-            <td>A guide to our Cloud Manager, which is the Dashboard from which you create, manage, and use your clusters.</td>
-        </tr>
-        <tr>
-            <td><a href="dbaas_zep_intro.html">Using Zeppelin</a></td>
-            <td>A guide to using Zeppelin notebooks to work with your Splice Machine databases.</td>
-        </tr>
-        <tr>
-            <td colspan="3" class="Separator"> </td>
-        </tr>
-        <tr>
-            <td rowspan="6" class="MenuName">On-Premise-DB Only</td>
-            <td><a href="onprem_intro.html">Welcome</a></td>
-            <td>The content in this section is specific to our on-premise database product.</td>
-        </tr>
-        <tr>
-            <td><a href="onprem_install_intro.html">Installation</a></td>
-            <td>Step-by-step instructions for installing the on-premise version of Splice Machine on compatible platforms.</td>
-        </tr>
-        <tr>
-            <td><a href="onprem_admin_intro.html">Administrator's Guide</a></td>
-            <td>Topics that describe the administrative tasks associated with installing, configuring, and maintaining your on-premise Splice Machine database.</td>
-        </tr>
-        <tr>
-            <td><a href="bestpractices_onprem_intro.html">Best Practices</a></td>
-            <td>Tips for best practices and solving common problems.</td>
-        </tr>
-        <tr>
-            <td><a href="releasenotes_onprem.html">Release notes</a></td>
-            <td>Release notes, workarounds, and other information about this on-premise database release.</td>
-        </tr>
-        <tr>
-            <td><a href="onprem_info_intro.html">Product Information</a></td>
-            <td>Links to general information about our on-premise-database product.</td>
         </tr>
     </tbody>
 </table>
