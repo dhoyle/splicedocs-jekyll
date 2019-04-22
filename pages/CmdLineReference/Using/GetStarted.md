@@ -736,9 +736,6 @@ You can easily count the records in a table by using the
   class="AppCommand">splice&gt;</span> command line interpreter, see
   [the Command Line Reference Manual](cmdlineref_intro.html), which
   includes information about and examples of all supported commands.
-* This documentation includes a number of [other
-  tutorials](tutorials_intro.html) to help you become proficient with
-  Splice Machine.
 
 </div>
 </section>

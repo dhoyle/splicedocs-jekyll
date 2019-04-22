@@ -10,7 +10,7 @@ folder: SQLReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "SQL Reference Manual" %}
+{% assign site.guide_heading = "SQL Reference Manual" %}
 # SQL Reference Manual
 
 This section contains reference information for Splice Machine SQL. Our

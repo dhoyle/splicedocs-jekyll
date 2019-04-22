@@ -10,7 +10,7 @@ folder: CmdLineReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Command Line Reference" %}
+{% assign site.guide_heading = "splice&gt; Command Line Reference" %}
 # Splice Machine Commands Reference
 
 This guide contains reference information for using the Splice Machine command line interpreter, which is also known as the Splice Prompt (<span class="AppCommand">splice&gt;</span>).

@@ -79,9 +79,6 @@ Our documentation provides:
 
 * Complete descriptions of our [Cloud Manager
   dashboard](dbaas_cm_intro.html)
-* Numerous [Tutorials](tutorials_intro.html) about connecting with other
-  tools, using various programming languages with Splice Machine,
-  ingesting data efficiently, and so on.
 * An introduction to [Using Zeppelin with Splice
   Machine](dbaas_zep_intro.html)
 * A wealth of [Developer's Guide information](developers_intro.html) and
@@ -94,4 +91,3 @@ for your company.
 
 </div>
 </section>
-
