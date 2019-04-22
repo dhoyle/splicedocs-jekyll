@@ -36,31 +36,6 @@ ul.printtoc3 {
 	margin: 0 0 0 0.25in;
 }
 
-ul.printtoc1 li.sectionHead,
-ul.printtoc2 li.sectionHead,
-ul.printtoc3 li.sectionHead {
-    font-family: $tocheading-font;
-    font-size:   $tocheading-size;
-    font-weight: $tocheading-weight;
-    color:       $tocheading-color;
-    text-decoration: none;
-}
-
-ul.printtoc1 li.sectionHead {
-    margin:      12pt 0 0 0;
-    padding:     0;
-}
-
-ul.printtoc2 li.sectionHead {
-    margin:      6pt 0 0 0;
-    padding:     0;
-}
-
-ul.printtoc3 li.sectionHead {
-    margin:      6pt 0 0 0;
-    padding:     0;
-}
-
 ul.printtoc1 li,
 ul.printtoc2 li,
 ul.printtoc3 li {
@@ -95,4 +70,33 @@ ul.printtoc3 li.a[href]{
     &:after {
        content: leader(".") target-counter(attr(href), page);
    }
+}
+
+ul.printtoc1 li.sectionHead,
+ul.printtoc2 li.sectionHead,
+ul.printtoc3 li.sectionHead {
+    font-family: $tocheading-font;
+    font-size:   $tocheading-size;
+    font-weight: $tocheading-weight;
+    color:       $tocheading-color;
+    text-decoration: none;
+}
+
+ul.printtoc1 li.sectionHead {
+    margin:      24pt 0 0 0;
+    padding:     0;
+}
+
+ul.printtoc2 li.sectionHead {
+    margin:      12pt 0 0 0;
+    padding:     0;
+    font-family: $tocheading2-font;
+    font-size:   $tocheading2-size;
+    font-weight: $tocheading2-weight;
+    color:       $tocheading2-color;
+}
+
+ul.printtoc3 li.sectionHead {
+    margin:      6pt 0 0 0;
+    padding:     0;
 }
