@@ -4,7 +4,7 @@ summary: Best practices for restarting your database
 keywords: importing
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_onprem_restarts.html
 folder: BestPractices
 ---

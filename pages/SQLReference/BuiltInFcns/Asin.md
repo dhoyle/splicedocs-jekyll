@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the arc sine of a number.
 keywords: asin, arc sine
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_asin.html
 folder: SQLReference/BuiltInFcns
 ---

@@ -4,7 +4,7 @@ summary: Built-in SQL function that searches for a string within another string
 keywords: find substring
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_locate.html
 folder: SQLReference/BuiltInFcns
 ---

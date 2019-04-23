@@ -4,7 +4,7 @@ summary: A quick summary of window functions, as implemented in Splice Machine S
 keywords: window functions, grouping, partition, default value
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_windowfcns.html
 folder: DeveloperTopics/Fundamentals
 ---

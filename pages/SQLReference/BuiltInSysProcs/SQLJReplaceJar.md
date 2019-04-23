@@ -4,7 +4,7 @@ summary: Built-in system procedure that replaces a jar file in a database.
 keywords: jar files, replace_jar
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_replacejar.html
 folder: SQLReference/BuiltInSysProcs
 ---

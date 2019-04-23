@@ -4,7 +4,7 @@ summary: Walks you creating an AWS S3 bucket and uploading your data to that buc
 keywords: upload data, aws, s3, bucket, import
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_cloudconnect_uploadtos3.html
 folder: DeveloperTopics/CloudConnect
 ---

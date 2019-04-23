@@ -4,13 +4,13 @@ summary: Machine Learning Manager
 keywords: data science, machine learning
 toc: false
 product: all
-sidebar: mlmanager_sidebar
+sidebar: home_sidebar
 permalink: mlmanager_intro.html
 folder: MLManager
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Machine Learning Manager" %}
+{% assign site.guide_heading = "Machine Learning Manager" %}
 # Splice Machine ML Manager
 
 The Splice ML Manager is an integrated machine learning (ML) platform that minimizes data movement and enables enterprises to deliver better decisions faster by continuously training the models on the most updated available data. With Splice ML Manager, data science teams are able to produce a higher number of more predictive models, facilitated by the ability to:

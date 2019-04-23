@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSTB Errors
 keywords: XSTB errors, error XSTB
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxstb.html
 folder: SQLReference/ErrorCodes
 ---

@@ -4,7 +4,7 @@ summary: How to configure a DBeaver connection to Splice Machine
 keywords: dbeaver, connect tutorial
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_dbeaver.html
 folder: DeveloperTutorials/BIConnect
 ---

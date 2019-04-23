@@ -4,7 +4,7 @@ summary: Built-in system procedure that updates the signatures of all of the sys
 keywords: update_all_system_procedures, update system procedure signatures
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_updateallsysprocs.html
 folder: SQLReference/BuiltInSysProcs
 ---

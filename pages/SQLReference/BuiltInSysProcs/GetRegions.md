@@ -4,7 +4,7 @@ summary: Built-in system procedure that retrieves the list of regions containing
 keywords: region compaction, compact region, minor compaction, COMPACT_REGION
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getregions.html
 folder: SQLReference/BuiltInSysProcs
 ---

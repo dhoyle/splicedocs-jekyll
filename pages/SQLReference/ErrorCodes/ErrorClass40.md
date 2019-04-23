@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 40 Errors
 keywords: 40 errors, error 40
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class40.html
 folder: SQLReference/ErrorCodes
 ---

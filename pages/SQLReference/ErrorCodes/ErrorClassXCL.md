@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XCL Errors
 keywords: XCL errors, error xcl
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxcl.html
 folder: SQLReference/ErrorCodes
 ---

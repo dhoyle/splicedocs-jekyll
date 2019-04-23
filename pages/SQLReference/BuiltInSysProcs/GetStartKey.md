@@ -4,7 +4,7 @@ summary: Built-in system procedure that retrieves the starting key value, in une
 keywords: hbase region, region, start key
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getstartkey.html
 folder: SQLReference/BuiltInSysProcs
 ---

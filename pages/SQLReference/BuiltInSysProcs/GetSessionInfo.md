@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays session information, including 
 keywords: session information, get_session_info
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getsessioninfo.html
 folder: SQLReference/BuiltInSysProcs
 ---

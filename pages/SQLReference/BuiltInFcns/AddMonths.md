@@ -4,7 +4,7 @@ summary: Built-in SQL function that adds a number of months to a date
 keywords: date math, adding months
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_addmonths.html
 folder: SQLReference/BuiltInFcns
 ---

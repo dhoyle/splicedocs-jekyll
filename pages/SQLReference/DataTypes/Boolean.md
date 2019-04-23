@@ -4,7 +4,7 @@ summary: The BOOLEAN data type provides 1 byte of storage for logical values.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_boolean.html
 folder: SQLReference/DataTypes
 ---

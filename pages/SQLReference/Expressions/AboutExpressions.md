@@ -4,7 +4,7 @@ summary: Introduction to and summary of expression syntax and rules
 keywords: expressions overview, exists, order by, update, values, where
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_about.html
 folder: SQLReference/Expressions
 ---

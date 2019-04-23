@@ -2,7 +2,7 @@
 title: Introduction
 summary: A list of the topics in this documentation that apply only to our database-as-a-service; these topics do not apply to our on-premise product product.
 keywords: home, welcome, dbaas, Service, paas
-sidebar:  dbaas_sidebar
+sidebar: home_sidebar
 toc: false
 product: all
 permalink: dbaas_about.html
@@ -79,9 +79,6 @@ Our documentation provides:
 
 * Complete descriptions of our [Cloud Manager
   dashboard](dbaas_cm_intro.html)
-* Numerous [Tutorials](tutorials_intro.html) about connecting with other
-  tools, using various programming languages with Splice Machine,
-  ingesting data efficiently, and so on.
 * An introduction to [Using Zeppelin with Splice
   Machine](dbaas_zep_intro.html)
 * A wealth of [Developer's Guide information](developers_intro.html) and
@@ -94,4 +91,3 @@ for your company.
 
 </div>
 </section>
-

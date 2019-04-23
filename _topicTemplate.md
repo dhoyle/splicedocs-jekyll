@@ -3,7 +3,7 @@ title: Title that will show in browser
 summary: A sentence that is used by search engines crawling the docs site; make this meaningful
 toc: false                                      # Don't change this
 product: all                                    # Don't change this
-sidebar: developers_sidebar                     # See _data/sidebars for the ids of our sidebars
+sidebar: home_sidebar                     # See _data/sidebars for the ids of our sidebars
 permalink: developers_fundamentals_auth.html    # Use this pattern: folder_subfolder_topic.html
 folder: Developers/Fundamentals                 # Use: folder/subfolder;
 ---
@@ -21,12 +21,12 @@ NOTES:
    a. Find and open the sidebar .yml file in the project's _data/sidebars folder. Our sidebars are:
 
        * cmdlineref_sidebar
-       * dbaas_sidebar
+       * getstarted_sidebar
        * dbconsole_sidebar
        * developers_sidebar
        * home_sidebar
-       * notes_sidebar
-       * onprem_sidebar
+       * getstarted_sidebar
+       * getstarted_sidebar
        * sqlref_sidebar
        * tutorials_sidebar
 

@@ -4,7 +4,7 @@ summary: Exports query results to CSV&#160;files.
 keywords: csv file, export, compression, encoding, separator
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_export.html
 folder: CmdLineReference
 ---

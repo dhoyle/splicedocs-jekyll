@@ -4,7 +4,7 @@ summary: Summarizes all of the SQL DML statements available in Splice Machine SQ
 keywords: data manipulation statements
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dmlintro.html
 folder: SQLReference/Statements
 ---

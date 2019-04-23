@@ -4,7 +4,7 @@ summary:
 keywords:
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_splicetools_dblook.html
 folder: DeveloperTopics/SpliceTools
 ---

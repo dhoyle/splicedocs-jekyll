@@ -3,7 +3,7 @@ title: GROUP_USER built-in SQL function
 summary: Built-in SQL function that returns the groups to which the current user belongs
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_groupuser.html
 folder: SQLReference/BuiltInFcns
 ---

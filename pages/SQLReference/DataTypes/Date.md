@@ -5,7 +5,7 @@ keywords:
 toc: false
 compatible_version: 2.7
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_date.html
 folder: SQLReference/DataTypes
 ---

@@ -2,7 +2,7 @@
 summary: Describes the functionality of the Splice Machine Cloud Manager Dashboard
 title: Using the Cloud Manager Dashboard
 keywords: dbaas, paas, cloud manager, dashboard
-sidebar:  dbaas_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_cm_dashboard.html

@@ -4,7 +4,7 @@ summary: Summary of built-in SQL functions in Splice Machine for working numeric
 keywords: numeric functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_numericfcnsintro.html
 folder: SQLReference/BuiltInFcns
 ---

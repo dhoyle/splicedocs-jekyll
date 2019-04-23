@@ -4,7 +4,7 @@ title: Splice Machine Administrator's Guide
 keywords: administer
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_admin_intro.html
 folder: OnPrem/Administrators
 ---

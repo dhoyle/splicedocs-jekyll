@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the cosine of a number
 keywords: cosine
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_cos.html
 folder: SQLReference/BuiltInFcns
 ---

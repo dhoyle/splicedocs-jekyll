@@ -4,7 +4,7 @@ summary: The  NUMERIC data type provides an exact numeric in which the precision
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_numeric.html
 folder: SQLReference/DataTypes
 ---

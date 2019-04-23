@@ -4,7 +4,7 @@ summary: Summarized information about using numeric data types in your database 
 keywords: numeric data types
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_numerictypes.html
 folder: SQLReference/DataTypes
 ---

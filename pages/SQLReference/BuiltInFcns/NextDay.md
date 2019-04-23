@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the date of a specified day
 keywords: date arithmetic
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_nextday.html
 folder: SQLReference/BuiltInFcns
 ---

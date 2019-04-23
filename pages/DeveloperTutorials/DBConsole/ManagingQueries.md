@@ -5,7 +5,7 @@ keywords: managing queries, console, console features, ui, dbaas, paas, db
 compatible_version: 2.7
 toc: false
 product: all
-sidebar:  tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_dbconsole_queries.html
 folder: DeveloperTutorials/DBConsole
 ---

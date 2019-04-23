@@ -4,7 +4,7 @@ summary: Built-in system procedure that disables collection of statistics on a s
 keywords: disable_column_statistics
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_disablecolumnstats.html
 folder: SQLReference/BuiltInSysProcs
 ---

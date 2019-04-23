@@ -4,7 +4,7 @@ summary: Built-in system procedure that imports data to a subset of columns in a
 keywords: import data, import_data, load data
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_importdata.html
 folder: SQLReference/BuiltInSysProcs
 ---

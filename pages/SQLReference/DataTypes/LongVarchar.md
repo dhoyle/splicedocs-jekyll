@@ -4,7 +4,7 @@ summary: The LONG VARCHAR type allows storage of character strings with a maximu
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_longvarchar.html
 folder: SQLReference/DataTypes
 ---

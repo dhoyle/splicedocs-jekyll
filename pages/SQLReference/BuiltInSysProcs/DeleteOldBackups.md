@@ -4,7 +4,7 @@ summary: Built-in system procedure that deletes all backups that were created mo
 keywords: Delete old backups, delete_old_backups
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_deleteoldbackups.html
 folder: SQLReference/BuiltInSysProcs
 ---

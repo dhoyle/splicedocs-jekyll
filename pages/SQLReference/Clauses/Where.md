@@ -4,7 +4,7 @@ summary: An optional clause in a SelectExpression, DELETE statement, or UPDATE s
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_where.html
 folder: SQLReference/Clauses
 ---

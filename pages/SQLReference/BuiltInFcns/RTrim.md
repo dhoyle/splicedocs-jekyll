@@ -4,7 +4,7 @@ summary: Built-in SQL function that removes blanks from the end of a character e
 keywords: right trim, string functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_rtrim.html
 folder: SQLReference/BuiltInFcns
 ---

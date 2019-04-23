@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSTA2 Errors
 keywords: XSTA2 errors, error XSTA2
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsta2.html
 folder: SQLReference/ErrorCodes
 ---

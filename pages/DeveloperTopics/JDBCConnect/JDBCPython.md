@@ -4,7 +4,7 @@ summary: Shows how to connect to your Splice Machine database with Python via ou
 keywords: JDBC, Python, connect tutorial
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connectjdbc_python.html
 folder: DeveloperTopics/JDBCConnect
 ---

@@ -4,7 +4,7 @@ summary: System table that stores the table permissions that have granted but no
 keywords: Table permissions table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_systableperms.html
 folder: SQLReference/SystemTables
 ---

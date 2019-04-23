@@ -4,7 +4,7 @@ summary: Built-in SQL aggregate or window function that evaluates the minimum of
 keywords: minimum window function, minimum aggregate function, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_min.html
 folder: SQLReference/BuiltInFcns
 ---

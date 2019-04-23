@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSAX Errors
 keywords: XSAS errors, error XSAS
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsax.html
 folder: SQLReference/ErrorCodes
 ---

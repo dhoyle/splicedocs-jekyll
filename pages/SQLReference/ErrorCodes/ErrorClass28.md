@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 28 Errors
 keywords: 28 errors, error 28
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class28.html
 folder: SQLReference/ErrorCodes
 ---

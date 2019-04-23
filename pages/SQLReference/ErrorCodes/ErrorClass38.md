@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 38 Errors
 keywords: 38 errors, error 38
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class38.html
 folder: SQLReference/ErrorCodes
 ---

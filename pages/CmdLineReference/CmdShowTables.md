@@ -4,7 +4,7 @@ summary: Displays all of the tables in a database or schema.
 keywords: table, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showtables.html
 folder: CmdLineReference
 ---

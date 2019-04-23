@@ -4,13 +4,13 @@ title: Splice Machine On-Premise Database
 keywords:
 toc: false
 product: all
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_intro.html
 folder: OnPrem
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "On-Premise Database Product" %}
+{% assign site.guide_heading = "On-Premise Database Product" %}
 # Welcome to the Splice Machine On-Premise Database!
 
 Welcome to Splice Machine, the database platform for adaptive

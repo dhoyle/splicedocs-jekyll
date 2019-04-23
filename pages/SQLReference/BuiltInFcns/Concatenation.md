@@ -4,7 +4,7 @@ summary: Built-in SQL function that concatenates one character or bit string exp
 keywords: concat, concatenate
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_concat.html
 folder: SQLReference/BuiltInFcns
 ---

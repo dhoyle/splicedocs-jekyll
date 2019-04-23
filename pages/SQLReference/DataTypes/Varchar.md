@@ -4,7 +4,7 @@ summary: The VARCHAR&#160;data type provides for variable-length storage of stri
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_varchar.html
 folder: SQLReference/DataTypes
 ---

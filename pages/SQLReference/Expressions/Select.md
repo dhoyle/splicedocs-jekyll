@@ -4,7 +4,7 @@ summary: Describes the SELECT expression, which builds a table value based on fi
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_select.html
 folder: SQLReference/Expressions
 ---

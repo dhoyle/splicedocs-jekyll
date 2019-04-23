@@ -4,7 +4,7 @@ summary: Descriptions of using dynamic parameters in expressions in Splice Machi
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_dynamicparams.html
 folder: SQLReference/Expressions
 ---

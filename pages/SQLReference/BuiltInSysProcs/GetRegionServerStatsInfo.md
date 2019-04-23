@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays input and output statistics abo
 keywords:  get_region_server_stats_info, region server statistics
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getregionserverstats.html
 folder: SQLReference/BuiltInSysProcs
 ---

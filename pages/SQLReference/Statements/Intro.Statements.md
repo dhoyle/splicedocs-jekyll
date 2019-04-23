@@ -4,7 +4,7 @@ summary: Summarizes all of the SQL statements available in Splice Machine SQL.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_intro.html
 folder: SQLReference/Statements
 ---

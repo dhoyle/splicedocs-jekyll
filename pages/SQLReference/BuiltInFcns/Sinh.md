@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the hyperbolic sine of a number
 keywords: hyperbolic sine
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_sinh.html
 folder: SQLReference/BuiltInFcns
 ---

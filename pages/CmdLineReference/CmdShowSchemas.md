@@ -4,7 +4,7 @@ summary: Displays information about the schemas in the current connection.
 keywords: schema, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showschemas.html
 folder: CmdLineReference
 ---

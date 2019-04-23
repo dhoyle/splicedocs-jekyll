@@ -4,7 +4,7 @@ summary: Drops a role from a database.
 keywords: dropping a role
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_droprole.html
 folder: SQLReference/Statements
 ---

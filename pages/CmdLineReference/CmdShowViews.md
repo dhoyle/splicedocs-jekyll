@@ -4,7 +4,7 @@ summary: Displays information about all of the views in a schema.
 keywords: view,, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showviews.html
 folder: CmdLineReference
 ---

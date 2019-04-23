@@ -10,6 +10,7 @@ folder: /
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
+{% assign site.guide_heading = "About Splice Machine" %}
 
 # Getting Started with Splice Machine
 This topic helps you to quickly become productive with your new Splice Machine database by introducing you to some of the major features you'll be using.
@@ -184,7 +185,7 @@ Statement executed.
 
 
 ## 3. Investigate our Developer Topics {#devtopics}
-Our [Developer Tutorials](tutorials_intro.html) and [Best Practices](bestpractices_intro.html) Guides contain topics that are useful to database developers, most of which involve using basic SQL functionality and/or built-in system procedures. These topics are organized into multiple sections, including these:
+Our [Developer Topics and Tutorials](developers_intro.html) and [Best Practices](bestpractices_intro.html) Guides contain topics that are useful to database developers, most of which involve using basic SQL functionality and/or built-in system procedures. These topics are organized into multiple sections, including these:
 <table>
     <col width="28%" />
     <col />
@@ -230,9 +231,9 @@ Our [Developer Tutorials](tutorials_intro.html) and [Best Practices](bestpractic
     </tbody>
 </table>
 
-## 4. Explore our Developer Tutorials and Best Practices{#devtutorials}
+## 4. Explore our Developer Tutorials and Best Practices {#devtutorials}
 
-Our [Developer Tutorials](tutorials_intro.html) and [Best Practices](bestpractices_intro.html) Guides include deep dives into more complex developer topics, such as:
+Our [Developer Tutorials](developers_intro.html) and [Best Practices](bestpractices_intro.html) Guides include deep dives into more complex developer topics, such as:
 
 <table>
     <col  width="28%" />

@@ -4,7 +4,7 @@ summary: A brief glossary of terms included in the Splice Machine documentation
 keywords: glossary
 toc: false
 product: all
-sidebar:  notes_sidebar
+sidebar: home_sidebar
 permalink: notes_glossary.html
 folder: Notes
 ---

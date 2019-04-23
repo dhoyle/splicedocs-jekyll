@@ -4,7 +4,7 @@ summary: Built-in system procedure that sets or deletes the value of a property 
 keywords: properties, SET_GLOBAL_DATABASE_PROPERTY, set property value
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_setglobaldbprop.html
 folder: SQLReference/BuiltInSysProcs
 ---

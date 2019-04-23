@@ -4,7 +4,7 @@ summary: A built-in SQL pseudocolumn that uniquely defines a single row in a dat
 keywords: row id, row identity
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_rowid.html
 folder: SQLReference/BuiltInFcns
 ---

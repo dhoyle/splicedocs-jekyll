@@ -5,7 +5,7 @@ keywords: authenticate, credentials, configuring, native authentication, ldap
 toc: false
 compatible_version: 2.7
 product: onprem
-sidebar:  tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_security_authentication.html
 folder: DeveloperTutorials/OnPremAuth
 ---

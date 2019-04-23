@@ -4,7 +4,7 @@ toc: false
 keywords:
 product: all
 summary:
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_spliceplus_migrating.html
 folder: DeveloperTopics/SplicePlus
 ---

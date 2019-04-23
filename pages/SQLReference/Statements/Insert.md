@@ -4,7 +4,7 @@ summary: Inserts records into a table.
 keywords: inserting records, insert into, record insertion
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_insert.html
 folder: SQLReference/Statements
 ---

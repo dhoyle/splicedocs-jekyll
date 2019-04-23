@@ -4,7 +4,7 @@ summary: System table that describes the conglomerates within the current databa
 keywords: conglomerates table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysconglomerates.html
 folder: SQLReference/SystemTables
 ---

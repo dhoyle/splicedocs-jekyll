@@ -4,13 +4,13 @@ summary: Summarizes the splice&gt; commands.
 keywords: splice>, cli, command reference
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_intro.html
 folder: CmdLineReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Command Line Reference" %}
+{% assign site.guide_heading = "splice&gt; Command Line Reference" %}
 # Splice Machine Commands Reference
 
 This guide contains reference information for using the Splice Machine command line interpreter, which is also known as the Splice Prompt (<span class="AppCommand">splice&gt;</span>).

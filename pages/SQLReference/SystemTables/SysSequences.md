@@ -4,7 +4,7 @@ summary: System table that describes the sequence generators in the database.
 keywords: sequences table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_syssequences.html
 folder: SQLReference/SystemTables
 ---

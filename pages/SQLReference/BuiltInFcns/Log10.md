@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the base-10 logarithm of a number
 keywords: base-10 logarithm
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_log10.html
 folder: SQLReference/BuiltInFcns
 ---

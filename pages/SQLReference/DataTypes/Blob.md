@@ -4,7 +4,7 @@ summary: The BLOB (binary large object) data type is used for varying-length bin
 keywords: binary, binary large object, varying-length
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_blob.html
 folder: SQLReference/DataTypes
 ---

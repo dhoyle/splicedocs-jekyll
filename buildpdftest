@@ -1,0 +1,22 @@
+#!/bin/sh
+
+PS3="Select which Docs Version to build: "
+COLUMNS=12
+version='docsdev'
+branch='2.8'
+break;
+
+echo "Killing all Jekyll instances"
+kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
+
+echo "  --> Building with _config.yml,_config_$version.yml,_config_$branch.yml"
+
+echo "Building Splice Documentation HTML suite"
+ jekyll serve --detach --config _config.yml,_config_$version.yml,_config_$branch.yml,pdfconfigs/suite/config_pdf.yml
+echo "done"
+
+echo "Creating PDF file: pdf/splicedocs.pdf"
+ prince --javascript --input-list=_site/pdfconfigs/suite/prince-testlist.txt -o pdf/test.pdf 2>pdfwarns.txt
+echo "done"
+
+say -v Fiona "PDF Test Build Done"

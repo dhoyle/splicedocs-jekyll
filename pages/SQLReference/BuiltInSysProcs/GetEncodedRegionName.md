@@ -3,7 +3,7 @@ title: SYSCS_UTIL.GET_ENCODED_REGION_NAME built-in system procedure
 summary: Built-in system procedure that returns the encoded name of the HBase region that contains the Splice Machine table primary key or index values specified in unencodedKey.
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getencodedregion.html
 folder: SQLReference/BuiltInSysProcs
 ---

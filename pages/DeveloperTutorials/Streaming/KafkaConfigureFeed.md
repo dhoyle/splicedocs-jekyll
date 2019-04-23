@@ -4,7 +4,7 @@ summary: A tutorial showing you how to use configure a Kafka feed for streaming 
 keywords: kafka configure, kafka streaming, configure feed
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_ingest_kafkafeed.html
 folder: DeveloperTutorials/Streaming
 ---

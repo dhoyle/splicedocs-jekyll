@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns a tiny integer representation of a n
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_tinyint.html
 folder: SQLReference/BuiltInFcns
 ---

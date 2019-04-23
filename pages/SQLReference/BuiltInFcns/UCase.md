@@ -4,7 +4,7 @@ summary: Built-in SQL function that converts all lowercase alphabetic characters
 keywords: convert to uppercase
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_ucase.html
 folder: SQLReference/BuiltInFcns
 ---

@@ -5,7 +5,7 @@ keywords: SSL, TLS, Secure Socket Layer, Transport Layer Security, authenticatio
 toc: false
 compatible_version: 2.7
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_security_ssltls.html
 folder: DeveloperTutorials/Security
 ---

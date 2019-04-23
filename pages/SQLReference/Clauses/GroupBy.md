@@ -4,7 +4,7 @@ summary: A clause that is part of a Select Expression that groups a result into 
 keywords: grouping results, SelectExpression, ROLLUP
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_groupby.html
 folder: SQLReference/Clauses
 ---

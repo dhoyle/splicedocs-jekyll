@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XBM Errors
 keywords: XBM errors, error xbm
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxbm.html
 folder: SQLReference/ErrorCodes
 ---

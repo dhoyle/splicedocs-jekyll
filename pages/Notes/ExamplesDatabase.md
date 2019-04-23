@@ -4,7 +4,7 @@ summary: Describes the simple database we use to provide examples throughout the
 keywords: examples database, documentation examples, doc examples
 toc: false
 product: all
-sidebar:  notes_sidebar
+sidebar: home_sidebar
 permalink: notes_examplesdb.html
 folder: Notes
 ---

@@ -4,7 +4,7 @@ summary: Disconnects from a database.
 keywords: disconnecting
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_disconnect.html
 folder: CmdLineReference
 ---

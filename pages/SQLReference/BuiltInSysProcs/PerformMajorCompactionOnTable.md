@@ -4,7 +4,7 @@ summary: Built-in system procedure that performs a major compaction on a table.
 keywords: major compaction, table compaction, compacting a table, perform_major_compaction
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_compacttable.html
 folder: SQLReference/BuiltInSysProcs
 ---

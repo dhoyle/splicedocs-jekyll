@@ -4,7 +4,7 @@ summary: Built-in system procedure that drops statistics for a schema.
 keywords: drop statistics, drop_schema_statistics
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_dropschemastats.html
 folder: SQLReference/BuiltInSysProcs
 ---

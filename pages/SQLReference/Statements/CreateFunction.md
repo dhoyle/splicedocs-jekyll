@@ -4,7 +4,7 @@ summary: Creates Java functions that you can then use in expressions.
 keywords: creating functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createfunction.html
 folder: SQLReference/Statements
 ---

@@ -4,7 +4,7 @@ summary: Built-in system procedure that backs up a specific table to a specified
 keywords: backing up, backup_database, backup database
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_backuptable.html
 folder: SQLReference/BuiltInSysProcs
 ---

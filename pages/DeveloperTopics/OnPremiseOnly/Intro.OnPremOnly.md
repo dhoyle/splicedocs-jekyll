@@ -4,7 +4,7 @@ summary: Describes developer fundamentals that apply only to our on-premise prod
 keywords: fundamentals, developers
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_onpremonly_intro.html
 folder: DeveloperTopics/OnPremOnly
 ---

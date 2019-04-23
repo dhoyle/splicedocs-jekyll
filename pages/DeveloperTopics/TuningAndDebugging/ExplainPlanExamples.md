@@ -4,7 +4,7 @@ summary: Presents examples of output from using the Splice Machine Explain Plan 
 keywords: explain plan
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_tuning_explainplan_examples.html
 folder: DeveloperTopics/TuningAndDebugging
 ---

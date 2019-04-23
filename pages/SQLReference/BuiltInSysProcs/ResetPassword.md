@@ -4,7 +4,7 @@ summary: Built-in system procedure that resets a password that has expired or ha
 keywords: reset_password, reset password
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_resetpassword.html
 folder: SQLReference/BuiltInSysProcs
 ---

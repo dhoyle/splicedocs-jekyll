@@ -4,7 +4,7 @@ summary: Detailed specifications of the parameter values used in Splice Machine 
 keywords: import, ingest, input parameters, compression, encoding, separator
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_ingest_params.html
 folder: BestPractices/Database
 ---

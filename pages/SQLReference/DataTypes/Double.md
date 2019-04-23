@@ -4,7 +4,7 @@ summary: The DOUBLE data type provides 8-byte storage for numbers using IEEE flo
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_double.html
 folder: SQLReference/DataTypes
 ---

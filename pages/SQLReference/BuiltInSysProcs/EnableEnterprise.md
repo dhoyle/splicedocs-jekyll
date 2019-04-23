@@ -4,7 +4,7 @@ summary: Built-in system procedure for upgrading from the Community Edition of S
 keywords: enabling enterprise features, enable_enterprise, encryption, kerberos, LDAP
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_enableenterprise.html
 folder: SQLReference/BuiltInSysProcs
 ---

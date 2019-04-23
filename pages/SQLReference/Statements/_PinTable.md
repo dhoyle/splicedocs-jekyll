@@ -4,7 +4,7 @@ summary: Pins a table in memory.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_pintable.html
 folder: SQLReference/Statements
 ---

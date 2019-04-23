@@ -4,7 +4,7 @@ summary: Summarizes the SQL clauses available in Splice Machine.
 keywords: clauses, sql clauses
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_intro.html
 folder: SQLReference/Clauses
 ---

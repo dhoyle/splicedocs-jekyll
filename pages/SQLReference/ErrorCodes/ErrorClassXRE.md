@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XRE Errors
 keywords: XRE errors, error XRE
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxre.html
 folder: SQLReference/ErrorCodes
 ---

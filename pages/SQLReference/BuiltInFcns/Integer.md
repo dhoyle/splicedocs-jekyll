@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns an integer representation of a value
 keywords: convert to integer
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_integer.html
 folder: SQLReference/BuiltInFcns
 ---

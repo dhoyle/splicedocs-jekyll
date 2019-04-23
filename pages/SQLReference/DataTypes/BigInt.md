@@ -4,7 +4,7 @@ summary: The BIGINT data type provides 8 bytes of storage for integer values.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_bigint.html
 folder: SQLReference/DataTypes
 ---

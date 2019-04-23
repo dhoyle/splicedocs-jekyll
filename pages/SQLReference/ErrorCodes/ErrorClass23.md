@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 23 Errors
 keywords: 23 errors, error 23
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class23.html
 folder: SQLReference/ErrorCodes
 ---

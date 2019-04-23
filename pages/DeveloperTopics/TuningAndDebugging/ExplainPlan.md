@@ -4,7 +4,7 @@ summary: Use the Splice Machine explain plan feature to view the execution plan 
 keywords: explain plan, statistics
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_tuning_explainplan.html
 folder: DeveloperTopics/TuningAndDebugging
 ---

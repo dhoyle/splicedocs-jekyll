@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 39 Errors
 keywords: 39 errors, error 39
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class39.html
 folder: SQLReference/ErrorCodes
 ---

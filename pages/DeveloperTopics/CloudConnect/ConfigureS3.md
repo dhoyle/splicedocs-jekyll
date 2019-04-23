@@ -4,7 +4,7 @@ summary: Walks you configuring an AWS S3 bucket for use with Splice Machine.
 keywords: S3, configuring, IAM, bucket,
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_cloudconnect_configures3.html
 folder: DeveloperTopics/CloudConnect
 ---

@@ -2,7 +2,7 @@
 summary: Introduction to Using Zeppelin with Your Database Service
 title: Using Zeppelin
 keywords: zep, notebook, dbaas, paas
-sidebar: dbaas_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_zep_intro.html

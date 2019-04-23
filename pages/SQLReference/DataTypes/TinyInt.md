@@ -4,7 +4,7 @@ summary: The TINYINT data type provides 1 byte of storage for integer values.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_tinyint.html
 folder: SQLReference/DataTypes
 ---

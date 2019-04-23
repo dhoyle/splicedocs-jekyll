@@ -4,7 +4,7 @@ summary: Information about how Splice Machine internally tracks the dependencies
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_interactions.html
 folder: SQLReference/Statements
 ---

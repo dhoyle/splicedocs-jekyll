@@ -4,7 +4,7 @@ summary: Runs commands from a file.
 keywords: commands file, cli
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_run.html
 folder: CmdLineReference
 ---

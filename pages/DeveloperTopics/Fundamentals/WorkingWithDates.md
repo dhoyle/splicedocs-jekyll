@@ -4,7 +4,7 @@ summary: Provides an overview of working with dates and date arithmetic in Splic
 keywords: date math, date arithmetic, date values, time values, timestamp, date format, date time
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_dates.html
 folder: DeveloperTopics/Fundamentals
 ---

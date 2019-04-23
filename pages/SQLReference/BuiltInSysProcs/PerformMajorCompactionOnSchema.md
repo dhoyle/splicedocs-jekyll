@@ -4,7 +4,7 @@ summary: Built-in system procedure that performs a major compaction on a schema.
 keywords: perform_major_compaction, compacting a schema
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_compactschema.html
 folder: SQLReference/BuiltInSysProcs
 ---

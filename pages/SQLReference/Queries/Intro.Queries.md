@@ -4,7 +4,7 @@ summary: Summary of the query operations available in Splice Machine SQL.
 keywords: query operations summary
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_queries_intro.html
 folder: SQLReference/Queries
 ---

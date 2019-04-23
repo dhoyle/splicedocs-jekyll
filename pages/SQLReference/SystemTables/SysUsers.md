@@ -4,7 +4,7 @@ summary: System table that stores user credentials when NATIVE authentication is
 keywords: user credentials table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysusers.html
 folder: SQLReference/SystemTables
 ---

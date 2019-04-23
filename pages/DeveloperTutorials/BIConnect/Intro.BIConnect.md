@@ -4,7 +4,7 @@ summary: How to connect your Splice Machine database with third party database a
 keywords: connect tutorial
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_biconnect_intro.html
 folder: DeveloperTutorials/BIConnect
 ---

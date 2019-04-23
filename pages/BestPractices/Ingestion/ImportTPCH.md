@@ -4,7 +4,7 @@ summary: Importing TPCH data into your database.
 keywords: import, ingest, tpch
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_ingest_tpch.html
 folder: BestPractices/Database
 ---

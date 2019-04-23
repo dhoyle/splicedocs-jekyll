@@ -4,7 +4,7 @@ summary: Built-in SQL function that computes sample standard deviation.
 keywords: standard deviation, sample, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_stddevsamp.html
 folder: SQLReference/BuiltInFcns
 ---

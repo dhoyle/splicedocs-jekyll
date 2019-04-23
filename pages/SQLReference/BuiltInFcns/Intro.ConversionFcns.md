@@ -4,7 +4,7 @@ summary: Summary of built-in SQL functions in Splice Machine for converting data
 keywords: conversion functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_conversionfcnsintro.html
 folder: SQLReference/BuiltInFcns
 ---

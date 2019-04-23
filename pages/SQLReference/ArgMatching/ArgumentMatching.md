@@ -4,7 +4,7 @@ summary: How Splice Machine maps SQL data types to Java data types and matches a
 keywords: arg match, stored procedures
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sqlargmatching.html
 folder: SQLReference/ArgMatching
 ---

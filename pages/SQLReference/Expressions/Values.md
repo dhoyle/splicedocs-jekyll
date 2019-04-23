@@ -4,7 +4,7 @@ summary: Describes the VALUES expression, which constructs a row or table from o
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_values.html
 folder: SQLReference/Expressions
 ---

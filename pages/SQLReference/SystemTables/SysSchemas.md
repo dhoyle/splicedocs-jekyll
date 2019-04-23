@@ -4,7 +4,7 @@ summary: System table that describes the schemas within the current database.
 keywords: schemas table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysschemas.html
 folder: SQLReference/SystemTables
 ---

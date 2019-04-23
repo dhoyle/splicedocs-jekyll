@@ -4,7 +4,7 @@ summary: Best practices and Troubleshooting
 keywords: ingest, import
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_ingest_import.html
 folder: BestPractices/Database
 ---

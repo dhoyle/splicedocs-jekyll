@@ -4,7 +4,7 @@ summary: Describes how to use temporary tables with Splice Machine.
 keywords: temp tables
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_temptables.html
 folder: DeveloperTopics/Fundamentals
 ---

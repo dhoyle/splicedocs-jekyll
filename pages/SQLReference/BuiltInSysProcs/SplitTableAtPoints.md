@@ -4,7 +4,7 @@ summary: Built-in system procedure that splits a table or index into HFiles base
 keywords: split table at points, split_table_or_index_at_points
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_splittableatpoints.html
 folder: SQLReference/BuiltInSysProcs
 ---

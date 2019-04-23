@@ -4,7 +4,7 @@ summary: Summary of requirements for installing and running Splice Machine on yo
 keywords: on-premise requirements, requirements, cores, memory, disk space, hadoop ecosystem, cluster, linux, centos, rhel 6, hadoop, hbase, zookeeper, java jdk, openjdk, macos, macintosh, ubuntu
 toc: false
 product: all
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_info_requirements.html
 folder: OnPrem/Info
 ---

@@ -4,7 +4,7 @@ summary: Set operator used to combine query results
 keywords: unioning, combining, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_union.html
 folder: SQLReference/Clauses
 ---

@@ -4,7 +4,7 @@ summary: Built-in system procedure that returns the DDL of a table.
 keywords: table, ddl
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_showcreatetable.html
 folder: SQLReference/BuiltInSysProcs
 ---

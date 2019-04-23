@@ -4,7 +4,7 @@ title: Cleaning Your Database
 keywords: cleaning database, flatten
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_admin_cleaningdb.html
 folder: OnPrem/Administrators
 ---

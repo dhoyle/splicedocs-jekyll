@@ -4,7 +4,7 @@ summary: Built-in SQL function that formats a date value into a string
 keywords: convert date to string
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_tochar.html
 folder: SQLReference/BuiltInFcns
 ---

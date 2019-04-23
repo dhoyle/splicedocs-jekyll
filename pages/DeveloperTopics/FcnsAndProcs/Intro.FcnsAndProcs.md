@@ -4,7 +4,7 @@ summary: Overview of writing and using functions and stored procedures in Splice
 keywords: stored procedure, user-defined function, udf, create stored procedure, create function
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fcnsandprocs_intro.html
 folder: DeveloperTopics/FcnsAndProcs
 ---

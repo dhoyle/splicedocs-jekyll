@@ -4,7 +4,7 @@ summary: Built-in SQL function that formats a date string and returns a DATE val
 keywords: convert string to date, todate, date format
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_todate.html
 folder: SQLReference/BuiltInFcns
 ---

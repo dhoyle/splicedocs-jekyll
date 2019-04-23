@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XCX Errors
 keywords: XCX errors, error XCX
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxcx.html
 folder: SQLReference/ErrorCodes
 ---

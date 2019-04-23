@@ -4,7 +4,7 @@ summary: Displays the execution plan for an SQL statement.
 keywords: execution plan, performance tuning
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_explainplan.html
 folder: CmdLineReference
 ---

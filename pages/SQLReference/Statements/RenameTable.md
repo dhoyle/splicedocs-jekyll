@@ -4,7 +4,7 @@ summary: Renames an existing table in a schema.
 keywords: renaming a table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_renametable.html
 folder: SQLReference/Statements
 ---

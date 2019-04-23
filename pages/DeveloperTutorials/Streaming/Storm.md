@@ -4,7 +4,7 @@ summary: A tutorial showing you how to use Apache Storm to insert data from a My
 keywords: storm
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_ingest_storm.html
 folder: DeveloperTutorials/Streaming
 ---

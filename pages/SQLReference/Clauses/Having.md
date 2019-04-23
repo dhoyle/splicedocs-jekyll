@@ -4,7 +4,7 @@ summary: A clause that restricts the results of a GROUP BY clause in a Select Ex
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_having.html
 folder: SQLReference/Clauses
 ---

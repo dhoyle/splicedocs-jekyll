@@ -4,7 +4,7 @@ summary: System table that describes the database's triggers.
 keywords: triggers table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_systriggers.html
 folder: SQLReference/SystemTables
 ---

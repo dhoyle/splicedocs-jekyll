@@ -4,7 +4,7 @@ summary: Allows you to specify which connection is the current connection
 keywords: connections
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_setconnection.html
 folder: CmdLineReference
 ---

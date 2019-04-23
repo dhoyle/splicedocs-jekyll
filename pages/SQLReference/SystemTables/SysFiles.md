@@ -4,7 +4,7 @@ summary: System table that describes jar files stored in the database.
 keywords: files table, jar files table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysfiles.html
 folder: SQLReference/SystemTables
 ---

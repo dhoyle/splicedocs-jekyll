@@ -4,7 +4,7 @@ summary: The SMALLINT data type provides 2 bytes of storage.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_smallint.html
 folder: SQLReference/DataTypes
 ---

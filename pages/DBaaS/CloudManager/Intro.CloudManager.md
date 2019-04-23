@@ -4,7 +4,7 @@ title: Introduction
 keywords: dbaas, paas, cloud manager, ui, user interface
 toc: false
 product: all
-sidebar:  dbaas_sidebar
+sidebar: home_sidebar
 permalink: dbaas_cm_intro.html
 folder: DBaaS/CloudManager
 ---

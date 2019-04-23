@@ -4,7 +4,7 @@ summary: How to use external tables with Splice Machine
 keywords: external tables, orc format, parquet, textfile, external file, compression
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_externaltables.html
 folder: DeveloperTopics/Fundamentals
 ---

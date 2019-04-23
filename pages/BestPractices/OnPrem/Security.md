@@ -4,7 +4,7 @@ summary: Best practices for database security
 keywords: importing
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_onprem_security.html
 folder: BestPractices
 ---

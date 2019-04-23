@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns a list of role names for the current
 keywords: current role
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_currentrole.html
 folder: SQLReference/BuiltInFcns
 ---

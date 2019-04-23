@@ -4,7 +4,7 @@ summary: Built-in system procedure that invalidates all system prepared statemen
 keywords: invalidating stored statements, invalidate_stored_statements
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_invalidatestoredstmts.html
 folder: SQLReference/BuiltInSysProcs
 ---

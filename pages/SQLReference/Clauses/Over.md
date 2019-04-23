@@ -4,7 +4,7 @@ summary: A clause used in window functions to define the window on which the fun
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_over.html
 folder: SQLReference/Clauses
 ---

@@ -4,7 +4,7 @@ summary: Walks you through compiling and running a Python program that connects 
 keywords: ODBC, Python, connect tutorial
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_python.html
 folder: DeveloperTopics/ODBCConnect
 ---

@@ -4,7 +4,7 @@ summary: System table that describes the information specific to foreign key con
 keywords: foreign keys table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysforeignkeys.html
 folder: SQLReference/SystemTables
 ---

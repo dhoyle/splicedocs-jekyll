@@ -4,7 +4,7 @@ summary: Tutorial topics related to indexing in your database.
 keywords: ingestion, ingest data
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_indexing_intro.html
 folder: DeveloperTutorials/Indexing
 ---

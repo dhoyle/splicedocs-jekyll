@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the natural logarithm (base e) of a 
 keywords: log, ln, logarithm
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_ln.html
 folder: SQLReference/BuiltInFcns
 ---

@@ -4,7 +4,7 @@ summary: The ML Manager API
 keywords: data science, machine learning
 toc: false
 product: all
-sidebar: mlmanager_sidebar
+sidebar: home_sidebar
 permalink: mlmanager_api.html
 folder: MLManager
 ---

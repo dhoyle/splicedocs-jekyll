@@ -4,7 +4,7 @@ summary: Creates a virtual table based on existing tables or constants built int
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_queries_query.html
 folder: SQLReference/Queries
 ---

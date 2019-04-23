@@ -4,7 +4,7 @@ summary: Built-in system procedure that computes split points for a table or ind
 keywords: compute split points, splice_table_or_index
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_splittable.html
 folder: SQLReference/BuiltInSysProcs
 ---

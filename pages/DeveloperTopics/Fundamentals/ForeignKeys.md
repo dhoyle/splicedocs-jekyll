@@ -4,7 +4,7 @@ summary: Describes our implementation of foreign keys and how our implementation
 keywords: keys, foreign keys, referential integrity
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_foreignkeys.html
 folder: DeveloperTopics/Fundamentals
 ---

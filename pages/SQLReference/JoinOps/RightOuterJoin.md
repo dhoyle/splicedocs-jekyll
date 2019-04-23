@@ -4,7 +4,7 @@ summary: Join operation that returns all rows from the right table (table2), wit
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_joinops_rightouterjoin.html
 folder: SQLReference/JoinOps
 ---

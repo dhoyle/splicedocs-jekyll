@@ -4,7 +4,7 @@ summary: Overview of using various tools to stream data into Splice Machine
 keywords: stream data, ingestion, ingest data
 toc: false
 product: all
-sidebar: tutorials_sidebar
+sidebar: home_sidebar
 permalink: tutorials_streaming_intro.html
 folder: DeveloperTutorials/Streaming
 ---

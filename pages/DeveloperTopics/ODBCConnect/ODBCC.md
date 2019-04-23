@@ -4,7 +4,7 @@ summary: Walks you through compiling and running a C program that connects to yo
 keywords: ODBC, C, connect tutorial
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_odbcc.html
 folder: DeveloperTopics/ODBCConnect
 ---

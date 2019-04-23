@@ -4,7 +4,7 @@ summary: The Splice Machine MapReduce API provides a simple programmatic interfa
 keywords: Map Reduce, MR, framework
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_mapreduce.html
 folder: DeveloperTopics/OnPremiseOnly
 ---

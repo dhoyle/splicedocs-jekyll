@@ -4,7 +4,7 @@ summary: System table that stores the permissions that have been granted to rout
 keywords: routine permissions table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysroutineperms.html
 folder: SQLReference/SystemTables
 ---

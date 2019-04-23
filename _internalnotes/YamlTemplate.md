@@ -4,7 +4,7 @@ summary: Provides and describes the structure of our topic pages.
 keywords: docs, template, yaml
 toc: false
 product: all
-sidebar: notes_sidebar
+sidebar: getstarted_sidebar
 permalink: notes_doctemplate.html
 folder: Notes
 ---
@@ -44,7 +44,7 @@ summary: Collects statistics for a table or schema.
 keywords: analyze, analyze command, statistics, stats
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_analyze.html
 folder: CmdLineReference
 ---
@@ -81,12 +81,12 @@ At the bottom of each topic page are the closing tags for the main div and secti
 Each major section (*book*) in the documentation has a navigation sidebar that is a YAML file. Each sidebar contains a link to each page in the section. For simplicity, our sidebars are limited to only 2 levels deep. Our sidebars as of this writing (early 2018) are:
 
 * cmdlineref_sidebar.yml
-* dbaas_sidebar.yml
+* getstarted_sidebar.yml
 * dbconsole_sidebar.yml
 * developers_sidebar.yml
 * home_sidebar.yml
-* notes_sidebar.yml
-* onprem_sidebar.yml
+* getstarted_sidebar.yml
+* getstarted_sidebar.yml
 * sqlref_sidebar.yml
 * tutorials_sidebar.yml
 

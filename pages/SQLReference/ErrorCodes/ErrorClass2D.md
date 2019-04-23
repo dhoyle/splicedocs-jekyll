@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 2D Errors
 keywords: 2D errors, error 2d
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class2d.html
 folder: SQLReference/ErrorCodes
 ---

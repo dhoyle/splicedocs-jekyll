@@ -4,7 +4,7 @@ summary: System table that describes the tables and views within the current dat
 keywords: Tables table, view table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_systables.html
 folder: SQLReference/SystemTables
 ---

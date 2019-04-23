@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 22 Errors
 keywords: 22 errors, error 22
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class22.html
 folder: SQLReference/ErrorCodes
 ---

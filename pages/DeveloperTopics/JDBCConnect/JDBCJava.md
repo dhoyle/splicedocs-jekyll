@@ -4,7 +4,7 @@ summary: Walks you through compiling and running a Java program that connects to
 keywords: Java, JDBC, connect tutorial, java jdbc, jdbc java
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_java.html
 folder: DeveloperTopics/JDBCConnect
 ---

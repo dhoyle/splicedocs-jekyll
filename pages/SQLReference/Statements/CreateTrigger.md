@@ -4,7 +4,7 @@ summary: Creates a trigger, which defines a set of actions that are executed whe
 keywords: creating a trigger
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createtrigger.html
 folder: SQLReference/Statements
 ---

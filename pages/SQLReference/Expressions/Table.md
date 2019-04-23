@@ -4,7 +4,7 @@ summary: Describes the TABLE expression, which specifies a table, view, or funct
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_table.html
 folder: SQLReference/Expressions
 ---

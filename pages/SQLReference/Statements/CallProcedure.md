@@ -4,7 +4,7 @@ summary: Calls a stored procedure.
 keywords: call procedure
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_callprocedure.html
 folder: SQLReference/Statements
 ---

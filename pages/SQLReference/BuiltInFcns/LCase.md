@@ -4,7 +4,7 @@ summary: Built-in SQL function that converts a character expression to lowercase
 keywords: lowercase, string function
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_lcase.html
 folder: SQLReference/BuiltInFcns
 ---

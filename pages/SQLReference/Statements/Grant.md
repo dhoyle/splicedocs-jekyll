@@ -4,7 +4,7 @@ summary: Gives privileges to specific user(s) or role(s) to perform actions on d
 keywords: granting privileges
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_grant.html
 folder: SQLReference/Statements
 ---

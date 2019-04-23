@@ -4,7 +4,7 @@ summary: Built-in system procedure that restores a database to its state at a sp
 keywords: restoring, restore_database, restore from backup
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_restoredbtimestamp.html
 folder: SQLReference/BuiltInSysProcs
 ---

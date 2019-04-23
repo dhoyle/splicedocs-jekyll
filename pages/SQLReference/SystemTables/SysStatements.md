@@ -4,7 +4,7 @@ summary: System table that describes the prepared statements in the database.
 keywords: Prepared statements table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysstatements.html
 folder: SQLReference/SystemTables
 ---

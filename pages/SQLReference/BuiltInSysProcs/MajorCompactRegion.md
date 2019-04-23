@@ -4,7 +4,7 @@ summary: Built-in system procedure that performs a major compaction on a table o
 keywords: region compaction, compact region, major compact, major_compact_region
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_majorcompactregion.html
 folder: SQLReference/BuiltInSysProcs
 ---

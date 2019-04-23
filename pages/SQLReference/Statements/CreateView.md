@@ -4,7 +4,7 @@ summary: Creates a view, which is a virtual table formed by a query.
 keywords: creating a view
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createview.html
 folder: SQLReference/Statements
 ---

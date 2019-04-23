@@ -4,7 +4,7 @@ summary: Describes database triggers and how you can use them with Splice Machin
 keywords: triggers
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_triggers.html
 folder: DeveloperTopics/Fundamentals
 ---

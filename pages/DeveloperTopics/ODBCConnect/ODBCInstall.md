@@ -4,7 +4,7 @@ summary: How to install and configure the Splice Machine ODBC driver.
 keywords: ODBC driver, install driver, odbc logging, odbc windows, odbc mac, odbc linux, odbc unix
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_odbcinstall.html
 folder: DeveloperTopics/ODBCConnect
 ---

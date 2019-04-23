@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XBCA Errors
 keywords: XBCA errors, error XBCA
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxbca.html
 folder: SQLReference/ErrorCodes
 ---

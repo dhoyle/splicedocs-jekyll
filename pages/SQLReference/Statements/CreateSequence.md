@@ -4,7 +4,7 @@ summary: Creates a sequence generator, which is&#xA;  a mechanism for generating
 keywords: creating a sequence
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createsequence.html
 folder: SQLReference/Statements
 ---

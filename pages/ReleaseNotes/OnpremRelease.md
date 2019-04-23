@@ -4,7 +4,7 @@ summary: Splice Machine On-Premise Product Release Notes
 keywords: release notes, on-premise
 toc: false
 product: all
-sidebar:  releasenotes_sidebar
+sidebar: home_sidebar
 permalink: releasenotes_onprem.html
 folder: ReleaseNotes
 ---

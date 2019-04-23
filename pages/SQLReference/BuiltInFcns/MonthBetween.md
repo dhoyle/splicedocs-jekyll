@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the number of months between two dat
 keywords: date arithmetic, months between two dates
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_monthbetween.html
 folder: SQLReference/BuiltInFcns
 ---

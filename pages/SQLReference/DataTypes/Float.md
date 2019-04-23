@@ -4,7 +4,7 @@ summary: The FLOAT data type is an alias for either a REAL or DOUBLE PRECISION  
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_float.html
 folder: SQLReference/DataTypes
 ---

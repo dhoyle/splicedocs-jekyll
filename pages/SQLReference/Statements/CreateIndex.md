@@ -4,7 +4,7 @@ summary: Creates an index on a table.
 keywords: creating index, primary key, unique
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createindex.html
 folder: SQLReference/Statements
 ---

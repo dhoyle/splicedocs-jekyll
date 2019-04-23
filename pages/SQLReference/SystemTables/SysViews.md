@@ -4,7 +4,7 @@ summary: System table that describes the view definitions within the current dat
 keywords: view definitions table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_sysviews.html
 folder: SQLReference/SystemTables
 ---

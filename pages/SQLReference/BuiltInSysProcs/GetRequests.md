@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays information about the number of
 keywords: get_requests, RPC requests
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getrequests.html
 folder: SQLReference/BuiltInSysProcs
 ---

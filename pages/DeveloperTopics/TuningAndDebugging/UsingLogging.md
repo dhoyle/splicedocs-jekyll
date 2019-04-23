@@ -4,7 +4,7 @@ summary: Introduction to using logging in Splice Machine
 keywords: logging, tracing, debugging, loggers
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_tuning_logging.html
 folder: DeveloperTopics/TuningAndDebugging
 ---

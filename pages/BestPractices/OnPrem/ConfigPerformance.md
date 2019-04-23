@@ -4,7 +4,7 @@ summary: Summary of options for configuring database performance
 keywords: importing
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_onprem_configperf.html
 folder: BestPractices
 ---

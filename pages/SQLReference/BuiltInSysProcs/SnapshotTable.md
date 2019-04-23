@@ -4,7 +4,7 @@ summary: Built-in system procedure that creates a snapshot of a table.
 keywords: snapshots, snapshot_table, create table snapshot
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_snapshottable.html
 folder: SQLReference/BuiltInSysProcs
 ---

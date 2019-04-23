@@ -4,7 +4,7 @@ summary: A table that summarizes the function of each available Splice Machine b
 keywords: statistics procedures, managing database statistics
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_statisticsintro.html
 folder: SQLReference/BuiltInSysProcs
 ---

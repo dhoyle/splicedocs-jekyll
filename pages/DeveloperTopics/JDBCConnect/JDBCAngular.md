@@ -4,7 +4,7 @@ summary: Walks you through compiling and running an AngularJS/NodeJS program tha
 keywords: connect tutorial, Node, Angular
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_angular.html
 folder: DeveloperTopics/JDBCConnect
 ---

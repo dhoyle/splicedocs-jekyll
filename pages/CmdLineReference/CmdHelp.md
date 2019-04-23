@@ -4,7 +4,7 @@ summary: Displays a list of the available commands.
 keywords:
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_help.html
 folder: CmdLineReference
 ---

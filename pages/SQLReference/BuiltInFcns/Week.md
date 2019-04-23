@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns an integer representation of the wee
 keywords: date math, date arithmetic
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_week.html
 folder: SQLReference/BuiltInFcns
 ---

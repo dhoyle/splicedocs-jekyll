@@ -4,7 +4,7 @@ summary: How to store and update your compiled jar files when developing stored 
 keywords: stored procedures, functions, updating stored procedures, updating functions, storing procedures, storing functions
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fcnsandprocs_storing.html
 folder: DeveloperTopics/FcnsAndProcs
 ---

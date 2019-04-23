@@ -4,7 +4,7 @@ summary: Rolls the current transaction back to the specified savepoint.
 keywords: savepoints, rolling back, transactions
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_rollbacktosavepoint.html
 folder: CmdLineReference
 ---

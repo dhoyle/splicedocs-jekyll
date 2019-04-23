@@ -4,7 +4,7 @@ summary: Maps documentation URLs from pre-release 2.5 versions to new permalinks
 keywords:
 toc: false
 product: all
-sidebar:  notes_sidebar
+sidebar: home_sidebar
 permalink: notes_urlmap.html
 folder: Notes
 ---

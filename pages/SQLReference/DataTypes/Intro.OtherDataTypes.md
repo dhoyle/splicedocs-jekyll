@@ -4,7 +4,7 @@ summary: A summary of the other data types available in Splice Machine SQL.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_othertypes.html
 folder: SQLReference/DataTypes
 ---

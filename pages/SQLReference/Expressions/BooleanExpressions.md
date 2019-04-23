@@ -4,7 +4,7 @@ summary: Syntax for and examples of Boolean expressions in Splice Machine SQL.
 keywords: where, logical, constraint, exists, not exists
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_boolean.html
 folder: SQLReference/Expressions
 ---

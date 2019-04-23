@@ -4,7 +4,7 @@ summary: Built-in system procedure that restores a schema from a previous backup
 keywords: restoring, RESTORE_SCHEMA, restore from backup
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_restoreschema.html
 folder: SQLReference/BuiltInSysProcs
 ---

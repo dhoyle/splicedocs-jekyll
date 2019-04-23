@@ -5,7 +5,7 @@ keywords: date arithmetic, time function, time format
 compatible_version: 2.7
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_time.html
 folder: SQLReference/BuiltInFcns
 ---

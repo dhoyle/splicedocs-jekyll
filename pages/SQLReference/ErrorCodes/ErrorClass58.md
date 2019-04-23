@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 58 Errors
 keywords: 58 errors, error 58
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class58.html
 folder: SQLReference/ErrorCodes
 ---

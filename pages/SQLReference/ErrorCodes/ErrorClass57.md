@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 57 Errors
 keywords: 57 errors, error 57
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class57.html
 folder: SQLReference/ErrorCodes
 ---

@@ -4,7 +4,7 @@ summary: Best practices and Troubleshooting
 keywords: troubleshooting
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_dbaas_intro.html
 folder: BestPractices
 ---

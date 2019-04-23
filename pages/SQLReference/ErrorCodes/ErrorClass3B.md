@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 3B Errors
 keywords: 3B errors, error 3b
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class3b.html
 folder: SQLReference/ErrorCodes
 ---

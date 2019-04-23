@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns a floating point number
 keywords: convert to double
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_double.html
 folder: SQLReference/BuiltInFcns
 ---

@@ -4,7 +4,7 @@ summary: Summary of configuration options used in Splice Machine installations
 keywords: importing
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_onprem_configoptions.html
 folder: BestPractices
 ---

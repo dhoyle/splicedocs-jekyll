@@ -4,7 +4,7 @@ summary: A summary of the different identifier types you can use in Splice Machi
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_identifiers_types.html
 folder: SQLReference/Identifiers
 ---

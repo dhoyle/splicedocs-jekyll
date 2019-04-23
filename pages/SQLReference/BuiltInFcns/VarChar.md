@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns a varying-length character string
 keywords: 
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_varchar.html
 folder: SQLReference/BuiltInFcns
 ---

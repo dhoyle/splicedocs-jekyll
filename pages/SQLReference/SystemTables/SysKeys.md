@@ -4,7 +4,7 @@ summary: System table that describes the specific information for primary key an
 keywords: primary keys table, constraints table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_systables_syskeys.html
 folder: SQLReference/SystemTables
 ---

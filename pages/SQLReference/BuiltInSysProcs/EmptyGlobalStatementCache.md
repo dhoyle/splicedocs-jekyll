@@ -4,7 +4,7 @@ summary: Built-in system procedure that removes as many compiled statements (pla
 keywords: statement cache, empty statement cache, empty_statement_cache
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_emptyglobalcache.html
 folder: SQLReference/BuiltInSysProcs
 ---

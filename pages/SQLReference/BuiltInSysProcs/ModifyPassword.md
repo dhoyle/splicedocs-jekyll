@@ -4,7 +4,7 @@ summary: Built-in system procedure that is called by a user to change that user'
 keywords: change password, modify password, modify_password
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_modifypassword.html
 folder: SQLReference/BuiltInSysProcs
 ---

@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSAI Errors
 keywords: XSAI errors, error XSAI
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsai.html
 folder: SQLReference/ErrorCodes
 ---

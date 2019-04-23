@@ -2,7 +2,7 @@
 summary: A quick and simple tutorial that show you how you can use Zeppelin notebook to load and query data, and apply different visualizations to the results.
 title: A Simple Zeppelin Tutorial
 keywords: zep, notebook, dbaas, paas, tutorial
-sidebar: dbaas_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_zep_simple.html

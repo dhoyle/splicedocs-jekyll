@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns its first non-null argument. VALUE i
 keywords: non-null
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_coalesce.html
 folder: SQLReference/BuiltInFcns
 ---

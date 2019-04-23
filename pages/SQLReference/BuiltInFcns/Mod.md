@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the modulus of one value divided by 
 keywords: modulus, remainder
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_mod.html
 folder: SQLReference/BuiltInFcns
 ---

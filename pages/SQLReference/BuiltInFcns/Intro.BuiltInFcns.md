@@ -4,7 +4,7 @@ summary: Summary of built-in SQL functions in Splice Machine
 keywords: built-in functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_intro.html
 folder: SQLReference/BuiltInFcns
 ---

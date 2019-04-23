@@ -4,7 +4,7 @@ summary: Renames a column in a table.
 keywords: renaming a column
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_renamecolumn.html
 folder: SQLReference/Statements
 ---

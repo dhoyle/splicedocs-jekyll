@@ -4,7 +4,7 @@ summary: How to install and use ODBC to connect with Splice Machine from various
 keywords: JDBC
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connectodbc_intro.html
 folder: DeveloperTopics/ODBCConnect
 ---

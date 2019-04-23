@@ -4,7 +4,7 @@ summary: Allows you to query data stored in a flat file as if that data were sto
 keywords: external tables, orc, avro, parquet, textfile, compression, encoding, separator
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createexternaltable.html
 folder: SQLReference/Statements
 ---
